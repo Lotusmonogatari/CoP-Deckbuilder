@@ -584,6 +584,11 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 			refusal = Text.say("event.refuse_no_staff")
 		if refusal.is_empty():
 			refusal = GameState.event_choice_refusal(event, choice)
+		# What the choice costs on the spot (hours, Funds, an item), 2026-10-31.
+		var commitments := Commitments.of(choice)
+		label = GameState.commitment_label(label, commitments)
+		if refusal.is_empty():
+			refusal = GameState.commitment_refusal(commitments)
 		var letter := str(choice.get("choice", ""))
 		# A choice that starts a level opens that level's briefing first.
 		var pressed := _on_event_level_choice.bind(event_id, letter, arrived) \

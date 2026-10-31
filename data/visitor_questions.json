@@ -46,6 +46,15 @@
         "delta": -4
       }
     ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Thank you. Just tell me the day it is fixed.",
     "response_b": "We did. Twice. They sent us back to you.",
     "response_c": "It is the wiring, not the bulb.",
@@ -107,6 +116,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Some of our neighbors cannot lift a shovel.",
     "response_b": "A group would help. Put the city's name on it.",
     "response_c": "That is cruel, and you know it.",
@@ -168,6 +181,10 @@
         "delta": -4
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Studies take time. Children cross every morning.",
     "response_b": "Some of them have no parent free to walk.",
     "response_c": "This month. I will hold you to that.",
@@ -232,6 +249,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nothing? They followed us for three days.",
     "response_b": "Those waters are our living. We will not leave.",
     "response_c": "Diplomats take years. The boats go out tomorrow.",
@@ -293,6 +314,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Relief would keep half the fleet afloat.",
     "response_b": "Ups and downs do not feed a family.",
     "response_c": "A smaller boat catches a smaller living.",
@@ -358,6 +383,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Expensive, yes. So is a harbor nobody can enter.",
     "response_b": "The mud will not wait for a good year.",
     "response_c": "Everywhere else already has boats.",
@@ -422,6 +451,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Convenient. You must be very loyal.",
     "response_b": "Every word? That will make a dull story.",
     "response_c": "Now that is a quote. Thank you.",
@@ -479,6 +512,10 @@
         "delta": -4
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Then I will print all of it.",
     "response_b": "That is not how it works, and you know it.",
     "response_c": "Then I cannot help you. Or you me.",
@@ -543,6 +580,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "More than your critics think? Name one.",
     "response_b": "Your staff keep it. You should know it.",
     "response_c": "Long is not the same as good.",
@@ -607,6 +648,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "So we give up before we start?",
     "response_b": "Hear every plan. That is all we ask.",
     "response_c": "Level for whom?",
@@ -676,6 +721,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "One table is a start. Who pays for the chairs?",
     "response_b": "Hidden talks are how the last mess began.",
     "response_c": "They disagree because no one has asked them together.",
@@ -740,6 +789,15 @@
         "delta": -4
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "item",
+        "item_id": "SH04"
+      }
+    ],
+    "commitment_d": null,
     "response_a": "Neutral is a way of taking a side.",
     "response_b": "We do not need flyers. We need people.",
     "response_c": "Bring the coffee. Hot, please.",
@@ -804,6 +862,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Adapt to what? Prices set in Tokyo?",
     "response_b": "That is not funny. That is my family.",
     "response_c": "Cheese costs money to learn. We have little.",
@@ -877,6 +939,10 @@
         "delta": 2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Closed routes mean closed villages.",
     "response_b": "One bus a day is the last thread.",
     "response_c": "Half our elderly do not drive.",
@@ -941,6 +1007,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Ha! You will cry. It is that good.",
     "response_b": "Of course. My apologies, I will take it back.",
     "response_c": "Fair. Staff first. Smart.",
@@ -1005,6 +1075,10 @@
         "delta": 2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Because you said so. That is exactly the problem.",
     "response_b": "Vote, yes. Voting is not trust.",
     "response_c": "Hold you to account. We will.",
@@ -1074,6 +1148,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Busy. That is what they all say.",
     "response_b": "The hard questions. We will bring plenty.",
     "response_c": "Pre-screened is not a debate.",
@@ -1142,6 +1220,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Photocopying. Is that all we are worth?",
     "response_b": "Free work has a name, and it is not experience.",
     "response_c": "We will see. That is not a yes.",
@@ -1202,6 +1284,10 @@
         "delta": -4
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "More spaces. Yes. Please.",
     "response_b": "Plan ahead? The waitlist is two years.",
     "response_c": "Grandparents live far away. Many are ill.",
@@ -1271,6 +1357,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Noise is life. A quiet center is a closed one.",
     "response_b": "They mix at home. They can mix here.",
     "response_c": "Under one roof. Yes. That is the idea.",
@@ -1335,6 +1425,10 @@
         "delta": -4
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "You say that, but I can see your wrists.",
     "response_b": "Come over Sunday. I will show you the pot.",
     "response_c": "Coffee is not a meal. Sit down.",
@@ -1395,6 +1489,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Match the furniture? It is not furniture.",
     "response_b": "A small piece is a start. Thank you.",
     "response_c": "Make room. There is a shelf somewhere.",
@@ -1476,6 +1574,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Yezo, Yezo. Yes. Say it louder.",
     "response_b": "Urgent for whom? We are the ones asking.",
     "response_c": "Budgets can be argued. Heritage cannot be rebuilt.",
@@ -1544,6 +1646,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Automation cannot carve a face.",
     "response_b": "If not the government, then who?",
     "response_c": "Stipends. Respect. Yes. That would draw them.",
@@ -1604,6 +1710,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Success is a seat. We have none.",
     "response_b": "Buses stop in the same traffic.",
     "response_c": "Staggered hours. Soon I will not sleep.",
@@ -1673,6 +1783,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Everyone benefits. I will sign anything.",
     "response_b": "Too expensive. Is it? For whom?",
     "response_c": "The road is a parking lot at eight.",
@@ -1733,6 +1847,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nobody is a morning person at 7:40.",
     "response_b": "A deputy would not feel the crush.",
     "response_c": "Platform two. Bring a coat.",
@@ -1794,6 +1912,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Rules are rules, but it is one afternoon.",
     "response_b": "Thank you. The whole street will be there.",
     "response_c": "Litter is swept in an hour. A festival is remembered.",
@@ -1862,6 +1984,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Not religious is fine. Not respectful is not.",
     "response_b": "Out of town. The festival is not for later.",
     "response_c": "A long line. A good sign, really.",
@@ -1931,6 +2057,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Days, not months. Exactly.",
     "response_b": "The reason is a stamp I do not understand.",
     "response_c": "More clerks. More forms. More months.",
@@ -2000,6 +2130,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Teaching alone built none of our firms.",
     "response_b": "Quickly is not how ideas work.",
     "response_c": "Ideas leave the lab. Finally someone says it.",
@@ -2064,6 +2198,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nobody wants cold? We have snow tourists.",
     "response_b": "Sell the cold. Yes. I have a slogan.",
     "response_c": "Ice cream. Sure. That is a joke, right?",
@@ -2132,6 +2270,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Tokyo knows best. Tell that to our potholes.",
     "response_b": "We have a system. It is the problem.",
     "response_c": "Not a tax expert. Few are. Learn.",
@@ -2200,6 +2342,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Events and lower rents. Both. Now.",
     "response_b": "Adapt or close. That is easy to say from an office.",
     "response_c": "Parking? I will lose everything.",
@@ -2272,6 +2418,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Your own way is not a party.",
     "response_b": "Polls are not principles.",
     "response_c": "On what we agree on. Honest. We can work with that.",
@@ -2345,6 +2495,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Other plans. The rally needs bodies.",
     "response_b": "Supporters. Yes. Bring plenty.",
     "response_c": "A short appearance is better than none.",
@@ -2413,6 +2567,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Everyone fundraises. The party depends on it.",
     "response_b": "Busy. Everyone is busy.",
     "response_c": "An invitation. Check your calendar first.",
@@ -2477,6 +2635,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A team player. We like that. Remember who said so.",
     "response_b": "Your own mind. The faction does not forget.",
     "response_c": "Your voters. Honest, at least.",
@@ -2541,6 +2703,10 @@
         "delta": 2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nobody needs one. Until they do.",
     "response_b": "Best office. How honest. How shallow.",
     "response_c": "Whom should you listen to? I will make a list.",
@@ -2609,6 +2775,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nobody is photogenic at first. We have makeup.",
     "response_b": "Wear something light. The studio lights are hot.",
     "response_c": "Questions in advance? That is not a conversation.",
@@ -2678,6 +2848,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Wonderful. I will line up the cameras.",
     "response_b": "Crowded for whom? The inns are half empty.",
     "response_c": "Honshu has plenty of visitors. We have snow.",
@@ -2746,6 +2920,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Pay is part of it, but nobody has a room.",
     "response_b": "Locals alone cannot fill a whole season.",
     "response_c": "Rules and housing. That is the real list.",
@@ -2811,6 +2989,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Customs has its reasons, and they cost us hours.",
     "response_b": "The ferry company has been no help.",
     "response_c": "Find it soon. The line grows daily.",
@@ -2879,6 +3061,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Reports do not smell of diesel.",
     "response_b": "A cabin costs extra. A bench is free.",
     "response_c": "Seasick? Take a pill. The line needs a witness.",
@@ -2947,6 +3133,10 @@
         "delta": 2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Thank you. Page forty is the one that matters.",
     "response_b": "Long documents are how real answers get written.",
     "response_c": "A summary leaves out the interesting parts.",
@@ -3019,6 +3209,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Schools. Yes. Though the budget is thin.",
     "response_b": "Lower taxes. Everyone says it, few do it.",
     "response_c": "Everything is fine? Then why do I keep coming here?",
@@ -3087,6 +3281,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Report back, then. I will hold you to it.",
     "response_b": "Not up to you? Who is it up to?",
     "response_c": "Never? That is a long time.",
@@ -3159,6 +3357,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Details. Good. I like a person who asks.",
     "response_b": "Not today. Fair. It is a lot to carry.",
     "response_c": "Sign me up? That is the best day of my year.",
@@ -3227,6 +3429,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fully behind it. Good. I will put that in the minutes.",
     "response_b": "Reservations are healthy. Say them in the room.",
     "response_c": "No comment. That says plenty.",
@@ -3295,6 +3501,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A reliable vote. That helps.",
     "response_b": "A bigger office? You have not earned the floor space.",
     "response_c": "Useful. Good. That will land well.",
@@ -3363,6 +3573,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Tell me what fails. That is gold.",
     "response_b": "Skimming is how mistakes reach the cameras.",
     "response_c": "Your own words. Brave, and sometimes costly.",
@@ -3431,6 +3645,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Everything? Headquarters will be speechless.",
     "response_b": "Silence reads as guilt to reporters.",
     "response_c": "Call back, then call us. That is the drill.",
@@ -3495,6 +3713,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "From the inside. Then open the door for us.",
     "response_b": "Patience is easy when you hold the seat.",
     "response_c": "Visibility is how voters find us.",
@@ -3559,6 +3781,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Too busy? That is exactly what they fear.",
     "response_b": "Well connected. So it is who they know.",
     "response_c": "Headquarters has its own plans, true.",
@@ -3627,6 +3853,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Tradition. Fine. It keeps the elders calm.",
     "response_b": "Respect first, then speak. That is the craft.",
     "response_c": "Ignoring elders is a quick way to a short career.",
@@ -3695,6 +3925,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Absolutely. That is what every disaster says.",
     "response_b": "Coach me. Good. That is half the battle.",
     "response_c": "No cameras? In this century?",
@@ -3763,6 +3997,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Wait and hope. That is not a plan.",
     "response_b": "Blaming the media rarely lands well.",
     "response_c": "Changing the subject buys a day, not a week.",
@@ -3831,6 +4069,10 @@
         "delta": 2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good food helps. It does not make a movement.",
     "response_b": "Paid staff only? Then who knocks the doors?",
     "response_c": "Names and visits. That is how loyalty grows.",
@@ -3891,6 +4133,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Paid in full. A rare pleasure.",
     "response_b": "Your secretary does not pay your dues.",
     "response_c": "Optional? The roof does not agree.",
@@ -3959,6 +4205,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Only if no one is watching. That is the problem.",
     "response_b": "No way. Principle noted, and the party goes hungry.",
     "response_c": "Let them wait. Donors do not like waiting.",
@@ -4027,6 +4277,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Cut staff and you cut the party's legs.",
     "response_b": "My salary is not the budget. But thank you.",
     "response_c": "Cut the speeches. Honestly, a few of them.",
@@ -4091,6 +4345,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The day of is too late for counting.",
     "response_b": "With the party. And early warning. Thank you.",
     "response_c": "Conscience is noble. It is also unpredictable.",
@@ -4155,6 +4413,10 @@
         "delta": 2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nobody notices until the margin is one.",
     "response_b": "A pair. Perfect. Family and party, both.",
     "response_c": "Midnight notice is my least favorite.",
@@ -4223,6 +4485,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Report them? That keeps order, not friends.",
     "response_b": "Ignoring it lets it grow.",
     "response_c": "Join them? Then it is a faction, not a member.",
@@ -4291,6 +4557,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Polls are wrong sometimes. Not every time.",
     "response_b": "Go and listen. That is exactly what we need.",
     "response_c": "Firing the pollster does not change the numbers.",
@@ -4359,6 +4629,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Popular. The voters will certainly enjoy that.",
     "response_b": "Elected is the whole game, they say.",
     "response_c": "Respected. Popularity can follow. Good line.",
@@ -4427,6 +4701,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The wrong group is a very convenient excuse.",
     "response_b": "Louder is not better.",
     "response_c": "Cutting the speech is surrender.",
@@ -4495,6 +4773,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nobody? That is a pity.",
     "response_b": "A cousin who needs a job is not a recruit.",
     "response_c": "Names without strings. Thank you.",
@@ -4563,6 +4845,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "They would not? Then why are you here?",
     "response_b": "For the money? That is not a reason.",
     "response_c": "Glamor does not last past the first election.",
@@ -4631,6 +4917,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Hard, worth it, and I will help. Perfect.",
     "response_b": "Wait until you are sure? Some never are.",
     "response_c": "It fades once you start. True, and not enough.",
@@ -4699,6 +4989,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Polls fade by Friday.",
     "response_b": "Money buys a season, not a career.",
     "response_c": "Messages fade. People remember what you did.",
@@ -4767,6 +5061,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Firm and respectful. That is the balance.",
     "response_b": "Enemies make a fine headline and a poor chamber.",
     "response_c": "Ignoring them is just rude.",
@@ -4839,6 +5137,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nothing to fix? Nobody believes that.",
     "response_b": "In trouble? You said that quickly.",
     "response_c": "No comment. Then we learn nothing.",
@@ -4903,6 +5205,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Debts can be repaid. Not in this faction.",
     "response_b": "Remember who stood by you. Good.",
     "response_c": "Nobody? Then nobody will stand beside you.",
@@ -4971,6 +5277,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Stories do not win votes. They win trust.",
     "response_b": "Between sessions. Brief is a start.",
     "response_c": "You make the time. Good. Old lessons are the best.",
@@ -5039,6 +5349,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Work with them. That is the sensible path.",
     "response_b": "Block them. That is how we keep order.",
     "response_c": "Ignoring them just lets them grow.",
@@ -5107,6 +5421,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A vote is a start. It is not a gift.",
     "response_b": "Loyalty and time at our events. Good.",
     "response_c": "Nothing is a gift in this chamber.",
@@ -5175,6 +5493,10 @@
         "delta": 2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Proper channels. Careful. Maybe too careful.",
     "response_b": "Camera shy does not suit this work.",
     "response_c": "Not at all, and thanks properly. Exactly.",
@@ -5243,6 +5565,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Short and good. Book it.",
     "response_b": "No speaker? Everyone starts that way.",
     "response_c": "Ask someone else. Gladly. Do not expect an invitation.",
@@ -5307,6 +5633,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Hoping for a tide. That is the weakest plan.",
     "response_b": "Every door. Good. That wins seats.",
     "response_c": "The party name is a loan, not an asset.",
@@ -5375,6 +5705,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Neutral. Convenient. It does not last.",
     "response_b": "The strongest. Until the strongest changes.",
     "response_c": "With the faction, with bridges. A mature answer.",
@@ -5443,6 +5777,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Not unless it is safe. Then it is not a plan.",
     "response_b": "Explain the risk, then decide. Sensible.",
     "response_c": "Any risk? That is not courage, that is a coin toss.",
@@ -5507,6 +5845,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nothing? Times change, people do not.",
     "response_b": "Shortcuts. I have a few. They cost more than they save.",
     "response_c": "Humble and win anyway. I wrote that book.",
@@ -5575,6 +5917,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Only with friends. Then we start as friends.",
     "response_b": "A meeting. There is a meeting for everything.",
     "response_c": "Alcohol and politics do mix. Ask anyone.",
@@ -5643,6 +5989,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Duty is a heavy word. It does not call me.",
     "response_b": "Your seat. Everyone in here has one. Try again.",
     "response_c": "Listen and not only call. That is rare.",
@@ -5711,6 +6061,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "No side deals? In politics? Brave and foolish.",
     "response_b": "Open, no promises. That is how it begins.",
     "response_c": "Only if it helps you. At least it is honest.",
@@ -5779,6 +6133,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Highest bidder. I have met your type.",
     "response_b": "A coin toss. That is not a decision.",
     "response_c": "Flattery is cheap and it works.",
@@ -5847,6 +6205,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Only if values change, and tell everyone first. Honest.",
     "response_b": "Whenever convenient. We know what that means.",
     "response_c": "Never, no matter what. Is that wise?",
@@ -5915,6 +6277,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Complete trust in staff is a gift to flatterers.",
     "response_b": "Newspapers are a start. Not a finish.",
     "response_c": "Ask more than one, then ask twice. Yes.",
@@ -5983,6 +6349,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Deny everything. The cameras remember.",
     "response_b": "Own it, fix it, say what changed. Exactly.",
     "response_c": "Blaming staff ends careers, often the wrong ones.",
@@ -6051,6 +6421,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Re-election. A modest legacy.",
     "response_b": "Being rich is not a legacy.",
     "response_c": "Being quiet. A fine goal for a ghost.",
@@ -6119,6 +6493,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "An honest friend. That is a good deal.",
     "response_b": "Owe nobody. Then I will leave you with that.",
     "response_c": "I did not ask for your staff. I asked for something that lasts.",
@@ -6187,6 +6565,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Whoever wins. Practical, and a little cold.",
     "response_b": "Neither, openly. That takes courage.",
     "response_c": "Behind in the polls? That is charity, not strategy.",
@@ -6255,6 +6637,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Gloves. Sensible, and it shows in the handshake.",
     "response_b": "Stay away from power? Then why are you here?",
     "response_c": "Open hands and an honest word. Good.",
@@ -6323,6 +6709,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A seasonal closure. Yes. The nests will thank you.",
     "response_b": "Trucks go somewhere, true. Not through a nest.",
     "response_c": "Writing it up takes a week. The nests do not have a week.",
@@ -6391,6 +6781,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Volunteers help, but they cannot patrol a mountain.",
     "response_b": "A costed roster. Finally, someone with a pencil.",
     "response_c": "Cameras do not carry out a poacher.",
@@ -6459,6 +6853,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Hard to serve is not the same as not worth serving.",
     "response_b": "An hour. Show me the plan. Please.",
     "response_c": "Move to town? Then who will farm?",
@@ -6527,6 +6925,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Duty does not pay rent.",
     "response_b": "The market is why they leave.",
     "response_c": "Housing, pay and a way back. A real offer.",
@@ -6595,6 +6997,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Trusting the vendor is how breaches begin.",
     "response_b": "Probably fine is not an engineering term.",
     "response_c": "Audits and a breach report. That I trust.",
@@ -6663,6 +7069,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Officials need access. Citizens need to see who looked.",
     "response_b": "Outdated? Tell that to anyone whose record leaked.",
     "response_c": "Only the police look. That is not a guarantee.",
@@ -6731,6 +7141,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A right to be heard is not a right to edit.",
     "response_b": "Ignoring the calls is brave. They keep coming.",
     "response_c": "Grateful for the budget. That is how it works.",
@@ -6799,6 +7213,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A protected line. Yes. That is independence.",
     "response_b": "A luxury? Tell that to a flooded village.",
     "response_c": "Ratings decide what is easy, not what is true.",
@@ -6867,6 +7285,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Large names, small shielded. That is fair.",
     "response_b": "Stay home? They want to give, not hide.",
     "response_c": "Everyone named. Clean. And it frightens the shy ones.",
@@ -6935,6 +7357,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "An accountant costs more than our whole budget.",
     "response_b": "An online form and free help. Yes please.",
     "response_c": "Paperwork builds character, and kills clubs.",
@@ -7003,6 +7429,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Every time? Not in my experience, and not in yours.",
     "response_b": "Strings on hiring and local investment. Fair.",
     "response_c": "Banking it is fine for the bank.",
@@ -7071,6 +7501,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Grateful for jobs. They are grateful for fair pay.",
     "response_b": "Taxes are about fair. That is why we argue.",
     "response_c": "Workers and firms, side by side. Yes. Let us sit down.",
@@ -7139,6 +7573,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Everyone pays, including growers who cannot move.",
     "response_b": "Switch it off? Then the crop dies.",
     "response_c": "Rebates while the cleaner heat catches up. Good.",
@@ -7207,6 +7645,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "It will fill the budget. That is what I fear.",
     "response_b": "Nobody can say? That is not reassuring.",
     "response_c": "The air is fine? Tell the lung clinics.",
@@ -7275,6 +7717,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The market decides. It decides against small boats.",
     "response_b": "Sell and take the money? Then what do I fish with?",
     "response_c": "Quotas will not matter soon. They matter this week.",
@@ -7343,6 +7789,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Yours unless a court says otherwise. That I can live with.",
     "response_b": "Anything on a boat is public? Not in my cabin.",
     "response_c": "Nothing to hide is not the point.",
@@ -7411,6 +7861,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Guaranteed orders and civilian training. That is a future.",
     "response_b": "We will see. It is what they all say.",
     "response_c": "A dying trade? I am standing in it.",
@@ -7475,6 +7929,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Just a job. Not to every welder.",
     "response_b": "The coast and the yard. Both stay safe.",
     "response_c": "War as good business. That is hard to hear.",
@@ -7543,6 +8001,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Whoever the government picks. That is not a commission.",
     "response_b": "Scholars, citizens and members, picked openly. Good.",
     "response_c": "Only lawyers? Then who speaks for the rest of us?",
@@ -7611,6 +8073,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nothing is off the table. That is a worrying list.",
     "response_b": "Whatever the party says. Convenient.",
     "response_c": "Rights that shield minorities. Exactly the right place to start.",
@@ -7679,6 +8145,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Skipping inspections is how bad cargo gets in.",
     "response_b": "Queues are fine for people who do not wait in them.",
     "response_c": "Shared screening. Halved, with the checks intact. Good.",
@@ -7747,6 +8217,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Everything for efficiency. That is not efficiency, that is exposure.",
     "response_b": "Not sure? Then find out.",
     "response_c": "Nothing leaves the building. That is a promise you cannot keep.",
@@ -7815,6 +8289,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The islands belong to the state. They belong to us.",
     "response_b": "Fishing is over? Not on my boat.",
     "response_c": "Progress needs sacrifice, from whom?",
@@ -7883,6 +8361,10 @@
         "delta": -4
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A public patrol plan. We can live with that.",
     "response_b": "The navy will manage. The navy is far away.",
     "response_c": "Do not worry about it. We worry anyway.",
@@ -7951,6 +8433,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A published schedule with notice. Perfect.",
     "response_b": "Rules change with the weather. So do orders.",
     "response_c": "Stability overrated? Not for exporters.",
@@ -8019,6 +8505,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The market is cruel. Farmers have a vote.",
     "response_b": "Transition support. That is fair, and it costs.",
     "response_c": "Switch crops. Easy to say, hard to do.",
@@ -8087,6 +8577,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A bank loan for a farm is a mortgage for life.",
     "response_b": "A grant and a lighter burden. That is a chance.",
     "response_c": "Farming does not pay. Then why does the rice reach your table?",
@@ -8155,6 +8649,10 @@
         "delta": 2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Videos do not know my soil.",
     "response_b": "Figure it out myself. That is how farms fail.",
     "response_c": "Retired farmers as mentors. That would work.",
@@ -8223,6 +8721,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "One year is a budget cycle, not a research cycle.",
     "response_b": "Projects paying for themselves is not science.",
     "response_c": "Multi-year grants with outside review. That is how it is done.",
@@ -8291,6 +8793,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Let them go abroad? They will not come back.",
     "response_b": "They leave. Make a reason to stay.",
     "response_c": "Keeping talent is the problem, and the reason I am here.",
@@ -8359,6 +8865,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Ask the owners to be nice. They have heard that line.",
     "response_b": "It is just how things are. That is the problem.",
     "response_c": "Ask for more? We have asked. They said no.",
@@ -8427,6 +8937,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Clear rules, help and a grace period. Fair to small shops.",
     "response_b": "Let them close? That is not protection.",
     "response_c": "Big firms absorb them. Then who sets the pay?",
@@ -8495,6 +9009,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "No penalty, with fines for retaliation. Exactly.",
     "response_b": "Quiet leave is borrowed time. I want it by right.",
     "response_c": "Families should manage. Families are managing.",
@@ -8563,6 +9081,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Wait your turn for two years? We cannot.",
     "response_b": "New places where they are needed most. Thank you.",
     "response_c": "A nanny? On my salary?",
@@ -8631,6 +9153,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Cameras everywhere. I like safety, but not that much.",
     "response_b": "Where crime happens, strict on storage. Good.",
     "response_c": "More guards. They cost more than cameras.",
@@ -8699,6 +9225,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Will not mind? That is what every watcher says.",
     "response_b": "Mind your own business. They are customers.",
     "response_c": "Deleted on schedule and audited by outsiders. That reassures.",
@@ -8767,6 +9297,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A call center in the big town. Our elders hate phones.",
     "response_b": "Press one for service. For a village of ninety.",
     "response_c": "A local desk in every village. That is a promise.",
@@ -8835,6 +9369,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Festivals cost too much, and they are why we stay.",
     "response_b": "Combine all the festivals? Then none of us has one.",
     "response_c": "Culture is optional. Not to us.",
@@ -8903,6 +9441,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Leave it to headquarters. That is the problem.",
     "response_b": "Only big branches matter. Then ours is nothing.",
     "response_c": "Voting is overrated? You will see.",
@@ -8971,6 +9513,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Checks and a waiting period. Sensible.",
     "response_b": "Trust everyone. Until the ballot is full of strangers.",
     "response_c": "Do nothing. Our branch will be drowned.",
@@ -9039,6 +9585,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with Our Traditional Society. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -9107,6 +9657,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -9175,6 +9729,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with Our Traditional Society. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -9243,6 +9801,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -9307,6 +9869,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with the Consumer Advocacy Network. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -9367,6 +9933,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -9435,6 +10005,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with the Local Kōenkai. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -9503,6 +10077,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -9571,6 +10149,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with the Local Kōenkai. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -9639,6 +10221,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -9707,6 +10293,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with the Taxpayers' Alliance. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -9775,6 +10365,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -9843,6 +10437,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with the Consumer Advocacy Network. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -9911,6 +10509,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -9979,6 +10581,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with the Rural Revitalization Council. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -10047,6 +10653,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -10115,6 +10725,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with the Veterans' Association. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -10183,6 +10797,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -10251,6 +10869,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with the Small Business Owners' Association. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -10319,6 +10941,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -10387,6 +11013,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. We will remember that.",
     "response_b": "Then you are with the Urban Neighborhood Alliance. Understood.",
     "response_c": "Fair enough. Do not take too long.",
@@ -10455,6 +11085,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fair. We will not love it.",
     "response_b": "Taxes it is. We are relieved.",
     "response_c": "Then it will fall on someone else.",
@@ -10523,6 +11157,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That is what our members hoped to hear.",
     "response_b": "Then you have chosen the shop over the field.",
     "response_c": "A fund is something. Do not take long.",
@@ -10591,6 +11229,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Water is life here. Thank you.",
     "response_b": "Insurance does not make rain.",
     "response_c": "A report is a start.",
@@ -10659,6 +11301,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would change lives on campus.",
     "response_b": "Landlords have rights. Students have rent.",
     "response_c": "Look quickly. Leases are due.",
@@ -10727,6 +11373,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Finally, someone who sees us.",
     "response_b": "Experts forget who pays tuition.",
     "response_c": "Raise it loudly, then.",
@@ -10795,6 +11445,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Families will feel that.",
     "response_b": "Then who will? Families cannot.",
     "response_c": "Please do. The list is long.",
@@ -10863,6 +11517,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Children will sleep easier for that.",
     "response_b": "Tight for whom? Not for our kids.",
     "response_c": "Half is better than none.",
@@ -10931,6 +11589,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A stipend keeps hands at the bench.",
     "response_b": "A craft is not a gadget.",
     "response_c": "Ask them. They know us.",
@@ -10999,6 +11661,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A mark tells buyers the truth.",
     "response_b": "They choose what they can see.",
     "response_c": "That helps a little.",
@@ -11067,6 +11733,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "We need colleagues who say so aloud.",
     "response_b": "The press is hardly short of volunteers.",
     "response_c": "Fairness is a fine start.",
@@ -11135,6 +11805,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Good. Better reading makes better law.",
     "response_b": "Taxpayers like good law.",
     "response_c": "A plan is fair.",
@@ -11203,6 +11877,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Neighbors and shrine will thank you.",
     "response_b": "Development passes. The route stays.",
     "response_c": "Consult widely, please.",
@@ -11271,6 +11949,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "They will be glad to hear it.",
     "response_b": "Thanks cost little.",
     "response_c": "A mention is kind.",
@@ -11339,6 +12021,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Our residents will notice the difference.",
     "response_b": "Then the care will stretch thinner.",
     "response_c": "A review is something.",
@@ -11407,6 +12093,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Thank you. Many wait by the door.",
     "response_b": "Some have no neighbors left.",
     "response_c": "A pilot is a start.",
@@ -11475,6 +12165,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Data is what we asked for.",
     "response_b": "Both matter. The numbers favor the city.",
     "response_c": "A review is fair.",
@@ -11543,6 +12237,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "It cuts commutes and costs.",
     "response_b": "They are changing anyway.",
     "response_c": "Pilots are sensible.",
@@ -11611,6 +12309,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Thank you. That work cannot wait.",
     "response_b": "Some fade. Some are lost for other reasons.",
     "response_c": "A cost is a start.",
@@ -11679,6 +12381,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "They will learn proudly.",
     "response_b": "Not this one, apparently.",
     "response_c": "Training is the root.",
@@ -11747,6 +12453,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "People here will remember that.",
     "response_b": "Cities have plenty already.",
     "response_c": "Count carefully. We are few.",
@@ -11815,6 +12525,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Empty houses wait for them.",
     "response_b": "Empty villages cost more.",
     "response_c": "A pilot is a good start.",
@@ -11879,6 +12593,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The whole street will be grateful.",
     "response_b": "Our users are mostly pensioners.",
     "response_c": "Ask soon, please. It rains.",
@@ -11943,6 +12661,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A warm welcome works wonders.",
     "response_b": "Some do not know where to look.",
     "response_c": "A flyer is a start.",
@@ -12011,6 +12733,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That is all we ask.",
     "response_b": "Jobs, perhaps. Our lane, no.",
     "response_c": "A hearing is fair.",
@@ -12079,6 +12805,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Compensation would keep boats afloat.",
     "response_b": "The market is not out on the water.",
     "response_c": "Data helps. So does money.",
@@ -12147,6 +12877,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A fund would save many boats.",
     "response_b": "Our margins have no room to save.",
     "response_c": "Guarantees would help.",
@@ -12215,6 +12949,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That could bring them home.",
     "response_b": "A harbor without boats is a ghost.",
     "response_c": "The students would like that.",
@@ -12283,6 +13021,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "I will print the line items.",
     "response_b": "Our readers say otherwise.",
     "response_c": "I will, and I will wait.",
@@ -12351,6 +13093,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That is a quotable answer.",
     "response_b": "Strong words. Do you have evidence?",
     "response_c": "I will send you the clip.",
@@ -12419,6 +13165,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "I will hold you to that.",
     "response_b": "That is not how interviews work.",
     "response_c": "Five is enough.",
@@ -12487,6 +13237,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Our members will hear that.",
     "response_b": "So must families.",
     "response_c": "A meeting is something.",
@@ -12555,6 +13309,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That is the principle we want.",
     "response_b": "Flexibility for them, risk for us.",
     "response_c": "Study quickly, please.",
@@ -12623,6 +13381,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Thank you. People could get hurt.",
     "response_b": "Accidents cost more.",
     "response_c": "A letter is a start.",
@@ -12691,6 +13453,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Our milk and our kids need that road.",
     "response_b": "We do. Snow has its own plans.",
     "response_c": "Ask loudly.",
@@ -12759,6 +13525,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Help like that keeps barns open.",
     "response_b": "We have trimmed everything.",
     "response_c": "Please do.",
@@ -12827,6 +13597,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "He will be grateful. So will I.",
     "response_b": "Loans for a farm are a mountain.",
     "response_c": "Good. Tell us what you learn.",
@@ -12891,6 +13665,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would save us a lot.",
     "response_b": "We deserve to afford class.",
     "response_c": "That is a start.",
@@ -12955,6 +13733,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Every student will hear about this.",
     "response_b": "It always seems to be.",
     "response_c": "Please do.",
@@ -13019,6 +13801,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would change lives.",
     "response_b": "Our commute is two hours.",
     "response_c": "Good. Bring the details.",
@@ -13083,6 +13869,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Children will thank you.",
     "response_b": "We do. We cannot afford it all.",
     "response_c": "Please follow up.",
@@ -13147,6 +13937,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Children need real food.",
     "response_b": "Then ask the school to listen.",
     "response_c": "Thank you.",
@@ -13211,6 +14005,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would let all of us join.",
     "response_b": "Time is what we lack.",
     "response_c": "Please do.",
@@ -13279,6 +14077,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That is encouragement I needed.",
     "response_b": "Quality is the whole point.",
     "response_c": "A small piece, perhaps.",
@@ -13347,6 +14149,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A supply keeps the trade alive.",
     "response_b": "Our wood is the heart of it.",
     "response_c": "They know the forest.",
@@ -13415,6 +14221,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Bring good shoes. It is dusty.",
     "response_b": "Staff do not vote.",
     "response_c": "Try soon, please.",
@@ -13479,6 +14289,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "We would sleep easier.",
     "response_b": "A life costs more.",
     "response_c": "Please do.",
@@ -13543,6 +14357,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A small fix that matters.",
     "response_b": "In this decade?",
     "response_c": "Thank you.",
@@ -13607,6 +14425,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would be fair.",
     "response_b": "Not on my line.",
     "response_c": "Please publish them.",
@@ -13671,6 +14493,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Thank you. The roof is old and dear.",
     "response_b": "Our funds are our community.",
     "response_c": "They know the grants.",
@@ -13735,6 +14561,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A little help goes far.",
     "response_b": "A shrine is not a ticket booth.",
     "response_c": "Please do.",
@@ -13799,6 +14629,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That could keep the festival alive.",
     "response_b": "Then it is not the town's festival.",
     "response_c": "A fine start.",
@@ -13863,6 +14697,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "I will quote that.",
     "response_b": "Rules that keep changing are hard to follow.",
     "response_c": "An explainer would help.",
@@ -13927,6 +14765,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Support like that keeps us here.",
     "response_b": "Then Yezo needs money in the lab.",
     "response_c": "Ties would help.",
@@ -13991,6 +14833,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A good story brings investment.",
     "response_b": "Power is local. So is the work.",
     "response_c": "A study can help.",
@@ -14059,6 +14905,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Mayors across the region will thank you.",
     "response_b": "Merging is not a roof.",
     "response_c": "Please do.",
@@ -14127,6 +14977,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A bonus could turn the tide.",
     "response_b": "With what money?",
     "response_c": "Please do.",
@@ -14195,6 +15049,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would be a real change.",
     "response_b": "The prefecture is far away.",
     "response_c": "A fair step.",
@@ -14259,6 +15117,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That could save many of us.",
     "response_b": "Landlords are not hungry.",
     "response_c": "Please try.",
@@ -14323,6 +15185,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would be a lifeline.",
     "response_b": "We try. It is not easy.",
     "response_c": "A visit helps.",
@@ -14387,6 +15253,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would be a quiet miracle.",
     "response_b": "Not with heavy bags.",
     "response_c": "Please do.",
@@ -14455,6 +15325,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "They will love that.",
     "response_b": "Volunteers are the party.",
     "response_c": "A note is nice.",
@@ -14523,6 +15397,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would energize the base.",
     "response_b": "Leaders should listen.",
     "response_c": "Please do.",
@@ -14591,6 +15469,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Then my volunteers will survive.",
     "response_b": "We are tired of fundraising.",
     "response_c": "Please do.",
@@ -14655,6 +15537,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A wise approach. Loyalty grows from respect.",
     "response_b": "Ignoring talent is a mistake.",
     "response_c": "Watching costs nothing.",
@@ -14719,6 +15605,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Generosity is remembered.",
     "response_b": "The party has other ideas.",
     "response_c": "Do not take too long.",
@@ -14787,6 +15677,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That is how we keep trust.",
     "response_b": "Quick cuts leave scars.",
     "response_c": "Patience, then.",
@@ -14863,6 +15757,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A student on every float. We could try that.",
     "response_b": "Hired hands do not carry the shrine.",
     "response_c": "One day? That is a parade, not a festival.",
@@ -14939,6 +15837,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "And if a float tips over?",
     "response_b": "Safety. Yes, that is how the office will read it.",
     "response_c": "The stalls are already struggling.",
@@ -15015,6 +15917,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A tarp is not a roof.",
     "response_b": "Tell that to a thousand years.",
     "response_c": "A grant, a listing, and a carpenter before he retires.",
@@ -15079,6 +15985,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The weekend is when the town visits.",
     "response_b": "A fence is not a welcome.",
     "response_c": "They will not learn before the stones wear away.",
@@ -15151,6 +16061,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A registry. We keep losing the owners on paper.",
     "response_b": "Demolition costs more than the land.",
     "response_c": "Half the owners cannot even be found.",
@@ -15219,6 +16133,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The festival is the reason people stay.",
     "response_b": "Shared points. The fee has to be printed on the bill.",
     "response_c": "Once a week and the smell comes in August.",
@@ -15283,6 +16201,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Some of us are ninety.",
     "response_b": "Then the road is a local matter too, and we are alone with it.",
     "response_c": "A pool. Forty houses cannot bid alone.",
@@ -15359,6 +16281,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Two hours on a bus, in snow.",
     "response_b": "Hope does not heat a classroom.",
     "response_c": "Then who is left to elect you?",
@@ -15415,6 +16341,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fencing and a phone number that someone answers.",
     "response_b": "Without a license someone will get hurt.",
     "response_c": "The apples are not ripe earlier.",
@@ -15471,6 +16401,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That is a year of work in the dirt.",
     "response_b": "Beds for workers, and someone to look after them.",
     "response_c": "Higher prices will not bring pickers.",
@@ -15539,6 +16473,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Then who will be allowed to shoot?",
     "response_b": "They will take an hour to arrive.",
     "response_c": "Training, pay and a radio. That is how it should be.",
@@ -15599,6 +16537,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That is a tax on the people doing the work.",
     "response_b": "We have enough cards.",
     "response_c": "Then there will be no volunteers.",
@@ -15663,6 +16605,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Mid-week stays across the district. That would help every inn.",
     "response_b": "Guests will stay home.",
     "response_c": "Then the cooks lose their jobs.",
@@ -15731,6 +16677,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Refill from where?",
     "response_b": "A plan on paper, with every inn signing it.",
     "response_c": "The market does not own the spring.",
@@ -15811,6 +16761,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nobody can keep powder secret.",
     "response_b": "And the village gets what?",
     "response_c": "A board with the villages at the table. Good.",
@@ -15875,6 +16829,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "I already do, and it is not enough.",
     "response_b": "Ninety minutes each way in snow?",
     "response_c": "The market has been very good to me, not to them.",
@@ -15939,6 +16897,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A fee that actually reaches the mountain. Yes.",
     "response_b": "Closing trails closes the hut.",
     "response_c": "Signs do not carry a stretcher.",
@@ -16003,6 +16965,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Then who keeps the trail open?",
     "response_b": "A certificate and a mentor. That is how it starts.",
     "response_c": "Experience needs a first day.",
@@ -16067,6 +17033,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fines drive them away.",
     "response_b": "They have not in twenty years.",
     "response_c": "Peak-season rangers. It is the only way.",
@@ -16131,6 +17101,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Autumn is already crowded.",
     "response_b": "A secret does not pay the ranger.",
     "response_c": "Parking is not the problem.",
@@ -16203,6 +17177,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "One window, one form. That would save the festival.",
     "response_b": "The rules were written for factories.",
     "response_c": "We are the festival.",
@@ -16271,6 +17249,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "It is when it is on our road.",
     "response_b": "Cups with a deposit. People bring them back.",
     "response_c": "Takeout is half our sales.",
@@ -16335,6 +17317,10 @@
         "delta": 2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "They already pay taxes.",
     "response_b": "Good luck getting them up the valley.",
     "response_c": "Per storm and a reserve. That is fair to both.",
@@ -16403,6 +17389,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "He is tired.",
     "response_b": "A machine cannot read an icy road.",
     "response_c": "Then people die.",
@@ -16467,6 +17457,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Cameras and a phone alert. Finally.",
     "response_b": "We have enough bells.",
     "response_c": "That is the shortest way home.",
@@ -16539,6 +17533,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "It is already a ruin.",
     "response_b": "A trust. We have forty volunteers already.",
     "response_c": "Who would buy it?",
@@ -16607,6 +17605,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Then I will take my taxes elsewhere.",
     "response_b": "That is what everybody says.",
     "response_c": "Desks in empty houses. I would rent one tomorrow.",
@@ -16675,6 +17677,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "They will not know our road.",
     "response_b": "They will not stay at our inns.",
     "response_c": "They have not so far.",
@@ -16739,6 +17745,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A crew that moves from farm to farm. That would do it.",
     "response_b": "Higher prices will not bring hands.",
     "response_c": "The young have jobs.",
@@ -16803,6 +17813,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Private for you, not for me.",
     "response_b": "A registry we can all read. Fair.",
     "response_c": "Stay and be squeezed?",
@@ -16867,6 +17881,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Diversify into what?",
     "response_b": "That helps me and hurts the shoppers.",
     "response_c": "A fair minimum. We can build a year on that.",
@@ -16935,6 +17953,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Shoppers will not choose them.",
     "response_b": "Disposal is paying to lose.",
     "response_c": "That is the waste I am talking about.",
@@ -16999,6 +18021,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "One page, not forty. That would save a week a month.",
     "response_b": "Forty pages, four people.",
     "response_c": "Merge with whom?",
@@ -17063,6 +18089,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That is the opposite of selling.",
     "response_b": "A shared label. Yes.",
     "response_c": "We cannot afford the plane tickets.",
@@ -17127,6 +18157,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nature already did decide.",
     "response_b": "Whose salmon will that be?",
     "response_c": "A tank and a number we can read.",
@@ -17191,6 +18225,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Ban? The sea is wide.",
     "response_b": "Inland? We are fishers.",
     "response_c": "With what money?",
@@ -17259,6 +18297,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A fair allowance. We can tell the farmers.",
     "response_b": "The lowest bid has never tasted a daikon.",
     "response_c": "A ban would empty the pantry.",
@@ -17327,6 +18369,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Indoors is no festival.",
     "response_b": "One page, a morning of training. That is doable.",
     "response_c": "The stall is the harvest festival.",
@@ -17391,6 +18437,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "No prize for fifty scarecrows? They will be sad.",
     "response_b": "The insurance does not cover that.",
     "response_c": "Sponsored scarecrows. Everyone has a shop.",
@@ -17467,6 +18517,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Hired hands do not know the song.",
     "response_b": "A shorter route is a shorter festival.",
     "response_c": "Every second year is no festival at all.",
@@ -17531,6 +18585,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A tier by size. That is how it should have been.",
     "response_b": "More fees, fewer vendors.",
     "response_c": "The market is the town.",
@@ -17599,6 +18657,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Residents will complain, and rightly.",
     "response_b": "Shuttle and permits. Residents will accept that.",
     "response_c": "More parking, more cars.",
@@ -17663,6 +18725,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The family has their own lives.",
     "response_b": "Chance never planted a row.",
     "response_c": "Someone who wants the land, and a pension to fund it.",
@@ -17727,6 +18793,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Everyone says that.",
     "response_b": "I came here with a spade.",
     "response_c": "That is what they said to my father.",
@@ -17787,6 +18857,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A grant and a sponsor. That is a plan.",
     "response_b": "Cancel? We have been carving since before you were born.",
     "response_c": "Volunteers do not carry chisels.",
@@ -17855,6 +18929,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Another fee.",
     "response_b": "A briefing and a kit. That is respectful.",
     "response_c": "Knowing the cold did not save the last carver.",
@@ -17911,6 +18989,10 @@
         "delta": 1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "No hauling, no festival.",
     "response_b": "Donations tapped out in November.",
     "response_c": "A fund. The festival cannot stand the haul alone.",
@@ -17983,6 +19065,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "We need the money.",
     "response_b": "They would block the view.",
     "response_c": "Then it is not our festival.",
@@ -18043,6 +19129,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Neighbors, paid properly. That is what the village needs.",
     "response_b": "Contractors do not come to the end of the road.",
     "response_c": "Stop shoveling and the door is stuck for a week.",
@@ -18103,6 +19193,10 @@
         "delta": -3
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The market never visited a village in January.",
     "response_b": "A simple form. They cannot cope with a complex one.",
     "response_c": "Across the board costs us all.",
@@ -18171,6 +19265,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Someone will go through.",
     "response_b": "Prices will not stop them.",
     "response_c": "A guide, a number, a flag. That is the rule I want.",
@@ -18239,6 +19337,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Then I am out of business.",
     "response_b": "No rentals, no ice fishing.",
     "response_c": "We already cut to the bone.",
@@ -18303,6 +19405,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A plow for the route. Everyone gets home.",
     "response_b": "Cut it and the valley shrinks.",
     "response_c": "Fares will empty the bus.",
@@ -18379,6 +19485,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Half of them cannot drive.",
     "response_b": "A guarantee. The school bus needs it too.",
     "response_c": "Cut and they leave.",
@@ -18443,6 +19553,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "An hour and a half each way, unpaid?",
     "response_b": "Then local young people lose the job.",
     "response_c": "Housing built together. That is fair.",
@@ -18503,6 +19617,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Everyone cheaper, nobody paid.",
     "response_b": "Then the children stop.",
     "response_c": "Places are not the problem. The price is.",
@@ -18567,6 +19685,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A loan to retire the boiler. That pays back in six winters.",
     "response_b": "The guests will go next door.",
     "response_c": "The grid cannot take it.",
@@ -18627,6 +19749,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The bills do not wait.",
     "response_b": "An audit would end the argument.",
     "response_c": "Staff leave.",
@@ -18695,6 +19821,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Cancel and I close.",
     "response_b": "Summer is already full.",
     "response_c": "A season that does not depend on one month of ice.",
@@ -18763,6 +19893,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Close it and the coast empties.",
     "response_b": "They will not cope.",
     "response_c": "Shops cannot carry that.",
@@ -18831,6 +19965,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A date and a number. That I can use.",
     "response_b": "Easy to say from behind a desk.",
     "response_c": "Three times I heard that, and my prices still rose.",
@@ -18903,6 +20041,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Nobody has offered to do that before.",
     "response_b": "Without the bell it is just a shop front.",
     "response_c": "Chains bring jobs. They do not ring a bell.",
@@ -18975,6 +20117,15 @@
         "delta": -2
       }
     ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 2
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "You would really ride it? Fine, tomorrow.",
     "response_b": "The bus company's decision is exactly the problem.",
     "response_c": "A car I cannot afford is not an answer.",
@@ -19043,6 +20194,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A roof. Such a small thing, and so rare.",
     "response_b": "Winter does not wait for anyone.",
     "response_c": "Wet shoulders do not feel like waiting.",
@@ -19111,6 +20266,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "At least someone noticed the night shift.",
     "response_b": "Tell the police that at 2 a.m., then.",
     "response_c": "Tell the police that at 2 a.m., then.",
@@ -19183,6 +20342,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A scheme? Tell me where to sign.",
     "response_b": "Tenants lose that argument every time.",
     "response_c": "Twenty years on this corner. I am not coming or going.",
@@ -19255,6 +20418,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Three blocks. I can knock on doors for that.",
     "response_b": "A private matter? It is the street we all walk.",
     "response_c": "They have not cleaned this street since spring.",
@@ -19323,6 +20490,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A budget line. You speak our language.",
     "response_b": "Look at the empty posts where the swings were.",
     "response_c": "Better equipped for what? Rust?",
@@ -19391,6 +20562,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A pilot I can test. Good.",
     "response_b": "The traffic police send me to the ward.",
     "response_c": "On foot, with forty parcels?",
@@ -19463,6 +20638,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A photo and a week. I can wait that long.",
     "response_b": "The prefecture sends me back to you.",
     "response_c": "Nobody owns a pothole until it breaks a wheel.",
@@ -19535,6 +20714,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "If they all come, they'll listen.",
     "response_b": "And the stalls are the bills it will not have left.",
     "response_c": "Dying because of leases like this one.",
@@ -19603,6 +20786,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A paid apprentice. Why did no one think of it?",
     "response_b": "There is nobody left to choose it.",
     "response_c": "The past is what we sell here, every morning at five.",
@@ -19671,6 +20858,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A hall would change everything.",
     "response_b": "Responsibility is easy when there is a lunch to buy.",
     "response_c": "Cheap, if you can find a stove.",
@@ -19743,6 +20934,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Supplement. I will look it up tonight.",
     "response_b": "And the price of not sleeping.",
     "response_c": "Three jobs is not living.",
@@ -19815,6 +21010,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Together we might survive.",
     "response_b": "Online flowers do not come with a smile.",
     "response_c": "Then I will close and it will be the end of the street's color.",
@@ -19883,6 +21082,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A seat. That is more than we hoped for.",
     "response_b": "Fine in daylight, for people who are not walking at night.",
     "response_c": "Then walk it at dusk and say that again.",
@@ -19951,6 +21154,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Equal rules. That is all anyone wants.",
     "response_b": "The future does not pay the car loan.",
     "response_c": "Apps do not pick up an old woman at the hospital.",
@@ -20023,6 +21230,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "You would call him with me? That helps.",
     "response_b": "Passengers cannot find a rank they cannot see.",
     "response_c": "Then tell them to find a cab by magic.",
@@ -20095,6 +21306,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A little bus. My knee would thank you.",
     "response_b": "Walk? With this knee?",
     "response_c": "You should try the hill with a shopping cart.",
@@ -20163,6 +21378,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Another group. That is something.",
     "response_b": "Limited, and she is on the list behind forty names.",
     "response_c": "Managing is what we have been doing.",
@@ -20231,6 +21450,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Come back and I will keep the second chair warm.",
     "response_b": "Complicated is what they say about everything.",
     "response_c": "I was hoping for an answer, not homework.",
@@ -20303,6 +21526,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Succession support. I never heard of it.",
     "response_b": "You are talking about forty years of my father's life.",
     "response_c": "Then I will tell my son you said so.",
@@ -20375,6 +21602,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A referral line. I would staff it myself.",
     "response_b": "The elderly are my customers and my neighbors.",
     "response_c": "Nobody plans ahead for a fall.",
@@ -20443,6 +21674,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "An explainer. I will hand them out.",
     "response_b": "Then someone there should explain it to my regulars.",
     "response_c": "Their doctor does not know the prices either.",
@@ -20511,6 +21746,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Published rules. Even I would follow those.",
     "response_b": "Progress that starts at seven and ruins sleep.",
     "response_c": "Earplugs for a whole ward? Try it at seven.",
@@ -20583,6 +21822,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A share. That is practical.",
     "response_b": "The people sleeping on sofas will not agree.",
     "response_c": "Tell that to the young couples next door.",
@@ -20655,6 +21898,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Relief. Even a small one would matter.",
     "response_b": "Not all roads cost me half a year's profit.",
     "response_c": "Just business? It was six months of empty tables.",
@@ -20723,6 +21970,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A stamp card! They love those.",
     "response_b": "Up to the tourists? Then my empty tables are up to them, too.",
     "response_c": "They are my only market in winter.",
@@ -20791,6 +22042,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A standard. Finally, something written down.",
     "response_b": "The hospital's decision? Then whose, when we are three short?",
     "response_c": "Tell that to the patient at 3 a.m.",
@@ -20863,6 +22118,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Extended hours. That would keep me working.",
     "response_b": "A choice made for a family I cannot see.",
     "response_c": "The choice is between pay and my child.",
@@ -20935,6 +22194,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A shuttle. I would ride it.",
     "response_b": "It is not one old man, it is the whole valley.",
     "response_c": "Then I will limp to the next town on my own.",
@@ -21003,6 +22266,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A phone line. I can use a phone.",
     "response_b": "Easier for whom?",
     "response_c": "I have never held a screen like that.",
@@ -21071,6 +22338,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Wait times in public. Maybe it will change.",
     "response_b": "With a feverish child?",
     "response_c": "Normal? Not five hours with a fever.",
@@ -21143,6 +22414,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Subsidy. Nobody told us.",
     "response_b": "A toddler does not read price tags.",
     "response_c": "Budget? We already count every coin.",
@@ -21215,6 +22490,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A grant. That could replace the scanner.",
     "response_b": "Not when the scan is blurred and the patient scared.",
     "response_c": "Merge? Then my patients travel to the city for a scan.",
@@ -21283,6 +22562,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A trial here. I will keep notes.",
     "response_b": "It protects the files, not the patients.",
     "response_c": "Protects whom exactly?",
@@ -21351,6 +22634,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A standard would help. Thank you.",
     "response_b": "Nobody chooses to be alone at eighty.",
     "response_c": "Choose? Between what?",
@@ -21423,6 +22710,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A clear list. Even that would help.",
     "response_b": "And families cover the rest, alone.",
     "response_c": "Then they pay or they go without.",
@@ -21495,6 +22786,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A visiting nurse. That is progress.",
     "response_b": "A clinic costs less than a funeral.",
     "response_c": "Then the village can take its chances.",
@@ -21563,6 +22858,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Housing and a mentor. That is realistic.",
     "response_b": "It has for years, and look at it.",
     "response_c": "A village without a doctor is not a village.",
@@ -21631,6 +22930,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A line between the two. Just one.",
     "response_b": "People fall in the gap between them.",
     "response_c": "Their own records? They can barely keep their own keys.",
@@ -21703,6 +23006,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Winter beds, and you will see it yourself. Thank you.",
     "response_b": "Not the city's job? Then whose, in January?",
     "response_c": "Choices? He had a job and a flat until spring.",
@@ -21775,6 +23082,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A review. People will want to see it.",
     "response_b": "Tell the family in the east that.",
     "response_c": "Accept the risk? It is ten minutes of someone's life.",
@@ -21843,6 +23154,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The numbers. We have been asking.",
     "response_b": "And patients wait in the corridors.",
     "response_c": "Then the beds will be full as usual.",
@@ -21911,6 +23226,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Screening! Early care saves more.",
     "response_b": "Ask someone with a toothache.",
     "response_c": "Neglect? They cannot afford the chair.",
@@ -21983,6 +23302,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A paid place. I will post the notice today.",
     "response_b": "Then the market has left me alone with a drill.",
     "response_c": "Close? Then who treats the farmers' teeth?",
@@ -22055,6 +23378,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A review is a start.",
     "response_b": "And bills are what they are.",
     "response_c": "Half the pay for the same floor.",
@@ -22123,6 +23450,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "An audit. We will help.",
     "response_b": "And infections cost more.",
     "response_c": "Gear is not a luxury.",
@@ -22191,6 +23522,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A plan. And a ride for the hard weeks.",
     "response_b": "Good reasons? Tell me where I give birth.",
     "response_c": "Plans do not change a closed ward.",
@@ -22263,6 +23598,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Praise helps. Some bosses need it.",
     "response_b": "A private deal is how whispers start.",
     "response_c": "Whispers are not leave.",
@@ -22335,6 +23674,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A funded repair. Not another promise.",
     "response_b": "Time? I have been waiting at the bottom for months.",
     "response_c": "Meeting the code is not meeting me.",
@@ -22403,6 +23746,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A volunteer list. I know a few names.",
     "response_b": "Why should I be alone, then?",
     "response_c": "Alone is a choice someone made for me.",
@@ -22471,6 +23818,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A counter. We would send everyone there.",
     "response_b": "And medicine questions for no one?",
     "response_c": "Doctors have no time, so I do.",
@@ -22543,6 +23894,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Early warning. That is what we need.",
     "response_b": "Complicated? Ask the people leaving with empty hands.",
     "response_c": "Then tell the flu to book ahead.",
@@ -22615,6 +23970,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Publish it. We deserve to know.",
     "response_b": "Then you close twenty years of my life with it.",
     "response_c": "Closing is the plan, then.",
@@ -22683,6 +24042,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A visitor list. I would write the first name.",
     "response_b": "My wife has a home, here, with me.",
     "response_c": "The waiting list is two years long.",
@@ -22751,6 +24114,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A ceiling. Thank you for saying the number.",
     "response_b": "Tell that to child number thirty-eight.",
     "response_c": "Manage? I am managing. That is the problem.",
@@ -22823,6 +24190,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Support at the office. A relief.",
     "response_b": "They do. And who writes them, at midnight?",
     "response_c": "Vocations do not pay for glue sticks.",
@@ -22895,6 +24266,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A date. Parents will hold us to it.",
     "response_b": "This one is older than I am.",
     "response_c": "Resilient? They should not have to be, in a gym that leaks.",
@@ -22963,6 +24338,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Naming it is half the battle.",
     "response_b": "And teachers are what gets squeezed.",
     "response_c": "Do you hear what you are saying?",
@@ -23031,6 +24410,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A sibling discount. That helps a lot.",
     "response_b": "Fair does not fill three lunchboxes.",
     "response_c": "Pack lunches? Three of them, before my shift?",
@@ -23103,6 +24486,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Contacts. Finally, someone to call.",
     "response_b": "It is not a private matter when a child cries.",
     "response_c": "Toughen up? She has stopped eating.",
@@ -23175,6 +24562,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Free study would empty my classroom, and that would be fine.",
     "response_b": "Parents are doing their best, and cannot keep up.",
     "response_c": "Then children will fall behind, with you watching.",
@@ -23243,6 +24634,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A review. Maybe the pressure will ease.",
     "response_b": "They build ulcers.",
     "response_c": "And character is not on the score sheet.",
@@ -23311,6 +24706,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Breakfast and a nurse. Everything follows.",
     "response_b": "Tell that to the child with the growling stomach.",
     "response_c": "A lesson? Try learning on an empty stomach.",
@@ -23383,6 +24782,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A pathway. Please.",
     "response_b": "Tell that to the child at my door.",
     "response_c": "Alone? They come to me because they cannot.",
@@ -23455,6 +24858,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A panel. We will prepare for it.",
     "response_b": "Adults who forgot what it is like to wear them.",
     "response_c": "Then you will hear from us in the corridor.",
@@ -23523,6 +24930,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A real room. We could rehearse.",
     "response_b": "Not a priority? We are asking for one room.",
     "response_c": "Fundraise, with a cardboard box?",
@@ -23591,6 +25002,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Fewer tasks. We would stay.",
     "response_b": "Traditions need hands.",
     "response_c": "Hands we do not have.",
@@ -23663,6 +25078,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A guard by next term. That is something.",
     "response_b": "Whose matter? A child nearly got hit on it.",
     "response_c": "Parents have jobs, too.",
@@ -23735,6 +25154,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A week. I will help.",
     "response_b": "It was taught to us, the hard way.",
     "response_c": "Then it will not be taught at all.",
@@ -23803,6 +25226,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Elders as teachers. That would fill the hall.",
     "response_b": "And the old stories for no one?",
     "response_c": "Then the stories will go with the elders.",
@@ -23871,6 +25298,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A path. Even a slow one.",
     "response_b": "Mine is renewed yearly, and so is my worry.",
     "response_c": "Contracts end, but rent does not.",
@@ -23943,6 +25374,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Recording would change the culture.",
     "response_b": "Then call it by its real name.",
     "response_c": "Voluntary? Nobody says no and keeps the post.",
@@ -24015,6 +25450,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A path. I would help paint the lines.",
     "response_b": "Costly? So is a child hit on a dark road.",
     "response_c": "Not in winter, with children.",
@@ -24083,6 +25522,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A plan. At last.",
     "response_b": "Old buses with broken heaters, yes.",
     "response_c": "Manage? They shiver in their coats.",
@@ -24151,6 +25594,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A drive. We have shelves waiting.",
     "response_b": "Optional? Ask the children who borrow here.",
     "response_c": "And phones do not smell like books.",
@@ -24223,6 +25670,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Volunteers! We have a list.",
     "response_b": "Some families need a quiet room.",
     "response_c": "Then the room stays shut.",
@@ -24295,6 +25746,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A review would shine a light.",
     "response_b": "Funds are limited? They are limited for these children first.",
     "response_c": "Costly? Compared to what?",
@@ -24363,6 +25818,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A plan to hand parents. Thank you.",
     "response_b": "Social services send them back to us.",
     "response_c": "Look after them? They are twenty and nobody is hiring.",
@@ -24431,6 +25890,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A published list. We could be held to it.",
     "response_b": "They are what we make of them.",
     "response_c": "Then the arguments will go on forever.",
@@ -24503,6 +25966,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A real chance. That would change the mood.",
     "response_b": "Balance them against a village that disappears.",
     "response_c": "Then the village will empty, and you will have saved money.",
@@ -24575,6 +26042,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A flat grant. We could plan.",
     "response_b": "Numbers? We are down to eleven, and each one counts.",
     "response_c": "Then we close and you save a grant.",
@@ -24643,6 +26114,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A helper would change everything.",
     "response_b": "Parents cannot be in two places.",
     "response_c": "Then we will have to say no, all of us.",
@@ -24711,6 +26186,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A floor. It would change my year.",
     "response_b": "Adapt to what? The market doubled my fertilizer.",
     "response_c": "Then I will plant nothing at all.",
@@ -24783,6 +26262,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A matching service. We could try that.",
     "response_b": "And when the family is one old man?",
     "response_c": "Then the farm will go to a developer.",
@@ -24855,6 +26338,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A review with figures. Thank you.",
     "response_b": "Then the market is not on my side.",
     "response_c": "Larger? Then I would owe even more.",
@@ -24923,6 +26410,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A shared schedule! Nobody offered it before.",
     "response_b": "A cow chooses nothing, and neither do I.",
     "response_c": "Hire with what? Strangers will not rise at five.",
@@ -24991,6 +26482,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A survey. Everyone argues without one.",
     "response_b": "The sea is not the problem; the price of fuel is.",
     "response_c": "Then I will stay in the harbor.",
@@ -25063,6 +26558,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Labels. People will pay for local.",
     "response_b": "Not when it undercuts my family.",
     "response_c": "Then sell the sea to the highest bidder.",
@@ -25135,6 +26634,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "One inspection. That is plenty.",
     "response_b": "They also take my mornings.",
     "response_c": "A risk? Look at my jars before you say that.",
@@ -25203,6 +26706,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A shared shopfront. I would join.",
     "response_b": "And small stalls vanish quietly.",
     "response_c": "Then my pickles will be a family secret.",
@@ -25271,6 +26778,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Quickly. That is the key word.",
     "response_b": "A risk with no safety net is called a gamble.",
     "response_c": "Then I will gamble on the next frost.",
@@ -25343,6 +26854,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Housing is the missing piece.",
     "response_b": "Rules are why my trees go unpicked.",
     "response_c": "Then pick the apples yourself.",
@@ -25415,6 +26930,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A help desk. We would run it.",
     "response_b": "They exist to keep farmers away.",
     "response_c": "Learn them? I have, and the next one changes.",
@@ -25483,6 +27002,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A weekend slot. We could fill it.",
     "response_b": "Supermarkets know how to buy cheap.",
     "response_c": "Then the co-op shop can go.",
@@ -25551,6 +27074,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Five years. I could plan around that.",
     "response_b": "Then who is it for?",
     "response_c": "Then I will plant what I like.",
@@ -25623,6 +27150,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A farm-stay. We have a spare room.",
     "response_b": "A village is more than its age.",
     "response_c": "Then the village will go quietly.",
@@ -25695,6 +27226,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A shared shed. We could split the cost.",
     "response_b": "And so is hunger.",
     "response_c": "Then the beach will stay empty.",
@@ -25763,6 +27298,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "School lunch! The children would eat it.",
     "response_b": "Then tastes will starve a trade.",
     "response_c": "Then I will boil it for soup.",
@@ -25831,6 +27370,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A team. I will keep the phone number.",
     "response_b": "Bears are, and they do not wait.",
     "response_c": "Move? Where, and with what?",
@@ -25903,6 +27446,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A shared booking site. I will list myself.",
     "response_b": "They never are, and I am here every day.",
     "response_c": "Then they can look at my sheep for free.",
@@ -25975,6 +27522,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A zone. We could sign.",
     "response_b": "And customers belong where they are served.",
     "response_c": "Then the stand will be moved to the back.",
@@ -26043,6 +27594,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A shared terminal. Good thinking.",
     "response_b": "Private? Customers will not wait while I sort it out.",
     "response_c": "Then I will lose every customer without cash.",
@@ -26111,6 +27666,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A mentor. That would open doors.",
     "response_b": "Landholders lease to the people they know.",
     "response_c": "Then I will rent a roof and a hope.",
@@ -26183,6 +27742,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A guarantee. That might do it.",
     "response_b": "Cautious banks mean no new farmers.",
     "response_c": "Then farms will be passed around among the old.",
@@ -26255,6 +27818,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A quality mark. People trust a mark.",
     "response_b": "Not when quality is what we sell.",
     "response_c": "Then I will sell cheap and be done.",
@@ -26323,6 +27890,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A fair standard. I can meet that.",
     "response_b": "Fair to the giants, perhaps.",
     "response_c": "Close? A town without small makers is just a shelf.",
@@ -26391,6 +27962,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A shared store would transform the stalls.",
     "response_b": "A seller with fresh fish and no ice.",
     "response_c": "Cost of trade? Tell that to the stalls that throw it out.",
@@ -26463,6 +28038,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A monthly meeting. I will bring the tea.",
     "response_b": "Without a van or a free day?",
     "response_c": "Then middlemen will keep the margin.",
@@ -26535,6 +28114,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A joint stand. We could share the cost.",
     "response_b": "A hundred years of rice cannot change by Friday.",
     "response_c": "Then I will pour the sake into the drain.",
@@ -26603,6 +28186,10 @@
         "delta": -2
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "A review. That would be fair.",
     "response_b": "Uniform, and ruinous for a brewery my size.",
     "response_c": "Then the small brewers will fold.",
@@ -26667,6 +28254,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "That would keep my lights on.",
     "response_b": "The system pays itself well.",
     "response_c": "They never answer me. Maybe you.",
@@ -26731,6 +28322,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "Then I could hire two.",
     "response_b": "I protect them too. I pay them.",
     "response_c": "A sheet is something.",
@@ -26795,6 +28390,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "My husband rests there. Thank you.",
     "response_b": "It is our history, not just religion.",
     "response_c": "The priest will be glad of a call.",
@@ -26859,6 +28458,10 @@
         "delta": -1
       }
     ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
     "response_a": "The whole town will come.",
     "response_b": "It is a town event as much as anything.",
     "response_c": "Better than nothing.",

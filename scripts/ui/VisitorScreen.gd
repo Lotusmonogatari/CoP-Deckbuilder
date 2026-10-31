@@ -167,6 +167,19 @@ func _show_visitor() -> void:
 		# "Send a staff member" cannot be picked with no staff hired.
 		choice.disabled = StaffDelegation.blocked(choice.text,
 			DataDB.rules.get("staff_delegation_phrases", []), GameState.staff_hired)
+	# What a choice costs on the spot (hours, Funds, an item), 2026-10-31: shown
+	# on the button, and the button greyed out with the reason when it cannot
+	# be paid.
+	for pair: Array in [[_choice_a, "a"], [_choice_b, "b"], [_choice_c, "c"], [_choice_d, "d"]]:
+		var button: Button = pair[0]
+		var commitments := Commitments.of(question, "commitment_" + str(pair[1]))
+		if commitments.is_empty():
+			continue
+		button.text = GameState.commitment_label(button.text, commitments)
+		var why := GameState.commitment_refusal(commitments)
+		if not why.is_empty():
+			button.text += "\n" + why
+			button.disabled = true
 
 	_continue_button.disabled = true
 	_continue_button.text = Text.say("office_hours.continue")
@@ -180,6 +193,7 @@ func _on_choice(letter: String) -> void:
 		choice.disabled = true
 	_continue_button.disabled = false
 
+	GameState.pay_commitments(Commitments.of(engine.current_question(), "commitment_" + letter.to_lower()))
 	var result := engine.answer(letter)
 	var correct := bool(result.get("correct", false))
 	_visitor_presenter.react(correct)

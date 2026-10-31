@@ -6081,5 +6081,61 @@
     "english": "You decline the file. The network carries it to the next office down the corridor.",
     "placeholders": null,
     "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "commit.label",
+    "where": "A choice with what it costs on the spot",
+    "english": "{text} ({cost})",
+    "placeholders": "text, cost",
+    "notes": "2026-10-31 commitments phase 1 (Cameron)"
+  },
+  {
+    "key": "commit.hours",
+    "where": "A choice's cost in hours",
+    "english": "{count} hours",
+    "placeholders": "count",
+    "notes": "2026-10-31 commitments phase 1 (Cameron)"
+  },
+  {
+    "key": "commit.hours.one",
+    "where": "A choice's cost in hours, exactly one",
+    "english": "{count} hour",
+    "placeholders": "count",
+    "notes": "2026-10-31 commitments phase 1 (Cameron)"
+  },
+  {
+    "key": "commit.funds",
+    "where": "A choice's cost in Funds",
+    "english": "{yen_amount}円",
+    "placeholders": "yen_amount",
+    "notes": "2026-10-31 commitments phase 1 (Cameron)"
+  },
+  {
+    "key": "commit.item",
+    "where": "A choice's cost: an item handed over",
+    "english": "{item}",
+    "placeholders": "item",
+    "notes": "2026-10-31 commitments phase 1 (Cameron)"
+  },
+  {
+    "key": "commit.refuse_item",
+    "where": "A greyed-out choice: the player does not hold the item it needs",
+    "english": "Needs: {item}",
+    "placeholders": "item",
+    "notes": "2026-10-31 commitments phase 1 (Cameron)"
+  },
+  {
+    "key": "commit.item_given",
+    "where": "Event result: an item the choice handed over",
+    "english": "Gave: {item}",
+    "placeholders": "item",
+    "notes": "2026-10-31 commitments phase 1 (Cameron)"
+  },
+  {
+    "key": "record.cause_commitment",
+    "where": "Your Record: Funds spent on what a choice committed to",
+    "english": "a commitment you made",
+    "placeholders": null,
+    "notes": "2026-10-31 commitments phase 1 (Cameron)"
   }
 ]

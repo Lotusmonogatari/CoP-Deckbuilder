@@ -225,7 +225,7 @@ A transition plays before a stage that is **not first in its level**, shows one 
 
 ### 9.1 Events (Events and Event Choices tabs)
 
-An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV62**.
+An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV62**; shop items **SH33**.
 
 | Events column | Meaning |
 |---|---|
@@ -243,6 +243,7 @@ An event is a screen of flavor text with two to four fixed choices; each choice 
 | Funds Cost, Funds Δ, XP Δ, Constituency / Reputation / Party support Δ, District / National Awareness Δ | Ranges (`min-max`, a bare number is both). Never put a penalty in XP. |
 | **Rewards** | Organization standing in the usual format (`BO06 +1; BO20 -1`) |
 | **Unlocks Level** | Reveals a gated level (the event is one way in) |
+| **Commitment** | What the choice costs on the spot (2026-10-31): `Hours N`, `Funds N`, `Item SHxx`, several separated by semicolons. The choice shows its cost, greys out ("Insufficient Work Hours", "Not enough Funds", "Needs: ...") when it cannot be paid, and pays when taken. Visitor Questions have the same per choice (Commitment A-D). Keep at least one choice per event or question that costs nothing (the export errors otherwise). Regional goods for gifts: SH25-SH32 (Aomori apples, Tsugaru lacquer chopsticks, dried scallops, wind-dried salmon, milk caramels, white chocolate cookies, Nebuta hand towel, district sake). |
 | **Starts Level** | Starts a level (2026-10-31): the choice opens that level's usual briefing; **Go in** takes the choice (its rewards and the event's own hours) and begins the level, **Back** returns to the event with nothing taken. The level must be marked **Event Only** on the Levels tab (it then never shows in the Office list) and should be one stage; the export errors otherwise. The choice greys out with "Insufficient Work Hours" when the event's hours plus the level's do not fit the hours left, and the event screen shows its duration from the quickest choice to the longest. Give the starting choice a small direct reward so the Decline rule has something to scale. |
 | Dues Δ | A negative number writes down the carried balance |
 

@@ -1228,8 +1228,10 @@ SHEETS = {
             # 2026-10-31: a level this choice starts (an Event Only level). The
             # player sees its briefing first and may go back to the event.
             ("Starts Level", "starts_level", "str"),
+            # 2026-10-31: what the choice costs on the spot (Commitments.gd).
+            ("Commitment", "commitment", "commitment_list"),
         ],
-        "optional": ["Starts Level"],
+        "optional": ["Starts Level", "Commitment"],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
@@ -1672,6 +1674,11 @@ SHEETS = {
             ("Effects B", "effects_b", "target_delta_list"),
             ("Effects C", "effects_c", "target_delta_list"),
             ("Effects D", "effects_d", "target_delta_list"),
+            # 2026-10-31: what each choice costs on the spot (Commitments.gd).
+            ("Commitment A", "commitment_a", "commitment_list"),
+            ("Commitment B", "commitment_b", "commitment_list"),
+            ("Commitment C", "commitment_c", "commitment_list"),
+            ("Commitment D", "commitment_d", "commitment_list"),
             ("Response A", "response_a", "str"),
             ("Response B", "response_b", "str"),
             ("Response C", "response_c", "str"),
@@ -1685,7 +1692,8 @@ SHEETS = {
                      "Reaction - Right", "Reaction - Wrong",
                      "Effects A", "Effects B", "Effects C", "Effects D",
                      "Response A", "Response B", "Response C", "Response D",
-                     "Reaction A", "Reaction B", "Reaction C", "Reaction D"],
+                     "Reaction A", "Reaction B", "Reaction C", "Reaction D",
+                     "Commitment A", "Commitment B", "Commitment C", "Commitment D"],
     },
     # "Fed by" and the Critical tier are gone from this tab — the 4 Sanban
     # variables now carry only one consequence threshold on each side.
@@ -1790,6 +1798,26 @@ def coerce(value, kind, where, report):
     if kind == "list":
         # "M03, M04" -> ["M03", "M04"]
         return [part.strip() for part in text.split(",") if part.strip()]
+
+    if kind == "commitment_list":
+        # 2026-10-31: what a choice costs on the spot. "Hours 2; Funds 30000;
+        # Item SH25" -> [{"kind": "hours", "amount": 2}, ...]. Item IDs are
+        # checked against the Shop tab later (check_commitments).
+        found = []
+        for part in text.split(";"):
+            part = part.strip()
+            if not part:
+                continue
+            match = re.match(r"^(Hours|Funds)\s+(\d+)$", part, re.IGNORECASE)
+            if match:
+                found.append({"kind": match.group(1).lower(), "amount": int(match.group(2))})
+                continue
+            match = re.match(r"^Item\s+(SH\d+)$", part, re.IGNORECASE)
+            if match:
+                found.append({"kind": "item", "item_id": match.group(1).upper()})
+                continue
+            report.error(where, f"commitment {part!r} is not 'Hours N', 'Funds N' or 'Item SHxx'")
+        return found
 
     if kind in ("stage_list", "id_list"):
         # "ST10; ST01; ST02; ST06" -> ["ST10", "ST01", "ST02", "ST06"]. Same
@@ -3169,6 +3197,31 @@ def _starting_items(cell, player_id, data, report):
     return items
 
 
+def check_commitments(data, report):
+    """A commitment's item must be a Shop item, and every event and visitor
+    question keeps at least one choice that costs nothing, so the player is
+    never stuck with nothing they can choose."""
+    shop_ids = {str(r.get("item_id")) for r in data.get("shop", [])}
+    by_event = {}
+    for row in data.get("event_choices", []):
+        by_event.setdefault(row.get("event_id"), []).append(row.get("commitment") or [])
+        for entry in row.get("commitment") or []:
+            if entry.get("kind") == "item" and entry.get("item_id") not in shop_ids:
+                report.error(f"Event Choices {row.get('event_id')} {row.get('choice')} Commitment",
+                             f"{entry.get('item_id')} is not a Shop item")
+    for event_id, lists in by_event.items():
+        if lists and all(lists):
+            report.error(f"Event Choices {event_id}", "every choice has a Commitment; keep one that costs nothing")
+    for row in data.get("visitor_questions", []):
+        lists = [row.get("commitment_" + c) or [] for c in "abcd"]
+        for entry in [e for lst in lists for e in lst]:
+            if entry.get("kind") == "item" and entry.get("item_id") not in shop_ids:
+                report.error(f"Visitor Questions {row.get('question_id')} Commitment",
+                             f"{entry.get('item_id')} is not a Shop item")
+        if all(lists):
+            report.error(f"Visitor Questions {row.get('question_id')}", "every choice has a Commitment; keep one that costs nothing")
+
+
 def check_event_levels(data, report):
     """An Event Choices row's Starts Level must be a real level marked Event Only."""
     levels = {str(l.get("level_id")): l for l in data.get("levels", [])}
@@ -3960,6 +4013,7 @@ def main():
     check_rooms(data, report)
     check_seasons(data, report)
     check_event_levels(data, report)
+    check_commitments(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)

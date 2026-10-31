@@ -1143,6 +1143,9 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	var price := int(chosen.get("funds_cost", 0)) if chosen.get("funds_cost") != null else 0
 	if price > 0 and int(meta.get("Funds", 0)) < price:
 		return {"ok": false}
+	var commitments := Commitments.of(chosen)
+	if not commitment_refusal(commitments).is_empty():
+		return {"ok": false}
 
 	var lines: Array[String] = []
 	var cause := Text.say("record.cause_event")
@@ -1196,8 +1199,10 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 			discovered_levels.append(level_id)
 		revealed = str(DataDB.get_level(level_id).get("description", level_id))
 
+	lines.append_array(pay_commitments(commitments))
 	var hours := EventEngine.hours_of(event)
 	spend_hours(hours)
+	hours += Commitments.hours(commitments)
 	event_last_at[event_id] = time_units
 	if str(event.get("trigger", "")) == "Dated" and not dated_events_done.has(event_id):
 		dated_events_done.append(event_id)
@@ -1221,7 +1226,7 @@ static func is_event_only(level: Dictionary) -> bool:
 ## How long a choice commits the player: the event's own hours, plus the
 ## whole level it starts, if any (2026-10-31).
 func event_choice_hours(event: Dictionary, choice: Dictionary) -> int:
-	var hours := EventEngine.hours_of(event)
+	var hours := EventEngine.hours_of(event) + Commitments.hours(Commitments.of(choice))
 	var level_id := event_choice_level(choice)
 	if not level_id.is_empty():
 		hours += level_hours(DataDB.get_level(level_id))
@@ -3030,6 +3035,57 @@ func take_item_bonuses_for_stage() -> Dictionary:
 			_add_bonus(bonuses, token, int(carried[token]))
 	timed_bonuses = still_running
 	return bonuses
+
+
+## Why a choice's commitments (Commitments.gd) cannot be paid now, in words,
+## or "" when they can (2026-10-31).
+func commitment_refusal(list: Array) -> String:
+	if list.is_empty():
+		return ""
+	var cfg := calendar_config()
+	var hours_left := 0 if WeekCalendar.is_full(calendar, cfg) else WeekCalendar.hours_left(calendar, cfg)
+	var why := Commitments.refusal(list, hours_left, int(meta.get("Funds", 0)), inventory)
+	match why:
+		"":
+			return ""
+		Commitments.HOURS:
+			return Text.say("event.refuse_work_hours")
+		Commitments.FUNDS:
+			return Text.say("event.refuse_funds")
+	return Text.say("commit.refuse_item", {"item": str(DataDB.get_shop_item(why).get("name", why))})
+
+
+## A choice's text with what it costs, e.g. "Commission a study (30,000円)".
+func commitment_label(text: String, list: Array) -> String:
+	var parts: Array[String] = []
+	var hours := Commitments.hours(list)
+	if hours > 0:
+		parts.append(Text.say("commit.hours", {"count": hours}))
+	var funds := Commitments.funds(list)
+	if funds > 0:
+		parts.append(Text.say("commit.funds", {"yen_amount": funds}))
+	for item_id: String in Commitments.items(list):
+		parts.append(Text.say("commit.item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))}))
+	if parts.is_empty():
+		return text
+	return Text.say("commit.label", {"text": text, "cost": ", ".join(parts)})
+
+
+## Pays a choice's commitments: the hours pass, the Funds are spent, the items
+## are handed over. Returns lines for a result screen.
+func pay_commitments(list: Array) -> Array[String]:
+	var lines: Array[String] = []
+	var funds := Commitments.funds(list)
+	if funds > 0:
+		_under_cause(Text.say("record.cause_commitment"), func() -> void: _apply_meta_reward("Funds", -funds))
+		lines.append(Text.say("event.effect_line", {"name": "Funds", "change": Phrase.meta_amount("Funds", -funds, true)}))
+	for item_id: String in Commitments.items(list):
+		_take_item(item_id)
+		lines.append(Text.say("commit.item_given", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))}))
+	var hours := Commitments.hours(list)
+	if hours > 0:
+		spend_hours(hours)
+	return lines
 
 
 func _take_item(item_id: String) -> void:
