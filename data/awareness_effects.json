@@ -51,36 +51,36 @@
     "effect_id": "AE05",
     "meter": "District",
     "condition": "At most",
-    "threshold": 50,
+    "threshold": 25,
     "effect_type": "STANDING_CHANGE",
     "target": "BO32",
     "value": -10,
     "timing": "Week end",
     "stacking": "Flat",
-    "note": "Cameron 2026-10-23. District Awareness at 50 or less: -10 standing with the Candidate Selection Committee at each week end."
+    "note": "Cameron 2026-10-23; threshold halved 2026-10-31. District Awareness at 25 or less: -10 standing with the Candidate Selection Committee at each week end."
   },
   {
     "effect_id": "AE06",
     "meter": "District",
     "condition": "At most",
-    "threshold": 25,
+    "threshold": 13,
     "effect_type": "XP_CHANGE",
     "target": null,
     "value": -50,
     "timing": "Week end",
     "stacking": "Flat",
-    "note": "Cameron 2026-10-23. District Awareness at 25 or less: -50 XP at each week end."
+    "note": "Cameron 2026-10-23; threshold halved 2026-10-31 (12.5 rounded up). District Awareness at 13 or less: -50 XP at each week end."
   },
   {
     "effect_id": "AE07",
     "meter": "National",
     "condition": "At most",
-    "threshold": 40,
+    "threshold": 20,
     "effect_type": "STANDING_CHANGE",
     "target": "TIER:National",
     "value": -5,
     "timing": "Week end",
     "stacking": "Escalating",
-    "note": "Cameron 2026-10-23. National Awareness at 40 or less: -5 standing with every National-tier organization, added for each consecutive week that ends below 40 (so -5, then -10, then -15). Draft reading of \"additive\": Cameron to confirm."
+    "note": "Cameron 2026-10-23; confirmed and threshold halved 2026-10-31. National Awareness at 20 or less at the end of a week: -5 standing with every National-tier organization, growing by 5 for each consecutive such week (-5, then -10, then -15)."
   }
 ]

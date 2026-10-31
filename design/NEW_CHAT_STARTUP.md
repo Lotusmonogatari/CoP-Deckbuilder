@@ -84,7 +84,7 @@ The list for Cameron's return, with the interim choice made for each, is `design
 | # | Item | Notes |
 |---|---|---|
 | 1 | Audio build, step 1 (approved in principle, outline not yet sent) | Five sliders, a Sound page in Administration, interface and stage-change hooks, vibration switch. Brief: `design/proposals/AUDIO_BRIEF_2026-10-26.md`. |
-| 2 | Content review leftovers | EV12, EV44, EV45, EV05, AE07 note; How to Play HT28, HT32; VQ105, VQ131-134 effect numbers. |
+| 2 | Content review leftovers | Closed 2026-10-31 (see the change log, "Open items closed"). |
 | 3 | Student names | OP126-OP131 are "Student A" to "Student F"; Cameron names them. |
 | 4 | Real phone build | Milestone M6; Image Pan's tilt direction needs a real phone. |
 | 5 | Art | 122 opponents, 6 students, 166 visitors, PC02/PC03, 8 goods icons (SH25-SH32), `OUT_NEIGHBORHOOD`. Character art is Cameron's pipeline; Claude writes prompts on request. |

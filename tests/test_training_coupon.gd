@@ -47,9 +47,10 @@ func test_it_is_refused_and_kept_when_no_card_is_left_at_its_tier() -> void:
 
 
 func test_a_new_run_starts_with_the_protagonist_s_starting_items() -> void:
-	# The Player tab's Starting Items (2026-10-30), plus the old Balance lever.
+	# The Player tab's Starting Items (2026-10-30) alone: the old Balance
+	# lever is no longer read (Cameron, 2026-10-31).
 	var want: Dictionary = (DataDB.player.get("starting_items", {}) as Dictionary).duplicate()
-	want["SH21"] = int(want.get("SH21", 0)) + int(DataDB.balance.get("starting_training_session_coupons", 0))
+	want["SH21"] = int(want.get("SH21", 0))
 	GameState.start_new_run(str(DataDB.player.get("player_id")))
 	assert_gt(int(want["SH21"]), 0, "every protagonist starts with a coupon")
 	for item_id: String in want:

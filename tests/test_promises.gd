@@ -102,3 +102,21 @@ func test_followup_events_never_arrive_at_random_or_for_sale() -> void:
 		assert_ne(str(event.get("trigger", "")), "Followup")
 	for event: Dictionary in GameState.buyable_events():
 		assert_ne(str(event.get("trigger", "")), "Followup")
+
+
+func test_a_promise_s_deadline_counts_from_after_the_choice_s_own_hours() -> void:
+	# 2026-10-31: hours a choice costs on the spot pass before the promise is dated.
+	var start := GameState.time_units
+	GameState.pay_commitments([{"kind": "hours", "amount": 2}, ITEM], "A test", "")
+	assert_eq(int(GameState.promises[0]["due_at"]), start + 2 + 10)
+
+
+func test_a_free_backing_extends_a_running_timer_never_shortens_it() -> void:
+	# 2026-10-31: a backing granted while already held on a timer keeps the later expiry.
+	var mod_id := str(DataDB.modifiers[0]["mod_id"])
+	GameState.owned_modifiers = [mod_id]
+	GameState.modifier_expires = {mod_id: GameState.time_units + 5}
+	GameState._grant_backing_for(mod_id, 20)
+	assert_eq(int(GameState.modifier_expires[mod_id]), GameState.time_units + 20)
+	GameState._grant_backing_for(mod_id, 3)
+	assert_eq(int(GameState.modifier_expires[mod_id]), GameState.time_units + 20)

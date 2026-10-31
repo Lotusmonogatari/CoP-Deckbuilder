@@ -697,16 +697,14 @@ func reset_collection() -> void:
 	owned_modifiers = []
 	inventory = {}
 	# A new run starts with the protagonist's own Starting Items (the Player
-	# tab, 2026-10-30: a coupon and some drinks), plus any free Rhetoric
-	# Training draws from the older Balance lever (0 since then).
+	# tab, 2026-10-30: a coupon and some drinks). Starting coupons are listed
+	# there too (Cameron, 2026-10-31); the older Balance lever "Starting
+	# Training Session Coupons" is no longer read (a cleanup candidate).
 	var starting: Variant = DataDB.player.get("starting_items")
 	if starting is Dictionary:
 		for item_id: String in starting:
 			if not DataDB.get_shop_item(item_id).is_empty():
 				inventory[item_id] = int(inventory.get(item_id, 0)) + int(starting[item_id])
-	var coupons := int(DataDB.balance.get("starting_training_session_coupons", 0))
-	if coupons > 0 and not DataDB.get_shop_item("SH21").is_empty():
-		inventory["SH21"] = int(inventory.get("SH21", 0)) + coupons
 	shop_bought_this_level = {}
 	card_draw = {}
 	pending_stage_bonuses = {}
@@ -1214,9 +1212,11 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 			discovered_levels.append(level_id)
 		revealed = str(DataDB.get_level(level_id).get("description", level_id))
 
-	lines.append_array(pay_commitments(commitments, str(event.get("title", "")), _first_pleased_org(chosen.get("rewards"))))
+	# The event's own hours pass first, so a promise's deadline or a
+	# follow-up's delay counts from when the event is over (2026-10-31).
 	var hours := EventEngine.hours_of(event)
 	spend_hours(hours)
+	lines.append_array(pay_commitments(commitments, str(event.get("title", "")), _first_pleased_org(chosen.get("rewards"))))
 	hours += Commitments.hours(commitments)
 	event_last_at[event_id] = time_units
 	if str(event.get("trigger", "")) == "Dated" and not dated_events_done.has(event_id):
@@ -2641,11 +2641,7 @@ func _apply_reward_entries(entries: Array, chosen_target: String = "",
 					_apply_booster_delta(picked_id, delta)
 					applied.append({"kind": RewardTargets.BOOSTER, "id": picked_id, "delta": delta})
 			RewardTargets.MODIFIER:
-				if not owned_modifiers.has(target_id):
-					owned_modifiers.append(target_id)
-					var granted_for := ModifierEffects.duration_units(DataDB.get_modifier(target_id))
-					if granted_for > 0:
-						modifier_expires[target_id] = time_units + granted_for
+				_grant_backing_for(target_id, ModifierEffects.duration_units(DataDB.get_modifier(target_id)))
 				applied.append({"kind": kind, "id": target_id, "delta": 0})
 			RewardTargets.SEGMENT:
 				var delta := _resolve_delta(resolved.get("delta")) + extra_delta
@@ -3212,6 +3208,11 @@ func commitment_label(text: String, list: Array) -> String:
 ## are handed over. Returns lines for a result screen.
 func pay_commitments(list: Array, source: String = "", fallback_org: String = "") -> Array[String]:
 	var lines: Array[String] = []
+	# Hours a choice costs on the spot pass before any promise or follow-up is
+	# dated, so those count from when the choice is done (2026-10-31).
+	var hours := Commitments.hours(list)
+	if hours > 0:
+		spend_hours(hours)
 	for entry: Variant in list:
 		if entry is Dictionary and str(entry.get("kind", "")) == "followup":
 			scheduled_events.append({"event_id": str(entry.get("event_id", "")),
@@ -3231,9 +3232,6 @@ func pay_commitments(list: Array, source: String = "", fallback_org: String = ""
 	for item_id: String in Commitments.items(list):
 		_take_item(item_id)
 		lines.append(Text.say("commit.item_given", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))}))
-	var hours := Commitments.hours(list)
-	if hours > 0:
-		spend_hours(hours)
 	return lines
 
 
@@ -3963,11 +3961,22 @@ func _grant_free_backing(org: String, units: int) -> void:
 	if units <= 0:
 		return
 	for mod_id: Variant in (DataDB.get_booster(org).get("linked_modifiers", []) as Array):
-		var id := str(mod_id)
-		if owned_modifiers.has(id):
-			continue
-		owned_modifiers.append(id)
-		modifier_expires[id] = time_units + units
+		_grant_backing_for(str(mod_id), units)
+
+
+## Gives a backing for free, for `units` of the clock (0 = for good). One
+## already held on a timer keeps the later of its own expiry and this grant's
+## (Cameron, 2026-10-31); one held for good stays held for good.
+func _grant_backing_for(mod_id: String, units: int) -> void:
+	if not owned_modifiers.has(mod_id):
+		owned_modifiers.append(mod_id)
+		if units > 0:
+			modifier_expires[mod_id] = time_units + units
+		return
+	if units > 0 and modifier_expires.has(mod_id):
+		modifier_expires[mod_id] = maxi(int(modifier_expires[mod_id]), time_units + units)
+	elif units <= 0:
+		modifier_expires.erase(mod_id)
 
 
 ## A patron level ended. If the vote never happened (a stage lost ended the

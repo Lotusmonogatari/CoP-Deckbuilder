@@ -302,7 +302,7 @@
     "group": "Bills and Parties",
     "heading_en": "Whipping the vote",
     "heading_jp": null,
-    "body_en": "On a bill vote you can spend Party support to whip extra members of your own party to your pick. Each extra vote has a price shown on the screen, and costs far more when your vote goes against your party's position. You cannot spend Party support below a floor, and you can only whip members who are not already with you.",
+    "body_en": "On a bill vote you can spend Party support to whip extra members of your own party to your pick. Each extra vote has a price shown on the screen, and costs far more when your vote goes against your party's position. You cannot spend Party support below a floor, and you can only whip members who are not already with you. Organizations in your corner make each extra vote cheaper.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -346,7 +346,7 @@
     "group": "Between Levels",
     "heading_en": "Events",
     "heading_jp": null,
-    "body_en": "Arrange an event from the Events button, or one may turn up on its own after a level or a week. Each has a few choices with different payoffs, and takes hours. Some events can reveal a new bill level.",
+    "body_en": "Arrange an event from the Events button, or one may turn up on its own after a level or a week. Each has a few choices with different payoffs, and takes hours. Some events can reveal a new bill level. Some are scheduled for a set date, shown on the event. Some choices cost hours, money or an item on the spot; some are promises you keep later from the Promises button, and a broken promise costs you; some bring a follow-up event, and some lead straight into a stage.",
     "screenshot": null,
     "caption": null,
     "video": null

@@ -167,7 +167,7 @@
     "rewards": [
       {
         "target": "BO12",
-        "delta": 1
+        "delta": 2
       }
     ],
     "unlocks_level": null,
@@ -326,7 +326,7 @@
     "event_id": "EV12",
     "choice": "A",
     "choice_text": "Promise to look into the faster train",
-    "result_text": "You start asking around. A bill on the Hokkaido Shinkansen is being drafted.",
+    "result_text": "You start asking around. People have a lot to say about the train.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -2430,7 +2430,7 @@
     "event_id": "EV44",
     "choice": "A",
     "choice_text": "Pay part of it from your own pocket",
-    "result_text": "The clerk writes you a receipt. It is a modest relief, and a visible one.",
+    "result_text": "The clerk writes you a receipt and rounds the balance down. It is a modest relief, and a visible one.",
     "funds_cost": 10000,
     "funds_delta": null,
     "xp_delta": null,
@@ -2518,7 +2518,12 @@
       "max": -20000
     },
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "hours",
+        "amount": 2
+      }
+    ]
   },
   {
     "event_id": "EV45",

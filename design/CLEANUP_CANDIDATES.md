@@ -37,5 +37,5 @@ No test was found that covers a removed feature. The two click tests that `verif
 
 ## Added 2026-10-30 (playtest fixes)
 - Text rows no longer asked for: `briefing.against_one`, `briefing.against_many`, `briefing.reporters_ask` (the briefing no longer names opponents) and `dues.preview`, `dues.preview_owed` (the Friday dues line is gone; the Party Dues box shows it).
-- Balance lever "Starting Training Session Coupons" (now 0): replaced by the Player tab's Starting Items; the code still adds it on top.
+- Balance lever "Starting Training Session Coupons" (now 0): replaced by the Player tab's Starting Items; no longer read by the code (2026-10-31).
 - Text rows no longer asked for after the briefing template (2026-10-30): `briefing.loss_ends_level`, `reward.if_lost` (the briefing no longer lists loss costs, carry-over lines, bill sides or "standing with whichever organizations"). `CarryOverLines.gd` and `StanceLines.briefing_lines()/briefing_sides()` may now be unused by the briefing; check other callers before removing.

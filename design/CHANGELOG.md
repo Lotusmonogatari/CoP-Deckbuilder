@@ -2736,3 +2736,24 @@ A review of every mechanic (code, workbook, interdependence, activation, timing,
 - **Fixed:** a stage's hours now take the same clock step as Office time (`GameState._advance_clock`), so a promise that falls due during a level is broken when the stage ends rather than at the next event or week end. Test: `test_promises.gd`.
 - **Fixed:** EV14 C charged 20,000円 twice (a Funds Cost and a `Funds 20000` Commitment). The Commitment cell is cleared, and the exporter now errors when a choice has both.
 - **Decided (Cameron):** the Funding Freeze now also zeroes a level's Funds win bonus and a backing's level-win Funds bonus (`GameState.funds_frozen()`, `_unless_frozen()`); events, visitors and laws still pay. The crisis triggers (`GameState.check_crisis_triggers()`) now also run after Office time passes, after an event, after a kept promise and at the week's end, not only when a stage ends. Media Ambush and the Committee on Finance stay as they are. Tests: `test_game_state_meta_tracking.gd`.
+
+### Open items closed (2026-10-31, Cameron)
+
+Cameron's answers to the remaining open items, applied.
+
+| Item | Change |
+|---|---|
+| EV12 | Choice A's result no longer promises a Hokkaido Shinkansen bill that never appears: "You start asking around. People have a lot to say about the train." |
+| EV44 | Paying 10,000円 still clears 30,000円 of dues; the result now says the clerk rounds the balance down. |
+| EV45 | Only arrives when dues are owed (Needs Dues Owed = Yes); going through the receipts (A) costs 2 hours. |
+| EV05 | The youth sports league (B) now pleases BO12 by 2, so it is no longer worse than the festival (A) in every way. |
+| VQ105 | The Taxpayers' Alliance (BO23) now prefers the tax cut with no strings (D +2, B +1); tying the cut to hiring pleases labor (BO21 +2). |
+| VQ131, VQ132 | The Mayors' Network (BO04) leads: +3 for keeping village desks and festivals, negative for centralizing. BO23 gives +1 for the cheaper choices and -1 for the costly ones. |
+| Awareness | AE07 confirmed as built (40 counts, escalating). The penalty thresholds are halved: AE05 50→25, AE06 25→13, AE07 40→20. The bonus rows are unchanged. |
+| How to Play | HT28 explains the organization discount on whipping. HT32 covers dated events, on-the-spot costs, promises, follow-ups and events that lead to a stage. These are drafts. |
+| Stances | VQ15 B, VQ21 A, VQ82 B and VQ88 C now promise 1 hour within a week, like the other stances. |
+| Deadlines | Hours a choice costs on the spot, and an event's own hours, pass before a promise or follow-up is dated (`pay_commitments`, `apply_event_choice`). |
+| Backing timers | A free backing granted while already held on a timer keeps the later expiry (`GameState._grant_backing_for`); a grant for good makes it permanent. |
+| Starting coupons | Starting coupons come only from the Player tab's Starting Items. The Balance lever "Starting Training Session Coupons" is no longer read; the row is kept as a cleanup candidate. |
+
+Tests: `test_promises.gd` (deadline after hours, backing timer); `test_training_coupon.gd` and `test_protagonists.gd` no longer add the old lever.
