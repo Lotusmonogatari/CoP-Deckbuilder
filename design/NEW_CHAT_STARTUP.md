@@ -85,10 +85,10 @@ The list for Cameron's return, with the interim choice made for each, is `design
 |---|---|---|
 | 1 | Audio build, step 1 (approved in principle, outline not yet sent) | Five sliders, a Sound page in Administration, interface and stage-change hooks, vibration switch. Brief: `design/proposals/AUDIO_BRIEF_2026-10-26.md`. |
 | 2 | Content review leftovers | Closed 2026-10-31 (see the change log, "Open items closed"). |
-| 3 | Student names | OP126-OP131 are "Student A" to "Student F"; Cameron names them. |
+| 3 | Student names | OP126-OP131 carry draft names (Hinata Kusakabe, Sota Arakawa, Mio Takanashi, Daiki Funabashi, Aoi Kamishiro, Yuto Hanazono) awaiting Cameron's confirmation. |
 | 4 | Real phone build | Milestone M6; Image Pan's tilt direction needs a real phone. |
 | 5 | Art | 122 opponents, 6 students, 166 visitors, PC02/PC03, 8 goods icons (SH25-SH32), `OUT_NEIGHBORHOOD`. Character art is Cameron's pipeline; Claude writes prompts on request. |
-| 6 | Cleanup pass | `design/CLEANUP_CANDIDATES.md`; nothing removed without Cameron's approval. |
+| 6 | Cleanup pass | First pass done 2026-10-31; 12 Text rows it left unused are listed in `design/CLEANUP_CANDIDATES.md` for approval. |
 | 7 | Ministers | Five ministers sit in every TV debate; Cameron chose to leave it. |
 
 ## 8. A good first message

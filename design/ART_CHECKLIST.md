@@ -155,12 +155,12 @@ in `data/art.json`.
 | OP27 | Ichizaki Namu | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP102 | Emi Katsuragawa | ✓ | ☐ | ☐ | ☐ | ☐ |
 | OP10 | Aki Rono | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP126 | Student A | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP127 | Student B | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP128 | Student C | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP129 | Student D | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP130 | Student E | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP131 | Student F | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP126 | Hinata Kusakabe | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP127 | Sota Arakawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP128 | Mio Takanashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP129 | Daiki Funabashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP130 | Aoi Kamishiro | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP131 | Yuto Hanazono | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Staff — `assets/characters/staff/`
 
