@@ -74,7 +74,8 @@
     "dislikes": [
       "luxury",
       "foreign",
-      "risky"
+      "risky",
+      "tourism"
     ]
   },
   {
@@ -265,7 +266,8 @@
     "dislikes": [
       "luxury",
       "foreign",
-      "risky"
+      "risky",
+      "tourism"
     ]
   },
   {
@@ -280,7 +282,8 @@
     "dislikes": [
       "foreign",
       "modern",
-      "risky"
+      "risky",
+      "tourism"
     ]
   },
   {
@@ -338,7 +341,8 @@
     "dislikes": [
       "protect",
       "isolation",
-      "labor"
+      "labor",
+      "shotengai"
     ]
   },
   {

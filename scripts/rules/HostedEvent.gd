@@ -198,6 +198,18 @@ static func score_step(roster: Array, tastes: Array, tag_lists: Array) -> Array:
 
 ## The evening in total, from every step's scored reactions:
 ## { org_deltas: { org: change }, net, awareness, reputation }.
+## Who a hosted evening's promise is owed to (2026-10-31): the guest
+## organization whose standing rose most, else the host's chosen organization.
+static func most_pleased(org_deltas: Dictionary, patron_org: String) -> String:
+	var best := patron_org
+	var best_delta := 0
+	for org: String in org_deltas.keys():
+		if int(org_deltas[org]) > best_delta:
+			best_delta = int(org_deltas[org])
+			best = org
+	return best
+
+
 static func totals(step_results: Array, patron_org: String, cfg: Dictionary) -> Dictionary:
 	var deltas := {}
 	var net := 0

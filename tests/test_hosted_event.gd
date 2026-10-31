@@ -7,6 +7,7 @@ var _calendar_before: Dictionary = {}
 var _awareness_before: Dictionary = {}
 var _meta_before: Dictionary = {}
 var _discovered_before: Array = []
+var _promises_before: Array = []
 
 
 func before_each() -> void:
@@ -18,6 +19,8 @@ func before_each() -> void:
 	GameState.calendar = WeekCalendar.fresh()
 	GameState.discovered_levels = []
 	GameState.hosted_session = {}
+	_promises_before = GameState.promises.duplicate(true)
+	GameState.promises = []
 	for id: String in GameState.booster_standing.keys():
 		GameState.booster_standing[id] = 50
 
@@ -29,6 +32,7 @@ func after_each() -> void:
 	GameState.meta = _meta_before
 	GameState.discovered_levels.assign(_discovered_before)
 	GameState.hosted_session = {}
+	GameState.promises = _promises_before
 
 
 func _tags(option_id: String) -> Array:
@@ -165,3 +169,32 @@ func test_the_dinner_moves_national_awareness_and_the_tour_district() -> void:
 func test_hosting_still_reveals_a_hidden_bill_at_the_end() -> void:
 	var result := _play("HE02", "BO05", {1: ["DE1", "DD2", "DS3"], 2: ["DP2"], 3: ["DC1"]})
 	assert_ne(str(result["revealed"]), "")
+
+
+func test_the_step_3_promise_is_owed_to_the_guest_the_evening_pleased_most() -> void:
+	# 2026-10-31: Event Options' Commitment makes step 3's promise real.
+	var result := _play("HE01", "BO10", {1: ["T2"], 2: ["TP1"], 3: ["TC6"]})
+	assert_eq(GameState.promises.size(), 1)
+	var best := HostedEvent.most_pleased(result["deltas"], "BO10")
+	assert_eq(str(GameState.promises[0]["for_org"]), best)
+	assert_gt((result["lines"] as Array).size(), 0, "the result screen says what was promised")
+
+
+func test_most_pleased_falls_back_to_the_host_s_organization() -> void:
+	assert_eq(HostedEvent.most_pleased({"BO10": 3, "BO05": 5, "BO07": -2}, "BO10"), "BO05")
+	assert_eq(HostedEvent.most_pleased({"BO05": -1}, "BO10"), "BO10")
+	assert_eq(HostedEvent.most_pleased({}, "BO10"), "BO10")
+
+
+func test_every_guest_organization_s_tastes_appear_on_some_option() -> void:
+	# A taste no option carries can never be met (BO08 media, BO11 youth,
+	# BO22 security/veterans were, before 2026-10-31).
+	var used := {}
+	for row: Dictionary in DataDB.event_options:
+		for tag: Variant in (row.get("tags", []) if row.get("tags") != null else []):
+			used[str(tag)] = true
+	for taste: Dictionary in DataDB.organization_tastes:
+		if str(DataDB.get_booster(str(taste["booster_id"])).get("tier", "")) == HostedEvent.PARTY_TIER:
+			continue
+		for tag: Variant in (taste.get("likes", []) if taste.get("likes") != null else []):
+			assert_true(used.has(str(tag)), "%s likes '%s', which no option carries" % [taste["booster_id"], tag])

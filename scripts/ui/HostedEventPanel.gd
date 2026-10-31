@@ -70,7 +70,7 @@ func _show_pick() -> void:
 		var button := Button.new()
 		button.name = "HostedOption_" + str(option.get("option_id", ""))
 		button.custom_minimum_size = Vector2(0, 100)
-		button.text = str(option.get("choice_text", ""))
+		button.text = GameState.commitment_label(str(option.get("choice_text", "")), Commitments.of(option))
 		button.pressed.connect(_on_pick.bind(str(option.get("option_id", ""))))
 		rows.append(button)
 	open(str(_hosted.get("title", "")), rows)
@@ -137,6 +137,8 @@ func _show_result() -> void:
 	if int(result.get("reputation", 0)) != 0:
 		rows.append(UiKit.line(Text.say("hosted.reputation_line",
 			{"change": "%+d" % int(result["reputation"])}), "SmallLabel"))
+	for line: String in result.get("lines", []):
+		rows.append(UiKit.line(line, "SmallLabel"))
 	var revealed := str(result.get("revealed", ""))
 	if not revealed.is_empty():
 		rows.append(UiKit.line(Text.say("item.hosted_reveal", {"name": revealed}), "SmallLabel"))

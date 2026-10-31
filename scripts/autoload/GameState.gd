@@ -1346,7 +1346,7 @@ func begin_hosted_event(hosted_id: String, org_id: String, hours: int = 0) -> Di
 	var allies := HostedEvent.allies(org_id, DataDB.party_stakeholders, DataDB.boosters)
 	var roster := HostedEvent.pick_roster(org_id, hosted_people_by_org(), allies, int(cfg["roster"]), rng)
 	hosted_session = {"hosted_id": hosted_id, "org": org_id, "roster": roster, "hours": hours,
-		"results": {}, "tags": {}}
+		"results": {}, "tags": {}, "picked": {}}
 	return hosted_session
 
 
@@ -1367,6 +1367,9 @@ func hosted_record_step(step: int, option_ids: Array) -> Array:
 		DataDB.organization_tastes, tag_lists)
 	(hosted_session["results"] as Dictionary)[step] = scored
 	(hosted_session["tags"] as Dictionary)[step] = tag_lists
+	if not hosted_session.has("picked"):
+		hosted_session["picked"] = {}
+	(hosted_session["picked"] as Dictionary)[step] = option_ids.duplicate()
 	var shown: Array = []
 	var pick := 0
 	for entry: Dictionary in scored:
@@ -1403,9 +1406,29 @@ func finish_hosted_event() -> Dictionary:
 		_under_cause(cause, func() -> void: _apply_meta_reward("Reputation", int(total["reputation"])))
 	var hours := int(session.get("hours", 0))
 	spend_hours(hours)
+	# What the picks cost or owe (Event Options' Commitment, 2026-10-31): step
+	# 3's promise is owed to the guest organization the evening pleased most.
+	var lines := pay_commitments(hosted_commitments(session),
+		str(get_hosted_event(str(session["hosted_id"])).get("title", "")),
+		HostedEvent.most_pleased(total["org_deltas"], org))
 	var revealed := reveal_by_hosting(org)
 	return {"net": int(total["net"]), "deltas": total["org_deltas"], "awareness": int(total["awareness"]),
-		"meter": meter, "reputation": int(total["reputation"]), "revealed": revealed, "hours": hours}
+		"meter": meter, "reputation": int(total["reputation"]), "revealed": revealed, "hours": hours,
+		"lines": lines}
+
+
+## Every commitment the picked options of a hosted evening carry, in step order.
+func hosted_commitments(session: Dictionary) -> Array:
+	var picked: Dictionary = session.get("picked", {})
+	var found: Array = []
+	var steps := picked.keys()
+	steps.sort()
+	for step: Variant in steps:
+		for row: Dictionary in DataDB.event_options:
+			if str(row.get("hosted_id", "")) == str(session.get("hosted_id", "")) \
+					and (picked[step] as Array).has(str(row.get("option_id", ""))):
+				found.append_array(Commitments.of(row))
+	return found
 
 
 # ---------------------------------------------------------------------------

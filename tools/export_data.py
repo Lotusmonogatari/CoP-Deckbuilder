@@ -1263,7 +1263,11 @@ SHEETS = {
             ("Choice Text", "choice_text", "str"),
             ("Tags", "tags", "id_list"),
             ("Flavor", "flavor", "str"),
+            # 2026-10-31: what a pick costs or owes (step 3's promise), the
+            # Event Choices Commitment grammar. Blank = nothing.
+            ("Commitment", "commitment", "commitment_list"),
         ],
+        "optional": ["Commitment"],
     },
     "Organization Tastes": {
         "out": "organization_tastes.json",
@@ -3239,6 +3243,11 @@ def check_commitments(data, report):
         for entry in row.get("commitment") or []:
             if entry.get("kind") in ("item", "promise_item") and entry.get("item_id") not in shop_ids:
                 report.error(f"Event Choices {row.get('event_id')} {row.get('choice')} Commitment",
+                             f"{entry.get('item_id')} is not a Shop item")
+    for row in data.get("event_options", []):
+        for entry in row.get("commitment") or []:
+            if entry.get("kind") in ("item", "promise_item") and entry.get("item_id") not in shop_ids:
+                report.error(f"Event Options {row.get('option_id')} Commitment",
                              f"{entry.get('item_id')} is not a Shop item")
     for event_id, lists in by_event.items():
         if lists and all(lists):

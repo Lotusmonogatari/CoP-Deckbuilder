@@ -2796,3 +2796,16 @@ A scan of all 397 visitor questions (1,588 choices) for: promises that cost noth
 Every question still keeps at least one choice that costs nothing. Promises owed to no organization fall from 12 to 2 (VQ15 B, VQ58 B).
 
 Afterwards, Cameron moved VQ04 C's promise to the Fisheries Cooperative (BO07) and VQ27 D's to the Commuter Committee (BO14): the organizations those choices cost, and the ones asking.
+
+### Hosted event choices match their outcomes (2026-10-31, Cameron)
+
+A review of the walking tour (HE01) and the dinner (HE02): 53 options checked against the 28 guest organizations' Likes and Dislikes. Cameron's choices:
+
+| Change | Detail |
+|---|---|
+| Tag fixes | Hokkaido craft beer (DD4) was tagged `sake`; it is now `local; modern; beer`. Keeping spending in check (TP8/DP8) lost `humble`, so care groups are no longer pleased by spending cuts. |
+| Tastes no option could meet | `youth` added to Digital economy (TP6/DP6) and Rural broadband (TC8/DC8). New draft topics for both events: **Press freedom and open records** (TP9/DP9; media, reform) and **Coastal defense and veterans' care** (TP10/DP10; security, veterans, protect). BO08, BO11 and BO22 can now be pleased by a host. |
+| No-lose picks given critics | Neighborhood Associations (BO06), Religious Council (BO19) and Shrine Association (BO20) now dislike `tourism`; the Financial Industry Association (BO24) dislikes `shotengai`. |
+| Step-3 promises are real | A new **Commitment** column on Event Options (the Event Choices grammar, with a header note). Every step-3 pick is `Promise Hours 1 within 168`, owed to the guest organization whose standing rose most that evening, else the host's chosen organization (`HostedEvent.most_pleased()`, `GameState.hosted_commitments()`). The buttons show the cost, and the result screen says what was promised. The exporter checks item IDs in the new column. |
+
+Left as is: the name "Japanese tuna sashimi" (DE2), and no critic for the craft beer. Tests (`test_hosted_event.gd`): the step-3 promise and who it is owed to, the fallback to the host's organization, and a guard that every guest organization's liked tag appears on some option.
