@@ -901,3 +901,25 @@ Most of the 116 shown by Role are MPs whose "title" is the committee they sit on
 | Young farmers | 4 | Agricultural Cooperatives, Rural Revitalization Council, Our Traditional Society | Urban Neighborhood Alliance |
 | Youth participation | 4 | Students United, Constituency Voters | Our Traditional Society, Chamber of Commerce |
 | Zoning | 2 | Urban Neighborhood Alliance, Students United, Party Activists | Rural Revitalization Council, Our Traditional Society |
+
+## Applied (2026-10-31, Cameron: "act on 1, 2, 3, 4, 5")
+
+The tables above show the tab as it was before these changes.
+
+| Finding | What changed |
+|---|---|
+| 1. Stale Why notes | 37 notes rewritten so their "sets back" list matches the Annoys column. Every theme changed today also gained a note: "2026-10-31: also sets back … (a natural rival)". |
+| 2. Unused themes | The 17 themes no question used were deleted, including "General question". The tab now has 681 themes. |
+| 3. Rarely-annoyed organizations | Natural rivals were added to Annoys only. No organization gained a pleased theme, and the Chamber of Commerce's Annoys were left as they were (its count fell from 128 to 125 only because three of the deleted unused themes annoyed it; the questions it covers are unchanged at 406). The additions are listed below the table. |
+| 4. Contested themes with no downside | Temple and Shrine Heritage Act debate now sets back the Taxpayers' Alliance (BO23); Prefectural Fiscal Devolution Act debate, Members of Parliament (BO17); Resettlement, the Mayors' Network (BO04: families moved for a dam or road); Permit delays, Neighborhood Associations (BO06); Whistleblower protection, the Financial Industry Association (BO24); Reserve training, Students United (BO11); Emergency reserves and Village survival, the Taxpayers' Alliance (BO23). Consensus topics (Conservation, Infrastructure, Family support and others) stay rival-free. |
+| 5. The 15 most-used bill debates | All 15 checked against their bills. Twelve were sound as they were. Tsugaru Strait Joint Commission Act debate (it set back nobody) and Candidate Gender Parity Act debate now set back Our Traditional Society (BO15). Integrated Resort, Grid Resilience and Tomari Nuclear Restart gained the rivals listed below. |
+
+| Organization | Now set back by (new themes) | Themes / questions before → after |
+|---|---|---|
+| Family Network (BO12) | Integrated Resort Act debate; Tomari Nuclear Restart Act debate; Cap growth in government spending; Add sunset clauses to new spending; Budget cuts | 0 / 0 → 5 / 49 |
+| Commuter Committee (BO14) | Rail operator costs; Fuel subsidy; Farm and boat fuel; Cap growth in government spending; Add sunset clauses to new spending | 0 / 0 → 5 / 21 |
+| Candidate Selection Committee (BO32) | Candidate Gender Parity Act debate; Party Leadership Selection Act debate; Party democracy | 0 / 0 → 3 / 29 |
+| Fisheries Cooperative (BO07) | Tomari Nuclear Restart Act debate; Grid Resilience and Renewable Energy Act debate (offshore wind); Wind and view; Yezo–China Trade Normalization Act debate (seafood imports) | 1 / 0 → 4 / 36 |
+| Buddhist Temples Association (BO19) | Partnership Registration Act debate; Allow denser housing near stations; Redevelopment | 1 / 19 → 4 / 43 |
+| Ainu Language and Culture Foundation (BO29) | Moral Education Curriculum Act debate; Cap growth in government spending; Add sunset clauses to new spending; Budget cuts | 1 / 7 → 5 / 37 |
+| Party Activists (BO31) | Civil Service Merit Act debate; Campaign finance; Campaign finance (scrutiny); Unity; Cabinet unity | 1 / 1 → 6 / 24 |

@@ -114,7 +114,8 @@
         "BO01"
       ],
       "displeases_boosters": [
-        "BO02"
+        "BO02",
+        "BO31"
       ],
       "asked_by": "OP115"
     },
@@ -2780,7 +2781,8 @@
         "BO10"
       ],
       "displeases_boosters": [
-        "BO27"
+        "BO27",
+        "BO14"
       ],
       "asked_by_orgs": [
         "BO10"
@@ -3800,6 +3802,9 @@
         "BO30",
         "BO10",
         "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
       ],
       "asked_by": "OP124"
     },
@@ -5094,7 +5099,8 @@
         "BO04"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "asked_by": "OP120"
     },
@@ -5459,7 +5465,8 @@
         "BO10"
       ],
       "displeases_boosters": [
-        "BO27"
+        "BO27",
+        "BO14"
       ],
       "asked_by": "OP120"
     },
@@ -8815,7 +8822,8 @@
         "BO04"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "stage_ids": [
         "ST15",
@@ -9392,7 +9400,8 @@
       ],
       "displeases_boosters": [
         "BO09",
-        "BO21"
+        "BO21",
+        "BO14"
       ],
       "stage_ids": [
         "ST26"
@@ -13066,7 +13075,8 @@
       ],
       "displeases_boosters": [
         "BO09",
-        "BO21"
+        "BO21",
+        "BO14"
       ],
       "stage_ids": [
         "ST26"
@@ -13777,7 +13787,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO24"
+        "BO24",
+        "BO31"
       ],
       "stage_ids": [
         "ST46",
@@ -13804,7 +13815,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO24"
+        "BO24",
+        "BO31"
       ],
       "stage_ids": [
         "ST47",
@@ -14140,7 +14152,8 @@
         "BO10"
       ],
       "displeases_boosters": [
-        "BO05"
+        "BO05",
+        "BO14"
       ],
       "stage_ids": [
         "ST53",
@@ -16200,6 +16213,9 @@
         "BO11",
         "BO18"
       ],
+      "displeases_boosters": [
+        "BO32"
+      ],
       "stage_ids": [
         "ST02"
       ],
@@ -16360,6 +16376,9 @@
       "pleases_boosters": [
         "BO11",
         "BO18"
+      ],
+      "displeases_boosters": [
+        "BO32"
       ],
       "stage_ids": [
         "ST02"
@@ -16612,6 +16631,9 @@
         "BO11",
         "BO18"
       ],
+      "displeases_boosters": [
+        "BO32"
+      ],
       "stage_ids": [
         "ST02"
       ],
@@ -16656,7 +16678,8 @@
         "BO01"
       ],
       "displeases_boosters": [
-        "BO02"
+        "BO02",
+        "BO31"
       ],
       "stage_ids": [
         "ST02"
@@ -17276,6 +17299,9 @@
         "BO11",
         "BO18"
       ],
+      "displeases_boosters": [
+        "BO32"
+      ],
       "stage_ids": [
         "ST03",
         "ST35",
@@ -17347,7 +17373,8 @@
         "BO01"
       ],
       "displeases_boosters": [
-        "BO02"
+        "BO02",
+        "BO31"
       ],
       "stage_ids": [
         "ST03",
@@ -17494,6 +17521,9 @@
       "pleases_boosters": [
         "BO11",
         "BO18"
+      ],
+      "displeases_boosters": [
+        "BO32"
       ],
       "stage_ids": [
         "ST03",
@@ -17783,6 +17813,9 @@
       "pleases_boosters": [
         "BO11",
         "BO18"
+      ],
+      "displeases_boosters": [
+        "BO32"
       ],
       "stage_ids": [
         "ST03",
@@ -19778,6 +19811,9 @@
         "BO11",
         "BO18"
       ],
+      "displeases_boosters": [
+        "BO32"
+      ],
       "stage_ids": [
         "ST35"
       ],
@@ -19974,7 +20010,8 @@
       ],
       "displeases_boosters": [
         "BO24",
-        "BO21"
+        "BO21",
+        "BO31"
       ],
       "stage_ids": [
         "ST49"
@@ -20000,7 +20037,8 @@
       ],
       "displeases_boosters": [
         "BO24",
-        "BO21"
+        "BO21",
+        "BO31"
       ],
       "stage_ids": [
         "ST49"
@@ -21684,7 +21722,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "bill_ids": [
         "BI07"
@@ -21710,7 +21749,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "bill_ids": [
         "BI07"
@@ -21736,7 +21776,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "bill_ids": [
         "BI07"
@@ -21762,7 +21803,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "bill_ids": [
         "BI07"
@@ -21882,6 +21924,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "bill_ids": [
         "BI09"
       ],
@@ -21903,6 +21948,9 @@
         "BO04",
         "BO23",
         "BO03"
+      ],
+      "displeases_boosters": [
+        "BO17"
       ],
       "bill_ids": [
         "BI09"
@@ -21926,6 +21974,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "bill_ids": [
         "BI09"
       ],
@@ -21948,6 +21999,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "bill_ids": [
         "BI09"
       ],
@@ -21967,6 +22021,10 @@
       },
       "pleases_boosters": [
         "BO12"
+      ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
       ],
       "bill_ids": [
         "BI10"
@@ -21988,6 +22046,10 @@
       "pleases_boosters": [
         "BO12"
       ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
+      ],
       "bill_ids": [
         "BI10"
       ],
@@ -22008,6 +22070,10 @@
       "pleases_boosters": [
         "BO12"
       ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
+      ],
       "bill_ids": [
         "BI10"
       ],
@@ -22027,6 +22093,10 @@
       },
       "pleases_boosters": [
         "BO12"
+      ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
       ],
       "bill_ids": [
         "BI10"
@@ -22049,6 +22119,9 @@
         "BO07",
         "BO14"
       ],
+      "displeases_boosters": [
+        "BO15"
+      ],
       "bill_ids": [
         "BI11"
       ],
@@ -22069,6 +22142,9 @@
       "pleases_boosters": [
         "BO07",
         "BO14"
+      ],
+      "displeases_boosters": [
+        "BO15"
       ],
       "bill_ids": [
         "BI11"
@@ -22091,6 +22167,9 @@
         "BO07",
         "BO14"
       ],
+      "displeases_boosters": [
+        "BO15"
+      ],
       "bill_ids": [
         "BI11"
       ],
@@ -22111,6 +22190,9 @@
       "pleases_boosters": [
         "BO07",
         "BO14"
+      ],
+      "displeases_boosters": [
+        "BO15"
       ],
       "bill_ids": [
         "BI11"
@@ -22218,6 +22300,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "bill_ids": [
         "BI13"
       ],
@@ -22239,6 +22324,9 @@
         "BO19",
         "BO20",
         "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
       ],
       "bill_ids": [
         "BI13"
@@ -22262,6 +22350,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "bill_ids": [
         "BI13"
       ],
@@ -22283,6 +22374,9 @@
         "BO19",
         "BO20",
         "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
       ],
       "bill_ids": [
         "BI13"
@@ -22615,7 +22709,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "bill_ids": [
         "BI17"
@@ -22640,7 +22735,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "bill_ids": [
         "BI17"
@@ -22665,7 +22761,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "bill_ids": [
         "BI17"
@@ -22690,7 +22787,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "bill_ids": [
         "BI17"
@@ -23311,7 +23409,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "bill_ids": [
         "BI24"
@@ -23336,7 +23436,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "bill_ids": [
         "BI24"
@@ -23361,7 +23463,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "bill_ids": [
         "BI24"
@@ -23386,7 +23490,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "bill_ids": [
         "BI24"
@@ -23413,7 +23519,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "bill_ids": [
         "BI25"
@@ -23440,7 +23547,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "bill_ids": [
         "BI25"
@@ -23467,7 +23575,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "bill_ids": [
         "BI25"
@@ -23494,7 +23603,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "bill_ids": [
         "BI25"
@@ -23520,7 +23630,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "bill_ids": [
         "BI26"
@@ -23546,7 +23657,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "bill_ids": [
         "BI26"
@@ -23572,7 +23684,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "bill_ids": [
         "BI26"
@@ -23598,7 +23711,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "bill_ids": [
         "BI26"
@@ -23820,7 +23934,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "bill_ids": [
         "BI29"
@@ -23846,7 +23961,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "bill_ids": [
         "BI29"
@@ -23872,7 +23988,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "bill_ids": [
         "BI29"
@@ -23898,7 +24015,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "bill_ids": [
         "BI29"
@@ -25196,7 +25314,8 @@
       ],
       "displeases_boosters": [
         "BO22",
-        "BO13"
+        "BO13",
+        "BO07"
       ],
       "bill_ids": [
         "BI43"
@@ -25222,7 +25341,8 @@
       ],
       "displeases_boosters": [
         "BO22",
-        "BO13"
+        "BO13",
+        "BO07"
       ],
       "bill_ids": [
         "BI43"
@@ -25248,7 +25368,8 @@
       ],
       "displeases_boosters": [
         "BO22",
-        "BO13"
+        "BO13",
+        "BO07"
       ],
       "bill_ids": [
         "BI43"
@@ -25274,7 +25395,8 @@
       ],
       "displeases_boosters": [
         "BO22",
-        "BO13"
+        "BO13",
+        "BO07"
       ],
       "bill_ids": [
         "BI43"
@@ -25899,7 +26021,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "bill_ids": [
         "BI50"
@@ -25924,7 +26047,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "bill_ids": [
         "BI50"
@@ -25949,7 +26073,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "bill_ids": [
         "BI50"
@@ -25974,7 +26099,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "bill_ids": [
         "BI50"
@@ -28604,7 +28730,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "stage_ids": [
         "ST149"
@@ -28630,7 +28757,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "stage_ids": [
         "ST149"
@@ -28656,7 +28784,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "stage_ids": [
         "ST150"
@@ -28682,7 +28811,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "stage_ids": [
         "ST150"
@@ -28708,7 +28838,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "stage_ids": [
         "ST151"
@@ -28734,7 +28865,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "stage_ids": [
         "ST151"
@@ -28760,7 +28892,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "stage_ids": [
         "ST152"
@@ -28786,7 +28919,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "stage_ids": [
         "ST152"
@@ -28957,6 +29091,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "stage_ids": [
         "ST157"
       ],
@@ -28978,6 +29115,9 @@
         "BO04",
         "BO23",
         "BO03"
+      ],
+      "displeases_boosters": [
+        "BO17"
       ],
       "stage_ids": [
         "ST157"
@@ -29001,6 +29141,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "stage_ids": [
         "ST158"
       ],
@@ -29022,6 +29165,9 @@
         "BO04",
         "BO23",
         "BO03"
+      ],
+      "displeases_boosters": [
+        "BO17"
       ],
       "stage_ids": [
         "ST158"
@@ -29045,6 +29191,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "stage_ids": [
         "ST159"
       ],
@@ -29066,6 +29215,9 @@
         "BO04",
         "BO23",
         "BO03"
+      ],
+      "displeases_boosters": [
+        "BO17"
       ],
       "stage_ids": [
         "ST159"
@@ -29089,6 +29241,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "stage_ids": [
         "ST160"
       ],
@@ -29111,6 +29266,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "stage_ids": [
         "ST160"
       ],
@@ -29130,6 +29288,10 @@
       },
       "pleases_boosters": [
         "BO12"
+      ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
       ],
       "stage_ids": [
         "ST161"
@@ -29151,6 +29313,10 @@
       "pleases_boosters": [
         "BO12"
       ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
+      ],
       "stage_ids": [
         "ST161"
       ],
@@ -29170,6 +29336,10 @@
       },
       "pleases_boosters": [
         "BO12"
+      ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
       ],
       "stage_ids": [
         "ST162"
@@ -29191,6 +29361,10 @@
       "pleases_boosters": [
         "BO12"
       ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
+      ],
       "stage_ids": [
         "ST162"
       ],
@@ -29210,6 +29384,10 @@
       },
       "pleases_boosters": [
         "BO12"
+      ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
       ],
       "stage_ids": [
         "ST163"
@@ -29231,6 +29409,10 @@
       "pleases_boosters": [
         "BO12"
       ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
+      ],
       "stage_ids": [
         "ST163"
       ],
@@ -29250,6 +29432,10 @@
       },
       "pleases_boosters": [
         "BO12"
+      ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
       ],
       "stage_ids": [
         "ST164"
@@ -29271,6 +29457,10 @@
       "pleases_boosters": [
         "BO12"
       ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
+      ],
       "stage_ids": [
         "ST164"
       ],
@@ -29291,6 +29481,9 @@
       "pleases_boosters": [
         "BO07",
         "BO14"
+      ],
+      "displeases_boosters": [
+        "BO15"
       ],
       "stage_ids": [
         "ST165"
@@ -29316,6 +29509,9 @@
         "BO07",
         "BO14"
       ],
+      "displeases_boosters": [
+        "BO15"
+      ],
       "stage_ids": [
         "ST165"
       ],
@@ -29336,6 +29532,9 @@
       "pleases_boosters": [
         "BO07",
         "BO14"
+      ],
+      "displeases_boosters": [
+        "BO15"
       ],
       "stage_ids": [
         "ST166"
@@ -29358,6 +29557,9 @@
         "BO07",
         "BO14"
       ],
+      "displeases_boosters": [
+        "BO15"
+      ],
       "stage_ids": [
         "ST166"
       ],
@@ -29378,6 +29580,9 @@
       "pleases_boosters": [
         "BO07",
         "BO14"
+      ],
+      "displeases_boosters": [
+        "BO15"
       ],
       "stage_ids": [
         "ST167"
@@ -29400,6 +29605,9 @@
         "BO07",
         "BO14"
       ],
+      "displeases_boosters": [
+        "BO15"
+      ],
       "stage_ids": [
         "ST167"
       ],
@@ -29420,6 +29628,9 @@
       "pleases_boosters": [
         "BO07",
         "BO14"
+      ],
+      "displeases_boosters": [
+        "BO15"
       ],
       "stage_ids": [
         "ST168"
@@ -29442,6 +29653,9 @@
         "BO07",
         "BO14"
       ],
+      "displeases_boosters": [
+        "BO15"
+      ],
       "stage_ids": [
         "ST168"
       ],
@@ -29463,6 +29677,9 @@
         "BO07",
         "BO14"
       ],
+      "displeases_boosters": [
+        "BO15"
+      ],
       "stage_ids": [
         "ST169"
       ],
@@ -29483,6 +29700,9 @@
       "pleases_boosters": [
         "BO07",
         "BO14"
+      ],
+      "displeases_boosters": [
+        "BO15"
       ],
       "stage_ids": [
         "ST169"
@@ -29632,6 +29852,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "stage_ids": [
         "ST174"
       ],
@@ -29654,6 +29877,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "stage_ids": [
         "ST174"
       ],
@@ -29675,6 +29901,9 @@
         "BO19",
         "BO20",
         "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
       ],
       "stage_ids": [
         "ST175"
@@ -29701,6 +29930,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "stage_ids": [
         "ST175"
       ],
@@ -29722,6 +29954,9 @@
         "BO19",
         "BO20",
         "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
       ],
       "stage_ids": [
         "ST177"
@@ -29745,6 +29980,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "stage_ids": [
         "ST177"
       ],
@@ -29766,6 +30004,9 @@
         "BO19",
         "BO20",
         "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
       ],
       "stage_ids": [
         "ST178"
@@ -29789,6 +30030,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "stage_ids": [
         "ST178"
       ],
@@ -29811,6 +30055,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "stage_ids": [
         "ST179"
       ],
@@ -29832,6 +30079,9 @@
         "BO19",
         "BO20",
         "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
       ],
       "stage_ids": [
         "ST179"
@@ -30676,7 +30926,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "stage_ids": [
         "ST198"
@@ -30701,7 +30952,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "stage_ids": [
         "ST198"
@@ -30726,7 +30978,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "stage_ids": [
         "ST199"
@@ -30751,7 +31004,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "stage_ids": [
         "ST199"
@@ -30776,7 +31030,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "stage_ids": [
         "ST200"
@@ -30801,7 +31056,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "stage_ids": [
         "ST200"
@@ -32117,7 +32373,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "stage_ids": [
         "ST230"
@@ -32142,7 +32400,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "stage_ids": [
         "ST230"
@@ -32167,7 +32427,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "stage_ids": [
         "ST231"
@@ -32192,7 +32454,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "stage_ids": [
         "ST231"
@@ -32217,7 +32481,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "stage_ids": [
         "ST232"
@@ -32242,7 +32508,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "stage_ids": [
         "ST232"
@@ -32269,7 +32537,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST233"
@@ -32296,7 +32565,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST233"
@@ -32326,7 +32596,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST234"
@@ -32353,7 +32624,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST234"
@@ -32380,7 +32652,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST235"
@@ -32407,7 +32680,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST235"
@@ -32434,7 +32708,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST236"
@@ -32461,7 +32736,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST236"
@@ -32488,7 +32764,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST237"
@@ -32515,7 +32792,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST237"
@@ -32542,7 +32820,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST238"
@@ -32569,7 +32848,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "stage_ids": [
         "ST238"
@@ -32595,7 +32875,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "stage_ids": [
         "ST239"
@@ -32621,7 +32902,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "stage_ids": [
         "ST239"
@@ -32647,7 +32929,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "stage_ids": [
         "ST240"
@@ -32673,7 +32956,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "stage_ids": [
         "ST240"
@@ -32699,7 +32983,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "stage_ids": [
         "ST241"
@@ -32725,7 +33010,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "stage_ids": [
         "ST241"
@@ -32751,7 +33037,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "stage_ids": [
         "ST242"
@@ -32777,7 +33064,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "stage_ids": [
         "ST242"
@@ -33220,7 +33508,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "stage_ids": [
         "ST254"
@@ -33246,7 +33535,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "stage_ids": [
         "ST254"
@@ -33272,7 +33562,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "stage_ids": [
         "ST255"
@@ -33298,7 +33589,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "stage_ids": [
         "ST255"
@@ -33324,7 +33616,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "stage_ids": [
         "ST256"
@@ -33350,7 +33643,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "stage_ids": [
         "ST256"
@@ -33579,6 +33873,9 @@
         "BO09",
         "BO26"
       ],
+      "displeases_boosters": [
+        "BO24"
+      ],
       "stage_ids": [
         "ST09",
         "ST172",
@@ -33717,7 +34014,8 @@
         "BO30"
       ],
       "displeases_boosters": [
-        "BO06"
+        "BO06",
+        "BO07"
       ],
       "stage_ids": [
         "ST10",
@@ -33864,6 +34162,9 @@
         "BO22",
         "BO15",
         "BO25"
+      ],
+      "displeases_boosters": [
+        "BO11"
       ],
       "stage_ids": [
         "ST11",
@@ -34145,6 +34446,9 @@
         "BO30",
         "BO10",
         "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
       ],
       "stage_ids": [
         "ST13",
@@ -34492,6 +34796,9 @@
         "BO06",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO04"
+      ],
       "stage_ids": [
         "ST15",
         "ST27",
@@ -34554,7 +34861,9 @@
       ],
       "displeases_boosters": [
         "BO21",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO29"
       ],
       "stage_ids": [
         "ST16",
@@ -34699,6 +35008,9 @@
         "BO30",
         "BO22"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "stage_ids": [
         "ST16",
         "ST51",
@@ -34732,6 +35044,9 @@
         "BO25",
         "BO05",
         "BO16"
+      ],
+      "displeases_boosters": [
+        "BO06"
       ],
       "stage_ids": [
         "ST17",
@@ -34927,7 +35242,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO02"
+        "BO02",
+        "BO31"
       ],
       "stage_ids": [
         "ST18"
@@ -35620,7 +35936,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "bill_ids": [
         "BI07"
@@ -35646,7 +35963,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "bill_ids": [
         "BI07"
@@ -35672,7 +35990,8 @@
       ],
       "displeases_boosters": [
         "BO05",
-        "BO26"
+        "BO26",
+        "BO07"
       ],
       "bill_ids": [
         "BI07"
@@ -35768,6 +36087,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "bill_ids": [
         "BI09"
       ],
@@ -35789,6 +36111,9 @@
         "BO04",
         "BO23",
         "BO03"
+      ],
+      "displeases_boosters": [
+        "BO17"
       ],
       "bill_ids": [
         "BI09"
@@ -35812,6 +36137,9 @@
         "BO23",
         "BO03"
       ],
+      "displeases_boosters": [
+        "BO17"
+      ],
       "bill_ids": [
         "BI09"
       ],
@@ -35831,6 +36159,10 @@
       },
       "pleases_boosters": [
         "BO12"
+      ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
       ],
       "bill_ids": [
         "BI10"
@@ -35852,6 +36184,10 @@
       "pleases_boosters": [
         "BO12"
       ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
+      ],
       "bill_ids": [
         "BI10"
       ],
@@ -35871,6 +36207,10 @@
       },
       "pleases_boosters": [
         "BO12"
+      ],
+      "displeases_boosters": [
+        "BO32",
+        "BO15"
       ],
       "bill_ids": [
         "BI10"
@@ -35893,6 +36233,9 @@
         "BO07",
         "BO14"
       ],
+      "displeases_boosters": [
+        "BO15"
+      ],
       "bill_ids": [
         "BI11"
       ],
@@ -35914,6 +36257,9 @@
         "BO07",
         "BO14"
       ],
+      "displeases_boosters": [
+        "BO15"
+      ],
       "bill_ids": [
         "BI11"
       ],
@@ -35934,6 +36280,9 @@
       "pleases_boosters": [
         "BO07",
         "BO14"
+      ],
+      "displeases_boosters": [
+        "BO15"
       ],
       "bill_ids": [
         "BI11"
@@ -36020,6 +36369,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "bill_ids": [
         "BI13"
       ],
@@ -36042,6 +36394,9 @@
         "BO20",
         "BO15"
       ],
+      "displeases_boosters": [
+        "BO23"
+      ],
       "bill_ids": [
         "BI13"
       ],
@@ -36063,6 +36418,9 @@
         "BO19",
         "BO20",
         "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
       ],
       "bill_ids": [
         "BI13"
@@ -36318,7 +36676,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "bill_ids": [
         "BI17"
@@ -36343,7 +36702,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "bill_ids": [
         "BI17"
@@ -36368,7 +36728,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "bill_ids": [
         "BI17"
@@ -36840,7 +37201,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "bill_ids": [
         "BI24"
@@ -36865,7 +37228,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "bill_ids": [
         "BI24"
@@ -36890,7 +37255,9 @@
       ],
       "displeases_boosters": [
         "BO26",
-        "BO11"
+        "BO11",
+        "BO12",
+        "BO07"
       ],
       "bill_ids": [
         "BI24"
@@ -36917,7 +37284,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "bill_ids": [
         "BI25"
@@ -36944,7 +37312,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "bill_ids": [
         "BI25"
@@ -36971,7 +37340,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO19"
+        "BO19",
+        "BO12"
       ],
       "bill_ids": [
         "BI25"
@@ -36997,7 +37367,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "bill_ids": [
         "BI26"
@@ -37023,7 +37394,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "bill_ids": [
         "BI26"
@@ -37049,7 +37421,8 @@
       ],
       "displeases_boosters": [
         "BO17",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "bill_ids": [
         "BI26"
@@ -37222,7 +37595,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "bill_ids": [
         "BI29"
@@ -37248,7 +37622,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "bill_ids": [
         "BI29"
@@ -37274,7 +37649,8 @@
       ],
       "displeases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO29"
       ],
       "bill_ids": [
         "BI29"
@@ -38254,7 +38630,8 @@
       ],
       "displeases_boosters": [
         "BO22",
-        "BO13"
+        "BO13",
+        "BO07"
       ],
       "bill_ids": [
         "BI43"
@@ -38280,7 +38657,8 @@
       ],
       "displeases_boosters": [
         "BO22",
-        "BO13"
+        "BO13",
+        "BO07"
       ],
       "bill_ids": [
         "BI43"
@@ -38306,7 +38684,8 @@
       ],
       "displeases_boosters": [
         "BO22",
-        "BO13"
+        "BO13",
+        "BO07"
       ],
       "bill_ids": [
         "BI43"
@@ -38781,7 +39160,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "bill_ids": [
         "BI50"
@@ -38806,7 +39186,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "bill_ids": [
         "BI50"
@@ -38831,7 +39212,8 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "bill_ids": [
         "BI50"
@@ -49062,7 +49444,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB231"
@@ -49085,7 +49470,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB231"
@@ -49108,7 +49496,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB231"
@@ -49131,7 +49522,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB231"
@@ -49154,7 +49548,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB231"
@@ -49177,7 +49574,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB231"
@@ -49200,7 +49600,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB231"
@@ -49223,7 +49626,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB231"
@@ -66814,7 +67220,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB233"
@@ -66837,7 +67246,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB233"
@@ -66860,7 +67272,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB233"
@@ -66883,7 +67298,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB233"
@@ -66906,7 +67324,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB233"
@@ -66929,7 +67350,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB233"
@@ -66952,7 +67376,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB233"
@@ -66975,7 +67402,10 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO21",
+        "BO12",
+        "BO14",
+        "BO29"
       ],
       "component_ids": [
         "CB233"
@@ -69182,7 +69612,8 @@
         "BO27"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "component_ids": [
         "CB274"
@@ -69205,7 +69636,8 @@
         "BO27"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "component_ids": [
         "CB274"
@@ -69228,7 +69660,8 @@
         "BO27"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "component_ids": [
         "CB274"
@@ -69251,7 +69684,8 @@
         "BO27"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "component_ids": [
         "CB274"
@@ -69274,7 +69708,8 @@
         "BO27"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "component_ids": [
         "CB274"
@@ -69297,7 +69732,8 @@
         "BO27"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "component_ids": [
         "CB274"
@@ -69320,7 +69756,8 @@
         "BO27"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "component_ids": [
         "CB274"
@@ -69343,7 +69780,8 @@
         "BO27"
       ],
       "displeases_boosters": [
-        "BO30"
+        "BO30",
+        "BO19"
       ],
       "component_ids": [
         "CB274"
@@ -72469,7 +72907,8 @@
       ],
       "displeases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO19"
       ],
       "stage_ids": [
         "ST273"

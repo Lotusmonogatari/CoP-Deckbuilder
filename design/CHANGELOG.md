@@ -2817,3 +2817,13 @@ Left as is: the name "Japanese tuna sashimi" (DE2), and no critic for the craft 
 - **Unnamed promises confirmed:** VQ15 B and VQ58 B cost Reputation only.
 - **Draft content confirmed as is.**
 - **Titles and Question Themes:** laid out for review in `design/review/TITLES_AND_THEMES_2026-10-31.md` (nothing changed). Cameron's rule: party leader is the only canon title to preserve.
+
+### Question Themes review applied (2026-10-31, Cameron)
+
+All workbook edits on the Question Themes tab. Details: `design/review/TITLES_AND_THEMES_2026-10-31.md`, "Applied".
+
+- 37 stale Why notes rewritten from the Annoys column.
+- The 17 unused themes deleted (681 remain).
+- The seven rarely-annoyed organizations (BO12, BO14, BO32, BO07, BO19, BO29, BO31) gained natural rivals: 3-6 themes each, 21-49 questions. Only Annoys were added; nobody gained a pleased theme, and the Chamber of Commerce's Annoys were left as they were.
+- Eight contested themes with no downside gained one rival each.
+- The 15 most-used bill debates were checked: the Tsugaru Strait Joint Commission Act and the Candidate Gender Parity Act debates now set back Our Traditional Society.
