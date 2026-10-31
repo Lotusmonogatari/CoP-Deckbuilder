@@ -2860,9 +2860,10 @@ func _show_briefing() -> void:
 
 	# The briefing follows Cameron's template (2026-10-30): the level's title,
 	# its total hours and total rewards; then, between gold lines, each stage
-	# with its hours and rewards. A level that is one stage named like the
-	# level shows just that stage. Rewards run Reputation, Constituency
-	# support, Party support, then XP and Funds last (BriefingSummary).
+	# with its hours and rewards. A level with a single shown stage lists no
+	# stage at all (2026-10-31): the level's totals are that stage's numbers.
+	# Rewards run Reputation, Constituency support, Party support, then XP and
+	# Funds last (BriefingSummary).
 	var shown: Array = []
 	for stage: Dictionary in expanded.get("stages", []):
 		# A stage marked "No" (Media Ambush, an ambush by name) is left out
@@ -2874,41 +2875,38 @@ func _show_briefing() -> void:
 	var level_name := str(_chosen_level.get("description", "")).strip_edges()
 	if level_name.is_empty():
 		level_name = Text.say("office.briefing_fallback_title")
-	var just_the_stage := BriefingSummary.is_just_its_stage(level_name, shown)
 	var rows: Array[Control] = []
 	var anything_set := false
 
-	if not just_the_stage:
-		rows.append(UiKit.line(Text.say("briefing.level_hours",
-			{"count": GameState.level_hours(_chosen_level)}), "HeaderLabel"))
-		var total := BriefingSummary.total_rewards(shown)
-		if not total.is_empty():
-			rows.append(UiKit.line(Text.say("briefing.total_rewards")))
-			rows.append_array(_reward_bullets(total))
-
+	rows.append(UiKit.line(Text.say("briefing.level_hours",
+		{"count": GameState.level_hours(_chosen_level)}), "HeaderLabel"))
+	var total := BriefingSummary.total_rewards(shown)
+	if not total.is_empty():
+		rows.append(UiKit.line(Text.say("briefing.total_rewards")))
+		rows.append_array(_reward_bullets(total))
 	for stage: Dictionary in shown:
-		if not just_the_stage:
+		if not LevelRunner.rewards_are_unset(stage):
+			anything_set = true
+
+	if BriefingSummary.lists_stages(shown):
+		for stage: Dictionary in shown:
 			rows.append(_gold_rule())
 			rows.append(UiKit.heading(str(stage.get("name_en", Text.say("briefing.stage_fallback")))))
-		rows.append(UiKit.line(Text.say("briefing.stage_hours",
-			{"count": TimeClock.units_for_stage(stage)})))
-		if LevelRunner.rewards_are_unset(stage):
-			rows.append(UiKit.line(Text.say("reward.stage_not_set"), "SmallLabel"))
-			continue
-		anything_set = true
-		var rewards := BriefingSummary.stage_rewards(stage)
-		if not rewards.is_empty():
-			rows.append(UiKit.line(Text.say("briefing.rewards")))
-			rows.append_array(_reward_bullets(rewards))
+			rows.append(UiKit.line(Text.say("briefing.stage_hours",
+				{"count": TimeClock.units_for_stage(stage)})))
+			if LevelRunner.rewards_are_unset(stage):
+				rows.append(UiKit.line(Text.say("reward.stage_not_set"), "SmallLabel"))
+				continue
+			var rewards := BriefingSummary.stage_rewards(stage)
+			if not rewards.is_empty():
+				rows.append(UiKit.line(Text.say("briefing.rewards")))
+				rows.append_array(_reward_bullets(rewards))
 
 	if not anything_set:
 		rows.append(UiKit.line(""))
 		rows.append(UiKit.line(Text.say("reward.nothing_set")))
 
-	var title := level_name
-	if just_the_stage:
-		title = str((shown[0] as Dictionary).get("name_en", level_name))
-	_briefing_panel.open(title, rows, Text.say("office.go_in"))
+	_briefing_panel.open(level_name, rows, Text.say("office.go_in"))
 
 
 ## One bullet per reward, in briefing order: "● Reputation +1" ... "● XP

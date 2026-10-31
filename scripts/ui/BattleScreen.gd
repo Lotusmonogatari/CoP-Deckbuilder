@@ -368,6 +368,12 @@ func _refresh() -> void:
 	if state.is_over():
 		if state.outcome == "win":
 			_player_portrait.show_victory()
+		else:
+			_player_portrait.show_defeat()
+		# The result panel starts BELOW the picture box, so the victory and
+		# defeat poses (yours and the beaten opponent's) stay in view instead
+		# of sitting behind the dimmed panel (2026-10-31, Cameron's playtest).
+		%OutcomePanel.offset_top = $Safe/Column/OpponentRow/ArtBox.get_global_rect().end.y
 		_outcome.show_outcome(engine, _stage)
 
 

@@ -53,8 +53,10 @@ static func ordered(rewards: Dictionary) -> Array[String]:
 	return names
 
 
-## True when the level is a single shown stage named exactly like the level,
-## so the briefing shows only the stage (no level title, no totals).
-static func is_just_its_stage(level_name: String, shown: Array) -> bool:
-	return shown.size() == 1 \
-		and str((shown[0] as Dictionary).get("name_en", "")).strip_edges() == level_name.strip_edges()
+## True when the briefing lists the stages one by one. A level with a single
+## shown stage lists none: the level's own totals already are that stage's
+## numbers (Cameron, 2026-10-31). Hidden stages (Reveal In Briefing = No) do
+## not count, so a level of one real room and a surprise shows only the room's
+## totals.
+static func lists_stages(shown: Array) -> bool:
+	return shown.size() > 1

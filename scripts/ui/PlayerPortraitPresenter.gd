@@ -18,6 +18,7 @@ const GUARDING := ArtLoader.GUARDING
 const GAINING := ArtLoader.GAINING
 const DAMAGED := ArtLoader.DAMAGED
 const VICTORY := ArtLoader.VICTORY
+const DEFEATED := ArtLoader.DEFEATED
 
 ## How long a reaction shows before settling back to neutral. Doubled
 ## 2026-09-28 (Cameron, mobile playtest: too quick to register on a phone).
@@ -58,6 +59,12 @@ func react_to_opponent(opponent_result: Dictionary) -> void:
 ## DEFEATED.
 func show_victory() -> void:
 	_wear(VICTORY)
+
+
+## The stage just ended in a loss: settle on DEFEATED (a face that is not
+## drawn falls back to damaged, then neutral, like every other expression).
+func show_defeat() -> void:
+	_wear(DEFEATED)
 
 
 ## Pure: which face a just-played card earns, from BattleEngine.play_card()'s

@@ -118,6 +118,9 @@ const COST_LABEL_LIFT := 0.008
 const NAME_RECT := Rect2(0.215, 0.032, 0.655, 0.056)
 const NAME_FONT_SIZE := 26
 const NAME_FONT_SIZE_MIN := 14
+## How far the title's letters sit above the centre of their line box, as a
+## fraction of the font size (measured on rendered cards, 2026-10-31).
+const TITLE_INK_BIAS := 0.09
 
 ## Where the art sits, measured from every front template's OWN transparent
 ## window (tools/measure at the time was a one-off script over each PNG's
@@ -308,8 +311,21 @@ func show_card(card_row: Dictionary) -> void:
 	_effect_label.text = str(card_row.get("effect_text", ""))
 	_frame.texture = frame_for(str(card_row.get("suit", "")))
 	var name_box := name_box_for(str(card_row.get("suit", "")))
-	_name_label.anchor_top = name_box.x
-	_name_label.anchor_bottom = name_box.x + name_box.y
+	# Centered ON the plate: a plate shorter than the title's own line height
+	# (the Appeal frame's) used to make the label grow downward from its top
+	# edge, so the title sat low. Equal anchors at the plate's middle and
+	# offsets of half the label's real height keep it centered whatever the
+	# plate's size (2026-10-31, Cameron's playtest).
+	var plate_middle := name_box.x + name_box.y / 2.0
+	var half_line := maxf(_name_label.get_minimum_size().y, name_box.y * HEIGHT) / 2.0
+	# The letters (capitals and tall lower-case, no tails) sit a little above
+	# the middle of the font's line box, so the box is nudged down by that
+	# much to put the LETTERS in the middle of the plate.
+	var nudge := TITLE_INK_BIAS * float(_name_label.get_theme_font_size("font_size"))
+	_name_label.anchor_top = plate_middle
+	_name_label.anchor_bottom = plate_middle
+	_name_label.offset_top = -half_line + nudge
+	_name_label.offset_bottom = half_line + nudge
 	# By card ID (data/art.json's `card` folder) when it has been drawn;
 	# PLACEHOLDER_CARD_ART otherwise, the one shared stand-in every undrawn
 	# card uses (see its own comment above).

@@ -116,10 +116,14 @@ func _check() -> void:
 		return
 	print("  %d cards chosen, Discard and play enabled" % _need)
 	await _click(confirm)
+	# A card that draws may deal fresh copies of the same cards into the hand,
+	# so check the discard pile, not the hand's absence of those IDs.
+	var pile: Array = engine.state.discard.duplicate()
 	for id: String in hand:
-		if engine.state.hand.has(id):
-			_failures.append("the played or discarded cards are still in hand: %s" % [engine.state.hand])
-			break
+		if not pile.has(id):
+			_failures.append("%s did not reach the discard pile: %s" % [id, pile])
+		else:
+			pile.erase(id)
 	if engine.state.discard.size() < hand.size():
 		_failures.append("the discard pile holds %d cards, expected %d" % [engine.state.discard.size(), hand.size()])
 	else:

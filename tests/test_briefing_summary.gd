@@ -25,8 +25,7 @@ func test_totals_add_every_stage_together() -> void:
 	assert_eq(int(total[BriefingSummary.XP]), 115)
 
 
-func test_a_one_stage_level_named_like_its_stage_shows_only_the_stage() -> void:
-	assert_true(BriefingSummary.is_just_its_stage("School Visit", [{"name_en": "School Visit"}]))
-	assert_false(BriefingSummary.is_just_its_stage("A Day Out", [{"name_en": "School Visit"}]))
-	assert_false(BriefingSummary.is_just_its_stage("School Visit",
-		[{"name_en": "School Visit"}, {"name_en": "Town Hall"}]))
+func test_a_level_with_one_shown_stage_lists_no_stage_section() -> void:
+	assert_false(BriefingSummary.lists_stages([]))
+	assert_false(BriefingSummary.lists_stages([{"name_en": "Town Hall"}]))
+	assert_true(BriefingSummary.lists_stages([{"name_en": "A"}, {"name_en": "B"}]))
