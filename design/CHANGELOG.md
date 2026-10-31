@@ -2842,3 +2842,18 @@ Cameron's workbook upload added **SH33 Haskap Yoitomake** (a Tomakomai roll cake
 | D. Decline | — | National Awareness -2; BO28, BO29 and BO15 each -2 (the 1.5x shortfall rule) |
 
 SH33 is set to the **Office** inventory tab (Cameron's rule: items used only by events go there). New Text row: `event.decline.EV65`. All text is Claude's draft for Cameron to rewrite.
+
+### EV65 revised; promises can carry their own kept and broken effects (2026-10-31, Cameron)
+
+Cameron's edit to EV65: the delegation tours "the capitol", and both gift choices are now promises, deliverable within 32 hours.
+
+| Choice | Commitment | Kept | Broken |
+|---|---|---|---|
+| A. Commit to bring them a Haskap Yoitomake and its story | Promise Item SH33 within 32, owed to Our Traditional Society | National Awareness +1, Ainu Community Council (BO28) +1, Our Traditional Society (BO15) +2; Cameron's delivery text appears in a pop-up | BO28 -5, BO15 -5, Reputation -2 |
+| B. Share a box of Yezo cookies | Promise Item SH30 within 32 | Reputation +1 | Reputation -2 |
+| C. Send a staff member with a welcome letter | — | National Awareness +0-1 on the spot | — |
+| D. Decline | — | National Awareness -2; BO28, BO29 and BO15 each -2 on the spot | — |
+
+Picking A or B gives nothing on the spot; everything comes from keeping or breaking the promise.
+
+**New Event Choices columns** (with header notes; the Commitment column got one too): **Promise Kept** and **Promise Broken** list what keeping or breaking the choice's promise does, replacing the Balance defaults. Targets: an organization, a Sanban value, District or National. **Promise Kept Text** is the line shown in a "Promise kept" pop-up. All three are blank-tolerant: a blank cell means the old defaults. The exporter checks the grammar and the organization IDs, and that these columns are only filled in on a choice that makes a promise. Code: `Promises.terms_of()` / `has_own()`, `GameState.pay_commitments(..., terms)` and `_apply_promise_effects()`, and the kept pop-up in `OfficeScreen._on_keep_promise()`. New Text row: `promises.kept_title`. Tests: `test_promises.gd` (own kept effects replace the default; own broken effects replace the default; EV65's two promises carry their terms).

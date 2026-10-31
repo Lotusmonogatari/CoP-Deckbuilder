@@ -650,6 +650,7 @@
   "promises.broken_title": "Promises broken",
   "promises.keep": "Keep this promise",
   "promises.kept": "Promise kept: {who}",
+  "promises.kept_title": "Promise kept",
   "promises.none": "Nothing is owed right now.",
   "promises.row": "{what} for {who}, due in {count} hours",
   "promises.row.one": "{what} for {who}, due in {count} hour",

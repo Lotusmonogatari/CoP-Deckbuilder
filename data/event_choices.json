@@ -19,7 +19,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV03",
@@ -44,7 +47,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV04",
@@ -66,7 +72,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV04",
@@ -91,7 +100,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV04",
@@ -116,7 +128,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV05",
@@ -146,7 +161,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV05",
@@ -173,7 +191,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV05",
@@ -198,7 +219,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV06",
@@ -226,7 +250,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV06",
@@ -251,7 +278,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV11",
@@ -276,7 +306,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV11",
@@ -295,7 +328,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV11",
@@ -320,7 +356,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV12",
@@ -348,7 +387,10 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV12",
@@ -370,7 +412,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV12",
@@ -395,7 +440,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV13",
@@ -422,7 +470,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV13",
@@ -452,7 +503,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV14",
@@ -474,7 +528,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV14",
@@ -499,7 +556,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV14",
@@ -524,7 +584,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV15",
@@ -549,7 +612,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV15",
@@ -571,7 +637,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV16",
@@ -593,7 +662,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV16",
@@ -620,7 +692,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV17",
@@ -647,7 +722,10 @@
     "unlocks_level": "LV35",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV17",
@@ -669,7 +747,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV17",
@@ -688,7 +769,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV18",
@@ -715,7 +799,10 @@
     "unlocks_level": "LV39",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV18",
@@ -741,7 +828,10 @@
         "within": 120,
         "for": "BO04"
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV18",
@@ -763,7 +853,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV19",
@@ -791,7 +884,10 @@
     "unlocks_level": "LV43",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV19",
@@ -821,7 +917,10 @@
         "kind": "hours",
         "amount": 1
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV19",
@@ -845,7 +944,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV20",
@@ -875,7 +977,10 @@
     "unlocks_level": "LV45",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV20",
@@ -901,7 +1006,10 @@
         "within": 168,
         "for": "BO16"
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV20",
@@ -925,7 +1033,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV21",
@@ -955,7 +1066,10 @@
     "unlocks_level": "LV49",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV21",
@@ -974,7 +1088,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV21",
@@ -1003,7 +1120,10 @@
         "within": 72,
         "for": "BO22"
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV22",
@@ -1033,7 +1153,10 @@
     "unlocks_level": "LV52",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV22",
@@ -1061,7 +1184,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV22",
@@ -1083,7 +1209,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV23",
@@ -1110,7 +1239,10 @@
     "unlocks_level": "LV57",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV23",
@@ -1132,7 +1264,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV23",
@@ -1154,7 +1289,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV24",
@@ -1184,7 +1322,10 @@
     "unlocks_level": "LV59",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV24",
@@ -1206,7 +1347,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV24",
@@ -1228,7 +1372,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV25",
@@ -1255,7 +1402,10 @@
     "unlocks_level": "LV60",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV25",
@@ -1274,7 +1424,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV25",
@@ -1296,7 +1449,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV26",
@@ -1335,7 +1491,10 @@
         "kind": "hours",
         "amount": 2
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV26",
@@ -1357,7 +1516,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV26",
@@ -1388,7 +1550,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV27",
@@ -1412,7 +1577,10 @@
     "unlocks_level": "LV73",
     "dues_delta": null,
     "starts_level": "LV100",
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV27",
@@ -1437,7 +1605,10 @@
         "event_id": "EV63",
         "after": 48
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV27",
@@ -1456,7 +1627,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV31",
@@ -1478,7 +1652,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV31",
@@ -1503,7 +1680,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV31",
@@ -1528,7 +1708,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV32",
@@ -1558,7 +1741,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV32",
@@ -1580,7 +1766,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV32",
@@ -1610,7 +1799,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV33",
@@ -1632,7 +1824,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV33",
@@ -1657,7 +1852,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV33",
@@ -1682,7 +1880,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV34",
@@ -1710,7 +1911,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV34",
@@ -1735,7 +1939,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV34",
@@ -1762,7 +1969,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV35",
@@ -1792,7 +2002,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV35",
@@ -1814,7 +2027,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV35",
@@ -1844,7 +2060,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV36",
@@ -1869,7 +2088,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": "LV99",
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV36",
@@ -1891,7 +2113,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV36",
@@ -1910,7 +2135,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV37",
@@ -1940,7 +2168,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV37",
@@ -1962,7 +2193,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV37",
@@ -1986,7 +2220,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV38",
@@ -2019,7 +2256,10 @@
         "event_id": "EV62",
         "after": 24
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV38",
@@ -2046,7 +2286,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV38",
@@ -2085,7 +2328,10 @@
         "kind": "funds",
         "amount": 30000
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV39",
@@ -2110,7 +2356,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV39",
@@ -2129,7 +2378,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV39",
@@ -2156,7 +2408,10 @@
         "kind": "hours",
         "amount": 2
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV40",
@@ -2186,7 +2441,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV40",
@@ -2218,7 +2476,10 @@
         "kind": "item",
         "item_id": "SH25"
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV40",
@@ -2242,7 +2503,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV41",
@@ -2276,7 +2540,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV41",
@@ -2298,7 +2565,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV41",
@@ -2325,7 +2595,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV42",
@@ -2360,7 +2633,10 @@
         "kind": "hours",
         "amount": 1
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV42",
@@ -2379,7 +2655,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV42",
@@ -2406,7 +2685,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV43",
@@ -2435,7 +2717,10 @@
         "kind": "hours",
         "amount": 1
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV43",
@@ -2454,7 +2739,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV43",
@@ -2478,7 +2766,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV44",
@@ -2503,7 +2794,10 @@
       "max": -30000
     },
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV44",
@@ -2525,7 +2819,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV44",
@@ -2547,7 +2844,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV45",
@@ -2577,7 +2877,10 @@
         "kind": "hours",
         "amount": 2
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV45",
@@ -2602,7 +2905,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV45",
@@ -2624,7 +2930,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV46",
@@ -2649,7 +2958,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV46",
@@ -2671,7 +2983,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV46",
@@ -2700,7 +3015,10 @@
         "within": 48,
         "for": "BO01"
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV47",
@@ -2725,7 +3043,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV47",
@@ -2747,7 +3068,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV47",
@@ -2769,7 +3093,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV12",
@@ -2791,7 +3118,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV13",
@@ -2818,7 +3148,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV15",
@@ -2843,7 +3176,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV16",
@@ -2865,7 +3201,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV17",
@@ -2892,7 +3231,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV18",
@@ -2919,7 +3261,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV19",
@@ -2947,7 +3292,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV22",
@@ -2977,7 +3325,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV23",
@@ -3004,7 +3355,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV25",
@@ -3028,7 +3382,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV26",
@@ -3062,7 +3419,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV27",
@@ -3086,7 +3446,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV37",
@@ -3113,7 +3476,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV38",
@@ -3140,7 +3506,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV41",
@@ -3174,7 +3543,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV42",
@@ -3204,7 +3576,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV43",
@@ -3228,7 +3603,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV48",
@@ -3266,7 +3644,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV48",
@@ -3291,7 +3672,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV48",
@@ -3313,7 +3697,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV48",
@@ -3351,7 +3738,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV49",
@@ -3385,7 +3775,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV49",
@@ -3412,7 +3805,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV49",
@@ -3447,7 +3843,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV49",
@@ -3477,7 +3876,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV50",
@@ -3511,7 +3913,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": "LV101",
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV50",
@@ -3538,7 +3943,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV50",
@@ -3560,7 +3968,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV50",
@@ -3590,7 +4001,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV51",
@@ -3612,7 +4026,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": "LV98",
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV51",
@@ -3637,7 +4054,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV51",
@@ -3656,7 +4076,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV51",
@@ -3678,7 +4101,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV52",
@@ -3702,7 +4128,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": "LV101",
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV52",
@@ -3724,7 +4153,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV52",
@@ -3751,7 +4183,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV52",
@@ -3775,7 +4210,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV53",
@@ -3799,7 +4237,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": "LV100",
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV53",
@@ -3821,7 +4262,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV53",
@@ -3847,7 +4291,10 @@
         "within": 168,
         "for": "BO07"
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV53",
@@ -3871,7 +4318,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV54",
@@ -3898,7 +4348,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV54",
@@ -3917,7 +4370,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV54",
@@ -3941,7 +4397,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV54",
@@ -3968,7 +4427,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV55",
@@ -3995,7 +4457,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV55",
@@ -4017,7 +4482,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV55",
@@ -4036,7 +4504,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV55",
@@ -4063,7 +4534,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV56",
@@ -4090,7 +4564,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV56",
@@ -4112,7 +4589,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV56",
@@ -4139,7 +4619,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV56",
@@ -4166,7 +4649,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV57",
@@ -4193,7 +4679,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV57",
@@ -4215,7 +4704,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV57",
@@ -4244,7 +4736,10 @@
         "kind": "item",
         "item_id": "SH29"
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV57",
@@ -4271,7 +4766,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV58",
@@ -4298,7 +4796,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV58",
@@ -4320,7 +4821,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV58",
@@ -4344,7 +4848,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV58",
@@ -4368,7 +4875,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV59",
@@ -4395,7 +4905,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV59",
@@ -4414,7 +4927,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV59",
@@ -4438,7 +4954,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV59",
@@ -4465,7 +4984,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV60",
@@ -4493,7 +5015,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV60",
@@ -4517,7 +5042,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV60",
@@ -4536,7 +5064,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV60",
@@ -4560,7 +5091,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV61",
@@ -4594,7 +5128,10 @@
         "within": 120,
         "for": "BO26"
       }
-    ]
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV61",
@@ -4616,7 +5153,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV61",
@@ -4640,7 +5180,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV61",
@@ -4664,7 +5207,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV62",
@@ -4695,7 +5241,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV62",
@@ -4722,7 +5271,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV62",
@@ -4746,7 +5298,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV62",
@@ -4773,7 +5328,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV63",
@@ -4797,7 +5355,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV63",
@@ -4819,7 +5380,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV63",
@@ -4843,7 +5407,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV64",
@@ -4865,7 +5432,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV64",
@@ -4887,7 +5457,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV64",
@@ -4906,7 +5479,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV63",
@@ -4930,7 +5506,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV64",
@@ -4952,13 +5531,16 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV65",
     "choice": "A",
-    "choice_text": "Welcome them now with Haskap Yoitomake and its story",
-    "result_text": "You tell them about the haskap berries Ainu families have gathered for generations, and the confectioners who roll them into sponge. They ask for the recipe and leave with the story.",
+    "choice_text": "Commit to bring them a Haskap Yoitomake and its story",
+    "result_text": "You promise them a Yezo sweet before they leave.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -4966,56 +5548,8 @@
     "reputation_delta": null,
     "party_support_delta": null,
     "district_delta": null,
-    "national_delta": {
-      "min": 1,
-      "max": 2
-    },
-    "rewards": [
-      {
-        "target": "BO28",
-        "delta": 1
-      },
-      {
-        "target": "BO29",
-        "delta": 1
-      },
-      {
-        "target": "BO15",
-        "delta": 1
-      }
-    ],
-    "unlocks_level": null,
-    "dues_delta": null,
-    "starts_level": null,
-    "commitment": [
-      {
-        "kind": "item",
-        "item_id": "SH33"
-      }
-    ]
-  },
-  {
-    "event_id": "EV65",
-    "choice": "B",
-    "choice_text": "Promise Haskap Yoitomake for their farewell reception",
-    "result_text": "The host writes the reception into your diary. A Yezo sweet is now expected on the table.",
-    "funds_cost": null,
-    "funds_delta": null,
-    "xp_delta": null,
-    "constituency_delta": null,
-    "reputation_delta": null,
-    "party_support_delta": null,
-    "district_delta": null,
-    "national_delta": {
-      "min": 0,
-      "max": 1
-    },
-    "rewards": [
-      {
-        "target": "BO28",
-        "delta": 1
-      }
-    ],
+    "national_delta": null,
+    "rewards": null,
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
@@ -5023,10 +5557,77 @@
       {
         "kind": "promise_item",
         "item_id": "SH33",
-        "within": 72,
+        "within": 32,
         "for": "BO15"
       }
-    ]
+    ],
+    "promise_kept": [
+      {
+        "target": "National",
+        "delta": 1
+      },
+      {
+        "target": "BO28",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "promise_broken": [
+      {
+        "target": "BO28",
+        "delta": -5
+      },
+      {
+        "target": "BO15",
+        "delta": -5
+      },
+      {
+        "target": "Reputation",
+        "delta": -2
+      }
+    ],
+    "promise_kept_text": "You tell them about the haskap berries that local families have gathered for generations, and the confectioners who roll them into the iconic sponge cakes. They take pictures of it for their social media and leave with the story."
+  },
+  {
+    "event_id": "EV65",
+    "choice": "B",
+    "choice_text": "Share a box of Yezo cookies",
+    "result_text": "The host is delighted. The cookies are expected before the delegation leaves.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_item",
+        "item_id": "SH30",
+        "within": 32
+      }
+    ],
+    "promise_kept": [
+      {
+        "target": "Reputation",
+        "delta": 1
+      }
+    ],
+    "promise_broken": [
+      {
+        "target": "Reputation",
+        "delta": -2
+      }
+    ],
+    "promise_kept_text": null
   },
   {
     "event_id": "EV65",
@@ -5048,7 +5649,10 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   },
   {
     "event_id": "EV65",
@@ -5083,6 +5687,9 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   }
 ]

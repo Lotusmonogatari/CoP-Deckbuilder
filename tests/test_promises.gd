@@ -120,3 +120,38 @@ func test_a_free_backing_extends_a_running_timer_never_shortens_it() -> void:
 	assert_eq(int(GameState.modifier_expires[mod_id]), GameState.time_units + 20)
 	GameState._grant_backing_for(mod_id, 3)
 	assert_eq(int(GameState.modifier_expires[mod_id]), GameState.time_units + 20)
+
+
+func test_a_promise_with_its_own_kept_effects_pays_them_instead_of_the_default() -> void:
+	# Event Choices' Promise Kept / Broken (2026-10-31, EV65).
+	GameState.booster_standing["BO28"] = 50
+	GameState.booster_standing["BO15"] = 50
+	var national := int(GameState.awareness.get("national", 0))
+	var terms := {"kept": [{"target": "BO28", "delta": 1}, {"target": "BO15", "delta": 2}, {"target": "National", "delta": 1}],
+		"broken": [{"target": "BO28", "delta": -5}], "kept_text": "Delivered."}
+	GameState.pay_commitments([{"kind": "promise_item", "item_id": "SH25", "within": 10, "for": "BO15"}], "A test", "", terms)
+	assert_eq(str(GameState.promises[0]["kept_text"]), "Delivered.")
+	GameState.add_item("SH25")
+	assert_eq(GameState.keep_promise(str(GameState.promises[0]["id"])), "")
+	assert_eq(int(GameState.booster_standing["BO28"]), 51)
+	assert_eq(int(GameState.booster_standing["BO15"]), 52, "its own +2, not the default as well")
+	assert_eq(int(GameState.awareness.get("national", 0)), national + 1)
+
+
+func test_a_promise_with_its_own_broken_effects_charges_only_those() -> void:
+	GameState.booster_standing["BO28"] = 50
+	var reputation := int(GameState.meta.get("Reputation", 0))
+	GameState.pay_commitments([{"kind": "promise_item", "item_id": "SH25", "within": 10, "for": "BO06"}], "A test", "",
+		{"broken": [{"target": "BO28", "delta": -5}, {"target": "Reputation", "delta": -1}]})
+	GameState.spend_hours(11)
+	assert_eq(int(GameState.booster_standing["BO28"]), 45)
+	assert_eq(int(GameState.booster_standing["BO06"]), 50, "the default standing loss does not also apply")
+	assert_eq(int(GameState.meta.get("Reputation", 0)), maxi(0, reputation - 1))
+	assert_eq(GameState.promises_broken_unseen.size(), 1)
+
+
+func test_ev65_s_promises_carry_their_own_terms() -> void:
+	for row: Dictionary in DataDB.event_choices:
+		if str(row.get("event_id")) == "EV65" and str(row.get("choice")) in ["A", "B"]:
+			assert_true(Promises.has_own(Promises.terms_of(row), "kept"), "EV65 %s has its own kept effects" % row["choice"])
+			assert_true(Promises.has_own(Promises.terms_of(row), "broken"))

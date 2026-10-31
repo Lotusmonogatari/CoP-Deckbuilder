@@ -729,14 +729,21 @@ func _show_promises() -> void:
 
 func _on_keep_promise(promise_id: String) -> void:
 	var who := ""
+	var kept_text := ""
 	for promise: Dictionary in GameState.promises:
 		if str(promise.get("id", "")) == promise_id:
 			who = GameState.promise_who(promise)
+			kept_text = str(promise.get("kept_text", ""))
 	if not GameState.keep_promise(promise_id).is_empty():
 		return
 	SaveManager.autosave()
 	_refresh_resources()
 	_refresh_calendar()
+	# A promise with its own kept line (Event Choices, 2026-10-31) says it in a
+	# pop-up; the rest just flash.
+	if not kept_text.is_empty():
+		_promises_panel.open(Text.say("promises.kept_title"), [UiKit.line(kept_text)])
+		return
 	Layout.flash(Text.say("promises.kept", {"who": who}))
 	if GameState.promises.is_empty():
 		_promises_panel.close()

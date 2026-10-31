@@ -33,6 +33,24 @@ static func make(entry: Dictionary, now: int, default_hours: int, fallback_org: 
 	}
 
 
+## A choice row's own promise terms (Event Choices, 2026-10-31): { kept,
+## broken, kept_text }, holding only what the row fills in.
+static func terms_of(row: Dictionary) -> Dictionary:
+	var terms := {}
+	for pair: Array in [["promise_kept", "kept"], ["promise_broken", "broken"], ["promise_kept_text", "kept_text"]]:
+		var value: Variant = row.get(pair[0])
+		if value is Array and not (value as Array).is_empty():
+			terms[pair[1]] = value
+		elif value is String and not (value as String).strip_edges().is_empty():
+			terms[pair[1]] = value
+	return terms
+
+
+## True when a promise carries its own `key` ("kept" or "broken") effects.
+static func has_own(promise: Dictionary, key: String) -> bool:
+	return promise.get(key) is Array and not (promise[key] as Array).is_empty()
+
+
 ## Game hours left before a promise falls due (never below zero).
 static func hours_left(promise: Dictionary, now: int) -> int:
 	return maxi(0, int(promise.get("due_at", 0)) - now)

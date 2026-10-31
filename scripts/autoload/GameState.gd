@@ -1216,7 +1216,8 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	# follow-up's delay counts from when the event is over (2026-10-31).
 	var hours := EventEngine.hours_of(event)
 	spend_hours(hours)
-	lines.append_array(pay_commitments(commitments, str(event.get("title", "")), _first_pleased_org(chosen.get("rewards"))))
+	lines.append_array(pay_commitments(commitments, str(event.get("title", "")), _first_pleased_org(chosen.get("rewards")),
+		Promises.terms_of(chosen)))
 	hours += Commitments.hours(commitments)
 	event_last_at[event_id] = time_units
 	if str(event.get("trigger", "")) == "Dated" and not dated_events_done.has(event_id):
@@ -1584,6 +1585,10 @@ func _break_overdue_promises() -> void:
 		promises.erase(promise)
 		var org := str(promise.get("for_org", ""))
 		var cause := Text.say("record.cause_promise_broken")
+		if Promises.has_own(promise, "broken"):
+			_apply_promise_effects(promise["broken"], cause)
+			promises_broken_unseen.append(promise)
+			continue
 		if not org.is_empty():
 			var drop := int(DataDB.balance.get("promise_broken_standing", -3))
 			_under_cause(cause, func() -> void: _apply_booster_delta(org, drop))
@@ -1591,6 +1596,24 @@ func _break_overdue_promises() -> void:
 		if rep != 0:
 			_under_cause(cause, func() -> void: _apply_meta_reward("Reputation", rep))
 		promises_broken_unseen.append(promise)
+
+
+## A promise's own kept or broken effects (Event Choices' Promise Kept /
+## Promise Broken): organizations, Sanban values and the awareness meters.
+func _apply_promise_effects(effects: Array, cause: String) -> void:
+	for entry: Variant in effects:
+		if not (entry is Dictionary):
+			continue
+		var target := str(entry.get("target", ""))
+		var delta := int(entry.get("delta", 0))
+		if delta == 0:
+			continue
+		if target.begins_with("BO"):
+			_under_cause(cause, func() -> void: _apply_booster_delta(target, delta))
+		elif target == "District" or target == "National":
+			apply_awareness_delta(target.to_lower(), delta)
+		else:
+			_under_cause(cause, func() -> void: _apply_meta_reward(target, delta))
 
 
 ## Who a promise was made to, in words: the organization, else where it came from.
@@ -1635,7 +1658,9 @@ func keep_promise(promise_id: String) -> String:
 		if str(promise.get("kind", "")) == Promises.PROMISE_ITEM:
 			_take_item(str(promise.get("item_id", "")))
 		var org := str(promise.get("for_org", ""))
-		if not org.is_empty():
+		if Promises.has_own(promise, "kept"):
+			_apply_promise_effects(promise["kept"], Text.say("record.cause_promise_kept"))
+		elif not org.is_empty():
 			var gain := int(DataDB.balance.get("promise_kept_standing", 1))
 			_under_cause(Text.say("record.cause_promise_kept"), func() -> void: _apply_booster_delta(org, gain))
 		if str(promise.get("kind", "")) == Promises.PROMISE_HOURS:
@@ -3229,7 +3254,8 @@ func commitment_label(text: String, list: Array) -> String:
 
 ## Pays a choice's commitments: the hours pass, the Funds are spent, the items
 ## are handed over. Returns lines for a result screen.
-func pay_commitments(list: Array, source: String = "", fallback_org: String = "") -> Array[String]:
+func pay_commitments(list: Array, source: String = "", fallback_org: String = "",
+		terms: Dictionary = {}) -> Array[String]:
 	var lines: Array[String] = []
 	# Hours a choice costs on the spot pass before any promise or follow-up is
 	# dated, so those count from when the choice is done (2026-10-31).
@@ -3245,6 +3271,11 @@ func pay_commitments(list: Array, source: String = "", fallback_org: String = ""
 			promise_serial += 1
 			var promise := Promises.make(entry, time_units, int(DataDB.balance.get("promise_default_deadline_hours", 48)),
 				fallback_org, source, promise_serial)
+			# The choice's own kept/broken effects and kept line, when it has
+			# them (Event Choices, 2026-10-31); otherwise the Balance defaults.
+			for key: String in ["kept", "broken", "kept_text"]:
+				if terms.has(key):
+					promise[key] = terms[key]
 			promises.append(promise)
 			lines.append(Text.say("promise.made", {"what": promise_what(promise), "who": promise_who(promise),
 				"count": int(promise["due_at"]) - time_units}))

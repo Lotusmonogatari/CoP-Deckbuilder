@@ -1058,7 +1058,7 @@
   {
     "event_id": "EV65",
     "title": "A Delegation Comes for Cultural Exchange",
-    "flavor": "A cultural delegation from abroad is touring the district this week. Their host asks whether you will welcome them, and what Yezo will put on the table.",
+    "flavor": "A cultural delegation from abroad is touring the capitol this week. Their host asks whether you will welcome them, and what Yezo will put on the table.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 2,

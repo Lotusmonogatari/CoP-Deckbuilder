@@ -1230,8 +1230,15 @@ SHEETS = {
             ("Starts Level", "starts_level", "str"),
             # 2026-10-31: what the choice costs on the spot (Commitments.gd).
             ("Commitment", "commitment", "commitment_list"),
+            # 2026-10-31 (Cameron, EV65): what keeping or breaking this choice's
+            # promise does, replacing the Balance defaults. "BO28 +1; BO15 +2;
+            # National +1; Reputation +1". Blank = the defaults.
+            ("Promise Kept", "promise_kept", "promise_effects"),
+            ("Promise Broken", "promise_broken", "promise_effects"),
+            # The line shown when the promise is kept. Blank = a short flash.
+            ("Promise Kept Text", "promise_kept_text", "str"),
         ],
-        "optional": ["Starts Level", "Commitment"],
+        "optional": ["Starts Level", "Commitment", "Promise Kept", "Promise Broken", "Promise Kept Text"],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
@@ -1847,6 +1854,24 @@ def coerce(value, kind, where, report):
                 continue
             report.error(where, f"commitment {part!r} is not 'Hours N', 'Funds N', 'Item SHxx' "
                          "or 'Promise Item SHxx|Hours N [within H] [for BOxx]'")
+        return found
+
+    if kind == "promise_effects":
+        # 2026-10-31: "BO28 +1; National +1; Reputation -2" -> [{"target", "delta"}].
+        # Targets: an organization (BOxx), a Sanban name, District or National.
+        found = []
+        targets = ("Reputation", "Constituency support", "Funds", "Party support", "District", "National")
+        for part in text.split(";"):
+            part = part.strip()
+            if not part:
+                continue
+            match = re.match(r"^(BO\d+|[A-Za-z ]+?)\s+([+-]\d+)$", part)
+            if match and (match.group(1).upper().startswith("BO") or match.group(1) in targets):
+                target = match.group(1).upper() if match.group(1).upper().startswith("BO") else match.group(1)
+                found.append({"target": target, "delta": int(match.group(2))})
+                continue
+            report.error(where, f"promise effect {part!r} is not 'BOxx +N', a Sanban name, "
+                         "'District +N' or 'National +N'")
         return found
 
     if kind in ("stage_list", "id_list"):
@@ -3244,6 +3269,16 @@ def check_commitments(data, report):
             if entry.get("kind") in ("item", "promise_item") and entry.get("item_id") not in shop_ids:
                 report.error(f"Event Choices {row.get('event_id')} {row.get('choice')} Commitment",
                              f"{entry.get('item_id')} is not a Shop item")
+    booster_ids = {str(b.get("booster_id")) for b in data.get("boosters", [])}
+    for row in data.get("event_choices", []):
+        where = f"Event Choices {row.get('event_id')} {row.get('choice')}"
+        has_promise = any(str(e.get("kind", "")).startswith("promise") for e in row.get("commitment") or [])
+        for column in ("promise_kept", "promise_broken", "promise_kept_text"):
+            if row.get(column) and not has_promise:
+                report.error(where, f"{column} is filled in but the Commitment has no Promise")
+        for entry in (row.get("promise_kept") or []) + (row.get("promise_broken") or []):
+            if str(entry["target"]).startswith("BO") and entry["target"] not in booster_ids:
+                report.error(where, f"promise effect names {entry['target']}, which is not in the Boosters tab")
     for row in data.get("event_options", []):
         for entry in row.get("commitment") or []:
             if entry.get("kind") in ("item", "promise_item") and entry.get("item_id") not in shop_ids:
