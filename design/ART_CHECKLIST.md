@@ -11,7 +11,7 @@ in `data/art.json`.
 | Staff | 0 / 105 |
 | Visitors | 0 / 830 |
 | Card art | 70 / 70 |
-| Backgrounds | 41 / 42 |
+| Backgrounds | 45 / 46 |
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 21 / 21 |
@@ -168,7 +168,7 @@ in `data/art.json`.
 | SF06 | Hiromi Tanaka | ☐ | ☐ | ☐ | ☐ | ☐ |
 | SF07 | Ako Ban | ☐ | ☐ | ☐ | ☐ | ☐ |
 | SF08 | Aoi Suzuki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF09 | Suzu Kobayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF09 | Isela Kobayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | SF10 | Himari Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
 | SF11 | Alejandro Uzeko | ☐ | ☐ | ☐ | ☐ | ☐ |
 | SF12 | Santiago Portillo | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -178,9 +178,9 @@ in `data/art.json`.
 | SF16 | Hiroki Shitamachi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | SF17 | Grant Stark | ☐ | ☐ | ☐ | ☐ | ☐ |
 | SF18 | Leo Vargar | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF19 | Lisa Namamura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF19 | Kanima Namamura | ☐ | ☐ | ☐ | ☐ | ☐ |
 | SF20 | Haruka Kamikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF21 | Yuka Inamu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF21 | Ari Inamu | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Visitors — `assets/characters/visitors/`
 
@@ -357,75 +357,75 @@ in `data/art.json`.
 
 | File | For | Drawn |
 |---|---|---|
-| C01.png | Record of Service | ✓ |
 | C02.png | Sincere Answer | ✓ |
-| C03.png | Formal Apology | ✓ |
-| C04.png | Return to First Principles | ✓ |
 | C05.png | Impassioned Speech | ✓ |
-| C06.png | Tearful Appeal | ✓ |
-| C07.png | Rousing Applause | ✓ |
-| C08.png | Speech from the Soul | ✓ |
 | C09.png | Call for Unity | ✓ |
+| C14.png | Document Request | ✓ |
+| C19.png | Agitation | ✓ |
+| C23.png | Shifting the Issue | ✓ |
+| C07.png | Rousing Applause | ✓ |
+| C17.png | Labeling | ✓ |
+| C22.png | "I Have No Recollection" | ✓ |
+| C26.png | Own the Mistake | ✓ |
+| C28.png | Read the Letters Aloud | ✓ |
+| C30.png | Rally the Faithful | ✓ |
+| C33.png | Refuse to Yield | ✓ |
+| C38.png | Call In a Favor | ✓ |
+| C43.png | Check Their Facts | ✓ |
+| C01.png | Record of Service | ✓ |
+| C03.png | Formal Apology | ✓ |
+| C06.png | Tearful Appeal | ✓ |
 | C10.png | Voice of the Hometown | ✓ |
 | C11.png | Work the Room First | ✓ |
 | C12.png | Ask Who's With You | ✓ |
 | C13.png | Present the Stats | ✓ |
-| C14.png | Document Request | ✓ |
 | C15.png | Pursue the Contradiction | ✓ |
-| C16.png | Table the White Paper | ✓ |
-| C17.png | Labeling | ✓ |
 | C18.png | Drawing Battle Lines | ✓ |
-| C19.png | Agitation | ✓ |
 | C20.png | Loyalty Test | ✓ |
 | C21.png | Iridescent Answer | ✓ |
-| C22.png | "I Have No Recollection" | ✓ |
-| C23.png | Shifting the Issue | ✓ |
 | C24.png | Offer a Quiet Assurance | ✓ |
 | C25.png | Point to the Promise Kept | ✓ |
-| C26.png | Own the Mistake | ✓ |
 | C27.png | Appeal Across the Aisle | ✓ |
-| C28.png | Read the Letters Aloud | ✓ |
-| C29.png | Appeal to Conscience | ✓ |
-| C30.png | Rally the Faithful | ✓ |
 | C31.png | Righteous Anger | ✓ |
 | C32.png | Raise Your Voice | ✓ |
-| C33.png | Refuse to Yield | ✓ |
 | C34.png | Bring the Room to Its Feet | ✓ |
 | C35.png | Invoke Party Discipline | ✓ |
 | C36.png | Offer a Private Word | ✓ |
-| C37.png | Call for Common Cause | ✓ |
-| C38.png | Call In a Favor | ✓ |
-| C39.png | We Have the Votes | ✓ |
 | C40.png | Question the Funding | ✓ |
-| C41.png | Set the Record Straight | ✓ |
 | C42.png | Press for a Straight Answer | ✓ |
-| C43.png | Check Their Facts | ✓ |
-| C44.png | Demand an Outside Review | ✓ |
 | C45.png | Name and Shame | ✓ |
 | C46.png | Force the Choice | ✓ |
 | C47.png | Question Their Loyalty | ✓ |
 | C48.png | Media Appeal | ✓ |
-| C49.png | Declare Them Unfit | ✓ |
 | C50.png | Take It Under Advisement | ✓ |
 | C51.png | Feed the Press a Line | ✓ |
 | C52.png | Drown Them in Detail | ✓ |
-| C53.png | Tell the Room What It Wants | ✓ |
 | C54.png | Off the Record | ✓ |
+| C04.png | Return to First Principles | ✓ |
+| C08.png | Speech from the Soul | ✓ |
+| C16.png | Table the White Paper | ✓ |
+| C29.png | Appeal to Conscience | ✓ |
+| C37.png | Call for Common Cause | ✓ |
+| C39.png | We Have the Votes | ✓ |
+| C41.png | Set the Record Straight | ✓ |
+| C44.png | Demand an Outside Review | ✓ |
+| C49.png | Declare Them Unfit | ✓ |
+| C53.png | Tell the Room What It Wants | ✓ |
 | C55.png | Trim the Appendix | ✓ |
-| C56.png | Review the Record | ✓ |
 | C57.png | Burn the Draft | ✓ |
-| C58.png | Cut Your Losses | ✓ |
 | C59.png | Let It Go | ✓ |
-| C60.png | A Fresh Start | ✓ |
 | C61.png | Shuffle the Papers | ✓ |
-| C62.png | Lose the Evidence | ✓ |
 | C63.png | Compile the Dossier | ✓ |
-| C64.png | The Full Audit | ✓ |
 | C65.png | Burn the Bridge | ✓ |
-| C66.png | No Quarter | ✓ |
 | C67.png | Give Everything | ✓ |
-| C68.png | Words From the Soul | ✓ |
 | C69.png | The Quiet Deal | ✓ |
+| C56.png | Review the Record | ✓ |
+| C58.png | Cut Your Losses | ✓ |
+| C60.png | A Fresh Start | ✓ |
+| C62.png | Lose the Evidence | ✓ |
+| C64.png | The Full Audit | ✓ |
+| C66.png | No Quarter | ✓ |
+| C68.png | Words From the Soul | ✓ |
 | C70.png | Back-Room Bargain | ✓ |
 
 ## Backgrounds — `assets/backgrounds/`
@@ -457,6 +457,7 @@ in `data/art.json`.
 | ST22.png | Party Steering Committee Check-In | ✓ |
 | ST23.png | National Assembly Floor Voting | ✓ |
 | OUT_COAST_BATTERY.png | Outside scene | ✓ |
+| OUT_CULTURAL_CENTER_1_AINU.png | Outside scene | ✓ |
 | OUT_FARM_1.png | Outside scene | ✓ |
 | OUT_FARM_2.png | Outside scene | ✓ |
 | OUT_FESTIVAL_1.png | Outside scene | ✓ |
@@ -464,6 +465,9 @@ in `data/art.json`.
 | OUT_FESTIVAL_2_WINTER.png | Outside scene | ✓ |
 | OUT_HARBOR_1.png | Outside scene | ✓ |
 | OUT_HARBOR_2.png | Outside scene | ✓ |
+| OUT_LAKESIDE_1.png | Outside scene | ✓ |
+| OUT_LAKESIDE_2_MORNING.png | Outside scene | ✓ |
+| OUT_LAKESIDE_3_AINU.png | Outside scene | ✓ |
 | OUT_NEIGHBORHOOD.png | Outside scene | ☐ |
 | OUT_SCHOOL_1.png | Outside scene | ✓ |
 | OUT_SCHOOL_2.png | Outside scene | ✓ |
