@@ -68,8 +68,8 @@ The design workbook (`design/Game_Workbook.xlsx`) is exported by
 outputs are objects or nested structures rather than arrays, and some runtime
 files are maintained by hand. Follow the exporter and the `_README` fields in
 the current data files when changing the data contract. The checked-in snapshot
-(2026-10-29) contains 97 levels, 270 stages, 32 boosters, 53 modifiers, 70 cards,
-125 opponents, 6 real parties, 50 Floor Vote bills, 166 visitors, 38 events and 6
+(2026-10-31) contains 101 levels, 273 stages, 32 boosters, 53 modifiers, 70 cards,
+131 opponents, 6 real parties, 50 Floor Vote bills, 166 visitors, 55 events and 6
 cosmetic packages; `design/NEW_CHAT_STARTUP.md` keeps the current counts. How to add
 levels, stages, events and their dependent content: `design/CONTENT_GUIDE.md`.
 
@@ -684,3 +684,28 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Office dues box, staff gate, profile layout, faster verify, outside backgrounds (2026-10-28, Cameron)
 - Marketplace limit line, and several pictures for one event (2026-10-29, Cameron)
 - One content guide replaces the older content documents (2026-10-29, Cameron)
+- The content guide, tried out (2026-10-29, Cameron)
+- Guidance documents brought up to date (2026-10-29, Cameron)
+- The game design document refreshed (2026-10-29, Cameron)
+- The Assets tab's backgrounds brought in line with the art and the background rules (2026-10-29, Cameron)
+- Staff rank rewards: the 2026-10-30 edit was reversed (Cameron)
+- Staff biographies and role flavor text now reach the profile (2026-10-30, Cameron)
+- Taller event pictures (2026-10-30, Cameron)
+- Event pictures you can drag and tilt; Image Scroll and Image Pan switches (2026-10-30, Cameron)
+- Image Scroll and Image Pan on every background (2026-10-30, Cameron)
+- Playtest fixes: briefing names, seasons, dues line, hours, starting items (2026-10-30, Cameron)
+- The level briefing follows Cameron's template (2026-10-30, Cameron)
+- Two lakeside events (2026-10-30, Cameron)
+- EV50 A College Visit to an Ainu Cultural Center (2026-10-31, Cameron)
+- Drafting rules advisory; tests read the workbook (2026-10-31, Cameron)
+- Card text follows the Discard columns; lakeside and cultural-center art in (2026-10-31, Cameron)
+- Playtest fixes: one-stage briefings, card titles, end-of-stage poses (2026-10-31, Cameron)
+- Events that lead to a stage (2026-10-31, Cameron)
+- Six more students; a room cast audit and an organization balance audit (2026-10-31, Cameron)
+- Audit decisions applied (2026-10-31, Cameron)
+- Two room findings fixed; OP06 unseated again (2026-10-31, Cameron)
+- Choice honesty audit, batch 1 (2026-10-31, Cameron)
+- Commitments, phase 1: choices cost what they promise (2026-10-31, Cameron)
+- Choice honesty rewrite completed (2026-10-31, Cameron)
+- Commitments, phases 2-3: promises with deadlines (2026-10-31, Cameron)
+- Commitments, phase 4 and follow-ups (2026-10-31, Cameron away; interim choices in `design/review/OPEN_ITEMS_2026-10-31.md`)
