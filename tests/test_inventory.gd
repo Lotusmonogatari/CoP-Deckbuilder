@@ -589,3 +589,14 @@ func test_items_that_are_not_consumables_are_not_capped() -> void:
 	for item_id: String in ["SHTEST_NOUSE", "SHTEST_CARD1", "SHTEST_LV1"]:
 		assert_eq(Items.stack_cap(DataDB.get_shop_item(item_id)), 0,
 			"%s is never held in the inventory, so it has no stack to cap" % item_id)
+
+
+func test_the_inventory_column_picks_the_marketplace_tab() -> void:
+	# Cameron, 2026-10-31: Office for items only events use; blank = Personal.
+	assert_eq(Items.inventory_tab({"inventory": "Office"}), Items.OFFICE_INVENTORY)
+	assert_eq(Items.inventory_tab({"inventory": null}), Items.PERSONAL)
+	assert_eq(Items.inventory_tab({}), Items.PERSONAL)
+	for item: Dictionary in DataDB.shop:
+		if Items.inventory_tab(item) == Items.OFFICE_INVENTORY:
+			assert_false(Items.usable_in(item, Items.OFFICE) or Items.usable_in(item, Items.STAGE),
+				"%s is on the Office tab but can be Used" % item["item_id"])

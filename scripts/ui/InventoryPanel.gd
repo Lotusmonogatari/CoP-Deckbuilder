@@ -48,7 +48,9 @@ func _ready() -> void:
 ## show_inventory() so a caller (the Office's Marketplace, which shows this
 ## alongside the Supplies shop, 2026-09-28) can combine it with rows of its
 ## own rather than only ever being able to open it alone.
-func inventory_rows() -> Array[Control]:
+## `tab` (Items.PERSONAL / Items.OFFICE_INVENTORY) shows only the items held
+## under that Marketplace tab; "" shows everything (2026-10-31).
+func inventory_rows(tab: String = "") -> Array[Control]:
 	_showing_item = ""
 	var rows: Array[Control] = []
 	if not _notice.is_empty():
@@ -59,6 +61,8 @@ func inventory_rows() -> Array[Control]:
 		_notice_effects = []
 
 	var held := _held_items()
+	if not tab.is_empty():
+		held = held.filter(func(id: String) -> bool: return Items.inventory_tab(DataDB.get_shop_item(id)) == tab)
 	if held.is_empty():
 		rows.append(UiKit.line(Text.say("inventory.empty")))
 	else:

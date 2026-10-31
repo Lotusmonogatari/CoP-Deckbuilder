@@ -6144,5 +6144,26 @@
     "english": "You leave the airline's letter unanswered.",
     "placeholders": null,
     "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "shop.tab_personal",
+    "where": "Marketplace, tab button at the top",
+    "english": "Personal Inventory",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.tab_office",
+    "where": "Marketplace, tab button at the top",
+    "english": "Office Inventory",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.office_blurb",
+    "where": "Marketplace, Office Inventory tab",
+    "english": "Gifts and goods for events wait here. When an event or a visitor's choice calls for one, it is handed over from here.",
+    "placeholders": null,
+    "notes": null
   }
 ]

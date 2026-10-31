@@ -40,6 +40,18 @@ static func is_yes(value: Variant) -> bool:
 	return ["yes", "y", "true", "1"].has(str(value).strip_edges().to_lower())
 
 
+## The Marketplace tab an item is held and sold under (Shop "Inventory
+## (Personal/Office)", Cameron 2026-10-31): Office for items only events and
+## visitor choices use (the regional gifts), Personal for everything else.
+const PERSONAL := "Personal"
+const OFFICE_INVENTORY := "Office"
+
+
+static func inventory_tab(item: Dictionary) -> String:
+	var raw: Variant = item.get("inventory")
+	return OFFICE_INVENTORY if raw != null and str(raw).strip_edges() == OFFICE_INVENTORY else PERSONAL
+
+
 static func usable_in(item: Dictionary, context: String) -> bool:
 	match context:
 		OFFICE:

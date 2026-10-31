@@ -2761,3 +2761,12 @@ Tests: `test_promises.gd` (deadline after hours, backing timer); `test_training_
 ### Cleanup pass (2026-10-31, Cameron)
 
 Cameron approved each removal individually: 23 unused Text rows, `CarryOverLines.gd`, two unused `StanceLines` briefing helpers, `tools/build_floor_vote_scene.gd` and the Balance row "Starting Training Session Coupons". Fixes to tests that today's data changes broke: the awareness tests now read their thresholds from the tab, the HT28/HT32 drafts fit the 3-sentence limit, and VQ105 stays inside the visitor content budget. Details and the 12 Text rows these removals leave unused: `design/CLEANUP_CANDIDATES.md`.
+
+### Marketplace: Personal Inventory and Office Inventory tabs (2026-10-31, Cameron)
+
+Two buttons at the top of the Marketplace, **Personal Inventory** and **Office Inventory**, switch both the strip of held items and the items for sale. Personal holds what is used in stages, levels or generally in the Office (coffee, tea, the walking tour, the dinner, the snub items). Office holds what only events and visitor choices use: the regional gifts SH25-SH32, handed over when a choice calls for one.
+
+- New Shop column **Inventory (Personal/Office)**, with a header note: blank means Personal, and SH25-SH32 are Office. The exporter rejects any other value. `Items.inventory_tab()` reads it.
+- `InventoryPanel.inventory_rows(tab)` filters the strip; `OfficeScreen._market_tab` remembers the tab while the Marketplace is rebuilt.
+- New Text rows: `shop.tab_personal`, `shop.tab_office`, `shop.office_blurb`.
+- Tests: `test_inventory.gd` (the column, and no Office item can be Used), `tests/interaction/market_tabs_test.tscn` (real clicks on both tabs).

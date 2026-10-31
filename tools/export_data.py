@@ -1512,7 +1512,7 @@ SHEETS = {
                      "Bonus 2 Role", "Bonus 2 Min Tier", "Bonus 2 Amount",
                      "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Duration Units", "Card Tier",
                      "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase",
-                     "In Marketplace (Yes/No)"],
+                     "In Marketplace (Yes/No)", "Inventory (Personal/Office)"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -1606,6 +1606,9 @@ SHEETS = {
             # 2026-10-30: "No" keeps an item out of the Marketplace's buy list
             # (it can still be given and used); blank = Yes.
             ("In Marketplace (Yes/No)", "in_marketplace", "str"),
+            # 2026-10-31: the Marketplace tab the item is held and sold under.
+            # Office = used only by events and visitor choices; blank = Personal.
+            ("Inventory (Personal/Office)", "inventory", "str"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's
@@ -3293,6 +3296,15 @@ def check_event_levels(data, report):
             report.warn(where, f"{target} has more than one stage; event levels are meant to be one stage")
 
 
+def check_inventory_tabs(data, report):
+    """A Shop row's Inventory cell is Personal, Office or blank."""
+    for row in data.get("shop", []):
+        value = str(row.get("inventory") or "").strip()
+        if value and value not in ("Personal", "Office"):
+            report.error(f"Shop {row.get('item_id')} Inventory (Personal/Office)",
+                         f"'{value}' is not Personal or Office (blank = Personal)")
+
+
 def check_seasons(data, report):
     """Every name in a Levels or Events Seasons cell must be one of rules.json's seasons."""
     try:
@@ -4064,6 +4076,7 @@ def main():
     validate(data, report)
     check_rooms(data, report)
     check_seasons(data, report)
+    check_inventory_tabs(data, report)
     check_event_levels(data, report)
     check_commitments(data, report)
     check_followups(data, report)

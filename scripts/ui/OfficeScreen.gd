@@ -121,6 +121,8 @@ var _election_panel: Overlay
 var _events_button: Button
 var _events_panel: Overlay
 var _event_panel: Overlay
+## The Marketplace tab showing: Items.PERSONAL or Items.OFFICE_INVENTORY.
+var _market_tab := Items.PERSONAL
 var _gathering_panel: Overlay
 var _hosted_panel: HostedEventPanel
 var _week_confirm_panel: Overlay
@@ -2027,17 +2029,43 @@ func _show_marketplace() -> void:
 	var funds_line := UiKit.line(Text.say("shop.funds_limit", {
 		"yen_funds": int(GameState.meta.get("Funds", 0)), "yen_limit": GameState.funds_limit()}), "HeaderLabel")
 	funds_line.name = "MarketFunds"
+	# Two tabs at the very top (Cameron, 2026-10-31): Personal Inventory for
+	# items used in stages, levels or generally in the Office; Office
+	# Inventory for items only events use. Each filters both the held strip
+	# and the items for sale; the current one is shown pressed.
+	var tabs := HBoxContainer.new()
+	tabs.name = "MarketTabs"
+	tabs.alignment = BoxContainer.ALIGNMENT_CENTER
+	tabs.add_theme_constant_override("separation", 16)
+	for tab: Array in [[Items.PERSONAL, "PersonalTab", "shop.tab_personal"],
+			[Items.OFFICE_INVENTORY, "OfficeTab", "shop.tab_office"]]:
+		var button := Button.new()
+		button.name = str(tab[1])
+		button.text = Text.say(str(tab[2]))
+		button.custom_minimum_size = Vector2(360, 100)
+		button.toggle_mode = true
+		button.button_pressed = _market_tab == str(tab[0])
+		button.pressed.connect(_on_market_tab.bind(str(tab[0])))
+		tabs.add_child(button)
+	rows.append(tabs)
 	rows.append(funds_line)
-	rows.append(UiKit.line(Text.say("shop.supplies_blurb")))
-	rows.append_array(_inventory_panel.inventory_rows())
+	rows.append(UiKit.line(Text.say("shop.supplies_blurb" if _market_tab == Items.PERSONAL else "shop.office_blurb")))
+	rows.append_array(_inventory_panel.inventory_rows(_market_tab))
 	rows.append(UiKit.heading(Text.say("office.marketplace")))
 	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
 	for item: Dictionary in DataDB.shop:
 		# Card sessions live in Rhetoric Training, not here; an item marked
 		# "In Marketplace: No" (the Training Session Coupon) is only ever given.
-		if item.get("card_tier") == null and str(item.get("in_marketplace", "")).strip_edges().to_lower() != "no":
+		if item.get("card_tier") == null and str(item.get("in_marketplace", "")).strip_edges().to_lower() != "no" \
+				and Items.inventory_tab(item) == _market_tab:
 			rows.append(_supply_row(item))
 	_inventory_panel.open(Text.say("shop.supplies"), rows)
+
+
+## A Marketplace tab button: rebuild the page for that tab.
+func _on_market_tab(tab: String) -> void:
+	_market_tab = tab
+	_show_marketplace()
 
 
 func _supply_row(item: Dictionary) -> Control:

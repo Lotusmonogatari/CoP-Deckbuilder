@@ -39,7 +39,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH02",
@@ -81,7 +82,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH03",
@@ -123,7 +125,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH04",
@@ -165,7 +168,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH05",
@@ -207,7 +211,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH06",
@@ -249,7 +254,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH07",
@@ -291,7 +297,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH08",
@@ -333,7 +340,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH09",
@@ -370,7 +378,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH10",
@@ -407,7 +416,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH11",
@@ -444,7 +454,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH12",
@@ -481,7 +492,8 @@
     "unlocks_recruitment_tier": "Yes",
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH13",
@@ -518,7 +530,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": 100000,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH14",
@@ -560,7 +573,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH15",
@@ -602,7 +616,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH16",
@@ -644,7 +659,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH17",
@@ -686,7 +702,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH18",
@@ -728,7 +745,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH19",
@@ -770,7 +788,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH20",
@@ -812,7 +831,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH21",
@@ -849,7 +869,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": 1,
-    "in_marketplace": "No"
+    "in_marketplace": "No",
+    "inventory": null
   },
   {
     "item_id": "SH22",
@@ -891,7 +912,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH23",
@@ -933,7 +955,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH24",
@@ -975,7 +998,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": null
   },
   {
     "item_id": "SH25",
@@ -1012,7 +1036,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": "Office"
   },
   {
     "item_id": "SH26",
@@ -1049,7 +1074,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": "Office"
   },
   {
     "item_id": "SH27",
@@ -1086,7 +1112,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": "Office"
   },
   {
     "item_id": "SH28",
@@ -1123,7 +1150,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": "Office"
   },
   {
     "item_id": "SH29",
@@ -1160,7 +1188,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": "Office"
   },
   {
     "item_id": "SH30",
@@ -1197,7 +1226,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": "Office"
   },
   {
     "item_id": "SH31",
@@ -1234,7 +1264,8 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": "Office"
   },
   {
     "item_id": "SH32",
@@ -1271,6 +1302,7 @@
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
     "free_card_tier": null,
-    "in_marketplace": null
+    "in_marketplace": null,
+    "inventory": "Office"
   }
 ]
