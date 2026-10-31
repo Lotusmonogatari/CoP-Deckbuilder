@@ -1964,9 +1964,11 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 
 	var stage := level_runner.current_stage()
 	var stage_hours := TimeClock.units_for_stage(stage)
-	time_units += stage_hours
 	calendar = WeekCalendar.advance(calendar, stage_hours, calendar_config())
-	_expire_modifiers()
+	# The same clock step Office time takes, so backings lapse AND promises
+	# that fell due during the stage are broken now, not at the next event
+	# or week end (mechanics audit, 2026-10-31).
+	_advance_clock(stage_hours)
 	_record_stage_type_result(str(stage.get("stage_id", "")), outcome)
 	_record_lifetime_gaffes(gaffes, outcome, gaffe_caused_loss)
 	last_awareness_change = {}

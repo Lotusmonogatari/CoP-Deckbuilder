@@ -3228,6 +3228,11 @@ def check_commitments(data, report):
     by_event = {}
     for row in data.get("event_choices", []):
         by_event.setdefault(row.get("event_id"), []).append(row.get("commitment") or [])
+        # Funds Cost and a Funds commitment are both charged, so having both
+        # bills the player twice (EV14 C did, mechanics audit 2026-10-31).
+        if row.get("funds_cost") and any(e.get("kind") == "funds" for e in row.get("commitment") or []):
+            report.error(f"Event Choices {row.get('event_id')} {row.get('choice')}",
+                         "has both a Funds Cost and a Funds commitment; the player would pay twice, keep one")
         for entry in row.get("commitment") or []:
             if entry.get("kind") in ("item", "promise_item") and entry.get("item_id") not in shop_ids:
                 report.error(f"Event Choices {row.get('event_id')} {row.get('choice')} Commitment",

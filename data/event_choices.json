@@ -513,12 +513,7 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": [
-      {
-        "kind": "funds",
-        "amount": 20000
-      }
-    ]
+    "commitment": null
   },
   {
     "event_id": "EV15",

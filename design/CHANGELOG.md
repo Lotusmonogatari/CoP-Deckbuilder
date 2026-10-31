@@ -2728,3 +2728,11 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 - **Seasons:** Winter December-March, Spring April-May, Summer June-August, Autumn September-November (`data/rules.json`).
 - **Student names (drafts):** OP126 Hinata Kusakabe, OP127 Sota Arakawa, OP128 Mio Takanashi, OP129 Daiki Funabashi, OP130 Aoi Kamishiro, OP131 Yuto Hanazono.
 - Regional goods kept as drafted; event-room difficulty left as is. Record: `design/review/OPEN_ITEMS_2026-10-31.md`.
+
+### Mechanics audit (2026-10-31, Cameron)
+
+A review of every mechanic (code, workbook, interdependence, activation, timing, rewards and penalties); full report in `design/review/MECHANICS_AUDIT_2026-10-31.md`.
+
+- **Fixed:** a stage's hours now take the same clock step as Office time (`GameState._advance_clock`), so a promise that falls due during a level is broken when the stage ends rather than at the next event or week end. Test: `test_promises.gd`.
+- **Fixed:** EV14 C charged 20,000円 twice (a Funds Cost and a `Funds 20000` Commitment). The Commitment cell is cleared, and the exporter now errors when a choice has both.
+- **Open for Cameron:** the scope of the Funding Freeze (only a stage's Funds reward is frozen today); crisis triggers react only when a stage ends; Media Ambush (ST19) and the Committee on Finance (ST16) win rates.

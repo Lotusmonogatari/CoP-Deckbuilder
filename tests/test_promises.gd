@@ -57,6 +57,17 @@ func test_a_promise_falling_due_unkept_is_broken() -> void:
 	assert_lte(int(GameState.meta.get("Reputation", 0)), reputation)
 
 
+func test_a_promise_falling_due_during_a_stage_is_broken_when_it_ends() -> void:
+	# Mechanics audit (2026-10-31): a stage's own hours used to move the clock
+	# without checking promises, so one could sit overdue until the next event.
+	GameState.pay_commitments([ITEM], "A test", "")
+	GameState.begin_level(LevelRunner.new({"level_id": "LV_PR", "stages": [
+		{"seq": 1, "stage_id": "ST05", "mode": "Combat", "time_units": 11}]}))
+	GameState.finish_stage(LevelRunner.WON, 0, [], false, 0)
+	assert_eq(GameState.promises.size(), 0)
+	assert_eq(GameState.promises_broken_unseen.size(), 1)
+
+
 func test_promises_are_saved_with_the_run() -> void:
 	GameState.pay_commitments([ITEM], "A test", "")
 	var saved := GameState.to_save()

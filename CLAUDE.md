@@ -709,3 +709,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Choice honesty rewrite completed (2026-10-31, Cameron)
 - Commitments, phases 2-3: promises with deadlines (2026-10-31, Cameron)
 - Commitments, phase 4 and follow-ups (2026-10-31, Cameron away; interim choices in `design/review/OPEN_ITEMS_2026-10-31.md`)
+- Mechanics audit (2026-10-31, Cameron)
