@@ -1060,7 +1060,9 @@
     "suit": "Emotional",
     "verb": "attack",
     "opponent_ids": [
-      "OP105"
+      "OP105",
+      "OP126",
+      "OP127"
     ],
     "cue_1": "My generation is paying for this.",
     "cue_2": "Who asked us? Nobody.",
@@ -1076,7 +1078,9 @@
     "suit": "Emotional",
     "verb": "gain",
     "opponent_ids": [
-      "OP105"
+      "OP105",
+      "OP126",
+      "OP127"
     ],
     "cue_1": "Someone who listens. Good.",
     "cue_2": "That gives us something to build on.",
@@ -1092,7 +1096,9 @@
     "suit": "Emotional",
     "verb": "block",
     "opponent_ids": [
-      "OP105"
+      "OP105",
+      "OP126",
+      "OP127"
     ],
     "cue_1": "Show us the plan, not a poster.",
     "cue_2": "We are watching closely.",
@@ -1252,7 +1258,9 @@
     "suit": "Data Driven",
     "verb": "attack",
     "opponent_ids": [
-      "OP109"
+      "OP109",
+      "OP128",
+      "OP129"
     ],
     "cue_1": "Who asked us? Nobody.",
     "cue_2": "Words are cheap. Tuition is not.",
@@ -1268,7 +1276,9 @@
     "suit": "Data Driven",
     "verb": "gain",
     "opponent_ids": [
-      "OP109"
+      "OP109",
+      "OP128",
+      "OP129"
     ],
     "cue_1": "That gives us something to build on.",
     "cue_2": "Maybe the future has a seat after all.",
@@ -1284,7 +1294,9 @@
     "suit": "Data Driven",
     "verb": "block",
     "opponent_ids": [
-      "OP109"
+      "OP109",
+      "OP128",
+      "OP129"
     ],
     "cue_1": "We are watching closely.",
     "cue_2": "Not without student voices at the table.",
@@ -6676,7 +6688,9 @@
     "suit": "Emotional",
     "verb": "attack",
     "opponent_ids": [
-      "OP124"
+      "OP124",
+      "OP130",
+      "OP131"
     ],
     "cue_1": "Words are cheap. Tuition is not.",
     "cue_2": "We will remember how you vote.",
@@ -6692,7 +6706,9 @@
     "suit": "Emotional",
     "verb": "gain",
     "opponent_ids": [
-      "OP124"
+      "OP124",
+      "OP130",
+      "OP131"
     ],
     "cue_1": "Maybe the future has a seat after all.",
     "cue_2": "I can believe in that.",
@@ -6708,7 +6724,9 @@
     "suit": "Emotional",
     "verb": "block",
     "opponent_ids": [
-      "OP124"
+      "OP124",
+      "OP130",
+      "OP131"
     ],
     "cue_1": "Not without student voices at the table.",
     "cue_2": "I need more than promises.",
@@ -21556,7 +21574,9 @@
     "suit": "Divisive",
     "verb": "attack",
     "opponent_ids": [
-      "OP105"
+      "OP105",
+      "OP126",
+      "OP127"
     ],
     "cue_1": "Stop pretending you stand in the middle.",
     "cue_2": "Enemies of our future sit across the aisle.",
@@ -21572,7 +21592,9 @@
     "suit": "Divisive",
     "verb": "gain",
     "opponent_ids": [
-      "OP105"
+      "OP105",
+      "OP126",
+      "OP127"
     ],
     "cue_1": "Our people are growing in number.",
     "cue_2": "Our future is ours to defend against them.",
@@ -21588,7 +21610,9 @@
     "suit": "Divisive",
     "verb": "block",
     "opponent_ids": [
-      "OP105"
+      "OP105",
+      "OP126",
+      "OP127"
     ],
     "cue_1": "That is their idea. We refuse it.",
     "cue_2": "Hands off our future.",
@@ -21604,7 +21628,9 @@
     "suit": "Appeal",
     "verb": "attack",
     "opponent_ids": [
-      "OP105"
+      "OP105",
+      "OP126",
+      "OP127"
     ],
     "cue_1": "Friends, this is not how we do things.",
     "cue_2": "Friends of our future expect more.",
@@ -21620,7 +21646,9 @@
     "suit": "Appeal",
     "verb": "gain",
     "opponent_ids": [
-      "OP105"
+      "OP105",
+      "OP126",
+      "OP127"
     ],
     "cue_1": "A fine turn. We return the favor.",
     "cue_2": "We all gain when our future gains.",
@@ -21636,7 +21664,9 @@
     "suit": "Appeal",
     "verb": "block",
     "opponent_ids": [
-      "OP105"
+      "OP105",
+      "OP126",
+      "OP127"
     ],
     "cue_1": "Not without everyone at the table.",
     "cue_2": "Not without our future at the table.",
@@ -21940,7 +21970,9 @@
     "suit": "Appeal",
     "verb": "attack",
     "opponent_ids": [
-      "OP109"
+      "OP109",
+      "OP128",
+      "OP129"
     ],
     "cue_1": "We can do better together than that.",
     "cue_2": "We owe our future a fair deal.",
@@ -21956,7 +21988,9 @@
     "suit": "Appeal",
     "verb": "gain",
     "opponent_ids": [
-      "OP109"
+      "OP109",
+      "OP128",
+      "OP129"
     ],
     "cue_1": "We will remember that kindness.",
     "cue_2": "That is a favor our future will repay.",
@@ -21972,7 +22006,9 @@
     "suit": "Appeal",
     "verb": "block",
     "opponent_ids": [
-      "OP109"
+      "OP109",
+      "OP128",
+      "OP129"
     ],
     "cue_1": "Please, let us find a middle way.",
     "cue_2": "Friends of our future hold the line.",
@@ -21988,7 +22024,9 @@
     "suit": "Divisive",
     "verb": "attack",
     "opponent_ids": [
-      "OP109"
+      "OP109",
+      "OP128",
+      "OP129"
     ],
     "cue_1": "Whose side are you really on?",
     "cue_2": "Defend our future or stand aside.",
@@ -22004,7 +22042,9 @@
     "suit": "Divisive",
     "verb": "gain",
     "opponent_ids": [
-      "OP109"
+      "OP109",
+      "OP128",
+      "OP129"
     ],
     "cue_1": "The opposition looks smaller to me.",
     "cue_2": "We take our future from the other camp.",
@@ -22020,7 +22060,9 @@
     "suit": "Divisive",
     "verb": "block",
     "opponent_ids": [
-      "OP109"
+      "OP109",
+      "OP128",
+      "OP129"
     ],
     "cue_1": "The line stays where it is.",
     "cue_2": "No surrender of our future to them.",
@@ -31876,7 +31918,9 @@
     "suit": "Appeal",
     "verb": "attack",
     "opponent_ids": [
-      "OP124"
+      "OP124",
+      "OP130",
+      "OP131"
     ],
     "cue_1": "Together we can fix this. Not that way.",
     "cue_2": "Our future belongs to all of us.",
@@ -31892,7 +31936,9 @@
     "suit": "Appeal",
     "verb": "gain",
     "opponent_ids": [
-      "OP124"
+      "OP124",
+      "OP130",
+      "OP131"
     ],
     "cue_1": "That is the spirit. We are with you.",
     "cue_2": "Friends of our future will back that.",
@@ -31908,7 +31954,9 @@
     "suit": "Appeal",
     "verb": "block",
     "opponent_ids": [
-      "OP124"
+      "OP124",
+      "OP130",
+      "OP131"
     ],
     "cue_1": "Friends do not push friends like that.",
     "cue_2": "Our future stays safe with all of us.",
@@ -31924,7 +31972,9 @@
     "suit": "Divisive",
     "verb": "attack",
     "opponent_ids": [
-      "OP124"
+      "OP124",
+      "OP130",
+      "OP131"
     ],
     "cue_1": "People like you are the problem.",
     "cue_2": "Enemies of our future sit across the aisle.",
@@ -31940,7 +31990,9 @@
     "suit": "Divisive",
     "verb": "gain",
     "opponent_ids": [
-      "OP124"
+      "OP124",
+      "OP130",
+      "OP131"
     ],
     "cue_1": "That proves who is right.",
     "cue_2": "Our future is ours to defend against them.",
@@ -31956,7 +32008,9 @@
     "suit": "Divisive",
     "verb": "block",
     "opponent_ids": [
-      "OP124"
+      "OP124",
+      "OP130",
+      "OP131"
     ],
     "cue_1": "We do not shake that hand.",
     "cue_2": "Hands off our future.",

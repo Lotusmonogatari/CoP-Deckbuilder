@@ -5958,5 +5958,183 @@
       "min": 3,
       "max": 8
     }
+  },
+  {
+    "opp_id": "OP126",
+    "name": "Student A",
+    "title": null,
+    "gender": "F",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO11",
+    "role": "Student",
+    "stages": [
+      "ST273",
+      "ST24",
+      "ST53",
+      "ST82",
+      "ST122",
+      "ST198"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Divisive",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP127",
+    "name": "Student B",
+    "title": null,
+    "gender": "M",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO11",
+    "role": "Student",
+    "stages": [
+      "ST273"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Divisive",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP128",
+    "name": "Student C",
+    "title": null,
+    "gender": "F",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO11",
+    "role": "Student",
+    "stages": [
+      "ST273"
+    ],
+    "suit_1": "Data Driven",
+    "suit_2": "Appeal",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP129",
+    "name": "Student D",
+    "title": null,
+    "gender": "M",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO11",
+    "role": "Student",
+    "stages": [
+      "ST273",
+      "ST24",
+      "ST53",
+      "ST82",
+      "ST122",
+      "ST198"
+    ],
+    "suit_1": "Data Driven",
+    "suit_2": "Appeal",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP130",
+    "name": "Student E",
+    "title": null,
+    "gender": "F",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO11",
+    "role": "Student",
+    "stages": [
+      "ST273"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP131",
+    "name": "Student F",
+    "title": null,
+    "gender": "M",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO11",
+    "role": "Student",
+    "stages": [
+      "ST273"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
   }
 ]
