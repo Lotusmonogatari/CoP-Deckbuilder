@@ -1816,7 +1816,22 @@ def coerce(value, kind, where, report):
             if match:
                 found.append({"kind": "item", "item_id": match.group(1).upper()})
                 continue
-            report.error(where, f"commitment {part!r} is not 'Hours N', 'Funds N' or 'Item SHxx'")
+            # Phase 2: a promise owed later. "Promise Item SH25 within 48 for
+            # BO06" or "Promise Hours 2 within 72 for BO04"; within and for
+            # are optional (Balance default deadline; the choice's own org).
+            match = re.match(r"^Promise\s+(Item\s+(SH\d+)|Hours\s+(\d+))(?:\s+within\s+(\d+))?(?:\s+for\s+(BO\d+))?$",
+                             part, re.IGNORECASE)
+            if match:
+                entry = {"kind": "promise_item", "item_id": match.group(2).upper()} if match.group(2) \
+                    else {"kind": "promise_hours", "amount": int(match.group(3))}
+                if match.group(4):
+                    entry["within"] = int(match.group(4))
+                if match.group(5):
+                    entry["for"] = match.group(5).upper()
+                found.append(entry)
+                continue
+            report.error(where, f"commitment {part!r} is not 'Hours N', 'Funds N', 'Item SHxx' "
+                         "or 'Promise Item SHxx|Hours N [within H] [for BOxx]'")
         return found
 
     if kind in ("stage_list", "id_list"):
@@ -3206,7 +3221,7 @@ def check_commitments(data, report):
     for row in data.get("event_choices", []):
         by_event.setdefault(row.get("event_id"), []).append(row.get("commitment") or [])
         for entry in row.get("commitment") or []:
-            if entry.get("kind") == "item" and entry.get("item_id") not in shop_ids:
+            if entry.get("kind") in ("item", "promise_item") and entry.get("item_id") not in shop_ids:
                 report.error(f"Event Choices {row.get('event_id')} {row.get('choice')} Commitment",
                              f"{entry.get('item_id')} is not a Shop item")
     for event_id, lists in by_event.items():
@@ -3215,7 +3230,7 @@ def check_commitments(data, report):
     for row in data.get("visitor_questions", []):
         lists = [row.get("commitment_" + c) or [] for c in "abcd"]
         for entry in [e for lst in lists for e in lst]:
-            if entry.get("kind") == "item" and entry.get("item_id") not in shop_ids:
+            if entry.get("kind") in ("item", "promise_item") and entry.get("item_id") not in shop_ids:
                 report.error(f"Visitor Questions {row.get('question_id')} Commitment",
                              f"{entry.get('item_id')} is not a Shop item")
         if all(lists):

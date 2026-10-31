@@ -186,5 +186,9 @@
   "event_picture_height": 640,
   "image_pan_tilt_strength": 1.5,
   "image_pan_follow_speed": 3,
+  "promise_default_deadline_hours": 48,
+  "promise_kept_standing": 1,
+  "promise_broken_standing": -3,
+  "promise_broken_reputation": -1,
   "xp_tiers": {}
 }

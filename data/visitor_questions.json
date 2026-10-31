@@ -3311,7 +3311,13 @@
         "delta": 1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 96
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -21515,7 +21521,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -28326,7 +28338,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 96,
+        "for": "BO25"
+      }
+    ],
     "commitment_d": null,
     "response_a": "That would keep my lights on.",
     "response_b": "The system pays itself well.",
@@ -28394,7 +28413,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48,
+        "for": "BO25"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Then I could hire two.",
     "response_b": "I protect them too. I pay them.",

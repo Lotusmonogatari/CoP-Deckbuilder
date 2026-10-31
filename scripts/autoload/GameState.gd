@@ -304,6 +304,13 @@ var event_last_at: Dictionary = {}
 var discovered_levels: Array[String] = []
 ## Dated events already played (2026-10-23).
 var dated_events_done: Array[String] = []
+## Promises owed (Promises.gd, 2026-10-31): records made by a choice's
+## "Promise ..." commitment, kept from the Office's Promises panel.
+var promises: Array = []
+## Promises broken since the Office last said so, for its popup.
+var promises_broken_unseen: Array = []
+## A running number for promise IDs.
+var promise_serial := 0
 var event_roll_due := false
 
 ## A dinner or walking tour in progress (HostedEvent.gd): { hosted_id, org, roster,
@@ -452,6 +459,7 @@ const _SAVED_FIELDS := [
 	"bill_stance",
 	"patron_requests", "enacted_components", "patron_runtime", "patron_composed", "patron_armed",
 	"bill_assist", "patron_news", "patron_drafts", "draft_counter", "last_draft_at",
+	"promises", "promises_broken_unseen", "promise_serial",
 ]
 
 
@@ -600,6 +608,9 @@ func reset_crisis_triggers() -> void:
 	event_last_at = {}
 	discovered_levels = []
 	dated_events_done = []
+	promises = []
+	promises_broken_unseen = []
+	promise_serial = 0
 	event_roll_due = false
 	last_decay_at = 0
 	booster_moved_in_period = {}
@@ -1199,7 +1210,7 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 			discovered_levels.append(level_id)
 		revealed = str(DataDB.get_level(level_id).get("description", level_id))
 
-	lines.append_array(pay_commitments(commitments))
+	lines.append_array(pay_commitments(commitments, str(event.get("title", "")), _first_pleased_org(chosen.get("rewards"))))
 	var hours := EventEngine.hours_of(event)
 	spend_hours(hours)
 	hours += Commitments.hours(commitments)
@@ -1522,6 +1533,83 @@ func level_calendar_refusal(level: Dictionary) -> String:
 func _advance_clock(hours: int) -> void:
 	time_units += maxi(0, hours)
 	_expire_modifiers()
+	_break_overdue_promises()
+
+
+## Promises that fell due unkept are broken: the organization they were made
+## to loses standing and Reputation drops (Balance levers), and the Office says
+## so next time it opens.
+func _break_overdue_promises() -> void:
+	for promise: Dictionary in Promises.overdue(promises, time_units):
+		promises.erase(promise)
+		var org := str(promise.get("for_org", ""))
+		var cause := Text.say("record.cause_promise_broken")
+		if not org.is_empty():
+			var drop := int(DataDB.balance.get("promise_broken_standing", -3))
+			_under_cause(cause, func() -> void: _apply_booster_delta(org, drop))
+		var rep := int(DataDB.balance.get("promise_broken_reputation", -1))
+		if rep != 0:
+			_under_cause(cause, func() -> void: _apply_meta_reward("Reputation", rep))
+		promises_broken_unseen.append(promise)
+
+
+## Who a promise was made to, in words: the organization, else where it came from.
+func promise_who(promise: Dictionary) -> String:
+	var org := str(promise.get("for_org", ""))
+	if not org.is_empty():
+		return str(DataDB.get_booster(org).get("name_en", org))
+	return str(promise.get("source", ""))
+
+
+## What a promise owes, in words.
+func promise_what(promise: Dictionary) -> String:
+	if str(promise.get("kind", "")) == Promises.PROMISE_ITEM:
+		var item_id := str(promise.get("item_id", ""))
+		return Text.say("promise.what_item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))})
+	return Text.say("promise.what_hours", {"count": int(promise.get("hours", 0))})
+
+
+## Why a promise cannot be kept now, in words, or "".
+func promise_keep_refusal(promise: Dictionary) -> String:
+	var cfg := calendar_config()
+	var hours := 0 if WeekCalendar.is_full(calendar, cfg) else WeekCalendar.hours_left(calendar, cfg)
+	match Promises.keep_refusal(promise, inventory, hours):
+		"item":
+			var item_id := str(promise.get("item_id", ""))
+			return Text.say("commit.refuse_item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))})
+		"hours":
+			return Text.say("event.refuse_work_hours")
+	return ""
+
+
+## Keeps a promise: the item is handed over or the hours spent, and the
+## organization it was made to gains standing. "" when kept, else the refusal.
+func keep_promise(promise_id: String) -> String:
+	for promise: Dictionary in promises:
+		if str(promise.get("id", "")) != promise_id:
+			continue
+		var why := promise_keep_refusal(promise)
+		if not why.is_empty():
+			return why
+		promises.erase(promise)
+		if str(promise.get("kind", "")) == Promises.PROMISE_ITEM:
+			_take_item(str(promise.get("item_id", "")))
+		var org := str(promise.get("for_org", ""))
+		if not org.is_empty():
+			var gain := int(DataDB.balance.get("promise_kept_standing", 1))
+			_under_cause(Text.say("record.cause_promise_kept"), func() -> void: _apply_booster_delta(org, gain))
+		if str(promise.get("kind", "")) == Promises.PROMISE_HOURS:
+			spend_hours(int(promise.get("hours", 0)))
+		return ""
+	return ""
+
+
+## True when some promise owes this item (the Marketplace marks it).
+func item_is_promised(item_id: String) -> bool:
+	for promise: Dictionary in promises:
+		if str(promise.get("item_id", "")) == item_id:
+			return true
+	return false
 
 
 ## The work week is over, finished or ended early on Friday: the weekend starts.
@@ -3066,6 +3154,10 @@ func commitment_label(text: String, list: Array) -> String:
 		parts.append(Text.say("commit.funds", {"yen_amount": funds}))
 	for item_id: String in Commitments.items(list):
 		parts.append(Text.say("commit.item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))}))
+	for entry: Variant in list:
+		if Promises.is_promise(entry):
+			var shown := Promises.make(entry, 0, int(DataDB.balance.get("promise_default_deadline_hours", 48)), "", "", 0)
+			parts.append(Text.say("commit.promise", {"what": promise_what(shown), "count": int(shown["due_at"])}))
 	if parts.is_empty():
 		return text
 	return Text.say("commit.label", {"text": text, "cost": ", ".join(parts)})
@@ -3073,8 +3165,16 @@ func commitment_label(text: String, list: Array) -> String:
 
 ## Pays a choice's commitments: the hours pass, the Funds are spent, the items
 ## are handed over. Returns lines for a result screen.
-func pay_commitments(list: Array) -> Array[String]:
+func pay_commitments(list: Array, source: String = "", fallback_org: String = "") -> Array[String]:
 	var lines: Array[String] = []
+	for entry: Variant in list:
+		if Promises.is_promise(entry):
+			promise_serial += 1
+			var promise := Promises.make(entry, time_units, int(DataDB.balance.get("promise_default_deadline_hours", 48)),
+				fallback_org, source, promise_serial)
+			promises.append(promise)
+			lines.append(Text.say("promise.made", {"what": promise_what(promise), "who": promise_who(promise),
+				"count": int(promise["due_at"]) - time_units}))
 	var funds := Commitments.funds(list)
 	if funds > 0:
 		_under_cause(Text.say("record.cause_commitment"), func() -> void: _apply_meta_reward("Funds", -funds))
@@ -3086,6 +3186,19 @@ func pay_commitments(list: Array) -> Array[String]:
 	if hours > 0:
 		spend_hours(hours)
 	return lines
+
+
+## The first organization a reward list raises, or "" (who a promise is owed to
+## when its cell does not say).
+static func _first_pleased_org(rewards: Variant) -> String:
+	if rewards is Array:
+		for entry: Variant in rewards:
+			if entry is Dictionary and str(entry.get("target", "")).begins_with("BO"):
+				var delta: Variant = entry.get("delta")
+				var amount := float((delta as Dictionary).get("max", 0)) if delta is Dictionary else float(delta if delta != null else 0)
+				if amount > 0:
+					return str(entry["target"])
+	return ""
 
 
 func _take_item(item_id: String) -> void:

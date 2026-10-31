@@ -6137,5 +6137,138 @@
     "english": "a commitment you made",
     "placeholders": null,
     "notes": "2026-10-31 commitments phase 1 (Cameron)"
+  },
+  {
+    "key": "commit.promise",
+    "where": "A choice's cost: a promise owed later",
+    "english": "promise: {what} within {count} hours",
+    "placeholders": "what, count",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "commit.promise.one",
+    "where": "The same, exactly one hour",
+    "english": "promise: {what} within {count} hour",
+    "placeholders": "what, count",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promise.what_item",
+    "where": "What a promise owes: an item to hand over",
+    "english": "{item}",
+    "placeholders": "item",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promise.what_hours",
+    "where": "What a promise owes: hours of the player's time",
+    "english": "{count} hours of your time",
+    "placeholders": "count",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promise.what_hours.one",
+    "where": "The same, exactly one hour",
+    "english": "{count} hour of your time",
+    "placeholders": "count",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promise.made",
+    "where": "Event result: a promise just made",
+    "english": "You promised {who} {what} within {count} hours.",
+    "placeholders": "who, what, count",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promise.made.one",
+    "where": "The same, exactly one hour",
+    "english": "You promised {who} {what} within {count} hour.",
+    "placeholders": "who, what, count",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "office.promises",
+    "where": "Office: the button that opens the Promises panel",
+    "english": "Promises ({count})",
+    "placeholders": "count",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promises.title",
+    "where": "Promises panel title",
+    "english": "Promises",
+    "placeholders": null,
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promises.none",
+    "where": "Promises panel with nothing owed",
+    "english": "Nothing is owed right now.",
+    "placeholders": null,
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promises.row",
+    "where": "Promises panel: one promise",
+    "english": "{what} for {who}, due in {count} hours",
+    "placeholders": "what, who, count",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promises.row.one",
+    "where": "The same, exactly one hour",
+    "english": "{what} for {who}, due in {count} hour",
+    "placeholders": "what, who, count",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promises.keep",
+    "where": "Promises panel: the button that keeps a promise",
+    "english": "Keep this promise",
+    "placeholders": null,
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promises.kept",
+    "where": "A flash when a promise is kept",
+    "english": "Promise kept: {who}",
+    "placeholders": "who",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promises.broken_title",
+    "where": "Office popup title when promises fell due unkept",
+    "english": "Promises broken",
+    "placeholders": null,
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "promises.broken_row",
+    "where": "Office popup: one broken promise",
+    "english": "You broke your promise to {who}: {what}.",
+    "placeholders": "who, what",
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "record.cause_promise_kept",
+    "where": "Your Record: standing gained by keeping a promise",
+    "english": "keeping a promise",
+    "placeholders": null,
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "record.cause_promise_broken",
+    "where": "Your Record: standing or Reputation lost by breaking a promise",
+    "english": "breaking a promise",
+    "placeholders": null,
+    "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "shop.promised",
+    "where": "Marketplace: an item a promise owes",
+    "english": "{title} (promised)",
+    "placeholders": "title",
+    "notes": "2026-10-31 promises (Cameron)"
   }
 ]

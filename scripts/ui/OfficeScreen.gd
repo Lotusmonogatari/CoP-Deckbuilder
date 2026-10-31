@@ -102,6 +102,10 @@ var _calendar_square: PanelContainer
 var _week_button: Button
 ## The Party Dues / Office Funds box beside the calendar (2026-10-28).
 var _dues_box: PanelContainer
+## Promises owed (2026-10-31): a button above the dues box, shown only while
+## something is owed, that opens the Promises panel.
+var _promises_button: Button
+var _promises_panel: Overlay
 ## Set when the briefing's Go In button was pressed (see _on_briefing_closed).
 var _briefing_went_in := false
 ## An event choice waiting on its level's briefing (2026-10-31): Go in takes
@@ -297,6 +301,7 @@ func _build() -> void:
 	_refresh_resources()
 	_refresh_calendar()
 	_show_trigger_alerts_if_any()
+	_show_broken_promises_if_any()
 	_show_resume_choice_if_in_level()
 	if not _show_dated_event_if_due():
 		_show_random_event_if_due()
@@ -316,6 +321,15 @@ func _build_week_controls() -> void:
 		spacer.add_child(_calendar_square)
 		_dues_box = DuesBox.make()
 		spacer.add_child(_dues_box)
+		_promises_button = Button.new()
+		_promises_button.name = "PromisesButton"
+		_promises_button.custom_minimum_size = Vector2(DuesBox.SIZE.x, 90)
+		_promises_button.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+		_promises_button.grow_vertical = Control.GROW_DIRECTION_BEGIN
+		_promises_button.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+		_promises_button.offset_bottom = -(DuesBox.SIZE.y + 16)
+		_promises_button.pressed.connect(_show_promises)
+		spacer.add_child(_promises_button)
 
 	_week_button = Button.new()
 	_week_button.name = "WeekButton"
@@ -343,6 +357,10 @@ func _build_week_controls() -> void:
 	_gathering_panel.name = "GatheringPanel"
 	_gathering_panel.show_back = false
 	add_child(_gathering_panel)
+	_promises_panel = Overlay.new()
+	_promises_panel.name = "PromisesPanel"
+	add_child(_promises_panel)
+
 	_event_panel = Overlay.new()
 	_event_panel.name = "EventPanel"
 	# Once an event is on screen the only way on is a choice.
@@ -373,6 +391,9 @@ func _build_week_controls() -> void:
 func _refresh_calendar() -> void:
 	CalendarSquare.refresh(_calendar_square)
 	DuesBox.refresh(_dues_box)
+	if _promises_button != null:
+		_promises_button.visible = not GameState.promises.is_empty()
+		_promises_button.text = Text.say("office.promises", {"count": GameState.promises.size()})
 	if _week_button == null:
 		return
 	var mid_level := GameState.is_in_level()
@@ -673,6 +694,52 @@ func _dues_report_rows(report: Dictionary) -> Array[Control]:
 ## A crisis trigger firing or resolving since the last time the player was
 ## here (GameState.finish_stage()'s own edge-checks) — one popup, one line
 ## per event, shown once and then forgotten so it can never appear twice.
+## Promises owed (2026-10-31): each with who it is for, what it owes and when
+## it falls due, and a Keep button (greyed with the reason when it cannot be
+## kept yet: the item is not held, or the hours are not there).
+func _show_promises() -> void:
+	var rows: Array[Control] = []
+	if GameState.promises.is_empty():
+		rows.append(UiKit.line(Text.say("promises.none")))
+	for promise: Dictionary in GameState.promises:
+		rows.append(UiKit.line(Text.say("promises.row", {"what": GameState.promise_what(promise),
+			"who": GameState.promise_who(promise), "count": Promises.hours_left(promise, GameState.time_units)})))
+		var keep := UiKit.action_button(Text.say("promises.keep"), GameState.promise_keep_refusal(promise),
+			_on_keep_promise.bind(str(promise.get("id", ""))), 100.0)
+		keep.name = "Keep_" + str(promise.get("id", ""))
+		rows.append(keep)
+	_promises_panel.open(Text.say("promises.title"), rows)
+
+
+func _on_keep_promise(promise_id: String) -> void:
+	var who := ""
+	for promise: Dictionary in GameState.promises:
+		if str(promise.get("id", "")) == promise_id:
+			who = GameState.promise_who(promise)
+	if not GameState.keep_promise(promise_id).is_empty():
+		return
+	SaveManager.autosave()
+	_refresh_resources()
+	_refresh_calendar()
+	Layout.flash(Text.say("promises.kept", {"who": who}))
+	if GameState.promises.is_empty():
+		_promises_panel.close()
+	else:
+		_show_promises()
+
+
+## Promises that fell due unkept since the Office last opened, said once.
+func _show_broken_promises_if_any() -> void:
+	if GameState.promises_broken_unseen.is_empty():
+		return
+	var rows: Array[Control] = []
+	for promise: Dictionary in GameState.promises_broken_unseen:
+		rows.append(UiKit.line(Text.say("promises.broken_row", {"who": GameState.promise_who(promise),
+			"what": GameState.promise_what(promise)})))
+	GameState.promises_broken_unseen = []
+	_promises_panel.open(Text.say("promises.broken_title"), rows)
+
+
 func _show_trigger_alerts_if_any() -> void:
 	if GameState.pending_trigger_alerts.is_empty():
 		return
@@ -1978,6 +2045,9 @@ func _supply_row(item: Dictionary) -> Control:
 	var title := UiKit.line(Text.say("shop.item_title", {
 		"name": item.get("name", item_id), "price": _price_text(item)}))
 	title.custom_minimum_size = Vector2(620, 0)
+	# An item a promise owes says so (2026-10-31).
+	if GameState.item_is_promised(item_id):
+		title.text = Text.say("shop.promised", {"title": title.text})
 	box.add_child(title)
 	var line := UiKit.line(str(item.get("description", "")), "SmallLabel")
 	line.custom_minimum_size = Vector2(620, 0)

@@ -733,7 +733,14 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 120,
+        "for": "BO04"
+      }
+    ]
   },
   {
     "event_id": "EV18",
@@ -964,7 +971,7 @@
   {
     "event_id": "EV21",
     "choice": "C",
-    "choice_text": "Attend, then leave early",
+    "choice_text": "Leave early; promise a bottle of district sake",
     "result_text": "You are noticed leaving.",
     "funds_cost": null,
     "funds_delta": null,
@@ -981,7 +988,14 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "promise_item",
+        "item_id": "SH32",
+        "within": 72,
+        "for": "BO22"
+      }
+    ]
   },
   {
     "event_id": "EV22",
@@ -1977,7 +1991,14 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 72,
+        "for": "BO06"
+      }
+    ]
   },
   {
     "event_id": "EV38",
@@ -2596,7 +2617,7 @@
   {
     "event_id": "EV46",
     "choice": "C",
-    "choice_text": "Send your regrets with a card",
+    "choice_text": "Send regrets and promise a box of cookies",
     "result_text": "A polite note goes back. Your place is given to someone else.",
     "funds_cost": null,
     "funds_delta": null,
@@ -2613,7 +2634,14 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "promise_item",
+        "item_id": "SH30",
+        "within": 48,
+        "for": "BO01"
+      }
+    ]
   },
   {
     "event_id": "EV47",
