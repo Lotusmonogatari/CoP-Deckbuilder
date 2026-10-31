@@ -2827,3 +2827,18 @@ All workbook edits on the Question Themes tab. Details: `design/review/TITLES_AN
 - The seven rarely-annoyed organizations (BO12, BO14, BO32, BO07, BO19, BO29, BO31) gained natural rivals: 3-6 themes each, 21-49 questions. Only Annoys were added; nobody gained a pleased theme, and the Chamber of Commerce's Annoys were left as they were.
 - Eight contested themes with no downside gained one rival each.
 - The 15 most-used bill debates were checked: the Tsugaru Strait Joint Commission Act and the Candidate Gender Parity Act debates now set back Our Traditional Society.
+
+### EV65 A Delegation Comes for Cultural Exchange; SH33 Haskap Yoitomake (2026-10-31, Cameron)
+
+Cameron's workbook upload added **SH33 Haskap Yoitomake** (a Tomakomai roll cake with tart haskap jam, 1,500円, stack cap 3) and a regional gift in each protagonist's Starting Items (PC02 starts with the Yoitomake). It also changed the goods' prices, stack caps and wording, including SH29's new name, Wakkanai Milk Caramels.
+
+**EV65** (Random, weekdays, 2 hours, weight 6; the cultural-center picture). A foreign cultural delegation tours the district, and the player decides what Yezo puts on the table. The haskap is an Ainu-gathered berry, so the Ainu groups are pleased; the confection is a local tradition, so Our Traditional Society is pleased.
+
+| Choice | Cost | Outcome |
+|---|---|---|
+| A. Welcome them now with Haskap Yoitomake and its story | Hands over one SH33 | National Awareness +1-2; Ainu Community Council (BO28) +1, Ainu Language and Culture Foundation (BO29) +1, Our Traditional Society (BO15) +1 |
+| B. Promise Haskap Yoitomake for their farewell reception | Promise Item SH33 within 72 hours, owed to BO15 | National Awareness +0-1; BO28 +1 now. Keeping the promise gives BO15 +2; breaking it costs BO15 5 and Reputation 2 |
+| C. Send a staff member with a welcome letter | — | National Awareness +0-1 |
+| D. Decline | — | National Awareness -2; BO28, BO29 and BO15 each -2 (the 1.5x shortfall rule) |
+
+SH33 is set to the **Office** inventory tab (Cameron's rule: items used only by events go there). New Text row: `event.decline.EV65`. All text is Claude's draft for Cameron to rewrite.

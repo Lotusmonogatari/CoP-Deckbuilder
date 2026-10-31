@@ -23,7 +23,8 @@
       "starting_items": {
         "SH21": 1,
         "SH15": 2,
-        "SH17": 2
+        "SH17": 2,
+        "SH29": 1
       }
     },
     {
@@ -49,7 +50,8 @@
       "starting_items": {
         "SH21": 1,
         "SH15": 1,
-        "SH17": 1
+        "SH17": 1,
+        "SH33": 1
       }
     },
     {
@@ -74,7 +76,8 @@
       "district_type": "Proportional Block",
       "starting_items": {
         "SH21": 1,
-        "SH04": 2
+        "SH04": 2,
+        "SH32": 1
       }
     },
     {
@@ -98,7 +101,8 @@
       "district_name": "Aomori Proportional Block 3",
       "district_type": "Proportional Block",
       "starting_items": {
-        "SH21": 1
+        "SH21": 1,
+        "SH25": 1
       }
     }
   ]

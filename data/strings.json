@@ -6081,5 +6081,12 @@
     "english": "Gifts and goods for events wait here. When an event or a visitor's choice calls for one, it is handed over from here.",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "event.decline.EV65",
+    "where": "Event Choices: the result of declining EV65",
+    "english": "You decline to receive them. The delegation tours the district without meeting anyone who represents it.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
   }
 ]

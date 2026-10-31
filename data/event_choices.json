@@ -4953,5 +4953,136 @@
     "dues_delta": null,
     "starts_level": null,
     "commitment": null
+  },
+  {
+    "event_id": "EV65",
+    "choice": "A",
+    "choice_text": "Welcome them now with Haskap Yoitomake and its story",
+    "result_text": "You tell them about the haskap berries Ainu families have gathered for generations, and the confectioners who roll them into sponge. They ask for the recipe and leave with the story.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "rewards": [
+      {
+        "target": "BO28",
+        "delta": 1
+      },
+      {
+        "target": "BO29",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "item",
+        "item_id": "SH33"
+      }
+    ]
+  },
+  {
+    "event_id": "EV65",
+    "choice": "B",
+    "choice_text": "Promise Haskap Yoitomake for their farewell reception",
+    "result_text": "The host writes the reception into your diary. A Yezo sweet is now expected on the table.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "rewards": [
+      {
+        "target": "BO28",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_item",
+        "item_id": "SH33",
+        "within": 72,
+        "for": "BO15"
+      }
+    ]
+  },
+  {
+    "event_id": "EV65",
+    "choice": "C",
+    "choice_text": "Send a staff member with a welcome letter",
+    "result_text": "Your staffer reads the letter aloud. The delegation is polite, and a little disappointed.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV65",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to receive them. The delegation tours the district without meeting anyone who represents it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "rewards": [
+      {
+        "target": "BO28",
+        "delta": -2
+      },
+      {
+        "target": "BO29",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
   }
 ]

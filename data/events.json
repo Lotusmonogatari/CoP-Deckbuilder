@@ -1054,5 +1054,24 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null
+  },
+  {
+    "event_id": "EV65",
+    "title": "A Delegation Comes for Cultural Exchange",
+    "flavor": "A cultural delegation from abroad is touring the district this week. Their host asks whether you will welcome them, and what Yezo will put on the table.",
+    "trigger": "Random",
+    "available": "Weekday",
+    "hours": 2,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": 6,
+    "cooldown_hours": null,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": "OUT_CULTURAL_CENTER_1_AINU",
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null,
+    "seasons": null
   }
 ]
