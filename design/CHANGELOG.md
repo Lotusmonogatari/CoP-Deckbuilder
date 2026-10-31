@@ -2685,3 +2685,9 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 - Events EV54-EV61, one for each organization that had none.
 - Left as is by decision: the question annoy skew and party balance. Details in `design/review/BALANCE_AUDIT_2026-10-31.md` section 6. All new text and numbers are drafts.
 - `test_game_state_level_bonus.gd` no longer pins LV01 to having no newer-organization rewards (it now checks every filled cell reads as a range).
+
+## Two room findings fixed; OP06 unseated again (2026-10-31, Cameron)
+- **OP06 is Arata Ran, the PC03 protagonist's own Opponents row**, deliberately seated nowhere (like OP22, OP35, OP40 for PC02, PC04, PC01). Seating him in the two fishing hearings earlier today was a mistake and is undone; those hearings keep their ten Agriculture members. New test `test_protagonist_rows_unseated.gd` fails if a protagonist's row is ever seated.
+- **Lobbyist Meeting on Fishing Quotas (ST28)** now seats the lobbyist family's full cast (adds OP119 Labor, OP123 Neighborhood, OP125 Traditional Society), so its six organization-named questions have someone to ask them.
+- **S184** ("Will a grant keep my son on the family farm?") is asked only in the Town Hall on Farm Succession (ST76), not the MPs' hearing (ST77).
+- Noted for Cameron, not changed: five ministers (OP29, OP91, OP47, OP78, OP33) sit in all ten TV debates, and several in floor debates and steering committees, against the rule that ministers appear rarely outside committees.
