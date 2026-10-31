@@ -1202,7 +1202,67 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	if str(event.get("trigger", "")) == "Dated" and not dated_events_done.has(event_id):
 		dated_events_done.append(event_id)
 	return {"ok": true, "result_text": str(chosen.get("result_text", "")), "lines": lines,
-		"chips": chips, "revealed": revealed, "hours": hours}
+		"chips": chips, "revealed": revealed, "hours": hours,
+		"starts_level": event_choice_level(chosen)}
+
+
+## The level an event choice starts (its Starts Level cell), or "" (2026-10-31).
+static func event_choice_level(choice: Dictionary) -> String:
+	var raw: Variant = choice.get("starts_level")
+	return "" if raw == null else str(raw).strip_edges()
+
+
+## True for a level only an event can start (Levels tab, Event Only = Yes):
+## it never shows in the Office's list.
+static func is_event_only(level: Dictionary) -> bool:
+	return str(level.get("event_only", "")).strip_edges().to_lower() == "yes"
+
+
+## How long a choice commits the player: the event's own hours, plus the
+## whole level it starts, if any (2026-10-31).
+func event_choice_hours(event: Dictionary, choice: Dictionary) -> int:
+	var hours := EventEngine.hours_of(event)
+	var level_id := event_choice_level(choice)
+	if not level_id.is_empty():
+		hours += level_hours(DataDB.get_level(level_id))
+	return hours
+
+
+## The least and most an event can take, over its choices: [low, high].
+func event_hours_range(event: Dictionary) -> Array[int]:
+	var low := -1
+	var high := 0
+	for choice: Dictionary in EventEngine.choices_for(DataDB.event_choices, str(event.get("event_id", ""))):
+		var hours := event_choice_hours(event, choice)
+		low = hours if low < 0 else mini(low, hours)
+		high = maxi(high, hours)
+	if low < 0:
+		low = EventEngine.hours_of(event)
+		high = low
+	return [low, high]
+
+
+## "2" or "1–4", for an event's duration.
+func event_hours_text(event: Dictionary) -> String:
+	var span := event_hours_range(event)
+	if span[0] == span[1]:
+		return str(span[0])
+	return Text.say("event.hours_range", {"low": span[0], "high": span[1]})
+
+
+## Why a choice that starts a level cannot be taken now, or "": the event and
+## its level must fit the hours left (Cameron, 2026-10-31: "Insufficient Work
+## Hours"), and a weekend needs a level that allows the weekend.
+func event_choice_refusal(event: Dictionary, choice: Dictionary) -> String:
+	var level_id := event_choice_level(choice)
+	if level_id.is_empty():
+		return ""
+	var level := DataDB.get_level(level_id)
+	var cfg := calendar_config()
+	if WeekCalendar.is_full(calendar, cfg) or event_choice_hours(event, choice) > WeekCalendar.hours_left(calendar, cfg) \
+			or not level_calendar_refusal(level).is_empty():
+		return Text.say("event.refuse_work_hours")
+	return ""
 
 
 ## Whether a level an event can reveal is open to the player. Levels not
@@ -2712,7 +2772,7 @@ func buy_random_level(item_id: String) -> Dictionary:
 	var tier := int(item.get("level_tier", 0))
 	var choices: Array[String] = []
 	for level: Dictionary in DataDB.levels:
-		if int(level.get("tier", -1)) == tier and is_level_discovered(level) \
+		if int(level.get("tier", -1)) == tier and is_level_discovered(level) and not is_event_only(level) \
 				and not Ledger.is_level_unlocked(level, levels_unlocked, staff_hired):
 			choices.append(str(level.get("level_id", "")))
 	if choices.is_empty():

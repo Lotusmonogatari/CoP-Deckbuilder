@@ -5976,5 +5976,54 @@
     "english": "You decline the invitation. The students go without a legislator, and the center's staff notice.",
     "placeholders": null,
     "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.duration",
+    "where": "Event screen: how long the event can take, quickest choice to longest (a choice that starts a level adds its hours)",
+    "english": "Duration: {hours} Hours",
+    "placeholders": "hours, count",
+    "notes": "2026-10-31 (Cameron)"
+  },
+  {
+    "key": "event.duration.one",
+    "where": "Event screen: the same line for exactly one hour",
+    "english": "Duration: {hours} Hour",
+    "placeholders": "hours, count",
+    "notes": "2026-10-31 (Cameron)"
+  },
+  {
+    "key": "event.hours_range",
+    "where": "An event's duration as a range of hours",
+    "english": "{low}–{high}",
+    "placeholders": "low, high",
+    "notes": "2026-10-31 (Cameron)"
+  },
+  {
+    "key": "event.refuse_work_hours",
+    "where": "Event screen: a choice that starts a level that would not fit the hours left",
+    "english": "Insufficient Work Hours",
+    "placeholders": null,
+    "notes": "2026-10-31 (Cameron)"
+  },
+  {
+    "key": "event.decline.EV51",
+    "where": "Event Choices: the result of declining EV51",
+    "english": "You decline the debate. The other guest has the whole morning to themselves.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV52",
+    "where": "Event Choices: the result of declining EV52",
+    "english": "You decline the invitation. The students hold the event anyway, with an empty chair.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV53",
+    "where": "Event Choices: the result of declining EV53",
+    "english": "You decline to attend. The cooperative notes who stayed away.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
   }
 ]

@@ -104,6 +104,10 @@ var _week_button: Button
 var _dues_box: PanelContainer
 ## Set when the briefing's Go In button was pressed (see _on_briefing_closed).
 var _briefing_went_in := false
+## An event choice waiting on its level's briefing (2026-10-31): Go in takes
+## the choice and starts the level; Back returns to the event, nothing taken.
+## {event_id, letter, arrived}, or {} when the briefing came from the list.
+var _event_launch := {}
 ## The picture chosen for each event as it was shown, reused on its result screen.
 var _event_pictures: Dictionary = {}
 ## The biggest a staff picture is drawn on the profile, and the gap above it.
@@ -455,9 +459,9 @@ func _show_events_list() -> void:
 	for event: Dictionary in events:
 		var cost: Variant = event.get("cost_funds")
 		var title_line := Text.say("event.row", {"title": str(event.get("title", "")),
-			"hours": EventEngine.hours_of(event), "count": EventEngine.hours_of(event), "cost": int(cost)}) if cost != null and int(cost) > 0 \
+			"hours": GameState.event_hours_text(event), "count": GameState.event_hours_range(event)[1], "cost": int(cost)}) if cost != null and int(cost) > 0 \
 			else Text.say("event.row_free", {"title": str(event.get("title", "")),
-				"hours": EventEngine.hours_of(event), "count": EventEngine.hours_of(event)})
+				"hours": GameState.event_hours_text(event), "count": GameState.event_hours_range(event)[1]})
 		var box := UiKit.tight_column()
 		box.add_child(UiKit.line(title_line))
 		var button := UiKit.action_button(Text.say("event.arrange"), GameState.event_refusal(event),
@@ -533,14 +537,15 @@ func _show_random_event_if_due() -> void:
 
 
 ## The event screen: its title, flavor text and one button per choice.
-func _present_event(event_id: String, arrived: bool) -> void:
+func _present_event(event_id: String, arrived: bool, keep_picture: bool = false) -> void:
 	var event := GameState.get_event(event_id)
 	if event.is_empty():
 		return
 	var rows: Array[Control] = []
 	# An Image cell may list several pictures; one is picked each time the event
-	# comes up and kept for its result screen.
-	var picture := EventPicture.pick(event.get("image"),
+	# comes up and kept for its result screen (and when Back returns to it from
+	# a level's briefing).
+	var picture := str(_event_pictures.get(event_id, "")) if keep_picture else EventPicture.pick(event.get("image"),
 		"%s %s" % [event.get("title", ""), event.get("flavor", "")], DataDB.art.get("image_terms", {}))
 	_event_pictures[event_id] = picture
 	if not picture.is_empty():
@@ -560,6 +565,12 @@ func _present_event(event_id: String, arrived: bool) -> void:
 	elif arrived:
 		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
 	rows.append(UiKit.line(str(event.get("flavor", ""))))
+	# How long it can take, from the quickest choice to the longest (a choice
+	# that starts a level adds that level's hours), 2026-10-31.
+	var span := GameState.event_hours_range(event)
+	if span[1] > 0:
+		rows.append(UiKit.line(Text.say("event.duration", {"hours": GameState.event_hours_text(event),
+			"count": span[1]}), "SmallLabel"))
 	for choice: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):
 		var price: Variant = choice.get("funds_cost")
 		var label := str(choice.get("choice_text", ""))
@@ -571,11 +582,33 @@ func _present_event(event_id: String, arrived: bool) -> void:
 		if refusal.is_empty() and StaffDelegation.blocked(str(choice.get("choice_text", "")),
 				DataDB.rules.get("staff_delegation_phrases", []), GameState.staff_hired):
 			refusal = Text.say("event.refuse_no_staff")
+		if refusal.is_empty():
+			refusal = GameState.event_choice_refusal(event, choice)
 		var letter := str(choice.get("choice", ""))
-		var button := UiKit.action_button(label, refusal, _on_event_choice.bind(event_id, letter), 100.0)
+		# A choice that starts a level opens that level's briefing first.
+		var pressed := _on_event_level_choice.bind(event_id, letter, arrived) \
+			if not GameState.event_choice_level(choice).is_empty() else _on_event_choice.bind(event_id, letter)
+		var button := UiKit.action_button(label, refusal, pressed, 100.0)
 		button.name = "EventChoice_" + letter
 		rows.append(button)
 	_event_panel.open(str(event.get("title", "")), rows)
+
+
+## A choice that starts a level (2026-10-31): show the level's usual briefing.
+## Go in takes the choice and starts the level (_on_start); Back returns to the
+## event with nothing taken (_back_to_levels_if_not_started).
+func _on_event_level_choice(event_id: String, letter: String, arrived: bool) -> void:
+	var level_id := ""
+	for choice: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):
+		if str(choice.get("choice", "")) == letter:
+			level_id = GameState.event_choice_level(choice)
+	var level := DataDB.get_level(level_id)
+	if level.is_empty():
+		return
+	_event_launch = {"event_id": event_id, "letter": letter, "arrived": arrived}
+	_event_panel.close()
+	_chosen_level = level
+	_show_briefing()
 
 
 func _on_event_choice(event_id: String, letter: String) -> void:
@@ -2574,6 +2607,9 @@ func _show_levels() -> void:
 		# A seasonal level (its Seasons cell) only shows in its season (2026-10-30).
 		if not GameState.in_season(level):
 			continue
+		# An Event Only level is started from an event choice, never the list.
+		if GameState.is_event_only(level):
+			continue
 		var tier := int(level.get("tier", 0))
 		if not by_tier.has(tier):
 			by_tier[tier] = []
@@ -2966,8 +3002,15 @@ func _on_briefing_closed() -> void:
 
 
 func _back_to_levels_if_not_started() -> void:
-	if not _briefing_went_in:
-		_show_levels()
+	if _briefing_went_in:
+		return
+	if not _event_launch.is_empty():
+		# Back from an event level's briefing: the event again, as it was.
+		var launch := _event_launch
+		_event_launch = {}
+		_present_event(str(launch["event_id"]), bool(launch["arrived"]), true)
+		return
+	_show_levels()
 
 
 func _on_start() -> void:
@@ -2975,8 +3018,15 @@ func _on_start() -> void:
 	var expanded := BattleSetup.expand_level(_chosen_level)
 	var runner := LevelRunner.new(expanded)
 	if not runner.is_valid():
+		_event_launch = {}
 		_report.text = Text.say("office.level_cannot_start", {"problems": "\n• ".join(Array(runner.problems()))})
 		return
+
+	# Started from an event choice: the choice is taken now (its rewards and
+	# the event's own hours), then its level begins (2026-10-31).
+	if not _event_launch.is_empty():
+		GameState.apply_event_choice(str(_event_launch["event_id"]), str(_event_launch["letter"]))
+		_event_launch = {}
 
 	# The runner is handed over rather than rebuilt, so the level keeps its
 	# place and its carried buffs as the battle screen moves through it.

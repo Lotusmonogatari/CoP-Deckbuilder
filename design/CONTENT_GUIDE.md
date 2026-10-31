@@ -225,7 +225,7 @@ A transition plays before a stage that is **not first in its level**, shows one 
 
 ### 9.1 Events (Events and Event Choices tabs)
 
-An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV48**.
+An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV54**.
 
 | Events column | Meaning |
 |---|---|
@@ -243,7 +243,10 @@ An event is a screen of flavor text with two to four fixed choices; each choice 
 | Funds Cost, Funds Δ, XP Δ, Constituency / Reputation / Party support Δ, District / National Awareness Δ | Ranges (`min-max`, a bare number is both). Never put a penalty in XP. |
 | **Rewards** | Organization standing in the usual format (`BO06 +1; BO20 -1`) |
 | **Unlocks Level** | Reveals a gated level (the event is one way in) |
+| **Starts Level** | Starts a level (2026-10-31): the choice opens that level's usual briefing; **Go in** takes the choice (its rewards and the event's own hours) and begins the level, **Back** returns to the event with nothing taken. The level must be marked **Event Only** on the Levels tab (it then never shows in the Office list) and should be one stage; the export errors otherwise. The choice greys out with "Insufficient Work Hours" when the event's hours plus the level's do not fit the hours left, and the event screen shows its duration from the quickest choice to the longest. Give the starting choice a small direct reward so the Decline rule has something to scale. |
 | Dues Δ | A negative number writes down the carried balance |
+
+**Event levels today:** LV98 Radio Debate (ST271), LV99 Radio Call-In Hour (ST272), LV100 the Fisheries Cooperative's meeting at the harbor (ST29, OP121 pinned in `data/level_opponent_overrides.json`), LV101 Campus Q&A (ST273, the three Students United members); started by EV51-EV53 and by the converted EV36 A, EV27 A and EV50 A.
 
 **Rules.** Every event needs at least one choice and every choice lettered once. A choice whose text contains one of `data/rules.json` `staff_delegation_phrases` ("a staff member", "a staffer", "a deputy") is greyed out with "No staff hired" when nobody is hired, so word a send-staff option with one of those phrases. **Decline:** a Random event whose choices have no decline-like option gets a **Decline** choice whose penalty is **1.5 x the shortfall of sending staff against accepting** (choice A), applied as a loss and rounded half up; an event with no send-staff choice counts staff as giving nothing. Scale Constituency, Reputation, Party, District, National and organization standing; never XP, Funds, dues or unlocks. Label `@event.decline`, result `@event.decline.EVxx`. The one-off generator in `tools/workbook/archive/b9/decline_options.py` is **not reusable as it stands**: its Decline wording is a fixed table of the 17 events, so a new event stops it with a `KeyError`; for a new event add the Decline row by hand (or add the event's line to that table first) using the rule above. It reads `data/*.json`, so export before running it. Keep every event inside the content budget used by Office Hours (below): meaningful rewards cost something somewhere.
 

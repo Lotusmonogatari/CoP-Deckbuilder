@@ -38,5 +38,11 @@
     "",
     "Nothing is in here yet. Every level currently uses the dynamic pick."
   ],
-  "overrides": []
+  "overrides": [
+    {
+      "level_id": "LV100",
+      "slot": 1,
+      "opp_id": "OP121"
+    }
+  ]
 }

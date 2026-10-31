@@ -982,5 +982,21 @@
   {
     "level_id": "LV82",
     "thought_text": "My worry is leaders chosen by loud, small factions. My hope is that rank-and-file members come out better off."
+  },
+  {
+    "level_id": "LV98",
+    "thought_text": "One microphone, one opponent, and every kitchen radio in the district."
+  },
+  {
+    "level_id": "LV99",
+    "thought_text": "No script. No idea who rings next."
+  },
+  {
+    "level_id": "LV100",
+    "thought_text": "These are people who start work at four in the morning. Do not waste their evening."
+  },
+  {
+    "level_id": "LV101",
+    "thought_text": "A room full of people who will still be voting in fifty years."
   }
 ]

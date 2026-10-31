@@ -1228,5 +1228,25 @@
     "level_id": "LV82",
     "role": "District Representative",
     "cue_text": "Remember who party leadership selection touches back home."
+  },
+  {
+    "level_id": "LV98",
+    "role": "Media Spokesperson",
+    "cue_text": "Radio is forgiving of nerves and merciless about waffle. Short answers."
+  },
+  {
+    "level_id": "LV99",
+    "role": "Media Spokesperson",
+    "cue_text": "They will not be experts. They will be angry, and they will be right about something."
+  },
+  {
+    "level_id": "LV100",
+    "role": "District Representative",
+    "cue_text": "The cooperative has been asking for this meeting for months. Bring numbers."
+  },
+  {
+    "level_id": "LV101",
+    "role": "Policy Research Assistant",
+    "cue_text": "Students check what you say against what you voted. I printed your record."
   }
 ]

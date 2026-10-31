@@ -1225,7 +1225,11 @@ SHEETS = {
             ("Rewards", "rewards", "target_delta_list"),
             ("Unlocks Level", "unlocks_level", "str"),
             ("Dues Δ", "dues_delta", "range"),
+            # 2026-10-31: a level this choice starts (an Event Only level). The
+            # player sees its briefing first and may go back to the event.
+            ("Starts Level", "starts_level", "str"),
         ],
+        "optional": ["Starts Level"],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
@@ -1451,8 +1455,11 @@ SHEETS = {
             # 2026-10-30: the seasons a level shows in, semicolon-separated
             # names from rules.json's "seasons" (blank = all year).
             ("Seasons", "seasons", "id_list"),
+            # 2026-10-31: "Yes" keeps the level off the Office's list; only an
+            # event choice (Event Choices, Starts Level) can start it.
+            ("Event Only (Yes/No)", "event_only", "str"),
         ],
-        "optional": ["Seasons"],
+        "optional": ["Seasons", "Event Only (Yes/No)"],
     },
     # 3 roles (Policy Research Assistant, Media Spokesperson, District
     # Representative) x 7 starting/upgrade tier configs each. The Reward
@@ -3162,6 +3169,25 @@ def _starting_items(cell, player_id, data, report):
     return items
 
 
+def check_event_levels(data, report):
+    """An Event Choices row's Starts Level must be a real level marked Event Only."""
+    levels = {str(l.get("level_id")): l for l in data.get("levels", [])}
+    for row in data.get("event_choices", []):
+        target = str(row.get("starts_level") or "").strip()
+        if not target:
+            continue
+        where = f"Event Choices {row.get('event_id')} {row.get('choice')} Starts Level"
+        level = levels.get(target)
+        if level is None:
+            report.error(where, f"{target} is not a level")
+            continue
+        if str(level.get("event_only") or "").strip().lower() != "yes":
+            report.error(where, f"{target} is not marked Event Only, so it would also show in the level list")
+        slots = [level.get(f"stage_{i}") for i in range(1, 11)]
+        if sum(1 for s in slots if s not in (None, "", "N/A")) > 1:
+            report.warn(where, f"{target} has more than one stage; event levels are meant to be one stage")
+
+
 def check_seasons(data, report):
     """Every name in a Levels or Events Seasons cell must be one of rules.json's seasons."""
     try:
@@ -3569,7 +3595,10 @@ def fold_questions(data, report):
     for stage in data.get("stages", []):
         pool_name = stage.get("question_pool")
         if pool_name:
-            stage_id_by_pool[pool_name] = stage["stage_id"]
+            # The FIRST room with the pool is its family's own (ST04, ST05,
+            # ...); a later copy with a narrower cast (2026-10-31: Campus Q&A
+            # seats only students) must not decide who asks the whole pool.
+            stage_id_by_pool.setdefault(pool_name, stage["stage_id"])
     # ST05 Town Hall has no "question_pool" column of its own in the
     # workbook (BattleSetup.QUESTION_POOL_BY_STAGE's own fallback covers the
     # same gap on the GDScript side) — the one stage_type this can't read
@@ -3930,6 +3959,7 @@ def main():
     validate(data, report)
     check_rooms(data, report)
     check_seasons(data, report)
+    check_event_levels(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)

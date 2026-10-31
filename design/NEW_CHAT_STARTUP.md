@@ -9,7 +9,7 @@ Point the assistant at this file at the start of a new session. The fuller recor
 | Game | Godot 4.5, GDScript, portrait mobile card battler. Fictional nation Yezo (101 seats, floor majority 51, no early elections). |
 | Repo and branches | `lotusmonogatari/cop-deckbuilder`. Work on the designated session branch; merge to `main` only after `tools/verify.sh` says "All checks passed". Everything to date is merged; the branch is level with `main`. |
 | Workbook | `design/Game_Workbook.xlsx` (renamed 2026-10-27 from `CoP_Starter_Card_Stage_Data.xlsx`). |
-| Content (`data/`) | 270 stage rows (226 combat), 97 levels, 70 cards, 32 organizations, 125 opponents, 50 floor-vote bills, 166 visitors, 38 events, 155 ticker lines, 6 cosmetic packages. |
+| Content (`data/`) | 273 stage rows (229 combat), 101 levels, 70 cards, 32 organizations, 125 opponents, 50 floor-vote bills, 166 visitors, 38 events, 155 ticker lines, 6 cosmetic packages. |
 | Tests | About 1,551 GUT tests (120 scripts) and 27 real-click interaction tests. `tools/verify.sh` (which also compiles every script) passes in about 2 minutes. |
 | Missing | All audio files, most character and card art, 97 topic-room backgrounds, the eight generic outside scenes (`OUT_*`, show the Town Hall until drawn). No real-phone build yet (milestone M6). |
 

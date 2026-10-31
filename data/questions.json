@@ -9706,7 +9706,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP109"
     },
     {
       "id": "S57",
@@ -9731,7 +9731,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP120"
     },
     {
       "id": "S58",
@@ -9751,7 +9751,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP121"
     },
     {
       "id": "S59",
@@ -9775,7 +9775,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP123"
     },
     {
       "id": "S60",
@@ -9800,7 +9800,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP124"
     },
     {
       "id": "S61",
@@ -71374,6 +71374,626 @@
         "CB308"
       ],
       "stage_ids": []
+    },
+    {
+      "id": "S2481",
+      "text": "A caller from the valley says the last bus now leaves at six. How is she meant to get home?",
+      "theme": "Rural transport",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO14",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST272"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "S2482",
+      "text": "My rent went up again this spring. What are you doing about it, specifically?",
+      "theme": "Cost of living",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO18",
+        "BO26",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST272"
+      ],
+      "asked_by": "OP111"
+    },
+    {
+      "id": "S2483",
+      "text": "A listener asks why her mother has waited eight months for a care home place.",
+      "theme": "Care home waiting lists",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST272"
+      ],
+      "asked_by": "OP112"
+    },
+    {
+      "id": "S2484",
+      "text": "Our clinic only opens two days a week now. Who decided that, and will it change?",
+      "theme": "Rural clinics",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST272"
+      ],
+      "asked_by": "OP113"
+    },
+    {
+      "id": "S2485",
+      "text": "A fisherman calls in: fuel costs more than the catch is worth. Does anyone care?",
+      "theme": "Fishing livelihoods",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO30",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO27"
+      ],
+      "stage_ids": [
+        "ST272"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "S2486",
+      "text": "Why should my son stay here after university when every good job is in the capital?",
+      "theme": "Graduate jobs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST272"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S2487",
+      "text": "A caller says the radio news and the papers tell her different stories. Who should she trust?",
+      "theme": "Protect reporters' confidential sources",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST272"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "S2488",
+      "text": "My daughter's school is closing next year. Where will the children go?",
+      "theme": "School closures",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST272"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "S2489",
+      "text": "Tuition went up again this year. Why should we believe it will ever come down?",
+      "theme": "Tuition value",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S2490",
+      "text": "Half my friends work two jobs to pay rent. Will you build public student housing?",
+      "theme": "Student housing",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S2491",
+      "text": "Every graduate I know is leaving for the capital. What would make us stay?",
+      "theme": "Graduate jobs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "S2492",
+      "text": "Will you forgive loans for graduates who go and work in rural towns?",
+      "theme": "Student debt",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S2493",
+      "text": "Students get no seat when the university board decides our fees. Is that fair?",
+      "theme": "Student representation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S2494",
+      "text": "Why does nobody under thirty ever seem to be in your committee rooms?",
+      "theme": "Youth participation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "S2495",
+      "text": "Should every school in Yezo teach the Ainu language?",
+      "theme": "Language in schools",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S2496",
+      "text": "The bus to campus costs more than lunch. Will you give students discounted transit?",
+      "theme": "Give students discounted transit",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S2497",
+      "text": "First-generation students drop out more than anyone. What would you fund to change that?",
+      "theme": "Fund scholarships for first-generation students",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "S2498",
+      "text": "Is the money going into research actually reaching students, or just buildings?",
+      "theme": "University spending",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO21"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S2499",
+      "text": "Rural students travel hours every week to get here. Who is thinking about them?",
+      "theme": "Rural students",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S2500",
+      "text": "Is it worth getting involved in politics at all, if nothing ever changes?",
+      "theme": "Youth participation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "S2501",
+      "text": "The quota was cut again and nobody asked us. Who sets these numbers?",
+      "theme": "Fishing quotas",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "stage_ids": [
+        "ST29"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "S2502",
+      "text": "The breakwater has been cracked for three winters. When will it be repaired?",
+      "theme": "Harbor upkeep",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "stage_ids": [
+        "ST29"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "S2503",
+      "text": "The harbor office is two people short and the paperwork has doubled. Will you fix it?",
+      "theme": "Port jobs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST29"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "S2504",
+      "text": "Catch prices fell by a third. Will the government step in?",
+      "theme": "Catch prices",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "stage_ids": [
+        "ST29"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S2505",
+      "text": "Should quotas be held by the cooperative, not by companies that never set foot on a boat?",
+      "theme": "Hold fishing quotas through local cooperatives",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST29"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S2506",
+      "text": "Foreign boats fish our waters at night. What will you actually do about it?",
+      "theme": "Illegal fishing",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST29"
+      ],
+      "asked_by": "OP121"
     }
   ]
 }

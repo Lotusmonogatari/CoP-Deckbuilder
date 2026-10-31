@@ -69,7 +69,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV02",
@@ -132,7 +133,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV03",
@@ -204,7 +206,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV04",
@@ -288,7 +291,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV05",
@@ -390,7 +394,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV06",
@@ -492,7 +497,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV07",
@@ -585,7 +591,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV08",
@@ -672,7 +679,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV09",
@@ -753,7 +761,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV10",
@@ -849,7 +858,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV11",
@@ -933,7 +943,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV12",
@@ -1020,7 +1031,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV13",
@@ -1104,7 +1116,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV14",
@@ -1188,7 +1201,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV15",
@@ -1275,7 +1289,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV16",
@@ -1362,7 +1377,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV17",
@@ -1452,7 +1468,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV18",
@@ -1542,7 +1559,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV19",
@@ -1632,7 +1650,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV20",
@@ -1719,7 +1738,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV21",
@@ -1806,7 +1826,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV22",
@@ -1893,7 +1914,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV23",
@@ -1980,7 +2002,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV24",
@@ -2067,7 +2090,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV25",
@@ -2154,7 +2178,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV26",
@@ -2250,7 +2275,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV27",
@@ -2337,7 +2363,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV28",
@@ -2424,7 +2451,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV29",
@@ -2514,7 +2542,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV30",
@@ -2604,7 +2633,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV31",
@@ -2673,7 +2703,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV32",
@@ -2736,7 +2767,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV33",
@@ -2799,7 +2831,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV34",
@@ -2862,7 +2895,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV35",
@@ -2934,7 +2968,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV36",
@@ -3003,7 +3038,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV37",
@@ -3072,7 +3108,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO16",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV38",
@@ -3144,7 +3181,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV39",
@@ -3213,7 +3251,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV40",
@@ -3282,7 +3321,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV41",
@@ -3351,7 +3391,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO07",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV42",
@@ -3420,7 +3461,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV43",
@@ -3495,7 +3537,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV44",
@@ -3570,7 +3613,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV45",
@@ -3639,7 +3683,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV46",
@@ -3711,7 +3756,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV47",
@@ -3780,7 +3826,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO27",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV48",
@@ -3855,7 +3902,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV49",
@@ -3927,7 +3975,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV50",
@@ -3996,7 +4045,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV51",
@@ -4068,7 +4118,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV52",
@@ -4140,7 +4191,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV53",
@@ -4209,7 +4261,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV54",
@@ -4278,7 +4331,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV55",
@@ -4347,7 +4401,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO05",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV56",
@@ -4422,7 +4477,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV57",
@@ -4491,7 +4547,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV58",
@@ -4563,7 +4620,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV59",
@@ -4632,7 +4690,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV60",
@@ -4707,7 +4766,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV61",
@@ -4788,7 +4848,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV62",
@@ -4869,7 +4930,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV63",
@@ -4944,7 +5006,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV64",
@@ -5019,7 +5082,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV65",
@@ -5088,7 +5152,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO24",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV66",
@@ -5157,7 +5222,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV67",
@@ -5232,7 +5298,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV68",
@@ -5307,7 +5374,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV69",
@@ -5376,7 +5444,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO16",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV70",
@@ -5445,7 +5514,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO07",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV71",
@@ -5517,7 +5587,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV72",
@@ -5589,7 +5660,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV73",
@@ -5661,7 +5733,8 @@
     "needs_discovery": "Yes",
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV74",
@@ -5730,7 +5803,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV75",
@@ -5799,7 +5873,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO05",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV76",
@@ -5868,7 +5943,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO10",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV77",
@@ -5937,7 +6013,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV78",
@@ -6006,7 +6083,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV79",
@@ -6075,7 +6153,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO12",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV80",
@@ -6150,7 +6229,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV81",
@@ -6222,7 +6302,8 @@
     "needs_discovery": "Yes",
     "host_org": "BO23",
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV82",
@@ -6285,7 +6366,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV83",
@@ -6348,7 +6430,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": "Town Hall",
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV84",
@@ -6411,7 +6494,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": "Steering Committee",
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV85",
@@ -6474,7 +6558,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV86",
@@ -6537,7 +6622,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV87",
@@ -6600,7 +6686,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV88",
@@ -6663,7 +6750,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV89",
@@ -6726,7 +6814,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV90",
@@ -6789,7 +6878,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV91",
@@ -6852,7 +6942,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV92",
@@ -6917,7 +7008,8 @@
     "special_trigger": null,
     "seasons": [
       "Autumn"
-    ]
+    ],
+    "event_only": null
   },
   {
     "level_id": "LV93",
@@ -6982,7 +7074,8 @@
     "special_trigger": null,
     "seasons": [
       "Winter"
-    ]
+    ],
+    "event_only": null
   },
   {
     "level_id": "LV94",
@@ -7045,7 +7138,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV95",
@@ -7108,7 +7202,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV96",
@@ -7171,7 +7266,8 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
   },
   {
     "level_id": "LV97",
@@ -7234,6 +7330,263 @@
     "needs_discovery": null,
     "host_org": null,
     "special_trigger": null,
-    "seasons": null
+    "seasons": null,
+    "event_only": null
+  },
+  {
+    "level_id": "LV98",
+    "description": "On Air: A Radio Debate",
+    "cooldown": 16,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST271",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null,
+    "seasons": null,
+    "event_only": "Yes"
+  },
+  {
+    "level_id": "LV99",
+    "description": "Live on the Morning Call-In",
+    "cooldown": 16,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST272",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null,
+    "seasons": null,
+    "event_only": "Yes"
+  },
+  {
+    "level_id": "LV100",
+    "description": "A Fisheries Meeting at the Harbor",
+    "cooldown": 16,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST29",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null,
+    "seasons": null,
+    "event_only": "Yes"
+  },
+  {
+    "level_id": "LV101",
+    "description": "A Campus Q&A",
+    "cooldown": 16,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST273",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null,
+    "seasons": null,
+    "event_only": "Yes"
   }
 ]

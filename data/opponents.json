@@ -40,7 +40,8 @@
       "ST188",
       "ST194",
       "ST203",
-      "ST234"
+      "ST234",
+      "ST272"
     ],
     "suit_1": "Divisive",
     "suit_2": "Duplicitous",
@@ -677,7 +678,8 @@
       "ST149",
       "ST174",
       "ST180",
-      "ST198"
+      "ST198",
+      "ST273"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -857,7 +859,8 @@
       "ST149",
       "ST174",
       "ST180",
-      "ST198"
+      "ST198",
+      "ST273"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -4954,7 +4957,8 @@
       "ST188",
       "ST194",
       "ST203",
-      "ST234"
+      "ST234",
+      "ST272"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Divisive",
@@ -5013,7 +5017,8 @@
       "ST188",
       "ST194",
       "ST203",
-      "ST234"
+      "ST234",
+      "ST272"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Appeal",
@@ -5072,7 +5077,8 @@
       "ST188",
       "ST194",
       "ST203",
-      "ST234"
+      "ST234",
+      "ST272"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -5131,7 +5137,8 @@
       "ST188",
       "ST194",
       "ST203",
-      "ST234"
+      "ST234",
+      "ST272"
     ],
     "suit_1": "Divisive",
     "suit_2": "Data Driven",
@@ -5190,7 +5197,8 @@
       "ST188",
       "ST194",
       "ST203",
-      "ST234"
+      "ST234",
+      "ST272"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Emotional",
@@ -5249,7 +5257,8 @@
       "ST188",
       "ST194",
       "ST203",
-      "ST234"
+      "ST234",
+      "ST272"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -5308,7 +5317,8 @@
       "ST188",
       "ST194",
       "ST203",
-      "ST234"
+      "ST234",
+      "ST272"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -5348,7 +5358,8 @@
       "ST165",
       "ST175",
       "ST186",
-      "ST233"
+      "ST233",
+      "ST271"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -5387,7 +5398,8 @@
       "ST165",
       "ST175",
       "ST186",
-      "ST233"
+      "ST233",
+      "ST271"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -5445,7 +5457,8 @@
       "ST165",
       "ST175",
       "ST186",
-      "ST233"
+      "ST233",
+      "ST271"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -5485,7 +5498,9 @@
       "ST165",
       "ST175",
       "ST186",
-      "ST233"
+      "ST233",
+      "ST271",
+      "ST29"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -5525,7 +5540,8 @@
       "ST165",
       "ST175",
       "ST186",
-      "ST233"
+      "ST233",
+      "ST271"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -5582,7 +5598,8 @@
       "ST165",
       "ST175",
       "ST186",
-      "ST233"
+      "ST233",
+      "ST271"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -5639,7 +5656,9 @@
       "ST165",
       "ST175",
       "ST186",
-      "ST233"
+      "ST233",
+      "ST271",
+      "ST273"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -5678,7 +5697,8 @@
       "ST165",
       "ST175",
       "ST186",
-      "ST233"
+      "ST233",
+      "ST271"
     ],
     "suit_1": "Earnest",
     "suit_2": "Divisive",
