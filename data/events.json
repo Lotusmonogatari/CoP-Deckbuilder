@@ -767,5 +767,24 @@
       "Summer",
       "Autumn"
     ]
+  },
+  {
+    "event_id": "EV50",
+    "title": "A College Visit to an Ainu Cultural Center",
+    "flavor": "A university student society has invited you to join its field visit to a regional Ainu cultural center. The students will tour the exhibits and meet the staff, and they would like a legislator to come along.",
+    "trigger": "Random",
+    "available": "Weekday",
+    "hours": 2,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": 5,
+    "cooldown_hours": null,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": "OUT_CULTURAL_CENTER_1",
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null,
+    "seasons": null
   }
 ]

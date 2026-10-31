@@ -12,8 +12,8 @@
   "question_weak_multiplier": 0.7,
   "lean_party_support_delta": 2,
   "starter_deck_tier_0_cards": 4,
-  "starter_deck_tier_1_cards": 4,
-  "starter_deck_tier_2_cards": 6,
+  "starter_deck_tier_1_cards": 5,
+  "starter_deck_tier_2_cards": 5,
   "starter_deck_tier_3_chance": 25,
   "starter_deck_max_tier_3_cards": 1,
   "starter_deck_max_gaffe_cards": 50,
@@ -184,7 +184,7 @@
   "hosted_event_own_organization_guest_percent": 60,
   "audience_scale_largest_bonus": 5,
   "event_picture_height": 640,
-  "image_pan_tilt_strength": 2.5,
-  "image_pan_follow_speed": 6,
+  "image_pan_tilt_strength": 1.5,
+  "image_pan_follow_speed": 3,
   "xp_tiers": {}
 }

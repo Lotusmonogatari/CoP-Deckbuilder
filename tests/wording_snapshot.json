@@ -243,6 +243,7 @@
   "event.decline.EV43": "You decline to receive them. The folders stay in their plastic.",
   "event.decline.EV48": "You decline the invitation. The group counts one fewer in the front row, and someone notices.",
   "event.decline.EV49": "You decline the invitation. The seat set aside for you is quietly given away.",
+  "event.decline.EV50": "You decline the invitation. The students go without a legislator, and the center's staff notice.",
   "event.dues_line": "Dues owed {change}",
   "event.effect_line": "{name} {change}",
   "event.gathering_title": "You hosted a gathering",

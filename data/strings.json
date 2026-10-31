@@ -5969,5 +5969,12 @@
     "english": "You decline the invitation. The seat set aside for you is quietly given away.",
     "placeholders": null,
     "notes": "2026-10-30 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV50",
+    "where": "Event Choices: the result of declining EV50",
+    "english": "You decline the invitation. The students go without a legislator, and the center's staff notice.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
   }
 ]

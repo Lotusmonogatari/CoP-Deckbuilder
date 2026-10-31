@@ -702,7 +702,7 @@
   "town_hall": [
     {
       "id": "T01",
-      "text": "How does this bill help my family?",
+      "text": "How does legislation help my family?",
       "theme": "Impact",
       "grades": {
         "Earnest": "S",
@@ -1046,7 +1046,7 @@
     },
     {
       "id": "T17",
-      "text": "Who is behind this bill?",
+      "text": "Who is behind your legislation?",
       "theme": "Influence",
       "grades": {
         "Earnest": "W",
@@ -3872,7 +3872,7 @@
     },
     {
       "id": "L03",
-      "text": "Is there room to adjust the bill's language?",
+      "text": "Is there room to adjust certain legislative language?",
       "theme": "Drafting",
       "grades": {
         "Earnest": "M",
@@ -4003,7 +4003,7 @@
     },
     {
       "id": "L09",
-      "text": "Would a study of the costs change your mind?",
+      "text": "Would a study on long-term policy implementation costs change your mind?",
       "theme": "Persuasion",
       "grades": {
         "Earnest": "M",
@@ -4044,7 +4044,7 @@
     },
     {
       "id": "L11",
-      "text": "What are your red lines on this bill?",
+      "text": "What are your red lines on your legislation?",
       "theme": "Limits",
       "grades": {
         "Earnest": "S",
@@ -4106,7 +4106,7 @@
     },
     {
       "id": "L14",
-      "text": "Who is advising you on this bill?",
+      "text": "Who is advising you on your bills?",
       "theme": "Influence",
       "grades": {
         "Earnest": "M",
@@ -4147,7 +4147,7 @@
     },
     {
       "id": "L16",
-      "text": "How firm is your commitment on this?",
+      "text": "How firm is your commitment?",
       "theme": "Resolve",
       "grades": {
         "Earnest": "S",

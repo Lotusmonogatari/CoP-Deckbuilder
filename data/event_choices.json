@@ -3093,5 +3093,110 @@
     ],
     "unlocks_level": null,
     "dues_delta": null
+  },
+  {
+    "event_id": "EV50",
+    "choice": "A",
+    "choice_text": "Join the visit and tour the exhibits",
+    "result_text": "You walk the galleries with forty students and one very patient guide. Afterwards three of them ask what the legislature is doing about it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO29",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV50",
+    "choice": "B",
+    "choice_text": "Send a staff member with the students",
+    "result_text": "Your staffer joins the tour and comes back with a bag of leaflets.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO11",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV50",
+    "choice": "C",
+    "choice_text": "Greet the students at the gate and leave",
+    "result_text": "You shake a few hands at the door. The students say it was kind of you to come.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV50",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the invitation. The students go without a legislator, and the center's staff notice.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO29",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
   }
 ]

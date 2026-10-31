@@ -284,6 +284,16 @@
       ],
       "place": "a snowed-in village road with a bus stop, a clinic sign and hills beyond",
       "mood": "muffled, pale winter light"
+    },
+    "OUT_CULTURAL_CENTER": {
+      "label": "Cultural center",
+      "keywords": [
+        "cultural center",
+        "museum",
+        "exhibit"
+      ],
+      "place": "the entrance of a small regional cultural center: a low timber-and-glass building with a patterned entrance banner, a gravel forecourt, a bus drop-off and a few trees",
+      "mood": "bright mid-morning, clear and quiet"
     }
   },
   "image_terms": {
