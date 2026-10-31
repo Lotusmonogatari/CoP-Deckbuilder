@@ -2720,3 +2720,11 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 - **Phase 4 tagging:** 41 more visitor choices: concrete follow-up actions became promises of 1-2 hours within 48-168 game hours (including the eleven bill dilemmas' "I will find out and tell you"), small acts cost hours now, two gifts became item promises (VQ29 A Nebuta hand towel, VQ78 C cookies). Policy stances stay free; `tools/choice_audit.py` now notes only promises that cost nothing (28 left, all stances).
 - Assets rows for the eight regional goods' icons (undrawn). `design/GAME_DESIGN.md`, `design/CONTENT_GUIDE.md` and `design/NEW_CHAT_STARTUP.md` brought up to date; `design/review/OPEN_ITEMS_2026-10-31.md` lists each decision for Cameron with the interim choice made.
 - Tests: follow-up scheduling and its never-random/never-for-sale guard in `test_promises.gd`.
+
+## Cameron's answers on the open items (2026-10-31)
+- **Promises harsher:** kept +2 standing; broken -5 standing and -2 Reputation (Balance levers); default deadline stays 48 hours. Unnamed promises still cost Reputation only.
+- **Stances cost a small promise:** 24 "I'll fight for / push for / back" choices now promise 1 hour within a week; VQ15 B, VQ21 A, VQ82 B and VQ88 C (neither stances nor actions) stay free.
+- **Follow-up events get a Decline** by the 1.5x rule: EV62 (its "leave before the end" choice became the Decline), EV63, EV64.
+- **Seasons:** Winter December-March, Spring April-May, Summer June-August, Autumn September-November (`data/rules.json`).
+- **Student names (drafts):** OP126 Hinata Kusakabe, OP127 Sota Arakawa, OP128 Mio Takanashi, OP129 Daiki Funabashi, OP130 Aoi Kamishiro, OP131 Yuto Hanazono.
+- Regional goods kept as drafted; event-room difficulty left as is. Record: `design/review/OPEN_ITEMS_2026-10-31.md`.

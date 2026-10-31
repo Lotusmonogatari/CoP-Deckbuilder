@@ -4675,12 +4675,15 @@
   {
     "event_id": "EV62",
     "choice": "D",
-    "choice_text": "Let them argue and leave before the end",
-    "result_text": "You are noticed leaving.",
+    "choice_text": "Decline",
+    "result_text": "You stay away from the meeting you called. Both neighborhoods notice.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
-    "constituency_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": -2
+    },
     "reputation_delta": null,
     "party_support_delta": null,
     "district_delta": null,
@@ -4688,7 +4691,7 @@
     "rewards": [
       {
         "target": "BO06",
-        "delta": -2
+        "delta": -3
       }
     ],
     "unlocks_level": null,
@@ -4823,6 +4826,52 @@
     "party_support_delta": null,
     "district_delta": null,
     "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV63",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You set the ministry's reply aside. The customs officer never hears of it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV64",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You leave the airline's letter unanswered.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": -2,
+      "max": -2
+    },
     "rewards": null,
     "unlocks_level": null,
     "dues_delta": null,

@@ -16,3 +16,16 @@ Work done while Cameron was away, with each decision that needs him and the inte
 | 10 | **Event-level difficulty** | Radio Debate, Radio Call-In and Campus Q&A copy their families' numbers (the bot wins all three 40-0, as it does their families) | Whether to make them harder |
 
 Nothing here blocks play; all of it is reversible in the workbook.
+
+## Cameron's answers (2026-10-31, later)
+
+| # | Item | Decision | Done |
+|---|---|---|---|
+| 1 | Unnamed promises | Reputation only when nobody specific is owed | As built |
+| 2 | Promise numbers | Harsher | Kept +2 standing; broken -5 standing and -2 Reputation; deadline 48 hours |
+| 3 | Stances | Small promise | 24 stance choices now promise 1 hour within a week (`Promise Hours 1 within 168`); four lines that are neither stances nor actions are left free (VQ15 B, VQ21 A, VQ82 B, VQ88 C) |
+| 4 | Follow-up events | Add Decline | EV62 (its old "leave before the end" choice became the Decline: -2 Constituency, -3 Neighborhood Associations), EV63 (-2 Small Business Owners), EV64 (-2 National Awareness) |
+| 6 | Regional goods | Keep for now | Icons on the art list |
+| 7 | Student names | Draft names | OP126 Hinata Kusakabe, OP127 Sota Arakawa, OP128 Mio Takanashi, OP129 Daiki Funabashi, OP130 Aoi Kamishiro, OP131 Yuto Hanazono (drafts, Assets notes say so) |
+| 8 | Seasons | Winter December-March; November is autumn | Spring 4-5, Summer 6-8, Autumn 9-11, Winter 12-3 |
+| 10 | Event-room difficulty | Leave as is | — |

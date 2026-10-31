@@ -4,7 +4,7 @@ Rules: every choice 4-12 words; the longest at most 1.75x the shortest; each cho
 
 0 of 452 sets break a rule.
 
-28 sets have only one choice that promises an action and it costs nothing (a note for the commitments work, not a rule break; a policy stance such as I'll fight for relief is fine as it is).
+4 sets have only one choice that promises an action and it costs nothing (a note for the commitments work, not a rule break; a policy stance such as I'll fight for relief is fine as it is).
 
 | Tab | ID | Words | Problems | Note | Choices |
 |---|---|---|---|---|---|

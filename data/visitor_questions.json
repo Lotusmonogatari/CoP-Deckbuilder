@@ -183,7 +183,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "Studies take time. Children cross every morning.",
     "response_b": "Some of them have no parent free to walk.",
@@ -871,7 +877,13 @@
     "commitment_a": null,
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "response_a": "Adapt to what? Prices set in Tokyo?",
     "response_b": "Smaller herd, same costs.",
     "response_c": "Cheese. Maybe. In three years.",
@@ -946,7 +958,13 @@
       }
     ],
     "commitment_a": null,
-    "commitment_b": null,
+    "commitment_b": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_c": null,
     "commitment_d": null,
     "response_a": "Reviewed until they close.",
@@ -1233,7 +1251,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "Office support. Is that all we are worth?",
     "response_b": "Unpaid has a name, and it is not experience.",
@@ -1295,7 +1319,13 @@
         "delta": -4
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -1729,7 +1759,13 @@
     "commitment_a": null,
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "response_a": "Success is a seat. We have none.",
     "response_b": "Buses stop in the same traffic.",
     "response_c": "Staggered hours. Soon I will not sleep.",
@@ -3496,7 +3532,13 @@
     "commitment_a": null,
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "response_a": "Fully behind it. Good. I will put that in the minutes.",
     "response_b": "Reservations are healthy. Say them in the room.",
     "response_c": "No comment. That says plenty.",
@@ -3637,7 +3679,13 @@
         "delta": 1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -3711,7 +3759,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "Answer what you can? Headquarters will be speechless.",
     "response_b": "Silence reads as guilt to reporters.",
@@ -3780,7 +3834,13 @@
     "commitment_a": null,
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "response_a": "From the inside. Then open the door for us.",
     "response_b": "Soon is what they always hear.",
     "response_c": "Weight. Not that we see.",
@@ -3848,7 +3908,13 @@
     "commitment_a": null,
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "response_a": "Your schedule is full? That is exactly what they fear.",
     "response_b": "Serious about running. So it is who they are.",
     "response_c": "Headquarters has its own plans, true.",
@@ -4139,7 +4205,13 @@
       }
     ],
     "commitment_a": null,
-    "commitment_b": null,
+    "commitment_b": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_c": null,
     "commitment_d": null,
     "response_a": "Good food helps. It does not make a movement.",
@@ -5215,7 +5287,13 @@
     "commitment_a": null,
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "response_a": "Nothing to fix? Nobody believes that.",
     "response_b": "In trouble? You said that quickly.",
     "response_c": "No comment. Then we learn nothing.",
@@ -5793,7 +5871,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "Neutral. Convenient. It does not last.",
     "response_b": "The strongest. Until the strongest changes.",
@@ -7308,7 +7392,13 @@
     "commitment_a": null,
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "response_a": "A protected line. Yes. That is independence.",
     "response_b": "Earn it with half the staff?",
     "response_c": "Ratings in a small region.",
@@ -11321,7 +11411,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -11905,7 +12001,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "We need colleagues who say so aloud.",
     "response_b": "The press is hardly short of volunteers.",
@@ -12133,7 +12235,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "They will be glad to hear it.",
     "response_b": "Thanks cost little.",
@@ -12283,7 +12391,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "Thank you. Many wait by the door.",
     "response_b": "Some have no neighbors left.",
@@ -12433,7 +12547,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "It cuts commutes and costs.",
     "response_b": "They are changing anyway.",
@@ -12733,7 +12853,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "Empty houses wait for them.",
     "response_b": "Empty villages cost more.",
@@ -13544,7 +13670,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "That is the principle we want.",
     "response_b": "Flexibility for them, risk for us.",
@@ -14473,7 +14605,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "Bring good shoes. It is dusty.",
     "response_b": "Staff do not vote.",
@@ -15325,7 +15463,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ],
     "commitment_d": null,
     "response_a": "That would be a real change.",
     "response_b": "The prefecture is far away.",

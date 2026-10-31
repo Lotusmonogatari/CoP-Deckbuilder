@@ -299,7 +299,6 @@
   "seasons": {
     "value": {
       "Spring": [
-        3,
         4,
         5
       ],
@@ -316,12 +315,13 @@
       "Winter": [
         12,
         1,
-        2
+        2,
+        3
       ]
     },
     "question": "Which calendar months make up each season? A level or event with a Seasons cell (Levels and Events tabs) only shows in the months of the seasons it names.",
     "means": {
-      "value": "Season name -> month numbers (1 = January). The names are what the Seasons cells use. First draft: the usual three-month seasons; Yezo's winter may want to run longer."
+      "value": "Season name -> month numbers (1 = January). Cameron, 2026-10-31: Yezo's winter runs December through March; November is autumn."
     }
   }
 }
