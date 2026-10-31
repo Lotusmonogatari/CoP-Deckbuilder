@@ -155,3 +155,35 @@ func test_ev65_s_promises_carry_their_own_terms() -> void:
 		if str(row.get("event_id")) == "EV65" and str(row.get("choice")) in ["A", "B"]:
 			assert_true(Promises.has_own(Promises.terms_of(row), "kept"), "EV65 %s has its own kept effects" % row["choice"])
 			assert_true(Promises.has_own(Promises.terms_of(row), "broken"))
+
+
+func test_every_promise_in_the_workbook_says_what_keeping_it_looks_like() -> void:
+	# Cameron, 2026-10-31: every promise has a Promise Kept Text.
+	var missing: Array[String] = []
+	for row: Dictionary in DataDB.event_choices:
+		if _promises_something(row.get("commitment")) and str(row.get("promise_kept_text", "")).strip_edges() in ["", "<null>"]:
+			missing.append("%s %s" % [row["event_id"], row["choice"]])
+	for row: Dictionary in DataDB.visitor_questions:
+		for c in ["a", "b", "c", "d"]:
+			var text: Variant = row.get("promise_kept_text_" + c)
+			if _promises_something(row.get("commitment_" + c)) and (text == null or str(text).is_empty()):
+				missing.append("%s %s" % [row["question_id"], c])
+	for row: Dictionary in DataDB.event_options:
+		var text: Variant = row.get("promise_kept_text")
+		if _promises_something(row.get("commitment")) and (text == null or str(text).is_empty()):
+			missing.append(str(row["option_id"]))
+	assert_eq(missing, [] as Array[String], "promises with no kept text")
+
+
+func test_a_visitor_or_hosted_promise_keeps_its_kept_text() -> void:
+	GameState.pay_commitments([HOURS], "A visitor", "BO12", {"kept_text": "You followed through."})
+	assert_eq(str(GameState.promises[0]["kept_text"]), "You followed through.")
+
+
+func _promises_something(list: Variant) -> bool:
+	if not (list is Array):
+		return false
+	for entry: Variant in list:
+		if Promises.is_promise(entry):
+			return true
+	return false

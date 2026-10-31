@@ -12,7 +12,8 @@
       "local"
     ],
     "flavor": "You walk under the old gate, and nobody talks for a little while.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -27,7 +28,8 @@
       "humble"
     ],
     "flavor": "Boots in the mud, a basket of apples handed round.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -42,7 +44,8 @@
       "modern"
     ],
     "flavor": "Noise, hard hats, and a proud foreman.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -57,7 +60,8 @@
       "neighborhood"
     ],
     "flavor": "Shop owners step out to wave. Someone gives you a croquette.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -72,7 +76,8 @@
       "local"
     ],
     "flavor": "Washing on balconies, children on bicycles, and a lot of opinions about the bin collection.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -87,7 +92,8 @@
       "humble"
     ],
     "flavor": "Gulls, ice and a tall stack of crates.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -101,7 +107,8 @@
       "rural"
     ],
     "flavor": "You say the word 'price' more often than anyone expected.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -115,7 +122,8 @@
       "local"
     ],
     "flavor": "A small business owner nods very slowly.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -129,7 +137,8 @@
       "small_business"
     ],
     "flavor": "You talk about visitors, and who actually benefits.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -143,7 +152,8 @@
       "local"
     ],
     "flavor": "You talk about what is worth keeping.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -157,7 +167,8 @@
       "spending"
     ],
     "flavor": "You talk about shifts, and the people who work them.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -172,7 +183,8 @@
       "youth"
     ],
     "flavor": "Half the group looks interested, half checks the time.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -186,7 +198,8 @@
       "spending"
     ],
     "flavor": "Several heads nod at once.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -199,7 +212,8 @@
       "finance"
     ],
     "flavor": "You talk about the bill that never gets paid.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -219,7 +233,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You table a proposal to cut taxes on local business and send your guests a copy."
   },
   {
     "hosted_id": "HE01",
@@ -239,7 +254,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You raise a crypto-yen in a finance briefing. The officials take notes, mostly of the silence."
   },
   {
     "hosted_id": "HE01",
@@ -259,7 +275,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You set out your case against Yezo's alliances in a short paper. It is read carefully, and not kindly."
   },
   {
     "hosted_id": "HE01",
@@ -279,7 +296,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You speak for more trade agreements at a committee hearing and send your guests the record."
   },
   {
     "hosted_id": "HE01",
@@ -299,7 +317,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You put forward funding for shrine and festival restoration and send your guests the proposal."
   },
   {
     "hosted_id": "HE01",
@@ -319,7 +338,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You table a measure to protect local farmland from sale and send the farmers a copy."
   },
   {
     "hosted_id": "HE01",
@@ -339,7 +359,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You propose a modest rise in the minimum wage and send your guests the figures."
   },
   {
     "hosted_id": "HE01",
@@ -360,7 +381,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You put forward funding for rural broadband and send your guests the first map of where it would go."
   },
   {
     "hosted_id": "HE02",
@@ -374,7 +396,8 @@
       "luxury"
     ],
     "flavor": "Butter, a little salt and a very good scallop.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -388,7 +411,8 @@
       "traditional"
     ],
     "flavor": "A plate that says you meant it.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -402,7 +426,8 @@
       "luxury"
     ],
     "flavor": "Well cooked, and from the other side of the world.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -416,7 +441,8 @@
       "humble"
     ],
     "flavor": "Crisp, plain, filling.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -430,7 +456,8 @@
       "humble"
     ],
     "flavor": "Autumn on a plate.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -444,7 +471,8 @@
       "luxury"
     ],
     "flavor": "A good vintage, with a label that is hard to read.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -458,7 +486,8 @@
       "traditional"
     ],
     "flavor": "A masu cup, a gentle pour.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -473,7 +502,8 @@
       "humble"
     ],
     "flavor": "Cold and clear, and exactly what the orchard grows.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -487,7 +517,8 @@
       "beer"
     ],
     "flavor": "A brewer's name on the glass.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -500,7 +531,8 @@
       "traditional"
     ],
     "flavor": "Nobody has ever been offended by barley tea.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -514,7 +546,8 @@
       "humble"
     ],
     "flavor": "Crunch and salt, served in small dishes.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -528,7 +561,8 @@
       "modern"
     ],
     "flavor": "Three cheeses and a very small knife.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -542,7 +576,8 @@
       "local"
     ],
     "flavor": "Cold and sharp.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -556,7 +591,8 @@
       "traditional"
     ],
     "flavor": "Fresh, soft, simple.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -570,7 +606,8 @@
       "humble"
     ],
     "flavor": "The potatoes are from two valleys over.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -584,7 +621,8 @@
       "rural"
     ],
     "flavor": "The farmers lean forward.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -598,7 +636,8 @@
       "local"
     ],
     "flavor": "A few knives are put down.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -612,7 +651,8 @@
       "small_business"
     ],
     "flavor": "You talk about the empty rooms in the off season.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -626,7 +666,8 @@
       "local"
     ],
     "flavor": "You talk about what is worth keeping.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -640,7 +681,8 @@
       "spending"
     ],
     "flavor": "The union man has a pen.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -655,7 +697,8 @@
       "youth"
     ],
     "flavor": "Phones come out of pockets, in a good way.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -669,7 +712,8 @@
       "spending"
     ],
     "flavor": "The table is very attentive.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -682,7 +726,8 @@
       "finance"
     ],
     "flavor": "A banker finishes his glass.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -702,7 +747,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You table a proposal to cut taxes on local business and send your guests a copy."
   },
   {
     "hosted_id": "HE02",
@@ -722,7 +768,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You raise a crypto-yen in a finance briefing. The officials take notes, mostly of the silence."
   },
   {
     "hosted_id": "HE02",
@@ -742,7 +789,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You set out your case against Yezo's alliances in a short paper. It is read carefully, and not kindly."
   },
   {
     "hosted_id": "HE02",
@@ -762,7 +810,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You speak for more trade agreements at a committee hearing and send your guests the record."
   },
   {
     "hosted_id": "HE02",
@@ -782,7 +831,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You put forward funding for shrine and festival restoration and send your guests the proposal."
   },
   {
     "hosted_id": "HE02",
@@ -802,7 +852,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You table a measure to protect local farmland from sale and send the farmers a copy."
   },
   {
     "hosted_id": "HE02",
@@ -822,7 +873,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You propose a modest rise in the minimum wage and send your guests the figures."
   },
   {
     "hosted_id": "HE02",
@@ -843,7 +895,8 @@
         "amount": 1,
         "within": 168
       }
-    ]
+    ],
+    "promise_kept_text": "You put forward funding for rural broadband and send your guests the first map of where it would go."
   },
   {
     "hosted_id": "HE01",
@@ -856,7 +909,8 @@
       "reform"
     ],
     "flavor": "You talk about what the public is allowed to read.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE01",
@@ -870,7 +924,8 @@
       "protect"
     ],
     "flavor": "An older guest stands a little straighter.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -883,7 +938,8 @@
       "reform"
     ],
     "flavor": "Someone asks whether this is on the record.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   },
   {
     "hosted_id": "HE02",
@@ -897,6 +953,7 @@
       "protect"
     ],
     "flavor": "A retired officer sets down his chopsticks.",
-    "commitment": null
+    "commitment": null,
+    "promise_kept_text": null
   }
 ]

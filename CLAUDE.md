@@ -720,3 +720,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Question Themes review applied (2026-10-31, Cameron)
 - EV65 A Delegation Comes for Cultural Exchange; SH33 Haskap Yoitomake (2026-10-31, Cameron)
 - EV65 revised; promises can carry their own kept and broken effects (2026-10-31, Cameron)
+- Every promise says what keeping it looks like (2026-10-31, Cameron)

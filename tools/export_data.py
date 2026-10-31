@@ -1273,8 +1273,10 @@ SHEETS = {
             # 2026-10-31: what a pick costs or owes (step 3's promise), the
             # Event Choices Commitment grammar. Blank = nothing.
             ("Commitment", "commitment", "commitment_list"),
+            # 2026-10-31: the line shown when this pick's promise is kept.
+            ("Promise Kept Text", "promise_kept_text", "str"),
         ],
-        "optional": ["Commitment"],
+        "optional": ["Commitment", "Promise Kept Text"],
     },
     "Organization Tastes": {
         "out": "organization_tastes.json",
@@ -1701,8 +1703,14 @@ SHEETS = {
             ("Reaction B", "reaction_b", "str"),
             ("Reaction C", "reaction_c", "str"),
             ("Reaction D", "reaction_d", "str"),
+            # 2026-10-31: the line shown when that choice's promise is kept.
+            ("Promise Kept Text A", "promise_kept_text_a", "str"),
+            ("Promise Kept Text B", "promise_kept_text_b", "str"),
+            ("Promise Kept Text C", "promise_kept_text_c", "str"),
+            ("Promise Kept Text D", "promise_kept_text_d", "str"),
         ],
-        "optional": ["Correct Choice", "Response - Right", "Response - Wrong",
+        "optional": ["Promise Kept Text A", "Promise Kept Text B", "Promise Kept Text C", "Promise Kept Text D",
+                     "Correct Choice", "Response - Right", "Response - Wrong",
                      "Reaction - Right", "Reaction - Wrong",
                      "Effects A", "Effects B", "Effects C", "Effects D",
                      "Response A", "Response B", "Response C", "Response D",
@@ -3279,6 +3287,21 @@ def check_commitments(data, report):
         for entry in (row.get("promise_kept") or []) + (row.get("promise_broken") or []):
             if str(entry["target"]).startswith("BO") and entry["target"] not in booster_ids:
                 report.error(where, f"promise effect names {entry['target']}, which is not in the Boosters tab")
+    # 2026-10-31 (Cameron): every promise says what keeping it looks like.
+    def promise_text_check(where, commitment, text):
+        promised = any(str(e.get("kind", "")).startswith("promise") for e in commitment or [])
+        if promised and not text:
+            report.warn(where, "makes a promise but has no Promise Kept Text")
+        if text and not promised:
+            report.error(where, "has Promise Kept Text but makes no promise")
+    for row in data.get("event_choices", []):
+        promise_text_check(f"Event Choices {row.get('event_id')} {row.get('choice')}", row.get("commitment"), row.get("promise_kept_text"))
+    for row in data.get("visitor_questions", []):
+        for c in "abcd":
+            promise_text_check(f"Visitor Questions {row.get('question_id')} {c.upper()}",
+                               row.get("commitment_" + c), row.get("promise_kept_text_" + c))
+    for row in data.get("event_options", []):
+        promise_text_check(f"Event Options {row.get('option_id')}", row.get("commitment"), row.get("promise_kept_text"))
     for row in data.get("event_options", []):
         for entry in row.get("commitment") or []:
             if entry.get("kind") in ("item", "promise_item") and entry.get("item_id") not in shop_ids:

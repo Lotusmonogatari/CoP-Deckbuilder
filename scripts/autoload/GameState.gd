@@ -1411,11 +1411,24 @@ func finish_hosted_event() -> Dictionary:
 	# 3's promise is owed to the guest organization the evening pleased most.
 	var lines := pay_commitments(hosted_commitments(session),
 		str(get_hosted_event(str(session["hosted_id"])).get("title", "")),
-		HostedEvent.most_pleased(total["org_deltas"], org))
+		HostedEvent.most_pleased(total["org_deltas"], org), hosted_promise_terms(session))
 	var revealed := reveal_by_hosting(org)
 	return {"net": int(total["net"]), "deltas": total["org_deltas"], "awareness": int(total["awareness"]),
 		"meter": meter, "reputation": int(total["reputation"]), "revealed": revealed, "hours": hours,
 		"lines": lines}
+
+
+## The kept line of whichever picked option makes the evening's promise.
+func hosted_promise_terms(session: Dictionary) -> Dictionary:
+	var picked: Dictionary = session.get("picked", {})
+	for step: Variant in picked.keys():
+		for row: Dictionary in DataDB.event_options:
+			if str(row.get("hosted_id", "")) == str(session.get("hosted_id", "")) \
+					and (picked[step] as Array).has(str(row.get("option_id", ""))):
+				var terms := Promises.terms_of(row)
+				if terms.has("kept_text"):
+					return terms
+	return {}
 
 
 ## Every commitment the picked options of a hosted evening carry, in step order.

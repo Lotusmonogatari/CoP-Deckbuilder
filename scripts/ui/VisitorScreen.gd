@@ -193,9 +193,12 @@ func _on_choice(letter: String) -> void:
 		choice.disabled = true
 	_continue_button.disabled = false
 
-	GameState.pay_commitments(Commitments.of(engine.current_question(), "commitment_" + letter.to_lower()),
+	var question := engine.current_question()
+	var kept_text: Variant = question.get("promise_kept_text_" + letter.to_lower())
+	GameState.pay_commitments(Commitments.of(question, "commitment_" + letter.to_lower()),
 		str(engine.current_visitor().get("name_en", "")),
-		GameState._first_pleased_org(engine.current_question().get("effects_" + letter.to_lower())))
+		GameState._first_pleased_org(question.get("effects_" + letter.to_lower())),
+		{"kept_text": str(kept_text)} if kept_text != null and not str(kept_text).is_empty() else {})
 	var result := engine.answer(letter)
 	var correct := bool(result.get("correct", false))
 	_visitor_presenter.react(correct)

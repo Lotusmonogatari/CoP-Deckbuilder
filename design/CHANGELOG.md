@@ -2857,3 +2857,11 @@ Cameron's edit to EV65: the delegation tours "the capitol", and both gift choice
 Picking A or B gives nothing on the spot; everything comes from keeping or breaking the promise.
 
 **New Event Choices columns** (with header notes; the Commitment column got one too): **Promise Kept** and **Promise Broken** list what keeping or breaking the choice's promise does, replacing the Balance defaults. Targets: an organization, a Sanban value, District or National. **Promise Kept Text** is the line shown in a "Promise kept" pop-up. All three are blank-tolerant: a blank cell means the old defaults. The exporter checks the grammar and the organization IDs, and that these columns are only filled in on a choice that makes a promise. Code: `Promises.terms_of()` / `has_own()`, `GameState.pay_commitments(..., terms)` and `_apply_promise_effects()`, and the kept pop-up in `OfficeScreen._on_keep_promise()`. New Text row: `promises.kept_title`. Tests: `test_promises.gd` (own kept effects replace the default; own broken effects replace the default; EV65's two promises carry their terms).
+
+### Every promise says what keeping it looks like (2026-10-31, Cameron)
+
+All 117 promises in the game now have a **Promise Kept Text**: the line shown in a "Promise kept" pop-up when the player follows through from the Promises panel. That is 9 event choices (EV65 A had one already), 92 visitor choices and 16 hosted-event promises. All of them are Claude's drafts for Cameron to rewrite.
+
+- New columns: **Promise Kept Text A-D** on Visitor Questions, and **Promise Kept Text** on Event Options, each with a header note. Event Choices already had its column.
+- `VisitorScreen` and the hosted evening (`GameState.hosted_promise_terms()`) now pass their kept line to the promise, as event choices already did.
+- The exporter warns about any promise without a kept line, and gives an error for a kept line on a choice that makes no promise. A test (`test_promises.gd`) fails if any promise lacks one.

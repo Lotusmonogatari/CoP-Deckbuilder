@@ -390,7 +390,7 @@
     ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": null
+    "promise_kept_text": "You spend an hour on the rail plans and send the shopkeeper a short note on who pays for what. He pins it up by the till."
   },
   {
     "event_id": "EV12",
@@ -831,7 +831,7 @@
     ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": null
+    "promise_kept_text": "The call runs long. The mayors read you their one page twice, and you promise to read it once more yourself."
   },
   {
     "event_id": "EV18",
@@ -1009,7 +1009,7 @@
     ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": null
+    "promise_kept_text": "You call the founder back. He talks for forty minutes and sends three follow-up emails before you hang up."
   },
   {
     "event_id": "EV20",
@@ -1123,7 +1123,7 @@
     ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": null
+    "promise_kept_text": "The bottle of district sake arrives at the embassy with your card. The retired officers drink to your health."
   },
   {
     "event_id": "EV22",
@@ -3018,7 +3018,7 @@
     ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": null
+    "promise_kept_text": "The box of cookies reaches the fundraiser's organizers with your apologies. They are gone before the speeches start."
   },
   {
     "event_id": "EV47",
@@ -4294,7 +4294,7 @@
     ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": null
+    "promise_kept_text": "You raise the cooperative's concerns in committee and send the members the record of what was said."
   },
   {
     "event_id": "EV53",
@@ -5131,7 +5131,7 @@
     ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": null
+    "promise_kept_text": "You write back to the network with a reply from the ministry and a list of what happens next."
   },
   {
     "event_id": "EV61",
@@ -5627,7 +5627,7 @@
         "delta": -2
       }
     ],
-    "promise_kept_text": null
+    "promise_kept_text": "The cookies arrive at the farewell reception. The delegation passes the box around and asks where to buy more."
   },
   {
     "event_id": "EV65",

@@ -62,7 +62,11 @@
     "reaction_a": "Writes your promise in a small notebook.",
     "reaction_b": "Folds both arms.",
     "reaction_c": "Shakes head slowly.",
-    "reaction_d": "Stares at you, then at the door."
+    "reaction_d": "Stares at you, then at the door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ02",
@@ -127,7 +131,11 @@
     "reaction_a": "Lowers eyes.",
     "reaction_b": "Nods and starts a list.",
     "reaction_c": "Draws a sharp breath.",
-    "reaction_d": "Gathers the papers."
+    "reaction_d": "Gathers the papers.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ03",
@@ -198,7 +206,11 @@
     "reaction_a": "Taps a foot.",
     "reaction_b": "Looks hurt.",
     "reaction_c": "Smiles at last.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You meet the ward office about the crosswalk and the crossing guard, and send the parents the date the work begins.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ04",
@@ -273,7 +285,11 @@
     "reaction_a": "Stares at the horizon.",
     "reaction_b": "Jaw tightens.",
     "reaction_c": "Looks unconvinced.",
-    "reaction_d": "Straightens up."
+    "reaction_d": "Straightens up.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the ministry about the patrol boats and pass what you learn back to the fleet, plainly.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ05",
@@ -345,7 +361,11 @@
     "reaction_a": "Exhales.",
     "reaction_b": "Frowns.",
     "reaction_c": "Mutters.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": "You put the case for fuel relief to the ministry and send the crews a copy of your letter.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ06",
@@ -420,7 +440,11 @@
     "reaction_a": "Rubs the back of the neck.",
     "reaction_b": "Gives a short bow.",
     "reaction_c": "Looks away.",
-    "reaction_d": "Stares at the floor."
+    "reaction_d": "Stares at the floor.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": "You carry the dredging request to the capital and ask about it again the following week.",
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ07",
@@ -488,7 +512,11 @@
     "reaction_a": "Writes nothing down.",
     "reaction_b": "Puts the pen away.",
     "reaction_c": "Starts writing quickly.",
-    "reaction_d": "Raises an eyebrow."
+    "reaction_d": "Raises an eyebrow.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ08",
@@ -549,7 +577,11 @@
     "reaction_a": "Flips to a clean page.",
     "reaction_b": "Smirks.",
     "reaction_c": "Closes the notebook.",
-    "reaction_d": "Holds up a phone."
+    "reaction_d": "Holds up a phone.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ09",
@@ -617,7 +649,11 @@
     "reaction_a": "Waits, pen ready.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Raises an eyebrow.",
-    "reaction_d": "Nods and writes."
+    "reaction_d": "Nods and writes.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ10",
@@ -685,7 +721,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Relaxes slightly.",
     "reaction_c": "Narrows eyes.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ11",
@@ -758,7 +798,11 @@
     "reaction_a": "Almost smiles.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Looks dubious.",
-    "reaction_d": "Turns to leave."
+    "reaction_d": "Turns to leave.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ12",
@@ -835,7 +879,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Turns away, unimpressed.",
     "reaction_c": "Laughs, finally.",
-    "reaction_d": "Glares."
+    "reaction_d": "Glares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ13",
@@ -909,7 +957,11 @@
     "reaction_a": "Stares.",
     "reaction_b": "Stands up.",
     "reaction_c": "Wipes hands on apron.",
-    "reaction_d": "Nods slowly."
+    "reaction_d": "Nods slowly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You make the case for dairy relief in a meeting with the ministry and tell the farmers how it went."
   },
   {
     "question_id": "VQ14",
@@ -992,7 +1044,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Lets out a breath.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Folds arms."
+    "reaction_d": "Folds arms.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": "You speak up for the rural routes at the transport hearing and send the villages a copy of your remarks.",
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ15",
@@ -1066,7 +1122,11 @@
     "reaction_a": "Delighted, hands you a knife.",
     "reaction_b": "Wraps the cheese up.",
     "reaction_c": "Smiles stiffly.",
-    "reaction_d": "Lowers the cheese."
+    "reaction_d": "Lowers the cheese.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": "You try a small piece of the cheese on camera. It is very good, and you say so.",
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ16",
@@ -1134,7 +1194,11 @@
     "reaction_a": "Crosses arms.",
     "reaction_b": "Nods once.",
     "reaction_c": "Writes it on a card.",
-    "reaction_d": "Looks stung."
+    "reaction_d": "Looks stung.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ17",
@@ -1212,7 +1276,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Grins.",
     "reaction_c": "Looks disappointed.",
-    "reaction_d": "Frowns slightly."
+    "reaction_d": "Frowns slightly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ18",
@@ -1290,7 +1358,11 @@
     "reaction_a": "Stiffens.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Breaks into a smile."
+    "reaction_d": "Breaks into a smile.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You go through the office budget and find room for one student intern next term.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ19",
@@ -1360,7 +1432,11 @@
     "reaction_a": "Shoulders drop in relief.",
     "reaction_b": "Laughs bitterly.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Glares."
+    "reaction_d": "Glares.",
+    "promise_kept_text_a": "You press the ministry for more childcare places and share the answer with the parents who asked.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ20",
@@ -1433,7 +1509,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods eagerly.",
-    "reaction_d": "Looks dismayed."
+    "reaction_d": "Looks dismayed.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ21",
@@ -1512,7 +1592,11 @@
     "reaction_a": "Frowns gently.",
     "reaction_b": "Laughs warmly.",
     "reaction_c": "Clicks tongue.",
-    "reaction_d": "Looks wounded."
+    "reaction_d": "Looks wounded.",
+    "promise_kept_text_a": "You eat a proper lunch and send Granny Chiyo a photo of the empty bowl.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ22",
@@ -1576,7 +1660,11 @@
     "reaction_a": "Sets the piece down.",
     "reaction_b": "Hands it over gently.",
     "reaction_c": "Looks put out.",
-    "reaction_d": "Bows deeply."
+    "reaction_d": "Bows deeply.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ23",
@@ -1661,7 +1749,11 @@
     "reaction_a": "Stands taller.",
     "reaction_b": "Mouth tightens.",
     "reaction_c": "Looks uncertain.",
-    "reaction_d": "Stares in disbelief."
+    "reaction_d": "Stares in disbelief.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ24",
@@ -1733,7 +1825,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods thoughtfully.",
-    "reaction_d": "Gives a weary half smile."
+    "reaction_d": "Gives a weary half smile.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ25",
@@ -1803,7 +1899,11 @@
     "reaction_a": "Glares.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Looks hopeful."
+    "reaction_d": "Looks hopeful.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You press the railway for more cars on the morning line and post its reply for the commuters."
   },
   {
     "question_id": "VQ26",
@@ -1876,7 +1976,11 @@
     "reaction_a": "Brightens.",
     "reaction_b": "Looks dubious.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ27",
@@ -1952,7 +2056,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Frowns slightly.",
     "reaction_c": "Smiles, relieved.",
-    "reaction_d": "Mutters under breath."
+    "reaction_d": "Mutters under breath.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You ride the 7:40 standing in the crush, and arrive understanding exactly what the commuters mean."
   },
   {
     "question_id": "VQ28",
@@ -2023,7 +2131,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Beams.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": "You make the call about the road closure. The festival permit comes through the same week.",
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ29",
@@ -2106,7 +2218,11 @@
     "reaction_a": "Looks away.",
     "reaction_b": "Sighs.",
     "reaction_c": "Smiles tightly.",
-    "reaction_d": "Bows."
+    "reaction_d": "Bows.",
+    "promise_kept_text_a": "The hand towel reaches the shrine festival with your respects. The organizers hang it by the entrance.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ30",
@@ -2179,7 +2295,11 @@
     "reaction_a": "Slaps the table in agreement.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ31",
@@ -2252,7 +2372,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods hard.",
-    "reaction_d": "Looks let down."
+    "reaction_d": "Looks let down.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ32",
@@ -2320,7 +2444,11 @@
     "reaction_a": "Taps the table.",
     "reaction_b": "Grins.",
     "reaction_c": "Laughs uneasily.",
-    "reaction_d": "Waves a hand."
+    "reaction_d": "Waves a hand.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ33",
@@ -2392,7 +2520,11 @@
     "reaction_a": "Narrows eyes.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Bows."
+    "reaction_d": "Bows.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ34",
@@ -2464,7 +2596,11 @@
     "reaction_a": "Brightens.",
     "reaction_b": "Frowns.",
     "reaction_c": "Looks stunned.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ35",
@@ -2540,7 +2676,11 @@
     "reaction_a": "Writes something down.",
     "reaction_b": "Looks stern.",
     "reaction_c": "Smiles.",
-    "reaction_d": "Looks disappointed."
+    "reaction_d": "Looks disappointed.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ36",
@@ -2627,7 +2767,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Grins.",
     "reaction_c": "Nods.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ37",
@@ -2704,7 +2848,11 @@
     "reaction_a": "Looks disapproving.",
     "reaction_b": "Sighs.",
     "reaction_c": "Waves a hand.",
-    "reaction_d": "Smiles."
+    "reaction_d": "Smiles.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ38",
@@ -2772,7 +2920,11 @@
     "reaction_a": "Winks.",
     "reaction_b": "Looks cold.",
     "reaction_c": "Gives a thin smile.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ39",
@@ -2840,7 +2992,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Laughs coldly.",
     "reaction_c": "Pats your arm.",
-    "reaction_d": "Smiles stiffly."
+    "reaction_d": "Smiles stiffly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ40",
@@ -2912,7 +3068,11 @@
     "reaction_a": "Waves a hand.",
     "reaction_b": "Claps once.",
     "reaction_c": "Narrows eyes.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ41",
@@ -2985,7 +3145,11 @@
     "reaction_a": "Beams.",
     "reaction_b": "Frowns.",
     "reaction_c": "Stares.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ42",
@@ -3057,7 +3221,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Looks doubtful.",
     "reaction_c": "Nods firmly.",
-    "reaction_d": "Goes pale."
+    "reaction_d": "Goes pale.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ43",
@@ -3133,7 +3301,11 @@
     "reaction_a": "Shrugs unhappily.",
     "reaction_b": "Rolls eyes.",
     "reaction_c": "Nods warily.",
-    "reaction_d": "Smiles and shakes your hand."
+    "reaction_d": "Smiles and shakes your hand.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You find the office that handles ferry clearance and send the fleet the right name and number.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ44",
@@ -3210,7 +3382,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Grins.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Beams."
+    "reaction_d": "Beams.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ45",
@@ -3287,7 +3463,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ46",
@@ -3363,7 +3543,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Looks pleased.",
     "reaction_c": "Raises an eyebrow.",
-    "reaction_d": "Throws up arms."
+    "reaction_d": "Throws up arms.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ47",
@@ -3441,7 +3625,11 @@
     "reaction_a": "Delighted.",
     "reaction_b": "Frowns.",
     "reaction_c": "Stares.",
-    "reaction_d": "Flips a business card."
+    "reaction_d": "Flips a business card.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ48",
@@ -3517,7 +3705,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Slaps the table.",
-    "reaction_d": "Sulks."
+    "reaction_d": "Sulks.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ49",
@@ -3595,7 +3787,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Nods slowly.",
     "reaction_c": "Raises an eyebrow.",
-    "reaction_d": "Leans back."
+    "reaction_d": "Leans back.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You set out your objections to the platform at the branch meeting, calmly and on the record."
   },
   {
     "question_id": "VQ50",
@@ -3667,7 +3863,11 @@
     "reaction_a": "Notes it down.",
     "reaction_b": "Smirks.",
     "reaction_c": "Nods approvingly.",
-    "reaction_d": "Looks at the clock."
+    "reaction_d": "Looks at the clock.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ51",
@@ -3745,7 +3945,11 @@
     "reaction_a": "Writes it down.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Folds arms.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": "You send headquarters a note on which talking points did not land at home, and why.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ52",
@@ -3823,7 +4027,11 @@
     "reaction_a": "Winces.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods.",
-    "reaction_d": "Cringes."
+    "reaction_d": "Cringes.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You call headquarters before the reporter, and return the reporter's call with a clear answer.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ53",
@@ -3897,7 +4105,11 @@
     "reaction_a": "Nods hard.",
     "reaction_b": "Crosses arms.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Narrows eyes."
+    "reaction_d": "Narrows eyes.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You raise a youth seat on the board at the next party meeting and keep raising it."
   },
   {
     "question_id": "VQ54",
@@ -3971,7 +4183,11 @@
     "reaction_a": "Looks away.",
     "reaction_b": "Smirks.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Smiles."
+    "reaction_d": "Smiles.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You spend an afternoon with the young member and leave with as many ideas as you gave."
   },
   {
     "question_id": "VQ55",
@@ -4043,7 +4259,11 @@
     "reaction_a": "Settles back.",
     "reaction_b": "Nods.",
     "reaction_c": "Gasps.",
-    "reaction_d": "Laughs bitterly."
+    "reaction_d": "Laughs bitterly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ56",
@@ -4120,7 +4340,11 @@
     "reaction_a": "Smirks.",
     "reaction_b": "Smiles.",
     "reaction_c": "Raises an eyebrow.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ57",
@@ -4192,7 +4416,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Winces.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ58",
@@ -4277,7 +4505,11 @@
     "reaction_a": "Smiles thinly.",
     "reaction_b": "Stares.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": "You meet the paid campaign staff and set out what you expect from them.",
+    "promise_kept_text_c": "You thank your volunteers by name and visit two of them at work. Word gets around the branch.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ59",
@@ -4348,7 +4580,11 @@
     "reaction_a": "Ticks a box.",
     "reaction_b": "Sighs.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": "You check with your office, and the dues are paid that afternoon.",
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ60",
@@ -4420,7 +4656,11 @@
     "reaction_a": "Stiffens.",
     "reaction_b": "Sighs.",
     "reaction_c": "Winces.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ61",
@@ -4492,7 +4732,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Smiles faintly.",
     "reaction_c": "Laughs.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ62",
@@ -4560,7 +4804,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Smiles.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ63",
@@ -4628,7 +4876,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Nods.",
     "reaction_c": "Rubs eyes.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ64",
@@ -4700,7 +4952,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Stiffens.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ65",
@@ -4772,7 +5028,11 @@
     "reaction_a": "Smirks.",
     "reaction_b": "Nods.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ66",
@@ -4844,7 +5104,11 @@
     "reaction_a": "Smiles faintly.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Laughs."
+    "reaction_d": "Laughs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ67",
@@ -4916,7 +5180,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Winces.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ68",
@@ -4988,7 +5256,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Frowns.",
     "reaction_c": "Smiles.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ69",
@@ -5060,7 +5332,11 @@
     "reaction_a": "Stares.",
     "reaction_b": "Raises an eyebrow.",
     "reaction_c": "Laughs.",
-    "reaction_d": "Smiles warmly."
+    "reaction_d": "Smiles warmly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ70",
@@ -5138,7 +5414,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Stares.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Smirks."
+    "reaction_d": "Smirks.",
+    "promise_kept_text_a": "You sit down with the nervous newcomer and walk them through their first month.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ71",
@@ -5210,7 +5490,11 @@
     "reaction_a": "Waves a hand.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Smiles faintly.",
-    "reaction_d": "Beams."
+    "reaction_d": "Beams.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ72",
@@ -5282,7 +5566,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Sighs.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Laughs."
+    "reaction_d": "Laughs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ73",
@@ -5364,7 +5652,11 @@
     "reaction_a": "Smirks.",
     "reaction_b": "Looks wary.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Nods warmly."
+    "reaction_d": "Nods warmly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You send a short paper on how the party could listen better. Someone at headquarters reads it."
   },
   {
     "question_id": "VQ74",
@@ -5432,7 +5724,11 @@
     "reaction_a": "Narrows eyes.",
     "reaction_b": "Nods slowly.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Goes cold."
+    "reaction_d": "Goes cold.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ75",
@@ -5504,7 +5800,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ76",
@@ -5576,7 +5876,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Smiles.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Smirks."
+    "reaction_d": "Smirks.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ77",
@@ -5648,7 +5952,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Nods.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Narrows eyes."
+    "reaction_d": "Narrows eyes.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ78",
@@ -5726,7 +6034,11 @@
     "reaction_a": "Winces.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Smiles.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "The cookies reach the donor with a handwritten thank-you. The photo goes up on their office wall.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ79",
@@ -5803,7 +6115,11 @@
     "reaction_a": "Writes it down.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Raises an eyebrow."
+    "reaction_d": "Raises an eyebrow.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ80",
@@ -5871,7 +6187,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Nods.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ81",
@@ -5949,7 +6269,11 @@
     "reaction_a": "Smiles thinly.",
     "reaction_b": "Narrows eyes.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You meet a member of the other faction for coffee, and keep the conversation going.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ82",
@@ -6027,7 +6351,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Nods.",
     "reaction_c": "Raises an eyebrow.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": "You hear out the plan and its risks in full before giving your answer.",
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ83",
@@ -6095,7 +6423,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Smirks.",
     "reaction_c": "Chuckles.",
-    "reaction_d": "Laughs."
+    "reaction_d": "Laughs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ84",
@@ -6167,7 +6499,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Sighs.",
     "reaction_c": "Smiles thinly.",
-    "reaction_d": "Laughs."
+    "reaction_d": "Laughs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ85",
@@ -6239,7 +6575,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Stiffens.",
     "reaction_c": "Nods.",
-    "reaction_d": "Chuckles."
+    "reaction_d": "Chuckles.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ86",
@@ -6311,7 +6651,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Nods.",
     "reaction_c": "Smirks.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ87",
@@ -6383,7 +6727,11 @@
     "reaction_a": "Narrows eyes.",
     "reaction_b": "Sighs.",
     "reaction_c": "Smiles thinly.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ88",
@@ -6461,7 +6809,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Smirks."
+    "reaction_d": "Smirks.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You speak up for the party at a meeting where staying is not the easy choice.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ89",
@@ -6540,7 +6892,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You visit the places the reports describe and come back with notes the reports left out."
   },
   {
     "question_id": "VQ90",
@@ -6612,7 +6968,11 @@
     "reaction_a": "Winces.",
     "reaction_b": "Nods.",
     "reaction_c": "Gasps.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ91",
@@ -6684,7 +7044,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Stares.",
     "reaction_c": "Smiles thinly.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ92",
@@ -6756,7 +7120,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Frowns.",
     "reaction_c": "Raises an eyebrow.",
-    "reaction_d": "Laughs."
+    "reaction_d": "Laughs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ93",
@@ -6828,7 +7196,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Nods.",
     "reaction_c": "Smirks.",
-    "reaction_d": "Laughs."
+    "reaction_d": "Laughs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ94",
@@ -6900,7 +7272,11 @@
     "reaction_a": "Smiles thinly.",
     "reaction_b": "Stares.",
     "reaction_c": "Nods.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ95",
@@ -6978,7 +7354,11 @@
     "reaction_a": "Exhales.",
     "reaction_b": "Frowns.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": "You ask the prefecture for a seasonal road closure and send the reply to the nesting-ground group.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ96",
@@ -7050,7 +7430,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Brightens.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks hurt."
+    "reaction_d": "Looks hurt.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ97",
@@ -7122,7 +7506,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Leans in.",
     "reaction_c": "Stares.",
-    "reaction_d": "Smiles bitterly."
+    "reaction_d": "Smiles bitterly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ98",
@@ -7194,7 +7582,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ99",
@@ -7266,7 +7658,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Winces.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ100",
@@ -7338,7 +7734,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Stiffens.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Smiles."
+    "reaction_d": "Smiles.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ101",
@@ -7410,7 +7810,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Sighs.",
     "reaction_c": "Looks hurt.",
-    "reaction_d": "Nods firmly."
+    "reaction_d": "Nods firmly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ102",
@@ -7488,7 +7892,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Stares.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You look at the regional desk in the budget papers and tell the editor what you found."
   },
   {
     "question_id": "VQ103",
@@ -7560,7 +7968,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Frowns.",
     "reaction_c": "Hesitates.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ104",
@@ -7632,7 +8044,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Brightens.",
     "reaction_c": "Winces.",
-    "reaction_d": "Gasps."
+    "reaction_d": "Gasps.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ105",
@@ -7708,7 +8124,11 @@
     "reaction_a": "Smirks.",
     "reaction_b": "Nods.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ106",
@@ -7780,7 +8200,11 @@
     "reaction_a": "Stares.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ107",
@@ -7852,7 +8276,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Stares.",
     "reaction_c": "Nods.",
-    "reaction_d": "Winces."
+    "reaction_d": "Winces.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ108",
@@ -7924,7 +8352,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Stares.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ109",
@@ -7996,7 +8428,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Stares.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ110",
@@ -8068,7 +8504,11 @@
     "reaction_a": "Relaxes.",
     "reaction_b": "Frowns.",
     "reaction_c": "Stiffens.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ111",
@@ -8140,7 +8580,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Sighs.",
     "reaction_c": "Stares.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ112",
@@ -8208,7 +8652,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Nods.",
     "reaction_c": "Winces.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ113",
@@ -8280,7 +8728,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Nods.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ114",
@@ -8352,7 +8804,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ115",
@@ -8424,7 +8880,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ116",
@@ -8502,7 +8962,11 @@
     "reaction_a": "Stiffens.",
     "reaction_b": "Looks wary.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": "You obtain the data-sharing agreement and send a plain summary of what it covers.",
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ117",
@@ -8574,7 +9038,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Stares.",
     "reaction_c": "Winces.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ118",
@@ -8646,7 +9114,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Frowns.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ119",
@@ -8718,7 +9190,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Sighs.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ120",
@@ -8790,7 +9266,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Nods.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ121",
@@ -8862,7 +9342,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Smiles.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ122",
@@ -8934,7 +9418,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Winces."
+    "reaction_d": "Winces.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ123",
@@ -9006,7 +9494,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ124",
@@ -9078,7 +9570,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ125",
@@ -9150,7 +9646,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Frowns.",
     "reaction_c": "Stares.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ126",
@@ -9222,7 +9722,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Frowns.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ127",
@@ -9294,7 +9798,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ128",
@@ -9366,7 +9874,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Nods.",
     "reaction_c": "Laughs bitterly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ129",
@@ -9438,7 +9950,11 @@
     "reaction_a": "Winces.",
     "reaction_b": "Nods.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ130",
@@ -9510,7 +10026,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ131",
@@ -9590,7 +10110,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Smiles.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ132",
@@ -9678,7 +10202,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Frowns.",
     "reaction_c": "Stares.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ133",
@@ -9750,7 +10278,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Frowns.",
     "reaction_c": "Stares.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ134",
@@ -9822,7 +10354,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Winces.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ135",
@@ -9894,7 +10430,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ136",
@@ -9973,7 +10513,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Ainu Heritage and Language Act and report back, as promised."
   },
   {
     "question_id": "VQ137",
@@ -10045,7 +10589,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ138",
@@ -10124,7 +10672,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Specified Skilled Worker Visa Act and report back, as promised."
   },
   {
     "question_id": "VQ139",
@@ -10192,7 +10744,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ140",
@@ -10263,7 +10819,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Consumption Tax Rate Act and report back, as promised."
   },
   {
     "question_id": "VQ141",
@@ -10335,7 +10895,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ142",
@@ -10414,7 +10978,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Judicial Appointments Commission Act and report back, as promised."
   },
   {
     "question_id": "VQ143",
@@ -10486,7 +11054,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ144",
@@ -10565,7 +11137,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Temple and Shrine Heritage Act and report back, as promised."
   },
   {
     "question_id": "VQ145",
@@ -10637,7 +11213,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ146",
@@ -10716,7 +11296,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Constituency Development Grants Act and report back, as promised."
   },
   {
     "question_id": "VQ147",
@@ -10788,7 +11372,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ148",
@@ -10867,7 +11455,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Organized Crime Conspiracy Act and report back, as promised."
   },
   {
     "question_id": "VQ149",
@@ -10939,7 +11531,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ150",
@@ -11018,7 +11614,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Yezo–EU Economic Partnership Agreement and report back, as promised."
   },
   {
     "question_id": "VQ151",
@@ -11090,7 +11690,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ152",
@@ -11169,7 +11773,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Chishima Joint Economic Activity Act and report back, as promised."
   },
   {
     "question_id": "VQ153",
@@ -11241,7 +11849,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ154",
@@ -11320,7 +11932,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Regional Minimum Wage Act and report back, as promised."
   },
   {
     "question_id": "VQ155",
@@ -11392,7 +12008,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ156",
@@ -11471,7 +12091,11 @@
     "reaction_a": "Raises an eyebrow.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Laughs quietly.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": "You find out who would pay for the Moral Education Curriculum Act and report back, as promised."
   },
   {
     "question_id": "VQ157",
@@ -11549,7 +12173,11 @@
     "reaction_a": "Sits up straighter.",
     "reaction_b": "Shakes head slowly.",
     "reaction_c": "Nods once.",
-    "reaction_d": "Turns toward the door."
+    "reaction_d": "Turns toward the door.",
+    "promise_kept_text_a": "You speak for a rice price floor in committee and send the cooperative the minutes.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ158",
@@ -11635,7 +12263,11 @@
     "reaction_a": "Smiles with relief.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": "You find money in the regional fund for shared irrigation and tell the cooperative before the summer.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the ministry for a drought report and send it to the cooperative when it arrives.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ159",
@@ -11707,7 +12339,11 @@
     "reaction_a": "Brightens.",
     "reaction_b": "Sighs.",
     "reaction_c": "Taps a notebook.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ160",
@@ -11785,7 +12421,11 @@
     "reaction_a": "Raises a fist, grinning.",
     "reaction_b": "Rolls eyes.",
     "reaction_c": "Smiles thinly.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You raise a student seat on the board with the rectors and pass their answer to the students.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ161",
@@ -11864,7 +12504,11 @@
     "reaction_a": "Exhales, relieved.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Goes pale."
+    "reaction_d": "Goes pale.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the ministry how many families are waiting for daycare and share the figure.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ162",
@@ -11936,7 +12580,11 @@
     "reaction_a": "Smiles warmly.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Looks hurt."
+    "reaction_d": "Looks hurt.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ163",
@@ -12008,7 +12656,11 @@
     "reaction_a": "Bows slightly.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ164",
@@ -12080,7 +12732,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods once.",
-    "reaction_d": "Looks hurt."
+    "reaction_d": "Looks hurt.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ165",
@@ -12158,7 +12814,11 @@
     "reaction_a": "Straightens a lapel.",
     "reaction_b": "Rolls eyes.",
     "reaction_c": "Nods.",
-    "reaction_d": "Goes cold."
+    "reaction_d": "Goes cold.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You speak up for members in the press, fairly, and say where criticism has been earned.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ166",
@@ -12236,7 +12896,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods slowly.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask for a costed plan for more bill-reading staff and send it to the members.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ167",
@@ -12314,7 +12978,11 @@
     "reaction_a": "Smiles, relieved.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the city to consult everyone on the festival route, and it schedules a meeting.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ168",
@@ -12392,7 +13060,11 @@
     "reaction_a": "Beams.",
     "reaction_b": "Sighs.",
     "reaction_c": "Smiles.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You name the grove volunteers in your speech. Several of them are in the room.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ169",
@@ -12470,7 +13142,11 @@
     "reaction_a": "Eyes glisten.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask for a pay review for care workers and send the council the terms of reference.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ170",
@@ -12548,7 +13224,11 @@
     "reaction_a": "Smiles softly.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You set up a home-visit pilot in one district and share the first month's results.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ171",
@@ -12626,7 +13306,11 @@
     "reaction_a": "Opens a folder.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the transport office for a bus service review and send the alliance its timetable.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ172",
@@ -12704,7 +13388,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Rolls eyes."
+    "reaction_d": "Rolls eyes.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the planning office to name pilot areas for mixed-use zoning near stations.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ173",
@@ -12782,7 +13470,11 @@
     "reaction_a": "Hand to chest.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You find out what recording the elders' language would cost and send the foundation the figures.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ174",
@@ -12860,7 +13552,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the ministry about training language teachers and send the foundation its answer.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ175",
@@ -12939,7 +13635,11 @@
     "reaction_a": "Exhales.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask for a passenger count on the noon bus and send the council the numbers.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ176",
@@ -13017,7 +13717,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You look into a small pilot of grants for young families and send the council the outline.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ177",
@@ -13085,7 +13789,11 @@
     "reaction_a": "Claps once.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ178",
@@ -13164,7 +13872,11 @@
     "reaction_a": "Beams.",
     "reaction_b": "Sighs.",
     "reaction_c": "Takes the flyer.",
-    "reaction_d": "Looks hurt."
+    "reaction_d": "Looks hurt.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You hand out the association's flyers at the station one morning. Three newcomers call that week.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ179",
@@ -13243,7 +13955,11 @@
     "reaction_a": "Relaxes.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Nods.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask for a public hearing on the vacant lot, and the date goes up on the notice board.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ180",
@@ -13322,7 +14038,11 @@
     "reaction_a": "Nods hard.",
     "reaction_b": "Scoffs.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Walks to the door."
+    "reaction_d": "Walks to the door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the ministry for data on seals and the catch, and send the fleet the report.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ181",
@@ -13394,7 +14114,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ182",
@@ -13471,7 +14195,11 @@
     "reaction_a": "Grins.",
     "reaction_b": "Stares.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ183",
@@ -13543,7 +14271,11 @@
     "reaction_a": "Writes quickly.",
     "reaction_b": "Narrows eyes.",
     "reaction_c": "Notes it down.",
-    "reaction_d": "Puts away the pen."
+    "reaction_d": "Puts away the pen.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ184",
@@ -13615,7 +14347,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Raises an eyebrow.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ185",
@@ -13692,7 +14428,11 @@
     "reaction_a": "Beams.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Closes notebook."
+    "reaction_d": "Closes notebook.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ186",
@@ -13770,7 +14510,11 @@
     "reaction_a": "Straightens up.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the factory owners to meet the union about the night shifts, and they agree to a date.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ187",
@@ -13848,7 +14592,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks angry."
+    "reaction_d": "Looks angry.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You study how other places treat temp workers and send the union a short summary.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ188",
@@ -13926,7 +14674,11 @@
     "reaction_a": "Exhales.",
     "reaction_b": "Glares.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stands."
+    "reaction_d": "Stands.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You write to the ministry about the removed safety inspector and share its reply with the plant.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ189",
@@ -14005,7 +14757,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the prefecture about the winter plow schedule, and the milk road is added to the list.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ190",
@@ -14077,7 +14833,11 @@
     "reaction_a": "Relaxes.",
     "reaction_b": "Folds arms.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ191",
@@ -14149,7 +14909,11 @@
     "reaction_a": "Smiles with pride.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Eyes flash."
+    "reaction_d": "Eyes flash.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ192",
@@ -14224,7 +14988,11 @@
     "reaction_a": "Cheers quietly.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Rolls eyes."
+    "reaction_d": "Rolls eyes.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the university about textbook costs and pass on what it can offer.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ193",
@@ -14298,7 +15066,11 @@
     "reaction_a": "Grins.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You raise longer library hours with the rector, and a trial of later closing is agreed.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ194",
@@ -14373,7 +15145,11 @@
     "reaction_a": "Brightens.",
     "reaction_b": "Looks tired.",
     "reaction_c": "Nods.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the university about transit passes and send the students its answer.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ195",
@@ -14441,7 +15217,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks hurt."
+    "reaction_d": "Looks hurt.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ196",
@@ -14523,7 +15303,11 @@
     "reaction_a": "Beams.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": "You ask for an audit of school lunches and send the parents the auditor's terms.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You check what the budget allows for school lunches and tell the parents plainly.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ197",
@@ -14591,7 +15375,11 @@
     "reaction_a": "Relaxes.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ198",
@@ -14668,7 +15456,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks wounded."
+    "reaction_d": "Looks wounded.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ199",
@@ -14754,7 +15546,11 @@
     "reaction_a": "Sighs, relieved.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": "You ask the forest office for a managed wood supply for carvers and send the guild its plan.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the forest office what is possible on wood for carvers and pass on the answer.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ200",
@@ -14832,7 +15628,11 @@
     "reaction_a": "Chuckles.",
     "reaction_b": "Dry smile.",
     "reaction_c": "Nods.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You visit the workshop for an hour and hear exactly how the carvers work.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ201",
@@ -14906,7 +15706,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the railway for a plan on platform doors and post its reply for the commuters.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ202",
@@ -14981,7 +15785,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": "You ask the railway to modernize the ticket machines, and it names a date for the new ones.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ203",
@@ -15055,7 +15863,11 @@
     "reaction_a": "Perks up.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the railway for delay figures and send them to the commuter who asked.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ204",
@@ -15123,7 +15935,11 @@
     "reaction_a": "Bows.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ205",
@@ -15191,7 +16007,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ206",
@@ -15265,7 +16085,11 @@
     "reaction_a": "Brightens.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks pained."
+    "reaction_d": "Looks pained.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You mention the shrine carriers to the local schools, and a few older students sign up.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ207",
@@ -15339,7 +16163,11 @@
     "reaction_a": "Grins.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask for a clear explainer on the tax rules and send it to the investor's office.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ208",
@@ -15407,7 +16235,11 @@
     "reaction_a": "Nods hard.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Folds arms."
+    "reaction_d": "Folds arms.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ209",
@@ -15475,7 +16307,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ210",
@@ -15547,7 +16383,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stands."
+    "reaction_d": "Stands.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ211",
@@ -15619,7 +16459,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ212",
@@ -15697,7 +16541,11 @@
     "reaction_a": "Perks up.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You study how other prefectures set budget priorities and send the mayor your notes.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ213",
@@ -15765,7 +16613,11 @@
     "reaction_a": "Relieved.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ214",
@@ -15833,7 +16685,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ215",
@@ -15915,7 +16771,11 @@
     "reaction_a": "Laughs.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": "You ask the city for short-term parking near the shop, and a trial bay is marked out.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You raise the parking problem at the council meeting and send the shop owner the minutes.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ216",
@@ -15997,7 +16857,11 @@
     "reaction_a": "Beams.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ217",
@@ -16075,7 +16939,11 @@
     "reaction_a": "Grins.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stiffens."
+    "reaction_d": "Stiffens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You pass the new members' request on to headquarters and send them the reply.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ218",
@@ -16161,7 +17029,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": "You find a donor for the local office's copier. It arrives the following week.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask headquarters for an equipment grant for the copier and send the office the form.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ219",
@@ -16229,7 +17101,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Smirks.",
     "reaction_c": "Chuckles.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ220",
@@ -16297,7 +17173,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Raises eyebrow.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stands."
+    "reaction_d": "Stands.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ221",
@@ -16369,7 +17249,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Winces.",
     "reaction_c": "Nods.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ222",
@@ -16449,7 +17333,11 @@
     "reaction_a": "Writes names on the back of a program.",
     "reaction_b": "Looks unconvinced.",
     "reaction_c": "Frowns at the festival banner.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ223",
@@ -16529,7 +17417,11 @@
     "reaction_a": "Goes pale.",
     "reaction_b": "Nods slowly.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ224",
@@ -16609,7 +17501,11 @@
     "reaction_a": "Winces.",
     "reaction_b": "Bows stiffly and leaves.",
     "reaction_c": "Bows deeply.",
-    "reaction_d": "Looks at the ceiling."
+    "reaction_d": "Looks at the ceiling.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ225",
@@ -16677,7 +17573,11 @@
     "reaction_a": "Hesitates.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Looks pained.",
-    "reaction_d": "Brightens."
+    "reaction_d": "Brightens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ226",
@@ -16753,7 +17653,11 @@
     "reaction_a": "Makes a note.",
     "reaction_b": "Taps the calculator.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Closes the folder."
+    "reaction_d": "Closes the folder.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ227",
@@ -16825,7 +17729,11 @@
     "reaction_a": "Folds arms.",
     "reaction_b": "Marks the budget sheet.",
     "reaction_c": "Wrinkles nose.",
-    "reaction_d": "Looks alarmed."
+    "reaction_d": "Looks alarmed.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ228",
@@ -16893,7 +17801,11 @@
     "reaction_a": "Stares.",
     "reaction_b": "Turns toward the window.",
     "reaction_c": "Nods firmly.",
-    "reaction_d": "Bristles."
+    "reaction_d": "Bristles.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ229",
@@ -16973,7 +17885,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Sighs.",
     "reaction_c": "Goes quiet.",
-    "reaction_d": "Smiles for the first time."
+    "reaction_d": "Smiles for the first time.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ230",
@@ -17033,7 +17949,11 @@
     "reaction_a": "Visibly relieved.",
     "reaction_b": "Frowns.",
     "reaction_c": "Throws up a hand.",
-    "reaction_d": "Glares."
+    "reaction_d": "Glares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ231",
@@ -17093,7 +18013,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Brightens.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ232",
@@ -17165,7 +18089,11 @@
     "reaction_a": "Looks annoyed.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Straightens.",
-    "reaction_d": "Mutters."
+    "reaction_d": "Mutters.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ233",
@@ -17229,7 +18157,11 @@
     "reaction_a": "Scowls.",
     "reaction_b": "Rolls eyes.",
     "reaction_c": "Walks off.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ234",
@@ -17297,7 +18229,11 @@
     "reaction_a": "Taps the table.",
     "reaction_b": "Murmurs.",
     "reaction_c": "Looks horrified.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ235",
@@ -17369,7 +18305,11 @@
     "reaction_a": "Lowers voice.",
     "reaction_b": "Relaxes.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Throws hands up."
+    "reaction_d": "Throws hands up.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ236",
@@ -17453,7 +18393,11 @@
     "reaction_a": "Chuckles dryly.",
     "reaction_b": "Goes cold.",
     "reaction_c": "Nods.",
-    "reaction_d": "Winces."
+    "reaction_d": "Winces.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ237",
@@ -17521,7 +18465,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Looks away.",
-    "reaction_d": "Brightens."
+    "reaction_d": "Brightens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ238",
@@ -17589,7 +18537,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ239",
@@ -17657,7 +18609,11 @@
     "reaction_a": "Turns pale.",
     "reaction_b": "Nods.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ240",
@@ -17725,7 +18681,11 @@
     "reaction_a": "Winces.",
     "reaction_b": "Looks tired.",
     "reaction_c": "Brightens.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ241",
@@ -17793,7 +18753,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Sighs.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ242",
@@ -17869,7 +18833,11 @@
     "reaction_a": "Beams.",
     "reaction_b": "Scowls.",
     "reaction_c": "Stares.",
-    "reaction_d": "Throws up hands."
+    "reaction_d": "Throws up hands.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ243",
@@ -17941,7 +18909,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Nods.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ244",
@@ -18009,7 +18981,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Laughs without humor.",
     "reaction_c": "Relaxes.",
-    "reaction_d": "Scoffs."
+    "reaction_d": "Scoffs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ245",
@@ -18081,7 +19057,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Waves it off.",
     "reaction_c": "Goes quiet.",
-    "reaction_d": "Brightens."
+    "reaction_d": "Brightens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ246",
@@ -18149,7 +19129,11 @@
     "reaction_a": "Eyes shine.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Turns to the door."
+    "reaction_d": "Turns to the door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ247",
@@ -18225,7 +19209,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Beams.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Looks stricken."
+    "reaction_d": "Looks stricken.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ248",
@@ -18297,7 +19285,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Looks at the floor.",
     "reaction_c": "Nods eagerly.",
-    "reaction_d": "Looks hurt."
+    "reaction_d": "Looks hurt.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ249",
@@ -18369,7 +19361,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Smirks.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Lights up."
+    "reaction_d": "Lights up.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ250",
@@ -18437,7 +19433,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ251",
@@ -18505,7 +19505,11 @@
     "reaction_a": "Turns away.",
     "reaction_b": "Smiles.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Looks startled."
+    "reaction_d": "Looks startled.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ252",
@@ -18573,7 +19577,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Hesitates.",
     "reaction_c": "Brightens.",
-    "reaction_d": "Winces."
+    "reaction_d": "Winces.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ253",
@@ -18645,7 +19653,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Grimaces.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ254",
@@ -18713,7 +19725,11 @@
     "reaction_a": "Brightens.",
     "reaction_b": "Stares.",
     "reaction_c": "Throws up hands.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ255",
@@ -18781,7 +19797,11 @@
     "reaction_a": "Looks incredulous.",
     "reaction_b": "Lights up.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Winces."
+    "reaction_d": "Winces.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ256",
@@ -18849,7 +19869,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Grimaces.",
     "reaction_c": "Nods.",
-    "reaction_d": "Goes pale."
+    "reaction_d": "Goes pale.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ257",
@@ -18917,7 +19941,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Looks insulted.",
     "reaction_c": "Throws up hands.",
-    "reaction_d": "Smiles."
+    "reaction_d": "Smiles.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ258",
@@ -18989,7 +20017,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Sighs.",
     "reaction_c": "Winces.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ259",
@@ -19061,7 +20093,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Brightens.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Looks alarmed."
+    "reaction_d": "Looks alarmed.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ260",
@@ -19129,7 +20165,11 @@
     "reaction_a": "Looks stricken.",
     "reaction_b": "Frowns.",
     "reaction_c": "Laughs.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ261",
@@ -19209,7 +20249,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Sighs.",
     "reaction_c": "Turns away.",
-    "reaction_d": "Counts the poles."
+    "reaction_d": "Counts the poles.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ262",
@@ -19277,7 +20321,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Winces.",
     "reaction_c": "Looks stricken.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ263",
@@ -19349,7 +20397,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Brightens.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Looks pained."
+    "reaction_d": "Looks pained.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ264",
@@ -19417,7 +20469,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Looks away.",
     "reaction_c": "Smiles.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ265",
@@ -19485,7 +20541,11 @@
     "reaction_a": "Smiles faintly.",
     "reaction_b": "Looks hurt.",
     "reaction_c": "Stares.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ266",
@@ -19549,7 +20609,11 @@
     "reaction_a": "Beams.",
     "reaction_b": "Stares.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Winces."
+    "reaction_d": "Winces.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ267",
@@ -19621,7 +20685,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Nods.",
     "reaction_c": "Goes quiet.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ268",
@@ -19681,7 +20749,11 @@
     "reaction_a": "Looks stricken.",
     "reaction_b": "Sighs.",
     "reaction_c": "Brightens.",
-    "reaction_d": "Frowns."
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ269",
@@ -19757,7 +20829,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Winces.",
     "reaction_c": "Looks furious.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ270",
@@ -19821,7 +20897,11 @@
     "reaction_a": "Nods firmly.",
     "reaction_b": "Winces.",
     "reaction_c": "Shakes head.",
-    "reaction_d": "Looks tired."
+    "reaction_d": "Looks tired.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ271",
@@ -19885,7 +20965,11 @@
     "reaction_a": "Sighs.",
     "reaction_b": "Nods.",
     "reaction_c": "Hesitates.",
-    "reaction_d": "Looks pained."
+    "reaction_d": "Looks pained.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ272",
@@ -19957,7 +21041,11 @@
     "reaction_a": "Shakes head.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Goes pale."
+    "reaction_d": "Goes pale.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ273",
@@ -20029,7 +21117,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Looks stricken.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ274",
@@ -20097,7 +21189,11 @@
     "reaction_a": "Brightens.",
     "reaction_b": "Stares.",
     "reaction_c": "Winces.",
-    "reaction_d": "Shrugs."
+    "reaction_d": "Shrugs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ275",
@@ -20177,7 +21273,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Nods.",
     "reaction_c": "Looks pained.",
-    "reaction_d": "Murmurs."
+    "reaction_d": "Murmurs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ276",
@@ -20245,7 +21345,11 @@
     "reaction_a": "Winces.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Brightens.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ277",
@@ -20309,7 +21413,11 @@
     "reaction_a": "Frowns.",
     "reaction_b": "Sighs.",
     "reaction_c": "Looks alarmed.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ278",
@@ -20377,7 +21485,11 @@
     "reaction_a": "Nods.",
     "reaction_b": "Sighs.",
     "reaction_c": "Winces.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ279",
@@ -20441,7 +21553,11 @@
     "reaction_a": "Shrugs.",
     "reaction_b": "Brightens.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ280",
@@ -20513,7 +21629,11 @@
     "reaction_a": "Looks stricken.",
     "reaction_b": "Shrugs.",
     "reaction_c": "Nods.",
-    "reaction_d": "Sighs."
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ281",
@@ -20585,7 +21705,11 @@
     "reaction_a": "Winces.",
     "reaction_b": "Shakes head.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Nods."
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ282",
@@ -20657,7 +21781,11 @@
     "reaction_a": "Wipes flour from both hands.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Mutters about city hall.",
-    "reaction_d": "Turns back to the oven."
+    "reaction_d": "Turns back to the oven.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ283",
@@ -20733,7 +21861,11 @@
     "reaction_a": "Touches the bell on the door.",
     "reaction_b": "Looks at the floor.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Closes the shutters slowly."
+    "reaction_d": "Closes the shutters slowly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ284",
@@ -20814,7 +21946,11 @@
     "reaction_a": "Checks her watch.",
     "reaction_b": "Stares at the empty road.",
     "reaction_c": "Raises an eyebrow.",
-    "reaction_d": "Pulls her scarf tighter."
+    "reaction_d": "Pulls her scarf tighter.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ285",
@@ -20886,7 +22022,11 @@
     "reaction_a": "Notes the street corner.",
     "reaction_b": "Brushes snow from her sleeve.",
     "reaction_c": "Glances at the sky.",
-    "reaction_d": "Walks into the cold."
+    "reaction_d": "Walks into the cold.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ286",
@@ -20958,7 +22098,11 @@
     "reaction_a": "Rubs tired eyes.",
     "reaction_b": "Looks at the dark window.",
     "reaction_c": "Stifles a laugh.",
-    "reaction_d": "Pulls the shutter down."
+    "reaction_d": "Pulls the shutter down.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ287",
@@ -21034,7 +22178,11 @@
     "reaction_a": "Straightens a shelf.",
     "reaction_b": "Shrugs bitterly.",
     "reaction_c": "Keeps stacking cans.",
-    "reaction_d": "Turns off the sign."
+    "reaction_d": "Turns off the sign.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ288",
@@ -21110,7 +22258,11 @@
     "reaction_a": "Smiles politely.",
     "reaction_b": "Looks at the litter.",
     "reaction_c": "Taps her cane on the sidewalk.",
-    "reaction_d": "Walks away with her cane."
+    "reaction_d": "Walks away with her cane.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ289",
@@ -21187,7 +22339,11 @@
     "reaction_a": "Unfolds her arms.",
     "reaction_b": "Frowns at the school.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Turns and walks away."
+    "reaction_d": "Turns and walks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ290",
@@ -21259,7 +22415,11 @@
     "reaction_a": "Leans on the steering wheel.",
     "reaction_b": "Sighs and starts the engine.",
     "reaction_c": "Looks away.",
-    "reaction_d": "Revs the van once."
+    "reaction_d": "Revs the van once.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ291",
@@ -21341,7 +22501,11 @@
     "reaction_a": "Taps the dashboard.",
     "reaction_b": "Rolls his eyes.",
     "reaction_c": "Waves a hand dismissively.",
-    "reaction_d": "Drives off."
+    "reaction_d": "Drives off.",
+    "promise_kept_text_a": "You report the cracked road with a photo and follow up until a repair date is set.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ292",
@@ -21417,7 +22581,11 @@
     "reaction_a": "Wraps a fish in paper.",
     "reaction_b": "Slams a lid.",
     "reaction_c": "Turns to the next customer.",
-    "reaction_d": "Wipes the counter angrily."
+    "reaction_d": "Wipes the counter angrily.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ293",
@@ -21489,7 +22657,11 @@
     "reaction_a": "Rubs weathered hands together.",
     "reaction_b": "Shakes his head slowly.",
     "reaction_c": "Looks out at the harbor.",
-    "reaction_d": "Throws the net over a shoulder."
+    "reaction_d": "Throws the net over a shoulder.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ294",
@@ -21561,7 +22733,11 @@
     "reaction_a": "Counts coins in a pocket.",
     "reaction_b": "Rolls eyes.",
     "reaction_c": "Pockets the coins.",
-    "reaction_d": "Zips up the jacket."
+    "reaction_d": "Zips up the jacket.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ295",
@@ -21637,7 +22813,11 @@
     "reaction_a": "Rubs his temples.",
     "reaction_b": "Looks at his phone.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Pulls his bag higher."
+    "reaction_d": "Pulls his bag higher.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ296",
@@ -21713,7 +22893,11 @@
     "reaction_a": "Straightens a vase.",
     "reaction_b": "Stares at the empty street.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Covers the buckets."
+    "reaction_d": "Covers the buckets.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ297",
@@ -21785,7 +22969,11 @@
     "reaction_a": "Glances up at a dead bulb.",
     "reaction_b": "Looks over her shoulder.",
     "reaction_c": "Tuts.",
-    "reaction_d": "Locks the door."
+    "reaction_d": "Locks the door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ298",
@@ -21857,7 +23045,11 @@
     "reaction_a": "Knocks on the steering wheel.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Waves toward the station.",
-    "reaction_d": "Starts the meter anyway."
+    "reaction_d": "Starts the meter anyway.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ299",
@@ -21938,7 +23130,11 @@
     "reaction_a": "Scratches his chin.",
     "reaction_b": "Looks at the empty rank.",
     "reaction_c": "Folds the paper.",
-    "reaction_d": "Pulls the cap down."
+    "reaction_d": "Pulls the cap down.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ300",
@@ -22014,7 +23210,11 @@
     "reaction_a": "Leans on the cart.",
     "reaction_b": "Shakes her head.",
     "reaction_c": "Looks at the hill.",
-    "reaction_d": "Stays on the bench."
+    "reaction_d": "Stays on the bench.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ301",
@@ -22086,7 +23286,11 @@
     "reaction_a": "Fusses with the cart handle.",
     "reaction_b": "Sighs deeply.",
     "reaction_c": "Turns away.",
-    "reaction_d": "Stares at the sidewalk."
+    "reaction_d": "Stares at the sidewalk.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ302",
@@ -22164,7 +23368,11 @@
     "reaction_a": "Shakes out a cape.",
     "reaction_b": "Sniffs.",
     "reaction_c": "Looks away.",
-    "reaction_d": "Clips with brisk snips."
+    "reaction_d": "Clips with brisk snips.",
+    "promise_kept_text_a": "You come back to the barber's chair a month later, and listen first.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ303",
@@ -22240,7 +23448,11 @@
     "reaction_a": "Sits up.",
     "reaction_b": "Stares coldly.",
     "reaction_c": "Turns to the mirror.",
-    "reaction_d": "Sweeps hair clippings fiercely."
+    "reaction_d": "Sweeps hair clippings fiercely.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ304",
@@ -22316,7 +23528,11 @@
     "reaction_a": "Looks at the empty counter.",
     "reaction_b": "Narrows her eyes.",
     "reaction_c": "Taps a pen.",
-    "reaction_d": "Straightens a medicine shelf."
+    "reaction_d": "Straightens a medicine shelf.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ305",
@@ -22388,7 +23604,11 @@
     "reaction_a": "Closes the receipt book.",
     "reaction_b": "Mutters.",
     "reaction_c": "Looks away.",
-    "reaction_d": "Counts boxes loudly."
+    "reaction_d": "Counts boxes loudly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ306",
@@ -22460,7 +23680,11 @@
     "reaction_a": "Wipes his hands.",
     "reaction_b": "Looks at the crane.",
     "reaction_c": "Folds his arms.",
-    "reaction_d": "Turns up the radio."
+    "reaction_d": "Turns up the radio.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ307",
@@ -22536,7 +23760,11 @@
     "reaction_a": "Looks up at the scaffolding.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Pulls on a hard hat."
+    "reaction_d": "Pulls on a hard hat.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ308",
@@ -22612,7 +23840,11 @@
     "reaction_a": "Pours coffee silently.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Slides the cup over."
+    "reaction_d": "Slides the cup over.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ309",
@@ -22684,7 +23916,11 @@
     "reaction_a": "Brightens.",
     "reaction_b": "Rolls her eyes.",
     "reaction_c": "Taps the counter.",
-    "reaction_d": "Turns the sign to closed."
+    "reaction_d": "Turns the sign to closed.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ310",
@@ -22756,7 +23992,11 @@
     "reaction_a": "Rubs tired eyes.",
     "reaction_b": "Looks away.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Takes off her badge."
+    "reaction_d": "Takes off her badge.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ311",
@@ -22832,7 +24072,11 @@
     "reaction_a": "Exhales.",
     "reaction_b": "Tightens her jaw.",
     "reaction_c": "Stares at the floor.",
-    "reaction_d": "Walks to the elevator."
+    "reaction_d": "Walks to the elevator.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ312",
@@ -22908,7 +24152,11 @@
     "reaction_a": "Leans on his cane.",
     "reaction_b": "Grips the cane.",
     "reaction_c": "Looks at the road.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ313",
@@ -22980,7 +24228,11 @@
     "reaction_a": "Peers at the pamphlet.",
     "reaction_b": "Scowls.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Puts the pamphlet down."
+    "reaction_d": "Puts the pamphlet down.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ314",
@@ -23052,7 +24304,11 @@
     "reaction_a": "Holds the child closer.",
     "reaction_b": "Narrows her eyes.",
     "reaction_c": "Rocks the child gently.",
-    "reaction_d": "Sits back down."
+    "reaction_d": "Sits back down.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ315",
@@ -23128,7 +24384,11 @@
     "reaction_a": "Counts coins.",
     "reaction_b": "Frowns.",
     "reaction_c": "Looks at her husband.",
-    "reaction_d": "Closes the purse."
+    "reaction_d": "Closes the purse.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ316",
@@ -23204,7 +24464,11 @@
     "reaction_a": "Taps the old machine.",
     "reaction_b": "Sighs.",
     "reaction_c": "Looks at the dusty monitor.",
-    "reaction_d": "Turns off the light."
+    "reaction_d": "Turns off the light.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ317",
@@ -23276,7 +24540,11 @@
     "reaction_a": "Shuffles a stack of forms.",
     "reaction_b": "Rolls his eyes.",
     "reaction_c": "Looks at the clock.",
-    "reaction_d": "Sets the pen down."
+    "reaction_d": "Sets the pen down.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ318",
@@ -23348,7 +24616,11 @@
     "reaction_a": "Straightens her bag.",
     "reaction_b": "Looks tired.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Climbs back on her bicycle."
+    "reaction_d": "Climbs back on her bicycle.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ319",
@@ -23424,7 +24696,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Folds her arms.",
     "reaction_c": "Looks at the invoice.",
-    "reaction_d": "Slides the form back."
+    "reaction_d": "Slides the form back.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ320",
@@ -23500,7 +24776,11 @@
     "reaction_a": "Winces.",
     "reaction_b": "Looks at his hands.",
     "reaction_c": "Turns his face away.",
-    "reaction_d": "Walks stiffly away."
+    "reaction_d": "Walks stiffly away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ321",
@@ -23572,7 +24852,11 @@
     "reaction_a": "Gazes at the empty road.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Spits on the ground.",
-    "reaction_d": "Tips his cap."
+    "reaction_d": "Tips his cap.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ322",
@@ -23644,7 +24928,11 @@
     "reaction_a": "Opens a worn notebook.",
     "reaction_b": "Taps the notebook.",
     "reaction_c": "Rubs her forehead.",
-    "reaction_d": "Looks at the floor."
+    "reaction_d": "Looks at the floor.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ323",
@@ -23725,7 +25013,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Stares hard.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Pulls her coat tight."
+    "reaction_d": "Pulls her coat tight.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ324",
@@ -23801,7 +25093,11 @@
     "reaction_a": "Starts the engine.",
     "reaction_b": "Looks at the map.",
     "reaction_c": "Taps the wheel.",
-    "reaction_d": "Turns the key."
+    "reaction_d": "Turns the key.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ325",
@@ -23873,7 +25169,11 @@
     "reaction_a": "Looks tired.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Rubs his eyes.",
-    "reaction_d": "Hangs up the radio."
+    "reaction_d": "Hangs up the radio.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ326",
@@ -23945,7 +25245,11 @@
     "reaction_a": "Taps the tray.",
     "reaction_b": "Frowns.",
     "reaction_c": "Looks at the empty chair.",
-    "reaction_d": "Pulls off the gloves."
+    "reaction_d": "Pulls off the gloves.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ327",
@@ -24021,7 +25325,11 @@
     "reaction_a": "Brightens.",
     "reaction_b": "Shakes her head.",
     "reaction_c": "Leans on the counter.",
-    "reaction_d": "Locks the clinic door."
+    "reaction_d": "Locks the clinic door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ328",
@@ -24097,7 +25405,11 @@
     "reaction_a": "Wrings out a mop.",
     "reaction_b": "Scowls.",
     "reaction_c": "Gazes at the corridor.",
-    "reaction_d": "Mutters and moves on."
+    "reaction_d": "Mutters and moves on.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ329",
@@ -24169,7 +25481,11 @@
     "reaction_a": "Pulls the glove straight.",
     "reaction_b": "Narrows his eyes.",
     "reaction_c": "Looks at the patient room.",
-    "reaction_d": "Walks off without a word."
+    "reaction_d": "Walks off without a word.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ330",
@@ -24241,7 +25557,11 @@
     "reaction_a": "Hugs her belly.",
     "reaction_b": "Looks stricken.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Turns toward the door."
+    "reaction_d": "Turns toward the door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ331",
@@ -24317,7 +25637,11 @@
     "reaction_a": "Studies the pamphlet.",
     "reaction_b": "Shakes her head.",
     "reaction_c": "Clicks her tongue.",
-    "reaction_d": "Slides the pamphlet away."
+    "reaction_d": "Slides the pamphlet away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ332",
@@ -24399,7 +25723,11 @@
     "reaction_a": "Grips the armrests.",
     "reaction_b": "Glares at the ramp.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Rolls back."
+    "reaction_d": "Rolls back.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": "You ask for a repair date for the clinic ramp and elevator and pass it on.",
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ333",
@@ -24471,7 +25799,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Frowns.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Turns the chair around."
+    "reaction_d": "Turns the chair around.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ334",
@@ -24543,7 +25875,11 @@
     "reaction_a": "Straightens the shelf.",
     "reaction_b": "Rolls her eyes.",
     "reaction_c": "Looks at the line.",
-    "reaction_d": "Closes the counter."
+    "reaction_d": "Closes the counter.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ335",
@@ -24619,7 +25955,11 @@
     "reaction_a": "Checks the shelf.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Pushes the cart away."
+    "reaction_d": "Pushes the cart away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ336",
@@ -24695,7 +26035,11 @@
     "reaction_a": "Looks around the waiting room.",
     "reaction_b": "Narrows his eyes.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Gets slowly to his feet."
+    "reaction_d": "Gets slowly to his feet.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ337",
@@ -24767,7 +26111,11 @@
     "reaction_a": "Stares at his hands.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Looks away.",
-    "reaction_d": "Straightens his coat."
+    "reaction_d": "Straightens his coat.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ338",
@@ -24839,7 +26187,11 @@
     "reaction_a": "Rubs her temples.",
     "reaction_b": "Looks at the crowded room.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Gathers the worksheets."
+    "reaction_d": "Gathers the worksheets.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ339",
@@ -24915,7 +26267,11 @@
     "reaction_a": "Taps a pen.",
     "reaction_b": "Smiles thinly.",
     "reaction_c": "Looks at the clock.",
-    "reaction_d": "Switches off the lights."
+    "reaction_d": "Switches off the lights.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ340",
@@ -24991,7 +26347,11 @@
     "reaction_a": "Looks at the ceiling.",
     "reaction_b": "Narrows his eyes.",
     "reaction_c": "Tuts.",
-    "reaction_d": "Picks up a bucket."
+    "reaction_d": "Picks up a bucket.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ341",
@@ -25063,7 +26423,11 @@
     "reaction_a": "Gazes out the window.",
     "reaction_b": "Sighs.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Closes the office door."
+    "reaction_d": "Closes the office door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ342",
@@ -25135,7 +26499,11 @@
     "reaction_a": "Counts out coins.",
     "reaction_b": "Frowns.",
     "reaction_c": "Folds the notice.",
-    "reaction_d": "Tucks the notice away."
+    "reaction_d": "Tucks the notice away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ343",
@@ -25211,7 +26579,11 @@
     "reaction_a": "Presses her lips together.",
     "reaction_b": "Stares at the floor.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Pulls out her phone."
+    "reaction_d": "Pulls out her phone.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ344",
@@ -25287,7 +26659,11 @@
     "reaction_a": "Smiles ruefully.",
     "reaction_b": "Looks at the desks.",
     "reaction_c": "Laughs without humor.",
-    "reaction_d": "Closes the textbook."
+    "reaction_d": "Closes the textbook.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ345",
@@ -25359,7 +26735,11 @@
     "reaction_a": "Looks tired.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Raises an eyebrow.",
-    "reaction_d": "Closes the workbook."
+    "reaction_d": "Closes the workbook.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ346",
@@ -25431,7 +26811,11 @@
     "reaction_a": "Pats a pocket.",
     "reaction_b": "Looks away.",
     "reaction_c": "Frowns.",
-    "reaction_d": "Slides the tin into a drawer."
+    "reaction_d": "Slides the tin into a drawer.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ347",
@@ -25507,7 +26891,11 @@
     "reaction_a": "Looks at the empty chair.",
     "reaction_b": "Narrows her eyes.",
     "reaction_c": "Rubs her face.",
-    "reaction_d": "Stands by the door."
+    "reaction_d": "Stands by the door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ348",
@@ -25583,7 +26971,11 @@
     "reaction_a": "Nods slowly.",
     "reaction_b": "Frowns.",
     "reaction_c": "Looks at the ceiling.",
-    "reaction_d": "Straightens his badge."
+    "reaction_d": "Straightens his badge.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ349",
@@ -25655,7 +27047,11 @@
     "reaction_a": "Hugs the script.",
     "reaction_b": "Narrows his eyes.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Walks out with the others."
+    "reaction_d": "Walks out with the others.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ350",
@@ -25727,7 +27123,11 @@
     "reaction_a": "Fusses with a clipboard.",
     "reaction_b": "Frowns.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Hangs the clipboard on a nail."
+    "reaction_d": "Hangs the clipboard on a nail.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ351",
@@ -25803,7 +27203,11 @@
     "reaction_a": "Taps a pen.",
     "reaction_b": "Looks at the road.",
     "reaction_c": "Folds her arms.",
-    "reaction_d": "Closes the notebook."
+    "reaction_d": "Closes the notebook.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ352",
@@ -25879,7 +27283,11 @@
     "reaction_a": "Smooths his tie.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Looks at the clock.",
-    "reaction_d": "Walks back inside."
+    "reaction_d": "Walks back inside.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ353",
@@ -25951,7 +27359,11 @@
     "reaction_a": "Sorts old photographs.",
     "reaction_b": "Glances away.",
     "reaction_c": "Presses his lips together.",
-    "reaction_d": "Locks the cabinet."
+    "reaction_d": "Locks the cabinet.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ354",
@@ -26023,7 +27435,11 @@
     "reaction_a": "Straightens her stack of papers.",
     "reaction_b": "Shrugs wearily.",
     "reaction_c": "Looks at the ceiling.",
-    "reaction_d": "Zips her bag."
+    "reaction_d": "Zips her bag.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ355",
@@ -26099,7 +27515,11 @@
     "reaction_a": "Marks a paper.",
     "reaction_b": "Frowns.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Shuts the laptop."
+    "reaction_d": "Shuts the laptop.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ356",
@@ -26175,7 +27595,11 @@
     "reaction_a": "Taps the wheel.",
     "reaction_b": "Looks at the road.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Parks the bus."
+    "reaction_d": "Parks the bus.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ357",
@@ -26247,7 +27671,11 @@
     "reaction_a": "Rubs his hands together.",
     "reaction_b": "Glares at the heater.",
     "reaction_c": "Looks away.",
-    "reaction_d": "Turns the key."
+    "reaction_d": "Turns the key.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ358",
@@ -26319,7 +27747,11 @@
     "reaction_a": "Straightens a row of books.",
     "reaction_b": "Looks hurt.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Closes the door."
+    "reaction_d": "Closes the door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ359",
@@ -26395,7 +27827,11 @@
     "reaction_a": "Looks at the shelves.",
     "reaction_b": "Narrows his eyes.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Locks the door."
+    "reaction_d": "Locks the door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ360",
@@ -26471,7 +27907,11 @@
     "reaction_a": "Looks at the bare walls.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Gathers the cards."
+    "reaction_d": "Gathers the cards.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ361",
@@ -26543,7 +27983,11 @@
     "reaction_a": "Looks away.",
     "reaction_b": "Narrows his eyes.",
     "reaction_c": "Rubs his forehead.",
-    "reaction_d": "Picks up the pamphlet."
+    "reaction_d": "Picks up the pamphlet.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ362",
@@ -26615,7 +28059,11 @@
     "reaction_a": "Straightens her papers.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Closes the folder."
+    "reaction_d": "Closes the folder.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ363",
@@ -26691,7 +28139,11 @@
     "reaction_a": "Stares out the window.",
     "reaction_b": "Narrows her eyes.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ364",
@@ -26767,7 +28219,11 @@
     "reaction_a": "Looks at the small chairs.",
     "reaction_b": "Shakes her head.",
     "reaction_c": "Dabs her eyes.",
-    "reaction_d": "Locks the door."
+    "reaction_d": "Locks the door.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ365",
@@ -26839,7 +28295,11 @@
     "reaction_a": "Packs her bag.",
     "reaction_b": "Looks tired.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Hangs up her apron."
+    "reaction_d": "Hangs up her apron.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ366",
@@ -26911,7 +28371,11 @@
     "reaction_a": "Wipes his brow.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Spits on the dirt.",
-    "reaction_d": "Pulls his hat low."
+    "reaction_d": "Pulls his hat low.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ367",
@@ -26987,7 +28451,11 @@
     "reaction_a": "Looks across the field.",
     "reaction_b": "Frowns.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Turns toward the house."
+    "reaction_d": "Turns toward the house.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ368",
@@ -27063,7 +28531,11 @@
     "reaction_a": "Dries her hands on an apron.",
     "reaction_b": "Shakes her head.",
     "reaction_c": "Folds her arms.",
-    "reaction_d": "Walks to the barn."
+    "reaction_d": "Walks to the barn.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ369",
@@ -27135,7 +28607,11 @@
     "reaction_a": "Rubs her eyes.",
     "reaction_b": "Glances at the barn.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Leans on the fence."
+    "reaction_d": "Leans on the fence.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ370",
@@ -27207,7 +28683,11 @@
     "reaction_a": "Mends a net.",
     "reaction_b": "Looks at the water.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Ties the boat tight."
+    "reaction_d": "Ties the boat tight.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ371",
@@ -27283,7 +28763,11 @@
     "reaction_a": "Gazes at the harbor.",
     "reaction_b": "Spits into the sea.",
     "reaction_c": "Waves a hand.",
-    "reaction_d": "Walks away."
+    "reaction_d": "Walks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ372",
@@ -27359,7 +28843,11 @@
     "reaction_a": "Straightens a jar.",
     "reaction_b": "Rolls her eyes.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Wipes the counter."
+    "reaction_d": "Wipes the counter.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ373",
@@ -27431,7 +28919,11 @@
     "reaction_a": "Closes a jar.",
     "reaction_b": "Frowns.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Stacks the jars away."
+    "reaction_d": "Stacks the jars away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ374",
@@ -27503,7 +28995,11 @@
     "reaction_a": "Examines a blackened blossom.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Looks at the sky.",
-    "reaction_d": "Pulls on his gloves."
+    "reaction_d": "Pulls on his gloves.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ375",
@@ -27579,7 +29075,11 @@
     "reaction_a": "Tosses an apple.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Walks down the row."
+    "reaction_d": "Walks down the row.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ376",
@@ -27655,7 +29155,11 @@
     "reaction_a": "Straightens a stack of forms.",
     "reaction_b": "Looks weary.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Shuts the drawer."
+    "reaction_d": "Shuts the drawer.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ377",
@@ -27727,7 +29231,11 @@
     "reaction_a": "Sorts a crate of onions.",
     "reaction_b": "Scowls.",
     "reaction_c": "Sighs.",
-    "reaction_d": "Hangs up the keys."
+    "reaction_d": "Hangs up the keys.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ378",
@@ -27799,7 +29307,11 @@
     "reaction_a": "Strokes his chin.",
     "reaction_b": "Frowns.",
     "reaction_c": "Taps the ground with a boot.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ379",
@@ -27875,7 +29387,11 @@
     "reaction_a": "Looks at the dwindling houses.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Walks home."
+    "reaction_d": "Walks home.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ380",
@@ -27951,7 +29467,11 @@
     "reaction_a": "Gazes at the shore.",
     "reaction_b": "Frowns.",
     "reaction_c": "Looks at the sky.",
-    "reaction_d": "Hauls in the racks."
+    "reaction_d": "Hauls in the racks.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ381",
@@ -28023,7 +29543,11 @@
     "reaction_a": "Lifts a strand of kelp.",
     "reaction_b": "Shakes her head.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Puts it in the basket."
+    "reaction_d": "Puts it in the basket.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ382",
@@ -28095,7 +29619,11 @@
     "reaction_a": "Looks at the fence.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Leans on the post."
+    "reaction_d": "Leans on the post.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ383",
@@ -28171,7 +29699,11 @@
     "reaction_a": "Strokes a ewe.",
     "reaction_b": "Sighs.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Pulls a gate shut."
+    "reaction_d": "Pulls a gate shut.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ384",
@@ -28247,7 +29779,11 @@
     "reaction_a": "Looks at the road.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Pulls down the awning."
+    "reaction_d": "Pulls down the awning.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ385",
@@ -28319,7 +29855,11 @@
     "reaction_a": "Looks at the cash box.",
     "reaction_b": "Rolls her eyes.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Closes the box."
+    "reaction_d": "Closes the box.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ386",
@@ -28391,7 +29931,11 @@
     "reaction_a": "Pulls the hoe from the soil.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Shoulders the hoe."
+    "reaction_d": "Shoulders the hoe.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ387",
@@ -28467,7 +30011,11 @@
     "reaction_a": "Folds the paperwork.",
     "reaction_b": "Shakes his head.",
     "reaction_c": "Rubs his face.",
-    "reaction_d": "Puts the papers away."
+    "reaction_d": "Puts the papers away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ388",
@@ -28543,7 +30091,11 @@
     "reaction_a": "Taps a wheel of cheese.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes her head.",
-    "reaction_d": "Covers the cheese."
+    "reaction_d": "Covers the cheese.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ389",
@@ -28615,7 +30167,11 @@
     "reaction_a": "Looks at the vats.",
     "reaction_b": "Narrows her eyes.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Wipes down the bench."
+    "reaction_d": "Wipes down the bench.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ390",
@@ -28687,7 +30243,11 @@
     "reaction_a": "Looks at the crates.",
     "reaction_b": "Frowns.",
     "reaction_c": "Waves a hand.",
-    "reaction_d": "Slides a crate away."
+    "reaction_d": "Slides a crate away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ391",
@@ -28763,7 +30323,11 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Rubs the bridge of his nose.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Taps the ledger."
+    "reaction_d": "Taps the ledger.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ392",
@@ -28839,7 +30403,11 @@
     "reaction_a": "Gazes at the casks.",
     "reaction_b": "Frowns.",
     "reaction_c": "Shakes his head.",
-    "reaction_d": "Closes the lid."
+    "reaction_d": "Closes the lid.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ393",
@@ -28911,7 +30479,11 @@
     "reaction_a": "Rubs his hands.",
     "reaction_b": "Narrows his eyes.",
     "reaction_c": "Shrugs.",
-    "reaction_d": "Turns away."
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ394",
@@ -28986,7 +30558,11 @@
     "reaction_a": "Lights up.",
     "reaction_b": "Frowns.",
     "reaction_c": "Nods slowly.",
-    "reaction_d": "Folds arms."
+    "reaction_d": "Folds arms.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the banks to meet the shop owners about card fees, and they agree to sit down.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ395",
@@ -29061,7 +30637,11 @@
     "reaction_a": "Exhales.",
     "reaction_b": "Sighs.",
     "reaction_c": "Takes a pen.",
-    "reaction_d": "Stares."
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You send the help sheet on hiring part-timers. It saves the shop owner most of a day.",
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ396",
@@ -29129,7 +30709,11 @@
     "reaction_a": "Bows deeply.",
     "reaction_b": "Purses lips.",
     "reaction_c": "Pats your hand.",
-    "reaction_d": "Looks away."
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   },
   {
     "question_id": "VQ397",
@@ -29202,6 +30786,10 @@
     "reaction_a": "Smiles.",
     "reaction_b": "Raises an eyebrow.",
     "reaction_c": "Nods politely.",
-    "reaction_d": "Shakes head."
+    "reaction_d": "Shakes head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   }
 ]
