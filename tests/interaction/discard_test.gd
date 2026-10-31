@@ -1,14 +1,32 @@
 extends Node
-## Real clicks on a card that costs a discard (2026-10-21): C63 "Compile the
-## Dossier" (Tier 1, discard 2 other cards to play). Opening it and pressing Play
-## asks which cards to discard; Cancel changes nothing; choosing two and pressing
-## "Discard and play" plays the card and throws the two away.
+## Real clicks on a card that costs a discard (2026-10-21). The card is the first
+## real "discard to play" card in the workbook and its number is read from the
+## card's own row (never typed here, 2026-10-31). Opening it and pressing Play
+## asks which cards to discard; Cancel changes nothing; choosing that many and
+## pressing "Discard and play" plays the card and throws them away.
 
 var _failures: PackedStringArray = []
 var _screen: Node
+## The discard-to-play card under test and how many others it asks for.
+var _card_id := ""
+var _need := 0
+## Plain cards (no discard of their own) that fill the hand.
+var _others: Array[String] = []
+
+
+func _pick_cards() -> void:
+	for card: Dictionary in DataDB.cards:
+		var to_play := int(card.get("discard_to_play") if card.get("discard_to_play") != null else 0)
+		var for_draw := int(card.get("discard_for_draw") if card.get("discard_for_draw") != null else 0)
+		if to_play > 0 and _card_id.is_empty() and int(card.get("cost", 0)) <= 3:
+			_card_id = str(card["card_id"])
+			_need = to_play
+		elif to_play == 0 and for_draw == 0 and _others.size() < 4 and int(card.get("cost", 9)) <= 2:
+			_others.append(str(card["card_id"]))
 
 
 func _ready() -> void:
+	_pick_cards()
 	GameState.start_new_run("PC01")
 	var runner := LevelRunner.new(BattleSetup.expand_level(DataDB.get_level("LV01")))
 	GameState.begin_level(runner)
@@ -42,7 +60,15 @@ func _view(card_id: String, nth: int = 0) -> CardView:
 
 func _check() -> void:
 	var engine: BattleEngine = _screen.engine
-	engine.state.hand.assign(["C63", "C01", "C03"])
+	if _card_id.is_empty() or _others.size() < _need:
+		_failures.append("the workbook has no discard-to-play card to test")
+		return
+	var chosen: Array[String] = []
+	for i in _need:
+		chosen.append(_others[i])
+	var hand: Array[String] = [_card_id]
+	hand.append_array(chosen)
+	engine.state.hand.assign(hand)
 	engine.state.discard.clear()
 	_screen._refresh()
 	await get_tree().process_frame
@@ -51,7 +77,7 @@ func _check() -> void:
 	var bar: Control = _screen.get_node("%HandRow").get_parent().get_parent().get_node("PickBar")
 
 	# Open the card (a first tap may preview organisations, a second opens it).
-	var card := _view("C63")
+	var card := _view(_card_id)
 	await _click(card)
 	if not zoom.visible:
 		await _click(card)
@@ -60,7 +86,7 @@ func _check() -> void:
 		return
 	var play: Button = _screen.get_node("%ZoomPlay")
 	if play.disabled:
-		_failures.append("Play is disabled with two other cards in hand")
+		_failures.append("Play is disabled with %d other cards in hand" % _need)
 		return
 	await _click(play)
 	if not bar.visible:
@@ -73,29 +99,31 @@ func _check() -> void:
 
 	# Cancel changes nothing.
 	await _click(bar.get_node("PickCancel"))
-	if bar.visible or engine.state.hand.size() != 3:
+	if bar.visible or engine.state.hand.size() != hand.size():
 		_failures.append("Cancel did not leave the hand untouched")
 		return
 	print("  Cancel leaves the hand as it was")
 
-	# Again, choosing both others.
-	await _click(_view("C63"))
+	# Again, choosing every other card.
+	await _click(_view(_card_id))
 	if not zoom.visible:
-		await _click(_view("C63"))
+		await _click(_view(_card_id))
 	await _click(_screen.get_node("%ZoomPlay"))
-	await _click(_view("C01"))
-	await _click(_view("C03"))
+	for other: String in chosen:
+		await _click(_view(other))
 	if confirm.disabled:
-		_failures.append("Discard and play stayed disabled after choosing two cards")
+		_failures.append("Discard and play stayed disabled after choosing %d cards" % _need)
 		return
-	print("  two cards chosen, Discard and play enabled")
+	print("  %d cards chosen, Discard and play enabled" % _need)
 	await _click(confirm)
-	if engine.state.hand.has("C63") or engine.state.hand.has("C01") or engine.state.hand.has("C03"):
-		_failures.append("the played or discarded cards are still in hand: %s" % [engine.state.hand])
-	if engine.state.discard.size() < 3:
-		_failures.append("the discard pile holds %d cards, expected 3" % engine.state.discard.size())
+	for id: String in hand:
+		if engine.state.hand.has(id):
+			_failures.append("the played or discarded cards are still in hand: %s" % [engine.state.hand])
+			break
+	if engine.state.discard.size() < hand.size():
+		_failures.append("the discard pile holds %d cards, expected %d" % [engine.state.discard.size(), hand.size()])
 	else:
-		print("  the card was played and the two discards are in the discard pile")
+		print("  the card was played and the %d discards are in the discard pile" % _need)
 
 
 func _click(control: Control) -> void:

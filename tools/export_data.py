@@ -2121,25 +2121,28 @@ def validate(data, report):
             report.error("cards", f"{cid} has type '{card['type']}', which is not in the Lists tab")
         if card["cost"] is None:
             report.error("cards", f"{cid} has no cost")
-        # Discard cards (2026-10-21): only Tier 1 and 2, only these four suits.
-        # Tier 1 discards 2 to play or cycles 1-for-1; Tier 2 discards 1 to play
-        # or cycles 1 for up to 2.
+        # Discard cards (2026-10-21): the drafting rules are only Tier 1 and 2,
+        # only Duplicitous, Divisive, Emotional and Data Driven, Tier 1 discards
+        # 2 to play or cycles 1-for-1, Tier 2 discards 1 to play or cycles 1
+        # for up to 2. They are a guide for generating and balancing cards, not
+        # a limit (Cameron, 2026-10-31): a card the workbook writes differently
+        # keeps its own numbers, so a departure is a warning, never an error.
         to_play = card.get("discard_to_play") or 0
         for_draw = card.get("discard_for_draw") or 0
         if to_play or for_draw:
             if card["suit"] not in ("Duplicitous", "Divisive", "Emotional", "Data Driven"):
-                report.error("cards", f"{cid} discards cards, which only Duplicitous, Divisive, Emotional and Data Driven cards do")
+                report.warn("cards", f"{cid} discards cards, which the drafting rule gives only Duplicitous, Divisive, Emotional and Data Driven cards")
             if card["tier"] not in ("1", "2"):
-                report.error("cards", f"{cid} discards cards, which only Tier 1 and Tier 2 cards do")
+                report.warn("cards", f"{cid} discards cards, which the drafting rule gives only Tier 1 and Tier 2 cards")
             if to_play and for_draw:
-                report.error("cards", f"{cid} has both Discard To Play and Discard For Draw")
+                report.warn("cards", f"{cid} has both Discard To Play and Discard For Draw (the engine uses Discard To Play)")
             required = {"1": 2, "2": 1}.get(card["tier"])
             if to_play and to_play != required:
-                report.error("cards", f"{cid} discards {to_play} to play, but a Tier {card['tier']} card discards {required}")
+                report.warn("cards", f"{cid} discards {to_play} to play; the drafting rule for a Tier {card['tier']} card is {required}")
             if for_draw:
                 limit = {"1": 1, "2": 2}.get(card["tier"], 0)
                 if for_draw != 1 or not (1 <= (card.get("draw") or 0) <= limit):
-                    report.error("cards", f"{cid} cycles {for_draw} for {card.get('draw')}, but a Tier {card['tier']} card discards 1 and draws 1 to {limit}")
+                    report.warn("cards", f"{cid} cycles {for_draw} for {card.get('draw')}; the drafting rule for a Tier {card['tier']} card is discard 1, draw 1 to {limit}")
 
     # --- affinity ----------------------------------------------------------
     for row in data["affinity"]:

@@ -84,23 +84,16 @@ func test_the_audience_scale_never_passes_five_either_way() -> void:
 	assert_eq(int(SpecialEffects.apply("scale_per_20_target_segment", -3, base, {"segment_share": 1.0})["self_plus"]), -1)
 
 
-func test_the_real_discard_cards_follow_the_tier_and_suit_rules() -> void:
-	var suits := ["Duplicitous", "Divisive", "Emotional", "Data Driven"]
-	var counts := {"cycle": 0, "play": 0}
+func test_the_real_discard_cards_have_numbers_the_engine_can_use() -> void:
+	# The tier and suit rules are a drafting guide only (Cameron, 2026-10-31):
+	# every real card keeps the numbers the workbook gives it, so this checks
+	# only that they are whole numbers the engine can act on.
+	var found := 0
 	for card: Dictionary in DataDB.cards:
-		var to_play := int(card.get("discard_to_play") if card.get("discard_to_play") != null else 0)
-		var for_draw := int(card.get("discard_for_draw") if card.get("discard_for_draw") != null else 0)
-		if to_play == 0 and for_draw == 0:
-			continue
-		assert_true(suits.has(str(card["suit"])), "%s suit" % card["card_id"])
-		assert_true(["1", "2"].has(str(card["tier"])), "%s is not Tier 0 or 3" % card["card_id"])
-		if to_play > 0:
-			counts["play"] += 1
-			assert_eq(to_play, 2 if str(card["tier"]) == "1" else 1, str(card["card_id"]))
-		if for_draw > 0:
-			counts["cycle"] += 1
-			assert_eq(for_draw, 1)
-			assert_lte(int(card["draw"]), 1 if str(card["tier"]) == "1" else 2, str(card["card_id"]))
-			assert_gte(int(card["draw"]), 1)
-	assert_eq(counts["cycle"], 8, "one cycle card per suit and tier")
-	assert_eq(counts["play"], 8, "one discard-to-play card per suit and tier")
+		for column: String in ["discard_to_play", "discard_for_draw"]:
+			if card.get(column) == null:
+				continue
+			found += 1
+			assert_gte(int(card[column]), 1, "%s %s" % [card["card_id"], column])
+			assert_eq(float(card[column]), floorf(float(card[column])), "%s %s is whole" % [card["card_id"], column])
+	assert_gt(found, 0, "the workbook has discard cards")

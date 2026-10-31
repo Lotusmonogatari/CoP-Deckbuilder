@@ -38,6 +38,18 @@ func test_the_opening_deck_is_a_legal_deck() -> void:
 # These run against the REAL card set and balance, over many seeds.
 # ---------------------------------------------------------------------------
 
+## The opening deck size and gaffe-card cap, from the Balance tab (never typed
+## here, so a retune does not break the tests).
+func _size() -> int:
+	return int(DataDB.balance.get("starter_deck_size", 15))
+
+
+func _gaffe_cap(percent: int = -1) -> int:
+	if percent < 0:
+		percent = int(DataDB.balance.get("starter_deck_max_gaffe_cards", 50))
+	return _size() * percent / 100
+
+
 func _tier_of(card_id: String) -> String:
 	return str(DataDB.get_card(card_id).get("tier", ""))
 
@@ -47,7 +59,7 @@ func test_the_random_opening_deck_follows_the_recipe_over_many_seeds() -> void:
 	var seen_different := {}
 	for seed_value in 300:
 		var deck := Ledger.opening_deck(DataDB.cards, DataDB.balance, seed_value)
-		assert_eq(deck.size(), 15, "seed %d: a full deck" % seed_value)
+		assert_eq(deck.size(), _size(), "seed %d: a full deck" % seed_value)
 
 		var unique := {}
 		var suit_counts := {}
@@ -57,16 +69,20 @@ func test_the_random_opening_deck_follows_the_recipe_over_many_seeds() -> void:
 			var suit := str(DataDB.get_card(card_id).get("suit", ""))
 			suit_counts[suit] = int(suit_counts.get(suit, 0)) + 1
 			tier_counts[_tier_of(card_id)] += 1
-		assert_eq(unique.size(), 15, "seed %d: no card twice" % seed_value)
+		assert_eq(unique.size(), _size(), "seed %d: no card twice" % seed_value)
 
 		assert_eq(suit_counts.size(), 6, "seed %d: every suit present" % seed_value)
 		for suit: String in suit_counts:
 			assert_between(int(suit_counts[suit]), 2, 3, "seed %d: %s count" % [seed_value, suit])
 
-		assert_eq(tier_counts["0"], 4, "seed %d: Tier 0 count" % seed_value)
-		assert_eq(tier_counts["1"], 4, "seed %d: Tier 1 count" % seed_value)
-		assert_lte(tier_counts["3"], 1, "seed %d: at most one Tier 3" % seed_value)
-		assert_eq(tier_counts["2"] + tier_counts["3"], 7, "seed %d: the rest is Tier 2/3" % seed_value)
+		# The recipe is the Balance tab's, read here so a retune never breaks
+		# the test (Cameron, 2026-10-31: everything comes from the workbook).
+		var tier_0 := int(DataDB.balance.get("starter_deck_tier_0_cards", 0))
+		var tier_1 := int(DataDB.balance.get("starter_deck_tier_1_cards", 0))
+		assert_eq(tier_counts["0"], tier_0, "seed %d: Tier 0 count" % seed_value)
+		assert_eq(tier_counts["1"], tier_1, "seed %d: Tier 1 count" % seed_value)
+		assert_lte(tier_counts["3"], int(DataDB.balance.get("starter_deck_max_tier_3_cards", 1)), "seed %d: at most the Tier 3 cap" % seed_value)
+		assert_eq(tier_counts["2"] + tier_counts["3"], _size() - tier_0 - tier_1, "seed %d: the rest is Tier 2/3" % seed_value)
 
 		seen_tier_3 += tier_counts["3"]
 		seen_different[",".join(deck)] = true
@@ -94,7 +110,7 @@ func test_an_impossible_recipe_falls_back_to_the_old_deck() -> void:
 	# and the deterministic deck is used instead of a short or broken one.
 	var balance := DataDB.balance.duplicate()
 	balance["starter_deck_tier_0_cards"] = 8
-	assert_eq(Ledger.opening_deck(DataDB.cards, balance, 1).size(), 15)
+	assert_eq(Ledger.opening_deck(DataDB.cards, balance, 1).size(), _size())
 
 
 # ---------------------------------------------------------------------------
@@ -113,26 +129,26 @@ func _gaffe_cards_in(deck: Array) -> int:
 func test_no_opening_deck_is_more_than_half_gaffe_cards() -> void:
 	for seed_value in 500:
 		var deck := Ledger.opening_deck(DataDB.cards, DataDB.balance, seed_value)
-		assert_eq(deck.size(), 15, "seed %d: still a full deck" % seed_value)
-		assert_lte(_gaffe_cards_in(deck), 7, "seed %d: at most 7 of 15 are gaffe cards" % seed_value)
+		assert_eq(deck.size(), _size(), "seed %d: still a full deck" % seed_value)
+		assert_lte(_gaffe_cards_in(deck), _gaffe_cap(), "seed %d: within the gaffe-card cap" % seed_value)
 
 
 func test_the_gaffe_cap_really_does_something() -> void:
-	# Without it, plenty of rolls exceed 7 (Divisive and Duplicitous are gaffe
+	# Without it, plenty of rolls exceed the cap (Divisive and Duplicitous are gaffe
 	# cards almost without exception), so the cap above is not passing by luck.
 	var uncapped := DataDB.balance.duplicate()
 	uncapped["starter_deck_max_gaffe_cards"] = 100
 	var over := 0
 	for seed_value in 500:
-		if _gaffe_cards_in(Ledger.opening_deck(DataDB.cards, uncapped, seed_value)) > 7:
+		if _gaffe_cards_in(Ledger.opening_deck(DataDB.cards, uncapped, seed_value)) > _gaffe_cap():
 			over += 1
-	assert_gt(over, 0, "some uncapped rolls exceed 7 gaffe cards")
+	assert_gt(over, 0, "some uncapped rolls exceed the cap")
 
 
 func test_a_tighter_gaffe_cap_is_obeyed() -> void:
 	var tight := DataDB.balance.duplicate()
-	tight["starter_deck_max_gaffe_cards"] = 40   # 40% of 15 = 6
+	tight["starter_deck_max_gaffe_cards"] = 40
 	for seed_value in 100:
 		var deck := Ledger.opening_deck(DataDB.cards, tight, seed_value)
-		assert_eq(deck.size(), 15)
-		assert_lte(_gaffe_cards_in(deck), 6)
+		assert_eq(deck.size(), _size())
+		assert_lte(_gaffe_cards_in(deck), _gaffe_cap(40))
