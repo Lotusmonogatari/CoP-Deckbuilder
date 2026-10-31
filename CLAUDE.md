@@ -714,3 +714,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Cleanup pass (2026-10-31, Cameron)
 - Marketplace: Personal Inventory and Office Inventory tabs (2026-10-31, Cameron)
 - Event choices match their outcomes (2026-10-31, Cameron)
+- Visitor choices match their outcomes (2026-10-31, Cameron)

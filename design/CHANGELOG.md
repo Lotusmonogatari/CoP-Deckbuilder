@@ -2781,3 +2781,16 @@ A review of all 56 events against the rewritten choice wording. Cameron approved
 | Costs that bought nothing | EV38 C's 30,000円 study now gives Reputation +1, BO06 0..1 and BO23 -1. EV40 B's apples now give Constituency 0..1 and BO30 +1. EV39 C (four evenings) costs 2 hours; EV43 A (an hour and a half) costs 1. |
 | Promises in name only | EV12 A, EV20 B (BO16), EV53 C (BO07, its -1 dropped) and EV61 A (BO26) are now real promises with deadlines. |
 | One-sided outcomes made mixed | EV13 B BO06 -1; EV51 B Reputation -1..0; EV52 C BO11 -1; EV31 C Reputation -1..0 (was 0..1); EV22 B adds BO09 +1; EV26 C adds BO23 +1. |
+
+### Visitor choices match their outcomes (2026-10-31, Cameron)
+
+A scan of all 397 visitor questions (1,588 choices) for: promises that cost nothing, actions that take no time, items mentioned but not handed over, a warm reply to a choice that costs standing, and wording that assumes the player's gender. The item and gender checks found nothing. Cameron approved three changes, all on the Visitor Questions tab's Commitment columns.
+
+| Change | Choices |
+|---|---|
+| Concrete follow-ups are now promises (`Promise Hours 1 within 168`), owed to the organization the choice pleases most, or to the one it costs when it pleases none | VQ04 C, VQ05 A, VQ27 D, VQ43 C, VQ59 B, VQ158 A/C, VQ161 C, VQ175 C, VQ179 C, VQ180 C, VQ189 C, VQ192 C, VQ194 C, VQ196 A/C, VQ199 A/C, VQ202 A, VQ215 A/C, VQ218 A/C |
+| Small acts cost 1 hour on the spot | VQ12 C (coffee and an hour), VQ216 C, VQ36 D, VQ397 C |
+| Visits become promises | VQ58 C, VQ89 D |
+| "I will find out and tell you" is owed to the first organization it costs, so keeping it wins that standing back | VQ136-VQ156 D (11) |
+
+Every question still keeps at least one choice that costs nothing. Promises owed to no organization fall from 12 to 2 (VQ15 B, VQ58 B).

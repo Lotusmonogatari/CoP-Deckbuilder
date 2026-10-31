@@ -257,7 +257,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO08"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Diplomats sit on land.",
     "response_b": "Those waters are where the fish are.",
@@ -320,7 +327,14 @@
         "delta": -3
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO07"
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -807,6 +821,10 @@
       {
         "kind": "item",
         "item_id": "SH04"
+      },
+      {
+        "kind": "hours",
+        "amount": 1
       }
     ],
     "commitment_d": null,
@@ -1919,7 +1937,14 @@
         "amount": 1
       }
     ],
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO27"
+      }
+    ],
     "response_a": "Try for one. Hold you to it.",
     "response_b": "A deputy is not you.",
     "response_c": "Platform two. Bring a coat.",
@@ -2589,7 +2614,12 @@
       }
     ],
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
     "response_a": "Other plans. The rally needs bodies.",
     "response_b": "Supporters. Yes. Bring plenty.",
     "response_c": "A short appearance is better than none.",
@@ -3087,7 +3117,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO07"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Customs has its reasons, and they cost us hours.",
     "response_b": "The ferry company has been no help.",
@@ -4224,7 +4261,14 @@
         "within": 168
       }
     ],
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO01"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Good food helps. It does not make a movement.",
     "response_b": "Paid staff only? Then who knocks the doors?",
@@ -4287,7 +4331,14 @@
       }
     ],
     "commitment_a": null,
-    "commitment_b": null,
+    "commitment_b": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO01"
+      }
+    ],
     "commitment_c": null,
     "commitment_d": null,
     "response_a": "Paid in full. A rare pleasure.",
@@ -6474,7 +6525,14 @@
     "commitment_a": null,
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO18"
+      }
+    ],
     "response_a": "Complete trust in staff is a gift to flatterers.",
     "response_b": "Newspapers are a start. Not a finish.",
     "response_c": "Ask more than one, then ask twice. Yes.",
@@ -9904,7 +9962,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO28"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -10054,7 +10113,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO10"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -10192,7 +10252,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO21"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -10342,7 +10403,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO08"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -10492,7 +10554,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO19"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -10642,7 +10705,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO17"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -10792,7 +10856,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO22"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -10942,7 +11007,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO05"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -11092,7 +11158,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO07"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -11242,7 +11309,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO09"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -11392,7 +11460,8 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 96,
+        "for": "BO15"
       }
     ],
     "response_a": "Fair. We will not love it.",
@@ -11541,9 +11610,23 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO10"
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO10"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Water is life here. Thank you.",
     "response_b": "Insurance does not make rain.",
@@ -11765,7 +11848,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO12"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Families will feel that.",
     "response_b": "Share how?",
@@ -12833,7 +12923,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO30"
+      }
+    ],
     "commitment_d": null,
     "response_a": "People here will remember that.",
     "response_b": "Cities have plenty already.",
@@ -13130,7 +13227,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO06"
+      }
+    ],
     "commitment_d": null,
     "response_a": "That is all we ask.",
     "response_b": "Jobs, perhaps. Our lane, no.",
@@ -13202,7 +13306,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO07"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Compensation would keep boats afloat.",
     "response_b": "The market is not out on the water.",
@@ -13878,7 +13989,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO10"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Our milk and our kids need that road.",
     "response_b": "We do. Snow has its own plans.",
@@ -14090,7 +14208,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO11"
+      }
+    ],
     "commitment_d": null,
     "response_a": "That would save us a lot.",
     "response_b": "We deserve to afford class.",
@@ -14232,7 +14357,14 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO11"
+      }
+    ],
     "commitment_d": null,
     "response_a": "That would change lives.",
     "response_b": "Two hours each way.",
@@ -14366,9 +14498,23 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO12"
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO12"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Children need real food.",
     "response_b": "Then ask the school to listen.",
@@ -14583,9 +14729,23 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO13"
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO13"
+      }
+    ],
     "commitment_d": null,
     "response_a": "A supply keeps the trade alive.",
     "response_b": "Our wood is the heart of it.",
@@ -14803,7 +14963,14 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO14"
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -15723,9 +15890,23 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO05"
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO05"
+      }
+    ],
     "commitment_d": null,
     "response_a": "That would be a quiet miracle.",
     "response_b": "Not with heavy bags.",
@@ -15802,7 +15983,12 @@
       }
     ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
     "commitment_d": null,
     "response_a": "They will love that.",
     "response_b": "Volunteers are the party.",
@@ -15950,9 +16136,23 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO01"
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO01"
+      }
+    ],
     "commitment_d": null,
     "response_a": "Then my volunteers will survive.",
     "response_b": "A fundraiser. We will set a date.",
@@ -28988,7 +29188,12 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
     "commitment_d": null,
     "response_a": "The whole town will come.",
     "response_b": "It is a town event as much as anything.",
