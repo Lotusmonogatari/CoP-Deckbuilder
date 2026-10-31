@@ -6,7 +6,7 @@ Until a scene is drawn, the ST05 picture shows in its place.
 |---|---|---|---|
 | OUT_FESTIVAL Festival grounds | yes | EV13, EV35 | 12 |
 | OUT_HARBOR Harbor and fishing port | yes | EV27 | 34 |
-| OUT_LAKESIDE Lakeside and river bank | no | EV48, EV49 | 2 |
+| OUT_LAKESIDE Lakeside and river bank | yes | EV48, EV49 | 2 |
 | OUT_FARM Farm and orchard | yes | - | 30 |
 | OUT_SCHOOL School grounds | yes | EV24, EV37, EV42 | 7 |
 | OUT_SHRINE Shrine grounds | yes | EV19 | 18 |
@@ -14,7 +14,7 @@ Until a scene is drawn, the ST05 picture shows in its place.
 | OUT_NEIGHBORHOOD Residential neighborhood | no | EV32, EV38, ST268 | 19 |
 | OUT_COAST_BATTERY Old coastal battery | yes | EV17 | 5 |
 | OUT_VILLAGE_ROAD_SNOW Village road in snow | yes | EV41 | 7 |
-| OUT_CULTURAL_CENTER Cultural center | no | EV50 | 1 |
+| OUT_CULTURAL_CENTER Cultural center | yes | EV50 | 1 |
 
 ## OUT_FESTIVAL.png  (Festival grounds)
 STYLE: {HOUSE_STYLE}
