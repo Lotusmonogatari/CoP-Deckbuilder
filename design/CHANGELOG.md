@@ -2794,3 +2794,5 @@ A scan of all 397 visitor questions (1,588 choices) for: promises that cost noth
 | "I will find out and tell you" is owed to the first organization it costs, so keeping it wins that standing back | VQ136-VQ156 D (11) |
 
 Every question still keeps at least one choice that costs nothing. Promises owed to no organization fall from 12 to 2 (VQ15 B, VQ58 B).
+
+Afterwards, Cameron moved VQ04 C's promise to the Fisheries Cooperative (BO07) and VQ27 D's to the Commuter Committee (BO14): the organizations those choices cost, and the ones asking.

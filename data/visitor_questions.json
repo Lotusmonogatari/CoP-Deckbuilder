@@ -262,7 +262,7 @@
         "kind": "promise_hours",
         "amount": 1,
         "within": 168,
-        "for": "BO08"
+        "for": "BO07"
       }
     ],
     "commitment_d": null,
@@ -1942,7 +1942,7 @@
         "kind": "promise_hours",
         "amount": 1,
         "within": 168,
-        "for": "BO27"
+        "for": "BO14"
       }
     ],
     "response_a": "Try for one. Hold you to it.",
