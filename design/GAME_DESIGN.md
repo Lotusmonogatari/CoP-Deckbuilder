@@ -1,6 +1,6 @@
 # Coliseum of Parliament — Game Design, As It Currently Stands
 
-*A description of what the game does and how its systems connect, written for a reader rather than a build tool. **Refreshed 2026-10-29.** Counts: 70 cards, 125 opponents, 97 levels, 270 stages, 32 organizations, 53 backings, 6 real parties, 50 Floor Vote bills, 166 visitors, 38 events. Numbers marked "first draft" are Cameron's to retune. Where a system is designed but not yet doing anything, that is said at the point it comes up and gathered again at the end. For how to add content see `design/CONTENT_GUIDE.md`; for the day-to-day state see `design/NEW_CHAT_STARTUP.md`; for every dated change see `design/CHANGELOG.md`.*
+*A description of what the game does and how its systems connect, written for a reader rather than a build tool. **Refreshed 2026-10-29; updated 2026-10-31.** Counts: 70 cards, 131 opponents, 101 levels, 273 stages, 32 organizations, 53 backings, 6 real parties, 50 Floor Vote bills, 166 visitors, 55 events. Numbers marked "first draft" are Cameron's to retune. Where a system is designed but not yet doing anything, that is said at the point it comes up and gathered again at the end. For how to add content see `design/CONTENT_GUIDE.md`; for the day-to-day state see `design/NEW_CHAT_STARTUP.md`; for every dated change see `design/CHANGELOG.md`.*
 
 ## In one page
 
@@ -58,6 +58,8 @@ A **level** is an ordered chain of up to ten rooms, with its own tier, cooldown 
 | Urgent matters (2) | A Constituency Town Hall and a Party Steering Committee check-in that appear when your numbers fall (below) |
 | **Outings (13)** | One-room, weekend-ready levels: a quiet word with a lobbyist, weekend Office Hours, a press gaggle, a town hall, a study evening, a late TV interview, three festivals (local, autumn harvest, winter snow), a walkabout, a clinic day, a school visit, a farmers' market |
 | Sponsored and drafted bills | Built during a run from an organization's request or from parts you pick (below); never in the ordinary list |
+| **Event levels (4)** | One-room levels reached only from an event choice, never the list: a radio debate, a radio call-in hour, a campus Q&A with Students United, and the Fisheries Cooperative's meeting at the harbor. The choice opens the level's briefing; **Go in** takes the choice and starts the room, **Back** returns to the event with nothing taken |
+| Seasonal levels | A level or event can be limited to seasons (the autumn harvest and winter snow festivals, a snowed-in road); out of season it does not appear |
 
 What a room leaves behind changes the next: a level can carry a support bonus or goodwill into its next stage, and reputation earned before a press-style room nudges where it starts. Beats between rooms keep a level feeling like a place:
 
@@ -128,6 +130,9 @@ The game has a calendar, kept in hours.
 - **Party dues.** At each week's end the party takes a base of 50,000円, plus 50,000円 for every full 15 points of Party support above 40, plus 30% of the Funds you earned that week, less what National Awareness takes off. Unpaid dues roll over; a short week costs Party support, withdraws the party's backings, and costs standing, all scaled up by 1.5 for every full 100,000円 owed.
 - **Decay and cooldowns** run on the calendar, so unused hours still pass time.
 - **Events.** An event is a screen with two to four fixed choices, each with its own ranges. **Buyable** events (an advertisement, a rally weekend, a community grant, a radio spot, a festival float) are arranged from the Events list and paid up front; **Random** ones may arrive after a level or week end, only when you are known enough and off cooldown; **Dated** ones (the Prime Minister's opening address) open by themselves on a calendar date. Choices can spend or earn Funds and XP, move the meta numbers, awareness and organization standing, **reveal a hidden level**, or settle party dues. A Random event with a staff choice shows it greyed out if you have hired no one, and almost every Random event has a **Decline** that costs 1.5x what sending staff would have lost.
+- **Durations.** An event shows how long it can take, from its quickest choice to its longest (a choice that leads into a level adds that level's hours); a choice that would not fit the hours left reads "Insufficient Work Hours".
+- **Commitments.** A choice can cost what it promises: hours now (a visit, a call made in person), Funds now (commissioning a study), or an item handed over (a box of Aomori apples). It shows the cost and greys out when it cannot be paid. A choice can also **promise** an item or hours owed later: the Office's Promises panel lists what is owed and when, keeping a promise earns standing with the organization it was made to, and missing the deadline breaks it (standing and Reputation lost). A choice can schedule a **follow-up** that arrives as its own event later (the meeting you promised to convene, the ministry's reply). The Marketplace sells **regional goods** for such gifts: Aomori apples, Tsugaru lacquer chopsticks, dried scallops, wind-dried salmon, milk caramels, white chocolate cookies, a Nebuta festival hand towel and district sake.
+- **Honest choices.** Every set of choices offers sincere positions of similar length, so the right answer is not given away by being the only thoughtful one.
 - **Hosting.** A walking tour (Constituency organizations) and a dinner (National) are guest events with three screens of choices; hosting an organization reveals one of its hidden levels.
 - **The Office ticker and notices** speak a line of news or flavor under conditions: staff, thresholds, a bill passed or failed, a weekday or date range, a story you made.
 
@@ -145,7 +150,7 @@ Between levels the Office turns a level's rewards into the next level's capabili
 
 ## Choosing who you are
 
-A title screen offers **Continue** or **New Game**, with a choice of four protagonists, each with their own name, party (in the party's official colour), blurb, and **different starting numbers**, from an easy start (Constituency support 35, Reputation 25, Funds 100,000円, Party support 40, XP 60) down to a very hard one (5, 0, 10,000円, 0, 0). A new run starts with a 15-card deck dealt at random and a Training Session Coupon.
+A title screen offers **Continue** or **New Game**, with a choice of four protagonists, each with their own name, party (in the party's official colour), blurb, and **different starting numbers**, from an easy start (Constituency support 35, Reputation 25, Funds 100,000円, Party support 40, XP 60) down to a very hard one (5, 0, 10,000円, 0, 0). A new run starts with a 15-card deck dealt at random and each protagonist's own starting items (a Training Session Coupon for everyone, plus coffee and tea for the easier starts).
 
 Progress is saved automatically after every stage, whenever the Office opens, and whenever anything is bought or changed, but never in the middle of a stage: reopening mid-fight restarts that fight.
 

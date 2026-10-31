@@ -1816,6 +1816,14 @@ def coerce(value, kind, where, report):
             if match:
                 found.append({"kind": "item", "item_id": match.group(1).upper()})
                 continue
+            # A follow-up event the choice schedules (2026-10-31): "Followup
+            # EV62 after 24" arrives as its own event at the first Office visit
+            # that many game hours later (after is optional: next visit).
+            match = re.match(r"^Followup\s+(EV\d+)(?:\s+after\s+(\d+))?$", part, re.IGNORECASE)
+            if match:
+                found.append({"kind": "followup", "event_id": match.group(1).upper(),
+                              "after": int(match.group(2) or 0)})
+                continue
             # Phase 2: a promise owed later. "Promise Item SH25 within 48 for
             # BO06" or "Promise Hours 2 within 72 for BO04"; within and for
             # are optional (Balance default deadline; the choice's own org).
@@ -2798,8 +2806,8 @@ def validate(data, report):
     for row in data.get("events", []):
         eid = row["event_id"]
         event_ids.add(eid)
-        if row["trigger"] not in ("Buyable", "Random", "Dated"):
-            report.error("Events", f"{eid} has Trigger '{row['trigger']}' — expected Buyable, Random or Dated")
+        if row["trigger"] not in ("Buyable", "Random", "Dated", "Followup"):
+            report.error("Events", f"{eid} has Trigger '{row['trigger']}' — expected Buyable, Random, Dated or Followup")
         if row["trigger"] == "Dated":
             ok_date = False
             try:
@@ -3235,6 +3243,30 @@ def check_commitments(data, report):
                              f"{entry.get('item_id')} is not a Shop item")
         if all(lists):
             report.error(f"Visitor Questions {row.get('question_id')}", "every choice has a Commitment; keep one that costs nothing")
+
+
+def check_followups(data, report):
+    """A Followup commitment names a real event whose Trigger is Followup, and a
+    Followup event is only ever reached that way."""
+    events = {str(e.get("event_id")): e for e in data.get("events", [])}
+    named = set()
+    rows = [(f"Event Choices {r.get('event_id')} {r.get('choice')}", r.get("commitment") or [])
+            for r in data.get("event_choices", [])]
+    rows += [(f"Visitor Questions {q.get('question_id')}", q.get("commitment_" + c) or [])
+             for q in data.get("visitor_questions", []) for c in "abcd"]
+    for where, lst in rows:
+        for entry in lst:
+            if entry.get("kind") != "followup":
+                continue
+            event = events.get(entry.get("event_id"))
+            named.add(entry.get("event_id"))
+            if event is None:
+                report.error(where, f"Followup names {entry.get('event_id')}, which is not an event")
+            elif str(event.get("trigger")) != "Followup":
+                report.error(where, f"Followup names {entry.get('event_id')}, whose Trigger is not Followup")
+    for event_id, event in events.items():
+        if str(event.get("trigger")) == "Followup" and event_id not in named:
+            report.warn("Events", f"{event_id} is a Followup event that no choice schedules")
 
 
 def check_event_levels(data, report):
@@ -4029,6 +4061,7 @@ def main():
     check_seasons(data, report)
     check_event_levels(data, report)
     check_commitments(data, report)
+    check_followups(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)

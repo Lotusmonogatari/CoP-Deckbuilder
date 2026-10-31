@@ -303,7 +303,7 @@ func _build() -> void:
 	_show_trigger_alerts_if_any()
 	_show_broken_promises_if_any()
 	_show_resume_choice_if_in_level()
-	if not _show_dated_event_if_due():
+	if not _show_followup_if_due() and not _show_dated_event_if_due():
 		_show_random_event_if_due()
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
@@ -538,6 +538,18 @@ func _picture_row(art_id: String) -> Control:
 ## A dated event whose day has come opens at once (2026-10-23), the first time
 ## the Office is open on or after its date. Real-click tests switch it off with
 ## the same switch as the random events. True when one was shown.
+## A follow-up a choice scheduled (2026-10-31) arrives first, once its time has
+## come. True when one was shown.
+func _show_followup_if_due() -> bool:
+	if GameState.is_in_level():
+		return false
+	var event_id := GameState.take_due_followup()
+	if event_id.is_empty():
+		return false
+	_present_event(event_id, true)
+	return true
+
+
 func _show_dated_event_if_due() -> bool:
 	if GameState.is_in_level() or OS.has_environment("COP_NO_RANDOM_EVENTS"):
 		return false
@@ -583,6 +595,8 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 			rows.append(face)
 			rows.append(UiKit.line(Text.say("event.speaker_line", {
 				"name": str(speaker.get("name", "")), "title": OpponentDisplay.title_for(speaker)}), "SmallLabel"))
+	elif str(event.get("trigger", "")) == "Followup":
+		rows.append(UiKit.line(Text.say("event.heading_followup"), "SmallLabel"))
 	elif arrived:
 		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
 	rows.append(UiKit.line(str(event.get("flavor", ""))))

@@ -7,14 +7,14 @@ in `data/art.json`.
 | Kind | Drawn |
 |---|---|
 | Protagonists | 11 / 28 |
-| Opponents | 7 / 625 |
+| Opponents | 7 / 655 |
 | Staff | 0 / 105 |
 | Visitors | 0 / 830 |
 | Card art | 70 / 70 |
 | Backgrounds | 45 / 46 |
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
-| Shop item icons | 21 / 21 |
+| Shop item icons | 21 / 29 |
 | Cosmetic package icons | 6 / 6 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -155,6 +155,12 @@ in `data/art.json`.
 | OP27 | Ichizaki Namu | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP102 | Emi Katsuragawa | ✓ | ☐ | ☐ | ☐ | ☐ |
 | OP10 | Aki Rono | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP126 | Student A | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP127 | Student B | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP128 | Student C | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP129 | Student D | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP130 | Student E | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP131 | Student F | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Staff — `assets/characters/staff/`
 
@@ -551,6 +557,14 @@ in `data/art.json`.
 | booster_dinner.png | National Organization Outreach Dinner | ✓ |
 | walking_tour.png | Host a Constituency Group Walking Tour | ✓ |
 | BO01.png | Public Rebuke | ✓ |
+| SH25.png | Box of Aomori Apples | ☐ |
+| SH26.png | Tsugaru Lacquer Chopsticks | ☐ |
+| SH27.png | Dried Hokkaido Scallops | ☐ |
+| SH28.png | Wind-Dried Salmon | ☐ |
+| SH29.png | Hokkaido Milk Caramels | ☐ |
+| SH30.png | White Chocolate Cookies | ☐ |
+| SH31.png | Nebuta Festival Hand Towel | ☐ |
+| SH32.png | Bottle of District Sake | ☐ |
 
 ## Cosmetic package icons — `assets/icons/`
 

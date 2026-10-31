@@ -1,6 +1,6 @@
-# Coliseum of Parliament: new session start-up (2026-10-28)
+# Coliseum of Parliament: new session start-up (2026-10-31)
 
-Point the assistant at this file at the start of a new session. The fuller record is `CLAUDE.md` (the brief, and an index of every dated change in `design/CHANGELOG.md`); `README.md` is the short snapshot. This guide replaces the 2026-10-27 version.
+Point the assistant at this file at the start of a new session. The fuller record is `CLAUDE.md` (the brief, and an index of every dated change in `design/CHANGELOG.md`); `README.md` is the short snapshot. This guide replaces the 2026-10-28 version.
 
 ## 1. Executive summary
 
@@ -9,9 +9,9 @@ Point the assistant at this file at the start of a new session. The fuller recor
 | Game | Godot 4.5, GDScript, portrait mobile card battler. Fictional nation Yezo (101 seats, floor majority 51, no early elections). |
 | Repo and branches | `lotusmonogatari/cop-deckbuilder`. Work on the designated session branch; merge to `main` only after `tools/verify.sh` says "All checks passed". Everything to date is merged; the branch is level with `main`. |
 | Workbook | `design/Game_Workbook.xlsx` (renamed 2026-10-27 from `CoP_Starter_Card_Stage_Data.xlsx`). |
-| Content (`data/`) | 273 stage rows (229 combat), 101 levels, 70 cards, 32 organizations, 125 opponents, 50 floor-vote bills, 166 visitors, 38 events, 155 ticker lines, 6 cosmetic packages. |
-| Tests | About 1,551 GUT tests (120 scripts) and 27 real-click interaction tests. `tools/verify.sh` (which also compiles every script) passes in about 2 minutes. |
-| Missing | All audio files, most character and card art, 97 topic-room backgrounds, the eight generic outside scenes (`OUT_*`, show the Town Hall until drawn). No real-phone build yet (milestone M6). |
+| Content (`data/`) | 273 stage rows (229 combat), 101 levels, 70 cards, 32 organizations, 131 opponents, 50 floor-vote bills, 166 visitors and 397 dilemmas, 55 events, 32 shop items, 155 ticker lines, 6 cosmetic packages. |
+| Tests | About 1,600 GUT tests (130 scripts) and 30 real-click interaction tests. `tools/verify.sh` (which also compiles every script) passes in about 2-3 minutes. |
+| Missing | All audio files, most character art (122 opponents, 6 students, 166 visitors, PC02/PC03), 8 goods icons, `OUT_NEIGHBORHOOD`. No real-phone build yet (milestone M6). |
 
 ## 2. The person and the working rules
 
@@ -66,25 +66,30 @@ xvfb-run -a -s "-screen 0 1080x2340x24" .tools/godot --path . --resolution 1080x
 10. Copy a workbook row with `w.copy_row(...)` in `wbx`, not by reading `rows()` and writing it back (that turns numbers into text and drags formulas along). See `design/CONTENT_GUIDE.md` section 4.4 and `tools/workbook/README.md`.
 11. A new copy of a family room (a topic Town Hall, caucus, committee) must be added to the Modifiers tab's Effect Target cells that name its family, or its backings silently do nothing there. Only one test checks this.
 12. The export saying "No errors" is not the whole check: a room with no visitors or a bad Background ID now errors, but a thin cue pool or a missing level does not. Run `tools/verify.sh`, `python3 tools/content_depth.py` and a bot trial for new rooms.
-13. The Decline generator (`tools/workbook/archive/b9/decline_options.py`) is a one-off for 17 events; add a new event's Decline by hand.
+13. The Decline generator (`tools/workbook/archive/b9/decline_options.py`) is a one-off for 17 events; add a new event's Decline by hand (the rule: 1.5x the shortfall of the staff choice against choice A).
+14. The workbook's structured columns are the truth (Cameron, 2026-10-31): when text and a column disagree, change the text. Drafting rules (the discard tiers) only warn.
+15. Protagonist rows in the Opponents tab (OP06, OP22, OP35, OP40) are never seated; a test enforces it.
+16. Tests must read workbook values, never type them (a retune must not break a test).
 
-## 6. What was done most recently (2026-10-27 to 2026-10-29)
+## 6. What was done most recently (2026-10-29 to 2026-10-31)
 
-The Party Dues / Office Funds box (two lines, with 円); the Japanese name off card fronts; two lines off card backs; "send a staff member" choices greyed out with no staff; level briefing Back returns to the levels list; public room per tier moved to the Bill Level Templates tab and the unlock-tier and slot caps removed; staff pictures fall back to a plain `SF##.png`; the staff profile rearranged (picture, hiring info, biography, role flavor, tiers, buttons) with two new Staff columns; a faster `verify.sh` (about 2 minutes, `--quick`); eight generic outside background scenes with a Town Hall fallback and eleven outdoor events pointed at them; a delete-row helper; `design/CLEANUP_CANDIDATES.md`. Then, on 10-29: several pictures per event and per stage with picture terms (winter, snow), the Marketplace Funds/limit line, a View button and no-scroll offer in the deck and Rhetoric Training, centered card titles, a Decline choice on 17 Random events (wording in the Text tab, `@key` cells), a compile check in `verify.sh`, one content guide (`design/CONTENT_GUIDE.md`, tried out in a dry run) replacing the older expansion guide and prompts, and export checks for visitorless rooms and bad Background IDs. See the last entries of `design/CHANGELOG.md`.
+10-29/30: the design document refreshed; `wbx.copy_row()`; the Assets tab's backgrounds brought in line with the art (Generic / Pool / Fallback); staff biographies and role flavor from Cameron's upload; taller event pictures; **Image Scroll and Image Pan** (drag and tilt every drawn background; switches in Administration); playtest fixes (no opponent names in briefings, **seasons** for levels and events, no Friday dues line, hours in briefings, **per-protagonist starting items**, the coupon off the Marketplace); the **briefing template** (totals, durations, gold lines; one-stage levels show only the totals); two lakeside events and a cultural-center event with Cameron's art; card titles centered; victory/defeat poses visible.
+
+10-31: **events that lead to a stage** (Starts Level / Event Only columns, briefing with Back to the event, duration ranges, "Insufficient Work Hours"; Radio Debate ST271, Radio Call-In ST272, Campus Q&A ST273; LV98-LV101; EV51-EV53 and converted EV27/EV36/EV50); six placeholder students; room-cast and organization-balance audits (`design/review/BALANCE_AUDIT_2026-10-31.md`) and Cameron's decisions applied (level rewards so every organization has 3+, temple and small-business dilemmas, eight organization events EV54-EV61, Campus Q&A's own 45 questions, the full lobbyist cast in ST28); a test that protagonist rows (OP06, OP22, OP35, OP40) are never seated; the drafting rules for discard cards made advisory (structured columns are the truth); the **choice honesty rewrite** of all 452 choice sets (`tools/choice_audit.py`); **commitments** (choices cost hours, Funds or items; promises with deadlines kept from the Office's Promises panel; follow-up events EV62-EV64; regional Hokkaido/Aomori goods SH25-SH32). See the last entries of `design/CHANGELOG.md`.
 
 ## 7. Open items
 
+The list for Cameron's return, with the interim choice made for each, is `design/review/OPEN_ITEMS_2026-10-31.md`. Standing items:
+
 | # | Item | Notes |
 |---|---|---|
-| 1 | Audio build, step 1 (approved in principle, outline not yet sent) | Five sliders (Master, Music, Cues, Effects, Interface), starting volume 50% in `data/rules.json`, a Sound page in Administration, interface-sound hooks, a stage-change hook, a vibration switch (full set of moments, on by default), settings saved. Sounds are commissioned; the brief is `design/proposals/AUDIO_BRIEF_2026-10-26.md`. |
-| 2 | Content review leftovers | Events and mechanics values (EV12, EV44, EV45, EV05, AE07 note) and How to Play wording (whip discount HT28, dated events HT32, district activities) await Cameron. VQ105, VQ131-134 and VQ46-48 effect fixes need his numbers. The "no-decision actions" list is paused at his request. |
-| 3 | Staff Biography and Role Flavor Text | Both Staff columns are blank; Cameron is writing them. |
-| 4 | Ticker rows TK150-TK155 | Cameron is editing them. |
-| 5 | Real phone build and notched-phone pass | Milestone M6; `design/DYNAMIC_SCREEN_PLAN.md`. |
-| 6 | Art | Portraits, card art, topic-room backgrounds, and the eight `OUT_*` scenes (`design/OUTDOOR_BACKGROUNDS.md` has the prompts; OUT_LAKESIDE has no content mentioning lakes yet). Appeal is the weakest suit. |
-| 7 | Cleanup pass | `design/CLEANUP_CANDIDATES.md`: unused Text rows and a few little-referenced tool scripts. Nothing is removed without Cameron's approval. |
-
-Closed by Cameron on 2026-10-28 and not being pursued: click-test coverage for the day's changes, staff biography drafting by the assistant, and the Chamber of Commerce rebalance. Settled earlier: Ainu month order (January to December), the Ainu Thursday name (ニト), the hard-coded leftovers in the audit's section E (starts of 50 stay as fallbacks; the slot cap, unlock-tier cap and public room per tier are resolved).
+| 1 | Audio build, step 1 (approved in principle, outline not yet sent) | Five sliders, a Sound page in Administration, interface and stage-change hooks, vibration switch. Brief: `design/proposals/AUDIO_BRIEF_2026-10-26.md`. |
+| 2 | Content review leftovers | EV12, EV44, EV45, EV05, AE07 note; How to Play HT28, HT32; VQ105, VQ131-134 effect numbers. |
+| 3 | Student names | OP126-OP131 are "Student A" to "Student F"; Cameron names them. |
+| 4 | Real phone build | Milestone M6; Image Pan's tilt direction needs a real phone. |
+| 5 | Art | 122 opponents, 6 students, 166 visitors, PC02/PC03, 8 goods icons (SH25-SH32), `OUT_NEIGHBORHOOD`. Character art is Cameron's pipeline; Claude writes prompts on request. |
+| 6 | Cleanup pass | `design/CLEANUP_CANDIDATES.md`; nothing removed without Cameron's approval. |
+| 7 | Ministers | Five ministers sit in every TV debate; Cameron chose to leave it. |
 
 ## 8. A good first message
 

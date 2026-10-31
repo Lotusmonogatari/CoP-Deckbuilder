@@ -1415,7 +1415,13 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "followup",
+        "event_id": "EV63",
+        "after": 48
+      }
+    ]
   },
   {
     "event_id": "EV27",
@@ -1993,10 +1999,9 @@
     "starts_level": null,
     "commitment": [
       {
-        "kind": "promise_hours",
-        "amount": 2,
-        "within": 72,
-        "for": "BO06"
+        "kind": "followup",
+        "event_id": "EV62",
+        "after": 24
       }
     ]
   },
@@ -4580,6 +4585,245 @@
         "delta": -2
       }
     ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV62",
+    "choice": "A",
+    "choice_text": "Propose a third site with a community fund",
+    "result_text": "A third site, and a fund for whoever takes it. The room goes quiet, then agrees.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": 2
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV62",
+    "choice": "B",
+    "choice_text": "Back the site with the shortest truck route",
+    "result_text": "The numbers favor one street. That street is not happy.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV62",
+    "choice": "C",
+    "choice_text": "Ask both to agree on an independent study",
+    "result_text": "They agree on the study, if nothing else.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV62",
+    "choice": "D",
+    "choice_text": "Let them argue and leave before the end",
+    "result_text": "You are noticed leaving.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV63",
+    "choice": "A",
+    "choice_text": "Send the reply on with a note of your own",
+    "result_text": "The customs officer writes back to thank you, in the same careful hand.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV63",
+    "choice": "B",
+    "choice_text": "Ask the ministry for a review date in writing",
+    "result_text": "A date arrives. It is next year, but it is a date.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV63",
+    "choice": "C",
+    "choice_text": "File the reply and leave it there",
+    "result_text": "The harbor office hears nothing more.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV64",
+    "choice": "A",
+    "choice_text": "Share the survey so fans can fill it in",
+    "result_text": "A celebrity's fans fill in the survey within a day.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV64",
+    "choice": "B",
+    "choice_text": "Raise the route at the transport committee",
+    "result_text": "The committee notes it. The minutes say so.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null
+  },
+  {
+    "event_id": "EV64",
+    "choice": "C",
+    "choice_text": "Let the matter rest for now",
+    "result_text": "The survey stays in its envelope.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,

@@ -67,3 +67,27 @@ func test_promises_are_saved_with_the_run() -> void:
 func test_the_hours_left_never_go_below_zero() -> void:
 	assert_eq(Promises.hours_left({"due_at": 5}, 9), 0)
 	assert_eq(Promises.hours_left({"due_at": 9}, 5), 4)
+
+
+## Follow-ups (2026-10-31): a "Followup EVxx after H" commitment schedules the
+## event for the first Office visit H game hours later.
+func test_a_followup_waits_for_its_time_then_arrives_once() -> void:
+	var followup := ""
+	for event: Dictionary in DataDB.events:
+		if str(event.get("trigger", "")) == "Followup":
+			followup = str(event["event_id"])
+			break
+	assert_ne(followup, "", "the workbook has a Followup event")
+	GameState.pay_commitments([{"kind": "followup", "event_id": followup, "after": 5}])
+	assert_eq(GameState.take_due_followup(), "", "not yet")
+	GameState.spend_hours(5)
+	assert_eq(GameState.take_due_followup(), followup)
+	assert_eq(GameState.take_due_followup(), "", "only once")
+
+
+func test_followup_events_never_arrive_at_random_or_for_sale() -> void:
+	var ctx := GameState.event_context()
+	for event: Dictionary in EventEngine.eligible_random(DataDB.events, ctx):
+		assert_ne(str(event.get("trigger", "")), "Followup")
+	for event: Dictionary in GameState.buyable_events():
+		assert_ne(str(event.get("trigger", "")), "Followup")

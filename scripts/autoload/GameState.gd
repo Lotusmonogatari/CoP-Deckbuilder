@@ -311,6 +311,9 @@ var promises: Array = []
 var promises_broken_unseen: Array = []
 ## A running number for promise IDs.
 var promise_serial := 0
+## Follow-up events a choice scheduled (2026-10-31): [{event_id, due_at}], each
+## shown at the first Office visit on or after its time.
+var scheduled_events: Array = []
 var event_roll_due := false
 
 ## A dinner or walking tour in progress (HostedEvent.gd): { hosted_id, org, roster,
@@ -459,7 +462,7 @@ const _SAVED_FIELDS := [
 	"bill_stance",
 	"patron_requests", "enacted_components", "patron_runtime", "patron_composed", "patron_armed",
 	"bill_assist", "patron_news", "patron_drafts", "draft_counter", "last_draft_at",
-	"promises", "promises_broken_unseen", "promise_serial",
+	"promises", "promises_broken_unseen", "promise_serial", "scheduled_events",
 ]
 
 
@@ -611,6 +614,7 @@ func reset_crisis_triggers() -> void:
 	promises = []
 	promises_broken_unseen = []
 	promise_serial = 0
+	scheduled_events = []
 	event_roll_due = false
 	last_decay_at = 0
 	booster_moved_in_period = {}
@@ -1601,6 +1605,16 @@ func keep_promise(promise_id: String) -> String:
 		if str(promise.get("kind", "")) == Promises.PROMISE_HOURS:
 			spend_hours(int(promise.get("hours", 0)))
 		return ""
+	return ""
+
+
+## The first scheduled follow-up event that is due now, removed from the
+## queue, or "" (the Office shows it).
+func take_due_followup() -> String:
+	for entry: Dictionary in scheduled_events:
+		if time_units >= int(entry.get("due_at", 0)) and not get_event(str(entry.get("event_id", ""))).is_empty():
+			scheduled_events.erase(entry)
+			return str(entry.get("event_id", ""))
 	return ""
 
 
@@ -3155,6 +3169,8 @@ func commitment_label(text: String, list: Array) -> String:
 	for item_id: String in Commitments.items(list):
 		parts.append(Text.say("commit.item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))}))
 	for entry: Variant in list:
+		if entry is Dictionary and str(entry.get("kind", "")) == "followup":
+			parts.append(Text.say("commit.followup"))
 		if Promises.is_promise(entry):
 			var shown := Promises.make(entry, 0, int(DataDB.balance.get("promise_default_deadline_hours", 48)), "", "", 0)
 			parts.append(Text.say("commit.promise", {"what": promise_what(shown), "count": int(shown["due_at"])}))
@@ -3168,6 +3184,10 @@ func commitment_label(text: String, list: Array) -> String:
 func pay_commitments(list: Array, source: String = "", fallback_org: String = "") -> Array[String]:
 	var lines: Array[String] = []
 	for entry: Variant in list:
+		if entry is Dictionary and str(entry.get("kind", "")) == "followup":
+			scheduled_events.append({"event_id": str(entry.get("event_id", "")),
+				"due_at": time_units + int(entry.get("after", 0))})
+			continue
 		if Promises.is_promise(entry):
 			promise_serial += 1
 			var promise := Promises.make(entry, time_units, int(DataDB.balance.get("promise_default_deadline_hours", 48)),

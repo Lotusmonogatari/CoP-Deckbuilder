@@ -6270,5 +6270,19 @@
     "english": "{title} (promised)",
     "placeholders": "title",
     "notes": "2026-10-31 promises (Cameron)"
+  },
+  {
+    "key": "commit.followup",
+    "where": "A choice's cost: it schedules a follow-up event",
+    "english": "a follow-up later",
+    "placeholders": null,
+    "notes": "2026-10-31 follow-ups (Cameron)"
+  },
+  {
+    "key": "event.heading_followup",
+    "where": "Event screen heading for a follow-up the player's own choice scheduled",
+    "english": "As you promised",
+    "placeholders": null,
+    "notes": "2026-10-31 follow-ups (Cameron)"
   }
 ]
