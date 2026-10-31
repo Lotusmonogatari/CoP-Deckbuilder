@@ -53,7 +53,7 @@ A level is a row of up to ten stage slots plus rewards, cost and availability.
 
 | Column | What it does |
 |---|---|
-| **Level ID, Description** | Next free `LVxx` (today **LV98**). The description is the briefing title; for a bill level it is the bill name. |
+| **Level ID, Description** | Next free `LVxx` (today **LV102**). The description is the briefing title; for a bill level it is the bill name. |
 | **Cooldown** | Hours before it can be played again (the calendar is in hours). A number cell. |
 | **Level Tier** | 0, 1 or 2. Tier gates the XP unlock price (four cost columns: PRA vacant, tier 0, tier 1, tier 2). |
 | **Stage ID for Part 1-10** | `STxx` for a room, or `BIxx` where the Floor Vote for that bill is played (ST23 with that bill). The last slot of a bill level is its `BIxx`. |
@@ -80,7 +80,7 @@ A level is a row of up to ten stage slots plus rewards, cost and availability.
 
 ## 4. Stages (Stages tab)
 
-A stage is one room. **Mode**: `Combat` (card battle), `Non-combat` (Office Hours-style visitor room), `Vote` (ST23 only), `Visit` and `Trade` (the patron member visit and lobbyist trade, run by the patron machinery). Next free ID: **ST271**. Other next-free IDs today: stage questions **S2481**, player cues **PL3517**, opponent cues **OC3109**, transition dialogue **TD2084**, transition cast **TC223**, transition backgrounds **TB79**, ticker **TK156**.
+A stage is one room. **Mode**: `Combat` (card battle), `Non-combat` (Office Hours-style visitor room), `Vote` (ST23 only), `Visit` and `Trade` (the patron member visit and lobbyist trade, run by the patron machinery). Next free ID: **ST274**. Other next-free IDs today: stage questions **S2507**, player cues **PL3517**, opponent cues **OC3109**, transition dialogue **TD2084**, transition cast **TC223**, transition backgrounds **TB79**, ticker **TK156**.
 
 ### 4.1 The columns that matter
 
