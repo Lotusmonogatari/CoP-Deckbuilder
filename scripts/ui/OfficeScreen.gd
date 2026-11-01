@@ -868,7 +868,7 @@ func _on_abandon_level_chosen() -> void:
 func _refresh_resources() -> void:
 	# The funds box under the calendar shows Funds, which every purchase changes.
 	DuesBox.refresh(_dues_box)
-	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance, Text.phrase())
+	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
 	if refusal.is_empty():
 		_resources.text = Text.say("office.in_order")
 	else:
@@ -915,14 +915,14 @@ func _last_level_report() -> String:
 func _show_management() -> void:
 	var rows: Array[Control] = []
 	var funds := int(GameState.meta.get("Funds", 0))
-	var size := Ledger.deck_size(DataDB.balance)
+	var size := GameState.deck_size()
 
 	rows.append(UiKit.heading(Text.say("office.xp", {"count": GameState.xp})))
 	rows.append(UiKit.heading(Text.say("office.funds", {"count": funds})))
 	rows.append(UiKit.line(
 		Text.say("office.funds_buys"), "SmallLabel"))
 
-	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance, Text.phrase())
+	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
 	rows.append(UiKit.heading(Text.say("office.deck_count",
 		{"count": GameState.deck.size(), "size": size})))
 	rows.append(UiKit.line(
@@ -2068,7 +2068,8 @@ func _show_marketplace() -> void:
 		# "In Marketplace: No" (the Training Session Coupon) is only ever given.
 		if item.get("card_tier") == null and str(item.get("in_marketplace", "")).strip_edges().to_lower() != "no" \
 				and Items.inventory_tab(item) == _market_tab \
-				and not (Items.is_yes(item.get("unlocks_recruitment_tier")) and GameState.staff_recruitment_maxed()):
+				and not (Items.is_yes(item.get("unlocks_recruitment_tier")) and GameState.staff_recruitment_maxed()) \
+				and not (item.get("deck_size_increase") != null and GameState.deck_expansion_maxed()):
 			rows.append(_supply_row(item))
 	_inventory_panel.open(Text.say("shop.supplies"), rows)
 
@@ -2149,6 +2150,9 @@ func _on_buy_item(item_id: String) -> void:
 		return
 	if item.get("funds_cap_increase") != null:
 		_report_purchase_result(GameState.buy_funds_cap(item_id))
+		return
+	if item.get("deck_size_increase") != null:
+		_report_purchase_result(GameState.buy_deck_expansion(item_id))
 		return
 
 	var refusal := GameState.buy_shop_item(item_id)
@@ -2270,10 +2274,10 @@ func _show_deck() -> void:
 
 
 func _build_deck_screen() -> void:
-	var size := Ledger.deck_size(DataDB.balance)
+	var size := GameState.deck_size()
 	var rows: Array[Control] = []
 
-	var refusal := Ledger.deck_refusal(_draft_deck, GameState.owned_cards, DataDB.balance, Text.phrase())
+	var refusal := Ledger.deck_refusal(_draft_deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
 	var warning := ("" if refusal.is_empty()
 		else Text.say("office.deck_warning_suffix", {"reason": refusal}))
 	rows.append(UiKit.line(Text.say("office.deck_chosen",

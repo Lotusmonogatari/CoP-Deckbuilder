@@ -47,3 +47,6 @@ No test was found that covers a removed feature. The two click tests that `verif
 **Kept, in use:** the `office.trigger.*` rows. The Office builds their keys at runtime (`"office.trigger.%s.%s"`), so the exporter's "nothing asks for" note about them is a false alarm. **Kept by choice:** `tools/art_prompt.py` and `tools/content_lint.py`, which are run by hand.
 
 **Removed in a second pass (Cameron, 2026-10-31: "delete if nothing uses them"; nothing did, not even by a built-up key):** the Text rows `briefing.between_all`, `briefing.between_resets`, `briefing.res_energy`, `briefing.res_gaffes`, `briefing.res_guard`, `briefing.res_hand`, `briefing.res_support` and `briefing.res_turns` (CarryOverLines' lines); and `briefing.bill_line`, `briefing.sides_for`, `briefing.sides_against` and `stance.nobody` (the StanceLines briefing helpers' lines).
+
+## Added 2026-11-01
+- `BattleScreen._question_concerns_lines()` and its Text rows (`battle.question_about` and the "pleases / sets back" lines), plus `battle.nobody_pleased`: the Details panel no longer shows them (Cameron's playtest). `StanceLines.stance_chip_rows()` may now be unused there too; check other callers.

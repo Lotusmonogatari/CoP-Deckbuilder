@@ -38,6 +38,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -81,6 +82,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -124,6 +126,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -167,6 +170,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -210,6 +214,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -253,6 +258,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -296,6 +302,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -339,6 +346,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -377,6 +385,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -415,6 +424,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -453,6 +463,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -491,6 +502,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": "Yes",
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -529,6 +541,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": 100000,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -572,6 +585,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -615,6 +629,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -658,6 +673,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -701,6 +717,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -744,6 +761,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -787,6 +805,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -830,6 +849,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -868,6 +888,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": 1,
     "in_marketplace": "No",
     "inventory": null
@@ -911,6 +932,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -954,6 +976,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -997,6 +1020,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null
@@ -1035,6 +1059,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": "Office"
@@ -1073,6 +1098,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": "Office"
@@ -1111,6 +1137,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": "Office"
@@ -1149,6 +1176,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": "Office"
@@ -1187,6 +1215,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": "Office"
@@ -1225,6 +1254,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": "Office"
@@ -1263,6 +1293,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": "Office"
@@ -1301,6 +1332,7 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": "Office"
@@ -1339,8 +1371,48 @@
     "level_tier": null,
     "unlocks_recruitment_tier": null,
     "funds_cap_increase": null,
+    "deck_size_increase": null,
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": "Office"
+  },
+  {
+    "item_id": "SH34",
+    "name": "Expanded Briefing Binder",
+    "description": "Your deck holds one more card for the rest of the run, filled at once from cards you own. Can be bought up to five times.",
+    "cost_xp": 200,
+    "cost_yen": 0,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null,
+    "grants": null,
+    "icon": "deck_expansion",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "duration_units": null,
+    "hours": null,
+    "image": null,
+    "hosted_event": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null,
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null,
+    "deck_size_increase": 1,
+    "free_card_tier": null,
+    "in_marketplace": null,
+    "inventory": null
   }
 ]

@@ -540,7 +540,9 @@ func _refresh_details(state: BattleState) -> void:
 	# now differ in how they hand out energy, how many questions they ask and
 	# what winning means, and this panel used to explain only the two cases
 	# that were unusual — so a policy study looked like it had finite energy.
-	var lines: Array[String] = StageBrief.headline(_stage, state)
+	# The turns and how to win now open the Room rules section instead
+	# (Cameron's playtest, 2026-10-31); the top keeps only the bill stance.
+	var lines: Array[String] = []
 	if not _lean().is_empty():
 		lines.append(Text.say("battle.stance_head", {
 			"bill": str(DataDB.get_bill(_bill_id()).get("bill_name", "")),
@@ -569,13 +571,6 @@ func _refresh_details(state: BattleState) -> void:
 	_show_party_line(_opponent_party_label, PartyDisplay.party_name(opponent))
 
 	var after: Array[String] = []
-	if engine.questions_remaining() > 0 or not engine.pleased_boosters().is_empty():
-		after.append("")
-		var question_now := engine.turn_question()
-		if not question_now.is_empty():
-			after.append_array(_question_concerns_lines(question_now))
-		if engine.pleased_boosters().is_empty():
-			after.append(Text.say("battle.nobody_pleased"))
 
 	# Asked, not sniffed. This used to test whether the sentence began with
 	# "Nothing", so rewording that line would have silently hidden the block.
@@ -607,7 +602,8 @@ func _refresh_details(state: BattleState) -> void:
 ## The lines behind the Room rules toggle: how many questions and what
 ## skipping one costs, the deck counts, and who is in the room.
 func _rules_lines(state: BattleState) -> Array[String]:
-	var lines: Array[String] = StageBrief.details(_stage, state)
+	var lines: Array[String] = StageBrief.headline(_stage, state)
+	lines.append_array(StageBrief.details(_stage, state))
 	lines.append(Text.say("battle.deck_hand_discard", {
 		"deck": state.deck.size(), "hand": state.hand.size(), "discard": state.discard.size()}))
 	lines.append_array(_room_lines(state))
@@ -627,8 +623,21 @@ func _refresh_details_orgs(engine: BattleEngine) -> void:
 	if old != null:
 		old.free()
 	var rows: Array[Control] = []
-	if not _lean().is_empty():
-		rows.append_array(StanceLines.stance_chip_rows())
+	# Who is listening this turn, the same organizations as the strip on the
+	# stage screen. It replaces the With you / Against you chips, which read
+	# as confusing next to the question's own organizations (2026-10-31).
+	var scrutiny := _scrutiny_ids()
+	if not scrutiny.is_empty():
+		var heading := UiKit.line(Text.say("battle.scrutiny_heading"), "SmallLabel")
+		heading.custom_minimum_size = Vector2.ZERO
+		rows.append(heading)
+		var flow := HFlowContainer.new()
+		flow.name = "ScrutinyRow"
+		flow.add_theme_constant_override("h_separation", 12)
+		for booster_id: String in scrutiny:
+			if not OrgChip.name_of(booster_id).is_empty():
+				flow.add_child(OrgChip.make(booster_id, 0, false, 80.0, false))
+		rows.append(flow)
 	rows.append_array(StanceLines.org_group("battle.pleased_heading", engine.pleased_boosters(), true))
 	rows.append_array(StanceLines.org_group("battle.annoyed_heading", engine.displeased_boosters(), false))
 	if rows.is_empty():
@@ -752,13 +761,23 @@ func _build_listening() -> void:
 func _refresh_listening() -> void:
 	if _listening == null or engine == null:
 		return
+	var ids := _scrutiny_ids()
+	_listening.show_listeners(ids, _tastes_for(ids))
+
+
+## The organizations applying scrutiny this turn: everyone this turn's
+## question pleases or sets back, up to six. The listening strip and the
+## Details panel both show exactly these.
+func _scrutiny_ids() -> Array:
 	var ids: Array = []
+	if engine == null:
+		return ids
 	var question := engine.turn_question()
 	for key: String in ["pleases_boosters", "displeases_boosters"]:
 		for booster_id: String in (question.get(key, []) as Array):
 			if not ids.has(booster_id):
 				ids.append(booster_id)
-	_listening.show_listeners(ids.slice(0, 6), _tastes_for(ids))
+	return ids.slice(0, 6)
 
 
 ## "divisive", "earnest and divisive": the rhetorical styles as the player

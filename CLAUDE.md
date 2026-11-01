@@ -723,3 +723,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Every promise says what keeping it looks like (2026-10-31, Cameron)
 - Playtest fixes: victory pose, staff training at the top tier, image directions, Your Record commas (2026-10-31, Cameron)
 - Soft picture edges and a base picture under every screen (2026-10-31, Cameron)
+- Playtest notes: bigger transition portraits, a clearer stage Details panel, a deck expansion (2026-11-01, Cameron)

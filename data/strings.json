@@ -4328,14 +4328,14 @@
   {
     "key": "brief.stat.gaffes",
     "where": "Details panel, key numbers",
-    "english": "Gaffes {count} = loss",
+    "english": "Gaffe out at {count}",
     "placeholders": "count",
     "notes": "2026-10-21 concise stage text."
   },
   {
     "key": "brief.stat.gaffes_multiplied",
     "where": "Details panel, key numbers",
-    "english": "Gaffes {count} = loss (each counts {multiplier}x)",
+    "english": "Gaffe out at {count} (each counts {multiplier}x)",
     "placeholders": "count, multiplier",
     "notes": "2026-10-21 concise stage text."
   },
@@ -6093,6 +6093,34 @@
     "key": "promises.kept_title",
     "where": "Office, Promises panel: the pop-up title when a promise with its own kept line is kept",
     "english": "Promise kept",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "battle.scrutiny_heading",
+    "where": "Stage Details panel: heading over the organizations listening this turn",
+    "english": "Applying Scrutiny This Turn:",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.deck_expanded",
+    "where": "Marketplace: a deck expansion bought",
+    "english": "Your deck now holds {count} cards.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.deck_expansion_maxed",
+    "where": "Marketplace: deck expansion refused, bought the most times allowed",
+    "english": "Your deck cannot grow any larger.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.deck_no_spare",
+    "where": "Marketplace: deck expansion refused, no owned card outside the deck",
+    "english": "You have no spare card to add to your deck yet.",
     "placeholders": null,
     "notes": null
   }

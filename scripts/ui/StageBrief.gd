@@ -56,7 +56,9 @@ static func _stats(stage: Dictionary, state: BattleState) -> Array[String]:
 	stats.append(Text.say("brief.stat.turns", {"count": limit}) if limit > 0
 		else Text.say("brief.stat.turns_none"))
 
-	var gaffe_limit := int(stage.get("gaffe_limit", 5))
+	# In a stage the live numbers are used, so an item that raises the gaffe
+	# limit or the energy shows here (Cameron's playtest, 2026-10-31).
+	var gaffe_limit := state.gaffe_limit if state != null else int(stage.get("gaffe_limit", 5))
 	var multiplier := maxi(int(stage.get("gaffe_multiplier", 1)), 1)
 	stats.append(Text.say("brief.stat.gaffes_multiplied",
 		{"count": gaffe_limit, "multiplier": multiplier}) if multiplier > 1
@@ -68,8 +70,8 @@ static func _stats(stage: Dictionary, state: BattleState) -> Array[String]:
 		stats.append(Text.say("brief.stat.energy_pool",
 			{"count": int(stage.get("energy_pool", 0)), "left": left}))
 	else:
-		var energy := int(stage.get("energy_per_turn", 3))
-		if energy != int(DataDB.balance.get("brief_standard_energy", 3)):
+		var energy := state.energy_per_turn if state != null else int(stage.get("energy_per_turn", 3))
+		if state != null or energy != int(DataDB.balance.get("brief_standard_energy", 3)):
 			stats.append(Text.say("brief.stat.energy", {"count": energy}))
 
 	if str(stage.get("draw_mode", "refill")) == "none":

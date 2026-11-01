@@ -615,3 +615,42 @@ func test_recruitment_tops_out_at_the_highest_staff_tier_in_the_data() -> void:
 	assert_true(GameState.staff_recruitment_maxed())
 	assert_eq(GameState.staff_recruitment_max(), top)
 	GameState.staff_recruitment_tier = before
+
+
+func test_a_deck_expansion_adds_a_slot_filled_from_owned_cards() -> void:
+	# Cameron, 2026-10-31: SH34 grows the deck, at most five purchases.
+	var item_id := ""
+	for item: Dictionary in DataDB.shop:
+		if item.get("deck_size_increase") != null:
+			item_id = str(item["item_id"])
+	assert_ne(item_id, "", "the Shop has a deck expansion item")
+	GameState.start_new_run("PC01")
+	GameState.xp = 100000
+	var spares: Array = DataDB.cards.map(func(c: Dictionary) -> String: return str(c["card_id"])) \
+		.filter(func(id: String) -> bool: return not GameState.deck.has(id))
+	GameState.owned_cards.append_array(spares)
+	var before := GameState.deck_size()
+	var result := GameState.buy_deck_expansion(item_id)
+	assert_true(bool(result["ok"]), str(result))
+	assert_eq(GameState.deck_size(), before + 1)
+	assert_eq(GameState.deck.size(), before + 1, "the new slot is filled at once")
+	assert_eq(Ledger.deck_refusal(GameState.deck, GameState.owned_cards, GameState.deck_balance()), "",
+		"the grown deck is legal")
+	for _i in int(DataDB.balance.get("deck_expansion_maximum_purchases", 5)):
+		GameState.shop_bought_this_level = {}
+		GameState.buy_deck_expansion(item_id)
+	assert_true(GameState.deck_expansion_maxed())
+	assert_eq(GameState.deck_size(), before + int(DataDB.balance.get("deck_expansion_maximum_purchases", 5)))
+
+
+func test_a_deck_expansion_is_refused_with_no_spare_card() -> void:
+	var item_id := ""
+	for item: Dictionary in DataDB.shop:
+		if item.get("deck_size_increase") != null:
+			item_id = str(item["item_id"])
+	GameState.start_new_run("PC01")
+	GameState.xp = 100000
+	GameState.owned_cards = GameState.deck.duplicate()
+	var result := GameState.buy_deck_expansion(item_id)
+	assert_false(bool(result["ok"]))
+	assert_eq(GameState.deck_size_bonus, 0)

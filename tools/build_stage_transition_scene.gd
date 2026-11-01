@@ -78,25 +78,25 @@ func _build_frame() -> VBoxContainer:
 func _add_art_box(parent: Control) -> void:
 	var art_box := Control.new()
 	art_box.name = "ArtBox"
-	art_box.custom_minimum_size = Vector2(0, 420)
+	art_box.custom_minimum_size = Vector2(0, 1480)  # Cameron's playtest 2026-10-31: portraits about half the screen
 	_adopt(art_box, parent)
 
 	var player_portrait := Control.new()
 	player_portrait.name = "PlayerPortrait"
 	player_portrait.set_script(load(PLACEHOLDER_SCRIPT))
 	player_portrait.anchor_left = 0.0
-	player_portrait.anchor_top = 0.1
-	player_portrait.anchor_right = 0.46
-	player_portrait.anchor_bottom = 1.0
+	player_portrait.anchor_top = 0.18
+	player_portrait.anchor_right = 0.52
+	player_portrait.anchor_bottom = 0.99
 	_adopt(player_portrait, art_box, true)
 
 	var speaker_portrait := Control.new()
 	speaker_portrait.name = "SpeakerPortrait"
 	speaker_portrait.set_script(load(PLACEHOLDER_SCRIPT))
-	speaker_portrait.anchor_left = 0.54
-	speaker_portrait.anchor_top = 0.1
+	speaker_portrait.anchor_left = 0.48
+	speaker_portrait.anchor_top = 0.18
 	speaker_portrait.anchor_right = 1.0
-	speaker_portrait.anchor_bottom = 1.0
+	speaker_portrait.anchor_bottom = 0.99
 	_adopt(speaker_portrait, art_box, true)
 
 

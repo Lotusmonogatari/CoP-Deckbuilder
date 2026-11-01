@@ -237,6 +237,10 @@ var staff_recruitment_tier: int = 0
 ## there, and the sanban "max" is read as the one hard ceiling neither
 ## number is ever allowed to cross — see _sanban_row()'s own mini() call.
 var funds_cap_bonus: int = 0
+## Extra deck slots bought (SH34-style items, Shop "Deck Size Increase";
+## Cameron, 2026-10-31), and how many times such an item has been bought.
+var deck_size_bonus: int = 0
+var deck_expansions: int = 0
 
 
 # ---------------------------------------------------------------------------
@@ -455,7 +459,7 @@ const _SAVED_FIELDS := [
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
-	"staff_recruitment_tier", "funds_cap_bonus",
+	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
@@ -590,6 +594,8 @@ func reset_meta() -> void:
 	xp = BattleSetup.starting_xp()
 	last_xp_gained = 0
 	funds_cap_bonus = 0
+	deck_size_bonus = 0
+	deck_expansions = 0
 	reset_collection()
 	reset_staff()
 	reset_levels()
@@ -906,7 +912,7 @@ func _apply_staff_reward(candidate: Dictionary, tier: int) -> void:
 
 ## Replaces the deck, if the new one is legal.
 func set_deck(chosen: Array[String]) -> String:
-	var refusal := Ledger.deck_refusal(chosen, owned_cards, DataDB.balance, Text.phrase())
+	var refusal := Ledger.deck_refusal(chosen, owned_cards, deck_balance(), Text.phrase())
 	if not refusal.is_empty():
 		return refusal
 
@@ -3026,6 +3032,55 @@ func buy_staff_recruitment_tier(item_id: String) -> Dictionary:
 ## plus every funds_cap_bonus bought so far) reaches the hard ceiling
 ## (sanban.json's own Funds "max", 1,000,000). See _sanban_row(), where
 ## funds_cap_bonus is actually applied.
+## The Balance levers with the deck size raised by any expansions bought, for
+## everything that checks or builds the player's own deck.
+func deck_balance() -> Dictionary:
+	var balance := DataDB.balance.duplicate()
+	balance["starter_deck_size"] = Ledger.deck_size(DataDB.balance) + deck_size_bonus
+	return balance
+
+
+## How many cards the player's deck holds now.
+func deck_size() -> int:
+	return Ledger.deck_size(deck_balance())
+
+
+## True once deck expansions have been bought the most times allowed (Balance
+## "Deck Expansion: Maximum Purchases"): the item leaves the Marketplace.
+func deck_expansion_maxed() -> bool:
+	return deck_expansions >= int(DataDB.balance.get("deck_expansion_maximum_purchases", 5))
+
+
+## A deck expansion: pays, then the deck holds `deck_size_increase` more cards
+## for the rest of the run. Owned cards not yet in the deck fill the new
+## slots at once, so the deck stays legal; it is refused when there are not
+## enough of them. Returns { ok, message }.
+func buy_deck_expansion(item_id: String) -> Dictionary:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := Items.buy_refusal(item, item_count(item_id),
+		int(shop_bought_this_level.get(item_id, 0)), xp, int(meta.get("Funds", 0)), Text.phrase())
+	if not refusal.is_empty():
+		return {"ok": false, "message": refusal}
+	if deck_expansion_maxed():
+		return {"ok": false, "message": Text.say("shop.deck_expansion_maxed")}
+	var increase := maxi(int(item.get("deck_size_increase", 1)), 1)
+	var spare: Array[String] = []
+	for card_id: String in owned_cards:
+		if not deck.has(card_id) and spare.size() < increase:
+			spare.append(card_id)
+	if spare.size() < increase:
+		return {"ok": false, "message": Text.say("shop.deck_no_spare")}
+
+	var price := Items.costs(item)
+	_move_xp(-int(price["XP"]))
+	_move_meta("Funds", -int(price["Funds"]))
+	shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
+	deck_size_bonus += increase
+	deck_expansions += 1
+	deck.append_array(spare)
+	return {"ok": true, "message": Text.say("shop.deck_expanded", {"count": deck_size()})}
+
+
 func buy_funds_cap(item_id: String) -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := Items.buy_refusal(item, item_count(item_id),

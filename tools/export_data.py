@@ -1525,7 +1525,7 @@ SHEETS = {
                      "Bonus 2 Role", "Bonus 2 Min Tier", "Bonus 2 Amount",
                      "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Duration Units", "Card Tier",
                      "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase",
-                     "In Marketplace (Yes/No)", "Inventory (Personal/Office)"],
+                     "In Marketplace (Yes/No)", "Inventory (Personal/Office)", "Deck Size Increase"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -1612,6 +1612,10 @@ SHEETS = {
             ("Level Tier", "level_tier", "int"),
             ("Unlocks Recruitment Tier", "unlocks_recruitment_tier", "str"),
             ("Funds Cap Increase", "funds_cap_increase", "int"),
+            # 2026-10-31 (Cameron): cards an item adds to the deck size, for
+            # the rest of the run (bought at most Balance "Deck Expansion:
+            # Maximum Purchases" times).
+            ("Deck Size Increase", "deck_size_increase", "int"),
             # 2026-10-15, Cameron: a Training Session Coupon. Using the item in
             # the Office starts a free Rhetoric Training draw at this tier
             # (no price, same looks and Pass rules). Blank on every other row.
