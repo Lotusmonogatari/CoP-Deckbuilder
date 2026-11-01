@@ -63,6 +63,8 @@ var _banner: CueBanner = null
 
 
 func _ready() -> void:
+	# The picture under everything: BASE_FLOOR_VOTE.png, else BASE.png (2026-10-31).
+	BaseImage.install(self, "FLOOR_VOTE")
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.show_label = false
 	_messages = MessagePresenter.new(_notice, get_tree())

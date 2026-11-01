@@ -722,3 +722,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - EV65 revised; promises can carry their own kept and broken effects (2026-10-31, Cameron)
 - Every promise says what keeping it looks like (2026-10-31, Cameron)
 - Playtest fixes: victory pose, staff training at the top tier, image directions, Your Record commas (2026-10-31, Cameron)
+- Soft picture edges and a base picture under every screen (2026-10-31, Cameron)

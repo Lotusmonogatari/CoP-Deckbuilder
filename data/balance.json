@@ -190,5 +190,6 @@
   "promise_broken_standing": -5,
   "promise_broken_reputation": -2,
   "image_scroll_drag_direction": -1,
+  "image_edge_fade": 24,
   "xp_tiers": {}
 }

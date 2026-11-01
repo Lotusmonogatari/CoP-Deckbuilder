@@ -94,6 +94,7 @@ func _ready() -> void:
 	_build()
 	_refresh()
 	resized.connect(_place)
+	resized.connect(_update_soft_edges)
 
 
 func _build() -> void:
@@ -166,6 +167,43 @@ func _refresh() -> void:
 	_label.text = _label_text() if _is_placeholder else ""
 	_set_panning(kind == Kind.BACKGROUND and not _is_placeholder
 		and _texture_rect.texture != null and not Engine.is_editor_hint())
+	_update_soft_edges()
+
+
+## Soft edges (Cameron, 2026-10-31): a drawn background fades out over a few
+## pixels (Balance "Image edge fade") where its box ends against something
+## else. A side that meets the edge of the screen does not fade, since there
+## is nothing beyond it to blend into. Characters, cards and icons are left
+## alone: their own art already has edges.
+const SOFT_EDGE_SHADER := preload("res://assets/shaders/soft_edge.gdshader")
+const SCREEN_EDGE_TOLERANCE := 2.0
+
+
+func _update_soft_edges() -> void:
+	if _texture_rect == null:
+		return
+	var width := float(DataDB.balance.get("image_edge_fade", 0))
+	if kind != Kind.BACKGROUND or _is_placeholder or _texture_rect.texture == null or width <= 0.0 \
+			or not is_inside_tree():
+		_texture_rect.material = null
+		return
+	var material := _texture_rect.material as ShaderMaterial
+	if material == null:
+		material = ShaderMaterial.new()
+		material.shader = SOFT_EDGE_SHADER
+		_texture_rect.material = material
+	width = minf(width, minf(size.x, size.y) * 0.5)
+	var box := get_global_rect()
+	var screen := get_viewport_rect()
+	var fade := Vector4(
+		0.0 if box.position.x <= screen.position.x + SCREEN_EDGE_TOLERANCE else width,
+		0.0 if box.position.y <= screen.position.y + SCREEN_EDGE_TOLERANCE else width,
+		0.0 if box.end.x >= screen.end.x - SCREEN_EDGE_TOLERANCE else width,
+		0.0 if box.end.y >= screen.end.y - SCREEN_EDGE_TOLERANCE else width)
+	# The box in the picture's own pixels: the picture hangs past the box
+	# while it is dragged or tilted, so the box starts at minus its position.
+	material.set_shader_parameter("box_rect", Vector4(-_texture_rect.position.x, -_texture_rect.position.y, size.x, size.y))
+	material.set_shader_parameter("fade", fade)
 
 
 ## Switches between a fixed picture and one that can be dragged and tilted.
@@ -214,6 +252,7 @@ func _place() -> void:
 	_drag = PanMath.clamp_offset(_drag, _room())
 	_texture_rect.size = scaled
 	_texture_rect.position = PanMath.picture_position(size, scaled, offset())
+	_update_soft_edges()
 
 
 func _input(event: InputEvent) -> void:

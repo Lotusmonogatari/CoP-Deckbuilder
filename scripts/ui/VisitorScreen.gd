@@ -62,6 +62,8 @@ var _answered := false
 
 
 func _ready() -> void:
+	# The picture under everything: BASE_VISITOR.png, else BASE.png (2026-10-31).
+	BaseImage.install(self, "VISITOR")
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.show_label = false
 

@@ -209,3 +209,16 @@ func test_every_outside_scene_has_a_label_keywords_and_a_place() -> void:
 		assert_true(id.begins_with(str(DataDB.art.get("outdoor_background_prefix", "?"))), id)
 		for field in ["label", "keywords", "place", "mood"]:
 			assert_true(scenes[id].has(field), "%s lacks %s" % [id, field])
+
+
+func test_a_screen_with_no_base_picture_keeps_its_flat_panel() -> void:
+	# 2026-10-31: BASE_<SCREEN>.png, else BASE.png, else nothing (no placeholder).
+	if BaseImage.path_for("NO_SUCH_SCREEN").is_empty():
+		var screen := Control.new()
+		var panel := ColorRect.new()
+		panel.name = "BackgroundPanel"
+		panel.color = Color(0.05, 0.05, 0.07, 1)
+		screen.add_child(panel)
+		add_child_autofree(screen)
+		assert_null(BaseImage.install(screen, "NO_SUCH_SCREEN"))
+		assert_eq(panel.color.a, 1.0, "the panel stays opaque with no base picture")

@@ -58,6 +58,8 @@ var _walk_away: Button = null
 
 
 func _ready() -> void:
+	# The picture under everything: BASE_TRADE.png, else BASE.png (2026-10-31).
+	BaseImage.install(self, "TRADE")
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.show_label = false
 	_messages = MessagePresenter.new(%Notice, get_tree())

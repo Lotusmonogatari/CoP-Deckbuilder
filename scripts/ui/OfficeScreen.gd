@@ -166,6 +166,8 @@ var _ticker: TickerPresenter
 
 
 func _ready() -> void:
+	# The picture under everything: BASE_OFFICE.png, else BASE.png (2026-10-31).
+	BaseImage.install(self, "OFFICE")
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.art_id = "OFFICE"
 	_background.show_label = false
