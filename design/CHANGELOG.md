@@ -2889,3 +2889,18 @@ All 117 promises in the game now have a **Promise Kept Text**: the line shown in
 | 4 | A Marketplace item that grows the deck | **SH34 Expanded Briefing Binder** (200 XP, draft) permanently adds one card slot, filled at once with an owned card not already in the deck. It can be bought at most five times (Balance **Deck Expansion: Maximum Purchases**), then leaves the Marketplace. It is refused when there is no spare card to add. New Shop column **Deck Size Increase** (with a header note); `GameState.deck_balance()`, `deck_size()` and `buy_deck_expansion()`; `deck_size_bonus` and `deck_expansions` are saved. Tests: `test_inventory.gd`. Icon `deck_expansion` is not drawn yet. |
 
 Not used any more (for a cleanup pass): `BattleScreen._question_concerns_lines()` and the Text rows behind it, and `battle.nobody_pleased`.
+
+### Bill-room replies fit the question (2026-11-01, Cameron)
+
+Playtest note 3: in a bill room the player's spoken line came from a short list of the bill's own slogans, whatever the opponent had just asked, which read as a non-answer. Now the reply is written for the **kind** of question asked. Full analysis: `design/review/BILL_REPLIES_ANALYSIS_2026-11-01.md`.
+
+| Change | Detail |
+|---|---|
+| Stage Questions: new column **Reply Kind** (O) | Cost, Evidence, Oversight, Risk, Impact, Alternative, Party, Voters, Criticism or Principle. All 2,539 rows pre-filled by a word-matching draft; Principle is the catch-all. The 589 questions bill rooms ask split 188 Principle, 93 Cost, 66 Party, 54 Voters, 47 Impact, 34 Alternative, 33 Oversight, 31 Criticism, 30 Risk, 13 Evidence. |
+| Player Cues: new column **Reply Kind** (M) | A row with one is a reply line for any bill room, written with `{bill}` / `{Bill}` in place of the name. 180 new rows (PL3517-PL3696), 480 lines: every kind × every style × Support (3 lines), Oppose (3) and no lean (2). Each style keeps its own move: Earnest admits the trade-off, Emotional answers through people, Appeal invites, Data Driven gives a measure, Divisive turns it on the other side, Duplicitous commits to nothing. Claude's drafts. |
+| Balance: **Player Cues: Full Bill Name Chance** (25) | The bill's full name appears on about a quarter of reply lines; the rest say "the Act" or "the bill" ("the Agreement" for the two agreements). |
+| Code | `CardCues.for_card()` takes the question's Reply Kind and tries a reply line first (lean, then no-lean lines), then the bill's own lines as before. `CardCues.fill_bill()` puts the name in. `DataDB.get_reply_player_cue_lines()`. `BattleScreen` passes `engine.turn_question()`'s kind. |
+| Exporter | Checks that a reply line's kind is one Stage Questions uses, that it names no Bill ID, and warns when a kind asked has no reply. |
+| Tests | `test_player_cues.gd`: reply before bill lines, lean and no-lean, never outside a bill room, the 25% full-name share, and every kind asked has lines in every style and lean. |
+
+The bill's own slogans stay as the fallback for room-pool questions (press, town hall), which have no Reply Kind column yet.

@@ -192,5 +192,6 @@
   "image_scroll_drag_direction": -1,
   "image_edge_fade": 24,
   "deck_expansion_maximum_purchases": 5,
+  "player_cues_full_bill_name_chance": 25,
   "xp_tiers": {}
 }

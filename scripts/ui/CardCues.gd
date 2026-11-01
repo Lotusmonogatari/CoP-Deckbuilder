@@ -34,9 +34,22 @@ static func speaker() -> String:
 ## (DataDB.get_player_cue_lines()). Only when nothing is written there does
 ## the card fall back to its own five Flavor Text lines, so nothing goes
 ## quiet while the new tab is being filled in.
+##
+## In a bill room (2026-11-01) the question just asked comes first: a reply
+## written for its Reply Kind (Cost, Evidence, ...) in the card's suit and the
+## player's lean, so the answer fits the question. The bill's own lines follow
+## when the question has no kind or no reply is written for it.
 static func for_card(card_id: String, stage_id: String, turn: int,
-		applied: Dictionary = {}, bill_id: String = "", lean: String = "") -> Dictionary:
+		applied: Dictionary = {}, bill_id: String = "", lean: String = "",
+		reply_kind: String = "") -> Dictionary:
 	var suit := str(DataDB.get_card(card_id).get("suit", ""))
+	if not suit.is_empty() and not bill_id.is_empty() and not reply_kind.is_empty():
+		var replies: Array = DataDB.get_reply_player_cue_lines(reply_kind, suit, lean)
+		if not replies.is_empty():
+			var index := _index_for(card_id, stage_id, turn)
+			var reply: Dictionary = replies[index % replies.size()]
+			return {"text": fill_bill(str(reply.get("text", "")), bill_id, index),
+					"line_id": str(reply.get("line_id", ""))}
 	if not suit.is_empty() and not bill_id.is_empty():
 		# A level about a bill (2026-10-18): lines written for that bill, and
 		# for the lean the player took, come before every other tier.
@@ -60,6 +73,30 @@ static func for_card(card_id: String, stage_id: String, turn: int,
 		# The same numbering the workbook uses: Cue 1 is _1, not _0.
 		"line_id": "%s_%d" % [card_id, which + 1],
 	}
+
+
+## A reply line with the bill's name put in. {bill} and {Bill} (the same, at
+## the start of a sentence) become the bill's full name on roughly the
+## Balance tab's "Player Cues: Full Bill Name Chance" percent of lines, and
+## "the Act" / "the bill" (or "the Agreement", for a bill so named) on the
+## rest — a full title in every line reads like a press release. Which one is
+## worked out from the same stable number that chose the line, so a moment
+## always reads the same way.
+static func fill_bill(text: String, bill_id: String, index: int) -> String:
+	if not ("{bill}" in text or "{Bill}" in text):
+		return text
+	var name := str((DataDB.floor_votes.get(bill_id, {}) as Dictionary).get("bill_name", ""))
+	var chance := int(DataDB.balance.get("player_cues_full_bill_name_chance", 25))
+	var short_name := "the bill"
+	var last_word := name.get_slice(" ", name.get_slice_count(" ") - 1) if not name.is_empty() else ""
+	# Every other line that shortens it: half "the bill", half the bill's own
+	# last word ("the Act", "the Agreement").
+	if last_word in ["Act", "Agreement"] and (index / 100) % 2 == 0:
+		short_name = "the " + last_word
+	var use_full := not name.is_empty() and (index % 100) < chance
+	var lower := ("the " + name) if use_full else short_name
+	var upper := lower.substr(0, 1).to_upper() + lower.substr(1)
+	return text.replace("{Bill}", upper).replace("{bill}", lower)
 
 
 ## What a played card did, in the Player Cues tab's own words — the same

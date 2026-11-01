@@ -966,7 +966,7 @@ func _play_card_now(card_id: String, discards: Array) -> void:
 	# instead, so every card still lands with a line.
 	var cue := CardCues.for_card(
 		card_id, str(_stage.get("stage_id", "")), engine.state.turn, applied,
-		_bill_id(), _lean())
+		_bill_id(), _lean(), str(engine.turn_question().get("reply_kind", "")))
 	var did := BattleNarration.player_move(
 		result, _stage, engine.state, acting_opponent_name)
 	var me := str(DataDB.player.get("name_en", ""))

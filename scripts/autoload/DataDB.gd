@@ -309,6 +309,7 @@ var _player_cue_lines: Dictionary = {}
 ## Bill-scoped content (2026-10-18): rows whose Bill ID names a bill, kept apart
 ## from the room-scoped indexes so they can never leak into another level.
 var _bill_player_cues: Dictionary = {}      ## "BI|suit|verb|stance" -> lines
+var _reply_player_cues: Dictionary = {}     ## "Reply Kind|suit|stance" -> lines
 var _bill_opponent_cues: Dictionary = {}    ## "BI|opp_id or suit|verb" -> lines
 var _questions_by_bill: Dictionary = {}     ## "BI" -> questions
 ## Stage Questions (2026-10-12): stage_id -> the questions that name it.
@@ -1115,6 +1116,21 @@ func get_bill_player_cue_lines(bill_id: String, suit: String, verb: String, stan
 	return out
 
 
+## What the player might say in a bill room in reply to a kind of question
+## (a Stage Questions Reply Kind), from Player Cues rows that name it
+## (2026-11-01). The lines for the player's lean first; with no lean, or none
+## written for it, the lines written for either lean. Each line still holds
+## {bill} / {Bill}, which CardCues.gd fills in.
+func get_reply_player_cue_lines(reply_kind: String, suit: String, stance: String) -> Array:
+	if reply_kind.is_empty():
+		return []
+	if not stance.is_empty():
+		var own: Array = _reply_player_cues.get("%s|%s|%s" % [reply_kind, suit, stance], [])
+		if not own.is_empty():
+			return own.duplicate()
+	return (_reply_player_cues.get("%s|%s|" % [reply_kind, suit], []) as Array).duplicate()
+
+
 ## An opponent's lines about a bill: this opponent's own rows, else the suit's.
 func get_bill_opponent_cue_lines(bill_id: String, opp_id: String, suit: String, verb: String) -> Array[String]:
 	var lines: Array[String] = []
@@ -1224,6 +1240,7 @@ func _index_opponent_cues() -> void:
 func _index_player_cues() -> void:
 	_player_cue_lines.clear()
 	_bill_player_cues.clear()
+	_reply_player_cues.clear()
 	for row: Variant in player_cues:
 		if not (row is Dictionary):
 			continue
@@ -1244,6 +1261,14 @@ func _index_player_cues() -> void:
 			if not line.is_empty():
 				lines.append({"text": line, "line_id": "%s_%d" % [cue_id, index]})
 		if lines.is_empty():
+			continue
+		# A reply line (2026-11-01) answers a kind of question in any bill
+		# room, so it is kept apart from the suit-and-verb lines.
+		var kinds_raw: Variant = row.get("reply_kinds")
+		if kinds_raw is Array and not (kinds_raw as Array).is_empty():
+			for kind: Variant in kinds_raw:
+				var rkey := "%s|%s|%s" % [str(kind), suit, stance]
+				_reply_player_cues[rkey] = (_reply_player_cues.get(rkey, []) as Array) + lines
 			continue
 		if not bills.is_empty():
 			for bill_id: String in bills:

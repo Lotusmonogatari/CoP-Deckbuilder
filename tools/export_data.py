@@ -424,8 +424,13 @@ SHEETS = {
             # Optional (2026-10-19, Patron Bills): the bill component(s) this
             # line is about (CBxx), used in levels built from components.
             ("Component ID", "component_ids", "id_list"),
+            # Optional (2026-11-01): a reply line for bill rooms. It answers
+            # the kind of question just asked (a Stage Questions Reply Kind:
+            # Cost, Evidence, ...), for any bill; {bill} / {Bill} stand for
+            # the bill's name (CardCues.gd shortens it most of the time).
+            ("Reply Kind", "reply_kinds", "id_list"),
         ],
-        "optional": ["Bill ID", "Stance", "Component ID"],
+        "optional": ["Bill ID", "Stance", "Component ID", "Reply Kind"],
     },
     # Stage Questions (2026-10-12): questions that belong to particular
     # stages (a committee asking about its own subject, say), graded like the
@@ -435,7 +440,7 @@ SHEETS = {
     "Stage Questions": {
         "out": "q_stage.json",
         "key": "q_id",
-        "optional": ["Asked By Party", "Bill ID", "Component ID"],
+        "optional": ["Asked By Party", "Bill ID", "Component ID", "Reply Kind"],
         "id_pattern": r"^[A-Z]\d+$",
         "optional_sheet": True,
         "columns": [
@@ -463,6 +468,12 @@ SHEETS = {
             # Optional (2026-10-19, Patron Bills): a question about one bill
             # component (CBxx), asked in levels built from components.
             ("Component ID", "component_ids", "id_list"),
+            # Optional (2026-11-01): what kind of question this is (Cost,
+            # Evidence, Oversight, Risk, Impact, Alternative, Party, Voters,
+            # Criticism, Principle). In a bill room the player's reply is a
+            # Player Cues row written for that kind, so the answer fits the
+            # question rather than repeating the bill's slogans.
+            ("Reply Kind", "reply_kind", "str"),
         ],
     },
     # Press Questions: 20 questions for the press conference stage type, each graded
@@ -2538,6 +2549,13 @@ def validate(data, report):
 
     # --- player cues (2026-10-12) -------------------------------------------
     # Verb blank = the line fits whatever the card did.
+    reply_kinds_asked = {str(q.get("reply_kind") or "").strip()
+                         for q in (data.get("questions") or {}).get("stage", [])
+                         if isinstance(q, dict) and q.get("reply_kind")}
+    reply_kinds_written = {k for c in data.get("player_cues", []) for k in (c.get("reply_kinds") or [])}
+    for kind in sorted(reply_kinds_asked - reply_kinds_written):
+        report.warn("player_cues", f"Reply Kind '{kind}' is asked by Stage Questions but no "
+                    "Player Cues row answers it")
     for cue in data.get("player_cues", []):
         cue_id = cue["cue_id"]
         if cue["suit"] not in suits:
@@ -2557,8 +2575,15 @@ def validate(data, report):
         if cue.get("stance") and cue["stance"] not in ("Support", "Oppose"):
             report.error("player_cues",
                          f"{cue_id} has Stance '{cue['stance']}', which must be Support, Oppose or blank")
-        if cue.get("stance") and not cue.get("bill_ids"):
-            report.error("player_cues", f"{cue_id} has a Stance but no Bill ID")
+        if cue.get("stance") and not cue.get("bill_ids") and not cue.get("reply_kinds"):
+            report.error("player_cues", f"{cue_id} has a Stance but no Bill ID or Reply Kind")
+        for kind in cue.get("reply_kinds") or []:
+            if reply_kinds_asked and kind not in reply_kinds_asked:
+                report.error("player_cues",
+                             f"{cue_id} names Reply Kind '{kind}', which no Stage Questions row uses")
+        if cue.get("reply_kinds") and cue.get("bill_ids"):
+            report.error("player_cues", f"{cue_id} has both a Reply Kind and a Bill ID; "
+                         "a reply line fits every bill and uses {bill} for the name")
         if not any(cue.get(f"cue_{i}") for i in range(1, 6)):
             report.warn("player_cues", f"{cue_id} has no cue lines written")
 
@@ -3859,6 +3884,8 @@ def fold_questions(data, report):
                     if not stages_named and not bills_named and not components_named:
                         report.error("Stage Questions",
                                      f"question {row['q_id']} names no Stage ID, Bill ID or Component ID")
+                    if row.get("reply_kind"):
+                        question["reply_kind"] = str(row["reply_kind"]).strip()
                     if components_named:
                         question["component_ids"] = components_named
                     if bills_named:
