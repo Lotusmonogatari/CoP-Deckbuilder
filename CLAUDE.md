@@ -725,3 +725,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Soft picture edges and a base picture under every screen (2026-10-31, Cameron)
 - Playtest notes: bigger transition portraits, a clearer stage Details panel, a deck expansion (2026-11-01, Cameron)
 - Bill-room replies fit the question (2026-11-01, Cameron)
+- Every ticker line names an outlet (2026-11-01, Cameron)

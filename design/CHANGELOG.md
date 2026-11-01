@@ -2904,3 +2904,7 @@ Playtest note 3: in a bill room the player's spoken line came from a short list 
 | Tests | `test_player_cues.gd`: reply before bill lines, lean and no-lean, never outside a bill room, the 25% full-name share, and every kind asked has lines in every style and lean. |
 
 The bill's own slogans stay as the fallback for room-pool questions (press, town hall), which have no Reply Kind column yet.
+
+### Every ticker line names an outlet (2026-11-01, Cameron)
+
+The Office news ticker now names one of the seven canonical outlets in every line: Yezo Political Insider, Sapporo Broadcasting Center, Sapporo Digital Networks, Otaru Radio 今日, Aomori's Morning Mori, Yezo News Nightly and 青森の青空109.9!. 109 lines were rewritten in the Office Ticker tab: the 100 bill-result lines (TK44-TK143, eight templates, each with a fixed outlet) and nine others (TK144-146, TK150-155). "Yezo News" became "Yezo News Nightly". New lines use the unquoted format: outlet named in the text, then " - ☼". TK152 lost its "Single-day template:" prefix and TK155's "Monday's" became "Mondays". All of it is Claude's draft for Cameron to rewrite.
