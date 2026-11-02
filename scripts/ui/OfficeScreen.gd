@@ -1177,11 +1177,45 @@ func _on_new_game_confirmed() -> void:
 	_show_new_game.call_deferred(false)
 
 
+## The tier chosen on the New Game screen, used when a protagonist is picked.
+var _pending_pressure := "standard"
+
+
+func _pressure_name(tier: String) -> String:
+	match tier:
+		Difficulty.RELAXED: return Text.say("pressure.relaxed.name")
+		Difficulty.HARDER: return Text.say("pressure.harder.name")
+	return Text.say("pressure.standard.name")
+
+
+func _pressure_blurb(tier: String) -> String:
+	match tier:
+		Difficulty.RELAXED: return Text.say("pressure.relaxed.blurb")
+		Difficulty.HARDER: return Text.say("pressure.harder.blurb")
+	return Text.say("pressure.standard.blurb")
+
+
+func _on_pressure_picked(tier: String, first_run: bool) -> void:
+	_pending_pressure = tier
+	_show_new_game.call_deferred(first_run)
+
+
 ## The four protagonists (data/player.json), each with a portrait and a
 ## button. `first_run` is the very first launch: backing out of it still
 ## leaves the player as the default protagonist, so there is a run to save.
 func _show_new_game(first_run: bool) -> void:
 	var rows: Array[Control] = [UiKit.line(Text.say("new_game.blurb"))]
+	# Campaign Pressure (Difficulty.gd): picked here, raised later in Administration.
+	rows.append(UiKit.heading(Text.say("new_game.pressure_heading")))
+	for tier: String in Difficulty.TIERS:
+		var picked := tier == _pending_pressure
+		var tier_button := UiKit.action_button(
+			Text.say("pressure.picked" if picked else "pressure.pick", {"name": _pressure_name(tier)}),
+			"", _on_pressure_picked.bind(tier, first_run))
+		tier_button.name = "Pressure_" + tier
+		tier_button.disabled = picked
+		rows.append(tier_button)
+		rows.append(UiKit.line(_pressure_blurb(tier), "SmallLabel"))
 	for protagonist: Dictionary in DataDB.protagonists:
 		rows.append(_protagonist_row(protagonist))
 	_new_game_panel.open(Text.say("new_game.title"), rows)
@@ -1252,7 +1286,9 @@ func _on_protagonist_chosen(player_id: String) -> void:
 	if _new_game_panel.closed.is_connected(_on_first_run_closed):
 		_new_game_panel.closed.disconnect(_on_first_run_closed)
 	_new_game_panel.close()
-	if not GameState.start_new_run(player_id):
+	var pressure := _pending_pressure
+	_pending_pressure = Difficulty.STANDARD
+	if not GameState.start_new_run(player_id, pressure):
 		return
 	SaveManager.autosave()
 	_build()
@@ -1482,6 +1518,7 @@ func _band_word(band: String) -> String:
 ## third counter), and how many times each level has been cleared.
 func _show_record() -> void:
 	var rows: Array[Control] = []
+	rows.append(UiKit.line(Text.say("record.pressure_line", {"name": _pressure_name(GameState.difficulty)})))
 
 	rows.append(UiKit.heading(Text.say("office.record_sanban_heading")))
 	for variable: Dictionary in DataDB.sanban:
@@ -1728,6 +1765,23 @@ func _show_reputation_menu() -> void:
 	_reputation_menu.open(Text.say("office.reputation_and_results"), rows)
 
 
+## Campaign Pressure can be raised during a run, never lowered.
+func _raise_pressure_button() -> Button:
+	var next_tier := Difficulty.HARDER if GameState.difficulty == Difficulty.STANDARD else Difficulty.STANDARD
+	var at_top := GameState.difficulty == Difficulty.HARDER
+	var button := UiKit.action_button(
+		Text.say("admin.raise_pressure", {"name": _pressure_name(next_tier)}),
+		Text.say("admin.pressure_top", {"name": _pressure_name(GameState.difficulty)}) if at_top else "",
+		func() -> void:
+			if GameState.raise_difficulty(next_tier):
+				SaveManager.autosave()
+				_report.text = Text.say("office.pressure_raised", {"name": _pressure_name(next_tier)})
+			_administration_menu.close())
+	button.name = "RaisePressureButton"
+	button.custom_minimum_size.x = UiKit.LINE_WIDTH
+	return button
+
+
 func _show_administration_menu() -> void:
 	var rows: Array[Control] = [
 		_menu_button("CosmeticsButton", "office.cosmetics", _show_cosmetics, _cosmetics_panel),
@@ -1736,6 +1790,7 @@ func _show_administration_menu() -> void:
 		_text_size_button(),
 		_image_scroll_button(),
 		_image_pan_button(),
+		_raise_pressure_button(),
 	]
 	# The save buttons sit directly in the menu's row list, so the gap between
 	# them is the same as between every other menu button.

@@ -237,6 +237,10 @@ var staff_recruitment_tier: int = 0
 ## there, and the sanban "max" is read as the one hard ceiling neither
 ## number is ever allowed to cross — see _sanban_row()'s own mini() call.
 var funds_cap_bonus: int = 0
+
+## Campaign Pressure (Difficulty.gd): "relaxed", "standard" or "harder". Chosen at
+## New Game, raised but never lowered, saved with the run.
+var difficulty: String = "standard"
 ## Extra deck slots bought (SH34-style items, Shop "Deck Size Increase";
 ## Cameron, 2026-10-31), and how many times such an item has been bought.
 var deck_size_bonus: int = 0
@@ -432,10 +436,33 @@ func _ready() -> void:
 
 ## A fresh run as `player_id`: every number back to its start. False, and
 ## nothing changes, when there is no such protagonist.
-func start_new_run(player_id: String) -> bool:
+## Rewrites the live Balance and Shop numbers for the current tier.
+func _apply_difficulty() -> void:
+	Difficulty.apply_balance(DataDB.balance, DataDB.balance_base, difficulty)
+	Difficulty.apply_shop(DataDB.shop, DataDB.shop_base, DataDB.balance_base, difficulty)
+
+
+## Raises the pressure; never lowers it. False (nothing changed) when `tier`
+## is not higher than the current one.
+func raise_difficulty(tier: String) -> bool:
+	if not Difficulty.can_raise_to(difficulty, tier):
+		return false
+	difficulty = tier
+	_apply_difficulty()
+	return true
+
+
+## The Balance number for a Campaign Pressure lever under the current tier.
+func pressure(lever: String, fallback: float) -> float:
+	return Difficulty.number(DataDB.balance_base, difficulty, lever, fallback)
+
+
+func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 	if not DataDB.use_protagonist(player_id):
 		return false
 	protagonist_id = player_id
+	difficulty = pressure if Difficulty.is_tier(pressure) else Difficulty.STANDARD
+	_apply_difficulty()
 	_link_carry = {}
 	level_runner = null
 	last_level_outcome = ""
@@ -457,7 +484,7 @@ func start_new_run(player_id: String) -> bool:
 # test rather than half-saved.
 
 const _SAVED_FIELDS := [
-	"protagonist_id", "last_level_outcome", "meta", "xp",
+	"protagonist_id", "difficulty", "last_level_outcome", "meta", "xp",
 	"owned_cards", "deck", "owned_modifiers",
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
@@ -510,6 +537,9 @@ func load_save(saved: Dictionary) -> void:
 		elif typeof(current) == typeof(value):
 			set(field, value)
 	calendar = WeekCalendar.normalized(calendar)
+	if not Difficulty.is_tier(difficulty):
+		difficulty = Difficulty.STANDARD
+	_apply_difficulty()
 
 	_register_saved_patron_bills()
 	var runner: Variant = saved.get("level_runner")
@@ -995,6 +1025,7 @@ func apply_awareness_delta(meter: String, delta: int) -> void:
 ## point each. A player who clears them before the end loses nothing; a stage
 ## lost to gaffes costs the stage's whole gaffe limit.
 func apply_awareness_gaffes(gaffes: int) -> void:
+	gaffes = Difficulty.awareness_gaffes(gaffes, DataDB.balance_base, difficulty)
 	if gaffes <= 0:
 		return
 	apply_awareness_delta("district", -gaffes)
@@ -1810,6 +1841,9 @@ func dues_preview() -> Dictionary:
 	var cfg := PartyDues.settings(DataDB.balance)
 	var week_dues := PartyDues.week_dues(cfg, int(meta.get("Party support", 0)),
 		week_funds_earned, _dues_reduction())
+	# The first weeks of a run owe nothing (Balance "Dues Holiday Weeks"; Campaign Pressure sets it).
+	if Difficulty.dues_holiday(int(calendar.get("week", 0)), int(DataDB.balance.get("dues_holiday_weeks", 0))):
+		week_dues = 0
 	return {"week_dues": week_dues, "owed": dues_balance, "total": week_dues + dues_balance,
 		"funds": int(meta.get("Funds", 0))}
 
@@ -2311,19 +2345,24 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 		_cause = Text.say("record.cause_stage_win" if side == "win" else "record.cause_stage_loss",
 			{"stage": str(stage.get("name_en", ""))})
 		var paid_stage := stage
+		# Campaign Pressure: a win pays more or less Funds and XP.
+		if side == "win" and difficulty != Difficulty.STANDARD:
+			paid_stage = stage.duplicate(true)
+			for column in ["win_delta_yen", "win_delta_xp"]:
+				paid_stage[column] = Difficulty.payout(MetaRules.stage_delta(stage, column), DataDB.balance_base, difficulty)
 		# Funding Freeze (M32) — party support at or below the Balance tab's
 		# own threshold. Zeroed at the source rather than undone afterward,
 		# so this is the one and only place Funds income can be frozen. Only
 		# INCOME freezes: a Funds penalty for losing still lands.
 		if funds_frozen() \
 				and MetaRules.stage_delta(stage, side + "_delta_yen") > 0:
-			paid_stage = stage.duplicate(true)
+			paid_stage = paid_stage.duplicate(true)
 			paid_stage[side + "_delta_yen"] = 0
 		var moved := (MetaRules.apply_win_deltas(meta, paid_stage, sanban_rows_with_bonuses()) if side == "win"
 			else MetaRules.apply_loss_deltas(meta, paid_stage, sanban_rows_with_bonuses()))
 		meta = moved["meta"]
 		_record_meta_change(moved["applied"])
-		last_xp_gained = MetaRules.stage_delta(stage, side + "_delta_xp")
+		last_xp_gained = MetaRules.stage_delta(paid_stage, side + "_delta_xp")
 		_move_xp(last_xp_gained)
 
 	var scored := MetaRules.apply_score_effects(meta, stage, score, sanban_rows_with_bonuses())
@@ -2403,9 +2442,12 @@ func _apply_level_bonus_win(level: Dictionary) -> void:
 		"bonus_win_range_party_support": "Party support",
 	}
 	for key: String in RANGE_TO_META.keys():
-		_apply_meta_reward(RANGE_TO_META[key], _unless_frozen(RANGE_TO_META[key], _roll_range(level.get(key))))
+		var rolled := _roll_range(level.get(key))
+		if RANGE_TO_META[key] == "Funds":
+			rolled = Difficulty.payout(rolled, DataDB.balance_base, difficulty)
+		_apply_meta_reward(RANGE_TO_META[key], _unless_frozen(RANGE_TO_META[key], rolled))
 
-	var xp_amount := _roll_range(level.get("bonus_win_range_xp"))
+	var xp_amount := Difficulty.payout(_roll_range(level.get("bonus_win_range_xp")), DataDB.balance_base, difficulty)
 	if xp_amount != 0:
 		_move_xp(xp_amount)
 		last_xp_gained += xp_amount

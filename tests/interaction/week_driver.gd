@@ -15,6 +15,9 @@ func _ready() -> void:
 
 func _run() -> void:
 	GameState.start_new_run("PC01")
+	# These flows test the dues themselves; the first weeks' dues holiday
+	# (Campaign Pressure, 2026-11-02) has its own tests in test_difficulty.gd.
+	DataDB.balance["dues_holiday_weeks"] = 0
 	await _open_office()
 	_check_monday()
 	await _friday_flow()

@@ -3030,3 +3030,15 @@ Reviewed all 397 visitor questions (1,588 choices): 92 carry a promise, 24 an Ac
 | Findings | `design/review/STRATEGY_PLAYTEST_2026-11-02.md`: dues exceed the Funds cap, paying dues earns nothing, Election Strength plateaus near 42 because gaffes zero out awareness, a Party-support death spiral, Media Ambush never won |
 
 Addendum, same day: the bots never bought the Funds-cap petition (SH13), so the first batch's Funds and dues findings were overstated. `tools/strategy_playtest.gd` now has a `cap` option, simulated awareness-gaffe rules (`awareness_rule`) and in-memory Balance overrides (`balance`). 45 more runs are in `design/bench/strategy_cap.jsonl`; the review document has an addendum.
+
+## Campaign Pressure: Relaxed, Standard, Harder (2026-11-02, Cameron)
+
+| What | Detail |
+|---|---|
+| Setting | Chosen on the New Game screen above the protagonists; raised (never lowered) from Administration; shown in Your Record; saved with the run (an old save loads as Standard) |
+| Rules | `scripts/rules/Difficulty.gd` (pure). `GameState.difficulty`, `raise_difficulty()`. `DataDB.balance_base` and `shop_base` keep the workbook's numbers so the live ones can be rewritten and restored |
+| What changes | Fight margin (opponent start, or the bar for single-bar rooms), gaffe room (never under 2), awareness cost of leftover gaffes, Funds and XP paid by a win (stage and level), dues share and a new **Dues Holiday Weeks** row (3 on Standard and Relaxed, 0 on Harder), standing decay, promise deadline and broken penalty, item prices, Election Strength gain and fall |
+| Data | 25 Balance rows named `Difficulty Relaxed: ...` / `Difficulty Harder: ...` plus `Dues Holiday Weeks`; 13 Text rows (`pressure.*`, `admin.*`, `record.pressure_line`) |
+| Standard changed | Only by the new 3-week dues holiday (Cameron approved the proposal that included it) |
+| Bot | `PLAYTEST_DIFFICULTY` on the strategy bot and runner; calibration in the proposal |
+| Tests | `tests/test_difficulty.gd` (14 tests) |

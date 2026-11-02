@@ -737,3 +737,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Office Hours: promise and cost text reviewed (2026-11-02, Cameron)
 - Promise deadlines fit the 48-hour week; Act Now choices reworded (2026-11-02, Cameron)
 - Strategy playtest: 168 bot runs at Funds, Election Strength and Party support (2026-11-02, Cameron)
+- Campaign Pressure: Relaxed, Standard, Harder (2026-11-02, Cameron)

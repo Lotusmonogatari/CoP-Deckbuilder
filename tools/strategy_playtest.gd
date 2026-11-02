@@ -156,7 +156,8 @@ func _run() -> void:
 
 	for key: String in (_s["balance"] as Dictionary).keys():
 		DataDB.balance[key] = (_s["balance"] as Dictionary)[key]
-	GameState.start_new_run(_protagonist)
+	var tier := OS.get_environment("PLAYTEST_DIFFICULTY")
+	GameState.start_new_run(_protagonist, tier if not tier.is_empty() else "standard")
 	_record_week()   # week 0: the starting line
 
 	var guard := 0
@@ -716,7 +717,7 @@ func _finish() -> void:
 		if bool(law.get("passed", false)):
 			laws += 1
 	var result := {
-		"strategy": _name, "protagonist": _protagonist, "seed": OS.get_environment("PLAYTEST_SEED"),
+		"strategy": _name, "difficulty": GameState.difficulty, "protagonist": _protagonist, "seed": OS.get_environment("PLAYTEST_SEED"),
 		"weeks": _weeks, "horizon": _horizon,
 		"funds": snap["funds"], "net_funds": int(snap["funds"]) - GameState.dues_balance, "es": snappedf(GameState.election_strength, 0.01),
 		"potential": snappedf(GameState.election_potential(), 0.01), "party": snap["party"],

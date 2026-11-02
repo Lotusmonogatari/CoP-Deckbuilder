@@ -89,6 +89,7 @@ func _choose(panel: Overlay, player_id: String) -> bool:
 	if row == null:
 		_failures.append("the New Game screen does not list %s" % player_id)
 		return false
+	_scroll_into_view(panel, row)
 	await _click(row.find_child("Choose", true, false) as Control)
 	if panel.visible:
 		_failures.append("choosing %s did not close the New Game screen" % player_id)
@@ -125,3 +126,14 @@ func _click(control: Control) -> void:
 		Input.parse_input_event(event)
 		await get_tree().process_frame
 	await get_tree().create_timer(0.15).timeout
+
+
+## The New Game panel now opens with the Campaign Pressure buttons above the
+## protagonists, so a row can sit below the fold, as it does for a player.
+func _scroll_into_view(panel: Node, row: Node) -> void:
+	var node: Node = row
+	while node != null and node != panel:
+		node = node.get_parent()
+		if node is ScrollContainer:
+			(node as ScrollContainer).ensure_control_visible(row as Control)
+			return

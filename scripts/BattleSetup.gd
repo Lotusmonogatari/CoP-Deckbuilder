@@ -589,7 +589,8 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 			int(meta.get("Reputation", 50)), DataDB.sanban)
 
 	var config := {
-		"stage": with_audience(stage),
+		# Campaign Pressure moves the fight margin (Difficulty.adjust_stage).
+		"stage": Difficulty.adjust_stage(with_audience(stage), DataDB.balance_base, GameState.difficulty),
 		# The first opponent; the rest arrive as the stage's sequencing is
 		# built in phase 3. Until then a stage plays its opening opponent.
 		"opponent": opponents[0] if not opponents.is_empty() else {},
@@ -625,7 +626,8 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		# does an organisation whose backing you have bought (STAGE_START_BONUS).
 		"start_adjustment": start_adjustment,
 		"hand_size_bonus": int(bonus.get("hand_size_bonus", 0)),
-		"gaffe_limit_bonus": int(bonus.get("gaffe_limit_bonus", 0)),
+		"gaffe_limit_bonus": Difficulty.gaffe_limit_bonus(DataDB.balance_base, GameState.difficulty,
+			int(stage.get("gaffe_limit", 0)), int(bonus.get("gaffe_limit_bonus", 0))),
 	}
 
 	return config

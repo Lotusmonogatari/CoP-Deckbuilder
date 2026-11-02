@@ -1,6 +1,6 @@
 # Player-chosen difficulty: "Campaign Pressure" (proposal, 2026-11-02)
 
-Status: a draft for Cameron. Nothing here is built. Every number is a first draft to calibrate with the strategy bot.
+Status: BUILT 2026-11-02 (Cameron said Go). Every number is a first draft; the fight margin was widened from 3 to 6 points after the first calibration. Rows: Balance tab, `Difficulty Relaxed: ...` and `Difficulty Harder: ...`.
 
 ## Executive summary
 
@@ -21,7 +21,7 @@ The four protagonists already carry a difficulty tag (PC01 Easy to PC04 Very Har
 
 | # | Lever (existing Balance row or stage column) | Relaxed | Standard | Harder | What it does and why |
 |---|---|---|---|---|---|
-| 1 | Opponent starting support, as a share of the win threshold (`opp_start`, `win_threshold`) | -3 points | 0 | +3 | Each fight is closer. The direct, visible difficulty. |
+| 1 | Opponent starting support, as a share of the win threshold (`opp_start`, `win_threshold`) | -6 points | 0 | +6 | Each fight is closer. The direct, visible difficulty. |
 | 2 | Gaffe room (`gaffe_limit`, minimum 2) | +1 | 0 | -1 | A single slip ends a stage sooner. |
 | 3 | Leftover-gaffe awareness penalty | 0.5x | 1x | 1.5x | Awareness is the hidden skill lever. Careful play reached 61 Election Strength against about 40 for careless play. |
 | 4 | Reward payout: Funds and XP from stage wins (`win_delta_yen`, `win_delta_xp`) | 1.15x | 1x | 0.85x | Tighter money. Items are the main Funds sink and removing them cost about 10 win-rate points. |
@@ -68,3 +68,12 @@ This is more than 150 lines, so I would build it only after you approve the plan
 | 2 | Change during a run | Raise only |
 | 3 | Reward for harder play | 15% less payout on Harder; confirm this is meant as the difficulty itself and not a bonus |
 | 4 | Still open | Whether Relaxed should also pay 15% more, as the table assumes |
+
+## Calibration (bot, PC02, 5 seeds, 30 weeks; stage win rate)
+
+| Bot | Relaxed | Standard | Harder |
+|---|---|---|---|
+| baseline (buys items freely) | 90% | 88% | 81% |
+| cap_dues (holds Funds for dues, so fewer items) | 87% | 76% | 66% |
+
+The item-buying bot is nearly insensitive to the tier because items rescue most fights; the money-constrained bot moves by about +11 and -10 points. The original targets (93 / 86 / 72) are only met by the second bot, so a real player who is short of Funds should feel the full spread. Worth retuning after a human playtest.

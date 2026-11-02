@@ -6291,5 +6291,96 @@
     "english": "1 hour passes.",
     "placeholders": null,
     "notes": "Singular of commit.hours_passed (2026-11-02). Draft."
+  },
+  {
+    "key": "new_game.pressure_heading",
+    "where": "New Game, above the protagonists",
+    "english": "Campaign Pressure",
+    "placeholders": null,
+    "notes": "The setting that raises or lowers the pressure of the whole run (2026-11-02)."
+  },
+  {
+    "key": "pressure.relaxed.name",
+    "where": "Campaign Pressure, tier name",
+    "english": "Relaxed",
+    "placeholders": null,
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "pressure.standard.name",
+    "where": "Campaign Pressure, tier name",
+    "english": "Standard",
+    "placeholders": null,
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "pressure.harder.name",
+    "where": "Campaign Pressure, tier name",
+    "english": "Harder",
+    "placeholders": null,
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "pressure.relaxed.blurb",
+    "where": "New Game, under the tier button",
+    "english": "Closer to a friendly campaign: roomier fights, more pay, cheaper items, lighter dues.",
+    "placeholders": null,
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "pressure.standard.blurb",
+    "where": "New Game, under the tier button",
+    "english": "The game as designed.",
+    "placeholders": null,
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "pressure.harder.blurb",
+    "where": "New Game, under the tier button",
+    "english": "Tighter fights, 15% less pay, dearer items, heavier dues and faster-fading standing. It can never be lowered.",
+    "placeholders": null,
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "pressure.pick",
+    "where": "New Game, tier button",
+    "english": "{name}",
+    "placeholders": "name",
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "pressure.picked",
+    "where": "New Game, the chosen tier button",
+    "english": "{name} (chosen)",
+    "placeholders": "name",
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "record.pressure_line",
+    "where": "Your Record, under the heading",
+    "english": "Campaign Pressure: {name}",
+    "placeholders": "name",
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "admin.raise_pressure",
+    "where": "Administration, raise button",
+    "english": "Raise Pressure to {name} (cannot be undone)",
+    "placeholders": "name",
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "admin.pressure_top",
+    "where": "Administration, shown when already at the top tier",
+    "english": "Campaign Pressure is already at {name}",
+    "placeholders": "name",
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "office.pressure_raised",
+    "where": "Office report line",
+    "english": "Campaign Pressure raised to {name}.",
+    "placeholders": "name",
+    "notes": "Added 2026-11-02 (Campaign Pressure)."
   }
 ]

@@ -11,7 +11,14 @@ var _funds_before := 0
 var _calendar_before: Dictionary = {}
 
 
+var _holiday_before: Variant = null
+
+
 func before_each() -> void:
+	# These tests are about the dues themselves; the first weeks' holiday
+	# (Campaign Pressure) is covered in test_difficulty.gd.
+	_holiday_before = DataDB.balance.get("dues_holiday_weeks")
+	DataDB.balance["dues_holiday_weeks"] = 0
 	_effects = DataDB.awareness_effects
 	_awareness_before = GameState.awareness.duplicate()
 	_streaks_before = GameState.awareness_streaks.duplicate()
@@ -24,6 +31,7 @@ func before_each() -> void:
 
 
 func after_each() -> void:
+	DataDB.balance["dues_holiday_weeks"] = _holiday_before
 	GameState.awareness = _awareness_before
 	GameState.awareness_streaks = _streaks_before
 	GameState.inventory = _inventory_before

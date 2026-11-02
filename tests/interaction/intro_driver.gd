@@ -75,6 +75,7 @@ func _walk_with_no_save() -> void:
 	if row == null:
 		_failures.append("the picker does not list PC03")
 		return
+	_scroll_into_view(panel, row)
 	await _click(row.find_child("Choose", true, false) as Control)
 	await get_tree().create_timer(0.2).timeout
 
@@ -148,3 +149,14 @@ func _click(control: Control) -> void:
 		Input.parse_input_event(event)
 		await get_tree().process_frame
 	await get_tree().create_timer(0.15).timeout
+
+
+## The New Game panel now opens with the Campaign Pressure buttons above the
+## protagonists, so a row can sit below the fold, as it does for a player.
+func _scroll_into_view(panel: Node, row: Node) -> void:
+	var node: Node = row
+	while node != null and node != panel:
+		node = node.get_parent()
+		if node is ScrollContainer:
+			(node as ScrollContainer).ensure_control_visible(row as Control)
+			return

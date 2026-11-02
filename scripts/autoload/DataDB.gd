@@ -166,6 +166,10 @@ var level_visitor_overrides: Array = []
 
 # Objects rather than lists.
 var balance: Dictionary = {}
+## The Balance and Shop numbers exactly as the workbook gave them, kept so
+## Campaign Pressure (Difficulty.gd) can rewrite the live ones and go back.
+var balance_base: Dictionary = {}
+var shop_base: Array = []
 var rules: Dictionary = {}
 
 ## The playtest level. Hand-written like rules.json rather than generated
@@ -437,6 +441,8 @@ func load_all() -> void:
 			opponent["stages"] = []
 
 	_apply_default_consumable_cap()
+	balance_base = balance.duplicate(true)
+	shop_base = shop.duplicate(true)
 
 	_fill_name_tokens()
 	_build_lookups()

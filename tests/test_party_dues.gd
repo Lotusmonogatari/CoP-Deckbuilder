@@ -13,7 +13,14 @@ var _standing_before: Dictionary = {}
 var _party_before: Dictionary = {}
 
 
+var _holiday_before: Variant = null
+
+
 func before_each() -> void:
+	# These tests are about the dues themselves; the first weeks' holiday
+	# (Campaign Pressure) is covered in test_difficulty.gd.
+	_holiday_before = DataDB.balance.get("dues_holiday_weeks")
+	DataDB.balance["dues_holiday_weeks"] = 0
 	_funds_before = int(GameState.meta.get("Funds", 0))
 	_support_before = int(GameState.meta.get("Party support", 0))
 	_owned_before = GameState.owned_modifiers.duplicate()
@@ -28,6 +35,7 @@ func before_each() -> void:
 
 
 func after_each() -> void:
+	DataDB.balance["dues_holiday_weeks"] = _holiday_before
 	GameState.meta["Funds"] = _funds_before
 	GameState.meta["Party support"] = _support_before
 	GameState.owned_modifiers.assign(_owned_before)
