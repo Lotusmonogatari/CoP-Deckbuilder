@@ -652,6 +652,12 @@ func _play_current_level(level_id: String) -> void:
 		_bug("%s did not finish within 20 stage iterations — possible infinite stage insertion" % level_id)
 
 
+## What a stage's leftover gaffes cost awareness. The game's rule today (one
+## point each); tools/strategy_playtest.gd overrides it to try other rules.
+func _awareness_gaffes(leftover: int) -> int:
+	return leftover
+
+
 func _play_battle_stage(stage: Dictionary) -> void:
 	var stage_id := str(stage.get("stage_id", ""))
 	var runner := GameState.level_runner
@@ -714,7 +720,7 @@ func _play_battle_stage(stage: Dictionary) -> void:
 		state.turn, stage.get("turn_limit")])
 
 	var level_over := GameState.finish_stage(
-		state.outcome, state.player_score(), engine.pleased_boosters(), gaffe_caused_loss, state.gaffe)
+		state.outcome, state.player_score(), engine.pleased_boosters(), gaffe_caused_loss, _awareness_gaffes(state.gaffe))
 	if level_over:
 		GameState.end_level()
 

@@ -29,6 +29,11 @@ extends "res://tools/playtest_optimal.gd"
 ##   promises   ignore (take them, never keep), keep, avoid
 ##   patron     take patron bills or not
 ##   reserve    keep this week's party dues in hand before buying anything
+##   cap        buy the Funds-cap petition (SH13) whenever XP allows
+##   awareness_rule  what leftover gaffes cost awareness: current, half, free3,
+##              per100 (1 point per 100 gaffes in all), div5 (1 per 5 left), cap2 (at most 2 a stage), div5_cap3, none (a simulation of a
+##              proposed rule, not a game change)
+##   balance    Balance levers to override in memory for this run
 ##   random_cards   play random cards (a stress mode, expected to lose)
 ## Nothing here changes a rule; it only chooses among the choices a player has.
 
@@ -56,6 +61,20 @@ const STRATEGIES := {
 	"heavy_backing": {"backing": "heavy"},
 	"no_staff": {"staff": "none"},
 	"no_patron": {"patron": false},
+	"cap_buyer": {"cap": true},
+	"cap_dues": {"cap": true, "reserve": true},
+	"campaigner_cap": {"gaffe": 6.0, "level": "election", "events": "buy", "weekend": true, "cap": true},
+	"gaffe_rule_half": {"awareness_rule": "half"},
+	"gaffe_rule_free3": {"awareness_rule": "free3"},
+	"gaffe_rule_per100": {"awareness_rule": "per100"},
+	"gaffe_rule_none": {"awareness_rule": "none"},
+	"gaffe_rule_div5": {"awareness_rule": "div5"},
+	"gaffe_rule_cap2": {"awareness_rule": "cap2"},
+	"gaffe_rule_div5_cap3": {"awareness_rule": "div5_cap3"},
+	"dues_light": {"cap": true, "balance": {"dues_step_amount": 10000, "dues_base": 25000}},
+	"dues_light_pay": {"cap": true, "reserve": true, "balance": {"dues_step_amount": 10000, "dues_base": 25000}},
+	"dues_pct15_pay": {"cap": true, "reserve": true, "balance": {"dues_reward_percent": 15}},
+	"dues_mild_pay": {"cap": true, "reserve": true, "balance": {"dues_step_amount": 25000, "dues_reward_percent": 20}},
 	"dues_first": {"reserve": true},
 	"hoard_and_pay": {"items": "none", "backing": "none", "staff": "none", "level": "money", "patron": false, "reserve": true},
 	"money_reserve": {"level": "money", "reserve": true},
@@ -81,7 +100,8 @@ const STRATEGIES := {
 
 const DEFAULTS := {"level": "seq", "deck": "strongest", "gaffe": 1.0, "items": "battle", "backing": "base",
 	"staff": "cheap", "events": "none", "weekend": false, "visitors": "net", "promises": "ignore",
-	"patron": true, "random_cards": false, "reserve": false}
+	"patron": true, "random_cards": false, "reserve": false, "cap": false,
+	"awareness_rule": "current", "balance": {}}
 
 const MAX_WEEK_VISITS := 40   ## a safety valve on the loop inside one week
 
@@ -134,6 +154,8 @@ func _run() -> void:
 		"party": _weights = {"funds": 0.0, "party": 1.0, "election": 0.0}
 		"election": _weights = {"funds": 0.0, "party": 0.0, "election": 1.0}
 
+	for key: String in (_s["balance"] as Dictionary).keys():
+		DataDB.balance[key] = (_s["balance"] as Dictionary)[key]
 	GameState.start_new_run(_protagonist)
 	_record_week()   # week 0: the starting line
 
@@ -191,11 +213,44 @@ func _office_visit() -> void:
 	if str(_s["staff"]) != "none":
 		_hire_cheap_staff()
 	_buy_backing()
+	if bool(_s["cap"]):
+		_buy_funds_cap()
 	_buy_items()
 	if str(_s["promises"]) == "keep":
 		_keep_promises()
 	if str(_s["events"]) != "none":
 		_handle_events()
+
+
+## The Funds-cap petition (SH13): 100 XP for 100,000 more, up to the hard ceiling.
+func _buy_funds_cap() -> void:
+	var guard := 0
+	while guard < 12 and GameState.xp >= 100 + ITEM_XP_RESERVE:
+		guard += 1
+		if not bool(GameState.buy_funds_cap("SH13").get("ok", false)):
+			return
+		_caps_bought += 1
+
+
+var _gaffe_total := 0
+var _gaffe_paid := 0
+var _caps_bought := 0
+
+
+func _awareness_gaffes(leftover: int) -> int:
+	match str(_s["awareness_rule"]):
+		"half": return (leftover + 1) / 2
+		"free3": return maxi(0, leftover - 3)
+		"none": return 0
+		"div5": return (leftover + 4) / 5
+		"cap2": return mini(leftover, 2)
+		"div5_cap3": return mini((leftover + 4) / 5, 3)
+		"per100":
+			_gaffe_total += leftover
+			var owed := _gaffe_total / 100 - _gaffe_paid
+			_gaffe_paid += owed
+			return owed
+	return leftover
 
 
 func _buy_backing() -> void:
@@ -674,6 +729,7 @@ func _finish() -> void:
 		"levels_cleared": GameState.level_last_completed_at.size(),
 		"levels_by_tier": _levels_played_by_tier,
 		"owned_cards": GameState.owned_cards.size(), "deck": GameState.deck,
+		"caps_bought": _caps_bought, "funds_cap": int(GameState._sanban_row("Funds").get("max", 0)),
 		"backing_owned": GameState.owned_modifiers.size(), "backing_bought": _backing_bought,
 		"items_bought": _items_bought, "items_used": _items_used,
 		"staff": GameState.staff_hired.size(),

@@ -3028,3 +3028,5 @@ Reviewed all 397 visitor questions (1,588 choices): 92 carry a promise, 24 an Ac
 | New tools | `tools/strategy_playtest.gd` (a bot with named strategies, run for a fixed number of game weeks), `tools/strategy_runs.sh` (four at a time), `tools/strategy_report.py` (tables) |
 | Bot changes | `tools/playtest_optimal.gd`: the gaffe price, draw value, funds buffer and stage cap are now variables so a strategy can set them. No game rule changed. |
 | Findings | `design/review/STRATEGY_PLAYTEST_2026-11-02.md`: dues exceed the Funds cap, paying dues earns nothing, Election Strength plateaus near 42 because gaffes zero out awareness, a Party-support death spiral, Media Ambush never won |
+
+Addendum, same day: the bots never bought the Funds-cap petition (SH13), so the first batch's Funds and dues findings were overstated. `tools/strategy_playtest.gd` now has a `cap` option, simulated awareness-gaffe rules (`awareness_rule`) and in-memory Balance overrides (`balance`). 45 more runs are in `design/bench/strategy_cap.jsonl`; the review document has an addendum.
