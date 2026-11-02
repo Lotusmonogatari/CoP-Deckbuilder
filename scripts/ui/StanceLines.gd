@@ -47,7 +47,7 @@ static func stance_line() -> String:
 
 ## The chip rows under the stance sentence: who is with the player and who is
 ## against, each under a short heading. Empty with no stance or nobody on a side.
-static func stance_chip_rows() -> Array[Control]:
+static func stance_chip_rows(centered: bool = false) -> Array[Control]:
 	var rows: Array[Control] = []
 	var lean := GameState.stance_lean()
 	if lean.is_empty():
@@ -60,8 +60,13 @@ static func stance_chip_rows() -> Array[Control]:
 			continue
 		var heading := UiKit.line(Text.say(str(group[2])), "SmallLabel")
 		heading.custom_minimum_size = Vector2.ZERO
+		var chips := OrgChip.side_row(ids, bool(group[1]))
+		if centered:
+			# The bill start screen centers both lines and their icons (2026-11-02).
+			heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			chips.alignment = FlowContainer.ALIGNMENT_CENTER
 		rows.append(heading)
-		rows.append(OrgChip.side_row(ids, bool(group[1])))
+		rows.append(chips)
 	return rows
 
 

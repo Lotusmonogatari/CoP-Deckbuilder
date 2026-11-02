@@ -47,6 +47,18 @@ func test_the_label_says_what_the_choice_costs() -> void:
 	assert_eq(GameState.commitment_label("Plain", []), "Plain")
 
 
+func test_what_is_paid_now_is_headed_act_now_and_what_comes_later_is_not() -> void:
+	# (2026-11-02, Cameron) so an hour spent on the spot is not mistaken for a promise.
+	assert_eq(GameState.commitment_label("Ride along", [{"kind": "hours", "amount": 1}]),
+		"Ride along (Act Now: 1 hour)")
+	assert_eq(GameState.commitment_label("Ride along", [{"kind": "hours", "amount": 2}]),
+		"Ride along (Act Now: 2 hours)")
+	var both := GameState.commitment_label("Study", [{"kind": "hours", "amount": 2}, {"kind": "funds", "amount": 30000}])
+	assert_true(both.contains("Act Now: 2 hours, 30,000"), both)
+	var promised := GameState.commitment_label("Train once", [{"kind": "promise_hours", "amount": 1, "within": 168}])
+	assert_true(promised.contains("Promise:") and not promised.contains("Act Now"), promised)
+
+
 func test_an_event_choice_with_a_commitment_is_refused_until_it_can_be_paid() -> void:
 	for choice: Dictionary in DataDB.event_choices:
 		var list := Commitments.of(choice)

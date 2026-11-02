@@ -13,8 +13,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -32,8 +32,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -50,8 +50,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -69,8 +69,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -87,8 +87,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -106,8 +106,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -124,8 +124,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -143,8 +143,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -161,8 +161,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -180,8 +180,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -198,8 +198,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -217,8 +217,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -235,8 +235,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -254,8 +254,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -272,8 +272,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -291,8 +291,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -309,8 +309,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -328,8 +328,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -346,8 +346,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -365,8 +365,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -383,8 +383,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -402,8 +402,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -420,8 +420,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -439,8 +439,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -457,8 +457,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -476,8 +476,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -494,8 +494,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -513,8 +513,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -531,8 +531,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -550,8 +550,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -568,8 +568,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -587,8 +587,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -605,8 +605,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -624,8 +624,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -642,8 +642,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -661,8 +661,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -679,8 +679,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -698,8 +698,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -716,8 +716,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -735,8 +735,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -753,8 +753,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -772,8 +772,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -790,8 +790,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -809,8 +809,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -827,8 +827,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -846,8 +846,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -864,8 +864,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -883,8 +883,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -901,8 +901,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -920,8 +920,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -938,8 +938,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -957,8 +957,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -975,8 +975,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   },
   {
@@ -994,8 +994,8 @@
     "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
     "accept_line": "You take it on. {org} is counting on you.",
     "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
-    "pass_line": "The bill passes, and {org} will not forget who carried it.",
-    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "pass_line": "The bill passed. {org} will not forget who carried it.",
+    "fail_line": "The bill fell short. {org} knows you tried.",
     "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
   }
 ]

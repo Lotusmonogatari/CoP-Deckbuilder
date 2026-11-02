@@ -3339,24 +3339,32 @@ func commitment_refusal(list: Array) -> String:
 
 ## A choice's text with what it costs, e.g. "Commission a study (30,000円)".
 func commitment_label(text: String, list: Array) -> String:
-	var parts: Array[String] = []
+	# What is paid the moment the choice is made (hours, Funds, an item) is
+	# headed "Act Now:"; what comes later (a promise, a follow-up) is not, so the
+	# two cannot be mistaken for each other (2026-11-02, Cameron).
+	var now_parts: Array[String] = []
+	var later_parts: Array[String] = []
 	var hours := Commitments.hours(list)
 	if hours > 0:
-		parts.append(Text.say("commit.hours", {"count": hours}))
+		now_parts.append(Text.say("commit.hours", {"count": hours}))
 	var funds := Commitments.funds(list)
 	if funds > 0:
-		parts.append(Text.say("commit.funds", {"yen_amount": funds}))
+		now_parts.append(Text.say("commit.funds", {"yen_amount": funds}))
 	for item_id: String in Commitments.items(list):
-		parts.append(Text.say("commit.item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))}))
+		now_parts.append(Text.say("commit.item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))}))
 	for entry: Variant in list:
 		if entry is Dictionary and str(entry.get("kind", "")) == "followup":
-			parts.append(Text.say("commit.followup"))
+			later_parts.append(Text.say("commit.followup"))
 		if Promises.is_promise(entry):
 			var shown := Promises.make(entry, 0, int(DataDB.balance.get("promise_default_deadline_hours", 48)), "", "", 0)
-			parts.append(Text.say("commit.promise", {"what": promise_what(shown), "count": int(shown["due_at"])}))
+			later_parts.append(Text.say("commit.promise", {"what": promise_what(shown), "count": int(shown["due_at"])}))
+	var parts: Array[String] = []
+	if not now_parts.is_empty():
+		parts.append(Text.say("commit.act_now", {"costs": ", ".join(now_parts)}))
+	parts.append_array(later_parts)
 	if parts.is_empty():
 		return text
-	return Text.say("commit.label", {"text": text, "cost": ", ".join(parts)})
+	return Text.say("commit.label", {"text": text, "cost": "; ".join(parts)})
 
 
 ## Pays a choice's commitments: the hours pass, the Funds are spent, the items

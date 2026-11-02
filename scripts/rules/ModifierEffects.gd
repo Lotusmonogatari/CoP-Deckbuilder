@@ -122,22 +122,40 @@ static func is_implemented(modifier: Dictionary) -> bool:
 ## stage-scoped effect ("ST06 TV Debate gaffe limit +1.") drop the internal
 ## STxx code and read as "TV Debate gaffe limit +1." — the code is workbook
 ## bookkeeping, not something a player needs to see. Left empty, the sentence
-## is shown exactly as written, so every existing call site is unaffected.
+## is shown exactly as written, so every existing call site is unaffected
+## (plain_stage_names() does the replacing).
 static func describe(modifier: Dictionary, words: Phrase = null,
 		stage_names: Dictionary = {}) -> String:
 	var say := words if words != null else Phrase.new()
 	if type_of(modifier) == RESOURCE_BONUS_ON_WIN and target_of(modifier) == "Yen":
 		return say.say("modifier.reputation_per_stage_win", {"count": int(round(value_of(modifier)))})
-	var text := str(modifier.get("effect", "")).strip_edges()
-	var target := target_of(modifier)
-	if target.begins_with("ST") and stage_names.has(target):
-		var name := str(stage_names[target])
-		var with_name := "%s %s" % [target, name]
-		if text.contains(with_name):
-			text = text.replace(with_name, name)
-		elif text.contains(target):
-			text = text.replace(target, name)
-	return text
+	return plain_stage_names(str(modifier.get("effect", "")).strip_edges(), stage_names)
+
+
+## Replaces every stage code in a sentence with the stage's own name, so no
+## "ST04" reaches a player (2026-11-02, Cameron: the Boosters page still showed
+## "ST04 starts with +5 Press tone."). "ST06 TV Debate gaffe limit +1" drops just
+## the code, since the name follows it already; a bare "ST04" becomes "Press
+## Conference". A code with no name in `stage_names` is left as it is. The old
+## version only worked when the modifier named one stage; most now name a whole
+## family ("ST04; ST125; ST129 ...").
+static func plain_stage_names(text: String, stage_names: Dictionary) -> String:
+	if stage_names.is_empty():
+		return text
+	var found := RegEx.create_from_string("\\bST\\d+\\b").search_all(text)
+	var result := text
+	for i in range(found.size() - 1, -1, -1):
+		var hit := found[i]
+		var code := hit.get_string()
+		if not stage_names.has(code):
+			continue
+		var name := str(stage_names[code])
+		var after := result.substr(hit.get_end())
+		if after.begins_with(" " + name):
+			result = result.substr(0, hit.get_start()) + after.substr(1)
+		else:
+			result = result.substr(0, hit.get_start()) + name + after
+	return result
 
 
 ## What the owned, active modifiers add to a stage before its first turn.

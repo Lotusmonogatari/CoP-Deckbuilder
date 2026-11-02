@@ -137,6 +137,10 @@ func _show_lean_choice() -> void:
 	# A bill an organization asked the player to carry is carried: the lean is
 	# Support and there is nothing to choose (patron step 4).
 	if str(_bill.get("bill_id", "")).begins_with("PB") or str(_bill.get("bill_id", "")).begins_with(DraftBill.PREFIX):
+		# With no staff to speak and no choice to make, the screen shows the
+		# player at the top, centered, above the stance (2026-11-02, Cameron).
+		_show_player_speaker()
+		(get_node("Safe/Column/TopSpacer") as Control).size_flags_vertical = Control.SIZE_FILL
 		_on_lean_chosen(BillLean.SUPPORT)
 		return
 	_stance_note().text = "\n".join(StanceLines.intro_lines(_bill))
@@ -192,7 +196,7 @@ func _show_stance_chips() -> void:
 	var old := parent.get_node_or_null("StanceChips")
 	if old != null:
 		old.free()
-	var rows := StanceLines.stance_chip_rows()
+	var rows := StanceLines.stance_chip_rows(true)
 	if rows.is_empty():
 		return
 	var box := VBoxContainer.new()

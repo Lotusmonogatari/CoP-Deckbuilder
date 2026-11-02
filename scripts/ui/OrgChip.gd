@@ -30,7 +30,7 @@ static func name_of(target_id: String) -> String:
 
 ## One chip. `delta` is the signed change; `preview` marks a pending one.
 static func make(target_id: String, delta: int, preview: bool = false, size: float = CHIP_SIZE,
-		numbered: bool = true) -> Button:
+		numbered: bool = true, detail: String = "") -> Button:
 	var chip := Button.new()
 	chip.name = "OrgChip_%s" % target_id
 	chip.icon = ArtLoader.icon(target_id)
@@ -42,7 +42,10 @@ static func make(target_id: String, delta: int, preview: bool = false, size: flo
 	chip.set_meta("preview", preview)
 	chip.tooltip_text = name_of(target_id)
 	_dress(chip, delta, preview, size, numbered)
-	chip.pressed.connect(show_name.bind(chip, name_of(target_id)))
+	# `detail` (2026-11-02) is a second paragraph for the name pop-up: the
+	# styles this organization likes and dislikes, on the stage's Details screen.
+	var shown := name_of(target_id) if detail.is_empty() else "%s\n%s" % [name_of(target_id), detail]
+	chip.pressed.connect(show_name.bind(chip, shown))
 	return chip
 
 

@@ -85,18 +85,18 @@ static func for_card(card_id: String, stage_id: String, turn: int,
 static func fill_bill(text: String, bill_id: String, index: int) -> String:
 	if not ("{bill}" in text or "{Bill}" in text):
 		return text
-	var name := str((DataDB.floor_votes.get(bill_id, {}) as Dictionary).get("bill_name", ""))
+	var name := _bill_name_for(bill_id)
 	var chance := int(DataDB.balance.get("player_cues_full_bill_name_chance", 25))
-	var short_name := "the bill"
-	var last_word := name.get_slice(" ", name.get_slice_count(" ") - 1) if not name.is_empty() else ""
-	# Every other line that shortens it: half "the bill", half the bill's own
-	# last word ("the Act", "the Agreement").
-	if last_word in ["Act", "Agreement"] and (index / 100) % 2 == 0:
-		short_name = "the " + last_word
+	# Half the short mentions say "the Act" and half "the bill", for a bill named so.
 	var use_full := not name.is_empty() and (index % 100) < chance
-	var lower := ("the " + name) if use_full else short_name
+	var lower := BillName.phrase(name) if use_full else BillName.short(name, index / 100)
 	var upper := lower.substr(0, 1).to_upper() + lower.substr(1)
 	return text.replace("{Bill}", upper).replace("{bill}", lower)
+
+
+## The bill's own name: a floor vote bill's, or a patron or drafted bill's.
+static func _bill_name_for(bill_id: String) -> String:
+	return str((DataDB.floor_votes.get(bill_id, {}) as Dictionary).get("bill_name", ""))
 
 
 ## What a played card did, in the Player Cues tab's own words — the same

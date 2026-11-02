@@ -50,18 +50,14 @@ func _engine(stage_id: String, card_id: String, situation: String) -> BattleEngi
 
 
 func _special_marker(card: Dictionary) -> String:
-	## A distinctive piece of the sentence each special effect must put on the face.
+	## A distinctive piece of the sentence each OUTCOME effect must put on the face.
+	## The conditional bonuses that move the card's own number are deliberately not
+	## said on the face (Cameron, 2026-11-02): the back explains them.
 	var key := str(card.get("special", "")) if card.get("special") != null else ""
-	if key.begins_with(SpecialEffects.TARGET_SEGMENT_BONUS_PREFIX):
-		return str(card.get("target_segment", ""))
 	match key:
 		"buff_next_card_this_turn": return "next card this turn gets"
 		"discount_next_card_this_turn": return "next card this turn costs"
 		"reveal_next_intent": return "Reveal the opponent"
-		"double_if_target_segment_ge_50": return "Doubled"
-		"scale_per_20_target_segment": return "for every 20%"
-		"bonus_if_behind": return "trail the opponent"
-		"bonus_if_self_gaffe_0": return "gaffe meter is 0"
 	return ""
 
 
@@ -91,18 +87,16 @@ func test_every_cards_face_carries_all_it_will_do_and_the_play_matches() -> void
 				if int(preview.get("gaffe", 0)) != 0:
 					assert_string_contains(face, Text.say("card.gaffe", {"amount": "%+d" % int(preview["gaffe"])}), where)
 
-				# 2. The face says the special effect, met or not.
+				# 2. The face says the outcome effects, and nothing about conditions.
 				var marker := _special_marker(live)
 				if not marker.is_empty():
 					assert_string_contains(face, marker, where + ": its special effect is on the face")
 				if str(live.get("special", "")) == "pierce_guard" and bool(preview.get("opp_minus_counts", true)):
 					assert_string_contains(face, "Ignores", where)
 
-				# 3. A conditional bonus reads "Includes" when it will fire, not when it will not.
-				var conditional := str(live.get("special", "")).begins_with("bonus_if_") and marker != "reveal"
-				if conditional:
-					var fired := bool(preview.get("flags", {}).get("special_triggered", false))
-					assert_eq(face.contains("Includes +"), fired, where + ": the face agrees with whether the bonus fires")
+				# 3. No audience conditions, no "answers this question", no bonus commentary.
+				for banned in ["more to gain", "Includes +", "Doubled", "≥", "Answers this question", "trail the opponent", "gaffe meter is 0"]:
+					assert_false(face.contains(banned), where + ": the face does not say '%s'" % banned)
 
 				# 4. Playing it does what the preview said, at the cost shown.
 				var energy_before := engine.state.energy
@@ -138,14 +132,15 @@ func test_work_the_room_first_says_what_it_does_even_while_a_question_is_open() 
 	var preview := engine.preview(card)
 	preview["answers_question"] = true
 	var face := CardView.describe_effect(preview, card)
-	assert_string_contains(face, "Your next card this turn gets +2.")
-	assert_string_contains(face, "Answers this question.")
+	assert_eq(face, "Your next card this turn gets +2.", "the outcome, and no line about answering the question")
 
 
-func test_a_card_that_got_the_buff_says_so() -> void:
-	var engine := _engine("ST02", "C01", "")
-	engine.state.next_card_bonus = 2
-	var card := DataDB.get_card("C01")
+func test_a_conditional_card_shows_only_its_live_number() -> void:
+	# C09 Call for Unity: Gain 4, +2 more with a party audience. The face has the
+	# number that will be used here; the condition is on the back.
+	var engine := _engine("ST03", "C09", "")
+	var card := DataDB.get_card("C09")
 	var preview := engine.preview(card)
-	if int(preview.get("self_plus", 0)) > 0:
-		assert_string_contains(CardView.describe_effect(preview, card), "Includes +2 from the card before.")
+	var face := CardView.describe_effect(preview, card)
+	assert_string_contains(face, "Gain %d." % int(preview["self_plus"]))
+	assert_false(face.contains("Party Members"))

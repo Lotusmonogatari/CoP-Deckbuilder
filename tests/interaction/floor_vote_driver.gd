@@ -92,6 +92,20 @@ func _walk() -> void:
 		return
 	print("  all 6 party positions are showing")
 
+	# The whip price on the info line is the price the buttons charge (2026-11-02:
+	# it said 10 while the button charged 9 after the backers' discount).
+	var prices: Array[int] = []
+	for choice: String in ["Yes", "No", "Abstain"]:
+		prices.append(int(screen._whip_numbers(choice)["unit"]))
+	for label: Node in screen.find_children("*", "Label", true, false):
+		var text := (label as Label).text
+		if text.begins_with("Each extra vote costs"):
+			var shown := RegEx.create_from_string("costs (\\d+) Party support, or (\\d+)").search(text)
+			if shown == null or int(shown.get_string(1)) != prices.min() or int(shown.get_string(2)) < int(shown.get_string(1)):
+				_failures.append("the whip info line ('%s') does not match the button prices %s" % [text.left(60), str(prices)])
+			else:
+				print("  whip line matches the button price (%s)" % shown.get_string(1))
+
 	var standing_before := int(GameState.party_standing.get("Yezo Heritage Party", -1))
 
 	if not await _click(screen.get_node("%VoteNo")):

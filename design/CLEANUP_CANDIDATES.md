@@ -54,3 +54,8 @@ No test was found that covers a removed feature. The two click tests that `verif
 ## From the stage transition review (2026-11-02)
 
 - Done 2026-11-02 (Cameron's instruction): the two Transition Dialogue rows tied to ST30 (TD31, TD32) moved to ST29, the harbor town hall in the same level; Transition Backgrounds TB08 (ST30, the Media Ambush room picture) was deleted, since only Media Ambush rooms use that picture and they show no transition.
+
+## From the card face change (2026-11-02, second playtest round)
+
+- Text rows no longer asked for after the card face dropped the audience and bonus commentary and the "Answers this question." line: `card.answers_question`, `card.received_bonus`, `card.bonus_met`, `card.bonus_unmet`, `card.double_met`, `card.double_unmet`, `card.scale_now`, `card.behind_met`, `card.behind_unmet`, `card.gaffe_zero_met`, `card.gaffe_zero_unmet`.
+- `SpecialEffects` still records `flags.special_bonus` (how much a conditional bonus added); nothing reads it now.

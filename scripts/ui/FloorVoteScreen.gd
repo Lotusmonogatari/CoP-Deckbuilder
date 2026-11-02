@@ -337,12 +337,21 @@ func _build_whip_row(column: VBoxContainer) -> void:
 	heading.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	heading.text = Text.say("floor_vote.whip_heading")
 	box.add_child(heading)
-	var base := int(DataDB.balance.get("whip_base_cost", 10))
+	# The price printed here is the price the buttons charge: the base cost and
+	# the against-your-party cost each after the discount your backers earn
+	# (it said 10 while the button charged 9; 2026-11-02, Cameron).
+	var base_cost := int(DataDB.balance.get("whip_base_cost", 10))
+	var backers := _discount_orgs().size()
+	var discount := int(DataDB.balance.get("whip_discount_amount", 1))
+	var cheapest := int(DataDB.balance.get("whip_discount_floor", 5))
+	var base := VoteWhip.discounted_unit(base_cost, backers, discount, cheapest)
+	var against := VoteWhip.discounted_unit(base_cost * int(DataDB.balance.get("whip_against_party_multiplier", 3)),
+		backers, discount, cheapest)
 	var info := Label.new()
 	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	info.theme_type_variation = &"SmallLabel"
 	info.text = Text.say("floor_vote.whip_cost", {
-		"base": base, "against": base * int(DataDB.balance.get("whip_against_party_multiplier", 3)),
+		"base": base, "against": against,
 		"have": int(GameState.meta.get("Party support", 0)),
 		"floor": int(DataDB.balance.get("whip_party_support_floor", 30))})
 	box.add_child(info)

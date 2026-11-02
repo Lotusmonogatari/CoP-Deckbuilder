@@ -5896,14 +5896,14 @@
   {
     "key": "commit.promise",
     "where": "A choice's cost: a promise owed later",
-    "english": "promise: {what} within {count} hours",
+    "english": "Promise: {what} within {count} hours",
     "placeholders": "what, count",
     "notes": "2026-10-31 promises (Cameron)"
   },
   {
     "key": "commit.promise.one",
     "where": "The same, exactly one hour",
-    "english": "promise: {what} within {count} hour",
+    "english": "Promise: {what} within {count} hour",
     "placeholders": "what, count",
     "notes": "2026-10-31 promises (Cameron)"
   },
@@ -6029,7 +6029,7 @@
   {
     "key": "commit.followup",
     "where": "A choice's cost: it schedules a follow-up event",
-    "english": "a follow-up later",
+    "english": "Follow-up later",
     "placeholders": null,
     "notes": "2026-10-31 follow-ups (Cameron)"
   },
@@ -6270,5 +6270,12 @@
     "english": "The Work Week Is Over",
     "placeholders": null,
     "notes": "The week button on the Office once the work week has no hours left, so the choice (weekend or home) can always be reopened if its pop-up was missed (2026-11-02). Draft."
+  },
+  {
+    "key": "commit.act_now",
+    "where": "Choice costs",
+    "english": "Act Now: {costs}",
+    "placeholders": "costs",
+    "notes": "Heads the costs that are paid the moment a choice is made (hours, Funds, an item), so they are not mistaken for a promise or a follow-up that comes later (2026-11-02). Draft."
   }
 ]

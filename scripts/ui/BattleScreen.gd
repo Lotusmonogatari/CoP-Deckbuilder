@@ -670,9 +670,10 @@ func _refresh_details_orgs(engine: BattleEngine) -> void:
 		var flow := HFlowContainer.new()
 		flow.name = "ScrutinyRow"
 		flow.add_theme_constant_override("h_separation", 12)
+		var tastes := _tastes_for(scrutiny)
 		for booster_id: String in scrutiny:
 			if not OrgChip.name_of(booster_id).is_empty():
-				flow.add_child(OrgChip.make(booster_id, 0, false, 80.0, false))
+				flow.add_child(OrgChip.make(booster_id, 0, false, 80.0, false, str(tastes.get(booster_id, ""))))
 		rows.append(flow)
 	rows.append_array(StanceLines.org_group("battle.pleased_heading", engine.pleased_boosters(), true))
 	rows.append_array(StanceLines.org_group("battle.annoyed_heading", engine.displeased_boosters(), false))
@@ -797,8 +798,10 @@ func _build_listening() -> void:
 func _refresh_listening() -> void:
 	if _listening == null or engine == null:
 		return
-	var ids := _scrutiny_ids()
-	_listening.show_listeners(ids, _tastes_for(ids))
+	# Icons only on the stage screen: the red and green marks say what a card does
+	# to each, and what each organization likes is in the tap-an-icon pop-up on the
+	# Details screen (2026-11-02, Cameron).
+	_listening.show_listeners(_scrutiny_ids())
 
 
 ## The organizations applying scrutiny this turn: everyone this turn's

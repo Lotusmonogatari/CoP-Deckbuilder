@@ -229,3 +229,22 @@ func test_every_organisation_has_a_backing() -> void:
 			if Ledger.backing_booster(modifier, DataDB.boosters) == booster_id:
 				found = true
 		assert_true(found, "%s has no backing to buy" % booster_id)
+
+
+# --- No stage codes reach a player (2026-11-02) --------------------------------
+
+func test_a_bare_stage_code_becomes_the_stage_name() -> void:
+	var names := {"ST04": "Press Conference", "ST05": "Town Hall"}
+	assert_eq(ModifierEffects.plain_stage_names("ST04 starts with +5 Press tone.", names),
+		"Press Conference starts with +5 Press tone.")
+	assert_eq(ModifierEffects.plain_stage_names("+1 card drawn at the start of ST05 Town Hall.", names),
+		"+1 card drawn at the start of Town Hall.")
+	assert_eq(ModifierEffects.plain_stage_names("ST99 is unknown to this list.", names), "ST99 is unknown to this list.")
+
+
+func test_no_modifier_shows_a_stage_code_even_when_it_covers_a_family_of_stages() -> void:
+	var names := BattleSetup.stage_names()
+	var code := RegEx.create_from_string("\\bST\\d+\\b")
+	for modifier: Dictionary in DataDB.modifiers:
+		var text := ModifierEffects.describe(modifier, Text.phrase(), names)
+		assert_null(code.search(text), "%s reads '%s'" % [modifier.get("mod_id"), text])
