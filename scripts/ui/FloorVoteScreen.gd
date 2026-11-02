@@ -62,12 +62,17 @@ var _messages: MessagePresenter = null
 var _banner: CueBanner = null
 
 
+## The veil behind the bill text: a mid grey, mostly see-through.
+const VEIL_COLOR := Color(0.22, 0.23, 0.26, 0.66)
+
+
 func _ready() -> void:
 	# The picture under everything: BASE_FLOOR_VOTE.png, else BASE.png (2026-10-31).
 	BaseImage.install(self, "FLOOR_VOTE")
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.show_label = false
 	_messages = MessagePresenter.new(_notice, get_tree())
+	_add_text_veil()
 
 	_banner = CueBanner.new()
 	_banner.name = "CueBanner"
@@ -145,6 +150,31 @@ func start_voting() -> void:
 	_vote_words = {"Yes": _vote_yes.text, "No": _vote_no.text, "Abstain": _vote_abstain.text}
 	_show_parties(engine.positions())
 	_show_influence_and_preview()
+
+
+## A translucent grey veil behind the bill text in the middle of the screen, its
+## edges melting into the picture like the soft edges on the pictures (2026-11-02,
+## Cameron): the text used to sit straight on the busy chamber picture. It reaches
+## a little past the text so the fade falls outside it, and never takes a touch.
+func _add_text_veil() -> void:
+	var area := get_node_or_null("Safe/Column/ScrollArea") as Control
+	if area == null:
+		return
+	var veil := Panel.new()
+	veil.name = "TextVeil"
+	veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	veil.set_anchors_preset(Control.PRESET_FULL_RECT)
+	var margin := SoftEdge.width_from_balance() * 0.5
+	veil.offset_left = -margin
+	veil.offset_right = margin
+	veil.offset_top = -margin
+	veil.offset_bottom = margin
+	var style := StyleBoxFlat.new()
+	style.bg_color = VEIL_COLOR
+	veil.add_theme_stylebox_override("panel", style)
+	area.add_child(veil)
+	area.move_child(veil, 0)
+	SoftEdge.apply(veil)
 
 
 ## Under the bill: whether the player's influence can sway other parties yet

@@ -19,6 +19,7 @@ func _run() -> void:
 	_check_monday()
 	await _friday_flow()
 	await _week_over_flow()
+	await _hours_spent_while_open_flow()
 	await _short_on_funds_flow()
 	print("")
 	if _failures.is_empty():
@@ -109,6 +110,36 @@ func _week_over_flow() -> void:
 	await get_tree().process_frame
 	_expect(GameState.in_weekend(), "choosing the weekend starts it")
 	_save_shot("week_weekend2")
+
+
+## Hours run out while the Office stays open and nothing rebuilds it (a promise
+## kept, a tour, an event): the choice must still appear, and a button must stay
+## (2026-11-02, Cameron: hours hit zero on a Friday and nothing showed until reload).
+func _hours_spent_while_open_flow() -> void:
+	GameState.calendar = {"week": 3, "phase": "work", "hours": 36}
+	await _open_office()
+	var panel := _screen().get_node("WeekOverPanel") as Overlay
+	_expect(not panel.visible, "four hours left on Friday: no week-over pop-up yet")
+	# A random event may have arrived on opening; settle it so only the watch is under test.
+	for child in _screen().get_children():
+		if child is Overlay and (child as Overlay).visible:
+			(child as Overlay).close()
+	GameState.spend_hours(4)
+	await get_tree().create_timer(1.6).timeout
+	_expect(panel.visible, "hours spent without a rebuild still bring up the week-over choice")
+	var button := _screen().find_child("WeekButton", true, false) as Button
+	_expect(button != null and button.visible and button.text == "The Work Week Is Over",
+		"the week button stays when the work week is over, got %s" % (button.text if button else "none"))
+	# Opened under another pop-up it waits, then shows once that is closed.
+	panel.close()
+	var marketplace := _screen().get_node("PromisesPanel") as Overlay
+	marketplace.open("Test", [])
+	await get_tree().create_timer(1.4).timeout
+	_expect(not panel.visible, "it does not open under another pop-up")
+	marketplace.close()
+	await get_tree().create_timer(1.4).timeout
+	_expect(panel.visible, "and shows once that pop-up is closed")
+	panel.close()
 
 
 ## Too little Funds at the week end: the popup says so and the balance rolls over.

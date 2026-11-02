@@ -195,5 +195,6 @@
   "player_cues_full_bill_name_chance": 25,
   "transition_staff_speaker_chance": 50,
   "transition_bill_level_thought_chance": 60,
+  "panel_edge_fade": 56,
   "xp_tiers": {}
 }

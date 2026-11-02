@@ -96,6 +96,7 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 		if share >= threshold / 100.0:
 			result["self_plus"] = int(result.get("self_plus", 0)) + amount
 			result["flags"]["special_triggered"] = true
+			result["flags"]["special_bonus"] = amount
 		return result
 
 	match special_key:
@@ -111,6 +112,7 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 		"double_if_target_segment_ge_50":
 			# C06: "Gain 4; doubled if Constituents >= 50%."
 			if share >= 0.5:
+				result["flags"]["special_bonus"] = int(result.get("self_plus", 0))
 				result["self_plus"] = int(result.get("self_plus", 0)) * 2
 				result["flags"]["special_triggered"] = true
 
@@ -147,6 +149,7 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			if int(context.get("self_gaffe", 0)) == 0:
 				result["self_plus"] = int(result.get("self_plus", 0)) + amount
 				result["flags"]["special_triggered"] = true
+				result["flags"]["special_bonus"] = amount
 
 		"bonus_if_behind":
 			# C33, C53: "+N more if you trail the opponent in support."
@@ -157,6 +160,7 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			if int(context.get("player_support", 0)) < int(context.get("opponent_support", 0)):
 				result["self_plus"] = int(result.get("self_plus", 0)) + amount
 				result["flags"]["special_triggered"] = true
+				result["flags"]["special_bonus"] = amount
 
 		"scale_per_20_target_segment":
 			# "+N more to gain for every 20% of the audience (up to +5)."
@@ -168,6 +172,7 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			if bonus != 0:
 				result["self_plus"] = int(result.get("self_plus", 0)) + bonus
 				result["flags"]["special_triggered"] = true
+				result["flags"]["special_bonus"] = bonus
 
 		"discount_next_card_this_turn":
 			# C36: "Your next card this turn costs 1 less."

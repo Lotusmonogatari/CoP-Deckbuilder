@@ -450,6 +450,11 @@ static func describe_effect(effect: Dictionary, card_row: Dictionary) -> String:
 	if gaffe != 0:
 		parts.append(Text.say("card.gaffe", {"amount": "%+d" % gaffe}))
 
+	# What the card's "if" and "next card" effects are worth right now. These
+	# used to be left off the face whenever any other sentence was printed, so
+	# Work the Room First read only "Answers this question." (2026-11-02).
+	parts.append_array(_special_parts(effect, card_row))
+
 	if bool(effect.get("does_nothing", false)):
 		parts.append(Text.say("card.does_nothing"))
 
@@ -460,6 +465,54 @@ static func describe_effect(effect: Dictionary, card_row: Dictionary) -> String:
 	if parts.is_empty():
 		return str(card_row.get("effect_text", ""))
 	return " ".join(parts)
+
+
+## The sentences for a card's special effect, from its structured columns (never
+## from effect_text): a buff or discount for the next card, a reveal, a pierce, and
+## a conditional bonus said as met ("Includes +2 because ...") or not ("+2 more to
+## gain if ..."), so the face matches what playing it will do here and now.
+static func _special_parts(effect: Dictionary, card_row: Dictionary) -> Array[String]:
+	var out: Array[String] = []
+	var flags: Dictionary = effect.get("flags", {})
+	var received := int(flags.get("received_bonus", 0))
+	if received != 0:
+		out.append(Text.say("card.received_bonus", {"count": received}))
+	var key_raw: Variant = card_row.get("special")
+	if key_raw == null or str(key_raw).is_empty():
+		return out
+	var key := str(key_raw)
+	var amount := _count(card_row.get("special_value"))
+	var audience := str(card_row.get("target_segment", ""))
+	var fired := bool(flags.get("special_triggered", false))
+	var bonus := int(flags.get("special_bonus", 0))
+	var prefix := SpecialEffects.TARGET_SEGMENT_BONUS_PREFIX
+	if key.begins_with(prefix):
+		var percent := int(key.substr(prefix.length()))
+		out.append(Text.say("card.bonus_met" if fired else "card.bonus_unmet",
+			{"count": bonus if fired else amount, "audience": audience, "percent": percent}))
+		return out
+	match key:
+		"buff_next_card_this_turn":
+			out.append(Text.say("card.special_next_bonus", {"count": amount}))
+		"discount_next_card_this_turn":
+			out.append(Text.say("card.special_next_discount", {"count": amount}))
+		"reveal_next_intent":
+			out.append(Text.say("card.special_reveal"))
+		"pierce_guard":
+			if bool(effect.get("opp_minus_counts", true)):
+				out.append(Text.say("card.special_pierce", {"count": amount}))
+		"double_if_target_segment_ge_50":
+			out.append(Text.say("card.double_met" if fired else "card.double_unmet",
+				{"audience": audience, "percent": 50}))
+		"scale_per_20_target_segment":
+			out.append(Text.say("card.scale_now", {"count": amount, "audience": audience, "now": bonus}))
+		"bonus_if_behind":
+			out.append(Text.say("card.behind_met" if fired else "card.behind_unmet",
+				{"count": bonus if fired else amount}))
+		"bonus_if_self_gaffe_0":
+			out.append(Text.say("card.gaffe_zero_met" if fired else "card.gaffe_zero_unmet",
+				{"count": bonus if fired else amount}))
+	return out
 
 
 ## A blank workbook cell is null: read it as 0.

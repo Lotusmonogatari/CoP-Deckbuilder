@@ -215,6 +215,8 @@ func _ready() -> void:
 		var scroll := panel.get_node_or_null("Margin/Scroll") as ScrollContainer
 		if scroll != null:
 			DragScroll.attach(scroll)
+	# The dark end-of-stage box melts into the room picture above it (2026-11-02).
+	SoftEdge.apply(%OutcomePanel, SoftEdge.TOP_ONLY)
 	%OutcomePanel.hide()
 
 	_build_inventory()

@@ -127,6 +127,11 @@ var _gathering_panel: Overlay
 var _hosted_panel: HostedEventPanel
 var _week_confirm_panel: Overlay
 var _week_over_panel: Overlay
+## Looks once a second for a work week that ran out of hours without the choice
+## showing (2026-11-02), whichever way the hours were spent.
+var _week_watch: Timer
+## True while _build() runs, so the watch does not open a pop-up under its feet.
+var _building := false
 var _new_week_panel: Overlay
 var _draft_ids: Array = []
 var _draft_org := ""
@@ -272,6 +277,7 @@ func _process(delta: float) -> void:
 
 
 func _build() -> void:
+	_building = true
 	# Whose office it is. A placeholder name until the protagonist is cast,
 	# but a named desk reads better than an anonymous one.
 	var player := DataDB.player
@@ -311,6 +317,7 @@ func _build() -> void:
 		_show_random_event_if_due()
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
+	_building = false
 
 
 # ---------------------------------------------------------------------------
@@ -387,6 +394,12 @@ func _build_week_controls() -> void:
 	_new_week_panel.dismissable = false
 	_new_week_panel.show_back = false
 	add_child(_new_week_panel)
+	_week_watch = Timer.new()
+	_week_watch.name = "WeekWatch"
+	_week_watch.wait_time = 1.0
+	_week_watch.autostart = true
+	_week_watch.timeout.connect(_check_week_over)
+	add_child(_week_watch)
 
 
 ## The square's two rows, and the one week button that fits today: "End the
@@ -404,6 +417,11 @@ func _refresh_calendar() -> void:
 	if GameState.in_weekend():
 		_week_button.text = Text.say("office.go_home")
 		_week_button.visible = not mid_level
+	elif GameState.work_week_is_full():
+		# No hours left: the choice (weekend or home) stays one tap away even if
+		# its pop-up was missed (2026-11-02).
+		_week_button.text = Text.say("office.week_over_button")
+		_week_button.visible = not mid_level
 	elif GameState.can_end_work_week_early():
 		_week_button.text = Text.say("office.end_work_week")
 		_week_button.visible = not mid_level
@@ -417,6 +435,9 @@ func _on_week_button_pressed() -> void:
 	if GameState.in_weekend():
 		_go_home()
 		return
+	if GameState.work_week_is_full():
+		_show_week_over_if_due()
+		return
 	var rows: Array[Control] = [UiKit.line(Text.say("office.end_work_week_body",
 		{"hours": GameState.work_hours_left(), "count": GameState.work_hours_left()}))]
 	_week_confirm_panel.open(Text.say("office.end_work_week_title"), rows,
@@ -427,6 +448,21 @@ func _on_end_work_week_confirmed() -> void:
 	GameState.end_work_week()
 	SaveManager.autosave()
 	_build()
+
+
+## The watch: a work week with no hours left and nothing showing the choice.
+## Hours are spent in many places (a stage, a tour, an event, a promise kept) and
+## only some of them rebuild the Office afterwards, so on one Friday the hours hit
+## zero and neither the pop-up nor a button appeared until the game was reloaded
+## (2026-11-02, Cameron). Waits while any other pop-up is open.
+func _check_week_over() -> void:
+	if _building or _week_over_panel.visible or GameState.is_in_level() or not GameState.work_week_is_full():
+		return
+	for child in get_children():
+		if child is Overlay and child != _week_over_panel and (child as Overlay).visible:
+			return
+	_refresh_calendar()
+	_show_week_over_if_due()
 
 
 ## The work week ran out of hours: the player chooses the weekend or home.

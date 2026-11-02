@@ -732,3 +732,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Party leaders speak before the Floor Vote (2026-11-02, Cameron)
 - Transitions: locked opponents, two speakers, more lines, ST30 tidied (2026-11-02, Cameron)
 - Government bodies use the canon names (2026-11-02, Cameron)
+- Playtest notes: card faces, soft boxes, week-end watch, Heritage Party rivals (2026-11-02, Cameron)

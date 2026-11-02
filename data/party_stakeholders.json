@@ -394,5 +394,23 @@
     "booster_id": "BO32",
     "weight": 3.0,
     "note": "Your own party candidate selection committee"
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO15",
+    "weight": -2.0,
+    "note": "Draft: rival of the Heritage Party (Cameron to tune)"
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO05",
+    "weight": -2.0,
+    "note": "Draft: rival of the Heritage Party (Cameron to tune)"
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO24",
+    "weight": -2.0,
+    "note": "Draft: rival of the Heritage Party (Cameron to tune)"
   }
 ]
