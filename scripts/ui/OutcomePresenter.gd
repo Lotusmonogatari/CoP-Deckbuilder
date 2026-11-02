@@ -109,7 +109,9 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 	var body := _body_without_awareness(engine, stage)
 	# Gaffes still on the counter cost awareness (GameState.apply_awareness_gaffes).
 	if GameState.is_in_level() and str(stage.get("mode", "")) == "Combat" and engine.state.gaffe > 0:
-		body += "\n\n" + Text.say("awareness.gaffe_line", {"count": engine.state.gaffe})
+		body += "\n\n" + Text.say("awareness.gaffe_line", {"count": engine.state.gaffe,
+			"national_per": int(DataDB.balance.get("awareness_gaffes_per_national_point", 1)),
+			"district_per": int(DataDB.balance.get("awareness_gaffes_per_district_point", 1))})
 	return body
 
 

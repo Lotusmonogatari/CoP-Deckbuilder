@@ -112,7 +112,7 @@
   "calendar_start_day": 1,
   "week_decay_multiplier": 2.5,
   "dues_base": 50000,
-  "dues_reward_percent": 30,
+  "dues_reward_percent": 15,
   "dues_party_support_start": 40,
   "dues_party_support_step": 15,
   "dues_step_amount": 50000,
@@ -205,8 +205,8 @@
   "difficulty_harder_awareness_gaffe_percent": 150,
   "difficulty_relaxed_reward_percent": 115,
   "difficulty_harder_reward_percent": 85,
-  "difficulty_relaxed_dues_reward_percent": 15,
-  "difficulty_harder_dues_reward_percent": 35,
+  "difficulty_relaxed_dues_reward_percent": 10,
+  "difficulty_harder_dues_reward_percent": 20,
   "difficulty_relaxed_dues_holiday_weeks": 3,
   "difficulty_harder_dues_holiday_weeks": 0,
   "difficulty_relaxed_week_decay_multiplier": 2,
@@ -221,5 +221,7 @@
   "difficulty_harder_election_gain_per_week": 2,
   "difficulty_relaxed_election_fall_per_week": 1,
   "difficulty_harder_election_fall_per_week": 2,
+  "awareness_gaffes_per_district_point": 65,
+  "awareness_gaffes_per_national_point": 35,
   "xp_tiers": {}
 }

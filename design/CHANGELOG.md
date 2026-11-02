@@ -3042,3 +3042,12 @@ Addendum, same day: the bots never bought the Funds-cap petition (SH13), so the 
 | Standard changed | Only by the new 3-week dues holiday (Cameron approved the proposal that included it) |
 | Bot | `PLAYTEST_DIFFICULTY` on the strategy bot and runner; calibration in the proposal |
 | Tests | `tests/test_difficulty.gd` (14 tests) |
+
+## Decisions from the strategy playtest (2026-11-02, Cameron)
+
+| Decision | What changed |
+|---|---|
+| Media Ambush | `Opponent Count` is 1 on ST19, ST30, ST188, ST194, ST203 and ST234 (was 2, where the bot never won). With one opponent the bot wins 100% with a full kit and 98% with the starter kit, so it may now be too easy; it is Cameron's to retune. |
+| Gaffes and awareness | Leftover gaffes now add up over the whole run (`GameState.awareness_gaffe_tally`, saved). Every 65 cost 1 District awareness and every 35 cost 1 National (Balance: `Awareness Gaffes Per District Point`, `... Per National Point`). Was 1 point of each per gaffe. The stage result line explains the rule. The tiers' awareness percent still scales how fast the tally grows. |
+| Dues | `Dues: Reward Percent` 30 to 15. To keep the Campaign Pressure tiers in order, Relaxed is 10 and Harder 20 (were 15 and 35). |
+| Not changed | A grace week, lower base and step, and any hint about the Funds-cap petition (SH13) |

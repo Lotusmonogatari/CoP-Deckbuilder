@@ -95,9 +95,10 @@ func test_a_week_end_with_enough_funds_pays_in_full() -> void:
 	GameState.meta["Party support"] = 40
 	GameState.week_funds_earned = 200000
 	var report := GameState._settle_dues()
-	assert_eq(report["total"], 110000)
-	assert_eq(report["paid"], 110000)
-	assert_eq(int(GameState.meta["Funds"]), 290000)
+	var owed := 50000 + roundi(200000.0 * float(DataDB.balance["dues_reward_percent"]) / 100.0)
+	assert_eq(report["total"], owed)
+	assert_eq(report["paid"], owed)
+	assert_eq(int(GameState.meta["Funds"]), 400000 - owed)
 	assert_eq(GameState.dues_balance, 0)
 	assert_eq(GameState.week_funds_earned, 0)
 	assert_false(report["penalized"])

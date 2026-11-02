@@ -241,6 +241,9 @@ var funds_cap_bonus: int = 0
 ## Campaign Pressure (Difficulty.gd): "relaxed", "standard" or "harder". Chosen at
 ## New Game, raised but never lowered, saved with the run.
 var difficulty: String = "standard"
+
+## Leftover gaffes added up over the run, per meter (see apply_awareness_gaffes).
+var awareness_gaffe_tally: Dictionary = {"district": 0, "national": 0}
 ## Extra deck slots bought (SH34-style items, Shop "Deck Size Increase";
 ## Cameron, 2026-10-31), and how many times such an item has been bought.
 var deck_size_bonus: int = 0
@@ -484,7 +487,7 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 # test rather than half-saved.
 
 const _SAVED_FIELDS := [
-	"protagonist_id", "difficulty", "last_level_outcome", "meta", "xp",
+	"protagonist_id", "difficulty", "awareness_gaffe_tally", "last_level_outcome", "meta", "xp",
 	"owned_cards", "deck", "owned_modifiers",
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
@@ -998,6 +1001,7 @@ func _apply_time_decays() -> void:
 
 ## Both meters back to their starting values (Balance), for a fresh run.
 func reset_awareness() -> void:
+	awareness_gaffe_tally = {"district": 0, "national": 0}
 	awareness = {
 		"district": clampi(int(DataDB.balance.get("awareness_start_district", 20)), 0, awareness_max()),
 		"national": clampi(int(DataDB.balance.get("awareness_start_national", 10)), 0, awareness_max()),
@@ -1028,8 +1032,14 @@ func apply_awareness_gaffes(gaffes: int) -> void:
 	gaffes = Difficulty.awareness_gaffes(gaffes, DataDB.balance_base, difficulty)
 	if gaffes <= 0:
 		return
-	apply_awareness_delta("district", -gaffes)
-	apply_awareness_delta("national", -gaffes)
+	# Gaffes left over add up across the whole run (Cameron, 2026-11-02): every
+	# "Awareness Gaffes Per District Point" cost 1 District awareness, and every
+	# "... Per National Point" cost 1 National.
+	for meter: String in ["district", "national"]:
+		var per := maxi(1, int(DataDB.balance.get("awareness_gaffes_per_%s_point" % meter, 1)))
+		var before := int(awareness_gaffe_tally.get(meter, 0))
+		awareness_gaffe_tally[meter] = before + gaffes
+		apply_awareness_delta(meter, -((before + gaffes) / per - before / per))
 
 
 # ---------------------------------------------------------------------------

@@ -2,7 +2,7 @@
   "admin.pressure_top": "Campaign Pressure is already at {name}",
   "admin.raise_pressure": "Raise Pressure to {name} (cannot be undone)",
   "awareness.district": "District Awareness",
-  "awareness.gaffe_line": "Gaffes left at the end cost you awareness: -{count} District, -{count} National.",
+  "awareness.gaffe_line": "{count} gaffes left at the end count against your name. Every {national_per} cost 1 National awareness; every {district_per} cost 1 District.",
   "awareness.national": "National Awareness",
   "awareness.week_coupon": "Your name is known at home: a free Training Session Coupon.",
   "awareness.week_standing": "Name recognition: standing with {names} changes by {count}.",
