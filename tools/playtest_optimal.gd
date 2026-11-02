@@ -36,8 +36,8 @@ extends Node
 ## debugging pass, not a repeatable regression test.
 
 const MAX_LEVEL_ATTEMPTS := 80
-const MAX_STAGES := 600
-const FUNDS_BUFFER := 5000   # never spend Funds below this on staff/backing
+var MAX_STAGES := 600
+var FUNDS_BUFFER := 5000   # never spend Funds below this on staff/backing
 
 ## Per-turn chance of a deliberate pass in random-move mode, and per-card
 ## chance of stopping early even though another affordable card exists —
@@ -391,9 +391,9 @@ func _card_strength(card: Dictionary) -> float:
 	var cost := maxf(float(card.get("cost", 1)), 1.0)
 	var gaffe := float(card.get("gaffe", 0))
 	var raw := (float(card.get("self_plus", 0)) + float(card.get("opp_minus", 0))
-		+ 0.5 * float(card.get("guard", 0)) + DRAW_VALUE * float(card.get("draw", 0)))
-	raw -= GAFFE_PRICE * maxf(gaffe, 0.0) * 0.6
-	raw += 0.5 * GAFFE_PRICE * maxf(-gaffe, 0.0)
+		+ 0.5 * float(card.get("guard", 0)) + _draw_value * float(card.get("draw", 0)))
+	raw -= _gaffe_price * maxf(gaffe, 0.0) * 0.6
+	raw += 0.5 * _gaffe_price * maxf(-gaffe, 0.0)
 	return raw / cost
 
 
@@ -938,8 +938,8 @@ func _force_end_stage(outcome: String) -> void:
 ## weighs guard against the attack actually coming, treats a gaffe as a cost
 ## that is worth more the less of the gaffe meter is left, and uses gaffe-
 ## clearing cards when the meter is high.
-const GAFFE_PRICE := 0.8      ## support points one gaffe point is worth to avoid (a gaffe is a budget to spend, not a thing to dodge)
-const DRAW_VALUE := 2.0       ## support points one drawn card is worth
+var _gaffe_price := 0.8      ## support points one gaffe point is worth to avoid (a gaffe is a budget to spend, not a thing to dodge)
+var _draw_value := 2.0       ## support points one drawn card is worth
 const OPPONENT_SMALL := 30    ## an opponent at or under this many supporters can be argued out
 const OPPONENT_SMALL_WEIGHT := 1.6
 const SPECIAL_VALUE := 3.0    ## a special effect that does nothing else (a buff, a peek)
@@ -977,7 +977,7 @@ func _best_first_card(engine: BattleEngine) -> String:
 	var incoming := float(intent.get("value", 0)) if str(intent.get("verb", "")) == "attack" else 0.0
 	var gaffe_room := maxi(state.gaffe_limit - state.gaffe, 1)
 	# The fewer gaffes left before the stage is lost, the dearer one is.
-	var price := GAFFE_PRICE * (1.0 + 3.0 / float(gaffe_room))
+	var price := _gaffe_price * (1.0 + 3.0 / float(gaffe_room))
 
 	for i in count:
 		var card := DataDB.get_card(str(hand[i]))
@@ -1010,7 +1010,7 @@ func _best_first_card(engine: BattleEngine) -> String:
 			var guard := float(fx.get("guard", 0))
 			var useful := minf(guard, maxf(incoming - float(state.block), 0.0))
 			value += useful + 0.3 * (guard - useful)
-		value += DRAW_VALUE * float(fx.get("draw", 0))
+		value += _draw_value * float(fx.get("draw", 0))
 		var gaffe := int(fx.get("gaffe", 0))
 		if gaffe > 0:
 			value -= price * float(gaffe)
