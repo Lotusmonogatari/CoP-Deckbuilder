@@ -739,3 +739,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Strategy playtest: 168 bot runs at Funds, Election Strength and Party support (2026-11-02, Cameron)
 - Campaign Pressure: Relaxed, Standard, Harder (2026-11-02, Cameron)
 - Decisions from the strategy playtest (2026-11-02, Cameron)
+- Protagonist x Campaign Pressure playtest (2026-11-02, Cameron)

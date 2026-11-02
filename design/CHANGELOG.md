@@ -3051,3 +3051,7 @@ Addendum, same day: the bots never bought the Funds-cap petition (SH13), so the 
 | Gaffes and awareness | Leftover gaffes now add up over the whole run (`GameState.awareness_gaffe_tally`, saved). Every 65 cost 1 District awareness and every 35 cost 1 National (Balance: `Awareness Gaffes Per District Point`, `... Per National Point`). Was 1 point of each per gaffe. The stage result line explains the rule. The tiers' awareness percent still scales how fast the tally grows. |
 | Dues | `Dues: Reward Percent` 30 to 15. To keep the Campaign Pressure tiers in order, Relaxed is 10 and Harder 20 (were 15 and 35). |
 | Not changed | A grace week, lower base and step, and any hint about the Funds-cap petition (SH13) |
+
+## Protagonist x Campaign Pressure playtest (2026-11-02, Cameron)
+
+144 bot runs (4 protagonists, 3 tiers, 3 strategies, 4 seeds). Findings in `design/review/PC_DIFFICULTY_PLAYTEST_2026-11-02.md`; tools `tools/pc_difficulty_report.py`. No game rules changed. Main result: Election Strength now ends exactly on weekly gain x 30 weeks (90 / 75 / 60), so it measures time, not play.
