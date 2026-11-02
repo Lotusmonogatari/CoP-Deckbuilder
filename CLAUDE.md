@@ -727,3 +727,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Bill-room replies fit the question (2026-11-01, Cameron)
 - Every ticker line names an outlet (2026-11-01, Cameron)
 - Open Debate: committees run out of questions, and now say so (2026-11-02, Cameron)
+- The next opponent stepping up gets its own popup (2026-11-02, Cameron)

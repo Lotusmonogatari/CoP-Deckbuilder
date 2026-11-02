@@ -73,8 +73,11 @@ static func player_move(result: Dictionary, stage: Dictionary,
 	# A finished debater comes FIRST. Cameron played a card that beat
 	# opponent four and was told only "1 point short", which described the
 	# leftover while silently skipping the win.
+	# Only the end of the last opponent is said here. A new opponent stepping
+	# up is announced on its own popup (BattleScreen._announce_next_opponent(),
+	# 2026-11-02), so the card's outcome is not mixed up with it.
 	var bout: Dictionary = result.get("bout_won", {})
-	if not bout.is_empty():
+	if not bout.is_empty() and int(bout.get("remaining", 0)) <= 0:
 		parts.append(_bout_won(bout))
 
 	var wanted := int(effect.get("self_plus", 0))

@@ -6144,5 +6144,26 @@
     "english": "No more questions. Argue it out with {opponent}.",
     "placeholders": "opponent",
     "notes": "Line under the Open Debate popup; {opponent} is whoever is in front of you. Draft."
+  },
+  {
+    "key": "battle.next_up.tag",
+    "where": "Battle — phase popup",
+    "english": "Next up",
+    "placeholders": null,
+    "notes": "Small tag above the popup shown when an opponent is beaten and another takes their place (2026-11-02). Draft."
+  },
+  {
+    "key": "battle.next_up.title",
+    "where": "Battle — phase popup",
+    "english": "{next} steps up!",
+    "placeholders": "next",
+    "notes": "Big line of the next-opponent popup; {next} is the opponent now in front of you. Draft."
+  },
+  {
+    "key": "battle.next_up.detail",
+    "where": "Battle — phase popup",
+    "english": "{who} is finished.",
+    "placeholders": "who",
+    "notes": "Line under the next-opponent popup; {who} is the opponent just beaten. Draft."
   }
 ]

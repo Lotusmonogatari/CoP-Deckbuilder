@@ -99,7 +99,7 @@ func test_points_that_bought_nobody_are_reported_as_short() -> void:
 	assert_string_contains(line, "1 point short of the next")
 
 
-func test_a_finished_debater_leads_the_sentence() -> void:
+func test_a_finished_debater_no_longer_crowds_the_cards_outcome() -> void:
 	# The whole of Cameron's note 11: he beat opponent four and the screen
 	# told him only that a point had been wasted.
 	var result := {
@@ -109,8 +109,9 @@ func test_a_finished_debater_leads_the_sentence() -> void:
 	}
 	var line := BattleNarration.player_move(result, SEATS, _state(_room()), "")
 
-	assert_true(line.begins_with("Opponent 4 is finished — Opponent 5 rises"),
-		"the win is the news, not the leftover: got '%s'" % line)
+	assert_false(line.contains("rises") or line.contains("finished"),
+		"the next opponent has its own popup now: got '%s'" % line)
+	assert_false(line.is_empty(), "the card's own outcome is still said")
 	assert_false(line.contains("short"),
 		"a shortfall beside a win is what confused him in the first place")
 

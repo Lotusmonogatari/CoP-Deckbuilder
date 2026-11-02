@@ -2919,3 +2919,7 @@ The Office news ticker now names one of the seven canonical outlets in every lin
 - Tests: `test_questions.gd` (five open-debate cases) and `test_cue_banner.gd` (the phase band).
 
 **Not changed.** The rule that committees deal one shared queue. Whether each committee opponent should get fresh questions is Cameron's call.
+
+### The next opponent stepping up gets its own popup (2026-11-02, Cameron)
+
+When a card or the clock finished an opponent, the card's outcome line began "X is finished — Y rises" and the announcement was lost in it. It now has its own gold PHASE popup (the one made for Open Debate): tag "Next up", line "{next} steps up!", detail "{who} is finished." It shows after the card's own line (or after the opponent's move, when the clock ended the bout) and before the Open Debate popup if both apply. The card's outcome line no longer mentions the handover. Beating the last opponent is unchanged: there is nobody to step up, so "X is finished" stays in the outcome line. Text rows `battle.next_up.tag`, `.title`, `.detail` (drafts). `test_battle_narration.gd` follows.

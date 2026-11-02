@@ -415,6 +415,24 @@ func _announce_question() -> void:
 		Text.say("battle.question_prompt", {"question": str(question.get("text", ""))}))
 
 
+## The popup for the next opponent stepping up (2026-11-02): the gold PHASE
+## band, shown when a bout was just won and another opponent takes over. It
+## used to ride along inside the card's outcome line ("X is finished — Y
+## rises"), which buried it. `bout` is the engine's own "bout_won" record;
+## nothing is said when it is empty or when the beaten opponent was the last.
+func _announce_next_opponent(bout: Variant) -> void:
+	if not (bout is Dictionary) or (bout as Dictionary).is_empty():
+		return
+	if int((bout as Dictionary).get("remaining", 0)) <= 0 or engine == null or engine.state.is_over():
+		return
+	var finished := str((bout as Dictionary).get("finished", "")).strip_edges()
+	if finished.is_empty():
+		finished = Text.say("narration.that_opponent")
+	_banner.say(CueBanner.PHASE, Text.say("battle.next_up.tag"),
+		Text.say("battle.next_up.title", {"next": OpponentPresenter.display_name(engine)}),
+		Text.say("battle.next_up.detail", {"who": finished}))
+
+
 ## The popup for a room that has run out of questions but not of opponents
 ## (2026-11-02): "Open Debate!" on the CueBanner's gold PHASE band, once per
 ## stage. Called wherever a turn can begin (the stage's start, the end of a
@@ -993,8 +1011,9 @@ func _play_card_now(card_id: String, discards: Array) -> void:
 		Audio.say(CardCues.speaker(), str(cue["line_id"]))
 	else:
 		_banner.say(CueBanner.PLAYER, me, did)
-	# A card that finished a bout starts the next one at once; if the questions
-	# are already used up, that bout is an open debate from its first turn.
+	# A card that finished a bout starts the next one at once: say who steps
+	# up, and if the questions are already used up, that it is an open debate.
+	_announce_next_opponent(result.get("bout_won", {}))
 	_announce_open_debate()
 
 
@@ -1078,8 +1097,10 @@ func _on_end_turn() -> void:
 	# a card — the same news, from the other end of the turn.
 	var bout: Dictionary = result.get("bout_won", {})
 	if not bout.is_empty():
-		lines.append(BattleNarration.player_move(
-			{"bout_won": bout}, _stage, engine.state, speaker))
+		var finished_line := BattleNarration.player_move(
+			{"bout_won": bout}, _stage, engine.state, speaker)
+		if not finished_line.is_empty():
+			lines.append(finished_line)
 
 	if asks_questions:
 		# The CueBanner here is ONLY ever the question or the opponent's own
@@ -1104,6 +1125,7 @@ func _on_end_turn() -> void:
 	if not engine.state.is_over():
 		EventBus.turn_started.emit(engine.state.turn)
 		EventBus.intent_revealed.emit(engine.current_intent())
+		_announce_next_opponent(bout)
 		_announce_question()
 
 
