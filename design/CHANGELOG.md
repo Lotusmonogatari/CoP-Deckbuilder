@@ -2940,3 +2940,13 @@ Reviewed against §7.9 by simulating every transition in all 101 levels (396 sta
 `StageTransition.pick_speakers()` and `resolve()` take `staff_chance` and `avoid` (both optional); the speaker record carries a `line_key`. Eight of the new media lines were reworded because the every-room rule (`test_generic_transition_lines_fit_every_room`) bans press words in lines that fit any stage. Tests: `test_stage_transition.gd` (staff chance, last speaker, heard lines, heard thoughts, all 21 staff can speak, ST23 shows one).
 
 **Left as it was (decisions for Cameron):** every transition happens over the Office picture in 83% of cases (Keep Office, Cameron); 53 of 56 cast opponents have no drawn picture, so the speaker is a blank box; each cast opponent has exactly one line per stage, so the same line returns every time the stage is played; four Office Hours handoffs and the Media Ambush rooms have no transition (Media Ambush by design); Transition Speaker Count is 1 everywhere.
+
+### Party leaders speak before the Floor Vote (2026-11-02, Cameron)
+
+Cameron pointed to the Opponents tab's Title column, where some people hold several titles separated by "; ", party leader among them. Six rows read "Leader of the ...": OP10 Aki Rono (Prime Minister; Yezo Heritage Party), OP27 Ichizaki Namu (President and Speaker of the National Assembly; Frontier Party), OP67 Okabe Hideriai (Country Initiative), OP80 Soma Umehori (Five Point Independents), OP83 Teinei Macmillan (Keizaijiyuutou), OP91 Utemaru Naizen (Minister of Ethics and Prosecution; Butsutou). They match Parties' Leader Opp ID exactly, so nobody needed deciding.
+
+- **Cast at ST23.** The six are in Transition Cast for ST23, each with four lines for the eve of a vote (24 rows, TD2264-TD2287), neutral about how anyone votes since that depends on the bill. OP10 and OP83 had no transition lines before; OP27 and OP80 had one. Drafts for Cameron to rewrite.
+- **Party leader title kept.** `OpponentDisplay.title_for()` still shows only the first title (so Naizen reads "Minister of Ethics and Prosecution" in battle). New `OpponentDisplay.party_leader_title()` finds the "Leader of ..." part, and the name under a speaker on the transition screen uses it ("Ichizaki Namu, Leader of the Frontier Party").
+- Tests in `test_stage_transition.gd`: the title is found among several, and every party's leader is cast at ST23 with at least four lines.
+
+None of the six leaders has a drawn picture yet except as a placeholder.

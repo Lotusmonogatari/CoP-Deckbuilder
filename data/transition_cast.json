@@ -1183,5 +1183,35 @@
     "transition_cast_id": "TC237",
     "stage_id": null,
     "character_id": "SF21"
+  },
+  {
+    "transition_cast_id": "TC238",
+    "stage_id": "ST23",
+    "character_id": "OP10"
+  },
+  {
+    "transition_cast_id": "TC239",
+    "stage_id": "ST23",
+    "character_id": "OP27"
+  },
+  {
+    "transition_cast_id": "TC240",
+    "stage_id": "ST23",
+    "character_id": "OP67"
+  },
+  {
+    "transition_cast_id": "TC241",
+    "stage_id": "ST23",
+    "character_id": "OP80"
+  },
+  {
+    "transition_cast_id": "TC242",
+    "stage_id": "ST23",
+    "character_id": "OP83"
+  },
+  {
+    "transition_cast_id": "TC243",
+    "stage_id": "ST23",
+    "character_id": "OP91"
   }
 ]

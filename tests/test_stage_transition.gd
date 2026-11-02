@@ -330,3 +330,28 @@ func test_every_staff_candidate_can_speak_in_a_transition() -> void:
 
 func test_the_floor_vote_gets_a_transition() -> void:
 	assert_true(StageTransition.should_show(DataDB.get_stage("ST23")))
+
+
+func test_a_party_leader_title_is_found_among_several_titles() -> void:
+	var naizen := {"title": "Minister of Ethics and Prosecution; Chair of the Committee on Ethics and Prosecution; Leader of the Butsutou"}
+	assert_eq(OpponentDisplay.party_leader_title(naizen), "Leader of the Butsutou")
+	assert_eq(OpponentDisplay.title_for(naizen), "Minister of Ethics and Prosecution",
+		"the first-title rule is unchanged elsewhere")
+	assert_eq(OpponentDisplay.party_leader_title({"title": "Prime Minister"}), "")
+	assert_eq(OpponentDisplay.party_leader_title({"title": null}), "")
+
+
+func test_every_party_leader_is_cast_at_the_floor_vote() -> void:
+	# The leaders come from the Title column ("Leader of the ..."), which agrees
+	# with Parties' Leader Opp ID; each is cast at ST23 with lines written for it.
+	for party: Dictionary in DataDB.parties:
+		var leader_id := str(party.get("leader_opp_id", ""))
+		assert_false(leader_id.is_empty(), "%s has a leader" % party.get("name"))
+		assert_ne(OpponentDisplay.party_leader_title(DataDB.get_opponent(leader_id)), "",
+			"%s's Title column says they lead a party" % leader_id)
+		var cast := DataDB.transition_cast.filter(func(row: Dictionary) -> bool:
+			return str(row.get("character_id", "")) == leader_id and str(row.get("stage_id", "")) == "ST23")
+		assert_false(cast.is_empty(), "%s is cast at ST23" % leader_id)
+		var lines := DataDB.transition_dialogue.filter(func(row: Dictionary) -> bool:
+			return str(row.get("character_id", "")) == leader_id and str(row.get("stage_id", "")) == "ST23")
+		assert_gte(lines.size(), 4, "%s has lines for the vote" % leader_id)

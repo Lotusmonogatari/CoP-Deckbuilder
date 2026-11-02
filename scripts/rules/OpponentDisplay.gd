@@ -35,6 +35,22 @@ static func title_for(opponent: Dictionary) -> String:
 	return _first_part(opponent.get("role"))
 
 
+## The party-leader title among an opponent's titles ("Leader of the Butsutou"),
+## or "" when they do not lead a party (2026-11-02). title_for() shows only the
+## first title, so a leader whose first post is a ministry or the Speakership
+## never showed it; party leader is the one title the game must not lose
+## (Cameron), so a screen about a vote can ask for it directly.
+static func party_leader_title(opponent: Dictionary) -> String:
+	var titles: Variant = opponent.get("title")
+	if titles == null:
+		return ""
+	for part: String in str(titles).split(";"):
+		var title := part.strip_edges()
+		if title.begins_with("Leader of"):
+			return title
+	return ""
+
+
 static func _first_part(value: Variant) -> String:
 	if value == null:
 		return ""

@@ -153,7 +153,7 @@ func _show_speaker(index: int) -> void:
 
 	_speaker_portrait.art_id = character_id
 	_speaker_portrait.visible = true
-	_speaker_name.text = _display_name(character_id)
+	_speaker_name.text = _label_for(character_id)
 	_speaker_name.visible = true
 
 	_speaker_portrait.position.x = _speaker_rest_x + SLIDE_OFFSET
@@ -169,6 +169,17 @@ func _show_speaker(index: int) -> void:
 ## already uses for every staff cue.
 func _banner_side(character_id: String) -> int:
 	return CueBanner.OPPONENT if StageTransition.character_kind(character_id) == "opponent" else CueBanner.PLAYER
+
+
+## The name under the speaker's portrait: a party leader carries their party
+## title, since the first-title rule would otherwise hide it behind a ministry
+## or the Speakership (OpponentDisplay.party_leader_title()).
+func _label_for(character_id: String) -> String:
+	var name := _display_name(character_id)
+	if StageTransition.character_kind(character_id) != "opponent":
+		return name
+	var leader_title := OpponentDisplay.party_leader_title(DataDB.get_opponent(character_id))
+	return name if leader_title.is_empty() else Text.say("battle.name_and_title", {"name": name, "title": leader_title})
 
 
 func _display_name(character_id: String) -> String:

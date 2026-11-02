@@ -23708,5 +23708,245 @@
     "bill_id": null,
     "stance": null,
     "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2264",
+    "character_id": "OP10",
+    "stage_id": "ST23",
+    "character_line_en": "Every seat in this chamber counts tonight, including yours.",
+    "player_reply_en": "I will cast it carefully.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2265",
+    "character_id": "OP10",
+    "stage_id": "ST23",
+    "character_line_en": "I have held this office long enough to know a close vote when I see one.",
+    "player_reply_en": "Then I will not take it lightly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2266",
+    "character_id": "OP10",
+    "stage_id": "ST23",
+    "character_line_en": "My members know where I stand. Yours should know where you do.",
+    "player_reply_en": "They will.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2267",
+    "character_id": "OP10",
+    "stage_id": "ST23",
+    "character_line_en": "Vote what you can defend tomorrow morning.",
+    "player_reply_en": "That is the standard I use.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2268",
+    "character_id": "OP27",
+    "stage_id": "ST23",
+    "character_line_en": "The chamber will come to order shortly. Take your seat.",
+    "player_reply_en": "Thank you. I am ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2269",
+    "character_id": "OP27",
+    "stage_id": "ST23",
+    "character_line_en": "A vote is a vote, whatever the speeches said.",
+    "player_reply_en": "Then the speeches are done.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2270",
+    "character_id": "OP27",
+    "stage_id": "ST23",
+    "character_line_en": "I will count every card the same. So should you.",
+    "player_reply_en": "Every card counts.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2271",
+    "character_id": "OP27",
+    "stage_id": "ST23",
+    "character_line_en": "Once the vote begins, there is no calling it back.",
+    "player_reply_en": "Then I will be sure first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2272",
+    "character_id": "OP67",
+    "stage_id": "ST23",
+    "character_line_en": "Think of what this country will remember about tonight.",
+    "player_reply_en": "I am thinking of it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2273",
+    "character_id": "OP67",
+    "stage_id": "ST23",
+    "character_line_en": "My party will watch how you vote more closely than you expect.",
+    "player_reply_en": "Then I will vote in a way I can explain.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2274",
+    "character_id": "OP67",
+    "stage_id": "ST23",
+    "character_line_en": "A vote cast for the moment is forgotten. One cast for the country is not.",
+    "player_reply_en": "I will aim for the second.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2275",
+    "character_id": "OP67",
+    "stage_id": "ST23",
+    "character_line_en": "I will not tell you how to vote. I will tell you to vote with your eyes open.",
+    "player_reply_en": "Eyes open, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2276",
+    "character_id": "OP80",
+    "stage_id": "ST23",
+    "character_line_en": "We are five seats. Every one of ours is spoken for, and every one of yours is not.",
+    "player_reply_en": "Then I have a choice to make.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2277",
+    "character_id": "OP80",
+    "stage_id": "ST23",
+    "character_line_en": "Small parties decide close votes. I do not take that lightly.",
+    "player_reply_en": "Neither should I.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2278",
+    "character_id": "OP80",
+    "stage_id": "ST23",
+    "character_line_en": "Independents answer to nobody, which is why we answer to everybody.",
+    "player_reply_en": "That is a hard standard.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2279",
+    "character_id": "OP80",
+    "stage_id": "ST23",
+    "character_line_en": "Count the seats yourself before you decide.",
+    "player_reply_en": "I already have.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2280",
+    "character_id": "OP83",
+    "stage_id": "ST23",
+    "character_line_en": "Whatever you decide, know the cost of it first.",
+    "player_reply_en": "I will know the cost.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2281",
+    "character_id": "OP83",
+    "stage_id": "ST23",
+    "character_line_en": "I have seen votes that looked free and turned out to be expensive.",
+    "player_reply_en": "Then I will read the fine print.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2282",
+    "character_id": "OP83",
+    "stage_id": "ST23",
+    "character_line_en": "My party will weigh this on what it costs and who pays.",
+    "player_reply_en": "A fair test.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2283",
+    "character_id": "OP83",
+    "stage_id": "ST23",
+    "character_line_en": "A vote is a spending decision. Treat it like one.",
+    "player_reply_en": "Every yen accounted for.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2284",
+    "character_id": "OP91",
+    "stage_id": "ST23",
+    "character_line_en": "Cast your vote as though it will be read aloud.",
+    "player_reply_en": "Then I will cast it plainly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2285",
+    "character_id": "OP91",
+    "stage_id": "ST23",
+    "character_line_en": "I answer for my party's vote. You answer for yours.",
+    "player_reply_en": "I will answer for mine.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2286",
+    "character_id": "OP91",
+    "stage_id": "ST23",
+    "character_line_en": "Votes can be bought. Consciences should not be.",
+    "player_reply_en": "Mine is not for sale.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2287",
+    "character_id": "OP91",
+    "stage_id": "ST23",
+    "character_line_en": "Be able to explain every vote you cast tonight.",
+    "player_reply_en": "I will be able to.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
   }
 ]
