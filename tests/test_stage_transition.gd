@@ -355,3 +355,165 @@ func test_every_party_leader_is_cast_at_the_floor_vote() -> void:
 		var lines := DataDB.transition_dialogue.filter(func(row: Dictionary) -> bool:
 			return str(row.get("character_id", "")) == leader_id and str(row.get("stage_id", "")) == "ST23")
 		assert_gte(lines.size(), 4, "%s has lines for the vote" % leader_id)
+
+
+# ---------------------------------------------------------------------------
+# An opponent who speaks is the opponent in the stage that follows (2026-11-02)
+# ---------------------------------------------------------------------------
+
+func _opponent_room() -> Array:
+	var cast := [
+		{"transition_cast_id": "TC01", "stage_id": "ST02", "character_id": "OP03"},
+		{"transition_cast_id": "TC02", "stage_id": "ST02", "character_id": "OP04"},
+		{"transition_cast_id": "TC03", "stage_id": "ST02", "character_id": "OP05"},
+	]
+	var dialogue: Array = []
+	for who in ["OP03", "OP04", "OP05"]:
+		dialogue.append({"transition_dialogue_id": "TD" + who, "stage_id": "ST02", "character_id": who,
+			"character_line_en": who + " line.", "player_reply_en": "Ok."})
+	return [cast, dialogue]
+
+
+func test_a_speaker_must_be_eligible_for_the_stage_that_follows() -> void:
+	var room := _opponent_room()
+	var lock := {"drawn": ["OP03"], "eligible": ["OP03", "OP04"], "seats": 1}
+	for seed_value in range(1, 31):
+		var picked := StageTransition.pick_speakers(room[0], room[1], "ST02", 1, _rng(seed_value),
+			null, "", "", [], -1, {}, lock)
+		assert_ne(picked[0]["character_id"], "OP05", "OP05 may not sit in that stage")
+
+
+func test_a_speaker_already_drawn_for_the_stage_is_preferred() -> void:
+	var room := _opponent_room()
+	var lock := {"drawn": ["OP04"], "eligible": ["OP03", "OP04", "OP05"], "seats": 1}
+	for seed_value in range(1, 31):
+		var picked := StageTransition.pick_speakers(room[0], room[1], "ST02", 1, _rng(seed_value),
+			null, "", "", [], -1, {}, lock)
+		assert_eq(picked[0]["character_id"], "OP04", "the drawn opponent speaks, so nobody is swapped in")
+
+
+func test_with_nobody_drawn_an_eligible_cast_opponent_may_still_speak() -> void:
+	# A swap-in: the stage had somebody else (or an empty draw), the speaker is locked in.
+	var room := _opponent_room()
+	var lock := {"drawn": ["OP09"], "eligible": ["OP03", "OP09"], "seats": 1}
+	var picked := StageTransition.pick_speakers(room[0], room[1], "ST02", 1, _rng(1),
+		null, "", "", [], -1, {}, lock)
+	assert_eq(picked[0]["character_id"], "OP03")
+
+
+func test_no_more_opponents_speak_than_the_stage_has_seats() -> void:
+	var room := _opponent_room()
+	var lock := {"drawn": ["OP03", "OP04"], "eligible": ["OP03", "OP04", "OP05"], "seats": 2}
+	for seed_value in range(1, 21):
+		var picked := StageTransition.pick_speakers(room[0], room[1], "ST02", 3, _rng(seed_value),
+			null, "", "", [], -1, {}, lock)
+		assert_eq(picked.size(), 2, "three asked, two seats, so two speak")
+		assert_ne(picked[0]["character_id"], picked[1]["character_id"], "and they are different people")
+
+
+func test_a_stage_with_no_seats_has_no_opponent_speaker() -> void:
+	var room := _opponent_room()
+	var lock := {"drawn": [], "eligible": ["OP03"], "seats": 0}
+	assert_eq(StageTransition.pick_speakers(room[0], room[1], "ST02", 1, _rng(1),
+		null, "", "", [], -1, {}, lock).size(), 0)
+
+
+func test_lock_opponents_seats_the_speakers_first_and_keeps_the_seat_count() -> void:
+	var table := {"A": {"opp_id": "A"}, "B": {"opp_id": "B"}, "C": {"opp_id": "C"}}
+	var drawn := [{"opp_id": "A"}, {"opp_id": "B"}]
+	assert_eq(StageTransition.lock_opponents(drawn, ["B"], table), [{"opp_id": "B"}, {"opp_id": "A"}],
+		"a speaker already drawn moves to the front")
+	assert_eq(StageTransition.lock_opponents(drawn, ["C"], table), [{"opp_id": "C"}, {"opp_id": "A"}],
+		"a swap-in takes a seat and the last drawn gives way")
+	assert_eq(StageTransition.lock_opponents(drawn, ["C", "B"], table), [{"opp_id": "C"}, {"opp_id": "B"}],
+		"both speakers sit, in the order they spoke")
+	assert_eq(StageTransition.lock_opponents(drawn, [], table), drawn, "nobody spoke: unchanged")
+
+
+func test_opponent_speakers_leaves_staff_out() -> void:
+	var speakers := [{"character_id": "SF01"}, {"character_id": "OP07"}, {"character_id": "OP09"}]
+	assert_eq(StageTransition.opponent_speakers(speakers), ["OP07", "OP09"] as Array[String])
+
+
+func test_reseating_a_stage_moves_the_met_counts() -> void:
+	GameState.start_new_run("PC01")
+	var runner := LevelRunner.new({"level_id": "T", "stages": [{"stage_id": "ST02", "seq": 1,
+		"opponents": [{"opp_id": "OP03"}]}]})
+	GameState.level_runner = runner
+	GameState.faced_people = {"OP03": 1}
+	GameState.reseat_current_stage([{"opp_id": "OP04"}])
+	assert_eq(runner.current_stage()["opponents"], [{"opp_id": "OP04"}])
+	assert_eq(int(GameState.faced_people.get("OP03", 0)), 0)
+	assert_eq(int(GameState.faced_people.get("OP04", 0)), 1)
+
+
+# ---------------------------------------------------------------------------
+# Two speakers (2026-11-02): the path the Transition Speaker Count column opens
+# ---------------------------------------------------------------------------
+
+func test_two_speakers_are_two_different_people_each_with_their_own_exchange() -> void:
+	var room := _opponent_room()
+	var speakers := StageTransition.pick_speakers(room[0], room[1], "ST02", 2, _rng(5))
+	assert_eq(speakers.size(), 2)
+	assert_ne(speakers[0]["character_id"], speakers[1]["character_id"])
+	for speaker: Dictionary in speakers:
+		assert_eq(speaker["character_line"], str(speaker["character_id"]) + " line.")
+		assert_false(str(speaker["player_reply"]).is_empty())
+
+
+func test_a_staff_member_and_an_opponent_can_share_one_transition() -> void:
+	var room := _mixed_room()
+	var speakers := StageTransition.pick_speakers(room[0], room[1], "ST02", 2, _rng(2), ["SF01"])
+	var ids: Array = speakers.map(func(speaker: Dictionary) -> String: return str(speaker["character_id"]))
+	assert_eq(ids.size(), 2)
+	assert_true(ids.has("SF01") and ids.has("OP03"))
+
+
+func test_the_speaker_count_column_asks_for_two_only_where_two_opponents_can_sit() -> void:
+	for stage: Dictionary in DataDB.stages:
+		if StageTransition.speaker_count(stage) < 2:
+			continue
+		var stage_id := str(stage.get("stage_id", ""))
+		var seats := int((stage.get("opponent_count") as Dictionary).get("max", 1)) if stage.get("opponent_count") is Dictionary else 1
+		assert_gte(seats, 2, "%s asks for two speakers but seats %d" % [stage_id, seats])
+		var eligible_ids: Array = BattleSetup.eligible_opponents(stage_id).map(
+			func(opponent: Dictionary) -> String: return str(opponent.get("opp_id", "")))
+		var cast_here := DataDB.transition_cast.filter(func(row: Dictionary) -> bool:
+			return str(row.get("stage_id", "")) == stage_id and str(row.get("character_id", "")) in eligible_ids)
+		assert_gte(cast_here.size(), 2, "%s has two cast opponents who can sit there" % stage_id)
+
+
+# ---------------------------------------------------------------------------
+# Content (2026-11-02)
+# ---------------------------------------------------------------------------
+
+func test_every_opponent_who_appears_in_a_transition_has_at_least_four_lines() -> void:
+	var cast_ids := {}
+	for row: Dictionary in DataDB.transition_cast:
+		var cid := str(row.get("character_id", ""))
+		if StageTransition.character_kind(cid) == "opponent":
+			cast_ids[cid] = true
+	for cid: String in cast_ids:
+		var lines := DataDB.transition_dialogue.filter(func(row: Dictionary) -> bool:
+			return str(row.get("character_id", "")) == cid)
+		var general := lines.filter(func(row: Dictionary) -> bool:
+			return row.get("stage_id") == null and row.get("bill_id") == null)
+		assert_gte(lines.size(), 4, "%s has several lines to say" % cid)
+		assert_gte(general.size(), 3, "%s has three lines that fit any of their rooms" % cid)
+
+
+func test_no_transition_row_is_tied_to_a_stage_that_never_shows_one() -> void:
+	var shown := {}
+	for stage: Dictionary in DataDB.stages:
+		if StageTransition.should_show(stage):
+			shown[str(stage.get("stage_id", ""))] = true
+	var tables := {"cast": DataDB.transition_cast, "dialogue": DataDB.transition_dialogue,
+		"backgrounds": DataDB.transition_backgrounds}
+	for table_name: String in tables:
+		for row: Dictionary in tables[table_name]:
+			var raw: Variant = row.get("stage_id")
+			if raw == null or str(raw).strip_edges().is_empty():
+				continue
+			for part: String in str(raw).split(";"):
+				assert_true(shown.has(part.strip_edges()),
+					"a %s row is tied to %s, which shows no transition" % [table_name, part.strip_edges()])

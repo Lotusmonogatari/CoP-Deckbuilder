@@ -53,4 +53,4 @@ No test was found that covers a removed feature. The two click tests that `verif
 
 ## From the stage transition review (2026-11-02)
 
-- Transition Dialogue: two rows scoped to ST30 (Media Ambush on Seafood Labeling), and Transition Backgrounds TB for ST30. Media Ambush rooms show no transition, so these are never used.
+- Done 2026-11-02 (Cameron's instruction): the two Transition Dialogue rows tied to ST30 (TD31, TD32) moved to ST29, the harbor town hall in the same level; Transition Backgrounds TB08 (ST30, the Media Ambush room picture) was deleted, since only Media Ambush rooms use that picture and they show no transition.

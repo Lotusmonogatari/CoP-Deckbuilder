@@ -302,7 +302,7 @@
   {
     "transition_dialogue_id": "TD31",
     "character_id": "SF08",
-    "stage_id": "ST30",
+    "stage_id": "ST29",
     "character_line_en": "Cameras are waiting at the dock. Stay calm and brief.",
     "player_reply_en": "Calm and brief.",
     "bill_id": null,
@@ -312,7 +312,7 @@
   {
     "transition_dialogue_id": "TD32",
     "character_id": "SF09",
-    "stage_id": "ST30",
+    "stage_id": "ST29",
     "character_line_en": "They will ask about labels. Know where the catch comes from.",
     "player_reply_en": "I will say what I know.",
     "bill_id": null,
@@ -23945,6 +23945,1746 @@
     "stage_id": "ST23",
     "character_line_en": "Be able to explain every vote you cast tonight.",
     "player_reply_en": "I will be able to.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2288",
+    "character_id": "OP01",
+    "stage_id": null,
+    "character_line_en": "I read the whole file before coming. I hope you did too.",
+    "player_reply_en": "Cover to cover.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2289",
+    "character_id": "OP01",
+    "stage_id": null,
+    "character_line_en": "Independents owe nobody a vote. Earn mine.",
+    "player_reply_en": "Then I will try to earn it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2290",
+    "character_id": "OP01",
+    "stage_id": null,
+    "character_line_en": "I would rather lose honestly than win by pretending.",
+    "player_reply_en": "Then we have that in common.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2291",
+    "character_id": "OP04",
+    "stage_id": null,
+    "character_line_en": "Rules exist so we can disagree without chaos. I like them.",
+    "player_reply_en": "So do I.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2292",
+    "character_id": "OP04",
+    "stage_id": null,
+    "character_line_en": "Speak plainly and I will listen plainly.",
+    "player_reply_en": "Plain it is.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2293",
+    "character_id": "OP04",
+    "stage_id": null,
+    "character_line_en": "I will say what I think and you will say what you think. That is the job.",
+    "player_reply_en": "That is the job.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2294",
+    "character_id": "OP05",
+    "stage_id": null,
+    "character_line_en": "Let us start from the numbers we both accept, if there are any.",
+    "player_reply_en": "A few, I hope.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2295",
+    "character_id": "OP05",
+    "stage_id": null,
+    "character_line_en": "I would like to find common ground. I will also find the weak spot in your plan.",
+    "player_reply_en": "Both at once, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2296",
+    "character_id": "OP05",
+    "stage_id": null,
+    "character_line_en": "The figures are on my side today. I would hate to say so twice.",
+    "player_reply_en": "Then say it once.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2297",
+    "character_id": "OP06",
+    "stage_id": null,
+    "character_line_en": "Farms are not spreadsheets. They are people up before dawn.",
+    "player_reply_en": "I have not forgotten that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2298",
+    "character_id": "OP06",
+    "stage_id": null,
+    "character_line_en": "I am willing to be persuaded by anyone who has visited a field.",
+    "player_reply_en": "Then let me tell you about one.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2299",
+    "character_id": "OP06",
+    "stage_id": null,
+    "character_line_en": "Bring me a number and a face, and I will pay attention to both.",
+    "player_reply_en": "I have both.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2300",
+    "character_id": "OP07",
+    "stage_id": null,
+    "character_line_en": "Everything costs something. I only ask that you say what.",
+    "player_reply_en": "I will say it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2301",
+    "character_id": "OP07",
+    "stage_id": null,
+    "character_line_en": "I am easy to work with, and hard to hurry.",
+    "player_reply_en": "I will not hurry you.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2302",
+    "character_id": "OP07",
+    "stage_id": null,
+    "character_line_en": "A good budget tells the truth about its own limits.",
+    "player_reply_en": "Then mine will be honest.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2303",
+    "character_id": "OP08",
+    "stage_id": null,
+    "character_line_en": "Administration is dull until it fails. Then it is all anyone talks about.",
+    "player_reply_en": "Then let us keep it dull.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2304",
+    "character_id": "OP08",
+    "stage_id": null,
+    "character_line_en": "I will ask the boring question, and I expect a real answer.",
+    "player_reply_en": "You will get one.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2305",
+    "character_id": "OP08",
+    "stage_id": null,
+    "character_line_en": "Show me who is responsible at each step.",
+    "player_reply_en": "Each step has a name.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2306",
+    "character_id": "OP10",
+    "stage_id": null,
+    "character_line_en": "I have heard every argument twice. Surprise me.",
+    "player_reply_en": "I will try.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2307",
+    "character_id": "OP10",
+    "stage_id": null,
+    "character_line_en": "Governing is choosing, and choosing is never popular.",
+    "player_reply_en": "Then I will choose carefully.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2308",
+    "character_id": "OP10",
+    "stage_id": null,
+    "character_line_en": "I respect anyone who comes prepared. I notice who does not.",
+    "player_reply_en": "I came prepared.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2309",
+    "character_id": "OP12",
+    "stage_id": null,
+    "character_line_en": "I prefer a long discussion to a quick vote.",
+    "player_reply_en": "I have time.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2310",
+    "character_id": "OP12",
+    "stage_id": null,
+    "character_line_en": "Let us go through it item by item, calmly.",
+    "player_reply_en": "One item at a time.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2311",
+    "character_id": "OP12",
+    "stage_id": null,
+    "character_line_en": "If we disagree, I would like to know exactly where.",
+    "player_reply_en": "Then let me show you the line.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2312",
+    "character_id": "OP13",
+    "stage_id": null,
+    "character_line_en": "Projects get built by people who finish things. Are you one?",
+    "player_reply_en": "I finish what I start.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2313",
+    "character_id": "OP13",
+    "stage_id": null,
+    "character_line_en": "I like a plan with dates on it. Do you have dates?",
+    "player_reply_en": "I have dates.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2314",
+    "character_id": "OP13",
+    "stage_id": null,
+    "character_line_en": "Be careful. I enjoy pointing out where a plan falls short.",
+    "player_reply_en": "Point away. I am ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2315",
+    "character_id": "OP16",
+    "stage_id": null,
+    "character_line_en": "I want to believe you. Give me a reason.",
+    "player_reply_en": "I will give you several.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2316",
+    "character_id": "OP16",
+    "stage_id": null,
+    "character_line_en": "I have heard promises before, and I remember all of them.",
+    "player_reply_en": "Then I will keep this one.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2317",
+    "character_id": "OP16",
+    "stage_id": null,
+    "character_line_en": "Some questions are better answered slowly. Think before you speak.",
+    "player_reply_en": "I will think.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2318",
+    "character_id": "OP19",
+    "stage_id": null,
+    "character_line_en": "Every road and bridge in my district has a family's name on it.",
+    "player_reply_en": "Then they deserve to be heard.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2319",
+    "character_id": "OP19",
+    "stage_id": null,
+    "character_line_en": "Tell me how this changes things for people I know.",
+    "player_reply_en": "Let me tell you about them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2320",
+    "character_id": "OP19",
+    "stage_id": null,
+    "character_line_en": "I care about the figures, but I care more about the faces.",
+    "player_reply_en": "Both matter.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2321",
+    "character_id": "OP21",
+    "stage_id": null,
+    "character_line_en": "I would rather settle this over tea than by shouting.",
+    "player_reply_en": "Tea sounds good.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2322",
+    "character_id": "OP21",
+    "stage_id": null,
+    "character_line_en": "There is always another way to say it. Let me hear yours.",
+    "player_reply_en": "Here is mine.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2323",
+    "character_id": "OP21",
+    "stage_id": null,
+    "character_line_en": "I am flexible on language. I am not flexible on safety.",
+    "player_reply_en": "Noted.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2324",
+    "character_id": "OP26",
+    "stage_id": null,
+    "character_line_en": "I feel strongly about this. I will not hide it.",
+    "player_reply_en": "I would not ask you to.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2325",
+    "character_id": "OP26",
+    "stage_id": null,
+    "character_line_en": "Not everything I say is the whole story. Be careful.",
+    "player_reply_en": "I always am.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2326",
+    "character_id": "OP26",
+    "stage_id": null,
+    "character_line_en": "I know exactly where you are weakest. I may or may not use it.",
+    "player_reply_en": "Then I will stay strong.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2327",
+    "character_id": "OP27",
+    "stage_id": null,
+    "character_line_en": "I have presided over worse days than this one.",
+    "player_reply_en": "I will not make it worse.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2328",
+    "character_id": "OP27",
+    "stage_id": null,
+    "character_line_en": "Everyone speaks. I only ask that they also listen.",
+    "player_reply_en": "I will listen.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2329",
+    "character_id": "OP27",
+    "stage_id": null,
+    "character_line_en": "I hold this chair for every member, including those who disagree with me.",
+    "player_reply_en": "That is how it should be.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2330",
+    "character_id": "OP28",
+    "stage_id": null,
+    "character_line_en": "I would like us to leave this room agreeing on something.",
+    "player_reply_en": "Let us find that something.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2331",
+    "character_id": "OP28",
+    "stage_id": null,
+    "character_line_en": "Procedure is only as good as the people following it.",
+    "player_reply_en": "Then let us follow it well.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2332",
+    "character_id": "OP28",
+    "stage_id": null,
+    "character_line_en": "I read your record. There is more to agree with than I expected.",
+    "player_reply_en": "That is kind of you.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2333",
+    "character_id": "OP29",
+    "stage_id": null,
+    "character_line_en": "Every harvest depends on a decision made in rooms like this.",
+    "player_reply_en": "Then I will treat it seriously.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2334",
+    "character_id": "OP29",
+    "stage_id": null,
+    "character_line_en": "I answer to farmers first and to the Assembly second.",
+    "player_reply_en": "I understand.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2335",
+    "character_id": "OP29",
+    "stage_id": null,
+    "character_line_en": "Bring me your best argument and your best manners.",
+    "player_reply_en": "I brought both.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2336",
+    "character_id": "OP33",
+    "stage_id": null,
+    "character_line_en": "The land does not vote, so I speak for it.",
+    "player_reply_en": "Then I will listen on its behalf.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2337",
+    "character_id": "OP33",
+    "stage_id": null,
+    "character_line_en": "I would like to hear what you can offer, not only what you oppose.",
+    "player_reply_en": "Plenty to offer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2338",
+    "character_id": "OP33",
+    "stage_id": null,
+    "character_line_en": "Facts first, then feelings. I find the order helps.",
+    "player_reply_en": "Facts first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2339",
+    "character_id": "OP34",
+    "stage_id": null,
+    "character_line_en": "I take integrity seriously, and I notice who does not.",
+    "player_reply_en": "I hope you notice me.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2340",
+    "character_id": "OP34",
+    "stage_id": null,
+    "character_line_en": "A good answer and an honest answer are not always the same.",
+    "player_reply_en": "Mine will be both.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2341",
+    "character_id": "OP34",
+    "stage_id": null,
+    "character_line_en": "I will give you every chance to be straightforward.",
+    "player_reply_en": "I will take it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2342",
+    "character_id": "OP37",
+    "stage_id": null,
+    "character_line_en": "I get attached to causes. Fair warning.",
+    "player_reply_en": "Noted. So do I.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2343",
+    "character_id": "OP37",
+    "stage_id": null,
+    "character_line_en": "I will smile and still disagree. Do not mistake the first for the second.",
+    "player_reply_en": "I will not.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2344",
+    "character_id": "OP37",
+    "stage_id": null,
+    "character_line_en": "Show me data, and I will pretend I was never worried.",
+    "player_reply_en": "I have data.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2345",
+    "character_id": "OP42",
+    "stage_id": null,
+    "character_line_en": "I prefer evidence to opinion, and I will ask for it.",
+    "player_reply_en": "It is here.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2346",
+    "character_id": "OP42",
+    "stage_id": null,
+    "character_line_en": "I have no patience for slogans.",
+    "player_reply_en": "Then I will skip them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2347",
+    "character_id": "OP42",
+    "stage_id": null,
+    "character_line_en": "Let us keep it honest and keep it short.",
+    "player_reply_en": "Honest and short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2348",
+    "character_id": "OP46",
+    "stage_id": null,
+    "character_line_en": "I grew up thinking about what grows and what does not.",
+    "player_reply_en": "Then you will understand this.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2349",
+    "character_id": "OP46",
+    "stage_id": null,
+    "character_line_en": "I will listen as long as you are sincere.",
+    "player_reply_en": "I am.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2350",
+    "character_id": "OP46",
+    "stage_id": null,
+    "character_line_en": "A fair deal is one both sides can live with tomorrow.",
+    "player_reply_en": "That is my aim.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2351",
+    "character_id": "OP47",
+    "stage_id": null,
+    "character_line_en": "Every figure I quote has a source. Expect to be asked for yours.",
+    "player_reply_en": "Mine are ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2352",
+    "character_id": "OP47",
+    "stage_id": null,
+    "character_line_en": "I will compromise on timing before I compromise on arithmetic.",
+    "player_reply_en": "Arithmetic first, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2353",
+    "character_id": "OP47",
+    "stage_id": null,
+    "character_line_en": "Be precise. The ledger does not forgive vagueness.",
+    "player_reply_en": "Precise it is.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2354",
+    "character_id": "OP52",
+    "stage_id": null,
+    "character_line_en": "I am happy to cooperate. Up to a point.",
+    "player_reply_en": "And where is the point?",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2355",
+    "character_id": "OP52",
+    "stage_id": null,
+    "character_line_en": "A friendly tone costs nothing, and it tells you nothing.",
+    "player_reply_en": "I will remember that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2356",
+    "character_id": "OP52",
+    "stage_id": null,
+    "character_line_en": "I always have another move in mind. Do you?",
+    "player_reply_en": "I have a few.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2357",
+    "character_id": "OP59",
+    "stage_id": null,
+    "character_line_en": "Other countries are watching how we argue. Mind your manners.",
+    "player_reply_en": "I always do.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2358",
+    "character_id": "OP59",
+    "stage_id": null,
+    "character_line_en": "I will ask what this means for our neighbors.",
+    "player_reply_en": "I have thought about them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2359",
+    "character_id": "OP59",
+    "stage_id": null,
+    "character_line_en": "Honest answers travel further than clever ones.",
+    "player_reply_en": "Then I will stay honest.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2360",
+    "character_id": "OP61",
+    "stage_id": null,
+    "character_line_en": "I work through the briefing line by line before I speak.",
+    "player_reply_en": "Then I will be ready for it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2361",
+    "character_id": "OP61",
+    "stage_id": null,
+    "character_line_en": "Treaties are only as good as the trust behind them.",
+    "player_reply_en": "Then I will build that trust.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2362",
+    "character_id": "OP61",
+    "stage_id": null,
+    "character_line_en": "I would rather hear a hard truth than a soft promise.",
+    "player_reply_en": "You will hear the truth.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2363",
+    "character_id": "OP66",
+    "stage_id": null,
+    "character_line_en": "I will be polite. I will also be difficult.",
+    "player_reply_en": "Both are fine with me.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2364",
+    "character_id": "OP66",
+    "stage_id": null,
+    "character_line_en": "Defense is expensive and so is being wrong about it.",
+    "player_reply_en": "Then let us get it right.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2365",
+    "character_id": "OP66",
+    "stage_id": null,
+    "character_line_en": "Make your case with numbers and I will look for the weak one.",
+    "player_reply_en": "There is no weak one.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2366",
+    "character_id": "OP67",
+    "stage_id": null,
+    "character_line_en": "I have seen many Assemblies. This one is no worse than the others.",
+    "player_reply_en": "That is generous.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2367",
+    "character_id": "OP67",
+    "stage_id": null,
+    "character_line_en": "A country is more than its budget. Remember that.",
+    "player_reply_en": "I do.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2368",
+    "character_id": "OP67",
+    "stage_id": null,
+    "character_line_en": "Speak to what we are, and not only to what we want.",
+    "player_reply_en": "Then I will start with that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2369",
+    "character_id": "OP70",
+    "stage_id": null,
+    "character_line_en": "I carry the voices of my district in here. They are loud.",
+    "player_reply_en": "Let me hear them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2370",
+    "character_id": "OP70",
+    "stage_id": null,
+    "character_line_en": "I only want to be sure the people I represent are not forgotten.",
+    "player_reply_en": "They will not be.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2371",
+    "character_id": "OP70",
+    "stage_id": null,
+    "character_line_en": "You can disagree with me and still be welcome here.",
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2372",
+    "character_id": "OP72",
+    "stage_id": null,
+    "character_line_en": "I believe in saying what I mean, mostly.",
+    "player_reply_en": "Mostly is honest.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2373",
+    "character_id": "OP72",
+    "stage_id": null,
+    "character_line_en": "Diplomacy is the art of saying hard things gently.",
+    "player_reply_en": "I am practicing.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2374",
+    "character_id": "OP72",
+    "stage_id": null,
+    "character_line_en": "Do not read too much into my silences.",
+    "player_reply_en": "I will try not to.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2375",
+    "character_id": "OP78",
+    "stage_id": null,
+    "character_line_en": "I run a ministry. I know the cost of a half-finished idea.",
+    "player_reply_en": "Mine is finished.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2376",
+    "character_id": "OP78",
+    "stage_id": null,
+    "character_line_en": "I will help you where I can and push you where I must.",
+    "player_reply_en": "Fair enough.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2377",
+    "character_id": "OP78",
+    "stage_id": null,
+    "character_line_en": "Good administration is quiet. Bad administration is loud.",
+    "player_reply_en": "Then let us be quiet.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2378",
+    "character_id": "OP80",
+    "stage_id": null,
+    "character_line_en": "A small party learns to count carefully.",
+    "player_reply_en": "So do I.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2379",
+    "character_id": "OP80",
+    "stage_id": null,
+    "character_line_en": "I speak for five seats and I intend to be heard.",
+    "player_reply_en": "You will be.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2380",
+    "character_id": "OP80",
+    "stage_id": null,
+    "character_line_en": "I say what I mean. I do not always say all of it.",
+    "player_reply_en": "I will read between the lines.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2381",
+    "character_id": "OP82",
+    "stage_id": null,
+    "character_line_en": "Diplomacy means standing firm in a pleasant voice.",
+    "player_reply_en": "I can do both.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2382",
+    "character_id": "OP82",
+    "stage_id": null,
+    "character_line_en": "I do not enjoy being contradicted, but I respect those who try.",
+    "player_reply_en": "Then I will try.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2383",
+    "character_id": "OP82",
+    "stage_id": null,
+    "character_line_en": "Say what you came to say. I will not interrupt twice.",
+    "player_reply_en": "I will say it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2384",
+    "character_id": "OP83",
+    "stage_id": null,
+    "character_line_en": "I would like to be convinced. Please make it worth my while.",
+    "player_reply_en": "I will.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2385",
+    "character_id": "OP83",
+    "stage_id": null,
+    "character_line_en": "Everything has a price, including this conversation.",
+    "player_reply_en": "Then let me make it a good one.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2386",
+    "character_id": "OP83",
+    "stage_id": null,
+    "character_line_en": "I have changed my mind before. It is not as hard as people think.",
+    "player_reply_en": "That gives me hope.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2387",
+    "character_id": "OP86",
+    "stage_id": null,
+    "character_line_en": "I am told I am hard to read. I find that useful.",
+    "player_reply_en": "I will read you anyway.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2388",
+    "character_id": "OP86",
+    "stage_id": null,
+    "character_line_en": "Feelings win rooms. Facts only help afterward.",
+    "player_reply_en": "Then I will bring both.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2389",
+    "character_id": "OP86",
+    "stage_id": null,
+    "character_line_en": "I will agree with you loudly if it helps me, so be careful.",
+    "player_reply_en": "I will be.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2390",
+    "character_id": "OP87",
+    "stage_id": null,
+    "character_line_en": "I do the reading. I expect the same from you.",
+    "player_reply_en": "I did the reading.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2391",
+    "character_id": "OP87",
+    "stage_id": null,
+    "character_line_en": "Plain facts, plainly said. That is all I ask.",
+    "player_reply_en": "That is all I have.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2392",
+    "character_id": "OP87",
+    "stage_id": null,
+    "character_line_en": "If I am wrong, show me. I will say so.",
+    "player_reply_en": "I intend to.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2393",
+    "character_id": "OP91",
+    "stage_id": null,
+    "character_line_en": "I take my office as a trust, not a prize.",
+    "player_reply_en": "As do I.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2394",
+    "character_id": "OP91",
+    "stage_id": null,
+    "character_line_en": "I will hold you to what you say today.",
+    "player_reply_en": "Hold me to it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2395",
+    "character_id": "OP91",
+    "stage_id": null,
+    "character_line_en": "Conscience is not a luxury in this chamber.",
+    "player_reply_en": "It never was.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2396",
+    "character_id": "OP92",
+    "stage_id": null,
+    "character_line_en": "I care about this more than I let on.",
+    "player_reply_en": "I suspected as much.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2397",
+    "character_id": "OP92",
+    "stage_id": null,
+    "character_line_en": "I like to hear everyone out before I show my hand.",
+    "player_reply_en": "Then listen to mine.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2398",
+    "character_id": "OP92",
+    "stage_id": null,
+    "character_line_en": "Friendly faces can still hold hard votes.",
+    "player_reply_en": "I will remember that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2399",
+    "character_id": "OP94",
+    "stage_id": null,
+    "character_line_en": "I am here to find a workable answer, not a winner.",
+    "player_reply_en": "A workable answer, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2400",
+    "character_id": "OP94",
+    "stage_id": null,
+    "character_line_en": "Bring your plan and your doubts. I will take both.",
+    "player_reply_en": "I brought both.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2401",
+    "character_id": "OP94",
+    "stage_id": null,
+    "character_line_en": "I would rather build a bridge than win an argument.",
+    "player_reply_en": "Bridges first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2402",
+    "character_id": "OP95",
+    "stage_id": null,
+    "character_line_en": "I speak directly. I hope you do too.",
+    "player_reply_en": "I do.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2403",
+    "character_id": "OP95",
+    "stage_id": null,
+    "character_line_en": "The numbers on this are not subtle.",
+    "player_reply_en": "Then neither will I be.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2404",
+    "character_id": "OP95",
+    "stage_id": null,
+    "character_line_en": "I enjoy a sharp question. I enjoy a sharp answer more.",
+    "player_reply_en": "Here is one.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2405",
+    "character_id": "OP101",
+    "stage_id": null,
+    "character_line_en": "I am not here to be gentle.",
+    "player_reply_en": "I did not expect that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2406",
+    "character_id": "OP101",
+    "stage_id": null,
+    "character_line_en": "People in my district are angry, and I carry that in here.",
+    "player_reply_en": "Then I will answer them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2407",
+    "character_id": "OP101",
+    "stage_id": null,
+    "character_line_en": "Pick a side early. It saves everyone time.",
+    "player_reply_en": "I know which one mine is.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2408",
+    "character_id": "OP102",
+    "stage_id": null,
+    "character_line_en": "The association has supported good people for years. We notice good work.",
+    "player_reply_en": "I hope to deserve it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2409",
+    "character_id": "OP102",
+    "stage_id": null,
+    "character_line_en": "We are neighbors first and supporters second.",
+    "player_reply_en": "I will remember that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2410",
+    "character_id": "OP102",
+    "stage_id": null,
+    "character_line_en": "Come in, sit down, and tell us honestly where things stand.",
+    "player_reply_en": "I will.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2411",
+    "character_id": "OP104",
+    "stage_id": null,
+    "character_line_en": "I have children at home and I am watching the clock.",
+    "player_reply_en": "Then I will be brief.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2412",
+    "character_id": "OP104",
+    "stage_id": null,
+    "character_line_en": "I just want to know if my family will be better off.",
+    "player_reply_en": "Let me explain.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2413",
+    "character_id": "OP104",
+    "stage_id": null,
+    "character_line_en": "Please speak to me like a neighbor, not a politician.",
+    "player_reply_en": "Gladly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2414",
+    "character_id": "OP105",
+    "stage_id": null,
+    "character_line_en": "My generation inherits whatever you decide tonight.",
+    "player_reply_en": "Then I will decide carefully.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2415",
+    "character_id": "OP105",
+    "stage_id": null,
+    "character_line_en": "We are not impressed by speeches, only by results.",
+    "player_reply_en": "Then I will aim for results.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2416",
+    "character_id": "OP105",
+    "stage_id": null,
+    "character_line_en": "Prove us wrong. We would love to be wrong about politicians.",
+    "player_reply_en": "I would love to.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2417",
+    "character_id": "OP106",
+    "stage_id": null,
+    "character_line_en": "I brought figures. I always do.",
+    "player_reply_en": "Good. So did I.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2418",
+    "character_id": "OP106",
+    "stage_id": null,
+    "character_line_en": "Do not tell me what people think. Show me.",
+    "player_reply_en": "Here is what I know.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2419",
+    "character_id": "OP106",
+    "stage_id": null,
+    "character_line_en": "I vote on what happened, not on what was promised.",
+    "player_reply_en": "That is fair.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2420",
+    "character_id": "OP107",
+    "stage_id": null,
+    "character_line_en": "I came to hear, not to heckle.",
+    "player_reply_en": "Thank you for that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2421",
+    "character_id": "OP107",
+    "stage_id": null,
+    "character_line_en": "I have lived here all my life. I will know if you are straight with us.",
+    "player_reply_en": "I will be.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2422",
+    "character_id": "OP107",
+    "stage_id": null,
+    "character_line_en": "A straight answer is all I ask.",
+    "player_reply_en": "You will have one.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2423",
+    "character_id": "OP108",
+    "stage_id": null,
+    "character_line_en": "I am here to say what others are too polite to say.",
+    "player_reply_en": "Say it. I am listening.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2424",
+    "character_id": "OP108",
+    "stage_id": null,
+    "character_line_en": "Some of us are tired of being told to be patient.",
+    "player_reply_en": "I understand why.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2425",
+    "character_id": "OP108",
+    "stage_id": null,
+    "character_line_en": "You can win me over, but you will have to work.",
+    "player_reply_en": "I am willing.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2426",
+    "character_id": "OP110",
+    "stage_id": null,
+    "character_line_en": "I have covered this house for years. Nothing surprises me anymore.",
+    "player_reply_en": "Then I will try.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2427",
+    "character_id": "OP110",
+    "stage_id": null,
+    "character_line_en": "I will ask the question you hoped I would not.",
+    "player_reply_en": "I hoped you would.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2428",
+    "character_id": "OP110",
+    "stage_id": null,
+    "character_line_en": "Everything you say today will be quoted somewhere.",
+    "player_reply_en": "Then I will say it well.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2429",
+    "character_id": "OP112",
+    "stage_id": null,
+    "character_line_en": "I am always friendly. It is part of the technique.",
+    "player_reply_en": "I will keep that in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2430",
+    "character_id": "OP112",
+    "stage_id": null,
+    "character_line_en": "I may ask something simple and mean something else.",
+    "player_reply_en": "I will listen for both.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2431",
+    "character_id": "OP112",
+    "stage_id": null,
+    "character_line_en": "Off the record is a state of mind, not a promise.",
+    "player_reply_en": "Then I will stay on guard.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2432",
+    "character_id": "OP113",
+    "stage_id": null,
+    "character_line_en": "People want to feel something, not just be informed.",
+    "player_reply_en": "Then I will give them both.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2433",
+    "character_id": "OP113",
+    "stage_id": null,
+    "character_line_en": "I ask what readers ask when no one is listening.",
+    "player_reply_en": "Then ask it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2434",
+    "character_id": "OP113",
+    "stage_id": null,
+    "character_line_en": "If the story moves them, it matters. Make it move.",
+    "player_reply_en": "I will try.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2435",
+    "character_id": "OP114",
+    "stage_id": null,
+    "character_line_en": "I have my questions written down. Most of them are uncomfortable.",
+    "player_reply_en": "I have my answers.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2436",
+    "character_id": "OP114",
+    "stage_id": null,
+    "character_line_en": "I keep notes on what people said last time.",
+    "player_reply_en": "Then I will stay consistent.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2437",
+    "character_id": "OP114",
+    "stage_id": null,
+    "character_line_en": "A clear answer is a favor to us both.",
+    "player_reply_en": "Then I will do you the favor.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2438",
+    "character_id": "OP116",
+    "stage_id": null,
+    "character_line_en": "I check every number before I use it. I will check yours.",
+    "player_reply_en": "Check away.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2439",
+    "character_id": "OP116",
+    "stage_id": null,
+    "character_line_en": "I like precision. Please give me some.",
+    "player_reply_en": "As precise as I can be.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2440",
+    "character_id": "OP116",
+    "stage_id": null,
+    "character_line_en": "If you are wrong, I will say so politely. In writing.",
+    "player_reply_en": "Then I will not be wrong.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2441",
+    "character_id": "OP117",
+    "stage_id": null,
+    "character_line_en": "I am more sympathetic than I look. It is useful.",
+    "player_reply_en": "I will take it as a compliment.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2442",
+    "character_id": "OP117",
+    "stage_id": null,
+    "character_line_en": "Tell me what you really feel. It makes a better story.",
+    "player_reply_en": "I will tell you what I can.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2443",
+    "character_id": "OP117",
+    "stage_id": null,
+    "character_line_en": "I can be kind and still ask the hard thing.",
+    "player_reply_en": "Both, I expect.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2444",
+    "character_id": "OP119",
+    "stage_id": null,
+    "character_line_en": "Our members work hard and ask for little. Remember that.",
+    "player_reply_en": "I will.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2445",
+    "character_id": "OP119",
+    "stage_id": null,
+    "character_line_en": "We are not asking for a favor. We are asking for fairness.",
+    "player_reply_en": "Fairness is what I want too.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2446",
+    "character_id": "OP119",
+    "stage_id": null,
+    "character_line_en": "I have a list of what my members need. It is short.",
+    "player_reply_en": "Short is good.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2447",
+    "character_id": "OP120",
+    "stage_id": null,
+    "character_line_en": "The cooperative does not ask for much. We ask to be heard.",
+    "player_reply_en": "You are being heard.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2448",
+    "character_id": "OP120",
+    "stage_id": null,
+    "character_line_en": "We have the yields and the costs written down.",
+    "player_reply_en": "Then let me see them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2449",
+    "character_id": "OP120",
+    "stage_id": null,
+    "character_line_en": "I will tell you plainly what the season has been like.",
+    "player_reply_en": "Please do.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2450",
+    "character_id": "OP121",
+    "stage_id": null,
+    "character_line_en": "The sea gives and takes. We plan for both.",
+    "player_reply_en": "Then let us plan.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2451",
+    "character_id": "OP121",
+    "stage_id": null,
+    "character_line_en": "I would like to find a way that works for the boats and for you.",
+    "player_reply_en": "That is my hope too.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2452",
+    "character_id": "OP121",
+    "stage_id": null,
+    "character_line_en": "Our catch records are honest. I hope your promises are too.",
+    "player_reply_en": "They are.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2453",
+    "character_id": "OP123",
+    "stage_id": null,
+    "character_line_en": "I know every street in the neighborhood. I will know if you do not.",
+    "player_reply_en": "I will learn them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2454",
+    "character_id": "OP123",
+    "stage_id": null,
+    "character_line_en": "Small things matter to us. A broken light, a late bus.",
+    "player_reply_en": "Small things matter to me too.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2455",
+    "character_id": "OP123",
+    "stage_id": null,
+    "character_line_en": "Come back and tell us what happened, whatever happens.",
+    "player_reply_en": "I will.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2456",
+    "character_id": "OP124",
+    "stage_id": null,
+    "character_line_en": "I am nervous, but I came anyway.",
+    "player_reply_en": "I am glad you did.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2457",
+    "character_id": "OP124",
+    "stage_id": null,
+    "character_line_en": "Students are tired of being talked about instead of talked to.",
+    "player_reply_en": "Then I will talk to you.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2458",
+    "character_id": "OP124",
+    "stage_id": null,
+    "character_line_en": "If you mean it, say it like you mean it.",
+    "player_reply_en": "I mean it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2459",
+    "character_id": "OP125",
+    "stage_id": null,
+    "character_line_en": "Some things are worth keeping, even when they are inconvenient.",
+    "player_reply_en": "I understand that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2460",
+    "character_id": "OP125",
+    "stage_id": null,
+    "character_line_en": "I do not mind change. I mind careless change.",
+    "player_reply_en": "I will be careful.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2461",
+    "character_id": "OP125",
+    "stage_id": null,
+    "character_line_en": "Respect what came before, and I will respect what you propose.",
+    "player_reply_en": "I will.",
     "bill_id": null,
     "stance": null,
     "component_ids": null

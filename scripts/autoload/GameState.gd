@@ -2009,6 +2009,27 @@ func record_faced(stage: Variant) -> void:
 			faced_people[id] = int(faced_people.get(id, 0)) + 1
 
 
+## Seats `opponents` in the level's current stage in place of those drawn when
+## the level began (a transition locked its speakers into the stage that
+## follows, StageTransition.lock_opponents()), and moves the met-people counts
+## with them so PeopleDraw keeps leaning the right way (2026-11-02).
+func reseat_current_stage(opponents: Array) -> void:
+	if level_runner == null:
+		return
+	var stage := level_runner.current_stage()
+	if stage.is_empty():
+		return
+	for person: Variant in (stage.get("opponents", []) as Array):
+		var id := str((person as Dictionary).get("opp_id", ""))
+		if not id.is_empty():
+			faced_people[id] = maxi(int(faced_people.get(id, 0)) - 1, 0)
+	stage["opponents"] = opponents
+	for person: Variant in opponents:
+		var id := str((person as Dictionary).get("opp_id", ""))
+		if not id.is_empty():
+			faced_people[id] = int(faced_people.get(id, 0)) + 1
+
+
 ## True while a level is in progress.
 func is_in_level() -> bool:
 	return level_runner != null and not level_runner.is_finished()

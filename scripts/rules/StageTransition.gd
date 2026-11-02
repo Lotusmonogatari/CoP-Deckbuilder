@@ -56,11 +56,27 @@ static func character_kind(character_id: String) -> String:
 ## already heard, so the same person and the same words do not come back at
 ## once: {"speaker": last speaker's id, "lines": {"SF01|the line": true}}. Both
 ## are only preferences: with nobody else to pick, a repeat is allowed.
+##
+## `lock` (2026-11-02) ties the opponents who speak to the stage that follows:
+## {"drawn": [opp_ids already seated in the stage], "eligible": [opp_ids who may
+## be seated in it], "seats": how many opponents it has}. An opponent speaks only
+## if eligible for that stage, never more of them than it has seats, and one
+## already drawn is preferred to one who would have to be swapped in
+## (lock_opponents()). Empty (the default) leaves the draw as it was.
 static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: String,
 		count: int, rng: RandomNumberGenerator, hired_staff_ids: Variant = null,
 		bill_id: String = "", lean: String = "", component_ids: Array = [],
-		staff_chance: int = -1, avoid: Dictionary = {}) -> Array[Dictionary]:
+		staff_chance: int = -1, avoid: Dictionary = {}, lock: Dictionary = {}) -> Array[Dictionary]:
 	var remaining := PoolPicker.eligible(cast_rows, "stage_id", stage_id)
+	var locking := not lock.is_empty()
+	var drawn: Array = lock.get("drawn", [])
+	var opponent_seats := int(lock.get("seats", 0))
+	var opponents_chosen := 0
+	if locking:
+		var may_sit: Array = lock.get("eligible", [])
+		remaining = remaining.filter(func(row: Dictionary) -> bool:
+			var cid := str(row.get("character_id", ""))
+			return character_kind(cid) != "opponent" or cid in may_sit)
 	# Staff are the player's own team: an SFxx cast member only speaks once
 	# hired. `hired_staff_ids` null means "no filter" (older callers, tests).
 	if hired_staff_ids is Array:
@@ -77,7 +93,23 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 	var last_speaker := str(avoid.get("speaker", ""))
 
 	while speakers.size() < count and not remaining.is_empty():
-		var pool := _kind_pool(remaining, staff_chance, rng)
+		var candidates := remaining
+		# The stage has only so many seats for opponents.
+		if locking and opponents_chosen >= opponent_seats:
+			candidates = candidates.filter(func(row: Dictionary) -> bool:
+				return character_kind(str(row.get("character_id", ""))) != "opponent")
+			if candidates.is_empty():
+				break
+		var pool := _kind_pool(candidates, staff_chance, rng)
+		# An opponent already drawn for the stage is preferred to a swap-in.
+		if locking:
+			var already := pool.filter(func(row: Dictionary) -> bool:
+				return character_kind(str(row.get("character_id", ""))) != "opponent" \
+					or str(row.get("character_id", "")) in drawn)
+			var has_drawn_opponent := already.any(func(row: Dictionary) -> bool:
+				return character_kind(str(row.get("character_id", ""))) == "opponent")
+			if has_drawn_opponent:
+				pool = already
 		# Not the person who spoke last time, if anybody else will do.
 		var fresh := pool.filter(func(row: Dictionary) -> bool:
 			return str(row.get("character_id", "")) != last_speaker)
@@ -99,6 +131,8 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 			exchange = _fresh_exchange(dialogue_here, character_id, heard, rng, true)
 		if exchange.is_empty():
 			continue
+		if character_kind(character_id) == "opponent":
+			opponents_chosen += 1
 		speakers.append({
 			"character_id": character_id,
 			"character_line": str(exchange.get("character_line_en", "")),
@@ -107,6 +141,40 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 		})
 
 	return speakers
+
+
+## The opponents the next stage fights once the transition has spoken: the
+## opponents who spoke come first, in the order they spoke, then whoever was
+## already drawn, so the stage keeps the same number of seats (2026-11-02). An
+## opponent who spoke is therefore the opponent in the next stage, never just
+## somebody from its eligible pool. `table` maps opp_id to the opponent row.
+static func lock_opponents(drawn: Array, spoke_ids: Array, table: Dictionary) -> Array:
+	if spoke_ids.is_empty():
+		return drawn
+	var locked: Array = []
+	var seen: Array[String] = []
+	for id: Variant in spoke_ids:
+		if table.has(id) and not seen.has(str(id)):
+			locked.append(table[id])
+			seen.append(str(id))
+	for opponent: Variant in drawn:
+		if locked.size() >= maxi(drawn.size(), 1):
+			break
+		var id := str((opponent as Dictionary).get("opp_id", ""))
+		if not seen.has(id):
+			locked.append(opponent)
+			seen.append(id)
+	return locked
+
+
+## The ids of the opponents (not staff) among a transition's speakers.
+static func opponent_speakers(speakers: Array) -> Array[String]:
+	var ids: Array[String] = []
+	for speaker: Variant in speakers:
+		var id := str((speaker as Dictionary).get("character_id", ""))
+		if character_kind(id) == "opponent":
+			ids.append(id)
+	return ids
 
 
 ## The key a heard line is remembered under: who said it, and what.
@@ -149,13 +217,14 @@ static func _fresh_exchange(rows: Array, character_id: String, heard: Dictionary
 static func resolve(stage: Dictionary, cast_rows: Array, background_rows: Array,
 		dialogue_rows: Array, rng: RandomNumberGenerator, hired_staff_ids: Variant = null,
 		thought_chance: int = 0, bill_id: String = "", lean: String = "",
-		component_ids: Array = [], staff_chance: int = -1, avoid: Dictionary = {}) -> Dictionary:
+		component_ids: Array = [], staff_chance: int = -1, avoid: Dictionary = {},
+		lock: Dictionary = {}) -> Dictionary:
 	if not should_show(stage):
 		return {}
 
 	var stage_id := str(stage.get("stage_id", ""))
 	var speakers := pick_speakers(cast_rows, dialogue_rows, stage_id, speaker_count(stage), rng,
-		hired_staff_ids, bill_id, lean, component_ids, staff_chance, avoid)
+		hired_staff_ids, bill_id, lean, component_ids, staff_chance, avoid, lock)
 	var thought := ""
 	if speakers.is_empty():
 		# Nobody is available to speak (no staff hired, no opponent cast):

@@ -34,6 +34,7 @@ func _run() -> void:
 	for target: Dictionary in targets:
 		for round_number in ROUNDS:
 			await _check(target)
+	await _check_two_speakers()
 	print("")
 	if _failures.is_empty():
 		print("STAGE TRANSITION TEST: PASS (%d level(s) x %d rounds)" % [targets.size(), ROUNDS])
@@ -100,6 +101,7 @@ func _check(target: Dictionary) -> void:
 		_failures.append("%s: no cue banner on the transition screen" % label)
 		return
 
+	var spoke := StageTransition.opponent_speakers(screen._speakers)
 	var button: Button = screen.get_node("%ContinueButton")
 	button.pressed.emit()
 	await get_tree().process_frame
@@ -108,4 +110,72 @@ func _check(target: Dictionary) -> void:
 	if landed == null or landed.name != BATTLE_SCENE_NAME:
 		_failures.append("%s: Continue did not land on the battle (got %s)" % [label, landed.name if landed else "(null)"])
 		return
+	_check_locked(label, spoke, landed)
+	GameState.end_level()
+
+
+## An opponent who spoke in the transition is the opponent in the battle that
+## follows, seated in the order they spoke (2026-11-02).
+func _check_locked(label: String, spoke: Array[String], battle: Node) -> void:
+	var seated: Array = []
+	for opponent: Variant in battle.engine._opponents:
+		seated.append(str((opponent as Dictionary).get("opp_id", "")))
+	for i in spoke.size():
+		if i >= seated.size() or seated[i] != spoke[i]:
+			_failures.append("%s: %s spoke in the transition but the battle seats %s" % [label, spoke[i], str(seated)])
+			return
+
+
+## Two speakers: both appear in turn, and both are the opponents who fight.
+func _check_two_speakers() -> void:
+	var target := {}
+	for level: Dictionary in DataDB.levels:
+		var stages: Array = BattleSetup.expand_level(level).get("stages", [])
+		for i in range(1, stages.size()):
+			if StageTransition.speaker_count(stages[i]) >= 2 and target.is_empty():
+				target = {"level_id": str(level.get("level_id", "")), "index": i, "stage_id": str(stages[i].get("stage_id", ""))}
+	if target.is_empty():
+		print("  (no stage asks for two speakers; skipping that check)")
+		return
+	GameState.start_new_run("PC01")
+	GameState.staff_hired = {}   # nobody hired, so both speakers are opponents
+	var runner := LevelRunner.new(BattleSetup.expand_level(DataDB.get_level(str(target["level_id"]))))
+	GameState.begin_level(runner)
+	runner.index = int(target["index"])
+	var label := "two speakers, %s / %s" % [target["level_id"], target["stage_id"]]
+	StageRouting.go_to_next_stage(get_tree(), "res://nothing.tscn")
+	await get_tree().process_frame
+	await get_tree().create_timer(0.7).timeout
+	var screen := get_tree().current_scene
+	if screen == null or screen.name != TRANSITION_SCENE_NAME:
+		_failures.append("%s: no transition screen" % label)
+		return
+	var speakers: Array = screen._speakers
+	if speakers.size() != 2:
+		_failures.append("%s: %d speaker(s) drawn, wanted 2" % [label, speakers.size()])
+		return
+	var names: Array[String] = []
+	var waited := 0.0
+	while waited < 30.0 and screen._current_speaker_index < 1:
+		if names.is_empty():
+			names.append(screen.get_node("%SpeakerName").text)
+		await get_tree().create_timer(0.25).timeout
+		waited += 0.25
+	if screen._current_speaker_index < 1:
+		_failures.append("%s: the second speaker never stepped in" % label)
+		return
+	await get_tree().create_timer(0.9).timeout   # the first one slides out, the second slides in
+	names.append(screen.get_node("%SpeakerName").text)
+	if names[0] == names[1]:
+		_failures.append("%s: the name under the portrait did not change (%s)" % [label, names[0]])
+	var spoke := StageTransition.opponent_speakers(speakers)
+	screen.get_node("%ContinueButton").pressed.emit()
+	await get_tree().process_frame
+	await get_tree().create_timer(0.6).timeout
+	var landed := get_tree().current_scene
+	if landed == null or landed.name != BATTLE_SCENE_NAME:
+		_failures.append("%s: Continue did not land on the battle" % label)
+		return
+	_check_locked(label, spoke, landed)
+	print("  two speakers: %s then %s, both seated in the battle" % [names[0], names[1]])
 	GameState.end_level()

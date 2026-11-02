@@ -20,6 +20,7 @@ extends Control
 
 const SLIDE_OFFSET := 500.0
 const SLIDE_SECONDS := 0.35
+const SLIDE_OUT_SECONDS := 0.2
 
 @export var stage_id: String = "ST02"
 
@@ -65,12 +66,14 @@ func _ready() -> void:
 	var result := StageTransition.resolve(
 		_stage, DataDB.transition_cast, DataDB.transition_backgrounds, DataDB.transition_dialogue, rng, hired_ids,
 		thought_chance, bill_id, _lean(), DataDB.component_ids_of(bill_id),
-		int(DataDB.balance.get("transition_staff_speaker_chance", -1)), GameState.transition_memory)
+		int(DataDB.balance.get("transition_staff_speaker_chance", -1)), GameState.transition_memory,
+		_opponent_lock())
 
 	if result.is_empty():
 		_on_continue()
 		return
 	_remember(result)
+	_lock_opponents(result)
 
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.art_id = str(result.get("background_id", "")) if not str(result.get("background_id", "")).is_empty() \
@@ -108,6 +111,39 @@ func _ready() -> void:
 		var side := _banner_side(str(speaker["character_id"]))
 		_banner.say(side, name, str(speaker["character_line"]))
 		_banner.say(CueBanner.PLAYER, str(DataDB.player.get("name_en", "")), str(speaker["player_reply"]))
+
+
+## What ties an opponent who speaks to the stage that follows: who is already
+## seated in it, who may be, and how many seats it has. Empty outside a level
+## and for a stage with nobody seated (an opponent then cannot speak).
+func _opponent_lock() -> Dictionary:
+	if not GameState.is_in_level():
+		return {}
+	var drawn: Array = []
+	for person: Variant in (_stage.get("opponents", []) as Array):
+		drawn.append(str((person as Dictionary).get("opp_id", "")))
+	var eligible: Array = []
+	for person: Variant in BattleSetup.eligible_opponents(str(_stage.get("stage_id", ""))):
+		eligible.append(str((person as Dictionary).get("opp_id", "")))
+	# Whoever is already seated counts as eligible, even if the workbook has
+	# since taken them off the stage's list (a pinned opponent, say).
+	for id: String in drawn:
+		if not eligible.has(id):
+			eligible.append(id)
+	return {"drawn": drawn, "eligible": eligible, "seats": drawn.size()}
+
+
+## An opponent who spoke is the opponent in the stage that follows: seat the
+## speakers first, in the order they spoke (StageTransition.lock_opponents()).
+func _lock_opponents(result: Dictionary) -> void:
+	var spoke := StageTransition.opponent_speakers(result.get("speakers", []))
+	if spoke.is_empty() or not GameState.is_in_level():
+		return
+	var table := {}
+	for person: Variant in DataDB.opponents:
+		table[str((person as Dictionary).get("opp_id", ""))] = person
+	GameState.reseat_current_stage(
+		StageTransition.lock_opponents(_stage.get("opponents", []) as Array, spoke, table))
 
 
 ## Keeps who spoke and what was heard, so the next transition of this level
@@ -148,19 +184,28 @@ var _lead_lines := 0
 
 func _show_speaker(index: int) -> void:
 	_current_speaker_index = index
-	var speaker: Dictionary = _speakers[index]
-	var character_id := str(speaker["character_id"])
+	var first_to_speak := not _speaker_portrait.visible
+	if _slide_tween != null and _slide_tween.is_valid():
+		_slide_tween.kill()
+	_slide_tween = create_tween()
+	# The speaker before leaves the way the next one arrives: out to the right,
+	# then the picture and name change and the new one slides in (2026-11-02).
+	if not first_to_speak:
+		_slide_tween.tween_property(_speaker_portrait, "position:x", _speaker_rest_x + SLIDE_OFFSET,
+			SLIDE_OUT_SECONDS).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_slide_tween.tween_callback(_seat_speaker.bind(index))
+	_slide_tween.tween_property(_speaker_portrait, "position:x", _speaker_rest_x,
+		SLIDE_SECONDS).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
+
+## Puts speaker `index`'s picture and name in place, just off screen, ready to slide in.
+func _seat_speaker(index: int) -> void:
+	var character_id := str((_speakers[index] as Dictionary)["character_id"])
 	_speaker_portrait.art_id = character_id
 	_speaker_portrait.visible = true
 	_speaker_name.text = _label_for(character_id)
 	_speaker_name.visible = true
-
 	_speaker_portrait.position.x = _speaker_rest_x + SLIDE_OFFSET
-	if _slide_tween != null and _slide_tween.is_valid():
-		_slide_tween.kill()
-	_slide_tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	_slide_tween.tween_property(_speaker_portrait, "position:x", _speaker_rest_x, SLIDE_SECONDS)
 
 
 ## An opponent speaks from the red/right side (the room's own voice);

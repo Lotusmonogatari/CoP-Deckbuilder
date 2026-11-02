@@ -35,11 +35,6 @@
     "background_id": "ST05"
   },
   {
-    "transition_background_id": "TB08",
-    "stage_id": "ST30",
-    "background_id": "ST19"
-  },
-  {
     "transition_background_id": "TB09",
     "stage_id": "ST31",
     "background_id": "ST13"
