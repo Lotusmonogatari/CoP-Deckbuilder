@@ -731,3 +731,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Stage transitions reviewed: who speaks, repeats, the Floor Vote (2026-11-02, Cameron)
 - Party leaders speak before the Floor Vote (2026-11-02, Cameron)
 - Transitions: locked opponents, two speakers, more lines, ST30 tidied (2026-11-02, Cameron)
+- Government bodies use the canon names (2026-11-02, Cameron)

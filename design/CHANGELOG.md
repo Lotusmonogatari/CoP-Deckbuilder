@@ -2961,3 +2961,19 @@ None of the six leaders has a drawn picture yet except as a placeholder.
 | Three more lines per opponent | 174 rows (TD2288-TD2461), three any-stage lines for each of the 58 opponents who appear in transitions (the stage-scoped line they already had stays), each in the voice of their role, committee and rhetorical styles. Drafts for Cameron to rewrite; no policy positions. Every opponent now has at least four lines. |
 
 Tests: `test_stage_transition.gd` (lock eligibility, preference for the seated, seat cap, `lock_opponents`, two speakers, the column only asks for two where two can sit, four lines per opponent, no dead rows) and `stage_transition_driver.gd` (the speaker is the battle's opponent; the two-speaker walk).
+
+### Government bodies use the canon names (2026-11-02, Cameron)
+
+Cameron asked for every named ministry in questions, cues, events and choices to match the canon ministries, which follow the committees and ministers. The canon is eight: Agriculture, Construction and Development, Ethics and Prosecution, Finance, Foreign Affairs, Government Administration, War, and the Environment (the eight "Minister of ..." titles in Opponents, each with a matching committee). All 62 data files were scanned for ministry, minister, committee, department and agency wording.
+
+Found and fixed (4, all in the workbook):
+| Where | Was | Now |
+|---|---|---|
+| Visitor Question VQ106, choice D | "the finance ministry's review" | "the Ministry of Finance's review" |
+| Visitor Question VQ119 (tariffs for exports), choice D | "the trade ministry" (no such ministry) | "the Ministry of Foreign Affairs" (the canon home of trade agreements: the EU and China trade bills sit with the Committee on Foreign Affairs) |
+| Visitor Question VQ47 (a direct flight to Mongolia), choice D | "the transport committee" (no such committee) | "the Committee on Construction and Development" (transport bills such as the Shinkansen one go there) |
+| Event EV64, choice B | "the transport committee" | "the Committee on Construction and Development" |
+
+Already correct: "Ministry of Government Administration" (SF04's biography), every "Minister of ..." title, and every "Committee on ...". Dozens of lines say only "the ministry" or "ministers" without naming one; those name nobody, so they were left alone. New `test_canon_names.gd` fails on any "Ministry/Minister of X" or "Committee on X" outside the canon lists, on a topic written in front of "ministry" or "committee" ("trade ministry"), and if the ministers in Opponents ever stop matching the list.
+
+Noticed, not changed: "Cabinet Legislation Bureau Chief Rika Ashikaga" in an Office notice names a body (a bureau) that is not one of the ministries or committees; the Assembly's "Secretary-General" is likewise outside this rule.
