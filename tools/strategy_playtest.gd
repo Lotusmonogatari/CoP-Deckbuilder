@@ -29,6 +29,7 @@ extends "res://tools/playtest_optimal.gd"
 ##   promises   ignore (take them, never keep), keep, avoid
 ##   patron     take patron bills or not
 ##   reserve    keep this week's party dues in hand before buying anything
+##   draft      draft a bill whenever allowed: easy (a part whose hearing committee the bot usually wins first) or random
 ##   cap        buy the Funds-cap petition (SH13) whenever XP allows
 ##   awareness_rule  what leftover gaffes cost awareness: current, half, free3,
 ##              per100 (1 point per 100 gaffes in all), div5 (1 per 5 left), cap2 (at most 2 a stage), div5_cap3, none (a simulation of a
@@ -61,6 +62,8 @@ const STRATEGIES := {
 	"heavy_backing": {"backing": "heavy"},
 	"no_staff": {"staff": "none"},
 	"no_patron": {"patron": false},
+	"drafter_easy": {"cap": true, "reserve": true, "draft": "easy"},
+	"drafter_random": {"cap": true, "reserve": true, "draft": "random"},
 	"cap_buyer": {"cap": true},
 	"cap_dues": {"cap": true, "reserve": true},
 	"campaigner_cap": {"gaffe": 6.0, "level": "election", "events": "buy", "weekend": true, "cap": true},
@@ -101,7 +104,7 @@ const STRATEGIES := {
 const DEFAULTS := {"level": "seq", "deck": "strongest", "gaffe": 1.0, "items": "battle", "backing": "base",
 	"staff": "cheap", "events": "none", "weekend": false, "visitors": "net", "promises": "ignore",
 	"patron": true, "random_cards": false, "reserve": false, "cap": false,
-	"awareness_rule": "current", "balance": {}}
+	"awareness_rule": "current", "balance": {}, "draft": ""}
 
 const MAX_WEEK_VISITS := 40   ## a safety valve on the loop inside one week
 
@@ -157,6 +160,7 @@ func _run() -> void:
 	for key: String in (_s["balance"] as Dictionary).keys():
 		DataDB.balance[key] = (_s["balance"] as Dictionary)[key]
 	var tier := OS.get_environment("PLAYTEST_DIFFICULTY")
+	_draft_rng.seed = int(seed_text) if not seed_text.is_empty() else 1
 	GameState.start_new_run(_protagonist, tier if not tier.is_empty() else "standard")
 	_record_week()   # week 0: the starting line
 
@@ -203,6 +207,9 @@ func _run() -> void:
 # ---------------------------------------------------------------------------
 
 func _office_visit() -> void:
+	# A bot that drafts looks first, before items eat the 300,000 it needs.
+	if str(_s["draft"]) != "" and _try_draft():
+		return
 	# With "reserve", nothing is bought out of the money the party will ask for.
 	FUNDS_BUFFER = 5000
 	if bool(_s["reserve"]):
@@ -235,6 +242,8 @@ func _buy_funds_cap() -> void:
 
 var _leftover_total := 0
 var _leftover_stages := 0
+var _drafts := {"started": 0, "passed": 0, "failed": 0, "lapsed": 0, "refused_checks": 0, "first_part_hearing": {}}
+var _draft_rng := RandomNumberGenerator.new()
 var _gaffe_total := 0
 var _gaffe_paid := 0
 var _caps_bought := 0
@@ -256,6 +265,44 @@ func _awareness_gaffes(leftover: int) -> int:
 			_gaffe_paid += owed
 			return owed
 	return leftover
+
+
+## Drafts a bill when the game allows it and plays the level through. "easy"
+## looks for a first part whose hearing committee the bot usually wins.
+func _try_draft() -> bool:
+	if GameState.is_in_level() or GameState.work_week_is_full() or GameState.in_weekend():
+		return false
+	var ids: Array = []
+	for component: Dictionary in DataDB.bill_components:
+		ids.append(str(component["component_id"]))
+	var by_id := ComposedBill.index(DataDB.bill_components)
+	var easy := ["ST13", "ST10", "ST11"]
+	for attempt in 40:
+		var pick: Array = []
+		var first: String = ids[_draft_rng.randi_range(0, ids.size() - 1)]
+		if str(_s["draft"]) == "easy" and not easy.has(str((by_id[first] as Dictionary).get("hearing_stage", ""))):
+			continue
+		pick.append(first)
+		var second: String = ids[_draft_rng.randi_range(0, ids.size() - 1)]
+		if second == first:
+			continue
+		pick.append(second)
+		if not GameState.draft_refusal(pick).is_empty():
+			continue
+		if not GameState.start_draft(pick):
+			continue
+		_drafts["started"] = int(_drafts["started"]) + 1
+		var hearing := str((by_id[first] as Dictionary).get("hearing_stage", ""))
+		var by_hearing: Dictionary = _drafts["first_part_hearing"]
+		by_hearing[hearing] = int(by_hearing.get(hearing, 0)) + 1
+		var draft_id := DraftBill.id_for(GameState.draft_counter)
+		_level_attempts += 1
+		_play_current_level(PatronLevel.level_id_for(draft_id))
+		var status := str((GameState.patron_requests.get(draft_id, {}) as Dictionary).get("status", "lapsed"))
+		var key := "passed" if status == "passed" else "failed" if status == "failed" else "lapsed"
+		_drafts[key] = int(_drafts[key]) + 1
+		return true
+	return false
 
 
 func _buy_backing() -> void:
@@ -743,7 +790,7 @@ func _finish() -> void:
 		"stage_type_results": GameState.stage_type_results,
 		"events": _events, "visitors": _visitors,
 		"promises_open": GameState.promises.size(), "promises_broken_unseen": GameState.promises_broken_unseen.size(),
-		"patron": _patron, "bugs": _bugs, "stalls": _stalls,
+		"patron": _patron, "drafts": _drafts, "bugs": _bugs, "stalls": _stalls,
 		"series": _series, "levels": _level_log,
 	}
 	var line := "RESULT " + JSON.stringify(result)

@@ -3055,3 +3055,7 @@ Addendum, same day: the bots never bought the Funds-cap petition (SH13), so the 
 ## Protagonist x Campaign Pressure playtest (2026-11-02, Cameron)
 
 144 bot runs (4 protagonists, 3 tiers, 3 strategies, 4 seeds). Findings in `design/review/PC_DIFFICULTY_PLAYTEST_2026-11-02.md`; tools `tools/pc_difficulty_report.py`. No game rules changed. Main result: Election Strength now ends exactly on weekly gain x 30 weeks (90 / 75 / 60), so it measures time, not play.
+
+## Custom bill audit (2026-11-02, Cameron)
+
+Review of Draft a Bill and patron bills: `design/review/CUSTOM_BILL_AUDIT_2026-11-02.md`. New tools `tools/bill_audit.gd` (vote audit under the real gates), `tools/bill_draft_probe.gd` (draft lifecycle), drafting strategies in `tools/strategy_playtest.gd`. Two bot bugs fixed in `tools/playtest_optimal.gd` (drafted "PD" bills were not treated as patron bills; `visit_wins` was never filled). CLAUDE.md corrected: Reputation gate 60 (not 85), swing resistance 85 (not 70). No game rule changed.

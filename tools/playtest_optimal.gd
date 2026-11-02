@@ -719,6 +719,8 @@ func _play_battle_stage(stage: Dictionary) -> void:
 		stage_id, state.outcome, state.player_score(), state.gaffe, state.gaffe_limit,
 		state.turn, stage.get("turn_limit")])
 
+	if stage_id == MpVisit.FIGHT_STAGE and state.outcome == "win":
+		_patron["visit_wins"] += 1   # the one-on-one with the member was won (this counter was never filled before 2026-11-02)
 	var level_over := GameState.finish_stage(
 		state.outcome, state.player_score(), engine.pleased_boosters(), gaffe_caused_loss, _awareness_gaffes(state.gaffe))
 	if level_over:
@@ -777,7 +779,7 @@ func _play_vote_stage(stage: Dictionary) -> void:
 	var stage_id := str(stage.get("stage_id", ""))
 	var engine := FloorVoteEngine.new()
 	var player_party := str(DataDB.player.get("party", ""))
-	var patron_bill := str((stage.get("floor_vote", {}) as Dictionary).get("bill_id", "")).begins_with("PB")
+	var patron_bill := str((stage.get("floor_vote", {}) as Dictionary).get("bill_id", "")).begins_with("PB") or str((stage.get("floor_vote", {}) as Dictionary).get("bill_id", "")).begins_with(DraftBill.PREFIX)
 	var vote_config := {"bill": stage.get("floor_vote", {}), "player_party": player_party}
 	if patron_bill:
 		# A sponsored bill is carried: Yes, with every bit of influence the
