@@ -231,7 +231,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You table a proposal to cut taxes on local business and send your guests a copy."
@@ -252,7 +252,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You raise a crypto-yen in a finance briefing. The officials take notes, mostly of the silence."
@@ -273,7 +273,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You set out your case against Yezo's alliances in a short paper. It is read carefully, and not kindly."
@@ -294,7 +294,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You speak for more trade agreements at a committee hearing and send your guests the record."
@@ -315,7 +315,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You put forward funding for shrine and festival restoration and send your guests the proposal."
@@ -336,7 +336,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You table a measure to protect local farmland from sale and send the farmers a copy."
@@ -357,7 +357,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You propose a modest rise in the minimum wage and send your guests the figures."
@@ -379,7 +379,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You put forward funding for rural broadband and send your guests the first map of where it would go."
@@ -745,7 +745,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You table a proposal to cut taxes on local business and send your guests a copy."
@@ -766,7 +766,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You raise a crypto-yen in a finance briefing. The officials take notes, mostly of the silence."
@@ -787,7 +787,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You set out your case against Yezo's alliances in a short paper. It is read carefully, and not kindly."
@@ -808,7 +808,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You speak for more trade agreements at a committee hearing and send your guests the record."
@@ -829,7 +829,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You put forward funding for shrine and festival restoration and send your guests the proposal."
@@ -850,7 +850,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You table a measure to protect local farmland from sale and send the farmers a copy."
@@ -871,7 +871,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You propose a modest rise in the minimum wage and send your guests the figures."
@@ -893,7 +893,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept_text": "You put forward funding for rural broadband and send your guests the first map of where it would go."

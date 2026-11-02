@@ -735,3 +735,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Playtest notes: card faces, soft boxes, week-end watch, Heritage Party rivals (2026-11-02, Cameron)
 - Playtest notes, second round (2026-11-02, Cameron)
 - Office Hours: promise and cost text reviewed (2026-11-02, Cameron)
+- Promise deadlines fit the 48-hour week; Act Now choices reworded (2026-11-02, Cameron)

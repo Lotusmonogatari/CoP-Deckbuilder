@@ -3013,3 +3013,10 @@ Reviewed all 397 visitor questions (1,588 choices): 92 carry a promise, 24 an Ac
 | **Act Now choices written as later promises.** 18 of the 24 Act Now choices are phrased in the future ("I'll come and take the hard questions", 2 hours spent on the spot). | **Asked.** |
 | Three promise choices carry no first-person future phrase (VQ21 a "I'm fine, Obaachan, I promise.", VQ58 c, VQ89 d, both imperatives). | Noted only. |
 | The reaction chips sit over the visitor's title line. | Noticed, not changed. |
+
+## Promise deadlines fit the 48-hour week; Act Now choices reworded (2026-11-02, Cameron)
+
+| What | Change |
+|---|---|
+| Deadlines | 117 promise deadlines retuned to the 48-hour game week: 168→48, 120→36, 96→24, 72→18, 48→12, 32→8 (Visitor Questions, Event Choices, Event Options). Follow-up delays and the Balance default (48) are unchanged. |
+| Act Now wording | 17 visitor choices that cost hours on the spot are now worded in the present ("Let me call the ward office right now.") instead of as later promises; a few replies adjusted to match. All drafts for Cameron to rewrite. |

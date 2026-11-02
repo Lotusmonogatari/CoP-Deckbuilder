@@ -5,7 +5,7 @@
       "VI01"
     ],
     "question_text": "The streetlight on our corner has been out since spring. Can you help?",
-    "choice_a": "I'll call the ward office myself today.",
+    "choice_a": "Let me call the ward office right now.",
     "choice_b": "Have you tried calling the city?",
     "choice_c": "It's probably just the bulb.",
     "choice_d": "Honestly, it's a small thing. Let it wait.",
@@ -59,7 +59,7 @@
     "response_b": "We did. Twice. They sent us back to you.",
     "response_c": "It is the wiring, not the bulb.",
     "response_d": "A small thing? Someone will fall in the dark.",
-    "reaction_a": "Writes your promise in a small notebook.",
+    "reaction_a": "Watches you dial.",
     "reaction_b": "Folds both arms.",
     "reaction_c": "Shakes head slowly.",
     "reaction_d": "Stares at you, then at the door.",
@@ -195,7 +195,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -273,7 +273,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO07"
       }
     ],
@@ -347,7 +347,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO07"
       }
     ],
@@ -428,7 +428,7 @@
       {
         "kind": "promise_hours",
         "amount": 2,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_c": null,
@@ -812,7 +812,7 @@
     "question_text": "Will you walk the picket line with us?",
     "choice_a": "I can't be seen taking sides.",
     "choice_b": "Send me a flyer.",
-    "choice_c": "I'll come, listen, and bring coffee.",
+    "choice_c": "Coffee first. Then I'm listening.",
     "choice_d": "Pickets are bad for business.",
     "correct_choice": "C",
     "response_right": "Coffee is a good start.",
@@ -874,7 +874,7 @@
     "commitment_d": null,
     "response_a": "Neutral is a way of taking a side.",
     "response_b": "We do not need flyers. We need people.",
-    "response_c": "Bring the coffee. Hot, please.",
+    "response_c": "Hot coffee. Good. Sit down, then.",
     "response_d": "Our pickets keep the doors open for you too.",
     "reaction_a": "Shakes head.",
     "reaction_b": "Turns away, unimpressed.",
@@ -947,7 +947,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "response_a": "Adapt to what? Prices set in Tokyo?",
@@ -1032,7 +1032,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_c": null,
@@ -1110,7 +1110,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_c": null,
@@ -1208,7 +1208,7 @@
     ],
     "question_text": "Would you come to campus for an open debate?",
     "choice_a": "I'm very busy this term.",
-    "choice_b": "I'll come and take the hard questions.",
+    "choice_b": "Ask me the hard questions. I'm here.",
     "choice_c": "Sure, if the questions are pre-screened.",
     "choice_d": "Can we do it by video link?",
     "correct_choice": "B",
@@ -1270,7 +1270,7 @@
     "commitment_c": null,
     "commitment_d": null,
     "response_a": "Busy. That is what they all say.",
-    "response_b": "The hard questions. We will bring plenty.",
+    "response_b": "The hard questions. We have plenty.",
     "response_c": "Pre-screened is not a debate.",
     "response_d": "A screen is not a stage.",
     "reaction_a": "Shakes head.",
@@ -1347,7 +1347,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -1419,7 +1419,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_b": null,
@@ -1574,7 +1574,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_b": [
@@ -1889,7 +1889,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "response_a": "Success is a seat. We have none.",
@@ -2045,7 +2045,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO14"
       }
     ],
@@ -2119,7 +2119,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 48
+        "within": 12
       }
     ],
     "commitment_c": null,
@@ -2146,7 +2146,7 @@
     "choice_a": "I'm not religious, but I'll send my respects.",
     "choice_b": "I'm away that week, but my staff can come.",
     "choice_c": "Yes, if my schedule allows on the day.",
-    "choice_d": "I'd be honored to join the procession.",
+    "choice_d": "I'm honored. Put me in the procession.",
     "correct_choice": "D",
     "response_right": "It's cold, but warm company helps.",
     "response_wrong": "Perhaps another year.",
@@ -2200,7 +2200,7 @@
       {
         "kind": "promise_item",
         "item_id": "SH31",
-        "within": 72
+        "within": 18
       }
     ],
     "commitment_b": null,
@@ -2214,7 +2214,7 @@
     "response_a": "Your respects. Fine.",
     "response_b": "Your staff. Not the same.",
     "response_c": "If. We heard that before.",
-    "response_d": "Early morning. Dress warm. I will save a place.",
+    "response_d": "Early morning. Dress warm. I have saved you a place.",
     "reaction_a": "Looks away.",
     "reaction_b": "Sighs.",
     "reaction_c": "Smiles tightly.",
@@ -2690,9 +2690,9 @@
     ],
     "question_text": "Can we count on you at the party rally?",
     "choice_a": "I have another engagement that day.",
-    "choice_b": "Yes, and I'll bring supporters.",
+    "choice_b": "Yes, and I've brought supporters.",
     "choice_c": "I'll make a short appearance.",
-    "choice_d": "I'll send a message to be read out.",
+    "choice_d": "Here is a message, to be read out.",
     "correct_choice": "B",
     "response_right": "We like members who bring friends.",
     "response_wrong": "We'll look for someone else.",
@@ -2761,7 +2761,7 @@
       }
     ],
     "response_a": "Other plans. The rally needs bodies.",
-    "response_b": "Supporters. Yes. Bring plenty.",
+    "response_b": "Supporters. Good. Seat them up front.",
     "response_c": "A short appearance is better than none.",
     "response_d": "A message. Not you.",
     "reaction_a": "Shrugs.",
@@ -2782,7 +2782,7 @@
     "choice_a": "Fundraising isn't my strength, but I'll help plan.",
     "choice_b": "My schedule is full that week.",
     "choice_c": "Send me the details and I'll see.",
-    "choice_d": "I'll attend and be gracious to everyone.",
+    "choice_d": "I'm here, and gracious to everyone.",
     "correct_choice": "D",
     "response_right": "Good. Donors are like cats. They like attention.",
     "response_wrong": "Leadership will remember that.",
@@ -3289,7 +3289,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO07"
       }
     ],
@@ -3316,7 +3316,7 @@
     "choice_a": "I'll read the delay reports carefully.",
     "choice_b": "Yes, if there's a cabin for the night.",
     "choice_c": "I get seasick, but I'll try once.",
-    "choice_d": "Absolutely. I'll bring a thermos.",
+    "choice_d": "Absolutely. Thermos in hand.",
     "correct_choice": "D",
     "response_right": "Bring a thick coat. The strait doesn't care who you are.",
     "response_wrong": "Reports don't get cold.",
@@ -3378,7 +3378,7 @@
     "response_a": "Reports do not smell of diesel.",
     "response_b": "A cabin costs extra. A bench is free.",
     "response_c": "Once is enough.",
-    "response_d": "Bring a thick one. The deck is cold.",
+    "response_d": "A thick one. The deck is cold.",
     "reaction_a": "Shrugs.",
     "reaction_b": "Grins.",
     "reaction_c": "Frowns.",
@@ -3394,7 +3394,7 @@
       "VI20"
     ],
     "question_text": "Policy should follow evidence. Will you read my report?",
-    "choice_a": "I'll read it carefully.",
+    "choice_a": "Let me read it carefully, right now.",
     "choice_b": "I don't have time for long documents.",
     "choice_c": "Just give me the summary.",
     "choice_d": "I prefer my own judgment.",
@@ -3777,7 +3777,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "response_a": "Fully behind it. Good. I will put that in the minutes.",
@@ -3932,7 +3932,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_b": null,
@@ -4016,7 +4016,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -4095,7 +4095,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "response_a": "From the inside. Then open the door for us.",
@@ -4173,7 +4173,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "response_a": "Your schedule is full? That is exactly what they fear.",
@@ -4272,7 +4272,7 @@
     ],
     "question_text": "Every candidate thinks they're a natural on camera. Are you?",
     "choice_a": "Absolutely, I'm comfortable in front of a lens.",
-    "choice_b": "No, so coach me and I'll practice.",
+    "choice_b": "No, so coach me. I'm practicing now.",
     "choice_c": "I'd rather meet people than talk to cameras.",
     "choice_d": "That's what my press staff are for.",
     "correct_choice": "B",
@@ -4334,7 +4334,7 @@
     "commitment_c": null,
     "commitment_d": null,
     "response_a": "Absolutely. That is what every disaster says.",
-    "response_b": "Coach me. Good. That is half the battle.",
+    "response_b": "Practicing now. Good. That is half the battle.",
     "response_c": "No cameras? In this century?",
     "response_d": "Staff cannot stand in your suit.",
     "reaction_a": "Smirks.",
@@ -4486,14 +4486,14 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_c": [
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO01"
       }
     ],
@@ -4567,7 +4567,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO01"
       }
     ],
@@ -5401,7 +5401,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_b": null,
@@ -5642,7 +5642,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "response_a": "Nothing to fix? Nobody believes that.",
@@ -6023,7 +6023,7 @@
       {
         "kind": "promise_item",
         "item_id": "SH30",
-        "within": 72
+        "within": 18
       }
     ],
     "commitment_d": null,
@@ -6046,7 +6046,7 @@
       "VI34"
     ],
     "question_text": "Our fundraising dinner needs a speaker. Can we count on you?",
-    "choice_a": "Book me. I'll keep it short and good.",
+    "choice_a": "Book me. Let's plan it short and good.",
     "choice_b": "I'm not a natural speaker, but I'll try.",
     "choice_c": "Someone more senior would draw a bigger crowd.",
     "choice_d": "Only if it doesn't clash with district work.",
@@ -6258,7 +6258,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -6339,7 +6339,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_c": null,
@@ -6798,7 +6798,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -6881,7 +6881,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO18"
       }
     ],
@@ -7341,7 +7341,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 24
       }
     ],
     "commitment_b": null,
@@ -7882,7 +7882,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "response_a": "A protected line. Yes. That is independence.",
@@ -8950,7 +8950,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 24
       }
     ],
     "commitment_c": null,
@@ -10502,7 +10502,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO28"
       }
     ],
@@ -10661,7 +10661,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO10"
       }
     ],
@@ -10808,7 +10808,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO21"
       }
     ],
@@ -10967,7 +10967,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO08"
       }
     ],
@@ -11126,7 +11126,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO19"
       }
     ],
@@ -11285,7 +11285,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO17"
       }
     ],
@@ -11444,7 +11444,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO22"
       }
     ],
@@ -11603,7 +11603,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO05"
       }
     ],
@@ -11762,7 +11762,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO07"
       }
     ],
@@ -11921,7 +11921,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO09"
       }
     ],
@@ -12080,7 +12080,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO15"
       }
     ],
@@ -12160,7 +12160,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_b": null,
@@ -12242,7 +12242,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO10"
       }
     ],
@@ -12251,7 +12251,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO10"
       }
     ],
@@ -12410,7 +12410,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -12492,7 +12492,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO12"
       }
     ],
@@ -12803,7 +12803,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -12885,7 +12885,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -12967,7 +12967,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -13049,7 +13049,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -13131,7 +13131,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -13213,7 +13213,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -13295,7 +13295,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -13377,7 +13377,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -13459,7 +13459,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -13541,7 +13541,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -13623,7 +13623,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO30"
       }
     ],
@@ -13706,7 +13706,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -13861,7 +13861,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 72
+        "within": 18
       }
     ],
     "commitment_d": null,
@@ -13943,7 +13943,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO06"
       }
     ],
@@ -14026,7 +14026,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO07"
       }
     ],
@@ -14128,7 +14128,7 @@
     "question_text": "Young people do not want to go to sea. What do we do?",
     "choice_a": "I'll back training and housing for new crews.",
     "choice_b": "Let the industry shrink to a sustainable size.",
-    "choice_c": "I'll visit the fishing school and see.",
+    "choice_c": "Take me to the fishing school. Let me see.",
     "choice_d": "Raise crew pay so the sea competes.",
     "correct_choice": "A",
     "response_right": "That could bring them home.",
@@ -14359,7 +14359,7 @@
       "VI03"
     ],
     "question_text": "Would you appear on the evening news tonight?",
-    "choice_a": "Gladly. I will answer anything.",
+    "choice_a": "Gladly. Ask me anything now.",
     "choice_b": "Only if I see the questions.",
     "choice_c": "I can do five minutes.",
     "choice_d": "I do not do television.",
@@ -14421,7 +14421,7 @@
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
-    "response_a": "I will hold you to that.",
+    "response_a": "Then let us begin.",
     "response_b": "That is not how interviews work.",
     "response_c": "Five is enough.",
     "response_d": "Your voters do.",
@@ -14499,7 +14499,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 24
       }
     ],
     "commitment_d": null,
@@ -14581,7 +14581,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -14663,7 +14663,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 24
       }
     ],
     "commitment_d": null,
@@ -14745,7 +14745,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO10"
       }
     ],
@@ -14976,7 +14976,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO11"
       }
     ],
@@ -15055,7 +15055,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -15133,7 +15133,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO11"
       }
     ],
@@ -15282,7 +15282,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO12"
       }
     ],
@@ -15291,7 +15291,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO12"
       }
     ],
@@ -15387,7 +15387,7 @@
       "VI08"
     ],
     "question_text": "A tourist wanted a cheaper version of my carving. Should I give in?",
-    "choice_a": "Keep the standard; I'll help you hold a workshop sale.",
+    "choice_a": "Keep the standard; let's plan a workshop sale together.",
     "choice_b": "Customers decide what a carving is worth.",
     "choice_c": "Offer a small version at a fair price.",
     "choice_d": "Carve what sells; the craft can adapt.",
@@ -15525,7 +15525,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO13"
       }
     ],
@@ -15534,7 +15534,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO13"
       }
     ],
@@ -15617,7 +15617,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -15695,7 +15695,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -15771,7 +15771,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO14"
       }
     ],
@@ -15852,7 +15852,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -16074,7 +16074,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -16152,7 +16152,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120
+        "within": 36
       }
     ],
     "commitment_d": null,
@@ -16530,7 +16530,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_d": null,
@@ -16750,7 +16750,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO05"
       }
     ],
@@ -16759,7 +16759,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO05"
       }
     ],
@@ -16783,9 +16783,9 @@
       "VI14"
     ],
     "question_text": "Our poster volunteers are tired. Can you walk with them?",
-    "choice_a": "Yes. I'll walk the route with them.",
+    "choice_a": "Yes. Let's walk the route together.",
     "choice_b": "Hire a firm so volunteers can rest.",
-    "choice_c": "I'll send each volunteer a thank-you note.",
+    "choice_c": "Here is a thank-you note for each volunteer.",
     "choice_d": "Posters matter less than door-knocking now.",
     "correct_choice": "A",
     "response_right": "They will love that.",
@@ -16928,7 +16928,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 72
+        "within": 18
       }
     ],
     "commitment_d": null,
@@ -17008,7 +17008,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO01"
       }
     ],
@@ -17017,7 +17017,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO01"
       }
     ],
@@ -22488,7 +22488,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 72
+        "within": 18
       }
     ],
     "commitment_b": null,
@@ -23355,7 +23355,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "commitment_b": null,
@@ -25711,7 +25711,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96
+        "within": 24
       }
     ],
     "commitment_c": null,
@@ -30546,7 +30546,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 96,
+        "within": 24,
         "for": "BO25"
       }
     ],
@@ -30625,7 +30625,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 48,
+        "within": 12,
         "for": "BO25"
       }
     ],
@@ -30723,7 +30723,7 @@
     "question_text": "The temple and the shrine want one joint festival. Will you speak at it?",
     "choice_a": "Yes, gladly, and I'll speak at both.",
     "choice_b": "I keep out of religious events.",
-    "choice_c": "I'll send a message to be read out.",
+    "choice_c": "Here is a message, to be read out.",
     "choice_d": "Pick one festival so I can attend it.",
     "correct_choice": "A",
     "response_right": null,

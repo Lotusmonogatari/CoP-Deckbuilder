@@ -385,7 +385,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168
+        "within": 48
       }
     ],
     "promise_kept": null,
@@ -825,7 +825,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120,
+        "within": 36,
         "for": "BO04"
       }
     ],
@@ -1003,7 +1003,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO16"
       }
     ],
@@ -1117,7 +1117,7 @@
       {
         "kind": "promise_item",
         "item_id": "SH32",
-        "within": 72,
+        "within": 18,
         "for": "BO22"
       }
     ],
@@ -3012,7 +3012,7 @@
       {
         "kind": "promise_item",
         "item_id": "SH30",
-        "within": 48,
+        "within": 12,
         "for": "BO01"
       }
     ],
@@ -4288,7 +4288,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 168,
+        "within": 48,
         "for": "BO07"
       }
     ],
@@ -5125,7 +5125,7 @@
       {
         "kind": "promise_hours",
         "amount": 1,
-        "within": 120,
+        "within": 36,
         "for": "BO26"
       }
     ],
@@ -5557,7 +5557,7 @@
       {
         "kind": "promise_item",
         "item_id": "SH33",
-        "within": 32,
+        "within": 8,
         "for": "BO15"
       }
     ],
@@ -5612,7 +5612,7 @@
       {
         "kind": "promise_item",
         "item_id": "SH30",
-        "within": 32
+        "within": 8
       }
     ],
     "promise_kept": [
