@@ -233,12 +233,16 @@ func _buy_funds_cap() -> void:
 		_caps_bought += 1
 
 
+var _leftover_total := 0
+var _leftover_stages := 0
 var _gaffe_total := 0
 var _gaffe_paid := 0
 var _caps_bought := 0
 
 
 func _awareness_gaffes(leftover: int) -> int:
+	_leftover_total += leftover
+	_leftover_stages += 1
 	match str(_s["awareness_rule"]):
 		"half": return (leftover + 1) / 2
 		"free3": return maxi(0, leftover - 3)
@@ -730,7 +734,7 @@ func _finish() -> void:
 		"levels_cleared": GameState.level_last_completed_at.size(),
 		"levels_by_tier": _levels_played_by_tier,
 		"owned_cards": GameState.owned_cards.size(), "deck": GameState.deck,
-		"caps_bought": _caps_bought, "funds_cap": int(GameState._sanban_row("Funds").get("max", 0)),
+		"leftover_gaffes": _leftover_total, "combat_stages_ended": _leftover_stages, "caps_bought": _caps_bought, "funds_cap": int(GameState._sanban_row("Funds").get("max", 0)),
 		"backing_owned": GameState.owned_modifiers.size(), "backing_bought": _backing_bought,
 		"items_bought": _items_bought, "items_used": _items_used,
 		"staff": GameState.staff_hired.size(),
