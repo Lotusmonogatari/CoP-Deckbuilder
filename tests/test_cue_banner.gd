@@ -44,3 +44,9 @@ func test_clear_drops_everything() -> void:
 	assert_false(_banner.is_showing())
 	await wait_seconds(0.2)
 	assert_false(_banner.is_showing(), "nothing comes back after a clear")
+
+
+func test_a_phase_line_is_shown_unslanted_in_gold() -> void:
+	_banner.say(CueBanner.PHASE, "New phase", "Open Debate!", "No more questions.")
+	assert_true(_banner.is_showing())
+	assert_eq(_banner.current_line(), "Open Debate!")

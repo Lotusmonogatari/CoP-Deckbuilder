@@ -726,3 +726,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Playtest notes: bigger transition portraits, a clearer stage Details panel, a deck expansion (2026-11-01, Cameron)
 - Bill-room replies fit the question (2026-11-01, Cameron)
 - Every ticker line names an outlet (2026-11-01, Cameron)
+- Open Debate: committees run out of questions, and now say so (2026-11-02, Cameron)

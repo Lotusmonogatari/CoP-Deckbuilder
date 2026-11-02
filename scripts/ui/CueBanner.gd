@@ -19,12 +19,16 @@ extends Control
 
 ## Which side a line comes from. The player's sweep in from the left in blue,
 ## the other side's from the right in red.
-enum Side { PLAYER, OPPONENT }
+## PHASE (2026-11-02) is the room itself speaking: a gold, unslanted band that
+## announces a change in how the stage plays ("Open Debate!").
+enum Side { PLAYER, OPPONENT, PHASE }
 const PLAYER := Side.PLAYER
 const OPPONENT := Side.OPPONENT
+const PHASE := Side.PHASE
 
 const PLAYER_COLOUR := Color(0.16, 0.36, 0.78)
 const OPPONENT_COLOUR := Color(0.72, 0.14, 0.14)
+const PHASE_COLOUR := Color(0.70, 0.50, 0.08)
 const BAND_COLOUR := Color(0.05, 0.05, 0.08, 0.94)
 const EDGE_COLOUR := Color(0.95, 0.82, 0.38)
 const DETAIL_COLOUR := Color(0.98, 0.88, 0.55)
@@ -161,7 +165,7 @@ func _show_next() -> void:
 
 	var width := get_viewport_rect().size.x
 	_fit_band(width)
-	var from := -width if entry["side"] == PLAYER else width
+	var from := -width if entry["side"] != OPPONENT else width
 	_band.position.x = from
 	_band.show()
 	_slide_tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
@@ -169,6 +173,9 @@ func _show_next() -> void:
 	_impact()
 
 	var text_length := str(entry["line"]).length() + str(entry["detail"]).length()
+	# A phase change is read, not skimmed: it stays up a little longer.
+	if entry["side"] == PHASE:
+		text_length += 30
 	_step_generation = mine
 	_step_from = from
 	_step_sliding_out = false
@@ -191,16 +198,20 @@ func _on_step_timeout() -> void:
 
 
 func _present(entry: Dictionary) -> void:
-	var colour := PLAYER_COLOUR if entry["side"] == PLAYER else OPPONENT_COLOUR
+	var colour := OPPONENT_COLOUR
+	match int(entry["side"]):
+		PLAYER: colour = PLAYER_COLOUR
+		PHASE: colour = PHASE_COLOUR
 	_tag_box.bg_color = colour
 	_band_box.border_color = EDGE_COLOUR
 	# Slanted the way the speaker is facing: forward for the player, back
 	# for the other side.
-	_band_box.skew = Vector2(0.18 if entry["side"] == PLAYER else -0.18, 0.0)
+	_band_box.skew = Vector2(0.0 if entry["side"] == PHASE
+		else (0.18 if entry["side"] == PLAYER else -0.18), 0.0)
 	_speaker.text = str(entry["speaker"])
 	_tag.visible = not _speaker.text.is_empty()
-	_tag.size_flags_horizontal = (Control.SIZE_SHRINK_BEGIN if entry["side"] == PLAYER
-		else Control.SIZE_SHRINK_END)
+	_tag.size_flags_horizontal = (Control.SIZE_SHRINK_CENTER if entry["side"] == PHASE
+		else (Control.SIZE_SHRINK_BEGIN if entry["side"] == PLAYER else Control.SIZE_SHRINK_END))
 	_line.text = str(entry["line"])
 	_detail.text = str(entry["detail"])
 	_detail.visible = not _detail.text.is_empty()

@@ -446,3 +446,61 @@ func test_stage_questions_are_found_by_every_stage_they_name() -> void:
 	assert_eq(DataDB.get_stage_questions("ST09").size(), 0)
 	DataDB.questions["stage"] = saved
 	DataDB._build_lookups()
+
+
+# ---------------------------------------------------------------------------
+# Open debate (2026-11-02): a committee deals its questions once for the whole
+# stage, but each new opponent restarts the clock, so later bouts outlast them.
+# ---------------------------------------------------------------------------
+
+func _committee_with_questions(count: int) -> BattleEngine:
+	var questions: Array = []
+	for i in count:
+		questions.append(_question({"id": "Q%02d" % i}))
+	var config := TestFixtures.battle_config({
+		"stage": TestFixtures.stage({
+			"sequence_mode": "reset", "questions": questions,
+			"bar_max": 100, "win_threshold": 60, "player_start": 40, "opp_start": 40,
+			"turn_limit": 6, "gaffe_limit": 5, "win_mode": "threshold", "bar_model": "Shared_pool",
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "First", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "Second", "intent_pattern": [["block", 1]]},
+		],
+	})
+	var engine := BattleEngine.new()
+	engine.setup(config)
+	return engine
+
+
+func test_a_room_that_still_has_questions_is_not_an_open_debate() -> void:
+	var engine := _committee_with_questions(6)
+	assert_false(engine.in_open_debate())
+
+
+func test_the_next_bout_is_an_open_debate_once_every_question_is_used() -> void:
+	var engine := _committee_with_questions(2)
+	engine.end_turn()
+	assert_false(engine.in_open_debate(), "one question is still waiting")
+	engine.end_turn()
+	assert_true(engine.in_open_debate(), "both are asked and the stage carries on")
+
+
+func test_a_new_bout_starts_open_when_the_first_bout_used_every_question() -> void:
+	var engine := _committee_with_questions(1)
+	engine.state.question_index = 1      # the only question was asked in bout one
+	engine.state.bar.player_gains(20)
+	engine._check_outcome()
+	assert_eq(engine.current_opponent()["name"], "Second")
+	assert_true(engine.in_open_debate(), "the second opponent is asked nothing")
+
+
+func test_answering_the_last_question_mid_turn_is_not_yet_an_open_debate() -> void:
+	var engine := _conference({"questions": [_question()]})
+	engine.play_card("STRONG")
+	assert_false(engine.in_open_debate(), "the turn it was asked in is still that question's turn")
+
+
+func test_a_room_with_no_questions_is_never_an_open_debate() -> void:
+	var engine := _conference()
+	assert_false(engine.in_open_debate())

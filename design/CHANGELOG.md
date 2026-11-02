@@ -2908,3 +2908,14 @@ The bill's own slogans stay as the fallback for room-pool questions (press, town
 ### Every ticker line names an outlet (2026-11-01, Cameron)
 
 The Office news ticker now names one of the seven canonical outlets in every line: Yezo Political Insider, Sapporo Broadcasting Center, Sapporo Digital Networks, Otaru Radio 今日, Aomori's Morning Mori, Yezo News Nightly and 青森の青空109.9!. 109 lines were rewritten in the Office Ticker tab: the 100 bill-result lines (TK44-TK143, eight templates, each with a fixed outlet) and nine others (TK144-146, TK150-155). "Yezo News" became "Yezo News Nightly". New lines use the unquoted format: outlet named in the text, then " - ☼". TK152 lost its "Single-day template:" prefix and TK155's "Monday's" became "Mondays". All of it is Claude's draft for Cameron to rewrite.
+
+### Open Debate: committees run out of questions, and now say so (2026-11-02, Cameron)
+
+**What was happening.** A room deals its questions once, when the stage starts, and deals `turn_limit` of them (one a turn). That matches every room except a **committee** (`sequence_mode: reset`): each new opponent restarts the clock at turn 1, but the questions are not dealt again. So the whole committee shares one queue of 7 or 10 questions. Measured on all 381 combat stage slots in the levels: every other room asks exactly as many questions as it has turns; the 84 committee-style stages (130 of the 381 slots: ST01, ST10-ST18, the hearings and the bill-specific committees) have 2 to 4 opponents and so 14 to 40 turns for 7 or 10 questions. Opponent one gets the questions; whichever opponent comes after the last one is argued with no question, no listening organizations and no strong or weak answers, with no word about it. (ST271 Radio Debate is different: it has no question pool at all, so it never asks anything.)
+
+**What changed.**
+- `BattleEngine.in_open_debate()`: true when the room dealt questions, has asked them all, the stage goes on, and no turn is half answered.
+- The **Open Debate!** popup: the CueBanner gets a third side, `PHASE`, a gold unslanted band with a "New phase" tag, the big line and a detail line naming whoever is in front of you. It shows once per stage, at the start of the first turn with no question (including when a card beats an opponent and the next one begins already out of questions). It queues behind the player's own line and a tap skips it, like every other banner. Text rows: `battle.open_debate.tag`, `.title`, `.detail` (drafts for Cameron to reword).
+- Tests: `test_questions.gd` (five open-debate cases) and `test_cue_banner.gd` (the phase band).
+
+**Not changed.** The rule that committees deal one shared queue. Whether each committee opponent should get fresh questions is Cameron's call.

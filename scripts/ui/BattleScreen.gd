@@ -67,6 +67,8 @@ var _announced_critical := false
 var _speaker: OpponentPresenter = null
 var _hand: HandPresenter = null
 var _messages: MessagePresenter = null
+## The Open Debate popup is shown once per stage, however many bouts follow.
+var _open_debate_announced := false
 var _outcome: OutcomePresenter = null
 
 ## What is said out loud — the card's spoken line, the opponent's answer —
@@ -407,9 +409,23 @@ func _announce_question() -> void:
 		return
 	var question := engine.turn_question()
 	if question.is_empty():
+		_announce_open_debate()
 		return
 	_banner.say(CueBanner.OPPONENT, OpponentPresenter.question_speaker_name(engine),
 		Text.say("battle.question_prompt", {"question": str(question.get("text", ""))}))
+
+
+## The popup for a room that has run out of questions but not of opponents
+## (2026-11-02): "Open Debate!" on the CueBanner's gold PHASE band, once per
+## stage. Called wherever a turn can begin (the stage's start, the end of a
+## turn, and after a card that finished a bout and so began a new one).
+func _announce_open_debate() -> void:
+	if _open_debate_announced or engine == null or not engine.in_open_debate():
+		return
+	_open_debate_announced = true
+	_banner.say(CueBanner.PHASE, Text.say("battle.open_debate.tag"),
+		Text.say("battle.open_debate.title"),
+		Text.say("battle.open_debate.detail", {"opponent": OpponentPresenter.display_name(engine)}))
 
 
 ## Who the drawn question is about, live in the Details panel (2026-10-16,
@@ -977,6 +993,9 @@ func _play_card_now(card_id: String, discards: Array) -> void:
 		Audio.say(CardCues.speaker(), str(cue["line_id"]))
 	else:
 		_banner.say(CueBanner.PLAYER, me, did)
+	# A card that finished a bout starts the next one at once; if the questions
+	# are already used up, that bout is an open debate from its first turn.
+	_announce_open_debate()
 
 
 ## The bill the level in progress is about ("" for any other level), and the

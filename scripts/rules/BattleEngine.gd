@@ -1255,6 +1255,18 @@ func question_open() -> bool:
 	return state.questions_answered_this_turn < _questions_per_turn()
 
 
+## True when this room dealt questions, has asked every one, and the stage
+## carries on regardless (2026-11-02). Only a committee does this: its
+## questions are dealt once for the whole stage while each new opponent
+## restarts the clock, so the later bouts outlast the questions. From then on
+## nothing is asked, no organization is listening, and the argument is open.
+## Never true before the first question, in a room that asks none, or once
+## the stage is over; false mid-turn after the last question was just answered.
+func in_open_debate() -> bool:
+	return not _questions.is_empty() and current_question().is_empty() \
+		and state.questions_answered_this_turn == 0 and not state.is_over()
+
+
 func questions_remaining() -> int:
 	return maxi(_questions.size() - state.question_index, 0)
 

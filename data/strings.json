@@ -6123,5 +6123,26 @@
     "english": "You have no spare card to add to your deck yet.",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "battle.open_debate.tag",
+    "where": "Battle — phase popup",
+    "english": "New phase",
+    "placeholders": null,
+    "notes": "Small tag above the Open Debate popup (2026-11-02). Draft."
+  },
+  {
+    "key": "battle.open_debate.title",
+    "where": "Battle — phase popup",
+    "english": "Open Debate!",
+    "placeholders": null,
+    "notes": "Big line of the popup shown when a room has asked every question it dealt and the stage carries on (a committee’s later opponents). Draft."
+  },
+  {
+    "key": "battle.open_debate.detail",
+    "where": "Battle — phase popup",
+    "english": "No more questions. Argue it out with {opponent}.",
+    "placeholders": "opponent",
+    "notes": "Line under the Open Debate popup; {opponent} is whoever is in front of you. Draft."
   }
 ]
