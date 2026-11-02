@@ -166,6 +166,8 @@
   "commit.funds": "{yen_amount}円",
   "commit.hours": "{count} hours",
   "commit.hours.one": "{count} hour",
+  "commit.hours_passed": "{count} hours pass.",
+  "commit.hours_passed.one": "1 hour passes.",
   "commit.item": "{item}",
   "commit.item_given": "Gave: {item}",
   "commit.label": "{text} ({cost})",

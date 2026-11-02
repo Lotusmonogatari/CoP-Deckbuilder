@@ -6277,5 +6277,19 @@
     "english": "Act Now: {costs}",
     "placeholders": "costs",
     "notes": "Heads the costs that are paid the moment a choice is made (hours, Funds, an item), so they are not mistaken for a promise or a follow-up that comes later (2026-11-02). Draft."
+  },
+  {
+    "key": "commit.hours_passed",
+    "where": "Choice costs",
+    "english": "{count} hours pass.",
+    "placeholders": "count",
+    "notes": "Said under a visitor's reply when the choice spent hours on the spot (Act Now), so the time is never silent (2026-11-02). Draft."
+  },
+  {
+    "key": "commit.hours_passed.one",
+    "where": "Choice costs",
+    "english": "1 hour passes.",
+    "placeholders": null,
+    "notes": "Singular of commit.hours_passed (2026-11-02). Draft."
   }
 ]

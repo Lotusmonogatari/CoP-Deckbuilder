@@ -734,3 +734,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Government bodies use the canon names (2026-11-02, Cameron)
 - Playtest notes: card faces, soft boxes, week-end watch, Heritage Party rivals (2026-11-02, Cameron)
 - Playtest notes, second round (2026-11-02, Cameron)
+- Office Hours: promise and cost text reviewed (2026-11-02, Cameron)

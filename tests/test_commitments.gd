@@ -74,3 +74,15 @@ func test_an_event_choice_with_a_commitment_is_refused_until_it_can_be_paid() ->
 		assert_lt(int(GameState.meta["Funds"]), before, "the Funds were paid")
 		return
 	fail_test("the workbook has no event choice that costs Funds")
+
+
+func test_the_note_after_a_choice_says_the_hours_and_the_promise() -> void:
+	# Office Hours dropped these lines, so time passed and promises were made in silence (2026-11-02).
+	GameState.start_new_run("PC01")
+	var list := [{"kind": "hours", "amount": 2}, {"kind": "promise_hours", "amount": 1, "within": 168}]
+	var paid := GameState.pay_commitments(list, "Emi Takasugi")
+	var note := GameState.commitment_note(list, paid)
+	assert_true(note.begins_with("2 hours pass."), note)
+	assert_true(note.contains("You promised Emi Takasugi"), note)
+	assert_eq(GameState.commitment_note([{"kind": "hours", "amount": 1}], []), "1 hour passes.")
+	assert_eq(GameState.commitment_note([], []), "")

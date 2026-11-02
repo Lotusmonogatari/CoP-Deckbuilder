@@ -3367,6 +3367,20 @@ func commitment_label(text: String, list: Array) -> String:
 	return Text.say("commit.label", {"text": text, "cost": "; ".join(parts)})
 
 
+## What to tell the player once a choice's commitments have been paid: the hours
+## that passed on the spot, then each line pay_commitments() returned (the
+## promise made, Funds spent, an item handed over). Office Hours used to drop
+## all of it, so an hour could pass or a promise be made without a word
+## (2026-11-02).
+func commitment_note(list: Array, paid_lines: Array[String]) -> String:
+	var lines: Array[String] = []
+	var hours := Commitments.hours(list)
+	if hours > 0:
+		lines.append(Text.say("commit.hours_passed", {"count": hours}))
+	lines.append_array(paid_lines)
+	return "\n".join(lines)
+
+
 ## Pays a choice's commitments: the hours pass, the Funds are spent, the items
 ## are handed over. Returns lines for a result screen.
 func pay_commitments(list: Array, source: String = "", fallback_org: String = "",

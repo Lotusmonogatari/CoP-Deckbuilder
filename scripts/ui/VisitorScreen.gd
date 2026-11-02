@@ -197,10 +197,12 @@ func _on_choice(letter: String) -> void:
 
 	var question := engine.current_question()
 	var kept_text: Variant = question.get("promise_kept_text_" + letter.to_lower())
-	GameState.pay_commitments(Commitments.of(question, "commitment_" + letter.to_lower()),
+	var commitments := Commitments.of(question, "commitment_" + letter.to_lower())
+	var paid := GameState.pay_commitments(commitments,
 		str(engine.current_visitor().get("name_en", "")),
 		GameState._first_pleased_org(question.get("effects_" + letter.to_lower())),
 		{"kept_text": str(kept_text)} if kept_text != null and not str(kept_text).is_empty() else {})
+	_show_commit_note(GameState.commitment_note(commitments, paid))
 	var result := engine.answer(letter)
 	var correct := bool(result.get("correct", false))
 	_visitor_presenter.react(correct)
@@ -218,7 +220,27 @@ func _on_choice(letter: String) -> void:
 		_show_effect_chips(GameState.last_visitor_effects)
 
 
+## What the choice cost or promised, said under the choices once it is made
+## (hours that passed, the promise recorded, Funds spent). Built on first use.
+func _show_commit_note(text: String) -> void:
+	var column := _choice_a.get_parent().get_parent()
+	var note := column.get_node_or_null("CommitNote") as Label
+	if note == null:
+		note = Label.new()
+		note.name = "CommitNote"
+		note.theme_type_variation = &"SmallLabel"
+		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		column.add_child(note)
+		column.move_child(note, _choice_a.get_parent().get_index() + 1)
+	note.text = text
+	note.visible = not text.is_empty()
+
+
 func _on_continue() -> void:
+	var note := _choice_a.get_parent().get_parent().get_node_or_null("CommitNote") as Label
+	if note != null:
+		note.hide()
 	_clear_effect_chips()
 	if not _ready_to_play or not _answered or engine == null:
 		return

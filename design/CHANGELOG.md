@@ -3001,3 +3001,15 @@ Noticed, not changed: "Cabinet Legislation Bureau Chief Rika Ashikaga" in an Off
 | 7 | Stage codes (ST04, ...) on the Boosters page | The modifier text replacer only worked when a modifier named one stage; most now name a family. `ModifierEffects.plain_stage_names()` replaces every code with the stage's name (and drops a code that is already followed by its name). A test checks every modifier. No other player-facing text carries a stage code (scanned all data). |
 | 8 | Move "Likes ... Dislikes ..." off the combat screen | The strip of icons on the stage screen shows icons and marks only; the likes and dislikes are in the pop-up that opens when an icon is tapped on the Details screen (`OrgChip.make(..., detail)`). Still only for organizations whose backing you hold. |
 | 9 | Office hours choice costs | Costs paid on the spot read "(Act Now: 1 hour)" (hours, Funds and items together), deferred ones "(Promise: ...)" and "(Follow-up later)", separated by a semicolon. New Text row `commit.act_now`; `commit.promise` is capitalized. |
+
+### Office Hours: promise and cost text reviewed (2026-11-02, Cameron)
+
+Reviewed all 397 visitor questions (1,588 choices): 92 carry a promise, 24 an Act Now cost (hours, Funds or an item).
+
+| Finding | Status |
+|---|---|
+| **Silent costs.** `pay_commitments()` returned the lines "You promised X 1 hour of your time within N hours." and the Funds / item lines, but the visitor screen threw them away, and an hour spent on the spot had no line at all. A choice could spend time or record a promise with no word on screen. | **Fixed.** A small note under the choices after an answer: "1 hour passes." plus whatever was paid or promised (`GameState.commitment_note()`, Text rows `commit.hours_passed`). Test in `test_commitments.gd`. |
+| **Deadlines in hours that do not match the game's hours.** A game week is 48 hours (40 work + 8 weekend), but 56 of the 92 promises say "within 168 hours" (a real week; here 3.5 game weeks), 17 say 96, 12 say 120, 3 say 72 and 2 say 48. | **Asked** (see below). |
+| **Act Now choices written as later promises.** 18 of the 24 Act Now choices are phrased in the future ("I'll come and take the hard questions", 2 hours spent on the spot). | **Asked.** |
+| Three promise choices carry no first-person future phrase (VQ21 a "I'm fine, Obaachan, I promise.", VQ58 c, VQ89 d, both imperatives). | Noted only. |
+| The reaction chips sit over the visitor's title line. | Noticed, not changed. |
