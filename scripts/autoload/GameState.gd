@@ -266,6 +266,11 @@ var town_hall_active := false
 ## back (Cameron, 2026-10-13). Saved; cleared on a new run.
 var faced_people: Dictionary = {}
 
+## Who spoke at the last stage transition and which lines this level has
+## already heard ({"speaker": id, "lines": {key: true}}), so the next one can
+## avoid repeating them (2026-11-02). Not saved; cleared when a level begins.
+var transition_memory: Dictionary = {}
+
 ## Same shape, for the Party Steering Committee check-in (ST22).
 var steering_committee_active := false
 
@@ -1970,6 +1975,7 @@ func reset_segment_favorability() -> void:
 ## Called by the Office when the player starts a level.
 func begin_level(runner: LevelRunner) -> void:
 	level_runner = runner
+	transition_memory = {}
 	bill_stance = {}
 	bill_assist = BillAssist.empty()
 	mid_stage = false

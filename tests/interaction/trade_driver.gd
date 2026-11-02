@@ -142,6 +142,15 @@ func _run() -> void:
 		return
 	await get_tree().create_timer(0.5).timeout
 	var next := get_tree().current_scene
+	# The Floor Vote gets a transition first (ST23's Show Transition, 2026-11-02):
+	# press its Continue, as a player would.
+	if next != null and next.name == "StageTransitionScreen":
+		print("  a transition came before the vote; continuing")
+		if not await _click(next.get_node("%ContinueButton")):
+			_finish()
+			return
+		await get_tree().create_timer(0.5).timeout
+		next = get_tree().current_scene
 	if next == null or next.name != "FloorVoteScreen":
 		_fail("after the deal the Floor Vote did not open (opened %s)" % (next.name if next else "nothing"))
 	else:

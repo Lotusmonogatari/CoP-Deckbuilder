@@ -1108,5 +1108,80 @@
     "transition_cast_id": "TC222",
     "stage_id": "ST235",
     "character_id": "OP12"
+  },
+  {
+    "transition_cast_id": "TC223",
+    "stage_id": null,
+    "character_id": "SF03"
+  },
+  {
+    "transition_cast_id": "TC224",
+    "stage_id": null,
+    "character_id": "SF04"
+  },
+  {
+    "transition_cast_id": "TC225",
+    "stage_id": null,
+    "character_id": "SF05"
+  },
+  {
+    "transition_cast_id": "TC226",
+    "stage_id": null,
+    "character_id": "SF06"
+  },
+  {
+    "transition_cast_id": "TC227",
+    "stage_id": null,
+    "character_id": "SF07"
+  },
+  {
+    "transition_cast_id": "TC228",
+    "stage_id": null,
+    "character_id": "SF10"
+  },
+  {
+    "transition_cast_id": "TC229",
+    "stage_id": null,
+    "character_id": "SF11"
+  },
+  {
+    "transition_cast_id": "TC230",
+    "stage_id": null,
+    "character_id": "SF12"
+  },
+  {
+    "transition_cast_id": "TC231",
+    "stage_id": null,
+    "character_id": "SF13"
+  },
+  {
+    "transition_cast_id": "TC232",
+    "stage_id": null,
+    "character_id": "SF14"
+  },
+  {
+    "transition_cast_id": "TC233",
+    "stage_id": null,
+    "character_id": "SF17"
+  },
+  {
+    "transition_cast_id": "TC234",
+    "stage_id": null,
+    "character_id": "SF18"
+  },
+  {
+    "transition_cast_id": "TC235",
+    "stage_id": null,
+    "character_id": "SF19"
+  },
+  {
+    "transition_cast_id": "TC236",
+    "stage_id": null,
+    "character_id": "SF20"
+  },
+  {
+    "transition_cast_id": "TC237",
+    "stage_id": null,
+    "character_id": "SF21"
   }
 ]

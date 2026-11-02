@@ -50,3 +50,7 @@ No test was found that covers a removed feature. The two click tests that `verif
 
 ## Added 2026-11-01
 - `BattleScreen._question_concerns_lines()` and its Text rows (`battle.question_about` and the "pleases / sets back" lines), plus `battle.nobody_pleased`: the Details panel no longer shows them (Cameron's playtest). `StanceLines.stance_chip_rows()` may now be unused there too; check other callers.
+
+## From the stage transition review (2026-11-02)
+
+- Transition Dialogue: two rows scoped to ST30 (Media Ambush on Seafood Labeling), and Transition Backgrounds TB for ST30. Media Ambush rooms show no transition, so these are never used.

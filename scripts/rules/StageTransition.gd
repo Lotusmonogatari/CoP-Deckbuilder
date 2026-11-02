@@ -48,9 +48,18 @@ static func character_kind(character_id: String) -> String:
 ## candidate with nothing written for them here simply doesn't speak,
 ## rather than appearing silent. Sampled without replacement from the
 ## eligible cast pool, so the same transition never repeats a speaker.
+##
+## `staff_chance` (2026-11-02, Balance "Transition: Staff Speaker Chance"): when
+## both a hired staff member and a cast opponent could speak, the percent
+## chance it is the staff member. -1 (the default, older callers and tests)
+## leaves the draw flat over everyone eligible. `avoid` is what this level has
+## already heard, so the same person and the same words do not come back at
+## once: {"speaker": last speaker's id, "lines": {"SF01|the line": true}}. Both
+## are only preferences: with nobody else to pick, a repeat is allowed.
 static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: String,
 		count: int, rng: RandomNumberGenerator, hired_staff_ids: Variant = null,
-		bill_id: String = "", lean: String = "", component_ids: Array = []) -> Array[Dictionary]:
+		bill_id: String = "", lean: String = "", component_ids: Array = [],
+		staff_chance: int = -1, avoid: Dictionary = {}) -> Array[Dictionary]:
 	var remaining := PoolPicker.eligible(cast_rows, "stage_id", stage_id)
 	# Staff are the player's own team: an SFxx cast member only speaks once
 	# hired. `hired_staff_ids` null means "no filter" (older callers, tests).
@@ -64,24 +73,74 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 		return is_about_a_bill(row))
 	var speakers: Array[Dictionary] = []
 
+	var heard: Dictionary = avoid.get("lines", {})
+	var last_speaker := str(avoid.get("speaker", ""))
+
 	while speakers.size() < count and not remaining.is_empty():
-		var candidate: Dictionary = remaining[rng.randi_range(0, remaining.size() - 1)]
+		var pool := _kind_pool(remaining, staff_chance, rng)
+		# Not the person who spoke last time, if anybody else will do.
+		var fresh := pool.filter(func(row: Dictionary) -> bool:
+			return str(row.get("character_id", "")) != last_speaker)
+		if not fresh.is_empty():
+			pool = fresh
+		var candidate: Dictionary = pool[rng.randi_range(0, pool.size() - 1)]
 		remaining.erase(candidate)
 		var character_id := str(candidate.get("character_id", ""))
 		if character_id.is_empty():
 			continue
-		var exchange := PoolPicker.pick(about_bill, "character_id", character_id, rng)
+		# About the bill and unheard first, then anything unheard, and only
+		# then a repeat (about the bill first).
+		var exchange := _fresh_exchange(about_bill, character_id, heard, rng, false)
 		if exchange.is_empty():
-			exchange = PoolPicker.pick(dialogue_here, "character_id", character_id, rng)
+			exchange = _fresh_exchange(dialogue_here, character_id, heard, rng, false)
+		if exchange.is_empty():
+			exchange = _fresh_exchange(about_bill, character_id, heard, rng, true)
+		if exchange.is_empty():
+			exchange = _fresh_exchange(dialogue_here, character_id, heard, rng, true)
 		if exchange.is_empty():
 			continue
 		speakers.append({
 			"character_id": character_id,
 			"character_line": str(exchange.get("character_line_en", "")),
 			"player_reply": str(exchange.get("player_reply_en", "")),
+			"line_key": line_key(character_id, str(exchange.get("character_line_en", ""))),
 		})
 
 	return speakers
+
+
+## The key a heard line is remembered under: who said it, and what.
+static func line_key(character_id: String, line: String) -> String:
+	return "%s|%s" % [character_id, line]
+
+
+## Which kind of candidate to draw from: with a staff chance set and both
+## kinds still eligible, a roll decides staff or opponent first, so a roster
+## of three staff does not drown out the opponent in the room.
+static func _kind_pool(candidates: Array, staff_chance: int, rng: RandomNumberGenerator) -> Array:
+	if staff_chance < 0:
+		return candidates
+	var staff := candidates.filter(func(row: Dictionary) -> bool:
+		return character_kind(str(row.get("character_id", ""))) == "staff")
+	var others := candidates.filter(func(row: Dictionary) -> bool:
+		return character_kind(str(row.get("character_id", ""))) != "staff")
+	if staff.is_empty() or others.is_empty():
+		return candidates
+	return staff if rng.randi_range(1, 100) <= staff_chance else others
+
+
+## One of `character_id`'s exchanges in `rows` that has not been heard yet; with
+## `allow_repeat`, any of them when every one has. {} when there is none.
+static func _fresh_exchange(rows: Array, character_id: String, heard: Dictionary,
+		rng: RandomNumberGenerator, allow_repeat: bool) -> Dictionary:
+	var own := PoolPicker.eligible(rows, "character_id", character_id)
+	var choices: Array = own.filter(func(row: Dictionary) -> bool:
+		return not heard.has(line_key(character_id, str(row.get("character_line_en", "")))))
+	if choices.is_empty() and allow_repeat:
+		choices = own
+	if choices.is_empty():
+		return {}
+	return choices[rng.randi_range(0, choices.size() - 1)]
 
 
 ## Everything the screen needs for `stage`'s transition — `{"speakers":
@@ -90,24 +149,26 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 static func resolve(stage: Dictionary, cast_rows: Array, background_rows: Array,
 		dialogue_rows: Array, rng: RandomNumberGenerator, hired_staff_ids: Variant = null,
 		thought_chance: int = 0, bill_id: String = "", lean: String = "",
-		component_ids: Array = []) -> Dictionary:
+		component_ids: Array = [], staff_chance: int = -1, avoid: Dictionary = {}) -> Dictionary:
 	if not should_show(stage):
 		return {}
 
 	var stage_id := str(stage.get("stage_id", ""))
 	var speakers := pick_speakers(cast_rows, dialogue_rows, stage_id, speaker_count(stage), rng,
-		hired_staff_ids, bill_id, lean, component_ids)
+		hired_staff_ids, bill_id, lean, component_ids, staff_chance, avoid)
 	var thought := ""
 	if speakers.is_empty():
 		# Nobody is available to speak (no staff hired, no opponent cast):
 		# the player alone has a private thought, if one is written.
-		thought = player_thought(scope_dialogue(dialogue_rows, bill_id, lean, component_ids), stage_id, rng)
+		thought = player_thought(scope_dialogue(dialogue_rows, bill_id, lean, component_ids), stage_id, rng,
+			avoid.get("lines", {}))
 		if thought.is_empty():
 			return {}
 	elif thought_chance > 0 and rng.randi_range(1, 100) <= thought_chance:
 		# Speakers are available, but the player sometimes opens with a
 		# private thought first (2026-10-15).
-		thought = player_thought(scope_dialogue(dialogue_rows, bill_id, lean, component_ids), stage_id, rng)
+		thought = player_thought(scope_dialogue(dialogue_rows, bill_id, lean, component_ids), stage_id, rng,
+			avoid.get("lines", {}))
 
 	var background := PoolPicker.pick(background_rows, "stage_id", stage_id, rng)
 	return {
@@ -119,14 +180,22 @@ static func resolve(stage: Dictionary, cast_rows: Array, background_rows: Array,
 
 ## One internal-thought line for the player (Character ID "PLAYER" rows in
 ## Transition Dialogue), scoped by Stage ID like any other row. "" if none.
-static func player_thought(dialogue_rows: Array, stage_id: String, rng: RandomNumberGenerator) -> String:
+static func player_thought(dialogue_rows: Array, stage_id: String, rng: RandomNumberGenerator,
+		heard: Dictionary = {}) -> String:
 	var mine := dialogue_rows.filter(func(row: Dictionary) -> bool:
 		return str(row.get("character_id", "")) == "PLAYER")
 	# A thought about this level's bill (already scoped by the caller) is
 	# preferred to a general one.
 	var about_bill := mine.filter(func(row: Dictionary) -> bool: return is_about_a_bill(row))
-	var row := PoolPicker.pick(about_bill if not about_bill.is_empty() else mine, "stage_id", stage_id, rng)
-	return str(row.get("character_line_en", ""))
+	var source: Array = about_bill if not about_bill.is_empty() else mine
+	# Not one already heard this level, when another is written.
+	var eligible := PoolPicker.eligible(source, "stage_id", stage_id)
+	var unheard := eligible.filter(func(row: Dictionary) -> bool:
+		return not heard.has(line_key("PLAYER", str(row.get("character_line_en", "")))))
+	var choices: Array = unheard if not unheard.is_empty() else eligible
+	if choices.is_empty():
+		return ""
+	return str(choices[rng.randi_range(0, choices.size() - 1)].get("character_line_en", ""))
 
 
 ## Rows that suit this level: the general ones (no Bill ID), plus rows about

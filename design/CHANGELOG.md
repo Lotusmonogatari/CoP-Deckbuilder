@@ -2923,3 +2923,20 @@ The Office news ticker now names one of the seven canonical outlets in every lin
 ### The next opponent stepping up gets its own popup (2026-11-02, Cameron)
 
 When a card or the clock finished an opponent, the card's outcome line began "X is finished — Y rises" and the announcement was lost in it. It now has its own gold PHASE popup (the one made for Open Debate): tag "Next up", line "{next} steps up!", detail "{who} is finished." It shows after the card's own line (or after the opponent's move, when the clock ended the bout) and before the Open Debate popup if both apply. The card's outcome line no longer mentions the handover. Beating the last opponent is unchanged: there is nobody to step up, so "X is finished" stays in the outcome line. Text rows `battle.next_up.tag`, `.title`, `.detail` (drafts). `test_battle_narration.gd` follows.
+
+### Stage transitions reviewed: who speaks, repeats, the Floor Vote (2026-11-02, Cameron)
+
+Reviewed against §7.9 by simulating every transition in all 101 levels (396 stage-to-stage handoffs). What was found, and what was done:
+
+| Finding | Before | Change |
+|---|---|---|
+| Only 6 of 21 staff candidates had transition lines | Hiring any of SF03-07, SF10-14, SF17-21 meant your staff never spoke | All 15 added to Transition Cast (any stage) with 12 general lines each (180 rows, TD2084-TD2263), written from each person's biography. Drafts for Cameron to rewrite; bill-specific lines for them are not written, so they fall back to general lines in bill levels. |
+| Staff drowned out the opponent | With staff hired they spoke in 72-80% of transitions | Balance **Transition: Staff Speaker Chance** (50): when both a hired staff member and a cast opponent could speak, the chance it is staff. Staff still always speak where no opponent is cast (55 stages) |
+| Repeats | The same speaker twice running in 8% of consecutive transitions; no memory of lines heard | The speaker is not the one who spoke last, and a line is not one already heard this level, whenever anything else will do (`GameState.transition_memory`, cleared when a level begins). Back-to-back speakers went to 0; line repeats are now only opponents who have a single line written |
+| Bill levels often said nothing about the bill | Opponents have no bill lines, so only the player's thought carried the bill (about half of bill-level transitions) | Balance **Transition: Bill Level Thought Chance** (60) replaces the flat 30% in levels about a bill |
+| The Floor Vote had no transition | None of the 50 bill levels paused before the vote (ST23's Show Transition was blank) | ST23 Show Transition = Yes: handoffs with a transition went from 326 to 376 of 396. With nobody cast it is a staff member or the player's thought; who else speaks there is Cameron's call |
+| Name label | Centered across the screen, so it read as the player's name | Sits under the speaker's own portrait |
+
+`StageTransition.pick_speakers()` and `resolve()` take `staff_chance` and `avoid` (both optional); the speaker record carries a `line_key`. Eight of the new media lines were reworded because the every-room rule (`test_generic_transition_lines_fit_every_room`) bans press words in lines that fit any stage. Tests: `test_stage_transition.gd` (staff chance, last speaker, heard lines, heard thoughts, all 21 staff can speak, ST23 shows one).
+
+**Left as it was (decisions for Cameron):** every transition happens over the Office picture in 83% of cases (Keep Office, Cameron); 53 of 56 cast opponents have no drawn picture, so the speaker is a blank box; each cast opponent has exactly one line per stage, so the same line returns every time the stage is played; four Office Hours handoffs and the Media Ambush rooms have no transition (Media Ambush by design); Transition Speaker Count is 1 everywhere.

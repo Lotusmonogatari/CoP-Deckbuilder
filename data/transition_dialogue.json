@@ -21908,5 +21908,1805 @@
     "component_ids": [
       "CB308"
     ]
+  },
+  {
+    "transition_dialogue_id": "TD2084",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "The brief is short on purpose. Short things are harder to break.",
+    "player_reply_en": "Short and sturdy. Good.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2085",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "I built a milking line from scrap once. This brief is simpler.",
+    "player_reply_en": "Then I will trust it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2086",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "If a plan needs three moving parts, I get suspicious.",
+    "player_reply_en": "I will keep it to one or two.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2087",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "I checked it twice and then tried to break it. It held.",
+    "player_reply_en": "That is the test I want.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2088",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "Start with what works today. Leave the clever part for later.",
+    "player_reply_en": "Practical first. Understood.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2089",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "There is a number in here the farmers will understand. Use that one.",
+    "player_reply_en": "The one a farmer can check.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2090",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "Everything in this folder has been tested by someone, somewhere.",
+    "player_reply_en": "Then it has earned its place.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2091",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "Do not oversell it. People can tell when a thing is held together with tape.",
+    "player_reply_en": "I will not promise more than it does.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2092",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "I marked what needs a motor and what needs a person.",
+    "player_reply_en": "People first, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2093",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "A good system is the one nobody notices. Aim for that.",
+    "player_reply_en": "Quiet and reliable.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2094",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "Ask them what they already have before offering them something new.",
+    "player_reply_en": "I will ask first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2095",
+    "character_id": "SF03",
+    "stage_id": null,
+    "character_line_en": "If it breaks, we fix it. I carry the tools.",
+    "player_reply_en": "That is reassuring.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2096",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "I know which page of this the ministry will actually read. It is marked.",
+    "player_reply_en": "Then that is the page I use.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2097",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "Six years in the ministry. Nobody reads past page four.",
+    "player_reply_en": "Then page four had better be good.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2098",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "The clerks will check the footnotes. I made sure they hold.",
+    "player_reply_en": "Good. They will notice.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2099",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "If they ask for the form number, it is on the back of the folder.",
+    "player_reply_en": "I will turn it over.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2100",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "Procedure is a kind of politeness. Follow it and they listen.",
+    "player_reply_en": "Politeness with a paper trail.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2101",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "I know who signs off on this. I would not antagonize them.",
+    "player_reply_en": "Noted. I will keep it civil.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2102",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "The binder has a tab for each likely question. Use the tabs.",
+    "player_reply_en": "Tabs. I like tabs.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2103",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "Say it plainly and cite the article. Clerks remember articles.",
+    "player_reply_en": "Plain words, and the article.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2104",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "There is one officer who reads everything. Write for that officer.",
+    "player_reply_en": "Then I will write carefully.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2105",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "I filed the amendments in the order they will be asked about.",
+    "player_reply_en": "That saves me a scramble.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2106",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "Official language is a shield. Use a little, not a lot.",
+    "player_reply_en": "A little shield, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2107",
+    "character_id": "SF04",
+    "stage_id": null,
+    "character_line_en": "If they stall, ask which unit owns the decision. That ends most stalls.",
+    "player_reply_en": "Which unit owns it. Good question.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2108",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "I looked at the reserves behind this plan. They are thinner than they should be.",
+    "player_reply_en": "Then I will not lean on them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2109",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "I have seen a plan like this fail quietly. Watch the margins.",
+    "player_reply_en": "I will watch them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2110",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "Ask what happens if the numbers come in ten percent worse.",
+    "player_reply_en": "Ten percent worse. Good test.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2111",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "I raised a warning once and it cost me my job. I would raise this one again.",
+    "player_reply_en": "I am glad you speak up.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2112",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "If something looks too safe, find out who is covering the risk.",
+    "player_reply_en": "Who covers the risk. Yes.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2113",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "Never promise a figure you cannot show a cushion for.",
+    "player_reply_en": "No figure without a cushion.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2114",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "The loan tables are clean. The assumptions under them are not.",
+    "player_reply_en": "Then I will question the assumptions.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2115",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "I put the weak point on the second page, where you will see it.",
+    "player_reply_en": "Better I see it than they do.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2116",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "Be honest about what we do not know. It reads as strength.",
+    "player_reply_en": "Honest and steady.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2117",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "A cautious answer lasts longer than a bold one.",
+    "player_reply_en": "Then I will be cautious where it counts.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2118",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "The regulators always ask the same three things. I wrote them down.",
+    "player_reply_en": "Three questions. I will be ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2119",
+    "character_id": "SF05",
+    "stage_id": null,
+    "character_line_en": "If they push you on cost, give the range, not the single number.",
+    "player_reply_en": "A range. Safer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2120",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "I read everything overnight. There is nothing in here that will embarrass you.",
+    "player_reply_en": "That is a rare thing to hear.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2121",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "I found three sentences that could be quoted against you. They are gone.",
+    "player_reply_en": "Gone, and I never saw them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2122",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "Read it aloud once. If you stumble, we change the line.",
+    "player_reply_en": "I will read it aloud.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2123",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "I have cleared out copies of a bad draft before. Nobody noticed.",
+    "player_reply_en": "Then I will not start worrying now.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2124",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "The risky phrase is on page two. Skip it or soften it.",
+    "player_reply_en": "I will soften it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2125",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "If you are unsure how a word will sound, drop it.",
+    "player_reply_en": "Drop it. Easy.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2126",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "Every number here is checked against the final version. Not the draft.",
+    "player_reply_en": "The final version. Good.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2127",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "I would rather catch a mistake at midnight than read it in the morning papers.",
+    "player_reply_en": "So would I.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2128",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "The line they will want to repeat is not the one you want. I planned for it.",
+    "player_reply_en": "Then I will steer toward mine.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2129",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "One careless adjective can undo a good speech. Choose yours.",
+    "player_reply_en": "I will choose them slowly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2130",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "I marked the lines that are safe to repeat. Repeat those.",
+    "player_reply_en": "Those, and nothing else.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2131",
+    "character_id": "SF06",
+    "stage_id": null,
+    "character_line_en": "If you slip, correct it at once and without drama.",
+    "player_reply_en": "Quickly and without fuss.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2132",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "Both sides will say no at first. Let them finish before you speak.",
+    "player_reply_en": "Let them finish. Yes.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2133",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "I once got two enemies to share a lunch table. Start with something small.",
+    "player_reply_en": "A small thing in common.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2134",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "Find the one thing they agree on and say it first.",
+    "player_reply_en": "Start where they already agree.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2135",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "Nobody changes their mind while they are being shouted at.",
+    "player_reply_en": "Then I will not shout.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2136",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "The briefing lists what each side wants. Read the overlap.",
+    "player_reply_en": "The overlap is the opening.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2137",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "If the room is tense, ask a question you already know they can answer.",
+    "player_reply_en": "An easy question first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2138",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "Offer them a way to say yes without losing face.",
+    "player_reply_en": "A door they can walk through.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2139",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "I wrote down what each side is afraid of. It matters more than what they ask for.",
+    "player_reply_en": "Fear before demands.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2140",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "Wait one beat before you answer. It calms the room.",
+    "player_reply_en": "One beat. I can do that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2141",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "Do not take a side too early. You can always take one later.",
+    "player_reply_en": "Keep it open as long as I can.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2142",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "Remember their names. People forgive a lot after you do.",
+    "player_reply_en": "Names. I will remember.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2143",
+    "character_id": "SF07",
+    "stage_id": null,
+    "character_line_en": "A shared meal does more than a good argument. Keep that in mind.",
+    "player_reply_en": "I will remember the table.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2144",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "Give them one picture they cannot forget. Words come after.",
+    "player_reply_en": "One strong image. Right.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2145",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "Show the hands, not the speech. People remember hands.",
+    "player_reply_en": "The hands. Good.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2146",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "I once shot a photo essay that doubled an apprenticeship list. Details win.",
+    "player_reply_en": "Then I will find the detail.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2147",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "Stand where the light is good. It matters more than you think.",
+    "player_reply_en": "Into the light, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2148",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "A calm face will be the photo on the front page. Keep it calm.",
+    "player_reply_en": "Calm, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2149",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "Tell a story with a beginning, a person and an ending.",
+    "player_reply_en": "A person in the middle of it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2150",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "If they take your picture mid-sentence, finish the sentence smiling.",
+    "player_reply_en": "Finish the sentence. Smile.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2151",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "Pick one word to hold on to and let it echo.",
+    "player_reply_en": "One word. I have it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2152",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "A pause lands better than a rush. Use one before the key line.",
+    "player_reply_en": "A pause before the key line.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2153",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "Keep your hands visible. People trust what they can see.",
+    "player_reply_en": "Hands where they can see them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2154",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "I chose the photos for the handout. They look like you.",
+    "player_reply_en": "Then they are the ones I will use.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2155",
+    "character_id": "SF10",
+    "stage_id": null,
+    "character_line_en": "Craft takes time. Do not rush the answer.",
+    "player_reply_en": "No rush, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2156",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "I know how listeners think. They want a quote, not a lecture.",
+    "player_reply_en": "A quote they can use.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2157",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "Half the gallery owes me a favor. I will not spend them today.",
+    "player_reply_en": "Save them for later.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2158",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "Give them one sentence they can print whole. They will print it.",
+    "player_reply_en": "One clean sentence.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2159",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "If a listener looks bored, you are being too careful.",
+    "player_reply_en": "Then I will loosen up.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2160",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "Never say 'no comment'. Say what you can and stop.",
+    "player_reply_en": "Say what I can, then stop.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2161",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "I covered the Kushiro recall. The ones who hid lost more than the ones who spoke.",
+    "player_reply_en": "Better to speak early.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2162",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "Remember who asked the last question. They will ask the next.",
+    "player_reply_en": "I will keep an eye on them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2163",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "Off the record is a promise. Do not use it unless you mean it.",
+    "player_reply_en": "I will not use it lightly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2164",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "People wait for you to fill a silence. Do not.",
+    "player_reply_en": "Let the silence stand.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2165",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "The tough question usually comes third. Be ready for it.",
+    "player_reply_en": "Third question. Ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2166",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "I have seen what a flustered answer sounds like. Breathe.",
+    "player_reply_en": "I will breathe.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2167",
+    "character_id": "SF11",
+    "stage_id": null,
+    "character_line_en": "Answer the question they should have asked. Then answer theirs.",
+    "player_reply_en": "Both, in that order.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2168",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "I wrote the line you will end on. Say it slowly.",
+    "player_reply_en": "Slowly. I will.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2169",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "A good speech is mostly cuts. I cut this one twice.",
+    "player_reply_en": "Then it is lean.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2170",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "The last memorial speech fit on one page. Keep this one that simple.",
+    "player_reply_en": "One page. I can do that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2171",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "Say the hard part first. The audience remembers what it hears at the start and end.",
+    "player_reply_en": "Hard part first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2172",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "Read it once without stopping. We fix the rhythm from there.",
+    "player_reply_en": "Once through, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2173",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "Use a short sentence after a long one. It lands harder.",
+    "player_reply_en": "Short after long.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2174",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "Never apologize in the opening line. Earn the pause instead.",
+    "player_reply_en": "No apology up front.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2175",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "I marked where to breathe. Trust the marks.",
+    "player_reply_en": "I will follow them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2176",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "A name said with respect carries a whole paragraph.",
+    "player_reply_en": "Then I will say the names.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2177",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "Three ministers asked for a copy of the last one. Aim for that.",
+    "player_reply_en": "A high bar. I will try.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2178",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "If the room goes quiet, you have them. Do not rush to fill it.",
+    "player_reply_en": "Let it stay quiet.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2179",
+    "character_id": "SF12",
+    "stage_id": null,
+    "character_line_en": "The last sentence is the one they quote. Make it plain.",
+    "player_reply_en": "Plain and final.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2180",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "I have a line for you. Five words. It will fit on a poster.",
+    "player_reply_en": "Five words. Let me hear it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2181",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "If they cannot chant it, they will not remember it.",
+    "player_reply_en": "Then it should chant.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2182",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "The activists still chant my last slogan. Yours should last longer.",
+    "player_reply_en": "I will try.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2183",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "Say it three times in one speech. That is how it sticks.",
+    "player_reply_en": "Three times. Understood.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2184",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "A slogan is a promise in a hurry. Do not make one you cannot keep.",
+    "player_reply_en": "Only promises I can keep.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2185",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "Short beats clever. Clever beats long. Long loses.",
+    "player_reply_en": "Short, clever, in that order.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2186",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "Pick a verb. Posters run on verbs.",
+    "player_reply_en": "A strong verb.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2187",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "I wrote six versions and chose the one that chanted best.",
+    "player_reply_en": "Then it is the one.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2188",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "If a line makes you smile when you say it, keep it.",
+    "player_reply_en": "Then I will keep it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2189",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "Never let the opposition finish your line for you.",
+    "player_reply_en": "I will finish it first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2190",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "A slogan only has to be right once, on the right day.",
+    "player_reply_en": "Then let it be today.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2191",
+    "character_id": "SF13",
+    "stage_id": null,
+    "character_line_en": "I put the key words in bold. Hit those.",
+    "player_reply_en": "Bold words. Hit them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2192",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "Both associations still call me first. Remember that they call us, too.",
+    "player_reply_en": "A good relationship to keep.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2193",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "Feed people first and talk later. It works in a crisis and in a debate.",
+    "player_reply_en": "Food, then talk.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2194",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "A joint kitchen taught me that people will share a pot before they share an opinion.",
+    "player_reply_en": "Start with the pot.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2195",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "Keep your tone warm. Cold words travel faster than warm ones.",
+    "player_reply_en": "Warm, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2196",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "Thank the volunteers by name. They will tell everyone.",
+    "player_reply_en": "By name. I will.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2197",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "There is a temple group and a shrine group in the room. Do not favor either.",
+    "player_reply_en": "Even-handed, always.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2198",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "I wrote down what each community cares about. It is short.",
+    "player_reply_en": "Short is useful.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2199",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "A calm voice in a rough room is worth a dozen good points.",
+    "player_reply_en": "A calm voice, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2200",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "If someone is upset, listen to the whole complaint first.",
+    "player_reply_en": "The whole complaint.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2201",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "Say what you will do this week, not this decade.",
+    "player_reply_en": "This week.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2202",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "Be generous with credit. It costs nothing and returns a lot.",
+    "player_reply_en": "I will share the credit.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2203",
+    "character_id": "SF14",
+    "stage_id": null,
+    "character_line_en": "I keep tea on hand. It slows everyone down in a good way.",
+    "player_reply_en": "Tea would help.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2204",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "Three seasons on a kelp boat taught me that the weather does not care about speeches.",
+    "player_reply_en": "Then I will be practical.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2205",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "The fishermen want cold storage and a straight answer. Give them both.",
+    "player_reply_en": "Both, in plain words.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2206",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "Say the word 'season' once. They will know you listened.",
+    "player_reply_en": "Season. I have it.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2207",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "They get up before dawn. Do not keep them waiting.",
+    "player_reply_en": "I will be brief.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2208",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "The co-op does not trust a promise without a number. Bring one.",
+    "player_reply_en": "A number they can check.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2209",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "A grant is only good when it reaches the dock. Say how it will.",
+    "player_reply_en": "Right to the dock.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2210",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "They respect someone who shows up cold and wet.",
+    "player_reply_en": "Then I will show up.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2211",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "The harbor talks. Whatever you say today will be known by evening.",
+    "player_reply_en": "Then I will say it carefully.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2212",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "Ask how the last catch went. They will tell you everything else.",
+    "player_reply_en": "How was the last catch?",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2213",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "Do not pretend to know the tides. Ask the captain.",
+    "player_reply_en": "Ask the captain. Good.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2214",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "Cold storage means a better price. Make the link clear.",
+    "player_reply_en": "A better price. Clear.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2215",
+    "character_id": "SF17",
+    "stage_id": null,
+    "character_line_en": "I know most of them by their boats. I will introduce you.",
+    "player_reply_en": "Thank you. Lead the way.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2216",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "Start small. A garden began with one bed and a few neighbors.",
+    "player_reply_en": "One bed at a time.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2217",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "People believe what they can see growing. Show them something that grows.",
+    "player_reply_en": "Something visible.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2218",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "The volunteers do the work and want the credit shared. Share it.",
+    "player_reply_en": "Credit goes to them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2219",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "Ask who lives next to the project. Their opinion decides it.",
+    "player_reply_en": "The neighbors first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2220",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "Ward by ward is slower. It also lasts.",
+    "player_reply_en": "Slow and lasting.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2221",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "Bring a tool to the meeting, not a speech. It changes the mood.",
+    "player_reply_en": "A tool, not a speech.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2222",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "I learned that nobody argues over a vegetable bed. Find the vegetable bed.",
+    "player_reply_en": "Find the easy common ground.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2223",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "The lot was empty for ten years. Someone just had to ask.",
+    "player_reply_en": "Sometimes that is all it takes.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2224",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "People will show up if there is a job for them. Give them a job.",
+    "player_reply_en": "A real job, not a seat.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2225",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "Learn the names of the quiet ones. They are the ones who stay.",
+    "player_reply_en": "The quiet ones.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2226",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "If it rains, hold the meeting anyway. They remember that.",
+    "player_reply_en": "Rain or not.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2227",
+    "character_id": "SF18",
+    "stage_id": null,
+    "character_line_en": "I wrote down who volunteers and who only complains. Treat both fairly.",
+    "player_reply_en": "Both deserve an answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2228",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "The elders asked to be heard in person. I drove them. They were heard.",
+    "player_reply_en": "Then I will listen as they did.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2229",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "Say the place names correctly. They notice.",
+    "player_reply_en": "I will practice them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2230",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "Respect is shown in small ways. Start by waiting for the elders to finish.",
+    "player_reply_en": "I will wait.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2231",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "The land-use plan is better because they were in the room.",
+    "player_reply_en": "Then the room needed them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2232",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "If you are unsure how to say a name, ask. Nobody minds being asked.",
+    "player_reply_en": "I will ask.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2233",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "Do not rush the elders. Their pace is the pace of the meeting.",
+    "player_reply_en": "Their pace, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2234",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "I wrote down which stories matter to which family. Please read them.",
+    "player_reply_en": "I will read them closely.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2235",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "The council listens when the elders speak. Make sure they speak.",
+    "player_reply_en": "I will make room.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2236",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "A hearing is long. Bring a cushion and patience.",
+    "player_reply_en": "Both, I promise.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2237",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "They will remember how you greeted them, not what you promised.",
+    "player_reply_en": "Then I will greet them well.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2238",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "The names on the map are not decoration. Treat them as law.",
+    "player_reply_en": "As real as any other.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2239",
+    "character_id": "SF19",
+    "stage_id": null,
+    "character_line_en": "I will be near the door. Look to me if you are lost.",
+    "player_reply_en": "Thank you. I will.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2240",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "Three mayoral races taught me this: be early and be visible.",
+    "player_reply_en": "Early and visible.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2241",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "The treasurer will ask about the fundraiser. I have the answer ready.",
+    "player_reply_en": "Then I will not be surprised.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2242",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "A Kōenkai remembers who came to the small events. Go to the small events.",
+    "player_reply_en": "I will go.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2243",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "Win the quiet votes. They decide close races.",
+    "player_reply_en": "The quiet ones.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2244",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "The lobby of any hall is where the real conversation happens. Linger there.",
+    "player_reply_en": "I will linger.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2245",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "Learn who sits where. It tells you who matters to whom.",
+    "player_reply_en": "Who sits where.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2246",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "Never let an event end without thanking the host.",
+    "player_reply_en": "Always thank the host.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2247",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "The mayor's office watches the polls. So should we, calmly.",
+    "player_reply_en": "Calmly, yes.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2248",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "A name tag helps you and flatters them. Use it.",
+    "player_reply_en": "Name tags, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2249",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "Ask them what they want for the district. Write it down in front of them.",
+    "player_reply_en": "Write it where they can see.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2250",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "I keep a list of who gave and who only promised. It is short.",
+    "player_reply_en": "Short and honest.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2251",
+    "character_id": "SF20",
+    "stage_id": null,
+    "character_line_en": "Elections are won one handshake at a time. Offer yours first.",
+    "player_reply_en": "First hand out, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2252",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "Forty shop owners joined because I asked each one in person.",
+    "player_reply_en": "In person, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2253",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "A shop owner wants two things: less paperwork and a fair price.",
+    "player_reply_en": "Less paperwork. A fair price.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2254",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "Stop by in the morning. That is when they have time and tea.",
+    "player_reply_en": "In the morning.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2255",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "Buy something. They will talk more if you do.",
+    "player_reply_en": "I will buy something.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2256",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "Small businesses remember who showed up when it was slow.",
+    "player_reply_en": "I will show up on slow days.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2257",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "I wrote down the three problems every shop mentioned. They are on the first page.",
+    "player_reply_en": "Three problems. I see them.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2258",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "Do not use big numbers. They think in rent and flour.",
+    "player_reply_en": "Rent and flour.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2259",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "The bakery taught me that early work earns respect.",
+    "player_reply_en": "Early work, then.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2260",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "If you cannot fix it this month, say when you can.",
+    "player_reply_en": "A date, not a hope.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2261",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "The association meets on the last Tuesday. Be there.",
+    "player_reply_en": "Last Tuesday. Noted.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2262",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "Say thank you for their time. They gave up a lunch rush.",
+    "player_reply_en": "Thank you first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2263",
+    "character_id": "SF21",
+    "stage_id": null,
+    "character_line_en": "A free sample goes a long way. I brought some for you.",
+    "player_reply_en": "I will take one. Thank you.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
   }
 ]

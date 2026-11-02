@@ -56,14 +56,21 @@ func _ready() -> void:
 	var hired_ids: Array = []
 	for role: String in GameState.staff_hired:
 		hired_ids.append(str(GameState.staff_hired[role].get("staff_id", "")))
+	# A level about a bill opens with the player's thought more often than the
+	# flat chance (2026-11-02, Balance "Transition: Bill Level Thought Chance").
+	var bill_id := str(_stage.get("bill_id", ""))
+	var thought_chance := int(DataDB.balance.get("transition_player_thought_chance", 0))
+	if not bill_id.is_empty():
+		thought_chance = int(DataDB.balance.get("transition_bill_level_thought_chance", thought_chance))
 	var result := StageTransition.resolve(
 		_stage, DataDB.transition_cast, DataDB.transition_backgrounds, DataDB.transition_dialogue, rng, hired_ids,
-		int(DataDB.balance.get("transition_player_thought_chance", 0)),
-		str(_stage.get("bill_id", "")), _lean(), DataDB.component_ids_of(str(_stage.get("bill_id", ""))))
+		thought_chance, bill_id, _lean(), DataDB.component_ids_of(bill_id),
+		int(DataDB.balance.get("transition_staff_speaker_chance", -1)), GameState.transition_memory)
 
 	if result.is_empty():
 		_on_continue()
 		return
+	_remember(result)
 
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.art_id = str(result.get("background_id", "")) if not str(result.get("background_id", "")).is_empty() \
@@ -84,6 +91,10 @@ func _ready() -> void:
 	# position is known before anything tries to slide relative to it.
 	await get_tree().process_frame
 	_speaker_rest_x = _speaker_portrait.position.x
+	# The name sits under the speaker's own portrait, on the right, not centred
+	# across the whole screen where it read as the player's (2026-11-02).
+	_speaker_name.custom_minimum_size.x = _speaker_portrait.size.x
+	_speaker_name.size_flags_horizontal = Control.SIZE_SHRINK_END
 
 	_show_speaker(0)
 	# A private thought first, when this transition drew one.
@@ -97,6 +108,21 @@ func _ready() -> void:
 		var side := _banner_side(str(speaker["character_id"]))
 		_banner.say(side, name, str(speaker["character_line"]))
 		_banner.say(CueBanner.PLAYER, str(DataDB.player.get("name_en", "")), str(speaker["player_reply"]))
+
+
+## Keeps who spoke and what was heard, so the next transition of this level
+## does not repeat them (StageTransition.pick_speakers()'s `avoid`).
+func _remember(result: Dictionary) -> void:
+	var memory: Dictionary = GameState.transition_memory
+	var heard: Dictionary = memory.get("lines", {})
+	for speaker: Dictionary in result.get("speakers", []):
+		heard[str(speaker.get("line_key", ""))] = true
+		memory["speaker"] = str(speaker.get("character_id", ""))
+	var thought := str(result.get("thought", ""))
+	if not thought.is_empty():
+		heard[StageTransition.line_key("PLAYER", thought)] = true
+	memory["lines"] = heard
+	GameState.transition_memory = memory
 
 
 func _process(_delta: float) -> void:

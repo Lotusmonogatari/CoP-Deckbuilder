@@ -63,6 +63,7 @@ func test_resolve_picks_a_speaker_with_their_own_dialogue_and_a_background() -> 
 		"character_id": "OP03",
 		"character_line": "You again.",
 		"player_reply": "Let's talk.",
+		"line_key": "OP03|You again.",
 	})
 
 
@@ -226,3 +227,106 @@ func test_a_thought_can_open_a_transition_that_has_speakers() -> void:
 	assert_eq(always["speakers"].size(), 1)
 	var never := StageTransition.resolve(stage, cast, [], dialogue, _rng(1), null, 0)
 	assert_eq(never["thought"], "")
+
+
+# ---------------------------------------------------------------------------
+# Who speaks and what is repeated (2026-11-02)
+# ---------------------------------------------------------------------------
+
+func _mixed_room() -> Array:
+	# A hired staff member (any stage) and a cast opponent, both with a line.
+	var cast := [
+		{"transition_cast_id": "TC01", "stage_id": null, "character_id": "SF01"},
+		{"transition_cast_id": "TC02", "stage_id": "ST02", "character_id": "OP03"},
+	]
+	var dialogue := [
+		{"transition_dialogue_id": "TD01", "stage_id": null, "character_id": "SF01",
+			"character_line_en": "Staff line.", "player_reply_en": "Ok."},
+		{"transition_dialogue_id": "TD02", "stage_id": "ST02", "character_id": "OP03",
+			"character_line_en": "Opponent line.", "player_reply_en": "Ok."},
+	]
+	return [cast, dialogue]
+
+
+func test_staff_chance_decides_between_staff_and_opponent() -> void:
+	var room := _mixed_room()
+	for seed_value in range(1, 21):
+		var staff := StageTransition.pick_speakers(room[0], room[1], "ST02", 1, _rng(seed_value), ["SF01"], "", "", [], 100)
+		assert_eq(staff[0]["character_id"], "SF01", "100 percent is always staff")
+		var other := StageTransition.pick_speakers(room[0], room[1], "ST02", 1, _rng(seed_value), ["SF01"], "", "", [], 0)
+		assert_eq(other[0]["character_id"], "OP03", "0 percent is always the opponent")
+
+
+func test_staff_chance_cannot_pick_a_kind_that_is_not_there() -> void:
+	var room := _mixed_room()
+	# Staff not hired: only the opponent is eligible, whatever the chance says.
+	var only := StageTransition.pick_speakers(room[0], room[1], "ST02", 1, _rng(3), [], "", "", [], 100)
+	assert_eq(only[0]["character_id"], "OP03")
+
+
+func test_the_last_speaker_is_not_picked_again_when_someone_else_will_do() -> void:
+	var room := _mixed_room()
+	for seed_value in range(1, 21):
+		var next := StageTransition.pick_speakers(room[0], room[1], "ST02", 1, _rng(seed_value),
+			["SF01"], "", "", [], -1, {"speaker": "SF01"})
+		assert_eq(next[0]["character_id"], "OP03")
+
+
+func test_the_last_speaker_may_repeat_when_they_are_the_only_one() -> void:
+	var room := _mixed_room()
+	var next := StageTransition.pick_speakers(room[0], room[1], "ST02", 1, _rng(1),
+		[], "", "", [], -1, {"speaker": "OP03"})
+	assert_eq(next[0]["character_id"], "OP03")
+
+
+func test_a_line_already_heard_is_skipped_for_another() -> void:
+	var cast := [{"transition_cast_id": "TC01", "stage_id": null, "character_id": "SF01"}]
+	var dialogue := [
+		{"transition_dialogue_id": "TD01", "stage_id": null, "character_id": "SF01",
+			"character_line_en": "First.", "player_reply_en": "Ok."},
+		{"transition_dialogue_id": "TD02", "stage_id": null, "character_id": "SF01",
+			"character_line_en": "Second.", "player_reply_en": "Ok."},
+	]
+	var heard := {StageTransition.line_key("SF01", "First."): true}
+	for seed_value in range(1, 21):
+		var next := StageTransition.pick_speakers(cast, dialogue, "ST02", 1, _rng(seed_value),
+			["SF01"], "", "", [], -1, {"lines": heard})
+		assert_eq(next[0]["character_line"], "Second.")
+
+
+func test_a_heard_line_is_repeated_when_it_is_the_only_one_written() -> void:
+	var cast := [{"transition_cast_id": "TC01", "stage_id": null, "character_id": "SF01"}]
+	var dialogue := [{"transition_dialogue_id": "TD01", "stage_id": null, "character_id": "SF01",
+		"character_line_en": "Only.", "player_reply_en": "Ok."}]
+	var heard := {StageTransition.line_key("SF01", "Only."): true}
+	var next := StageTransition.pick_speakers(cast, dialogue, "ST02", 1, _rng(1),
+		["SF01"], "", "", [], -1, {"lines": heard})
+	assert_eq(next[0]["character_line"], "Only.")
+
+
+func test_a_thought_already_heard_is_skipped_for_another() -> void:
+	var rows := [
+		{"character_id": "PLAYER", "stage_id": null, "character_line_en": "One."},
+		{"character_id": "PLAYER", "stage_id": null, "character_line_en": "Two."},
+	]
+	var heard := {StageTransition.line_key("PLAYER", "One."): true}
+	for seed_value in range(1, 21):
+		assert_eq(StageTransition.player_thought(rows, "ST02", _rng(seed_value), heard), "Two.")
+
+
+func test_every_staff_candidate_can_speak_in_a_transition() -> void:
+	# Hiring any of the 21 staff must give a voice (2026-11-02): they were cast
+	# and written for only six before.
+	for staff: Dictionary in DataDB.staff:
+		var staff_id := str(staff.get("staff_id", ""))
+		var cast := DataDB.transition_cast.filter(func(row: Dictionary) -> bool:
+			return str(row.get("character_id", "")) == staff_id and row.get("stage_id") == null)
+		assert_false(cast.is_empty(), "%s is in Transition Cast for every stage" % staff_id)
+		var lines := DataDB.transition_dialogue.filter(func(row: Dictionary) -> bool:
+			return str(row.get("character_id", "")) == staff_id and row.get("stage_id") == null \
+				and row.get("bill_id") == null)
+		assert_gte(lines.size(), 8, "%s has general lines to say at any stage" % staff_id)
+
+
+func test_the_floor_vote_gets_a_transition() -> void:
+	assert_true(StageTransition.should_show(DataDB.get_stage("ST23")))

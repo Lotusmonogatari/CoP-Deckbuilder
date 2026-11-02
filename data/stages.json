@@ -1358,7 +1358,7 @@
     "reputation_affects_start": null,
     "reveal_in_briefing": null,
     "loss_ends_level": "No",
-    "show_transition": null,
+    "show_transition": "Yes",
     "transition_speaker_count": null,
     "own_party_only": null,
     "threshold_rise_min": null,

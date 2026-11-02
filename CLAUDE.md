@@ -728,3 +728,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Every ticker line names an outlet (2026-11-01, Cameron)
 - Open Debate: committees run out of questions, and now say so (2026-11-02, Cameron)
 - The next opponent stepping up gets its own popup (2026-11-02, Cameron)
+- Stage transitions reviewed: who speaks, repeats, the Floor Vote (2026-11-02, Cameron)
