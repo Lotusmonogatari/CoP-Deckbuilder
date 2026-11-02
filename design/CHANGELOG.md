@@ -3020,3 +3020,11 @@ Reviewed all 397 visitor questions (1,588 choices): 92 carry a promise, 24 an Ac
 |---|---|
 | Deadlines | 117 promise deadlines retuned to the 48-hour game week: 168→48, 120→36, 96→24, 72→18, 48→12, 32→8 (Visitor Questions, Event Choices, Event Options). Follow-up delays and the Balance default (48) are unchanged. |
 | Act Now wording | 17 visitor choices that cost hours on the spot are now worded in the present ("Let me call the ward office right now.") instead of as later promises; a few replies adjusted to match. All drafts for Cameron to rewrite. |
+
+## Strategy playtest: 168 bot runs at Funds, Election Strength and Party support (2026-11-02, Cameron)
+
+| What | Detail |
+|---|---|
+| New tools | `tools/strategy_playtest.gd` (a bot with named strategies, run for a fixed number of game weeks), `tools/strategy_runs.sh` (four at a time), `tools/strategy_report.py` (tables) |
+| Bot changes | `tools/playtest_optimal.gd`: the gaffe price, draw value, funds buffer and stage cap are now variables so a strategy can set them. No game rule changed. |
+| Findings | `design/review/STRATEGY_PLAYTEST_2026-11-02.md`: dues exceed the Funds cap, paying dues earns nothing, Election Strength plateaus near 42 because gaffes zero out awareness, a Party-support death spiral, Media Ambush never won |
