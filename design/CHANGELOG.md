@@ -3132,3 +3132,16 @@ Phase 5 of the component revision plan, a report only: `design/review/CUSTOM_BIL
 | Bot drafts lapsed at the hearing | most failures | 25 of 233 |
 
 The vote is now the wall: bots never meet the influence gates. Drafting pays in Party support (+11) and standing (+41 summed) but costs Funds. Three decisions are listed for Cameron.
+
+## Component questions written from each part, phase 2 (2026-11-03, Cameron)
+
+Phase 2 of the component revision plan, limited to the questions (Cameron's call; the cues stay templated).
+
+| Measure | Before | After |
+|---|---|---|
+| Component questions | 1,440 | 1,440 (same IDs, grades and themes) |
+| Distinct question wordings | 572 | 1,440 |
+| Wordings used more than twice | 32 (five used on 150 to 180 parts each) | 0 |
+| Questions whose Reply Kind did not match what they asked | 738 | 0 |
+
+The 900 templated rows (five per part) were rewritten in 15 batches so each asks about its own policy, covering the principle, the voters, the impact on an ordinary person, oversight and a smaller alternative. Measured but not rewritten: player and opponent component cues (about 80 and 70 wordings across 5,400 lines each) and transition lines (56 wordings across 900). All of it is draft for Cameron.

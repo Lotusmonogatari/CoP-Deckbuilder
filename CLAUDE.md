@@ -749,3 +749,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Member visit and lobbyist trade content, phase 3 (2026-11-03, Cameron)
 - Component system code changes, phase 4 (2026-11-03, Cameron)
 - Custom bill validation, phase 5 (2026-11-03, Cameron)
+- Component questions written from each part, phase 2 (2026-11-03, Cameron)
