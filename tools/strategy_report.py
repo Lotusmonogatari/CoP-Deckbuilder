@@ -345,6 +345,26 @@ def main():
     for r in runs:
         for b in r["bugs"]:
             bugs[b.split("]")[-1][:140]] += 1
+    print("## 12b. Drafted bills (component plan 4.9)\n")
+    out = []
+    for name, rs in groups.items():
+        d = [r.get("drafts", {}) for r in rs]
+        if not any(x.get("looks", 0) or x.get("started", 0) for x in d):
+            continue
+        tot = lambda k: sum(int(x.get(k, 0)) for x in d)
+        refused = {}
+        for x in d:
+            for reason, n in (x.get("refused") or {}).items():
+                refused[reason] = refused.get(reason, 0) + n
+        top = max(refused.items(), key=lambda kv: kv[1])[0] if refused else ""
+        out.append([name, tot("looks"), tot("started"), tot("lapsed"), tot("passed") + tot("failed"), tot("passed"),
+                    f"{tot('visit_wins')} of {tot('visits')}", tot("trades"), top])
+    if out:
+        print(table(["Strategy", "Looks", "Drafted", "Lapsed at hearing", "Voted", "Passed", "Visits won", "Trades", "Most common refusal"], out))
+    else:
+        print("No strategy drafted.")
+    print()
+
     print("## 13. Bugs and discrepancies the bot logged\n")
     if not bugs:
         print("None.\n")

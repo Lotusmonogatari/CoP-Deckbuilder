@@ -242,7 +242,10 @@ func _buy_funds_cap() -> void:
 
 var _leftover_total := 0
 var _leftover_stages := 0
-var _drafts := {"started": 0, "passed": 0, "failed": 0, "lapsed": 0, "refused_checks": 0, "first_part_hearing": {}}
+## Draft counters (component plan 4.9, 2026-11-03): looks = Office visits where the
+## bot wanted to draft; refused = looks where no pair was allowed, by the last reason.
+var _drafts := {"looks": 0, "started": 0, "passed": 0, "failed": 0, "lapsed": 0, "refused_checks": 0,
+		"refused": {}, "first_part_hearing": {}, "visits": 0, "visit_wins": 0, "trades": 0}
 var _draft_rng := RandomNumberGenerator.new()
 var _gaffe_total := 0
 var _gaffe_paid := 0
@@ -277,6 +280,8 @@ func _try_draft() -> bool:
 		ids.append(str(component["component_id"]))
 	var by_id := ComposedBill.index(DataDB.bill_components)
 	var easy := ["ST13", "ST10", "ST11"]
+	_drafts["looks"] = int(_drafts["looks"]) + 1
+	var last_reason := ""
 	for attempt in 40:
 		var pick: Array = []
 		var first: String = ids[_draft_rng.randi_range(0, ids.size() - 1)]
@@ -287,7 +292,9 @@ func _try_draft() -> bool:
 		if second == first:
 			continue
 		pick.append(second)
-		if not GameState.draft_refusal(pick).is_empty():
+		var reason := GameState.draft_refusal(pick)
+		if not reason.is_empty():
+			last_reason = reason
 			continue
 		if not GameState.start_draft(pick):
 			continue
@@ -297,11 +304,20 @@ func _try_draft() -> bool:
 		by_hearing[hearing] = int(by_hearing.get(hearing, 0)) + 1
 		var draft_id := DraftBill.id_for(GameState.draft_counter)
 		_level_attempts += 1
+		var visits_before := int(_patron["visits"])
+		var wins_before := int(_patron["visit_wins"])
+		var trades_before := int(_patron["trades"])
 		_play_current_level(PatronLevel.level_id_for(draft_id))
+		_drafts["visits"] = int(_drafts["visits"]) + int(_patron["visits"]) - visits_before
+		_drafts["visit_wins"] = int(_drafts["visit_wins"]) + int(_patron["visit_wins"]) - wins_before
+		_drafts["trades"] = int(_drafts["trades"]) + int(_patron["trades"]) - trades_before
 		var status := str((GameState.patron_requests.get(draft_id, {}) as Dictionary).get("status", "lapsed"))
 		var key := "passed" if status == "passed" else "failed" if status == "failed" else "lapsed"
 		_drafts[key] = int(_drafts[key]) + 1
 		return true
+	if not last_reason.is_empty():
+		var refused: Dictionary = _drafts["refused"]
+		refused[last_reason] = int(refused.get(last_reason, 0)) + 1
 	return false
 
 

@@ -69,7 +69,7 @@ var _expected_card_total := -1
 ## Patron bills (influence building, 2026-10-19): what the bot did with them.
 ## PLAYTEST_PATRON=0 turns the whole thing off (the bot then behaves as before).
 var _patron_on := true
-var _patron := {"accepted": 0, "passed": 0, "failed": 0, "lost": 0, "visits": 0, "visit_wins": 0,
+var _patron := {"accepted": 0, "passed": 0, "failed": 0, "lost": 0, "visits": 0, "visit_fights": 0, "visit_wins": 0,
 		"trades": 0, "no_deal": 0, "help_seats": 0, "worked_against": 0}
 
 
@@ -719,6 +719,8 @@ func _play_battle_stage(stage: Dictionary) -> void:
 		stage_id, state.outcome, state.player_score(), state.gaffe, state.gaffe_limit,
 		state.turn, stage.get("turn_limit")])
 
+	if stage_id == MpVisit.FIGHT_STAGE:
+		_patron["visit_fights"] += 1   # every one-on-one reached, won or lost (2026-11-03)
 	if stage_id == MpVisit.FIGHT_STAGE and state.outcome == "win":
 		_patron["visit_wins"] += 1   # the one-on-one with the member was won (this counter was never filled before 2026-11-02)
 	var level_over := GameState.finish_stage(
