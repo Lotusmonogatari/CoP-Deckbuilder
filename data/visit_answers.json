@@ -230,7 +230,7 @@
   {
     "answer_id": "MA39",
     "style": "Emotional",
-    "line_en": "Because someone is better off tomorrow if we act today.",
+    "line_en": "Because someone is better off the moment we act.",
     "reply_kind": "Principle"
   },
   {
@@ -470,7 +470,7 @@
   {
     "answer_id": "MA79",
     "style": "Data Driven",
-    "line_en": "Reports every quarter and an audit each year catch problems early.",
+    "line_en": "Regular reports and an independent audit catch problems early.",
     "reply_kind": "Risk"
   },
   {
@@ -596,7 +596,7 @@
   {
     "answer_id": "MA100",
     "style": "Emotional",
-    "line_en": "Every month we delay is a month someone goes without.",
+    "line_en": "Each delay means someone goes without for longer.",
     "reply_kind": "Alternative"
   },
   {
@@ -933,6 +933,366 @@
     "answer_id": "MA156",
     "style": "Duplicitous",
     "line_en": "There are things I can arrange that need never be announced.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA157",
+    "style": "Earnest",
+    "line_en": "I would back it even if no one were watching. That is my test.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA158",
+    "style": "Emotional",
+    "line_en": "Because the people it helps have waited long enough for someone to care.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA159",
+    "style": "Appeal",
+    "line_en": "Because people from every corner can see themselves in it.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA160",
+    "style": "Data Driven",
+    "line_en": "Because when you weigh who gains against who pays, the balance is clear.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA161",
+    "style": "Divisive",
+    "line_en": "Because the only people against it are the ones it finally holds to account.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA162",
+    "style": "Duplicitous",
+    "line_en": "Because it lets everyone claim the principle they like best.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA163",
+    "style": "Earnest",
+    "line_en": "I would meet them myself and answer every question they have.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA164",
+    "style": "Emotional",
+    "line_en": "They know someone it would help. Ask them who.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA165",
+    "style": "Appeal",
+    "line_en": "Put it to them as a shared win, and they will take it as one.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA166",
+    "style": "Data Driven",
+    "line_en": "I can break the benefit down by town, so they see their own share.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA167",
+    "style": "Divisive",
+    "line_en": "They will notice who fought for them and who hid.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA168",
+    "style": "Duplicitous",
+    "line_en": "Tell them what they want to hear about it. The details can wait.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA169",
+    "style": "Earnest",
+    "line_en": "It is not cheap. I would rather argue for it honestly than hide the price.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA170",
+    "style": "Emotional",
+    "line_en": "The cost is real, but so are the people who pay for our doing nothing.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA171",
+    "style": "Appeal",
+    "line_en": "Spread fairly, the cost is small enough that few will feel it.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA172",
+    "style": "Data Driven",
+    "line_en": "Per household it costs less than a family's phone bill.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA173",
+    "style": "Divisive",
+    "line_en": "Those who dodged their share for so long can carry this one.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA174",
+    "style": "Duplicitous",
+    "line_en": "The cost can sit inside a larger budget line where no one looks.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA175",
+    "style": "Earnest",
+    "line_en": "I would start small enough to stop if it goes wrong, and say so openly.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA176",
+    "style": "Emotional",
+    "line_en": "I worry too. But doing nothing is the risk people already live with.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA177",
+    "style": "Appeal",
+    "line_en": "Put a cross-party review in from the start and the risk is shared.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA178",
+    "style": "Data Driven",
+    "line_en": "I have mapped the failure points, and each one has a check attached.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA179",
+    "style": "Divisive",
+    "line_en": "The only real risk is the people who will try to sabotage it.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA180",
+    "style": "Duplicitous",
+    "line_en": "If something goes wrong, it can be fixed before it reaches the papers.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA181",
+    "style": "Earnest",
+    "line_en": "I would tell your colleagues myself why I asked you, and take the heat.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA182",
+    "style": "Emotional",
+    "line_en": "Remind your party why they first ran. This is that reason.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA183",
+    "style": "Appeal",
+    "line_en": "Your party gets to share the credit. Nobody stands alone on this.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA184",
+    "style": "Data Driven",
+    "line_en": "Your party's own seats come out ahead. I can show you the district list.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA185",
+    "style": "Divisive",
+    "line_en": "Your party can lead on this, or watch the other side take the credit.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA186",
+    "style": "Duplicitous",
+    "line_en": "Your party can tell the story any way it likes. I will not correct it.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA187",
+    "style": "Earnest",
+    "line_en": "A smaller version would look like progress and fix almost nothing. I would rather be honest.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA188",
+    "style": "Emotional",
+    "line_en": "Half a step still leaves half the people out in the cold.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA189",
+    "style": "Appeal",
+    "line_en": "If a smaller start brings you in, I would take it gladly.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA190",
+    "style": "Data Driven",
+    "line_en": "A partial version keeps most of the cost and loses most of the benefit.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA191",
+    "style": "Divisive",
+    "line_en": "Every smaller step I have seen was a polite way to bury it.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA192",
+    "style": "Duplicitous",
+    "line_en": "Agree to the smaller version, and the rest can be added in committee.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA193",
+    "style": "Earnest",
+    "line_en": "Judge me by what I did the last time it got hard.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA194",
+    "style": "Emotional",
+    "line_en": "I am in this because of people I met. I cannot let them down.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA195",
+    "style": "Appeal",
+    "line_en": "You will not stand alone. I will bring others in beside you.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA196",
+    "style": "Data Driven",
+    "line_en": "Look at my votes on hard bills. The record speaks for itself.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA197",
+    "style": "Divisive",
+    "line_en": "Some will fold when the pressure comes. You already know I will not.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA198",
+    "style": "Duplicitous",
+    "line_en": "Trust that our interests line up. That is better than any promise.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA199",
+    "style": "Earnest",
+    "line_en": "The evidence is good but not perfect, and I will show you the gaps.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA200",
+    "style": "Emotional",
+    "line_en": "I have met people whose lives it changed elsewhere. They are the evidence.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA201",
+    "style": "Appeal",
+    "line_en": "Towns that tried it now hold it up as a model.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA202",
+    "style": "Data Driven",
+    "line_en": "The pilot results are in, and they beat the forecast.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA203",
+    "style": "Divisive",
+    "line_en": "Its critics bring opinions. We bring results. That is the difference.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA204",
+    "style": "Duplicitous",
+    "line_en": "There is a study for every side. Ours happens to be the better-known one.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA205",
+    "style": "Earnest",
+    "line_en": "I would take the strongest objection seriously and change the plan if it holds.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA206",
+    "style": "Emotional",
+    "line_en": "I would ask the critics to spend a day with the people it helps.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA207",
+    "style": "Appeal",
+    "line_en": "I would invite the critics in. Some of their ideas would make it better.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA208",
+    "style": "Data Driven",
+    "line_en": "I would answer each criticism with the evidence, point by point.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA209",
+    "style": "Divisive",
+    "line_en": "The loudest critics are defending something they never earned.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA210",
+    "style": "Duplicitous",
+    "line_en": "Let the critics keep talking. By the time they finish, it will be law.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA211",
+    "style": "Earnest",
+    "line_en": "Tell me plainly what you need. If I can do it, I will.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA212",
+    "style": "Emotional",
+    "line_en": "Help me with this and I will stand by your people when they need it.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA213",
+    "style": "Appeal",
+    "line_en": "Let us make this a win we both can claim at home.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA214",
+    "style": "Data Driven",
+    "line_en": "Set out your top priority, and I will cost it alongside this.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA215",
+    "style": "Divisive",
+    "line_en": "Your side or theirs. Choose now, while it still counts for something.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA216",
+    "style": "Duplicitous",
+    "line_en": "Some of what I can offer is better left off the record.",
     "reply_kind": "Deal"
   }
 ]

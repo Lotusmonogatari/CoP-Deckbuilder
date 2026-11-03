@@ -58,5 +58,45 @@
     "question_id": "TQ12",
     "text_en": "Will you stand by us if the plan to {component} goes badly?",
     "reply_kind": "Trust"
+  },
+  {
+    "question_id": "TQ13",
+    "text_en": "Could the plan to {component} be phased in, so our members can adjust?",
+    "reply_kind": "Alternative"
+  },
+  {
+    "question_id": "TQ14",
+    "text_en": "Nobody asked our members about the plan to {component}. Why were we not consulted?",
+    "reply_kind": "Criticism"
+  },
+  {
+    "question_id": "TQ15",
+    "text_en": "We know the plan to {component} will pass. Will you remember who gave way?",
+    "reply_kind": "Trust"
+  },
+  {
+    "question_id": "TQ16",
+    "text_en": "Soften the plan to {component} and we stay quiet. Is that a trade?",
+    "reply_kind": "Deal"
+  },
+  {
+    "question_id": "TQ17",
+    "text_en": "The plan to {component} hits our members hardest. Who answers for that?",
+    "reply_kind": "Risk"
+  },
+  {
+    "question_id": "TQ18",
+    "text_en": "Why should our members pay the price for the plan to {component}?",
+    "reply_kind": "Principle"
+  },
+  {
+    "question_id": "TQ19",
+    "text_en": "Your party courted us for years. How does the plan to {component} square with that?",
+    "reply_kind": "Trust"
+  },
+  {
+    "question_id": "TQ20",
+    "text_en": "Show us real numbers on the plan to {component}, and we may come around.",
+    "reply_kind": "Evidence"
   }
 ]

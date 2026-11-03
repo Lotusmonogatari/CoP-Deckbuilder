@@ -31,7 +31,7 @@
   },
   {
     "question_id": "MV07",
-    "text_en": "Tell me how the plan to {component} is paid for.",
+    "text_en": "Tell me exactly who pays if we {component}.",
     "reply_kind": "Cost"
   },
   {
@@ -91,7 +91,7 @@
   },
   {
     "question_id": "MV19",
-    "text_en": "How do I know you will not drop the plan to {component} when it gets hard?",
+    "text_en": "If my allies turn on me for helping you {component}, will you stand with me?",
     "reply_kind": "Trust"
   },
   {
@@ -117,6 +117,36 @@
   {
     "question_id": "MV24",
     "text_en": "Do you have the votes to {component}, or are you counting on me?",
-    "reply_kind": "Party"
+    "reply_kind": "Trust"
+  },
+  {
+    "question_id": "MV25",
+    "text_en": "Which budget loses out if we {component}?",
+    "reply_kind": "Cost"
+  },
+  {
+    "question_id": "MV26",
+    "text_en": "What would it cost my district if you {component}?",
+    "reply_kind": "Cost"
+  },
+  {
+    "question_id": "MV27",
+    "text_en": "Who gets hurt if the plan to {component} goes wrong?",
+    "reply_kind": "Risk"
+  },
+  {
+    "question_id": "MV28",
+    "text_en": "What stops the next government undoing it if we {component}?",
+    "reply_kind": "Risk"
+  },
+  {
+    "question_id": "MV29",
+    "text_en": "The newspapers will attack anyone who votes to {component}. Are you ready for that?",
+    "reply_kind": "Criticism"
+  },
+  {
+    "question_id": "MV30",
+    "text_en": "Is it the Assembly's job at all to {component}?",
+    "reply_kind": "Principle"
   }
 ]

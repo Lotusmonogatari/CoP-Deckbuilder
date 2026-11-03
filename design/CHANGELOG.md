@@ -3094,3 +3094,15 @@ Phase 1 of the component revision plan. All 180 bill parts were checked: phrase,
 | Excludes | 8 new pairs for contradictions and repeats, entered on both rows. |
 | Tags | CB254 no longer counts public loans as Economic Liberalization. |
 | Effect | The Chamber of Commerce lobbyist's share of trades fell from about 34% to 25%. Vote results in `bill_audit.gd` are unchanged. |
+
+## Member visit and lobbyist trade content, phase 3 (2026-11-03, Cameron)
+
+Phase 3 of the component revision plan. Details: `design/review/VISIT_CONTENT_REVIEW_2026-11-03.md`, section "Phase 3 content pass".
+
+| What | Change |
+|---|---|
+| Member questions | 24 to 30. MV07 and MV19 rewritten. MV24 moved from Party to Trust. Every Reply Kind now has at least two questions. |
+| Trade questions | 12 to 20, in aggrieved, bargaining and resigned registers. None uses the Party kind, because a lobbyist has no party. |
+| Answers | Three per Reply Kind and style, up from two (MA157 to MA216). Voters and Deal lines now suit a lobbyist as well as a member. Three clock words removed. |
+| Fit | Ten new samples (`design/bench/visit_review_samples_phase3_2026-11-03.md`): member visits Good 8 of 10, lobbyist trades Good 8 of 10. |
+| Proposed only | New reaction lines, and organization flavor for the ten lobbyist organizations; the flavor lines need a new column. |

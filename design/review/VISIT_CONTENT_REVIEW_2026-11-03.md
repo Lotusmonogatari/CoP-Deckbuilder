@@ -93,3 +93,123 @@ What the re-test shows is still open:
 | Committee match fell | Drawing from the whole party when fewer than three members sit on the committee gave variety but dropped the committee link in half the samples. A compromise would keep committee members about half the time |
 | One lobbyist is a third of trades | The Chamber of Commerce loses on more parts than any other organization and has one representative. A second Chamber representative would need a new character, which is Cameron's to cast |
 | The loser table is a draft | Each part's loser comes from its strongest policy tag through a table I wrote; a few results are still odd and Cameron should correct them in the Bill Components Loses column |
+
+## Phase 3 content pass (2026-11-03)
+
+Prompt 3 of `design/prompts/COMPONENT_REVISION_PROMPTS_2026-11-03.md`. All of it is draft writing for Cameron to correct.
+
+### Summary
+
+| Item | Before | After |
+|---|---|---|
+| Member questions | 24; Cost and Risk had 1 each | 30; every Reply Kind has at least 2 |
+| Trade questions | 12 | 20, in three registers: aggrieved, bargaining, resigned |
+| Answers per Reply Kind and style | 2 | 3 (60 new lines, MA157 to MA216) |
+| Clock words in answers | 3 (MA39, MA79, MA100) | 0 |
+| Member visits rated Good (10 samples) | 6 | 8 (target 8) |
+| Lobbyist trades rated Good (10 samples) | 3 | 8 (target 6) |
+| Chamber of Commerce lobbyist share | about 34% | 24% (most of this came from Phase 1's loser audit) |
+
+New samples: `design/bench/visit_review_samples_phase3_2026-11-03.md`.
+
+### What each member question asks
+
+| ID | Kind | What the member really wants to know | Change |
+|---|---|---|---|
+| MV01 | Principle | Your reason for it. | |
+| MV02 | Voters | Whether anyone at home benefits. | |
+| MV03 | Voters | Whether it fits their mandate. | |
+| MV04 | Criticism | Who is left out. | |
+| MV05 | Alternative | Whether it deserves Assembly time. | |
+| MV06 | Trust | Whether you would pay a price for it. | |
+| MV07 | Cost | Who pays. | Rewritten: the old "how is it paid for" only fit spending parts. |
+| MV08 | Alternative | Why now. | |
+| MV09 | Criticism | Your answer to opponents. | |
+| MV10 | Trust | Whether it is a favor to one group. | |
+| MV11 | Party | How they would justify it to their party. | |
+| MV12 | Risk | What fails first. | |
+| MV13 | Evidence | Why it would work here. | |
+| MV14 | Trust | Who is behind it. | |
+| MV15 | Deal | What you would owe them. | |
+| MV16 | Deal | Their price. | |
+| MV17 | Trust | Whether you believe it. | |
+| MV18 | Alternative | A smaller step. | |
+| MV19 | Trust | Whether you will back them when their allies object. | Rewritten: the old line repeated MV06. |
+| MV20 | Party | Why their party should take the risk. | |
+| MV21 | Voters | A reason voters would thank them. | |
+| MV22 | Evidence | Expert opinion. | |
+| MV23 | Principle | Fairness to the next generation. | |
+| MV24 | Trust | Whether you have the votes or are leaning on them. | Kind moved from Party to Trust: party answers missed the question. |
+| MV25 | Cost | Which budget loses. | New |
+| MV26 | Cost | The cost to their district. | New |
+| MV27 | Risk | Who is hurt if it fails. | New |
+| MV28 | Risk | Whether it will last. | New |
+| MV29 | Criticism | Whether you can take press attacks. | New |
+| MV30 | Principle | Whether it is the Assembly's business. | New |
+
+### New trade questions
+
+| ID | Kind | Register | Text |
+|---|---|---|---|
+| TQ13 | Alternative | bargaining | Could the plan to {component} be phased in, so our members can adjust? |
+| TQ14 | Criticism | aggrieved | Nobody asked our members about the plan to {component}. Why were we not consulted? |
+| TQ15 | Trust | resigned | We know the plan to {component} will pass. Will you remember who gave way? |
+| TQ16 | Deal | bargaining | Soften the plan to {component} and we stay quiet. Is that a trade? |
+| TQ17 | Risk | aggrieved | The plan to {component} hits our members hardest. Who answers for that? |
+| TQ18 | Principle | aggrieved | Why should our members pay the price for the plan to {component}? |
+| TQ19 | Trust | resigned | Your party courted us for years. How does the plan to {component} square with that? |
+| TQ20 | Evidence | bargaining | Show us real numbers on the plan to {component}, and we may come around. |
+
+No trade question uses the Party kind: those answers address the listener's party, which a lobbyist does not have.
+
+### Answers
+
+- The answer pool is shared by members and lobbyists, so the new Voters and Deal lines say "them" and "your top priority" rather than "your voters" and "your district". Party answers still say "your party", which is why no trade question uses that kind.
+- Weak lines are written to sound reasonable in their own style. A Weak grade comes from the listener's taste, not from a careless line.
+
+### Second read of the ten samples
+
+| # | Member visit | Why | Lobbyist trade | Why |
+|---|---|---|---|---|
+| 1 | Good | Each question fits its part; the member sits on the hearing committee. | Good | Late supplier payment really does hurt the Chamber. |
+| 2 | Good | | Good | Manufacturers named in recalls. |
+| 3 | Good | One Trust answer is only loosely on point. | Good | |
+| 4 | Good | | Good | Traditionalists dispute curriculum time. |
+| 5 | Fair | MV24 drew Party answers (since moved to Trust). | Fair | The old TQ17 spoke of members going out of business (since rewritten). |
+| 6 | Good | | Fair | "Costs us so much" overstates a directory of services. |
+| 7 | Fair | MV24 again (since fixed). | Good | Import limits hurt traders. |
+| 8 | Good | | Good | Faster customs means more imported fish. |
+| 9 | Good | | Good | Private nursing homes lose pricing freedom. |
+| 10 | Good | | Good | Developers lose valuable land. |
+
+Totals: member visits Good 8, Fair 2; lobbyist trades Good 8, Fair 2. The two fixes in rows 5 and 7 were made after this read.
+
+### Proposed, not added: reaction lines
+
+The three `visit.react_*` and three `trade.react_*` lines per grade already vary enough. If Cameron wants more variety, two lines per grade would do it:
+
+| Key (new) | Line |
+|---|---|
+| visit.react_strong_4 | {name} repeats your words back, as if testing how they sound. |
+| visit.react_medium_4 | {name} tilts their head. Maybe. |
+| visit.react_weak_4 | {name} checks their phone while you finish. |
+| trade.react_strong_4 | {name} writes something down and underlines it. |
+| trade.react_medium_4 | {name} says they will take it back to the members. |
+| trade.react_weak_4 | {name} smiles politely, which is worse than arguing. |
+
+### Proposed, not added: organization flavor for trades
+
+One line each for how the ten lobbyist organizations would put the Deal and Protect asks. Using these needs a new column (organization-scoped trade lines), so this stops here for Cameron's decision.
+
+| Org | Deal | Protect |
+|---|---|---|
+| Local Kōenkai (BO03) | Our supporters turn out at every election. Remember that when you write the next budget. | Do not take away what our members built in this district. |
+| Mayors' Network (BO04) | Give the towns the money and the say, and the mayors will carry it home for you. | The towns run these services. Do not decide for us from Sapporo. |
+| Chamber of Commerce (BO05) | Business can live with a lot, if it has time and a clear rule. | Every new rule is a cost our members pass on or lay off. |
+| Neighborhood Associations (BO06) | Put residents in the room and you will find us easy to work with. | Our blocks were here before this plan and will be here after it. |
+| Fisheries Cooperative (BO07) | Look after the harbors and the quota, and we will look after you. | The sea feeds this coast. Do not trade it away. |
+| Labor Federation (BO09) | Write the protections in plainly and our members will back you. | Workers paid for the last reform. Not again. |
+| Agricultural Cooperatives (BO10) | Keep the price steady and the paddies working, and you have the villages. | Farming families cannot absorb another shock. |
+| Students United (BO11) | Give young people a real stake and we will be loud for you. | It is our generation that inherits this. |
+| Family Network (BO12) | Put families first in the detail and we will say so publicly. | Parents are stretched thin already. |
+| Our Traditional Society (BO15) | Respect what is old and we can talk about what is new. | Some things, once lost, are not rebuilt. |
