@@ -23,35 +23,35 @@ The playtest bots never played a card that makes you discard, so every balance f
 
 | Card | Tier | Style | Cost | Effect | Win % | vs start | Played per fight |
 |---|---|---|---|---|---|---|---|
-| C69 | 1 | Duplicitous | 1 | Gain 10, Guard 3, Gaffe +2; discard 1 | 97.8 | +19.1 | 3.1 |
-| C70 | 2 | Duplicitous | 2 | Gain 12, Gaffe +2; discard to play | 97.8 | +19.1 | 2.7 |
-| C67 | 1 | Emotional | 1 | Gain 11, Gaffe +1; discard 1 | 95.6 | +16.9 | 3.7 |
-| C61 | 1 | Duplicitous | 1 | Gain 2, Gaffe +1 | 91.6 | +12.8 | 3.4 |
-| C62 | 2 | Duplicitous | 1 | Gain 2, Gaffe +1 | 91.2 | +12.5 | 4.4 |
-| C64 | 2 | Data Driven | 2 | Gain 2, Opponent −11, Gaffe −1; discard 2 to play | 91.2 | +12.5 | 3.1 |
-| C68 | 2 | Emotional | 2 | Gain 12, Draw 1, Gaffe +1; discard 2 to play | 91.2 | +12.5 | 3.7 |
-| C63 | 1 | Data Driven | 1 | Opponent −9, Guard 1; discard 1 | 90.9 | +12.2 | 3.8 |
-| C56 | 2 | Data Driven | 1 | Opponent −3, Draw 2; discard 2 to play | 90.0 | +11.2 | 5.2 |
-| C59 | 1 | Emotional | 1 | Gain 3 | 89.1 | +10.3 | 4.7 |
-| C55 | 1 | Data Driven | 1 | Opponent −2 | 82.8 | +4.1 | 4.6 |
-| C60 | 2 | Emotional | 1 | Gain 3, Draw 2, Gaffe +1; discard 2 to play | 81.9 | +3.1 | 4.0 |
-| C65 | 1 | Divisive | 1 | Opponent −11, Gaffe +2; discard 1 | 78.8 | 0.0 | 3.0 |
-| C66 | 2 | Divisive | 2 | Gain 2, Opponent −13, Gaffe +2 | 78.4 | −0.3 | 2.6 |
-| C57 | 1 | Divisive | 1 | Gain 1, Opponent −1, Gaffe +1 | 77.8 | −0.9 | 2.5 |
-| C58 | 2 | Divisive | 1 | Opponent −2, Gaffe +1 | 72.5 | −6.2 | 3.7 |
+| C69 | 1 | Duplicitous | 1 | Discard 1 other card. Gain 10. Guard 3. Gaffe +2. | 97.8 | +19.1 | 3.1 |
+| C70 | 2 | Duplicitous | 2 | Discard 1 other card to play. Gain 12. Guard 4. Gaffe +2. | 97.8 | +19.1 | 2.7 |
+| C67 | 1 | Emotional | 1 | Discard 1 other card. Gain 11. Gaffe +1. | 95.6 | +16.9 | 3.7 |
+| C61 | 1 | Duplicitous | 1 | Discard 1 other card. Gain 2. Guard 2. Draw 1. Gaffe +1. | 91.6 | +12.8 | 3.4 |
+| C62 | 2 | Duplicitous | 1 | Discard 1 other card to play. Gain 2. Guard 2. Draw 2. Gaffe +1. | 91.2 | +12.5 | 4.4 |
+| C64 | 2 | Data Driven | 2 | Discard 2 other cards to play. Gain 2. Opponent −11. Reduce your gaffe meter by 1. | 91.2 | +12.5 | 3.1 |
+| C68 | 2 | Emotional | 2 | Discard 2 other cards to play. Gain 12. Draw 1. Gaffe +1. | 91.2 | +12.5 | 3.7 |
+| C63 | 1 | Data Driven | 1 | Discard 1 other card. Opponent −9. Guard 1. | 90.9 | +12.2 | 3.8 |
+| C56 | 2 | Data Driven | 1 | Discard 2 other cards to play. Opponent −3. Draw 2. | 90.0 | +11.2 | 5.2 |
+| C59 | 1 | Emotional | 1 | Discard 1 other card. Gain 3. Draw 1. | 89.1 | +10.3 | 4.7 |
+| C55 | 1 | Data Driven | 1 | Discard 1 other card. Opponent −2. Draw 1. | 82.8 | +4.1 | 4.6 |
+| C60 | 2 | Emotional | 1 | Discard 2 other cards to play. Gain 3. Draw 2. Gaffe +1. | 81.9 | +3.1 | 4.0 |
+| C65 | 1 | Divisive | 1 | Discard 1 other card. Opponent −11. Gaffe +2. | 78.8 | 0.0 | 3.0 |
+| C66 | 2 | Divisive | 2 | Discard 1 other card to play. Gain 2. Opponent −13. Gaffe +2. | 78.4 | −0.3 | 2.6 |
+| C57 | 1 | Divisive | 1 | Discard 1 other card. Gain 1. Opponent −1. Draw 1. Gaffe +1. | 77.8 | −0.9 | 2.5 |
+| C58 | 2 | Divisive | 1 | Discard 1 other card to play. Opponent −2. Draw 2. Gaffe +1. | 72.5 | −6.2 | 3.7 |
 
 ## Control: ordinary cards in the same seat
 
 | Card | Tier | Style | Cost | Effect | Win % | vs start |
 |---|---|---|---|---|---|---|
-| C53 | 3 | Duplicitous | 2 | Gain 9 | 93.1 | +14.3 |
-| C25 | 2 | Earnest | 2 | Gain 5 | 87.5 | +8.7 |
-| C30 | 1 | Emotional | 1 | Gain 4 | 83.4 | +4.6 |
-| C34 | 2 | Emotional | 2 | Gain 7 | 82.5 | +3.7 |
-| C32 | 2 | Emotional | 2 | Gain 5, Opponent −2 | 81.2 | +2.5 |
-| C17 | 1 | Divisive | 1 | Opponent −3 | 80.3 | +1.5 |
-| C08 | 3 | Emotional | 3 | Gain 11 | 80.3 | +1.5 |
-| C20 | 2 | Divisive | 2 | Gain 1, Opponent −7 | 71.9 | −6.9 |
+| C53 | 3 | Duplicitous | 2 | Gain 9. Gaffe +2. +3 more to gain if you trail the opponent in support. | 93.1 | +14.3 |
+| C25 | 2 | Earnest | 2 | Gain 5; +2 more if your gaffe meter is 0. | 87.5 | +8.7 |
+| C30 | 1 | Emotional | 1 | Gain 4. Gaffe +1. +2 more to gain if Party Members ≥ 50%. | 83.4 | +4.6 |
+| C34 | 2 | Emotional | 2 | Gain 7. Gaffe +1. +3 more to gain if Constituents ≥ 50%. | 82.5 | +3.7 |
+| C32 | 2 | Emotional | 2 | Gain 5. Opponent −2. Gaffe +1. | 81.2 | +2.5 |
+| C17 | 1 | Divisive | 1 | Opponent −3. | 80.3 | +1.5 |
+| C08 | 3 | Emotional | 3 | Gain 11. Gaffe +2. | 80.3 | +1.5 |
+| C20 | 2 | Divisive | 2 | Gain 1. Opponent −7. Gaffe +3. | 71.9 | −6.9 |
 
 ## Limits
 
