@@ -83,3 +83,34 @@ Each item is built in its own commit with its tests, then `tools/verify.sh` runs
   - (c) Every owner at that standing or more.
 - **Text:** `draft.standing` ("No organization behind these parts trusts you enough yet.").
 - **Tests:** `test_draft_bill.gd: test_standing_floor_refuses_below_and_allows_at`.
+
+## Built (2026-11-03)
+
+Cameron's decisions: build 4.1, 4.7, 4.8 and 4.9; 4.3 no refund; 4.4 committee name only; 4.5 label the check "best case"; 4.6 a committee member 50% of the time; 4.10 no standing floor. 4.2 stays dropped.
+
+| # | What was built | Text and levers | Tests |
+|---|---|---|---|
+| 4.1 | The Request and Draft panels show the Floor Vote screen's readiness line, counting only the parties a sway would have to move. `VoteInfluence.status()` no longer lists gates for parties the vote does not need. | Reuses `floor_vote.influence_*` | `test_request_lines.gd` (5), `test_vote_influence.gd` (+1), `requests_test` and `draft_test` |
+| 4.4 | The Draft panel says "Hearing: Committee on Finance. The first part chosen decides it." | New `draft.hearing` | `draft_test` |
+| 4.5 | The refusal now reads "Even in the best case, with every influence gate met, this bill would either pass without a fight or could never pass. Change a part." | `draft.not_winnable` reworded | |
+| 4.6 | `MpVisit.pick_member` uses the hearing committee's members only on a 50% roll (and only when at least 3 sit there). | Balance `MP Visit: Committee Member Percent` = 50 | `test_committee_share_follows_lever` |
+| 4.7 | `MpVisit.pick_party` is weighted by seats outside Yes. | | `test_pick_party_weights_by_open_seats` |
+| 4.8 | Among equally hurt organizations, the one whose lobbyists the player has met least sends its lobbyist. | | `test_tied_orgs_prefer_least_faced` |
+| 4.9 | Strategy bots count draft looks, refusals by reason, and the visits, visit wins and trades inside drafted bills; the playtest bot counts every member fight reached. `strategy_report.py` has a new section 12b. | | Smoke run below |
+
+### Audit output after the changes
+
+`bill_audit.gd`, random drafts carried by profile (200 mixes each):
+
+| Parts | Allowed | standings 75, Funds 100k | standings 80, Funds 500k, Reputation 60 |
+|---|---|---|---|
+| 2 | 195 / 200 | 87 | 195 |
+| 3 | 198 / 200 | 93 | 198 |
+
+Negotiation rooms built: patron Favor visit 8 of 27, trade 17; Flagship visit 27, trade 24; 2-part drafts visit 107 of 200, trade 138; 3-part drafts visit 200, trade 160.
+
+`bill_draft_probe.gd` (a strong player, 14 drafts): **10 passed, 4 lapsed at the hearing, 0 failed at the vote** (before: 8 to 9 of 14).
+
+Visit statistics (`visit_review.gd`, 400 levels): visited parties now follow open seats (Keizaijiyuutou 105, Frontier 74, Country Initiative 45, Butsutou 44, Yezo Heritage 25, Five Point 10). The Chamber of Commerce lobbyist is 62 of 290 trades (21%).
+
+Strategy smoke run (`drafter_easy`, PC02, 12 weeks, seed 1): 44 looks, 0 drafts; every look was refused on cost ("Drafting needs 350 XP and 300,000円"). The bot raised the cap to 300,000 but never held that much at once. This is for Phase 5 to measure across seeds.

@@ -747,3 +747,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Prompts for revising the component system (2026-11-03, Cameron)
 - Bill Components audit (2026-11-03, Cameron)
 - Member visit and lobbyist trade content, phase 3 (2026-11-03, Cameron)
+- Component system code changes, phase 4 (2026-11-03, Cameron)

@@ -3106,3 +3106,17 @@ Phase 3 of the component revision plan. Details: `design/review/VISIT_CONTENT_RE
 | Answers | Three per Reply Kind and style, up from two (MA157 to MA216). Voters and Deal lines now suit a lobbyist as well as a member. Three clock words removed. |
 | Fit | Ten new samples (`design/bench/visit_review_samples_phase3_2026-11-03.md`): member visits Good 8 of 10, lobbyist trades Good 8 of 10. |
 | Proposed only | New reaction lines, and organization flavor for the ten lobbyist organizations; the flavor lines need a new column. |
+
+## Component system code changes, phase 4 (2026-11-03, Cameron)
+
+Phase 4 of the component revision plan; details and audit output in `design/proposals/component_code_plan_2026-11-03.md` ("Built").
+
+| What | Change |
+|---|---|
+| Readiness before committing | The Request and Draft panels show "Still needed: ..." for the parties a sway would have to move. |
+| Hearing committee | The Draft panel names the hearing committee chosen by the first part. |
+| Best case | The "not winnable" refusal says it is checked in the best case. |
+| Member visits | A hearing-committee member half the time (Balance: MP Visit: Committee Member Percent, 50); parties weighted by open seats. |
+| Lobbyists | Among equally hurt organizations, the least-met lobbyist speaks. |
+| Bots | Draft looks, refusals by reason, visits and trades in drafts; report section 12b. |
+| Not built (Cameron's call) | No refund on a lapsed draft; no standing floor; no Funds cap hint. |
