@@ -92,13 +92,13 @@ func _run() -> void:
 	var protect := DataDB.lobbyist_lines.filter(func(row: Dictionary) -> bool:
 		return str(row["organization"]) == str(trade.get("org", "")) and str(row["kind"]) == "Protect")
 	if not protect.is_empty():
-		var banner := screen.find_children("*", "CueBanner", true, false)
-		var said := ""
-		if not banner.is_empty():
-			said = (banner[0] as CueBanner).current_line()
 		var known: Array = protect.map(func(row: Dictionary) -> String: return str(row["line_en"]))
-		if not known.has(said):
-			_fail("the lobbyist did not say a Protect line of their own (banner: '%s')" % said)
+		var said := ""
+		for line: String in known:
+			if str(question.text).contains(line):
+				said = line
+		if said.is_empty():
+			_fail("the pick does not show the lobbyist's own Protect line: '%s'" % question.text)
 		else:
 			print("  lobbyist says: %s" % said)
 	var components_before: int = (GameState.patron_requests[_bill_id]["components"] as Array).size()

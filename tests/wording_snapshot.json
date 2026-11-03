@@ -859,6 +859,7 @@
   "trade.done_nodeal_title": "No agreement",
   "trade.done_refused_body": "{name} leaves unhappy. {cost}",
   "trade.done_refused_title": "You refused to meet",
+  "trade.flavor": "{text}\n\n{name}: \"{line}\"",
   "trade.gain_donation": "a donation of {funds} and {xp} XP",
   "trade.gain_help": "help with the vote (+{count} on the floor)",
   "trade.gain_party_favor": "the favor of {party}",

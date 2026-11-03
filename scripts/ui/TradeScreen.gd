@@ -22,6 +22,8 @@ const REACT_KEYS := {
 var _stage: Dictionary = {}
 var _trade: Dictionary = {}
 var _lobbyist: Dictionary = {}
+var _protect_line := ""   ## the organization's Protect line for this trade (Lobbyist Lines)
+var _deal_line := ""      ## and its Deal line
 var _phase := "offer"            ## offer, pick, rounds, package, done
 var _dropped_id := ""
 var _dropped_phrase := ""
@@ -116,6 +118,10 @@ func _start() -> void:
 		_fail()
 		return
 	_lobbyist = DataDB.get_opponent(str(_trade.get("opp_id", "")))
+	var flavor_rng := RandomNumberGenerator.new()
+	flavor_rng.randomize()
+	_protect_line = LobbyistTrade.flavor_line(DataDB.lobbyist_lines, str(_trade.get("org", "")), "Protect", flavor_rng)
+	_deal_line = LobbyistTrade.flavor_line(DataDB.lobbyist_lines, str(_trade.get("org", "")), "Deal", flavor_rng)
 	_stage_name.text = str(_stage.get("name_en", ""))
 	_stage_name_jp.text = str(_stage.get("name_jp", ""))
 	_background.art_id = str(_stage.get("stage_id", ""))
@@ -188,8 +194,7 @@ func _show_pick() -> void:
 	_drop_ids = (_trade.get("drops", []) as Array).duplicate()
 	var asked := str(_trade.get("asked", ""))
 	var hint := Text.say("trade.asked_hint", {"component": _phrase_of(asked)}) if not asked.is_empty() else ""
-	_question_label.text = Text.say("trade.pick_text", {"hint": hint})
-	_say_flavor("Protect")
+	_question_label.text = _with_flavor(Text.say("trade.pick_text", {"hint": hint}), _protect_line)
 	var buttons := _buttons()
 	for slot in range(buttons.size()):
 		buttons[slot].disabled = false
@@ -244,14 +249,12 @@ func _answer(letter: String) -> void:
 # The package
 # ---------------------------------------------------------------------------
 
-## The lobbyist speaks in their organization's own voice (Lobbyist Lines tab),
-## on the banner; silent when the organization has no line of that kind.
-func _say_flavor(kind: String) -> void:
-	var rng := RandomNumberGenerator.new()
-	rng.randomize()
-	var line := LobbyistTrade.flavor_line(DataDB.lobbyist_lines, str(_trade.get("org", "")), kind, rng)
-	if not line.is_empty():
-		_banner.say(CueBanner.OPPONENT, str(_trade.get("lobbyist_name", "")), line)
+## The lobbyist's own words under the screen's question (Lobbyist Lines tab),
+## drawn once per trade so a line does not change while the player decides.
+func _with_flavor(text: String, line: String) -> String:
+	if line.is_empty():
+		return text
+	return Text.say("trade.flavor", {"text": text, "name": str(_trade.get("lobbyist_name", "")), "line": line})
 
 
 func _show_package() -> void:
@@ -260,13 +263,12 @@ func _show_package() -> void:
 	_caption.text = ""
 	_show_meter(true)
 	_walk_away.visible = true
-	_say_flavor("Deal")
 	_refresh_package()
 
 
 func _refresh_package() -> void:
-	_question_label.text = Text.say("trade.package_text", {
-		"leverage": _leverage, "cost": LobbyistTrade.total_cost(_chosen, DataDB.balance)})
+	_question_label.text = _with_flavor(Text.say("trade.package_text", {
+		"leverage": _leverage, "cost": LobbyistTrade.total_cost(_chosen, DataDB.balance)}), _deal_line)
 	var buttons := _buttons()
 	for slot in range(LobbyistTrade.REWARDS.size()):
 		var reward: String = LobbyistTrade.REWARDS[slot]

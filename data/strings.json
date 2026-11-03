@@ -6389,5 +6389,12 @@
     "english": "Hearing: {committee}. The first part chosen decides it.",
     "placeholders": "committee",
     "notes": "2026-11-03 component plan 4.4: the hearing committee before the player commits."
+  },
+  {
+    "key": "trade.flavor",
+    "where": "Lobbyist trade",
+    "english": "{text}\n\n{name}: \"{line}\"",
+    "placeholders": "text; name; line",
+    "notes": "2026-11-03 Lobbyist Lines: the lobbyist's own Protect or Deal line under the screen's question."
   }
 ]
