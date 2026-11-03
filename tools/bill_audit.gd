@@ -46,6 +46,12 @@ func _engine(bill: Dictionary, party_name: String, profile: Dictionary, assist_s
 	return engine
 
 
+func _seeded() -> RandomNumberGenerator:
+	var r := RandomNumberGenerator.new()
+	r.seed = 5
+	return r
+
+
 func _passes(bill: Dictionary, party_name: String, profile: Dictionary) -> bool:
 	var engine := _engine(bill, party_name, profile, 0)
 	return bool(engine.choose("Yes").get("passed", false))
@@ -129,4 +135,47 @@ func _run() -> void:
 		GameState.meta["Funds"] = mini(int(GameState.meta["Funds"]), int(GameState._sanban_row("Funds").get("max", 0)))
 		print("- Funds cap petitions bought: %d, cap %d, Funds %d -> draft refusal: '%s'" % [petitions,
 			int(GameState._sanban_row("Funds").get("max", 0)), int(GameState.meta["Funds"]), GameState.draft_refusal(first)])
+
+	# 4. Which rooms does each kind of custom bill really get?
+	print("\n## Negotiation rooms actually built\n")
+	var kinds := {"patron Favor (BT01)": [], "patron Flagship (BT02)": []}
+	for row: Dictionary in DataDB.patron_bills:
+		var composed := PatronLevel.compose(str(row.get("patron_bill_id")), [])
+		var level := PatronLevel.level_row(row, composed["bill"], _seeded())
+		kinds["patron Favor (BT01)" if str(row.get("kind")) == "Favor" else "patron Flagship (BT02)"].append(level)
+	for count in [2, 3]:
+		var list: Array = []
+		var rng2 := RandomNumberGenerator.new()
+		rng2.seed = 21
+		var guard2 := 0
+		while list.size() < 200 and guard2 < 5000:
+			guard2 += 1
+			var pool2 := ids.duplicate()
+			pool2.shuffle()
+			var pick2: Array = pool2.slice(0, count)
+			if ComposedBill.has_conflict(pick2, ComposedBill.index(DataDB.bill_components)):
+				continue
+			var row2 := DraftBill.row_for("PDTEST", pick2)
+			var bill2 := DraftBill.bill_for(pick2, "PDTEST")
+			list.append(PatronLevel.level_row(row2, bill2, _seeded()))
+		kinds["draft, %d parts (%s)" % [count, "BT03" if count == 2 else "BT04"]] = list
+	print("| Kind | Levels | Template lists a member visit | Member visit built | Template lists a lobbyist trade | Lobbyist trade built | Patron meeting |")
+	print("|---|---|---|---|---|---|---|")
+	for name: String in kinds:
+		var levels: Array = kinds[name]
+		var visit_n := 0
+		var trade_n := 0
+		var patron_n := 0
+		for level: Dictionary in levels:
+			if level.has("visit"): visit_n += 1
+			if level.has("trade"): trade_n += 1
+			if level.has("patron_visit"): patron_n += 1
+		var tmpl := "BT03" if name.contains("2 parts") else "BT04" if name.contains("3 parts") else "BT01" if name.contains("Favor") else "BT02"
+		var template: Dictionary = {}
+		for t: Dictionary in DataDB.bill_level_templates:
+			if str(t.get("template_id")) == tmpl:
+				template = t
+		var lists_visit := LevelTemplate.slot_numbers(template).any(func(n: int) -> bool: return str(template.get("stage_%d" % n)) == "MP_VISIT")
+		var lists_trade := LevelTemplate.slot_numbers(template).any(func(n: int) -> bool: return str(template.get("stage_%d" % n)) == "LOBBYIST_TRADE")
+		print("| %s | %d | %s | %d | %s | %d | %d |" % [name, levels.size(), "yes" if lists_visit else "no", visit_n, "yes" if lists_trade else "no", trade_n, patron_n])
 	get_tree().quit(0)
