@@ -47246,7 +47246,7 @@
     },
     {
       "id": "S1338",
-      "text": "Why should Yezo protect historic districts from redevelopment?",
+      "text": "Should a historic street be frozen in place, even when the city needs homes?",
       "theme": "Protect historic districts from redevelopment",
       "grades": {
         "Earnest": "S",
@@ -47294,7 +47294,7 @@
     },
     {
       "id": "S1340",
-      "text": "Our Traditional Society wants us to protect historic districts from redevelopment. Why should everyone else care?",
+      "text": "Young renters need new housing. Why should old facades come before them?",
       "theme": "Protect historic districts from redevelopment",
       "grades": {
         "Earnest": "M",
@@ -47318,7 +47318,7 @@
     },
     {
       "id": "S1341",
-      "text": "What would it mean for people like me if we protect historic districts from redevelopment?",
+      "text": "Would protection stop the old merchant houses on my street being torn down?",
       "theme": "Protect historic districts from redevelopment",
       "grades": {
         "Earnest": "M",
@@ -47342,7 +47342,7 @@
     },
     {
       "id": "S1342",
-      "text": "If we protect historic districts from redevelopment, how would you make sure it holds up over the long term?",
+      "text": "Who decides which districts count as historic, and can owners appeal?",
       "theme": "Protect historic districts from redevelopment",
       "grades": {
         "Earnest": "S",
@@ -47390,7 +47390,7 @@
     },
     {
       "id": "S1344",
-      "text": "Is there a smaller step we could try before we protect historic districts from redevelopment?",
+      "text": "Could we protect the street front and allow new homes behind it?",
       "theme": "Protect historic districts from redevelopment",
       "grades": {
         "Earnest": "M",
@@ -47438,7 +47438,7 @@
     },
     {
       "id": "S1346",
-      "text": "Why should Yezo fund the repair of old wooden buildings?",
+      "text": "Should the public pay to keep old wooden buildings standing?",
       "theme": "Fund the repair of old wooden buildings",
       "grades": {
         "Earnest": "S",
@@ -47486,7 +47486,7 @@
     },
     {
       "id": "S1348",
-      "text": "Our Traditional Society wants us to fund the repair of old wooden buildings. Why should everyone else care?",
+      "text": "City groups would rather see homes built than old timber saved. What do you say?",
       "theme": "Fund the repair of old wooden buildings",
       "grades": {
         "Earnest": "M",
@@ -47510,7 +47510,7 @@
     },
     {
       "id": "S1349",
-      "text": "What would it mean for people like me if we fund the repair of old wooden buildings?",
+      "text": "Would repair grants save the wooden storehouse my grandfather built?",
       "theme": "Fund the repair of old wooden buildings",
       "grades": {
         "Earnest": "M",
@@ -47534,7 +47534,7 @@
     },
     {
       "id": "S1350",
-      "text": "If we fund the repair of old wooden buildings, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we make sure repairs use traditional methods and not cheap patches?",
       "theme": "Fund the repair of old wooden buildings",
       "grades": {
         "Earnest": "S",
@@ -47582,7 +47582,7 @@
     },
     {
       "id": "S1352",
-      "text": "Is there a smaller step we could try before we fund the repair of old wooden buildings?",
+      "text": "Could owners get low-interest loans instead of grants for the repairs?",
       "theme": "Fund the repair of old wooden buildings",
       "grades": {
         "Earnest": "M",
@@ -47627,7 +47627,7 @@
     },
     {
       "id": "S1354",
-      "text": "Why should Yezo give a tax credit for research and development?",
+      "text": "Should the tax system reward companies that invest in research?",
       "theme": "Give a tax credit for research and development",
       "grades": {
         "Earnest": "S",
@@ -47669,7 +47669,7 @@
     },
     {
       "id": "S1356",
-      "text": "The Innovation Society wants us to give a tax credit for research and development. Why should everyone else care?",
+      "text": "Small firms rarely run research labs. Why should they back a credit for big ones?",
       "theme": "Give a tax credit for research and development",
       "grades": {
         "Earnest": "M",
@@ -47690,7 +47690,7 @@
     },
     {
       "id": "S1357",
-      "text": "What would it mean for people like me if we give a tax credit for research and development?",
+      "text": "Would a research credit bring better-paid jobs to Hokkaido?",
       "theme": "Give a tax credit for research and development",
       "grades": {
         "Earnest": "M",
@@ -47711,7 +47711,7 @@
     },
     {
       "id": "S1358",
-      "text": "If we give a tax credit for research and development, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop firms relabeling ordinary costs as research to claim the credit?",
       "theme": "Give a tax credit for research and development",
       "grades": {
         "Earnest": "S",
@@ -47753,7 +47753,7 @@
     },
     {
       "id": "S1360",
-      "text": "Is there a smaller step we could try before we give a tax credit for research and development?",
+      "text": "Could the credit be limited to research done in partnership with local universities?",
       "theme": "Give a tax credit for research and development",
       "grades": {
         "Earnest": "M",
@@ -47795,7 +47795,7 @@
     },
     {
       "id": "S1362",
-      "text": "Why should Yezo offer visas to start-up founders?",
+      "text": "Should Yezo invite founders from abroad to build their companies here?",
       "theme": "Offer visas to start-up founders",
       "grades": {
         "Earnest": "S",
@@ -47837,7 +47837,7 @@
     },
     {
       "id": "S1364",
-      "text": "The Innovation Society wants us to offer visas to start-up founders. Why should everyone else care?",
+      "text": "Traditionalists worry about who arrives on these visas. How do you reassure them?",
       "theme": "Offer visas to start-up founders",
       "grades": {
         "Earnest": "M",
@@ -47858,7 +47858,7 @@
     },
     {
       "id": "S1365",
-      "text": "What would it mean for people like me if we offer visas to start-up founders?",
+      "text": "Would start-up visas bring jobs to Sapporo, or only to the founders?",
       "theme": "Offer visas to start-up founders",
       "grades": {
         "Earnest": "M",
@@ -47879,7 +47879,7 @@
     },
     {
       "id": "S1366",
-      "text": "If we offer visas to start-up founders, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we check that a visa holder is really running a company?",
       "theme": "Offer visas to start-up founders",
       "grades": {
         "Earnest": "S",
@@ -47921,7 +47921,7 @@
     },
     {
       "id": "S1368",
-      "text": "Is there a smaller step we could try before we offer visas to start-up founders?",
+      "text": "Could we offer a short trial visa first, extended only if the firm hires locally?",
       "theme": "Offer visas to start-up founders",
       "grades": {
         "Earnest": "M",
@@ -47963,7 +47963,7 @@
     },
     {
       "id": "S1370",
-      "text": "Why should Yezo fund university spin-off labs?",
+      "text": "Should universities use public money to turn research into companies?",
       "theme": "Fund university spin-off labs",
       "grades": {
         "Earnest": "S",
@@ -48005,7 +48005,7 @@
     },
     {
       "id": "S1372",
-      "text": "The Innovation Society wants us to fund university spin-off labs. Why should everyone else care?",
+      "text": "Students ask why lab money is not spent on their teaching. What is your answer?",
       "theme": "Fund university spin-off labs",
       "grades": {
         "Earnest": "M",
@@ -48026,7 +48026,7 @@
     },
     {
       "id": "S1373",
-      "text": "What would it mean for people like me if we fund university spin-off labs?",
+      "text": "Would spin-off labs keep graduates in Hokkaido instead of leaving for Tokyo?",
       "theme": "Fund university spin-off labs",
       "grades": {
         "Earnest": "M",
@@ -48047,7 +48047,7 @@
     },
     {
       "id": "S1374",
-      "text": "If we fund university spin-off labs, how would you make sure it is done fairly and on schedule?",
+      "text": "Who owns a spin-off company built in a publicly funded lab?",
       "theme": "Fund university spin-off labs",
       "grades": {
         "Earnest": "S",
@@ -48089,7 +48089,7 @@
     },
     {
       "id": "S1376",
-      "text": "Is there a smaller step we could try before we fund university spin-off labs?",
+      "text": "Could we fund a few proven labs rather than one at every university?",
       "theme": "Fund university spin-off labs",
       "grades": {
         "Earnest": "M",
@@ -48134,7 +48134,7 @@
     },
     {
       "id": "S1378",
-      "text": "Why should Yezo hold local referendums on large projects?",
+      "text": "Should residents decide large projects themselves rather than leave it to councils?",
       "theme": "Hold local referendums on large projects",
       "grades": {
         "Earnest": "S",
@@ -48182,7 +48182,7 @@
     },
     {
       "id": "S1380",
-      "text": "Constituency Voters want us to hold local referendums on large projects. Why should the rest of Yezo care?",
+      "text": "Business says referendums will stop anything big being built. Why accept that risk?",
       "theme": "Hold local referendums on large projects",
       "grades": {
         "Earnest": "M",
@@ -48206,7 +48206,7 @@
     },
     {
       "id": "S1381",
-      "text": "What would it mean for people like me if we hold local referendums on large projects?",
+      "text": "Would a referendum let my town vote down the waste plant planned by the river?",
       "theme": "Hold local referendums on large projects",
       "grades": {
         "Earnest": "M",
@@ -48230,7 +48230,7 @@
     },
     {
       "id": "S1382",
-      "text": "If we hold local referendums on large projects, how would you make sure it is done fairly and on schedule?",
+      "text": "Who writes the referendum question so it is fair to both sides?",
       "theme": "Hold local referendums on large projects",
       "grades": {
         "Earnest": "S",
@@ -48278,7 +48278,7 @@
     },
     {
       "id": "S1384",
-      "text": "Is there a smaller step we could try before we hold local referendums on large projects?",
+      "text": "Could a public hearing serve instead of a full referendum for most projects?",
       "theme": "Hold local referendums on large projects",
       "grades": {
         "Earnest": "M",
@@ -48326,7 +48326,7 @@
     },
     {
       "id": "S1386",
-      "text": "Why should Yezo require public consultation before new projects?",
+      "text": "Should people be asked before a project changes their neighborhood?",
       "theme": "Require public consultation before new projects",
       "grades": {
         "Earnest": "S",
@@ -48374,7 +48374,7 @@
     },
     {
       "id": "S1388",
-      "text": "Constituency Voters want us to require public consultation before new projects. Why should the rest of Yezo care?",
+      "text": "Developers say consultation adds cost and delay. Why should others care?",
       "theme": "Require public consultation before new projects",
       "grades": {
         "Earnest": "M",
@@ -48398,7 +48398,7 @@
     },
     {
       "id": "S1389",
-      "text": "What would it mean for people like me if we require public consultation before new projects?",
+      "text": "Would consultation mean someone actually asks me before a road cuts through my street?",
       "theme": "Require public consultation before new projects",
       "grades": {
         "Earnest": "M",
@@ -48422,7 +48422,7 @@
     },
     {
       "id": "S1390",
-      "text": "If we require public consultation before new projects, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop consultation becoming a box ticked after the decision is made?",
       "theme": "Require public consultation before new projects",
       "grades": {
         "Earnest": "S",
@@ -48470,7 +48470,7 @@
     },
     {
       "id": "S1392",
-      "text": "Is there a smaller step we could try before we require public consultation before new projects?",
+      "text": "Could consultation apply only to projects above a certain size?",
       "theme": "Require public consultation before new projects",
       "grades": {
         "Earnest": "M",
@@ -48515,7 +48515,7 @@
     },
     {
       "id": "S1394",
-      "text": "Why should Yezo hold public question time with local officials?",
+      "text": "Should local officials have to answer residents' questions in public?",
       "theme": "Hold public question time with local officials",
       "grades": {
         "Earnest": "S",
@@ -48557,7 +48557,7 @@
     },
     {
       "id": "S1396",
-      "text": "Constituency Voters want us to hold public question time with local officials. Why should the rest of Yezo care?",
+      "text": "Mayors say question time will turn into shouting. What do you tell them?",
       "theme": "Hold public question time with local officials",
       "grades": {
         "Earnest": "M",
@@ -48578,7 +48578,7 @@
     },
     {
       "id": "S1397",
-      "text": "What would it mean for people like me if we hold public question time with local officials?",
+      "text": "Would public question time let me ask the mayor why the clinic closed?",
       "theme": "Hold public question time with local officials",
       "grades": {
         "Earnest": "M",
@@ -48599,7 +48599,7 @@
     },
     {
       "id": "S1398",
-      "text": "If we hold public question time with local officials, how would you make sure it is done fairly and on schedule?",
+      "text": "Who chairs question time and makes sure every voice gets heard?",
       "theme": "Hold public question time with local officials",
       "grades": {
         "Earnest": "S",
@@ -48641,7 +48641,7 @@
     },
     {
       "id": "S1400",
-      "text": "Is there a smaller step we could try before we hold public question time with local officials?",
+      "text": "Could officials answer written questions online instead of in a hall?",
       "theme": "Hold public question time with local officials",
       "grades": {
         "Earnest": "M",
@@ -48686,7 +48686,7 @@
     },
     {
       "id": "S1402",
-      "text": "Why should Yezo fund temple preservation?",
+      "text": "Should taxes help preserve buildings that belong to a religion?",
       "theme": "Fund temple preservation",
       "grades": {
         "Earnest": "S",
@@ -48734,7 +48734,7 @@
     },
     {
       "id": "S1404",
-      "text": "The Buddhist Temples Association wants us to fund temple preservation. Why should everyone else care?",
+      "text": "Shrines ask why temples should get preservation money first. What is your answer?",
       "theme": "Fund temple preservation",
       "grades": {
         "Earnest": "M",
@@ -48758,7 +48758,7 @@
     },
     {
       "id": "S1405",
-      "text": "What would it mean for people like me if we fund temple preservation?",
+      "text": "Would preservation funds keep our village temple from collapsing?",
       "theme": "Fund temple preservation",
       "grades": {
         "Earnest": "M",
@@ -48782,7 +48782,7 @@
     },
     {
       "id": "S1406",
-      "text": "If we fund temple preservation, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we keep preservation money separate from religious activity?",
       "theme": "Fund temple preservation",
       "grades": {
         "Earnest": "S",
@@ -48830,7 +48830,7 @@
     },
     {
       "id": "S1408",
-      "text": "Is there a smaller step we could try before we fund temple preservation?",
+      "text": "Could temples qualify through the general heritage fund instead of a separate one?",
       "theme": "Fund temple preservation",
       "grades": {
         "Earnest": "M",
@@ -48878,7 +48878,7 @@
     },
     {
       "id": "S1410",
-      "text": "Why should Yezo keep the tax exemption on temple land?",
+      "text": "Should land used for worship be free of property tax?",
       "theme": "Keep the tax exemption on temple land",
       "grades": {
         "Earnest": "S",
@@ -48926,7 +48926,7 @@
     },
     {
       "id": "S1412",
-      "text": "The Buddhist Temples Association wants us to keep the tax exemption on temple land. Why should everyone else care?",
+      "text": "Towns lose revenue from every exempt plot. Why should their residents accept that?",
       "theme": "Keep the tax exemption on temple land",
       "grades": {
         "Earnest": "M",
@@ -48950,7 +48950,7 @@
     },
     {
       "id": "S1413",
-      "text": "What would it mean for people like me if we keep the tax exemption on temple land?",
+      "text": "Would keeping the exemption stop our temple selling its grounds to developers?",
       "theme": "Keep the tax exemption on temple land",
       "grades": {
         "Earnest": "M",
@@ -48974,7 +48974,7 @@
     },
     {
       "id": "S1414",
-      "text": "If we keep the tax exemption on temple land, how would you make sure it holds up over the long term?",
+      "text": "How would we confirm exempt land is used for worship and not rented out?",
       "theme": "Keep the tax exemption on temple land",
       "grades": {
         "Earnest": "S",
@@ -49022,7 +49022,7 @@
     },
     {
       "id": "S1416",
-      "text": "Is there a smaller step we could try before we keep the tax exemption on temple land?",
+      "text": "Could the exemption cover the temple buildings but not its car parks and rentals?",
       "theme": "Keep the tax exemption on temple land",
       "grades": {
         "Earnest": "M",
@@ -49068,7 +49068,7 @@
     },
     {
       "id": "S1418",
-      "text": "Why should Yezo let temples run public meditation and care programs?",
+      "text": "Should temples be allowed to run public programs paid for by the state?",
       "theme": "Let temples run public meditation and care programs",
       "grades": {
         "Earnest": "S",
@@ -49112,7 +49112,7 @@
     },
     {
       "id": "S1420",
-      "text": "The Buddhist Temples Association wants us to let temples run public meditation and care programs. Why should everyone else care?",
+      "text": "Care providers worry temples will take their funding. How do you answer them?",
       "theme": "Let temples run public meditation and care programs",
       "grades": {
         "Earnest": "M",
@@ -49134,7 +49134,7 @@
     },
     {
       "id": "S1421",
-      "text": "What would it mean for people like me if we let temples run public meditation and care programs?",
+      "text": "Would a temple care program give my lonely mother somewhere to go each morning?",
       "theme": "Let temples run public meditation and care programs",
       "grades": {
         "Earnest": "M",
@@ -49156,7 +49156,7 @@
     },
     {
       "id": "S1422",
-      "text": "If we let temples run public meditation and care programs, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we make sure temple programs are open to people of any faith?",
       "theme": "Let temples run public meditation and care programs",
       "grades": {
         "Earnest": "S",
@@ -49200,7 +49200,7 @@
     },
     {
       "id": "S1424",
-      "text": "Is there a smaller step we could try before we let temples run public meditation and care programs?",
+      "text": "Could temples host programs run by existing care providers instead?",
       "theme": "Let temples run public meditation and care programs",
       "grades": {
         "Earnest": "M",
@@ -49246,7 +49246,7 @@
     },
     {
       "id": "S1426",
-      "text": "Why should Yezo support shrine festivals?",
+      "text": "Should the state help pay for religious festivals?",
       "theme": "Support shrine festivals",
       "grades": {
         "Earnest": "S",
@@ -49294,7 +49294,7 @@
     },
     {
       "id": "S1428",
-      "text": "The Shrine Association wants us to support shrine festivals. Why should everyone else care?",
+      "text": "Temples ask why shrine festivals get support and theirs do not. Your answer?",
       "theme": "Support shrine festivals",
       "grades": {
         "Earnest": "M",
@@ -49318,7 +49318,7 @@
     },
     {
       "id": "S1429",
-      "text": "What would it mean for people like me if we support shrine festivals?",
+      "text": "Would support keep our shrine's summer festival from being canceled?",
       "theme": "Support shrine festivals",
       "grades": {
         "Earnest": "M",
@@ -49342,7 +49342,7 @@
     },
     {
       "id": "S1430",
-      "text": "If we support shrine festivals, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we keep festival support from favoring one shrine over another?",
       "theme": "Support shrine festivals",
       "grades": {
         "Earnest": "S",
@@ -49390,7 +49390,7 @@
     },
     {
       "id": "S1432",
-      "text": "Is there a smaller step we could try before we support shrine festivals?",
+      "text": "Could support cover only safety and cleanup, not the festival itself?",
       "theme": "Support shrine festivals",
       "grades": {
         "Earnest": "M",
