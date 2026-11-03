@@ -40350,7 +40350,7 @@
       "displeases_boosters": [
         "BO08"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB031"
       ],
@@ -40374,7 +40374,7 @@
       "displeases_boosters": [
         "BO08"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB031"
       ],
@@ -40398,7 +40398,7 @@
       "displeases_boosters": [
         "BO08"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB031"
       ],
@@ -40446,7 +40446,7 @@
       "displeases_boosters": [
         "BO08"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB031"
       ],
@@ -40530,7 +40530,7 @@
       "pleases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB032"
       ],
@@ -40551,7 +40551,7 @@
       "pleases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB032"
       ],
@@ -40572,7 +40572,7 @@
       "pleases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB032"
       ],
@@ -40614,7 +40614,7 @@
       "pleases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB032"
       ],
@@ -40656,7 +40656,7 @@
       "pleases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB035"
       ],
@@ -40698,7 +40698,7 @@
       "pleases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB035"
       ],
@@ -40740,7 +40740,7 @@
       "pleases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB035"
       ],
@@ -40782,7 +40782,7 @@
       "pleases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB035"
       ],
@@ -40830,7 +40830,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB041"
       ],
@@ -40878,7 +40878,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB041"
       ],
@@ -40926,7 +40926,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB041"
       ],
@@ -40974,7 +40974,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB041"
       ],
@@ -41022,7 +41022,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB042"
       ],
@@ -41070,7 +41070,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB042"
       ],
@@ -41118,7 +41118,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB042"
       ],
@@ -41166,7 +41166,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB042"
       ],
@@ -41214,7 +41214,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB045"
       ],
@@ -41262,7 +41262,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB045"
       ],
@@ -41310,7 +41310,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB045"
       ],
@@ -41358,7 +41358,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB045"
       ],
@@ -41406,7 +41406,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB051"
       ],
@@ -41454,7 +41454,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB051"
       ],
@@ -41478,7 +41478,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB051"
       ],
@@ -41502,7 +41502,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB051"
       ],
@@ -41550,7 +41550,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB051"
       ],
@@ -41634,7 +41634,7 @@
       "pleases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB052"
       ],
@@ -41655,7 +41655,7 @@
       "pleases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB052"
       ],
@@ -41676,7 +41676,7 @@
       "pleases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB052"
       ],
@@ -41718,7 +41718,7 @@
       "pleases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB052"
       ],
@@ -41802,7 +41802,7 @@
       "pleases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB055"
       ],
@@ -41823,7 +41823,7 @@
       "pleases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB055"
       ],
@@ -41844,7 +41844,7 @@
       "pleases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB055"
       ],
@@ -41886,7 +41886,7 @@
       "pleases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB055"
       ],
@@ -41982,7 +41982,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB061"
       ],
@@ -42006,7 +42006,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB061"
       ],
@@ -42030,7 +42030,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB061"
       ],
@@ -42078,7 +42078,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB061"
       ],
@@ -42174,7 +42174,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB062"
       ],
@@ -42198,7 +42198,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB062"
       ],
@@ -42222,7 +42222,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB062"
       ],
@@ -42270,7 +42270,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB062"
       ],
@@ -42366,7 +42366,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB065"
       ],
@@ -42390,7 +42390,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB065"
       ],
@@ -42414,7 +42414,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB065"
       ],
@@ -42462,7 +42462,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB065"
       ],
@@ -42558,7 +42558,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB071"
       ],
@@ -42582,7 +42582,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB071"
       ],
@@ -42606,7 +42606,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB071"
       ],
@@ -42654,7 +42654,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB071"
       ],
@@ -42750,7 +42750,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB072"
       ],
@@ -42774,7 +42774,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB072"
       ],
@@ -42798,7 +42798,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB072"
       ],
@@ -42846,7 +42846,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB072"
       ],
@@ -42942,7 +42942,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB075"
       ],
@@ -42966,7 +42966,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB075"
       ],
@@ -42990,7 +42990,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB075"
       ],
@@ -43038,7 +43038,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB075"
       ],
@@ -43134,7 +43134,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB081"
       ],
@@ -43158,7 +43158,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB081"
       ],
@@ -43182,7 +43182,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB081"
       ],
@@ -43230,7 +43230,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB081"
       ],
@@ -43326,7 +43326,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB082"
       ],
@@ -43350,7 +43350,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB082"
       ],
@@ -43374,7 +43374,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB082"
       ],
@@ -43422,7 +43422,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB082"
       ],
@@ -43518,7 +43518,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB085"
       ],
@@ -43542,7 +43542,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB085"
       ],
@@ -43566,7 +43566,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB085"
       ],
@@ -43614,7 +43614,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB085"
       ],
@@ -43710,7 +43710,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB091"
       ],
@@ -43734,7 +43734,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB091"
       ],
@@ -43758,7 +43758,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB091"
       ],
@@ -43806,7 +43806,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB091"
       ],
@@ -43854,7 +43854,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB092"
       ],
@@ -43902,7 +43902,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB092"
       ],
@@ -43926,7 +43926,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB092"
       ],
@@ -43950,7 +43950,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB092"
       ],
@@ -43998,7 +43998,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB092"
       ],
@@ -44094,7 +44094,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB095"
       ],
@@ -44118,7 +44118,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB095"
       ],
@@ -44142,7 +44142,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB095"
       ],
@@ -44190,7 +44190,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB095"
       ],
@@ -44238,7 +44238,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB101"
       ],
@@ -44286,7 +44286,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB101"
       ],
@@ -44310,7 +44310,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB101"
       ],
@@ -44334,7 +44334,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB101"
       ],
@@ -44382,7 +44382,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB101"
       ],
@@ -44478,7 +44478,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB102"
       ],
@@ -44502,7 +44502,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB102"
       ],
@@ -44526,7 +44526,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB102"
       ],
@@ -44574,7 +44574,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB102"
       ],
@@ -44670,7 +44670,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB105"
       ],
@@ -44694,7 +44694,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB105"
       ],
@@ -44718,7 +44718,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB105"
       ],
@@ -44766,7 +44766,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB105"
       ],
@@ -44862,7 +44862,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB111"
       ],
@@ -44886,7 +44886,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB111"
       ],
@@ -44910,7 +44910,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB111"
       ],
@@ -44958,7 +44958,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB111"
       ],
@@ -45006,7 +45006,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB112"
       ],
@@ -45054,7 +45054,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB112"
       ],
@@ -45102,7 +45102,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB112"
       ],
@@ -45150,7 +45150,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB112"
       ],
@@ -45198,7 +45198,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB115"
       ],
@@ -45246,7 +45246,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB115"
       ],
@@ -45294,7 +45294,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB115"
       ],
@@ -45342,7 +45342,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB115"
       ],
@@ -45438,7 +45438,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB121"
       ],
@@ -45462,7 +45462,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB121"
       ],
@@ -45486,7 +45486,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB121"
       ],
@@ -45534,7 +45534,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB121"
       ],
@@ -45582,7 +45582,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB122"
       ],
@@ -45630,7 +45630,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB122"
       ],
@@ -45654,7 +45654,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB122"
       ],
@@ -45678,7 +45678,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB122"
       ],
@@ -45726,7 +45726,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB122"
       ],
@@ -45774,7 +45774,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB125"
       ],
@@ -45822,7 +45822,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB125"
       ],
@@ -45846,7 +45846,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB125"
       ],
@@ -45870,7 +45870,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB125"
       ],
@@ -45918,7 +45918,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB125"
       ],
@@ -46014,7 +46014,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB131"
       ],
@@ -46038,7 +46038,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB131"
       ],
@@ -46062,7 +46062,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB131"
       ],
@@ -46110,7 +46110,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB131"
       ],
@@ -46152,7 +46152,7 @@
       "pleases_boosters": [
         "BO13"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB132"
       ],
@@ -46194,7 +46194,7 @@
       "pleases_boosters": [
         "BO13"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB132"
       ],
@@ -46215,7 +46215,7 @@
       "pleases_boosters": [
         "BO13"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB132"
       ],
@@ -46236,7 +46236,7 @@
       "pleases_boosters": [
         "BO13"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB132"
       ],
@@ -46278,7 +46278,7 @@
       "pleases_boosters": [
         "BO13"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB132"
       ],
@@ -46362,7 +46362,7 @@
       "pleases_boosters": [
         "BO13"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB135"
       ],
@@ -46383,7 +46383,7 @@
       "pleases_boosters": [
         "BO13"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB135"
       ],
@@ -46404,7 +46404,7 @@
       "pleases_boosters": [
         "BO13"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB135"
       ],
@@ -46446,7 +46446,7 @@
       "pleases_boosters": [
         "BO13"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB135"
       ],
@@ -46542,7 +46542,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB141"
       ],
@@ -46566,7 +46566,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB141"
       ],
@@ -46590,7 +46590,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB141"
       ],
@@ -46638,7 +46638,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB141"
       ],
@@ -46734,7 +46734,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB142"
       ],
@@ -46758,7 +46758,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB142"
       ],
@@ -46782,7 +46782,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB142"
       ],
@@ -46830,7 +46830,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB142"
       ],
@@ -46878,7 +46878,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB145"
       ],
@@ -46926,7 +46926,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB145"
       ],
@@ -46950,7 +46950,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB145"
       ],
@@ -46974,7 +46974,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB145"
       ],
@@ -47022,7 +47022,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB145"
       ],
@@ -47118,7 +47118,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB151"
       ],
@@ -47142,7 +47142,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB151"
       ],
@@ -47166,7 +47166,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB151"
       ],
@@ -47214,7 +47214,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB151"
       ],
@@ -47310,7 +47310,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB152"
       ],
@@ -47334,7 +47334,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB152"
       ],
@@ -47358,7 +47358,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB152"
       ],
@@ -47406,7 +47406,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB152"
       ],
@@ -47502,7 +47502,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB155"
       ],
@@ -47526,7 +47526,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB155"
       ],
@@ -47550,7 +47550,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB155"
       ],
@@ -47598,7 +47598,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB155"
       ],
@@ -47640,7 +47640,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB161"
       ],
@@ -47682,7 +47682,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB161"
       ],
@@ -47703,7 +47703,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB161"
       ],
@@ -47724,7 +47724,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB161"
       ],
@@ -47766,7 +47766,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB161"
       ],
@@ -47850,7 +47850,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB162"
       ],
@@ -47871,7 +47871,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB162"
       ],
@@ -47892,7 +47892,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB162"
       ],
@@ -47934,7 +47934,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB162"
       ],
@@ -48018,7 +48018,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB165"
       ],
@@ -48039,7 +48039,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB165"
       ],
@@ -48060,7 +48060,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB165"
       ],
@@ -48102,7 +48102,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB165"
       ],
@@ -48222,7 +48222,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB181"
       ],
@@ -48246,7 +48246,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB181"
       ],
@@ -48294,7 +48294,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB181"
       ],
@@ -48414,7 +48414,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB182"
       ],
@@ -48438,7 +48438,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB182"
       ],
@@ -48486,7 +48486,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB182"
       ],
@@ -48591,7 +48591,7 @@
       "pleases_boosters": [
         "BO18"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB185"
       ],
@@ -48612,7 +48612,7 @@
       "pleases_boosters": [
         "BO18"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB185"
       ],
@@ -48654,7 +48654,7 @@
       "pleases_boosters": [
         "BO18"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB185"
       ],
@@ -48750,7 +48750,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB191"
       ],
@@ -48774,7 +48774,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB191"
       ],
@@ -48798,7 +48798,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB191"
       ],
@@ -48846,7 +48846,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB191"
       ],
@@ -48894,7 +48894,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB192"
       ],
@@ -48942,7 +48942,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB192"
       ],
@@ -48966,7 +48966,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB192"
       ],
@@ -48990,7 +48990,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB192"
       ],
@@ -49038,7 +49038,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB192"
       ],
@@ -49126,7 +49126,7 @@
         "BO19",
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB195"
       ],
@@ -49148,7 +49148,7 @@
         "BO19",
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB195"
       ],
@@ -49170,7 +49170,7 @@
         "BO19",
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB195"
       ],
@@ -49214,7 +49214,7 @@
         "BO19",
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB195"
       ],
@@ -49310,7 +49310,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB201"
       ],
@@ -49334,7 +49334,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB201"
       ],
@@ -49358,7 +49358,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB201"
       ],
@@ -49406,7 +49406,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB201"
       ],
@@ -49502,7 +49502,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB202"
       ],
@@ -49526,7 +49526,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB202"
       ],
@@ -49550,7 +49550,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB202"
       ],
@@ -49598,7 +49598,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB202"
       ],
@@ -49694,7 +49694,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB205"
       ],
@@ -49718,7 +49718,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB205"
       ],
@@ -49742,7 +49742,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB205"
       ],
@@ -49790,7 +49790,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB205"
       ],
@@ -49838,7 +49838,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB211"
       ],
@@ -49886,7 +49886,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB211"
       ],
@@ -49934,7 +49934,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB211"
       ],
@@ -49982,7 +49982,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB211"
       ],
@@ -50078,7 +50078,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB212"
       ],
@@ -50102,7 +50102,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB212"
       ],
@@ -50126,7 +50126,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB212"
       ],
@@ -50174,7 +50174,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB212"
       ],
@@ -50222,7 +50222,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB215"
       ],
@@ -50270,7 +50270,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB215"
       ],
@@ -50294,7 +50294,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB215"
       ],
@@ -50318,7 +50318,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB215"
       ],
@@ -50366,7 +50366,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB215"
       ],
@@ -50462,7 +50462,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB221"
       ],
@@ -50486,7 +50486,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB221"
       ],
@@ -50510,7 +50510,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB221"
       ],
@@ -50558,7 +50558,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB221"
       ],
@@ -50654,7 +50654,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB222"
       ],
@@ -50678,7 +50678,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB222"
       ],
@@ -50702,7 +50702,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB222"
       ],
@@ -50750,7 +50750,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB222"
       ],
@@ -50834,7 +50834,7 @@
       "pleases_boosters": [
         "BO22"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB225"
       ],
@@ -50855,7 +50855,7 @@
       "pleases_boosters": [
         "BO22"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB225"
       ],
@@ -50876,7 +50876,7 @@
       "pleases_boosters": [
         "BO22"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB225"
       ],
@@ -50918,7 +50918,7 @@
       "pleases_boosters": [
         "BO22"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB225"
       ],
@@ -51026,7 +51026,7 @@
         "BO14",
         "BO29"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB231"
       ],
@@ -51053,7 +51053,7 @@
         "BO14",
         "BO29"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB231"
       ],
@@ -51080,7 +51080,7 @@
         "BO14",
         "BO29"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB231"
       ],
@@ -51134,7 +51134,7 @@
         "BO14",
         "BO29"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB231"
       ],
@@ -51176,7 +51176,7 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB232"
       ],
@@ -51218,7 +51218,7 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB232"
       ],
@@ -51239,7 +51239,7 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB232"
       ],
@@ -51260,7 +51260,7 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB232"
       ],
@@ -51302,7 +51302,7 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB232"
       ],
@@ -51386,7 +51386,7 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB235"
       ],
@@ -51407,7 +51407,7 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB235"
       ],
@@ -51428,7 +51428,7 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB235"
       ],
@@ -51470,7 +51470,7 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB235"
       ],
@@ -51566,7 +51566,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB241"
       ],
@@ -51590,7 +51590,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB241"
       ],
@@ -51614,7 +51614,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB241"
       ],
@@ -51662,7 +51662,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB241"
       ],
@@ -51710,7 +51710,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB242"
       ],
@@ -51758,7 +51758,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB242"
       ],
@@ -51782,7 +51782,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB242"
       ],
@@ -51806,7 +51806,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB242"
       ],
@@ -51854,7 +51854,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB242"
       ],
@@ -51950,7 +51950,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB245"
       ],
@@ -51974,7 +51974,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB245"
       ],
@@ -51998,7 +51998,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB245"
       ],
@@ -52046,7 +52046,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB245"
       ],
@@ -52142,7 +52142,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB251"
       ],
@@ -52166,7 +52166,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB251"
       ],
@@ -52190,7 +52190,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB251"
       ],
@@ -52238,7 +52238,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB251"
       ],
@@ -52280,7 +52280,7 @@
       "pleases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB252"
       ],
@@ -52322,7 +52322,7 @@
       "pleases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB252"
       ],
@@ -52364,7 +52364,7 @@
       "pleases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB252"
       ],
@@ -52406,7 +52406,7 @@
       "pleases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB252"
       ],
@@ -52490,7 +52490,7 @@
       "pleases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB255"
       ],
@@ -52511,7 +52511,7 @@
       "pleases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB255"
       ],
@@ -52532,7 +52532,7 @@
       "pleases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB255"
       ],
@@ -52574,7 +52574,7 @@
       "pleases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB255"
       ],
@@ -52622,7 +52622,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB261"
       ],
@@ -52670,7 +52670,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB261"
       ],
@@ -52694,7 +52694,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB261"
       ],
@@ -52718,7 +52718,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB261"
       ],
@@ -52766,7 +52766,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB261"
       ],
@@ -52862,7 +52862,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB262"
       ],
@@ -52886,7 +52886,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB262"
       ],
@@ -52910,7 +52910,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB262"
       ],
@@ -52958,7 +52958,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB262"
       ],
@@ -53054,7 +53054,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB265"
       ],
@@ -53078,7 +53078,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB265"
       ],
@@ -53102,7 +53102,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB265"
       ],
@@ -53150,7 +53150,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB265"
       ],
@@ -53246,7 +53246,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB271"
       ],
@@ -53270,7 +53270,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB271"
       ],
@@ -53294,7 +53294,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB271"
       ],
@@ -53342,7 +53342,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB271"
       ],
@@ -53438,7 +53438,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB272"
       ],
@@ -53462,7 +53462,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB272"
       ],
@@ -53486,7 +53486,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB272"
       ],
@@ -53534,7 +53534,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB272"
       ],
@@ -53630,7 +53630,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB275"
       ],
@@ -53654,7 +53654,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB275"
       ],
@@ -53678,7 +53678,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB275"
       ],
@@ -53726,7 +53726,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB275"
       ],
@@ -53822,7 +53822,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB281"
       ],
@@ -53846,7 +53846,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB281"
       ],
@@ -53870,7 +53870,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB281"
       ],
@@ -53918,7 +53918,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB281"
       ],
@@ -54014,7 +54014,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB282"
       ],
@@ -54038,7 +54038,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB282"
       ],
@@ -54062,7 +54062,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB282"
       ],
@@ -54110,7 +54110,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB282"
       ],
@@ -54158,7 +54158,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB285"
       ],
@@ -54206,7 +54206,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB285"
       ],
@@ -54254,7 +54254,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB285"
       ],
@@ -54302,7 +54302,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB285"
       ],
@@ -54398,7 +54398,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB291"
       ],
@@ -54422,7 +54422,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB291"
       ],
@@ -54446,7 +54446,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB291"
       ],
@@ -54494,7 +54494,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB291"
       ],
@@ -54590,7 +54590,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB292"
       ],
@@ -54614,7 +54614,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB292"
       ],
@@ -54638,7 +54638,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB292"
       ],
@@ -54686,7 +54686,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB292"
       ],
@@ -54782,7 +54782,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB295"
       ],
@@ -54806,7 +54806,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB295"
       ],
@@ -54830,7 +54830,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB295"
       ],
@@ -54878,7 +54878,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB295"
       ],
@@ -54974,7 +54974,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB301"
       ],
@@ -54998,7 +54998,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB301"
       ],
@@ -55022,7 +55022,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB301"
       ],
@@ -55070,7 +55070,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB301"
       ],
@@ -55118,7 +55118,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB302"
       ],
@@ -55166,7 +55166,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB302"
       ],
@@ -55190,7 +55190,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB302"
       ],
@@ -55214,7 +55214,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB302"
       ],
@@ -55262,7 +55262,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB302"
       ],
@@ -55310,7 +55310,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB305"
       ],
@@ -55358,7 +55358,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB305"
       ],
@@ -55382,7 +55382,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB305"
       ],
@@ -55406,7 +55406,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB305"
       ],
@@ -55454,7 +55454,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB305"
       ],
@@ -55550,7 +55550,7 @@
       "displeases_boosters": [
         "BO08"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB033"
       ],
@@ -55574,7 +55574,7 @@
       "displeases_boosters": [
         "BO08"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB033"
       ],
@@ -55598,7 +55598,7 @@
       "displeases_boosters": [
         "BO08"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB033"
       ],
@@ -55646,7 +55646,7 @@
       "displeases_boosters": [
         "BO08"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB033"
       ],
@@ -55694,7 +55694,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB034"
       ],
@@ -55742,7 +55742,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB034"
       ],
@@ -55790,7 +55790,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB034"
       ],
@@ -55838,7 +55838,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB034"
       ],
@@ -55934,7 +55934,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB036"
       ],
@@ -55958,7 +55958,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB036"
       ],
@@ -55982,7 +55982,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB036"
       ],
@@ -56030,7 +56030,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB036"
       ],
@@ -56126,7 +56126,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB037"
       ],
@@ -56150,7 +56150,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB037"
       ],
@@ -56174,7 +56174,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB037"
       ],
@@ -56222,7 +56222,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB037"
       ],
@@ -56270,7 +56270,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB043"
       ],
@@ -56318,7 +56318,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB043"
       ],
@@ -56342,7 +56342,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB043"
       ],
@@ -56366,7 +56366,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB043"
       ],
@@ -56414,7 +56414,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB043"
       ],
@@ -56462,7 +56462,7 @@
       "displeases_boosters": [
         "BO06"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB044"
       ],
@@ -56510,7 +56510,7 @@
       "displeases_boosters": [
         "BO06"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB044"
       ],
@@ -56558,7 +56558,7 @@
       "displeases_boosters": [
         "BO06"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB044"
       ],
@@ -56606,7 +56606,7 @@
       "displeases_boosters": [
         "BO06"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB044"
       ],
@@ -56702,7 +56702,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB053"
       ],
@@ -56726,7 +56726,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB053"
       ],
@@ -56750,7 +56750,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB053"
       ],
@@ -56798,7 +56798,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB053"
       ],
@@ -56894,7 +56894,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB054"
       ],
@@ -56918,7 +56918,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB054"
       ],
@@ -56942,7 +56942,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB054"
       ],
@@ -56990,7 +56990,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB054"
       ],
@@ -57086,7 +57086,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB056"
       ],
@@ -57110,7 +57110,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB056"
       ],
@@ -57134,7 +57134,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB056"
       ],
@@ -57182,7 +57182,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB056"
       ],
@@ -57278,7 +57278,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB057"
       ],
@@ -57302,7 +57302,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB057"
       ],
@@ -57326,7 +57326,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB057"
       ],
@@ -57374,7 +57374,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB057"
       ],
@@ -57422,7 +57422,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB058"
       ],
@@ -57470,7 +57470,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB058"
       ],
@@ -57494,7 +57494,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB058"
       ],
@@ -57518,7 +57518,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB058"
       ],
@@ -57566,7 +57566,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB058"
       ],
@@ -57662,7 +57662,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB059"
       ],
@@ -57686,7 +57686,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB059"
       ],
@@ -57710,7 +57710,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB059"
       ],
@@ -57758,7 +57758,7 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB059"
       ],
@@ -57854,7 +57854,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB063"
       ],
@@ -57878,7 +57878,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB063"
       ],
@@ -57902,7 +57902,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB063"
       ],
@@ -57950,7 +57950,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB063"
       ],
@@ -58046,7 +58046,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB064"
       ],
@@ -58070,7 +58070,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB064"
       ],
@@ -58094,7 +58094,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB064"
       ],
@@ -58142,7 +58142,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB064"
       ],
@@ -58238,7 +58238,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB066"
       ],
@@ -58262,7 +58262,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB066"
       ],
@@ -58286,7 +58286,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB066"
       ],
@@ -58334,7 +58334,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB066"
       ],
@@ -58430,7 +58430,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB067"
       ],
@@ -58454,7 +58454,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB067"
       ],
@@ -58478,7 +58478,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB067"
       ],
@@ -58526,7 +58526,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB067"
       ],
@@ -58622,7 +58622,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB073"
       ],
@@ -58646,7 +58646,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB073"
       ],
@@ -58670,7 +58670,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB073"
       ],
@@ -58718,7 +58718,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB073"
       ],
@@ -58814,7 +58814,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB074"
       ],
@@ -58838,7 +58838,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB074"
       ],
@@ -58862,7 +58862,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB074"
       ],
@@ -58910,7 +58910,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB074"
       ],
@@ -59006,7 +59006,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB076"
       ],
@@ -59030,7 +59030,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB076"
       ],
@@ -59054,7 +59054,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB076"
       ],
@@ -59102,7 +59102,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB076"
       ],
@@ -59198,7 +59198,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB077"
       ],
@@ -59222,7 +59222,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB077"
       ],
@@ -59246,7 +59246,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB077"
       ],
@@ -59294,7 +59294,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB077"
       ],
@@ -59390,7 +59390,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB083"
       ],
@@ -59414,7 +59414,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB083"
       ],
@@ -59438,7 +59438,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB083"
       ],
@@ -59486,7 +59486,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB083"
       ],
@@ -59534,7 +59534,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB084"
       ],
@@ -59582,7 +59582,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB084"
       ],
@@ -59606,7 +59606,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB084"
       ],
@@ -59630,7 +59630,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB084"
       ],
@@ -59678,7 +59678,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB084"
       ],
@@ -59726,7 +59726,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB086"
       ],
@@ -59774,7 +59774,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB086"
       ],
@@ -59822,7 +59822,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB086"
       ],
@@ -59870,7 +59870,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB086"
       ],
@@ -59918,7 +59918,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB087"
       ],
@@ -59966,7 +59966,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB087"
       ],
@@ -60014,7 +60014,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB087"
       ],
@@ -60062,7 +60062,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB087"
       ],
@@ -60110,7 +60110,7 @@
       "displeases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB088"
       ],
@@ -60158,7 +60158,7 @@
       "displeases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB088"
       ],
@@ -60182,7 +60182,7 @@
       "displeases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB088"
       ],
@@ -60206,7 +60206,7 @@
       "displeases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB088"
       ],
@@ -60254,7 +60254,7 @@
       "displeases_boosters": [
         "BO03"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB088"
       ],
@@ -60350,7 +60350,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB093"
       ],
@@ -60374,7 +60374,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB093"
       ],
@@ -60398,7 +60398,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB093"
       ],
@@ -60446,7 +60446,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB093"
       ],
@@ -60542,7 +60542,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB094"
       ],
@@ -60566,7 +60566,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB094"
       ],
@@ -60590,7 +60590,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB094"
       ],
@@ -60638,7 +60638,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB094"
       ],
@@ -60734,7 +60734,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB103"
       ],
@@ -60758,7 +60758,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB103"
       ],
@@ -60782,7 +60782,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB103"
       ],
@@ -60830,7 +60830,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB103"
       ],
@@ -60878,7 +60878,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB104"
       ],
@@ -60926,7 +60926,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB104"
       ],
@@ -60950,7 +60950,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB104"
       ],
@@ -60974,7 +60974,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB104"
       ],
@@ -61022,7 +61022,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB104"
       ],
@@ -61118,7 +61118,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB106"
       ],
@@ -61142,7 +61142,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB106"
       ],
@@ -61166,7 +61166,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB106"
       ],
@@ -61214,7 +61214,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB106"
       ],
@@ -61262,7 +61262,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB107"
       ],
@@ -61310,7 +61310,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB107"
       ],
@@ -61358,7 +61358,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB107"
       ],
@@ -61406,7 +61406,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB107"
       ],
@@ -61454,7 +61454,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB108"
       ],
@@ -61502,7 +61502,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB108"
       ],
@@ -61550,7 +61550,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB108"
       ],
@@ -61598,7 +61598,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB108"
       ],
@@ -61646,7 +61646,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB113"
       ],
@@ -61694,7 +61694,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB113"
       ],
@@ -61742,7 +61742,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB113"
       ],
@@ -61790,7 +61790,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB113"
       ],
@@ -61838,7 +61838,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB114"
       ],
@@ -61886,7 +61886,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB114"
       ],
@@ -61934,7 +61934,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB114"
       ],
@@ -61982,7 +61982,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB114"
       ],
@@ -62078,7 +62078,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB123"
       ],
@@ -62102,7 +62102,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB123"
       ],
@@ -62126,7 +62126,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB123"
       ],
@@ -62174,7 +62174,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB123"
       ],
@@ -62270,7 +62270,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB124"
       ],
@@ -62294,7 +62294,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB124"
       ],
@@ -62318,7 +62318,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB124"
       ],
@@ -62366,7 +62366,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB124"
       ],
@@ -62462,7 +62462,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB126"
       ],
@@ -62486,7 +62486,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB126"
       ],
@@ -62510,7 +62510,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB126"
       ],
@@ -62558,7 +62558,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB126"
       ],
@@ -62606,7 +62606,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB127"
       ],
@@ -62654,7 +62654,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB127"
       ],
@@ -62702,7 +62702,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB127"
       ],
@@ -62750,7 +62750,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB127"
       ],
@@ -62846,7 +62846,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB133"
       ],
@@ -62870,7 +62870,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB133"
       ],
@@ -62894,7 +62894,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB133"
       ],
@@ -62942,7 +62942,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB133"
       ],
@@ -63038,7 +63038,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB134"
       ],
@@ -63062,7 +63062,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB134"
       ],
@@ -63086,7 +63086,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB134"
       ],
@@ -63134,7 +63134,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB134"
       ],
@@ -63230,7 +63230,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB136"
       ],
@@ -63254,7 +63254,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB136"
       ],
@@ -63278,7 +63278,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB136"
       ],
@@ -63326,7 +63326,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB136"
       ],
@@ -63422,7 +63422,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB137"
       ],
@@ -63446,7 +63446,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB137"
       ],
@@ -63470,7 +63470,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB137"
       ],
@@ -63518,7 +63518,7 @@
       "displeases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB137"
       ],
@@ -63614,7 +63614,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB143"
       ],
@@ -63638,7 +63638,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB143"
       ],
@@ -63662,7 +63662,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB143"
       ],
@@ -63710,7 +63710,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB143"
       ],
@@ -63806,7 +63806,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB144"
       ],
@@ -63830,7 +63830,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB144"
       ],
@@ -63854,7 +63854,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB144"
       ],
@@ -63902,7 +63902,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB144"
       ],
@@ -63950,7 +63950,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB146"
       ],
@@ -63998,7 +63998,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB146"
       ],
@@ -64022,7 +64022,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB146"
       ],
@@ -64046,7 +64046,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB146"
       ],
@@ -64094,7 +64094,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB146"
       ],
@@ -64190,7 +64190,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB147"
       ],
@@ -64214,7 +64214,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB147"
       ],
@@ -64238,7 +64238,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB147"
       ],
@@ -64286,7 +64286,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB147"
       ],
@@ -64382,7 +64382,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB153"
       ],
@@ -64406,7 +64406,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB153"
       ],
@@ -64430,7 +64430,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB153"
       ],
@@ -64478,7 +64478,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB153"
       ],
@@ -64574,7 +64574,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB154"
       ],
@@ -64598,7 +64598,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB154"
       ],
@@ -64622,7 +64622,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB154"
       ],
@@ -64670,7 +64670,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB154"
       ],
@@ -64758,7 +64758,7 @@
         "BO15",
         "BO13"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB156"
       ],
@@ -64780,7 +64780,7 @@
         "BO15",
         "BO13"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB156"
       ],
@@ -64802,7 +64802,7 @@
         "BO15",
         "BO13"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB156"
       ],
@@ -64846,7 +64846,7 @@
         "BO15",
         "BO13"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB156"
       ],
@@ -64888,7 +64888,7 @@
       "pleases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB157"
       ],
@@ -64930,7 +64930,7 @@
       "pleases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB157"
       ],
@@ -64972,7 +64972,7 @@
       "pleases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB157"
       ],
@@ -65014,7 +65014,7 @@
       "pleases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB157"
       ],
@@ -65102,7 +65102,7 @@
         "BO15",
         "BO10"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB158"
       ],
@@ -65124,7 +65124,7 @@
         "BO15",
         "BO10"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB158"
       ],
@@ -65146,7 +65146,7 @@
         "BO15",
         "BO10"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB158"
       ],
@@ -65190,7 +65190,7 @@
         "BO15",
         "BO10"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB158"
       ],
@@ -65278,7 +65278,7 @@
         "BO15",
         "BO14"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB159"
       ],
@@ -65300,7 +65300,7 @@
         "BO15",
         "BO14"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB159"
       ],
@@ -65322,7 +65322,7 @@
         "BO15",
         "BO14"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB159"
       ],
@@ -65366,7 +65366,7 @@
         "BO15",
         "BO14"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB159"
       ],
@@ -65450,7 +65450,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB163"
       ],
@@ -65471,7 +65471,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB163"
       ],
@@ -65492,7 +65492,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB163"
       ],
@@ -65534,7 +65534,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB163"
       ],
@@ -65576,7 +65576,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB164"
       ],
@@ -65618,7 +65618,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB164"
       ],
@@ -65639,7 +65639,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB164"
       ],
@@ -65660,7 +65660,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB164"
       ],
@@ -65702,7 +65702,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Evidence",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB164"
       ],
@@ -65786,7 +65786,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB166"
       ],
@@ -65807,7 +65807,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB166"
       ],
@@ -65828,7 +65828,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB166"
       ],
@@ -65870,7 +65870,7 @@
       "pleases_boosters": [
         "BO16"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB166"
       ],
@@ -65958,7 +65958,7 @@
         "BO16",
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB167"
       ],
@@ -65980,7 +65980,7 @@
         "BO16",
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB167"
       ],
@@ -66002,7 +66002,7 @@
         "BO16",
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB167"
       ],
@@ -66046,7 +66046,7 @@
         "BO16",
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB167"
       ],
@@ -66166,7 +66166,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB183"
       ],
@@ -66190,7 +66190,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB183"
       ],
@@ -66238,7 +66238,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB183"
       ],
@@ -66286,7 +66286,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB184"
       ],
@@ -66358,7 +66358,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB184"
       ],
@@ -66382,7 +66382,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB184"
       ],
@@ -66430,7 +66430,7 @@
       "displeases_boosters": [
         "BO17"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB184"
       ],
@@ -66478,7 +66478,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB186"
       ],
@@ -66550,7 +66550,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB186"
       ],
@@ -66574,7 +66574,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB186"
       ],
@@ -66622,7 +66622,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB186"
       ],
@@ -66742,7 +66742,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB187"
       ],
@@ -66766,7 +66766,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB187"
       ],
@@ -66814,7 +66814,7 @@
       "displeases_boosters": [
         "BO04"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB187"
       ],
@@ -66910,7 +66910,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB193"
       ],
@@ -66934,7 +66934,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB193"
       ],
@@ -66958,7 +66958,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB193"
       ],
@@ -67006,7 +67006,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB193"
       ],
@@ -67102,7 +67102,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB194"
       ],
@@ -67126,7 +67126,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB194"
       ],
@@ -67150,7 +67150,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB194"
       ],
@@ -67198,7 +67198,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB194"
       ],
@@ -67294,7 +67294,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB203"
       ],
@@ -67318,7 +67318,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB203"
       ],
@@ -67342,7 +67342,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB203"
       ],
@@ -67390,7 +67390,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB203"
       ],
@@ -67486,7 +67486,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB204"
       ],
@@ -67510,7 +67510,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB204"
       ],
@@ -67534,7 +67534,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB204"
       ],
@@ -67582,7 +67582,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB204"
       ],
@@ -67678,7 +67678,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB206"
       ],
@@ -67702,7 +67702,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB206"
       ],
@@ -67726,7 +67726,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB206"
       ],
@@ -67774,7 +67774,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB206"
       ],
@@ -67858,7 +67858,7 @@
       "pleases_boosters": [
         "BO20"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB207"
       ],
@@ -67879,7 +67879,7 @@
       "pleases_boosters": [
         "BO20"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB207"
       ],
@@ -67900,7 +67900,7 @@
       "pleases_boosters": [
         "BO20"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB207"
       ],
@@ -67942,7 +67942,7 @@
       "pleases_boosters": [
         "BO20"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB207"
       ],
@@ -68038,7 +68038,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB208"
       ],
@@ -68062,7 +68062,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB208"
       ],
@@ -68086,7 +68086,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB208"
       ],
@@ -68134,7 +68134,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB208"
       ],
@@ -68230,7 +68230,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB213"
       ],
@@ -68254,7 +68254,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB213"
       ],
@@ -68278,7 +68278,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB213"
       ],
@@ -68326,7 +68326,7 @@
       "displeases_boosters": [
         "BO23"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB213"
       ],
@@ -68374,7 +68374,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB214"
       ],
@@ -68422,7 +68422,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB214"
       ],
@@ -68470,7 +68470,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB214"
       ],
@@ -68518,7 +68518,7 @@
       "displeases_boosters": [
         "BO25"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB214"
       ],
@@ -68566,7 +68566,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB216"
       ],
@@ -68614,7 +68614,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB216"
       ],
@@ -68662,7 +68662,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB216"
       ],
@@ -68710,7 +68710,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB216"
       ],
@@ -68758,7 +68758,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB217"
       ],
@@ -68806,7 +68806,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB217"
       ],
@@ -68854,7 +68854,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB217"
       ],
@@ -68902,7 +68902,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB217"
       ],
@@ -68950,7 +68950,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB218"
       ],
@@ -68998,7 +68998,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB218"
       ],
@@ -69046,7 +69046,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB218"
       ],
@@ -69094,7 +69094,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB218"
       ],
@@ -69142,7 +69142,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Voters",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB223"
       ],
@@ -69214,7 +69214,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Voters",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB223"
       ],
@@ -69238,7 +69238,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Voters",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB223"
       ],
@@ -69286,7 +69286,7 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "reply_kind": "Voters",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB223"
       ],
@@ -69382,7 +69382,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB224"
       ],
@@ -69406,7 +69406,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB224"
       ],
@@ -69430,7 +69430,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB224"
       ],
@@ -69478,7 +69478,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB224"
       ],
@@ -69586,7 +69586,7 @@
         "BO14",
         "BO29"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB233"
       ],
@@ -69613,7 +69613,7 @@
         "BO14",
         "BO29"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB233"
       ],
@@ -69640,7 +69640,7 @@
         "BO14",
         "BO29"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB233"
       ],
@@ -69694,7 +69694,7 @@
         "BO14",
         "BO29"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB233"
       ],
@@ -69742,7 +69742,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Oversight",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB234"
       ],
@@ -69790,7 +69790,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Oversight",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB234"
       ],
@@ -69814,7 +69814,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Oversight",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB234"
       ],
@@ -69886,7 +69886,7 @@
       "displeases_boosters": [
         "BO21"
       ],
-      "reply_kind": "Oversight",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB234"
       ],
@@ -69982,7 +69982,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB243"
       ],
@@ -70006,7 +70006,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB243"
       ],
@@ -70030,7 +70030,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB243"
       ],
@@ -70078,7 +70078,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB243"
       ],
@@ -70174,7 +70174,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB244"
       ],
@@ -70198,7 +70198,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB244"
       ],
@@ -70222,7 +70222,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB244"
       ],
@@ -70270,7 +70270,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB244"
       ],
@@ -70366,7 +70366,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB246"
       ],
@@ -70390,7 +70390,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB246"
       ],
@@ -70414,7 +70414,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB246"
       ],
@@ -70462,7 +70462,7 @@
       "displeases_boosters": [
         "BO26"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB246"
       ],
@@ -70546,7 +70546,7 @@
       "pleases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB247"
       ],
@@ -70567,7 +70567,7 @@
       "pleases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB247"
       ],
@@ -70588,7 +70588,7 @@
       "pleases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB247"
       ],
@@ -70630,7 +70630,7 @@
       "pleases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB247"
       ],
@@ -70678,7 +70678,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB253"
       ],
@@ -70726,7 +70726,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB253"
       ],
@@ -70750,7 +70750,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB253"
       ],
@@ -70774,7 +70774,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB253"
       ],
@@ -70822,7 +70822,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Cost",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB253"
       ],
@@ -70870,7 +70870,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB254"
       ],
@@ -70918,7 +70918,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB254"
       ],
@@ -70966,7 +70966,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB254"
       ],
@@ -71014,7 +71014,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB254"
       ],
@@ -71110,7 +71110,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB263"
       ],
@@ -71134,7 +71134,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB263"
       ],
@@ -71158,7 +71158,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB263"
       ],
@@ -71206,7 +71206,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB263"
       ],
@@ -71302,7 +71302,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB264"
       ],
@@ -71326,7 +71326,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB264"
       ],
@@ -71350,7 +71350,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB264"
       ],
@@ -71398,7 +71398,7 @@
       "displeases_boosters": [
         "BO24"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB264"
       ],
@@ -71494,7 +71494,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB266"
       ],
@@ -71518,7 +71518,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB266"
       ],
@@ -71542,7 +71542,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB266"
       ],
@@ -71590,7 +71590,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB266"
       ],
@@ -71686,7 +71686,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB267"
       ],
@@ -71710,7 +71710,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB267"
       ],
@@ -71734,7 +71734,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB267"
       ],
@@ -71782,7 +71782,7 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB267"
       ],
@@ -71878,7 +71878,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB273"
       ],
@@ -71902,7 +71902,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB273"
       ],
@@ -71926,7 +71926,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB273"
       ],
@@ -71974,7 +71974,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB273"
       ],
@@ -72074,7 +72074,7 @@
         "BO30",
         "BO19"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB274"
       ],
@@ -72099,7 +72099,7 @@
         "BO30",
         "BO19"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB274"
       ],
@@ -72124,7 +72124,7 @@
         "BO30",
         "BO19"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB274"
       ],
@@ -72174,7 +72174,7 @@
         "BO30",
         "BO19"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB274"
       ],
@@ -72270,7 +72270,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB276"
       ],
@@ -72294,7 +72294,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB276"
       ],
@@ -72318,7 +72318,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB276"
       ],
@@ -72366,7 +72366,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB276"
       ],
@@ -72462,7 +72462,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB277"
       ],
@@ -72486,7 +72486,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB277"
       ],
@@ -72510,7 +72510,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB277"
       ],
@@ -72558,7 +72558,7 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB277"
       ],
@@ -72654,7 +72654,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB283"
       ],
@@ -72678,7 +72678,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB283"
       ],
@@ -72702,7 +72702,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB283"
       ],
@@ -72750,7 +72750,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB283"
       ],
@@ -72846,7 +72846,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB284"
       ],
@@ -72870,7 +72870,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB284"
       ],
@@ -72894,7 +72894,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB284"
       ],
@@ -72942,7 +72942,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB284"
       ],
@@ -73038,7 +73038,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB293"
       ],
@@ -73062,7 +73062,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB293"
       ],
@@ -73086,7 +73086,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB293"
       ],
@@ -73134,7 +73134,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB293"
       ],
@@ -73230,7 +73230,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB294"
       ],
@@ -73254,7 +73254,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB294"
       ],
@@ -73278,7 +73278,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB294"
       ],
@@ -73326,7 +73326,7 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB294"
       ],
@@ -73374,7 +73374,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB303"
       ],
@@ -73422,7 +73422,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB303"
       ],
@@ -73470,7 +73470,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB303"
       ],
@@ -73518,7 +73518,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB303"
       ],
@@ -73566,7 +73566,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB304"
       ],
@@ -73614,7 +73614,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB304"
       ],
@@ -73662,7 +73662,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB304"
       ],
@@ -73710,7 +73710,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB304"
       ],
@@ -73758,7 +73758,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB306"
       ],
@@ -73806,7 +73806,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB306"
       ],
@@ -73854,7 +73854,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB306"
       ],
@@ -73902,7 +73902,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB306"
       ],
@@ -73998,7 +73998,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB307"
       ],
@@ -74022,7 +74022,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Impact",
       "component_ids": [
         "CB307"
       ],
@@ -74046,7 +74046,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB307"
       ],
@@ -74094,7 +74094,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Principle",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB307"
       ],
@@ -74142,7 +74142,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Principle",
       "component_ids": [
         "CB308"
       ],
@@ -74190,7 +74190,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Voters",
       "component_ids": [
         "CB308"
       ],
@@ -74238,7 +74238,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Oversight",
       "component_ids": [
         "CB308"
       ],
@@ -74286,7 +74286,7 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "reply_kind": "Impact",
+      "reply_kind": "Alternative",
       "component_ids": [
         "CB308"
       ],
