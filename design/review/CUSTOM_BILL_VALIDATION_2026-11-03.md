@@ -109,3 +109,17 @@ The bot's income on the same tier (mean Funds earned per week, `cap_dues`) was 5
 | 1 | Should a passed draft pay any Funds (a donation from its organizations), so drafting is not a pure Funds loss? | No Funds (as now) / a small donation per owner / a law effect per part |
 | 2 | Is 300,000円 the right price, given it is half to a full week's income? | Keep / lower to 200,000 / scale by Campaign Pressure |
 | 3 | Should the bots be taught to check readiness before drafting, so future runs measure a sensible player? | Yes (tools only, no game change) / No |
+
+## Re-run after Cameron's decisions (2026-11-03)
+
+Changes measured: the draft costs 200,000円 on Relaxed, 300,000 on Standard and 400,000 on Harder, and the drafting bots now read the readiness line and draft only when the influence gates are met. The same 36 drafting runs (`drafter_easy` and `drafter_random`, 6 seeds, three tiers) went to `design/bench/custom_bill_validation_ready.jsonl`.
+
+| Tier | Drafted (before → after) | Passed | Failed at vote | Lapsed | Funds at end | Party support | Election Str. |
+|---|---|---|---|---|---|---|---|
+| Relaxed | 109 → 86 | 25 → 43 | 75 → 41 | 9 → 2 | 523,799 → 622,462 | 100 → 100 | 89.6 → 90.0 |
+| Standard | 66 → 43 | 5 → 13 | 59 → 28 | 2 → 2 | 92,203 → 202,146 | 81.5 → 91.7 | 67.4 → 71.3 |
+| Harder | 58 → 0 | 7 → 0 | 37 → 0 | 14 → 0 | 40,815 → 64,643 | 82.4 → 75.0 | 57.0 → 53.7 |
+
+- **Reading readiness pays.** Pass rate 16% → 43%. Standard drafters now end with more Funds than `cap_dues` (202,146 against 165,996).
+- **"Ready" is not a guarantee.** 69 of 129 ready drafts still failed: the gate can open for one party while the seats it can swing fall short of 51.
+- **Harder shuts drafting off for these bots.** At 400,000円 they were never both ready and able to pay, so they never drafted. A human may manage it, but this is the edge of the design.
