@@ -3069,3 +3069,7 @@ Review of Draft a Bill and patron bills: `design/review/CUSTOM_BILL_AUDIT_2026-1
 | Measured | Of 200 random two-part drafts, 106 got a visit (53%); 10 of 27 patron Favors (37%, a small sample); all 200 three-part drafts and all 27 Flagships |
 | Tests | `test_patron_level.gd` (share between 40% and 60%, three parts always, visit stages follow the hearing); `test_mp_visit.gd`; the trade and level-length tests now allow or skip the visit |
 | Tool fix | `tools/bill_audit.gd` used a fresh identically seeded generator per level, which repeated one roll; it now shares one |
+
+## Member visit and lobbyist trade content review (2026-11-03, Cameron)
+
+Ten real samples plus 400-level statistics, judged against each bill's theme: `design/review/VISIT_CONTENT_REVIEW_2026-11-03.md` (tools `tools/visit_review.gd`, `VISIT_STATS=1` for the statistics). Main findings: 9 of 24 member questions are ungrammatical with the part's phrase, answers are not tied to the question, the same few members and 12 lobbyists from 4 organizations recur, and several lobbyist grievances do not fit the part they target. No content or rule was changed.
