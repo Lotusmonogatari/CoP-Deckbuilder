@@ -2,181 +2,937 @@
   {
     "answer_id": "MA01",
     "style": "Earnest",
-    "line_en": "I will be straight with you: I believe this is right, and I will say so to anyone."
+    "line_en": "I will be straight with you: I believe this is right, and I will say so to anyone.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA02",
     "style": "Earnest",
-    "line_en": "I am not asking for a favor. I am asking you to look at it honestly with me."
+    "line_en": "I am not asking for a favor. I am asking you to look at it honestly with me.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA03",
     "style": "Earnest",
-    "line_en": "You deserve a plain answer, so here it is: I think it helps, and I will own it if it does not."
+    "line_en": "You deserve a plain answer, so here it is: I think it helps, and I will own it if it does not.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA04",
     "style": "Earnest",
-    "line_en": "I have nothing to hide here. Ask me anything and I will answer."
+    "line_en": "I have nothing to hide here. Ask me anything and I will answer.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA05",
     "style": "Earnest",
-    "line_en": "I came to do what I think is right, and this is what I think is right."
+    "line_en": "I came to do what I think is right, and this is what I think is right.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA06",
     "style": "Earnest",
-    "line_en": "If I am wrong, tell me where, and I will listen."
+    "line_en": "If I am wrong, tell me where, and I will listen.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA07",
     "style": "Emotional",
-    "line_en": "Think of the families who live with this. That is who I am doing it for."
+    "line_en": "Think of the families who live with this. That is who I am doing it for.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA08",
     "style": "Emotional",
-    "line_en": "I have sat in their kitchens. I cannot walk away from what I heard there."
+    "line_en": "I have sat in their kitchens. I cannot walk away from what I heard there.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA09",
     "style": "Emotional",
-    "line_en": "This is about people, not paper, and I think you know it."
+    "line_en": "This is about people, not paper, and I think you know it.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA10",
     "style": "Emotional",
-    "line_en": "When I picture the people waiting on this, I cannot say no."
+    "line_en": "When I picture the people waiting on this, I cannot say no.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA11",
     "style": "Emotional",
-    "line_en": "Someone is hurting right now, and we can end it."
+    "line_en": "Someone is hurting right now, and we can end it.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA12",
     "style": "Emotional",
-    "line_en": "I know it moves you too. I saw it on your face when we began."
+    "line_en": "I know it moves you too. I saw it on your face when we began.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA13",
     "style": "Appeal",
-    "line_en": "People across the country want this, and they will remember who helped."
+    "line_en": "People across the country want this, and they will remember who helped.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA14",
     "style": "Appeal",
-    "line_en": "It is popular for a reason, and it will be remembered as a win."
+    "line_en": "It is popular for a reason, and it will be remembered as a win.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA15",
     "style": "Appeal",
-    "line_en": "Stand with the crowd on this one. They are on your side."
+    "line_en": "Stand with the crowd on this one. They are on your side.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA16",
     "style": "Appeal",
-    "line_en": "Your voters will cheer when they see this come through."
+    "line_en": "Your voters will cheer when they see this come through.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA17",
     "style": "Appeal",
-    "line_en": "This is the kind of result everyone wants to be a part of."
+    "line_en": "This is the kind of result everyone wants to be a part of.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA18",
     "style": "Appeal",
-    "line_en": "Be on the side people applaud. It will be a good day for your name."
+    "line_en": "Be on the side people applaud. It will be a good day for your name.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA19",
     "style": "Data Driven",
-    "line_en": "The numbers back it. Let me walk you through the figures."
+    "line_en": "The numbers back it. Let me walk you through the figures.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA20",
     "style": "Data Driven",
-    "line_en": "Here is the cost, the saving and the timeline, line by line."
+    "line_en": "Here is the cost, the saving and the timeline, line by line.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA21",
     "style": "Data Driven",
-    "line_en": "The evidence from elsewhere points one way."
+    "line_en": "The evidence from elsewhere points one way.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA22",
     "style": "Data Driven",
-    "line_en": "I brought the projections. Every one of them holds up."
+    "line_en": "I brought the projections. Every one of them holds up.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA23",
     "style": "Data Driven",
-    "line_en": "Look at the data from places that have tried it."
+    "line_en": "Look at the data from places that have tried it.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA24",
     "style": "Data Driven",
-    "line_en": "Run the figures yourself. I am confident in what you will find."
+    "line_en": "Run the figures yourself. I am confident in what you will find.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA25",
     "style": "Divisive",
-    "line_en": "Some people want this to fail. Which side are you on?"
+    "line_en": "Some people want this to fail. Which side are you on?",
+    "reply_kind": null
   },
   {
     "answer_id": "MA26",
     "style": "Divisive",
-    "line_en": "The opposition will fight us on it. We should not blink."
+    "line_en": "The opposition will fight us on it. We should not blink.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA27",
     "style": "Divisive",
-    "line_en": "There are winners and there are those who stand in the way. Choose."
+    "line_en": "There are winners and there are those who stand in the way. Choose.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA28",
     "style": "Divisive",
-    "line_en": "Anyone who blocks this is protecting their own comfort. You are better than that."
+    "line_en": "Anyone who blocks this is protecting their own comfort. You are better than that.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA29",
     "style": "Divisive",
-    "line_en": "This is a fight worth having. I would rather have you in it with me."
+    "line_en": "This is a fight worth having. I would rather have you in it with me.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA30",
     "style": "Divisive",
-    "line_en": "Let them complain. We know who this serves, and who it threatens."
+    "line_en": "Let them complain. We know who this serves, and who it threatens.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA31",
     "style": "Duplicitous",
-    "line_en": "Say yes for your own reasons, and let the credit sort itself out."
+    "line_en": "Say yes for your own reasons, and let the credit sort itself out.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA32",
     "style": "Duplicitous",
-    "line_en": "Let us just say it helps your district, and leave the details out of it."
+    "line_en": "Let us just say it helps your district, and leave the details out of it.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA33",
     "style": "Duplicitous",
-    "line_en": "No one needs to know what we agreed in this room."
+    "line_en": "No one needs to know what we agreed in this room.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA34",
     "style": "Duplicitous",
-    "line_en": "Let us call it something that sounds smaller, and it will pass quietly."
+    "line_en": "Let us call it something that sounds smaller, and it will pass quietly.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA35",
     "style": "Duplicitous",
-    "line_en": "You can tell your party whatever you like. I will not contradict you."
+    "line_en": "You can tell your party whatever you like. I will not contradict you.",
+    "reply_kind": null
   },
   {
     "answer_id": "MA36",
     "style": "Duplicitous",
-    "line_en": "Between us, there is room to rearrange this so everyone gets what they need."
+    "line_en": "Between us, there is room to rearrange this so everyone gets what they need.",
+    "reply_kind": null
+  },
+  {
+    "answer_id": "MA37",
+    "style": "Earnest",
+    "line_en": "I think it is right, and I will say why in plain words.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA38",
+    "style": "Earnest",
+    "line_en": "Fairness is the whole reason. I would not ask you otherwise.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA39",
+    "style": "Emotional",
+    "line_en": "Because someone is better off tomorrow if we act today.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA40",
+    "style": "Emotional",
+    "line_en": "Because I have looked the people who need it in the eye.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA41",
+    "style": "Appeal",
+    "line_en": "Because it is what most people want us to do, whatever their party.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA42",
+    "style": "Appeal",
+    "line_en": "Because we can all stand behind this and be proud of it.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA43",
+    "style": "Data Driven",
+    "line_en": "Because the evidence shows the benefit outweighs the cost.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA44",
+    "style": "Data Driven",
+    "line_en": "Because every measure I have seen points the same way.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA45",
+    "style": "Divisive",
+    "line_en": "Because doing nothing helps only those who profit from delay.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA46",
+    "style": "Divisive",
+    "line_en": "Because the other side has had years and has nothing to show.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA47",
+    "style": "Duplicitous",
+    "line_en": "Because it is the sensible thing, and sensible people will agree.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA48",
+    "style": "Duplicitous",
+    "line_en": "Because, put the right way, no one will object.",
+    "reply_kind": "Principle"
+  },
+  {
+    "answer_id": "MA49",
+    "style": "Earnest",
+    "line_en": "I would tell them straight what it does and what it costs.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA50",
+    "style": "Earnest",
+    "line_en": "They deserve a plain account, and I will give it in person.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA51",
+    "style": "Emotional",
+    "line_en": "I would introduce them to the people it helps.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA52",
+    "style": "Emotional",
+    "line_en": "Ask the families it touches. They will tell you themselves.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA53",
+    "style": "Appeal",
+    "line_en": "They will see a result to be proud of, and the credit will be shared.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA54",
+    "style": "Appeal",
+    "line_en": "People at home will say you stood with them.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA55",
+    "style": "Data Driven",
+    "line_en": "Show them the figures for their own district and let them judge.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA56",
+    "style": "Data Driven",
+    "line_en": "I would bring local numbers. They persuade better than speeches.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA57",
+    "style": "Divisive",
+    "line_en": "They will remember who stood in the way, and I will make sure they know.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA58",
+    "style": "Divisive",
+    "line_en": "Those who blocked it will have to explain, not you.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA59",
+    "style": "Duplicitous",
+    "line_en": "Tell them it is a modest step and leave the rest unsaid.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA60",
+    "style": "Duplicitous",
+    "line_en": "Say it helps the district and let them fill in the details.",
+    "reply_kind": "Voters"
+  },
+  {
+    "answer_id": "MA61",
+    "style": "Earnest",
+    "line_en": "It costs real money, and I will not pretend it does not.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA62",
+    "style": "Earnest",
+    "line_en": "The bill comes due, and I will show you who pays it.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA63",
+    "style": "Emotional",
+    "line_en": "Count the cost of doing nothing, in people rather than yen.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA64",
+    "style": "Emotional",
+    "line_en": "What we spend now, families would pay later.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA65",
+    "style": "Appeal",
+    "line_en": "A fair share from each, and everyone gains. That is a good deal.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA66",
+    "style": "Appeal",
+    "line_en": "It is a price most people will gladly share.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA67",
+    "style": "Data Driven",
+    "line_en": "Here is the cost, the saving and the payback, line by line.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA68",
+    "style": "Data Driven",
+    "line_en": "The budget figures cover it, and I have the table here.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA69",
+    "style": "Divisive",
+    "line_en": "Those who gain most from waiting can pay the most.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA70",
+    "style": "Divisive",
+    "line_en": "The bill falls on those who can afford it, not on your voters.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA71",
+    "style": "Duplicitous",
+    "line_en": "Let us not dwell on the figures when the aim is so clear.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA72",
+    "style": "Duplicitous",
+    "line_en": "It can be found in the budget without anyone noticing.",
+    "reply_kind": "Cost"
+  },
+  {
+    "answer_id": "MA73",
+    "style": "Earnest",
+    "line_en": "Things could go wrong. Here is what I would watch, and how I would fix it.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA74",
+    "style": "Earnest",
+    "line_en": "I will own any failure, and I would build in a check.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA75",
+    "style": "Emotional",
+    "line_en": "The greater risk is leaving people to cope on their own.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA76",
+    "style": "Emotional",
+    "line_en": "If it fails, those who needed it most are hurt, and I will answer for that.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA77",
+    "style": "Appeal",
+    "line_en": "We can agree on safeguards that everyone can live with.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA78",
+    "style": "Appeal",
+    "line_en": "A review panel with every side on it would keep us honest.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA79",
+    "style": "Data Driven",
+    "line_en": "Reports every quarter and an audit each year catch problems early.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA80",
+    "style": "Data Driven",
+    "line_en": "Trials elsewhere show the failure rate, and it is low.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA81",
+    "style": "Divisive",
+    "line_en": "The risk is from those who want it to fail and will help it along.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA82",
+    "style": "Divisive",
+    "line_en": "Watch the ones who warn loudest. They have the most to lose.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA83",
+    "style": "Duplicitous",
+    "line_en": "It will be overseen in the proper way by the proper people.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA84",
+    "style": "Duplicitous",
+    "line_en": "Any problem will be handled quietly before it becomes one.",
+    "reply_kind": "Risk"
+  },
+  {
+    "answer_id": "MA85",
+    "style": "Earnest",
+    "line_en": "I would tell your party the truth: you backed what you believe.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA86",
+    "style": "Earnest",
+    "line_en": "If it costs you, I will say publicly that it was my ask.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA87",
+    "style": "Emotional",
+    "line_en": "Your party came into politics to help people like this.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA88",
+    "style": "Emotional",
+    "line_en": "Your colleagues will understand when they hear who it is for.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA89",
+    "style": "Appeal",
+    "line_en": "Your whole party can say it helped deliver this.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA90",
+    "style": "Appeal",
+    "line_en": "Colleagues from every side will be glad you were first.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA91",
+    "style": "Data Driven",
+    "line_en": "I can give your whip the figures that show how it helps your seats.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA92",
+    "style": "Data Driven",
+    "line_en": "Here is how your own members' districts gain.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA93",
+    "style": "Divisive",
+    "line_en": "Let your party see who is against it. That settles the question.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA94",
+    "style": "Divisive",
+    "line_en": "Those who stay out will be the ones explaining it later.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA95",
+    "style": "Duplicitous",
+    "line_en": "Tell your party whatever suits. I will not contradict you.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA96",
+    "style": "Duplicitous",
+    "line_en": "You can credit it to your party's own ideas, and I will agree.",
+    "reply_kind": "Party"
+  },
+  {
+    "answer_id": "MA97",
+    "style": "Earnest",
+    "line_en": "A smaller step would not solve it, and I will explain why.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA98",
+    "style": "Earnest",
+    "line_en": "Waiting has a cost too, and I would rather face it now.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA99",
+    "style": "Emotional",
+    "line_en": "Those waiting cannot wait. A smaller step leaves them behind.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA100",
+    "style": "Emotional",
+    "line_en": "Every month we delay is a month someone goes without.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA101",
+    "style": "Appeal",
+    "line_en": "We could start together and widen it later, if you prefer.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA102",
+    "style": "Appeal",
+    "line_en": "I am open to a first stage, as long as we begin.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA103",
+    "style": "Data Driven",
+    "line_en": "The trials say half measures cost more in the end.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA104",
+    "style": "Data Driven",
+    "line_en": "Set against a smaller option, the figures favor acting in full.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA105",
+    "style": "Divisive",
+    "line_en": "A smaller step is the opposition's way of saying never.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA106",
+    "style": "Divisive",
+    "line_en": "Delay is a decision, and it favors those who oppose this.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA107",
+    "style": "Duplicitous",
+    "line_en": "Call the first stage a pilot, and the rest can follow quietly.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA108",
+    "style": "Duplicitous",
+    "line_en": "We can describe it as small now and let it grow later.",
+    "reply_kind": "Alternative"
+  },
+  {
+    "answer_id": "MA109",
+    "style": "Earnest",
+    "line_en": "You have my word, and I will keep it when it gets hard.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA110",
+    "style": "Earnest",
+    "line_en": "I will not drop it. If I do, hold me to account.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA111",
+    "style": "Emotional",
+    "line_en": "I could not walk away from the people who counted on me.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA112",
+    "style": "Emotional",
+    "line_en": "I made a promise to people, not to a party.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA113",
+    "style": "Appeal",
+    "line_en": "Plenty will stand beside us, and I will not leave you alone.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA114",
+    "style": "Appeal",
+    "line_en": "I will stand with you in public, so you are never the only one.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA115",
+    "style": "Data Driven",
+    "line_en": "My record is in the votes and the figures. Check them.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA116",
+    "style": "Data Driven",
+    "line_en": "Every claim I make comes with a source you can check.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA117",
+    "style": "Divisive",
+    "line_en": "I will fight for it when the other side is at its loudest.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA118",
+    "style": "Divisive",
+    "line_en": "Others will walk away. I will not, and you will see who stays.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA119",
+    "style": "Duplicitous",
+    "line_en": "You will have what we agreed, and it need not be said aloud.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA120",
+    "style": "Duplicitous",
+    "line_en": "Rest easy. I will be there in whichever way suits us both.",
+    "reply_kind": "Trust"
+  },
+  {
+    "answer_id": "MA121",
+    "style": "Earnest",
+    "line_en": "I cannot promise it works. I can show what I have and be honest about the rest.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA122",
+    "style": "Earnest",
+    "line_en": "The experts are divided, and I will tell you where.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA123",
+    "style": "Emotional",
+    "line_en": "I have seen it work for people. That is evidence enough for me.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA124",
+    "style": "Emotional",
+    "line_en": "The people who tried it say it changed things.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA125",
+    "style": "Appeal",
+    "line_en": "Places that tried it are glad they did, and others are copying them.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA126",
+    "style": "Appeal",
+    "line_en": "Respected people across the country back it.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA127",
+    "style": "Data Driven",
+    "line_en": "Here are the results from places that tried it, with the figures.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA128",
+    "style": "Data Driven",
+    "line_en": "Three independent studies agree, and I brought them.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA129",
+    "style": "Divisive",
+    "line_en": "The critics have no evidence at all. Ask them to produce some.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA130",
+    "style": "Divisive",
+    "line_en": "Those who say it fails have never tried it.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA131",
+    "style": "Duplicitous",
+    "line_en": "The evidence is there for anyone who looks at it the right way.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA132",
+    "style": "Duplicitous",
+    "line_en": "The experts say what you would expect, put the right way.",
+    "reply_kind": "Evidence"
+  },
+  {
+    "answer_id": "MA133",
+    "style": "Earnest",
+    "line_en": "I would hear them out, and answer the worst objection first.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA134",
+    "style": "Earnest",
+    "line_en": "They are right about some things, and I will say which.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA135",
+    "style": "Emotional",
+    "line_en": "I would ask them to meet the people they are worried about.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA136",
+    "style": "Emotional",
+    "line_en": "I would ask them to say it to the people it affects.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA137",
+    "style": "Appeal",
+    "line_en": "I would look for what we agree on, and start there.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA138",
+    "style": "Appeal",
+    "line_en": "Most critics want the same ends. We differ only on the route.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA139",
+    "style": "Data Driven",
+    "line_en": "I would answer each objection with the figure that matches it.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA140",
+    "style": "Data Driven",
+    "line_en": "Their claims do not survive the numbers, and I can show it.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA141",
+    "style": "Divisive",
+    "line_en": "They are protecting their own comfort, and everyone can see it.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA142",
+    "style": "Divisive",
+    "line_en": "Those objections come from people who gain by delay.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA143",
+    "style": "Duplicitous",
+    "line_en": "I would thank them, agree with everything, and carry on regardless.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA144",
+    "style": "Duplicitous",
+    "line_en": "Let them think they won the argument. We will have the vote.",
+    "reply_kind": "Criticism"
+  },
+  {
+    "answer_id": "MA145",
+    "style": "Earnest",
+    "line_en": "Tell me what you need, and I will tell you what I can honestly give.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA146",
+    "style": "Earnest",
+    "line_en": "I will not promise what I cannot deliver. Here is what I can.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA147",
+    "style": "Emotional",
+    "line_en": "I want to help the people you speak for. Show me how.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA148",
+    "style": "Emotional",
+    "line_en": "Whatever helps your people helps this too. Let us find it.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA149",
+    "style": "Appeal",
+    "line_en": "Let us find a result we can both announce with pride.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA150",
+    "style": "Appeal",
+    "line_en": "There is room for a deal that both our sides can cheer.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA151",
+    "style": "Data Driven",
+    "line_en": "Put your figures on the table and I will put mine beside them.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA152",
+    "style": "Data Driven",
+    "line_en": "Name the price in numbers, and we can bargain from there.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA153",
+    "style": "Divisive",
+    "line_en": "Stand with us and we will not forget it. Stand against us and we will not either.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA154",
+    "style": "Divisive",
+    "line_en": "You will be on the winning side, and it will show later.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA155",
+    "style": "Duplicitous",
+    "line_en": "Let us agree something and not write it down.",
+    "reply_kind": "Deal"
+  },
+  {
+    "answer_id": "MA156",
+    "style": "Duplicitous",
+    "line_en": "There are things I can arrange that need never be announced.",
+    "reply_kind": "Deal"
   }
 ]

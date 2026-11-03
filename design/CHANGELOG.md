@@ -3073,3 +3073,7 @@ Review of Draft a Bill and patron bills: `design/review/CUSTOM_BILL_AUDIT_2026-1
 ## Member visit and lobbyist trade content review (2026-11-03, Cameron)
 
 Ten real samples plus 400-level statistics, judged against each bill's theme: `design/review/VISIT_CONTENT_REVIEW_2026-11-03.md` (tools `tools/visit_review.gd`, `VISIT_STATS=1` for the statistics). Main findings: 9 of 24 member questions are ungrammatical with the part's phrase, answers are not tied to the question, the same few members and 12 lobbyists from 4 organizations recur, and several lobbyist grievances do not fit the part they target. No content or rule was changed.
+
+## Member visit and lobbyist trade fixes (2026-11-03, Cameron)
+
+All seven findings of the content review were applied: nine member questions rewritten; Reply Kind on every member and trade question with 120 kind-matched answers (a used kind needs two answers in every style, checked at export); questions take the bill's parts in turn; visit parties widened to all six and drawn at random, committee members used only when three or more sit there; every part's Loses rewritten from its own policy tags (180 rows, a draft opposition table for Cameron to correct); equally hurt organizations take turns to send a lobbyist; the part a lobbyist asks for is always tradeable. New exporter columns: Reply Kind on Visit Questions, Trade Questions and Visit Answers. Re-test results: `design/review/VISIT_CONTENT_REVIEW_2026-11-03.md`, last section.

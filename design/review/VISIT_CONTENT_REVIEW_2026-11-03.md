@@ -57,3 +57,39 @@ Tally: member visit Good 1, Fair 7, Poor 1; lobbyist Good 3, Fair 2, Poor 4.
 | 5 | Few lobbyists | (a) Add lobbyist rows for more organizations; (b) allow an allied organization to speak; (c) leave | (a) |
 | 6 | Grievances do not fit the part | (a) Add a per-part Loses so each part has its own rival; (b) choose the lobbyist from the organization whose loss comes from the asked part and skip the trade when none fits; (c) leave | (a) |
 | 7 | Asked part not tradeable | Hide the hint (or pick another part to ask for) when the asked part is not among the parts the player can trade | Do it; it is a one-line fix |
+
+## Fixes applied and re-test (2026-11-03)
+
+All seven recommendations were applied as recommended, then the same ten-sample read and 400-level statistics were repeated (new transcripts: `design/bench/visit_review_samples_after_2026-11-03.md`).
+
+| # | Issue | What was done |
+|---|---|---|
+| 1 | Nine broken member questions | Rewritten as "the plan to {part}" forms (MV05, 13, 16, 17, 18, 19, 21, 22, 23); a unit test now checks every stem |
+| 2 | Answers ignore the question | Every member and trade question has a Reply Kind (10 kinds); 120 new answers (kind x style x 2) were drafted; a question uses answers of its kind first, then the generic lines. The exporter fails if a used kind has fewer than two answers in any style |
+| 3 | One part stands for the bill | The questions take the parts of the bill in turn |
+| 4 | Same members | The templates list all six parties and one with seats outside Yes is drawn at random; the committee's members are used only when at least three sit there, otherwise the whole party |
+| 5 | Few lobbyists | No new characters were invented (canon rule); the variety comes from fix 6, plus equally hurt organizations now take turns |
+| 6 | Grievances do not fit the part | Every part's "who loses" was rewritten from its own policy tags (180 rows, same sizes), using a draft opposition table of mine for Cameron to correct |
+| 7 | Asked part not tradeable | The part a lobbyist asks for is chosen among the parts the player may trade; when none hurts them, no hint is shown |
+
+| Measure | Before | After |
+|---|---|---|
+| Member questions that read badly | 9 of 24 (77.5% of visits had one) | 0 of 24 |
+| Visits whose answers fit the question kind | none were matched | all (kind-matched lines first) |
+| Parties visited | 2 (81% Five Point Independents) | all 6, between 12% and 20% each |
+| Distinct members across 290 to 309 visits | 16 (top three = 74%) | 82 (top member 4%) |
+| Distinct lobbyists / organizations that speak | 12 / 4 | 19 / 10 |
+| Most frequent lobbyist | 31% (Fumihiko Takashiro) | 34% (same person; the Chamber of Commerce has one representative) |
+| Trades built in 400 levels | 266 | 275 to 331 (the share depends on the draw) |
+| Trades asking for a part the player cannot trade | 5 of 266 | 0 of 275 (3 to 7 with no hint) |
+| Visit member on the hearing committee | 10 of 10 samples | 5 of 10 samples |
+
+Fit of the ten new samples (my judgment): member visit Good 6, Fair 4 (the four Fair ones are visits by a member from another committee); lobbyist trade Good 3, Fair 5, Poor 2 (before: Good 3, Fair 2, Poor 4). Remaining weak fits: Students United against "register master craftspeople as cultural assets", and Neighborhood Associations against "payment within sixty days on public contracts".
+
+What the re-test shows is still open:
+
+| Open | Detail |
+|---|---|
+| Committee match fell | Drawing from the whole party when fewer than three members sit on the committee gave variety but dropped the committee link in half the samples. A compromise would keep committee members about half the time |
+| One lobbyist is a third of trades | The Chamber of Commerce loses on more parts than any other organization and has one representative. A second Chamber representative would need a new character, which is Cameron's to cast |
+| The loser table is a draft | Each part's loser comes from its strongest policy tag through a table I wrote; a few results are still odd and Cameron should correct them in the Bill Components Loses column |

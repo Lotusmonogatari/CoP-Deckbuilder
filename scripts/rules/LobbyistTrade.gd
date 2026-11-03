@@ -35,7 +35,22 @@ static func pick_lobbyist(effects: Array, patron: String, ally: String, lobbyist
 			hurt.append(entry)
 	hurt.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return int(a["delta"]) < int(b["delta"]))
-	for entry: Dictionary in hurt:
+	# Organizations hurt equally are drawn in random order, so the alphabetically first
+	# one does not speak every time (2026-11-03: one lobbyist was 45% of all trades).
+	var ordered: Array = []
+	var index := 0
+	while index < hurt.size():
+		var tied: Array = []
+		while index < hurt.size() and (tied.is_empty() or int((hurt[index] as Dictionary)["delta"]) == int((tied[0] as Dictionary)["delta"])):
+			tied.append(hurt[index])
+			index += 1
+		for i in range(tied.size() - 1, 0, -1):
+			var j := rng.randi_range(0, i)
+			var held: Variant = tied[i]
+			tied[i] = tied[j]
+			tied[j] = held
+		ordered.append_array(tied)
+	for entry: Dictionary in ordered:
 		var org := str(entry["target"])
 		var pool: Array = lobbyists.filter(func(person: Dictionary) -> bool:
 			return str(person.get("affiliation", "")) == org)

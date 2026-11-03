@@ -25,10 +25,14 @@ const MEDIUM := "M"
 const WEAK := "W"
 
 
-## The first party in `visit_parties` (priority order) that has at least one
-## seat outside `pick`, i.e. is not already entirely on the player's side.
-## "" when every listed party is maxed out (no visit is offered).
-static func pick_party(visit_parties: Array, positions: Array, pick: String = "Yes") -> String:
+## A party from `visit_parties` that has at least one seat outside `pick`, i.e.
+## is not already entirely on the player's side. With an `rng` it is drawn at
+## random from every such party (so visits are not always the same party); with
+## none it is the first in the list (priority order). "" when every listed party
+## is maxed out (no visit is offered).
+static func pick_party(visit_parties: Array, positions: Array, pick: String = "Yes",
+		rng: RandomNumberGenerator = null) -> String:
+	var open: Array[String] = []
 	for party_id: Variant in visit_parties:
 		for position: Dictionary in positions:
 			if str(position.get("party_id", "")) != str(party_id):
@@ -38,8 +42,10 @@ static func pick_party(visit_parties: Array, positions: Array, pick: String = "Y
 				if bucket != pick:
 					outside += int(position.get("votes_%s" % bucket.to_lower(), 0))
 			if outside > 0:
-				return str(party_id)
-	return ""
+				open.append(str(party_id))
+	if open.is_empty():
+		return ""
+	return open[rng.randi_range(0, open.size() - 1)] if rng != null else open[0]
 
 
 ## Members of `party_name`: opponents with that party (MPs sit on committees).
@@ -49,15 +55,16 @@ static func members_of(opponents: Array, party_name: String) -> Array:
 
 
 ## One member to visit: from the party's members on the bill's hearing
-## committee when there are any (`committee_name` is the committee's name, the
-## same text an MP's Role holds), otherwise any member; leaning toward people
-## the player has met the fewest times (PeopleDraw).
+## committee when at least `min_committee_pool` of them sit there, otherwise from
+## the whole party (a pool of one or two would send the same person every time);
+## leaning toward people the player has met the fewest times (PeopleDraw).
+## `committee_name` is the committee's name, the same text an MP's Role holds.
 static func pick_member(opponents: Array, party_name: String, committee_name: String,
-		faced: Dictionary, rng: RandomNumberGenerator) -> Dictionary:
+		faced: Dictionary, rng: RandomNumberGenerator, min_committee_pool: int = 3) -> Dictionary:
 	var pool := members_of(opponents, party_name)
 	var on_committee: Array = pool.filter(func(opponent: Dictionary) -> bool:
 		return str(opponent.get("role", "")).strip_edges() == committee_name)
-	if not on_committee.is_empty():
+	if on_committee.size() >= min_committee_pool:
 		pool = on_committee
 	var drawn := PeopleDraw.pick(pool, "opp_id", faced, 1, [], rng)
 	return drawn[0] if not drawn.is_empty() else {}
@@ -103,31 +110,59 @@ static func choose_styles(member: Dictionary, rng: RandomNumberGenerator) -> Arr
 	return chosen
 
 
+## The answer lines for one style and question kind: the lines written for that
+## kind first, then the generic lines (blank kind), then any line in the style.
+static func answer_lines(answers: Array, style: String, kind: String) -> Array:
+	var of_kind: Array = []
+	var generic: Array = []
+	var any_kind: Array = []
+	for row: Dictionary in answers:
+		if str(row.get("style", "")) != style:
+			continue
+		any_kind.append(row)
+		var row_kind: Variant = row.get("reply_kind")
+		if row_kind == null or str(row_kind).is_empty():
+			generic.append(row)
+		elif not kind.is_empty() and str(row_kind) == kind:
+			of_kind.append(row)
+	if not of_kind.is_empty():
+		return of_kind
+	return generic if not generic.is_empty() else any_kind
+
+
 ## `count` questions: [{"text", "choices": [{"letter", "style", "text", "grade"}]}].
 ## `stems` are Visit Questions rows (text_en with {component}); `answers` are
-## Visit Answers rows (style, line_en). A stem is not repeated in one visit.
+## Visit Answers rows (style, reply_kind, line_en). A stem is not repeated in one
+## visit. `component_phrase` is one phrase or a list of them: with a list the
+## questions take the parts in turn, so a bill of three parts is asked about all
+## three (2026-11-03). An answer is chosen to fit the question's Reply Kind.
 static func build_questions(member: Dictionary, stems: Array, answers: Array, count: int,
-		component_phrase: String, rng: RandomNumberGenerator) -> Array:
+		component_phrase: Variant, rng: RandomNumberGenerator) -> Array:
+	var phrases: Array = component_phrase if component_phrase is Array else [str(component_phrase)]
+	if phrases.is_empty():
+		phrases = [""]
 	var out: Array = []
 	var pool := stems.duplicate()
 	_shuffle(pool, rng)
 	for index in range(mini(count, pool.size())):
+		var phrase := str(phrases[index % phrases.size()])
+		var kind_cell: Variant = (pool[index] as Dictionary).get("reply_kind")
+		var kind := "" if kind_cell == null else str(kind_cell)
 		var styles := choose_styles(member, rng)
 		var choices: Array = []
 		for slot in range(styles.size()):
 			var style: String = styles[slot]
-			var lines: Array = answers.filter(func(row: Dictionary) -> bool:
-				return str(row.get("style", "")) == style)
+			var lines := answer_lines(answers, style, kind)
 			var line := ""
 			if not lines.is_empty():
 				line = str((lines[rng.randi_range(0, lines.size() - 1)] as Dictionary).get("line_en", ""))
 			choices.append({
 				"letter": "ABCD"[slot], "style": style,
-				"text": line.replace("{component}", component_phrase),
+				"text": line.replace("{component}", phrase),
 				"grade": grade(member, style),
 			})
 		out.append({
-			"text": str((pool[index] as Dictionary).get("text_en", "")).replace("{component}", component_phrase),
+			"text": str((pool[index] as Dictionary).get("text_en", "")).replace("{component}", phrase),
 			"choices": choices,
 		})
 	return out

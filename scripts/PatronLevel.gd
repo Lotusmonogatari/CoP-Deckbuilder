@@ -168,7 +168,7 @@ static func build_visit(template: Dictionary, bill: Dictionary, rng: RandomNumbe
 	if chance_cell != null and int(chance_cell) < 100 and rng.randi_range(1, 100) > int(chance_cell):
 		return {}
 	var parties: Array = template.get("visit_parties", []) as Array if template.get("visit_parties") is Array else []
-	var party_id := MpVisit.pick_party(parties, bill.get("positions", []) as Array)
+	var party_id := MpVisit.pick_party(parties, bill.get("positions", []) as Array, "Yes", rng)
 	if party_id.is_empty():
 		return {}
 	var party := DataDB.get_party_by_id(party_id)
@@ -179,12 +179,14 @@ static func build_visit(template: Dictionary, bill: Dictionary, rng: RandomNumbe
 	var member := MpVisit.pick_member(opponents, str(party.get("name", "")), committee, GameState.faced_people, rng)
 	if member.is_empty():
 		return {}
-	var phrase := ""
-	var first_ids: Array = bill.get("component_ids", []) as Array
-	if not first_ids.is_empty():
-		phrase = str(ComposedBill.index(DataDB.bill_components).get(str(first_ids[0]), {}).get("phrase", ""))
+	# Every part of the bill gets asked about in turn, not only the first.
+	var phrases: Array = []
+	for component_id: Variant in bill.get("component_ids", []) as Array:
+		var component_phrase := str(ComposedBill.index(DataDB.bill_components).get(str(component_id), {}).get("phrase", ""))
+		if not component_phrase.is_empty():
+			phrases.append(component_phrase)
 	var questions := MpVisit.build_questions(member, DataDB.visit_questions, DataDB.visit_answers,
-			int(DataDB.balance.get("mp_visit_questions", 3)), phrase, rng)
+			int(DataDB.balance.get("mp_visit_questions", 3)), phrases, rng)
 	if questions.is_empty():
 		return {}
 	return {
@@ -259,8 +261,8 @@ static func build_trade(template: Dictionary, row: Dictionary, bill: Dictionary,
 	if picked.is_empty():
 		return {}
 	var lobbyist: Dictionary = picked["lobbyist"]
-	var asked := LobbyistTrade.asked_component(bill.get("component_ids", []) as Array,
-			ComposedBill.index(DataDB.bill_components), str(picked["org"]))
+	# The part they ask for is chosen among the parts the player may actually trade.
+	var asked := LobbyistTrade.asked_component(drops, ComposedBill.index(DataDB.bill_components), str(picked["org"]))
 	var questions := MpVisit.build_questions(lobbyist, DataDB.trade_questions, DataDB.visit_answers,
 			int(DataDB.balance.get("trade_rounds", 3)), "{component}", rng)
 	if questions.is_empty():

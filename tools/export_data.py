@@ -773,29 +773,39 @@ SHEETS = {
     # patron Flagship (the MP visit, 2026-10-19). A stem is the member's
     # question ({component} is the bill's lead component); an answer is one
     # way of replying in one rhetorical style, and the game offers four.
+    # Reply Kind (2026-11-03): the kind of question a stem asks (Principle, Voters,
+    # Cost, Risk, Party, Alternative, Trust, Evidence, Criticism, Deal). An answer
+    # with the same Reply Kind and style is used first; an answer with a blank kind
+    # fits any question (the original generic lines).
     "Visit Questions": {
         "out": "visit_questions.json",
         "optional_sheet": True,
+        "optional": ["Reply Kind"],
         "columns": [
             ("Question ID", "question_id", "id"),
             ("Text (EN)", "text_en", "str"),
+            ("Reply Kind", "reply_kind", "str"),
         ],
     },
     "Trade Questions": {
         "out": "trade_questions.json",
         "optional_sheet": True,
+        "optional": ["Reply Kind"],
         "columns": [
             ("Question ID", "question_id", "id"),
             ("Text (EN)", "text_en", "str"),
+            ("Reply Kind", "reply_kind", "str"),
         ],
     },
     "Visit Answers": {
         "out": "visit_answers.json",
         "optional_sheet": True,
+        "optional": ["Reply Kind"],
         "columns": [
             ("Answer ID", "answer_id", "id"),
             ("Style", "style", "str"),
             ("Line (EN)", "line_en", "str"),
+            ("Reply Kind", "reply_kind", "str"),
         ],
     },
     # Party Values: Cameron's 34-dimension table in long form (one row per
@@ -3713,6 +3723,21 @@ def fold_questions(data, report):
     for style_name in visit_styles:
         if data.get("visit_answers") and sum(1 for a_ in data["visit_answers"] if a_.get("style") == style_name) < 2:
             report.warn("Visit Answers", f"{style_name} has fewer than two answers, so a visit can repeat a line")
+    # Every question names a Reply Kind, and every kind a question uses has at least two
+    # answers in every style, so a visit never falls back to a line that ignores the question.
+    used_kinds = set()
+    for tab_name, key in (("Visit Questions", "visit_questions"), ("Trade Questions", "trade_questions")):
+        for q in data.get(key, []):
+            kind_ = q.get("reply_kind")
+            if not kind_:
+                report.warn(tab_name, f"{q.get('question_id')} has no Reply Kind, so it can only be answered with the generic lines")
+            else:
+                used_kinds.add(kind_)
+    for kind_ in sorted(used_kinds):
+        for style_name in sorted(visit_styles):
+            have = sum(1 for a_ in data.get("visit_answers", []) if a_.get("reply_kind") == kind_ and a_.get("style") == style_name)
+            if have < 2:
+                report.error("Visit Answers", f"Reply Kind '{kind_}' has {have} {style_name} answer(s); a question of that kind needs at least two")
     patron_pairs = set()
     for r in data.get("patron_bills", []):
         pid_ = r["patron_bill_id"]; org = r.get("organization"); kind = r.get("kind")

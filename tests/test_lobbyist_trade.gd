@@ -309,3 +309,15 @@ func test_every_trade_on_offer_leaves_the_bill_carryable_and_never_passes_alone(
 				offered += 1
 		DataDB.clear_runtime()
 	assert_gt(offered, 10)
+
+
+func test_organizations_hurt_equally_take_turns_to_send_a_lobbyist() -> void:
+	var effects := [{"target": "BO05", "delta": -2}, {"target": "BO09", "delta": -2}, {"target": "BO11", "delta": -1}]
+	var lobbyists := [{"opp_id": "L1", "affiliation": "BO05"}, {"opp_id": "L2", "affiliation": "BO09"}, {"opp_id": "L3", "affiliation": "BO11"}]
+	var seen := {}
+	for trial in range(40):
+		var rng := RandomNumberGenerator.new()
+		rng.seed = trial
+		seen[str(LobbyistTrade.pick_lobbyist(effects, "BO01", "", lobbyists, {}, rng)["org"])] = true
+	assert_true(seen.has("BO05") and seen.has("BO09"), "both equally hurt organizations get a turn")
+	assert_false(seen.has("BO11"), "a less hurt organization is not chosen while a more hurt one can send someone")

@@ -43,6 +43,8 @@ func test_the_first_party_with_seats_outside_the_pick_is_chosen() -> void:
 
 
 func test_a_member_on_the_hearing_committee_is_preferred() -> void:
+	# With a committee pool as small as one, the old rule (min_committee_pool 1) still holds;
+	# the default draws from the whole party when fewer than three sit on the committee.
 	var opponents := [
 		{"opp_id": "A", "party": "Frontier Party", "role": "Committee on War"},
 		{"opp_id": "B", "party": "Frontier Party", "role": "Committee on Finance"},
@@ -51,7 +53,7 @@ func test_a_member_on_the_hearing_committee_is_preferred() -> void:
 	for trial in range(10):
 		var rng := RandomNumberGenerator.new()
 		rng.seed = trial
-		assert_eq(MpVisit.pick_member(opponents, "Frontier Party", "Committee on Finance", {}, rng)["opp_id"], "B")
+		assert_eq(MpVisit.pick_member(opponents, "Frontier Party", "Committee on Finance", {}, rng, 1)["opp_id"], "B")
 	assert_eq(MpVisit.pick_member(opponents, "Frontier Party", "Committee on Ethics", {}, _rng())["party"], "Frontier Party")
 	assert_true(MpVisit.pick_member(opponents, "Keizaijiyuutou", "x", {}, _rng()).is_empty())
 
@@ -146,7 +148,11 @@ func test_a_flagship_level_always_carries_a_visit() -> void:
 	var level: Dictionary = built["level"]
 	assert_true(level.has("visit"))
 	var visit: Dictionary = level["visit"]
-	assert_true(["PT04", "PT02"].has(visit["party_id"]))
+	var template: Dictionary = {}
+	for candidate: Dictionary in DataDB.bill_level_templates:
+		if str(candidate["template_id"]) == "BT02":
+			template = candidate
+	assert_true((template["visit_parties"] as Array).has(visit["party_id"]), "a party the template lists")
 	var member := DataDB.get_opponent(str(visit["opp_id"]))
 	assert_eq(member["party"], visit["party_name"])
 	assert_eq((visit["questions"] as Array).size(), 3)
@@ -240,3 +246,94 @@ func test_the_visit_survives_save_and_load() -> void:
 	assert_eq(GameState.current_visit()["opp_id"], before["opp_id"])
 	assert_eq((GameState.current_visit()["questions"] as Array).size(), 3)
 	assert_eq(str(GameState.level_runner.current_stage()["stage_id"]), MpVisit.VISIT_STAGE)
+
+
+func test_a_small_committee_pool_draws_from_the_whole_party() -> void:
+	var opponents := [
+		{"opp_id": "A", "party": "Frontier Party", "role": "Committee on War"},
+		{"opp_id": "B", "party": "Frontier Party", "role": "Committee on Finance"},
+		{"opp_id": "C", "party": "Frontier Party", "role": "Committee on Agriculture"},
+	]
+	var seen := {}
+	for trial in range(60):
+		var rng := RandomNumberGenerator.new()
+		rng.seed = trial
+		seen[str(MpVisit.pick_member(opponents, "Frontier Party", "Committee on Finance", {}, rng)["opp_id"])] = true
+	assert_eq(seen.size(), 3, "one committee member is not enough to always send the same person")
+
+
+func test_a_party_is_drawn_at_random_when_a_generator_is_given() -> void:
+	var positions := [
+		{"party_id": "PT01", "votes_yes": 2, "votes_no": 5, "votes_abstain": 0},
+		{"party_id": "PT02", "votes_yes": 1, "votes_no": 0, "votes_abstain": 3},
+		{"party_id": "PT03", "votes_yes": 9, "votes_no": 0, "votes_abstain": 0},
+	]
+	var seen := {}
+	for trial in range(60):
+		var rng := RandomNumberGenerator.new()
+		rng.seed = trial
+		seen[MpVisit.pick_party(["PT01", "PT02", "PT03"], positions, "Yes", rng)] = true
+	assert_true(seen.has("PT01") and seen.has("PT02"), "both parties with seats outside Yes are visited")
+	assert_false(seen.has("PT03"), "a party entirely on the player's side is never chosen")
+	assert_eq(MpVisit.pick_party(["PT01", "PT02", "PT03"], positions), "PT01", "no generator: the first, as before")
+
+
+func test_an_answer_of_the_questions_kind_is_preferred_then_the_generic_lines() -> void:
+	var answers := [
+		{"style": "Earnest", "line_en": "generic", "reply_kind": null},
+		{"style": "Earnest", "line_en": "cost line", "reply_kind": "Cost"},
+		{"style": "Earnest", "line_en": "voter line", "reply_kind": "Voters"},
+	]
+	assert_eq(str(MpVisit.answer_lines(answers, "Earnest", "Cost")[0]["line_en"]), "cost line")
+	assert_eq(str(MpVisit.answer_lines(answers, "Earnest", "Risk")[0]["line_en"]), "generic", "no Risk line: the generic one")
+	assert_eq(str(MpVisit.answer_lines(answers, "Earnest", "")[0]["line_en"]), "generic")
+
+
+func test_the_questions_take_the_parts_of_the_bill_in_turn() -> void:
+	var stems := [{"text_en": "A {component}?"}, {"text_en": "B {component}?"}, {"text_en": "C {component}?"}]
+	var questions := MpVisit.build_questions(_member(), stems, DataDB.visit_answers, 3,
+			["cut taxes", "fund roads", "open schools"], _rng())
+	var texts: Array = questions.map(func(q: Dictionary) -> String: return str(q["text"]))
+	for phrase in ["cut taxes", "fund roads", "open schools"]:
+		assert_true(texts.any(func(t: String) -> bool: return t.contains(phrase)), phrase)
+
+
+func test_every_visit_and_trade_question_has_a_reply_kind_with_answers_in_every_style() -> void:
+	var kinds := {}
+	for row: Dictionary in DataDB.visit_questions + DataDB.trade_questions:
+		assert_not_null(row.get("reply_kind"), "%s needs a Reply Kind" % row.get("question_id"))
+		kinds[str(row.get("reply_kind"))] = true
+	for kind: String in kinds:
+		for style in MpVisit.styles():
+			var count := 0
+			for answer: Dictionary in DataDB.visit_answers:
+				if str(answer.get("reply_kind")) == kind and str(answer.get("style")) == style:
+					count += 1
+			assert_gte(count, 2, "%s needs two %s answers" % [kind, style])
+
+
+func test_a_member_question_reads_with_a_verb_phrase_where_the_part_goes() -> void:
+	# The part is a verb phrase ("fund street lighting"), so what comes before it must be one
+	# of the words that takes a verb: "to", "would", "we" or "you", never "Is {part}".
+	for row: Dictionary in DataDB.visit_questions:
+		var text := str(row["text_en"])
+		var at := text.find("{component}")
+		var before := text.substr(0, at).strip_edges().split(" ")
+		var last := str(before[before.size() - 1]).to_lower()
+		assert_true(["to", "would", "we", "you"].has(last), "%s: '%s' ends before the part with '%s'" % [row["question_id"], text, last])
+
+
+func test_the_part_a_lobbyist_asks_for_is_one_the_player_can_trade() -> void:
+	var by_id := ComposedBill.index(DataDB.bill_components)
+	var checked := 0
+	for row: Dictionary in DataDB.patron_bills:
+		var composed := PatronLevel.compose(str(row["patron_bill_id"]), [])
+		var level := PatronLevel.level_row(row, composed["bill"], _rng())
+		if not level.has("trade"):
+			continue
+		var trade: Dictionary = level["trade"]
+		checked += 1
+		var asked := str(trade["asked"])
+		assert_true(asked.is_empty() or (trade["drops"] as Array).has(asked), "%s: asked %s is not tradeable" % [row["patron_bill_id"], asked])
+		assert_true(by_id.has(asked) or asked.is_empty())
+	assert_gt(checked, 5)

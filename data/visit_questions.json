@@ -1,98 +1,122 @@
 [
   {
     "question_id": "MV01",
-    "text_en": "Why should I back a bill that would {component}?"
+    "text_en": "Why should I back a bill that would {component}?",
+    "reply_kind": "Principle"
   },
   {
     "question_id": "MV02",
-    "text_en": "Who in my district actually benefits if we {component}?"
+    "text_en": "Who in my district actually benefits if we {component}?",
+    "reply_kind": "Voters"
   },
   {
     "question_id": "MV03",
-    "text_en": "My voters did not send me here to {component}. Convince me."
+    "text_en": "My voters did not send me here to {component}. Convince me.",
+    "reply_kind": "Voters"
   },
   {
     "question_id": "MV04",
-    "text_en": "What happens to the people left out if we {component}?"
+    "text_en": "What happens to the people left out if we {component}?",
+    "reply_kind": "Criticism"
   },
   {
     "question_id": "MV05",
-    "text_en": "Is {component} really the best use of the Assembly's time?"
+    "text_en": "Is it really the best use of the Assembly's time to {component}?",
+    "reply_kind": "Alternative"
   },
   {
     "question_id": "MV06",
-    "text_en": "Would you still push to {component} if it cost you votes at home?"
+    "text_en": "Would you still push to {component} if it cost you votes at home?",
+    "reply_kind": "Trust"
   },
   {
     "question_id": "MV07",
-    "text_en": "Tell me how the plan to {component} is paid for."
+    "text_en": "Tell me how the plan to {component} is paid for.",
+    "reply_kind": "Cost"
   },
   {
     "question_id": "MV08",
-    "text_en": "Why not wait, instead of moving now to {component}?"
+    "text_en": "Why not wait, instead of moving now to {component}?",
+    "reply_kind": "Alternative"
   },
   {
     "question_id": "MV09",
-    "text_en": "What do you say to those who oppose any move to {component}?"
+    "text_en": "What do you say to those who oppose any move to {component}?",
+    "reply_kind": "Criticism"
   },
   {
     "question_id": "MV10",
-    "text_en": "Convince me this is not just a favor for one group when you {component}."
+    "text_en": "Convince me this is not just a favor for one group when you {component}.",
+    "reply_kind": "Trust"
   },
   {
     "question_id": "MV11",
-    "text_en": "How would you explain it to my party if I stood with you to {component}?"
+    "text_en": "How would you explain it to my party if I stood with you to {component}?",
+    "reply_kind": "Party"
   },
   {
     "question_id": "MV12",
-    "text_en": "What is the first thing that goes wrong if we {component}?"
+    "text_en": "What is the first thing that goes wrong if we {component}?",
+    "reply_kind": "Risk"
   },
   {
     "question_id": "MV13",
-    "text_en": "What makes you think {component} will work here?"
+    "text_en": "What makes you think a plan to {component} will work here?",
+    "reply_kind": "Evidence"
   },
   {
     "question_id": "MV14",
-    "text_en": "Who asked you to {component}, and why should I trust them?"
+    "text_en": "Who asked you to {component}, and why should I trust them?",
+    "reply_kind": "Trust"
   },
   {
     "question_id": "MV15",
-    "text_en": "If I backed you to {component}, what would you owe me?"
+    "text_en": "If I backed you to {component}, what would you owe me?",
+    "reply_kind": "Deal"
   },
   {
     "question_id": "MV16",
-    "text_en": "What would it take for me to stand with you on {component}?"
+    "text_en": "What would it take for me to stand with you on the plan to {component}?",
+    "reply_kind": "Deal"
   },
   {
     "question_id": "MV17",
-    "text_en": "Do you really believe in {component}, or is it convenient?"
+    "text_en": "Do you really believe in the plan to {component}, or is it convenient?",
+    "reply_kind": "Trust"
   },
   {
     "question_id": "MV18",
-    "text_en": "Is there a smaller step than {component} that we could agree on?"
+    "text_en": "Is there a smaller step than a plan to {component} that we could agree on?",
+    "reply_kind": "Alternative"
   },
   {
     "question_id": "MV19",
-    "text_en": "How do I know you will not drop {component} when it gets hard?"
+    "text_en": "How do I know you will not drop the plan to {component} when it gets hard?",
+    "reply_kind": "Trust"
   },
   {
     "question_id": "MV20",
-    "text_en": "Why should a member from my party take a risk to {component}?"
+    "text_en": "Why should a member from my party take a risk to {component}?",
+    "reply_kind": "Party"
   },
   {
     "question_id": "MV21",
-    "text_en": "Give me one reason my constituents would thank me for {component}."
+    "text_en": "Give me one reason my constituents would thank me for backing a plan to {component}.",
+    "reply_kind": "Voters"
   },
   {
     "question_id": "MV22",
-    "text_en": "What do the experts say about {component}, and do you agree?"
+    "text_en": "What do the experts say about the plan to {component}, and do you agree?",
+    "reply_kind": "Evidence"
   },
   {
     "question_id": "MV23",
-    "text_en": "Is {component} fair to the next generation?"
+    "text_en": "Is a plan to {component} fair to the next generation?",
+    "reply_kind": "Principle"
   },
   {
     "question_id": "MV24",
-    "text_en": "Do you have the votes to {component}, or are you counting on me?"
+    "text_en": "Do you have the votes to {component}, or are you counting on me?",
+    "reply_kind": "Party"
   }
 ]

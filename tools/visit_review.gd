@@ -30,6 +30,7 @@ func _stats() -> void:
 	var lobbyists := {}
 	var orgs := {}
 	var asked_not_offered := 0
+	var asked_empty := 0
 	var trades := 0
 	var visits := 0
 	var guard := 0
@@ -61,8 +62,10 @@ func _stats() -> void:
 			var t: Dictionary = level["trade"]
 			lobbyists[t["lobbyist_name"]] = int(lobbyists.get(t["lobbyist_name"], 0)) + 1
 			orgs[t["org"]] = int(orgs.get(t["org"], 0)) + 1
-			if not (t["drops"] as Array).has(t["asked"]):
+			if not str(t["asked"]).is_empty() and not (t["drops"] as Array).has(t["asked"]):
 				asked_not_offered += 1
+			if str(t["asked"]).is_empty():
+				asked_empty += 1
 	print("STATS levels %d, with member visit %d, with trade %d" % [levels, visits, trades])
 	print("STATS visited parties: %s" % [parties])
 	print("STATS distinct members visited: %d; most common: %s" % [members.size(), _top(members, 6)])
@@ -70,7 +73,7 @@ func _stats() -> void:
 		print("STATS committee %s -> members %s" % [committee, members_by_committee[committee]])
 	print("STATS distinct lobbyists: %d; most common: %s" % [lobbyists.size(), _top(lobbyists, 6)])
 	print("STATS lobbyist organizations: %s" % [orgs])
-	print("STATS trades where the part the lobbyist asks for is NOT among the parts the player may trade: %d of %d" % [asked_not_offered, trades])
+	print("STATS trades where the part the lobbyist asks for is NOT among the parts the player may trade: %d of %d; trades where no tradeable part hurts them (no hint shown): %d" % [asked_not_offered, trades, asked_empty])
 
 
 func _top(counts: Dictionary, n: int) -> String:
