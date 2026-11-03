@@ -3077,3 +3077,7 @@ Ten real samples plus 400-level statistics, judged against each bill's theme: `d
 ## Member visit and lobbyist trade fixes (2026-11-03, Cameron)
 
 All seven findings of the content review were applied: nine member questions rewritten; Reply Kind on every member and trade question with 120 kind-matched answers (a used kind needs two answers in every style, checked at export); questions take the bill's parts in turn; visit parties widened to all six and drawn at random, committee members used only when three or more sit there; every part's Loses rewritten from its own policy tags (180 rows, a draft opposition table for Cameron to correct); equally hurt organizations take turns to send a lobbyist; the part a lobbyist asks for is always tradeable. New exporter columns: Reply Kind on Visit Questions, Trade Questions and Visit Answers. Re-test results: `design/review/VISIT_CONTENT_REVIEW_2026-11-03.md`, last section.
+
+## Prompts for revising the component system (2026-11-03, Cameron)
+
+`design/prompts/COMPONENT_REVISION_PROMPTS_2026-11-03.md`: a shared briefing and five self-contained prompts (Bill Components audit, component-tagged content pass, member visit and lobbyist trade content, code revisions with a plan-first gate, balance validation), each with the facts already measured, the steps, deliverables and acceptance checks. No game change.

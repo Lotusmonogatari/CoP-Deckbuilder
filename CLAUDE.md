@@ -744,3 +744,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Two-part bills get the member visit half the time (2026-11-03, Cameron)
 - Member visit and lobbyist trade content review (2026-11-03, Cameron)
 - Member visit and lobbyist trade fixes (2026-11-03, Cameron)
+- Prompts for revising the component system (2026-11-03, Cameron)
