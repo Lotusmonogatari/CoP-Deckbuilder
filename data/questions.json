@@ -65395,7 +65395,7 @@
     },
     {
       "id": "S2106",
-      "text": "Why should Yezo move government services online?",
+      "text": "Should every government service be available online?",
       "theme": "Move government services online",
       "grades": {
         "Earnest": "S",
@@ -65437,7 +65437,7 @@
     },
     {
       "id": "S2108",
-      "text": "The Innovation Society wants us to move government services online. Why should everyone else care?",
+      "text": "Neighborhood associations fear older residents will be left behind. Your answer?",
       "theme": "Move government services online",
       "grades": {
         "Earnest": "M",
@@ -65458,7 +65458,7 @@
     },
     {
       "id": "S2109",
-      "text": "What would it mean for people like me if we move government services online?",
+      "text": "Would online services spare me a morning off work at the ward office?",
       "theme": "Move government services online",
       "grades": {
         "Earnest": "M",
@@ -65479,7 +65479,7 @@
     },
     {
       "id": "S2110",
-      "text": "If we move government services online, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we keep people's records safe once everything moves online?",
       "theme": "Move government services online",
       "grades": {
         "Earnest": "S",
@@ -65521,7 +65521,7 @@
     },
     {
       "id": "S2112",
-      "text": "Is there a smaller step we could try before we move government services online?",
+      "text": "Could counters stay open for those who need them while services move online?",
       "theme": "Move government services online",
       "grades": {
         "Earnest": "M",
@@ -65563,7 +65563,7 @@
     },
     {
       "id": "S2114",
-      "text": "Why should Yezo open public data to start-ups?",
+      "text": "Should start-ups be free to build on government data?",
       "theme": "Open public data to start-ups",
       "grades": {
         "Earnest": "S",
@@ -65605,7 +65605,7 @@
     },
     {
       "id": "S2116",
-      "text": "The Innovation Society wants us to open public data to start-ups. Why should everyone else care?",
+      "text": "Consumer groups worry about privacy once data is opened. How do you answer them?",
       "theme": "Open public data to start-ups",
       "grades": {
         "Earnest": "M",
@@ -65626,7 +65626,7 @@
     },
     {
       "id": "S2117",
-      "text": "What would it mean for people like me if we open public data to start-ups?",
+      "text": "Would open data lead to an app that tells me when my bus is really coming?",
       "theme": "Open public data to start-ups",
       "grades": {
         "Earnest": "M",
@@ -65647,7 +65647,7 @@
     },
     {
       "id": "S2118",
-      "text": "If we open public data to start-ups, how would you make sure it is done fairly and on schedule?",
+      "text": "Who checks that opened data cannot identify individual people?",
       "theme": "Open public data to start-ups",
       "grades": {
         "Earnest": "S",
@@ -65689,7 +65689,7 @@
     },
     {
       "id": "S2120",
-      "text": "Is there a smaller step we could try before we open public data to start-ups?",
+      "text": "Could data be shared with start-ups under license instead of opened to all?",
       "theme": "Open public data to start-ups",
       "grades": {
         "Earnest": "M",
@@ -65731,7 +65731,7 @@
     },
     {
       "id": "S2122",
-      "text": "Why should Yezo let start-ups test products in regulatory sandboxes?",
+      "text": "Should start-ups be allowed to test products outside the usual rules?",
       "theme": "Let start-ups test products in regulatory sandboxes",
       "grades": {
         "Earnest": "S",
@@ -65773,7 +65773,7 @@
     },
     {
       "id": "S2124",
-      "text": "The Innovation Society wants us to let start-ups test products in regulatory sandboxes. Why should everyone else care?",
+      "text": "Consumer groups say exemptions put buyers at risk. What do you tell them?",
       "theme": "Let start-ups test products in regulatory sandboxes",
       "grades": {
         "Earnest": "M",
@@ -65794,7 +65794,7 @@
     },
     {
       "id": "S2125",
-      "text": "What would it mean for people like me if we let start-ups test products in regulatory sandboxes?",
+      "text": "Would sandboxes bring new firms, and new jobs, to Hokkaido?",
       "theme": "Let start-ups test products in regulatory sandboxes",
       "grades": {
         "Earnest": "M",
@@ -65815,7 +65815,7 @@
     },
     {
       "id": "S2126",
-      "text": "If we let start-ups test products in regulatory sandboxes, how would you make sure it is done fairly and on schedule?",
+      "text": "Who supervises a sandbox test and can stop it if harm appears?",
       "theme": "Let start-ups test products in regulatory sandboxes",
       "grades": {
         "Earnest": "S",
@@ -65857,7 +65857,7 @@
     },
     {
       "id": "S2128",
-      "text": "Is there a smaller step we could try before we let start-ups test products in regulatory sandboxes?",
+      "text": "Could sandboxes run only in a few sectors, like finance and transport?",
       "theme": "Let start-ups test products in regulatory sandboxes",
       "grades": {
         "Earnest": "M",
@@ -65900,7 +65900,7 @@
     },
     {
       "id": "S2130",
-      "text": "Why should Yezo fund coworking hubs in regional cities?",
+      "text": "Should the state fund shared workspaces in regional cities?",
       "theme": "Fund coworking hubs in regional cities",
       "grades": {
         "Earnest": "S",
@@ -65944,7 +65944,7 @@
     },
     {
       "id": "S2132",
-      "text": "The Innovation Society wants us to fund coworking hubs in regional cities. Why should everyone else care?",
+      "text": "City groups fear hubs will pull jobs out of the cities. What is your answer?",
       "theme": "Fund coworking hubs in regional cities",
       "grades": {
         "Earnest": "M",
@@ -65966,7 +65966,7 @@
     },
     {
       "id": "S2133",
-      "text": "What would it mean for people like me if we fund coworking hubs in regional cities?",
+      "text": "Would a coworking hub let me keep my Sapporo job and live in my hometown?",
       "theme": "Fund coworking hubs in regional cities",
       "grades": {
         "Earnest": "M",
@@ -65988,7 +65988,7 @@
     },
     {
       "id": "S2134",
-      "text": "If we fund coworking hubs in regional cities, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we measure whether hubs are used enough to justify the cost?",
       "theme": "Fund coworking hubs in regional cities",
       "grades": {
         "Earnest": "S",
@@ -66032,7 +66032,7 @@
     },
     {
       "id": "S2136",
-      "text": "Is there a smaller step we could try before we fund coworking hubs in regional cities?",
+      "text": "Could empty public buildings become hubs instead of new ones?",
       "theme": "Fund coworking hubs in regional cities",
       "grades": {
         "Earnest": "M",
@@ -66078,7 +66078,7 @@
     },
     {
       "id": "S2138",
-      "text": "Why should Yezo let citizen petitions trigger committee hearings?",
+      "text": "Should citizens be able to force a committee to hold a hearing?",
       "theme": "Let citizen petitions trigger committee hearings",
       "grades": {
         "Earnest": "S",
@@ -66126,7 +66126,7 @@
     },
     {
       "id": "S2140",
-      "text": "Constituency Voters want us to let citizen petitions trigger committee hearings. Why should the rest of Yezo care?",
+      "text": "Factions fear petitions will flood committees with stunts. How do you answer?",
       "theme": "Let citizen petitions trigger committee hearings",
       "grades": {
         "Earnest": "M",
@@ -66150,7 +66150,7 @@
     },
     {
       "id": "S2141",
-      "text": "What would it mean for people like me if we let citizen petitions trigger committee hearings?",
+      "text": "Would a petition let my town make the Assembly hear about our closed hospital?",
       "theme": "Let citizen petitions trigger committee hearings",
       "grades": {
         "Earnest": "M",
@@ -66174,7 +66174,7 @@
     },
     {
       "id": "S2142",
-      "text": "If we let citizen petitions trigger committee hearings, how would you make sure it is done fairly and on schedule?",
+      "text": "How many signatures should a petition need, and who checks they are genuine?",
       "theme": "Let citizen petitions trigger committee hearings",
       "grades": {
         "Earnest": "S",
@@ -66222,7 +66222,7 @@
     },
     {
       "id": "S2144",
-      "text": "Is there a smaller step we could try before we let citizen petitions trigger committee hearings?",
+      "text": "Could petitions earn a written answer instead of a full hearing?",
       "theme": "Let citizen petitions trigger committee hearings",
       "grades": {
         "Earnest": "M",
@@ -66270,7 +66270,7 @@
     },
     {
       "id": "S2146",
-      "text": "Why should Yezo publish every project's full costs for public comment?",
+      "text": "Should the public see a project's full cost before it is approved?",
       "theme": "Publish every project's full costs for public comment",
       "grades": {
         "Earnest": "S",
@@ -66318,7 +66318,7 @@
     },
     {
       "id": "S2148",
-      "text": "Constituency Voters want us to publish every project's full costs for public comment. Why should the rest of Yezo care?",
+      "text": "Some members fear their local projects will be picked apart. What do you say?",
       "theme": "Publish every project's full costs for public comment",
       "grades": {
         "Earnest": "M",
@@ -66342,7 +66342,7 @@
     },
     {
       "id": "S2149",
-      "text": "What would it mean for people like me if we publish every project's full costs for public comment?",
+      "text": "Would published costs let me ask why our new bridge cost twice the estimate?",
       "theme": "Publish every project's full costs for public comment",
       "grades": {
         "Earnest": "M",
@@ -66366,7 +66366,7 @@
     },
     {
       "id": "S2150",
-      "text": "If we publish every project's full costs for public comment, how would you make sure it is done fairly and on schedule?",
+      "text": "Who prepares the cost figures so they cannot be shaded to look cheaper?",
       "theme": "Publish every project's full costs for public comment",
       "grades": {
         "Earnest": "S",
@@ -66414,7 +66414,7 @@
     },
     {
       "id": "S2152",
-      "text": "Is there a smaller step we could try before we publish every project's full costs for public comment?",
+      "text": "Could only projects above a certain size be published for comment?",
       "theme": "Publish every project's full costs for public comment",
       "grades": {
         "Earnest": "M",
@@ -66462,7 +66462,7 @@
     },
     {
       "id": "S2154",
-      "text": "Why should Yezo let residents vote on local budget priorities?",
+      "text": "Should residents vote on how part of their town's budget is spent?",
       "theme": "Let residents vote on local budget priorities",
       "grades": {
         "Earnest": "S",
@@ -66510,7 +66510,7 @@
     },
     {
       "id": "S2156",
-      "text": "Constituency Voters want us to let residents vote on local budget priorities. Why should the rest of Yezo care?",
+      "text": "Mayors say budgets need expertise, not popularity contests. Your answer?",
       "theme": "Let residents vote on local budget priorities",
       "grades": {
         "Earnest": "M",
@@ -66534,7 +66534,7 @@
     },
     {
       "id": "S2157",
-      "text": "What would it mean for people like me if we let residents vote on local budget priorities?",
+      "text": "Would a budget vote let my neighbors choose a new playground over a new car park?",
       "theme": "Let residents vote on local budget priorities",
       "grades": {
         "Earnest": "M",
@@ -66558,7 +66558,7 @@
     },
     {
       "id": "S2158",
-      "text": "If we let residents vote on local budget priorities, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we make sure voters see the real costs of each option?",
       "theme": "Let residents vote on local budget priorities",
       "grades": {
         "Earnest": "S",
@@ -66606,7 +66606,7 @@
     },
     {
       "id": "S2160",
-      "text": "Is there a smaller step we could try before we let residents vote on local budget priorities?",
+      "text": "Could residents vote on a small share of the budget first?",
       "theme": "Let residents vote on local budget priorities",
       "grades": {
         "Earnest": "M",
@@ -66654,7 +66654,7 @@
     },
     {
       "id": "S2162",
-      "text": "Why should Yezo require open hearings before closing local services?",
+      "text": "Should a town hold open hearings before closing a local service?",
       "theme": "Require open hearings before closing local services",
       "grades": {
         "Earnest": "S",
@@ -66702,7 +66702,7 @@
     },
     {
       "id": "S2164",
-      "text": "Constituency Voters want us to require open hearings before closing local services. Why should the rest of Yezo care?",
+      "text": "Mayors say hearings will delay hard decisions they must make. What do you say?",
       "theme": "Require open hearings before closing local services",
       "grades": {
         "Earnest": "M",
@@ -66726,7 +66726,7 @@
     },
     {
       "id": "S2165",
-      "text": "What would it mean for people like me if we require open hearings before closing local services?",
+      "text": "Would a hearing give us a chance to save our branch library?",
       "theme": "Require open hearings before closing local services",
       "grades": {
         "Earnest": "M",
@@ -66750,7 +66750,7 @@
     },
     {
       "id": "S2166",
-      "text": "If we require open hearings before closing local services, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we make sure the hearing can actually change the decision?",
       "theme": "Require open hearings before closing local services",
       "grades": {
         "Earnest": "S",
@@ -66798,7 +66798,7 @@
     },
     {
       "id": "S2168",
-      "text": "Is there a smaller step we could try before we require open hearings before closing local services?",
+      "text": "Could the town publish its reasons and take written comments instead?",
       "theme": "Require open hearings before closing local services",
       "grades": {
         "Earnest": "M",
@@ -66846,7 +66846,7 @@
     },
     {
       "id": "S2170",
-      "text": "Why should Yezo designate temples as disaster shelters?",
+      "text": "Should temples serve as official disaster shelters?",
       "theme": "Designate temples as disaster shelters",
       "grades": {
         "Earnest": "S",
@@ -66894,7 +66894,7 @@
     },
     {
       "id": "S2172",
-      "text": "The Buddhist Temples Association wants us to designate temples as disaster shelters. Why should everyone else care?",
+      "text": "Towns already run shelters. Why add temples to the plan?",
       "theme": "Designate temples as disaster shelters",
       "grades": {
         "Earnest": "M",
@@ -66918,7 +66918,7 @@
     },
     {
       "id": "S2173",
-      "text": "What would it mean for people like me if we designate temples as disaster shelters?",
+      "text": "Would a temple shelter give my elderly neighbors somewhere close to go in a quake?",
       "theme": "Designate temples as disaster shelters",
       "grades": {
         "Earnest": "M",
@@ -66942,7 +66942,7 @@
     },
     {
       "id": "S2174",
-      "text": "If we designate temples as disaster shelters, how would you make sure it is done fairly and on schedule?",
+      "text": "Who checks that temple shelters are stocked and safe?",
       "theme": "Designate temples as disaster shelters",
       "grades": {
         "Earnest": "S",
@@ -66990,7 +66990,7 @@
     },
     {
       "id": "S2176",
-      "text": "Is there a smaller step we could try before we designate temples as disaster shelters?",
+      "text": "Could temples act as backup shelters only when town shelters are full?",
       "theme": "Designate temples as disaster shelters",
       "grades": {
         "Earnest": "M",
@@ -67038,7 +67038,7 @@
     },
     {
       "id": "S2178",
-      "text": "Why should Yezo fund repairs to temple halls damaged by weather?",
+      "text": "Should public money repair temple halls damaged by storms?",
       "theme": "Fund repairs to temple halls damaged by weather",
       "grades": {
         "Earnest": "S",
@@ -67086,7 +67086,7 @@
     },
     {
       "id": "S2180",
-      "text": "The Buddhist Temples Association wants us to fund repairs to temple halls damaged by weather. Why should everyone else care?",
+      "text": "Shrines face the same storms. Why should temples come first?",
       "theme": "Fund repairs to temple halls damaged by weather",
       "grades": {
         "Earnest": "M",
@@ -67110,7 +67110,7 @@
     },
     {
       "id": "S2181",
-      "text": "What would it mean for people like me if we fund repairs to temple halls damaged by weather?",
+      "text": "Would a repair grant save the hall where our village holds its gatherings?",
       "theme": "Fund repairs to temple halls damaged by weather",
       "grades": {
         "Earnest": "M",
@@ -67134,7 +67134,7 @@
     },
     {
       "id": "S2182",
-      "text": "If we fund repairs to temple halls damaged by weather, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we confirm repairs fix storm damage and not long-neglected upkeep?",
       "theme": "Fund repairs to temple halls damaged by weather",
       "grades": {
         "Earnest": "S",
@@ -67182,7 +67182,7 @@
     },
     {
       "id": "S2184",
-      "text": "Is there a smaller step we could try before we fund repairs to temple halls damaged by weather?",
+      "text": "Could repairs come from the general disaster fund instead?",
       "theme": "Fund repairs to temple halls damaged by weather",
       "grades": {
         "Earnest": "M",
@@ -67230,7 +67230,7 @@
     },
     {
       "id": "S2186",
-      "text": "Why should Yezo list shrine grounds on the heritage register?",
+      "text": "Should shrine grounds be listed as national heritage?",
       "theme": "List shrine grounds on the heritage register",
       "grades": {
         "Earnest": "S",
@@ -67278,7 +67278,7 @@
     },
     {
       "id": "S2188",
-      "text": "The Shrine Association wants us to list shrine grounds on the heritage register. Why should everyone else care?",
+      "text": "Developers say listing locks up valuable land. What do you tell them?",
       "theme": "List shrine grounds on the heritage register",
       "grades": {
         "Earnest": "M",
@@ -67302,7 +67302,7 @@
     },
     {
       "id": "S2189",
-      "text": "What would it mean for people like me if we list shrine grounds on the heritage register?",
+      "text": "Would listing stop the car park planned on our shrine's old grounds?",
       "theme": "List shrine grounds on the heritage register",
       "grades": {
         "Earnest": "M",
@@ -67326,7 +67326,7 @@
     },
     {
       "id": "S2190",
-      "text": "If we list shrine grounds on the heritage register, how would you make sure it is done fairly and on schedule?",
+      "text": "Who decides which shrine grounds qualify?",
       "theme": "List shrine grounds on the heritage register",
       "grades": {
         "Earnest": "S",
@@ -67374,7 +67374,7 @@
     },
     {
       "id": "S2192",
-      "text": "Is there a smaller step we could try before we list shrine grounds on the heritage register?",
+      "text": "Could only the oldest shrine grounds be listed first?",
       "theme": "List shrine grounds on the heritage register",
       "grades": {
         "Earnest": "M",
@@ -67422,7 +67422,7 @@
     },
     {
       "id": "S2194",
-      "text": "Why should Yezo waive permit fees for shrine festival stalls?",
+      "text": "Should festival stalls be free of permit fees?",
       "theme": "Waive permit fees for shrine festival stalls",
       "grades": {
         "Earnest": "S",
@@ -67470,7 +67470,7 @@
     },
     {
       "id": "S2196",
-      "text": "The Shrine Association wants us to waive permit fees for shrine festival stalls. Why should everyone else care?",
+      "text": "Shops near the festival fear losing trade to stalls. How do you answer them?",
       "theme": "Waive permit fees for shrine festival stalls",
       "grades": {
         "Earnest": "M",
@@ -67494,7 +67494,7 @@
     },
     {
       "id": "S2197",
-      "text": "What would it mean for people like me if we waive permit fees for shrine festival stalls?",
+      "text": "Would free permits bring back the food stalls our festival used to have?",
       "theme": "Waive permit fees for shrine festival stalls",
       "grades": {
         "Earnest": "M",
@@ -67518,7 +67518,7 @@
     },
     {
       "id": "S2198",
-      "text": "If we waive permit fees for shrine festival stalls, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop commercial vendors posing as festival stalls?",
       "theme": "Waive permit fees for shrine festival stalls",
       "grades": {
         "Earnest": "S",
@@ -67566,7 +67566,7 @@
     },
     {
       "id": "S2200",
-      "text": "Is there a smaller step we could try before we waive permit fees for shrine festival stalls?",
+      "text": "Could fees be reduced for local residents' stalls only?",
       "theme": "Waive permit fees for shrine festival stalls",
       "grades": {
         "Earnest": "M",
