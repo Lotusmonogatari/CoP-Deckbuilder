@@ -56254,7 +56254,7 @@
     },
     {
       "id": "S1722",
-      "text": "Why should Yezo give towns their own tax-setting powers?",
+      "text": "Should a town be allowed to set its own taxes?",
       "theme": "Give towns their own tax-setting powers",
       "grades": {
         "Earnest": "S",
@@ -56302,7 +56302,7 @@
     },
     {
       "id": "S1724",
-      "text": "The Mayors' Network wants us to give towns their own tax-setting powers. Why should everyone else care?",
+      "text": "Small firms fear a different tax in every town. How do you answer them?",
       "theme": "Give towns their own tax-setting powers",
       "grades": {
         "Earnest": "M",
@@ -56326,7 +56326,7 @@
     },
     {
       "id": "S1725",
-      "text": "What would it mean for people like me if we give towns their own tax-setting powers?",
+      "text": "Would local tax powers let my town fix its own schools without waiting on Sapporo?",
       "theme": "Give towns their own tax-setting powers",
       "grades": {
         "Earnest": "M",
@@ -56350,7 +56350,7 @@
     },
     {
       "id": "S1726",
-      "text": "If we give towns their own tax-setting powers, how would you make sure it is done fairly and on schedule?",
+      "text": "What would stop a town raising taxes on outsiders who cannot vote there?",
       "theme": "Give towns their own tax-setting powers",
       "grades": {
         "Earnest": "S",
@@ -56398,7 +56398,7 @@
     },
     {
       "id": "S1728",
-      "text": "Is there a smaller step we could try before we give towns their own tax-setting powers?",
+      "text": "Could towns set only a small local top-up on a national tax?",
       "theme": "Give towns their own tax-setting powers",
       "grades": {
         "Earnest": "M",
@@ -56446,7 +56446,7 @@
     },
     {
       "id": "S1730",
-      "text": "Why should Yezo let towns merge services across borders?",
+      "text": "Should neighboring towns be able to share their public services?",
       "theme": "Let towns merge services across borders",
       "grades": {
         "Earnest": "S",
@@ -56494,7 +56494,7 @@
     },
     {
       "id": "S1732",
-      "text": "The Mayors' Network wants us to let towns merge services across borders. Why should everyone else care?",
+      "text": "Residents fear losing the local counter they rely on. What do you tell them?",
       "theme": "Let towns merge services across borders",
       "grades": {
         "Earnest": "M",
@@ -56518,7 +56518,7 @@
     },
     {
       "id": "S1733",
-      "text": "What would it mean for people like me if we let towns merge services across borders?",
+      "text": "Would shared services keep our small town's library open?",
       "theme": "Let towns merge services across borders",
       "grades": {
         "Earnest": "M",
@@ -56542,7 +56542,7 @@
     },
     {
       "id": "S1734",
-      "text": "If we let towns merge services across borders, how would you make sure it is done fairly and on schedule?",
+      "text": "Who answers to residents when a service is run from the town next door?",
       "theme": "Let towns merge services across borders",
       "grades": {
         "Earnest": "S",
@@ -56590,7 +56590,7 @@
     },
     {
       "id": "S1736",
-      "text": "Is there a smaller step we could try before we let towns merge services across borders?",
+      "text": "Could towns share back-office work only, keeping local counters open?",
       "theme": "Let towns merge services across borders",
       "grades": {
         "Earnest": "M",
@@ -56638,7 +56638,7 @@
     },
     {
       "id": "S1738",
-      "text": "Why should Yezo open special economic zones?",
+      "text": "Should some areas have different business rules from the rest of Yezo?",
       "theme": "Open special economic zones",
       "grades": {
         "Earnest": "S",
@@ -56686,7 +56686,7 @@
     },
     {
       "id": "S1740",
-      "text": "The Chamber of Commerce wants us to open special economic zones. Why should everyone else care?",
+      "text": "Farmers fear special zones will flood the market with cheap imports. Your answer?",
       "theme": "Open special economic zones",
       "grades": {
         "Earnest": "M",
@@ -56710,7 +56710,7 @@
     },
     {
       "id": "S1741",
-      "text": "What would it mean for people like me if we open special economic zones?",
+      "text": "Would a special zone bring new factory jobs to our port city?",
       "theme": "Open special economic zones",
       "grades": {
         "Earnest": "M",
@@ -56734,7 +56734,7 @@
     },
     {
       "id": "S1742",
-      "text": "If we open special economic zones, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop firms simply moving into the zone for the tax breaks?",
       "theme": "Open special economic zones",
       "grades": {
         "Earnest": "S",
@@ -56782,7 +56782,7 @@
     },
     {
       "id": "S1744",
-      "text": "Is there a smaller step we could try before we open special economic zones?",
+      "text": "Could we try one zone first and judge it before opening more?",
       "theme": "Open special economic zones",
       "grades": {
         "Earnest": "M",
@@ -56830,7 +56830,7 @@
     },
     {
       "id": "S1746",
-      "text": "Why should Yezo speed up customs clearance at Hokkaido ports?",
+      "text": "Should goods move through our ports with as little delay as possible?",
       "theme": "Speed up customs clearance at Hokkaido ports",
       "grades": {
         "Earnest": "S",
@@ -56878,7 +56878,7 @@
     },
     {
       "id": "S1748",
-      "text": "The Chamber of Commerce wants us to speed up customs clearance at Hokkaido ports. Why should everyone else care?",
+      "text": "Fishers say faster customs means more imported fish. How do you answer them?",
       "theme": "Speed up customs clearance at Hokkaido ports",
       "grades": {
         "Earnest": "M",
@@ -56902,7 +56902,7 @@
     },
     {
       "id": "S1749",
-      "text": "What would it mean for people like me if we speed up customs clearance at Hokkaido ports?",
+      "text": "Would faster clearance lower the price of the parts my workshop imports?",
       "theme": "Speed up customs clearance at Hokkaido ports",
       "grades": {
         "Earnest": "M",
@@ -56926,7 +56926,7 @@
     },
     {
       "id": "S1750",
-      "text": "If we speed up customs clearance at Hokkaido ports, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we keep checks on food safety while clearing goods faster?",
       "theme": "Speed up customs clearance at Hokkaido ports",
       "grades": {
         "Earnest": "S",
@@ -56974,7 +56974,7 @@
     },
     {
       "id": "S1752",
-      "text": "Is there a smaller step we could try before we speed up customs clearance at Hokkaido ports?",
+      "text": "Could faster clearance apply only to firms with a clean record?",
       "theme": "Speed up customs clearance at Hokkaido ports",
       "grades": {
         "Earnest": "M",
@@ -57022,7 +57022,7 @@
     },
     {
       "id": "S1754",
-      "text": "Why should Yezo open a single window for business permits?",
+      "text": "Should a business get every permit it needs from one office?",
       "theme": "Open a single window for business permits",
       "grades": {
         "Earnest": "S",
@@ -57070,7 +57070,7 @@
     },
     {
       "id": "S1756",
-      "text": "The Chamber of Commerce wants us to open a single window for business permits. Why should everyone else care?",
+      "text": "Town offices fear losing control of their own approvals. What do you say?",
       "theme": "Open a single window for business permits",
       "grades": {
         "Earnest": "M",
@@ -57094,7 +57094,7 @@
     },
     {
       "id": "S1757",
-      "text": "What would it mean for people like me if we open a single window for business permits?",
+      "text": "Would one window mean I open my café without visiting six different desks?",
       "theme": "Open a single window for business permits",
       "grades": {
         "Earnest": "M",
@@ -57118,7 +57118,7 @@
     },
     {
       "id": "S1758",
-      "text": "If we open a single window for business permits, how would you make sure it is done fairly and on schedule?",
+      "text": "How would the single window make sure local rules are still checked?",
       "theme": "Open a single window for business permits",
       "grades": {
         "Earnest": "S",
@@ -57166,7 +57166,7 @@
     },
     {
       "id": "S1760",
-      "text": "Is there a smaller step we could try before we open a single window for business permits?",
+      "text": "Could offices share one online form instead of merging into one window?",
       "theme": "Open a single window for business permits",
       "grades": {
         "Earnest": "M",
@@ -57214,7 +57214,7 @@
     },
     {
       "id": "S1762",
-      "text": "Why should Yezo let businesses take on apprentices without extra forms?",
+      "text": "Should taking on an apprentice require less paperwork?",
       "theme": "Let businesses take on apprentices without extra forms",
       "grades": {
         "Earnest": "S",
@@ -57262,7 +57262,7 @@
     },
     {
       "id": "S1764",
-      "text": "The Chamber of Commerce wants us to let businesses take on apprentices without extra forms. Why should everyone else care?",
+      "text": "Unions worry fewer forms means fewer protections. How do you answer them?",
       "theme": "Let businesses take on apprentices without extra forms",
       "grades": {
         "Earnest": "M",
@@ -57286,7 +57286,7 @@
     },
     {
       "id": "S1765",
-      "text": "What would it mean for people like me if we let businesses take on apprentices without extra forms?",
+      "text": "Would fewer forms persuade the garage down the road to train my son?",
       "theme": "Let businesses take on apprentices without extra forms",
       "grades": {
         "Earnest": "M",
@@ -57310,7 +57310,7 @@
     },
     {
       "id": "S1766",
-      "text": "If we let businesses take on apprentices without extra forms, how would you make sure it is done fairly and on schedule?",
+      "text": "Without the forms, who checks the apprentice is trained and paid?",
       "theme": "Let businesses take on apprentices without extra forms",
       "grades": {
         "Earnest": "S",
@@ -57358,7 +57358,7 @@
     },
     {
       "id": "S1768",
-      "text": "Is there a smaller step we could try before we let businesses take on apprentices without extra forms?",
+      "text": "Could the forms be shortened instead of removed?",
       "theme": "Let businesses take on apprentices without extra forms",
       "grades": {
         "Earnest": "M",
@@ -57406,7 +57406,7 @@
     },
     {
       "id": "S1770",
-      "text": "Why should Yezo give new firms a tax holiday in their first year?",
+      "text": "Should a new firm pay no tax while it finds its feet?",
       "theme": "Give new firms a tax holiday in their first year",
       "grades": {
         "Earnest": "S",
@@ -57454,7 +57454,7 @@
     },
     {
       "id": "S1772",
-      "text": "The Chamber of Commerce wants us to give new firms a tax holiday in their first year. Why should everyone else care?",
+      "text": "Existing small businesses ask why new rivals pay less. What do you tell them?",
       "theme": "Give new firms a tax holiday in their first year",
       "grades": {
         "Earnest": "M",
@@ -57478,7 +57478,7 @@
     },
     {
       "id": "S1773",
-      "text": "What would it mean for people like me if we give new firms a tax holiday in their first year?",
+      "text": "Would a tax holiday give my startup the room to hire its first worker?",
       "theme": "Give new firms a tax holiday in their first year",
       "grades": {
         "Earnest": "M",
@@ -57502,7 +57502,7 @@
     },
     {
       "id": "S1774",
-      "text": "If we give new firms a tax holiday in their first year, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop old firms closing and reopening under a new name to claim it?",
       "theme": "Give new firms a tax holiday in their first year",
       "grades": {
         "Earnest": "S",
@@ -57550,7 +57550,7 @@
     },
     {
       "id": "S1776",
-      "text": "Is there a smaller step we could try before we give new firms a tax holiday in their first year?",
+      "text": "Could the holiday be a reduced rate instead of no tax at all?",
       "theme": "Give new firms a tax holiday in their first year",
       "grades": {
         "Earnest": "M",
@@ -57598,7 +57598,7 @@
     },
     {
       "id": "S1778",
-      "text": "Why should Yezo guarantee payment within sixty days on public contracts?",
+      "text": "Should the state pay its suppliers on time, like any customer should?",
       "theme": "Guarantee payment within sixty days on public contracts",
       "grades": {
         "Earnest": "S",
@@ -57646,7 +57646,7 @@
     },
     {
       "id": "S1780",
-      "text": "The Chamber of Commerce wants us to guarantee payment within sixty days on public contracts. Why should everyone else care?",
+      "text": "Towns are often the slowest payers. Why should their residents back this?",
       "theme": "Guarantee payment within sixty days on public contracts",
       "grades": {
         "Earnest": "M",
@@ -57670,7 +57670,7 @@
     },
     {
       "id": "S1781",
-      "text": "What would it mean for people like me if we guarantee payment within sixty days on public contracts?",
+      "text": "Would prompt payment keep my small building firm from borrowing to cover wages?",
       "theme": "Guarantee payment within sixty days on public contracts",
       "grades": {
         "Earnest": "M",
@@ -57694,7 +57694,7 @@
     },
     {
       "id": "S1782",
-      "text": "If we guarantee payment within sixty days on public contracts, how would you make sure it is done fairly and on schedule?",
+      "text": "Who checks that payments are made within the limit, and what happens when they are not?",
       "theme": "Guarantee payment within sixty days on public contracts",
       "grades": {
         "Earnest": "S",
@@ -57742,7 +57742,7 @@
     },
     {
       "id": "S1784",
-      "text": "Is there a smaller step we could try before we guarantee payment within sixty days on public contracts?",
+      "text": "Could late payers owe interest instead of a fixed deadline?",
       "theme": "Guarantee payment within sixty days on public contracts",
       "grades": {
         "Earnest": "M",
@@ -57790,7 +57790,7 @@
     },
     {
       "id": "S1786",
-      "text": "Why should Yezo give neighborhood associations legal standing in planning?",
+      "text": "Should neighborhood associations have a legal voice in planning?",
       "theme": "Give neighborhood associations legal standing in planning",
       "grades": {
         "Earnest": "S",
@@ -57838,7 +57838,7 @@
     },
     {
       "id": "S1788",
-      "text": "The Neighborhood Associations want us to give neighborhood associations legal standing in planning. Why should everyone else care?",
+      "text": "City groups fear associations will block every new building. What do you say?",
       "theme": "Give neighborhood associations legal standing in planning",
       "grades": {
         "Earnest": "M",
@@ -57862,7 +57862,7 @@
     },
     {
       "id": "S1789",
-      "text": "What would it mean for people like me if we give neighborhood associations legal standing in planning?",
+      "text": "Would legal standing let our association challenge the tower planned next to the school?",
       "theme": "Give neighborhood associations legal standing in planning",
       "grades": {
         "Earnest": "M",
@@ -57886,7 +57886,7 @@
     },
     {
       "id": "S1790",
-      "text": "If we give neighborhood associations legal standing in planning, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop one association stalling projects the whole city needs?",
       "theme": "Give neighborhood associations legal standing in planning",
       "grades": {
         "Earnest": "S",
@@ -57934,7 +57934,7 @@
     },
     {
       "id": "S1792",
-      "text": "Is there a smaller step we could try before we give neighborhood associations legal standing in planning?",
+      "text": "Could associations be consulted formally without the power to block?",
       "theme": "Give neighborhood associations legal standing in planning",
       "grades": {
         "Earnest": "M",
@@ -57982,7 +57982,7 @@
     },
     {
       "id": "S1794",
-      "text": "Why should Yezo give neighborhood associations a seat on planning boards?",
+      "text": "Should residents sit on the boards that decide what is built near them?",
       "theme": "Give neighborhood associations a seat on planning boards",
       "grades": {
         "Earnest": "S",
@@ -58030,7 +58030,7 @@
     },
     {
       "id": "S1796",
-      "text": "The Neighborhood Associations want us to give neighborhood associations a seat on planning boards. Why should everyone else care?",
+      "text": "City groups worry about seats blocking new housing. What is your answer?",
       "theme": "Give neighborhood associations a seat on planning boards",
       "grades": {
         "Earnest": "M",
@@ -58054,7 +58054,7 @@
     },
     {
       "id": "S1797",
-      "text": "What would it mean for people like me if we give neighborhood associations a seat on planning boards?",
+      "text": "Would a seat on the board give my neighbors a say over the new apartment block?",
       "theme": "Give neighborhood associations a seat on planning boards",
       "grades": {
         "Earnest": "M",
@@ -58078,7 +58078,7 @@
     },
     {
       "id": "S1798",
-      "text": "If we give neighborhood associations a seat on planning boards, how would you make sure it is done fairly and on schedule?",
+      "text": "How would board members from associations be chosen, and by whom?",
       "theme": "Give neighborhood associations a seat on planning boards",
       "grades": {
         "Earnest": "S",
@@ -58126,7 +58126,7 @@
     },
     {
       "id": "S1800",
-      "text": "Is there a smaller step we could try before we give neighborhood associations a seat on planning boards?",
+      "text": "Could associations send an advisor without a vote instead?",
       "theme": "Give neighborhood associations a seat on planning boards",
       "grades": {
         "Earnest": "M",
@@ -58174,7 +58174,7 @@
     },
     {
       "id": "S1802",
-      "text": "Why should Yezo fund neighborhood cleanup days?",
+      "text": "Should the public pay for neighborhood cleanup days?",
       "theme": "Fund neighborhood cleanup days",
       "grades": {
         "Earnest": "S",
@@ -58222,7 +58222,7 @@
     },
     {
       "id": "S1804",
-      "text": "The Neighborhood Associations want us to fund neighborhood cleanup days. Why should everyone else care?",
+      "text": "Shrines already lead many cleanups. Why create a second effort?",
       "theme": "Fund neighborhood cleanup days",
       "grades": {
         "Earnest": "M",
@@ -58246,7 +58246,7 @@
     },
     {
       "id": "S1805",
-      "text": "What would it mean for people like me if we fund neighborhood cleanup days?",
+      "text": "Would funded cleanup days finally clear the dumped bikes by our station?",
       "theme": "Fund neighborhood cleanup days",
       "grades": {
         "Earnest": "M",
@@ -58270,7 +58270,7 @@
     },
     {
       "id": "S1806",
-      "text": "If we fund neighborhood cleanup days, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we make sure the money buys equipment and not parties?",
       "theme": "Fund neighborhood cleanup days",
       "grades": {
         "Earnest": "S",
@@ -58318,7 +58318,7 @@
     },
     {
       "id": "S1808",
-      "text": "Is there a smaller step we could try before we fund neighborhood cleanup days?",
+      "text": "Could towns lend tools and collect waste instead of giving grants?",
       "theme": "Fund neighborhood cleanup days",
       "grades": {
         "Earnest": "M",
@@ -58366,7 +58366,7 @@
     },
     {
       "id": "S1810",
-      "text": "Why should Yezo let neighborhood associations run small local grants?",
+      "text": "Should neighborhood associations decide on small local grants?",
       "theme": "Let neighborhood associations run small local grants",
       "grades": {
         "Earnest": "S",
@@ -58414,7 +58414,7 @@
     },
     {
       "id": "S1812",
-      "text": "The Neighborhood Associations want us to let neighborhood associations run small local grants. Why should everyone else care?",
+      "text": "Members' supporters used to channel these grants. Why change who decides?",
       "theme": "Let neighborhood associations run small local grants",
       "grades": {
         "Earnest": "M",
@@ -58438,7 +58438,7 @@
     },
     {
       "id": "S1813",
-      "text": "What would it mean for people like me if we let neighborhood associations run small local grants?",
+      "text": "Would local grants let our association repair the playground ourselves?",
       "theme": "Let neighborhood associations run small local grants",
       "grades": {
         "Earnest": "M",
@@ -58462,7 +58462,7 @@
     },
     {
       "id": "S1814",
-      "text": "If we let neighborhood associations run small local grants, how would you make sure it is done fairly and on schedule?",
+      "text": "Who audits the associations' grant decisions?",
       "theme": "Let neighborhood associations run small local grants",
       "grades": {
         "Earnest": "S",
@@ -58510,7 +58510,7 @@
     },
     {
       "id": "S1816",
-      "text": "Is there a smaller step we could try before we let neighborhood associations run small local grants?",
+      "text": "Could associations recommend grants that the town then approves?",
       "theme": "Let neighborhood associations run small local grants",
       "grades": {
         "Earnest": "M",
