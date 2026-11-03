@@ -801,13 +801,26 @@ func _show_broken_promises_if_any() -> void:
 	_promises_panel.open(Text.say("promises.broken_title"), rows)
 
 
+## Every crisis-trigger alert's Text row, written out so the exporter can check
+## each one exists (QC audit 2026-11-03: the key used to be built at runtime).
+const TRIGGER_ALERT_KEYS := {
+	"backing_lapsed": {"entered": "office.trigger.backing_lapsed.entered"},
+	"funding_freeze": {"entered": "office.trigger.funding_freeze.entered", "left": "office.trigger.funding_freeze.left"},
+	"gaffe_penalty": {"entered": "office.trigger.gaffe_penalty.entered"},
+	"steering_committee": {"entered": "office.trigger.steering_committee.entered", "left": "office.trigger.steering_committee.left"},
+	"town_hall": {"entered": "office.trigger.town_hall.entered", "left": "office.trigger.town_hall.left"},
+}
+
+
 func _show_trigger_alerts_if_any() -> void:
 	if GameState.pending_trigger_alerts.is_empty():
 		return
 
 	var rows: Array[Control] = []
 	for alert: Dictionary in GameState.pending_trigger_alerts:
-		var key := "office.trigger.%s.%s" % [alert.get("kind", ""), alert.get("edge", "")]
+		var key := str((TRIGGER_ALERT_KEYS.get(str(alert.get("kind", "")), {}) as Dictionary).get(str(alert.get("edge", "")), ""))
+		if key.is_empty():
+			continue
 		rows.append(UiKit.line(Text.say(key, {
 			"count": int(alert.get("count", 0)),
 			"amount": int(alert.get("amount", 0)),

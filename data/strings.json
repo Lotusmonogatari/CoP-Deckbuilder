@@ -6394,7 +6394,7 @@
     "key": "trade.flavor",
     "where": "Lobbyist trade",
     "english": "{text}\n\n{name}: \"{line}\"",
-    "placeholders": "text; name; line",
+    "placeholders": "text, name, line",
     "notes": "2026-11-03 Lobbyist Lines: the lobbyist's own Protect or Deal line under the screen's question."
   }
 ]

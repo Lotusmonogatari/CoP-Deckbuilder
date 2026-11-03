@@ -3156,3 +3156,7 @@ A new workbook tab, **Lobbyist Lines** (`data/lobbyist_lines.json`): Line ID, Or
 | Deal | When the player chooses what to ask for in return (the package screen) |
 
 Lines appear under the screen's question, quoted and attributed to the lobbyist (Text row `trade.flavor`; `TradeScreen._with_flavor`, `LobbyistTrade.flavor_line`); one line of each kind is drawn per trade. They were first put on the spoken banner, but the banner covered the buttons and blocked the trade, so they moved into the question text. If an organization has several rows of one kind, one is picked at random; if it has none, the lobbyist says nothing extra. The exporter checks the Organization ID, the Kind and the 20-word limit. Tests: `test_lobbyist_trade.gd` (+2) and `trade_test` (the Protect line is spoken).
+
+## Quality control audit (2026-11-03, Cameron)
+
+A full code and asset audit: `design/review/QC_AUDIT_2026-11-03.md`. Fixed: crisis-alert Text keys are written out and tested (`test_trigger_alert_text.gd`); a test that had stopped asserting; the art checklist now counts bare `{ID}.png` staff portraits (Staff 105 of 105); the Assets tab's Drawn column (88 rows); one placeholder list. Seven items are left for Cameron, including PC03's name in the Assets tab and the minimum art sizes.

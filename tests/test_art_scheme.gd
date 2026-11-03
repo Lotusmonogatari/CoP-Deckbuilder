@@ -213,6 +213,11 @@ func test_every_outside_scene_has_a_label_keywords_and_a_place() -> void:
 
 func test_a_screen_with_no_base_picture_keeps_its_flat_panel() -> void:
 	# 2026-10-31: BASE_<SCREEN>.png, else BASE.png, else nothing (no placeholder).
+	# With BASE.png drawn, an unknown screen falls back to it; without, to nothing.
+	if not BaseImage.path_for("NO_SUCH_SCREEN").is_empty():
+		assert_string_ends_with(BaseImage.path_for("NO_SUCH_SCREEN"), "BASE.png",
+			"an unknown screen uses the shared base picture")
+		return
 	if BaseImage.path_for("NO_SUCH_SCREEN").is_empty():
 		var screen := Control.new()
 		var panel := ColorRect.new()

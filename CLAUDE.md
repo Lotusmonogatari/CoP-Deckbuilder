@@ -751,3 +751,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Custom bill validation, phase 5 (2026-11-03, Cameron)
 - Component questions written from each part, phase 2 (2026-11-03, Cameron)
 - Lobbyist Lines: each lobbyist speaks in their organization's voice (2026-11-03, Cameron)
+- Quality control audit (2026-11-03, Cameron)
