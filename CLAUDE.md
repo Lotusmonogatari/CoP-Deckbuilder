@@ -745,3 +745,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Member visit and lobbyist trade content review (2026-11-03, Cameron)
 - Member visit and lobbyist trade fixes (2026-11-03, Cameron)
 - Prompts for revising the component system (2026-11-03, Cameron)
+- Bill Components audit (2026-11-03, Cameron)

@@ -3081,3 +3081,16 @@ All seven findings of the content review were applied: nine member questions rew
 ## Prompts for revising the component system (2026-11-03, Cameron)
 
 `design/prompts/COMPONENT_REVISION_PROMPTS_2026-11-03.md`: a shared briefing and five self-contained prompts (Bill Components audit, component-tagged content pass, member visit and lobbyist trade content, code revisions with a plan-first gate, balance validation), each with the facts already measured, the steps, deliverables and acceptance checks. No game change.
+
+## Bill Components audit (2026-11-03, Cameron)
+
+Phase 1 of the component revision plan. All 180 bill parts were checked: phrase, tags, loser, gains, hearing committee and exclusions. The full table is in `design/review/COMPONENT_AUDIT_2026-11-03.md`.
+
+| What | Change |
+|---|---|
+| Losers | Each one rated Good (44), Fair (50) or Poor (86). Every Poor loser was replaced, 114 in all. No organization now loses more than 21 parts (12%); before, Chamber of Commerce lost 24 and Taxpayers' Alliance 23. Party bodies now lose only on party matters, 3 parts instead of 21. |
+| Gains | 26 parts also gain a natural second organization by +1. |
+| Hearing committees | 25 parts moved out of Government Administration (72 down to 47). They went to National Assembly, Finance, Construction, Ethics and Prosecution, Environment, and Cabinet (ST18, which now hears 4 parts). |
+| Excludes | 8 new pairs for contradictions and repeats, entered on both rows. |
+| Tags | CB254 no longer counts public loans as Economic Liberalization. |
+| Effect | The Chamber of Commerce lobbyist's share of trades fell from about 34% to 25%. Vote results in `bill_audit.gd` are unchanged. |

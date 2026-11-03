@@ -16,7 +16,7 @@
     ],
     "loses": [
       {
-        "target": "BO23",
+        "target": "BO18",
         "delta": -2
       }
     ],
@@ -41,7 +41,7 @@
     ],
     "loses": [
       {
-        "target": "BO17",
+        "target": "BO06",
         "delta": -2
       }
     ],
@@ -56,7 +56,7 @@
     "short_label": "Let district offices hold open town days",
     "phrase": "let district offices hold open town days",
     "description": "Would let district offices hold open town days.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST12",
     "value_tags": "Localism +0.6",
     "gains": [
       {
@@ -66,7 +66,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -106,7 +106,7 @@
     "short_label": "Fund district office staff training",
     "phrase": "fund district office staff training",
     "description": "Would fund district office staff training.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST12",
     "value_tags": "Localism +0.5; Technocratic +0.3",
     "gains": [
       {
@@ -116,7 +116,7 @@
     ],
     "loses": [
       {
-        "target": "BO17",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -131,7 +131,7 @@
     "short_label": "Fund district offices that help citizens file paperwork",
     "phrase": "fund district offices that help citizens file paperwork",
     "description": "Would fund district offices that help citizens file paperwork.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST12",
     "value_tags": "Localism +0.6; Technocratic +0.3",
     "gains": [
       {
@@ -141,7 +141,7 @@
     ],
     "loses": [
       {
-        "target": "BO17",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -156,7 +156,7 @@
     "short_label": "Publish a directory of district services",
     "phrase": "publish a directory of district services",
     "description": "Would publish a directory of district services.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST12",
     "value_tags": "Localism +0.5; Democratic Norms +0.3",
     "gains": [
       {
@@ -166,7 +166,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -181,7 +181,7 @@
     "short_label": "Give towns unconditional block grants",
     "phrase": "give towns unconditional block grants",
     "description": "Would give towns unconditional block grants.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST16",
     "value_tags": "Localism +1; Federal Spending +0.6",
     "gains": [
       {
@@ -191,7 +191,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO03",
         "delta": -2
       }
     ],
@@ -206,7 +206,7 @@
     "short_label": "Let towns borrow for local projects",
     "phrase": "let towns borrow for local projects",
     "description": "Would let towns borrow for local projects.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST16",
     "value_tags": "Localism +0.8; Federal Spending +0.3",
     "gains": [
       {
@@ -216,7 +216,7 @@
     ],
     "loses": [
       {
-        "target": "BO17",
+        "target": "BO23",
         "delta": -2
       }
     ],
@@ -231,7 +231,7 @@
     "short_label": "Fund town planning staff",
     "phrase": "fund town planning staff",
     "description": "Would fund town planning staff.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST15",
     "value_tags": "Localism +0.5; Federal Spending +0.3",
     "gains": [
       {
@@ -241,7 +241,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO06",
         "delta": -2
       }
     ],
@@ -266,7 +266,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -291,7 +291,7 @@
     ],
     "loses": [
       {
-        "target": "BO17",
+        "target": "BO06",
         "delta": -2
       }
     ],
@@ -312,6 +312,10 @@
       {
         "target": "BO05",
         "delta": 3
+      },
+      {
+        "target": "BO24",
+        "delta": 1
       }
     ],
     "loses": [
@@ -366,7 +370,7 @@
     ],
     "loses": [
       {
-        "target": "BO09",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -387,6 +391,10 @@
       {
         "target": "BO05",
         "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": 1
       }
     ],
     "loses": [
@@ -395,7 +403,9 @@
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB103"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -416,11 +426,13 @@
     ],
     "loses": [
       {
-        "target": "BO15",
+        "target": "BO07",
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB103"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -441,7 +453,7 @@
     ],
     "loses": [
       {
-        "target": "BO26",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -491,7 +503,7 @@
     ],
     "loses": [
       {
-        "target": "BO21",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -516,7 +528,7 @@
     ],
     "loses": [
       {
-        "target": "BO06",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -556,7 +568,7 @@
     "short_label": "Support neighborhood watch groups",
     "phrase": "support neighborhood watch groups",
     "description": "Would support neighborhood watch groups.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST09",
     "value_tags": "Localism +0.6; Traditional Values +0.3",
     "gains": [
       {
@@ -566,7 +578,7 @@
     ],
     "loses": [
       {
-        "target": "BO17",
+        "target": "BO11",
         "delta": -2
       }
     ],
@@ -591,7 +603,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO23",
         "delta": -2
       }
     ],
@@ -616,7 +628,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -641,7 +653,7 @@
     ],
     "loses": [
       {
-        "target": "BO17",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -666,7 +678,7 @@
     ],
     "loses": [
       {
-        "target": "BO17",
+        "target": "BO20",
         "delta": -2
       }
     ],
@@ -691,7 +703,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO03",
         "delta": -2
       }
     ],
@@ -716,7 +728,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -766,7 +778,7 @@
     ],
     "loses": [
       {
-        "target": "BO23",
+        "target": "BO10",
         "delta": -2
       }
     ],
@@ -791,7 +803,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO28",
         "delta": -2
       }
     ],
@@ -816,7 +828,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO24",
         "delta": -2
       }
     ],
@@ -866,7 +878,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -881,7 +893,7 @@
     "short_label": "Strengthen freedom of information requests",
     "phrase": "strengthen freedom of information requests",
     "description": "Would strengthen freedom of information requests.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST09",
     "value_tags": "Civil Liberties +0.8; Democratic Norms +0.6",
     "gains": [
       {
@@ -916,7 +928,7 @@
     ],
     "loses": [
       {
-        "target": "BO15",
+        "target": "BO17",
         "delta": -2
       }
     ],
@@ -941,7 +953,7 @@
     ],
     "loses": [
       {
-        "target": "BO15",
+        "target": "BO24",
         "delta": -2
       }
     ],
@@ -981,7 +993,7 @@
     "short_label": "Require government data to be published in open formats",
     "phrase": "require government data to be published in open formats",
     "description": "Would require government data to be published in open formats.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST18",
     "value_tags": "Technocratic +0.6; Democratic Norms +0.6",
     "gains": [
       {
@@ -991,11 +1003,13 @@
     ],
     "loses": [
       {
-        "target": "BO03",
+        "target": "BO17",
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB164"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -1016,7 +1030,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -1087,6 +1101,10 @@
       {
         "target": "BO09",
         "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 1
       }
     ],
     "loses": [
@@ -1116,7 +1134,7 @@
     ],
     "loses": [
       {
-        "target": "BO24",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -1141,7 +1159,7 @@
     ],
     "loses": [
       {
-        "target": "BO24",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -1212,11 +1230,15 @@
       {
         "target": "BO10",
         "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO26",
         "delta": -2
       }
     ],
@@ -1266,7 +1288,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -1295,7 +1317,10 @@
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB053",
+      "CB054"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -1337,11 +1362,15 @@
       {
         "target": "BO10",
         "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -1366,7 +1395,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO24",
         "delta": -2
       }
     ],
@@ -1391,7 +1420,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -1437,6 +1466,10 @@
       {
         "target": "BO11",
         "delta": 2
+      },
+      {
+        "target": "BO14",
+        "delta": 1
       }
     ],
     "loses": [
@@ -1512,6 +1545,10 @@
       {
         "target": "BO11",
         "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": 1
       }
     ],
     "loses": [
@@ -1541,7 +1578,7 @@
     ],
     "loses": [
       {
-        "target": "BO23",
+        "target": "BO21",
         "delta": -2
       }
     ],
@@ -1566,7 +1603,7 @@
     ],
     "loses": [
       {
-        "target": "BO19",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -1591,7 +1628,7 @@
     ],
     "loses": [
       {
-        "target": "BO04",
+        "target": "BO11",
         "delta": -2
       }
     ],
@@ -1666,7 +1703,7 @@
     ],
     "loses": [
       {
-        "target": "BO23",
+        "target": "BO21",
         "delta": -2
       }
     ],
@@ -1716,7 +1753,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -1766,7 +1803,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -1791,7 +1828,7 @@
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO16",
         "delta": -2
       }
     ],
@@ -1806,7 +1843,7 @@
     "short_label": "Fund craft workshops in vacant shopfronts",
     "phrase": "fund craft workshops in vacant shopfronts",
     "description": "Would fund craft workshops in vacant shopfronts.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST15",
     "value_tags": "Traditional Values +0.5; Localism +0.5; Federal Spending +0.3",
     "gains": [
       {
@@ -1816,7 +1853,7 @@
     ],
     "loses": [
       {
-        "target": "BO11",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -1837,11 +1874,15 @@
       {
         "target": "BO13",
         "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO11",
+        "target": "BO09",
         "delta": -2
       }
     ],
@@ -1856,7 +1897,7 @@
     "short_label": "Fund a national craft museum",
     "phrase": "fund a national craft museum",
     "description": "Would fund a national craft museum.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST15",
     "value_tags": "Traditional Values +0.6; Federal Spending +0.4",
     "gains": [
       {
@@ -1866,7 +1907,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO29",
         "delta": -2
       }
     ],
@@ -1895,7 +1936,9 @@
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB145"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -1916,7 +1959,7 @@
     ],
     "loses": [
       {
-        "target": "BO23",
+        "target": "BO06",
         "delta": -2
       }
     ],
@@ -1945,7 +1988,9 @@
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB141"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -1962,11 +2007,15 @@
       {
         "target": "BO14",
         "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO23",
         "delta": -2
       }
     ],
@@ -1991,7 +2040,7 @@
     ],
     "loses": [
       {
-        "target": "BO23",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -2006,7 +2055,7 @@
     "short_label": "Publish real-time delay data for every line",
     "phrase": "publish real-time delay data for every line",
     "description": "Would publish real-time delay data for every line.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST15",
     "value_tags": "Technocratic +0.6; Democratic Norms +0.3",
     "gains": [
       {
@@ -2016,7 +2065,7 @@
     ],
     "loses": [
       {
-        "target": "BO03",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -2062,11 +2111,15 @@
       {
         "target": "BO15",
         "delta": 3
+      },
+      {
+        "target": "BO20",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO23",
         "delta": -2
       }
     ],
@@ -2087,15 +2140,21 @@
       {
         "target": "BO15",
         "delta": 2
+      },
+      {
+        "target": "BO13",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO11",
+        "target": "BO27",
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB274"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -2112,6 +2171,10 @@
       {
         "target": "BO15",
         "delta": 2
+      },
+      {
+        "target": "BO13",
+        "delta": 1
       }
     ],
     "loses": [
@@ -2145,7 +2208,9 @@
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB203"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -2191,7 +2256,7 @@
     ],
     "loses": [
       {
-        "target": "BO11",
+        "target": "BO09",
         "delta": -2
       }
     ],
@@ -2216,7 +2281,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -2237,11 +2302,15 @@
       {
         "target": "BO15",
         "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO11",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -2266,7 +2335,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO14",
         "delta": -2
       }
     ],
@@ -2291,7 +2360,7 @@
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -2341,7 +2410,7 @@
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO11",
         "delta": -2
       }
     ],
@@ -2356,7 +2425,7 @@
     "short_label": "Move government services online",
     "phrase": "move government services online",
     "description": "Would move government services online.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST18",
     "value_tags": "Technocratic +0.9; Post-Industrialism +0.5",
     "gains": [
       {
@@ -2381,7 +2450,7 @@
     "short_label": "Open public data to start-ups",
     "phrase": "open public data to start-ups",
     "description": "Would open public data to start-ups.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST18",
     "value_tags": "Technocratic +0.6; Post-Industrialism +0.6",
     "gains": [
       {
@@ -2391,11 +2460,13 @@
     ],
     "loses": [
       {
-        "target": "BO03",
+        "target": "BO26",
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB084"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -2437,11 +2508,15 @@
       {
         "target": "BO16",
         "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -2456,7 +2531,7 @@
     "short_label": "Hold local referendums on large projects",
     "phrase": "hold local referendums on large projects",
     "description": "Would hold local referendums on large projects.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST12",
     "value_tags": "Democratic Norms +0.8; Localism +0.6",
     "gains": [
       {
@@ -2466,7 +2541,7 @@
     ],
     "loses": [
       {
-        "target": "BO02",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -2491,7 +2566,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -2516,7 +2591,7 @@
     ],
     "loses": [
       {
-        "target": "BO02",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -2556,7 +2631,7 @@
     "short_label": "Publish every project's full costs for public comment",
     "phrase": "publish every project's full costs for public comment",
     "description": "Would publish every project's full costs for public comment.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST16",
     "value_tags": "Democratic Norms +0.7; Technocratic +0.4",
     "gains": [
       {
@@ -2566,11 +2641,13 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO03",
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB235"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -2581,7 +2658,7 @@
     "short_label": "Let residents vote on local budget priorities",
     "phrase": "let residents vote on local budget priorities",
     "description": "Would let residents vote on local budget priorities.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST16",
     "value_tags": "Democratic Norms +0.8; Localism +0.6",
     "gains": [
       {
@@ -2591,7 +2668,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -2616,7 +2693,7 @@
     ],
     "loses": [
       {
-        "target": "BO02",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -2631,7 +2708,7 @@
     "short_label": "Fund temple preservation",
     "phrase": "fund temple preservation",
     "description": "Would fund temple preservation.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST15",
     "value_tags": "Religious Traditionalism +0.8; Federal Spending +0.4",
     "gains": [
       {
@@ -2641,7 +2718,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO20",
         "delta": -2
       }
     ],
@@ -2666,7 +2743,7 @@
     ],
     "loses": [
       {
-        "target": "BO11",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -2691,7 +2768,7 @@
     ],
     "loses": [
       {
-        "target": "BO11",
+        "target": "BO21",
         "delta": -2
       }
     ],
@@ -2712,11 +2789,15 @@
       {
         "target": "BO19",
         "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO26",
+        "target": "BO04",
         "delta": -2
       }
     ],
@@ -2741,7 +2822,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO20",
         "delta": -2
       }
     ],
@@ -2762,11 +2843,15 @@
       {
         "target": "BO20",
         "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO11",
+        "target": "BO19",
         "delta": -2
       }
     ],
@@ -2816,7 +2901,7 @@
     ],
     "loses": [
       {
-        "target": "BO26",
+        "target": "BO19",
         "delta": -2
       }
     ],
@@ -2841,11 +2926,13 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO05",
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB153"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -2866,7 +2953,7 @@
     ],
     "loses": [
       {
-        "target": "BO11",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -2891,7 +2978,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -2912,11 +2999,15 @@
       {
         "target": "BO20",
         "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO29",
         "delta": -2
       }
     ],
@@ -2931,7 +3022,7 @@
     "short_label": "Let festival organizers close streets without extra fees",
     "phrase": "let festival organizers close streets without extra fees",
     "description": "Would let festival organizers close streets without extra fees.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST15",
     "value_tags": "Localism +0.5; Regulation -0.4; Traditional Values +0.3",
     "gains": [
       {
@@ -2941,7 +3032,7 @@
     ],
     "loses": [
       {
-        "target": "BO17",
+        "target": "BO14",
         "delta": -2
       }
     ],
@@ -2991,7 +3082,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO23",
         "delta": -2
       }
     ],
@@ -3037,6 +3128,10 @@
       {
         "target": "BO21",
         "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": 1
       }
     ],
     "loses": [
@@ -3066,7 +3161,7 @@
     ],
     "loses": [
       {
-        "target": "BO23",
+        "target": "BO09",
         "delta": -2
       }
     ],
@@ -3087,6 +3182,10 @@
       {
         "target": "BO21",
         "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": 1
       }
     ],
     "loses": [
@@ -3116,7 +3215,7 @@
     ],
     "loses": [
       {
-        "target": "BO23",
+        "target": "BO06",
         "delta": -2
       }
     ],
@@ -3141,7 +3240,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -3212,6 +3311,10 @@
       {
         "target": "BO22",
         "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": 1
       }
     ],
     "loses": [
@@ -3241,7 +3344,7 @@
     ],
     "loses": [
       {
-        "target": "BO28",
+        "target": "BO11",
         "delta": -2
       }
     ],
@@ -3306,7 +3409,7 @@
     "short_label": "Publish the full cost of every bill",
     "phrase": "publish the full cost of every bill",
     "description": "Would publish the full cost of every bill.",
-    "hearing_stage": "ST16",
+    "hearing_stage": "ST18",
     "value_tags": "Technocratic +0.6; Democratic Norms +0.4",
     "gains": [
       {
@@ -3320,7 +3423,9 @@
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB235"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -3341,11 +3446,14 @@
     ],
     "loses": [
       {
-        "target": "BO06",
+        "target": "BO03",
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB184",
+      "CB232"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -3366,7 +3474,7 @@
     ],
     "loses": [
       {
-        "target": "BO06",
+        "target": "BO21",
         "delta": -2
       }
     ],
@@ -3416,7 +3524,7 @@
     ],
     "loses": [
       {
-        "target": "BO09",
+        "target": "BO26",
         "delta": -2
       }
     ],
@@ -3441,7 +3549,7 @@
     ],
     "loses": [
       {
-        "target": "BO04",
+        "target": "BO09",
         "delta": -2
       }
     ],
@@ -3466,7 +3574,7 @@
     ],
     "loses": [
       {
-        "target": "BO09",
+        "target": "BO26",
         "delta": -2
       }
     ],
@@ -3491,7 +3599,7 @@
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO30",
         "delta": -2
       }
     ],
@@ -3566,7 +3674,7 @@
     ],
     "loses": [
       {
-        "target": "BO06",
+        "target": "BO09",
         "delta": -2
       }
     ],
@@ -3591,7 +3699,7 @@
     ],
     "loses": [
       {
-        "target": "BO04",
+        "target": "BO21",
         "delta": -2
       }
     ],
@@ -3631,7 +3739,7 @@
     "short_label": "Waive licensing fees for micro-enterprises",
     "phrase": "waive licensing fees for micro-enterprises",
     "description": "Would waive licensing fees for micro-enterprises.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST16",
     "value_tags": "Regulation -0.5; Taxation -0.3",
     "gains": [
       {
@@ -3641,7 +3749,7 @@
     ],
     "loses": [
       {
-        "target": "BO09",
+        "target": "BO26",
         "delta": -2
       }
     ],
@@ -3666,7 +3774,7 @@
     ],
     "loses": [
       {
-        "target": "BO24",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -3682,7 +3790,7 @@
     "phrase": "give small firms cheap loans for equipment",
     "description": "Would give small firms cheap loans for equipment.",
     "hearing_stage": "ST16",
-    "value_tags": "Federal Spending +0.4; Economic Liberalization +0.3",
+    "value_tags": "Federal Spending +0.4; Industrialism +0.3",
     "gains": [
       {
         "target": "BO25",
@@ -3691,7 +3799,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO24",
         "delta": -2
       }
     ],
@@ -3731,7 +3839,7 @@
     "short_label": "Give buyers a cooling-off period",
     "phrase": "give buyers a cooling-off period",
     "description": "Would give buyers a cooling-off period.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST09",
     "value_tags": "Regulation +0.6; Liberal Rights +0.3",
     "gains": [
       {
@@ -3756,7 +3864,7 @@
     "short_label": "Require plain-language contracts",
     "phrase": "require plain-language contracts",
     "description": "Would require plain-language contracts.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST09",
     "value_tags": "Regulation +0.5; Technocratic +0.3",
     "gains": [
       {
@@ -3766,7 +3874,7 @@
     ],
     "loses": [
       {
-        "target": "BO25",
+        "target": "BO24",
         "delta": -2
       }
     ],
@@ -3831,7 +3939,7 @@
     "short_label": "Publish product safety recalls in one public list",
     "phrase": "publish product safety recalls in one public list",
     "description": "Would publish product safety recalls in one public list.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST09",
     "value_tags": "Regulation +0.5; Technocratic +0.5",
     "gains": [
       {
@@ -3841,7 +3949,7 @@
     ],
     "loses": [
       {
-        "target": "BO24",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -3891,7 +3999,7 @@
     ],
     "loses": [
       {
-        "target": "BO25",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -3916,7 +4024,7 @@
     ],
     "loses": [
       {
-        "target": "BO07",
+        "target": "BO30",
         "delta": -2
       }
     ],
@@ -3931,7 +4039,7 @@
     "short_label": "Fund bike lanes in city centers",
     "phrase": "fund bike lanes in city centers",
     "description": "Would fund bike lanes in city centers.",
-    "hearing_stage": "ST15",
+    "hearing_stage": "ST10",
     "value_tags": "Environmentalism +0.5; Post-Industrialism +0.4",
     "gains": [
       {
@@ -3941,7 +4049,7 @@
     ],
     "loses": [
       {
-        "target": "BO07",
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -3991,11 +4099,13 @@
     ],
     "loses": [
       {
-        "target": "BO26",
+        "target": "BO06",
         "delta": -2
       }
     ],
-    "excludes": null,
+    "excludes": [
+      "CB152"
+    ],
     "each_level_effect": null,
     "amend_options": null
   },
@@ -4016,7 +4126,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO30",
         "delta": -2
       }
     ],
@@ -4031,7 +4141,7 @@
     "short_label": "Open vacant city lots to community gardens",
     "phrase": "open vacant city lots to community gardens",
     "description": "Would open vacant city lots to community gardens.",
-    "hearing_stage": "ST15",
+    "hearing_stage": "ST10",
     "value_tags": "Localism +0.5; Environmentalism +0.3",
     "gains": [
       {
@@ -4041,7 +4151,7 @@
     ],
     "loses": [
       {
-        "target": "BO01",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -4062,11 +4172,15 @@
       {
         "target": "BO28",
         "delta": 3
+      },
+      {
+        "target": "BO29",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO07",
         "delta": -2
       }
     ],
@@ -4116,7 +4230,7 @@
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO15",
         "delta": -2
       }
     ],
@@ -4162,6 +4276,10 @@
       {
         "target": "BO28",
         "delta": 2
+      },
+      {
+        "target": "BO29",
+        "delta": 1
       }
     ],
     "loses": [
@@ -4191,7 +4309,7 @@
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO23",
         "delta": -2
       }
     ],
@@ -4212,6 +4330,10 @@
       {
         "target": "BO29",
         "delta": 2
+      },
+      {
+        "target": "BO28",
+        "delta": 1
       }
     ],
     "loses": [
@@ -4241,7 +4363,7 @@
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO15",
         "delta": -2
       }
     ],
@@ -4266,7 +4388,7 @@
     ],
     "loses": [
       {
-        "target": "BO10",
+        "target": "BO08",
         "delta": -2
       }
     ],
@@ -4316,7 +4438,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -4366,7 +4488,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -4387,11 +4509,15 @@
       {
         "target": "BO30",
         "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": 1
       }
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -4412,6 +4538,10 @@
       {
         "target": "BO30",
         "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": 1
       }
     ],
     "loses": [
@@ -4441,7 +4571,7 @@
     ],
     "loses": [
       {
-        "target": "BO27",
+        "target": "BO05",
         "delta": -2
       }
     ],
@@ -4466,7 +4596,7 @@
     ],
     "loses": [
       {
-        "target": "BO05",
+        "target": "BO27",
         "delta": -2
       }
     ],
@@ -4481,7 +4611,7 @@
     "short_label": "Support remote work hubs in villages",
     "phrase": "support remote work hubs in villages",
     "description": "Would support remote work hubs in villages.",
-    "hearing_stage": "ST17",
+    "hearing_stage": "ST15",
     "value_tags": "Rural Focus +0.6; Post-Industrialism +0.5",
     "gains": [
       {
