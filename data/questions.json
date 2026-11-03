@@ -69918,7 +69918,7 @@
     },
     {
       "id": "S2298",
-      "text": "Why should Yezo build a financial hub zone in Sapporo?",
+      "text": "Should Sapporo be built up as a financial center?",
       "theme": "Build a financial hub zone in Sapporo",
       "grades": {
         "Earnest": "S",
@@ -69966,7 +69966,7 @@
     },
     {
       "id": "S2300",
-      "text": "The Financial Industry Association wants us to build a financial hub zone in Sapporo. Why should everyone else care?",
+      "text": "Rural groups fear a hub will pull firms and jobs from the regions. Your answer?",
       "theme": "Build a financial hub zone in Sapporo",
       "grades": {
         "Earnest": "M",
@@ -69990,7 +69990,7 @@
     },
     {
       "id": "S2301",
-      "text": "What would it mean for people like me if we build a financial hub zone in Sapporo?",
+      "text": "Would a financial hub bring well-paid jobs to Hokkaido graduates?",
       "theme": "Build a financial hub zone in Sapporo",
       "grades": {
         "Earnest": "M",
@@ -70014,7 +70014,7 @@
     },
     {
       "id": "S2302",
-      "text": "If we build a financial hub zone in Sapporo, how would you make sure it is done fairly and on schedule?",
+      "text": "Who supervises firms in the hub so special rules do not invite risky deals?",
       "theme": "Build a financial hub zone in Sapporo",
       "grades": {
         "Earnest": "S",
@@ -70062,7 +70062,7 @@
     },
     {
       "id": "S2304",
-      "text": "Is there a smaller step we could try before we build a financial hub zone in Sapporo?",
+      "text": "Could the hub start with existing firms before new incentives are offered?",
       "theme": "Build a financial hub zone in Sapporo",
       "grades": {
         "Earnest": "M",
@@ -70110,7 +70110,7 @@
     },
     {
       "id": "S2306",
-      "text": "Why should Yezo let foreign banks open branches in Hokkaido?",
+      "text": "Should foreign banks be allowed to open branches in Hokkaido?",
       "theme": "Let foreign banks open branches in Hokkaido",
       "grades": {
         "Earnest": "S",
@@ -70158,7 +70158,7 @@
     },
     {
       "id": "S2308",
-      "text": "The Financial Industry Association wants us to let foreign banks open branches in Hokkaido. Why should everyone else care?",
+      "text": "Traditionalists fear foreign control of local money. How do you answer them?",
       "theme": "Let foreign banks open branches in Hokkaido",
       "grades": {
         "Earnest": "M",
@@ -70182,7 +70182,7 @@
     },
     {
       "id": "S2309",
-      "text": "What would it mean for people like me if we let foreign banks open branches in Hokkaido?",
+      "text": "Would foreign banks give my business more choice of lenders?",
       "theme": "Let foreign banks open branches in Hokkaido",
       "grades": {
         "Earnest": "M",
@@ -70206,7 +70206,7 @@
     },
     {
       "id": "S2310",
-      "text": "If we let foreign banks open branches in Hokkaido, how would you make sure it is done fairly and on schedule?",
+      "text": "Who supervises foreign branches, and under whose rules?",
       "theme": "Let foreign banks open branches in Hokkaido",
       "grades": {
         "Earnest": "S",
@@ -70254,7 +70254,7 @@
     },
     {
       "id": "S2312",
-      "text": "Is there a smaller step we could try before we let foreign banks open branches in Hokkaido?",
+      "text": "Could foreign banks partner with local banks instead of opening their own branches?",
       "theme": "Let foreign banks open branches in Hokkaido",
       "grades": {
         "Earnest": "M",
@@ -70302,7 +70302,7 @@
     },
     {
       "id": "S2314",
-      "text": "Why should Yezo speed approval of new financial products?",
+      "text": "Should new financial products reach the market faster?",
       "theme": "Speed approval of new financial products",
       "grades": {
         "Earnest": "S",
@@ -70350,7 +70350,7 @@
     },
     {
       "id": "S2316",
-      "text": "The Financial Industry Association wants us to speed approval of new financial products. Why should everyone else care?",
+      "text": "Consumer groups warn faster approval means less scrutiny. What do you tell them?",
       "theme": "Speed approval of new financial products",
       "grades": {
         "Earnest": "M",
@@ -70374,7 +70374,7 @@
     },
     {
       "id": "S2317",
-      "text": "What would it mean for people like me if we speed approval of new financial products?",
+      "text": "Would faster approval give savers like me better options for our money?",
       "theme": "Speed approval of new financial products",
       "grades": {
         "Earnest": "M",
@@ -70398,7 +70398,7 @@
     },
     {
       "id": "S2318",
-      "text": "If we speed approval of new financial products, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we catch a harmful product once it is already on sale?",
       "theme": "Speed approval of new financial products",
       "grades": {
         "Earnest": "S",
@@ -70446,7 +70446,7 @@
     },
     {
       "id": "S2320",
-      "text": "Is there a smaller step we could try before we speed approval of new financial products?",
+      "text": "Could products be approved faster only for professional investors at first?",
       "theme": "Speed approval of new financial products",
       "grades": {
         "Earnest": "M",
@@ -70491,7 +70491,7 @@
     },
     {
       "id": "S2322",
-      "text": "Why should Yezo fund financial literacy classes in schools?",
+      "text": "Should schools teach children how to manage money?",
       "theme": "Fund financial literacy classes in schools",
       "grades": {
         "Earnest": "S",
@@ -70533,7 +70533,7 @@
     },
     {
       "id": "S2324",
-      "text": "The Financial Industry Association wants us to fund financial literacy classes in schools. Why should everyone else care?",
+      "text": "Teachers' unions say class time is already full. How do you answer them?",
       "theme": "Fund financial literacy classes in schools",
       "grades": {
         "Earnest": "M",
@@ -70554,7 +70554,7 @@
     },
     {
       "id": "S2325",
-      "text": "What would it mean for people like me if we fund financial literacy classes in schools?",
+      "text": "Would money classes have stopped me signing that first credit card deal?",
       "theme": "Fund financial literacy classes in schools",
       "grades": {
         "Earnest": "M",
@@ -70575,7 +70575,7 @@
     },
     {
       "id": "S2326",
-      "text": "If we fund financial literacy classes in schools, how would you make sure it is done fairly and on schedule?",
+      "text": "Who writes the lessons, so banks cannot use them to advertise?",
       "theme": "Fund financial literacy classes in schools",
       "grades": {
         "Earnest": "S",
@@ -70617,7 +70617,7 @@
     },
     {
       "id": "S2328",
-      "text": "Is there a smaller step we could try before we fund financial literacy classes in schools?",
+      "text": "Could money lessons be part of existing math classes instead?",
       "theme": "Fund financial literacy classes in schools",
       "grades": {
         "Earnest": "M",
@@ -70662,7 +70662,7 @@
     },
     {
       "id": "S2330",
-      "text": "Why should Yezo make large firms pay suppliers on time?",
+      "text": "Should large firms be made to pay their suppliers on time?",
       "theme": "Make large firms pay suppliers on time",
       "grades": {
         "Earnest": "S",
@@ -70710,7 +70710,7 @@
     },
     {
       "id": "S2332",
-      "text": "The Small Business Owners' Association wants us to make large firms pay suppliers on time. Why should everyone else care?",
+      "text": "Large firms say payment terms are a private matter. What is your answer?",
       "theme": "Make large firms pay suppliers on time",
       "grades": {
         "Earnest": "M",
@@ -70734,7 +70734,7 @@
     },
     {
       "id": "S2333",
-      "text": "What would it mean for people like me if we make large firms pay suppliers on time?",
+      "text": "Would prompt payment stop my small workshop waiting so long to be paid?",
       "theme": "Make large firms pay suppliers on time",
       "grades": {
         "Earnest": "M",
@@ -70758,7 +70758,7 @@
     },
     {
       "id": "S2334",
-      "text": "If we make large firms pay suppliers on time, how would you make sure it is done fairly and on schedule?",
+      "text": "Who enforces the payment deadline, and what penalty applies?",
       "theme": "Make large firms pay suppliers on time",
       "grades": {
         "Earnest": "S",
@@ -70806,7 +70806,7 @@
     },
     {
       "id": "S2336",
-      "text": "Is there a smaller step we could try before we make large firms pay suppliers on time?",
+      "text": "Could late payers owe interest instead of facing a strict deadline?",
       "theme": "Make large firms pay suppliers on time",
       "grades": {
         "Earnest": "M",
@@ -70854,7 +70854,7 @@
     },
     {
       "id": "S2338",
-      "text": "Why should Yezo give small firms cheap loans for equipment?",
+      "text": "Should the state lend small firms money for equipment at low rates?",
       "theme": "Give small firms cheap loans for equipment",
       "grades": {
         "Earnest": "S",
@@ -70902,7 +70902,7 @@
     },
     {
       "id": "S2340",
-      "text": "The Small Business Owners' Association wants us to give small firms cheap loans for equipment. Why should everyone else care?",
+      "text": "Banks say public loans crowd them out. How do you answer them?",
       "theme": "Give small firms cheap loans for equipment",
       "grades": {
         "Earnest": "M",
@@ -70926,7 +70926,7 @@
     },
     {
       "id": "S2341",
-      "text": "What would it mean for people like me if we give small firms cheap loans for equipment?",
+      "text": "Would a cheap loan let my bakery buy a new oven?",
       "theme": "Give small firms cheap loans for equipment",
       "grades": {
         "Earnest": "M",
@@ -70950,7 +70950,7 @@
     },
     {
       "id": "S2342",
-      "text": "If we give small firms cheap loans for equipment, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop the loans going to firms that cannot repay?",
       "theme": "Give small firms cheap loans for equipment",
       "grades": {
         "Earnest": "S",
@@ -70998,7 +70998,7 @@
     },
     {
       "id": "S2344",
-      "text": "Is there a smaller step we could try before we give small firms cheap loans for equipment?",
+      "text": "Could the state guarantee bank loans instead of lending directly?",
       "theme": "Give small firms cheap loans for equipment",
       "grades": {
         "Earnest": "M",
@@ -71046,7 +71046,7 @@
     },
     {
       "id": "S2346",
-      "text": "Why should Yezo cap bank fees?",
+      "text": "Should bank fees be capped by law?",
       "theme": "Cap bank fees",
       "grades": {
         "Earnest": "S",
@@ -71094,7 +71094,7 @@
     },
     {
       "id": "S2348",
-      "text": "The Consumer Advocacy Network wants us to cap bank fees. Why should everyone else care?",
+      "text": "Banks say caps will mean fewer services for small customers. What do you say?",
       "theme": "Cap bank fees",
       "grades": {
         "Earnest": "M",
@@ -71118,7 +71118,7 @@
     },
     {
       "id": "S2349",
-      "text": "What would it mean for people like me if we cap bank fees?",
+      "text": "Would a cap stop my bank charging me to take out my own money?",
       "theme": "Cap bank fees",
       "grades": {
         "Earnest": "M",
@@ -71142,7 +71142,7 @@
     },
     {
       "id": "S2350",
-      "text": "If we cap bank fees, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop banks adding new fees to get around the cap?",
       "theme": "Cap bank fees",
       "grades": {
         "Earnest": "S",
@@ -71190,7 +71190,7 @@
     },
     {
       "id": "S2352",
-      "text": "Is there a smaller step we could try before we cap bank fees?",
+      "text": "Could caps apply only to basic accounts and cash withdrawals?",
       "theme": "Cap bank fees",
       "grades": {
         "Earnest": "M",
@@ -71238,7 +71238,7 @@
     },
     {
       "id": "S2354",
-      "text": "Why should Yezo let consumers sue together over defective goods?",
+      "text": "Should consumers be able to sue together over defective goods?",
       "theme": "Let consumers sue together over defective goods",
       "grades": {
         "Earnest": "S",
@@ -71286,7 +71286,7 @@
     },
     {
       "id": "S2356",
-      "text": "The Consumer Advocacy Network wants us to let consumers sue together over defective goods. Why should everyone else care?",
+      "text": "Manufacturers fear endless lawsuits. How do you answer them?",
       "theme": "Let consumers sue together over defective goods",
       "grades": {
         "Earnest": "M",
@@ -71310,7 +71310,7 @@
     },
     {
       "id": "S2357",
-      "text": "What would it mean for people like me if we let consumers sue together over defective goods?",
+      "text": "Would a group case let my neighbors and me recover the cost of faulty heaters?",
       "theme": "Let consumers sue together over defective goods",
       "grades": {
         "Earnest": "M",
@@ -71334,7 +71334,7 @@
     },
     {
       "id": "S2358",
-      "text": "If we let consumers sue together over defective goods, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we keep group cases from being driven by lawyers' fees?",
       "theme": "Let consumers sue together over defective goods",
       "grades": {
         "Earnest": "S",
@@ -71382,7 +71382,7 @@
     },
     {
       "id": "S2360",
-      "text": "Is there a smaller step we could try before we let consumers sue together over defective goods?",
+      "text": "Could a public complaints body handle cases before anyone goes to court?",
       "theme": "Let consumers sue together over defective goods",
       "grades": {
         "Earnest": "M",
@@ -71430,7 +71430,7 @@
     },
     {
       "id": "S2362",
-      "text": "Why should Yezo publish product safety recalls in one public list?",
+      "text": "Should every product recall be published in one public list?",
       "theme": "Publish product safety recalls in one public list",
       "grades": {
         "Earnest": "S",
@@ -71478,7 +71478,7 @@
     },
     {
       "id": "S2364",
-      "text": "The Consumer Advocacy Network wants us to publish product safety recalls in one public list. Why should everyone else care?",
+      "text": "Manufacturers fear the list will damage their brands. What do you say?",
       "theme": "Publish product safety recalls in one public list",
       "grades": {
         "Earnest": "M",
@@ -71502,7 +71502,7 @@
     },
     {
       "id": "S2365",
-      "text": "What would it mean for people like me if we publish product safety recalls in one public list?",
+      "text": "Would one list let me check whether my child's car seat was recalled?",
       "theme": "Publish product safety recalls in one public list",
       "grades": {
         "Earnest": "M",
@@ -71526,7 +71526,7 @@
     },
     {
       "id": "S2366",
-      "text": "If we publish product safety recalls in one public list, how would you make sure it is done fairly and on schedule?",
+      "text": "Who keeps the list complete and accurate?",
       "theme": "Publish product safety recalls in one public list",
       "grades": {
         "Earnest": "S",
@@ -71574,7 +71574,7 @@
     },
     {
       "id": "S2368",
-      "text": "Is there a smaller step we could try before we publish product safety recalls in one public list?",
+      "text": "Could firms be required to notify buyers directly instead?",
       "theme": "Publish product safety recalls in one public list",
       "grades": {
         "Earnest": "M",
@@ -71622,7 +71622,7 @@
     },
     {
       "id": "S2370",
-      "text": "Why should Yezo set up a free consumer complaint line?",
+      "text": "Should consumers have a free line to report bad deals?",
       "theme": "Set up a free consumer complaint line",
       "grades": {
         "Earnest": "S",
@@ -71670,7 +71670,7 @@
     },
     {
       "id": "S2372",
-      "text": "The Consumer Advocacy Network wants us to set up a free consumer complaint line. Why should everyone else care?",
+      "text": "Business fears a flood of unfounded complaints. How do you answer them?",
       "theme": "Set up a free consumer complaint line",
       "grades": {
         "Earnest": "M",
@@ -71694,7 +71694,7 @@
     },
     {
       "id": "S2373",
-      "text": "What would it mean for people like me if we set up a free consumer complaint line?",
+      "text": "Would a complaint line help my mother when a salesman cheats her?",
       "theme": "Set up a free consumer complaint line",
       "grades": {
         "Earnest": "M",
@@ -71718,7 +71718,7 @@
     },
     {
       "id": "S2374",
-      "text": "If we set up a free consumer complaint line, how would you make sure it is done fairly and on schedule?",
+      "text": "Who follows up the complaints, and do callers hear back?",
       "theme": "Set up a free consumer complaint line",
       "grades": {
         "Earnest": "S",
@@ -71766,7 +71766,7 @@
     },
     {
       "id": "S2376",
-      "text": "Is there a smaller step we could try before we set up a free consumer complaint line?",
+      "text": "Could existing town consumer offices take calls instead of a new line?",
       "theme": "Set up a free consumer complaint line",
       "grades": {
         "Earnest": "M",
@@ -71814,7 +71814,7 @@
     },
     {
       "id": "S2378",
-      "text": "Why should Yezo cap rent rises in the cities?",
+      "text": "Should rent increases in the cities be capped?",
       "theme": "Cap rent rises in the cities",
       "grades": {
         "Earnest": "S",
@@ -71862,7 +71862,7 @@
     },
     {
       "id": "S2380",
-      "text": "The Urban Neighborhood Alliance wants us to cap rent rises in the cities. Why should everyone else care?",
+      "text": "Landlords say caps mean fewer homes are built. What is your answer?",
       "theme": "Cap rent rises in the cities",
       "grades": {
         "Earnest": "M",
@@ -71886,7 +71886,7 @@
     },
     {
       "id": "S2381",
-      "text": "What would it mean for people like me if we cap rent rises in the cities?",
+      "text": "Would a cap stop my rent rising faster than my pay?",
       "theme": "Cap rent rises in the cities",
       "grades": {
         "Earnest": "M",
@@ -71910,7 +71910,7 @@
     },
     {
       "id": "S2382",
-      "text": "If we cap rent rises in the cities, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop landlords neglecting repairs under capped rents?",
       "theme": "Cap rent rises in the cities",
       "grades": {
         "Earnest": "S",
@@ -71958,7 +71958,7 @@
     },
     {
       "id": "S2384",
-      "text": "Is there a smaller step we could try before we cap rent rises in the cities?",
+      "text": "Could caps apply only to existing tenants, not to new leases?",
       "theme": "Cap rent rises in the cities",
       "grades": {
         "Earnest": "M",
@@ -72007,7 +72007,7 @@
     },
     {
       "id": "S2386",
-      "text": "Why should Yezo allow denser housing near stations?",
+      "text": "Should denser housing be allowed around stations?",
       "theme": "Allow denser housing near stations",
       "grades": {
         "Earnest": "S",
@@ -72057,7 +72057,7 @@
     },
     {
       "id": "S2388",
-      "text": "The Urban Neighborhood Alliance wants us to allow denser housing near stations. Why should everyone else care?",
+      "text": "Residents fear taller buildings will change their neighborhoods. Your answer?",
       "theme": "Allow denser housing near stations",
       "grades": {
         "Earnest": "M",
@@ -72082,7 +72082,7 @@
     },
     {
       "id": "S2389",
-      "text": "What would it mean for people like me if we allow denser housing near stations?",
+      "text": "Would denser housing let a young couple like us live near the station?",
       "theme": "Allow denser housing near stations",
       "grades": {
         "Earnest": "M",
@@ -72107,7 +72107,7 @@
     },
     {
       "id": "S2390",
-      "text": "If we allow denser housing near stations, how would you make sure it is done fairly and on schedule?",
+      "text": "Who decides how tall new buildings may be, and are residents consulted?",
       "theme": "Allow denser housing near stations",
       "grades": {
         "Earnest": "S",
@@ -72157,7 +72157,7 @@
     },
     {
       "id": "S2392",
-      "text": "Is there a smaller step we could try before we allow denser housing near stations?",
+      "text": "Could density rise near the busiest stations only?",
       "theme": "Allow denser housing near stations",
       "grades": {
         "Earnest": "M",
