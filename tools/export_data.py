@@ -797,6 +797,19 @@ SHEETS = {
             ("Reply Kind", "reply_kind", "str"),
         ],
     },
+    # Lobbyist Lines (2026-11-03, Cameron): what a lobbyist says in their own
+    # organization's voice during a trade. Protect = when naming the part they
+    # want dropped; Deal = when the player picks what to ask for in return.
+    "Lobbyist Lines": {
+        "out": "lobbyist_lines.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Line ID", "line_id", "id"),
+            ("Organization ID", "organization", "str"),
+            ("Kind", "kind", "str"),
+            ("Line (EN)", "line_en", "str"),
+        ],
+    },
     "Visit Answers": {
         "out": "visit_answers.json",
         "optional_sheet": True,
@@ -3738,6 +3751,14 @@ def fold_questions(data, report):
             have = sum(1 for a_ in data.get("visit_answers", []) if a_.get("reply_kind") == kind_ and a_.get("style") == style_name)
             if have < 2:
                 report.error("Visit Answers", f"Reply Kind '{kind_}' has {have} {style_name} answer(s); a question of that kind needs at least two")
+    for r in data.get("lobbyist_lines", []):
+        lid = r.get("line_id")
+        if r.get("organization") not in {b["booster_id"] for b in data.get("boosters", [])}:
+            report.error("Lobbyist Lines", f"{lid}: Organization ID '{r.get('organization')}' is not in the Boosters tab")
+        if r.get("kind") not in ("Protect", "Deal"):
+            report.error("Lobbyist Lines", f"{lid}: Kind '{r.get('kind')}' must be Protect or Deal")
+        if len(str(r.get("line_en") or "").split()) > 20:
+            report.error("Lobbyist Lines", f"{lid}: the line is longer than 20 words")
     patron_pairs = set()
     for r in data.get("patron_bills", []):
         pid_ = r["patron_bill_id"]; org = r.get("organization"); kind = r.get("kind")

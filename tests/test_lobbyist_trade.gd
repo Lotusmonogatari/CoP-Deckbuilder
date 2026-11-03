@@ -335,3 +335,24 @@ func test_tied_orgs_prefer_least_faced() -> void:
 	# Meeting counts never lift a less hurt organization over a more hurt one.
 	var rng2 := RandomNumberGenerator.new()
 	assert_ne(str(LobbyistTrade.pick_lobbyist(effects, "BO01", "", lobbyists, {"L1": 3, "L2": 3}, rng2)["org"]), "BO11")
+
+
+## Lobbyist Lines (2026-11-03): each lobbyist organization speaks in its own voice.
+func test_flavor_line_picks_the_organizations_own_kind() -> void:
+	var lines := [
+		{"organization": "BO07", "kind": "Protect", "line_en": "P7"},
+		{"organization": "BO07", "kind": "Deal", "line_en": "D7"},
+		{"organization": "BO05", "kind": "Protect", "line_en": "P5"},
+	]
+	var rng := RandomNumberGenerator.new()
+	assert_eq(LobbyistTrade.flavor_line(lines, "BO07", "Protect", rng), "P7")
+	assert_eq(LobbyistTrade.flavor_line(lines, "BO07", "Deal", rng), "D7")
+	assert_eq(LobbyistTrade.flavor_line(lines, "BO05", "Deal", rng), "", "no Deal line: silent")
+
+
+func test_every_organization_with_a_lobbyist_has_both_kinds() -> void:
+	var orgs := {}
+	for row: Dictionary in DataDB.lobbyist_lines:
+		orgs[str(row["organization"]) + "|" + str(row["kind"])] = true
+	for org in ["BO03", "BO04", "BO05", "BO06", "BO07", "BO09", "BO10", "BO11", "BO12", "BO15"]:
+		assert_true(orgs.has(org + "|Protect") and orgs.has(org + "|Deal"), org)

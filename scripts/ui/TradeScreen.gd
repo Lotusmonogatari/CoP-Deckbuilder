@@ -189,6 +189,7 @@ func _show_pick() -> void:
 	var asked := str(_trade.get("asked", ""))
 	var hint := Text.say("trade.asked_hint", {"component": _phrase_of(asked)}) if not asked.is_empty() else ""
 	_question_label.text = Text.say("trade.pick_text", {"hint": hint})
+	_say_flavor("Protect")
 	var buttons := _buttons()
 	for slot in range(buttons.size()):
 		buttons[slot].disabled = false
@@ -243,12 +244,23 @@ func _answer(letter: String) -> void:
 # The package
 # ---------------------------------------------------------------------------
 
+## The lobbyist speaks in their organization's own voice (Lobbyist Lines tab),
+## on the banner; silent when the organization has no line of that kind.
+func _say_flavor(kind: String) -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	var line := LobbyistTrade.flavor_line(DataDB.lobbyist_lines, str(_trade.get("org", "")), kind, rng)
+	if not line.is_empty():
+		_banner.say(CueBanner.OPPONENT, str(_trade.get("lobbyist_name", "")), line)
+
+
 func _show_package() -> void:
 	_phase = "package"
 	_chosen = []
 	_caption.text = ""
 	_show_meter(true)
 	_walk_away.visible = true
+	_say_flavor("Deal")
 	_refresh_package()
 
 

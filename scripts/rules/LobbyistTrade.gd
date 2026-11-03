@@ -215,3 +215,13 @@ static func party_for_help(org: String, ties: Array, positions: Array, pick: Str
 			best = party_id
 			most = int(outside[party_id])
 	return best
+
+
+## One of the organization's own lines of `kind` (Protect or Deal) from the
+## Lobbyist Lines tab, at random; "" when the organization has none (2026-11-03).
+static func flavor_line(lines: Array, org_id: String, kind: String, rng: RandomNumberGenerator) -> String:
+	var pool: Array = lines.filter(func(row: Dictionary) -> bool:
+		return str(row.get("organization", "")) == org_id and str(row.get("kind", "")) == kind)
+	if pool.is_empty():
+		return ""
+	return str((pool[rng.randi_range(0, pool.size() - 1)] as Dictionary).get("line_en", ""))

@@ -3145,3 +3145,14 @@ Phase 2 of the component revision plan, limited to the questions (Cameron's call
 | Questions whose Reply Kind did not match what they asked | 738 | 0 |
 
 The 900 templated rows (five per part) were rewritten in 15 batches so each asks about its own policy, covering the principle, the voters, the impact on an ordinary person, oversight and a smaller alternative. Measured but not rewritten: player and opponent component cues (about 80 and 70 wordings across 5,400 lines each) and transition lines (56 wordings across 900). All of it is draft for Cameron.
+
+## Lobbyist Lines: each lobbyist speaks in their organization's voice (2026-11-03, Cameron)
+
+A new workbook tab, **Lobbyist Lines** (`data/lobbyist_lines.json`): Line ID, Organization ID, Kind and Line (EN). It has 20 draft rows, a Protect line and a Deal line for each of the ten organizations with a lobbyist.
+
+| Kind | When it is said |
+|---|---|
+| Protect | When the lobbyist names the part they want dropped (the pick screen) |
+| Deal | When the player chooses what to ask for in return (the package screen) |
+
+Lines are spoken on the lobbyist's own banner (`TradeScreen._say_flavor`, `LobbyistTrade.flavor_line`). If an organization has several rows of one kind, one is picked at random; if it has none, the lobbyist says nothing extra. The exporter checks the Organization ID, the Kind and the 20-word limit. Tests: `test_lobbyist_trade.gd` (+2) and `trade_test` (the Protect line is spoken).

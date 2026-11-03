@@ -1,0 +1,122 @@
+[
+  {
+    "line_id": "LL01",
+    "organization": "BO03",
+    "kind": "Protect",
+    "line_en": "Do not take away what our members built in this district."
+  },
+  {
+    "line_id": "LL02",
+    "organization": "BO03",
+    "kind": "Deal",
+    "line_en": "Our supporters turn out at every election. Remember that when you write the next budget."
+  },
+  {
+    "line_id": "LL03",
+    "organization": "BO04",
+    "kind": "Protect",
+    "line_en": "The towns run these services. Do not decide for us from Sapporo."
+  },
+  {
+    "line_id": "LL04",
+    "organization": "BO04",
+    "kind": "Deal",
+    "line_en": "Give the towns the money and the say, and the mayors will carry it home for you."
+  },
+  {
+    "line_id": "LL05",
+    "organization": "BO05",
+    "kind": "Protect",
+    "line_en": "Every new rule is a cost our members pass on or lay off."
+  },
+  {
+    "line_id": "LL06",
+    "organization": "BO05",
+    "kind": "Deal",
+    "line_en": "Business can live with a lot, if it has time and a clear rule."
+  },
+  {
+    "line_id": "LL07",
+    "organization": "BO06",
+    "kind": "Protect",
+    "line_en": "Our blocks were here before this plan and will be here after it."
+  },
+  {
+    "line_id": "LL08",
+    "organization": "BO06",
+    "kind": "Deal",
+    "line_en": "Put residents in the room and you will find us easy to work with."
+  },
+  {
+    "line_id": "LL09",
+    "organization": "BO07",
+    "kind": "Protect",
+    "line_en": "The sea feeds this coast. Do not trade it away."
+  },
+  {
+    "line_id": "LL10",
+    "organization": "BO07",
+    "kind": "Deal",
+    "line_en": "Look after the harbors and the quota, and we will look after you."
+  },
+  {
+    "line_id": "LL11",
+    "organization": "BO09",
+    "kind": "Protect",
+    "line_en": "Workers paid for the last reform. Not again."
+  },
+  {
+    "line_id": "LL12",
+    "organization": "BO09",
+    "kind": "Deal",
+    "line_en": "Write the protections in plainly and our members will back you."
+  },
+  {
+    "line_id": "LL13",
+    "organization": "BO10",
+    "kind": "Protect",
+    "line_en": "Farming families cannot absorb another shock."
+  },
+  {
+    "line_id": "LL14",
+    "organization": "BO10",
+    "kind": "Deal",
+    "line_en": "Keep the price steady and the paddies working, and you have the villages."
+  },
+  {
+    "line_id": "LL15",
+    "organization": "BO11",
+    "kind": "Protect",
+    "line_en": "It is our generation that inherits this."
+  },
+  {
+    "line_id": "LL16",
+    "organization": "BO11",
+    "kind": "Deal",
+    "line_en": "Give young people a real stake and we will be loud for you."
+  },
+  {
+    "line_id": "LL17",
+    "organization": "BO12",
+    "kind": "Protect",
+    "line_en": "Parents are stretched thin already."
+  },
+  {
+    "line_id": "LL18",
+    "organization": "BO12",
+    "kind": "Deal",
+    "line_en": "Put families first in the detail and we will say so publicly."
+  },
+  {
+    "line_id": "LL19",
+    "organization": "BO15",
+    "kind": "Protect",
+    "line_en": "Some things, once lost, are not rebuilt."
+  },
+  {
+    "line_id": "LL20",
+    "organization": "BO15",
+    "kind": "Deal",
+    "line_en": "Respect what is old and we can talk about what is new."
+  }
+]

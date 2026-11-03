@@ -88,6 +88,19 @@ func _run() -> void:
 	if shown != drops.size() + 1:
 		_fail("the pick shows %d buttons for %d components (plus Keep all)" % [shown, drops.size()])
 	print("  pick: %s" % str(question.text).left(80))
+	# Lobbyist Lines (2026-11-03): the lobbyist says their organization's Protect line.
+	var protect := DataDB.lobbyist_lines.filter(func(row: Dictionary) -> bool:
+		return str(row["organization"]) == str(trade.get("org", "")) and str(row["kind"]) == "Protect")
+	if not protect.is_empty():
+		var banner := screen.find_children("*", "CueBanner", true, false)
+		var said := ""
+		if not banner.is_empty():
+			said = (banner[0] as CueBanner).current_line()
+		var known: Array = protect.map(func(row: Dictionary) -> String: return str(row["line_en"]))
+		if not known.has(said):
+			_fail("the lobbyist did not say a Protect line of their own (banner: '%s')" % said)
+		else:
+			print("  lobbyist says: %s" % said)
 	var components_before: int = (GameState.patron_requests[_bill_id]["components"] as Array).size()
 	if not await _click(screen.get_node("%ChoiceA")):   # give up the first component
 		_finish()

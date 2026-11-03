@@ -66,6 +66,12 @@ NOTES = {
         ("L", "Visit Parties: party IDs (PTxx, semicolon list) the optional member visit may call on, tried in order until one still has seats the player can win over."),
         ("M", "Note: for the designer; never shown."),
     ],
+    "Lobbyist Lines": [
+        ("A", "Line ID, LLxx. Never reused."),
+        ("B", "Organization ID: the Booster ID (BOxx) whose lobbyist says this line. Only organizations with a lobbyist character ever speak; an organization with no row says nothing extra."),
+        ("C", "Kind: Protect (said when the lobbyist names the part they want dropped) or Deal (said when the player chooses what to ask for in return). Several rows of one kind are picked at random."),
+        ("D", "Line (EN): at most 20 words, no clock words, about the organization rather than any one bill part."),
+    ],
     "Party Values": [
         ("A", "Party ID, PTxx: one of the six parties."),
         ("B", "Dimension: one of the 34 policy dimensions (Civil Liberties through Japan Alignment). The same names are used in Bill Components' Value Tags."),

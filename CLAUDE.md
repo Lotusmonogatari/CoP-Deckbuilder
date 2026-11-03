@@ -750,3 +750,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Component system code changes, phase 4 (2026-11-03, Cameron)
 - Custom bill validation, phase 5 (2026-11-03, Cameron)
 - Component questions written from each part, phase 2 (2026-11-03, Cameron)
+- Lobbyist Lines: each lobbyist speaks in their organization's voice (2026-11-03, Cameron)
