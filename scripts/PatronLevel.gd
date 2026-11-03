@@ -176,7 +176,8 @@ static func build_visit(template: Dictionary, bill: Dictionary, rng: RandomNumbe
 	var opponents: Array = []
 	for opponent: Dictionary in DataDB.opponents:
 		opponents.append(opponent)
-	var member := MpVisit.pick_member(opponents, str(party.get("name", "")), committee, GameState.faced_people, rng)
+	var member := MpVisit.pick_member(opponents, str(party.get("name", "")), committee, GameState.faced_people, rng,
+		3, int(DataDB.balance.get("mp_visit_committee_member_percent", 50)))
 	if member.is_empty():
 		return {}
 	# Every part of the bill gets asked about in turn, not only the first.

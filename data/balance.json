@@ -223,5 +223,6 @@
   "difficulty_harder_election_fall_per_week": 2,
   "awareness_gaffes_per_district_point": 65,
   "awareness_gaffes_per_national_point": 35,
+  "mp_visit_committee_member_percent": 50,
   "xp_tiers": {}
 }

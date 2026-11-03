@@ -33,6 +33,7 @@ const WEAK := "W"
 static func pick_party(visit_parties: Array, positions: Array, pick: String = "Yes",
 		rng: RandomNumberGenerator = null) -> String:
 	var open: Array[String] = []
+	var weights: Array[int] = []
 	for party_id: Variant in visit_parties:
 		for position: Dictionary in positions:
 			if str(position.get("party_id", "")) != str(party_id):
@@ -43,9 +44,22 @@ static func pick_party(visit_parties: Array, positions: Array, pick: String = "Y
 					outside += int(position.get("votes_%s" % bucket.to_lower(), 0))
 			if outside > 0:
 				open.append(str(party_id))
+				weights.append(outside)
 	if open.is_empty():
 		return ""
-	return open[rng.randi_range(0, open.size() - 1)] if rng != null else open[0]
+	if rng == null:
+		return open[0]
+	# Weighted by the seats a sway could still win there (component plan 4.7,
+	# 2026-11-03), so a party with 20 open seats is visited more than one with 5.
+	var total := 0
+	for weight in weights:
+		total += weight
+	var roll := rng.randi_range(1, total)
+	for index in open.size():
+		roll -= weights[index]
+		if roll <= 0:
+			return open[index]
+	return open[open.size() - 1]
 
 
 ## Members of `party_name`: opponents with that party (MPs sit on committees).
@@ -60,11 +74,15 @@ static func members_of(opponents: Array, party_name: String) -> Array:
 ## leaning toward people the player has met the fewest times (PeopleDraw).
 ## `committee_name` is the committee's name, the same text an MP's Role holds.
 static func pick_member(opponents: Array, party_name: String, committee_name: String,
-		faced: Dictionary, rng: RandomNumberGenerator, min_committee_pool: int = 3) -> Dictionary:
+		faced: Dictionary, rng: RandomNumberGenerator, min_committee_pool: int = 3,
+		committee_percent: int = 100) -> Dictionary:
 	var pool := members_of(opponents, party_name)
 	var on_committee: Array = pool.filter(func(opponent: Dictionary) -> bool:
 		return str(opponent.get("role", "")).strip_edges() == committee_name)
-	if on_committee.size() >= min_committee_pool:
+	# A committee member only `committee_percent` of the time (Balance: MP Visit:
+	# Committee Member Percent, component plan 4.6, 2026-11-03), for variety.
+	var use_committee := committee_percent >= 100 or (committee_percent > 0 and rng.randi_range(1, 100) <= committee_percent)
+	if use_committee and on_committee.size() >= min_committee_pool:
 		pool = on_committee
 	var drawn := PeopleDraw.pick(pool, "opp_id", faced, 1, [], rng)
 	return drawn[0] if not drawn.is_empty() else {}

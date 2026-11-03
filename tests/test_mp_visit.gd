@@ -337,3 +337,40 @@ func test_the_part_a_lobbyist_asks_for_is_one_the_player_can_trade() -> void:
 		assert_true(asked.is_empty() or (trade["drops"] as Array).has(asked), "%s: asked %s is not tradeable" % [row["patron_bill_id"], asked])
 		assert_true(by_id.has(asked) or asked.is_empty())
 	assert_gt(checked, 5)
+
+
+## Component plan 4.6 (2026-11-03): the committee share follows the lever.
+func test_committee_share_follows_lever() -> void:
+	var opponents: Array = []
+	for i in range(4):
+		opponents.append({"opp_id": "C%d" % i, "party": "Frontier Party", "role": "Committee on Finance"})
+	for i in range(4):
+		opponents.append({"opp_id": "O%d" % i, "party": "Frontier Party", "role": "Committee on War"})
+	var shares := {}
+	for percent in [0, 50, 100]:
+		var rng := RandomNumberGenerator.new()
+		rng.seed = 11
+		var hits := 0
+		for trial in range(400):
+			var member := MpVisit.pick_member(opponents, "Frontier Party", "Committee on Finance", {}, rng, 3, percent)
+			if str(member["role"]) == "Committee on Finance":
+				hits += 1
+		shares[percent] = hits
+	assert_eq(shares[100], 400, "at 100 every visit is a committee member")
+	assert_between(shares[50], 260, 340, "at 50: half certain, half from the whole party (half of which sit there)")
+	assert_between(shares[0], 160, 240, "at 0 the whole party, of which half sit there")
+
+
+## Component plan 4.7 (2026-11-03): parties are drawn by their seats outside Yes.
+func test_pick_party_weights_by_open_seats() -> void:
+	var positions := [
+		{"party_id": "PT01", "votes_yes": 0, "votes_no": 20, "votes_abstain": 0},
+		{"party_id": "PT02", "votes_yes": 10, "votes_no": 3, "votes_abstain": 2},
+	]
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 5
+	var big := 0
+	for trial in range(500):
+		if MpVisit.pick_party(["PT01", "PT02"], positions, "Yes", rng) == "PT01":
+			big += 1
+	assert_between(big, 360, 440, "20 open seats against 5: about four in five")
