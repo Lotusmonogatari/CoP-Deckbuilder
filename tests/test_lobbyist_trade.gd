@@ -321,3 +321,17 @@ func test_organizations_hurt_equally_take_turns_to_send_a_lobbyist() -> void:
 		seen[str(LobbyistTrade.pick_lobbyist(effects, "BO01", "", lobbyists, {}, rng)["org"])] = true
 	assert_true(seen.has("BO05") and seen.has("BO09"), "both equally hurt organizations get a turn")
 	assert_false(seen.has("BO11"), "a less hurt organization is not chosen while a more hurt one can send someone")
+
+
+## Component plan 4.8 (2026-11-03): among equally hurt organizations, the one
+## whose lobbyists the player has met least speaks first.
+func test_tied_orgs_prefer_least_faced() -> void:
+	var effects := [{"target": "BO05", "delta": -2}, {"target": "BO09", "delta": -2}, {"target": "BO11", "delta": -1}]
+	var lobbyists := [{"opp_id": "L1", "affiliation": "BO05"}, {"opp_id": "L2", "affiliation": "BO09"}, {"opp_id": "L3", "affiliation": "BO11"}]
+	for trial in range(20):
+		var rng := RandomNumberGenerator.new()
+		rng.seed = trial
+		assert_eq(str(LobbyistTrade.pick_lobbyist(effects, "BO01", "", lobbyists, {"L1": 3}, rng)["org"]), "BO09")
+	# Meeting counts never lift a less hurt organization over a more hurt one.
+	var rng2 := RandomNumberGenerator.new()
+	assert_ne(str(LobbyistTrade.pick_lobbyist(effects, "BO01", "", lobbyists, {"L1": 3, "L2": 3}, rng2)["org"]), "BO11")

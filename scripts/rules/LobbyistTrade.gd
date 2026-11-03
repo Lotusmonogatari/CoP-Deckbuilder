@@ -22,6 +22,15 @@ const REWARDS := [DONATION, SENTIMENT, PARTY_FAVOR, HELP]
 const TRADE_STAGE := "ST262"
 
 
+
+## How many times the player has met any lobbyist of `org_id` (faced_people).
+static func _times_faced(org_id: String, lobbyists: Array, faced: Dictionary) -> int:
+	var total := 0
+	for person: Dictionary in lobbyists:
+		if str(person.get("affiliation", "")) == org_id:
+			total += int(faced.get(str(person.get("opp_id", "")), 0))
+	return total
+
 ## The organization a lobbyist could speak for: one the bill's merged effects
 ## hurt (negative total), that is not the patron or the ally, and that has a
 ## representative among `lobbyists` (opponents with an affiliation). Returns
@@ -49,7 +58,16 @@ static func pick_lobbyist(effects: Array, patron: String, ally: String, lobbyist
 			var held: Variant = tied[i]
 			tied[i] = tied[j]
 			tied[j] = held
-		ordered.append_array(tied)
+		# Then the organization whose lobbyists the player has met least goes first
+		# (component plan 4.8, 2026-11-03); the shuffle above still breaks ties.
+		var keyed: Array = []
+		for position in tied.size():
+			var org_id := str((tied[position] as Dictionary)["target"])
+			keyed.append([_times_faced(org_id, lobbyists, faced), position, tied[position]])
+		keyed.sort_custom(func(a: Array, b: Array) -> bool:
+			return a[0] < b[0] or (a[0] == b[0] and a[1] < b[1]))
+		for item: Array in keyed:
+			ordered.append(item[2])
 	for entry: Dictionary in ordered:
 		var org := str(entry["target"])
 		var pool: Array = lobbyists.filter(func(person: Dictionary) -> bool:
