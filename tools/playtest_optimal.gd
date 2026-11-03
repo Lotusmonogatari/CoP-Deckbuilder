@@ -93,6 +93,10 @@ func _run() -> void:
 	if not sweep.is_empty():
 		_run_trial_sweep(int(sweep))
 		return
+	var card_trial := OS.get_environment("PLAYTEST_CARD_TRIAL")
+	if not card_trial.is_empty():
+		_run_card_trial(int(card_trial))
+		return
 	var trial := OS.get_environment("PLAYTEST_STAGE_TRIAL")
 	if not trial.is_empty():
 		_run_stage_trials(trial)
@@ -176,6 +180,87 @@ func _run_trial_sweep(trials: int) -> void:
 		_log("SWEEP stage=%s won=%d of=%d cards=%.1f turns=%.1f" % [stage_id, won, trials,
 			float(_cards_played - cards_before) / trials, float(_turns_ended - turns_before) / trials])
 	_log("CARD_TALLY %s" % [_card_tally])
+	get_tree().quit(0)
+
+
+## The discard-card trial (2026-11-03, Cameron). The run's own opening deck,
+## with any discard card in it swapped for an ordinary card, is the baseline.
+## Then each discard card in turn (PLAYTEST_CARD_TRIAL_CARDS="C55;C63", blank =
+## all of them) replaces the baseline's weakest card, and the same rooms are
+## fought `trials` times each, with the same seeds. One "CARDTRIAL" line per
+## deck: wins, fights, how often the card was played and what it scored.
+## PLAYTEST_CARD_TRIAL_STAGES overrides the rooms (semicolon list).
+const CARD_TRIAL_STAGES := ["ST02", "ST03", "ST04", "ST05", "ST06", "ST15", "ST16", "ST17"]
+
+func _run_card_trial(trials: int) -> void:
+	for card: Dictionary in DataDB.cards:
+		var id := str(card.get("card_id", ""))
+		if not GameState.owned_cards.has(id):
+			GameState.owned_cards.append(id)
+	var discard_ids: Array[String] = []
+	var ordinary: Array[String] = []
+	for card: Dictionary in DataDB.cards:
+		var id := str(card.get("card_id", ""))
+		var needs := (0 if card.get("discard_to_play") == null else int(card["discard_to_play"])) \
+			+ (0 if card.get("discard_for_draw") == null else int(card["discard_for_draw"]))
+		if needs > 0:
+			discard_ids.append(id)
+		elif str(card.get("tier", "")) == "1":
+			ordinary.append(id)
+	var wanted_raw := OS.get_environment("PLAYTEST_CARD_TRIAL_CARDS")
+	var wanted: Array = discard_ids.duplicate() if wanted_raw.is_empty() else Array(wanted_raw.split(";"))
+	var stages_raw := OS.get_environment("PLAYTEST_CARD_TRIAL_STAGES")
+	var stages: Array = CARD_TRIAL_STAGES.duplicate() if stages_raw.is_empty() else Array(stages_raw.split(";"))
+
+	# Baseline: the opening deck with no discard card in it.
+	var base: Array[String] = []
+	for id: String in GameState.deck:
+		if discard_ids.has(id):
+			for spare: String in ordinary:
+				if not base.has(spare) and not GameState.deck.has(spare):
+					id = spare
+					break
+		base.append(id)
+	var printed := func(id: String) -> int:
+		var c := DataDB.get_card(id)
+		return int(c.get("self_plus", 0) if c.get("self_plus") != null else 0) \
+			+ int(c.get("opp_minus", 0) if c.get("opp_minus") != null else 0)
+	var weakest := base[0]
+	for id: String in base:
+		if printed.call(id) < printed.call(weakest):
+			weakest = id
+	_log("CARDTRIAL baseline deck %s (weakest %s)" % [base, weakest])
+
+	var decks: Array = [["baseline", base]]
+	for id: Variant in wanted:
+		var deck: Array[String] = base.duplicate()
+		deck[deck.find(weakest)] = str(id)
+		decks.append([str(id), deck])
+	for entry: Array in decks:
+		var deck: Array[String] = entry[1]
+		var refusal := GameState.set_deck(deck)
+		if not refusal.is_empty():
+			_log("CARDTRIAL card=%s refused: %s" % [entry[0], refusal])
+			continue
+		var won := 0
+		var fights := 0
+		var plays_before := int(_card_tally.get(str(entry[0]), 0))
+		var discards_before := _discard_plays
+		for stage_id: Variant in stages:
+			for i in trials:
+				seed(hash("%s:%d" % [stage_id, i]))   # the same fights for every deck
+				var expanded := BattleSetup.expand_level({"level_id": "LVTRIAL", "stage_1": str(stage_id)})
+				var runner := LevelRunner.new(expanded)
+				GameState.begin_level(runner)
+				var before := _wins
+				_play_battle_stage(runner.current_stage())
+				fights += 1
+				if _wins > before:
+					won += 1
+				if GameState.is_in_level():
+					GameState.end_level()
+		_log("CARDTRIAL card=%s won=%d of=%d played=%d discard_plays=%d" % [entry[0], won, fights,
+			int(_card_tally.get(str(entry[0]), 0)) - plays_before, _discard_plays - discards_before])
 	get_tree().quit(0)
 
 
@@ -385,7 +470,7 @@ func _rebuild_deck() -> void:
 
 
 ## What a card is worth on paper, per point of energy spent. Used only to
-## rank cards for deck building; in battle _best_first_card() judges the
+## rank cards for deck building; in battle _best_play() judges the
 ## real numbers for the room.
 func _card_strength(card: Dictionary) -> float:
 	var cost := maxf(float(card.get("cost", 1)), 1.0)
@@ -948,6 +1033,7 @@ func _force_end_stage(outcome: String) -> void:
 ## weighs guard against the attack actually coming, treats a gaffe as a cost
 ## that is worth more the less of the gaffe meter is left, and uses gaffe-
 ## clearing cards when the meter is high.
+var _discard_plays := 0   ## plays of a card that made the bot discard (2026-11-03)
 var _gaffe_price := 0.8      ## support points one gaffe point is worth to avoid (a gaffe is a budget to spend, not a thing to dodge)
 var _draw_value := 2.0       ## support points one drawn card is worth
 const OPPONENT_SMALL := 30    ## an opponent at or under this many supporters can be argued out
@@ -959,10 +1045,12 @@ func _play_best_cards(engine: BattleEngine, repro: String) -> void:
 	while played_this_turn < 20:
 		if engine.state.is_over():
 			return
-		var best_id := _best_first_card(engine)
+		var plan := _best_play(engine)
+		var best_id := str(plan.get("id", ""))
 		if best_id.is_empty():
 			return
-		var result := engine.play_card(best_id)
+		var discards: Array = plan.get("discards", [])
+		var result := engine.play_card(best_id, discards)
 		if not result.get("ok", false):
 			_bug("%s: play_card('%s') was pre-checked as affordable/safe but refused: %s"
 				% [repro, best_id, result.get("reason")])
@@ -971,99 +1059,161 @@ func _play_best_cards(engine: BattleEngine, repro: String) -> void:
 		played_this_turn += 1
 		_cards_played += 1
 		_card_tally[best_id] = int(_card_tally.get(best_id, 0)) + 1
+		if not discards.is_empty():
+			_discard_plays += 1
 
 
-## The first card of the best affordable, gaffe-safe combination in hand,
-## or "" when nothing worth playing remains.
-func _best_first_card(engine: BattleEngine) -> String:
+## What to play next: {"id": card, "discards": [cards]} or {} when nothing is
+## worth playing. The best affordable, gaffe-safe combination of ordinary
+## cards in hand, unless a card that makes you discard does better.
+##
+## Discard cards (2026-11-03, Cameron: the bot had never played one, so no
+## balance figure covered them). The hand is discarded at the end of the turn
+## anyway, so a discard's real price is only what you would otherwise have
+## played this turn: for each playable discard card the bot plans its best
+## follow-up with the energy left, throws away cards outside that plan first
+## (the weakest when it must dip into the plan), and plays the discard card
+## first when the whole turn then scores higher than the best plain turn.
+func _best_play(engine: BattleEngine) -> Dictionary:
 	var state := engine.state
-	var hand: Array = state.hand
-	var count := mini(hand.size(), 8)   # 2^8 combinations at most
-	var costs: Array[int] = []
-	var values: Array[float] = []
-	var gaffes: Array[int] = []
-	var order_keys: Array[float] = []
+	var hand: Array = state.hand.slice(0, mini(state.hand.size(), 8))   # 2^8 combinations at most
+	var scored := {}
+	var plain: Array = []
+	for card_id: Variant in hand:
+		var card := DataDB.get_card(str(card_id))
+		if card.is_empty():
+			continue
+		scored[str(card_id)] = _score_card(engine, card)
+		if engine.discard_required(card) == 0:
+			plain.append(str(card_id))
+
+	var best := _best_combo(plain, scored, state.energy, state.gaffe, state.gaffe_limit)
+	var choice := {}
+	if not (best["members"] as Array).is_empty():
+		choice = {"id": (best["members"] as Array)[0], "discards": []}
+	var best_value: float = best["value"]
+
+	for card_id: Variant in hand:
+		var id := str(card_id)
+		var card := DataDB.get_card(id)
+		var needed := engine.discard_required(card) if not card.is_empty() else 0
+		if needed <= 0 or not engine.play_block(card).is_empty():
+			continue
+		var own: Dictionary = scored[id]
+		var cost: int = own["cost"]
+		if cost > state.energy:
+			continue
+		var gaffe_after := maxi(state.gaffe + int(own["gaffe"]), 0)
+		if gaffe_after >= state.gaffe_limit:
+			continue
+		var others: Array = plain.duplicate()
+		others.erase(id)
+		var follow := _best_combo(others, scored, state.energy - cost, gaffe_after, state.gaffe_limit)
+		var keep: Array = follow["members"]
+		# Throw away what the follow-up does not use, weakest first; then, if
+		# that is not enough, the weakest of the follow-up itself.
+		var spare: Array = (state.hand as Array).filter(func(other: Variant) -> bool:
+			return str(other) != id and not keep.has(str(other)))
+		var weakest := func(a: Variant, b: Variant) -> bool:
+			return _value_of(scored, str(a)) < _value_of(scored, str(b))
+		spare.sort_custom(weakest)
+		var discards: Array = spare.slice(0, needed)
+		var lost := 0.0
+		if discards.size() < needed:
+			var planned: Array = keep.duplicate()
+			planned.sort_custom(weakest)
+			for victim: Variant in planned.slice(0, needed - discards.size()):
+				discards.append(victim)
+				lost += _value_of(scored, str(victim))
+		if discards.size() < needed:
+			continue
+		var total: float = float(own["value"]) + float(follow["value"]) - lost
+		if total > best_value:
+			best_value = total
+			var ids: Array = []
+			for victim: Variant in discards:
+				ids.append(str(victim))
+			choice = {"id": id, "discards": ids}
+	return choice
+
+
+func _value_of(scored: Dictionary, card_id: String) -> float:
+	var entry: Dictionary = scored.get(card_id, {})
+	return maxf(float(entry.get("value", 0.0)), 0.0)
+
+
+## What one card would do in this room, as a score, with its cost, gaffe and
+## the order it should come in within a turn.
+func _score_card(engine: BattleEngine, card: Dictionary) -> Dictionary:
+	var state := engine.state
 	var intent := engine.current_intent()
 	var incoming := float(intent.get("value", 0)) if str(intent.get("verb", "")) == "attack" else 0.0
 	var gaffe_room := maxi(state.gaffe_limit - state.gaffe, 1)
 	# The fewer gaffes left before the stage is lost, the dearer one is.
 	var price := _gaffe_price * (1.0 + 3.0 / float(gaffe_room))
+	var fx := engine.preview(card)
+	var value := float(fx.get("self_plus", 0))
+	if fx.get("opp_minus_counts", true):
+		# Arguing the opponent down to nothing wins outright (CLAUDE.md,
+		# 2026-09-29), and it is the cheap way to win a room whose
+		# opponent starts small — so a card that takes support from a
+		# small opponent is worth more than the same points gained.
+		var opp_weight := 1.0
+		if state.bar != null and state.bar.opponent <= OPPONENT_SMALL:
+			opp_weight = OPPONENT_SMALL_WEIGHT
+		value += opp_weight * float(fx.get("opp_minus", 0))
+	if fx.get("guard_counts", true):
+		var guard := float(fx.get("guard", 0))
+		var useful := minf(guard, maxf(incoming - float(state.block), 0.0))
+		value += useful + 0.3 * (guard - useful)
+	value += _draw_value * float(fx.get("draw", 0))
+	var gaffe := int(fx.get("gaffe", 0))
+	if gaffe > 0:
+		value -= price * float(gaffe)
+	elif gaffe < 0:
+		value += price * float(mini(-gaffe, state.gaffe))   # only worth what there is to clear
+	if bool(fx.get("flags", {}).get("special_triggered", false)):
+		value += SPECIAL_VALUE
+	# Within a combination: buffs and draws first, then gaffe-clearing,
+	# then everything else, so energy and gaffe room are never wasted.
+	var key := float(gaffe)
+	if bool(fx.get("flags", {}).get("special_triggered", false)) or int(fx.get("draw", 0)) > 0:
+		key -= 100.0
+	return {"value": value, "cost": engine.card_cost(card), "gaffe": gaffe, "order": key}
 
-	for i in count:
-		var card := DataDB.get_card(str(hand[i]))
-		if card.is_empty():
-			costs.append(99)
-			values.append(-INF)
-			gaffes.append(0)
-			order_keys.append(0.0)
-			continue
-		# The bot does not play cards that make it discard (2026-10-21): it would
-		# have to choose which of its own planned cards to throw away.
-		if engine.discard_required(card) > 0:
-			costs.append(99)
-			values.append(-INF)
-			gaffes.append(0)
-			order_keys.append(0.0)
-			continue
-		var fx := engine.preview(card)
-		var value := float(fx.get("self_plus", 0))
-		if fx.get("opp_minus_counts", true):
-			# Arguing the opponent down to nothing wins outright (CLAUDE.md,
-			# 2026-09-29), and it is the cheap way to win a room whose
-			# opponent starts small — so a card that takes support from a
-			# small opponent is worth more than the same points gained.
-			var opp_weight := 1.0
-			if state.bar != null and state.bar.opponent <= OPPONENT_SMALL:
-				opp_weight = OPPONENT_SMALL_WEIGHT
-			value += opp_weight * float(fx.get("opp_minus", 0))
-		if fx.get("guard_counts", true):
-			var guard := float(fx.get("guard", 0))
-			var useful := minf(guard, maxf(incoming - float(state.block), 0.0))
-			value += useful + 0.3 * (guard - useful)
-		value += _draw_value * float(fx.get("draw", 0))
-		var gaffe := int(fx.get("gaffe", 0))
-		if gaffe > 0:
-			value -= price * float(gaffe)
-		elif gaffe < 0:
-			value += price * float(mini(-gaffe, state.gaffe))   # only worth what there is to clear
-		if bool(fx.get("flags", {}).get("special_triggered", false)):
-			value += SPECIAL_VALUE
-		costs.append(engine.card_cost(card))
-		values.append(value)
-		gaffes.append(gaffe)
-		# Within a combination: buffs and draws first, then gaffe-clearing,
-		# then everything else, so energy and gaffe room are never wasted.
-		var key := float(gaffe)
-		if bool(fx.get("flags", {}).get("special_triggered", false)) or int(fx.get("draw", 0)) > 0:
-			key -= 100.0
-		order_keys.append(key)
 
+## The best affordable, gaffe-safe combination of `ids`: {"value", "members"},
+## members in the order to play them ("members" empty when nothing is worth it).
+func _best_combo(ids: Array, scored: Dictionary, energy: int, gaffe: int, gaffe_limit: int) -> Dictionary:
 	var best_value := 0.0
-	var best_first := -1
+	var best_members: Array = []
+	var count := ids.size()
 	for mask in range(1, 1 << count):
 		var cost := 0
 		var total := 0.0
-		var members: Array[int] = []
+		var members: Array = []
 		for i in count:
 			if mask & (1 << i):
-				cost += costs[i]
-				total += values[i]
-				members.append(i)
-		if cost > state.energy or total <= best_value:
+				var entry: Dictionary = scored[str(ids[i])]
+				cost += int(entry["cost"])
+				total += float(entry["value"])
+				members.append(str(ids[i]))
+		if cost > energy or total <= best_value:
 			continue
-		members.sort_custom(func(a: int, b: int) -> bool: return order_keys[a] < order_keys[b])
-		var running := state.gaffe
+		members.sort_custom(func(a: String, b: String) -> bool:
+			return float(scored[a]["order"]) < float(scored[b]["order"]))
+		var running := gaffe
 		var safe := true
-		for i in members:
-			running = maxi(running + gaffes[i], 0)
-			if running >= state.gaffe_limit:
+		for id: String in members:
+			running = maxi(running + int(scored[id]["gaffe"]), 0)
+			if running >= gaffe_limit:
 				safe = false
 				break
 		if not safe:
 			continue
 		best_value = total
-		best_first = members[0]
-	return "" if best_first < 0 else str(hand[best_first])
+		best_members = members
+	return {"value": best_value, "members": best_members}
 
 
 ## The adversarial counterpart to _play_best_cards(), used when

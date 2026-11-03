@@ -817,7 +817,7 @@ func _finish() -> void:
 		"items_bought": _items_bought, "items_used": _items_used,
 		"staff": GameState.staff_hired.size(),
 		"gaffes": GameState.lifetime_gaffes,
-		"card_tally": _card_tally, "suit_plays": suit_plays,
+		"card_tally": _card_tally, "discard_plays": _discard_plays, "suit_plays": suit_plays,
 		"stage_type_results": GameState.stage_type_results,
 		"events": _events, "visitors": _visitors,
 		"promises_open": GameState.promises.size(), "promises_broken_unseen": GameState.promises_broken_unseen.size(),

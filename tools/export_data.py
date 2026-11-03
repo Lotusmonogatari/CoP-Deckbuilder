@@ -2437,7 +2437,10 @@ def validate(data, report):
                     "opponents",
                     f"{oid} is listed for stage '{stage_id}', which is not in the Stages tab",
                 )
-        if not opp["stages"]:
+        # A protagonist's own opponent row is kept out of every room on purpose
+        # (you never argue against yourself), so it is not worth a warning.
+        protagonist_names = {str(p.get("name_en", "")) for p in (data.get("player") or {}).get("protagonists", [])}
+        if not opp["stages"] and str(opp.get("name", "")) not in protagonist_names:
             report.warn("opponents", f"{oid} has no Stage listed, so they never appear in a level")
 
     # Who sits where (Cameron, 2026-10-13):
