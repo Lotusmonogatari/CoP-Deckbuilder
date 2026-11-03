@@ -448,29 +448,6 @@ func _announce_open_debate() -> void:
 		Text.say("battle.open_debate.detail", {"opponent": OpponentPresenter.display_name(engine)}))
 
 
-## Who the drawn question is about, live in the Details panel (2026-10-16,
-## Cameron: replaces the old "this question invites an answer" line): the
-## organizations a strong answer pleases and a weak one annoys, and any a
-## strong answer sets back. Empty when the question names nobody.
-func _question_concerns_lines(question: Dictionary) -> Array[String]:
-	var lines: Array[String] = []
-	var pleased := _booster_names_for(question.get("pleases_boosters", []))
-	if not pleased.is_empty():
-		lines.append(Text.say("battle.question_concerns", {"names": pleased}))
-		lines.append(Text.say("battle.question_stakes"))
-	var opposed := _booster_names_for(question.get("displeases_boosters", []))
-	if not opposed.is_empty():
-		lines.append(Text.say("battle.question_sets_back", {"names": opposed}))
-	return lines
-
-
-func _booster_names_for(ids: Array) -> String:
-	var named: Array[String] = []
-	for booster_id: String in ids:
-		named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-	return CauseLines.join(named)
-
-
 ## What just happened, in a question-asking room only: the opponent's own
 ## narration, a bout finishing, or the player's own pass/decline penalty —
 ## everything that used to compete with the question/cue for the CueBanner,

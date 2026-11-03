@@ -49,7 +49,7 @@ No test was found that covers a removed feature. The two click tests that `verif
 **Removed in a second pass (Cameron, 2026-10-31: "delete if nothing uses them"; nothing did, not even by a built-up key):** the Text rows `briefing.between_all`, `briefing.between_resets`, `briefing.res_energy`, `briefing.res_gaffes`, `briefing.res_guard`, `briefing.res_hand`, `briefing.res_support` and `briefing.res_turns` (CarryOverLines' lines); and `briefing.bill_line`, `briefing.sides_for`, `briefing.sides_against` and `stance.nobody` (the StanceLines briefing helpers' lines).
 
 ## Added 2026-11-01
-- `BattleScreen._question_concerns_lines()` and its Text rows (`battle.question_about` and the "pleases / sets back" lines), plus `battle.nobody_pleased`: the Details panel no longer shows them (Cameron's playtest). `StanceLines.stance_chip_rows()` may now be unused there too; check other callers.
+- **Done 2026-11-03 (Cameron: "Go clean up")**: `_question_concerns_lines()`, its helper `_booster_names_for()` and the rows `battle.question_concerns`, `battle.question_stakes`, `battle.question_sets_back` and `battle.nobody_pleased` were removed. Original note: the Details panel no longer shows them (Cameron's playtest). `StanceLines.stance_chip_rows()` may now be unused there too; check other callers.
 
 ## From the stage transition review (2026-11-02)
 
@@ -57,5 +57,5 @@ No test was found that covers a removed feature. The two click tests that `verif
 
 ## From the card face change (2026-11-02, second playtest round)
 
-- Text rows no longer asked for after the card face dropped the audience and bonus commentary and the "Answers this question." line: `card.answers_question`, `card.received_bonus`, `card.bonus_met`, `card.bonus_unmet`, `card.double_met`, `card.double_unmet`, `card.scale_now`, `card.behind_met`, `card.behind_unmet`, `card.gaffe_zero_met`, `card.gaffe_zero_unmet`.
+- **Done 2026-11-03 (Cameron: "Go clean up")**: these 11 rows were deleted from the Text tab. Original note: Text rows no longer asked for after the card face dropped the audience and bonus commentary and the "Answers this question." line: `card.answers_question`, `card.received_bonus`, `card.bonus_met`, `card.bonus_unmet`, `card.double_met`, `card.double_unmet`, `card.scale_now`, `card.behind_met`, `card.behind_unmet`, `card.gaffe_zero_met`, `card.gaffe_zero_unmet`.
 - `SpecialEffects` still records `flags.special_bonus` (how much a conditional bonus added); nothing reads it now.

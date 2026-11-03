@@ -1064,13 +1064,6 @@
     "notes": null
   },
   {
-    "key": "card.answers_question",
-    "where": "Card · effect line",
-    "english": "Answers this question.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
     "key": "card.line",
     "where": "Card · opened card",
     "english": "{suit} · {type} · costs {cost}",
@@ -2020,13 +2013,6 @@
     "where": "Battle screen — details panel",
     "english": "In the room: {mix}.",
     "placeholders": "mix",
-    "notes": null
-  },
-  {
-    "key": "battle.nobody_pleased",
-    "where": "Battle screen — details panel",
-    "english": "Nobody pleased yet.",
-    "placeholders": null,
     "notes": null
   },
   {
@@ -3049,27 +3035,6 @@
     "where": "Office · Important Stakeholders, heading over the National-scope organizations",
     "english": "National",
     "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "battle.question_concerns",
-    "where": "Battle · Details panel, who the drawn question is about",
-    "english": "This question is about: {names}.",
-    "placeholders": "names",
-    "notes": "2026-10-16: replaces battle.question_invites (now unused)."
-  },
-  {
-    "key": "battle.question_stakes",
-    "where": "Battle · Details panel, what a strong or weak answer does to them",
-    "english": "A strong answer pleases them. A weak one annoys them.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "battle.question_sets_back",
-    "where": "Battle · Details panel, organizations a strong answer sets back",
-    "english": "A strong answer sets back: {names}.",
-    "placeholders": "names",
     "notes": null
   },
   {
@@ -6167,13 +6132,6 @@
     "notes": "Line under the next-opponent popup; {who} is the opponent just beaten. Draft."
   },
   {
-    "key": "card.received_bonus",
-    "where": "Card face",
-    "english": "Includes +{count} from the card before.",
-    "placeholders": "count",
-    "notes": "Shown on a card that got a bonus from an earlier card this turn (Work the Room First). Draft."
-  },
-  {
     "key": "card.special_next_bonus",
     "where": "Card face",
     "english": "Your next card this turn gets +{count}.",
@@ -6200,69 +6158,6 @@
     "english": "Ignores {count} of the opponent's Guard.",
     "placeholders": "count",
     "notes": "A card that pierces guard. Draft."
-  },
-  {
-    "key": "card.bonus_met",
-    "where": "Card face",
-    "english": "Includes +{count} because {audience} ≥ {percent}%.",
-    "placeholders": "count, audience, percent",
-    "notes": "A conditional audience bonus that is active in this room now. Draft."
-  },
-  {
-    "key": "card.bonus_unmet",
-    "where": "Card face",
-    "english": "+{count} more to gain if {audience} ≥ {percent}%.",
-    "placeholders": "count, audience, percent",
-    "notes": "A conditional audience bonus that is not active in this room. Draft."
-  },
-  {
-    "key": "card.double_met",
-    "where": "Card face",
-    "english": "Doubled because {audience} ≥ {percent}%.",
-    "placeholders": "audience, percent",
-    "notes": "A doubling card whose condition is met now. Draft."
-  },
-  {
-    "key": "card.double_unmet",
-    "where": "Card face",
-    "english": "Doubled if {audience} ≥ {percent}%.",
-    "placeholders": "audience, percent",
-    "notes": "A doubling card whose condition is not met now. Draft."
-  },
-  {
-    "key": "card.scale_now",
-    "where": "Card face",
-    "english": "+{count} more to gain for every 20% {audience}, now +{now}.",
-    "placeholders": "count, audience, now",
-    "notes": "A card whose gain grows with its audience share; says what it is worth now. Draft."
-  },
-  {
-    "key": "card.behind_met",
-    "where": "Card face",
-    "english": "Includes +{count} because you trail the opponent.",
-    "placeholders": "count",
-    "notes": "A comeback card, active now. Draft."
-  },
-  {
-    "key": "card.behind_unmet",
-    "where": "Card face",
-    "english": "+{count} more to gain if you trail the opponent.",
-    "placeholders": "count",
-    "notes": "A comeback card, not active now. Draft."
-  },
-  {
-    "key": "card.gaffe_zero_met",
-    "where": "Card face",
-    "english": "Includes +{count} because your gaffe meter is 0.",
-    "placeholders": "count",
-    "notes": "A clean-record card, active now. Draft."
-  },
-  {
-    "key": "card.gaffe_zero_unmet",
-    "where": "Card face",
-    "english": "+{count} more to gain if your gaffe meter is 0.",
-    "placeholders": "count",
-    "notes": "A clean-record card, not active now. Draft."
   },
   {
     "key": "office.week_over_button",
