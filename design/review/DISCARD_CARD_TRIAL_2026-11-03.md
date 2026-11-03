@@ -66,3 +66,7 @@ The playtest bots never played a card that makes you discard, so every balance f
 | A | Trim the six strongest: C67, C69 (Tier 1) gain 11/10 → 7; C70 and C68 gain 12 → 9; C63 opponent −9 → −6; C64 opponent −11 → −8 | Brings them to the Tier 3 range (about +10) |
 | B | Make discarding cost something: the discarded cards go out of the deck for the rest of the stage, not to the discard pile | Keeps the numbers; a real price for deep stages |
 | C | Leave as is: discard cards are rare unlocks and meant to feel strong | No change |
+
+## Decision (2026-11-03)
+
+Cameron: **leave as is.** The discard cards are rare unlocks and are meant to feel strong; no card numbers change. The bot keeps playing them, so future balance runs include them.
