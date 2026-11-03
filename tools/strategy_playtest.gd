@@ -296,6 +296,11 @@ func _try_draft() -> bool:
 		if not reason.is_empty():
 			last_reason = reason
 			continue
+		# Like a sensible player (Cameron, 2026-11-03): read the readiness line
+		# first and draft only a bill the influence gates would let you carry now.
+		if not _ready_to_carry(pick):
+			last_reason = "not ready: influence gates unmet"
+			continue
 		if not GameState.start_draft(pick):
 			continue
 		_drafts["started"] = int(_drafts["started"]) + 1
@@ -319,6 +324,16 @@ func _try_draft() -> bool:
 		var refused: Dictionary = _drafts["refused"]
 		refused[last_reason] = int(refused.get(last_reason, 0)) + 1
 	return false
+
+
+## The same check the Draft panel's readiness line makes (VoteInfluence.status
+## for the parties a sway would need), against the player's standing now.
+func _ready_to_carry(pick: Array) -> bool:
+	var bill := DraftBill.bill_for(pick)
+	var status := VoteInfluence.status(DataDB.vote_influence_triggers, GameState.effective_meta(),
+		GameState.booster_standing, int(DataDB.balance.get("vote_influence_default_threshold", 85)),
+		RequestLines.parties_outside_yes(bill))
+	return bool(status.get("ready", false))
 
 
 func _buy_backing() -> void:

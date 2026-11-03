@@ -154,3 +154,12 @@ func test_the_first_weeks_owe_no_dues_on_standard_and_harder_has_no_holiday() ->
 	GameState.week_funds_earned = 100000
 	GameState.calendar["week"] = 0
 	assert_gt(int(GameState.dues_preview()["week_dues"]), 0, "Harder has no holiday")
+
+
+## 2026-11-03 (Cameron): drafting costs 100,000 less on Relaxed and 100,000 more on Harder.
+func test_draft_cost_follows_campaign_pressure() -> void:
+	var base: Dictionary = DataDB.balance_base
+	for pair in [["relaxed", 200000], ["standard", 300000], ["harder", 400000]]:
+		var live := base.duplicate()
+		Difficulty.apply_balance(live, base, pair[0])
+		assert_eq(int(live["draft_bill_funds_cost"]), pair[1], pair[0])

@@ -224,5 +224,7 @@
   "awareness_gaffes_per_district_point": 65,
   "awareness_gaffes_per_national_point": 35,
   "mp_visit_committee_member_percent": 50,
+  "difficulty_relaxed_draft_bill_funds_cost": 200000,
+  "difficulty_harder_draft_bill_funds_cost": 400000,
   "xp_tiers": {}
 }
