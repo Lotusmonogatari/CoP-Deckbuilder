@@ -45,6 +45,8 @@ func _run() -> void:
 	if not _has_prefix(panel, "As things stand the vote runs"):
 		_failures.append("the panel did not preview the vote")
 	go = get_tree().current_scene.find_child("DraftGoButton", true, false) as Button
+	if not _has_prefix(panel, "Hearing: Committee on Finance"):
+		_failures.append("the Draft panel did not name the hearing committee")
 	if panel.find_child("InfluenceReadiness", true, false) == null:
 		_failures.append("the Draft panel did not show influence readiness")
 	if go == null or go.disabled:

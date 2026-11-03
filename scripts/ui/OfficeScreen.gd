@@ -2953,6 +2953,14 @@ func _open_draft(fresh: bool = false) -> void:
 			_draft_toggle.bind(str(id)), 90.0)
 		remove.name = "DraftRemove_" + str(id)
 		rows.append(remove)
+	if not _draft_ids.is_empty():
+		# The first part decides the hearing committee (component plan 4.4, 2026-11-03).
+		var first: Dictionary = by_id.get(str(_draft_ids[0]), {})
+		var committee := str(DataDB.get_stage(str(first.get("hearing_stage", ""))).get("name_en", ""))
+		if not committee.is_empty():
+			var hearing := UiKit.line(Text.say("draft.hearing", {"committee": committee}), "SmallLabel")
+			hearing.name = "DraftHearing"
+			rows.append(hearing)
 
 	if _draft_ids.size() >= DraftBill.MIN_PARTS:
 		var bill := DraftBill.bill_for(_draft_ids)

@@ -4251,7 +4251,7 @@
   {
     "key": "draft.not_winnable",
     "where": "Draft a Bill",
-    "english": "As drafted this bill would either pass without a fight or could never pass. Change a part.",
+    "english": "Even in the best case, with every influence gate met, this bill would either pass without a fight or could never pass. Change a part.",
     "placeholders": null,
     "notes": "2026-10-19 Draft a Bill (draft)."
   },
@@ -6382,5 +6382,12 @@
     "english": "Campaign Pressure raised to {name}.",
     "placeholders": "name",
     "notes": "Added 2026-11-02 (Campaign Pressure)."
+  },
+  {
+    "key": "draft.hearing",
+    "where": "Draft a Bill",
+    "english": "Hearing: {committee}. The first part chosen decides it.",
+    "placeholders": "committee",
+    "notes": "2026-11-03 component plan 4.4: the hearing committee before the player commits."
   }
 ]
