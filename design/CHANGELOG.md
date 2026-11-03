@@ -3160,3 +3160,9 @@ Lines appear under the screen's question, quoted and attributed to the lobbyist 
 ## Quality control audit (2026-11-03, Cameron)
 
 A full code and asset audit: `design/review/QC_AUDIT_2026-11-03.md`. Fixed: crisis-alert Text keys are written out and tested (`test_trigger_alert_text.gd`); a test that had stopped asserting; the art checklist now counts bare `{ID}.png` staff portraits (Staff 105 of 105); the Assets tab's Drawn column (88 rows); one placeholder list. Seven items are left for Cameron, including PC03's name in the Assets tab and the minimum art sizes.
+
+## The bot plays discard cards; a discard card trial (2026-11-03, Cameron)
+
+- **Bot.** `tools/playtest_optimal.gd` (`_best_play`, `_best_combo`, `_score_card`) now plays cards that make you discard: it plans the rest of the turn with the energy left and throws away cards it would not have played, then the weakest. Before, it never played one, so no balance figure covered C55 to C70.
+- **Trial.** `PLAYTEST_CARD_TRIAL=N` swaps each card (`PLAYTEST_CARD_TRIAL_CARDS`) into a fixed deck (`PLAYTEST_CARD_TRIAL_BASE`) for its weakest card and fights eight rooms N times with the same seeds. Results and options in `design/review/DISCARD_CARD_TRIAL_2026-11-03.md`: C69, C70 and C67 add 17 to 19 points of win rate, more than any ordinary card tested. No card was changed.
+- **Exporter.** The "has no Stage listed" warning skips the four protagonists' own opponent rows (OP06, OP22, OP35, OP40), which are unseated on purpose.
