@@ -46,10 +46,15 @@ func _engine(bill: Dictionary, party_name: String, profile: Dictionary, assist_s
 	return engine
 
 
+var _shared_rng := RandomNumberGenerator.new()
+
+
+## One generator for the whole run: a fresh identically seeded one per call would
+## repeat the same roll every time (the Visit Chance roll included).
 func _seeded() -> RandomNumberGenerator:
-	var r := RandomNumberGenerator.new()
-	r.seed = 5
-	return r
+	if _shared_rng.seed != 5 and _shared_rng.state == 0:
+		_shared_rng.seed = 5
+	return _shared_rng
 
 
 func _passes(bill: Dictionary, party_name: String, profile: Dictionary) -> bool:

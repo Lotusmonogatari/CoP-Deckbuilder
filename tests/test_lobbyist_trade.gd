@@ -156,7 +156,12 @@ func _start_trade_level() -> String:
 	DataDB.clear_runtime()
 	assert_true(GameState.start_patron_level(id))
 	while str(GameState.level_runner.current_stage().get("stage_id", "")) != "ST262":
-		GameState.finish_stage(LevelRunner.WON)
+		# A level may now carry the member visit (half of two-part levels): decline it,
+		# which passes its two stages with nothing earned, so these tests see the trade alone.
+		if str(GameState.level_runner.current_stage().get("stage_id", "")) == MpVisit.VISIT_STAGE:
+			GameState.skip_member_visit()
+		else:
+			GameState.finish_stage(LevelRunner.WON)
 	return id
 
 
@@ -200,9 +205,12 @@ func test_a_deal_is_refused_when_it_costs_more_than_the_leverage() -> void:
 func test_help_adds_a_seat_to_the_bill_assist() -> void:
 	var id := _start_trade_level()
 	var ids: Array = GameState.patron_requests[id]["components"]
+	# The level may include a member visit (50% of two-part levels), and fast-forwarding past
+	# it counts as winning it, so measure what the trade itself adds.
+	var before := BillAssist.total(GameState.bill_assist, "won_over")
 	var result := GameState.conclude_trade_deal(str(ids[0]), ["help"], 60)
 	assert_true(result["ok"])
-	assert_eq(BillAssist.total(GameState.bill_assist, "won_over"), 1)
+	assert_eq(BillAssist.total(GameState.bill_assist, "won_over"), before + 1)
 
 
 func test_sentiment_and_favor_move_standing() -> void:

@@ -123,9 +123,24 @@ func test_the_template_adds_the_visit_only_when_one_is_offered() -> void:
 			["ST263", "ST16", "ST04", "ST03", "ST23"])
 
 
-func test_a_flagship_level_carries_a_visit_and_a_favor_does_not() -> void:
-	var favor := PatronLevel.register("PB051", [])
-	assert_false((favor["level"] as Dictionary).has("visit"))
+func test_a_favor_level_carries_a_visit_only_some_of_the_time() -> void:
+	# Favor templates offer the visit half the time (Visit Chance 50, 2026-11-03).
+	var row := PatronLevel.patron_bill("PB051")
+	var bill: Dictionary = PatronLevel.compose("PB051", [])["bill"]
+	var with_visit := 0
+	var without := 0
+	var rng := RandomNumberGenerator.new()
+	for seed_value in 60:
+		rng.seed = seed_value
+		if PatronLevel.level_row(row, bill, rng).has("visit"):
+			with_visit += 1
+		else:
+			without += 1
+	assert_gt(with_visit, 10, "some Favor levels get a visit")
+	assert_gt(without, 10, "and some do not")
+
+
+func test_a_flagship_level_always_carries_a_visit() -> void:
 	DataDB.clear_runtime()
 	var built := PatronLevel.register("PB052", [])
 	var level: Dictionary = built["level"]

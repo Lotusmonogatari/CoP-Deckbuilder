@@ -74,3 +74,7 @@ A prepared player (standings 80, Reputation 90, Funds 1M at the start) passed 8 
 | 4 | 300,000円 against a 100,000 cap | (a) Lower the cost to the cap; (b) start the cap higher; (c) keep, and add the hint in option 1 |
 | 5 | The "winnable" check | (a) Keep it as an upper bound and say so; (b) replace it with the real gates and the player's current standings |
 | 6 | Patron requests appear before the player can win them | (a) Add readiness to the request panel; (b) delay requests until the gates are met; (c) leave |
+
+## Update (2026-11-03)
+
+Member visits were added to two-part bills in half of their levels (Visit Chance 50 on templates BT01 and BT03). Measured now: patron Favor 10 of 27, drafted two-part 106 of 200, Flagship 27 of 27, drafted three-part 200 of 200. The lobbyist trade is unchanged (built only when a lobbyist speaks for an organization the bill hurts and a part can be traded away safely).

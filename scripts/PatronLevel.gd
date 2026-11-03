@@ -162,6 +162,11 @@ static func build_visit(template: Dictionary, bill: Dictionary, rng: RandomNumbe
 			has_token = true
 	if not has_token:
 		return {}
+	# A template can offer its visit only some of the time (Visit Chance, blank =
+	# always). The roll is made here, once, with the level, and kept with it.
+	var chance_cell: Variant = template.get("visit_chance_percent")
+	if chance_cell != null and int(chance_cell) < 100 and rng.randi_range(1, 100) > int(chance_cell):
+		return {}
 	var parties: Array = template.get("visit_parties", []) as Array if template.get("visit_parties") is Array else []
 	var party_id := MpVisit.pick_party(parties, bill.get("positions", []) as Array)
 	if party_id.is_empty():

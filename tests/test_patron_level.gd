@@ -46,7 +46,7 @@ func test_accepting_builds_a_short_level_that_is_not_in_the_levels_list() -> voi
 	assert_true(GameState.start_patron_level("PB051"))
 	assert_true(GameState.is_in_level())
 	var stages := GameState.level_runner.stages
-	assert_true(stages.size() in [3, 4], "a Favor: meeting, hearing, an optional lobbyist trade, the vote")
+	assert_true(stages.size() in [3, 4, 5, 6], "a Favor: meeting, hearing, an optional member visit (two stages), an optional lobbyist trade, the vote")
 	assert_eq(str(stages[0]["stage_id"]), "ST263")
 	assert_eq(str(stages[1]["stage_id"]), "ST16")
 	var last: Dictionary = stages[stages.size() - 1]
@@ -290,7 +290,8 @@ func test_every_patron_bill_builds_a_playable_level() -> void:
 		var runner := LevelRunner.new(expanded)
 		assert_eq(runner.problems().size(), 0, "%s: %s" % [id, str(runner.problems())])
 		if row["kind"] == "Favor":
-			assert_true(runner.stages.size() in [3, 4], id)
+			# Three or four rooms, plus the member visit's two stages when it is offered (half of Favors).
+			assert_true(runner.stages.size() in [3, 4, 5, 6], id)
 		else:
 			# A Flagship gains the optional member visit (two stages) when a
 			# listed party still has seats outside the player's side.
@@ -339,3 +340,56 @@ func test_a_favor_with_nothing_left_to_swap_is_closed_so_the_flagship_is_not_hel
 	assert_eq(str(GameState.patron_requests["PB051"]["status"]), PatronRequests.LAPSED)
 	assert_true(GameState.patron_armed.has("PB052"), "the Flagship is due once the Favor is closed")
 	assert_false(GameState.patron_armed.has("PB051"))
+
+
+## Two-part bills offer the member visit in about half of their levels
+## (Bill Level Templates, Visit Chance 50, Cameron 2026-11-03); three-part bills
+## (no Visit Chance) always do.
+func _share_with_visit(part_count: int, levels: int) -> float:
+	var ids: Array = []
+	for component: Dictionary in DataDB.bill_components:
+		ids.append(str(component["component_id"]))
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 99
+	var built := 0
+	var with_visit := 0
+	var guard := 0
+	while built < levels and guard < 4000:
+		guard += 1
+		var pool := ids.duplicate()
+		for i in range(pool.size() - 1, 0, -1):
+			var j := rng.randi_range(0, i)
+			var held: Variant = pool[i]
+			pool[i] = pool[j]
+			pool[j] = held
+		var pick: Array = pool.slice(0, part_count)
+		if ComposedBill.has_conflict(pick, ComposedBill.index(DataDB.bill_components)):
+			continue
+		var level := PatronLevel.level_row(DraftBill.row_for("PDTEST", pick), DraftBill.bill_for(pick, "PDTEST"), rng)
+		built += 1
+		if level.has("visit"):
+			with_visit += 1
+	return float(with_visit) / float(maxi(built, 1))
+
+
+func test_two_part_bills_offer_the_member_visit_about_half_the_time() -> void:
+	var share := _share_with_visit(2, 300)
+	assert_between(share, 0.40, 0.60, "a two-part draft gets the visit in about half its levels")
+
+
+func test_three_part_bills_always_offer_the_member_visit() -> void:
+	assert_eq(_share_with_visit(3, 120), 1.0)
+
+
+func test_a_visit_level_lists_the_visit_and_the_fight_after_the_hearing() -> void:
+	var pick: Array = [str(DataDB.bill_components[0]["component_id"]), str(DataDB.bill_components[40]["component_id"])]
+	var rng := RandomNumberGenerator.new()
+	for seed_value in 40:
+		rng.seed = seed_value
+		var level := PatronLevel.level_row(DraftBill.row_for("PDTEST", pick), DraftBill.bill_for(pick, "PDTEST"), rng)
+		if not level.has("visit"):
+			continue
+		assert_eq(str(level["stage_2"]), MpVisit.VISIT_STAGE)
+		assert_eq(str(level["stage_3"]), MpVisit.FIGHT_STAGE)
+		return
+	fail_test("no seed in 40 gave this pair a member visit")

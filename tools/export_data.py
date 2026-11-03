@@ -745,7 +745,7 @@ SHEETS = {
         "key": "template_id",
         "id_pattern": r"^BT\d+$",
         "optional_sheet": True,
-        "optional": ["Stage 4", "Stage 5", "Stage 6", "Stage 7", "Stage 8", "Visit Parties", "Note", "Public Room (Constituency)", "Public Room (National)"],
+        "optional": ["Stage 4", "Stage 5", "Stage 6", "Stage 7", "Stage 8", "Visit Parties", "Note", "Public Room (Constituency)", "Public Room (National)", "Visit Chance (%)"],
         "columns": [
             ("Template ID", "template_id", "id"),
             ("Kind", "kind", "str"),
@@ -764,6 +764,9 @@ SHEETS = {
             # (2026-10-28, Cameron; first defaults Town Hall and Press Conference).
             ("Public Room (Constituency)", "public_room_constituency", "str"),
             ("Public Room (National)", "public_room_national", "str"),
+            # How often a template's MP_VISIT is offered, in percent (blank = always).
+            # Two-part bills offer it half the time (Cameron, 2026-11-03).
+            ("Visit Chance (%)", "visit_chance_percent", "int"),
         ],
     },
     # Visit Questions and Visit Answers: what a member says when they visit a

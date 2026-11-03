@@ -741,3 +741,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Decisions from the strategy playtest (2026-11-02, Cameron)
 - Protagonist x Campaign Pressure playtest (2026-11-02, Cameron)
 - Custom bill audit (2026-11-02, Cameron)
+- Two-part bills get the member visit half the time (2026-11-03, Cameron)

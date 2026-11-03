@@ -3059,3 +3059,13 @@ Addendum, same day: the bots never bought the Funds-cap petition (SH13), so the 
 ## Custom bill audit (2026-11-02, Cameron)
 
 Review of Draft a Bill and patron bills: `design/review/CUSTOM_BILL_AUDIT_2026-11-02.md`. New tools `tools/bill_audit.gd` (vote audit under the real gates), `tools/bill_draft_probe.gd` (draft lifecycle), drafting strategies in `tools/strategy_playtest.gd`. Two bot bugs fixed in `tools/playtest_optimal.gd` (drafted "PD" bills were not treated as patron bills; `visit_wins` was never filled). CLAUDE.md corrected: Reputation gate 60 (not 85), swing resistance 85 (not 70). No game rule changed.
+
+## Two-part bills get the member visit half the time (2026-11-03, Cameron)
+
+| What | Detail |
+|---|---|
+| Templates | BT01 (patron Favor) and BT03 (drafted, two parts) now list `MP_VISIT` after the hearing, with Visit Parties PT04 and PT02 as on the three-part templates |
+| Chance | New optional column **Visit Chance (%)** on Bill Level Templates (blank = always): 50 on BT01 and BT03. The roll is made once, when the level is built (`PatronLevel.build_visit`), and kept with the level, so a saved level resumes with the same rooms. Three-part templates are unchanged (always) |
+| Measured | Of 200 random two-part drafts, 106 got a visit (53%); 10 of 27 patron Favors (37%, a small sample); all 200 three-part drafts and all 27 Flagships |
+| Tests | `test_patron_level.gd` (share between 40% and 60%, three parts always, visit stages follow the hearing); `test_mp_visit.gd`; the trade and level-length tests now allow or skip the visit |
+| Tool fix | `tools/bill_audit.gd` used a fresh identically seeded generator per level, which repeated one roll; it now shares one |
