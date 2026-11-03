@@ -107,3 +107,17 @@ func test_a_global_row_and_a_scoped_row_combine_per_party() -> void:
 	meta["Party support"] = 50
 	assert_false(VoteInfluence.gate_passed(triggers, meta, {}, 85, "PT02"))
 	assert_true(VoteInfluence.gate_passed(triggers, meta, {}, 85, "PT04"))
+
+
+## status() lists only the rows that gate the parties asked about (2026-11-03).
+func test_status_missing_skips_rows_scoped_to_other_parties() -> void:
+	var triggers := [
+		{"variable": "Reputation", "enabled": "Yes", "threshold": 60},
+		{"variable": "Funds", "enabled": "Yes", "threshold": 500000, "applies_to_parties": ["PT04"]},
+	]
+	var status := VoteInfluence.status(triggers, {"Reputation": 10, "Funds": 0}, {}, 85, ["PT02"])
+	var names: Array = (status["missing"] as Array).map(func(gap: Dictionary) -> String: return str(gap["variable"]))
+	assert_eq(names, ["Reputation"])
+	status = VoteInfluence.status(triggers, {"Reputation": 10, "Funds": 0}, {}, 85, ["PT04"])
+	names = (status["missing"] as Array).map(func(gap: Dictionary) -> String: return str(gap["variable"]))
+	assert_eq(names, ["Reputation", "Funds"])

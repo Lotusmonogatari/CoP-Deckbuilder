@@ -77,3 +77,48 @@ static func outcome_lines(outcome: Dictionary) -> Array[String]:
 		if not parts.is_empty():
 			lines.append(Text.say("request.outcome_law", {"parts": "; ".join(parts)}))
 	return lines
+
+
+## The party ids holding any seats outside Yes: the parties a sway would have
+## to move, so the only ones whose influence gates matter for this bill.
+static func parties_outside_yes(bill: Dictionary) -> Array:
+	var out: Array = []
+	for position: Dictionary in (bill.get("positions", []) as Array):
+		if int(position.get("votes_no", 0)) + int(position.get("votes_abstain", 0)) > 0:
+			out.append(str(position.get("party_id", "")))
+	return out
+
+
+## "Your influence is not yet strong enough ... Still needed: Party Faction 62
+## of 75, Funds 100,000 of 500,000." from a VoteInfluence.status() result.
+## Shared by the Floor Vote screen and the Request and Draft panels (2026-11-03).
+static func readiness_text(status: Dictionary) -> String:
+	if bool(status.get("ready", false)):
+		return Text.say("floor_vote.influence_ready")
+	var needs: Array[String] = []
+	var gaps: Array = status.get("missing", [])
+	for gap: Dictionary in gaps.slice(0, 3):
+		needs.append(Text.say("floor_vote.influence_need", {
+			"name": variable_name(str(gap.get("variable", ""))),
+			"have": Phrase.with_separators(int(gap.get("value", 0))),
+			"needed": Phrase.with_separators(int(gap.get("threshold", 0)))}))
+	if gaps.size() > 3:
+		needs.append(Text.say("floor_vote.influence_more", {"more": gaps.size() - 3}))
+	return Text.say("floor_vote.influence_not_ready", {"needs": ", ".join(needs)})
+
+
+## Readiness for a bill before its vote: the influence gates of the parties a
+## sway would need, checked against the player's standing now.
+static func readiness_line(bill: Dictionary, triggers: Array, meta: Dictionary,
+		standing: Dictionary, default_threshold: int) -> String:
+	return readiness_text(VoteInfluence.status(triggers, meta, standing,
+		default_threshold, parties_outside_yes(bill)))
+
+
+## A gate variable's display name: an organization id becomes its name; a
+## meta variable such as Reputation names itself.
+static func variable_name(variable: String) -> String:
+	if not variable.begins_with("BO"):
+		return variable
+	var booster := DataDB.get_booster(variable)
+	return str(booster.get("name_en", variable)) if not booster.is_empty() else variable

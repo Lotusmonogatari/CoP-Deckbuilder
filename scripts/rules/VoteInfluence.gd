@@ -84,6 +84,12 @@ static func status(triggers: Array, meta: Dictionary, booster_standing: Dictiona
 	for row: Dictionary in triggers:
 		if str(row.get("enabled", "")) != "Yes":
 			continue
+		# A row scoped to parties the vote does not need is not missing
+		# (2026-11-03); with no parties given every row counts, as before.
+		var scoped: Variant = row.get("applies_to_parties")
+		if scoped is Array and not (scoped as Array).is_empty() and not party_ids.is_empty() \
+				and not (scoped as Array).any(func(id: Variant) -> bool: return party_ids.has(str(id))):
+			continue
 		var variable := str(row.get("variable", ""))
 		var cell: Variant = row.get("threshold")
 		var threshold := default_threshold if cell == null else int(cell)

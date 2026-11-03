@@ -49,6 +49,8 @@ func _run() -> void:
 		return _finish()
 	if not _has_prefix(request, "As things stand the vote runs"):
 		_failures.append("the Request panel did not show the default vote")
+	if request.find_child("InfluenceReadiness", true, false) == null:
+		_failures.append("the Request panel did not show influence readiness")
 	var amend := _first_named(request, "RequestAmend_")
 	var accept := get_tree().current_scene.find_child("RequestAcceptButton", true, false) as Button
 	var decline := get_tree().current_scene.find_child("RequestDeclineButton", true, false) as Button

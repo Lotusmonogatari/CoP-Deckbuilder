@@ -2878,6 +2878,7 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 	rows.append(UiKit.line(Text.say("request.line", {"org": org_name, "bill": str(bill.get("bill_name", ""))})))
 	rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
 	rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
+	rows.append(_readiness_line(bill))
 	var own := RequestLines.own_party_line(bill, str(DataDB.player.get("party", "")))
 	if not own.is_empty():
 		rows.append(UiKit.line(own))
@@ -2919,6 +2920,16 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 	_request_panel.open(Text.say("request.title"), rows)
 
 
+## What the player's influence still lacks for this bill's vote, today
+## (component plan 4.1, 2026-11-03): the same line the Floor Vote screen shows.
+func _readiness_line(bill: Dictionary) -> Control:
+	var line := UiKit.line(RequestLines.readiness_line(bill, DataDB.vote_influence_triggers,
+		GameState.effective_meta(), GameState.booster_standing,
+		int(DataDB.balance.get("vote_influence_default_threshold", 85))), "SmallLabel")
+	line.name = "InfluenceReadiness"
+	return line
+
+
 ## Draft a Bill: the chosen parts, a preview of the bill, the Draft button,
 ## then the organizations to take parts from (and one organization's parts
 ## when it is open). `fresh` starts over with nothing chosen.
@@ -2947,6 +2958,7 @@ func _open_draft(fresh: bool = false) -> void:
 		var bill := DraftBill.bill_for(_draft_ids)
 		rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
 		rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
+		rows.append(_readiness_line(bill))
 		var own := RequestLines.own_party_line(bill, str(DataDB.player.get("party", "")))
 		if not own.is_empty():
 			rows.append(UiKit.line(own))

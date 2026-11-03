@@ -218,19 +218,7 @@ func _show_influence_and_preview() -> void:
 	var influence := Label.new()
 	influence.name = "InfluenceStatus"
 	influence.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	if bool(status.get("ready", false)):
-		influence.text = Text.say("floor_vote.influence_ready")
-	else:
-		var needs: Array[String] = []
-		var gaps: Array = status.get("missing", [])
-		for gap: Dictionary in gaps.slice(0, 3):
-			needs.append(Text.say("floor_vote.influence_need", {
-				"name": _variable_name(str(gap.get("variable", ""))),
-				"have": Phrase.with_separators(int(gap.get("value", 0))),
-				"needed": Phrase.with_separators(int(gap.get("threshold", 0)))}))
-		if gaps.size() > 3:
-			needs.append(Text.say("floor_vote.influence_more", {"more": gaps.size() - 3}))
-		influence.text = Text.say("floor_vote.influence_not_ready", {"needs": ", ".join(needs)})
+	influence.text = RequestLines.readiness_text(status)
 	column.add_child(influence)
 
 	# Members won over and lobbyists at work, when a patron bill's stages left any.
@@ -422,15 +410,6 @@ func _refresh_vote_buttons() -> void:
 		else:
 			button.text = _vote_words[choice]
 			button.disabled = _voted
-
-
-## A trigger variable as the player knows it: a booster's name, or the meta
-## variable's own name.
-func _variable_name(variable: String) -> String:
-	if not variable.begins_with("BO"):
-		return variable   # a meta variable such as Reputation names itself
-	var booster := DataDB.get_booster(variable)
-	return str(booster.get("name_en", variable)) if not booster.is_empty() else variable
 
 
 ## Every real party's own "Vote Resistance" (parties.json's own
