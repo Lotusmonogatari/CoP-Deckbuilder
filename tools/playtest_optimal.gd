@@ -212,9 +212,14 @@ func _run_card_trial(trials: int) -> void:
 	var stages_raw := OS.get_environment("PLAYTEST_CARD_TRIAL_STAGES")
 	var stages: Array = CARD_TRIAL_STAGES.duplicate() if stages_raw.is_empty() else Array(stages_raw.split(";"))
 
-	# Baseline: the opening deck with no discard card in it.
+	# Baseline: the opening deck with no discard card in it, or the deck
+	# PLAYTEST_CARD_TRIAL_BASE names (semicolon list), so parallel runs share one.
 	var base: Array[String] = []
-	for id: String in GameState.deck:
+	var start_deck: Array = GameState.deck.duplicate()
+	var base_raw := OS.get_environment("PLAYTEST_CARD_TRIAL_BASE")
+	if not base_raw.is_empty():
+		start_deck = Array(base_raw.split(";"))
+	for id: String in start_deck:
 		if discard_ids.has(id):
 			for spare: String in ordinary:
 				if not base.has(spare) and not GameState.deck.has(spare):
@@ -246,7 +251,9 @@ func _run_card_trial(trials: int) -> void:
 		var fights := 0
 		var plays_before := int(_card_tally.get(str(entry[0]), 0))
 		var discards_before := _discard_plays
+		var by_stage: Array[String] = []
 		for stage_id: Variant in stages:
+			var stage_won := 0
 			for i in trials:
 				seed(hash("%s:%d" % [stage_id, i]))   # the same fights for every deck
 				var expanded := BattleSetup.expand_level({"level_id": "LVTRIAL", "stage_1": str(stage_id)})
@@ -257,10 +264,12 @@ func _run_card_trial(trials: int) -> void:
 				fights += 1
 				if _wins > before:
 					won += 1
+					stage_won += 1
 				if GameState.is_in_level():
 					GameState.end_level()
-		_log("CARDTRIAL card=%s won=%d of=%d played=%d discard_plays=%d" % [entry[0], won, fights,
-			int(_card_tally.get(str(entry[0]), 0)) - plays_before, _discard_plays - discards_before])
+			by_stage.append("%s:%d" % [stage_id, stage_won])
+		_log("CARDTRIAL card=%s won=%d of=%d played=%d discard_plays=%d stages=%s" % [entry[0], won, fights,
+			int(_card_tally.get(str(entry[0]), 0)) - plays_before, _discard_plays - discards_before, ",".join(by_stage)])
 	get_tree().quit(0)
 
 
