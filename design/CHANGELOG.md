@@ -3166,3 +3166,14 @@ A full code and asset audit: `design/review/QC_AUDIT_2026-11-03.md`. Fixed: cris
 - **Bot.** `tools/playtest_optimal.gd` (`_best_play`, `_best_combo`, `_score_card`) now plays cards that make you discard: it plans the rest of the turn with the energy left and throws away cards it would not have played, then the weakest. Before, it never played one, so no balance figure covered C55 to C70.
 - **Trial.** `PLAYTEST_CARD_TRIAL=N` swaps each card (`PLAYTEST_CARD_TRIAL_CARDS`) into a fixed deck (`PLAYTEST_CARD_TRIAL_BASE`) for its weakest card and fights eight rooms N times with the same seeds. Results and options in `design/review/DISCARD_CARD_TRIAL_2026-11-03.md`: C69, C70 and C67 add 17 to 19 points of win rate, more than any ordinary card tested. No card was changed; Cameron chose to leave them as they are (rare unlocks meant to feel strong).
 - **Exporter.** The "has no Stage listed" warning skips the four protagonists' own opponent rows (OP06, OP22, OP35, OP40), which are unseated on purpose.
+
+## Office Hours choices that promise something now cost something (2026-11-03, Cameron)
+
+From Cameron's playtest: some choices read as promises but cost nothing. Full table in `design/review/PROMISE_WORDING_2026-11-03.md`.
+
+| What | Change |
+|---|---|
+| Pledges and follow-ups | 102 visitor choices ("I'll push for ...", "I will ask the culture office", "Yes" to "Will you back ...?") now make a promise of 1 hour within 48 game hours (2 for an evening event), each with its own Promise Kept Text. |
+| On the spot | VQ220 A "Yes, here is my share." pays 20,000円; VQ84 D "First round's mine" takes 1 hour. |
+| Reworded | 51 choices that only stated a disposition ("I vote on each bill on its merits", the eleven bill dilemmas' "Yes. I support it, and here is why.") no longer promise anything; 4 replies adjusted. |
+| Events | No change: event and hosted-event actions happen on the spot, and every hosted "What do you promise?" option already makes a promise. |

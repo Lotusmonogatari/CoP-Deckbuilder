@@ -277,7 +277,13 @@
         "for": "BO07"
       }
     ],
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "response_a": "Diplomats sit on land.",
     "response_b": "Those waters are where the fish are.",
     "response_c": "Ask, and tell us what they say.",
@@ -289,7 +295,7 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ministry about the patrol boats and pass what you learn back to the fleet, plainly.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": "You say on the record that the fleet's safety comes first, and send the crews the transcript."
   },
   {
     "question_id": "VQ05",
@@ -301,7 +307,7 @@
     "choice_a": "I'll ask for fuel relief for fishing and ferry crews.",
     "choice_b": "Fuel prices rise and fall; it will ease.",
     "choice_c": "Smaller, efficient boats could cut fuel costs.",
-    "choice_d": "I'll look into it once the budget is out.",
+    "choice_d": "Fuel relief has to wait for the budget.",
     "correct_choice": "A",
     "response_right": "That would keep a few of us afloat.",
     "response_wrong": "We've heard \"eventually\" before.",
@@ -454,8 +460,8 @@
     "question_text": "Off the record, do you agree with party leadership on everything?",
     "choice_a": "I'd rather not say anything off the record.",
     "choice_b": "I agree with leadership on the big things.",
-    "choice_c": "I agree where I do, and I'll say so when I don't.",
-    "choice_d": "I'll answer that on the record or not at all.",
+    "choice_c": "I agree where I do, and say so when I don't.",
+    "choice_d": "I answer that on the record or not at all.",
     "correct_choice": "C",
     "response_right": "That's a rare quote. Thank you.",
     "response_wrong": "That's a headline, and not a flattering one.",
@@ -661,10 +667,10 @@
       "VI04"
     ],
     "question_text": "Will you support a living wage for working people?",
-    "choice_a": "Business owners worry about costs; I'll listen to them too.",
-    "choice_b": "Workers deserve a living wage; I'll hear every plan.",
+    "choice_a": "Business owners worry about costs; they need a hearing too.",
+    "choice_b": "Workers deserve a living wage; every plan gets a hearing.",
     "choice_c": "Wages should follow productivity and the market.",
-    "choice_d": "I'll look at it after the budget is settled.",
+    "choice_d": "That has to wait until the budget is settled.",
     "correct_choice": "B",
     "response_right": "Good. Say it again where the bosses can hear.",
     "response_wrong": "Words are cheap. We pay rent with wages.",
@@ -787,7 +793,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -799,7 +811,7 @@
     "reaction_b": "Folds arms.",
     "reaction_c": "Looks dubious.",
     "reaction_d": "Turns to leave.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You sit in on the roundtable and keep workers and owners at one table.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -1267,7 +1279,13 @@
         "amount": 2
       }
     ],
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "Busy. That is what they all say.",
     "response_b": "The hard questions. We have plenty.",
@@ -1279,7 +1297,7 @@
     "reaction_d": "Frowns slightly.",
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You take the campus debate, with the questions screened beforehand.",
     "promise_kept_text_d": null
   },
   {
@@ -1341,7 +1359,13 @@
         "delta": 1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -1350,7 +1374,13 @@
         "within": 48
       }
     ],
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "response_a": "Office support. Is that all we are worth?",
     "response_b": "Unpaid has a name, and it is not experience.",
     "response_c": "Budgets. That is not a yes.",
@@ -1359,10 +1389,10 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Shrugs.",
     "reaction_d": "Breaks into a smile.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You take on a student intern for office support work.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You go through the office budget and find room for one student intern next term.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": "You take on a paid student intern and give them real work."
   },
   {
     "question_id": "VQ19",
@@ -1500,7 +1530,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "Noise is life. A quiet center is a closed one.",
     "response_b": "They mix at home. They can mix here.",
@@ -1512,7 +1548,7 @@
     "reaction_d": "Looks dismayed.",
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You speak for the shared community center at the ward.",
     "promise_kept_text_d": null
   },
   {
@@ -1738,7 +1774,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -1750,7 +1792,7 @@
     "reaction_b": "Mouth tightens.",
     "reaction_c": "Looks uncertain.",
     "reaction_d": "Stares in disbelief.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You defend heritage and craft funding in the budget debate.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -1965,7 +2007,13 @@
         "delta": 1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -1977,7 +2025,7 @@
     "reaction_b": "Looks dubious.",
     "reaction_c": "Frowns.",
     "reaction_d": "Shakes head.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You push for a faster airport rail link at the transport office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -1988,7 +2036,7 @@
       "VI09"
     ],
     "question_text": "Would you ride the 7:40 with me one morning?",
-    "choice_a": "Mornings are hard, but I'll try for one.",
+    "choice_a": "Mornings are hard for me; maybe one day.",
     "choice_b": "I could send my deputy with you.",
     "choice_c": "I'd be glad to. Where should we meet?",
     "choice_d": "I drive, but I'll take the train once.",
@@ -2049,7 +2097,7 @@
         "for": "BO14"
       }
     ],
-    "response_a": "Try for one. Hold you to it.",
+    "response_a": "Maybe one day. I have heard that before.",
     "response_b": "A deputy is not you.",
     "response_c": "Platform two. Bring a coat.",
     "response_d": "Once. That is all I ask.",
@@ -2204,7 +2252,13 @@
       }
     ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": [
       {
         "kind": "hours",
@@ -2221,7 +2275,7 @@
     "reaction_d": "Bows.",
     "promise_kept_text_a": "The hand towel reaches the shrine festival with your respects. The organizers hang it by the entrance.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You make it to the shrine festival for part of the day.",
     "promise_kept_text_d": null
   },
   {
@@ -2363,7 +2417,13 @@
     ],
     "commitment_a": null,
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "Teaching alone built none of our firms.",
     "response_b": "Quickly is not how ideas work.",
@@ -2375,7 +2435,7 @@
     "reaction_d": "Looks let down.",
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You back spin-off funding at the ministry and tell the university.",
     "promise_kept_text_d": null
   },
   {
@@ -2608,9 +2668,9 @@
       "VI14"
     ],
     "question_text": "Can the party count on your vote this session?",
-    "choice_a": "I'll vote on each bill on its merits.",
+    "choice_a": "I vote on each bill on its merits.",
     "choice_b": "Yes, if my district supports it too.",
-    "choice_c": "On what we agree on, yes; I'll warn you early otherwise.",
+    "choice_c": "On what we agree on, yes, and never by surprise.",
     "choice_d": "I need to read the bills first.",
     "correct_choice": "C",
     "response_right": "That's how a partnership works.",
@@ -2753,7 +2813,13 @@
         "amount": 2
       }
     ],
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": [
       {
         "kind": "hours",
@@ -2770,7 +2836,7 @@
     "reaction_d": "Frowns.",
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You stop by the rally for a short appearance and shake hands on the way out.",
     "promise_kept_text_d": null
   },
   {
@@ -2781,7 +2847,7 @@
     "question_text": "Will you help at the party donor dinner?",
     "choice_a": "Fundraising isn't my strength, but I'll help plan.",
     "choice_b": "My schedule is full that week.",
-    "choice_c": "Send me the details and I'll see.",
+    "choice_c": "Send me the details; I can't promise.",
     "choice_d": "I'm here, and gracious to everyone.",
     "correct_choice": "D",
     "response_right": "Good. Donors are like cats. They like attention.",
@@ -2832,7 +2898,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": [
@@ -2849,7 +2921,7 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Waves a hand.",
     "reaction_d": "Smiles.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You sit in on the dinner planning and take the seating chart off the organizers' hands.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -2933,9 +3005,9 @@
     ],
     "question_text": "A word of advice: pick a mentor early. Who will it be?",
     "choice_a": "I don't need one.",
-    "choice_b": "I'll pick whoever has the best office.",
+    "choice_b": "I'd pick whoever has the best office.",
     "choice_c": "Please advise. Whom should I listen to?",
-    "choice_d": "I'll ask the voters.",
+    "choice_d": "I'd ask the voters.",
     "correct_choice": "C",
     "response_right": "Wise young one. Come to dinner.",
     "response_wrong": "Pride is expensive.",
@@ -3058,7 +3130,13 @@
       }
     ],
     "commitment_a": null,
-    "commitment_b": null,
+    "commitment_b": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 48
+      }
+    ],
     "commitment_c": null,
     "commitment_d": null,
     "response_a": "Nobody is photogenic at first. We have makeup.",
@@ -3070,7 +3148,7 @@
     "reaction_c": "Narrows eyes.",
     "reaction_d": "Turns away.",
     "promise_kept_text_a": null,
-    "promise_kept_text_b": null,
+    "promise_kept_text_b": "You appear on the show, in a suit the host approves of.",
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
   },
@@ -3134,7 +3212,13 @@
         "delta": 1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -3146,7 +3230,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Stares.",
     "reaction_d": "Sighs.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You help the tourism office promote Yezo at its next campaign abroad.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -3293,7 +3377,13 @@
         "for": "BO07"
       }
     ],
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "response_a": "Customs has its reasons, and they cost us hours.",
     "response_b": "The ferry company has been no help.",
     "response_c": "Find it soon. The line grows daily.",
@@ -3305,7 +3395,7 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You find the office that handles ferry clearance and send the fleet the right name and number.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": "You press the customs office for faster ferry clearance and send the fleet the reply."
   },
   {
     "question_id": "VQ44",
@@ -3313,7 +3403,7 @@
       "VI19"
     ],
     "question_text": "Would you cross with me on the night ferry to see the delays yourself?",
-    "choice_a": "I'll read the delay reports carefully.",
+    "choice_a": "The delay reports tell me enough.",
     "choice_b": "Yes, if there's a cabin for the night.",
     "choice_c": "I get seasick, but I'll try once.",
     "choice_d": "Absolutely. Thermos in hand.",
@@ -3367,8 +3457,20 @@
       }
     ],
     "commitment_a": null,
-    "commitment_b": null,
-    "commitment_c": null,
+    "commitment_b": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 48
+      }
+    ],
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 48
+      }
+    ],
     "commitment_d": [
       {
         "kind": "hours",
@@ -3384,8 +3486,8 @@
     "reaction_c": "Frowns.",
     "reaction_d": "Beams.",
     "promise_kept_text_a": null,
-    "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_b": "You cross on the night ferry in a cabin and see the delays for yourself.",
+    "promise_kept_text_c": "You cross on the night ferry, seasick most of the way, and see the delays for yourself.",
     "promise_kept_text_d": null
   },
   {
@@ -3617,7 +3719,13 @@
     ],
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "response_a": "Report back, then. I will hold you to it.",
     "response_b": "Not up to you? Who is it up to?",
     "response_c": "Mongolia is my most-used route.",
@@ -3629,7 +3737,7 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": "You pass the route question to the Committee on Construction and Development with a short note."
   },
   {
     "question_id": "VQ48",
@@ -4167,7 +4275,13 @@
       }
     ],
     "commitment_a": null,
-    "commitment_b": null,
+    "commitment_b": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_c": null,
     "commitment_d": [
       {
@@ -4185,7 +4299,7 @@
     "reaction_c": "Shrugs.",
     "reaction_d": "Smiles.",
     "promise_kept_text_a": null,
-    "promise_kept_text_b": null,
+    "promise_kept_text_b": "You meet the young member and check they are serious about running.",
     "promise_kept_text_c": null,
     "promise_kept_text_d": "You spend an afternoon with the young member and leave with as many ideas as you gave."
   },
@@ -4520,7 +4634,7 @@
     "choice_a": "Paid in full and on time.",
     "choice_b": "My office handles it; I'll check.",
     "choice_c": "Not yet; things are tight this month.",
-    "choice_d": "I'll pay it after the election.",
+    "choice_d": "It can wait until after the election.",
     "correct_choice": "A",
     "response_right": "You'd be surprised how rare that is.",
     "response_wrong": "The ledger doesn't lie.",
@@ -4744,8 +4858,8 @@
       "VI29"
     ],
     "question_text": "I count votes for a living. The next vote will be close. Where do you stand?",
-    "choice_a": "I'll decide after the final debate.",
-    "choice_b": "With the party; I'll warn you if not.",
+    "choice_a": "I'm deciding after the final debate.",
+    "choice_b": "With the party, and never by surprise.",
     "choice_c": "Wherever my conscience takes me on the day.",
     "choice_d": "With whoever addresses my district's concerns.",
     "correct_choice": "B",
@@ -4798,7 +4912,7 @@
     "commitment_c": null,
     "commitment_d": null,
     "response_a": "After the debate is too late for me.",
-    "response_b": "With the party. And early warning. Thank you.",
+    "response_b": "With the party, and no surprises. Thank you.",
     "response_c": "Conscience. I cannot count that.",
     "response_d": "Your district. I hear that a lot.",
     "reaction_a": "Frowns.",
@@ -4817,9 +4931,9 @@
     ],
     "question_text": "You'll miss a vote for a family event. What do you do?",
     "choice_a": "Go; one vote may not matter.",
-    "choice_b": "I'll tell you early to arrange a pair.",
-    "choice_c": "I'll decide on the day itself.",
-    "choice_d": "Family comes first, and I'll tell you.",
+    "choice_b": "Tell you early to arrange a pair.",
+    "choice_c": "Decide on the day itself.",
+    "choice_d": "Put family first, and tell you in advance.",
     "correct_choice": "B",
     "response_right": "Thank you. That's all I ask.",
     "response_wrong": "I notice everything.",
@@ -4964,7 +5078,7 @@
       "VI30"
     ],
     "question_text": "The polls say you're unpopular in your district. Your reaction?",
-    "choice_a": "Polls can be wrong; I'll trust the doorstep.",
+    "choice_a": "Polls can be wrong; the doorstep tells me more.",
     "choice_b": "Tell me what I'm missing, and I'll go listen.",
     "choice_c": "I'll find a pollster who knows my district.",
     "choice_d": "One poll isn't a trend; let's see the next.",
@@ -5018,8 +5132,20 @@
       }
     ],
     "commitment_a": null,
-    "commitment_b": null,
-    "commitment_c": null,
+    "commitment_b": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "The doorstep. Sometimes. Not every time.",
     "response_b": "Go and listen. That is exactly what we need.",
@@ -5030,8 +5156,8 @@
     "reaction_c": "Sighs.",
     "reaction_d": "Frowns.",
     "promise_kept_text_a": null,
-    "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_b": "You spend an afternoon on doorsteps in the district and listen more than you talk.",
+    "promise_kept_text_c": "You find a pollster who knows the district and book a fresh survey.",
     "promise_kept_text_d": null
   },
   {
@@ -5665,8 +5791,8 @@
     ],
     "question_text": "In this faction, loyalty is a debt that never closes. Do you understand?",
     "choice_a": "Debts can be repaid, and then we're even.",
-    "choice_b": "I understand, and I'll remember who stood by me.",
-    "choice_c": "I'll owe the voters, not the faction.",
+    "choice_b": "I understand, and I remember who stood by me.",
+    "choice_c": "I owe the voters, not the faction.",
     "choice_d": "Loyalty should run both ways, always.",
     "correct_choice": "B",
     "response_right": "Then you have the makings of one of us.",
@@ -6105,7 +6231,13 @@
         "amount": 2
       }
     ],
-    "commitment_b": null,
+    "commitment_b": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 48
+      }
+    ],
     "commitment_c": null,
     "commitment_d": null,
     "response_a": "Short and good. Book it.",
@@ -6117,7 +6249,7 @@
     "reaction_c": "Frowns.",
     "reaction_d": "Raises an eyebrow.",
     "promise_kept_text_a": null,
-    "promise_kept_text_b": null,
+    "promise_kept_text_b": "You give the dinner speech. It is shorter than planned, and it goes over fine.",
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
   },
@@ -6491,7 +6623,12 @@
     "commitment_a": null,
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
     "response_a": "Only with friends. Then we start as friends.",
     "response_b": "A meeting. There is a meeting for everything.",
     "response_c": "Alcohol and politics do mix. Ask anyone.",
@@ -6513,8 +6650,8 @@
     "question_text": "Young members rarely call me. Why should I help you?",
     "choice_a": "Because helping newcomers is part of the job.",
     "choice_b": "Because my committee seat can help you.",
-    "choice_c": "Because I'll listen, not only call when I need something.",
-    "choice_d": "Because I'll credit you when I speak.",
+    "choice_c": "Because I listen, not only call when I need something.",
+    "choice_d": "Because I credit people when I speak.",
     "correct_choice": "C",
     "response_right": "That's more than most offer.",
     "response_wrong": "Duty doesn't pick up the phone.",
@@ -7132,8 +7269,8 @@
       "VI39"
     ],
     "question_text": "Two candidates for leadership, both friends. Who do you back?",
-    "choice_a": "Whoever wins; I'll work with either.",
-    "choice_b": "Neither, and I'll say so openly.",
+    "choice_a": "Whoever wins; I can work with either.",
+    "choice_b": "Neither, and I say so openly.",
     "choice_c": "Whoever is behind, so the race stays fair.",
     "choice_d": "Whoever my branch members prefer.",
     "correct_choice": "B",
@@ -10366,10 +10503,10 @@
       "VI60"
     ],
     "question_text": "Will you stand behind the Ainu Heritage and Language Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Ainu Community Council will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -10525,10 +10662,10 @@
       "VI61"
     ],
     "question_text": "Will you stand behind the Specified Skilled Worker Visa Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Agricultural Cooperatives will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -10684,10 +10821,10 @@
       "VI62"
     ],
     "question_text": "Will you stand behind the Consumption Tax Rate Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Care and Welfare Council will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -10831,10 +10968,10 @@
       "VI63"
     ],
     "question_text": "Will you stand behind the Judicial Appointments Commission Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. National Media will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -10990,10 +11127,10 @@
       "VI64"
     ],
     "question_text": "Will you stand behind the Temple and Shrine Heritage Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Buddhist Temples Association will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -11149,10 +11286,10 @@
       "VI65"
     ],
     "question_text": "Will you stand behind the Constituency Development Grants Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Members of Parliament will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -11308,10 +11445,10 @@
       "VI66"
     ],
     "question_text": "Will you stand behind the Organized Crime Conspiracy Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Veterans' Association will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -11467,10 +11604,10 @@
       "VI67"
     ],
     "question_text": "Will you stand behind the Yezo–EU Economic Partnership Agreement?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Chamber of Commerce will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -11626,10 +11763,10 @@
       "VI68"
     ],
     "question_text": "Will you stand behind the Chishima Joint Economic Activity Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Fisheries Cooperative will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -11785,10 +11922,10 @@
       "VI69"
     ],
     "question_text": "Will you stand behind the Regional Minimum Wage Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Labor Federation will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -11944,10 +12081,10 @@
       "VI70"
     ],
     "question_text": "Will you stand behind the Moral Education Curriculum Act?",
-    "choice_a": "Yes, I'll vote for it and explain why.",
+    "choice_a": "Yes. I support it, and here is why.",
     "choice_b": "No; I think it goes too far.",
     "choice_c": "I want to hear both sides first.",
-    "choice_d": "I'll follow the party's position on it.",
+    "choice_d": "I follow the party's position on it.",
     "correct_choice": "A",
     "response_right": "Good. Our Traditional Society will remember that.",
     "response_wrong": "Then we do not agree.",
@@ -12328,9 +12465,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "That would change lives on campus.",
     "response_b": "Landlords have rights. Students have rent.",
@@ -12340,9 +12489,9 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Taps a notebook.",
     "reaction_d": "Stares.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You make the case for student housing at the ward and tell the students how it went.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You look at how other cities handled campus rents and send the students a short summary.",
     "promise_kept_text_d": null
   },
   {
@@ -12486,7 +12635,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -12505,7 +12660,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Goes pale.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You press the ministry for more daycare places and share the answer with the parents.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ministry how many families are waiting for daycare and share the figure.",
     "promise_kept_text_d": null
@@ -12645,9 +12800,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "A stipend keeps hands at the bench.",
     "response_b": "A craft is not a gadget.",
@@ -12657,9 +12824,9 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Turns away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You put the case for apprenticeship stipends to the culture office and tell the workshop.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You ask the arts office what support exists and pass the list to the workshop.",
     "promise_kept_text_d": null
   },
   {
@@ -12721,9 +12888,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "A mark tells buyers the truth.",
     "response_b": "They choose what they can see.",
@@ -12733,9 +12912,9 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods once.",
     "reaction_d": "Looks hurt.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You push the trade office for a quality mark for local crafts and report back.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You talk to the tourist board about craft labels and tell the makers what they said.",
     "promise_kept_text_d": null
   },
   {
@@ -12797,7 +12976,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -12815,7 +13000,7 @@
     "reaction_b": "Rolls eyes.",
     "reaction_c": "Nods.",
     "reaction_d": "Goes cold.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You speak up for the Assembly in your next press round.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You speak up for members in the press, fairly, and say where criticism has been earned.",
     "promise_kept_text_d": null
@@ -12879,7 +13064,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -12897,7 +13088,7 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods slowly.",
     "reaction_d": "Shakes head.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You back more bill-reading staff in the Assembly budget talks.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a costed plan for more bill-reading staff and send it to the members.",
     "promise_kept_text_d": null
@@ -12961,7 +13152,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -12979,7 +13176,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Looks away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You speak against rezoning the festival route at the planning office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the city to consult everyone on the festival route, and it schedules a meeting.",
     "promise_kept_text_d": null
@@ -13043,7 +13240,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13061,7 +13264,7 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Smiles.",
     "reaction_d": "Frowns.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You thank the grove volunteers by name at a town meeting.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You name the grove volunteers in your speech. Several of them are in the room.",
     "promise_kept_text_d": null
@@ -13125,7 +13328,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13143,7 +13352,7 @@
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods.",
     "reaction_d": "Turns away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You raise care workers' pay at the welfare office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a pay review for care workers and send the council the terms of reference.",
     "promise_kept_text_d": null
@@ -13207,7 +13416,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13225,7 +13440,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Stares.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You argue for funded home visits at the welfare office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You set up a home-visit pilot in one district and share the first month's results.",
     "promise_kept_text_d": null
@@ -13289,7 +13504,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13307,7 +13528,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Sighs.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You ask the transport office to set bus routes by ridership data.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the transport office for a bus service review and send the alliance its timetable.",
     "promise_kept_text_d": null
@@ -13371,7 +13592,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13389,7 +13616,7 @@
     "reaction_b": "Shrugs.",
     "reaction_c": "Nods.",
     "reaction_d": "Rolls eyes.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You back mixed-use zoning near stations at the planning office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the planning office to name pilot areas for mixed-use zoning near stations.",
     "promise_kept_text_d": null
@@ -13453,7 +13680,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13471,7 +13704,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Turns away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You help arrange recordings of the elders speaking the language.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You find out what recording the elders' language would cost and send the foundation the figures.",
     "promise_kept_text_d": null
@@ -13535,7 +13768,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13553,7 +13792,7 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
     "reaction_d": "Shakes head.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You argue for language teachers in the school budget.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ministry about training language teachers and send the foundation its answer.",
     "promise_kept_text_d": null
@@ -13617,7 +13856,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13636,7 +13881,7 @@
     "reaction_b": "Folds arms.",
     "reaction_c": "Nods.",
     "reaction_d": "Looks away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You argue for a regular rural bus service at the transport office and tell the village.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a passenger count on the noon bus and send the council the numbers.",
     "promise_kept_text_d": null
@@ -13700,7 +13945,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13718,7 +13969,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Stares.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You back relocation grants for young families at the ministry.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You look into a small pilot of grants for young families and send the council the outline.",
     "promise_kept_text_d": null
@@ -13778,9 +14029,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "The whole street will be grateful.",
     "response_b": "Our users are mostly pensioners.",
@@ -13790,9 +14053,9 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Shakes head.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You find a repair grant for the hall roof and help the association fill in the forms.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You ask what repair grants exist and send the association the list.",
     "promise_kept_text_d": null
   },
   {
@@ -13937,7 +14200,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -13956,7 +14225,7 @@
     "reaction_b": "Folds arms.",
     "reaction_c": "Nods.",
     "reaction_d": "Turns away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You make sure the neighbors get a hearing before the lot is decided, and you attend it.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a public hearing on the vacant lot, and the date goes up on the notice board.",
     "promise_kept_text_d": null
@@ -14020,7 +14289,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -14039,7 +14314,7 @@
     "reaction_b": "Scoffs.",
     "reaction_c": "Shrugs.",
     "reaction_d": "Walks to the door.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You back a study of the seals and fair compensation at the fisheries office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ministry for data on seals and the catch, and send the fleet the report.",
     "promise_kept_text_d": null
@@ -14103,9 +14378,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "A fund would save many boats.",
     "response_b": "Our margins have no room to save.",
@@ -14115,9 +14402,9 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
     "reaction_d": "Stiffens.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You press for a vessel renewal fund at the fisheries office and tell the crews.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You look into loan guarantees for new engines and send the fleet what you found.",
     "promise_kept_text_d": null
   },
   {
@@ -14179,7 +14466,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -14196,7 +14489,7 @@
     "reaction_b": "Stares.",
     "reaction_c": "Nods.",
     "reaction_d": "Looks away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You make the case for crew training and housing at the fisheries office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -14493,7 +14786,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -14511,7 +14810,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Turns away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You speak up about the night-shift cuts and ask the factory for fair notice.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the factory owners to meet the union about the night shifts, and they agree to a date.",
     "promise_kept_text_d": null
@@ -14575,7 +14874,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -14593,7 +14898,7 @@
     "reaction_b": "Shakes head.",
     "reaction_c": "Nods.",
     "reaction_d": "Looks angry.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You back reform of temp workers' benefits at the labor office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You study how other places treat temp workers and send the union a short summary.",
     "promise_kept_text_d": null
@@ -14657,7 +14962,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -14675,7 +14986,7 @@
     "reaction_b": "Glares.",
     "reaction_c": "Nods.",
     "reaction_d": "Stands.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You ask the labor office why the safety inspector was removed.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You write to the ministry about the removed safety inspector and share its reply with the plant.",
     "promise_kept_text_d": null
@@ -14739,7 +15050,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -14758,7 +15075,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Looks away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You push the prefecture to put the dairy road high on the winter plowing list.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the prefecture about the winter plow schedule, and the milk road is added to the list.",
     "promise_kept_text_d": null
@@ -14822,9 +15139,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "Help like that keeps barns open.",
     "response_b": "We have trimmed everything.",
@@ -14834,9 +15163,9 @@
     "reaction_b": "Folds arms.",
     "reaction_c": "Nods.",
     "reaction_d": "Shakes head.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You argue for feed support at the agriculture office and tell the dairy farmers how it went.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You bring the feed prices to the committee and send the farmers the minutes.",
     "promise_kept_text_d": null
   },
   {
@@ -14898,9 +15227,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "He will be grateful. So will I.",
     "response_b": "Loans for a farm are a mountain.",
@@ -14910,9 +15251,9 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
     "reaction_d": "Eyes flash.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You speak for successor grants at the agriculture office and tell the family.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You find out which successor programs exist and send the family the details.",
     "promise_kept_text_d": null
   },
   {
@@ -14970,7 +15311,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -14989,7 +15336,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Rolls eyes.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You make the case for open textbook funding and tell the students how it went.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the university about textbook costs and pass on what it can offer.",
     "promise_kept_text_d": null
@@ -15049,7 +15396,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -15067,7 +15420,7 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
     "reaction_d": "Stiffens.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You push the campus for longer library hours.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You raise longer library hours with the rector, and a trial of later closing is agreed.",
     "promise_kept_text_d": null
@@ -15127,7 +15480,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -15146,7 +15505,7 @@
     "reaction_b": "Looks tired.",
     "reaction_c": "Nods.",
     "reaction_d": "Turns away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You argue for student housing support at the ward and share the answer with the students.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the university about transit passes and send the students its answer.",
     "promise_kept_text_d": null
@@ -15206,9 +15565,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "Children will thank you.",
     "response_b": "Matching. That might work.",
@@ -15218,9 +15589,9 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Looks hurt.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You get the ward to book the playground repair and tell the parents the date.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You report the broken playground to the parks office and pass on the reference number.",
     "promise_kept_text_d": null
   },
   {
@@ -15364,9 +15735,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "That would let all of us join.",
     "response_b": "Rotate. Once a month in the morning.",
@@ -15376,9 +15759,9 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
     "reaction_d": "Turns away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You push the school board for online meeting options and tell the parents.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You pass the concern to the school board with a short note of your own.",
     "promise_kept_text_d": null
   },
   {
@@ -15611,7 +15994,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -15629,7 +16018,7 @@
     "reaction_b": "Dry smile.",
     "reaction_c": "Nods.",
     "reaction_d": "Turns away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You spend an afternoon at the workshop and hear how the work is done.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You visit the workshop for an hour and hear exactly how the carvers work.",
     "promise_kept_text_d": null
@@ -15689,7 +16078,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -15707,7 +16102,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Stiffens.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You press the railway for platform doors.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the railway for a plan on platform doors and post its reply for the commuters.",
     "promise_kept_text_d": null
@@ -15776,7 +16171,13 @@
       }
     ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "A small fix that matters.",
     "response_b": "In this decade?",
@@ -15788,7 +16189,7 @@
     "reaction_d": "Shrugs.",
     "promise_kept_text_a": "You ask the railway to modernize the ticket machines, and it names a date for the new ones.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You report the faulty ticket machine to the station office.",
     "promise_kept_text_d": null
   },
   {
@@ -15846,7 +16247,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -15864,7 +16271,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Sighs.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You push for delay compensation at the transport office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the railway for delay figures and send them to the commuter who asked.",
     "promise_kept_text_d": null
@@ -15924,9 +16331,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "Thank you. The roof is old and dear.",
     "response_b": "Our funds are our community.",
@@ -15936,9 +16355,9 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
     "reaction_d": "Frowns.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You find a heritage restoration grant for the shrine roof and help with the forms.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You ask the culture office about the shrine roof and pass the answer on.",
     "promise_kept_text_d": null
   },
   {
@@ -15996,9 +16415,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "A little help goes far.",
     "response_b": "A shrine is not a ticket booth.",
@@ -16008,9 +16439,9 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Sighs.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You help arrange cleanup support and new signs for the shrine grounds.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You talk to the tourist board about the litter and tell the shrine what they said.",
     "promise_kept_text_d": null
   },
   {
@@ -16224,9 +16655,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "Support like that keeps us here.",
     "response_b": "Then Yezo needs money in the lab.",
@@ -16236,9 +16679,9 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
     "reaction_d": "Folds arms.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You argue for housing and lab support for young engineers at the ministry.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You ask the university about closer ties with local firms and report back.",
     "promise_kept_text_d": null
   },
   {
@@ -16296,9 +16739,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "A good story brings investment.",
     "response_b": "Power is local. So is the work.",
@@ -16308,9 +16763,9 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Shakes head.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You tell the cold-climate data center story in your next speeches.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You ask for a study of data center costs in a cold climate.",
     "promise_kept_text_d": null
   },
   {
@@ -16372,9 +16827,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "Mayors across the region will thank you.",
     "response_b": "Merge, and the office moves away.",
@@ -16384,9 +16851,9 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Stands.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You argue for a small-town building fund at the ministry and tell the town office.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You look for an existing repair fund and send the town office what you find.",
     "promise_kept_text_d": null
   },
   {
@@ -16448,9 +16915,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "A bonus could turn the tide.",
     "response_b": "With what money?",
@@ -16460,9 +16939,9 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
     "reaction_d": "Looks away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You make the case for rural placement bonuses at the ministry.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You raise the loss of young staff with the ministry and tell the town how it went.",
     "promise_kept_text_d": null
   },
   {
@@ -16602,9 +17081,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "That could save many of us.",
     "response_b": "Landlords are not hungry.",
@@ -16614,9 +17105,9 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Nods.",
     "reaction_d": "Stiffens.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You argue for rent support for small shops at the ward and tell the shopkeeper.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You meet the landlord association about rising shop rents and pass on what they said.",
     "promise_kept_text_d": null
   },
   {
@@ -16674,9 +17165,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "That would be a lifeline.",
     "response_b": "We try. It is not easy.",
@@ -16686,9 +17189,9 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Sighs.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You speak up for local-shop programs at the ward and tell the shopkeeper.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You spend an afternoon at the shop-local day and buy something at every stall.",
     "promise_kept_text_d": null
   },
   {
@@ -16922,7 +17425,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -16940,7 +17449,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods.",
     "reaction_d": "Stiffens.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You back the members' call for a voice in the platform.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You pass the new members' request on to headquarters and send them the reply.",
     "promise_kept_text_d": null
@@ -17012,7 +17521,13 @@
         "for": "BO01"
       }
     ],
-    "commitment_b": null,
+    "commitment_b": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_c": [
       {
         "kind": "promise_hours",
@@ -17031,7 +17546,7 @@
     "reaction_c": "Nods.",
     "reaction_d": "Shrugs.",
     "promise_kept_text_a": "You find a donor for the local office's copier. It arrives the following week.",
-    "promise_kept_text_b": null,
+    "promise_kept_text_b": "You attend the small fundraiser for the copier and say a few words.",
     "promise_kept_text_c": "You ask headquarters for an equipment grant for the copier and send the office the form.",
     "promise_kept_text_d": null
   },
@@ -17113,9 +17628,9 @@
       "VI15"
     ],
     "question_text": "The faction needs a new office. Will you pay a share?",
-    "choice_a": "Yes, I'll contribute my share.",
+    "choice_a": "Yes, here is my share.",
     "choice_b": "The party should pay for faction offices.",
-    "choice_c": "I'll look at what my budget allows.",
+    "choice_c": "That depends on what my budget allows.",
     "choice_d": "Share the existing office with another faction.",
     "correct_choice": "A",
     "response_right": "Generosity is remembered.",
@@ -17162,7 +17677,12 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "funds",
+        "amount": 20000
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -21717,7 +22237,7 @@
       "VI111"
     ],
     "question_text": "The flour price has gone up three times since spring and my regulars notice every yen. What can you do?",
-    "choice_a": "Push for a flour cost review and report back.",
+    "choice_a": "I'll push for a flour cost review and report back.",
     "choice_b": "Prices follow world markets; nobody controls them.",
     "choice_c": "Raise prices a little; regulars will understand.",
     "choice_d": "Smaller loaves at the same price.",
@@ -21770,7 +22290,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -21782,7 +22308,7 @@
     "reaction_b": "Shakes his head.",
     "reaction_c": "Mutters about city hall.",
     "reaction_d": "Turns back to the oven.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You push for a review of flour costs and send the baker what you learned.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -22190,10 +22716,10 @@
       "VI114"
     ],
     "question_text": "This ward used to hold a summer cleanup every year. Nobody organizes it now. Will you?",
-    "choice_a": "Help me set a date and bring volunteers from three blocks.",
+    "choice_a": "I'll set a date and bring volunteers from three blocks.",
     "choice_b": "Say it is a private matter for the neighborhood.",
     "choice_c": "Say the city already pays people to clean.",
-    "choice_d": "Offer to send a representative next month.",
+    "choice_d": "Offer to send a representative instead.",
     "correct_choice": "A",
     "response_right": "Three blocks. I can knock on doors for that.",
     "response_wrong": "A representative is not a broom.",
@@ -22247,10 +22773,22 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "response_a": "Three blocks. I can knock on doors for that.",
     "response_b": "A private matter? It is the street we all walk.",
     "response_c": "They have not cleaned this street since spring.",
@@ -22259,10 +22797,10 @@
     "reaction_b": "Looks at the litter.",
     "reaction_c": "Taps her cane on the sidewalk.",
     "reaction_d": "Walks away with her cane.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You set a date for the summer cleanup and bring volunteers from three blocks.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": "You arrange for a representative to turn up to the cleanup in your place."
   },
   {
     "question_id": "VQ289",
@@ -23299,9 +23837,9 @@
     ],
     "question_text": "Customers talk politics in my chair all day. What is the one thing you would tell them?",
     "choice_a": "That I'll listen first, and I'll be back next month.",
-    "choice_b": "That politics is complicated, but I'll explain.",
+    "choice_b": "That politics is complicated, and worth explaining.",
     "choice_c": "That they should read more than one paper.",
-    "choice_d": "That they should tell me themselves; I'll ask.",
+    "choice_d": "That they should come and tell me themselves.",
     "correct_choice": "A",
     "response_right": "Come back and I will keep the second chair warm.",
     "response_wrong": "They only talk politics to those they trust.",
@@ -23364,7 +23902,7 @@
     "response_a": "Come back and I will keep the second chair warm.",
     "response_b": "Complicated. They like simple.",
     "response_c": "More than one paper. Nobody does.",
-    "response_d": "You ask. They will tell you plenty.",
+    "response_d": "Come and tell you? They will, and plenty.",
     "reaction_a": "Shakes out a cape.",
     "reaction_b": "Sniffs.",
     "reaction_c": "Looks away.",
@@ -25649,7 +26187,7 @@
       "VI136"
     ],
     "question_text": "The clinic ramp is too steep and the elevator breaks often. Can you help?",
-    "choice_a": "Raise it with the ward for a funded repair.",
+    "choice_a": "I'll raise it with the ward for a funded repair.",
     "choice_b": "Repairs take time; I'll ask for a date.",
     "choice_c": "The building is old; a new clinic is the answer.",
     "choice_d": "The ramp meets code; the elevator is the priority.",
@@ -25706,7 +26244,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": [
       {
         "kind": "promise_hours",
@@ -25724,7 +26268,7 @@
     "reaction_b": "Glares at the ramp.",
     "reaction_c": "Shakes his head.",
     "reaction_d": "Rolls back.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You raise the clinic ramp and elevator with the ward and push for a funded repair.",
     "promise_kept_text_b": "You ask for a repair date for the clinic ramp and elevator and pass it on.",
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -26047,7 +26591,7 @@
       "VI138"
     ],
     "question_text": "My wife has dementia and I cannot leave her alone. Who can sit with her for an afternoon?",
-    "choice_a": "Ask about respite care and a volunteer visitor list.",
+    "choice_a": "I'll find respite care and a volunteer visitor.",
     "choice_b": "Family carers come first; others can help.",
     "choice_c": "Look into a short-stay at a nursing home.",
     "choice_d": "Ask neighbors to take turns for an afternoon.",
@@ -26100,11 +26644,17 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
-    "response_a": "A visitor list. I would write the first name.",
+    "response_a": "A visitor. Even one afternoon would help.",
     "response_b": "I am the family.",
     "response_c": "A short-stay. I did not know.",
     "response_d": "My neighbors are older than I am.",
@@ -26112,7 +26662,7 @@
     "reaction_b": "Shakes his head.",
     "reaction_c": "Looks away.",
     "reaction_d": "Straightens his coat.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You find a respite care service and a volunteer who can sit with his wife.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -26359,7 +26909,7 @@
       "VI140"
     ],
     "question_text": "We are asked to teach more every year with the same hours. What gives?",
-    "choice_a": "Ask the board what to drop and what to protect.",
+    "choice_a": "I'll ask the board what to drop and what to protect.",
     "choice_b": "Schools have to adapt to new demands.",
     "choice_c": "The hours are fixed; we prioritize within them.",
     "choice_d": "Schools must learn to do more with less.",
@@ -26412,7 +26962,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -26424,7 +26980,7 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Shakes his head.",
     "reaction_d": "Closes the office door.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You ask the school board what to drop and what to protect, and share the answer.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -27607,7 +28163,7 @@
       "VI148"
     ],
     "question_text": "The bus is twenty years old and the heater is broken. Who replaces it?",
-    "choice_a": "Ask for a replacement plan and a published schedule.",
+    "choice_a": "I'll ask for a replacement plan and a published schedule.",
     "choice_b": "Fix the heater; buses last a long time.",
     "choice_c": "Lease a bus until a new one is funded.",
     "choice_d": "Combine routes to use the newer buses.",
@@ -27660,7 +28216,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -27672,7 +28234,7 @@
     "reaction_b": "Glares at the heater.",
     "reaction_c": "Looks away.",
     "reaction_d": "Turns the key.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You ask for a bus replacement plan and a published schedule, and pass it on.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -28151,7 +28713,7 @@
       "VI152"
     ],
     "question_text": "Every autumn the kindergarten has fewer children. How long can we stay open?",
-    "choice_a": "Ask the ward for a flat grant for small kindergartens.",
+    "choice_a": "I'll ask the ward for a flat grant for small kindergartens.",
     "choice_b": "Numbers will decide; I can't promise more.",
     "choice_c": "The town is shrinking; we have to plan for it.",
     "choice_d": "Kindergartens close when young families leave the town.",
@@ -28208,7 +28770,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -28220,7 +28788,7 @@
     "reaction_b": "Shakes her head.",
     "reaction_c": "Dabs her eyes.",
     "reaction_d": "Locks the door.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You ask the ward for a flat grant for small kindergartens and tell the staff.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -29631,7 +30199,7 @@
       "VI161"
     ],
     "question_text": "Tourists photograph the sheep and never buy a thing. How do I make visits pay?",
-    "choice_a": "Ask for a farm-visit scheme and shared booking site.",
+    "choice_a": "I'll ask for a farm-visit scheme and booking site.",
     "choice_b": "Tourists come to look; that's their choice.",
     "choice_c": "Sell wool and cheese at a farm stand.",
     "choice_d": "Charge a small fee to visit the flock.",
@@ -29688,7 +30256,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -29700,7 +30274,7 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Shakes his head.",
     "reaction_d": "Pulls a gate shut.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You ask the tourism office for a farm-visit scheme and a shared booking site.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -29943,7 +30517,7 @@
       "VI163"
     ],
     "question_text": "Banks laugh at a first-year farm loan. How can I start?",
-    "choice_a": "Ask for a start-up loan guarantee for new farmers.",
+    "choice_a": "I'll ask for a start-up loan guarantee for new farmers.",
     "choice_b": "Banks are cautious; start smaller and build a record.",
     "choice_c": "Lease equipment first to cut what you borrow.",
     "choice_d": "Join a co-op that lends to its members.",
@@ -30000,7 +30574,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -30012,7 +30592,7 @@
     "reaction_b": "Shakes his head.",
     "reaction_c": "Rubs his face.",
     "reaction_d": "Puts the papers away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You ask the agriculture office for a start-up loan guarantee for new farmers.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -30255,7 +30835,7 @@
       "VI165"
     ],
     "question_text": "Farmers and shops never meet. I spend my day as the go-between. Can you bring us together?",
-    "choice_a": "Ask the ward to host monthly producer-buyer meetings.",
+    "choice_a": "I'll ask the ward to host producer-buyer meetings.",
     "choice_b": "Markets connect buyers and sellers on their own.",
     "choice_c": "Buyers should visit the farms directly.",
     "choice_d": "An online board could match them.",
@@ -30312,7 +30892,13 @@
         "delta": -2
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
@@ -30324,7 +30910,7 @@
     "reaction_b": "Rubs the bridge of his nose.",
     "reaction_c": "Shrugs.",
     "reaction_d": "Taps the ledger.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You ask the ward to host regular meetings between producers and buyers.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -30540,7 +31126,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -30559,7 +31151,7 @@
     "reaction_b": "Frowns.",
     "reaction_c": "Nods slowly.",
     "reaction_d": "Folds arms.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You push for a cap on card fees for small shops and tell the shopkeeper.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the banks to meet the shop owners about card fees, and they agree to sit down.",
     "promise_kept_text_d": null
@@ -30619,7 +31211,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -30638,7 +31236,7 @@
     "reaction_b": "Sighs.",
     "reaction_c": "Takes a pen.",
     "reaction_d": "Stares.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You push to cut hiring paperwork for small firms and tell the shopkeeper how it went.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You send the help sheet on hiring part-timers. It saves the shop owner most of a day.",
     "promise_kept_text_d": null
@@ -30698,9 +31296,21 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
-    "commitment_c": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "commitment_d": null,
     "response_a": "My husband rests there. Thank you.",
     "response_b": "It is our history, not just religion.",
@@ -30710,9 +31320,9 @@
     "reaction_b": "Purses lips.",
     "reaction_c": "Pats your hand.",
     "reaction_d": "Looks away.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You look for a heritage grant for the temple roof and help with the forms.",
     "promise_kept_text_b": null,
-    "promise_kept_text_c": null,
+    "promise_kept_text_c": "You ask the temple association what the roof needs and pass it to the town.",
     "promise_kept_text_d": null
   },
   {
@@ -30770,7 +31380,13 @@
         "delta": -1
       }
     ],
-    "commitment_a": null,
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 48
+      }
+    ],
     "commitment_b": null,
     "commitment_c": [
       {
@@ -30778,7 +31394,13 @@
         "amount": 1
       }
     ],
-    "commitment_d": null,
+    "commitment_d": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
     "response_a": "The whole town will come.",
     "response_b": "It is a town event as much as anything.",
     "response_c": "Better than nothing.",
@@ -30787,9 +31409,9 @@
     "reaction_b": "Raises an eyebrow.",
     "reaction_c": "Nods politely.",
     "reaction_d": "Shakes head.",
-    "promise_kept_text_a": null,
+    "promise_kept_text_a": "You speak at both the temple and the shrine on festival day.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": "You attend the festival they choose and stay for the opening."
   }
 ]

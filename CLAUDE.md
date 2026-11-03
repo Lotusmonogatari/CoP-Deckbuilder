@@ -753,3 +753,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Lobbyist Lines: each lobbyist speaks in their organization's voice (2026-11-03, Cameron)
 - Quality control audit (2026-11-03, Cameron)
 - The bot plays discard cards; a discard card trial (2026-11-03, Cameron)
+- Office Hours choices that promise something now cost something (2026-11-03, Cameron)

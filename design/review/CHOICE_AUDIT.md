@@ -2,9 +2,10 @@
 
 Rules: every choice 4-12 words; the longest at most 1.75x the shortest; each choice a sincere position; concrete steps matched across choices.
 
-0 of 452 sets break a rule.
+1 of 453 sets break a rule.
 
-4 sets have only one choice that promises an action and it costs nothing (a note for the commitments work, not a rule break; a policy stance such as I'll fight for relief is fine as it is).
+0 sets have only one choice that promises an action and it costs nothing (a note for the commitments work, not a rule break; a policy stance such as I'll fight for relief is fine as it is).
 
 | Tab | ID | Words | Problems | Note | Choices |
 |---|---|---|---|---|---|
+| Visitor Questions | VQ44 | 6, 8, 7, 4 | longest is 2.0x the shortest |  | The delay reports tell me enough. / Yes, if there's a cabin for the night. / I get seasick, but I'll try once. / Absolutely. Thermos in hand. |
