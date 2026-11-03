@@ -60862,7 +60862,7 @@
     },
     {
       "id": "S1914",
-      "text": "Why should Yezo pay farmers to keep paddies in use?",
+      "text": "Should farmers be paid simply to keep their paddies planted?",
       "theme": "Pay farmers to keep paddies in use",
       "grades": {
         "Earnest": "S",
@@ -60910,7 +60910,7 @@
     },
     {
       "id": "S1916",
-      "text": "The Agricultural Cooperatives want us to pay farmers to keep paddies in use. Why should everyone else care?",
+      "text": "City groups see this as paying for rice nobody needs. What do you tell them?",
       "theme": "Pay farmers to keep paddies in use",
       "grades": {
         "Earnest": "M",
@@ -60934,7 +60934,7 @@
     },
     {
       "id": "S1917",
-      "text": "What would it mean for people like me if we pay farmers to keep paddies in use?",
+      "text": "Would the payment stop the paddies around my village going to weeds?",
       "theme": "Pay farmers to keep paddies in use",
       "grades": {
         "Earnest": "M",
@@ -60958,7 +60958,7 @@
     },
     {
       "id": "S1918",
-      "text": "If we pay farmers to keep paddies in use, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we check that paid paddies are actually farmed?",
       "theme": "Pay farmers to keep paddies in use",
       "grades": {
         "Earnest": "S",
@@ -61006,7 +61006,7 @@
     },
     {
       "id": "S1920",
-      "text": "Is there a smaller step we could try before we pay farmers to keep paddies in use?",
+      "text": "Could payments go only to paddies that protect against flooding?",
       "theme": "Pay farmers to keep paddies in use",
       "grades": {
         "Earnest": "M",
@@ -61054,7 +61054,7 @@
     },
     {
       "id": "S1922",
-      "text": "Why should Yezo start a farm-to-school lunch program?",
+      "text": "Should school lunches use food grown by local farmers?",
       "theme": "Start a farm-to-school lunch program",
       "grades": {
         "Earnest": "S",
@@ -61102,7 +61102,7 @@
     },
     {
       "id": "S1924",
-      "text": "The Agricultural Cooperatives want us to start a farm-to-school lunch program. Why should everyone else care?",
+      "text": "School caterers fear losing their contracts. How do you answer them?",
       "theme": "Start a farm-to-school lunch program",
       "grades": {
         "Earnest": "M",
@@ -61126,7 +61126,7 @@
     },
     {
       "id": "S1925",
-      "text": "What would it mean for people like me if we start a farm-to-school lunch program?",
+      "text": "Would the program put vegetables from our own valley on my son's lunch tray?",
       "theme": "Start a farm-to-school lunch program",
       "grades": {
         "Earnest": "M",
@@ -61150,7 +61150,7 @@
     },
     {
       "id": "S1926",
-      "text": "If we start a farm-to-school lunch program, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we keep the lunches affordable when local food costs more?",
       "theme": "Start a farm-to-school lunch program",
       "grades": {
         "Earnest": "S",
@@ -61198,7 +61198,7 @@
     },
     {
       "id": "S1928",
-      "text": "Is there a smaller step we could try before we start a farm-to-school lunch program?",
+      "text": "Could schools start with one local dish a day rather than the whole menu?",
       "theme": "Start a farm-to-school lunch program",
       "grades": {
         "Earnest": "M",
@@ -61246,7 +61246,7 @@
     },
     {
       "id": "S1930",
-      "text": "Why should Yezo insure farmers against bad harvests?",
+      "text": "Should the state insure farmers against a bad harvest?",
       "theme": "Insure farmers against bad harvests",
       "grades": {
         "Earnest": "S",
@@ -61294,7 +61294,7 @@
     },
     {
       "id": "S1932",
-      "text": "The Agricultural Cooperatives want us to insure farmers against bad harvests. Why should everyone else care?",
+      "text": "Private insurers say the state is crowding them out. What is your answer?",
       "theme": "Insure farmers against bad harvests",
       "grades": {
         "Earnest": "M",
@@ -61318,7 +61318,7 @@
     },
     {
       "id": "S1933",
-      "text": "What would it mean for people like me if we insure farmers against bad harvests?",
+      "text": "Would harvest insurance stop one bad summer ending my uncle's farm?",
       "theme": "Insure farmers against bad harvests",
       "grades": {
         "Earnest": "M",
@@ -61342,7 +61342,7 @@
     },
     {
       "id": "S1934",
-      "text": "If we insure farmers against bad harvests, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we judge a bad harvest fairly from farm to farm?",
       "theme": "Insure farmers against bad harvests",
       "grades": {
         "Earnest": "S",
@@ -61390,7 +61390,7 @@
     },
     {
       "id": "S1936",
-      "text": "Is there a smaller step we could try before we insure farmers against bad harvests?",
+      "text": "Could the state share the cost of private insurance instead?",
       "theme": "Insure farmers against bad harvests",
       "grades": {
         "Earnest": "M",
@@ -61438,7 +61438,7 @@
     },
     {
       "id": "S1938",
-      "text": "Why should Yezo support farmers' direct sales at city markets?",
+      "text": "Should farmers sell directly to shoppers in the cities?",
       "theme": "Support farmers' direct sales at city markets",
       "grades": {
         "Earnest": "S",
@@ -61486,7 +61486,7 @@
     },
     {
       "id": "S1940",
-      "text": "The Agricultural Cooperatives want us to support farmers' direct sales at city markets. Why should everyone else care?",
+      "text": "City grocers fear losing customers to farm stalls. What do you say?",
       "theme": "Support farmers' direct sales at city markets",
       "grades": {
         "Earnest": "M",
@@ -61510,7 +61510,7 @@
     },
     {
       "id": "S1941",
-      "text": "What would it mean for people like me if we support farmers' direct sales at city markets?",
+      "text": "Would city markets let me buy vegetables picked that morning?",
       "theme": "Support farmers' direct sales at city markets",
       "grades": {
         "Earnest": "M",
@@ -61534,7 +61534,7 @@
     },
     {
       "id": "S1942",
-      "text": "If we support farmers' direct sales at city markets, how would you make sure it is done fairly and on schedule?",
+      "text": "Who runs the markets and checks the produce is really from local farms?",
       "theme": "Support farmers' direct sales at city markets",
       "grades": {
         "Earnest": "S",
@@ -61582,7 +61582,7 @@
     },
     {
       "id": "S1944",
-      "text": "Is there a smaller step we could try before we support farmers' direct sales at city markets?",
+      "text": "Could farmers sell through existing shops on shared counters instead?",
       "theme": "Support farmers' direct sales at city markets",
       "grades": {
         "Earnest": "M",
@@ -61630,7 +61630,7 @@
     },
     {
       "id": "S1946",
-      "text": "Why should Yezo build public student housing?",
+      "text": "Should the state build housing for students?",
       "theme": "Build public student housing",
       "grades": {
         "Earnest": "S",
@@ -61678,7 +61678,7 @@
     },
     {
       "id": "S1948",
-      "text": "The Students United wants us to build public student housing. Why should everyone else care?",
+      "text": "Landlords and developers say public housing undercuts them. Your answer?",
       "theme": "Build public student housing",
       "grades": {
         "Earnest": "M",
@@ -61702,7 +61702,7 @@
     },
     {
       "id": "S1949",
-      "text": "What would it mean for people like me if we build public student housing?",
+      "text": "Would student housing let my daughter study in Sapporo without crushing rent?",
       "theme": "Build public student housing",
       "grades": {
         "Earnest": "M",
@@ -61726,7 +61726,7 @@
     },
     {
       "id": "S1950",
-      "text": "If we build public student housing, how would you make sure it is done fairly and on schedule?",
+      "text": "Who manages the housing, and how is a room allocated fairly?",
       "theme": "Build public student housing",
       "grades": {
         "Earnest": "S",
@@ -61774,7 +61774,7 @@
     },
     {
       "id": "S1952",
-      "text": "Is there a smaller step we could try before we build public student housing?",
+      "text": "Could universities lease existing empty buildings instead of building new ones?",
       "theme": "Build public student housing",
       "grades": {
         "Earnest": "M",
@@ -61822,7 +61822,7 @@
     },
     {
       "id": "S1954",
-      "text": "Why should Yezo forgive student loans for graduates who work in rural towns?",
+      "text": "Should student debts be forgiven for graduates who work in the countryside?",
       "theme": "Forgive student loans for graduates who work in rural towns",
       "grades": {
         "Earnest": "S",
@@ -61870,7 +61870,7 @@
     },
     {
       "id": "S1956",
-      "text": "The Students United wants us to forgive student loans for graduates who work in rural towns. Why should everyone else care?",
+      "text": "Taxpayers ask why some graduates' debts are erased. What do you tell them?",
       "theme": "Forgive student loans for graduates who work in rural towns",
       "grades": {
         "Earnest": "M",
@@ -61894,7 +61894,7 @@
     },
     {
       "id": "S1957",
-      "text": "What would it mean for people like me if we forgive student loans for graduates who work in rural towns?",
+      "text": "Would forgiveness persuade a young doctor to work in our village clinic?",
       "theme": "Forgive student loans for graduates who work in rural towns",
       "grades": {
         "Earnest": "M",
@@ -61918,7 +61918,7 @@
     },
     {
       "id": "S1958",
-      "text": "If we forgive student loans for graduates who work in rural towns, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we confirm graduates actually stay and work rurally?",
       "theme": "Forgive student loans for graduates who work in rural towns",
       "grades": {
         "Earnest": "S",
@@ -61966,7 +61966,7 @@
     },
     {
       "id": "S1960",
-      "text": "Is there a smaller step we could try before we forgive student loans for graduates who work in rural towns?",
+      "text": "Could the debt be reduced a share each season instead of forgiven at once?",
       "theme": "Forgive student loans for graduates who work in rural towns",
       "grades": {
         "Earnest": "M",
@@ -62014,7 +62014,7 @@
     },
     {
       "id": "S1962",
-      "text": "Why should Yezo open more public childcare places?",
+      "text": "Should every family be able to find a public childcare place?",
       "theme": "Open more public childcare places",
       "grades": {
         "Earnest": "S",
@@ -62062,7 +62062,7 @@
     },
     {
       "id": "S1964",
-      "text": "The Family Network wants us to open more public childcare places. Why should everyone else care?",
+      "text": "Taxpayers without young children ask why they should pay. Your answer?",
       "theme": "Open more public childcare places",
       "grades": {
         "Earnest": "M",
@@ -62086,7 +62086,7 @@
     },
     {
       "id": "S1965",
-      "text": "What would it mean for people like me if we open more public childcare places?",
+      "text": "Would more places let me return to work without leaving my baby with strangers?",
       "theme": "Open more public childcare places",
       "grades": {
         "Earnest": "M",
@@ -62110,7 +62110,7 @@
     },
     {
       "id": "S1966",
-      "text": "If we open more public childcare places, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we make sure new places meet safety and staffing standards?",
       "theme": "Open more public childcare places",
       "grades": {
         "Earnest": "S",
@@ -62158,7 +62158,7 @@
     },
     {
       "id": "S1968",
-      "text": "Is there a smaller step we could try before we open more public childcare places?",
+      "text": "Could we support workplace nurseries instead of building public ones?",
       "theme": "Open more public childcare places",
       "grades": {
         "Earnest": "M",
@@ -62206,7 +62206,7 @@
     },
     {
       "id": "S1970",
-      "text": "Why should Yezo make school lunches free?",
+      "text": "Should every child eat lunch at school for free?",
       "theme": "Make school lunches free",
       "grades": {
         "Earnest": "S",
@@ -62254,7 +62254,7 @@
     },
     {
       "id": "S1972",
-      "text": "The Family Network wants us to make school lunches free. Why should everyone else care?",
+      "text": "Taxpayers ask why wealthy families should get free lunches too. Your answer?",
       "theme": "Make school lunches free",
       "grades": {
         "Earnest": "M",
@@ -62278,7 +62278,7 @@
     },
     {
       "id": "S1973",
-      "text": "What would it mean for people like me if we make school lunches free?",
+      "text": "Would free lunches mean no child in my son's class goes hungry?",
       "theme": "Make school lunches free",
       "grades": {
         "Earnest": "M",
@@ -62302,7 +62302,7 @@
     },
     {
       "id": "S1974",
-      "text": "If we make school lunches free, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we keep the lunches nutritious when the budget is fixed?",
       "theme": "Make school lunches free",
       "grades": {
         "Earnest": "S",
@@ -62350,7 +62350,7 @@
     },
     {
       "id": "S1976",
-      "text": "Is there a smaller step we could try before we make school lunches free?",
+      "text": "Could lunches be free only for families below a certain income?",
       "theme": "Make school lunches free",
       "grades": {
         "Earnest": "M",
@@ -62398,7 +62398,7 @@
     },
     {
       "id": "S1978",
-      "text": "Why should Yezo fund after-school care in every district?",
+      "text": "Should every district offer care for children after school?",
       "theme": "Fund after-school care in every district",
       "grades": {
         "Earnest": "S",
@@ -62446,7 +62446,7 @@
     },
     {
       "id": "S1980",
-      "text": "The Family Network wants us to fund after-school care in every district. Why should everyone else care?",
+      "text": "Elder-care groups say the money is needed for the old as well. What do you say?",
       "theme": "Fund after-school care in every district",
       "grades": {
         "Earnest": "M",
@@ -62470,7 +62470,7 @@
     },
     {
       "id": "S1981",
-      "text": "What would it mean for people like me if we fund after-school care in every district?",
+      "text": "Would after-school care let me keep my full-time job?",
       "theme": "Fund after-school care in every district",
       "grades": {
         "Earnest": "M",
@@ -62494,7 +62494,7 @@
     },
     {
       "id": "S1982",
-      "text": "If we fund after-school care in every district, how would you make sure it is done fairly and on schedule?",
+      "text": "Who staffs the programs, and how are they checked for safety?",
       "theme": "Fund after-school care in every district",
       "grades": {
         "Earnest": "S",
@@ -62542,7 +62542,7 @@
     },
     {
       "id": "S1984",
-      "text": "Is there a smaller step we could try before we fund after-school care in every district?",
+      "text": "Could schools open their own buildings in the afternoon instead of new centers?",
       "theme": "Fund after-school care in every district",
       "grades": {
         "Earnest": "M",
@@ -62590,7 +62590,7 @@
     },
     {
       "id": "S1986",
-      "text": "Why should Yezo let parents work shorter hours while children are young?",
+      "text": "Should parents of young children have a right to shorter hours?",
       "theme": "Let parents work shorter hours while children are young",
       "grades": {
         "Earnest": "S",
@@ -62638,7 +62638,7 @@
     },
     {
       "id": "S1988",
-      "text": "The Family Network wants us to let parents work shorter hours while children are young. Why should everyone else care?",
+      "text": "Small employers say they cannot cover the gaps. How do you answer them?",
       "theme": "Let parents work shorter hours while children are young",
       "grades": {
         "Earnest": "M",
@@ -62662,7 +62662,7 @@
     },
     {
       "id": "S1989",
-      "text": "What would it mean for people like me if we let parents work shorter hours while children are young?",
+      "text": "Would shorter hours let me collect my children from school myself?",
       "theme": "Let parents work shorter hours while children are young",
       "grades": {
         "Earnest": "M",
@@ -62686,7 +62686,7 @@
     },
     {
       "id": "S1990",
-      "text": "If we let parents work shorter hours while children are young, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop employers quietly passing over parents for promotion?",
       "theme": "Let parents work shorter hours while children are young",
       "grades": {
         "Earnest": "S",
@@ -62734,7 +62734,7 @@
     },
     {
       "id": "S1992",
-      "text": "Is there a smaller step we could try before we let parents work shorter hours while children are young?",
+      "text": "Could the right apply only to firms above a certain size?",
       "theme": "Let parents work shorter hours while children are young",
       "grades": {
         "Earnest": "M",
@@ -62782,7 +62782,7 @@
     },
     {
       "id": "S1994",
-      "text": "Why should Yezo promote craft exports abroad?",
+      "text": "Should the state promote Yezo's crafts in markets abroad?",
       "theme": "Promote craft exports abroad",
       "grades": {
         "Earnest": "S",
@@ -62830,7 +62830,7 @@
     },
     {
       "id": "S1996",
-      "text": "The Yezo Artisans Guild wants us to promote craft exports abroad. Why should everyone else care?",
+      "text": "Innovators say export support should go to technology. What is your answer?",
       "theme": "Promote craft exports abroad",
       "grades": {
         "Earnest": "M",
@@ -62854,7 +62854,7 @@
     },
     {
       "id": "S1997",
-      "text": "What would it mean for people like me if we promote craft exports abroad?",
+      "text": "Would export promotion bring overseas buyers to our town's lacquer workshops?",
       "theme": "Promote craft exports abroad",
       "grades": {
         "Earnest": "M",
@@ -62878,7 +62878,7 @@
     },
     {
       "id": "S1998",
-      "text": "If we promote craft exports abroad, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we measure whether promotion actually brings in sales?",
       "theme": "Promote craft exports abroad",
       "grades": {
         "Earnest": "S",
@@ -62926,7 +62926,7 @@
     },
     {
       "id": "S2000",
-      "text": "Is there a smaller step we could try before we promote craft exports abroad?",
+      "text": "Could makers share the cost of trade fairs instead of the state paying all of it?",
       "theme": "Promote craft exports abroad",
       "grades": {
         "Earnest": "M",
@@ -62974,7 +62974,7 @@
     },
     {
       "id": "S2002",
-      "text": "Why should Yezo fund craft workshops in vacant shopfronts?",
+      "text": "Should empty shops be turned into craft workshops?",
       "theme": "Fund craft workshops in vacant shopfronts",
       "grades": {
         "Earnest": "S",
@@ -63022,7 +63022,7 @@
     },
     {
       "id": "S2004",
-      "text": "The Yezo Artisans Guild wants us to fund craft workshops in vacant shopfronts. Why should everyone else care?",
+      "text": "City groups would rather see those shopfronts become homes. What do you say?",
       "theme": "Fund craft workshops in vacant shopfronts",
       "grades": {
         "Earnest": "M",
@@ -63046,7 +63046,7 @@
     },
     {
       "id": "S2005",
-      "text": "What would it mean for people like me if we fund craft workshops in vacant shopfronts?",
+      "text": "Would workshops bring life back to our empty shopping street?",
       "theme": "Fund craft workshops in vacant shopfronts",
       "grades": {
         "Earnest": "M",
@@ -63070,7 +63070,7 @@
     },
     {
       "id": "S2006",
-      "text": "If we fund craft workshops in vacant shopfronts, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we choose which makers get a workshop, and for how long?",
       "theme": "Fund craft workshops in vacant shopfronts",
       "grades": {
         "Earnest": "S",
@@ -63118,7 +63118,7 @@
     },
     {
       "id": "S2008",
-      "text": "Is there a smaller step we could try before we fund craft workshops in vacant shopfronts?",
+      "text": "Could landlords get a tax break for renting to makers instead?",
       "theme": "Fund craft workshops in vacant shopfronts",
       "grades": {
         "Earnest": "M",
