@@ -44990,7 +44990,7 @@
     },
     {
       "id": "S1242",
-      "text": "Why should Yezo give students discounted transit?",
+      "text": "Should students ride for less than other passengers on the same train?",
       "theme": "Give students discounted transit",
       "grades": {
         "Earnest": "S",
@@ -45038,7 +45038,7 @@
     },
     {
       "id": "S1244",
-      "text": "The Students United wants us to give students discounted transit. Why should everyone else care?",
+      "text": "Commuters paying full fare will ask why students pay less. What do you tell them?",
       "theme": "Give students discounted transit",
       "grades": {
         "Earnest": "M",
@@ -45062,7 +45062,7 @@
     },
     {
       "id": "S1245",
-      "text": "What would it mean for people like me if we give students discounted transit?",
+      "text": "Would a student transit discount let my daughter take the course across the city?",
       "theme": "Give students discounted transit",
       "grades": {
         "Earnest": "M",
@@ -45086,7 +45086,7 @@
     },
     {
       "id": "S1246",
-      "text": "If we give students discounted transit, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop student passes being lent to people who are not students?",
       "theme": "Give students discounted transit",
       "grades": {
         "Earnest": "S",
@@ -45134,7 +45134,7 @@
     },
     {
       "id": "S1248",
-      "text": "Is there a smaller step we could try before we give students discounted transit?",
+      "text": "Could the discount apply only off-peak, when trains run half empty?",
       "theme": "Give students discounted transit",
       "grades": {
         "Earnest": "M",
@@ -45182,7 +45182,7 @@
     },
     {
       "id": "S1250",
-      "text": "Why should Yezo fund scholarships for first-generation students?",
+      "text": "Should the first in a family to reach university get public help to stay there?",
       "theme": "Fund scholarships for first-generation students",
       "grades": {
         "Earnest": "S",
@@ -45230,7 +45230,7 @@
     },
     {
       "id": "S1252",
-      "text": "The Students United wants us to fund scholarships for first-generation students. Why should everyone else care?",
+      "text": "Families who saved for their own children ask why others get scholarships. Your answer?",
       "theme": "Fund scholarships for first-generation students",
       "grades": {
         "Earnest": "M",
@@ -45254,7 +45254,7 @@
     },
     {
       "id": "S1253",
-      "text": "What would it mean for people like me if we fund scholarships for first-generation students?",
+      "text": "Would a scholarship mean the first student in our family could finish the degree?",
       "theme": "Fund scholarships for first-generation students",
       "grades": {
         "Earnest": "M",
@@ -45278,7 +45278,7 @@
     },
     {
       "id": "S1254",
-      "text": "If we fund scholarships for first-generation students, how would you make sure it is done fairly and on schedule?",
+      "text": "Who decides which first-generation students qualify, and how is that kept fair?",
       "theme": "Fund scholarships for first-generation students",
       "grades": {
         "Earnest": "S",
@@ -45326,7 +45326,7 @@
     },
     {
       "id": "S1256",
-      "text": "Is there a smaller step we could try before we fund scholarships for first-generation students?",
+      "text": "Could universities waive fees for these students instead of new scholarships?",
       "theme": "Fund scholarships for first-generation students",
       "grades": {
         "Earnest": "M",
@@ -45374,7 +45374,7 @@
     },
     {
       "id": "S1258",
-      "text": "Why should Yezo raise the child allowance?",
+      "text": "Should the state help pay for raising every child, rich or poor?",
       "theme": "Raise the child allowance",
       "grades": {
         "Earnest": "S",
@@ -45422,7 +45422,7 @@
     },
     {
       "id": "S1260",
-      "text": "The Family Network wants us to raise the child allowance. Why should everyone else care?",
+      "text": "Elder-care groups say the same money is needed for the old. Why children first?",
       "theme": "Raise the child allowance",
       "grades": {
         "Earnest": "M",
@@ -45446,7 +45446,7 @@
     },
     {
       "id": "S1261",
-      "text": "What would it mean for people like me if we raise the child allowance?",
+      "text": "Would a bigger child allowance cover my son's school shoes and lunches?",
       "theme": "Raise the child allowance",
       "grades": {
         "Earnest": "M",
@@ -45470,7 +45470,7 @@
     },
     {
       "id": "S1262",
-      "text": "If we raise the child allowance, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we make sure the allowance reaches the families who need it most?",
       "theme": "Raise the child allowance",
       "grades": {
         "Earnest": "S",
@@ -45518,7 +45518,7 @@
     },
     {
       "id": "S1264",
-      "text": "Is there a smaller step we could try before we raise the child allowance?",
+      "text": "Could the increase go only to families below a certain income?",
       "theme": "Raise the child allowance",
       "grades": {
         "Earnest": "M",
@@ -45566,7 +45566,7 @@
     },
     {
       "id": "S1266",
-      "text": "Why should Yezo extend paid parental leave?",
+      "text": "Should a parent lose income for staying home with a newborn?",
       "theme": "Extend paid parental leave",
       "grades": {
         "Earnest": "S",
@@ -45614,7 +45614,7 @@
     },
     {
       "id": "S1268",
-      "text": "The Family Network wants us to extend paid parental leave. Why should everyone else care?",
+      "text": "Small employers must cover the absence. Why should they carry that?",
       "theme": "Extend paid parental leave",
       "grades": {
         "Earnest": "M",
@@ -45638,7 +45638,7 @@
     },
     {
       "id": "S1269",
-      "text": "What would it mean for people like me if we extend paid parental leave?",
+      "text": "Would longer paid leave let my partner stay home while the baby is small?",
       "theme": "Extend paid parental leave",
       "grades": {
         "Earnest": "M",
@@ -45662,7 +45662,7 @@
     },
     {
       "id": "S1270",
-      "text": "If we extend paid parental leave, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop small firms quietly avoiding hiring young parents?",
       "theme": "Extend paid parental leave",
       "grades": {
         "Earnest": "S",
@@ -45710,7 +45710,7 @@
     },
     {
       "id": "S1272",
-      "text": "Is there a smaller step we could try before we extend paid parental leave?",
+      "text": "Could the state, not the employer, pay for the added leave?",
       "theme": "Extend paid parental leave",
       "grades": {
         "Earnest": "M",
@@ -45758,7 +45758,7 @@
     },
     {
       "id": "S1274",
-      "text": "Why should Yezo give families a tax deduction for each child?",
+      "text": "Should the tax code reward people for having children?",
       "theme": "Give families a tax deduction for each child",
       "grades": {
         "Earnest": "S",
@@ -45806,7 +45806,7 @@
     },
     {
       "id": "S1276",
-      "text": "The Family Network wants us to give families a tax deduction for each child. Why should everyone else care?",
+      "text": "Young people without children ask why they pay more. What do you tell them?",
       "theme": "Give families a tax deduction for each child",
       "grades": {
         "Earnest": "M",
@@ -45830,7 +45830,7 @@
     },
     {
       "id": "S1277",
-      "text": "What would it mean for people like me if we give families a tax deduction for each child?",
+      "text": "Would a deduction help my family, or only those who earn enough to pay much tax?",
       "theme": "Give families a tax deduction for each child",
       "grades": {
         "Earnest": "M",
@@ -45854,7 +45854,7 @@
     },
     {
       "id": "S1278",
-      "text": "If we give families a tax deduction for each child, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we keep the deduction from mostly benefiting wealthier families?",
       "theme": "Give families a tax deduction for each child",
       "grades": {
         "Earnest": "S",
@@ -45902,7 +45902,7 @@
     },
     {
       "id": "S1280",
-      "text": "Is there a smaller step we could try before we give families a tax deduction for each child?",
+      "text": "Could a cash allowance do more good than a tax deduction?",
       "theme": "Give families a tax deduction for each child",
       "grades": {
         "Earnest": "M",
@@ -45950,7 +45950,7 @@
     },
     {
       "id": "S1282",
-      "text": "Why should Yezo certify local crafts with a protected label?",
+      "text": "Should a craft made in Yezo be protected like a regional food?",
       "theme": "Certify local crafts with a protected label",
       "grades": {
         "Earnest": "S",
@@ -45998,7 +45998,7 @@
     },
     {
       "id": "S1284",
-      "text": "The Yezo Artisans Guild wants us to certify local crafts with a protected label. Why should everyone else care?",
+      "text": "Mass producers say a protected label shuts them out. Why should shoppers care?",
       "theme": "Certify local crafts with a protected label",
       "grades": {
         "Earnest": "M",
@@ -46022,7 +46022,7 @@
     },
     {
       "id": "S1285",
-      "text": "What would it mean for people like me if we certify local crafts with a protected label?",
+      "text": "Would the label tell me if the lacquer bowl I buy was really made here?",
       "theme": "Certify local crafts with a protected label",
       "grades": {
         "Earnest": "M",
@@ -46046,7 +46046,7 @@
     },
     {
       "id": "S1286",
-      "text": "If we certify local crafts with a protected label, how would you make sure it is done fairly and on schedule?",
+      "text": "Who certifies the makers, and what stops the label being sold to fakes?",
       "theme": "Certify local crafts with a protected label",
       "grades": {
         "Earnest": "S",
@@ -46094,7 +46094,7 @@
     },
     {
       "id": "S1288",
-      "text": "Is there a smaller step we could try before we certify local crafts with a protected label?",
+      "text": "Could the guild run a voluntary label instead of a protected one in law?",
       "theme": "Certify local crafts with a protected label",
       "grades": {
         "Earnest": "M",
@@ -46139,7 +46139,7 @@
     },
     {
       "id": "S1290",
-      "text": "Why should Yezo give tax relief for craft apprenticeships?",
+      "text": "Should training a craft apprentice earn a workshop a tax break?",
       "theme": "Give tax relief for craft apprenticeships",
       "grades": {
         "Earnest": "S",
@@ -46181,7 +46181,7 @@
     },
     {
       "id": "S1292",
-      "text": "The Yezo Artisans Guild wants us to give tax relief for craft apprenticeships. Why should everyone else care?",
+      "text": "Unions worry apprentices become cheap labor. Why is this different?",
       "theme": "Give tax relief for craft apprenticeships",
       "grades": {
         "Earnest": "M",
@@ -46202,7 +46202,7 @@
     },
     {
       "id": "S1293",
-      "text": "What would it mean for people like me if we give tax relief for craft apprenticeships?",
+      "text": "Would tax relief let my local potter finally take on a trainee?",
       "theme": "Give tax relief for craft apprenticeships",
       "grades": {
         "Earnest": "M",
@@ -46223,7 +46223,7 @@
     },
     {
       "id": "S1294",
-      "text": "If we give tax relief for craft apprenticeships, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we confirm the apprentice is being taught and not just used?",
       "theme": "Give tax relief for craft apprenticeships",
       "grades": {
         "Earnest": "S",
@@ -46265,7 +46265,7 @@
     },
     {
       "id": "S1296",
-      "text": "Is there a smaller step we could try before we give tax relief for craft apprenticeships?",
+      "text": "Could we fund apprentice wages directly instead of a tax break?",
       "theme": "Give tax relief for craft apprenticeships",
       "grades": {
         "Earnest": "M",
@@ -46307,7 +46307,7 @@
     },
     {
       "id": "S1298",
-      "text": "Why should Yezo waive fees at craft fairs for small makers?",
+      "text": "Should small makers pay the same fair fees as large sellers?",
       "theme": "Waive fees at craft fairs for small makers",
       "grades": {
         "Earnest": "S",
@@ -46349,7 +46349,7 @@
     },
     {
       "id": "S1300",
-      "text": "The Yezo Artisans Guild wants us to waive fees at craft fairs for small makers. Why should everyone else care?",
+      "text": "Towns rely on fair fees to pay for the event. Who covers the gap?",
       "theme": "Waive fees at craft fairs for small makers",
       "grades": {
         "Earnest": "M",
@@ -46370,7 +46370,7 @@
     },
     {
       "id": "S1301",
-      "text": "What would it mean for people like me if we waive fees at craft fairs for small makers?",
+      "text": "Would free stalls bring more local makers to our autumn fair?",
       "theme": "Waive fees at craft fairs for small makers",
       "grades": {
         "Earnest": "M",
@@ -46391,7 +46391,7 @@
     },
     {
       "id": "S1302",
-      "text": "If we waive fees at craft fairs for small makers, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we define a small maker so larger sellers cannot claim the waiver?",
       "theme": "Waive fees at craft fairs for small makers",
       "grades": {
         "Earnest": "S",
@@ -46433,7 +46433,7 @@
     },
     {
       "id": "S1304",
-      "text": "Is there a smaller step we could try before we waive fees at craft fairs for small makers?",
+      "text": "Could fees be reduced on a sliding scale instead of waived?",
       "theme": "Waive fees at craft fairs for small makers",
       "grades": {
         "Earnest": "M",
@@ -46478,7 +46478,7 @@
     },
     {
       "id": "S1306",
-      "text": "Why should Yezo freeze commuter fares?",
+      "text": "Is a commuter fare a public service price or a company's business decision?",
       "theme": "Freeze commuter fares",
       "grades": {
         "Earnest": "S",
@@ -46526,7 +46526,7 @@
     },
     {
       "id": "S1308",
-      "text": "The Commuter Committee wants us to freeze commuter fares. Why should everyone else care?",
+      "text": "Rural residents who drive see no benefit from frozen fares. Why should they pay?",
       "theme": "Freeze commuter fares",
       "grades": {
         "Earnest": "M",
@@ -46550,7 +46550,7 @@
     },
     {
       "id": "S1309",
-      "text": "What would it mean for people like me if we freeze commuter fares?",
+      "text": "Would a fare freeze stop my travel costs rising faster than my wages?",
       "theme": "Freeze commuter fares",
       "grades": {
         "Earnest": "M",
@@ -46574,7 +46574,7 @@
     },
     {
       "id": "S1310",
-      "text": "If we freeze commuter fares, how would you make sure it is done fairly and on schedule?",
+      "text": "Who pays the rail operators the difference, and how is that checked?",
       "theme": "Freeze commuter fares",
       "grades": {
         "Earnest": "S",
@@ -46622,7 +46622,7 @@
     },
     {
       "id": "S1312",
-      "text": "Is there a smaller step we could try before we freeze commuter fares?",
+      "text": "Could fares rise only with inflation instead of being frozen outright?",
       "theme": "Freeze commuter fares",
       "grades": {
         "Earnest": "M",
@@ -46670,7 +46670,7 @@
     },
     {
       "id": "S1314",
-      "text": "Why should Yezo run late-night commuter trains?",
+      "text": "Should public transport run whenever people need to get home?",
       "theme": "Run late-night commuter trains",
       "grades": {
         "Earnest": "S",
@@ -46718,7 +46718,7 @@
     },
     {
       "id": "S1316",
-      "text": "The Commuter Committee wants us to run late-night commuter trains. Why should everyone else care?",
+      "text": "Residents near the lines worry about noise after midnight. What do you say?",
       "theme": "Run late-night commuter trains",
       "grades": {
         "Earnest": "M",
@@ -46742,7 +46742,7 @@
     },
     {
       "id": "S1317",
-      "text": "What would it mean for people like me if we run late-night commuter trains?",
+      "text": "Would late trains let me finish a late shift without paying for a taxi?",
       "theme": "Run late-night commuter trains",
       "grades": {
         "Earnest": "M",
@@ -46766,7 +46766,7 @@
     },
     {
       "id": "S1318",
-      "text": "If we run late-night commuter trains, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we measure whether late trains carry enough riders to justify them?",
       "theme": "Run late-night commuter trains",
       "grades": {
         "Earnest": "S",
@@ -46814,7 +46814,7 @@
     },
     {
       "id": "S1320",
-      "text": "Is there a smaller step we could try before we run late-night commuter trains?",
+      "text": "Could late-night buses on the main routes do the job at lower cost?",
       "theme": "Run late-night commuter trains",
       "grades": {
         "Earnest": "M",
@@ -46862,7 +46862,7 @@
     },
     {
       "id": "S1322",
-      "text": "Why should Yezo cap the monthly cost of a commuter pass?",
+      "text": "Should a commuter pass ever cost more than a worker can afford?",
       "theme": "Cap the monthly cost of a commuter pass",
       "grades": {
         "Earnest": "S",
@@ -46910,7 +46910,7 @@
     },
     {
       "id": "S1324",
-      "text": "The Commuter Committee wants us to cap the monthly cost of a commuter pass. Why should everyone else care?",
+      "text": "Those who walk or cycle ask why they should subsidize rail passes. Your answer?",
       "theme": "Cap the monthly cost of a commuter pass",
       "grades": {
         "Earnest": "M",
@@ -46934,7 +46934,7 @@
     },
     {
       "id": "S1325",
-      "text": "What would it mean for people like me if we cap the monthly cost of a commuter pass?",
+      "text": "Would a pass cap make it possible to live further out and still commute?",
       "theme": "Cap the monthly cost of a commuter pass",
       "grades": {
         "Earnest": "M",
@@ -46958,7 +46958,7 @@
     },
     {
       "id": "S1326",
-      "text": "If we cap the monthly cost of a commuter pass, how would you make sure it is done fairly and on schedule?",
+      "text": "How would we stop operators raising single fares to make up the difference?",
       "theme": "Cap the monthly cost of a commuter pass",
       "grades": {
         "Earnest": "S",
@@ -47006,7 +47006,7 @@
     },
     {
       "id": "S1328",
-      "text": "Is there a smaller step we could try before we cap the monthly cost of a commuter pass?",
+      "text": "Could employers be required to share the cost of passes instead?",
       "theme": "Cap the monthly cost of a commuter pass",
       "grades": {
         "Earnest": "M",
@@ -47054,7 +47054,7 @@
     },
     {
       "id": "S1330",
-      "text": "Why should Yezo fund local festivals?",
+      "text": "Should public money keep local festivals alive?",
       "theme": "Fund local festivals",
       "grades": {
         "Earnest": "S",
@@ -47102,7 +47102,7 @@
     },
     {
       "id": "S1332",
-      "text": "Our Traditional Society wants us to fund local festivals. Why should everyone else care?",
+      "text": "Taxpayers who never attend a festival ask why they should fund one. Your answer?",
       "theme": "Fund local festivals",
       "grades": {
         "Earnest": "M",
@@ -47126,7 +47126,7 @@
     },
     {
       "id": "S1333",
-      "text": "What would it mean for people like me if we fund local festivals?",
+      "text": "Would funding keep the summer festival in my village from dying out?",
       "theme": "Fund local festivals",
       "grades": {
         "Earnest": "M",
@@ -47150,7 +47150,7 @@
     },
     {
       "id": "S1334",
-      "text": "If we fund local festivals, how would you make sure it is done fairly and on schedule?",
+      "text": "Who decides which festivals are funded, and how is that kept fair?",
       "theme": "Fund local festivals",
       "grades": {
         "Earnest": "S",
@@ -47198,7 +47198,7 @@
     },
     {
       "id": "S1336",
-      "text": "Is there a smaller step we could try before we fund local festivals?",
+      "text": "Could festivals get help with costs like safety and cleanup instead of direct grants?",
       "theme": "Fund local festivals",
       "grades": {
         "Earnest": "M",
