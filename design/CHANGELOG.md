@@ -3120,3 +3120,15 @@ Phase 4 of the component revision plan; details and audit output in `design/prop
 | Lobbyists | Among equally hurt organizations, the least-met lobbyist speaks. |
 | Bots | Draft looks, refusals by reason, visits and trades in drafts; report section 12b. |
 | Not built (Cameron's call) | No refund on a lapsed draft; no standing floor; no Funds cap hint. |
+
+## Custom bill validation, phase 5 (2026-11-03, Cameron)
+
+Phase 5 of the component revision plan, a report only: `design/review/CUSTOM_BILL_VALIDATION_2026-11-03.md`. The data is 54 bot runs (`design/bench/custom_bill_validation.jsonl`), the vote audit and three draft probes.
+
+| Measure | Before | After |
+|---|---|---|
+| Bot drafts passed | 4 of 78 | 37 of 233 |
+| Prepared player's drafts passed | 8 or 9 of 14 | 27 of 42 |
+| Bot drafts lapsed at the hearing | most failures | 25 of 233 |
+
+The vote is now the wall: bots never meet the influence gates. Drafting pays in Party support (+11) and standing (+41 summed) but costs Funds. Three decisions are listed for Cameron.
