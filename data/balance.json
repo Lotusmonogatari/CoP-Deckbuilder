@@ -226,5 +226,6 @@
   "mp_visit_committee_member_percent": 50,
   "difficulty_relaxed_draft_bill_funds_cost": 200000,
   "difficulty_harder_draft_bill_funds_cost": 400000,
+  "member_stance_split_party_abstain_percent": 30,
   "xp_tiers": {}
 }

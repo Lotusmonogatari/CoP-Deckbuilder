@@ -3270,3 +3270,13 @@ Tests: `test_level_purpose.gd` (5, including "every level has a purpose"), `test
 - The 50 bill-level purpose lines said "...comes to a floor vote at the end of this level." They now say "...is heading for a floor vote in the National Assembly."
 - A scan of every spoken line (cues, transitions, thoughts, intro lines, visitor and vote cues, lobbyist lines, purposes) found no other game-mechanic use. Ordinary English stays: "at this stage" as a hedge, a festival's stage, a level voice.
 - New `test_spoken_no_game_terms.gd` fails on "this/next/each/every level or stage" in any spoken line. The rule is also in `design/CONTENT_GUIDE.md`.
+
+## Opponents argue their own party's side of a bill (2026-11-04, Cameron)
+
+Before this, bill lines were picked by speaking style only, so an MP or a party leader could profess the opposite of their party's position. Every bill and bill-part opponent line now has a Side (new Opponent Cues columns Cue 1-5 Side, drafted by sentence frame). `MemberStance.gd` decides who may say which side:
+
+- **Leaders** speak for their party, and also say their party's Floor Vote line for the bill.
+- **Members** speak their party's side. When the party is Neutral, or 30%+ of its seats abstain (Balance "Member Stance: Split Party Abstain Percent"), each member takes a personal side rolled from the party's Aye/Nay/Abstain split, fixed per member and bill.
+- **People with no party** follow their organization's side.
+
+`DataDB.get_bill_opponent_cue_lines()` filters by side. The exporter rejects a bad Side value. `test_member_stance.gd` has 7 tests, including a real-data audit of every bill room. Report: `design/review/MEMBER_STANCE_REVIEW_2026-11-04.md`.

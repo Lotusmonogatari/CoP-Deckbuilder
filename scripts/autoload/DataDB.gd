@@ -316,6 +316,9 @@ var _player_cue_lines: Dictionary = {}
 var _bill_player_cues: Dictionary = {}      ## "BI|suit|verb|stance" -> lines
 var _reply_player_cues: Dictionary = {}     ## "Reply Kind|suit|stance" -> lines
 var _bill_opponent_cues: Dictionary = {}    ## "BI|opp_id or suit|verb" -> lines
+## The same keys -> each line's Side (For / Against / Neutral), in line order
+## (2026-11-04, Cameron; MemberStance.gd).
+var _bill_opponent_cue_sides: Dictionary = {}
 var _questions_by_bill: Dictionary = {}     ## "BI" -> questions
 ## Stage Questions (2026-10-12): stage_id -> the questions that name it.
 var _questions_by_stage: Dictionary = {}
@@ -640,6 +643,20 @@ func _cue_lines(row: Dictionary) -> Array[String]:
 			lines.append(line)
 	return lines
 
+
+
+## Each non-blank line's Side, in the same order as _cue_lines() (blank or
+## missing = Neutral).
+func _cue_line_sides(row: Dictionary) -> Array[String]:
+	var sides: Array[String] = []
+	for index in range(1, 6):
+		var raw: Variant = row.get("cue_%d" % index)
+		if raw == null or str(raw).strip_edges().is_empty():
+			continue
+		var side: Variant = row.get("cue_%d_side" % index)
+		var text := "" if side == null else str(side).strip_edges()
+		sides.append(text if text in [MemberStance.FOR, MemberStance.AGAINST] else MemberStance.NEUTRAL)
+	return sides
 
 
 ## Turns the Text tab's rows into a plain key -> English lookup.
@@ -1140,15 +1157,26 @@ func get_reply_player_cue_lines(reply_kind: String, suit: String, stance: String
 
 
 ## An opponent's lines about a bill: this opponent's own rows, else the suit's.
-func get_bill_opponent_cue_lines(bill_id: String, opp_id: String, suit: String, verb: String) -> Array[String]:
+## `allowed_sides` (MemberStance.sides()) keeps only lines on those sides;
+## empty keeps every line. Within each scope, the opponent's own lines come
+## first, then the style's, whichever has a line on an allowed side.
+func get_bill_opponent_cue_lines(bill_id: String, opp_id: String, suit: String, verb: String,
+		allowed_sides: Array = []) -> Array[String]:
 	var lines: Array[String] = []
 	for scope: String in content_keys(bill_id):
 		for who in [opp_id, suit]:
 			if str(who).is_empty():
 				continue
-			var found: Array = _bill_opponent_cues.get("%s|%s|%s" % [scope, who, verb], [])
-			if not found.is_empty():
-				lines.append_array(found)
+			var key := "%s|%s|%s" % [scope, who, verb]
+			var found: Array = _bill_opponent_cues.get(key, [])
+			var sides: Array = _bill_opponent_cue_sides.get(key, [])
+			var kept: Array[String] = []
+			for i in found.size():
+				var side := str(sides[i]) if i < sides.size() else MemberStance.NEUTRAL
+				if allowed_sides.is_empty() or allowed_sides.has(side):
+					kept.append(str(found[i]))
+			if not kept.is_empty():
+				lines.append_array(kept)
 				break
 	return lines
 
@@ -1184,6 +1212,7 @@ func get_stage_questions(stage_id: String) -> Array:
 
 func _index_opponent_cues() -> void:
 	_bill_opponent_cues.clear()
+	_bill_opponent_cue_sides.clear()
 	_opponent_cues_by_suit_verb.clear()
 	_opponent_cues_by_opponent_verb.clear()
 	_opponent_cues_by_opponent_suit_verb.clear()
@@ -1210,6 +1239,7 @@ func _index_opponent_cues() -> void:
 				for who_key: String in who:
 					var bkey := "%s|%s|%s" % [bill_id, who_key, verb]
 					_bill_opponent_cues[bkey] = (_bill_opponent_cues.get(bkey, []) as Array) + lines
+					_bill_opponent_cue_sides[bkey] = (_bill_opponent_cue_sides.get(bkey, []) as Array) + _cue_line_sides(row)
 			continue
 		# Optional Stage ID (2026-10-12), past the same <null> trap.
 		var stages_raw: Variant = row.get("stage_ids")

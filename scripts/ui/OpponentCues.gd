@@ -57,7 +57,17 @@ static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn:
 		if other_suit_roll < 0.0:
 			other_suit_roll = randf()
 		var bill_suit := _suit_for_move(opponent, suit_roll, other_suit_roll)
-		var about_bill: Array[String] = DataDB.get_bill_opponent_cue_lines(bill_id, opp_id, bill_suit, verb)
+		# Only lines on this person's side of the bill, or neutral ones, and a
+		# party leader may also say their party's own Floor Vote line
+		# (2026-11-04, Cameron; MemberStance.gd).
+		var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
+		var allowed := MemberStance.sides(opponent, bill, DataDB.parties,
+			BillStance.sides(bill, DataDB.law_effects, GameState._party_tier_booster_ids()),
+			int(DataDB.balance.get("member_stance_split_party_abstain_percent", 30)))
+		var about_bill: Array[String] = DataDB.get_bill_opponent_cue_lines(bill_id, opp_id, bill_suit, verb, allowed)
+		var leader_line := MemberStance.leader_line(opponent, bill, DataDB.parties)
+		if not leader_line.is_empty():
+			about_bill.append(leader_line)
 		if not about_bill.is_empty():
 			var picked := _index_for(opp_id, verb, stage_id, turn) % about_bill.size()
 			return {"text": about_bill[picked], "line_id": "%s_%s_%d" % [opp_id, verb, picked + 1]}

@@ -764,3 +764,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Bill content review: grammar, coherence and honesty (2026-11-04, Cameron)
 - Levels explain themselves: purpose line, bill card, Read the Bill (2026-11-04, Cameron)
 - Characters never mention levels or stages (2026-11-04, Cameron)
+- Opponents argue their own party's side of a bill (2026-11-04, Cameron)

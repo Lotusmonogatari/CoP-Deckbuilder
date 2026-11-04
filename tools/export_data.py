@@ -348,7 +348,8 @@ SHEETS = {
         "key": "cue_id",
         "id_pattern": r"^OC\d+$",
         "optional_sheet": True,
-        "optional": ["Stage ID", "Bill ID", "Component ID"],
+        "optional": ["Stage ID", "Bill ID", "Component ID", "Cue 1 Side", "Cue 2 Side",
+                     "Cue 3 Side", "Cue 4 Side", "Cue 5 Side"],
         "columns": [
             ("Cue ID", "cue_id", "id"),
             ("Suit", "suit", "str"),
@@ -371,6 +372,15 @@ SHEETS = {
             # Optional (2026-10-19, Patron Bills): said only in levels built
             # from this bill component (CBxx).
             ("Component ID", "component_ids", "id_list"),
+            # Optional (2026-11-04, Cameron): which side of the bill each line
+            # argues, For or Against; blank = Neutral (a challenge with no
+            # position). In a bill's rooms an opponent only says Neutral lines
+            # and their own side's (MemberStance.gd).
+            ("Cue 1 Side", "cue_1_side", "str"),
+            ("Cue 2 Side", "cue_2_side", "str"),
+            ("Cue 3 Side", "cue_3_side", "str"),
+            ("Cue 4 Side", "cue_4_side", "str"),
+            ("Cue 5 Side", "cue_5_side", "str"),
         ],
     },
     # Law Effects (2026-10-12): what a bill does once it has been voted on,
@@ -2510,6 +2520,11 @@ def validate(data, report):
                 )
         if not any(cue.get(f"cue_{i}") for i in range(1, 6)):
             report.warn("opponent_cues", f"{cue_id} has no cue lines written")
+        for i in range(1, 6):
+            side = cue.get(f"cue_{i}_side")
+            if side not in (None, "", "For", "Against"):
+                report.error("opponent_cues",
+                             f"{cue_id} Cue {i} Side is '{side}': it must be For, Against or blank")
         for sid in cue.get("stage_ids") or []:
             if sid not in stage_ids:
                 report.error("opponent_cues",
