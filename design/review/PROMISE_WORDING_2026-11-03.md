@@ -187,3 +187,21 @@ Cameron's playtest: some event choices were phrased like promises or commitments
 ## Left as they are
 
 The scan also matched words like "schedule", "guarantee" or "I can't promise", and advice the visitor acts on ("Send a written request to my office"); none of those promise anything. `design/review/CHOICE_AUDIT.md` still lists one length issue that predates this pass (VQ44).
+
+## Events: choices and result texts (second pass, 2026-11-03)
+
+All 55 events (198 choices) were read with each choice's result text and cost side by side. Most choices act on the spot ("Attend", "Send a staff member", "Write to the prefecture") and are paid for by the event's own hours, which is correct. Every hosted-event promise already has a cost and a kept line. Eleven events needed a fix:
+
+| Event | Choice | Problem | Fix |
+|---|---|---|---|
+| EV36 A Radio Host Calls | B "Ask for a pre-arranged slot instead" | The host agrees, so you owe an appearance, for free | Promise: 1 hour within 12 h, with a kept line |
+| EV54 The Chamber Wants a Breakfast Speech | C "Ask them to send their questions in writing" | "A thick envelope arrives a week later" that you never have to answer | Promise: 1 hour within 24 h, with a kept line |
+| EV17 A Veteran Writes About the Coast | A "Ask to meet the hall and members" | Asks for a later meeting, but the result plays it now | Now "Meet the hall secretary and members" |
+| EV25 A Long-Time Resident Asks Why He Cannot Vote | C "Offer a letter of support for something else" | An offer of a later letter | Now "Write a letter of support for something else" |
+| EV26 The Clinic Is Closing on Fridays | A "Offer to drive out to the clinic yourself" | Worded as a later offer, but it costs 2 hours now | Now "Drive out to the clinic yourself" |
+| EV40 A Local Official Retires | C "Skip it and send a card later" | A free promise of a later card | Now "Skip it and send a card" |
+| EV47 The Prime Minister's Opening Address | C "Keep your appointments and read the text tonight" | A free promise to read it later | Now "Keep your appointments in the district instead" |
+| EV58 Commuters Ask You to Ride the Rush-Hour Train | C "Say you will study the timetable" | A free promise | Now "Say the timetable needs more study" |
+| EV37 A School Asks You to Visit | A result: "...and fix the leak next month" | The result promises a repair nobody pays for | Now "...and admit that it leaks" |
+| EV39 A Photograph Goes Around | C result: "It takes four evenings" | The choice costs 2 hours | Now "It takes the rest of the afternoon" |
+| EV18 The Mayors Ask for Ten Minutes | B kept line: "...you promise to read it once more yourself" | Keeping the promise makes a new, unpaid one | The extra promise is dropped |

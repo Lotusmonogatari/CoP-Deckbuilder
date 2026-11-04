@@ -700,7 +700,7 @@
   {
     "event_id": "EV17",
     "choice": "A",
-    "choice_text": "Ask to meet the hall and members",
+    "choice_text": "Meet the hall secretary and members",
     "result_text": "They bring photographs and a long list. A coastal defense bill is being drafted.",
     "funds_cost": null,
     "funds_delta": null,
@@ -831,7 +831,7 @@
     ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": "The call runs long. The mayors read you their one page twice, and you promise to read it once more yourself."
+    "promise_kept_text": "The call runs long. The mayors read you their one page twice."
   },
   {
     "event_id": "EV18",
@@ -1432,7 +1432,7 @@
   {
     "event_id": "EV25",
     "choice": "C",
-    "choice_text": "Offer a letter of support for something else",
+    "choice_text": "Write a letter of support for something else",
     "result_text": "He thanks you and does not mention it again.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1457,7 +1457,7 @@
   {
     "event_id": "EV26",
     "choice": "A",
-    "choice_text": "Offer to drive out to the clinic yourself",
+    "choice_text": "Drive out to the clinic yourself",
     "result_text": "A rural hospital bill is already half written; the nurse knows who to ask.",
     "funds_cost": null,
     "funds_delta": null,
@@ -2113,10 +2113,16 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 12
+      }
+    ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": null
+    "promise_kept_text": "You do the pre-arranged slot, with notes in hand. The host is warmer than he sounded on the phone."
   },
   {
     "event_id": "EV36",
@@ -2144,7 +2150,7 @@
     "event_id": "EV37",
     "choice": "A",
     "choice_text": "Take every child's question",
-    "result_text": "One asks if the Assembly has a roof. You say yes, and fix the leak next month.",
+    "result_text": "One asks if the Assembly has a roof. You say yes, and admit that it leaks.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": {
@@ -2387,7 +2393,7 @@
     "event_id": "EV39",
     "choice": "C",
     "choice_text": "Reply to every single message",
-    "result_text": "It takes four evenings. It works.",
+    "result_text": "It takes the rest of the afternoon. It works.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -2484,7 +2490,7 @@
   {
     "event_id": "EV40",
     "choice": "C",
-    "choice_text": "Skip it and send a card later",
+    "choice_text": "Skip it and send a card",
     "result_text": "Someone notes your chair.",
     "funds_cost": null,
     "funds_delta": null,
@@ -3076,7 +3082,7 @@
   {
     "event_id": "EV47",
     "choice": "C",
-    "choice_text": "Keep your appointments and read the text tonight",
+    "choice_text": "Keep your appointments in the district instead",
     "result_text": "The chamber is full without you. Someone in the party notices.",
     "funds_cost": null,
     "funds_delta": null,
@@ -4397,10 +4403,16 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 24
+      }
+    ],
     "promise_kept": null,
     "promise_broken": null,
-    "promise_kept_text": null
+    "promise_kept_text": "You answer the Chamber's written questions, every one of them, in one long letter."
   },
   {
     "event_id": "EV54",
@@ -4829,7 +4841,7 @@
   {
     "event_id": "EV58",
     "choice": "C",
-    "choice_text": "Say you will study the timetable",
+    "choice_text": "Say the timetable needs more study",
     "result_text": "The committee posts your answer on the station board.",
     "funds_cost": null,
     "funds_delta": null,
