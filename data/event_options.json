@@ -748,7 +748,7 @@
         "within": 48
       }
     ],
-    "promise_kept_text": "You table a proposal to cut taxes on local business and send your guests a copy."
+    "promise_kept_text": "You table a proposal to cut taxes on business and send your guests a copy."
   },
   {
     "hosted_id": "HE02",
@@ -953,6 +953,28 @@
       "protect"
     ],
     "flavor": "A retired officer sets down his chopsticks.",
+    "commitment": null,
+    "promise_kept_text": null
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 3,
+    "slot": null,
+    "option_id": "TC9",
+    "choice_text": "Promise only to keep listening",
+    "tags": null,
+    "flavor": "Nobody objects. Nobody is impressed, either.",
+    "commitment": null,
+    "promise_kept_text": null
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 3,
+    "slot": null,
+    "option_id": "DC9",
+    "choice_text": "Promise only to keep listening",
+    "tags": null,
+    "flavor": "The tea goes round. Nobody writes anything down.",
     "commitment": null,
     "promise_kept_text": null
   }

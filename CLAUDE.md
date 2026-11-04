@@ -754,3 +754,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Quality control audit (2026-11-03, Cameron)
 - The bot plays discard cards; a discard card trial (2026-11-03, Cameron)
 - Office Hours choices that promise something now cost something (2026-11-03, Cameron)
+- Hosted events: a reply that promises nothing (2026-11-04, Cameron)

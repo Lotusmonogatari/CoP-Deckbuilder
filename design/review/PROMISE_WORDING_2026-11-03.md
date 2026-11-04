@@ -205,3 +205,12 @@ All 55 events (198 choices) were read with each choice's result text and cost si
 | EV37 A School Asks You to Visit | A result: "...and fix the leak next month" | The result promises a repair nobody pays for | Now "...and admit that it leaks" |
 | EV39 A Photograph Goes Around | C result: "It takes four evenings" | The choice costs 2 hours | Now "It takes the rest of the afternoon" |
 | EV18 The Mayors Ask for Ten Minutes | B kept line: "...you promise to read it once more yourself" | Keeping the promise makes a new, unpaid one | The extra promise is dropped |
+
+## Hosted event pass (2026-11-04)
+
+The two hosted events (HE01 Walking Tour, HE02 Dinner) were checked the same way. Steps 1 and 2 act on the spot, so they are fine. Every step-3 option was already a real promise (Promise Hours 1 within 48, owed to the guest most pleased) with a kept line.
+
+| Option | Finding | Fix |
+|---|---|---|
+| DC1 | The kept line said the tax cut was for "local" business, which the choice does not say. | Kept line now reads "You table a proposal to cut taxes on business and send your guests a copy." |
+| HE01, HE02 step 3 | Every option was a promise, so there was no way to close the evening without owing an hour (the rule every visitor question and event follows). | Added TC9 and DC9, "Promise only to keep listening": no tags, no commitment. No guest reacts. |

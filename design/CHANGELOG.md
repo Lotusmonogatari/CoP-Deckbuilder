@@ -3177,3 +3177,9 @@ From Cameron's playtest: some choices read as promises but cost nothing. Full ta
 | On the spot | VQ220 A "Yes, here is my share." pays 20,000円; VQ84 D "First round's mine" takes 1 hour. |
 | Reworded | 51 choices that only stated a disposition ("I vote on each bill on its merits", the eleven bill dilemmas' "Yes. I support it, and here is why.") no longer promise anything; 4 replies adjusted. |
 | Events (second pass) | All 198 event choices read with their results. EV36 B and EV54 C now make a promise (1 hour within 12 and 24 hours); six choices worded as a later action now happen on the spot or state a position (EV17 A, EV25 C, EV26 A, EV40 C, EV47 C, EV58 C); EV37 A and EV39 C results and EV18 B's kept line no longer imply an unpaid promise or the wrong time. Hosted events needed nothing. |
+
+## Hosted events: a reply that promises nothing (2026-11-04, Cameron)
+
+- **What changed.** The last step of the Walking Tour (HE01) and the Dinner (HE02) now has a ninth option, TC9 and DC9 "Promise only to keep listening". It has no tags, so no guest reacts, and no commitment, so nothing is owed. Before this, every step-3 option was a promise of an hour.
+- **Also fixed.** DC1's kept line no longer says "local" business.
+- **Report.** `design/review/PROMISE_WORDING_2026-11-03.md`, section "Hosted event pass".
