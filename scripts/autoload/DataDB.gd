@@ -655,7 +655,7 @@ func _cue_line_sides(row: Dictionary) -> Array[String]:
 			continue
 		var side: Variant = row.get("cue_%d_side" % index)
 		var text := "" if side == null else str(side).strip_edges()
-		sides.append(text if text in [MemberStance.FOR, MemberStance.AGAINST] else MemberStance.NEUTRAL)
+		sides.append(text if text in [MemberStance.FOR, MemberStance.AGAINST, MemberStance.ALLY] else MemberStance.NEUTRAL)
 	return sides
 
 

@@ -64,7 +64,8 @@ static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn:
 		var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
 		var allowed := MemberStance.sides(opponent, bill, DataDB.parties,
 			BillStance.sides(bill, DataDB.law_effects, GameState._party_tier_booster_ids()),
-			int(DataDB.balance.get("member_stance_split_party_abstain_percent", 30)))
+			int(DataDB.balance.get("member_stance_split_party_abstain_percent", 30)),
+			_player_side(bill_id))
 		var about_bill: Array[String] = DataDB.get_bill_opponent_cue_lines(bill_id, opp_id, bill_suit, verb, allowed)
 		var leader_line := MemberStance.leader_line(opponent, bill, DataDB.parties)
 		if not leader_line.is_empty():
@@ -98,6 +99,14 @@ static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn:
 		"text": lines[which],
 		"line_id": "%s_%s_%d" % [opp_id, verb, which + 1],
 	}
+
+
+## The player's own side on this bill (MemberStance.player_side_for()), or ""
+## when they took no lean on it.
+static func _player_side(bill_id: String) -> String:
+	if str(GameState.bill_stance.get("bill_id", "")) != bill_id:
+		return ""
+	return MemberStance.player_side_for(GameState.stance_lean())
 
 
 ## Which of `lines` to say, and records it in `said` ({text: order said}).

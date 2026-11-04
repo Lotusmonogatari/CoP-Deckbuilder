@@ -2522,9 +2522,9 @@ def validate(data, report):
             report.warn("opponent_cues", f"{cue_id} has no cue lines written")
         for i in range(1, 6):
             side = cue.get(f"cue_{i}_side")
-            if side not in (None, "", "For", "Against"):
+            if side not in (None, "", "For", "Against", "Ally"):
                 report.error("opponent_cues",
-                             f"{cue_id} Cue {i} Side is '{side}': it must be For, Against or blank")
+                             f"{cue_id} Cue {i} Side is '{side}': it must be For, Against, Ally or blank")
         for sid in cue.get("stage_ids") or []:
             if sid not in stage_ids:
                 report.error("opponent_cues",

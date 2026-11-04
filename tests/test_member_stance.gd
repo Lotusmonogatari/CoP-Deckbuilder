@@ -22,6 +22,22 @@ func test_members_and_leaders_argue_their_party_side() -> void:
 	assert_eq(MemberStance.sides({"opp_id": "OP01", "party": "Red"}, bill, PARTIES, {}, 30), ["Neutral", "For"])
 
 
+## Cameron, 2026-11-04: a supporter argues FOR the bill against a player who
+## opposes it, and the reverse; someone on the player's own side pushes them as
+## a demanding ally instead, never with lines aimed at the other side.
+func test_the_players_own_side_decides_argued_or_ally_lines() -> void:
+	var bill := _bill("Supportive", "Opposed")
+	var red := {"opp_id": "OP05", "party": "Red"}
+	var blue := {"opp_id": "OP06", "party": "Blue"}
+	assert_eq(MemberStance.sides(red, bill, PARTIES, {}, 30, "Against"), ["Neutral", "For"])
+	assert_eq(MemberStance.sides(blue, bill, PARTIES, {}, 30, "For"), ["Neutral", "Against"])
+	assert_eq(MemberStance.sides(red, bill, PARTIES, {}, 30, "For"), ["Neutral", "Ally"])
+	assert_eq(MemberStance.sides(blue, bill, PARTIES, {}, 30, "Against"), ["Neutral", "Ally"])
+	assert_eq(MemberStance.player_side_for("Support"), "For")
+	assert_eq(MemberStance.player_side_for("Oppose"), "Against")
+	assert_eq(MemberStance.player_side_for(""), "")
+
+
 func test_a_neutral_partys_leader_takes_no_side() -> void:
 	var bill := _bill("Supportive", "Neutral")
 	assert_eq(MemberStance.sides({"opp_id": "OP02", "party": "Blue"}, bill, PARTIES, {}, 30), ["Neutral"])
@@ -90,14 +106,23 @@ func test_no_one_in_a_bill_room_contradicts_their_side() -> void:
 				continue
 			for opponent: Dictionary in DataDB.get_opponents_for_stage(str(stage.get("stage_id", ""))):
 				var argued := MemberStance.argued_side(opponent, bill, DataDB.parties, stake, split)
-				var allowed := MemberStance.sides(opponent, bill, DataDB.parties, stake, split)
-				for suit_row: Dictionary in DataDB.suits:
-					for verb: String in ["attack", "gain", "block"]:
-						for line: String in DataDB.get_bill_opponent_cue_lines(bill_id, str(opponent["opp_id"]),
-								str(suit_row.get("element", "")), verb, allowed):
-							checked += 1
-							var side := str(side_of.get("%s|%s" % [bill_id, line], "Neutral"))
-							if side == opposite.get(argued, "") or (argued.is_empty() and side != "Neutral"):
-								bad.append("%s %s (%s) says %s line: %s" % [bill_id, opponent["opp_id"], argued, side, line])
+				# Every player lean: none, For, Against. A same-side speaker
+				# says only Neutral and Ally lines.
+				for player_side: String in ["", "For", "Against"]:
+					var allowed := MemberStance.sides(opponent, bill, DataDB.parties, stake, split, player_side)
+					var ally := not argued.is_empty() and argued == player_side
+					for suit_row: Dictionary in DataDB.suits:
+						for verb: String in ["attack", "gain", "block"]:
+							for line: String in DataDB.get_bill_opponent_cue_lines(bill_id, str(opponent["opp_id"]),
+									str(suit_row.get("element", "")), verb, allowed):
+								checked += 1
+								var side := str(side_of.get("%s|%s" % [bill_id, line], "Neutral"))
+								var wrong: bool = side == opposite.get(argued, "") \
+									or (argued.is_empty() and side != "Neutral") \
+									or (ally and side not in ["Neutral", "Ally"]) \
+									or (not ally and side == "Ally")
+								if wrong:
+									bad.append("%s %s (%s, player %s) says %s line: %s"
+										% [bill_id, opponent["opp_id"], argued, player_side, side, line])
 	assert_gt(checked, 1000, "the audit looked at real lines")
 	assert_eq(bad.slice(0, 5), [] as Array[String])

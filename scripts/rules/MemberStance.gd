@@ -3,9 +3,11 @@ extends RefCounted
 ## Which side of a bill an opponent argues in that bill's rooms (2026-11-04,
 ## Cameron), so nobody professes the opposite of their party's position.
 ##
-## Every bill line on the Opponent Cues tab carries a Side (For, Against, or
-## blank = Neutral). An opponent may always say Neutral lines; sides() says
-## which argued side they may add:
+## Every bill line on the Opponent Cues tab carries a Side (For, Against, Ally,
+## or blank = Neutral). An opponent may always say Neutral lines. Facing a
+## player on the other side of the bill (or with no lean), they add their
+## argued side's lines; facing a player on their own side, they add Ally lines
+## instead (sides()). Their argued side is:
 ##   - a party leader: their party's own position (Supportive = For,
 ##     Opposed = Against, Neutral = none);
 ##   - a party member: the same, unless the party is Neutral on the bill or at
@@ -21,17 +23,38 @@ extends RefCounted
 const FOR := "For"
 const AGAINST := "Against"
 const NEUTRAL := "Neutral"
+## A demanding ally's line: pushes a player who is on the speaker's own side.
+const ALLY := "Ally"
 
 
 ## The sides this opponent may argue on this bill: always NEUTRAL, plus FOR or
 ## AGAINST when they hold one.
+##
+## `player_side` is the player's own lean (FOR, AGAINST, or "" with none) —
+## the player's stance matters because For and Against lines address a player
+## on the OTHER side ("You would ask us to..."), 2026-11-04, Cameron:
+##   - opponent and player on opposite sides (or no player lean): NEUTRAL plus
+##     the opponent's argued side, so a supporter argues for the bill against a
+##     player who opposes it, and the reverse;
+##   - opponent and player on the same side: NEUTRAL plus ALLY lines, the
+##     demanding ally who pushes the player to make the case properly.
 static func sides(opponent: Dictionary, bill: Dictionary, parties: Array,
-		stakeholder_sides: Dictionary, split_percent: int) -> Array[String]:
+		stakeholder_sides: Dictionary, split_percent: int, player_side: String = "") -> Array[String]:
 	var out: Array[String] = [NEUTRAL]
 	var argued := argued_side(opponent, bill, parties, stakeholder_sides, split_percent)
-	if not argued.is_empty():
-		out.append(argued)
+	if argued.is_empty():
+		return out
+	out.append(ALLY if argued == player_side else argued)
 	return out
+
+
+## The player's own side from their lean on the stance screen ("Support" /
+## "Oppose"), or "" when they picked none.
+static func player_side_for(lean: String) -> String:
+	match lean:
+		"Support": return FOR
+		"Oppose": return AGAINST
+	return ""
 
 
 ## FOR, AGAINST or "" (no argued side), by the rules above.
