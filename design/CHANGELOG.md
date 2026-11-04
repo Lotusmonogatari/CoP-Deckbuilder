@@ -3214,3 +3214,23 @@ From Cameron's playtest: some choices read as promises but cost nothing. Full ta
 
 - **Removed.** The line "N gaffes left at the end count against your name. Every X cost 1 National awareness; every Y cost 1 District." under a Combat stage's result (`OutcomePresenter._body_for()`), and its Text row `awareness.gaffe_line`.
 - **Unchanged.** Leftover gaffes still cost awareness (`GameState.apply_awareness_gaffes()`), at the same Balance rates.
+
+## Law, neglect and staff-audience wording; staff audience rewards become organizations (2026-11-04, Cameron)
+
+| # | Question | Finding | Change |
+|---|---|---|---|
+| 1 | Public Broadcasting Act: an Aye vote, yet "Reactions to Your Vote" showed National Media -1 | Not a penalty for the vote. The -1 is the bill's own failed-outcome effect (Law Effects LW71), which applies however the player voted. The heading was wrong. | The heading now reads "Because the bill passed:" or "Because the bill failed:" (new Text rows `record.law_now_passed` / `record.law_now_failed`, replacing `record.law_now`). |
+| 2 | "Going unvisited this level" | Neglect runs at the end of each **week**, not each level, for any organization whose standing did not move at all that week (from any cause). It drifts `neglect_decay` (1) × Week Decay Multiplier (2.5, rounded to 3) toward its starting standing. | `record.cause_neglect` now reads "going untouched this week". |
+| 3 | A staff bonus to Bureaucrats | Audience-group (SGxx) rewards moved a saved `segment_favorability` number that nothing in the game read: no stage, screen or Election Strength. | The five staff with audience rewards now name an organization instead (Staff tab, drafts). |
+
+Staff swaps (point values unchanged; where the organization was already in the same reward, the two merge):
+
+| Staff | Was | Now |
+|---|---|---|
+| SF04 Policy Research Assistant | Bureaucrats | BO16 Innovation Society |
+| SF11 Media Spokesperson | Press | BO08 National Media (+4 from rank 1) |
+| SF13 Media Spokesperson | Party Members | BO31 Party Activists (+4 at rank 2) |
+| SF18 District Representative | Constituents | BO18 Constituency Voters |
+| SF21 District Representative | Boosters | BO03 Local Kōenkai |
+
+**Tests.** Two tests had used SF04's audience reward as their real-data example. They now use a reward of their own, since the rule still handles one. New `test_no_real_staff_reward_names_an_audience` fails if an audience target comes back.

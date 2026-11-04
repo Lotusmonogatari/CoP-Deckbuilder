@@ -107,24 +107,33 @@ func test_hiring_applies_a_boxx_reward_to_booster_standing() -> void:
 	assert_eq(int(GameState.booster_standing.get(target)), before + int(reward["delta"]))
 
 
-func test_hiring_applies_an_sgxx_reward_to_segment_favorability() -> void:
-	# SF04's tier 0 reward is a single SGxx line (no BOxx at all) in the real
-	# data; it should move segment_favorability without touching any booster.
-	var reward: Dictionary = (DataDB.get_staff("SF04")["tier_0_reward"] as Array)[0]
-	var target := str(reward["target"])
-	var delta := int(reward["delta"])
-	assert_true(target.begins_with("SG"), "SF04 is the SGxx-only example")
+func test_an_sgxx_reward_moves_segment_favorability() -> void:
+	# No real staff reward names an audience (SGxx) any more (2026-11-04,
+	# Cameron: they were swapped for organizations), but the rule still
+	# handles one, so it is tested with a reward of its own.
+	var candidate := {"tier_0_reward": [{"delta": 2, "target": "SG05"}]}
 	var standing_before := GameState.booster_standing.duplicate(true)
-	var before := int(GameState.segment_favorability.get(target, 50))
-	GameState.meta["Funds"] = 999999
+	var before := int(GameState.segment_favorability.get("SG05", 50))
 
-	var refusal := GameState.hire_staff("SF04")
+	GameState._apply_staff_reward(candidate, 0)
 
-	assert_eq(refusal, "")
-	assert_eq(int(GameState.segment_favorability.get(target)), before + delta)
-	assert_eq(int(GameState.last_segment_change.get(target)), delta)
+	assert_eq(int(GameState.segment_favorability.get("SG05")), mini(before + 2, 100))
+	assert_eq(int(GameState.last_segment_change.get("SG05", 0)), mini(before + 2, 100) - before)
 	assert_eq(GameState.booster_standing, standing_before,
 		"an SGxx-only reward touches no booster")
+
+
+func test_no_real_staff_reward_names_an_audience() -> void:
+	# Audience approval is saved but read by nothing, so a staff reward that
+	# named one would do nothing (2026-11-04, Cameron).
+	for candidate: Dictionary in DataDB.staff:
+		for tier in 4:
+			var rewards: Variant = candidate.get("tier_%d_reward" % tier)
+			if not (rewards is Array):
+				continue
+			for reward: Dictionary in rewards:
+				assert_false(str(reward.get("target", "")).begins_with("SG"),
+					"%s tier %d rewards an audience group, which has no effect" % [candidate.get("staff_id"), tier])
 
 
 func test_segment_favorability_clamps_at_100() -> void:

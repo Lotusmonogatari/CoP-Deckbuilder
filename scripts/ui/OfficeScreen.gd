@@ -1662,7 +1662,8 @@ func _show_law(law: Dictionary) -> void:
 		rows.append(UiKit.line(Text.say("record.law_flipped")))
 
 	var any_effect := false
-	for timing: Array in [[StatuteBook.ONCE, "record.law_now"], [StatuteBook.EACH_LEVEL, "record.law_each"]]:
+	for timing: Array in [[StatuteBook.ONCE, "record.law_now_passed" if passed else "record.law_now_failed"],
+			[StatuteBook.EACH_LEVEL, "record.law_each"]]:
 		var lines := _law_effect_lines(bill_id, passed, str(timing[0]))
 		var chips := OrgChip.merged(_law_effect_chips(bill_id, passed, str(timing[0])))
 		if lines.is_empty() and chips.is_empty():

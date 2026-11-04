@@ -93,13 +93,13 @@
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "SG05"
+        "target": "BO16"
       }
     ],
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "SG05"
+        "target": "BO16"
       },
       {
         "delta": 2,
@@ -109,7 +109,7 @@
     "tier_2_reward": [
       {
         "delta": 2,
-        "target": "SG05"
+        "target": "BO16"
       },
       {
         "delta": 2,
@@ -319,26 +319,18 @@
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "SG01"
+        "target": "BO08"
       }
     ],
     "tier_1_reward": [
       {
-        "delta": 2,
-        "target": "SG01"
-      },
-      {
-        "delta": 2,
+        "delta": 4,
         "target": "BO08"
       }
     ],
     "tier_2_reward": [
       {
-        "delta": 2,
-        "target": "SG01"
-      },
-      {
-        "delta": 2,
+        "delta": 4,
         "target": "BO08"
       },
       {
@@ -406,12 +398,8 @@
         "target": "BO01"
       },
       {
-        "delta": 2,
+        "delta": 4,
         "target": "BO31"
-      },
-      {
-        "delta": 2,
-        "target": "SG02"
       }
     ],
     "biography": "Kenta wrote the slogan on every party poster in the 2015 election, and activists still chant it at rallies.",
@@ -545,13 +533,13 @@
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "SG03"
+        "target": "BO18"
       }
     ],
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "SG03"
+        "target": "BO18"
       },
       {
         "delta": 2,
@@ -561,7 +549,7 @@
     "tier_2_reward": [
       {
         "delta": 2,
-        "target": "SG03"
+        "target": "BO18"
       },
       {
         "delta": 2,
@@ -661,7 +649,7 @@
       },
       {
         "delta": 2,
-        "target": "SG04"
+        "target": "BO03"
       }
     ],
     "tier_2_reward": [
@@ -671,7 +659,7 @@
       },
       {
         "delta": 4,
-        "target": "SG04"
+        "target": "BO03"
       }
     ],
     "biography": "Ari ran her family’s Obihiro bakery for a decade and recruited forty shop owners into the Small Business Association.",

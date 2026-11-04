@@ -2870,11 +2870,11 @@
     "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
   },
   {
-    "key": "record.law_now",
+    "key": "record.law_now_passed",
     "where": "Your Record",
-    "english": "Reactions to Your Vote",
+    "english": "Because the bill passed:",
     "placeholders": null,
-    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+    "notes": "2026-11-04: the once-only effects of the outcome, which apply however the player voted."
   },
   {
     "key": "record.law_each",
@@ -3166,9 +3166,9 @@
   {
     "key": "record.cause_neglect",
     "where": "Reason: standing drifting back from neglect",
-    "english": "going unvisited this level",
+    "english": "going untouched this week",
     "placeholders": null,
-    "notes": null
+    "notes": "2026-11-04: neglect runs at the end of each week, for any organization whose standing did not move at all that week."
   },
   {
     "key": "record.cause_answers",
@@ -6284,5 +6284,12 @@
     "english": "{text}\n\n{name}: \"{line}\"",
     "placeholders": "text, name, line",
     "notes": "2026-11-03 Lobbyist Lines: the lobbyist's own Protect or Deal line under the screen's question."
+  },
+  {
+    "key": "record.law_now_failed",
+    "where": "Your Record",
+    "english": "Because the bill failed:",
+    "placeholders": null,
+    "notes": "2026-11-04: the once-only effects of the outcome, which apply however the player voted."
   }
 ]
