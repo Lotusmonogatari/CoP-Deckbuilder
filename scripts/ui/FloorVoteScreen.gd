@@ -550,17 +550,25 @@ func _on_vote(choice: String) -> void:
 	_show_outcome(result, stance_note)
 
 
-## The organization chips under the outcome text, rebuilt each time.
-func _show_outcome_chips(entries: Array) -> void:
+## The organization chips under the outcome text, rebuilt each time, in two
+## headed rows (2026-11-04, Cameron): what the player's own vote moved, and
+## what the bill's passing or failing did, which applies however they voted.
+func _show_outcome_chips(entries: Array, outcome_entries: Array = [], passed: bool = false) -> void:
 	var old := _outcome_body.get_parent().get_node_or_null("OutcomeChips")
 	if old != null:
 		old.free()
-	if entries.is_empty():
+	if entries.is_empty() and outcome_entries.is_empty():
 		return
-	var chips := OrgChip.row(OrgChip.merged(entries))
-	chips.name = "OutcomeChips"
-	_outcome_body.get_parent().add_child(chips)
-	_outcome_body.get_parent().move_child(chips, _outcome_body.get_index() + 1)
+	var box := VBoxContainer.new()
+	box.name = "OutcomeChips"
+	for group: Array in [[entries, Text.say("record.law_your_vote")],
+			[outcome_entries, Text.say("record.law_now_passed" if passed else "record.law_now_failed")]]:
+		if (group[0] as Array).is_empty():
+			continue
+		box.add_child(UiKit.heading(str(group[1])))
+		box.add_child(OrgChip.row(OrgChip.merged(group[0])))
+	_outcome_body.get_parent().add_child(box)
+	_outcome_body.get_parent().move_child(box, _outcome_body.get_index() + 1)
 
 
 func _show_outcome(result: Dictionary, stance_note: String = "") -> void:
@@ -583,7 +591,9 @@ func _show_outcome(result: Dictionary, stance_note: String = "") -> void:
 	for line: String in RequestLines.outcome_lines(GameState.last_patron_outcome):
 		_outcome_body.text += "\n" + line
 
-	_show_outcome_chips(RequestLines.outcome_entries(GameState.last_patron_outcome) + _stance_chips)
+	_show_outcome_chips(RequestLines.outcome_entries(GameState.last_patron_outcome) + _stance_chips,
+		StatuteBook.effect_chips(DataDB.law_effects, str(engine.bill().get("bill_id", "")), passed,
+			StatuteBook.ONCE), passed)
 	_show_result_summary(result, totals, passed)
 	_bar_yes.show_segments(_segments_for(result.get("positions", []), "votes_yes"))
 	_bar_no.show_segments(_segments_for(result.get("positions", []), "votes_no"))

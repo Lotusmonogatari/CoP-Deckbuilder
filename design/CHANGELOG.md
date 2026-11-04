@@ -3234,3 +3234,15 @@ Staff swaps (point values unchanged; where the organization was already in the s
 | SF21 District Representative | Boosters | BO03 Local Kōenkai |
 
 **Tests.** Two tests had used SF04's audience reward as their real-data example. They now use a reward of their own, since the rule still handles one. New `test_no_real_staff_reward_names_an_audience` fails if an audience target comes back.
+
+## Stance, vote and outcome rewards shown together (2026-11-04, Cameron)
+
+**The question.** On the Public Broadcasting Act (LV66), a player who leaned Support and voted Aye saw only a −1 for National Media in Your Record, which read like a penalty. A probe of the same run showed the rewards do arrive: National Media 10 → 12 (one stage won) → 14 (Aye vote) → 13 (the bill failed). Each of LV66's three Combat stages is worth +2, and the Aye vote +2. Failing costs every supporter 1, however they voted. The screens just never showed these together.
+
+| Screen | Before | Now |
+|---|---|---|
+| Stance choice (Level Intro) | Who is with you and against you, no numbers | Adds "Each stage you win: +2 with your side, −2 with the other. Your vote: +2 with your side. Changing your vote costs 5 standing." (new Text row `level_intro.stakes`, numbers from Balance: Stance Win Drift, Stance Vote Delta, Stance Flip Abandoned Penalty) |
+| Vote result | The vote's chips, unlabeled. The outcome's own effects were applied but not shown. | Two headed rows: "Your vote:" and "Because the bill passed/failed:" (`FloorVoteScreen._show_outcome_chips()`) |
+| Your Record law panel | The outcome's effects only | "Your vote:" chips first, then the outcome's. The statute-book entry now keeps a `vote_effects` field, so only votes cast from now on show it. |
+
+New `StatuteBook.effect_chips()` builds the outcome chips for both screens. New Text row `record.law_your_vote` ("Your vote:"). Tests: `test_effect_chips_lists_each_organization_move_for_the_outcome`, `test_the_statute_entry_remembers_what_the_vote_moved`. All three screens were checked on a real run with screenshots.

@@ -143,7 +143,13 @@ func _show_lean_choice() -> void:
 		(get_node("Safe/Column/TopSpacer") as Control).size_flags_vertical = Control.SIZE_FILL
 		_on_lean_chosen(BillLean.SUPPORT)
 		return
-	_stance_note().text = "\n".join(StanceLines.intro_lines(_bill))
+	var note := StanceLines.intro_lines(_bill)
+	# What a lean is worth, from the Balance tab (2026-11-04, Cameron).
+	note.append(Text.say("level_intro.stakes", {
+		"win": int(DataDB.balance.get("stance_win_drift", 0)),
+		"vote": int(DataDB.balance.get("stance_vote_delta", 0)),
+		"switch": int(DataDB.balance.get("stance_flip_abandoned_penalty", 0))}))
+	_stance_note().text = "\n".join(note)
 	_stance_note().visible = not _stance_note().text.is_empty()
 	var own_party := DataDB.get_party(str(DataDB.player.get("party", "")))
 	var leader_id := str(own_party.get("leader_opp_id", ""))

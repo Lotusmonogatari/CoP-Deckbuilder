@@ -760,3 +760,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Journalists only attack, for 1-2 (2026-11-04, Cameron)
 - The stage end screen no longer explains gaffes and awareness (2026-11-04, Cameron)
 - Law, neglect and staff-audience wording; staff audience rewards become organizations (2026-11-04, Cameron)
+- Stance, vote and outcome rewards shown together (2026-11-04, Cameron)

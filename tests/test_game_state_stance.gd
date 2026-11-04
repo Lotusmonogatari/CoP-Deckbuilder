@@ -166,3 +166,18 @@ func test_a_vote_after_abandoning_does_nothing() -> void:
 	GameState.abandon_level()
 	var result := GameState.apply_stance_vote("Yes")
 	assert_true((result.get("deltas", {}) as Dictionary).is_empty())
+
+
+# ---------------------------------------------------------------------------
+# What the vote moved is kept with the law (2026-11-04, Cameron)
+# ---------------------------------------------------------------------------
+
+func test_the_statute_entry_remembers_what_the_vote_moved() -> void:
+	_begin_lv31()
+	GameState.set_bill_lean("BI01", "Oppose")
+	var bill: Dictionary = DataDB.floor_votes["BI01"]
+	GameState.record_floor_vote(bill, {"passed": false, "totals": {"Yes": 45, "No": 48, "Abstain": 8}}, "No")
+	var result := GameState.apply_stance_vote("No")
+	var law: Dictionary = GameState.statute_book[-1]
+	assert_eq(law.get("vote_effects"), result["deltas"], "the law keeps the vote's own moves")
+	assert_false((law["vote_effects"] as Dictionary).is_empty())

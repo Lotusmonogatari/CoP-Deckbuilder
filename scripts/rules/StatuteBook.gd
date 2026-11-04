@@ -63,6 +63,20 @@ static func has_bill(book: Array, bill_id: String) -> bool:
 	return false
 
 
+## The organization moves a bill's Law Effects rows carry for this outcome and
+## timing, as OrgChip entries ({id, delta}). Shared by the vote result screen
+## and Your Record's law panel (2026-11-04, Cameron).
+static func effect_chips(law_effects: Array, bill_id: String, passed: bool, timing: String) -> Array:
+	var chips: Array = []
+	for row: Dictionary in effects_for(law_effects, bill_id, passed, timing):
+		var entries: Variant = row.get("effects")
+		if entries is Array:
+			for entry: Variant in entries:
+				if entry is Dictionary and RewardTargets.is_booster(str((entry as Dictionary).get("target", ""))):
+					chips.append({"id": str(entry.get("target", "")), "delta": SafeNum.to_int(entry.get("delta"))})
+	return chips
+
+
 ## The Law Effects rows for this bill and outcome, with this timing.
 static func effects_for(law_effects: Array, bill_id: String, passed: bool,
 		timing: String) -> Array:

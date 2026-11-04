@@ -1662,6 +1662,11 @@ func _show_law(law: Dictionary) -> void:
 		rows.append(UiKit.line(Text.say("record.law_flipped")))
 
 	var any_effect := false
+	var vote_chips := StanceLines.chip_entries(law.get("vote_effects", {}))
+	if not vote_chips.is_empty():
+		any_effect = true
+		rows.append(UiKit.heading(Text.say("record.law_your_vote")))
+		rows.append(OrgChip.row(OrgChip.merged(vote_chips)))
 	for timing: Array in [[StatuteBook.ONCE, "record.law_now_passed" if passed else "record.law_now_failed"],
 			[StatuteBook.EACH_LEVEL, "record.law_each"]]:
 		var lines := _law_effect_lines(bill_id, passed, str(timing[0]))
@@ -1700,13 +1705,7 @@ func _law_effect_lines(bill_id: String, passed: bool, timing: String) -> Array[S
 ## The organization and audience-group changes of the same rows, as chip
 ## entries ({ "id", "delta" }); everything else stays a line above.
 func _law_effect_chips(bill_id: String, passed: bool, timing: String) -> Array:
-	var chips: Array = []
-	for row: Dictionary in StatuteBook.effects_for(DataDB.law_effects, bill_id, passed, timing):
-		var entries: Variant = row.get("effects")
-		if entries is Array:
-			for entry: Dictionary in entries:
-				chips.append({"id": str(entry.get("target", "")), "delta": int(entry.get("delta", 0))})
-	return chips
+	return StatuteBook.effect_chips(DataDB.law_effects, bill_id, passed, timing)
 
 
 func _effect_line(name: String, delta: int) -> String:

@@ -3906,6 +3906,11 @@ func apply_stance_vote(choice: String) -> Dictionary:
 	if party_delta != 0:
 		apply_floor_vote_favorability({str(DataDB.player.get("party", "")): party_delta},
 			Text.say("record.cause_stance_switch", {"bill": str(bill.get("bill_name", ""))}))
+	# Kept on the bill's statute entry so Your Record can show what the vote
+	# itself moved, next to what the outcome did (2026-11-04, Cameron).
+	for law: Dictionary in statute_book:
+		if str(law.get("bill_id", "")) == str(bill_stance.get("bill_id", "")):
+			law["vote_effects"] = (result["deltas"] as Dictionary).duplicate()
 	return result
 
 

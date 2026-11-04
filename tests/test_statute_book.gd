@@ -146,3 +146,18 @@ func test_party_headquarters_and_faction_answer_to_the_players_party() -> void:
 	assert_ne(expected, 0, "the real bill has a stance for this party")
 	assert_eq(moved, expected, "Party Headquarters moved with the party's lean")
 	assert_eq(int(GameState.booster_standing.get("BO02", 50)) - int(DataDB.get_booster("BO02").get("starting_standing", 30) if DataDB.get_booster("BO02").get("starting_standing") != null else 30), PartySalience.scaled(expected, 1.125), "Party Faction moves with it, at its 1.125 lean multiplier")
+
+
+# effect_chips(): the organization moves of a bill's own Law Effects rows, for
+# the vote result screen and Your Record (2026-11-04, Cameron).
+func test_effect_chips_lists_each_organization_move_for_the_outcome() -> void:
+	var rows := [
+		{"bill_id": "BI99", "outcome": "Passed", "timing": "Once",
+			"effects": [{"target": "BO08", "delta": 3}, {"target": "SH01", "delta": 1}]},
+		{"bill_id": "BI99", "outcome": "Failed", "timing": "Once",
+			"effects": [{"target": "BO08", "delta": -1}]},
+	]
+	assert_eq(StatuteBook.effect_chips(rows, "BI99", false, StatuteBook.ONCE), [{"id": "BO08", "delta": -1}])
+	assert_eq(StatuteBook.effect_chips(rows, "BI99", true, StatuteBook.ONCE), [{"id": "BO08", "delta": 3}],
+		"only organizations become chips")
+	assert_eq(StatuteBook.effect_chips(rows, "BI98", true, StatuteBook.ONCE), [])

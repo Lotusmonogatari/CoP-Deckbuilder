@@ -6291,5 +6291,19 @@
     "english": "Because the bill failed:",
     "placeholders": null,
     "notes": "2026-11-04: the once-only effects of the outcome, which apply however the player voted."
+  },
+  {
+    "key": "record.law_your_vote",
+    "where": "Floor Vote result and Your Record",
+    "english": "Your vote:",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: what the player's own vote moved, shown above what the outcome did."
+  },
+  {
+    "key": "level_intro.stakes",
+    "where": "Level Intro screen — bill lean choice",
+    "english": "Each stage you win: +{win} with your side, −{win} with the other. Your vote: +{vote} with your side. Changing your vote costs {switch} standing.",
+    "placeholders": "win, vote, switch",
+    "notes": "2026-11-04, Cameron: what a lean is worth, from the Balance tab (Stance Win Drift, Stance Vote Delta, Stance Flip Abandoned Penalty)."
   }
 ]
