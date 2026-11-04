@@ -3195,3 +3195,11 @@ From Cameron's playtest: some choices read as promises but cost nothing. Full ta
   - 156 nationwide "Hokkaido" phrases from the bill parts (ports, foreign banks, jobs, firms, graduates) now say "Yezo".
 - **Kept, by Cameron's decision.** The six Japanese-only ticker lines, and both "Parliament" and "National Assembly".
 - **Follow-up.** VQ50's reply to choice B ("my district needs more attention") was about a bigger office. It now reads "Your district? Every member says that. Earn the attention first."
+
+## Press conference: the reporters' moves are shown (2026-11-04, Cameron)
+
+- **The problem.** Each turn a reporter attacks, gains or guards on a pattern like any opponent, and attacks take press tone. The screen showed none of it: the reporter's row left its move line blank on purpose (written when reporters had no moves), and after the turn their spoken cue appeared with an empty name tag and no word of what it did.
+- **Before the turn.** The reporter's row shows their move, "Attacking · −2 to −4", "Gaining · +1 to +3" or "Guarding · 2 to 4" (`OpponentPresenter.show_state()`). A card that reveals the next move (C12 Head Count) now works here too.
+- **After the turn.** The banner speaks under the name of the reporter who asked that turn's question, with what the move did underneath, for example "Aoba Shindou: 4 press tone taken from you." (`BattleScreen._on_end_turn()`). Elsewhere a written cue still replaces the narration; in a press conference both show, since a reporter's line never says what it did.
+- **Rules unchanged.** A reporter's gain and guard still do nothing to a single tone bar, and the banner says so ("... pressed the case and won nobody over.", "developed 3 guard").
+- **Test.** New click test `press_test` plays three real turns. It fails without the fix: blank row, no named move.

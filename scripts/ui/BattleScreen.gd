@@ -1015,6 +1015,11 @@ func _on_end_turn() -> void:
 	if not _ready_to_play:
 		return
 	_end_pick()
+	# In a press conference the reporter who pressed the tone is the one who
+	# asked this turn's question; after end_turn() the next question (and
+	# its asker) is already drawn, so the name is read first.
+	var is_press := engine.is_press_conference()
+	var press_speaker := OpponentPresenter.question_speaker_name(engine) if is_press else ""
 	var result := engine.end_turn()
 	if not result.get("ok", false):
 		return
@@ -1025,7 +1030,7 @@ func _on_end_turn() -> void:
 	# swaps in the next opponent and the sentence is about the one who just
 	# acted. The name — and, for OpponentCues below, the whole opponent row —
 	# comes from the same snapshot for the same reason.
-	var speaker := OpponentPresenter.display_name(engine)
+	var speaker := press_speaker if is_press else OpponentPresenter.display_name(engine)
 	var acting_opponent := engine.current_opponent()
 	_refresh()
 
@@ -1069,7 +1074,11 @@ func _on_end_turn() -> void:
 	# when they have no written line for it. Showing both put the same move
 	# on screen twice, once clean and once as "Them: ..." (Cameron,
 	# 2026-09-27); the written cue is the one that stays.
-	if not has_cue:
+	# A press conference keeps both: a reporter's line never says what it
+	# did to the tone, so the move rides underneath it as the banner's
+	# detail, the same way a card's cue carries what the card did
+	# (2026-11-04, Cameron: attacks landed with nothing on screen).
+	if not has_cue or is_press:
 		var said := BattleNarration.opponent_move(
 			opponent_result, _stage, engine.state, speaker)
 		if not said.is_empty():

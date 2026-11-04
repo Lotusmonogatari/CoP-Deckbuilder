@@ -87,9 +87,15 @@ func show_state(engine: BattleEngine, stage: String = "") -> void:
 		# The question itself is spoken on the CueBanner under the asker's
 		# name (BattleScreen._announce_question()), not printed here
 		# (2026-10-16, Cameron: no name-plate text; questions are cues).
-		_intent_label.text = ""
-		_show_journalist(engine.turn_question())
-		_show_upcoming_intent({})
+		# What the reporter is about to do to the tone IS shown, the same
+		# "Attacking · −3" line every other room has: reporters press the
+		# tone each turn, and a hidden move read as damage from nowhere
+		# (2026-11-04, Cameron).
+		var question := engine.turn_question()
+		_intent_label.text = "" if question.is_empty() \
+			else IntentRunner.describe(engine.current_intent(), Text.phrase())
+		_show_journalist(question)
+		_show_upcoming_intent(engine.upcoming_intent())
 	else:
 		_intent_label.text = IntentRunner.describe(engine.current_intent(), Text.phrase())
 		_show_opponent(engine)
@@ -99,8 +105,8 @@ func show_state(engine: BattleEngine, stage: String = "") -> void:
 
 
 ## The move after next, once a card (C12 Head Count) has revealed it — blank
-## otherwise, and always blank in a press conference (there is no pattern to
-## peek ahead in; the reporters' questions are drawn fresh each time).
+## otherwise. A press conference's reporters have a move pattern like any
+## opponent, so it can be revealed there too.
 func _show_upcoming_intent(intent: Dictionary) -> void:
 	if _upcoming_intent_label == null:
 		return

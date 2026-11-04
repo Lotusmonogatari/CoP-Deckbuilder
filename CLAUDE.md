@@ -756,3 +756,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Office Hours choices that promise something now cost something (2026-11-03, Cameron)
 - Hosted events: a reply that promises nothing (2026-11-04, Cameron)
 - In-universe content review (2026-11-04, Cameron)
+- Press conference: the reporters' moves are shown (2026-11-04, Cameron)
