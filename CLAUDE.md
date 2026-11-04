@@ -761,3 +761,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - The stage end screen no longer explains gaffes and awareness (2026-11-04, Cameron)
 - Law, neglect and staff-audience wording; staff audience rewards become organizations (2026-11-04, Cameron)
 - Stance, vote and outcome rewards shown together (2026-11-04, Cameron)
+- Bill content review: grammar, coherence and honesty (2026-11-04, Cameron)

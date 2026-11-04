@@ -585,7 +585,7 @@
   },
   {
     "level_id": "LV31",
-    "thought_text": "The people who gain are Ainu families and language teachers. The people who pay are town budgets and landholders."
+    "thought_text": "Who gains: Ainu families and language teachers. Who pays: town officials and landowners."
   },
   {
     "level_id": "LV31",
@@ -593,7 +593,7 @@
   },
   {
     "level_id": "LV32",
-    "thought_text": "The people who gain are rice and dairy farmers. The people who pay are taxpayers and grocery shoppers."
+    "thought_text": "Who gains: rice and dairy farmers. Who pays: taxpayers and grocery shoppers."
   },
   {
     "level_id": "LV32",
@@ -601,7 +601,7 @@
   },
   {
     "level_id": "LV33",
-    "thought_text": "The people who gain are new employers and the workers they hire. The people who pay are workers under looser labor rules."
+    "thought_text": "Who gains: new employers and the workers they hire. Who pays: workers under looser labor rules."
   },
   {
     "level_id": "LV33",
@@ -609,7 +609,7 @@
   },
   {
     "level_id": "LV34",
-    "thought_text": "The people who gain are commuters, freight shippers and tourist towns. The people who pay are the national budget."
+    "thought_text": "Who gains: commuters, freight shippers and tourist towns. Who pays: taxpayers."
   },
   {
     "level_id": "LV34",
@@ -617,7 +617,7 @@
   },
   {
     "level_id": "LV35",
-    "thought_text": "The people who gain are island residents and coast guard crews. The people who pay are the defense budget."
+    "thought_text": "Who gains: island residents and coast guard crews. Who pays: taxpayers."
   },
   {
     "level_id": "LV35",
@@ -625,7 +625,7 @@
   },
   {
     "level_id": "LV36",
-    "thought_text": "The people who gain are employers short of workers. The people who pay are wage levels and local services."
+    "thought_text": "Who gains: employers short of workers. Who pays: local workers whose wages could slip."
   },
   {
     "level_id": "LV36",
@@ -633,7 +633,7 @@
   },
   {
     "level_id": "LV37",
-    "thought_text": "The people who gain are rural towns and households that lost power. The people who pay are utility customers and the budget."
+    "thought_text": "Who gains: rural towns and households that lost power. Who pays: utility customers."
   },
   {
     "level_id": "LV37",
@@ -641,15 +641,15 @@
   },
   {
     "level_id": "LV38",
-    "thought_text": "The people who gain are pensioners and elder care. The people who pay are shoppers and small shops."
+    "thought_text": "Who gains: pensioners and care workers. Who pays: shoppers and small shops."
   },
   {
     "level_id": "LV38",
-    "thought_text": "My worry is weaker spending in poorer households. My hope is that pensioners and elder care come out better off."
+    "thought_text": "My worry is weaker spending in poorer households. My hope is that pensioners and care workers come out better off."
   },
   {
     "level_id": "LV39",
-    "thought_text": "The people who gain are prefectural governments and local officials. The people who pay are poorer areas that depend on transfers."
+    "thought_text": "Who gains: prefectural governments and local officials. Who pays: people in poorer prefectures."
   },
   {
     "level_id": "LV39",
@@ -657,7 +657,7 @@
   },
   {
     "level_id": "LV40",
-    "thought_text": "The people who gain are women candidates and their voters. The people who pay are party selection committees."
+    "thought_text": "Who gains: women candidates and their voters. Who pays: candidates who might be passed over."
   },
   {
     "level_id": "LV40",
@@ -665,7 +665,7 @@
   },
   {
     "level_id": "LV41",
-    "thought_text": "The people who gain are ferry operators, fishers and border towns. The people who pay are the foreign affairs budget."
+    "thought_text": "Who gains: ferry operators, fishers and border towns. Who pays: taxpayers."
   },
   {
     "level_id": "LV41",
@@ -673,7 +673,7 @@
   },
   {
     "level_id": "LV42",
-    "thought_text": "The people who gain are courts that want distance from politics. The people who pay are the Cabinet's control over nominations."
+    "thought_text": "Who gains: courts that want distance from politics. Who pays: citizens who want judges answerable."
   },
   {
     "level_id": "LV42",
@@ -681,7 +681,7 @@
   },
   {
     "level_id": "LV43",
-    "thought_text": "The people who gain are temples, shrines and festival towns. The people who pay are the treasury and secular taxpayers."
+    "thought_text": "Who gains: temples, shrines and festival towns. Who pays: taxpayers who prefer secular spending."
   },
   {
     "level_id": "LV43",
@@ -689,7 +689,7 @@
   },
   {
     "level_id": "LV44",
-    "thought_text": "The people who gain are districts with a member who can deliver. The people who pay are the national budget."
+    "thought_text": "Who gains: districts with a member who can deliver. Who pays: taxpayers."
   },
   {
     "level_id": "LV44",
@@ -697,7 +697,7 @@
   },
   {
     "level_id": "LV45",
-    "thought_text": "The people who gain are tech firms and graduates. The people who pay are tax revenue and local power supply."
+    "thought_text": "Who gains: tech firms and graduates. Who pays: taxpayers and local power users."
   },
   {
     "level_id": "LV45",
@@ -705,7 +705,7 @@
   },
   {
     "level_id": "LV46",
-    "thought_text": "The people who gain are police and crime victims. The people who pay are privacy and free speech."
+    "thought_text": "Who gains: police and crime victims. Who pays: citizens whose phones could be tapped."
   },
   {
     "level_id": "LV46",
@@ -713,7 +713,7 @@
   },
   {
     "level_id": "LV47",
-    "thought_text": "The people who gain are same-sex couples and their families. The people who pay are traditional family norms in some eyes."
+    "thought_text": "Who gains: same-sex couples and their families. Who pays: people who hold traditional views of the family."
   },
   {
     "level_id": "LV47",
@@ -721,7 +721,7 @@
   },
   {
     "level_id": "LV48",
-    "thought_text": "The people who gain are emergency responders after a disaster. The people who pay are checks and balances."
+    "thought_text": "Who gains: emergency responders after a disaster. Who pays: citizens who value checks on power."
   },
   {
     "level_id": "LV48",
@@ -729,7 +729,7 @@
   },
   {
     "level_id": "LV49",
-    "thought_text": "The people who gain are defense planners and allies. The people who pay are neutral foreign policy."
+    "thought_text": "Who gains: defense planners and allies. Who pays: people who prefer a neutral Yezo."
   },
   {
     "level_id": "LV49",
@@ -737,7 +737,7 @@
   },
   {
     "level_id": "LV50",
-    "thought_text": "The people who gain are exporters and shoppers. The people who pay are dairy and rural producers."
+    "thought_text": "Who gains: exporters and shoppers. Who pays: dairy and rural producers."
   },
   {
     "level_id": "LV50",
@@ -745,7 +745,7 @@
   },
   {
     "level_id": "LV51",
-    "thought_text": "The people who gain are coastal communities and security officials. The people who pay are foreign investors and sellers."
+    "thought_text": "Who gains: coastal communities and security officials. Who pays: foreign investors and landowners who want to sell."
   },
   {
     "level_id": "LV51",
@@ -753,7 +753,7 @@
   },
   {
     "level_id": "LV52",
-    "thought_text": "The people who gain are hotels, shops and artisans. The people who pay are border officials and crowded sites."
+    "thought_text": "Who gains: hotels, shops and artisans. Who pays: residents of crowded resort towns."
   },
   {
     "level_id": "LV52",
@@ -761,7 +761,7 @@
   },
   {
     "level_id": "LV53",
-    "thought_text": "The people who gain are fishers and island tour operators. The people who pay are our claim to the islands."
+    "thought_text": "Who gains: fishers and island tour operators. Who pays: islanders who hold our claim dear."
   },
   {
     "level_id": "LV53",
@@ -769,15 +769,15 @@
   },
   {
     "level_id": "LV54",
-    "thought_text": "The people who gain are power users and industry. The people who pay are nearby fishers and communities."
+    "thought_text": "Who gains: power users and industrial employers. Who pays: fishers and families near the plant."
   },
   {
     "level_id": "LV54",
-    "thought_text": "My worry is an accident after a quake. My hope is that power users and industry come out better off."
+    "thought_text": "My worry is an accident after a quake. My hope is that power users and industrial employers come out better off."
   },
   {
     "level_id": "LV55",
-    "thought_text": "The people who gain are construction workers, hotels and the host town. The people who pay are neighbors and gambling-prone households."
+    "thought_text": "Who gains: construction workers, hotels and the host town. Who pays: neighbors and gambling-prone households."
   },
   {
     "level_id": "LV55",
@@ -785,15 +785,15 @@
   },
   {
     "level_id": "LV56",
-    "thought_text": "The people who gain are applicants without connections. The people who pay are members who place their supporters."
+    "thought_text": "Who gains: unconnected applicants and voters tired of patronage. Who pays: local hires who know the town."
   },
   {
     "level_id": "LV56",
-    "thought_text": "My worry is exams that miss real-world skill. My hope is that applicants without connections come out better off."
+    "thought_text": "My worry is exams that miss real-world skill. My hope is that unconnected applicants and voters tired of patronage come out better off."
   },
   {
     "level_id": "LV57",
-    "thought_text": "The people who gain are low-wage workers and students. The people who pay are small shops and farms."
+    "thought_text": "Who gains: low-wage workers and students. Who pays: small shops and farms."
   },
   {
     "level_id": "LV57",
@@ -801,7 +801,7 @@
   },
   {
     "level_id": "LV58",
-    "thought_text": "The people who gain are voters in unfairly drawn districts. The people who pay are members who benefit from today's lines."
+    "thought_text": "Who gains: voters in unfairly drawn districts. Who pays: voters who want elected mapmakers."
   },
   {
     "level_id": "LV58",
@@ -809,7 +809,7 @@
   },
   {
     "level_id": "LV59",
-    "thought_text": "The people who gain are schools and families who want a shared moral base. The people who pay are students and teachers with other views."
+    "thought_text": "Who gains: schools and families who want a shared moral base. Who pays: students and teachers with other views."
   },
   {
     "level_id": "LV59",
@@ -817,7 +817,7 @@
   },
   {
     "level_id": "LV60",
-    "thought_text": "The people who gain are foreign residents and their neighbors. The people who pay are the idea that voting belongs to citizens."
+    "thought_text": "Who gains: foreign residents and their neighbors. Who pays: citizens who fear a diluted vote."
   },
   {
     "level_id": "LV60",
@@ -825,15 +825,15 @@
   },
   {
     "level_id": "LV63",
-    "thought_text": "The people who gain are wildlife, Ainu land users and tourism. The people who pay are loggers and developers."
+    "thought_text": "Who gains: Ainu land users and tour operators. Who pays: loggers and developers."
   },
   {
     "level_id": "LV63",
-    "thought_text": "My worry is lost jobs in forest towns. My hope is that wildlife, Ainu land users and tourism come out better off."
+    "thought_text": "My worry is lost jobs in forest towns. My hope is that Ainu land users and tour operators come out better off."
   },
   {
     "level_id": "LV64",
-    "thought_text": "The people who gain are rural patients. The people who pay are the health budget."
+    "thought_text": "Who gains: rural patients. Who pays: taxpayers."
   },
   {
     "level_id": "LV64",
@@ -841,7 +841,7 @@
   },
   {
     "level_id": "LV65",
-    "thought_text": "The people who gain are residents who tire of paperwork. The people who pay are privacy."
+    "thought_text": "Who gains: residents who tire of paperwork. Who pays: people who guard their privacy."
   },
   {
     "level_id": "LV65",
@@ -849,7 +849,7 @@
   },
   {
     "level_id": "LV66",
-    "thought_text": "The people who gain are viewers who want independent news. The people who pay are government control of messaging."
+    "thought_text": "Who gains: viewers who want independent news. Who pays: taxpayers who fund the broadcaster."
   },
   {
     "level_id": "LV66",
@@ -857,7 +857,7 @@
   },
   {
     "level_id": "LV67",
-    "thought_text": "The people who gain are voters who want clean politics. The people who pay are parties and members who rely on big donors."
+    "thought_text": "Who gains: voters who want clean politics. Who pays: small donors who fear being named in public."
   },
   {
     "level_id": "LV67",
@@ -865,15 +865,15 @@
   },
   {
     "level_id": "LV68",
-    "thought_text": "The people who gain are firms and their shareholders. The people who pay are tax revenue for services."
+    "thought_text": "Who gains: firms and the workers they hire. Who pays: people who depend on public services."
   },
   {
     "level_id": "LV68",
-    "thought_text": "My worry is a tax cut that is not matched by savings. My hope is that firms and their shareholders come out better off."
+    "thought_text": "My worry is a tax cut that is not matched by savings. My hope is that firms and the workers they hire come out better off."
   },
   {
     "level_id": "LV69",
-    "thought_text": "The people who gain are clean-energy firms and households that get dividends. The people who pay are fuel users, farmers and fishers."
+    "thought_text": "Who gains: clean-energy firms and households that get dividends. Who pays: fuel users, farmers and fishers."
   },
   {
     "level_id": "LV69",
@@ -881,7 +881,7 @@
   },
   {
     "level_id": "LV70",
-    "thought_text": "The people who gain are fishers and consumers who want healthy stocks. The people who pay are small buyers and boats that sell quotas."
+    "thought_text": "Who gains: fishers and consumers who want healthy stocks. Who pays: small boats that sell their quotas."
   },
   {
     "level_id": "LV70",
@@ -889,7 +889,7 @@
   },
   {
     "level_id": "LV71",
-    "thought_text": "The people who gain are shipyard workers and defense suppliers. The people who pay are other spending and taxpayers."
+    "thought_text": "Who gains: shipyard workers and defense suppliers. Who pays: taxpayers."
   },
   {
     "level_id": "LV71",
@@ -897,7 +897,7 @@
   },
   {
     "level_id": "LV72",
-    "thought_text": "The people who gain are members who want change studied. The people who pay are time and attention in the Assembly."
+    "thought_text": "Who gains: members who want change studied. Who pays: voters wary of amendments."
   },
   {
     "level_id": "LV72",
@@ -905,7 +905,7 @@
   },
   {
     "level_id": "LV73",
-    "thought_text": "The people who gain are traders and travelers. The people who pay are privacy and some border jobs."
+    "thought_text": "Who gains: traders and travelers. Who pays: people who fear for privacy at the border."
   },
   {
     "level_id": "LV73",
@@ -913,15 +913,15 @@
   },
   {
     "level_id": "LV74",
-    "thought_text": "The people who gain are investors and some island jobs. The people who pay are fishers, the sea and island heritage."
+    "thought_text": "Who gains: investors and islanders looking for work. Who pays: fishers and island communities."
   },
   {
     "level_id": "LV74",
-    "thought_text": "My worry is damage to fisheries and sacred sites. My hope is that investors and some island jobs come out better off."
+    "thought_text": "My worry is damage to fisheries and sacred sites. My hope is that investors and islanders looking for work come out better off."
   },
   {
     "level_id": "LV75",
-    "thought_text": "The people who gain are exporters and shoppers. The people who pay are workers and producers who compete with imports."
+    "thought_text": "Who gains: exporters and shoppers. Who pays: workers and producers who compete with imports."
   },
   {
     "level_id": "LV75",
@@ -929,7 +929,7 @@
   },
   {
     "level_id": "LV76",
-    "thought_text": "The people who gain are young farmers and farm towns. The people who pay are the treasury."
+    "thought_text": "Who gains: young farmers and farm towns. Who pays: taxpayers."
   },
   {
     "level_id": "LV76",
@@ -937,7 +937,7 @@
   },
   {
     "level_id": "LV77",
-    "thought_text": "The people who gain are researchers and students. The people who pay are the national budget."
+    "thought_text": "Who gains: researchers and students. Who pays: taxpayers."
   },
   {
     "level_id": "LV77",
@@ -945,7 +945,7 @@
   },
   {
     "level_id": "LV78",
-    "thought_text": "The people who gain are women, minorities and disabled workers. The people who pay are employers who must change hiring."
+    "thought_text": "Who gains: women, minorities and disabled workers. Who pays: employers who must change hiring."
   },
   {
     "level_id": "LV78",
@@ -953,7 +953,7 @@
   },
   {
     "level_id": "LV79",
-    "thought_text": "The people who gain are working parents and children. The people who pay are employers and the budget."
+    "thought_text": "Who gains: working parents and children. Who pays: small employers."
   },
   {
     "level_id": "LV79",
@@ -961,7 +961,7 @@
   },
   {
     "level_id": "LV80",
-    "thought_text": "The people who gain are police and commuters. The people who pay are privacy."
+    "thought_text": "Who gains: police and commuters. Who pays: people who value their privacy."
   },
   {
     "level_id": "LV80",
@@ -969,7 +969,7 @@
   },
   {
     "level_id": "LV81",
-    "thought_text": "The people who gain are taxpayers and bigger towns. The people who pay are small towns' identity and local jobs."
+    "thought_text": "Who gains: taxpayers and bigger towns. Who pays: residents of small towns."
   },
   {
     "level_id": "LV81",
@@ -977,7 +977,7 @@
   },
   {
     "level_id": "LV82",
-    "thought_text": "The people who gain are rank-and-file members. The people who pay are party elders and the members' influence."
+    "thought_text": "Who gains: rank-and-file members. Who pays: party elders and officials."
   },
   {
     "level_id": "LV82",

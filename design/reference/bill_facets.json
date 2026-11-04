@@ -1,5 +1,5 @@
 {
- "_README": "Per-bill phrases used to write bill-specific questions and cues (2026-10-18, Cameron's expansion). what = the core provision as a noun phrase; gain = who benefits; cost = who or what bears the burden; local = something a town would see change; risk = what could go wrong, as a noun phrase; critic = a clause critics would say, starting 'it'; alt = a smaller alternative, as a noun phrase. All drafts for Cameron to rewrite. hurt = the people who lose out. Usage in frames: gain and hurt are people; cost is only used after 'falls on' or 'who pays'; local only after 'for', 'to' or 'reaches'.",
+ "_README": "Per-bill phrases used to write bill-specific questions and cues (2026-10-18, Cameron's expansion). what = the core provision as a noun phrase; gain = who benefits; cost = who or what bears the burden; local = something a town would see change; risk = what could go wrong, as a noun phrase; critic = a clause critics would say, starting 'it'; alt = a smaller alternative, as a noun phrase. All drafts for Cameron to rewrite. hurt = the people who lose out. Usage in frames: gain and hurt are people; cost is only used after 'falls on' or 'who pays'; local only after 'for', 'to' or 'reaches'. Rules learned 2026-11-04 (bill content review): gain and hurt must be plural groups of people (not budgets, ideas or 'jobs'); hurt names the opposition's strongest honest constituency, not only insiders who lose out; cost may be a budget or a right but never fills a people slot; local is a noun phrase, never a 'who/what/how' clause; alt never contains 'instead' (frames add it); risk may be singular or plural, so frames must not put a verb right after it.",
  "BI01": {
   "what": "co-official status for Ainu in willing towns",
   "gain": "Ainu families and language teachers",
@@ -72,19 +72,19 @@
  },
  "BI08": {
   "what": "a consumption tax rise from 8 to 10 percent for pensions",
-  "gain": "pensioners and elder care",
+  "gain": "pensioners and care workers",
   "cost": "shoppers and small shops",
   "local": "prices at the register and care homes",
   "risk": "weaker spending in poorer households",
   "critic": "it taxes the poor to pay for the old",
-  "alt": "a tax on the largest incomes instead",
+  "alt": "a tax on the largest incomes",
   "hurt": "shoppers and small shops"
  },
  "BI09": {
   "what": "revenue and budget powers for the three prefectural assemblies",
   "gain": "prefectural governments and local officials",
   "cost": "poorer areas that depend on transfers",
-  "local": "who decides the road and school budget",
+  "local": "local budget decisions on roads and schools",
   "risk": "gaps between rich and poor prefectures",
   "critic": "it lets wealthy areas keep their wealth",
   "alt": "devolving one budget line as a trial",
@@ -94,7 +94,7 @@
   "what": "parties' effort to field equal numbers of women and men",
   "gain": "women candidates and their voters",
   "cost": "party selection committees",
-  "local": "who stands in your district",
+  "local": "the choice of candidates in your district",
   "risk": "qualified candidates passed over",
   "critic": "it treats candidates as numbers",
   "alt": "voluntary party targets with public reports",
@@ -107,18 +107,18 @@
   "local": "ferry customs and shared fishing grounds",
   "risk": "a commission with no power to settle anything",
   "critic": "it hands control of our waters to talks",
-  "alt": "an annual meeting instead of a standing body",
+  "alt": "a yearly meeting with no standing body",
   "hurt": "taxpayers"
  },
  "BI12": {
   "what": "an independent commission to nominate Supreme Court justices",
   "gain": "courts that want distance from politics",
-  "cost": "the Cabinet's control over nominations",
+  "cost": "the Cabinet's say over nominations",
   "local": "public trust in the courts",
   "risk": "an unelected body choosing judges",
   "critic": "it takes power from elected leaders",
   "alt": "public hearings on Cabinet nominees",
-  "hurt": "ministers who lose the power"
+  "hurt": "citizens who want judges answerable"
  },
  "BI13": {
   "what": "tax relief and restoration grants for temples and shrines",
@@ -163,7 +163,7 @@
  "BI17": {
   "what": "a national registry giving same-sex couples partnership rights",
   "gain": "same-sex couples and their families",
-  "cost": "traditional family norms in some eyes",
+  "cost": "families who hold traditional views",
   "local": "city offices that register couples locally",
   "risk": "a split in public opinion",
   "critic": "it redefines the family",
@@ -174,7 +174,7 @@
   "what": "a 30-day national emergency that lets the Prime Minister govern by decree",
   "gain": "emergency responders after a disaster",
   "cost": "checks and balances",
-  "local": "how fast aid reaches a blacked-out town",
+  "local": "aid reaching a blacked-out town",
   "risk": "power held past the end of the crisis",
   "critic": "it hands one person too much power",
   "alt": "emergency powers needing an Assembly vote",
@@ -183,7 +183,7 @@
  "BI19": {
   "what": "annual defense talks and joint exercises with the United States",
   "gain": "defense planners and allies",
-  "cost": "neutral foreign policy",
+  "cost": "Yezo's neutrality",
   "local": "exercises near northern harbors",
   "risk": "being drawn into a foreign conflict",
   "critic": "it ties us to another country's wars",
@@ -204,7 +204,7 @@
   "what": "government review of foreign land purchases near ports, water and defense sites",
   "gain": "coastal communities and security officials",
   "cost": "foreign investors and sellers",
-  "local": "who owns land near your harbor",
+  "local": "land ownership near your harbor",
   "risk": "scaring off honest investment",
   "critic": "it treats every buyer as a spy",
   "alt": "a registry of foreign owners without review",
@@ -232,7 +232,7 @@
  },
  "BI24": {
   "what": "restarting the Tomari nuclear plant",
-  "gain": "power users and industry",
+  "gain": "power users and industrial employers",
   "cost": "nearby fishers and communities",
   "local": "the coast near the plant",
   "risk": "an accident after a quake",
@@ -252,13 +252,13 @@
  },
  "BI26": {
   "what": "competitive exams for all public hiring and a ban on referrals",
-  "gain": "applicants without connections",
+  "gain": "unconnected applicants and voters tired of patronage",
   "cost": "members who place their supporters",
-  "local": "who gets the town hall job",
+  "local": "hiring at the town hall",
   "risk": "exams that miss real-world skill",
   "critic": "it makes public service a quiz",
   "alt": "exams for senior posts only",
-  "hurt": "supporters who relied on referrals"
+  "hurt": "local hires who know the town"
  },
  "BI27": {
   "what": "one higher minimum wage across Hokkaido, Aomori and Chishima",
@@ -278,13 +278,13 @@
   "risk": "an unelected commission with too much say",
   "critic": "it takes elections away from the elected",
   "alt": "public hearings on redistricting",
-  "hurt": "members who benefit from today's district lines"
+  "hurt": "voters who want elected mapmakers"
  },
  "BI29": {
   "what": "compulsory graded ethics classes in schools",
   "gain": "schools and families who want a shared moral base",
   "cost": "students and teachers with other views",
-  "local": "what your children learn in class",
+  "local": "your children's lessons",
   "risk": "the state teaching one view of virtue",
   "critic": "it teaches obedience instead of thought",
   "alt": "an optional ethics elective",
@@ -293,7 +293,7 @@
  "BI30": {
   "what": "municipal voting rights for long-term foreign residents",
   "gain": "foreign residents and their neighbors",
-  "cost": "the idea that voting belongs to citizens",
+  "cost": "citizens' share of the local vote",
   "local": "who votes in your town's mayoral race",
   "risk": "a backlash that harms community ties",
   "critic": "it dilutes citizens' voting power",
@@ -302,7 +302,7 @@
  },
  "BI31": {
   "what": "protected wilderness with limits on logging and development",
-  "gain": "wildlife, Ainu land users and tourism",
+  "gain": "Ainu land users and tour operators",
   "cost": "loggers and developers",
   "local": "forest roads and ranger stations",
   "risk": "lost jobs in forest towns",
@@ -314,7 +314,7 @@
   "what": "a chain of small regional hospitals and traveling clinics",
   "gain": "rural patients",
   "cost": "the health budget",
-  "local": "how far you drive in an emergency",
+  "local": "emergency travel times in rural areas",
   "risk": "small hospitals with too few doctors",
   "critic": "it spreads thin what should be concentrated",
   "alt": "mobile clinics only",
@@ -333,26 +333,26 @@
  "BI34": {
   "what": "protecting the public broadcaster's budget and board from ministers",
   "gain": "viewers who want independent news",
-  "cost": "government control of messaging",
+  "cost": "ministers who lose a say over the broadcaster",
   "local": "the evening news in every home",
   "risk": "a broadcaster answerable to no one",
   "critic": "it gives an unelected board a megaphone",
   "alt": "a fixed budget but a ministerial appointee",
-  "hurt": "ministers who want a say"
+  "hurt": "taxpayers who fund the broadcaster"
  },
  "BI35": {
   "what": "full publication of fundraising and a cap on single-source donations",
   "gain": "voters who want clean politics",
   "cost": "parties and members who rely on big donors",
-  "local": "who pays for the candidates you see",
+  "local": "the money behind the candidates you see",
   "risk": "money moving to groups outside the rules",
   "critic": "it silences honest supporters",
   "alt": "publication without caps",
-  "hurt": "parties and donors who rely on big gifts"
+  "hurt": "small donors who fear being named in public"
  },
  "BI36": {
   "what": "a lower corporate tax rate, with a smaller cut for small firms",
-  "gain": "firms and their shareholders",
+  "gain": "firms and the workers they hire",
   "cost": "tax revenue for services",
   "local": "which firms open or close in the district",
   "risk": "cuts to services to pay for the tax cut",
@@ -374,7 +374,7 @@
   "what": "tradeable fishing quotas with onboard reporting",
   "gain": "fishers and consumers who want healthy stocks",
   "cost": "small buyers and boats that sell quotas",
-  "local": "who owns the right to fish in the harbor",
+  "local": "fishing rights in the harbor",
   "risk": "quotas concentrated in a few large boats",
   "critic": "it turns the sea into a commodity",
   "alt": "quotas that cannot be traded",
@@ -398,7 +398,7 @@
   "risk": "a commission that pushes a hidden agenda",
   "critic": "it starts a slide toward rewriting the constitution",
   "alt": "a temporary commission with one report",
-  "hurt": "members with other priorities"
+  "hurt": "voters wary of amendments"
  },
  "BI41": {
   "what": "merged customs checks and shared border data with Japan",
@@ -412,7 +412,7 @@
  },
  "BI42": {
   "what": "a joint mining and fishing venture on the Chishima islands with a partner in non-China Asia",
-  "gain": "investors and some island jobs",
+  "gain": "investors and islanders looking for work",
   "cost": "fishers, the sea and island heritage",
   "local": "harbors and fishing grounds near the venture",
   "risk": "damage to fisheries and sacred sites",
@@ -437,7 +437,7 @@
   "local": "empty farmhouses and idle fields",
   "risk": "grants for farms that cannot survive",
   "critic": "it pays people to farm who will not stay",
-  "alt": "mentoring programs instead of grants",
+  "alt": "mentoring programs with no grants",
   "hurt": "taxpayers"
  },
  "BI45": {
@@ -493,8 +493,8 @@
  "BI50": {
   "what": "open ballot of party members to choose party leaders",
   "gain": "rank-and-file members",
-  "cost": "party elders and the members' influence",
-  "local": "who picks the person leading your party",
+  "cost": "party elders and officials",
+  "local": "the choice of your party's leader",
   "risk": "leaders chosen by loud, small factions",
   "critic": "it hands parties to their most extreme members",
   "alt": "a ballot of party delegates",

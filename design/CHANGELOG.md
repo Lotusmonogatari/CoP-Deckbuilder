@@ -3246,3 +3246,7 @@ Staff swaps (point values unchanged; where the organization was already in the s
 | Your Record law panel | The outcome's effects only | "Your vote:" chips first, then the outcome's. The statute-book entry now keeps a `vote_effects` field, so only votes cast from now on show it. |
 
 New `StatuteBook.effect_chips()` builds the outcome chips for both screens. New Text row `record.law_your_vote` ("Your vote:"). Tests: `test_effect_chips_lists_each_organization_move_for_the_outcome`, `test_the_statute_entry_remembers_what_the_vote_moved`. All three screens were checked on a real run with screenshots.
+
+## Bill content review: grammar, coherence and honesty (2026-11-04, Cameron)
+
+About 1,300 workbook cells were rewritten across Player Cues, Opponent Cues, Stage Questions, Transition Dialogue, Level Intro Thoughts and Vote Influence Cues, plus the bill facets. The causes were all at the template level: a cost slot used for people, non-people "gain" groups, "who/what" clauses after "for", verbs right after slots that can be singular or plural, three alternatives containing "instead", and a few garbled frames. Six bills' opposition now speaks for a principled constituency rather than only insiders (Cameron's choices, two of them weighted between two phrases). The facets README records the rules. Report: `design/review/BILL_CONTENT_REVIEW_2026-11-04.md`.
