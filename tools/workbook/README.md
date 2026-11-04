@@ -50,6 +50,7 @@ Historical record, **not runnable as they stand** (they hard-code scratch paths 
 | `b4/` | Visitors per bill, Level Intro cues |
 | `b5/` | Opponent-specific cues |
 | `b6/` | Gap-filling batch: questions, transitions, ticker |
+| `b7/` | Opponent line expansion: frames filled into short pools, shared Ally lines (2026-11-04) |
 | `audits/` | Read-only audit scripts (content gaps, tone, depth, consistency) |
 
 Guides for writing the content itself: `design/CONTENT_GUIDE.md`, `design/EDITING_TEXT.md`.

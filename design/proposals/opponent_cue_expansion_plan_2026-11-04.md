@@ -2,7 +2,7 @@
 
 **Goal (Cameron):** in a bill level, no opponent line repeats within 30 opponent turns. The lines must also cover every opponent position (For, Against, Neutral) and every speaking style (Earnest, Emotional, Appeal, Data Driven, Divisive, Duplicitous).
 
-This is a plan only. Nothing is built until Cameron approves it.
+**Built 2026-11-04** (see the CHANGELOG section "Opponent lines: no repeats, every side, demanding allies"). Cameron chose about 1,000 lines, short pools only, demanding allies, and bill parts now. Building it added the player's own side and shared Ally lines, so the targets became 85% for bills and 75% for parts.
 
 ## Executive summary
 

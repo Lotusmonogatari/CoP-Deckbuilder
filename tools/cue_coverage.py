@@ -315,6 +315,8 @@ def main():
     ap.add_argument("--seed", type=int, default=11)
     ap.add_argument("--list", action="store_true", help="print every short pool")
     ap.add_argument("--json", help="write every short pool to this file")
+    ap.add_argument("--check", action="store_true",
+                    help="exit 1 if any pool is short (tools/verify.sh: --pct 85 --parts-pct 75)")
     args = ap.parse_args()
     world = World()
     rng = random.Random(args.seed)
@@ -337,6 +339,9 @@ def main():
         Path(args.json).write_text(json.dumps(
             [{"scope": k[0], "suit": k[1], "verb": k[2], "add": dict(v)} for k, v in {**bills, **parts}.items()],
             indent=1))
+    if args.check and (bills or parts or sum(ally.values())):
+        print("CUE COVERAGE: short pools found (see above)")
+        return 1
     return 0
 
 

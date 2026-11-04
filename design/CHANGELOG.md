@@ -3280,3 +3280,26 @@ Before this, bill lines were picked by speaking style only, so an MP or a party 
 - **People with no party** follow their organization's side.
 
 `DataDB.get_bill_opponent_cue_lines()` filters by side. The exporter rejects a bad Side value. `test_member_stance.gd` has 7 tests, including a real-data audit of every bill room. Report: `design/review/MEMBER_STANCE_REVIEW_2026-11-04.md`.
+
+## Opponent lines: no repeats, every side, demanding allies (2026-11-04, Cameron)
+
+Cameron asked for enough opponent bill lines that 30 opponent turns go by
+without a repeat, covering every side and every speaking style, and that an
+opponent who supports a bill can argue for it against a player who opposes it.
+The plan is `design/proposals/opponent_cue_expansion_plan_2026-11-04.md`.
+
+| Change | What it does |
+|---|---|
+| No-repeat picker | `OpponentCues.pick_unused()` remembers the lines a level has heard (`GameState.opponent_lines_said`, cleared when a level begins) and picks an unused one first; once a pool is used up, the line said longest ago comes back. |
+| The player's own side counts | `MemberStance.sides()` takes the player's lean. An opponent on the other side says Neutral lines plus their own side's (For or Against): a supporter argues for the bill against a player who opposes it, and the reverse. An opponent on the player's own side says Neutral lines plus **Ally** lines instead. Before this, 368 Against lines ("You would ask us to...") could reach a player who also opposed the bill. |
+| Ally lines | A new Side value. An Opponent Cues row with Ally lines and no Bill ID is shared by every bill and bill part (`DataDB._ally_opponent_cues`), and never joins the general pools. 84 lines, 24 rows. |
+| Coverage tool | `tools/cue_coverage.py` simulates 30-turn stretches of every bill level and of drafted and sponsored bills, with the player leaning either way, and lists short pools. `tools/verify.sh` runs it as a warning (a random simulation can shift by a line after an unrelated edit). |
+| New lines | 1,082 lines in 698 new Opponent Cues rows, filled from 145 frames (138 for written bills, 7 for bill parts) into only the short pools: written bills to 85% of stretches, bill parts to 75% (Cameron: about 1,000 lines, only short pools). All drafts; the frames are listed for review in `design/review/opponent_line_frames_2026-11-04.md`. |
+| Facets | BI30's and BI36's `local` phrases were clauses ("who votes in...", "which firms..."); now noun phrases, as the facets README requires. Older Player Cues built from BI30's old phrase still read "the right thing for who votes in your town's mayoral race" and are not changed here. |
+
+Bill parts carry attack lines only, as before; their gain and block moves
+still use the general pools. Tests: `test_opponent_cues.gd` (no repeats, the
+oldest line comes back, a new level forgets, shared Ally lines reach only a
+same-side speaker), `test_member_stance.gd` (the player's side decides argued
+or Ally lines; the real-data audit now checks every player lean). The
+generator is archived in `tools/workbook/archive/b7/`.
