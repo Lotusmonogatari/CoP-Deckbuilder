@@ -3264,3 +3264,9 @@ Before this, the stance choice came with no description of the bill. The Levels 
 Code: `scripts/rules/LevelPurpose.gd` and `scripts/rules/BillDossier.gd` (pure), `LevelIntroScreen` (card, button, dossier, purpose first), and `OfficeScreen` (a level with a purpose opens the intro). There are 14 new Text rows (`level_intro.read_bill`, `level_intro.for_it` / `against_it`, `dossier.*`) and header notes on the 8 new columns.
 
 Tests: `test_level_purpose.gd` (5, including "every level has a purpose"), `test_bill_dossier.gd` (3, including "every bill has a full dossier"). `level_intro_test` now checks that the purpose speaks first and that the card and dossier open on LV66. `loop_test` and `inventory_test` step through the intro screen. All text is a draft for Cameron.
+
+## Characters never mention levels or stages (2026-11-04, Cameron)
+
+- The 50 bill-level purpose lines said "...comes to a floor vote at the end of this level." They now say "...is heading for a floor vote in the National Assembly."
+- A scan of every spoken line (cues, transitions, thoughts, intro lines, visitor and vote cues, lobbyist lines, purposes) found no other game-mechanic use. Ordinary English stays: "at this stage" as a hedge, a festival's stage, a level voice.
+- New `test_spoken_no_game_terms.gd` fails on "this/next/each/every level or stage" in any spoken line. The rule is also in `design/CONTENT_GUIDE.md`.

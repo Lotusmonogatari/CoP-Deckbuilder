@@ -185,6 +185,8 @@ A stage asks `questions per turn x turn limit` questions **in total**, drawn onc
 | **Opponent-scoped** | That person only | Their party's line, organization's interest, role | invent history or relationships |
 | **Bill-scoped** (Bill ID, optional Stance) | That bill's level | The bill's subject; Support lines argue for it, Oppose against | state an opponent's party position as fact |
 
+**No game terms in spoken lines** (Cameron, 2026-11-04): no character says "this level", "the next stage" or similar; speak of the vote, the hearing or the week instead. `tests/test_spoken_no_game_terms.gd` enforces it.
+
 **The five Tone Guide rules** (universal lines; good practice everywhere; stage lines may break rule 2 for their own room, nothing breaks 3-5): (1) nine words or fewer; (2) universal setting; (3) no time references (now, today, again, still, already, always, never); (4) no invented history; (5) not a reply to what was just done. **Suit voice:** Earnest plain, first person, short; Emotional exclamations, faces, families; Appeal we/us/together/favours; Data Driven numbers, yes/no, no exclamations; Divisive us versus them, sides, labels; Duplicitous hedges, passive voice, ellipses. Party voice only in opponent-scoped (or party-limited) lines: Butsutou care and the vulnerable; Yezo Heritage heritage, language, land and sea; Frontier the regions over the cities; Five Point Independents the citizen against the machine; Keizaijiyuutou growth, markets and cost; Country Initiative order, custom, the nation. These are leanings from the Party Standing draft, not new canon.
 
 ### 7.2 Cue lookup (so you know what a row replaces)
