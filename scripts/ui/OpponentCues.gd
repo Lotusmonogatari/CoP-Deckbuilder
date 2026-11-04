@@ -13,9 +13,10 @@ extends RefCounted
 ## or suit_3 (10%), and occasionally (5%) a suit that isn't tagged to them
 ## at all — a debater going off their usual script. Cameron asked for this
 ## mix; it is presentation, not a rules decision, so it lives here rather
-## than behind a rules.json switch. WHICH LINE within that suit's pool IS
-## stable, the same as CardCues: worked out from the opponent, the verb, the
-## stage and the turn, so a replay of the same moment says the same thing.
+## than behind a rules.json switch. WHICH LINE within that suit's pool is a
+## line not yet said this level (pick_unused(), 2026-11-04), chosen among the
+## unused ones from the opponent, the verb, the stage and the turn; once a
+## pool is used up, the line said longest ago comes back.
 ##
 ## This is presentation. The rules never see a cue, and an opponent or suit
 ## with nothing written yet simply says nothing — BattleScreen falls back to
@@ -69,7 +70,8 @@ static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn:
 		if not leader_line.is_empty():
 			about_bill.append(leader_line)
 		if not about_bill.is_empty():
-			var picked := _index_for(opp_id, verb, stage_id, turn) % about_bill.size()
+			var picked := pick_unused(about_bill, GameState.opponent_lines_said,
+				_index_for(opp_id, verb, stage_id, turn))
 			return {"text": about_bill[picked], "line_id": "%s_%s_%d" % [opp_id, verb, picked + 1]}
 
 	# Stage-specific rows first, inside each lookup (2026-10-12): this
@@ -90,11 +92,35 @@ static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn:
 	if lines.is_empty():
 		return {"text": "", "line_id": ""}
 
-	var which := _index_for(opp_id, verb, stage_id, turn) % lines.size()
+	var which := pick_unused(lines, GameState.opponent_lines_said,
+		_index_for(opp_id, verb, stage_id, turn))
 	return {
 		"text": lines[which],
 		"line_id": "%s_%s_%d" % [opp_id, verb, which + 1],
 	}
+
+
+## Which of `lines` to say, and records it in `said` ({text: order said}).
+## A line not yet said this level comes first, chosen by `seed` among the
+## unused ones; when every line has been said, the one said longest ago is
+## reused (2026-11-04, Cameron: no repeats within a level while lines last).
+static func pick_unused(lines: Array, said: Dictionary, seed: int) -> int:
+	var unused: Array[int] = []
+	for i in lines.size():
+		if not said.has(lines[i]):
+			unused.append(i)
+	var picked := 0
+	if not unused.is_empty():
+		picked = unused[absi(seed) % unused.size()]
+	else:
+		for i in lines.size():
+			if int(said[lines[i]]) < int(said[lines[picked]]):
+				picked = i
+	var next_order := 0
+	for order: Variant in said.values():
+		next_order = maxi(next_order, int(order) + 1)
+	said[lines[picked]] = next_order
+	return picked
 
 
 ## Chance (0..1) that the style's shared pool speaks instead of an

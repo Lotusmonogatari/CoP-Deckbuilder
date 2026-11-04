@@ -278,6 +278,11 @@ var faced_people: Dictionary = {}
 ## avoid repeating them (2026-11-02). Not saved; cleared when a level begins.
 var transition_memory: Dictionary = {}
 
+## The opponent lines this level has already heard ({line text: order said}),
+## so OpponentCues can pick an unused one first (2026-11-04, Cameron). Not
+## saved; cleared when a level begins.
+var opponent_lines_said: Dictionary = {}
+
 ## Same shape, for the Party Steering Committee check-in (ST22).
 var steering_committee_active := false
 
@@ -2020,6 +2025,7 @@ func reset_segment_favorability() -> void:
 func begin_level(runner: LevelRunner) -> void:
 	level_runner = runner
 	transition_memory = {}
+	opponent_lines_said = {}
 	bill_stance = {}
 	bill_assist = BillAssist.empty()
 	mid_stage = false

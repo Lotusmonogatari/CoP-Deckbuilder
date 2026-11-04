@@ -21,6 +21,7 @@ func before_each() -> void:
 	_cues_before = DataDB.opponent_cues.duplicate(true)
 	_chance_before = DataDB.balance.get("opponent_cues_general_pool_chance", 0)
 	DataDB.balance["opponent_cues_general_pool_chance"] = 0
+	GameState.opponent_lines_said = {}
 
 
 func after_each() -> void:
@@ -112,7 +113,8 @@ func test_the_verb_picks_a_different_pool_than_the_suit_alone() -> void:
 	assert_eq(OpponentCues.for_move(opponent, "gain", "ST02", 1, 0.0)["text"], "Gain line.")
 
 
-func test_the_same_moment_always_picks_the_same_line() -> void:
+## On a fresh level (nothing said yet), the same moment picks the same line.
+func test_the_same_moment_on_a_fresh_level_picks_the_same_line() -> void:
 	DataDB.opponent_cues = [
 		{"cue_id": "OC01", "suit": "Earnest", "verb": "attack", "opponent_ids": [],
 			"cue_1": "Line one.", "cue_2": "Line two.", "cue_3": "Line three.",
@@ -122,9 +124,53 @@ func test_the_same_moment_always_picks_the_same_line() -> void:
 
 	var opponent := {"opp_id": "OP_ANY", "suit_1": "Earnest"}
 	var first := OpponentCues.for_move(opponent, "attack", "ST02", 3, 0.0)
+	GameState.opponent_lines_said = {}
 	var second := OpponentCues.for_move(opponent, "attack", "ST02", 3, 0.0)
 	assert_eq(first["text"], second["text"])
 	assert_eq(first["line_id"], second["line_id"])
+
+
+## No repeats within a level while lines last (2026-11-04, Cameron): 30 draws
+## from a 30-line pool say all 30 lines, even when every draw is the same moment.
+func test_thirty_draws_from_thirty_lines_never_repeat() -> void:
+	var lines: Array = []
+	for i in 30:
+		lines.append("Line %d." % i)
+	var said := {}
+	var heard := {}
+	for turn in 30:
+		heard[lines[OpponentCues.pick_unused(lines, said, 7)]] = true
+	assert_eq(heard.size(), 30)
+
+
+## When every line has been said, the one said longest ago comes back.
+func test_a_used_up_pool_reuses_the_line_said_longest_ago() -> void:
+	var lines: Array = ["A.", "B.", "C."]
+	var said := {}
+	var order: Array = []
+	for _i in 3:
+		order.append(lines[OpponentCues.pick_unused(lines, said, 1)])
+	assert_eq(lines[OpponentCues.pick_unused(lines, said, 1)], order[0])
+	assert_eq(lines[OpponentCues.pick_unused(lines, said, 1)], order[1])
+
+
+## Through for_move itself: five turns of a five-line pool say five lines, and
+## starting a level forgets them.
+func test_for_move_does_not_repeat_and_a_new_level_forgets() -> void:
+	DataDB.opponent_cues = [
+		{"cue_id": "OC01", "suit": "Earnest", "verb": "attack", "opponent_ids": [],
+			"cue_1": "Line one.", "cue_2": "Line two.", "cue_3": "Line three.",
+			"cue_4": "Line four.", "cue_5": "Line five."},
+	]
+	DataDB._build_lookups()
+	var opponent := {"opp_id": "OP_ANY", "suit_1": "Earnest"}
+	var heard := {}
+	for turn in 5:
+		heard[OpponentCues.for_move(opponent, "attack", "ST02", 1, 0.0)["text"]] = true
+	assert_eq(heard.size(), 5)
+	GameState.begin_level(LevelRunner.new({}))
+	assert_true(GameState.opponent_lines_said.is_empty())
+	GameState.end_level()
 
 
 func test_blank_cue_cells_are_dropped_not_counted_as_lines() -> void:
