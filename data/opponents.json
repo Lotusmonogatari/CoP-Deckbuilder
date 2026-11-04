@@ -47,17 +47,11 @@
     "suit_2": "Duplicitous",
     "suit_3": "Emotional",
     "intent_attack_range": {
-      "min": 4,
-      "max": 7
-    },
-    "intent_gain_range": {
       "min": 1,
-      "max": 4
+      "max": 2
     },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
+    "intent_gain_range": null,
+    "intent_block_range": null
   },
   {
     "opp_id": "OP67",
@@ -4964,17 +4958,11 @@
     "suit_2": "Divisive",
     "suit_3": "Duplicitous",
     "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
       "min": 1,
-      "max": 3
+      "max": 2
     },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
+    "intent_gain_range": null,
+    "intent_block_range": null
   },
   {
     "opp_id": "OP112",
@@ -5024,17 +5012,11 @@
     "suit_2": "Appeal",
     "suit_3": "Emotional",
     "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
       "min": 1,
-      "max": 3
-    }
+      "max": 2
+    },
+    "intent_gain_range": null,
+    "intent_block_range": null
   },
   {
     "opp_id": "OP113",
@@ -5084,17 +5066,11 @@
     "suit_2": "Divisive",
     "suit_3": "Appeal",
     "intent_attack_range": {
-      "min": 3,
-      "max": 5
+      "min": 1,
+      "max": 2
     },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
+    "intent_gain_range": null,
+    "intent_block_range": null
   },
   {
     "opp_id": "OP114",
@@ -5144,17 +5120,11 @@
     "suit_2": "Data Driven",
     "suit_3": "Duplicitous",
     "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_block_range": {
       "min": 1,
       "max": 2
-    }
+    },
+    "intent_gain_range": null,
+    "intent_block_range": null
   },
   {
     "opp_id": "OP115",
@@ -5204,17 +5174,11 @@
     "suit_2": "Emotional",
     "suit_3": "Divisive",
     "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
       "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 0,
       "max": 2
-    }
+    },
+    "intent_gain_range": null,
+    "intent_block_range": null
   },
   {
     "opp_id": "OP116",
@@ -5265,16 +5229,10 @@
     "suit_3": "Divisive",
     "intent_attack_range": {
       "min": 1,
-      "max": 3
+      "max": 2
     },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
+    "intent_gain_range": null,
+    "intent_block_range": null
   },
   {
     "opp_id": "OP117",
@@ -5324,17 +5282,11 @@
     "suit_2": "Duplicitous",
     "suit_3": "Appeal",
     "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
+      "min": 1,
       "max": 2
-    }
+    },
+    "intent_gain_range": null,
+    "intent_block_range": null
   },
   {
     "opp_id": "OP118",

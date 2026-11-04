@@ -3203,3 +3203,9 @@ From Cameron's playtest: some choices read as promises but cost nothing. Full ta
 - **After the turn.** The banner speaks under the name of the reporter who asked that turn's question, with what the move did underneath, for example "Aoba Shindou: 4 press tone taken from you." (`BattleScreen._on_end_turn()`). Elsewhere a written cue still replaces the narration; in a press conference both show, since a reporter's line never says what it did.
 - **Rules unchanged.** A reporter's gain and guard still do nothing to a single tone bar, and the banner says so ("... pressed the case and won nobody over.", "developed 3 guard").
 - **Test.** New click test `press_test` plays three real turns. It fails without the fix: blank row, no named move.
+
+## Journalists only attack, for 1-2 (2026-11-04, Cameron)
+
+- **Change.** The eight journalists (OP110-OP117) now have one move, an attack of 1-2, every turn. Their Gain and Block range cells in the Opponents tab are blank, which means "never does this". Before, attacks ranged from 1-3 up to 4-7, and each journalist also gained and guarded. In a press conference those two moves did nothing.
+- **Where it applies.** Everywhere the journalists appear (Cameron's choice): press conferences, Media Ambush (ST19) and the bill-specific press and ambush rooms. Nothing else changed, because no other opponent has the Journalist role.
+- **Balance check.** In the bot's stage trial (a fully equipped player, 2 x 60 fights) ST04 won 100% before and after; ST19 went from 98% to 100%. That bot is too strong to show the difference; newer players will feel it most.

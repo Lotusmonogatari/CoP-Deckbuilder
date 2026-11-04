@@ -757,3 +757,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Hosted events: a reply that promises nothing (2026-11-04, Cameron)
 - In-universe content review (2026-11-04, Cameron)
 - Press conference: the reporters' moves are shown (2026-11-04, Cameron)
+- Journalists only attack, for 1-2 (2026-11-04, Cameron)
