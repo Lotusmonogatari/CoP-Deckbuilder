@@ -57,15 +57,48 @@ func test_a_promise_falling_due_unkept_is_broken() -> void:
 	assert_lte(int(GameState.meta.get("Reputation", 0)), reputation)
 
 
-func test_a_promise_falling_due_during_a_stage_is_broken_when_it_ends() -> void:
-	# Mechanics audit (2026-10-31): a stage's own hours used to move the clock
-	# without checking promises, so one could sit overdue until the next event.
+## Cameron, 2026-11-04: deadlines pause while a level is played, since the
+## Office (where promises are kept) cannot be reached mid-level. A promise made
+## before an 11-hour level, due in 10, is still owed afterwards, due 10 hours
+## after the level ends.
+func test_a_level_pauses_a_promise_made_before_it() -> void:
 	GameState.pay_commitments([ITEM], "A test", "")
 	GameState.begin_level(LevelRunner.new({"level_id": "LV_PR", "stages": [
 		{"seq": 1, "stage_id": "ST05", "mode": "Combat", "time_units": 11}]}))
 	GameState.finish_stage(LevelRunner.WON, 0, [], false, 0)
-	assert_eq(GameState.promises.size(), 0)
+	assert_eq(GameState.promises.size(), 1, "not broken during the level")
+	GameState.end_level()
+	assert_eq(GameState.promises.size(), 1, "not broken when it ends either")
+	assert_eq(Promises.hours_left(GameState.promises[0], GameState.time_units), 10)
+	GameState.spend_hours(11)
+	assert_eq(GameState.promises.size(), 0, "the clock runs again in the Office")
 	assert_eq(GameState.promises_broken_unseen.size(), 1)
+
+
+## A promise made during a level (Office Hours) counts from the level's end.
+func test_a_promise_made_during_a_level_counts_from_its_end() -> void:
+	GameState.begin_level(LevelRunner.new({"level_id": "LV_PR", "stages": [
+		{"seq": 1, "stage_id": "ST05", "mode": "Combat", "time_units": 6},
+		{"seq": 2, "stage_id": "ST05", "mode": "Combat", "time_units": 20}]}))
+	GameState.finish_stage(LevelRunner.WON, 0, [], false, 0)
+	GameState.pay_commitments([ITEM], "A test", "")
+	GameState.finish_stage(LevelRunner.WON, 0, [], false, 0)
+	GameState.end_level()
+	assert_eq(GameState.promises.size(), 1)
+	assert_eq(Promises.hours_left(GameState.promises[0], GameState.time_units), 10)
+
+
+## An abandoned level resumes the deadlines too, and the pause is saved.
+func test_abandoning_resumes_deadlines_and_the_pause_is_saved() -> void:
+	GameState.pay_commitments([ITEM], "A test", "")
+	GameState.begin_level(LevelRunner.new({"level_id": "LV_PR", "stages": [
+		{"seq": 1, "stage_id": "ST05", "mode": "Combat", "time_units": 4},
+		{"seq": 2, "stage_id": "ST05", "mode": "Combat", "time_units": 4}]}))
+	assert_true(GameState.to_save().has("level_clock_started"))
+	GameState.finish_stage(LevelRunner.WON, 0, [], false, 0)
+	GameState.abandon_level()
+	assert_eq(GameState.level_clock_started, -1)
+	assert_eq(Promises.hours_left(GameState.promises[0], GameState.time_units), 10)
 
 
 func test_promises_are_saved_with_the_run() -> void:

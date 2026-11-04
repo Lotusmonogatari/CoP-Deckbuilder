@@ -3046,7 +3046,8 @@ func _draft_toggle(component_id: String) -> void:
 
 func _on_draft_go() -> void:
 	if not GameState.start_draft(_draft_ids):
-		_report.text = Text.say("draft.cannot_start")
+		_report.text = GameState.last_level_start_refusal if not GameState.last_level_start_refusal.is_empty() \
+			else Text.say("draft.cannot_start")
 		_draft_panel.close()
 		return
 	_draft_panel.close()
@@ -3057,7 +3058,8 @@ func _on_draft_go() -> void:
 func _on_request_accept(patron_bill_id: String) -> void:
 	if not GameState.start_patron_level(patron_bill_id, _request_replace, _request_with):
 		_request_panel.close()
-		_report.text = Text.say("request.cannot_start")
+		_report.text = GameState.last_level_start_refusal if not GameState.last_level_start_refusal.is_empty() \
+			else Text.say("request.cannot_start")
 		return
 	_request_panel.close()
 	_levels_panel.close()

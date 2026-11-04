@@ -3303,3 +3303,28 @@ oldest line comes back, a new level forgets, shared Ally lines reach only a
 same-side speaker), `test_member_stance.gd` (the player's side decides argued
 or Ally lines; the real-data audit now checks every player lean). The
 generator is archived in `tools/workbook/archive/b7/`.
+
+## Promise deadlines pause during a level; a level must end within the work week (2026-11-04, Cameron)
+
+| Change | What it does |
+|---|---|
+| Promises pause | The Office, where promises are kept, cannot be reached mid-level, so promise deadlines no longer run while a level is played. `GameState.level_clock_started` (saved) marks the level's start; `_break_overdue_promises()` waits while it is set. When the level ends or is abandoned, `Promises.resume_after_level()` moves each due time on by the hours the level took (from the level's start, or from when the promise was made if it was made during the level, e.g. in Office Hours), then any still overdue break. Each promise now records `made_at`. |
+| Work-week rule | `WeekCalendar.level_refusal()`: on a weekday a level must end within the hours left in the work week ("Too long for the hours left"); before this the extra hours spilled away. The weekend rule (flagged levels that fit) is unchanged. Sponsored and drafted bill levels, which had no calendar check, now get the same work-week check (`GameState.work_week_level_refusal()`); the Office shows the reason. |
+
+No written level is longer than a week (the longest is LV19, 35 hours), so none
+is blocked outright; the rule decides the latest day each can start (at the
+start of the day: Monday 40 hours left, Tuesday 32, Wednesday 24, Thursday 16,
+Friday 8):
+
+| Latest start | Levels |
+|---|---|
+| Monday only | 3: LV19 (35 h), LV24 (34), LV30 (33) |
+| Up to Tuesday | 5: LV25 (32), LV23 (31), LV18 (31), LV10 (27), LV29 (25) |
+| Up to Wednesday | 23 (17-24 h) |
+| Up to Thursday | 46 (9-16 h) |
+| Any weekday | 24 (8 h or less) |
+
+Still able to run past Friday: hours added once a level is under way (a Town
+Hall or Steering Committee check-in inserted by a crisis, or a visitor choice
+that costs hours). Those hours spill away as before. Tests:
+`test_week_calendar.gd`, `test_promises.gd`, `test_patron_level.gd`.

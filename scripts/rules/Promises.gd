@@ -28,6 +28,7 @@ static func make(entry: Dictionary, now: int, default_hours: int, fallback_org: 
 		"item_id": str(entry.get("item_id", "")),
 		"hours": int(entry.get("amount", 0)),
 		"due_at": now + (int(within) if within != null else default_hours),
+		"made_at": now,
 		"for_org": org if not org.is_empty() else fallback_org,
 		"source": source,
 	}
@@ -49,6 +50,21 @@ static func terms_of(row: Dictionary) -> Dictionary:
 ## True when a promise carries its own `key` ("kept" or "broken") effects.
 static func has_own(promise: Dictionary, key: String) -> bool:
 	return promise.get(key) is Array and not (promise[key] as Array).is_empty()
+
+
+## Promise deadlines pause while a level is played (Cameron, 2026-11-04): the
+## Office, where promises are kept, cannot be reached mid-level. When the level
+## ends, each promise's due time moves on by the hours the level took since the
+## level began, or since the promise was made if it was made during the level.
+## Changes `promises` in place.
+static func resume_after_level(promises: Array, level_started_at: int, now: int) -> void:
+	for promise: Variant in promises:
+		if not (promise is Dictionary):
+			continue
+		var made := int((promise as Dictionary).get("made_at", level_started_at))
+		var paused := now - maxi(made, level_started_at)
+		if paused > 0:
+			promise["due_at"] = int(promise.get("due_at", 0)) + paused
 
 
 ## Game hours left before a promise falls due (never below zero).

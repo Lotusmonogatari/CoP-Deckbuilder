@@ -393,3 +393,15 @@ func test_a_visit_level_lists_the_visit_and_the_fight_after_the_hearing() -> voi
 		assert_eq(str(level["stage_3"]), MpVisit.FIGHT_STAGE)
 		return
 	fail_test("no seed in 40 gave this pair a member visit")
+
+
+## Cameron, 2026-11-04: a sponsored bill's level must end within the work week
+## too; refused with a reason, nothing changes, and it starts on a new week.
+func test_a_patron_level_must_end_within_the_work_week() -> void:
+	GameState.calendar = WeekCalendar.advance(WeekCalendar.fresh(), 39, GameState.calendar_config())
+	assert_false(GameState.start_patron_level("PB051"))
+	assert_ne(GameState.last_level_start_refusal, "")
+	assert_false(GameState.is_in_level())
+	GameState.calendar = WeekCalendar.fresh()
+	assert_true(GameState.start_patron_level("PB051"))
+	assert_eq(GameState.last_level_start_refusal, "")

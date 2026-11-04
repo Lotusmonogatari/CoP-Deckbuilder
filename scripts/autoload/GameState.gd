@@ -332,6 +332,12 @@ var promises: Array = []
 var promises_broken_unseen: Array = []
 ## A running number for promise IDs.
 var promise_serial := 0
+## The clock when the level in progress began, or -1 between levels. Promise
+## deadlines are paused while it is set (Promises.resume_after_level()). Saved.
+var level_clock_started := -1
+## Why the last patron or drafted level could not start on the calendar, as a
+## sentence; "" when the reason was something else. Not saved.
+var last_level_start_refusal := ""
 ## Follow-up events a choice scheduled (2026-10-31): [{event_id, due_at}], each
 ## shown at the first Office visit on or after its time.
 var scheduled_events: Array = []
@@ -507,6 +513,7 @@ const _SAVED_FIELDS := [
 	"patron_requests", "enacted_components", "patron_runtime", "patron_composed", "patron_armed",
 	"bill_assist", "patron_news", "patron_drafts", "draft_counter", "last_draft_at",
 	"promises", "promises_broken_unseen", "promise_serial", "scheduled_events",
+	"level_clock_started",
 ]
 
 
@@ -663,6 +670,7 @@ func reset_crisis_triggers() -> void:
 	promises = []
 	promises_broken_unseen = []
 	promise_serial = 0
+	level_clock_started = -1
 	scheduled_events = []
 	event_roll_due = false
 	last_decay_at = 0
@@ -1628,6 +1636,20 @@ func level_calendar_refusal(level: Dictionary) -> String:
 	return ""
 
 
+## Why a sponsored or drafted bill's level cannot start now: the work week is
+## over, or the level would not end within it. "" when it can. (The weekend is
+## not checked here; those levels have never asked for a weekend flag.)
+func work_week_level_refusal(level: Dictionary) -> String:
+	var cfg := calendar_config()
+	if in_weekend():
+		return ""
+	if WeekCalendar.is_full(calendar, cfg):
+		return Text.say("calendar.refuse_week_over")
+	if level_hours(level) > WeekCalendar.hours_left(calendar, cfg):
+		return Text.say("calendar.refuse_too_long")
+	return ""
+
+
 ## Time passing with no stage played (hours skipped at a week's end).
 func _advance_clock(hours: int) -> void:
 	time_units += maxi(0, hours)
@@ -1651,6 +1673,10 @@ func check_crisis_triggers() -> void:
 ## to loses standing and Reputation drops (Balance levers), and the Office says
 ## so next time it opens.
 func _break_overdue_promises() -> void:
+	# Paused while a level is played: the Office, where promises are kept,
+	# cannot be reached until it ends (Cameron, 2026-11-04).
+	if level_clock_started >= 0:
+		return
 	for promise: Dictionary in Promises.overdue(promises, time_units):
 		promises.erase(promise)
 		var org := str(promise.get("for_org", ""))
@@ -1666,6 +1692,16 @@ func _break_overdue_promises() -> void:
 		if rep != 0:
 			_under_cause(cause, func() -> void: _apply_meta_reward("Reputation", rep))
 		promises_broken_unseen.append(promise)
+
+
+## The level is over: promise deadlines move on by the hours it took, then any
+## that are still overdue break.
+func _resume_promise_deadlines() -> void:
+	if level_clock_started < 0:
+		return
+	Promises.resume_after_level(promises, level_clock_started, time_units)
+	level_clock_started = -1
+	_break_overdue_promises()
 
 
 ## A promise's own kept or broken effects (Event Choices' Promise Kept /
@@ -2023,6 +2059,8 @@ func reset_segment_favorability() -> void:
 
 ## Called by the Office when the player starts a level.
 func begin_level(runner: LevelRunner) -> void:
+	_resume_promise_deadlines()
+	level_clock_started = time_units
 	level_runner = runner
 	transition_memory = {}
 	opponent_lines_said = {}
@@ -3998,6 +4036,7 @@ func _resolve_delta(delta: Variant) -> int:
 ## Clears the level, on the way back to the Office.
 func end_level() -> void:
 	level_runner = null
+	_resume_promise_deadlines()
 	patron_runtime = {}
 	bill_assist = BillAssist.empty()
 	bill_stance = {}
@@ -4033,6 +4072,7 @@ func abandon_level() -> void:
 		patron_runtime = {}
 	bill_assist = BillAssist.empty()
 	level_runner = null
+	_resume_promise_deadlines()
 	bill_stance = {}
 	level_bonuses = {}
 	shop_bought_this_level = {}
@@ -4111,8 +4151,14 @@ func start_patron_level(patron_bill_id: String, replace: String = "", with_id: S
 	var current := str((patron_requests.get(patron_bill_id, {}) as Dictionary).get("status", ""))
 	if current in [PatronRequests.PASSED, PatronRequests.FAILED, PatronRequests.DECLINED, PatronRequests.LAPSED]:
 		return false
+	last_level_start_refusal = ""
 	var built := PatronLevel.register(patron_bill_id, enacted_components, replace, with_id)
 	if not built["ok"]:
+		return false
+	# The same rule as a written level: it must end within the work week
+	# (Cameron, 2026-11-04). Sponsored and drafted bills are work-week levels.
+	last_level_start_refusal = work_week_level_refusal(built["level"] as Dictionary)
+	if not last_level_start_refusal.is_empty():
 		return false
 	var tries := int((patron_requests.get(patron_bill_id, {}) as Dictionary).get("tries", 0))
 	patron_requests[patron_bill_id] = {

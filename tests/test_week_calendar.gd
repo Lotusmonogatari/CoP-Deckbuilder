@@ -72,8 +72,16 @@ func test_weekend_takes_only_flagged_levels_that_fit() -> void:
 	assert_eq(WeekCalendar.level_refusal(weekend, _cfg, 9, true), WeekCalendar.REFUSE_TOO_LONG)
 
 
-func test_weekdays_take_any_level_until_the_week_is_full() -> void:
+## Cameron, 2026-11-04: a level must end within the work week; before this,
+## its extra hours spilled away.
+func test_weekdays_take_only_levels_that_end_within_the_week() -> void:
 	assert_eq(WeekCalendar.level_refusal(WeekCalendar.fresh(), _cfg, 35, false), "")
+	assert_eq(WeekCalendar.level_refusal(WeekCalendar.fresh(), _cfg, 40, false), "", "exactly the week fits")
+	assert_eq(WeekCalendar.level_refusal(WeekCalendar.fresh(), _cfg, 41, false), WeekCalendar.REFUSE_TOO_LONG)
+	# Tuesday with two hours left in the day: 26 left in the week.
+	var tuesday := WeekCalendar.advance(WeekCalendar.fresh(), 14, _cfg)
+	assert_eq(WeekCalendar.level_refusal(tuesday, _cfg, 26, false), "")
+	assert_eq(WeekCalendar.level_refusal(tuesday, _cfg, 31, false), WeekCalendar.REFUSE_TOO_LONG)
 	var full := WeekCalendar.advance(WeekCalendar.fresh(), 40, _cfg)
 	assert_eq(WeekCalendar.level_refusal(full, _cfg, 2, true), WeekCalendar.REFUSE_WEEK_OVER)
 

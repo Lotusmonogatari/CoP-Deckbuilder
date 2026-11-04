@@ -121,17 +121,17 @@ static func go_home(state: Dictionary, cfg: Dictionary) -> Dictionary:
 
 
 ## Why a level of `level_hours` hours (flagged weekend-OK or not) cannot be
-## started now, or "". Weekdays take any level and let the extra hours spill
-## away; the weekend takes only flagged levels that fit in what is left.
+## started now, or "". A level must end within the hours left: on a weekday,
+## within the work week (Cameron, 2026-11-04; before this the extra hours
+## spilled away), and at the weekend, within the weekend, flagged levels only.
 static func level_refusal(state: Dictionary, cfg: Dictionary, level_hours: int,
 		weekend_ok: bool) -> String:
 	if is_full(state, cfg):
 		return REFUSE_WEEK_OVER if str(state["phase"]) == WORK else REFUSE_TOO_LONG
-	if str(state["phase"]) == WEEKEND:
-		if not weekend_ok:
-			return REFUSE_NOT_WEEKEND
-		if level_hours > hours_left(state, cfg):
-			return REFUSE_TOO_LONG
+	if str(state["phase"]) == WEEKEND and not weekend_ok:
+		return REFUSE_NOT_WEEKEND
+	if level_hours > hours_left(state, cfg):
+		return REFUSE_TOO_LONG
 	return ""
 
 
