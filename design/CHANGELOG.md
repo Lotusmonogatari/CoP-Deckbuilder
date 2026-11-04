@@ -3250,3 +3250,17 @@ New `StatuteBook.effect_chips()` builds the outcome chips for both screens. New 
 ## Bill content review: grammar, coherence and honesty (2026-11-04, Cameron)
 
 About 1,300 workbook cells were rewritten across Player Cues, Opponent Cues, Stage Questions, Transition Dialogue, Level Intro Thoughts and Vote Influence Cues, plus the bill facets. The causes were all at the template level: a cost slot used for people, non-people "gain" groups, "who/what" clauses after "for", verbs right after slots that can be singular or plural, three alternatives containing "instead", and a few garbled frames. Six bills' opposition now speaks for a principled constituency rather than only insiders (Cameron's choices, two of them weighted between two phrases). The facets README records the rules. Report: `design/review/BILL_CONTENT_REVIEW_2026-11-04.md`.
+
+## Levels explain themselves: purpose line, bill card, Read the Bill (2026-11-04, Cameron)
+
+Before this, the stance choice came with no description of the bill. The Levels tab's Description only repeated the level name, and the 51 levels without a bill had no purpose text at all. All three designs are built, as Cameron chose:
+
+| Piece | What the player sees | Data |
+|---|---|---|
+| **Purpose line** | The first line on every level's intro screen: what the level is for. Spoken by the staff member in the level's Purpose Speaker role, else the first hired staff member, else the player's own thought. Every level now opens on the intro screen. | New Levels columns **Level Purpose** and **Purpose Speaker**, drafted for all 101 levels (bill levels from a template naming who is for it and who is wary; the others hand-written) |
+| **Bill card** | Above the lean buttons: the bill's name and description, then the sponsor and party line as before, then "For it / Against it" organization chips (replaced by the stance chips once a lean is picked) | Existing Bill Description |
+| **Read the Bill** | A button that opens a page: what it does, who gains, who pays, the case for, the case against, the main risk, the middle ground, and where each party stands | New Floor Vote Bills columns **Who Gains, Who Pays, Case For, Case Against, Main Risk, Middle Ground**, filled from the reviewed bill phrases. Case For is new writing for all 50 bills. A blank cell skips its section. |
+
+Code: `scripts/rules/LevelPurpose.gd` and `scripts/rules/BillDossier.gd` (pure), `LevelIntroScreen` (card, button, dossier, purpose first), and `OfficeScreen` (a level with a purpose opens the intro). There are 14 new Text rows (`level_intro.read_bill`, `level_intro.for_it` / `against_it`, `dossier.*`) and header notes on the 8 new columns.
+
+Tests: `test_level_purpose.gd` (5, including "every level has a purpose"), `test_bill_dossier.gd` (3, including "every bill has a full dossier"). `level_intro_test` now checks that the purpose speaks first and that the card and dossier open on LV66. `loop_test` and `inventory_test` step through the intro screen. All text is a draft for Cameron.

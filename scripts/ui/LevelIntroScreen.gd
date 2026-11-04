@@ -4,7 +4,7 @@ extends Control
 ## level speak it over the Office background before the level begins.
 ##
 ## OfficeScreen routes here when LevelIntroCues.resolve() comes back
-## non-empty OR the level names a Floor Vote bill (StageRouting.
+## non-empty, the level has a Level Purpose (2026-11-04), OR it names a Floor Vote bill (StageRouting.
 ## LEVEL_INTRO_SCENE) — a level with neither goes straight to its first
 ## stage instead, so this screen never has to show an empty room. The
 ## `level_id` export exists only for running this scene on its own from the
@@ -47,6 +47,8 @@ var _bill: Dictionary = {}
 var _thought_text := ""
 var _lean_shown := false
 var _lean_resolved := false
+## The "Read the bill" page (2026-11-04, Cameron), built on first use.
+var _dossier: Overlay = null
 
 
 func _ready() -> void:
@@ -75,6 +77,17 @@ func _ready() -> void:
 	var lid := str(GameState.level_runner.level.get("level_id", "")) \
 		if GameState.is_in_level() else level_id
 	_cues = LevelIntroCues.resolve(DataDB.level_intros, lid, GameState.staff_hired, DataDB.staff)
+	# What the level is for speaks first (2026-11-04, Cameron): from the staff
+	# member in the level's Purpose Speaker role, the first hired staff member,
+	# or the player's own thought. A level with no Purpose cell skips it.
+	var purpose := LevelPurpose.resolve(DataDB.get_level(lid), GameState.staff_hired, DataDB.staff)
+	if not purpose.is_empty():
+		var by_player := str(purpose["staff_id"]).is_empty()
+		_cues.push_front({
+			"staff_id": str(DataDB.player.get("player_id", "")) if by_player else str(purpose["staff_id"]),
+			"staff_name": str(DataDB.player.get("name_en", "")) if by_player else str(purpose["staff_name"]),
+			"text": str(purpose["text"]),
+		})
 	_bill = DataDB.get_floor_vote(lid)
 	# The player's thought speaks on any level whose intro shows (2026-10-18),
 	# not only on a bill level; one of the level's rows is picked at random.
@@ -142,7 +155,9 @@ func _show_lean_choice() -> void:
 		_show_player_speaker()
 		(get_node("Safe/Column/TopSpacer") as Control).size_flags_vertical = Control.SIZE_FILL
 		_on_lean_chosen(BillLean.SUPPORT)
+		_add_read_button()
 		return
+	_show_bill_card()
 	var note := StanceLines.intro_lines(_bill)
 	# What a lean is worth, from the Balance tab (2026-11-04, Cameron).
 	note.append(Text.say("level_intro.stakes", {
@@ -183,6 +198,10 @@ func _on_lean_chosen(lean: String) -> void:
 			Text.say("record.cause_lean", {"bill": str(_bill.get("bill_name", ""))}))
 
 	_lean_row.visible = false
+	# The stance chips below replace the card's For it / Against it rows.
+	var sides := _lean_row.get_parent().get_node_or_null("BillSides")
+	if sides != null:
+		sides.free()
 	_stance_note().text = StanceLines.stance_line()
 	_stance_note().visible = not _stance_note().text.is_empty()
 	_show_stance_chips()
@@ -228,3 +247,97 @@ func _stance_note() -> Label:
 		_lean_row.get_parent().add_child(note)
 		_lean_row.get_parent().move_child(note, _lean_row.get_index())
 	return note
+
+
+# ---------------------------------------------------------------------------
+# The bill card and the dossier (2026-11-04, Cameron)
+# ---------------------------------------------------------------------------
+
+## Above the stance note: the bill's name and what it does. Below it: who is
+## for and against it, and a "Read the bill" button for the full page.
+func _show_bill_card() -> void:
+	var column := _lean_row.get_parent()
+	var card := VBoxContainer.new()
+	card.name = "BillCard"
+	var title := UiKit.heading(str(_bill.get("bill_name", "")))
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	card.add_child(title)
+	var description := str(_bill.get("bill_description") if _bill.get("bill_description") != null else "")
+	if not description.is_empty():
+		var line := UiKit.line(description)
+		line.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		card.add_child(line)
+	column.add_child(card)
+	column.move_child(card, _stance_note().get_index())
+
+	var sides := BillStance.sides(_bill, DataDB.law_effects, GameState._party_tier_booster_ids())
+	var box := VBoxContainer.new()
+	box.name = "BillSides"
+	for group: Array in [[sides.get("supporters", []), true, Text.say("level_intro.for_it")],
+			[sides.get("opponents", []), false, Text.say("level_intro.against_it")]]:
+		if (group[0] as Array).is_empty():
+			continue
+		var heading := UiKit.line(str(group[2]), "SmallLabel")
+		heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		box.add_child(heading)
+		var chips := OrgChip.side_row(group[0], bool(group[1]))
+		chips.alignment = FlowContainer.ALIGNMENT_CENTER
+		box.add_child(chips)
+	if box.get_child_count() > 0:
+		column.add_child(box)
+		column.move_child(box, _stance_note().get_index() + 1)
+	else:
+		box.free()
+	_add_read_button()
+
+
+func _add_read_button() -> void:
+	var column := _lean_row.get_parent()
+	if column.get_node_or_null("ReadBill") != null or BillDossier.sections(_bill).is_empty():
+		return
+	var button := Button.new()
+	button.name = "ReadBill"
+	button.text = Text.say("level_intro.read_bill")
+	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	button.pressed.connect(_open_dossier)
+	column.add_child(button)
+	column.move_child(button, _lean_row.get_index())
+
+
+func _open_dossier() -> void:
+	if _dossier == null:
+		_dossier = Overlay.new()
+		_dossier.name = "BillDossier"
+		add_child(_dossier)
+	var rows: Array[Control] = []
+	for section: Dictionary in BillDossier.sections(_bill):
+		rows.append(UiKit.heading(_dossier_heading(str(section["field"]))))
+		rows.append(UiKit.line(str(section["text"])))
+	var leans := BillDossier.party_leans(_bill, DataDB.parties)
+	var lean_lines: Array[String] = []
+	for disposition: String in ["Supportive", "Opposed", "Neutral"]:
+		var names: Array = leans[disposition]
+		if names.is_empty():
+			continue
+		var joined := ", ".join(PackedStringArray(names))
+		match disposition:
+			"Supportive": lean_lines.append(Text.say("dossier.supportive", {"parties": joined}))
+			"Opposed": lean_lines.append(Text.say("dossier.opposed", {"parties": joined}))
+			_: lean_lines.append(Text.say("dossier.neutral", {"parties": joined}))
+	if not lean_lines.is_empty():
+		rows.append(UiKit.heading(Text.say("dossier.parties")))
+		for line: String in lean_lines:
+			rows.append(UiKit.line(line))
+	_dossier.open(str(_bill.get("bill_name", "")), rows)
+
+
+## Each section's heading, key by key so the exporter can see every one.
+func _dossier_heading(field: String) -> String:
+	match field:
+		"bill_description": return Text.say("dossier.what")
+		"who_gains": return Text.say("dossier.who_gains")
+		"who_pays": return Text.say("dossier.who_pays")
+		"case_for": return Text.say("dossier.case_for")
+		"case_against": return Text.say("dossier.case_against")
+		"main_risk": return Text.say("dossier.main_risk")
+		_: return Text.say("dossier.middle_ground")

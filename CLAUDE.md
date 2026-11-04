@@ -762,3 +762,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Law, neglect and staff-audience wording; staff audience rewards become organizations (2026-11-04, Cameron)
 - Stance, vote and outcome rewards shown together (2026-11-04, Cameron)
 - Bill content review: grammar, coherence and honesty (2026-11-04, Cameron)
+- Levels explain themselves: purpose line, bill card, Read the Bill (2026-11-04, Cameron)

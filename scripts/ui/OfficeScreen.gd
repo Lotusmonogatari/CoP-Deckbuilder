@@ -3298,7 +3298,9 @@ func _on_start() -> void:
 	var cues := LevelIntroCues.resolve(DataDB.level_intros, level_id,
 		GameState.staff_hired, DataDB.staff)
 	var has_bill := not DataDB.get_floor_vote(level_id).is_empty()
-	if cues.is_empty() and not has_bill:
+	# Every level with a Level Purpose opens on it (2026-11-04, Cameron).
+	var has_purpose := not LevelPurpose.text_for(DataDB.get_level(level_id)).is_empty()
+	if cues.is_empty() and not has_bill and not has_purpose:
 		get_tree().change_scene_to_file(StageRouting.scene_for(runner.current_stage()))
 	else:
 		get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)

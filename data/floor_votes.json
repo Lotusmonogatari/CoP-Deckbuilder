@@ -11,6 +11,12 @@
     "vote_requirement": null,
     "proponent_party": "PT02",
     "stakeholders_override": null,
+    "who_gains": "Ainu families and language teachers",
+    "who_pays": "Town officials and landowners",
+    "case_for": "It keeps a living language in daily use while there are still fluent speakers to teach it.",
+    "case_against": "It divides towns along ethnic lines.",
+    "main_risk": "Disputes over ancestral land claims.",
+    "middle_ground": "A language-school fund with no land process.",
     "positions": [
       {
         "bill_id": "BI01",
@@ -86,6 +92,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Rice and dairy farmers",
+    "who_pays": "Taxpayers and grocery shoppers",
+    "case_for": "It keeps family farms afloat through bad years so the island does not depend on imported food.",
+    "case_against": "It rewards big farms and raises prices.",
+    "main_risk": "Overproduction paid for by the treasury.",
+    "middle_ground": "A temporary support fund for bad years.",
     "positions": [
       {
         "bill_id": "BI02",
@@ -161,6 +173,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "New employers and the workers they hire",
+    "who_pays": "Workers under looser labor rules",
+    "case_for": "It brings employers and jobs to towns that have been losing both, under rules that are clear from day one.",
+    "case_against": "It carves out a second set of rules for the rich.",
+    "main_risk": "A race to the bottom on labor protections.",
+    "middle_ground": "A single pilot zone with a review.",
     "positions": [
       {
         "bill_id": "BI03",
@@ -236,6 +254,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Commuters, freight shippers and tourist towns",
+    "who_pays": "Taxpayers",
+    "case_for": "It ties the north to the rest of the country faster and gives freight a reliable route.",
+    "case_against": "It spends billions to save minutes.",
+    "main_risk": "Cost overruns on tunnels and track.",
+    "middle_ground": "Freight upgrades first, with passengers in a second step.",
     "positions": [
       {
         "bill_id": "BI04",
@@ -311,6 +335,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Island residents and coast guard crews",
+    "who_pays": "Taxpayers",
+    "case_for": "It protects island residents and fishing crews in waters where a neighbor tests our resolve.",
+    "case_against": "It provokes a neighbor we need.",
+    "main_risk": "Escalating tension with Russia.",
+    "middle_ground": "Shared patrols with allies.",
     "positions": [
       {
         "bill_id": "BI05",
@@ -386,6 +416,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Employers short of workers",
+    "who_pays": "Local workers whose wages could slip",
+    "case_for": "It fills jobs that are going empty on farms, in harbors and on building sites.",
+    "case_against": "It undercuts local wages.",
+    "main_risk": "Exploitation of workers and strained housing.",
+    "middle_ground": "A smaller visa quota for seasonal work only.",
     "positions": [
       {
         "bill_id": "BI06",
@@ -461,6 +497,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Rural towns and households that lost power",
+    "who_pays": "Utility customers",
+    "case_for": "It keeps the lights on after the next quake and builds power that does not depend on imports.",
+    "case_against": "It buys power that costs more.",
+    "main_risk": "Projects delayed by local objections.",
+    "middle_ground": "Backup generators for hospitals first.",
     "positions": [
       {
         "bill_id": "BI07",
@@ -536,6 +578,12 @@
     "vote_requirement": null,
     "proponent_party": "PT02",
     "stakeholders_override": null,
+    "who_gains": "Pensioners and care workers",
+    "who_pays": "Shoppers and small shops",
+    "case_for": "It pays for pensions and care as the population ages, instead of passing the bill to the next generation.",
+    "case_against": "It taxes the poor to pay for the old.",
+    "main_risk": "Weaker spending in poorer households.",
+    "middle_ground": "A tax on the largest incomes.",
     "positions": [
       {
         "bill_id": "BI08",
@@ -611,6 +659,12 @@
     "vote_requirement": null,
     "proponent_party": "PT02",
     "stakeholders_override": null,
+    "who_gains": "Prefectural governments and local officials",
+    "who_pays": "People in poorer prefectures",
+    "case_for": "It lets regions set budgets for their own needs instead of waiting on the capital.",
+    "case_against": "It lets wealthy areas keep their wealth.",
+    "main_risk": "Gaps between rich and poor prefectures.",
+    "middle_ground": "Devolving one budget line as a trial.",
     "positions": [
       {
         "bill_id": "BI09",
@@ -686,6 +740,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Women candidates and their voters",
+    "who_pays": "Candidates who might be passed over",
+    "case_for": "It gives voters a fairer choice of candidates and opens politics to people long kept out.",
+    "case_against": "It treats candidates as numbers.",
+    "main_risk": "Qualified candidates passed over.",
+    "middle_ground": "Voluntary party targets with public reports.",
     "positions": [
       {
         "bill_id": "BI10",
@@ -761,6 +821,12 @@
     "vote_requirement": null,
     "proponent_party": "PT04",
     "stakeholders_override": null,
+    "who_gains": "Ferry operators, fishers and border towns",
+    "who_pays": "Taxpayers",
+    "case_for": "It gives both sides of the strait one place to settle shipping, fishing and customs problems before they grow.",
+    "case_against": "It hands control of our waters to talks.",
+    "main_risk": "A commission with no power to settle anything.",
+    "middle_ground": "A yearly meeting with no standing body.",
     "positions": [
       {
         "bill_id": "BI11",
@@ -836,6 +902,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Courts that want distance from politics",
+    "who_pays": "Citizens who want judges answerable",
+    "case_for": "It keeps the highest court independent of whichever government happens to be in power.",
+    "case_against": "It takes power from elected leaders.",
+    "main_risk": "An unelected body choosing judges.",
+    "middle_ground": "Public hearings on Cabinet nominees.",
     "positions": [
       {
         "bill_id": "BI12",
@@ -911,6 +983,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Temples, shrines and festival towns",
+    "who_pays": "Taxpayers who prefer secular spending",
+    "case_for": "It saves irreplaceable buildings and the festivals and visitors that depend on them.",
+    "case_against": "It spends public money on religion.",
+    "main_risk": "Favoring some faiths over others.",
+    "middle_ground": "Grants for building safety only.",
     "positions": [
       {
         "bill_id": "BI13",
@@ -986,6 +1064,12 @@
     "vote_requirement": null,
     "proponent_party": "PT04",
     "stakeholders_override": null,
+    "who_gains": "Districts with a member who can deliver",
+    "who_pays": "Taxpayers",
+    "case_for": "It lets each member fix small local problems that national budgets overlook.",
+    "case_against": "It lets members spend money to win elections.",
+    "main_risk": "Pork spending that buys votes.",
+    "middle_ground": "Grants allocated by an independent panel.",
     "positions": [
       {
         "bill_id": "BI14",
@@ -1061,6 +1145,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Tech firms and graduates",
+    "who_pays": "Taxpayers and local power users",
+    "case_for": "It turns the cold climate into an advantage and brings well-paid tech jobs north.",
+    "case_against": "It hands tax breaks to giants.",
+    "main_risk": "Subsidies for firms that would come anyway.",
+    "middle_ground": "Grants for small tech firms only.",
     "positions": [
       {
         "bill_id": "BI15",
@@ -1136,6 +1226,12 @@
     "vote_requirement": null,
     "proponent_party": "PT02",
     "stakeholders_override": null,
+    "who_gains": "Police and crime victims",
+    "who_pays": "Citizens whose phones could be tapped",
+    "case_for": "It lets police stop serious organized crime before the harm is done, not after.",
+    "case_against": "It criminalizes thoughts.",
+    "main_risk": "Wiretaps used against ordinary protest.",
+    "middle_ground": "Wiretaps only with a court order each time.",
     "positions": [
       {
         "bill_id": "BI16",
@@ -1211,6 +1307,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Same-sex couples and their families",
+    "who_pays": "People who hold traditional views of the family",
+    "case_for": "It gives committed couples the same legal security in every town, not just in Sapporo.",
+    "case_against": "It redefines the family.",
+    "main_risk": "A split in public opinion.",
+    "middle_ground": "Letting each town decide for itself.",
     "positions": [
       {
         "bill_id": "BI17",
@@ -1286,6 +1388,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Emergency responders after a disaster",
+    "who_pays": "Citizens who value checks on power",
+    "case_for": "It lets the country act in hours, not weeks, when a disaster strikes.",
+    "case_against": "It hands one person too much power.",
+    "main_risk": "Power held past the end of the crisis.",
+    "middle_ground": "Emergency powers needing an Assembly vote.",
     "positions": [
       {
         "bill_id": "BI18",
@@ -1361,6 +1469,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Defense planners and allies",
+    "who_pays": "People who prefer a neutral Yezo",
+    "case_for": "It strengthens deterrence through regular planning with an ally, without hosting permanent bases.",
+    "case_against": "It ties us to another country's wars.",
+    "main_risk": "Being drawn into a foreign conflict.",
+    "middle_ground": "Observer status at exercises.",
     "positions": [
       {
         "bill_id": "BI19",
@@ -1436,6 +1550,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Exporters and shoppers",
+    "who_pays": "Dairy and rural producers",
+    "case_for": "It opens a large market to our exporters and lowers prices for shoppers.",
+    "case_against": "It sells out our farmers.",
+    "main_risk": "Foreign dairy undercutting local farms.",
+    "middle_ground": "Phasing tariffs down over a long period.",
     "positions": [
       {
         "bill_id": "BI20",
@@ -1511,6 +1631,12 @@
     "vote_requirement": null,
     "proponent_party": "PT06",
     "stakeholders_override": null,
+    "who_gains": "Coastal communities and security officials",
+    "who_pays": "Foreign investors and landowners who want to sell",
+    "case_for": "It keeps land near ports, water and defense sites from passing quietly into the wrong hands.",
+    "case_against": "It treats every buyer as a spy.",
+    "main_risk": "Scaring off honest investment.",
+    "middle_ground": "A registry of foreign owners without review.",
     "positions": [
       {
         "bill_id": "BI21",
@@ -1586,6 +1712,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Hotels, shops and artisans",
+    "who_pays": "Residents of crowded resort towns",
+    "case_for": "It brings visitors and their spending to hotels, shops and artisans across the country.",
+    "case_against": "It opens the door too wide.",
+    "main_risk": "Overcrowded resorts and strained services.",
+    "middle_ground": "Visa waivers for group tours only.",
     "positions": [
       {
         "bill_id": "BI22",
@@ -1661,6 +1793,12 @@
     "vote_requirement": null,
     "proponent_party": "PT02",
     "stakeholders_override": null,
+    "who_gains": "Fishers and island tour operators",
+    "who_pays": "Islanders who hold our claim dear",
+    "case_for": "It lets fishers and islanders work the disputed waters peacefully while the claim is settled.",
+    "case_against": "It concedes what we hold as ours.",
+    "main_risk": "Weakening our claim to the islands.",
+    "middle_ground": "A fishing agreement without tourism.",
     "positions": [
       {
         "bill_id": "BI23",
@@ -1736,6 +1874,12 @@
     "vote_requirement": null,
     "proponent_party": "PT06",
     "stakeholders_override": null,
+    "who_gains": "Power users and industrial employers",
+    "who_pays": "Fishers and families near the plant",
+    "case_for": "It restores steady, affordable power and avoids another winter of blackouts.",
+    "case_against": "It repeats the risks we promised to leave.",
+    "main_risk": "An accident after a quake.",
+    "middle_ground": "A restart only after an outside safety review.",
     "positions": [
       {
         "bill_id": "BI24",
@@ -1811,6 +1955,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Construction workers, hotels and the host town",
+    "who_pays": "Neighbors and gambling-prone households",
+    "case_for": "It brings construction work, hotel jobs and tourist money to a town that needs them.",
+    "case_against": "It makes the town depend on losing gamblers.",
+    "main_risk": "Gambling addiction and organized crime.",
+    "middle_ground": "A resort with no casino floor.",
     "positions": [
       {
         "bill_id": "BI25",
@@ -1886,6 +2036,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Unconnected applicants and voters tired of patronage",
+    "who_pays": "Local hires who know the town",
+    "case_for": "It ends patronage in public hiring, so jobs go to the most able, not the best connected.",
+    "case_against": "It makes public service a quiz.",
+    "main_risk": "Exams that miss real-world skill.",
+    "middle_ground": "Exams for senior posts only.",
     "positions": [
       {
         "bill_id": "BI26",
@@ -1961,6 +2117,12 @@
     "vote_requirement": null,
     "proponent_party": "PT02",
     "stakeholders_override": null,
+    "who_gains": "Low-wage workers and students",
+    "who_pays": "Small shops and farms",
+    "case_for": "It gives low-paid workers a raise and one fair wage floor wherever they live.",
+    "case_against": "It ignores how much costs differ by town.",
+    "main_risk": "Closed shops and fewer jobs in poor towns.",
+    "middle_ground": "A lower rate in the poorest towns for a few years.",
     "positions": [
       {
         "bill_id": "BI27",
@@ -2036,6 +2198,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Voters in unfairly drawn districts",
+    "who_pays": "Voters who want elected mapmakers",
+    "case_for": "It stops politicians from drawing their own district lines.",
+    "case_against": "It takes elections away from the elected.",
+    "main_risk": "An unelected commission with too much say.",
+    "middle_ground": "Public hearings on redistricting.",
     "positions": [
       {
         "bill_id": "BI28",
@@ -2111,6 +2279,12 @@
     "vote_requirement": null,
     "proponent_party": "PT06",
     "stakeholders_override": null,
+    "who_gains": "Schools and families who want a shared moral base",
+    "who_pays": "Students and teachers with other views",
+    "case_for": "It gives every child a shared grounding in civic duty and the country's heritage.",
+    "case_against": "It teaches obedience instead of thought.",
+    "main_risk": "The state teaching one view of virtue.",
+    "middle_ground": "An optional ethics elective.",
     "positions": [
       {
         "bill_id": "BI29",
@@ -2186,6 +2360,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Foreign residents and their neighbors",
+    "who_pays": "Citizens who fear a diluted vote",
+    "case_for": "It gives long-term residents who pay local taxes a say in how their town is run.",
+    "case_against": "It dilutes citizens' voting power.",
+    "main_risk": "A backlash that harms community ties.",
+    "middle_ground": "Advisory seats on town councils.",
     "positions": [
       {
         "bill_id": "BI30",
@@ -2261,6 +2441,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Ainu land users and tour operators",
+    "who_pays": "Loggers and developers",
+    "case_for": "It protects wild land for good, for the people who use it and the tourism it supports.",
+    "case_against": "It locks away land that people use.",
+    "main_risk": "Lost jobs in forest towns.",
+    "middle_ground": "A few core reserves with managed use around them.",
     "positions": [
       {
         "bill_id": "BI31",
@@ -2336,6 +2522,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Rural patients",
+    "who_pays": "Taxpayers",
+    "case_for": "It puts emergency care within reach of rural patients who now drive for hours.",
+    "case_against": "It spreads thin what should be concentrated.",
+    "main_risk": "Small hospitals with too few doctors.",
+    "middle_ground": "Mobile clinics only.",
     "positions": [
       {
         "bill_id": "BI32",
@@ -2411,6 +2603,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Residents who tire of paperwork",
+    "who_pays": "People who guard their privacy",
+    "case_for": "It ends repeated paperwork and makes public services faster to reach.",
+    "case_against": "It puts our whole lives in one database.",
+    "main_risk": "A data breach exposing everyone's records.",
+    "middle_ground": "Separate cards with a single sign-in.",
     "positions": [
       {
         "bill_id": "BI33",
@@ -2486,6 +2684,12 @@
     "vote_requirement": null,
     "proponent_party": "PT06",
     "stakeholders_override": null,
+    "who_gains": "Viewers who want independent news",
+    "who_pays": "Taxpayers who fund the broadcaster",
+    "case_for": "It keeps the news free from pressure by whichever ministers are in office.",
+    "case_against": "It gives an unelected board a megaphone.",
+    "main_risk": "A broadcaster answerable to no one.",
+    "middle_ground": "A fixed budget but a ministerial appointee.",
     "positions": [
       {
         "bill_id": "BI34",
@@ -2561,6 +2765,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Voters who want clean politics",
+    "who_pays": "Small donors who fear being named in public",
+    "case_for": "It shows voters who funds their politicians and limits what large donors can buy.",
+    "case_against": "It silences honest supporters.",
+    "main_risk": "Money moving to groups outside the rules.",
+    "middle_ground": "Publication without caps.",
     "positions": [
       {
         "bill_id": "BI35",
@@ -2636,6 +2846,12 @@
     "vote_requirement": null,
     "proponent_party": "PT06",
     "stakeholders_override": null,
+    "who_gains": "Firms and the workers they hire",
+    "who_pays": "People who depend on public services",
+    "case_for": "It keeps firms investing and hiring here instead of moving abroad.",
+    "case_against": "It cuts taxes for the strongest first.",
+    "main_risk": "Cuts to services to pay for the tax cut.",
+    "middle_ground": "A cut for small firms only.",
     "positions": [
       {
         "bill_id": "BI36",
@@ -2711,6 +2927,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Clean-energy firms and households that get dividends",
+    "who_pays": "Fuel users, farmers and fishers",
+    "case_for": "It cuts emissions and returns the money to households as a dividend.",
+    "case_against": "It makes winter more expensive for the north.",
+    "main_risk": "Higher costs in cold, spread-out towns.",
+    "middle_ground": "A carbon price with exemptions for fuel in cold regions.",
     "positions": [
       {
         "bill_id": "BI37",
@@ -2786,6 +3008,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Fishers and consumers who want healthy stocks",
+    "who_pays": "Small boats that sell their quotas",
+    "case_for": "It protects fish stocks so the fleet still has a catch in twenty years.",
+    "case_against": "It turns the sea into a commodity.",
+    "main_risk": "Quotas concentrated in a few large boats.",
+    "middle_ground": "Quotas that cannot be traded.",
     "positions": [
       {
         "bill_id": "BI38",
@@ -2861,6 +3089,12 @@
     "vote_requirement": null,
     "proponent_party": "PT06",
     "stakeholders_override": null,
+    "who_gains": "Shipyard workers and defense suppliers",
+    "who_pays": "Taxpayers",
+    "case_for": "It keeps shipbuilding skills and defense supplies at home.",
+    "case_against": "It feeds a defense lobby.",
+    "main_risk": "Waste on a closed circle of contractors.",
+    "middle_ground": "Short contracts with open bidding.",
     "positions": [
       {
         "bill_id": "BI39",
@@ -2936,6 +3170,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Members who want change studied",
+    "who_pays": "Voters wary of amendments",
+    "case_for": "It lets the Assembly study constitutional questions calmly, before any crisis forces them.",
+    "case_against": "It starts a slide toward rewriting the constitution.",
+    "main_risk": "A commission that pushes a hidden agenda.",
+    "middle_ground": "A temporary commission with one report.",
     "positions": [
       {
         "bill_id": "BI40",
@@ -3011,6 +3251,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Traders and travelers",
+    "who_pays": "People who fear for privacy at the border",
+    "case_for": "It shortens lines at the border and makes smuggling harder for both countries.",
+    "case_against": "It gives away control of our border.",
+    "main_risk": "Data shared without limits.",
+    "middle_ground": "A trial at one port.",
     "positions": [
       {
         "bill_id": "BI41",
@@ -3086,6 +3332,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Investors and islanders looking for work",
+    "who_pays": "Fishers and island communities",
+    "case_for": "It brings investment and jobs to islands that have few of either.",
+    "case_against": "It sells off the islands' wealth.",
+    "main_risk": "Damage to fisheries and sacred sites.",
+    "middle_ground": "Fishing only, no mining.",
     "positions": [
       {
         "bill_id": "BI42",
@@ -3161,6 +3413,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Exporters and shoppers",
+    "who_pays": "Workers and producers who compete with imports",
+    "case_for": "It opens our largest neighboring market to our exporters and lowers prices at home.",
+    "case_against": "It makes us rely on a rival.",
+    "main_risk": "Dependence on one big trading partner.",
+    "middle_ground": "Phased tariff cuts on non-sensitive goods.",
     "positions": [
       {
         "bill_id": "BI43",
@@ -3236,6 +3494,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Young farmers and farm towns",
+    "who_pays": "Taxpayers",
+    "case_for": "It keeps family farms working by helping the next generation take them over.",
+    "case_against": "It pays people to farm who will not stay.",
+    "main_risk": "Grants for farms that cannot survive.",
+    "middle_ground": "Mentoring programs with no grants.",
     "positions": [
       {
         "bill_id": "BI44",
@@ -3311,6 +3575,12 @@
     "vote_requirement": null,
     "proponent_party": "PT06",
     "stakeholders_override": null,
+    "who_gains": "Researchers and students",
+    "who_pays": "Taxpayers",
+    "case_for": "It keeps researchers here and lets universities plan for the long term.",
+    "case_against": "It frees universities from public accountability.",
+    "main_risk": "Funds spent on the wrong things.",
+    "middle_ground": "Matching grants tied to results.",
     "positions": [
       {
         "bill_id": "BI45",
@@ -3386,6 +3656,12 @@
     "vote_requirement": null,
     "proponent_party": "PT01",
     "stakeholders_override": null,
+    "who_gains": "Women, minorities and disabled workers",
+    "who_pays": "Employers who must change hiring",
+    "case_for": "It gives every worker a fair chance at being hired and promoted.",
+    "case_against": "It burdens small firms with lawsuits.",
+    "main_risk": "Red tape and disputes at small firms.",
+    "middle_ground": "Guidance and mediation ahead of penalties.",
     "positions": [
       {
         "bill_id": "BI46",
@@ -3461,6 +3737,12 @@
     "vote_requirement": null,
     "proponent_party": "PT03",
     "stakeholders_override": null,
+    "who_gains": "Working parents and children",
+    "who_pays": "Small employers",
+    "case_for": "It lets parents work and raise children without having to choose between them.",
+    "case_against": "It asks small firms to carry too much.",
+    "main_risk": "Staff shortages at small firms.",
+    "middle_ground": "Leave for parents, with childcare as a second step.",
     "positions": [
       {
         "bill_id": "BI47",
@@ -3536,6 +3818,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Police and commuters",
+    "who_pays": "People who value their privacy",
+    "case_for": "It helps police solve crimes and keeps stations and main streets safer.",
+    "case_against": "It makes every citizen a suspect.",
+    "main_risk": "Tracking innocent people.",
+    "middle_ground": "Cameras without facial recognition.",
     "positions": [
       {
         "bill_id": "BI48",
@@ -3611,6 +3899,12 @@
     "vote_requirement": null,
     "proponent_party": "PT05",
     "stakeholders_override": null,
+    "who_gains": "Taxpayers and bigger towns",
+    "who_pays": "Residents of small towns",
+    "case_for": "It keeps services running in towns too small to staff them alone.",
+    "case_against": "It erases small towns.",
+    "main_risk": "Far-away offices and lost local voices.",
+    "middle_ground": "Voluntary sharing of services between towns.",
     "positions": [
       {
         "bill_id": "BI49",
@@ -3686,6 +3980,12 @@
     "vote_requirement": null,
     "proponent_party": "PT02",
     "stakeholders_override": null,
+    "who_gains": "Rank-and-file members",
+    "who_pays": "Party elders and officials",
+    "case_for": "It gives every party member a real say in who leads the party.",
+    "case_against": "It hands parties to their most extreme members.",
+    "main_risk": "Leaders chosen by loud, small factions.",
+    "middle_ground": "A ballot of party delegates.",
     "positions": [
       {
         "bill_id": "BI50",

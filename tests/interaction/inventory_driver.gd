@@ -121,6 +121,10 @@ func _walk() -> void:
 	await _click(look)
 	await _click(office.get_node("%BriefingPanel").find_child("Confirm", true, false) as Control)
 	await _wait(0.6)
+	# Every level opens on its purpose now (2026-11-04): press Let's go.
+	if get_tree().current_scene.name == "LevelIntroScreen":
+		await _click(get_tree().current_scene.get_node("%ContinueButton"))
+		await _wait(0.6)
 
 	var battle := get_tree().current_scene
 	if battle.name != "BattleScreen":

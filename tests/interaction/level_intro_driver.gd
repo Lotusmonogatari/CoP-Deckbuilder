@@ -63,6 +63,9 @@ func _run() -> void:
 	if not await _check_shows_when_something_is_written():
 		_finish()
 		return
+	if not await _check_bill_card_and_dossier():
+		_finish()
+		return
 
 	_finish()
 
@@ -93,7 +96,14 @@ func _check_skips_when_nothing_written() -> bool:
 	# The workbook now writes cues for every level, so blank them in memory
 	# to stand in for "nothing written".
 	DataDB.level_intros = []
-	if not await _go_in_on(office, SKIP_LEVEL_ID):
+	# Every level has a Level Purpose now (2026-11-04), which would open the
+	# screen too; blank this one's in memory.
+	var skip_level: Dictionary = DataDB.get_level(SKIP_LEVEL_ID)
+	var saved_purpose: Variant = skip_level.get("purpose")
+	skip_level["purpose"] = null
+	var went_in := await _go_in_on(office, SKIP_LEVEL_ID)
+	skip_level["purpose"] = saved_purpose
+	if not went_in:
 		return false
 
 	var landed := get_tree().current_scene
@@ -147,10 +157,18 @@ func _check_shows_when_something_is_written() -> bool:
 	var banner: Node = screen.get_node("CueBanner")
 	await get_tree().create_timer(0.3).timeout
 	var shown := str(banner.call("current_line"))
-	if shown != "Every seat counts today.":
-		_failures.append("the banner shows '%s', not the written cue" % shown)
+	var purpose := LevelPurpose.text_for(DataDB.get_level(SHOW_LEVEL_ID))
+	if shown != purpose:
+		_failures.append("the banner opens on '%s', not the level's purpose" % shown)
 		return false
-	print("  banner shows the written cue")
+	var queued := false
+	for entry: Dictionary in banner.get("_queue"):
+		if str(entry.get("line", "")) == "Every seat counts today.":
+			queued = true
+	if not queued:
+		_failures.append("the written cue is not queued after the purpose")
+		return false
+	print("  banner opens on the level's purpose, then the written cue")
 
 	if not await _click(screen.get_node("%ContinueButton")):
 		return false
@@ -163,6 +181,41 @@ func _check_shows_when_something_is_written() -> bool:
 		return false
 	print("  'Let's go' landed on %s's real first stage" % SHOW_LEVEL_ID)
 
+	GameState.end_level()
+	return true
+
+
+## A bill level's stance screen (2026-11-04, Cameron): the bill card names the
+## bill and says what it does, and "Read the Bill" opens the dossier.
+func _check_bill_card_and_dossier() -> bool:
+	var level_id := "LV66"
+	GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(DataDB.get_level(level_id))))
+	get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
+	await get_tree().process_frame
+	await get_tree().create_timer(0.5).timeout
+	var screen := get_tree().current_scene
+	# Skip the spoken lines: tap the banner until the lean choice shows.
+	for _i in 12:
+		if screen.get("_lean_shown"):
+			break
+		screen.get_node("CueBanner").call("clear")
+		screen.set("_lines_accounted_for", screen.get("_total_lines"))
+		await get_tree().process_frame
+	var bill: Dictionary = DataDB.get_floor_vote(level_id)
+	var card := screen.find_child("BillCard", true, false)
+	if card == null or not (card.get_child(0) as Label).text.contains(str(bill.get("bill_name"))):
+		_failures.append("%s: the stance screen has no bill card naming the bill" % level_id)
+		return false
+	var read := screen.find_child("ReadBill", true, false) as Button
+	if read == null or not await _click(read):
+		_failures.append("%s: no Read the Bill button to press" % level_id)
+		return false
+	await get_tree().create_timer(0.3).timeout
+	var dossier := screen.find_child("BillDossier", true, false) as Control
+	if dossier == null or not dossier.visible:
+		_failures.append("%s: Read the Bill did not open the dossier" % level_id)
+		return false
+	print("  %s: bill card shown, Read the Bill opened the dossier" % level_id)
 	GameState.end_level()
 	return true
 

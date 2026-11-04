@@ -6305,5 +6305,103 @@
     "english": "Each stage you win: +{win} with your side, −{win} with the other. Your vote: +{vote} with your side. Changing your vote costs {switch} standing.",
     "placeholders": "win, vote, switch",
     "notes": "2026-11-04, Cameron: what a lean is worth, from the Balance tab (Stance Win Drift, Stance Vote Delta, Stance Flip Abandoned Penalty)."
+  },
+  {
+    "key": "level_intro.read_bill",
+    "where": "Level Intro (stance screen)",
+    "english": "Read the Bill",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "level_intro.for_it",
+    "where": "Level Intro (stance screen)",
+    "english": "For it:",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "level_intro.against_it",
+    "where": "Level Intro (stance screen)",
+    "english": "Against it:",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.what",
+    "where": "Level Intro (stance screen)",
+    "english": "What it does",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.who_gains",
+    "where": "Level Intro (stance screen)",
+    "english": "Who gains",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.who_pays",
+    "where": "Level Intro (stance screen)",
+    "english": "Who pays",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.case_for",
+    "where": "Level Intro (stance screen)",
+    "english": "The case for",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.case_against",
+    "where": "Level Intro (stance screen)",
+    "english": "The case against",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.main_risk",
+    "where": "Level Intro (stance screen)",
+    "english": "Main risk",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.middle_ground",
+    "where": "Level Intro (stance screen)",
+    "english": "Middle ground",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.parties",
+    "where": "Level Intro (stance screen)",
+    "english": "Where the parties stand",
+    "placeholders": null,
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.supportive",
+    "where": "Level Intro (stance screen)",
+    "english": "For: {parties}",
+    "placeholders": "parties",
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.opposed",
+    "where": "Level Intro (stance screen)",
+    "english": "Against: {parties}",
+    "placeholders": "parties",
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "dossier.neutral",
+    "where": "Level Intro (stance screen)",
+    "english": "Undecided: {parties}",
+    "placeholders": "parties",
+    "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
   }
 ]

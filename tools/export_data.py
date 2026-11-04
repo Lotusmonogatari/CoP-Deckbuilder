@@ -1145,8 +1145,17 @@ SHEETS = {
             # the stakeholders are read off the bill's Passed Law Effects row.
             ("Proponent Party", "proponent_party", "str"),
             ("Stakeholders Override", "stakeholders_override", "str"),
+            # The "Read the bill" dossier on the stance screen (2026-11-04,
+            # Cameron). Each is optional prose; a blank cell skips its line.
+            ("Who Gains", "who_gains", "str"),
+            ("Who Pays", "who_pays", "str"),
+            ("Case For", "case_for", "str"),
+            ("Case Against", "case_against", "str"),
+            ("Main Risk", "main_risk", "str"),
+            ("Middle Ground", "middle_ground", "str"),
         ],
-        "optional": ["Proponent Party", "Stakeholders Override"],
+        "optional": ["Proponent Party", "Stakeholders Override", "Who Gains", "Who Pays",
+                     "Case For", "Case Against", "Main Risk", "Middle Ground"],
     },
     # Six rows per bill above (one per party) — folded into that bill's own
     # "positions" list by fold_floor_votes() below, the same
@@ -1510,8 +1519,13 @@ SHEETS = {
             # 2026-10-31: "Yes" keeps the level off the Office's list; only an
             # event choice (Event Choices, Starts Level) can start it.
             ("Event Only (Yes/No)", "event_only", "str"),
+            # What the level is for, said at the start of the Level Intro
+            # (2026-11-04, Cameron), and which staff role says it (blank =
+            # the first hired staff member, or the player's own thought).
+            ("Level Purpose", "purpose", "str"),
+            ("Purpose Speaker", "purpose_speaker", "str"),
         ],
-        "optional": ["Seasons", "Event Only (Yes/No)"],
+        "optional": ["Seasons", "Event Only (Yes/No)", "Level Purpose", "Purpose Speaker"],
     },
     # 3 roles (Policy Research Assistant, Media Spokesperson, District
     # Representative) x 7 starting/upgrade tier configs each. The Reward

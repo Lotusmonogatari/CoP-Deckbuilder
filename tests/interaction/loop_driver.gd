@@ -104,6 +104,10 @@ func _walk_the_loop() -> void:
 
 	await _click(go_in)
 	await get_tree().create_timer(0.6).timeout
+	# Every level opens on its purpose now (2026-11-04): press Let's go.
+	if get_tree().current_scene.name == "LevelIntroScreen":
+		await _click(get_tree().current_scene.get_node("%ContinueButton"))
+		await get_tree().create_timer(0.6).timeout
 
 	if get_tree().current_scene.name != "BattleScreen":
 		_failures.append("the briefing did not open a stage")
