@@ -37,6 +37,6 @@ Scanned every player-facing string in `data/*.json` (English and the Japanese ac
 
 ## Noticed, not changed
 
-- VQ50 choice B ("my district needs more attention") is answered with "A bigger office? You have not earned the floor space." The reply does not fit the choice.
+- VQ50 choice B ("my district needs more attention") was answered with "A bigger office? You have not earned the floor space." Fixed 2026-11-04: "Your district? Every member says that. Earn the attention first."
 - "Butsutou Party Leader" (ticker) repeats "party", since Butsutou already means a party. It is Cameron's own line.
 - "Cabinet Legislation Bureau" (an Office notice) is still outside the ministry list, as noted on 2026-11-02.

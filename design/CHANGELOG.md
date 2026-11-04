@@ -3194,3 +3194,4 @@ From Cameron's playtest: some choices read as promises but cost nothing. Full ta
   - VQ50 and VI25 now name the party Secretary-General.
   - 156 nationwide "Hokkaido" phrases from the bill parts (ports, foreign banks, jobs, firms, graduates) now say "Yezo".
 - **Kept, by Cameron's decision.** The six Japanese-only ticker lines, and both "Parliament" and "National Assembly".
+- **Follow-up.** VQ50's reply to choice B ("my district needs more attention") was about a bigger office. It now reads "Your district? Every member says that. Earn the attention first."
