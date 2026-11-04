@@ -4704,13 +4704,6 @@
     "notes": "2026-10-23 awareness."
   },
   {
-    "key": "awareness.gaffe_line",
-    "where": "Stage result panel, awareness lost to gaffes left at the end",
-    "english": "{count} gaffes left at the end count against your name. Every {national_per} cost 1 National awareness; every {district_per} cost 1 District.",
-    "placeholders": "count, national_per, district_per",
-    "notes": "2026-10-23 awareness."
-  },
-  {
     "key": "record.cause_awareness",
     "where": "Your Record, cause of a standing change from name awareness",
     "english": "Name awareness",

@@ -3209,3 +3209,8 @@ From Cameron's playtest: some choices read as promises but cost nothing. Full ta
 - **Change.** The eight journalists (OP110-OP117) now have one move, an attack of 1-2, every turn. Their Gain and Block range cells in the Opponents tab are blank, which means "never does this". Before, attacks ranged from 1-3 up to 4-7, and each journalist also gained and guarded. In a press conference those two moves did nothing.
 - **Where it applies.** Everywhere the journalists appear (Cameron's choice): press conferences, Media Ambush (ST19) and the bill-specific press and ambush rooms. Nothing else changed, because no other opponent has the Journalist role.
 - **Balance check.** In the bot's stage trial (a fully equipped player, 2 x 60 fights) ST04 won 100% before and after; ST19 went from 98% to 100%. That bot is too strong to show the difference; newer players will feel it most.
+
+## The stage end screen no longer explains gaffes and awareness (2026-11-04, Cameron)
+
+- **Removed.** The line "N gaffes left at the end count against your name. Every X cost 1 National awareness; every Y cost 1 District." under a Combat stage's result (`OutcomePresenter._body_for()`), and its Text row `awareness.gaffe_line`.
+- **Unchanged.** Leftover gaffes still cost awareness (`GameState.apply_awareness_gaffes()`), at the same Balance rates.

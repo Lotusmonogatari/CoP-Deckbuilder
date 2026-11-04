@@ -105,17 +105,11 @@ func _title_for(engine: BattleEngine, stage: Dictionary) -> String:
 ## A stage whose score carries has to say so here or the player never finds
 ## out: the consequence lands in a stage they have not reached yet, and a
 ## number that moved silently may as well not have moved.
+##
+## Gaffes left on the counter still cost awareness
+## (GameState.apply_awareness_gaffes()), but this panel no longer spells it
+## out (2026-11-04, Cameron).
 func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
-	var body := _body_without_awareness(engine, stage)
-	# Gaffes still on the counter cost awareness (GameState.apply_awareness_gaffes).
-	if GameState.is_in_level() and str(stage.get("mode", "")) == "Combat" and engine.state.gaffe > 0:
-		body += "\n\n" + Text.say("awareness.gaffe_line", {"count": engine.state.gaffe,
-			"national_per": int(DataDB.balance.get("awareness_gaffes_per_national_point", 1)),
-			"district_per": int(DataDB.balance.get("awareness_gaffes_per_district_point", 1))})
-	return body
-
-
-func _body_without_awareness(engine: BattleEngine, stage: Dictionary) -> String:
 	var state := engine.state
 	var lines: Array[String] = [state.outcome_reason]
 

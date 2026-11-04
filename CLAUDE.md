@@ -758,3 +758,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - In-universe content review (2026-11-04, Cameron)
 - Press conference: the reporters' moves are shown (2026-11-04, Cameron)
 - Journalists only attack, for 1-2 (2026-11-04, Cameron)
+- The stage end screen no longer explains gaffes and awareness (2026-11-04, Cameron)
