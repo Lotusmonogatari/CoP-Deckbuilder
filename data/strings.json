@@ -3166,7 +3166,7 @@
   {
     "key": "record.cause_neglect",
     "where": "Reason: standing drifting back from neglect",
-    "english": "going untouched this week",
+    "english": "not engaged this week",
     "placeholders": null,
     "notes": "2026-11-04: neglect runs at the end of each week, for any organization whose standing did not move at all that week."
   },

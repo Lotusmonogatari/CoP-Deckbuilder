@@ -700,7 +700,7 @@
   "record.cause_level_win": "level win bonuses",
   "record.cause_link_follow": "changes in {source}",
   "record.cause_link_rival": "its rivalry with {source}",
-  "record.cause_neglect": "going untouched this week",
+  "record.cause_neglect": "not engaged this week",
   "record.cause_other": "other changes",
   "record.cause_party_lean": "your party's position on {bill}",
   "record.cause_promise_broken": "breaking a promise",
