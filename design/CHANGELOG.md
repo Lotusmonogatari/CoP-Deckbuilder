@@ -3183,3 +3183,14 @@ From Cameron's playtest: some choices read as promises but cost nothing. Full ta
 - **What changed.** The last step of the Walking Tour (HE01) and the Dinner (HE02) now has a ninth option, TC9 and DC9 "Promise only to keep listening". It has no tags, so no guest reacts, and no commitment, so nothing is owed. Before this, every step-3 option was a promise of an hour.
 - **Also fixed.** DC1's kept line no longer says "local" business.
 - **Report.** `design/review/PROMISE_WORDING_2026-11-03.md`, section "Hosted event pass".
+
+## In-universe content review (2026-11-04, Cameron)
+
+- **What was checked.** Every player-facing string, for offices, the legislature, places, foreign powers, history and election rules, against the canon titles, parties and bills. Report: `design/review/CANON_REVIEW_2026-11-04.md`.
+- **Fixed (162 cells, workbook only).**
+  - "the president's new building" now reads "the university president's new building".
+  - "Party Leader Hideriai" now reads "Country Initiative Leader Hideriai".
+  - ST18's Japanese accent: 内閣員会 is now 内閣委員会.
+  - VQ50 and VI25 now name the party Secretary-General.
+  - 156 nationwide "Hokkaido" phrases from the bill parts (ports, foreign banks, jobs, firms, graduates) now say "Yezo".
+- **Kept, by Cameron's decision.** The six Japanese-only ticker lines, and both "Parliament" and "National Assembly".

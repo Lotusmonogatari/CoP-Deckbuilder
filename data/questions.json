@@ -47690,7 +47690,7 @@
     },
     {
       "id": "S1357",
-      "text": "Would a research credit bring better-paid jobs to Hokkaido?",
+      "text": "Would a research credit bring better-paid jobs to Yezo?",
       "theme": "Give a tax credit for research and development",
       "grades": {
         "Earnest": "M",
@@ -48026,7 +48026,7 @@
     },
     {
       "id": "S1373",
-      "text": "Would spin-off labs keep graduates in Hokkaido instead of leaving for Tokyo?",
+      "text": "Would spin-off labs keep graduates in Yezo instead of leaving for Tokyo?",
       "theme": "Fund university spin-off labs",
       "grades": {
         "Earnest": "M",
@@ -51958,7 +51958,7 @@
     },
     {
       "id": "S1541",
-      "text": "Would simpler registration bring more investment into Hokkaido firms?",
+      "text": "Would simpler registration bring more investment into Yezo's firms?",
       "theme": "Simplify the registration of investment funds",
       "grades": {
         "Earnest": "M",
@@ -56807,7 +56807,7 @@
     {
       "id": "S1745",
       "text": "Who pays for the extra inspectors and scanners that faster clearance requires?",
-      "theme": "Speed up customs clearance at Hokkaido ports",
+      "theme": "Speed up customs clearance at Yezo's ports",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -56831,7 +56831,7 @@
     {
       "id": "S1746",
       "text": "Should goods move through our ports with as little delay as possible?",
-      "theme": "Speed up customs clearance at Hokkaido ports",
+      "theme": "Speed up customs clearance at Yezo's ports",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -56855,7 +56855,7 @@
     {
       "id": "S1747",
       "text": "Faster clearance means more smuggling slips through; how do you answer that?",
-      "theme": "Speed up customs clearance at Hokkaido ports",
+      "theme": "Speed up customs clearance at Yezo's ports",
       "grades": {
         "Earnest": "M",
         "Emotional": "M",
@@ -56879,7 +56879,7 @@
     {
       "id": "S1748",
       "text": "Fishers say faster customs means more imported fish. How do you answer them?",
-      "theme": "Speed up customs clearance at Hokkaido ports",
+      "theme": "Speed up customs clearance at Yezo's ports",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -56903,7 +56903,7 @@
     {
       "id": "S1749",
       "text": "Would faster clearance lower the price of the parts my workshop imports?",
-      "theme": "Speed up customs clearance at Hokkaido ports",
+      "theme": "Speed up customs clearance at Yezo's ports",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -56927,7 +56927,7 @@
     {
       "id": "S1750",
       "text": "How would we keep checks on food safety while clearing goods faster?",
-      "theme": "Speed up customs clearance at Hokkaido ports",
+      "theme": "Speed up customs clearance at Yezo's ports",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -56951,7 +56951,7 @@
     {
       "id": "S1751",
       "text": "What if port computers fail on a busy day and cargo piles up?",
-      "theme": "Speed up customs clearance at Hokkaido ports",
+      "theme": "Speed up customs clearance at Yezo's ports",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -56975,7 +56975,7 @@
     {
       "id": "S1752",
       "text": "Could faster clearance apply only to firms with a clean record?",
-      "theme": "Speed up customs clearance at Hokkaido ports",
+      "theme": "Speed up customs clearance at Yezo's ports",
       "grades": {
         "Earnest": "M",
         "Emotional": "M",
@@ -65794,7 +65794,7 @@
     },
     {
       "id": "S2125",
-      "text": "Would sandboxes bring new firms, and new jobs, to Hokkaido?",
+      "text": "Would sandboxes bring new firms, and new jobs, to Yezo?",
       "theme": "Let start-ups test products in regulatory sandboxes",
       "grades": {
         "Earnest": "M",
@@ -69990,7 +69990,7 @@
     },
     {
       "id": "S2301",
-      "text": "Would a financial hub bring well-paid jobs to Hokkaido graduates?",
+      "text": "Would a financial hub bring well-paid jobs to Yezo's graduates?",
       "theme": "Build a financial hub zone in Sapporo",
       "grades": {
         "Earnest": "M",
@@ -70087,7 +70087,7 @@
     {
       "id": "S2305",
       "text": "If a foreign branch fails, who covers depositors' losses, and what does that cost?",
-      "theme": "Let foreign banks open branches in Hokkaido",
+      "theme": "Let foreign banks open branches in Yezo",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -70110,8 +70110,8 @@
     },
     {
       "id": "S2306",
-      "text": "Should foreign banks be allowed to open branches in Hokkaido?",
-      "theme": "Let foreign banks open branches in Hokkaido",
+      "text": "Should foreign banks be allowed to open branches in Yezo?",
+      "theme": "Let foreign banks open branches in Yezo",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -70135,7 +70135,7 @@
     {
       "id": "S2307",
       "text": "Outside banks will move our savings away; why trust them with Yezo's money?",
-      "theme": "Let foreign banks open branches in Hokkaido",
+      "theme": "Let foreign banks open branches in Yezo",
       "grades": {
         "Earnest": "M",
         "Emotional": "M",
@@ -70159,7 +70159,7 @@
     {
       "id": "S2308",
       "text": "Traditionalists fear foreign control of local money. How do you answer them?",
-      "theme": "Let foreign banks open branches in Hokkaido",
+      "theme": "Let foreign banks open branches in Yezo",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -70183,7 +70183,7 @@
     {
       "id": "S2309",
       "text": "Would foreign banks give my business more choice of lenders?",
-      "theme": "Let foreign banks open branches in Hokkaido",
+      "theme": "Let foreign banks open branches in Yezo",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -70207,7 +70207,7 @@
     {
       "id": "S2310",
       "text": "Who supervises foreign branches, and under whose rules?",
-      "theme": "Let foreign banks open branches in Hokkaido",
+      "theme": "Let foreign banks open branches in Yezo",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -70231,7 +70231,7 @@
     {
       "id": "S2311",
       "text": "How would a town cope if a foreign branch closed overnight and took its savings?",
-      "theme": "Let foreign banks open branches in Hokkaido",
+      "theme": "Let foreign banks open branches in Yezo",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -70255,7 +70255,7 @@
     {
       "id": "S2312",
       "text": "Could foreign banks partner with local banks instead of opening their own branches?",
-      "theme": "Let foreign banks open branches in Hokkaido",
+      "theme": "Let foreign banks open branches in Yezo",
       "grades": {
         "Earnest": "M",
         "Emotional": "M",
@@ -75641,7 +75641,7 @@
     },
     {
       "id": "S2535",
-      "text": "Is the money for research going into labs, or into the president's new building?",
+      "text": "Is the money for research going into labs, or into the university president's new building?",
       "theme": "University spending",
       "grades": {
         "Earnest": "M",
