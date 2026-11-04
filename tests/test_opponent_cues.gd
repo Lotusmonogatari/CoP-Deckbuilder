@@ -154,6 +154,24 @@ func test_a_used_up_pool_reuses_the_line_said_longest_ago() -> void:
 	assert_eq(lines[OpponentCues.pick_unused(lines, said, 1)], order[1])
 
 
+## A row's Ally lines with no Bill ID are shared by every bill, said only by a
+## speaker on the player's own side, and never join the general pools.
+func test_shared_ally_lines_reach_same_side_speakers_only() -> void:
+	DataDB.opponent_cues = [
+		{"cue_id": "OC01", "suit": "Earnest", "verb": "attack", "opponent_ids": null,
+			"cue_1": "General line.", "cue_2": "Ally line.", "cue_2_side": "Ally"},
+		{"cue_id": "OC02", "suit": "Earnest", "verb": "attack", "opponent_ids": null,
+			"bill_ids": ["BI99"], "cue_1": "Bill neutral line."},
+	]
+	DataDB._build_lookups()
+	assert_eq(DataDB.get_bill_opponent_cue_lines("BI99", "OP1", "Earnest", "attack", ["Neutral", "Ally"]),
+		["Bill neutral line.", "Ally line."] as Array[String])
+	assert_eq(DataDB.get_bill_opponent_cue_lines("BI99", "OP1", "Earnest", "attack", ["Neutral", "For"]),
+		["Bill neutral line."] as Array[String])
+	assert_eq(DataDB.get_general_opponent_cue_lines("Earnest", "attack", "ST02"),
+		["General line."] as Array[String])
+
+
 ## Through for_move itself: five turns of a five-line pool say five lines, and
 ## starting a level forgets them.
 func test_for_move_does_not_repeat_and_a_new_level_forgets() -> void:

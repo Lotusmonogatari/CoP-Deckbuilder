@@ -319,6 +319,8 @@ var _bill_opponent_cues: Dictionary = {}    ## "BI|opp_id or suit|verb" -> lines
 ## The same keys -> each line's Side (For / Against / Neutral), in line order
 ## (2026-11-04, Cameron; MemberStance.gd).
 var _bill_opponent_cue_sides: Dictionary = {}
+## "suit|verb" -> the shared demanding-ally lines (Side Ally, no Bill ID).
+var _ally_opponent_cues: Dictionary = {}
 var _questions_by_bill: Dictionary = {}     ## "BI" -> questions
 ## Stage Questions (2026-10-12): stage_id -> the questions that name it.
 var _questions_by_stage: Dictionary = {}
@@ -1178,6 +1180,11 @@ func get_bill_opponent_cue_lines(bill_id: String, opp_id: String, suit: String, 
 			if not kept.is_empty():
 				lines.append_array(kept)
 				break
+	# A same-side speaker also has the shared demanding-ally lines, which fit
+	# any bill.
+	if allowed_sides.has(MemberStance.ALLY):
+		for line: Variant in _ally_opponent_cues.get("%s|%s" % [suit, verb], []):
+			lines.append(str(line))
 	return lines
 
 
@@ -1213,6 +1220,7 @@ func get_stage_questions(stage_id: String) -> Array:
 func _index_opponent_cues() -> void:
 	_bill_opponent_cues.clear()
 	_bill_opponent_cue_sides.clear()
+	_ally_opponent_cues.clear()
 	_opponent_cues_by_suit_verb.clear()
 	_opponent_cues_by_opponent_verb.clear()
 	_opponent_cues_by_opponent_suit_verb.clear()
@@ -1241,6 +1249,20 @@ func _index_opponent_cues() -> void:
 					_bill_opponent_cues[bkey] = (_bill_opponent_cues.get(bkey, []) as Array) + lines
 					_bill_opponent_cue_sides[bkey] = (_bill_opponent_cue_sides.get(bkey, []) as Array) + _cue_line_sides(row)
 			continue
+		# A row's Ally lines with no Bill ID are the demanding ally's, shared by
+		# every bill (2026-11-04, Cameron); they never join the general pools.
+		var line_sides := _cue_line_sides(row)
+		if line_sides.has(MemberStance.ALLY):
+			var kept_general: Array[String] = []
+			for i in lines.size():
+				if line_sides[i] == MemberStance.ALLY:
+					var ally_key := "%s|%s" % [suit, verb]
+					_ally_opponent_cues[ally_key] = (_ally_opponent_cues.get(ally_key, []) as Array) + [lines[i]]
+				else:
+					kept_general.append(lines[i])
+			lines = kept_general
+			if lines.is_empty():
+				continue
 		# Optional Stage ID (2026-10-12), past the same <null> trap.
 		var stages_raw: Variant = row.get("stage_ids")
 		var stages: Array = stages_raw if stages_raw is Array else []
