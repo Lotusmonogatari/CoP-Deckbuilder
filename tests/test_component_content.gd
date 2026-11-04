@@ -35,7 +35,7 @@ func test_every_component_has_a_cue_for_each_style() -> void:
 		var bill := _register(cid)
 		for suit in SUITS:
 			assert_eq(DataDB.get_bill_player_cue_lines(bill, suit, "attack", "Support").size(), 5, "%s player %s" % [cid, suit])
-			assert_eq(DataDB.get_bill_opponent_cue_lines(bill, "", suit, "attack").size(), 5, "%s opponent %s" % [cid, suit])
+			assert_gte(DataDB.get_bill_opponent_cue_lines(bill, "", suit, "attack").size(), 5, "%s opponent %s" % [cid, suit])
 		DataDB.clear_runtime()
 
 

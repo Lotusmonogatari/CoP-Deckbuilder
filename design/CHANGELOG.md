@@ -3297,7 +3297,7 @@ The plan is `design/proposals/opponent_cue_expansion_plan_2026-11-04.md`.
 | New lines | 1,082 lines in 698 new Opponent Cues rows, filled from 145 frames (138 for written bills, 7 for bill parts) into only the short pools: written bills to 85% of stretches, bill parts to 75% (Cameron: about 1,000 lines, only short pools). All drafts; the frames are listed for review in `design/review/opponent_line_frames_2026-11-04.md`. |
 | Facets | BI30's and BI36's `local` phrases were clauses ("who votes in...", "which firms..."); now noun phrases, as the facets README requires. Older Player Cues built from BI30's old phrase still read "the right thing for who votes in your town's mayoral race" and are not changed here. |
 
-Bill parts carry attack lines only, as before; their gain and block moves
+`test_component_content.gd` now asks for at least five attack lines per part and style (new For lines make some six or seven). Bill parts carry attack lines only, as before; their gain and block moves
 still use the general pools. Tests: `test_opponent_cues.gd` (no repeats, the
 oldest line comes back, a new level forgets, shared Ally lines reach only a
 same-side speaker), `test_member_stance.gd` (the player's side decides argued
