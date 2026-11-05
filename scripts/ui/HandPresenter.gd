@@ -39,6 +39,8 @@ func _init(row: HBoxContainer) -> void:
 	# A sideways drag scrolls the hand; an upward one lifts a card (CardView).
 	if _scroll != null:
 		DragScroll.attach(_scroll, false)
+		# The scroll bar sits above the cards, in gold (2026-11-05).
+		HandScrollBar.attach(_scroll)
 
 
 ## Redraws the hand for this moment.

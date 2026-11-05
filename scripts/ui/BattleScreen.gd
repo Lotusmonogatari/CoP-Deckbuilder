@@ -849,7 +849,10 @@ func _build_pick_bar() -> void:
 	_pick_bar.add_child(_pick_confirm)
 	_pick_bar.add_child(cancel)
 	column.add_child(_pick_bar)
-	column.move_child(_pick_bar, %HandRow.get_parent().get_index())
+	# Above the hand's scroll bar, which sits directly over the cards.
+	var hand_scroll: Node = %HandRow.get_parent()
+	var hand_bar := column.get_node_or_null("HandScrollBar")
+	column.move_child(_pick_bar, hand_bar.get_index() if hand_bar != null else hand_scroll.get_index())
 	_pick_bar.hide()
 
 

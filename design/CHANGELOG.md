@@ -3376,3 +3376,14 @@ Office Hours, Member Visit and Lobbyist Trade screens moved down into the middle
 band where a character's reply is shown. The previous reply's band stayed up after
 Continue and sat over the next question's choices, swallowing taps. Pressing
 Continue now takes the band down on all three screens.
+
+## The hand's scroll bar moves above the cards, in gold (2026-11-05, Cameron)
+
+| Change | What it does |
+|---|---|
+| Position | The bar that scrolls the hand sideways now sits directly above the cards, not underneath them (under the thumb that holds them). With a discard pick in progress, the Confirm / Cancel bar sits above it. |
+| Colour | The game's standard gold (the same as the cue banner's edge, `CueBanner.EDGE_COLOUR`): a gold grabber, a little brighter while held, on a faint gold track, 34 px high. Only this bar is gold; other lists keep the theme's white scroll bars. |
+| How | A new `HandScrollBar` (one small script) mirrors the hand's own scroll bar, which is switched off. Dragging it scrolls the hand; dragging the cards moves it. When the whole hand fits on screen the bar fades out but keeps its space, so the cards do not jump up and down as the hand grows. |
+
+Checked on a real screen with a hand wider than the screen (bar and hand follow each
+other both ways) and with `test_hand_scroll_bar.gd` (3 tests).
