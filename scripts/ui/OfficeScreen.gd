@@ -1563,7 +1563,9 @@ func _show_record() -> void:
 			var bill_name := str(DataDB.floor_votes.get(bill_id, {}).get("bill_name", bill_id))
 			rows.append(UiKit.line(bill_name))
 
-	# The statute book (2026-10-12): every bill voted on, passed or failed.
+	# Legislative Work (2026-10-12, renamed 2026-11-05): every bill voted on,
+	# passed or failed. A bill an organization asked the player to carry says so
+	# in its own pop-up (_show_law), not in a section of its own.
 	rows.append(UiKit.heading(Text.say("office.record_statute_heading")))
 	if GameState.statute_book.is_empty():
 		rows.append(UiKit.line(Text.say("office.record_statute_empty")))
@@ -1579,25 +1581,6 @@ func _show_record() -> void:
 				}), "", _show_law.bind(law), 100.0)
 			button.name = "Law_" + law_id
 			rows.append(button)
-
-	# Bills organizations asked the player to carry (patron step 4).
-	var carried: Array[Control] = []
-	for patron_id: String in GameState.patron_requests:
-		var status := str((GameState.patron_requests[patron_id] as Dictionary).get("status", ""))
-		if status != PatronRequests.PASSED and status != PatronRequests.FAILED:
-			continue
-		var patron_row := PatronLevel.patron_bill(patron_id)
-		var org_id := str(patron_row.get("organization", ""))
-		var bill_name := str((GameState.patron_composed.get(patron_id, {}) as Dictionary).get("bill", {}).get("bill_name", patron_id))
-		var line_key := "pass_line" if status == PatronRequests.PASSED else "fail_line"
-		carried.append(UiKit.line(Text.say("record.carried_line", {"name": bill_name,
-			"result": Text.say("record.carried_passed" if status == PatronRequests.PASSED else "record.carried_failed")})))
-		var story := str(patron_row.get(line_key, ""))
-		if not story.is_empty():
-			carried.append(UiKit.line(story.replace("{org}", str(DataDB.get_booster(org_id).get("name_en", org_id))).replace("{bill}", bill_name), "SmallLabel"))
-	if not carried.is_empty():
-		rows.append(UiKit.heading(Text.say("record.carried_heading")))
-		rows.append_array(carried)
 
 	rows.append(UiKit.heading(Text.say("office.record_tiers_heading")))
 	var tiers: Array = []
@@ -1642,6 +1625,19 @@ func _show_law(law: Dictionary) -> void:
 	marker.add_theme_color_override("font_color",
 		VoteMeter.PASS_COLOUR if passed else VoteMeter.FAIL_COLOUR)
 	rows.append(marker)
+
+	# A bill an organization asked the player to carry (patron step 4): who
+	# asked, and what that organization says about how it went (2026-11-05,
+	# moved here from a "Bills you carried" section of Your Record).
+	var patron_row := PatronLevel.patron_bill(bill_id)
+	if not patron_row.is_empty() and str(patron_row.get("organization", "")) != "":
+		var org_id := str(patron_row.get("organization", ""))
+		var org_name := str(DataDB.get_booster(org_id).get("name_en", org_id))
+		rows.append(UiKit.line(Text.say("record.law_carried", {"org": org_name})))
+		var story := str(patron_row.get("pass_line" if passed else "fail_line", ""))
+		if not story.is_empty():
+			rows.append(UiKit.line(story.replace("{org}", org_name).replace("{bill}",
+				str(bill.get("bill_name", bill_id))), "SmallLabel"))
 
 	var requirement := str(law.get("requirement", FloorVoteEngine.requirement_of(bill)))
 	var totals := {"Yes": int(law.get("yes", 0)), "No": int(law.get("no", 0)),

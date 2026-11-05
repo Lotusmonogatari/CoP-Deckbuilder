@@ -3328,3 +3328,14 @@ Still able to run past Friday: hours added once a level is under way (a Town
 Hall or Steering Committee check-in inserted by a crisis, or a visitor choice
 that costs hours). Those hours spill away as before. Tests:
 `test_week_calendar.gd`, `test_promises.gd`, `test_patron_level.gd`.
+
+## Legislative Work: carried bills move into their law pop-ups (2026-11-05, Cameron)
+
+| Change | What it does |
+|---|---|
+| Rename | Your Record's "Statute book" heading is now **Legislative Work** (Text row `office.record_statute_heading`). |
+| Carried bills | The separate "Bills you carried" section is gone. A bill an organization asked the player to carry is already one of the Legislative Work buttons (a drafted or sponsored bill is filed there when voted on), so tapping it now shows, under PASSED or FAILED, "You carried this bill for {organization}." and that organization's own comment on how it went ("The bill passed. {organization} will not forget who carried it."). Bills that were not carried show neither line. New Text row `record.law_carried`; the four `record.carried_*` rows nothing asks for any more were removed. |
+
+Checked on a real screen with one carried and one ordinary bill: the heading reads
+Legislative Work, the old section is absent, and only the carried bill's pop-up
+carries the two lines. The button text itself is unchanged.

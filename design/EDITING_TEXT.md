@@ -219,7 +219,7 @@ used playtest level has a separate hand-maintained configuration in
 
 ## 6a · What a law does — the **Law Effects** tab (2026-10-12)
 
-Every bill voted on goes into the **statute book** (shown in Your Record),
+Every bill voted on goes into **Legislative Work** (shown in Your Record),
 passed or failed. This tab says what that outcome does. One row per effect;
 a bill can have several rows. Ships empty, so nothing happens until you
 write rows.

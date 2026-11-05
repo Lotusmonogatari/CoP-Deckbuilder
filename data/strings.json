@@ -2347,9 +2347,9 @@
   {
     "key": "office.record_statute_heading",
     "where": "Your Record — heading",
-    "english": "Statute book",
+    "english": "Legislative Work",
     "placeholders": null,
-    "notes": "Heading over every bill that has come to a Floor Vote."
+    "notes": "Heading over every bill that has come to a Floor Vote. Renamed from \"Statute book\" 2026-11-05 (Cameron)."
   },
   {
     "key": "office.record_statute_empty",
@@ -3916,34 +3916,6 @@
     "key": "request.cannot_start",
     "where": "Request panel",
     "english": "That request cannot be started right now.",
-    "placeholders": null,
-    "notes": "2026-10-19 patron requests (step 4)."
-  },
-  {
-    "key": "record.carried_heading",
-    "where": "Your Record",
-    "english": "Bills you carried",
-    "placeholders": null,
-    "notes": "2026-10-19 patron requests (step 4)."
-  },
-  {
-    "key": "record.carried_line",
-    "where": "Your Record",
-    "english": "{name}: {result}",
-    "placeholders": "name, result",
-    "notes": "2026-10-19 patron requests (step 4)."
-  },
-  {
-    "key": "record.carried_passed",
-    "where": "Your Record",
-    "english": "passed",
-    "placeholders": null,
-    "notes": "2026-10-19 patron requests (step 4)."
-  },
-  {
-    "key": "record.carried_failed",
-    "where": "Your Record",
-    "english": "failed",
     "placeholders": null,
     "notes": "2026-10-19 patron requests (step 4)."
   },
@@ -6403,5 +6375,12 @@
     "english": "Undecided: {parties}",
     "placeholders": "parties",
     "notes": "2026-11-04, Cameron: the bill card and the Read the bill page on the stance screen."
+  },
+  {
+    "key": "record.law_carried",
+    "where": "Your Record — a law pop-up",
+    "english": "You carried this bill for {org}.",
+    "placeholders": "org",
+    "notes": "2026-11-05: shown at the top of a carried bill's pop-up, above the organization's own comment on how it went (Patron Bills). Replaces the old \"Bills you carried\" section."
   }
 ]
