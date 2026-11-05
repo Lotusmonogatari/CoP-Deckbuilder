@@ -3352,3 +3352,27 @@ carries the two lines. The button text itself is unchanged.
 | How it is built | A level holds `visit` and `visit_2`; each visit stage records `visit_index` (1 or 2, by order in the level), and `GameState.current_visit()` and the start bonus read the one in progress. Old saves load unchanged. `DraftBill.row_for()` records `extra_visit`. Also fixed: `GameState.level_hours()` did not recognise a sponsored or drafted bill's vote slot as the Floor Vote room (it only matched "BI..") and fell back to the default of one hour, which happened to be the same number. |
 
 Checked with real clicks: the toggle flips, Draft charges 400 XP, and the level ends trade, extra visit, fight, vote. Tests: `test_extra_visit.gd` (12).
+
+## Bigger character portraits in rooms and visits (2026-11-05, Cameron)
+
+Playtest on a phone: the two portraits in a battle were small, with a lot of
+background above them and unused space below the status row.
+
+| Screen | Before | Now |
+|---|---|---|
+| Battle (every combat room) | Portraits filled the lower 70% of the art box; the art zone took 3/4 of the free height | Portraits fill the whole art box (anchor top 0.30 to 0.0), and the art zone takes 8/9 of the free height (stretch ratio 3 to 8). On a 1080 x 2340 screen: portraits 471 to 837 px tall (about 1.8 times as big); the spare gap above the hand shrank from 295 to about 130 px. |
+| Office Hours, Member Visit, Lobbyist Trade | Portrait box 220 x 320 beside the visitor's name, with half the screen empty below | 420 x 760 |
+| Level Intro and stance screen | Staff portrait already fills the spare height; the stance row is tight | Unchanged (tried bigger lean-row portraits; the Let's go button moved down, so it was reverted) |
+| Stage Transition, Office | Already large (a 1480 px art box; a 525 px Office portrait) | Unchanged |
+| Floor Vote party cards | Small by design (six at once) | Unchanged |
+
+Only scene sizes changed (`BattleScreen.tscn`, `VisitorScreen.tscn`, `VisitScreen.tscn`,
+`TradeScreen.tscn`); no code. Checked with before and after screenshots of each
+screen with real art. A portrait still keeps its own proportions, so a wide pose
+is limited by the width of its half of the screen.
+
+Side effect found by the click tests: with the portrait taller, the choices on the
+Office Hours, Member Visit and Lobbyist Trade screens moved down into the middle
+band where a character's reply is shown. The previous reply's band stayed up after
+Continue and sat over the next question's choices, swallowing taps. Pressing
+Continue now takes the band down on all three screens.

@@ -210,6 +210,7 @@ func _on_choice(letter: String) -> void:
 func _on_continue() -> void:
 	if not _ready_to_play or _phase != "questions" or not _answered:
 		return
+	_banner.clear()   # the reply band would cover the next question's choices
 	_index += 1
 	if _index >= (_visit.get("questions", []) as Array).size():
 		_show_done()

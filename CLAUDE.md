@@ -769,3 +769,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Promise deadlines pause during a level; a level must end within the work week (2026-11-04, Cameron)
 - Legislative Work: carried bills move into their law pop-ups (2026-11-05, Cameron)
 - An extra member visit on drafted bills; "Convince <member>" (2026-11-05, Cameron)
+- Bigger character portraits in rooms and visits (2026-11-05, Cameron)

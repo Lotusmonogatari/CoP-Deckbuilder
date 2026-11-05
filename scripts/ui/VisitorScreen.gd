@@ -244,6 +244,9 @@ func _on_continue() -> void:
 	_clear_effect_chips()
 	if not _ready_to_play or not _answered or engine == null:
 		return
+	# The last reply's band comes down with Continue: it sits over the middle
+	# of the screen, where the next visitor's choices now are (2026-11-05).
+	_banner.clear()
 	engine.advance()
 	if engine.is_finished():
 		_show_outcome()

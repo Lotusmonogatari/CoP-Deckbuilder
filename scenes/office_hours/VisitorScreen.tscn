@@ -89,7 +89,7 @@ theme_override_constants/separation = 20
 
 [node name="Portrait" type="Control" parent="Safe/Column/VisitorRow"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 320)
+custom_minimum_size = Vector2(420, 760)
 layout_mode = 2
 script = ExtResource("2_jdp6y")
 kind = 3

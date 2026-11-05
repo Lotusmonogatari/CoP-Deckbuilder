@@ -100,7 +100,7 @@ autowrap_mode = 3
 [node name="OpponentRow" type="VBoxContainer" parent="Safe/Column"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 8.0
 theme_override_constants/separation = 16
 
 [node name="ArtBox" type="Control" parent="Safe/Column/OpponentRow"]
@@ -112,7 +112,7 @@ size_flags_vertical = 3
 [node name="PlayerPortrait" type="Control" parent="Safe/Column/OpponentRow/ArtBox"]
 unique_name_in_owner = true
 layout_mode = 0
-anchor_top = 0.30
+anchor_top = 0.0
 anchor_right = 0.46
 anchor_bottom = 1.0
 script = ExtResource("2_3oymq")
@@ -121,7 +121,7 @@ script = ExtResource("2_3oymq")
 unique_name_in_owner = true
 layout_mode = 0
 anchor_left = 0.54
-anchor_top = 0.30
+anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("2_3oymq")

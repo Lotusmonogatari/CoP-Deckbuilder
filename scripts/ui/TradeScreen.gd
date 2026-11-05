@@ -320,6 +320,7 @@ func _on_continue() -> void:
 	if not _ready_to_play:
 		return
 	if _phase == "rounds" and _answered:
+		_banner.clear()   # the reply band would cover the next round's choices
 		_round += 1
 		if _round >= (_trade.get("questions", []) as Array).size():
 			_show_package()
