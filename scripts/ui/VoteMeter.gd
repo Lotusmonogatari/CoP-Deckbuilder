@@ -6,6 +6,7 @@ extends Control
 ## own block and a mark where the Aye votes needed end.
 
 const BAR_HEIGHT := 36.0
+const BORDER := 3.0   ## the gold edge along the top and bottom
 const LABEL_HEIGHT := 150.0
 const HEIGHT := LABEL_HEIGHT + BAR_HEIGHT
 const PASS_COLOUR := Color(0.25, 0.65, 0.35)
@@ -48,11 +49,15 @@ func _draw() -> void:
 		[_abstain, ABSTAIN_COLOUR, Text.say("floor_vote.tile_abstain")],
 		[_nay, NAY_COLOUR, Text.say("floor_vote.tile_nay")],
 	]
+	var parts: Array = []
 	for block: Array in blocks:
 		var width: float = float(block[0]) * per_seat
-		draw_rect(Rect2(x, bar_top, width, BAR_HEIGHT), block[1])
+		parts.append([block[0], block[1]])
 		centres.append(x + width / 2.0)
 		x += width
+	# The cue band's slant and thin gold top and bottom (SlantBar, 2026-11-05).
+	var bar := Rect2(0, bar_top, size.x, BAR_HEIGHT)
+	SlantBar.draw_parts(self, bar, parts, BORDER)
 	# Counts sit over their own block, nudged apart only if they would collide.
 	for i in range(1, centres.size()):
 		centres[i] = maxf(centres[i], centres[i - 1] + MIN_GAP)
@@ -66,6 +71,8 @@ func _draw() -> void:
 			HORIZONTAL_ALIGNMENT_CENTER, MIN_GAP, NUMBER_SIZE, colour)
 		draw_string(font, Vector2(left, 125.0), str(blocks[i][2]),
 			HORIZONTAL_ALIGNMENT_CENTER, MIN_GAP, CAPTION_SIZE, Color(0.85, 0.85, 0.9))
-	var mark := float(_needed) * per_seat
-	draw_rect(Rect2(mark - 4.0, bar_top - 8.0, 8.0, BAR_HEIGHT + 16.0), Color(0.1, 0.1, 0.12))
-	draw_rect(Rect2(mark - 2.0, bar_top - 6.0, 4.0, BAR_HEIGHT + 12.0), Color(1.0, 0.85, 0.2))
+	# Where the Aye votes needed end: a dark line with a gold one on it, at the
+	# bar's own slant.
+	var needed_at := float(_needed) / float(house)
+	SlantBar.draw_mark(self, bar, needed_at, Color(0.1, 0.1, 0.12), 8.0, 8.0)
+	SlantBar.draw_mark(self, bar, needed_at, Color(1.0, 0.85, 0.2), 4.0, 6.0)

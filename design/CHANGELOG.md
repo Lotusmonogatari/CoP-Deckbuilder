@@ -3387,3 +3387,16 @@ Continue now takes the band down on all three screens.
 
 Checked on a real screen with a hand wider than the screen (bar and hand follow each
 other both ways) and with `test_hand_scroll_bar.gd` (3 tests).
+
+## Score bars take the cue band's slant and gold edges (2026-11-05, Cameron)
+
+| Change | What it does |
+|---|---|
+| Slanted sides | The support bar (a battle's win bar), the Floor Vote result bar (Aye / Abstain / Nay) and the three party bars under it lean at the cue band's own angle: the top edge sits 0.18 of the bar's height to the right of the bottom edge. Every division inside a bar, the threshold line and the "votes needed" mark lean the same way. |
+| Gold edges | A thin gold border along the top and bottom of each bar (4 px on the support bar, 3 px on the other two; the band's is 8 px on a taller box), in the band's gold (`CueBanner.EDGE_COLOUR`). None down the sides, as on the band. |
+| How | A new `SlantBar` helper draws all three, so they always match each other. `CueBanner` now takes its slant from `SlantBar.SLANT`, so changing it moves the band and the bars together. |
+
+Checked on a real screen (a battle, and a Floor Vote result) and with
+`test_slant_bar.gd` (5 tests of the geometry). The bars have the same height as
+before, so the slant is subtle (about 10 px across the support bar), the same angle
+as the band rather than the same width of lean.

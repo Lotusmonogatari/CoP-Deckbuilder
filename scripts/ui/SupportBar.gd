@@ -53,6 +53,9 @@ const NAME_LIMIT := 18
 
 const HEIGHT := 56.0
 
+## The gold border along the top and bottom, thin beside the cue band's 8.
+const BORDER := 4.0
+
 # Muted, and distinguishable without relying on colour alone: the player's
 # share is always leftmost and the threshold line is a hard edge.
 const PLAYER_COLOR := Color(0.36, 0.62, 0.85)
@@ -193,22 +196,18 @@ func _draw() -> void:
 
 	# Below the caption, which sits on the line above it.
 	var top := 44.0
-	var scale_x := width / float(maximum)
-
-	# Three blocks, left to right: yours, undecided, theirs. Drawing them in
-	# that order means the player's share always grows from the same edge.
-	var player_width := float(player) * scale_x
-	var opponent_width := float(opponent) * scale_x
-
-	draw_rect(Rect2(0, top, width, HEIGHT), UNDECIDED_COLOR)
-	draw_rect(Rect2(0, top, player_width, HEIGHT), PLAYER_COLOR)
+	# Three parts, left to right: yours, undecided, theirs, on the cue band's
+	# slant with its thin gold top and bottom (SlantBar, 2026-11-05).
+	var bar := Rect2(0, top, width, HEIGHT)
+	var parts: Array = [[player, PLAYER_COLOR]]
 	if two_sided:
-		draw_rect(Rect2(width - opponent_width, top, opponent_width, HEIGHT),
-			OPPONENT_COLOR)
+		parts.append([maxi(maximum - player - opponent, 0), UNDECIDED_COLOR])
+		parts.append([opponent, OPPONENT_COLOR])
+	else:
+		parts.append([maxi(maximum - player, 0), UNDECIDED_COLOR])
+	SlantBar.draw_parts(self, bar, parts, BORDER, float(maximum))
 
 	# The threshold. Drawn last so nothing covers it, and not at all when
 	# there is nothing to reach.
 	if has_threshold:
-		var line_x := float(threshold) * scale_x
-		draw_line(Vector2(line_x, top - 8.0), Vector2(line_x, top + HEIGHT + 8.0),
-			THRESHOLD_COLOR, 3.0)
+		SlantBar.draw_mark(self, bar, float(threshold) / float(maximum), THRESHOLD_COLOR, 3.0)

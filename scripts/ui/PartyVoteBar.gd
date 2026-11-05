@@ -29,19 +29,16 @@ func show_segments(segments: Array[Dictionary]) -> void:
 
 func _draw() -> void:
 	var width := size.x
-	var total := 0
-	for segment: Dictionary in _segments:
-		total += int(segment.get("votes", 0))
-	if width <= 0.0 or total <= 0:
-		draw_rect(Rect2(0, 0, width, HEIGHT), Color(0.28, 0.30, 0.36))
-		return
-
-	var scale_x := width / float(total)
-	var x := 0.0
+	var bar := Rect2(0, 0, width, HEIGHT)
+	var parts: Array = []
 	for segment: Dictionary in _segments:
 		var votes := int(segment.get("votes", 0))
-		if votes <= 0:
-			continue
-		var segment_width := float(votes) * scale_x
-		draw_rect(Rect2(x, 0, segment_width, HEIGHT), segment.get("color", Color.GRAY))
-		x += segment_width
+		if votes > 0:
+			parts.append([votes, segment.get("color", Color.GRAY)])
+	if width <= 0.0:
+		return
+	# Nobody in this bucket: an empty track. Otherwise one part per party, on
+	# the cue band's slant with its thin gold top and bottom (SlantBar).
+	if parts.is_empty():
+		parts = [[1, Color(0.28, 0.30, 0.36)]]
+	SlantBar.draw_parts(self, bar, parts, 3.0)

@@ -206,8 +206,9 @@ func _present(entry: Dictionary) -> void:
 	_band_box.border_color = EDGE_COLOUR
 	# Slanted the way the speaker is facing: forward for the player, back
 	# for the other side.
+	# SlantBar.SLANT is the same angle, so the score bars always match.
 	_band_box.skew = Vector2(0.0 if entry["side"] == PHASE
-		else (0.18 if entry["side"] == PLAYER else -0.18), 0.0)
+		else (SlantBar.SLANT if entry["side"] == PLAYER else -SlantBar.SLANT), 0.0)
 	_speaker.text = str(entry["speaker"])
 	_tag.visible = not _speaker.text.is_empty()
 	_tag.size_flags_horizontal = (Control.SIZE_SHRINK_CENTER if entry["side"] == PHASE

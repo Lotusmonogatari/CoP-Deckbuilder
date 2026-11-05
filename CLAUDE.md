@@ -771,3 +771,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - An extra member visit on drafted bills; "Convince <member>" (2026-11-05, Cameron)
 - Bigger character portraits in rooms and visits (2026-11-05, Cameron)
 - The hand's scroll bar moves above the cards, in gold (2026-11-05, Cameron)
+- Score bars take the cue band's slant and gold edges (2026-11-05, Cameron)
