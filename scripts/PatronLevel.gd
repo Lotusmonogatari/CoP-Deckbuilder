@@ -14,6 +14,9 @@ extends RefCounted
 const LEVEL_PREFIX := "PL_"
 
 
+## A level holds at most this many stages (stage_1 to stage_10).
+const MAX_STAGES := 10
+
 static func patron_bill(patron_bill_id: String) -> Dictionary:
 	for row: Dictionary in DataDB.patron_bills:
 		if str(row.get("patron_bill_id", "")) == patron_bill_id:
@@ -128,6 +131,16 @@ static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenera
 			not visit.is_empty(), not trade.is_empty())
 	if stages.is_empty():
 		return {}
+	# A drafted bill may add one more member visit, just before the vote
+	# (Cameron, 2026-11-05): a second Member Visit and Win Over a Member pair, with
+	# a different member where one is available.
+	var visits: Array = [] if visit.is_empty() else [visit]
+	if bool(row.get("extra_visit", false)) and stages.size() + 2 <= MAX_STAGES:
+		var extra := build_extra_visit(template, bill, visit, rng)
+		if not extra.is_empty():
+			visits.append(extra)
+			stages.insert(stages.size() - 1, MpVisit.VISIT_STAGE)
+			stages.insert(stages.size() - 1, MpVisit.FIGHT_STAGE)
 	stages[stages.size() - 1] = str(bill.get("bill_id", ""))
 	var level := {
 		"level_id": level_id_for(str(row.get("patron_bill_id", ""))),
@@ -135,8 +148,9 @@ static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenera
 		"tier": template.get("level_tier"),
 		"patron_bill_id": str(row.get("patron_bill_id", "")),
 	}
-	if not visit.is_empty():
-		level["visit"] = visit
+	# The visits, in the order their stages come up (visit_key()).
+	for index in range(visits.size()):
+		level[visit_key(index + 1)] = visits[index]
 	# The opening visitor from the sponsoring organization, when the template
 	# opens with one (PATRON_VISIT).
 	if _template_has(template, "PATRON_VISIT"):
@@ -167,7 +181,41 @@ static func build_visit(template: Dictionary, bill: Dictionary, rng: RandomNumbe
 	var chance_cell: Variant = template.get("visit_chance_percent")
 	if chance_cell != null and int(chance_cell) < 100 and rng.randi_range(1, 100) > int(chance_cell):
 		return {}
+	return _draw_visit(template, bill, rng, "", "")
+
+
+## The one extra member visit a drafted bill may add (2026-11-05): drawn like
+## the first, from a party other than the first visit's when another has seats
+## left to win, and never the same member. {} when no party has a seat left.
+static func build_extra_visit(template: Dictionary, bill: Dictionary, first_visit: Dictionary,
+		rng: RandomNumberGenerator) -> Dictionary:
+	var first_party := str(first_visit.get("party_id", ""))
+	var first_member := str(first_visit.get("opp_id", ""))
+	var other := _draw_visit(template, bill, rng, first_party, first_member)
+	if not other.is_empty() or first_party.is_empty():
+		return other
+	return _draw_visit(template, bill, rng, "", first_member)
+
+
+## Whether any party in the template still has a seat outside the player's side
+## (a Yes), so an extra member visit has someone to win over.
+static func extra_visit_possible(template: Dictionary, bill: Dictionary) -> bool:
 	var parties: Array = template.get("visit_parties", []) as Array if template.get("visit_parties") is Array else []
+	return not MpVisit.pick_party(parties, bill.get("positions", []) as Array, "Yes").is_empty()
+
+
+## A level's key for its Nth visit: "visit" for the first, "visit_2" for the second.
+static func visit_key(index: int) -> String:
+	return "visit" if index <= 1 else "visit_%d" % index
+
+
+## Draws one visit: a party (not `skip_party`) with seats outside Yes, a member
+## of it (not `skip_member`), and the questions. {} when there is nobody.
+static func _draw_visit(template: Dictionary, bill: Dictionary, rng: RandomNumberGenerator,
+		skip_party: String, skip_member: String) -> Dictionary:
+	var parties: Array = template.get("visit_parties", []) as Array if template.get("visit_parties") is Array else []
+	if not skip_party.is_empty():
+		parties = parties.filter(func(party_id: Variant) -> bool: return str(party_id) != skip_party)
 	var party_id := MpVisit.pick_party(parties, bill.get("positions", []) as Array, "Yes", rng)
 	if party_id.is_empty():
 		return {}
@@ -175,7 +223,8 @@ static func build_visit(template: Dictionary, bill: Dictionary, rng: RandomNumbe
 	var committee := str(DataDB.get_stage(str(bill.get("hearing_stage", ""))).get("name_en", ""))
 	var opponents: Array = []
 	for opponent: Dictionary in DataDB.opponents:
-		opponents.append(opponent)
+		if skip_member.is_empty() or str(opponent.get("opp_id", "")) != skip_member:
+			opponents.append(opponent)
 	var member := MpVisit.pick_member(opponents, str(party.get("name", "")), committee, GameState.faced_people, rng,
 		3, int(DataDB.balance.get("mp_visit_committee_member_percent", 50)))
 	if member.is_empty():
@@ -278,10 +327,7 @@ static func build_trade(template: Dictionary, row: Dictionary, bill: Dictionary,
 ## Starting support the one-on-one fight gives the player from the visit's
 ## rapport (0 when no visit is in progress).
 static func visit_start_bonus() -> int:
-	var level: Variant = GameState.patron_runtime.get("level")
-	if not (level is Dictionary):
-		return 0
-	var visit: Dictionary = (level as Dictionary).get("visit", {})
+	var visit := GameState.current_visit()
 	return MpVisit.start_bonus(int(visit.get("rapport", 0)), int(DataDB.balance.get("mp_visit_rapport_start_per_point", 5)))
 
 

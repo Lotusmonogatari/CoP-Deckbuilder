@@ -1616,7 +1616,9 @@ func level_hours(level: Dictionary) -> int:
 		var slot := str(raw)
 		if slot.is_empty() or slot == "N/A":
 			continue
-		if slot.begins_with("BI"):
+		# A bill's vote counts as the Floor Vote room: a written bill ("BI..") or
+		# a sponsored or drafted one (its runtime id).
+		if BattleSetup._is_bill_id(slot):
 			slot = "ST23"
 		total += TimeClock.units_for_stage(DataDB.get_stage(slot))
 	return total
@@ -4225,24 +4227,30 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 
 
 ## Why a bill of `ids` cannot be drafted now ("" when it can).
-func draft_refusal(ids: Array) -> String:
+func draft_refusal(ids: Array, extra_visit: bool = false) -> String:
 	return DraftBill.refusal(ids, {"enacted": enacted_components, "xp": xp, "funds": int(meta.get("Funds", 0)),
-		"time_units": time_units, "last_draft_at": last_draft_at, "in_level": is_in_level()})
+		"time_units": time_units, "last_draft_at": last_draft_at, "in_level": is_in_level(),
+		"extra_visit": extra_visit})
 
 
 ## Drafts a bill from `ids`: pays the cost, files it as a runtime patron row
 ## and starts its level. False (nothing paid) when it cannot be drafted.
-func start_draft(ids: Array) -> bool:
-	if not draft_refusal(ids).is_empty():
+func start_draft(ids: Array, extra_visit: bool = false) -> bool:
+	if not draft_refusal(ids, extra_visit).is_empty():
 		return false
 	var draft_id := DraftBill.id_for(draft_counter + 1)
-	patron_drafts[draft_id] = DraftBill.row_for(draft_id, ids)
+	patron_drafts[draft_id] = DraftBill.row_for(draft_id, ids, extra_visit)
 	if not start_patron_level(draft_id):
 		patron_drafts.erase(draft_id)
 		return false
 	draft_counter += 1
 	last_draft_at = time_units
-	_move_xp(-int(DataDB.balance.get("draft_bill_xp_cost", 350)))
+	var xp_cost := int(DataDB.balance.get("draft_bill_xp_cost", 350))
+	# The extra member visit's XP, only when the level really got its second
+	# visit (a bill with no one left to win over never charges for it).
+	if extra_visit and not (DataDB.get_level(PatronLevel.level_id_for(draft_id)).get("visit_2", {}) as Dictionary).is_empty():
+		xp_cost += DraftBill.extra_visit_xp_cost()
+	_move_xp(-xp_cost)
 	_move_meta("Funds", -int(DataDB.balance.get("draft_bill_funds_cost", 300000)))
 	return true
 
@@ -4348,9 +4356,15 @@ func add_worked_against(party_id: String, seats: int = 1) -> void:
 ## to it are saved with the patron level).
 func current_visit() -> Dictionary:
 	var level: Variant = patron_runtime.get("level")
-	if level is Dictionary and (level as Dictionary).get("visit") is Dictionary:
-		return (level as Dictionary)["visit"]
-	return {}
+	if not (level is Dictionary):
+		return {}
+	# A drafted bill may have a second visit (2026-11-05): the stage in progress
+	# says which one it belongs to; with no stage in progress it is the first.
+	var index := 1
+	if level_runner != null and not level_runner.is_finished():
+		index = int(level_runner.current_stage().get("visit_index", 1))
+	var visit: Variant = (level as Dictionary).get(PatronLevel.visit_key(index))
+	return visit if visit is Dictionary else {}
 
 
 ## The one-on-one fight was won: the member is won over for this vote.

@@ -3339,3 +3339,16 @@ that costs hours). Those hours spill away as before. Tests:
 Checked on a real screen with one carried and one ordinary bill: the heading reads
 Legislative Work, the old section is absent, and only the carried bill's pop-up
 carries the two lines. The button text itself is unchanged.
+
+## An extra member visit on drafted bills; "Convince <member>" (2026-11-05, Cameron)
+
+| Change | What it does |
+|---|---|
+| Draft toggle | The Draft a Bill screen has a button, "Add a second member visit (2 Hours, 50 XP)". Tap again to remove it. It is greyed out, with a reason ("No member left to win over for this bill."), when every party is already fully on the player's side of the vote. Drafts only; sponsored bills do not offer it. |
+| Where it sits | One more Member Visit and Win Over a Member pair, directly before the vote (after the lobbyist trade). It is added on top of whatever the template already gives, so a Flagship draft (three parts, always a visit) gets two, and a Favor draft (two parts, a visit half the time) gets one or two. |
+| Who | A different party from the first visit's when another has a seat left to win, else another member of the same party; never the same member twice. Same questions, rapport and fight as the first visit. Winning each fight wins 1 seat. Declining one visit keeps the other. |
+| Cost | 50 XP on top of the draft's 350 (`Draft Bill: Extra Visit XP Cost`, Balance), paid only if the level really gets its second visit. The visit and the fight are **1 hour each**, so 2 hours: the Stages tab's Time Units for ST260 and ST261 were 2 each and are now 1 each. That also shortens every existing member-visit level (sponsored and drafted) by 2 hours. The work-week rule applies, so a draft that would not fit this week is refused with nothing paid. |
+| Fight title | The Win Over a Member fight (ST261) is titled "Convince <member's name>" (`stage.convince_member`). The Stages tab's own name is now "Convince Your Colleague", the fallback shown when no member is known. |
+| How it is built | A level holds `visit` and `visit_2`; each visit stage records `visit_index` (1 or 2, by order in the level), and `GameState.current_visit()` and the start bonus read the one in progress. Old saves load unchanged. `DraftBill.row_for()` records `extra_visit`. Also fixed: `GameState.level_hours()` did not recognise a sponsored or drafted bill's vote slot as the Floor Vote room (it only matched "BI..") and fell back to the default of one hour, which happened to be the same number. |
+
+Checked with real clicks: the toggle flips, Draft charges 400 XP, and the level ends trade, extra visit, fight, vote. Tests: `test_extra_visit.gd` (12).

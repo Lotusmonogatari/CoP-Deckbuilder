@@ -134,6 +134,8 @@ var _week_watch: Timer
 var _building := false
 var _new_week_panel: Overlay
 var _draft_ids: Array = []
+## The draft adds a second member visit (2026-11-05).
+var _draft_extra_visit := false
 var _draft_org := ""
 var _request_replace := ""
 var _request_with := ""
@@ -2946,6 +2948,7 @@ func _open_draft(fresh: bool = false) -> void:
 	if fresh:
 		_draft_ids = []
 		_draft_org = ""
+		_draft_extra_visit = false
 	var by_id := ComposedBill.index(DataDB.bill_components)
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("draft.intro", {
@@ -2988,7 +2991,22 @@ func _open_draft(fresh: bool = false) -> void:
 			draft_chips.append({"id": org_id, "delta": int(effect.get("delta", 0))})
 		if not draft_chips.is_empty():
 			rows.append(OrgChip.row(OrgChip.merged(draft_chips), true))
-	var go := UiKit.action_button(Text.say("draft.go"), GameState.draft_refusal(_draft_ids), _on_draft_go, 110.0)
+	# An extra member visit, just before the vote: a second Member Visit and
+	# Win Over a Member pair (2026-11-05). Costs hours and XP; refused, with a
+	# reason, when no member is left to win over.
+	if _draft_ids.size() >= DraftBill.MIN_PARTS:
+		var extra_hours := TimeClock.units_for_stage(DataDB.get_stage(MpVisit.VISIT_STAGE)) \
+			+ TimeClock.units_for_stage(DataDB.get_stage(MpVisit.FIGHT_STAGE))
+		var extra_args := {"count": extra_hours, "xp": DraftBill.extra_visit_xp_cost()}
+		var extra_refusal := DraftBill.extra_visit_refusal(_draft_ids)
+		if not extra_refusal.is_empty():
+			_draft_extra_visit = false   # parts changed to a bill with no one left to win over
+		var extra := UiKit.action_button(
+			Text.say("draft.extra_visit_on" if _draft_extra_visit else "draft.extra_visit_off", extra_args),
+			extra_refusal, _draft_toggle_extra_visit, 90.0)
+		extra.name = "DraftExtraVisit"
+		rows.append(extra)
+	var go := UiKit.action_button(Text.say("draft.go"), GameState.draft_refusal(_draft_ids, _draft_extra_visit), _on_draft_go, 110.0)
 	go.name = "DraftGoButton"
 	rows.append(go)
 
@@ -3040,8 +3058,13 @@ func _draft_toggle(component_id: String) -> void:
 	_open_draft()
 
 
+func _draft_toggle_extra_visit() -> void:
+	_draft_extra_visit = not _draft_extra_visit
+	_open_draft()
+
+
 func _on_draft_go() -> void:
-	if not GameState.start_draft(_draft_ids):
+	if not GameState.start_draft(_draft_ids, _draft_extra_visit):
 		_report.text = GameState.last_level_start_refusal if not GameState.last_level_start_refusal.is_empty() \
 			else Text.say("draft.cannot_start")
 		_draft_panel.close()

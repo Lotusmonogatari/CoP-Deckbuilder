@@ -6382,5 +6382,33 @@
     "english": "You carried this bill for {org}.",
     "placeholders": "org",
     "notes": "2026-11-05: shown at the top of a carried bill's pop-up, above the organization's own comment on how it went (Patron Bills). Replaces the old \"Bills you carried\" section."
+  },
+  {
+    "key": "stage.convince_member",
+    "where": "Battle screen, briefing — the one-on-one fight with a visiting member",
+    "english": "Convince {name}",
+    "placeholders": "name",
+    "notes": "2026-11-05 (Cameron): the Win Over a Member fight (ST261) is titled with the member it is against. Stages tab ST261 holds the fallback, \"Convince Your Colleague\", for when the member is not known."
+  },
+  {
+    "key": "draft.extra_visit_off",
+    "where": "Draft a Bill — extra member visit button",
+    "english": "Add a second member visit ({count} Hours, {xp} XP)",
+    "placeholders": "count, xp",
+    "notes": "2026-11-05 (Cameron). Adds one more member visit and one-on-one fight, just before the vote."
+  },
+  {
+    "key": "draft.extra_visit_on",
+    "where": "Draft a Bill — extra member visit button, on",
+    "english": "Second member visit added ({count} Hours, {xp} XP). Tap to remove it.",
+    "placeholders": "count, xp",
+    "notes": "2026-11-05 (Cameron)."
+  },
+  {
+    "key": "draft.extra_visit_none",
+    "where": "Draft a Bill — extra member visit button, refused",
+    "english": "No member left to win over for this bill.",
+    "placeholders": null,
+    "notes": "2026-11-05 (Cameron). Every party is already fully on the player's side of the vote."
   }
 ]

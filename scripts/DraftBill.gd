@@ -26,10 +26,32 @@ static func id_for(number: int) -> String:
 
 
 ## The runtime patron-bill row: no organization, no ally, flagged as a draft.
-static func row_for(draft_id: String, ids: Array) -> Dictionary:
+static func row_for(draft_id: String, ids: Array, extra_visit: bool = false) -> Dictionary:
 	var kind := kind_for(ids.size())
-	return {"patron_bill_id": draft_id, "organization": "", "kind": kind, "ally": "",
+	var row := {"patron_bill_id": draft_id, "organization": "", "kind": kind, "ally": "",
 		"components": ids.duplicate(), "template_id": template_for(kind), "draft": true}
+	if extra_visit:
+		row["extra_visit"] = true
+	return row
+
+
+## XP the extra member visit adds to the draft's cost (Balance).
+static func extra_visit_xp_cost() -> int:
+	return int(DataDB.balance.get("draft_bill_extra_visit_xp_cost", 50))
+
+
+## Why `ids` cannot take an extra member visit: no party has a seat left to
+## win over. "" when it can. (Whether the player can pay is refusal()'s job.)
+static func extra_visit_refusal(ids: Array) -> String:
+	if ids.size() < MIN_PARTS or ids.size() > MAX_PARTS:
+		return ""
+	var template: Dictionary = {}
+	for candidate: Dictionary in DataDB.bill_level_templates:
+		if str(candidate.get("template_id", "")) == template_for(kind_for(ids.size())):
+			template = candidate
+	if PatronLevel.extra_visit_possible(template, bill_for(ids)):
+		return ""
+	return Text.say("draft.extra_visit_none")
 
 
 ## The bill these parts would make (same composition as a request).
@@ -66,6 +88,11 @@ static func refusal(ids: Array, state: Dictionary) -> String:
 	if last >= 0 and int(state.get("time_units", 0)) - last < cooldown:
 		return Text.say("draft.cooldown")
 	var xp_cost := int(DataDB.balance.get("draft_bill_xp_cost", 350))
+	if bool(state.get("extra_visit", false)):
+		var why_not := extra_visit_refusal(ids)
+		if not why_not.is_empty():
+			return why_not
+		xp_cost += extra_visit_xp_cost()
 	var funds_cost := int(DataDB.balance.get("draft_bill_funds_cost", 300000))
 	if int(state.get("xp", 0)) < xp_cost or int(state.get("funds", 0)) < funds_cost:
 		return Text.say("draft.cost", {"xp": xp_cost, "funds": Phrase.with_separators(funds_cost)})

@@ -161,7 +161,9 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 		# questions were drawn when the patron level was built (PatronLevel).
 		stage["opponents"] = []
 		stage["visitors"] = []
-		stage["visit"] = (DataDB.get_level(level_id).get("visit", {}) as Dictionary).duplicate(true)
+		var visit_index := _visit_index(level_id, stage_id, slot)
+		stage["visit_index"] = visit_index
+		stage["visit"] = (DataDB.get_level(level_id).get(PatronLevel.visit_key(visit_index), {}) as Dictionary).duplicate(true)
 		stage["question_pool_size"] = 0
 		return stage
 	elif str(stage.get("mode", "")) == "Non-combat":
@@ -192,9 +194,15 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 		stage["visitors"] = []
 		if stage_id == MpVisit.FIGHT_STAGE:
 			# The one-on-one fight is against the member who visited.
-			var visit: Dictionary = DataDB.get_level(level_id).get("visit", {})
+			var visit_index := _visit_index(level_id, stage_id, slot)
+			stage["visit_index"] = visit_index
+			var visit: Dictionary = DataDB.get_level(level_id).get(PatronLevel.visit_key(visit_index), {})
 			var member := DataDB.get_opponent(str(visit.get("opp_id", ""))) if not visit.is_empty() else {}
 			stage["opponents"] = [member] if not member.is_empty() else []
+			# "Convince <the member>" (Cameron, 2026-11-05); the Stages tab's own
+			# name, "Convince Your Colleague", stays when no member is known.
+			if not member.is_empty():
+				stage["name_en"] = Text.say("stage.convince_member", {"name": str(member.get("name", member.get("name_en", "")))})
 
 	# LevelRunner.problems() needs to know whether a stage has anything to
 	# push back with — opponents, or questions — before it can be played,
@@ -220,6 +228,18 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 		+ DataDB.get_stage_questions(stage_id).size() + bill_questions_for(bill_id, stage_id).size())
 
 	return stage
+
+
+## Which member visit a Member Visit or Win Over a Member stage belongs to:
+## 1 for the first such stage in the level, 2 for the second. A stage added
+## to a running level (`slot` below 1) counts as the first.
+static func _visit_index(level_id: String, stage_id: String, slot: int) -> int:
+	var level := DataDB.get_level(level_id)
+	var earlier := 0
+	for number in range(1, slot):
+		if str(level.get("stage_%d" % number, "")) == stage_id:
+			earlier += 1
+	return earlier + 1
 
 
 ## The questions written about a bill (Stage Questions rows with a Bill ID)
