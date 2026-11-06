@@ -204,3 +204,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The hand's scroll bar moves above the cards, in gold (2026-11-05, Cameron)
 - Score bars take the cue band's slant and gold edges (2026-11-05, Cameron)
 - Documentation review: new references, a slim brief, September and October summarized (2026-11-06, Cameron)
+- Mechanic Coherence and Clarity Test: expert pass, touch-target and keyword audits, player-test kit (2026-11-06, Cameron)

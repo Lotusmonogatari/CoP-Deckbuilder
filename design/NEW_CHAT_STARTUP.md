@@ -84,7 +84,8 @@ Details are the sections at the end of `design/CHANGELOG.md`. In short: opponent
 | 5 | Unused stored numbers | `segment_favorability` is stored but read by nothing since staff rewards moved to organizations; the Sanban tab's low/high "consequence" notes are text only |
 | 6 | Cleanup | `design/CLEANUP_CANDIDATES.md` (old working papers in `design/review/`, `design/proposals/`, `design/bench/`, balance audits) awaits Cameron's approval |
 | 7 | Ministers | Five ministers sit in every TV debate; Cameron chose to leave it |
-| 8 | Branches | Four old remote branches (`ccr-1bbd9851-yg8on5`, `claude/happy-ramanujan-e0mrxj`, `claude/optimistic-noether-1j0yqh`, `claude/new-session-s1juv4`) could not be deleted from a session (no permission); Cameron asked for them to be deleted, so he must do it on GitHub |
+| 8 | MC²T results | `design/review/MC2T_REPORT_2026-11-06.md`: touch targets (93% under 44 pt), no mid-stage save, "Boosters" naming clash; kit ready for a 5-player round on a real phone. Decisions are Cameron's |
+| 9 | Branches | Four old remote branches (`ccr-1bbd9851-yg8on5`, `claude/happy-ramanujan-e0mrxj`, `claude/optimistic-noether-1j0yqh`, `claude/new-session-s1juv4`) could not be deleted from a session (no permission); Cameron asked for them to be deleted, so he must do it on GitHub |
 
 ## 8. A good first message
 

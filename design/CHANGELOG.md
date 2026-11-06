@@ -598,3 +598,19 @@ as the band rather than the same width of lean.
 | Stale facts corrected | Party dues take **15%** of the week's Funds, not 30% (the Balance row; a comment and two documents said 30%); standing decay runs **once a week**, not at the end of every level; the game has **32 organizations**, not ten; XP is spent on much more than a "checkpoint"; shop item IDs had been renumbered, so comments citing SH13 to SH19, SH25 and SH26 were rewritten to the current items (the Fund Limit petition is SH13, the Staff Training Consultancy SH12, card training SH09 to SH11); the comments saying saving was not built were removed; `stage_types.json` no longer exists |
 | Code comments only | `GameState.gd`, `DataDB.gd`, `OfficeScreen.gd`, `OutcomePresenter.gd`, `InventoryPanel.gd`, `Ledger.gd`, `Items.gd`, `RewardTargets.gd`, `PartyDues.gd`, `BattleEngine.gd`; and `tools/build_visitor_scene.gd` now builds the 420 × 760 portrait the scene has (one number) |
 | Noted for Cameron, not changed | `design/CLEANUP_CANDIDATES.md` lists historical working papers (nothing deleted) and four findings: `segment_favorability` is stored but read by nothing; the Sanban low/high "consequence" cells are text only; a switched-off second decay path; an unused level-purchase function |
+
+## Mechanic Coherence and Clarity Test: expert pass and test kit (2026-11-06, Cameron)
+
+**What:** Cameron supplied a research protocol (MC²T) for judging whether a mobile deckbuilder's mechanics are clear and coherent to players. I ran every part that needs no participants and prepared the rest. No game content, layout or rules were changed.
+
+| Piece | Result |
+|---|---|
+| Touch-target audit (`tools/ui_target_audit*`) | Walks 21 real screens, measures 405 controls: 93% are under the iOS 44 pt minimum; the standard button is about 34 dp |
+| Keyword audit (`tools/mc2t_lexicon.py`) | No forbidden terms on screen; found "Boosters" naming both the backing shop button and an audience group, several words for standing, two discard phrasings |
+| Expert pass and scores | `design/review/MC2T_REPORT_2026-11-06.md`: provisional composite about 3.2; fails two mobile gates (touch targets, nothing saved mid-stage) pending real-phone tests |
+| Test kit (`tools/mc2t_kit.py`) | 12 predict-then-reveal items with answers computed from the game's own card rule, freeze probes, term definitions, recording sheet |
+| Protocol kept at | `design/reference/MC2T_PROTOCOL.md` |
+
+**Decisions waiting for Cameron:** taller buttons, a per-turn stage save, renaming the "Boosters" button to "Backings", and which opacities to declare intended (report sections 3 and 4).
+
+**Checked:** the tools run; `tools/verify.sh` passes.
