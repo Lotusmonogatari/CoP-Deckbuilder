@@ -134,7 +134,7 @@ var _outside_press: Variant = null
 
 
 func _ready() -> void:
-	# The picture under everything: BASE_BATTLE.png, else BASE.png (2026-10-31).
+	# The picture under everything: BASE_BATTLE.png if one exists, else BASE.png (2026-10-31).
 	BaseImage.install(self, "BATTLE")
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.show_label = false
