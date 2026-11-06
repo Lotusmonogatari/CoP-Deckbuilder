@@ -36,7 +36,7 @@ It rewrites `data/*.json` and prints a report. Read the last line:
 | What the player says, by suit (checked before Flavor Text) | **Player Cues** | Cue 1 – Cue 5 |
 | A question one particular stage asks (e.g. a committee) | **Stage Questions** | Question |
 | A question a reporter or lobbyist asks | **Press Questions** and its four siblings | Question |
-| Which organisation a question's theme belongs to | **Question Themes** | Organisation |
+| Which organization a question's theme belongs to | **Question Themes** | Organization |
 | How well each suit answers a question | the five question tabs | Earnest … Duplicitous |
 | Anything else on any screen | **Text** | English |
 | A level's description | **Levels** worksheet | Level Description |
@@ -131,8 +131,8 @@ for it at the right moment.
 ### 3a · By suit instead of by card — the **Player Cues** tab (2026-10-12)
 
 The game checks this tab **first**, and only uses a card's own Flavor Text
-lines when nothing here fits. It ships empty, so nothing changes until you
-write rows.
+lines when nothing here fits. A suit and verb with no row here keeps the
+card's own lines.
 
 | Column | What it is |
 |---|---|
@@ -159,7 +159,7 @@ a row naming a stage is used there before the any-stage rows.
 |---|---|
 | **Q ID** | Its name. Keep it unique within the tab. |
 | **Question** | What is asked. Edit freely. |
-| **Theme** | One word. This is what decides **which organisation** cares — see §5. |
+| **Theme** | One word. This is what decides **which organization** cares — see §5. |
 | **Earnest … Duplicitous** | `S`, `M` or `W` for each suit. |
 | Strong suits, Words, Sample answers | Your own checks. The game ignores them. |
 | **Asked By Party** | Optional: `PT05`, `PT03; PT06`, or `OWN` (the player's own party). Only someone of those parties who is in the room asks it; if nobody is, it is not asked there. Blank = anyone in the room. |
@@ -169,9 +169,9 @@ multiplier, not a tone cost):**
 
 | Grade | Answering in that suit |
 |---|---|
-| **S** | Boosts that card's own numbers 1.3× this round, and pleases the organisation behind the question. Standing carries between levels. |
+| **S** | Boosts that card's own numbers 1.3× this round, and pleases the organization behind the question. Standing carries between levels. |
 | **M** | Nothing either way. |
-| **W** | Cuts that card's own numbers to 0.7× this round, and annoys the same organisation a Strong answer would have pleased. No tone cost. |
+| **W** | Cuts that card's own numbers to 0.7× this round, and annoys the same organization a Strong answer would have pleased. No tone cost. |
 
 A grade that is not S, M or W is an **error** and the export names the
 question.
@@ -189,7 +189,7 @@ Same columns as the five room tabs, plus **Stage ID** (`ST16`, or
 its room's tab. A stage with no room tab (every committee, ST01 and
 ST09–ST18) asks **only** these, so writing rows for a committee is what makes
 it start asking questions. The Theme still decides who is pleased (§5), and
-whoever sits on the first stage named is the one asking. Ships empty.
+whoever sits on the first stage named is the one asking.
 
 ---
 
@@ -199,10 +199,10 @@ whoever sits on the first stage named is the one asking. Ships empty.
 a draft for review.** The **Why** column explains the reasoning, so a row can
 be reviewed without reading every related question.
 
-- **Organisation** must be a booster ID that exists in the current workbook.
+- **Organization** must be a booster ID that exists in the current workbook.
   Anything else is an error at export.
-- Change a theme's organisation and every question with that theme follows.
-- A theme with no organisation is a **warning**: answering those well pleases
+- Change a theme's organization and every question with that theme follows.
+- A theme with no organization is a **warning**: answering those well pleases
   nobody.
 
 ---
@@ -221,16 +221,16 @@ used playtest level has a separate hand-maintained configuration in
 
 Every bill voted on goes into **Legislative Work** (shown in Your Record),
 passed or failed. This tab says what that outcome does. One row per effect;
-a bill can have several rows. Ships empty, so nothing happens until you
-write rows.
+a bill can have several rows. A bill with no rows does nothing when it
+is voted on.
 
 | Column | What it is |
 |---|---|
 | **Law ID** | `LW01`, `LW02`… Unique. |
-| **Bill ID** | The bill, `BI01`–`BI30`. |
+| **Bill ID** | The bill, `BI01`–`BI50`. |
 | **Outcome** | `Passed` or `Failed`: the row applies only when the vote went that way. |
 | **Timing** | Blank or `Once` = once, at the vote. `Each level` = after every later level, win or loss (not the level that held the vote). |
-| **Effects** | Same list as a Shop item's Grants: `BO05 +3; SG02 -2; M09; SH04` (organisations, segments, a modifier, an item). |
+| **Effects** | Same list as a Shop item's Grants: `BO05 +3; SG02 -2; M09; SH04` (organizations, segments, a modifier, an item). |
 | **Constituency support / Reputation / Funds / Party support / XP** | Plain numbers, `+` or `-`. Blank = no change. |
 | **Note** | Your own reminder. The game ignores it. |
 

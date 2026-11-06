@@ -940,9 +940,8 @@ func _refresh_notices() -> void:
 
 ## What happened last time, if anything has happened yet.
 ##
-## GameState holds nothing between runs until milestone 4 builds saving, so
-## this currently only survives within one sitting. That is enough for the
-## loop to feel closed.
+## The outcome of the last finished level (GameState.last_level_outcome). It is
+## not saved: it only says what happened since the app was opened.
 func _last_level_report() -> String:
 	var outcome: Variant = GameState.last_level_outcome
 	if outcome == null or str(outcome).is_empty():
@@ -995,7 +994,7 @@ func _show_management() -> void:
 	_management_panel.open(Text.say("office.management"), rows)
 
 
-## The ten organisations, and where the player stands with each.
+## The organizations, and where the player stands with each.
 ##
 ## Grouped by tier rather than listed flat, because the tiers are the real
 ## distinction: a Constituency group is worth something different from a
@@ -1096,7 +1095,7 @@ func _with_booster_icon(booster_id: String, content: Control) -> Control:
 
 ## Rhetoric Training (Cameron, 2026-09-27): where new cards come from. One
 ## row per training session in shop.json — any item naming a "card_tier"
-## (SH15-17 for XP, SH27-29 for Yen). "See a card" draws one random card of
+## (SH09-SH11, paid in XP). "See a card" draws one random card of
 ## that tier the player doesn't own yet and shows it; nothing is paid until
 ## the player chooses to learn it (GameState.offer_random_card() /
 ## learn_offered_card()). Replaced the old "New cards" list, which let any
@@ -2235,7 +2234,7 @@ func _price_text(item: Dictionary) -> String:
 
 
 ## Three kinds of Supplies item (level_tier/unlocks_recruitment_tier/
-## funds_cap_increase, SH13-14/SH18/SH19) take effect the
+## funds_cap_increase; today SH09-SH11, SH12 and SH13) take effect the
 ## moment they are bought instead of going into the inventory to be Used
 ## later like every other item here — Cameron, 2026-09-26: they never had
 ## anywhere to apply their effect (Use In Office/Stage both blank), and

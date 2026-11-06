@@ -59,3 +59,28 @@ No test was found that covers a removed feature. The two click tests that `verif
 
 - **Done 2026-11-03 (Cameron: "Go clean up")**: these 11 rows were deleted from the Text tab. Original note: Text rows no longer asked for after the card face dropped the audience and bonus commentary and the "Answers this question." line: `card.answers_question`, `card.received_bonus`, `card.bonus_met`, `card.bonus_unmet`, `card.double_met`, `card.double_unmet`, `card.scale_now`, `card.behind_met`, `card.behind_unmet`, `card.gaffe_zero_met`, `card.gaffe_zero_unmet`.
 - `SpecialEffects` still records `flags.special_bonus` (how much a conditional bonus added); nothing reads it now.
+
+## Added 2026-11-06 (documentation review): working papers that look historical
+
+Nothing below was deleted. The change log, the guides and the code are now the record of what was built; these files are the working papers behind them. Each needs a fresh check and Cameron's approval before it goes. Everything stays recoverable from git history.
+
+| Group | Files | Why a candidate |
+|---|---|---|
+| Superseded reports | `design/MECHANIC_COVERAGE.md` (2026-09-28), `REVIEW_2026-10-14.md`, `STRESS_LATE_GAME_2026-10-14.md`, `UI_PLAYER_REVIEW.md`, `TERMINOLOGY_REVIEW_2026-10-16.md`, `JAPANESE_TEXT_REVIEW_2026-10-15.md`, `BILL_BOOSTER_PARTY_REPORT_2026-10-13.md`, `DYNAMIC_SCREEN_PLAN.md`, `THEME_REBALANCE_PROPOSAL.md` | Findings were applied; the decisions live in `INFORMATION_STANDARDS.md` and the change log summary |
+| Balance audits | `design/BALANCE_AUDIT*.md` (five files plus the `.flags.json` files), `BALANCE_AUDIT_PROCESS.md`, `design/review/BALANCE_AUDIT_2026-10-31.md`, `design/bench/balance_logs_2026-10.tar.gz` | The 2026-10-18 audit retuned the game; the latest numbers are in the workbook |
+| Plans already built | In `design/proposals/`: the patron-bill build plan, calendar and dues plan, custom bill mode, discard cards plan, district activities, guest events, office hours, inventory, intro screen, staff firing, stage rules columns, TV debate threshold, bill stages plan, choices and commitments plan, difficulty option, opponent cue expansion plan, component code plan, party activists plan, code simplification plan and prompt | The features exist; see `GAME_SYSTEMS.md` |
+| Ideas not built | `AUDIO_PLAN`, `AUDIO_BRIEF`, `CAMPAIGN_LAYER_IDEATION`, `PARTY_CAPITAL_IDEATION`, `CARD_EFFECTS_IDEATION`, `INFLUENCE_BUILDING_*`, `UI_PROPOSALS`, `CONTENT_AND_STAGE_GAPS` | **Keep**: these are open ideas, the audio plan especially |
+| Code review slices | `design/review/findings_slice*.md` (40 files) | The output of one code review; fixes were applied (see the 2026-10-14 sections of the old change log) |
+| Content review and audit papers | `design/review/` (the `*_AUDIT_*`, `*_REVIEW_*`, `REWRITTEN_QUESTIONS_2026-10-25.md`, `TITLES_AND_THEMES_2026-10-31.md`, `PROMISE_WORDING`, `OPEN_ITEMS`, `DECISIONS`, `FIXES_APPLIED` files), `design/drafts/`, `design/archive/` | Applied; `OPEN_ITEMS_2026-10-31.md` was closed in the change log |
+| Bench data | `design/bench/*.jsonl`, `*.json`, `visit_review_samples_*.md` (about 120 KB), the strategy and difficulty reports | Raw runs behind decisions already recorded |
+| Prompts | `design/prompts/COMPONENT_REVISION_PROMPTS_2026-11-03.md` | The component revision is done |
+| Possibly an older copy | `design/game_design_artifact.html` | May duplicate `GAME_DESIGN.md`; check before removing |
+
+**Keep for reference:** `CONTENT_GUIDE.md`, `EDITING_TEXT.md`, `GAME_*.md`, `INFORMATION_STANDARDS.md`, `ARCHITECTURE.md`, `NEW_CHAT_STARTUP.md`, `PLAYTEST_CHECKLIST.md`, `PLAYTEST_RUBRIC.md`, the art and icon prompt files, `OUTDOOR_BACKGROUNDS.md`, `design/reference/` and `tools/workbook/README.md`.
+
+## Other findings from the 2026-11-06 review (noted, not changed)
+
+- `segment_favorability` (and its `last_segment_change`, `reset_segment_favorability`, `segments.json`'s Initial Favorability) is still stored and saved, but nothing reads it since staff audience rewards became organization rewards (2026-11-04).
+- The Sanban tab's low and high "consequence" cells (for example "LV10 cannot be activated") are text only; no code enforces them.
+- `GameState._apply_time_decays()` and the Balance lever `decay_interval` (0 = off) are a switched-off second decay path; decay runs once a week at "Go Home".
+- `GameState.buy_random_level()` and the shop `level_tier` column are unused by the current Shop tab (kept and tested).

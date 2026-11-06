@@ -3,7 +3,7 @@ extends RefCounted
 ## Party dues (2026-10-23, Cameron). At each week end the player owes the party:
 ##
 ##   base 50,000円, plus 50,000円 for every full 15 points of Party support above 40,
-##   plus 30% of the Funds earned Monday to Friday that week,
+##   plus a share (Balance: Dues Reward Percent, 15% at Standard) of the Funds earned Monday to Friday that week,
 ##   minus whatever the awareness effects take off the base (National Awareness).
 ##
 ## Whatever cannot be paid rolls over. An unpaid balance costs Party support,

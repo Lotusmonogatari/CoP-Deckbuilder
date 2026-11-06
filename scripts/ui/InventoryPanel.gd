@@ -157,7 +157,7 @@ func _on_use_pressed() -> void:
 
 
 ## Which booster gets a Player Choice item's effect — "Host a dinner for a
-## player-selected booster group" (SH25/26), and any later item the Player
+## player-selected booster group" (SH19, SH20, SH22-24), and any later item the Player
 ## Choice column marks the same way. Every booster in the item's pool or
 ## tier, read live off DataDB.boosters, so a group added later appears here
 ## with no edit to the item itself.
@@ -191,7 +191,7 @@ func _choice_button(item_id: String, booster: Dictionary) -> Button:
 	button.name = "Choice_" + booster_id
 	# A zero width here, same as autowrap's other user (_item_button() below),
 	# makes word-wrap shrink to fit — every word on its own line, 0 wide and
-	# taller than the screen. A group with several boosters (SH26's
+	# taller than the screen. A group with several boosters (the Walking Tour's
 	# Constituency tier, seven of them) then renders as nothing at all: the
 	# panel's CenterContainer only ever grants a child its own minimum size,
 	# so there is no later layout pass to correct a minimum this wrong. A

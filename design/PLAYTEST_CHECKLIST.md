@@ -133,7 +133,7 @@ for.
 Force each one (spend down / play badly, or use
 `tools/stress_crisis_triggers.gd` as a reference for what "forced" looks
 like) and confirm:
-- [ ] Jiban ≤ 15 inserts a Town Hall; a popup on your next Office visit
+- [ ] Constituency support ≤ 15 inserts a Town Hall; a popup on your next Office visit
   says so.
 - [ ] Party support < 25 inserts the Steering Committee check-in.
 - [ ] Party support = 0 freezes Funds income; a popup says so, and Funds

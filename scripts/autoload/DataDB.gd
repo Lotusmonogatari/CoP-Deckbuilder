@@ -262,7 +262,7 @@ var lobbyist_lines: Array = []   ## Lobbyist Lines tab: an organization's own Pr
 ## naming its own, so a new question is one row in the workbook.
 var questions: Dictionary = {}
 
-## How standing with the ten organisations works: where it starts, what it
+## How standing with the organizations works: where it starts, what it
 ## is bounded by, and what pleasing one is worth. Hand-written.
 var booster_standing: Dictionary = {}
 

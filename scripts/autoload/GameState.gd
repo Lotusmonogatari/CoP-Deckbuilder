@@ -48,12 +48,10 @@ var last_booster_cause: Dictionary = {}
 ## rewards, cleared after.
 var _cause := ""
 
-## Experience earned so far, and by the stage just finished.
-##
-## CLAUDE.md puts the XP checkpoint at milestone M5, so nothing spends this
-## yet. It is banked rather than discarded so the checkpoint has a real
-## number to open with, and so a stage's win_delta_xp stops being a column the
-## workbook exports and no code has ever read.
+## Experience: earned from stages, events and laws (a stage's win_delta_xp),
+## and spent in the Office on Rhetoric Training, level unlocks, staff, backings
+## and some shop items. `last_xp_gained` is what the stage just finished paid.
+## Lifetime XP earned (spending never lowers it) is `xp_earned_total`.
 var xp := 0
 var last_xp_gained := 0
 
@@ -122,9 +120,11 @@ var timed_bonuses: Array = []
 ## owned_modifiers and can be bought again (_expire_modifiers()).
 var modifier_expires: Dictionary = {}
 
-## Where the player stands with each of the ten organisations, by booster ID.
-## Pleasing one at a press conference raises it, and it is held between
-## levels — unlike the pleased list, which lasts one level.
+## Where the player stands with each organization (boosters.json), by booster
+## ID. Pleasing one with an answer, a vote, a law or a kept promise raises it;
+## it is held between levels and drifts back toward where it started when
+## neglected (see _apply_week_decay()) — unlike the pleased list, which lasts
+## one level.
 var booster_standing: Dictionary = {}
 
 ## What the last finished level did to those, e.g. { "BO08": 5 }.
@@ -182,7 +182,7 @@ var staff_fired: Dictionary = {}
 ## Ledger.is_level_unlocked().
 var levels_unlocked: Array[String] = []
 
-## How many levels have been FINISHED so far this sitting — win or loss both
+## How many levels have been FINISHED so far this run — win or loss both
 ## count. [DEFAULT] The workbook's own note on levels.json's cooldown column
 ## reads "# of OTHER LEVELS TO PLAY before this level is available to play
 ## again", and "play" most naturally means "finish", not "specifically win",
@@ -218,20 +218,20 @@ var levels_cleared: Dictionary = {}
 
 ## How many of Staff's highest_tier steps are open to hire from, 0 at a
 ## fresh run (SF01/SF08/SF15, the three highest_tier-0 candidates, are the
-## only ones hireable). SH18 ("Unlock New Staff Recruitment Tier") raises
+## only ones hireable). the Staff Training Consultancy Session (SH12) raises
 ## this by 1 — Ledger.staff_hire_refusal() is where it actually gates a
 ## candidate.
 var staff_recruitment_tier: int = 0
 
 ## Added to rules.json's own "funds_starting_cap" every time Funds is
-## clamped (see _sanban_row()) — SH19 ("Increase Office Funds Cap") raises
+## clamped (see _sanban_row()) — the Fund Limit Increase Petition (SH13) raises
 ## this by its own funds_cap_increase (100,000) each time it's bought.
 ##
 ## Redesigned 2026-10-04 (Cameron, from a playtest report that the cap
 ## "is not applied by default"): the EFFECTIVE cap used to just be
 ## sanban.json's own Funds "max" (1,000,000) with this bonus added on top
 ## — meaning a fresh run already sat at the full 1,000,000 ceiling before
-## buying anything, and every SH19 purchase after that pushed the cap
+## buying anything, and every petition after that pushed the cap
 ## PAST 1,000,000 with nothing to stop it. Now funds_starting_cap
 ## (100,000) is the real starting point, this bonus ratchets it up from
 ## there, and the sanban "max" is read as the one hard ceiling neither
@@ -2569,7 +2569,7 @@ func _sanban_row(name: String) -> Dictionary:
 				var hard_max := int(row.get("max", 0))
 				# The hard ceiling (sanban.json's own Funds "max") is the one
 				# number nothing — not the starting cap, not any number of
-				# SH19 purchases — is ever allowed to push past.
+				# Fund Limit purchases — is ever allowed to push past.
 				with_cap["max"] = mini(starting_cap + funds_cap_bonus, hard_max)
 				return with_cap
 			return row
@@ -2937,7 +2937,8 @@ func buy_shop_item(item_id: String) -> String:
 
 
 ## Rhetoric Training (Cameron, 2026-09-27) — where new cards come from.
-## SH15-17 (XP) and SH27-29 (Yen), each naming a "card_tier" in shop.json.
+## SH09-SH11 (XP), each naming a "card_tier" in shop.json, and the free
+## Training Session Coupon (SH21).
 ## A draw shows the player a card BEFORE they pay for it:
 ##
 ##   offer_random_card()  starts a draw: one random card of that tier the
@@ -3079,7 +3080,8 @@ func _unowned_cards_at_tier(tier: int) -> Array[String]:
 	return choices
 
 
-## SH13/14 ("Unlock Tier N Level"): the same on-purchase shape as
+## A shop item with a "level_tier" (none in the current Shop tab; the code is
+## kept and tested): the same on-purchase shape as
 ## the old one-step random-card purchase, and for the same reason — pays, then
 ## immediately unlocks one random not-yet-unlocked level of shop.json's
 ## own "level_tier". Ledger.is_level_unlocked() (not a bare levels_unlocked
@@ -3113,7 +3115,7 @@ func buy_random_level(item_id: String) -> Dictionary:
 	return {"ok": true, "message": Text.say("shop.level_unlocked", {"name": level_name})}
 
 
-## SH18 ("Unlock New Staff Recruitment Tier"): pays, then raises
+## The Staff Training Consultancy Session (SH12): pays, then raises
 ## staff_recruitment_tier by 1 — Ledger.staff_hire_refusal() is where that
 ## actually opens up candidates. Refuses once every candidate's own
 ## highest_tier is already open, rather than let a purchase do nothing.
@@ -3151,7 +3153,7 @@ func buy_staff_recruitment_tier(item_id: String) -> Dictionary:
 	return {"ok": true, "message": Text.say("shop.recruitment_tier_unlocked")}
 
 
-## SH19 ("Increase Office Funds Cap"): pays, then permanently raises how
+## The Fund Limit Increase Petition (SH13): pays, then permanently raises how
 ## high Funds can go by the item's own "funds_cap_increase" — repeatable
 ## until the player's own current cap (rules.json's funds_starting_cap
 ## plus every funds_cap_bonus bought so far) reaches the hard ceiling

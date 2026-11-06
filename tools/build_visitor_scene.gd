@@ -111,7 +111,7 @@ func _add_visitor_row(parent: Control) -> void:
 	var portrait := Control.new()
 	portrait.name = "Portrait"
 	portrait.set_script(load(PLACEHOLDER_SCRIPT))
-	portrait.custom_minimum_size = Vector2(220, 320)
+	portrait.custom_minimum_size = Vector2(420, 760)
 	_adopt(portrait, row, true)
 
 	var details := VBoxContainer.new()

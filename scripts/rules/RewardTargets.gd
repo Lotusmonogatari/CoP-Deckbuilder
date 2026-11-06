@@ -25,7 +25,7 @@ const UNKNOWN := ""
 
 ## A booster tier group, written "TIER:Party"/"TIER:Constituency"/
 ## "TIER:National" — every booster of that tier is one thing to pick from
-## (design/proposals/inventory.md, Cameron 2026-09-25: SH01-03/SH25-26).
+## (design/proposals/inventory.md, Cameron 2026-09-25: SH01-03 and the Player Choice items).
 ## Which boosters currently belong to a tier is read live from
 ## DataDB.boosters, so a booster added later joins the pool with no
 ## workbook edit to the item itself — unlike an explicit "BO01|BO02" pool,

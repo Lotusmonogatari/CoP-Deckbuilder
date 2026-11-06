@@ -189,7 +189,7 @@ func _what_it_was_worth(stage: Dictionary, score: int, side: String = "win") -> 
 	# about to apply for real, purely to show them; reading DataDB.sanban
 	# straight would clamp Funds against the flat workbook max and show a
 	# smaller "+N Funds" than what actually lands once the player has paid
-	# to raise the cap (SH19) — bug found 2026-09-30, Cameron.
+	# to raise the cap (SH13) — bug found 2026-09-30, Cameron.
 	var sanban_rows := GameState.sanban_rows_with_bonuses()
 	var flat := (MetaRules.apply_win_deltas(GameState.meta, stage, sanban_rows) if side == "win"
 		else MetaRules.apply_loss_deltas(GameState.meta, stage, sanban_rows))

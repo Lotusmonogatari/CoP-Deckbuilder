@@ -265,8 +265,8 @@ static func deck_is_legal(deck: Array, owned: Array, balance: Dictionary,
 ## THIS candidate was fired earlier this run (GameState.staff_fired) — once
 ## true, they are never hireable again, even into a role that is vacant now.
 ## `recruitment_tier` is GameState.staff_recruitment_tier — a candidate whose
-## own highest_tier is above it is not offered yet (SH18, "Unlock New Staff
-## Recruitment Tier", raises it by 1 per purchase; 0 at a fresh run, so only
+## own highest_tier is above it is not offered yet (SH12, "Staff Training Consultancy
+## Session", raises it by 1 per purchase; 0 at a fresh run, so only
 ## the three highest_tier-0 candidates — one per role — start hireable).
 static func staff_hire_refusal(candidate: Dictionary, hired_for_role: Dictionary,
 		fired: bool, funds: int, recruitment_tier: int, words: Phrase = null) -> String:

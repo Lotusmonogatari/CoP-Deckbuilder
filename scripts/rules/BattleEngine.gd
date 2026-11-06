@@ -207,8 +207,9 @@ func setup(config: Dictionary) -> bool:
 
 
 func _setup_opponent(config: Dictionary) -> void:
-	# Deck-playing opponents are a later milestone. Saying so here beats a
-	# battle that starts and then does nothing.
+	# Deck-playing opponents are not built (rules.json only accepts
+	# 'intent_patterns'). Saying so here beats a battle that starts and then
+	# does nothing.
 	var engine_kind := str(_rules.get("opponent_engine", "intent_patterns"))
 	if engine_kind == "deck_ai":
 		setup_problems.append(

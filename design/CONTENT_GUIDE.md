@@ -1,6 +1,6 @@
 # Content generation guide: levels, stages, events and what they depend on
 
-**Status: written 2026-10-29 from the workbook, exporter, code and tests as they stand** (97 levels, 270 stages, 125 opponents, 166 visitors and 393 visitor questions, 50 bills, 38 events, 32 organizations). It replaces the 2026-10-12/13 expansion guide, the content prompts and the visitor-dilemma note (see section 11). Everything an assistant writes is **a draft for Cameron** and never a canon decision.
+**Status: written 2026-10-29; brought up to date 2026-11-06** (101 levels, 273 stages, 131 opponents, 166 visitors, 50 bills, 56 events, 32 organizations). It replaces the 2026-10-12/13 expansion guide, the content prompts and the visitor-dilemma note (see section 11). Everything an assistant writes is **a draft for Cameron** and never a canon decision.
 
 Read with: `design/EDITING_TEXT.md` (how to reword existing text, tab by tab), the workbook's **Tone Guide** tab and the header notes on each column, `tools/workbook/README.md` (the editing tool) and `CLAUDE.md` (the brief).
 
@@ -54,6 +54,7 @@ A level is a row of up to ten stage slots plus rewards, cost and availability.
 | Column | What it does |
 |---|---|
 | **Level ID, Description** | Next free `LVxx` (today **LV102**). The description is the briefing title; for a bill level it is the bill name. |
+| **Level Purpose, Purpose Speaker** | Every level needs a purpose line, the first thing said on its intro screen (`test_level_purpose.gd` fails without one). Purpose Speaker is a Staff-tab role name; blank or not hired falls back to the first hired staff member, then to the player's own thought. Write what the level is for, in the speaker's voice, with no game terms. |
 | **Cooldown** | Hours before it can be played again (the calendar is in hours). A number cell. |
 | **Level Tier** | 0, 1 or 2. Tier gates the XP unlock price (four cost columns: PRA vacant, tier 0, tier 1, tier 2). |
 | **Stage ID for Part 1-10** | `STxx` for a room, or `BIxx` where the Floor Vote for that bill is played (ST23 with that bill). The last slot of a bill level is its `BIxx`. |
@@ -194,7 +195,7 @@ A stage asks `questions per turn x turn limit` questions **in total**, drawn onc
 | Tab | Read order, most specific first | Note |
 |---|---|---|
 | **Player Cues** (suit, verb attack/gain/block; Stage ID, Bill ID, Stance, Component ID) | bill + verb + stance, bill + verb, this stage + verb, this stage any verb, any stage + verb, any stage any verb, then the card's own five Flavor Text lines | A more specific tier **replaces** the less specific ones; rows at the same tier pool. Bill lines are chosen by the lean the player took. |
-| **Opponent Cues** | bill (suit or opponent), this opponent in this stage, this opponent in this style, this opponent anywhere, the style's pool for this stage, the style's pool anywhere | An opponent picks a style by weight (Suit 1 55%, Suit 2 30%, Suit 3 10%, other 5%). An opponent-scoped row follows that person into every room unless a Stage ID is set; leave Stage ID blank only for party leaders. |
+| **Opponent Cues** | bill (suit or opponent), this opponent in this stage, this opponent in this style, this opponent anywhere, the style's pool for this stage, the style's pool anywhere | An opponent picks a style by weight (Suit 1 55%, Suit 2 30%, Suit 3 10%, other 5%). **Side columns (Cue 1 to 5 Side):** every line on a row with a Bill ID or Component ID carries a Side, blank (Neutral, anyone), **For**, **Against**, or **Ally**. An opponent may say Neutral lines plus their own side's: a supporter says For lines to a player who opposes the bill, a critic says Against lines to a player who supports it, and anyone on the player's own side says Ally lines instead (Ally rows with no Bill ID are shared by every bill). Never write a line that assumes the player's stance on the wrong side ("You would ask us to ..." is an Against line). Within a level no line repeats while unused ones remain, so write enough lines per cell: `tools/cue_coverage.py` lists pools that would run dry in 30 turns. An opponent-scoped row follows that person into every room unless a Stage ID is set; leave Stage ID blank only for party leaders. |
 
 **Sizing.** Cover a cell you write with at least two rows (10 lines) so it is no thinner than the universal pool; cover attack, gain and block for the suits the room favours; an uncovered cell keeps the card's own lines. Committee-style rooms are appended to the Stage ID list of the committee Player Cue rows.
 
@@ -212,7 +213,7 @@ A transition plays before a stage that is **not first in its level**, shows one 
 
 | Tab | Unit | Rules |
 |---|---|---|
-| **Floor Vote Bills** | one bill, `BIxx` (BI01-BI50) | Name, description (the scroll text), three Favorability Δ (Supportive/Opposed/Neutral; scale by how salient the bill is: high +5/-5, ordinary +3/-2, low +1/-1), Influence Bonus columns, **Vote Requirement** (Majority, Supermajority or blank), **Proponent Party**, optional **Stakeholders Override**. A bill is named by exactly one level; the level names it in a stage slot. |
+| **Floor Vote Bills** | one bill, `BIxx` (BI01-BI50) | Name, description (the scroll text), three Favorability Δ (Supportive/Opposed/Neutral; scale by how salient the bill is: high +5/-5, ordinary +3/-2, low +1/-1), Influence Bonus columns, **Vote Requirement** (Majority, Supermajority or blank), **Proponent Party**, optional **Stakeholders Override**, and the six dossier columns **Who Gains, Who Pays, Case For, Case Against, Main Risk, Middle Ground** that fill the "Read the Bill" page (a blank cell skips its section; `test_bill_dossier.gd` requires them for every bill; each side argues its strongest honest case). A bill is named by exactly one level; the level names it in a stage slot. |
 | **Floor Vote Party Positions** | six rows per bill (PT01-PT06) | Yes + No + Abstain must equal that party's seat count (Butsutou 19, Yezo Heritage 14, Frontier 27, Five Point Independents 5, Keizaijiyuutou 25, Country Initiative 11 = 101; the exporter warns). Disposition Supportive/Opposed/Neutral. A high-salience party is about 90-100% unified, medium 70-89%, low 55-69%; a Neutral position mostly abstains. Cue Text: the party leader reacting, under about 12 words, no mechanic talk. |
 | **Vote Influence Cues** | per bill and direction | **A bill passes only when Yes reaches a majority of the whole house (51 of 101); abstentions count against it.** Compute each bill's default outcome: a bill that fails by default needs a "Flipped to Pass" cue, one that passes by default a "Flipped to Fail" cue. |
 | **Law Effects** | per bill per outcome | Beneficiaries +2/+3, those it hurts -2; failed rows mirror smaller; Timing Once or Each level. House rule: **every organization is pleased by at least one bill outcome and annoyed by at least one** (the playtest rubric checks it). |
@@ -227,7 +228,7 @@ A transition plays before a stage that is **not first in its level**, shows one 
 
 ### 9.1 Events (Events and Event Choices tabs)
 
-An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV65**; shop items **SH33**.
+An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV66**; shop items **SH35**.
 
 | Events column | Meaning |
 |---|---|
@@ -256,7 +257,7 @@ An event is a screen of flavor text with two to four fixed choices; each choice 
 ### 9.2 Hosted events, shop events and the week
 
 - **Hosted Events + Event Options**: the walking tour (Constituency organizations) and dinner (National): three steps of options with tags; organizations like and dislike tags (**Organization Tastes**); **Reaction Lines** give guest reactions. Hosting an organization reveals one of its hidden levels. Items **SH19/SH20** and the Shop **Hours** column take 4 hours.
-- **Calendar**: five 8-hour days pooled into a 40-hour work week, an optional 2 x 4-hour weekend, then "Pay Party Dues and Go Home". **Party dues**: a base plus a step per 15 Party support above 40 plus 30% of the week's Funds earned, less National Awareness relief; unpaid dues roll over and cost Party support, backings and standing (Balance "Dues: ..." levers). Awareness meters (District and National) and **Awareness Effects** rows are data.
+- **Calendar**: five 8-hour days pooled into a 40-hour work week, an optional 2 x 4-hour weekend, then "Pay Party Dues and Go Home". **Party dues**: a base plus a step per 15 Party support above 40 plus a share of the week's Funds earned (Balance "Dues Reward Percent", 15% at Standard), less National Awareness relief; unpaid dues roll over and cost Party support, backings and standing (Balance "Dues: ..." levers). Awareness meters (District and National) and **Awareness Effects** rows are data.
 - **Office Ticker** (`ticker_id`, `condition_type/target/op/value`, `text_en`, optional `weekdays`, `from_date`, `to_date`, `yearly`; dates YY.MM.DD, inclusive; `{player}` fills the protagonist's name) and **Office Notices** are Office flavor lines under conditions (staff, meta thresholds, `always`, or a law passed/failed).
 
 ### 9.3 Office Hours content (visitors and dilemmas)

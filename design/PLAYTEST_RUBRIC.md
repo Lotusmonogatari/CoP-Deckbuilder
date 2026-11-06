@@ -9,7 +9,7 @@ Question: starting from a new game, do **backing and organisation standing** rea
 | **A. New game** | | |
 | A1 | 3 | Each of the 4 protagonists opens at their own workbook meta and XP |
 | A2 | 2 | Every organisation opens at its workbook starting standing (own cell, else the flat 30) |
-| A3 | 3 | No backing owned; statute book, flip record and clears all empty |
+| A3 | 3 | No backing owned; Legislative Work (the statute book), flip record and clears all empty |
 | A4 | 2 | The influence gate is shut for every party on day one |
 | **B. Backing and organisations** | | |
 | B1 | 3 | Backing is refused below the required standing (60), bought at it, charged the workbook costs, never sold twice |
@@ -27,7 +27,7 @@ Question: starting from a new game, do **backing and organisation standing** rea
 | C3 | 3 | Meeting the common requirements plus one party's own swings that party and no other |
 | C4 | 3 | A full-strength player flips real bills; every flip is flagged correctly, seats are conserved, no party gives up more than its resistance allows |
 | C5 | 2 | Voting with your own party's majority never moves that party's seats |
-| C6 | 2 | **Real clicks** on the Floor Vote screen: a full-strength player flips a bill, the screen shows the swung totals, the statute book and flip record agree |
+| C6 | 2 | **Real clicks** on the Floor Vote screen: a full-strength player flips a bill, the screen shows the swung totals, Legislative Work (the statute book) and flip record agree |
 | C7 | 2 | Every enabled requirement is below the ceiling of the thing it measures |
 | C8 | 1 | The influence bonus columns do nothing blank and apply exactly their numbers when filled |
 | **D. Laws activate and last** | | |
@@ -36,7 +36,7 @@ Question: starting from a new game, do **backing and organisation standing** rea
 | D3 | 2 | A bill with only Once rows keeps nothing running |
 | D4 | 3 | Recording the same bill twice changes nothing |
 | D5 | 2 | Save, reload, carry on: the book and the running payouts are exactly as if you never quit |
-| D6 | 2 | A new game wipes the statute book and the flip record |
+| D6 | 2 | A new game wipes Legislative Work (the statute book) and the flip record |
 | D7 | 1 | Office notices and the ticker switch on only after the named bill has passed |
 | D8 | 2 | Every organisation is pleased by at least one bill outcome and annoyed by at least one |
 

@@ -134,7 +134,8 @@ static func has_effect(item: Dictionary) -> bool:
 
 ## "Player Choice" — Yes means using this item asks WHICH of its pool the
 ## effect lands on, rather than picking one at random. Cameron, 2026-09-25:
-## SH25/26 ("Host a dinner for a player-selected booster group") need this;
+## SH19, SH20 and SH22-24 (a hosted dinner or tour, an op-ed, a leaked memo,
+## a public rebuke) need this;
 ## SH01-03 ("one randomly-selected group") don't.
 static func is_player_choice(item: Dictionary) -> bool:
 	return is_yes(item.get("player_choice"))
