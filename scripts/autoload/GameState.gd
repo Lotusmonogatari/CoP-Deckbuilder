@@ -22,6 +22,12 @@ var awaiting_new_game := false
 ## one, from the stage boundary, is the one to come back to.
 var mid_stage := false
 
+## A save point inside a stage with several opponents, taken when one is
+## defeated: { "key": which stage, "item_bonuses": what the stage began with,
+## "engine": BattleEngine.checkpoint() }. {} otherwise. Saved; cleared when
+## the stage ends or a level begins.
+var stage_checkpoint: Dictionary = {}
+
 ## The level being played, or null when the player is in the Office.
 var level_runner: LevelRunner = null
 
@@ -481,6 +487,7 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 	level_runner = null
 	last_level_outcome = ""
 	mid_stage = false
+	stage_checkpoint = {}
 	reset_meta()
 	reset_booster_standing()
 	reset_segment_favorability()
@@ -498,7 +505,7 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 # test rather than half-saved.
 
 const _SAVED_FIELDS := [
-	"protagonist_id", "difficulty", "awareness_gaffe_tally", "last_level_outcome", "meta", "xp",
+	"protagonist_id", "difficulty", "awareness_gaffe_tally", "stage_checkpoint", "last_level_outcome", "meta", "xp",
 	"owned_cards", "deck", "owned_modifiers",
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
@@ -2069,6 +2076,7 @@ func begin_level(runner: LevelRunner) -> void:
 	bill_stance = {}
 	bill_assist = BillAssist.empty()
 	mid_stage = false
+	stage_checkpoint = {}
 	last_level_outcome = ""
 	last_meta_change = {}
 	last_meta_cause = {}
@@ -2158,6 +2166,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		displeased_boosters: Array = [], crushed_boosters: Array = [],
 		opposed_boosters: Array = [], booster_tally: Dictionary = {}) -> bool:
 	mid_stage = false
+	stage_checkpoint = {}
 	if level_runner == null:
 		return true
 
@@ -4506,3 +4515,12 @@ func _refresh_vote_stage(patron_bill_id: String) -> void:
 	for stage: Dictionary in level_runner.stages:
 		if str(stage.get("mode", "")) == "Vote":
 			stage["floor_vote"] = BattleSetup.enriched_floor_vote(DataDB.get_bill(patron_bill_id))
+
+
+## Which stage a checkpoint belongs to: the level, the place in it and the
+## stage, so a save point is never applied to a different fight.
+func stage_checkpoint_key() -> String:
+	if level_runner == null:
+		return ""
+	return "%s:%d:%s" % [str(level_runner.level.get("level_id", "")), level_runner.index,
+		str(level_runner.current_stage().get("stage_id", ""))]

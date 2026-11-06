@@ -520,7 +520,7 @@
   {
     "key": "office.backing",
     "where": "Office — backing",
-    "english": "Boosters",
+    "english": "Backers",
     "placeholders": null,
     "notes": "Button into the backing shop."
   },
@@ -2235,7 +2235,7 @@
   {
     "key": "staff.reward_segment",
     "where": "Office · Staff Profile, a bonus line for an audience group",
-    "english": "{delta} approval among {name}",
+    "english": "{delta} standing with {name}",
     "placeholders": "delta, name",
     "notes": "One bonus: how much an audience group's sentiment moves. {delta} reads +2 or -2."
   },
@@ -3607,7 +3607,7 @@
   {
     "key": "trade.reward_sentiment",
     "where": "Lobbyist trade",
-    "english": "Their goodwill (cost {cost})",
+    "english": "Better standing with them (cost {cost})",
     "placeholders": "cost",
     "notes": "2026-10-19 lobbyist trade (patron bills)."
   },
@@ -4363,21 +4363,21 @@
   {
     "key": "card.discard_play_one",
     "where": "Card face and zoom, a card that costs a discard",
-    "english": "Discard 1 other card to play.",
+    "english": "Discard 1 card.",
     "placeholders": null,
     "notes": "2026-10-21 discard cards."
   },
   {
     "key": "card.discard_play_many",
     "where": "Card face and zoom, a card that costs discards",
-    "english": "Discard {count} other cards to play.",
+    "english": "Discard {count} cards.",
     "placeholders": "count",
     "notes": "2026-10-21 discard cards."
   },
   {
     "key": "card.discard_draw_one",
     "where": "Card face and zoom, a cycling card",
-    "english": "Discard 1 other card.",
+    "english": "Discard 1 card.",
     "placeholders": null,
     "notes": "2026-10-21 discard cards."
   },

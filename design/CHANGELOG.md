@@ -614,3 +614,14 @@ as the band rather than the same width of lean.
 **Decisions waiting for Cameron:** taller buttons, a per-turn stage save, renaming the "Boosters" button to "Backings", and which opacities to declare intended (report sections 3 and 4).
 
 **Checked:** the tools run; `tools/verify.sh` passes.
+
+## MC²T follow-up: 144 px buttons, a save at each defeated opponent, wording (2026-11-06, Cameron)
+
+| Change | What it does |
+|---|---|
+| Buttons 144 px | New Balance row `Touch: Minimum Button Height`. `Layout` raises every button to it a moment after it appears; picture-only buttons (organization chips) become square. Card faces, invisible click overlays and the gold hand scroll bar are exempt |
+| Save when an opponent is defeated | In a stage with several opponents (committees, floor debate, Town Hall) the run is saved when one is defeated, with where to resume: the next opponent, plus what carries over in that stage type (gaffes, hand, guard, clock) and the items the stage began with. Closing the app and returning picks the stage up at the next opponent. A stage with one opponent still returns to the start of that stage. The save point is cleared when the stage ends |
+| Wording | The Office button into the backing shop reads "Backers"; "Their goodwill" and "approval among" become "standing"; card text "Discard 1 other card (to play)" becomes "Discard N card(s)" |
+| MC²T report | Opacity declaration approved; decisions recorded (`design/review/MC2T_REPORT_2026-11-06.md` §8) |
+
+Checked: 7 new tests in `tests/test_stage_checkpoint.gd`; `tools/verify.sh`.

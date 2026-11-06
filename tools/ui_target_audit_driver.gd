@@ -88,6 +88,11 @@ func _go(path: String) -> void:
 
 ## Every visible tappable control under the current scene, with its size.
 func _measure(screen_name: String) -> void:
+	# SHOT_DIR=/some/dir also saves a picture of each screen as it is measured.
+	var shot_dir := OS.get_environment("SHOT_DIR")
+	if shot_dir != "":
+		var image := get_viewport().get_texture().get_image()
+		image.save_png(shot_dir.path_join(screen_name.replace(" ", "_").replace(">", "").replace("(", "").replace(")", "") + ".png"))
 	if get_tree().current_scene != null:
 		_walk(get_tree().current_scene, screen_name)
 

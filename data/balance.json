@@ -228,5 +228,6 @@
   "difficulty_harder_draft_bill_funds_cost": 400000,
   "member_stance_split_party_abstain_percent": 30,
   "draft_bill_extra_visit_xp_cost": 50,
+  "touch_minimum_button_height": 144,
   "xp_tiers": {}
 }

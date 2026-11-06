@@ -248,6 +248,30 @@ func _build_inventory() -> void:
 	parent.move_child(button, _details_button.get_index())
 
 
+## The items this stage began with, kept so a save point can reuse them.
+var _stage_item_bonuses: Dictionary = {}
+
+
+## True when GameState holds a save point for exactly this stage.
+func _checkpoint_applies() -> bool:
+	return not GameState.stage_checkpoint.is_empty() \
+		and str(GameState.stage_checkpoint.get("key", "")) == GameState.stage_checkpoint_key()
+
+
+## Saves the run the moment an opponent is defeated in a stage with several,
+## so a closed app resumes at the next opponent. A stage with one opponent has
+## nothing to save: the save from before it covers it.
+func _save_checkpoint() -> void:
+	if engine == null or not GameState.is_in_level():
+		return
+	var point := engine.checkpoint()
+	if point.is_empty():
+		return
+	GameState.stage_checkpoint = {"key": GameState.stage_checkpoint_key(),
+		"item_bonuses": _stage_item_bonuses.duplicate(), "engine": point}
+	SaveManager.save_checkpoint()
+
+
 ## Opens the next battle.
 ##
 ## When a level is in progress, that means the level's current stage. When
@@ -267,7 +291,13 @@ func start_battle() -> void:
 		# Items used before this stage: a Coffee from the Office for "the
 		# next stage", and any level buff still running. Spent by asking.
 		if not config.is_empty():
-			config["item_bonuses"] = GameState.take_item_bonuses_for_stage()
+			# Picking up a stage saved at an opponent's defeat: the items it
+			# began with were already spent, so reuse them.
+			if _checkpoint_applies():
+				config["item_bonuses"] = (GameState.stage_checkpoint.get("item_bonuses", {}) as Dictionary).duplicate()
+			else:
+				config["item_bonuses"] = GameState.take_item_bonuses_for_stage()
+			_stage_item_bonuses = config["item_bonuses"]
 	else:
 		config = BattleSetup.for_level_stage(level_id, stage_id)
 
@@ -297,9 +327,15 @@ func start_battle() -> void:
 		return
 
 	_ready_to_play = true
-	# From here until the stage is finished, nothing is saved: coming back
+	# From here until the stage is finished, the only save is the one taken
+	# when an opponent is defeated (_save_checkpoint); otherwise coming back
 	# to a save means coming back to the start of this stage.
 	GameState.mid_stage = GameState.is_in_level()
+	if GameState.is_in_level():
+		if _checkpoint_applies():
+			engine.restore_checkpoint(GameState.stage_checkpoint.get("engine", {}))
+		else:
+			GameState.stage_checkpoint = {}
 
 	# English first, with the Japanese beside it as a small muted accent.
 	_stage_name.text = str(_stage.get("name_en", "Battle"))
@@ -998,6 +1034,8 @@ func _play_card_now(card_id: String, discards: Array) -> void:
 		_banner.say(CueBanner.PLAYER, me, did)
 	# A card that finished a bout starts the next one at once: say who steps
 	# up, and if the questions are already used up, that it is an open debate.
+	if not (result.get("bout_won", {}) as Dictionary).is_empty():
+		_save_checkpoint()
 	_announce_next_opponent(result.get("bout_won", {}))
 	_announce_open_debate()
 
@@ -1119,6 +1157,8 @@ func _on_end_turn() -> void:
 	if not engine.state.is_over():
 		EventBus.turn_started.emit(engine.state.turn)
 		EventBus.intent_revealed.emit(engine.current_intent())
+		if not (bout as Dictionary).is_empty():
+			_save_checkpoint()
 		_announce_next_opponent(bout)
 		_announce_question()
 

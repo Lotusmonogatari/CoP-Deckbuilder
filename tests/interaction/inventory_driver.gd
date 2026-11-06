@@ -75,8 +75,15 @@ func _walk() -> void:
 	var funds_before := int(GameState.meta.get("Funds", 0))
 	scroll.scroll_vertical = 0
 	await get_tree().process_frame
-	var start := (supplies.find_child("Supply_" + COFFEE, true, false)
-		.find_child("Buy", true, false) as Control).get_global_rect().get_center()
+	# A Buy button that is on screen (taller buttons push Coffee further down
+	# than the first screenful, 2026-11-06): the first one inside the list's own
+	# visible area.
+	var start := scroll.get_global_rect().get_center()
+	for candidate: Node in supplies.find_children("Buy", "Button", true, false):
+		var spot := (candidate as Control).get_global_rect().get_center()
+		if (candidate as Control).is_visible_in_tree() and scroll.get_global_rect().has_point(spot):
+			start = spot
+			break
 	# Drag down to bring what is further down the list into view — the
 	# scroll position now moves WITH the finger, not against it.
 	await _drag(start, start + Vector2(0, 700))

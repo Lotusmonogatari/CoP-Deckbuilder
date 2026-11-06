@@ -117,6 +117,11 @@ func _process(_delta: float) -> void:
 
 
 func _on_node_added(node: Node) -> void:
+	# Touch targets (MC2T audit, 2026-11-06): every real button is at least
+	# Balance "Minimum Button Height" tall. Done a moment later so it wins
+	# over any size the creating code sets after adding the button.
+	if node is BaseButton and not node is CardView:
+		_raise_height.call_deferred(node as BaseButton)
 	if node is Button and node.get_class() == "Button":
 		_mark_cancel(node as Button)
 	if node is MarginContainer and node.name in NAMES:
@@ -267,3 +272,27 @@ static func is_cancel_button(button: Button) -> bool:
 func _mark_cancel(button: Button) -> void:
 	if is_cancel_button(button):
 		button.theme_type_variation = CANCEL_VARIATION
+
+
+## Makes one button at least the minimum touch height. Invisible click
+## overlays (flat, no text, no picture) are left alone, since they cover
+## something else and are not a target of their own.
+func _raise_height(target: Variant) -> void:
+	# A button freed before this runs arrives as a dead object, which a typed
+	# parameter would refuse.
+	if not is_instance_valid(target):
+		return
+	var button := target as BaseButton
+	var minimum := float(DataDB.balance.get("touch_minimum_button_height", 0))
+	if minimum <= 0.0:
+		return
+	if button is Button:
+		var as_button := button as Button
+		if as_button.flat and as_button.text.is_empty() and as_button.icon == null:
+			return
+	if button.custom_minimum_size.y < minimum:
+		button.custom_minimum_size.y = minimum
+	# A picture-only button (an organization chip) is square at least.
+	if button is Button and (button as Button).text.is_empty() \
+			and button.custom_minimum_size.x < minimum:
+		button.custom_minimum_size.x = minimum

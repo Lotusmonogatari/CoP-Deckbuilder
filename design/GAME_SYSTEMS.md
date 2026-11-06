@@ -313,3 +313,7 @@ Every number below is in the workbook and exported to data; none is hard-coded.
 | `data/booster_standing.json` | Standing rules: start, please/displease amounts, the ±10 cap, gain and loss bands, neglect decay, default decay percent, default backing requirement |
 | `data/party_standing.json`, `data/vote_influence_triggers.json`, `data/awareness_effects.json`, `data/standing_links.json` | Party start values; the influence gate rows; awareness consequences; organization links |
 | Stages, Levels, Events, Shop, Boosters, Modifiers, Staff tabs | Per-room energy, hand, gaffe limit, turn limit, hours, rewards and penalties; level unlock prices, cooldowns and rewards; event choices; item prices and effects; backings; staff ranks |
+
+## Addendum 2026-11-06: saving inside a stage
+
+A stage is not saved while it is fought, with one exception: in a stage with several opponents, the run is saved when one is defeated (`GameState.stage_checkpoint`), so a closed app resumes at the next opponent with that stage type's carried state (committee: fresh; Town Hall and floor debate: gaffes, guard, hand and clock). A single-opponent stage returns to its own start. Every button is at least 144 base px tall (Balance `Touch: Minimum Button Height`).

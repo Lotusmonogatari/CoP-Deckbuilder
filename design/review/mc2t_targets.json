@@ -2,151 +2,151 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > levels",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > levels",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > levels",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > levels",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > levels",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > levels",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "DraftBillButton",
     "screen": "Office > levels",
     "script": "",
@@ -158,236 +158,176 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@19",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 503.0
+    "y": 547.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@21",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 663.0
+    "y": 761.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@23",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 823.0
+    "y": 975.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@25",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 983.0
+    "y": 1189.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@27",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1143.0
+    "y": 1403.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@29",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1303.0
+    "y": 1617.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@31",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 25 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1463.0
+    "y": 1831.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@33",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 50 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1623.0
+    "y": 2045.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@35",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 50 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1783.0
+    "y": 2259.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@37",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 50 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1943.0
+    "y": 2473.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@39",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 50 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2103.0
+    "y": 2687.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@41",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 50 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2263.0
+    "y": 2901.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@43",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 50 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2423.0
+    "y": 3115.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@45",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 50 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2583.0
+    "y": 3329.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@47",
-    "screen": "Office > levels",
-    "script": "",
-    "text": "Look it over",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2743.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "@Button@49",
-    "screen": "Office > levels",
-    "script": "",
-    "text": "Look it over",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2903.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "@Button@51",
-    "screen": "Office > levels",
-    "script": "",
-    "text": "Look it over",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 3063.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "@Button@53",
-    "screen": "Office > levels",
-    "script": "",
-    "text": "Look it over",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 3223.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "@Button@55",
-    "screen": "Office > levels",
-    "script": "",
-    "text": "Look it over",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 3383.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "@Button@57",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
@@ -398,715 +338,775 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
+    "name": "@Button@49",
+    "screen": "Office > levels",
+    "script": "",
+    "text": "Look it over",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 3757.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "@Button@51",
+    "screen": "Office > levels",
+    "script": "",
+    "text": "Look it over",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 3971.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "@Button@53",
+    "screen": "Office > levels",
+    "script": "",
+    "text": "Look it over",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 4185.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "@Button@55",
+    "screen": "Office > levels",
+    "script": "",
+    "text": "Look it over",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 4399.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "@Button@57",
+    "screen": "Office > levels",
+    "script": "",
+    "text": "Look it over",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 4613.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
     "name": "@Button@59",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 3703.0
+    "y": 4827.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@61",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 3863.0
+    "y": 5041.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@63",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 4023.0
+    "y": 5255.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@65",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 4183.0
+    "y": 5469.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@67",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 4343.0
+    "y": 5683.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@69",
     "screen": "Office > levels",
     "script": "",
     "text": "Look it over",
     "w": 1000.0,
     "x": 40.0,
-    "y": 4503.0
+    "y": 5897.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@71",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 4749.0
+    "y": 6197.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@73",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 4909.0
+    "y": 6411.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@75",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 5069.0
+    "y": 6625.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@77",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 5229.0
+    "y": 6839.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@79",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 5389.0
+    "y": 7053.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@81",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 5549.0
+    "y": 7267.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@83",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 5709.0
+    "y": 7481.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@85",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 5869.0
+    "y": 7695.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@87",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 6029.0
+    "y": 7909.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@89",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 6189.0
+    "y": 8123.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@91",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 6349.0
+    "y": 8337.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@93",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 6509.0
+    "y": 8551.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@95",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 6669.0
+    "y": 8765.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@97",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 6829.0
+    "y": 8979.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@99",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 6989.0
+    "y": 9193.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@101",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 7149.0
+    "y": 9407.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@103",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 7309.0
+    "y": 9621.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@105",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 7469.0
+    "y": 9835.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@107",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 7629.0
+    "y": 10049.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@109",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 7789.0
+    "y": 10263.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@111",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 150 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 7949.0
+    "y": 10477.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@113",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 8109.0
+    "y": 10691.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@115",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 8269.0
+    "y": 10905.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@117",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 8429.0
+    "y": 11119.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@119",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 8589.0
+    "y": 11333.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@121",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 100 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 8749.0
+    "y": 11547.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@123",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 8995.0
+    "y": 11847.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@125",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 9155.0
+    "y": 12061.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@127",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 9315.0
+    "y": 12275.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@129",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 9475.0
+    "y": 12489.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@131",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 9635.0
+    "y": 12703.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@133",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 9795.0
+    "y": 12917.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@135",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 9955.0
+    "y": 13131.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@137",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 10115.0
+    "y": 13345.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@139",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 10275.0
+    "y": 13559.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@141",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 300 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 10435.0
+    "y": 13773.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@143",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 10595.0
+    "y": 13987.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@145",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 10755.0
+    "y": 14201.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@147",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 10915.0
+    "y": 14415.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@149",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 11075.0
+    "y": 14629.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@151",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 11235.0
+    "y": 14843.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@153",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 11395.0
+    "y": 15057.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@155",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 11555.0
+    "y": 15271.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@157",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 11715.0
+    "y": 15485.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@159",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 11875.0
+    "y": 15699.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@161",
     "screen": "Office > levels",
     "script": "",
     "text": "Unlock — 200 XP",
     "w": 1000.0,
     "x": 40.0,
-    "y": 12035.0
+    "y": 15913.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > levels",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 12143.0
+    "y": 16075.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "PersonalTab",
     "screen": "Office > marketplace",
     "script": "",
@@ -1118,7 +1118,7 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "OfficeTab",
     "screen": "Office > marketplace",
     "script": "",
@@ -1137,7 +1137,7 @@
     "text": "×1",
     "w": 240.0,
     "x": 40.0,
-    "y": 461.0
+    "y": 495.0
   },
   {
     "class": "Button",
@@ -1149,7 +1149,7 @@
     "text": "×1",
     "w": 240.0,
     "x": 296.0,
-    "y": 461.0
+    "y": 495.0
   },
   {
     "class": "Button",
@@ -1161,348 +1161,348 @@
     "text": "×2",
     "w": 240.0,
     "x": 552.0,
-    "y": 461.0
+    "y": 495.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 1225.0
+    "y": 1259.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 1605.0
+    "y": 1693.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 1985.0
+    "y": 2127.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 2228.0
+    "y": 2424.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 2471.0
+    "y": 2721.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 2767.0
+    "y": 3071.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 3010.0
+    "y": 3368.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 3306.0
+    "y": 3718.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 3602.0
+    "y": 4068.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 3898.0
+    "y": 4418.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 4194.0
+    "y": 4768.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 4437.0
+    "y": 5065.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 4733.0
+    "y": 5415.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 5018.0
+    "y": 5754.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 5303.0
+    "y": 6093.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 5725.0
+    "y": 6569.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 6147.0
+    "y": 7045.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 6527.0
+    "y": 7479.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 6854.0
+    "y": 7860.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 7139.0
+    "y": 8199.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Buy",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Buy",
     "w": 620.0,
     "x": 176.0,
-    "y": 7424.0
+    "y": 8538.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > marketplace",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 7532.0
+    "y": 8700.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > staff",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > staff",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > staff",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > staff",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > staff",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > staff",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Profile_SF01",
     "screen": "Office > staff",
     "script": "",
@@ -1514,35 +1514,23 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Profile_SF02",
     "screen": "Office > staff",
     "script": "",
     "text": "Yui Kobayashi · 30,000円",
     "w": 1000.0,
     "x": 40.0,
-    "y": 633.0
+    "y": 687.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Profile_SF03",
     "screen": "Office > staff",
     "script": "",
     "text": "Sheen Donalds · 30,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 741.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF04",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Marcus O'Connor · 50,000円",
     "w": 1000.0,
     "x": 40.0,
     "y": 849.0
@@ -1550,35 +1538,23 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
+    "name": "Profile_SF04",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Marcus O'Connor · 50,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1011.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
     "name": "Profile_SF05",
     "screen": "Office > staff",
     "script": "",
     "text": "Stephen Sato · 75,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 957.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF06",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Hiromi Tanaka · 90,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1065.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF07",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Ako Ban · 100,000円",
     "w": 1000.0,
     "x": 40.0,
     "y": 1173.0
@@ -1586,71 +1562,47 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
+    "name": "Profile_SF06",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Hiromi Tanaka · 90,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1335.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Profile_SF07",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Ako Ban · 100,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1497.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
     "name": "Profile_SF08",
     "screen": "Office > staff",
     "script": "",
     "text": "Aoi Suzuki · 40,000円",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1367.0
+    "y": 1745.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Profile_SF09",
     "screen": "Office > staff",
     "script": "",
     "text": "Isela Kobayashi · 30,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1475.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF10",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Himari Sato · 30,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1583.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF11",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Alejandro Uzeko · 50,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1691.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF12",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Santiago Portillo · 75,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1799.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF13",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Kenta Izuke · 90,000円",
     "w": 1000.0,
     "x": 40.0,
     "y": 1907.0
@@ -1658,107 +1610,71 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
+    "name": "Profile_SF10",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Himari Sato · 30,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 2069.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Profile_SF11",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Alejandro Uzeko · 50,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 2231.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Profile_SF12",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Santiago Portillo · 75,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 2393.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Profile_SF13",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Kenta Izuke · 90,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 2555.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
     "name": "Profile_SF14",
     "screen": "Office > staff",
     "script": "",
     "text": "Honoka Richardson · 100,000円",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2015.0
+    "y": 2717.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Profile_SF15",
     "screen": "Office > staff",
     "script": "",
     "text": "Miharu Daitani · 40,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2209.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF16",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Hiroki Shitamachi · 30,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2317.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF17",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Grant Stark · 30,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2425.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF18",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Leo Vargar · 50,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2533.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF19",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Kanima Namamura · 75,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2641.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF20",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Haruka Kamikawa · 90,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2749.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Profile_SF21",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Ari Inamu · 100,000円",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2857.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 110.0,
-    "name": "Back",
-    "screen": "Office > staff",
-    "script": "",
-    "text": "Back",
     "w": 1000.0,
     "x": 40.0,
     "y": 2965.0
@@ -1766,79 +1682,163 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
+    "name": "Profile_SF16",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Hiroki Shitamachi · 30,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 3127.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Profile_SF17",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Grant Stark · 30,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 3289.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Profile_SF18",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Leo Vargar · 50,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 3451.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Profile_SF19",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Kanima Namamura · 75,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 3613.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Profile_SF20",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Haruka Kamikawa · 90,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 3775.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Profile_SF21",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Ari Inamu · 100,000円",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 3937.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Back",
+    "screen": "Office > staff",
+    "script": "",
+    "text": "Back",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 4099.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > backing",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > backing",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > backing",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > backing",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > backing",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > backing",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@365",
     "screen": "Office > backing",
     "script": "",
@@ -1850,715 +1850,715 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@370",
     "screen": "Office > backing",
     "script": "",
     "text": "Take their backing",
     "w": 902.0,
     "x": 138.0,
-    "y": 680.0
+    "y": 734.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@375",
     "screen": "Office > backing",
     "script": "",
     "text": "Take their backing",
     "w": 902.0,
     "x": 138.0,
-    "y": 934.0
+    "y": 1042.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@380",
     "screen": "Office > backing",
     "script": "",
     "text": "Take their backing",
     "w": 902.0,
     "x": 138.0,
-    "y": 1188.0
+    "y": 1350.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@386",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 1483.0
+    "y": 1699.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@392",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 1725.0
+    "y": 1995.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@398",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 10 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 2020.0
+    "y": 2344.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@404",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 35 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 2262.0
+    "y": 2640.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@409",
     "screen": "Office > backing",
     "script": "",
     "text": "Take their backing",
     "w": 902.0,
     "x": 138.0,
-    "y": 2463.0
+    "y": 2895.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@415",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 30 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 2705.0
+    "y": 3191.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@421",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 3042.0
+    "y": 3582.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@426",
     "screen": "Office > backing",
     "script": "",
     "text": "Take their backing",
     "w": 902.0,
     "x": 138.0,
-    "y": 3243.0
+    "y": 3837.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@432",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 3485.0
+    "y": 4133.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@438",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 30 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 3780.0
+    "y": 4482.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@444",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 35 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 4022.0
+    "y": 4778.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@450",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 45 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 4264.0
+    "y": 5074.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@456",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 4601.0
+    "y": 5465.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@462",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 4843.0
+    "y": 5761.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@468",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 35 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 5138.0
+    "y": 6110.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@474",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 5433.0
+    "y": 6459.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@480",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 10 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 5675.0
+    "y": 6755.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@486",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 5970.0
+    "y": 7104.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@492",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 6265.0
+    "y": 7453.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@498",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 10 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 6560.0
+    "y": 7802.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@504",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 6802.0
+    "y": 8098.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@510",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 7044.0
+    "y": 8394.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@516",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 7339.0
+    "y": 8743.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@522",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 7634.0
+    "y": 9092.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@528",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 7929.0
+    "y": 9441.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@534",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 8224.0
+    "y": 9790.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@540",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 8466.0
+    "y": 10086.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@546",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 25 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 8761.0
+    "y": 10435.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@552",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 9056.0
+    "y": 10784.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@558",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 10 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 9351.0
+    "y": 11133.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@564",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 10 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 9593.0
+    "y": 11429.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@570",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 25 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 9835.0
+    "y": 11725.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@576",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 10130.0
+    "y": 12074.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@582",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 30 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 10467.0
+    "y": 12465.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@588",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 25 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 10762.0
+    "y": 12814.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@594",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 25 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 11004.0
+    "y": 13110.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@600",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 11299.0
+    "y": 13459.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@606",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 50 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 11594.0
+    "y": 13808.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@612",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 35 of 60 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 11836.0
+    "y": 14104.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@618",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 5 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 12131.0
+    "y": 14453.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@624",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 12415.0
+    "y": 14791.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@630",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 12657.0
+    "y": 15087.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@636",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 10 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 12899.0
+    "y": 15383.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@642",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 13141.0
+    "y": 15679.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@648",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 35 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 13383.0
+    "y": 15975.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@654",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 20 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 13625.0
+    "y": 16271.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@660",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 13867.0
+    "y": 16567.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@666",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 15 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 14162.0
+    "y": 16916.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "@Button@672",
     "screen": "Office > backing",
     "script": "",
     "text": "Standing 25 of 45 needed.",
     "w": 902.0,
     "x": 138.0,
-    "y": 14404.0
+    "y": 17212.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > backing",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 14512.0
+    "y": 17374.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > deck",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > deck",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > deck",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > deck",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > deck",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > deck",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@734",
     "screen": "Office > deck",
     "script": "",
@@ -2570,7 +2570,7 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "ViewCard_C02",
     "screen": "Office > deck",
     "script": "",
@@ -2582,895 +2582,895 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@737",
     "screen": "Office > deck",
     "script": "",
     "text": "–  2  Impassioned Speech",
     "w": 798.0,
     "x": 40.0,
-    "y": 419.0
+    "y": 483.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "ViewCard_C05",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 419.0
+    "y": 483.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@740",
     "screen": "Office > deck",
     "script": "",
     "text": "✓  2  Call for Unity",
     "w": 798.0,
     "x": 40.0,
-    "y": 558.0
+    "y": 686.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "ViewCard_C09",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 558.0
+    "y": 686.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@743",
     "screen": "Office > deck",
     "script": "",
     "text": "✓  1  Document Request",
     "w": 798.0,
     "x": 40.0,
-    "y": 697.0
+    "y": 889.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "ViewCard_C14",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 697.0
+    "y": 889.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@746",
     "screen": "Office > deck",
     "script": "",
-    "text": "–  2  Agitation",
+    "text": "✓  2  Agitation",
     "w": 798.0,
     "x": 40.0,
-    "y": 836.0
+    "y": 1092.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "ViewCard_C19",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 836.0
+    "y": 1092.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@749",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  1  Shifting the Issue",
+    "text": "–  1  Shifting the Issue",
     "w": 798.0,
     "x": 40.0,
-    "y": 975.0
+    "y": 1295.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "ViewCard_C23",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 975.0
+    "y": 1295.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@752",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  2  Point to the Promise Kept",
+    "text": "✓  1  Own the Mistake",
     "w": 798.0,
     "x": 40.0,
-    "y": 1114.0
+    "y": 1498.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C25",
+    "h": 144.0,
+    "name": "ViewCard_C26",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 1114.0
+    "y": 1498.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@755",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  1  Rally the Faithful",
+    "text": "✓  2  Read the Letters Aloud",
     "w": 798.0,
     "x": 40.0,
-    "y": 1253.0
+    "y": 1701.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C30",
+    "h": 144.0,
+    "name": "ViewCard_C28",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 1253.0
+    "y": 1701.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@758",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  2  Righteous Anger",
+    "text": "✓  0  Rousing Applause",
     "w": 798.0,
     "x": 40.0,
-    "y": 1392.0
+    "y": 1904.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C31",
+    "h": 144.0,
+    "name": "ViewCard_C07",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 1392.0
+    "y": 1904.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@761",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  2  Voice of the Hometown",
+    "text": "✓  1  A Fresh Start",
     "w": 798.0,
     "x": 40.0,
-    "y": 1531.0
+    "y": 2107.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C10",
+    "h": 144.0,
+    "name": "ViewCard_C60",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 1531.0
+    "y": 2107.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@764",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  1  Ask Who's With You",
+    "text": "✓  1  Call In a Favor",
     "w": 798.0,
     "x": 40.0,
-    "y": 1670.0
+    "y": 2310.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C12",
+    "h": 144.0,
+    "name": "ViewCard_C38",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 1670.0
+    "y": 2310.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@767",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  1  Check Their Facts",
+    "text": "✓  1  Work the Room First",
     "w": 798.0,
     "x": 40.0,
-    "y": 1809.0
+    "y": 2513.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C43",
+    "h": 144.0,
+    "name": "ViewCard_C11",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 1809.0
+    "y": 2513.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@770",
+    "screen": "Office > deck",
+    "script": "",
+    "text": "✓  2  Pursue the Contradiction",
+    "w": 798.0,
+    "x": 40.0,
+    "y": 2716.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "ViewCard_C15",
+    "screen": "Office > deck",
+    "script": "",
+    "text": "View",
+    "w": 190.0,
+    "x": 850.0,
+    "y": 2716.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "@Button@773",
     "screen": "Office > deck",
     "script": "",
     "text": "✓  1  Compile the Dossier",
     "w": 798.0,
     "x": 40.0,
-    "y": 1948.0
+    "y": 2919.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "ViewCard_C63",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 1948.0
+    "y": 2919.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "@Button@773",
-    "screen": "Office > deck",
-    "script": "",
-    "text": "✓  2  No Quarter",
-    "w": 798.0,
-    "x": 40.0,
-    "y": 2087.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C66",
-    "screen": "Office > deck",
-    "script": "",
-    "text": "View",
-    "w": 190.0,
-    "x": 850.0,
-    "y": 2087.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@776",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  2  Drawing Battle Lines",
+    "text": "✓  2  Force the Choice",
     "w": 798.0,
     "x": 40.0,
-    "y": 2226.0
+    "y": 3122.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C18",
+    "h": 144.0,
+    "name": "ViewCard_C46",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 2226.0
+    "y": 3122.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@779",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  1  The Quiet Deal",
+    "text": "✓  2  Offer a Quiet Assurance",
     "w": 798.0,
     "x": 40.0,
-    "y": 2365.0
+    "y": 3325.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C69",
+    "h": 144.0,
+    "name": "ViewCard_C24",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 2365.0
+    "y": 3325.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
+    "h": 144.0,
     "name": "@Button@782",
     "screen": "Office > deck",
     "script": "",
-    "text": "✓  1  \"I Have No Recollection\"",
+    "text": "✓  1  Lose the Evidence",
     "w": 798.0,
     "x": 40.0,
-    "y": 2504.0
+    "y": 3528.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "ViewCard_C22",
+    "h": 144.0,
+    "name": "ViewCard_C62",
     "screen": "Office > deck",
     "script": "",
     "text": "View",
     "w": 190.0,
     "x": 850.0,
-    "y": 2504.0
+    "y": 3528.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Confirm",
     "screen": "Office > deck",
     "script": "",
     "text": "Take these in",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2643.0
+    "y": 3731.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > deck",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2771.0
+    "y": 3893.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > record",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > record",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > record",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > record",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > record",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > record",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > record",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1773.0
+    "y": 1756.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "CosmeticsButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Appearance and Music",
     "w": 1000.0,
     "x": 40.0,
-    "y": 691.0
+    "y": 493.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "HowToPlayButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "How to Play",
     "w": 1000.0,
     "x": 40.0,
-    "y": 809.0
+    "y": 655.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "TextSizeButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Text size: Normal",
     "w": 1000.0,
     "x": 40.0,
-    "y": 927.0
+    "y": 817.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ImageScrollButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Image Scroll: On",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1045.0
+    "y": 979.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ImagePanButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Image Pan: On",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1163.0
+    "y": 1141.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "RaisePressureButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Raise Pressure to Harder (cannot be undo",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1281.0
+    "y": 1303.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "BackupNowButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Save Game",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1389.0
+    "y": 1465.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "NewGameMenuButton",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "New game",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1507.0
+    "y": 1627.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > administration_menu",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1625.0
+    "y": 1789.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "OrganisationsButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Important Stakeholders",
     "w": 1000.0,
     "x": 40.0,
-    "y": 863.0
+    "y": 736.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "BackingButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Boosters",
     "w": 1000.0,
     "x": 40.0,
-    "y": 981.0
+    "y": 898.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "PartiesButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Parties",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1099.0
+    "y": 1060.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ElectionButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Election Strength",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1217.0
+    "y": 1222.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "RecordButton",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Your Record",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1335.0
+    "y": 1384.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > reputation_menu",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1453.0
+    "y": 1546.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > organisations",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > organisations",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > organisations",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > organisations",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > organisations",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > organisations",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > organisations",
     "script": "",
@@ -3482,119 +3482,299 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > parties",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > parties",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > parties",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > parties",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > parties",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > parties",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "AlliesButton_PT01",
     "screen": "Office > parties",
     "script": "",
     "text": "See allies and rivals",
     "w": 1000.0,
     "x": 40.0,
-    "y": 536.0
+    "y": 357.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "AlliesButton_PT02",
     "screen": "Office > parties",
     "script": "",
     "text": "See allies and rivals",
     "w": 1000.0,
     "x": 40.0,
-    "y": 807.0
+    "y": 682.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "AlliesButton_PT03",
     "screen": "Office > parties",
     "script": "",
     "text": "See allies and rivals",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1078.0
+    "y": 1007.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "AlliesButton_PT04",
     "screen": "Office > parties",
     "script": "",
     "text": "See allies and rivals",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1332.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "AlliesButton_PT05",
+    "screen": "Office > parties",
+    "script": "",
+    "text": "See allies and rivals",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1657.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "AlliesButton_PT06",
+    "screen": "Office > parties",
+    "script": "",
+    "text": "See allies and rivals",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1982.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Back",
+    "screen": "Office > parties",
+    "script": "",
+    "text": "Back",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 2144.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "StartButton",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Choose a level",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1266.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "EventsButton",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Events",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1434.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "ManagementButton",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Office Management",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1602.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "InventoryButton",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Marketplace",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1770.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "ReputationButton",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Reputation and Results",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1938.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "AdministrationButton",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Administration",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 2106.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Arrange_EV03",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Arrange it",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 279.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Arrange_EV04",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Arrange it",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 493.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Arrange_EV05",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Arrange it",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 707.0
+  },
+  {
+    "class": "Button",
+    "disabled": true,
+    "h": 144.0,
+    "name": "Arrange_EV06",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Weekend only",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 921.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Arrange_EV31",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Arrange it",
+    "w": 1000.0,
+    "x": 40.0,
+    "y": 1135.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
+    "name": "Arrange_EV32",
+    "screen": "Office > events_list",
+    "script": "",
+    "text": "Arrange it",
     "w": 1000.0,
     "x": 40.0,
     "y": 1349.0
@@ -3602,427 +3782,247 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
-    "name": "AlliesButton_PT05",
-    "screen": "Office > parties",
-    "script": "",
-    "text": "See allies and rivals",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1620.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "AlliesButton_PT06",
-    "screen": "Office > parties",
-    "script": "",
-    "text": "See allies and rivals",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1891.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 110.0,
-    "name": "Back",
-    "screen": "Office > parties",
-    "script": "",
-    "text": "Back",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1999.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 130.0,
-    "name": "StartButton",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Choose a level",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1500.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 100.0,
-    "name": "EventsButton",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Events",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1654.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 100.0,
-    "name": "ManagementButton",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Office Management",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1778.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 100.0,
-    "name": "InventoryButton",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Marketplace",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1902.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 100.0,
-    "name": "ReputationButton",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Reputation and Results",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2026.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 100.0,
-    "name": "AdministrationButton",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Administration",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 2150.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Arrange_EV03",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Arrange it",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 539.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Arrange_EV04",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Arrange it",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 699.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Arrange_EV05",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Arrange it",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 859.0
-  },
-  {
-    "class": "Button",
-    "disabled": true,
-    "h": 90.0,
-    "name": "Arrange_EV06",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Weekend only",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1019.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Arrange_EV31",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Arrange it",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1179.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
-    "name": "Arrange_EV32",
-    "screen": "Office > events_list",
-    "script": "",
-    "text": "Arrange it",
-    "w": 1000.0,
-    "x": 40.0,
-    "y": 1339.0
-  },
-  {
-    "class": "Button",
-    "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Arrange_EV33",
     "screen": "Office > events_list",
     "script": "",
     "text": "Arrange it",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1499.0
+    "y": 1563.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Arrange_EV34",
     "screen": "Office > events_list",
     "script": "",
     "text": "Weekend only",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1659.0
+    "y": 1777.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 90.0,
+    "h": 144.0,
     "name": "Arrange_EV35",
     "screen": "Office > events_list",
     "script": "",
     "text": "Weekend only",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1819.0
+    "y": 1991.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > events_list",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1927.0
+    "y": 2153.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "SeeCard",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "See a card",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1143.0
+    "y": 1045.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "SeeCard",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "See a card",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1303.0
+    "y": 1259.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "SeeCard",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "See a card",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1463.0
+    "y": 1473.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > rhetoric_training",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1571.0
+    "y": 1635.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 130.0,
+    "h": 144.0,
     "name": "StartButton",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Choose a level",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1500.0
+    "y": 1266.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "EventsButton",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Events",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1654.0
+    "y": 1434.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ManagementButton",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Office Management",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1778.0
+    "y": 1602.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Marketplace",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1902.0
+    "y": 1770.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "ReputationButton",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Reputation and Results",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2026.0
+    "y": 1938.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "AdministrationButton",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Administration",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2150.0
+    "y": 2106.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 110.0,
+    "h": 144.0,
     "name": "DraftGoButton",
     "screen": "Office > draft a bill",
     "script": "",
@@ -4034,362 +4034,362 @@
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO03",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Local Kōenkai (standing 45)",
     "w": 902.0,
     "x": 138.0,
-    "y": 604.0
+    "y": 638.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO18",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Constituency Voters (standing 35)",
     "w": 902.0,
     "x": 138.0,
-    "y": 712.0
+    "y": 800.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO06",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Neighborhood Associations (standing 35)",
     "w": 902.0,
     "x": 138.0,
-    "y": 820.0
+    "y": 962.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "DraftOrg_BO27",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Urban Neighborhood Alliance (standing 30",
     "w": 902.0,
     "x": 138.0,
-    "y": 928.0
+    "y": 1124.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO21",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Care and Welfare Council (standing 25)",
     "w": 902.0,
     "x": 138.0,
-    "y": 1056.0
+    "y": 1286.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "DraftOrg_BO25",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Small Business Owners' Association (stan",
     "w": 902.0,
     "x": 138.0,
-    "y": 1164.0
+    "y": 1448.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO28",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Ainu Community Council (standing 25)",
     "w": 902.0,
     "x": 138.0,
-    "y": 1292.0
+    "y": 1610.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "DraftOrg_BO29",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Ainu Language and Culture Foundation (st",
     "w": 902.0,
     "x": 138.0,
-    "y": 1400.0
+    "y": 1772.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "DraftOrg_BO26",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Consumer Advocacy Network (standing 20)",
     "w": 902.0,
     "x": 138.0,
-    "y": 1528.0
+    "y": 1934.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO12",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Family Network (standing 20)",
     "w": 902.0,
     "x": 138.0,
-    "y": 1656.0
+    "y": 2096.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO13",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Yezo Artisans Guild (standing 20)",
     "w": 902.0,
     "x": 138.0,
-    "y": 1764.0
+    "y": 2258.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO14",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Commuter Committee (standing 20)",
     "w": 902.0,
     "x": 138.0,
-    "y": 1872.0
+    "y": 2420.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO05",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Chamber of Commerce (standing 20)",
     "w": 902.0,
     "x": 138.0,
-    "y": 1980.0
+    "y": 2582.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO19",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Buddhist Temples Association (standing 2",
     "w": 902.0,
     "x": 138.0,
-    "y": 2088.0
+    "y": 2744.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO20",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Shrine Association (standing 20)",
     "w": 902.0,
     "x": 138.0,
-    "y": 2196.0
+    "y": 2906.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO04",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Mayors' Network (standing 20)",
     "w": 902.0,
     "x": 138.0,
-    "y": 2304.0
+    "y": 3068.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO30",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Rural Revitalization Council (standing 1",
     "w": 902.0,
     "x": 138.0,
-    "y": 2412.0
+    "y": 3230.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO22",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Veterans' Association (standing 15)",
     "w": 902.0,
     "x": 138.0,
-    "y": 2520.0
+    "y": 3392.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO16",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Innovation Society (standing 15)",
     "w": 902.0,
     "x": 138.0,
-    "y": 2628.0
+    "y": 3554.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO15",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Our Traditional Society (standing 15)",
     "w": 902.0,
     "x": 138.0,
-    "y": 2736.0
+    "y": 3716.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO10",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Agricultural Cooperatives (standing 15)",
     "w": 902.0,
     "x": 138.0,
-    "y": 2844.0
+    "y": 3878.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO09",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Labor Federation (standing 15)",
     "w": 902.0,
     "x": 138.0,
-    "y": 2952.0
+    "y": 4040.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO07",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Fisheries Cooperative (standing 15)",
     "w": 902.0,
     "x": 138.0,
-    "y": 3060.0
+    "y": 4202.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO23",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Taxpayers' Alliance (standing 10)",
     "w": 902.0,
     "x": 138.0,
-    "y": 3168.0
+    "y": 4364.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "DraftOrg_BO24",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Financial Industry Association (standing",
     "w": 902.0,
     "x": 138.0,
-    "y": 3276.0
+    "y": 4526.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO11",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Students United (standing 10)",
     "w": 902.0,
     "x": 138.0,
-    "y": 3404.0
+    "y": 4688.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "DraftOrg_BO08",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "National Media (standing 10)",
     "w": 902.0,
     "x": 138.0,
-    "y": 3512.0
+    "y": 4850.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "Back",
     "screen": "Office > draft a bill",
     "script": "",
     "text": "Back",
     "w": 1000.0,
     "x": 40.0,
-    "y": 3620.0
+    "y": 5012.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 75.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Battle",
     "script": "",
     "text": "Inventory",
     "w": 215.0,
     "x": 650.0,
-    "y": 1358.0
+    "y": 1267.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 75.0,
+    "h": 144.0,
     "name": "DetailsButton",
     "screen": "Battle",
     "script": "",
     "text": "Details",
     "w": 159.0,
     "x": 881.0,
-    "y": 1358.0
+    "y": 1267.0
   },
   {
     "class": "HScrollBar",
@@ -4401,7 +4401,7 @@
     "text": "",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1608.0
+    "y": 1573.0
   },
   {
     "class": "Button",
@@ -4413,7 +4413,7 @@
     "text": "",
     "w": 335.815002441406,
     "x": 40.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
@@ -4425,7 +4425,7 @@
     "text": "",
     "w": 335.815002441406,
     "x": 391.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
@@ -4437,7 +4437,7 @@
     "text": "",
     "w": 335.815002441406,
     "x": 742.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
@@ -4449,7 +4449,7 @@
     "text": "",
     "w": 335.815002441406,
     "x": 1093.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
@@ -4461,43 +4461,43 @@
     "text": "",
     "w": 335.815002441406,
     "x": 1444.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "EndTurnButton",
     "screen": "Battle",
     "script": "",
     "text": "End turn",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2180.0
+    "y": 2145.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 75.0,
+    "h": 144.0,
     "name": "InventoryButton",
     "screen": "Battle > details",
     "script": "",
     "text": "Inventory",
     "w": 215.0,
     "x": 650.0,
-    "y": 1358.0
+    "y": 1267.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 75.0,
+    "h": 144.0,
     "name": "DetailsButton",
     "screen": "Battle > details",
     "script": "",
     "text": "Details",
     "w": 159.0,
     "x": 881.0,
-    "y": 1358.0
+    "y": 1267.0
   },
   {
     "class": "HScrollBar",
@@ -4509,7 +4509,7 @@
     "text": "",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1608.0
+    "y": 1573.0
   },
   {
     "class": "Button",
@@ -4521,7 +4521,7 @@
     "text": "",
     "w": 335.815002441406,
     "x": 40.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
@@ -4533,7 +4533,7 @@
     "text": "",
     "w": 335.815002441406,
     "x": 391.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
@@ -4545,7 +4545,7 @@
     "text": "",
     "w": 335.815002441406,
     "x": 742.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
@@ -4557,7 +4557,7 @@
     "text": "",
     "w": 335.815002441406,
     "x": 1093.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
@@ -4569,294 +4569,306 @@
     "text": "",
     "w": 335.815002441406,
     "x": 1444.0,
-    "y": 1666.0
+    "y": 1631.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "EndTurnButton",
     "screen": "Battle > details",
     "script": "",
     "text": "End turn",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2180.0
+    "y": 2145.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "OrgChip_BO14",
+    "h": 144.0,
+    "name": "OrgChip_BO18",
     "screen": "Battle > details",
     "script": "",
     "text": "",
     "w": 80.0,
     "x": 90.0,
-    "y": 1163.0
+    "y": 1062.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 80.0,
-    "name": "OrgChip_BO30",
+    "h": 144.0,
+    "name": "OrgChip_BO03",
     "screen": "Battle > details",
     "script": "",
     "text": "",
     "w": 80.0,
     "x": 182.0,
-    "y": 1163.0
+    "y": 1062.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 75.0,
+    "h": 144.0,
+    "name": "OrgChip_BO17",
+    "screen": "Battle > details",
+    "script": "",
+    "text": "",
+    "w": 80.0,
+    "x": 274.0,
+    "y": 1062.0
+  },
+  {
+    "class": "Button",
+    "disabled": false,
+    "h": 144.0,
     "name": "RulesToggle",
     "screen": "Battle > details",
     "script": "",
     "text": "Room rules",
     "w": 900.0,
     "x": 90.0,
-    "y": 1314.0
+    "y": 1277.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 75.0,
+    "h": 144.0,
     "name": "DetailsClose",
     "screen": "Battle > details",
     "script": "",
     "text": "Back",
     "w": 900.0,
     "x": 90.0,
-    "y": 1405.0
+    "y": 1437.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "ChoiceA",
     "screen": "Office Hours (a dilemma)",
     "script": "",
-    "text": "Yes. Workers deserve fair notice. (Promi",
+    "text": "Yes. Students need study space late. (Pr",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1008.0
+    "y": 1061.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "ChoiceB",
     "screen": "Office Hours (a dilemma)",
     "script": "",
-    "text": "Companies must manage costs to survive.",
+    "text": "The budget decides opening hours.",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1130.0
+    "y": 1217.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 110.0,
+    "h": 144.0,
     "name": "ChoiceC",
     "screen": "Office Hours (a dilemma)",
     "script": "",
-    "text": "I'll ask the owners to meet the union. (",
+    "text": "I'll raise it with the rector. (Promise:",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1232.0
+    "y": 1373.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "ChoiceD",
     "screen": "Office Hours (a dilemma)",
     "script": "",
-    "text": "Retraining could help those who lose shi",
+    "text": "Open a study room in the student hall.",
     "w": 1000.0,
     "x": 40.0,
-    "y": 1354.0
+    "y": 1529.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 110.0,
+    "h": 144.0,
     "name": "ContinueButton",
     "screen": "Office Hours (a dilemma)",
     "script": "",
     "text": "Continue",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2180.0
+    "y": 2146.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 110.0,
+    "h": 144.0,
     "name": "ContinueButton",
     "screen": "Level Intro (first line)",
     "script": "",
     "text": "Let's go",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2179.0
+    "y": 2146.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "OrgChip_BO08",
     "screen": "Level Intro (stance)",
     "script": "",
     "text": "",
     "w": 90.0,
     "x": 495.0,
-    "y": 1446.0
+    "y": 1277.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 75.0,
+    "h": 144.0,
     "name": "ReadBill",
     "screen": "Level Intro (stance)",
     "script": "",
     "text": "Read the Bill",
     "w": 272.0,
     "x": 404.0,
-    "y": 1556.0
+    "y": 1441.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "SupportButton",
     "screen": "Level Intro (stance)",
     "script": "",
     "text": "Lean Support",
     "w": 279.0,
     "x": 244.0,
-    "y": 1881.0
+    "y": 1835.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 90.0,
+    "h": 144.0,
     "name": "OpposeButton",
     "screen": "Level Intro (stance)",
     "script": "",
     "text": "Lean Oppose",
     "w": 272.0,
     "x": 563.0,
-    "y": 1881.0
+    "y": 1835.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 110.0,
+    "h": 144.0,
     "name": "ContinueButton",
     "screen": "Level Intro (stance)",
     "script": "",
     "text": "Let's go",
     "w": 1000.0,
     "x": 40.0,
-    "y": 2180.0
+    "y": 2146.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "VoteYes",
     "screen": "Floor Vote",
     "script": "",
     "text": "Vote Aye",
     "w": 322.0,
     "x": 40.0,
-    "y": 2190.0
+    "y": 2146.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "VoteNo",
     "screen": "Floor Vote",
     "script": "",
     "text": "Vote Nay",
     "w": 323.0,
     "x": 378.0,
-    "y": 2190.0
+    "y": 2146.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 100.0,
+    "h": 144.0,
     "name": "VoteAbstain",
     "screen": "Floor Vote",
     "script": "",
     "text": "Abstain",
     "w": 323.0,
     "x": 717.0,
-    "y": 2190.0
+    "y": 2146.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 100.0,
+    "h": 144.0,
     "name": "VoteYes",
     "screen": "Floor Vote result",
     "script": "",
     "text": "Vote Aye",
     "w": 322.0,
     "x": 40.0,
-    "y": 2190.0
+    "y": 2146.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 100.0,
+    "h": 144.0,
     "name": "VoteNo",
     "screen": "Floor Vote result",
     "script": "",
     "text": "Vote Nay",
     "w": 323.0,
     "x": 378.0,
-    "y": 2190.0
+    "y": 2146.0
   },
   {
     "class": "Button",
     "disabled": true,
-    "h": 100.0,
+    "h": 144.0,
     "name": "VoteAbstain",
     "screen": "Floor Vote result",
     "script": "",
     "text": "Abstain",
     "w": 323.0,
     "x": 717.0,
-    "y": 2190.0
+    "y": 2146.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 120.0,
+    "h": 144.0,
     "name": "OrgChip_BO08",
     "screen": "Floor Vote result",
     "script": "",
     "text": "",
     "w": 120.0,
     "x": 90.0,
-    "y": 1196.0
+    "y": 1149.0
   },
   {
     "class": "Button",
     "disabled": false,
-    "h": 75.0,
+    "h": 144.0,
     "name": "OutcomeClose",
     "screen": "Floor Vote result",
     "script": "",
     "text": "Back to the Office",
     "w": 900.0,
     "x": 90.0,
-    "y": 1629.0
+    "y": 1606.0
   }
 ]

@@ -1410,6 +1410,55 @@ func _grade_of(card: Dictionary, question: Dictionary) -> String:
 # Working through several opponents
 # ---------------------------------------------------------------------------
 
+## The fields a mid-stage save keeps: everything that carries from one
+## opponent to the next, or that the stage's result is built from. The bar is
+## left out on purpose: a new opponent always starts a fresh one.
+const CHECKPOINT_FIELDS := [
+	"deck", "hand", "discard", "turn", "energy", "energy_max", "block",
+	"opponent_block", "next_card_bonus", "next_card_discount",
+	"cards_played_this_turn", "questions_answered_this_turn",
+	"items_used_this_turn", "turn_limit_bonus", "gaffe", "opponent_gaffe",
+	"next_intent_revealed", "question_index", "declined_questions",
+	"weak_answers", "pleased_boosters", "displeased_boosters",
+	"opposed_boosters", "booster_tally", "crushed_opponent_boosters",
+]
+
+
+## A save point taken the moment an opponent is defeated, so a stage with
+## several opponents can be picked up at the next one. {} when there is
+## nothing worth saving (one opponent, or the stage is over).
+func checkpoint() -> Dictionary:
+	if state.opponent_count <= 1 or state.opponent_index <= 0 or state.is_over():
+		return {}
+	var saved := {"opponent_index": state.opponent_index, "fields": {}}
+	for field: String in CHECKPOINT_FIELDS:
+		var value: Variant = state.get(field)
+		saved["fields"][field] = value.duplicate(true) if (value is Array or value is Dictionary) else value
+	return saved
+
+
+## Puts a checkpoint() back into a freshly set-up engine: brings on each
+## opponent the same way play does, then restores what was carried.
+func restore_checkpoint(saved: Dictionary) -> void:
+	var target := int(saved.get("opponent_index", 0))
+	if target <= 0 or target >= _opponents.size():
+		return
+	while state.opponent_index < target:
+		_advance_to_next_opponent()
+	var fields: Dictionary = saved.get("fields", {})
+	for field: String in CHECKPOINT_FIELDS:
+		if not fields.has(field):
+			continue
+		var value: Variant = fields[field]
+		var current: Variant = state.get(field)
+		if current is Array:
+			(current as Array).assign(value as Array)
+		elif current is Dictionary:
+			state.set(field, (value as Dictionary).duplicate(true))
+		else:
+			state.set(field, value)
+
+
 ## Whoever is being argued with at the moment.
 func current_opponent() -> Dictionary:
 	if state.opponent_index < 0 or state.opponent_index >= _opponents.size():

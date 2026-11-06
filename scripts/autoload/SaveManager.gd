@@ -57,6 +57,13 @@ func autosave(announce: bool = false) -> void:
 			Layout.flash(Text.say("save.saved"))
 
 
+## Saves inside a stage at an opponent's defeat (GameState.stage_checkpoint
+## holds where to resume). The one save allowed while a stage is fought.
+func save_checkpoint() -> void:
+	if enabled and not GameState.awaiting_new_game:
+		save_game()
+
+
 ## Writes the manual backup slot. True when written.
 func backup_now() -> bool:
 	return enabled and not GameState.awaiting_new_game and save_game(MANUAL_PATH)
