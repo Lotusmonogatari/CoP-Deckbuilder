@@ -637,3 +637,7 @@ On the stage screen the "who is listening" strip switched to two rows as soon as
 ## The battle picture ends above the hand's scroll bar (2026-11-06, Cameron)
 
 The stage picture used to stop at a fixed three-quarters of the screen, which left the gold hand scroll bar sitting over it. The picture (and its darkening layer) now ends exactly where the scroll bar begins, and the plain panel starts there. The picture still pans vertically, so all of it can be seen.
+
+## A two-second hold on a stage's Continue button (2026-11-06, Cameron)
+
+When a stage's opening scene (the Stage Transition) first appears, its Continue button stays inactive for 2 seconds so the scene is seen before it can be tapped past. The delay is a Balance row, `Stage: Continue Delay Seconds` (0 turns it off). Tests and bots skip it with the `COP_NO_CONTINUE_DELAY` setting that `tools/verify.sh` sets; the stage-transition click test turns it back on to prove it holds, then releases. Other Continue buttons (Level Intro, visits, events) are unchanged: tell me if they should wait too.

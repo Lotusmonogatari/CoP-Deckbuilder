@@ -43,6 +43,7 @@ func _ready() -> void:
 
 	_continue_button.text = Text.say("stage_transition.continue")
 	_continue_button.pressed.connect(_on_continue)
+	_hold_continue()
 
 	_player_portrait.kind = PlaceholderArt.Kind.CHARACTER
 	_player_portrait.art_id = str(DataDB.player.get("player_id", ""))
@@ -232,6 +233,20 @@ func _display_name(character_id: String) -> String:
 		"opponent": return str(DataDB.get_opponent(character_id).get("name", character_id))
 		"staff": return str(DataDB.get_staff(character_id).get("name", character_id))
 	return character_id
+
+
+## Keeps Continue inactive for the Balance delay when the scene first appears,
+## so the opening is seen before it can be tapped past. The timer captures the
+## button alone, not the screen. Tests and bots skip it (COP_NO_CONTINUE_DELAY).
+func _hold_continue() -> void:
+	var delay := float(DataDB.balance.get("stage_continue_delay_seconds", 0))
+	if delay <= 0.0 or OS.has_environment("COP_NO_CONTINUE_DELAY"):
+		return
+	var button := _continue_button
+	button.disabled = true
+	get_tree().create_timer(delay).timeout.connect(func() -> void:
+		if is_instance_valid(button):
+			button.disabled = false)
 
 
 func _on_continue() -> void:

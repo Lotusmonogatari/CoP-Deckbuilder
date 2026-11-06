@@ -35,6 +35,7 @@ func _run() -> void:
 		for round_number in ROUNDS:
 			await _check(target)
 	await _check_two_speakers()
+	await _check_continue_delay(targets[0])
 	print("")
 	if _failures.is_empty():
 		print("STAGE TRANSITION TEST: PASS (%d level(s) x %d rounds)" % [targets.size(), ROUNDS])
@@ -67,6 +68,37 @@ func _targets() -> Array[Dictionary]:
 	for i in range(0, found.size(), step):
 		spread.append(found[i])
 	return spread
+
+
+## Continue is held back for the Balance delay when a stage's opening scene
+## first appears (Cameron, 2026-11-06). verify.sh switches the delay off for
+## every other test, so this one turns it back on for itself.
+func _check_continue_delay(target: Dictionary) -> void:
+	var delay := float(DataDB.balance.get("stage_continue_delay_seconds", 0))
+	if delay <= 0.0:
+		return
+	OS.unset_environment("COP_NO_CONTINUE_DELAY")
+	GameState.start_new_run("PC01")
+	var runner := LevelRunner.new(BattleSetup.expand_level(DataDB.get_level(str(target["level_id"]))))
+	GameState.begin_level(runner)
+	runner.index = int(target["index"])
+	StageRouting.go_to_next_stage(get_tree(), "res://nothing.tscn")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var screen := get_tree().current_scene
+	if screen == null or screen.name != TRANSITION_SCENE_NAME:
+		_failures.append("continue delay: the transition screen did not open")
+		OS.set_environment("COP_NO_CONTINUE_DELAY", "1")
+		return
+	var button: Button = screen.get_node("%ContinueButton")
+	await get_tree().create_timer(delay * 0.4).timeout
+	if not button.disabled:
+		_failures.append("Continue was active before the %.0f second delay was over" % delay)
+	await get_tree().create_timer(delay * 0.8).timeout
+	if button.disabled:
+		_failures.append("Continue was still inactive after the %.0f second delay" % delay)
+	OS.set_environment("COP_NO_CONTINUE_DELAY", "1")
+	GameState.end_level()
 
 
 func _check(target: Dictionary) -> void:

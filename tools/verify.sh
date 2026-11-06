@@ -19,6 +19,7 @@
 set -uo pipefail
 # Random events are chance pop-ups; the real-click tests switch them off (GameState.roll_random_event).
 export COP_NO_RANDOM_EVENTS=1
+export COP_NO_CONTINUE_DELAY=1
 
 QUICK=0
 [ "${1:-}" = "--quick" ] && QUICK=1
