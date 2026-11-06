@@ -156,11 +156,20 @@ func _add_tile(booster_id: String, taste: String) -> void:
 func _fit() -> void:
 	if _tiles.is_empty():
 		return
-	var rows := 1 if _tiles.size() <= 4 else 2
 	var has_taste := false
 	for booster_id: String in _tiles:
 		has_taste = has_taste or (_tiles[booster_id]["taste"] as Label).visible
 	var spare := 30.0 if has_taste else 6.0
+	# One row when the tiles fit side by side at full height; two only when
+	# they would really have to wrap. (It used to switch to two rows at five
+	# tiles whatever the width, so five organizations shrank to half size
+	# while sitting comfortably on one line.)
+	var rows := 1
+	var one_row := clampf(size.y - spare, 56.0, 130.0)
+	var gap := float(_flow.get_theme_constant("h_separation"))
+	var needed := _tiles.size() * (one_row + gap) - gap
+	if size.x > 0.0 and needed > size.x:
+		rows = 2
 	_icon_size = clampf((size.y - spare * rows) / rows, 56.0, 130.0)
 	for booster_id: String in _tiles:
 		var tile: Dictionary = _tiles[booster_id]

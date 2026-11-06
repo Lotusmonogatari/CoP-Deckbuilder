@@ -629,3 +629,7 @@ Checked: 7 new tests in `tests/test_stage_checkpoint.gd`; `tools/verify.sh`.
 ## Buttons back to their earlier sizes (2026-11-06, Cameron)
 
 Cameron found the 144 px buttons too large. The Layout rule and the Balance row `Touch: Minimum Button Height` are removed; every button is the size it was before. The MC²T touch-target finding (most buttons under 44 pt) is still open, to be revisited at a size Cameron picks. The save at each defeated opponent and the wording changes stay.
+
+## Five organization chips stay full size (2026-11-06, Cameron)
+
+On the stage screen the "who is listening" strip switched to two rows as soon as there were five organizations, which shrank every icon to about half size even though five fit side by side. It now uses one row whenever the icons fit across the screen at full height, and wraps to two only when they really cannot. Test: `tests/test_listening_strip_size.gd`.
