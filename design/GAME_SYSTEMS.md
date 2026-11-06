@@ -316,4 +316,4 @@ Every number below is in the workbook and exported to data; none is hard-coded.
 
 ## Addendum 2026-11-06: saving inside a stage
 
-A stage is not saved while it is fought, with one exception: in a stage with several opponents, the run is saved when one is defeated (`GameState.stage_checkpoint`), so a closed app resumes at the next opponent with that stage type's carried state (committee: fresh; Town Hall and floor debate: gaffes, guard, hand and clock). A single-opponent stage returns to its own start. Every button is at least 144 base px tall (Balance `Touch: Minimum Button Height`).
+A stage is not saved while it is fought, with one exception: in a stage with several opponents, the run is saved when one is defeated (`GameState.stage_checkpoint`), so a closed app resumes at the next opponent with that stage type's carried state (committee: fresh; Town Hall and floor debate: gaffes, guard, hand and clock). A single-opponent stage returns to its own start.

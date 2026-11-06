@@ -625,3 +625,7 @@ as the band rather than the same width of lean.
 | MC²T report | Opacity declaration approved; decisions recorded (`design/review/MC2T_REPORT_2026-11-06.md` §8) |
 
 Checked: 7 new tests in `tests/test_stage_checkpoint.gd`; `tools/verify.sh`.
+
+## Buttons back to their earlier sizes (2026-11-06, Cameron)
+
+Cameron found the 144 px buttons too large. The Layout rule and the Balance row `Touch: Minimum Button Height` are removed; every button is the size it was before. The MC²T touch-target finding (most buttons under 44 pt) is still open, to be revisited at a size Cameron picks. The save at each defeated opponent and the wording changes stay.

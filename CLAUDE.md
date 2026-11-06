@@ -206,3 +206,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Documentation review: new references, a slim brief, September and October summarized (2026-11-06, Cameron)
 - Mechanic Coherence and Clarity Test: expert pass, touch-target and keyword audits, player-test kit (2026-11-06, Cameron)
 - MC²T follow-up: 144 px buttons, a save at each defeated opponent, "Backers" and wording (2026-11-06, Cameron)
+- Buttons back to their earlier sizes (2026-11-06, Cameron)
