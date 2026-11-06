@@ -248,6 +248,28 @@ func _build_inventory() -> void:
 	parent.move_child(button, _details_button.get_index())
 
 
+## The picture ends where the hand's scroll bar begins (Cameron, 2026-11-06),
+## so the bar never sits over it. The picture pans, so the whole of it can
+## still be seen. Everything below is the plain panel.
+func _fit_background() -> void:
+	var column := get_node_or_null("Safe/Column")
+	if column == null:
+		return
+	var edge: Control = column.get_node_or_null("HandScrollBar")
+	if edge == null or not edge.is_visible_in_tree():
+		edge = %HandRow.get_parent() as Control
+	var bottom := edge.get_global_rect().position.y - get_global_rect().position.y
+	if bottom <= 0.0 or bottom >= size.y:
+		return
+	for node_name: String in ["Background", "BackgroundScrim"]:
+		var strip := get_node(node_name) as Control
+		strip.anchor_bottom = 0.0
+		strip.offset_bottom = bottom
+	var panel := get_node("BackgroundPanel") as Control
+	panel.anchor_top = 0.0
+	panel.offset_top = bottom
+
+
 ## The items this stage began with, kept so a save point can reuse them.
 var _stage_item_bonuses: Dictionary = {}
 
@@ -350,6 +372,11 @@ func start_battle() -> void:
 	_room_notice.hide()
 
 	Audio.play_music("music_battle")
+	# Keep the picture above the hand's scroll bar, now and whenever layout moves it.
+	var hand_bar := get_node_or_null("Safe/Column/HandScrollBar")
+	if hand_bar != null and not hand_bar.item_rect_changed.is_connected(_fit_background):
+		hand_bar.item_rect_changed.connect(_fit_background)
+	_fit_background.call_deferred()
 
 	EventBus.turn_started.emit(engine.state.turn)
 	# And what the opponent opens with. This used to be left out, so the very

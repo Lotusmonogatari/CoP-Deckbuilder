@@ -633,3 +633,7 @@ Cameron found the 144 px buttons too large. The Layout rule and the Balance row 
 ## Five organization chips stay full size (2026-11-06, Cameron)
 
 On the stage screen the "who is listening" strip switched to two rows as soon as there were five organizations, which shrank every icon to about half size even though five fit side by side. It now uses one row whenever the icons fit across the screen at full height, and wraps to two only when they really cannot. Test: `tests/test_listening_strip_size.gd`.
+
+## The battle picture ends above the hand's scroll bar (2026-11-06, Cameron)
+
+The stage picture used to stop at a fixed three-quarters of the screen, which left the gold hand scroll bar sitting over it. The picture (and its darkening layer) now ends exactly where the scroll bar begins, and the plain panel starts there. The picture still pans vertically, so all of it can be seen.

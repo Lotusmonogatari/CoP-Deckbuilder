@@ -208,3 +208,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - MC²T follow-up: 144 px buttons, a save at each defeated opponent, "Backers" and wording (2026-11-06, Cameron)
 - Buttons back to their earlier sizes (2026-11-06, Cameron)
 - Five organization chips stay full size (2026-11-06, Cameron)
+- The battle picture ends above the hand scroll bar (2026-11-06, Cameron)
