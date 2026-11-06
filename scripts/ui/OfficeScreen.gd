@@ -2834,6 +2834,11 @@ func _show_levels() -> void:
 		# cost/cooldown, not this.
 		if Ledger.level_is_hidden(level, GameState.level_last_completed_at):
 			continue
+		# A level still cooling down is taken off the list until its cooldown
+		# is over (Cameron, 2026-11-06; it used to show as a disabled row).
+		if DataDB.get_rule("level_gating_enabled", false) and Ledger.level_cooldown_remaining(
+				level, GameState.time_units, GameState.level_cleared_units) > 0:
+			continue
 		# A level only an event can reveal ("Needs Discovery") stays out of sight until then.
 		if not GameState.is_level_discovered(level):
 			continue

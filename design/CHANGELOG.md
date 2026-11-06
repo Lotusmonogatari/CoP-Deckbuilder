@@ -641,3 +641,7 @@ The stage picture used to stop at a fixed three-quarters of the screen, which le
 ## A two-second hold on a stage's Continue button (2026-11-06, Cameron)
 
 When a stage's opening scene (the Stage Transition) first appears, its Continue button stays inactive for 2 seconds so the scene is seen before it can be tapped past. The delay is a Balance row, `Stage: Continue Delay Seconds` (0 turns it off). Tests and bots skip it with the `COP_NO_CONTINUE_DELAY` setting that `tools/verify.sh` sets; the stage-transition click test turns it back on to prove it holds, then releases. Other Continue buttons (Level Intro, visits, events) are unchanged: tell me if they should wait too.
+
+## Levels on cooldown leave the level list (2026-11-06, Cameron)
+
+A level that is still cooling down after being played no longer shows as a greyed-out "wait" row in Choose a Level; it is taken off the list and comes back when its cooldown is over. Locked levels (not yet bought with XP) and levels the calendar refuses still show with their reason. Only applies while `level_gating_enabled` is on (it is). Checked with a throwaway script: clearing LV01 dropped the list from 75 buttons to 74.

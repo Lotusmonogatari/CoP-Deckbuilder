@@ -210,3 +210,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Five organization chips stay full size (2026-11-06, Cameron)
 - The battle picture ends above the hand scroll bar (2026-11-06, Cameron)
 - A two-second hold on a stage Continue button (2026-11-06, Cameron)
+- Levels on cooldown leave the level list (2026-11-06, Cameron)
