@@ -1,5 +1,47 @@
 [
   {
+    "event_id": "EV01",
+    "title": "Sapporo Grand Sumo Wants an Answer",
+    "flavor": "The sumo association's host committee says the Grand Sumo tournament can come back to Sapporo every year, if the city and its legislators stand behind it. Hotel owners want the crowds. The ratepayers and the neighborhoods around the arena want the bill and the traffic counted first.",
+    "trigger": "Random",
+    "available": "Both",
+    "hours": 2,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": 5,
+    "cooldown_hours": null,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": "OUT_FESTIVAL_1",
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null,
+    "seasons": [
+      "Summer"
+    ]
+  },
+  {
+    "event_id": "EV02",
+    "title": "The Temple Bell Needs a Ringer",
+    "flavor": "The Buddhist Temples Association is ringing out the old year at the hillside temple and asks you to take a turn at the great bell. A neighbor mentions, quietly, that the bell tower roof leaks.",
+    "trigger": "Random",
+    "available": "Both",
+    "hours": 1,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": 5,
+    "cooldown_hours": null,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": "OUT_FESTIVAL_2_WINTER",
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null,
+    "seasons": [
+      "Winter"
+    ]
+  },
+  {
     "event_id": "EV03",
     "title": "Local Newspaper Advertisement",
     "flavor": "The regional paper offers a half page. The sales representative is very persuasive.",

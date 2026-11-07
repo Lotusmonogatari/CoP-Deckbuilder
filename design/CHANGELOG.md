@@ -664,3 +664,14 @@ For Cameron: **BI18, Five Point Independents** now reads 4 Yes / 1 No but is sti
 ## 33 opponent lines for the bills whose party positions changed (2026-11-07, Cameron)
 
 After the workbook update the new party positions moved which sides draw from which line pools, leaving 33 pools (bill, rhetorical style, move) one line short on BI02, 04, 10, 12, 13, 14, 20 and 29. One line was added to each as a new row in the Opponent Cues tab (OC3831 to OC3863): 22 Neutral, 9 For and 3 Against, written in the voice of the existing lines and built from each bill's own facts. All are Claude's draft for Cameron to rewrite. `tools/cue_coverage.py --list` now shows none of those bills short (overall shortfall 544 to 511 lines). The batch is kept in `tools/workbook/archive/b8/opponent_line_top_up.py`.
+
+## Two empty event slots filled: EV01 and EV02 (2026-11-07, Cameron)
+
+The Events tab had two empty rows at the top (EV01 and EV02, with six empty rows in Event Choices). They are now filled with draft events, so no new IDs were used (next free is still EV66). Both are Random, weight 5, with three choices each, one of which costs nothing.
+
+| Event | Trigger | Content |
+|---|---|---|
+| EV01 Sapporo Grand Sumo Wants an Answer | Random, both days, 2 hours, Summer, festival picture | The tournament can return every year if the city and legislators stand behind it. A: pledge to fight for it yearly (promise of 2 hours within 72 for the Small Business Owners' Association; Mayors' Network and small business up, Taxpayers' Alliance down); B: welcome it once and ask for the public costs first (Taxpayers' Alliance and Neighborhood Associations up, small business down); C: send a staff member to hear both sides |
+| EV02 The Temple Bell Needs a Ringer | Random, both days, 1 hour, Winter, winter festival picture | The Buddhist Temples Association asks you to ring out the old year; the bell tower roof leaks. A: take a turn at the bell; B: send a staff member with a 10,000円 donation; C: offer to speak for the roof at the next heritage debate (promise of 1 hour within 72) |
+
+All text is Claude's draft for Cameron to rewrite; EV02 was my choice of subject. Only existing organizations are used, and "the sumo association" is left unnamed. The batch is `tools/workbook/archive/b10/fill_ev01_ev02.py`. Checked: export "No errors", `tools/verify.sh` passes.

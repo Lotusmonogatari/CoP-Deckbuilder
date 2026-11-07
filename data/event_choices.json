@@ -1,5 +1,260 @@
 [
   {
+    "event_id": "EV01",
+    "choice": "A",
+    "choice_text": "Pledge to fight for the tournament every year",
+    "result_text": "You tell the committee you will argue for a yearly tournament in every room that will listen. The hotel owners applaud, and the ratepayers write down your pledge.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 72,
+        "for": "BO25"
+      }
+    ],
+    "promise_kept": [
+      {
+        "target": "National",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": 2
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      }
+    ],
+    "promise_broken": [
+      {
+        "target": "BO25",
+        "delta": -4
+      },
+      {
+        "target": "BO04",
+        "delta": -3
+      },
+      {
+        "target": "Reputation",
+        "delta": -2
+      }
+    ],
+    "promise_kept_text": "You spend two hours with the mayors and the hotel owners, and the committee leaves with a letter of support to take back to the association."
+  },
+  {
+    "event_id": "EV01",
+    "choice": "B",
+    "choice_text": "Welcome it once and ask for the public costs first",
+    "result_text": "You tell the committee you would welcome the tournament once and study what it costs the public before promising it again. The ratepayers nod. The hotel owners do not.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV01",
+    "choice": "C",
+    "choice_text": "Send a staff member to hear both sides",
+    "result_text": "Your staffer sits with the committee in the morning and with the ratepayers in the afternoon, and brings back both lists.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV02",
+    "choice": "A",
+    "choice_text": "Take your turn at the bell and stay for tea",
+    "result_text": "The bell hums in your chest for a full minute. Over tea the abbot thanks you, and mentions the roof.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO19",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV02",
+    "choice": "B",
+    "choice_text": "Send a staff member with a donation for the repairs",
+    "result_text": "Your staffer places the envelope in the offering box and signs the book on your behalf. The abbot sends a note of thanks.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO19",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "funds",
+        "amount": 10000
+      }
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV02",
+    "choice": "C",
+    "choice_text": "Offer to speak for the roof at the next heritage debate",
+    "result_text": "You tell the abbot you will raise the bell tower roof when heritage funding is next debated. He writes it down, and so does a ratepayer in the back row.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO19",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72,
+        "for": "BO19"
+      }
+    ],
+    "promise_kept": [
+      {
+        "target": "BO19",
+        "delta": 2
+      },
+      {
+        "target": "BO20",
+        "delta": 1
+      }
+    ],
+    "promise_broken": [
+      {
+        "target": "BO19",
+        "delta": -3
+      },
+      {
+        "target": "Reputation",
+        "delta": -1
+      }
+    ],
+    "promise_kept_text": "You stand up in the heritage debate and name the bell tower roof. The abbot hears of it before you are back in your office."
+  },
+  {
     "event_id": "EV03",
     "choice": "A",
     "choice_text": "Run a portrait advertisement",
