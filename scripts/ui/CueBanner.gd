@@ -43,6 +43,10 @@ const SLIDE_IN := 0.16
 ## Where the band sits, as a share of the screen's height from the top:
 ## across the middle, clear of the hand.
 const BAND_CENTRE := 0.42
+## How far above and below its centre a band may reach (a name tag, three lines
+## and a stage direction measure about 365 tall): screens that want to keep clear
+## of it lay themselves out around this zone.
+const BAND_ROOM := 190.0
 const SLIDE_OUT := 0.14
 
 ## Kept clear of the true screen edges, the same margin the rest of the
@@ -230,6 +234,11 @@ func _fit_band(width: float) -> void:
 		label.custom_minimum_size.x = text_width
 		label.size = Vector2(text_width, 0.0)   # a wrap is measured at its current width
 	_fit_height()
+
+
+## The top and bottom of the zone the band may occupy on a screen of this height.
+static func zone(screen_height: float) -> Vector2:
+	return Vector2(screen_height * BAND_CENTRE - BAND_ROOM, screen_height * BAND_CENTRE + BAND_ROOM)
 
 
 ## Shrinks or grows the band to what its text needs now. Also called

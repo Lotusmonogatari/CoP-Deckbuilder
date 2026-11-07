@@ -41,6 +41,17 @@ var _banner: CueBanner = null
 ## re-answer someone already spoken to.
 var _answered := false
 
+## The name box and the picture beside it (see _fit_layout).
+const NAME_BOX_WIDTH := 260.0
+const PICTURE_WIDTH := 760.0
+## How far down the spoken line's zone the picture reaches (the band is drawn over it).
+const PICTURE_BAND_SHARE := 0.72
+## Extra clear space under the band before the question starts.
+const BAND_MARGIN := 16.0
+## The largest an organization chip grows, and the space under the band above it.
+const CHIP_MAX := 200.0
+const CHIP_GAP := 24.0
+
 @onready var _stage_name: Label = %StageName
 @onready var _stage_name_jp: Label = %StageNameJP
 @onready var _visitor_caption: Label = %VisitorCaption
@@ -87,6 +98,51 @@ func _ready() -> void:
 	_outcome_panel.hide()
 
 	start_visiting()
+	_fit_layout.call_deferred()
+	get_tree().root.size_changed.connect(_fit_layout)
+
+
+## Lays the screen out (Cameron's sketches, 2026-11-07): the visitor's picture
+## is big and centered, with the name box over its top left corner; the spoken
+## line's band crosses the lower part of the picture; the organization chips sit
+## in a row just under the band; and the question and the choices sit below the
+## picture window, in the plain panel, so the line never covers any of them.
+func _fit_layout() -> void:
+	if not is_inside_tree():
+		return
+	var row := $Safe/Column/VisitorRow as HBoxContainer
+	var header := $Safe/Column/Header as Control
+	var column := $Safe/Column as VBoxContainer
+	var gap := float(column.get_theme_constant("separation"))
+	var top := get_global_rect().position.y
+	var zone := CueBanner.zone(get_viewport_rect().size.y)
+	var row_top := header.get_global_rect().end.y - top + gap
+	var picture_bottom := zone.x + (zone.y - zone.x) * PICTURE_BAND_SHARE
+	var window_bottom := _background.get_global_rect().end.y - top
+
+	# The name box leaves the row and floats over the picture's top left corner.
+	var details := _visitor_name.get_parent() as Control
+	if details.get_parent() != self:
+		details.reparent(self, false)
+	details.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	details.custom_minimum_size.x = NAME_BOX_WIDTH
+	details.size = Vector2(NAME_BOX_WIDTH, 0.0)
+	details.position = Vector2(($Safe/Column as Control).get_global_rect().position.x - get_global_rect().position.x, row_top)
+
+	_portrait.custom_minimum_size = Vector2(PICTURE_WIDTH, maxf(picture_bottom - row_top, 300.0))
+	_portrait.size_flags_horizontal = Control.SIZE_EXPAND | Control.SIZE_SHRINK_CENTER
+
+	# Empty space under the picture, down to the bottom of the picture window, so
+	# the question starts in the plain panel.
+	var band_gap := column.get_node_or_null("BandGap") as Control
+	if band_gap == null:
+		band_gap = Control.new()
+		band_gap.name = "BandGap"
+		band_gap.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		column.add_child(band_gap)
+		column.move_child(band_gap, _question_label.get_index())
+	band_gap.custom_minimum_size.y = maxf(window_bottom + BAND_MARGIN - picture_bottom - gap * 2.0, 0.0)
+	_place_effect_chips(get_node_or_null("EffectChips") as Control)
 
 
 ## Builds the room from the level in progress, or the exported level/stage
@@ -276,15 +332,34 @@ func _show_effect_chips(effects: Array) -> void:
 	var merged := OrgChip.merged(effects)
 	if merged.is_empty():
 		return
-	var chips := OrgChip.row(merged)
+	# Sized to the row they have to fill: as large as fits, up to a third of the
+	# width, never smaller than the usual chip.
+	var width := ($Safe/Column as Control).size.x
+	var gap := 12.0
+	var size := clampf((width - gap * float(merged.size() - 1)) / float(merged.size()),
+		OrgChip.CHIP_SIZE, CHIP_MAX)
+	var chips := OrgChip.row(merged, false, size)
 	chips.name = "EffectChips"
-	chips.anchor_left = 0.5
-	chips.anchor_right = 0.5
-	chips.offset_left = -400.0
-	chips.offset_right = 400.0
-	chips.offset_top = 300.0
 	chips.alignment = FlowContainer.ALIGNMENT_CENTER
 	add_child(chips)
+	_place_effect_chips.call_deferred(chips)
+
+
+## Centers the chip row across the screen in the strip just under the spoken line.
+func _place_effect_chips(chips: Control) -> void:
+	if chips == null or not is_instance_valid(chips):
+		return
+	var column := ($Safe/Column as Control).get_global_rect()
+	var here := get_global_rect()
+	var zone := CueBanner.zone(get_viewport_rect().size.y)
+	chips.anchor_left = 0.0
+	chips.anchor_right = 0.0
+	chips.anchor_top = 0.0
+	chips.anchor_bottom = 0.0
+	chips.offset_left = column.position.x - here.position.x
+	chips.offset_right = column.end.x - here.position.x
+	chips.offset_top = zone.y - here.position.y + CHIP_GAP
+	chips.offset_bottom = chips.offset_top + 10.0
 
 
 func _clear_effect_chips() -> void:

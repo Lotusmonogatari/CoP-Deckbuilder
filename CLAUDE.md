@@ -215,3 +215,5 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - 33 opponent lines for the bills whose party positions changed (2026-11-07, Cameron)
 - Two empty event slots filled: EV01 Sapporo Grand Sumo and EV02 Temple Bell (2026-11-07, Cameron)
 - Promises can owe Funds; EV01 option B uses it (2026-11-07, Cameron)
+- Office Hours organization chips centered beside the visitor (2026-11-07, Cameron)
+- Office Hours screen laid out around the spoken line (2026-11-07, Cameron)

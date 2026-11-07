@@ -693,3 +693,11 @@ Broken promises cost the named organizations more than a kept one pays (A: -3 ea
 Cameron approved the plan: a choice can say `Promise Funds N within H for BOxx`. The Funds are taken when the player keeps the promise in the Promises panel (the button greys out with "Not enough Funds" while short); nothing is held back when the promise is made; one still unpaid at its deadline is broken like any other. The choice label shows it before it is picked (for example "Promise: 100,000円 within 120 hours"). A choice owing hours and Funds gives its own kept and broken terms to the first promise only, so bonuses and penalties are not doubled. Changes: the exporter's commitment grammar, `Promises.gd`, `GameState` (what, refusal, keep), one Text row (`promise.what_funds`), the CONTENT_GUIDE grammar table, and seven tests in `tests/test_promises.gd`.
 
 EV01 option B now owes both: 4 hours and 100,000円 within 120 hours for Our Traditional Society (the earlier "paid now" reading is replaced), and its result text says the player pledges the tickets.
+
+## Office Hours organization chips centered beside the visitor (2026-11-07, Cameron)
+
+After an answer, the organization chips used to float at a fixed spot that sat over the visitor's name and title (a long name wrapped across them). They are now placed once the screen has laid out: centered in the space to the right of the visitor's picture and level with the middle of the picture, wrapping to more rows only if they must. Checked with a throwaway screenshot driver (since deleted).
+
+## Office Hours screen laid out around the spoken line (2026-11-07, Cameron)
+
+Following Cameron's second sketch: the visitor's picture is large (760 wide) and centered, the name box floats over its top left corner, and the spoken-line band is drawn across the lower part of the picture. The organization chips sit in a row just under the band, sized to fill the row (up to 200 px, never under the usual 120 px). The question and the four choices sit below the picture window, in the plain panel. The band's zone is a shared rule (`CueBanner.zone()`), the screen re-lays itself out when the window changes, and `VisitorScreen.tscn` is untouched, so re-running its builder does not lose the change. Checked with throwaway screenshots (deleted).
