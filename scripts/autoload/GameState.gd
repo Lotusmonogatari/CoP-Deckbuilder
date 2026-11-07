@@ -1744,6 +1744,8 @@ func promise_what(promise: Dictionary) -> String:
 	if str(promise.get("kind", "")) == Promises.PROMISE_ITEM:
 		var item_id := str(promise.get("item_id", ""))
 		return Text.say("promise.what_item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))})
+	if str(promise.get("kind", "")) == Promises.PROMISE_FUNDS:
+		return Text.say("promise.what_funds", {"yen_amount": int(promise.get("funds", 0))})
 	return Text.say("promise.what_hours", {"count": int(promise.get("hours", 0))})
 
 
@@ -1751,12 +1753,14 @@ func promise_what(promise: Dictionary) -> String:
 func promise_keep_refusal(promise: Dictionary) -> String:
 	var cfg := calendar_config()
 	var hours := 0 if WeekCalendar.is_full(calendar, cfg) else WeekCalendar.hours_left(calendar, cfg)
-	match Promises.keep_refusal(promise, inventory, hours):
+	match Promises.keep_refusal(promise, inventory, hours, int(meta.get("Funds", 0))):
 		"item":
 			var item_id := str(promise.get("item_id", ""))
 			return Text.say("commit.refuse_item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))})
 		"hours":
 			return Text.say("event.refuse_work_hours")
+		"funds":
+			return Text.say("event.refuse_funds")
 	return ""
 
 
@@ -1780,6 +1784,9 @@ func keep_promise(promise_id: String) -> String:
 			_under_cause(Text.say("record.cause_promise_kept"), func() -> void: _apply_booster_delta(org, gain))
 		if str(promise.get("kind", "")) == Promises.PROMISE_HOURS:
 			spend_hours(int(promise.get("hours", 0)))
+		if str(promise.get("kind", "")) == Promises.PROMISE_FUNDS:
+			var owed := int(promise.get("funds", 0))
+			_under_cause(Text.say("record.cause_commitment"), func() -> void: _apply_meta_reward("Funds", -owed))
 		check_crisis_triggers()
 		return ""
 	return ""
@@ -3495,6 +3502,9 @@ func commitment_note(list: Array, paid_lines: Array[String]) -> String:
 func pay_commitments(list: Array, source: String = "", fallback_org: String = "",
 		terms: Dictionary = {}) -> Array[String]:
 	var lines: Array[String] = []
+	# A choice that owes more than one thing (hours and Funds) carries its own
+	# kept and broken terms on the first only; the rest use the Balance defaults.
+	var terms_given := false
 	# Hours a choice costs on the spot pass before any promise or follow-up is
 	# dated, so those count from when the choice is done (2026-10-31).
 	var hours := Commitments.hours(list)
@@ -3512,8 +3522,9 @@ func pay_commitments(list: Array, source: String = "", fallback_org: String = ""
 			# The choice's own kept/broken effects and kept line, when it has
 			# them (Event Choices, 2026-10-31); otherwise the Balance defaults.
 			for key: String in ["kept", "broken", "kept_text"]:
-				if terms.has(key):
+				if terms.has(key) and not terms_given:
 					promise[key] = terms[key]
+			terms_given = true
 			promises.append(promise)
 			lines.append(Text.say("promise.made", {"what": promise_what(promise), "who": promise_who(promise),
 				"count": int(promise["due_at"]) - time_units}))

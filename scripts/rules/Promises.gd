@@ -9,10 +9,12 @@ extends RefCounted
 
 const PROMISE_ITEM := "promise_item"
 const PROMISE_HOURS := "promise_hours"
+## Funds owed later (2026-11-07): `Promise Funds N within H for BOxx`.
+const PROMISE_FUNDS := "promise_funds"
 
 
 static func is_promise(entry: Variant) -> bool:
-	return entry is Dictionary and str(entry.get("kind", "")) in [PROMISE_ITEM, PROMISE_HOURS]
+	return entry is Dictionary and str(entry.get("kind", "")) in [PROMISE_ITEM, PROMISE_HOURS, PROMISE_FUNDS]
 
 
 ## A promise record from a commitment entry: {id, kind, item_id, hours, due_at,
@@ -26,7 +28,8 @@ static func make(entry: Dictionary, now: int, default_hours: int, fallback_org: 
 		"id": "P%d" % serial,
 		"kind": str(entry.get("kind", "")),
 		"item_id": str(entry.get("item_id", "")),
-		"hours": int(entry.get("amount", 0)),
+		"hours": int(entry.get("amount", 0)) if str(entry.get("kind", "")) == PROMISE_HOURS else 0,
+		"funds": int(entry.get("amount", 0)) if str(entry.get("kind", "")) == PROMISE_FUNDS else 0,
 		"due_at": now + (int(within) if within != null else default_hours),
 		"made_at": now,
 		"for_org": org if not org.is_empty() else fallback_org,
@@ -77,9 +80,12 @@ static func overdue(promises: Array, now: int) -> Array:
 	return promises.filter(func(p: Variant) -> bool: return p is Dictionary and now > int(p.get("due_at", 0)))
 
 
-## Why a promise cannot be kept right now: "" (it can), "item" (not held) or
-## "hours" (too few hours left).
-static func keep_refusal(promise: Dictionary, inventory: Dictionary, hours_available: int) -> String:
+## Why a promise cannot be kept right now: "" (it can), "item" (not held),
+## "hours" (too few hours left) or "funds" (too little Funds on hand).
+static func keep_refusal(promise: Dictionary, inventory: Dictionary, hours_available: int,
+		funds_on_hand: int = 0) -> String:
+	if str(promise.get("kind", "")) == PROMISE_FUNDS and int(promise.get("funds", 0)) > funds_on_hand:
+		return "funds"
 	if str(promise.get("kind", "")) == PROMISE_ITEM and int(inventory.get(str(promise.get("item_id", "")), 0)) <= 0:
 		return "item"
 	if str(promise.get("kind", "")) == PROMISE_HOURS and int(promise.get("hours", 0)) > hours_available:

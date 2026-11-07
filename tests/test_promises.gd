@@ -5,6 +5,8 @@ extends GutTest
 
 const ITEM := {"kind": "promise_item", "item_id": "SH25", "within": 10, "for": "BO06"}
 const HOURS := {"kind": "promise_hours", "amount": 2, "within": 10}
+## Funds owed later (2026-11-07).
+const FUNDS := {"kind": "promise_funds", "amount": 5000, "within": 10, "for": "BO06"}
 
 
 func before_each() -> void:
@@ -211,6 +213,73 @@ func test_every_promise_in_the_workbook_says_what_keeping_it_looks_like() -> voi
 func test_a_visitor_or_hosted_promise_keeps_its_kept_text() -> void:
 	GameState.pay_commitments([HOURS], "A visitor", "BO12", {"kept_text": "You followed through."})
 	assert_eq(str(GameState.promises[0]["kept_text"]), "You followed through.")
+
+
+# ---------------------------------------------------------------------------
+# Promises to pay Funds later (Cameron, 2026-11-07)
+# ---------------------------------------------------------------------------
+
+func test_a_funds_promise_is_made_not_paid() -> void:
+	var funds := int(GameState.meta["Funds"])
+	GameState.pay_commitments([FUNDS], "A test", "")
+	assert_eq(GameState.promises.size(), 1)
+	assert_eq(int(GameState.promises[0]["funds"]), 5000)
+	assert_eq(int(GameState.meta["Funds"]), funds, "nothing is paid yet")
+
+
+func test_a_funds_promise_is_paid_from_the_funds_on_hand_when_kept() -> void:
+	GameState.meta["Funds"] = 20000
+	GameState.pay_commitments([FUNDS], "A test", "")
+	assert_eq(GameState.keep_promise(str(GameState.promises[0]["id"])), "")
+	assert_eq(int(GameState.meta["Funds"]), 15000)
+	assert_eq(GameState.promises.size(), 0)
+	assert_eq(int(GameState.booster_standing["BO06"]), 50 + int(DataDB.balance.get("promise_kept_standing", 1)))
+
+
+func test_a_funds_promise_cannot_be_kept_while_short_and_says_why() -> void:
+	GameState.meta["Funds"] = 100
+	GameState.pay_commitments([FUNDS], "A test", "")
+	var promise: Dictionary = GameState.promises[0]
+	assert_eq(GameState.promise_keep_refusal(promise), Text.say("event.refuse_funds"))
+	assert_ne(GameState.keep_promise(str(promise["id"])), "")
+	assert_eq(int(GameState.meta["Funds"]), 100, "nothing was taken")
+	assert_eq(GameState.promises.size(), 1)
+
+
+func test_a_funds_promise_falling_due_unpaid_is_broken() -> void:
+	GameState.meta["Funds"] = 100
+	GameState.pay_commitments([FUNDS], "A test", "")
+	GameState.spend_hours(11)
+	assert_eq(GameState.promises.size(), 0)
+	assert_eq(GameState.promises_broken_unseen.size(), 1)
+	assert_eq(int(GameState.booster_standing["BO06"]), 50 + int(DataDB.balance.get("promise_broken_standing", -3)))
+
+
+func test_a_funds_promise_reads_in_yen_in_the_choice_label_and_the_panel() -> void:
+	var label := GameState.commitment_label("Back it", [FUNDS])
+	assert_string_contains(label, "5,000円")
+	GameState.pay_commitments([FUNDS], "A test", "")
+	assert_string_contains(GameState.promise_what(GameState.promises[0]), "5,000円")
+
+
+func test_a_choice_owing_hours_and_funds_gives_its_own_terms_to_the_first_only() -> void:
+	var terms := {"kept": [{"target": "BO06", "delta": 4}], "broken": [{"target": "BO06", "delta": -4}]}
+	GameState.pay_commitments([HOURS, FUNDS], "A test", "", terms)
+	assert_eq(GameState.promises.size(), 2)
+	assert_true(Promises.has_own(GameState.promises[0], "kept"))
+	assert_false(Promises.has_own(GameState.promises[1], "kept"), "no doubled bonus")
+	assert_false(Promises.has_own(GameState.promises[1], "broken"))
+
+
+func test_ev01_option_b_owes_both_its_hours_and_its_funds() -> void:
+	for row: Dictionary in DataDB.event_choices:
+		if str(row.get("event_id")) == "EV01" and str(row.get("choice")) == "B":
+			var kinds: Array[String] = []
+			for entry: Variant in Commitments.of(row):
+				kinds.append(str((entry as Dictionary).get("kind")))
+			assert_eq(kinds, ["promise_hours", "promise_funds"] as Array[String])
+			return
+	fail_test("EV01 B not found")
 
 
 func _promises_something(list: Variant) -> bool:

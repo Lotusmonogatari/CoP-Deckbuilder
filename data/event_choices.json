@@ -71,7 +71,7 @@
     "event_id": "EV01",
     "choice": "B",
     "choice_text": "Welcome it this year and fund tickets for constituents",
-    "result_text": "You tell the lobbyist Sapporo will welcome the tournament, and you buy a block of tickets for constituents. The Traditional Society, Students United and the Local Kōenkai are thrilled. The Taxpayers' Alliance, the Care and Welfare Council and the Innovation Society are not.",
+    "result_text": "You tell the lobbyist Sapporo will welcome the tournament, and you pledge a block of tickets for constituents. The Traditional Society, Students United and the Local Kōenkai are thrilled. The Taxpayers' Alliance, the Care and Welfare Council and the Innovation Society are not.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -117,8 +117,10 @@
         "for": "BO15"
       },
       {
-        "kind": "funds",
-        "amount": 100000
+        "kind": "promise_funds",
+        "amount": 100000,
+        "within": 120,
+        "for": "BO15"
       }
     ],
     "promise_kept": [

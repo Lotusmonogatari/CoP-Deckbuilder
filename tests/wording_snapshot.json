@@ -683,6 +683,7 @@
   "pressure.standard.name": "Standard",
   "promise.made": "You promised {who} {what} within {count} hours.",
   "promise.made.one": "You promised {who} {what} within {count} hour.",
+  "promise.what_funds": "{yen_amount}円",
   "promise.what_hours": "{count} hours of your time",
   "promise.what_hours.one": "{count} hour of your time",
   "promise.what_item": "{item}",

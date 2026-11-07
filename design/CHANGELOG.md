@@ -687,3 +687,9 @@ EV01 now opens with the sumo association's organizing committee lobbyist asking 
 | C. Reply that you are focused on more pressing issues | The visit's 1 hour only | Care and Welfare Council, Innovation Society (+1) | Our Traditional Society, Small Business Owners' Association (-1) |
 
 Broken promises cost the named organizations more than a kept one pays (A: -3 each and Reputation -2; B: -4 each and Reputation -2). Two points to confirm: the game cannot yet owe Funds later, so B's 100,000円 is paid when chosen and only the hours are owed within 120 hours; and C's one hour is read as the visit itself (the event's Hours), because the export requires every event to keep a choice with no extra cost. Draft wording by Claude. Batch: `tools/workbook/archive/b10/rewrite_ev01_sumo.py`.
+
+## Promises can owe Funds; EV01 option B uses it (2026-11-07, Cameron)
+
+Cameron approved the plan: a choice can say `Promise Funds N within H for BOxx`. The Funds are taken when the player keeps the promise in the Promises panel (the button greys out with "Not enough Funds" while short); nothing is held back when the promise is made; one still unpaid at its deadline is broken like any other. The choice label shows it before it is picked (for example "Promise: 100,000円 within 120 hours"). A choice owing hours and Funds gives its own kept and broken terms to the first promise only, so bonuses and penalties are not doubled. Changes: the exporter's commitment grammar, `Promises.gd`, `GameState` (what, refusal, keep), one Text row (`promise.what_funds`), the CONTENT_GUIDE grammar table, and seven tests in `tests/test_promises.gd`.
+
+EV01 option B now owes both: 4 hours and 100,000円 within 120 hours for Our Traditional Society (the earlier "paid now" reading is replaced), and its result text says the player pledges the tickets.

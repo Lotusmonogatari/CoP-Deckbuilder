@@ -1914,19 +1914,24 @@ def coerce(value, kind, where, report):
             # Phase 2: a promise owed later. "Promise Item SH25 within 48 for
             # BO06" or "Promise Hours 2 within 72 for BO04"; within and for
             # are optional (Balance default deadline; the choice's own org).
-            match = re.match(r"^Promise\s+(Item\s+(SH\d+)|Hours\s+(\d+))(?:\s+within\s+(\d+))?(?:\s+for\s+(BO\d+))?$",
+            match = re.match(r"^Promise\s+(Item\s+(SH\d+)|Hours\s+(\d+)|Funds\s+(\d+))(?:\s+within\s+(\d+))?(?:\s+for\s+(BO\d+))?$",
                              part, re.IGNORECASE)
             if match:
-                entry = {"kind": "promise_item", "item_id": match.group(2).upper()} if match.group(2) \
-                    else {"kind": "promise_hours", "amount": int(match.group(3))}
-                if match.group(4):
-                    entry["within"] = int(match.group(4))
+                if match.group(2):
+                    entry = {"kind": "promise_item", "item_id": match.group(2).upper()}
+                elif match.group(3):
+                    entry = {"kind": "promise_hours", "amount": int(match.group(3))}
+                else:
+                    # 2026-11-07: Funds owed later, paid from the Promises panel.
+                    entry = {"kind": "promise_funds", "amount": int(match.group(4))}
                 if match.group(5):
-                    entry["for"] = match.group(5).upper()
+                    entry["within"] = int(match.group(5))
+                if match.group(6):
+                    entry["for"] = match.group(6).upper()
                 found.append(entry)
                 continue
             report.error(where, f"commitment {part!r} is not 'Hours N', 'Funds N', 'Item SHxx' "
-                         "or 'Promise Item SHxx|Hours N [within H] [for BOxx]'")
+                         "or 'Promise Item SHxx|Hours N|Funds N [within H] [for BOxx]'")
         return found
 
     if kind == "promise_effects":

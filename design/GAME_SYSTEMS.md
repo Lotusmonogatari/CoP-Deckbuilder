@@ -317,3 +317,7 @@ Every number below is in the workbook and exported to data; none is hard-coded.
 ## Addendum 2026-11-06: saving inside a stage
 
 A stage is not saved while it is fought, with one exception: in a stage with several opponents, the run is saved when one is defeated (`GameState.stage_checkpoint`), so a closed app resumes at the next opponent with that stage type's carried state (committee: fresh; Town Hall and floor debate: gaffes, guard, hand and clock). A single-opponent stage returns to its own start.
+
+## Addendum 2026-11-07: promises can owe Funds
+
+A promise now has three kinds: an item, hours, or Funds (`Promise Funds N within H for BOxx`). A Funds promise is kept from the Office's Promises panel, which takes the Funds then; the Pay button is greyed with "Not enough Funds" while the player is short, and nothing is reserved in the meantime. One unpaid at its deadline is broken like any other promise.
