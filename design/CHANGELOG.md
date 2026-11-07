@@ -645,3 +645,18 @@ When a stage's opening scene (the Stage Transition) first appears, its Continue 
 ## Levels on cooldown leave the level list (2026-11-06, Cameron)
 
 A level that is still cooling down after being played no longer shows as a greyed-out "wait" row in Choose a Level; it is taken off the list and comes back when its cooldown is over. Locked levels (not yet bought with XP) and levels the calendar refuses still show with their reason. Only applies while `level_gating_enabled` is on (it is). Checked with a throwaway script: clearing LV01 dropped the list from 75 buttons to 74.
+
+## Cameron's workbook update: bill votes, party positions, influence thresholds (2026-11-07)
+
+Cameron uploaded a new workbook and new protagonist art (PC01, PC02, PC03 expressions). Reviewed and re-exported; nothing in the code had to change.
+
+| What changed in the workbook | Effect |
+|---|---|
+| Seat splits for 20 bills (BI02-10, 12-14, 17-22, 26, 29) | Fewer bills pass at baseline: 14 now do (was 27). 13 of those pass even if you vote against (was 27). BI02 now sits exactly on the 51 line, so your own seat can decide it |
+| 12 party dispositions turned (for example Keizaijiyuutou Supportive to Opposed on BI04, BI10, BI14; Heritage and Frontier Opposed on BI29) | Opponents of those parties now argue the other side in those bills' rooms (derived at run time from the positions, no edit needed). 44 position cue lines were reworded by Cameron to match |
+| Vote Influence Triggers: Constituency support 60 to 50 and several organization gates lowered by 5 to 15 | The influence swing opens sooner |
+| Small wording edits: three level intro cues, one lobbyist line, ticker lines, a few transition lines | None |
+
+Fixed: the upload carried calcChain records Excel would "repair" (`Vote Tally & Swing`); a no-change save by `wbx` dropped the chain. Checked: export "No errors", every bill's party splits still add up to each party's seats, `tools/verify.sh` passes, and the bill rubric scores the same as before (59 of 64; its two failures, D1 and D3 on law effects, were failing before this update).
+
+For Cameron: **BI18, Five Point Independents** now reads 4 Yes / 1 No but is still "Opposed" with the cue "No one person should hold that power" (it was 2 / 3). Likely the numbers were swapped; left as is. Twelve "Neutral" positions have lopsided splits (for example BI29 Keizaijiyuutou 2 / 18 / 5); that reads as a split party, so left alone.

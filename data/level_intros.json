@@ -27,12 +27,12 @@
   {
     "level_id": "LV02",
     "role": "District Representative",
-    "cue_text": "Home does not love lobbyists. Choose your words."
+    "cue_text": "The district does not love lobbyists. Choose your words carefully."
   },
   {
     "level_id": "LV03",
     "role": "Policy Research Assistant",
-    "cue_text": "Bring the studies. This one rewards preparation."
+    "cue_text": "Bring the studies. Due diligence goes far here."
   },
   {
     "level_id": "LV03",
@@ -57,7 +57,7 @@
   {
     "level_id": "LV04",
     "role": "District Representative",
-    "cue_text": "Locals care about the land. Say so."
+    "cue_text": "Locals care about their land. Say so."
   },
   {
     "level_id": "LV05",

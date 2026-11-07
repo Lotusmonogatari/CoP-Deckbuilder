@@ -29,7 +29,7 @@
   {
     "variable": "Constituency support",
     "enabled": "Yes",
-    "threshold": 60,
+    "threshold": 50,
     "applies_to_parties": [
       "PT01",
       "PT02",
@@ -39,7 +39,7 @@
   {
     "variable": "BO04",
     "enabled": "Yes",
-    "threshold": 70,
+    "threshold": 55,
     "applies_to_parties": [
       "PT04"
     ]
@@ -47,7 +47,7 @@
   {
     "variable": "BO05",
     "enabled": "Yes",
-    "threshold": 70,
+    "threshold": 55,
     "applies_to_parties": [
       "PT05"
     ]
@@ -55,7 +55,7 @@
   {
     "variable": "BO07",
     "enabled": "Yes",
-    "threshold": 70,
+    "threshold": 55,
     "applies_to_parties": [
       "PT02"
     ]
@@ -63,7 +63,7 @@
   {
     "variable": "BO08",
     "enabled": "Yes",
-    "threshold": 65,
+    "threshold": 55,
     "applies_to_parties": [
       "PT04",
       "PT05"
@@ -72,7 +72,7 @@
   {
     "variable": "BO09",
     "enabled": "Yes",
-    "threshold": 70,
+    "threshold": 60,
     "applies_to_parties": [
       "PT01"
     ]
@@ -80,7 +80,7 @@
   {
     "variable": "BO10",
     "enabled": "Yes",
-    "threshold": 65,
+    "threshold": 60,
     "applies_to_parties": [
       "PT06",
       "PT03"
@@ -89,7 +89,7 @@
   {
     "variable": "BO11",
     "enabled": "Yes",
-    "threshold": 70,
+    "threshold": 55,
     "applies_to_parties": [
       "PT01"
     ]
@@ -97,7 +97,7 @@
   {
     "variable": "BO12",
     "enabled": "Yes",
-    "threshold": 70,
+    "threshold": 55,
     "applies_to_parties": [
       "PT01"
     ]
