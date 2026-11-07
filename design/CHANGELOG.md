@@ -660,3 +660,7 @@ Cameron uploaded a new workbook and new protagonist art (PC01, PC02, PC03 expres
 Fixed: the upload carried calcChain records Excel would "repair" (`Vote Tally & Swing`); a no-change save by `wbx` dropped the chain. Checked: export "No errors", every bill's party splits still add up to each party's seats, `tools/verify.sh` passes, and the bill rubric scores the same as before (59 of 64; its two failures, D1 and D3 on law effects, were failing before this update).
 
 For Cameron: **BI18, Five Point Independents** now reads 4 Yes / 1 No but is still "Opposed" with the cue "No one person should hold that power" (it was 2 / 3). Likely the numbers were swapped; left as is. Twelve "Neutral" positions have lopsided splits (for example BI29 Keizaijiyuutou 2 / 18 / 5); that reads as a split party, so left alone.
+
+## 33 opponent lines for the bills whose party positions changed (2026-11-07, Cameron)
+
+After the workbook update the new party positions moved which sides draw from which line pools, leaving 33 pools (bill, rhetorical style, move) one line short on BI02, 04, 10, 12, 13, 14, 20 and 29. One line was added to each as a new row in the Opponent Cues tab (OC3831 to OC3863): 22 Neutral, 9 For and 3 Against, written in the voice of the existing lines and built from each bill's own facts. All are Claude's draft for Cameron to rewrite. `tools/cue_coverage.py --list` now shows none of those bills short (overall shortfall 544 to 511 lines). The batch is kept in `tools/workbook/archive/b8/opponent_line_top_up.py`.

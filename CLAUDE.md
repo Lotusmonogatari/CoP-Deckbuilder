@@ -212,3 +212,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - A two-second hold on a stage Continue button (2026-11-06, Cameron)
 - Levels on cooldown leave the level list (2026-11-06, Cameron)
 - Cameron's workbook update: bill votes, party positions, influence thresholds (2026-11-07, Cameron)
+- 33 opponent lines for the bills whose party positions changed (2026-11-07, Cameron)
