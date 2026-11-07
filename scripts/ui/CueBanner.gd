@@ -237,8 +237,19 @@ func _fit_band(width: float) -> void:
 
 
 ## The top and bottom of the zone the band may occupy on a screen of this height.
-static func zone(screen_height: float) -> Vector2:
-	return Vector2(screen_height * BAND_CENTRE - BAND_ROOM, screen_height * BAND_CENTRE + BAND_ROOM)
+static func zone(screen_height: float, centre: float = BAND_CENTRE) -> Vector2:
+	return Vector2(screen_height * centre - BAND_ROOM, screen_height * centre + BAND_ROOM)
+
+
+## Where this banner sits, as a share of the screen's height (default
+## BAND_CENTRE). A screen with its own arrangement moves it (the Office Hours
+## screen drops it over the choices, 2026-11-07).
+var centre := BAND_CENTRE
+
+
+func set_centre(share: float) -> void:
+	centre = share
+	_fit_height()
 
 
 ## Shrinks or grows the band to what its text needs now. Also called
@@ -247,7 +258,7 @@ static func zone(screen_height: float) -> Vector2:
 func _fit_height() -> void:
 	var height := _band.get_combined_minimum_size().y
 	_band.size = Vector2(get_viewport_rect().size.x - SIDE_MARGIN * 2.0, height)
-	_band.position.y = get_viewport_rect().size.y * BAND_CENTRE - height / 2.0
+	_band.position.y = get_viewport_rect().size.y * centre - height / 2.0
 
 
 ## The flash and the jolt that make a line land rather than appear.
