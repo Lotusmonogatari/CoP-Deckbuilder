@@ -675,3 +675,15 @@ The Events tab had two empty rows at the top (EV01 and EV02, with six empty rows
 | EV02 The Temple Bell Needs a Ringer | Random, both days, 1 hour, Winter, winter festival picture | The Buddhist Temples Association asks you to ring out the old year; the bell tower roof leaks. A: take a turn at the bell; B: send a staff member with a 10,000円 donation; C: offer to speak for the roof at the next heritage debate (promise of 1 hour within 72) |
 
 All text is Claude's draft for Cameron to rewrite; EV02 was my choice of subject. Only existing organizations are used, and "the sumo association" is left unnamed. The batch is `tools/workbook/archive/b10/fill_ev01_ev02.py`. Checked: export "No errors", `tools/verify.sh` passes.
+
+## EV01 Sapporo Grand Sumo rewritten to Cameron's spec (2026-11-07, Cameron)
+
+EV01 now opens with the sumo association's organizing committee lobbyist asking legislators to back an annual Sapporo Grand Sumo tournament (Japanese culture, alignment with Japan, visitors in local shops, a low-barrier sport for students). Random, both days, 1 hour for the visit, Summer.
+
+| Choice | Cost | Pleased (+) | Annoyed (-) |
+|---|---|---|---|
+| A. Go on the radio to back an annual tournament | Promise 2 hours within 72 hours | Our Traditional Society, Small Business Owners' Association (+1) | Care and Welfare Council, Innovation Society (-1) |
+| B. Welcome it this year and fund tickets for constituents | Promise 4 hours within 120 hours, and 100,000円 paid now | Our Traditional Society, Students United, Local Kōenkai (+2, double the usual) | Taxpayers' Alliance, Care and Welfare Council, Innovation Society (-1) |
+| C. Reply that you are focused on more pressing issues | The visit's 1 hour only | Care and Welfare Council, Innovation Society (+1) | Our Traditional Society, Small Business Owners' Association (-1) |
+
+Broken promises cost the named organizations more than a kept one pays (A: -3 each and Reputation -2; B: -4 each and Reputation -2). Two points to confirm: the game cannot yet owe Funds later, so B's 100,000円 is paid when chosen and only the hours are owed within 120 hours; and C's one hour is read as the visit itself (the event's Hours), because the export requires every event to keep a choice with no extra cost. Draft wording by Claude. Batch: `tools/workbook/archive/b10/rewrite_ev01_sumo.py`.

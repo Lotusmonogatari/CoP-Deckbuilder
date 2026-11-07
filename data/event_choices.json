@@ -2,30 +2,31 @@
   {
     "event_id": "EV01",
     "choice": "A",
-    "choice_text": "Pledge to fight for the tournament every year",
-    "result_text": "You tell the committee you will argue for a yearly tournament in every room that will listen. The hotel owners applaud, and the ratepayers write down your pledge.",
+    "choice_text": "Go on the radio to back an annual tournament",
+    "result_text": "You tell the radio audience that Sapporo should host the Grand Sumo tournament every year. The Traditional Society and the shopkeepers are delighted. The Care and Welfare Council and the Innovation Society are not.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
     "constituency_delta": null,
     "reputation_delta": null,
     "party_support_delta": null,
-    "district_delta": {
-      "min": 1,
-      "max": 2
-    },
+    "district_delta": null,
     "national_delta": null,
     "rewards": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
       {
         "target": "BO25",
         "delta": 1
       },
       {
-        "target": "BO04",
-        "delta": 1
+        "target": "BO21",
+        "delta": -1
       },
       {
-        "target": "BO23",
+        "target": "BO16",
         "delta": -1
       }
     ],
@@ -37,30 +38,26 @@
         "kind": "promise_hours",
         "amount": 2,
         "within": 72,
-        "for": "BO25"
+        "for": "BO15"
       }
     ],
     "promise_kept": [
       {
-        "target": "National",
+        "target": "BO15",
         "delta": 1
       },
       {
         "target": "BO25",
-        "delta": 2
-      },
-      {
-        "target": "BO04",
         "delta": 1
       }
     ],
     "promise_broken": [
       {
-        "target": "BO25",
-        "delta": -4
+        "target": "BO15",
+        "delta": -3
       },
       {
-        "target": "BO04",
+        "target": "BO25",
         "delta": -3
       },
       {
@@ -68,63 +65,127 @@
         "delta": -2
       }
     ],
-    "promise_kept_text": "You spend two hours with the mayors and the hotel owners, and the committee leaves with a letter of support to take back to the association."
+    "promise_kept_text": "You spend two hours at the radio station making the case for a yearly tournament, and the callers remember it."
   },
   {
     "event_id": "EV01",
     "choice": "B",
-    "choice_text": "Welcome it once and ask for the public costs first",
-    "result_text": "You tell the committee you would welcome the tournament once and study what it costs the public before promising it again. The ratepayers nod. The hotel owners do not.",
-    "funds_cost": null,
-    "funds_delta": null,
-    "xp_delta": null,
-    "constituency_delta": null,
-    "reputation_delta": {
-      "min": 0,
-      "max": 1
-    },
-    "party_support_delta": null,
-    "district_delta": null,
-    "national_delta": null,
-    "rewards": [
-      {
-        "target": "BO23",
-        "delta": 1
-      },
-      {
-        "target": "BO06",
-        "delta": 1
-      },
-      {
-        "target": "BO25",
-        "delta": -1
-      }
-    ],
-    "unlocks_level": null,
-    "dues_delta": null,
-    "starts_level": null,
-    "commitment": null,
-    "promise_kept": null,
-    "promise_broken": null,
-    "promise_kept_text": null
-  },
-  {
-    "event_id": "EV01",
-    "choice": "C",
-    "choice_text": "Send a staff member to hear both sides",
-    "result_text": "Your staffer sits with the committee in the morning and with the ratepayers in the afternoon, and brings back both lists.",
+    "choice_text": "Welcome it this year and fund tickets for constituents",
+    "result_text": "You tell the lobbyist Sapporo will welcome the tournament, and you buy a block of tickets for constituents. The Traditional Society, Students United and the Local Kōenkai are thrilled. The Taxpayers' Alliance, the Care and Welfare Council and the Innovation Society are not.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
     "constituency_delta": null,
     "reputation_delta": null,
     "party_support_delta": null,
-    "district_delta": {
-      "min": 0,
-      "max": 1
-    },
+    "district_delta": null,
     "national_delta": null,
-    "rewards": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": 2
+      },
+      {
+        "target": "BO11",
+        "delta": 2
+      },
+      {
+        "target": "BO03",
+        "delta": 2
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 4,
+        "within": 120,
+        "for": "BO15"
+      },
+      {
+        "kind": "funds",
+        "amount": 100000
+      }
+    ],
+    "promise_kept": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO03",
+        "delta": 1
+      }
+    ],
+    "promise_broken": [
+      {
+        "target": "BO15",
+        "delta": -4
+      },
+      {
+        "target": "BO11",
+        "delta": -4
+      },
+      {
+        "target": "BO03",
+        "delta": -4
+      },
+      {
+        "target": "Reputation",
+        "delta": -2
+      }
+    ],
+    "promise_kept_text": "You spend four hours handing out tickets and seeing constituents into the arena. Students fill the cheap seats, and the shopkeepers stay open late."
+  },
+  {
+    "event_id": "EV01",
+    "choice": "C",
+    "choice_text": "Reply that you are focused on more pressing issues",
+    "result_text": "You write back that other matters come first this year. The Care and Welfare Council and the Innovation Society approve. The Traditional Society and the shopkeepers take note.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,

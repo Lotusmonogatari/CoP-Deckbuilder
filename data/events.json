@@ -2,10 +2,10 @@
   {
     "event_id": "EV01",
     "title": "Sapporo Grand Sumo Wants an Answer",
-    "flavor": "The sumo association's host committee says the Grand Sumo tournament can come back to Sapporo every year, if the city and its legislators stand behind it. Hotel owners want the crowds. The ratepayers and the neighborhoods around the arena want the bill and the traffic counted first.",
+    "flavor": "The sumo association's organizing committee sends a lobbyist to your office. The Sapporo Grand Sumo tournament, the lobbyist says, can return every year if legislators back it. Sumo is rooted deep in Japanese culture, and a yearly tournament keeps Yezo aligned with Japan, brings visitors into local shops while it is in town, and gives students an easy way into a sport.",
     "trigger": "Random",
     "available": "Both",
-    "hours": 2,
+    "hours": 1,
     "cost_funds": null,
     "cost_xp": null,
     "weight": 5,
