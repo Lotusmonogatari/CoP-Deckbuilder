@@ -328,7 +328,7 @@
   "floor_vote.req_line": "{requirement}: {needed} of {house} Aye votes needed.",
   "floor_vote.req_majority": "Majority Vote to Pass",
   "floor_vote.req_supermajority": "Supermajority Vote to Pass",
-  "floor_vote.research_button": "Research Briefing",
+  "floor_vote.research_button": "Vote Intention Research",
   "floor_vote.research_cost": "Costs {hours} hours and {xp} XP. Clears {points}% of the house from the unknown vote.",
   "floor_vote.research_done": "Your research assistant has briefed you. The unknown vote is smaller.",
   "floor_vote.research_no_assistant": "Hire a Policy Research Assistant to request a briefing.",

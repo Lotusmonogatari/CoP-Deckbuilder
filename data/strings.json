@@ -6624,7 +6624,7 @@
   {
     "key": "floor_vote.research_button",
     "where": "Floor Vote",
-    "english": "Research Briefing",
+    "english": "Vote Intention Research",
     "placeholders": null,
     "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
   },

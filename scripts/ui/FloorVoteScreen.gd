@@ -259,6 +259,7 @@ func _show_influence_and_preview() -> void:
 
 	if won > 0 or against > 0:
 		column.add_child(_gold_rule())
+	_add_research_block(column)
 	_build_whip_row(column)
 	column.add_child(_gold_rule())
 
@@ -300,7 +301,6 @@ func _show_influence_and_preview() -> void:
 			parts.append({"color": bucket[1], "votes": int(shown[bucket[0]]), "label": ""})
 		bar.show_segments(parts)
 		preview.add_child(bar)
-	_add_research_block(preview)
 	column.add_child(preview)
 
 	if not GameState.stance_lean().is_empty():
@@ -331,16 +331,21 @@ func _show_influence_and_preview() -> void:
 ## The research assistant's part (draft 2026-11-08): a line when the staff
 ## member has already narrowed the unknown share, and a Research Briefing
 ## button that clears a little more, once per vote, for hours and XP.
-func _add_research_block(preview: VBoxContainer) -> void:
+func _add_research_block(column: VBoxContainer) -> void:
 	if _voted:
 		return
+	var block := VBoxContainer.new()
+	block.name = "ResearchBlock"
+	block.add_theme_constant_override("separation", 8)
+	column.add_child(block)
+	column.add_child(_gold_rule())
 	if GameState.research_passive_points() > 0:
 		var passive := Label.new()
 		passive.name = "ResearchPassive"
 		passive.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		passive.theme_type_variation = &"SmallLabel"
 		passive.text = Text.say("floor_vote.research_passive")
-		preview.add_child(passive)
+		block.add_child(passive)
 	var refusal := GameState.research_briefing_refusal()
 	if refusal.is_empty():
 		var cost := Label.new()
@@ -350,14 +355,14 @@ func _add_research_block(preview: VBoxContainer) -> void:
 			"hours": int(DataDB.balance.get("research_assistant_briefing_hours", 0)),
 			"xp": int(DataDB.balance.get("research_assistant_briefing_xp", 0)),
 			"points": GameState.research_briefing_points()})
-		preview.add_child(cost)
+		block.add_child(cost)
 	var button := UiKit.action_button(Text.say("floor_vote.research_button"),
 		refusal, _on_research_briefing)
 	button.name = "ResearchBriefingButton"
 	# A refusal is a sentence, so the button wraps it instead of widening the column.
 	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.clip_text = true
-	preview.add_child(button)
+	block.add_child(button)
 
 
 func _on_research_briefing() -> void:
