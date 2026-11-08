@@ -6,7 +6,8 @@ extends RefCounted
 ##
 ## The speaker is the hired staff member in that role. With nobody hired in it
 ## (or the cell blank), it is the first hired staff member in staff.json's own
-## order, and with no staff at all it is the player's own thought. Pure and
+## order, and with no staff at all it is narration with no speaker (2026-11-08;
+## it used to be put in the player's mouth, but it is written to "you"). Pure and
 ## UI-free (CLAUDE.md §12): callers hand in the level, who is hired and the
 ## staff directory.
 
@@ -19,7 +20,7 @@ static func text_for(level: Dictionary) -> String:
 
 
 ## { "text", "staff_id", "staff_name", "role" } for the line; staff_id is ""
-## when the player says it. {} when the level has no purpose text.
+## when no staff member says it (shown as narration). {} when the level has no purpose text.
 static func resolve(level: Dictionary, staff_hired: Dictionary, staff_directory: Array) -> Dictionary:
 	var text := text_for(level)
 	if text.is_empty():

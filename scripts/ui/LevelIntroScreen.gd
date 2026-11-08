@@ -79,13 +79,16 @@ func _ready() -> void:
 	_cues = LevelIntroCues.resolve(DataDB.level_intros, lid, GameState.staff_hired, DataDB.staff)
 	# What the level is for speaks first (2026-11-04, Cameron): from the staff
 	# member in the level's Purpose Speaker role, the first hired staff member,
-	# or the player's own thought. A level with no Purpose cell skips it.
+	# or, with no staff, as narration. A level with no Purpose cell skips it.
 	var purpose := LevelPurpose.resolve(DataDB.get_level(lid), GameState.staff_hired, DataDB.staff)
 	if not purpose.is_empty():
-		var by_player := str(purpose["staff_id"]).is_empty()
+		# With no staff hired the line is shown as narration, with no name and
+		# no portrait (Cameron, 2026-11-08): it is written to "you", so the
+		# player saying it to themselves read as someone else's line in the
+		# player's mouth.
 		_cues.push_front({
-			"staff_id": str(DataDB.player.get("player_id", "")) if by_player else str(purpose["staff_id"]),
-			"staff_name": str(DataDB.player.get("name_en", "")) if by_player else str(purpose["staff_name"]),
+			"staff_id": str(purpose["staff_id"]),
+			"staff_name": str(purpose["staff_name"]),
 			"text": str(purpose["text"]),
 		})
 	_bill = DataDB.get_floor_vote(lid)
@@ -134,6 +137,12 @@ func _process(_delta: float) -> void:
 
 func _show_speaker(index: int) -> void:
 	var cue: Dictionary = _cues[index]
+	# A narrated line (no speaker) shows nobody.
+	var narrated := str(cue["staff_id"]).is_empty()
+	_portrait.visible = not narrated
+	_name_label.visible = not narrated
+	if narrated:
+		return
 	_portrait.art_id = str(cue["staff_id"])
 	_name_label.text = str(cue["staff_name"])
 
