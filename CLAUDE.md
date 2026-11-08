@@ -222,3 +222,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Real Aomori and Hokkaido places in the casework (2026-11-08, Cameron)
 - Real places for the earlier questions and events; places kept apart from the player's district (2026-11-08, Cameron)
 - With no staff, a level's purpose line is narration, not the player's (2026-11-08, Cameron)
+- Spoken lines stay centered two seconds longer (2026-11-08, Cameron)

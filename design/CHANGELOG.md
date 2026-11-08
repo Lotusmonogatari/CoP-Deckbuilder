@@ -733,3 +733,7 @@ Named places are never described as the player's own district, since each protag
 ## With no staff, a level's purpose line is narration, not the player's (2026-11-08, Cameron)
 
 Cameron saw a line written to "you" ("Lobbyists have asked for your time...") spoken by the player character on a Level Intro, just before the player's own thought. It was the level's Purpose line: it is spoken by a staff member, and with no staff hired it fell back to the player. It now shows as narration instead, with no name tag and no portrait, and the player's own thought follows as before. With staff hired nothing changes. The Stage Transition already falls back only to the player's own written thoughts (PLAYER rows), so it needed no change.
+
+## Spoken lines stay centered two seconds longer (2026-11-08, Cameron)
+
+Every line on the cue banner (battles, Office Hours, visits, Level Intro, Stage Transitions) now holds in the middle of the screen 2 seconds longer than its reading time; the slide in and the slide out keep their speed. The extra is a Balance row, `Cue: Extra Hold Seconds` (set it to 0 to go back).

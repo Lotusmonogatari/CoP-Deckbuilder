@@ -229,5 +229,6 @@
   "member_stance_split_party_abstain_percent": 30,
   "draft_bill_extra_visit_xp_cost": 50,
   "stage_continue_delay_seconds": 2,
+  "cue_extra_hold_seconds": 2,
   "xp_tiers": {}
 }

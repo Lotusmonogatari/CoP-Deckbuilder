@@ -183,7 +183,12 @@ func _show_next() -> void:
 	_step_generation = mine
 	_step_from = from
 	_step_sliding_out = false
-	_step_timer.start(maxf(clampf(HOLD_MIN + HOLD_PER_CHAR * text_length, HOLD_MIN, HOLD_MAX) * speed, 0.001))
+	# Reading time, plus a fixed extra hold while the line sits centered
+	# (Balance "Cue: Extra Hold Seconds", Cameron 2026-11-08); the slides in
+	# and out are untouched.
+	var hold := clampf(HOLD_MIN + HOLD_PER_CHAR * text_length, HOLD_MIN, HOLD_MAX) \
+		+ float(DataDB.balance.get("cue_extra_hold_seconds", 0))
+	_step_timer.start(maxf(hold * speed, 0.001))
 
 
 ## The hold is over (slide the band out), or the slide-out is (next line).
