@@ -737,3 +737,9 @@ Cameron saw a line written to "you" ("Lobbyists have asked for your time...") sp
 ## Spoken lines stay centered two seconds longer (2026-11-08, Cameron)
 
 Every line on the cue banner (battles, Office Hours, visits, Level Intro, Stage Transitions) now holds in the middle of the screen 2 seconds longer than its reading time; the slide in and the slide out keep their speed. The extra is a Balance row, `Cue: Extra Hold Seconds` (set it to 0 to go back).
+
+## Expanded Staff Office: more staff per role, and a primary (2026-11-08, Cameron)
+
+A new Marketplace item, SH35 Expanded Staff Office (150 XP, 300,000円 and 15 Reputation), adds one place to every staff role; it can be bought up to twice (three people per role at most). The first person hired in a role stays its **primary**, the one every scene reads (Level Intro cues, the purpose line, notices, ticker, item bonuses, Member Visit briefing), so nothing conflicts. Extra staff pay their rank rewards on hire and upgrade, can be upgraded and fired on their own, and may speak in stage transitions (Cameron's choice). The staff screen lists everyone in a role with the primary tagged; an extra's profile has a **Make primary** button; firing the primary promotes the first extra. Both new fields (`staff_extra`, `staff_slot_buys`) are saved; old saves load with no extras.
+
+Decisions by Cameron: the Reputation price is a Balance row, not a new Shop column (`Staff Slots: Reputation Cost` 15), so the code finds the item by a Balance number (`Staff Slots: Item Number` 35) and the cap is `Staff Slots: Maximum Purchases` (2). Nine Text rows added. Tests: `tests/test_staff_slots.gd` (13). Checked with throwaway screenshots (deleted): the staff screen lists every person with the primary tagged and an extra's profile shows Make primary.

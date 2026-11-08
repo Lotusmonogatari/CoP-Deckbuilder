@@ -56,8 +56,9 @@ func _ready() -> void:
 
 	var rng := RandomNumberGenerator.new()
 	var hired_ids: Array = []
-	for role: String in GameState.staff_hired:
-		hired_ids.append(str(GameState.staff_hired[role].get("staff_id", "")))
+	# Primaries and extras alike may speak (Cameron, 2026-11-08).
+	for staff_id: String in GameState.all_hired_staff_ids():
+		hired_ids.append(staff_id)
 	# A level about a bill opens with the player's thought more often than the
 	# flat chance (2026-11-02, Balance "Transition: Bill Level Thought Chance").
 	var bill_id := str(_stage.get("bill_id", ""))

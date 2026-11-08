@@ -6466,5 +6466,68 @@
     "english": "You decline. The run goes ahead with another patron's name.",
     "placeholders": null,
     "notes": "2026-11-08 mundane casework batch. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "shop.reputation_short",
+    "where": "Marketplace: refusal when Reputation is too low",
+    "english": "Not enough Reputation (need {count} more)",
+    "placeholders": "count",
+    "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
+  },
+  {
+    "key": "shop.staff_slots_maxed",
+    "where": "Marketplace: refusal after the last purchase",
+    "english": "Every role already has all the places it can hold.",
+    "placeholders": null,
+    "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
+  },
+  {
+    "key": "shop.staff_slots_bought",
+    "where": "Marketplace: result of buying the staff slot item",
+    "english": "Every staff role has room for one more person.",
+    "placeholders": null,
+    "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
+  },
+  {
+    "key": "shop.item_price_reputation",
+    "where": "Marketplace: the Reputation part of a price",
+    "english": "{count} Reputation",
+    "placeholders": "count",
+    "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
+  },
+  {
+    "key": "office.staff_slots_full",
+    "where": "Staff: refusal when a role has no free place",
+    "english": "This role has no free place.",
+    "placeholders": null,
+    "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
+  },
+  {
+    "key": "office.staff_make_primary",
+    "where": "Staff profile: button that makes an extra the primary",
+    "english": "Make primary",
+    "placeholders": null,
+    "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
+  },
+  {
+    "key": "office.staff_primary_tag",
+    "where": "Staff: tag on the primary of a role",
+    "english": "Primary",
+    "placeholders": null,
+    "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
+  },
+  {
+    "key": "office.staff_role_places",
+    "where": "Staff: how full a role is",
+    "english": "{filled} of {places} places filled",
+    "placeholders": "filled, places",
+    "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
+  },
+  {
+    "key": "office.staff_blurb_places",
+    "where": "Staff screen intro once the slot item is bought",
+    "english": "Each role can hold {places} hires at a time. The primary is the one every scene, notice and bonus reads; the others still earn their rank rewards. Hiring, upgrading and firing are all paid from Funds, and someone you fire will never work for you again.",
+    "placeholders": "places",
+    "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
   }
 ]

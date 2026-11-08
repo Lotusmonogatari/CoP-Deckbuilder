@@ -2170,7 +2170,8 @@ func _show_marketplace() -> void:
 		if item.get("card_tier") == null and str(item.get("in_marketplace", "")).strip_edges().to_lower() != "no" \
 				and Items.inventory_tab(item) == _market_tab \
 				and not (Items.is_yes(item.get("unlocks_recruitment_tier")) and GameState.staff_recruitment_maxed()) \
-				and not (item.get("deck_size_increase") != null and GameState.deck_expansion_maxed()):
+				and not (item.get("deck_size_increase") != null and GameState.deck_expansion_maxed()) \
+				and not (GameState.is_staff_slot_item(item) and GameState.staff_slots_maxed()):
 			rows.append(_supply_row(item))
 	_inventory_panel.open(Text.say("shop.supplies"), rows)
 
@@ -2211,6 +2212,8 @@ func _supply_row(item: Dictionary) -> Control:
 	var bought := int(GameState.shop_bought_this_level.get(item_id, 0))
 	var refusal := Items.buy_refusal(item, GameState.item_count(item_id), bought,
 		GameState.xp, int(GameState.meta.get("Funds", 0)), Text.phrase())
+	if refusal.is_empty() and GameState.is_staff_slot_item(item):
+		refusal = GameState.staff_slot_refusal(item)
 	var button := UiKit.action_button(Text.say("shop.buy"), refusal, _on_buy_item.bind(item_id))
 	button.name = "Buy"
 	box.add_child(button)
@@ -2230,6 +2233,9 @@ func _price_text(item: Dictionary) -> String:
 		parts.append(Text.say("shop.item_price_xp", {"count": price["XP"]}))
 	if int(price["Funds"]) > 0:
 		parts.append(Text.say("shop.item_price_yen", {"count": price["Funds"]}))
+	if GameState.is_staff_slot_item(item):
+		parts.append(Text.say("shop.item_price_reputation",
+			{"count": int(DataDB.balance.get("staff_slots_reputation_cost", 0))}))
 	return Text.say("shop.item_free") if parts.is_empty() else " + ".join(parts)
 
 
@@ -2254,6 +2260,9 @@ func _on_buy_item(item_id: String) -> void:
 		return
 	if item.get("deck_size_increase") != null:
 		_report_purchase_result(GameState.buy_deck_expansion(item_id))
+		return
+	if GameState.is_staff_slot_item(item):
+		_report_purchase_result(GameState.buy_staff_slots(item_id))
 		return
 
 	var refusal := GameState.buy_shop_item(item_id)
@@ -2561,18 +2570,23 @@ func _on_buy_modifier(mod_id: String) -> void:
 ## design/proposals/staff_firing.md).
 func _show_staff() -> void:
 	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("office.staff_blurb")))
+	rows.append(UiKit.line(Text.say("office.staff_blurb") if GameState.staff_slots() <= 1
+		else Text.say("office.staff_blurb_places", {"places": GameState.staff_slots()})))
 	rows.append(UiKit.line(Text.say("office.funds",
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
 
 	for role: String in Ledger.staff_roles(DataDB.staff):
 		rows.append(UiKit.heading(role))
-		var hired: Dictionary = GameState.staff_hired.get(role, {})
-		if hired.is_empty():
+		var members := GameState.staff_in_role(role)
+		if GameState.staff_slots() > 1:
+			rows.append(UiKit.line(Text.say("office.staff_role_places",
+				{"filled": members.size(), "places": GameState.staff_slots()}), "SmallLabel"))
+		for i in members.size():
+			rows.append(_staff_hired_row(role, members[i], i == 0 and GameState.staff_slots() > 1))
+		if members.size() < GameState.staff_slots():
 			for candidate: Dictionary in DataDB.get_staff_by_role(role):
-				rows.append(_staff_candidate_row(candidate))
-		else:
-			rows.append(_staff_hired_row(role, hired))
+				if GameState.hired_member(str(candidate.get("staff_id", ""))).is_empty():
+					rows.append(_staff_candidate_row(candidate))
 
 	_staff_panel.open(Text.say("office.staff"), rows)
 
@@ -2600,14 +2614,18 @@ func _staff_candidate_row(candidate: Dictionary) -> Control:
 
 ## The one candidate hired into a role: a button that opens their profile,
 ## where Upgrade and Fire now live beside the tiers they act on.
-func _staff_hired_row(_role: String, hired: Dictionary) -> Control:
+func _staff_hired_row(_role: String, hired: Dictionary, tag_primary: bool = false) -> Control:
 	var candidate := DataDB.get_staff(str(hired.get("staff_id", "")))
 	var box := UiKit.tight_column()
-	box.add_child(_profile_button(Text.say("office.staff_hired", {
+	var text := Text.say("office.staff_hired", {
 		"name": candidate.get("name", hired.get("staff_id", "")),
 		"tier": int(hired.get("tier", 0)),
 		"highest": int(candidate.get("highest_tier", 0)),
-	}), str(hired.get("staff_id", ""))))
+	})
+	# With more than one place in the role, the primary is marked.
+	if tag_primary:
+		text += "  ·  " + Text.say("office.staff_primary_tag")
+	box.add_child(_profile_button(text, str(hired.get("staff_id", ""))))
 	return box
 
 
@@ -2629,8 +2647,8 @@ func _show_staff_profile(staff_id: String) -> void:
 	if candidate.is_empty():
 		return
 	var role := str(candidate.get("role", ""))
-	var hired: Dictionary = GameState.staff_hired.get(role, {})
-	var is_hired := str(hired.get("staff_id", "")) == staff_id
+	var hired: Dictionary = GameState.hired_member(staff_id)
+	var is_hired := not hired.is_empty()
 	var current_tier := int(hired.get("tier", 0)) if is_hired else -1
 	var rows: Array[Control] = []
 
@@ -2696,19 +2714,22 @@ func _show_staff_profile(staff_id: String) -> void:
 		else:
 			var upgrade := UiKit.action_button(Text.say("office.upgrade", {"cost": int(cost)}),
 				Ledger.staff_upgrade_refusal(candidate, current_tier, funds, Text.phrase()),
-				_on_profile_upgrade.bind(role))
+				_on_profile_upgrade.bind(staff_id))
 			upgrade.name = "ProfileUpgradeButton"
 			rows.append(upgrade)
+		if not bool(hired.get("primary", true)):
+			var primary_button := UiKit.action_button(Text.say("office.staff_make_primary"), "",
+				_on_profile_make_primary.bind(staff_id))
+			primary_button.name = "ProfilePrimaryButton"
+			rows.append(primary_button)
 		var fire := UiKit.action_button(Text.say("office.fire_staff"),
 			Ledger.staff_fire_refusal(candidate, funds, Text.phrase()),
-			_confirm_fire_staff.bind(role, candidate))
+			_confirm_fire_staff.bind(staff_id, candidate))
 		fire.name = "ProfileFireButton"
 		rows.append(fire)
 	else:
 		var hire := UiKit.action_button(Text.say("office.hire"),
-			Ledger.staff_hire_refusal(candidate, hired,
-				bool(GameState.staff_fired.get(staff_id, false)), funds,
-				GameState.staff_recruitment_tier, Text.phrase()),
+			_hire_refusal(candidate),
 			_on_profile_hire.bind(staff_id))
 		hire.name = "ProfileHireButton"
 		rows.append(hire)
@@ -2749,16 +2770,32 @@ func _on_profile_hire(staff_id: String) -> void:
 	_after_spending(GameState.hire_staff(staff_id), _show_staff)
 
 
-func _on_profile_upgrade(role: String) -> void:
+## Why this candidate cannot be hired now, in words, or "": the place and the
+## price both count (the slot rule lives in GameState.hire_staff()).
+func _hire_refusal(candidate: Dictionary) -> String:
+	var staff_id := str(candidate.get("staff_id", ""))
+	var members := GameState.staff_in_role(str(candidate.get("role", "")))
+	if members.size() >= GameState.staff_slots():
+		return Text.say("office.staff_slots_full") if GameState.staff_slots() > 1 else Text.say("shop.already_yours")
+	return Ledger.staff_hire_refusal(candidate, {}, bool(GameState.staff_fired.get(staff_id, false)),
+		int(GameState.meta.get("Funds", 0)), GameState.staff_recruitment_tier, Text.phrase())
+
+
+func _on_profile_upgrade(staff_id: String) -> void:
 	_staff_profile_panel.close()
-	_after_spending(GameState.upgrade_staff(role), _show_staff)
+	_after_spending(GameState.upgrade_staff_member(staff_id), _show_staff)
+
+
+func _on_profile_make_primary(staff_id: String) -> void:
+	_staff_profile_panel.close()
+	_after_spending(GameState.make_primary(staff_id), _show_staff)
 
 
 ## Firing is permanent and costs a severance, so it asks first — same
 ## confirm-overlay pattern as _confirm_new_game().
-func _confirm_fire_staff(role: String, candidate: Dictionary) -> void:
+func _confirm_fire_staff(staff_id: String, candidate: Dictionary) -> void:
 	_staff_profile_panel.close()
-	_firing_role = role
+	_firing_role = staff_id
 	_fire_staff_panel.open(Text.say("office.fire_staff"),
 		[UiKit.line(Text.say("office.fire_staff_warning", {
 			"name": candidate.get("name", candidate.get("staff_id", "")),
@@ -2768,7 +2805,7 @@ func _confirm_fire_staff(role: String, candidate: Dictionary) -> void:
 
 
 func _on_fire_staff_confirmed() -> void:
-	_after_spending(GameState.fire_staff(_firing_role), _show_staff)
+	_after_spending(GameState.fire_staff_member(_firing_role), _show_staff)
 
 
 ## What the level ahead is worth, before committing to it.

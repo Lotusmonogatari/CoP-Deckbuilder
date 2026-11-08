@@ -228,7 +228,7 @@ A transition plays before a stage that is **not first in its level**, shows one 
 
 ### 9.1 Events (Events and Event Choices tabs)
 
-An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV83**; shop items **SH35**.
+An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV83**; shop items **SH36**.
 
 | Events column | Meaning |
 |---|---|

@@ -175,6 +175,15 @@ var last_party_change: Dictionary = {}
 ## hire_staff()/upgrade_staff()/fire_staff().
 var staff_hired: Dictionary = {}
 
+## Extra staff beyond each role's primary (Cameron, 2026-11-08): { role: [
+## {"staff_id", "tier"}, ... ] }. `staff_hired[role]` stays the PRIMARY, the one
+## person every scene, notice and item bonus reads; these are the others, who
+## pay rank rewards and may speak in stage transitions. Saved.
+var staff_extra: Dictionary = {}
+## How many times the staff slot item was bought: each purchase adds one place
+## to every role. Saved.
+var staff_slot_buys := 0
+
 ## Every staff_id ever fired this run, { "SF04": true, ... }. Firing costs a
 ## severance (Ledger.staff_firing_cost()) and is permanent, Cameron's call,
 ## 2026-09-25 (design/proposals/staff_firing.md): a fired candidate never
@@ -510,7 +519,7 @@ const _SAVED_FIELDS := [
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
-	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
+	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
@@ -598,6 +607,14 @@ func drop_stale_ids() -> int:
 		if not (hired is Dictionary) or DataDB.get_staff(str((hired as Dictionary).get("staff_id", ""))).is_empty():
 			staff_hired.erase(role)
 			dropped += 1
+	for role: String in staff_extra.keys():
+		var kept: Array = []
+		for entry: Variant in (staff_extra[role] as Array):
+			if entry is Dictionary and not DataDB.get_staff(str((entry as Dictionary).get("staff_id", ""))).is_empty():
+				kept.append(entry)
+			else:
+				dropped += 1
+		staff_extra[role] = kept
 	for slot: String in active_cosmetics.keys():
 		if str(active_cosmetics[slot]) not in owned_cosmetic_packages:
 			active_cosmetics.erase(slot)
@@ -711,6 +728,8 @@ func reset_crisis_triggers() -> void:
 ## back to only highest_tier-0 candidates.
 func reset_staff() -> void:
 	staff_hired = {}
+	staff_extra = {}
+	staff_slot_buys = 0
 	staff_fired = {}
 	staff_recruitment_tier = 0
 
@@ -865,45 +884,109 @@ func _expire_modifiers() -> void:
 				"name": str(DataDB.get_modifier(mod_id).get("name_en", mod_id))})
 
 
-## Hires a candidate into their role, spending Funds, if the role is vacant
-## and the price is affordable. Immediately applies whichever tier_N_reward
-## matches the tier they START at (candidates do not all start at tier 0 —
-## SF05 and SF07 start at tier 1).
+## Everyone hired in a role, the primary first, then the extras.
+func staff_in_role(role: String) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var primary: Dictionary = staff_hired.get(role, {})
+	if not primary.is_empty():
+		out.append(primary)
+	for entry: Variant in (staff_extra.get(role, []) as Array):
+		out.append(entry as Dictionary)
+	return out
+
+
+## How many people each role holds now: one, plus a place per slot item bought.
+func staff_slots() -> int:
+	return 1 + staff_slot_buys
+
+
+## The ids of every hired person, primaries and extras (who may speak in a
+## stage transition).
+func all_hired_staff_ids() -> Array[String]:
+	var ids: Array[String] = []
+	for role: String in staff_hired.keys():
+		for member: Dictionary in staff_in_role(role):
+			ids.append(str(member.get("staff_id", "")))
+	for role: String in staff_extra.keys():
+		if not staff_hired.has(role):
+			for member: Dictionary in staff_in_role(role):
+				ids.append(str(member.get("staff_id", "")))
+	return ids
+
+
+## The hired record for this person (primary or extra), {} when not hired, with
+## "role" and "primary" added for the caller.
+func hired_member(staff_id: String) -> Dictionary:
+	for role: String in DataDB.staff.map(func(row: Dictionary) -> String: return str(row.get("role", ""))):
+		var members := staff_in_role(role)
+		for i in members.size():
+			if str(members[i].get("staff_id", "")) == staff_id:
+				var found := (members[i] as Dictionary).duplicate()
+				found["role"] = role
+				found["primary"] = i == 0
+				return found
+	return {}
+
+
+## Hires a candidate into their role, spending Funds, if the role has a free
+## place and the price is affordable. The first hire in a role is its primary;
+## later ones (once the slot item is bought) are extras. Immediately applies
+## whichever tier_N_reward matches the tier they START at (candidates do not
+## all start at tier 0, SF05 and SF07 start at tier 1).
 func hire_staff(staff_id: String) -> String:
 	var candidate := DataDB.get_staff(staff_id)
 	if candidate.is_empty():
 		return Text.say("staff.unknown_candidate")
 
 	var role := str(candidate.get("role", ""))
+	if not hired_member(staff_id).is_empty():
+		return Text.say("shop.already_yours")
+	var members := staff_in_role(role)
+	if members.size() >= staff_slots():
+		return Text.say("office.staff_slots_full") if staff_slots() > 1 else Text.say("shop.already_yours")
 	var funds := int(meta.get("Funds", 0))
-	var refusal := Ledger.staff_hire_refusal(candidate, staff_hired.get(role, {}),
+	# The role has a free place, so the Ledger sees it as vacant.
+	var refusal := Ledger.staff_hire_refusal(candidate, {},
 		bool(staff_fired.get(staff_id, false)), funds, staff_recruitment_tier, Text.phrase())
 	if not refusal.is_empty():
 		return refusal
 
 	_move_meta("Funds", -int(candidate.get("hiring_cost_yen", 0)))
 	var starting_tier := int(candidate.get("starting_tier", 0))
-	staff_hired[role] = {"staff_id": staff_id, "tier": starting_tier}
+	var record := {"staff_id": staff_id, "tier": starting_tier}
+	if members.is_empty():
+		staff_hired[role] = record
+	else:
+		if not staff_extra.has(role):
+			staff_extra[role] = []
+		(staff_extra[role] as Array).append(record)
 	_apply_staff_reward(candidate, starting_tier)
 	return ""
 
 
-## Upgrades a role's hired candidate to the next tier, spending Funds, if that
-## step exists for them and is affordable. Applies the new tier's reward on
-## top of whatever hiring (and any earlier upgrade) already gave — these are
-## one-time bonuses per tier reached, not a repeating income, the same way a
-## modifier's RESOURCE_BONUS_ON_WIN tier is a flat payment rather than a rate
-## (see ModifierEffects.gd).
+## Upgrades a role's primary to the next tier (see upgrade_staff_member()).
 func upgrade_staff(role: String) -> String:
 	var hired: Dictionary = staff_hired.get(role, {})
 	if hired.is_empty():
 		return Text.say("staff.nobody_hired")
+	return upgrade_staff_member(str(hired.get("staff_id", "")))
 
-	var candidate := DataDB.get_staff(str(hired.get("staff_id", "")))
+
+## Upgrades a hired person (primary or extra) to the next tier, spending Funds,
+## if that step exists for them and is affordable. Applies the new tier's
+## reward on top of whatever hiring (and any earlier upgrade) already gave:
+## these are one-time bonuses per tier reached, not a repeating income, the
+## same way a modifier's RESOURCE_BONUS_ON_WIN tier is a flat payment rather
+## than a rate (see ModifierEffects.gd).
+func upgrade_staff_member(staff_id: String) -> String:
+	var found := hired_member(staff_id)
+	if found.is_empty():
+		return Text.say("staff.nobody_hired")
+	var candidate := DataDB.get_staff(staff_id)
 	if candidate.is_empty():
 		return Text.say("staff.unknown_candidate")
 
-	var tier := int(hired.get("tier", 0))
+	var tier := int(found.get("tier", 0))
 	var funds := int(meta.get("Funds", 0))
 	var refusal := Ledger.staff_upgrade_refusal(candidate, tier, funds, Text.phrase())
 	if not refusal.is_empty():
@@ -913,26 +996,42 @@ func upgrade_staff(role: String) -> String:
 	_move_meta("Funds", -cost)
 
 	var new_tier := tier + 1
-	hired["tier"] = new_tier
-	staff_hired[role] = hired
+	_set_member_tier(str(found["role"]), staff_id, new_tier)
 	_apply_staff_reward(candidate, new_tier)
 	return ""
 
 
-## Fires a role's hired candidate, spending a severance (Ledger.
-## staff_firing_cost()) from Funds. The role goes vacant and can be filled
-## with a different candidate right away — but not with this one: whatever
-## the hire and every upgrade already paid out (Funds spent, standing and
-## favourability gained) stands; nothing is refunded or clawed back, and the
-## fired candidate is marked in staff_fired so they never appear hireable
-## again this run. Cameron's decision, 2026-09-25
-## (design/proposals/staff_firing.md).
+func _set_member_tier(role: String, staff_id: String, tier: int) -> void:
+	var primary: Dictionary = staff_hired.get(role, {})
+	if str(primary.get("staff_id", "")) == staff_id:
+		primary["tier"] = tier
+		staff_hired[role] = primary
+		return
+	for entry: Variant in (staff_extra.get(role, []) as Array):
+		if str((entry as Dictionary).get("staff_id", "")) == staff_id:
+			(entry as Dictionary)["tier"] = tier
+
+
+## Fires a role's primary (see fire_staff_member()).
 func fire_staff(role: String) -> String:
 	var hired: Dictionary = staff_hired.get(role, {})
 	if hired.is_empty():
 		return Text.say("staff.nobody_hired")
+	return fire_staff_member(str(hired.get("staff_id", "")))
 
-	var staff_id := str(hired.get("staff_id", ""))
+
+## Fires a hired person, spending a severance (Ledger.staff_firing_cost())
+## from Funds. Their place goes vacant and can be filled with a different
+## candidate right away, but not with this one: whatever the hire and every
+## upgrade already paid out (Funds spent, standing and favourability gained)
+## stands; nothing is refunded or clawed back, and the fired candidate is
+## marked in staff_fired so they never appear hireable again this run.
+## Cameron's decision, 2026-09-25 (design/proposals/staff_firing.md). When the
+## primary is fired and extras remain, the first extra becomes the primary.
+func fire_staff_member(staff_id: String) -> String:
+	var found := hired_member(staff_id)
+	if found.is_empty():
+		return Text.say("staff.nobody_hired")
 	var candidate := DataDB.get_staff(staff_id)
 	if candidate.is_empty():
 		return Text.say("staff.unknown_candidate")
@@ -943,9 +1042,83 @@ func fire_staff(role: String) -> String:
 		return refusal
 
 	_move_meta("Funds", -Ledger.staff_firing_cost(candidate))
-	staff_hired.erase(role)
+	var role := str(found["role"])
+	if bool(found.get("primary", false)):
+		staff_hired.erase(role)
+		var extras: Array = staff_extra.get(role, [])
+		if not extras.is_empty():
+			staff_hired[role] = extras.pop_front()
+	else:
+		var extras: Array = staff_extra.get(role, [])
+		for i in extras.size():
+			if str((extras[i] as Dictionary).get("staff_id", "")) == staff_id:
+				extras.remove_at(i)
+				break
 	staff_fired[staff_id] = true
 	return ""
+
+
+## Makes a hired extra the role's primary, the person every scene, notice and
+## item bonus reads; the old primary becomes an extra. "" when done.
+func make_primary(staff_id: String) -> String:
+	var found := hired_member(staff_id)
+	if found.is_empty():
+		return Text.say("staff.nobody_hired")
+	if bool(found.get("primary", false)):
+		return ""
+	var role := str(found["role"])
+	var old_primary: Dictionary = staff_hired.get(role, {})
+	var extras: Array = staff_extra.get(role, [])
+	for i in extras.size():
+		if str((extras[i] as Dictionary).get("staff_id", "")) == staff_id:
+			staff_hired[role] = extras[i]
+			extras[i] = old_primary
+			return ""
+	return Text.say("staff.nobody_hired")
+
+
+## True for the Shop item that adds a place to every staff role (SH plus the
+## Balance number "Staff Slots: Item Number").
+func is_staff_slot_item(item: Dictionary) -> bool:
+	var number := int(DataDB.balance.get("staff_slots_item_number", 0))
+	return number > 0 and str(item.get("item_id", "")) == "SH%d" % number
+
+
+## True once the staff slot item has been bought the most times allowed
+## (Balance "Staff Slots: Maximum Purchases").
+func staff_slots_maxed() -> bool:
+	return staff_slot_buys >= int(DataDB.balance.get("staff_slots_maximum_purchases", 2))
+
+
+## Why the staff slot item cannot be bought now, in words, or "". The item's
+## XP and Funds prices go through Items; its Reputation price is a Balance
+## number (Cameron, 2026-11-08: no Shop column for it).
+func staff_slot_refusal(item: Dictionary) -> String:
+	var refusal := Items.buy_refusal(item, item_count(str(item.get("item_id", ""))), 0,
+		xp, int(meta.get("Funds", 0)), Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+	if staff_slots_maxed():
+		return Text.say("shop.staff_slots_maxed")
+	var need := int(DataDB.balance.get("staff_slots_reputation_cost", 0))
+	if int(meta.get("Reputation", 0)) < need:
+		return Text.say("shop.reputation_short", {"count": need - int(meta.get("Reputation", 0))})
+	return ""
+
+
+## The staff slot item: pays XP, Funds and Reputation, then every role holds one
+## more person. { ok, message }.
+func buy_staff_slots(item_id: String) -> Dictionary:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := staff_slot_refusal(item)
+	if not refusal.is_empty():
+		return {"ok": false, "message": refusal}
+	var price := Items.costs(item)
+	_move_xp(-int(price["XP"]))
+	_move_meta("Funds", -int(price["Funds"]))
+	_move_meta("Reputation", -int(DataDB.balance.get("staff_slots_reputation_cost", 0)))
+	staff_slot_buys += 1
+	return {"ok": true, "message": Text.say("shop.staff_slots_bought")}
 
 
 ## A staff tier's reward, applied the moment it is reached (on hire, and

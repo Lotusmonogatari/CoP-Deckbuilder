@@ -321,3 +321,7 @@ A stage is not saved while it is fought, with one exception: in a stage with sev
 ## Addendum 2026-11-07: promises can owe Funds
 
 A promise now has three kinds: an item, hours, or Funds (`Promise Funds N within H for BOxx`). A Funds promise is kept from the Office's Promises panel, which takes the Funds then; the Pay button is greyed with "Not enough Funds" while the player is short, and nothing is reserved in the meantime. One unpaid at its deadline is broken like any other promise.
+
+## Addendum 2026-11-08: staff slots and the primary
+
+The Marketplace's **Expanded Staff Office** (SH35: 150 XP, 300,000円 and 15 Reputation; up to twice) adds one place to every staff role. The first person hired in a role is its **primary**; later ones are extras. Extras pay their rank rewards on hire and upgrade, can be upgraded and fired on their own, and may speak in stage transitions; the primary alone is read by Level Intro cues, the purpose line, notices, the ticker, item bonuses and the Member Visit briefing, so scenes never conflict. **Make primary** on an extra's profile swaps the two; firing a primary promotes the first extra. The price's Reputation part, the item's number and the purchase cap are Balance rows (`Staff Slots: ...`).

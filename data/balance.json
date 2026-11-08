@@ -230,5 +230,8 @@
   "draft_bill_extra_visit_xp_cost": 50,
   "stage_continue_delay_seconds": 2,
   "cue_extra_hold_seconds": 2,
+  "staff_slots_item_number": 35,
+  "staff_slots_reputation_cost": 15,
+  "staff_slots_maximum_purchases": 2,
   "xp_tiers": {}
 }
