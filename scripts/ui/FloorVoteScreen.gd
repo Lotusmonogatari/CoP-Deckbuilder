@@ -38,11 +38,6 @@ var _influence_panel: Overlay = null
 var _whip_panel: Overlay = null
 var _whip_details: Array = []
 
-## Whip layout draft (2026-11-08): 1 = heading, one cost line, stepper;
-## 2 = heading and stepper only, the full rules behind a Whip Details button.
-## Cameron picks one and the other is removed.
-var whip_variant := 1
-
 ## Projection bar colours; Unknown is black, beside the Abstain part.
 const PROJECTION_AYE := Color(0.30, 0.62, 0.40)
 const PROJECTION_NAY := Color(0.75, 0.28, 0.28)
@@ -428,12 +423,6 @@ func _build_whip_row(column: VBoxContainer) -> void:
 		perk_text = Text.say("floor_vote.whip_discount", {
 			"orgs": ", ".join(names), "amount": int(DataDB.balance.get("whip_discount_amount", 1))})
 	_whip_details = [full_info, perk_text]
-	if whip_variant == 1:
-		var info := Label.new()
-		info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		info.theme_type_variation = &"SmallLabel"
-		info.text = Text.say("floor_vote.whip_cost_short", {"base": base, "against": against})
-		box.add_child(info)
 	if most <= 0:
 		var none := Label.new()
 		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -463,7 +452,8 @@ func _build_whip_row(column: VBoxContainer) -> void:
 		controls.add_child(count)
 		controls.add_child(more)
 		box.add_child(controls)
-	if whip_variant == 2 and most > 0:
+	# The full rules sit behind a button to keep the screen short (draft 2026-11-08).
+	if most > 0:
 		var details := Button.new()
 		details.name = "WhipDetailsButton"
 		details.text = Text.say("floor_vote.whip_details_button")
