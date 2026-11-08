@@ -26,3 +26,15 @@ func test_zero_percent_hides_nothing() -> void:
 func test_empty_house_is_safe() -> void:
 	var out := VoteProjection.split({}, 15.0)
 	assert_eq(out["Unknown"], 0)
+
+
+func test_narrowed_range_never_goes_below_zero() -> void:
+	assert_eq(VoteProjection.narrowed_range(10, 25, 6), [4, 19])
+	assert_eq(VoteProjection.narrowed_range(10, 25, 12), [0, 13])
+	assert_eq(VoteProjection.narrowed_range(10, 25, 30), [0, 0])
+
+
+func test_tier_values_are_not_added() -> void:
+	assert_eq(VoteProjection.by_tier([1, 2, 3], 2), 3)
+	assert_eq(VoteProjection.by_tier([1, 2, 3], 0), 1)
+	assert_eq(VoteProjection.by_tier([1, 2, 3], -1), 0)

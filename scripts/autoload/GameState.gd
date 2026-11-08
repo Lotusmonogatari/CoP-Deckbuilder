@@ -28,6 +28,10 @@ var mid_stage := false
 ## cannot change by reopening it. 0 = not drawn yet (the screen draws it).
 var vote_unknown_percent := 0
 
+## True once the player has bought a Research Briefing for this vote (once
+## per vote); reset whenever the share is drawn.
+var vote_briefed := false
+
 ## A save point inside a stage with several opponents, taken when one is
 ## defeated: { "key": which stage, "item_bonuses": what the stage began with,
 ## "engine": BattleEngine.checkpoint() }. {} otherwise. Saved; cleared when
@@ -2256,7 +2260,61 @@ func reset_segment_favorability() -> void:
 func lock_vote_unknown_percent() -> void:
 	var low := int(DataDB.balance.get("vote_projection_unknown_minimum_percent", 10))
 	var high := int(DataDB.balance.get("vote_projection_unknown_maximum_percent", 25))
-	vote_unknown_percent = randi_range(mini(low, high), maxi(low, high))
+	var span := VoteProjection.narrowed_range(mini(low, high), maxi(low, high), research_passive_points())
+	vote_unknown_percent = randi_range(span[0], span[1])
+	vote_briefed = false
+
+
+## The tier of the primary Policy Research Assistant; -1 when none is hired.
+## (Extra staff do not count: the primary is the one every scene reads.)
+func research_tier() -> int:
+	var primary: Dictionary = staff_hired.get("Policy Research Assistant", {})
+	return int(primary.get("tier", 0)) if not primary.is_empty() else -1
+
+
+## Points the assistant takes off the Unknown range by simply being on staff.
+func research_passive_points() -> int:
+	return VoteProjection.by_tier([
+		int(DataDB.balance.get("research_assistant_passive_points_tier_0", 0)),
+		int(DataDB.balance.get("research_assistant_passive_points_tier_1", 0)),
+		int(DataDB.balance.get("research_assistant_passive_points_tier_2", 0))], research_tier())
+
+
+## Percent of the house a Research Briefing clears at the assistant's tier.
+func research_briefing_points() -> int:
+	return VoteProjection.by_tier([
+		int(DataDB.balance.get("research_assistant_briefing_clears_tier_0", 0)),
+		int(DataDB.balance.get("research_assistant_briefing_clears_tier_1", 0)),
+		int(DataDB.balance.get("research_assistant_briefing_clears_tier_2", 0))], research_tier())
+
+
+## Why a Research Briefing cannot be bought now, as a sentence; "" when it can.
+func research_briefing_refusal() -> String:
+	if research_tier() < 0:
+		return Text.say("floor_vote.research_no_assistant")
+	if vote_briefed:
+		return Text.say("floor_vote.research_done")
+	if vote_unknown_percent <= 0:
+		return Text.say("floor_vote.research_nothing_left")
+	var hours_refusal := _hours_refusal(int(DataDB.balance.get("research_assistant_briefing_hours", 0)))
+	if not hours_refusal.is_empty():
+		return hours_refusal
+	var cost := int(DataDB.balance.get("research_assistant_briefing_xp", 0))
+	if xp < cost:
+		return Text.say("floor_vote.research_no_xp", {"xp": cost})
+	return ""
+
+
+## Buys the briefing: hours and XP are paid, and the Unknown share shrinks by
+## the tier's points. Returns false (and charges nothing) when refused.
+func buy_research_briefing() -> bool:
+	if not research_briefing_refusal().is_empty():
+		return false
+	spend_hours(int(DataDB.balance.get("research_assistant_briefing_hours", 0)))
+	_move_xp(-int(DataDB.balance.get("research_assistant_briefing_xp", 0)))
+	vote_unknown_percent = maxi(vote_unknown_percent - research_briefing_points(), 0)
+	vote_briefed = true
+	return true
 
 
 ## Called by the Office when the player starts a level.

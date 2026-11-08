@@ -6613,5 +6613,54 @@
     "english": "Whip Details",
     "placeholders": null,
     "notes": "2026-11-08 Floor Vote draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.research_passive",
+    "where": "Floor Vote",
+    "english": "Your research assistant has narrowed the vote projection uncertainty.",
+    "placeholders": null,
+    "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.research_button",
+    "where": "Floor Vote",
+    "english": "Research Briefing",
+    "placeholders": null,
+    "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.research_cost",
+    "where": "Floor Vote",
+    "english": "Costs {hours} hours and {xp} XP. Clears {points}% of the house from the unknown vote.",
+    "placeholders": "hours, xp, points",
+    "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.research_done",
+    "where": "Floor Vote",
+    "english": "Your research assistant has briefed you. The unknown vote is smaller.",
+    "placeholders": null,
+    "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.research_no_assistant",
+    "where": "Floor Vote",
+    "english": "Hire a Policy Research Assistant to request a briefing.",
+    "placeholders": null,
+    "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.research_no_xp",
+    "where": "Floor Vote",
+    "english": "A briefing needs {xp} XP.",
+    "placeholders": "xp",
+    "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.research_nothing_left",
+    "where": "Floor Vote",
+    "english": "There is no unknown vote left to clear.",
+    "placeholders": null,
+    "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
   }
 ]

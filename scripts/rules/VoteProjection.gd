@@ -44,3 +44,21 @@ static func split(totals: Dictionary, unknown_percent: float) -> Dictionary:
 		out[bucket] = int(out[bucket]) - int(taken[bucket])
 	out["Unknown"] = assigned
 	return out
+
+
+## The Unknown range after a research assistant narrows it (draft 2026-11-08):
+## `points` come off both ends, never below 0, and the top never drops under
+## the bottom. Returns [low, high].
+static func narrowed_range(low: int, high: int, points: int) -> Array:
+	var new_low := maxi(low - points, 0)
+	var new_high := maxi(high - points, new_low)
+	return [new_low, new_high]
+
+
+## A tiered value picked by staff tier, not added up: Tier 2 gives its own
+## number, not Tier 0 + 1 + 2. `by_tier` = [tier 0, tier 1, tier 2]; a tier
+## below 0 (nobody hired) gives 0.
+static func by_tier(by_tier_values: Array, tier: int) -> int:
+	if tier < 0 or by_tier_values.is_empty():
+		return 0
+	return int(by_tier_values[mini(tier, by_tier_values.size() - 1)])

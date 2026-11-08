@@ -300,6 +300,7 @@ func _show_influence_and_preview() -> void:
 			parts.append({"color": bucket[1], "votes": int(shown[bucket[0]]), "label": ""})
 		bar.show_segments(parts)
 		preview.add_child(bar)
+	_add_research_block(preview)
 	column.add_child(preview)
 
 	if not GameState.stance_lean().is_empty():
@@ -325,6 +326,45 @@ func _show_influence_and_preview() -> void:
 			if not chips.is_empty():
 				stance.add_child(OrgChip.row(chips, true, 90.0))
 		column.add_child(stance)
+
+
+## The research assistant's part (draft 2026-11-08): a line when the staff
+## member has already narrowed the unknown share, and a Research Briefing
+## button that clears a little more, once per vote, for hours and XP.
+func _add_research_block(preview: VBoxContainer) -> void:
+	if _voted:
+		return
+	if GameState.research_passive_points() > 0:
+		var passive := Label.new()
+		passive.name = "ResearchPassive"
+		passive.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		passive.theme_type_variation = &"SmallLabel"
+		passive.text = Text.say("floor_vote.research_passive")
+		preview.add_child(passive)
+	var refusal := GameState.research_briefing_refusal()
+	if refusal.is_empty():
+		var cost := Label.new()
+		cost.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		cost.theme_type_variation = &"SmallLabel"
+		cost.text = Text.say("floor_vote.research_cost", {
+			"hours": int(DataDB.balance.get("research_assistant_briefing_hours", 0)),
+			"xp": int(DataDB.balance.get("research_assistant_briefing_xp", 0)),
+			"points": GameState.research_briefing_points()})
+		preview.add_child(cost)
+	var button := UiKit.action_button(Text.say("floor_vote.research_button"),
+		refusal, _on_research_briefing)
+	button.name = "ResearchBriefingButton"
+	# A refusal is a sentence, so the button wraps it instead of widening the column.
+	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	button.clip_text = true
+	preview.add_child(button)
+
+
+func _on_research_briefing() -> void:
+	if _voted:
+		return
+	GameState.buy_research_briefing()
+	_show_influence_and_preview()
 
 
 ## A thin gold line between two blocks of information (draft 2026-11-08);
