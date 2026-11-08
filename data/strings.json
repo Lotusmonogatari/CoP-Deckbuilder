@@ -2669,7 +2669,7 @@
   {
     "key": "floor_vote.preview_heading",
     "where": "Floor Vote",
-    "english": "If the vote went each way:",
+    "english": "Vote Projections",
     "placeholders": null,
     "notes": "2026-10-15 Floor Vote preview and influence readiness."
   },
@@ -6543,5 +6543,40 @@
     "english": "Influence Status",
     "placeholders": null,
     "notes": "2026-11-08 Floor Vote draft: influence gate behind a button. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.projection_label",
+    "where": "Floor Vote",
+    "english": "{choice} - Likely {result}",
+    "placeholders": "choice, result",
+    "notes": "2026-11-08 Floor Vote draft: Vote Projections and Influence Status rows. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.projection_passes",
+    "where": "Floor Vote",
+    "english": "Passes",
+    "placeholders": null,
+    "notes": "2026-11-08 Floor Vote draft: Vote Projections and Influence Status rows. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.projection_fails",
+    "where": "Floor Vote",
+    "english": "Fails",
+    "placeholders": null,
+    "notes": "2026-11-08 Floor Vote draft: Vote Projections and Influence Status rows. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.projection_unknown",
+    "where": "Floor Vote",
+    "english": "Black marks the {percent}% of the house whose votes are not yet known.",
+    "placeholders": "percent",
+    "notes": "2026-11-08 Floor Vote draft: Vote Projections and Influence Status rows. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.influence_not_ready_heading",
+    "where": "Floor Vote",
+    "english": "Your influence is not yet strong enough to sway other parties. Still needed:",
+    "placeholders": null,
+    "notes": "2026-11-08 Floor Vote draft: Vote Projections and Influence Status rows. Claude's draft for Cameron."
   }
 ]

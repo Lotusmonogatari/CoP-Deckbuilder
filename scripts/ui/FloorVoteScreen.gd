@@ -35,6 +35,12 @@ var _voted := false
 @onready var _party_row: Control = %PartyRow
 @onready var _bill_text: Label = %BillText
 var _influence_panel: Overlay = null
+
+## Projection bar colours; Unknown is black, beside the Abstain part.
+const PROJECTION_AYE := Color(0.30, 0.62, 0.40)
+const PROJECTION_NAY := Color(0.75, 0.28, 0.28)
+const PROJECTION_ABSTAIN := Color(0.55, 0.55, 0.60)
+const PROJECTION_UNKNOWN := Color(0.0, 0.0, 0.0)
 @onready var _vote_yes: Button = %VoteYes
 @onready var _vote_no: Button = %VoteNo
 @onready var _vote_abstain: Button = %VoteAbstain
@@ -247,29 +253,46 @@ func _show_influence_and_preview() -> void:
 	_build_whip_row(column)
 	column.add_child(_gold_rule())
 
-	var preview := Label.new()
+	# Vote Projections: one bar per choice with a label above it. Part of the
+	# house is shown as Unknown (black) so the exact tally waits for the final
+	# outcome screen (draft 2026-11-08).
+	var preview := VBoxContainer.new()
 	preview.name = "VotePreview"
-	preview.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	var lines: Array[String] = [Text.say("floor_vote.preview_heading")]
+	preview.add_theme_constant_override("separation", 8)
+	var preview_title := Label.new()
+	preview_title.text = Text.say("floor_vote.preview_heading")
+	preview.add_child(preview_title)
 	var labels := _vote_words.duplicate()
+	var unknown_percent := float(DataDB.balance.get("vote_projection_unknown_percent"))
 	engine.set_whips(_whips)
 	for choice: String in labels:
 		var trial := engine.preview(choice)
 		if trial.is_empty():
 			continue
-		var totals: Dictionary = trial.get("totals", {})
-		var result := Text.say("floor_vote.preview_passes" if bool(trial.get("passed", false))
-			else "floor_vote.preview_fails")
-		if bool(trial.get("flipped_by_influence", false)):
-			result += " " + Text.say("floor_vote.preview_flips")
-		lines.append(Text.say("floor_vote.preview_line", {
-			"choice": labels[choice],
-			"yes": totals.get("Yes", 0), "no": totals.get("No", 0),
-			"abstain": totals.get("Abstain", 0), "result": result}))
+		var result := Text.say("floor_vote.projection_passes" if bool(trial.get("passed", false))
+			else "floor_vote.projection_fails")
+		var caption := Label.new()
+		caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		caption.text = Text.say("floor_vote.projection_label",
+			{"choice": labels[choice], "result": result})
 		if _whips > 0:
-			lines[-1] += " " + Text.say("floor_vote.preview_whip",
+			caption.text += " " + Text.say("floor_vote.preview_whip",
 				{"cost": int(_whip_numbers(choice)["unit"]) * _whips})
-	preview.text = "\n".join(lines)
+		preview.add_child(caption)
+		var shown := VoteProjection.split(trial.get("totals", {}), unknown_percent)
+		var bar := PartyVoteBar.new()
+		bar.name = "ProjectionBar"
+		bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var parts: Array[Dictionary] = []
+		for bucket: Array in [["Yes", PROJECTION_AYE], ["No", PROJECTION_NAY],
+				["Abstain", PROJECTION_ABSTAIN], ["Unknown", PROJECTION_UNKNOWN]]:
+			parts.append({"color": bucket[1], "votes": int(shown[bucket[0]]), "label": ""})
+		bar.show_segments(parts)
+		preview.add_child(bar)
+	var legend := Label.new()
+	legend.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	legend.text = Text.say("floor_vote.projection_unknown", {"percent": int(unknown_percent)})
+	preview.add_child(legend)
 	column.add_child(preview)
 
 	if not GameState.stance_lean().is_empty():
@@ -315,9 +338,21 @@ func _open_influence_status() -> void:
 		_influence_panel = Overlay.new()
 		_influence_panel.name = "InfluenceStatusPanel"
 		add_child(_influence_panel)
-	var body := UiKit.line(RequestLines.readiness_text(engine.influence_status()))
-	body.name = "InfluenceStatus"
-	var rows: Array[Control] = [body]
+	var rows: Array[Control] = []
+	var status := engine.influence_status()
+	if bool(status.get("ready", false)):
+		rows.append(UiKit.line(Text.say("floor_vote.influence_ready")))
+	else:
+		rows.append(UiKit.line(Text.say("floor_vote.influence_not_ready_heading")))
+		# Every missing requirement gets its own row; the panel scrolls.
+		var gaps: Array = status.get("missing", [])
+		for gap: Dictionary in gaps:
+			var row := UiKit.line(Text.say("floor_vote.influence_need", {
+				"name": RequestLines.variable_name(str(gap.get("variable", ""))),
+				"have": Phrase.with_separators(int(gap.get("value", 0))),
+				"needed": Phrase.with_separators(int(gap.get("threshold", 0)))}))
+			row.name = "InfluenceNeed"
+			rows.append(row)
 	_influence_panel.open(Text.say("floor_vote.influence_title"), rows)
 
 
