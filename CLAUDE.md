@@ -220,3 +220,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Everyday casework: 26 visitor questions, 8 events, 9 follow-ups (2026-11-08, Cameron)
 - Cameron's visitor update: three names, new pictures (2026-11-08, Cameron)
 - Real Aomori and Hokkaido places in the casework (2026-11-08, Cameron)
+- Real places for the earlier questions and events; places kept apart from the player's district (2026-11-08, Cameron)

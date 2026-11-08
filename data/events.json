@@ -139,7 +139,7 @@
   {
     "event_id": "EV12",
     "title": "A Question About the Street",
-    "flavor": "A shopkeeper stops you outside the station. The road surface has been broken for years, and everyone keeps talking about a faster train but nobody says who pays.",
+    "flavor": "A shopkeeper stops you outside Shin-Hakodate-Hokuto Station. The road surface has been broken for years, and everyone keeps talking about a faster train but nobody says who pays.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -234,7 +234,7 @@
   {
     "event_id": "EV17",
     "title": "A Veteran Writes About the Coast",
-    "flavor": "A veterans' hall secretary writes that the old coastal batteries are being discussed again, and nobody has asked the people who served there.",
+    "flavor": "A veterans' hall secretary writes that the old coastal batteries on Mount Hakodate are being discussed again, and nobody has asked the people who served there.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -272,7 +272,7 @@
   {
     "event_id": "EV19",
     "title": "A Priest Asks About the Old Gate",
-    "flavor": "A temple priest and a shrine caretaker have come together, which almost never happens, to ask about the gate that both their congregations use.",
+    "flavor": "A temple priest and a shrine caretaker from Hirosaki have come together, which almost never happens, to ask about the gate that both their congregations use.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -329,7 +329,7 @@
   {
     "event_id": "EV22",
     "title": "A Hotel Owner Cannot Find Staff",
-    "flavor": "The owner of a small hotel waits at the end of your surgery. Two floors are shut because she cannot hire anyone, and the visitors keep coming.",
+    "flavor": "The owner of a small hotel in Noboribetsu waits at the end of your surgery. Two floors are shut because she cannot hire anyone, and the visitors keep coming.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -405,7 +405,7 @@
   {
     "event_id": "EV26",
     "title": "The Clinic Is Closing on Fridays",
-    "flavor": "A nurse from the village clinic says the doctor now comes only four days a week, and the next clinic is ninety minutes away.",
+    "flavor": "A nurse from the Toyotomi village clinic says the doctor now comes only four days a week, and the next clinic is ninety minutes away.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -424,7 +424,7 @@
   {
     "event_id": "EV27",
     "title": "A Harbor Customs Officer Writes",
-    "flavor": "A letter in careful handwriting: the harbor is short of staff, the paperwork has doubled, and no one in the capital seems to know.",
+    "flavor": "A letter in careful handwriting from Hakodate port: the harbor is short of staff, the paperwork has doubled, and no one in the capital seems to know.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -576,7 +576,7 @@
   {
     "event_id": "EV38",
     "title": "A Dispute Over a Trash Site",
-    "flavor": "Two neighborhoods both refuse the new transfer station. Each wants you to say it should go to the other.",
+    "flavor": "Two neighborhoods in Kitami both refuse the new transfer station. Each wants you to say it should go to the other.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -633,7 +633,7 @@
   {
     "event_id": "EV41",
     "title": "Heavy Snow Closes the Road",
-    "flavor": "Overnight snow has shut the valley road. The village office rings to ask whether anyone in the capital is listening.",
+    "flavor": "Overnight snow has shut the road up to Sukayu in the Hakkōda Mountains. The village office rings to ask whether anyone in the capital is listening.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -654,7 +654,7 @@
   {
     "event_id": "EV42",
     "title": "A Bear Is Seen Near a School",
-    "flavor": "The principal calls at seven in the morning. A bear has been seen at the edge of the school grounds.",
+    "flavor": "The principal of a school in Shari calls at seven in the morning. A bear has been seen at the edge of the school grounds.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -768,7 +768,7 @@
   {
     "event_id": "EV48",
     "title": "Morning Radio Exercises by the Lake",
-    "flavor": "A group of elders has done the same radio exercises on the lake path every morning for decades. The organizer asks whether you would join them for the first set.",
+    "flavor": "A group of elders has done the same radio exercises on the Lake Tōya path every morning for decades. The organizer asks whether you would join them for the first set.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -791,7 +791,7 @@
   {
     "event_id": "EV49",
     "title": "Ainu Cultural Showcase Day at the Lake",
-    "flavor": "The lakeside community is holding its cultural showcase day: songs, dance, embroidery and food. The elders have asked whether you will come.",
+    "flavor": "The Ainu Kotan at Lake Akan is holding its cultural showcase day: songs, dance, embroidery and food. The elders have asked whether you will come.",
     "trigger": "Random",
     "available": "Weekend",
     "hours": 2,
@@ -813,7 +813,7 @@
   {
     "event_id": "EV50",
     "title": "A College Visit to an Ainu Cultural Center",
-    "flavor": "A university student society has invited you to join its field visit to a regional Ainu cultural center. The students will tour the exhibits and meet the staff, and they would like a legislator to come along.",
+    "flavor": "A university student society has invited you to join its field visit to the Ainu cultural center at Shiraoi. The students will tour the exhibits and meet the staff, and they would like a legislator to come along.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 2,
@@ -870,7 +870,7 @@
   {
     "event_id": "EV53",
     "title": "The Fisheries Cooperative Calls a Meeting",
-    "flavor": "The Fisheries Cooperative has called its members to the harbor hall about quotas, prices and the cracked breakwater, and asked you to stand in front of them.",
+    "flavor": "The Fisheries Cooperative has called its members to the Rausu harbor hall about quotas, prices and the cracked breakwater, and asked you to stand in front of them.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -927,7 +927,7 @@
   {
     "event_id": "EV56",
     "title": "The Co-op Invites You to the Harvest",
-    "flavor": "The agricultural cooperative is bringing in the autumn harvest and invites you to spend a few hours in the fields with its members.",
+    "flavor": "The agricultural cooperative in Memuro is bringing in the autumn harvest and invites you to spend a few hours in the fields with its members.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -948,7 +948,7 @@
   {
     "event_id": "EV57",
     "title": "A Workshop Opens on the Shopping Street",
-    "flavor": "A woodcarver and two potters have opened a shared workshop in an empty shop. The Artisans Guild asks you to cut the ribbon.",
+    "flavor": "A woodcarver and two potters have opened a shared workshop in an empty shop on Asahikawa's Heiwa-dori. The Artisans Guild asks you to cut the ribbon.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -967,7 +967,7 @@
   {
     "event_id": "EV58",
     "title": "Commuters Ask You to Ride the Rush-Hour Train",
-    "flavor": "The Commuter Committee dares you to ride the packed rush-hour line from the suburbs with them, standing, before you vote on fares.",
+    "flavor": "The Commuter Committee dares you to ride the packed rush-hour train from Otaru into Sapporo with them, standing, before you vote on fares.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1043,7 +1043,7 @@
   {
     "event_id": "EV62",
     "title": "The Two Neighborhoods Meet",
-    "flavor": "You convened both neighborhood associations in one room, as you said you would. Nobody wants the transfer station, and everyone has come.",
+    "flavor": "You convened both Kitami neighborhood associations in one room, as you said you would. Nobody wants the transfer station, and everyone has come.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 2,
@@ -1062,7 +1062,7 @@
   {
     "event_id": "EV63",
     "title": "The Ministry Replies About the Harbor",
-    "flavor": "The ministry has answered the letter you forwarded: the harbor office will be reviewed, at some point, by someone.",
+    "flavor": "The ministry has answered the letter you forwarded from Hakodate port: the harbor office will be reviewed, at some point, by someone.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1202,7 +1202,7 @@
   {
     "event_id": "EV70",
     "title": "Old Campaign Boards Still Standing",
-    "flavor": "The poster boards from the last campaign are still up on three corners in Chitose, your own face among them, peeling.",
+    "flavor": "The poster boards from your last campaign are still up on three corners, your own face among them, peeling.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1221,7 +1221,7 @@
   {
     "event_id": "EV71",
     "title": "A Supporter's Grandson Is Getting Married",
-    "flavor": "An elder of the Local Kōenkai invites you to her grandson's wedding reception in Hachinohe this weekend.",
+    "flavor": "An elder of the Local Kōenkai invites you to her grandson's wedding reception in Hachinohe, where the bride's family lives.",
     "trigger": "Random",
     "available": "Weekend",
     "hours": 2,

@@ -4,7 +4,7 @@
     "visitor_ids": [
       "VI01"
     ],
-    "question_text": "The streetlight on our corner has been out since spring. Can you help?",
+    "question_text": "The streetlight on our corner in Kotoni has been out since spring. Can you help?",
     "choice_a": "Let me call the ward office right now.",
     "choice_b": "Have you tried calling the city?",
     "choice_c": "It's probably just the bulb.",
@@ -79,7 +79,7 @@
       "VI01",
       "VI18"
     ],
-    "question_text": "Who is going to shovel the sidewalks for the elderly this winter?",
+    "question_text": "Who is going to shovel the Kotoni sidewalks for the elderly this winter?",
     "choice_a": "Everyone shovels their own, that's the rule.",
     "choice_b": "Let's set up a volunteer group with city support.",
     "choice_c": "They can stay inside until spring.",
@@ -148,7 +148,7 @@
       "VI01",
       "VI07"
     ],
-    "question_text": "Can we get a crosswalk and a crossing guard near the elementary school?",
+    "question_text": "Can we get a crosswalk and a crossing guard near the elementary school in Kotoni?",
     "choice_a": "Traffic studies take time.",
     "choice_b": "Parents should walk the kids themselves.",
     "choice_c": "I'll push for both, starting this month.",
@@ -222,7 +222,7 @@
     "visitor_ids": [
       "VI02"
     ],
-    "question_text": "Russian patrol boats keep shadowing our boats. Will you stand with the fleet?",
+    "question_text": "Russian patrol boats keep shadowing our Rausu boats. Will you stand with the fleet?",
     "choice_a": "Diplomats should handle it before it escalates.",
     "choice_b": "Avoid the disputed waters until it calms down.",
     "choice_c": "I'll ask the ministry what's really happening.",
@@ -384,7 +384,7 @@
       "VI02",
       "VI12"
     ],
-    "question_text": "Our harbor is silting up. Will you carry the dredging request to the capital?",
+    "question_text": "Rausu harbor is silting up. Will you carry the dredging request to the capital?",
     "choice_a": "Dredging is costly; we need a cost study first.",
     "choice_b": "I'll carry it there and keep asking.",
     "choice_c": "Use the larger harbor down the coast meanwhile.",
@@ -1883,7 +1883,7 @@
     "visitor_ids": [
       "VI09"
     ],
-    "question_text": "When do we get more train cars on the morning line?",
+    "question_text": "When do we get more train cars on the morning line into Sapporo?",
     "choice_a": "Packed trains mean the line is a success.",
     "choice_b": "The bus is a good alternative for now.",
     "choice_c": "Staggered hours would ease the crush.",
@@ -1958,7 +1958,7 @@
       "VI09",
       "VI17"
     ],
-    "question_text": "Will you push for a faster rail link to the airport?",
+    "question_text": "Will you push for a faster rail link to New Chitose Airport?",
     "choice_a": "Yes, everyone benefits from a faster link.",
     "choice_b": "It's too expensive for the benefit.",
     "choice_c": "Improve the airport bus first.",
@@ -2195,7 +2195,7 @@
     "visitor_ids": [
       "VI10"
     ],
-    "question_text": "Will you join us for the next shrine festival?",
+    "question_text": "Will you join us for the next Esashi shrine festival?",
     "choice_a": "I'm not religious, but I'll send my respects.",
     "choice_b": "I'm away that week, but my staff can come.",
     "choice_c": "Yes, if my schedule allows on the day.",
@@ -2596,7 +2596,7 @@
     "visitor_ids": [
       "VI13"
     ],
-    "question_text": "Our shopping arcade is half empty. What would you do?",
+    "question_text": "Our shopping arcade off Asahikawa's Heiwa-dori is half empty. What would you do?",
     "choice_a": "Fill it with events and lower the rents.",
     "choice_b": "Let it adapt to what shoppers want now.",
     "choice_c": "Turn part of it into parking to draw shoppers.",
@@ -3245,7 +3245,7 @@
     "visitor_ids": [
       "VI17"
     ],
-    "question_text": "Seasonal staff are hard to find. Any ideas?",
+    "question_text": "Seasonal staff for the Furano slopes are hard to find. Any ideas?",
     "choice_a": "Pay them more to compete with the cities.",
     "choice_b": "Train local young people for the season.",
     "choice_c": "Streamline seasonal worker rules and housing.",
@@ -3407,7 +3407,7 @@
     "visitor_ids": [
       "VI19"
     ],
-    "question_text": "Would you cross with me on the night ferry to see the delays yourself?",
+    "question_text": "Would you cross with me on the night ferry from Ōma to Hakodate to see the delays yourself?",
     "choice_a": "The delay reports tell me enough.",
     "choice_b": "Yes, if there's a cabin for the night.",
     "choice_c": "I get seasick, but I'll try once.",
@@ -7425,7 +7425,7 @@
     "visitor_ids": [
       "VI40"
     ],
-    "question_text": "A logging truck rolled through the nesting grounds again. Who can stop it?",
+    "question_text": "A logging truck rolled through the nesting grounds below Daisetsuzan again. Who can stop it?",
     "choice_a": "I'll ask the prefecture for a seasonal road closure.",
     "choice_b": "The trucks need a route; reroute them.",
     "choice_c": "Send me a written report and photos.",
@@ -7507,7 +7507,7 @@
     "visitor_ids": [
       "VI40"
     ],
-    "question_text": "We have four rangers for a mountain range. Can protection really work?",
+    "question_text": "We have four rangers for the whole Daisetsuzan range. Can protection really work?",
     "choice_a": "Volunteers can fill in.",
     "choice_b": "Let's cost a proper ranger roster together.",
     "choice_c": "Cameras will do the job.",
@@ -7583,7 +7583,7 @@
     "visitor_ids": [
       "VI41"
     ],
-    "question_text": "I drive ninety minutes to reach the nearest surgeon. Would a regional hospital network change that?",
+    "question_text": "From Shakotan I drive ninety minutes to reach the nearest surgeon. Would a regional hospital network change that?",
     "choice_a": "Villages are hard to serve; tele-health helps most.",
     "choice_b": "It would put surgery within an hour; here's how.",
     "choice_c": "A regional hospital may cost too much to run.",
@@ -8657,7 +8657,7 @@
     "visitor_ids": [
       "VI48"
     ],
-    "question_text": "The yard has orders for two years. What happens after that?",
+    "question_text": "The Hakodate dock has orders for two years. What happens after that?",
     "choice_a": "Guaranteed orders and civilian retraining for the yard.",
     "choice_b": "Wait and see what the next budget brings.",
     "choice_c": "Shipbuilding is shrinking; plan for other trades.",
@@ -8957,7 +8957,7 @@
     "visitor_ids": [
       "VI50"
     ],
-    "question_text": "Our queue at the port runs three hours. Will joint checks help?",
+    "question_text": "Our queue at Hakodate port runs three hours. Will joint checks help?",
     "choice_a": "Fewer inspections for trusted shippers.",
     "choice_b": "The queues are the price of careful checks.",
     "choice_c": "Shared screening can halve it without dropping checks.",
@@ -9419,7 +9419,7 @@
     "visitor_ids": [
       "VI53"
     ],
-    "question_text": "I want to take over my father's farm, but the land costs too much. Help?",
+    "question_text": "I want to take over my father's farm in Tokachi, but the land costs too much. Help?",
     "choice_a": "A bank loan, with the farm as security.",
     "choice_b": "A succession grant and a lower inheritance burden.",
     "choice_c": "Farm part-time while you build savings.",
@@ -10027,7 +10027,7 @@
     "visitor_ids": [
       "VI57"
     ],
-    "question_text": "We have had thefts on the platform. Are cameras the answer?",
+    "question_text": "We have had thefts on the platform at Aomori Station. Are cameras the answer?",
     "choice_a": "Cameras across the whole station.",
     "choice_b": "Cameras where crime happens, with storage limits.",
     "choice_c": "Hire more guards instead of cameras.",
@@ -10179,7 +10179,7 @@
     "visitor_ids": [
       "VI58"
     ],
-    "question_text": "If our village merges, who answers the phone at the office?",
+    "question_text": "If Nishimeya merges, who answers the phone at the village office?",
     "choice_a": "A shared call center in the big town.",
     "choice_b": "An online service portal, open around the clock.",
     "choice_c": "A local service desk stays open in every village.",
@@ -10263,7 +10263,7 @@
     "visitor_ids": [
       "VI58"
     ],
-    "question_text": "Our festival is run by the town office. Will it survive a merger?",
+    "question_text": "Our festival in Nishimeya is run by the village office. Will it survive a merger?",
     "choice_a": "Festivals may need sponsors after a merger.",
     "choice_b": "Combine the festivals into one bigger event.",
     "choice_c": "Let each village fund its own festival.",
@@ -12326,7 +12326,7 @@
     "visitor_ids": [
       "VI71"
     ],
-    "question_text": "A dry summer is coming. Will you help with irrigation?",
+    "question_text": "A dry summer is coming to the Tokachi plain. Will you help with irrigation?",
     "choice_a": "Yes, I'll find money for shared irrigation.",
     "choice_b": "Farmers should insure against drought.",
     "choice_c": "I'll ask the ministry for a drought report.",
@@ -12416,7 +12416,7 @@
     "visitor_ids": [
       "VI72"
     ],
-    "question_text": "Rent near campus is climbing. Will you act?",
+    "question_text": "Rent near the Hirosaki campus is climbing. Will you act?",
     "choice_a": "Yes. I'll push for student housing.",
     "choice_b": "Landlords have rights; more supply will help.",
     "choice_c": "I'll look at what other cities do.",
@@ -12751,7 +12751,7 @@
     "visitor_ids": [
       "VI74"
     ],
-    "question_text": "Our youngest apprentice is leaving. Can you help us keep craft alive?",
+    "question_text": "Our youngest Tsugaru lacquer apprentice is leaving. Can you help us keep craft alive?",
     "choice_a": "Yes. I will back apprenticeship stipends.",
     "choice_b": "Crafts should compete like any business.",
     "choice_c": "I will ask the arts office what exists.",
@@ -13103,7 +13103,7 @@
     "visitor_ids": [
       "VI76"
     ],
-    "question_text": "The festival route is being rezoned. Will you protect it?",
+    "question_text": "The Sapporo Festival route is being rezoned. Will you protect it?",
     "choice_a": "Yes. The route is part of the town.",
     "choice_b": "The rezoning brings jobs the town needs.",
     "choice_c": "I'll ask the city to consult everyone.",
@@ -13455,7 +13455,7 @@
     "visitor_ids": [
       "VI78"
     ],
-    "question_text": "Our buses run half empty and then packed. Will you act?",
+    "question_text": "Our Sapporo buses run half empty and then packed. Will you act?",
     "choice_a": "Yes. Let ridership data decide the routes.",
     "choice_b": "Rural routes need the money more.",
     "choice_c": "I'll ask for a service review.",
@@ -13631,7 +13631,7 @@
     "visitor_ids": [
       "VI79"
     ],
-    "question_text": "Only a few elders speak our language fluently. Will you help record them?",
+    "question_text": "Only a few elders in Biratori speak our language fluently. Will you help record them?",
     "choice_a": "Yes. Their voices must be kept.",
     "choice_b": "Languages fade as societies change.",
     "choice_c": "I will ask what recording costs.",
@@ -13719,7 +13719,7 @@
     "visitor_ids": [
       "VI79"
     ],
-    "question_text": "Children want to learn our language at school. Will you fund teachers?",
+    "question_text": "Children in Shiraoi want to learn our language at school. Will you fund teachers?",
     "choice_a": "Yes. Children should hear it in class.",
     "choice_b": "Schools have enough subjects.",
     "choice_c": "I will ask the ministry about training.",
@@ -13807,7 +13807,7 @@
     "visitor_ids": [
       "VI80"
     ],
-    "question_text": "The last bus leaves at noon. How will people reach town?",
+    "question_text": "The last bus out of Ashoro leaves at noon. How will people reach town?",
     "choice_a": "I'll fight for a regular rural service.",
     "choice_b": "Cities need transit money more.",
     "choice_c": "I'll ask for a passenger count.",
@@ -13896,7 +13896,7 @@
     "visitor_ids": [
       "VI80"
     ],
-    "question_text": "Young families could move here with help. Will you back grants?",
+    "question_text": "Young families could move to Ashoro with help. Will you back grants?",
     "choice_a": "Yes. Grants can fill empty houses.",
     "choice_b": "Grants are a waste.",
     "choice_c": "I will look at a small pilot.",
@@ -13984,7 +13984,7 @@
     "visitor_ids": [
       "VI01"
     ],
-    "question_text": "The community hall roof leaks. Will you help us repair it?",
+    "question_text": "The Kotoni community hall roof leaks. Will you help us repair it?",
     "choice_a": "Yes. I will find a repair grant.",
     "choice_b": "Charge the hall's users for repairs.",
     "choice_c": "I will ask what grants exist.",
@@ -14240,7 +14240,7 @@
     "visitor_ids": [
       "VI02"
     ],
-    "question_text": "Seals are eating the catch. What can the fleet do?",
+    "question_text": "Seals are eating the catch off Shiretoko. What can the fleet do?",
     "choice_a": "I'll back a study and fair compensation.",
     "choice_b": "Seal numbers rise and fall on their own.",
     "choice_c": "I'll ask the ministry for data.",
@@ -14737,7 +14737,7 @@
     "visitor_ids": [
       "VI04"
     ],
-    "question_text": "The factory is cutting night shifts. Will you speak up?",
+    "question_text": "The Muroran steelworks is cutting night shifts. Will you speak up?",
     "choice_a": "Yes. Workers deserve fair notice.",
     "choice_b": "Companies must manage costs to survive.",
     "choice_c": "I'll ask the owners to meet the union.",
@@ -14913,7 +14913,7 @@
     "visitor_ids": [
       "VI04"
     ],
-    "question_text": "A safety inspector was removed from our plant. Will you ask why?",
+    "question_text": "A safety inspector was removed from our plant in Muroran. Will you ask why?",
     "choice_a": "Yes. Safety can't be a budget line.",
     "choice_b": "Inspections cost money; I'd want the reason first.",
     "choice_c": "I'll write to the ministry and ask.",
@@ -15001,7 +15001,7 @@
     "visitor_ids": [
       "VI05"
     ],
-    "question_text": "The milk truck cannot reach us in winter. Can the road be cleared?",
+    "question_text": "The milk truck cannot reach us in Betsukai in winter. Can the road be cleared?",
     "choice_a": "Yes. I'll push for winter road priority.",
     "choice_b": "Farms should prepare for winter closures.",
     "choice_c": "I'll ask the prefecture about the plow schedule.",
@@ -15520,7 +15520,7 @@
     "visitor_ids": [
       "VI07"
     ],
-    "question_text": "The playground equipment is broken. Who fixes it?",
+    "question_text": "The playground equipment in our Ebetsu park is broken. Who fixes it?",
     "choice_a": "I'll get the ward to fix it.",
     "choice_b": "Parents could fundraise with ward matching.",
     "choice_c": "I'll report it to the city's parks office.",
@@ -15855,7 +15855,7 @@
     "visitor_ids": [
       "VI08"
     ],
-    "question_text": "The wood supply for carvers is shrinking. Can you help?",
+    "question_text": "The wood supply for the carvers at Lake Akan is shrinking. Can you help?",
     "choice_a": "Yes. I'll ask for a managed wood supply.",
     "choice_b": "Import carving wood to cover the shortage.",
     "choice_c": "I'll ask the forest office what's possible.",
@@ -15945,7 +15945,7 @@
     "visitor_ids": [
       "VI08"
     ],
-    "question_text": "Would you visit the workshop and hear how we work?",
+    "question_text": "Would you visit our workshop at Lake Akan and hear how we work?",
     "choice_a": "Gladly. Name a day.",
     "choice_b": "Send a staff member.",
     "choice_c": "I will try to make time.",
@@ -16286,7 +16286,7 @@
     "visitor_ids": [
       "VI10"
     ],
-    "question_text": "The shrine roof needs repair and the donations are thin. Can you help?",
+    "question_text": "Our shrine roof in Esashi needs repair and the donations are thin. Can you help?",
     "choice_a": "I will look for a heritage restoration grant.",
     "choice_b": "It should rely on its own funds.",
     "choice_c": "I will ask the culture office.",
@@ -16454,7 +16454,7 @@
     "visitor_ids": [
       "VI10"
     ],
-    "question_text": "Volunteers to carry the festival shrine are growing old. Any ideas?",
+    "question_text": "The men who carry the Esashi festival shrine are growing old. Any ideas?",
     "choice_a": "Let me help recruit young volunteers.",
     "choice_b": "Hire a professional crew to carry it.",
     "choice_c": "I'll mention it to the local schools.",
@@ -16694,7 +16694,7 @@
     "visitor_ids": [
       "VI11"
     ],
-    "question_text": "Our cold climate cuts data center costs. Will you back that story?",
+    "question_text": "The cold around Ishikari cuts data center costs. Will you back that story?",
     "choice_a": "Yes. I will tell it everywhere.",
     "choice_b": "Data centers use too much power.",
     "choice_c": "I will ask for a study.",
@@ -16778,7 +16778,7 @@
     "visitor_ids": [
       "VI12"
     ],
-    "question_text": "The town office roof is falling apart and we have no funds. Help?",
+    "question_text": "The Shimokawa town office roof is falling apart and we have no funds. Help?",
     "choice_a": "I'll fight for a small-town building fund.",
     "choice_b": "Merging with a neighbor town would share costs.",
     "choice_c": "I'll look for an existing repair fund.",
@@ -17036,7 +17036,7 @@
     "visitor_ids": [
       "VI13"
     ],
-    "question_text": "Rent on my shop doubled. What should I do?",
+    "question_text": "Rent on my Asahikawa shop doubled. What should I do?",
     "choice_a": "I'll back rent support for small shops.",
     "choice_b": "Landlords set rents; look for a cheaper unit.",
     "choice_c": "I'll talk to the landlord association.",
@@ -17785,7 +17785,7 @@
     "visitor_ids": [
       "VI81"
     ],
-    "question_text": "Our festival is ninety years old and half the float pullers are over seventy. How do we keep it alive?",
+    "question_text": "Hirosaki's Neputa festival is ninety years old on our street and half the float pullers are over seventy. How do we keep it alive?",
     "choice_a": "Pair every elder with a student on a posted roster.",
     "choice_b": "Hire a company to run the heavy work.",
     "choice_c": "Shorten it to one day so fewer are needed.",
@@ -17869,7 +17869,7 @@
     "visitor_ids": [
       "VI81"
     ],
-    "question_text": "The festival costs a hundred and twenty thousand yen in permits and insurance. The town office wants proof it helps everyone.",
+    "question_text": "Our Neputa float costs a hundred and twenty thousand yen in permits and insurance. The Hirosaki office wants proof it helps everyone.",
     "choice_a": "Cut the insurance and accept some risk.",
     "choice_b": "Ask the town to treat it as community safety.",
     "choice_c": "Charge every stall a small fee.",
@@ -17953,7 +17953,7 @@
     "visitor_ids": [
       "VI82"
     ],
-    "question_text": "The roof of our shrine hall leaks and the carpenters who know the old joints are dying out. Who pays?",
+    "question_text": "The roof of the hall at Takayama Inari Shrine leaks and the carpenters who know the old joints are dying out. Who pays?",
     "choice_a": "Use a tarp until the next budget year.",
     "choice_b": "Shrines should fund repairs from their own supporters.",
     "choice_c": "Seek cultural-property listing and a restoration grant.",
@@ -18037,7 +18037,7 @@
     "visitor_ids": [
       "VI82"
     ],
-    "question_text": "Thousands come for photos and leave no offering. Some climb the sacred stones.",
+    "question_text": "Thousands come to Takayama Inari for photos of the gates and leave no offering. Some climb the sacred stones.",
     "choice_a": "Close the grounds to tourists on weekends.",
     "choice_b": "Fence the stones and charge an entry fee.",
     "choice_c": "Leave it; visitors usually learn on their own.",
@@ -18109,7 +18109,7 @@
     "visitor_ids": [
       "VI83"
     ],
-    "question_text": "Nineteen houses on one road are empty. Nobody pays property tax on a house nobody owns.",
+    "question_text": "Nineteen houses on one road in Yūbari are empty. Nobody pays property tax on a house nobody owns.",
     "choice_a": "Fund a vacant-house registry and cheap homes for newcomers.",
     "choice_b": "Demolish the worst ones at public cost.",
     "choice_c": "Tax owners of empty homes more heavily.",
@@ -18189,7 +18189,7 @@
     "visitor_ids": [
       "VI83"
     ],
-    "question_text": "Our garbage truck now costs more than the festival budget. Should we cut collection days?",
+    "question_text": "Yūbari's garbage truck now costs more than the festival budget. Should we cut collection days?",
     "choice_a": "Charge festival organizers for their cleanup.",
     "choice_b": "Shared drop-off points with a small, open fee.",
     "choice_c": "Cut collection to once a week.",
@@ -18265,7 +18265,7 @@
     "visitor_ids": [
       "VI84"
     ],
-    "question_text": "Snow closes our only road for days. The plow contract is up and nobody wants to bid for forty houses.",
+    "question_text": "Snow closes the only road into Imabetsu for days. The plow contract is up and nobody wants to bid for forty houses.",
     "choice_a": "Organize a village rota to clear the road.",
     "choice_b": "Snow clearing is the town's responsibility.",
     "choice_c": "Back a regional snow pool with shared equipment.",
@@ -18337,7 +18337,7 @@
     "visitor_ids": [
       "VI84"
     ],
-    "question_text": "The school in our valley has three pupils. The town talks of closing it.",
+    "question_text": "The school in our Imabetsu valley has three pupils. The town talks of closing it.",
     "choice_a": "Close it and bus the children to town.",
     "choice_b": "Keep it open as it is for now.",
     "choice_c": "Help families move to where schools are larger.",
@@ -18421,7 +18421,7 @@
     "visitor_ids": [
       "VI85"
     ],
-    "question_text": "A black bear came through my orchard twice this month and ate a week of harvest. What now?",
+    "question_text": "A black bear came through my orchard in Itayanagi twice this month and ate a week of harvest. What now?",
     "choice_a": "Fund fencing, a response team and fair compensation.",
     "choice_b": "Allow licensed hunters to cull problem bears.",
     "choice_c": "Help farmers harvest earlier in bear season.",
@@ -18485,7 +18485,7 @@
     "visitor_ids": [
       "VI85"
     ],
-    "question_text": "Everyone wants to visit in picking season but nobody wants to pick. The labor is gone.",
+    "question_text": "Everyone wants to visit Itayanagi in picking season but nobody wants to pick. The labor is gone.",
     "choice_a": "Leave the late fruit; it isn't worth the cost.",
     "choice_b": "Back a farm-stay worker program with housing and rules.",
     "choice_c": "Raise prices so farms can pay pickers more.",
@@ -18549,7 +18549,7 @@
     "visitor_ids": [
       "VI86"
     ],
-    "question_text": "Bears are coming along the school path in autumn. Our club has eleven members, nine over sixty.",
+    "question_text": "Bears are coming along the school path in Shari in autumn. Our club has eleven members, nine over sixty.",
     "choice_a": "Ban hunting near towns for safety.",
     "choice_b": "Leave it to the police to respond.",
     "choice_c": "Create a paid, trained response unit with the prefecture.",
@@ -18693,13 +18693,13 @@
     "visitor_ids": [
       "VI87"
     ],
-    "question_text": "Our onsen town is empty on weekdays and jammed at New Year. How do we spread the visitors?",
-    "choice_a": "Fund an off-peak campaign across the onsen district.",
+    "question_text": "Noboribetsu is empty on weekdays and jammed at New Year. How do we spread the visitors?",
+    "choice_a": "Fund an off-peak campaign across the onsen town.",
     "choice_b": "Raise prices at New Year to spread demand.",
     "choice_c": "Let inns close on quiet weekdays to save costs.",
     "choice_d": "Leave it to the inns to sort out.",
     "correct_choice": "A",
-    "response_right": "Mid-week stays across the district. That would help every inn.",
+    "response_right": "Mid-week stays across the whole town. That would help every inn.",
     "response_wrong": "Guests will stay home.",
     "reaction_right": "Taps the table.",
     "reaction_wrong": "Hmms.",
@@ -18747,7 +18747,7 @@
     "commitment_b": null,
     "commitment_c": null,
     "commitment_d": null,
-    "response_a": "Mid-week stays across the district. That would help every inn.",
+    "response_a": "Mid-week stays across the whole town. That would help every inn.",
     "response_b": "Guests will stay home.",
     "response_c": "Then the cooks lose their jobs.",
     "response_d": "The books say that is how we close.",
@@ -18765,7 +18765,7 @@
     "visitor_ids": [
       "VI87"
     ],
-    "question_text": "The hot spring water table drops each year. The larger inns want more wells.",
+    "question_text": "The Noboribetsu hot spring water table drops each year. The larger inns want more wells.",
     "choice_a": "Wait; the water table may recover.",
     "choice_b": "Back a shared water plan and cap new wells.",
     "choice_c": "Let the market price the water.",
@@ -18826,7 +18826,7 @@
     "response_a": "Refill from where?",
     "response_b": "A plan on paper, with every inn signing it.",
     "response_c": "The market does not own the spring.",
-    "response_d": "That is the end of the district.",
+    "response_d": "That is the end of the town.",
     "reaction_a": "Lowers voice.",
     "reaction_b": "Relaxes.",
     "reaction_c": "Frowns.",
@@ -18841,7 +18841,7 @@
     "visitor_ids": [
       "VI88"
     ],
-    "question_text": "Overseas skiers are discovering our powder. How do we welcome more without wrecking the village?",
+    "question_text": "Overseas skiers are discovering the Niseko powder. How do we welcome more without wrecking the village?",
     "choice_a": "Keep quiet about it and grow slowly.",
     "choice_b": "Let an outside operator invest in the slope.",
     "choice_c": "Back a village-run board and cap new lodging.",
@@ -18929,7 +18929,7 @@
     "visitor_ids": [
       "VI88"
     ],
-    "question_text": "My own staff cannot afford to rent in the village anymore.",
+    "question_text": "My own staff cannot afford to rent in Niseko anymore.",
     "choice_a": "Pay staff more to keep up with rents.",
     "choice_b": "Let them commute from the next town.",
     "choice_c": "Rents follow demand; the market will settle.",
@@ -19001,7 +19001,7 @@
     "visitor_ids": [
       "VI89"
     ],
-    "question_text": "Hikers use our trails but rescue costs fall on the village. Only one hut remains open.",
+    "question_text": "Hikers use the Daisetsuzan trails but rescue costs fall on the village. Only one hut remains open.",
     "choice_a": "Back a visitor fee for trails, huts and rescue.",
     "choice_b": "Close the riskiest trails to cut rescues.",
     "choice_c": "Put up warning signs at every trailhead.",
@@ -19145,7 +19145,7 @@
     "visitor_ids": [
       "VI90"
     ],
-    "question_text": "Litter and toilet waste pile up at the scenic lake. Our budget is the same as twenty years ago.",
+    "question_text": "Litter and toilet waste pile up at Lake Shikotsu. Our budget is the same as twenty years ago.",
     "choice_a": "Fine visitors who leave litter behind.",
     "choice_b": "Put up signs and trust visitors to improve.",
     "choice_c": "Support a visitor-funded park fund and peak-season rangers.",
@@ -19217,7 +19217,7 @@
     "visitor_ids": [
       "VI90"
     ],
-    "question_text": "Our scenic drive is lovely in autumn and unknown the rest of the year.",
+    "question_text": "The drive around Lake Shikotsu is lovely in autumn and unknown the rest of the year.",
     "choice_a": "Advertise heavily in autumn, when it's best.",
     "choice_b": "Keep it quiet; it suits the locals.",
     "choice_c": "Add parking and viewpoints for more visitors.",
@@ -19289,7 +19289,7 @@
     "visitor_ids": [
       "VI91"
     ],
-    "question_text": "Our scallop stall had a line of three hundred last year, then half the stalls were fined over a license mix-up.",
+    "question_text": "Our Mutsu Bay scallop stall had a line of three hundred last year, then half the stalls were fined over a license mix-up.",
     "choice_a": "Push for one festival license for every stall.",
     "choice_b": "The rules apply to everyone; I won't make exceptions.",
     "choice_c": "Limit the festival to stalls with full licenses.",
@@ -19445,7 +19445,7 @@
     "visitor_ids": [
       "VI92"
     ],
-    "question_text": "I run three plows. The town pays a flat rate and the snow does not follow the budget.",
+    "question_text": "I run three plows in Aomori City. The city pays a flat rate and the snow does not follow the budget.",
     "choice_a": "Ask villages to share the extra costs.",
     "choice_b": "Bring in a larger contractor from the city.",
     "choice_c": "Back per-storm payment with a heavy-winter reserve.",
@@ -19593,7 +19593,7 @@
     "visitor_ids": [
       "VI93"
     ],
-    "question_text": "Last term a bear stood outside our school gate. The children now walk in a group with a bell, which is not a plan.",
+    "question_text": "Last term a bear stood outside the school gate in Teshikaga. The children now walk in a group with a bell, which is not a plan.",
     "choice_a": "Fund detection cameras, an alert system and a safe path.",
     "choice_b": "Give every child a bell and a whistle.",
     "choice_c": "Close the path and reroute the walk to school.",
@@ -19665,7 +19665,7 @@
     "visitor_ids": [
       "VI93"
     ],
-    "question_text": "The old school building could be a community hall but the town wants to sell it.",
+    "question_text": "The old Teshikaga school building could be a community hall but the town wants to sell it.",
     "choice_a": "Keep it closed until someone has a plan.",
     "choice_b": "Help a community trust take it over.",
     "choice_c": "Sell it and spend the money on the town.",
@@ -19745,7 +19745,7 @@
     "visitor_ids": [
       "VI94"
     ],
-    "question_text": "I went to my home village from Sapporo to work remotely. My neighbors think I am on vacation. What can be done about this?",
+    "question_text": "I came home to Kamishihoro from Sapporo to work remotely. My neighbors think I am on vacation. What can be done about this?",
     "choice_a": "Offer incentives to firms with remote staff.",
     "choice_b": "Explain remote work at the next village meeting.",
     "choice_c": "Back coworking space in empty houses and a welcome contact.",
@@ -19897,7 +19897,7 @@
     "visitor_ids": [
       "VI95"
     ],
-    "question_text": "The combine is ready and the hands are not. Half my neighbors are over seventy.",
+    "question_text": "The combine is ready in Iwamizawa and the hands are not. Half my neighbors are over seventy.",
     "choice_a": "Back a shared harvest crew with prefecture-paid training.",
     "choice_b": "Raise the rice price so farms can hire.",
     "choice_c": "Invite young people back for the harvest weeks.",
@@ -20041,7 +20041,7 @@
     "visitor_ids": [
       "VI96"
     ],
-    "question_text": "Imported potatoes undercut me by a third. Supermarkets want a cheaper price every year.",
+    "question_text": "Imported potatoes undercut my Memuro crop by a third. Supermarkets want a cheaper price every year.",
     "choice_a": "Help growers diversify into higher-value crops.",
     "choice_b": "Raise tariffs to protect local potatoes.",
     "choice_c": "Support local-supply contracts with a fair minimum price.",
@@ -20189,7 +20189,7 @@
     "visitor_ids": [
       "VI97"
     ],
-    "question_text": "A small brewery pays the same excise paperwork as a large one. We are four people.",
+    "question_text": "A small Hachinohe brewery pays the same excise paperwork as a large one. We are four people.",
     "choice_a": "Support simpler filing for small breweries.",
     "choice_b": "Keep the paperwork; it protects tax revenue.",
     "choice_c": "Share an accountant with other small brewers.",
@@ -20333,7 +20333,7 @@
     "visitor_ids": [
       "VI98"
     ],
-    "question_text": "The salmon run has halved in ten years. The hatchery says it needs a new tank.",
+    "question_text": "The salmon run at Shari has halved in ten years. The hatchery says it needs a new tank.",
     "choice_a": "Let the run recover naturally for a few years.",
     "choice_b": "Stock the river with salmon from other hatcheries.",
     "choice_c": "Fund the hatchery tank with monitoring and a catch review.",
@@ -20785,7 +20785,7 @@
     "visitor_ids": [
       "VI101"
     ],
-    "question_text": "The market's stall fees went up and half the older vendors quit.",
+    "question_text": "The Furano market's stall fees went up and half the older vendors quit.",
     "choice_a": "Support tiered fees that favor small local vendors.",
     "choice_b": "Raise fees to pay for better facilities.",
     "choice_c": "Hand the market to a private operator.",
@@ -20933,7 +20933,7 @@
     "visitor_ids": [
       "VI102"
     ],
-    "question_text": "I am eighty-four and I have no one to take the farm. The family wants to sell.",
+    "question_text": "I am eighty-four, farming in Goshogawara, and I have no one to take the farm. The family wants to sell.",
     "choice_a": "Talk with the family about who might take over.",
     "choice_b": "Lease the land until a successor appears.",
     "choice_c": "Support a succession matching program and a retirement fund.",
@@ -21077,7 +21077,7 @@
     "visitor_ids": [
       "VI103"
     ],
-    "question_text": "The snow festival's sculpture budget is half what it was. I have six blocks of ice and two assistants.",
+    "question_text": "The Sapporo Snow Festival's sculpture budget is half what it was. I have six blocks of ice and two assistants.",
     "choice_a": "Support a small arts grant and a sponsor.",
     "choice_b": "Cancel the sculptures to save the money.",
     "choice_c": "Ask local volunteers to help carve.",
@@ -21221,7 +21221,7 @@
     "visitor_ids": [
       "VI104"
     ],
-    "question_text": "Hauling snow for the festival costs more than the sculptures. Who should pay?",
+    "question_text": "Hauling snow for the Sapporo Snow Festival costs more than the sculptures. Who should pay?",
     "choice_a": "Use less snow and smaller sculptures.",
     "choice_b": "Ask local firms to donate trucks and drivers.",
     "choice_c": "Support a shared prefectural snow-hauling fund.",
@@ -21365,7 +21365,7 @@
     "visitor_ids": [
       "VI105"
     ],
-    "question_text": "Three of my patients were hurt shoveling this winter. All of them are over seventy-five.",
+    "question_text": "Three of my patients in Nishiokoppe were hurt shoveling this winter. All of them are over seventy-five.",
     "choice_a": "Support paid neighbors to shovel for elderly residents.",
     "choice_b": "Encourage them to hire snow contractors.",
     "choice_c": "Advise them to stop shoveling and call for help.",
@@ -21501,7 +21501,7 @@
     "visitor_ids": [
       "VI106"
     ],
-    "question_text": "The lake ice is thinner each year. Tourists rent holes by the hour, and some walk out too far.",
+    "question_text": "The ice on Lake Abashiri is thinner each year. Tourists rent holes by the hour, and some walk out too far.",
     "choice_a": "Post warnings and let tourists choose.",
     "choice_b": "Raise rental prices to fund safety checks.",
     "choice_c": "Support guide certification and daily ice reports.",
@@ -21653,7 +21653,7 @@
     "visitor_ids": [
       "VI107"
     ],
-    "question_text": "The valley bus runs three times a day and ice delays all of them.",
+    "question_text": "The valley bus to Sōunkyō runs three times a day and ice delays all of them.",
     "choice_a": "Fund a winter plow dedicated to bus routes.",
     "choice_b": "Cut the route to what runs reliably.",
     "choice_c": "Raise fares to pay for winter service.",
@@ -21809,7 +21809,7 @@
     "visitor_ids": [
       "VI108"
     ],
-    "question_text": "Seasonal instructors cannot find rooms. The resort wants a full season of work with no housing.",
+    "question_text": "Seasonal instructors cannot find rooms in Niseko. The resort wants a full season of work with no housing.",
     "choice_a": "Help instructors find rooms in the next town.",
     "choice_b": "Hire instructors from abroad who bring housing deals.",
     "choice_c": "Support instructor housing built with the resort and village.",
@@ -21949,7 +21949,7 @@
     "visitor_ids": [
       "VI109"
     ],
-    "question_text": "Fuel prices doubled and the old boiler is the largest cost in my hotel.",
+    "question_text": "Fuel prices doubled and the old boiler is the largest cost in my Jōzankei hotel.",
     "choice_a": "Support low-interest loans for renewable heating.",
     "choice_b": "Raise room prices to cover the fuel.",
     "choice_c": "Switch to electric heaters this winter.",
@@ -22089,7 +22089,7 @@
     "visitor_ids": [
       "VI110"
     ],
-    "question_text": "The drift ice arrives later and leaves earlier each year. My season has shrunk by a month.",
+    "question_text": "The drift ice reaches Abashiri later and leaves earlier each year. My season has shrunk by a month.",
     "choice_a": "Cut winter tours to the weeks the ice is sure.",
     "choice_b": "Add summer coastal cruises to the business.",
     "choice_c": "Support a shoulder-season package with the tourism board.",
@@ -22165,7 +22165,7 @@
     "visitor_ids": [
       "VI110"
     ],
-    "question_text": "On the best days there are four hundred people on the shore and no toilets.",
+    "question_text": "On the best days there are four hundred people on the Abashiri shore and no toilets.",
     "choice_a": "Close the shore on the busiest days.",
     "choice_b": "Leave it; visitors manage for a few hours.",
     "choice_c": "Ask nearby shops to open their toilets.",
@@ -22323,7 +22323,7 @@
     "visitor_ids": [
       "VI111"
     ],
-    "question_text": "My shop is the last on this block with a bell on the door. The landlord wants to sell. Will you speak up?",
+    "question_text": "My shop is the last on this block of Tanukikōji with a bell on the door. The landlord wants to sell. Will you speak up?",
     "choice_a": "Call the landlord with me and ask what would keep us here.",
     "choice_b": "Say property rights are the landlord's business.",
     "choice_c": "Tell me chain stores bring more jobs anyway.",
@@ -22403,7 +22403,7 @@
     "visitor_ids": [
       "VI112"
     ],
-    "question_text": "The 7:40 bus has been cut to every second day. I have a job on the other side of town. What do I do?",
+    "question_text": "The 7:40 bus in Kitami has been cut to every second day. I have a job on the other side of town. What do I do?",
     "choice_a": "Ride along with me and take the timetable to council.",
     "choice_b": "The bus company makes its own decisions.",
     "choice_c": "Car-sharing with coworkers could cover the gap.",
@@ -22564,7 +22564,7 @@
     "visitor_ids": [
       "VI113"
     ],
-    "question_text": "I work nights alone and the street gets rough after midnight. Who looks out for people like me?",
+    "question_text": "I work nights alone near Susukino and the street gets rough after midnight. Who looks out for people like me?",
     "choice_a": "Ask the ward for lighting, patrols and a second clerk.",
     "choice_b": "The police set their own patrol priorities.",
     "choice_c": "Stores should not staff nights with one clerk.",
@@ -22720,7 +22720,7 @@
     "visitor_ids": [
       "VI114"
     ],
-    "question_text": "This ward used to hold a summer cleanup every year. Nobody organizes it now. Will you?",
+    "question_text": "This Hirosaki ward used to hold a summer cleanup every year. Nobody organizes it now. Will you?",
     "choice_a": "I'll set a date and bring volunteers from three blocks.",
     "choice_b": "Say it is a private matter for the neighborhood.",
     "choice_c": "Say the city already pays people to clean.",
@@ -22969,7 +22969,7 @@
     "visitor_ids": [
       "VI115"
     ],
-    "question_text": "The road outside the depot is cracked and my van bounces over it all day. What can you do?",
+    "question_text": "The road outside the Hakodate depot is cracked and my van bounces over it all day. What can you do?",
     "choice_a": "I'll report it with a photo and follow up.",
     "choice_b": "Road repairs belong to the prefecture.",
     "choice_c": "Some wear is normal on a busy depot road.",
@@ -23055,7 +23055,7 @@
     "visitor_ids": [
       "VI116"
     ],
-    "question_text": "The market hall has an expensive new lease. We sell fish, not diamonds. Will you ask them to reconsider?",
+    "question_text": "The Washō Market hall in Kushiro has an expensive new lease. We sell fish, not diamonds. Will you ask them to reconsider?",
     "choice_a": "Ask the hall for a phased lease, with stallholders present.",
     "choice_b": "The hall has bills to pay too.",
     "choice_c": "Look for a cheaper site for the fish stalls.",
@@ -23447,7 +23447,7 @@
     "visitor_ids": [
       "VI118"
     ],
-    "question_text": "The shotengai lights are half dead and the street looks abandoned at dusk. Can it be fixed?",
+    "question_text": "The Hachinohe shotengai lights are half dead and the street looks abandoned at dusk. Can it be fixed?",
     "choice_a": "Ask for new lights and a shotengai committee seat.",
     "choice_b": "The street committee should fund its own lights.",
     "choice_c": "Focus on the shops still open first.",
@@ -23599,7 +23599,7 @@
     "visitor_ids": [
       "VI119"
     ],
-    "question_text": "The station taxi rank was moved to the far corner. Passengers do not find us. Can you ask for it back?",
+    "question_text": "The taxi rank at Shin-Aomori Station was moved to the far corner. Passengers do not find us. Can you ask for it back?",
     "choice_a": "Ask the station manager, with me, for a trial.",
     "choice_b": "The station decides its own layout.",
     "choice_c": "Add signs pointing passengers to the rank.",
@@ -23684,7 +23684,7 @@
     "visitor_ids": [
       "VI120"
     ],
-    "question_text": "The nearest supermarket is a twenty-minute walk and I have a bad knee. What are my options?",
+    "question_text": "The nearest supermarket in Otaru is a twenty-minute walk uphill and I have a bad knee. What are my options?",
     "choice_a": "Ask about a community bus or shop delivery.",
     "choice_b": "We can't fix everything at once.",
     "choice_c": "A home help service could do the shopping.",
@@ -24394,7 +24394,7 @@
     "visitor_ids": [
       "VI124"
     ],
-    "question_text": "Tourists come for the view and never buy a coffee. How do we turn visits into sales?",
+    "question_text": "Tourists come for the view of the Tanesashi coast and never buy a coffee. How do we turn visits into sales?",
     "choice_a": "A shotengai stamp card and map to send them in.",
     "choice_b": "Tourists choose how they spend their money.",
     "choice_c": "Focus on locals, not passing tourists.",
@@ -25250,7 +25250,7 @@
     "visitor_ids": [
       "VI130"
     ],
-    "question_text": "The village clinic closes at noon on Fridays. Where do I go if my knee gives out?",
+    "question_text": "The Toyotomi village clinic closes at noon on Fridays. Where do I go if my knee gives out?",
     "choice_a": "Ask for a visiting nurse and a clinic number on the bus.",
     "choice_b": "Rural clinics are costly; hours follow demand.",
     "choice_c": "Keep a first-aid kit and call the town hospital.",
@@ -26035,7 +26035,7 @@
     "visitor_ids": [
       "VI135"
     ],
-    "question_text": "The maternity ward in the next town closes next spring. Where do I give birth?",
+    "question_text": "The maternity ward in Rumoi closes next spring. Where do I give birth?",
     "choice_a": "Press for a regional maternity plan and a transport allowance.",
     "choice_b": "Say the ward is closing for good reasons.",
     "choice_c": "Say mothers can go to the city.",
@@ -27695,7 +27695,7 @@
     "visitor_ids": [
       "VI145"
     ],
-    "question_text": "The road outside school has no crossing guard. A child nearly got hit. Will you act?",
+    "question_text": "The road outside the Monbetsu school has no crossing guard. A child nearly got hit. Will you act?",
     "choice_a": "Ask the ward for a crossing guard and speed review.",
     "choice_b": "The road belongs to the prefecture.",
     "choice_c": "Parents could walk children in groups.",
@@ -27855,7 +27855,7 @@
     "visitor_ids": [
       "VI146"
     ],
-    "question_text": "Local history is almost gone from the curriculum. Is it important?",
+    "question_text": "Takikawa's local history is almost gone from the curriculum. Is it important?",
     "choice_a": "Ask for a local-history unit taught with elders.",
     "choice_b": "The curriculum is crowded already.",
     "choice_c": "Local museums can teach it on school trips.",
@@ -28087,7 +28087,7 @@
     "visitor_ids": [
       "VI148"
     ],
-    "question_text": "Our route was cut and children now walk through the dark. What happens in winter?",
+    "question_text": "Our Horonobe route was cut and children now walk through the dark. What happens in winter?",
     "choice_a": "Restore the route or fund a safe walking path.",
     "choice_b": "Routes cost money; we need the numbers first.",
     "choice_c": "Ask parents to organize walking groups.",
@@ -28879,7 +28879,7 @@
     "visitor_ids": [
       "VI153"
     ],
-    "question_text": "Fertilizer prices doubled and the potato price did not. What do I do?",
+    "question_text": "Fertilizer prices doubled in Kiyosato and the potato price did not. What do I do?",
     "choice_a": "Press for a fertilizer subsidy and a fairer price floor.",
     "choice_b": "Say farmers must adapt to the market.",
     "choice_c": "Say farming is a risky business.",
@@ -29115,7 +29115,7 @@
     "visitor_ids": [
       "VI154"
     ],
-    "question_text": "Cows need milking at five and I have not had a day off in a year. Is there relief?",
+    "question_text": "Cows in Nakashibetsu need milking at five and I have not had a day off in a year. Is there relief?",
     "choice_a": "Ask about a relief-helper scheme shared among farms.",
     "choice_b": "Dairy has always been relentless work.",
     "choice_c": "Hire a part-time milker with a small subsidy.",
@@ -29191,7 +29191,7 @@
     "visitor_ids": [
       "VI155"
     ],
-    "question_text": "The scallop catch is down and fuel is up. What can the city do?",
+    "question_text": "The Sarufutsu scallop catch is down and fuel is up. What can the city do?",
     "choice_a": "Ask for fuel cost support and a stock survey.",
     "choice_b": "The sea is unpredictable; seasons vary.",
     "choice_c": "Help fishers switch to other species.",
@@ -29427,7 +29427,7 @@
     "visitor_ids": [
       "VI156"
     ],
-    "question_text": "My pickles win prizes but nobody outside this town knows them. How do I reach buyers?",
+    "question_text": "My pickles win prizes but nobody outside Kuroishi knows them. How do I reach buyers?",
     "choice_a": "Ask for a local-brand fair and shared online shop.",
     "choice_b": "Marketing is the producer's own job.",
     "choice_c": "Enter regional food contests for exposure.",
@@ -29503,7 +29503,7 @@
     "visitor_ids": [
       "VI157"
     ],
-    "question_text": "The frost came late and half the blossom died. Is there insurance for that?",
+    "question_text": "The frost came late in Hirosaki and half the apple blossom died. Is there insurance for that?",
     "choice_a": "Ask for a crop-loss scheme that pays small growers quickly.",
     "choice_b": "Insurance exists; it needs better advice.",
     "choice_c": "Frost is part of farming; spread the risk.",
@@ -29891,7 +29891,7 @@
     "visitor_ids": [
       "VI159"
     ],
-    "question_text": "Young people leave for the city. Is there any hope for the village?",
+    "question_text": "Young people leave Pippu for the city. Is there any hope for the village?",
     "choice_a": "Ask about a farm-stay and first-year support for newcomers.",
     "choice_b": "Villages age; plan services for older residents.",
     "choice_c": "We can't stop people leaving, only make returning easier.",
@@ -29971,7 +29971,7 @@
     "visitor_ids": [
       "VI160"
     ],
-    "question_text": "My drying racks are on the beach and the storm took half. Can the city help?",
+    "question_text": "My kombu drying racks are on the Rishiri beach and the storm took half. Can the city help?",
     "choice_a": "Ask for a storm-damage fund and a shared shed.",
     "choice_b": "Storms are acts of nature; insure for them.",
     "choice_c": "Rebuild the racks further from the waterline.",
@@ -30127,7 +30127,7 @@
     "visitor_ids": [
       "VI161"
     ],
-    "question_text": "Wolves have not been seen in a century but bears come into the paddock. What do I do?",
+    "question_text": "Wolves have not been seen in a century but bears come into my paddock near Cape Sōya. What do I do?",
     "choice_a": "Ask for fencing support and a fast bear-response team.",
     "choice_b": "Bears are protected; prevention comes first.",
     "choice_c": "Move the flock to safer pastures inland.",
@@ -30289,7 +30289,7 @@
     "visitor_ids": [
       "VI162"
     ],
-    "question_text": "Our roadside stand was moved off the main road and sales dropped by half. Why?",
+    "question_text": "Our roadside stand in Nanae was moved off Route 5 and sales dropped by half. Why?",
     "choice_a": "Ask the road office for a marked stand zone.",
     "choice_b": "The main road must stay clear for safety.",
     "choice_c": "Signs could point drivers to the new spot.",
@@ -30445,7 +30445,7 @@
     "visitor_ids": [
       "VI163"
     ],
-    "question_text": "I moved here to farm and nobody will lease me land. What am I missing?",
+    "question_text": "I moved to Shintoku to farm and nobody will lease me land. What am I missing?",
     "choice_a": "Ask for a land-matching board and an elder mentor.",
     "choice_b": "Land is private; owners choose who leases.",
     "choice_c": "Build trust first; work on a local farm.",
@@ -30607,7 +30607,7 @@
     "visitor_ids": [
       "VI164"
     ],
-    "question_text": "Our cheese wins medals and still loses to cheap imports on the shelf. Why?",
+    "question_text": "Our Tokachi cheese wins medals and still loses to cheap imports on the shelf. Why?",
     "choice_a": "Ask for a quality mark and a joint fair stand.",
     "choice_b": "Imports are cheaper; compete on taste, not price.",
     "choice_c": "Sell direct to restaurants that value quality.",
@@ -30763,7 +30763,7 @@
     "visitor_ids": [
       "VI165"
     ],
-    "question_text": "Cold storage is full and expensive. Fresh produce spoils before it sells. Is there a shared option?",
+    "question_text": "Cold storage at the Sapporo wholesale market is full and expensive. Fresh produce spoils before it sells. Is there a shared option?",
     "choice_a": "Ask for a shared cold-store at the market hall.",
     "choice_b": "Storage is each trader's own business.",
     "choice_c": "Some spoilage is a normal cost of trade.",
@@ -30925,7 +30925,7 @@
     "visitor_ids": [
       "VI166"
     ],
-    "question_text": "Young drinkers prefer beer and wine. Our brewery is a hundred and ten years old. Will it last?",
+    "question_text": "Young drinkers prefer beer and wine. Our Asahikawa brewery is a hundred and ten years old. Will it last?",
     "choice_a": "Ask for a regional sake campaign and a joint fair stand.",
     "choice_b": "Tastes change; brew what the young drink.",
     "choice_c": "Sell to collectors and keep the old ways.",
@@ -31251,7 +31251,7 @@
     "visitor_ids": [
       "VI18"
     ],
-    "question_text": "The temple that keeps our family graves cannot afford a new roof. Should the town help?",
+    "question_text": "The temple in Asahikawa that keeps our family graves cannot afford a new roof. Should the town help?",
     "choice_a": "I will look for a heritage grant for the temple.",
     "choice_b": "Public money should stay out of religion.",
     "choice_c": "I will ask the temple association what they need.",
