@@ -217,3 +217,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Promises can owe Funds; EV01 option B uses it (2026-11-07, Cameron)
 - Office Hours organization chips centered beside the visitor (2026-11-07, Cameron)
 - Office Hours screen laid out around the spoken line (2026-11-07, Cameron)
+- Everyday casework: 26 visitor questions, 8 events, 9 follow-ups (2026-11-08, Cameron)

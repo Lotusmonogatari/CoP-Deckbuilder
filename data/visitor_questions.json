@@ -50,6 +50,11 @@
       {
         "kind": "hours",
         "amount": 1
+      },
+      {
+        "kind": "followup",
+        "event_id": "EV74",
+        "after": 72
       }
     ],
     "commitment_b": null,
@@ -31413,5 +31418,2185 @@
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": "You attend the festival they choose and stay for the opening."
+  },
+  {
+    "question_id": "VQ398",
+    "visitor_ids": [
+      "VI115"
+    ],
+    "question_text": "The pothole on the market road cracks a van axle a month. Will someone fill it?",
+    "choice_a": "I'll press the ward to repair it this month.",
+    "choice_b": "Roads get fixed in order; the list is fair.",
+    "choice_c": "I'll ask for a cone and a warning sign today.",
+    "choice_d": "Drive around it until spring.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      },
+      {
+        "kind": "followup",
+        "event_id": "EV77",
+        "after": 120
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Then I'll stop swerving into the bus lane.",
+    "response_b": "It has been on the list since winter.",
+    "response_c": "A cone beats a broken axle.",
+    "response_d": "Around it is a canal.",
+    "reaction_a": "Jingles the van keys.",
+    "reaction_b": "Shrugs.",
+    "reaction_c": "Nods once.",
+    "reaction_d": "Laughs without humor.",
+    "promise_kept_text_a": "You press the ward office about the market-road pothole until it is on this month's repair list.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ399",
+    "visitor_ids": [
+      "VI01"
+    ],
+    "question_text": "Crows tear open the garbage bags every collection day. Can we get nets?",
+    "choice_a": "I'll get the ward to supply nets for every point.",
+    "choice_b": "Households can buy their own nets.",
+    "choice_c": "I'll ask whether collection can start earlier.",
+    "choice_d": "Crows are clever. Nothing really works.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      },
+      {
+        "kind": "followup",
+        "event_id": "EV76",
+        "after": 168
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "Then I'll stop sweeping up eggshells at six.",
+    "response_b": "Most of them are pensioners.",
+    "response_c": "Earlier would beat the crows.",
+    "response_d": "Nets work. I have seen them.",
+    "reaction_a": "Writes it in her notebook.",
+    "reaction_b": "Frowns.",
+    "reaction_c": "Considers it.",
+    "reaction_d": "Snaps the notebook shut.",
+    "promise_kept_text_a": "You get the ward to send nets for every collection point on the street.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You ask the ward about an earlier pickup and pass the answer on.",
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ400",
+    "visitor_ids": [
+      "VI78"
+    ],
+    "question_text": "New tenants keep putting bottles out on burnables day. Can the rules come in more languages?",
+    "choice_a": "I'll get the calendar printed in several languages.",
+    "choice_b": "Fines for wrong sorting will teach it fastest.",
+    "choice_c": "I'll ask about a sorting class for new residents.",
+    "choice_d": "They will learn it the way everyone did.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO27",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 2
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO27",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "A picture calendar would help everyone.",
+    "response_b": "Fines land on the landlord, not the tenant.",
+    "response_c": "A Saturday class might work.",
+    "response_d": "Everyone else had a grandmother to teach them.",
+    "reaction_a": "Unfolds a crumpled calendar.",
+    "reaction_b": "Winces.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": "You get the garbage calendar printed in several languages, with pictures, for every collection point.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ401",
+    "visitor_ids": [
+      "VI120"
+    ],
+    "question_text": "Snow slides off the shop roofs onto the sidewalk. It nearly buried me last week.",
+    "choice_a": "I'll push for grants to fit snow guards on those roofs.",
+    "choice_b": "Shops can't control the weather; walk on the far side.",
+    "choice_c": "I'll ask the shops to put out warning signs.",
+    "choice_d": "Winter is winter. Wear a good hat.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Then I can buy radishes without praying.",
+    "response_b": "The far side has no sidewalk.",
+    "response_c": "A sign is something.",
+    "response_d": "A hat, against a roof of snow?",
+    "reaction_a": "Grips the cart handle.",
+    "reaction_b": "Purses lips.",
+    "reaction_c": "Nods slowly.",
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": "You find the snow-guard grant and walk the shop owners through the form.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ402",
+    "visitor_ids": [
+      "VI141"
+    ],
+    "question_text": "My mother died abroad and my passport renewal is stuck. The funeral is in ten days.",
+    "choice_a": "I'll call the ministry myself today.",
+    "choice_b": "Everyone waits the same; I can't jump the queue.",
+    "choice_c": "I'll have a staff member chase it tomorrow.",
+    "choice_d": "Ask the embassy; they know the rules.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      },
+      {
+        "kind": "followup",
+        "event_id": "EV75",
+        "after": 96
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Thank you. I didn't know who else to ask.",
+    "response_b": "Then I'll miss her funeral.",
+    "response_c": "Tomorrow is better than nothing.",
+    "response_d": "I asked them. They sent me to you.",
+    "reaction_a": "Holds back tears.",
+    "reaction_b": "Looks down.",
+    "reaction_c": "Grips the folder.",
+    "reaction_d": "Turns away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ403",
+    "visitor_ids": [
+      "VI126"
+    ],
+    "question_text": "My pension did not come this month. The office says to wait. I cannot wait.",
+    "choice_a": "I'll go to the pension office with you.",
+    "choice_b": "The office will sort it; delays happen.",
+    "choice_c": "I'll write to the pension office today.",
+    "choice_d": "Your family can help until it comes.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO07",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "With you there, they will open the file.",
+    "response_b": "Delays do not pay the rent.",
+    "response_c": "A letter from you will move it.",
+    "response_d": "My family is the sea.",
+    "reaction_a": "Straightens his back, wincing.",
+    "reaction_b": "Rubs his back.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Looks at the floor.",
+    "promise_kept_text_a": "You sit with him at the pension office until they find the missing payment.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ404",
+    "visitor_ids": [
+      "VI66"
+    ],
+    "question_text": "A coast guard veteran's medical claim has sat on a desk for a year. Will you ask why?",
+    "choice_a": "I'll raise it with the ministry and follow it through.",
+    "choice_b": "Every claim gets reviewed in turn.",
+    "choice_c": "Send me the file and I'll pass it on.",
+    "choice_d": "The association can appeal on its own.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO22",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO22",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO22",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO22",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      },
+      {
+        "kind": "followup",
+        "event_id": "EV78",
+        "after": 168
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "He served thirty years. He deserves an answer.",
+    "response_b": "His turn has come and gone twice.",
+    "response_c": "Passing it on is a start.",
+    "response_d": "We have. Three times.",
+    "reaction_a": "Salutes, half joking.",
+    "reaction_b": "Jaw tightens.",
+    "reaction_c": "Hands over a folder.",
+    "reaction_d": "Stands up.",
+    "promise_kept_text_a": "You raise the veteran's claim with the ministry and keep asking until it reaches the right desk.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ405",
+    "visitor_ids": [
+      "VI114"
+    ],
+    "question_text": "My mother turns one hundred next week. Would you send her a few words?",
+    "choice_a": "I'll bring her a letter myself on the day.",
+    "choice_b": "I'll ask the mayor to send the town's card.",
+    "choice_c": "I'll mail her a signed card this week.",
+    "choice_d": "I don't write personal letters, I'm afraid.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO04",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 168
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "She will talk about it for a year.",
+    "response_b": "The mayor sends a card to everyone.",
+    "response_c": "A card will go on her shelf.",
+    "response_d": "She voted for you, you know.",
+    "reaction_a": "Claps once.",
+    "reaction_b": "Smile fades.",
+    "reaction_c": "Smiles.",
+    "reaction_d": "Raises an eyebrow.",
+    "promise_kept_text_a": "You visit her mother on her hundredth birthday with a signed letter. She asks how old you are.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ406",
+    "visitor_ids": [
+      "VI18"
+    ],
+    "question_text": "The dog next door barks from dawn. Its owner works nights and sleeps through it.",
+    "choice_a": "I'll sit down with both of you and talk it through.",
+    "choice_b": "Neighbors' quarrels aren't the Assembly's business.",
+    "choice_c": "The ward has a noise desk; I'll pass it on.",
+    "choice_d": "Earplugs are cheap, Granny.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO03",
+        "delta": 1
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO27",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO03",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Sit with us? He listens to a legislator.",
+    "response_b": "Then whose business is my sleep?",
+    "response_c": "A desk. Well.",
+    "response_d": "Cheap? I am eighty-four.",
+    "reaction_a": "Pours you tea.",
+    "reaction_b": "Sets down her cup.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Glares.",
+    "promise_kept_text_a": "You sit with Granny Chiyo and her neighbor. The dog gets a quieter corner of the yard.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ407",
+    "visitor_ids": [
+      "VI21"
+    ],
+    "question_text": "The dogs need somewhere to run. Can one corner of the park be fenced?",
+    "choice_a": "I'll back a fenced corner for dogs.",
+    "choice_b": "The park is for children first.",
+    "choice_c": "I'll ask the ward to survey park users.",
+    "choice_d": "Dogs can run on a lead.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO27",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 2
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO27",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "My dog thanks you. So do I.",
+    "response_b": "Children like dogs.",
+    "response_c": "Survey the dogs too.",
+    "response_d": "A lead is not running.",
+    "reaction_a": "Grins.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Whistles low.",
+    "promise_kept_text_a": "You back the fenced dog corner at the ward meeting, and the park plan gets a new gate.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ408",
+    "visitor_ids": [
+      "VI136"
+    ],
+    "question_text": "Our station has stairs only. I have not taken a train in two years.",
+    "choice_a": "I'll press the rail company for an elevator.",
+    "choice_b": "The elevator waiting list is long, and it is fair.",
+    "choice_c": "I'll ask for station staff to help at set times.",
+    "choice_d": "The bus can take you to the next station.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO14",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO14",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Two years. I counted.",
+    "response_b": "I am on that list. So is my wheelchair.",
+    "response_c": "Set times are something.",
+    "response_d": "The next station has stairs too.",
+    "reaction_a": "Grips the wheels.",
+    "reaction_b": "Looks out the window.",
+    "reaction_c": "Nods slowly.",
+    "reaction_d": "Laughs bitterly.",
+    "promise_kept_text_a": "You press the rail company, and the station goes on next year's elevator list.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ409",
+    "visitor_ids": [
+      "VI124"
+    ],
+    "question_text": "Commuters chain their bicycles across my door. Customers climb over them.",
+    "choice_a": "I'll push for a proper bicycle lot by the station.",
+    "choice_b": "Bicycles beat cars; live with it.",
+    "choice_c": "I'll ask the ward to tow the worst ones.",
+    "choice_d": "Put up a sign yourself.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO14",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO14",
+        "delta": 2
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO14",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "A lot would clear my door.",
+    "response_b": "Better for whom?",
+    "response_c": "Tow them, then.",
+    "response_d": "I have three signs.",
+    "reaction_a": "Wipes the counter.",
+    "reaction_b": "Folds her arms.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Points at the door.",
+    "promise_kept_text_a": "You push for the station bicycle lot, and the ward marks out spaces by the end of the month.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ410",
+    "visitor_ids": [
+      "VI84"
+    ],
+    "question_text": "An empty house in the village is falling in. Animals live in it. Nobody knows the owner.",
+    "choice_a": "I'll get the town to trace the owner.",
+    "choice_b": "It's private property; the town can't touch it.",
+    "choice_c": "I'll ask about a demolition grant.",
+    "choice_d": "There are a hundred like it. Leave it.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      },
+      {
+        "kind": "followup",
+        "event_id": "EV79",
+        "after": 168
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "The heir is in the city, somewhere.",
+    "response_b": "Private property, with a fox in the kitchen.",
+    "response_c": "A grant would bring it down.",
+    "response_d": "This one is next to the school.",
+    "reaction_a": "Taps his walking stick.",
+    "reaction_b": "Grumbles.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": "You get the town office to trace the owner of the empty house. A letter goes to a nephew in Sapporo.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ411",
+    "visitor_ids": [
+      "VI121"
+    ],
+    "question_text": "The bathhouse next to my shop may close. Half the street washes there.",
+    "choice_a": "I'll look for a community grant to keep it open.",
+    "choice_b": "A business that can't pay its way closes.",
+    "choice_c": "I'll ask the bath owners' union what would help.",
+    "choice_d": "Most homes have baths now.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO15",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "My customers come in clean because of it.",
+    "response_b": "It pays. It just doesn't profit.",
+    "response_c": "They would like to be asked.",
+    "response_d": "Not the old flats on this street.",
+    "reaction_a": "Snips the air.",
+    "reaction_b": "Puts down the scissors.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Shakes his head.",
+    "promise_kept_text_a": "You find a community grant for the bathhouse boiler, and the owner agrees to stay open another year.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ412",
+    "visitor_ids": [
+      "VI111"
+    ],
+    "question_text": "The ward says my sidewalk sign breaks the rules. Without it, nobody finds the bakery.",
+    "choice_a": "I'll ask for a small-sign exception for shops.",
+    "choice_b": "Sidewalks are for walking; the rule stays.",
+    "choice_c": "Try a sign in the window instead.",
+    "choice_d": "Everyone knows where the bakery is.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 2
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "One small sign, that's all.",
+    "response_b": "People walk around it fine.",
+    "response_c": "The window is full of bread.",
+    "response_d": "The tourists do not.",
+    "reaction_a": "Dusts flour off his apron.",
+    "reaction_b": "Frowns.",
+    "reaction_c": "Considers it.",
+    "reaction_d": "Laughs.",
+    "promise_kept_text_a": "You get the ward to allow small sidewalk signs for shops, inside a marked line.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ413",
+    "visitor_ids": [
+      "VI98"
+    ],
+    "question_text": "The harbor ice machine broke in the middle of salmon season. Fish are spoiling.",
+    "choice_a": "I'll press for an emergency repair grant today.",
+    "choice_b": "Upkeep is the co-op's job, not the town's.",
+    "choice_c": "I'll see if a nearby harbor can share its ice.",
+    "choice_d": "Sell the catch faster.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Then the season is saved.",
+    "response_b": "The co-op is us. We are broke.",
+    "response_c": "Trucking ice is costly, but it works.",
+    "response_d": "Faster than the sun?",
+    "reaction_a": "Wipes salt from his face.",
+    "reaction_b": "Spits over the rail.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Turns his back.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ414",
+    "visitor_ids": [
+      "VI146"
+    ],
+    "question_text": "Our old science teacher taught three generations here. Can the riverside park carry her name?",
+    "choice_a": "I'll back naming the park for her.",
+    "choice_b": "Parks keep their place names; a plaque is enough.",
+    "choice_c": "I'll ask the town to put up a plaque.",
+    "choice_d": "Naming things after people starts fights.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO04",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO04",
+        "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO04",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO15",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Her students will come back for it.",
+    "response_b": "A plaque gets lost in the grass.",
+    "response_c": "A plaque is a beginning.",
+    "response_d": "Not this person. Ask anyone.",
+    "reaction_a": "Straightens his tie.",
+    "reaction_b": "Clears his throat.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": "You back the park naming at the town council, and her former students fill the gallery.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ415",
+    "visitor_ids": [
+      "VI79"
+    ],
+    "question_text": "The museum's Ainu robes sit in a cracked case. Dust gets in every day.",
+    "choice_a": "I'll find money for a proper case.",
+    "choice_b": "Museums must manage their own budgets.",
+    "choice_c": "I'll ask a foundation to sponsor it.",
+    "choice_d": "Store them away until there is money.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO29",
+        "delta": 3
+      },
+      {
+        "target": "BO28",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO29",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO29",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO29",
+        "delta": -3
+      },
+      {
+        "target": "BO28",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Our grandmothers' work deserves glass.",
+    "response_b": "Our budget is a box of envelopes.",
+    "response_c": "A sponsor would be welcome.",
+    "response_d": "Stored away, nobody learns from them.",
+    "reaction_a": "Touches the edge of a robe.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Shakes her head.",
+    "promise_kept_text_a": "You find the money for a sealed case, and the robes go back on display.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ416",
+    "visitor_ids": [
+      "VI81"
+    ],
+    "question_text": "The warehouse that stored our festival float is coming down. Where does it go this winter?",
+    "choice_a": "I'll ask the town for space in a public garage.",
+    "choice_b": "Storage is the committee's cost.",
+    "choice_c": "I'll ask local businesses to lend a barn.",
+    "choice_d": "Build a smaller float.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Then we pull it again next summer.",
+    "response_b": "Our cost is our sweat.",
+    "response_c": "A barn would do.",
+    "response_d": "Smaller? It is ninety years old.",
+    "reaction_a": "Bows.",
+    "reaction_b": "Scratches his head.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Looks pained.",
+    "promise_kept_text_a": "You find winter space for the float in the town's road-equipment garage.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ417",
+    "visitor_ids": [
+      "VI64"
+    ],
+    "question_text": "The path up to the temple graves is too steep for our elderly visitors. Can we get a handrail?",
+    "choice_a": "I'll find funding for a handrail and lights.",
+    "choice_b": "Temple grounds are the temple's to fix.",
+    "choice_c": "I'll ask for a shuttle on memorial days.",
+    "choice_d": "Families can help their elders up.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO19",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO19",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO19",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO19",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Then grandmothers can visit their husbands.",
+    "response_b": "The path below the gate is the town's.",
+    "response_c": "On memorial days it would help.",
+    "response_d": "Many of them come alone.",
+    "reaction_a": "Bows deeply.",
+    "reaction_b": "Fingers prayer beads.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Closes eyes.",
+    "promise_kept_text_a": "You find funding for a handrail up the temple steps, and lights for winter evenings.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ418",
+    "visitor_ids": [
+      "VI14"
+    ],
+    "question_text": "My nephew is applying to the prefectural office. A letter from you would help.",
+    "choice_a": "I'll write him a letter.",
+    "choice_b": "I don't write job letters; it isn't fair.",
+    "choice_c": "I'll meet him first and see if he's suited.",
+    "choice_d": "Let him stand on his own.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO03",
+        "delta": 3
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      },
+      {
+        "target": "BO08",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO26",
+        "delta": 2
+      },
+      {
+        "target": "BO03",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO03",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO03",
+        "delta": -3
+      },
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "He will not forget it. Nor will I.",
+    "response_b": "Fair? Everyone does it.",
+    "response_c": "He will put on a tie.",
+    "response_d": "He is standing. He wants a hand.",
+    "reaction_a": "Grins.",
+    "reaction_b": "Stiffens.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You meet the nephew over coffee. He is better prepared than you expected.",
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ419",
+    "visitor_ids": [
+      "VI113"
+    ],
+    "question_text": "I keep getting tax letters for someone who moved out years ago. The ward won't listen.",
+    "choice_a": "I'll call the ward tax desk with you now.",
+    "choice_b": "Fill in the correction form; that's the process.",
+    "choice_c": "Bring the letters to my office; I'll forward them.",
+    "choice_d": "Just throw them away.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO18",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO18",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "They pick up for a legislator.",
+    "response_b": "I filled it in twice.",
+    "response_c": "That box is getting full.",
+    "response_d": "And then they fine me.",
+    "reaction_a": "Holds out a stack of envelopes.",
+    "reaction_b": "Groans.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ420",
+    "visitor_ids": [
+      "VI131"
+    ],
+    "question_text": "Three of my clients nearly sent their savings to phone scammers this month.",
+    "choice_a": "I'll hold a warning session at the community hall.",
+    "choice_b": "Families should watch their parents' accounts.",
+    "choice_c": "I'll ask the phone companies to flag scam numbers.",
+    "choice_d": "People have to be careful themselves.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 72
+      },
+      {
+        "kind": "followup",
+        "event_id": "EV81",
+        "after": 168
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "They trust a legislator's voice.",
+    "response_b": "Many have no family nearby.",
+    "response_c": "Flagging would stop some of them.",
+    "response_d": "They were careful. The scammer was better.",
+    "reaction_a": "Writes a date on her calendar.",
+    "reaction_b": "Shakes her head.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Closes her folder.",
+    "promise_kept_text_a": "You hold a warning session at the community hall. The room fills with seniors and their notebooks.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ421",
+    "visitor_ids": [
+      "VI145"
+    ],
+    "question_text": "The fish plant beside the school smells all summer. The children eat lunch indoors.",
+    "choice_a": "I'll press for an inspection and better filters.",
+    "choice_b": "The plant gives this town its jobs.",
+    "choice_c": "I'll ask the plant to move its worst work to weekends.",
+    "choice_d": "It's the smell of a fishing town.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO07",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO07",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "The children will eat outside again.",
+    "response_b": "Jobs, and headaches.",
+    "response_c": "Weekends would help the school.",
+    "response_d": "Not inside a classroom.",
+    "reaction_a": "Fans herself with a newsletter.",
+    "reaction_b": "Frowns.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Wrinkles her nose.",
+    "promise_kept_text_a": "You press for the inspection, and the plant fits new filters before autumn.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ422",
+    "visitor_ids": [
+      "VI161"
+    ],
+    "question_text": "They want a wind turbine on the ridge above my pasture. Nobody asked the sheep, or me.",
+    "choice_a": "I'll call a public meeting before anything is signed.",
+    "choice_b": "Clean power has to go somewhere.",
+    "choice_c": "I'll ask the company about compensation for you.",
+    "choice_d": "The ridge is not your land.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 96
+      },
+      {
+        "kind": "followup",
+        "event_id": "EV82",
+        "after": 168
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "A meeting, at least, with chairs.",
+    "response_b": "Somewhere is always here.",
+    "response_c": "Money does not quiet a blade.",
+    "response_d": "My grandfather grazed it.",
+    "reaction_a": "Leans on his crook.",
+    "reaction_b": "Spits.",
+    "reaction_c": "Grunts.",
+    "reaction_d": "Walks off.",
+    "promise_kept_text_a": "You hold the meeting in the village hall, and the company answers questions for two hours.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ423",
+    "visitor_ids": [
+      "VI132"
+    ],
+    "question_text": "Half the valley road has no phone signal. Twice this year I couldn't call the hospital.",
+    "choice_a": "I'll press the carriers for a tower on the valley road.",
+    "choice_b": "Carriers build where the customers are.",
+    "choice_c": "I'll ask for radios in every ambulance.",
+    "choice_d": "Drive to the pass and call from there.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 72
+      },
+      {
+        "kind": "followup",
+        "event_id": "EV80",
+        "after": 168
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Then I can call ahead.",
+    "response_b": "Patients are customers too.",
+    "response_c": "Radios would cover us for now.",
+    "response_d": "Every minute counts on that road.",
+    "reaction_a": "Taps a dead phone.",
+    "reaction_b": "Shakes his head.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Stares.",
+    "promise_kept_text_a": "You press the carriers, and one agrees to survey the valley road.",
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   }
 ]

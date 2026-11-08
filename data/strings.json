@@ -6417,5 +6417,54 @@
     "english": "{yen_amount}円",
     "placeholders": "yen_amount",
     "notes": "2026-11-07 promises to pay Funds later (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.decline.EV66",
+    "where": "Event Choices: the result of declining EV66",
+    "english": "You decline the invitation. The certificates are handed out by the association chair.",
+    "placeholders": null,
+    "notes": "2026-11-08 mundane casework batch. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV67",
+    "where": "Event Choices: the result of declining EV67",
+    "english": "You decline. The residents clear the park without you.",
+    "placeholders": null,
+    "notes": "2026-11-08 mundane casework batch. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV68",
+    "where": "Event Choices: the result of declining EV68",
+    "english": "You decline to get involved. The car stays where it is.",
+    "placeholders": null,
+    "notes": "2026-11-08 mundane casework batch. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV69",
+    "where": "Event Choices: the result of declining EV69",
+    "english": "You decline the visit. The farmers walk the washout on their own.",
+    "placeholders": null,
+    "notes": "2026-11-08 mundane casework batch. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV71",
+    "where": "Event Choices: the result of declining EV71",
+    "english": "You decline the invitation. Your seat at the reception is given to a cousin.",
+    "placeholders": null,
+    "notes": "2026-11-08 mundane casework batch. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV72",
+    "where": "Event Choices: the result of declining EV72",
+    "english": "You decline. The ditch floods again with the next rain.",
+    "placeholders": null,
+    "notes": "2026-11-08 mundane casework batch. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV73",
+    "where": "Event Choices: the result of declining EV73",
+    "english": "You decline. The run goes ahead with another patron's name.",
+    "placeholders": null,
+    "notes": "2026-11-08 mundane casework batch. Claude's draft for Cameron to rewrite."
   }
 ]
