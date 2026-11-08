@@ -6578,5 +6578,40 @@
     "english": "Your influence is not yet strong enough to sway other parties. Still needed:",
     "placeholders": null,
     "notes": "2026-11-08 Floor Vote draft: Vote Projections and Influence Status rows. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.influence_line_will",
+    "where": "Floor Vote",
+    "english": "Your influence will affect the vote.",
+    "placeholders": null,
+    "notes": "2026-11-08 Floor Vote draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.influence_line_will_not",
+    "where": "Floor Vote",
+    "english": "Your influence will not affect the vote.",
+    "placeholders": null,
+    "notes": "2026-11-08 Floor Vote draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.whip_cost_short",
+    "where": "Floor Vote",
+    "english": "Each extra vote costs {base} Party support ({against} against your party's position).",
+    "placeholders": "base, against",
+    "notes": "2026-11-08 Floor Vote draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.whip_details_button",
+    "where": "Floor Vote",
+    "english": "Whip Details",
+    "placeholders": null,
+    "notes": "2026-11-08 Floor Vote draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.whip_details_title",
+    "where": "Floor Vote",
+    "english": "Whip Details",
+    "placeholders": null,
+    "notes": "2026-11-08 Floor Vote draft. Claude's draft for Cameron."
   }
 ]

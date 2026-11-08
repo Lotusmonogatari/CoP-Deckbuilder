@@ -233,6 +233,7 @@
   "staff_slots_item_number": 35,
   "staff_slots_reputation_cost": 15,
   "staff_slots_maximum_purchases": 2,
-  "vote_projection_unknown_percent": 15,
+  "vote_projection_unknown_minimum_percent": 10,
+  "vote_projection_unknown_maximum_percent": 25,
   "xp_tiers": {}
 }

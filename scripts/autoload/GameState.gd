@@ -22,6 +22,12 @@ var awaiting_new_game := false
 ## one, from the stage boundary, is the one to come back to.
 var mid_stage := false
 
+## The share of the house the Floor Vote screen hides as Unknown (draft
+## 2026-11-08). Drawn between two Balance numbers when a level begins and
+## each time a stage ends, so it is fixed before the vote screen is built and
+## cannot change by reopening it. 0 = not drawn yet (the screen draws it).
+var vote_unknown_percent := 0
+
 ## A save point inside a stage with several opponents, taken when one is
 ## defeated: { "key": which stage, "item_bonuses": what the stage began with,
 ## "engine": BattleEngine.checkpoint() }. {} otherwise. Saved; cleared when
@@ -2246,8 +2252,16 @@ func reset_segment_favorability() -> void:
 		segment_favorability[segment_id] = int(start) if start != null else 50
 
 
+## Draws the hidden share for the next Floor Vote (see vote_unknown_percent).
+func lock_vote_unknown_percent() -> void:
+	var low := int(DataDB.balance.get("vote_projection_unknown_minimum_percent", 10))
+	var high := int(DataDB.balance.get("vote_projection_unknown_maximum_percent", 25))
+	vote_unknown_percent = randi_range(mini(low, high), maxi(low, high))
+
+
 ## Called by the Office when the player starts a level.
 func begin_level(runner: LevelRunner) -> void:
+	lock_vote_unknown_percent()
 	_resume_promise_deadlines()
 	level_clock_started = time_units
 	level_runner = runner
@@ -2345,6 +2359,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		gaffe_caused_loss: bool = false, gaffes: int = 0,
 		displeased_boosters: Array = [], crushed_boosters: Array = [],
 		opposed_boosters: Array = [], booster_tally: Dictionary = {}) -> bool:
+	lock_vote_unknown_percent()
 	mid_stage = false
 	stage_checkpoint = {}
 	if level_runner == null:

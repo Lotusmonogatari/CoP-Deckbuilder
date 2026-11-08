@@ -35,6 +35,13 @@ var _voted := false
 @onready var _party_row: Control = %PartyRow
 @onready var _bill_text: Label = %BillText
 var _influence_panel: Overlay = null
+var _whip_panel: Overlay = null
+var _whip_details: Array = []
+
+## Whip layout draft (2026-11-08): 1 = heading, one cost line, stepper;
+## 2 = heading and stepper only, the full rules behind a Whip Details button.
+## Cameron picks one and the other is removed.
+var whip_variant := 1
 
 ## Projection bar colours; Unknown is black, beside the Abstain part.
 const PROJECTION_AYE := Color(0.30, 0.62, 0.40)
@@ -224,6 +231,13 @@ func _show_influence_and_preview() -> void:
 
 	# The influence gate lives behind a button (2026-11-08 draft): the pop-up
 	# is built fresh on each press, so it always shows the standing right now.
+	var influence_line := Label.new()
+	influence_line.name = "InfluenceLine"
+	influence_line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	influence_line.text = Text.say("floor_vote.influence_line_will"
+		if bool(engine.influence_status().get("ready", false))
+		else "floor_vote.influence_line_will_not")
+	column.add_child(influence_line)
 	var influence_button := Button.new()
 	influence_button.name = "InfluenceStatusButton"
 	influence_button.text = Text.say("floor_vote.influence_button")
@@ -263,7 +277,9 @@ func _show_influence_and_preview() -> void:
 	preview_title.text = Text.say("floor_vote.preview_heading")
 	preview.add_child(preview_title)
 	var labels := _vote_words.duplicate()
-	var unknown_percent := float(DataDB.balance.get("vote_projection_unknown_percent"))
+	if GameState.vote_unknown_percent <= 0:
+		GameState.lock_vote_unknown_percent()
+	var unknown_percent := float(GameState.vote_unknown_percent)
 	engine.set_whips(_whips)
 	for choice: String in labels:
 		var trial := engine.preview(choice)
@@ -289,10 +305,6 @@ func _show_influence_and_preview() -> void:
 			parts.append({"color": bucket[1], "votes": int(shown[bucket[0]]), "label": ""})
 		bar.show_segments(parts)
 		preview.add_child(bar)
-	var legend := Label.new()
-	legend.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	legend.text = Text.say("floor_vote.projection_unknown", {"percent": int(unknown_percent)})
-	preview.add_child(legend)
 	column.add_child(preview)
 
 	if not GameState.stance_lean().is_empty():
@@ -403,25 +415,25 @@ func _build_whip_row(column: VBoxContainer) -> void:
 	var base := VoteWhip.discounted_unit(base_cost, backers, discount, cheapest)
 	var against := VoteWhip.discounted_unit(base_cost * int(DataDB.balance.get("whip_against_party_multiplier", 3)),
 		backers, discount, cheapest)
-	var info := Label.new()
-	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	info.theme_type_variation = &"SmallLabel"
-	info.text = Text.say("floor_vote.whip_cost", {
+	var full_info := Text.say("floor_vote.whip_cost", {
 		"base": base, "against": against,
 		"have": int(GameState.meta.get("Party support", 0)),
 		"floor": int(DataDB.balance.get("whip_party_support_floor", 30))})
-	box.add_child(info)
 	var friends := _discount_orgs()
+	var perk_text := ""
 	if not friends.is_empty():
 		var names: Array[String] = []
 		for booster_id: String in friends:
 			names.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-		var perk := Label.new()
-		perk.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		perk.theme_type_variation = &"SmallLabel"
-		perk.text = Text.say("floor_vote.whip_discount", {
+		perk_text = Text.say("floor_vote.whip_discount", {
 			"orgs": ", ".join(names), "amount": int(DataDB.balance.get("whip_discount_amount", 1))})
-		box.add_child(perk)
+	_whip_details = [full_info, perk_text]
+	if whip_variant == 1:
+		var info := Label.new()
+		info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		info.theme_type_variation = &"SmallLabel"
+		info.text = Text.say("floor_vote.whip_cost_short", {"base": base, "against": against})
+		box.add_child(info)
 	if most <= 0:
 		var none := Label.new()
 		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -451,8 +463,27 @@ func _build_whip_row(column: VBoxContainer) -> void:
 		controls.add_child(count)
 		controls.add_child(more)
 		box.add_child(controls)
+	if whip_variant == 2 and most > 0:
+		var details := Button.new()
+		details.name = "WhipDetailsButton"
+		details.text = Text.say("floor_vote.whip_details_button")
+		details.pressed.connect(_open_whip_details)
+		box.add_child(details)
 	column.add_child(box)
 	_refresh_vote_buttons()
+
+
+## The whip rules in full: prices, the Party support floor, backer discounts.
+func _open_whip_details() -> void:
+	if _whip_panel == null:
+		_whip_panel = Overlay.new()
+		_whip_panel.name = "WhipDetailsPanel"
+		add_child(_whip_panel)
+	var rows: Array[Control] = []
+	for text: String in _whip_details:
+		if not text.is_empty():
+			rows.append(UiKit.line(text))
+	_whip_panel.open(Text.say("floor_vote.whip_details_title"), rows)
 
 
 func _on_whip_changed(step: int) -> void:
