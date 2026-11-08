@@ -715,3 +715,7 @@ Small requests modelled on real Japanese and American constituency casework (pot
 | Follow-ups | EV74-EV82 | The streetlight is back on (from VQ01 A, now scheduling it), the passport arrives, the crows move a street over, the pothole is patched, the veteran's claim comes back, the empty house's owner is found, the phone company writes back, the scam calls come again, the turbine meeting |
 
 All Claude's draft for Cameron to rewrite; only existing visitors, organizations and places are used. Batch: `tools/workbook/archive/b11/mundane_casework.py`. Checked: export "No errors", `tools/verify.sh` passes (content budget, promise text, spoken-terms and follow-up checks included).
+
+## Cameron's visitor update: three names, new pictures (2026-11-08)
+
+Cameron uploaded a new workbook and new visitor pictures. The only data change is three visitor names: VI03 Saki Mori is now Inra Mori, VI11 Leo Aoyama is now Lele Aoyama (with Japanese and romaji to match), and the placeholder VI24 "Party Member A" is now Hiroshi Furuya, Party Steering Committee Member. No other content refers to the old names (one historical review paper mentions "Leo"), and none of the 2026-11-08 casework uses these three visitors, so nothing else needed changing. The casework batch (VQ398-VQ423, EV66-EV82) is intact in the new workbook. As with the last upload, Excel's calculation chain on the Vote Tally & Swing tab would have triggered a "repair" message; a no-change save by `wbx` dropped it. Checked: export "No errors", `tools/verify.sh` passes.

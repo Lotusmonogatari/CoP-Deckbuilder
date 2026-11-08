@@ -121,9 +121,9 @@
   },
   {
     "visitor_id": "VI03",
-    "name_en": "Saki Mori",
-    "name_jp": "森さき",
-    "romaji": "Saki Mori",
+    "name_en": "Inra Mori",
+    "name_jp": "森インラ",
+    "romaji": "Inra Mori",
     "title": "Reporter",
     "stages": [
       "ST07",
@@ -625,9 +625,9 @@
   },
   {
     "visitor_id": "VI11",
-    "name_en": "Leo Aoyama",
-    "name_jp": "青山レオ",
-    "romaji": "Reo Aoyama",
+    "name_en": "Lele Aoyama",
+    "name_jp": "青山レレ",
+    "romaji": "Rere Aoyama",
     "title": "Startup Founder",
     "stages": [
       "ST07",
@@ -1449,10 +1449,10 @@
   },
   {
     "visitor_id": "VI24",
-    "name_en": "Party Member A",
-    "name_jp": "党員A",
-    "romaji": "Tōin A",
-    "title": "Steering Committee Member",
+    "name_en": "Hiroshi Furuya",
+    "name_jp": "古屋 弘志",
+    "romaji": "Hiroshi Furuya",
+    "title": "Party Steering Committee Member",
     "stages": [
       "ST22"
     ],
