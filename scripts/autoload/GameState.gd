@@ -529,7 +529,7 @@ const _SAVED_FIELDS := [
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
-	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired",
+	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",

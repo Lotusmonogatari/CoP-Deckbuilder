@@ -225,3 +225,5 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Spoken lines stay centered two seconds longer (2026-11-08, Cameron)
 - Expanded Staff Office: more staff per role, and a primary (2026-11-08, Cameron)
 - Floor Vote screen: gold lines, Influence Status, Vote Projections (2026-11-08, Cameron)
+- Policy Research Assistant: Vote Intention Research (2026-11-08, Cameron)
+- Cleanup pass: unused Floor Vote text and old working papers (2026-11-08, Cameron)

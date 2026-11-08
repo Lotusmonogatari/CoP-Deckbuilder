@@ -749,3 +749,13 @@ Decisions by Cameron: the Reputation price is a Balance row, not a new Shop colu
 Gold lines now separate the information blocks. The influence gate moved behind an **Influence Status** button (every missing requirement on its own row, scrolling), with a line above it: "Your influence will / will not affect the vote." "If the vote went each way" became **Vote Projections**: a bar per choice with the label "Vote Aye - Likely Passes/Fails". Part of the house (10 to 25%, drawn when a level begins or a stage ends, so it is fixed before the screen is built) shows black as Unknown, pulled from Aye, Nay and Abstain in proportion; the exact tally waits for the outcome screen. Influence and whips are inside the projection. Whip rules sit behind a **Whip Details** button (Cameron picked this of two layouts).
 
 Balance: `Vote Projection: Unknown Minimum Percent` 10 and `Maximum Percent` 25. New rules file `VoteProjection.gd` with `tests/test_vote_projection.gd`. The "influence flips the result" note is no longer shown. Wording is Claude's draft.
+
+## Policy Research Assistant: Vote Intention Research (2026-11-08, Cameron)
+
+A hired **primary** Policy Research Assistant helps on the Floor Vote screen in two ways. Passively, their tier takes points off both ends of the Unknown range when it is drawn (Tier 0/1/2: 1/2/3 points; the tier's own number, not added up). Actively, a **Vote Intention Research** button above the whip block clears a further 1/2/3% of the house from the Unknown share, once per vote, for 2 hours and 50 XP; the cost line sits above the button and a disabled button says why (no assistant, already done, no hours, not enough XP, nothing left to clear). A line says "Your research assistant has narrowed the vote projection uncertainty." The drawn Unknown share and the "already briefed" flag are now saved.
+
+Balance rows: `Research Assistant: Passive Points Tier 0-2`, `Briefing Clears Tier 0-2`, `Briefing Hours` (2), `Briefing XP` (50). Rules: `VoteProjection.narrowed_range()` and `by_tier()` with tests. Decisions by Cameron: points of the whole house, 2 hours kept even inside a level, the "Likely Passes/Fails" label stays as it is. Wording is Claude's draft.
+
+## Cleanup pass (2026-11-08, Cameron: "Approve all")
+
+Six unused Floor Vote Text rows and 98 working papers nothing reads were removed (details and what was kept on purpose are in `design/CLEANUP_CANDIDATES.md`). Everything is in git history.

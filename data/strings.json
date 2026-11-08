@@ -2674,34 +2674,6 @@
     "notes": "2026-10-15 Floor Vote preview and influence readiness."
   },
   {
-    "key": "floor_vote.preview_line",
-    "where": "Floor Vote",
-    "english": "{choice}: {yes} Aye, {no} Nay, {abstain} Abstain. {result}",
-    "placeholders": "choice, yes, no, abstain, result",
-    "notes": "2026-10-15 Floor Vote preview and influence readiness."
-  },
-  {
-    "key": "floor_vote.preview_passes",
-    "where": "Floor Vote",
-    "english": "It passes.",
-    "placeholders": null,
-    "notes": "2026-10-15 Floor Vote preview and influence readiness."
-  },
-  {
-    "key": "floor_vote.preview_fails",
-    "where": "Floor Vote",
-    "english": "It fails.",
-    "placeholders": null,
-    "notes": "2026-10-15 Floor Vote preview and influence readiness."
-  },
-  {
-    "key": "floor_vote.preview_flips",
-    "where": "Floor Vote",
-    "english": "Your influence swings the result.",
-    "placeholders": null,
-    "notes": "2026-10-15 Floor Vote preview and influence readiness."
-  },
-  {
     "key": "floor_vote.influence_more",
     "where": "Floor Vote",
     "english": "and {more} more",
@@ -6566,13 +6538,6 @@
     "notes": "2026-11-08 Floor Vote draft: Vote Projections and Influence Status rows. Claude's draft for Cameron."
   },
   {
-    "key": "floor_vote.projection_unknown",
-    "where": "Floor Vote",
-    "english": "Black marks the {percent}% of the house whose votes are not yet known.",
-    "placeholders": "percent",
-    "notes": "2026-11-08 Floor Vote draft: Vote Projections and Influence Status rows. Claude's draft for Cameron."
-  },
-  {
     "key": "floor_vote.influence_not_ready_heading",
     "where": "Floor Vote",
     "english": "Your influence is not yet strong enough to sway other parties. Still needed:",
@@ -6591,13 +6556,6 @@
     "where": "Floor Vote",
     "english": "Your influence will not affect the vote.",
     "placeholders": null,
-    "notes": "2026-11-08 Floor Vote draft. Claude's draft for Cameron."
-  },
-  {
-    "key": "floor_vote.whip_cost_short",
-    "where": "Floor Vote",
-    "english": "Each extra vote costs {base} Party support ({against} against your party's position).",
-    "placeholders": "base, against",
     "notes": "2026-11-08 Floor Vote draft. Claude's draft for Cameron."
   },
   {

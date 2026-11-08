@@ -84,3 +84,9 @@ Nothing below was deleted. The change log, the guides and the code are now the r
 - The Sanban tab's low and high "consequence" cells (for example "LV10 cannot be activated") are text only; no code enforces them.
 - `GameState._apply_time_decays()` and the Balance lever `decay_interval` (0 = off) are a switched-off second decay path; decay runs once a week at "Go Home".
 - `GameState.buy_random_level()` and the shop `level_tier` column are unused by the current Shop tab (kept and tested).
+
+## Cleanup pass (2026-11-08, Cameron: "Approve all")
+
+**Removed (still in git history):** the Text rows `floor_vote.preview_line`, `preview_passes`, `preview_fails`, `preview_flips`, `projection_unknown` and `whip_cost_short`, and 98 working papers that no script, test or tool reads: design/ (14); design/drafts (3); design/prompts (1); design/proposals (17); design/review (63).
+
+**Kept on purpose:** `design/bench/` (the bots and `bench.sh` read and write it), the 17 papers whose file names scripts or tools still mention (`BALANCE_AUDIT.md`, `BALANCE_AUDIT_2026-10-18.md`, `BALANCE_AUDIT_PROCESS.md`, `DYNAMIC_SCREEN_PLAN.md`, `MECHANIC_COVERAGE.md`, `review/CHOICE_AUDIT.md`, `review/MC2T_TEST_KIT_2026-11-06.md` and nine plans in `design/proposals/`), the MC²T papers (the player-test kit uses them), `design/archive/` (its README is referenced), `game_design_artifact.html` (needs a duplicate check), and the "Ideas not built" group, which the list itself says to keep.
