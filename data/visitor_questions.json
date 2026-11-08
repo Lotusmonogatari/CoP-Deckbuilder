@@ -31424,7 +31424,7 @@
     "visitor_ids": [
       "VI115"
     ],
-    "question_text": "The pothole on the market road cracks a van axle a month. Will someone fill it?",
+    "question_text": "The pothole on the road into Hakodate's morning market cracks a van axle a month. Will someone fill it?",
     "choice_a": "I'll press the ward to repair it this month.",
     "choice_b": "Roads get fixed in order; the list is fair.",
     "choice_c": "I'll ask for a cone and a warning sign today.",
@@ -31501,7 +31501,7 @@
     "reaction_b": "Shrugs.",
     "reaction_c": "Nods once.",
     "reaction_d": "Laughs without humor.",
-    "promise_kept_text_a": "You press the ward office about the market-road pothole until it is on this month's repair list.",
+    "promise_kept_text_a": "You press the Hakodate ward office until the market-road pothole is on this month's repair list.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -31511,7 +31511,7 @@
     "visitor_ids": [
       "VI01"
     ],
-    "question_text": "Crows tear open the garbage bags every collection day. Can we get nets?",
+    "question_text": "Crows tear open the garbage bags in Kotoni every collection day. Can we get nets?",
     "choice_a": "I'll get the ward to supply nets for every point.",
     "choice_b": "Households can buy their own nets.",
     "choice_c": "I'll ask whether collection can start earlier.",
@@ -31604,7 +31604,7 @@
     "visitor_ids": [
       "VI78"
     ],
-    "question_text": "New tenants keep putting bottles out on burnables day. Can the rules come in more languages?",
+    "question_text": "New tenants in Niseko keep putting bottles out on burnables day. Can the rules come in more languages?",
     "choice_a": "I'll get the calendar printed in several languages.",
     "choice_b": "Fines for wrong sorting will teach it fastest.",
     "choice_c": "I'll ask about a sorting class for new residents.",
@@ -31686,7 +31686,7 @@
     "visitor_ids": [
       "VI120"
     ],
-    "question_text": "Snow slides off the shop roofs onto the sidewalk. It nearly buried me last week.",
+    "question_text": "Snow slides off the shop roofs on Otaru's Sakaimachi Street. It nearly buried me last week.",
     "choice_a": "I'll push for grants to fit snow guards on those roofs.",
     "choice_b": "Shops can't control the weather; walk on the far side.",
     "choice_c": "I'll ask the shops to put out warning signs.",
@@ -31768,7 +31768,7 @@
     "visitor_ids": [
       "VI141"
     ],
-    "question_text": "My mother died abroad and my passport renewal is stuck. The funeral is in ten days.",
+    "question_text": "My mother died abroad and my passport is stuck at the Sapporo office. The funeral is in ten days.",
     "choice_a": "I'll call the ministry myself today.",
     "choice_b": "Everyone waits the same; I can't jump the queue.",
     "choice_c": "I'll have a staff member chase it tomorrow.",
@@ -31854,7 +31854,7 @@
     "visitor_ids": [
       "VI126"
     ],
-    "question_text": "My pension did not come this month. The office says to wait. I cannot wait.",
+    "question_text": "My pension did not come this month. The Kushiro office says to wait. I cannot wait.",
     "choice_a": "I'll go to the pension office with you.",
     "choice_b": "The office will sort it; delays happen.",
     "choice_c": "I'll write to the pension office today.",
@@ -31936,7 +31936,7 @@
     "visitor_ids": [
       "VI66"
     ],
-    "question_text": "A coast guard veteran's medical claim has sat on a desk for a year. Will you ask why?",
+    "question_text": "A coast guard veteran from Nemuro has waited a year on his medical claim. Will you ask why?",
     "choice_a": "I'll raise it with the ministry and follow it through.",
     "choice_b": "Every claim gets reviewed in turn.",
     "choice_c": "Send me the file and I'll pass it on.",
@@ -32023,7 +32023,7 @@
     "visitor_ids": [
       "VI114"
     ],
-    "question_text": "My mother turns one hundred next week. Would you send her a few words?",
+    "question_text": "My mother turns one hundred next week, here in Hirosaki. Would you send her a few words?",
     "choice_a": "I'll bring her a letter myself on the day.",
     "choice_b": "I'll ask the mayor to send the town's card.",
     "choice_c": "I'll mail her a signed card this week.",
@@ -32105,7 +32105,7 @@
     "visitor_ids": [
       "VI18"
     ],
-    "question_text": "The dog next door barks from dawn. Its owner works nights and sleeps through it.",
+    "question_text": "The dog next door barks from dawn. Its owner works nights at the Asahikawa depot and sleeps through it.",
     "choice_a": "I'll sit down with both of you and talk it through.",
     "choice_b": "Neighbors' quarrels aren't the Assembly's business.",
     "choice_c": "The ward has a noise desk; I'll pass it on.",
@@ -32187,7 +32187,7 @@
     "visitor_ids": [
       "VI21"
     ],
-    "question_text": "The dogs need somewhere to run. Can one corner of the park be fenced?",
+    "question_text": "The dogs need somewhere to run. Can one corner of Nakajima Park be fenced?",
     "choice_a": "I'll back a fenced corner for dogs.",
     "choice_b": "The park is for children first.",
     "choice_c": "I'll ask the ward to survey park users.",
@@ -32269,7 +32269,7 @@
     "visitor_ids": [
       "VI136"
     ],
-    "question_text": "Our station has stairs only. I have not taken a train in two years.",
+    "question_text": "Our station on the Gonō Line has stairs only. I have not taken a train in two years.",
     "choice_a": "I'll press the rail company for an elevator.",
     "choice_b": "The elevator waiting list is long, and it is fair.",
     "choice_c": "I'll ask for station staff to help at set times.",
@@ -32351,7 +32351,7 @@
     "visitor_ids": [
       "VI124"
     ],
-    "question_text": "Commuters chain their bicycles across my door. Customers climb over them.",
+    "question_text": "Commuters chain their bicycles across my door by Hachinohe Station. Customers climb over them.",
     "choice_a": "I'll push for a proper bicycle lot by the station.",
     "choice_b": "Bicycles beat cars; live with it.",
     "choice_c": "I'll ask the ward to tow the worst ones.",
@@ -32433,7 +32433,7 @@
     "visitor_ids": [
       "VI84"
     ],
-    "question_text": "An empty house in the village is falling in. Animals live in it. Nobody knows the owner.",
+    "question_text": "An empty house in Imabetsu is falling in. Animals live in it. Nobody knows the owner.",
     "choice_a": "I'll get the town to trace the owner.",
     "choice_b": "It's private property; the town can't touch it.",
     "choice_c": "I'll ask about a demolition grant.",
@@ -32510,7 +32510,7 @@
     "reaction_b": "Grumbles.",
     "reaction_c": "Nods.",
     "reaction_d": "Stares.",
-    "promise_kept_text_a": "You get the town office to trace the owner of the empty house. A letter goes to a nephew in Sapporo.",
+    "promise_kept_text_a": "You get the town office to trace the owner of the empty house in Imabetsu. A letter goes to a nephew in Sapporo.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -32520,7 +32520,7 @@
     "visitor_ids": [
       "VI121"
     ],
-    "question_text": "The bathhouse next to my shop may close. Half the street washes there.",
+    "question_text": "The old bathhouse next to my shop in Muroran may close. Half the street washes there.",
     "choice_a": "I'll look for a community grant to keep it open.",
     "choice_b": "A business that can't pay its way closes.",
     "choice_c": "I'll ask the bath owners' union what would help.",
@@ -32602,7 +32602,7 @@
     "visitor_ids": [
       "VI111"
     ],
-    "question_text": "The ward says my sidewalk sign breaks the rules. Without it, nobody finds the bakery.",
+    "question_text": "The ward says my sign on Tanukikōji breaks the rules. Without it, nobody finds the bakery.",
     "choice_a": "I'll ask for a small-sign exception for shops.",
     "choice_b": "Sidewalks are for walking; the rule stays.",
     "choice_c": "Try a sign in the window instead.",
@@ -32684,7 +32684,7 @@
     "visitor_ids": [
       "VI98"
     ],
-    "question_text": "The harbor ice machine broke in the middle of salmon season. Fish are spoiling.",
+    "question_text": "The Shari harbor ice machine broke in the middle of salmon season. Fish are spoiling.",
     "choice_a": "I'll press for an emergency repair grant today.",
     "choice_b": "Upkeep is the co-op's job, not the town's.",
     "choice_c": "I'll see if a nearby harbor can share its ice.",
@@ -32765,7 +32765,7 @@
     "visitor_ids": [
       "VI146"
     ],
-    "question_text": "Our old science teacher taught three generations here. Can the riverside park carry her name?",
+    "question_text": "Our old science teacher taught three generations in Takikawa. Can the park by the Ishikari River carry her name?",
     "choice_a": "I'll back naming the park for her.",
     "choice_b": "Parks keep their place names; a plaque is enough.",
     "choice_c": "I'll ask the town to put up a plaque.",
@@ -32847,7 +32847,7 @@
     "visitor_ids": [
       "VI79"
     ],
-    "question_text": "The museum's Ainu robes sit in a cracked case. Dust gets in every day.",
+    "question_text": "The Nibutani museum's Ainu robes sit in a cracked case. Dust gets in every day.",
     "choice_a": "I'll find money for a proper case.",
     "choice_b": "Museums must manage their own budgets.",
     "choice_c": "I'll ask a foundation to sponsor it.",
@@ -32929,7 +32929,7 @@
     "visitor_ids": [
       "VI81"
     ],
-    "question_text": "The warehouse that stored our festival float is coming down. Where does it go this winter?",
+    "question_text": "The warehouse that stored our Neputa float in Hirosaki is coming down. Where does it go this winter?",
     "choice_a": "I'll ask the town for space in a public garage.",
     "choice_b": "Storage is the committee's cost.",
     "choice_c": "I'll ask local businesses to lend a barn.",
@@ -33011,7 +33011,7 @@
     "visitor_ids": [
       "VI64"
     ],
-    "question_text": "The path up to the temple graves is too steep for our elderly visitors. Can we get a handrail?",
+    "question_text": "The path up to the temple graves in Esashi is too steep for our elderly visitors. Can we get a handrail?",
     "choice_a": "I'll find funding for a handrail and lights.",
     "choice_b": "Temple grounds are the temple's to fix.",
     "choice_c": "I'll ask for a shuttle on memorial days.",
@@ -33093,7 +33093,7 @@
     "visitor_ids": [
       "VI14"
     ],
-    "question_text": "My nephew is applying to the prefectural office. A letter from you would help.",
+    "question_text": "My nephew is applying to the prefectural office in Aomori City. A letter from you would help.",
     "choice_a": "I'll write him a letter.",
     "choice_b": "I don't write job letters; it isn't fair.",
     "choice_c": "I'll meet him first and see if he's suited.",
@@ -33180,7 +33180,7 @@
     "visitor_ids": [
       "VI113"
     ],
-    "question_text": "I keep getting tax letters for someone who moved out years ago. The ward won't listen.",
+    "question_text": "I keep getting tax letters for someone who left years ago. The Kita Ward office won't listen.",
     "choice_a": "I'll call the ward tax desk with you now.",
     "choice_b": "Fill in the correction form; that's the process.",
     "choice_c": "Bring the letters to my office; I'll forward them.",
@@ -33261,7 +33261,7 @@
     "visitor_ids": [
       "VI131"
     ],
-    "question_text": "Three of my clients nearly sent their savings to phone scammers this month.",
+    "question_text": "Three of my clients in Obihiro nearly sent their savings to phone scammers this month.",
     "choice_a": "I'll hold a warning session at the community hall.",
     "choice_b": "Families should watch their parents' accounts.",
     "choice_c": "I'll ask the phone companies to flag scam numbers.",
@@ -33338,7 +33338,7 @@
     "reaction_b": "Shakes her head.",
     "reaction_c": "Nods.",
     "reaction_d": "Closes her folder.",
-    "promise_kept_text_a": "You hold a warning session at the community hall. The room fills with seniors and their notebooks.",
+    "promise_kept_text_a": "You hold a warning session at the Obihiro community hall. The room fills with seniors and their notebooks.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -33348,7 +33348,7 @@
     "visitor_ids": [
       "VI145"
     ],
-    "question_text": "The fish plant beside the school smells all summer. The children eat lunch indoors.",
+    "question_text": "The fish plant beside the school in Monbetsu smells all summer. The children eat lunch indoors.",
     "choice_a": "I'll press for an inspection and better filters.",
     "choice_b": "The plant gives this town its jobs.",
     "choice_c": "I'll ask the plant to move its worst work to weekends.",
@@ -33430,7 +33430,7 @@
     "visitor_ids": [
       "VI161"
     ],
-    "question_text": "They want a wind turbine on the ridge above my pasture. Nobody asked the sheep, or me.",
+    "question_text": "They want a wind turbine on the ridge above my pasture near Cape Sōya. Nobody asked the sheep, or me.",
     "choice_a": "I'll call a public meeting before anything is signed.",
     "choice_b": "Clean power has to go somewhere.",
     "choice_c": "I'll ask the company about compensation for you.",
@@ -33507,7 +33507,7 @@
     "reaction_b": "Spits.",
     "reaction_c": "Grunts.",
     "reaction_d": "Walks off.",
-    "promise_kept_text_a": "You hold the meeting in the village hall, and the company answers questions for two hours.",
+    "promise_kept_text_a": "You hold the meeting in the village hall near Cape Sōya, and the company answers questions for two hours.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
@@ -33517,7 +33517,7 @@
     "visitor_ids": [
       "VI132"
     ],
-    "question_text": "Half the valley road has no phone signal. Twice this year I couldn't call the hospital.",
+    "question_text": "Half the valley road out of Yūbari has no phone signal. Twice this year I couldn't call the hospital.",
     "choice_a": "I'll press the carriers for a tower on the valley road.",
     "choice_b": "Carriers build where the customers are.",
     "choice_c": "I'll ask for radios in every ambulance.",

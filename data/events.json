@@ -23,7 +23,7 @@
   {
     "event_id": "EV02",
     "title": "The Temple Bell Needs a Ringer",
-    "flavor": "The Buddhist Temples Association is ringing out the old year at the hillside temple and asks you to take a turn at the great bell. A neighbor mentions, quietly, that the bell tower roof leaks.",
+    "flavor": "The Buddhist Temples Association is ringing out the old year at a hillside temple in Matsumae and asks you to take a turn at the great bell. A neighbor mentions, quietly, that the bell tower roof leaks.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -1119,7 +1119,7 @@
   {
     "event_id": "EV66",
     "title": "Honoring the Elders at the Hall",
-    "flavor": "The neighborhood association is honoring every resident over eighty and asks you to hand out the certificates.",
+    "flavor": "The neighborhood association in Furano is honoring every resident over eighty and asks you to hand out the certificates.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -1140,7 +1140,7 @@
   {
     "event_id": "EV67",
     "title": "Litter After the Blossom Parties",
-    "flavor": "After a week of blossom-viewing parties, the riverside park is buried in cans and paper.",
+    "flavor": "After a week of cherry-blossom parties, Hirosaki Park is buried in cans and paper.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -1161,7 +1161,7 @@
   {
     "event_id": "EV68",
     "title": "A Car That Never Moves",
-    "flavor": "A rusted car has sat outside the apartment blocks for half a year. The residents want it gone.",
+    "flavor": "A rusted car has sat outside the apartment blocks in Ebetsu for half a year. The residents want it gone.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1180,7 +1180,7 @@
   {
     "event_id": "EV69",
     "title": "The Farm Road Washes Out",
-    "flavor": "Last night's storm took out the only road to six farms. The co-op asks whether you will come and see it.",
+    "flavor": "Last night's storm took out the only road to six farms near Biei. The co-op asks whether you will come and see it.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -1202,7 +1202,7 @@
   {
     "event_id": "EV70",
     "title": "Old Campaign Boards Still Standing",
-    "flavor": "The poster boards from the last campaign are still up on three corners, your own face among them, peeling.",
+    "flavor": "The poster boards from the last campaign are still up on three corners in Chitose, your own face among them, peeling.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1221,7 +1221,7 @@
   {
     "event_id": "EV71",
     "title": "A Supporter's Grandson Is Getting Married",
-    "flavor": "An elder of the Local Kōenkai invites you to her grandson's wedding reception this weekend.",
+    "flavor": "An elder of the Local Kōenkai invites you to her grandson's wedding reception in Hachinohe this weekend.",
     "trigger": "Random",
     "available": "Weekend",
     "hours": 2,
@@ -1240,7 +1240,7 @@
   {
     "event_id": "EV72",
     "title": "The Ditch That Floods",
-    "flavor": "Every heavy rain, the drainage ditch behind the housing estate overflows into the gardens, and the mosquitoes follow.",
+    "flavor": "Every heavy rain, the drainage ditch behind the housing estate in Iwamizawa overflows into the gardens, and the mosquitoes follow.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -1261,7 +1261,7 @@
   {
     "event_id": "EV73",
     "title": "Will You Lend Your Name?",
-    "flavor": "The organizers of a charity fun run for the children's hospital ask whether they can list you as an honorary patron.",
+    "flavor": "The organizers of a charity run around Lake Ōnuma for the children's hospital ask whether they can list you as an honorary patron.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1299,7 +1299,7 @@
   {
     "event_id": "EV75",
     "title": "The Passport Arrives in Time",
-    "flavor": "Chihiro Endo's passport arrived two days before the flight. A reporter from the local paper has heard about it and wants the story.",
+    "flavor": "Chihiro Endo's passport arrived two days before the flight. A reporter from the Hokkaido evening paper has heard about it and wants the story.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1318,7 +1318,7 @@
   {
     "event_id": "EV76",
     "title": "The Crows Move One Street Over",
-    "flavor": "The nets work on Hanako Okuda's street. The crows have moved to the next one, and its association is at your door.",
+    "flavor": "The nets work on Hanako Okuda's street in Kotoni. The crows have moved to the next one, and its association is at your door.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1337,7 +1337,7 @@
   {
     "event_id": "EV77",
     "title": "The Pothole Is Patched",
-    "flavor": "The market-road pothole is filled. The delivery drivers have left a thank-you note and a box of doughnuts at your office.",
+    "flavor": "The pothole on the road into Hakodate's morning market is filled. The delivery drivers have left a thank-you note and a box of doughnuts at your office.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1356,7 +1356,7 @@
   {
     "event_id": "EV78",
     "title": "The Veteran's Claim Comes Back",
-    "flavor": "The ministry has approved the coast guard veteran's claim. The Veterans' Association invites you to a small celebration at its hall.",
+    "flavor": "The ministry has approved the Nemuro coast guard veteran's claim. The Veterans' Association invites you to a small celebration at its hall.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1375,7 +1375,7 @@
   {
     "event_id": "EV79",
     "title": "The Owner of the Empty House Is Found",
-    "flavor": "The town has traced the empty house's owner to Sapporo. He wants to sell, but not to pay for the demolition.",
+    "flavor": "The town has traced the owner of the empty house in Imabetsu to Sapporo. He wants to sell, but not to pay for the demolition.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1394,7 +1394,7 @@
   {
     "event_id": "EV80",
     "title": "The Phone Company Writes Back",
-    "flavor": "A carrier will survey the valley road for a tower, if the town provides the land at no charge.",
+    "flavor": "A carrier will survey the Yūbari valley road for a tower, if the town provides the land at no charge.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1413,7 +1413,7 @@
   {
     "event_id": "EV81",
     "title": "The Scam Calls Come Again",
-    "flavor": "Ayako Kudo calls: since your session, two of her clients hung up on scammers. A third was not there, and lost her savings.",
+    "flavor": "Ayako Kudo calls from Obihiro: since your session, two of her clients hung up on scammers. A third was not there, and lost her savings.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1432,7 +1432,7 @@
   {
     "event_id": "EV82",
     "title": "The Wind Turbine Meeting",
-    "flavor": "The village hall is full. The company has brought a model of the turbine, and the sheep farmers have brought their questions.",
+    "flavor": "The village hall below Cape Sōya is full. The company has brought a model of the turbine, and the sheep farmers have brought their questions.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,

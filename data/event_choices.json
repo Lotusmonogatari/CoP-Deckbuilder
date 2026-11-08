@@ -7691,7 +7691,7 @@
   {
     "event_id": "EV81",
     "choice": "A",
-    "choice_text": "Hold a second session in the next town",
+    "choice_text": "Hold a second session in Kushiro",
     "result_text": "You promise a second session for the next town.",
     "funds_cost": null,
     "funds_delta": null,
@@ -7801,7 +7801,7 @@
   {
     "event_id": "EV82",
     "choice": "A",
-    "choice_text": "Ask the company to move it one ridge further",
+    "choice_text": "Ask the company to move it one ridge further from the cape",
     "result_text": "The company agrees to study the far ridge. The farmers applaud.",
     "funds_cost": null,
     "funds_delta": null,
