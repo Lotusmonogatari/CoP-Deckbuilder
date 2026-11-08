@@ -6529,5 +6529,19 @@
     "english": "Each role can hold {places} hires at a time. The primary is the one every scene, notice and bonus reads; the others still earn their rank rewards. Hiring, upgrading and firing are all paid from Funds, and someone you fire will never work for you again.",
     "placeholders": "places",
     "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
+  },
+  {
+    "key": "floor_vote.influence_button",
+    "where": "Floor Vote",
+    "english": "Influence Status",
+    "placeholders": null,
+    "notes": "2026-11-08 Floor Vote draft: influence gate behind a button. Claude's draft for Cameron."
+  },
+  {
+    "key": "floor_vote.influence_title",
+    "where": "Floor Vote",
+    "english": "Influence Status",
+    "placeholders": null,
+    "notes": "2026-11-08 Floor Vote draft: influence gate behind a button. Claude's draft for Cameron."
   }
 ]

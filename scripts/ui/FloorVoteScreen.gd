@@ -34,6 +34,7 @@ var _voted := false
 @onready var _stage_name_jp: Label = %StageNameJP
 @onready var _party_row: Control = %PartyRow
 @onready var _bill_text: Label = %BillText
+var _influence_panel: Overlay = null
 @onready var _vote_yes: Button = %VoteYes
 @onready var _vote_no: Button = %VoteNo
 @onready var _vote_abstain: Button = %VoteAbstain
@@ -202,6 +203,7 @@ func _show_influence_and_preview() -> void:
 		if child != _bill_text:
 			child.queue_free()
 
+	column.add_child(_gold_rule())
 	var rule := Label.new()
 	rule.name = "VoteRequirement"
 	rule.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -214,12 +216,15 @@ func _show_influence_and_preview() -> void:
 		"needed": engine.yes_needed_now(), "house": house})
 	column.add_child(rule)
 
-	var status := engine.influence_status()
-	var influence := Label.new()
-	influence.name = "InfluenceStatus"
-	influence.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	influence.text = RequestLines.readiness_text(status)
-	column.add_child(influence)
+	# The influence gate lives behind a button (2026-11-08 draft): the pop-up
+	# is built fresh on each press, so it always shows the standing right now.
+	var influence_button := Button.new()
+	influence_button.name = "InfluenceStatusButton"
+	influence_button.text = Text.say("floor_vote.influence_button")
+	influence_button.custom_minimum_size.y = 96.0
+	influence_button.pressed.connect(_open_influence_status)
+	column.add_child(influence_button)
+	column.add_child(_gold_rule())
 
 	# Members won over and lobbyists at work, when a patron bill's stages left any.
 	var won := BillAssist.total(GameState.bill_assist, "won_over")
@@ -237,7 +242,10 @@ func _show_influence_and_preview() -> void:
 		against_label.text = Text.say("floor_vote.assist_against", {"count": against})
 		column.add_child(against_label)
 
+	if won > 0 or against > 0:
+		column.add_child(_gold_rule())
 	_build_whip_row(column)
+	column.add_child(_gold_rule())
 
 	var preview := Label.new()
 	preview.name = "VotePreview"
@@ -265,6 +273,7 @@ func _show_influence_and_preview() -> void:
 	column.add_child(preview)
 
 	if not GameState.stance_lean().is_empty():
+		column.add_child(_gold_rule())
 		var stance := VBoxContainer.new()
 		stance.name = "StancePreview"
 		var heading := Label.new()
@@ -286,6 +295,30 @@ func _show_influence_and_preview() -> void:
 			if not chips.is_empty():
 				stance.add_child(OrgChip.row(chips, true, 90.0))
 		column.add_child(stance)
+
+
+## A thin gold line between two blocks of information (draft 2026-11-08);
+## the same gold as the cue banner's edges.
+func _gold_rule() -> ColorRect:
+	var rule := ColorRect.new()
+	rule.name = "GoldRule"
+	rule.color = CueBanner.EDGE_COLOUR
+	rule.custom_minimum_size = Vector2(0.0, 3.0)
+	rule.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	return rule
+
+
+## The Influence Status pop-up: whether the player's influence can sway
+## other parties yet, and what is still missing.
+func _open_influence_status() -> void:
+	if _influence_panel == null:
+		_influence_panel = Overlay.new()
+		_influence_panel.name = "InfluenceStatusPanel"
+		add_child(_influence_panel)
+	var body := UiKit.line(RequestLines.readiness_text(engine.influence_status()))
+	body.name = "InfluenceStatus"
+	var rows: Array[Control] = [body]
+	_influence_panel.open(Text.say("floor_vote.influence_title"), rows)
 
 
 ## What a whipped vote costs and allows for `choice`: the price of one extra
