@@ -230,3 +230,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Important Stakeholders: change buttons, a new intro (2026-11-09, Cameron)
 - Higher-tier non-combat levels (2026-11-09, Cameron)
 - Level list: non-combat first, a gold line, then battles (2026-11-09, Cameron)
+- Level list: the gold line is removed (2026-11-09, Cameron)

@@ -333,15 +333,18 @@ func _drag(from: Vector2, to: Vector2, steps: int = 12) -> void:
 
 
 ## The first combat level's "Look it over" button: non-combat levels are
-## listed first in each tier, then a gold line (2026-11-09), so the first
-## button after the line is a battle.
+## listed first in each tier (2026-11-09), so the first button is not always a battle.
 func _first_combat_look(levels: Node) -> Control:
-	var past_rule := false
-	for node in levels.find_children("*", "", true, false):
-		if str(node.name).contains("GoldRule"):
-			past_rule = true
-		elif past_rule and node is Button and (node as Button).text == Text.say("office.look_it_over"):
-			return node as Control
+	var stages := {}
+	for stage: Dictionary in DataDB.stages:
+		stages[str(stage["stage_id"])] = stage
+	for node in levels.find_children("*", "Button", true, false):
+		var row := node.get_parent()
+		if (node as Button).text == Text.say("office.look_it_over") and row != null \
+				and str(row.name).begins_with("Level_"):
+			var level := DataDB.get_level(str(row.name).substr(6))
+			if not level.is_empty() and not Ledger.level_is_non_combat(level, stages):
+				return node as Control
 	return null
 
 

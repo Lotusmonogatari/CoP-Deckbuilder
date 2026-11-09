@@ -771,3 +771,7 @@ Non-combat levels now climb in tiers. Six families, each with a Tier 1 level (tw
 ## Level list: non-combat levels first, a gold line, then battles (2026-11-09, Cameron)
 
 Inside each tier of the level selection screen, the non-combat levels (office hours, festivals, walkabouts and the like) are listed first, then a thin gold line, then the combat levels. A level counts as non-combat when all of its stages are Non-combat rooms (`Ledger.level_is_non_combat`). No line shows when a tier has only one kind. The gold line is now one shared helper, `UiKit.gold_rule()`, also used by the Floor Vote screen.
+
+## Level list: the gold line is removed (2026-11-09, Cameron)
+
+The gold line between non-combat and combat levels in the level list did not look good and is gone. Non-combat levels are still listed first within each tier. Each level row is now named after its level (`Level_LV01`), and the click tests pick the first combat level by looking that level up, instead of relying on the line.
