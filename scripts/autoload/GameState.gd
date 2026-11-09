@@ -1871,6 +1871,7 @@ func _break_overdue_promises() -> void:
 		return
 	for promise: Dictionary in Promises.overdue(promises, time_units):
 		promises.erase(promise)
+		_drop_followups_of(promise)
 		var org := str(promise.get("for_org", ""))
 		var cause := Text.say("record.cause_promise_broken")
 		if Promises.has_own(promise, "broken"):
@@ -1979,10 +1980,33 @@ func keep_promise(promise_id: String) -> String:
 ## queue, or "" (the Office shows it).
 func take_due_followup() -> String:
 	for entry: Dictionary in scheduled_events:
+		# A follow-up tied to a promise waits while that promise is still open.
+		if _group_promise_open(str(entry.get("group", ""))):
+			continue
 		if time_units >= int(entry.get("due_at", 0)) and not get_event(str(entry.get("event_id", ""))).is_empty():
 			scheduled_events.erase(entry)
 			return str(entry.get("event_id", ""))
 	return ""
+
+
+## True while a promise made with follow-up group `group` is still open.
+func _group_promise_open(group: String) -> bool:
+	if group.is_empty():
+		return false
+	for promise: Dictionary in promises:
+		if str(promise.get("group", "")) == group:
+			return true
+	return false
+
+
+## Drops the follow-ups queued with a promise that has just broken.
+func _drop_followups_of(promise: Dictionary) -> void:
+	var group := str(promise.get("group", ""))
+	if group.is_empty():
+		return
+	for entry: Dictionary in scheduled_events.duplicate():
+		if str(entry.get("group", "")) == group:
+			scheduled_events.erase(entry)
 
 
 ## True when some promise owes this item (the Marketplace marks it).
@@ -3756,10 +3780,23 @@ func pay_commitments(list: Array, source: String = "", fallback_org: String = ""
 	var hours := Commitments.hours(list)
 	if hours > 0:
 		spend_hours(hours)
+	# A follow-up from a choice that also made a promise belongs with that
+	# promise: it waits while the promise is open and is dropped if the promise
+	# breaks, so a follow-up never describes a promise kept that was not
+	# (Cameron, 2026-11-09). The group ties them; a choice with no promise
+	# ("follow up later") leaves its follow-up free.
+	var group := ""
+	for entry: Variant in list:
+		if Promises.is_promise(entry):
+			group = "%s#%d" % [source, promise_serial + 1]
+			break
 	for entry: Variant in list:
 		if entry is Dictionary and str(entry.get("kind", "")) == "followup":
-			scheduled_events.append({"event_id": str(entry.get("event_id", "")),
-				"due_at": time_units + int(entry.get("after", 0))})
+			var scheduled := {"event_id": str(entry.get("event_id", "")),
+				"due_at": time_units + int(entry.get("after", 0))}
+			if not group.is_empty():
+				scheduled["group"] = group
+			scheduled_events.append(scheduled)
 			continue
 		if Promises.is_promise(entry):
 			promise_serial += 1
@@ -3771,6 +3808,8 @@ func pay_commitments(list: Array, source: String = "", fallback_org: String = ""
 				if terms.has(key) and not terms_given:
 					promise[key] = terms[key]
 			terms_given = true
+			if not group.is_empty():
+				promise["group"] = group
 			promises.append(promise)
 			lines.append(Text.say("promise.made", {"what": promise_what(promise), "who": promise_who(promise),
 				"count": int(promise["due_at"]) - time_units}))

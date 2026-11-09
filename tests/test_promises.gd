@@ -289,3 +289,38 @@ func _promises_something(list: Variant) -> bool:
 		if Promises.is_promise(entry):
 			return true
 	return false
+
+
+## Cameron, 2026-11-09: a follow-up made with a promise fires only once that
+## promise is kept. It waits while the promise is open and is dropped when the
+## promise breaks. A follow-up with no promise behind it fires on time.
+func _a_followup_event() -> String:
+	for event: Dictionary in DataDB.events:
+		if str(event.get("trigger", "")) == "Followup":
+			return str(event["event_id"])
+	return ""
+
+
+func test_a_followup_with_a_broken_promise_never_fires() -> void:
+	var followup := _a_followup_event()
+	GameState.pay_commitments([HOURS, {"kind": "followup", "event_id": followup, "after": 5}], "A test", "BO06")
+	GameState.spend_hours(5)
+	assert_eq(GameState.take_due_followup(), "", "waits while the promise is open")
+	GameState.spend_hours(6)
+	assert_eq(GameState.promises.size(), 0, "the promise broke")
+	assert_eq(GameState.take_due_followup(), "", "and the follow-up was dropped")
+
+
+func test_a_followup_with_a_kept_promise_fires() -> void:
+	var followup := _a_followup_event()
+	GameState.pay_commitments([HOURS, {"kind": "followup", "event_id": followup, "after": 5}], "A test", "BO06")
+	assert_eq(GameState.keep_promise(str(GameState.promises[0]["id"])), "")
+	GameState.spend_hours(5)
+	assert_eq(GameState.take_due_followup(), followup)
+
+
+func test_a_followup_with_no_promise_still_fires_on_time() -> void:
+	var followup := _a_followup_event()
+	GameState.pay_commitments([{"kind": "followup", "event_id": followup, "after": 3}], "A test", "")
+	GameState.spend_hours(3)
+	assert_eq(GameState.take_due_followup(), followup)
