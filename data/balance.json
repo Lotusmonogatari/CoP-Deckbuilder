@@ -243,5 +243,6 @@
   "research_assistant_briefing_clears_tier_2": 3,
   "research_assistant_briefing_hours": 2,
   "research_assistant_briefing_xp": 50,
+  "player_cues_room_line_chance": 25,
   "xp_tiers": {}
 }

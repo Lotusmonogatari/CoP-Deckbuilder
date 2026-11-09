@@ -10113,7 +10113,7 @@
     "cue_4": "Do you feel nothing about the wilderness?",
     "cue_5": "Tell that to those hurt by the wilderness.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10193,7 +10193,7 @@
     "cue_4": "Ask around. People care about the wilderness.",
     "cue_5": "The public is paying attention to the wilderness.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10233,7 +10233,7 @@
     "cue_4": "What is the real cost of the wilderness?",
     "cue_5": "The statistics on the wilderness are selective.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10253,7 +10253,7 @@
     "cue_4": "The cost of the wilderness adds up.",
     "cue_5": "The numbers on the wilderness hold.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10293,7 +10293,7 @@
     "cue_4": "This is a fight over the wilderness.",
     "cue_5": "Wrong side of the wilderness. Own it.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10353,7 +10353,7 @@
     "cue_4": "Convenient wording on the wilderness.",
     "cue_5": "What are you leaving out on the wilderness?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10373,7 +10373,7 @@
     "cue_4": "I said what I said on the wilderness.",
     "cue_5": "Trust me on the wilderness.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10473,7 +10473,7 @@
     "cue_4": "Tell that to those hurt by rural hospitals.",
     "cue_5": "Think of the families behind rural hospitals.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10553,7 +10553,7 @@
     "cue_4": "The public is paying attention to rural hospitals.",
     "cue_5": "Most people I meet have a view on rural hospitals.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10593,7 +10593,7 @@
     "cue_4": "The statistics on rural hospitals are selective.",
     "cue_5": "Where are the figures on rural hospitals?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10613,7 +10613,7 @@
     "cue_4": "The numbers on rural hospitals hold.",
     "cue_5": "The evidence on rural hospitals is clear.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10653,7 +10653,7 @@
     "cue_4": "Wrong side of rural hospitals. Own it.",
     "cue_5": "Rural hospitals serves insiders, not you.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10713,7 +10713,7 @@
     "cue_4": "What are you leaving out on rural hospitals?",
     "cue_5": "Funny how rural hospitals works out so well for you.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10733,7 +10733,7 @@
     "cue_4": "Trust me on rural hospitals.",
     "cue_5": "Let me reframe rural hospitals slightly.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10829,7 +10829,7 @@
     "cue_4": "Think of the families behind the identity card.",
     "cue_5": "Look at the faces affected by the identity card.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10905,7 +10905,7 @@
     "cue_4": "Most people I meet have a view on the identity card.",
     "cue_5": "Ordinary people want action on the identity card.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10943,7 +10943,7 @@
     "cue_4": "Where are the figures on the identity card?",
     "cue_5": "Your numbers on the identity card do not hold.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -10962,7 +10962,7 @@
     "cue_4": "The evidence on the identity card is clear.",
     "cue_5": "Here are the figures on the identity card.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11000,7 +11000,7 @@
     "cue_4": "The identity card serves insiders, not you.",
     "cue_5": "Whose side are you on over the identity card?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11057,7 +11057,7 @@
     "cue_4": "Funny how the identity card works out so well for you.",
     "cue_5": "Who benefits from the identity card, really?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11076,7 +11076,7 @@
     "cue_4": "Let me reframe the identity card slightly.",
     "cue_5": "Everyone agrees on the identity card, broadly.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11171,7 +11171,7 @@
     "cue_4": "Look at the faces affected by the broadcaster.",
     "cue_5": "The broadcaster is about real people.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11247,7 +11247,7 @@
     "cue_4": "Ordinary people want action on the broadcaster.",
     "cue_5": "Voters keep raising the broadcaster with me.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11285,7 +11285,7 @@
     "cue_4": "Your numbers on the broadcaster do not hold.",
     "cue_5": "Show the evidence for the broadcaster.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11304,7 +11304,7 @@
     "cue_4": "Here are the figures on the broadcaster.",
     "cue_5": "Studies on the broadcaster support this.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11342,7 +11342,7 @@
     "cue_4": "Whose side are you on over the broadcaster?",
     "cue_5": "You work against the public on the broadcaster.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11399,7 +11399,7 @@
     "cue_4": "Who benefits from the broadcaster, really?",
     "cue_5": "Your story on the broadcaster has gaps.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11418,7 +11418,7 @@
     "cue_4": "Everyone agrees on the broadcaster, broadly.",
     "cue_5": "The broadcaster is simpler than you think.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11517,7 +11517,7 @@
     "cue_4": "Political donations are about real people.",
     "cue_5": "Do you feel nothing about political donations?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11597,7 +11597,7 @@
     "cue_4": "Voters keep raising political donations with me.",
     "cue_5": "Ask around. People care about political donations.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11697,7 +11697,7 @@
     "cue_4": "You work against the public on political donations.",
     "cue_5": "This is a fight over political donations.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11757,7 +11757,7 @@
     "cue_4": "Your story on political donations has gaps.",
     "cue_5": "Convenient wording on political donations.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11777,7 +11777,7 @@
     "cue_4": "Political donations are simpler than you think.",
     "cue_5": "I said what I said on political donations.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11873,7 +11873,7 @@
     "cue_4": "Do you feel nothing about the tax cut?",
     "cue_5": "Tell that to those hurt by the tax cut.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11949,7 +11949,7 @@
     "cue_4": "Ask around. People care about the tax cut.",
     "cue_5": "The public is paying attention to the tax cut.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -11987,7 +11987,7 @@
     "cue_4": "What is the real cost of the tax cut?",
     "cue_5": "The statistics on the tax cut are selective.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12006,7 +12006,7 @@
     "cue_4": "The cost of the tax cut adds up.",
     "cue_5": "The numbers on the tax cut hold.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12044,7 +12044,7 @@
     "cue_4": "This is a fight over the tax cut.",
     "cue_5": "Wrong side of the tax cut. Own it.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12101,7 +12101,7 @@
     "cue_4": "Convenient wording on the tax cut.",
     "cue_5": "What are you leaving out on the tax cut?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12120,7 +12120,7 @@
     "cue_4": "I said what I said on the tax cut.",
     "cue_5": "Trust me on the tax cut.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12219,7 +12219,7 @@
     "cue_4": "Tell that to those hurt by the carbon levy.",
     "cue_5": "Think of the families behind the carbon levy.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12299,7 +12299,7 @@
     "cue_4": "The public is paying attention to the carbon levy.",
     "cue_5": "Most people I meet have a view on the carbon levy.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12339,7 +12339,7 @@
     "cue_4": "The statistics on the carbon levy are selective.",
     "cue_5": "Where are the figures on the carbon levy?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12359,7 +12359,7 @@
     "cue_4": "The numbers on the carbon levy hold.",
     "cue_5": "The evidence on the carbon levy is clear.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12399,7 +12399,7 @@
     "cue_4": "Wrong side of the carbon levy. Own it.",
     "cue_5": "The carbon levy serves insiders, not you.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12459,7 +12459,7 @@
     "cue_4": "What are you leaving out on the carbon levy?",
     "cue_5": "Funny how the carbon levy works out so well for you.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12479,7 +12479,7 @@
     "cue_4": "Trust me on the carbon levy.",
     "cue_5": "Let me reframe the carbon levy slightly.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12575,7 +12575,7 @@
     "cue_4": "Think of the families behind tradeable quotas.",
     "cue_5": "Look at the faces affected by tradeable quotas.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12651,7 +12651,7 @@
     "cue_4": "Most people I meet have a view on tradeable quotas.",
     "cue_5": "Ordinary people want action on tradeable quotas.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12689,7 +12689,7 @@
     "cue_4": "Where are the figures on tradeable quotas?",
     "cue_5": "Your numbers on tradeable quotas do not hold.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12708,7 +12708,7 @@
     "cue_4": "The evidence on tradeable quotas is clear.",
     "cue_5": "Here are the figures on tradeable quotas.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12746,7 +12746,7 @@
     "cue_4": "Tradeable quotas serves insiders, not you.",
     "cue_5": "Whose side are you on over tradeable quotas?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12803,7 +12803,7 @@
     "cue_4": "Funny how tradeable quotas works out so well for you.",
     "cue_5": "Who benefits from tradeable quotas, really?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12822,7 +12822,7 @@
     "cue_4": "Let me reframe tradeable quotas slightly.",
     "cue_5": "Everyone agrees on tradeable quotas, broadly.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12917,7 +12917,7 @@
     "cue_4": "Look at the faces affected by the shipyards.",
     "cue_5": "The shipyards are about real people.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -12993,7 +12993,7 @@
     "cue_4": "Ordinary people want action on the shipyards.",
     "cue_5": "Voters keep raising the shipyards with me.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13031,7 +13031,7 @@
     "cue_4": "Your numbers on the shipyards do not hold.",
     "cue_5": "Show the evidence for the shipyards.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13050,7 +13050,7 @@
     "cue_4": "Here are the figures on the shipyards.",
     "cue_5": "Studies on the shipyards support this.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13088,7 +13088,7 @@
     "cue_4": "Whose side are you on over the shipyards?",
     "cue_5": "You work against the public on the shipyards.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13145,7 +13145,7 @@
     "cue_4": "Who benefits from the shipyards, really?",
     "cue_5": "Your story on the shipyards has gaps.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13164,7 +13164,7 @@
     "cue_4": "Everyone agrees on the shipyards, broadly.",
     "cue_5": "The shipyards are simpler than you think.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13259,7 +13259,7 @@
     "cue_4": "The review is about real people.",
     "cue_5": "Do you feel nothing about the review?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13335,7 +13335,7 @@
     "cue_4": "Voters keep raising the review with me.",
     "cue_5": "Ask around. People care about the review.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13373,7 +13373,7 @@
     "cue_4": "Show the evidence for the review.",
     "cue_5": "What is the real cost of the review?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13392,7 +13392,7 @@
     "cue_4": "Studies on the review support this.",
     "cue_5": "The cost of the review adds up.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13430,7 +13430,7 @@
     "cue_4": "You work against the public on the review.",
     "cue_5": "This is a fight over the review.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13487,7 +13487,7 @@
     "cue_4": "Your story on the review has gaps.",
     "cue_5": "Convenient wording on the review.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13506,7 +13506,7 @@
     "cue_4": "The review is simpler than you think.",
     "cue_5": "I said what I said on the review.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13601,7 +13601,7 @@
     "cue_4": "Do you feel nothing about border sharing?",
     "cue_5": "Tell that to those hurt by border sharing.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13677,7 +13677,7 @@
     "cue_4": "Ask around. People care about border sharing.",
     "cue_5": "The public is paying attention to border sharing.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13715,7 +13715,7 @@
     "cue_4": "What is the real cost of border sharing?",
     "cue_5": "The statistics on border sharing are selective.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13734,7 +13734,7 @@
     "cue_4": "The cost of border sharing adds up.",
     "cue_5": "The numbers on border sharing hold.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13772,7 +13772,7 @@
     "cue_4": "This is a fight over border sharing.",
     "cue_5": "Wrong side of border sharing. Own it.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13829,7 +13829,7 @@
     "cue_4": "Convenient wording on border sharing.",
     "cue_5": "What are you leaving out on border sharing?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13848,7 +13848,7 @@
     "cue_4": "I said what I said on border sharing.",
     "cue_5": "Trust me on border sharing.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -13947,7 +13947,7 @@
     "cue_4": "Tell that to those hurt by the islands.",
     "cue_5": "Think of the families behind the islands.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14027,7 +14027,7 @@
     "cue_4": "The public is paying attention to the islands.",
     "cue_5": "Most people I meet have a view on the islands.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14067,7 +14067,7 @@
     "cue_4": "The statistics on the islands are selective.",
     "cue_5": "Where are the figures on the islands?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14087,7 +14087,7 @@
     "cue_4": "The numbers on the islands hold.",
     "cue_5": "The evidence on the islands is clear.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14127,7 +14127,7 @@
     "cue_4": "Wrong side of the islands. Own it.",
     "cue_5": "The islands serves insiders, not you.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14187,7 +14187,7 @@
     "cue_4": "What are you leaving out on the islands?",
     "cue_5": "Funny how the islands works out so well for you.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14207,7 +14207,7 @@
     "cue_4": "Trust me on the islands.",
     "cue_5": "Let me reframe the islands slightly.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14303,7 +14303,7 @@
     "cue_4": "Think of the families behind open trade.",
     "cue_5": "Look at the faces affected by open trade.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14379,7 +14379,7 @@
     "cue_4": "Most people I meet have a view on open trade.",
     "cue_5": "Ordinary people want action on open trade.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14417,7 +14417,7 @@
     "cue_4": "Where are the figures on open trade?",
     "cue_5": "Your numbers on open trade do not hold.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14436,7 +14436,7 @@
     "cue_4": "The evidence on open trade is clear.",
     "cue_5": "Here are the figures on open trade.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14474,7 +14474,7 @@
     "cue_4": "Open trade serves insiders, not you.",
     "cue_5": "Whose side are you on over open trade?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14531,7 +14531,7 @@
     "cue_4": "Funny how open trade works out so well for you.",
     "cue_5": "Who benefits from open trade, really?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14550,7 +14550,7 @@
     "cue_4": "Let me reframe open trade slightly.",
     "cue_5": "Everyone agrees on open trade, broadly.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14645,7 +14645,7 @@
     "cue_4": "Look at the faces affected by family farms.",
     "cue_5": "Family farms are about real people.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14721,7 +14721,7 @@
     "cue_4": "Ordinary people want action on family farms.",
     "cue_5": "Voters keep raising family farms with me.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14759,7 +14759,7 @@
     "cue_4": "Your numbers on family farms do not hold.",
     "cue_5": "Show the evidence for family farms.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14778,7 +14778,7 @@
     "cue_4": "Here are the figures on family farms.",
     "cue_5": "Studies on family farms support this.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14816,7 +14816,7 @@
     "cue_4": "Whose side are you on over family farms?",
     "cue_5": "You work against the public on family farms.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14873,7 +14873,7 @@
     "cue_4": "Who benefits from family farms, really?",
     "cue_5": "Your story on family farms has gaps.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14892,7 +14892,7 @@
     "cue_4": "Everyone agrees on family farms, broadly.",
     "cue_5": "Family farms are simpler than you think.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -14987,7 +14987,7 @@
     "cue_4": "Research funding is about real people.",
     "cue_5": "Do you feel nothing about research funding?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15063,7 +15063,7 @@
     "cue_4": "Voters keep raising research funding with me.",
     "cue_5": "Ask around. People care about research funding.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15101,7 +15101,7 @@
     "cue_4": "Show the evidence for research funding.",
     "cue_5": "What is the real cost of research funding?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15120,7 +15120,7 @@
     "cue_4": "Studies on research funding support this.",
     "cue_5": "The cost of research funding adds up.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15158,7 +15158,7 @@
     "cue_4": "You work against the public on research funding.",
     "cue_5": "This is a fight over research funding.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15215,7 +15215,7 @@
     "cue_4": "Your story on research funding has gaps.",
     "cue_5": "Convenient wording on research funding.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15234,7 +15234,7 @@
     "cue_4": "Research funding is simpler than you think.",
     "cue_5": "I said what I said on research funding.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15333,7 +15333,7 @@
     "cue_4": "Do you feel nothing about equal treatment?",
     "cue_5": "Tell that to those hurt by equal treatment.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15413,7 +15413,7 @@
     "cue_4": "Ask around. People care about equal treatment.",
     "cue_5": "The public is paying attention to equal treatment.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15453,7 +15453,7 @@
     "cue_4": "What is the real cost of equal treatment?",
     "cue_5": "The statistics on equal treatment are selective.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15473,7 +15473,7 @@
     "cue_4": "The cost of equal treatment adds up.",
     "cue_5": "The numbers on equal treatment hold.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15513,7 +15513,7 @@
     "cue_4": "This is a fight over equal treatment.",
     "cue_5": "Wrong side of equal treatment. Own it.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15573,7 +15573,7 @@
     "cue_4": "Convenient wording on equal treatment.",
     "cue_5": "What are you leaving out on equal treatment?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15593,7 +15593,7 @@
     "cue_4": "I said what I said on equal treatment.",
     "cue_5": "Trust me on equal treatment.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15693,7 +15693,7 @@
     "cue_4": "Tell that to those hurt by parental leave.",
     "cue_5": "Think of the families behind parental leave.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15773,7 +15773,7 @@
     "cue_4": "The public is paying attention to parental leave.",
     "cue_5": "Most people I meet have a view on parental leave.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15813,7 +15813,7 @@
     "cue_4": "The statistics on parental leave are selective.",
     "cue_5": "Where are the figures on parental leave?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15833,7 +15833,7 @@
     "cue_4": "The numbers on parental leave hold.",
     "cue_5": "The evidence on parental leave is clear.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15873,7 +15873,7 @@
     "cue_4": "Wrong side of parental leave. Own it.",
     "cue_5": "Parental leave serves insiders, not you.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15933,7 +15933,7 @@
     "cue_4": "What are you leaving out on parental leave?",
     "cue_5": "Funny how parental leave works out so well for you.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -15953,7 +15953,7 @@
     "cue_4": "Trust me on parental leave.",
     "cue_5": "Let me reframe parental leave slightly.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16053,7 +16053,7 @@
     "cue_4": "Think of the families behind the cameras.",
     "cue_5": "Look at the faces affected by the cameras.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16133,7 +16133,7 @@
     "cue_4": "Most people I meet have a view on the cameras.",
     "cue_5": "Ordinary people want action on the cameras.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16173,7 +16173,7 @@
     "cue_4": "Where are the figures on the cameras?",
     "cue_5": "Your numbers on the cameras do not hold.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16193,7 +16193,7 @@
     "cue_4": "The evidence on the cameras is clear.",
     "cue_5": "Here are the figures on the cameras.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16233,7 +16233,7 @@
     "cue_4": "The cameras serves insiders, not you.",
     "cue_5": "Whose side are you on over the cameras?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16293,7 +16293,7 @@
     "cue_4": "Funny how the cameras works out so well for you.",
     "cue_5": "Who benefits from the cameras, really?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16313,7 +16313,7 @@
     "cue_4": "Let me reframe the cameras slightly.",
     "cue_5": "Everyone agrees on the cameras, broadly.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16413,7 +16413,7 @@
     "cue_4": "Look at the faces affected by town mergers.",
     "cue_5": "Town mergers are about real people.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16493,7 +16493,7 @@
     "cue_4": "Ordinary people want action on town mergers.",
     "cue_5": "Voters keep raising town mergers with me.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16533,7 +16533,7 @@
     "cue_4": "Your numbers on town mergers do not hold.",
     "cue_5": "Show the evidence for town mergers.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16553,7 +16553,7 @@
     "cue_4": "Here are the figures on town mergers.",
     "cue_5": "Studies on town mergers support this.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16593,7 +16593,7 @@
     "cue_4": "Whose side are you on over town mergers?",
     "cue_5": "You work against the public on town mergers.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16653,7 +16653,7 @@
     "cue_4": "Who benefits from town mergers, really?",
     "cue_5": "Your story on town mergers has gaps.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16673,7 +16673,7 @@
     "cue_4": "Everyone agrees on town mergers, broadly.",
     "cue_5": "Town mergers are simpler than you think.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16769,7 +16769,7 @@
     "cue_4": "Open ballots are about real people.",
     "cue_5": "Do you feel nothing about open ballots?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16845,7 +16845,7 @@
     "cue_4": "Voters keep raising open ballots with me.",
     "cue_5": "Ask around. People care about open ballots.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16883,7 +16883,7 @@
     "cue_4": "Show the evidence for open ballots.",
     "cue_5": "What is the real cost of open ballots?",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16902,7 +16902,7 @@
     "cue_4": "Studies on open ballots support this.",
     "cue_5": "The cost of open ballots adds up.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16940,7 +16940,7 @@
     "cue_4": "You work against the public on open ballots.",
     "cue_5": "This is a fight over open ballots.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -16997,7 +16997,7 @@
     "cue_4": "Your story on open ballots has gaps.",
     "cue_5": "Convenient wording on open ballots.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Oppose",
     "component_ids": null,
     "reply_kinds": null
   },
@@ -17016,7 +17016,7 @@
     "cue_4": "Open ballots are simpler than you think.",
     "cue_5": "I said what I said on open ballots.",
     "bill_ids": null,
-    "stance": null,
+    "stance": "Support",
     "component_ids": null,
     "reply_kinds": null
   },

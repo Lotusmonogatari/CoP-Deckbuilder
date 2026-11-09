@@ -2638,8 +2638,12 @@ def validate(data, report):
         if cue.get("stance") and cue["stance"] not in ("Support", "Oppose"):
             report.error("player_cues",
                          f"{cue_id} has Stance '{cue['stance']}', which must be Support, Oppose or blank")
-        if cue.get("stance") and not cue.get("bill_ids") and not cue.get("reply_kinds"):
-            report.error("player_cues", f"{cue_id} has a Stance but no Bill ID or Reply Kind")
+        # A Stance needs something it is a stance on: a bill, a reply kind, or
+        # (2026-11-09, writing review group 2 item H) a topic room's own lines,
+        # which a bill level mixes in for a player of that lean.
+        if (cue.get("stance") and not cue.get("bill_ids") and not cue.get("reply_kinds")
+                and not cue.get("stage_ids")):
+            report.error("player_cues", f"{cue_id} has a Stance but no Bill ID, Reply Kind or Stage ID")
         for kind in cue.get("reply_kinds") or []:
             if reply_kinds_asked and kind not in reply_kinds_asked:
                 report.error("player_cues",
