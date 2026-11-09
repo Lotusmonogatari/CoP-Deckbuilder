@@ -81,3 +81,6 @@ Answers to the reviewers' Questions for Cameron, asked as pop-ups. The applier f
 | 63 | Lines made stiff by the "the" rule | No "the" before Members of Parliament, Neighborhood Associations and Constituency Voters either; Neighborhood Associations takes plural verbs ("Neighborhood Associations want"). Applied to 150 lines. |
 | 64 | Five bill-part short names with British words (CB123, CB134, CB143, CB185, CB273) | Keep the names. |
 | 65 | Card C16's Japanese name 白書を突きつける | Keep. |
+| 66 | BI26 numbers | Approved: Butsutou 16/2/1 (Supportive), Yezo Heritage 1/12/1, Frontier 5/22/0, Five Point 0/5/0, Keizaijiyuutou 1/24/0, Country Initiative 3/8/0. Update the dependent lines. |
+| 67 | S573-S582, no candidate-selection room exists | A new Candidate Selection room (a new stage; outline first). |
+| 68 | Second group | Go on A (follow-ups after a kept promise), C and E (move room questions), F and I (journalist lines, per-bill visitor replies), G and H (templates, room-line stance tags mixed in at 25% of turns). |
