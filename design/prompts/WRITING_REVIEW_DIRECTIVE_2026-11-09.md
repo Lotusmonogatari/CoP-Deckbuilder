@@ -11,7 +11,7 @@ Make every line the player reads:
 1. **Well written:** plain, specific and grammatical, in the voice of whoever says it.
 2. **Cohesive:** consistent with the game's fixed terms, tone and canon, and with the lines around it.
 3. **True in context:** a line must be true **every time** it can appear, **wherever** it can appear, and **whoever** has the conditions it assumes.
-4. **American English:** spelling, punctuation and style, as `design/INFORMATION_STANDARDS.md` section 6 sets out.
+4. **American English:** American spelling, punctuation, style **and terminology**, as `design/INFORMATION_STANDARDS.md` section 6 sets out. Japanese terms and Japanese English are welcome (section 3b).
 
 Point 3 matters most. Most of the game's text is drawn from pools and repeats. A line that is fine the first time it is read can be false the fifth time, or in the wrong room.
 
@@ -38,12 +38,50 @@ Each finding gets one of these codes.
 | **C4** | **Wrong speaker or listener.** The line does not fit who says it or who hears it: a staff line said with no staff, an opponent cheering the player, a party member contradicting their party's position, a reply that answers a different question. | A Heritage Party member praising a bill their party opposes. | Match the line to the speaker's party, role and the position in the data. |
 | **C5** | **Machinery in speech.** A character mentions levels, stages, turns, energy, cards, points or numbers. (`test_spoken_no_game_terms.gd` catches some of this.) | "That cost you 5 Reputation." spoken by a reporter. | Say it in the world: "That will be in every paper tomorrow." |
 | **C6** | **Off-term.** A fixed term is replaced by a synonym, or an internal word shows on screen. | "booster", "jiban", "standing points", "yen" written out instead of 円, "Yes vote" instead of Aye. | Use the fixed term from `INFORMATION_STANDARDS.md`. |
-| **C7** | **Not American English.** British spelling or style. | colour, centre, organise, licence, defence, travelled, whilst, amongst, learnt, programme, theatre, cheque, grey. | color, center, organize, license, defense, traveled, while, among, learned, program, theater, check, gray. |
+| **C7** | **Not American English.** British spelling **or British terminology**: words and phrases an American would not use for the same thing (section 3a). Japanese terms and Japanese English are welcome (section 3b). | colour, centre, organise; a constituency "surgery"; "queue", "car park", "in hospital". | color, center, organize; "office hours"; "line", "parking lot", "in the hospital". |
 | **C8** | **Grammar and style.** Agreement, tense, dangling phrases, run-ons, doubled words, stray spaces, inconsistent punctuation. Use the serial comma, "A, B, and C", which the game already uses. Dates are YY.MM.DD and thousands take commas. | "The committee are divided" for a single body; "Your performance and conduct is". | "The committee is divided"; "are". |
 | **C9** | **Dishonest or lopsided choice.** Among the options of one question or event, one is clearly the only thoughtful answer, the lengths differ a lot, or the text promises a cost or reward that the structured columns do not give. | A 4-word "No." beside three full sentences. | Even out the options; when text and a column disagree, change the text, never the column. |
 | **C10** | **Repetition in a pool.** Two lines in the same pool say the same thing in nearly the same words, so the player hears an echo. | Five opponent lines that all open with "Let me be clear". | Vary them, keeping each one's meaning. |
 | **C11** | **Tone break.** The register does not fit the room, a press conference sounding like a town hall, a constituent sounding like a minister, or the line is flippant about something serious. | A grieving visitor answered with a joke. | Match the room and the person. |
 | **C12** | **Broken placeholder.** A `{name}` placeholder is missing, misspelled, or left in a sentence that no longer reads well once filled. | "{org} have been told" reading "Fisheries Cooperative have been told". | "{org} has been told". |
+
+### 3a. American terminology (C7)
+
+American English means American words as well as American spelling. Judge by what an American political staffer or reporter would say. Examples found in the current text, and others to sweep for:
+
+| British | American | Seen in the data |
+|---|---|---|
+| (constituency) surgery | office hours, constituent meetings | Office Hours is already the canon name; "surgery" in a medical sense is fine |
+| queue, queued, queuing | line, wait in line | about 10 questions and visitor lines |
+| car park | parking lot | 5 room questions |
+| timetable | schedule | 7 visitor lines (a train or bus "timetable" may stay where Japan's railways use it; prefer "schedule") |
+| rota | schedule, roster | 4 visitor reactions |
+| shopfront | storefront | 2 visitor lines |
+| full stop (as emphasis) | period | 2 opponent lines |
+| pavement | sidewalk | 1 room question |
+| bin, rubbish | trash can, garbage, trash | event text |
+| in hospital | in the hospital | 1 event result |
+| at the weekend | on the weekend | Text tab |
+| Monday to Friday | Monday through Friday | |
+| fortnight | two weeks | |
+| petrol, lorry, motorway | gas, truck, highway or expressway | |
+| flat, council estate | apartment, public housing | |
+| high street | main street, downtown, shopping street | |
+| mobile phone | cell phone | |
+| ring someone | call someone | |
+| stand for election | run for office | |
+| table a motion | introduce or submit a motion (in American usage, "table" means to **shelve** it, the opposite) | check every "table" used about a motion or bill |
+| "The committee are", "the party have" | "The committee is", "the party has" | collective nouns take the singular |
+
+### 3b. Japanese terms and Japanese English are acceptable
+
+Yezo is a Japanese setting, so these are **not** C7 defects:
+
+- **Japanese terms** the data already uses or that fit the scene: kōenkai, chōnaikai, matsuri, onsen, ryokan, izakaya, bento, sake, kotatsu, omiyage, shrine and temple vocabulary, honorifics such as -san or -sensei when a character would use them. Keep macrons (ō, ū) where the data has them; on screen the Japanese fallback font draws them.
+- **Japanese English** (wasei-eigo and Japanese usage carried into English), where it gives local color: salaryman, office lady, "my number" card, konbini, "morning service", "baby car" for a stroller, "paper driver". Use it in characters' speech, not in interface text.
+- **Canon and parliamentary names** in the data stay as they are, even where an American would say something else: Parliament, Members of Parliament, constituency, prefecture, Diet-style titles, party post titles, "Constituency support".
+
+When a word is both British and Japanese English (for example "mansion" for an apartment block), keep it only in a Japanese character's speech and only where the meaning is clear.
 
 **Not a defect:** canon names, places and party positions in the data, even if they look odd. Leave them alone and list anything that looks wrong under "Questions for Cameron".
 
@@ -88,7 +126,7 @@ Extend `tools/content_lint.py` with these checks, read-only, one line per hit, `
 | C2 unanchored | A line that **starts** with `This`, `That`, `It`, `They`, `These`, `Those`; or contains `the bill`, `this bill`, `this law`, `your promise`, `as I said`, `like I said`, `as we discussed` | Generic rooms (ST01-ST23) and their pools |
 | C3 history | `last week`, `last time`, `again`, `once more`, `you lost`, `your win`, `after you`, `you promised`, `you voted` | Rows with no condition behind them |
 | C6 off-term | `booster`, `jiban`, `sanban`, `yen`, `points`, `turn`, `energy`, `stage`, `level`, `Yes vote`, `No vote`, `standing points` | Spoken and on-screen text |
-| C7 spelling | The existing British list, plus: `whilst`, `amongst`, `learnt`, `spelt`, `programme`, `cheque`, `tyre`, `kerb`, `grey`, `travelled`, `cancelled`, `-ise`/`-isation` endings | All English text. Ignore code keys such as `cancelled_line`. |
+| C7 spelling and terms | The British spelling list, plus `whilst`, `amongst`, `learnt`, `spelt`, `programme`, `cheque`, `tyre`, `kerb`, `grey`, `travelled`, `cancelled`, `-ise`/`-isation` endings; and the British terms in section 3a (`surgery` about constituents, `queue`, `car park`, `timetable`, `rota`, `shopfront`, `full stop`, `pavement`, `bin`, `rubbish`, `in hospital`, `at the weekend`, `fortnight`, `petrol`, `lorry`, `motorway`, `flat`, `high street`, `mobile phone`, `stand for`, `table` with motion or bill; collective nouns with `are` or `have`) | All English text. Ignore code keys such as `cancelled_line`. Skip Japanese terms and Japanese English (section 3b). |
 | C10 echo | Two rows in the same pool whose word overlap is 80% or more | Every pool |
 | C12 placeholders | A `{...}` in the text that the row's Placeholders cell does not list, or the reverse | Text tab |
 
@@ -131,5 +169,5 @@ Plus a short summary, `design/review/WRITING_REVIEW_<R#>_SUMMARY.md`, containing
 
 - Every C1-C4 hit from the sweeps is either fixed or marked as true in context, with a reason.
 - Sampling shows fewer than 1 in 100 C1-C4 defects remaining in the large pools.
-- No British spellings in English text. No off-terms on screen.
+- No British spellings or British terms in English text (Japanese terms and Japanese English excepted). No off-terms on screen.
 - `tools/content_lint.py` keeps the new checks, so later content is caught as it is written.
