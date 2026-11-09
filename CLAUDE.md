@@ -59,7 +59,7 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 
 ## 6. Data contract
 
-`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 101 levels, 273 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 166 visitors, 56 events, 34 shop items, 21 staff, 180 bill components, 6 cosmetic packages, about 916 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
+`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 113 levels, 288 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 166 visitors, 56 events, 34 shop items, 21 staff, 180 bill components, 6 cosmetic packages, about 916 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
 
 | Group | Files (`data/`) |
 |---|---|
@@ -228,3 +228,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Policy Research Assistant: Vote Intention Research (2026-11-08, Cameron)
 - Cleanup pass: unused Floor Vote text and old working papers (2026-11-08, Cameron)
 - Important Stakeholders: change buttons, a new intro (2026-11-09, Cameron)
+- Higher-tier non-combat levels (2026-11-09, Cameron)

@@ -57,6 +57,7 @@ A level is a row of up to ten stage slots plus rewards, cost and availability.
 | **Level Purpose, Purpose Speaker** | Every level needs a purpose line, the first thing said on its intro screen (`test_level_purpose.gd` fails without one). Purpose Speaker is a Staff-tab role name; blank or not hired falls back to the first hired staff member, then to the player's own thought. Write what the level is for, in the speaker's voice, with no game terms. |
 | **Cooldown** | Hours before it can be played again (the calendar is in hours). A number cell. |
 | **Level Tier** | 0, 1 or 2. Tier gates the XP unlock price (four cost columns: PRA vacant, tier 0, tier 1, tier 2). |
+| *Non-combat tiers* | Non-combat levels climb in tiers (2026-11-09): Tier 0 is one stage (2-4 hours, 30-80 XP, free, cooldown 8-24); Tier 1 is two stages (5-8 hours, 120-180 XP, unlock 60/50/40/30 XP, cooldown 48-72); Tier 2 is three stages (9-12 hours, 200-280 XP, unlock 120/100/80/60, cooldown 96-144). Pay stays near 20-25 XP per hour. Tier 1 and 2 levels are hidden until a Host Org's gathering (Tier 1 festival: a season). `tests/test_noncombat_tiers.gd` checks the shape. |
 | **Stage ID for Part 1-10** | `STxx` for a room, or `BIxx` where the Floor Vote for that bill is played (ST23 with that bill). The last slot of a bill level is its `BIxx`. |
 | **Bonus Win Range Δ** (5 meta columns) and **Win ΔBOxx** (BO01-BO32) | Extra rewards on completing the level. Numbers, not text. |
 | **One-Time** | Yes: disappears once completed (a payoff that must not be farmed). |

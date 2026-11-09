@@ -71,7 +71,7 @@ func test_hosting_reveals_one_hidden_level_at_a_time() -> void:
 	assert_ne(second, "")
 	assert_ne(first, second)
 	assert_eq(GameState.reveal_by_hosting("BO05"), "", "nothing left to reveal for BO05")
-	assert_eq(GameState.reveal_by_hosting("BO15"), "", "an organization with none")
+	assert_eq(GameState.reveal_by_hosting("BO08"), "", "an organization with none")
 
 
 func _host_to_the_end(item_id: String, org: String) -> Dictionary:
