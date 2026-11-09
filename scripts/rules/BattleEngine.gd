@@ -152,7 +152,8 @@ func setup(config: Dictionary) -> bool:
 		_questions = _draw_questions(config.get("question_pool", []),
 			config.get("question_pool_first", []),
 			config.get("question_pool_bill", []),
-			int(config.get("bill_question_share_percent", 50)))
+			int(config.get("bill_question_share_percent", 50)),
+			int(config.get("own_question_share_percent", 100)))
 	_question_strong_multiplier = float(config.get("question_strong_multiplier", 1.0))
 	_question_weak_multiplier = float(config.get("question_weak_multiplier", 1.0))
 
@@ -687,7 +688,9 @@ func _raise_threshold() -> int:
 ## `first` (2026-10-12) is the questions written for this stage itself
 ## (Stage Questions tab): they are dealt before any from the room's pool, and
 ## the dealt set is then shuffled so they don't always come first in play.
-func _draw_questions(pool: Array, first: Array = [], bill: Array = [], bill_share: int = 50) -> Array:
+## `own_share` caps them when the room also has a pool (2026-11-09).
+func _draw_questions(pool: Array, first: Array = [], bill: Array = [], bill_share: int = 50,
+		own_share: int = 100) -> Array:
 	if pool.is_empty() and first.is_empty() and bill.is_empty():
 		return []
 
@@ -710,6 +713,13 @@ func _draw_questions(pool: Array, first: Array = [], bill: Array = [], bill_shar
 		if not own.has(question) and not about_bill.has(question):
 			rest.append(question)
 	own = own.filter(func(question: Variant) -> bool: return not about_bill.has(question))
+	# A room with a general pool as well deals its own questions for at most
+	# `own_share` percent of what it asks (Cameron, 2026-11-09: the generic
+	# Town Hall had 110 of its own and asked little else). A room with only
+	# its own questions, or a pool too small to fill the rest, keeps them all.
+	if not rest.is_empty() and own_share < 100:
+		var own_cap := maxi(int(ceil(float(wanted) * float(own_share) / 100.0)), wanted - rest.size())
+		own = own.slice(0, mini(maxi(own_cap, 0), own.size()))
 	var bag := about_bill + own + _shuffled(rest)
 	var dealt := bag.slice(0, mini(wanted, bag.size()))
 	# Only worth a second shuffle when both kinds were dealt; a plain room

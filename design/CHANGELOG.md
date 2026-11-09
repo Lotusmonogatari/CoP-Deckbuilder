@@ -805,3 +805,7 @@ The content half of the second group of writing-review items (decisions #12, #15
 | 7. Candidate selection | New room ST289 Candidate Selection Committee (a copy of the Party Caucus, its people and picture; JP 候補者選考委員会, draft) and a one-room Tier 1 level LV114 Candidate Selection Interview (150/100/50/10 XP, cooldown 96, always listed). S573-S582 now come up only there. |
 
 Test change: `tests/test_stage_rules_columns.gd` now expects ST04's and ST05's question count to be the pool plus their own Stage Questions.
+
+## Rooms with a question pool cap their own questions (2026-11-09, Cameron)
+
+After the writing review moved 244 policy-specific questions into the generic rooms' own Stage Questions, a generic Town Hall would have asked almost nothing else. A room that also has a general pool now deals its own questions for at most a third of what it asks (Balance `Questions: Own Share Percent`, 34; 100 turns the cap off), picked at random each time, and fills the rest from the pool. A room with no pool, or one too small to fill the rest, still uses all of its own. Tests in `tests/test_questions.gd`.

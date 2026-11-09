@@ -504,3 +504,37 @@ func test_answering_the_last_question_mid_turn_is_not_yet_an_open_debate() -> vo
 func test_a_room_with_no_questions_is_never_an_open_debate() -> void:
 	var engine := _conference()
 	assert_false(engine.in_open_debate())
+
+
+## Cameron, 2026-11-09: a room with a pool as well deals its own questions for
+## at most the own-share percent of what it asks; with no pool, all of them.
+func test_own_questions_are_capped_when_the_room_has_a_pool() -> void:
+	var own: Array = []
+	for i in 30:
+		own.append(_question({"id": "OWN%d" % i}))
+	var stage := TestFixtures.stage({"win_mode": "score", "questions_per_turn": 1, "questions_count": 9})
+	var config := TestFixtures.battle_config({"stage": stage})
+	config["question_pool"] = _pool(20)
+	config["question_pool_first"] = own
+	config["own_question_share_percent"] = 34
+	config["seed"] = 7
+	var engine := BattleEngine.new()
+	engine.setup(config)
+	var asked := _asked(engine)
+	var own_count := asked.filter(func(id: String) -> bool: return id.begins_with("OWN")).size()
+	assert_eq(asked.size(), 9)
+	assert_eq(own_count, 4, "ceil(9 x 34%) = 4 of the room's own questions")
+
+
+func test_own_questions_are_all_used_when_there_is_no_pool() -> void:
+	var own: Array = []
+	for i in 6:
+		own.append(_question({"id": "OWN%d" % i}))
+	var stage := TestFixtures.stage({"win_mode": "score", "questions_per_turn": 1, "questions_count": 6})
+	var config := TestFixtures.battle_config({"stage": stage})
+	config["question_pool"] = []
+	config["question_pool_first"] = own
+	config["own_question_share_percent"] = 34
+	var engine := BattleEngine.new()
+	engine.setup(config)
+	assert_eq(_asked(engine).size(), 6)

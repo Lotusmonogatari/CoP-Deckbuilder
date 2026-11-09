@@ -244,5 +244,6 @@
   "research_assistant_briefing_hours": 2,
   "research_assistant_briefing_xp": 50,
   "player_cues_room_line_chance": 25,
+  "questions_own_share_percent": 34,
   "xp_tiers": {}
 }

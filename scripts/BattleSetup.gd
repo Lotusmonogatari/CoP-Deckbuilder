@@ -635,6 +635,9 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		"question_pool_bill": questions_for_room(
 			bill_questions_for(str(stage.get("bill_id", "")), stage_id), stage_id),
 		"bill_question_share_percent": int(DataDB.balance.get("bill_question_share_percent", 50)),
+		# A room's own questions take at most this share when it has a pool too
+		# (Balance "Questions: Own Share Percent"; Cameron, 2026-11-09).
+		"own_question_share_percent": int(DataDB.balance.get("questions_own_share_percent", 100)),
 		# How often a weak answer actually costs tone (§9/§8, 2026-09-28,
 		# Cameron: 0.75) — the same number across every question-asking
 		# stage, rather than one per stage type. Defaults to 1.0 (always

@@ -234,3 +234,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Writing review applied (2026-11-09, Cameron)
 - Organization names: three more without "the" (2026-11-09, Cameron)
 - Writing review, group 2 content (2026-11-09, Cameron)
+- Rooms with a question pool cap their own questions (2026-11-09, Cameron)
