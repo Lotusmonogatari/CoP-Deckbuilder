@@ -187,7 +187,10 @@ func test_expand_level_resolves_a_real_stages_question_pool_into_a_count() -> vo
 			press = stage
 			break
 	assert_false(press.is_empty(), "sanity: LV04 has an ST04 stage")
-	assert_eq(int(press.get("question_pool_size", 0)), DataDB.questions.get("press_conference", []).size(),
+	# The room's pool plus the questions written for ST04 itself (2026-11-09:
+	# policy-specific press questions moved there from the shared pool).
+	assert_eq(int(press.get("question_pool_size", 0)), DataDB.questions.get("press_conference", []).size()
+		+ DataDB.get_stage_questions("ST04").size(),
 		"the real press_conference pool's size, not 0")
 
 
@@ -210,7 +213,9 @@ func test_expand_level_resolves_st05_town_halls_own_question_pool_too() -> void:
 			town_hall = stage
 			break
 	assert_false(town_hall.is_empty(), "sanity: LV01 has an ST05 stage")
-	assert_eq(int(town_hall.get("question_pool_size", 0)), DataDB.questions.get("town_hall", []).size(),
+	# The room's pool plus the questions written for ST05 itself (2026-11-09).
+	assert_eq(int(town_hall.get("question_pool_size", 0)), DataDB.questions.get("town_hall", []).size()
+		+ DataDB.get_stage_questions("ST05").size(),
 		"the real town_hall pool's size, not 0")
 
 
