@@ -19,6 +19,8 @@ Read with: `design/EDITING_TEXT.md` (how to reword existing text, tab by tab), t
 | 7 | **Every new thing must be reachable.** A room is in a level, a level is unlocked or discoverable, an event has choices, a person is seated somewhere. | Unreachable content is invisible and the export errors on some cases. |
 | 8 | **Verify before handing over.** `python3 tools/export_data.py` must say "No errors", then `tools/verify.sh` must say "All checks passed". New rooms get a bot trial. | Section 10. |
 
+**Canon Cameron has settled** (writing review, 2026-11-09): **Sapporo is Yezo's capital** (lines that say so are correct). At the start of the parliamentary session **the opposition includes Country Initiative and Keizaijiyuutou**, so "the opposition" and "the majority" may appear in player lines. In a sentence every organization takes "the" (the Chamber of Commerce, the National Media) except **Local Kōenkai, Our Traditional Society and Students United**, and an organization takes the singular ("Students United is", "the Neighborhood Associations wants").
+
 After any workbook edit: edit with Excel or `tools/workbook/wbx.py` (**never save with openpyxl**, it corrupts cached values), run the export, and commit the workbook and the regenerated `data/*.json` together.
 
 ---

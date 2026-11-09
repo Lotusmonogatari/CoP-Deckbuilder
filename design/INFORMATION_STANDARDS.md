@@ -56,7 +56,7 @@
 | **Legislative Work** | Statute book | The internal name stays in code |
 | **threshold** (the win line) | the line, win mark, target | |
 | **Support** (shared bar), **Seats** (a vote), **Tone** (a single bar), **Viewer Interest** (TV) | other bar names | |
-| **level** (the whole chain), **stage** (one encounter in it) | module, battle (as a heading), room (except the audience in the room) | Characters never say level or stage; see section 3 |
+| **level** (the whole chain), **stage** (one encounter in it); **room** is allowed for the place where a stage happens (Cameron, 2026-11-09) | module, battle (as a heading) | Characters never say level or stage; see section 3 |
 | **Staff Rank** | staff tier | Card tier, level tier and column headers keep "Tier" |
 | **gaffe** | slip, failure | |
 | **Hours**, singular "1 Hour" | time units, ticks | |
