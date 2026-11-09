@@ -759,3 +759,7 @@ Balance rows: `Research Assistant: Passive Points Tier 0-2`, `Briefing Clears Ti
 ## Cleanup pass (2026-11-08, Cameron: "Approve all")
 
 Six unused Floor Vote Text rows and 98 working papers nothing reads were removed (details and what was kept on purpose are in `design/CLEANUP_CANDIDATES.md`). Everything is in git history.
+
+## Important Stakeholders: change buttons, a new intro (2026-11-09, Cameron)
+
+Each organization's change in standing is now a button reading only the signed number (for example +3); pressing it opens a pop-up listing the factors behind it, one per row ("a hosted gathering: +6"). The small line of linked backings under each organization is gone. The intro paragraph now reads: "Your performance and conduct are scrutinized closely. The following are key organizations that can support or oppose you based on their sentiment." (Claude fixed "performace" and "is" to "are"; reword freely.) New Text rows: `office.stakeholder_factor`, `office.stakeholder_no_cause`, `office.stakeholder_change_title`.

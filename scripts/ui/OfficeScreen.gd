@@ -21,6 +21,7 @@ var _title_party: Label
 @onready var _start_button: Button = %StartButton
 @onready var _reputation_button: Button = %ReputationButton
 @onready var _organisations_panel: Overlay = %OrganisationsPanel
+var _standing_panel: Overlay = null
 @onready var _briefing_panel: Overlay = %BriefingPanel
 @onready var _levels_panel: Overlay = %LevelsPanel
 
@@ -1040,33 +1041,46 @@ func _organisation_row(booster: Dictionary) -> Control:
 		standing,
 	]
 
-	# What moved last level, so a change is visible rather than inferred.
+	# What moved last level is a button reading only the change (2026-11-09,
+	# Cameron); pressing it lists the factors behind that number.
 	var change := int(GameState.last_booster_change.get(booster_id, 0))
+	var top := HBoxContainer.new()
+	top.add_theme_constant_override("separation", 12)
+	var name_line := UiKit.line(line)
+	name_line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	top.add_child(name_line)
 	if change != 0:
-		line += "  (%+d)" % change
-		var because := CauseLines.because(GameState.last_booster_cause.get(booster_id, []))
-		if not because.is_empty():
-			line += "  " + because
-
+		var button := Button.new()
+		button.name = "StandingChange_" + booster_id
+		button.text = "%+d" % change
+		button.custom_minimum_size = Vector2(130, 72)
+		button.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		button.pressed.connect(_show_standing_factors.bind(booster))
+		top.add_child(button)
 	var box := UiKit.tight_column()
-	box.add_child(UiKit.line(line))
+	box.add_child(top)
 	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-
-	# 2026-09-22 workbook: boosters.json no longer has a "boosts" summary
-	# column — what an organisation does is the modifiers it links, so that
-	# list is shown by name instead. A booster with no Linked modifiers at
-	# all (BO17/BO18, 2026-09-26) exports as JSON null, not [] — the <null>
-	# trap again (BarModel.for_stage()'s own comment).
-	var linked_raw: Variant = booster.get("linked_modifiers")
-	var linked: Array = linked_raw if linked_raw is Array else []
-	var names: Array[String] = []
-	for mod_id: String in linked:
-		var modifier := DataDB.get_modifier(mod_id)
-		if not modifier.is_empty():
-			names.append(str(modifier.get("name_en", mod_id)))
-	if not names.is_empty():
-		box.add_child(UiKit.line(", ".join(names), "SmallLabel"))
 	return _with_booster_icon(booster_id, box)
+
+
+## The reasons a stakeholder's standing moved last level, one per row.
+func _show_standing_factors(booster: Dictionary) -> void:
+	var booster_id := str(booster.get("booster_id", ""))
+	if _standing_panel == null:
+		_standing_panel = Overlay.new()
+		_standing_panel.name = "StandingFactorsPanel"
+		add_child(_standing_panel)
+	var rows: Array[Control] = []
+	var causes: Array = GameState.last_booster_cause.get(booster_id, [])
+	if causes.is_empty():
+		rows.append(UiKit.line(Text.say("office.stakeholder_no_cause")))
+	for entry: Dictionary in causes:
+		var row := UiKit.line(Text.say("office.stakeholder_factor", {
+			"cause": str(entry.get("cause", "")), "amount": "%+d" % int(entry.get("amount", 0))}))
+		row.name = "StandingFactor"
+		rows.append(row)
+	_standing_panel.open(Text.say("office.stakeholder_change_title",
+		{"name": str(booster.get("name_en", booster_id))}), rows)
 
 
 ## A small organisation image to the left of whatever describes it.

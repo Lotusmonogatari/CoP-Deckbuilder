@@ -227,3 +227,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Floor Vote screen: gold lines, Influence Status, Vote Projections (2026-11-08, Cameron)
 - Policy Research Assistant: Vote Intention Research (2026-11-08, Cameron)
 - Cleanup pass: unused Floor Vote text and old working papers (2026-11-08, Cameron)
+- Important Stakeholders: change buttons, a new intro (2026-11-09, Cameron)

@@ -555,7 +555,7 @@
   {
     "key": "office.orgs_blurb",
     "where": "Office — organizations",
-    "english": "Answering a reporter in the rhetorical style their question invites pleases the organization behind it, and that standing is carried between levels.",
+    "english": "Your performance and conduct are scrutinized closely. The following are key organizations that can support or oppose you based on their sentiment.",
     "placeholders": null,
     "notes": null
   },
@@ -6620,5 +6620,26 @@
     "english": "There is no unknown vote left to clear.",
     "placeholders": null,
     "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
+  },
+  {
+    "key": "office.stakeholder_factor",
+    "where": "Office — Important Stakeholders, the factors behind a change in standing",
+    "english": "{cause}: {amount}",
+    "placeholders": "cause, amount",
+    "notes": "2026-11-09 Cameron's request. Claude's draft."
+  },
+  {
+    "key": "office.stakeholder_no_cause",
+    "where": "Office — Important Stakeholders, the factors behind a change in standing",
+    "english": "No reason was recorded for this change.",
+    "placeholders": null,
+    "notes": "2026-11-09 Cameron's request. Claude's draft."
+  },
+  {
+    "key": "office.stakeholder_change_title",
+    "where": "Office — Important Stakeholders, the factors behind a change in standing",
+    "english": "{name}: what changed",
+    "placeholders": "name",
+    "notes": "2026-11-09 Cameron's request. Claude's draft."
   }
 ]
