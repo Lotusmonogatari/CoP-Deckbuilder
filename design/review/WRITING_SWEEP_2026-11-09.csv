@@ -1,0 +1,1752 @@
+file,id,field,code,generic,reviewer,text
+strings,outcome.reason.unanswered.one,english,C12,N,R1,One question went unanswered.
+strings,office.level_cooldown,english,C12,N,R1,Not available yet
+strings,office.record_law_passed,english,C3,N,R1,"{name}: passed, {yes} Aye to {no} Nay with {abstain} abstaining. You voted {vote}."
+strings,office.record_law_failed,english,C3,N,R1,"{name}: failed, {yes} Aye to {no} Nay with {abstain} abstaining. You voted {vote}."
+strings,record.law_voted,english,C3,N,R1,You voted {vote}.
+strings,visit.react_strong_2,english,C1,N,R1,"{name} leans forward, interested at last."
+strings,draft.part_selected,english,C12,N,R1,{phrase}
+strings,draft.part_row,english,C12,N,R1,{phrase}
+strings,draft.part_chosen,english,C12,N,R1,{phrase} (chosen)
+strings,event.duration,english,C12,N,R1,Duration: {hours} Hours
+strings,event.duration.one,english,C12,N,R1,Duration: {hours} Hour
+strings,promise.made,english,C3,N,R1,You promised {who} {what} within {count} hours.
+strings,promise.made.one,english,C3,N,R1,You promised {who} {what} within {count} hour.
+strings,event.heading_followup,english,C3,N,R1,As you promised
+office_ticker,TK13,text_en,C2,Y,R1,“That one Member of Parliament had a handful of decent speeches and a recognizable presence in committee.” - Yezo Political Insider ☼
+office_ticker,TK26,text_en,C2,Y,R1,"This evening, our broadcasters will further discuss calls from constituents about legislators withholding office funds. - Sapporo Digital Networks ☼"
+office_ticker,TK56,text_en,C6,Y,R1,The Grid Resilience and Renewable Energy Act is law. - Sapporo Broadcasting Center ☼
+office_ticker,TK57,text_en,C6,Y,R1,"After the Grid Resilience and Renewable Energy Act failed, eyes turn to {player} for what comes next. - Aomori’s Morning Mori ☼"
+office_ticker,TK69,text_en,C2,Y,R1,"""This was a coordinated attack on the heritage and cultural backbone of Yezo,"" claim proponents of the Temple and Shrine Heritage Act after it failed on the floor. - Yezo News Nightly ☼"
+shop,SH04,description,C1,N,R1,One-use item. Grants +1 energy for the first stage of the next level played.
+shop,SH05,description,C1,N,R1,One-use item. Grants +1 gaffe (失言) counter cap for the first stage of the next level played.
+shop,SH06,description,C1,N,R1,One-use item. Grants +1 card drawn for the first stage of the next level played.
+shop,SH07,description,C1,N,R1,One-use item. Grants +1 turn for the first stage of the next level played.
+shop,SH08,description,C1,N,R1,One-use item. Grants +1 guard for the first stage of the next level played.
+opponent_cues,OC02,cue_4,C2,Y,R2,"That is the truth, not rhetoric."
+opponent_cues,OC02,cue_5,C2,Y,R2,That cuts through the noise.
+opponent_cues,OC03,cue_3,C2,Y,R2,It's not on me to prove your words.
+opponent_cues,OC04,cue_3,C2,Y,R2,This is not abstract to us!
+opponent_cues,OC05,cue_1,C2,Y,R2,That is worth fighting for!
+opponent_cues,OC05,cue_4,C2,Y,R2,That is exactly what we needed!
+opponent_cues,OC05,cue_5,C1,Y,R2,"Finally, someone who feels this too!"
+opponent_cues,OC06,cue_3,C2,Y,R2,This matters too much to abandon!
+opponent_cues,OC08,cue_1,C2,Y,R2,That sounds like one of us.
+opponent_cues,OC08,cue_4,C2,Y,R2,This is how we look after our own.
+opponent_cues,OC09,cue_1,C6,Y,R2,We don't turn on our own.
+opponent_cues,OC09,cue_2,C2,Y,R2,This room stands together.
+opponent_cues,OC13,cue_5,C2,Y,R2,This room knows exactly whose side you're on.
+opponent_cues,OC14,cue_1,C1,Y,R2,"Finally, I am willing to name names."
+opponent_cues,OC14,cue_5,C2,Y,R2,This is exactly the divide we needed named.
+opponent_cues,OC17,cue_2,C2,Y,R2,That could certainly be arranged.
+opponent_cues,OC17,cue_5,C2,Y,R2,It's not the worst idea we've heard.
+opponent_cues,OC18,cue_1,C2,Y,R2,That's not a memory I have handy.
+opponent_cues,OC18,cue_3,C2,Y,R2,It may or may not be accurate.
+opponent_cues,OC19,cue_4,C2,Y,R2,"This is about real lives, not points!"
+opponent_cues,OC20,cue_5,C2,Y,R2,This is personal. Hard choices matter!
+opponent_cues,OC23,cue_5,C2,Y,R2,"This room agrees, and so do I."
+opponent_cues,OC24,cue_1,C6,Y,R2,Let's not turn on each other.
+opponent_cues,OC29,cue_4,C2,Y,R2,They won't fight for you. I will.
+opponent_cues,OC29,cue_5,C2,Y,R2,"This is our fight, not theirs."
+opponent_cues,OC33,cue_3,C2,Y,R2,"That will be looked into, certainly..."
+opponent_cues,OC33,cue_4,C2,Y,R2,It's being reviewed at the appropriate level.
+opponent_cues,OC33,cue_4,C6,Y,R2,It's being reviewed at the appropriate level.
+opponent_cues,OC35,cue_1,C2,Y,R2,That's the plain truth. Good.
+opponent_cues,OC35,cue_5,C2,Y,R2,That's someone I can trust.
+opponent_cues,OC39,cue_3,C2,Y,R2,These figures support the fare review.
+opponent_cues,OC41,cue_2,C2,Y,R2,Those averages are misleading.
+opponent_cues,OC42,cue_2,C2,Y,R2,That chart omits the costs.
+opponent_cues,OC44,cue_3,C2,Y,R2,This is a heartless proposal!
+opponent_cues,OC45,cue_1,C1,Y,R2,"Finally, someone fights for riders!"
+opponent_cues,OC45,cue_2,C2,Y,R2,That is what commuters need!
+opponent_cues,OC46,cue_2,C2,Y,R2,That gives commuters hope!
+opponent_cues,OC46,cue_4,C2,Y,R2,That is a decent thing to say!
+opponent_cues,OC46,cue_5,C1,Y,R2,Finally we speak about people!
+opponent_cues,OC51,cue_1,C2,Y,R2,That is a straight answer. Thank you.
+opponent_cues,OC51,cue_3,C2,Y,R2,That is honest. I can work with it.
+opponent_cues,OC51,cue_5,C2,Y,R2,That plan has my attention.
+opponent_cues,OC52,cue_3,C2,Y,R2,That is how a fair quota sounds.
+opponent_cues,OC56,cue_1,C6,Y,R2,Do not turn your back on us.
+opponent_cues,OC57,cue_2,C2,Y,R2,That is the spirit we need.
+opponent_cues,OC58,cue_3,C2,Y,R2,"That is generous, and we welcome it."
+opponent_cues,OC62,cue_2,C2,Y,R2,That respects how we get along.
+opponent_cues,OC65,cue_1,C2,Y,R2,That helps families breathe easier.
+opponent_cues,OC68,cue_2,C2,Y,R2,That gives us something to build on.
+opponent_cues,OC70,cue_4,C2,Y,R2,That number does not add up.
+opponent_cues,OC71,cue_1,C2,Y,R2,That sounds like someone who listens.
+opponent_cues,OC72,cue_4,C2,Y,R2,That is not what the data shows.
+opponent_cues,OC74,cue_3,C2,Y,R2,That is useful to us.
+opponent_cues,OC77,cue_2,C2,Y,R2,That is useful to us.
+opponent_cues,OC77,cue_3,C2,Y,R2,That sounds like someone who listens.
+opponent_cues,OC77,cue_4,C2,Y,R2,This is us against them.
+opponent_cues,OC78,cue_5,C2,Y,R2,That trick will not work on me.
+opponent_cues,OC80,cue_1,C2,Y,R2,That gives us something to build on.
+opponent_cues,OC83,cue_1,C2,Y,R2,That is why we back you.
+opponent_cues,OC85,cue_3,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC86,cue_2,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC86,cue_4,C2,Y,R2,That eases my heavy heart.
+opponent_cues,OC88,cue_2,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC88,cue_3,C6,Y,R2,"Clean hands, or no vote from me."
+opponent_cues,OC89,cue_1,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC90,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC91,cue_1,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC91,cue_2,C6,Y,R2,"Clean hands, or no vote from me."
+opponent_cues,OC92,cue_5,C2,Y,R2,That is who I came here for.
+opponent_cues,OC94,cue_1,C6,Y,R2,"Clean hands, or no vote from me."
+opponent_cues,OC95,cue_3,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC96,cue_4,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC97,cue_3,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC98,cue_2,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC99,cue_5,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC100,cue_2,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC100,cue_3,C6,Y,R2,"Clean hands, or no vote from me."
+opponent_cues,OC101,cue_1,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC102,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC103,cue_1,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC103,cue_2,C6,Y,R2,"Clean hands, or no vote from me."
+opponent_cues,OC105,cue_5,C2,Y,R2,That claim does not hold.
+opponent_cues,OC106,cue_1,C6,Y,R2,"Clean hands, or no vote from me."
+opponent_cues,OC107,cue_3,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC109,cue_3,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC110,cue_2,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC111,cue_5,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC112,cue_2,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC112,cue_3,C6,Y,R2,"Clean hands, or no vote from me."
+opponent_cues,OC113,cue_1,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC115,cue_1,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC115,cue_2,C6,Y,R2,"Clean hands, or no vote from me."
+opponent_cues,OC118,cue_1,C6,Y,R2,"Clean hands, or no vote from me."
+opponent_cues,OC119,cue_3,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC125,cue_3,C2,Y,R2,That protects more than a single season.
+opponent_cues,OC125,cue_4,C2,Y,R2,That is who I came here for.
+opponent_cues,OC125,cue_5,C2,Y,R2,That eases my heavy heart.
+opponent_cues,OC128,cue_2,C2,Y,R2,That protects more than a single season.
+opponent_cues,OC131,cue_1,C2,Y,R2,That protects more than a single season.
+opponent_cues,OC132,cue_4,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC137,cue_3,C2,Y,R2,That protects more than a single season.
+opponent_cues,OC138,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC140,cue_2,C2,Y,R2,That protects more than a single season.
+opponent_cues,OC140,cue_5,C2,Y,R2,That is who I came here for.
+opponent_cues,OC143,cue_1,C2,Y,R2,That protects more than a single season.
+opponent_cues,OC147,cue_5,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC149,cue_3,C2,Y,R2,That protects more than a single season.
+opponent_cues,OC152,cue_2,C2,Y,R2,That protects more than a single season.
+opponent_cues,OC155,cue_1,C2,Y,R2,That protects more than a single season.
+opponent_cues,OC161,cue_3,C2,Y,R2,That serves those in uniform.
+opponent_cues,OC164,cue_2,C2,Y,R2,That serves those in uniform.
+opponent_cues,OC165,cue_5,C2,Y,R2,That claim does not hold.
+opponent_cues,OC167,cue_1,C2,Y,R2,That serves those in uniform.
+opponent_cues,OC168,cue_4,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC171,cue_5,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC173,cue_3,C2,Y,R2,That serves those in uniform.
+opponent_cues,OC176,cue_2,C2,Y,R2,That serves those in uniform.
+opponent_cues,OC179,cue_1,C2,Y,R2,That serves those in uniform.
+opponent_cues,OC180,cue_4,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC184,cue_2,C2,Y,R2,That breaks with how we legislate.
+opponent_cues,OC185,cue_2,C2,Y,R2,That is how a bill earns votes.
+opponent_cues,OC185,cue_4,C2,Y,R2,That is who I came here for.
+opponent_cues,OC185,cue_5,C2,Y,R2,That eases my heavy heart.
+opponent_cues,OC187,cue_1,C2,Y,R2,That breaks with how we legislate.
+opponent_cues,OC188,cue_1,C2,Y,R2,That is how a bill earns votes.
+opponent_cues,OC189,cue_5,C2,Y,R2,That claim does not hold.
+opponent_cues,OC192,cue_4,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC193,cue_3,C2,Y,R2,That breaks with how we legislate.
+opponent_cues,OC194,cue_3,C2,Y,R2,That is how a bill earns votes.
+opponent_cues,OC196,cue_2,C2,Y,R2,That breaks with how we legislate.
+opponent_cues,OC197,cue_2,C2,Y,R2,That is how a bill earns votes.
+opponent_cues,OC199,cue_1,C2,Y,R2,That breaks with how we legislate.
+opponent_cues,OC200,cue_1,C2,Y,R2,That is how a bill earns votes.
+opponent_cues,OC201,cue_4,C2,Y,R2,That was taken out of context.
+opponent_cues,OC204,cue_4,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC205,cue_3,C2,Y,R2,That breaks with how we legislate.
+opponent_cues,OC206,cue_3,C2,Y,R2,That is how a bill earns votes.
+opponent_cues,OC206,cue_4,C2,Y,R2,That eases my heavy heart.
+opponent_cues,OC206,cue_5,C2,Y,R2,That is how a chamber stays whole.
+opponent_cues,OC208,cue_2,C2,Y,R2,That breaks with how we legislate.
+opponent_cues,OC209,cue_2,C2,Y,R2,That is how a bill earns votes.
+opponent_cues,OC210,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC211,cue_1,C2,Y,R2,That breaks with how we legislate.
+opponent_cues,OC212,cue_1,C2,Y,R2,That is how a bill earns votes.
+opponent_cues,OC213,cue_5,C2,Y,R2,That claim does not hold.
+opponent_cues,OC216,cue_3,C2,Y,R2,I have watched this plan fail elsewhere.
+opponent_cues,OC218,cue_3,C2,Y,R2,That helps the next harvest.
+opponent_cues,OC218,cue_4,C2,Y,R2,That eases my heavy heart.
+opponent_cues,OC219,cue_2,C2,Y,R2,I have watched this plan fail elsewhere.
+opponent_cues,OC219,cue_5,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC221,cue_2,C2,Y,R2,That helps the next harvest.
+opponent_cues,OC222,cue_1,C2,Y,R2,I have watched this plan fail elsewhere.
+opponent_cues,OC224,cue_1,C2,Y,R2,That helps the next harvest.
+opponent_cues,OC224,cue_5,C2,Y,R2,That is who I came here for.
+opponent_cues,OC228,cue_3,C2,Y,R2,I have watched this plan fail elsewhere.
+opponent_cues,OC228,cue_4,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC230,cue_3,C2,Y,R2,That helps the next harvest.
+opponent_cues,OC231,cue_2,C2,Y,R2,I have watched this plan fail elsewhere.
+opponent_cues,OC231,cue_5,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC233,cue_2,C2,Y,R2,That helps the next harvest.
+opponent_cues,OC234,cue_1,C2,Y,R2,I have watched this plan fail elsewhere.
+opponent_cues,OC236,cue_1,C2,Y,R2,That helps the next harvest.
+opponent_cues,OC240,cue_3,C2,Y,R2,I have watched this plan fail elsewhere.
+opponent_cues,OC240,cue_4,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC242,cue_3,C2,Y,R2,That helps the next harvest.
+opponent_cues,OC242,cue_4,C2,Y,R2,That eases my heavy heart.
+opponent_cues,OC243,cue_2,C2,Y,R2,I have watched this plan fail elsewhere.
+opponent_cues,OC243,cue_5,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC245,cue_2,C2,Y,R2,That helps the next harvest.
+opponent_cues,OC246,cue_1,C2,Y,R2,I have watched this plan fail elsewhere.
+opponent_cues,OC246,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC247,cue_2,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC248,cue_2,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC248,cue_5,C2,Y,R2,That is who I came here for.
+opponent_cues,OC250,cue_1,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC251,cue_1,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC252,cue_4,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC254,cue_4,C2,Y,R2,That eases my heavy heart.
+opponent_cues,OC255,cue_5,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC256,cue_3,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC257,cue_3,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC258,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC259,cue_2,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC260,cue_2,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC261,cue_5,C2,Y,R2,That claim does not hold.
+opponent_cues,OC262,cue_1,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC263,cue_1,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC268,cue_3,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC269,cue_3,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC270,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC271,cue_2,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC272,cue_2,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC273,cue_5,C2,Y,R2,That claim does not hold.
+opponent_cues,OC274,cue_1,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC275,cue_1,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC280,cue_3,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC281,cue_3,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC282,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC284,cue_2,C2,Y,R2,That builds something real.
+opponent_cues,OC287,cue_1,C2,Y,R2,That builds something real.
+opponent_cues,OC288,cue_4,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC291,cue_5,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC293,cue_3,C2,Y,R2,That builds something real.
+opponent_cues,OC293,cue_4,C2,Y,R2,That is who I came here for.
+opponent_cues,OC293,cue_5,C2,Y,R2,That eases my heavy heart.
+opponent_cues,OC296,cue_2,C2,Y,R2,That builds something real.
+opponent_cues,OC299,cue_1,C2,Y,R2,That builds something real.
+opponent_cues,OC300,cue_4,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC308,cue_3,C2,Y,R2,That is fiscal sense.
+opponent_cues,OC311,cue_2,C2,Y,R2,That is fiscal sense.
+opponent_cues,OC314,cue_1,C2,Y,R2,That is fiscal sense.
+opponent_cues,OC315,cue_5,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC318,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC320,cue_3,C2,Y,R2,That is fiscal sense.
+opponent_cues,OC323,cue_2,C2,Y,R2,That is fiscal sense.
+opponent_cues,OC324,cue_4,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC326,cue_1,C2,Y,R2,That is fiscal sense.
+opponent_cues,OC327,cue_5,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC332,cue_3,C2,Y,R2,That is administration done properly.
+opponent_cues,OC332,cue_5,C2,Y,R2,That is who I came here for.
+opponent_cues,OC335,cue_2,C2,Y,R2,That is administration done properly.
+opponent_cues,OC335,cue_4,C2,Y,R2,That is a service people can feel.
+opponent_cues,OC338,cue_1,C2,Y,R2,That is administration done properly.
+opponent_cues,OC339,cue_5,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC342,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC344,cue_3,C2,Y,R2,That is administration done properly.
+opponent_cues,OC344,cue_5,C2,Y,R2,That is who I came here for.
+opponent_cues,OC347,cue_2,C2,Y,R2,That is administration done properly.
+opponent_cues,OC350,cue_1,C2,Y,R2,That is administration done properly.
+opponent_cues,OC356,cue_3,C2,Y,R2,That is administration done properly.
+opponent_cues,OC357,cue_4,C2,Y,R2,That was taken out of context.
+opponent_cues,OC359,cue_2,C2,Y,R2,That is administration done properly.
+opponent_cues,OC360,cue_4,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC362,cue_1,C2,Y,R2,That is administration done properly.
+opponent_cues,OC363,cue_5,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC366,cue_4,C2,Y,R2,That claim does not hold.
+opponent_cues,OC368,cue_3,C2,Y,R2,That is administration done properly.
+opponent_cues,OC369,cue_5,C2,Y,R2,That claim does not hold.
+opponent_cues,OC371,cue_2,C2,Y,R2,That is administration done properly.
+opponent_cues,OC375,cue_1,C2,Y,R2,That decision is not yours.
+opponent_cues,OC376,cue_1,C2,Y,R2,That answer dodges the question.
+opponent_cues,OC377,cue_1,C2,Y,R2,That is a headline.
+opponent_cues,OC377,cue_4,C2,Y,R2,This is us against them.
+opponent_cues,OC378,cue_5,C2,Y,R2,That trick will not work on me.
+opponent_cues,OC380,cue_3,C2,Y,R2,That reads well in print.
+opponent_cues,OC382,cue_3,C2,Y,R2,That answer dodges the question.
+opponent_cues,OC383,cue_2,C2,Y,R2,That reads well in print.
+opponent_cues,OC383,cue_3,C2,Y,R2,That is a headline.
+opponent_cues,OC384,cue_5,C2,Y,R2,That was taken out of context.
+opponent_cues,OC385,cue_2,C2,Y,R2,That answer dodges the question.
+opponent_cues,OC386,cue_1,C2,Y,R2,That reads well in print.
+opponent_cues,OC386,cue_2,C2,Y,R2,That is a headline.
+opponent_cues,OC387,cue_5,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC388,cue_1,C2,Y,R2,That answer dodges the question.
+opponent_cues,OC389,cue_1,C2,Y,R2,That is a headline.
+opponent_cues,OC389,cue_4,C2,Y,R2,This is us against them.
+opponent_cues,OC390,cue_5,C2,Y,R2,That trick will not work on me.
+opponent_cues,OC392,cue_3,C2,Y,R2,That reads well in print.
+opponent_cues,OC393,cue_4,C2,Y,R2,That was taken out of context.
+opponent_cues,OC394,cue_3,C2,Y,R2,That answer dodges the question.
+opponent_cues,OC394,cue_4,C2,Y,R2,That number does not add up.
+opponent_cues,OC395,cue_2,C2,Y,R2,That reads well in print.
+opponent_cues,OC395,cue_3,C2,Y,R2,That is a headline.
+opponent_cues,OC396,cue_4,C2,Y,R2,That is not what the data shows.
+opponent_cues,OC397,cue_2,C2,Y,R2,That answer dodges the question.
+opponent_cues,OC398,cue_1,C2,Y,R2,That reads well in print.
+opponent_cues,OC398,cue_2,C2,Y,R2,That is a headline.
+opponent_cues,OC399,cue_5,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC401,cue_3,C2,Y,R2,That invites investment.
+opponent_cues,OC412,cue_1,C2,Y,R2,"Towns get the bill, not the credit."
+opponent_cues,OC413,cue_2,C2,Y,R2,That helps real municipal budgets.
+opponent_cues,OC416,cue_1,C2,Y,R2,That respects how we get along.
+opponent_cues,OC417,cue_5,C2,Y,R2,That claim does not hold.
+opponent_cues,OC420,cue_4,C6,Y,R2,Do not turn this into a numbers game.
+opponent_cues,OC422,cue_2,C2,Y,R2,That respects the old ways.
+opponent_cues,OC425,cue_3,C2,Y,R2,That builds something real.
+opponent_cues,OC425,cue_4,C2,Y,R2,That is who I came here for.
+opponent_cues,OC425,cue_5,C2,Y,R2,That eases my heavy heart.
+opponent_cues,OC427,cue_2,C2,Y,R2,This weakens us abroad. Explain.
+opponent_cues,OC428,cue_2,C2,Y,R2,That is how partners are kept.
+opponent_cues,OC429,cue_5,C2,Y,R2,That claim does not hold.
+opponent_cues,OC432,cue_4,C2,Y,R2,That will not play well with this crowd.
+opponent_cues,OC433,cue_3,C2,Y,R2,"That sounds like a favor, not policy."
+opponent_cues,OC434,cue_2,C2,Y,R2,That is the standard I expect.
+opponent_cues,OC526,cue_2,C6,N,R2,Say plainly who pays: wage levels and local services?
+opponent_cues,OC527,cue_3,C6,N,R2,Honesty about what falls on wage levels and local services is where I start.
+opponent_cues,OC536,cue_2,C6,N,R2,My numbers on wage levels and local services are checked.
+opponent_cues,OC542,cue_5,C6,N,R2,Nothing about what falls on wage levels and local services is quite as stated.
+opponent_cues,OC1084,cue_5,C6,N,R2,Be straight with clean-energy firms and households that get dividends about the Carbon Levy Act.
+opponent_cues,OC1085,cue_4,C6,N,R2,I speak for clean-energy firms and households that get dividends and I mean it.
+opponent_cues,OC1085,cue_5,C6,N,R2,I mean what I say about clean-energy firms and households that get dividends.
+opponent_cues,OC1087,cue_5,C6,N,R2,Think of clean-energy firms and households that get dividends! How can you ignore them?
+opponent_cues,OC1088,cue_3,C6,N,R2,Let me tell you what clean-energy firms and households that get dividends told me!
+opponent_cues,OC1088,cue_4,C6,N,R2,I carry real stories about clean-energy firms and households that get dividends!
+opponent_cues,OC1090,cue_2,C6,N,R2,Friends of clean-energy firms and households that get dividends expect better.
+opponent_cues,OC1091,cue_1,C6,N,R2,A fair deal for clean-energy firms and households that get dividends is a fair deal for all.
+opponent_cues,OC1091,cue_4,C6,N,R2,The mood among clean-energy firms and households that get dividends is clear.
+opponent_cues,OC1093,cue_4,C6,N,R2,Where is the evidence that this helps clean-energy firms and households that get dividends?
+opponent_cues,OC1094,cue_1,C6,N,R2,Yes: the trend for clean-energy firms and households that get dividends is clear.
+opponent_cues,OC1094,cue_3,C6,N,R2,I have the analysis on clean-energy firms and households that get dividends.
+opponent_cues,OC1095,cue_1,C6,N,R2,That statistic about clean-energy firms and households that get dividends is misleading.
+opponent_cues,OC1096,cue_2,C6,N,R2,"Whose side are you on, clean-energy firms and households that get dividends or fuel users, farmers and fishers?"
+opponent_cues,OC1097,cue_3,C6,N,R2,"Draw the line between clean-energy firms and households that get dividends and fuel users, farmers and fishers."
+opponent_cues,OC1099,cue_3,C6,N,R2,I wonder what clean-energy firms and households that get dividends would say if they knew.
+opponent_cues,OC1100,cue_5,C6,N,R2,Clean-energy firms and households that get dividends may get less than they realize.
+opponent_cues,OC1101,cue_1,C6,N,R2,Is that a promise to clean-energy firms and households that get dividends? Funny.
+opponent_cues,OC1102,cue_2,C6,N,R2,Critics say it turns the sea into a commodity. Answer them straight.
+opponent_cues,OC1104,cue_1,C6,N,R2,I will not pretend that it turns the sea into a commodity.
+opponent_cues,OC1105,cue_3,C6,N,R2,"Critics say it turns the sea into a commodity, and my heart agrees!"
+opponent_cues,OC1108,cue_2,C6,N,R2,Critics say it turns the sea into a commodity. Folks agree.
+opponent_cues,OC1111,cue_1,C6,N,R2,Critics say it turns the sea into a commodity. What do the data say?
+opponent_cues,OC1119,cue_3,C6,N,R2,It was not my understanding that it turns the sea into a commodity.
+opponent_cues,OC1337,cue_3,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC1337,cue_5,C2,Y,R2,That proves who is right.
+opponent_cues,OC1344,cue_1,C2,Y,R2,That is a line I will not cross.
+opponent_cues,OC1346,cue_1,C2,Y,R2,That builds trust between us.
+opponent_cues,OC1346,cue_2,C2,Y,R2,That is a favor our households will repay.
+opponent_cues,OC1346,cue_5,C2,Y,R2,That is what friends do for each other.
+opponent_cues,OC1350,cue_1,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1352,cue_1,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1352,cue_5,C2,Y,R2,That is the spirit. We are with you.
+opponent_cues,OC1355,cue_3,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1357,cue_2,C2,Y,R2,This district deserves an honest answer.
+opponent_cues,OC1358,cue_2,C2,Y,R2,This district needs people who mean it.
+opponent_cues,OC1358,cue_3,C2,Y,R2,That is an honest case. Thank you.
+opponent_cues,OC1361,cue_2,C2,Y,R2,This district thrives when we work together.
+opponent_cues,OC1361,cue_3,C2,Y,R2,That is what friends do for each other.
+opponent_cues,OC1361,cue_5,C2,Y,R2,That builds trust between us.
+opponent_cues,OC1364,cue_2,C2,Y,R2,This district's metrics support the case.
+opponent_cues,OC1365,cue_1,C2,Y,R2,That falls short of what I need.
+opponent_cues,OC1366,cue_1,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1367,cue_5,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1368,cue_2,C2,Y,R2,This district would be hurt by that!
+opponent_cues,OC1368,cue_3,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1368,cue_5,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1370,cue_2,C2,Y,R2,That is a favor this district will repay.
+opponent_cues,OC1370,cue_3,C2,Y,R2,That is what friends do for each other.
+opponent_cues,OC1370,cue_5,C2,Y,R2,That builds trust between us.
+opponent_cues,OC1372,cue_3,C6,Y,R2,A good turn deserves another. Where is yours?
+opponent_cues,OC1373,cue_2,C2,Y,R2,That is a favor our future will repay.
+opponent_cues,OC1382,cue_1,C2,Y,R2,That lifts a heavy weight!
+opponent_cues,OC1382,cue_3,C2,Y,R2,"That is human, and I thank you!"
+opponent_cues,OC1382,cue_5,C2,Y,R2,That brings hope to so many!
+opponent_cues,OC1385,cue_1,C2,Y,R2,That earns my respect.
+opponent_cues,OC1385,cue_2,C2,Y,R2,That is the right way to treat clean government.
+opponent_cues,OC1389,cue_5,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1391,cue_3,C2,Y,R2,That gives people courage!
+opponent_cues,OC1393,cue_2,C2,Y,R2,It is said that clean government is neglected...
+opponent_cues,OC1393,cue_5,C2,Y,R2,It would be a shame if this spread...
+opponent_cues,OC1394,cue_1,C2,Y,R2,"It would be welcomed, I think..."
+opponent_cues,OC1394,cue_5,C2,Y,R2,That is very much appreciated...
+opponent_cues,OC1395,cue_1,C2,Y,R2,That was not what was intended...
+opponent_cues,OC1400,cue_1,C2,Y,R2,That lifts a heavy weight!
+opponent_cues,OC1400,cue_2,C2,Y,R2,That brings hope to clean government!
+opponent_cues,OC1400,cue_3,C2,Y,R2,"That is human, and I thank you!"
+opponent_cues,OC1400,cue_4,C2,Y,R2,That honors a growing economy!
+opponent_cues,OC1400,cue_5,C2,Y,R2,That brings hope to so many!
+opponent_cues,OC1402,cue_5,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1403,cue_1,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1403,cue_3,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1403,cue_5,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1405,cue_5,C2,Y,R2,It would be a shame if this spread...
+opponent_cues,OC1406,cue_1,C2,Y,R2,"It would be welcomed, I think..."
+opponent_cues,OC1406,cue_5,C2,Y,R2,That is very much appreciated...
+opponent_cues,OC1407,cue_1,C2,Y,R2,That was not what was intended...
+opponent_cues,OC1417,cue_3,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1424,cue_1,C2,Y,R2,That gives people courage!
+opponent_cues,OC1424,cue_4,C2,Y,R2,That honors the vulnerable!
+opponent_cues,OC1426,cue_3,C6,Y,R2,A good turn deserves another. Where is yours?
+opponent_cues,OC1429,cue_3,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1433,cue_2,C2,Y,R2,That is the right way to treat clean government.
+opponent_cues,OC1434,cue_1,C2,Y,R2,That is a line I will not cross.
+opponent_cues,OC1437,cue_5,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1439,cue_2,C2,Y,R2,That is the right way to treat clean government.
+opponent_cues,OC1440,cue_5,C2,Y,R2,That is a line I will not cross.
+opponent_cues,OC1442,cue_1,C2,Y,R2,That builds trust between us.
+opponent_cues,OC1442,cue_5,C2,Y,R2,That is what friends do for each other.
+opponent_cues,OC1445,cue_5,C2,Y,R2,That earns my respect.
+opponent_cues,OC1448,cue_1,C2,Y,R2,"That is human, and I thank you!"
+opponent_cues,OC1448,cue_2,C2,Y,R2,That brings hope to clean government!
+opponent_cues,OC1448,cue_3,C2,Y,R2,That brings hope to so many!
+opponent_cues,OC1448,cue_5,C2,Y,R2,That lifts a heavy weight!
+opponent_cues,OC1451,cue_1,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1451,cue_5,C2,Y,R2,That is the spirit. We are with you.
+opponent_cues,OC1454,cue_1,C2,Y,R2,That lifts a heavy weight!
+opponent_cues,OC1454,cue_2,C2,Y,R2,That brings hope to the land!
+opponent_cues,OC1454,cue_3,C2,Y,R2,"That is human, and I thank you!"
+opponent_cues,OC1454,cue_4,C2,Y,R2,That honors the regions!
+opponent_cues,OC1454,cue_5,C2,Y,R2,That brings hope to so many!
+opponent_cues,OC1456,cue_3,C2,Y,R2,It has been suggested you erred...
+opponent_cues,OC1457,cue_3,C2,Y,R2,That could be helpful to many...
+opponent_cues,OC1459,cue_2,C2,Y,R2,It is said that the land is neglected...
+opponent_cues,OC1460,cue_1,C2,Y,R2,That may be seen in a good light...
+opponent_cues,OC1466,cue_3,C2,Y,R2,That is the spirit. We are with you.
+opponent_cues,OC1466,cue_5,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1469,cue_1,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC1469,cue_3,C2,Y,R2,That proves who is right.
+opponent_cues,OC1471,cue_3,C2,Y,R2,It would be a shame if this spread...
+opponent_cues,OC1472,cue_3,C2,Y,R2,That is very much appreciated...
+opponent_cues,OC1472,cue_5,C2,Y,R2,"It would be welcomed, I think..."
+opponent_cues,OC1473,cue_5,C2,Y,R2,That was not what was intended...
+opponent_cues,OC1474,cue_1,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1475,cue_1,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1475,cue_3,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1475,cue_5,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1477,cue_5,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1478,cue_1,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1478,cue_3,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1478,cue_5,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1481,cue_1,C2,Y,R2,That is what friends do for each other.
+opponent_cues,OC1481,cue_2,C2,Y,R2,That is a favor the land will repay.
+opponent_cues,OC1481,cue_3,C2,Y,R2,That builds trust between us.
+opponent_cues,OC1489,cue_1,C2,Y,R2,It has been suggested you erred...
+opponent_cues,OC1490,cue_1,C2,Y,R2,That could be helpful to many...
+opponent_cues,OC1490,cue_2,C2,Y,R2,"It could be good for the land, perhaps..."
+opponent_cues,OC1493,cue_1,C2,Y,R2,That builds trust between us.
+opponent_cues,OC1493,cue_2,C2,Y,R2,That is a favor the land will repay.
+opponent_cues,OC1493,cue_5,C2,Y,R2,That is what friends do for each other.
+opponent_cues,OC1495,cue_3,C6,Y,R2,A good turn deserves another. Where is yours?
+opponent_cues,OC1496,cue_2,C2,Y,R2,That is a favor the land will repay.
+opponent_cues,OC1498,cue_1,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1499,cue_5,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1500,cue_3,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1500,cue_5,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1505,cue_1,C2,Y,R2,That earns my respect.
+opponent_cues,OC1508,cue_5,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1510,cue_3,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1517,cue_4,C2,Y,R2,That honors the vulnerable!
+opponent_cues,OC1526,cue_1,C2,Y,R2,That lifts a heavy weight!
+opponent_cues,OC1526,cue_3,C2,Y,R2,"That is human, and I thank you!"
+opponent_cues,OC1526,cue_5,C2,Y,R2,That brings hope to so many!
+opponent_cues,OC1532,cue_1,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1535,cue_1,C2,Y,R2,That is an honest case. Thank you.
+opponent_cues,OC1537,cue_5,C2,Y,R2,It has been suggested you erred...
+opponent_cues,OC1538,cue_5,C2,Y,R2,That could be helpful to many...
+opponent_cues,OC1540,cue_5,C2,Y,R2,It would be a shame if this spread...
+opponent_cues,OC1541,cue_1,C2,Y,R2,"It would be welcomed, I think..."
+opponent_cues,OC1541,cue_5,C2,Y,R2,That is very much appreciated...
+opponent_cues,OC1542,cue_1,C2,Y,R2,That was not what was intended...
+opponent_cues,OC1544,cue_2,C2,Y,R2,That is the right way to treat our defenses.
+opponent_cues,OC1545,cue_1,C2,Y,R2,That is a line I will not cross.
+opponent_cues,OC1550,cue_5,C2,Y,R2,That gives people courage!
+opponent_cues,OC1556,cue_5,C2,Y,R2,That may be seen in a good light...
+opponent_cues,OC1559,cue_5,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1561,cue_5,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1565,cue_1,C2,Y,R2,"That is human, and I thank you!"
+opponent_cues,OC1565,cue_2,C2,Y,R2,That brings hope to our defenses!
+opponent_cues,OC1565,cue_3,C2,Y,R2,That brings hope to so many!
+opponent_cues,OC1565,cue_5,C2,Y,R2,That lifts a heavy weight!
+opponent_cues,OC1567,cue_1,C2,Y,R2,It has been suggested you erred...
+opponent_cues,OC1568,cue_1,C2,Y,R2,That could be helpful to many...
+opponent_cues,OC1572,cue_5,C2,Y,R2,That is a line I will not cross.
+opponent_cues,OC1574,cue_1,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC1574,cue_3,C2,Y,R2,That proves who is right.
+opponent_cues,OC1576,cue_5,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1577,cue_1,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1577,cue_3,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1577,cue_5,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1580,cue_1,C2,Y,R2,That proves who is right.
+opponent_cues,OC1580,cue_5,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC1582,cue_5,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1583,cue_3,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1583,cue_4,C2,Y,R2,That honors heritage and the land!
+opponent_cues,OC1584,cue_1,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1584,cue_3,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1589,cue_1,C2,Y,R2,That is the spirit. We are with you.
+opponent_cues,OC1589,cue_3,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1592,cue_3,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC1592,cue_5,C2,Y,R2,That proves who is right.
+opponent_cues,OC1595,cue_5,C2,Y,R2,That earns my respect.
+opponent_cues,OC1598,cue_3,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1601,cue_5,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1604,cue_5,C2,Y,R2,That is an honest case. Thank you.
+opponent_cues,OC1607,cue_1,C2,Y,R2,That is what friends do for each other.
+opponent_cues,OC1607,cue_3,C2,Y,R2,That builds trust between us.
+opponent_cues,OC1613,cue_3,C2,Y,R2,That gives people courage!
+opponent_cues,OC1613,cue_4,C2,Y,R2,That honors a growing economy!
+opponent_cues,OC1616,cue_3,C2,Y,R2,That is the spirit. We are with you.
+opponent_cues,OC1616,cue_5,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1619,cue_2,C2,Y,R2,That brings hope to the chamber!
+opponent_cues,OC1621,cue_3,C6,Y,R2,A good turn deserves another. Where is yours?
+opponent_cues,OC1622,cue_2,C2,Y,R2,That is a favor the farms will repay.
+opponent_cues,OC1628,cue_3,C2,Y,R2,"It has been well received, I understand..."
+opponent_cues,OC1628,cue_5,C2,Y,R2,"It might be arranged, quietly..."
+opponent_cues,OC1629,cue_1,C2,Y,R2,"It is being looked into, I believe..."
+opponent_cues,OC1629,cue_3,C2,Y,R2,"It is a complex question, you see..."
+opponent_cues,OC1632,cue_5,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1634,cue_3,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC1634,cue_5,C2,Y,R2,That proves who is right.
+opponent_cues,OC1636,cue_5,C2,Y,R2,It has been suggested you erred...
+opponent_cues,OC1637,cue_2,C2,Y,R2,"It could be good for the farms, perhaps..."
+opponent_cues,OC1637,cue_5,C2,Y,R2,That could be helpful to many...
+opponent_cues,OC1643,cue_2,C2,Y,R2,That is the right way to treat the farms.
+opponent_cues,OC1643,cue_3,C2,Y,R2,That earns my respect.
+opponent_cues,OC1645,cue_3,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1649,cue_1,C2,Y,R2,That gives people courage!
+opponent_cues,OC1649,cue_4,C2,Y,R2,That honors a growing economy!
+opponent_cues,OC1651,cue_1,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1655,cue_5,C2,Y,R2,That gives people courage!
+opponent_cues,OC1657,cue_5,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1664,cue_5,C2,Y,R2,That earns my respect.
+opponent_cues,OC1666,cue_1,C6,Y,R2,A good turn deserves another. Where is yours?
+opponent_cues,OC1667,cue_2,C2,Y,R2,That is a favor the farms will repay.
+opponent_cues,OC1670,cue_3,C2,Y,R2,That gives people courage!
+opponent_cues,OC1670,cue_4,C2,Y,R2,That honors heritage and the land!
+opponent_cues,OC1672,cue_5,C6,Y,R2,A good turn deserves another. Where is yours?
+opponent_cues,OC1676,cue_1,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1676,cue_5,C2,Y,R2,That is the spirit. We are with you.
+opponent_cues,OC1678,cue_3,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1679,cue_1,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1679,cue_3,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1679,cue_5,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1688,cue_5,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1690,cue_1,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1693,cue_1,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1694,cue_5,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1695,cue_3,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1695,cue_5,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1696,cue_1,C6,Y,R2,A good turn deserves another. Where is yours?
+opponent_cues,OC1697,cue_2,C2,Y,R2,That is a favor our standing abroad will repay.
+opponent_cues,OC1703,cue_3,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1708,cue_1,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1711,cue_1,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1712,cue_5,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1713,cue_3,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1713,cue_5,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1715,cue_1,C2,Y,R2,That may be seen in a good light...
+opponent_cues,OC1717,cue_3,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1718,cue_1,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1718,cue_3,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1718,cue_5,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1721,cue_3,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC1721,cue_5,C2,Y,R2,That proves who is right.
+opponent_cues,OC1724,cue_3,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1731,cue_3,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1736,cue_3,C2,Y,R2,That gives people courage!
+opponent_cues,OC1736,cue_4,C2,Y,R2,That honors a growing economy!
+opponent_cues,OC1744,cue_3,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1745,cue_1,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1745,cue_4,C2,Y,R2,That honors a growing economy!
+opponent_cues,OC1746,cue_1,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1746,cue_5,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1752,cue_5,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1753,cue_1,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1754,cue_1,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1754,cue_3,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1754,cue_5,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1758,cue_3,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1761,cue_3,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1762,cue_3,C2,Y,R2,It has been suggested you erred...
+opponent_cues,OC1763,cue_3,C2,Y,R2,That could be helpful to many...
+opponent_cues,OC1765,cue_5,C2,Y,R2,It has been suggested you erred...
+opponent_cues,OC1766,cue_5,C2,Y,R2,That could be helpful to many...
+opponent_cues,OC1769,cue_1,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC1769,cue_3,C2,Y,R2,That proves who is right.
+opponent_cues,OC1772,cue_1,C2,Y,R2,That gives people courage!
+opponent_cues,OC1772,cue_4,C2,Y,R2,That honors heritage and the land!
+opponent_cues,OC1776,cue_5,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1777,cue_5,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1785,cue_1,C2,Y,R2,That is a line I will not cross.
+opponent_cues,OC1792,cue_5,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1795,cue_5,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1796,cue_3,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1796,cue_4,C2,Y,R2,That honors a growing economy!
+opponent_cues,OC1797,cue_1,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1797,cue_3,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1799,cue_1,C2,Y,R2,That brings hope to so many!
+opponent_cues,OC1799,cue_2,C2,Y,R2,That brings hope to the budget!
+opponent_cues,OC1799,cue_3,C2,Y,R2,That lifts a heavy weight!
+opponent_cues,OC1799,cue_5,C2,Y,R2,"That is human, and I thank you!"
+opponent_cues,OC1802,cue_3,C2,Y,R2,That is the spirit. We are with you.
+opponent_cues,OC1802,cue_5,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1814,cue_5,C2,Y,R2,That gives people courage!
+opponent_cues,OC1817,cue_4,C2,Y,R2,That honors a growing economy!
+opponent_cues,OC1823,cue_3,C2,Y,R2,That is what friends do for each other.
+opponent_cues,OC1823,cue_5,C2,Y,R2,That builds trust between us.
+opponent_cues,OC1826,cue_3,C2,Y,R2,That gives people courage!
+opponent_cues,OC1826,cue_4,C2,Y,R2,That honors the citizen!
+opponent_cues,OC1830,cue_5,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1831,cue_5,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1838,cue_3,C2,Y,R2,"It has been well received, I understand..."
+opponent_cues,OC1838,cue_5,C2,Y,R2,"It might be arranged, quietly..."
+opponent_cues,OC1839,cue_1,C2,Y,R2,"It is being looked into, I believe..."
+opponent_cues,OC1839,cue_3,C2,Y,R2,"It is a complex question, you see..."
+opponent_cues,OC1842,cue_5,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1843,cue_3,C2,Y,R2,Those figures do not support your claim.
+opponent_cues,OC1852,cue_1,C2,Y,R2,It has been suggested you erred...
+opponent_cues,OC1853,cue_1,C2,Y,R2,That could be helpful to many...
+opponent_cues,OC1853,cue_2,C2,Y,R2,"It could be good for the civil service, perhaps..."
+opponent_cues,OC1858,cue_3,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1859,cue_1,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1859,cue_3,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1859,cue_5,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1862,cue_2,C2,Y,R2,That brings hope to the civil service!
+opponent_cues,OC1862,cue_4,C2,Y,R2,That honors the regions!
+opponent_cues,OC1864,cue_5,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1865,cue_3,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1866,cue_1,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1866,cue_3,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1871,cue_1,C2,Y,R2,That gives people courage!
+opponent_cues,OC1871,cue_4,C2,Y,R2,That honors order and custom!
+opponent_cues,OC1875,cue_5,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1877,cue_3,C2,Y,R2,"It has been well received, I understand..."
+opponent_cues,OC1877,cue_5,C2,Y,R2,"It might be arranged, quietly..."
+opponent_cues,OC1878,cue_1,C2,Y,R2,"It is being looked into, I believe..."
+opponent_cues,OC1878,cue_3,C2,Y,R2,"It is a complex question, you see..."
+opponent_cues,OC1881,cue_5,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1883,cue_5,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1886,cue_1,C2,Y,R2,That lifts a heavy weight!
+opponent_cues,OC1886,cue_3,C2,Y,R2,"That is human, and I thank you!"
+opponent_cues,OC1886,cue_5,C2,Y,R2,That brings hope to so many!
+opponent_cues,OC1888,cue_5,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1889,cue_3,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1890,cue_1,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1890,cue_3,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1892,cue_5,C2,Y,R2,That may be seen in a good light...
+opponent_cues,OC1894,cue_5,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC1895,cue_3,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC1896,cue_1,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC1896,cue_3,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC1898,cue_5,C2,Y,R2,That may be seen in a good light...
+opponent_cues,OC1904,cue_3,C2,Y,R2,That gives people courage!
+opponent_cues,OC1904,cue_4,C2,Y,R2,That honors heritage and the land!
+opponent_cues,OC1908,cue_1,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1910,cue_3,C2,Y,R2,"It has been well received, I understand..."
+opponent_cues,OC1910,cue_5,C2,Y,R2,"It might be arranged, quietly..."
+opponent_cues,OC1911,cue_1,C2,Y,R2,"It is being looked into, I believe..."
+opponent_cues,OC1911,cue_3,C2,Y,R2,"It is a complex question, you see..."
+opponent_cues,OC1913,cue_1,C2,Y,R2,That brings hope to so many!
+opponent_cues,OC1913,cue_3,C2,Y,R2,That lifts a heavy weight!
+opponent_cues,OC1913,cue_4,C2,Y,R2,That honors ordinary people!
+opponent_cues,OC1913,cue_5,C2,Y,R2,"That is human, and I thank you!"
+opponent_cues,OC1916,cue_1,C2,Y,R2,That proves who is right.
+opponent_cues,OC1916,cue_3,C2,Y,R2,That will make the front page.
+opponent_cues,OC1916,cue_5,C2,Y,R2,That is a position readers will notice.
+opponent_cues,OC1919,cue_2,C2,Y,R2,"It could be good for the public record, perhaps..."
+opponent_cues,OC1919,cue_3,C2,Y,R2,"It has been well received, I understand..."
+opponent_cues,OC1919,cue_5,C2,Y,R2,"It might be arranged, quietly..."
+opponent_cues,OC1920,cue_1,C2,Y,R2,"It is being looked into, I believe..."
+opponent_cues,OC1920,cue_3,C2,Y,R2,"It is a complex question, you see..."
+opponent_cues,OC1922,cue_1,C2,Y,R2,That is the spirit. Our readers will notice.
+opponent_cues,OC1922,cue_3,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1925,cue_2,C2,Y,R2,That brings hope to the public record!
+opponent_cues,OC1929,cue_3,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC1931,cue_1,C2,Y,R2,That is the spirit. Our readers will notice.
+opponent_cues,OC1931,cue_3,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1935,cue_3,C2,Y,R2,That falls short of what I need.
+opponent_cues,OC1936,cue_1,C2,Y,R2,It would be a shame if this spread...
+opponent_cues,OC1936,cue_2,C2,Y,R2,It is said that the public record is neglected...
+opponent_cues,OC1937,cue_1,C2,Y,R2,That is very much appreciated...
+opponent_cues,OC1937,cue_3,C2,Y,R2,"It would be welcomed, I think..."
+opponent_cues,OC1938,cue_3,C2,Y,R2,That was not what was intended...
+opponent_cues,OC1943,cue_5,C2,Y,R2,They lose. We gain.
+opponent_cues,OC1946,cue_1,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1946,cue_5,C2,Y,R2,That is the spirit. Our readers will notice.
+opponent_cues,OC1949,cue_1,C2,Y,R2,That will make the front page.
+opponent_cues,OC1949,cue_3,C2,Y,R2,That is a position readers will notice.
+opponent_cues,OC1949,cue_5,C2,Y,R2,That proves who is right.
+opponent_cues,OC1951,cue_5,C2,Y,R2,It would be a shame if this spread...
+opponent_cues,OC1952,cue_1,C2,Y,R2,"It would be welcomed, I think..."
+opponent_cues,OC1952,cue_5,C2,Y,R2,That is very much appreciated...
+opponent_cues,OC1953,cue_1,C2,Y,R2,That was not what was intended...
+opponent_cues,OC1955,cue_1,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1955,cue_5,C2,Y,R2,That is the spirit. Our readers will notice.
+opponent_cues,OC1961,cue_3,C2,Y,R2,That is an honest case. Thank you.
+opponent_cues,OC1964,cue_1,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC1964,cue_3,C2,Y,R2,That proves who is right.
+opponent_cues,OC1969,cue_1,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1970,cue_1,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1970,cue_3,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1970,cue_5,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1973,cue_2,C2,Y,R2,That brings hope to the harvest!
+opponent_cues,OC1975,cue_3,C6,Y,R2,A good turn deserves another. Where is yours?
+opponent_cues,OC1976,cue_2,C2,Y,R2,That is a favor the harbor will repay.
+opponent_cues,OC1978,cue_1,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC1979,cue_1,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC1979,cue_3,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC1979,cue_5,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC1983,cue_5,C2,Y,R2,That falls short of what I need.
+opponent_cues,OC1985,cue_1,C2,Y,R2,That is an honest case. Thank you.
+opponent_cues,OC1994,cue_1,C2,Y,R2,That is the spirit. We are with you.
+opponent_cues,OC1994,cue_3,C6,Y,R2,A fine turn. We return the favor.
+opponent_cues,OC1997,cue_1,C2,Y,R2,That proves who is right.
+opponent_cues,OC1997,cue_5,C2,Y,R2,That is the right side to be on.
+opponent_cues,OC2001,cue_3,C2,Y,R2,That is their idea. We refuse it.
+opponent_cues,OC2002,cue_5,C2,Y,R2,That claim fails a simple check.
+opponent_cues,OC2003,cue_1,C2,Y,R2,That figure checks out. Accepted.
+opponent_cues,OC2003,cue_3,C2,Y,R2,"That is measurable, and I accept it."
+opponent_cues,OC2003,cue_5,C2,Y,R2,That claim survives scrutiny.
+opponent_cues,OC2012,cue_3,C2,Y,R2,They lose. We gain.
+opponent_cues,OC2014,cue_2,C2,Y,R2,It is said that our standing abroad is neglected...
+opponent_cues,OC2014,cue_5,C2,Y,R2,It would be a shame if this spread...
+opponent_cues,OC2015,cue_1,C2,Y,R2,"It would be welcomed, I think..."
+opponent_cues,OC2015,cue_5,C2,Y,R2,That is very much appreciated...
+opponent_cues,OC2016,cue_1,C2,Y,R2,That was not what was intended...
+opponent_cues,OC2017,cue_2,C2,Y,R2,It is said that the chamber is neglected...
+opponent_cues,OC2018,cue_1,C2,Y,R2,That may be seen in a good light...
+opponent_cues,OC2021,cue_3,C2,Y,R2,That gives people courage!
+opponent_cues,OC2021,cue_4,C2,Y,R2,That honors order and custom!
+opponent_cues,OC2023,cue_5,C2,Y,R2,"This is about real lives, not papers!"
+opponent_cues,OC2024,cue_3,C1,Y,R2,"Someone who truly cares, at last!"
+opponent_cues,OC2025,cue_1,C6,Y,R2,Do not ask me to turn away!
+opponent_cues,OC2025,cue_3,C2,Y,R2,That is more than I can bear!
+opponent_cues,OC2027,cue_5,C2,Y,R2,That may be seen in a good light...
+opponent_cues,OC3117,cue_2,C2,Y,R2,"This matters to me, and I will make the room feel it!"
+opponent_cues,OC3122,cue_5,C2,Y,R2,"That figure is wrong, and it weakens our case."
+opponent_cues,OC3125,cue_4,C2,Y,R2,That estimate will not survive scrutiny. Drop it.
+opponent_cues,OC3144,cue_2,C6,N,R2,How can you turn your back on rice and dairy farmers? They need this!
+opponent_cues,OC3176,cue_1,C6,N,R2,How can you turn your back on employers short of workers? They need this!
+opponent_cues,OC3177,cue_1,C1,N,R2,"Think of employers short of workers tonight, finally hopeful! That is the Specified Skilled Worker Visa Act!"
+opponent_cues,OC3180,cue_1,C6,N,R2,I want a straight answer: what does the Grid Resilience and Renewable Energy Act actually do?
+opponent_cues,OC3183,cue_1,C6,N,R2,Look at me and tell me what the Grid Resilience and Renewable Energy Act would mean for real families!
+opponent_cues,OC3183,cue_3,C6,N,R2,How can you turn your back on rural towns and households that lost power? They need this!
+opponent_cues,OC3184,cue_1,C6,N,R2,"Let us remember the people behind the Grid Resilience and Renewable Energy Act, not the headlines!"
+opponent_cues,OC3185,cue_2,C6,N,R2,I will not let you make the Grid Resilience and Renewable Energy Act sound simple!
+opponent_cues,OC3186,cue_1,C6,N,R2,"Friends, the Grid Resilience and Renewable Energy Act deserves a real debate, not slogans."
+opponent_cues,OC3187,cue_1,C6,N,R2,Let us find the version of the Grid Resilience and Renewable Energy Act this whole room can live with.
+opponent_cues,OC3188,cue_1,C6,N,R2,We can disagree on the Grid Resilience and Renewable Energy Act and still respect each other.
+opponent_cues,OC3188,cue_3,C6,N,R2,"Friends, cooler heads, please. The Grid Resilience and Renewable Energy Act deserves that."
+opponent_cues,OC3190,cue_1,C6,N,R2,"Let us settle the Grid Resilience and Renewable Energy Act with evidence, not volume."
+opponent_cues,OC3191,cue_2,C6,N,R2,That claim about the Grid Resilience and Renewable Energy Act is unsourced.
+opponent_cues,OC3193,cue_1,C6,N,R2,How can you turn your back on pensioners and care workers? They need this!
+opponent_cues,OC3199,cue_3,C6,N,R2,How can you turn your back on prefectural governments and local officials? They need this!
+opponent_cues,OC3204,cue_3,C6,N,R2,How can you turn your back on women candidates and their voters? They need this!
+opponent_cues,OC3216,cue_2,C6,N,R2,How can you turn your back on courts that want distance from politics? They need this!
+opponent_cues,OC3235,cue_3,C6,N,R2,How can you turn your back on districts with a member who can deliver? They need this!
+opponent_cues,OC3245,cue_2,C6,N,R2,How can you turn your back on tech firms and graduates? They need this!
+opponent_cues,OC3257,cue_2,C6,N,R2,How can you turn your back on same-sex couples and their families? They need this!
+opponent_cues,OC3275,cue_3,C6,N,R2,How can you turn your back on coastal communities and security officials? They need this!
+opponent_cues,OC3283,cue_1,C6,N,R2,"How can you turn your back on hotels, shops and artisans? They need this!"
+opponent_cues,OC3290,cue_2,C6,N,R2,How can you turn your back on power users and industrial employers? They need this!
+opponent_cues,OC3305,cue_1,C6,N,R2,How can you turn your back on unconnected applicants and voters tired of patronage? They need this!
+opponent_cues,OC3308,cue_1,C6,N,R2,How can you turn your back on low-wage workers and students? They need this!
+opponent_cues,OC3310,cue_1,C6,N,R2,How can you turn your back on voters in unfairly drawn districts? They need this!
+opponent_cues,OC3316,cue_1,C6,N,R2,How can you turn your back on schools and families who want a shared moral base? They need this!
+opponent_cues,OC3345,cue_1,C6,N,R2,How can you turn your back on viewers who want independent news? They need this!
+opponent_cues,OC3351,cue_1,C6,N,R2,How can you turn your back on voters who want clean politics? They need this!
+opponent_cues,OC3359,cue_2,C6,N,R2,How can you turn your back on clean-energy firms and households that get dividends? They need this!
+opponent_cues,OC3360,cue_2,C6,N,R2,Say no to the Carbon Levy Act and you say no to clean-energy firms and households that get dividends!
+opponent_cues,OC3360,cue_3,C6,N,R2,Spare me the doubts! Clean-energy firms and households that get dividends need help now!
+opponent_cues,OC3363,cue_2,C6,N,R2,The data on clean-energy firms and households that get dividends is clear. Where is your counter-evidence?
+opponent_cues,OC3363,cue_3,C6,N,R2,Your objection has no numbers. The case for clean-energy firms and households that get dividends does.
+opponent_cues,OC3365,cue_3,C6,N,R2,How can you turn your back on fishers and consumers who want healthy stocks? They need this!
+opponent_cues,OC3386,cue_1,C6,N,R2,How can you turn your back on traders and travelers? They need this!
+opponent_cues,OC3393,cue_1,C6,N,R2,How can you turn your back on investors and islanders looking for work? They need this!
+opponent_cues,OC3398,cue_1,C6,N,R2,How can you turn your back on exporters and shoppers? They need this!
+opponent_cues,OC3414,cue_1,C6,N,R2,How can you turn your back on researchers and students? They need this!
+opponent_cues,OC3422,cue_4,C6,N,R2,"How can you turn your back on women, minorities and disabled workers? They need this!"
+opponent_cues,OC3440,cue_1,C6,N,R2,How can you turn your back on police and commuters? They need this!
+opponent_cues,OC3454,cue_1,C6,N,R2,How can you turn your back on rank-and-file members? They need this!
+player_cues,PL01,cue_1,C2,Y,R3,That is not what the record shows.
+player_cues,PL03,cue_5,C2,Y,R3,That charge does not hold up.
+player_cues,PL05,cue_1,C2,Y,R3,This is about the people we serve.
+player_cues,PL05,cue_5,C2,Y,R3,This is personal for every household.
+player_cues,PL07,cue_3,C2,Y,R3,This committee deserves a better proposal.
+player_cues,PL10,cue_5,C2,Y,R3,That estimate does not survive scrutiny.
+player_cues,PL13,cue_2,C2,Y,R3,This is what your side does.
+player_cues,PL14,cue_2,C2,Y,R3,This is a line we will not cross.
+player_cues,PL18,cue_2,C2,Y,R3,That is a matter of interpretation.
+player_cues,PL23,cue_1,C2,Y,R3,Those figures are audited and public.
+player_cues,PL27,cue_4,C2,Y,R3,This fight is for every rider!
+player_cues,PL28,cue_3,C2,Y,R3,This is about dignity on the commute!
+player_cues,PL35,cue_4,C2,Y,R3,I take responsibility for this plan.
+player_cues,PL38,cue_5,C6,Y,R3,A good turn deserves a fair quota.
+player_cues,PL42,cue_2,C6,Y,R3,Do not turn friends against friends.
+player_cues,PL46,cue_5,C2,Y,R3,This is not an abstract exercise!
+player_cues,PL47,cue_5,C2,Y,R3,This work matters to me personally!
+player_cues,PL54,cue_4,C2,Y,R3,That reading ignores the footnote.
+player_cues,PL55,cue_2,C2,Y,R3,This is a choice between two camps.
+player_cues,PL58,cue_2,C2,Y,R3,It is hard to say who benefits...
+player_cues,PL60,cue_1,C2,Y,R3,"That detail escapes me, regrettably..."
+player_cues,PL60,cue_5,C2,Y,R3,It would be premature to say...
+player_cues,PL63,cue_1,C2,Y,R3,That is an accurate summary of my position.
+player_cues,PL64,cue_2,C2,Y,R3,This committee cannot look away!
+player_cues,PL65,cue_3,C2,Y,R3,This is why I do this work!
+player_cues,PL66,cue_1,C2,Y,R3,That is an unfair characterization!
+player_cues,PL72,cue_1,C2,Y,R3,Those numbers need their context.
+player_cues,PL75,cue_2,C2,Y,R3,That framing helps no one.
+player_cues,PL76,cue_1,C2,Y,R3,It seems certain papers are missing...
+player_cues,PL78,cue_3,C2,Y,R3,"That is outside my brief, I believe..."
+player_cues,PL78,cue_5,C6,Y,R3,Details are for the implementation stage...
+player_cues,PL86,cue_3,C6,Y,R3,I am glad to share this stage.
+player_cues,PL90,cue_1,C2,Y,R3,That statistic is taken out of context.
+player_cues,PL94,cue_5,C2,Y,R3,That answer left a lot unsaid...
+player_cues,PL96,cue_2,C2,Y,R3,That is not quite what I meant...
+player_cues,PL98,cue_1,C2,Y,R3,This hall deserves more than slogans.
+player_cues,PL100,cue_4,C2,Y,R3,"I own this plan, flaws and all."
+player_cues,PL105,cue_3,C2,Y,R3,This is about our families!
+player_cues,PL107,cue_1,C6,Y,R3,Do not turn my care into a weapon!
+player_cues,PL108,cue_3,C2,Y,R3,"These worries are real, and so is my effort!"
+player_cues,PL112,cue_5,C2,Y,R3,Everyone has a place in this plan.
+player_cues,PL117,cue_1,C2,Y,R3,The numbers support this plan.
+player_cues,PL118,cue_3,C2,Y,R3,The trend line favors this plan.
+player_cues,PL119,cue_1,C2,Y,R3,Those figures use the wrong baseline.
+player_cues,PL119,cue_4,C2,Y,R3,That source is out of date.
+player_cues,PL123,cue_1,C2,Y,R3,This town knows its real friends.
+player_cues,PL127,cue_4,C2,Y,R3,It is often said you know more...
+player_cues,PL130,cue_2,C2,Y,R3,That is under active consideration...
+player_cues,PL130,cue_5,C2,Y,R3,"It is being looked into, certainly..."
+player_cues,PL131,cue_2,C2,Y,R3,That would be a matter for others...
+player_cues,PL132,cue_5,C2,Y,R3,"That is not my area, really..."
+player_cues,PL139,cue_1,C2,Y,R3,"This party was built for people, not careers!"
+player_cues,PL140,cue_5,C2,Y,R3,This is not what our voters want!
+player_cues,PL142,cue_1,C2,Y,R3,This party is my family!
+player_cues,PL151,cue_1,C2,Y,R3,How many seats does this plan win us?
+player_cues,PL155,cue_1,C2,Y,R3,That count includes undecided members.
+player_cues,PL155,cue_4,C2,Y,R3,Those totals ignore absentees.
+player_cues,PL160,cue_5,C2,Y,R3,Those who stay on side will be rewarded.
+player_cues,PL163,cue_2,C2,Y,R3,It would be unfortunate if details leaked...
+player_cues,PL164,cue_5,C2,Y,R3,It might be wise to reconsider...
+player_cues,PL167,cue_4,C2,Y,R3,These things are rarely so simple...
+player_cues,PL167,cue_5,C2,Y,R3,"That is a leadership matter, surely..."
+player_cues,PL174,cue_2,C6,Y,R3,Do not turn the wilderness into a game.
+player_cues,PL174,cue_4,C2,Y,R3,"These are people, not statistics."
+player_cues,PL180,cue_2,C2,Y,R3,Those figures on the wilderness are misread.
+player_cues,PL180,cue_5,C2,Y,R3,That is not what the data shows.
+player_cues,PL181,cue_4,C2,Y,R3,This is a fight over the wilderness.
+player_cues,PL183,cue_4,C2,Y,R3,That jab on the wilderness fails.
+player_cues,PL186,cue_1,C2,Y,R3,That is not my line on the wilderness.
+player_cues,PL192,cue_1,C6,Y,R3,Do not turn rural hospitals into a game.
+player_cues,PL192,cue_3,C2,Y,R3,"These are people, not statistics."
+player_cues,PL198,cue_1,C2,Y,R3,Those figures on rural hospitals are misread.
+player_cues,PL198,cue_4,C2,Y,R3,That is not what the data shows.
+player_cues,PL199,cue_3,C2,Y,R3,This is a fight over rural hospitals.
+player_cues,PL201,cue_3,C2,Y,R3,That jab on rural hospitals fails.
+player_cues,PL204,cue_5,C2,Y,R3,That is not my line on rural hospitals.
+player_cues,PL210,cue_2,C2,Y,R3,"These are people, not statistics."
+player_cues,PL210,cue_5,C6,Y,R3,Do not turn the identity card into a game.
+player_cues,PL216,cue_3,C2,Y,R3,That is not what the data shows.
+player_cues,PL216,cue_5,C2,Y,R3,Those figures on the identity card are misread.
+player_cues,PL217,cue_2,C2,Y,R3,This is a fight over the identity card.
+player_cues,PL219,cue_2,C2,Y,R3,That jab on the identity card fails.
+player_cues,PL222,cue_4,C2,Y,R3,That is not my line on the identity card.
+player_cues,PL228,cue_1,C2,Y,R3,"These are people, not statistics."
+player_cues,PL228,cue_4,C6,Y,R3,Do not turn the broadcaster into a game.
+player_cues,PL234,cue_2,C2,Y,R3,That is not what the data shows.
+player_cues,PL234,cue_4,C2,Y,R3,Those figures on the broadcaster are misread.
+player_cues,PL235,cue_1,C2,Y,R3,This is a fight over the broadcaster.
+player_cues,PL237,cue_1,C2,Y,R3,That jab on the broadcaster fails.
+player_cues,PL240,cue_3,C2,Y,R3,That is not my line on the broadcaster.
+player_cues,PL246,cue_3,C6,Y,R3,Do not turn political donations into a game.
+player_cues,PL246,cue_5,C2,Y,R3,"These are people, not statistics."
+player_cues,PL252,cue_1,C2,Y,R3,That is not what the data shows.
+player_cues,PL252,cue_3,C2,Y,R3,Those figures on political donations are misread.
+player_cues,PL253,cue_5,C2,Y,R3,This is a fight over political donations.
+player_cues,PL255,cue_5,C2,Y,R3,That jab on political donations fails.
+player_cues,PL258,cue_2,C2,Y,R3,That is not my line on political donations.
+player_cues,PL264,cue_2,C6,Y,R3,Do not turn the tax cut into a game.
+player_cues,PL264,cue_4,C2,Y,R3,"These are people, not statistics."
+player_cues,PL270,cue_2,C2,Y,R3,Those figures on the tax cut are misread.
+player_cues,PL270,cue_5,C2,Y,R3,That is not what the data shows.
+player_cues,PL271,cue_4,C2,Y,R3,This is a fight over the tax cut.
+player_cues,PL273,cue_4,C2,Y,R3,That jab on the tax cut fails.
+player_cues,PL276,cue_1,C2,Y,R3,That is not my line on the tax cut.
+player_cues,PL282,cue_1,C6,Y,R3,Do not turn the carbon levy into a game.
+player_cues,PL282,cue_3,C2,Y,R3,"These are people, not statistics."
+player_cues,PL288,cue_1,C2,Y,R3,Those figures on the carbon levy are misread.
+player_cues,PL288,cue_4,C2,Y,R3,That is not what the data shows.
+player_cues,PL289,cue_3,C2,Y,R3,This is a fight over the carbon levy.
+player_cues,PL291,cue_3,C2,Y,R3,That jab on the carbon levy fails.
+player_cues,PL294,cue_5,C2,Y,R3,That is not my line on the carbon levy.
+player_cues,PL300,cue_2,C2,Y,R3,"These are people, not statistics."
+player_cues,PL300,cue_5,C6,Y,R3,Do not turn tradeable quotas into a game.
+player_cues,PL306,cue_3,C2,Y,R3,That is not what the data shows.
+player_cues,PL306,cue_5,C2,Y,R3,Those figures on tradeable quotas are misread.
+player_cues,PL307,cue_2,C2,Y,R3,This is a fight over tradeable quotas.
+player_cues,PL309,cue_2,C2,Y,R3,That jab on tradeable quotas fails.
+player_cues,PL312,cue_4,C2,Y,R3,That is not my line on tradeable quotas.
+player_cues,PL318,cue_1,C2,Y,R3,"These are people, not statistics."
+player_cues,PL318,cue_4,C6,Y,R3,Do not turn the shipyards into a game.
+player_cues,PL324,cue_2,C2,Y,R3,That is not what the data shows.
+player_cues,PL324,cue_4,C2,Y,R3,Those figures on the shipyards are misread.
+player_cues,PL325,cue_1,C2,Y,R3,This is a fight over the shipyards.
+player_cues,PL327,cue_1,C2,Y,R3,That jab on the shipyards fails.
+player_cues,PL330,cue_3,C2,Y,R3,That is not my line on the shipyards.
+player_cues,PL336,cue_3,C6,Y,R3,Do not turn the review into a game.
+player_cues,PL336,cue_5,C2,Y,R3,"These are people, not statistics."
+player_cues,PL342,cue_1,C2,Y,R3,That is not what the data shows.
+player_cues,PL342,cue_3,C2,Y,R3,Those figures on the review are misread.
+player_cues,PL343,cue_5,C2,Y,R3,This is a fight over the review.
+player_cues,PL345,cue_5,C2,Y,R3,That jab on the review fails.
+player_cues,PL348,cue_2,C2,Y,R3,That is not my line on the review.
+player_cues,PL354,cue_2,C6,Y,R3,Do not turn border sharing into a game.
+player_cues,PL354,cue_4,C2,Y,R3,"These are people, not statistics."
+player_cues,PL360,cue_2,C2,Y,R3,Those figures on border sharing are misread.
+player_cues,PL360,cue_5,C2,Y,R3,That is not what the data shows.
+player_cues,PL361,cue_4,C2,Y,R3,This is a fight over border sharing.
+player_cues,PL363,cue_4,C2,Y,R3,That jab on border sharing fails.
+player_cues,PL366,cue_1,C2,Y,R3,That is not my line on border sharing.
+player_cues,PL372,cue_1,C6,Y,R3,Do not turn the islands into a game.
+player_cues,PL372,cue_3,C2,Y,R3,"These are people, not statistics."
+player_cues,PL378,cue_1,C2,Y,R3,Those figures on the islands are misread.
+player_cues,PL378,cue_4,C2,Y,R3,That is not what the data shows.
+player_cues,PL379,cue_3,C2,Y,R3,This is a fight over the islands.
+player_cues,PL381,cue_3,C2,Y,R3,That jab on the islands fails.
+player_cues,PL384,cue_5,C2,Y,R3,That is not my line on the islands.
+player_cues,PL390,cue_2,C2,Y,R3,"These are people, not statistics."
+player_cues,PL390,cue_5,C6,Y,R3,Do not turn open trade into a game.
+player_cues,PL396,cue_3,C2,Y,R3,That is not what the data shows.
+player_cues,PL396,cue_5,C2,Y,R3,Those figures on open trade are misread.
+player_cues,PL397,cue_2,C2,Y,R3,This is a fight over open trade.
+player_cues,PL399,cue_2,C2,Y,R3,That jab on open trade fails.
+player_cues,PL402,cue_4,C2,Y,R3,That is not my line on open trade.
+player_cues,PL408,cue_1,C2,Y,R3,"These are people, not statistics."
+player_cues,PL408,cue_4,C6,Y,R3,Do not turn family farms into a game.
+player_cues,PL414,cue_2,C2,Y,R3,That is not what the data shows.
+player_cues,PL414,cue_4,C2,Y,R3,Those figures on family farms are misread.
+player_cues,PL415,cue_1,C2,Y,R3,This is a fight over family farms.
+player_cues,PL417,cue_1,C2,Y,R3,That jab on family farms fails.
+player_cues,PL420,cue_3,C2,Y,R3,That is not my line on family farms.
+player_cues,PL426,cue_3,C6,Y,R3,Do not turn research funding into a game.
+player_cues,PL426,cue_5,C2,Y,R3,"These are people, not statistics."
+player_cues,PL432,cue_1,C2,Y,R3,That is not what the data shows.
+player_cues,PL432,cue_3,C2,Y,R3,Those figures on research funding are misread.
+player_cues,PL433,cue_5,C2,Y,R3,This is a fight over research funding.
+player_cues,PL435,cue_5,C2,Y,R3,That jab on research funding fails.
+player_cues,PL438,cue_2,C2,Y,R3,That is not my line on research funding.
+player_cues,PL444,cue_2,C6,Y,R3,Do not turn equal treatment into a game.
+player_cues,PL444,cue_4,C2,Y,R3,"These are people, not statistics."
+player_cues,PL450,cue_2,C2,Y,R3,Those figures on equal treatment are misread.
+player_cues,PL450,cue_5,C2,Y,R3,That is not what the data shows.
+player_cues,PL451,cue_4,C2,Y,R3,This is a fight over equal treatment.
+player_cues,PL453,cue_4,C2,Y,R3,That jab on equal treatment fails.
+player_cues,PL456,cue_1,C2,Y,R3,That is not my line on equal treatment.
+player_cues,PL462,cue_1,C6,Y,R3,Do not turn parental leave into a game.
+player_cues,PL462,cue_3,C2,Y,R3,"These are people, not statistics."
+player_cues,PL468,cue_1,C2,Y,R3,Those figures on parental leave are misread.
+player_cues,PL468,cue_4,C2,Y,R3,That is not what the data shows.
+player_cues,PL469,cue_3,C2,Y,R3,This is a fight over parental leave.
+player_cues,PL471,cue_3,C2,Y,R3,That jab on parental leave fails.
+player_cues,PL474,cue_5,C2,Y,R3,That is not my line on parental leave.
+player_cues,PL480,cue_2,C2,Y,R3,"These are people, not statistics."
+player_cues,PL480,cue_5,C6,Y,R3,Do not turn the cameras into a game.
+player_cues,PL486,cue_3,C2,Y,R3,That is not what the data shows.
+player_cues,PL486,cue_5,C2,Y,R3,Those figures on the cameras are misread.
+player_cues,PL487,cue_2,C2,Y,R3,This is a fight over the cameras.
+player_cues,PL489,cue_2,C2,Y,R3,That jab on the cameras fails.
+player_cues,PL492,cue_4,C2,Y,R3,That is not my line on the cameras.
+player_cues,PL498,cue_1,C2,Y,R3,"These are people, not statistics."
+player_cues,PL498,cue_4,C6,Y,R3,Do not turn town mergers into a game.
+player_cues,PL504,cue_2,C2,Y,R3,That is not what the data shows.
+player_cues,PL504,cue_4,C2,Y,R3,Those figures on town mergers are misread.
+player_cues,PL505,cue_1,C2,Y,R3,This is a fight over town mergers.
+player_cues,PL507,cue_1,C2,Y,R3,That jab on town mergers fails.
+player_cues,PL510,cue_3,C2,Y,R3,That is not my line on town mergers.
+player_cues,PL516,cue_3,C6,Y,R3,Do not turn open ballots into a game.
+player_cues,PL516,cue_5,C2,Y,R3,"These are people, not statistics."
+player_cues,PL522,cue_1,C2,Y,R3,That is not what the data shows.
+player_cues,PL522,cue_3,C2,Y,R3,Those figures on open ballots are misread.
+player_cues,PL523,cue_5,C2,Y,R3,This is a fight over open ballots.
+player_cues,PL525,cue_5,C2,Y,R3,That jab on open ballots fails.
+player_cues,PL528,cue_2,C2,Y,R3,That is not my line on open ballots.
+player_cues,PL530,cue_1,C6,N,R3,Do not turn your back on Ainu families and language teachers!
+player_cues,PL530,cue_3,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL542,cue_2,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL554,cue_1,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL566,cue_5,C6,N,R3,"Do not turn your back on commuters, freight shippers and tourist towns!"
+player_cues,PL578,cue_4,C6,N,R3,Do not turn your back on island residents and coast guard crews!
+player_cues,PL589,cue_5,C6,N,R3,"The burden falls on wage levels and local services, and I say so plainly."
+player_cues,PL590,cue_3,C6,N,R3,Do not turn your back on employers short of workers!
+player_cues,PL590,cue_5,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL591,cue_5,C6,N,R3,We can make sure the cost to wage levels and local services is shared fairly.
+player_cues,PL602,cue_2,C6,N,R3,Do not turn your back on rural towns and households that lost power!
+player_cues,PL602,cue_4,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL614,cue_1,C6,N,R3,Do not turn your back on pensioners and care workers!
+player_cues,PL614,cue_3,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL626,cue_2,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL638,cue_1,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL650,cue_5,C6,N,R3,"Do not turn your back on ferry operators, fishers and border towns!"
+player_cues,PL662,cue_4,C6,N,R3,Do not turn your back on courts that want distance from politics!
+player_cues,PL674,cue_3,C6,N,R3,"Do not turn your back on temples, shrines and festival towns!"
+player_cues,PL674,cue_5,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL686,cue_2,C6,N,R3,Do not turn your back on districts with a member who can deliver!
+player_cues,PL686,cue_4,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL698,cue_1,C6,N,R3,Do not turn your back on tech firms and graduates!
+player_cues,PL698,cue_3,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL710,cue_2,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL722,cue_1,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL734,cue_5,C6,N,R3,Do not turn your back on emergency responders after a disaster!
+player_cues,PL746,cue_4,C6,N,R3,Do not turn your back on defense planners and allies!
+player_cues,PL758,cue_3,C6,N,R3,Do not turn your back on exporters and shoppers!
+player_cues,PL758,cue_5,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL770,cue_2,C6,N,R3,Do not turn your back on coastal communities and security officials!
+player_cues,PL770,cue_4,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL782,cue_1,C6,N,R3,"Do not turn your back on hotels, shops and artisans!"
+player_cues,PL782,cue_3,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL794,cue_2,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL806,cue_1,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL818,cue_5,C6,N,R3,"Do not turn your back on construction workers, hotels and the host town!"
+player_cues,PL830,cue_4,C6,N,R3,Do not turn your back on unconnected applicants and voters tired of patronage!
+player_cues,PL842,cue_3,C6,N,R3,Do not turn your back on low-wage workers and students!
+player_cues,PL842,cue_5,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL854,cue_2,C6,N,R3,Do not turn your back on voters in unfairly drawn districts!
+player_cues,PL854,cue_4,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL866,cue_1,C6,N,R3,Do not turn your back on schools and families who want a shared moral base!
+player_cues,PL866,cue_3,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL878,cue_2,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL890,cue_1,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL902,cue_5,C6,N,R3,Do not turn your back on rural patients!
+player_cues,PL914,cue_4,C6,N,R3,Do not turn your back on residents who tire of paperwork!
+player_cues,PL926,cue_3,C6,N,R3,Do not turn your back on viewers who want independent news!
+player_cues,PL926,cue_5,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL938,cue_2,C6,N,R3,Do not turn your back on voters who want clean politics!
+player_cues,PL938,cue_4,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL950,cue_1,C6,N,R3,Do not turn your back on firms and the workers they hire!
+player_cues,PL950,cue_3,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL961,cue_1,C6,N,R3,Ask clean-energy firms and households that get dividends what the Carbon Levy Act means to them.
+player_cues,PL961,cue_5,C6,N,R3,Judge me by how the Carbon Levy Act treats clean-energy firms and households that get dividends.
+player_cues,PL962,cue_2,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL962,cue_3,C6,N,R3,"Hear clean-energy firms and households that get dividends out, then vote for the Carbon Levy Act!"
+player_cues,PL962,cue_5,C6,N,R3,Think of clean-energy firms and households that get dividends! They have waited for the Carbon Levy Act!
+player_cues,PL963,cue_1,C6,N,R3,"Friends, the Carbon Levy Act is good for clean-energy firms and the households that get dividends."
+player_cues,PL963,cue_4,C6,N,R3,Most of us want what the Carbon Levy Act offers clean-energy firms and households that get dividends.
+player_cues,PL964,cue_3,C6,N,R3,The evidence favors the Carbon Levy Act for clean-energy firms and households that get dividends.
+player_cues,PL965,cue_1,C6,N,R3,Whoever stands against the Carbon Levy Act owes clean-energy firms and households that get dividends an answer.
+player_cues,PL965,cue_2,C6,N,R3,Those who block the Carbon Levy Act are blocking clean-energy firms and households that get dividends.
+player_cues,PL965,cue_3,C6,N,R3,Choose a side: clean-energy firms and households that get dividends or the status quo.
+player_cues,PL965,cue_5,C6,N,R3,Delay on the Carbon Levy Act is a decision against clean-energy firms and households that get dividends.
+player_cues,PL966,cue_1,C6,N,R3,Of course the Carbon Levy Act helps clean-energy firms and households that get dividends. Who would say otherwise?
+player_cues,PL969,cue_1,C6,N,R3,We can do better for clean-energy firms and households that get dividends without this.
+player_cues,PL970,cue_3,C6,N,R3,The evidence does not favor the Carbon Levy Act for clean-energy firms and households that get dividends.
+player_cues,PL972,cue_1,C6,N,R3,Of course I care about clean-energy firms and households that get dividends. Just not like this.
+player_cues,PL973,cue_3,C6,N,R3,"Critics say it turns the sea into a commodity. I disagree, and here is why."
+player_cues,PL974,cue_1,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL974,cue_3,C6,N,R3,Critics say it turns the sea into a commodity. Tell that to the families waiting!
+player_cues,PL975,cue_2,C6,N,R3,Critics say it turns the sea into a commodity. Let us talk it through together.
+player_cues,PL977,cue_5,C6,N,R3,Critics say it turns the sea into a commodity. They speak for the other side.
+player_cues,PL978,cue_4,C6,N,R3,Some say it turns the sea into a commodity. Others quietly disagree.
+player_cues,PL979,cue_2,C6,N,R3,Critics say it turns the sea into a commodity. I think they have a point.
+player_cues,PL980,cue_3,C6,N,R3,Critics say it turns the sea into a commodity. My heart agrees!
+player_cues,PL981,cue_2,C6,N,R3,Critics say it turns the sea into a commodity. Surely we can hear them out.
+player_cues,PL983,cue_5,C6,N,R3,Critics say it turns the sea into a commodity. They speak for the people.
+player_cues,PL984,cue_4,C6,N,R3,Some say it turns the sea into a commodity. I would not like to comment.
+player_cues,PL986,cue_5,C6,N,R3,Do not turn your back on shipyard workers and defense suppliers!
+player_cues,PL998,cue_4,C6,N,R3,Do not turn your back on members who want change studied!
+player_cues,PL1010,cue_3,C6,N,R3,Do not turn your back on traders and travelers!
+player_cues,PL1010,cue_5,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL1022,cue_2,C6,N,R3,Do not turn your back on investors and islanders looking for work!
+player_cues,PL1022,cue_4,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL1034,cue_1,C6,N,R3,Do not turn your back on exporters and shoppers!
+player_cues,PL1034,cue_3,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL1046,cue_2,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL1058,cue_1,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL1070,cue_5,C6,N,R3,"Do not turn your back on women, minorities and disabled workers!"
+player_cues,PL1082,cue_4,C6,N,R3,Do not turn your back on working parents and children!
+player_cues,PL1094,cue_3,C6,N,R3,Do not turn your back on police and commuters!
+player_cues,PL1094,cue_5,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL1106,cue_2,C6,N,R3,Do not turn your back on taxpayers and bigger towns!
+player_cues,PL1106,cue_4,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL1118,cue_1,C6,N,R3,Do not turn your back on rank-and-file members!
+player_cues,PL1118,cue_3,C1,N,R3,"This is about people finally being heard, not paperwork!"
+player_cues,PL1130,cue_4,C2,Y,R3,Read the bill and you will agree.
+player_cues,PL1131,cue_5,C2,Y,R3,That is not a reason to change my mind.
+player_cues,PL1132,cue_3,C2,Y,R3,This chamber should be ashamed!
+player_cues,PL1133,cue_1,C2,Y,R3,Hear the voices behind this bill!
+player_cues,PL1133,cue_4,C2,Y,R3,This is for every family waiting!
+player_cues,PL1138,cue_3,C2,Y,R3,Yes or no: does the bill pay for itself?
+player_cues,PL1139,cue_1,C2,Y,R3,The evidence on the floor favors this bill.
+player_cues,PL1139,cue_4,C2,Y,R3,Three studies agree with this bill.
+player_cues,PL1141,cue_2,C2,Y,R3,Those benches voted against the people.
+player_cues,PL1141,cue_4,C2,Y,R3,Name the members who block this bill.
+player_cues,PL1142,cue_1,C2,Y,R3,Our side of the floor carries this bill.
+player_cues,PL1142,cue_4,C2,Y,R3,This chamber knows who is who.
+player_cues,PL1143,cue_5,C2,Y,R3,This chamber will see who blinks.
+player_cues,PL1144,cue_1,C2,Y,R3,It has been suggested members were misled...
+player_cues,PL1144,cue_2,C2,Y,R3,"One hears concerns about this bill, quietly..."
+player_cues,PL1145,cue_2,C2,Y,R3,The bill may have friends in unexpected places...
+player_cues,PL1146,cue_4,C2,Y,R3,It was not my understanding that...
+player_cues,PL1147,cue_2,C2,Y,R3,That question deserves a straight reply. Here it is.
+player_cues,PL1148,cue_3,C2,Y,R3,That is a fair question and an honest answer.
+player_cues,PL1150,cue_3,C6,Y,R3,Do not turn real lives into a story!
+player_cues,PL1151,cue_3,C2,Y,R3,This is not politics. It is people!
+player_cues,PL1152,cue_2,C2,Y,R3,That framing hurts people!
+player_cues,PL1153,cue_5,C6,Y,R3,Let us not turn this into a show.
+player_cues,PL1156,cue_2,C2,Y,R3,That statistic is out of context.
+player_cues,PL1158,cue_1,C2,Y,R3,That number is selectively quoted.
+player_cues,PL1160,cue_4,C2,Y,R3,This is a story of two sides. Ours wins.
+player_cues,PL1161,cue_2,C2,Y,R3,That is the other camp's question.
+player_cues,PL1162,cue_2,C2,Y,R3,It has been suggested your sources are thin...
+player_cues,PL1164,cue_3,C2,Y,R3,"That is a matter for others, I believe..."
+player_cues,PL1169,cue_4,C2,Y,R3,This party is my family!
+player_cues,PL1171,cue_4,C6,Y,R3,"A good turn deserves another, committee."
+player_cues,PL1180,cue_2,C2,Y,R3,It has been suggested someone is being favored...
+player_cues,PL1182,cue_3,C2,Y,R3,It was not my understanding that...
+player_cues,PL1182,cue_4,C6,Y,R3,I cannot possibly commit at this stage...
+player_cues,PL1187,cue_3,C2,Y,R3,This matters to families watching at home!
+player_cues,PL1188,cue_3,C2,Y,R3,"That question hurts, and I will not answer!"
+player_cues,PL1192,cue_2,C2,Y,R3,That figure is out of context.
+player_cues,PL1194,cue_1,C2,Y,R3,That statistic is misleading.
+player_cues,PL1196,cue_4,C2,Y,R3,This is a story of two sides.
+player_cues,PL1197,cue_2,C2,Y,R3,That is the other camp's question.
+player_cues,PL1200,cue_3,C2,Y,R3,"That is a matter for others, I believe..."
+player_cues,PL1207,cue_3,C6,Y,R3,A good turn should not cost the many.
+player_cues,PL1211,cue_4,C7,Y,R3,Two analyses agree on one point.
+player_cues,PL1218,cue_3,C2,Y,R3,It was not my understanding that...
+player_cues,PL1218,cue_5,C6,Y,R3,I could not possibly say at this stage...
+player_cues,PL1220,cue_3,C2,Y,R3,This is what the findings actually say.
+player_cues,PL1223,cue_1,C2,Y,R3,This study gives hope to so many!
+player_cues,PL1229,cue_1,C6,Y,R3,The data support this at the stated level.
+player_cues,PL1234,cue_2,C2,Y,R3,It has been suggested the sample was chosen...
+player_cues,PL1236,cue_4,C2,Y,R3,It was not my understanding that...
+player_cues,PL1238,cue_1,C6,N,R3,Do not turn away from those who need us to raise allowances for district offices!
+player_cues,PL1250,cue_3,C6,N,R3,Do not turn away from those who need us to let district offices hold open town days!
+player_cues,PL1256,cue_3,C6,N,R3,Do not turn away from those who need us to give towns unconditional block grants!
+player_cues,PL1262,cue_2,C6,N,R3,Do not turn away from those who need us to let towns borrow for local projects!
+player_cues,PL1268,cue_5,C6,N,R3,Do not turn away from those who need us to fund town planning staff!
+player_cues,PL1274,cue_5,C6,N,R3,Do not turn away from those who need us to cut the corporate tax rate!
+player_cues,PL1280,cue_4,C6,N,R3,Do not turn away from those who need us to simplify business licensing!
+player_cues,PL1286,cue_1,C6,N,R3,Do not turn away from those who need us to end paper filing for company registration!
+player_cues,PL1292,cue_1,C6,N,R3,Do not turn away from those who need us to fund repairs to community halls!
+player_cues,PL1304,cue_3,C6,N,R3,Do not turn away from those who need us to fund street lighting in residential blocks!
+player_cues,PL1310,cue_3,C6,N,R3,Do not turn away from those who need us to fund harbor repairs!
+player_cues,PL1316,cue_2,C6,N,R3,Do not turn away from those who need us to subsidize fuel for fishing boats!
+player_cues,PL1322,cue_5,C6,N,R3,Do not turn away from those who need us to fund new cold storage at fishing ports!
+player_cues,PL1328,cue_5,C6,N,R3,Do not turn away from those who need us to strengthen freedom of information requests!
+player_cues,PL1334,cue_4,C6,N,R3,Do not turn away from those who need us to protect reporters' confidential sources!
+player_cues,PL1340,cue_1,C6,N,R3,Do not turn away from those who need us to protect journalists from lawsuits meant to silence them!
+player_cues,PL1346,cue_1,C6,N,R3,Do not turn away from those who need us to raise the minimum wage!
+player_cues,PL1358,cue_3,C6,N,R3,Do not turn away from those who need us to ban unpaid trial work!
+player_cues,PL1364,cue_3,C6,N,R3,Do not turn away from those who need us to support the rice price!
+player_cues,PL1370,cue_2,C6,N,R3,Do not turn away from those who need us to subsidize farm machinery!
+player_cues,PL1376,cue_5,C6,N,R3,Do not turn away from those who need us to fund grain storage for farm cooperatives!
+player_cues,PL1382,cue_5,C6,N,R3,Do not turn away from those who need us to cap university tuition!
+player_cues,PL1388,cue_4,C6,N,R3,Do not turn away from those who need us to give students discounted transit!
+player_cues,PL1394,cue_1,C6,N,R3,Do not turn away from those who need us to fund scholarships for first-generation students!
+player_cues,PL1400,cue_1,C6,N,R3,Do not turn away from those who need us to raise the child allowance!
+player_cues,PL1412,cue_3,C6,N,R3,Do not turn away from those who need us to give families a tax deduction for each child!
+player_cues,PL1418,cue_3,C6,N,R3,Do not turn away from those who need us to certify local crafts with a protected label!
+player_cues,PL1424,cue_2,C6,N,R3,Do not turn away from those who need us to give tax relief for craft apprenticeships!
+player_cues,PL1430,cue_5,C6,N,R3,Do not turn away from those who need us to waive fees at craft fairs for small makers!
+player_cues,PL1436,cue_5,C6,N,R3,Do not turn away from those who need us to freeze commuter fares!
+player_cues,PL1442,cue_4,C6,N,R3,Do not turn away from those who need us to run late-night commuter trains!
+player_cues,PL1448,cue_1,C6,N,R3,Do not turn away from those who need us to cap the monthly cost of a commuter pass!
+player_cues,PL1454,cue_1,C6,N,R3,Do not turn away from those who need us to fund local festivals!
+player_cues,PL1466,cue_3,C6,N,R3,Do not turn away from those who need us to fund the repair of old wooden buildings!
+player_cues,PL1472,cue_3,C6,N,R3,Do not turn away from those who need us to give a tax credit for research and development!
+player_cues,PL1478,cue_2,C6,N,R3,Do not turn away from those who need us to offer visas to start-up founders!
+player_cues,PL1484,cue_5,C6,N,R3,Do not turn away from those who need us to fund university spin-off labs!
+player_cues,PL1490,cue_1,C6,N,R3,Do not turn away from those who need us to hold local referendums on large projects!
+player_cues,PL1502,cue_3,C6,N,R3,Do not turn away from those who need us to hold public question time with local officials!
+player_cues,PL1508,cue_3,C6,N,R3,Do not turn away from those who need us to fund temple preservation!
+player_cues,PL1514,cue_2,C6,N,R3,Do not turn away from those who need us to keep the tax exemption on temple land!
+player_cues,PL1520,cue_5,C6,N,R3,Do not turn away from those who need us to let temples run public meditation and care programs!
+player_cues,PL1526,cue_5,C6,N,R3,Do not turn away from those who need us to support shrine festivals!
+player_cues,PL1532,cue_4,C6,N,R3,Do not turn away from those who need us to protect shrine forests from development!
+player_cues,PL1538,cue_1,C6,N,R3,Do not turn away from those who need us to fund shrine-led community cleanups!
+player_cues,PL1544,cue_1,C6,N,R3,Do not turn away from those who need us to raise care workers' wages!
+player_cues,PL1556,cue_3,C6,N,R3,Do not turn away from those who need us to cap the cost of nursing home beds for families!
+player_cues,PL1562,cue_3,C6,N,R3,Do not turn away from those who need us to raise veterans' pensions!
+player_cues,PL1568,cue_2,C6,N,R3,Do not turn away from those who need us to expand veterans' medical care!
+player_cues,PL1574,cue_5,C6,N,R3,Do not turn away from those who need us to maintain war memorials and cemeteries!
+player_cues,PL1580,cue_5,C6,N,R3,Do not turn away from those who need us to cap growth in government spending!
+player_cues,PL1586,cue_4,C6,N,R3,Do not turn away from those who need us to publish the full cost of every bill!
+player_cues,PL1592,cue_1,C6,N,R3,Do not turn away from those who need us to post government spending online by project!
+player_cues,PL1598,cue_1,C6,N,R3,Do not turn away from those who need us to ease bank lending rules!
+player_cues,PL1610,cue_3,C6,N,R3,Do not turn away from those who need us to simplify the registration of investment funds!
+player_cues,PL1616,cue_3,C6,N,R3,Do not turn away from those who need us to cut taxes for small businesses!
+player_cues,PL1622,cue_2,C6,N,R3,Do not turn away from those who need us to cut paperwork for small firms!
+player_cues,PL1628,cue_5,C6,N,R3,Do not turn away from those who need us to waive licensing fees for micro-enterprises!
+player_cues,PL1634,cue_5,C6,N,R3,Do not turn away from those who need us to require clear price labels!
+player_cues,PL1640,cue_4,C6,N,R3,Do not turn away from those who need us to give buyers a cooling-off period!
+player_cues,PL1646,cue_1,C6,N,R3,Do not turn away from those who need us to require plain-language contracts!
+player_cues,PL1652,cue_1,C6,N,R3,Do not turn away from those who need us to set an affordable housing quota for new buildings!
+player_cues,PL1664,cue_3,C6,N,R3,Do not turn away from those who need us to fund bike lanes in city centers!
+player_cues,PL1670,cue_3,C6,N,R3,Do not turn away from those who need us to restore Ainu fishing and harvest rights!
+player_cues,PL1676,cue_2,C6,N,R3,Do not turn away from those who need us to fund Ainu community centers!
+player_cues,PL1682,cue_5,C6,N,R3,Do not turn away from those who need us to fund Ainu elders' knowledge programs!
+player_cues,PL1688,cue_5,C6,N,R3,Do not turn away from those who need us to expand Ainu-language translation of public documents!
+player_cues,PL1694,cue_4,C6,N,R3,Do not turn away from those who need us to teach the Ainu language in schools!
+player_cues,PL1700,cue_1,C6,N,R3,Do not turn away from those who need us to support Ainu language classes for adults!
+player_cues,PL1706,cue_1,C6,N,R3,Do not turn away from those who need us to keep rural bus routes running!
+player_cues,PL1718,cue_3,C6,N,R3,Do not turn away from those who need us to give tax breaks to firms opening in rural towns!
+player_cues,PL1724,cue_5,C6,N,R3,Do not turn away from those who need us to create a constituency development fund!
+player_cues,PL1730,cue_4,C6,N,R3,Do not turn away from those who need us to fund district office staff training!
+player_cues,PL1736,cue_2,C6,N,R3,Do not turn away from those who need us to fund district offices that help citizens file paperwork!
+player_cues,PL1742,cue_1,C6,N,R3,Do not turn away from those who need us to publish a directory of district services!
+player_cues,PL1748,cue_1,C6,N,R3,Do not turn away from those who need us to give towns their own tax-setting powers!
+player_cues,PL1760,cue_3,C6,N,R3,Do not turn away from those who need us to open special economic zones!
+player_cues,PL1766,cue_2,C6,N,R3,Do not turn away from those who need us to speed up customs clearance at Yezo's ports!
+player_cues,PL1778,cue_5,C6,N,R3,Do not turn away from those who need us to let businesses take on apprentices without extra forms!
+player_cues,PL1784,cue_4,C6,N,R3,Do not turn away from those who need us to give new firms a tax holiday in their first year!
+player_cues,PL1790,cue_3,C6,N,R3,Do not turn away from those who need us to guarantee payment within sixty days on public contracts!
+player_cues,PL1796,cue_5,C6,N,R3,Do not turn away from those who need us to give neighborhood associations legal standing in planning!
+player_cues,PL1802,cue_4,C6,N,R3,Do not turn away from those who need us to give neighborhood associations a seat on planning boards!
+player_cues,PL1808,cue_2,C6,N,R3,Do not turn away from those who need us to fund neighborhood cleanup days!
+player_cues,PL1814,cue_1,C6,N,R3,Do not turn away from those who need us to let neighborhood associations run small local grants!
+player_cues,PL1820,cue_1,C6,N,R3,Do not turn away from those who need us to hold fishing quotas through local cooperatives!
+player_cues,PL1832,cue_4,C6,N,R3,Do not turn away from those who need us to protect coastal fishing grounds from industrial dumping!
+player_cues,PL1838,cue_3,C6,N,R3,Do not turn away from those who need us to support direct sales of catch to local markets!
+player_cues,PL1844,cue_3,C6,N,R3,Do not turn away from those who need us to open every committee hearing to the press!
+player_cues,PL1850,cue_2,C6,N,R3,Do not turn away from those who need us to require government data to be published in open formats!
+player_cues,PL1862,cue_5,C6,N,R3,Do not turn away from those who need us to fund local news outlets in small towns!
+player_cues,PL1868,cue_4,C6,N,R3,Do not turn away from those who need us to require disclosure of who pays for political advertising!
+player_cues,PL1874,cue_5,C6,N,R3,Do not turn away from those who need us to protect collective bargaining rights!
+player_cues,PL1880,cue_4,C6,N,R3,Do not turn away from those who need us to guarantee a living wage on public contracts!
+player_cues,PL1886,cue_1,C6,N,R3,Do not turn away from those who need us to restrict foreign food imports!
+player_cues,PL1898,cue_4,C6,N,R3,Do not turn away from those who need us to start a farm-to-school lunch program!
+player_cues,PL1904,cue_3,C6,N,R3,Do not turn away from those who need us to insure farmers against bad harvests!
+player_cues,PL1910,cue_2,C6,N,R3,Do not turn away from those who need us to support farmers' direct sales at city markets!
+player_cues,PL1916,cue_3,C6,N,R3,Do not turn away from those who need us to build public student housing!
+player_cues,PL1922,cue_2,C6,N,R3,Do not turn away from those who need us to forgive student loans for graduates who work in rural towns!
+player_cues,PL1928,cue_5,C6,N,R3,Do not turn away from those who need us to open more public childcare places!
+player_cues,PL1934,cue_4,C6,N,R3,Do not turn away from those who need us to make school lunches free!
+player_cues,PL1940,cue_2,C6,N,R3,Do not turn away from those who need us to fund after-school care in every district!
+player_cues,PL1946,cue_1,C6,N,R3,Do not turn away from those who need us to let parents work shorter hours while children are young!
+player_cues,PL1952,cue_1,C6,N,R3,Do not turn away from those who need us to promote craft exports abroad!
+player_cues,PL1964,cue_4,C6,N,R3,Do not turn away from those who need us to register master craftspeople as cultural assets!
+player_cues,PL1970,cue_3,C6,N,R3,Do not turn away from those who need us to fund a national craft museum!
+player_cues,PL1976,cue_3,C6,N,R3,Do not turn away from those who need us to make every station step-free!
+player_cues,PL1982,cue_2,C6,N,R3,Do not turn away from those who need us to build park-and-ride lots at commuter stations!
+player_cues,PL1994,cue_5,C6,N,R3,Do not turn away from those who need us to refund fares for long delays!
+player_cues,PL2000,cue_5,C6,N,R3,Do not turn away from those who need us to create a national heritage register!
+player_cues,PL2006,cue_4,C6,N,R3,Do not turn away from those who need us to teach local traditions in schools!
+player_cues,PL2012,cue_2,C6,N,R3,Do not turn away from those who need us to support traditional crafts in school clubs!
+player_cues,PL2018,cue_1,C6,N,R3,Do not turn away from those who need us to protect old town names on maps and signs!
+player_cues,PL2030,cue_5,C6,N,R3,Do not turn away from those who need us to restore old rail stations as community landmarks!
+player_cues,PL2036,cue_1,C6,N,R3,Do not turn away from those who need us to move government services online!
+player_cues,PL2048,cue_4,C6,N,R3,Do not turn away from those who need us to let start-ups test products in regulatory sandboxes!
+player_cues,PL2054,cue_3,C6,N,R3,Do not turn away from those who need us to fund coworking hubs in regional cities!
+player_cues,PL2060,cue_5,C6,N,R3,Do not turn away from those who need us to let citizen petitions trigger committee hearings!
+player_cues,PL2066,cue_4,C6,N,R3,Do not turn away from those who need us to publish every project's full costs for public comment!
+player_cues,PL2072,cue_2,C6,N,R3,Do not turn away from those who need us to let residents vote on local budget priorities!
+player_cues,PL2078,cue_1,C6,N,R3,Do not turn away from those who need us to require open hearings before closing local services!
+player_cues,PL2084,cue_1,C6,N,R3,Do not turn away from those who need us to designate temples as disaster shelters!
+player_cues,PL2096,cue_3,C6,N,R3,Do not turn away from those who need us to list shrine grounds on the heritage register!
+player_cues,PL2102,cue_2,C6,N,R3,Do not turn away from those who need us to waive permit fees for shrine festival stalls!
+player_cues,PL2114,cue_5,C6,N,R3,Do not turn away from those who need us to record festival music and dance as living heritage!
+player_cues,PL2120,cue_4,C6,N,R3,Do not turn away from those who need us to let festival organizers close streets without extra fees!
+player_cues,PL2126,cue_5,C6,N,R3,Do not turn away from those who need us to open dementia care centers in every district!
+player_cues,PL2132,cue_4,C6,N,R3,Do not turn away from those who need us to train and certify more care workers!
+player_cues,PL2138,cue_2,C6,N,R3,Do not turn away from those who need us to fund respite care for family caregivers!
+player_cues,PL2144,cue_1,C6,N,R3,Do not turn away from those who need us to send local care teams to visit isolated elders!
+player_cues,PL2156,cue_1,C6,N,R3,Do not turn away from those who need us to give veterans hiring preference in public jobs!
+player_cues,PL2168,cue_3,C6,N,R3,Do not turn away from those who need us to add sunset clauses to new spending!
+player_cues,PL2174,cue_2,C6,N,R3,Do not turn away from those who need us to require an audit of every large grant!
+player_cues,PL2180,cue_5,C6,N,R3,Do not turn away from those who need us to build a financial hub zone in Sapporo!
+player_cues,PL2186,cue_4,C6,N,R3,Do not turn away from those who need us to let foreign banks open branches in Yezo!
+player_cues,PL2192,cue_2,C6,N,R3,Do not turn away from those who need us to speed approval of new financial products!
+player_cues,PL2198,cue_1,C6,N,R3,Do not turn away from those who need us to fund financial literacy classes in schools!
+player_cues,PL2204,cue_1,C6,N,R3,Do not turn away from those who need us to make large firms pay suppliers on time!
+player_cues,PL2216,cue_3,C6,N,R3,Do not turn away from those who need us to cap bank fees!
+player_cues,PL2222,cue_2,C6,N,R3,Do not turn away from those who need us to let consumers sue together over defective goods!
+player_cues,PL2234,cue_5,C6,N,R3,Do not turn away from those who need us to set up a free consumer complaint line!
+player_cues,PL2240,cue_5,C6,N,R3,Do not turn away from those who need us to cap rent rises in the cities!
+player_cues,PL2246,cue_4,C6,N,R3,Do not turn away from those who need us to allow denser housing near stations!
+player_cues,PL2252,cue_2,C6,N,R3,Do not turn away from those who need us to fund street trees and shade in city centers!
+player_cues,PL2258,cue_1,C6,N,R3,Do not turn away from those who need us to open vacant city lots to community gardens!
+player_cues,PL2264,cue_1,C6,N,R3,Do not turn away from those who need us to require consultation with Ainu communities on land use!
+player_cues,PL2276,cue_3,C6,N,R3,Do not turn away from those who need us to fund Ainu-language broadcasting!
+player_cues,PL2282,cue_2,C6,N,R3,Do not turn away from those who need us to fund museum exhibits and archives on Ainu culture!
+player_cues,PL2288,cue_5,C6,N,R3,Do not turn away from those who need us to bring broadband to every village!
+player_cues,PL2294,cue_4,C6,N,R3,Do not turn away from those who need us to fund clinics in rural towns!
+player_cues,PL2300,cue_2,C6,N,R3,Do not turn away from those who need us to support small-town shops with rent grants!
+player_cues,PL2306,cue_1,C6,N,R3,Do not turn away from those who need us to fund rural school buses!
+player_cues,PL2322,cue_3,C6,N,R3,"If we turn away from Ainu families and language teachers, what are we for?"
+player_cues,PL2324,cue_3,C6,N,R3,"If we turn away from town officials and landowners, what are we for?"
+player_cues,PL2346,cue_3,C6,N,R3,"If we turn away from rice and dairy farmers, what are we for?"
+player_cues,PL2348,cue_3,C6,N,R3,"If we turn away from taxpayers and grocery shoppers, what are we for?"
+player_cues,PL2370,cue_3,C6,N,R3,"If we turn away from new employers and the workers they hire, what are we for?"
+player_cues,PL2372,cue_3,C6,N,R3,"If we turn away from workers under looser labor rules, what are we for?"
+player_cues,PL2394,cue_3,C6,N,R3,"If we turn away from commuters, freight shippers and tourist towns, what are we for?"
+player_cues,PL2396,cue_3,C6,N,R3,"If we turn away from taxpayers, what are we for?"
+player_cues,PL2418,cue_3,C6,N,R3,"If we turn away from island residents and coast guard crews, what are we for?"
+player_cues,PL2420,cue_3,C6,N,R3,"If we turn away from taxpayers, what are we for?"
+player_cues,PL2442,cue_3,C6,N,R3,"If we turn away from employers short of workers, what are we for?"
+player_cues,PL2444,cue_3,C6,N,R3,"If we turn away from local workers whose wages could slip, what are we for?"
+player_cues,PL2466,cue_3,C6,N,R3,"If we turn away from rural towns and households that lost power, what are we for?"
+player_cues,PL2468,cue_3,C6,N,R3,"If we turn away from utility customers, what are we for?"
+player_cues,PL2490,cue_3,C6,N,R3,"If we turn away from pensioners and care workers, what are we for?"
+player_cues,PL2492,cue_3,C6,N,R3,"If we turn away from shoppers and small shops, what are we for?"
+player_cues,PL2514,cue_3,C6,N,R3,"If we turn away from prefectural governments and local officials, what are we for?"
+player_cues,PL2516,cue_3,C6,N,R3,"If we turn away from people in poorer prefectures, what are we for?"
+player_cues,PL2538,cue_3,C6,N,R3,"If we turn away from women candidates and their voters, what are we for?"
+player_cues,PL2540,cue_3,C6,N,R3,"If we turn away from candidates who might be passed over, what are we for?"
+player_cues,PL2562,cue_3,C6,N,R3,"If we turn away from ferry operators, fishers and border towns, what are we for?"
+player_cues,PL2564,cue_3,C6,N,R3,"If we turn away from taxpayers, what are we for?"
+player_cues,PL2586,cue_3,C6,N,R3,"If we turn away from courts that want distance from politics, what are we for?"
+player_cues,PL2588,cue_3,C6,N,R3,"If we turn away from citizens who want judges answerable, what are we for?"
+player_cues,PL2610,cue_3,C6,N,R3,"If we turn away from temples, shrines and festival towns, what are we for?"
+player_cues,PL2612,cue_3,C6,N,R3,"If we turn away from taxpayers who prefer secular spending, what are we for?"
+player_cues,PL2634,cue_3,C6,N,R3,"If we turn away from districts with a member who can deliver, what are we for?"
+player_cues,PL2636,cue_3,C6,N,R3,"If we turn away from taxpayers, what are we for?"
+player_cues,PL2658,cue_3,C6,N,R3,"If we turn away from tech firms and graduates, what are we for?"
+player_cues,PL2660,cue_3,C6,N,R3,"If we turn away from taxpayers and local power users, what are we for?"
+player_cues,PL2682,cue_3,C6,N,R3,"If we turn away from police and crime victims, what are we for?"
+player_cues,PL2684,cue_3,C6,N,R3,"If we turn away from citizens whose phones could be tapped, what are we for?"
+player_cues,PL2706,cue_3,C6,N,R3,"If we turn away from same-sex couples and their families, what are we for?"
+player_cues,PL2708,cue_3,C6,N,R3,"If we turn away from people who hold traditional views of the family, what are we for?"
+player_cues,PL2730,cue_3,C6,N,R3,"If we turn away from emergency responders after a disaster, what are we for?"
+player_cues,PL2732,cue_3,C6,N,R3,"If we turn away from citizens who value checks on power, what are we for?"
+player_cues,PL2754,cue_3,C6,N,R3,"If we turn away from defense planners and allies, what are we for?"
+player_cues,PL2756,cue_3,C6,N,R3,"If we turn away from people who prefer a neutral Yezo, what are we for?"
+player_cues,PL2778,cue_3,C6,N,R3,"If we turn away from exporters and shoppers, what are we for?"
+player_cues,PL2780,cue_3,C6,N,R3,"If we turn away from dairy and rural producers, what are we for?"
+player_cues,PL2802,cue_3,C6,N,R3,"If we turn away from coastal communities and security officials, what are we for?"
+player_cues,PL2804,cue_3,C6,N,R3,"If we turn away from foreign investors and landowners who want to sell, what are we for?"
+player_cues,PL2826,cue_3,C6,N,R3,"If we turn away from hotels, shops and artisans, what are we for?"
+player_cues,PL2828,cue_3,C6,N,R3,"If we turn away from residents of crowded resort towns, what are we for?"
+player_cues,PL2850,cue_3,C6,N,R3,"If we turn away from fishers and island tour operators, what are we for?"
+player_cues,PL2852,cue_3,C6,N,R3,"If we turn away from islanders who hold our claim dear, what are we for?"
+player_cues,PL2874,cue_3,C6,N,R3,"If we turn away from power users and industrial employers, what are we for?"
+player_cues,PL2876,cue_3,C6,N,R3,"If we turn away from fishers and families near the plant, what are we for?"
+player_cues,PL2898,cue_3,C6,N,R3,"If we turn away from construction workers, hotels and the host town, what are we for?"
+player_cues,PL2900,cue_3,C6,N,R3,"If we turn away from neighbors and gambling-prone households, what are we for?"
+player_cues,PL2922,cue_3,C6,N,R3,"If we turn away from unconnected applicants and voters tired of patronage, what are we for?"
+player_cues,PL2924,cue_3,C6,N,R3,"If we turn away from towns short of applicants, what are we for?"
+player_cues,PL2946,cue_3,C6,N,R3,"If we turn away from low-wage workers and students, what are we for?"
+player_cues,PL2948,cue_3,C6,N,R3,"If we turn away from small shops and farms, what are we for?"
+player_cues,PL2970,cue_3,C6,N,R3,"If we turn away from voters in unfairly drawn districts, what are we for?"
+player_cues,PL2972,cue_3,C6,N,R3,"If we turn away from voters who want elected mapmakers, what are we for?"
+player_cues,PL2994,cue_3,C6,N,R3,"If we turn away from schools and families who want a shared moral base, what are we for?"
+player_cues,PL2996,cue_3,C6,N,R3,"If we turn away from students and teachers with other views, what are we for?"
+player_cues,PL3018,cue_3,C6,N,R3,"If we turn away from foreign residents and their neighbors, what are we for?"
+player_cues,PL3020,cue_3,C6,N,R3,"If we turn away from citizens who fear a diluted vote, what are we for?"
+player_cues,PL3042,cue_3,C6,N,R3,"If we turn away from Ainu land users and tour operators, what are we for?"
+player_cues,PL3044,cue_3,C6,N,R3,"If we turn away from loggers and developers, what are we for?"
+player_cues,PL3066,cue_3,C6,N,R3,"If we turn away from rural patients, what are we for?"
+player_cues,PL3068,cue_3,C6,N,R3,"If we turn away from taxpayers, what are we for?"
+player_cues,PL3090,cue_3,C6,N,R3,"If we turn away from residents who tire of paperwork, what are we for?"
+player_cues,PL3092,cue_3,C6,N,R3,"If we turn away from people who guard their privacy, what are we for?"
+player_cues,PL3114,cue_3,C6,N,R3,"If we turn away from viewers who want independent news, what are we for?"
+player_cues,PL3116,cue_3,C6,N,R3,"If we turn away from taxpayers who fund the broadcaster, what are we for?"
+player_cues,PL3138,cue_3,C6,N,R3,"If we turn away from voters who want clean politics, what are we for?"
+player_cues,PL3140,cue_3,C6,N,R3,"If we turn away from small donors who fear being named in public, what are we for?"
+player_cues,PL3162,cue_3,C6,N,R3,"If we turn away from firms and the workers they hire, what are we for?"
+player_cues,PL3164,cue_3,C6,N,R3,"If we turn away from people who depend on public services, what are we for?"
+player_cues,PL3181,cue_2,C6,N,R3,"Clean-energy firms and households that get dividends asked for this, and I owe them an honest answer."
+player_cues,PL3181,cue_5,C6,N,R3,"If the Carbon Levy Act fails clean-energy firms and households that get dividends, hold me to account."
+player_cues,PL3182,cue_1,C6,N,R3,I came to support the Carbon Levy Act after listening to clean-energy firms and households that get dividends.
+player_cues,PL3182,cue_4,C6,N,R3,My conscience says clean-energy firms and households that get dividends deserve this much.
+player_cues,PL3183,cue_4,C6,N,R3,Nobody is pretending clean-energy firms and households that get dividends do not have a case.
+player_cues,PL3185,cue_1,C6,N,R3,I cannot look clean-energy firms and households that get dividends in the eye and say no!
+player_cues,PL3185,cue_3,C6,N,R3,"Can you hear clean-energy firms and households that get dividends? I can, and I am with them!"
+player_cues,PL3185,cue_5,C6,N,R3,Give clean-energy firms and households that get dividends the hope they have earned!
+player_cues,PL3186,cue_1,C6,N,R3,"My heart is with clean-energy firms and households that get dividends today, and so is my vote!"
+player_cues,PL3186,cue_3,C6,N,R3,"If we turn away from clean-energy firms and households that get dividends, what are we for?"
+player_cues,PL3186,cue_5,C6,N,R3,"Do it for clean-energy firms and households that get dividends, and do it with courage!"
+player_cues,PL3188,cue_3,C6,N,R3,"If we turn away from fuel users, farmers and fishers, what are we for?"
+player_cues,PL3189,cue_1,C6,N,R3,"Friends, we all want what is best for clean-energy firms and households that get dividends."
+player_cues,PL3189,cue_3,C6,N,R3,I think we can agree clean-energy firms and households that get dividends deserve a fair chance.
+player_cues,PL3189,cue_5,C6,N,R3,We are on the same side here: we want clean energy and household dividends to do well.
+player_cues,PL3192,cue_5,C6,N,R3,"Together we can look after fuel users, farmers and fishers and also help clean-energy firms and households that get dividends."
+player_cues,PL3193,cue_4,C6,N,R3,"Clean-energy firms and households that get dividends see measurable gains. Fuel users, farmers and fishers carry the cost."
+player_cues,PL3195,cue_4,C6,N,R3,"Clean-energy firms and households that get dividends see some gains. Fuel users, farmers and fishers carry the cost."
+player_cues,PL3197,cue_2,C6,N,R3,"Stand with clean-energy firms and households that get dividends, or explain yourself."
+player_cues,PL3198,cue_1,C6,N,R3,The old guard fears the Carbon Levy Act because it works for clean-energy firms and households that get dividends.
+player_cues,PL3198,cue_3,C6,N,R3,You cannot stand with clean-energy firms and households that get dividends and against the Carbon Levy Act.
+player_cues,PL3201,cue_2,C6,N,R3,Some may read my words as warm toward clean-energy firms and households that get dividends. I could not comment.
+player_cues,PL3202,cue_4,C6,N,R3,Let us just say clean-energy firms and households that get dividends have not been forgotten.
+player_cues,PL3210,cue_3,C6,N,R3,"If we turn away from fishers and consumers who want healthy stocks, what are we for?"
+player_cues,PL3212,cue_3,C6,N,R3,"If we turn away from small boats that sell their quotas, what are we for?"
+player_cues,PL3218,cue_2,C6,N,R3,Critics say it turns the sea into a commodity. Test that claim against the data.
+player_cues,PL3220,cue_2,C6,N,R3,Critics say it turns the sea into a commodity. The data deserve a hearing first.
+player_cues,PL3234,cue_3,C6,N,R3,"If we turn away from shipyard workers and defense suppliers, what are we for?"
+player_cues,PL3236,cue_3,C6,N,R3,"If we turn away from taxpayers, what are we for?"
+player_cues,PL3258,cue_3,C6,N,R3,"If we turn away from members who want change studied, what are we for?"
+player_cues,PL3260,cue_3,C6,N,R3,"If we turn away from voters wary of amendments, what are we for?"
+player_cues,PL3282,cue_3,C6,N,R3,"If we turn away from traders and travelers, what are we for?"
+player_cues,PL3284,cue_3,C6,N,R3,"If we turn away from people who fear for privacy at the border, what are we for?"
+player_cues,PL3306,cue_3,C6,N,R3,"If we turn away from investors and islanders looking for work, what are we for?"
+player_cues,PL3308,cue_3,C6,N,R3,"If we turn away from fishers and island communities, what are we for?"
+player_cues,PL3330,cue_3,C6,N,R3,"If we turn away from exporters and shoppers, what are we for?"
+player_cues,PL3332,cue_3,C6,N,R3,"If we turn away from workers and producers who compete with imports, what are we for?"
+player_cues,PL3354,cue_3,C6,N,R3,"If we turn away from young farmers and farm towns, what are we for?"
+player_cues,PL3356,cue_3,C6,N,R3,"If we turn away from taxpayers, what are we for?"
+player_cues,PL3378,cue_3,C6,N,R3,"If we turn away from researchers and students, what are we for?"
+player_cues,PL3380,cue_3,C6,N,R3,"If we turn away from taxpayers, what are we for?"
+player_cues,PL3402,cue_3,C6,N,R3,"If we turn away from women, minorities and disabled workers, what are we for?"
+player_cues,PL3404,cue_3,C6,N,R3,"If we turn away from employers who must change hiring, what are we for?"
+player_cues,PL3426,cue_3,C6,N,R3,"If we turn away from working parents and children, what are we for?"
+player_cues,PL3428,cue_3,C6,N,R3,"If we turn away from small employers, what are we for?"
+player_cues,PL3450,cue_3,C6,N,R3,"If we turn away from police and commuters, what are we for?"
+player_cues,PL3452,cue_3,C6,N,R3,"If we turn away from people who value their privacy, what are we for?"
+player_cues,PL3474,cue_3,C6,N,R3,"If we turn away from taxpayers and bigger towns, what are we for?"
+player_cues,PL3476,cue_3,C6,N,R3,"If we turn away from residents of small towns, what are we for?"
+player_cues,PL3498,cue_3,C6,N,R3,"If we turn away from rank-and-file members, what are we for?"
+player_cues,PL3500,cue_3,C6,N,R3,"If we turn away from party elders and officials, what are we for?"
+player_cues,PL3517,cue_1,C2,Y,R3,"It costs real money, and I won't pretend otherwise. {Bill} is worth that price."
+player_cues,PL3517,cue_2,C2,Y,R3,"The bill is honest about who pays, and I would rather pay now than later."
+player_cues,PL3520,cue_2,C2,Y,R3,"Count the cost in people, and this bill pays for itself."
+player_cues,PL3521,cue_1,C2,Y,R3,Tell the family footing this bill that it was worth it!
+player_cues,PL3521,cue_3,C2,Y,R3,This bill asks working households to pay for someone else's promise.
+player_cues,PL3523,cue_2,C2,Y,R3,The price is fair when everyone carries a little. That is what this bill does.
+player_cues,PL3523,cue_3,C2,Y,R3,"I am open to adjusting who pays, if it keeps the bill alive."
+player_cues,PL3526,cue_2,C2,Y,R3,Run the numbers. Every yen in the bill is matched by a return we can measure.
+player_cues,PL3527,cue_3,C6,Y,R3,"No independent costing, no vote. The numbers we have are a guess."
+player_cues,PL3529,cue_2,C2,Y,R3,Those crying about cost want the benefits of {bill} for free.
+player_cues,PL3530,cue_2,C2,Y,R3,They spend your money and send you the invoice. That is the whole plan.
+player_cues,PL3530,cue_3,C2,Y,R3,Ask who profits from the bill. It is never the people paying for it.
+player_cues,PL3532,cue_1,C2,Y,R3,"Cost is, of course, a matter of perspective. The bill offers great value."
+player_cues,PL3533,cue_1,C2,Y,R3,I could support the bill at a different price. Perhaps. In time.
+player_cues,PL3535,cue_2,C2,Y,R3,"I looked at the studies myself. They support the bill, with honest caveats."
+player_cues,PL3536,cue_2,C2,Y,R3,The case for the bill rests on hope more than proof. I need proof.
+player_cues,PL3538,cue_2,C2,Y,R3,"I have met the people behind the figures, and they are why I back the bill."
+player_cues,PL3539,cue_3,C2,Y,R3,No study I read talks about the people this bill would hurt.
+player_cues,PL3541,cue_3,C2,Y,R3,We can agree on the facts first. Then the bill speaks for itself.
+player_cues,PL3542,cue_2,C2,Y,R3,"If we agree on what proof looks like, we can test the bill fairly."
+player_cues,PL3545,cue_2,C2,Y,R3,The bill's own impact study admits the effect may be zero.
+player_cues,PL3547,cue_3,C2,Y,R3,They want more evidence because they want more delay.
+player_cues,PL3548,cue_3,C2,Y,R3,Supporters of the bill cherry-pick. We read the whole report.
+player_cues,PL3550,cue_2,C2,Y,R3,Studies suggest the bill could well deliver. I find that persuasive enough.
+player_cues,PL3553,cue_3,C2,Y,R3,"Oversight is the part of the bill I worked hardest on, and it holds."
+player_cues,PL3554,cue_2,C2,Y,R3,The bill hands power to an office and asks us to trust it. I do not.
+player_cues,PL3554,cue_3,C2,Y,R3,"Without a real watchdog, the bill is a blank cheque."
+player_cues,PL3554,cue_3,C7,Y,R3,"Without a real watchdog, the bill is a blank cheque."
+player_cues,PL3555,cue_2,C1,Y,R3,Who runs it and who checks it are my first two questions too.
+player_cues,PL3556,cue_2,C2,Y,R3,"Families can call, complain and be heard under this bill. That is oversight."
+player_cues,PL3556,cue_3,C2,Y,R3,"I want every person this touches to have someone to turn to, and the bill gives them that."
+player_cues,PL3556,cue_3,C6,Y,R3,"I want every person this touches to have someone to turn to, and the bill gives them that."
+player_cues,PL3557,cue_3,C2,Y,R3,"The bill protects the office, not the people it serves!"
+player_cues,PL3559,cue_2,C2,Y,R3,A cross-party review panel would make the bill stronger. I would back it.
+player_cues,PL3559,cue_3,C2,Y,R3,We all want this checked properly. The bill can carry that safeguard.
+player_cues,PL3560,cue_1,C2,Y,R3,"Give the bill real oversight and we can talk. Until then, no."
+player_cues,PL3562,cue_3,C2,Y,R3,The oversight model in the bill matches the best-run agencies we have.
+player_cues,PL3563,cue_1,C2,Y,R3,"The bill sets no targets, so nobody can be held to them."
+player_cues,PL3565,cue_3,C2,Y,R3,They ask who checks the work because they want to stop the work.
+player_cues,PL3568,cue_2,C2,Y,R3,The bill will be overseen in the proper way by the proper people.
+player_cues,PL3571,cue_2,C2,Y,R3,I worried about that too. The safeguard in the bill is why I can back it.
+player_cues,PL3571,cue_3,C2,Y,R3,Nothing is risk-free. This bill names the danger and guards against it.
+player_cues,PL3572,cue_1,C2,Y,R3,That risk is exactly why I cannot support {bill}. Nothing stops it.
+player_cues,PL3572,cue_2,C2,Y,R3,"The bill has no brake. Once it starts, it is hard to stop."
+player_cues,PL3574,cue_2,C2,Y,R3,I would never vote for something that put families at risk. This bill shields them.
+player_cues,PL3575,cue_2,C2,Y,R3,This bill gambles with people who cannot afford to lose!
+player_cues,PL3577,cue_2,C2,Y,R3,We share the same worry. Let us write a firmer limit into the bill.
+player_cues,PL3578,cue_2,C2,Y,R3,"We could fix the risk together, but not in the bill as written."
+player_cues,PL3578,cue_3,C2,Y,R3,"Let us agree on the safeguards first, then on the bill."
+player_cues,PL3580,cue_3,C2,Y,R3,"The risk is measurable, and the bill sets an early-warning measure for it."
+player_cues,PL3581,cue_2,C2,Y,R3,The bill sets no threshold that would trigger a review.
+player_cues,PL3581,cue_3,C2,Y,R3,"The worst case in the impact study is not small, and the bill ignores it."
+player_cues,PL3583,cue_3,C2,Y,R3,Fear is all the other camp has left. The bill has safeguards; they have slogans.
+player_cues,PL3584,cue_3,C2,Y,R3,"This is how it starts: a reasonable bill, then a power grab."
+player_cues,PL3589,cue_3,C2,Y,R3,"I checked what the bill does for them, and it helps."
+player_cues,PL3590,cue_2,C2,Y,R3,I looked for what the bill does for them. It does very little.
+player_cues,PL3590,cue_3,C2,Y,R3,"They are the ones who lose under this bill, and I will say so."
+player_cues,PL3591,cue_1,C2,Y,R3,It helps some of them and costs others. I want the balance to be fair.
+player_cues,PL3592,cue_1,C2,Y,R3,These are the people {bill} was written for! They have waited long enough!
+player_cues,PL3592,cue_2,C2,Y,R3,I have sat at their kitchen tables. This bill is for them.
+player_cues,PL3592,cue_3,C2,Y,R3,"Ask them yourself. They want this bill, and they need it."
+player_cues,PL3593,cue_2,C2,Y,R3,The people you name will be the first to suffer under this bill!
+player_cues,PL3593,cue_3,C2,Y,R3,"They did not ask for this, and they will not forgive it!"
+player_cues,PL3595,cue_2,C2,Y,R3,"If they have concerns, the bill can be adjusted to meet them."
+player_cues,PL3596,cue_3,C2,Y,R3,"Bring their concerns into the bill, and I will look again."
+player_cues,PL3597,cue_2,C2,Y,R3,Their voice belongs in this bill. Let us make room for it.
+player_cues,PL3598,cue_3,C2,Y,R3,"On the numbers, they are among the biggest winners from the bill."
+player_cues,PL3599,cue_3,C2,Y,R3,Their losses are larger than the bill admits.
+player_cues,PL3601,cue_3,C2,Y,R3,These people have been ignored by the other camp for years. Not by us.
+player_cues,PL3602,cue_2,C2,Y,R3,"They will use these people as a photo, then forget them."
+player_cues,PL3602,cue_3,C2,Y,R3,Ask who really wins from this bill. It is not them.
+player_cues,PL3603,cue_2,C2,Y,R3,They are always the excuse and rarely the winner.
+player_cues,PL3604,cue_2,C2,Y,R3,"Broadly, the bill is good for people like them, in the main."
+player_cues,PL3604,cue_3,C2,Y,R3,"They will see benefits, over time, in various ways."
+player_cues,PL3608,cue_2,C2,Y,R3,I would vote for the alternative tomorrow. This bill goes too far.
+player_cues,PL3613,cue_2,C2,Y,R3,I hear the case for a smaller step. Let us build that into the bill.
+player_cues,PL3613,cue_3,C2,Y,R3,We can borrow the best of both. The bill is a good place to start.
+player_cues,PL3616,cue_1,C7,Y,R3,"Modelled side by side, {bill} delivers the larger net benefit."
+player_cues,PL3620,cue_1,C2,Y,R3,They reject the sensible alternative because it does not serve their friends.
+player_cues,PL3625,cue_2,C2,Y,R3,Our position is clear and so is mine. I will vote for the bill.
+player_cues,PL3626,cue_3,C2,Y,R3,"I owe the party my honesty, and honestly, I am against the bill."
+player_cues,PL3628,cue_2,C2,Y,R3,"My heart and my party agree on this bill, and I will stand by it."
+player_cues,PL3628,cue_3,C2,Y,R3,I will spend every bit of credit I have for the people behind this bill.
+player_cues,PL3629,cue_2,C2,Y,R3,No party line is worth the harm this bill would do!
+player_cues,PL3631,cue_2,C2,Y,R3,"There is room in our party for every view on this, and the bill unites us."
+player_cues,PL3631,cue_3,C2,Y,R3,Let us hold the line together. The bill is stronger with us all behind it.
+player_cues,PL3632,cue_2,C2,Y,R3,Let us find a position the whole party can share. This bill is not it.
+player_cues,PL3634,cue_2,C2,Y,R3,Our members' own surveys back the bill. I will hold the line.
+player_cues,PL3640,cue_1,C6,Y,R3,"I support the party's position on {bill}, whatever it turns out to be."
+player_cues,PL3643,cue_3,C2,Y,R3,"They will ask hard questions, and I will answer every one."
+player_cues,PL3644,cue_3,C2,Y,R3,Plain words for home: this bill costs too much and does too little.
+player_cues,PL3646,cue_3,C2,Y,R3,"When they see the difference this bill makes, they will be proud of it."
+player_cues,PL3647,cue_2,C2,Y,R3,"The people back home will feel this bill, and they will remember who passed it!"
+player_cues,PL3647,cue_3,C2,Y,R3,"I will stand with the voters, not with this bill."
+player_cues,PL3650,cue_2,C2,Y,R3,Let us take the bill to the voters before we decide for them.
+player_cues,PL3652,cue_2,C2,Y,R3,Polling shows support for the bill grows once people hear the details.
+player_cues,PL3652,cue_3,C2,Y,R3,"The voters respond to results, and this bill produces measurable ones."
+player_cues,PL3653,cue_2,C2,Y,R3,I will show the voters the figures the bill's supporters leave out.
+player_cues,PL3656,cue_3,C2,Y,R3,I will make sure every voter knows who wrote this bill and why.
+player_cues,PL3658,cue_3,C2,Y,R3,It is less about what the bill does and more about how we describe it.
+player_cues,PL3661,cue_2,C2,Y,R3,I take that criticism seriously. I have answered it in the bill itself.
+player_cues,PL3661,cue_3,C2,Y,R3,They have a point about the edges. The core of the bill still holds.
+player_cues,PL3662,cue_2,C2,Y,R3,I share that criticism. It is why I cannot vote for the bill.
+player_cues,PL3662,cue_3,C2,Y,R3,"That objection has not been answered, and I doubt it can be."
+player_cues,PL3664,cue_2,C2,Y,R3,That attack forgets the families waiting on this bill!
+player_cues,PL3665,cue_1,C2,Y,R3,The critics speak for every family this bill would hurt!
+player_cues,PL3665,cue_2,C2,Y,R3,That objection is the voice of the people {bill} leaves behind!
+player_cues,PL3665,cue_3,C2,Y,R3,"They are right, and the people at home know it!"
+player_cues,PL3667,cue_3,C2,Y,R3,Bring the critics to the table. The bill has room for their concerns.
+player_cues,PL3668,cue_2,C2,Y,R3,Let us listen to the objections before we rush the bill through.
+player_cues,PL3668,cue_3,C2,Y,R3,"If the bill answered its critics, I would be glad to support it."
+player_cues,PL3669,cue_2,C2,Y,R3,Every objection is a chance to improve the bill.
+player_cues,PL3670,cue_2,C2,Y,R3,That claim was tested in the impact study and did not hold.
+player_cues,PL3673,cue_2,C2,Y,R3,That line comes straight from the people who profit from doing nothing.
+player_cues,PL3673,cue_3,C2,Y,R3,Those critics have never supported anything that helps ordinary people.
+player_cues,PL3674,cue_3,C2,Y,R3,That criticism stings because it is true.
+player_cues,PL3677,cue_2,C2,Y,R3,Those concerns are widely shared. I hear them everywhere.
+player_cues,PL3679,cue_3,C2,Y,R3,I have weighed the objections. I still think the bill is right.
+player_cues,PL3680,cue_3,C2,Y,R3,"I have weighed it carefully, and I cannot support the bill."
+player_cues,PL3682,cue_1,C1,Y,R3,This is about people finally being treated fairly. That is why {bill} matters!
+player_cues,PL3682,cue_1,C2,Y,R3,This is about people finally being treated fairly. That is why {bill} matters!
+player_cues,PL3682,cue_2,C2,Y,R3,I believe in this bill because I believe in the people it serves!
+player_cues,PL3683,cue_1,C2,Y,R3,"This is about what kind of country we want, and {bill} is not it!"
+player_cues,PL3683,cue_3,C2,Y,R3,My conscience will not let me support this bill!
+player_cues,PL3684,cue_1,C2,Y,R3,"This is about people, first and last."
+player_cues,PL3685,cue_2,C2,Y,R3,We agree on the goal. The bill is a fair way to reach it.
+player_cues,PL3685,cue_3,C2,Y,R3,"I think, once we talk it through, you will find the bill fits your values too."
+player_cues,PL3688,cue_2,C2,Y,R3,"On every measure that matters, the bill improves on the status quo."
+player_cues,PL3689,cue_2,C2,Y,R3,The case against the bill is in its own figures.
+player_cues,PL3690,cue_2,C2,Y,R3,Define the goal in numbers and I will tell you if the bill meets it.
+player_cues,PL3691,cue_1,C2,Y,R3,Those against {bill} are defending a system that suits only them.
+player_cues,PL3691,cue_2,C2,Y,R3,"This is a choice: progress, or the people standing in its way."
+player_cues,PL3692,cue_2,C2,Y,R3,"Choose a side: the people, or the people who wrote this bill."
+player_cues,PL3692,cue_3,C2,Y,R3,This bill tells you exactly whose side its authors are on.
+player_cues,PL3693,cue_1,C2,Y,R3,This debate is a test of which side people are really on.
+player_cues,PL3694,cue_2,C2,Y,R3,"The bill embodies values I have always held, more or less."
+player_cues,PL3694,cue_3,C2,Y,R3,Principles are important. This bill has several.
+player_cues,PL3695,cue_2,C2,Y,R3,I am not against the bill. I am simply not for it.
+player_cues,PL3695,cue_3,C2,Y,R3,My principles and this bill have not yet been introduced.
+card_cues,C05,cue_2,C2,Y,R3,This is the fight that defines us!
+card_cues,C06,cue_2,C2,Y,R3,They're not statistics. They're our neighbors.
+card_cues,C07,cue_3,C2,Y,R3,That's the sound of a movement!
+card_cues,C08,cue_5,C2,Y,R3,This is the speech I live for.
+card_cues,C16,cue_4,C2,Y,R3,This white paper answers your question.
+card_cues,C18,cue_2,C2,Y,R3,They stand for themselves. We stand for you.
+card_cues,C18,cue_3,C2,Y,R3,"It's us against them, plain and simple."
+card_cues,C19,cue_1,C2,Y,R3,They're taking what's yours. Will you let them?
+card_cues,C19,cue_3,C2,Y,R3,They think you won't fight back.
+card_cues,C21,cue_3,C2,Y,R3,"It's complicated, and I respect all views."
+card_cues,C22,cue_3,C2,Y,R3,That doesn't ring a bell.
+card_cues,C27,cue_1,C2,Y,R3,This isn't about party. It's about people.
+card_cues,C28,cue_1,C2,Y,R3,This letter comes from a mother in my district.
+card_cues,C28,cue_3,C2,Y,R3,These letters are why I'm standing here.
+card_cues,C31,cue_2,C2,Y,R3,"This is an outrage, and you know it!"
+card_cues,C34,cue_2,C2,Y,R3,This is our chance! Take it!
+card_cues,C38,cue_1,C6,Y,R3,One good turn deserves another.
+card_cues,C38,cue_3,C2,Y,R3,This is where loyalty counts.
+card_cues,C50,cue_3,C2,Y,R3,That matter is under review.
+card_cues,C52,cue_3,C2,Y,R3,It depends on seventeen interlocking variables.
+card_cues,C54,cue_4,C2,Y,R3,This stays in the room.
+card_cues,C57,cue_1,C2,Y,R3,That draft goes in the fire.
+card_cues,C66,cue_3,C2,Y,R3,They asked for a fight.
+card_cues,C66,cue_5,C2,Y,R3,This ends with a clear winner.
+card_cues,C68,cue_1,C2,Y,R3,These words come from my soul.
+card_cues,C68,cue_5,C2,Y,R3,This is who I am.
+level_intro_thoughts,LV16,thought_text,C6,N,R3,These are colleagues with the energy to push forward policy.
+level_intro_thoughts,LV06,thought_text,C8,N,R3,Friends in the party are worth earning slowly.
+level_intro_thoughts,LV16,thought_text,C6,N,R3,Reformers have energy. I should add judgment.
+level_intro_thoughts,LV20,thought_text,C1,N,R3,Overlooked groups notice who finally calls.
+level_intro_thoughts,LV69,thought_text,C6,N,R3,"Who gains: clean-energy firms and households that get dividends. Who pays: fuel users, farmers and fishers."
+level_intro_thoughts,LV69,thought_text,C6,N,R3,"My worry is higher costs in cold, spread-out towns. My hope is that clean-energy firms and households that get dividends come out better off."
+visitor_questions,VQ03,reaction_c,C1,N,R4,Smiles at last.
+visitor_questions,VQ03,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ11,reaction_d,C6,N,R4,Turns to leave.
+visitor_questions,VQ12,reaction_b,C6,N,R4,"Turns away, unimpressed."
+visitor_questions,VQ12,reaction_c,C1,N,R4,"Laughs, finally."
+visitor_questions,VQ13,choice_c,C6,N,R4,Turn some milk into cheese and sell direct.
+visitor_questions,VQ17,response_d,C6,N,R4,A screen is not a stage.
+visitor_questions,VQ31,response_c,C1,N,R4,Ideas leave the lab. Finally someone says it.
+visitor_questions,VQ34,choice_c,C6,N,R4,Turn part of it into parking to draw shoppers.
+visitor_questions,VQ40,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ76,choice_c,C6,N,R4,Leave them alone; talent finds its level.
+visitor_questions,VQ96,response_b,C1,N,R4,"A costed roster. Finally, someone with a pencil."
+visitor_questions,VQ97,choice_b,C7,N,R4,It would put surgery within an hour; here's how.
+visitor_questions,VQ108,choice_d,C6,N,R4,Most of it returns to households and clean energy.
+visitor_questions,VQ157,reaction_d,C6,N,R4,Turns toward the door.
+visitor_questions,VQ160,response_a,C1,N,R4,"Finally, someone who sees us."
+visitor_questions,VQ163,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ169,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ173,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ179,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ186,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ194,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ197,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ200,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ211,response_a,C6,N,R4,A bonus could turn the tide.
+visitor_questions,VQ214,question_text,C6,N,R4,Online shops are killing my sales. Can anything level the field?
+visitor_questions,VQ222,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ228,choice_a,C7,N,R4,Organize a village rota to clear the road.
+visitor_questions,VQ228,response_a,C7,N,R4,A rota of seventy-year-olds.
+visitor_questions,VQ228,reaction_b,C6,N,R4,Turns toward the window.
+visitor_questions,VQ229,reaction_d,C1,N,R4,Smiles for the first time.
+visitor_questions,VQ239,reaction_a,C6,N,R4,Turns pale.
+visitor_questions,VQ246,response_a,C1,N,R4,Cameras and a phone alert. Finally.
+visitor_questions,VQ246,reaction_d,C6,N,R4,Turns to the door.
+visitor_questions,VQ251,reaction_a,C6,N,R4,Turns away.
+visitor_questions,VQ261,reaction_c,C6,N,R4,Turns away.
+visitor_questions,VQ271,choice_a,C6,N,R4,Energy prices follow the market; help with efficiency.
+visitor_questions,VQ279,choice_b,C6,N,R4,Support a local energy-advice scheme with a free audit.
+visitor_questions,VQ282,reaction_d,C6,N,R4,Turns back to the oven.
+visitor_questions,VQ287,reaction_d,C6,N,R4,Turns off the sign.
+visitor_questions,VQ289,reaction_d,C6,N,R4,Turns and walks away.
+visitor_questions,VQ292,reaction_c,C6,N,R4,Turns to the next customer.
+visitor_questions,VQ301,reaction_c,C6,N,R4,Turns away.
+visitor_questions,VQ303,reaction_c,C6,N,R4,Turns to the mirror.
+visitor_questions,VQ306,reaction_d,C6,N,R4,Turns up the radio.
+visitor_questions,VQ309,question_text,C6,N,R4,Tourists come for the view of the Tanesashi coast and never buy a coffee. How do we turn visits into sales?
+visitor_questions,VQ309,reaction_d,C6,N,R4,Turns the sign to closed.
+visitor_questions,VQ310,response_a,C1,N,R4,"A standard. Finally, something written down."
+visitor_questions,VQ312,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ316,reaction_d,C6,N,R4,Turns off the light.
+visitor_questions,VQ320,reaction_c,C6,N,R4,Turns his face away.
+visitor_questions,VQ321,response_a,C7,N,R4,Housing and a mentor. That is realistic.
+visitor_questions,VQ324,reaction_d,C6,N,R4,Turns the key.
+visitor_questions,VQ330,reaction_d,C6,N,R4,Turns toward the door.
+visitor_questions,VQ333,reaction_d,C6,N,R4,Turns the chair around.
+visitor_questions,VQ337,choice_d,C6,N,R4,Ask neighbors to take turns for an afternoon.
+visitor_questions,VQ343,response_a,C1,N,R4,"Contacts. Finally, someone to call."
+visitor_questions,VQ357,response_a,C1,N,R4,A plan. At last.
+visitor_questions,VQ357,reaction_d,C6,N,R4,Turns the key.
+visitor_questions,VQ367,reaction_d,C6,N,R4,Turns toward the house.
+visitor_questions,VQ373,response_a,C7,N,R4,A shared shopfront. I would join.
+visitor_questions,VQ377,choice_c,C6,N,R4,Turn the co-op into a café and community space.
+visitor_questions,VQ378,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ393,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ401,question_text,C3,N,R4,Snow slides off the shop roofs on Otaru's Sakaimachi Street. It nearly buried me last week.
+visitor_questions,VQ402,reaction_d,C6,N,R4,Turns away.
+visitor_questions,VQ404,choice_b,C6,N,R4,Every claim gets reviewed in turn.
+visitor_questions,VQ404,response_b,C6,N,R4,His turn has come and gone twice.
+visitor_questions,VQ405,question_text,C6,N,R4,"My mother turns one hundred next week, here in Hirosaki. Would you send her a few words?"
+visitor_questions,VQ413,reaction_d,C6,N,R4,Turns his back.
+visit_questions,MV19,text_en,C6,N,R4,"If my allies turn on me for helping you {component}, will you stand with me?"
+visit_answers,MA102,line_en,C6,N,R4,"I am open to a first stage, as long as we begin."
+visit_answers,MA107,line_en,C6,N,R4,"Call the first stage a pilot, and the rest can follow quietly."
+visit_answers,MA161,line_en,C1,N,R4,Because the only people against it are the ones it finally holds to account.
+visit_answers,MA193,line_en,C3,N,R4,Judge me by what I did the last time it got hard.
+lobbyist_lines,LL02,line_en,C6,N,R4,Our supporters turn out at every election. Remember that when you write the next budget.
+lobbyist_lines,LL10,line_en,C3,N,R4,"Look after the harbors and the quota, and we will look after you."
+transition_dialogue,TD13,character_line_en,C2,Y,R5,This is your own party's room. They will notice every word.
+transition_dialogue,TD250,character_line_en,C6,N,R5,Nerves are only energy. Use them.
+transition_dialogue,TD274,character_line_en,C6,N,R5,Keep your hands relaxed and your voice level.
+transition_dialogue,TD274,player_reply_en,C6,N,R5,Relaxed hands. Level voice.
+transition_dialogue,TD309,player_reply_en,C2,Y,R5,They are within reach.
+transition_dialogue,TD311,player_reply_en,C2,Y,R5,They are within reach.
+transition_dialogue,TD313,player_reply_en,C2,Y,R5,They are within reach.
+transition_dialogue,TD315,player_reply_en,C2,Y,R5,They are within reach.
+transition_dialogue,TD317,player_reply_en,C2,Y,R5,They are within reach.
+transition_dialogue,TD319,player_reply_en,C2,Y,R5,They are within reach.
+transition_dialogue,TD321,player_reply_en,C2,Y,R5,They are within reach.
+transition_dialogue,TD323,player_reply_en,C2,Y,R5,They are within reach.
+transition_dialogue,TD325,player_reply_en,C2,Y,R5,They are within reach.
+transition_dialogue,TD606,character_line_en,C6,N,R5,The research folder on the Grid Resilience and Renewable Energy Act backs your lean. Start with page two.
+transition_dialogue,TD607,character_line_en,C6,N,R5,The research on the Grid Resilience and Renewable Energy Act gives you real ground to oppose. Start with page two.
+transition_dialogue,TD608,character_line_en,C6,N,R5,You will have to explain why you back the Grid Resilience and Renewable Energy Act. Keep it short.
+transition_dialogue,TD609,character_line_en,C6,N,R5,You will have to explain why you oppose the Grid Resilience and Renewable Energy Act. Keep it short.
+transition_dialogue,TD610,character_line_en,C6,N,R5,People at home are watching how you handle the Grid Resilience and Renewable Energy Act.
+transition_dialogue,TD611,character_line_en,C6,N,R5,People at home are watching how you handle the Grid Resilience and Renewable Energy Act. Some wanted a yes.
+transition_dialogue,TD612,character_line_en,C6,N,R5,I chose to back the Grid Resilience and Renewable Energy Act. Now I have to earn it.
+transition_dialogue,TD613,character_line_en,C6,N,R5,I chose to oppose the Grid Resilience and Renewable Energy Act. Now I have to justify it.
+transition_dialogue,TD1489,character_line_en,C6,N,R5,Clean-energy firms and households that get dividends are counting on this. I should not take that lightly.
+transition_dialogue,TD1490,character_line_en,C6,N,R5,"If I oppose a rising price on carbon with part of the revenue returned to households, I owe clean-energy firms and households that get dividends a better answer."
+transition_dialogue,TD2099,player_reply_en,C6,N,R5,I will turn it over.
+transition_dialogue,TD2142,character_line_en,C3,N,R5,Remember their names. People forgive a lot after you do.
+transition_dialogue,TD2237,character_line_en,C3,N,R5,"They will remember how you greeted them, not what you promised."
+transition_dialogue,TD2266,player_reply_en,C2,Y,R5,They will.
+transition_dialogue,TD2267,player_reply_en,C2,Y,R5,That is the standard I use.
+transition_dialogue,TD2278,player_reply_en,C2,Y,R5,That is a hard standard.
+transition_dialogue,TD2436,character_line_en,C3,N,R5,I keep notes on what people said last time.
+level_intros,LV101/Policy Research Assistant,cue_text,C3,N,R5,Students check what you say against what you voted. I printed your record.
+vote_influence_cues,BI07,cue_text,C6,N,R5,Your influence carried the Grid Resilience and Renewable Energy Act. Colleagues noted who made the difference.
+events,EV02,flavor,C6,N,R6,"The Buddhist Temples Association is ringing out the old year at a hillside temple in Matsumae and asks you to take a turn at the great bell. A neighbor mentions, quietly, that the bell tower roof leaks."
+events,EV14,flavor,C7,N,R6,"Something you said, or something people think you said, is travelling the corridors."
+events,EV20,flavor,C7,N,R6,"A young founder recognises you on the express, sits down uninvited, and has a laptop open before you can say no."
+events,EV22,flavor,C7,N,R6,"The owner of a small hotel in Noboribetsu waits at the end of your surgery. Two floors are shut because she cannot hire anyone, and the visitors keep coming."
+events,EV24,flavor,C6,N,R6,"A school invites you to a parents' evening. The talk turns to what children are, and are not, being taught."
+events,EV48,flavor,C1,N,R6,A group of elders has done the same radio exercises on the Lake Tōya path every morning for decades. The organizer asks whether you would join them for the first set.
+event_choices,EV02/A,choice_text,C6,N,R6,Take your turn at the bell and stay for tea
+event_choices,EV06/A,choice_text,C6,N,R6,A big speech from the stage
+event_choices,EV52/A,choice_text,C6,N,R6,Take the stage and answer them
+event_choices,EV68/B,result_text,C7,N,R6,Your staffer finds the owner has been in hospital since spring. His family moves the car.
+hosted_events,HE01,prompt_2,C6,N,R6,Along the way the conversation turns to policy. What do you talk about?
+hosted_events,HE02,prompt_2,C6,N,R6,Over dinner the talk turns to policy. What do you bring up?
+floor_votes,BI15,case_for,C6,N,R6,It turns the cold climate into an advantage and brings well-paid tech jobs north.
+floor_votes,BI37,who_gains,C6,N,R6,Clean-energy firms and households that get dividends
+floor_votes,BI38,case_against,C6,N,R6,It turns the sea into a commodity.
+questions,town_hall/T38,text,C2,Y,R4,How much more debt can Yezo take before our children carry the bill?
+questions,town_hall/T71,text,C6,Y,R4,How will local people have a real say before major energy projects are approved?
+questions,town_hall/T96,text,C2,Y,R4,They are building towers next to my house. Who decided that?
+questions,policy_study/B05,text,C2,Y,R4,How are key terms in the bill defined?
+questions,policy_study/B19,text,C7,Y,R4,Are the projections realistic?
+questions,policy_study/B34,text,C6,Y,R4,How do tuition levels compare with graduate earnings across regions?
+questions,media_ambush/A04,text,C2,Y,R4,Is this bill a favor to your friends?
+questions,media_ambush/A07,text,C2,Y,R4,Do you even understand what's in this bill?
+questions,media_ambush/A11,text,C2,Y,R4,Would you live under this law yourself?
+questions,media_ambush/A12,text,C2,Y,R4,Who gets rich off this bill?
+questions,media_ambush/A17,text,C2,Y,R4,Yes or no: is this bill a failure?
+questions,media_ambush/A32,text,C2,Y,R4,Which clause of this bill would you change first?
+questions,stage/S08,text,C6,N,R4,Is the energy transition moving too fast for rural towns?
+questions,stage/S74,text,C7,N,R4,Is this plan realistic with the people and money available?
+questions,stage/S281,text,C6,N,R4,Will you stand with the party if the polls turn against it?
+questions,stage/S389,text,C6,N,R4,"Who pays for the Grid Resilience and Renewable Energy Act, and why is that fair?"
+questions,stage/S390,text,C6,N,R4,"Is the Grid Resilience and Renewable Energy Act solving a real problem, or creating a new one?"
+questions,stage/S391,text,C6,N,R4,Critics say the Grid Resilience and Renewable Energy Act goes too far. What do you tell them?
+questions,stage/S392,text,C6,N,R4,Supporters say the Grid Resilience and Renewable Energy Act does not go far enough. Where do you stand?
+questions,stage/S595,text,C6,N,R4,What is our plan if the story turns to overproduction paid for by the treasury?
+questions,stage/S609,text,C6,N,R4,What is our plan if the story turns to a race to the bottom on labor protections?
+questions,stage/S633,text,C6,N,R4,What is our plan if the story turns to exploitation of workers and strained housing?
+questions,stage/S640,text,C6,N,R4,"Which agency would run the Grid Resilience and Renewable Energy Act, and who checks its work?"
+questions,stage/S641,text,C6,N,R4,Will you spend party credit on the Grid Resilience and Renewable Energy Act?
+questions,stage/S648,text,C6,N,R4,What is our plan if the story turns to weaker spending in poorer households?
+questions,stage/S674,text,C6,N,R4,What is our plan if the story turns to a commission with no power to settle anything?
+questions,stage/S690,text,C6,N,R4,What is our plan if the story turns to favoring some faiths over others?
+questions,stage/S776,text,C6,N,R4,What is our plan if the story turns to overcrowded resorts and strained services?
+questions,stage/S780,text,C6,N,R4,What is our plan if the story turns to weakening our claim to the islands?
+questions,stage/S786,text,C6,N,R4,What is our plan if the story turns to an accident after a quake?
+questions,stage/S806,text,C6,N,R4,What is our plan if the story turns to exams that miss real-world skill?
+questions,stage/S823,text,C6,N,R4,What is our plan if the story turns to an unelected commission with too much say?
+questions,stage/S985,text,C7,N,R4,"Is a small hospital safe for surgery, or only for first aid?"
+questions,stage/S1117,text,C1,N,R4,Would a repaired community hall mean our club finally has a dry room to meet in?
+questions,stage/S1165,text,C1,N,R4,"If I ask why my road was never repaired, would I finally get an answer?"
+questions,stage/S1193,text,C1,N,R4,Who absorbs the cost when a small firm must finally pay for every overtime hour?
+questions,stage/S1197,text,C1,N,R4,Would enforced overtime pay mean I finally get paid for the hours I stay late?
+questions,stage/S1293,text,C1,N,R4,Would tax relief let my local potter finally take on a trainee?
+questions,stage/S1370,text,C6,N,R4,Should universities use public money to turn research into companies?
+questions,stage/S1395,text,C6,N,R4,Some warn question time will become a stage for grandstanding; how will you prevent that?
+questions,stage/S1396,text,C6,N,R4,Mayors say question time will turn into shouting. What do you tell them?
+questions,stage/S1399,text,C6,N,R4,What if one angry crowd dominates the session and quieter residents never get a turn?
+questions,stage/S1445,text,C1,N,R4,Would shrine cleanups finally clear the litter along our riverbank?
+questions,stage/S1511,text,C6,N,R4,What if a published cost turns out far off from the real bill once the work begins?
+questions,stage/S1520,text,C6,N,R4,Could ministries publish spending summaries instead of project-level detail?
+questions,stage/S1589,text,C1,N,R4,Would plain contracts mean I finally understand my insurance policy?
+questions,stage/S1693,text,C1,N,R4,Would a development fund finally repave the road out of my village?
+questions,stage/S1805,text,C1,N,R4,Would funded cleanup days finally clear the dumped bikes by our station?
+questions,stage/S1867,text,C6,N,R4,A mayor says reporters will turn every meeting into a circus. How do you answer that?
+questions,stage/S1869,text,C1,N,R4,Would press access mean someone finally reports what our council decides?
+questions,stage/S2059,text,C6,N,R4,A property owner says listing turns her home into the state's museum piece; what do you say?
+questions,stage/S2230,text,C6,N,R4,Who inspects the centers and sets their staffing levels?
+questions,stage/S2383,text,C6,N,R4,Can we stop owners from evicting tenants just to reset a rent to a higher level?
+questions,stage/S2395,text,C7,N,R4,"Trees drop leaves, crack pavements and block shops; why spend money on those over repairs?"
+questions,stage/S2521,text,C6,N,R4,Will you treat the energy transition as our future or as a cost?

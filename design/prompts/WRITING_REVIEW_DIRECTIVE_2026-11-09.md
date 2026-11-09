@@ -55,14 +55,12 @@ American English means American words as well as American spelling. Judge by wha
 | rota | schedule, roster | 4 visitor reactions |
 | shopfront | storefront | 2 visitor lines |
 | pavement | sidewalk | 1 room question |
-| rubbish | trash, garbage | |
 | in hospital | in the hospital | 1 event result |
 | at the weekend | on the weekend | Text tab |
 | Monday to Friday | Monday through Friday | |
 | fortnight | two weeks | |
-| petrol, lorry, motorway | gas, truck, highway or expressway | |
-| flat, council estate | apartment, public housing | |
-| high street | main street, downtown, shopping street | |
+| lorry, motorway | truck, highway or expressway | |
+| council estate | public housing | |
 | mobile phone | cell phone | |
 | ring someone | call someone | |
 | stand for election | run for office | |
@@ -77,7 +75,7 @@ Yezo is a Japanese setting, so these are **not** C7 defects:
 - **Japanese English** (wasei-eigo and Japanese usage carried into English), where it gives local color: salaryman, office lady, "my number" card, konbini, "morning service", "baby car" for a stroller, "paper driver". Use it in characters' speech, not in interface text.
 - **Canon and parliamentary names** in the data stay as they are, even where an American would say something else: Parliament, Members of Parliament, constituency, prefecture, party post titles, "Constituency support".
 
-**Accepted by Cameron (2026-11-09), leave as they are:** bin, full stop, car park, timetable, queue, and "mansion" (the Japanese term for an apartment building). These are also the words used in English in Japan, so they fit Yezo.
+**Accepted by Cameron (2026-11-09), leave as they are:** bin, rubbish, full stop, car park, timetable, queue, petrol, flat, high street, and "mansion" (the Japanese term for an apartment building). These are also the words used in English in Japan, so they fit Yezo.
 
 **Not a defect:** canon names, places and party positions in the data, even if they look odd. Leave them alone and list anything that looks wrong under "Questions for Cameron".
 
@@ -122,7 +120,7 @@ Extend `tools/content_lint.py` with these checks, read-only, one line per hit, `
 | C2 unanchored | A line that **starts** with `This`, `That`, `It`, `They`, `These`, `Those`; or contains `the bill`, `this bill`, `this law`, `your promise`, `as I said`, `like I said`, `as we discussed` | Generic rooms (ST01-ST23) and their pools |
 | C3 history | `last week`, `last time`, `again`, `once more`, `you lost`, `your win`, `after you`, `you promised`, `you voted` | Rows with no condition behind them |
 | C6 off-term | `booster`, `jiban`, `sanban`, `yen`, `points`, `turn`, `energy`, `stage`, `level`, `Yes vote`, `No vote`, `standing points` | Spoken and on-screen text |
-| C7 spelling and terms | The British spelling list, plus `whilst`, `amongst`, `learnt`, `spelt`, `programme`, `cheque`, `tyre`, `kerb`, `grey`, `travelled`, `cancelled`, `-ise`/`-isation` endings; and the British terms in section 3a (`surgery` about constituents, `rota`, `shopfront`, `pavement`, `rubbish`, `in hospital`, `at the weekend`, `fortnight`, `petrol`, `lorry`, `motorway`, `flat`, `high street`, `mobile phone`, `stand for`, `table` with motion or bill; collective nouns with `are` or `have`) | All English text. Ignore code keys such as `cancelled_line`. Skip Japanese terms, Japanese English and the accepted words (section 3b). |
+| C7 spelling and terms | The British spelling list, plus `whilst`, `amongst`, `learnt`, `spelt`, `programme`, `cheque`, `tyre`, `kerb`, `grey`, `travelled`, `cancelled`, `-ise`/`-isation` endings; and the British terms in section 3a (`surgery` about constituents, `rota`, `shopfront`, `pavement`, `in hospital`, `at the weekend`, `fortnight`, `lorry`, `motorway`, `council estate`, `mobile phone`, `stand for`, `table` with motion or bill; collective nouns with `are` or `have`) | All English text. Ignore code keys such as `cancelled_line`. Skip Japanese terms, Japanese English and the accepted words (section 3b). |
 | C10 echo | Two rows in the same pool whose word overlap is 80% or more | Every pool |
 | C12 placeholders | A `{...}` in the text that the row's Placeholders cell does not list, or the reverse | Text tab |
 
