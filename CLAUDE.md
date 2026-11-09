@@ -233,3 +233,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Level list: the gold line is removed (2026-11-09, Cameron)
 - Writing review applied (2026-11-09, Cameron)
 - Organization names: three more without "the" (2026-11-09, Cameron)
+- Writing review, group 2 content (2026-11-09, Cameron)

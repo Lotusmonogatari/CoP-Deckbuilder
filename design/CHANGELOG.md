@@ -789,3 +789,19 @@ Files: the log of every row (applied, skipped with its reason) is `design/review
 ## Organization names: three more without "the" (2026-11-09, Cameron)
 
 After the writing review, Members of Parliament, Neighborhood Associations and Constituency Voters join Local Kōenkai, Our Traditional Society and Students United as names that take no "the" in a sentence, and Neighborhood Associations takes plural verbs ("Neighborhood Associations want"). 150 opponent, player and transition lines changed (`tools/workbook/archive/b15/no_article_names.py`). The bill-part names CB123, CB134, CB143, CB185 and CB273 and card C16's Japanese name stay as they are.
+
+## Writing review, group 2 content (2026-11-09, Cameron)
+
+The content half of the second group of writing-review items (decisions #12, #15, #31-#33, #37, #55-#58, #66-#68 in `design/review/WRITING_REVIEW_DECISIONS_2026-11-09.md`). Scripts in `tools/workbook/archive/b16/`. All new writing is a draft for Cameron.
+
+| Item | What changed |
+|---|---|
+| B. BI26 and BI35 | Civil Service Merit Act: Butsutou turns Supportive (16 Aye / 2 Nay / 1 Abstain); the others become Yezo Heritage 1/12/1, Frontier 5/22/0, Five Point 0/5/0, Keizaijiyuutou 1/24/0, Country Initiative 3/8/0, so the totals stay 26/73/2 and the Vote Tally formulas still agree. Butsutou's Floor Vote line is now "A post earned fairly serves everyone." Opponent bill lines carry their own side, so Butsutou members now argue For with no other change; no transition, intro or question named the parties' positions. Political Donation Transparency Act: proposed by the Yezo Heritage Party (still Neutral). |
+| C, E. Room questions | 244 questions that name a policy area leave the shared pools for the generic room's own Stage Questions (S2540-S2783): Press 11 (to ST04), Town Hall 110 incl. T32 and T33 (ST05), Lobbyist 82 (ST20), Policy Study 39 (ST21), Media Ambush A21-A22 (ST19). Pools keep 23, 34, 25, 21 and 31 general questions, above every room's turn limit. Kept as general: Q28-Q30, T24, T25, T30, T34, T99, T103, T111, T121-T124, L70, L78, L84, L93, L95, B26, A23-A33. List: `b16_2_moved.tsv`. Note: a room deals its own questions first, so the generic Town Hall (17 questions a stage) now asks almost only the moved, policy-specific ones. |
+| F. Reporter lines | The journalists' 48 gain and block line sets become attack sets: 34 lines kept as they were, 206 reworded as a reporter's challenge in the same style, none repeating a journalist's existing line. |
+| I. Bill visitors | VQ135-VQ156: choices and replies written for each visitor's own bill (176 cells); costs, effects, promises, reactions and the right answer unchanged. |
+| G. Bill-part lines | Two new frame sets per style for player and opponent part lines (`component_frames_v2.py`, which also records today's wording as set A). A part's set follows its slot (X, Z: A; Y, W: B; A, B, C, D, V: C), so the parts of a sponsored bill never share one. 756 player and 756 opponent sets rewritten; set A rows untouched. |
+| H. Topic-room lines | PL169-PL528 tagged Support (61 rows), Oppose (77) or blank (222); in the donation rooms the tags follow that the bill restricts donations. New Balance row Player Cues: Room Line Chance = 25. The exporter accepts a Stance on a room's own lines. |
+| 7. Candidate selection | New room ST289 Candidate Selection Committee (a copy of the Party Caucus, its people and picture; JP 候補者選考委員会, draft) and a one-room Tier 1 level LV114 Candidate Selection Interview (150/100/50/10 XP, cooldown 96, always listed). S573-S582 now come up only there. |
+
+Test change: `tests/test_stage_rules_columns.gd` now expects ST04's and ST05's question count to be the pool plus their own Stage Questions.
