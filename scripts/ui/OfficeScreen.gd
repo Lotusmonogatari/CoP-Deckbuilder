@@ -2908,7 +2908,20 @@ func _show_levels() -> void:
 	tiers.sort()
 	for tier: int in tiers:
 		rows.append(UiKit.heading(Text.say("office.tier_heading", {"tier": tier})))
+		# Within a tier the non-combat levels come first, then a gold line,
+		# then the battles (2026-11-09, Cameron).
+		var stages_by_id := {}
+		for stage: Dictionary in DataDB.stages:
+			stages_by_id[str(stage.get("stage_id", ""))] = stage
+		var calm: Array = []
+		var battles: Array = []
 		for level: Dictionary in by_tier[tier]:
+			(calm if Ledger.level_is_non_combat(level, stages_by_id) else battles).append(level)
+		for level: Dictionary in calm:
+			rows.append(_level_row(level))
+		if not calm.is_empty() and not battles.is_empty():
+			rows.append(UiKit.gold_rule())
+		for level: Dictionary in battles:
 			rows.append(_level_row(level))
 
 	_levels_panel.open(Text.say("office.levels_title"), rows)

@@ -229,3 +229,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Cleanup pass: unused Floor Vote text and old working papers (2026-11-08, Cameron)
 - Important Stakeholders: change buttons, a new intro (2026-11-09, Cameron)
 - Higher-tier non-combat levels (2026-11-09, Cameron)
+- Level list: non-combat first, a gold line, then battles (2026-11-09, Cameron)

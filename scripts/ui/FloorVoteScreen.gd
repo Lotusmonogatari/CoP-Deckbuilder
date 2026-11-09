@@ -375,12 +375,7 @@ func _on_research_briefing() -> void:
 ## A thin gold line between two blocks of information (draft 2026-11-08);
 ## the same gold as the cue banner's edges.
 func _gold_rule() -> ColorRect:
-	var rule := ColorRect.new()
-	rule.name = "GoldRule"
-	rule.color = CueBanner.EDGE_COLOUR
-	rule.custom_minimum_size = Vector2(0.0, 3.0)
-	rule.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	return rule
+	return UiKit.gold_rule()
 
 
 ## The Influence Status pop-up: whether the player's influence can sway

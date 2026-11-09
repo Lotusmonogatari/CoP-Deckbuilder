@@ -641,3 +641,18 @@ static func _filled_deck(cards: Array, balance: Dictionary) -> Array[String]:
 			break   # every card there is, is already in
 
 	return deck
+
+
+## True when every stage of `level` is a Non-combat room (office hours, a
+## festival, a walkabout...), so the level list can show those apart from the
+## battles. `stages_by_id` maps a stage id to its row (2026-11-09).
+static func level_is_non_combat(level: Dictionary, stages_by_id: Dictionary) -> bool:
+	var found := false
+	for slot in range(1, 11):
+		var stage_id := str(level.get("stage_%d" % slot, ""))
+		if not stages_by_id.has(stage_id):
+			continue
+		found = true
+		if str((stages_by_id[stage_id] as Dictionary).get("mode", "")) != "Non-combat":
+			return false
+	return found

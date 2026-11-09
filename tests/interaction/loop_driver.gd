@@ -78,12 +78,7 @@ func _walk_the_loop() -> void:
 		return
 	print("  Start opened the levels screen")
 
-	var look := levels.find_child("Look it over", true, false)
-	if look == null:
-		for node in levels.find_children("", "Button", true, false):
-			if (node as Button).text == "Look it over":
-				look = node
-				break
+	var look: Node = _first_combat_look(levels)
 	if look == null:
 		_failures.append("no level could be chosen")
 		return
@@ -310,3 +305,15 @@ func _click(control: Control) -> void:
 		Input.parse_input_event(event)
 		await get_tree().process_frame
 	await get_tree().process_frame
+
+## The first combat level's "Look it over" button: non-combat levels are
+## listed first in each tier, then a gold line (2026-11-09), so the first
+## button after the line is a battle.
+func _first_combat_look(levels: Node) -> Control:
+	var past_rule := false
+	for node in levels.find_children("*", "", true, false):
+		if str(node.name).contains("GoldRule"):
+			past_rule = true
+		elif past_rule and node is Button and (node as Button).text == Text.say("office.look_it_over"):
+			return node as Control
+	return null

@@ -52,3 +52,12 @@ func test_higher_tiers_are_gated_and_priced() -> void:
 		var seasonal := level.get("seasons") != null
 		assert_true(hidden or seasonal, "%s is gated" % level["level_id"])
 		assert_gt(int(level["unlock_cost_vacant"]), 0, "%s has a price" % level["level_id"])
+
+
+func test_level_list_split_knows_non_combat_levels() -> void:
+	var stages := {}
+	for stage: Dictionary in DataDB.stages:
+		stages[str(stage["stage_id"])] = stage
+	assert_true(Ledger.level_is_non_combat(DataDB.get_level("LV86"), stages), "Office Hours")
+	assert_true(Ledger.level_is_non_combat(DataDB.get_level("LV103"), stages), "District Tour")
+	assert_false(Ledger.level_is_non_combat(DataDB.get_level("LV01"), stages), "a combat level")
