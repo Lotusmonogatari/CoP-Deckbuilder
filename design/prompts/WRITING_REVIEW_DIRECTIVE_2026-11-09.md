@@ -38,7 +38,7 @@ Each finding gets one of these codes.
 | **C4** | **Wrong speaker or listener.** The line does not fit who says it or who hears it: a staff line said with no staff, an opponent cheering the player, a party member contradicting their party's position, a reply that answers a different question. | A Heritage Party member praising a bill their party opposes. | Match the line to the speaker's party, role and the position in the data. |
 | **C5** | **Machinery in speech.** A character mentions levels, stages, turns, energy, cards, points or numbers. (`test_spoken_no_game_terms.gd` catches some of this.) | "That cost you 5 Reputation." spoken by a reporter. | Say it in the world: "That will be in every paper tomorrow." |
 | **C6** | **Off-term.** A fixed term is replaced by a synonym, or an internal word shows on screen. | "booster", "jiban", "standing points", "yen" written out instead of 円, "Yes vote" instead of Aye. | Use the fixed term from `INFORMATION_STANDARDS.md`. |
-| **C7** | **Not American English.** British spelling **or British terminology**: words and phrases an American would not use for the same thing (section 3a). Japanese terms and Japanese English are welcome (section 3b). | colour, centre, organise; a constituency "surgery"; "queue", "car park", "in hospital". | color, center, organize; "office hours"; "line", "parking lot", "in the hospital". |
+| **C7** | **Not American English.** British spelling **or British terminology**: words and phrases an American would not use for the same thing (section 3a). Japanese terms and Japanese English are welcome (section 3b). | colour, centre, organise; a constituency "surgery"; "rota", "in hospital". | color, center, organize; "office hours"; "schedule", "in the hospital". |
 | **C8** | **Grammar and style.** Agreement, tense, dangling phrases, run-ons, doubled words, stray spaces, inconsistent punctuation. Use the serial comma, "A, B, and C", which the game already uses. Dates are YY.MM.DD and thousands take commas. | "The committee are divided" for a single body; "Your performance and conduct is". | "The committee is divided"; "are". |
 | **C9** | **Dishonest or lopsided choice.** Among the options of one question or event, one is clearly the only thoughtful answer, the lengths differ a lot, or the text promises a cost or reward that the structured columns do not give. | A 4-word "No." beside three full sentences. | Even out the options; when text and a column disagree, change the text, never the column. |
 | **C10** | **Repetition in a pool.** Two lines in the same pool say the same thing in nearly the same words, so the player hears an echo. | Five opponent lines that all open with "Let me be clear". | Vary them, keeping each one's meaning. |
@@ -52,14 +52,10 @@ American English means American words as well as American spelling. Judge by wha
 | British | American | Seen in the data |
 |---|---|---|
 | (constituency) surgery | office hours, constituent meetings | Office Hours is already the canon name; "surgery" in a medical sense is fine |
-| queue, queued, queuing | line, wait in line | about 10 questions and visitor lines |
-| car park | parking lot | 5 room questions |
-| timetable | schedule | 7 visitor lines (a train or bus "timetable" may stay where Japan's railways use it; prefer "schedule") |
 | rota | schedule, roster | 4 visitor reactions |
 | shopfront | storefront | 2 visitor lines |
-| full stop (as emphasis) | period | 2 opponent lines |
 | pavement | sidewalk | 1 room question |
-| bin, rubbish | trash can, garbage, trash | event text |
+| rubbish | trash, garbage | |
 | in hospital | in the hospital | 1 event result |
 | at the weekend | on the weekend | Text tab |
 | Monday to Friday | Monday through Friday | |
@@ -81,7 +77,7 @@ Yezo is a Japanese setting, so these are **not** C7 defects:
 - **Japanese English** (wasei-eigo and Japanese usage carried into English), where it gives local color: salaryman, office lady, "my number" card, konbini, "morning service", "baby car" for a stroller, "paper driver". Use it in characters' speech, not in interface text.
 - **Canon and parliamentary names** in the data stay as they are, even where an American would say something else: Parliament, Members of Parliament, constituency, prefecture, party post titles, "Constituency support".
 
-When a word is both British and Japanese English (for example "mansion" for an apartment block), keep it only in a Japanese character's speech and only where the meaning is clear.
+**Accepted by Cameron (2026-11-09), leave as they are:** bin, full stop, car park, timetable, queue, and "mansion" (the Japanese term for an apartment building). These are also the words used in English in Japan, so they fit Yezo.
 
 **Not a defect:** canon names, places and party positions in the data, even if they look odd. Leave them alone and list anything that looks wrong under "Questions for Cameron".
 
@@ -126,7 +122,7 @@ Extend `tools/content_lint.py` with these checks, read-only, one line per hit, `
 | C2 unanchored | A line that **starts** with `This`, `That`, `It`, `They`, `These`, `Those`; or contains `the bill`, `this bill`, `this law`, `your promise`, `as I said`, `like I said`, `as we discussed` | Generic rooms (ST01-ST23) and their pools |
 | C3 history | `last week`, `last time`, `again`, `once more`, `you lost`, `your win`, `after you`, `you promised`, `you voted` | Rows with no condition behind them |
 | C6 off-term | `booster`, `jiban`, `sanban`, `yen`, `points`, `turn`, `energy`, `stage`, `level`, `Yes vote`, `No vote`, `standing points` | Spoken and on-screen text |
-| C7 spelling and terms | The British spelling list, plus `whilst`, `amongst`, `learnt`, `spelt`, `programme`, `cheque`, `tyre`, `kerb`, `grey`, `travelled`, `cancelled`, `-ise`/`-isation` endings; and the British terms in section 3a (`surgery` about constituents, `queue`, `car park`, `timetable`, `rota`, `shopfront`, `full stop`, `pavement`, `bin`, `rubbish`, `in hospital`, `at the weekend`, `fortnight`, `petrol`, `lorry`, `motorway`, `flat`, `high street`, `mobile phone`, `stand for`, `table` with motion or bill; collective nouns with `are` or `have`) | All English text. Ignore code keys such as `cancelled_line`. Skip Japanese terms and Japanese English (section 3b). |
+| C7 spelling and terms | The British spelling list, plus `whilst`, `amongst`, `learnt`, `spelt`, `programme`, `cheque`, `tyre`, `kerb`, `grey`, `travelled`, `cancelled`, `-ise`/`-isation` endings; and the British terms in section 3a (`surgery` about constituents, `rota`, `shopfront`, `pavement`, `rubbish`, `in hospital`, `at the weekend`, `fortnight`, `petrol`, `lorry`, `motorway`, `flat`, `high street`, `mobile phone`, `stand for`, `table` with motion or bill; collective nouns with `are` or `have`) | All English text. Ignore code keys such as `cancelled_line`. Skip Japanese terms, Japanese English and the accepted words (section 3b). |
 | C10 echo | Two rows in the same pool whose word overlap is 80% or more | Every pool |
 | C12 placeholders | A `{...}` in the text that the row's Placeholders cell does not list, or the reverse | Text tab |
 
