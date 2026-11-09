@@ -79,7 +79,7 @@ Yezo is a Japanese setting, so these are **not** C7 defects:
 
 - **Japanese terms** the data already uses or that fit the scene: kōenkai, chōnaikai, matsuri, onsen, ryokan, izakaya, bento, sake, kotatsu, omiyage, shrine and temple vocabulary, honorifics such as -san or -sensei when a character would use them. Keep macrons (ō, ū) where the data has them; on screen the Japanese fallback font draws them.
 - **Japanese English** (wasei-eigo and Japanese usage carried into English), where it gives local color: salaryman, office lady, "my number" card, konbini, "morning service", "baby car" for a stroller, "paper driver". Use it in characters' speech, not in interface text.
-- **Canon and parliamentary names** in the data stay as they are, even where an American would say something else: Parliament, Members of Parliament, constituency, prefecture, Diet-style titles, party post titles, "Constituency support".
+- **Canon and parliamentary names** in the data stay as they are, even where an American would say something else: Parliament, Members of Parliament, constituency, prefecture, party post titles, "Constituency support".
 
 When a word is both British and Japanese English (for example "mansion" for an apartment block), keep it only in a Japanese character's speech and only where the meaning is clear.
 
