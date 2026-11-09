@@ -62,6 +62,10 @@ Answers to the reviewers' Questions for Cameron, asked as pop-ups. The applier f
 | 56 | Three-part bills repeat the same template line (R3) | Rotate templates: draft more frames (outline first). |
 | 57 | Journalist gain and block lines (R2), clarified | Reuse them as attack lines: retag those that read as attacks, reword the rest. |
 | 58 | Topic-room player lines PL169-PL528, never shown (R3) | They fit their bill's topic but have no stance. Tag each For, Against or either, then let some turns use them alongside the bill's lines (data tags plus a small code change; outline first). |
+| 59 | Ticker attribution format (R1) | Every line ends with the dash and the ☼. The outlet's name goes after the dash when the line reports a statement or quote; a line that names the outlet in its text is fine as it is. TK148 and TK149 get the dash and ☼. |
+| 60 | TK09-TK11 shown only at Reputation exactly 50 (R1) | Exactly 50 is intended. Keep. |
+| 61 | "Skipping one costs {count}" (R1) | Add the unit: "Skipping one costs {count} Tone." |
+| 62 | Organization names that take no "the" (R3) | Local Kōenkai, Our Traditional Society and Students United. Every other organization takes "the" in a sentence (including National Media). |
 
 ## Follow-up work that needs an outline before building (over about 150 lines, or code)
 
