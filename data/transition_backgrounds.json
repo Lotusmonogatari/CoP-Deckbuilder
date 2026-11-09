@@ -383,5 +383,10 @@
     "transition_background_id": "TB78",
     "stage_id": "ST100",
     "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB79",
+    "stage_id": "ST289",
+    "background_id": "ST03"
   }
 ]
