@@ -1,0 +1,245 @@
+from tab	old id	new id	stage	question
+Press Questions	Q21	S2540	ST04	Critics call preferential rights for the Ainu unfair to everyone else. Respond.
+Press Questions	Q22	S2541	ST04	What do you say to a neighbor who feels the Ainu get something they do not?
+Press Questions	Q23	S2542	ST04	Fishers say distant offices set rules that ignore the sea. Are they right?
+Press Questions	Q24	S2543	ST04	Packed trains and late buses. Why has Parliament not acted?
+Press Questions	Q25	S2544	ST04	Young people leave Yezo for jobs elsewhere. What is your answer?
+Press Questions	Q26	S2545	ST04	Is public land being used to favor religious groups?
+Press Questions	Q27	S2546	ST04	Fake Yezo crafts are flooding the market. Why is nothing done?
+Press Questions	Q31	S2547	ST04	Parents say you are not protecting children online. Respond.
+Press Questions	Q32	S2548	ST04	Families are being forced to spend their savings. Why?
+Press Questions	Q33	S2549	ST04	Are you helping developers push families out of the city?
+Press Questions	Q34	S2550	ST04	Is the answer more roads or fewer cars?
+Town Hall Questions	T26	S2551	ST05	How are you dealing with tourists who behave badly?
+Town Hall Questions	T27	S2552	ST05	When will Parliament introduce long-term working visas for the service industry?
+Town Hall Questions	T28	S2553	ST05	What are you doing about cultural and linguistic assimilation?
+Town Hall Questions	T29	S2554	ST05	Are you pursuing any legislation about broadband and connectivity?
+Town Hall Questions	T31	S2555	ST05	Can you do more to fund senior care centers?
+Town Hall Questions	T32	S2556	ST05	There are aliens watching us from the trees. We need you to send in the military and restore our nation!
+Town Hall Questions	T33	S2557	ST05	Children are making noise in my neighborhood park. Can you push a bill to prohibit the annoying use of my local parks?
+Town Hall Questions	T35	S2558	ST05	Will you give households tax relief that actually reaches the checkout?
+Town Hall Questions	T36	S2559	ST05	Would you cut the tax on food, and where would the money come from?
+Town Hall Questions	T37	S2560	ST05	If the food tax is suspended, what gets cut or paid for another way?
+Town Hall Questions	T38	S2561	ST05	How much more debt can Yezo take before our children carry the bill?
+Town Hall Questions	T39	S2562	ST05	When do short-term boosts become a long-term burden?
+Town Hall Questions	T40	S2563	ST05	Why should families pay more for defense before basic costs are under control?
+Town Hall Questions	T41	S2564	ST05	What safeguards will govern armed drones and artificial intelligence?
+Town Hall Questions	T42	S2565	ST05	Are we changing our security plans because Yezo needs it or because allies are asking?
+Town Hall Questions	T43	S2566	ST05	How would a crisis across the strait affect people in Yezo?
+Town Hall Questions	T44	S2567	ST05	What would changing the constitution mean for the limits on military power?
+Town Hall Questions	T45	S2568	ST05	Who decides when emergency powers are used, and what stops them from being abused?
+Town Hall Questions	T46	S2569	ST05	Are you keeping Yezo out of nuclear weapons, or moving us closer to them?
+Town Hall Questions	T47	S2570	ST05	What protection do we get in return for changing our nuclear principles?
+Town Hall Questions	T48	S2571	ST05	How will you fill labor gaps without leaving newcomers on their own?
+Town Hall Questions	T49	S2572	ST05	What rules will protect residents and workers when more people come from abroad?
+Town Hall Questions	T50	S2573	ST05	What will make it possible for people who want children to afford them?
+Town Hall Questions	T51	S2574	ST05	How will smaller communities keep workers when young people have to leave?
+Town Hall Questions	T52	S2575	ST05	Can pensions, health care, and long-term care all be funded without making older people choose?
+Town Hall Questions	T53	S2576	ST05	Who pays when care needs grow faster than the people available to provide it?
+Town Hall Questions	T54	S2577	ST05	Will power bills go down if reactors restart, and who carries the risk if something goes wrong?
+Town Hall Questions	T55	S2578	ST05	How will you keep renewable power affordable without weakening safety or waste rules?
+Town Hall Questions	T56	S2579	ST05	What happens to local jobs if Yezo cannot get the chips and materials it needs?
+Town Hall Questions	T57	S2580	ST05	How will you secure essential supplies without simply moving dependence somewhere else?
+Town Hall Questions	T58	S2581	ST05	Why should we trust party money rules if insiders keep finding ways around them?
+Town Hall Questions	T59	S2582	ST05	Will the public see who is funding political campaigns and what they expect in return?
+Town Hall Questions	T60	S2583	ST05	Why should the law tell married people what name their family must use?
+Town Hall Questions	T61	S2584	ST05	What will you do when people are treated unfairly because of their gender or who they love?
+Town Hall Questions	T62	S2585	ST05	Why should communities near bases carry risks that the rest of Yezo does not?
+Town Hall Questions	T63	S2586	ST05	Who gets the final say when security projects change a community's land or coastline?
+Town Hall Questions	T64	S2587	ST05	What are you doing about visitors driving up rents and crowding out local people in Hokkaido?
+Town Hall Questions	T65	S2588	ST05	Will you back limits on short-term rentals when neighborhoods are losing homes?
+Town Hall Questions	T66	S2589	ST05	How will rural communities keep a clinic, a school, and a bus route when population falls?
+Town Hall Questions	T67	S2590	ST05	What can Aomori count on when the last shop or rail link is at risk?
+Town Hall Questions	T68	S2591	ST05	Are evacuation plans built for the people who cannot leave quickly?
+Town Hall Questions	T69	S2592	ST05	Who is accountable when aging roads, bridges, or flood defenses fail?
+Town Hall Questions	T70	S2593	ST05	Will you stop a large solar project if it threatens wetlands in Hokkaido?
+Town Hall Questions	T71	S2594	ST05	How will local people have a real say before major energy projects are approved?
+Town Hall Questions	T72	S2595	ST05	What will keep redevelopment from pricing long-time residents out of their neighborhood?
+Town Hall Questions	T73	S2596	ST05	Will you fix empty homes before backing another expensive redevelopment project?
+Town Hall Questions	T74	S2597	ST05	Should Ainu communities get first claim on public programs meant for them?
+Town Hall Questions	T75	S2598	ST05	Why should one community have reserved seats on local boards?
+Town Hall Questions	T76	S2599	ST05	Is it fair for Ainu fishers to have special harvest rights?
+Town Hall Questions	T77	S2600	ST05	Will land that was taken ever be handed back to Ainu communities?
+Town Hall Questions	T78	S2601	ST05	Does protecting the Ainu language mean less money for everyone else?
+Town Hall Questions	T79	S2602	ST05	Quotas keep shrinking. How do small boats survive?
+Town Hall Questions	T80	S2603	ST05	Who pays to keep our harbors in working order?
+Town Hall Questions	T81	S2604	ST05	Prices at the market fall while fuel costs rise. What will you do?
+Town Hall Questions	T82	S2605	ST05	My commute costs more every year. What will you do?
+Town Hall Questions	T83	S2606	ST05	Last trains stop too early for shift workers. Can that change?
+Town Hall Questions	T84	S2607	ST05	Parents with strollers and people in wheelchairs cannot use our trains. Who fixes that?
+Town Hall Questions	T85	S2608	ST05	Why should my taxes pay for research that may never work?
+Town Hall Questions	T86	S2609	ST05	Great ideas come out of our university and then leave town. Why?
+Town Hall Questions	T87	S2610	ST05	Graduates cannot find work here. Why should they stay in Yezo?
+Town Hall Questions	T88	S2611	ST05	Our festival may be canceled for lack of funds. Will you help?
+Town Hall Questions	T89	S2612	ST05	Developers want the land around our shrine. Will you stop them?
+Town Hall Questions	T90	S2613	ST05	Farm festivals are dying out. Why does that matter to you?
+Town Hall Questions	T91	S2614	ST05	Why does the flag cause so much argument now?
+Town Hall Questions	T92	S2615	ST05	Fewer people buy handmade goods every year. Will our craft survive?
+Town Hall Questions	T93	S2616	ST05	My kids are on screens all day. Is that the government's job?
+Town Hall Questions	T94	S2617	ST05	Support for my disabled son was cut. How do you justify that?
+Town Hall Questions	T95	S2618	ST05	Savings earn nothing. How do ordinary people get ahead?
+Town Hall Questions	T96	S2619	ST05	They are building towers next to my house. Who decided that?
+Town Hall Questions	T97	S2620	ST05	Fuel prices are killing our farms. Will you help?
+Town Hall Questions	T98	S2621	ST05	Plastic keeps washing up on our shore. Who cleans it?
+Town Hall Questions	T100	S2622	ST05	Our station has no elevator. How long do we wait?
+Town Hall Questions	T101	S2623	ST05	The road into town is jammed every morning. What is the fix?
+Town Hall Questions	T102	S2624	ST05	Buses and trains do not connect. Who is planning this?
+Town Hall Questions	T104	S2625	ST05	Should people who do not honor our customs have any say in how we keep them?
+Town Hall Questions	T105	S2626	ST05	The co-op truck now drives forty minutes to find a buyer. What will you do about markets?
+Town Hall Questions	T106	S2627	ST05	Fertilizer costs doubled my grain budget. Can anyone help?
+Town Hall Questions	T107	S2628	ST05	My children left for the city. Why would anyone stay to farm?
+Town Hall Questions	T108	S2629	ST05	Hail took half my harvest. Who covers that?
+Town Hall Questions	T109	S2630	ST05	Rents near campus keep rising. Whose side are you on, students or landlords?
+Town Hall Questions	T110	S2631	ST05	I will graduate owing more than I can repay. What is your answer?
+Town Hall Questions	T112	S2632	ST05	My degree is in a field with few local jobs. Where do I go?
+Town Hall Questions	T113	S2633	ST05	I cannot find a daycare spot within an hour of home. What will you do?
+Town Hall Questions	T114	S2634	ST05	My child's school is closing. How do families cope?
+Town Hall Questions	T115	S2635	ST05	Both of us work and still cannot afford a home. Who is helping families like ours?
+Town Hall Questions	T116	S2636	ST05	Who looks after my parents while I look after my children?
+Town Hall Questions	T117	S2637	ST05	My family has made lacquerware for six generations. Who will buy it?
+Town Hall Questions	T118	S2638	ST05	Young people do not want to apprentice. How do we keep the craft alive?
+Town Hall Questions	T119	S2639	ST05	Tourists buy cheap copies made elsewhere. Can you stop that?
+Town Hall Questions	T120	S2640	ST05	A good workshop needs patient customers. How do we find them?
+Town Hall Questions	T125	S2641	ST05	Our shrine grove is where the neighborhood gathers. Who will protect it?
+Town Hall Questions	T126	S2642	ST05	Our festival needs more volunteers. How do we keep it going?
+Town Hall Questions	T127	S2643	ST05	Young people drift away from local customs. Is that a loss?
+Town Hall Questions	T128	S2644	ST05	Visitors fill the lanes at festival time. Who pays for the cleanup?
+Town Hall Questions	T129	S2645	ST05	My mother needs help bathing and there is no one to send. What do I do?
+Town Hall Questions	T130	S2646	ST05	The care home has a long waiting list. How long must we wait?
+Town Hall Questions	T131	S2647	ST05	Care workers are paid less than shop clerks. Is that right?
+Town Hall Questions	T132	S2648	ST05	I am old and alone. Who will look in on me?
+Town Hall Questions	T133	S2649	ST05	Buses in our district run half empty and then packed. What is the plan?
+Town Hall Questions	T134	S2650	ST05	Apartments are small and rents high. What are you doing about housing?
+Town Hall Questions	T135	S2651	ST05	Noise from late-night bars is wearing us down. Who decides the rules?
+Town Hall Questions	T136	S2652	ST05	Why do city taxes fund country roads?
+Town Hall Questions	T137	S2653	ST05	My grandmother is the last fluent speaker in our village. How do we record her?
+Town Hall Questions	T138	S2654	ST05	School lessons in our language end at age twelve. Why?
+Town Hall Questions	T139	S2655	ST05	Places should carry their historic names. Do you agree?
+Town Hall Questions	T140	S2656	ST05	We want our stories taught as part of the region's history. Can you help?
+Town Hall Questions	T141	S2657	ST05	The last bus to our village now leaves at noon. How do we get to town?
+Town Hall Questions	T142	S2658	ST05	Our clinic closed and the nearest doctor is an hour away. What will you do?
+Town Hall Questions	T143	S2659	ST05	Young people leave and the village empties. How do we keep it alive?
+Town Hall Questions	T144	S2660	ST05	Broadband stops at the edge of town. Is that fair?
+Lobbyist Questions	L21	S2661	ST20	Families in our district are skipping meals to pay rent. What will you do?
+Lobbyist Questions	L22	S2662	ST20	The weak yen has erased a decade of wage gains. What's your plan?
+Lobbyist Questions	L23	S2663	ST20	Will you back suspending the consumption tax on food?
+Lobbyist Questions	L24	S2664	ST20	If the food tax is cut, who pays for it?
+Lobbyist Questions	L25	S2665	ST20	Would you support more stimulus even if the debt keeps growing?
+Lobbyist Questions	L26	S2666	ST20	Bond markets are nervous. Will you hold the line on the budget?
+Lobbyist Questions	L27	S2667	ST20	Will you vote to increase overseas spending?
+Lobbyist Questions	L28	S2668	ST20	Do you support counterstrike missiles, drones, and AI-enabled weapons?
+Lobbyist Questions	L29	S2669	ST20	Should Yezo revise its security strategy if our allies ask us to?
+Lobbyist Questions	L30	S2670	ST20	Will you support revising export laws limiting our munitions industry?
+Lobbyist Questions	L31	S2671	ST20	Will you vote to revise Ainu quota rules for non-profit boards?
+Lobbyist Questions	L32	S2672	ST20	Should the Self-Defense Forces and emergency powers be written into the constitution?
+Lobbyist Questions	L33	S2673	ST20	Will you revisit the Three Non-Nuclear Principles?
+Lobbyist Questions	L34	S2674	ST20	Would you accept closer nuclear deterrence arrangements with our allies?
+Lobbyist Questions	L35	S2675	ST20	Our industry can't find workers. Will you open the door wider?
+Lobbyist Questions	L36	S2676	ST20	Should there be a cap on foreign residents?
+Lobbyist Questions	L37	S2677	ST20	Will you fund childcare so young couples can afford children?
+Lobbyist Questions	L38	S2678	ST20	Who fills the jobs if the workforce keeps shrinking?
+Lobbyist Questions	L39	S2679	ST20	Will you protect pensions without raising premiums?
+Lobbyist Questions	L40	S2680	ST20	How will long-term care be paid for as Yezo ages? More business taxes?
+Lobbyist Questions	L41	S2681	ST20	Will you support restarting idled nuclear reactors?
+Lobbyist Questions	L42	S2682	ST20	Power bills are crushing our members. Will you back faster renewables or raise natural gas import quotas?
+Lobbyist Questions	L43	S2683	ST20	Will you subsidize domestic semiconductor production?
+Lobbyist Questions	L44	S2684	ST20	Can we reduce our dependence on imported rare earths?
+Lobbyist Questions	L45	S2685	ST20	Will you support banning corporate donations to parties?
+Lobbyist Questions	L46	S2686	ST20	Would you publish every donation you've received?
+Lobbyist Questions	L47	S2687	ST20	Will you let married couples keep separate surnames?
+Lobbyist Questions	L48	S2688	ST20	Should the imperial succession be opened to women?
+Lobbyist Questions	L49	S2689	ST20	Chishima has carried the base burden for generations. Will you stand with it?
+Lobbyist Questions	L50	S2690	ST20	Will you back relocating the Chishima air base over local objections?
+Lobbyist Questions	L51	S2691	ST20	Hokkaido is overrun with visitors. Will you support a higher tourist tax?
+Lobbyist Questions	L52	S2692	ST20	Should short-term rentals be capped in our resort towns?
+Lobbyist Questions	L53	S2693	ST20	Aomori's hospitals and schools are closing. Will you keep them open?
+Lobbyist Questions	L54	S2694	ST20	Can rural bus and rail links survive without subsidies?
+Lobbyist Questions	L55	S2695	ST20	Will you fund flood mitigation installation programs for coastal factories and warehouses?
+Lobbyist Questions	L56	S2696	ST20	Who pays to rebuild after the next quake?
+Lobbyist Questions	L57	S2697	ST20	Will you back a mega-solar project beside the Kushiro Wetlands?
+Lobbyist Questions	L58	S2698	ST20	Should local communities hold a veto over solar projects?
+Lobbyist Questions	L59	S2699	ST20	Will you speed approvals for redevelopment around major stations?
+Lobbyist Questions	L60	S2700	ST20	Rents are climbing while homes sit empty. What will you do?
+Lobbyist Questions	L61	S2701	ST20	Will you back a law that makes Ainu rights preferential, not just equal?
+Lobbyist Questions	L62	S2702	ST20	People worry preferential rights will come out of their budgets. Will they?
+Lobbyist Questions	L64	S2703	ST20	Our members need clear quota rules. Can you deliver them?
+Lobbyist Questions	L65	S2704	ST20	Commuter groups want fares that stay predictable. Will you back that?
+Lobbyist Questions	L66	S2705	ST20	Our labs are losing researchers abroad. What will you do to keep them?
+Lobbyist Questions	L67	S2706	ST20	Our platform moves money faster than banks can. Will you let it?
+Lobbyist Questions	L68	S2707	ST20	Students need affordable housing near campus. Will you build it?
+Lobbyist Questions	L69	S2708	ST20	Festival costs rise every year. Will public money cover any of it?
+Lobbyist Questions	L71	S2709	ST20	Our harvest rites need space and support. Can you give it?
+Lobbyist Questions	L72	S2710	ST20	Cheap imports are undercutting real craftwork. What will you do?
+Lobbyist Questions	L73	S2711	ST20	Export paperwork is crushing small workshops. Can you simplify it?
+Lobbyist Questions	L74	S2712	ST20	Our materials are shipped away before we can buy them. Fix that?
+Lobbyist Questions	L75	S2713	ST20	Premiums are soaring. Will you regulate them?
+Lobbyist Questions	L76	S2714	ST20	Fishers and farmers both need fuel relief. Can you deliver?
+Lobbyist Questions	L77	S2715	ST20	Station accessibility upgrades are years behind. Can you speed them up?
+Lobbyist Questions	L79	S2716	ST20	Our members need shared storage and drying plants. Will you back them?
+Lobbyist Questions	L80	S2717	ST20	Imported rice is cheaper at the store. How do farmers compete?
+Lobbyist Questions	L81	S2718	ST20	Will you stand with the co-ops when the budget is cut?
+Lobbyist Questions	L82	S2719	ST20	Our union wants a seat on the university board. Will you support it?
+Lobbyist Questions	L83	S2720	ST20	Will you fund campus mental health services or leave them to charity?
+Lobbyist Questions	L85	S2721	ST20	Our members want flexible hours protected in law. Will you back it?
+Lobbyist Questions	L86	S2722	ST20	Parents are exhausted. Will you fund after-school programs?
+Lobbyist Questions	L87	S2723	ST20	Children's safety on the way to school is not a luxury. Will you act?
+Lobbyist Questions	L88	S2724	ST20	Our association wants a recognized quality mark. Will you support it?
+Lobbyist Questions	L89	S2725	ST20	Rents for workshop space have tripled. Will you protect the workshops?
+Lobbyist Questions	L90	S2726	ST20	Will you fund master craftspeople to teach, not only to sell?
+Lobbyist Questions	L91	S2727	ST20	Members need staff to do the job well. Will you fund them?
+Lobbyist Questions	L92	S2728	ST20	Committee work gets no credit. Will you rebalance the schedule?
+Lobbyist Questions	L94	S2729	ST20	Our association maintains old trees and stone paths. Will you help with the upkeep?
+Lobbyist Questions	L96	S2730	ST20	Will you protect festival routes from new building?
+Lobbyist Questions	L97	S2731	ST20	Care staff are leaving the field. Will you raise care pay?
+Lobbyist Questions	L98	S2732	ST20	Families give up work to care for relatives. Will you support them?
+Lobbyist Questions	L99	S2733	ST20	Will you protect care funding from budget cuts?
+Lobbyist Questions	L100	S2734	ST20	Our alliance wants zoning rules updated for mixed use. Will you back it?
+Lobbyist Questions	L101	S2735	ST20	Parks and playgrounds are being squeezed out. Will you protect them?
+Lobbyist Questions	L102	S2736	ST20	Will you fund bike lanes where the accident data says they are needed?
+Lobbyist Questions	L103	S2737	ST20	Our members want a language archive. Will you fund it?
+Lobbyist Questions	L104	S2738	ST20	Will you support teacher training for Ainu language instruction?
+Lobbyist Questions	L105	S2739	ST20	Will you support broadcasts in Ainu on public media?
+Lobbyist Questions	L106	S2740	ST20	Our council wants relocation grants for people who move to rural areas. Will you support them?
+Lobbyist Questions	L107	S2741	ST20	Will you protect rural schools from closure?
+Lobbyist Questions	L108	S2742	ST20	Will you fund a rural revitalization office with real staff?
+Study Session Questions	B21	S2743	ST21	What would a preferential rights framework for the Ainu actually cost?
+Study Session Questions	B22	S2744	ST21	Should imported seafood face tougher labeling rules?
+Study Session Questions	B23	S2745	ST21	Should congestion charges pay for better buses?
+Study Session Questions	B24	S2746	ST21	How do we get university discoveries into real companies faster?
+Study Session Questions	B25	S2747	ST21	Should new payment apps face the same rules as banks?
+Study Session Questions	B27	S2748	ST21	What do accessibility upgrades actually cost per person helped?
+Study Session Questions	B28	S2749	ST21	What would looser zoning do to rents and traffic?
+Study Session Questions	B29	S2750	ST21	How many jobs would a modernized port create or cost?
+Study Session Questions	B30	S2751	ST21	What would more frequent trains cost, and who would use them?
+Study Session Questions	B31	S2752	ST21	What does the evidence say about price floors versus direct payments?
+Study Session Questions	B32	S2753	ST21	How should water be shared among farms in a dry year?
+Study Session Questions	B33	S2754	ST21	Which farm subsidies actually reach small farms?
+Study Session Questions	B34	S2755	ST21	How do tuition levels compare with graduate earnings across regions?
+Study Session Questions	B35	S2756	ST21	What would a student loan forgiveness program cost per year?
+Study Session Questions	B36	S2757	ST21	Do internships lead to jobs or only to free labor?
+Study Session Questions	B37	S2758	ST21	What does the research say about early childhood programs and later outcomes?
+Study Session Questions	B38	S2759	ST21	How do school meals affect attendance and health?
+Study Session Questions	B39	S2760	ST21	Which family benefits reach the households that need them most?
+Study Session Questions	B40	S2761	ST21	How do craft exports compare with mass-produced goods in value per worker?
+Study Session Questions	B41	S2762	ST21	What would a registry of traditional techniques cost and who keeps it?
+Study Session Questions	B42	S2763	ST21	Do heritage labels raise prices or only paperwork?
+Study Session Questions	B43	S2764	ST21	How do members' working hours compare with other legislatures?
+Study Session Questions	B44	S2765	ST21	What does research say about term length and legislative quality?
+Study Session Questions	B45	S2766	ST21	Which procedural reforms would speed lawmaking without silencing members?
+Study Session Questions	B46	S2767	ST21	How much do local festivals contribute to town economies?
+Study Session Questions	B47	S2768	ST21	What do community volunteer groups save the public budget?
+Study Session Questions	B48	S2769	ST21	How should heritage groves be managed against development pressure?
+Study Session Questions	B49	S2770	ST21	What are the projected care needs for the next ten years?
+Study Session Questions	B50	S2771	ST21	Do home visits cost less than hospital stays?
+Study Session Questions	B51	S2772	ST21	How could technology help carers without replacing them?
+Study Session Questions	B52	S2773	ST21	How does density relate to per-person infrastructure cost?
+Study Session Questions	B53	S2774	ST21	What does the evidence say about rent controls and supply?
+Study Session Questions	B54	S2775	ST21	Which transit investments move the most commuters per yen?
+Study Session Questions	B55	S2776	ST21	How many speakers does each Ainu dialect have, and what is the trend?
+Study Session Questions	B56	S2777	ST21	What have language revival programs achieved elsewhere?
+Study Session Questions	B57	S2778	ST21	How much does a community language school cost per pupil?
+Study Session Questions	B58	S2779	ST21	What does the evidence say about incentives that bring workers to rural areas?
+Study Session Questions	B59	S2780	ST21	How do rural service costs compare with urban per resident?
+Study Session Questions	B60	S2781	ST21	Which revitalization programs have kept their population?
+Media Ambush Questions	A21	S2782	ST19	Are you putting one community ahead of the rest of Yezo?
+Media Ambush Questions	A22	S2783	ST19	Commuters are stuck on platforms every morning. Who is to blame?
