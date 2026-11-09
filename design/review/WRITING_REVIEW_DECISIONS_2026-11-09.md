@@ -73,3 +73,11 @@ Answers to the reviewers' Questions for Cameron, asked as pop-ups. The applier f
 - Rotating templates for three-part bills (#56).
 - Stance tags and mixing for topic-room player lines (#58).
 - BI26 vote rebalance and the dependent content (#12).
+
+## After the wording fixes were applied
+
+| # | Question | Decision |
+|---|---|---|
+| 63 | Lines made stiff by the "the" rule | No "the" before Members of Parliament, Neighborhood Associations and Constituency Voters either; Neighborhood Associations takes plural verbs ("Neighborhood Associations want"). Applied to 150 lines. |
+| 64 | Five bill-part short names with British words (CB123, CB134, CB143, CB185, CB273) | Keep the names. |
+| 65 | Card C16's Japanese name 白書を突きつける | Keep. |

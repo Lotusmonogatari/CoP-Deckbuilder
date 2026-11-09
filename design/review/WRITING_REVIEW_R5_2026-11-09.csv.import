@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c7caca6wa5r5u"
+
+[deps]
+
+files=["res://design/review/WRITING_REVIEW_R5_2026-11-09.id.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.field.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.code.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.can.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.room.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.speaker.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.original.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.proposed.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.reason.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.confidence.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.source.translation"]
+
+source_file="res://design/review/WRITING_REVIEW_R5_2026-11-09.csv"
+dest_files=["res://design/review/WRITING_REVIEW_R5_2026-11-09.id.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.field.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.code.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.can.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.room.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.speaker.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.original.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.proposed.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.reason.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.confidence.translation", "res://design/review/WRITING_REVIEW_R5_2026-11-09.source.translation"]
+
+[params]
+
+compress=true
+delimiter=0

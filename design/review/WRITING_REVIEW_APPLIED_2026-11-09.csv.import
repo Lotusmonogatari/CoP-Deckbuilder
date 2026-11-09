@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://i3n5sxm0rjlh"
+
+[deps]
+
+files=["res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.id.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.field.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.original.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.new.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.status.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.reason.translation"]
+
+source_file="res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.csv"
+dest_files=["res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.id.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.field.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.original.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.new.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.status.translation", "res://design/review/WRITING_REVIEW_APPLIED_2026-11-09.reason.translation"]
+
+[params]
+
+compress=true
+delimiter=0
