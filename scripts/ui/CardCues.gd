@@ -54,6 +54,13 @@ static func for_card(card_id: String, stage_id: String, turn: int,
 		# A level about a bill (2026-10-18): lines written for that bill, and
 		# for the lean the player took, come before every other tier.
 		var about_bill: Array = DataDB.get_bill_player_cue_lines(bill_id, suit, verb_for(applied), lean)
+		# Now and then the room's own topic line on the player's side instead
+		# (Balance "Player Cues: Room Line Chance"; Cameron, 2026-11-09).
+		var room_lines: Array = DataDB.get_room_player_cue_lines(stage_id, suit, verb_for(applied), lean)
+		var moment := _index_for(card_id, stage_id, turn)
+		if not room_lines.is_empty() and use_room_line(moment, int(DataDB.balance.get("player_cues_room_line_chance", 0))):
+			var room: Dictionary = room_lines[(moment / 100) % room_lines.size()]
+			return {"text": str(room.get("text", "")), "line_id": str(room.get("line_id", ""))}
 		if not about_bill.is_empty():
 			var chosen: Dictionary = about_bill[_index_for(card_id, stage_id, turn) % about_bill.size()]
 			return {"text": str(chosen.get("text", "")), "line_id": str(chosen.get("line_id", ""))}
@@ -73,6 +80,12 @@ static func for_card(card_id: String, stage_id: String, turn: int,
 		# The same numbering the workbook uses: Cue 1 is _1, not _0.
 		"line_id": "%s_%d" % [card_id, which + 1],
 	}
+
+
+## True on roughly `chance` percent of moments: whether a room line is used.
+## Worked out from the moment's stable number, so a moment always reads the same.
+static func use_room_line(moment: int, chance: int) -> bool:
+	return chance > 0 and (moment % 100) < chance
 
 
 ## A reply line with the bill's name put in. {bill} and {Bill} (the same, at

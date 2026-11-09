@@ -315,6 +315,7 @@ var _player_cue_lines: Dictionary = {}
 ## from the room-scoped indexes so they can never leak into another level.
 var _bill_player_cues: Dictionary = {}      ## "BI|suit|verb|stance" -> lines
 var _reply_player_cues: Dictionary = {}     ## "Reply Kind|suit|stance" -> lines
+var _room_player_cues: Dictionary = {}      ## "STxx|suit|verb|stance" -> lines (topic rooms only)
 var _bill_opponent_cues: Dictionary = {}    ## "BI|opp_id or suit|verb" -> lines
 ## The same keys -> each line's Side (For / Against / Neutral), in line order
 ## (2026-11-04, Cameron; MemberStance.gd).
@@ -1143,6 +1144,17 @@ func get_bill_player_cue_lines(bill_id: String, suit: String, verb: String, stan
 	return out
 
 
+## A topic room's own lines for this suit and verb that fit the player's lean:
+## those tagged with the lean and those tagged for either side (2026-11-09).
+## Empty for a generic room, or when none are written.
+func get_room_player_cue_lines(stage_id: String, suit: String, verb: String, lean: String) -> Array:
+	var out: Array = []
+	if not lean.is_empty():
+		out.append_array(_room_player_cues.get("%s|%s|%s|%s" % [stage_id, suit, verb, lean], []))
+	out.append_array(_room_player_cues.get("%s|%s|%s|" % [stage_id, suit, verb], []))
+	return out
+
+
 ## What the player might say in a bill room in reply to a kind of question
 ## (a Stage Questions Reply Kind), from Player Cues rows that name it
 ## (2026-11-01). The lines for the player's lean first; with no lean, or none
@@ -1301,6 +1313,7 @@ func _index_player_cues() -> void:
 	_player_cue_lines.clear()
 	_bill_player_cues.clear()
 	_reply_player_cues.clear()
+	_room_player_cues.clear()
 	for row: Variant in player_cues:
 		if not (row is Dictionary):
 			continue
@@ -1335,6 +1348,14 @@ func _index_player_cues() -> void:
 				var bkey := "%s|%s|%s|%s" % [bill_id, suit, verb, stance]
 				_bill_player_cues[bkey] = (_bill_player_cues.get(bkey, []) as Array) + lines
 			continue
+		# A topic room's own lines (stages ST24 and up, never a generic room)
+		# are also kept by stance, so a bill level can mix a few in on the
+		# player's side (Cameron, 2026-11-09).
+		if not stages.is_empty() and stages.all(func(sid: Variant) -> bool:
+				return str(sid).substr(2).is_valid_int() and int(str(sid).substr(2)) > 23):
+			for sid: Variant in stages:
+				var rkey := "%s|%s|%s|%s" % [str(sid), suit, verb, stance]
+				_room_player_cues[rkey] = (_room_player_cues.get(rkey, []) as Array) + lines
 		var keys: Array[String] = []
 		if stages.is_empty():
 			keys.append("%s|%s" % [suit, verb])
