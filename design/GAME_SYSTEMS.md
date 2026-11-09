@@ -140,6 +140,8 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 | Combat room | Which cards to play and in what order; when to pass or end the turn; which item to use; the suit to answer a question with | Support, guard, gaffes, standing (answers feed organizations) |
 | Office Hours and other dilemma rooms | One of four answers, none "right" | Different organizations move; a choice may cost hours, Funds or an item now, or promise something later |
 | Events | Which choice (or Decline) | Funds, XP, numbers, standing, a revealed level, a scheduled follow-up |
+
+A follow-up scheduled by a choice that also made a promise waits while that promise is open, fires once it is kept, and is dropped if the promise breaks; a follow-up from a choice with no promise fires on time (2026-11-09). In a bill level, about a quarter of the player's spoken lines (Balance `Player Cues: Room Line Chance`) come from the topic room's own lines on the player's side (Stance matching the player's lean, or blank) instead of the bill's lines.
 | Floor Vote | **Aye, Nay or Abstain**; how many members of your own party to whip | The bill passes or fails; party favorability; laws; standing |
 | Requests | Carry, amend (swap one part) or decline a patron's bill | Standing, a new level, a law |
 | Draft a Bill | Two or three parts from any organizations; optionally an **extra member visit** | Your own bill; costs 350 XP and 300,000円 (and 50 XP for the extra visit); cooldown 90 hours |
