@@ -105,7 +105,7 @@
     "condition_target": "SG02",
     "condition_op": ">=",
     "condition_value": 60.0,
-    "text_en": "Party members who want to take you to lunch can now use a scheduling system."
+    "text_en": "Party members who want to take you to lunch are using a scheduling system."
   },
   {
     "notice_id": "ON13",
@@ -123,7 +123,7 @@
     "condition_target": "SG03",
     "condition_op": "<",
     "condition_value": 25.0,
-    "text_en": "A constituent, allegedly, intended to graffiti on your office door."
+    "text_en": "A constituent allegedly planned to spray graffiti on your office door."
   },
   {
     "notice_id": "ON15",
@@ -150,7 +150,7 @@
     "condition_target": "SG04",
     "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "A former campaign donor left a note demanding the refund of 200,000円."
+    "text_en": "A former campaign donor left a note demanding a refund of 200,000円."
   },
   {
     "notice_id": "ON18",

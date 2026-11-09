@@ -21,7 +21,7 @@
   },
   {
     "question_id": "TQ05",
-    "text_en": "We would rather you took out the plan to {component}. What is in it for you if you do?",
+    "text_en": "We would rather you took out the plan to {component}. What would you want in return?",
     "reply_kind": "Deal"
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "question_id": "TQ15",
-    "text_en": "We know the plan to {component} will pass. Will you remember who gave way?",
+    "text_en": "If the plan to {component} passes, will you remember who gave way?",
     "reply_kind": "Trust"
   },
   {
@@ -91,7 +91,7 @@
   },
   {
     "question_id": "TQ19",
-    "text_en": "Your party courted us for years. How does the plan to {component} square with that?",
+    "text_en": "Parties court us at every election. How does the plan to {component} square with that?",
     "reply_kind": "Trust"
   },
   {

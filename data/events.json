@@ -23,7 +23,7 @@
   {
     "event_id": "EV02",
     "title": "The Temple Bell Needs a Ringer",
-    "flavor": "The Buddhist Temples Association is ringing out the old year at a hillside temple in Matsumae and asks you to take a turn at the great bell. A neighbor mentions, quietly, that the bell tower roof leaks.",
+    "flavor": "The Buddhist Temples Association is ringing the great bell at a hillside temple in Matsumae and asks you to take a turn. A neighbor mentions, quietly, that the bell tower roof leaks.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -177,7 +177,7 @@
   {
     "event_id": "EV14",
     "title": "A Rumor in the Hall",
-    "flavor": "Something you said, or something people think you said, is travelling the corridors.",
+    "flavor": "Something you said, or something people think you said, is traveling the corridors.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -291,7 +291,7 @@
   {
     "event_id": "EV20",
     "title": "A Founder Pitches You on the Train",
-    "flavor": "A young founder recognises you on the express, sits down uninvited, and has a laptop open before you can say no.",
+    "flavor": "A young founder recognizes you on the express, sits down uninvited, and has a laptop open before you can say no.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -329,7 +329,7 @@
   {
     "event_id": "EV22",
     "title": "A Hotel Owner Cannot Find Staff",
-    "flavor": "The owner of a small hotel in Noboribetsu waits at the end of your surgery. Two floors are shut because she cannot hire anyone, and the visitors keep coming.",
+    "flavor": "The owner of a small hotel in Noboribetsu waits until the end of your office hours. Two floors are shut because she cannot hire anyone, and the visitors keep coming.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -367,7 +367,7 @@
   {
     "event_id": "EV24",
     "title": "A Parents' Meeting",
-    "flavor": "A school invites you to a parents' evening. The talk turns to what children are, and are not, being taught.",
+    "flavor": "A school invites you to a parent-teacher night. The talk turns to what children are, and are not, being taught.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -633,7 +633,7 @@
   {
     "event_id": "EV41",
     "title": "Heavy Snow Closes the Road",
-    "flavor": "Overnight snow has shut the road up to Sukayu in the Hakkōda Mountains. The village office rings to ask whether anyone in the capital is listening.",
+    "flavor": "Overnight snow has shut the road up to Sukayu in the Hakkōda Mountains. The village office calls to ask whether anyone in the capital is listening.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -710,7 +710,7 @@
   },
   {
     "event_id": "EV45",
-    "title": "The Party Treasurer Drops By",
+    "title": "The Treasurer Brings the Receipts",
     "flavor": "The treasurer is passing through the district and has asked for ten minutes. A folder of receipts is tucked under one arm.",
     "trigger": "Random",
     "available": "Weekday",
@@ -908,7 +908,7 @@
   {
     "event_id": "EV55",
     "title": "A Newspaper Wants a Profile",
-    "flavor": "A national paper is running profiles of new legislators and wants an hour with you, at your office, with a photographer.",
+    "flavor": "A national paper is running profiles of legislators to watch and wants an hour with you, at your office, with a photographer.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -967,7 +967,7 @@
   {
     "event_id": "EV58",
     "title": "Commuters Ask You to Ride the Rush-Hour Train",
-    "flavor": "The Commuter Committee dares you to ride the packed rush-hour train from Otaru into Sapporo with them, standing, before you vote on fares.",
+    "flavor": "The Commuter Committee dares you to ride the packed rush-hour train from Otaru into Sapporo with them, standing, before you next speak on fares.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1100,7 +1100,7 @@
   {
     "event_id": "EV65",
     "title": "A Delegation Comes for Cultural Exchange",
-    "flavor": "A cultural delegation from abroad is touring the capitol this week. Their host asks whether you will welcome them, and what Yezo will put on the table.",
+    "flavor": "A cultural delegation from abroad is touring the capital this week. Their host asks whether you will welcome them, and what Yezo will put on the table.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 2,
@@ -1202,7 +1202,7 @@
   {
     "event_id": "EV70",
     "title": "Old Campaign Boards Still Standing",
-    "flavor": "The poster boards from your last campaign are still up on three corners, your own face among them, peeling.",
+    "flavor": "Poster boards from an old campaign are still up on three corners, your own face among them, peeling.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1221,7 +1221,7 @@
   {
     "event_id": "EV71",
     "title": "A Supporter's Grandson Is Getting Married",
-    "flavor": "An elder of the Local Kōenkai invites you to her grandson's wedding reception in Hachinohe, where the bride's family lives.",
+    "flavor": "An elder of Local Kōenkai invites you to her grandson's wedding reception in Hachinohe, where the bride's family lives.",
     "trigger": "Random",
     "available": "Weekend",
     "hours": 2,
@@ -1240,7 +1240,7 @@
   {
     "event_id": "EV72",
     "title": "The Ditch That Floods",
-    "flavor": "Every heavy rain, the drainage ditch behind the housing estate in Iwamizawa overflows into the gardens, and the mosquitoes follow.",
+    "flavor": "Every heavy rain, the drainage ditch behind the housing complex in Iwamizawa overflows into the yards, and the mosquitoes follow.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,

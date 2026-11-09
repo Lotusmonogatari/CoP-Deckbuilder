@@ -233,11 +233,11 @@
   },
   {
     "card_id": "C30",
-    "cue_1": "Who's ready to win this thing?!",
+    "cue_1": "Who's ready to see this through?!",
     "cue_2": "Loyal hearts, one more push!",
     "cue_3": "You are the reason I keep fighting!",
     "cue_4": "You are the heart of this movement!",
-    "cue_5": "Stand firm, friends. We can win this!"
+    "cue_5": "Stand firm, friends. We can carry this!"
   },
   {
     "card_id": "C31",
@@ -308,7 +308,7 @@
     "cue_1": "Count them yourself. We have the votes.",
     "cue_2": "The numbers are on our side.",
     "cue_3": "The outcome is decided. You can join us.",
-    "cue_4": "We'd like it. But, we don't need your support.",
+    "cue_4": "We'd like your support. We don't need it.",
     "cue_5": "The majority stands with me."
   },
   {
@@ -476,7 +476,7 @@
     "cue_1": "Let us rebuild from the heart.",
     "cue_2": "Start fresh with what we feel.",
     "cue_3": "New hope begins with honesty.",
-    "cue_4": "Open a clean page for them.",
+    "cue_4": "Turn a clean page for them.",
     "cue_5": "We can begin together."
   },
   {

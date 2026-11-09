@@ -21,10 +21,10 @@
   "hurt": "taxpayers and grocery shoppers"
  },
  "BI03": {
-  "what": "deregulated investment zones near Sapporo, Tomakomai and Hakodate",
+  "what": "deregulated investment zones near Sapporo, Tomakomai, and Hakodate",
   "gain": "new employers and the workers they hire",
   "cost": "workers under looser labor rules",
-  "local": "permits, wages and land use in the zone towns",
+  "local": "permits, wages, and land use in the zone towns",
   "risk": "a race to the bottom on labor protections",
   "critic": "it carves out a second set of rules for the rich",
   "alt": "a single pilot zone with a review",
@@ -32,7 +32,7 @@
  },
  "BI04": {
   "what": "an earlier Sapporo extension of the Shinkansen",
-  "gain": "commuters, freight shippers and tourist towns",
+  "gain": "commuters, freight shippers, and tourist towns",
   "cost": "the national budget",
   "local": "stations and timetables along the line",
   "risk": "cost overruns on tunnels and track",
@@ -51,10 +51,10 @@
   "hurt": "taxpayers"
  },
  "BI06": {
-  "what": "five-year work visas in farming, fishing, construction and tourism",
+  "what": "five-year work visas in farming, fishing, construction, and tourism",
   "gain": "employers short of workers",
   "cost": "wage levels and local services",
-  "local": "farms, harbors and building sites short of hands",
+  "local": "farms, harbors, and building sites short of hands",
   "risk": "exploitation of workers and strained housing",
   "critic": "it undercuts local wages",
   "alt": "a smaller visa quota for seasonal work only",
@@ -64,7 +64,7 @@
   "what": "grid links and local wind and geothermal power",
   "gain": "rural towns and households that lost power",
   "cost": "utility customers and the budget",
-  "local": "turbines, power lines and blackout plans",
+  "local": "turbines, power lines, and blackout plans",
   "risk": "projects delayed by local objections",
   "critic": "it buys power that costs more",
   "alt": "backup generators for hospitals first",
@@ -102,7 +102,7 @@
  },
  "BI11": {
   "what": "a standing Yezo-Japan commission on the Tsugaru Strait",
-  "gain": "ferry operators, fishers and border towns",
+  "gain": "ferry operators, fishers, and border towns",
   "cost": "the foreign affairs budget",
   "local": "ferry customs and shared fishing grounds",
   "risk": "a commission with no power to settle anything",
@@ -122,9 +122,9 @@
  },
  "BI13": {
   "what": "tax relief and restoration grants for temples and shrines",
-  "gain": "temples, shrines and festival towns",
+  "gain": "temples, shrines, and festival towns",
   "cost": "the treasury and secular taxpayers",
-  "local": "old roofs, festivals and visiting trade",
+  "local": "old roofs, festivals, and visiting trade",
   "risk": "favoring some faiths over others",
   "critic": "it spends public money on religion",
   "alt": "grants for building safety only",
@@ -191,7 +191,7 @@
   "hurt": "people who prefer a neutral Yezo"
  },
  "BI20": {
-  "what": "lower tariffs with the European Union on dairy, wine, machinery and cars",
+  "what": "lower tariffs with the European Union on dairy, wine, machinery, and cars",
   "gain": "exporters and shoppers",
   "cost": "dairy and rural producers",
   "local": "prices on the shelf and in the barn",
@@ -201,7 +201,7 @@
   "hurt": "dairy and rural producers"
  },
  "BI21": {
-  "what": "government review of foreign land purchases near ports, water and defense sites",
+  "what": "government review of foreign land purchases near ports, water, and defense sites",
   "gain": "coastal communities and security officials",
   "cost": "foreign investors and sellers",
   "local": "land ownership near your harbor",
@@ -211,8 +211,8 @@
   "hurt": "foreign investors and landowners who want to sell"
  },
  "BI22": {
-  "what": "visa-free entry for tourists from Korea, Taiwan and Southeast Asia",
-  "gain": "hotels, shops and artisans",
+  "what": "visa-free entry for tourists from Korea, Taiwan, and Southeast Asia",
+  "gain": "hotels, shops, and artisans",
   "cost": "border officials and crowded sites",
   "local": "crowds in the old town and the ski slopes",
   "risk": "overcrowded resorts and strained services",
@@ -242,9 +242,9 @@
  },
  "BI25": {
   "what": "a licensed casino resort, with Tomakomai the leading site",
-  "gain": "construction workers, hotels and the host town",
+  "gain": "construction workers, hotels, and the host town",
   "cost": "neighbors and gambling-prone households",
-  "local": "traffic, crime and jobs near the resort site",
+  "local": "traffic, crime, and jobs near the resort site",
   "risk": "gambling addiction and organized crime",
   "critic": "it makes the town depend on losing gamblers",
   "alt": "a resort with no casino floor",
@@ -261,7 +261,7 @@
   "hurt": "local hires who know the town"
  },
  "BI27": {
-  "what": "one higher minimum wage across Hokkaido, Aomori and Chishima",
+  "what": "one higher minimum wage across Hokkaido, Aomori, and Chishima",
   "gain": "low-wage workers and students",
   "cost": "small shops and farms",
   "local": "paychecks and prices in small towns",
@@ -321,7 +321,7 @@
   "hurt": "taxpayers"
  },
  "BI33": {
-  "what": "a single digital identity card for tax, health and benefits",
+  "what": "a single digital identity card for tax, health, and benefits",
   "gain": "residents who tire of paperwork",
   "cost": "privacy",
   "local": "the counter at the ward office",
@@ -363,12 +363,12 @@
  "BI37": {
   "what": "a rising price on carbon with part of the revenue returned to households",
   "gain": "clean-energy firms and households that get dividends",
-  "cost": "fuel users, farmers and fishers",
+  "cost": "fuel users, farmers, and fishers",
   "local": "heating oil and gasoline prices",
   "risk": "higher costs in cold, spread-out towns",
   "critic": "it makes winter more expensive for the north",
   "alt": "a carbon price with exemptions for fuel in cold regions",
-  "hurt": "fuel users, farmers and fishers"
+  "hurt": "fuel users, farmers, and fishers"
  },
  "BI38": {
   "what": "tradeable fishing quotas with onboard reporting",
@@ -413,7 +413,7 @@
  "BI42": {
   "what": "a joint mining and fishing venture on the Chishima islands with a partner in non-China Asia",
   "gain": "investors and islanders looking for work",
-  "cost": "fishers, the sea and island heritage",
+  "cost": "fishers, the sea, and island heritage",
   "local": "harbors and fishing grounds near the venture",
   "risk": "damage to fisheries and sacred sites",
   "critic": "it sells off the islands' wealth",
@@ -452,7 +452,7 @@
  },
  "BI46": {
   "what": "a ban on workplace discrimination with penalties for repeat offenders",
-  "gain": "women, minorities and disabled workers",
+  "gain": "women, minorities, and disabled workers",
   "cost": "employers who must change hiring",
   "local": "hiring practices at local employers",
   "risk": "red tape and disputes at small firms",

@@ -136,7 +136,7 @@
   },
   {
     "question_id": "MV28",
-    "text_en": "What stops the next government undoing it if we {component}?",
+    "text_en": "What stops the next government from undoing it if we {component}?",
     "reply_kind": "Risk"
   },
   {

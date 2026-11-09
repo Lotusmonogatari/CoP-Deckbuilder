@@ -116,7 +116,7 @@
   {
     "answer_id": "MA20",
     "style": "Data Driven",
-    "line_en": "Here is the cost, the saving and the timeline, line by line.",
+    "line_en": "Here is the cost, the saving, and the timeline, line by line.",
     "reply_kind": null
   },
   {
@@ -398,7 +398,7 @@
   {
     "answer_id": "MA67",
     "style": "Data Driven",
-    "line_en": "Here is the cost, the saving and the payback, line by line.",
+    "line_en": "Here is the cost, the saving, and when it pays back.",
     "reply_kind": "Cost"
   },
   {
@@ -506,7 +506,7 @@
   {
     "answer_id": "MA85",
     "style": "Earnest",
-    "line_en": "I would tell your party the truth: you backed what you believe.",
+    "line_en": "I would tell your party the truth: you backed what you believe in.",
     "reply_kind": "Party"
   },
   {
@@ -518,7 +518,7 @@
   {
     "answer_id": "MA87",
     "style": "Emotional",
-    "line_en": "Your party came into politics to help people like this.",
+    "line_en": "Your party exists to help people like these.",
     "reply_kind": "Party"
   },
   {
@@ -566,7 +566,7 @@
   {
     "answer_id": "MA95",
     "style": "Duplicitous",
-    "line_en": "Tell your party whatever suits. I will not contradict you.",
+    "line_en": "Give your party whichever account suits you. I will not argue.",
     "reply_kind": "Party"
   },
   {
@@ -842,7 +842,7 @@
   {
     "answer_id": "MA141",
     "style": "Divisive",
-    "line_en": "They are protecting their own comfort, and everyone can see it.",
+    "line_en": "They are guarding their own interests, and everyone can see it.",
     "reply_kind": "Criticism"
   },
   {
@@ -926,7 +926,7 @@
   {
     "answer_id": "MA155",
     "style": "Duplicitous",
-    "line_en": "Let us agree something and not write it down.",
+    "line_en": "Let us agree on something and not write it down.",
     "reply_kind": "Deal"
   },
   {
@@ -1088,7 +1088,7 @@
   {
     "answer_id": "MA182",
     "style": "Emotional",
-    "line_en": "Remind your party why they first ran. This is that reason.",
+    "line_en": "Remind your colleagues why they first ran. This is that reason.",
     "reply_kind": "Party"
   },
   {
@@ -1154,7 +1154,7 @@
   {
     "answer_id": "MA193",
     "style": "Earnest",
-    "line_en": "Judge me by what I did the last time it got hard.",
+    "line_en": "Judge me by what I do when it gets hard.",
     "reply_kind": "Trust"
   },
   {
@@ -1172,7 +1172,7 @@
   {
     "answer_id": "MA196",
     "style": "Data Driven",
-    "line_en": "Look at my votes on hard bills. The record speaks for itself.",
+    "line_en": "Watch how I vote on hard bills. The record will speak.",
     "reply_kind": "Trust"
   },
   {
@@ -1262,7 +1262,7 @@
   {
     "answer_id": "MA211",
     "style": "Earnest",
-    "line_en": "Tell me plainly what you need. If I can do it, I will.",
+    "line_en": "Name what you need. If I can do it, I will.",
     "reply_kind": "Deal"
   },
   {

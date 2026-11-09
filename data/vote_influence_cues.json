@@ -7,27 +7,27 @@
   {
     "bill_id": "BI02",
     "outcome_direction": "Flipped to Fail",
-    "cue_text": "Other Members of Parliament came around to the unintended consequences, even if their constituents will be angry."
+    "cue_text": "Other Members of Parliament came to fear the unintended consequences, even knowing their constituents would be angry."
   },
   {
     "bill_id": "BI03",
     "outcome_direction": "Flipped to Fail",
-    "cue_text": "This was too much change without sufficient policy study or stakeholder consultation."
+    "cue_text": "Members judged it too much change without enough policy study or stakeholder consultation."
   },
   {
     "bill_id": "BI04",
     "outcome_direction": "Flipped to Fail",
-    "cue_text": "The status quo works. Moreover, Yezo needs to invest funding elsewhere."
+    "cue_text": "Members decided the status quo works and that Yezo's money is needed elsewhere."
   },
   {
     "bill_id": "BI05",
     "outcome_direction": "Flipped to Fail",
-    "cue_text": "Other Assembly Members started to think that Russia was simply posturing, and that there was no threat emerging."
+    "cue_text": "Other Members of Parliament started to think that Russia was simply posturing, and that no threat was emerging."
   },
   {
     "bill_id": "BI06",
     "outcome_direction": "Flipped to Fail",
-    "cue_text": "Members worried about wages and integration. They wanted a robust study over language training capacity, too."
+    "cue_text": "Members worried about wages and integration. They also wanted a proper study of language-training capacity."
   },
   {
     "bill_id": "BI07",
@@ -172,7 +172,7 @@
   {
     "bill_id": "BI34",
     "outcome_direction": "Flipped to Pass",
-    "cue_text": "Members ignored the ministers' objections and shielded the public broadcaster from direction."
+    "cue_text": "Members ignored the ministers' objections and shielded the public broadcaster from ministerial direction."
   },
   {
     "bill_id": "BI35",
@@ -267,7 +267,7 @@
   {
     "bill_id": "BI41",
     "outcome_direction": "Flipped to Fail",
-    "cue_text": "Members balked at sharing border data with Japan, and the customs bill was withdrawn."
+    "cue_text": "Members balked at sharing border data with Japan, and the customs bill fell short."
   },
   {
     "bill_id": "BI01",

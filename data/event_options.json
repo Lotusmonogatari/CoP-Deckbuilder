@@ -27,7 +27,7 @@
       "local",
       "humble"
     ],
-    "flavor": "Boots in the mud, a basket of apples handed round.",
+    "flavor": "Boots in the mud, a basket of apples handed around.",
     "commitment": null,
     "promise_kept_text": null
   },
@@ -121,7 +121,7 @@
       "tax_cut",
       "local"
     ],
-    "flavor": "A small business owner nods very slowly.",
+    "flavor": "One guest nods very slowly.",
     "commitment": null,
     "promise_kept_text": null
   },
@@ -211,7 +211,7 @@
       "tax_cut",
       "finance"
     ],
-    "flavor": "You talk about the bill that never gets paid.",
+    "flavor": "You talk about the debts that never get paid.",
     "commitment": null,
     "promise_kept_text": null
   },
@@ -234,7 +234,7 @@
         "within": 48
       }
     ],
-    "promise_kept_text": "You table a proposal to cut taxes on local business and send your guests a copy."
+    "promise_kept_text": "You submit a proposal to cut taxes on local business and send your guests a copy."
   },
   {
     "hosted_id": "HE01",
@@ -331,7 +331,7 @@
       "protect",
       "rural"
     ],
-    "flavor": "Several farmers shake your hand.",
+    "flavor": "Several guests shake your hand.",
     "commitment": [
       {
         "kind": "promise_hours",
@@ -339,7 +339,7 @@
         "within": 48
       }
     ],
-    "promise_kept_text": "You table a measure to protect local farmland from sale and send the farmers a copy."
+    "promise_kept_text": "You introduce a measure to protect local farmland from sale and send your guests a copy."
   },
   {
     "hosted_id": "HE01",
@@ -360,7 +360,7 @@
         "within": 48
       }
     ],
-    "promise_kept_text": "You propose a modest rise in the minimum wage and send your guests the figures."
+    "promise_kept_text": "You propose a modest increase in the minimum wage and send your guests the figures."
   },
   {
     "hosted_id": "HE01",
@@ -374,7 +374,7 @@
       "spending",
       "youth"
     ],
-    "flavor": "Fifty meters of cable would have made the difference.",
+    "flavor": "Someone names the village where the signal stops.",
     "commitment": [
       {
         "kind": "promise_hours",
@@ -620,7 +620,7 @@
       "protect",
       "rural"
     ],
-    "flavor": "The farmers lean forward.",
+    "flavor": "A few guests lean forward.",
     "commitment": null,
     "promise_kept_text": null
   },
@@ -680,7 +680,7 @@
       "welfare",
       "spending"
     ],
-    "flavor": "The union man has a pen.",
+    "flavor": "Someone at the table takes out a pen.",
     "commitment": null,
     "promise_kept_text": null
   },
@@ -725,7 +725,7 @@
       "tax_cut",
       "finance"
     ],
-    "flavor": "A banker finishes his glass.",
+    "flavor": "Someone quietly finishes a glass.",
     "commitment": null,
     "promise_kept_text": null
   },
@@ -748,7 +748,7 @@
         "within": 48
       }
     ],
-    "promise_kept_text": "You table a proposal to cut taxes on business and send your guests a copy."
+    "promise_kept_text": "You submit a proposal to cut taxes on business and send your guests a copy."
   },
   {
     "hosted_id": "HE02",
@@ -845,7 +845,7 @@
       "protect",
       "rural"
     ],
-    "flavor": "Several farmers raise a glass.",
+    "flavor": "Several guests raise a glass.",
     "commitment": [
       {
         "kind": "promise_hours",
@@ -853,7 +853,7 @@
         "within": 48
       }
     ],
-    "promise_kept_text": "You table a measure to protect local farmland from sale and send the farmers a copy."
+    "promise_kept_text": "You introduce a measure to protect local farmland from sale and send your guests a copy."
   },
   {
     "hosted_id": "HE02",
@@ -874,7 +874,7 @@
         "within": 48
       }
     ],
-    "promise_kept_text": "You propose a modest rise in the minimum wage and send your guests the figures."
+    "promise_kept_text": "You propose a modest increase in the minimum wage and send your guests the figures."
   },
   {
     "hosted_id": "HE02",
@@ -952,7 +952,7 @@
       "veterans",
       "protect"
     ],
-    "flavor": "A retired officer sets down his chopsticks.",
+    "flavor": "An older guest sets down his chopsticks.",
     "commitment": null,
     "promise_kept_text": null
   },
@@ -974,7 +974,7 @@
     "option_id": "DC9",
     "choice_text": "Promise only to keep listening",
     "tags": null,
-    "flavor": "The tea goes round. Nobody writes anything down.",
+    "flavor": "The tea goes around. Nobody writes anything down.",
     "commitment": null,
     "promise_kept_text": null
   }

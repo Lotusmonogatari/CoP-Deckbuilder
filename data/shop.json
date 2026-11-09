@@ -2,7 +2,7 @@
   {
     "item_id": "SH01",
     "name": "Commission Policy Research",
-    "description": "Spend Office Funds to increase one randomly-selected Party Bodies booster group's relationship. Available once per Office screen; resets after completion of a level (success or failure).",
+    "description": "Spend Funds to raise your standing with one randomly chosen Party Bodies organization. Once per Office visit; available again after your next level, won or lost.",
     "cost_xp": 0,
     "cost_yen": 200000,
     "bonus_condition_1": "Policy Research Assistant is Rank 1: +1 to the selected Party Bodies booster group.",
@@ -46,7 +46,7 @@
   {
     "item_id": "SH02",
     "name": "Commission Press Engagement",
-    "description": "Spend Office Funds to increase one randomly-selected National booster group's relationship. Available once per Office screen; resets after completion of a level (success or failure).",
+    "description": "Spend Funds to raise your standing with one randomly chosen National organization. Once per Office visit; available again after your next level, won or lost.",
     "cost_xp": 0,
     "cost_yen": 200000,
     "bonus_condition_1": "Media Spokesperson is Rank 1: +2 to the selected National booster group.",
@@ -90,7 +90,7 @@
   {
     "item_id": "SH03",
     "name": "Commission District Engagement",
-    "description": "Spend Office Funds to increase one randomly-selected Constituency booster group's relationship. Available once per Office screen; resets after completion of a level.",
+    "description": "Spend Funds to raise your standing with one randomly chosen Constituency organization. Once per Office visit; available again after your next level, won or lost.",
     "cost_xp": 0,
     "cost_yen": 200000,
     "bonus_condition_1": "District Representative is Rank 1: +2 to the selected Constituency booster group.",
@@ -134,7 +134,7 @@
   {
     "item_id": "SH04",
     "name": "“ね3” Coffee",
-    "description": "One-use item. Grants +1 energy for the first stage of the next level played.",
+    "description": "One-use item. +1 energy for your next stage, or the rest of this one if used mid-stage.",
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
@@ -178,7 +178,7 @@
   {
     "item_id": "SH05",
     "name": "“ミレニ姫” Tea",
-    "description": "One-use item. Grants +1 gaffe (失言) counter cap for the first stage of the next level played.",
+    "description": "One-use item. +1 to the gaffe (失言) limit for your next stage, or the rest of this one if used mid-stage.",
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
@@ -222,7 +222,7 @@
   {
     "item_id": "SH06",
     "name": "Paperwork Automation",
-    "description": "One-use item. Grants +1 card drawn for the first stage of the next level played.",
+    "description": "One-use item. +1 card drawn for your next stage, or the rest of this one if used mid-stage.",
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
@@ -266,7 +266,7 @@
   {
     "item_id": "SH07",
     "name": "Wristwatch",
-    "description": "One-use item. Grants +1 turn for the first stage of the next level played.",
+    "description": "One-use item. +1 turn for your next stage, or the rest of this one if used mid-stage.",
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
@@ -310,7 +310,7 @@
   {
     "item_id": "SH08",
     "name": "Personalized Dear Colleague Letter",
-    "description": "One-use item. Grants +1 guard for the first stage of the next level played.",
+    "description": "One-use item. +1 guard for your next stage, or the rest of this one if used mid-stage.",
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
@@ -509,7 +509,7 @@
   },
   {
     "item_id": "SH13",
-    "name": "Fund Limit Increase Petition",
+    "name": "Funds Cap Increase Petition",
     "description": "Increases the Office Funds cap by 100,000円. Repeatable.",
     "cost_xp": 100,
     "cost_yen": 0,
@@ -549,7 +549,7 @@
   {
     "item_id": "SH14",
     "name": "Commission a Speech Trainer",
-    "description": "One-use buff applied for the entire duration of the next level played: +1 card drawn.",
+    "description": "One-use item. Lasts for the whole of your next level: +1 card drawn.",
     "cost_xp": 50,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +2 total per level; each additional stack costs another 50 XP.",
@@ -592,8 +592,8 @@
   },
   {
     "item_id": "SH15",
-    "name": "Kaiju Sized “ね3” Coffee",
-    "description": "One-use buff applied for the entire duration of the next level played: +1 energy.",
+    "name": "Kaiju-Sized “ね3” Coffee",
+    "description": "One-use item. Lasts for the whole of your next level: +1 energy.",
     "cost_xp": 60,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 60 XP.",
@@ -637,7 +637,7 @@
   {
     "item_id": "SH16",
     "name": "Automated Dear Colleague Letters",
-    "description": "One-use buff applied for the entire duration of the next level played: +1 guard.",
+    "description": "One-use item. Lasts for the whole of your next level: +1 guard.",
     "cost_xp": 70,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 70 XP.",
@@ -680,8 +680,8 @@
   },
   {
     "item_id": "SH17",
-    "name": "Kaiju Sized “ミレニ姫” Tea",
-    "description": "One-use buff applied for the entire duration of the next level played: +1 gaffe (失言) counter cap.",
+    "name": "Kaiju-Sized “ミレニ姫” Tea",
+    "description": "One-use item. Lasts for the whole of your next level: +1 to the gaffe (失言) limit.",
     "cost_xp": 80,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 80 XP.",
@@ -724,8 +724,8 @@
   },
   {
     "item_id": "SH18",
-    "name": "AI Powered Clock",
-    "description": "One-use buff applied for the entire duration of the next level played: +1 turn on the stage clock.",
+    "name": "AI-Powered Clock",
+    "description": "One-use item. Lasts for the whole of your next level: +1 turn on the stage clock.",
     "cost_xp": 100,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 100 XP.",
@@ -769,7 +769,7 @@
   {
     "item_id": "SH19",
     "name": "National Organization Outreach Dinner",
-    "description": "Host a dinner for a National booster group you choose. You pick the menu, a topic and a promise, and your guests react to every choice. It takes 4 hours, and a bill may come up over the evening.",
+    "description": "Host a dinner for a National organization you choose. You pick the menu, a topic, and a promise, and your guests react to every choice. It takes 4 hours, and a bill may come up over the evening.",
     "cost_xp": 20,
     "cost_yen": 20000,
     "bonus_condition_1": "Standing moves with how your guests react, not automatically.",
@@ -813,7 +813,7 @@
   {
     "item_id": "SH20",
     "name": "Host a Constituency Group Walking Tour",
-    "description": "Host a walking tour for a Constituency booster group you choose. You pick where to go, a topic and a promise, and your guests react to every choice. It takes 4 hours, and a bill may come up along the way.",
+    "description": "Host a walking tour for a Constituency organization you choose. You pick where to go, a topic, and a promise, and your guests react to every choice. It takes 4 hours, and a bill may come up along the way.",
     "cost_xp": 10,
     "cost_yen": 10000,
     "bonus_condition_1": "Standing moves with how your guests react, not automatically.",
@@ -857,7 +857,7 @@
   {
     "item_id": "SH21",
     "name": "Training Session Coupon",
-    "description": "Redeem in the Office for one free Rhetoric Training draw: see up to three cards of its tier and learn one at no cost. Helps smooth a weak opening deck.",
+    "description": "Redeem in the Office for one free Training Session: see up to three cards of its tier and learn one at no cost. Helps smooth a weak opening deck.",
     "cost_xp": 150,
     "cost_yen": 0,
     "bonus_condition_1": null,
@@ -940,7 +940,7 @@
   {
     "item_id": "SH23",
     "name": "Leak a Memo",
-    "description": "Leak a damaging internal memo about a Constituency organization of your choice. Lowers their standing with you. Usable only in the Office, never during a level.",
+    "description": "Leak a damaging internal memo about a Constituency organization of your choice. Lowers their standing with you. Usable only in the Office, never during a stage.",
     "cost_xp": 100,
     "cost_yen": 0,
     "bonus_condition_1": "-4 standing with the chosen Constituency organization.",
@@ -1184,7 +1184,7 @@
   {
     "item_id": "SH29",
     "name": "Wakkanai Milk Caramels",
-    "description": "A tin of caramels using Wakkanai sourced milk that incorporates the  milk's cream-like flavor.",
+    "description": "A tin of caramels made with Wakkanai milk, rich with the milk's creamy flavor.",
     "cost_xp": 0,
     "cost_yen": 1500,
     "bonus_condition_1": null,
@@ -1340,7 +1340,7 @@
   {
     "item_id": "SH33",
     "name": "Haskap Yoitomake",
-    "description": "A Tomakomai specialty roll sponge cake covered in a tart, sticky local berry jam.",
+    "description": "A Tomakomai specialty: a rolled sponge cake coated in tart, sticky haskap jam.",
     "cost_xp": 0,
     "cost_yen": 1500,
     "bonus_condition_1": null,

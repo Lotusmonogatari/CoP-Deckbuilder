@@ -366,7 +366,7 @@
   {
     "key": "brief.winning.score",
     "where": "Details — how this room works",
-    "english": "No target: your final support counts toward later stages.",
+    "english": "No threshold: your final support counts toward later stages.",
     "placeholders": null,
     "notes": null
   },
@@ -555,14 +555,14 @@
   {
     "key": "office.orgs_blurb",
     "where": "Office — organizations",
-    "english": "Your performance and conduct are scrutinized closely. The following are key organizations that can support or oppose you based on their sentiment.",
+    "english": "Your performance and conduct are scrutinized closely. The following are key organizations that can support or oppose you based on their standing with you.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "office.backing_blurb",
     "where": "Office — backing",
-    "english": "An organization backs you once your standing with it is high enough. Answering a reporter in the rhetorical style their question invites is what raises it.",
+    "english": "An organization backs you once your standing with it is high enough. Strong answers to the questions that concern it, in any room, raise it most.",
     "placeholders": null,
     "notes": null
   },
@@ -611,7 +611,7 @@
   {
     "key": "shop.mod_no_id",
     "where": "Shop — refusals",
-    "english": "This modifier has no ID.",
+    "english": "This backing is not available.",
     "placeholders": null,
     "notes": null
   },
@@ -751,14 +751,14 @@
   {
     "key": "outcome.reason.time_ahead",
     "where": "End of stage — why",
-    "english": "Time ran out with the player ahead.",
+    "english": "Time ran out with you ahead.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "outcome.reason.time_behind",
     "where": "End of stage — why",
-    "english": "Time ran out with the player behind.",
+    "english": "Time ran out with you behind.",
     "placeholders": null,
     "notes": null
   },
@@ -933,21 +933,21 @@
   {
     "key": "reward.nothing_set",
     "where": "Office · level briefing",
-    "english": "Nothing in this level pays out yet. The slots are in the data waiting for numbers, and the moment they have any, they will land here and on your standing.",
+    "english": "Nothing in this level pays out yet. Its rewards have not been set; once they are, they will show here and on your standing.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "modifier.reputation_per_stage_win",
     "where": "Office · backing shop",
-    "english": "Funds +{count}円 for every stage won.",
+    "english": "Funds +{count}円 after each level you win.",
     "placeholders": "count",
     "notes": null
   },
   {
     "key": "battle.default_pattern",
     "where": "Battle · details panel",
-    "english": "This opponent has no move pattern of their own yet, so they are playing the shared default.",
+    "english": "This opponent follows the usual pattern of moves.",
     "placeholders": null,
     "notes": null
   },
@@ -1087,7 +1087,7 @@
   {
     "key": "office.staff_blurb",
     "where": "Office · Recruitment shop",
-    "english": "Each role can hold one hire at a time. Hiring, upgrading and firing are all paid from Funds — firing costs a severance, and someone you fire will never work for you again.",
+    "english": "Each role can hold one hire at a time. Hiring, upgrading, and firing are all paid from Funds — firing costs a severance, and someone you fire will never work for you again.",
     "placeholders": null,
     "notes": null
   },
@@ -1402,7 +1402,7 @@
   {
     "key": "office.new_game_warning",
     "where": "New game, the warning before the run is thrown away",
-    "english": "Starting a new game ends this run. Your standing, cards, staff and items all go back to the start.",
+    "english": "Starting a new game ends this run. Your standing, cards, staff, and items all go back to the start.",
     "placeholders": null,
     "notes": null
   },
@@ -2298,7 +2298,7 @@
   {
     "key": "party_opinion.detail",
     "where": "Parties page, small line per party",
-    "english": "Votes and rewards {direct} · Stakeholders {stakeholder}",
+    "english": "Votes and rewards {direct} · Organizations {stakeholder}",
     "placeholders": "direct, stakeholder",
     "notes": "Stakeholders shows a dash where no organization is tied to the party."
   },
@@ -3306,7 +3306,7 @@
   {
     "key": "custom_bill.name_3",
     "where": "Patron bills",
-    "english": "A bill to {a}, {b} and {c}",
+    "english": "A bill to {a}, {b}, and {c}",
     "placeholders": "a, b, c",
     "notes": "2026-10-19 the name of a bill composed from two or three components (patron bills, Draft a Bill)."
   },
@@ -3320,7 +3320,7 @@
   {
     "key": "floor_vote.assist_against",
     "where": "Floor Vote",
-    "english": "Lobbyists working against you: -{count}.",
+    "english": "Lobbyists working against you: −{count}.",
     "placeholders": "count",
     "notes": "2026-10-19 patron bill: seats won over by visits / taken by lobbyists, shown under the bill before the vote."
   },
@@ -3383,7 +3383,7 @@
   {
     "key": "visit.react_strong_2",
     "where": "A visit",
-    "english": "{name} leans forward, interested at last.",
+    "english": "{name} leans forward, suddenly interested.",
     "placeholders": "name",
     "notes": "2026-10-19 MP visit (patron Flagships)."
   },
@@ -3600,7 +3600,7 @@
   {
     "key": "trade.chosen",
     "where": "Lobbyist trade",
-    "english": "{label} - chosen",
+    "english": "{label} (chosen)",
     "placeholders": "label",
     "notes": "2026-10-19 lobbyist trade (patron bills)."
   },
@@ -3663,7 +3663,7 @@
   {
     "key": "trade.cost_seats",
     "where": "Lobbyist trade",
-    "english": "Their lobbying costs your side on the floor: -{count}.",
+    "english": "Their lobbying costs your side on the floor: −{count}.",
     "placeholders": "count",
     "notes": "2026-10-19 lobbyist trade (patron bills)."
   },
@@ -3803,7 +3803,7 @@
   {
     "key": "request.default_vote",
     "where": "Request panel",
-    "english": "As things stand the vote runs {yes} Aye, {no} Nay and {abstain} abstaining; {needed} Aye are needed.",
+    "english": "As things stand the vote runs {yes} Aye, {no} Nay, and {abstain} abstaining; {needed} Aye are needed.",
     "placeholders": "yes, no, abstain, needed",
     "notes": "2026-10-19 patron requests (step 4)."
   },
@@ -4034,7 +4034,7 @@
   {
     "key": "draft.intro",
     "where": "Draft a Bill",
-    "english": "Pick two or three parts from any organizations and carry the bill yourself. It costs {xp} XP and {funds}円.",
+    "english": "Pick two or three parts from any of the organizations and carry the bill yourself. It costs {xp} XP and {funds}円.",
     "placeholders": "xp, funds",
     "notes": "2026-10-19 Draft a Bill (draft)."
   },
@@ -4160,7 +4160,7 @@
   {
     "key": "draft.not_winnable",
     "where": "Draft a Bill",
-    "english": "Even in the best case, with every influence gate met, this bill would either pass without a fight or could never pass. Change a part.",
+    "english": "Even in the best case, with every influence requirement met, this bill would either pass without a fight or could never pass. Change a part.",
     "placeholders": null,
     "notes": "2026-10-19 Draft a Bill (draft)."
   },
@@ -4244,7 +4244,7 @@
   {
     "key": "brief.stat.gaffes_multiplied",
     "where": "Details panel, key numbers",
-    "english": "Gaffe out at {count} (each counts {multiplier}x)",
+    "english": "Gaffe out at {count} (each counts ×{multiplier})",
     "placeholders": "count, multiplier",
     "notes": "2026-10-21 concise stage text."
   },
@@ -4300,7 +4300,7 @@
   {
     "key": "brief.q.skip_costs",
     "where": "Room rules, questions",
-    "english": "Skipping one costs {count} and pleases nobody.",
+    "english": "Skipping one costs {count} Tone and pleases nobody.",
     "placeholders": "count",
     "notes": "2026-10-21 concise stage text."
   },
@@ -4685,7 +4685,7 @@
   {
     "key": "election.bar_line",
     "where": "Election Strength page, the bar caption",
-    "english": "Election strength",
+    "english": "Election Strength",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
   },
@@ -4748,7 +4748,7 @@
   {
     "key": "event.list_hint",
     "where": "Events list, line under the heading",
-    "english": "Arrange an event. It costs money and hours, and what comes of it depends on what you choose to do.",
+    "english": "Arrange an event. It costs Funds and hours, and what comes of it depends on what you choose to do.",
     "placeholders": null,
     "notes": "2026-10-23 events."
   },
@@ -5021,7 +5021,7 @@
   {
     "key": "hosted.no_guests",
     "where": "Hosted event, no guests could be found",
-    "english": "No one could come, but the host still stayed the evening.",
+    "english": "No one could come, but the evening was spent all the same.",
     "placeholders": null,
     "notes": "2026-10-23 hosted events."
   },
@@ -5035,7 +5035,7 @@
   {
     "key": "floor_vote.whip_discount",
     "where": "Floor Vote, whip the vote",
-    "english": "{orgs} are in your corner: every extra vote costs {amount} less.",
+    "english": "In your corner: {orgs}. Every extra vote costs {amount} less.",
     "placeholders": "orgs, amount",
     "notes": "2026-10-23 whip discount."
   },
@@ -5511,7 +5511,7 @@
   {
     "key": "event.decline.EV41",
     "where": "Event Choices: the result of declining EV41",
-    "english": "You decline to take the call. The village office is left to ring around.",
+    "english": "You decline to take the call. The village office is left to call around.",
     "placeholders": null,
     "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
   },
@@ -5714,7 +5714,7 @@
   {
     "key": "event.decline.EV58",
     "where": "Event Choices: the result of declining EV58",
-    "english": "You decline the ride. The committee posts the empty space where you would have stood.",
+    "english": "You decline the ride. The committee posts a photo of the empty space where you would have stood.",
     "placeholders": null,
     "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
   },
@@ -5938,7 +5938,7 @@
   {
     "key": "event.heading_followup",
     "where": "Event screen heading for a follow-up the player's own choice scheduled",
-    "english": "As you promised",
+    "english": "Following up",
     "placeholders": null,
     "notes": "2026-10-31 follow-ups (Cameron)"
   },
@@ -5987,7 +5987,7 @@
   {
     "key": "event.decline.EV65",
     "where": "Event Choices: the result of declining EV65",
-    "english": "You decline to receive them. The delegation tours the district without meeting anyone who represents it.",
+    "english": "You decline to receive them. The delegation finishes its tour without meeting a single legislator.",
     "placeholders": null,
     "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
   },
@@ -6169,7 +6169,7 @@
   {
     "key": "pressure.harder.blurb",
     "where": "New Game, under the tier button",
-    "english": "Tighter fights, 15% less pay, dearer items, heavier dues and faster-fading standing. It can never be lowered.",
+    "english": "Tighter fights, 15% less pay, pricier items, heavier dues, and faster-fading standing. It can never be lowered.",
     "placeholders": null,
     "notes": "Added 2026-11-02 (Campaign Pressure)."
   },
@@ -6498,7 +6498,7 @@
   {
     "key": "office.staff_blurb_places",
     "where": "Staff screen intro once the slot item is bought",
-    "english": "Each role can hold {places} hires at a time. The primary is the one every scene, notice and bonus reads; the others still earn their rank rewards. Hiring, upgrading and firing are all paid from Funds, and someone you fire will never work for you again.",
+    "english": "Each role can hold {places} hires at a time. The primary is the one every scene, notice, and bonus draws on; the others still earn their rank rewards. Hiring, upgrading, and firing are all paid from Funds, and someone you fire will never work for you again.",
     "placeholders": "places",
     "notes": "2026-11-08 staff slot item (Cameron). Claude's draft."
   },
@@ -6575,7 +6575,7 @@
   {
     "key": "floor_vote.research_passive",
     "where": "Floor Vote",
-    "english": "Your research assistant has narrowed the vote projection uncertainty.",
+    "english": "Your research assistant has narrowed the uncertainty in the vote projections.",
     "placeholders": null,
     "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
   },

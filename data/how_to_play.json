@@ -49,7 +49,7 @@
     "group": "Winning and Losing",
     "heading_en": "Press conferences",
     "heading_jp": null,
-    "body_en": "There is no race. You answer a set of questions, and your tone is judged after the last one. Skipping a question costs you tone.",
+    "body_en": "There is no race. You answer a set of questions, and your tone is judged after the last one. Skipping a question usually costs you Tone.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -71,7 +71,7 @@
     "group": "Winning and Losing",
     "heading_en": "Several opponents",
     "heading_jp": null,
-    "body_en": "Committees, Town Halls, Caucuses and Floor Debates make you beat several opponents in a row. A committee resets everything between opponents. The others keep your clock running.",
+    "body_en": "Committees, Town Halls, Caucuses, and Floor Debates make you beat several opponents in a row. A committee resets everything between opponents. The others keep your clock running.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -135,9 +135,9 @@
     "entry_id": "HT13",
     "order": 130.0,
     "group": "Between Levels",
-    "heading_en": "Your four standings",
+    "heading_en": "Your four core numbers",
     "heading_jp": null,
-    "body_en": "Constituency support, Reputation, Funds and Party support are your four standings, and stages move them. If Constituency support or Party support falls very low, an urgent level (a Town Hall or a Party Steering Committee check-in) appears at the top of the level list, and it is forced on you after your next level if you leave it. If Party support reaches zero, your Funds stop coming in.",
+    "body_en": "Constituency support, Reputation, Funds, and Party support are your four core numbers, and stages move them. If Constituency support or Party support falls very low, an urgent level (a Town Hall or a Party Steering Committee check-in) appears at the top of the level list, and it is forced on you after your next level if you leave it. If Party support reaches zero, your Funds stop coming in.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -148,7 +148,7 @@
     "group": "Between Levels",
     "heading_en": "Important Stakeholders",
     "heading_jp": null,
-    "body_en": "Every organization keeps a standing with you. Strong answers please the organizations a question concerns, weak ones annoy them, and some answers set rivals back; organizations you neglect drift back toward where they started. A high standing lets you take an organization's backing in Boosters and may bring a sponsored bill.",
+    "body_en": "Every organization keeps a standing with you. Strong answers please the organizations a question concerns, weak ones annoy them, and some answers set rivals back; organizations you neglect drift back toward where they started. A high standing lets you take an organization's backing in Backers and may bring a sponsored bill.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -181,7 +181,7 @@
     "group": "Between Levels",
     "heading_en": "Office Hours and Floor Votes",
     "heading_jp": null,
-    "body_en": "Office Hours are conversations with visitors, and each answer can raise some organizations and lower others. A Floor Vote is a single Aye, Nay or Abstain decision, and a bill passes only when its Aye votes reach a majority of the whole house ({majority} of {seats}). A bill that passes becomes law and is recorded in Your Record.",
+    "body_en": "Office Hours are conversations with visitors, and each answer can raise some organizations and lower others. A Floor Vote is a single Aye, Nay, or Abstain decision, and a bill passes only when its Aye votes reach a majority of the whole house ({majority} of {seats}). A bill that passes becomes law and is recorded in Your Record.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -214,7 +214,7 @@
     "group": "Cards",
     "heading_en": "Why a card is bigger or smaller",
     "heading_jp": null,
-    "body_en": "Two things scale a card's gain and how hard it hits your opponent: the room and the question. A room favors some rhetorical styles and holds others back, and a question boosts the style it invites and reduces a poor answer; guard, drawing and gaffes are never scaled. Tap a card for a plain-words reading, and a greyed-out card does nothing here right now.",
+    "body_en": "Two things scale a card's gain and how hard it hits your opponent: the room and the question. A room favors some rhetorical styles and holds others back, and a question boosts the style it invites and reduces a poor answer; guard, drawing, and gaffes are never scaled. Tap a card for a plain-words reading, and a grayed-out card does nothing here right now.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -258,7 +258,7 @@
     "group": "Bills and Parties",
     "heading_en": "Drafting and winning votes",
     "heading_jp": null,
-    "body_en": "Draft a Bill lets you combine two or three parts from any organizations into a bill of your own, for XP and Funds. Optional stages before the vote let you visit a member to win a seat, and meet a lobbyist who may trade you help for dropping one part. You can carry only one drafted bill at a time.",
+    "body_en": "Draft a Bill lets you combine two or three parts from any of the organizations into a bill of your own, for XP and Funds. Optional stages before the vote let you visit a member to win a seat, and meet a lobbyist who may trade you help for dropping one part. You can carry only one drafted bill at a time.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -280,7 +280,7 @@
     "group": "Winning and Losing",
     "heading_en": "Winning over voters",
     "heading_jp": null,
-    "body_en": "Winning over somebody undecided costs one point; somebody already against you costs one, two or three. You find out which as you go, and points you cannot spend are lost.",
+    "body_en": "Winning over somebody undecided costs one point; somebody already against you costs one, two, or three. You find out which as you go, and points you cannot spend are lost.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -302,7 +302,7 @@
     "group": "Bills and Parties",
     "heading_en": "Whipping the vote",
     "heading_jp": null,
-    "body_en": "On a bill vote you can spend Party support to whip extra members of your own party to your pick. Each extra vote has a price shown on the screen: cheaper when organizations are in your corner, and far dearer when your vote goes against your party's position. You cannot spend Party support below a floor, and you can only whip members who are not already with you.",
+    "body_en": "On a bill vote you can spend Party support to whip extra members of your own party to your pick. Each extra vote has a price shown on the screen: cheaper when organizations are in your corner, and far costlier when your vote goes against your party's position. You cannot spend Party support below a floor, and you can only whip members who are not already with you.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -324,7 +324,7 @@
     "group": "Between Levels",
     "heading_en": "Party dues",
     "heading_jp": null,
-    "body_en": "At the end of every week you pay the party a base amount plus a share of what you earned from Monday to Friday. The base rises as your Party support does. Dues you cannot pay roll over, cost you Party support and standing, and the party withdraws its backings.",
+    "body_en": "At the end of every week you pay the party a base amount plus a share of what you earned from Monday through Friday. The base rises as your Party support does. Dues you cannot pay roll over, cost you Party support and standing, and the party withdraws its backings.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -335,7 +335,7 @@
     "group": "Between Levels",
     "heading_en": "Name awareness",
     "heading_jp": null,
-    "body_en": "District and National Awareness measure how many people know your name. Winning rooms and carrying bills raises them, and gaffes left on your counter at the end of a room lower them. High awareness brings rewards and low awareness costs you each week.",
+    "body_en": "District and National Awareness measure how many people know your name. Winning rooms and carrying bills raises them, and gaffes left on your gaffe meter at the end of a room lower them. High awareness brings rewards and low awareness costs you each week.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -346,7 +346,7 @@
     "group": "Between Levels",
     "heading_en": "Events",
     "heading_jp": null,
-    "body_en": "Arrange an event from the Events button; others turn up after a level or a week, or on a set date shown on the event. Each has a few choices with different payoffs and takes hours, and some can reveal a new bill level or lead straight into a stage. Some choices cost hours, money or an item on the spot, or are promises you keep later from the Promises button (breaking one costs you), and some bring a follow-up event.",
+    "body_en": "Arrange an event from the Events button; others turn up after a level or a week, or on a set date shown on the event. Each has a few choices with different payoffs and takes hours, and some can reveal a new bill level or lead straight into a stage. Some choices cost hours, Funds, or an item on the spot, or are promises you keep later from the Promises button (breaking one costs you), and some bring a follow-up event.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -355,9 +355,9 @@
     "entry_id": "HT33",
     "order": 165.0,
     "group": "Between Levels",
-    "heading_en": "Election strength",
+    "heading_en": "Election Strength",
     "heading_jp": null,
-    "body_en": "Election strength shows how ready your campaign is. It grows slowly toward what your awareness, support, organizations, funds, experience, laws and party standing add up to. Nothing is decided by it yet.",
+    "body_en": "Election Strength shows how ready your campaign is. It grows slowly toward what your awareness, support, organizations, Funds, experience, laws, and Party support add up to. Nothing is decided by it yet.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -368,7 +368,7 @@
     "group": "Between Levels",
     "heading_en": "Hosting a dinner or a walking tour",
     "heading_jp": null,
-    "body_en": "Buy a Booster Dinner or a Walking Tour in the Marketplace and use it on the organization you want to host. You choose what to do or eat, a topic and a promise, and each guest reacts to every choice by what their organization likes. How the evening goes, not whom you picked, decides the standing and awareness you gain.",
+    "body_en": "Buy an Outreach Dinner or a Walking Tour in the Marketplace and use it on the organization you want to host. You choose what to do or eat, a topic, and a promise, and each guest reacts to every choice by what their organization likes. How the evening goes, not whom you picked, decides the standing and awareness you gain.",
     "screenshot": null,
     "caption": null,
     "video": null

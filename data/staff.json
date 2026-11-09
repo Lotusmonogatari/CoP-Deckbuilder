@@ -47,7 +47,7 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": "Yui caught a ¥40 million double-count in last year’s budget draft. The Taxpayers’ Alliance still quotes her memo.",
+    "biography": "Yui caught a 40,000,000円 double-count in last year’s budget draft. The Taxpayers’ Alliance still quotes her memo.",
     "role_flavor": "Budget analyst covering taxes, spending, and economic growth."
   },
   {
@@ -77,7 +77,7 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": "Sheen grew up on a Tokachi dairy farm after the war with few resources and pieced together a rudimentary mechanized system before graduating high school.",
+    "biography": "Sheen grew up after the war on a Tokachi dairy farm with few resources, and pieced together a simple mechanized system before he finished high school.",
     "role_flavor": "On farming and agritech, he’s the office’s go-to researcher."
   },
   {
@@ -121,7 +121,7 @@
       }
     ],
     "biography": "Marcus spent six years as a Ministry of Government Administration clerk. He knows which unit director actually reads the briefing binders.",
-    "role_flavor": "Liaison to the ministries and members of Parliament."
+    "role_flavor": "Liaison to the ministries and Members of Parliament."
   },
   {
     "staff_id": "SF05",
@@ -145,7 +145,7 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": "Stephen flagged his Hakodate bank’s thin loan-loss reserves to regulators, then left to a regional bank position.",
+    "biography": "Stephen flagged his Hakodate bank’s thin loan-loss reserves to regulators, then left for a job at a regional bank.",
     "role_flavor": "Tax and banking regulation analyst, by way of a regional bank."
   },
   {
@@ -188,7 +188,7 @@
         "target": "BO17"
       }
     ],
-    "biography": "Hiromi caught notable gaffes in the party's original 2018 election platform overnight, and cleared out all copies distributed before the media caught on.",
+    "biography": "Hiromi spotted embarrassing errors in the party's 2018 election platform overnight and recalled every printed copy before the media caught on.",
     "role_flavor": "Party platforms and candidate vetting fall to this policy adviser."
   },
   {
@@ -243,7 +243,7 @@
     ],
     "tier_1_reward": null,
     "tier_2_reward": null,
-    "biography": "Aoi ran her university’s campus radio show, and her interview with a lead educational programming bureaucrat went viral among students.",
+    "biography": "Aoi ran her university’s campus radio show, and her interview with the official in charge of educational programming went viral among students.",
     "role_flavor": "Press aide for youth and student media."
   },
   {
@@ -273,7 +273,7 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": "Isela designed the Sapporo Daily’s monthly opinion poll. it called several 2018 single member district seats within two points beating long-term pollsters.",
+    "biography": "Isela designed the Sapporo Daily’s monthly opinion poll. It called several 2018 single-member district seats within two points, beating long-established pollsters.",
     "role_flavor": "Polls and public opinion are what this media strategist tracks."
   },
   {
@@ -436,7 +436,7 @@
         "target": "BO20"
       }
     ],
-    "biography": "Honoka organized a joint temple-and-shrine relief kitchen after the a recent earthquake; both associations still call her first.",
+    "biography": "Honoka organized a joint temple-and-shrine relief kitchen after a recent earthquake; both associations still call her first.",
     "role_flavor": "Faith outreach to temples and shrines is her portfolio as a spokesperson."
   },
   {
@@ -663,6 +663,6 @@
       }
     ],
     "biography": "Ari ran her family’s Obihiro bakery for a decade and recruited forty shop owners into the Small Business Association.",
-    "role_flavor": "Small business owners and backers have her as their district contact."
+    "role_flavor": "Small business owners and their supporters have her as their district contact."
   }
 ]

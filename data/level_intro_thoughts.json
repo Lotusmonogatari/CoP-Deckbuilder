@@ -1,7 +1,7 @@
 [
   {
     "level_id": "LV01",
-    "thought_text": "Meeting with the public is always a unique experience."
+    "thought_text": "Every meeting with the public is different."
   },
   {
     "level_id": "LV02",
@@ -13,7 +13,7 @@
   },
   {
     "level_id": "LV04",
-    "thought_text": "Party leaders have lower expectations for a performance in the Committee on the Environment."
+    "thought_text": "Party leaders expect less from me in the Committee on the Environment."
   },
   {
     "level_id": "LV05",
@@ -21,11 +21,11 @@
   },
   {
     "level_id": "LV06",
-    "thought_text": "Party leaders are asking for some help moving legislation. A good chance to build rapport with the party."
+    "thought_text": "Party leaders want help moving farm legislation. A good chance to build rapport."
   },
   {
     "level_id": "LV07",
-    "thought_text": "Party leaders are asking for some help moving legislation. A good chance to build rapport with the party."
+    "thought_text": "Party leaders want help on roads and rails. A good chance to build rapport."
   },
   {
     "level_id": "LV08",
@@ -37,7 +37,7 @@
   },
   {
     "level_id": "LV10",
-    "thought_text": "Market pressure is mounting and this can help preserve our local shops."
+    "thought_text": "Market pressure is mounting, and this bill can help preserve our local shops."
   },
   {
     "level_id": "LV11",
@@ -57,7 +57,7 @@
   },
   {
     "level_id": "LV15",
-    "thought_text": "Looking back in history can teach us lessons applicable for modern challenges."
+    "thought_text": "Looking back at history can teach lessons for modern challenges."
   },
   {
     "level_id": "LV16",
@@ -65,7 +65,7 @@
   },
   {
     "level_id": "LV17",
-    "thought_text": "If allegiances remain static, then opportunities to influence legislation are static, too."
+    "thought_text": "If allegiances never shift, neither does my influence on legislation."
   },
   {
     "level_id": "LV18",
@@ -73,7 +73,7 @@
   },
   {
     "level_id": "LV19",
-    "thought_text": "The veterans remember why decisions landed as they did. Newcomers need to know to shape policy."
+    "thought_text": "The veterans remember why decisions landed as they did. Newcomers need that to shape policy."
   },
   {
     "level_id": "LV20",
@@ -121,7 +121,7 @@
   },
   {
     "level_id": "LV31",
-    "thought_text": "The Ainu were here long before the Assembly. The question of what is owed is long overdue."
+    "thought_text": "The Ainu were here long before the Assembly. An answer on what is owed is long overdue."
   },
   {
     "level_id": "LV32",
@@ -141,7 +141,7 @@
   },
   {
     "level_id": "LV36",
-    "thought_text": "Farms, fishing boats, and building sites are short of hands. Personnel and personalities keep this topic boiling."
+    "thought_text": "Farms, fishing boats, and building sites are short of hands. Tempers run hot on this one."
   },
   {
     "level_id": "LV37",
@@ -197,7 +197,7 @@
   },
   {
     "level_id": "LV50",
-    "thought_text": "Europe's cheese and wine on our shelves?"
+    "thought_text": "Europe's cheese and wine on our shelves, and our dairy farmers' worry."
   },
   {
     "level_id": "LV51",
@@ -585,403 +585,403 @@
   },
   {
     "level_id": "LV31",
-    "thought_text": "Who gains: Ainu families and language teachers. Who pays: town officials and landowners."
+    "thought_text": "Ainu families and language teachers would gain. Town officials and landowners would pay. I have to weigh both."
   },
   {
     "level_id": "LV31",
-    "thought_text": "My worry is disputes over ancestral land claims. My hope is that Ainu families and language teachers come out better off."
+    "thought_text": "My worry is disputes over ancestral land claims. I need to know who really comes out better off."
   },
   {
     "level_id": "LV32",
-    "thought_text": "Who gains: rice and dairy farmers. Who pays: taxpayers and grocery shoppers."
+    "thought_text": "Rice and dairy farmers would gain. Taxpayers and grocery shoppers would pay. I have to weigh both."
   },
   {
     "level_id": "LV32",
-    "thought_text": "My worry is overproduction paid for by the treasury. My hope is that rice and dairy farmers come out better off."
+    "thought_text": "My worry is overproduction paid for by the treasury. I need to know who really comes out better off."
   },
   {
     "level_id": "LV33",
-    "thought_text": "Who gains: new employers and the workers they hire. Who pays: workers under looser labor rules."
+    "thought_text": "New employers and the workers they hire would gain. Workers under looser labor rules would pay. I have to weigh both."
   },
   {
     "level_id": "LV33",
-    "thought_text": "My worry is a race to the bottom on labor protections. My hope is that new employers and the workers they hire come out better off."
+    "thought_text": "My worry is a race to the bottom on labor protections. I need to know who really comes out better off."
   },
   {
     "level_id": "LV34",
-    "thought_text": "Who gains: commuters, freight shippers and tourist towns. Who pays: taxpayers."
+    "thought_text": "Commuters, freight shippers, and tourist towns would gain. Taxpayers would pay. I have to weigh both."
   },
   {
     "level_id": "LV34",
-    "thought_text": "My worry is cost overruns on tunnels and track. My hope is that commuters, freight shippers and tourist towns come out better off."
+    "thought_text": "My worry is cost overruns on tunnels and track. I need to know who really comes out better off."
   },
   {
     "level_id": "LV35",
-    "thought_text": "Who gains: island residents and coast guard crews. Who pays: taxpayers."
+    "thought_text": "Island residents and coast guard crews would gain. Taxpayers would pay. I have to weigh both."
   },
   {
     "level_id": "LV35",
-    "thought_text": "My worry is escalating tension with Russia. My hope is that island residents and coast guard crews come out better off."
+    "thought_text": "My worry is escalating tension with Russia. I need to know who really comes out better off."
   },
   {
     "level_id": "LV36",
-    "thought_text": "Who gains: employers short of workers. Who pays: local workers whose wages could slip."
+    "thought_text": "Employers short of workers would gain. Local workers whose wages could slip would pay. I have to weigh both."
   },
   {
     "level_id": "LV36",
-    "thought_text": "My worry is exploitation of workers and strained housing. My hope is that employers short of workers come out better off."
+    "thought_text": "My worry is exploitation of workers and strained housing. I need to know who really comes out better off."
   },
   {
     "level_id": "LV37",
-    "thought_text": "Who gains: rural towns and households that lost power. Who pays: utility customers."
+    "thought_text": "Rural towns and households that lost power would gain. Utility customers would pay. I have to weigh both."
   },
   {
     "level_id": "LV37",
-    "thought_text": "My worry is projects delayed by local objections. My hope is that rural towns and households that lost power come out better off."
+    "thought_text": "My worry is projects delayed by local objections. I need to know who really comes out better off."
   },
   {
     "level_id": "LV38",
-    "thought_text": "Who gains: pensioners and care workers. Who pays: shoppers and small shops."
+    "thought_text": "Pensioners and care workers would gain. Shoppers and small shops would pay. I have to weigh both."
   },
   {
     "level_id": "LV38",
-    "thought_text": "My worry is weaker spending in poorer households. My hope is that pensioners and care workers come out better off."
+    "thought_text": "My worry is weaker spending in poorer households. I need to know who really comes out better off."
   },
   {
     "level_id": "LV39",
-    "thought_text": "Who gains: prefectural governments and local officials. Who pays: people in poorer prefectures."
+    "thought_text": "Prefectural governments and local officials would gain. People in poorer prefectures would pay. I have to weigh both."
   },
   {
     "level_id": "LV39",
-    "thought_text": "My worry is gaps between rich and poor prefectures. My hope is that prefectural governments and local officials come out better off."
+    "thought_text": "My worry is gaps between rich and poor prefectures. I need to know who really comes out better off."
   },
   {
     "level_id": "LV40",
-    "thought_text": "Who gains: women candidates and their voters. Who pays: candidates who might be passed over."
+    "thought_text": "Women candidates and their voters would gain. Candidates who might be passed over would pay. I have to weigh both."
   },
   {
     "level_id": "LV40",
-    "thought_text": "My worry is qualified candidates passed over. My hope is that women candidates and their voters come out better off."
+    "thought_text": "My worry is qualified candidates passed over. I need to know who really comes out better off."
   },
   {
     "level_id": "LV41",
-    "thought_text": "Who gains: ferry operators, fishers and border towns. Who pays: taxpayers."
+    "thought_text": "Ferry operators, fishers, and border towns would gain. Taxpayers would pay. I have to weigh both."
   },
   {
     "level_id": "LV41",
-    "thought_text": "My worry is a commission with no power to settle anything. My hope is that ferry operators, fishers and border towns come out better off."
+    "thought_text": "My worry is a commission with no power to settle anything. I need to know who really comes out better off."
   },
   {
     "level_id": "LV42",
-    "thought_text": "Who gains: courts that want distance from politics. Who pays: citizens who want judges answerable."
+    "thought_text": "Courts that want distance from politics would gain. Citizens who want judges answerable would pay. I have to weigh both."
   },
   {
     "level_id": "LV42",
-    "thought_text": "My worry is an unelected body choosing judges. My hope is that courts that want distance from politics come out better off."
+    "thought_text": "My worry is an unelected body choosing judges. I need to know who really comes out better off."
   },
   {
     "level_id": "LV43",
-    "thought_text": "Who gains: temples, shrines and festival towns. Who pays: taxpayers who prefer secular spending."
+    "thought_text": "Temples, shrines, and festival towns would gain. Taxpayers who prefer secular spending would pay. I have to weigh both."
   },
   {
     "level_id": "LV43",
-    "thought_text": "My worry is favoring some faiths over others. My hope is that temples, shrines and festival towns come out better off."
+    "thought_text": "My worry is favoring some faiths over others. I need to know who really comes out better off."
   },
   {
     "level_id": "LV44",
-    "thought_text": "Who gains: districts with a member who can deliver. Who pays: taxpayers."
+    "thought_text": "Districts with a member who can deliver would gain. Taxpayers would pay. I have to weigh both."
   },
   {
     "level_id": "LV44",
-    "thought_text": "My worry is pork spending that buys votes. My hope is that districts with a member who can deliver come out better off."
+    "thought_text": "My worry is pork spending that buys votes. I need to know who really comes out better off."
   },
   {
     "level_id": "LV45",
-    "thought_text": "Who gains: tech firms and graduates. Who pays: taxpayers and local power users."
+    "thought_text": "Tech firms and graduates would gain. Taxpayers and local power users would pay. I have to weigh both."
   },
   {
     "level_id": "LV45",
-    "thought_text": "My worry is subsidies for firms that would come anyway. My hope is that tech firms and graduates come out better off."
+    "thought_text": "My worry is subsidies for firms that would come anyway. I need to know who really comes out better off."
   },
   {
     "level_id": "LV46",
-    "thought_text": "Who gains: police and crime victims. Who pays: citizens whose phones could be tapped."
+    "thought_text": "Police and crime victims would gain. Citizens whose phones could be tapped would pay. I have to weigh both."
   },
   {
     "level_id": "LV46",
-    "thought_text": "My worry is wiretaps used against ordinary protest. My hope is that police and crime victims come out better off."
+    "thought_text": "My worry is wiretaps used against ordinary protest. I need to know who really comes out better off."
   },
   {
     "level_id": "LV47",
-    "thought_text": "Who gains: same-sex couples and their families. Who pays: people who hold traditional views of the family."
+    "thought_text": "Same-sex couples and their families would gain. People who hold traditional views of the family would pay. I have to weigh both."
   },
   {
     "level_id": "LV47",
-    "thought_text": "My worry is a split in public opinion. My hope is that same-sex couples and their families come out better off."
+    "thought_text": "My worry is a split in public opinion. I need to know who really comes out better off."
   },
   {
     "level_id": "LV48",
-    "thought_text": "Who gains: emergency responders after a disaster. Who pays: citizens who value checks on power."
+    "thought_text": "Emergency responders after a disaster would gain. Citizens who value checks on power would pay. I have to weigh both."
   },
   {
     "level_id": "LV48",
-    "thought_text": "My worry is power kept longer than the crisis lasts. My hope is that emergency responders after a disaster come out better off."
+    "thought_text": "My worry is power kept longer than the crisis lasts. I need to know who really comes out better off."
   },
   {
     "level_id": "LV49",
-    "thought_text": "Who gains: defense planners and allies. Who pays: people who prefer a neutral Yezo."
+    "thought_text": "Defense planners and allies would gain. People who prefer a neutral Yezo would pay. I have to weigh both."
   },
   {
     "level_id": "LV49",
-    "thought_text": "My worry is being drawn into a foreign conflict. My hope is that defense planners and allies come out better off."
+    "thought_text": "My worry is being drawn into a foreign conflict. I need to know who really comes out better off."
   },
   {
     "level_id": "LV50",
-    "thought_text": "Who gains: exporters and shoppers. Who pays: dairy and rural producers."
+    "thought_text": "Exporters and shoppers would gain. Dairy and rural producers would pay. I have to weigh both."
   },
   {
     "level_id": "LV50",
-    "thought_text": "My worry is foreign dairy undercutting local farms. My hope is that exporters and shoppers come out better off."
+    "thought_text": "My worry is foreign dairy undercutting local farms. I need to know who really comes out better off."
   },
   {
     "level_id": "LV51",
-    "thought_text": "Who gains: coastal communities and security officials. Who pays: foreign investors and landowners who want to sell."
+    "thought_text": "Coastal communities and security officials would gain. Foreign investors and landowners who want to sell would pay. I have to weigh both."
   },
   {
     "level_id": "LV51",
-    "thought_text": "My worry is scaring off honest investment. My hope is that coastal communities and security officials come out better off."
+    "thought_text": "My worry is scaring off honest investment. I need to know who really comes out better off."
   },
   {
     "level_id": "LV52",
-    "thought_text": "Who gains: hotels, shops and artisans. Who pays: residents of crowded resort towns."
+    "thought_text": "Hotels, shops, and artisans would gain. Residents of crowded resort towns would pay. I have to weigh both."
   },
   {
     "level_id": "LV52",
-    "thought_text": "My worry is overcrowded resorts and strained services. My hope is that hotels, shops and artisans come out better off."
+    "thought_text": "My worry is overcrowded resorts and strained services. I need to know who really comes out better off."
   },
   {
     "level_id": "LV53",
-    "thought_text": "Who gains: fishers and island tour operators. Who pays: islanders who hold our claim dear."
+    "thought_text": "Fishers and island tour operators would gain. Islanders who hold our claim dear would pay. I have to weigh both."
   },
   {
     "level_id": "LV53",
-    "thought_text": "My worry is weakening our claim to the islands. My hope is that fishers and island tour operators come out better off."
+    "thought_text": "My worry is weakening our claim to the islands. I need to know who really comes out better off."
   },
   {
     "level_id": "LV54",
-    "thought_text": "Who gains: power users and industrial employers. Who pays: fishers and families near the plant."
+    "thought_text": "Power users and industrial employers would gain. Fishers and families near the plant would pay. I have to weigh both."
   },
   {
     "level_id": "LV54",
-    "thought_text": "My worry is an accident after a quake. My hope is that power users and industrial employers come out better off."
+    "thought_text": "My worry is an accident after a quake. I need to know who really comes out better off."
   },
   {
     "level_id": "LV55",
-    "thought_text": "Who gains: construction workers, hotels and the host town. Who pays: neighbors and gambling-prone households."
+    "thought_text": "Construction workers, hotels, and the host town would gain. Neighbors and gambling-prone households would pay. I have to weigh both."
   },
   {
     "level_id": "LV55",
-    "thought_text": "My worry is gambling addiction and organized crime. My hope is that construction workers, hotels and the host town come out better off."
+    "thought_text": "My worry is gambling addiction and organized crime. I need to know who really comes out better off."
   },
   {
     "level_id": "LV56",
-    "thought_text": "Who gains: unconnected applicants and voters tired of patronage. Who pays: local hires who know the town."
+    "thought_text": "Unconnected applicants and voters tired of patronage would gain. Local hires who know the town would pay. I have to weigh both."
   },
   {
     "level_id": "LV56",
-    "thought_text": "My worry is exams that miss real-world skill. My hope is that unconnected applicants and voters tired of patronage come out better off."
+    "thought_text": "My worry is exams that miss real-world skill. I need to know who really comes out better off."
   },
   {
     "level_id": "LV57",
-    "thought_text": "Who gains: low-wage workers and students. Who pays: small shops and farms."
+    "thought_text": "Low-wage workers and students would gain. Small shops and farms would pay. I have to weigh both."
   },
   {
     "level_id": "LV57",
-    "thought_text": "My worry is closed shops and fewer jobs in poor towns. My hope is that low-wage workers and students come out better off."
+    "thought_text": "My worry is closed shops and fewer jobs in poor towns. I need to know who really comes out better off."
   },
   {
     "level_id": "LV58",
-    "thought_text": "Who gains: voters in unfairly drawn districts. Who pays: voters who want elected mapmakers."
+    "thought_text": "Voters in unfairly drawn districts would gain. Voters who want elected mapmakers would pay. I have to weigh both."
   },
   {
     "level_id": "LV58",
-    "thought_text": "My worry is an unelected commission with too much say. My hope is that voters in unfairly drawn districts come out better off."
+    "thought_text": "My worry is an unelected commission with too much say. I need to know who really comes out better off."
   },
   {
     "level_id": "LV59",
-    "thought_text": "Who gains: schools and families who want a shared moral base. Who pays: students and teachers with other views."
+    "thought_text": "Schools and families who want a shared moral base would gain. Students and teachers with other views would pay. I have to weigh both."
   },
   {
     "level_id": "LV59",
-    "thought_text": "My worry is the state teaching one view of virtue. My hope is that schools and families who want a shared moral base come out better off."
+    "thought_text": "My worry is the state teaching one view of virtue. I need to know who really comes out better off."
   },
   {
     "level_id": "LV60",
-    "thought_text": "Who gains: foreign residents and their neighbors. Who pays: citizens who fear a diluted vote."
+    "thought_text": "Foreign residents and their neighbors would gain. Citizens who fear a diluted vote would pay. I have to weigh both."
   },
   {
     "level_id": "LV60",
-    "thought_text": "My worry is a backlash that harms community ties. My hope is that foreign residents and their neighbors come out better off."
+    "thought_text": "My worry is a backlash that harms community ties. I need to know who really comes out better off."
   },
   {
     "level_id": "LV63",
-    "thought_text": "Who gains: Ainu land users and tour operators. Who pays: loggers and developers."
+    "thought_text": "Ainu land users and tour operators would gain. Loggers and developers would pay. I have to weigh both."
   },
   {
     "level_id": "LV63",
-    "thought_text": "My worry is lost jobs in forest towns. My hope is that Ainu land users and tour operators come out better off."
+    "thought_text": "My worry is lost jobs in forest towns. I need to know who really comes out better off."
   },
   {
     "level_id": "LV64",
-    "thought_text": "Who gains: rural patients. Who pays: taxpayers."
+    "thought_text": "Rural patients would gain. Taxpayers would pay. I have to weigh both."
   },
   {
     "level_id": "LV64",
-    "thought_text": "My worry is small hospitals with too few doctors. My hope is that rural patients come out better off."
+    "thought_text": "My worry is small hospitals with too few doctors. I need to know who really comes out better off."
   },
   {
     "level_id": "LV65",
-    "thought_text": "Who gains: residents who tire of paperwork. Who pays: people who guard their privacy."
+    "thought_text": "Residents who tire of paperwork would gain. People who guard their privacy would pay. I have to weigh both."
   },
   {
     "level_id": "LV65",
-    "thought_text": "My worry is a data breach exposing everyone's records. My hope is that residents who tire of paperwork come out better off."
+    "thought_text": "My worry is a data breach exposing everyone's records. I need to know who really comes out better off."
   },
   {
     "level_id": "LV66",
-    "thought_text": "Who gains: viewers who want independent news. Who pays: taxpayers who fund the broadcaster."
+    "thought_text": "Viewers who want independent news would gain. Taxpayers who fund the broadcaster would pay. I have to weigh both."
   },
   {
     "level_id": "LV66",
-    "thought_text": "My worry is a broadcaster answerable to no one. My hope is that viewers who want independent news come out better off."
+    "thought_text": "My worry is a broadcaster answerable to no one. I need to know who really comes out better off."
   },
   {
     "level_id": "LV67",
-    "thought_text": "Who gains: voters who want clean politics. Who pays: small donors who fear being named in public."
+    "thought_text": "Voters who want clean politics would gain. Small donors who fear being named in public would pay. I have to weigh both."
   },
   {
     "level_id": "LV67",
-    "thought_text": "My worry is money moving to groups outside the rules. My hope is that voters who want clean politics come out better off."
+    "thought_text": "My worry is money moving to groups outside the rules. I need to know who really comes out better off."
   },
   {
     "level_id": "LV68",
-    "thought_text": "Who gains: firms and the workers they hire. Who pays: people who depend on public services."
+    "thought_text": "Firms and the workers they hire would gain. People who depend on public services would pay. I have to weigh both."
   },
   {
     "level_id": "LV68",
-    "thought_text": "My worry is a tax cut that is not matched by savings. My hope is that firms and the workers they hire come out better off."
+    "thought_text": "My worry is a tax cut that is not matched by savings. I need to know who really comes out better off."
   },
   {
     "level_id": "LV69",
-    "thought_text": "Who gains: clean-energy firms and households that get dividends. Who pays: fuel users, farmers and fishers."
+    "thought_text": "Clean-energy firms and households that get dividends would gain. Fuel users, farmers, and fishers would pay. I have to weigh both."
   },
   {
     "level_id": "LV69",
-    "thought_text": "My worry is higher costs in cold, spread-out towns. My hope is that clean-energy firms and households that get dividends come out better off."
+    "thought_text": "My worry is higher costs in cold, spread-out towns. I need to know who really comes out better off."
   },
   {
     "level_id": "LV70",
-    "thought_text": "Who gains: fishers and consumers who want healthy stocks. Who pays: small boats that sell their quotas."
+    "thought_text": "Fishers and consumers who want healthy stocks would gain. Small boats that sell their quotas would pay. I have to weigh both."
   },
   {
     "level_id": "LV70",
-    "thought_text": "My worry is quotas concentrated in a few large boats. My hope is that fishers and consumers who want healthy stocks come out better off."
+    "thought_text": "My worry is quotas concentrated in a few large boats. I need to know who really comes out better off."
   },
   {
     "level_id": "LV71",
-    "thought_text": "Who gains: shipyard workers and defense suppliers. Who pays: taxpayers."
+    "thought_text": "Shipyard workers and defense suppliers would gain. Taxpayers would pay. I have to weigh both."
   },
   {
     "level_id": "LV71",
-    "thought_text": "My worry is waste on a closed circle of contractors. My hope is that shipyard workers and defense suppliers come out better off."
+    "thought_text": "My worry is waste on a closed circle of contractors. I need to know who really comes out better off."
   },
   {
     "level_id": "LV72",
-    "thought_text": "Who gains: members who want change studied. Who pays: voters wary of amendments."
+    "thought_text": "Members who want change studied would gain. Voters wary of amendments would pay. I have to weigh both."
   },
   {
     "level_id": "LV72",
-    "thought_text": "My worry is a commission that pushes a hidden agenda. My hope is that members who want change studied come out better off."
+    "thought_text": "My worry is a commission that pushes a hidden agenda. I need to know who really comes out better off."
   },
   {
     "level_id": "LV73",
-    "thought_text": "Who gains: traders and travelers. Who pays: people who fear for privacy at the border."
+    "thought_text": "Traders and travelers would gain. People who fear for privacy at the border would pay. I have to weigh both."
   },
   {
     "level_id": "LV73",
-    "thought_text": "My worry is data shared without limits. My hope is that traders and travelers come out better off."
+    "thought_text": "My worry is data shared without limits. I need to know who really comes out better off."
   },
   {
     "level_id": "LV74",
-    "thought_text": "Who gains: investors and islanders looking for work. Who pays: fishers and island communities."
+    "thought_text": "Investors and islanders looking for work would gain. Fishers and island communities would pay. I have to weigh both."
   },
   {
     "level_id": "LV74",
-    "thought_text": "My worry is damage to fisheries and sacred sites. My hope is that investors and islanders looking for work come out better off."
+    "thought_text": "My worry is damage to fisheries and sacred sites. I need to know who really comes out better off."
   },
   {
     "level_id": "LV75",
-    "thought_text": "Who gains: exporters and shoppers. Who pays: workers and producers who compete with imports."
+    "thought_text": "Exporters and shoppers would gain. Workers and producers who compete with imports would pay. I have to weigh both."
   },
   {
     "level_id": "LV75",
-    "thought_text": "My worry is dependence on one big trading partner. My hope is that exporters and shoppers come out better off."
+    "thought_text": "My worry is dependence on one big trading partner. I need to know who really comes out better off."
   },
   {
     "level_id": "LV76",
-    "thought_text": "Who gains: young farmers and farm towns. Who pays: taxpayers."
+    "thought_text": "Young farmers and farm towns would gain. Taxpayers would pay. I have to weigh both."
   },
   {
     "level_id": "LV76",
-    "thought_text": "My worry is grants for farms that cannot survive. My hope is that young farmers and farm towns come out better off."
+    "thought_text": "My worry is grants for farms that cannot survive. I need to know who really comes out better off."
   },
   {
     "level_id": "LV77",
-    "thought_text": "Who gains: researchers and students. Who pays: taxpayers."
+    "thought_text": "Researchers and students would gain. Taxpayers would pay. I have to weigh both."
   },
   {
     "level_id": "LV77",
-    "thought_text": "My worry is funds spent on the wrong things. My hope is that researchers and students come out better off."
+    "thought_text": "My worry is funds spent on the wrong things. I need to know who really comes out better off."
   },
   {
     "level_id": "LV78",
-    "thought_text": "Who gains: women, minorities and disabled workers. Who pays: employers who must change hiring."
+    "thought_text": "Women, minorities, and disabled workers would gain. Employers who must change hiring would pay. I have to weigh both."
   },
   {
     "level_id": "LV78",
-    "thought_text": "My worry is red tape and disputes at small firms. My hope is that women, minorities and disabled workers come out better off."
+    "thought_text": "My worry is red tape and disputes at small firms. I need to know who really comes out better off."
   },
   {
     "level_id": "LV79",
-    "thought_text": "Who gains: working parents and children. Who pays: small employers."
+    "thought_text": "Working parents and children would gain. Small employers would pay. I have to weigh both."
   },
   {
     "level_id": "LV79",
-    "thought_text": "My worry is staff shortages at small firms. My hope is that working parents and children come out better off."
+    "thought_text": "My worry is staff shortages at small firms. I need to know who really comes out better off."
   },
   {
     "level_id": "LV80",
-    "thought_text": "Who gains: police and commuters. Who pays: people who value their privacy."
+    "thought_text": "Police and commuters would gain. People who value their privacy would pay. I have to weigh both."
   },
   {
     "level_id": "LV80",
-    "thought_text": "My worry is tracking innocent people. My hope is that police and commuters come out better off."
+    "thought_text": "My worry is tracking innocent people. I need to know who really comes out better off."
   },
   {
     "level_id": "LV81",
-    "thought_text": "Who gains: taxpayers and bigger towns. Who pays: residents of small towns."
+    "thought_text": "Taxpayers and bigger towns would gain. Residents of small towns would pay. I have to weigh both."
   },
   {
     "level_id": "LV81",
-    "thought_text": "My worry is far-away offices and lost local voices. My hope is that taxpayers and bigger towns come out better off."
+    "thought_text": "My worry is far-away offices and lost local voices. I need to know who really comes out better off."
   },
   {
     "level_id": "LV82",
-    "thought_text": "Who gains: rank-and-file members. Who pays: party elders and officials."
+    "thought_text": "Rank-and-file members would gain. Party elders and officials would pay. I have to weigh both."
   },
   {
     "level_id": "LV82",
-    "thought_text": "My worry is leaders chosen by loud, small factions. My hope is that rank-and-file members come out better off."
+    "thought_text": "My worry is leaders chosen by loud, small factions. I need to know who really comes out better off."
   },
   {
     "level_id": "LV98",
@@ -989,7 +989,7 @@
   },
   {
     "level_id": "LV99",
-    "thought_text": "No script. No idea who rings next."
+    "thought_text": "No script. No idea who calls in next."
   },
   {
     "level_id": "LV100",

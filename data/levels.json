@@ -215,7 +215,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A listening tour: a town hall, a lobbyist and a study session. Learn the issues before you have to vote on them.",
+    "purpose": "A listening tour: a town hall, a lobbyist, and a study session. Learn the issues before you have to vote on them.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -515,7 +515,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The party needs help with its agricultural policy. Work the caucus, the lobbyists and the committee, then carry it on the floor.",
+    "purpose": "The party needs help with its agricultural policy. Work the caucus, the lobbyists, and the committee, then carry it on the floor.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -1343,7 +1343,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The party's traditionalist wing is wary of you. Win them over in caucus, on TV and in the Cabinet's own committee.",
+    "purpose": "The party's traditionalist wing is wary of you. Win them over in caucus, on TV, and in the Cabinet's own committee.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -1433,7 +1433,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The reform caucus wants you on its side. Expect cameras, three committees and a floor debate.",
+    "purpose": "The reform caucus wants you on its side. Expect cameras, three committees, and a floor debate.",
     "purpose_speaker": "Media Spokesperson"
   },
   {
@@ -1712,7 +1712,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The party's old guard and its new wave are pulling apart. Bridge them across a long run of committees and a floor vote.",
+    "purpose": "The party's old guard and its new wave are pulling apart. Bridge them across a long run of committees and a floor debate.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -1994,7 +1994,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "Small businesses want a coalition behind them. Argue for them on the floor, in committee and on TV.",
+    "purpose": "Small businesses want a coalition behind them. Argue for them on the floor, in committee, and on TV.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -2084,7 +2084,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A big push for metro infrastructure. Expect lobbyists, two floor debates and the party's steering committee.",
+    "purpose": "A big push for metro infrastructure. Expect lobbyists, two floor debates, and the party's steering committee.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -2177,7 +2177,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The party's old order wants you to defend it. Expect the Cabinet, foreign affairs, war and two floor debates.",
+    "purpose": "The party's old order wants you to defend it. Expect the Cabinet, foreign affairs, war, and two floor debates.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -2267,7 +2267,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The reform wave is rising, and the cameras are on you. Ride it through the press, three committees and the floor.",
+    "purpose": "The reform wave is rising, and the cameras are on you. Ride it through the press, four committees, and the floor.",
     "purpose_speaker": "Media Spokesperson"
   },
   {
@@ -2372,7 +2372,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A first try at coalition building: an office visitor, a town hall and a lobbyist, each wanting something different.",
+    "purpose": "Practice in coalition building: an office visitor, a town hall, and a lobbyist, each wanting something different.",
     "purpose_speaker": "District Representative"
   },
   {
@@ -2555,7 +2555,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "Your Kōenkai family expects you to deliver. Show up at home, then in committee, in the party and on the floor.",
+    "purpose": "Your Kōenkai family expects you to deliver. Show up at home, then in committee, in the party, and on the floor.",
     "purpose_speaker": "District Representative"
   },
   {
@@ -2648,7 +2648,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A main street infrastructure bill needs votes. Work the lobby, three committees and the Cabinet, and keep the press calm.",
+    "purpose": "A main street infrastructure bill needs votes. Work the lobby, three committees, and the Cabinet, and keep the press calm.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -3011,7 +3011,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The Hokkaido Shinkansen Acceleration Act is heading for a floor vote in the National Assembly. Commuters, freight shippers and tourist towns are for it; taxpayers are wary.",
+    "purpose": "The Hokkaido Shinkansen Acceleration Act is heading for a floor vote in the National Assembly. Commuters, freight shippers, and tourist towns are for it; taxpayers are wary.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -3521,7 +3521,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The Tsugaru Strait Joint Commission Act is heading for a floor vote in the National Assembly. Ferry operators, fishers and border towns are for it; taxpayers are wary.",
+    "purpose": "The Tsugaru Strait Joint Commission Act is heading for a floor vote in the National Assembly. Ferry operators, fishers, and border towns are for it; taxpayers are wary.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -3671,7 +3671,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The Temple and Shrine Heritage Act is heading for a floor vote in the National Assembly. Temples, shrines and festival towns are for it; taxpayers who prefer secular spending are wary.",
+    "purpose": "The Temple and Shrine Heritage Act is heading for a floor vote in the National Assembly. Temples, shrines, and festival towns are for it; taxpayers who prefer secular spending are wary.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -4046,7 +4046,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The National Emergency Powers Act is heading for a floor vote in the National Assembly. Emergency responders after a disaster are for it; citizens who value checks on power are wary.",
+    "purpose": "The National Emergency Powers Act is heading for a floor vote in the National Assembly. Disaster responders are for it; citizens who value checks on power are wary.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -4343,7 +4343,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The Inbound Tourism Visa Waiver Act is heading for a floor vote in the National Assembly. Hotels, shops and artisans are for it; residents of crowded resort towns are wary.",
+    "purpose": "The Inbound Tourism Visa Waiver Act is heading for a floor vote in the National Assembly. Hotels, shops, and artisans are for it; residents of crowded resort towns are wary.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -4559,7 +4559,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The Integrated Resort Act is heading for a floor vote in the National Assembly. Construction workers, hotels and the host town are for it; neighbors and gambling-prone households are wary.",
+    "purpose": "The Integrated Resort Act is heading for a floor vote in the National Assembly. Construction workers, hotels, and the host town are for it; neighbors and gambling-prone households are wary.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -5630,7 +5630,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The Carbon Levy Act is heading for a floor vote in the National Assembly. Clean-energy firms and households that get dividends are for it; fuel users, farmers and fishers are wary.",
+    "purpose": "The Carbon Levy Act is heading for a floor vote in the National Assembly. Clean-energy firms and households that get dividends are for it; fuel users, farmers, and fishers are wary.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -5852,7 +5852,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The Constitutional Review Commission Act is heading for a floor vote in the National Assembly. Members who want change studied are for it; voters wary of amendments are wary.",
+    "purpose": "The Constitutional Review Commission Act is heading for a floor vote in the National Assembly. Members who want change studied are for it; voters who distrust amendments are wary.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -6287,7 +6287,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The Workplace Equality Act is heading for a floor vote in the National Assembly. Women, minorities and disabled workers are for it; employers who must change hiring are wary.",
+    "purpose": "The Workplace Equality Act is heading for a floor vote in the National Assembly. Women, minorities, and disabled workers are for it; employers who must change hiring are wary.",
     "purpose_speaker": "Policy Research Assistant"
   },
   {
@@ -7043,7 +7043,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A town hall on local issues. Expect questions about roads, clinics and prices.",
+    "purpose": "A town hall on local issues. Expect questions about roads, clinics, and prices.",
     "purpose_speaker": "District Representative"
   },
   {
@@ -7175,7 +7175,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A late TV interview. Stay above the line until the very end.",
+    "purpose": "A late TV interview. Keep your composure until the very end.",
     "purpose_speaker": "Media Spokesperson"
   },
   {
@@ -7311,7 +7311,7 @@
       "Winter"
     ],
     "event_only": null,
-    "purpose": "The winter snow festival. A cold night, a big crowd and a lot of hands to shake.",
+    "purpose": "The winter snow festival. A cold night, a big crowd, and a lot of hands to shake.",
     "purpose_speaker": "District Representative"
   },
   {
@@ -7722,7 +7722,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": "Yes",
-    "purpose": "The morning call-in show. Anyone can ring in, so expect anything.",
+    "purpose": "The morning call-in show. Anyone can call in, so expect anything.",
     "purpose_speaker": "Media Spokesperson"
   },
   {
@@ -8001,7 +8001,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A tour of the whole district. Everyone you pass will compare it with the last candidate's.",
+    "purpose": "A tour of the whole district. Everyone you pass will be sizing you up.",
     "purpose_speaker": "District Representative"
   },
   {
@@ -8151,7 +8151,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "The great festival of the year. The shrine, the towns and the press will all be there.",
+    "purpose": "The great festival of the year. The shrine, the towns, and the press will all be there.",
     "purpose_speaker": "District Representative"
   },
   {
@@ -8370,7 +8370,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A health fair with the clinic, the care workers and the families who rely on them.",
+    "purpose": "A health fair with the clinic, the care workers, and the families who rely on them.",
     "purpose_speaker": "District Representative"
   },
   {
@@ -8445,7 +8445,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A forum on local care, with hospital staff, patients and carers on one stage.",
+    "purpose": "A forum on local care, with hospital staff, patients, and caregivers on one stage.",
     "purpose_speaker": "District Representative"
   },
   {
@@ -8517,7 +8517,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "An education forum with teachers, parents and students, all of whom have opinions.",
+    "purpose": "An education forum with teachers, parents, and students, all of whom have opinions.",
     "purpose_speaker": "District Representative"
   },
   {
@@ -8739,7 +8739,7 @@
     "special_trigger": null,
     "seasons": null,
     "event_only": null,
-    "purpose": "A large export expo with growers, makers and buyers from beyond the district.",
+    "purpose": "A large export expo with growers, makers, and buyers from beyond the district.",
     "purpose_speaker": "District Representative"
   }
 ]

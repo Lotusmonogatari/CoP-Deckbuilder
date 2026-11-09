@@ -692,7 +692,7 @@
   {
     "level_id": "LV47",
     "role": "Policy Research Assistant",
-    "cue_text": "Partnership registration is a question of cost and fairness."
+    "cue_text": "Partnership registration touches deep beliefs. Know both sides cold."
   },
   {
     "level_id": "LV47",
@@ -872,7 +872,7 @@
   {
     "level_id": "LV59",
     "role": "Policy Research Assistant",
-    "cue_text": "Moral education is a question of cost and fairness."
+    "cue_text": "Moral education touches deep beliefs. Know both sides cold."
   },
   {
     "level_id": "LV59",
@@ -932,17 +932,17 @@
   {
     "level_id": "LV63",
     "role": "Policy Research Assistant",
-    "cue_text": "Expect every party to read the wilderness differently."
+    "cue_text": "Expect every party to read the wilderness bill differently."
   },
   {
     "level_id": "LV63",
     "role": "Media Spokesperson",
-    "cue_text": "The cameras care about the wilderness this week."
+    "cue_text": "The cameras care about the wilderness bill this week."
   },
   {
     "level_id": "LV63",
     "role": "District Representative",
-    "cue_text": "Back home, people have strong views on the wilderness."
+    "cue_text": "Back home, people have strong views on the wilderness bill."
   },
   {
     "level_id": "LV64",
@@ -977,7 +977,7 @@
   {
     "level_id": "LV66",
     "role": "Policy Research Assistant",
-    "cue_text": "Know the details of the broadcaster cold before you go in."
+    "cue_text": "Know the details of the broadcaster bill cold before you go in."
   },
   {
     "level_id": "LV66",
@@ -987,7 +987,7 @@
   {
     "level_id": "LV66",
     "role": "District Representative",
-    "cue_text": "Remember who the broadcaster touches back home."
+    "cue_text": "Remember who the broadcaster bill touches back home."
   },
   {
     "level_id": "LV67",
@@ -1052,7 +1052,7 @@
   {
     "level_id": "LV71",
     "role": "Policy Research Assistant",
-    "cue_text": "Expect every party to read the shipyards differently."
+    "cue_text": "Expect every party to read the shipyard bill differently."
   },
   {
     "level_id": "LV71",
@@ -1232,7 +1232,7 @@
   {
     "level_id": "LV98",
     "role": "Media Spokesperson",
-    "cue_text": "Radio is forgiving of nerves and merciless about waffle. Short answers."
+    "cue_text": "Radio is forgiving of nerves and merciless about rambling. Short answers."
   },
   {
     "level_id": "LV99",
@@ -1247,6 +1247,6 @@
   {
     "level_id": "LV101",
     "role": "Policy Research Assistant",
-    "cue_text": "Students check what you say against what you voted. I printed your record."
+    "cue_text": "Students check what you say against how you voted. I printed your record."
   }
 ]

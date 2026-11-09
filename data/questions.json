@@ -100,7 +100,7 @@
     },
     {
       "id": "Q06",
-      "text": "Is your party truly united behind ongoing legislation?",
+      "text": "Is your party truly united behind its legislation?",
       "theme": "Unity",
       "grades": {
         "Earnest": "M",
@@ -121,7 +121,7 @@
     },
     {
       "id": "Q07",
-      "text": "How do you plan to pay for it?",
+      "text": "How do you plan to pay for your proposals?",
       "theme": "Cost",
       "grades": {
         "Earnest": "M",
@@ -185,7 +185,7 @@
     },
     {
       "id": "Q10",
-      "text": "Is this about the public or about politics?",
+      "text": "Is your work about the public or about politics?",
       "theme": "Motive",
       "grades": {
         "Earnest": "S",
@@ -246,7 +246,7 @@
     },
     {
       "id": "Q13",
-      "text": "Will you work with your party's opposition?",
+      "text": "Will you work with the parties that oppose yours?",
       "theme": "Cooperation",
       "grades": {
         "Earnest": "S",
@@ -325,7 +325,7 @@
     },
     {
       "id": "Q17",
-      "text": "Why should anyone trust you on this?",
+      "text": "Why should anyone trust your judgment?",
       "theme": "Trust",
       "grades": {
         "Earnest": "S",
@@ -347,7 +347,7 @@
     },
     {
       "id": "Q18",
-      "text": "Is there something in on the table you're not telling us?",
+      "text": "Is there something on the table you're not telling us?",
       "theme": "Transparency",
       "grades": {
         "Earnest": "S",
@@ -390,7 +390,7 @@
     },
     {
       "id": "Q20",
-      "text": "Is this really the right priority for the country?",
+      "text": "Are your bills really the right priority for the country?",
       "theme": "Priority",
       "grades": {
         "Earnest": "S",
@@ -764,7 +764,7 @@
     },
     {
       "id": "T04",
-      "text": "What will this cost people like me?",
+      "text": "What will your plans cost people like me?",
       "theme": "Cost",
       "grades": {
         "Earnest": "S",
@@ -1241,7 +1241,7 @@
     },
     {
       "id": "T26",
-      "text": "How are you addressing the need to curtail tourist behavior?",
+      "text": "How are you dealing with tourists who behave badly?",
       "theme": "Community strain",
       "grades": {
         "Earnest": "M",
@@ -1264,7 +1264,7 @@
     },
     {
       "id": "T27",
-      "text": "When will Parliament restore long-term working visas for the service industry?",
+      "text": "When will Parliament introduce long-term working visas for the service industry?",
       "theme": "Visas for service jobs",
       "grades": {
         "Earnest": "W",
@@ -2478,7 +2478,7 @@
     },
     {
       "id": "T84",
-      "text": "Parents with prams and people in wheelchairs cannot use our trains. Who fixes that?",
+      "text": "Parents with strollers and people in wheelchairs cannot use our trains. Who fixes that?",
       "theme": "Station access",
       "grades": {
         "Earnest": "S",
@@ -2833,7 +2833,7 @@
     },
     {
       "id": "T100",
-      "text": "Our station has no lift. How long do we wait?",
+      "text": "Our station has no elevator. How long do we wait?",
       "theme": "Station access",
       "grades": {
         "Earnest": "S",
@@ -3118,7 +3118,7 @@
     },
     {
       "id": "T113",
-      "text": "I cannot find a daycare place within an hour of home. What will you do?",
+      "text": "I cannot find a daycare spot within an hour of home. What will you do?",
       "theme": "Daycare access",
       "grades": {
         "Earnest": "S",
@@ -3698,7 +3698,7 @@
     },
     {
       "id": "T139",
-      "text": "Place names should carry their historic names. Do you agree?",
+      "text": "Places should carry their historic names. Do you agree?",
       "theme": "Place names",
       "grades": {
         "Earnest": "S",
@@ -3942,7 +3942,7 @@
     },
     {
       "id": "L06",
-      "text": "Who else is lobbying you on this?",
+      "text": "Who else is lobbying you on your bills?",
       "theme": "Competition",
       "grades": {
         "Earnest": "S",
@@ -3964,7 +3964,7 @@
     },
     {
       "id": "L07",
-      "text": "How can we help you get this passed?",
+      "text": "How can we help you get your bills passed?",
       "theme": "Assistance",
       "grades": {
         "Earnest": "M",
@@ -4189,7 +4189,7 @@
     },
     {
       "id": "L18",
-      "text": "Do you understand what this means for our industry?",
+      "text": "Do you understand what your bills mean for our industry?",
       "theme": "Impact",
       "grades": {
         "Earnest": "M",
@@ -5741,7 +5741,7 @@
     },
     {
       "id": "L89",
-      "text": "Rents for workshop space have tripled. Will you protect it?",
+      "text": "Rents for workshop space have tripled. Will you protect the workshops?",
       "theme": "Workshop space",
       "grades": {
         "Earnest": "S",
@@ -6029,7 +6029,7 @@
     },
     {
       "id": "L102",
-      "text": "Will you fund bike lanes where the accident data points?",
+      "text": "Will you fund bike lanes where the accident data says they are needed?",
       "theme": "Bike safety",
       "grades": {
         "Earnest": "S",
@@ -6193,7 +6193,7 @@
   "policy_study": [
     {
       "id": "B01",
-      "text": "How will this be implemented in practice?",
+      "text": "How would your proposal be implemented in practice?",
       "theme": "Implementation",
       "grades": {
         "Earnest": "M",
@@ -6214,7 +6214,7 @@
     },
     {
       "id": "B02",
-      "text": "What problem is this legislation meant to solve?",
+      "text": "What problem is your legislation meant to solve?",
       "theme": "Purpose",
       "grades": {
         "Earnest": "S",
@@ -6256,7 +6256,7 @@
     },
     {
       "id": "B04",
-      "text": "Is there a cost estimate for this?",
+      "text": "Is there a cost estimate for your proposal?",
       "theme": "Cost",
       "grades": {
         "Earnest": "M",
@@ -6278,7 +6278,7 @@
     },
     {
       "id": "B05",
-      "text": "How are key terms in the bill defined?",
+      "text": "How are key terms in your bill defined?",
       "theme": "Definitions",
       "grades": {
         "Earnest": "M",
@@ -6300,7 +6300,7 @@
     },
     {
       "id": "B06",
-      "text": "What data supports this approach?",
+      "text": "What data supports your approach?",
       "theme": "Evidence",
       "grades": {
         "Earnest": "M",
@@ -6362,7 +6362,7 @@
     },
     {
       "id": "B09",
-      "text": "Does this conflict with existing law?",
+      "text": "Does your proposal conflict with existing law?",
       "theme": "Legality",
       "grades": {
         "Earnest": "M",
@@ -6461,7 +6461,7 @@
     },
     {
       "id": "B14",
-      "text": "How does this interact with regional authorities?",
+      "text": "How does your proposal interact with regional authorities?",
       "theme": "Coordination",
       "grades": {
         "Earnest": "M",
@@ -6500,7 +6500,7 @@
     },
     {
       "id": "B16",
-      "text": "Could this be simplified without losing its intent?",
+      "text": "Could your proposal be simplified without losing its intent?",
       "theme": "Simplicity",
       "grades": {
         "Earnest": "S",
@@ -6580,7 +6580,7 @@
     },
     {
       "id": "B20",
-      "text": "Is there broad support for this within government?",
+      "text": "Is there broad support for your proposal within government?",
       "theme": "Support",
       "grades": {
         "Earnest": "M",
@@ -7527,7 +7527,7 @@
     },
     {
       "id": "A04",
-      "text": "Is this bill a favor to your friends?",
+      "text": "Are your bills favors to your friends?",
       "theme": "Cronyism",
       "grades": {
         "Earnest": "S",
@@ -7590,7 +7590,7 @@
     },
     {
       "id": "A07",
-      "text": "Do you even understand what's in this bill?",
+      "text": "Do you even understand what's in your own bills?",
       "theme": "Competence",
       "grades": {
         "Earnest": "M",
@@ -7671,7 +7671,7 @@
     },
     {
       "id": "A11",
-      "text": "Would you live under this law yourself?",
+      "text": "Would you live under the laws you vote for?",
       "theme": "Hypocrisy",
       "grades": {
         "Earnest": "S",
@@ -7691,7 +7691,7 @@
     },
     {
       "id": "A12",
-      "text": "Who gets rich off this bill?",
+      "text": "Who gets rich off your bills?",
       "theme": "Money",
       "grades": {
         "Earnest": "M",
@@ -7757,7 +7757,7 @@
     },
     {
       "id": "A15",
-      "text": "Isn't this just about winning votes?",
+      "text": "Isn't your work just about winning votes?",
       "theme": "Motive",
       "grades": {
         "Earnest": "S",
@@ -7778,7 +7778,7 @@
     },
     {
       "id": "A16",
-      "text": "Will you resign if this fails?",
+      "text": "Will you resign if your bill fails?",
       "theme": "Accountability",
       "grades": {
         "Earnest": "S",
@@ -7800,7 +7800,7 @@
     },
     {
       "id": "A17",
-      "text": "Yes or no: is this bill a failure?",
+      "text": "Yes or no: are your bills failing?",
       "theme": "Verdict",
       "grades": {
         "Earnest": "M",
@@ -7841,7 +7841,7 @@
     },
     {
       "id": "A19",
-      "text": "Can you look voters in the eye and defend this?",
+      "text": "Can you look voters in the eye and defend your record?",
       "theme": "Conviction",
       "grades": {
         "Earnest": "S",
@@ -8116,7 +8116,7 @@
     },
     {
       "id": "A32",
-      "text": "Which clause of this bill would you change first?",
+      "text": "Which clause of your own bill would you change first?",
       "theme": "Competence",
       "grades": {
         "Earnest": "S",
@@ -8136,7 +8136,7 @@
     },
     {
       "id": "A33",
-      "text": "Who in your party takes the blame if this goes wrong?",
+      "text": "Who in your party takes the blame if your plans go wrong?",
       "theme": "Accountability",
       "grades": {
         "Earnest": "S",
@@ -10300,7 +10300,7 @@
     },
     {
       "id": "S72",
-      "text": "If this fails, who is accountable?",
+      "text": "If your proposal fails, who is accountable?",
       "theme": "Accountability",
       "grades": {
         "Earnest": "S",
@@ -10410,7 +10410,7 @@
     },
     {
       "id": "S73",
-      "text": "Who will carry this out, and how soon can they start?",
+      "text": "Who will carry out your proposal, and how soon can they start?",
       "theme": "Implementation",
       "grades": {
         "Earnest": "M",
@@ -10519,7 +10519,7 @@
     },
     {
       "id": "S74",
-      "text": "Is this plan realistic with the people and money available?",
+      "text": "Is your plan realistic with the people and money available?",
       "theme": "Implementation",
       "grades": {
         "Earnest": "S",
@@ -10628,7 +10628,7 @@
     },
     {
       "id": "S75",
-      "text": "Who will check that this is done as promised?",
+      "text": "Who will check that your proposal is done as promised?",
       "theme": "Oversight",
       "grades": {
         "Earnest": "M",
@@ -11173,7 +11173,7 @@
     },
     {
       "id": "S80",
-      "text": "What number tells us this has worked?",
+      "text": "What number tells us your proposal has worked?",
       "theme": "General evidence",
       "grades": {
         "Earnest": "M",
@@ -11388,7 +11388,7 @@
     },
     {
       "id": "S82",
-      "text": "Who did you consult before bringing this forward?",
+      "text": "Who did you consult before bringing your proposal forward?",
       "theme": "Consultation",
       "grades": {
         "Earnest": "M",
@@ -11494,7 +11494,7 @@
     },
     {
       "id": "S83",
-      "text": "How do the agencies involved work together on this?",
+      "text": "How do the agencies involved work together on your proposal?",
       "theme": "Coordination",
       "grades": {
         "Earnest": "M",
@@ -11708,7 +11708,7 @@
     },
     {
       "id": "S85",
-      "text": "Why should this come ahead of other demands on the budget?",
+      "text": "Why should your proposal come ahead of other demands on the budget?",
       "theme": "Priority",
       "grades": {
         "Earnest": "M",
@@ -11918,7 +11918,7 @@
     },
     {
       "id": "S87",
-      "text": "Is this within the law as it stands? Who says so?",
+      "text": "Is your proposal within the law as it stands? Who says so?",
       "theme": "General evidence",
       "grades": {
         "Earnest": "M",
@@ -12128,7 +12128,7 @@
     },
     {
       "id": "S89",
-      "text": "Why should this committee trust you to deliver this?",
+      "text": "Why should this committee trust you to deliver your proposal?",
       "theme": "Competence",
       "grades": {
         "Earnest": "S",
@@ -12341,7 +12341,7 @@
     },
     {
       "id": "S91",
-      "text": "Who is worse off if this passes?",
+      "text": "Who is worse off if your proposal passes?",
       "theme": "Impact",
       "grades": {
         "Earnest": "S",
@@ -12769,7 +12769,7 @@
     },
     {
       "id": "S95",
-      "text": "How will ordinary people hear about this and have their say?",
+      "text": "How will ordinary people hear about your proposal and have their say?",
       "theme": "Openness",
       "grades": {
         "Earnest": "S",
@@ -12877,7 +12877,7 @@
     },
     {
       "id": "S96",
-      "text": "When should this committee review the results?",
+      "text": "When should this committee review the results of your proposal?",
       "theme": "General evidence",
       "grades": {
         "Earnest": "W",
@@ -12982,7 +12982,7 @@
     },
     {
       "id": "S97",
-      "text": "Is this fair to everyone it touches?",
+      "text": "Is your proposal fair to everyone it touches?",
       "theme": "Fairness",
       "grades": {
         "Earnest": "S",
@@ -13701,7 +13701,7 @@
     },
     {
       "id": "S122",
-      "text": "Can one card really replace my tax, health and benefit papers?",
+      "text": "Can one card really replace my tax, health, and benefit papers?",
       "theme": "Digital convenience",
       "grades": {
         "Earnest": "S",
@@ -15782,7 +15782,7 @@
     },
     {
       "id": "S203",
-      "text": "Where will the new childcare places be built?",
+      "text": "Where will the new childcare spots be built?",
       "theme": "Parent and child care",
       "grades": {
         "Earnest": "M",
@@ -16354,7 +16354,7 @@
     },
     {
       "id": "S225",
-      "text": "Which part of this bill is not negotiable?",
+      "text": "Which part of your proposal is not negotiable?",
       "theme": "Compromise",
       "grades": {
         "Earnest": "S",
@@ -16426,7 +16426,7 @@
     },
     {
       "id": "S228",
-      "text": "What do you say to members who feel left out of this?",
+      "text": "What do you say to members who feel left out of the debate?",
       "theme": "Party democracy",
       "grades": {
         "Earnest": "M",
@@ -16451,7 +16451,7 @@
     },
     {
       "id": "S229",
-      "text": "If this fails on the floor, what then?",
+      "text": "If your proposal fails on the floor, what then?",
       "theme": "Resolve",
       "grades": {
         "Earnest": "S",
@@ -16622,7 +16622,7 @@
     },
     {
       "id": "S236",
-      "text": "Is that a promise or a negotiating position?",
+      "text": "Is your offer a promise or a negotiating position?",
       "theme": "Commitment",
       "grades": {
         "Earnest": "W",
@@ -16694,7 +16694,7 @@
     },
     {
       "id": "S239",
-      "text": "Is the cost of this worth the benefit?",
+      "text": "Is the cost of your proposal worth the benefit?",
       "theme": "Cost",
       "grades": {
         "Earnest": "M",
@@ -16720,7 +16720,7 @@
     },
     {
       "id": "S240",
-      "text": "What happens to the people this leaves behind?",
+      "text": "What happens to the people your proposal leaves behind?",
       "theme": "Vulnerable",
       "grades": {
         "Earnest": "M",
@@ -16791,7 +16791,7 @@
     },
     {
       "id": "S243",
-      "text": "Will you accept amendments, or is this take it or leave it?",
+      "text": "Will you accept amendments, or is it take it or leave it?",
       "theme": "Implementation",
       "grades": {
         "Earnest": "S",
@@ -16887,7 +16887,7 @@
     },
     {
       "id": "S247",
-      "text": "Is there anything in this you would be embarrassed to defend?",
+      "text": "Is there anything in your proposal you would be embarrassed to defend?",
       "theme": "Hypocrisy",
       "grades": {
         "Earnest": "W",
@@ -17099,7 +17099,7 @@
     },
     {
       "id": "S254",
-      "text": "Who in this room have you spoken with about this?",
+      "text": "Who in this room have you spoken with about your position?",
       "theme": "Consultation",
       "grades": {
         "Earnest": "S",
@@ -17694,7 +17694,7 @@
     },
     {
       "id": "S262",
-      "text": "How do we explain this to our donors?",
+      "text": "How do we explain your position to our donors?",
       "theme": "Political funds",
       "grades": {
         "Earnest": "W",
@@ -17845,7 +17845,7 @@
     },
     {
       "id": "S264",
-      "text": "Can you defend this in public as well as you do in here?",
+      "text": "Can you defend your position in public as well as you do in here?",
       "theme": "Credibility",
       "grades": {
         "Earnest": "W",
@@ -18510,7 +18510,7 @@
     },
     {
       "id": "S273",
-      "text": "What should the caucus say if the press asks about this?",
+      "text": "What should the caucus say if the press asks about your position?",
       "theme": "Clarity",
       "grades": {
         "Earnest": "W",
@@ -18585,7 +18585,7 @@
     },
     {
       "id": "S274",
-      "text": "Who has your back if this goes wrong?",
+      "text": "Who has your back if things go wrong?",
       "theme": "Cooperation",
       "grades": {
         "Earnest": "M",
@@ -19024,7 +19024,7 @@
     },
     {
       "id": "S280",
-      "text": "Who in leadership signed off on this?",
+      "text": "Who in leadership signed off on your position?",
       "theme": "Accountability",
       "grades": {
         "Earnest": "S",
@@ -19382,7 +19382,7 @@
     },
     {
       "id": "S287",
-      "text": "Your last answer had no numbers. Give us one.",
+      "text": "Give us one number that backs your last answer.",
       "theme": "General evidence",
       "grades": {
         "Earnest": "S",
@@ -19644,7 +19644,7 @@
     },
     {
       "id": "S295",
-      "text": "What will you do on the first day?",
+      "text": "What would you do first, given the chance?",
       "theme": "Priority",
       "grades": {
         "Earnest": "M",
@@ -19811,7 +19811,7 @@
     },
     {
       "id": "S301",
-      "text": "How will you answer for the last bill you opposed?",
+      "text": "How would you answer for opposing a party bill?",
       "theme": "Accountability",
       "grades": {
         "Earnest": "W",
@@ -20060,7 +20060,7 @@
     },
     {
       "id": "S311",
-      "text": "What is your plan to raise party support in your district?",
+      "text": "What is your plan to grow the party's base in your district?",
       "theme": "Support",
       "grades": {
         "Earnest": "M",
@@ -28363,7 +28363,7 @@
     },
     {
       "id": "S598",
-      "text": "Supporters say deregulated investment zones near Sapporo, Tomakomai and Hakodate do not go far enough. Do you agree?",
+      "text": "Supporters say deregulated investment zones near Sapporo, Tomakomai, and Hakodate do not go far enough. Do you agree?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "M",
@@ -28390,7 +28390,7 @@
     },
     {
       "id": "S599",
-      "text": "What is the full price of deregulated investment zones near Sapporo, Tomakomai and Hakodate, and where does the money come from?",
+      "text": "What is the full price of deregulated investment zones near Sapporo, Tomakomai, and Hakodate, and where does the money come from?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "S",
@@ -28417,7 +28417,7 @@
     },
     {
       "id": "S600",
-      "text": "Why not a single pilot zone with a review instead of deregulated investment zones near Sapporo, Tomakomai and Hakodate?",
+      "text": "Why not a single pilot zone with a review instead of deregulated investment zones near Sapporo, Tomakomai, and Hakodate?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "M",
@@ -28444,7 +28444,7 @@
     },
     {
       "id": "S601",
-      "text": "Who bears the cost: workers under looser labor rules?",
+      "text": "Will workers under looser labor rules bear the cost?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "S",
@@ -28471,7 +28471,7 @@
     },
     {
       "id": "S602",
-      "text": "What does the best evidence say about deregulated investment zones near Sapporo, Tomakomai and Hakodate?",
+      "text": "What does the best evidence say about deregulated investment zones near Sapporo, Tomakomai, and Hakodate?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "M",
@@ -28498,7 +28498,7 @@
     },
     {
       "id": "S603",
-      "text": "Would a single pilot zone with a review work better than deregulated investment zones near Sapporo, Tomakomai and Hakodate?",
+      "text": "Would a single pilot zone with a review work better than deregulated investment zones near Sapporo, Tomakomai, and Hakodate?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "M",
@@ -28525,7 +28525,7 @@
     },
     {
       "id": "S604",
-      "text": "What will deregulated investment zones near Sapporo, Tomakomai and Hakodate cost the treasury in the first five years?",
+      "text": "What will deregulated investment zones near Sapporo, Tomakomai, and Hakodate cost the treasury in the first five years?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "S",
@@ -28609,7 +28609,7 @@
     },
     {
       "id": "S607",
-      "text": "Who ends up paying for deregulated investment zones near Sapporo, Tomakomai and Hakodate?",
+      "text": "Who ends up paying for deregulated investment zones near Sapporo, Tomakomai, and Hakodate?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "S",
@@ -28636,7 +28636,7 @@
     },
     {
       "id": "S608",
-      "text": "Could we test one zone first before committing to deregulated investment zones near Sapporo, Tomakomai and Hakodate?",
+      "text": "Could we test one zone first before committing to deregulated investment zones near Sapporo, Tomakomai, and Hakodate?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "M",
@@ -28795,7 +28795,7 @@
     },
     {
       "id": "S614",
-      "text": "Why not freight upgrades first, passengers later instead of an earlier Sapporo extension of the Shinkansen?",
+      "text": "Why not freight upgrades first and passengers later, instead of an earlier Sapporo extension of the Shinkansen?",
       "theme": "Hokkaido Shinkansen Acceleration Act debate",
       "grades": {
         "Earnest": "M",
@@ -28850,7 +28850,7 @@
     },
     {
       "id": "S616",
-      "text": "My members care about commuters, freight shippers and tourist towns. What will the Hokkaido Shinkansen Acceleration Act do for them?",
+      "text": "My members care about commuters, freight shippers, and tourist towns. What will the Hokkaido Shinkansen Acceleration Act do for them?",
       "theme": "Hokkaido Shinkansen Acceleration Act debate",
       "grades": {
         "Earnest": "M",
@@ -29243,7 +29243,7 @@
     },
     {
       "id": "S631",
-      "text": "What is the full price of five-year work visas in farming, fishing, construction and tourism, and where does the money come from?",
+      "text": "What is the full price of five-year work visas in farming, fishing, construction, and tourism, and where does the money come from?",
       "theme": "Specified Skilled Worker Visa Act debate",
       "grades": {
         "Earnest": "S",
@@ -29269,7 +29269,7 @@
     },
     {
       "id": "S632",
-      "text": "Why not a smaller visa quota for seasonal work only instead of five-year work visas in farming, fishing, construction and tourism?",
+      "text": "Why not a smaller visa quota for seasonal work only instead of five-year work visas in farming, fishing, construction, and tourism?",
       "theme": "Specified Skilled Worker Visa Act debate",
       "grades": {
         "Earnest": "M",
@@ -29347,7 +29347,7 @@
     },
     {
       "id": "S635",
-      "text": "What do grid links and local wind and geothermal power change for turbines, power lines and blackout plans?",
+      "text": "What do grid links and local wind and geothermal power change for turbines, power lines, and blackout plans?",
       "theme": "Grid Resilience and Renewable Energy Act debate",
       "grades": {
         "Earnest": "M",
@@ -29596,7 +29596,7 @@
     },
     {
       "id": "S644",
-      "text": "My members care about pensioners and care workers. What will the Consumption Tax Rate Act do for them?",
+      "text": "My members care about retirees and care workers. What will the Consumption Tax Rate Act do for them?",
       "theme": "Consumption Tax Rate Act debate",
       "grades": {
         "Earnest": "M",
@@ -29932,7 +29932,7 @@
     },
     {
       "id": "S657",
-      "text": "How much will parties' effort to field equal numbers of women and men cost, and who pays?",
+      "text": "How much will requiring parties to field equal numbers of women and men cost, and who pays?",
       "theme": "Candidate Gender Parity Act debate",
       "grades": {
         "Earnest": "S",
@@ -30032,7 +30032,7 @@
     },
     {
       "id": "S661",
-      "text": "What is the full price of parties' effort to field equal numbers of women and men, and where does the money come from?",
+      "text": "What is the full price of requiring parties to field equal numbers of women and men, and where does the money come from?",
       "theme": "Candidate Gender Parity Act debate",
       "grades": {
         "Earnest": "S",
@@ -30057,7 +30057,7 @@
     },
     {
       "id": "S662",
-      "text": "Why not voluntary party targets with public reports instead of parties' effort to field equal numbers of women and men?",
+      "text": "Why not voluntary party targets with public reports instead of requiring parties to field equal numbers of women and men?",
       "theme": "Candidate Gender Parity Act debate",
       "grades": {
         "Earnest": "M",
@@ -30132,7 +30132,7 @@
     },
     {
       "id": "S665",
-      "text": "My members care about ferry operators, fishers and border towns. What will the Tsugaru Strait Joint Commission Act do for them?",
+      "text": "My members care about ferry operators, fishers, and border towns. What will the Tsugaru Strait Joint Commission Act do for them?",
       "theme": "Tsugaru Strait Joint Commission Act debate",
       "grades": {
         "Earnest": "M",
@@ -30517,7 +30517,7 @@
     },
     {
       "id": "S681",
-      "text": "Who bears the cost of tax relief and restoration grants for temples and shrines in this town?",
+      "text": "Who in this town bears the cost of tax relief and restoration grants for temples and shrines?",
       "theme": "Temple and Shrine Heritage Act debate",
       "grades": {
         "Earnest": "S",
@@ -30543,7 +30543,7 @@
     },
     {
       "id": "S682",
-      "text": "People here ask whether temples, shrines and festival towns are the only ones who gain. Are they?",
+      "text": "People here ask whether temples, shrines, and festival towns are the only ones who gain. Are they?",
       "theme": "Temple and Shrine Heritage Act debate",
       "grades": {
         "Earnest": "S",
@@ -30569,7 +30569,7 @@
     },
     {
       "id": "S683",
-      "text": "My members care about temples, shrines and festival towns. What will the Temple and Shrine Heritage Act do for them?",
+      "text": "My members care about temples, shrines, and festival towns. What will the Temple and Shrine Heritage Act do for them?",
       "theme": "Temple and Shrine Heritage Act debate",
       "grades": {
         "Earnest": "M",
@@ -31112,7 +31112,7 @@
     },
     {
       "id": "S703",
-      "text": "Who bears the cost: tax revenue and local power supply?",
+      "text": "Will tax revenue and the local power supply bear the cost?",
       "theme": "Digital Economy Promotion Act debate",
       "grades": {
         "Earnest": "S",
@@ -31632,7 +31632,7 @@
     },
     {
       "id": "S723",
-      "text": "Who bears the cost of a national registry giving same-sex couples partnership rights in this town?",
+      "text": "Who in this town bears the cost of a national registry giving same-sex couples partnership rights?",
       "theme": "Partnership Registration Act debate",
       "grades": {
         "Earnest": "S",
@@ -32372,7 +32372,7 @@
     },
     {
       "id": "S752",
-      "text": "Who bears the cost: dairy and rural producers?",
+      "text": "Will dairy and rural producers bear the cost?",
       "theme": "Yezo–EU Economic Partnership Agreement debate",
       "grades": {
         "Earnest": "S",
@@ -32399,7 +32399,7 @@
     },
     {
       "id": "S753",
-      "text": "What does the best evidence say about lower tariffs with the European Union on dairy, wine, machinery and cars?",
+      "text": "What does the best evidence say about lower tariffs with the European Union on dairy, wine, machinery, and cars?",
       "theme": "Yezo–EU Economic Partnership Agreement debate",
       "grades": {
         "Earnest": "M",
@@ -32426,7 +32426,7 @@
     },
     {
       "id": "S754",
-      "text": "Why not phase tariffs down over a long period instead of lower tariffs with the European Union on dairy, wine, machinery and cars?",
+      "text": "Why not phase tariffs down over a long period instead of lower tariffs with the European Union on dairy, wine, machinery, and cars?",
       "theme": "Yezo–EU Economic Partnership Agreement debate",
       "grades": {
         "Earnest": "M",
@@ -32453,7 +32453,7 @@
     },
     {
       "id": "S755",
-      "text": "What is the full price of lower tariffs with the European Union on dairy, wine, machinery and cars, and where does the money come from?",
+      "text": "What is the full price of lower tariffs with the European Union on dairy, wine, machinery, and cars, and where does the money come from?",
       "theme": "Yezo–EU Economic Partnership Agreement debate",
       "grades": {
         "Earnest": "S",
@@ -32534,7 +32534,7 @@
     },
     {
       "id": "S758",
-      "text": "How will we explain lower tariffs with the European Union on dairy, wine, machinery and cars to the voters back home?",
+      "text": "How will we explain lower tariffs with the European Union on dairy, wine, machinery, and cars to the voters back home?",
       "theme": "Yezo–EU Economic Partnership Agreement debate",
       "grades": {
         "Earnest": "M",
@@ -32588,7 +32588,7 @@
     },
     {
       "id": "S760",
-      "text": "How much will government review of foreign land purchases near ports, water and defense sites cost, and who pays?",
+      "text": "How much will government review of foreign land purchases near ports, water, and defense sites cost, and who pays?",
       "theme": "Strategic Land and Port Screening Act debate",
       "grades": {
         "Earnest": "S",
@@ -32696,7 +32696,7 @@
     },
     {
       "id": "S764",
-      "text": "What is the full price of government review of foreign land purchases near ports, water and defense sites, and where does the money come from?",
+      "text": "What is the full price of government review of foreign land purchases near ports, water, and defense sites, and where does the money come from?",
       "theme": "Strategic Land and Port Screening Act debate",
       "grades": {
         "Earnest": "S",
@@ -32723,7 +32723,7 @@
     },
     {
       "id": "S765",
-      "text": "Why not a registry of foreign owners without review instead of government review of foreign land purchases near ports, water and defense sites?",
+      "text": "Why not a registry of foreign owners without review instead of government review of foreign land purchases near ports, water, and defense sites?",
       "theme": "Strategic Land and Port Screening Act debate",
       "grades": {
         "Earnest": "M",
@@ -32831,7 +32831,7 @@
     },
     {
       "id": "S769",
-      "text": "How will we explain government review of foreign land purchases near ports, water and defense sites to the voters back home?",
+      "text": "How will we explain government review of foreign land purchases near ports, water, and defense sites to the voters back home?",
       "theme": "Strategic Land and Port Screening Act debate",
       "grades": {
         "Earnest": "M",
@@ -32858,7 +32858,7 @@
     },
     {
       "id": "S770",
-      "text": "What is the full price of visa-free entry for tourists from Korea, Taiwan and Southeast Asia, and where does the money come from?",
+      "text": "What is the full price of visa-free entry for tourists from Korea, Taiwan, and Southeast Asia, and where does the money come from?",
       "theme": "Inbound Tourism Visa Waiver Act debate",
       "grades": {
         "Earnest": "S",
@@ -32883,7 +32883,7 @@
     },
     {
       "id": "S771",
-      "text": "Why not visa waivers for group tours only instead of visa-free entry for tourists from Korea, Taiwan and Southeast Asia?",
+      "text": "Why not visa waivers for group tours only instead of visa-free entry for tourists from Korea, Taiwan, and Southeast Asia?",
       "theme": "Inbound Tourism Visa Waiver Act debate",
       "grades": {
         "Earnest": "M",
@@ -32933,7 +32933,7 @@
     },
     {
       "id": "S773",
-      "text": "Would visa waivers for group tours only be a safer step than visa-free entry for tourists from Korea, Taiwan and Southeast Asia?",
+      "text": "Would visa waivers for group tours only be a safer step than visa-free entry for tourists from Korea, Taiwan, and Southeast Asia?",
       "theme": "Inbound Tourism Visa Waiver Act debate",
       "grades": {
         "Earnest": "M",
@@ -32958,7 +32958,7 @@
     },
     {
       "id": "S774",
-      "text": "What would visa-free entry for tourists from Korea, Taiwan and Southeast Asia cost, and who would pay?",
+      "text": "What would visa-free entry for tourists from Korea, Taiwan, and Southeast Asia cost, and who would pay?",
       "theme": "Inbound Tourism Visa Waiver Act debate",
       "grades": {
         "Earnest": "S",
@@ -33334,7 +33334,7 @@
     },
     {
       "id": "S788",
-      "text": "My members care about construction workers, hotels and the host town. What will the Integrated Resort Act do for them?",
+      "text": "My members care about construction workers, hotels, and the host town. What will the Integrated Resort Act do for them?",
       "theme": "Integrated Resort Act debate",
       "grades": {
         "Earnest": "M",
@@ -33453,7 +33453,7 @@
     },
     {
       "id": "S792",
-      "text": "Who bears the cost: neighbors and gambling-prone households?",
+      "text": "Will neighbors and gambling-prone households bear the cost?",
       "theme": "Integrated Resort Act debate",
       "grades": {
         "Earnest": "S",
@@ -33880,7 +33880,7 @@
     },
     {
       "id": "S807",
-      "text": "Why not a lower rate in the poorest towns for a few years instead of one higher minimum wage across Hokkaido, Aomori and Chishima?",
+      "text": "Why not a lower rate in the poorest towns for a few years instead of one higher minimum wage across Hokkaido, Aomori, and Chishima?",
       "theme": "Regional Minimum Wage Act debate",
       "grades": {
         "Earnest": "M",
@@ -33906,7 +33906,7 @@
     },
     {
       "id": "S808",
-      "text": "What is the full price of one higher minimum wage across Hokkaido, Aomori and Chishima, and where does the money come from?",
+      "text": "What is the full price of one higher minimum wage across Hokkaido, Aomori, and Chishima, and where does the money come from?",
       "theme": "Regional Minimum Wage Act debate",
       "grades": {
         "Earnest": "S",
@@ -33932,7 +33932,7 @@
     },
     {
       "id": "S809",
-      "text": "In one sentence, why does the country need one higher minimum wage across Hokkaido, Aomori and Chishima?",
+      "text": "In one sentence, why does the country need one higher minimum wage across Hokkaido, Aomori, and Chishima?",
       "theme": "Regional Minimum Wage Act debate",
       "grades": {
         "Earnest": "S",
@@ -33958,7 +33958,7 @@
     },
     {
       "id": "S810",
-      "text": "What would one higher minimum wage across Hokkaido, Aomori and Chishima cost, and who would pay?",
+      "text": "What would one higher minimum wage across Hokkaido, Aomori, and Chishima cost, and who would pay?",
       "theme": "Regional Minimum Wage Act debate",
       "grades": {
         "Earnest": "S",
@@ -33984,7 +33984,7 @@
     },
     {
       "id": "S811",
-      "text": "Would a lower rate in the poorest towns for a few years be wiser than one higher minimum wage across Hokkaido, Aomori and Chishima?",
+      "text": "Would a lower rate in the poorest towns for a few years be wiser than one higher minimum wage across Hokkaido, Aomori, and Chishima?",
       "theme": "Regional Minimum Wage Act debate",
       "grades": {
         "Earnest": "M",
@@ -34088,7 +34088,7 @@
     },
     {
       "id": "S815",
-      "text": "How will we explain one higher minimum wage across Hokkaido, Aomori and Chishima to the voters back home?",
+      "text": "How will we explain one higher minimum wage across Hokkaido, Aomori, and Chishima to the voters back home?",
       "theme": "Regional Minimum Wage Act debate",
       "grades": {
         "Earnest": "M",
@@ -37546,7 +37546,7 @@
     },
     {
       "id": "S937",
-      "text": "Could wiretaps be used on unions, protesters or journalists?",
+      "text": "Could wiretaps be used on unions, protesters, or journalists?",
       "theme": "Organized Crime Conspiracy Act debate",
       "grades": {
         "Earnest": "S",
@@ -42086,7 +42086,7 @@
     },
     {
       "id": "S1121",
-      "text": "Who covers the training, radios and insurance for volunteer watch groups?",
+      "text": "Who covers the training, radios, and insurance for volunteer watch groups?",
       "theme": "Support neighborhood watch groups",
       "grades": {
         "Earnest": "S",
@@ -49046,7 +49046,7 @@
     },
     {
       "id": "S1417",
-      "text": "Temples would host the programs, but who pays for trained staff, supplies and insurance?",
+      "text": "Temples would host the programs, but who pays for trained staff, supplies, and insurance?",
       "theme": "Let temples run public meditation and care programs",
       "grades": {
         "Earnest": "S",
@@ -49798,7 +49798,7 @@
     },
     {
       "id": "S1449",
-      "text": "Higher pay means higher costs for care homes; do families, taxpayers or the homes themselves pay?",
+      "text": "Higher pay means higher costs for care homes; do families, taxpayers, or the homes themselves pay?",
       "theme": "Raise care workers' wages",
       "grades": {
         "Earnest": "S",
@@ -50758,7 +50758,7 @@
     },
     {
       "id": "S1489",
-      "text": "Upkeep never ends; who pays for the mowing, repairs and record-keeping year after year?",
+      "text": "Upkeep never ends; who pays for the mowing, repairs, and record-keeping year after year?",
       "theme": "Maintain war memorials and cemeteries",
       "grades": {
         "Earnest": "S",
@@ -50884,7 +50884,7 @@
     },
     {
       "id": "S1495",
-      "text": "How do we protect old graves and monuments from weather, theft and quiet neglect?",
+      "text": "How do we protect old graves and monuments from weather, theft, and quiet neglect?",
       "theme": "Maintain war memorials and cemeteries",
       "grades": {
         "Earnest": "S",
@@ -55222,7 +55222,7 @@
     },
     {
       "id": "S1679",
-      "text": "How do we make sure arriving families find jobs, schools and clinics?",
+      "text": "How do we make sure arriving families find jobs, schools, and clinics?",
       "theme": "Pay grants to families moving to rural towns",
       "grades": {
         "Earnest": "S",
@@ -59758,7 +59758,7 @@
     },
     {
       "id": "S1868",
-      "text": "Mayors say press presence makes councillors grandstand. Your answer?",
+      "text": "Mayors say press presence makes council members grandstand. Your answer?",
       "theme": "Guarantee press access to public meetings",
       "grades": {
         "Earnest": "M",
@@ -61846,7 +61846,7 @@
     },
     {
       "id": "S1955",
-      "text": "Critics say graduates will serve one year, collect the forgiveness and leave. How do you respond?",
+      "text": "Critics say graduates will serve one year, collect the forgiveness, and leave. How do you respond?",
       "theme": "Forgive student loans for graduates who work in rural towns",
       "grades": {
         "Earnest": "M",
@@ -61990,7 +61990,7 @@
     },
     {
       "id": "S1961",
-      "text": "What does one public childcare place cost per year, and how long until it pays back?",
+      "text": "What does one public childcare spot cost per year, and how long until it pays back?",
       "theme": "Open more public childcare places",
       "grades": {
         "Earnest": "M",
@@ -62014,7 +62014,7 @@
     },
     {
       "id": "S1962",
-      "text": "Should every family be able to find a public childcare place?",
+      "text": "Should every family be able to find a public childcare spot?",
       "theme": "Open more public childcare places",
       "grades": {
         "Earnest": "S",
@@ -62038,7 +62038,7 @@
     },
     {
       "id": "S1963",
-      "text": "A private nursery owner says public places will put her out of business. What do you say?",
+      "text": "A private daycare owner says public spots will put her out of business. What do you say?",
       "theme": "Open more public childcare places",
       "grades": {
         "Earnest": "M",
@@ -62158,7 +62158,7 @@
     },
     {
       "id": "S1968",
-      "text": "Could we support workplace nurseries instead of building public ones?",
+      "text": "Could we support workplace daycare centers instead of building public ones?",
       "theme": "Open more public childcare places",
       "grades": {
         "Earnest": "M",
@@ -62950,7 +62950,7 @@
     },
     {
       "id": "S2001",
-      "text": "How much public money would go to landlords of empty shopfronts instead of to the craftspeople?",
+      "text": "How much public money would go to landlords of empty storefronts instead of to the craftspeople?",
       "theme": "Fund craft workshops in vacant shopfronts",
       "grades": {
         "Earnest": "S",
@@ -63022,7 +63022,7 @@
     },
     {
       "id": "S2004",
-      "text": "City groups would rather see those shopfronts become homes. What do you say?",
+      "text": "City groups would rather see those storefronts become homes. What do you say?",
       "theme": "Fund craft workshops in vacant shopfronts",
       "grades": {
         "Earnest": "M",
@@ -63526,7 +63526,7 @@
     },
     {
       "id": "S2025",
-      "text": "Which stations get lifts first, and do small towns wait while the big hubs go ahead?",
+      "text": "Which stations get elevators first, and do small towns wait while the big hubs go ahead?",
       "theme": "Make every station step-free",
       "grades": {
         "Earnest": "S",
@@ -63574,7 +63574,7 @@
     },
     {
       "id": "S2027",
-      "text": "A transit planner says lifts break down and are never fixed; why build more of them?",
+      "text": "A transit planner says elevators break down and are never fixed; why build more of them?",
       "theme": "Make every station step-free",
       "grades": {
         "Earnest": "M",
@@ -63670,7 +63670,7 @@
     },
     {
       "id": "S2031",
-      "text": "What happens to a wheelchair user when the only lift at a station is out of service?",
+      "text": "What happens to a wheelchair user when the only elevator at a station is out of service?",
       "theme": "Make every station step-free",
       "grades": {
         "Earnest": "M",
@@ -64678,7 +64678,7 @@
     },
     {
       "id": "S2073",
-      "text": "Who buys the clay, looms and tools when a club has twelve students and no budget?",
+      "text": "Who buys the clay, looms, and tools when a club has twelve students and no budget?",
       "theme": "Support traditional crafts in school clubs",
       "grades": {
         "Earnest": "S",
@@ -66822,7 +66822,7 @@
     },
     {
       "id": "S2169",
-      "text": "Who pays for the cots, food and generators a temple needs before the next big storm?",
+      "text": "Who pays for the cots, food, and generators a temple needs before the next big storm?",
       "theme": "Designate temples as disaster shelters",
       "grades": {
         "Earnest": "S",
@@ -71982,7 +71982,7 @@
     },
     {
       "id": "S2385",
-      "text": "Who pays for extra water, schools and rail capacity when more people move near stations?",
+      "text": "Who pays for extra water, schools, and rail capacity when more people move near stations?",
       "theme": "Allow denser housing near stations",
       "grades": {
         "Earnest": "S",
@@ -72230,7 +72230,7 @@
     },
     {
       "id": "S2395",
-      "text": "Trees drop leaves, crack pavements and block shops; why spend money on those over repairs?",
+      "text": "Trees drop leaves, crack sidewalks, and block shops; why spend money on those over repairs?",
       "theme": "Fund street trees and shade in city centers",
       "grades": {
         "Earnest": "M",
@@ -72374,7 +72374,7 @@
     },
     {
       "id": "S2401",
-      "text": "Who pays for soil, fencing and water if the city opens its empty lots to gardeners?",
+      "text": "Who pays for soil, fencing, and water if the city opens its empty lots to gardeners?",
       "theme": "Open vacant city lots to community gardens",
       "grades": {
         "Earnest": "S",
@@ -72566,7 +72566,7 @@
     },
     {
       "id": "S2409",
-      "text": "Who covers interpreters, meetings and delays when every land project needs a consultation?",
+      "text": "Who covers interpreters, meetings, and delays when every land project needs a consultation?",
       "theme": "Require consultation with Ainu communities on land use",
       "grades": {
         "Earnest": "S",
@@ -73910,7 +73910,7 @@
     },
     {
       "id": "S2465",
-      "text": "What will fuel, drivers and repairs cost each year on long, thin rural routes?",
+      "text": "What will fuel, drivers, and repairs cost each year on long, thin rural routes?",
       "theme": "Fund rural school buses",
       "grades": {
         "Earnest": "S",
@@ -74102,7 +74102,7 @@
     },
     {
       "id": "S2473",
-      "text": "Who pays for the office space, power and equipment if few villagers use a hub?",
+      "text": "Who pays for the office space, power, and equipment if few villagers use a hub?",
       "theme": "Support remote work hubs in villages",
       "grades": {
         "Earnest": "S",
@@ -75740,7 +75740,7 @@
     },
     {
       "id": "S2539",
-      "text": "Is it fair that we pay full fares when pensioners ride for less?",
+      "text": "Is it fair that we pay full fares when seniors ride for less?",
       "theme": "Give students discounted transit",
       "grades": {
         "Earnest": "S",

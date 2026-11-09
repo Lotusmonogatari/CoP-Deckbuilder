@@ -721,7 +721,7 @@
       "BO21"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "ST21 Policy Study Session starts with +10 Support.",
+    "effect": "ST21 Policy Study Session starts with +10 Consensus.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
