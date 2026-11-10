@@ -828,3 +828,7 @@ New Text rows: `stage_menu.abandon`, `stage_menu.settings`, `stage_menu.abandon_
 ## Party dues lowered (2026-11-10, Cameron)
 
 Two Balance rows changed in the workbook: `Dues: Step Amount` 50,000 to 10,000 and `Dues: Reward Percent` 15 to 10. The week-end dues are now 50,000円, plus 10,000円 for every full 15 points of Party support above 40, plus 10% of the Funds earned Monday to Friday. No code changed. `GAME_SYSTEMS.md`, `GAME_DESIGN.md` and `CONTENT_GUIDE.md` updated. The unit tests build their own settings and do not read these two rows. Open question for Cameron: Relaxed's dues share is still 10%, which now equals Standard (Harder is 20%).
+
+## Relaxed dues share 5% (2026-11-10, Cameron)
+
+`Difficulty Relaxed: Dues Reward Percent` 10 to 5, so the tiers stay in order after Standard fell to 10% (Harder stays 20%). A workbook row only; `GAME_SYSTEMS.md` updated.

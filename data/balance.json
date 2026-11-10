@@ -205,7 +205,7 @@
   "difficulty_harder_awareness_gaffe_percent": 150,
   "difficulty_relaxed_reward_percent": 115,
   "difficulty_harder_reward_percent": 85,
-  "difficulty_relaxed_dues_reward_percent": 10,
+  "difficulty_relaxed_dues_reward_percent": 5,
   "difficulty_harder_dues_reward_percent": 20,
   "difficulty_relaxed_dues_holiday_weeks": 3,
   "difficulty_harder_dues_holiday_weeks": 0,
