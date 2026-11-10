@@ -203,7 +203,8 @@ func _stream(file: String) -> AudioStream:
 	if not ResourceLoader.exists(path):
 		if not _already_warned.has(path):
 			_already_warned[path] = true
-			print("Audio: no sound file at %s yet — staying quiet." % path)
+			if OS.is_debug_build():
+				print("Audio: no sound file at %s yet — staying quiet." % path)
 		return null
 
 	return load(path) as AudioStream

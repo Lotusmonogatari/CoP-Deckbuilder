@@ -49,6 +49,7 @@ const NO_PARTY_OUTLINE := Color(1, 1, 1, 0.55)
 var _outline_override := Color(0, 0, 0, 0)
 var _outline_override_on := false
 var _outline_party := "<unset>"
+var _outline_player := "?"
 var _party_styles: Array[StyleBoxFlat] = []
 
 var insets := {"left": 0.0, "top": 0.0, "right": 0.0, "bottom": 0.0}
@@ -110,6 +111,11 @@ func _on_resized() -> void:
 
 func _process(_delta: float) -> void:
 	# The protagonist is chosen at New Game; follow the party when it changes.
+	# Only when the protagonist changes is the party worked out again (audit C-09).
+	var player_id := str(DataDB.player.get("player_id", ""))
+	if player_id == _outline_player:
+		return
+	_outline_player = player_id
 	var party := PartyDisplay.party_name(DataDB.player)
 	if party != _outline_party:
 		_outline_party = party

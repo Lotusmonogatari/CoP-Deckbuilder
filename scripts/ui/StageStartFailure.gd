@@ -10,7 +10,7 @@ extends RefCounted
 ## the Office. Standalone runs (not in a level) just quit, like the
 ## screens' own outcome panels.
 
-const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
+const OFFICE_SCENE := StageRouting.OFFICE_SCENE
 
 
 ## Builds the notice on top of `screen` and returns it. `reason` is shown
@@ -63,4 +63,4 @@ static func _leave(screen: Control) -> void:
 		screen.get_tree().quit()
 		return
 	GameState.end_level()
-	screen.get_tree().change_scene_to_file(OFFICE_SCENE)
+	SceneChange.to(screen.get_tree(), OFFICE_SCENE)

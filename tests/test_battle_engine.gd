@@ -2296,3 +2296,15 @@ func test_a_floor_debate_guard_still_stops_an_attack() -> void:
 	assert_true(result["ok"])
 	assert_eq(int(result["applied"]["guard_stopped"]), 2)
 	assert_eq(engine.state.opponent_block, 0)
+
+
+## Abandon Level (Cameron, 2026-11-10): forfeiting is an immediate loss, and
+## does nothing to a stage that is already over.
+func test_forfeit_loses_the_stage_at_once() -> void:
+	var engine := _start()
+	engine.forfeit()
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "loss")
+	engine.state.outcome = "win"
+	engine.forfeit()
+	assert_eq(engine.state.outcome, "win", "an ended stage is left alone")

@@ -94,3 +94,12 @@ Nothing below was deleted. The change log, the guides and the code are now the r
 ## From the writing review (2026-11-09)
 
 - Patron Bills tab: the `request_line`, `accept_line` and `decline_line` columns (the same sentence on all 54 rows) are read by no script; only `fail_line` is shown. Cameron's decision #50: list them here rather than reword them.
+
+## From the project audit (2026-11-10): code only the tests use
+
+Nothing deleted. Each needs a fresh check and Cameron's say-so. These are referenced by `tests/` or `tools/` but by no game script or scene:
+
+- Script: `scripts/rules/StageCarryOver.gd` (52 lines; `between_opponents`).
+- Functions: `HandPresenter.view_for`, `CueBanner.current_line`, `MessagePresenter.is_saying_something`, `ListeningStrip.listener_ids`, `SaveManager.backup_time`, `DataDB.is_loaded`, `RewardTargets.is_modifier` / `is_shop_item` / `is_segment`, `LevelRunner.progress_caption` / `loss_penalties` / `variable_rewards`, `PatronRequests.room_to_open`, `BillName.sentence_start`, `HowToPlay.unresolved_tokens`, `IntentRunner.set_position`, `BarModel.totals_balance`, `Ledger.can_buy_card` / `can_buy_modifier` / `deck_is_legal` / `can_hire_staff` / `can_upgrade_staff` / `can_fire_staff`.
+
+Several are test helpers (they exist so a test can look inside a presenter) and should stay; the `Ledger.can_*` and `LevelRunner` ones look like rules the game stopped calling.

@@ -29,7 +29,7 @@ extends Control
 ##   hand          three to five cards
 ##   footer        End turn
 
-const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
+const OFFICE_SCENE := StageRouting.OFFICE_SCENE
 
 ## Which battle to open when no level is in progress — running this scene on
 ## its own from the editor. During a level the stage comes from the level.
@@ -158,6 +158,7 @@ func _ready() -> void:
 	_end_turn_button.pressed.connect(_on_end_turn)
 	_details_button.pressed.connect(_toggle_details)
 	%DetailsClose.pressed.connect(func() -> void: _details_panel.hide())
+	_build_stage_menu()
 	%ZoomClose.pressed.connect(func() -> void: _card_zoom.hide())
 	%ZoomPlay.pressed.connect(_play_selected)
 	%OutcomeClose.pressed.connect(_on_outcome_closed)
@@ -1190,6 +1191,74 @@ func _on_end_turn() -> void:
 		_announce_question()
 
 
+# ---------------------------------------------------------------------------
+# The stage menu (2026-11-10, Cameron): three buttons in the stage info panel
+# ---------------------------------------------------------------------------
+
+var _menu_panel: Overlay = null
+var _how_to_play_panel: Overlay = null
+
+## Abandon Level, Settings and How to Play, added above the panel's Close.
+func _build_stage_menu() -> void:
+	var column := %DetailsClose.get_parent() as Control
+	var rows: Array[Control] = [
+		UiKit.action_button(Text.say("stage_menu.abandon"), "", _ask_abandon, 100.0),
+		UiKit.action_button(Text.say("stage_menu.settings"), "", _show_stage_settings, 100.0),
+		UiKit.action_button(Text.say("office.how_to_play"), "", _show_how_to_play, 100.0)]
+	var names := ["AbandonLevelButton", "StageSettingsButton", "StageHowToPlayButton"]
+	for index in rows.size():
+		rows[index].name = names[index]
+		column.add_child(rows[index])
+		column.move_child(rows[index], %DetailsClose.get_index())
+	# Abandoning only means something inside a level.
+	rows[0].visible = GameState.is_in_level()
+
+
+func _stage_menu_panel() -> Overlay:
+	if _menu_panel == null:
+		_menu_panel = Overlay.new()
+		_menu_panel.name = "StageMenuPanel"
+		add_child(_menu_panel)
+	return _menu_panel
+
+
+## Says what abandoning costs before it happens, and asks.
+func _ask_abandon() -> void:
+	if engine == null or engine.state.is_over():
+		return
+	var panel := _stage_menu_panel()
+	var rows: Array[Control] = [UiKit.line(Text.say("stage_menu.abandon_warning"))]
+	for connection: Dictionary in panel.confirmed.get_connections():
+		panel.confirmed.disconnect(connection["callable"])
+	panel.confirmed.connect(_abandon_level, CONNECT_ONE_SHOT)
+	panel.open(Text.say("stage_menu.abandon_title"), rows, Text.say("stage_menu.abandon"))
+
+
+## The stage is lost on the spot with its ordinary penalties, and that loss
+## ends the level (LevelRunner.abandoned), whatever the stage's own rule.
+func _abandon_level() -> void:
+	if engine == null or engine.state.is_over() or not GameState.is_in_level():
+		return
+	GameState.level_runner.abandoned = true
+	engine.forfeit()
+	_details_panel.hide()
+	_refresh()
+	%OutcomeClose.text = Text.say("outcome.back_to_office")
+
+
+func _show_stage_settings() -> void:
+	var panel := _stage_menu_panel()
+	for connection: Dictionary in panel.confirmed.get_connections():
+		panel.confirmed.disconnect(connection["callable"])
+	panel.open(Text.say("stage_menu.settings"), SettingsRows.buttons(_show_stage_settings))
+
+
+func _show_how_to_play() -> void:
+	if _how_to_play_panel == null:
+		_how_to_play_panel = HowToPlayPanel.attach(self)
+	HowToPlayPanel.open(_how_to_play_panel)
+
+
 func _toggle_details() -> void:
 	if not _details_panel.visible and engine != null:
 		_refresh_details(engine.state)
@@ -1270,7 +1339,7 @@ func _on_outcome_closed() -> void:
 
 	if not _ready_to_play:
 		GameState.end_level()
-		get_tree().change_scene_to_file(OFFICE_SCENE)
+		SceneChange.to(get_tree(), OFFICE_SCENE)
 		return
 
 	var state := engine.state
@@ -1290,7 +1359,7 @@ func _on_outcome_closed() -> void:
 
 	if level_over:
 		GameState.end_level()
-		get_tree().change_scene_to_file(OFFICE_SCENE)
+		SceneChange.to(get_tree(), OFFICE_SCENE)
 	else:
 		# Same scene, next stage — unless it's an Office Hours stage (plays
 		# on VisitorScreen instead) or the upcoming stage wants a Stage

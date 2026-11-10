@@ -809,3 +809,14 @@ Test change: `tests/test_stage_rules_columns.gd` now expects ST04's and ST05's q
 ## Rooms with a question pool cap their own questions (2026-11-09, Cameron)
 
 After the writing review moved 244 policy-specific questions into the generic rooms' own Stage Questions, a generic Town Hall would have asked almost nothing else. A room that also has a general pool now deals its own questions for at most a third of what it asks (Balance `Questions: Own Share Percent`, 34; 100 turns the cap off), picked at random each time, and fills the rest from the pool. A room with no pool, or one too small to fill the rest, still uses all of its own. Tests in `tests/test_questions.gd`.
+
+## Project audit and its first fixes (2026-11-10, Cameron)
+
+A read-only audit of the whole project is in `audit/` (seven reports, 55 findings: 5 blockers about shipping, none about game logic). Cameron approved four batches of fixes; what was done is in `audit/07-actions.md`. In short:
+
+- **Art weighs less.** Backgrounds, card art, card frames and characters import as Lossy with a size limit; the source PNGs are untouched. The imported texture data fell from 175 MB to 27 MB. The duplicate `ST22.png` is gone (ST22 borrows ST08's picture).
+- **A stage menu.** The stage info panel has three new buttons: **Abandon Level** (asks first; the stage is lost with its ordinary penalties and the level ends), **Settings** (the same text size, Image Scroll and Image Pan buttons as the Office) and **How to Play**.
+- **Screen changes fade.** Every change of screen goes through `SceneChange.to()`, with a short fade to black (Balance `Scene Change: Fade Seconds`, 0.12).
+- **Tidy-ups.** Developer reports print only in debug builds; one gold-line helper; one constant for the Office scene path; `Layout` no longer rebuilds the party name every frame.
+
+New Text rows: `stage_menu.abandon`, `stage_menu.settings`, `stage_menu.abandon_title`, `stage_menu.abandon_warning`, `outcome.reason.abandoned` (Claude's draft). Tests: `forfeit` and an abandoned level in `tests/test_battle_engine.gd` and `tests/test_level_runner.gd`.

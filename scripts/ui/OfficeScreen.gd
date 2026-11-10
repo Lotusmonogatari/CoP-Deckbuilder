@@ -898,7 +898,7 @@ func _on_forced_special_go(level: Dictionary) -> void:
 
 func _on_resume_level_chosen() -> void:
 	_resume_choice_panel.close()
-	get_tree().change_scene_to_file(StageRouting.scene_for(GameState.level_runner.current_stage()))
+	SceneChange.to(get_tree(), StageRouting.scene_for(GameState.level_runner.current_stage()))
 
 
 func _on_abandon_level_chosen() -> void:
@@ -1926,47 +1926,18 @@ func _on_backup_confirmed() -> void:
 			_do_backup()
 
 
-## "Text size: Normal" -- one tap cycles Small, Normal, Large and applies it
-## at once; the menu is rebuilt so the screen shows the new size.
+## The settings buttons are shared with a stage's own menu (SettingsRows.gd);
+## each redraws this menu after it changes something.
 func _text_size_button() -> Button:
-	var button := UiKit.action_button(_text_size_label(), "", func() -> void:
-		Layout.cycle_text_size()
-		_show_administration_menu(), 100.0)
-	button.name = "TextSizeButton"
-	button.custom_minimum_size.x = UiKit.LINE_WIDTH
-	return button
+	return SettingsRows.text_size_button(_show_administration_menu)
 
 
-## "Image Scroll: On" -- one tap turns dragging event pictures on or off.
 func _image_scroll_button() -> Button:
-	var state := Text.say("settings.on") if Layout.image_scroll_enabled else Text.say("settings.off")
-	return _setting_button("ImageScrollButton", Text.say("office.image_scroll", {"state": state}),
-		Layout.toggle_image_scroll)
+	return SettingsRows.image_scroll_button(_show_administration_menu)
 
 
-## "Image Pan: On" -- one tap turns tilting event pictures on or off.
 func _image_pan_button() -> Button:
-	var state := Text.say("settings.on") if Layout.image_pan_enabled else Text.say("settings.off")
-	return _setting_button("ImagePanButton", Text.say("office.image_pan", {"state": state}),
-		Layout.toggle_image_pan)
-
-
-## A settings button that flips something, then redraws the menu to show it.
-func _setting_button(node_name: String, label: String, flip: Callable) -> Button:
-	var button := UiKit.action_button(label, "", func() -> void:
-		flip.call()
-		_show_administration_menu(), 100.0)
-	button.name = node_name
-	button.custom_minimum_size.x = UiKit.LINE_WIDTH
-	return button
-
-
-func _text_size_label() -> String:
-	var word := Text.say("text_size.normal")
-	match Layout.text_size_setting:
-		TextScale.SMALL: word = Text.say("text_size.small")
-		TextScale.LARGE: word = Text.say("text_size.large")
-	return Text.say("office.text_size", {"size": word})
+	return SettingsRows.image_pan_button(_show_administration_menu)
 
 
 ## One row of a menu: a button that runs `opener` (which opens `panel`) and
@@ -3137,7 +3108,7 @@ func _on_draft_go() -> void:
 		return
 	_draft_panel.close()
 	_levels_panel.close()
-	get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
+	SceneChange.to(get_tree(), StageRouting.LEVEL_INTRO_SCENE)
 
 
 func _on_request_accept(patron_bill_id: String) -> void:
@@ -3148,7 +3119,7 @@ func _on_request_accept(patron_bill_id: String) -> void:
 		return
 	_request_panel.close()
 	_levels_panel.close()
-	get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
+	SceneChange.to(get_tree(), StageRouting.LEVEL_INTRO_SCENE)
 
 
 func _on_request_decline(patron_bill_id: String) -> void:
@@ -3305,14 +3276,9 @@ func _reward_bullets(rewards: Dictionary) -> Array[Control]:
 ## A gold line between the stages of a briefing, the same gold as the cue
 ## banner's edge and the title screen's button outlines.
 func _gold_rule() -> Control:
-	var rule := HSeparator.new()
-	rule.name = "GoldRule"
-	var style := StyleBoxLine.new()
-	style.color = CueBanner.EDGE_COLOUR
-	style.thickness = 4
-	rule.add_theme_stylebox_override("separator", style)
-	rule.add_theme_constant_override("separation", 24)
-	rule.custom_minimum_size = Vector2(UiKit.LINE_WIDTH, 24)
+	# The one shared gold line (audit R-03), a little thicker here.
+	var rule := UiKit.gold_rule(4.0)
+	rule.custom_minimum_size.x = UiKit.LINE_WIDTH
 	return rule
 
 
@@ -3331,7 +3297,7 @@ func _reveal_in_briefing(stage: Dictionary) -> bool:
 ## of one, go straight back into it.
 func _on_start_pressed() -> void:
 	if GameState.is_in_level():
-		get_tree().change_scene_to_file(StageRouting.scene_for(GameState.level_runner.current_stage()))
+		SceneChange.to(get_tree(), StageRouting.scene_for(GameState.level_runner.current_stage()))
 		return
 	_show_levels()
 
@@ -3389,9 +3355,9 @@ func _on_start() -> void:
 	# Every level with a Level Purpose opens on it (2026-11-04, Cameron).
 	var has_purpose := not LevelPurpose.text_for(DataDB.get_level(level_id)).is_empty()
 	if cues.is_empty() and not has_bill and not has_purpose:
-		get_tree().change_scene_to_file(StageRouting.scene_for(runner.current_stage()))
+		SceneChange.to(get_tree(), StageRouting.scene_for(runner.current_stage()))
 	else:
-		get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
+		SceneChange.to(get_tree(), StageRouting.LEVEL_INTRO_SCENE)
 
 
 ## An event's typed date (YY.MM.DD in the workbook) as the calendar square shows it.

@@ -55,11 +55,11 @@ static func scene_for(stage: Dictionary) -> String:
 static func go_to_next_stage(tree: SceneTree, from_scene_const: String) -> void:
 	var stage := GameState.level_runner.current_stage()
 	if StageTransition.should_show(stage):
-		tree.change_scene_to_file(TRANSITION_SCENE)
+		SceneChange.to(tree, TRANSITION_SCENE)
 		return
 
 	var next_scene := scene_for(stage)
 	if next_scene == from_scene_const:
 		tree.reload_current_scene()
 	else:
-		tree.change_scene_to_file(next_scene)
+		SceneChange.to(tree, next_scene)

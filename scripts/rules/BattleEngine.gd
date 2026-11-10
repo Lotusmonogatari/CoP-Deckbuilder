@@ -1581,6 +1581,14 @@ func _victory_reason() -> String:
 	return _words.say("outcome.reason.threshold")
 
 
+## The player gives the stage up (Abandon Level, 2026-11-10): an immediate
+## loss, with the stage's ordinary loss penalties. Nothing happens once the
+## stage is already over.
+func forfeit() -> void:
+	if not state.is_over():
+		_finish("loss", _words.say("outcome.reason.abandoned"))
+
+
 func _finish(outcome: String, reason: String) -> void:
 	state.outcome = outcome
 	state.outcome_reason = reason

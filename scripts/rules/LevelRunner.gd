@@ -28,6 +28,11 @@ var stages: Array = []
 ## Which stage we are on, counting from zero.
 var index := 0
 
+## True once the player abandons the level from a stage (2026-11-10): the
+## stage in play counts as lost and that loss ends the level, whatever the
+## stage's own Loss Ends Level says.
+var abandoned := false
+
 ## What each finished stage produced, keyed by its seq. Each entry is
 ## { "outcome": "win"/"loss", "score": int, "boosters": [booster ids] }.
 var results: Dictionary = {}
@@ -177,7 +182,7 @@ func finish_stage(stage_outcome: String, score: int = 0, boosters: Array = []) -
 		"boosters": boosters.duplicate(),
 	}
 
-	if stage_outcome == LOST and loss_ends_level(stage):
+	if stage_outcome == LOST and (abandoned or loss_ends_level(stage)):
 		_outcome = LOST
 		return
 

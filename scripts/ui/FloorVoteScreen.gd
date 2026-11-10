@@ -797,7 +797,7 @@ func _on_outcome_closed() -> void:
 
 	if not _ready_to_play:
 		GameState.end_level()
-		get_tree().change_scene_to_file(OFFICE_SCENE)
+		SceneChange.to(get_tree(), OFFICE_SCENE)
 		return
 
 	# A Floor Vote cannot be lost — it is a decision, not a contest — worth
@@ -806,7 +806,7 @@ func _on_outcome_closed() -> void:
 
 	if level_over:
 		GameState.end_level()
-		get_tree().change_scene_to_file(OFFICE_SCENE)
+		SceneChange.to(get_tree(), OFFICE_SCENE)
 	else:
 		StageRouting.go_to_next_stage(get_tree(), StageRouting.FLOOR_VOTE_SCENE)
 

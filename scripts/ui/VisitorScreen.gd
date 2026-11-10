@@ -383,7 +383,7 @@ func _on_outcome_closed() -> void:
 
 	if not _ready_to_play:
 		GameState.end_level()
-		get_tree().change_scene_to_file(OFFICE_SCENE)
+		SceneChange.to(get_tree(), OFFICE_SCENE)
 		return
 
 	# Office Hours cannot be lost (design/proposals/office_hours.md §4 point
@@ -393,6 +393,6 @@ func _on_outcome_closed() -> void:
 
 	if level_over:
 		GameState.end_level()
-		get_tree().change_scene_to_file(OFFICE_SCENE)
+		SceneChange.to(get_tree(), OFFICE_SCENE)
 	else:
 		StageRouting.go_to_next_stage(get_tree(), StageRouting.VISITOR_SCENE)

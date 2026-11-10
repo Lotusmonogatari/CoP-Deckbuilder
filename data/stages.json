@@ -1310,7 +1310,7 @@
     "time_units": 2,
     "win_delta_awareness_district": null,
     "win_delta_awareness_national": 1,
-    "background_id": null,
+    "background_id": "ST08",
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.7,

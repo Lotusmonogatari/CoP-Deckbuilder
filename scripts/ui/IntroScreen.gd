@@ -13,7 +13,7 @@ extends Control
 ## ever a file check — nothing is read into memory until Continue is
 ## actually pressed.
 
-const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
+const OFFICE_SCENE := StageRouting.OFFICE_SCENE
 
 @onready var _background: PlaceholderArt = %Background
 @onready var _continue_button: Button = %ContinueButton
@@ -86,7 +86,7 @@ func _on_continue_pressed() -> void:
 			[UiKit.line(Text.say("save.newer_body") if newer else Text.say("save.unreadable_body"))],
 			Text.say("save.start_new"))
 		return
-	get_tree().change_scene_to_file(OFFICE_SCENE)
+	SceneChange.to(get_tree(), OFFICE_SCENE)
 
 
 func _on_new_game_pressed() -> void:
@@ -100,7 +100,7 @@ func _on_new_game_pressed() -> void:
 
 func _start_new_game() -> void:
 	GameState.awaiting_new_game = true
-	get_tree().change_scene_to_file(OFFICE_SCENE)
+	SceneChange.to(get_tree(), OFFICE_SCENE)
 
 
 func _exit_tree() -> void:

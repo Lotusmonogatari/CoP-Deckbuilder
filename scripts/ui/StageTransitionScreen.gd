@@ -254,7 +254,7 @@ func _on_continue() -> void:
 	if not GameState.is_in_level():
 		get_tree().quit()
 		return
-	get_tree().change_scene_to_file(StageRouting.scene_for(GameState.level_runner.current_stage()))
+	SceneChange.to(get_tree(), StageRouting.scene_for(GameState.level_runner.current_stage()))
 
 
 ## The lean taken on the level's bill ("" when this level has none).

@@ -237,7 +237,7 @@ func _on_outcome_closed() -> void:
 	var level_over := GameState.finish_stage(LevelRunner.WON)
 	if level_over:
 		GameState.end_level()
-		get_tree().change_scene_to_file(OFFICE_SCENE)
+		SceneChange.to(get_tree(), OFFICE_SCENE)
 	else:
 		StageRouting.go_to_next_stage(get_tree(), StageRouting.VISIT_SCENE)
 

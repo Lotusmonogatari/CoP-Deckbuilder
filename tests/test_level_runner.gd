@@ -493,3 +493,15 @@ func test_a_retry_replays_the_stage_instead_of_clearing_it() -> void:
 	runner.finish_stage(LevelRunner.RETRY)
 	assert_eq(runner.current_stage()["name_en"], "First", "still on the first stage")
 	assert_false(runner.is_finished())
+
+
+## Abandon Level (Cameron, 2026-11-10): the stage in play is lost and that loss
+## ends the level, even where the stage's own rule says a loss does not.
+func test_an_abandoned_level_ends_as_lost_whatever_the_stage_says() -> void:
+	var runner := _runner({"stages": [
+		{"seq": 1, "name_en": "First", "opponents": [{"opp_id": "A"}], "loss_ends_level": "No"},
+		{"seq": 2, "name_en": "Second", "opponents": [{"opp_id": "B"}]}]})
+	runner.abandoned = true
+	runner.finish_stage(LevelRunner.LOST)
+	assert_true(runner.is_finished())
+	assert_eq(runner.outcome(), LevelRunner.LOST)

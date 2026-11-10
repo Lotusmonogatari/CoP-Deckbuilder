@@ -6641,5 +6641,40 @@
     "english": "{name}: what changed",
     "placeholders": "name",
     "notes": "2026-11-09 Cameron's request. Claude's draft."
+  },
+  {
+    "key": "stage_menu.abandon",
+    "where": "Stage info panel, button and its confirm",
+    "english": "Abandon Level",
+    "placeholders": null,
+    "notes": "2026-11-10 stage menu (audit batch 6). Claude's draft for Cameron."
+  },
+  {
+    "key": "stage_menu.settings",
+    "where": "Stage info panel, button and the panel's title",
+    "english": "Settings",
+    "placeholders": null,
+    "notes": "2026-11-10 stage menu (audit batch 6). Claude's draft for Cameron."
+  },
+  {
+    "key": "stage_menu.abandon_title",
+    "where": "Stage info panel, confirm title",
+    "english": "Abandon this level?",
+    "placeholders": null,
+    "notes": "2026-11-10 stage menu (audit batch 6). Claude's draft for Cameron."
+  },
+  {
+    "key": "stage_menu.abandon_warning",
+    "where": "Stage info panel, confirm text",
+    "english": "This stage counts as lost, with its penalties, and the level ends now.",
+    "placeholders": null,
+    "notes": "2026-11-10 stage menu (audit batch 6). Claude's draft for Cameron."
+  },
+  {
+    "key": "outcome.reason.abandoned",
+    "where": "Stage end panel, the reason line after Abandon Level",
+    "english": "You abandoned the level.",
+    "placeholders": null,
+    "notes": "2026-11-10 stage menu (audit batch 6). Claude's draft for Cameron."
   }
 ]

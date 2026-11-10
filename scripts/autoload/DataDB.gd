@@ -457,7 +457,9 @@ func load_all() -> void:
 	_validate()
 	_loaded = true
 
-	print_report()
+	# The report is for developers; a release build stays quiet (audit C-11).
+	if OS.is_debug_build():
+		print_report()
 
 
 func is_loaded() -> bool:

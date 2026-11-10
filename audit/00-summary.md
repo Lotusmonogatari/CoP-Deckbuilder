@@ -24,10 +24,10 @@ What stands between this project and a shippable build is everything around the 
 | Blocker | 5 |
 | High | 10 |
 | Medium | 19 |
-| Low | 22 |
-| **Total** | **56** |
+| Low | 21 |
+| **Total** | **55** |
 
-Three pairs overlap and are counted once each in their own phase: R-06 and C-12, A-08 and R-02, U-04 and S-08.
+C-08 was withdrawn on 2026-11-10 (my error; see `02-code.md`). Three pairs overlap and are counted once each in their own phase: R-06 and C-12, A-08 and R-02, U-04 and S-08.
 
 ## All findings, by severity
 
@@ -69,7 +69,7 @@ Full evidence and fixes are in the phase files. Effort: S under a day, M a few d
 | S-12 | Medium | Play account | A personal Play account needs 12 testers for 14 days before release (account type unverified) | S | Medium | 06 |
 | S-13 | Medium | Performance | Memory, startup parse and stacked translucent layers are the low-end risks; not measured | S | Medium | 06 |
 | S-14 | Medium | Steam | Generative-AI content must be disclosed in Steam's survey | S | Medium | 06 |
-| C-08 | Low | Performance | Every picture polls the tilt sensors every frame | S | High | 02 |
+| C-08 | Withdrawn | Performance | Reported in error: pictures that cannot pan already stop their per-frame work | - | High | 02 |
 | C-09 | Low | Performance | `Layout` rebuilds the party name every frame | S | High | 02 |
 | C-10 | Low | Tooling | GUT 9.6.1 targets a newer Godot; four script errors at every test start | S | High | 02 |
 | C-11 | Low | Logging | Data report printed in release builds | S | High | 02 |

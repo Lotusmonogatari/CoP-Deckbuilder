@@ -94,10 +94,10 @@ static func tight_column() -> VBoxContainer:
 
 ## A thin gold line between two blocks of a list or panel; the same gold as
 ## the cue banner's edges.
-static func gold_rule() -> ColorRect:
+static func gold_rule(thickness: float = 3.0) -> ColorRect:
 	var rule := ColorRect.new()
 	rule.name = "GoldRule"
 	rule.color = CueBanner.EDGE_COLOUR
-	rule.custom_minimum_size = Vector2(0.0, 3.0)
+	rule.custom_minimum_size = Vector2(0.0, thickness)
 	rule.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	return rule
