@@ -1,0 +1,297 @@
+
+## Batch 1  (n=40)
+strategy | n | weeks | stages | wins | losses | win% | levels_cleared | xp_total | funds_end | cap | dues_owed | weeks_overdue | con | rep | party
+balanced_adaptive | 8 | 30.0 | 463.0 | 431.5 | 13.0 | 97 | 57.5 | 40652.0 | 0.0 | 100000.0 | 2719025.0 | 26.0 | 78.5 | 51.0 | 90.0
+baseline | 8 | 30.0 | 445.5 | 404.5 | 25.5 | 92 | 70.0 | 33313.0 | 0.0 | 100000.0 | 5056525.0 | 26.0 | 76.0 | 18.0 | 90.0
+hoarder | 8 | 30.0 | 419.5 | 377.0 | 38.0 | 90 | 75.0 | 25208.5 | 0.0 | 100000.0 | 1990000.0 | 26.0 | 78.5 | 40.5 | 90.0
+low_tier_grind | 8 | 30.0 | 513.5 | 493.0 | 2.0 | 99 | 15.0 | 46535.0 | 0.0 | 100000.0 | 6074666.0 | 26.0 | 78.5 | 24.5 | 90.0
+short_levels | 8 | 30.0 | 530.5 | 500.5 | 1.5 | 99 | 9.0 | 36577.0 | 0.0 | 100000.0 | 6038125.0 | 26.0 | 78.5 | 1.5 | 90.0
+
+## Batch 2 (cap_dues vs baseline)  (n=16)
+strategy | n | weeks | stages | wins | losses | win% | levels_cleared | xp_total | funds_end | cap | dues_owed | weeks_overdue | con | rep | party
+baseline | 8 | 30.0 | 438.0 | 411.5 | 7.5 | 98 | 67.5 | 35244.5 | 0.0 | 100000.0 | 5176425.0 | 26.0 | 77.0 | 25.0 | 90.0
+cap_dues | 8 | 30.0 | 443.5 | 412.5 | 16.5 | 95 | 68.0 | 34255.5 | 172347.0 | 1000000.0 | 0.0 | 6.0 | 78.5 | 40.0 | 100.0
+
+## Win rate by stage type (all runs)
+ST01 | wins 107 | losses 8 | win% 93
+ST02 | wins 803 | losses 109 | win% 88
+ST03 | wins 846 | losses 106 | win% 89
+ST04 | wins 1517 | losses 15 | win% 99
+ST05 | wins 2261 | losses 92 | win% 96
+ST06 | wins 571 | losses 9 | win% 98
+ST07 | wins 1865 | losses 0 | win% 100
+ST08 | wins 103 | losses 105 | win% 50
+ST09 | wins 22 | losses 0 | win% 100
+ST10 | wins 411 | losses 0 | win% 100
+ST100 | wins 7 | losses 2 | win% 78
+ST101 | wins 33 | losses 0 | win% 100
+ST102 | wins 4 | losses 0 | win% 100
+ST104 | wins 38 | losses 0 | win% 100
+ST105 | wins 34 | losses 0 | win% 100
+ST106 | wins 32 | losses 0 | win% 100
+ST109 | wins 29 | losses 0 | win% 100
+ST11 | wins 35 | losses 1 | win% 97
+ST110 | wins 18 | losses 0 | win% 100
+ST112 | wins 12 | losses 0 | win% 100
+ST115 | wins 12 | losses 0 | win% 100
+ST116 | wins 12 | losses 0 | win% 100
+ST118 | wins 10 | losses 0 | win% 100
+ST12 | wins 233 | losses 3 | win% 99
+ST120 | wins 9 | losses 0 | win% 100
+ST121 | wins 47 | losses 0 | win% 100
+ST122 | wins 46 | losses 1 | win% 98
+ST123 | wins 46 | losses 0 | win% 100
+ST124 | wins 42 | losses 4 | win% 91
+ST125 | wins 34 | losses 1 | win% 97
+ST126 | wins 35 | losses 0 | win% 100
+ST127 | wins 35 | losses 0 | win% 100
+ST128 | wins 28 | losses 7 | win% 80
+ST129 | wins 32 | losses 0 | win% 100
+ST13 | wins 145 | losses 0 | win% 100
+ST130 | wins 32 | losses 0 | win% 100
+ST131 | wins 32 | losses 0 | win% 100
+ST132 | wins 31 | losses 1 | win% 97
+ST133 | wins 31 | losses 0 | win% 100
+ST134 | wins 24 | losses 7 | win% 77
+ST135 | wins 15 | losses 9 | win% 62
+ST136 | wins 36 | losses 0 | win% 100
+ST137 | wins 30 | losses 6 | win% 83
+ST138 | wins 28 | losses 2 | win% 93
+ST139 | wins 28 | losses 0 | win% 100
+ST14 | wins 127 | losses 5 | win% 96
+ST140 | wins 27 | losses 1 | win% 96
+ST141 | wins 14 | losses 13 | win% 52
+ST145 | wins 32 | losses 0 | win% 100
+ST146 | wins 32 | losses 0 | win% 100
+ST147 | wins 32 | losses 0 | win% 100
+ST148 | wins 26 | losses 6 | win% 81
+ST15 | wins 607 | losses 49 | win% 93
+ST153 | wins 40 | losses 0 | win% 100
+ST154 | wins 40 | losses 0 | win% 100
+ST155 | wins 36 | losses 4 | win% 90
+ST156 | wins 30 | losses 6 | win% 83
+ST157 | wins 4 | losses 0 | win% 100
+ST158 | wins 4 | losses 0 | win% 100
+ST159 | wins 4 | losses 0 | win% 100
+ST16 | wins 486 | losses 96 | win% 84
+ST160 | wins 4 | losses 0 | win% 100
+ST161 | wins 34 | losses 0 | win% 100
+ST162 | wins 34 | losses 0 | win% 100
+ST163 | wins 34 | losses 0 | win% 100
+ST164 | wins 30 | losses 4 | win% 88
+ST17 | wins 412 | losses 9 | win% 98
+ST170 | wins 38 | losses 0 | win% 100
+ST171 | wins 38 | losses 0 | win% 100
+ST172 | wins 38 | losses 0 | win% 100
+ST173 | wins 32 | losses 6 | win% 84
+ST174 | wins 8 | losses 0 | win% 100
+ST175 | wins 6 | losses 2 | win% 75
+ST176 | wins 6 | losses 0 | win% 100
+ST177 | wins 6 | losses 0 | win% 100
+ST178 | wins 4 | losses 2 | win% 67
+ST179 | wins 3 | losses 1 | win% 75
+ST18 | wins 159 | losses 10 | win% 94
+ST180 | wins 39 | losses 1 | win% 98
+ST181 | wins 39 | losses 0 | win% 100
+ST182 | wins 39 | losses 0 | win% 100
+ST183 | wins 38 | losses 1 | win% 97
+ST184 | wins 35 | losses 3 | win% 92
+ST185 | wins 29 | losses 6 | win% 83
+ST186 | wins 3 | losses 0 | win% 100
+ST187 | wins 3 | losses 0 | win% 100
+ST188 | wins 3 | losses 0 | win% 100
+ST189 | wins 2 | losses 1 | win% 67
+ST19 | wins 1138 | losses 50 | win% 96
+ST190 | wins 2 | losses 0 | win% 100
+ST191 | wins 1 | losses 1 | win% 50
+ST192 | wins 1 | losses 0 | win% 100
+ST193 | wins 40 | losses 0 | win% 100
+ST194 | wins 39 | losses 1 | win% 98
+ST195 | wins 40 | losses 0 | win% 100
+ST196 | wins 40 | losses 0 | win% 100
+ST197 | wins 31 | losses 9 | win% 78
+ST20 | wins 2295 | losses 85 | win% 96
+ST201 | wins 32 | losses 0 | win% 100
+ST202 | wins 32 | losses 0 | win% 100
+ST203 | wins 32 | losses 0 | win% 100
+ST204 | wins 32 | losses 0 | win% 100
+ST205 | wins 32 | losses 0 | win% 100
+ST206 | wins 30 | losses 2 | win% 94
+ST207 | wins 17 | losses 13 | win% 57
+ST21 | wins 1427 | losses 4 | win% 100
+ST213 | wins 40 | losses 0 | win% 100
+ST214 | wins 40 | losses 0 | win% 100
+ST215 | wins 38 | losses 2 | win% 95
+ST216 | wins 34 | losses 4 | win% 89
+ST217 | wins 29 | losses 5 | win% 85
+ST218 | wins 34 | losses 0 | win% 100
+ST219 | wins 34 | losses 0 | win% 100
+ST22 | wins 59 | losses 0 | win% 100
+ST220 | wins 31 | losses 3 | win% 91
+ST221 | wins 31 | losses 0 | win% 100
+ST222 | wins 25 | losses 6 | win% 81
+ST223 | wins 5 | losses 0 | win% 100
+ST224 | wins 5 | losses 0 | win% 100
+ST225 | wins 5 | losses 0 | win% 100
+ST226 | wins 4 | losses 1 | win% 80
+ST227 | wins 35 | losses 0 | win% 100
+ST228 | wins 35 | losses 0 | win% 100
+ST229 | wins 31 | losses 4 | win% 89
+ST23 | wins 1366 | losses 0 | win% 100
+ST230 | wins 38 | losses 0 | win% 100
+ST231 | wins 35 | losses 3 | win% 92
+ST232 | wins 32 | losses 3 | win% 91
+ST239 | wins 39 | losses 1 | win% 98
+ST24 | wins 47 | losses 2 | win% 96
+ST240 | wins 40 | losses 0 | win% 100
+ST241 | wins 39 | losses 1 | win% 98
+ST242 | wins 34 | losses 5 | win% 87
+ST243 | wins 7 | losses 0 | win% 100
+ST244 | wins 7 | losses 0 | win% 100
+ST245 | wins 7 | losses 0 | win% 100
+ST246 | wins 7 | losses 0 | win% 100
+ST247 | wins 4 | losses 3 | win% 57
+ST248 | wins 4 | losses 0 | win% 100
+ST249 | wins 33 | losses 0 | win% 100
+ST25 | wins 47 | losses 0 | win% 100
+ST250 | wins 33 | losses 0 | win% 100
+ST251 | wins 33 | losses 0 | win% 100
+ST252 | wins 26 | losses 7 | win% 79
+ST253 | wins 4 | losses 0 | win% 100
+ST254 | wins 4 | losses 0 | win% 100
+ST255 | wins 4 | losses 0 | win% 100
+ST256 | wins 4 | losses 0 | win% 100
+ST26 | wins 46 | losses 1 | win% 98
+ST260 | wins 440 | losses 0 | win% 100
+ST261 | wins 440 | losses 0 | win% 100
+ST262 | wins 454 | losses 0 | win% 100
+ST263 | wins 775 | losses 0 | win% 100
+ST264 | wins 108 | losses 0 | win% 100
+ST265 | wins 45 | losses 0 | win% 100
+ST266 | wins 95 | losses 0 | win% 100
+ST267 | wins 673 | losses 0 | win% 100
+ST268 | wins 86 | losses 0 | win% 100
+ST269 | wins 660 | losses 0 | win% 100
+ST27 | wins 47 | losses 0 | win% 100
+ST270 | wins 93 | losses 0 | win% 100
+ST28 | wins 54 | losses 2 | win% 96
+ST289 | wins 2 | losses 1 | win% 67
+ST29 | wins 54 | losses 0 | win% 100
+ST30 | wins 53 | losses 1 | win% 98
+ST31 | wins 54 | losses 0 | win% 100
+ST32 | wins 33 | losses 0 | win% 100
+ST33 | wins 33 | losses 0 | win% 100
+ST34 | wins 32 | losses 1 | win% 97
+ST35 | wins 29 | losses 3 | win% 91
+ST36 | wins 4 | losses 0 | win% 100
+ST37 | wins 4 | losses 0 | win% 100
+ST38 | wins 4 | losses 0 | win% 100
+ST39 | wins 4 | losses 0 | win% 100
+ST43 | wins 36 | losses 2 | win% 95
+ST44 | wins 38 | losses 0 | win% 100
+ST45 | wins 36 | losses 2 | win% 95
+ST46 | wins 28 | losses 6 | win% 82
+ST47 | wins 34 | losses 0 | win% 100
+ST48 | wins 33 | losses 1 | win% 97
+ST49 | wins 29 | losses 4 | win% 88
+ST50 | wins 31 | losses 1 | win% 97
+ST51 | wins 25 | losses 7 | win% 78
+ST52 | wins 21 | losses 4 | win% 84
+ST60 | wins 26 | losses 3 | win% 90
+ST61 | wins 25 | losses 1 | win% 96
+ST62 | wins 21 | losses 4 | win% 84
+ST63 | wins 18 | losses 0 | win% 100
+ST64 | wins 18 | losses 0 | win% 100
+ST65 | wins 13 | losses 5 | win% 72
+ST69 | wins 11 | losses 1 | win% 92
+ST70 | wins 11 | losses 0 | win% 100
+ST71 | wins 11 | losses 0 | win% 100
+ST72 | wins 10 | losses 1 | win% 91
+ST79 | wins 11 | losses 1 | win% 92
+ST80 | wins 12 | losses 0 | win% 100
+ST81 | wins 11 | losses 1 | win% 92
+ST82 | wins 12 | losses 0 | win% 100
+ST83 | wins 10 | losses 2 | win% 83
+ST84 | wins 12 | losses 0 | win% 100
+ST85 | wins 10 | losses 2 | win% 83
+ST90 | wins 10 | losses 0 | win% 100
+ST91 | wins 10 | losses 0 | win% 100
+ST92 | wins 8 | losses 2 | win% 80
+ST93 | wins 6 | losses 4 | win% 60
+ST98 | wins 9 | losses 0 | win% 100
+ST99 | wins 9 | losses 0 | win% 100
+
+## Stages with the most losses (all runs)
+
+## Hardest stage types (>=15 attempts, win% < 85), with room type
+ST08 | None | attempts 208 | win% 50
+ST141 | None | attempts 27 | win% 52
+ST207 | None | attempts 30 | win% 57
+ST135 | None | attempts 24 | win% 62
+ST65 | None | attempts 18 | win% 72
+ST134 | None | attempts 31 | win% 77
+ST197 | None | attempts 40 | win% 78
+ST51 | None | attempts 32 | win% 78
+ST252 | None | attempts 33 | win% 79
+ST128 | None | attempts 35 | win% 80
+ST222 | None | attempts 31 | win% 81
+ST148 | None | attempts 32 | win% 81
+ST46 | None | attempts 34 | win% 82
+ST185 | None | attempts 35 | win% 83
+ST156 | None | attempts 36 | win% 83
+ST137 | None | attempts 36 | win% 83
+ST16 | None | attempts 582 | win% 84
+ST52 | None | attempts 25 | win% 84
+ST62 | None | attempts 25 | win% 84
+ST173 | None | attempts 38 | win% 84
+
+## Economy timeline, baseline vs cap_dues (median over runs, every 5th week)
+baseline
+  wk0: funds 37500.0 | earned 0.0 | dues 0.0 | owed 0.0 | party 12.5 | xp_total 0.0
+  wk5: funds 0.0 | earned 193250.0 | dues 278500.0 | owed 446659.5 | party 90.0 | xp_total 3902.5
+  wk10: funds 0.0 | earned 262357.0 | dues 189637.5 | owed 1554962.5 | party 90.0 | xp_total 9004.5
+  wk15: funds 0.0 | earned 258500.0 | dues 188400.0 | owed 2466191.0 | party 90.0 | xp_total 15086.0
+  wk20: funds 0.0 | earned 268250.0 | dues 190125.0 | owed 3352928.5 | party 90.0 | xp_total 20797.0
+  wk25: funds 0.0 | earned 280000.0 | dues 192000.0 | owed 4217678.5 | party 90.0 | xp_total 26806.0
+  wk30: funds 0.0 | earned 416750.0 | dues 211762.5 | owed 5154850.0 | party 90.0 | xp_total 34933.0
+cap_dues
+  wk0: funds 37500.0 | earned 0.0 | dues 0.0 | owed 0.0 | party 12.5 | xp_total 0.0
+  wk5: funds 0.0 | earned 100000.0 | dues 240000.0 | owed 204100.0 | party 89.0 | xp_total 3508.0
+  wk10: funds 29952.0 | earned 407000.0 | dues 216520.5 | owed 0.0 | party 95.5 | xp_total 7592.5
+  wk15: funds 52141.0 | earned 540256.0 | dues 231038.5 | owed 0.0 | party 100.0 | xp_total 13335.5
+  wk20: funds 51300.5 | earned 478314.0 | dues 221747.0 | owed 0.0 | party 100.0 | xp_total 19717.5
+  wk25: funds 62172.5 | earned 627222.5 | dues 244083.5 | owed 0.0 | party 100.0 | xp_total 26051.0
+  wk30: funds 172347.0 | earned 834854.5 | dues 275228.5 | owed 0.0 | party 100.0 | xp_total 34255.5
+
+## Levels cleared by tier (median per run)
+tier 0: median 75.5 max 444
+tier 1: median 23.5 max 43
+tier 2: median 16.0 max 27
+tier 3: median 0.0 max 0
+tier 4: median 0.0 max 0
+tier 5: median 0.0 max 0
+
+## Run totals: stalls, bugs, promises broken unseen
+stalls 0 | bugs 1472
+
+## Pace per strategy (median): XP per week, Funds earned per week, weeks to Party >= 90, weeks to Constituency >= 70
+strategy | XP/week | funds earned/week (wk 5-30) | wk to party>=90 | wk to con>=70 | wk to xp_total>=10000 | stage losses per 100 stages
+balanced_adaptive | 1355.1 | 212478.6 | 5.5 | 4.0 | 11.5 | 2.8
+baseline | 1164.4 | 278403.8 | 5.0 | 8.5 | 11.0 | 2.3
+cap_dues | 1141.8 | 493368.8 | 5.5 | 7.5 | 13.0 | 3.7
+hoarder | 840.3 | 100000.0 | 5.5 | 5.5 | 12.0 | 9.2
+low_tier_grind | 1551.2 | 477846.2 | 4.0 | 6.0 | 10.0 | 0.4
+short_levels | 1219.2 | 300192.3 | 4.0 | 5.0 | 11.5 | 0.3
+
+## Per-level yield from the sims (all runs): per hour of play, by tier and by repeat
+tier | levels played | median hours | funds/hour (median) | xp/hour (median)
+0 | 7733 | 2 | 7500.0 | 40.0
+1 | 1106 | 13.0 | 6000.0 | 27.5
+2 | 719 | 16 | 5555.6 | 26.5
+
+Level plays that were the 10th or later play of the same level in one run: 3833 of 9558
+funds/hour on 10th+ plays (median): 8250.0 | xp/hour: 42.5
+Most played level ids (all runs): [('LV85', 800), ('LV02', 770), ('LV94', 673), ('LV01', 669), ('LV86', 667)]
+
+## Share of runs ending with Funds at 0 and dues owed > 1,000,000
+48 of 56 | owed>1M: 47
