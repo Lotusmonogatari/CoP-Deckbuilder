@@ -123,4 +123,7 @@ func test_high_national_awareness_lowers_the_dues_in_the_game() -> void:
 	GameState.awareness = {"district": 0, "national": 10}
 	var before := int(GameState.dues_preview()["week_dues"])
 	GameState.awareness = {"district": 0, "national": 85}
-	assert_eq(int(GameState.dues_preview()["week_dues"]), before - 100000)
+	# The relief is 100,000 off the base but never below nothing. With the
+	# smaller steps (2026-11-10) the base is under 100,000 until Party support
+	# passes 100, so here it removes the whole base.
+	assert_eq(int(GameState.dues_preview()["week_dues"]), maxi(0, before - 100000))

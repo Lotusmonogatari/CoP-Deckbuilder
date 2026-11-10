@@ -1,0 +1,74 @@
+## 1. Card power per energy (self_plus + opp_minus) by tier
+tier | cards | mean pts/energy | min | max
+0 | 6 | 2.50 | 1.00 | 5.00
+1 | 16 | 4.00 | 0.00 | 11.00
+2 | 37 | 2.91 | 0.00 | 7.50
+3 | 10 | 3.02 | 1.00 | 4.50
+
+All cards: median 2.50 pts per energy
+
+## 2. Required pace vs available energy (Combat stages with a numeric threshold)
+Ratio = points still needed / (turns x energy x median pts per energy). Above 1 means the median card cannot get there with every energy spent on points.
+ratio | stage | name | need | turns | energy | median-card capacity
+0.93 | ST272 | Radio Call-In Hour | 35 | 5 | 3 | 38
+0.84 | ST26 | Press Conference on Raising Train Fares | 38 | 6 | 3 | 45
+0.82 | ST92 | Press Conference on Surveillance Cameras | 37 | 6 | 3 | 45
+0.82 | ST83 | Press Conference on Workplace Equality | 37 | 6 | 3 | 45
+0.82 | ST55 | Press Conference on the Carbon Levy | 37 | 6 | 3 | 45
+0.82 | ST46 | Press Conference on Donation Transparency | 37 | 6 | 3 | 45
+0.78 | ST70 | Press Conference on Chishima Development | 35 | 6 | 3 | 45
+0.78 | ST64 | Press Conference on the Constitutional Review | 35 | 6 | 3 | 45
+0.78 | ST43 | Press Conference on Broadcaster Independence | 35 | 6 | 3 | 45
+0.78 | ST32 | Press Conference on Wilderness Protection | 35 | 6 | 3 | 45
+0.78 | ST257 | Press Conference on Foreign Resident Local Suffrage | 35 | 6 | 3 | 45
+0.78 | ST249 | Press Conference on Independent Election Commission | 35 | 6 | 3 | 45
+
+Combat stages: 230; ratio median 0.39; share above 1.0: 0%; share above 0.5: 27%
+
+## 3. Stage rewards (Combat)
+win_delta_yen: median 20000.0 | max 100000 | min 0
+win_delta_xp: median 70.0 | max 120 | min 0
+loss_delta_yen: median 0.0 | max 1000 | min 0
+loss_delta_xp: median 1.0 | max 20 | min 0
+Combat stages that pay XP or Funds on a LOSS: 201 of 230
+
+## 4. Shop prices (items with a cost)
+item | name | XP | Funds
+SH31 | Nebuta Festival Hand Towel | 0 | 1200
+SH29 | Wakkanai Milk Caramels | 0 | 1500
+SH33 | Haskap Yoitomake | 0 | 1500
+SH30 | White Chocolate Cookies | 0 | 2000
+SH25 | Box of Aomori Apples | 0 | 3000
+SH28 | Wind-Dried Salmon | 0 | 3000
+SH27 | Dried Hokkaido Scallops | 0 | 7500
+SH04 | “ね3” Coffee | 0 | 10000
+SH05 | “ミレニ姫” Tea | 0 | 10000
+SH06 | Paperwork Automation | 0 | 10000
+SH07 | Wristwatch | 0 | 10000
+SH08 | Personalized Dear Colleague Letter | 0 | 10000
+SH32 | Bottle of District Sake | 0 | 10000
+SH26 | Tsugaru Lacquer Chopsticks | 0 | 18000
+SH01 | Commission Policy Research | 0 | 200000
+SH02 | Commission Press Engagement | 0 | 200000
+SH03 | Commission District Engagement | 0 | 200000
+SH20 | Host a Constituency Group Walking Tour | 10 | 10000
+SH22 | Attacking Op-Ed | 10 | 10000
+SH19 | National Organization Outreach Dinner | 20 | 20000
+SH24 | Public Rebuke | 30 | 0
+SH14 | Commission a Speech Trainer | 50 | 0
+SH15 | Kaiju-Sized “ね3” Coffee | 60 | 0
+SH16 | Automated Dear Colleague Letters | 70 | 0
+SH17 | Kaiju-Sized “ミレニ姫” Tea | 80 | 0
+SH13 | Funds Cap Increase Petition | 100 | 0
+SH18 | AI-Powered Clock | 100 | 0
+SH23 | Leak a Memo | 100 | 0
+SH21 | Training Session Coupon | 150 | 0
+SH35 | Expanded Staff Office | 150 | 300000
+SH34 | Expanded Briefing Binder | 200 | 0
+SH09 | Unlock Random Tier 1 Card | 250 | 0
+SH12 | Staff Training Consultancy Session | 250 | 0
+SH10 | Unlock Random Tier 2 Card | 500 | 0
+SH11 | Unlock Random Tier 3 Card | 1000 | 0
+
+Sum of every shop price once: 3130 XP and 1037700 Funds.
+Card unlock XP total: 635 XP for 70 cards.

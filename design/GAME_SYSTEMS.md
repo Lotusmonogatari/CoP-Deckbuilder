@@ -161,7 +161,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 
 **Each week end (Going Home):**
 
-1. Party dues are settled (base 50,000円, plus 50,000円 per full 15 points of Party support above 40, plus 15% of the Funds earned Monday to Friday, less any National-awareness reduction).
+1. Party dues are settled (base 50,000円, plus 10,000円 per full 15 points of Party support above 40, plus 10% of the Funds earned Monday to Friday, less any National-awareness reduction).
 2. Week-end awareness effects run.
 3. Election strength moves toward its potential.
 4. Decay runs once, multiplied by the **decay multiplier (2.5 at Standard; 2 Relaxed; 3 Harder)**: neglect decay, each organization's own Decay Percent, then meta decay (Constituency support 10%, Reputation 6%).
@@ -193,7 +193,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 
 **Win and loss.** Win at the threshold (or by taking every opponent in a sequence). Lose when the gaffe meter reaches its limit (usually 5, changes with pressure), the turns run out (`turn_limit_outcome` = loss), or your own support is argued to zero. A lost stage ends the level, except press conferences and media ambushes (their threshold only picks which reward table applies). Floor Votes and Office Hours cannot be lost.
 
-**Campaign Pressure** (`Difficulty.gd`; every number a Balance row named `difficulty_<tier>_<lever>`): opponents start with 6 less / 6 more support, the gaffe limit is one higher / one lower, awareness gaffe percent (50/150), reward percent (115/85), dues share (10/20%), dues holiday weeks (3/0), decay multiplier (2/3), promise deadlines (150/75%), broken-promise penalty (−5/−7), item prices (85/115%), election strength speed, and the draft cost (200,000 / 400,000円). Card values, energy, hand size, turn limits and text never change.
+**Campaign Pressure** (`Difficulty.gd`; every number a Balance row named `difficulty_<tier>_<lever>`): opponents start with 6 less / 6 more support, the gaffe limit is one higher / one lower, awareness gaffe percent (50/150), reward percent (115/85), dues share (5/20%), dues holiday weeks (3/0), decay multiplier (2/3), promise deadlines (150/75%), broken-promise penalty (−5/−7), item prices (85/115%), election strength speed, and the draft cost (200,000 / 400,000円). Card values, energy, hand size, turn limits and text never change.
 
 ## 8. Bills, votes and laws
 
