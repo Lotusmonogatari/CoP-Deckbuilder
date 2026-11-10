@@ -236,3 +236,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Writing review, group 2 content (2026-11-09, Cameron)
 - Rooms with a question pool cap their own questions (2026-11-09, Cameron)
 - Project audit and its first fixes (2026-11-10, Cameron)
+- The Japanese fallback font is shrunk (2026-11-10, Cameron)

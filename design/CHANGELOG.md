@@ -820,3 +820,7 @@ A read-only audit of the whole project is in `audit/` (seven reports, 55 finding
 - **Tidy-ups.** Developer reports print only in debug builds; one gold-line helper; one constant for the Office scene path; `Layout` no longer rebuilds the party name every frame.
 
 New Text rows: `stage_menu.abandon`, `stage_menu.settings`, `stage_menu.abandon_title`, `stage_menu.abandon_warning`, `outcome.reason.abandoned` (Claude's draft). Tests: `forfeit` and an abandoned level in `tests/test_battle_engine.gd` and `tests/test_level_runner.gd`.
+
+## The Japanese fallback font is shrunk (2026-11-10, Cameron)
+
+`assets/fonts/NotoSansJP[wght].ttf` went from 9.6 MB to 3.0 MB (audit A-07). The new `tools/subset_font.py` keeps every character used anywhere in `data/*.json` or in script strings, all hiragana and katakana, ASCII, Latin, punctuation, arrows and symbols, and the 2,965 common (JIS level 1) kanji as headroom for new names. The full font stays in `tools/fonts/` (not shipped, hidden from the editor) so the tool can be run again. `tests/test_font_coverage.gd` fails the build if a character the data uses is lost, so after adding content with an unusual kanji, run `python3 tools/subset_font.py` (it needs the `fonttools` Python package, which is not a game dependency). Two symbols the data uses, ☼ (every ticker line) and ✕, are missing from the full font too and were already drawn by Godot's fallback; they are unchanged.
