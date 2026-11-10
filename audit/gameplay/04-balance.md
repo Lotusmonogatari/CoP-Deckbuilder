@@ -97,7 +97,9 @@ Timeline, median of baseline versus `cap_dues`:
 | 25 | 0 / 4,217,678 | 62,173 / 0 |
 | 30 | 0 / 5,154,850 | 172,347 / 0 |
 
-So the dues system is solvable but only through one path (spend XP on the cap petition SH13, 100 XP each, early). A player who does not know that falls behind by week 5 and never recovers. Cameron has seen this result before (strategy playtest, 2026-11-02) and left the design; this audit confirms it again with 56 runs and adds the unbounded overdue multiplier (G-04).
+So the dues system is solvable but only through one path (spend XP on the cap petition SH13, 100 XP each, early). A player who does not know that falls behind by week 5 and never recovers. Cameron has seen this result before (strategy playtest, 2026-11-02) and left the design; this audit confirms it again with 56 runs and explains the mechanism below.
+
+**How owed climbs past 1,000,000 (arithmetic, no interest).** Each week the party is owed `50,000 + 50,000 x floor((Party support - 40) / 15) + 15 % of Funds earned Monday to Friday`, plus whatever was carried over (`PartyDues.gd:33-44`, `GameState.gd:2129-2146`). Only the Funds held at week end can be paid, and Funds are capped at 100,000, so at most 100,000 can be paid. At Party support 90 (reached by week 4 to 6 in every strategy) the base alone is 200,000, so the shortfall is at least 100,000 and in the sims about 130,000 to 180,000 a week. 30 weeks x about 170,000 is the 5.2 million seen. Nothing compounds: `dues_balance` is simply carried forward. The 1.5^(owed/100,000) multiplier scales only the standing penalties (G-04), not the amount owed.
 
 | ID | Severity | Mechanic | Location | What's wrong | Evidence | Suggested fix | Effort | Confidence |
 |---|---|---|---|---|---|---|---|---|

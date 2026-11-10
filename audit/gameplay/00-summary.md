@@ -6,19 +6,19 @@ Evidence base: 56 simulated 30-week runs with the project's own strategy bot (6 
 
 ## Verdict on the core loop
 
-The battle loop is sound and well-tested but easy: the bot wins 92 to 99 % of stages, no combat threshold is out of reach on paper, and I found no crash, softlock or infinite loop. The meta loop is where the design leaks: Party support and Constituency support hit their ceilings by week 4 to 8 and then stop moving; replaying the shortest Tier 0 level pays more per hour than the longer Tier 1 and 2 levels and never decays, so grinding is the optimal strategy; and party dues outrun the Funds cap, so 47 of 56 runs ended owing over 1,000,000 with only one counter-strategy (buy cap petitions first) that a new player has no way to discover. A stage's loss is also only applied when the result panel is closed, and nothing inside a stage is saved, so on a phone a loss can be avoided by closing the app. Whether the game *feels* good is something only a human playtest can say.
+The battle loop is sound and well-tested but easy: the bot wins 92 to 99 % of stages, no combat threshold is out of reach on paper, and I found no crash, softlock or infinite loop. The meta loop is where the design leaks: Party support and Constituency support hit their ceilings by week 4 to 8 and then stop moving; replaying the shortest Tier 0 level pays more per hour than the longer Tier 1 and 2 levels and never decays, so grinding is the optimal strategy; and party dues outrun the Funds cap, so 47 of 56 runs ended owing over 1,000,000 with only one counter-strategy (buy cap petitions first) that a new player has no way to discover. The game saves at each defeated opponent, but a stage's loss is only applied when the result panel is closed, so a loss can probably be avoided by closing the app (unverified). Whether the game *feels* good is something only a human playtest can say.
 
 ## Count by severity
 
 | Severity | Count |
 |---|---|
 | Blocker | 0 |
-| High | 4 |
+| High | 3 |
 | Medium | 14 |
-| Low | 17 |
+| Low | 18 |
 | **Total (unique)** | **35** |
 
-Five findings appear in more than one phase file and are counted once: X-01 is B-08, X-02 is G-01, X-03 is T-06, X-04 is B-05, X-06 is G-08. G-02 and G-09 also restate C-02 and C-05 of the project audit (`audit/02-code.md`) with extra detail, and F-01 restates A-04; they are counted here but not added to the project audit's totals.
+Corrections on 2026-11-10 after review by Cameron: G-01 lowered to High-to-Medium (existing checkpoints), G-04 lowered to Low (the multiplier does not grow dues). Five findings appear in more than one phase file and are counted once: X-01 is B-08, X-02 is G-01, X-03 is T-06, X-04 is B-05, X-06 is G-08. G-02 and G-09 also restate C-02 and C-05 of the project audit (`audit/02-code.md`) with extra detail, and F-01 restates A-04; they are counted here but not added to the project audit's totals.
 
 ## All findings, by severity
 
@@ -26,13 +26,13 @@ Effort: S under a day, M a few days, L a week or more. Detail is in the phase fi
 
 | ID | Severity | Mechanic | What's wrong | Effort | Confidence | File |
 |---|---|---|---|---|---|---|
-| G-01 (X-02) | High | Stage loss / save | A loss is only applied when the result panel is closed, and nothing mid-stage is saved; force-closing on "Lost" gives a free retry and keeps one-time levels | M | Medium | 03, 05 |
 | B-05 (X-04) | High | Party dues vs Funds cap | Dues (190k to 280k a week) exceed the 100k Funds cap; 47 of 56 runs end owing over 1M; only "cap petitions first" works | S to M | High | 04, 05 |
 | B-08 (X-01) | High | Level rewards / grind | Tier 0 pays more per hour than Tier 1 and 2 (7,500 vs 6,000 and 5,556 Funds; 40 vs 27.5 and 26.5 XP) and repeats do not decay; grinding is dominant | M | High | 04, 05 |
 | F-01 | High | Audio feedback | No sound at all; card plays, gaffes and results are silent | L | High | 06 |
-| G-02 | Medium | Mid-stage progress | Stage progress is lost on app kill; the battle RNG is unseeded, so a retry also re-rolls luck | M | Medium | 03 |
+| G-01 (X-02) | Medium | Stage loss / save | The game saves at each defeated opponent (171 of 230 combat stages have several), but a loss is only applied when the result panel is closed; force-closing on "Lost" likely gives a free retry of the last opponent and keeps one-time levels | M | Medium | 03, 05 |
+| G-02 | Medium | Mid-stage progress | Inside one opponent's bout nothing is saved (an OS kill loses that bout back to the last defeat); the people draw is unseeded | M | Medium | 03 |
 | G-03 | Medium | Gaffe vs threshold | A card that fills the gaffe meter and crosses the threshold together is a loss; not documented for the player | S | High | 03 |
-| G-04 | Medium | Party dues | Overdue multiplier `1.5^(owed/100000)` has no ceiling | S | High | 03 |
+| G-04 | Low | Party dues penalties | The overdue multiplier `1.5^(owed/100000)` scales only the standing penalties, has no ceiling; it does not grow the amount owed | S | High | 03 |
 | G-05 | Medium | One-time levels | A lost one-time bill level is gone for the run | S | Medium | 03 |
 | G-06 | Medium | Patron request start | 1,472 "could not be started" reports from the bot (likely work-week limit plus a bot that declines); cause not isolated | S | Low | 03 |
 | B-01 | Medium | Card power curve | Mean points per energy falls from Tier 1 (4.00) to Tier 2 (2.91) and Tier 3 (3.02) | M | Medium | 04 |
@@ -92,7 +92,7 @@ Small batches, each approvable alone. **Nothing here has been done.**
 | Batch | What | Findings | Why now |
 |---|---|---|---|
 | 1. Make a loss real | Apply `finish_stage` the moment the outcome is decided (show the panel afterward) | G-01, G-05 | The one possible progress exploit; a small change in one place plus a test |
-| 2. Dues | Cap the overdue multiplier (new Balance row); tell the player early what dues cost and how the cap works | G-04, B-05, B-06 | Fixes the economy cliff without redesign; needs Cameron's decision on how soft to make it |
+| 2. Dues | Tell the player early what dues cost and how the cap works | B-05, B-06 (G-04 optional) | Fixes the economy cliff without redesign; needs Cameron's decision on how soft to make it |
 | 3. Repeat and tier payoff | Raise Tier 1 and 2 rewards per hour above Tier 0, or decay repeated levels using the existing cooldown column | B-08, X-01 | Removes the dominant strategy; needs Cameron's decision on numbers |
 | 4. Hard-coded numbers to the Balance tab | Card drag distances, the bill-vote formula, election strength halving, audience thresholds; reconcile code defaults | F-04, T-01, T-02, T-03, T-05 | Matches the project's own rule (no design numbers in scripts); mechanical and testable |
 | 5. Small clarity items | Document gaffe-vs-threshold order; trace the Abandon patron penalty; add the missing press-conference test; log patron refusals in the bot | G-03, G-08, G-07, G-06 | Cheap and removes uncertainty |
