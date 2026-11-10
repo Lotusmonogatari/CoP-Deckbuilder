@@ -161,7 +161,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 
 **Each week end (Going Home):**
 
-1. Party dues are settled (base 50,000円, plus 50,000円 per full 15 points of Party support above 40, plus 15% of the Funds earned Monday to Friday, less any National-awareness reduction).
+1. Party dues are settled (base 50,000円, plus 10,000円 per full 15 points of Party support above 40, plus 10% of the Funds earned Monday to Friday, less any National-awareness reduction).
 2. Week-end awareness effects run.
 3. Election strength moves toward its potential.
 4. Decay runs once, multiplied by the **decay multiplier (2.5 at Standard; 2 Relaxed; 3 Harder)**: neglect decay, each organization's own Decay Percent, then meta decay (Constituency support 10%, Reputation 6%).

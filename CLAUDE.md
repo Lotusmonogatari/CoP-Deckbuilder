@@ -237,3 +237,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Rooms with a question pool cap their own questions (2026-11-09, Cameron)
 - Project audit and its first fixes (2026-11-10, Cameron)
 - The Japanese fallback font is shrunk (2026-11-10, Cameron)
+- Party dues lowered: 10,000 per step, 10% of earnings (2026-11-10, Cameron)

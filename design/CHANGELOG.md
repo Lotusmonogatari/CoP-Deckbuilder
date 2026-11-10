@@ -824,3 +824,7 @@ New Text rows: `stage_menu.abandon`, `stage_menu.settings`, `stage_menu.abandon_
 ## The Japanese fallback font is shrunk (2026-11-10, Cameron)
 
 `assets/fonts/NotoSansJP[wght].ttf` went from 9.6 MB to 3.0 MB (audit A-07). The new `tools/subset_font.py` keeps every character used anywhere in `data/*.json` or in script strings, all hiragana and katakana, ASCII, Latin, punctuation, arrows and symbols, and the 2,965 common (JIS level 1) kanji as headroom for new names. The full font stays in `tools/fonts/` (not shipped, hidden from the editor) so the tool can be run again. `tests/test_font_coverage.gd` fails the build if a character the data uses is lost, so after adding content with an unusual kanji, run `python3 tools/subset_font.py` (it needs the `fonttools` Python package, which is not a game dependency). Two symbols the data uses, ☼ (every ticker line) and ✕, are missing from the full font too and were already drawn by Godot's fallback; they are unchanged.
+
+## Party dues lowered (2026-11-10, Cameron)
+
+Two Balance rows changed in the workbook: `Dues: Step Amount` 50,000 to 10,000 and `Dues: Reward Percent` 15 to 10. The week-end dues are now 50,000円, plus 10,000円 for every full 15 points of Party support above 40, plus 10% of the Funds earned Monday to Friday. No code changed. `GAME_SYSTEMS.md`, `GAME_DESIGN.md` and `CONTENT_GUIDE.md` updated. The unit tests build their own settings and do not read these two rows. Open question for Cameron: Relaxed's dues share is still 10%, which now equals Standard (Harder is 20%).
