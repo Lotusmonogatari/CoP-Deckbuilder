@@ -856,3 +856,7 @@ The Resign screen now has a crimson "Goodbye" button (Text `resign.to_title`, sa
 ## Every button press saves (2026-11-11, Cameron)
 
 `SaveManager` now connects to every button as it enters the game and saves the run once the frame after a press (presses in one frame share one save). It stays silent (no "Saved" flash), does nothing during a stage (the stage's own saves cover that), and does nothing until a run is started or loaded, so a title-screen button can never overwrite the real save with a blank run. A save takes about 1 ms for a new run's 4 KB file (measured). Not covered by a unit test: the save manager is switched off in test runs so tests never touch a real save.
+
+## Resign and title pictures added (2026-11-11, Cameron)
+
+Cameron uploaded `Resign.png`, `Resign_2.png` and `Title.png`. They were renamed to the game's ids (`RESIGN.png`, `RESIGN_2.png`, `TITLE.png`): picture ids are upper case, and a folder holding both `Title.png` and `TITLE.png` would break a checkout on Windows or macOS. `TITLE.png` replaces the earlier 37 KB title picture (still in git history). Screenshots of the title screen and both Resign parts were taken at 1080 x 2340.
