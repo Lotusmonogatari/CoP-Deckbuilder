@@ -53,7 +53,7 @@ Stages, one after another; between two of them an optional Transition         �
 Level ends (win, or a loss that ends it) → rewards, laws, triggers → back ────┘
 ```
 
-**Save points:** after every stage, whenever the Office opens, and whenever something is bought or changed there; when the app is backgrounded outside a stage; one automatic slot (`user://savegame.json`) plus one manual backup. A stage in progress is saved only at an opponent's defeat, and at the moment its result is shown (`pending_stage_result`): reopening the game on a result screen counts that result, a loss included, instead of replaying the stage.
+**Save points:** after every stage, whenever the Office opens, whenever something is bought or changed there, and **on every button press** (outside a stage, and only once a run exists; `SaveManager._on_node_added`); when the app is backgrounded outside a stage; one automatic slot (`user://savegame.json`) plus one manual backup. A stage in progress is saved only at an opponent's defeat, and at the moment its result is shown (`pending_stage_result`): reopening the game on a result screen counts that result, a loss included, instead of replaying the stage.
 
 **Ending a run:** there is no final win screen. A run is the campaign; the player stops when they like. (Election strength builds toward a campaign but fires nothing yet.)
 

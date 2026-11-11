@@ -852,3 +852,7 @@ Two Balance rows changed in the workbook: `Dues: Step Amount` 50,000 to 10,000 a
 ## Resign screen in two parts (2026-11-11, Cameron)
 
 The Resign screen now has a crimson "Goodbye" button (Text `resign.to_title`, same style as the Resign button). Goodbye swipes the first part off to the left and a second part in from the right: RESIGN_2.png with the words and button mirrored, then a hold, a fade to black, a pause in black and the title screen. The four timings are Balance rows (`Resign: Swipe Seconds` 0.6, `Hold Seconds` 2, `Fade Seconds` 1 (first draft), `Black Seconds` 2). The mirror is applied to the margin box, because a container resets its children's scale. RESIGN.png and RESIGN_2.png are labelled placeholders until the pictures are added (`assets/backgrounds/`).
+
+## Every button press saves (2026-11-11, Cameron)
+
+`SaveManager` now connects to every button as it enters the game and saves the run once the frame after a press (presses in one frame share one save). It stays silent (no "Saved" flash), does nothing during a stage (the stage's own saves cover that), and does nothing until a run is started or loaded, so a title-screen button can never overwrite the real save with a blank run. A save takes about 1 ms for a new run's 4 KB file (measured). Not covered by a unit test: the save manager is switched off in test runs so tests never touch a real save.

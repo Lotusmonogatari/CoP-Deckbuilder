@@ -7,6 +7,7 @@ extends Node
 ## WHEN IT SAVES
 ##   - after every stage, win or loss (GameState.finish_stage())
 ##   - whenever the Office opens, and after anything bought or changed there
+##   - whenever a button is pressed (outside a stage), once a run exists
 ##   - when the phone sends the game to the background, or the window closes,
 ##     unless a stage is being fought
 ## A stage in progress is never saved: coming back mid-stage starts that
@@ -46,6 +47,36 @@ func _ready() -> void:
 		return
 	if not has_save():
 		GameState.awaiting_new_game = true
+	# Every button press saves the game (2026-11-11, Cameron).
+	get_tree().node_added.connect(_on_node_added)
+
+
+## Every button in the game saves the run when it is pressed (2026-11-11,
+## Cameron). The save is taken after the frame, so it holds what the press
+## changed, and presses in the same frame share one save. It does nothing while
+## a stage is being fought (autosave's own rule; the stage's own saves cover
+## that) and nothing before a run is started or loaded, so pressing a title
+## button can never write a blank run over the player's real save.
+func _on_node_added(node: Node) -> void:
+	if node is BaseButton:
+		(node as BaseButton).pressed.connect(_queue_click_save)
+
+
+var _click_save_queued := false
+
+
+func _queue_click_save() -> void:
+	if _click_save_queued:
+		return
+	_click_save_queued = true
+	_save_for_click.call_deferred()
+
+
+func _save_for_click() -> void:
+	_click_save_queued = false
+	if GameState.protagonist_id.is_empty():
+		return
+	autosave()
 
 
 ## Saves unless a stage is being fought. What every caller should use.
