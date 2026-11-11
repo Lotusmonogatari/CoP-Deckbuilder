@@ -1819,7 +1819,7 @@
     "name_en": "Yoshiko Tanabe",
     "name_jp": "田辺良子",
     "romaji": "Yoshiko Tanabe",
-    "title": "Party Elder Stateswoman",
+    "title": "Party Elder",
     "stages": [
       "ST22"
     ],
@@ -2427,9 +2427,9 @@
   },
   {
     "visitor_id": "VI51",
-    "name_en": "Moto Shibata",
-    "name_jp": "柴田基",
-    "romaji": "Moto Shibata",
+    "name_en": "Saya Shimabuku",
+    "name_jp": "島袋紗綾",
+    "romaji": "Saaya Shimabuku",
     "title": "Islander Elder",
     "stages": [
       "ST112"

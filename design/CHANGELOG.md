@@ -832,3 +832,7 @@ Two Balance rows changed in the workbook: `Dues: Step Amount` 50,000 to 10,000 a
 ## Relaxed dues share 5% (2026-11-10, Cameron)
 
 `Difficulty Relaxed: Dues Reward Percent` 10 to 5, so the tiers stay in order after Standard fell to 10% (Harder stays 20%). A workbook row only; `GAME_SYSTEMS.md` updated.
+
+## National awareness dues relief halved (2026-11-11, Cameron)
+
+`AE01` (National awareness 80 or more) now takes 50,000円 off the base party dues instead of 100,000円, because the base itself fell when the dues were lowered (2026-11-10). A workbook row only; `GAME_SYSTEMS.md` and the awareness test updated. Cameron's workbook upload of 2026-11-10 (two visitor renames and 20 new visitor pictures) was brought in first and re-exported.
