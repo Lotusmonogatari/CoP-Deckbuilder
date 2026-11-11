@@ -241,3 +241,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Relaxed dues share 5% (2026-11-10, Cameron)
 - National awareness dues relief halved to 50,000 (2026-11-11, Cameron)
 - Loss saves, haptics, back button, Tier 0 pay, Resign (2026-11-11, Cameron)
+- Resign screen in two parts (2026-11-11, Cameron)

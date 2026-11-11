@@ -797,7 +797,7 @@
   "request.stance_supportive": "{party} backs this bill.",
   "request.title": "A bill to carry",
   "resign.body": "So you lay down your arms and step out, away from the coliseum of parliament. To resign in disgrace or obscurity, which is more painful? One is to be remembered for shame and the other is the shame to not be remembered. You will be replaced by an individual for whom the party holds in higher regard and promise. Public service is not a game. Governance is not a fickle flame. Public service and governance is a choice to deny the individual for the masses. Sometimes it is a greater deed to let another sit in the chair and captivate the room where it happens.",
-  "resign.to_title": "Back to the Title Screen",
+  "resign.to_title": "Goodbye",
   "reward.by_finish": "{name}, by how far above {baseline} you finish (1 per {per})",
   "reward.delta": "{name} {amount}",
   "reward.head_start": "A head start later in the level, 1 per {per} above {baseline}",

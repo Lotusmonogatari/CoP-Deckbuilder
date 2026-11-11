@@ -848,3 +848,7 @@ Two Balance rows changed in the workbook: `Dues: Step Amount` 50,000 to 10,000 a
 | Tier 0 stage pay | 18 stage rows used by Tier 0 levels cut to 30,000 (Win ΔYen): ST05, ST06, ST15, ST17, ST20, ST29, ST98, ST122, ST123, ST132, ST133, ST134, ST136 to ST139, ST271, ST273. The six shared with Tier 1 and 2 drop there too, so the Tier 1 average is now 29,143. |
 | Resign | New button, rules (`ResignRules`), Balance rows (`Resign: ...`), Text rows (`office.resign`, `resign.body`, `resign.to_title`) and screen (`ResignScreen`). RESIGN.png is a labelled placeholder until the picture is added. |
 | Not changed | Losses paying a little XP or Funds is by design (audit T-06 withdrawn); the Funds cap is raised by an item up to 1,000,000, and patron bills do not check Funds. |
+
+## Resign screen in two parts (2026-11-11, Cameron)
+
+The Resign screen now has a crimson "Goodbye" button (Text `resign.to_title`, same style as the Resign button). Goodbye swipes the first part off to the left and a second part in from the right: RESIGN_2.png with the words and button mirrored, then a hold, a fade to black, a pause in black and the title screen. The four timings are Balance rows (`Resign: Swipe Seconds` 0.6, `Hold Seconds` 2, `Fade Seconds` 1 (first draft), `Black Seconds` 2). The mirror is applied to the margin box, because a container resets its children's scale. RESIGN.png and RESIGN_2.png are labelled placeholders until the pictures are added (`assets/backgrounds/`).

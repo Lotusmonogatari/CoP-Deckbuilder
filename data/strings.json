@@ -6701,7 +6701,7 @@
   {
     "key": "resign.to_title",
     "where": "Resign screen, the only button",
-    "english": "Back to the Title Screen",
+    "english": "Goodbye",
     "placeholders": null,
     "notes": null
   }
