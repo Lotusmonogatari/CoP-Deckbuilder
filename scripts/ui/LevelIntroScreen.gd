@@ -218,6 +218,7 @@ func _on_lean_chosen(lean: String) -> void:
 
 
 func _on_continue() -> void:
+	Haptics.confirm()
 	if not GameState.is_in_level():
 		get_tree().quit()
 		return

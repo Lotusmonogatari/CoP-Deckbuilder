@@ -80,6 +80,7 @@ static func action_button(ok_text: String, refusal: String, on_press: Callable,
 	button.text = ok_text if refusal.is_empty() else refusal
 	button.disabled = not refusal.is_empty()
 	if refusal.is_empty():
+		button.pressed.connect(Haptics.confirm)
 		button.pressed.connect(on_press)
 	return button
 

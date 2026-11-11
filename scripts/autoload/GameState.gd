@@ -38,6 +38,13 @@ var vote_briefed := false
 ## the stage ends or a level begins.
 var stage_checkpoint: Dictionary = {}
 
+## The result of a stage that has just ended but has not been counted yet
+## (2026-11-11, Cameron): written to the save the moment the result is shown,
+## cleared by finish_stage(). Closing the game on a loss screen therefore comes
+## back to a loss that is already counted, not a free retry. Holds the
+## arguments finish_stage() takes, plus the stage's key.
+var pending_stage_result: Dictionary = {}
+
 ## The level being played, or null when the player is in the Office.
 var level_runner: LevelRunner = null
 
@@ -524,7 +531,7 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 # test rather than half-saved.
 
 const _SAVED_FIELDS := [
-	"protagonist_id", "difficulty", "awareness_gaffe_tally", "stage_checkpoint", "last_level_outcome", "meta", "xp",
+	"protagonist_id", "difficulty", "awareness_gaffe_tally", "stage_checkpoint", "pending_stage_result", "last_level_outcome", "meta", "xp",
 	"owned_cards", "deck", "owned_modifiers",
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
@@ -2444,6 +2451,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	lock_vote_unknown_percent()
 	mid_stage = false
 	stage_checkpoint = {}
+	pending_stage_result = {}
 	if level_runner == null:
 		return true
 
@@ -4815,6 +4823,42 @@ func _refresh_vote_stage(patron_bill_id: String) -> void:
 
 ## Which stage a checkpoint belongs to: the level, the place in it and the
 ## stage, so a save point is never applied to a different fight.
+## The player resigns (2026-11-11, Cameron): the run ends on the spot and its
+## save is deleted, so Continue is gone. Nothing saves again until a new run
+## starts (awaiting_new_game). A manual backup, if the player made one, stays.
+func resign_run() -> void:
+	level_runner = null
+	mid_stage = false
+	stage_checkpoint = {}
+	pending_stage_result = {}
+	if SaveManager.enabled:
+		SaveManager.delete_save()
+	awaiting_new_game = true
+
+
+## Notes that the stage in front of the player has ended, and saves it, so the
+## result survives the app being closed before the result panel is dismissed.
+## `args` are finish_stage()'s arguments by name (see BattleScreen).
+func record_pending_stage_result(args: Dictionary) -> void:
+	if level_runner == null:
+		return
+	var noted := args.duplicate(true)
+	noted["key"] = stage_checkpoint_key()
+	pending_stage_result = noted
+	SaveManager.save_checkpoint()
+
+
+## The recorded result if it belongs to the stage now in front of the player,
+## else empty. Does not clear it: finish_stage() does.
+func pending_result_for_current_stage() -> Dictionary:
+	if pending_stage_result.is_empty() or level_runner == null:
+		return {}
+	if str(pending_stage_result.get("key", "")) != stage_checkpoint_key():
+		pending_stage_result = {}
+		return {}
+	return pending_stage_result
+
+
 func stage_checkpoint_key() -> String:
 	if level_runner == null:
 		return ""

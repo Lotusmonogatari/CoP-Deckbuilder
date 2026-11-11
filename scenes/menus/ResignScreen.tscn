@@ -1,0 +1,111 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/ResignScreen.gd" id="1_resign"]
+[ext_resource type="Script" path="res://scripts/ui/PlaceholderArt.gd" id="2_art"]
+
+[node name="ResignScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_resign")
+
+[node name="PhaseOne" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundOne" type="Control" parent="PhaseOne"]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_art")
+
+[node name="Scrim" type="ColorRect" parent="PhaseOne"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.07, 0.62)
+
+[node name="Safe" type="MarginContainer" parent="PhaseOne"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 120
+
+[node name="Column" type="VBoxContainer" parent="PhaseOne/Safe"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 2
+
+[node name="WordsOne" type="Label" parent="PhaseOne/Safe/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="GoodbyeOne" type="Button" parent="PhaseOne/Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+
+[node name="PhaseTwo" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundTwo" type="Control" parent="PhaseTwo"]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_art")
+
+[node name="Scrim" type="ColorRect" parent="PhaseTwo"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.07, 0.62)
+
+[node name="SafeTwo" type="MarginContainer" parent="PhaseTwo"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 120
+
+[node name="ColumnTwo" type="VBoxContainer" parent="PhaseTwo/SafeTwo"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 2
+
+[node name="WordsTwo" type="Label" parent="PhaseTwo/SafeTwo/ColumnTwo"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="GoodbyeTwo" type="Button" parent="PhaseTwo/SafeTwo/ColumnTwo"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+
+[node name="Black" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

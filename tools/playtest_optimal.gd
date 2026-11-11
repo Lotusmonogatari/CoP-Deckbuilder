@@ -945,7 +945,7 @@ func _play_patron_requests() -> void:
 		if GameState.is_in_level():
 			return
 		if not GameState.start_patron_level(id):
-			_bug("a due patron bill (%s) could not be started" % id)
+			_bug("a due patron bill (%s) could not be started: %s" % [id, GameState.last_level_start_refusal])
 			GameState.decline_patron_bill(id)
 			continue
 		_patron["accepted"] += 1

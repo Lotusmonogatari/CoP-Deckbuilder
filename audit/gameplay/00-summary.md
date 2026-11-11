@@ -122,3 +122,16 @@ Small batches, each approvable alone. **Nothing here has been done.**
 | `04-balance.md`, `balance_static.py`, `analyze_sims.py`, `sim/*` | Simulation scripts, raw runs and output |
 | `05-exploits.md` | Exploits and dominant strategies |
 | `06-input-feel.md` | Input and feedback |
+
+## Update 2026-11-11: decisions and fixes after Cameron's review
+
+| Finding | Outcome |
+|---|---|
+| G-01 / X-02 (close the app on a loss) | **Fixed.** The stage result is saved when shown (`pending_stage_result`); reopening counts it. Tests added. |
+| G-03 (gaffe versus threshold) | **Confirmed as intended** by Cameron: the gaffe meter wins; otherwise crossing the line ends the stage at once and the queued attack never happens. Pinned by two tests and written in `GAME_SYSTEMS.md`. |
+| F-02 (haptics) | **Built** for confirming buttons, with an on/off setting. |
+| C-01 (Android back button) | **Made explicit**: the back button does nothing; every way out is an on-screen button. Not verified on a device. |
+| T-06 / X-03 (losses pay XP or Funds) | **Withdrawn: by design.** |
+| B-05 / B-06 (dues versus the Funds cap) | **Reworded.** The cap is raised by an item up to 1,000,000, so it is not an impassable wall. Dues themselves were already lowered (2026-11-10). The simulation bots do not play the way a human would; their Funds results are not a claim that the cap blocks a player. |
+| G-06 (patron bills "could not be started") | **Reworded.** Patron starts never check Funds in code; the likely cause is the work-hours limit or the bot's habit of declining. The bot now logs the refusal reason, so the next run will show it. |
+| B-08 / X-01 (Tier 0 pays more per hour) | **Partly addressed.** 18 Tier 0 stage rows cut to 30,000 Funds (Tier 1 average now 29,143). XP per hour and repeat decay are unchanged and still open. |

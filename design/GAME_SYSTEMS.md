@@ -53,7 +53,7 @@ Stages, one after another; between two of them an optional Transition         �
 Level ends (win, or a loss that ends it) → rewards, laws, triggers → back ────┘
 ```
 
-**Save points:** after every stage, whenever the Office opens, and whenever something is bought or changed there; when the app is backgrounded outside a stage; one automatic slot (`user://savegame.json`) plus one manual backup. A stage in progress is never saved: reopening during a fight restarts that stage.
+**Save points:** after every stage, whenever the Office opens, whenever something is bought or changed there, and **on every button press** (outside a stage, and only once a run exists; `SaveManager._on_node_added`); when the app is backgrounded outside a stage; one automatic slot (`user://savegame.json`) plus one manual backup. A stage in progress is saved only at an opponent's defeat, and at the moment its result is shown (`pending_stage_result`): reopening the game on a result screen counts that result, a loss included, instead of replaying the stage.
 
 **Ending a run:** there is no final win screen. A run is the campaign; the player stops when they like. (Election strength builds toward a campaign but fires nothing yet.)
 
@@ -183,7 +183,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 
 ## 7. Rooms: how a fight works
 
-**Turn loop.** The opponent's intent (attack, gain support, or block, each with a range) is shown first. Energy refills to the stage's amount (3 in most rooms; some give 4, 5 or more); the hand draws to its size (5 in almost every room). Play cards by paying energy; a card moves support, banks guard, adds or clears gaffes and draws. Ending a turn discards the hand (except in a press conference) and resolves the opponent: an attack is met by banked guard first. A turn with no cards played is a pass (next turn has 1 less energy; in a press conference it also declines the question).
+**Turn loop.** The opponent's intent (attack, gain support, or block, each with a range) is shown first. Energy refills to the stage's amount (3 in most rooms; some give 4, 5 or more); the hand draws to its size (5 in almost every room). Play cards by paying energy; a card moves support, banks guard, adds or clears gaffes and draws. Ending a turn discards the hand (except in a press conference) and resolves the opponent: an attack is met by banked guard first. **Ending order (2026-11-11, Cameron):** the gaffe meter is checked first, after every card, so a card that fills it loses the stage even if it also crosses the threshold. Otherwise crossing the threshold ends the stage at once and the opponent's queued move never resolves. A turn with no cards played is a pass (next turn has 1 less energy; in a press conference it also declines the question).
 
 **Card numbers.** A card's support numbers are multiplied by the room's affinity for its suit (about 0.5× to 1.5×), then by the question grade where a question is asked (strong 1.3×, weak 0.7×). Guard, draw and gaffe numbers are never multiplied. Guard stacks to 5 and carries between turns.
 
@@ -319,7 +319,7 @@ Every number below is in the workbook and exported to data; none is hard-coded.
 
 ## Addendum 2026-11-06: saving inside a stage
 
-A stage is not saved while it is fought, with one exception: in a stage with several opponents, the run is saved when one is defeated (`GameState.stage_checkpoint`), so a closed app resumes at the next opponent with that stage type's carried state (committee: fresh; Town Hall and floor debate: gaffes, guard, hand and clock). A single-opponent stage returns to its own start.
+A stage is not saved while it is fought, with one exception: in a stage with several opponents, the run is saved when one is defeated (`GameState.stage_checkpoint`), so a closed app resumes at the next opponent with that stage type's carried state (committee: fresh; Town Hall and floor debate: gaffes, guard, hand and clock). A single-opponent stage returns to its own start. When a stage ends, its result is written to the save before the result panel is dismissed (`GameState.pending_stage_result`, cleared by `finish_stage`), so closing the app on a loss screen does not undo the loss.
 
 ## Addendum 2026-11-07: promises can owe Funds
 
@@ -328,3 +328,7 @@ A promise now has three kinds: an item, hours, or Funds (`Promise Funds N within
 ## Addendum 2026-11-08: staff slots and the primary
 
 The Marketplace's **Expanded Staff Office** (SH35: 150 XP, 300,000円 and 15 Reputation; up to twice) adds one place to every staff role. The first person hired in a role is its **primary**; later ones are extras. Extras pay their rank rewards on hire and upgrade, can be upgraded and fired on their own, and may speak in stage transitions; the primary alone is read by Level Intro cues, the purpose line, notices, the ticker, item bonuses and the Member Visit briefing, so scenes never conflict. **Make primary** on an extra's profile swaps the two; firing a primary promotes the first extra. The price's Reputation part, the item's number and the purchase cap are Balance rows (`Staff Slots: ...`).
+
+**Resigning (2026-11-11, Cameron).** At the top of Reputation and Results a crimson **Resign** button appears only while Reputation is below 10, Party support below 20 and Constituency support below 20 (Balance rows `Resign: ...`, `ResignRules`). It ends the run at once: the save is deleted (a manual backup stays), the Resign screen shows in two parts. Part one: RESIGN.png, the closing words (Text tab) and a crimson **Goodbye** button. Goodbye swipes part one left and part two in from the right: RESIGN_2.png with the words and button flipped left to right, as if seen from behind. After a hold it fades to black, stays black, then the title appears (Balance `Resign: Swipe / Hold / Fade / Black Seconds`: 0.6, 2, 1, 2).
+
+**Haptics and the back button (2026-11-11).** Confirming buttons (card played, end turn, purchases, hire and fire, Back and Continue buttons, going home, the floor vote) give one short buzz (`Haptics`, Balance `Haptics: Confirm Milliseconds`); Administration and the stage menu have a Haptics on/off switch. The Android back button does nothing: every way out is a button on screen.
