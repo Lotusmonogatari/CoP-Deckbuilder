@@ -14,6 +14,7 @@ const VISITOR_SCENE := "res://scenes/office_hours/VisitorScreen.tscn"
 const FLOOR_VOTE_SCENE := "res://scenes/office_hours/FloorVoteScreen.tscn"
 const VISIT_SCENE := "res://scenes/office_hours/VisitScreen.tscn"
 const TRADE_SCENE := "res://scenes/office_hours/TradeScreen.tscn"
+const RESIGN_SCENE := "res://scenes/menus/ResignScreen.tscn"
 const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 
 ## Not a stage in its own right — a level-level beat (2026-09-27) shown once,

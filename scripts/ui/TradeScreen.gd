@@ -317,6 +317,7 @@ func _on_choice(letter: String) -> void:
 
 
 func _on_continue() -> void:
+	Haptics.confirm()
 	if not _ready_to_play:
 		return
 	if _phase == "rounds" and _answered:

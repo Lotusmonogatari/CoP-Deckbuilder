@@ -836,3 +836,15 @@ Two Balance rows changed in the workbook: `Dues: Step Amount` 50,000 to 10,000 a
 ## National awareness dues relief halved (2026-11-11, Cameron)
 
 `AE01` (National awareness 80 or more) now takes 50,000円 off the base party dues instead of 100,000円, because the base itself fell when the dues were lowered (2026-11-10). A workbook row only; `GAME_SYSTEMS.md` and the awareness test updated. Cameron's workbook upload of 2026-11-10 (two visitor renames and 20 new visitor pictures) was brought in first and re-exported.
+
+## Loss saves, haptics, back button, Tier 0 pay, Resign (2026-11-11, Cameron)
+
+| Item | What changed |
+|---|---|
+| Result saved when shown | When a stage's result appears it is written to the save (`pending_stage_result`); `finish_stage` clears it. Reopening on a result screen counts the result, so closing the app on a loss no longer gives a free retry. Tests in `test_pending_stage_result.gd`. |
+| Gaffe, then threshold | Already how the engine ran; now pinned by two tests (gaffe beats a same-card crossing; a crossing ends the stage before the queued attack) and written in `GAME_SYSTEMS.md`. |
+| Haptics | `Haptics.confirm()` on confirming buttons; Balance `Haptics: Confirm Milliseconds` (25); on/off switch in Administration and the stage menu (Text `office.haptics`). |
+| Back button | Swallowed in `Layout`; overlays already have Back buttons. |
+| Tier 0 stage pay | 18 stage rows used by Tier 0 levels cut to 30,000 (Win ΔYen): ST05, ST06, ST15, ST17, ST20, ST29, ST98, ST122, ST123, ST132, ST133, ST134, ST136 to ST139, ST271, ST273. The six shared with Tier 1 and 2 drop there too, so the Tier 1 average is now 29,143. |
+| Resign | New button, rules (`ResignRules`), Balance rows (`Resign: ...`), Text rows (`office.resign`, `resign.body`, `resign.to_title`) and screen (`ResignScreen`). RESIGN.png is a labelled placeholder until the picture is added. |
+| Not changed | Losses paying a little XP or Funds is by design (audit T-06 withdrawn); the Funds cap is raised by an item up to 1,000,000, and patron bills do not check Funds. |

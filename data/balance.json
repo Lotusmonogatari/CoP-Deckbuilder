@@ -246,5 +246,9 @@
   "player_cues_room_line_chance": 25,
   "questions_own_share_percent": 34,
   "scene_change_fade_seconds": 0.12,
+  "haptics_confirm_milliseconds": 25,
+  "resign_reputation_below": 10,
+  "resign_party_support_below": 20,
+  "resign_constituency_support_below": 20,
   "xp_tiers": {}
 }

@@ -634,6 +634,7 @@ func _party_color(position: Dictionary) -> Color:
 
 
 func _on_vote(choice: String) -> void:
+	Haptics.confirm()
 	if not _ready_to_play or _voted or engine == null:
 		return
 	var numbers := _whip_numbers(choice)

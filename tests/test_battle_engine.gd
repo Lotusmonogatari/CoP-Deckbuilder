@@ -378,6 +378,31 @@ func test_reaching_the_threshold_wins() -> void:
 	assert_eq(engine.state.outcome, "win")
 
 
+func test_a_gaffe_ending_beats_crossing_the_threshold_on_the_same_card() -> void:
+	# Cameron, 2026-11-11: the gaffe meter supersedes crossing the line.
+	var engine := _start()
+	engine.state.bar.player_gains(9)    # 40 -> 49, one card short of 51
+	engine.state.gaffe = 4              # the test stage's limit is 6
+	_force_into_hand(engine, "GAFFE2")  # +2 support and +2 gaffes
+
+	engine.play_card("GAFFE2")
+	assert_eq(engine.state.outcome, "loss")
+
+
+func test_crossing_the_threshold_ends_the_stage_before_the_queued_attack() -> void:
+	# Cameron, 2026-11-11: crossing the line ends the stage at once; the
+	# opponent's queued move never happens.
+	var engine := _start({"opponent": TestFixtures.opponent([["attack", 5]])})
+	engine.state.bar.player_gains(10)
+	_force_into_hand(engine, "GAIN3")
+	var before := engine.state.bar.player
+
+	engine.play_card("GAIN3")
+	assert_eq(engine.state.outcome, "win")
+	assert_false(bool(engine.end_turn()["ok"]), "nothing is left to resolve")
+	assert_gte(engine.state.bar.player, before, "no attack landed")
+
+
 func test_the_opponent_cannot_win_on_support_by_default() -> void:
 	var engine := _start({"opponent": TestFixtures.opponent([["gain", 20]])})
 	engine.state.bar.opponent_gains(10)   # 40 -> 50, one short

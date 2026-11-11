@@ -22,6 +22,8 @@ var text_size_setting := TextScale.NORMAL
 ## and let it drift as the phone tilts (Image Pan). Starting values come from
 ## rules.json; PlaceholderArt reads these for every drawn background.
 var image_scroll_enabled := true
+## Haptic buzz on confirming buttons (2026-11-11). Saved with the other settings.
+var haptics_enabled := true
 var image_pan_enabled := true
 ## The theme's own font sizes as authored, so scaling is never compounded.
 var _original_sizes := {}   # "Type/name" -> int
@@ -109,6 +111,20 @@ func _on_resized() -> void:
 		_apply(node as MarginContainer)
 
 
+## The Android back button does nothing (2026-11-11, Cameron): every way out
+## of a screen is a button inside the game. project.godot already stops the
+## app quitting on back; this makes the intent explicit and swallows the key
+## too, so no screen's own Escape handling reacts to it.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		return
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and (event as InputEventKey).keycode == KEY_BACK:
+		get_viewport().set_input_as_handled()
+
+
 func _process(_delta: float) -> void:
 	# The protagonist is chosen at New Game; follow the party when it changes.
 	# Only when the protagonist changes is the party worked out again (audit C-09).
@@ -170,6 +186,13 @@ func toggle_image_pan() -> bool:
 	return image_pan_enabled
 
 
+## Turns Haptics on or off and remembers it.
+func toggle_haptics() -> bool:
+	haptics_enabled = not haptics_enabled
+	_save_settings()
+	return haptics_enabled
+
+
 ## Multiplies every font size in the project theme by the chosen factor, from
 ## the authored sizes (so Small then Large is not Small-of-Large).
 func apply_text_scale() -> void:
@@ -204,13 +227,16 @@ func _load_settings() -> void:
 		image_scroll_enabled = parsed["image_scroll"]
 	if parsed.get("image_pan") is bool:
 		image_pan_enabled = parsed["image_pan"]
+	if parsed.get("haptics") is bool:
+		haptics_enabled = parsed["haptics"]
 
 
 func _save_settings() -> void:
 	var file := FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
 	if file != null:
 		file.store_string(JSON.stringify({"text_size": text_size_setting,
-			"image_scroll": image_scroll_enabled, "image_pan": image_pan_enabled}))
+			"image_scroll": image_scroll_enabled, "image_pan": image_pan_enabled,
+			"haptics": haptics_enabled}))
 
 
 ## One set of outlined style boxes for ordinary buttons (party colour) and a

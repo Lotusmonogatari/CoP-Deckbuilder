@@ -75,6 +75,7 @@ func _ready() -> void:
 
 
 func _on_continue_pressed() -> void:
+	Haptics.confirm()
 	if not SaveManager.load_game():
 		# The save vanished or could not be read. Say so and let the player
 		# choose, rather than quietly starting a new run over the top.

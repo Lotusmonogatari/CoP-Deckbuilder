@@ -294,6 +294,7 @@ func _show_commit_note(text: String) -> void:
 
 
 func _on_continue() -> void:
+	Haptics.confirm()
 	var note := _choice_a.get_parent().get_parent().get_node_or_null("CommitNote") as Label
 	if note != null:
 		note.hide()

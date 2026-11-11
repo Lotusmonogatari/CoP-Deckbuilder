@@ -60,6 +60,7 @@ var _ready_to_play := false
 
 ## The gaffe count and warning state last announced on the noticeboard, so a
 ## refresh that changed nothing says nothing. Reset when a stage opens.
+var _result_recorded := false
 var _announced_gaffe := 0
 var _announced_critical := false
 
@@ -304,6 +305,15 @@ func _save_checkpoint() -> void:
 func start_battle() -> void:
 	var config: Dictionary = {}
 
+	# The app was closed on this stage's result screen: the result was saved
+	# when it was shown, so count it now and move on (2026-11-11, Cameron).
+	if GameState.is_in_level():
+		var saved := GameState.pending_result_for_current_stage()
+		if not saved.is_empty():
+			_ready_to_play = false
+			_conclude_stage.call_deferred(saved)
+			return
+
 	if GameState.is_in_level():
 		var runner := GameState.level_runner
 		# The run's standing, not the starting values: a press conference
@@ -436,6 +446,7 @@ func _refresh() -> void:
 	_end_turn_button.disabled = state.is_over()
 
 	if state.is_over():
+		_record_result_once()
 		if state.outcome == "win":
 			_player_portrait.show_victory()
 		else:
@@ -1026,6 +1037,7 @@ func _play_card_now(card_id: String, discards: Array) -> void:
 	if not result.get("ok", false):
 		_messages.say(str(result.get("reason", Text.say("battle.card_refused"))))
 		return
+	Haptics.confirm()
 
 	_selected_card_id = ""
 	# Announced before the redraw, so anything listening can reach the card
@@ -1081,6 +1093,7 @@ func _lean() -> String:
 
 
 func _on_end_turn() -> void:
+	Haptics.confirm()
 	if not _ready_to_play:
 		return
 	_end_pick()
@@ -1330,6 +1343,7 @@ func _dismiss_top_overlay() -> bool:
 # ---------------------------------------------------------------------------
 
 func _on_outcome_closed() -> void:
+	Haptics.confirm()
 	_messages.clear()
 	_banner.clear()
 
@@ -1342,20 +1356,44 @@ func _on_outcome_closed() -> void:
 		SceneChange.to(get_tree(), OFFICE_SCENE)
 		return
 
+	_conclude_stage(_stage_result_args())
+
+
+## What finish_stage() needs to count the stage that just ended. A caucus has
+## no threshold: how high the support got is the score, and that is what later
+## stages draw on. The gaffe-loss flag and gaffe count feed GameState's own
+## lifetime tracking — they change nothing about what the stage is worth.
+## Checked directly off the numbers, not state.outcome_reason's own
+## (already-translated) text: comparing translated text against a key never
+## matches in a real build.
+func _stage_result_args() -> Dictionary:
 	var state := engine.state
-	# A caucus has no threshold: how high the support got is the score, and
-	# that is what later stages draw on. The gaffe-loss flag and gaffe count
-	# feed GameState's own lifetime tracking (stages lost to the gaffe meter
-	# specifically, and the running gaffe total) — they change nothing about
-	# what the stage is worth. Checked directly off the numbers, not
-	# state.outcome_reason's own (already-translated) text — comparing
-	# translated text against a key never matches in a real build.
-	var gaffe_caused_loss := state.outcome == "loss" and state.gaffe >= state.gaffe_limit
+	return {
+		"outcome": state.outcome, "score": state.player_score(),
+		"boosters": engine.pleased_boosters(),
+		"gaffe_loss": state.outcome == "loss" and state.gaffe >= state.gaffe_limit,
+		"gaffes": state.gaffe, "displeased": engine.displeased_boosters(),
+		"crushed": engine.crushed_opponent_boosters(), "opposed": engine.opposed_boosters(),
+		"tally": engine.booster_tally(),
+	}
+
+
+## Saves the result the moment it is shown, once. Closing the app on the result
+## screen then comes back to a stage that is already counted (2026-11-11).
+func _record_result_once() -> void:
+	if _result_recorded or not _ready_to_play or not GameState.is_in_level():
+		return
+	_result_recorded = true
+	GameState.record_pending_stage_result(_stage_result_args())
+
+
+## Counts the stage and moves on, from the result panel's button or, after the
+## app was closed on a result screen, straight from the saved result.
+func _conclude_stage(args: Dictionary) -> void:
 	var level_over := GameState.finish_stage(
-		state.outcome, state.player_score(), engine.pleased_boosters(),
-		gaffe_caused_loss, state.gaffe, engine.displeased_boosters(),
-		engine.crushed_opponent_boosters(), engine.opposed_boosters(),
-		engine.booster_tally())
+		str(args["outcome"]), int(args["score"]), args["boosters"] as Array,
+		bool(args["gaffe_loss"]), int(args["gaffes"]), args["displeased"] as Array,
+		args["crushed"] as Array, args["opposed"] as Array, args["tally"] as Dictionary)
 
 	if level_over:
 		GameState.end_level()

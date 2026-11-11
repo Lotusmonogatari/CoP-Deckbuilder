@@ -240,3 +240,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Party dues lowered: 10,000 per step, 10% of earnings (2026-11-10, Cameron)
 - Relaxed dues share 5% (2026-11-10, Cameron)
 - National awareness dues relief halved to 50,000 (2026-11-11, Cameron)
+- Loss saves, haptics, back button, Tier 0 pay, Resign (2026-11-11, Cameron)

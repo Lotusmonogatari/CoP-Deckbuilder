@@ -121,6 +121,7 @@ func _build() -> void:
 	_back.name = "Back"
 	_back.text = Text.say("ui.back")
 	_back.custom_minimum_size = Vector2(0, 110)
+	_back.pressed.connect(Haptics.confirm)
 	_back.pressed.connect(close)
 	# Parented straight away. A panel that is built and never opened (most of
 	# the Office's, most visits) used to leave these two buttons floating
@@ -135,6 +136,7 @@ func _build() -> void:
 	_confirm.name = "Confirm"
 	_confirm.custom_minimum_size = Vector2(0, 110)
 	_confirm.hide()
+	_confirm.pressed.connect(Haptics.confirm)
 	_confirm.pressed.connect(_on_confirmed)
 	_body.add_child(_confirm)
 

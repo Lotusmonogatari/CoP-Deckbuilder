@@ -6676,5 +6676,33 @@
     "english": "You abandoned the level.",
     "placeholders": null,
     "notes": "2026-11-10 stage menu (audit batch 6). Claude's draft for Cameron."
+  },
+  {
+    "key": "office.haptics",
+    "where": "Administration menu and stage menu, Haptics switch (a short buzz on confirming buttons)",
+    "english": "Haptics: {state}",
+    "placeholders": "state",
+    "notes": null
+  },
+  {
+    "key": "office.resign",
+    "where": "Reputation and Results menu, top: the Resign button (only when Reputation, Party support and Constituency support are all very low)",
+    "english": "Resign",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "resign.body",
+    "where": "Resign screen, the closing words under the picture (Cameron 2026-11-11, written by him)",
+    "english": "So you lay down your arms and step out, away from the coliseum of parliament. To resign in disgrace or obscurity, which is more painful? One is to be remembered for shame and the other is the shame to not be remembered. You will be replaced by an individual for whom the party holds in higher regard and promise. Public service is not a game. Governance is not a fickle flame. Public service and governance is a choice to deny the individual for the masses. Sometimes it is a greater deed to let another sit in the chair and captivate the room where it happens.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "resign.to_title",
+    "where": "Resign screen, the only button",
+    "english": "Back to the Title Screen",
+    "placeholders": null,
+    "notes": null
   }
 ]

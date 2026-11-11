@@ -497,6 +497,7 @@ func _on_work_weekend() -> void:
 
 ## Ends the week: a cue popup on this same screen says a new week begins.
 func _go_home() -> void:
+	Haptics.confirm()
 	_week_over_panel.close()
 	_week_confirm_panel.close()
 	var result := GameState.go_home()
@@ -1777,6 +1778,12 @@ func _build_menus() -> void:
 	parent.move_child(button, _reputation_button.get_index() + 1)
 
 
+func _resign() -> void:
+	Haptics.confirm()
+	GameState.resign_run()
+	SceneChange.to(get_tree(), StageRouting.RESIGN_SCENE)
+
+
 func _show_reputation_menu() -> void:
 	var rows: Array[Control] = [
 		_menu_button("OrganisationsButton", "office.organisations", _show_organisations,
@@ -1786,6 +1793,10 @@ func _show_reputation_menu() -> void:
 		_menu_button("ElectionButton", "election.title", _show_election, _election_panel),
 		_menu_button("RecordButton", "office.your_record", _show_record, _record_panel),
 	]
+	# Resign sits at the very top, and only while all three standings are far
+	# down (Balance "Resign: ..." rows, ResignRules).
+	if ResignRules.available(GameState.meta, DataDB.balance):
+		rows.push_front(ResignScreen.button(_resign))
 	_reputation_menu.open(Text.say("office.reputation_and_results"), rows)
 
 
