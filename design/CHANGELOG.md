@@ -860,3 +860,7 @@ The Resign screen now has a crimson "Goodbye" button (Text `resign.to_title`, sa
 ## Resign and title pictures added (2026-11-11, Cameron)
 
 Cameron uploaded `Resign.png`, `Resign_2.png` and `Title.png`. They were renamed to the game's ids (`RESIGN.png`, `RESIGN_2.png`, `TITLE.png`): picture ids are upper case, and a folder holding both `Title.png` and `TITLE.png` would break a checkout on Windows or macOS. `TITLE.png` replaces the earlier 37 KB title picture (still in git history). Screenshots of the title screen and both Resign parts were taken at 1080 x 2340.
+
+## The Funds-cap petition leaves the Marketplace at the ceiling (2026-11-11, Cameron)
+
+Once the Funds limit reaches its 1,000,000 ceiling (`GameState.funds_cap_maxed()`), the Marketplace no longer lists the Funds Cap Increase Petition (SH13), the same way the staff-recruitment, deck-expansion and staff-slot items already leave when maxed. Buying still refuses at the ceiling as a safeguard. Test added in `test_inventory.gd`.
