@@ -54,8 +54,8 @@ func test_conditions_read_at_least_and_at_most() -> void:
 	assert_false(AwarenessEffects.is_met(at_most, {"national": 0, "district": 51}))
 
 
-func test_national_80_takes_100000_off_the_dues() -> void:
-	assert_eq(AwarenessEffects.dues_reduction(_effects, {"national": 80, "district": 0}), 100000)
+func test_national_80_takes_50000_off_the_dues() -> void:
+	assert_eq(AwarenessEffects.dues_reduction(_effects, {"national": 80, "district": 0}), 50000)
 	assert_eq(AwarenessEffects.dues_reduction(_effects, {"national": 79, "district": 0}), 0)
 
 
@@ -123,7 +123,5 @@ func test_high_national_awareness_lowers_the_dues_in_the_game() -> void:
 	GameState.awareness = {"district": 0, "national": 10}
 	var before := int(GameState.dues_preview()["week_dues"])
 	GameState.awareness = {"district": 0, "national": 85}
-	# The relief is 100,000 off the base but never below nothing. With the
-	# smaller steps (2026-11-10) the base is under 100,000 until Party support
-	# passes 100, so here it removes the whole base.
-	assert_eq(int(GameState.dues_preview()["week_dues"]), maxi(0, before - 100000))
+	# The relief is 50,000 off the base (2026-11-11), never below nothing.
+	assert_eq(int(GameState.dues_preview()["week_dues"]), maxi(0, before - 50000))

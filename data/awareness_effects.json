@@ -6,10 +6,10 @@
     "threshold": 80,
     "effect_type": "DUES_REDUCTION",
     "target": null,
-    "value": 100000,
+    "value": 50000,
     "timing": "State",
     "stacking": "Flat",
-    "note": "Cameron 2026-10-23. National Awareness at 80 or more takes 100,000円 off the base party dues."
+    "note": "Cameron 2026-10-23; 100,000 to 50,000 on 2026-11-11 after the dues were lowered. National Awareness at 80 or more takes 50,000円 off the base party dues."
   },
   {
     "effect_id": "AE02",
