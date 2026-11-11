@@ -2167,6 +2167,7 @@ func _show_marketplace() -> void:
 				and Items.inventory_tab(item) == _market_tab \
 				and not (Items.is_yes(item.get("unlocks_recruitment_tier")) and GameState.staff_recruitment_maxed()) \
 				and not (item.get("deck_size_increase") != null and GameState.deck_expansion_maxed()) \
+				and not (item.get("funds_cap_increase") != null and GameState.funds_cap_maxed()) \
 				and not (GameState.is_staff_slot_item(item) and GameState.staff_slots_maxed()):
 			rows.append(_supply_row(item))
 	_inventory_panel.open(Text.say("shop.supplies"), rows)

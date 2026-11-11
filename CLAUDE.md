@@ -243,3 +243,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Loss saves, haptics, back button, Tier 0 pay, Resign (2026-11-11, Cameron)
 - Resign screen in two parts (2026-11-11, Cameron)
 - Every button press saves (2026-11-11, Cameron)
+- Funds-cap petition leaves the Marketplace at the ceiling (2026-11-11, Cameron)

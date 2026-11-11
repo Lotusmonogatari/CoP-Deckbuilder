@@ -3502,6 +3502,13 @@ func buy_deck_expansion(item_id: String) -> Dictionary:
 	return {"ok": true, "message": Text.say("shop.deck_expanded", {"count": deck_size()})}
 
 
+## True once the Funds limit has reached the hard ceiling, so no petition can
+## raise it further (2026-11-11, Cameron: the Marketplace then stops listing it).
+func funds_cap_maxed() -> bool:
+	var starting_cap := int(DataDB.rules.get("funds_starting_cap", 100000))
+	return starting_cap + funds_cap_bonus >= _funds_hard_max()
+
+
 func buy_funds_cap(item_id: String) -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := Items.buy_refusal(item, item_count(item_id),
@@ -3509,8 +3516,7 @@ func buy_funds_cap(item_id: String) -> Dictionary:
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
 
-	var starting_cap := int(DataDB.rules.get("funds_starting_cap", 100000))
-	if starting_cap + funds_cap_bonus >= _funds_hard_max():
+	if funds_cap_maxed():
 		return {"ok": false, "message": Text.say("shop.funds_cap_maxed")}
 
 	var price := Items.costs(item)
