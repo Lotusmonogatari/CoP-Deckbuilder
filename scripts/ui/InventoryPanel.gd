@@ -120,6 +120,15 @@ func show_item(item_id: String) -> void:
 	if not refusal.is_empty():
 		rows.append(UiKit.line(refusal))
 
+	# An item that takes hours, with none left: the Use button stays but is
+	# greyed out and says so, as a level that is too long for the week does
+	# (2026-11-12, Cameron).
+	var no_time := "" if not refusal.is_empty() or context != Items.OFFICE \
+		else GameState.item_hours_refusal(item)
+	if not no_time.is_empty():
+		open(str(item.get("name", item_id)), rows, no_time, Text.say("item.close"), false)
+		return
+
 	open(str(item.get("name", item_id)), rows,
 		Text.say("item.use") if refusal.is_empty() else "",
 		Text.say("item.close"))

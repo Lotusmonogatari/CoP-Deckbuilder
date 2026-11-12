@@ -146,8 +146,11 @@ func _build() -> void:
 ##
 ## `back_text` relabels the way out for a panel where "Back" reads wrongly —
 ## an item pop-up closes rather than goes back. Blank keeps "Back".
+##
+## `confirm_enabled` false shows the confirm button greyed out, its text saying
+## why it cannot be pressed (an item that needs hours there are none of).
 func open(heading: String, rows: Array[Control], confirm_text: String = "",
-		back_text: String = "") -> void:
+		back_text: String = "", confirm_enabled: bool = true) -> void:
 	_build()
 	_title.text = heading
 	# A panel with no heading (the staff profile) shows no empty bar.
@@ -165,6 +168,7 @@ func open(heading: String, rows: Array[Control], confirm_text: String = "",
 		UiKit.wrap_all(row)
 
 	_confirm.text = confirm_text
+	_confirm.disabled = not confirm_enabled
 	_confirm.visible = not confirm_text.is_empty()
 	_body.add_child(_confirm)
 	_body.add_child(_back)
