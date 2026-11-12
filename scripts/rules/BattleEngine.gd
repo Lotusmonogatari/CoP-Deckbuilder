@@ -59,6 +59,11 @@ var _rng := RandomNumberGenerator.new()
 ##   "continuous"  the floor debate: one room, one clock, and the next
 ##                 opponent inherits whatever the last one left behind
 var _opponents: Array = []
+
+## The organization (Affiliation) of the lobbyist across the table in a
+## Lobbyist Meeting, else blank. Every question in that room names it (2026-11-12,
+## Cameron), so it is always among the organizations applying scrutiny.
+var _room_organization := ""
 var _sequence_mode := "single"
 
 ## An "Extra Guard" item's own guard bonus for THIS stage — from its
@@ -154,6 +159,8 @@ func setup(config: Dictionary) -> bool:
 			config.get("question_pool_bill", []),
 			int(config.get("bill_question_share_percent", 50)),
 			int(config.get("own_question_share_percent", 100)))
+	_room_organization = _lobbyist_organization(config)
+	_questions = _naming_the_room_organization(_questions)
 	_question_strong_multiplier = float(config.get("question_strong_multiplier", 1.0))
 	_question_weak_multiplier = float(config.get("question_weak_multiplier", 1.0))
 
@@ -1467,6 +1474,48 @@ func restore_checkpoint(saved: Dictionary) -> void:
 			state.set(field, (value as Dictionary).duplicate(true))
 		else:
 			state.set(field, value)
+
+
+## The rooms that ask from this question pool put a lobbyist across the
+## table, and the lobbyist's organization is always watching (Cameron,
+## 2026-11-12). It is a pool name rather than a Balance number: it only says
+## which of the five pools is the lobbyist's.
+const LOBBYIST_POOL := "lobbyist_meeting"
+
+
+## The lobbyist's organization for a Lobbyist Meeting, from the first opponent
+## the room was given; blank for every other room or an opponent with none.
+func _lobbyist_organization(config: Dictionary) -> String:
+	if str(_stage.get("question_pool", "")) != LOBBYIST_POOL:
+		return ""
+	var opponents: Array = config.get("opponents", [])
+	var first: Dictionary = opponents[0] if not opponents.is_empty() else _opponent
+	var org: Variant = first.get("affiliation")
+	return "" if org == null else str(org).strip_edges()
+
+
+## Each question, with the lobbyist's organization added to the organizations it
+## pleases when the question names it on neither side (a strong answer then
+## pleases it). A question that already pleases or displeases it is left alone.
+func _naming_the_room_organization(questions: Array) -> Array:
+	if _room_organization.is_empty():
+		return questions
+	var named: Array = []
+	for question: Variant in questions:
+		var copy: Dictionary = (question as Dictionary).duplicate(true)
+		var pleases: Array = copy.get("pleases_boosters", [])
+		var displeases: Array = copy.get("displeases_boosters", [])
+		if not pleases.has(_room_organization) and not displeases.has(_room_organization):
+			pleases = [_room_organization] + pleases
+			copy["pleases_boosters"] = pleases
+		named.append(copy)
+	return named
+
+
+## The lobbyist's organization in a Lobbyist Meeting, else blank: the one the
+## stage screen always lists first among those applying scrutiny.
+func room_organization() -> String:
+	return _room_organization
 
 
 ## Whoever is being argued with at the moment.

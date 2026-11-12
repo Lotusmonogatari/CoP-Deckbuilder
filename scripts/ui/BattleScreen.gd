@@ -868,6 +868,11 @@ func _scrutiny_ids() -> Array:
 		for booster_id: String in (question.get(key, []) as Array):
 			if not ids.has(booster_id):
 				ids.append(booster_id)
+	# A Lobbyist Meeting's lobbyist's organization is always listed, first.
+	var room_org := engine.room_organization()
+	if not room_org.is_empty():
+		ids.erase(room_org)
+		ids.push_front(room_org)
 	return ids.slice(0, 6)
 
 
