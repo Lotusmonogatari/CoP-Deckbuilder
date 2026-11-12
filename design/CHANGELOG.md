@@ -888,3 +888,8 @@ From Cameron's phone screenshot of an Office Hours visit: the speaker tag on the
 ## Items that take hours show a greyed Use button when there is no time (2026-11-12, Cameron)
 
 In the Office item pop-up, an item that expends hours (the Outreach Dinner SH19 and the Walking Tour SH20) used to show a live Use button and refuse only after it was pressed. When there is no time for it, the button is now greyed out and its text gives the reason ("The work week is over." or "Not enough hours left for that."), the same way a level that is too long for the week shows a disabled button with its reason. The rule itself is unchanged (`GameState.item_hours_refusal`, the existing `_hours_refusal`): a full work week refuses; in a weekend, more hours than remain refuses. `Overlay.open` gained a `confirm_enabled` option. Tests in `test_item_use_needs_hours.gd`.
+
+## Items that take hours follow the level rule (2026-11-12, Cameron)
+
+Following Cameron's reply, the time check for an Office item that takes hours (the dinner, the walking tour) and for the Research Assistant's briefing is now the same rule that decides whether a level can be played (`WeekCalendar.level_refusal`): a full week refuses, and so does an item that needs more hours than are left, on a weekday as well as in a weekend. Before, a weekday item was refused only when the work week was completely full. The greyed Use button shows the same reasons ("The work week is over." or "Not enough hours left for that."). A new test covers a 4-hour dinner with 2 hours left.
+

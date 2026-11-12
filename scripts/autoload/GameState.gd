@@ -3626,10 +3626,15 @@ func item_hours_refusal(item: Dictionary) -> String:
 func _hours_refusal(hours: int) -> String:
 	if hours <= 0:
 		return ""
-	if work_week_is_full():
-		return Text.say("item.refuse_week_over")
-	if in_weekend() and hours > work_hours_left():
-		return Text.say("item.refuse_hours")
+	# The rule that decides whether a level can be played (WeekCalendar.
+	# level_refusal, Cameron 2026-11-12): a full week refuses, and so does an
+	# item that needs more hours than are left, on a weekday as well as in a
+	# weekend. Items may be used in a weekend, so the weekend flag is "yes".
+	match WeekCalendar.level_refusal(calendar, calendar_config(), hours, true):
+		WeekCalendar.REFUSE_WEEK_OVER:
+			return Text.say("item.refuse_week_over")
+		WeekCalendar.REFUSE_TOO_LONG:
+			return Text.say("item.refuse_hours")
 	return ""
 
 
