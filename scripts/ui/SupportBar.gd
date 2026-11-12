@@ -133,9 +133,9 @@ func show_bar(bar: BarModel, threshold_applies: bool = true,
 	opponent_name = who
 	as_percent = percent
 	threshold_wins_stage = wins_stage
-	# Only a shared pool has two sides to it. A press tone or a TV debate is
-	# one reading, with nobody holding the rest.
-	two_sided = bar.model == BarModel.Model.SHARED_POOL
+	# A room with people in it has two sides, and the TV debate is one again
+	# (2026-11-12). Only a press tone is a single reading.
+	two_sided = bar.counts_people()
 	_refresh()
 
 
