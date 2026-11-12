@@ -1067,21 +1067,34 @@ func _organisation_row(booster: Dictionary) -> Control:
 ## The reasons a stakeholder's standing moved last level, one per row.
 func _show_standing_factors(booster: Dictionary) -> void:
 	var booster_id := str(booster.get("booster_id", ""))
+	_open_factors(str(booster.get("name_en", booster_id)),
+		GameState.last_booster_cause.get(booster_id, []), "")
+
+
+## The reasons one of the four meta numbers moved last level, one per row, with
+## the same signed amounts the Your Record button shows (commas, 円).
+func _show_meta_factors(meta_name: String) -> void:
+	_open_factors(meta_name, GameState.last_meta_cause.get(meta_name, []), meta_name)
+
+
+## The factors panel both buttons share. `meta_name` blank means a plain
+## signed number; a meta name formats the amount the way that number is shown.
+func _open_factors(title_name: String, causes: Array, meta_name: String) -> void:
 	if _standing_panel == null:
 		_standing_panel = Overlay.new()
 		_standing_panel.name = "StandingFactorsPanel"
 		add_child(_standing_panel)
 	var rows: Array[Control] = []
-	var causes: Array = GameState.last_booster_cause.get(booster_id, [])
 	if causes.is_empty():
 		rows.append(UiKit.line(Text.say("office.stakeholder_no_cause")))
 	for entry: Dictionary in causes:
+		var amount := int(entry.get("amount", 0))
 		var row := UiKit.line(Text.say("office.stakeholder_factor", {
-			"cause": str(entry.get("cause", "")), "amount": "%+d" % int(entry.get("amount", 0))}))
+			"cause": str(entry.get("cause", "")),
+			"amount": "%+d" % amount if meta_name.is_empty() else Phrase.meta_amount(meta_name, amount, true)}))
 		row.name = "StandingFactor"
 		rows.append(row)
-	_standing_panel.open(Text.say("office.stakeholder_change_title",
-		{"name": str(booster.get("name_en", booster_id))}), rows)
+	_standing_panel.open(Text.say("office.stakeholder_change_title", {"name": title_name}), rows)
 
 
 ## A small organisation image to the left of whatever describes it.
@@ -1559,17 +1572,32 @@ func _show_record() -> void:
 		var shown: Variant = (GameState.party_support_effective()
 			if is_party else GameState.meta.get(name, 0))
 		var line := Text.say("new_game.stat_line", {"name": name, "value": Phrase.meta_amount(name, int(shown))})
-		# What moved this level, the same "(+N)" treatment Important
-		# Stakeholders already gives a booster's own recent change.
+		# What moved this level is a button reading only the change, as on
+		# Important Stakeholders (2026-11-12, Cameron); pressing it lists the
+		# factors behind it, one per row. Commas and the 円 mark, as everywhere
+		# else (Cameron, 2026-10-31).
 		var change := (GameState.party_support_change_this_level()
 			if is_party else int(GameState.last_meta_change.get(name, 0)))
+		var stat_row := HBoxContainer.new()
+		stat_row.add_theme_constant_override("separation", 12)
+		var stat_line := UiKit.line(line)
+		stat_line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		# UiKit.line asks for a 760 px minimum, which leaves no room beside a
+		# wide "-115,820円" button; the line wraps instead.
+		stat_line.custom_minimum_size.x = 300.0
+		stat_row.add_child(stat_line)
 		if change != 0:
-			# Commas and the 円 mark, as everywhere else (Cameron, 2026-10-31).
-			line += "  (%s)" % Phrase.meta_amount(name, change, true)
-			var because := CauseLines.because(GameState.last_meta_cause.get(name, []), name)
-			if not because.is_empty():
-				line += "  " + because
-		rows.append(UiKit.line(line))
+			var change_button := Button.new()
+			change_button.name = "MetaChange_" + name.replace(" ", "_")
+			change_button.text = Phrase.meta_amount(name, change, true)
+			# Wide enough for "-115,820円" on one line (about 30 px a character; the Overlay turns wrapping on for every button, so the width is what keeps it on one line),
+			# and never wider than the row has room for.
+			change_button.custom_minimum_size = Vector2(maxf(130.0, 30.0 * change_button.text.length()), 72)
+			change_button.autowrap_mode = TextServer.AUTOWRAP_OFF
+			change_button.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+			change_button.pressed.connect(_show_meta_factors.bind(name))
+			stat_row.add_child(change_button)
+		rows.append(stat_row)
 
 	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))
 	if GameState.bills_flipped_by_influence.is_empty():
