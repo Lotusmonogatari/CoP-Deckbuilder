@@ -247,3 +247,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The TV debate bar shows the opponent again (2026-11-12, Cameron)
 - Your Record: changes behind buttons (2026-11-12, Cameron)
 - Visitor pictures VI46 to VI57 added, V54 renamed (2026-11-12, Cameron)
+- The lobbyist's organization always applies scrutiny (2026-11-12, Cameron)

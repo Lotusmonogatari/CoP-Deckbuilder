@@ -2361,3 +2361,38 @@ func test_forfeit_loses_the_stage_at_once() -> void:
 	engine.state.outcome = "win"
 	engine.forfeit()
 	assert_eq(engine.state.outcome, "win", "an ended stage is left alone")
+
+
+# ---------------------------------------------------------------------------
+# The lobbyist's organization is always watching (Cameron, 2026-11-12)
+# ---------------------------------------------------------------------------
+
+func _lobbyist_room(org: Variant, pleases: Array, displeases: Array, pool: String = BattleEngine.LOBBYIST_POOL) -> BattleEngine:
+	var opponent := TestFixtures.opponent([["attack", 1]])
+	opponent["affiliation"] = org
+	var question := {"id": "L99", "text": "Can we count on you?", "theme": "Support",
+		"grades": {}, "pleases_boosters": pleases, "displeases_boosters": displeases}
+	return _start({"stage": TestFixtures.stage({"question_pool": pool, "question_pool_size": 1}),
+		"opponent": opponent, "opponents": [opponent], "question_pool": [question]})
+
+
+func test_a_lobbyists_organization_is_added_to_a_question_that_does_not_name_it() -> void:
+	var engine := _lobbyist_room("BO05", ["BO10"], ["BO27"])
+	assert_eq(engine.room_organization(), "BO05")
+	var question := engine.turn_question()
+	assert_eq(question["pleases_boosters"], ["BO05", "BO10"])
+	assert_eq(question["displeases_boosters"], ["BO27"])
+
+
+func test_a_question_that_already_names_the_lobbyists_organization_is_left_alone() -> void:
+	var engine := _lobbyist_room("BO27", ["BO10"], ["BO27"])
+	var question := engine.turn_question()
+	assert_eq(question["pleases_boosters"], ["BO10"])
+	assert_eq(question["displeases_boosters"], ["BO27"])
+
+
+func test_no_organization_is_added_outside_a_lobbyist_meeting_or_without_one() -> void:
+	var elsewhere := _lobbyist_room("BO05", ["BO10"], [], "town_hall")
+	assert_eq(elsewhere.room_organization(), "")
+	assert_eq(elsewhere.turn_question()["pleases_boosters"], ["BO10"])
+	assert_eq(_lobbyist_room(null, ["BO10"], []).room_organization(), "")

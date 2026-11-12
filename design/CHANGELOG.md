@@ -876,3 +876,7 @@ On Your Record, the "(-14) because of ..." text after Constituency support, Repu
 ## Visitor pictures VI46 to VI57 added; V54 renamed (2026-11-12, Cameron)
 
 Ten new visitor pictures arrived (VI46, VI47, VI48, VI50, VI52, VI53, VI54, VI55, VI56, VI57) with their Godot import files. The file uploaded as `V54.png` was renamed `VI54.png` so the game finds it. 57 of the 166 visitors now have a picture.
+
+## The lobbyist's organization always applies scrutiny (2026-11-12, Cameron)
+
+In a Lobbyist Meeting (the rooms that draw from the `lobbyist_meeting` question pool, 13 stages), the opponent's organization (Affiliation) is now always in the list of organizations applying scrutiny, shown first. Before, it was there only about 14% of the time (29 of 200 lobbyist and question pairings in the data), because each question carries its own fixed list. When a question names the organization on neither side, it is added to the organizations the question pleases, so the icon and the real standing effect agree; a question that already pleases or displeases it is left as written. Cameron chose this over a display-only icon and over limiting it to a displeased side, and limited it to Lobbyist Meetings. Tests in `test_battle_engine.gd`. Checked on LV07: the Labor Federation lobbyist's organization (BO09) is first of five.
