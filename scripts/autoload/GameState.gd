@@ -3615,6 +3615,14 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 
 
 ## Why an item that takes `hours` cannot be used now, as a sentence; "" when it can.
+## Why an Office item that takes hours (the dinner, the walking tour) cannot be
+## used right now for lack of time, else blank. The item pop-up shows it on a
+## disabled Use button (2026-11-12, Cameron).
+func item_hours_refusal(item: Dictionary) -> String:
+	var hours := int(item.get("hours", 0)) if item.get("hours") != null else 0
+	return _hours_refusal(hours)
+
+
 func _hours_refusal(hours: int) -> String:
 	if hours <= 0:
 		return ""
