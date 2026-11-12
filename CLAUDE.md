@@ -248,3 +248,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Your Record: changes behind buttons (2026-11-12, Cameron)
 - Visitor pictures VI46 to VI57 added, V54 renamed (2026-11-12, Cameron)
 - The lobbyist's organization always applies scrutiny (2026-11-12, Cameron)
+- A long speaker name no longer pushes the cue band off the screen (2026-11-12, Cameron)
