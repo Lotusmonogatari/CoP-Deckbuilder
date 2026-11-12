@@ -27,7 +27,7 @@ extends RefCounted
 static func is_a_room(state: BattleState) -> bool:
 	if state.bar == null:
 		return false
-	return state.bar.model == BarModel.Model.SHARED_POOL
+	return state.bar.counts_people()
 
 
 ## True where the bar should be read as a percentage rather than a headcount.

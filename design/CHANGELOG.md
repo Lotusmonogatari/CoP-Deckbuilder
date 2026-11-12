@@ -864,3 +864,7 @@ Cameron uploaded `Resign.png`, `Resign_2.png` and `Title.png`. They were renamed
 ## The Funds-cap petition leaves the Marketplace at the ceiling (2026-11-11, Cameron)
 
 Once the Funds limit reaches its 1,000,000 ceiling (`GameState.funds_cap_maxed()`), the Marketplace no longer lists the Funds Cap Increase Petition (SH13), the same way the staff-recruitment, deck-expansion and staff-slot items already leave when maxed. Buying still refuses at the ceiling as a safeguard. Test added in `test_inventory.gd`.
+
+## The TV debate bar shows the opponent again (2026-11-12, Cameron)
+
+TV and radio debates (the `Survival` bar model) now count people like a floor debate: yours, undecided and the opponent's, with the minimum line kept and still judged at the end of every turn. Before, the opponent's Gain did nothing, their Guard had nothing to block and the player's Opp minus cards did nothing, because the bar was one number. Now they all work (`BarModel.counts_people()`). `Opp start` on the 11 Survival stages (ST06, ST41, ST44, ST73, ST84, ST91, ST98, ST205, ST224, ST245, ST271) went from 50 to 25, so a room starts at 60 you, 15 undecided, 25 them (50 would have overfilled the 100 bar). Decisions by Cameron: opponent Gain takes the undecided first and then the player; Opp minus works as in a floor debate. Tests updated and added in `test_battle_engine.gd`. Balance check with the bot (4 runs, indicative): TV and radio debates were won 43 of 51 times (84%), against 684 of 693 (99%) before.

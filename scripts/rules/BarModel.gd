@@ -17,9 +17,11 @@ extends RefCounted
 ##   the reporters' questions are the pressure.
 ##
 ## SURVIVAL — TV Debate
-##   One number again, but the player has to be at or above the threshold at
-##   the end of every single turn, not just at the finish. Slipping once
-##   loses the stage.
+##   The same three-way room as a shared pool (yours, undecided, the
+##   opponent's, 2026-11-12, Cameron), but the player has to be at or above
+##   the threshold (the minimum line) at the end of every single turn, not
+##   just at the finish. Slipping once loses the stage. The opponent's Gain
+##   and Guard and the player's Opp minus all work as in a floor debate.
 
 enum Model { SHARED_POOL, SINGLE, SURVIVAL }
 
@@ -94,7 +96,7 @@ static func create(model_kind: Model, maximum_value: int, threshold_value: int,
 	bar.player = clampi(player_start, 0, bar.maximum)
 	bar.opponent = clampi(opponent_start, 0, bar.maximum)
 
-	if model_kind == Model.SHARED_POOL:
+	if model_kind != Model.SINGLE:
 		bar.undecided = maxi(bar.maximum - bar.player - bar.opponent, 0)
 		# If the starting numbers overfill the room, trim the opponent rather
 		# than the player — the designer set the player's number on purpose.
@@ -173,7 +175,7 @@ func player_gains(amount: int) -> int:
 	if amount <= 0:
 		return 0
 
-	if model != Model.SHARED_POOL:
+	if not counts_people():
 		var before := player
 		player = clampi(player + amount, 0, maximum)
 		# A single bar is a level, not a room: there is nobody to win over,
@@ -270,7 +272,7 @@ func opponent_loses(amount: int) -> int:
 ## as nothing removes that combination. If the caucus ever feels flat, this
 ## is the first thing to reconsider.
 func reduce_does_nothing() -> bool:
-	return model != Model.SHARED_POOL or scored_only
+	return not counts_people() or scored_only
 
 
 ## The opponent wins people over, by the same rules as the player.
@@ -278,7 +280,7 @@ func opponent_gains(amount: int) -> int:
 	if amount <= 0:
 		return 0
 
-	if model != Model.SHARED_POOL:
+	if not counts_people():
 		return 0   # no opponent bar to raise
 
 	var from_undecided := mini(amount, undecided)
@@ -307,7 +309,7 @@ func player_loses(amount: int) -> int:
 
 	var moved := mini(amount, player)
 	player -= moved
-	if model == Model.SHARED_POOL:
+	if counts_people():
 		undecided += moved
 	return moved
 
@@ -329,10 +331,17 @@ func player_below_threshold() -> bool:
 	return player < threshold
 
 
+## True where the bar counts people in a three-way room (yours, undecided,
+## the opponent's): a shared pool and, since 2026-11-12, the TV debate. False
+## for the press conference's single tone number.
+func counts_people() -> bool:
+	return model != Model.SINGLE
+
+
 ## A sanity check used by the tests: in a shared pool the three numbers must
 ## always add up to the size of the room, no matter what has happened.
 func totals_balance() -> bool:
-	if model != Model.SHARED_POOL:
+	if not counts_people():
 		return true
 	return player + opponent + undecided == maximum
 

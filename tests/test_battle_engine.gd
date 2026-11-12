@@ -2166,18 +2166,46 @@ func test_a_stage_that_says_nothing_is_still_guessed_at() -> void:
 		BarModel.Model.SINGLE, "questions still make a press conference")
 
 
-func test_the_tv_debate_in_the_data_is_one_bar() -> void:
-	# The real TV Debate row (ST06): a survival bar, which is a single bar
-	# of viewer tone, not a room of people.
+func test_the_tv_debate_in_the_data_is_a_three_way_room_with_a_minimum_line() -> void:
+	# 2026-11-12, Cameron: the opponent's part of the bar is back. The real TV
+	# Debate row (ST06) is still a survival stage (the minimum line is kept),
+	# but the room holds you, the undecided and the opponent.
 	var tv := DataDB.get_stage("ST06")
 	assert_false(tv.is_empty(), "there is a TV debate stage")
-	assert_eq(BarModel.for_stage(tv), BarModel.Model.SURVIVAL,
-		"a TV debate is viewer tone, not a room of people")
+	assert_eq(BarModel.for_stage(tv), BarModel.Model.SURVIVAL)
 
-	var bar := BarModel.create(
-		BarModel.for_stage(tv), 100, 0, 40, 40, func() -> int: return 0)
-	assert_eq(bar.undecided, 0, "no undecided pile on a single bar")
-	assert_eq(bar.opponent, 0, "and nobody opposite holding a headcount")
+	var bar := BarModel.create(BarModel.for_stage(tv), int(tv["bar_max"]), int(tv["win_threshold"]),
+		int(tv["player_start"]), int(tv["opp_start"]), func() -> int: return 0)
+	assert_eq(bar.player, 60)
+	assert_eq(bar.opponent, 25)
+	assert_eq(bar.undecided, 15, "the rest of the room has not decided")
+	assert_true(bar.totals_balance())
+	assert_true(bar.counts_people())
+
+
+func test_in_a_tv_debate_the_opponents_gain_takes_the_undecided_first_then_you() -> void:
+	var bar := BarModel.create(BarModel.Model.SURVIVAL, 100, 65, 60, 25, func() -> int: return 0)
+	assert_eq(bar.opponent_gains(20), 20)
+	assert_eq(bar.undecided, 0, "the 15 undecided went first")
+	assert_eq(bar.player, 55, "then 5 came off you")
+	assert_eq(bar.opponent, 45)
+	assert_true(bar.totals_balance())
+	assert_true(bar.player_below_threshold(), "and the minimum line still judges you")
+
+
+func test_in_a_tv_debate_arguing_the_opponent_down_works() -> void:
+	var bar := BarModel.create(BarModel.Model.SURVIVAL, 100, 65, 60, 25, func() -> int: return 0)
+	assert_eq(bar.opponent_loses(10), 10)
+	assert_eq(bar.opponent, 15)
+	assert_eq(bar.undecided, 25, "their support goes back to the undecided")
+	assert_false(bar.reduce_does_nothing())
+
+
+func test_a_press_conference_is_still_one_bar_of_tone() -> void:
+	var bar := BarModel.create(BarModel.Model.SINGLE, 100, 0, 40, 40, func() -> int: return 0)
+	assert_eq(bar.undecided, 0)
+	assert_eq(bar.opponent, 0)
+	assert_false(bar.counts_people())
 
 
 ## 2026-10-10 playtest: the real Press Conference (ST04) refills its hand each
