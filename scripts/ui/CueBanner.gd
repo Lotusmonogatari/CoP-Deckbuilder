@@ -219,6 +219,7 @@ func _present(entry: Dictionary) -> void:
 	_band_box.skew = Vector2(0.0 if entry["side"] == PHASE
 		else (SlantBar.SLANT if entry["side"] == PLAYER else -SlantBar.SLANT), 0.0)
 	_speaker.text = str(entry["speaker"])
+	_limit_tag_width()
 	_tag.visible = not _speaker.text.is_empty()
 	_tag.size_flags_horizontal = (Control.SIZE_SHRINK_CENTER if entry["side"] == PHASE
 		else (Control.SIZE_SHRINK_BEGIN if entry["side"] == PLAYER else Control.SIZE_SHRINK_END))
@@ -235,10 +236,33 @@ func _present(entry: Dictionary) -> void:
 func _fit_band(width: float) -> void:
 	var band_width := width - SIDE_MARGIN * 2.0
 	var text_width := band_width - _band_box.content_margin_left - _band_box.content_margin_right
+	_text_width = text_width
+	_limit_tag_width()
 	for label: Label in [_line, _detail]:
 		label.custom_minimum_size.x = text_width
 		label.size = Vector2(text_width, 0.0)   # a wrap is measured at its current width
 	_fit_height()
+
+
+## The width the band's text may take, set by _fit_band().
+var _text_width := 0.0
+
+
+## A speaker's name never makes the band wider than the screen (2026-11-12,
+## Cameron's phone screenshot: "Ainu Language and Culture Foundation
+## Representative" pushed the whole band off the right edge). A name that fits
+## keeps its own width; a longer one is given the band's text width and wraps
+## onto a second line inside its tag.
+func _limit_tag_width() -> void:
+	_speaker.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	if _text_width <= 0.0 or _speaker.text.is_empty():
+		_speaker.custom_minimum_size.x = 0.0
+		return
+	var font := _speaker.get_theme_font("font")
+	var font_size := _speaker.get_theme_font_size("font_size")
+	var natural := font.get_string_size(_speaker.text, HORIZONTAL_ALIGNMENT_LEFT, -1.0, font_size).x
+	var room := _text_width - _tag_box.content_margin_left - _tag_box.content_margin_right
+	_speaker.custom_minimum_size.x = minf(natural + 4.0, maxf(room, 1.0))
 
 
 ## The top and bottom of the zone the band may occupy on a screen of this height.
