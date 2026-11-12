@@ -872,3 +872,7 @@ TV and radio debates (the `Survival` bar model) now count people like a floor de
 ## Your Record: changes behind buttons (2026-11-12, Cameron)
 
 On Your Record, the "(-14) because of ..." text after Constituency support, Reputation, Funds and Party support is gone from the line. Each number that moved last level now has a button beside it showing only the change (for example -14 or -115,820円), the same way Important Stakeholders does. Pressing it opens a panel, titled "<name>: what changed", with one row per factor and its signed amount (commas and 円 for Funds). It shares the stakeholder factors panel (`_open_factors`). The line's 760 px minimum width is lowered to 300 on these rows so the wide Funds button fits.
+
+## Visitor pictures VI46 to VI57 added; V54 renamed (2026-11-12, Cameron)
+
+Ten new visitor pictures arrived (VI46, VI47, VI48, VI50, VI52, VI53, VI54, VI55, VI56, VI57) with their Godot import files. The file uploaded as `V54.png` was renamed `VI54.png` so the game finds it. 57 of the 166 visitors now have a picture.
