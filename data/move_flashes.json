@@ -1,0 +1,134 @@
+[
+  {
+    "flash_id": "MF01",
+    "side": "player",
+    "move": "attack",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": "Draft 2026-11-13. Colour blank = the character's Characters-list colour (party colour for parliament opponents; the player's own party). Or \"R, G, B\"."
+  },
+  {
+    "flash_id": "MF02",
+    "side": "player",
+    "move": "gain",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF03",
+    "side": "player",
+    "move": "guard",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF04",
+    "side": "player",
+    "move": "hit",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF05",
+    "side": "player",
+    "move": "defeat",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF06",
+    "side": "player",
+    "move": "victory",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF07",
+    "side": "opponent",
+    "move": "attack",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF08",
+    "side": "opponent",
+    "move": "gain",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF09",
+    "side": "opponent",
+    "move": "guard",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF10",
+    "side": "opponent",
+    "move": "hit",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF11",
+    "side": "opponent",
+    "move": "defeat",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  },
+  {
+    "flash_id": "MF12",
+    "side": "opponent",
+    "move": "victory",
+    "colour": null,
+    "width_px": 5.0,
+    "strength": 0.8,
+    "hold_seconds": 0.15,
+    "fade_seconds": 0.65,
+    "notes": null
+  }
+]

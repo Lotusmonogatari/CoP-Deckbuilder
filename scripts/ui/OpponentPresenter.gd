@@ -38,6 +38,7 @@ const FLINCH_SECONDS := 1.8
 const DAMAGED_BELOW := 0.75
 
 var _portrait: Control
+var _flash: MoveFlashLayer
 var _name_label: Label
 var _intent_label: Label
 var _guard_label: Label
@@ -252,6 +253,7 @@ func flinch() -> void:
 	if settled == DEFEATED:
 		return
 	art.expression = DAMAGED
+	_flash_move(art.art_id, DAMAGED)
 	await _portrait.get_tree().create_timer(FLINCH_SECONDS).timeout
 	# Unless something else changed the face meanwhile.
 	if is_instance_valid(art) and art.expression == DAMAGED:
@@ -263,10 +265,29 @@ func _wear(art_id: String, expression: String) -> void:
 		return
 	var art := _portrait as PlaceholderArt
 	GameState.meet_character(art_id)   # Characters list: seen in a bout
+	var changed := art.art_id != art_id or art.expression != expression
 	art.kind = PlaceholderArt.Kind.CHARACTER
 	art.art_id = art_id
 	art.stage_id = stage_id
 	art.expression = expression
+	if changed:
+		_flash_move(art_id, expression)
+
+
+## The move flash behind the opponent's picture, in their Characters-list
+## colour (2026-11-13). Whatever the Move Flashes tab says for this face.
+func _flash_move(art_id: String, expression: String) -> void:
+	if not (_portrait is PlaceholderArt) or not _portrait.is_inside_tree():
+		return
+	if _flash == null:
+		_flash = MoveFlashLayer.attach(_portrait, "opponent")
+	if _flash == null:
+		return
+	var person := DataDB.get_opponent(art_id)
+	if person.is_empty():
+		return
+	_flash.play(expression, CharacterCodex.opponent_color(person, DataDB.boosters,
+		DataDB.parties, str(DataDB.player.get("party", "")), DataDB.balance))
 
 
 func _show_guards(state: BattleState) -> void:

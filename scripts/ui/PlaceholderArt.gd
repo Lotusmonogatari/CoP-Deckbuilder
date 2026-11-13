@@ -334,5 +334,11 @@ func _label_text() -> String:
 
 
 ## True when this is showing a stand-in rather than real artwork.
+## The picture being drawn now, or null for a placeholder square (the move
+## flash traces its outline).
+func shown_texture() -> Texture2D:
+	return _texture_rect.texture if _texture_rect != null else null
+
+
 func is_placeholder() -> bool:
 	return _is_placeholder

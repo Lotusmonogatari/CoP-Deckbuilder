@@ -1397,6 +1397,26 @@ SHEETS = {
             ("Calendar Style", "calendar_style", "str"),
         ],
     },
+    # 2026-11-13: the small flash behind a character when they move (attack,
+    # gain, guard, hit, defeat, victory), one row per side and move. Colour
+    # blank = the character's own Characters-list colour, or "R, G, B".
+    "Move Flashes": {
+        "out": "move_flashes.json",
+        "key": "flash_id",
+        "id_pattern": r"^MF\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Flash ID", "flash_id", "id"),
+            ("Side", "side", "str"),
+            ("Move", "move", "str"),
+            ("Colour", "colour", "str"),
+            ("Width (px)", "width_px", "num"),
+            ("Strength", "strength", "num"),
+            ("Hold (s)", "hold_seconds", "num"),
+            ("Fade (s)", "fade_seconds", "num"),
+            ("Notes", "notes", "str"),
+        ],
+    },
     "Opponents": {
         "out": "opponents.json",
         "key": "opp_id",
@@ -4042,6 +4062,38 @@ def fold_questions(data, report):
     data.pop("question_themes", None)
 
 
+def check_move_flashes(data, report):
+    """Move Flashes (2026-11-13): known sides and moves, one row for each,
+    a readable colour, and numbers in range."""
+    sides = {"player", "opponent"}
+    moves = {"attack", "gain", "guard", "hit", "defeat", "victory"}
+    seen = set()
+    for row in data.get("move_flashes", []):
+        fid = row.get("flash_id")
+        side, move = str(row.get("side") or ""), str(row.get("move") or "")
+        if side not in sides:
+            report.error("Move Flashes", f"{fid}: Side '{side}' must be one of {sorted(sides)}")
+        if move not in moves:
+            report.error("Move Flashes", f"{fid}: Move '{move}' must be one of {sorted(moves)}")
+        if (side, move) in seen:
+            report.error("Move Flashes", f"{fid}: a second row for {side} {move}")
+        seen.add((side, move))
+        colour = row.get("colour")
+        if colour not in (None, ""):
+            parts = [p.strip() for p in str(colour).split(",")]
+            if len(parts) != 3 or not all(p.isdigit() and 0 <= int(p) <= 255 for p in parts):
+                report.error("Move Flashes", f"{fid}: Colour '{colour}' must be blank or 'R, G, B' (0-255)")
+        for key, low, high in (("width_px", 0, 40), ("strength", 0, 1), ("hold_seconds", 0, 5), ("fade_seconds", 0, 5)):
+            value = row.get(key)
+            if value is None or not (low <= float(value) <= high):
+                report.error("Move Flashes", f"{fid}: {key} must be a number from {low} to {high}")
+    if data.get("move_flashes"):
+        for side in sorted(sides):
+            for move in sorted(moves):
+                if (side, move) not in seen:
+                    report.warn("Move Flashes", f"no row for {side} {move}, so it will not flash")
+
+
 def check_standing_names(data, report):
     in_sheet = {str(row.get("name_en", "")).strip() for row in data.get("sanban", [])}
     if not in_sheet:
@@ -4272,6 +4324,7 @@ def main():
     check_followups(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)
+    check_move_flashes(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)
 
     written = 0

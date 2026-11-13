@@ -25,6 +25,7 @@ const DEFEATED := ArtLoader.DEFEATED
 const FLINCH_SECONDS := 1.8
 
 var _portrait: Control
+var _move_flash: MoveFlashLayer
 var _stage_id := ""
 ## True once the stage has ended on victory or defeat: that pose stays, and
 ## the winning card's own reaction (which arrives just after) cannot replace
@@ -65,6 +66,7 @@ func react_to_opponent(opponent_result: Dictionary) -> void:
 func show_victory() -> void:
 	settled = true
 	_wear(VICTORY)
+	_flash_move(VICTORY)
 
 
 ## The stage just ended in a loss: settle on DEFEATED (a face that is not
@@ -72,6 +74,7 @@ func show_victory() -> void:
 func show_defeat() -> void:
 	settled = true
 	_wear(DEFEATED)
+	_flash_move(DEFEATED)
 
 
 ## Pure: which face a just-played card earns, from BattleEngine.play_card()'s
@@ -105,6 +108,7 @@ func _flash(expression: String) -> void:
 	if settled:
 		return
 	_wear(expression)
+	_flash_move(expression)
 	if not (_portrait is PlaceholderArt) or not _portrait.is_inside_tree():
 		return
 	var mine := expression
@@ -113,6 +117,18 @@ func _flash(expression: String) -> void:
 	# meanwhile.
 	if is_instance_valid(_portrait) and (_portrait as PlaceholderArt).expression == mine:
 		_wear(NEUTRAL)
+
+
+## The move flash behind the player's picture, in the player's party colour
+## (2026-11-13). Whatever the Move Flashes tab says for this face.
+func _flash_move(expression: String) -> void:
+	if not (_portrait is PlaceholderArt) or not _portrait.is_inside_tree():
+		return
+	if _move_flash == null:
+		_move_flash = MoveFlashLayer.attach(_portrait, "player")
+	if _move_flash != null:
+		_move_flash.play(expression, CharacterCodex.party_color(
+			str(DataDB.player.get("party", "")), DataDB.parties))
 
 
 func _wear(expression: String) -> void:

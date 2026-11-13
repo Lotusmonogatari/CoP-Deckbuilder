@@ -103,6 +103,19 @@ static func color_for(party: String, org_ids: Array[String], boosters: Array, pa
 	return _balance_color(balance, "none")
 
 
+## An opponent's colour on its own, for the move flash (2026-11-13): the same
+## rule as the list, so one source drives both.
+static func opponent_color(person: Dictionary, boosters: Array, parties: Array,
+		player_party: String, balance: Dictionary) -> Color:
+	return color_for(PartyDisplay.party_name(person), _organization_ids(person, true),
+		boosters, parties, player_party, balance)
+
+
+## A party's colour by name (the player's own, for the move flash).
+static func party_color(party: String, parties: Array) -> Color:
+	return PartyDisplay.color_for(_party_row(parties, party))
+
+
 ## Dark text on a light button and light text on a dark one.
 static func text_color_for(background: Color) -> Color:
 	return Color(0.08, 0.08, 0.08) if background.get_luminance() > 0.45 else Color(1, 1, 1)

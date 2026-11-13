@@ -991,3 +991,14 @@ Cameron added `assets/backgrounds/BASE_SCROLLING.png` (flat cream, 1080 x 1350).
 ## Haze after tapping through cues fixed (2026-11-13, Cameron)
 
 Cameron's report: after several cues were tapped through quickly in a combat stage, a faint haze stayed over the screen (and the Details panel) until the next card. Cause: each cue flashes a full-screen white layer that fades over a quarter second; tapping a cue (`skip()`) or `clear()` killed that fade part-way and nothing reset it. `CueBanner._stop_motion()` now sets the flash back to clear. Test: `test_cue_banner_haze.gd`.
+
+## Move flash behind the player and opponent (2026-11-13, Cameron)
+
+A short glow just outside the character's edge, in the same moment the picture changes: attack, gain, guard, hit, defeat and victory, for the player and for the opponent.
+
+| Part | Detail |
+|---|---|
+| New workbook tab **Move Flashes** | 12 rows (6 moves x player and opponent): Colour (blank = the character's Characters-list colour, or "R, G, B"), Width (5 px), Strength, Hold and Fade seconds. **Draft numbers** (0.8 strength, 0.15 s hold, 0.65 s fade) for Cameron. More variety later is more rows or a colour in a row. The exporter checks sides, moves, one row each, colours and ranges. |
+| Colour | Opponents: `CharacterCodex.opponent_color` (the same rule as the Characters list: party colour, the player's party colour for party bodies, else the tier colours in Balance). The player: their own party colour. |
+| Code | `scripts/rules/MoveFlash.gd` (pure), `scripts/ui/MoveFlashLayer.gd`, shader `assets/shaders/move_glow.gdshader` (traces the picture's transparent outline; an undrawn portrait glows around its square). Called from `PlayerPortraitPresenter` and `OpponentPresenter` where the face changes. |
+| Behavior notes | The opponent flashes when their face changes (including when a new opponent steps up), not on every redraw. The glow never takes a touch. Test: `test_move_flash.gd`. |

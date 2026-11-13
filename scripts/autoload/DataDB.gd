@@ -42,7 +42,7 @@ const REQUIRED_FILES := [
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "strings",
 	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues", "awareness_effects", "events", "event_choices", "hosted_events", "event_options", "organization_tastes", "reaction_lines",
-	"cosmetic_packages", "transition_cast", "transition_backgrounds", "transition_dialogue",
+	"cosmetic_packages", "move_flashes", "transition_cast", "transition_backgrounds", "transition_dialogue",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -110,6 +110,8 @@ var event_choices: Array = []
 var hosted_events: Array = []
 var event_options: Array = []
 var organization_tastes: Array = []
+## The move flash settings, one row per side and move (Move Flashes tab, 2026-11-13).
+var move_flashes: Array = []
 var reaction_lines: Array = []
 
 ## The optional cutscene line for a bill the influence swing above flipped —
@@ -404,6 +406,7 @@ func load_all() -> void:
 			"reaction_lines": reaction_lines = content if content is Array else []
 			"vote_influence_cues": vote_influence_cues = content if content is Array else []
 			"cosmetic_packages": cosmetic_packages = content if content is Array else []
+			"move_flashes": move_flashes = content if content is Array else []
 			"parties": parties = content if content is Array else []
 			"floor_votes": floor_votes = content if content is Dictionary else {}
 
