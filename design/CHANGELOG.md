@@ -987,3 +987,7 @@ Cameron added `assets/backgrounds/BASE_SCROLLING.png` (flat cream, 1080 x 1350).
 | Characters list | The group headings read "Those in the arena." and "Those in the community." (Text rows `characters.opponents_heading`, `characters.visitors_heading`). |
 | Scroll speed (new setting) | Administration and the stage menu have a "Scroll speed: N" button; one tap goes up a level, 5 wraps to 1. Level 1 is the original speed. It multiplies how far every list moves for the same finger drag, wheel notch and glide (`DragScroll`, rules in `scripts/rules/ScrollSpeed.gd`). The five percentages are Balance rows `Scroll speed level 1` to `5` (100, 150, 200, 250, 300: **draft numbers** for Cameron). Saved in the player's settings file, kept apart from the save. Test: `test_scroll_speed.gd`. |
 | Political Pressure | "Campaign Pressure" is now "Political Pressure" everywhere the player sees it (the New Game heading, Your Record, the Administration raise button and its already-at-top line, the Office report line). Code and Balance names (`difficulty_*`) are unchanged. |
+
+## Haze after tapping through cues fixed (2026-11-13, Cameron)
+
+Cameron's report: after several cues were tapped through quickly in a combat stage, a faint haze stayed over the screen (and the Details panel) until the next card. Cause: each cue flashes a full-screen white layer that fades over a quarter second; tapping a cue (`skip()`) or `clear()` killed that fade part-way and nothing reset it. `CueBanner._stop_motion()` now sets the flash back to clear. Test: `test_cue_banner_haze.gd`.

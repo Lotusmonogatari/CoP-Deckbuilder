@@ -156,12 +156,17 @@ func skip() -> void:
 
 
 ## Kills the slide and the jolt still running, so a skipped line cannot
-## leave the next one mis-positioned (review U7, 2026-10-14).
+## leave the next one mis-positioned (review U7, 2026-10-14). The white flash
+## is put back to clear as well: killing its fade part-way used to leave a
+## haze over the screen (and over the Details panel) until the next card's
+## cue, after a quick run of taps through several cues (2026-11-13).
 func _stop_motion() -> void:
 	for t: Tween in [_slide_tween, _out_tween, _flash_tween, _shake_tween]:
 		if t != null and t.is_valid():
 			t.kill()
 	position.y = 0.0
+	if _flash != null:
+		_flash.color.a = 0.0
 
 
 func _show_next() -> void:
