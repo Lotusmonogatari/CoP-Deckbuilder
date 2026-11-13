@@ -250,8 +250,8 @@
   "resign_reputation_below": 10,
   "resign_party_support_below": 20,
   "resign_constituency_support_below": 20,
-  "resign_swipe_seconds": 0.6,
-  "resign_hold_seconds": 2,
+  "resign_swipe_seconds": 1.2,
+  "resign_hold_seconds": 4,
   "resign_fade_seconds": 1,
   "resign_black_seconds": 2,
   "xp_tiers": {}

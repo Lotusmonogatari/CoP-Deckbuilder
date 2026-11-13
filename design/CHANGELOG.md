@@ -937,3 +937,7 @@ Also fixed: two Text rows added on 2026-11-12 (`office.record_law_absent_*`) now
 **What it did to the numbers** (events plus promise outcomes): Chamber of Commerce 1 to 4 events (index 0.85 to 1.04), Financial Industry Association 2 to 4 (0.98 to 1.08), Innovation Society 4 to 7, Small Business Owners' Association 6 to 9, Our Traditional Society 6 to 10. Taxpayers' Alliance rose from 16 to 20 events and stays the most over-represented, still 62% negative (it loses in EV93 and EV94, and every Decline costs the target organization standing).
 
 **Follow-up the same day (Cameron's call):** in EV93 and EV94 the Taxpayers' Alliance's part was swapped for the Financial Industry Association (it is the loser in choice A and the winner in choice C). Taxpayers' Alliance is no longer a loser in any new event, but its net standing is unchanged (it also lost its two gains in choice C): 12 gained, 21 lost, still the most negative organization at 64%. EV83 choice C still costs it 1; removing that is the next step if it should come out ahead.
+
+## Resign screen: slower swipe, longer linger (2026-11-13, Cameron)
+
+Two Balance rows doubled: `Resign: Swipe Seconds` 0.6 to 1.2 (the swipe from the player-facing part to the reversed-text part) and `Resign: Hold Seconds` 2 to 4 (how long the reversed-text part stays before the fade). The fade (1 s) and the black pause (2 s) are unchanged, so the whole sequence now runs about 8.2 seconds, up from 5.6. Workbook rows only.
