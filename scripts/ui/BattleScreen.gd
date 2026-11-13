@@ -215,6 +215,9 @@ func _ready() -> void:
 
 	_details_panel.hide()
 	_card_zoom.hide()
+	# The scrolling-screen picture behind the two full-screen panels (2026-11-13).
+	BaseImage.install_behind_panel(_details_panel)
+	BaseImage.install_behind_panel(_card_zoom)
 	for panel: Control in [_details_panel, _card_zoom, %OutcomePanel]:
 		var scroll := panel.get_node_or_null("Margin/Scroll") as ScrollContainer
 		if scroll != null:

@@ -81,6 +81,8 @@ func _build() -> void:
 	var box := StyleBoxFlat.new()
 	box.bg_color = BACKDROP
 	add_theme_stylebox_override("panel", box)
+	# The scrolling-screen picture goes behind the content (Cameron, 2026-11-13).
+	BaseImage.install_behind_panel(self)
 
 	var margin := MarginContainer.new()
 	margin.name = "Margin"

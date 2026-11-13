@@ -40,3 +40,34 @@ static func install(screen: Control, screen_id: String) -> TextureRect:
 	if panel != null:
 		panel.color.a = PANEL_ALPHA_OVER_BASE
 	return picture
+
+
+## The picture behind a full-screen panel that scrolls (events, information
+## screens, the shops, the battle's Details and card zoom; Cameron,
+## 2026-11-13): `BASE_SCROLLING.png`, else `BASE.png`. The panel's own dark
+## colour stays beneath it, so with no picture drawn nothing changes.
+## The picture is the lowest child; over it goes a dark tint (the same
+## PANEL_ALPHA_OVER_BASE the bottom panels use), because the theme's text is
+## light and would vanish on cream. Both ignore touches, so scrolling and
+## taps behave exactly as before. Returns the picture node, or null.
+static func install_behind_panel(panel: Control) -> TextureRect:
+	if panel.get_node_or_null("BaseImage") != null:
+		return null
+	var path := path_for("SCROLLING")
+	if path.is_empty():
+		return null
+	var picture := TextureRect.new()
+	picture.name = "BaseImage"
+	picture.texture = load(path)
+	picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	picture.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.add_child(picture)
+	panel.move_child(picture, 0)
+	var tint := ColorRect.new()
+	tint.name = "BaseTint"
+	tint.color = Color(0.07, 0.08, 0.11, PANEL_ALPHA_OVER_BASE)
+	tint.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.add_child(tint)
+	panel.move_child(tint, 1)
+	return picture
