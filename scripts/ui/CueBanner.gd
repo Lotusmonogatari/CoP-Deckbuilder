@@ -101,10 +101,14 @@ func _ready() -> void:
 
 ## Says `line` as `speaker`, after anything already queued. `detail` is the
 ## smaller line underneath — what the move did. An empty line says nothing.
-func say(side: int, speaker: String, line: String, detail: String = "") -> void:
+## `edge` replaces the gold top and bottom lines for this one cue (Cameron,
+## 2026-11-12: a lost Act shows the party colour or crimson); the default,
+## fully transparent, means gold.
+func say(side: int, speaker: String, line: String, detail: String = "",
+		edge: Color = Color(0.0, 0.0, 0.0, 0.0)) -> void:
 	if line.strip_edges().is_empty():
 		return
-	_queue.append({"side": side, "speaker": speaker, "line": line, "detail": detail})
+	_queue.append({"side": side, "speaker": speaker, "line": line, "detail": detail, "edge": edge})
 	if not _busy:
 		_show_next()
 
@@ -125,6 +129,10 @@ var _slide_tween: Tween
 var _out_tween: Tween
 var _flash_tween: Tween
 var _shake_tween: Tween
+
+
+## Fires when the last queued line has gone and nothing is left to say.
+signal drained
 
 
 func is_showing() -> bool:
@@ -160,6 +168,7 @@ func _show_next() -> void:
 	if _queue.is_empty():
 		_busy = false
 		_band.hide()
+		drained.emit()
 		return
 	_busy = true
 	_generation += 1
@@ -212,7 +221,8 @@ func _present(entry: Dictionary) -> void:
 		PLAYER: colour = PLAYER_COLOUR
 		PHASE: colour = PHASE_COLOUR
 	_tag_box.bg_color = colour
-	_band_box.border_color = EDGE_COLOUR
+	var edge: Color = entry.get("edge", Color(0.0, 0.0, 0.0, 0.0))
+	_band_box.border_color = edge if edge.a > 0.0 else EDGE_COLOUR
 	# Slanted the way the speaker is facing: forward for the player, back
 	# for the other side.
 	# SlantBar.SLANT is the same angle, so the score bars always match.

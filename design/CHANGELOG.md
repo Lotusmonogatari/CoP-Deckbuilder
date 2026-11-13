@@ -893,3 +893,14 @@ In the Office item pop-up, an item that expends hours (the Outreach Dinner SH19 
 
 Following Cameron's reply, the time check for an Office item that takes hours (the dinner, the walking tour) and for the Research Assistant's briefing is now the same rule that decides whether a level can be played (`WeekCalendar.level_refusal`): a full week refuses, and so does an item that needs more hours than are left, on a weekday as well as in a weekend. Before, a weekday item was refused only when the work week was completely full. The greyed Use button shows the same reasons ("The work week is over." or "Not enough hours left for that."). A new test covers a 4-hour dinner with 2 hours left.
 
+
+## A lost Act: the cue, the absent vote, and a 7,488-hour replay timer (2026-11-12, Cameron)
+
+| Piece | What |
+|---|---|
+| Replay timer | The 50 bill levels (Acts) changed from cooldown 5,994 and One-Time Yes to cooldown **7,488 hours** and One-Time No: about three years, a parliament's tenure at 48 hours a week. Patron, sponsored and drafted bills keep their own rules. |
+| Cue | A stage whose loss ends a bill level shows a cue on the battle screen before the result panel (`BattleScreen._show_bill_loss_cue`, `BillLossCue`). Gaffes full: the tongue-tied line ("your staff", or "your party staff" with none hired) with crimson lines. Any other loss: "Your party pulled you away from this bill due to lackluster performance." with lines in the player's party colour. Abandoning: no cue. `CueBanner.say` takes an optional edge colour and the banner has a `drained` signal. |
+| Absent vote | A lost or abandoned Act still comes to a vote with the player abstaining (`GameState.record_absent_vote_if_lost_act`). The result goes into the statute book through the normal route, so a passed bill takes effect with its normal Law Effects, and the entry is marked `absent`. |
+| The record | Legislative Work shows "<Bill>: passed in your absence." or "failed in your absence."; its pop-up shows the result and "Stakeholders for this bill observed your absence from proceedings." A real vote later replaces an absent entry. |
+| Text | Six new rows (`bill_loss.*`, `office.record_law_absent_*`, `record.law_absent_note`). The lines you wrote are verbatim; the two record rows are a Claude draft. |
+| Tests | `test_lost_act.gd`. |

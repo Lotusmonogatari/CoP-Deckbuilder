@@ -51,7 +51,13 @@ func test_a_lost_stage_moves_nobody() -> void:
 	_begin_lv31()
 	GameState.set_bill_lean("BI01", "Oppose")
 	_win_next_stage()
+	# The lost Town Hall ends the Act, which now comes to a vote in the player's
+	# absence (2026-11-12) and takes its own Law Effects; this test is about the
+	# stance drift only, so the bill's Law Effects are set aside for it.
+	var law_effects_before := DataDB.law_effects
+	DataDB.law_effects = []
 	GameState.finish_stage(LevelRunner.LOST)
+	DataDB.law_effects = law_effects_before
 	# Only a won Combat stage drifts the sides; the lost Town Hall moved
 	# nobody (decay runs on the game clock, and two units have not reached it).
 	assert_eq(GameState.booster_standing["BO28"], 50)

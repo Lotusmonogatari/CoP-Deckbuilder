@@ -250,3 +250,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The lobbyist's organization always applies scrutiny (2026-11-12, Cameron)
 - A long speaker name no longer pushes the cue band off the screen (2026-11-12, Cameron)
 - Items that take hours show a greyed Use button when there is no time (2026-11-12, Cameron)
+- A lost Act: the cue, the absent vote, a 7,488-hour replay timer (2026-11-12, Cameron)
