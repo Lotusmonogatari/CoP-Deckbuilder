@@ -61,6 +61,8 @@ var _ready_to_play := false
 ## The gaffe count and warning state last announced on the noticeboard, so a
 ## refresh that changed nothing says nothing. Reset when a stage opens.
 var _result_recorded := false
+var _loss_cue_done := false
+var _loss_cue_pending := false
 var _announced_gaffe := 0
 var _announced_critical := false
 
@@ -455,6 +457,45 @@ func _refresh() -> void:
 		# defeat poses (yours and the beaten opponent's) stay in view instead
 		# of sitting behind the dimmed panel (2026-10-31, Cameron's playtest).
 		%OutcomePanel.offset_top = $Safe/Column/OpponentRow/ArtBox.get_global_rect().end.y
+		if not _show_bill_loss_cue(state):
+			_outcome.show_outcome(engine, _stage)
+
+
+## A lost Act (a stage whose loss ends a bill level) says why the player was
+## taken off it before the result panel appears (2026-11-12, Cameron): the party
+## pulled them away, or, when the gaffe meter filled, their staff did. The band
+## wears the party colour or crimson instead of gold. True while the cue is
+## still to be shown or showing; the result panel follows it.
+func _show_bill_loss_cue(state: BattleState) -> bool:
+	if _loss_cue_pending:
+		return true
+	if _loss_cue_done or not GameState.is_in_level() or GameState.level_runner == null:
+		return false
+	var kind := BillLossCue.kind(
+		not GameState.level_bill().is_empty() and not DataDB.is_runtime_level(
+			str(GameState.level_runner.level.get("level_id", ""))),
+		state.outcome == "loss", LevelRunner.loss_ends_level(_stage),
+		GameState.level_runner.abandoned, state.gaffe >= state.gaffe_limit)
+	if kind == BillLossCue.NONE:
+		return false
+	_loss_cue_done = true
+	var line := ""
+	var edge := ResignScreen.CRIMSON
+	if kind == BillLossCue.PARTY:
+		line = Text.say("bill_loss.party")
+		edge = PartyDisplay.color_for(DataDB.get_party(str(DataDB.player.get("party", ""))))
+	else:
+		line = Text.say("bill_loss.tongue_staff" if not GameState.staff_hired.is_empty()
+			else "bill_loss.tongue_party_staff")
+	_loss_cue_pending = true
+	_banner.drained.connect(_after_loss_cue, CONNECT_ONE_SHOT)
+	_banner.say(CueBanner.PHASE, "", line, "", edge)
+	return true
+
+
+func _after_loss_cue() -> void:
+	_loss_cue_pending = false
+	if engine != null and engine.state.is_over():
 		_outcome.show_outcome(engine, _stage)
 
 

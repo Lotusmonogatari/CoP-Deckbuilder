@@ -6704,5 +6704,47 @@
     "english": "Goodbye",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "bill_loss.party",
+    "where": "Battle screen, the cue after a stage loss in a bill level (an Act) that is not a gaffe loss. Cameron 2026-11-12.",
+    "english": "Your party pulled you away from this bill due to lackluster performance.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "bill_loss.tongue_staff",
+    "where": "Battle screen, the cue after a gaffe loss in a bill level, when staff are hired. Cameron 2026-11-12.",
+    "english": "Tongue tied and babbling away. Fortunately, your staff pulled you away because any more damage could be done.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "bill_loss.tongue_party_staff",
+    "where": "Battle screen, the cue after a gaffe loss in a bill level, with no staff hired. Cameron 2026-11-12.",
+    "english": "Tongue tied and babbling away. Fortunately, your party staff pulled you away because any more damage could be done.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.record_law_absent_passed",
+    "where": "Your Record, Legislative Work: a bill that came to a vote in the player's absence and passed (Claude draft)",
+    "english": "{name}: passed in your absence.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.record_law_absent_failed",
+    "where": "Your Record, Legislative Work: a bill that came to a vote in the player's absence and failed (Claude draft)",
+    "english": "{name}: failed in your absence.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "record.law_absent_note",
+    "where": "Your Record, the pop-up of a bill voted on in the player's absence. Cameron 2026-11-12.",
+    "english": "Stakeholders for this bill observed your absence from proceedings.",
+    "placeholders": null,
+    "notes": null
   }
 ]

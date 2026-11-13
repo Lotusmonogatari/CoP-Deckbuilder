@@ -1617,8 +1617,7 @@ func _show_record() -> void:
 		rows.append(UiKit.line(Text.say("record.law_tap_hint"), "SmallLabel"))
 		for law: Dictionary in GameState.statute_book:
 			var law_id := str(law.get("bill_id", ""))
-			var button := UiKit.action_button(Text.say(
-				"office.record_law_passed" if bool(law.get("passed", false)) else "office.record_law_failed", {
+			var button := UiKit.action_button(Text.say(_law_row_key(law), {
 					"name": DataDB.floor_votes.get(law_id, {}).get("bill_name", law_id),
 					"yes": law.get("yes", 0), "no": law.get("no", 0), "abstain": law.get("abstain", 0),
 					"vote": _vote_word(str(law.get("player_vote", ""))),
@@ -1658,6 +1657,15 @@ func _show_record() -> void:
 ## what it needed (Majority or Supermajority Vote to Pass), the Aye / Nay /
 ## Abstain count, how the player voted, whether their influence turned it,
 ## and what it did when voted and at the end of every later level.
+## The Legislative Work row text key for one law: a bill voted on in the
+## player's absence (a lost or abandoned Act) has its own limited wording.
+func _law_row_key(law: Dictionary) -> String:
+	var passed := bool(law.get("passed", false))
+	if bool(law.get("absent", false)):
+		return "office.record_law_absent_passed" if passed else "office.record_law_absent_failed"
+	return "office.record_law_passed" if passed else "office.record_law_failed"
+
+
 func _show_law(law: Dictionary) -> void:
 	var bill_id := str(law.get("bill_id", ""))
 	var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
@@ -1669,6 +1677,14 @@ func _show_law(law: Dictionary) -> void:
 	marker.add_theme_color_override("font_color",
 		VoteMeter.PASS_COLOUR if passed else VoteMeter.FAIL_COLOUR)
 	rows.append(marker)
+
+	# A limited entry (2026-11-12, Cameron): passed or failed, and a note that
+	# stakeholders saw the player's absence. No tally and no "you voted" line.
+	if bool(law.get("absent", false)):
+		rows.append(UiKit.line(Text.say("record.law_absent_note")))
+		_law_panel.open(str(bill.get("bill_name", bill_id)), rows)
+		move_child(_law_panel, get_child_count() - 1)
+		return
 
 	# A bill an organization asked the player to carry (patron step 4): who
 	# asked, and what that organization says about how it went (2026-11-05,
@@ -2895,6 +2911,11 @@ func _show_levels() -> void:
 		# Independent of "level_gating_enabled" below, which only gates
 		# cost/cooldown, not this.
 		if Ledger.level_is_hidden(level, GameState.level_last_completed_at):
+			continue
+		# An Act whose bill the player voted Aye or Nay on never comes back
+		# (2026-11-13); one they were absent for or abstained on returns once its
+		# 7,488-hour replay timer is over, like any cooling-down level.
+		if GameState.act_is_settled(level):
 			continue
 		# A level still cooling down is taken off the list until its cooldown
 		# is over (Cameron, 2026-11-06; it used to show as a disabled row).

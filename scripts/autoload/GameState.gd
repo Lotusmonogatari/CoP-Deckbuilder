@@ -2529,6 +2529,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 				levels_cleared[level_id] = int(levels_cleared.get(level_id, 0)) + 1
 		if patron_level:
 			_conclude_patron_level()
+		record_absent_vote_if_lost_act()
 
 		# A special level, once played (win or lose), is done until its trigger
 		# comes round again; after an ordinary level, any special level that is
@@ -3393,6 +3394,7 @@ func buy_random_level(item_id: String) -> Dictionary:
 	var choices: Array[String] = []
 	for level: Dictionary in DataDB.levels:
 		if int(level.get("tier", -1)) == tier and is_level_discovered(level) and not is_event_only(level) \
+				and not act_is_settled(level) \
 				and not Ledger.is_level_unlocked(level, levels_unlocked, staff_hired):
 			choices.append(str(level.get("level_id", "")))
 	if choices.is_empty():
@@ -4117,19 +4119,66 @@ func record_bill_flip(bill_id: String) -> void:
 	apply_awareness_delta("national", int(DataDB.balance.get("awareness_flipped_bill_national", 0)))
 
 
+## An Act whose bill the player voted Aye or Nay on never comes back; one they
+## were absent for or abstained on returns after its replay timer (Cameron,
+## 2026-11-13). The level list and level purchases leave a settled Act out.
+func act_is_settled(level: Dictionary) -> bool:
+	var bill := DataDB.get_floor_vote(str(level.get("level_id", "")))
+	return not bill.is_empty() and StatuteBook.player_took_a_side(statute_book, str(bill.get("bill_id", "")))
+
+
+## A bill level (an Act) that the player lost or abandoned still comes to a vote,
+## with the player abstaining (2026-11-12, Cameron). The bill's own engine runs
+## with no whips and no influence; whichever way it goes is recorded as a
+## limited "absent" entry and takes effect like any vote, with nothing added.
+## Does nothing outside a lost bill level, for a patron bill, or when the bill
+## is already in the book.
+func record_absent_vote_if_lost_act() -> void:
+	if level_runner == null or last_level_outcome != LevelRunner.LOST:
+		return
+	var level_id := str(level_runner.level.get("level_id", ""))
+	if DataDB.is_runtime_level(level_id):
+		return
+	var source := level_bill()
+	if source.is_empty() or StatuteBook.has_bill(statute_book, str(source.get("bill_id", ""))):
+		return
+	var bill := BattleSetup.enriched_floor_vote(source)
+	var vote := FloorVoteEngine.new()
+	if not vote.setup({
+		"bill": bill,
+		"player_party": str(DataDB.player.get("party", "")),
+		"meta": effective_meta(),
+		"booster_standing": booster_standing,
+		"triggers": DataDB.vote_influence_triggers,
+		"default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),
+		"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
+		"supermajority_percent": int(DataDB.balance.get("supermajority_percent_of_house", 67)),
+		"assist": bill_assist,
+	}):
+		return
+	record_floor_vote(bill, vote.choose("Abstain"), "Absent", true)
+
+
 ## Writes one Floor Vote into the statute book and applies that bill's
 ## "once" Law Effects for how it went (passed or failed). A bill already in
 ## the book is ignored, so a replayed screen can never apply it twice.
 ## Called from FloorVoteScreen._on_vote() (and the playtest bot).
-func record_floor_vote(bill: Dictionary, result: Dictionary, choice: String) -> void:
+func record_floor_vote(bill: Dictionary, result: Dictionary, choice: String, absent: bool = false) -> void:
 	last_patron_outcome = {}
 	var bill_id := str(bill.get("bill_id", ""))
-	if bill_id.is_empty() or StatuteBook.has_bill(statute_book, bill_id):
+	if bill_id.is_empty():
 		return
+	if StatuteBook.has_bill(statute_book, bill_id):
+		# Only an entry where the player was absent or abstained can be
+		# replaced, and only by a later real vote on the bill (it came back after
+		# its replay timer, 2026-11-13). Aye or Nay is final.
+		if absent or not StatuteBook.is_replaceable(statute_book, bill_id):
+			return
+		StatuteBook.remove_bill(statute_book, bill_id)
 	var level_id := ""
 	if level_runner != null:
 		level_id = str(level_runner.level.get("level_id", ""))
-	var law := StatuteBook.entry(bill, result, choice, level_id, levels_completed_count)
+	var law := StatuteBook.entry(bill, result, choice, level_id, levels_completed_count, absent)
 	statute_book.append(law)
 	_apply_law_effect_rows(StatuteBook.effects_for(
 		DataDB.law_effects, bill_id, bool(law["passed"]), StatuteBook.ONCE))

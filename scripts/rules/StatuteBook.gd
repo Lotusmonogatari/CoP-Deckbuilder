@@ -28,8 +28,12 @@ const META_COLUMNS := {
 ## result. `enacted_at` is how many levels had been completed when the vote
 ## happened (GameState.levels_completed_count), so an "each level" effect
 ## can start counting from the NEXT level rather than the one that passed it.
+##
+## `absent` marks a bill that came to a vote while the player was away (a
+## lost Act, or one abandoned; 2026-11-12, Cameron): the player abstained, the
+## book keeps only a limited entry, and a real vote later replaces it.
 static func entry(bill: Dictionary, result: Dictionary, choice: String,
-		level_id: String, enacted_at: int) -> Dictionary:
+		level_id: String, enacted_at: int, absent: bool = false) -> Dictionary:
 	var totals: Dictionary = result.get("totals", {})
 	return {
 		"bill_id": str(bill.get("bill_id", "")),
@@ -43,6 +47,7 @@ static func entry(bill: Dictionary, result: Dictionary, choice: String,
 		"yes_needed": int(result.get("yes_needed", 0)),
 		"level_id": level_id,
 		"enacted_at": enacted_at,
+		"absent": absent,
 	}
 
 
@@ -53,6 +58,40 @@ static func status_map(book: Array) -> Dictionary:
 	for law: Dictionary in book:
 		statuses[str(law.get("bill_id", ""))] = PASSED if bool(law.get("passed", false)) else FAILED
 	return statuses
+
+
+## Whether the book's entry for a bill is the limited "absent" kind.
+static func is_absent(book: Array, bill_id: String) -> bool:
+	for law: Dictionary in book:
+		if str(law.get("bill_id", "")) == bill_id:
+			return bool(law.get("absent", false))
+	return false
+
+
+## True when the player voted Aye or Nay on the bill (Cameron, 2026-11-13): such
+## a bill never comes back. An absent entry, or one where the player abstained,
+## does not count: that bill returns once its replay timer has run.
+static func player_took_a_side(book: Array, bill_id: String) -> bool:
+	for law: Dictionary in book:
+		if str(law.get("bill_id", "")) == bill_id:
+			return not bool(law.get("absent", false)) and str(law.get("player_vote", "")) in ["Yes", "No"]
+	return false
+
+
+## True when the book's entry for a bill may be replaced by a later vote: the
+## player was absent or abstained, so the bill came back after its timer.
+static func is_replaceable(book: Array, bill_id: String) -> bool:
+	for law: Dictionary in book:
+		if str(law.get("bill_id", "")) == bill_id:
+			return bool(law.get("absent", false)) or str(law.get("player_vote", "")) == "Abstain"
+	return false
+
+
+## Takes a bill's entry out of the book (an absent entry about to be replaced).
+static func remove_bill(book: Array, bill_id: String) -> void:
+	for index in range(book.size() - 1, -1, -1):
+		if str((book[index] as Dictionary).get("bill_id", "")) == bill_id:
+			book.remove_at(index)
 
 
 ## Whether a bill is already in the book (a bill is only ever voted once).
