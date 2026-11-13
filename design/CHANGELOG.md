@@ -912,3 +912,26 @@ A bill the player voted Aye or Nay on never comes back. A bill they were absent 
 ## Transitions for the stages unique to custom bills (2026-11-13, Cameron)
 
 Patron Visit (ST263), Member Visit (ST260) and Lobbyist Trade (ST262), the stages that exist only in patron, sponsored and drafted bill levels, had no transition: no Show Transition flag, no cast, no lines. Cameron chose these three (not Convince Your Colleague, ST261) and staff-only speakers. Workbook rows only, no code: Show Transition is now Yes on the three stages; 126 staff lines (two per stage for each of the 21 staff, written per role: Policy Research Assistant, Media Spokesperson, District Representative); nine lines for the player's own thought when no staff is hired; and three Transition Backgrounds rows (the backgrounds the stages already use: ST07, ST07, ST20). All of it is a Claude draft for Cameron to rewrite. Tests in `test_custom_bill_transitions.gd`.
+
+## Twelve events favorable to six organizations (2026-11-13, Cameron)
+
+From the representation analysis (`design/review/ORG_REPRESENTATION_2026-11-13.md`, `ORG_OUTCOMES_2026-11-13.md`): twelve new Random events, EV83 to EV94, two for each of Taxpayers' Alliance, Chamber of Commerce, Small Business Owners' Association, Financial Industry Association, Innovation Society and Our Traditional Society. Workbook rows only (Events, Event Choices and the twelve Decline result lines in Text); no code. Every event has the usual four choices: A favors the winners at a cost to a named loser, B sends a staff member for half the benefit, C favors the loser instead, D is the Decline (1.5 x the shortfall of sending staff against accepting, rounded half up). Nothing costs Funds or time beyond the event's hours (1, or 2 for EV85 and EV90).
+
+| ID | Title | Winners (choice A) | Losers (choice A) |
+|---|---|---|---|
+| EV83 | The Auditor's Report Is Out | Taxpayers' Alliance | Care and Welfare Council |
+| EV84 | The Budget Hearing Draws a Crowd | Taxpayers' Alliance, Consumer Advocacy Network | Rural Revitalization Council |
+| EV85 | The Chamber Hosts a Trade Fair | Chamber of Commerce, Small Business Owners' Association | Neighborhood Associations |
+| EV86 | A Foreign Buyer Visits the Port | Chamber of Commerce, Fisheries Cooperative | Labor Federation |
+| EV87 | The Shopping Street Wants Late Hours | Small Business Owners' Association | Urban Neighborhood Alliance, Family Network |
+| EV88 | The Family Shop Faces a New Rule | Small Business Owners' Association, Our Traditional Society | Consumer Advocacy Network |
+| EV89 | The Bank Offers a Small Loan Scheme | Financial Industry Association, Innovation Society | Students United |
+| EV90 | A Savings Fair at the Community Hall (weekend) | Financial Industry Association, Care and Welfare Council | Family Network |
+| EV91 | The Startup Demo Day | Innovation Society, Students United | Our Traditional Society |
+| EV92 | The Data Center Wants the Old Mill | Innovation Society, Chamber of Commerce | Rural Revitalization Council |
+| EV93 | The Old Craft Fair Needs Support | Our Traditional Society, Yezo Artisans Guild | Taxpayers' Alliance |
+| EV94 | The Hall's Roof Is Failing | Our Traditional Society, Neighborhood Associations | Taxpayers' Alliance |
+
+Also fixed: two Text rows added on 2026-11-12 (`office.record_law_absent_*`) now list their `{name}` placeholder. Next free event is EV95. Every sentence is a Claude draft for Cameron to rewrite.
+
+**What it did to the numbers** (events plus promise outcomes): Chamber of Commerce 1 to 4 events (index 0.85 to 1.04), Financial Industry Association 2 to 4 (0.98 to 1.08), Innovation Society 4 to 7, Small Business Owners' Association 6 to 9, Our Traditional Society 6 to 10. Taxpayers' Alliance rose from 16 to 20 events and stays the most over-represented, still 62% negative (it loses in EV93 and EV94, and every Decline costs the target organization standing).

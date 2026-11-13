@@ -253,3 +253,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - A lost Act: the cue, the absent vote, a 7,488-hour replay timer (2026-11-12, Cameron)
 - Acts: voted bills stay gone, absent or abstained bills return (2026-11-13, Cameron)
 - Transitions for the stages unique to custom bills (2026-11-13, Cameron)
+- Twelve events favorable to six organizations, EV83 to EV94 (2026-11-13, Cameron)

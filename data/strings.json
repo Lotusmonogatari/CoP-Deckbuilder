@@ -6730,14 +6730,14 @@
     "key": "office.record_law_absent_passed",
     "where": "Your Record, Legislative Work: a bill that came to a vote in the player's absence and passed (Claude draft)",
     "english": "{name}: passed in your absence.",
-    "placeholders": null,
+    "placeholders": "name",
     "notes": null
   },
   {
     "key": "office.record_law_absent_failed",
     "where": "Your Record, Legislative Work: a bill that came to a vote in the player's absence and failed (Claude draft)",
     "english": "{name}: failed in your absence.",
-    "placeholders": null,
+    "placeholders": "name",
     "notes": null
   },
   {
@@ -6746,5 +6746,89 @@
     "english": "Stakeholders for this bill observed your absence from proceedings.",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "event.decline.EV83",
+    "where": "Event Choices: the result of declining EV83",
+    "english": "You decline the Alliance's request. They read the report aloud without you.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV84",
+    "where": "Event Choices: the result of declining EV84",
+    "english": "You decline to speak. The hearing goes on without a legislator in the room.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV85",
+    "where": "Event Choices: the result of declining EV85",
+    "english": "You decline the invitation. The Chamber's own president cuts the ribbon.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV86",
+    "where": "Event Choices: the result of declining EV86",
+    "english": "You decline to get involved. The buyer takes the order to another port.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV87",
+    "where": "Event Choices: the result of declining EV87",
+    "english": "You decline to take a side. The council decides without you.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV88",
+    "where": "Event Choices: the result of declining EV88",
+    "english": "You decline to write the letter. The shop closes an hour earlier each Friday.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV89",
+    "where": "Event Choices: the result of declining EV89",
+    "english": "You decline to endorse the scheme. The bankers launch it quietly.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV90",
+    "where": "Event Choices: the result of declining EV90",
+    "english": "You decline both. The weekend is quiet, and the hall is not.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV91",
+    "where": "Event Choices: the result of declining EV91",
+    "english": "You decline to choose a favorite. The founders go home without one.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV92",
+    "where": "Event Choices: the result of declining EV92",
+    "english": "You decline to take a position. The firm applies without you.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV93",
+    "where": "Event Choices: the result of declining EV93",
+    "english": "You decline to be named. The fair goes ahead on a smaller scale.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV94",
+    "where": "Event Choices: the result of declining EV94",
+    "english": "You decline to back either plan. The hall's buckets multiply.",
+    "placeholders": null,
+    "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
   }
 ]
