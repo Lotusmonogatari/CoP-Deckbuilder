@@ -9131,7 +9131,7 @@
     "event_id": "EV93",
     "choice": "A",
     "choice_text": "Become a patron and back the waiver",
-    "result_text": "Your name goes on the board outside the hall, and the stalls stay free. The Taxpayers' Alliance asks who pays for a free stall.",
+    "result_text": "Your name goes on the board outside the hall, and the stalls stay free. The Financial Industry Association asks who covers the lost fees.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -9150,7 +9150,7 @@
         "delta": 1
       },
       {
-        "target": "BO23",
+        "target": "BO24",
         "delta": -1
       }
     ],
@@ -9193,7 +9193,7 @@
     "event_id": "EV93",
     "choice": "C",
     "choice_text": "Support the fair but not the waiver",
-    "result_text": "You pay for a stall yourself and leave the fees as they are. The Alliance approves. The fair's elders are polite about it.",
+    "result_text": "You pay for a stall yourself and leave the fees as they are. The Financial Industry Association approves. The fair's elders are polite about it.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -9204,7 +9204,7 @@
     "national_delta": null,
     "rewards": [
       {
-        "target": "BO23",
+        "target": "BO24",
         "delta": 1
       },
       {
@@ -9255,7 +9255,7 @@
     "event_id": "EV94",
     "choice": "A",
     "choice_text": "Back a public grant for the roof",
-    "result_text": "You tell the council the hall is where the district keeps its calendar. The Society and the neighbors are pleased. The Alliance asks who pays.",
+    "result_text": "You tell the council the hall is where the district keeps its calendar. The Society and the neighbors are pleased. The Financial Industry Association asks who covers the bill.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -9274,7 +9274,7 @@
         "delta": 1
       },
       {
-        "target": "BO23",
+        "target": "BO24",
         "delta": -1
       }
     ],
@@ -9317,7 +9317,7 @@
     "event_id": "EV94",
     "choice": "C",
     "choice_text": "Back a local appeal instead of a grant",
-    "result_text": "You help start a collection and give first. The Alliance approves. The Society says a roof is a lot of bake sales.",
+    "result_text": "You help start a collection and give first. The Financial Industry Association approves. The Society says a roof is a lot of bake sales.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -9328,7 +9328,7 @@
     "national_delta": null,
     "rewards": [
       {
-        "target": "BO23",
+        "target": "BO24",
         "delta": 1
       },
       {

@@ -929,9 +929,11 @@ From the representation analysis (`design/review/ORG_REPRESENTATION_2026-11-13.m
 | EV90 | A Savings Fair at the Community Hall (weekend) | Financial Industry Association, Care and Welfare Council | Family Network |
 | EV91 | The Startup Demo Day | Innovation Society, Students United | Our Traditional Society |
 | EV92 | The Data Center Wants the Old Mill | Innovation Society, Chamber of Commerce | Rural Revitalization Council |
-| EV93 | The Old Craft Fair Needs Support | Our Traditional Society, Yezo Artisans Guild | Taxpayers' Alliance |
-| EV94 | The Hall's Roof Is Failing | Our Traditional Society, Neighborhood Associations | Taxpayers' Alliance |
+| EV93 | The Old Craft Fair Needs Support | Our Traditional Society, Yezo Artisans Guild | Financial Industry Association |
+| EV94 | The Hall's Roof Is Failing | Our Traditional Society, Neighborhood Associations | Financial Industry Association |
 
 Also fixed: two Text rows added on 2026-11-12 (`office.record_law_absent_*`) now list their `{name}` placeholder. Next free event is EV95. Every sentence is a Claude draft for Cameron to rewrite.
 
 **What it did to the numbers** (events plus promise outcomes): Chamber of Commerce 1 to 4 events (index 0.85 to 1.04), Financial Industry Association 2 to 4 (0.98 to 1.08), Innovation Society 4 to 7, Small Business Owners' Association 6 to 9, Our Traditional Society 6 to 10. Taxpayers' Alliance rose from 16 to 20 events and stays the most over-represented, still 62% negative (it loses in EV93 and EV94, and every Decline costs the target organization standing).
+
+**Follow-up the same day (Cameron's call):** in EV93 and EV94 the Taxpayers' Alliance's part was swapped for the Financial Industry Association (it is the loser in choice A and the winner in choice C). Taxpayers' Alliance is no longer a loser in any new event, but its net standing is unchanged (it also lost its two gains in choice C): 12 gained, 21 lost, still the most negative organization at 64%. EV83 choice C still costs it 1; removing that is the next step if it should come out ahead.
