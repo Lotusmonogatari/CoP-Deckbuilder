@@ -39,6 +39,7 @@ var _banner: CueBanner = null
 var _bar: ProgressBar = null
 var _bar_label: Label = null
 var _walk_away: Button = null
+var _fit_queued := false
 
 @onready var _stage_name: Label = %StageName
 @onready var _stage_name_jp: Label = %StageNameJP
@@ -80,6 +81,30 @@ func _ready() -> void:
 	_outcome_panel.hide()
 	_build_leverage_meter()
 	_start()
+	_fit_layout.call_deferred()
+	get_tree().process_frame.connect(_fit_layout, CONNECT_ONE_SHOT)
+	get_tree().root.size_changed.connect(_fit_layout)
+	# Every phase changes the lines on the screen; the picture takes what is left.
+	($Safe/Column as Control).minimum_size_changed.connect(_fit_layout_soon)
+
+
+## The same layout as Office Hours (a big picture on top, the question and the
+## choices below it), with the picture sized to leave room for this screen's
+## leverage bar and Walk away button (2026-11-13). See VisitLayout.
+func _fit_layout() -> void:
+	VisitLayout.fit(self, _person_name, _portrait, _background, _continue_button, _banner, true)
+
+
+## Refits once the frame's changes have settled (the lines change phase by phase).
+func _fit_layout_soon() -> void:
+	if not _fit_queued:
+		_fit_queued = true
+		_fit_layout.call_deferred()
+		_clear_fit_queue.call_deferred()
+
+
+func _clear_fit_queue() -> void:
+	_fit_queued = false
 
 
 ## The leverage indicator (a bar and its number) and the Walk away button are
