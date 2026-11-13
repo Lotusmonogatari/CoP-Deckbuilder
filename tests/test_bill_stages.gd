@@ -80,7 +80,7 @@ func test_every_visitor_pinned_to_a_level_exists_and_is_eligible_for_that_slot()
 		var visitor: Dictionary = ids.get(str(pin["visitor_id"]), {})
 		assert_false(visitor.is_empty(), "%s exists" % pin["visitor_id"])
 		var stage_id := _slot(DataDB.get_level(str(pin["level_id"])), int(pin["slot"]))
-		assert_true((visitor.get("stages", []) as Array).has(stage_id),
+		assert_true((visitor.get("stages") as Array if visitor.get("stages") is Array else []).has(stage_id),
 			"%s is written for %s in %s" % [pin["visitor_id"], stage_id, pin["level_id"]])
 
 

@@ -941,3 +941,11 @@ Also fixed: two Text rows added on 2026-11-12 (`office.record_law_absent_*`) now
 ## Resign screen: slower swipe, longer linger (2026-11-13, Cameron)
 
 Two Balance rows doubled: `Resign: Swipe Seconds` 0.6 to 1.2 (the swipe from the player-facing part to the reversed-text part) and `Resign: Hold Seconds` 2 to 4 (how long the reversed-text part stays before the fade). The fade (1 s) and the black pause (2 s) are unchanged, so the whole sequence now runs about 8.2 seconds, up from 5.6. Workbook rows only.
+
+## Cameron's visitor update: 22 names and titles, 24 pictures, one new visitor (2026-11-13)
+
+Cameron's 2026-11-13 uploads: a workbook update and new visitor pictures (VI58 to VI78, VI144, VI167). In the workbook, 21 visitors (VI60 to VI81) went from "<Organization> Representative" placeholders to named people with titles (for example VI60 Sannyoaino Masanori, Sirur Council Envoy; VI67 Riichi Fukuda, Kita Corporate Group Lobbyist), and VI167 Masashi Mumotsu, Volcanologist, is new. 81 of 167 visitors now have a picture (57 before).
+
+Found and fixed while checking it: VI167 has **no Stage cell**, so its `stages` is null; the game cast that to an Array and every visitor lookup crashed (`DataDB.get_visitors_for_stage`, the data check, and several tests). Fixed: a blank list cell now reads as empty (`DataDB._list_or_empty`), the three test helpers do the same, and the export warns "has no Stage cell, so it never appears in any room". Test in `test_visitor_without_stage.gd`. VI167 still has no stages, rewards, penalty or questions, so it never appears until Cameron fills them. Also: Excel's stale formula chain in the uploaded workbook (Vote Tally & Swing F33 and J33, which hold no formula) was cleared by re-saving through the workbook tool, so the check passes.
+
+Also re-subset the shrunken Japanese font (`python3 tools/subset_font.py`) because the new names use 絆 (Kizuna Ienaga); the font is still 2.99 MB.

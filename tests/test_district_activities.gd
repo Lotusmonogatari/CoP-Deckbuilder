@@ -25,7 +25,7 @@ func _outings() -> Array:
 func _pool(stage_id: String) -> Array:
 	var pool: Array = []
 	for visitor: Dictionary in DataDB.visitors:
-		if (visitor.get("stages", []) as Array).has(stage_id):
+		if _stages_of(visitor).has(stage_id):
 			pool.append(visitor)
 	return pool
 
@@ -37,6 +37,12 @@ func _seats(stage: Dictionary) -> int:
 
 func test_the_data_has_outings() -> void:
 	assert_gt(_outings().size(), 0)
+
+
+## A visitor's stages, empty for a blank cell (a null in the data).
+func _stages_of(visitor: Dictionary) -> Array:
+	var stages: Variant = visitor.get("stages")
+	return stages as Array if stages is Array else []
 
 
 func test_each_outing_is_weekend_ready_and_open_from_the_start() -> void:
@@ -57,7 +63,7 @@ func test_each_pool_covers_its_seats_and_every_visitor_has_two_questions() -> vo
 		for visitor: Dictionary in pool:
 			# A visitor shared with other rooms (the ordinary Office Hours cast) is
 			# not held to this rule; one written for this room alone has two questions.
-			if (visitor.get("stages", []) as Array).size() > 1:
+			if _stages_of(visitor).size() > 1:
 				continue
 			var count := 0
 			for question: Dictionary in DataDB.visitor_questions:

@@ -3207,6 +3207,8 @@ def check_rooms(data, report):
     for visitor in data.get("visitors") or []:
         for sid in visitor.get("stages") or []:
             seated[sid] = seated.get(sid, 0) + 1
+        if not visitor.get("stages"):
+            report.warn("Visitors", f"{visitor.get('visitor_id')} ({visitor.get('name_en')}) has no Stage cell, so it never appears in any room")
     art_path = DATA_DIR / "art.json"
     prefix = ""
     if art_path.exists():

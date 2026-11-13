@@ -2720,10 +2720,10 @@
   },
   {
     "visitor_id": "VI60",
-    "name_en": "Ainu Community Council Representative",
-    "name_jp": "アイヌ協議会の代表",
-    "romaji": "Ainu Kyōgikai no Daihyō",
-    "title": "Ainu Community Council Representative",
+    "name_en": "Sannyoaino Masanori",
+    "name_jp": "正典サンニョアイノ",
+    "romaji": "Sannyoaino Masanori",
+    "title": "Sirur Council Envoy",
     "stages": [
       "ST121"
     ],
@@ -2753,10 +2753,10 @@
   },
   {
     "visitor_id": "VI61",
-    "name_en": "Agricultural Cooperatives Representative",
-    "name_jp": "農協の代表",
-    "romaji": "Nōkyō no Daihyō",
-    "title": "Agricultural Cooperatives Representative",
+    "name_en": "Atanemat Masanori",
+    "name_jp": "正典アタネマッ",
+    "romaji": "Atanemat Masanori",
+    "title": "Turnip Cooperative Advisor",
     "stages": [
       "ST145"
     ],
@@ -2786,10 +2786,10 @@
   },
   {
     "visitor_id": "VI62",
-    "name_en": "Care and Welfare Council Representative",
-    "name_jp": "福祉協議会の代表",
-    "romaji": "Fukushi Kyōgikai no Daihyō",
-    "title": "Care and Welfare Council Representative",
+    "name_en": "Junko Watanabe",
+    "name_jp": "渡辺純子",
+    "romaji": "Junko Watanabe",
+    "title": "Coastal Care Chief",
     "stages": [
       "ST153"
     ],
@@ -2815,10 +2815,10 @@
   },
   {
     "visitor_id": "VI63",
-    "name_en": "National Media Representative",
-    "name_jp": "全国紙の代表",
-    "romaji": "Zenkokushi no Daihyō",
-    "title": "National Media Representative",
+    "name_en": "Kenji Masanori",
+    "name_jp": "正典健二",
+    "romaji": "Kenji Masanori",
+    "title": "Yezo Newscasters Liaison",
     "stages": [
       "ST170"
     ],
@@ -2848,10 +2848,10 @@
   },
   {
     "visitor_id": "VI64",
-    "name_en": "Buddhist Temples Association Representative",
-    "name_jp": "仏教寺院連合の代表",
-    "romaji": "Bukkyō Jiin Rengō no Daihyō",
-    "title": "Buddhist Temples Association Representative",
+    "name_en": "Shōichi Satō",
+    "name_jp": "佐藤正一",
+    "romaji": "Shōichi Satō",
+    "title": "Sutra Refuge Spokesman",
     "stages": [
       "ST176"
     ],
@@ -2881,10 +2881,10 @@
   },
   {
     "visitor_id": "VI65",
-    "name_en": "Members of Parliament Representative",
-    "name_jp": "国会議員の代表",
-    "romaji": "Kokkai Giin no Daihyō",
-    "title": "Members of Parliament Representative",
+    "name_en": "Tadashi Kunimoto",
+    "name_jp": "国本正",
+    "romaji": "Tadashi Kunimoto",
+    "title": "Parliamentary Liaison",
     "stages": [
       "ST181"
     ],
@@ -2914,9 +2914,9 @@
   },
   {
     "visitor_id": "VI66",
-    "name_en": "Veterans' Association Representative",
-    "name_jp": "退役軍人会の代表",
-    "romaji": "Taieki Gunjin-kai no Daihyō",
+    "name_en": "Tadayoshi Muto",
+    "name_jp": "武藤忠義",
+    "romaji": "Tadayoshi Mutō",
     "title": "Veterans' Association Representative",
     "stages": [
       "ST193"
@@ -2947,10 +2947,10 @@
   },
   {
     "visitor_id": "VI67",
-    "name_en": "Chamber of Commerce Representative",
-    "name_jp": "商工会議所の代表",
-    "romaji": "Shōkō Kaigisho no Daihyō",
-    "title": "Chamber of Commerce Representative",
+    "name_en": "Riichi Fukuda",
+    "name_jp": "福田利一",
+    "romaji": "Riichi Fukuda",
+    "title": "Kita Corporate Group Lobbyist",
     "stages": [
       "ST213"
     ],
@@ -2980,10 +2980,10 @@
   },
   {
     "visitor_id": "VI68",
-    "name_en": "Fisheries Cooperative Representative",
-    "name_jp": "漁協の代表",
-    "romaji": "Gyokyō no Daihyō",
-    "title": "Fisheries Cooperative Representative",
+    "name_en": "Ushio Hamano",
+    "name_jp": "浜野潮",
+    "romaji": "Ushio Hamano",
+    "title": "Tsugaru Strait Fisheries Lobbyist",
     "stages": [
       "ST227"
     ],
@@ -3013,10 +3013,10 @@
   },
   {
     "visitor_id": "VI69",
-    "name_en": "Labor Federation Representative",
-    "name_jp": "労働組合連合の代表",
-    "romaji": "Rōdō Kumiai Rengō no Daihyō",
-    "title": "Labor Federation Representative",
+    "name_en": "Tsutomu Chikaraishi",
+    "name_jp": "力石勤",
+    "romaji": "Tsutomu Chikaraishi",
+    "title": "Cross Strait Labor Union Lobbyist",
     "stages": [
       "ST243"
     ],
@@ -3046,10 +3046,10 @@
   },
   {
     "visitor_id": "VI70",
-    "name_en": "Our Traditional Society Representative",
-    "name_jp": "伝統保守の会の代表",
-    "romaji": "Dentō Hoshu no Kai no Daihyō",
-    "title": "Our Traditional Society Representative",
+    "name_en": "Den’ichi Moriyama",
+    "name_jp": "守山伝一",
+    "romaji": "Den’ichi Moriyama",
+    "title": "Our Traditional Society Spokesman",
     "stages": [
       "ST253"
     ],
@@ -3079,10 +3079,10 @@
   },
   {
     "visitor_id": "VI71",
-    "name_en": "Agricultural Cooperatives Representative",
-    "name_jp": "農協の代表",
-    "romaji": "Nōkyō no Daihyō",
-    "title": "Agricultural Cooperatives Representative",
+    "name_en": "Minoru Minoda",
+    "name_jp": "実田稔",
+    "romaji": "Minoru Minoda",
+    "title": "Ringo and Rice United Lobbyist",
     "stages": [
       "ST07",
       "ST101",
@@ -3148,10 +3148,10 @@
   },
   {
     "visitor_id": "VI72",
-    "name_en": "Students United Representative",
-    "name_jp": "学生団体の代表",
-    "romaji": "Gakusei Dantai no Daihyō",
-    "title": "Students United Representative",
+    "name_en": "Shiro Wakaba",
+    "name_jp": "若葉志郎",
+    "romaji": "Shirō Wakaba",
+    "title": "Yezo Colleges Student Board Member",
     "stages": [
       "ST07",
       "ST101",
@@ -3217,10 +3217,10 @@
   },
   {
     "visitor_id": "VI73",
-    "name_en": "Family Network Representative",
-    "name_jp": "子育て世代の会の代表",
-    "romaji": "Kosodate Sedai no Kai no Daihyō",
-    "title": "Family Network Representative",
+    "name_en": "Kizuna Ienaga",
+    "name_jp": "家永絆",
+    "romaji": "Kizuna Ienaga",
+    "title": "Western Winds Family Club Member",
     "stages": [
       "ST07",
       "ST101",
@@ -3286,10 +3286,10 @@
   },
   {
     "visitor_id": "VI74",
-    "name_en": "Yezo Artisans Guild Representative",
-    "name_jp": "職人組合の代表",
-    "romaji": "Shokunin Kumiai no Daihyō",
-    "title": "Yezo Artisans Guild Representative",
+    "name_en": "Takumi Ezono",
+    "name_jp": "蝦夷野匠",
+    "romaji": "Takumi Ezono",
+    "title": "Yezo Artisans Guild Publicist",
     "stages": [
       "ST07",
       "ST101",
@@ -3355,10 +3355,10 @@
   },
   {
     "visitor_id": "VI75",
-    "name_en": "Members of Parliament Representative",
-    "name_jp": "国会議員の代表",
-    "romaji": "Kokkai Giin no Daihyō",
-    "title": "Members of Parliament Representative",
+    "name_en": "Kohei Kunimitsu",
+    "name_jp": "国光公平",
+    "romaji": "Kōhei Kunimitsu",
+    "title": "National Assembly Associates Staffer",
     "stages": [
       "ST07",
       "ST101",
@@ -3424,10 +3424,10 @@
   },
   {
     "visitor_id": "VI76",
-    "name_en": "Shrine Association Representative",
-    "name_jp": "神社会の代表",
-    "romaji": "Jinja-kai no Daihyō",
-    "title": "Shrine Association Representative",
+    "name_en": "Megumi Fukui",
+    "name_jp": "福井恵",
+    "romaji": "Megumi Fukui",
+    "title": "Yezo Vermillion Messenger",
     "stages": [
       "ST07",
       "ST101",
@@ -3493,10 +3493,10 @@
   },
   {
     "visitor_id": "VI77",
-    "name_en": "Care and Welfare Council Representative",
-    "name_jp": "福祉協議会の代表",
-    "romaji": "Fukushi Kyōgikai no Daihyō",
-    "title": "Care and Welfare Council Representative",
+    "name_en": "Kiyoshi Torii",
+    "name_jp": "鳥居清",
+    "romaji": "Kiyoshi Torii",
+    "title": "Cradle to Care Coalition Advocate",
     "stages": [
       "ST07",
       "ST101",
@@ -3562,10 +3562,10 @@
   },
   {
     "visitor_id": "VI78",
-    "name_en": "Urban Neighborhood Alliance Representative",
-    "name_jp": "都市部町内連合の代表",
-    "romaji": "Toshibu Chōnai Rengō no Daihyō",
-    "title": "Urban Neighborhood Alliance Representative",
+    "name_en": "Yui Machida",
+    "name_jp": "町田結",
+    "romaji": "Yui Machida",
+    "title": "Shitamachi Alliance Advocate",
     "stages": [
       "ST07",
       "ST101",
@@ -3631,10 +3631,10 @@
   },
   {
     "visitor_id": "VI79",
-    "name_en": "Ainu Language and Culture Foundation Representative",
-    "name_jp": "アイヌ語文化財団の代表",
-    "romaji": "Ainugo Bunka Zaidan no Daihyō",
-    "title": "Ainu Language and Culture Foundation Representative",
+    "name_en": "Rera Saru",
+    "name_jp": "沙流レラ",
+    "romaji": "Rera Saru",
+    "title": "First Language Board Member",
     "stages": [
       "ST07",
       "ST101",
@@ -3700,10 +3700,10 @@
   },
   {
     "visitor_id": "VI80",
-    "name_en": "Rural Revitalization Council Representative",
-    "name_jp": "地域振興会議の代表",
-    "romaji": "Chiiki Shinkō Kaigi no Daihyō",
-    "title": "Rural Revitalization Council Representative",
+    "name_en": "Koichi Satomi",
+    "name_jp": "里見興一",
+    "romaji": "Kōichi Satomi",
+    "title": "Inaka Heritage Group Advocate",
     "stages": [
       "ST07",
       "ST101",
@@ -3772,7 +3772,7 @@
     "name_en": "Takashi Hamada",
     "name_jp": "浜田孝",
     "romaji": "Takashi Hamada",
-    "title": "Neighborhood Festival Committee Chair",
+    "title": "Yezo Festivals Committee Member",
     "stages": [
       "ST264",
       "ST265",
@@ -6412,5 +6412,15 @@
         "delta": -2
       }
     ]
+  },
+  {
+    "visitor_id": "VI167",
+    "name_en": "Masashi Mumotsu",
+    "name_jp": "無物雅史",
+    "romaji": "Masashi Mumotsu",
+    "title": "Volcanologist",
+    "stages": null,
+    "reward": null,
+    "penalty": null
   }
 ]

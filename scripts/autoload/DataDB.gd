@@ -1045,9 +1045,16 @@ func get_visitor(visitor_id: String) -> Dictionary:
 func get_visitors_for_stage(stage_id: String) -> Array:
 	var found: Array = []
 	for visitor: Dictionary in visitors:
-		if (visitor.get("stages", []) as Array).has(stage_id):
+		if _list_or_empty(visitor.get("stages")).has(stage_id):
 			found.append(visitor)
 	return found
+
+
+## A workbook list cell as an Array: a blank cell is a JSON null, which cannot
+## be cast to Array, so it reads as an empty list (2026-11-13: a new visitor
+## row with no Stage cell crashed every visitor lookup).
+static func _list_or_empty(value: Variant) -> Array:
+	return value as Array if value is Array else []
 
 
 ## Every possible question a visitor might ask — visitor_questions.json rows
@@ -1655,7 +1662,7 @@ func _validate() -> void:
 			continue
 		if not visitor_ids.has(visitor_id):
 			errors.append("level_visitor_overrides.json pins unknown visitor '%s' for %s slot %d" % [visitor_id, lid, slot])
-		elif not (get_visitor(visitor_id).get("stages", []) as Array).has(stage_id):
+		elif not _list_or_empty(get_visitor(visitor_id).get("stages")).has(stage_id):
 			warnings.append(
 				("level_visitor_overrides.json pins %s to %s slot %d (%s), but %s is not "
 				+ "eligible for %s, so the game will fall back to the dynamic pick there.")
@@ -1663,12 +1670,12 @@ func _validate() -> void:
 
 	for visitor: Dictionary in visitors:
 		var vid := str(visitor.get("visitor_id"))
-		for stage_id: String in (visitor.get("stages", []) as Array):
+		for stage_id: String in _list_or_empty(visitor.get("stages")):
 			if not stage_ids.has(stage_id):
 				errors.append("Visitor %s is eligible for stage '%s', which does not exist" % [vid, stage_id])
-		for entry: Dictionary in (visitor.get("reward", []) as Array):
+		for entry: Dictionary in _list_or_empty(visitor.get("reward")):
 			_validate_reward_target(vid, "Reward", entry)
-		for entry: Dictionary in (visitor.get("penalty", []) as Array):
+		for entry: Dictionary in _list_or_empty(visitor.get("penalty")):
 			_validate_reward_target(vid, "Penalty", entry)
 		if get_questions_for_visitor(vid).is_empty():
 			# Not an error: a visitor mid-authoring (identity written, no
