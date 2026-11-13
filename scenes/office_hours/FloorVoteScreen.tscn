@@ -43,7 +43,7 @@ anchor_bottom = 1.0
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 70
 theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 90
 
 [node name="Column" type="VBoxContainer" parent="Safe"]
 layout_mode = 2

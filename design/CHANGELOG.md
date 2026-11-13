@@ -1014,3 +1014,16 @@ Following Cameron's answer on the trade screen: the picture sits on top as in Of
 ## Continue and Make the deal sit above the BASE line (2026-11-13, Cameron)
 
 On Office Hours, the member visit and the lobbyist trade, the Continue (and "Make the deal") button is 90 px tall instead of 110, and the screen's bottom margin is 90 px instead of 50, so the button ends about 2250 px down a 2340 px screen, above the brush line at the bottom of `BASE.png` (it starts at about 2271 px). Scene edits only (`Safe` margin and `ContinueButton` height in the three scenes); the shared layout code reads both values, and the trade's picture simply takes the space.
+
+## Buttons above the BASE line on every screen that uses BASE (2026-11-13, Cameron)
+
+Audit: each screen that sits on `BASE.png` was opened at 1080 x 2340 and the lowest button measured against the brush line that starts about 2271 px down.
+
+| Screen | Lowest button before | After |
+|---|---|---|
+| Office | 2250 | 2250 (already clear) |
+| Office Hours, member visit, lobbyist trade | 2250 | 2250 (fixed earlier today) |
+| Floor Vote (Yes, No, Abstain) | 2290, over the line | 2250 |
+| Battle (End Turn; the hand sits higher) | 2290, over the line | 2249 |
+
+The fix is the Safe area's bottom margin, 50 to 90 px, on the battle and Floor Vote scenes. The stage-end and result boxes already keep 120 px, and the full-screen panels use the flat `BASE_SCROLLING` picture, which has no line. `test_base_line_margin.gd` keeps all six screens at 90 px or more.

@@ -265,3 +265,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Member visit uses the Office Hours layout; visitors' Japanese names (2026-11-13, Cameron)
 - Lobbyist trade uses the Office Hours layout too (2026-11-13, Cameron)
 - Continue and Make the deal sit above the BASE line (2026-11-13, Cameron)
+- Buttons above the BASE line on every screen that uses BASE (2026-11-13, Cameron)
