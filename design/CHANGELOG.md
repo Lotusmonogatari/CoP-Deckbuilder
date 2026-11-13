@@ -958,3 +958,7 @@ A new **Characters** button in Administration opens a scrolling list of every op
 - **Unmet** buttons read exactly **誰ですか。** (Text row `characters.unmet_name`) and keep their colour. This is Cameron's deliberate exception to "Japanese only beside English" (noted in `INFORMATION_STANDARDS.md`).
 - **Colours:** an opponent with a named party takes that party's colour. A person whose organization is a party body (Party Headquarters, Faction, Activists, Selection Committee) but who names no party takes the **player's party colour**. Everyone else takes one muted colour per tier of their organization (Constituency, National) or "no organization". These three are nine Balance rows (`Characters colour ... red/green/blue`) in the workbook. A visitor's organization is the first target of their reward list.
 - New: `scripts/rules/CharacterCodex.gd` (pure rules), `scripts/ui/CharacterCodexPanel.gd`, `tests/test_character_codex.gd`, eleven Text rows (`characters.*`, `office.characters`). Draft wording for Cameron to rewrite.
+
+## Start-up guide refreshed (2026-11-13, Cameron)
+
+`design/NEW_CHAT_STARTUP.md` updated: current counts, what changed from 2026-11-06 to 2026-11-13 (saves, Resign, dues, lost Acts, the Characters list), and the open items.

@@ -1,16 +1,16 @@
-# Coliseum of Parliament: new session start-up (2026-11-06)
+# Coliseum of Parliament: new session start-up (2026-11-13)
 
-Point the assistant at this file at the start of a new session. The brief and the working rules are in `CLAUDE.md`; `README.md` is the short snapshot. This guide replaces the 2026-10-31 version.
+Point the assistant at this file at the start of a new session. The brief and the working rules are in `CLAUDE.md`; `README.md` is the short snapshot. This guide replaces the 2026-11-06 version.
 
 ## 1. Executive summary
 
 | Item | State |
 |---|---|
 | Game | Godot 4.5, GDScript, portrait mobile card battler. Fictional nation Yezo (101 seats, floor majority 51, no early elections). |
-| Repo and branches | `lotusmonogatari/cop-deckbuilder`. Work on the designated session branch; merge to `main` only after `tools/verify.sh` says "All checks passed". Everything to date is merged; the session branch is level with `main`. |
+| Repo and branches | `lotusmonogatari/cop-deckbuilder`. Work on the designated session branch; merge to `main` only after `tools/verify.sh` says "All checks passed". Everything to date is merged; the session branch (`claude/new-session-klhgm8`) is level with `main` at `b6c643f`. |
 | Workbook | `design/Game_Workbook.xlsx` |
-| Content (`data/`) | 288 stage rows (229 combat), 113 levels, 70 cards, 32 organizations, 131 opponents, 50 floor-vote bills, 166 visitors and 397 dilemmas, 56 events, 34 shop items, 21 staff, 155 ticker lines, 180 bill components, 6 cosmetic packages, about 916 Text rows |
-| Tests | About 1,750 GUT tests (143 scripts) and 32 real-click interaction tests. `tools/verify.sh` (which also compiles every script) passes in about 2-3 minutes. |
+| Content (`data/`) | 289 stage rows, 114 levels, 70 cards, 32 organizations, 131 opponents, 50 floor-vote bills, 167 visitors and 423 visitor questions, 87 events, 35 shop items, 21 staff, 180 bill components, 6 cosmetic packages, 987 Text rows |
+| Tests | About 1,860 GUT tests (157 scripts) and 32 real-click interaction tests. `tools/verify.sh` (which also compiles every script) passes in about 2-3 minutes. |
 | Missing | All audio files, most character art (opponents, students, visitors, PC02/PC03), 8 goods icons, `OUT_NEIGHBORHOOD`. No real-phone build yet (milestone M6). |
 
 ## 2. The document map
@@ -69,9 +69,18 @@ The code-level ones are in `design/ARCHITECTURE.md` section 8. Workbook and cont
 10. The Decline generator under `tools/workbook/archive/` is a one-off; add a new event's Decline by hand (1.5 times the shortfall of the staff choice against choice A).
 11. Shop item IDs were renumbered (2026-10-04): quote an item by name in prose, and never assume an old ID.
 
-## 6. What was done most recently (2026-11-01 to 2026-11-05)
+## 6. What was done most recently (2026-11-06 to 2026-11-13)
 
-Details are the sections at the end of `design/CHANGELOG.md`. In short: opponent bill lines now respect each person's party position, never repeat inside a level, and have about 1,100 more lines plus shared demanding-ally lines; levels open on a purpose line, a bill card and a Read the Bill page; promise deadlines pause during a level and a level must end within the work week; drafted bills can add a second member visit ("Convince <member>"); Legislative Work replaces the "Statute book" heading and carried bills sit inside it; bigger portraits, a gold hand scroll bar and slanted gold-edged score bars; press-conference moves are shown and journalists only attack for 1 to 2; many content reviews (canon names, choice honesty, wording coherence, bill content).
+Details are the sections at the end of `design/CHANGELOG.md`. In short:
+
+- **Stage results and saves:** a stage's result is saved when shown, so closing the app on a loss still counts it; every button press saves; haptics (with a setting); the Android back button is deliberately inert.
+- **Resign:** a two-part screen (normal layout, then the mirrored goodbye and the title), available only while all three standings are far down.
+- **Money:** party dues are 50,000 + 10,000 per 15 Party support above 40 + a share of the week's earnings (5% Relaxed); the national awareness dues relief is 50,000; Tier 0 stage pay is capped at 30,000; the Funds-cap petition leaves the Marketplace at the ceiling.
+- **Lost Acts:** a failed win/lose stage in a bill level shows party-colour or gaffe cues; a lost Act records an absent vote and the bill returns after 7,488 hours. A bill the player voted on never returns; absent or abstained ones do.
+- **Rooms and items:** the lobbyist's organization always applies scrutiny; the TV debate bar shows the opponent again; items that take hours show a greyed Use button when there is no time; Your Record's changes sit behind buttons.
+- **Content:** transitions for custom-bill stages; EV83 to EV94 (twelve events favorable to six organizations); visitors 58 to 78 and 144 and 167 (VI167 has no stage, reward, penalty or questions yet, so it never appears); the Japanese font was re-subset for new names.
+- **Characters list (new, 2026-11-13):** Administration, Characters. A scrolling list of every opponent and visitor; the button colour is the party colour, the player's party colour for a party body with no named party, or one muted tier colour (nine Balance rows). Unmet people read 誰ですか。 (a deliberate exception to English-first). "Met" is saved in `GameState.met_characters` and recorded when someone actually appears. Rules in `scripts/rules/CharacterCodex.gd`, UI in `scripts/ui/CharacterCodexPanel.gd`.
+- **Reviews (read-only reports):** `audit/` (project audit), `audit/gameplay/` (gameplay review), `design/review/ORG_REPRESENTATION_2026-11-13.md` and `ORG_OUTCOMES_2026-11-13.md` (how events and visitors treat each organization).
 
 ## 7. Open items
 
@@ -85,7 +94,11 @@ Details are the sections at the end of `design/CHANGELOG.md`. In short: opponent
 | 6 | Cleanup | `design/CLEANUP_CANDIDATES.md` (old working papers in `design/review/`, `design/proposals/`, `design/bench/`, balance audits) awaits Cameron's approval |
 | 7 | Ministers | Five ministers sit in every TV debate; Cameron chose to leave it |
 | 8 | MC²T results | `design/review/MC2T_REPORT_2026-11-06.md`: touch targets (93% under 44 pt), no mid-stage save, "Boosters" naming clash; kit ready for a 5-player round on a real phone. Decisions are Cameron's |
-| 9 | Branches | Four old remote branches (`ccr-1bbd9851-yg8on5`, `claude/happy-ramanujan-e0mrxj`, `claude/optimistic-noether-1j0yqh`, `claude/new-session-s1juv4`) could not be deleted from a session (no permission); Cameron asked for them to be deleted, so he must do it on GitHub |
+| 9 | Gameplay review leftovers | `audit/gameplay/00-summary.md`: Tier 1 and 2 pay less XP per hour than Tier 0 and repeats do not decay; meters hit their ceilings by week 4 to 8; no audio. Cameron decides |
+| 10 | Taxpayers' Alliance | Still the most over-represented organization with net negative outcomes (EV83 choice C and the Decline rows); a rebalance was offered, not approved |
+| 11 | VI167 | Masashi Mumotsu needs stages, rewards, penalty and questions |
+| 12 | Characters list | Colours and the nine Balance rows are drafts; opponents faced before 2026-11-13 show as unmet until they reappear; unmet popup not yet seen on a phone |
+| 13 | Branches | Four old remote branches (`ccr-1bbd9851-yg8on5`, `claude/happy-ramanujan-e0mrxj`, `claude/optimistic-noether-1j0yqh`, `claude/new-session-s1juv4`) could not be deleted from a session (no permission); Cameron asked for them to be deleted, so he must do it on GitHub |
 
 ## 8. A good first message
 
