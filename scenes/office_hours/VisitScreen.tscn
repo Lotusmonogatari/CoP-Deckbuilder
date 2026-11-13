@@ -47,7 +47,7 @@ anchor_bottom = 1.0
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 70
 theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 90
 
 [node name="Column" type="VBoxContainer" parent="Safe"]
 layout_mode = 2
@@ -161,7 +161,7 @@ mouse_filter = 2
 
 [node name="ContinueButton" type="Button" parent="Safe/Column"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 110)
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 disabled = true
 text = "Continue"

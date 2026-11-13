@@ -264,3 +264,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Move flash behind the player and opponent (2026-11-13, Cameron)
 - Member visit uses the Office Hours layout; visitors' Japanese names (2026-11-13, Cameron)
 - Lobbyist trade uses the Office Hours layout too (2026-11-13, Cameron)
+- Continue and Make the deal sit above the BASE line (2026-11-13, Cameron)

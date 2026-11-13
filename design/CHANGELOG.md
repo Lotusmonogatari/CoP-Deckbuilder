@@ -1010,3 +1010,7 @@ The member visit now lays out like Office Hours: the person's picture big at the
 ## Lobbyist trade uses the Office Hours layout too (2026-11-13, Cameron)
 
 Following Cameron's answer on the trade screen: the picture sits on top as in Office Hours, the leverage label and bar sit directly under it, and the lines below move up to fill the space. `VisitLayout.fit(..., fit_to_content: true)` gives the picture exactly the height the rest of the screen leaves it and moves the room picture's lower edge (and the plain panel's upper edge) to meet it, so the deal screen's leverage bar, four rewards, Walk away and Make the deal all fit. The picture is therefore shorter on the deal screen than on the first pick screen, and the name box may sit over its top corner. Checked with the trade click test and screenshots of both phases.
+
+## Continue and Make the deal sit above the BASE line (2026-11-13, Cameron)
+
+On Office Hours, the member visit and the lobbyist trade, the Continue (and "Make the deal") button is 90 px tall instead of 110, and the screen's bottom margin is 90 px instead of 50, so the button ends about 2250 px down a 2340 px screen, above the brush line at the bottom of `BASE.png` (it starts at about 2271 px). Scene edits only (`Safe` margin and `ContinueButton` height in the three scenes); the shared layout code reads both values, and the trade's picture simply takes the space.
