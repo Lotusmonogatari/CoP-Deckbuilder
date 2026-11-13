@@ -41,9 +41,6 @@ var _banner: CueBanner = null
 ## re-answer someone already spoken to.
 var _answered := false
 
-## The name box and the picture beside it (see _fit_layout).
-const NAME_BOX_WIDTH := 260.0
-const PICTURE_WIDTH := 760.0
 ## The largest an organization chip grows.
 const CHIP_MAX := 200.0
 
@@ -52,6 +49,7 @@ const CHIP_MAX := 200.0
 @onready var _visitor_caption: Label = %VisitorCaption
 @onready var _portrait: PlaceholderArt = %Portrait
 @onready var _visitor_name: Label = %VisitorName
+@onready var _visitor_name_jp: Label = %VisitorNameJP
 @onready var _visitor_title: Label = %VisitorTitle
 @onready var _question_label: Label = %QuestionLabel
 @onready var _choice_a: Button = %ChoiceA
@@ -73,7 +71,7 @@ func _ready() -> void:
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.show_label = false
 
-	_visitor_presenter = VisitorPresenter.new(_portrait, _visitor_name, _visitor_title)
+	_visitor_presenter = VisitorPresenter.new(_portrait, _visitor_name, _visitor_title, _visitor_name_jp)
 	_messages = MessagePresenter.new(%Notice, get_tree())
 
 	_banner = CueBanner.new()
@@ -106,42 +104,7 @@ func _ready() -> void:
 func _fit_layout() -> void:
 	if not is_inside_tree():
 		return
-	var header := $Safe/Column/Header as Control
-	var column := $Safe/Column as VBoxContainer
-	var gap := float(column.get_theme_constant("separation"))
-	var top := get_global_rect().position.y
-	var screen_height := get_viewport_rect().size.y
-	var row_top := header.get_global_rect().end.y - top + gap
-	# The window's bottom edge comes from its own anchor, not a measured
-	# rectangle, so it is right even before the first layout pass has run.
-	var window_bottom := _background.anchor_bottom * screen_height
-	var picture_bottom := window_bottom - gap
-
-	# The name box leaves the row and floats over the picture's top left corner.
-	var details := _visitor_name.get_parent() as Control
-	if details.get_parent() != self:
-		details.reparent(self, false)
-	details.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	details.custom_minimum_size.x = NAME_BOX_WIDTH
-	details.size = Vector2(NAME_BOX_WIDTH, 0.0)
-	details.position = Vector2(($Safe/Column as Control).get_global_rect().position.x - get_global_rect().position.x, row_top)
-
-	_portrait.custom_minimum_size = Vector2(PICTURE_WIDTH, maxf(picture_bottom - row_top, 300.0))
-	_portrait.size_flags_horizontal = Control.SIZE_EXPAND | Control.SIZE_SHRINK_CENTER
-
-	# The question starts right under the window; no spacer is needed.
-	var band_gap := column.get_node_or_null("BandGap") as Control
-	if band_gap != null:
-		band_gap.custom_minimum_size.y = 0.0
-
-	# The spoken line pops up over the choices: centered between the bottom of
-	# the window and the top of Continue.
-	var choices_top := window_bottom
-	var safe := $Safe as MarginContainer
-	var choices_bottom := screen_height - float(safe.get_theme_constant("margin_bottom")) \
-		- _continue_button.custom_minimum_size.y
-	if _banner != null and choices_bottom > choices_top:
-		_banner.set_centre((choices_top + choices_bottom) / 2.0 / screen_height)
+	VisitLayout.fit(self, _visitor_name, _portrait, _background, _continue_button, _banner)
 	_place_effect_chips(get_node_or_null("EffectChips") as Control)
 
 

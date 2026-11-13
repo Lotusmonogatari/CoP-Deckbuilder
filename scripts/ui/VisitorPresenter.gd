@@ -21,12 +21,16 @@ const DAMAGED := ArtLoader.DAMAGED
 var _portrait: Control
 var _name_label: Label
 var _title_label: Label
+## The visitor's Japanese name, under the English one (2026-11-13); optional.
+var _name_jp_label: Label
 
 
-func _init(portrait: Control, name_label: Label, title_label: Label) -> void:
+func _init(portrait: Control, name_label: Label, title_label: Label,
+		name_jp_label: Label = null) -> void:
 	_portrait = portrait
 	_name_label = name_label
 	_title_label = title_label
+	_name_jp_label = name_jp_label
 
 
 ## A new visitor, waiting on their question to be answered.
@@ -37,6 +41,10 @@ func show_visitor(visitor: Dictionary) -> void:
 	_portrait.art_id = visitor_id
 	_portrait.expression = NEUTRAL
 	_name_label.text = str(visitor.get("name_en", Text.say("visitor.fallback_name")))
+	if _name_jp_label != null:
+		var name_jp := "" if visitor.get("name_jp") == null else str(visitor.get("name_jp"))
+		_name_jp_label.text = name_jp
+		_name_jp_label.visible = not name_jp.is_empty()
 	var title := str(visitor.get("title", ""))
 	_title_label.text = title
 	_title_label.visible = not title.is_empty()

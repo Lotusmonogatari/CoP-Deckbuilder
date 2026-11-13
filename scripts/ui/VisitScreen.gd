@@ -73,6 +73,15 @@ func _ready() -> void:
 		DragScroll.attach(outcome_scroll)
 	_outcome_panel.hide()
 	_start()
+	_fit_layout.call_deferred()
+	get_tree().process_frame.connect(_fit_layout, CONNECT_ONE_SHOT)
+	get_tree().root.size_changed.connect(_fit_layout)
+
+
+## The same layout as Office Hours: a big picture on top, the question and the
+## choices below it (2026-11-13). See VisitLayout.
+func _fit_layout() -> void:
+	VisitLayout.fit(self, _visitor_name, _portrait, _background, _continue_button, _banner)
 
 
 func _start() -> void:

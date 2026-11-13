@@ -109,6 +109,13 @@ layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Visitor"
 
+[node name="VisitorNameJP" type="Label" parent="Safe/Column/VisitorRow/Details"]
+autowrap_mode = 3
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"JapaneseAccent"
+text = ""
+
 [node name="VisitorTitle" type="Label" parent="Safe/Column/VisitorRow/Details"]
 autowrap_mode = 3
 unique_name_in_owner = true
