@@ -109,6 +109,8 @@
 | **Money, long numbers and hours read naturally**: thousands commas, 円 on yen, "1 Hour"/"2 Hours" | `Phrase.meta_amount()` |
 | **Saving is visible**: a brief "Saved" flash; one automatic slot and one manual backup | |
 
+**One deliberate exception to "Japanese only beside English":** the Characters list (Administration) labels a person the player has not met yet with **誰ですか。** alone, Cameron's own wording (Text row `characters.unmet_name`).
+
 ## 6. Wording is data
 
 - **Every sentence the game says is a row in the workbook's Text tab**, asked for by a literal key (`Text.say("a.b")`, never a built-up key). The exporter errors for a key the code asks for and the tab lacks, and notes a row nothing asks for. `design/EDITING_TEXT.md` is the guide to changing each kind of prose.

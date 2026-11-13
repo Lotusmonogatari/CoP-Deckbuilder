@@ -203,6 +203,7 @@ func _show_speaker(index: int) -> void:
 ## Puts speaker `index`'s picture and name in place, just off screen, ready to slide in.
 func _seat_speaker(index: int) -> void:
 	var character_id := str((_speakers[index] as Dictionary)["character_id"])
+	GameState.meet_character(character_id)   # Characters list: spoke in a transition
 	_speaker_portrait.art_id = character_id
 	_speaker_portrait.visible = true
 	_speaker_name.text = _label_for(character_id)

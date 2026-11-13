@@ -262,6 +262,7 @@ func _wear(art_id: String, expression: String) -> void:
 	if not (_portrait is PlaceholderArt):
 		return
 	var art := _portrait as PlaceholderArt
+	GameState.meet_character(art_id)   # Characters list: seen in a bout
 	art.kind = PlaceholderArt.Kind.CHARACTER
 	art.art_id = art_id
 	art.stage_id = stage_id

@@ -85,6 +85,7 @@ func _start() -> void:
 		_fail()
 		return
 	_member = DataDB.get_opponent(str(_visit.get("opp_id", "")))
+	GameState.meet_character(str(_visit.get("opp_id", "")))   # Characters list
 	_stage_name.text = str(_stage.get("name_en", ""))
 	_stage_name_jp.text = str(_stage.get("name_jp", ""))
 	_background.art_id = str(_stage.get("stage_id", ""))

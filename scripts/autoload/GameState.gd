@@ -305,6 +305,11 @@ var town_hall_active := false
 ## back (Cameron, 2026-10-13). Saved; cleared on a new run.
 var faced_people: Dictionary = {}
 
+## Opponents and visitors the player has met once (id -> true), for the Characters list
+## in Administration (CharacterCodex). Filled where a person actually appears (a bout, a transition, Office Hours,
+## a visit, a trade), not at level start, so no one is spoiled.
+var met_characters: Dictionary = {}
+
 ## Who spoke at the last stage transition and which lines this level has
 ## already heard ({"speaker": id, "lines": {key: true}}), so the next one can
 ## avoid repeating them (2026-11-02). Not saved; cleared when a level begins.
@@ -519,6 +524,7 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 	reset_segment_favorability()
 	reset_party_standing()
 	faced_people = {}
+	met_characters = {}
 	awaiting_new_game = false
 	return true
 
@@ -541,7 +547,7 @@ const _SAVED_FIELDS := [
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
-	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
+	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
 	"bill_stance",
 	"patron_requests", "enacted_components", "patron_runtime", "patron_composed", "patron_armed",
 	"bill_assist", "patron_news", "patron_drafts", "draft_counter", "last_draft_at",
@@ -2373,6 +2379,13 @@ func begin_level(runner: LevelRunner) -> void:
 
 	for stage: Variant in runner.stages:
 		record_faced(stage)
+
+
+## Notes that the player has met this opponent or visitor (Characters list).
+## Safe to call again and again; blank ids are ignored.
+func meet_character(id: String) -> void:
+	if not id.is_empty():
+		met_characters[id] = true
 
 
 ## Counts everyone seated in `stage` (opponents and visitors) as met once

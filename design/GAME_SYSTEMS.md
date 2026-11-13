@@ -240,6 +240,7 @@ Everything below lives in the autoload `GameState`. **Saved** means it is in `_S
 | `last_awareness_change` | The last stage's movement | no |
 | `election_strength` | The slow 0–100 campaign score | yes |
 | `booster_moved_in_period`, `last_decay_at` | Which organizations moved since decay last ran; clock at last decay | yes |
+| `met_characters` | Opponents and visitors who have actually appeared (a bout, a transition, Office Hours, a visit, a trade); drives the Characters list in Administration | yes |
 | `faced_people` | How often each person has been seated against the player (the draw leans to the least met) | yes |
 
 **Progress through levels**

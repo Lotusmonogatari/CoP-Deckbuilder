@@ -32,6 +32,7 @@ func _init(portrait: Control, name_label: Label, title_label: Label) -> void:
 ## A new visitor, waiting on their question to be answered.
 func show_visitor(visitor: Dictionary) -> void:
 	var visitor_id := str(visitor.get("visitor_id", ""))
+	GameState.meet_character(visitor_id)   # Characters list: seen in Office Hours
 	_portrait.kind = PlaceholderArt.Kind.CHARACTER
 	_portrait.art_id = visitor_id
 	_portrait.expression = NEUTRAL

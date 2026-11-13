@@ -70,6 +70,9 @@ var _party_detail_panel: Overlay
 ## bundles, bought here and equipped per slot. Built in code, the same
 ## reason _record_panel is.
 var _cosmetics_panel: Overlay
+var _characters_panel: Overlay
+var _character_detail_panel: Overlay
+var _characters: CharacterCodexPanel
 
 ## The How to Play guide (HowToPlayPanel.gd), opened from the row of buttons.
 var _how_to_play_panel: Overlay
@@ -1793,6 +1796,14 @@ func _build_cosmetics() -> void:
 	_cosmetics_panel = Overlay.new()
 	_cosmetics_panel.name = "CosmeticsPanel"
 	add_child(_cosmetics_panel)
+	# The Characters list and the detail panel for one character (Administration).
+	_characters_panel = Overlay.new()
+	_characters_panel.name = "CharactersPanel"
+	add_child(_characters_panel)
+	_character_detail_panel = Overlay.new()
+	_character_detail_panel.name = "CharacterDetailPanel"
+	add_child(_character_detail_panel)
+	_characters = CharacterCodexPanel.new(_characters_panel, _character_detail_panel)
 
 
 ## Two intermediary menus (2026-10-06, Cameron) so the Office's button row
@@ -1866,6 +1877,7 @@ func _show_administration_menu() -> void:
 		_menu_button("CosmeticsButton", "office.cosmetics", _show_cosmetics, _cosmetics_panel),
 		_menu_button("HowToPlayButton", "office.how_to_play",
 			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
+		_menu_button("CharactersButton", "office.characters", _characters.open, _characters_panel),
 		_text_size_button(),
 		_image_scroll_button(),
 		_image_pan_button(),

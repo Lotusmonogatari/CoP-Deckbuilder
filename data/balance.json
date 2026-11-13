@@ -254,5 +254,14 @@
   "resign_hold_seconds": 4,
   "resign_fade_seconds": 1,
   "resign_black_seconds": 2,
+  "characters_colour_constituency_red": 160,
+  "characters_colour_constituency_green": 140,
+  "characters_colour_constituency_blue": 100,
+  "characters_colour_national_red": 100,
+  "characters_colour_national_green": 120,
+  "characters_colour_national_blue": 150,
+  "characters_colour_none_red": 120,
+  "characters_colour_none_green": 120,
+  "characters_colour_none_blue": 120,
   "xp_tiers": {}
 }

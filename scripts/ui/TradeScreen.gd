@@ -118,6 +118,7 @@ func _start() -> void:
 		_fail()
 		return
 	_lobbyist = DataDB.get_opponent(str(_trade.get("opp_id", "")))
+	GameState.meet_character(str(_trade.get("opp_id", "")))   # Characters list
 	var flavor_rng := RandomNumberGenerator.new()
 	flavor_rng.randomize()
 	_protect_line = LobbyistTrade.flavor_line(DataDB.lobbyist_lines, str(_trade.get("org", "")), "Protect", flavor_rng)

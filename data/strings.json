@@ -6830,5 +6830,82 @@
     "english": "You decline to back either plan. The hall's buckets multiply.",
     "placeholders": null,
     "notes": "2026-11-13 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "office.characters",
+    "where": "Office — Administration: Characters button and list title",
+    "english": "Characters",
+    "placeholders": null,
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.blurb",
+    "where": "Characters list — intro line",
+    "english": "Everyone you meet is recorded here. Tap a name to see who they are.",
+    "placeholders": null,
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.opponents_heading",
+    "where": "Characters list — group heading",
+    "english": "Opponents",
+    "placeholders": null,
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.visitors_heading",
+    "where": "Characters list — group heading",
+    "english": "Visitors",
+    "placeholders": null,
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.unmet_name",
+    "where": "Characters list — button text and detail title for someone not yet met (Cameron's wording; a deliberate exception to English-first)",
+    "english": "誰ですか。",
+    "placeholders": null,
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.unmet_detail",
+    "where": "Characters list — detail of someone not yet met",
+    "english": "You have not met this person yet.",
+    "placeholders": null,
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.detail_name",
+    "where": "Characters detail — English name",
+    "english": "Name: {name}",
+    "placeholders": "name",
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.detail_name_jp",
+    "where": "Characters detail — Japanese name (visitors only)",
+    "english": "Japanese name: {name}",
+    "placeholders": "name",
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.detail_title",
+    "where": "Characters detail — title",
+    "english": "Title: {title}",
+    "placeholders": "title",
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.detail_party",
+    "where": "Characters detail — party",
+    "english": "Party: {party}",
+    "placeholders": "party",
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "characters.detail_organization",
+    "where": "Characters detail — organization or affiliation",
+    "english": "Organization: {organization}",
+    "placeholders": "organization",
+    "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
   }
 ]
