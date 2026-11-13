@@ -2912,6 +2912,11 @@ func _show_levels() -> void:
 		# cost/cooldown, not this.
 		if Ledger.level_is_hidden(level, GameState.level_last_completed_at):
 			continue
+		# An Act whose bill the player voted Aye or Nay on never comes back
+		# (2026-11-13); one they were absent for or abstained on returns once its
+		# 7,488-hour replay timer is over, like any cooling-down level.
+		if GameState.act_is_settled(level):
+			continue
 		# A level still cooling down is taken off the list until its cooldown
 		# is over (Cameron, 2026-11-06; it used to show as a disabled row).
 		if DataDB.get_rule("level_gating_enabled", false) and Ledger.level_cooldown_remaining(

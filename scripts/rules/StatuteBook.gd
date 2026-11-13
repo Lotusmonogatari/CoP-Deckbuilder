@@ -68,6 +68,25 @@ static func is_absent(book: Array, bill_id: String) -> bool:
 	return false
 
 
+## True when the player voted Aye or Nay on the bill (Cameron, 2026-11-13): such
+## a bill never comes back. An absent entry, or one where the player abstained,
+## does not count: that bill returns once its replay timer has run.
+static func player_took_a_side(book: Array, bill_id: String) -> bool:
+	for law: Dictionary in book:
+		if str(law.get("bill_id", "")) == bill_id:
+			return not bool(law.get("absent", false)) and str(law.get("player_vote", "")) in ["Yes", "No"]
+	return false
+
+
+## True when the book's entry for a bill may be replaced by a later vote: the
+## player was absent or abstained, so the bill came back after its timer.
+static func is_replaceable(book: Array, bill_id: String) -> bool:
+	for law: Dictionary in book:
+		if str(law.get("bill_id", "")) == bill_id:
+			return bool(law.get("absent", false)) or str(law.get("player_vote", "")) == "Abstain"
+	return false
+
+
 ## Takes a bill's entry out of the book (an absent entry about to be replaced).
 static func remove_bill(book: Array, bill_id: String) -> void:
 	for index in range(book.size() - 1, -1, -1):

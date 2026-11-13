@@ -3394,6 +3394,7 @@ func buy_random_level(item_id: String) -> Dictionary:
 	var choices: Array[String] = []
 	for level: Dictionary in DataDB.levels:
 		if int(level.get("tier", -1)) == tier and is_level_discovered(level) and not is_event_only(level) \
+				and not act_is_settled(level) \
 				and not Ledger.is_level_unlocked(level, levels_unlocked, staff_hired):
 			choices.append(str(level.get("level_id", "")))
 	if choices.is_empty():
@@ -4118,6 +4119,14 @@ func record_bill_flip(bill_id: String) -> void:
 	apply_awareness_delta("national", int(DataDB.balance.get("awareness_flipped_bill_national", 0)))
 
 
+## An Act whose bill the player voted Aye or Nay on never comes back; one they
+## were absent for or abstained on returns after its replay timer (Cameron,
+## 2026-11-13). The level list and level purchases leave a settled Act out.
+func act_is_settled(level: Dictionary) -> bool:
+	var bill := DataDB.get_floor_vote(str(level.get("level_id", "")))
+	return not bill.is_empty() and StatuteBook.player_took_a_side(statute_book, str(bill.get("bill_id", "")))
+
+
 ## A bill level (an Act) that the player lost or abandoned still comes to a vote,
 ## with the player abstaining (2026-11-12, Cameron). The bill's own engine runs
 ## with no whips and no influence; whichever way it goes is recorded as a
@@ -4160,9 +4169,10 @@ func record_floor_vote(bill: Dictionary, result: Dictionary, choice: String, abs
 	if bill_id.is_empty():
 		return
 	if StatuteBook.has_bill(statute_book, bill_id):
-		# Only a limited "absent" entry can be replaced, and only by a real
-		# vote: a later proper vote on the bill takes its place (2026-11-12).
-		if absent or not StatuteBook.is_absent(statute_book, bill_id):
+		# Only an entry where the player was absent or abstained can be
+		# replaced, and only by a later real vote on the bill (it came back after
+		# its replay timer, 2026-11-13). Aye or Nay is final.
+		if absent or not StatuteBook.is_replaceable(statute_book, bill_id):
 			return
 		StatuteBook.remove_bill(statute_book, bill_id)
 	var level_id := ""

@@ -904,3 +904,7 @@ Following Cameron's reply, the time check for an Office item that takes hours (t
 | The record | Legislative Work shows "<Bill>: passed in your absence." or "failed in your absence."; its pop-up shows the result and "Stakeholders for this bill observed your absence from proceedings." A real vote later replaces an absent entry. |
 | Text | Six new rows (`bill_loss.*`, `office.record_law_absent_*`, `record.law_absent_note`). The lines you wrote are verbatim; the two record rows are a Claude draft. |
 | Tests | `test_lost_act.gd`. |
+
+## Acts: voted bills stay gone, absent or abstained bills return (2026-11-13, Cameron)
+
+A bill the player voted Aye or Nay on never comes back. A bill they were absent for (a lost or abandoned Act) or abstained on returns after the 7,488-hour replay timer, and a later real vote replaces that entry. `GameState.act_is_settled` leaves a settled Act out of the level list and out of level purchases; `StatuteBook.player_took_a_side` and `is_replaceable` carry the rule. The 50 Act levels keep One-Time No and cooldown 7,488; the Aye-or-Nay case is decided by the statute book instead of the One-Time flag. Tests in `test_lost_act.gd`.

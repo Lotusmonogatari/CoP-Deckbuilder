@@ -105,3 +105,47 @@ func test_the_levels_replay_timer_is_7488_hours() -> void:
 				assert_eq(int(level["cooldown"]), 7488, str(level["level_id"]))
 				assert_eq(str(level["one_time"]), "No", str(level["level_id"]))
 				break
+
+
+# --- who comes back (Cameron, 2026-11-13) -----------------------------------
+
+func _vote_on_the_act(level_id: String, choice: String) -> Dictionary:
+	_begin_act(level_id)
+	var level := DataDB.get_level(level_id)
+	var source := GameState.level_bill()
+	var bill := BattleSetup.enriched_floor_vote(source)
+	var result := {"totals": {"Yes": 55, "No": 36, "Abstain": 10}, "passed": true}
+	GameState.record_floor_vote(bill, result, choice)
+	return level
+
+
+func test_an_act_the_player_voted_aye_or_nay_on_never_comes_back() -> void:
+	for choice in ["Yes", "No"]:
+		GameState.statute_book = []
+		var level := _vote_on_the_act("LV35", choice)
+		assert_true(GameState.act_is_settled(level), choice)
+
+
+func test_an_act_the_player_abstained_on_comes_back() -> void:
+	var level := _vote_on_the_act("LV35", "Abstain")
+	assert_false(GameState.act_is_settled(level))
+	assert_true(StatuteBook.is_replaceable(GameState.statute_book, str(GameState.level_bill()["bill_id"])))
+
+
+func test_an_act_the_player_was_absent_for_comes_back() -> void:
+	_begin_act("LV36")
+	var level := DataDB.get_level("LV36")
+	_lose_until_the_level_ends()
+	assert_false(GameState.act_is_settled(level))
+
+
+func test_a_later_real_vote_replaces_an_abstained_entry_but_an_aye_is_final() -> void:
+	var level := _vote_on_the_act("LV37", "Abstain")
+	var bill_id := str(GameState.level_bill()["bill_id"])
+	var bill := BattleSetup.enriched_floor_vote(GameState.level_bill())
+	var result := {"totals": {"Yes": 60, "No": 30, "Abstain": 11}, "passed": true}
+	GameState.record_floor_vote(bill, result, "Yes")
+	assert_true(StatuteBook.player_took_a_side(GameState.statute_book, bill_id), "the Aye replaced the abstention")
+	GameState.record_floor_vote(bill, result, "No")
+	assert_eq(str(GameState.statute_book[GameState.statute_book.size() - 1]["player_vote"]), "Yes", "and stays")
+	assert_true(GameState.act_is_settled(level))
