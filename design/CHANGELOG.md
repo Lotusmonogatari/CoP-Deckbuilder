@@ -908,3 +908,7 @@ Following Cameron's reply, the time check for an Office item that takes hours (t
 ## Acts: voted bills stay gone, absent or abstained bills return (2026-11-13, Cameron)
 
 A bill the player voted Aye or Nay on never comes back. A bill they were absent for (a lost or abandoned Act) or abstained on returns after the 7,488-hour replay timer, and a later real vote replaces that entry. `GameState.act_is_settled` leaves a settled Act out of the level list and out of level purchases; `StatuteBook.player_took_a_side` and `is_replaceable` carry the rule. The 50 Act levels keep One-Time No and cooldown 7,488; the Aye-or-Nay case is decided by the statute book instead of the One-Time flag. Tests in `test_lost_act.gd`.
+
+## Transitions for the stages unique to custom bills (2026-11-13, Cameron)
+
+Patron Visit (ST263), Member Visit (ST260) and Lobbyist Trade (ST262), the stages that exist only in patron, sponsored and drafted bill levels, had no transition: no Show Transition flag, no cast, no lines. Cameron chose these three (not Convince Your Colleague, ST261) and staff-only speakers. Workbook rows only, no code: Show Transition is now Yes on the three stages; 126 staff lines (two per stage for each of the 21 staff, written per role: Policy Research Assistant, Media Spokesperson, District Representative); nine lines for the player's own thought when no staff is hired; and three Transition Backgrounds rows (the backgrounds the stages already use: ST07, ST07, ST20). All of it is a Claude draft for Cameron to rewrite. Tests in `test_custom_bill_transitions.gd`.

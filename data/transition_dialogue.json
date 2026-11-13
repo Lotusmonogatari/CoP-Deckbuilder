@@ -25688,5 +25688,1355 @@
     "bill_id": null,
     "stance": null,
     "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2462",
+    "character_id": "SF01",
+    "stage_id": "ST263",
+    "character_line_en": "The sponsor's people will want to know you have read their proposal. The summary is in your folder.",
+    "player_reply_en": "Good. I will start there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2463",
+    "character_id": "SF01",
+    "stage_id": "ST263",
+    "character_line_en": "Ask what they need before you promise anything.",
+    "player_reply_en": "Listen first, promise second.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2464",
+    "character_id": "SF02",
+    "stage_id": "ST263",
+    "character_line_en": "The sponsor's people will want to know you have read their proposal. The summary is in your folder.",
+    "player_reply_en": "Good. I will start there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2465",
+    "character_id": "SF02",
+    "stage_id": "ST263",
+    "character_line_en": "Ask what they need before you promise anything.",
+    "player_reply_en": "Listen first, promise second.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2466",
+    "character_id": "SF03",
+    "stage_id": "ST263",
+    "character_line_en": "The sponsor's people will want to know you have read their proposal. The summary is in your folder.",
+    "player_reply_en": "Good. I will start there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2467",
+    "character_id": "SF03",
+    "stage_id": "ST263",
+    "character_line_en": "Ask what they need before you promise anything.",
+    "player_reply_en": "Listen first, promise second.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2468",
+    "character_id": "SF04",
+    "stage_id": "ST263",
+    "character_line_en": "The sponsor's people will want to know you have read their proposal. The summary is in your folder.",
+    "player_reply_en": "Good. I will start there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2469",
+    "character_id": "SF04",
+    "stage_id": "ST263",
+    "character_line_en": "Ask what they need before you promise anything.",
+    "player_reply_en": "Listen first, promise second.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2470",
+    "character_id": "SF05",
+    "stage_id": "ST263",
+    "character_line_en": "The sponsor's people will want to know you have read their proposal. The summary is in your folder.",
+    "player_reply_en": "Good. I will start there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2471",
+    "character_id": "SF05",
+    "stage_id": "ST263",
+    "character_line_en": "Ask what they need before you promise anything.",
+    "player_reply_en": "Listen first, promise second.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2472",
+    "character_id": "SF06",
+    "stage_id": "ST263",
+    "character_line_en": "The sponsor's people will want to know you have read their proposal. The summary is in your folder.",
+    "player_reply_en": "Good. I will start there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2473",
+    "character_id": "SF06",
+    "stage_id": "ST263",
+    "character_line_en": "Ask what they need before you promise anything.",
+    "player_reply_en": "Listen first, promise second.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2474",
+    "character_id": "SF07",
+    "stage_id": "ST263",
+    "character_line_en": "The sponsor's people will want to know you have read their proposal. The summary is in your folder.",
+    "player_reply_en": "Good. I will start there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2475",
+    "character_id": "SF07",
+    "stage_id": "ST263",
+    "character_line_en": "Ask what they need before you promise anything.",
+    "player_reply_en": "Listen first, promise second.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2476",
+    "character_id": "SF08",
+    "stage_id": "ST263",
+    "character_line_en": "Whatever you say in that room, keep it short enough to be repeated later.",
+    "player_reply_en": "I will choose my words.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2477",
+    "character_id": "SF08",
+    "stage_id": "ST263",
+    "character_line_en": "A sponsor who is pleased with you tells other people about it.",
+    "player_reply_en": "Then let me earn that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2478",
+    "character_id": "SF09",
+    "stage_id": "ST263",
+    "character_line_en": "Whatever you say in that room, keep it short enough to be repeated later.",
+    "player_reply_en": "I will choose my words.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2479",
+    "character_id": "SF09",
+    "stage_id": "ST263",
+    "character_line_en": "A sponsor who is pleased with you tells other people about it.",
+    "player_reply_en": "Then let me earn that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2480",
+    "character_id": "SF10",
+    "stage_id": "ST263",
+    "character_line_en": "Whatever you say in that room, keep it short enough to be repeated later.",
+    "player_reply_en": "I will choose my words.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2481",
+    "character_id": "SF10",
+    "stage_id": "ST263",
+    "character_line_en": "A sponsor who is pleased with you tells other people about it.",
+    "player_reply_en": "Then let me earn that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2482",
+    "character_id": "SF11",
+    "stage_id": "ST263",
+    "character_line_en": "Whatever you say in that room, keep it short enough to be repeated later.",
+    "player_reply_en": "I will choose my words.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2483",
+    "character_id": "SF11",
+    "stage_id": "ST263",
+    "character_line_en": "A sponsor who is pleased with you tells other people about it.",
+    "player_reply_en": "Then let me earn that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2484",
+    "character_id": "SF12",
+    "stage_id": "ST263",
+    "character_line_en": "Whatever you say in that room, keep it short enough to be repeated later.",
+    "player_reply_en": "I will choose my words.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2485",
+    "character_id": "SF12",
+    "stage_id": "ST263",
+    "character_line_en": "A sponsor who is pleased with you tells other people about it.",
+    "player_reply_en": "Then let me earn that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2486",
+    "character_id": "SF13",
+    "stage_id": "ST263",
+    "character_line_en": "Whatever you say in that room, keep it short enough to be repeated later.",
+    "player_reply_en": "I will choose my words.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2487",
+    "character_id": "SF13",
+    "stage_id": "ST263",
+    "character_line_en": "A sponsor who is pleased with you tells other people about it.",
+    "player_reply_en": "Then let me earn that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2488",
+    "character_id": "SF14",
+    "stage_id": "ST263",
+    "character_line_en": "Whatever you say in that room, keep it short enough to be repeated later.",
+    "player_reply_en": "I will choose my words.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2489",
+    "character_id": "SF14",
+    "stage_id": "ST263",
+    "character_line_en": "A sponsor who is pleased with you tells other people about it.",
+    "player_reply_en": "Then let me earn that.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2490",
+    "character_id": "SF15",
+    "stage_id": "ST263",
+    "character_line_en": "People back home will ask who wanted this bill. It helps to know the answer.",
+    "player_reply_en": "I will find out who asked.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2491",
+    "character_id": "SF15",
+    "stage_id": "ST263",
+    "character_line_en": "Whoever sponsors it, remember who it is meant to help.",
+    "player_reply_en": "That is who I will keep in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2492",
+    "character_id": "SF16",
+    "stage_id": "ST263",
+    "character_line_en": "People back home will ask who wanted this bill. It helps to know the answer.",
+    "player_reply_en": "I will find out who asked.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2493",
+    "character_id": "SF16",
+    "stage_id": "ST263",
+    "character_line_en": "Whoever sponsors it, remember who it is meant to help.",
+    "player_reply_en": "That is who I will keep in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2494",
+    "character_id": "SF17",
+    "stage_id": "ST263",
+    "character_line_en": "People back home will ask who wanted this bill. It helps to know the answer.",
+    "player_reply_en": "I will find out who asked.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2495",
+    "character_id": "SF17",
+    "stage_id": "ST263",
+    "character_line_en": "Whoever sponsors it, remember who it is meant to help.",
+    "player_reply_en": "That is who I will keep in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2496",
+    "character_id": "SF18",
+    "stage_id": "ST263",
+    "character_line_en": "People back home will ask who wanted this bill. It helps to know the answer.",
+    "player_reply_en": "I will find out who asked.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2497",
+    "character_id": "SF18",
+    "stage_id": "ST263",
+    "character_line_en": "Whoever sponsors it, remember who it is meant to help.",
+    "player_reply_en": "That is who I will keep in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2498",
+    "character_id": "SF19",
+    "stage_id": "ST263",
+    "character_line_en": "People back home will ask who wanted this bill. It helps to know the answer.",
+    "player_reply_en": "I will find out who asked.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2499",
+    "character_id": "SF19",
+    "stage_id": "ST263",
+    "character_line_en": "Whoever sponsors it, remember who it is meant to help.",
+    "player_reply_en": "That is who I will keep in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2500",
+    "character_id": "SF20",
+    "stage_id": "ST263",
+    "character_line_en": "People back home will ask who wanted this bill. It helps to know the answer.",
+    "player_reply_en": "I will find out who asked.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2501",
+    "character_id": "SF20",
+    "stage_id": "ST263",
+    "character_line_en": "Whoever sponsors it, remember who it is meant to help.",
+    "player_reply_en": "That is who I will keep in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2502",
+    "character_id": "SF21",
+    "stage_id": "ST263",
+    "character_line_en": "People back home will ask who wanted this bill. It helps to know the answer.",
+    "player_reply_en": "I will find out who asked.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2503",
+    "character_id": "SF21",
+    "stage_id": "ST263",
+    "character_line_en": "Whoever sponsors it, remember who it is meant to help.",
+    "player_reply_en": "That is who I will keep in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2504",
+    "character_id": "PLAYER",
+    "stage_id": "ST263",
+    "character_line_en": "A bill starts with someone who needs it. Let me hear what they need.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2505",
+    "character_id": "PLAYER",
+    "stage_id": "ST263",
+    "character_line_en": "A sponsor's trust is slow to earn and quick to lose.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2506",
+    "character_id": "PLAYER",
+    "stage_id": "ST263",
+    "character_line_en": "Listen first. The promises can come later.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2507",
+    "character_id": "SF01",
+    "stage_id": "ST260",
+    "character_line_en": "Your colleague has a position on this bill. I marked where it differs from yours.",
+    "player_reply_en": "Show me the difference.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2508",
+    "character_id": "SF01",
+    "stage_id": "ST260",
+    "character_line_en": "Their last speech is in the folder. Read the part about the vote.",
+    "player_reply_en": "I will read it before they arrive.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2509",
+    "character_id": "SF02",
+    "stage_id": "ST260",
+    "character_line_en": "Your colleague has a position on this bill. I marked where it differs from yours.",
+    "player_reply_en": "Show me the difference.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2510",
+    "character_id": "SF02",
+    "stage_id": "ST260",
+    "character_line_en": "Their last speech is in the folder. Read the part about the vote.",
+    "player_reply_en": "I will read it before they arrive.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2511",
+    "character_id": "SF03",
+    "stage_id": "ST260",
+    "character_line_en": "Your colleague has a position on this bill. I marked where it differs from yours.",
+    "player_reply_en": "Show me the difference.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2512",
+    "character_id": "SF03",
+    "stage_id": "ST260",
+    "character_line_en": "Their last speech is in the folder. Read the part about the vote.",
+    "player_reply_en": "I will read it before they arrive.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2513",
+    "character_id": "SF04",
+    "stage_id": "ST260",
+    "character_line_en": "Your colleague has a position on this bill. I marked where it differs from yours.",
+    "player_reply_en": "Show me the difference.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2514",
+    "character_id": "SF04",
+    "stage_id": "ST260",
+    "character_line_en": "Their last speech is in the folder. Read the part about the vote.",
+    "player_reply_en": "I will read it before they arrive.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2515",
+    "character_id": "SF05",
+    "stage_id": "ST260",
+    "character_line_en": "Your colleague has a position on this bill. I marked where it differs from yours.",
+    "player_reply_en": "Show me the difference.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2516",
+    "character_id": "SF05",
+    "stage_id": "ST260",
+    "character_line_en": "Their last speech is in the folder. Read the part about the vote.",
+    "player_reply_en": "I will read it before they arrive.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2517",
+    "character_id": "SF06",
+    "stage_id": "ST260",
+    "character_line_en": "Your colleague has a position on this bill. I marked where it differs from yours.",
+    "player_reply_en": "Show me the difference.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2518",
+    "character_id": "SF06",
+    "stage_id": "ST260",
+    "character_line_en": "Their last speech is in the folder. Read the part about the vote.",
+    "player_reply_en": "I will read it before they arrive.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2519",
+    "character_id": "SF07",
+    "stage_id": "ST260",
+    "character_line_en": "Your colleague has a position on this bill. I marked where it differs from yours.",
+    "player_reply_en": "Show me the difference.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2520",
+    "character_id": "SF07",
+    "stage_id": "ST260",
+    "character_line_en": "Their last speech is in the folder. Read the part about the vote.",
+    "player_reply_en": "I will read it before they arrive.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2521",
+    "character_id": "SF08",
+    "stage_id": "ST260",
+    "character_line_en": "Keep it civil. Colleagues remember how they were spoken to.",
+    "player_reply_en": "I intend to be fair.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2522",
+    "character_id": "SF08",
+    "stage_id": "ST260",
+    "character_line_en": "Anything you say to them may find its way back to you.",
+    "player_reply_en": "Then I will say it plainly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2523",
+    "character_id": "SF09",
+    "stage_id": "ST260",
+    "character_line_en": "Keep it civil. Colleagues remember how they were spoken to.",
+    "player_reply_en": "I intend to be fair.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2524",
+    "character_id": "SF09",
+    "stage_id": "ST260",
+    "character_line_en": "Anything you say to them may find its way back to you.",
+    "player_reply_en": "Then I will say it plainly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2525",
+    "character_id": "SF10",
+    "stage_id": "ST260",
+    "character_line_en": "Keep it civil. Colleagues remember how they were spoken to.",
+    "player_reply_en": "I intend to be fair.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2526",
+    "character_id": "SF10",
+    "stage_id": "ST260",
+    "character_line_en": "Anything you say to them may find its way back to you.",
+    "player_reply_en": "Then I will say it plainly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2527",
+    "character_id": "SF11",
+    "stage_id": "ST260",
+    "character_line_en": "Keep it civil. Colleagues remember how they were spoken to.",
+    "player_reply_en": "I intend to be fair.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2528",
+    "character_id": "SF11",
+    "stage_id": "ST260",
+    "character_line_en": "Anything you say to them may find its way back to you.",
+    "player_reply_en": "Then I will say it plainly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2529",
+    "character_id": "SF12",
+    "stage_id": "ST260",
+    "character_line_en": "Keep it civil. Colleagues remember how they were spoken to.",
+    "player_reply_en": "I intend to be fair.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2530",
+    "character_id": "SF12",
+    "stage_id": "ST260",
+    "character_line_en": "Anything you say to them may find its way back to you.",
+    "player_reply_en": "Then I will say it plainly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2531",
+    "character_id": "SF13",
+    "stage_id": "ST260",
+    "character_line_en": "Keep it civil. Colleagues remember how they were spoken to.",
+    "player_reply_en": "I intend to be fair.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2532",
+    "character_id": "SF13",
+    "stage_id": "ST260",
+    "character_line_en": "Anything you say to them may find its way back to you.",
+    "player_reply_en": "Then I will say it plainly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2533",
+    "character_id": "SF14",
+    "stage_id": "ST260",
+    "character_line_en": "Keep it civil. Colleagues remember how they were spoken to.",
+    "player_reply_en": "I intend to be fair.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2534",
+    "character_id": "SF14",
+    "stage_id": "ST260",
+    "character_line_en": "Anything you say to them may find its way back to you.",
+    "player_reply_en": "Then I will say it plainly.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2535",
+    "character_id": "SF15",
+    "stage_id": "ST260",
+    "character_line_en": "People in their district care about this too. That is your common ground.",
+    "player_reply_en": "Then I should begin there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2536",
+    "character_id": "SF15",
+    "stage_id": "ST260",
+    "character_line_en": "They will ask what the bill does for the folks you both serve.",
+    "player_reply_en": "I should have a real answer ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2537",
+    "character_id": "SF16",
+    "stage_id": "ST260",
+    "character_line_en": "People in their district care about this too. That is your common ground.",
+    "player_reply_en": "Then I should begin there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2538",
+    "character_id": "SF16",
+    "stage_id": "ST260",
+    "character_line_en": "They will ask what the bill does for the folks you both serve.",
+    "player_reply_en": "I should have a real answer ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2539",
+    "character_id": "SF17",
+    "stage_id": "ST260",
+    "character_line_en": "People in their district care about this too. That is your common ground.",
+    "player_reply_en": "Then I should begin there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2540",
+    "character_id": "SF17",
+    "stage_id": "ST260",
+    "character_line_en": "They will ask what the bill does for the folks you both serve.",
+    "player_reply_en": "I should have a real answer ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2541",
+    "character_id": "SF18",
+    "stage_id": "ST260",
+    "character_line_en": "People in their district care about this too. That is your common ground.",
+    "player_reply_en": "Then I should begin there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2542",
+    "character_id": "SF18",
+    "stage_id": "ST260",
+    "character_line_en": "They will ask what the bill does for the folks you both serve.",
+    "player_reply_en": "I should have a real answer ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2543",
+    "character_id": "SF19",
+    "stage_id": "ST260",
+    "character_line_en": "People in their district care about this too. That is your common ground.",
+    "player_reply_en": "Then I should begin there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2544",
+    "character_id": "SF19",
+    "stage_id": "ST260",
+    "character_line_en": "They will ask what the bill does for the folks you both serve.",
+    "player_reply_en": "I should have a real answer ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2545",
+    "character_id": "SF20",
+    "stage_id": "ST260",
+    "character_line_en": "People in their district care about this too. That is your common ground.",
+    "player_reply_en": "Then I should begin there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2546",
+    "character_id": "SF20",
+    "stage_id": "ST260",
+    "character_line_en": "They will ask what the bill does for the folks you both serve.",
+    "player_reply_en": "I should have a real answer ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2547",
+    "character_id": "SF21",
+    "stage_id": "ST260",
+    "character_line_en": "People in their district care about this too. That is your common ground.",
+    "player_reply_en": "Then I should begin there.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2548",
+    "character_id": "SF21",
+    "stage_id": "ST260",
+    "character_line_en": "They will ask what the bill does for the folks you both serve.",
+    "player_reply_en": "I should have a real answer ready.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2549",
+    "character_id": "PLAYER",
+    "stage_id": "ST260",
+    "character_line_en": "A colleague who disagrees is not an enemy. Let me hear the argument.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2550",
+    "character_id": "PLAYER",
+    "stage_id": "ST260",
+    "character_line_en": "If I can answer one honest objection, the rest may follow.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2551",
+    "character_id": "PLAYER",
+    "stage_id": "ST260",
+    "character_line_en": "They will vote as they must. I can at least be fair.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2552",
+    "character_id": "SF01",
+    "stage_id": "ST262",
+    "character_line_en": "They will offer support for something in return. Know what you can give before you sit down.",
+    "player_reply_en": "I will decide that first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2553",
+    "character_id": "SF01",
+    "stage_id": "ST262",
+    "character_line_en": "Check any terms against the bill's own text before you agree.",
+    "player_reply_en": "Good advice. I will read every line.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2554",
+    "character_id": "SF02",
+    "stage_id": "ST262",
+    "character_line_en": "They will offer support for something in return. Know what you can give before you sit down.",
+    "player_reply_en": "I will decide that first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2555",
+    "character_id": "SF02",
+    "stage_id": "ST262",
+    "character_line_en": "Check any terms against the bill's own text before you agree.",
+    "player_reply_en": "Good advice. I will read every line.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2556",
+    "character_id": "SF03",
+    "stage_id": "ST262",
+    "character_line_en": "They will offer support for something in return. Know what you can give before you sit down.",
+    "player_reply_en": "I will decide that first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2557",
+    "character_id": "SF03",
+    "stage_id": "ST262",
+    "character_line_en": "Check any terms against the bill's own text before you agree.",
+    "player_reply_en": "Good advice. I will read every line.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2558",
+    "character_id": "SF04",
+    "stage_id": "ST262",
+    "character_line_en": "They will offer support for something in return. Know what you can give before you sit down.",
+    "player_reply_en": "I will decide that first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2559",
+    "character_id": "SF04",
+    "stage_id": "ST262",
+    "character_line_en": "Check any terms against the bill's own text before you agree.",
+    "player_reply_en": "Good advice. I will read every line.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2560",
+    "character_id": "SF05",
+    "stage_id": "ST262",
+    "character_line_en": "They will offer support for something in return. Know what you can give before you sit down.",
+    "player_reply_en": "I will decide that first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2561",
+    "character_id": "SF05",
+    "stage_id": "ST262",
+    "character_line_en": "Check any terms against the bill's own text before you agree.",
+    "player_reply_en": "Good advice. I will read every line.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2562",
+    "character_id": "SF06",
+    "stage_id": "ST262",
+    "character_line_en": "They will offer support for something in return. Know what you can give before you sit down.",
+    "player_reply_en": "I will decide that first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2563",
+    "character_id": "SF06",
+    "stage_id": "ST262",
+    "character_line_en": "Check any terms against the bill's own text before you agree.",
+    "player_reply_en": "Good advice. I will read every line.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2564",
+    "character_id": "SF07",
+    "stage_id": "ST262",
+    "character_line_en": "They will offer support for something in return. Know what you can give before you sit down.",
+    "player_reply_en": "I will decide that first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2565",
+    "character_id": "SF07",
+    "stage_id": "ST262",
+    "character_line_en": "Check any terms against the bill's own text before you agree.",
+    "player_reply_en": "Good advice. I will read every line.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2566",
+    "character_id": "SF08",
+    "stage_id": "ST262",
+    "character_line_en": "A deal made quietly can still be reported loudly. Be ready for that.",
+    "player_reply_en": "Then it had better be a deal I can defend.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2567",
+    "character_id": "SF08",
+    "stage_id": "ST262",
+    "character_line_en": "If it sounds too good for them, ask what it costs.",
+    "player_reply_en": "I will ask.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2568",
+    "character_id": "SF09",
+    "stage_id": "ST262",
+    "character_line_en": "A deal made quietly can still be reported loudly. Be ready for that.",
+    "player_reply_en": "Then it had better be a deal I can defend.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2569",
+    "character_id": "SF09",
+    "stage_id": "ST262",
+    "character_line_en": "If it sounds too good for them, ask what it costs.",
+    "player_reply_en": "I will ask.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2570",
+    "character_id": "SF10",
+    "stage_id": "ST262",
+    "character_line_en": "A deal made quietly can still be reported loudly. Be ready for that.",
+    "player_reply_en": "Then it had better be a deal I can defend.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2571",
+    "character_id": "SF10",
+    "stage_id": "ST262",
+    "character_line_en": "If it sounds too good for them, ask what it costs.",
+    "player_reply_en": "I will ask.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2572",
+    "character_id": "SF11",
+    "stage_id": "ST262",
+    "character_line_en": "A deal made quietly can still be reported loudly. Be ready for that.",
+    "player_reply_en": "Then it had better be a deal I can defend.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2573",
+    "character_id": "SF11",
+    "stage_id": "ST262",
+    "character_line_en": "If it sounds too good for them, ask what it costs.",
+    "player_reply_en": "I will ask.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2574",
+    "character_id": "SF12",
+    "stage_id": "ST262",
+    "character_line_en": "A deal made quietly can still be reported loudly. Be ready for that.",
+    "player_reply_en": "Then it had better be a deal I can defend.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2575",
+    "character_id": "SF12",
+    "stage_id": "ST262",
+    "character_line_en": "If it sounds too good for them, ask what it costs.",
+    "player_reply_en": "I will ask.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2576",
+    "character_id": "SF13",
+    "stage_id": "ST262",
+    "character_line_en": "A deal made quietly can still be reported loudly. Be ready for that.",
+    "player_reply_en": "Then it had better be a deal I can defend.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2577",
+    "character_id": "SF13",
+    "stage_id": "ST262",
+    "character_line_en": "If it sounds too good for them, ask what it costs.",
+    "player_reply_en": "I will ask.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2578",
+    "character_id": "SF14",
+    "stage_id": "ST262",
+    "character_line_en": "A deal made quietly can still be reported loudly. Be ready for that.",
+    "player_reply_en": "Then it had better be a deal I can defend.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2579",
+    "character_id": "SF14",
+    "stage_id": "ST262",
+    "character_line_en": "If it sounds too good for them, ask what it costs.",
+    "player_reply_en": "I will ask.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2580",
+    "character_id": "SF15",
+    "stage_id": "ST262",
+    "character_line_en": "Our voters have a stake in whatever you agree to. Keep them in mind when you bargain.",
+    "player_reply_en": "They will be in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2581",
+    "character_id": "SF15",
+    "stage_id": "ST262",
+    "character_line_en": "Do not trade away something this district needs.",
+    "player_reply_en": "I will not.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2582",
+    "character_id": "SF16",
+    "stage_id": "ST262",
+    "character_line_en": "Our voters have a stake in whatever you agree to. Keep them in mind when you bargain.",
+    "player_reply_en": "They will be in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2583",
+    "character_id": "SF16",
+    "stage_id": "ST262",
+    "character_line_en": "Do not trade away something this district needs.",
+    "player_reply_en": "I will not.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2584",
+    "character_id": "SF17",
+    "stage_id": "ST262",
+    "character_line_en": "Our voters have a stake in whatever you agree to. Keep them in mind when you bargain.",
+    "player_reply_en": "They will be in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2585",
+    "character_id": "SF17",
+    "stage_id": "ST262",
+    "character_line_en": "Do not trade away something this district needs.",
+    "player_reply_en": "I will not.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2586",
+    "character_id": "SF18",
+    "stage_id": "ST262",
+    "character_line_en": "Our voters have a stake in whatever you agree to. Keep them in mind when you bargain.",
+    "player_reply_en": "They will be in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2587",
+    "character_id": "SF18",
+    "stage_id": "ST262",
+    "character_line_en": "Do not trade away something this district needs.",
+    "player_reply_en": "I will not.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2588",
+    "character_id": "SF19",
+    "stage_id": "ST262",
+    "character_line_en": "Our voters have a stake in whatever you agree to. Keep them in mind when you bargain.",
+    "player_reply_en": "They will be in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2589",
+    "character_id": "SF19",
+    "stage_id": "ST262",
+    "character_line_en": "Do not trade away something this district needs.",
+    "player_reply_en": "I will not.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2590",
+    "character_id": "SF20",
+    "stage_id": "ST262",
+    "character_line_en": "Our voters have a stake in whatever you agree to. Keep them in mind when you bargain.",
+    "player_reply_en": "They will be in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2591",
+    "character_id": "SF20",
+    "stage_id": "ST262",
+    "character_line_en": "Do not trade away something this district needs.",
+    "player_reply_en": "I will not.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2592",
+    "character_id": "SF21",
+    "stage_id": "ST262",
+    "character_line_en": "Our voters have a stake in whatever you agree to. Keep them in mind when you bargain.",
+    "player_reply_en": "They will be in mind.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2593",
+    "character_id": "SF21",
+    "stage_id": "ST262",
+    "character_line_en": "Do not trade away something this district needs.",
+    "player_reply_en": "I will not.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2594",
+    "character_id": "PLAYER",
+    "stage_id": "ST262",
+    "character_line_en": "A trade is only good if I can live with both sides of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2595",
+    "character_id": "PLAYER",
+    "stage_id": "ST262",
+    "character_line_en": "Everyone in that room wants something. So do I.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD2596",
+    "character_id": "PLAYER",
+    "stage_id": "ST262",
+    "character_line_en": "I should know my limits before I sit down.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": null
   }
 ]

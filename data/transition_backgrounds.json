@@ -388,5 +388,20 @@
     "transition_background_id": "TB79",
     "stage_id": "ST289",
     "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB80",
+    "stage_id": "ST263",
+    "background_id": "ST07"
+  },
+  {
+    "transition_background_id": "TB81",
+    "stage_id": "ST260",
+    "background_id": "ST07"
+  },
+  {
+    "transition_background_id": "TB82",
+    "stage_id": "ST262",
+    "background_id": "ST20"
   }
 ]
