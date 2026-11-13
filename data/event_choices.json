@@ -7894,5 +7894,1485 @@
     "promise_kept": null,
     "promise_broken": null,
     "promise_kept_text": null
+  },
+  {
+    "event_id": "EV83",
+    "choice": "A",
+    "choice_text": "Call for a full public accounting",
+    "result_text": "You ask for every cost to be explained in open session. The Alliance takes notes. The program's supporters do not enjoy the afternoon.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV83",
+    "choice": "B",
+    "choice_text": "Send a staff member to read the audit with them",
+    "result_text": "Your staffer sits through the whole report and brings back three questions worth asking.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV83",
+    "choice": "C",
+    "choice_text": "Ask the program for a written reply first",
+    "result_text": "The program answers in a long letter. The Alliance calls it a good start for someone else's money.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV83",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the Alliance's request. They read the report aloud without you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV84",
+    "choice": "A",
+    "choice_text": "Speak for the freeze at the hearing",
+    "result_text": "You say the fee has grown faster than wages. The crowd applauds. The council members from the countryside frown.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV84",
+    "choice": "B",
+    "choice_text": "Send a staff member to hold your place on the list",
+    "result_text": "Your staffer speaks in the third minute of public comment and keeps it short.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV84",
+    "choice": "C",
+    "choice_text": "Propose a review of the fee instead",
+    "result_text": "You offer to ask for a review next season. The countryside members nod. The Alliance does not.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV84",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to speak. The hearing goes on without a legislator in the room.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV85",
+    "choice": "A",
+    "choice_text": "Cut the ribbon and walk the stalls",
+    "result_text": "Fifty stalls, three hundred handshakes, one very sore foot. The Chamber is pleased. Some residents say the street was closed all day.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV85",
+    "choice": "B",
+    "choice_text": "Send a staff member with your welcome speech",
+    "result_text": "Your staffer reads the speech and visits every stall. The Chamber says thank you politely.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV85",
+    "choice": "C",
+    "choice_text": "Send a letter of welcome instead",
+    "result_text": "The letter is read from the stage. The Chamber thanks you. The residents on the closed street thank you more.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV85",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the invitation. The Chamber's own president cuts the ribbon.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV86",
+    "choice": "A",
+    "choice_text": "Ask the ministry to speed the permits",
+    "result_text": "You make the call. The ministry promises a quicker review. The Chamber and the harbor are pleased. The unions ask who checks the checking.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV86",
+    "choice": "B",
+    "choice_text": "Send a staff member to the port with a list of questions",
+    "result_text": "Your staffer visits the dock office and returns with the permit timeline.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV86",
+    "choice": "C",
+    "choice_text": "Insist that the usual checks stay in place",
+    "result_text": "You say the order is welcome and the checks stay. The unions approve. The buyer waits another week.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV86",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to get involved. The buyer takes the order to another port.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV87",
+    "choice": "A",
+    "choice_text": "Back the shopkeepers' request",
+    "result_text": "You tell the council the street needs the evening trade. The shopkeepers cheer. A resident calls it a promise of noise.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": 2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV87",
+    "choice": "B",
+    "choice_text": "Send a staff member to hear both sides",
+    "result_text": "Your staffer spends an evening on the street and writes down every complaint and every receipt.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV87",
+    "choice": "C",
+    "choice_text": "Back a one-month trial with a noise limit",
+    "result_text": "The trial is agreed. The residents are relieved. The shopkeepers say a month is a short time to win a customer.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV87",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to take a side. The council decides without you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV88",
+    "choice": "A",
+    "choice_text": "Ask the ministry for a simpler form",
+    "result_text": "You write to the ministry on the shop's behalf. The owner pins the reply behind the register. Consumer groups ask what is being simplified away.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV88",
+    "choice": "B",
+    "choice_text": "Send a staff member to see the form and the shop",
+    "result_text": "Your staffer fills out the form twice and counts the hours. It is eleven.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV88",
+    "choice": "C",
+    "choice_text": "Back the rule and ask for help paying for it",
+    "result_text": "You say the rule is sound and the cost is the problem. Consumer groups agree. The owner thinks you are splitting hairs.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV88",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to write the letter. The shop closes an hour earlier each Friday.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV89",
+    "choice": "A",
+    "choice_text": "Endorse the scheme at its launch",
+    "result_text": "You stand beside the bankers and say the district needs more first-time owners. The Innovation Society is delighted. Students worry about the interest.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV89",
+    "choice": "B",
+    "choice_text": "Send a staff member to read the fine print",
+    "result_text": "Your staffer returns with a page of questions about repayment and one about collateral.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV89",
+    "choice": "C",
+    "choice_text": "Ask for gentler terms before you endorse",
+    "result_text": "The bankers agree to look again. Students United says that is the first sensible thing anyone has said about it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV89",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to endorse the scheme. The bankers launch it quietly.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV90",
+    "choice": "A",
+    "choice_text": "Attend the workshop and speak",
+    "result_text": "You tell a full hall how to spot a fake bank message. Several people write the phone number down. The picnic goes ahead without you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV90",
+    "choice": "B",
+    "choice_text": "Send a staff member to the workshop with your notes",
+    "result_text": "Your staffer takes questions for an hour and comes back with a list of the commonest scams.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV90",
+    "choice": "C",
+    "choice_text": "Go to the picnic instead",
+    "result_text": "You eat rice balls on a blanket with forty families. The bankers say they hope to see you next time.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV90",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline both. The weekend is quiet, and the hall is not.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV91",
+    "choice": "A",
+    "choice_text": "Praise the boldest proposal publicly",
+    "result_text": "You pick the idea nobody expected. The founders cheer. An older neighbor mutters that boldness is easy when it is someone else's savings.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV91",
+    "choice": "B",
+    "choice_text": "Send a staff member to take notes on every pitch",
+    "result_text": "Your staffer returns with eleven pitches ranked, and a question about each.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV91",
+    "choice": "C",
+    "choice_text": "Praise the one that fits a local trade",
+    "result_text": "You pick the plan to modernize a family workshop. Traditionalists nod. The Society says it hoped for something braver.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV91",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to choose a favorite. The founders go home without one.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO16",
+        "delta": -2
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV92",
+    "choice": "A",
+    "choice_text": "Back the conversion",
+    "result_text": "You say the mill has been empty for years and the town needs the work. The Society and the Chamber thank you. The council from the countryside is not so sure.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV92",
+    "choice": "B",
+    "choice_text": "Send a staff member to visit the mill and the neighbors",
+    "result_text": "Your staffer walks the site and reports that the roof is sound and the neighbors are divided.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV92",
+    "choice": "C",
+    "choice_text": "Ask the firm to keep the front of the old mill",
+    "result_text": "The firm says it will think about the front wall. The residents are glad. The Society calls it an expensive wall.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV92",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to take a position. The firm applies without you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO16",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV93",
+    "choice": "A",
+    "choice_text": "Become a patron and back the waiver",
+    "result_text": "Your name goes on the board outside the hall, and the stalls stay free. The Financial Industry Association asks who covers the lost fees.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": 2
+      },
+      {
+        "target": "BO13",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV93",
+    "choice": "B",
+    "choice_text": "Send a staff member with a note of thanks",
+    "result_text": "Your staffer buys a lacquer tray and returns with the fair's printed history.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV93",
+    "choice": "C",
+    "choice_text": "Support the fair but not the waiver",
+    "result_text": "You pay for a stall yourself and leave the fees as they are. The Financial Industry Association approves. The fair's elders are polite about it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV93",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to be named. The fair goes ahead on a smaller scale.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV94",
+    "choice": "A",
+    "choice_text": "Back a public grant for the roof",
+    "result_text": "You tell the council the hall is where the district keeps its calendar. The Society and the neighbors are pleased. The Financial Industry Association asks who covers the bill.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV94",
+    "choice": "B",
+    "choice_text": "Send a staff member to inspect the roof and the quotes",
+    "result_text": "Your staffer climbs a ladder, takes photographs and returns with three quotes and a stain on one sleeve.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV94",
+    "choice": "C",
+    "choice_text": "Back a local appeal instead of a grant",
+    "result_text": "You help start a collection and give first. The Financial Industry Association approves. The Society says a roof is a lot of bake sales.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
+  },
+  {
+    "event_id": "EV94",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to back either plan. The hall's buckets multiply.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null
   }
 ]
