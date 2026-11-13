@@ -96,7 +96,7 @@ Details are the sections at the end of `design/CHANGELOG.md`. In short:
 | 8 | MC²T results | `design/review/MC2T_REPORT_2026-11-06.md`: touch targets (93% under 44 pt), no mid-stage save, "Boosters" naming clash; kit ready for a 5-player round on a real phone. Decisions are Cameron's |
 | 9 | Gameplay review leftovers | `audit/gameplay/00-summary.md`: Tier 1 and 2 pay less XP per hour than Tier 0 and repeats do not decay; meters hit their ceilings by week 4 to 8; no audio. Cameron decides |
 | 10 | Taxpayers' Alliance | Still the most over-represented organization with net negative outcomes (EV83 choice C and the Decline rows); a rebalance was offered, not approved |
-| 11 | VI167 | Masashi Mumotsu needs stages, rewards, penalty and questions |
+| 11 | VI167 | Done 2026-11-13 as a draft: 16 rooms, standing and six questions (VQ424-VQ429). Cameron to rewrite |
 | 12 | Characters list | Colours and the nine Balance rows are drafts; opponents faced before 2026-11-13 show as unmet until they reappear; unmet popup not yet seen on a phone |
 | 13 | Branches | Four old remote branches (`ccr-1bbd9851-yg8on5`, `claude/happy-ramanujan-e0mrxj`, `claude/optimistic-noether-1j0yqh`, `claude/new-session-s1juv4`) could not be deleted from a session (no permission); Cameron asked for them to be deleted, so he must do it on GitHub |
 

@@ -962,3 +962,16 @@ A new **Characters** button in Administration opens a scrolling list of every op
 ## Start-up guide refreshed (2026-11-13, Cameron)
 
 `design/NEW_CHAT_STARTUP.md` updated: current counts, what changed from 2026-11-06 to 2026-11-13 (saves, Resign, dues, lost Acts, the Characters list), and the open items.
+
+## VI167 Masashi Mumotsu gets rooms, standing and six questions (2026-11-13, Cameron)
+
+Chosen by Cameron in a popup; all wording and numbers are **drafts for him to rewrite**.
+
+| Part | Draft |
+|---|---|
+| Rooms (16) | Office Hours (ST07), Follow-Up, Extended, Open House Day, Receiving Line, Closing Reception, plus Health Fair, Regional Health Forum, Education Forum, Ward Tour, District Tour and the five festival rooms (ST264-266, ST279-280) |
+| Reward | Innovation Society +1 to +2, Mayors' Network +1 |
+| Penalty | Innovation Society -2 |
+| Questions VQ424 to VQ429 | Seismometers, a shared evacuation map, simpler alert levels, a field-station grant, crater-trail closures, an ash plan. Real Hokkaido places only (Mount Usu, Mount Tarumae). Each follows the budget in CONTENT_GUIDE section 6: a friend-pleaser, a rival-pleaser, a middle path and a refusal. One choice per question costs an hour; the evacuation map is a promise of 2 hours within 48 for the Mayors' Network. |
+
+The old test that pinned "VI167 is never offered" now checks that he is offered in Office Hours and asks six questions. The next free visitor ID is VI168 and the next question ID is VQ430.

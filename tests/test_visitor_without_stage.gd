@@ -14,9 +14,19 @@ func test_a_visitor_with_blank_stages_is_never_offered_and_crashes_nothing() -> 
 	assert_gt(pool.size(), 0, "the ordinary visitors are still found")
 
 
-func test_the_real_visitor_with_no_stage_is_in_the_data_and_harmless() -> void:
+func test_the_volcanologist_now_has_rooms_and_questions() -> void:
+	# VI167 arrived with no Stage cell (2026-11-13); his rooms, standing and
+	# six questions were drafted the same day, so he is now offered.
 	var visitor := DataDB.get_visitor("VI167")
 	assert_false(visitor.is_empty(), "Cameron's new volcanologist is loaded")
-	for stage_id: String in ["ST07", "ST101", "ST264"]:
-		for found: Dictionary in DataDB.get_visitors_for_stage(stage_id):
-			assert_ne(str(found.get("visitor_id", "")), "VI167")
+	assert_gt((visitor.get("stages", []) as Array).size(), 0, "he has rooms")
+	var found_in_office_hours := false
+	for found: Dictionary in DataDB.get_visitors_for_stage("ST07"):
+		if str(found.get("visitor_id", "")) == "VI167":
+			found_in_office_hours = true
+	assert_true(found_in_office_hours, "he is offered in Office Hours")
+	var question_count := 0
+	for question: Dictionary in DataDB.visitor_questions:
+		if (question.get("visitor_ids", []) as Array).has("VI167"):
+			question_count += 1
+	assert_eq(question_count, 6, "he asks six questions")

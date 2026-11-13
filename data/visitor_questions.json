@@ -33598,5 +33598,476 @@
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
     "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ424",
+    "visitor_ids": [
+      "VI167"
+    ],
+    "question_text": "The seismometers on the slopes of Mount Usu are worn out. Can the budget replace them?",
+    "choice_a": "I will press for new sensors in the budget.",
+    "choice_b": "Sensors are costly. Show me the savings first.",
+    "choice_c": "Repair the old ones and see how they hold.",
+    "choice_d": "The mountain is quiet. This can wait.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO16",
+        "delta": -3
+      },
+      {
+        "target": "BO04",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "That is all the mountain needs from us.",
+    "response_b": "Savings come after the mountain stays quiet.",
+    "response_c": "Patches will not hear a deep tremor.",
+    "response_d": "Quiet is when the sensors matter most.",
+    "reaction_a": "Marks a spot on the map.",
+    "reaction_b": "Closes the notebook.",
+    "reaction_c": "Nods slowly.",
+    "reaction_d": "Stares at the slope on the map.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ425",
+    "visitor_ids": [
+      "VI167"
+    ],
+    "question_text": "The hot-spring towns below Mount Tarumae have no shared evacuation map. Will you help?",
+    "choice_a": "Each town should draw its own map.",
+    "choice_b": "Post warning signs along the roads.",
+    "choice_c": "I will bring the mayors together to draw one.",
+    "choice_d": "Guests will panic. Keep the danger quiet.",
+    "correct_choice": "C",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO04",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": 2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO04",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO04",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO04",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 48,
+        "for": "BO04"
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "Smoke will not stop at a town border.",
+    "response_b": "Signs help, but people need a route.",
+    "response_c": "One map, drawn together. Good.",
+    "response_d": "Silence is what costs lives.",
+    "reaction_a": "Folds the map.",
+    "reaction_b": "Tilts head.",
+    "reaction_c": "Unrolls a blank sheet.",
+    "reaction_d": "Frowns at the sign.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": "You gather the mayors, and the towns begin drawing one evacuation map.",
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ426",
+    "visitor_ids": [
+      "VI167"
+    ],
+    "question_text": "The alert levels confuse people: one color says leave, another says wait. Can you simplify them?",
+    "choice_a": "The experts chose those levels. Study them.",
+    "choice_b": "I will ask for one plain scale with clear actions.",
+    "choice_c": "Print a leaflet explaining each color.",
+    "choice_d": "People should learn the levels themselves.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO04",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO04",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO04",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Studying is fair. Confusion is the problem.",
+    "response_b": "Leave, prepare, watch. Simple enough to remember.",
+    "response_c": "A leaflet helps, but the colors still clash.",
+    "response_d": "Learning in an emergency is too late.",
+    "reaction_a": "Shrugs.",
+    "reaction_b": "Writes three words on a card.",
+    "reaction_c": "Takes a leaflet.",
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ427",
+    "visitor_ids": [
+      "VI167"
+    ],
+    "question_text": "My lab will lose its field station on the volcano without a grant. Will you speak for it?",
+    "choice_a": "Grants should go to work that pays for itself.",
+    "choice_b": "Ask the university to share the costs.",
+    "choice_c": "Science can wait for better budgets.",
+    "choice_d": "I will speak for the field station in committee.",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO16",
+        "delta": -3
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "response_a": "A volcano repays by not surprising us.",
+    "response_b": "The university shares what it can.",
+    "response_c": "The mountain keeps its own calendar.",
+    "response_d": "Then the station will keep listening.",
+    "reaction_a": "Taps the table.",
+    "reaction_b": "Looks at the ceiling.",
+    "reaction_c": "Shakes head.",
+    "reaction_d": "Gives a short bow.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ428",
+    "visitor_ids": [
+      "VI167"
+    ],
+    "question_text": "Crater trails draw crowds, but the ground there can fail. Would you back closing them on warning?",
+    "choice_a": "Yes. I will back closures when your readings warn.",
+    "choice_b": "Let the local mayors decide on closures.",
+    "choice_c": "Post a warning and keep the trails open.",
+    "choice_d": "Closures hurt the inns. Leave the trails open.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO04",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO04",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO04",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO16",
+        "delta": -3
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "That is all I ask.",
+    "response_b": "Mayors decide best with the readings in hand.",
+    "response_c": "A sign cannot read the ground.",
+    "response_d": "Inns cannot reopen a collapsed trail.",
+    "reaction_a": "Exhales.",
+    "reaction_b": "Weighs it.",
+    "reaction_c": "Frowns.",
+    "reaction_d": "Stares at the crater photo.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
+  },
+  {
+    "question_id": "VQ429",
+    "visitor_ids": [
+      "VI167"
+    ],
+    "question_text": "Ash would shut the harbor and the airport. Is there a plan for it?",
+    "choice_a": "Airlines and ports can handle ash themselves.",
+    "choice_b": "Stockpiling masks costs money. Show me the need.",
+    "choice_c": "A plan cannot stop ash. Why plan?",
+    "choice_d": "I will ask each ministry for a written ash plan.",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO04",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO16",
+        "delta": -3
+      },
+      {
+        "target": "BO04",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "response_a": "They will ask for help when ash falls.",
+    "response_b": "The need is every lung downwind.",
+    "response_c": "Plans do not stop ash. They keep ports open.",
+    "response_d": "Then the harbor will have an answer.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Opens a folder.",
+    "reaction_c": "Sighs.",
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null
   }
 ]

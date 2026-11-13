@@ -6419,8 +6419,42 @@
     "name_jp": "無物雅史",
     "romaji": "Masashi Mumotsu",
     "title": "Volcanologist",
-    "stages": null,
-    "reward": null,
-    "penalty": null
+    "stages": [
+      "ST07",
+      "ST274",
+      "ST275",
+      "ST276",
+      "ST281",
+      "ST282",
+      "ST264",
+      "ST265",
+      "ST266",
+      "ST277",
+      "ST278",
+      "ST279",
+      "ST280",
+      "ST283",
+      "ST284",
+      "ST285"
+    ],
+    "reward": [
+      {
+        "target": "BO16",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ]
   }
 ]

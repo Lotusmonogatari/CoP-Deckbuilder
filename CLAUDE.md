@@ -257,3 +257,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Cameron's visitor update: 22 names and titles, 24 pictures, a blank-Stage fix (2026-11-13)
 - Characters list in Administration: met and unmet people, party and tier colours (2026-11-13, Cameron)
 - Start-up guide refreshed (2026-11-13, Cameron)
+- VI167 gets rooms, standing and six questions (2026-11-13, Cameron)
