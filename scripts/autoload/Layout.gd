@@ -25,6 +25,8 @@ var image_scroll_enabled := true
 ## Haptic buzz on confirming buttons (2026-11-11). Saved with the other settings.
 var haptics_enabled := true
 var image_pan_enabled := true
+## How fast lists scroll, 1 (the original speed) to 5 (2026-11-13). Saved with the other settings.
+var scroll_speed_level := ScrollSpeed.SLOWEST
 ## The theme's own font sizes as authored, so scaling is never compounded.
 var _original_sizes := {}   # "Type/name" -> int
 var _original_default := 0
@@ -193,6 +195,18 @@ func toggle_haptics() -> bool:
 	return haptics_enabled
 
 
+## Moves Scroll speed to the next level (5 wraps to 1) and remembers it.
+func cycle_scroll_speed() -> int:
+	scroll_speed_level = ScrollSpeed.next(scroll_speed_level)
+	_save_settings()
+	return scroll_speed_level
+
+
+## How far lists move per unit of finger or wheel travel, for the chosen level.
+func scroll_speed_factor() -> float:
+	return ScrollSpeed.factor(scroll_speed_level, DataDB.balance)
+
+
 ## Multiplies every font size in the project theme by the chosen factor, from
 ## the authored sizes (so Small then Large is not Small-of-Large).
 func apply_text_scale() -> void:
@@ -229,6 +243,7 @@ func _load_settings() -> void:
 		image_pan_enabled = parsed["image_pan"]
 	if parsed.get("haptics") is bool:
 		haptics_enabled = parsed["haptics"]
+	scroll_speed_level = ScrollSpeed.clean(parsed.get("scroll_speed"))
 
 
 func _save_settings() -> void:
@@ -236,7 +251,7 @@ func _save_settings() -> void:
 	if file != null:
 		file.store_string(JSON.stringify({"text_size": text_size_setting,
 			"image_scroll": image_scroll_enabled, "image_pan": image_pan_enabled,
-			"haptics": haptics_enabled}))
+			"haptics": haptics_enabled, "scroll_speed": scroll_speed_level}))
 
 
 ## One set of outlined style boxes for ordinary buttons (party colour) and a

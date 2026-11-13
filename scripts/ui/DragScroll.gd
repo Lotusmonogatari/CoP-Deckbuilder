@@ -7,6 +7,8 @@ extends Node
 ## than DRAG_START along the list's own direction scrolls it, and the button
 ## the finger started on is NOT pressed. A press that barely moves is an
 ## ordinary tap. Letting go mid-swipe keeps the list gliding for a moment.
+## The Scroll speed setting (ScrollSpeed, levels 1 to 5) multiplies how far
+## the list moves for the same finger or wheel travel.
 ##
 ## WHY NOT GODOT'S OWN
 ## ScrollContainer only drag-scrolls when the device reports a touchscreen,
@@ -97,7 +99,7 @@ func _input(event: InputEvent) -> void:
 			direction = 1.0
 		if direction != 0.0 and _scroll.get_global_rect().has_point(wheel.position):
 			_velocity = 0.0
-			_set_position(_position() + direction * WHEEL_STEP)
+			_set_position(_position() + direction * WHEEL_STEP * Layout.scroll_speed_factor())
 			get_viewport().set_input_as_handled()
 		return
 
@@ -123,10 +125,10 @@ func _input(event: InputEvent) -> void:
 		# from wherever you meant to go.
 		var step := (where.y - _last.y) if _vertical else (where.x - _last.x)
 		var seconds := maxf(float(now - _last_time) / 1000.0, 0.001)
-		_velocity = clampf(step / seconds, -MAX_GLIDE, MAX_GLIDE)
+		_velocity = clampf(step * Layout.scroll_speed_factor() / seconds, -MAX_GLIDE, MAX_GLIDE)
 		_last = where
 		_last_time = now
-		_set_position(_start_scroll + (moved.y if _vertical else moved.x))
+		_set_position(_start_scroll + (moved.y if _vertical else moved.x) * Layout.scroll_speed_factor())
 		get_viewport().set_input_as_handled()
 
 

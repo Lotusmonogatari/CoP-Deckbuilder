@@ -1,6 +1,6 @@
 # Coliseum of Parliament — How the Game Works
 
-*The mechanics reference: what the player holds, how each thing grows and declines, where the player chooses, and every piece of state the run keeps. Written 2026-11-06 from the code and data as they stand (not from the old change log). Numbers are the **Standard** Campaign Pressure values in `data/balance.json`, `data/rules.json` and the other data files; they are Cameron's to retune in the workbook, so when a number here disagrees with the data, the data wins. For the story of the game see `design/GAME_DESIGN.md`; for how the code is organised see `design/ARCHITECTURE.md`; for how the player must be told things see `design/INFORMATION_STANDARDS.md`.*
+*The mechanics reference: what the player holds, how each thing grows and declines, where the player chooses, and every piece of state the run keeps. Written 2026-11-06 from the code and data as they stand (not from the old change log). Numbers are the **Standard** Political Pressure values in `data/balance.json`, `data/rules.json` and the other data files; they are Cameron's to retune in the workbook, so when a number here disagrees with the data, the data wins. For the story of the game see `design/GAME_DESIGN.md`; for how the code is organised see `design/ARCHITECTURE.md`; for how the player must be told things see `design/INFORMATION_STANDARDS.md`.*
 
 ## 1. Names: what the code calls things and what the player reads
 
@@ -20,14 +20,14 @@ The player never sees internal names. Documents and code use these pairs:
 | Stage / room | `STxx` | One screen's worth of play |
 | Hours | game calendar hours (`calendar`), and the hidden clock `time_units` | See section 3 |
 | Training Session | Rhetoric Training, `card_tier` shop items | The only way new cards arrive |
-| Campaign Pressure | `difficulty`: relaxed / standard / harder | Chosen at New Game |
+| Political Pressure | `difficulty`: relaxed / standard / harder | Chosen at New Game |
 
 **Four names are lookup keys as well as text** (`Constituency support`, `Reputation`, `Funds`, `Party support`): renaming one in the workbook alone is an export error.
 
 ## 2. The player's journey
 
 ```
-Title screen ── Continue (loads the save)  or  New Game (protagonist + Campaign Pressure)
+Title screen ── Continue (loads the save)  or  New Game (protagonist + Political Pressure)
       │
       ▼
 The Office  ◄───────────────────────────────────────────────────────────────┐
@@ -57,7 +57,7 @@ Level ends (win, or a loss that ends it) → rewards, laws, triggers → back �
 
 **Ending a run:** there is no final win screen. A run is the campaign; the player stops when they like. (Election strength builds toward a campaign but fires nothing yet.)
 
-**Choosing who you are (New Game).** Four protagonists, each with their own party and **different starting numbers** and items; plus **Campaign Pressure**, which can be raised during a run but never lowered.
+**Choosing who you are (New Game).** Four protagonists, each with their own party and **different starting numbers** and items; plus **Political Pressure**, which can be raised during a run but never lowered.
 
 | | Constituency support | Reputation | Funds | Party support | XP | Starting items |
 |---|---|---|---|---|---|---|
@@ -101,7 +101,7 @@ Two clocks run side by side. The player sees only the first.
 | **Party support** | 0–100 | Per protagonist (0–40) | Wins; laws; events; floor-vote favorability | Losses; overdue dues; going against your party on a vote; **spent by whipping** | **Above 75 a free backing (M09) switches on. Below 25 a Steering Committee check-in is forced in. At 0 the funding freeze starts.** Raises dues. Whipping spends it down to a floor of 30 |
 | **XP** | 0 up | Per protagonist (0–60) | Stage and level wins, laws, some events | Rhetoric Training, level unlocks, staff, backings, shop items; −50 at the week end if District awareness ≤ 13 | Everything bought in XP. Lifetime XP earned (`xp_earned_total`) never falls and feeds election strength |
 
-The Sanban tab's "low/high threshold consequence" notes (for example "LV10 cannot be activated") are descriptive text only; no code enforces them. Winning pays a stage's own `Win Δ` columns; losing charges its `Loss Δ` columns (shown in the level briefing). Level wins add the level's own bonus ranges (rolled each win) and per-organization deltas. Campaign Pressure scales Funds and XP payouts (Relaxed 115%, Harder 85%).
+The Sanban tab's "low/high threshold consequence" notes (for example "LV10 cannot be activated") are descriptive text only; no code enforces them. Winning pays a stage's own `Win Δ` columns; losing charges its `Loss Δ` columns (shown in the level briefing). Level wins add the level's own bonus ranges (rolled each win) and per-organization deltas. Political Pressure scales Funds and XP payouts (Relaxed 115%, Harder 85%).
 
 ### 4.2 Standing with people
 
@@ -133,7 +133,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 
 | Where | The choice | Consequence |
 |---|---|---|
-| New Game | Protagonist; Campaign Pressure | Starting numbers and items; the whole campaign's pressure |
+| New Game | Protagonist; Political Pressure | Starting numbers and items; the whole campaign's pressure |
 | Office, Levels | Which level to play (or to unlock) | Rewards, hours, risk; locked, cooling-down and too-long levels are shown with the reason |
 | Level briefing | Go in, or Back | Nothing is taken until Go in |
 | Level Intro | **Lean Support or Oppose** the level's bill | Decides who hears you as friend or opponent in every room of that level; your final vote moves them again |
@@ -193,7 +193,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 
 **Win and loss.** Win at the threshold (or by taking every opponent in a sequence). Lose when the gaffe meter reaches its limit (usually 5, changes with pressure), the turns run out (`turn_limit_outcome` = loss), or your own support is argued to zero. A lost stage ends the level, except press conferences and media ambushes (their threshold only picks which reward table applies). Floor Votes and Office Hours cannot be lost.
 
-**Campaign Pressure** (`Difficulty.gd`; every number a Balance row named `difficulty_<tier>_<lever>`): opponents start with 6 less / 6 more support, the gaffe limit is one higher / one lower, awareness gaffe percent (50/150), reward percent (115/85), dues share (5/20%), dues holiday weeks (3/0), decay multiplier (2/3), promise deadlines (150/75%), broken-promise penalty (−5/−7), item prices (85/115%), election strength speed, and the draft cost (200,000 / 400,000円). Card values, energy, hand size, turn limits and text never change.
+**Political Pressure** (`Difficulty.gd`; every number a Balance row named `difficulty_<tier>_<lever>`): opponents start with 6 less / 6 more support, the gaffe limit is one higher / one lower, awareness gaffe percent (50/150), reward percent (115/85), dues share (5/20%), dues holiday weeks (3/0), decay multiplier (2/3), promise deadlines (150/75%), broken-promise penalty (−5/−7), item prices (85/115%), election strength speed, and the draft cost (200,000 / 400,000円). Card values, energy, hand size, turn limits and text never change.
 
 ## 8. Bills, votes and laws
 

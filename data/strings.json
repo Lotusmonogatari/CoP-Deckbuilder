@@ -6127,7 +6127,7 @@
   {
     "key": "new_game.pressure_heading",
     "where": "New Game, above the protagonists",
-    "english": "Campaign Pressure",
+    "english": "Political Pressure",
     "placeholders": null,
     "notes": "The setting that raises or lowers the pressure of the whole run (2026-11-02)."
   },
@@ -6190,28 +6190,28 @@
   {
     "key": "record.pressure_line",
     "where": "Your Record, under the heading",
-    "english": "Campaign Pressure: {name}",
+    "english": "Political Pressure: {name}",
     "placeholders": "name",
     "notes": "Added 2026-11-02 (Campaign Pressure)."
   },
   {
     "key": "admin.raise_pressure",
     "where": "Administration, raise button",
-    "english": "Raise Pressure to {name} (cannot be undone)",
+    "english": "Raise Political Pressure to {name} (cannot be undone)",
     "placeholders": "name",
     "notes": "Added 2026-11-02 (Campaign Pressure)."
   },
   {
     "key": "admin.pressure_top",
     "where": "Administration, shown when already at the top tier",
-    "english": "Campaign Pressure is already at {name}",
+    "english": "Political Pressure is already at {name}",
     "placeholders": "name",
     "notes": "Added 2026-11-02 (Campaign Pressure)."
   },
   {
     "key": "office.pressure_raised",
     "where": "Office report line",
-    "english": "Campaign Pressure raised to {name}.",
+    "english": "Political Pressure raised to {name}.",
     "placeholders": "name",
     "notes": "Added 2026-11-02 (Campaign Pressure)."
   },
@@ -6848,14 +6848,14 @@
   {
     "key": "characters.opponents_heading",
     "where": "Characters list — group heading",
-    "english": "Opponents",
+    "english": "Those in the arena.",
     "placeholders": null,
     "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
   },
   {
     "key": "characters.visitors_heading",
     "where": "Characters list — group heading",
-    "english": "Visitors",
+    "english": "Those in the community.",
     "placeholders": null,
     "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
   },
@@ -6907,5 +6907,12 @@
     "english": "Organization: {organization}",
     "placeholders": "organization",
     "notes": "2026-11-13 Characters list. Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "office.scroll_speed",
+    "where": "Administration menu and stage menu, Scroll speed setting (1 is the original speed, 5 the fastest)",
+    "english": "Scroll speed: {level}",
+    "placeholders": "level",
+    "notes": "2026-11-13, Cameron. Draft."
   }
 ]

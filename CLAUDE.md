@@ -259,3 +259,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Start-up guide refreshed (2026-11-13, Cameron)
 - VI167 gets rooms, standing and six questions (2026-11-13, Cameron)
 - A picture behind every scrolling screen: BASE_SCROLLING (2026-11-13, Cameron)
+- Characters headings, Scroll speed, Political Pressure (2026-11-13, Cameron)

@@ -263,5 +263,10 @@
   "characters_colour_none_red": 120,
   "characters_colour_none_green": 120,
   "characters_colour_none_blue": 120,
+  "scroll_speed_level_1": 100,
+  "scroll_speed_level_2": 150,
+  "scroll_speed_level_3": 200,
+  "scroll_speed_level_4": 250,
+  "scroll_speed_level_5": 300,
   "xp_tiers": {}
 }

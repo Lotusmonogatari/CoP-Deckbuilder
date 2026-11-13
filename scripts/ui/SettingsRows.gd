@@ -7,7 +7,7 @@ extends RefCounted
 
 
 static func buttons(on_changed: Callable) -> Array[Control]:
-	return [text_size_button(on_changed), image_scroll_button(on_changed), image_pan_button(on_changed), haptics_button(on_changed)]
+	return [text_size_button(on_changed), image_scroll_button(on_changed), image_pan_button(on_changed), haptics_button(on_changed), scroll_speed_button(on_changed)]
 
 
 ## "Text size: Normal": one tap cycles Small, Normal, Large and applies it at once.
@@ -34,6 +34,12 @@ static func haptics_button(on_changed: Callable) -> Button:
 	var state := Text.say("settings.on") if Layout.haptics_enabled else Text.say("settings.off")
 	return _button("HapticsButton", Text.say("office.haptics", {"state": state}),
 		Layout.toggle_haptics, on_changed)
+
+
+## "Scroll speed: 1": one tap goes up a level (1 is the original speed, 5 the fastest, then back to 1).
+static func scroll_speed_button(on_changed: Callable) -> Button:
+	return _button("ScrollSpeedButton", Text.say("office.scroll_speed", {"level": Layout.scroll_speed_level}),
+		Layout.cycle_scroll_speed, on_changed)
 
 
 static func text_size_label() -> String:
