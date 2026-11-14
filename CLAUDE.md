@@ -266,3 +266,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Lobbyist trade uses the Office Hours layout too (2026-11-13, Cameron)
 - Continue and Make the deal sit above the BASE line (2026-11-13, Cameron)
 - Buttons above the BASE line on every screen that uses BASE (2026-11-13, Cameron)
+- Icon uploads wired to their items (2026-11-14, Cameron)
