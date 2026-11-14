@@ -1,0 +1,187 @@
+{
+ "deck_empty": {
+  "said": [
+   "EDGE deck_empty | setup=false problems=[\"the player has no deck\"]"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "deck_one_card": {
+  "said": [
+   "EDGE deck_one_card | hand=[] deck=[] | outcome=loss after 4 turns, 4 plays"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "deck_unknown_card": {
+  "said": [
+   "EDGE deck_unknown_card | setup=false problems=[\"card \\'ZZ99\\' is in the deck but not in the card data\"]"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "hand_size_zero": {
+  "said": [
+   "EDGE hand_size_zero | hand=0 | outcome=loss after 6 turns, 0 plays"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "energy_zero": {
+  "said": [
+   "EDGE energy_zero | energy=0 | outcome=loss after 10 turns, 3 plays"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "turn_limit_zero": {
+  "said": [
+   "EDGE turn_limit_zero | turn_limit()=0, passed 31 turns, outcome=loss over=true"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "stage_null_field": {
+  "said": [
+   "EDGE stage_null_field | energy_per_turn=null -> setup refused\n    hand_size=null -> setup refused\n    gaffe_limit=null -> setup refused\n    turn_limit=null -> outcome=loss after 4 turns, 7 plays\n    win_threshold=null -> outcome=ongoing after 60 turns, 104 plays (CAP HIT: not over)\n    player_start=null -> outcome=ongoing after 60 turns, 104 plays (CAP HIT: not over)\n    opp_start=null -> outcome=ongoing after 60 turns, 104 plays (CAP HIT: not over)\n    bar_max=null -> outcome=ongoing after 60 turns, 104 plays (CAP HIT: not over)\n    bar_model=null -> outcome=loss after 3 turns, 7 plays\n    time_units=null -> outcome=loss after 3 turns, 7 plays\n    energy_mode=null -> outcome=loss after 3 turns, 7 plays\n    opponent_count=null -> outcome=loss after 3 turns, 7 plays"
+  ],
+  "errors": [
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine.setup (res://scripts/rules/BattleEngine.gd:151)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine.setup (res://scripts/rules/BattleEngine.gd:174)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: for_playtest_stage (res://scripts/BattleSetup.gd:611)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine._draw_questions (res://scripts/rules/BattleEngine.gd:710)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine.turn_limit (res://scripts/rules/BattleEngine.gd:1705)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine.turn_limit (res://scripts/rules/BattleEngine.gd:1705)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine.turn_limit (res://scripts/rules/BattleEngine.gd:1705)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine._build_bar (res://scripts/rules/BattleEngine.gd:298)"
+  ],
+  "exit": 0
+ },
+ "card_null_number": {
+  "said": [
+   "EDGE card_null_number | cost=null -> outcome=loss after 1 turns, 4 plays\n    self_plus=null -> outcome=loss after 2 turns, 4 plays\n    opp_minus=null -> outcome=loss after 2 turns, 4 plays\n    guard=null -> outcome=loss after 2 turns, 4 plays\n    draw=null -> outcome=loss after 2 turns, 4 plays\n    gaffe=null -> outcome=loss after 10 turns, 30 plays"
+  ],
+  "errors": [
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine.card_cost (res://scripts/rules/BattleEngine.gd:1123)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine.card_cost (res://scripts/rules/BattleEngine.gd:1123)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine.card_cost (res://scripts/rules/BattleEngine.gd:1123)",
+   "SCRIPT ERROR: Invalid call. Nonexistent 'int' constructor. || at: BattleEngine.card_cost (res://scripts/rules/BattleEngine.gd:1123)"
+  ],
+  "exit": 0
+ },
+ "meta_overflow": {
+  "said": [
+   "EDGE meta_overflow | Funds +1e12 -> 100000, -1e12 -> 0; Reputation +99999 -> 100, -99999 -> 0; Constituency +INT_MAX -> 100 (was { \"Constituency support\": 20, \"Reputation\": 15, \"Funds\": 50000, \"Party support\": 10 })"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "funds_over_cap": {
+  "said": [
+   "EDGE funds_over_cap | Funds set to 5,000,000 directly, then +1 -> 5000000 (hard ceiling in the Sanban tab: 1,000,000)"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "lever_missing": {
+  "said": [
+   "EDGE lever_missing | dues_base lever removed -> base dues for Party support 50 = 50000 (the workbook says 50000.0)"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "crisis_simultaneous": {
+  "said": [
+   "EDGE crisis_simultaneous | alerts after first check: [\"town_hall\", \"steering_committee\"]; total after second check: 2; special levels armed: { \"Town Hall\": { \"armed_at\": 0 }, \"Steering Committee\": { \"armed_at\": 0 } }"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "save_corrupt": {
+  "said": [
+   "EDGE save_corrupt | garbage file with a good .bak -> load_game=true, problem=''",
+   "EDGE save_corrupt | garbage file with no backup -> load_game=false, problem='unreadable', xp still 30"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "save_truncated": {
+  "said": [
+   "EDGE save_truncated | half a save file -> load_game=false, problem='unreadable'"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "save_newer_version": {
+  "said": [
+   "EDGE save_newer_version | version 99 file -> load_game=false, problem='newer', SaveManager.enabled true -> false (a read of ONE file switches saving off for the session)"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "save_wrong_types": {
+  "said": [
+   "EDGE save_wrong_types | wrong-typed fields -> xp=30 meta={ \"Constituency support\": 20, \"Reputation\": 15, \"Funds\": 50000, \"Party support\": 10 } calendar={ \"week\": 0, \"phase\": \"work\", \"hours\": 0 } difficulty=standard time_units=-5 BO01=high"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "save_bad_deck": {
+  "said": [
+   "EDGE save_bad_deck | deck after load = [\"C23\"]; set-up of a fight = true []"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "suspend_mid_stage": {
+  "said": [
+   "EDGE suspend_mid_stage | pause while mid_stage -> save file written: false; pause between stages -> written: true"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "level_no_stage": {
+  "said": [
+   "EDGE level_no_stage | level with no stages -> valid=false problems=[\"the level has no stages\"] finished=false",
+   "EDGE level_no_stage | level with an unknown stage -> valid=false problems=[\"the level has no stages\"]"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "visitor_no_questions": {
+  "said": [
+   "EDGE visitor_no_questions | Office Hours with no visitors -> setup=false problems=[\"no visitors to see\"]",
+   "EDGE visitor_no_questions | Office Hours with an unknown visitor -> setup=false problems=[\"VI9999 has no question to ask\"]"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "zero_cost_card_loop": {
+  "said": [
+   "EDGE zero_cost_card_loop | C07 (cost 0) played 52 times in one turn; energy left 3; over=true"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "draw_loop": {
+  "said": [
+   "EDGE draw_loop | plays in one turn with 3 energy: 3"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "whip_below_floor": {
+  "said": [
+   "EDGE whip_below_floor | Party support 20, whip floor 30, unit cost 10, 12 seats of capacity, cap 3 -> max_whips=0; support 30 -> 0; support 45 -> 1"
+  ],
+  "errors": [],
+  "exit": 0
+ },
+ "dues_negative_funds": {
+  "said": [
+   "EDGE dues_negative_funds | go_home at Funds 0, Party support 100 -> Funds 0, Party support 100, dues_balance 0, keys=[\"date\", \"dues\", \"awareness\"]"
+  ],
+  "errors": [],
+  "exit": 0
+ }
+}
