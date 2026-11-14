@@ -1031,3 +1031,8 @@ The fix is the Safe area's bottom margin, 50 to 90 px, on the battle and Floor V
 ## Icon uploads wired to their items (2026-11-14, Cameron)
 
 Cameron's 2026-11-13 uploads added nine item icons named after the items (`BOX_OF_AOMORI_APPLES.png` and so on) and re-saved the organization, Sanban and item icons at a larger size. The pictures matched their names, but the Shop tab's Icon column was blank for SH25 to SH33 (the game then looks for a file named after the item ID, `SH25.png`, and shows the blue square) and SH34 still said `deck_expansion`, a file that does not exist. The Icon cells now name the files exactly: SH25 `BOX_OF_AOMORI_APPLES`, SH26 `TSUGARU_LACQUER_CHOPSTICKS`, SH27 `DRIED_HOKKAIDO_SCALLOPS`, SH29 `WAKKANAI_MILK_CARAMELS`, SH30 `WHITE_CHOCOLATE_COOKIES`, SH31 `NEBUTA_FESTIVAL_HAND_TOWEL`, SH32 `BOTTLE_OF_DISTRICT_SAKE`, SH33 `HASKAP_YOITOMAKE`, SH34 `EXPANDED_BRIEFING_BINDER`. Still undrawn: SH28 Wind-Dried Salmon. Test: `test_icon_names.gd` (every named icon is a real, exactly spelled file).
+
+## Salmon icon (2026-11-14, Cameron)
+
+Cameron uploaded the Wind-Dried Salmon picture as `WIND-DRIED_SALMON.png`. Every other icon file uses underscores, so it is now `WIND_DRIED_SALMON.png` and SH28's Icon cell names it. All regional gift items (SH25 to SH33) now have pictures. `test_icon_names.gd` also fails the build on a hyphen in an icon file name.
+

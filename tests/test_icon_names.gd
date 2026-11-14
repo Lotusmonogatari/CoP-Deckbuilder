@@ -29,8 +29,13 @@ func test_cosmetic_icons_name_real_files() -> void:
 		assert_true(files.has(str(icon)), "%s names icon '%s'" % [package.get("package_id"), icon])
 
 
+func test_icon_file_names_use_underscores_not_hyphens() -> void:
+	for name: String in _icon_files():
+		assert_false(name.contains("-"), "%s: icon file names use underscores" % name)
+
+
 func test_the_regional_gift_icons_are_wired_to_their_items() -> void:
-	var expected := {"SH25": "BOX_OF_AOMORI_APPLES", "SH26": "TSUGARU_LACQUER_CHOPSTICKS", "SH27": "DRIED_HOKKAIDO_SCALLOPS",
+	var expected := {"SH25": "BOX_OF_AOMORI_APPLES", "SH26": "TSUGARU_LACQUER_CHOPSTICKS", "SH27": "DRIED_HOKKAIDO_SCALLOPS", "SH28": "WIND_DRIED_SALMON",
 		"SH29": "WAKKANAI_MILK_CARAMELS", "SH30": "WHITE_CHOCOLATE_COOKIES", "SH31": "NEBUTA_FESTIVAL_HAND_TOWEL",
 		"SH32": "BOTTLE_OF_DISTRICT_SAKE", "SH33": "HASKAP_YOITOMAKE", "SH34": "EXPANDED_BRIEFING_BINDER"}
 	for id: String in expected:

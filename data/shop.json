@@ -1151,7 +1151,7 @@
     "bonus_condition_1": null,
     "bonus_condition_2": null,
     "grants": null,
-    "icon": null,
+    "icon": "WIND_DRIED_SALMON",
     "use_in_office": "No",
     "use_in_stage": "No",
     "duration": null,
