@@ -1,0 +1,56 @@
+{
+	"INV-07": {
+		"found": 25,
+		"lost": 25
+	},
+	"INV-08": {
+		"found": 521,
+		"opponent_moved_after": 0
+	},
+	"INV-09": {
+		"comparisons": 29541,
+		"differences": []
+	},
+	"INV-10": {
+		"cost_1": 5893,
+		"cost_2": 3095,
+		"cost_3": 1012,
+		"odds": [
+			{
+				"chance": 60,
+				"cost": 1
+			},
+			{
+				"chance": 30,
+				"cost": 2
+			},
+			{
+				"chance": 10,
+				"cost": 3
+			}
+		],
+		"rolls": 10000,
+		"undecided_cost": 1
+	},
+	"INV-14": {
+		"decks": 2000,
+		"decks_with_a_repeated_card": 0,
+		"decks_with_a_tier_3": 507,
+		"decks_with_two_tier_3": 0,
+		"over_half_gaffe_cards": 0,
+		"suits_more_than_one_apart": 0,
+		"wrong_size": 0
+	},
+	"INV-22": {
+		"rise_counts": {
+			"0": 295,
+			"1": 61,
+			"2": 72,
+			"3": 72
+		},
+		"survival_rooms": 11
+	},
+	"INV-23": {
+		"stage_fields_changed": []
+	}
+}

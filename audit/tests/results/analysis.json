@@ -1,0 +1,2078 @@
+{
+ "BAL-01": {
+  "rooms": 229,
+  "n_per_room": 100,
+  "overall": 0.7868,
+  "below": [],
+  "above": [
+   [
+    "ST10",
+    "Committee on the Environment",
+    1.0
+   ],
+   [
+    "ST13",
+    "Committee on Agriculture",
+    1.0
+   ],
+   [
+    "ST31",
+    "Hearing on Fishery Quotas",
+    1.0
+   ],
+   [
+    "ST33",
+    "Hearing on Wilderness Protection",
+    1.0
+   ],
+   [
+    "ST54",
+    "Hearing on the Carbon Levy",
+    1.0
+   ],
+   [
+    "ST57",
+    "Hearing on Fishing Quota Reform",
+    1.0
+   ],
+   [
+    "ST77",
+    "Hearing on Farm Succession",
+    1.0
+   ],
+   [
+    "ST126",
+    "Committee on the Environment: Agricultural Price Stabilization",
+    1.0
+   ],
+   [
+    "ST127",
+    "Committee on Agriculture: Agricultural Price Stabilization",
+    1.0
+   ],
+   [
+    "ST131",
+    "Policy Study Session on Special Economic Zones",
+    1.0
+   ],
+   [
+    "ST150",
+    "Committee on the Environment: Grid Resilience and Renewable Energy",
+    1.0
+   ],
+   [
+    "ST177",
+    "Committee on the Environment: Temple and Shrine Heritage",
+    1.0
+   ],
+   [
+    "ST187",
+    "Policy Study Session on Digital Economy Promotion",
+    1.0
+   ],
+   [
+    "ST214",
+    "Policy Study Session on Yezo\u2013EU Economic Partnership Agreement",
+    1.0
+   ],
+   [
+    "ST230",
+    "Committee on the Environment: Tomari Nuclear Restart",
+    1.0
+   ],
+   [
+    "ST50",
+    "Policy Study on Corporate Tax Cuts",
+    0.99
+   ],
+   [
+    "ST123",
+    "Committee on Government Administration: Ainu Heritage and Language",
+    0.99
+   ],
+   [
+    "ST235",
+    "Policy Study Session on Integrated Resort",
+    0.99
+   ],
+   [
+    "ST21",
+    "Policy Study Session",
+    0.98
+   ],
+   [
+    "ST87",
+    "Policy Study on Parental Leave",
+    0.98
+   ],
+   [
+    "ST96",
+    "Policy Study on Town Mergers",
+    0.98
+   ],
+   [
+    "ST158",
+    "Committee on Government Administration: Prefectural Fiscal Devolution",
+    0.98
+   ],
+   [
+    "ST172",
+    "Committee on Ethics and Prosecution: Judicial Appointments Commission",
+    0.98
+   ],
+   [
+    "ST195",
+    "Committee on Ethics and Prosecution: Organized Crime Conspiracy",
+    0.98
+   ],
+   [
+    "ST201",
+    "Policy Study Session on National Emergency Powers",
+    0.98
+   ],
+   [
+    "ST208",
+    "Policy Study Session on Yezo\u2013US Security Consultation Agreement",
+    0.98
+   ],
+   [
+    "ST09",
+    "Committee on Ethics and Prosecution",
+    0.97
+   ],
+   [
+    "ST27",
+    "Hearing on Rail Safety",
+    0.97
+   ],
+   [
+    "ST246",
+    "Committee on Government Administration: Regional Minimum Wage",
+    0.97
+   ],
+   [
+    "ST251",
+    "Committee on Ethics and Prosecution: Independent Election Commission",
+    0.97
+   ],
+   [
+    "ST258",
+    "Committee on Government Administration: Foreign Resident Local Suffrage",
+    0.97
+   ],
+   [
+    "ST40",
+    "Policy Study on Digital Identity Cards",
+    0.96
+   ],
+   [
+    "ST63",
+    "Hearing on the Constitutional Review",
+    0.96
+   ],
+   [
+    "ST79",
+    "Policy Study on University Research Funding",
+    0.96
+   ],
+   [
+    "ST80",
+    "Hearing on University Research Funding",
+    0.96
+   ],
+   [
+    "ST95",
+    "Hearing on Town Mergers",
+    0.96
+   ],
+   [
+    "ST154",
+    "Lobbyist Meeting on Consumption Tax Rate",
+    0.96
+   ]
+  ],
+  "median": 0.81
+ },
+ "BAL-02": {
+  "rooms": 229,
+  "n_per_room": 50,
+  "overall": 0.9426,
+  "below": [
+   [
+    "ST212",
+    "Party Caucus on Yezo\u2013US Security Consultation Agreement",
+    0.0
+   ],
+   [
+    "ST234",
+    "Media Ambush on Integrated Resort",
+    0.0
+   ],
+   [
+    "ST19",
+    "Media Ambush",
+    0.02
+   ],
+   [
+    "ST289",
+    "Candidate Selection Committee",
+    0.34
+   ],
+   [
+    "ST197",
+    "Party Caucus on Organized Crime Conspiracy",
+    0.38
+   ],
+   [
+    "ST160",
+    "Party Caucus on Prefectural Fiscal Devolution",
+    0.4
+   ],
+   [
+    "ST207",
+    "Party Caucus on National Emergency Powers",
+    0.4
+   ],
+   [
+    "ST242",
+    "Party Caucus on Civil Service Merit",
+    0.42
+   ],
+   [
+    "ST252",
+    "Party Caucus on Independent Election Commission",
+    0.44
+   ],
+   [
+    "ST238",
+    "Party Caucus on Integrated Resort",
+    0.46
+   ]
+  ],
+  "above": [
+   [
+    "ST01",
+    "Special Committee",
+    1.0
+   ],
+   [
+    "ST02",
+    "Floor Debate",
+    1.0
+   ],
+   [
+    "ST03",
+    "Party Caucus",
+    1.0
+   ],
+   [
+    "ST04",
+    "Press Conference",
+    1.0
+   ],
+   [
+    "ST05",
+    "Town Hall",
+    1.0
+   ],
+   [
+    "ST06",
+    "TV Debate",
+    1.0
+   ],
+   [
+    "ST08",
+    "Party Steering Committee",
+    1.0
+   ],
+   [
+    "ST09",
+    "Committee on Ethics and Prosecution",
+    1.0
+   ],
+   [
+    "ST10",
+    "Committee on the Environment",
+    1.0
+   ],
+   [
+    "ST12",
+    "Committee on the National Assembly",
+    1.0
+   ],
+   [
+    "ST13",
+    "Committee on Agriculture",
+    1.0
+   ],
+   [
+    "ST14",
+    "Committee on Foreign Affairs",
+    1.0
+   ],
+   [
+    "ST15",
+    "Committee on Construction and Development",
+    1.0
+   ],
+   [
+    "ST16",
+    "Committee on Finance",
+    1.0
+   ],
+   [
+    "ST17",
+    "Committee on Government Administration",
+    1.0
+   ],
+   [
+    "ST18",
+    "Committee of the Cabinet",
+    1.0
+   ],
+   [
+    "ST20",
+    "Lobbyist Meeting",
+    1.0
+   ],
+   [
+    "ST21",
+    "Policy Study Session",
+    1.0
+   ],
+   [
+    "ST26",
+    "Press Conference on Raising Train Fares",
+    1.0
+   ],
+   [
+    "ST27",
+    "Hearing on Rail Safety",
+    1.0
+   ],
+   [
+    "ST28",
+    "Lobbyist Meeting on Fishing Quotas",
+    1.0
+   ],
+   [
+    "ST29",
+    "Town Hall at the Harbor",
+    1.0
+   ],
+   [
+    "ST30",
+    "Media Ambush on Seafood Labeling",
+    1.0
+   ],
+   [
+    "ST31",
+    "Hearing on Fishery Quotas",
+    1.0
+   ],
+   [
+    "ST32",
+    "Press Conference on Wilderness Protection",
+    1.0
+   ],
+   [
+    "ST33",
+    "Hearing on Wilderness Protection",
+    1.0
+   ],
+   [
+    "ST34",
+    "Town Hall on Wilderness Protection",
+    1.0
+   ],
+   [
+    "ST35",
+    "Party Caucus on Wilderness Protection",
+    1.0
+   ],
+   [
+    "ST36",
+    "Town Hall on Rural Hospitals",
+    1.0
+   ],
+   [
+    "ST37",
+    "Hearing on Rural Hospitals",
+    1.0
+   ],
+   [
+    "ST39",
+    "Party Caucus on Rural Hospitals",
+    1.0
+   ],
+   [
+    "ST40",
+    "Policy Study on Digital Identity Cards",
+    1.0
+   ],
+   [
+    "ST41",
+    "TV Debate on Digital Identity Cards",
+    1.0
+   ],
+   [
+    "ST43",
+    "Press Conference on Broadcaster Independence",
+    1.0
+   ],
+   [
+    "ST44",
+    "TV Debate on Broadcaster Independence",
+    1.0
+   ],
+   [
+    "ST45",
+    "Party Caucus on Broadcaster Independence",
+    1.0
+   ],
+   [
+    "ST46",
+    "Press Conference on Donation Transparency",
+    1.0
+   ],
+   [
+    "ST47",
+    "Hearing on Donation Transparency",
+    1.0
+   ],
+   [
+    "ST48",
+    "Lobbyist Meeting on Donation Transparency",
+    1.0
+   ],
+   [
+    "ST49",
+    "Party Caucus on Donation Transparency",
+    1.0
+   ],
+   [
+    "ST51",
+    "Hearing on Corporate Tax Cuts",
+    1.0
+   ],
+   [
+    "ST53",
+    "Town Hall on the Carbon Levy",
+    1.0
+   ],
+   [
+    "ST54",
+    "Hearing on the Carbon Levy",
+    1.0
+   ],
+   [
+    "ST55",
+    "Press Conference on the Carbon Levy",
+    1.0
+   ],
+   [
+    "ST57",
+    "Hearing on Fishing Quota Reform",
+    1.0
+   ],
+   [
+    "ST58",
+    "Town Hall on Fishing Quota Reform",
+    1.0
+   ],
+   [
+    "ST59",
+    "Party Caucus on Fishing Quota Reform",
+    1.0
+   ],
+   [
+    "ST60",
+    "Hearing on Shipbuilding Support",
+    1.0
+   ],
+   [
+    "ST61",
+    "Town Hall on Shipbuilding Support",
+    1.0
+   ],
+   [
+    "ST62",
+    "Party Caucus on Shipbuilding Support",
+    1.0
+   ],
+   [
+    "ST63",
+    "Hearing on the Constitutional Review",
+    1.0
+   ],
+   [
+    "ST64",
+    "Press Conference on the Constitutional Review",
+    1.0
+   ],
+   [
+    "ST65",
+    "Party Caucus on the Constitutional Review",
+    1.0
+   ],
+   [
+    "ST66",
+    "Hearing on Border Cooperation",
+    1.0
+   ],
+   [
+    "ST67",
+    "Lobbyist Meeting on Border Cooperation",
+    1.0
+   ],
+   [
+    "ST68",
+    "Party Caucus on Border Cooperation",
+    1.0
+   ],
+   [
+    "ST69",
+    "Hearing on Chishima Development",
+    1.0
+   ],
+   [
+    "ST70",
+    "Press Conference on Chishima Development",
+    1.0
+   ],
+   [
+    "ST71",
+    "Lobbyist Meeting on Chishima Development",
+    1.0
+   ],
+   [
+    "ST72",
+    "Party Caucus on Chishima Development",
+    1.0
+   ],
+   [
+    "ST74",
+    "Hearing on China Trade",
+    1.0
+   ],
+   [
+    "ST75",
+    "Party Caucus on China Trade",
+    1.0
+   ],
+   [
+    "ST76",
+    "Town Hall on Farm Succession",
+    1.0
+   ],
+   [
+    "ST77",
+    "Hearing on Farm Succession",
+    1.0
+   ],
+   [
+    "ST78",
+    "Party Caucus on Farm Succession",
+    1.0
+   ],
+   [
+    "ST80",
+    "Hearing on University Research Funding",
+    1.0
+   ],
+   [
+    "ST81",
+    "Party Caucus on University Research Funding",
+    1.0
+   ],
+   [
+    "ST82",
+    "Town Hall on Workplace Equality",
+    1.0
+   ],
+   [
+    "ST83",
+    "Press Conference on Workplace Equality",
+    1.0
+   ],
+   [
+    "ST84",
+    "TV Debate on Workplace Equality",
+    1.0
+   ],
+   [
+    "ST85",
+    "Party Caucus on Workplace Equality",
+    1.0
+   ],
+   [
+    "ST86",
+    "Town Hall on Parental Leave",
+    1.0
+   ],
+   [
+    "ST88",
+    "Lobbyist Meeting on Parental Leave",
+    1.0
+   ],
+   [
+    "ST89",
+    "Party Caucus on Parental Leave",
+    1.0
+   ],
+   [
+    "ST90",
+    "Hearing on Surveillance Cameras",
+    1.0
+   ],
+   [
+    "ST92",
+    "Press Conference on Surveillance Cameras",
+    1.0
+   ],
+   [
+    "ST93",
+    "Party Caucus on Surveillance Cameras",
+    1.0
+   ],
+   [
+    "ST94",
+    "Town Hall on Town Mergers",
+    1.0
+   ],
+   [
+    "ST95",
+    "Hearing on Town Mergers",
+    1.0
+   ],
+   [
+    "ST97",
+    "Party Caucus on Town Mergers",
+    1.0
+   ],
+   [
+    "ST98",
+    "TV Debate on Party Leadership Ballots",
+    1.0
+   ],
+   [
+    "ST99",
+    "Press Conference on Party Leadership Ballots",
+    1.0
+   ],
+   [
+    "ST100",
+    "Party Caucus on Party Leadership Ballots",
+    1.0
+   ],
+   [
+    "ST122",
+    "Town Hall on Ainu Heritage and Language",
+    1.0
+   ],
+   [
+    "ST123",
+    "Committee on Government Administration: Ainu Heritage and Language",
+    1.0
+   ],
+   [
+    "ST125",
+    "Press Conference on Agricultural Price Stabilization",
+    1.0
+   ],
+   [
+    "ST126",
+    "Committee on the Environment: Agricultural Price Stabilization",
+    1.0
+   ],
+   [
+    "ST127",
+    "Committee on Agriculture: Agricultural Price Stabilization",
+    1.0
+   ],
+   [
+    "ST129",
+    "Press Conference on Special Economic Zones",
+    1.0
+   ],
+   [
+    "ST130",
+    "Committee on Foreign Affairs: Special Economic Zones",
+    1.0
+   ],
+   [
+    "ST131",
+    "Policy Study Session on Special Economic Zones",
+    1.0
+   ],
+   [
+    "ST132",
+    "Committee on Construction and Development: Special Economic Zones",
+    1.0
+   ],
+   [
+    "ST133",
+    "Lobbyist Meeting on Special Economic Zones",
+    1.0
+   ],
+   [
+    "ST134",
+    "Committee on Finance: Special Economic Zones",
+    1.0
+   ],
+   [
+    "ST136",
+    "Town Hall on Hokkaido Shinkansen Acceleration",
+    1.0
+   ],
+   [
+    "ST137",
+    "Committee on Finance: Hokkaido Shinkansen Acceleration",
+    1.0
+   ],
+   [
+    "ST138",
+    "Lobbyist Meeting on Hokkaido Shinkansen Acceleration",
+    1.0
+   ],
+   [
+    "ST139",
+    "Committee on Construction and Development: Hokkaido Shinkansen Acceleration",
+    1.0
+   ],
+   [
+    "ST140",
+    "Committee on Foreign Affairs: Hokkaido Shinkansen Acceleration",
+    1.0
+   ],
+   [
+    "ST142",
+    "Press Conference on Chishima Coastal Defense Modernization",
+    1.0
+   ],
+   [
+    "ST146",
+    "Committee on Government Administration: Specified Skilled Worker Visa",
+    1.0
+   ],
+   [
+    "ST147",
+    "Committee on Foreign Affairs: Specified Skilled Worker Visa",
+    1.0
+   ],
+   [
+    "ST149",
+    "Town Hall on Grid Resilience and Renewable Energy",
+    1.0
+   ],
+   [
+    "ST150",
+    "Committee on the Environment: Grid Resilience and Renewable Energy",
+    1.0
+   ],
+   [
+    "ST151",
+    "Committee on Construction and Development: Grid Resilience and Renewable Energy",
+    1.0
+   ],
+   [
+    "ST154",
+    "Lobbyist Meeting on Consumption Tax Rate",
+    1.0
+   ],
+   [
+    "ST155",
+    "Committee on Finance: Consumption Tax Rate",
+    1.0
+   ],
+   [
+    "ST157",
+    "Press Conference on Prefectural Fiscal Devolution",
+    1.0
+   ],
+   [
+    "ST158",
+    "Committee on Government Administration: Prefectural Fiscal Devolution",
+    1.0
+   ],
+   [
+    "ST159",
+    "Committee on Finance: Prefectural Fiscal Devolution",
+    1.0
+   ],
+   [
+    "ST161",
+    "Press Conference on Candidate Gender Parity",
+    1.0
+   ],
+   [
+    "ST162",
+    "Committee on Government Administration: Candidate Gender Parity",
+    1.0
+   ],
+   [
+    "ST163",
+    "Committee on the National Assembly: Candidate Gender Parity",
+    1.0
+   ],
+   [
+    "ST165",
+    "Lobbyist Meeting on Tsugaru Strait Joint Commission",
+    1.0
+   ],
+   [
+    "ST166",
+    "Committee on Foreign Affairs: Tsugaru Strait Joint Commission",
+    1.0
+   ],
+   [
+    "ST167",
+    "Press Conference on Tsugaru Strait Joint Commission",
+    1.0
+   ],
+   [
+    "ST168",
+    "Committee on Finance: Tsugaru Strait Joint Commission",
+    1.0
+   ],
+   [
+    "ST171",
+    "Press Conference on Judicial Appointments Commission",
+    1.0
+   ],
+   [
+    "ST172",
+    "Committee on Ethics and Prosecution: Judicial Appointments Commission",
+    1.0
+   ],
+   [
+    "ST174",
+    "Town Hall on Temple and Shrine Heritage",
+    1.0
+   ],
+   [
+    "ST175",
+    "Lobbyist Meeting on Temple and Shrine Heritage",
+    1.0
+   ],
+   [
+    "ST177",
+    "Committee on the Environment: Temple and Shrine Heritage",
+    1.0
+   ],
+   [
+    "ST178",
+    "Committee on Finance: Temple and Shrine Heritage",
+    1.0
+   ],
+   [
+    "ST180",
+    "Town Hall on Constituency Development Grants",
+    1.0
+   ],
+   [
+    "ST182",
+    "Press Conference on Constituency Development Grants",
+    1.0
+   ],
+   [
+    "ST183",
+    "Committee on Construction and Development: Constituency Development Grants",
+    1.0
+   ],
+   [
+    "ST184",
+    "Committee on Finance: Constituency Development Grants",
+    1.0
+   ],
+   [
+    "ST186",
+    "Lobbyist Meeting on Digital Economy Promotion",
+    1.0
+   ],
+   [
+    "ST187",
+    "Policy Study Session on Digital Economy Promotion",
+    1.0
+   ],
+   [
+    "ST189",
+    "Committee on Finance: Digital Economy Promotion",
+    1.0
+   ],
+   [
+    "ST190",
+    "Press Conference on Digital Economy Promotion",
+    1.0
+   ],
+   [
+    "ST191",
+    "Committee on Construction and Development: Digital Economy Promotion",
+    1.0
+   ],
+   [
+    "ST195",
+    "Committee on Ethics and Prosecution: Organized Crime Conspiracy",
+    1.0
+   ],
+   [
+    "ST196",
+    "Press Conference on Organized Crime Conspiracy",
+    1.0
+   ],
+   [
+    "ST198",
+    "Town Hall on Partnership Registration",
+    1.0
+   ],
+   [
+    "ST199",
+    "Committee on Government Administration: Partnership Registration",
+    1.0
+   ],
+   [
+    "ST201",
+    "Policy Study Session on National Emergency Powers",
+    1.0
+   ],
+   [
+    "ST202",
+    "Committee on the National Assembly: National Emergency Powers",
+    1.0
+   ],
+   [
+    "ST204",
+    "Committee on Government Administration: National Emergency Powers",
+    1.0
+   ],
+   [
+    "ST205",
+    "TV Debate on National Emergency Powers",
+    1.0
+   ],
+   [
+    "ST206",
+    "Committee on War: National Emergency Powers",
+    1.0
+   ],
+   [
+    "ST208",
+    "Policy Study Session on Yezo\u2013US Security Consultation Agreement",
+    1.0
+   ],
+   [
+    "ST209",
+    "Committee on Foreign Affairs: Yezo\u2013US Security Consultation Agreement",
+    1.0
+   ],
+   [
+    "ST210",
+    "Press Conference on Yezo\u2013US Security Consultation Agreement",
+    1.0
+   ],
+   [
+    "ST211",
+    "Committee on War: Yezo\u2013US Security Consultation Agreement",
+    1.0
+   ],
+   [
+    "ST215",
+    "Committee on Foreign Affairs: Yezo\u2013EU Economic Partnership Agreement",
+    1.0
+   ],
+   [
+    "ST216",
+    "Committee on Finance: Yezo\u2013EU Economic Partnership Agreement",
+    1.0
+   ],
+   [
+    "ST218",
+    "Press Conference on Strategic Land and Port Screening",
+    1.0
+   ],
+   [
+    "ST219",
+    "Special Committee: Strategic Land and Port Screening",
+    1.0
+   ],
+   [
+    "ST221",
+    "Committee on Construction and Development: Strategic Land and Port Screening",
+    1.0
+   ],
+   [
+    "ST222",
+    "Party Caucus on Strategic Land and Port Screening",
+    1.0
+   ],
+   [
+    "ST223",
+    "Committee on Foreign Affairs: Inbound Tourism Visa Waiver",
+    1.0
+   ],
+   [
+    "ST224",
+    "TV Debate on Inbound Tourism Visa Waiver",
+    1.0
+   ],
+   [
+    "ST225",
+    "Committee on Government Administration: Inbound Tourism Visa Waiver",
+    1.0
+   ],
+   [
+    "ST228",
+    "Committee on Foreign Affairs: Chishima Joint Economic Activity",
+    1.0
+   ],
+   [
+    "ST230",
+    "Committee on the Environment: Tomari Nuclear Restart",
+    1.0
+   ],
+   [
+    "ST231",
+    "Committee on Construction and Development: Tomari Nuclear Restart",
+    1.0
+   ],
+   [
+    "ST233",
+    "Lobbyist Meeting on Integrated Resort",
+    1.0
+   ],
+   [
+    "ST235",
+    "Policy Study Session on Integrated Resort",
+    1.0
+   ],
+   [
+    "ST236",
+    "Committee on Construction and Development: Integrated Resort",
+    1.0
+   ],
+   [
+    "ST237",
+    "Committee on Finance: Integrated Resort",
+    1.0
+   ],
+   [
+    "ST239",
+    "Press Conference on Civil Service Merit",
+    1.0
+   ],
+   [
+    "ST240",
+    "Committee on Government Administration: Civil Service Merit",
+    1.0
+   ],
+   [
+    "ST241",
+    "Committee on the National Assembly: Civil Service Merit",
+    1.0
+   ],
+   [
+    "ST244",
+    "Special Committee: Regional Minimum Wage",
+    1.0
+   ],
+   [
+    "ST245",
+    "TV Debate on Regional Minimum Wage",
+    1.0
+   ],
+   [
+    "ST246",
+    "Committee on Government Administration: Regional Minimum Wage",
+    1.0
+   ],
+   [
+    "ST247",
+    "Committee on Finance: Regional Minimum Wage",
+    1.0
+   ],
+   [
+    "ST249",
+    "Press Conference on Independent Election Commission",
+    1.0
+   ],
+   [
+    "ST250",
+    "Committee on the National Assembly: Independent Election Commission",
+    1.0
+   ],
+   [
+    "ST251",
+    "Committee on Ethics and Prosecution: Independent Election Commission",
+    1.0
+   ],
+   [
+    "ST255",
+    "Committee on Government Administration: Moral Education Curriculum",
+    1.0
+   ],
+   [
+    "ST257",
+    "Press Conference on Foreign Resident Local Suffrage",
+    1.0
+   ],
+   [
+    "ST258",
+    "Committee on Government Administration: Foreign Resident Local Suffrage",
+    1.0
+   ],
+   [
+    "ST271",
+    "Radio Debate",
+    1.0
+   ],
+   [
+    "ST272",
+    "Radio Call-In Hour",
+    1.0
+   ],
+   [
+    "ST273",
+    "Campus Q&A",
+    1.0
+   ]
+  ],
+  "median": 1.0
+ },
+ "BAL-04": {
+  "starter_in_50_90": 153,
+  "rooms": 229
+ },
+ "families": [
+  {
+   "family": "Campus Q&A",
+   "rooms": 1,
+   "greedy_starter": 0.77,
+   "greedy_full": 1.0,
+   "random_starter": 0.01,
+   "kit_gain": 0.22999999999999998,
+   "skill_gap": 0.76,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 23
+  },
+  {
+   "family": "Committee of the Cabinet",
+   "rooms": 1,
+   "greedy_starter": 0.91,
+   "greedy_full": 1.0,
+   "random_starter": 0.03,
+   "kit_gain": 0.08999999999999997,
+   "skill_gap": 0.88,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 9
+  },
+  {
+   "family": "Committee on Agriculture",
+   "rooms": 5,
+   "greedy_starter": 1.0,
+   "greedy_full": 1.0,
+   "random_starter": 0.388,
+   "kit_gain": 0.0,
+   "skill_gap": 0.612,
+   "top_loss_cause": "",
+   "top_loss_share": null,
+   "losses": 0
+  },
+  {
+   "family": "Committee on Construction and Development",
+   "rooms": 10,
+   "greedy_starter": 0.787,
+   "greedy_full": 1.0,
+   "random_starter": 0.001,
+   "kit_gain": 0.21299999999999997,
+   "skill_gap": 0.786,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 213
+  },
+  {
+   "family": "Committee on Ethics and Prosecution",
+   "rooms": 4,
+   "greedy_starter": 0.975,
+   "greedy_full": 1.0,
+   "random_starter": 0.0,
+   "kit_gain": 0.025000000000000022,
+   "skill_gap": 0.975,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 10
+  },
+  {
+   "family": "Committee on Finance",
+   "rooms": 13,
+   "greedy_starter": 0.63,
+   "greedy_full": 1.0,
+   "random_starter": 0.0,
+   "kit_gain": 0.37,
+   "skill_gap": 0.63,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 481
+  },
+  {
+   "family": "Committee on Foreign Affairs",
+   "rooms": 12,
+   "greedy_starter": 0.875,
+   "greedy_full": 1.0,
+   "random_starter": 0.0008333333333333334,
+   "kit_gain": 0.125,
+   "skill_gap": 0.8741666666666666,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 150
+  },
+  {
+   "family": "Committee on Government Administration",
+   "rooms": 17,
+   "greedy_starter": 0.9317647058823529,
+   "greedy_full": 1.0,
+   "random_starter": 0.000588235294117647,
+   "kit_gain": 0.06823529411764706,
+   "skill_gap": 0.9311764705882353,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 116
+  },
+  {
+   "family": "Committee on War",
+   "rooms": 6,
+   "greedy_starter": 0.8383333333333334,
+   "greedy_full": 0.9533333333333334,
+   "random_starter": 0.0016666666666666668,
+   "kit_gain": 0.11499999999999999,
+   "skill_gap": 0.8366666666666667,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 97
+  },
+  {
+   "family": "Committee on the Environment",
+   "rooms": 7,
+   "greedy_starter": 1.0,
+   "greedy_full": 1.0,
+   "random_starter": 0.3871428571428571,
+   "kit_gain": 0.0,
+   "skill_gap": 0.6128571428571429,
+   "top_loss_cause": "",
+   "top_loss_share": null,
+   "losses": 0
+  },
+  {
+   "family": "Committee on the National Assembly",
+   "rooms": 6,
+   "greedy_starter": 0.9233333333333333,
+   "greedy_full": 1.0,
+   "random_starter": 0.0,
+   "kit_gain": 0.07666666666666666,
+   "skill_gap": 0.9233333333333333,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 46
+  },
+  {
+   "family": "Floor Debate",
+   "rooms": 1,
+   "greedy_starter": 0.83,
+   "greedy_full": 1.0,
+   "random_starter": 0.01,
+   "kit_gain": 0.17000000000000004,
+   "skill_gap": 0.82,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 17
+  },
+  {
+   "family": "Lobbyist Meeting",
+   "rooms": 13,
+   "greedy_starter": 0.9176923076923077,
+   "greedy_full": 1.0,
+   "random_starter": 0.4246153846153846,
+   "kit_gain": 0.0823076923076923,
+   "skill_gap": 0.4930769230769231,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 0.822429906542056,
+   "losses": 107
+  },
+  {
+   "family": "Media Ambush",
+   "rooms": 6,
+   "greedy_starter": 0.7816666666666666,
+   "greedy_full": 0.5166666666666667,
+   "random_starter": 0.095,
+   "kit_gain": -0.2649999999999999,
+   "skill_gap": 0.6866666666666666,
+   "top_loss_cause": "argued_out",
+   "top_loss_share": 0.6259541984732825,
+   "losses": 131
+  },
+  {
+   "family": "Party Caucus",
+   "rooms": 52,
+   "greedy_starter": 0.6284615384615385,
+   "greedy_full": 0.8207692307692308,
+   "random_starter": 0.011538461538461539,
+   "kit_gain": 0.1923076923076923,
+   "skill_gap": 0.616923076923077,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 1932
+  },
+  {
+   "family": "Party Steering Committee",
+   "rooms": 1,
+   "greedy_starter": 0.36,
+   "greedy_full": 1.0,
+   "random_starter": 0.1,
+   "kit_gain": 0.64,
+   "skill_gap": 0.26,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 64
+  },
+  {
+   "family": "Policy Study Session",
+   "rooms": 14,
+   "greedy_starter": 0.9785714285714285,
+   "greedy_full": 0.9714285714285714,
+   "random_starter": 0.15285714285714286,
+   "kit_gain": -0.0071428571428571175,
+   "skill_gap": 0.8257142857142856,
+   "top_loss_cause": "argued_out",
+   "top_loss_share": 0.8,
+   "losses": 30
+  },
+  {
+   "family": "Press Conference",
+   "rooms": 27,
+   "greedy_starter": 0.7281481481481481,
+   "greedy_full": 1.0,
+   "random_starter": 0.0077777777777777776,
+   "kit_gain": 0.2718518518518519,
+   "skill_gap": 0.7203703703703703,
+   "top_loss_cause": "tone_short",
+   "top_loss_share": 1.0,
+   "losses": 734
+  },
+  {
+   "family": "Special Committee",
+   "rooms": 4,
+   "greedy_starter": 0.925,
+   "greedy_full": 0.995,
+   "random_starter": 0.19,
+   "kit_gain": 0.06999999999999995,
+   "skill_gap": 0.7350000000000001,
+   "top_loss_cause": "argued_out",
+   "top_loss_share": 0.9333333333333333,
+   "losses": 30
+  },
+  {
+   "family": "TV Debate",
+   "rooms": 11,
+   "greedy_starter": 0.6418181818181818,
+   "greedy_full": 0.9836363636363636,
+   "random_starter": 0.07,
+   "kit_gain": 0.3418181818181818,
+   "skill_gap": 0.5718181818181818,
+   "top_loss_cause": "below_line",
+   "top_loss_share": 1.0,
+   "losses": 394
+  },
+  {
+   "family": "Town Hall",
+   "rooms": 17,
+   "greedy_starter": 0.8329411764705882,
+   "greedy_full": 0.9976470588235294,
+   "random_starter": 0.0035294117647058825,
+   "kit_gain": 0.16470588235294126,
+   "skill_gap": 0.8294117647058823,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 284
+  },
+  {
+   "family": "Town Hall at the Harbor",
+   "rooms": 1,
+   "greedy_starter": 0.85,
+   "greedy_full": 1.0,
+   "random_starter": 0.01,
+   "kit_gain": 0.15000000000000002,
+   "skill_gap": 0.84,
+   "top_loss_cause": "turn_limit",
+   "top_loss_share": 1.0,
+   "losses": 15
+  }
+ ],
+ "BAL-03": {
+  "families": 22,
+  "fail": [
+   [
+    "Committee of the Cabinet",
+    0.09
+   ],
+   [
+    "Committee on Agriculture",
+    0.0
+   ],
+   [
+    "Committee on Ethics and Prosecution",
+    0.025
+   ],
+   [
+    "Committee on Government Administration",
+    0.068
+   ],
+   [
+    "Committee on the Environment",
+    0.0
+   ],
+   [
+    "Committee on the National Assembly",
+    0.077
+   ],
+   [
+    "Lobbyist Meeting",
+    0.082
+   ],
+   [
+    "Media Ambush",
+    -0.265
+   ],
+   [
+    "Policy Study Session",
+    -0.007
+   ],
+   [
+    "Special Committee",
+    0.07
+   ]
+  ]
+ },
+ "BAL-05": {
+  "fail": [],
+  "overall_random_starter": 0.0676
+ },
+ "BAL-07": {
+  "fail": [
+   [
+    "Campus Q&A",
+    "turn_limit",
+    1.0,
+    23
+   ],
+   [
+    "Committee on Construction and Development",
+    "turn_limit",
+    1.0,
+    213
+   ],
+   [
+    "Committee on Finance",
+    "turn_limit",
+    1.0,
+    481
+   ],
+   [
+    "Committee on Foreign Affairs",
+    "turn_limit",
+    1.0,
+    150
+   ],
+   [
+    "Committee on Government Administration",
+    "turn_limit",
+    1.0,
+    116
+   ],
+   [
+    "Committee on War",
+    "turn_limit",
+    1.0,
+    97
+   ],
+   [
+    "Committee on the National Assembly",
+    "turn_limit",
+    1.0,
+    46
+   ],
+   [
+    "Lobbyist Meeting",
+    "turn_limit",
+    0.82,
+    107
+   ],
+   [
+    "Party Caucus",
+    "turn_limit",
+    1.0,
+    1932
+   ],
+   [
+    "Party Steering Committee",
+    "turn_limit",
+    1.0,
+    64
+   ],
+   [
+    "Press Conference",
+    "tone_short",
+    1.0,
+    734
+   ],
+   [
+    "Special Committee",
+    "argued_out",
+    0.93,
+    30
+   ],
+   [
+    "TV Debate",
+    "below_line",
+    1.0,
+    394
+   ],
+   [
+    "Town Hall",
+    "turn_limit",
+    1.0,
+    284
+   ]
+  ]
+ },
+ "loss_causes_overall_greedy_starter": {
+  "argued_out": 153,
+  "turn_limit": 3602,
+  "tone_short": 734,
+  "below_line": 394
+ },
+ "BAL-06": {
+  "rooms": 202,
+  "median_ratio": 0.55,
+  "in_band": 123,
+  "below": 39,
+  "above": 40,
+  "by_seq": {
+   "reset": [
+    0.516,
+    85
+   ],
+   "continuous": [
+    0.848,
+    59
+   ],
+   "single": [
+    0.236,
+    25
+   ],
+   "stream": [
+    0.734,
+    33
+   ]
+  },
+  "fastest": [
+   [
+    "ST233",
+    "Lobbyist Meeting on Integrated Resort",
+    0.2
+   ],
+   [
+    "ST20",
+    "Lobbyist Meeting",
+    0.21
+   ],
+   [
+    "ST28",
+    "Lobbyist Meeting on Fishing Quotas",
+    0.21
+   ],
+   [
+    "ST48",
+    "Lobbyist Meeting on Donation Transparency",
+    0.21
+   ],
+   [
+    "ST133",
+    "Lobbyist Meeting on Special Economic Zones",
+    0.21
+   ]
+  ]
+ },
+ "loss_causes_overall_random_starter": {
+  "argued_out": 808,
+  "gaffes": 12566,
+  "turn_limit": 5674,
+  "tone_short": 1406,
+  "below_line": 898
+ },
+ "BAL-20": {
+  "overall": {
+   "relaxed": 0.8461,
+   "standard": 0.7682,
+   "harder": 0.6625
+  },
+  "families_out_of_order": [
+   [
+    "Floor Debate",
+    [
+     0.84,
+     0.8,
+     0.84
+    ],
+    25
+   ]
+  ]
+ },
+ "BAL-10": {
+  "mean": 3.39,
+  "sd": 1.96,
+  "outliers": [
+   [
+    "C63",
+    "Compile the Dossier",
+    "Data Driven",
+    "1",
+    10.0,
+    3.38
+   ],
+   [
+    "C69",
+    "The Quiet Deal",
+    "Duplicitous",
+    "1",
+    10.0,
+    3.38
+   ],
+   [
+    "C67",
+    "Give Everything",
+    "Emotional",
+    "1",
+    9.5,
+    3.12
+   ],
+   [
+    "C65",
+    "Burn the Bridge",
+    "Divisive",
+    "1",
+    8.0,
+    2.36
+   ]
+  ],
+  "suit_mean": {
+   "Appeal": 2.24,
+   "Data Driven": 4.06,
+   "Divisive": 3.11,
+   "Duplicitous": 4.13,
+   "Earnest": 2.69,
+   "Emotional": 3.53
+  },
+  "suit_spread": 1.84,
+  "dominated": [
+   [
+    "C01",
+    "Record of Service",
+    "by",
+    "C25",
+    "Point to the Promise Kept"
+   ]
+  ],
+  "tier_mean": {
+   "0": 2.92,
+   "1": 4.44,
+   "2": 3.1,
+   "3": 2.97
+  }
+ },
+ "BAL-08": {
+  "runs": 12,
+  "plays": 90302,
+  "mean_per_card": 1290.0,
+  "over_3x": [
+   [
+    "C14",
+    5538,
+    4.3
+   ],
+   [
+    "C38",
+    4992,
+    3.9
+   ],
+   [
+    "C09",
+    3925,
+    3.0
+   ]
+  ],
+  "never": [
+   "C04",
+   "C16",
+   "C20",
+   "C24",
+   "C29",
+   "C41",
+   "C44",
+   "C46",
+   "C53"
+  ],
+  "owned_at_end": [
+   60,
+   60,
+   50,
+   60,
+   60,
+   61,
+   61,
+   60,
+   60,
+   58,
+   61,
+   60
+  ]
+ },
+ "BAL-09": {
+  "Appeal": 0.1894,
+  "Data Driven": 0.2766,
+  "Divisive": 0.0967,
+  "Duplicitous": 0.1103,
+  "Earnest": 0.1724,
+  "Emotional": 0.1545
+ },
+ "BAL-12": {
+  "con": {
+   "mean_share_at_100": 0.0,
+   "max": 0.0,
+   "final_values": [
+    78,
+    84,
+    84,
+    61,
+    68,
+    80,
+    77,
+    77,
+    77,
+    76,
+    68,
+    76
+   ]
+  },
+  "rep": {
+   "mean_share_at_100": 0.0,
+   "max": 0.0,
+   "final_values": [
+    25,
+    24,
+    17,
+    25,
+    23,
+    11,
+    44,
+    13,
+    36,
+    25,
+    25,
+    30
+   ]
+  },
+  "party": {
+   "mean_share_at_100": 0.011,
+   "max": 0.067,
+   "final_values": [
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90
+   ]
+  },
+  "level_ends": {
+   "jiban": {
+    "share_at_100_by_run": [
+     0.21,
+     0.11,
+     0.06,
+     0.0
+    ],
+    "mean": 0.097
+   },
+   "rep": {
+    "share_at_100_by_run": [
+     0.04,
+     0.11,
+     0.03,
+     0.0
+    ],
+    "mean": 0.044
+   },
+   "party": {
+    "share_at_100_by_run": [
+     0.76,
+     0.78,
+     0.62,
+     0.33
+    ],
+    "mean": 0.622
+   }
+  },
+  "party_at_or_above_90_week_ends": 0.856
+ },
+ "BAL-13": {
+  "runs": 4,
+  "at_ceiling_90pct": [],
+  "top_ceiling_share": [
+   [
+    "BO26",
+    0.48
+   ],
+   [
+    "BO06",
+    0.47
+   ],
+   [
+    "BO04",
+    0.41
+   ],
+   [
+    "BO03",
+    0.33
+   ],
+   [
+    "BO18",
+    0.32
+   ],
+   [
+    "BO25",
+    0.23
+   ]
+  ],
+  "near_zero_most_of_run": []
+ },
+ "BAL-16": {
+  "strategies": 60,
+  "runs": 180,
+  "top5": [
+   [
+    "campaigner_cap",
+    0.917,
+    3
+   ],
+   [
+    "cap_dues",
+    0.917,
+    3
+   ],
+   [
+    "dues_mild_pay",
+    0.885,
+    3
+   ],
+   [
+    "dues_pct15_pay",
+    0.852,
+    3
+   ],
+   [
+    "drafter_random",
+    0.838,
+    3
+   ]
+  ],
+  "median": 0.54,
+  "best_over_median": 1.698,
+  "single_suit_in_top3": [],
+  "bottom3": [
+   [
+    "events_random",
+    0.53
+   ],
+   [
+    "events_buy",
+    0.529
+   ],
+   [
+    "random_cards",
+    0.182
+   ]
+  ]
+ },
+ "BAL-17": {
+  "runs": 12,
+  "share_of_weeks_dues_paid_mean": 0.046,
+  "min": 0.0,
+  "dues_owed_at_week_30": [
+   1410407,
+   1449224,
+   1495087,
+   1508650,
+   1527533,
+   1548222,
+   1549363,
+   1600450,
+   1616750,
+   1635850,
+   1674800,
+   1760900
+  ],
+  "weeks_overdue": [
+   24,
+   26,
+   26,
+   26,
+   26,
+   26,
+   26,
+   26,
+   26,
+   26,
+   26,
+   26
+  ]
+ },
+ "BAL-18": {
+  "xp_at_week_30": [
+   104,
+   119,
+   123,
+   126,
+   131,
+   134,
+   137,
+   156,
+   160,
+   167,
+   181,
+   187
+  ],
+  "median": 135.5,
+  "dearest_xp_price": 1000,
+  "xp_total_earned_median": 35029.0
+ },
+ "BAL-21": {
+  "per_week_mean": {
+   "levels": 3.7,
+   "stages": 14.6,
+   "combat": 11.0
+  },
+  "stage_win_rate": 0.969
+ },
+ "BAL-11": {
+  "owned_cards_at_week_30": [
+   50,
+   58,
+   60,
+   60,
+   60,
+   60,
+   60,
+   60,
+   60,
+   61,
+   61,
+   61
+  ],
+  "of": 70
+ },
+ "BAL-15": {
+  "0": {
+   "levels": 33,
+   "funds_per_hour_median": 8000,
+   "xp_per_hour_median": 25.0,
+   "hours_median": 4
+  },
+  "1": {
+   "levels": 46,
+   "funds_per_hour_median": 10491,
+   "xp_per_hour_median": 27.2,
+   "hours_median": 12.0
+  },
+  "2": {
+   "levels": 35,
+   "funds_per_hour_median": 12857,
+   "xp_per_hour_median": 31.4,
+   "hours_median": 14
+  }
+ },
+ "BAL-14": {
+  "levels_with_combat": 93,
+  "hardest_third_funds_per_hour": 10625,
+  "easiest_third_funds_per_hour": 12667,
+  "hardest_third_xp_per_hour": 25.0,
+  "easiest_third_xp_per_hour": 30.0,
+  "hardest_third_clear": 0.18,
+  "easiest_third_clear": 0.7
+ },
+ "harness": {
+  "runs": 14,
+  "fights": 80150,
+  "violations": 0,
+  "violation_kinds": {},
+  "setup_problems": 0,
+  "determinism": [
+   {
+    "other_engine_seed_differs": true,
+    "ran": true,
+    "same_engine_seed_same_fight": true,
+    "same_global_seed_seats_same_opponent": false,
+    "seated": [
+     "OP78",
+     "OP01"
+    ],
+    "stage": "ST02"
+   }
+  ],
+  "determinism_all_same": true,
+  "seating_same_under_global_seed": 0,
+  "perf_quiet": {
+   "end_turn_usec": {
+    "max": 2094,
+    "mean": 25.5,
+    "median": 23,
+    "n": 20538,
+    "p95": 40
+   },
+   "eventbus_emits": {
+    "battle_ended": 0,
+    "card_played": 0,
+    "gaffe_changed": 0,
+    "intent_revealed": 0,
+    "meta_changed": 0,
+    "turn_ended": 0,
+    "turn_started": 0,
+    "xp_changed": 0
+   },
+   "objects_end": 1503,
+   "orphans_end": 0,
+   "play_card_usec": {
+    "max": 3192,
+    "mean": 46.2,
+    "median": 42,
+    "n": 59300,
+    "p95": 79
+   },
+   "stage_usec": {
+    "max": 22090,
+    "mean": 5070.4,
+    "median": 4235,
+    "n": 2290,
+    "p95": 12687
+   },
+   "static_mb_end": 131.8
+  },
+  "plays_timed": 1416979
+ }
+}

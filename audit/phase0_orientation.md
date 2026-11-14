@@ -27,7 +27,8 @@ An earlier audit already lives in this folder (`audit/00-summary.md` to `07-acti
 |---|---|---|---|
 | Source | `design/Game_Workbook.xlsx`, 64 tabs | `openpyxl` sheet count | Verified |
 | Export (manual) | `python3 tools/export_data.py` reads the workbook with openpyxl and writes `data/*.json` (64 files, 11 MB). Each tab is one `SHEETS` entry (columns, key, ID pattern); Balance, Affinity and Lists have their own readers. It prints a validation report and exits non-zero on errors | `tools/export_data.py:1-25`, `:111`, `:2109`, `:4238` | Verified (ran today: "No errors") |
-| Hand-written data | Ten JSON files the exporter never overwrites (`rules`, `booster_standing`, `party_standing`, `art`, `sounds`, `staff_names`, two override files, two playtest files) | `CLAUDE.md` section 6 | Inferred |
+| JSON is an export, not the source | The game cannot read `.xlsx`, so it reads the exported JSON at runtime. For 54 of the 64 files the JSON is a copy of the workbook and is overwritten on every export; the workbook is the source of truth | `tools/export_data.py:12-16` | Inferred |
+| **Deviation: values held outside the workbook** | Ten JSON files are written by hand and the exporter skips them (`tools/export_data.py:4333`), so their values cannot be changed from the workbook. They hold design values, not only plumbing: `rules.json` (173 values: switches such as `guard_cap`, `pass_energy_penalty`, `funds_starting_cap`, the default intent pattern, seasons), `booster_standing.json` (19 values: standing start, please and displease amounts, the per-stage cap, gain and loss bands, decay, the backing requirement), `party_standing.json` (3), `level_visitor_overrides.json` (93), `level_opponent_overrides.json` (3), `staff_names.json` (21), `playtest_level.json` (144), `playtest_cards.json` (0), plus `art.json` (181) and `sounds.json` (339), which are presentation mappings | value counts from the files; `CLAUDE.md` section 6 lists the ten | Verified (counts), Inferred (role) |
 | Load | `DataDB._ready()` calls `load_all()`, parses every JSON file, validates again and prints a report | `scripts/autoload/DataDB.gd:344-349` | Verified (boot check passes) |
 | Read | Rules read numbers through `DataDB.balance` / `Levers`; sentences through `Text.say("key")` | `tests/test_balance_keys.gd:33-40` | Inferred |
 | Manual steps | Edit the workbook only with `tools/workbook/wbx.py` (openpyxl saving corrupts it); run the exporter; run `tools/verify.sh`; commit workbook and JSON together. There is no automatic export on save or in CI | `tools/workbook/README.md:1-5`, `:37-44` | Inferred |
@@ -68,6 +69,8 @@ An earlier audit already lives in this folder (`audit/00-summary.md` to `07-acti
 | Global `randi()` / `randf()` users | Controlled only by the global `seed()` call, which `strategy_playtest.gd` makes | `tools/strategy_playtest.gd:146-148` | Inferred |
 
 A fully reproducible game therefore needs both the global `seed()` and the per-battle seed, and still has unseeded local generators. My harness will seed globally and record which sources stay random.
+
+**Stated intent (Cameron, 2026-11-14, in review of this document):** values should be pulled from the workbook for maximum flexibility in game design; only in rare exceptions should data be held behind code. The hand-written files above, and any design number typed into a script, are therefore deviations to be listed in Phase 2 and judged in Phase 5. This is now benchmark INV-29.
 
 ## 5. Gaps in stated design intent (found while orienting)
 

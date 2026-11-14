@@ -1,0 +1,75 @@
+{
+  "battle": {
+    "battles": 6,
+    "cards_played": 92,
+    "engine_end_turn_ms": 0.08,
+    "engine_play_card_ms": 0.15,
+    "nodes_in_battle_screen": 120,
+    "refresh_after_card_max_ms": 52.75,
+    "refresh_after_card_ms": 12.44,
+    "refresh_after_turn_ms": 71.02,
+    "stage": "LV08/ST02",
+    "turns": 40
+  },
+  "data_load_ms": 816.76,
+  "memory_after_scenes_mb": {
+    "nodes": 17,
+    "objects": 1837,
+    "static_mb": 181.9,
+    "texture_mb": 0.0
+  },
+  "memory_end_mb": {
+    "nodes": 17,
+    "objects": 1847,
+    "static_mb": 185.2,
+    "texture_mb": 0.0
+  },
+  "memory_start_mb": {
+    "nodes": 17,
+    "objects": 1517,
+    "static_mb": 134.0,
+    "texture_mb": 0.0
+  },
+  "meta": {
+    "date": "2026-11-14T00:24:28",
+    "headless": true,
+    "renderer": "",
+    "runs": 9
+  },
+  "office_panels_ms": {
+    "administration_menu": 6.89,
+    "backing": 56.96,
+    "cosmetics": 6.92,
+    "deck": 12.12,
+    "levels": 38.14,
+    "management": 6.91,
+    "marketplace": 31.22,
+    "organisations": 15.27,
+    "parties": 6.89,
+    "record": 6.92,
+    "reputation_menu": 6.87,
+    "staff": 9.87
+  },
+  "scenes": {
+    "BattleScreen": {
+      "cold_ms": 788.5,
+      "warm_ms": 133.9
+    },
+    "FloorVoteScreen": {
+      "cold_ms": 222.78,
+      "warm_ms": 34.61
+    },
+    "LevelIntroScreen": {
+      "cold_ms": 133.4,
+      "warm_ms": 16.18
+    },
+    "OfficeScreen": {
+      "cold_ms": 899.66,
+      "warm_ms": 72.84
+    },
+    "VisitorScreen": {
+      "cold_ms": 156.52,
+      "warm_ms": 31.19
+    }
+  }
+}

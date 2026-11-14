@@ -1,6 +1,6 @@
 # Phase 1: Benchmarks
 
-Status: **draft for review, not frozen.** Written before any analysis. After approval these targets do not change; later phases only report pass, fail or not measurable against them.
+Status: **FROZEN 2026-11-14.** Cameron reviewed the draft and said to proceed with my recommendations for the open decisions; those are recorded in section D. The targets were written before any analysis and do not change from here: later phases only report pass, fail or not measurable against them.
 
 **How to read the tables**
 
@@ -94,11 +94,18 @@ These must hold in every simulated game and every targeted test. Tolerance is ze
 | INV-25 | A law's "once" effects apply once; recording the same bill twice changes nothing | `design/PLAYTEST_RUBRIC.md` lines D1, D4 |
 | INV-26 | Same seed and same policy give the same battle, move for move | **Proposed.** `scripts/rules/BattleEngine.gd:148` accepts a seed, but no document promises determinism, and several generators are unseeded (`audit/phase0_orientation.md` section 4) |
 | INV-27 | `scripts/rules/` uses no UI, autoload or file access | `CLAUDE.md` section 5 |
+| INV-29 | Every design value is read from the workbook. A value held only in a hand-written JSON file or typed into a script is a deviation unless it is a documented rare exception | Cameron, 2026-11-14 (review of `audit/phase0_orientation.md`); `CLAUDE.md` section 3 ("Data-driven") and section 6 ("No design number lives in a script") |
 | INV-28 | No value becomes NaN, infinite or negative where the data type is a count (hand, deck, energy, seats) | **Proposed.** General safety |
 
-## D. Decisions I need before freezing
+## D. Decisions recorded at the freeze
 
-1. **Proposed rows.** Accept, change or strike: BAL-04 upper edge, BAL-05, BAL-06, BAL-07, BAL-15 to BAL-18, BAL-20, all of section B, INV-26, INV-28.
-2. **Gaps with no target.** BAL-11 (card pick rate) and BAL-21 (run length) have no stated intent. I will report numbers only, unless you give a target.
-3. **Phone assumption.** Section B assumes a mid-range phone is 3 to 5 times slower than this desktop on script work. If you have a specific device in mind, name it and I will restate the budgets.
-4. **Scope of "pressure".** Balance rows run at Standard unless stated. Say if Relaxed and Harder should be held to the same bands.
+Cameron's instruction was to proceed with my recommendations. These are the recommendations I applied.
+
+| # | Decision | Recommendation applied | Why |
+|---|---|---|---|
+| 1 | The proposed rows (BAL-04 upper edge, BAL-05 to BAL-07, BAL-15 to BAL-18, BAL-20, all of section B, INV-26, INV-28) | **Accepted as written.** They stay marked proposed, so a fail against one is a prompt for a design decision, not proof of a defect | Without them several things the audit brief asks for (turns per encounter, resource curve, dominant-strategy ceiling, all technical budgets) would have no target at all |
+| 2 | BAL-11 (card pick rate) and BAL-21 (run length) | **Report numbers only, no pass or fail** | No document states an intent, and inventing one would be a design decision |
+| 3 | The phone assumption in section B | **Keep "3 to 5 times slower than this desktop on script work"**, and mark every section B result as a desktop proxy | No device is named anywhere in the project; the real answer needs milestone M6 |
+| 4 | Political Pressure | **Balance bands apply at Standard only.** Relaxed and Harder are held only to the ordering in BAL-20 | The documents describe Standard values (`design/GAME_SYSTEMS.md:3`) |
+| 5 | Conflicts between design documents | **`design/GAME_SYSTEMS.md` is the source**; the conflicts are listed as findings | It says it was written from the code and that the data wins (`design/GAME_SYSTEMS.md:3`) |
+| 6 | New at review: where values live | **Added INV-29** from Cameron's stated intent that values come from the workbook | Stated in review, before the freeze |

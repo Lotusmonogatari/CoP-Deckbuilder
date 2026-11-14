@@ -1,0 +1,46 @@
+{
+	"battle_idle": {
+		"draw_calls_max": 69,
+		"draw_calls_median": 69,
+		"nodes": 218,
+		"objects_drawn": 406,
+		"processing": [
+			"Layout (Layout.gd)",
+			"Background (PlaceholderArt.gd)"
+		]
+	},
+	"battle_scene": "BattleScreen",
+	"memory_after_40_loops": {
+		"nodes": 595,
+		"objects": 2981,
+		"orphans": 0,
+		"static_mb": 156.57,
+		"texture_mb": 83.8
+	},
+	"memory_before_40_loops": {
+		"nodes": 595,
+		"objects": 2919,
+		"orphans": 0,
+		"static_mb": 156.17,
+		"texture_mb": 70.97
+	},
+	"office_idle": {
+		"draw_calls_max": 38,
+		"draw_calls_median": 38,
+		"nodes": 595,
+		"objects_drawn": 347,
+		"processing": [
+			"Layout (Layout.gd)",
+			"OfficeScreen (OfficeScreen.gd)",
+			"Background (PlaceholderArt.gd)"
+		]
+	},
+	"save": {
+		"bytes": 5382,
+		"fields_changed_by_round_trip": [],
+		"loaded": true,
+		"max_ms": 2.57,
+		"median_ms": 1.97,
+		"saved_fields": 81
+	}
+}

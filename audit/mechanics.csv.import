@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dceohrfjg23ad"
+
+[deps]
+
+files=["res://audit/mechanics.variable.translation", "res://audit/mechanics.value.translation", "res://audit/mechanics.observed.translation", "res://audit/mechanics.defined.translation", "res://audit/mechanics.read.translation", "res://audit/mechanics.reader.translation", "res://audit/mechanics.status.translation"]
+
+source_file="res://audit/mechanics.csv"
+dest_files=["res://audit/mechanics.variable.translation", "res://audit/mechanics.value.translation", "res://audit/mechanics.observed.translation", "res://audit/mechanics.defined.translation", "res://audit/mechanics.read.translation", "res://audit/mechanics.reader.translation", "res://audit/mechanics.status.translation"]
+
+[params]
+
+compress=true
+delimiter=0
