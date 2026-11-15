@@ -14,7 +14,7 @@ The rules engine is sound and fast. In 80,150 simulated fights there were **zero
 |---|---|---|---|
 | Balance (21) | 8 | 10 | 3 |
 | Technical (17) | 9 | 5 | 3 |
-| Invariants (29) | 26 | 3 | 0 (a follow-up run closed the 3 untested; INV-26 stays a partial fail) |
+| Invariants (29) | 25 | 4 (INV-25, 26, 27, 29) | 0 (a follow-up run closed the 3 untested) |
 
 Details: `audit/testing.md`.
 
