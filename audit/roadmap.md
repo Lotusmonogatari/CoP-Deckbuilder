@@ -16,6 +16,7 @@ A prioritized patch plan. Nothing here has been done. Effort: **S** under a day,
 | W-8 | F-14: election strength fires nothing | Cameron decides what it unlocks, then add rows | new tab or Balance | decision | M | Medium | none |
 | W-9 | E-01, E-02: blank cells that loop or crash | Exporter: error on a blank threshold, start or bar size in non-committee Combat rooms; error on a blank card cost | `tools/export_data.py` (validation only) | none | S | Low | INV-12 |
 | W-10 | Import pipeline validation | Add a CI step that runs `export_data.py`, the formula check and `tools/verify.sh` on every push; fail if `data/*.json` differs from a fresh export | `tools/verify.sh`, CI config | none | S | Low | INV-29 |
+| W-11 | Follow-up: the exporter does not flag a removed Balance lever, a blank Text English cell, an Icon naming a missing file, a visitor naming a missing stage, or a blank win threshold or start in a non-committee room (`audit/followup.md` section 4) | Make each an **error** in `tools/export_data.py` (for a removed lever, compare the Balance keys with the keys the scripts ask for, as `audit/tests/static_scan.py` does) | `tools/export_data.py` | none | S | Low | INV-29, INV-12 |
 
 ## Code
 

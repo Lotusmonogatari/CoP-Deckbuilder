@@ -87,18 +87,18 @@ All targets here are proposed and all results are **desktop proxies** (`audit/be
 | INV-08 | 521 of 521 threshold wins left the opponent's support unmoved | `invariants.json` | **Pass** |
 | INV-09 | 29,541 comparisons, 0 differences | `invariants.json` | **Pass** |
 | INV-10 | 58.9% / 31.0% / 10.1% over 10,000 rolls (target 60 / 30 / 10, ±3) | `invariants.json` | **Pass** |
-| INV-11 | Not exercised as a test of loss; the bot's visitor and vote stages always completed | strategy runs | Not tested directly |
+| INV-11 | No loss path in the two engines; no non-combat or vote stage ends a level on a loss (follow-up) | `audit/followup.md` | **Pass** |
 | INV-13 | Every starter deck dealt was 15 cards | 2,000 decks | **Pass** for size; "owned cards only" not tested |
 | INV-14 | 2,000 decks: all 15 cards, suits within one, none over half gaffe cards, 0 with two tier-3 cards, 507 with one (25.4%), 0 repeated cards | `invariants.json` | **Pass** |
 | INV-15 | Project test `tests/test_vote_whip.gd` passes | verify run | **Pass** (project test) |
 | INV-16 | Rubric lines C2, C3, C4 pass | rubric run today | **Pass** |
-| INV-17 | The longest level in the data is 35 hours (LV19); the start gate itself was not tested | `data/levels.json`, `data/stages.json` | **Pass** for the data; gate not tested |
-| INV-18, INV-19 | Not tested here; `tests/test_special_levels.gd` passes | verify run | Not tested directly |
+| INV-17 | All 114 levels checked at 5 hour levels; 0 mismatches (follow-up) | `audit/followup.md` | **Pass** |
+| INV-18, INV-19 | Crisis edges and Act replacement driven directly (follow-up) | `audit/followup.md` | **Pass** |
 | INV-20 | Project tests `tests/test_party_dues.gd`, `tests/test_meta_decay.gd` pass | verify run | **Pass** (project tests) |
 | INV-21 | Largest weekly moves +2.5 and −1.5 at Standard over 6,120 week steps | strategy runs | **Pass** |
 | INV-22 | Rises of 0, 1, 2, 3 only | `invariants.json` | **Pass** |
 | INV-23 | Energy, hand size, turn limit and energy pool identical at all three pressures in every room | `invariants.json` | **Pass** (card values not separately compared) |
-| INV-24 | 81 saved fields survived save then load unchanged on a fresh run. A result shown on screen surviving a close was not tested | `tech_probe.json` | **Pass** for the round trip; second half not tested |
+| INV-24 | 81 saved fields survived save then load unchanged on a fresh run. A recorded loss survived save then load (follow-up) | `tech_probe.json`, `audit/followup.md` | **Pass** |
 | INV-25 | Rubric D4 passes. **Rubric D1 fails today**: law "once" amounts differ from the rubric's expectation by 1 to 2 points for some party-body organizations (for example BI01 pass: BO31 −3, expected −2). **D3 also fails.** The rubric scored 66 / 66 in October and **61 / 66 today** | rubric run today; `design/PLAYTEST_RUBRIC.md` | **Fail** against the rubric. Whether the rubric or the game is out of date is not established: see Phase 5 |
 | INV-26 | Engine: the same seed gave the same fight in 14 of 14 runs. Seating: the same global seed seated different opponents in 14 of 14 runs | `sim_*.json` `determinism` | **Pass** for the engine; **fail** for a whole stage |
 | INV-27 | `scripts/rules/PatronVisit.gd` calls the `DataDB` autoload (lines 23, 26, 94) and the `Text` autoload 11 times | `grep` | **Fail** (one file) |

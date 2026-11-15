@@ -1,0 +1,143 @@
+{
+	"INV-11": {
+		"loss_words_in_the_two_engines": 0,
+		"non_combat_or_vote_stages_that_end_a_level_on_loss": []
+	},
+	"INV-17": {
+		"by_hours_left": {
+			"0": {
+				"levels": 114,
+				"refused": 114,
+				"startable": 0
+			},
+			"10": {
+				"levels": 114,
+				"refused": 78,
+				"startable": 36
+			},
+			"20": {
+				"levels": 114,
+				"refused": 19,
+				"startable": 95
+			},
+			"4": {
+				"levels": 114,
+				"refused": 92,
+				"startable": 22
+			},
+			"40": {
+				"levels": 114,
+				"refused": 0,
+				"startable": 114
+			}
+		},
+		"longest_level_hours": 35,
+		"mismatches": [],
+		"work_week_hours": 40
+	},
+	"INV-18": {
+		"expected": "entered 2, left 1",
+		"steps": [
+			[
+				"con 50",
+				[]
+			],
+			[
+				"con 14 (cross in)",
+				[
+					"town_hall:entered"
+				]
+			],
+			[
+				"con 10 (still in)",
+				[
+					"town_hall:entered"
+				]
+			],
+			[
+				"con 9 (still in)",
+				[
+					"town_hall:entered"
+				]
+			],
+			[
+				"con 40 (cross out)",
+				[
+					"town_hall:entered",
+					"town_hall:left"
+				]
+			],
+			[
+				"con 12 (cross in again)",
+				[
+					"town_hall:entered",
+					"town_hall:left",
+					"town_hall:entered"
+				]
+			]
+		],
+		"town_hall_entered": 2,
+		"town_hall_left": 1
+	},
+	"INV-19": {
+		"bill": "BI01",
+		"bill_levels": 50,
+		"expected_final": "Yes",
+		"final_entry_vote": "Yes",
+		"largest_bill_level_cooldown": 7488,
+		"steps": [
+			[
+				"before any vote",
+				false,
+				0
+			],
+			[
+				"absent",
+				false,
+				1
+			],
+			[
+				"abstain (replaces the absent entry)",
+				false,
+				1
+			],
+			[
+				"Aye (replaces the abstain)",
+				true,
+				1
+			],
+			[
+				"Nay after an Aye (must be ignored)",
+				true,
+				1
+			]
+		]
+	},
+	"INV-24b": {
+		"key_after": "LV01:0:ST05",
+		"key_before": "LV01:0:ST05",
+		"level": "LV01",
+		"loaded": true,
+		"opponents_after": [
+			"OP105",
+			"OP109",
+			"OP102"
+		],
+		"opponents_before": [
+			"OP105",
+			"OP109",
+			"OP102"
+		],
+		"pending_result_after_load": "loss",
+		"same_opponents": true,
+		"score": 12
+	},
+	"save_size_worst_case": {
+		"bytes": 77104,
+		"kilobytes": 75.3,
+		"met": 298,
+		"promises": 200,
+		"statute_entries": 50,
+		"write_ms": 7.95
+	}
+}

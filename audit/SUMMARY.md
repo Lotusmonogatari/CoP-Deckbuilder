@@ -14,7 +14,7 @@ The rules engine is sound and fast. In 80,150 simulated fights there were **zero
 |---|---|---|---|
 | Balance (21) | 8 | 10 | 3 |
 | Technical (17) | 9 | 5 | 3 |
-| Invariants (29) | 22 | 4 | 3 not tested |
+| Invariants (29) | 26 | 3 | 0 (a follow-up run closed the 3 untested; INV-26 stays a partial fail) |
 
 Details: `audit/testing.md`.
 
@@ -41,15 +41,16 @@ Details: `audit/testing.md`.
 | Download size against store limits | No export; `assets/` is 275 MB uncompressed |
 | Real app suspend and resume, OS kill | Needs a mobile OS; I only sent the pause notification by hand |
 | Human balance and feel | Bots only; my full kit has no items and uses my own deck heuristic, so the ten "too hard" rooms need a human check |
-| Reproducing a whole stage from a seed | Who is seated cannot be seeded |
+| Reproducing a new stage from a seed | Who is seated cannot be seeded (a reloaded stage does keep its opponents, `followup.md`) |
 | Information standards, audio, art | Out of scope or nonexistent |
-| Malformed workbook rows through the real exporter | I did not edit the workbook; I read the exporter's checks instead |
-| Whether a reloaded stage keeps its seating | Not tested |
+| Malformed workbook rows | Tested on a temporary copy: the exporter misses five kinds of mistake (`followup.md` section 4) |
 
 ## Where to start
 
 1. `audit/conformance.md`: all 27 findings with sources.
 2. `audit/roadmap.md`: the ordered patch plan (workbook, code, assets).
 3. `audit/improvements.md`: separate proposals, not bug fixes.
+
+Follow-up (`followup.md`) closed the invariants that were untested, revised F-17, and found five mistakes the exporter does not catch (new roadmap item W-11).
 
 Files: `phase0_orientation.md`, `benchmarks.md` (frozen), `mechanics.md` and `.csv`, `dynamics.md`, `testing.md`, `conformance.md`, `edge_cases.md`, `roadmap.md`, `improvements.md`, and `tests/` (harness, probes, raw results, `analyze.py`).

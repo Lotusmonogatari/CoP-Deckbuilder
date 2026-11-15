@@ -1,0 +1,346 @@
+{
+ "baseline_no_edit": {
+  "exit": 0,
+  "said_no_errors": true,
+  "errors": [],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "    ! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders",
+   "  No errors. Every cross-reference in the workbook resolves.",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "combat_turn_limit_blank (ST02)": {
+  "exit": 0,
+  "said_no_errors": false,
+  "errors": [
+   "X stages: ST02 is a combat stage but has no turn_limit"
+  ],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "  1 ERROR(S) \u2014 these must be fixed in the workbook:",
+   "    X stages: ST02 is a combat stage but has no turn_limit",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "combat_win_threshold_blank (ST02, a non-committee room)": {
+  "exit": 0,
+  "said_no_errors": true,
+  "errors": [],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! stages: ST02 has no win_threshold \u2014 it must be resolved from the module or committee data at battle setup",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "    ! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders",
+   "  No errors. Every cross-reference in the workbook resolves.",
+   "======================================================================"
+  ],
+  "new_warnings": [
+   "! stages: ST02 has no win_threshold \u2014 it must be resolved from the module or committee data at battle setup"
+  ]
+ },
+ "combat_player_start_blank (ST02)": {
+  "exit": 0,
+  "said_no_errors": true,
+  "errors": [],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! stages: ST02 has no player_start \u2014 it must be resolved from the module or committee data at battle setup",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "    ! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders",
+   "  No errors. Every cross-reference in the workbook resolves.",
+   "======================================================================"
+  ],
+  "new_warnings": [
+   "! stages: ST02 has no player_start \u2014 it must be resolved from the module or committee data at battle setup"
+  ]
+ },
+ "combat_energy_blank (ST02)": {
+  "exit": 0,
+  "said_no_errors": false,
+  "errors": [
+   "X stages: ST02 is a combat stage but has no energy_per_turn"
+  ],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "  1 ERROR(S) \u2014 these must be fixed in the workbook:",
+   "    X stages: ST02 is a combat stage but has no energy_per_turn",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "card_cost_blank (C23)": {
+  "exit": 0,
+  "said_no_errors": false,
+  "errors": [
+   "X cards: C23 has no cost"
+  ],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "  1 ERROR(S) \u2014 these must be fixed in the workbook:",
+   "    X cards: C23 has no cost",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "card_unknown_suit (C23)": {
+  "exit": 0,
+  "said_no_errors": false,
+  "errors": [
+   "X cards: C23 has suit 'Sarcasm', which is not in the Suits tab"
+  ],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "  1 ERROR(S) \u2014 these must be fixed in the workbook:",
+   "    X cards: C23 has suit 'Sarcasm', which is not in the Suits tab",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "level_unknown_stage (LV01 stage 1)": {
+  "exit": 0,
+  "said_no_errors": false,
+  "errors": [
+   "X levels: LV01 uses stage 'ST9999', which does not exist"
+  ],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "  1 ERROR(S) \u2014 these must be fixed in the workbook:",
+   "    X levels: LV01 uses stage 'ST9999', which does not exist",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "balance_lever_removed (dues_base)": {
+  "exit": 0,
+  "said_no_errors": true,
+  "errors": [],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "    ! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders",
+   "  No errors. Every cross-reference in the workbook resolves.",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "meta_name_renamed (Funds -> Money)": {
+  "exit": 0,
+  "said_no_errors": false,
+  "errors": [
+   "X Standing Links: SL05: source 'Funds' is neither a booster ID nor a Sanban variable",
+   "X Sanban: 'Funds' is not in the tab any more. That name is a lookup key as well as display text \u2014 MetaRules, LevelRunner, GameState, OfficeScreen reach the variable by it \u2014 so renaming it here alone stops the code finding it. Ask for the rename rather than making it in the workbook."
+  ],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "    X Standing Links: SL05: source 'Funds' is neither a booster ID nor a Sanban variable",
+   "    X Sanban: 'Funds' is not in the tab any more. That name is a lookup key as well as display text \u2014 MetaRules, LevelRunner, GameState, OfficeScreen reach the variable by it \u2014 so renaming it here alone stops the code finding it. Ask for the rename rather than making it in the workbook.",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "text_row_blank_english (office.haptics)": {
+  "exit": 0,
+  "said_no_errors": true,
+  "errors": [],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "    ! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders",
+   "  No errors. Every cross-reference in the workbook resolves.",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "shop_icon_names_missing_file (SH25)": {
+  "exit": 0,
+  "said_no_errors": true,
+  "errors": [],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "    ! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders",
+   "  No errors. Every cross-reference in the workbook resolves.",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ },
+ "visitor_unknown_stage (VI01)": {
+  "exit": 0,
+  "said_no_errors": true,
+  "errors": [],
+  "warnings": [
+   "! cards: C63 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C65 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C67 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C69 cycles 1 for 0; the drafting rule for a Tier 1 card is discard 1, draw 1 to 1",
+   "! cards: C56 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C60 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C64 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! cards: C68 discards 2 to play; the drafting rule for a Tier 2 card is 1",
+   "! Event Options: TC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DC9 has no Tags, so every guest reacts neutrally",
+   "! Event Options: DD4 has tag 'beer', which no organization likes or dislikes",
+   "! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders"
+  ],
+  "tail": [
+   "    ! Text tab: 'shop.deck_expanded' uses {count} but does not list it in Placeholders",
+   "  No errors. Every cross-reference in the workbook resolves.",
+   "======================================================================"
+  ],
+  "new_warnings": []
+ }
+}
