@@ -1,13 +1,9 @@
 {
   "_README": [
-    "Switches for design decisions that are still open (CLAUDE.md section 9).",
-    "",
-    "This file is written by hand. Unlike the rest of data/, it is NOT",
-    "generated from the workbook, so export_data.py never overwrites it.",
-    "",
-    "Change a 'value' below and the game behaves differently on the next run.",
-    "No code changes needed. The 'options' line lists what each flag accepts;",
-    "anything else is rejected with a readable error at startup."
+    "Switches for design decisions. GENERATED from the workbook's Rules tab by",
+    "tools/export_data.py: edit the workbook, not this file.",
+    "The 'options' line lists what each flag accepts; anything else is rejected",
+    "with a readable error."
   ],
   "default_intent_pattern": {
     "value": [
@@ -34,7 +30,7 @@
       "gain": "Raises the opponent's own support.",
       "block": "The opponent gains guard, softening the player's next attack."
     },
-    "note": [
+    "notes": [
       "This is the fallback, not anybody's character. An opponent with their own",
       "Intent pattern always uses that instead, and every opponent the six levels",
       "put in front of the player now has one.",

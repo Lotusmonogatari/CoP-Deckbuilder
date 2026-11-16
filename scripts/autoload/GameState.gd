@@ -915,13 +915,32 @@ func unlock_level(level_id: String) -> String:
 	return ""
 
 
+## True while unpaid party dues lock the party's backings (audit W-2,
+## 2026-11-16, Cameron: dues must bite). Balance "Dues Debt Locks Backings"
+## switches it; 0 turns the lock off.
+func dues_debt_locks_backings() -> bool:
+	return dues_balance > 0 and int(DataDB.balance.get("dues_debt_locks_backings", 0)) != 0
+
+
+## Why a backing cannot be taken right now, as a sentence; "" when it can.
+## The Ledger's own reasons first, then the dues lock for a party backing.
+func backing_refusal(modifier: Dictionary) -> String:
+	var refusal := Ledger.modifier_refusal(modifier, owned_modifiers,
+		meta, booster_standing, DataDB.booster_standing,
+		DataDB.boosters, Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+	if dues_debt_locks_backings() and not PartyDues.party_backings(
+			[str(modifier.get("mod_id", ""))], [modifier], DataDB.boosters).is_empty():
+		return Text.say("backing.refuse_dues_owed")
+	return ""
+
+
 ## Spends an organisation's activation cost (Funds, and since 2026-09-22
 ## sometimes Reputation and/or Constituency support too) on its backing.
 func buy_modifier(mod_id: String) -> String:
 	var modifier := DataDB.get_modifier(mod_id)
-	var refusal := Ledger.modifier_refusal(modifier, owned_modifiers,
-		meta, booster_standing, DataDB.booster_standing,
-		DataDB.boosters, Text.phrase())
+	var refusal := backing_refusal(modifier)
 	if not refusal.is_empty():
 		return refusal
 
@@ -2795,6 +2814,9 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 func _effectively_owned_modifiers() -> Array:
 	var mod_ids: Array[String] = owned_modifiers.duplicate()
 	for mod_id: String in MetaRules.party_support_modifiers(party_support_effective(), DataDB.balance):
+		# Owing dues also switches the free Party Backing off (W-2, 2026-11-16).
+		if mod_id == "M09" and dues_debt_locks_backings():
+			continue
 		if mod_id != "M32" and not mod_ids.has(mod_id):
 			mod_ids.append(mod_id)
 

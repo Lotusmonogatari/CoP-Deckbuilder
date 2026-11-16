@@ -2572,9 +2572,7 @@ func _modifier_row(modifier: Dictionary, names: Dictionary, stage_names: Diction
 	if not ModifierEffects.is_implemented(modifier):
 		box.add_child(UiKit.line(Text.say("office.not_active_yet"), "SmallLabel"))
 
-	var refusal := Ledger.modifier_refusal(modifier, GameState.owned_modifiers,
-		GameState.meta, GameState.booster_standing,
-		DataDB.booster_standing, DataDB.boosters, Text.phrase())
+	var refusal := GameState.backing_refusal(modifier)
 	box.add_child(UiKit.action_button(Text.say("office.take_backing"), refusal,
 		_on_buy_modifier.bind(mod_id)))
 	if not booster.is_empty():

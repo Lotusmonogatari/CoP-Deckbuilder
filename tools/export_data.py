@@ -1838,6 +1838,130 @@ NOT_EXPORTED = {
 }
 
 
+
+# ---------------------------------------------------------------------------
+# Rules, Standing Rules and Party Start Standing tabs (2026-11-16, audit W-1)
+# ---------------------------------------------------------------------------
+# These three used to be hand-written JSON files the exporter never touched, so
+# their numbers could not be tuned from the workbook (Cameron, 2026-11-14:
+# values come from the workbook). Cells hold plain numbers or words; a list or
+# an object is written as JSON text; "true" / "false" are booleans.
+
+def parse_value_cell(value):
+    """A workbook cell as the value it stands for."""
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, float) and value == int(value):
+        value = int(value)
+    if isinstance(value, (int, float)):
+        return value
+    text = str(value).strip()
+    if text == "":
+        return None
+    if text.lower() in ("true", "false"):
+        return text.lower() == "true"
+    if text[0] in "[{":
+        try:
+            return json.loads(text)
+        except ValueError:
+            return text
+    return text
+
+
+def read_rules_tab(sheet, report):
+    """Rules: Key | Value | Options | Question | Means | Notes | Shape ->
+    {key: {value, options, question, means, notes}}. Shape 'block' keeps the
+    Value object exactly as written (the calendar eras)."""
+    out = {"_README": [
+        "Switches for design decisions. GENERATED from the workbook's Rules tab by",
+        "tools/export_data.py: edit the workbook, not this file.",
+        "The 'options' line lists what each flag accepts; anything else is rejected",
+        "with a readable error."]}
+    for number, row in enumerate(sheet.iter_rows(min_row=2, values_only=True), start=2):
+        key = str(row[0] or "").strip()
+        if not key:
+            continue
+        value, options, question, means, notes, shape = (list(row) + [None] * 7)[1:7]
+        if str(shape or "").strip().lower() == "block":
+            block = parse_value_cell(value)
+            if not isinstance(block, dict):
+                report.error("Rules", f"row {number} ({key}): a 'block' Value must be a JSON object")
+                continue
+            out[key] = block
+            continue
+        entry = {"value": parse_value_cell(value)}
+        for name, cell in (("options", options), ("question", question), ("means", means), ("notes", notes)):
+            parsed = parse_value_cell(cell)
+            if parsed is not None:
+                entry[name] = parsed
+        if entry["value"] is None:
+            report.error("Rules", f"row {number} ({key}) has no Value")
+        out[key] = entry
+    return out
+
+
+def read_standing_rules_tab(sheet, report):
+    """Standing Rules: Key | Value | Note. Flat keys, bands as numbered rows:
+    gain_band_1_below, gain_band_1_factor (a last band has no 'below'),
+    loss_band_N_..., and required_standing_<MODID> for one backing."""
+    flat = {}
+    for number, row in enumerate(sheet.iter_rows(min_row=2, values_only=True), start=2):
+        key = str(row[0] or "").strip()
+        if key:
+            flat[key] = parse_value_cell(row[1])
+    out = {"_README": [
+        "How standing with the organisations works. GENERATED from the workbook's",
+        "Standing Rules tab by tools/export_data.py: edit the workbook, not this file.",
+        "The organisations themselves come from the Boosters tab."]}
+    bands = {"gain_band": [], "loss_band": []}
+    by_modifier = {}
+    for key, value in flat.items():
+        found = False
+        for prefix in bands:
+            if key.startswith(prefix + "_"):
+                rest = key[len(prefix) + 1:]
+                index, _, field = rest.partition("_")
+                if not index.isdigit() or field not in ("below", "factor"):
+                    report.error("Standing Rules", f"{key}: expected {prefix}_<number>_below or _factor")
+                else:
+                    while len(bands[prefix]) < int(index):
+                        bands[prefix].append({})
+                    bands[prefix][int(index) - 1][field] = value
+                found = True
+        if found:
+            continue
+        if key.startswith("required_standing_"):
+            by_modifier[key[len("required_standing_"):]] = value
+        else:
+            out[key] = value
+    out["gain_bands"] = [b for b in bands["gain_band"] if b]
+    out["loss_bands"] = [b for b in bands["loss_band"] if b]
+    out["required_standing_by_modifier"] = by_modifier
+    for needed in ("start", "min", "max", "per_please", "per_displease", "per_opposed", "question_swing_cap",
+                   "instant_win_penalty", "neglect_decay", "decay_percent", "required_standing"):
+        if out.get(needed) is None:
+            report.error("Standing Rules", f"the row '{needed}' is missing or empty")
+    return out
+
+
+def read_party_standing_tab(sheet, report):
+    """Party Start Standing: Key | Value (start, min, max)."""
+    out = {"_README": [
+        "Where the OTHER FIVE parties stand at the start. GENERATED from the workbook's",
+        "Party Start Standing tab by tools/export_data.py: edit the workbook, not this file.",
+        "The player's own party lives in Sanban's 'Party support'."]}
+    for row in sheet.iter_rows(min_row=2, values_only=True):
+        key = str(row[0] or "").strip()
+        if key:
+            out[key] = parse_value_cell(row[1])
+    for needed in ("start", "min", "max"):
+        if out.get(needed) is None:
+            report.error("Party Start Standing", f"the row '{needed}' is missing or empty")
+    return out
+
+
 # ---------------------------------------------------------------------------
 # Report
 # ---------------------------------------------------------------------------
@@ -4299,11 +4423,11 @@ def main():
     present = set(workbook.sheetnames)
     # Balance, Affinity and Lists are expected too — they just have their own
     # readers below rather than an entry in SHEETS.
-    expected = set(SHEETS) | set(NOT_EXPORTED) | {"Balance", "Affinity", "Lists"}
+    expected = set(SHEETS) | set(NOT_EXPORTED) | {"Balance", "Affinity", "Lists", "Rules", "Standing Rules", "Party Start Standing"}
     for tab in sorted(present - expected):
         report.warn("workbook", f"tab '{tab}' is not recognised and was not exported")
     for tab in sorted(expected - present):
-        if SHEETS.get(tab, {}).get("optional_sheet") or tab in NOT_EXPORTED:
+        if SHEETS.get(tab, {}).get("optional_sheet") or tab in NOT_EXPORTED or tab in ("Rules", "Standing Rules", "Party Start Standing"):
             # NOT_EXPORTED tabs were never required to exist — only skipped
             # when they do.
             report.note(f"{tab}: tab not in the workbook — see design/proposals/")
@@ -4346,18 +4470,29 @@ def main():
     else:
         data["affinity"] = []
 
-    workbook.close()
-
     # rules.json is written by hand, not generated. It is read here only so
     # the validator can check its flags.
+    # (2026-11-16) The Rules, Standing Rules and Party Standing tabs now write
+    # rules.json, booster_standing.json and party_standing.json. A workbook
+    # without the tabs falls back to the files on disk, as before.
+    generated_files = {}
     rules_path = DATA_DIR / "rules.json"
-    if rules_path.exists():
+    if "Rules" in present:
+        full = read_rules_tab(workbook["Rules"], report)
+        generated_files["rules"] = full
+        data["rules"] = {k: v["value"] if isinstance(v, dict) and "value" in v else v
+                         for k, v in full.items() if not k.startswith("_")}
+    elif rules_path.exists():
         raw = json.loads(rules_path.read_text(encoding="utf-8"))
         data["rules"] = {k: v["value"] if isinstance(v, dict) and "value" in v else v
                          for k, v in raw.items() if not k.startswith("_")}
     else:
         report.error("rules.json", "is missing — it holds the open-design switches")
         data["rules"] = {}
+    if "Standing Rules" in present:
+        generated_files["booster_standing"] = read_standing_rules_tab(workbook["Standing Rules"], report)
+    if "Party Start Standing" in present:
+        generated_files["party_standing"] = read_party_standing_tab(workbook["Party Start Standing"], report)
 
     add_segment_ids(data, report)
     apply_staff_names(data, report)
@@ -4378,10 +4513,15 @@ def main():
     check_audit_gaps(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)
 
+    workbook.close()
     written = 0
+    for name, payload in sorted(generated_files.items()):
+        write_json(DATA_DIR / f"{name}.json", payload)
+        print(f"  wrote data/{name}.json  ({len(payload)} entries, from its workbook tab)")
+        written += 1
     for name, payload in sorted(data.items()):
         if name == "rules":
-            continue  # hand-written, never overwritten
+            continue  # written above from the Rules tab, or hand-kept in a workbook without it
         write_json(DATA_DIR / f"{name}.json", payload)
         count = len(payload) if isinstance(payload, list) else len(payload.keys())
         print(f"  wrote data/{name}.json  ({count} {'rows' if isinstance(payload, list) else 'entries'})")

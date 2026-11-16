@@ -6914,5 +6914,12 @@
     "english": "Scroll speed: {level}",
     "placeholders": "level",
     "notes": "2026-11-13, Cameron. Draft."
+  },
+  {
+    "key": "backing.refuse_dues_owed",
+    "where": "Office, a party backing the player cannot take while owing dues",
+    "english": "Pay the party's dues first",
+    "placeholders": null,
+    "notes": "2026-11-16, Cameron (audit W-2). Draft."
   }
 ]

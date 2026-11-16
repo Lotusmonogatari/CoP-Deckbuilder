@@ -6,6 +6,7 @@
   "awareness.week_coupon": "Your name is known at home: a free Training Session Coupon.",
   "awareness.week_standing": "Name recognition: standing with {names} changes by {count}.",
   "awareness.week_xp": "Name recognition: {count} XP.",
+  "backing.refuse_dues_owed": "Pay the party's dues first",
   "backing.standing": "{name}  ·  standing {have}",
   "backing.standing_needs": "{name}  ·  standing {have}, needs {needed}",
   "bar.one_sided": "{unit} {count} of {total}",

@@ -98,6 +98,7 @@ Details are the sections at the end of `design/CHANGELOG.md`. In short:
 | 10 | Taxpayers' Alliance | Still the most over-represented organization with net negative outcomes (EV83 choice C and the Decline rows); a rebalance was offered, not approved |
 | 11 | VI167 | Done 2026-11-13 as a draft: 16 rooms, standing and six questions (VQ424-VQ429). Cameron to rewrite |
 | 12 | Characters list | Colours and the nine Balance rows are drafts; opponents faced before 2026-11-13 show as unmet until they reappear; unmet popup not yet seen on a phone |
+| 14 | Party-support-locked events | Own-party events and levels that open at a Party support level; proposal in `design/proposals/PARTY_SUPPORT_LOCKED_EVENTS_2026-11-16.md`; needs the Party support re-tune first |
 | 13 | Branches | Four old remote branches (`ccr-1bbd9851-yg8on5`, `claude/happy-ramanujan-e0mrxj`, `claude/optimistic-noether-1j0yqh`, `claude/new-session-s1juv4`) could not be deleted from a session (no permission); Cameron asked for them to be deleted, so he must do it on GitHub |
 
 ## 8. A good first message
