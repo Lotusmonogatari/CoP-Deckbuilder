@@ -224,6 +224,23 @@ var staff_thanked: Dictionary = {}
 var staff_week_tasks: Dictionary = {}
 var staff_last_week: Dictionary = {}
 
+## The daily staff tasks (Cameron, 2026-11-16; StaffTasks.gd). `staff_day_key`
+## is the calendar day the pool belongs to (-1 = none drawn); the pool is the
+## day's offered tasks; the plan is { staff_id: [task uid, ...] }; once
+## confirmed the plan is locked and is applied when the day ends. A day that
+## is skipped over (a long level) goes out of effect with no rewards or
+## penalties. `staff_day_delegated` holds blocks an event used from a person's
+## day; `staff_full_days` counts days in a row a person's bar was full;
+## `staff_report_pending` is the last day's result, waiting to be shown once.
+var staff_day_key := -1
+var staff_day_blocks_total := 8
+var staff_day_pool: Array = []
+var staff_day_plan: Dictionary = {}
+var staff_day_confirmed := false
+var staff_day_delegated: Dictionary = {}
+var staff_full_days: Dictionary = {}
+var staff_report_pending: Dictionary = {}
+
 ## Level IDs the player has paid XP to unlock — only meaningful once
 ## rules.json's "level_gating_enabled" is true. A level whose relevant
 ## unlock_cost_* is already 0 does not need an entry here to be playable; see
@@ -558,7 +575,7 @@ const _SAVED_FIELDS := [
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
-	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "vote_unknown_percent", "vote_briefed",
+	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
@@ -845,6 +862,9 @@ func reset_staff() -> void:
 	staff_thanked = {}
 	staff_week_tasks = {}
 	staff_last_week = {}
+	_staff_clear_day()
+	staff_full_days = {}
+	staff_report_pending = {}
 	staff_recruitment_tier = 0
 
 
@@ -1317,7 +1337,7 @@ func _apply_leaving_penalty(candidate: Dictionary, tier: int, quit: bool) -> Dic
 			_apply_booster_delta(organization, int(standing[organization])))
 	if int(penalty["reputation"]) != 0:
 		_under_cause(Text.say("record.cause_staff"),
-			func() -> void: _apply_meta_reward("Reputation", int(penalty["reputation"])))
+			func() -> void: _move_meta("Reputation", int(penalty["reputation"])))
 	return penalty
 
 
@@ -1349,6 +1369,182 @@ func _staff_lose_rank(staff_id: String) -> void:
 	_set_member_tier(str(found["role"]), staff_id, tier - 1)
 
 
+# ---------------------------------------------------------------------------
+# Daily staff tasks (Cameron, 2026-11-16). StaffTasks.gd holds the rules.
+
+## Blocks in one person's day: one per hour of the calendar day (8 on a
+## weekday, 4 on a weekend day).
+func staff_day_blocks() -> int:
+	return WeekCalendar.day_limit(str(calendar["phase"]), calendar_config())
+
+
+func _staff_today_key() -> int:
+	return WeekCalendar.today_number(calendar, calendar_config())
+
+
+func _staff_clear_day() -> void:
+	staff_day_key = -1
+	staff_day_pool = []
+	staff_day_plan = {}
+	staff_day_confirmed = false
+	staff_day_delegated = {}
+
+
+## Brings the staff day up to the calendar. A confirmed plan whose day has just
+## ended (the next day, or the week was ended) is applied; a day that was
+## skipped over by a long level goes out of effect, no rewards or penalties.
+## `force_resolve` is the week's end, which always settles the day it leaves.
+func staff_day_sync(force_resolve: bool = false) -> void:
+	if staff_day_key < 0:
+		return
+	var today := _staff_today_key()
+	if staff_day_key == today and not force_resolve:
+		return
+	if staff_day_confirmed and (force_resolve or today - staff_day_key == 1):
+		_staff_resolve_day()
+	_staff_clear_day()
+
+
+## Makes sure today has a pool of tasks (drawn once, seeded by the date and
+## the protagonist so it is the same however often the screen opens).
+func staff_ensure_day() -> void:
+	staff_day_sync()
+	if staff_day_key >= 0 or staff_members().is_empty() or DataDB.staff_tasks.is_empty():
+		return
+	var today := _staff_today_key()
+	var rng := RandomNumberGenerator.new()
+	rng.seed = hash("%s:%d" % [protagonist_id, today])
+	var size := Levers.whole("staff_tasks_weekend_pool_size") if in_weekend() else Levers.whole("staff_tasks_pool_size")
+	staff_day_pool = StaffTasks.draw_pool(DataDB.staff_tasks, _staff_task_targets(), size, rng)
+	staff_day_key = today
+	staff_day_blocks_total = staff_day_blocks()
+	staff_day_plan = {}
+	staff_day_confirmed = false
+	staff_day_delegated = {}
+
+
+## The named things the tasks need, all from the data: organizations (Boosters
+## tab), committees and ministers' posts (the opponents' Title column).
+func _staff_task_targets() -> Dictionary:
+	var organizations: Array[Dictionary] = []
+	for booster: Dictionary in DataDB.boosters:
+		organizations.append({"id": str(booster.get("booster_id", "")), "name": str(booster.get("name_en", ""))})
+	var committees: Array[Dictionary] = []
+	var officials: Array[Dictionary] = []
+	var seen := {}
+	for opponent: Dictionary in DataDB.opponents:
+		var committee := StaffTasks.committee_in(opponent.get("title"))
+		if not committee.is_empty() and not seen.has(committee):
+			seen[committee] = true
+			committees.append({"id": committee, "name": committee})
+		for post: String in StaffTasks.official_posts(opponent.get("title")):
+			if not seen.has(post):
+				seen[post] = true
+				officials.append({"id": str(opponent.get("opp_id", "")), "name": post})
+	return {"organization": organizations, "committee": committees, "official": officials}
+
+
+## The people the evaluation reads: { staff_id, role, tier, loyalty }.
+func _staff_eval_members() -> Array:
+	var out: Array = []
+	for member: Dictionary in staff_members():
+		var id := str(member["staff_id"])
+		out.append({"staff_id": id, "role": str(member["role"]), "tier": int(member["tier"]),
+			"loyalty": staff_loyalty_of(id)})
+	return out
+
+
+func _staff_day_info() -> Dictionary:
+	return {"blocks": staff_day_blocks_total, "delegated": staff_day_delegated, "full_days": staff_full_days}
+
+
+## What the plan, as it stands, would do: the same numbers the day's end applies.
+func staff_projection() -> Dictionary:
+	return StaffTasks.evaluate(staff_day_pool, DataDB.staff_tasks, staff_day_plan, _staff_eval_members(), _staff_day_info())
+
+
+## Blocks of a person's day already taken (tasks and delegated work).
+func staff_blocks_used(staff_id: String) -> int:
+	return StaffTasks.blocks_used(staff_id, staff_day_pool, DataDB.staff_tasks, staff_day_plan, staff_day_delegated)
+
+
+## Why a task cannot go to a person now: one of StaffTasks.REFUSE_*, or "".
+func staff_assign_refusal(uid: String, staff_id: String) -> String:
+	return StaffTasks.assign_refusal(uid, staff_id, staff_day_pool, DataDB.staff_tasks, staff_day_plan,
+		staff_day_delegated, staff_day_blocks_total, staff_day_confirmed)
+
+
+## Gives a task to a person (taking it off whoever had it). Returns a refusal code or "".
+func staff_assign(uid: String, staff_id: String) -> String:
+	staff_unassign(uid)
+	var refusal := staff_assign_refusal(uid, staff_id)
+	if not refusal.is_empty():
+		return refusal
+	if not staff_day_plan.has(staff_id):
+		staff_day_plan[staff_id] = []
+	(staff_day_plan[staff_id] as Array).append(uid)
+	return ""
+
+
+## Takes a task back off whoever holds it (nothing once the day is confirmed).
+func staff_unassign(uid: String) -> void:
+	if staff_day_confirmed:
+		return
+	for id: String in staff_day_plan.keys():
+		(staff_day_plan[id] as Array).erase(uid)
+	for id: String in staff_day_plan.keys():
+		if (staff_day_plan[id] as Array).is_empty():
+			staff_day_plan.erase(id)
+
+
+## Why the day cannot be confirmed yet, or "".
+func staff_confirm_refusal() -> String:
+	if staff_day_confirmed:
+		return Text.say("assign.confirmed_already")
+	if staff_day_pool.is_empty():
+		return Text.say("assign.no_tasks")
+	if staff_day_plan.is_empty():
+		return Text.say("assign.nothing_assigned")
+	return ""
+
+
+## Locks the day's plan; it is applied when the day ends.
+func staff_confirm_day() -> String:
+	var refusal := staff_confirm_refusal()
+	if not refusal.is_empty():
+		return refusal
+	staff_day_confirmed = true
+	return ""
+
+
+## Applies a confirmed day: meta, XP, awareness and standing from the tasks,
+## and Loyalty into the week's task bucket. Leaves a report for the screen.
+func _staff_resolve_day() -> void:
+	var result := StaffTasks.evaluate(staff_day_pool, DataDB.staff_tasks, staff_day_plan, _staff_eval_members(), _staff_day_info())
+	_under_cause(Text.say("record.cause_staff"), func() -> void:
+		for name: String in (result["meta"] as Dictionary).keys():
+			_move_meta(name, int(result["meta"][name]))
+		for organization: String in (result["standing"] as Dictionary).keys():
+			_apply_booster_delta(organization, int(result["standing"][organization])))
+	_move_xp(int(result["xp"]))
+	for meter: String in (result["awareness"] as Dictionary).keys():
+		apply_awareness_delta(meter, int(result["awareness"][meter]))
+	var cap := Levers.whole("staff_tasks_week_loyalty_cap")
+	for id: String in (result["loyalty"] as Dictionary).keys():
+		staff_week_tasks[id] = clampi(int(staff_week_tasks.get(id, 0)) + int(result["loyalty"][id]), -cap, cap)
+	for id: String in (result["full_days"] as Dictionary).keys():
+		staff_full_days[id] = int(result["full_days"][id])
+	staff_report_pending = {"date": WeekCalendar.date_label(staff_day_key), "result": result,
+		"pool": staff_day_pool.duplicate(true)}
+
+
+## The last day's result, once: the Office shows it and it is forgotten.
+func take_staff_report() -> Dictionary:
+	var report := staff_report_pending
+	staff_report_pending = {}
+	return report
+
+
 ## The week's end for the staff: wages are paid (in order, in full, while Funds
 ## last), every person's Loyalty moves, ranks are lost, and people resign.
 ## Called by go_home() after the party dues. Returns what the new-week popup
@@ -1369,7 +1565,7 @@ func _settle_staff_week() -> Dictionary:
 	if int(settled["spent"]) > 0:
 		_links_suspended = true
 		_under_cause(Text.say("record.cause_staff_wages"),
-			func() -> void: _apply_meta_reward("Funds", -int(settled["spent"])))
+			func() -> void: _move_meta("Funds", -int(settled["spent"])))
 		_links_suspended = false
 	report["paid_total"] = int(settled["spent"])
 
@@ -2381,6 +2577,7 @@ func go_home() -> Dictionary:
 	if not in_weekend():
 		end_work_week()
 	var dues := _settle_dues()
+	staff_day_sync(true)   # the day being left counts if it was confirmed
 	var staff_report := _settle_staff_week()
 	var awareness_lines := _apply_awareness_week_end()
 	_update_election_strength()

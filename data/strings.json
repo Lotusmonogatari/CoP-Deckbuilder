@@ -7131,5 +7131,26 @@
     "english": "Staff wages this week: {yen}円. Funds after the party dues may not cover them.",
     "placeholders": "yen",
     "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.confirmed_already",
+    "where": "Staff Assignments, confirm button when already locked",
+    "english": "Today's work is already locked in",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.no_tasks",
+    "where": "Staff Assignments, confirm button with no tasks",
+    "english": "There are no tasks today",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.nothing_assigned",
+    "where": "Staff Assignments, confirm button with nothing given out",
+    "english": "Give someone a task first",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }
 ]

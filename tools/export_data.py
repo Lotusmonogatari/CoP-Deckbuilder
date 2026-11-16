@@ -1417,6 +1417,31 @@ SHEETS = {
             ("Notes", "notes", "str"),
         ],
     },
+    # 2026-11-16: the daily staff tasks (design/proposals/STAFF_ASSIGNMENTS_
+    # 2026-11-16.md). Rewards and penalties are "Name:amount; Name:amount"
+    # (StaffTasks.gd reads them). Icon is a neutral LL## code.
+    "Staff Assignments": {
+        "out": "staff_tasks.json",
+        "key": "task_id",
+        "id_pattern": r"^TK\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Task ID", "task_id", "id"),
+            ("Task", "title", "str"),
+            ("Icon", "icon", "str"),
+            ("Blocks", "blocks", "int"),
+            ("Kind", "kind", "str"),
+            ("Strong Fit", "strong_role", "str"),
+            ("Fair Fit", "fair_role", "str"),
+            ("Poor Fit", "poor_role", "str"),
+            ("Strong Reward", "strong_reward", "str"),
+            ("Poor Penalty", "poor_penalty", "str"),
+            ("Due Penalty", "due_penalty", "str"),
+            ("Context", "context", "str"),
+            ("Work Performed", "work", "str"),
+            ("Weight", "weight", "int"),
+        ],
+    },
     "Opponents": {
         "out": "opponents.json",
         "key": "opp_id",
@@ -4221,6 +4246,43 @@ def check_move_flashes(data, report):
                     report.warn("Move Flashes", f"no row for {side} {move}, so it will not flash")
 
 
+def check_staff_tasks(data, report):
+    """Staff Assignments (2026-11-16): known kinds, roles that are real Staff
+    roles and all three different, a neutral LL## icon code, and rewards that
+    read as "Name:amount; Name:amount" with known names."""
+    kinds = {"plain", "organization", "committee", "official", "time_off"}
+    roles = {str(r.get("role")) for r in data.get("staff", [])}
+    effects = {"Constituency support", "Reputation", "Funds", "Party support", "XP",
+               "District awareness", "National awareness", "Standing", "Loyalty", "Loyalty all"}
+    for row in data.get("staff_tasks", []):
+        tid = row.get("task_id")
+        if row.get("kind") not in kinds:
+            report.error("Staff Assignments", f"{tid}: Kind '{row.get('kind')}' must be one of {sorted(kinds)}")
+        blocks = row.get("blocks")
+        if blocks is None or not (1 <= int(blocks) <= 8):
+            report.error("Staff Assignments", f"{tid}: Blocks must be 1 to 8")
+        if not re.match(r"^LL\d\d$", str(row.get("icon") or "")):
+            report.error("Staff Assignments", f"{tid}: Icon '{row.get('icon')}' must look like LL01")
+        if not row.get("title") or not row.get("context") or not row.get("work"):
+            report.error("Staff Assignments", f"{tid}: Task, Context and Work Performed need text")
+        if row.get("kind") != "time_off":
+            fits = [row.get("strong_role"), row.get("fair_role"), row.get("poor_role")]
+            if sorted(str(f) for f in fits) != sorted(roles):
+                report.error("Staff Assignments", f"{tid}: Strong, Fair and Poor Fit must be the three Staff roles once each, not {fits}")
+        for column in ("strong_reward", "poor_penalty", "due_penalty"):
+            text = row.get(column)
+            if text in (None, ""):
+                continue
+            for part in str(text).split(";"):
+                name, _, amount = part.strip().rpartition(":")
+                if name not in effects or not re.match(r"^-?\d+$", amount.strip()):
+                    report.error("Staff Assignments", f"{tid}: {column} '{part.strip()}' must be Name:amount with Name one of {sorted(effects)}")
+        if row.get("kind") in ("organization", "committee", "official") and "{target}" not in str(row.get("title") or ""):
+            report.error("Staff Assignments", f"{tid}: a {row.get('kind')} task needs {{target}} in its Task title")
+        if int(row.get("weight") or 0) < 0:
+            report.error("Staff Assignments", f"{tid}: Weight cannot be negative")
+
+
 def check_audit_gaps(data, report):
     """Five mistakes the audit (2026-11-16, audit/followup.md) showed the
     exporter let through: a Balance lever a script asks for that the workbook
@@ -4510,6 +4572,7 @@ def main():
     check_text_keys(data, report)
     check_standing_names(data, report)
     check_move_flashes(data, report)
+    check_staff_tasks(data, report)
     check_audit_gaps(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)
 

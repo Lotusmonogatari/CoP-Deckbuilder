@@ -1,6 +1,9 @@
 {
   "admin.pressure_top": "Political Pressure is already at {name}",
   "admin.raise_pressure": "Raise Political Pressure to {name} (cannot be undone)",
+  "assign.confirmed_already": "Today's work is already locked in",
+  "assign.no_tasks": "There are no tasks today",
+  "assign.nothing_assigned": "Give someone a task first",
   "awareness.district": "District Awareness",
   "awareness.national": "National Awareness",
   "awareness.week_coupon": "Your name is known at home: a free Training Session Coupon.",
