@@ -7915,5 +7915,33 @@
     "english": "Only one item can be in the Office box. It is used up when you confirm the day.",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_all_one",
+    "where": "Staff item card, +1 hour for everyone",
+    "english": "+1 hour, all staff",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_all",
+    "where": "Staff item card, hours for everyone",
+    "english": "+{hours} hours, all staff",
+    "placeholders": "hours",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_all_one",
+    "where": "Item popup, +1 hour for everyone",
+    "english": "Adds 1 hour to every staff member's working day today.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_all",
+    "where": "Item popup, hours for everyone",
+    "english": "Adds {hours} hours to every staff member's working day today.",
+    "placeholders": "hours",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }
 ]

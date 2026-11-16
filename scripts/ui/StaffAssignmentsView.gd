@@ -101,6 +101,9 @@ static func item_caption(item: Dictionary, free: int = -1) -> String:
 		"HOURS":
 			return (Text.say("assign.item_in_box_one") if int(item.get("hours", 0)) == 1
 				else Text.say("assign.item_in_box", {"hours": int(item.get("hours", 0))})) + tail
+		"HOURS_ALL":
+			return (Text.say("assign.item_cap_all_one") if int(item.get("value", 0)) == 1
+				else Text.say("assign.item_cap_all", {"hours": int(item.get("value", 0))})) + tail
 		"STRONG_FAMILY":
 			return Text.say("assign.item_cap_family", {"family": str(item.get("target", ""))}) + tail
 		"REWARD_MULT":
@@ -646,6 +649,8 @@ static func item_description(item_id: String) -> String:
 	match str(info["effect"]):
 		"HOURS":
 			return Text.say("assign.item_effect_one" if int(info["hours"]) == 1 else "assign.item_effect_many", {"hours": int(info["hours"])})
+		"HOURS_ALL":
+			return Text.say("assign.item_desc_all_one" if int(info["value"]) == 1 else "assign.item_desc_all", {"hours": int(info["value"])})
 		"STRONG_FAMILY":
 			return Text.say("assign.item_desc_family", {"family": str(info["target"])})
 		"REWARD_MULT":

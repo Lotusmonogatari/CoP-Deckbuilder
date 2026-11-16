@@ -18,8 +18,8 @@ func before_each() -> void:
 func test_the_shop_names_the_hours_each_item_adds() -> void:
 	assert_eq(GameState.staff_item_hours("SH04"), 1, "coffee")
 	assert_eq(GameState.staff_item_hours("SH05"), 1, "tea")
-	assert_eq(GameState.staff_item_hours("SH15"), 2, "kaiju-sized coffee")
-	assert_eq(GameState.staff_item_hours("SH17"), 2, "kaiju-sized tea")
+	assert_eq(GameState.staff_item_hours("SH15"), 0, "the Kaiju-sized coffee is an Office item, not a person's")
+	assert_eq(GameState.staff_item_hours("SH17"), 0, "and so is the Kaiju-sized tea")
 	assert_eq(GameState.staff_item_hours("SH21"), 0, "anything else is not a staff item")
 
 
@@ -33,9 +33,26 @@ func test_only_held_staff_items_are_offered() -> void:
 
 func test_an_item_adds_hours_to_that_persons_day_only() -> void:
 	assert_eq(GameState.staff_day_hours("SF04"), 8)
-	assert_eq(GameState.staff_assign_item("SH15", "SF04"), "")
-	assert_eq(GameState.staff_day_hours("SF04"), 10)
+	assert_eq(GameState.staff_assign_item("SH04", "SF04"), "")
+	assert_eq(GameState.staff_day_hours("SF04"), 9)
 	assert_eq(GameState.staff_day_hours("SF15"), 8)
+
+
+func test_a_kaiju_sized_item_in_the_office_box_adds_an_hour_for_everyone() -> void:
+	assert_eq(GameState.staff_item_refusal("SH15", "SF04"), StaffTasks.REFUSE_ITEM_SLOT, "not for a person")
+	assert_eq(GameState.staff_assign_item("SH15", GameState.OFFICE_BOX), "")
+	assert_eq(GameState.staff_day_hours("SF04"), 9)
+	assert_eq(GameState.staff_day_hours("SF15"), 9)
+	GameState.staff_assign_item("SH04", "SF04")
+	assert_eq(GameState.staff_day_hours("SF04"), 10, "stacks with a person's coffee")
+	assert_eq(GameState.staff_day_hours("SF15"), 9)
+
+
+func test_the_office_hour_reaches_the_days_evaluation() -> void:
+	GameState.staff_assign_item("SH15", GameState.OFFICE_BOX)
+	var info := GameState._staff_day_info()
+	assert_eq(int(info["bonus"]["SF04"]), 1)
+	assert_eq(int(info["bonus"]["SF15"]), 1)
 
 
 func test_a_longer_day_fits_more_tasks() -> void:
@@ -46,7 +63,8 @@ func test_a_longer_day_fits_more_tasks() -> void:
 	assert_eq(GameState.staff_assign("T0", "SF04"), "")
 	assert_eq(GameState.staff_assign("T1", "SF04"), "")
 	assert_eq(GameState.staff_assign("T2", "SF04"), StaffTasks.REFUSE_BLOCKS, "8 hours are used")
-	GameState.staff_assign_item("SH15", "SF04")
+	GameState.staff_assign_item("SH15", GameState.OFFICE_BOX)
+	GameState.staff_assign_item("SH04", "SF04")
 	assert_eq(GameState.staff_assign("T2", "SF04"), "", "two more hours fit now")
 	GameState.staff_day_pool = pool
 
@@ -54,13 +72,17 @@ func test_a_longer_day_fits_more_tasks() -> void:
 func test_one_item_each_a_second_replaces_the_first() -> void:
 	GameState.staff_assign_item("SH04", "SF04")
 	assert_eq(GameState.staff_item_refusal("SH04", "SF04"), StaffTasks.REFUSE_ITEM_HAVE, "the same item twice is refused")
-	assert_eq(GameState.staff_assign_item("SH15", "SF04"), "", "a different one replaces it")
-	assert_eq(GameState.staff_day_items["SF04"], "SH15")
+	GameState.inventory["SH05"] = 1
+	assert_eq(GameState.staff_assign_item("SH05", "SF04"), "", "a different one replaces it")
+	assert_eq(GameState.staff_day_items["SF04"], "SH05")
 
 
 func test_you_cannot_give_more_than_you_hold() -> void:
-	assert_eq(GameState.staff_assign_item("SH15", "SF04"), "")
-	assert_eq(GameState.staff_item_refusal("SH15", "SF15"), StaffTasks.REFUSE_ITEM_NONE, "only one kaiju-sized coffee")
+	assert_eq(GameState.staff_assign_item("SH15", GameState.OFFICE_BOX), "")
+	assert_eq(GameState.staff_item_refusal("SH15", GameState.OFFICE_BOX), StaffTasks.REFUSE_ITEM_HAVE, "the box holds one")
+	GameState.inventory["SH05"] = 1
+	assert_eq(GameState.staff_assign_item("SH05", "SF04"), "")
+	assert_eq(GameState.staff_item_refusal("SH05", "SF15"), StaffTasks.REFUSE_ITEM_NONE, "only one tea")
 	assert_eq(GameState.staff_assign_item("SH04", "SF15"), "")
 
 
@@ -73,7 +95,7 @@ func test_taking_an_item_back_costs_nothing() -> void:
 
 func test_confirming_uses_the_items_up() -> void:
 	GameState.staff_assign_item("SH04", "SF04")
-	GameState.staff_assign_item("SH15", "SF15")
+	GameState.staff_assign_item("SH15", GameState.OFFICE_BOX)
 	GameState.staff_assign(str(GameState.staff_day_pool[0]["uid"]), "SF04")
 	assert_eq(GameState.staff_confirm_day(), "")
 	assert_eq(GameState.item_count("SH04"), 1)
@@ -148,10 +170,11 @@ func test_the_rank_hours_stack_with_an_item() -> void:
 	GameState.hire_staff("SF04")
 	GameState.staff_loyalty["SF04"] = 60
 	GameState.upgrade_staff_member("SF04")
-	GameState.inventory = {"SH15": 1}
+	GameState.inventory = {"SH04": 1, "SH15": 1}
 	GameState.staff_ensure_day()
-	GameState.staff_assign_item("SH15", "SF04")
-	assert_eq(GameState.staff_day_hours("SF04"), 11, "8 + 1 for Tier 1 + 2 for the Kaiju-sized coffee")
+	GameState.staff_assign_item("SH04", "SF04")
+	GameState.staff_assign_item("SH15", GameState.OFFICE_BOX)
+	assert_eq(GameState.staff_day_hours("SF04"), 11, "8 + 1 for Tier 1 + 1 for the coffee + 1 for the Kaiju-sized item in the Office box")
 
 
 func test_a_longer_day_holds_a_longer_plan_and_counts_as_full_only_at_its_length() -> void:

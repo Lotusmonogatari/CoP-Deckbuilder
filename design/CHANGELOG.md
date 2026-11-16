@@ -1145,3 +1145,5 @@ Staff rank adds working hours (2026-11-16, Cameron): Tier 0 works 8 hours, Tier 
 Dragging a staff item or task card (2026-11-16, Cameron): the whole card is carried as one piece (frame, picture and words) and held up and to the left of the finger instead of below and to the right. `test_task_chip_drag.gd`.
 
 Words stay whole (2026-11-16, Cameron): wrapped text no longer breaks in the middle of a word and leaves a hanging letter. The `TextFit` autoload looks at every wrapping label and button once it has its real width, wraps at word boundaries only, and shrinks the type a size at a time (down to Balance `Text Fit: Minimum Font Size`, 20) when one word is wider than its box; only if even that fails does it allow a split. Cards are left alone. `WordFit.gd` measures; tests `test_word_fit.gd`. The Staff Assignments empty-box notes no longer force the screen wider than the phone.
+
+Kaiju-sized coffee and tea (2026-11-16, Cameron): now Office box items that add +1 hour to every staff member today (Shop effect HOURS_ALL); regular coffee and tea stay one-person items.

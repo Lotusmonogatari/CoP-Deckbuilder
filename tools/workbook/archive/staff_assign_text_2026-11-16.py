@@ -118,6 +118,10 @@ ROWS = [
     ("staff.taste_known", "Staff profile, gift taste once known", "Gifts: likes {likes}. Dislikes {dislikes}.", "likes, dislikes"),
     ("staff.taste_unknown", "Staff profile, gift taste not yet known", "Gifts: taste unknown. Give a gift to find out.", ""),
     ("staff.taste_none", "Staff profile, no liked or disliked gift", "nothing in particular", ""),
+    ("assign.item_cap_all_one", "Staff item card, +1 hour for everyone", "+1 hour, all staff", ""),
+    ("assign.item_cap_all", "Staff item card, hours for everyone", "+{hours} hours, all staff", "hours"),
+    ("assign.item_desc_all_one", "Item popup, +1 hour for everyone", "Adds 1 hour to every staff member's working day today.", ""),
+    ("assign.item_desc_all", "Item popup, hours for everyone", "Adds {hours} hours to every staff member's working day today.", "hours"),
     ("assign.report_totals", "Day report, totals heading", "In all", ""),
 ]
 

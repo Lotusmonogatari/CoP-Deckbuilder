@@ -1525,7 +1525,7 @@ func _staff_eval_members() -> Array:
 func _staff_day_info() -> Dictionary:
 	var bonus := {}
 	for member: Dictionary in staff_members():
-		var rank_hours := staff_rank_hours(str(member["staff_id"]))
+		var rank_hours := staff_rank_hours(str(member["staff_id"])) + staff_office_hours()
 		if rank_hours > 0:
 			bonus[str(member["staff_id"])] = rank_hours
 	var strong := {}
@@ -1553,7 +1553,15 @@ func staff_projection() -> Dictionary:
 
 ## Hours in one person's day today: the day's hours plus any item given to them.
 func staff_day_hours(staff_id: String) -> int:
-	return staff_day_blocks_total + staff_rank_hours(staff_id) + staff_item_hours(str(staff_day_items.get(staff_id, "")))
+	return staff_day_blocks_total + staff_rank_hours(staff_id) + staff_office_hours() \
+		+ staff_item_hours(str(staff_day_items.get(staff_id, "")))
+
+
+## Hours an item in the Office box adds to EVERY staff member's day today
+## (the Kaiju-sized coffee and tea), 0 when the box holds something else.
+func staff_office_hours() -> int:
+	var info := staff_item_info(staff_office_item)
+	return maxi(0, int(info.get("value", 0))) if str(info["effect"]) == "HOURS_ALL" else 0
 
 
 ## The extra hours a person's rank gives them on a weekday (Cameron,

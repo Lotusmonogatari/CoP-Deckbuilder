@@ -1811,7 +1811,7 @@ SHEETS = {
             ("Staff Hours", "staff_hours", "int"),
             # 2026-11-16 (Cameron): what a staff item does on the Staff Assignments
             # screen. Effect: HOURS, STRONG_FAMILY, REWARD_MULT, QUIET, GIFT (given to
-            # a person) or POOL_FAMILY, POOL_MAX (placed in the Office box). Value:
+            # a person) or POOL_FAMILY, POOL_MAX, HOURS_ALL (placed in the Office box). Value:
             # the amount (hours, a percent, or +/- tasks); Target: a task family;
             # Slot: Person or Office; Days: how many days' pools it changes.
             ("Staff Effect", "staff_effect", "str"),
@@ -4435,7 +4435,7 @@ def check_staff_item_and_driver_tables(data, report):
         low, high = row.get("add_min"), row.get("add_max")
         if low is None or high is None or int(low) > int(high):
             report.error("Staff Task Drivers", f"{did}: Add Min and Add Max must be numbers with Add Min <= Add Max")
-    effects = {"HOURS", "STRONG_FAMILY", "REWARD_MULT", "QUIET", "GIFT", "POOL_FAMILY", "POOL_MAX"}
+    effects = {"HOURS", "HOURS_ALL", "STRONG_FAMILY", "REWARD_MULT", "QUIET", "GIFT", "POOL_FAMILY", "POOL_MAX"}
     for row in data.get("shop", []):
         effect = row.get("staff_effect")
         if effect in (None, ""):
@@ -4447,11 +4447,11 @@ def check_staff_item_and_driver_tables(data, report):
             report.error("Shop", f"{sid}: Staff Slot must be Person or Office")
         if effect in ("STRONG_FAMILY", "POOL_FAMILY") and row.get("staff_target") not in families:
             report.error("Shop", f"{sid}: Staff Target '{row.get('staff_target')}' is not a task family")
-        if effect in ("HOURS", "REWARD_MULT", "POOL_FAMILY", "POOL_MAX") and row.get("staff_value") is None:
+        if effect in ("HOURS", "HOURS_ALL", "REWARD_MULT", "POOL_FAMILY", "POOL_MAX") and row.get("staff_value") is None:
             report.error("Shop", f"{sid}: Staff Effect {effect} needs a Staff Value")
-        if effect in ("POOL_FAMILY", "POOL_MAX") and row.get("staff_slot") != "Office":
+        if effect in ("POOL_FAMILY", "POOL_MAX", "HOURS_ALL") and row.get("staff_slot") != "Office":
             report.error("Shop", f"{sid}: {effect} items go in the Office box (Staff Slot = Office)")
-        if effect not in ("POOL_FAMILY", "POOL_MAX") and row.get("staff_slot") != "Person":
+        if effect not in ("POOL_FAMILY", "POOL_MAX", "HOURS_ALL") and row.get("staff_slot") != "Person":
             report.error("Shop", f"{sid}: {effect} items are given to a person (Staff Slot = Person)")
     shop_ids = {r.get("item_id") for r in data.get("shop", [])}
     for row in data.get("staff", []):

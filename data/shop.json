@@ -677,7 +677,7 @@
   {
     "item_id": "SH15",
     "name": "Kaiju-Sized “ね3” Coffee",
-    "description": "One-use item. Lasts for the whole of your next level: +1 energy.",
+    "description": "One-use item. Lasts for the whole of your next level: +1 energy. On the Staff Assignments screen, placed in the Office box, it adds 1 hour to every staff member's working day today.",
     "cost_xp": 60,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 60 XP.",
@@ -717,11 +717,11 @@
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null,
-    "staff_hours": 2,
-    "staff_effect": "HOURS",
-    "staff_value": 2,
+    "staff_hours": null,
+    "staff_effect": "HOURS_ALL",
+    "staff_value": 1,
     "staff_target": null,
-    "staff_slot": "Person",
+    "staff_slot": "Office",
     "staff_days": 1
   },
   {
@@ -777,7 +777,7 @@
   {
     "item_id": "SH17",
     "name": "Kaiju-Sized “ミレニ姫” Tea",
-    "description": "One-use item. Lasts for the whole of your next level: +1 to the gaffe (失言) limit.",
+    "description": "One-use item. Lasts for the whole of your next level: +1 to the gaffe (失言) limit. On the Staff Assignments screen, placed in the Office box, it adds 1 hour to every staff member's working day today.",
     "cost_xp": 80,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 80 XP.",
@@ -817,11 +817,11 @@
     "free_card_tier": null,
     "in_marketplace": null,
     "inventory": null,
-    "staff_hours": 2,
-    "staff_effect": "HOURS",
-    "staff_value": 2,
+    "staff_hours": null,
+    "staff_effect": "HOURS_ALL",
+    "staff_value": 1,
     "staff_target": null,
-    "staff_slot": "Person",
+    "staff_slot": "Office",
     "staff_days": 1
   },
   {
