@@ -65,7 +65,7 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 |---|---|
 | Numbers and switches | `balance` (every design number), `sanban` (the four meta numbers' ranges, starts, decay), `rules` (the switches, below; from the Rules tab), `booster_standing` (Standing Rules tab), `party_standing` (Party Start Standing tab), `awareness_effects`, `standing_links`, `vote_influence_triggers` |
 | Cards and rooms | `cards`, `suits`, `affinity` (suit multipliers per room), `stages`, `segments`, `modifiers` (backings), `questions` (the room question pools and Stage Questions), `opponents`, `opponent_cues`, `player_cues`, `card_cues` |
-| Levels and people | `levels`, `level_intros`, `level_intro_thoughts`, `level_opponent_overrides`, `level_visitor_overrides`, `visitors`, `visitor_questions`, `staff`, `staff_names`, `player` (the four protagonists) |
+| Levels and people | `levels`, `level_intros`, `level_intro_thoughts`, `level_opponent_overrides`, `level_visitor_overrides`, `visitors`, `visitor_questions`, `staff`, `staff_names`, `staff_tasks` (the Staff Assignments tab), `player` (the four protagonists) |
 | Standing and parties | `boosters` (organizations), `parties`, `party_stakeholders`, `party_values`, `organization_tastes` |
 | Bills and laws | `floor_votes` (bills and party positions), `law_effects`, `vote_influence_cues`, `bill_components`, `patron_bills`, `bill_level_templates`, `visit_questions`, `visit_answers`, `trade_questions`, `lobbyist_lines` |
 | Week and events | `events`, `event_choices`, `event_options`, `hosted_events`, `reaction_lines`, `shop` (items), `cosmetic_packages`, `office_notices`, `office_ticker`, `transition_cast`, `transition_backgrounds`, `transition_dialogue` |
@@ -271,3 +271,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Hardening from the audit, rules and standing in the workbook, dues bite (2026-11-16, Cameron)
 - Audit follow-up: rewards, rooms, patron lines, save points, numbers in the workbook (2026-11-16, Cameron)
 - W-5 card power changes applied, W-3 left as is (2026-11-16, Cameron)
+- Staff wages, Loyalty, daily Staff Assignments and event delegation (2026-11-16, Cameron)

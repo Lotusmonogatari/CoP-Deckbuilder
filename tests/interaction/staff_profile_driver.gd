@@ -153,6 +153,14 @@ func _click(control: Control) -> void:
 		_failures.append("a button this test needed does not exist")
 		return
 	await get_tree().process_frame
+	# The profile is longer than the screen (it shows Loyalty and pay too): a
+	# player scrolls to a button before pressing it, so this does as well.
+	var node: Node = control
+	while node != null and not (node is ScrollContainer):
+		node = node.get_parent()
+	if node != null:
+		(node as ScrollContainer).ensure_control_visible(control)
+		await get_tree().process_frame
 	var where: Vector2 = get_viewport().get_screen_transform() * control.get_global_rect().get_center()
 	for pressed in [true, false]:
 		var event := InputEventMouseButton.new()

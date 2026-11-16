@@ -302,16 +302,16 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 		var name := str(DataDB.get_staff(staff_id).get("name", staff_id))
 		var refusal := ""
 		if staff_id == holder:
-			refusal = Text.say("assign.already_theirs")
+			refusal = Text.say("assign.already_theirs", {"name": name})
 		else:
 			var code := GameState.staff_assign_refusal(uid, staff_id)
 			match code:
 				"", StaffTasks.REFUSE_TAKEN:
 					pass
 				StaffTasks.REFUSE_LOCKED:
-					refusal = Text.say("assign.refuse_locked")
+					refusal = Text.say("assign.refuse_locked", {"name": name})
 				StaffTasks.REFUSE_BLOCKS:
-					refusal = Text.say("assign.refuse_blocks")
+					refusal = Text.say("assign.refuse_blocks", {"name": name})
 		var button := UiKit.action_button(Text.say("assign.give_to", {"name": name, "fit": fit_label(fit)}),
 			refusal, handlers["assign"].bind(uid, staff_id), 100.0)
 		button.name = "GiveTo_" + staff_id

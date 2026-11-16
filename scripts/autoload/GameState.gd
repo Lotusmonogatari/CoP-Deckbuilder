@@ -2086,7 +2086,7 @@ func event_delegates(event: Dictionary, choice: Dictionary) -> Array[Dictionary]
 		var left := staff_blocks_left(id)
 		out.append({"staff_id": id, "name": str(DataDB.get_staff(id).get("name", id)), "role": str(member["role"]),
 			"fit": StaffTasks.delegate_fit(needed, str(member["role"]), staff_loyalty_of(id)),
-			"left": left, "blocks": blocks, "refusal": "" if left >= blocks else Text.say("event.delegate_no_time")})
+			"left": left, "blocks": blocks, "refusal": "" if left >= blocks else Text.say("event.delegate_person_no_time", {"name": str(DataDB.get_staff(id).get("name", id))})})
 	return out
 
 

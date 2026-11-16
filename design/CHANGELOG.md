@@ -1073,3 +1073,17 @@ Waiting on Cameron: W-3 (Sanban decay), W-5 (card drafts, `audit/w5_card_proposa
 ## W-5 card power changes applied, W-3 left as is (2026-11-16, Cameron)
 
 Cameron approved the recommended Draft 2 (`audit/w5_card_proposal.md`) without the C41 change. Cards tab: C63 Opp −9 to −6, C64 −11 to −9, C65 −11 to −8, C67 Gain 11 to 8, C69 Gain 10 to 7; C04, C16 and C44 cost 3 to 2; C20 gaffe +3 to +2. Effect text updated to match. W-3: Cameron keeps the current Sanban decay values (no change).
+
+
+## Staff wages, Loyalty, daily Staff Assignments and event delegation (2026-11-16, Cameron)
+
+Built from the two proposals in `design/proposals/` (`STAFF_LOYALTY_2026-11-16.md`, `STAFF_ASSIGNMENTS_2026-11-16.md`) after Cameron's answers. Details in `GAME_SYSTEMS.md`, "Addendum 2026-11-16: staff wages, Loyalty, daily tasks and delegation".
+
+| Phase | What |
+|---|---|
+| 1 Wages and Loyalty | Weekly wage (10% of invested), Loyalty from 30, Restless and About to leave, rank loss, resignation, severance 3 x hire price, Raise pay, Thank in public; the profile shows Loyalty and why it moved; the week-end popup lists wages |
+| 2 Task pool | New **Staff Assignments** tab (17 tasks, 8 icon families LL01 to LL08), `StaffTasks.gd`, a seeded daily pool, projection and resolution from one function |
+| 3 The screen | Management > Staff Assignments: cards with an 8-block workload bar and a drop box, task icon popup, projection, Confirm, and a day report |
+| 4 Delegation | Event Choices gains `Delegate Role` and `Delegate Blocks`; 42 "send a staff member" choices name a role; a "Who goes?" screen |
+
+Also: the Save button-hook no longer connects a re-added button twice. Tests: `test_staff_loyalty.gd`, `test_staff_tasks.gd`, `test_staff_assignments_view.gd`, `test_staff_delegation.gd`. Open for Cameron: the draft task numbers and the 42 role assignments, gifts as recognition, the Restless/leaving bands.

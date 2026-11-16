@@ -215,9 +215,6 @@ func _ready() -> void:
 	_staff_report_panel = Overlay.new()
 	_staff_report_panel.name = "StaffReportPanel"
 	add_child(_staff_report_panel)
-	_delegate_panel = Overlay.new()
-	_delegate_panel.name = "DelegatePanel"
-	add_child(_delegate_panel)
 	_staff_profile_panel = Overlay.new()
 	_staff_profile_panel.name = "StaffProfilePanel"
 	add_child(_staff_profile_panel)
@@ -406,6 +403,10 @@ func _build_week_controls() -> void:
 	_event_panel.dismissable = false
 	_event_panel.show_back = false
 	add_child(_event_panel)
+	# Who goes (Cameron, 2026-11-16) opens from an event choice, so it draws above the event.
+	_delegate_panel = Overlay.new()
+	_delegate_panel.name = "DelegatePanel"
+	add_child(_delegate_panel)
 
 	_week_confirm_panel = Overlay.new()
 	_week_confirm_panel.name = "WeekConfirmPanel"
@@ -745,7 +746,8 @@ func _on_event_delegate(event_id: String, letter: String) -> void:
 	var rows: Array[Control] = []
 	var candidates := GameState.event_delegates(event, choice)
 	var blocks := GameState.event_delegate_blocks(event, choice)
-	rows.append(UiKit.line(Text.say("event.delegate_intro", {"role": GameState.event_delegate_role(choice), "count": blocks})))
+	rows.append(UiKit.line(Text.say("event.delegate_intro_one" if blocks == 1 else "event.delegate_intro",
+		{"role": GameState.event_delegate_role(choice), "count": blocks})))
 	for candidate: Dictionary in candidates:
 		var button := UiKit.action_button(Text.say("event.delegate_pick", {"name": str(candidate["name"]),
 			"fit": StaffAssignmentsView.fit_label(str(candidate["fit"])), "left": int(candidate["left"])}),

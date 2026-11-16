@@ -7422,22 +7422,22 @@
   {
     "key": "assign.already_theirs",
     "where": "Task popup, button when they already have it",
-    "english": "Already theirs",
-    "placeholders": null,
+    "english": "{name} already has it",
+    "placeholders": "name",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
   {
     "key": "assign.refuse_locked",
     "where": "Task popup, button when the day is locked",
-    "english": "Today's work is locked in",
-    "placeholders": null,
+    "english": "{name}: today's work is locked in",
+    "placeholders": "name",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
   {
     "key": "assign.refuse_blocks",
     "where": "Task popup, button when their day is full",
-    "english": "Not enough of their day is left",
-    "placeholders": null,
+    "english": "{name} has no room left today",
+    "placeholders": "name",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
   {
@@ -7557,6 +7557,20 @@
     "where": "Event result, a poor fit",
     "english": "They were unsettled and it showed: you gained nothing.",
     "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_intro_one",
+    "where": "Event, who goes (one block)",
+    "english": "A {role} is the best person for this. It takes 1 block of their day.",
+    "placeholders": "role",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_person_no_time",
+    "where": "Event, who goes, one person with no time",
+    "english": "{name} has no time left today",
+    "placeholders": "name",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }
 ]
