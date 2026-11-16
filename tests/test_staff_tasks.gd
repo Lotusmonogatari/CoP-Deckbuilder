@@ -87,11 +87,18 @@ func test_a_strong_fit_pays_the_reward_a_poor_fit_the_penalty_a_fair_fit_nothing
 
 
 func test_rank_grows_a_strong_reward_but_not_a_penalty() -> void:
-	var pool := _pool(["TK05"])
+	var pool := _pool(["TK36"])   # review the budget lines: Funds +3,000, strong for a researcher
 	var tier_two := _eval(pool, {"R1": ["T0"]}, [_member("R1", R, 2)])
-	assert_eq(int(tier_two["xp"]), 4, "3 grows by 25% per rank, rounded down: 3 + 1")
+	assert_eq(int(tier_two["meta"]["Funds"]), 4500, "3,000 grows by 25% per rank, rounded down: 3,000 + 1,500")
 	assert_eq(StaffTasks.rank_scaled(-2, "Reputation", 2), -2)
 	assert_eq(StaffTasks.rank_scaled(1, "Loyalty", 2), 1, "Loyalty never grows")
+
+
+func test_a_days_xp_is_held_to_its_cap() -> void:
+	# Three strong whitepaper reviews would be +9 XP; the daily cap (3) holds it.
+	var pool := _pool(["TK05", "TK05", "TK05"])
+	var result := _eval(pool, {"R1": ["T0"], "R2": ["T1"], "R3": ["T2"]}, [_member("R1", R), _member("R2", R), _member("R3", R)])
+	assert_eq(int(result["xp"]), Levers.whole("staff_tasks_cap_xp"))
 
 
 func test_a_restless_person_does_strong_work_as_fair() -> void:

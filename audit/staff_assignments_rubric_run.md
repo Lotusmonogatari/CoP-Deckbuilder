@@ -235,3 +235,16 @@ Changed: a person is "idle" (Loyalty -1) only when some unassigned task, not tim
 | R4.2 Net points a week | 33, 30, 20, 18 (FAIL) | unchanged: still FAIL (XP, see the section above) |
 
 Remaining: **R4.2** (XP is about 15 of the week's points; `Staff Tasks: Cap XP` 6 to 3 would address it) and **R6.4** (informational). Loyalty still drifts down in the ramp (50 to 33) because the allies' low starting standing costs 7 to 10 a week; that is now slow enough to leave the staff working, and full-volume days outrun it.
+
+## After lowering the XP cap (Cameron, 2026-11-16: R4.2 recommendation; R6.4 left as is)
+
+Changed: `Staff Tasks: Cap XP` 6 to 3.
+
+| Criterion | Before | After |
+|---|---|---|
+| R4.2 Best's net points a week (after decay) | 33, 30, 20, 18 (FAIL) | **30, 25, 16, 16 (WARN)** |
+| R4.3 Best's XP a week | 13, 19, 12, 11 | 10, 14, 8, 9 (PASS) |
+| R2.3 Best over Random | 7.0 | 4.5 (PASS) |
+| R3.2 Cost of ignoring | 8.6 | 7.8 (PASS) |
+
+No criterion now FAILS. R4.2 is a WARN: the first two weeks are still above the target (3 to 14) because the daily meta cap of 2 is reached on most days; weeks 3 and 4 are inside the warn range. R6.4 stays a WARN by decision (no action).

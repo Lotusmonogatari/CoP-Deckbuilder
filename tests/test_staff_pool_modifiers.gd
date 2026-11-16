@@ -176,10 +176,10 @@ func test_a_reference_set_only_helps_its_own_family() -> void:
 
 
 func test_a_training_voucher_makes_strong_rewards_bigger() -> void:
-	var plain := _eval_with({}, ["TK05"])
-	assert_eq(int(plain["xp"]), 3)
-	var voucher := _eval_with({"SF04": "SH43"}, ["TK05"])
-	assert_eq(int(voucher["xp"]), 4, "half as big again, rounded down")
+	var plain := _eval_with({}, ["TK36"])   # Funds +3,000 for a researcher
+	assert_eq(int(plain["meta"]["Funds"]), 3000)
+	var voucher := _eval_with({"SF04": "SH43"}, ["TK36"])
+	assert_eq(int(voucher["meta"]["Funds"]), 4500, "half as big again, rounded down")
 
 
 func test_a_quiet_desk_pass_stops_idle_loyalty_loss() -> void:

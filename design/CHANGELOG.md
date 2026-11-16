@@ -1137,3 +1137,5 @@ Staff Assignments testing rubric (`design/STAFF_ASSIGNMENTS_RUBRIC.md`) and its 
 Rubric follow-up (2026-11-16, Cameron: "Both"): `Staff Tasks: Cap Meta` 3 to 2, `Staff Wage: Percent` 10 to 15, Funds rewards on five tasks roughly halved. Funds now PASS the rubric; net points a week still FAIL (XP). See `audit/staff_assignments_rubric_run.md`.
 
 Rubric fixes 1 and 3 (2026-11-16, Cameron): idle Loyalty loss only when work was left that would have fitted, and new hires start at Loyalty 50. The ramp weeks now pass the rubric (R1.7, R5.6). Remaining: net points a week (XP).
+
+XP cap (2026-11-16, Cameron, rubric R4.2): `Staff Tasks: Cap XP` 6 to 3. R4.2 moves from FAIL to WARN; the rubric now has no FAIL. R6.4 left as is.
