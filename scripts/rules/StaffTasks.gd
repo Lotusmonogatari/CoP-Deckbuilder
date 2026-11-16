@@ -132,30 +132,33 @@ static func _entry(task: Dictionary, index: int, target: Dictionary) -> Dictiona
 
 ## The posts of ministers and presiding officers in an opponent's Title column
 ## ("Minister of Finance; Chair of the Committee on Finance" gives
-## ["Minister of Finance"]): ministers, the prime minister, and the president
-## or speaker of the National Assembly. Empty when the title has none.
-static func official_posts(title: Variant) -> Array[String]:
+## ["Minister of Finance"]): every part of the title that begins with one of
+## `prefixes` (the Rules tab's `staff_task_official_prefixes`, so Cameron can
+## add a post). Empty when the title has none.
+static func official_posts(title: Variant, prefixes: Array) -> Array[String]:
 	var posts: Array[String] = []
 	if title == null:
 		return posts
 	for part: String in str(title).split(";"):
 		var post := part.strip_edges()
-		if post.begins_with("Minister") or post == "Prime Minister" \
-				or post.begins_with("President of the National Assembly") or post.begins_with("Speaker"):
-			posts.append(post)
+		for prefix: Variant in prefixes:
+			if not str(prefix).is_empty() and post.begins_with(str(prefix)):
+				posts.append(post)
+				break
 	return posts
 
 
 ## "Committee on Finance" from a title such as "Minister of Finance; Chair of
-## the Committee on Finance". "" when the title names no committee.
-static func committee_in(title: Variant) -> String:
-	if title == null:
+## the Committee on Finance": from the first `marker` (the Rules tab's
+## `staff_task_committee_marker`, "Committee on") to the end of that part.
+## "" when the title names no committee.
+static func committee_in(title: Variant, marker: String) -> String:
+	if title == null or marker.is_empty():
 		return ""
 	for part: String in str(title).split(";"):
-		var post := part.strip_edges()
-		var at := post.find("Committee on ")
+		var at := part.strip_edges().find(marker)
 		if at >= 0:
-			return post.substr(at)
+			return part.strip_edges().substr(at)
 	return ""
 
 

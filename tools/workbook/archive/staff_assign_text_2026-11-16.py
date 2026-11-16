@@ -69,10 +69,31 @@ ROWS = [
     ("event.delegate_line", "Event result, who handled it", "{name} handled it for you ({fit}).", "name, fit"),
     ("event.delegate_fair", "Event result, a fair fit", "They were not the best person for it, so you gained less.", ""),
     ("event.delegate_poor", "Event result, a poor fit", "They were unsettled and it showed: you gained nothing.", ""),
+    ("assign.name_xp", "Staff Assignments, the name of XP in a change", "XP", ""),
     ("assign.report_totals", "Day report, totals heading", "In all", ""),
 ]
 
+RULES = [
+    ("staff_task_official_prefixes", '["Minister", "Prime Minister", "President of the National Assembly", "Speaker"]',
+     "any list of the beginnings of posts",
+     "A part of an opponent's Title that begins with one of these is a post a staff task can name (\"Attend the Minister of Finance's press conference\"). Add a post here to add it to the tasks (Cameron, 2026-11-16)."),
+    ("staff_task_committee_marker", "Committee on", "words that introduce a committee's name",
+     "The part of an opponent's Title from this phrase onward is a committee a staff task can name (\"Listen in on the Committee on Finance\")."),
+]
+
+
 def main():
+    w = WB("design/Game_Workbook.xlsx")
+    rules = w.rows("Rules")
+    by_rule = {v.get("A"): r for r, v in rules.items()}
+    for key, value, options, notes in RULES:
+        values = {"A": key, "B": value, "C": options, "F": notes}
+        if key in by_rule:
+            for col, v in values.items():
+                w.set_cell("Rules", by_rule[key], col, v)
+        else:
+            w.append_row("Rules", values, style_row=w.last_data_row("Rules"))
+    w.save()
     w = WB("design/Game_Workbook.xlsx")
     rows = w.rows("Text")
     by_key = {v.get("A"): r for r, v in rows.items()}

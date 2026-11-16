@@ -53,19 +53,19 @@ static func profile_rows(staff_id: String) -> Array[Control]:
 	rows.append(bar(loyalty))
 	var last: Dictionary = GameState.staff_last_week.get(staff_id, {})
 	if last.is_empty():
-		rows.append(UiKit.line(Text.say("staff.why_none"), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("staff.why_none")))
 		return rows
-	rows.append(UiKit.line(Text.say("staff.why_heading"), "SmallLabel"))
+	rows.append(UiKit.line(Text.say("staff.why_heading")))
 	if bool(last.get("paid", false)):
-		rows.append(UiKit.line(Text.say("staff.why_paid", {"count": _signed(Levers.whole("staff_loyalty_paid_bonus"))}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("staff.why_paid", {"count": _signed(Levers.whole("staff_loyalty_paid_bonus"))})))
 	else:
-		rows.append(UiKit.line(Text.say("staff.why_missed", {"count": _signed(-Levers.whole("staff_loyalty_missed_penalty"))}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("staff.why_missed", {"count": _signed(-Levers.whole("staff_loyalty_missed_penalty"))})))
 	for part: Array in [["affinity", "staff.why_affinity"], ["tenure", "staff.why_tenure"],
 			["pride", "staff.why_pride"], ["tasks", "staff.why_tasks"]]:
 		var amount := int(last.get(part[0], 0))
 		if amount != 0:
-			rows.append(UiKit.line(_why_line(str(part[1]), amount), "SmallLabel"))
-	rows.append(UiKit.line(Text.say("staff.why_total", {"count": _signed(int(last.get("total", 0)))}), "SmallLabel"))
+			rows.append(UiKit.line(_why_line(str(part[1]), amount)))
+	rows.append(UiKit.line(Text.say("staff.why_total", {"count": _signed(int(last.get("total", 0)))})))
 	return rows
 
 
@@ -90,14 +90,14 @@ static func week_rows(report: Dictionary) -> Array[Control]:
 	if report.is_empty():
 		return rows
 	if int(report.get("paid_total", 0)) > 0:
-		rows.append(UiKit.line(Text.say("staff.week_paid", {"yen": int(report["paid_total"])}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("staff.week_paid", {"yen": int(report["paid_total"])})))
 	var missed: Array = report.get("missed", [])
 	if not missed.is_empty():
-		rows.append(UiKit.line(Text.say("staff.week_missed", {"names": ", ".join(PackedStringArray(missed))}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("staff.week_missed", {"names": ", ".join(PackedStringArray(missed))})))
 	var lost: Array = report.get("rank_lost", [])
 	if not lost.is_empty():
-		rows.append(UiKit.line(Text.say("staff.week_rank_lost", {"names": ", ".join(PackedStringArray(lost))}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("staff.week_rank_lost", {"names": ", ".join(PackedStringArray(lost))})))
 	for gone: Dictionary in report.get("quit", []):
 		rows.append(UiKit.line(Text.say("staff.week_quit", {"name": str(gone.get("name", "")),
-			"rep": int(gone.get("reputation", 0)), "allies": ", ".join(PackedStringArray(gone.get("allies", [])))}), "SmallLabel"))
+			"rep": int(gone.get("reputation", 0)), "allies": ", ".join(PackedStringArray(gone.get("allies", [])))})))
 	return rows

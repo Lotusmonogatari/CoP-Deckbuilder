@@ -213,13 +213,15 @@ func test_a_kind_with_nobody_to_name_is_not_offered() -> void:
 
 
 func test_names_come_from_the_title_column() -> void:
-	assert_eq(StaffTasks.committee_in("Minister of Finance; Chair of the Committee on Finance"), "Committee on Finance")
-	assert_eq(StaffTasks.committee_in("Leader of the Keizaijiyuutou"), "")
-	assert_eq(StaffTasks.official_posts("Minister of Finance; Chair of the Committee on Finance"), ["Minister of Finance"])
-	var assembly := StaffTasks.official_posts("President of the National Assembly; Chair of the Committee on the National Assembly; Speaker of the National Assembly; Leader of the Frontier Party")
+	var prefixes: Array = DataDB.rules.get("staff_task_official_prefixes", [])
+	var marker := str(DataDB.rules.get("staff_task_committee_marker", ""))
+	assert_eq(StaffTasks.committee_in("Minister of Finance; Chair of the Committee on Finance", marker), "Committee on Finance")
+	assert_eq(StaffTasks.committee_in("Leader of the Keizaijiyuutou", marker), "")
+	assert_eq(StaffTasks.official_posts("Minister of Finance; Chair of the Committee on Finance", prefixes), ["Minister of Finance"])
+	var assembly := StaffTasks.official_posts("President of the National Assembly; Chair of the Committee on the National Assembly; Speaker of the National Assembly; Leader of the Frontier Party", prefixes)
 	assert_eq(assembly, ["President of the National Assembly", "Speaker of the National Assembly"])
-	assert_eq(StaffTasks.official_posts("Prime Minister; Leader of the Yezo Heritage Party"), ["Prime Minister"])
-	assert_eq(StaffTasks.official_posts("Chief Political Correspondent"), [])
+	assert_eq(StaffTasks.official_posts("Prime Minister; Leader of the Yezo Heritage Party", prefixes), ["Prime Minister"])
+	assert_eq(StaffTasks.official_posts("Chief Political Correspondent", prefixes), [])
 
 
 func test_the_real_data_names_ministers_and_committees() -> void:

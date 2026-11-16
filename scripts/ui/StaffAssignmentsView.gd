@@ -11,8 +11,11 @@ extends RefCounted
 ## and the screen reads the same numbers the day's end will apply. The Office
 ## passes `handlers` (Callables) for what a tap or drop should do.
 
-const FIT_COLORS := {"strong": Color("#c8a24a"), "fair": Color("#8a8f99"), "poor": Color("#b3342f")}
+const FIT_COLORS := {"strong": Color("#e8c25a"), "fair": Color("#bcc1cc"), "poor": Color("#ef6a62")}
 const PLAIN_FRAME := Color("#4a5060")
+## The biggest a staff picture is drawn on an assignment card: large, as on the
+## profile (Cameron, 2026-11-16), leaving room beside it for the box of tasks.
+const PORTRAIT_MAX := Vector2(340, 640)
 const BLOCK_FREE := Color("#c8a24a")
 const BLOCK_USED := Color(0.18, 0.2, 0.26)
 
@@ -46,7 +49,7 @@ static func rows(handlers: Dictionary) -> Array[Control]:
 	for entry: Dictionary in GameState.staff_day_pool:
 		if not given.has(str(entry["uid"])):
 			waiting += 1
-	out.append(UiKit.line(Text.say("assign.date_line", {"date": WeekCalendar.date_label(GameState.staff_day_key), "count": waiting}), "SmallLabel"))
+	out.append(UiKit.line(Text.say("assign.date_line", {"date": WeekCalendar.date_label(GameState.staff_day_key), "count": waiting})))
 	out.append(UiKit.line(Text.say("assign.hint")))
 
 	out.append(UiKit.heading(Text.say("assign.tray_heading")))
@@ -58,14 +61,14 @@ static func rows(handlers: Dictionary) -> Array[Control]:
 
 	out.append(UiKit.heading(Text.say("assign.projection_heading")))
 	for line: String in projection_lines(projection, GameState.staff_day_pool):
-		out.append(UiKit.line(line, "SmallLabel"))
+		out.append(UiKit.line(line))
 
 	var refusal := GameState.staff_confirm_refusal()
 	var confirm := UiKit.action_button(Text.say("assign.confirm"), refusal, handlers["confirm"], 110.0)
 	confirm.name = "ConfirmDayButton"
 	out.append(confirm)
 	if GameState.staff_day_confirmed:
-		out.append(UiKit.line(Text.say("assign.locked_note"), "SmallLabel"))
+		out.append(UiKit.line(Text.say("assign.locked_note")))
 	return out
 
 
@@ -82,15 +85,17 @@ static func _tray(given: Dictionary, handlers: Dictionary) -> Control:
 		any = true
 		flow.add_child(_chip(entry, PLAIN_FRAME, false, handlers))
 	if not any:
-		flow.add_child(UiKit.line(Text.say("assign.tray_empty"), "SmallLabel"))
+		flow.add_child(UiKit.line(Text.say("assign.tray_empty")))
 	return flow
 
 
-static func _chip(entry: Dictionary, frame: Color, compact: bool, handlers: Dictionary) -> TaskChip:
+static func _chip(entry: Dictionary, frame: Color, compact: bool, handlers: Dictionary, fit: String = "") -> TaskChip:
 	var task := StaffTasks.task_for(DataDB.staff_tasks, str(entry.get("task_id", "")))
 	var chip := TaskChip.new()
 	chip.setup(str(entry["uid"]), str(entry.get("title", "")), str(task.get("icon", "")),
-		int(task.get("blocks", 1)), frame, compact, not GameState.staff_day_confirmed)
+		int(task.get("blocks", 1)), frame, compact, not GameState.staff_day_confirmed,
+		"" if fit.is_empty() else fit_label(fit))
+	chip.theme = card_theme()
 	chip.tapped.connect(handlers["popup"])
 	return chip
 
@@ -100,6 +105,7 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 	var candidate := DataDB.get_staff(staff_id)
 	var panel := PanelContainer.new()
 	panel.name = "StaffCard_" + staff_id
+	panel.theme = card_theme()
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.1, 0.12, 0.17, 0.96)
 	style.border_color = Color("#2d3344")
@@ -113,9 +119,10 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 	panel.add_child(row)
 
 	var portrait := PlaceholderArt.new()
+	portrait.name = "StaffPortrait_" + staff_id
 	portrait.kind = PlaceholderArt.Kind.CHARACTER
 	portrait.art_id = staff_id
-	portrait.custom_minimum_size = Vector2(150, 200)
+	portrait.custom_minimum_size = portrait_size(staff_id)
 	portrait.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	row.add_child(portrait)
 
@@ -130,20 +137,26 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 	name_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	name_button.text = str(candidate.get("name", staff_id))
 	name_button.theme_type_variation = "HeaderLabel"
+	name_button.custom_minimum_size = Vector2(0, 90)   # a touch-sized target
 	name_button.pressed.connect(handlers["profile"].bind(staff_id))
 	column.add_child(name_button)
-	column.add_child(UiKit.line(Text.say("assign.role_line", {"role": str(member["role"]), "tier": int(member["tier"])}), "SmallLabel"))
+	column.add_child(UiKit.line(Text.say("assign.role_line", {"role": str(member["role"]), "tier": int(member["tier"])})))
 	var loyalty := GameState.staff_loyalty_of(staff_id)
 	var today := int((projection["loyalty"] as Dictionary).get(staff_id, 0))
 	column.add_child(UiKit.line(Text.say("assign.loyalty_line", {"word": StaffLoyaltyView.word_text(loyalty),
-		"count": "%+d" % today}), "SmallLabel"))
+		"count": "%+d" % today})))
 	column.add_child(StaffLoyaltyView.bar(loyalty))
 
 	var used := GameState.staff_blocks_used(staff_id)
 	var total := GameState.staff_day_blocks_total
-	column.add_child(UiKit.line(Text.say("assign.blocks_line", {"used": used, "total": total}), "SmallLabel"))
+	column.add_child(UiKit.line(Text.say("assign.blocks_line", {"used": used, "total": total})))
 	column.add_child(blocks_bar(used, total))
 
+	# The column sits beside a large picture: its lines wrap in what is left
+	# instead of forcing the full column width (which pushed it off the screen).
+	for child in column.get_children():
+		if child is Label or child is ProgressBar:
+			(child as Control).custom_minimum_size.x = 0
 	var box := TaskBox.new()
 	box.setup(staff_id)
 	box.dropped.connect(handlers["dropped"])
@@ -158,10 +171,31 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 		if entry.is_empty():
 			continue
 		holds = true
-		inside.add_child(_chip(entry, FIT_COLORS.get(str(fits.get(str(uid), "fair")), PLAIN_FRAME), true, handlers))
+		var fit := str(fits.get(str(uid), "fair"))
+		inside.add_child(_chip(entry, FIT_COLORS.get(fit, PLAIN_FRAME), true, handlers, fit))
 	if not holds:
-		inside.add_child(UiKit.line(Text.say("assign.box_empty"), "SmallLabel"))
+		inside.add_child(UiKit.line(Text.say("assign.box_empty")))
 	return panel
+
+
+## Inside a dark card or chip the page's text plates are not wanted: the card
+## is the plate.
+static func card_theme() -> Theme:
+	var theme := Theme.new()
+	theme.set_stylebox("normal", "Label", StyleBoxEmpty.new())
+	return theme
+
+
+## The drawing fitted into PORTRAIT_MAX with no empty margin, as on the staff
+## profile (the same rule as OfficeScreen); a missing picture gets the full box.
+static func portrait_size(staff_id: String) -> Vector2:
+	var path := ArtLoader.character_path(staff_id)
+	var texture := load(path) as Texture2D if not path.is_empty() else null
+	if texture == null or texture.get_height() <= 0:
+		return PORTRAIT_MAX
+	var aspect := float(texture.get_width()) / float(texture.get_height())
+	var width := minf(PORTRAIT_MAX.x, PORTRAIT_MAX.y * aspect)
+	return Vector2(width, width / aspect)
 
 
 ## Eight (or four) blocks; the free ones are gold, the ones the plan uses are dark.
@@ -214,10 +248,11 @@ static func projection_lines(projection: Dictionary, pool: Array) -> Array[Strin
 	for name: String in (projection["meta"] as Dictionary).keys():
 		lines.append(Text.say("assign.effect_generic", {"name": name, "amount": "%+d" % int(projection["meta"][name])}))
 	if int(projection["xp"]) != 0:
-		lines.append(Text.say("assign.effect_generic", {"name": "XP", "amount": "%+d" % int(projection["xp"])}))
+		lines.append(Text.say("assign.effect_generic", {"name": Text.say("assign.name_xp"), "amount": "%+d" % int(projection["xp"])}))
 	for meter: String in (projection["awareness"] as Dictionary).keys():
 		if int(projection["awareness"][meter]) != 0:
-			lines.append(Text.say("assign.effect_generic", {"name": "%s awareness" % meter,
+			lines.append(Text.say("assign.effect_generic", {
+				"name": Text.say("awareness.district") if meter == "District" else Text.say("awareness.national"),
 				"amount": "%+d" % int(projection["awareness"][meter])}))
 	for organization: String in (projection["standing"] as Dictionary).keys():
 		lines.append(Text.say("assign.effect_standing", {
@@ -261,15 +296,15 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 	head.add_child(title)
 	out.append(head)
 
-	out.append(UiKit.line(Text.say("assign.popup_context_heading"), "SmallLabel"))
+	out.append(UiKit.heading(Text.say("assign.popup_context_heading")))
 	out.append(UiKit.line(str(entry.get("context", ""))))
-	out.append(UiKit.line(Text.say("assign.popup_work_heading"), "SmallLabel"))
+	out.append(UiKit.heading(Text.say("assign.popup_work_heading")))
 	out.append(UiKit.line(str(task.get("work", ""))))
-	out.append(UiKit.line(Text.say("assign.popup_time_heading"), "SmallLabel"))
+	out.append(UiKit.heading(Text.say("assign.popup_time_heading")))
 	var blocks := int(task.get("blocks", 1))
 	out.append(UiKit.line(Text.say("assign.time_one" if blocks == 1 else "assign.time_many", {"count": blocks})))
 
-	out.append(UiKit.line(Text.say("assign.popup_outcome_heading"), "SmallLabel"))
+	out.append(UiKit.heading(Text.say("assign.popup_outcome_heading")))
 	if str(task.get("kind", "")) == StaffTasks.KIND_TIME_OFF:
 		out.append(UiKit.line(Text.say("assign.outcome_time_off", {"count": Levers.whole("staff_tasks_time_off_loyalty")})))
 	else:
@@ -288,7 +323,7 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 			out.append(label)
 	var due := StaffTasks.parse_effects(task.get("due_penalty"))
 	if not due.is_empty():
-		out.append(UiKit.line(Text.say("assign.popup_due", {"penalty": effects_text(due, target)}), "SmallLabel"))
+		out.append(UiKit.line(Text.say("assign.popup_due", {"penalty": effects_text(due, target)})))
 
 	# Who can do it.
 	var holder := ""
@@ -334,7 +369,7 @@ static func report_rows(report: Dictionary) -> Array[Control]:
 		return out
 	var result: Dictionary = report["result"]
 	var pool: Array = report.get("pool", [])
-	out.append(UiKit.line(Text.say("assign.report_date", {"date": str(report.get("date", ""))}), "SmallLabel"))
+	out.append(UiKit.line(Text.say("assign.report_date", {"date": str(report.get("date", ""))})))
 	for line: Dictionary in result["lines"]:
 		var entry := StaffTasks.entry_for(pool, str(line["uid"]))
 		var name := str(DataDB.get_staff(str(line["staff_id"])).get("name", ""))
@@ -355,10 +390,10 @@ static func report_rows(report: Dictionary) -> Array[Control]:
 	for gone: Dictionary in result["undone"]:
 		var entry := StaffTasks.entry_for(pool, str(gone["uid"]))
 		out.append(UiKit.line(Text.say("assign.proj_undone", {"title": str(entry.get("title", "")),
-			"penalty": effects_text(gone["effects"], str(entry.get("target_name", "")))}), "SmallLabel"))
+			"penalty": effects_text(gone["effects"], str(entry.get("target_name", "")))})))
 	if bool(result["time_off_unused"]):
-		out.append(UiKit.line(Text.say("assign.proj_time_off_unused", {"count": Levers.whole("staff_tasks_time_off_unused_loyalty")}), "SmallLabel"))
+		out.append(UiKit.line(Text.say("assign.proj_time_off_unused", {"count": Levers.whole("staff_tasks_time_off_unused_loyalty")})))
 	out.append(UiKit.heading(Text.say("assign.report_totals")))
 	for total: String in projection_lines(result, pool):
-		out.append(UiKit.line(total, "SmallLabel"))
+		out.append(UiKit.line(total))
 	return out

@@ -22,7 +22,7 @@ var _icon_id := ""
 
 ## `compact` is the small icon-only version shown inside a person's box.
 func setup(task_uid: String, title: String, icon_id: String, blocks: int, frame: Color,
-		compact: bool, can_drag: bool) -> void:
+		compact: bool, can_drag: bool, caption: String = "") -> void:
 	uid = task_uid
 	draggable = can_drag
 	_icon_id = icon_id
@@ -49,8 +49,17 @@ func setup(task_uid: String, title: String, icon_id: String, blocks: int, frame:
 	art.custom_minimum_size = Vector2(88, 88) if compact else Vector2(110, 110)
 	art.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	column.add_child(art)
+	tooltip_text = title
 	if compact:
-		custom_minimum_size = Vector2(104, 0)
+		custom_minimum_size = Vector2(130, 0)
+		# The fit is said in words as well as by the frame's colour.
+		if not caption.is_empty():
+			var fit_label := Label.new()
+			fit_label.text = caption
+			fit_label.theme_type_variation = "SmallLabel"
+			fit_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			fit_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			column.add_child(fit_label)
 		return
 	custom_minimum_size = Vector2(190, 0)
 	var label := Label.new()

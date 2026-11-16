@@ -22,6 +22,7 @@
   "assign.hint": "Drag a task into a person's box, or tap it to read it and choose who does it. The frame shows how well they suit it: gold strong, grey fair, red poor. Press Confirm to lock in the day.",
   "assign.locked_note": "Locked in. The results arrive when the day ends.",
   "assign.loyalty_line": "Loyalty: {word} · today {count}",
+  "assign.name_xp": "XP",
   "assign.no_staff": "Hire staff first. They do the day's tasks for you.",
   "assign.no_tasks": "There are no tasks today.",
   "assign.nothing_assigned": "Give someone a task first",

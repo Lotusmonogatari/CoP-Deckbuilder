@@ -1432,12 +1432,14 @@ func _staff_task_targets() -> Dictionary:
 	var committees: Array[Dictionary] = []
 	var officials: Array[Dictionary] = []
 	var seen := {}
+	var prefixes: Array = DataDB.rules.get("staff_task_official_prefixes", [])
+	var marker := str(DataDB.rules.get("staff_task_committee_marker", ""))
 	for opponent: Dictionary in DataDB.opponents:
-		var committee := StaffTasks.committee_in(opponent.get("title"))
+		var committee := StaffTasks.committee_in(opponent.get("title"), marker)
 		if not committee.is_empty() and not seen.has(committee):
 			seen[committee] = true
 			committees.append({"id": committee, "name": committee})
-		for post: String in StaffTasks.official_posts(opponent.get("title")):
+		for post: String in StaffTasks.official_posts(opponent.get("title"), prefixes):
 			if not seen.has(post):
 				seen[post] = true
 				officials.append({"id": str(opponent.get("opp_id", "")), "name": post})

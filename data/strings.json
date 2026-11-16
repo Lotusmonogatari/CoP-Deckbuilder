@@ -7572,5 +7572,12 @@
     "english": "{name} has no time left today",
     "placeholders": "name",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.name_xp",
+    "where": "Staff Assignments, the name of XP in a change",
+    "english": "XP",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }
 ]

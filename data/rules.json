@@ -319,5 +319,20 @@
     "means": {
       "value": "Season name -> month numbers (1 = January). Cameron, 2026-10-31: Yezo's winter runs December through March; November is autumn."
     }
+  },
+  "staff_task_official_prefixes": {
+    "value": [
+      "Minister",
+      "Prime Minister",
+      "President of the National Assembly",
+      "Speaker"
+    ],
+    "options": "any list of the beginnings of posts",
+    "notes": "A part of an opponent's Title that begins with one of these is a post a staff task can name (\"Attend the Minister of Finance's press conference\"). Add a post here to add it to the tasks (Cameron, 2026-11-16)."
+  },
+  "staff_task_committee_marker": {
+    "value": "Committee on",
+    "options": "words that introduce a committee's name",
+    "notes": "The part of an opponent's Title from this phrase onward is a committee a staff task can name (\"Listen in on the Committee on Finance\")."
   }
 }

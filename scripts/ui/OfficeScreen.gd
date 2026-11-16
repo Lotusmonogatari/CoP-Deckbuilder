@@ -501,7 +501,7 @@ func _show_week_over_if_due() -> void:
 	var rows: Array[Control] = [UiKit.line(Text.say("office.week_over_body"))]
 	var wages := GameState.staff_wage_preview()
 	if bool(wages["short"]) and int(wages["total"]) > 0:
-		rows.append(UiKit.line(Text.say("staff.week_warning", {"yen": int(wages["total"])}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("staff.week_warning", {"yen": int(wages["total"])})))
 	var weekend := Button.new()
 	weekend.name = "WorkWeekendButton"
 	weekend.custom_minimum_size = Vector2(0, 110)
@@ -2745,7 +2745,7 @@ func _staff_hired_row(_role: String, hired: Dictionary, tag_primary: bool = fals
 	if tag_primary:
 		text += "  ·  " + Text.say("office.staff_primary_tag")
 	box.add_child(_profile_button(text, str(hired.get("staff_id", ""))))
-	box.add_child(UiKit.line(StaffLoyaltyView.summary(str(hired.get("staff_id", ""))), "SmallLabel"))
+	box.add_child(UiKit.line(StaffLoyaltyView.summary(str(hired.get("staff_id", "")))))
 	return box
 
 
@@ -2793,11 +2793,11 @@ func _show_staff_profile(staff_id: String) -> void:
 	who.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	who.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	who.add_child(UiKit.line(str(candidate.get("name", staff_id)), "HeaderLabel"))
-	who.add_child(UiKit.line(role, "SmallLabel"))
+	who.add_child(UiKit.line(role))
 	# Flavor text about the role, from the Staff tab; no row when blank.
 	var role_flavor := str(candidate.get("role_flavor", "")).strip_edges() if candidate.get("role_flavor") != null else ""
 	if not role_flavor.is_empty():
-		var flavor := UiKit.line(role_flavor, "SmallLabel")
+		var flavor := UiKit.line(role_flavor)
 		flavor.name = "StaffRoleFlavor"
 		who.add_child(flavor)
 	who.add_child(UiKit.line(Text.say("staff.profile_cost",
@@ -3002,7 +3002,7 @@ func _confirm_fire_staff(staff_id: String, candidate: Dictionary) -> void:
 	for organization: String in allies.keys():
 		ally_names.append(str(DataDB.get_booster(organization).get("name_en", organization)))
 	if not ally_names.is_empty():
-		fire_rows.append(UiKit.line(Text.say("staff.fire_ally_note", {"names": ", ".join(PackedStringArray(ally_names))}), "SmallLabel"))
+		fire_rows.append(UiKit.line(Text.say("staff.fire_ally_note", {"names": ", ".join(PackedStringArray(ally_names))})))
 	_fire_staff_panel.open(Text.say("office.fire_staff"), fire_rows, Text.say("office.fire_staff_confirm"))
 
 
