@@ -70,6 +70,11 @@ ROWS = [
     ("event.delegate_fair", "Event result, a fair fit", "They were not the best person for it, so you gained less.", ""),
     ("event.delegate_poor", "Event result, a poor fit", "They were unsettled and it showed: you gained nothing.", ""),
     ("assign.name_xp", "Staff Assignments, the name of XP in a change", "XP", ""),
+    ("assign.result_nothing", "Task popup, a result block with no effect", "Nothing happens", ""),
+    ("assign.tile_has_it", "Task popup, a staff picture whose person already has the task", "Has this task", ""),
+    ("assign.tile_locked", "Task popup, a staff picture when the day is locked in", "Locked in", ""),
+    ("assign.tile_no_room", "Task popup, a staff picture when their day is full", "No room today", ""),
+    ("assign.no_assignment", "Task popup, button to take the task back", "No Assignment", ""),
     ("assign.report_totals", "Day report, totals heading", "In all", ""),
 ]
 

@@ -72,26 +72,59 @@ func test_the_workload_bar_has_eight_blocks_and_drains() -> void:
 	bar.free()
 
 
-func test_the_popup_lists_every_fit_and_who_can_take_it() -> void:
-	var uid := str(GameState.staff_day_pool[1]["uid"])
-	var rows := StaffAssignmentsView.popup_rows(uid, _handlers())
-	var gives := 0
+func _find(rows: Array[Control], node_name: String) -> Array:
+	var found: Array = []
 	for row: Control in rows:
-		if row.name.begins_with("GiveTo_"):
-			gives += 1
-	assert_eq(gives, 3)
+		if row.name == node_name:
+			found.append(row)
+		found.append_array(row.find_children(node_name, "", true, false))
+	return found
+
+
+func test_the_popup_shows_three_result_blocks_and_one_picture_per_person() -> void:
+	var uid := ""
+	for entry: Dictionary in GameState.staff_day_pool:
+		if entry["task_id"] != "TK17":
+			uid = str(entry["uid"])
+	var rows := StaffAssignmentsView.popup_rows(uid, _handlers())
+	for kind: String in ["strong", "fair", "poor"]:
+		assert_eq(_find(rows, "Result_" + kind).size(), 1, kind + " block")
+	for id: String in ["SF04", "SF08", "SF18"]:
+		assert_eq(_find(rows, "GiveTo_" + id).size(), 1, id + " picture")
+	assert_eq(_find(rows, "StaffScroll").size(), 1, "the row scrolls sideways")
 	_free(rows)
 
 
-func test_a_full_day_greys_out_who_can_take_a_task() -> void:
+func test_result_blocks_name_no_staff_role() -> void:
+	var uid := str(GameState.staff_day_pool[1]["uid"])
+	var rows := StaffAssignmentsView.popup_rows(uid, _handlers())
+	for kind: String in ["strong", "fair", "poor"]:
+		for block in _find(rows, "Result_" + kind):
+			for label in block.find_children("*", "Label", true, false):
+				for role in ["Policy Research Assistant", "Media Spokesperson", "District Representative"]:
+					assert_false((label as Label).text.contains(role), "no role in the " + kind + " block")
+	_free(rows)
+
+
+func test_no_assignment_is_greyed_until_the_task_is_given() -> void:
+	var uid := str(GameState.staff_day_pool[1]["uid"])
+	var rows := StaffAssignmentsView.popup_rows(uid, _handlers())
+	assert_true((_find(rows, "NoAssignmentButton")[0] as Button).disabled)
+	_free(rows)
+	GameState.staff_assign(uid, "SF04")
+	rows = StaffAssignmentsView.popup_rows(uid, _handlers())
+	assert_false((_find(rows, "NoAssignmentButton")[0] as Button).disabled)
+	_free(rows)
+
+
+func test_a_person_with_a_full_day_is_dimmed() -> void:
 	GameState.staff_day_delegated["SF04"] = 8
 	var uid := ""
 	for entry: Dictionary in GameState.staff_day_pool:
 		uid = str(entry["uid"])
 	var rows := StaffAssignmentsView.popup_rows(uid, _handlers())
-	for row: Control in rows:
-		if row.name == "GiveTo_SF04":
-			assert_true((row as Button).disabled)
+	assert_true((_find(rows, "GiveTo_SF04")[0] as Button).disabled)
+	assert_false((_find(rows, "GiveTo_SF08")[0] as Button).disabled)
 	_free(rows)
 
 

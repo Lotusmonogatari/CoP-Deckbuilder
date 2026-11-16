@@ -7579,5 +7579,40 @@
     "english": "XP",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.result_nothing",
+    "where": "Task popup, a result block with no effect",
+    "english": "Nothing happens",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.tile_has_it",
+    "where": "Task popup, a staff picture whose person already has the task",
+    "english": "Has this task",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.tile_locked",
+    "where": "Task popup, a staff picture when the day is locked in",
+    "english": "Locked in",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.tile_no_room",
+    "where": "Task popup, a staff picture when their day is full",
+    "english": "No room today",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.no_assignment",
+    "where": "Task popup, button to take the task back",
+    "english": "No Assignment",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }
 ]

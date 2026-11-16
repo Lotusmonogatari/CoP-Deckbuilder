@@ -305,22 +305,16 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 	out.append(UiKit.line(Text.say("assign.time_one" if blocks == 1 else "assign.time_many", {"count": blocks})))
 
 	out.append(UiKit.heading(Text.say("assign.popup_outcome_heading")))
+	# Three slanted blocks, colour-coded: the positive, neutral and negative
+	# result, with no hint of which staff role earns which (Cameron, 2026-11-16).
 	if str(task.get("kind", "")) == StaffTasks.KIND_TIME_OFF:
-		out.append(UiKit.line(Text.say("assign.outcome_time_off", {"count": Levers.whole("staff_tasks_time_off_loyalty")})))
+		out.append(_slash(Text.say("assign.outcome_time_off", {"count": Levers.whole("staff_tasks_time_off_loyalty")}), "strong"))
 	else:
-		for fit: String in ["strong", "fair", "poor"]:
-			var role := StaffTasks.role_for(task, fit)
-			var result := ""
-			match fit:
-				"strong":
-					result = effects_text(StaffTasks.parse_effects(task.get("strong_reward")), target)
-				"poor":
-					result = effects_text(StaffTasks.parse_effects(task.get("poor_penalty")), target)
-			var line := Text.say("assign.outcome_line", {"fit": fit_label(fit), "role": role,
-				"result": result if not result.is_empty() else Text.say("assign.outcome_nothing")})
-			var label := UiKit.line(line)
-			label.add_theme_color_override("font_color", FIT_COLORS[fit])
-			out.append(label)
+		var good := effects_text(StaffTasks.parse_effects(task.get("strong_reward")), target)
+		var bad := effects_text(StaffTasks.parse_effects(task.get("poor_penalty")), target)
+		out.append(_slash(good if not good.is_empty() else Text.say("assign.result_nothing"), "strong"))
+		out.append(_slash(Text.say("assign.result_nothing"), "fair"))
+		out.append(_slash(bad if not bad.is_empty() else Text.say("assign.result_nothing"), "poor"))
 	var due := StaffTasks.parse_effects(task.get("due_penalty"))
 	if not due.is_empty():
 		out.append(UiKit.line(Text.say("assign.popup_due", {"penalty": effects_text(due, target)})))
@@ -331,31 +325,104 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 		if (GameState.staff_day_plan[staff_id] as Array).has(uid):
 			holder = staff_id
 	out.append(UiKit.heading(Text.say("assign.give_heading")))
+	# The staff, as pictures in a gold-framed row that scrolls sideways.
+	var strip := HBoxContainer.new()
+	strip.name = "StaffStrip"
+	strip.add_theme_constant_override("separation", 14)
 	for member: Dictionary in GameState.staff_members():
 		var staff_id := str(member["staff_id"])
 		var fit := StaffTasks.effective_fit(task, str(member["role"]), GameState.staff_loyalty_of(staff_id))
-		var name := str(DataDB.get_staff(staff_id).get("name", staff_id))
-		var refusal := ""
+		var note := ""
 		if staff_id == holder:
-			refusal = Text.say("assign.already_theirs", {"name": name})
+			note = Text.say("assign.tile_has_it")
 		else:
-			var code := GameState.staff_assign_refusal(uid, staff_id)
-			match code:
-				"", StaffTasks.REFUSE_TAKEN:
-					pass
+			match GameState.staff_assign_refusal(uid, staff_id):
 				StaffTasks.REFUSE_LOCKED:
-					refusal = Text.say("assign.refuse_locked", {"name": name})
+					note = Text.say("assign.tile_locked")
 				StaffTasks.REFUSE_BLOCKS:
-					refusal = Text.say("assign.refuse_blocks", {"name": name})
-		var button := UiKit.action_button(Text.say("assign.give_to", {"name": name, "fit": fit_label(fit)}),
-			refusal, handlers["assign"].bind(uid, staff_id), 100.0)
-		button.name = "GiveTo_" + staff_id
-		out.append(button)
-	if not holder.is_empty() and not GameState.staff_day_confirmed:
-		var back := UiKit.action_button(Text.say("assign.take_back"), "", handlers["unassign"].bind(uid), 100.0)
-		back.name = "TakeBackButton"
-		out.append(back)
+					note = Text.say("assign.tile_no_room")
+		strip.add_child(_staff_tile(staff_id, fit, note, handlers["assign"].bind(uid, staff_id)))
+	var scroll := ScrollContainer.new()
+	scroll.name = "StaffScroll"
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.custom_minimum_size = Vector2(0, TILE_SIZE.y + 36)
+	scroll.add_child(strip)
+	DragScroll.attach(scroll, false)
+	var frame := PanelContainer.new()
+	frame.name = "StaffFrame"
+	var frame_style := StyleBoxFlat.new()
+	frame_style.bg_color = Color(0, 0, 0, 0.45)
+	frame_style.border_color = FIT_COLORS["strong"]
+	frame_style.set_border_width_all(4)
+	frame_style.set_corner_radius_all(10)
+	frame_style.set_content_margin_all(10)
+	frame.add_theme_stylebox_override("panel", frame_style)
+	frame.theme = card_theme()
+	frame.add_child(scroll)
+	out.append(frame)
+
+	# No Assignment: takes the task back (greyed when nobody has it, or the day is locked).
+	var none := UiKit.action_button(Text.say("assign.no_assignment"), "", handlers["unassign"].bind(uid), 100.0)
+	none.name = "NoAssignmentButton"
+	none.disabled = holder.is_empty() or GameState.staff_day_confirmed
+	out.append(none)
 	return out
+
+
+## The size of one staff picture tile in the row.
+const TILE_SIZE := Vector2(250, 470)
+
+
+## A staff member as a large picture you tap to give them the task: their
+## name and how well they suit it in words (and the frame's colour). A person
+## who cannot take it is dimmed, with the reason written on the tile.
+static func _staff_tile(staff_id: String, fit: String, note: String, on_press: Callable) -> Button:
+	var button := Button.new()
+	button.name = "GiveTo_" + staff_id
+	button.custom_minimum_size = TILE_SIZE
+	button.disabled = not note.is_empty()
+	button.pressed.connect(Haptics.confirm)
+	button.pressed.connect(on_press)
+	var column := VBoxContainer.new()
+	column.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	column.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	column.offset_left = 8
+	column.offset_right = -8
+	column.offset_top = 8
+	column.offset_bottom = -8
+	column.add_theme_constant_override("separation", 4)
+	var picture := PlaceholderArt.new()
+	picture.kind = PlaceholderArt.Kind.CHARACTER
+	picture.art_id = staff_id
+	picture.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	picture.custom_minimum_size = Vector2(0, 300)
+	picture.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	column.add_child(picture)
+	var name_label := Label.new()
+	name_label.text = str(DataDB.get_staff(staff_id).get("name", staff_id))
+	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	column.add_child(name_label)
+	var caption := Label.new()
+	caption.text = note if not note.is_empty() else fit_label(fit)
+	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	caption.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	caption.add_theme_color_override("font_color", FIT_COLORS.get(fit, Color.WHITE) if note.is_empty() else Color("#bcc1cc"))
+	column.add_child(caption)
+	button.add_child(column)
+	button.theme = card_theme()
+	return button
+
+
+## One result block: the message on a slanted block coloured for its kind.
+static func _slash(text: String, kind: String) -> SlashBlock:
+	var fills := {"strong": Color("#7a5d0e"), "fair": Color("#4b505a"), "poor": Color("#8a2722")}
+	var block := SlashBlock.new()
+	block.name = "Result_" + kind
+	block.setup(text, fills.get(kind, Color("#4b505a")), FIT_COLORS.get(kind, Color.WHITE))
+	return block
 
 
 # ---------------------------------------------------------------------------
