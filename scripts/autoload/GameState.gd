@@ -1524,6 +1524,10 @@ func _staff_eval_members() -> Array:
 
 func _staff_day_info() -> Dictionary:
 	var bonus := {}
+	for member: Dictionary in staff_members():
+		var rank_hours := staff_rank_hours(str(member["staff_id"]))
+		if rank_hours > 0:
+			bonus[str(member["staff_id"])] = rank_hours
 	var strong := {}
 	var percent := {}
 	var quiet := {}
@@ -1531,7 +1535,7 @@ func _staff_day_info() -> Dictionary:
 		var info := staff_item_info(str(staff_day_items[id]))
 		match str(info["effect"]):
 			"HOURS":
-				bonus[id] = int(info["value"])
+				bonus[id] = int(bonus.get(id, 0)) + int(info["value"])
 			"STRONG_FAMILY":
 				strong[id] = str(info["target"])
 			"REWARD_MULT":
@@ -1549,7 +1553,18 @@ func staff_projection() -> Dictionary:
 
 ## Hours in one person's day today: the day's hours plus any item given to them.
 func staff_day_hours(staff_id: String) -> int:
-	return staff_day_blocks_total + staff_item_hours(str(staff_day_items.get(staff_id, "")))
+	return staff_day_blocks_total + staff_rank_hours(staff_id) + staff_item_hours(str(staff_day_items.get(staff_id, "")))
+
+
+## The extra hours a person's rank gives them on a weekday (Cameron,
+## 2026-11-16): one per rank (Balance `Staff Tasks: Hours Per Tier`), so Tier 0
+## works 8 hours, Tier 1 works 9 and Tier 2 works 10. It is the rank they hold
+## now, whatever they were hired at or the player has bought, and a weekend day
+## (shorter than a workday) has no bonus.
+func staff_rank_hours(staff_id: String) -> int:
+	if staff_day_blocks_total < int(calendar_config()["workday_hours"]):
+		return 0
+	return maxi(0, int(hired_member(staff_id).get("tier", 0))) * Levers.whole("staff_tasks_hours_per_tier")
 
 
 ## What a staff item does (the Shop's Staff Effect columns): { effect, value,

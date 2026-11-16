@@ -380,3 +380,5 @@ The plan is applied when the day ends (the next day begins, or the week ends). *
 | **Events** | An event choice can change the next day's pool: `Task Pool Family`, `Task Pool Change`, `Task Pool Days` (EV84 A and EV55 A are draft examples). | Event Choices tab |
 
 Tuning report: `audit/staff_tasks_tuning.md` (tool: `audit/tests/staff_pool_sim.tscn`). The Staff Hours column is kept for the four coffee and tea rows; the new Staff Effect columns supersede it.
+
+**Rank and the working day (2026-11-16, Cameron).** A staff member's weekday is **8 hours at Tier 0, 9 at Tier 1 and 10 at Tier 2**: one extra hour per rank (Balance `Staff Tasks: Hours Per Tier`). It is the rank they hold when tasks are given out, including a rank they were hired at (some candidates start at Tier 1), and it stacks with coffee and tea. A weekend day has no rank bonus. The workload bar on the Staff Assignments screen shows the longer day.

@@ -123,3 +123,48 @@ func _fix_pool() -> void:
 	for i in ids.size():
 		pool.append(StaffTasks._entry(StaffTasks.task_for(DataDB.staff_tasks, ids[i]), i, {}))
 	GameState.staff_day_pool = pool
+
+
+# --- the day's hours by rank (Cameron, 2026-11-16) -------------------------------
+
+func test_a_persons_day_is_eight_nine_or_ten_hours_by_rank() -> void:
+	GameState.hire_staff("SF04")   # hired at Tier 0
+	GameState.staff_ensure_day()
+	assert_eq(GameState.staff_day_hours("SF04"), 8, "Tier 0")
+	GameState.staff_loyalty["SF04"] = 60
+	assert_eq(GameState.upgrade_staff_member("SF04"), "")
+	assert_eq(GameState.staff_day_hours("SF04"), 9, "Tier 1")
+	assert_eq(GameState.upgrade_staff_member("SF04"), "")
+	assert_eq(GameState.staff_day_hours("SF04"), 10, "Tier 2")
+
+
+func test_a_person_hired_above_tier_zero_starts_with_the_longer_day() -> void:
+	assert_eq(GameState.hire_staff("SF12"), "")   # a media spokesperson who starts at Tier 1
+	GameState.staff_ensure_day()
+	assert_eq(GameState.staff_day_hours("SF12"), 9)
+
+
+func test_the_rank_hours_stack_with_an_item() -> void:
+	GameState.hire_staff("SF04")
+	GameState.staff_loyalty["SF04"] = 60
+	GameState.upgrade_staff_member("SF04")
+	GameState.inventory = {"SH15": 1}
+	GameState.staff_ensure_day()
+	GameState.staff_assign_item("SH15", "SF04")
+	assert_eq(GameState.staff_day_hours("SF04"), 11, "8 + 1 for Tier 1 + 2 for the Kaiju-sized coffee")
+
+
+func test_a_longer_day_holds_a_longer_plan_and_counts_as_full_only_at_its_length() -> void:
+	GameState.hire_staff("SF04")
+	GameState.staff_loyalty["SF04"] = 60
+	GameState.upgrade_staff_member("SF04")
+	var info := GameState._staff_day_info()
+	assert_eq(int(info["bonus"]["SF04"]), 1)
+
+
+func test_a_weekend_day_has_no_rank_bonus() -> void:
+	GameState.hire_staff("SF04")
+	GameState.staff_loyalty["SF04"] = 60
+	GameState.upgrade_staff_member("SF04")
+	GameState.staff_day_blocks_total = 4   # a weekend day
+	assert_eq(GameState.staff_day_hours("SF04"), 4)
