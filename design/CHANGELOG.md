@@ -1131,3 +1131,5 @@ Tests: `test_staff_tasks.gd` (quotas, ramp, trim, no-staff, ignored days) and th
 New Shop columns (Staff Effect, Value, Target, Slot, Days), Staff columns (Gift ...), Event Choices columns (Task Pool ...), Balance rows `Staff Gift: ...`. Fixed: a staff task's awareness change now reaches the right meter. Tests: `test_staff_pool_modifiers.gd`. New items have no pictures yet (the blue square shows): name the file in the Shop tab's Icon cell when drawn.
 
 The "Most tasks today" and "why these tasks today" lines are no longer shown on the Staff Assignments screen (2026-11-16, Cameron): they are working detail, kept in the run state only.
+
+Staff Assignments testing rubric (`design/STAFF_ASSIGNMENTS_RUBRIC.md`) and its first evaluation (`audit/staff_assignments_rubric_run.md`, tool `audit/tests/staff_rubric_run.tscn`) (2026-11-16, Cameron): 20 back-to-back days, 20 days at full volume and 10 days interrupted by levels. Findings: the ramp strands staff (Loyalty), rewards run richer than intended, levels cost most of the staff value. No game numbers were changed.

@@ -275,3 +275,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - BASE pictures undimmed; staff text and pictures reviewed (2026-11-16, Cameron)
 - Staff tasks expansion, phases 1 and 2 (2026-11-16, Cameron)
 - Staff tasks expansion, phases 3 to 6 (2026-11-16, Cameron)
+- Staff Assignments rubric and first evaluation (2026-11-16, Cameron)
