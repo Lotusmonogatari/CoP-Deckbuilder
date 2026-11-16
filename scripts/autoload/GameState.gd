@@ -240,6 +240,9 @@ var staff_day_confirmed := false
 var staff_day_delegated: Dictionary = {}
 var staff_full_days: Dictionary = {}
 var staff_report_pending: Dictionary = {}
+## Items given to staff for the day: { staff_id: item_id }, at most one each.
+## They are only used up when the day is confirmed.
+var staff_day_items: Dictionary = {}
 
 ## Level IDs the player has paid XP to unlock — only meaningful once
 ## rules.json's "level_gating_enabled" is true. A level whose relevant
@@ -575,7 +578,7 @@ const _SAVED_FIELDS := [
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
-	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "vote_unknown_percent", "vote_briefed",
+	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
@@ -1388,6 +1391,7 @@ func _staff_clear_day() -> void:
 	staff_day_plan = {}
 	staff_day_confirmed = false
 	staff_day_delegated = {}
+	staff_day_items = {}
 
 
 ## Brings the staff day up to the calendar. A confirmed plan whose day has just
@@ -1421,6 +1425,7 @@ func staff_ensure_day() -> void:
 	staff_day_plan = {}
 	staff_day_confirmed = false
 	staff_day_delegated = {}
+	staff_day_items = {}
 
 
 ## The named things the tasks need, all from the data: organizations (Boosters
@@ -1457,12 +1462,78 @@ func _staff_eval_members() -> Array:
 
 
 func _staff_day_info() -> Dictionary:
-	return {"blocks": staff_day_blocks_total, "delegated": staff_day_delegated, "full_days": staff_full_days}
+	var bonus := {}
+	for id: String in staff_day_items.keys():
+		bonus[id] = staff_item_hours(str(staff_day_items[id]))
+	return {"blocks": staff_day_blocks_total, "delegated": staff_day_delegated, "full_days": staff_full_days, "bonus": bonus}
 
 
 ## What the plan, as it stands, would do: the same numbers the day's end applies.
 func staff_projection() -> Dictionary:
 	return StaffTasks.evaluate(staff_day_pool, DataDB.staff_tasks, staff_day_plan, _staff_eval_members(), _staff_day_info())
+
+
+## Hours in one person's day today: the day's hours plus any item given to them.
+func staff_day_hours(staff_id: String) -> int:
+	return staff_day_blocks_total + staff_item_hours(str(staff_day_items.get(staff_id, "")))
+
+
+## The hours an item adds to a staff member's day (the Shop tab's Staff Hours); 0 for any other item.
+func staff_item_hours(item_id: String) -> int:
+	if item_id.is_empty():
+		return 0
+	var raw: Variant = DataDB.get_shop_item(item_id).get("staff_hours")
+	return 0 if raw == null else maxi(0, int(raw))
+
+
+## The items that can be given to staff, each { item_id, name, hours, held,
+## free }: how many you hold and how many are not yet promised to someone.
+## Only items you hold are listed.
+func staff_usable_items() -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	for item: Dictionary in DataDB.shop:
+		var id := str(item.get("item_id", ""))
+		var hours := staff_item_hours(id)
+		var held := item_count(id)
+		if hours <= 0 or held <= 0:
+			continue
+		var planned := 0
+		for value: Variant in staff_day_items.values():
+			if str(value) == id:
+				planned += 1
+		out.append({"item_id": id, "name": str(item.get("name", id)), "hours": hours, "held": held,
+			"free": maxi(0, held - planned), "icon": str(item.get("icon", ""))})
+	return out
+
+
+## Why an item cannot go to a person now: StaffTasks.REFUSE_LOCKED, REFUSE_ITEM_HAVE
+## (they already have one), REFUSE_ITEM_NONE (none left), or "".
+func staff_item_refusal(item_id: String, staff_id: String) -> String:
+	if staff_day_confirmed:
+		return StaffTasks.REFUSE_LOCKED
+	if staff_item_hours(item_id) <= 0 or hired_member(staff_id).is_empty():
+		return StaffTasks.REFUSE_UNKNOWN
+	if str(staff_day_items.get(staff_id, "")) == item_id:
+		return StaffTasks.REFUSE_ITEM_HAVE
+	for entry: Dictionary in staff_usable_items():
+		if str(entry["item_id"]) == item_id and int(entry["free"]) > 0:
+			return ""
+	return StaffTasks.REFUSE_ITEM_NONE
+
+
+## Gives a person an item for the day, replacing any they were given (one each).
+func staff_assign_item(item_id: String, staff_id: String) -> String:
+	var refusal := staff_item_refusal(item_id, staff_id)
+	if not refusal.is_empty():
+		return refusal
+	staff_day_items[staff_id] = item_id
+	return ""
+
+
+## Takes a person's item back (nothing once the day is confirmed).
+func staff_unassign_item(staff_id: String) -> void:
+	if not staff_day_confirmed:
+		staff_day_items.erase(staff_id)
 
 
 ## Blocks of a person's day already taken (tasks and delegated work).
@@ -1473,7 +1544,7 @@ func staff_blocks_used(staff_id: String) -> int:
 ## Why a task cannot go to a person now: one of StaffTasks.REFUSE_*, or "".
 func staff_assign_refusal(uid: String, staff_id: String) -> String:
 	return StaffTasks.assign_refusal(uid, staff_id, staff_day_pool, DataDB.staff_tasks, staff_day_plan,
-		staff_day_delegated, staff_day_blocks_total, staff_day_confirmed)
+		staff_day_delegated, staff_day_hours(staff_id), staff_day_confirmed)
 
 
 ## Gives a task to a person (taking it off whoever had it). Returns a refusal code or "".
@@ -1527,6 +1598,9 @@ func staff_confirm_day() -> String:
 	if not refusal.is_empty():
 		return refusal
 	staff_day_confirmed = true
+	# The coffee and tea given out are used up now.
+	for id: String in staff_day_items.keys():
+		_take_item(str(staff_day_items[id]))
 	return ""
 
 
@@ -2073,7 +2147,7 @@ func event_delegate_blocks(event: Dictionary, choice: Dictionary) -> int:
 
 ## Blocks of a person's day not yet used by tasks or delegated work.
 func staff_blocks_left(staff_id: String) -> int:
-	return maxi(0, staff_day_blocks_total - staff_blocks_used(staff_id))
+	return maxi(0, staff_day_hours(staff_id) - staff_blocks_used(staff_id))
 
 
 ## Everyone who could take a delegated choice, each { staff_id, name, role, fit,

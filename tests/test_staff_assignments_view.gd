@@ -15,7 +15,9 @@ func before_each() -> void:
 func _handlers() -> Dictionary:
 	return {"popup": func(_uid: String) -> void: pass, "dropped": func(_uid: String, _id: String) -> void: pass,
 		"profile": func(_id: String) -> void: pass, "confirm": func() -> void: pass,
-		"assign": func(_uid: String, _id: String) -> void: pass, "unassign": func(_uid: String) -> void: pass}
+		"assign": func(_uid: String, _id: String) -> void: pass, "unassign": func(_uid: String) -> void: pass,
+		"item_dropped": func(_item: String, _id: String) -> void: pass,
+		"assign_item": func(_item: String, _id: String) -> void: pass, "unassign_item": func(_id: String) -> void: pass}
 
 
 func _free(nodes: Array[Control]) -> void:
@@ -35,7 +37,7 @@ func test_the_screen_shows_every_task_and_every_person() -> void:
 	var chips := 0
 	var cards := 0
 	for row: Control in rows:
-		for node in row.find_children("*", "TaskChip", true, false):
+		for node in row.find_children("Task_*", "TaskChip", true, false):
 			chips += 1
 		if row.name.begins_with("StaffCard_"):
 			cards += 1

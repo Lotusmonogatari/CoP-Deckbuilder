@@ -11,6 +11,7 @@ extends PanelContainer
 signal tapped(uid: String)
 
 const TAP_SLOP := 24.0
+const ITEM_PREFIX := "ITEM:"
 
 var uid := ""
 var draggable := true
@@ -18,6 +19,9 @@ var _press_at := Vector2.ZERO
 var _pressing := false
 var _dragged := false
 var _icon_id := ""
+## What is dragged: a task's uid, or an item ({"item": item_id}). Set by setup_item().
+var payload: Dictionary = {}
+var _item_texture: Texture2D
 
 
 ## `compact` is the small icon-only version shown inside a person's box.
@@ -79,6 +83,58 @@ func setup(task_uid: String, title: String, icon_id: String, blocks: int, frame:
 	column.add_child(cost)
 
 
+## An item for staff (coffee, tea) as a card: its picture, name and the hours it
+## adds, and how many are held. `compact` is the small version inside a person's
+## box. Dragged into a box it carries {"item": item_id}; tapped it opens its popup
+## (the uid is "ITEM:" and the item id, so one tap handler tells them apart).
+func setup_item(item_id: String, title: String, icon_name: String, caption: String, frame: Color,
+		compact: bool, can_drag: bool) -> void:
+	uid = ITEM_PREFIX + item_id
+	payload = {"item": item_id}
+	draggable = can_drag
+	_item_texture = ArtLoader.item_icon(icon_name)
+	name = "Item_" + item_id
+	mouse_filter = Control.MOUSE_FILTER_STOP
+	add_to_group("drag_claimers")
+	tooltip_text = title
+	var box := StyleBoxFlat.new()
+	box.bg_color = Color(0.13, 0.15, 0.2, 0.95)
+	box.border_color = frame
+	box.set_border_width_all(4)
+	box.set_corner_radius_all(10)
+	box.set_content_margin_all(6)
+	add_theme_stylebox_override("panel", box)
+	var column := VBoxContainer.new()
+	column.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	column.add_theme_constant_override("separation", 2)
+	add_child(column)
+	var picture := TextureRect.new()
+	picture.texture = _item_texture
+	picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	picture.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	picture.custom_minimum_size = Vector2(88, 88) if compact else Vector2(110, 110)
+	picture.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	column.add_child(picture)
+	custom_minimum_size = Vector2(130 if compact else 190, 0)
+	if not compact:
+		var label := Label.new()
+		label.text = title
+		label.theme_type_variation = "SmallLabel"
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.custom_minimum_size = Vector2(170, 0)
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		column.add_child(label)
+	var note := Label.new()
+	note.text = caption
+	note.theme_type_variation = "SmallLabel"
+	note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	note.modulate = Color(1, 1, 1, 0.8)
+	note.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	column.add_child(note)
+
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
 		var button := event as InputEventMouseButton
@@ -98,13 +154,22 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	if not draggable:
 		return null
 	_dragged = true
-	var preview := PlaceholderArt.new()
-	preview.kind = PlaceholderArt.Kind.ICON
-	preview.art_id = _icon_id
+	var preview: Control
+	if payload.is_empty():
+		var art := PlaceholderArt.new()
+		art.kind = PlaceholderArt.Kind.ICON
+		art.art_id = _icon_id
+		preview = art
+	else:
+		var picture := TextureRect.new()
+		picture.texture = _item_texture
+		picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		preview = picture
 	preview.custom_minimum_size = Vector2(88, 88)
 	preview.modulate = Color(1, 1, 1, 0.85)
 	set_drag_preview(preview)
-	return {"uid": uid}
+	return payload if not payload.is_empty() else {"uid": uid}
 
 
 func _notification(what: int) -> void:

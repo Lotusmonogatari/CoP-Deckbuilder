@@ -2903,7 +2903,8 @@ func _tier_label(entry: Dictionary, current_tier: int) -> String:
 
 func _assignment_handlers() -> Dictionary:
 	return {"popup": _on_task_tapped, "dropped": _on_task_given, "profile": _show_staff_profile,
-		"confirm": _on_confirm_day, "assign": _on_task_given_from_popup, "unassign": _on_task_taken_back}
+		"confirm": _on_confirm_day, "assign": _on_task_given_from_popup, "unassign": _on_task_taken_back,
+		"item_dropped": _on_item_given, "assign_item": _on_item_given_from_popup, "unassign_item": _on_item_taken_back}
 
 
 func _show_staff_assignments() -> void:
@@ -2914,7 +2915,27 @@ func _show_staff_assignments() -> void:
 
 func _on_task_tapped(uid: String) -> void:
 	_task_popup_panel.top_aligned = true
-	_task_popup_panel.open("", StaffAssignmentsView.popup_rows(uid, _assignment_handlers()), "", Text.say("assign.close"))
+	var rows := StaffAssignmentsView.item_popup_rows(uid.trim_prefix(TaskChip.ITEM_PREFIX), _assignment_handlers()) \
+		if uid.begins_with(TaskChip.ITEM_PREFIX) else StaffAssignmentsView.popup_rows(uid, _assignment_handlers())
+	_task_popup_panel.open("", rows, "", Text.say("assign.close"))
+
+
+func _on_item_given(item_id: String, staff_id: String) -> void:
+	GameState.staff_assign_item(item_id, staff_id)
+	SaveManager.autosave()
+	_show_staff_assignments()
+
+
+func _on_item_given_from_popup(item_id: String, staff_id: String) -> void:
+	_task_popup_panel.close()
+	_on_item_given(item_id, staff_id)
+
+
+func _on_item_taken_back(staff_id: String) -> void:
+	_task_popup_panel.close()
+	GameState.staff_unassign_item(staff_id)
+	SaveManager.autosave()
+	_show_staff_assignments()
 
 
 func _on_task_given(uid: String, staff_id: String) -> void:

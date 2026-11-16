@@ -1297,10 +1297,10 @@ SHEETS = {
             # and how many blocks of that person's day it takes (blank = the
             # event's hours). StaffTasks.delegate_fit() says how well each person does it.
             ("Delegate Role", "delegate_role", "str"),
-            ("Delegate Blocks", "delegate_blocks", "int"),
+            ("Delegate Hours", "delegate_blocks", "int"),
         ],
         "optional": ["Starts Level", "Commitment", "Promise Kept", "Promise Broken", "Promise Kept Text",
-                     "Delegate Role", "Delegate Blocks"],
+                     "Delegate Role", "Delegate Hours"],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
@@ -1637,7 +1637,7 @@ SHEETS = {
                      "Bonus 2 Role", "Bonus 2 Min Tier", "Bonus 2 Amount",
                      "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Duration Units", "Card Tier",
                      "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase",
-                     "In Marketplace (Yes/No)", "Inventory (Personal/Office)", "Deck Size Increase"],
+                     "In Marketplace (Yes/No)", "Inventory (Personal/Office)", "Deck Size Increase", "Staff Hours"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -1738,6 +1738,10 @@ SHEETS = {
             # 2026-10-31: the Marketplace tab the item is held and sold under.
             # Office = used only by events and visitor choices; blank = Personal.
             ("Inventory (Personal/Office)", "inventory", "str"),
+            # 2026-11-16 (Cameron): hours one of these adds to a staff member's
+            # working day when given to them on the Staff Assignments screen
+            # (coffee and tea). Blank = not a staff item.
+            ("Staff Hours", "staff_hours", "int"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's
@@ -3151,7 +3155,7 @@ def validate(data, report):
         if row.get("delegate_role") not in (None, "") and row["delegate_role"] not in staff_roles:
             report.error("Event Choices", f"{eid} {row.get('choice')}: Delegate Role '{row['delegate_role']}' is not a Staff role")
         if row.get("delegate_blocks") is not None and not (1 <= int(row["delegate_blocks"]) <= 8):
-            report.error("Event Choices", f"{eid} {row.get('choice')}: Delegate Blocks must be 1 to 8")
+            report.error("Event Choices", f"{eid} {row.get('choice')}: Delegate Hours must be 1 to 8")
         if eid not in event_ids:
             report.error("Event Choices", f"{eid} is not an Event ID in the Events tab")
         if row["choice"] not in ("A", "B", "C", "D"):

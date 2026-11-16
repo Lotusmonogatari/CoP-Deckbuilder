@@ -52,6 +52,9 @@ static func rows(handlers: Dictionary) -> Array[Control]:
 	out.append(UiKit.line(Text.say("assign.date_line", {"date": WeekCalendar.date_label(GameState.staff_day_key), "count": waiting})))
 	out.append(UiKit.line(Text.say("assign.hint")))
 
+	out.append(UiKit.heading(Text.say("assign.items_heading")))
+	out.append(_items_row(handlers))
+
 	out.append(UiKit.heading(Text.say("assign.tray_heading")))
 	out.append(_tray(given, handlers))
 
@@ -70,6 +73,32 @@ static func rows(handlers: Dictionary) -> Array[Control]:
 	if GameState.staff_day_confirmed:
 		out.append(UiKit.line(Text.say("assign.locked_note")))
 	return out
+
+
+## The coffee and tea you hold, as cards to drag into a person's box (one item
+## per person; each adds hours to their day).
+static func _items_row(handlers: Dictionary) -> Control:
+	var flow := HFlowContainer.new()
+	flow.name = "ItemTray"
+	flow.add_theme_constant_override("h_separation", 12)
+	flow.add_theme_constant_override("v_separation", 12)
+	flow.custom_minimum_size = Vector2(UiKit.LINE_WIDTH + 200, 0)
+	var any := false
+	for item: Dictionary in GameState.staff_usable_items():
+		any = true
+		var chip := TaskChip.new()
+		chip.setup_item(str(item["item_id"]), str(item["name"]), str(item["icon"]),
+			Text.say("assign.item_caption_one", {"free": int(item["free"])}) if int(item["hours"]) == 1 \
+				else Text.say("assign.item_caption", {"hours": int(item["hours"]), "free": int(item["free"])}),
+			PLAIN_FRAME, false, not GameState.staff_day_confirmed and int(item["free"]) > 0)
+		chip.theme = card_theme()
+		chip.tapped.connect(handlers["popup"])
+		if int(item["free"]) <= 0:
+			chip.modulate = Color(1, 1, 1, 0.55)
+		flow.add_child(chip)
+	if not any:
+		flow.add_child(UiKit.line(Text.say("assign.items_none")))
+	return flow
 
 
 static func _tray(given: Dictionary, handlers: Dictionary) -> Control:
@@ -148,7 +177,7 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 	column.add_child(StaffLoyaltyView.bar(loyalty))
 
 	var used := GameState.staff_blocks_used(staff_id)
-	var total := GameState.staff_day_blocks_total
+	var total := GameState.staff_day_hours(staff_id)
 	column.add_child(UiKit.line(Text.say("assign.blocks_line", {"used": used, "total": total})))
 	column.add_child(blocks_bar(used, total))
 
@@ -160,12 +189,25 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 	var box := TaskBox.new()
 	box.setup(staff_id)
 	box.dropped.connect(handlers["dropped"])
+	box.item_dropped.connect(handlers["item_dropped"])
 	column.add_child(box)
 	var inside := HFlowContainer.new()
 	inside.add_theme_constant_override("h_separation", 8)
 	inside.add_theme_constant_override("v_separation", 8)
 	box.add_child(inside)
 	var holds := false
+	var given_item := str(GameState.staff_day_items.get(staff_id, ""))
+	if not given_item.is_empty():
+		holds = true
+		var held_item := DataDB.get_shop_item(given_item)
+		var item_chip := TaskChip.new()
+		item_chip.setup_item(given_item, str(held_item.get("name", given_item)), str(held_item.get("icon", "")),
+			Text.say("assign.item_in_box_one") if GameState.staff_item_hours(given_item) == 1 \
+				else Text.say("assign.item_in_box", {"hours": GameState.staff_item_hours(given_item)}),
+			FIT_COLORS["strong"], true, false)
+		item_chip.theme = card_theme()
+		item_chip.tapped.connect(handlers["popup"])
+		inside.add_child(item_chip)
 	for uid: Variant in GameState.staff_day_plan.get(staff_id, []):
 		var entry := StaffTasks.entry_for(GameState.staff_day_pool, str(uid))
 		if entry.is_empty():
@@ -300,9 +342,22 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 	out.append(UiKit.line(str(entry.get("context", ""))))
 	out.append(UiKit.heading(Text.say("assign.popup_work_heading")))
 	out.append(UiKit.line(str(task.get("work", ""))))
-	out.append(UiKit.heading(Text.say("assign.popup_time_heading")))
+	# One line: "Time cost" on the left, "3 Hours" on the right (Cameron, 2026-11-16).
 	var blocks := int(task.get("blocks", 1))
-	out.append(UiKit.line(Text.say("assign.time_one" if blocks == 1 else "assign.time_many", {"count": blocks})))
+	var time_row := HBoxContainer.new()
+	time_row.name = "TimeRow"
+	time_row.add_theme_constant_override("separation", 8)
+	var time_heading := UiKit.heading(Text.say("assign.popup_time_heading"))
+	time_heading.custom_minimum_size = Vector2(0, 0)
+	time_heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	time_row.add_child(time_heading)
+	var time_value := Label.new()
+	time_value.name = "TimeValue"
+	time_value.text = Text.say("assign.time_one" if blocks == 1 else "assign.time_many", {"count": blocks})
+	time_value.theme_type_variation = "HeaderLabel"
+	time_value.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	time_row.add_child(time_value)
+	out.append(time_row)
 
 	out.append(UiKit.heading(Text.say("assign.popup_outcome_heading")))
 	# Three slanted blocks, colour-coded: the positive, neutral and negative
@@ -331,7 +386,6 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 	strip.add_theme_constant_override("separation", 14)
 	for member: Dictionary in GameState.staff_members():
 		var staff_id := str(member["staff_id"])
-		var fit := StaffTasks.effective_fit(task, str(member["role"]), GameState.staff_loyalty_of(staff_id))
 		var note := ""
 		if staff_id == holder:
 			note = Text.say("assign.tile_has_it")
@@ -341,7 +395,7 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 					note = Text.say("assign.tile_locked")
 				StaffTasks.REFUSE_BLOCKS:
 					note = Text.say("assign.tile_no_room")
-		strip.add_child(_staff_tile(staff_id, fit, note, handlers["assign"].bind(uid, staff_id)))
+		strip.add_child(_staff_tile(staff_id, str(member["role"]), note, handlers["assign"].bind(uid, staff_id)))
 	var scroll := ScrollContainer.new()
 	scroll.name = "StaffScroll"
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
@@ -371,13 +425,13 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 
 
 ## The size of one staff picture tile in the row.
-const TILE_SIZE := Vector2(250, 470)
+const TILE_SIZE := Vector2(290, 540)
 
 
 ## A staff member as a large picture you tap to give them the task: their
-## name and how well they suit it in words (and the frame's colour). A person
+## name and their role. A person
 ## who cannot take it is dimmed, with the reason written on the tile.
-static func _staff_tile(staff_id: String, fit: String, note: String, on_press: Callable) -> Button:
+static func _staff_tile(staff_id: String, role: String, note: String, on_press: Callable) -> Button:
 	var button := Button.new()
 	button.name = "GiveTo_" + staff_id
 	button.custom_minimum_size = TILE_SIZE
@@ -406,10 +460,12 @@ static func _staff_tile(staff_id: String, fit: String, note: String, on_press: C
 	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	column.add_child(name_label)
 	var caption := Label.new()
-	caption.text = note if not note.is_empty() else fit_label(fit)
+	# The role, in plain text: no colour code for how well they suit it.
+	caption.text = note if not note.is_empty() else role
+	caption.theme_type_variation = "SmallLabel"
+	caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	caption.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	caption.add_theme_color_override("font_color", FIT_COLORS.get(fit, Color.WHITE) if note.is_empty() else Color("#bcc1cc"))
 	column.add_child(caption)
 	button.add_child(column)
 	button.theme = card_theme()
@@ -423,6 +479,84 @@ static func _slash(text: String, kind: String) -> SlashBlock:
 	block.name = "Result_" + kind
 	block.setup(text, fills.get(kind, Color("#4b505a")), FIT_COLORS.get(kind, Color.WHITE))
 	return block
+
+
+# ---------------------------------------------------------------------------
+# The item popup (coffee and tea for staff)
+# ---------------------------------------------------------------------------
+
+## What one staff item does and who it can be given to. `handlers`:
+## assign_item(item_id, staff_id), unassign_item(staff_id).
+static func item_popup_rows(item_id: String, handlers: Dictionary) -> Array[Control]:
+	var out: Array[Control] = []
+	var item := DataDB.get_shop_item(item_id)
+	var hours := GameState.staff_item_hours(item_id)
+	if item.is_empty() or hours <= 0:
+		return out
+	var head := HBoxContainer.new()
+	head.add_theme_constant_override("separation", 16)
+	var picture := TextureRect.new()
+	picture.texture = ArtLoader.item_icon(str(item.get("icon", "")))
+	picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	picture.custom_minimum_size = Vector2(120, 120)
+	head.add_child(picture)
+	var title := UiKit.heading(str(item.get("name", item_id)))
+	title.custom_minimum_size = Vector2(600, 0)
+	head.add_child(title)
+	out.append(head)
+	out.append(UiKit.heading(Text.say("assign.item_effect_heading")))
+	out.append(UiKit.line(Text.say("assign.item_effect_one" if hours == 1 else "assign.item_effect_many", {"hours": hours})))
+	out.append(UiKit.line(Text.say("assign.item_one_each")))
+
+	var holder := ""
+	for staff_id: String in GameState.staff_day_items.keys():
+		if str(GameState.staff_day_items[staff_id]) == item_id:
+			holder = staff_id
+	out.append(UiKit.heading(Text.say("assign.give_heading")))
+	var strip := HBoxContainer.new()
+	strip.name = "StaffStrip"
+	strip.add_theme_constant_override("separation", 14)
+	for member: Dictionary in GameState.staff_members():
+		var staff_id := str(member["staff_id"])
+		var note := ""
+		match GameState.staff_item_refusal(item_id, staff_id):
+			StaffTasks.REFUSE_LOCKED:
+				note = Text.say("assign.tile_locked")
+			StaffTasks.REFUSE_ITEM_HAVE:
+				note = Text.say("assign.tile_has_it")
+			StaffTasks.REFUSE_ITEM_NONE:
+				note = Text.say("assign.tile_none_left")
+		strip.add_child(_staff_tile(staff_id, str(member["role"]), note, handlers["assign_item"].bind(item_id, staff_id)))
+	out.append(_strip_frame(strip))
+	var none := UiKit.action_button(Text.say("assign.no_assignment"), "", handlers["unassign_item"].bind(holder), 100.0)
+	none.name = "NoAssignmentButton"
+	none.disabled = holder.is_empty() or GameState.staff_day_confirmed
+	out.append(none)
+	return out
+
+
+## The gold-framed, sideways-scrolling row both popups put their staff pictures in.
+static func _strip_frame(strip: HBoxContainer) -> Control:
+	var scroll := ScrollContainer.new()
+	scroll.name = "StaffScroll"
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.custom_minimum_size = Vector2(0, TILE_SIZE.y + 36)
+	scroll.add_child(strip)
+	DragScroll.attach(scroll, false)
+	var frame := PanelContainer.new()
+	frame.name = "StaffFrame"
+	var frame_style := StyleBoxFlat.new()
+	frame_style.bg_color = Color(0, 0, 0, 0.45)
+	frame_style.border_color = FIT_COLORS["strong"]
+	frame_style.set_border_width_all(4)
+	frame_style.set_corner_radius_all(10)
+	frame_style.set_content_margin_all(10)
+	frame.add_theme_stylebox_override("panel", frame_style)
+	frame.theme = card_theme()
+	frame.add_child(scroll)
+	return frame
 
 
 # ---------------------------------------------------------------------------

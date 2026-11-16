@@ -4,6 +4,8 @@ extends PanelContainer
 ## task when GameState says it fits the person's day. Cameron, 2026-11-16.
 
 signal dropped(uid: String, staff_id: String)
+## An item for staff (coffee, tea) was dropped here.
+signal item_dropped(item_id: String, staff_id: String)
 
 var staff_id := ""
 
@@ -22,6 +24,8 @@ func setup(id: String) -> void:
 
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+	if data is Dictionary and (data as Dictionary).has("item"):
+		return GameState.staff_item_refusal(str((data as Dictionary)["item"]), staff_id).is_empty()
 	if not (data is Dictionary) or not (data as Dictionary).has("uid"):
 		return false
 	var uid := str((data as Dictionary)["uid"])
@@ -33,4 +37,7 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
+	if (data as Dictionary).has("item"):
+		item_dropped.emit(str((data as Dictionary)["item"]), staff_id)
+		return
 	dropped.emit(str((data as Dictionary)["uid"]), staff_id)

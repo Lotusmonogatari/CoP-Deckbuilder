@@ -1095,3 +1095,7 @@ Also: the Save button-hook no longer connects a re-added button twice. Tests: `t
 - **Every word editable in the workbook.** The "XP" and awareness names in projections are Text rows; the posts and committee phrase that find ministers and committees in the opponents' Title column are Rules tab rows (`staff_task_official_prefixes`, `staff_task_committee_marker`); task titles, context and work are the Staff Assignments tab; effect names in that tab are fixed keywords (the four meta names, XP, District awareness, National awareness, Standing, Loyalty, Loyalty all).
 
 Task popup redesign (2026-11-16, Cameron): the outcome is three slanted colour-coded blocks (positive, neutral, negative) with no staff role named; staff are large pictures in a gold-framed row that scrolls sideways (tap to give); a No Assignment button takes the task back; Close is at the bottom. New `SlashBlock.gd`.
+
+## Staff Assignments: hours, Assign To, roles, items for staff (2026-11-16, Cameron)
+
+"Blocks" is now "Hours" everywhere the player reads it (the Event Choices column is `Delegate Hours`). The task popup says "Assign To", its Time cost is one line ("Time cost" left, "3 Hours" right), and each staff picture shows the person's role with no fitness colour. New: the **Items for your staff** row at the top of the screen (coffee +1 hour, tea +1, Kaiju-sized +2), one item per person, drag into their box, used up when the day is confirmed. New Shop column `Staff Hours`; tests `test_staff_items.gd`.

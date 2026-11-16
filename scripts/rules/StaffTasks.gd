@@ -25,6 +25,8 @@ const REFUSE_LOCKED := "locked"          # the day is already confirmed
 const REFUSE_TAKEN := "taken"            # someone already has this task
 const REFUSE_BLOCKS := "blocks"          # not enough of their day is left
 const REFUSE_UNKNOWN := "unknown"
+const REFUSE_ITEM_HAVE := "item_have"    # they already have this item
+const REFUSE_ITEM_NONE := "item_none"    # none left to give
 
 ## Effect names the Staff Assignments tab may use.
 const META_NAMES := ["Constituency support", "Reputation", "Funds", "Party support"]
@@ -213,7 +215,7 @@ static func assign_refusal(uid: String, staff_id: String, pool: Array, tasks: Ar
 
 ## Everything the plan does, as numbers. `members` are { staff_id, role, tier,
 ## loyalty }; `plan` is { staff_id: [uid, ...] }; `day` is { blocks, delegated,
-## full_days }. Returns:
+## full_days, bonus } (bonus: { staff_id: extra hours from an item }). Returns:
 ##   lines     one per given task { uid, staff_id, fit, effects [{name, amount}] }
 ##   meta      { "Reputation": +/-n, ... } after the daily caps
 ##   xp, awareness { District, National }, standing { organization: n }
@@ -273,17 +275,19 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 		# The day's shape for this person.
 		var used := blocks_used(id, pool, tasks, plan, delegated)
 		(result["used"] as Dictionary)[id] = used
+		# Coffee and tea add hours to this person's day (the bonus).
+		var day_hours := blocks + int((day.get("bonus", {}) as Dictionary).get(id, 0))
 		var streak := int(((day.get("full_days", {}) as Dictionary).get(id, 0)))
 		if used <= 0:
 			change -= Levers.whole("staff_tasks_idle_loyalty")
 			streak = 0
-		elif used >= blocks:
+		elif used >= day_hours:
 			streak += 1
 			if streak >= Levers.whole("staff_tasks_full_streak_days"):
 				change -= Levers.whole("staff_tasks_full_streak_loyalty")
 		else:
 			streak = 0
-			if used >= int(ceil(blocks * Levers.num("staff_tasks_healthy_minimum_percent") / 100.0)):
+			if used >= int(ceil(day_hours * Levers.num("staff_tasks_healthy_minimum_percent") / 100.0)):
 				change += Levers.whole("staff_tasks_healthy_loyalty")
 		(result["full_days"] as Dictionary)[id] = streak
 		(result["loyalty"] as Dictionary)[id] = change

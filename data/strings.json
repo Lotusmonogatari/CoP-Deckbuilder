@@ -7240,7 +7240,7 @@
   {
     "key": "assign.blocks_short",
     "where": "Staff Assignments, task card cost",
-    "english": "{count} blocks",
+    "english": "{count} hours",
     "placeholders": "count",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7261,7 +7261,7 @@
   {
     "key": "assign.blocks_line",
     "where": "Staff Assignments, workload",
-    "english": "{used} of {total} blocks of their day used",
+    "english": "{used} of {total} hours of their day used",
     "placeholders": "used, total",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7359,14 +7359,14 @@
   {
     "key": "assign.time_one",
     "where": "Task popup, time cost of one block",
-    "english": "1 block of a person's day",
+    "english": "1 Hour",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
   {
     "key": "assign.time_many",
     "where": "Task popup, time cost",
-    "english": "{count} blocks of a person's day",
+    "english": "{count} Hours",
     "placeholders": "count",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7408,7 +7408,7 @@
   {
     "key": "assign.give_heading",
     "where": "Task popup, who can do it",
-    "english": "Give it to",
+    "english": "Assign To",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7484,8 +7484,8 @@
   },
   {
     "key": "assign.blocks_one",
-    "where": "Staff Assignments, task card cost of one block",
-    "english": "1 block",
+    "where": "Staff Assignments, task card cost of one hour",
+    "english": "1 hour",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7520,14 +7520,14 @@
   {
     "key": "event.delegate_intro",
     "where": "Event, who goes",
-    "english": "A {role} is the best person for this. It takes {count} blocks of their day.",
+    "english": "A {role} is the best person for this. It takes {count} hours of their day.",
     "placeholders": "role, count",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
   {
     "key": "event.delegate_pick",
     "where": "Event, who goes, one person",
-    "english": "{name} ({fit}) · {left} blocks free",
+    "english": "{name} ({fit}) · {left} hours free",
     "placeholders": "name, fit, left",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7562,7 +7562,7 @@
   {
     "key": "event.delegate_intro_one",
     "where": "Event, who goes (one block)",
-    "english": "A {role} is the best person for this. It takes 1 block of their day.",
+    "english": "A {role} is the best person for this. It takes 1 hour of their day.",
     "placeholders": "role",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7612,6 +7612,83 @@
     "key": "assign.no_assignment",
     "where": "Task popup, button to take the task back",
     "english": "No Assignment",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.items_heading",
+    "where": "Staff Assignments, items for staff heading",
+    "english": "Items for your staff",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.items_none",
+    "where": "Staff Assignments, no staff items held",
+    "english": "You hold no coffee or tea. They are sold in the Marketplace.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_caption",
+    "where": "Staff Assignments, a staff item card",
+    "english": "+{hours} hours · {free} left",
+    "placeholders": "hours, free",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_caption_one",
+    "where": "Staff Assignments, a staff item card, one hour",
+    "english": "+1 hour · {free} left",
+    "placeholders": "free",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_in_box",
+    "where": "Staff Assignments, a staff item in a person's box",
+    "english": "+{hours} hours",
+    "placeholders": "hours",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_in_box_one",
+    "where": "Staff Assignments, a staff item in a person's box, one hour",
+    "english": "+1 hour",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_effect_heading",
+    "where": "Item popup, heading",
+    "english": "What it does",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_effect_one",
+    "where": "Item popup, one hour",
+    "english": "Adds 1 hour to one person's working day.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_effect_many",
+    "where": "Item popup",
+    "english": "Adds {hours} hours to one person's working day.",
+    "placeholders": "hours",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_one_each",
+    "where": "Item popup, the rule",
+    "english": "Each person can have one item a day. It is used up when you confirm the day.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.tile_none_left",
+    "where": "Item popup, a staff picture when none of the item is left",
+    "english": "None left",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }
