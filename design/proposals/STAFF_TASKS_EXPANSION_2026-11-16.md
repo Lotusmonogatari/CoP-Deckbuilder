@@ -192,3 +192,94 @@ Total over 1,000 lines, so it is split into phases with a "Go" each (section 8).
 | Regional gifts as Loyalty; Pool Maximum | Not yet decided | Defaults stand: use SH25 to SH33; Pool Maximum 14 (with 64 tasks, a family quota of 0 to 3 may suit better) |
 
 Revised phases: 1 Content (47 tasks) · 2 Quotas · 3 Drivers (no backlog) · 4 Person items · 5 Pool items · 6 Tuning. Code estimate drops by about 120 lines.
+
+---
+
+# Revision 2 (Cameron, 2026-11-16): ramp-up, no-staff penalties, gift tastes, the day's maximum
+
+## 11. The ramp-up: how many tasks a day may be delivered
+
+The **families decide how many tasks are generated** (their Min to Max ranges, then drivers and items); a **daily maximum then trims that list** before the player sees it. The maximum ramps up over the first weeks.
+
+| Calendar week | Most tasks delivered a day |
+|---|---|
+| 1 (first week) | **0** (no tasks: the system is dormant) |
+| 2 | **1** |
+| 3 | **2** |
+| 4 | **3** |
+| 5 and after | **15** (the default maximum) |
+
+So in week 2, even if every family rolls its maximum, one task is delivered. The maximum is **not a constant**: it is the ramp row for the week, plus any change from an item or an event for that day, floored at 0.
+
+**New tab: Staff Task Ramp** (every number editable)
+
+| Column | Meaning | Draft |
+|---|---|---|
+| Week | Calendar week, 1 upward (the last row, "5+", covers every later week) | 1, 2, 3, 4, 5+ |
+| Max Tasks | Most tasks delivered on a weekday | 0, 1, 2, 3, 15 |
+| Weekend Factor | Share of that weekday maximum on a weekend day | 50% |
+| Note | Why | "Week 1 is a free week" |
+
+Things that change the day's maximum, all workbook-editable:
+
+| Source | Where it lives |
+|---|---|
+| An item (Marketplace, Office slot) | Shop columns `Staff Effect` = Pool Max, `Staff Value` = +/- n, `Staff Days` |
+| An event | An Event Choices column `Task Pool Max Δ` (+/- n) and `Task Pool Days` (how long) |
+| A driver | A row in Staff Task Drivers with Family = MAX |
+
+Order of a day's draw: (1) each family rolls its quota; (2) drivers and items add or cut; (3) tasks are picked inside each family; (4) **the maximum trims the list** (random, seeded by the date, unless you choose another trim priority below); (5) the player is shown the rest.
+
+## 12. Assignments arrive whether or not you have staff
+
+The day's tasks are generated **even when no one is hired** (from week 2 on, once the ramp allows). The consequences must be explicit:
+
+| Situation at the end of a day | Result |
+|---|---|
+| Tasks delivered, a **Due** task nobody took (no staff, or staff but it was left alone) | The Due penalty applies |
+| Staff exist and the plan was confirmed | As built: rewards, penalties, Loyalty, idle and healthy days, time off |
+| A long level skipped the day over | Goes out of effect: no rewards and no penalties (unchanged) |
+| Week 1 (maximum 0) | Nothing is delivered, so nothing can be penalised |
+
+A player with no staff therefore sees the day's tasks (read-only), cannot assign any, and pays each Due task's penalty at day end. The Staff Assignments screen says so ("Hire staff to do these. Due tasks left undone cost you."), and the Office shows a small badge when Due tasks are waiting. **Decision needed (section 15, question 3): whether a day with staff that the player simply never confirmed also pays Due penalties** (today it does nothing).
+
+## 13. Gifts: every staff member has a taste
+
+Each person gets a gift preference and a Loyalty adjustment, so a regional gift is a choice, not a flat bonus. Gifts are the nine SH25 to SH33 regional items (and any later gift item).
+
+**New Staff tab columns** (21 rows to fill; draft content for you to rewrite):
+
+| Column | Meaning |
+|---|---|
+| Gift Likes | Item IDs this person loves (one or two) |
+| Gift Dislikes | Item IDs they dislike (zero or one) |
+| Gift Like Loyalty | Loyalty gained from a liked gift (draft +12) |
+| Gift Neutral Loyalty | Loyalty from any other gift (draft +4) |
+| Gift Dislike Loyalty | Loyalty change from a disliked gift (draft -4) |
+
+The numbers can differ per person (a prickly person is harder to please: Like +8; an easy one +15), and the Balance tab holds the defaults used when a cell is blank. The popup shows the taste *only after* the gift is given ("Hana loves it") unless a staff profile line reveals it; a "learn their taste" rule (visible after one gift, or after N weeks) is an open question. Using the gift is the drag-into-a-box action already built for items; it is used up on confirm.
+
+## 14. Everything is editable in the workbook (the data map)
+
+| Value | Where it lives |
+|---|---|
+| Tasks (text, hours, fits, rewards, penalties, family, weight) | **Staff Assignments** tab |
+| Each family's daily Min, Max, Cap, weekend factor | **Staff Task Families** tab (new) |
+| The weekly ramp and the default maximum (15), weekend factor | **Staff Task Ramp** tab (new) |
+| What raises or lowers a family or the maximum (state, thresholds, amounts) | **Staff Task Drivers** tab (new) |
+| Item effects (hours, strong-fit family, reward boost, Loyalty, pool +/-, maximum +/-, days, slot) | **Shop** tab columns (`Staff Effect`, `Staff Value`, `Staff Target`, `Staff Slot`, `Staff Days`); the existing `Staff Hours` folds in |
+| Event effects on the day's volume or maximum | **Event Choices** columns (new, optional) |
+| Gift tastes and their Loyalty | **Staff** tab columns (new) and Balance defaults |
+| Daily caps, idle/healthy/overwork Loyalty, rank bonus | Already **Balance** rows |
+| Every sentence (screen, popups, reports, the "why these tasks today" lines) | **Text** tab; task titles, context and work in the Staff Assignments tab |
+| The one-word family names | The `Family` column on the Staff Assignments tab |
+| The effect keywords (Standing, Loyalty and so on) | Fixed words the code reads; documented in the tab header |
+
+No design number or sentence is left in a script. The current `Staff Tasks: Pool Size` and `Weekend Pool Size` Balance rows are retired in favour of the ramp tab.
+
+## 15. Decisions for Cameron
+
+1. **After week 4:** the maximum becomes 15 (the default), as read from your note. Or should it stay 3 until you raise it?
+2. **Trim priority:** when the maximum cuts a list, which tasks are kept? Random (seeded) / Due tasks first / Family order?
+3. **Ignored days:** if staff exist and the player never confirms the day, do Due penalties still apply?
+4. **Gift tastes:** a list of liked and disliked items per person (proposed), or one favourite each?
