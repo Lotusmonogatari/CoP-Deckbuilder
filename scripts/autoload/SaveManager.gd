@@ -62,7 +62,9 @@ func _ready() -> void:
 ## that) and nothing before a run is started or loaded, so pressing a title
 ## button can never write a blank run over the player's real save.
 func _on_node_added(node: Node) -> void:
-	if node is BaseButton:
+	# A button taken out of a panel and put back (Overlay.open re-adds its Back
+	# and Confirm buttons every time) arrives here again: connect only once.
+	if node is BaseButton and not (node as BaseButton).pressed.is_connected(_queue_click_save):
 		(node as BaseButton).pressed.connect(_queue_click_save)
 
 

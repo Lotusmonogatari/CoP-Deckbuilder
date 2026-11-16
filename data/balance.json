@@ -324,5 +324,8 @@
   "staff_tasks_week_loyalty_cap": 6,
   "staff_tasks_time_off_loyalty": 1,
   "staff_tasks_time_off_unused_loyalty": 1,
+  "staff_delegate_hours_percent": 50,
+  "staff_delegate_fair_gain_percent": 50,
+  "staff_delegate_loyalty": 1,
   "xp_tiers": {}
 }

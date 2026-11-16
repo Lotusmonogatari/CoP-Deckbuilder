@@ -1476,9 +1476,20 @@ func staff_assign_refusal(uid: String, staff_id: String) -> String:
 
 ## Gives a task to a person (taking it off whoever had it). Returns a refusal code or "".
 func staff_assign(uid: String, staff_id: String) -> String:
+	if staff_day_confirmed:
+		return StaffTasks.REFUSE_LOCKED
+	var holder := ""
+	for id: String in staff_day_plan.keys():
+		if (staff_day_plan[id] as Array).has(uid):
+			holder = id
 	staff_unassign(uid)
 	var refusal := staff_assign_refusal(uid, staff_id)
 	if not refusal.is_empty():
+		# Nothing moved: it goes back to whoever had it.
+		if not holder.is_empty():
+			if not staff_day_plan.has(holder):
+				staff_day_plan[holder] = []
+			(staff_day_plan[holder] as Array).append(uid)
 		return refusal
 	if not staff_day_plan.has(staff_id):
 		staff_day_plan[staff_id] = []
@@ -1943,7 +1954,7 @@ func roll_random_event() -> String:
 ## The player's choice: pays any choice price, rolls and applies every reward,
 ## reveals a level, spends the event's hours and starts its cooldown.
 ## Returns { ok, result_text, lines: [String], chips: [..], revealed: level name }.
-func apply_event_choice(event_id: String, letter: String) -> Dictionary:
+func apply_event_choice(event_id: String, letter: String, delegate_id: String = "") -> Dictionary:
 	var event := get_event(event_id)
 	var chosen := {}
 	for row: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):
@@ -1952,6 +1963,22 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	if event.is_empty() or chosen.is_empty():
 		return {"ok": false}
 	var price := int(chosen.get("funds_cost", 0)) if chosen.get("funds_cost") != null else 0
+	# A choice that hands the job to a role needs a named person (Cameron,
+	# 2026-11-16): how well they do it decides the result.
+	var delegate_role := event_delegate_role(chosen)
+	var fit := StaffTasks.STRONG
+	var delegate_blocks := 0
+	if not delegate_role.is_empty():
+		var found := hired_member(delegate_id)
+		if delegate_id.is_empty() or found.is_empty():
+			return {"ok": false}
+		staff_ensure_day()
+		delegate_blocks = event_delegate_blocks(event, chosen)
+		if staff_blocks_left(delegate_id) < delegate_blocks:
+			return {"ok": false}
+		fit = StaffTasks.delegate_fit(delegate_role, str(found["role"]), staff_loyalty_of(delegate_id))
+		if fit == StaffTasks.STRONG:
+			price = 0   # the right person handles it without the spend
 	if price > 0 and int(meta.get("Funds", 0)) < price:
 		return {"ok": false}
 	var commitments := Commitments.of(chosen)
@@ -1967,19 +1994,19 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	var meta_columns := {"funds_delta": "Funds", "constituency_delta": "Constituency support",
 		"reputation_delta": "Reputation", "party_support_delta": "Party support"}
 	for column: String in meta_columns.keys():
-		var rolled := _roll_range(chosen.get(column))
+		var rolled := StaffTasks.delegate_gain(_roll_range(chosen.get(column)), fit)
 		if rolled == 0:
 			continue
 		var variable: String = meta_columns[column]
 		_under_cause(cause, func() -> void: _apply_meta_reward(variable, rolled))
 		lines.append(Text.say("event.effect_line", {"name": variable,
 			"change": Phrase.meta_amount(variable, rolled, true)}))
-	var xp_rolled := _roll_range(chosen.get("xp_delta"))
+	var xp_rolled := StaffTasks.delegate_gain(_roll_range(chosen.get("xp_delta")), fit)
 	if xp_rolled != 0:
 		_move_xp(xp_rolled)
 		lines.append(Text.say("event.effect_line", {"name": "XP", "change": "%+d" % xp_rolled}))
 	for meter: String in ["district", "national"]:
-		var meter_rolled := _roll_range(chosen.get(meter + "_delta"))
+		var meter_rolled := StaffTasks.delegate_gain(_roll_range(chosen.get(meter + "_delta")), fit)
 		if meter_rolled == 0:
 			continue
 		apply_awareness_delta(meter, meter_rolled)
@@ -1999,7 +2026,7 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	if rewards is Array and not (rewards as Array).is_empty():
 		var before := _cause
 		_cause = cause
-		chips = _effect_chips(_apply_reward_entries(rewards as Array))
+		chips = _effect_chips(_apply_reward_entries(_delegated_rewards(rewards as Array, fit)))
 		_cause = before
 
 	var revealed := ""
@@ -2013,6 +2040,9 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	# The event's own hours pass first, so a promise's deadline or a
 	# follow-up's delay counts from when the event is over (2026-10-31).
 	var hours := EventEngine.hours_of(event)
+	if not delegate_role.is_empty():
+		hours = StaffTasks.delegate_hours(hours)
+		lines.append_array(_apply_delegation(delegate_id, delegate_blocks, fit))
 	spend_hours(hours)
 	lines.append_array(pay_commitments(commitments, str(event.get("title", "")), _first_pleased_org(chosen.get("rewards")),
 		Promises.terms_of(chosen)))
@@ -2024,6 +2054,104 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	return {"ok": true, "result_text": str(chosen.get("result_text", "")), "lines": lines,
 		"chips": chips, "revealed": revealed, "hours": hours,
 		"starts_level": event_choice_level(chosen)}
+
+
+## The staff role an event choice hands the job to (its Delegate Role cell), or "".
+static func event_delegate_role(choice: Dictionary) -> String:
+	var raw: Variant = choice.get("delegate_role")
+	return "" if raw == null else str(raw).strip_edges()
+
+
+## How many blocks of a person's day a delegated choice takes: its Delegate
+## Blocks cell, else the event's own hours (at least one).
+func event_delegate_blocks(event: Dictionary, choice: Dictionary) -> int:
+	var raw: Variant = choice.get("delegate_blocks")
+	return maxi(1, int(raw) if raw != null else EventEngine.hours_of(event))
+
+
+## Blocks of a person's day not yet used by tasks or delegated work.
+func staff_blocks_left(staff_id: String) -> int:
+	return maxi(0, staff_day_blocks_total - staff_blocks_used(staff_id))
+
+
+## Everyone who could take a delegated choice, each { staff_id, name, role, fit,
+## left, refusal } (refusal "" when they can). Opens today's staff day first.
+func event_delegates(event: Dictionary, choice: Dictionary) -> Array[Dictionary]:
+	staff_ensure_day()
+	var needed := event_delegate_role(choice)
+	var blocks := event_delegate_blocks(event, choice)
+	var out: Array[Dictionary] = []
+	for member: Dictionary in staff_members():
+		var id := str(member["staff_id"])
+		var left := staff_blocks_left(id)
+		out.append({"staff_id": id, "name": str(DataDB.get_staff(id).get("name", id)), "role": str(member["role"]),
+			"fit": StaffTasks.delegate_fit(needed, str(member["role"]), staff_loyalty_of(id)),
+			"left": left, "blocks": blocks, "refusal": "" if left >= blocks else Text.say("event.delegate_no_time")})
+	return out
+
+
+## Whether anyone on staff could take a delegated choice now: "" or the reason.
+func event_delegate_refusal(event: Dictionary, choice: Dictionary) -> String:
+	if staff_members().is_empty():
+		return Text.say("event.refuse_no_staff")
+	for candidate: Dictionary in event_delegates(event, choice):
+		if str(candidate["refusal"]).is_empty():
+			return ""
+	return Text.say("event.delegate_no_time")
+
+
+## A choice's reward list with its gains scaled by how the delegate did.
+func _delegated_rewards(entries: Array, fit: String) -> Array:
+	if fit == StaffTasks.STRONG:
+		return entries
+	var scaled: Array = []
+	for raw: Variant in entries:
+		if not (raw is Dictionary):
+			scaled.append(raw)
+			continue
+		var entry: Dictionary = (raw as Dictionary).duplicate()
+		var delta: Variant = entry.get("delta")
+		if delta is Dictionary and (delta as Dictionary).has("min"):
+			var range_copy: Dictionary = (delta as Dictionary).duplicate()
+			range_copy["min"] = StaffTasks.delegate_gain(int(range_copy["min"]), fit)
+			range_copy["max"] = StaffTasks.delegate_gain(int(range_copy["max"]), fit)
+			entry["delta"] = range_copy
+		elif delta != null and not (delta is String):
+			entry["delta"] = StaffTasks.delegate_gain(int(delta), fit)
+		scaled.append(entry)
+	return scaled
+
+
+## "Strong fit", "Fair fit" or "Poor fit", in words.
+func _fit_label(fit: String) -> String:
+	match fit:
+		StaffTasks.STRONG:
+			return Text.say("assign.fit_strong")
+		StaffTasks.POOR:
+			return Text.say("assign.fit_poor")
+	return Text.say("assign.fit_fair")
+
+
+## Books a delegation: the person's blocks, a little Loyalty for the right (or
+## wrong) hands, and the lines the result screen adds.
+func _apply_delegation(staff_id: String, blocks: int, fit: String) -> Array[String]:
+	staff_day_delegated[staff_id] = int(staff_day_delegated.get(staff_id, 0)) + blocks
+	var change := 0
+	match fit:
+		StaffTasks.STRONG:
+			change = Levers.whole("staff_delegate_loyalty")
+		StaffTasks.POOR:
+			change = -Levers.whole("staff_delegate_loyalty")
+	if change != 0:
+		var cap := Levers.whole("staff_tasks_week_loyalty_cap")
+		staff_week_tasks[staff_id] = clampi(int(staff_week_tasks.get(staff_id, 0)) + change, -cap, cap)
+	var lines: Array[String] = [Text.say("event.delegate_line", {"name": str(DataDB.get_staff(staff_id).get("name", staff_id)),
+		"fit": _fit_label(fit)})]
+	if fit == StaffTasks.FAIR:
+		lines.append(Text.say("event.delegate_fair"))
+	elif fit == StaffTasks.POOR:
+		lines.append(Text.say("event.delegate_poor"))
+	return lines
 
 
 ## The level an event choice starts (its Starts Level cell), or "" (2026-10-31).

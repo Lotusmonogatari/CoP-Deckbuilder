@@ -1293,8 +1293,14 @@ SHEETS = {
             ("Promise Broken", "promise_broken", "promise_effects"),
             # The line shown when the promise is kept. Blank = a short flash.
             ("Promise Kept Text", "promise_kept_text", "str"),
+            # 2026-11-16 (Cameron): the staff role this choice hands the job to,
+            # and how many blocks of that person's day it takes (blank = the
+            # event's hours). StaffTasks.delegate_fit() says how well each person does it.
+            ("Delegate Role", "delegate_role", "str"),
+            ("Delegate Blocks", "delegate_blocks", "int"),
         ],
-        "optional": ["Starts Level", "Commitment", "Promise Kept", "Promise Broken", "Promise Kept Text"],
+        "optional": ["Starts Level", "Commitment", "Promise Kept", "Promise Broken", "Promise Kept Text",
+                     "Delegate Role", "Delegate Blocks"],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
@@ -3139,8 +3145,13 @@ def validate(data, report):
             report.warn("Events", f"{eid} is Random but has no Weight, so it never arrives")
     letters_seen = {}
     level_ids_here = {lv["level_id"] for lv in data["levels"]}
+    staff_roles = {str(r.get("role")) for r in data.get("staff", [])}
     for row in data.get("event_choices", []):
         eid = row["event_id"]
+        if row.get("delegate_role") not in (None, "") and row["delegate_role"] not in staff_roles:
+            report.error("Event Choices", f"{eid} {row.get('choice')}: Delegate Role '{row['delegate_role']}' is not a Staff role")
+        if row.get("delegate_blocks") is not None and not (1 <= int(row["delegate_blocks"]) <= 8):
+            report.error("Event Choices", f"{eid} {row.get('choice')}: Delegate Blocks must be 1 to 8")
         if eid not in event_ids:
             report.error("Event Choices", f"{eid} is not an Event ID in the Events tab")
         if row["choice"] not in ("A", "B", "C", "D"):

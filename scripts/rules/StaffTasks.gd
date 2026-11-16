@@ -265,7 +265,8 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 					pass   # already counted in `change`
 				else:
 					_add(totals, name, amount, str(entry.get("target_id", "")))
-			(result["lines"] as Array).append({"uid": str(uid), "staff_id": id, "fit": fit, "effects": effects})
+			(result["lines"] as Array).append({"uid": str(uid), "staff_id": id, "fit": fit,
+				"base_fit": fit_of(task, str(member["role"])), "kind": kind, "effects": effects})
 		# The day's shape for this person.
 		var used := blocks_used(id, pool, tasks, plan, delegated)
 		(result["used"] as Dictionary)[id] = used
@@ -341,3 +342,32 @@ static func _apply_caps(totals: Dictionary, result: Dictionary) -> void:
 			amount = clampi(amount, -cap_standing, cap_standing)
 			if amount != 0:
 				result["standing"][key.substr(6)] = amount
+
+
+# ---------------------------------------------------------------------------
+# Event delegation (Cameron, 2026-11-16)
+# ---------------------------------------------------------------------------
+
+## How well a person handles an event choice handed to staff: someone in the
+## role the choice names is a strong fit, anyone else a fair one; unrest weakens
+## it (StaffLoyalty.weakened_fit).
+static func delegate_fit(needed_role: String, member_role: String, loyalty: int) -> String:
+	return StaffLoyalty.weakened_fit(STRONG if member_role == needed_role else FAIR, loyalty)
+
+
+## A gain scaled by how the delegate did: all of it, a share of it (rounded
+## down), or none. A loss is never softened.
+static func delegate_gain(amount: int, fit: String) -> int:
+	if amount <= 0:
+		return amount
+	match fit:
+		STRONG:
+			return amount
+		FAIR:
+			return int(floor(amount * Levers.num("staff_delegate_fair_gain_percent") / 100.0))
+	return 0
+
+
+## The hours a delegated event still takes from the player.
+static func delegate_hours(hours: int) -> int:
+	return int(floor(hours * Levers.num("staff_delegate_hours_percent") / 100.0))

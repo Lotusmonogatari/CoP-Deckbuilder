@@ -64,6 +64,9 @@ func test_an_event_choice_with_a_commitment_is_refused_until_it_can_be_paid() ->
 		var list := Commitments.of(choice)
 		if Commitments.funds(list) <= 0:
 			continue
+		# A choice that hands the job to staff needs a named person (test_staff_delegation.gd).
+		if not GameState.event_delegate_role(choice).is_empty():
+			continue
 		GameState.meta["Funds"] = 0
 		var refused := GameState.apply_event_choice(str(choice["event_id"]), str(choice["choice"]))
 		assert_false(refused["ok"], "no Funds, no choice")

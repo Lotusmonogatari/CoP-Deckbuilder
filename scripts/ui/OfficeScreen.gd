@@ -158,6 +158,14 @@ var _fire_staff_panel: Overlay
 ## code like _fire_staff_panel (no .tscn edit, §13).
 var _staff_profile_panel: Overlay
 
+## The Staff Assignments screen (Cameron, 2026-11-16), the pop-up that explains
+## one task icon, and the report of the day just ended. Built before the staff
+## profile so the profile, opened from a card, draws on top of them.
+var _assignments_panel: Overlay
+var _task_popup_panel: Overlay
+var _delegate_panel: Overlay
+var _staff_report_panel: Overlay
+
 ## Which role's Fire button opened _fire_staff_panel, so the confirm handler
 ## (which the panel's `confirmed` signal carries no argument for) knows who.
 var _firing_role := ""
@@ -198,6 +206,18 @@ func _ready() -> void:
 	_new_game_panel.name = "NewGamePanel"
 	add_child(_new_game_panel)
 	# Built before the fire confirmation so that one draws on top of it.
+	_assignments_panel = Overlay.new()
+	_assignments_panel.name = "AssignmentsPanel"
+	add_child(_assignments_panel)
+	_task_popup_panel = Overlay.new()
+	_task_popup_panel.name = "TaskPopupPanel"
+	add_child(_task_popup_panel)
+	_staff_report_panel = Overlay.new()
+	_staff_report_panel.name = "StaffReportPanel"
+	add_child(_staff_report_panel)
+	_delegate_panel = Overlay.new()
+	_delegate_panel.name = "DelegatePanel"
+	add_child(_delegate_panel)
 	_staff_profile_panel = Overlay.new()
 	_staff_profile_panel.name = "StaffProfilePanel"
 	add_child(_staff_profile_panel)
@@ -284,6 +304,7 @@ func _process(delta: float) -> void:
 
 func _build() -> void:
 	_building = true
+	GameState.staff_day_sync()   # a staff day that has ended is settled before the screen draws
 	# Whose office it is. A placeholder name until the protagonist is cast,
 	# but a named desk reads better than an anonymous one.
 	var player := DataDB.player
@@ -324,6 +345,7 @@ func _build() -> void:
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
 	_building = false
+	_maybe_show_staff_report.call_deferred()
 
 
 # ---------------------------------------------------------------------------
@@ -512,6 +534,7 @@ func _go_home() -> void:
 	var rows: Array[Control] = [UiKit.line(Text.say("office.new_week_body",
 		{"date": str(result.get("date", ""))}))]
 	rows.append_array(_dues_report_rows(result.get("dues", {})))
+	rows.append_array(StaffAssignmentsView.report_rows(GameState.take_staff_report()))
 	rows.append_array(StaffLoyaltyView.week_rows(result.get("staff", {})))
 	for awareness_line: String in result.get("awareness", []):
 		rows.append(UiKit.line(awareness_line, "SmallLabel"))
@@ -668,6 +691,9 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 		if refusal.is_empty() and StaffDelegation.blocked(str(choice.get("choice_text", "")),
 				DataDB.rules.get("staff_delegation_phrases", []), GameState.staff_hired):
 			refusal = Text.say("event.refuse_no_staff")
+		var delegating := not GameState.event_delegate_role(choice).is_empty()
+		if refusal.is_empty() and delegating:
+			refusal = GameState.event_delegate_refusal(event, choice)
 		if refusal.is_empty():
 			refusal = GameState.event_choice_refusal(event, choice)
 		# What the choice costs on the spot (hours, Funds, an item), 2026-10-31.
@@ -678,7 +704,11 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 		var letter := str(choice.get("choice", ""))
 		# A choice that starts a level opens that level's briefing first.
 		var pressed := _on_event_level_choice.bind(event_id, letter, arrived) \
-			if not GameState.event_choice_level(choice).is_empty() else _on_event_choice.bind(event_id, letter)
+			if not GameState.event_choice_level(choice).is_empty() else _on_event_choice.bind(event_id, letter, "")
+		# A choice that hands the job to staff asks who goes (Cameron, 2026-11-16).
+		if delegating:
+			pressed = _on_event_delegate.bind(event_id, letter)
+			label = Text.say("event.delegate_label", {"text": label})
 		var button := UiKit.action_button(label, refusal, pressed, 100.0)
 		button.name = "EventChoice_" + letter
 		rows.append(button)
@@ -702,8 +732,37 @@ func _on_event_level_choice(event_id: String, letter: String, arrived: bool) -> 
 	_show_briefing()
 
 
-func _on_event_choice(event_id: String, letter: String) -> void:
-	var result := GameState.apply_event_choice(event_id, letter)
+## Who goes: every hired person with how well they suit it, how much of their
+## day is left, and what it takes (Cameron, 2026-11-16).
+func _on_event_delegate(event_id: String, letter: String) -> void:
+	var event := GameState.get_event(event_id)
+	var choice := {}
+	for row: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):
+		if str(row.get("choice", "")) == letter:
+			choice = row
+	if event.is_empty() or choice.is_empty():
+		return
+	var rows: Array[Control] = []
+	var candidates := GameState.event_delegates(event, choice)
+	var blocks := GameState.event_delegate_blocks(event, choice)
+	rows.append(UiKit.line(Text.say("event.delegate_intro", {"role": GameState.event_delegate_role(choice), "count": blocks})))
+	for candidate: Dictionary in candidates:
+		var button := UiKit.action_button(Text.say("event.delegate_pick", {"name": str(candidate["name"]),
+			"fit": StaffAssignmentsView.fit_label(str(candidate["fit"])), "left": int(candidate["left"])}),
+			str(candidate["refusal"]), _on_delegate_picked.bind(event_id, letter, str(candidate["staff_id"])), 100.0)
+		button.name = "Delegate_" + str(candidate["staff_id"])
+		rows.append(button)
+	_delegate_panel.top_aligned = true
+	_delegate_panel.open(Text.say("event.delegate_title"), rows)
+
+
+func _on_delegate_picked(event_id: String, letter: String, staff_id: String) -> void:
+	_delegate_panel.close()
+	_on_event_choice(event_id, letter, staff_id)
+
+
+func _on_event_choice(event_id: String, letter: String, delegate_id: String = "") -> void:
+	var result := GameState.apply_event_choice(event_id, letter, delegate_id)
 	if not bool(result.get("ok", false)):
 		return
 	var rows: Array[Control] = []
@@ -991,6 +1050,7 @@ func _show_management() -> void:
 		[Text.say("office.rhetoric_training"), _show_rhetoric_training],
 		[Text.say("office.your_deck"), _show_deck],
 		[Text.say("office.staff"), _show_staff],
+		[Text.say("office.staff_assignments"), _show_staff_assignments],
 	]:
 		var button := Button.new()
 		button.custom_minimum_size = Vector2(0, 100)
@@ -2834,6 +2894,62 @@ func _tier_label(entry: Dictionary, current_tier: int) -> String:
 			return Text.say("staff.tier_upgrade_unpriced", {"tier": tier})
 		return Text.say("staff.tier_upgrade", {"tier": tier, "cost": int(entry["cost"])})
 	return Text.say("staff.tier_label", {"tier": tier})
+
+
+# ---------------------------------------------------------------------------
+# Staff Assignments (Cameron, 2026-11-16): the day's tasks, given to staff.
+
+func _assignment_handlers() -> Dictionary:
+	return {"popup": _on_task_tapped, "dropped": _on_task_given, "profile": _show_staff_profile,
+		"confirm": _on_confirm_day, "assign": _on_task_given_from_popup, "unassign": _on_task_taken_back}
+
+
+func _show_staff_assignments() -> void:
+	GameState.staff_ensure_day()
+	_assignments_panel.top_aligned = true
+	_assignments_panel.open(Text.say("assign.title"), StaffAssignmentsView.rows(_assignment_handlers()))
+
+
+func _on_task_tapped(uid: String) -> void:
+	_task_popup_panel.top_aligned = true
+	_task_popup_panel.open("", StaffAssignmentsView.popup_rows(uid, _assignment_handlers()), "", Text.say("assign.close"))
+
+
+func _on_task_given(uid: String, staff_id: String) -> void:
+	GameState.staff_assign(uid, staff_id)
+	SaveManager.autosave()
+	_show_staff_assignments()
+
+
+func _on_task_given_from_popup(uid: String, staff_id: String) -> void:
+	_task_popup_panel.close()
+	_on_task_given(uid, staff_id)
+
+
+func _on_task_taken_back(uid: String) -> void:
+	_task_popup_panel.close()
+	GameState.staff_unassign(uid)
+	SaveManager.autosave()
+	_show_staff_assignments()
+
+
+func _on_confirm_day() -> void:
+	GameState.staff_confirm_day()
+	SaveManager.autosave()
+	_show_staff_assignments()
+
+
+## The day just ended, once, when the Office is free to show it.
+func _maybe_show_staff_report() -> void:
+	GameState.staff_day_sync()
+	if GameState.staff_report_pending.is_empty():
+		return
+	for child in get_children():
+		if child is Overlay and (child as Overlay).visible:
+			return
+	_staff_report_panel.top_aligned = true
+	_staff_report_panel.open(Text.say("assign.report_title"), StaffAssignmentsView.report_rows(GameState.take_staff_report()))
+	SaveManager.autosave()
 
 
 func _on_raise_pay(staff_id: String) -> void:

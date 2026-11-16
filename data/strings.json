@@ -7141,8 +7141,8 @@
   },
   {
     "key": "assign.no_tasks",
-    "where": "Staff Assignments, confirm button with no tasks",
-    "english": "There are no tasks today",
+    "where": "Staff Assignments, nothing to give out",
+    "english": "There are no tasks today.",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7150,6 +7150,412 @@
     "key": "assign.nothing_assigned",
     "where": "Staff Assignments, confirm button with nothing given out",
     "english": "Give someone a task first",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "office.staff_assignments",
+    "where": "Office · Management menu, button",
+    "english": "Staff Assignments",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.title",
+    "where": "Staff Assignments, heading",
+    "english": "Staff Assignments",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.no_staff",
+    "where": "Staff Assignments, no staff hired",
+    "english": "Hire staff first. They do the day's tasks for you.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.date_line",
+    "where": "Staff Assignments, date and tasks left",
+    "english": "{date} · {count} tasks not yet given out",
+    "placeholders": "date, count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.hint",
+    "where": "Staff Assignments, how it works",
+    "english": "Drag a task into a person's box, or tap it to read it and choose who does it. The frame shows how well they suit it: gold strong, grey fair, red poor. Press Confirm to lock in the day.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.tray_heading",
+    "where": "Staff Assignments, tasks heading",
+    "english": "Today's tasks",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.tray_empty",
+    "where": "Staff Assignments, every task has been given out",
+    "english": "Every task has been given out.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.staff_heading",
+    "where": "Staff Assignments, staff heading",
+    "english": "Your staff",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.projection_heading",
+    "where": "Staff Assignments, projection heading",
+    "english": "If you confirm",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.projection_none",
+    "where": "Staff Assignments, projection with no changes",
+    "english": "Nothing changes yet.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.confirm",
+    "where": "Staff Assignments, confirm button",
+    "english": "Confirm today's work",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.locked_note",
+    "where": "Staff Assignments, after confirming",
+    "english": "Locked in. The results arrive when the day ends.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.blocks_short",
+    "where": "Staff Assignments, task card cost",
+    "english": "{count} blocks",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.role_line",
+    "where": "Staff Assignments, a person's role and rank",
+    "english": "{role} · Rank {tier}",
+    "placeholders": "role, tier",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.loyalty_line",
+    "where": "Staff Assignments, Loyalty and today's change",
+    "english": "Loyalty: {word} · today {count}",
+    "placeholders": "word, count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.blocks_line",
+    "where": "Staff Assignments, workload",
+    "english": "{used} of {total} blocks of their day used",
+    "placeholders": "used, total",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.box_empty",
+    "where": "Staff Assignments, an empty task box",
+    "english": "Drop a task here",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.fit_strong",
+    "where": "Staff Assignments, fit",
+    "english": "Strong fit",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.fit_fair",
+    "where": "Staff Assignments, fit",
+    "english": "Fair fit",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.fit_poor",
+    "where": "Staff Assignments, fit",
+    "english": "Poor fit",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.effect_generic",
+    "where": "Staff Assignments, one change",
+    "english": "{name} {amount}",
+    "placeholders": "name, amount",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.effect_standing",
+    "where": "Staff Assignments, a standing change",
+    "english": "Standing with {name} {amount}",
+    "placeholders": "name, amount",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.effect_loyalty",
+    "where": "Staff Assignments, a Loyalty change",
+    "english": "Their Loyalty {amount}",
+    "placeholders": "amount",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.effect_loyalty_all",
+    "where": "Staff Assignments, a Loyalty change for everyone",
+    "english": "Everyone's Loyalty {amount}",
+    "placeholders": "amount",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.proj_undone",
+    "where": "Staff Assignments, a due task left alone",
+    "english": "Left undone: {title} ({penalty})",
+    "placeholders": "title, penalty",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.proj_time_off_unused",
+    "where": "Staff Assignments, nobody takes time off",
+    "english": "Nobody takes time off, so everyone's Loyalty falls by {count}.",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.popup_context_heading",
+    "where": "Task popup, heading",
+    "english": "Why it is on the desk",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.popup_work_heading",
+    "where": "Task popup, heading",
+    "english": "Work performed",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.popup_time_heading",
+    "where": "Task popup, heading",
+    "english": "Time cost",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.time_one",
+    "where": "Task popup, time cost of one block",
+    "english": "1 block of a person's day",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.time_many",
+    "where": "Task popup, time cost",
+    "english": "{count} blocks of a person's day",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.popup_outcome_heading",
+    "where": "Task popup, heading",
+    "english": "Outcome",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.outcome_line",
+    "where": "Task popup, one fit",
+    "english": "{fit} ({role}): {result}",
+    "placeholders": "fit, role, result",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.outcome_nothing",
+    "where": "Task popup, no effect",
+    "english": "nothing happens",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.outcome_time_off",
+    "where": "Task popup, time off",
+    "english": "Whoever takes it gains Loyalty {count}. If nobody takes it, everyone loses Loyalty.",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.popup_due",
+    "where": "Task popup, penalty if left undone",
+    "english": "If nobody does it today: {penalty}",
+    "placeholders": "penalty",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.give_heading",
+    "where": "Task popup, who can do it",
+    "english": "Give it to",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.give_to",
+    "where": "Task popup, button",
+    "english": "{name} ({fit})",
+    "placeholders": "name, fit",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.already_theirs",
+    "where": "Task popup, button when they already have it",
+    "english": "Already theirs",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.refuse_locked",
+    "where": "Task popup, button when the day is locked",
+    "english": "Today's work is locked in",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.refuse_blocks",
+    "where": "Task popup, button when their day is full",
+    "english": "Not enough of their day is left",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.take_back",
+    "where": "Task popup, button",
+    "english": "Take it back",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.close",
+    "where": "Task popup, the way out",
+    "english": "Close",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.report_title",
+    "where": "Day report, heading",
+    "english": "Your staff's day",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.report_date",
+    "where": "Day report, date",
+    "english": "{date}",
+    "placeholders": "date",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.report_line",
+    "where": "Day report, one task done",
+    "english": "{name}: {title} ({fit}): {result}",
+    "placeholders": "name, title, fit, result",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.report_totals",
+    "where": "Day report, totals heading",
+    "english": "In all",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.blocks_one",
+    "where": "Staff Assignments, task card cost of one block",
+    "english": "1 block",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.report_line_plain",
+    "where": "Day report, time off",
+    "english": "{name}: {title}: {result}",
+    "placeholders": "name, title, result",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.report_unsettled",
+    "where": "Day report, a restless person's weaker result",
+    "english": "They were unsettled, so it counted one step weaker.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_label",
+    "where": "Event choice that sends a staff member",
+    "english": "{text}  ·  you choose who goes",
+    "placeholders": "text",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_title",
+    "where": "Event, who goes",
+    "english": "Who goes?",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_intro",
+    "where": "Event, who goes",
+    "english": "A {role} is the best person for this. It takes {count} blocks of their day.",
+    "placeholders": "role, count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_pick",
+    "where": "Event, who goes, one person",
+    "english": "{name} ({fit}) · {left} blocks free",
+    "placeholders": "name, fit, left",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_no_time",
+    "where": "Event, nobody has enough of today left",
+    "english": "Nobody on staff has enough of today left",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_line",
+    "where": "Event result, who handled it",
+    "english": "{name} handled it for you ({fit}).",
+    "placeholders": "name, fit",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_fair",
+    "where": "Event result, a fair fit",
+    "english": "They were not the best person for it, so you gained less.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "event.delegate_poor",
+    "where": "Event result, a poor fit",
+    "english": "They were unsettled and it showed: you gained nothing.",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }
