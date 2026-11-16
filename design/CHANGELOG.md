@@ -1141,3 +1141,5 @@ Rubric fixes 1 and 3 (2026-11-16, Cameron): idle Loyalty loss only when work was
 XP cap (2026-11-16, Cameron, rubric R4.2): `Staff Tasks: Cap XP` 6 to 3. R4.2 moves from FAIL to WARN; the rubric now has no FAIL. R6.4 left as is.
 
 Staff rank adds working hours (2026-11-16, Cameron): Tier 0 works 8 hours, Tier 1 works 9, Tier 2 works 10 (Balance `Staff Tasks: Hours Per Tier`), counted from the rank held when tasks are given out; stacks with coffee and tea; no weekend bonus.
+
+Dragging a staff item or task card (2026-11-16, Cameron): the whole card is carried as one piece (frame, picture and words) and held up and to the left of the finger instead of below and to the right. `test_task_chip_drag.gd`.

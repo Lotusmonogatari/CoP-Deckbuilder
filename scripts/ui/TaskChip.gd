@@ -22,6 +22,9 @@ var _icon_id := ""
 ## What is dragged: a task's uid, or an item ({"item": item_id}). Set by setup_item().
 var payload: Dictionary = {}
 var _item_texture: Texture2D
+## How this chip was set up, so a drag can show a copy of the whole card.
+var _setup_item := false
+var _setup_args: Array = []
 
 
 ## `compact` is the small icon-only version shown inside a person's box.
@@ -30,6 +33,8 @@ func setup(task_uid: String, title: String, icon_id: String, blocks: int, frame:
 	uid = task_uid
 	draggable = can_drag
 	_icon_id = icon_id
+	_setup_item = false
+	_setup_args = [task_uid, title, icon_id, blocks, frame, compact, can_drag, caption]
 	name = "Task_" + task_uid
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	# The list this sits in scrolls by dragging; a press on a chip is the chip's own.
@@ -91,6 +96,8 @@ func setup_item(item_id: String, title: String, icon_name: String, caption: Stri
 		compact: bool, can_drag: bool) -> void:
 	uid = ITEM_PREFIX + item_id
 	payload = {"item": item_id}
+	_setup_item = true
+	_setup_args = [item_id, title, icon_name, caption, frame, compact, can_drag]
 	draggable = can_drag
 	_item_texture = ArtLoader.item_icon(icon_name)
 	name = "Item_" + item_id
@@ -150,25 +157,33 @@ func _gui_input(event: InputEvent) -> void:
 				accept_event()
 
 
+## What is shown while the card is dragged: a copy of the whole card (frame,
+## picture and words) as one piece, held up and to the left of the finger so the
+## finger does not cover it.
+func drag_preview() -> Control:
+	var copy := TaskChip.new()
+	if _setup_item:
+		copy.setup_item(str(_setup_args[0]), str(_setup_args[1]), str(_setup_args[2]), str(_setup_args[3]),
+			_setup_args[4], bool(_setup_args[5]), false)
+	else:
+		copy.setup(str(_setup_args[0]), str(_setup_args[1]), str(_setup_args[2]), int(_setup_args[3]),
+			_setup_args[4], bool(_setup_args[5]), false, str(_setup_args[7]))
+	copy.theme = theme
+	copy.custom_minimum_size = size
+	copy.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	copy.modulate = Color(1, 1, 1, 0.92)
+	copy.position = Vector2(-size.x - 16.0, -size.y - 16.0)
+	var holder := Control.new()
+	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	holder.add_child(copy)
+	return holder
+
+
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if not draggable:
 		return null
 	_dragged = true
-	var preview: Control
-	if payload.is_empty():
-		var art := PlaceholderArt.new()
-		art.kind = PlaceholderArt.Kind.ICON
-		art.art_id = _icon_id
-		preview = art
-	else:
-		var picture := TextureRect.new()
-		picture.texture = _item_texture
-		picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		preview = picture
-	preview.custom_minimum_size = Vector2(88, 88)
-	preview.modulate = Color(1, 1, 1, 0.85)
-	set_drag_preview(preview)
+	set_drag_preview(drag_preview())
 	return payload if not payload.is_empty() else {"uid": uid}
 
 
