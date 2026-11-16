@@ -2453,6 +2453,10 @@ func begin_level(runner: LevelRunner) -> void:
 
 	for stage: Variant in runner.stages:
 		record_faced(stage)
+	# A save at the start of the level (2026-11-16, Cameron: save at stage
+	# start). Until now the save before the first stage depended on a button
+	# press being written after the scene had changed, which is not guaranteed.
+	SaveManager.autosave()
 
 
 ## Notes that the player has met this opponent or visitor (Characters list).

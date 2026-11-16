@@ -2994,7 +2994,10 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 		return
 	var bill: Dictionary = composed["bill"]
 	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("request.line", {"org": org_name, "bill": str(bill.get("bill_name", ""))})))
+	var asked := RequestLines.patron_line(row, "request_line", org_name, str(bill.get("bill_name", "")))
+	if asked.is_empty():
+		asked = Text.say("request.line", {"org": org_name, "bill": str(bill.get("bill_name", ""))})
+	rows.append(UiKit.line(asked))
 	rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
 	rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
 	rows.append(_readiness_line(bill))
@@ -3190,14 +3193,30 @@ func _on_request_accept(patron_bill_id: String) -> void:
 		return
 	_request_panel.close()
 	_levels_panel.close()
+	# The sponsor's own accepting line (W-7), as a brief notice over the next screen.
+	var accepted := _patron_answer_line(patron_bill_id, "accept_line")
+	if not accepted.is_empty():
+		Layout.flash(accepted)
 	SceneChange.to(get_tree(), StageRouting.LEVEL_INTRO_SCENE)
 
 
+## A sponsor's accept or decline line with its organization and bill named.
+func _patron_answer_line(patron_bill_id: String, field: String) -> String:
+	var row := PatronLevel.patron_bill(patron_bill_id)
+	var org := str(row.get("organization", ""))
+	var composed := PatronLevel.compose(patron_bill_id, GameState.enacted_components)
+	var bill_name := str((composed.get("bill", {}) as Dictionary).get("bill_name", ""))
+	return RequestLines.patron_line(row, field, str(DataDB.get_booster(org).get("name_en", org)), bill_name)
+
+
 func _on_request_decline(patron_bill_id: String) -> void:
+	var declined_line := _patron_answer_line(patron_bill_id, "decline_line")
 	GameState.decline_patron_bill(patron_bill_id)
 	_request_panel.close()
 	_show_levels()
 	_refresh_resources()
+	if not declined_line.is_empty():
+		_report.text = declined_line
 
 
 func _level_row(level: Dictionary) -> Control:

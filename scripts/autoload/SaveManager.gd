@@ -40,6 +40,10 @@ const UNDO_PATH := "user://savegame.undo.json"
 ## player's real save nor write over it.
 var enabled := true
 
+## Where autosaves go. SAVE_PATH in play; a test points it at a scratch file so
+## it can prove a save happened without touching the player's real one.
+var save_path := SAVE_PATH
+
 
 func _ready() -> void:
 	enabled = not _is_test_run()
@@ -164,7 +168,9 @@ var last_problem := ""
 
 
 ## Writes the run to `path`. True when it was written.
-func save_game(path: String = SAVE_PATH) -> bool:
+func save_game(path: String = "") -> bool:
+	if path.is_empty():
+		path = save_path
 	var payload := {
 		"version": VERSION,
 		"saved_at": Time.get_datetime_string_from_system(),

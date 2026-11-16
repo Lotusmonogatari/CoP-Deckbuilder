@@ -12,6 +12,17 @@ const STANCE_KEYS := {
 }
 
 
+## A sponsor's own line from the Patron Bills tab (request_line, accept_line or
+## decline_line; W-7, 2026-11-16: these columns were written and never shown).
+## `{org}` and `{bill}` are filled in. "" when the row has no such line, so the
+## caller can fall back to the shared Text row.
+static func patron_line(row: Dictionary, field: String, org_name: String, bill_name: String) -> String:
+	var raw: Variant = row.get(field)
+	if raw == null or str(raw).strip_edges().is_empty():
+		return ""
+	return str(raw).replace("{org}", org_name).replace("{bill}", bill_name)
+
+
 ## The vote if nobody is swayed: "46 Aye, 30 Nay, 25 abstaining; 51 Aye needed."
 static func default_vote_line(bill: Dictionary) -> String:
 	var totals := {"Yes": 0, "No": 0, "Abstain": 0}

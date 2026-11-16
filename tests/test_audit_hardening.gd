@@ -103,3 +103,14 @@ func test_the_outline_colour_follows_the_protagonist_and_layout_does_not_run_eve
 	var party_three := Layout._outline_party
 	DataDB.use_protagonist("PC01")
 	assert_ne(Layout._outline_party, party_three, "a different party colour after switching protagonist")
+
+
+# W-7: a sponsor's own lines from the Patron Bills tab.
+func test_patron_lines_fill_in_the_organization_and_the_bill() -> void:
+	var row: Dictionary = DataDB.patron_bills[0]
+	var line := RequestLines.patron_line(row, "decline_line", "Org X", "The Bill")
+	assert_ne(line, "")
+	assert_false(line.contains("{org}"))
+	assert_true(line.contains("Org X"))
+	assert_eq(RequestLines.patron_line({"request_line": null}, "request_line", "a", "b"), "", "a blank cell falls back to the shared Text row")
+	assert_eq(RequestLines.patron_line({}, "accept_line", "a", "b"), "")
