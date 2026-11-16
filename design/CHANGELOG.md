@@ -1129,3 +1129,5 @@ Tests: `test_staff_tasks.gd` (quotas, ramp, trim, no-staff, ignored days) and th
 | 6 Tuning | `audit/tests/staff_pool_sim.tscn` and `audit/staff_tasks_tuning.md`: no numbers changed; the week 4 to 5 step is a cliff you may want to smooth |
 
 New Shop columns (Staff Effect, Value, Target, Slot, Days), Staff columns (Gift ...), Event Choices columns (Task Pool ...), Balance rows `Staff Gift: ...`. Fixed: a staff task's awareness change now reaches the right meter. Tests: `test_staff_pool_modifiers.gd`. New items have no pictures yet (the blue square shows): name the file in the Shop tab's Icon cell when drawn.
+
+The "Most tasks today" and "why these tasks today" lines are no longer shown on the Staff Assignments screen (2026-11-16, Cameron): they are working detail, kept in the run state only.

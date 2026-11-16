@@ -63,12 +63,9 @@ static func rows(handlers: Dictionary) -> Array[Control]:
 	out.append(UiKit.line(Text.say("assign.date_line", {"date": WeekCalendar.date_label(GameState.staff_day_key), "count": waiting})))
 	out.append(UiKit.line(Text.say("assign.hint")))
 
-	out.append(UiKit.line(Text.say("assign.max_line", {"count": GameState.staff_day_max})))
-	for reason: Dictionary in GameState.staff_day_reasons:
-		var family := str(reason.get("family", ""))
-		out.append(UiKit.line(Text.say("assign.why_line", {"note": str(reason.get("note", "")),
-			"family": Text.say("assign.family_max") if family == StaffPoolModifiers.MAX else family,
-			"amount": "%+d" % int(reason.get("amount", 0))})))
+	# How the day's tasks were arranged (the drivers, the maximum) is a working
+	# detail, not shown to the player (Cameron, 2026-11-16); GameState keeps it
+	# in staff_day_reasons and staff_day_max.
 
 	out.append(UiKit.heading(Text.say("assign.items_heading")))
 	out.append(_items_row(handlers))
