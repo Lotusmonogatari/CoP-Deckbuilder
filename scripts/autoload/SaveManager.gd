@@ -223,7 +223,11 @@ func read_save(path: String = SAVE_PATH) -> Dictionary:
 	if version > VERSION:
 		# A newer build wrote this. Do not load it, and do not overwrite it.
 		push_warning("SaveManager: %s is from a newer version (%d); leaving it alone." % [path, version])
-		enabled = false
+		# Saving stops only when the MAIN slot is the newer one, so that file is
+		# never overwritten. Reading the manual backup or the undo file used to
+		# switch saving off for the whole session (audit E-03, 2026-11-16).
+		if path == SAVE_PATH:
+			enabled = false
 		last_problem = "newer"
 		return {}
 	var run: Variant = JSON.to_native((parsed as Dictionary).get("run"))

@@ -145,10 +145,20 @@ func setup(config: Dictionary) -> bool:
 		setup_problems.append("no stage was given")
 		return false
 
+	# A fight must be able to end (audit E-01, 2026-11-16): a blank win
+	# threshold or bar size used to leave a room that could neither be won nor
+	# lost by the turn limit. The exporter now refuses such a row too; this
+	# keeps a hand-edited or stale data file from starting one.
+	for ending_field: String in ["win_threshold", "bar_max"]:
+		if _stage.get(ending_field) == null:
+			setup_problems.append("the stage has no %s" % ending_field)
+	if not setup_problems.is_empty():
+		return false
+
 	_rng.seed = int(config.get("seed", 0)) if config.has("seed") else randi()
 
 	state = BattleState.new()
-	state.energy_per_turn = int(_stage.get("energy_per_turn", 3))
+	state.energy_per_turn = SafeNum.to_int(_stage.get("energy_per_turn"), 3)
 	state.energy_mode = _string_field(_stage, "energy_mode", "per_turn")
 	state.win_mode = str(_stage.get("win_mode", "threshold"))
 	state.draw_mode = str(_stage.get("draw_mode", "refill"))
@@ -171,9 +181,9 @@ func setup(config: Dictionary) -> bool:
 	# — modifiers.json's HAND_SIZE_BONUS and GAFFE_LIMIT_BONUS effect types,
 	# added up by BattleSetup for whichever modifiers are active in this room
 	# and aimed at this stage. Zero when nothing applies.
-	state.hand_size = (int(_stage.get("opening_hand", _stage.get("hand_size", 5)))
+	state.hand_size = (SafeNum.to_int(_stage.get("opening_hand", _stage.get("hand_size")), 5)
 		+ int(config.get("hand_size_bonus", 0)))
-	state.gaffe_limit = int(_stage.get("gaffe_limit", 5)) + int(config.get("gaffe_limit_bonus", 0))
+	state.gaffe_limit = SafeNum.to_int(_stage.get("gaffe_limit"), 5) + int(config.get("gaffe_limit_bonus", 0))
 
 	# A friendly reporter takes some of the heat before a word is said. Never
 	# below zero: backing cannot put the meter into credit.
@@ -283,8 +293,8 @@ func _arm_intents(config: Dictionary = {}) -> void:
 
 func _setup_board(config: Dictionary) -> void:
 	# The player starts ahead or behind on reputation in a press stage.
-	var player_start := int(_stage.get("player_start", 0)) + int(config.get("start_adjustment", 0))
-	var opponent_start := int(_stage.get("opp_start", 0))
+	var player_start := SafeNum.to_int(_stage.get("player_start"), 0) + int(config.get("start_adjustment", 0))
+	var opponent_start := SafeNum.to_int(_stage.get("opp_start"), 0)
 
 	state.bar = _build_bar(player_start, opponent_start)
 
@@ -297,8 +307,8 @@ func _build_bar(player_start: int, opponent_start: int) -> BarModel:
 	var rng := _rng   # captured alone, not via self (see _arm_intents)
 	var bar := BarModel.create(
 		BarModel.for_stage(_stage),
-		int(_stage.get("bar_max", 100)),
-		int(_stage.get("win_threshold", 51)),
+		SafeNum.to_int(_stage.get("bar_max"), 100),
+		SafeNum.to_int(_stage.get("win_threshold"), 51),
 		player_start,
 		opponent_start,
 		# The bar rolls what a stubborn vote costs off the battle's own
@@ -705,9 +715,9 @@ func _draw_questions(pool: Array, first: Array = [], bill: Array = [], bill_shar
 	# rooms have no turn limit, so the number of questions IS the length of
 	# the stage and it is the level's to set. Otherwise it works out from
 	# the clock.
-	var wanted := int(_stage.get("questions_count", 0))
+	var wanted := SafeNum.to_int(_stage.get("questions_count"), 0)
 	if wanted <= 0:
-		wanted = maxi(_questions_per_turn(), 1) * maxi(int(_stage.get("turn_limit", 0)), 1)
+		wanted = maxi(_questions_per_turn(), 1) * maxi(SafeNum.to_int(_stage.get("turn_limit"), 0), 1)
 	# Questions about the level's bill come first, up to their share of the
 	# room, so the stage is about the bill without losing its own variety.
 	var about_bill: Array = []
@@ -755,17 +765,17 @@ func _shuffled(items: Array) -> Array:
 ## study session two. Before this every CARD answered a question, so three
 ## energy could burn through three reporters in one turn.
 func _questions_per_turn() -> int:
-	return maxi(int(_stage.get("questions_per_turn", 1)), 1)
+	return maxi(SafeNum.to_int(_stage.get("questions_per_turn"), 1), 1)
 
 
 ## What a slip costs here. Doubled in a media ambush.
 func _gaffe_multiplier() -> int:
-	return maxi(int(_stage.get("gaffe_multiplier", 1)), 1)
+	return maxi(SafeNum.to_int(_stage.get("gaffe_multiplier"), 1), 1)
 
 
 ## How much of a lobbyist's interest cools each turn, whatever you say.
 func _affinity_decay() -> int:
-	return maxi(int(_stage.get("affinity_decay", 0)), 0)
+	return maxi(SafeNum.to_int(_stage.get("affinity_decay"), 0), 0)
 
 
 ## What saying nothing costs. One energy, from rules.json.
@@ -810,7 +820,7 @@ func _pass_penalty() -> void:
 ## that asked is not pleased, which is felt later because standing carries
 ## between levels. Both numbers live in the stage's data.
 func _decline_question() -> void:
-	var cost := int(_stage.get("decline_tone_cost", 3))
+	var cost := SafeNum.to_int(_stage.get("decline_tone_cost"), 3)
 	if cost > 0 and state.bar != null:
 		state.bar.player_loses(cost)
 
@@ -1120,7 +1130,7 @@ func _conference_closing(ran_out_of_cards: bool = false, reached: bool = true) -
 ## which then charges 1 is a screen the player stops trusting, and so is the
 ## reverse. Floors at zero — a card cannot pay you to play it.
 func card_cost(card: Dictionary) -> int:
-	return maxi(int(card.get("cost", 0)) - state.next_card_discount, 0)
+	return maxi(SafeNum.to_int(card.get("cost"), 0) - state.next_card_discount, 0)
 
 
 ## Where the player stands, for the effects that care.
@@ -1577,12 +1587,12 @@ func _advance_to_next_opponent() -> void:
 		state.energy_max = state.energy_per_turn
 		if state.bar != null:
 			state.bar = _build_bar(
-				int(_stage.get("player_start", 0)),
-				int(_stage.get("opp_start", 0)))
+				SafeNum.to_int(_stage.get("player_start"), 0),
+				SafeNum.to_int(_stage.get("opp_start"), 0))
 	elif state.bar != null:
 		state.bar = _build_bar(
-			int(_stage.get("player_start", 0)),
-			int(_stage.get("opp_start", 0)))
+			SafeNum.to_int(_stage.get("player_start"), 0),
+			SafeNum.to_int(_stage.get("opp_start"), 0))
 
 
 ## Everything a new bout starts fresh with.
@@ -1612,8 +1622,8 @@ func _reset_for_new_bout() -> void:
 
 	if state.bar != null:
 		state.bar = _build_bar(
-			int(_stage.get("player_start", 0)),
-			int(_stage.get("opp_start", 0)))
+			SafeNum.to_int(_stage.get("player_start"), 0),
+			SafeNum.to_int(_stage.get("opp_start"), 0))
 
 	# A clean deck, so the last argument's spent cards are not a handicap.
 	state.deck.assign(state.deck + state.hand + state.discard)
@@ -1702,7 +1712,7 @@ func gaffe_is_critical() -> bool:
 ## The stage's turn limit including any turns an item added. 0 still means
 ## "no limit" — an item cannot put a clock on a stage that has none.
 func turn_limit() -> int:
-	var base := int(_stage.get("turn_limit", 0))
+	var base := SafeNum.to_int(_stage.get("turn_limit"), 0)
 	return base + state.turn_limit_bonus if base > 0 else 0
 
 

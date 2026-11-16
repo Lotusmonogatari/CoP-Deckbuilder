@@ -2390,12 +2390,15 @@ def validate(data, report):
             for field in ("turn_limit", "energy_per_turn", "hand_size", "gaffe_limit"):
                 if stage[field] is None:
                     report.error("stages", f"{sid} is a combat stage but has no {field}")
+            # Audit E-01 (2026-11-16): these four numbers decide how a fight
+            # ends. A blank one used to be a warning; a room with a blank
+            # threshold could neither be won nor lost on its turn limit.
             for field in ("bar_max", "win_threshold", "player_start", "opp_start"):
                 if stage[field] is None:
-                    report.warn(
+                    report.error(
                         "stages",
-                        f"{sid} has no {field} — it must be resolved from the module "
-                        "or committee data at battle setup",
+                        f"{sid} is a combat stage but has no {field}. Write the number in the "
+                        "Stages tab (a blank here made a fight that never ends)",
                     )
 
     # --- modifiers ---------------------------------------------------------
@@ -4094,6 +4097,53 @@ def check_move_flashes(data, report):
                     report.warn("Move Flashes", f"no row for {side} {move}, so it will not flash")
 
 
+def check_audit_gaps(data, report):
+    """Five mistakes the audit (2026-11-16, audit/followup.md) showed the
+    exporter let through: a Balance lever a script asks for that the workbook
+    lacks, a blank English cell in the Text tab, an Icon naming a file that is
+    not in assets/icons, a visitor naming a stage that does not exist."""
+    # 1. Levers the scripts ask for. A lever removed from the workbook used to
+    #    fall back, silently, to a number typed in the script.
+    balance = data.get("balance", {})
+    if balance:
+        patterns = [
+            # `balance.get("key"` covers DataDB.balance and the `balance` dictionary
+            # that rules files are handed (PartyDues.settings(balance), ...).
+            re.compile(r'\bbalance(?:_base)?\.get\("([A-Za-z_0-9]+)"'),
+            re.compile(r'Levers\.(?:num|whole)\("([A-Za-z_0-9]+)"'),
+        ]
+        missing = {}
+        for path in sorted((REPO_ROOT / "scripts").rglob("*.gd")):
+            for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                if line.lstrip().startswith("#"):
+                    continue
+                for pattern in patterns:
+                    for key in pattern.findall(line):
+                        if key not in balance:
+                            missing.setdefault(key, f"{path.relative_to(REPO_ROOT)}:{number}")
+        for key, where in sorted(missing.items()):
+            report.error("Balance", f"a script asks for the lever '{key}' ({where}) and the Balance tab has no row for it")
+    # 2. Blank English in the Text tab.
+    for row in data.get("strings", []):
+        if row.get("key") and not str(row.get("english") or "").strip():
+            report.error("Text", f"{row['key']} has no English text")
+    # 3. Icons that name a missing file.
+    icon_dir = REPO_ROOT / "assets" / "icons"
+    if icon_dir.exists():
+        have = {p.stem for p in icon_dir.glob("*.png")}
+        for tab, key, id_field in (("shop", "icon", "item_id"), ("cosmetic_packages", "icon", "package_id")):
+            for row in data.get(tab, []):
+                icon = row.get(key)
+                if icon and str(icon).strip() not in have:
+                    report.error(tab, f"{row.get(id_field)} names icon '{icon}', which is not a file in assets/icons")
+    # 4. Visitors that name a stage that does not exist.
+    stage_ids = {row.get("stage_id") for row in data.get("stages", [])}
+    for row in data.get("visitors", []):
+        for stage_id in row.get("stages") or []:
+            if stage_id not in stage_ids:
+                report.error("Visitors", f"{row.get('visitor_id')} names stage '{stage_id}', which is not in the Stages tab")
+
+
 def check_standing_names(data, report):
     in_sheet = {str(row.get("name_en", "")).strip() for row in data.get("sanban", [])}
     if not in_sheet:
@@ -4325,6 +4375,7 @@ def main():
     check_text_keys(data, report)
     check_standing_names(data, report)
     check_move_flashes(data, report)
+    check_audit_gaps(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)
 
     written = 0

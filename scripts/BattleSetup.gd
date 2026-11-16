@@ -650,7 +650,7 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		"start_adjustment": start_adjustment,
 		"hand_size_bonus": int(bonus.get("hand_size_bonus", 0)),
 		"gaffe_limit_bonus": Difficulty.gaffe_limit_bonus(DataDB.balance_base, GameState.difficulty,
-			int(stage.get("gaffe_limit", 0)), int(bonus.get("gaffe_limit_bonus", 0))),
+			SafeNum.to_int(stage.get("gaffe_limit"), 0), int(bonus.get("gaffe_limit_bonus", 0))),
 	}
 
 	return config

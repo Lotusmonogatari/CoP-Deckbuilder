@@ -586,8 +586,12 @@ func load_save(saved: Dictionary) -> void:
 			# has entries that no longer exist: start from the fresh run's
 			# entries and take only the saved values for those.
 			for key: Variant in (value as Dictionary):
-				if (current as Dictionary).has(key):
-					(current as Dictionary)[key] = (value as Dictionary)[key]
+				# Only a number replaces a number (audit E-05, 2026-11-16): a
+				# hand-edited or damaged save once loaded the text "high" as a
+				# standing.
+				var saved_value: Variant = (value as Dictionary)[key]
+				if (current as Dictionary).has(key) and (saved_value is int or saved_value is float):
+					(current as Dictionary)[key] = saved_value
 		elif typeof(current) == typeof(value):
 			set(field, value)
 	calendar = WeekCalendar.normalized(calendar)
@@ -603,6 +607,51 @@ func load_save(saved: Dictionary) -> void:
 	if level_runner == null:
 		patron_runtime = {}
 	drop_stale_ids()
+	sanitize_loaded_run()
+
+
+## Puts right whatever a loaded save can get wrong that the data can answer
+## (audit E-05 and E-06, 2026-11-16): numbers outside their range, a negative
+## clock, a deck of the wrong size. Returns how many things it changed, so a
+## test can check it. A fresh, healthy save changes nothing.
+##
+## Funds over the CURRENT cap are left alone on purpose (see
+## MetaRules.clamp_meta: a lowered cap must not take back what you hold); only
+## the hard ceiling in the Sanban tab is enforced.
+func sanitize_loaded_run() -> int:
+	var changed := 0
+	for variable: String in meta.keys():
+		var row := DataDB.get_sanban(variable)
+		if row.is_empty():
+			continue
+		var fixed := clampi(int(meta[variable]), int(row.get("min", 0)), int(row.get("max", 100)))
+		if fixed != int(meta[variable]):
+			meta[variable] = fixed
+			changed += 1
+	for table: Dictionary in [booster_standing, party_standing, awareness]:
+		for key: String in table.keys():
+			var fixed := clampi(int(table[key]), 0, 100)
+			if fixed != int(table[key]):
+				table[key] = fixed
+				changed += 1
+	for scalar: String in ["xp", "xp_earned_total", "time_units"]:
+		if int(get(scalar)) < 0:
+			set(scalar, 0)
+			changed += 1
+	var wanted := deck_size()
+	if deck.size() != wanted:
+		changed += 1
+		if deck.size() > wanted:
+			deck.resize(wanted)
+		else:
+			for card_id: String in owned_cards:
+				if deck.size() >= wanted:
+					break
+				if not deck.has(card_id):
+					deck.append(card_id)
+			if deck.size() < wanted:
+				deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
+	return changed
 
 
 ## Fields whose keys are fixed by the current workbook (see load_save()).

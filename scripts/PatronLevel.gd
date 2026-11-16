@@ -154,7 +154,8 @@ static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenera
 	# The opening visitor from the sponsoring organization, when the template
 	# opens with one (PATRON_VISIT).
 	if _template_has(template, "PATRON_VISIT"):
-		var patron_visit := PatronVisit.build(str(row.get("organization", "")), bill.get("component_ids", []) as Array)
+		var patron_visit := PatronVisit.build(str(row.get("organization", "")), bill.get("component_ids", []) as Array,
+			DataDB.boosters, DataDB.bill_components, Text.phrase())
 		if not patron_visit.is_empty():
 			level["patron_visit"] = patron_visit
 	if not trade.is_empty():

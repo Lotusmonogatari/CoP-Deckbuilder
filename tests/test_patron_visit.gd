@@ -13,7 +13,7 @@ func after_each() -> void:
 
 
 func test_the_visit_has_two_questions_each_moving_the_patron() -> void:
-	var built := PatronVisit.build("BO05", ["CB051", "CB052"])
+	var built := PatronVisit.build("BO05", ["CB051", "CB052"], DataDB.boosters, DataDB.bill_components, Text.phrase())
 	assert_eq((built["visitors"] as Array).size(), 2)
 	for entry: Dictionary in built["visitors"]:
 		var question: Dictionary = entry["question"]

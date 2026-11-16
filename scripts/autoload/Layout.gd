@@ -95,6 +95,8 @@ func _ready() -> void:
 	apply_text_scale()
 	_build_button_outlines()
 	refresh()
+	set_process(false)   # nothing here needs a frame: the outline colour follows use_protagonist()
+	refresh_outline_colour()
 	get_tree().node_added.connect(_on_node_added)
 	get_tree().root.size_changed.connect(_on_resized)
 
@@ -127,9 +129,11 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
-func _process(_delta: float) -> void:
-	# The protagonist is chosen at New Game; follow the party when it changes.
-	# Only when the protagonist changes is the party worked out again (audit C-09).
+## Follows the protagonist's party colour. Called by DataDB.use_protagonist()
+## the moment a protagonist is chosen, instead of being checked every frame
+## (audit F-25, 2026-11-16). Only when the protagonist changes is the party
+## worked out again (audit C-09).
+func refresh_outline_colour() -> void:
 	var player_id := str(DataDB.player.get("player_id", ""))
 	if player_id == _outline_player:
 		return

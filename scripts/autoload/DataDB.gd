@@ -532,6 +532,11 @@ func use_protagonist(player_id: String) -> bool:
 		return false
 	player = chosen
 	_fill_name_tokens()
+	# The button outlines wear the protagonist's party colour (Layout loads
+	# after this autoload, so it may not exist yet at boot).
+	var layout := get_node_or_null("/root/Layout")
+	if layout != null and layout.has_method("refresh_outline_colour"):
+		layout.refresh_outline_colour()
 	return true
 
 
