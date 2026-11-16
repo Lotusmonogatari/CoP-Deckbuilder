@@ -349,10 +349,28 @@ static func _opponent_for(level_id: String, stage_id: String, slot: int) -> Dict
 	return drawn[0] if not drawn.is_empty() else {}
 
 
-## One randomized generator for the people draws (unseeded, like every roll here).
+## A fixed seed for the people draws, or -1 (the game: every draw is random).
+## A test, a bug report or a challenge run sets it to replay who gets seated
+## (audit C-8, 2026-11-16). Each draw takes the next number from it, so one
+## seed gives the same whole sequence of draws, not the same person each time.
+static var people_seed := -1
+static var _people_draws := 0
+
+
+## Starts the people draws over from `seed_value` (-1 goes back to random).
+static func seed_people_draws(seed_value: int) -> void:
+	people_seed = seed_value
+	_people_draws = 0
+
+
+## One generator for the people draws: random unless seed_people_draws() fixed it.
 static func _rng() -> RandomNumberGenerator:
 	var rng := RandomNumberGenerator.new()
-	rng.randomize()
+	if people_seed >= 0:
+		_people_draws += 1
+		rng.seed = people_seed * 1000003 + _people_draws
+	else:
+		rng.randomize()
 	return rng
 
 
@@ -489,9 +507,9 @@ static func _resolve_visitor_pin(level_id: String, stage_id: String, slot: int) 
 ## 1.0 when the cell is blank, so unscored bills behave as before.
 static func salience_factor(position: Dictionary) -> float:
 	return PartySalience.factor(position.get("salience"),
-		float(DataDB.balance.get("party_salience_reference", 0)),
-		float(DataDB.balance.get("party_salience_min_factor", 1.0)),
-		float(DataDB.balance.get("party_salience_max_factor", 1.0)))
+		Levers.num("party_salience_reference"),
+		Levers.num("party_salience_min_factor"),
+		Levers.num("party_salience_max_factor"))
 
 
 ## `count` visitors for a Non-combat stage, drawn from its eligible pool —
@@ -634,16 +652,16 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		# 2026-10-18): up to bill_question_share_percent of the room's questions.
 		"question_pool_bill": questions_for_room(
 			bill_questions_for(str(stage.get("bill_id", "")), stage_id), stage_id),
-		"bill_question_share_percent": int(DataDB.balance.get("bill_question_share_percent", 50)),
+		"bill_question_share_percent": Levers.whole("bill_question_share_percent"),
 		# A room's own questions take at most this share when it has a pool too
 		# (Balance "Questions: Own Share Percent"; Cameron, 2026-11-09).
-		"own_question_share_percent": int(DataDB.balance.get("questions_own_share_percent", 100)),
+		"own_question_share_percent": Levers.whole("questions_own_share_percent"),
 		# How often a weak answer actually costs tone (§9/§8, 2026-09-28,
 		# Cameron: 0.75) — the same number across every question-asking
 		# stage, rather than one per stage type. Defaults to 1.0 (always
 		# effective) if the Balance tab ever leaves it blank.
-		"question_strong_multiplier": float(DataDB.balance.get("question_strong_multiplier", 1.0)),
-		"question_weak_multiplier": float(DataDB.balance.get("question_weak_multiplier", 1.0)),
+		"question_strong_multiplier": Levers.num("question_strong_multiplier"),
+		"question_weak_multiplier": Levers.num("question_weak_multiplier"),
 		"deck": player_deck(),
 		# A good caucus earlier in the level starts this stage ahead, and so
 		# does an organisation whose backing you have bought (STAGE_START_BONUS).

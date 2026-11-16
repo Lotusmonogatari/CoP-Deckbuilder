@@ -37,7 +37,7 @@ static func row_for(draft_id: String, ids: Array, extra_visit: bool = false) -> 
 
 ## XP the extra member visit adds to the draft's cost (Balance).
 static func extra_visit_xp_cost() -> int:
-	return int(DataDB.balance.get("draft_bill_extra_visit_xp_cost", 50))
+	return Levers.whole("draft_bill_extra_visit_xp_cost")
 
 
 ## Why `ids` cannot take an extra member visit: no party has a seat left to
@@ -84,16 +84,16 @@ static func refusal(ids: Array, state: Dictionary) -> String:
 	if ComposedBill.has_conflict(ids, by_id):
 		return Text.say("draft.conflict")
 	var last := int(state.get("last_draft_at", -1))
-	var cooldown := int(DataDB.balance.get("draft_bill_cooldown_units", 30))
+	var cooldown := Levers.whole("draft_bill_cooldown_units")
 	if last >= 0 and int(state.get("time_units", 0)) - last < cooldown:
 		return Text.say("draft.cooldown")
-	var xp_cost := int(DataDB.balance.get("draft_bill_xp_cost", 350))
+	var xp_cost := Levers.whole("draft_bill_xp_cost")
 	if bool(state.get("extra_visit", false)):
 		var why_not := extra_visit_refusal(ids)
 		if not why_not.is_empty():
 			return why_not
 		xp_cost += extra_visit_xp_cost()
-	var funds_cost := int(DataDB.balance.get("draft_bill_funds_cost", 300000))
+	var funds_cost := Levers.whole("draft_bill_funds_cost")
 	if int(state.get("xp", 0)) < xp_cost or int(state.get("funds", 0)) < funds_cost:
 		return Text.say("draft.cost", {"xp": xp_cost, "funds": Phrase.with_separators(funds_cost)})
 	if not PatronLevel.carryable(bill_for(ids)):

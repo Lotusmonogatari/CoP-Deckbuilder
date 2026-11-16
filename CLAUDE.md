@@ -269,3 +269,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Icon uploads wired to their items (2026-11-14, Cameron)
 - Salmon icon (2026-11-14, Cameron)
 - Hardening from the audit, rules and standing in the workbook, dues bite (2026-11-16, Cameron)
+- Audit follow-up: rewards, rooms, patron lines, save points, numbers in the workbook (2026-11-16, Cameron)

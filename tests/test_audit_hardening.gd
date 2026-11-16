@@ -114,3 +114,23 @@ func test_patron_lines_fill_in_the_organization_and_the_bill() -> void:
 	assert_true(line.contains("Org X"))
 	assert_eq(RequestLines.patron_line({"request_line": null}, "request_line", "a", "b"), "", "a blank cell falls back to the shared Text row")
 	assert_eq(RequestLines.patron_line({}, "accept_line", "a", "b"), "")
+
+
+# C-8: the people draws can be seeded, so a stage's seating can be replayed.
+func _seated(level_id: String) -> Array:
+	var runner := LevelRunner.new(BattleSetup.expand_level(DataDB.get_level(level_id)))
+	var ids: Array = []
+	for stage: Variant in runner.stages:
+		for opponent: Variant in (stage as Dictionary).get("opponents", []):
+			ids.append(str((opponent as Dictionary).get("opp_id", "")))
+	return ids
+
+
+func test_a_seeded_people_draw_seats_the_same_people_twice() -> void:
+	BattleSetup.seed_people_draws(77)
+	var first := _seated("LV01")
+	BattleSetup.seed_people_draws(77)
+	var second := _seated("LV01")
+	BattleSetup.seed_people_draws(-1)
+	assert_eq(first, second)
+	assert_gt(first.size(), 0)

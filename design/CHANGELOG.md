@@ -1055,3 +1055,17 @@ Cameron approved the audit's roadmap items one popup at a time (`audit/roadmap.m
 | **W-2** | Owing party dues now (1) locks the party's backings and switches the free Party Backing off (Balance `Dues Debt Locks Backings`, new Text row `backing.refuse_dues_owed`) and (2) raises the unpaid-dues Party support penalty from 10 to 30 (**draft number**). In 30-week simulations (3 seeds) a debtor ends near Party support 70 instead of 90 (penalty 20: 80; 40: 29 to 55 and more lost stages). Tests: `test_dues_lock.gd`, `test_audit_hardening.gd` |
 
 Future action item recorded: Party-support-locked events for the player's own party (`design/proposals/PARTY_SUPPORT_LOCKED_EVENTS_2026-11-16.md`).
+
+## Audit follow-up: rewards, rooms, patron lines, save points, numbers in the workbook (2026-11-16, Cameron)
+
+| Item | What changed |
+|---|---|
+| **W-4** | Level rewards in the Levels tab (columns S to W) are 20% larger on the 31 hardest levels. Draft numbers for Cameron to retune |
+| **W-6** | The 15 easiest rooms are harder (Stages tab: threshold, opponent start and gaffe limit moved together; thresholds or energy alone barely changed committee rooms) |
+| **W-7** | The sponsor's own lines are shown in the request panel (`RequestLines.patron_line`), with a spoken answer when the player accepts or declines |
+| **C-3** | Stage save points checked and proven by `test_save_points.gd`: at the start of a level (now explicit in `begin_level`, it was race-dependent), at each defeated opponent, and when the result is shown |
+| **C-6** | Typed-in gameplay numbers in the rules files moved to 12 new Balance rows read through `Levers` (bill positions, special effects, election overdue share, staff severance). `test_no_balance_fallbacks.gd` bans code defaults for Balance keys. Structural constants that are not design numbers stay in code |
+| **C-8** | `BattleSetup` can take a seed for its people draws, so audit runs repeat exactly |
+| **C-9** | Measured on desktop: `DataDB.load_all()` takes about 0.7 s, JSON parsing about 0.3 s of it (the cue files are the largest). Not a problem at start-up; measure on a phone before changing anything. Tool: `audit/tests/load_profile.tscn` |
+
+Waiting on Cameron: W-3 (Sanban decay), W-5 (card drafts, `audit/w5_card_proposal.md`), W-8.

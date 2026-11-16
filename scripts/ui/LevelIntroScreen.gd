@@ -170,9 +170,9 @@ func _show_lean_choice() -> void:
 	var note := StanceLines.intro_lines(_bill)
 	# What a lean is worth, from the Balance tab (2026-11-04, Cameron).
 	note.append(Text.say("level_intro.stakes", {
-		"win": int(DataDB.balance.get("stance_win_drift", 0)),
-		"vote": int(DataDB.balance.get("stance_vote_delta", 0)),
-		"switch": int(DataDB.balance.get("stance_flip_abandoned_penalty", 0))}))
+		"win": Levers.whole("stance_win_drift"),
+		"vote": Levers.whole("stance_vote_delta"),
+		"switch": Levers.whole("stance_flip_abandoned_penalty")}))
 	_stance_note().text = "\n".join(note)
 	_stance_note().visible = not _stance_note().text.is_empty()
 	var own_party := DataDB.get_party(str(DataDB.player.get("party", "")))
@@ -200,7 +200,7 @@ func _on_lean_chosen(lean: String) -> void:
 
 	GameState.set_bill_lean(str(_bill.get("bill_id", "")), lean)
 
-	var magnitude := int(DataDB.balance.get("lean_party_support_delta", 0))
+	var magnitude := Levers.whole("lean_party_support_delta")
 	var delta := BillLean.party_support_delta(own_position, lean, magnitude)
 	if delta != 0:
 		GameState.apply_floor_vote_favorability({own_party_name: delta},

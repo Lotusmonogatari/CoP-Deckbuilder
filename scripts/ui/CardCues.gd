@@ -58,7 +58,7 @@ static func for_card(card_id: String, stage_id: String, turn: int,
 		# (Balance "Player Cues: Room Line Chance"; Cameron, 2026-11-09).
 		var room_lines: Array = DataDB.get_room_player_cue_lines(stage_id, suit, verb_for(applied), lean)
 		var moment := _index_for(card_id, stage_id, turn)
-		if not room_lines.is_empty() and use_room_line(moment, int(DataDB.balance.get("player_cues_room_line_chance", 0))):
+		if not room_lines.is_empty() and use_room_line(moment, Levers.whole("player_cues_room_line_chance")):
 			var room: Dictionary = room_lines[(moment / 100) % room_lines.size()]
 			return {"text": str(room.get("text", "")), "line_id": str(room.get("line_id", ""))}
 		if not about_bill.is_empty():
@@ -99,7 +99,7 @@ static func fill_bill(text: String, bill_id: String, index: int) -> String:
 	if not ("{bill}" in text or "{Bill}" in text):
 		return text
 	var name := _bill_name_for(bill_id)
-	var chance := int(DataDB.balance.get("player_cues_full_bill_name_chance", 25))
+	var chance := Levers.whole("player_cues_full_bill_name_chance")
 	# Half the short mentions say "the Act" and half "the bill", for a bill named so.
 	var use_full := not name.is_empty() and (index % 100) < chance
 	var lower := BillName.phrase(name) if use_full else BillName.short(name, index / 100)

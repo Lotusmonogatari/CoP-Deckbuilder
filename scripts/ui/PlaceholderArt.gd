@@ -182,7 +182,7 @@ const SCREEN_EDGE_TOLERANCE := 2.0
 func _update_soft_edges() -> void:
 	if _texture_rect == null:
 		return
-	var width := float(DataDB.balance.get("image_edge_fade", 0))
+	var width := Levers.num("image_edge_fade")
 	if kind != Kind.BACKGROUND or _is_placeholder or _texture_rect.texture == null or width <= 0.0 \
 			or not is_inside_tree():
 		_texture_rect.material = null
@@ -277,7 +277,7 @@ func _input(event: InputEvent) -> void:
 			_dragging = true
 		# Which way the picture slides under the finger is a Balance lever
 		# (Image scroll: Drag direction; -1 since Cameron's 2026-10-31 playtest).
-		_drag += motion.relative * signf(float(DataDB.balance.get("image_scroll_drag_direction", 1)))
+		_drag += motion.relative * signf(Levers.num("image_scroll_drag_direction"))
 		_place()
 		get_viewport().set_input_as_handled()
 
@@ -309,10 +309,10 @@ func _process(delta: float) -> void:
 				_has_baseline = true
 			var tilt := (Vector2(reading.x, reading.y) - _baseline) / STANDARD_GRAVITY
 			target = PanMath.tilt_offset(Vector2(tilt.x, -tilt.y),
-				float(DataDB.balance.get("image_pan_tilt_strength", 2.5)), _room())
+				Levers.num("image_pan_tilt_strength"), _room())
 	if _tilt.is_equal_approx(target):
 		return
-	_tilt = PanMath.follow(_tilt, target, float(DataDB.balance.get("image_pan_follow_speed", 6)), delta)
+	_tilt = PanMath.follow(_tilt, target, Levers.num("image_pan_follow_speed"), delta)
 	_place()
 
 

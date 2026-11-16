@@ -62,13 +62,13 @@ func _ready() -> void:
 	# A level about a bill opens with the player's thought more often than the
 	# flat chance (2026-11-02, Balance "Transition: Bill Level Thought Chance").
 	var bill_id := str(_stage.get("bill_id", ""))
-	var thought_chance := int(DataDB.balance.get("transition_player_thought_chance", 0))
+	var thought_chance := Levers.whole("transition_player_thought_chance")
 	if not bill_id.is_empty():
-		thought_chance = int(DataDB.balance.get("transition_bill_level_thought_chance", thought_chance))
+		thought_chance = Levers.whole("transition_bill_level_thought_chance")
 	var result := StageTransition.resolve(
 		_stage, DataDB.transition_cast, DataDB.transition_backgrounds, DataDB.transition_dialogue, rng, hired_ids,
 		thought_chance, bill_id, _lean(), DataDB.component_ids_of(bill_id),
-		int(DataDB.balance.get("transition_staff_speaker_chance", -1)), GameState.transition_memory,
+		Levers.whole("transition_staff_speaker_chance"), GameState.transition_memory,
 		_opponent_lock())
 
 	if result.is_empty():
@@ -241,7 +241,7 @@ func _display_name(character_id: String) -> String:
 ## so the opening is seen before it can be tapped past. The timer captures the
 ## button alone, not the screen. Tests and bots skip it (COP_NO_CONTINUE_DELAY).
 func _hold_continue() -> void:
-	var delay := float(DataDB.balance.get("stage_continue_delay_seconds", 0))
+	var delay := Levers.num("stage_continue_delay_seconds")
 	if delay <= 0.0 or OS.has_environment("COP_NO_CONTINUE_DELAY"):
 		return
 	var button := _continue_button

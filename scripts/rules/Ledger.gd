@@ -334,7 +334,7 @@ static func staff_firing_cost(candidate: Dictionary) -> int:
 	var explicit: Variant = candidate.get("firing_cost_yen")
 	if explicit != null:
 		return int(explicit)
-	return int(round(int(candidate.get("hiring_cost_yen", 0)) * 0.10))
+	return int(round(int(candidate.get("hiring_cost_yen", 0)) * Levers.num("staff_severance_share")))
 
 
 ## Whether the hired candidate in a role can be fired right now. There is no

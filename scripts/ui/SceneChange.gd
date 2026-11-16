@@ -19,7 +19,7 @@ const LAYER_NAME := "SceneFade"
 static func to(tree: SceneTree, path: String) -> void:
 	if tree == null:
 		return
-	var seconds := float(DataDB.balance.get("scene_change_fade_seconds", 0.0))
+	var seconds := Levers.num("scene_change_fade_seconds")
 	if not fade_enabled or seconds <= 0.0:
 		tree.change_scene_to_file(path)
 		return

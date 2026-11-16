@@ -43,7 +43,7 @@ extends RefCounted
 ##     engine.setup({"bill": bill, "player_party": "Frontier Party",
 ##         "meta": GameState.meta, "booster_standing": GameState.booster_standing,
 ##         "triggers": DataDB.vote_influence_triggers,
-##         "default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),
+##         "default_threshold": Levers.whole("vote_influence_default_threshold"),
 ##         "resistance_by_party": {...}, "default_resistance": 70})
 ##     var result := engine.choose("Yes")
 ##     ... show result.totals, result.positions, apply result.favorability_deltas ...

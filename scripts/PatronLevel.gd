@@ -227,7 +227,7 @@ static func _draw_visit(template: Dictionary, bill: Dictionary, rng: RandomNumbe
 		if skip_member.is_empty() or str(opponent.get("opp_id", "")) != skip_member:
 			opponents.append(opponent)
 	var member := MpVisit.pick_member(opponents, str(party.get("name", "")), committee, GameState.faced_people, rng,
-		3, int(DataDB.balance.get("mp_visit_committee_member_percent", 50)))
+		3, Levers.whole("mp_visit_committee_member_percent"))
 	if member.is_empty():
 		return {}
 	# Every part of the bill gets asked about in turn, not only the first.
@@ -237,7 +237,7 @@ static func _draw_visit(template: Dictionary, bill: Dictionary, rng: RandomNumbe
 		if not component_phrase.is_empty():
 			phrases.append(component_phrase)
 	var questions := MpVisit.build_questions(member, DataDB.visit_questions, DataDB.visit_answers,
-			int(DataDB.balance.get("mp_visit_questions", 3)), phrases, rng)
+			Levers.whole("mp_visit_questions"), phrases, rng)
 	if questions.is_empty():
 		return {}
 	return {
@@ -268,7 +268,7 @@ static func carryable(bill: Dictionary) -> bool:
 		"bill": bill.duplicate(true), "player_party": player_party, "meta": {"Reputation": 100},
 		"triggers": [{"variable": "Reputation", "enabled": "Yes", "threshold": 1}],
 		"resistance_by_party": resistance,
-		"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
+		"default_resistance": Levers.whole("vote_swing_resistance_default"),
 	})
 	return bool(carried.choose("Yes").get("passed", false))
 
@@ -315,7 +315,7 @@ static func build_trade(template: Dictionary, row: Dictionary, bill: Dictionary,
 	# The part they ask for is chosen among the parts the player may actually trade.
 	var asked := LobbyistTrade.asked_component(drops, ComposedBill.index(DataDB.bill_components), str(picked["org"]))
 	var questions := MpVisit.build_questions(lobbyist, DataDB.trade_questions, DataDB.visit_answers,
-			int(DataDB.balance.get("trade_rounds", 3)), "{component}", rng)
+			Levers.whole("trade_rounds"), "{component}", rng)
 	if questions.is_empty():
 		return {}
 	return {
@@ -329,7 +329,7 @@ static func build_trade(template: Dictionary, row: Dictionary, bill: Dictionary,
 ## rapport (0 when no visit is in progress).
 static func visit_start_bonus() -> int:
 	var visit := GameState.current_visit()
-	return MpVisit.start_bonus(int(visit.get("rapport", 0)), int(DataDB.balance.get("mp_visit_rapport_start_per_point", 5)))
+	return MpVisit.start_bonus(int(visit.get("rapport", 0)), Levers.whole("mp_visit_rapport_start_per_point"))
 
 
 ## Composes the bill, builds its level and files both with DataDB for the run.

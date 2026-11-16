@@ -75,8 +75,8 @@ static func split(party_lean: float, seats: int, threshold: float) -> Dictionary
 	var abstain_share := 0.0
 	var disposition := "Neutral"
 	if size >= threshold:
-		var strength := minf(1.0, (size - threshold) / (3.0 * threshold))
-		var for_side := 0.66 + 0.30 * strength
+		var strength := minf(1.0, (size - threshold) / (Levers.num("bill_positions_side_strength_span_multiple") * threshold))
+		var for_side := Levers.num("bill_positions_side_floor_share") + Levers.num("bill_positions_side_strength_share") * strength
 		if party_lean > 0.0:
 			yes_share = for_side
 			no_share = 1.0 - for_side
@@ -85,14 +85,15 @@ static func split(party_lean: float, seats: int, threshold: float) -> Dictionary
 			yes_share = 1.0 - for_side
 			no_share = for_side
 			disposition = "Opposed"
-		if strength < 0.25:
-			abstain_share = 0.10 * (1.0 - strength / 0.25)
+		var fade := Levers.num("bill_positions_abstain_fade_strength")
+		if strength < fade:
+			abstain_share = Levers.num("bill_positions_abstain_share") * (1.0 - strength / fade)
 			yes_share -= abstain_share / 2.0
 			no_share -= abstain_share / 2.0
 	else:
 		var t := party_lean / threshold
-		yes_share = 0.31 + 0.22 * t
-		no_share = 0.31 - 0.22 * t
+		yes_share = Levers.num("bill_positions_neutral_share") + Levers.num("bill_positions_neutral_swing") * t
+		no_share = Levers.num("bill_positions_neutral_share") - Levers.num("bill_positions_neutral_swing") * t
 		abstain_share = 1.0 - yes_share - no_share
 	var raw := [yes_share * seats, no_share * seats, abstain_share * seats]
 	var whole := [int(floor(raw[0])), int(floor(raw[1])), int(floor(raw[2]))]

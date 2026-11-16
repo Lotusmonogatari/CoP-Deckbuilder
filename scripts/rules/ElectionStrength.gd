@@ -46,7 +46,7 @@ static func components(cfg: Dictionary, inputs: Dictionary) -> Array:
 	var max_points: Dictionary = cfg["max"]
 	var party_share := clampf(float(inputs.get("party_support", 0)) / 100.0, 0.0, 1.0)
 	if bool(inputs.get("dues_overdue", false)):
-		party_share *= 0.5
+		party_share *= Levers.num("election_overdue_party_share_factor")
 	var shares := {
 		"district": clampf(float(inputs.get("district", 0)) / 100.0, 0.0, 1.0),
 		"national": clampf(float(inputs.get("national", 0)) / 100.0, 0.0, 1.0),

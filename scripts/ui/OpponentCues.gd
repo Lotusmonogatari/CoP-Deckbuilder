@@ -64,7 +64,7 @@ static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn:
 		var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
 		var allowed := MemberStance.sides(opponent, bill, DataDB.parties,
 			BillStance.sides(bill, DataDB.law_effects, GameState._party_tier_booster_ids()),
-			int(DataDB.balance.get("member_stance_split_party_abstain_percent", 30)),
+			Levers.whole("member_stance_split_party_abstain_percent"),
 			_player_side(bill_id))
 		var about_bill: Array[String] = DataDB.get_bill_opponent_cue_lines(bill_id, opp_id, bill_suit, verb, allowed)
 		var leader_line := MemberStance.leader_line(opponent, bill, DataDB.parties)
@@ -136,7 +136,7 @@ static func pick_unused(lines: Array, said: Dictionary, seed: int) -> int:
 ## opponent's personal lines; Balance lever "Opponent Cues: General Pool
 ## Chance" (percent), 0 when absent.
 static func _general_chance() -> float:
-	return float(DataDB.balance.get("opponent_cues_general_pool_chance", 0)) / 100.0
+	return Levers.num("opponent_cues_general_pool_chance") / 100.0
 
 
 ## Which of the opponent's suits (or an outside one) this roll picked — the

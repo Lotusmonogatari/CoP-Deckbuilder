@@ -269,5 +269,17 @@
   "scroll_speed_level_4": 250,
   "scroll_speed_level_5": 300,
   "dues_debt_locks_backings": 1,
+  "bill_positions_side_floor_share": 0.66,
+  "bill_positions_side_strength_share": 0.3,
+  "bill_positions_side_strength_span_multiple": 3,
+  "bill_positions_abstain_fade_strength": 0.25,
+  "bill_positions_abstain_share": 0.1,
+  "bill_positions_neutral_share": 0.31,
+  "bill_positions_neutral_swing": 0.22,
+  "special_effects_reputation_threshold": 60,
+  "special_effects_audience_majority_share": 0.5,
+  "special_effects_audience_step_share": 0.2,
+  "election_overdue_party_share_factor": 0.5,
+  "staff_severance_share": 0.1,
   "xp_tiers": {}
 }

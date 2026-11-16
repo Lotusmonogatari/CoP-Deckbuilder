@@ -131,10 +131,10 @@ func start_voting() -> void:
 		"meta": GameState.effective_meta(),
 		"booster_standing": GameState.booster_standing,
 		"triggers": DataDB.vote_influence_triggers,
-		"default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),
+		"default_threshold": Levers.whole("vote_influence_default_threshold"),
 		"resistance_by_party": _resistance_by_party(),
-		"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
-		"supermajority_percent": int(DataDB.balance.get("supermajority_percent_of_house", 67)),
+		"default_resistance": Levers.whole("vote_swing_resistance_default"),
+		"supermajority_percent": Levers.whole("supermajority_percent_of_house"),
 		"assist": GameState.bill_assist,
 	}):
 		_ready_to_play = false
@@ -352,8 +352,8 @@ func _add_research_block(column: VBoxContainer) -> void:
 		cost.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		cost.theme_type_variation = &"SmallLabel"
 		cost.text = Text.say("floor_vote.research_cost", {
-			"hours": int(DataDB.balance.get("research_assistant_briefing_hours", 0)),
-			"xp": int(DataDB.balance.get("research_assistant_briefing_xp", 0)),
+			"hours": Levers.whole("research_assistant_briefing_hours"),
+			"xp": Levers.whole("research_assistant_briefing_xp"),
 			"points": GameState.research_briefing_points()})
 		block.add_child(cost)
 	var button := UiKit.action_button(Text.say("floor_vote.research_button"),
@@ -407,14 +407,14 @@ func _open_influence_status() -> void:
 ## vote and how many may be whipped (Balance levers; VoteWhip is the arithmetic).
 func _whip_numbers(choice: String) -> Dictionary:
 	var unit := VoteWhip.unit_cost(engine.own_disposition(), choice,
-		int(DataDB.balance.get("whip_base_cost", 10)),
-		int(DataDB.balance.get("whip_against_party_multiplier", 3)))
+		Levers.whole("whip_base_cost"),
+		Levers.whole("whip_against_party_multiplier"))
 	unit = VoteWhip.discounted_unit(unit, _discount_orgs().size(),
-		int(DataDB.balance.get("whip_discount_amount", 1)),
-		int(DataDB.balance.get("whip_discount_floor", 5)))
+		Levers.whole("whip_discount_amount"),
+		Levers.whole("whip_discount_floor"))
 	var allowed := VoteWhip.max_whips(unit, int(GameState.meta.get("Party support", 0)),
-		int(DataDB.balance.get("whip_party_support_floor", 30)), engine.whip_capacity(choice),
-		int(DataDB.balance.get("whip_max_per_vote", 3)))
+		Levers.whole("whip_party_support_floor"), engine.whip_capacity(choice),
+		Levers.whole("whip_max_per_vote"))
 	return {"unit": unit, "allowed": allowed}
 
 
@@ -422,7 +422,7 @@ func _whip_numbers(choice: String) -> Dictionary:
 func _discount_orgs() -> Array[String]:
 	return VoteWhip.discount_orgs(DataDB.party_stakeholders, DataDB.vote_influence_triggers,
 		GameState.booster_standing, GameState.own_party_id(),
-		int(DataDB.balance.get("whip_discount_standing", 65)),
+		Levers.whole("whip_discount_standing"),
 		int(DataDB.booster_standing.get("start", 30)))
 
 
@@ -443,17 +443,17 @@ func _build_whip_row(column: VBoxContainer) -> void:
 	# The price printed here is the price the buttons charge: the base cost and
 	# the against-your-party cost each after the discount your backers earn
 	# (it said 10 while the button charged 9; 2026-11-02, Cameron).
-	var base_cost := int(DataDB.balance.get("whip_base_cost", 10))
+	var base_cost := Levers.whole("whip_base_cost")
 	var backers := _discount_orgs().size()
-	var discount := int(DataDB.balance.get("whip_discount_amount", 1))
-	var cheapest := int(DataDB.balance.get("whip_discount_floor", 5))
+	var discount := Levers.whole("whip_discount_amount")
+	var cheapest := Levers.whole("whip_discount_floor")
 	var base := VoteWhip.discounted_unit(base_cost, backers, discount, cheapest)
-	var against := VoteWhip.discounted_unit(base_cost * int(DataDB.balance.get("whip_against_party_multiplier", 3)),
+	var against := VoteWhip.discounted_unit(base_cost * Levers.whole("whip_against_party_multiplier"),
 		backers, discount, cheapest)
 	var full_info := Text.say("floor_vote.whip_cost", {
 		"base": base, "against": against,
 		"have": int(GameState.meta.get("Party support", 0)),
-		"floor": int(DataDB.balance.get("whip_party_support_floor", 30))})
+		"floor": Levers.whole("whip_party_support_floor")})
 	var friends := _discount_orgs()
 	var perk_text := ""
 	if not friends.is_empty():
@@ -461,7 +461,7 @@ func _build_whip_row(column: VBoxContainer) -> void:
 		for booster_id: String in friends:
 			names.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
 		perk_text = Text.say("floor_vote.whip_discount", {
-			"orgs": ", ".join(names), "amount": int(DataDB.balance.get("whip_discount_amount", 1))})
+			"orgs": ", ".join(names), "amount": Levers.whole("whip_discount_amount")})
 	_whip_details = [full_info, perk_text]
 	if most <= 0:
 		var none := Label.new()

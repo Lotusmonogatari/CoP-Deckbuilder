@@ -17,7 +17,7 @@ const TOP_ONLY := Vector4(0.0, 1.0, 0.0, 0.0)
 
 
 static func width_from_balance() -> float:
-	return float(DataDB.balance.get("panel_edge_fade", 0))
+	return Levers.num("panel_edge_fade")
 
 
 ## Fades `box`'s own background on the chosen sides, and keeps doing so as it resizes.

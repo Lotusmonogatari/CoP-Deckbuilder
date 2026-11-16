@@ -105,13 +105,13 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			# card today (C04 moved to the target-segment family above), kept
 			# for the next card that wants a Reputation threshold instead of
 			# an audience one.
-			if int(context.get("kanban", 0)) >= 60:
+			if int(context.get("kanban", 0)) >= Levers.whole("special_effects_reputation_threshold"):
 				result["self_plus"] = int(result.get("self_plus", 0)) + amount
 				result["flags"]["special_triggered"] = true
 
 		"double_if_target_segment_ge_50":
 			# C06: "Gain 4; doubled if Constituents >= 50%."
-			if share >= 0.5:
+			if share >= Levers.num("special_effects_audience_majority_share"):
 				result["flags"]["special_bonus"] = int(result.get("self_plus", 0))
 				result["self_plus"] = int(result.get("self_plus", 0)) * 2
 				result["flags"]["special_triggered"] = true
@@ -167,7 +167,7 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			# `special_value` is N per step and may be negative, so a card can
 			# also be a gamble on a small audience; the total never goes past
 			# plus or minus the largest-bonus lever.
-			var steps := int(floor(share / 0.2 + 0.000001))
+			var steps := int(floor(share / Levers.num("special_effects_audience_step_share") + 0.000001))
 			var bonus := clampi(steps * amount, -Levers.whole("audience_scale_largest_bonus"), Levers.whole("audience_scale_largest_bonus"))
 			if bonus != 0:
 				result["self_plus"] = int(result.get("self_plus", 0)) + bonus

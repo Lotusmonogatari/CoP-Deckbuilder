@@ -71,14 +71,14 @@ static func _stats(stage: Dictionary, state: BattleState) -> Array[String]:
 			{"count": int(stage.get("energy_pool", 0)), "left": left}))
 	else:
 		var energy := state.energy_per_turn if state != null else int(stage.get("energy_per_turn", 3))
-		if state != null or energy != int(DataDB.balance.get("brief_standard_energy", 3)):
+		if state != null or energy != Levers.whole("brief_standard_energy"):
 			stats.append(Text.say("brief.stat.energy", {"count": energy}))
 
 	if str(stage.get("draw_mode", "refill")) == "none":
 		stats.append(Text.say("brief.stat.hand_none", {"count": int(stage.get("opening_hand", 8))}))
 	else:
 		var hand := int(stage.get("hand_size", 5))
-		if hand != int(DataDB.balance.get("brief_standard_hand", 5)):
+		if hand != Levers.whole("brief_standard_hand"):
 			stats.append(Text.say("brief.stat.hand", {"count": hand}))
 	return stats
 

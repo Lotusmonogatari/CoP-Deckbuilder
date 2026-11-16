@@ -62,7 +62,7 @@ func _on_goodbye() -> void:
 	_leaving = true
 	Haptics.confirm()
 	var width := size.x
-	var swipe_seconds := float(DataDB.balance.get("resign_swipe_seconds", 0.6))
+	var swipe_seconds := Levers.num("resign_swipe_seconds")
 	_phase_two.position.x = width
 	_phase_two.show()
 	var swipe := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
@@ -75,9 +75,9 @@ func _on_goodbye() -> void:
 func _after_swipe() -> void:
 	_phase_one.hide()
 	var ending := create_tween()
-	ending.tween_interval(float(DataDB.balance.get("resign_hold_seconds", 2.0)))
-	ending.tween_property(_black, "color:a", 1.0, float(DataDB.balance.get("resign_fade_seconds", 1.0)))
-	ending.tween_interval(float(DataDB.balance.get("resign_black_seconds", 2.0)))
+	ending.tween_interval(Levers.num("resign_hold_seconds"))
+	ending.tween_property(_black, "color:a", 1.0, Levers.num("resign_fade_seconds"))
+	ending.tween_interval(Levers.num("resign_black_seconds"))
 	ending.tween_callback(_to_title)
 
 

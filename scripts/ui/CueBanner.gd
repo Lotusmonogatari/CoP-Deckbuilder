@@ -201,7 +201,7 @@ func _show_next() -> void:
 	# (Balance "Cue: Extra Hold Seconds", Cameron 2026-11-08); the slides in
 	# and out are untouched.
 	var hold := clampf(HOLD_MIN + HOLD_PER_CHAR * text_length, HOLD_MIN, HOLD_MAX) \
-		+ float(DataDB.balance.get("cue_extra_hold_seconds", 0))
+		+ Levers.num("cue_extra_hold_seconds")
 	_step_timer.start(maxf(hold * speed, 0.001))
 
 

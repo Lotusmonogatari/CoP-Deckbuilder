@@ -925,7 +925,7 @@ func unlock_level(level_id: String) -> String:
 ## 2026-11-16, Cameron: dues must bite). Balance "Dues Debt Locks Backings"
 ## switches it; 0 turns the lock off.
 func dues_debt_locks_backings() -> bool:
-	return dues_balance > 0 and int(DataDB.balance.get("dues_debt_locks_backings", 0)) != 0
+	return dues_balance > 0 and Levers.whole("dues_debt_locks_backings") != 0
 
 
 ## Why a backing cannot be taken right now, as a sentence; "" when it can.
@@ -1177,14 +1177,14 @@ func make_primary(staff_id: String) -> String:
 ## True for the Shop item that adds a place to every staff role (SH plus the
 ## Balance number "Staff Slots: Item Number").
 func is_staff_slot_item(item: Dictionary) -> bool:
-	var number := int(DataDB.balance.get("staff_slots_item_number", 0))
+	var number := Levers.whole("staff_slots_item_number")
 	return number > 0 and str(item.get("item_id", "")) == "SH%d" % number
 
 
 ## True once the staff slot item has been bought the most times allowed
 ## (Balance "Staff Slots: Maximum Purchases").
 func staff_slots_maxed() -> bool:
-	return staff_slot_buys >= int(DataDB.balance.get("staff_slots_maximum_purchases", 2))
+	return staff_slot_buys >= Levers.whole("staff_slots_maximum_purchases")
 
 
 ## Why the staff slot item cannot be bought now, in words, or "". The item's
@@ -1197,7 +1197,7 @@ func staff_slot_refusal(item: Dictionary) -> String:
 		return refusal
 	if staff_slots_maxed():
 		return Text.say("shop.staff_slots_maxed")
-	var need := int(DataDB.balance.get("staff_slots_reputation_cost", 0))
+	var need := Levers.whole("staff_slots_reputation_cost")
 	if int(meta.get("Reputation", 0)) < need:
 		return Text.say("shop.reputation_short", {"count": need - int(meta.get("Reputation", 0))})
 	return ""
@@ -1213,7 +1213,7 @@ func buy_staff_slots(item_id: String) -> Dictionary:
 	var price := Items.costs(item)
 	_move_xp(-int(price["XP"]))
 	_move_meta("Funds", -int(price["Funds"]))
-	_move_meta("Reputation", -int(DataDB.balance.get("staff_slots_reputation_cost", 0)))
+	_move_meta("Reputation", -Levers.whole("staff_slots_reputation_cost"))
 	staff_slot_buys += 1
 	return {"ok": true, "message": Text.say("shop.staff_slots_bought")}
 
@@ -1272,7 +1272,7 @@ func reset_booster_standing() -> void:
 ## organization settles by its own Decay Percent, and meta values with a Decay
 ## Percent settle. It used to run once at the end of every level.
 func _apply_time_decays() -> void:
-	var interval := int(DataDB.balance.get("decay_interval", 6))
+	var interval := Levers.whole("decay_interval")
 	if interval <= 0:
 		last_decay_at = time_units
 		return
@@ -1293,15 +1293,15 @@ func _apply_time_decays() -> void:
 func reset_awareness() -> void:
 	awareness_gaffe_tally = {"district": 0, "national": 0}
 	awareness = {
-		"district": clampi(int(DataDB.balance.get("awareness_start_district", 20)), 0, awareness_max()),
-		"national": clampi(int(DataDB.balance.get("awareness_start_national", 10)), 0, awareness_max()),
+		"district": clampi(Levers.whole("awareness_start_district"), 0, awareness_max()),
+		"national": clampi(Levers.whole("awareness_start_national"), 0, awareness_max()),
 	}
 	last_awareness_change = {}
 	awareness_streaks = {}
 
 
 func awareness_max() -> int:
-	return maxi(1, int(DataDB.balance.get("awareness_maximum", 100)))
+	return maxi(1, Levers.whole("awareness_maximum"))
 
 
 ## Moves one meter ("district" or "national"), clamped to 0 to the maximum.
@@ -1326,7 +1326,7 @@ func apply_awareness_gaffes(gaffes: int) -> void:
 	# "Awareness Gaffes Per District Point" cost 1 District awareness, and every
 	# "... Per National Point" cost 1 National.
 	for meter: String in ["district", "national"]:
-		var per := maxi(1, int(DataDB.balance.get("awareness_gaffes_per_%s_point" % meter, 1)))
+		var per := maxi(1, Levers.whole("awareness_gaffes_per_%s_point" % meter))
 		var before := int(awareness_gaffe_tally.get(meter, 0))
 		awareness_gaffe_tally[meter] = before + gaffes
 		apply_awareness_delta(meter, -((before + gaffes) / per - before / per))
@@ -1392,7 +1392,7 @@ func event_context() -> Dictionary:
 	return {"weekend": in_weekend(), "week_full": work_week_is_full(),
 		"hours_left": WeekCalendar.hours_left(calendar, cfg),
 		"funds": int(meta.get("Funds", 0)), "xp": xp, "now": time_units, "last_at": event_last_at,
-		"default_cooldown": int(DataDB.balance.get("event_default_cooldown_hours", 24)),
+		"default_cooldown": Levers.whole("event_default_cooldown_hours"),
 		"district": int(awareness.get("district", 0)), "national": int(awareness.get("national", 0)), "dues_owed": dues_balance,
 		"month": current_month(), "seasons": DataDB.rules.get("seasons", {})}
 
@@ -1478,7 +1478,7 @@ func roll_random_event() -> String:
 	# pop-up never lands on top of the button they are about to press.
 	if OS.has_environment("COP_NO_RANDOM_EVENTS"):
 		return ""
-	if randf() * 100.0 >= float(DataDB.balance.get("event_random_chance_percent", 0)):
+	if randf() * 100.0 >= Levers.num("event_random_chance_percent"):
 		return ""
 	var pool := EventEngine.eligible_random(DataDB.events, event_context())
 	return str(EventEngine.pick_weighted(pool, randf()).get("event_id", ""))
@@ -1966,9 +1966,9 @@ func _break_overdue_promises() -> void:
 			promises_broken_unseen.append(promise)
 			continue
 		if not org.is_empty():
-			var drop := int(DataDB.balance.get("promise_broken_standing", -3))
+			var drop := Levers.whole("promise_broken_standing")
 			_under_cause(cause, func() -> void: _apply_booster_delta(org, drop))
-		var rep := int(DataDB.balance.get("promise_broken_reputation", -1))
+		var rep := Levers.whole("promise_broken_reputation")
 		if rep != 0:
 			_under_cause(cause, func() -> void: _apply_meta_reward("Reputation", rep))
 		promises_broken_unseen.append(promise)
@@ -2051,7 +2051,7 @@ func keep_promise(promise_id: String) -> String:
 		if Promises.has_own(promise, "kept"):
 			_apply_promise_effects(promise["kept"], Text.say("record.cause_promise_kept"))
 		elif not org.is_empty():
-			var gain := int(DataDB.balance.get("promise_kept_standing", 1))
+			var gain := Levers.whole("promise_kept_standing")
 			_under_cause(Text.say("record.cause_promise_kept"), func() -> void: _apply_booster_delta(org, gain))
 		if str(promise.get("kind", "")) == Promises.PROMISE_HOURS:
 			spend_hours(int(promise.get("hours", 0)))
@@ -2203,7 +2203,7 @@ func dues_preview() -> Dictionary:
 	var week_dues := PartyDues.week_dues(cfg, int(meta.get("Party support", 0)),
 		week_funds_earned, _dues_reduction())
 	# The first weeks of a run owe nothing (Balance "Dues Holiday Weeks"; Campaign Pressure sets it).
-	if Difficulty.dues_holiday(int(calendar.get("week", 0)), int(DataDB.balance.get("dues_holiday_weeks", 0))):
+	if Difficulty.dues_holiday(int(calendar.get("week", 0)), Levers.whole("dues_holiday_weeks")):
 		week_dues = 0
 	return {"week_dues": week_dues, "owed": dues_balance, "total": week_dues + dues_balance,
 		"funds": int(meta.get("Funds", 0))}
@@ -2255,7 +2255,7 @@ func _settle_dues() -> Dictionary:
 ## week is about two and a half levels. Replaces the per-hour decay interval
 ## (Balance "Decay Interval", now 0).
 func _apply_week_decay() -> void:
-	_decay_scale = maxf(0.0, float(DataDB.balance.get("week_decay_multiplier", 1.0)))
+	_decay_scale = maxf(0.0, Levers.num("week_decay_multiplier"))
 	_decaying = true
 	_apply_neglect_decay()
 	_apply_standing_decay()
@@ -2369,8 +2369,8 @@ func reset_segment_favorability() -> void:
 
 ## Draws the hidden share for the next Floor Vote (see vote_unknown_percent).
 func lock_vote_unknown_percent() -> void:
-	var low := int(DataDB.balance.get("vote_projection_unknown_minimum_percent", 10))
-	var high := int(DataDB.balance.get("vote_projection_unknown_maximum_percent", 25))
+	var low := Levers.whole("vote_projection_unknown_minimum_percent")
+	var high := Levers.whole("vote_projection_unknown_maximum_percent")
 	var span := VoteProjection.narrowed_range(mini(low, high), maxi(low, high), research_passive_points())
 	vote_unknown_percent = randi_range(span[0], span[1])
 	vote_briefed = false
@@ -2386,17 +2386,17 @@ func research_tier() -> int:
 ## Points the assistant takes off the Unknown range by simply being on staff.
 func research_passive_points() -> int:
 	return VoteProjection.by_tier([
-		int(DataDB.balance.get("research_assistant_passive_points_tier_0", 0)),
-		int(DataDB.balance.get("research_assistant_passive_points_tier_1", 0)),
-		int(DataDB.balance.get("research_assistant_passive_points_tier_2", 0))], research_tier())
+		Levers.whole("research_assistant_passive_points_tier_0"),
+		Levers.whole("research_assistant_passive_points_tier_1"),
+		Levers.whole("research_assistant_passive_points_tier_2")], research_tier())
 
 
 ## Percent of the house a Research Briefing clears at the assistant's tier.
 func research_briefing_points() -> int:
 	return VoteProjection.by_tier([
-		int(DataDB.balance.get("research_assistant_briefing_clears_tier_0", 0)),
-		int(DataDB.balance.get("research_assistant_briefing_clears_tier_1", 0)),
-		int(DataDB.balance.get("research_assistant_briefing_clears_tier_2", 0))], research_tier())
+		Levers.whole("research_assistant_briefing_clears_tier_0"),
+		Levers.whole("research_assistant_briefing_clears_tier_1"),
+		Levers.whole("research_assistant_briefing_clears_tier_2")], research_tier())
 
 
 ## Why a Research Briefing cannot be bought now, as a sentence; "" when it can.
@@ -2407,10 +2407,10 @@ func research_briefing_refusal() -> String:
 		return Text.say("floor_vote.research_done")
 	if vote_unknown_percent <= 0:
 		return Text.say("floor_vote.research_nothing_left")
-	var hours_refusal := _hours_refusal(int(DataDB.balance.get("research_assistant_briefing_hours", 0)))
+	var hours_refusal := _hours_refusal(Levers.whole("research_assistant_briefing_hours"))
 	if not hours_refusal.is_empty():
 		return hours_refusal
-	var cost := int(DataDB.balance.get("research_assistant_briefing_xp", 0))
+	var cost := Levers.whole("research_assistant_briefing_xp")
 	if xp < cost:
 		return Text.say("floor_vote.research_no_xp", {"xp": cost})
 	return ""
@@ -2421,8 +2421,8 @@ func research_briefing_refusal() -> String:
 func buy_research_briefing() -> bool:
 	if not research_briefing_refusal().is_empty():
 		return false
-	spend_hours(int(DataDB.balance.get("research_assistant_briefing_hours", 0)))
-	_move_xp(-int(DataDB.balance.get("research_assistant_briefing_xp", 0)))
+	spend_hours(Levers.whole("research_assistant_briefing_hours"))
+	_move_xp(-Levers.whole("research_assistant_briefing_xp"))
 	vote_unknown_percent = maxi(vote_unknown_percent - research_briefing_points(), 0)
 	vote_briefed = true
 	return true
@@ -2663,12 +2663,12 @@ func _record_lifetime_gaffes(gaffes: int, outcome: String, gaffe_caused_loss: bo
 
 	if gaffe_penalty_applied:
 		return
-	var threshold := int(DataDB.balance.get("gaffes_lifetime_penalty_threshold", 50))
+	var threshold := Levers.whole("gaffes_lifetime_penalty_threshold")
 	if lifetime_gaffes < threshold:
 		return
 
 	gaffe_penalty_applied = true
-	var delta := int(DataDB.balance.get("gaffes_lifetime_penalty_jiban_delta", -15))
+	var delta := Levers.whole("gaffes_lifetime_penalty_jiban_delta")
 	_cause = Text.say("record.cause_gaffes")
 	_apply_meta_reward("Constituency support", delta)
 	_cause = ""
@@ -2731,7 +2731,7 @@ func _arm_special(trigger: String) -> void:
 ## The special levels whose countdown has run out, in the order they come due.
 func due_special_levels() -> Array[String]:
 	return SpecialLevels.due(special_levels, time_units,
-		int(DataDB.balance.get("special_level_delay", 5)))
+		Levers.whole("special_level_delay"))
 
 
 ## The due special level rows, for the top of the level list.
@@ -3102,7 +3102,7 @@ func _record_meta_change(applied: Dictionary) -> void:
 			_note_cause(last_meta_cause, name, int(applied[name]))
 		if int(applied[name]) != 0 and not DataDB.standing_links.is_empty():
 			_follow_links(name, StandingLinks.points_for_meta(name, int(applied[name]),
-				_sanban_row(name), int(DataDB.balance.get("standing_links_yen_per_point", 10000))))
+				_sanban_row(name), Levers.whole("standing_links_yen_per_point")))
 		# Announced as well as recorded. The recording is for the result
 		# screen, which asks afterwards; the announcement is for anything that
 		# wants to react as it happens — a sound, or the Office lighting up a
@@ -3565,7 +3565,7 @@ func deck_size() -> int:
 ## True once deck expansions have been bought the most times allowed (Balance
 ## "Deck Expansion: Maximum Purchases"): the item leaves the Marketplace.
 func deck_expansion_maxed() -> bool:
-	return deck_expansions >= int(DataDB.balance.get("deck_expansion_maximum_purchases", 5))
+	return deck_expansions >= Levers.whole("deck_expansion_maximum_purchases")
 
 
 ## A deck expansion: pays, then the deck holds `deck_size_increase` more cards
@@ -3865,7 +3865,7 @@ func commitment_label(text: String, list: Array) -> String:
 		if entry is Dictionary and str(entry.get("kind", "")) == "followup":
 			later_parts.append(Text.say("commit.followup"))
 		if Promises.is_promise(entry):
-			var shown := Promises.make(entry, 0, int(DataDB.balance.get("promise_default_deadline_hours", 48)), "", "", 0)
+			var shown := Promises.make(entry, 0, Levers.whole("promise_default_deadline_hours"), "", "", 0)
 			later_parts.append(Text.say("commit.promise", {"what": promise_what(shown), "count": int(shown["due_at"])}))
 	var parts: Array[String] = []
 	if not now_parts.is_empty():
@@ -3923,7 +3923,7 @@ func pay_commitments(list: Array, source: String = "", fallback_org: String = ""
 			continue
 		if Promises.is_promise(entry):
 			promise_serial += 1
-			var promise := Promises.make(entry, time_units, int(DataDB.balance.get("promise_default_deadline_hours", 48)),
+			var promise := Promises.make(entry, time_units, Levers.whole("promise_default_deadline_hours"),
 				fallback_org, source, promise_serial)
 			# The choice's own kept/broken effects and kept line, when it has
 			# them (Event Choices, 2026-10-31); otherwise the Balance defaults.
@@ -4166,7 +4166,7 @@ func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta
 func spend_party_support(amount: int, cause: String = "") -> bool:
 	if amount <= 0:
 		return true
-	var floor_value := int(DataDB.balance.get("whip_party_support_floor", 30))
+	var floor_value := Levers.whole("whip_party_support_floor")
 	if int(meta.get("Party support", 0)) - amount < floor_value:
 		return false
 	_cause = cause
@@ -4210,7 +4210,7 @@ func record_bill_flip(bill_id: String) -> void:
 	if bill_id.is_empty() or bills_flipped_by_influence.has(bill_id):
 		return
 	bills_flipped_by_influence.append(bill_id)
-	apply_awareness_delta("national", int(DataDB.balance.get("awareness_flipped_bill_national", 0)))
+	apply_awareness_delta("national", Levers.whole("awareness_flipped_bill_national"))
 
 
 ## An Act whose bill the player voted Aye or Nay on never comes back; one they
@@ -4244,9 +4244,9 @@ func record_absent_vote_if_lost_act() -> void:
 		"meta": effective_meta(),
 		"booster_standing": booster_standing,
 		"triggers": DataDB.vote_influence_triggers,
-		"default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),
-		"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
-		"supermajority_percent": int(DataDB.balance.get("supermajority_percent_of_house", 67)),
+		"default_threshold": Levers.whole("vote_influence_default_threshold"),
+		"default_resistance": Levers.whole("vote_swing_resistance_default"),
+		"supermajority_percent": Levers.whole("supermajority_percent_of_house"),
 		"assist": bill_assist,
 	}):
 		return
@@ -4300,8 +4300,8 @@ func _apply_party_tier_lean(bill_id: String, passed: bool) -> void:
 			disposition = str(position.get("disposition", ""))
 			scale = BattleSetup.salience_factor(position)
 	var delta := StatuteBook.party_tier_delta(disposition, passed,
-		PartySalience.scaled(int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)), scale),
-		PartySalience.scaled(int(DataDB.balance.get("law_lean_party_tier_fail_delta", 0)), scale))
+		PartySalience.scaled(Levers.whole("law_lean_party_tier_pass_delta"), scale),
+		PartySalience.scaled(Levers.whole("law_lean_party_tier_fail_delta"), scale))
 	if delta == 0:
 		return
 	for booster: Dictionary in DataDB.boosters:
@@ -4385,7 +4385,7 @@ func stance_adjust_tally(tally: Dictionary) -> Dictionary:
 	if lean.is_empty() or tally.is_empty():
 		return tally
 	return BillStance.adjust_tally(tally, BillStance.other_side(stance_sides(), lean),
-		int(DataDB.balance.get("stance_other_side_please_percent", 100)))
+		Levers.whole("stance_other_side_please_percent"))
 
 
 func _stance_bill_name() -> String:
@@ -4399,7 +4399,7 @@ func _apply_stance_win_drift() -> void:
 	var lean := stance_lean()
 	if lean.is_empty():
 		return
-	var drift := BillStance.win_drift(stance_sides(), lean, int(DataDB.balance.get("stance_win_drift", 0)))
+	var drift := BillStance.win_drift(stance_sides(), lean, Levers.whole("stance_win_drift"))
 	var cost: Dictionary = bill_stance.get("cost", {})
 	for id: String in drift:
 		var delta := int(drift[id])
@@ -4462,7 +4462,7 @@ func stance_drift_preview() -> Dictionary:
 	var lean := stance_lean()
 	if lean.is_empty():
 		return {}
-	return BillStance.win_drift(stance_sides(), lean, int(DataDB.balance.get("stance_win_drift", 0)))
+	return BillStance.win_drift(stance_sides(), lean, Levers.whole("stance_win_drift"))
 
 
 ## bill_id -> "passed"/"failed", for Office Notices and the Ticker.
@@ -4602,7 +4602,7 @@ func arm_patron_requests() -> void:
 ## alternative already law) are left out. Moves nothing but the countdown.
 func patron_requests_shown() -> Array:
 	arm_patron_requests()
-	var delay := int(DataDB.balance.get("special_level_delay", 5))
+	var delay := Levers.whole("special_level_delay")
 	var candidates: Array = []
 	for id: String in patron_armed:
 		var status := str((patron_requests.get(id, {}) as Dictionary).get("status", ""))
@@ -4612,7 +4612,7 @@ func patron_requests_shown() -> Array:
 	candidates.sort_custom(func(a: String, b: String) -> bool:
 		return int(patron_armed[a]) < int(patron_armed[b]) or (int(patron_armed[a]) == int(patron_armed[b]) and a < b))
 	var out: Array = []
-	var cap := int(DataDB.balance.get("patron_requests_waiting_at_once", 2))
+	var cap := Levers.whole("patron_requests_waiting_at_once")
 	for id: String in candidates:
 		if out.size() >= cap:
 			break
@@ -4685,8 +4685,8 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 		"backing_org": org if passed and int(outcome["free_backing_units"]) > 0 else "",
 		"components": (state.get("components", []) as Array).duplicate()}
 	if passed:
-		apply_awareness_delta("national", int(DataDB.balance.get("awareness_passed_own_bill_national", 0)))
-		apply_awareness_delta("district", int(DataDB.balance.get("awareness_passed_own_bill_district", 0)))
+		apply_awareness_delta("national", Levers.whole("awareness_passed_own_bill_national"))
+		apply_awareness_delta("district", Levers.whole("awareness_passed_own_bill_district"))
 		_apply_reward_entries(effects)
 		for component_id: Variant in (state.get("components", []) as Array):
 			if not enacted_components.has(component_id):
@@ -4722,13 +4722,13 @@ func start_draft(ids: Array, extra_visit: bool = false) -> bool:
 		return false
 	draft_counter += 1
 	last_draft_at = time_units
-	var xp_cost := int(DataDB.balance.get("draft_bill_xp_cost", 350))
+	var xp_cost := Levers.whole("draft_bill_xp_cost")
 	# The extra member visit's XP, only when the level really got its second
 	# visit (a bill with no one left to win over never charges for it).
 	if extra_visit and not (DataDB.get_level(PatronLevel.level_id_for(draft_id)).get("visit_2", {}) as Dictionary).is_empty():
 		xp_cost += DraftBill.extra_visit_xp_cost()
 	_move_xp(-xp_cost)
-	_move_meta("Funds", -int(DataDB.balance.get("draft_bill_funds_cost", 300000)))
+	_move_meta("Funds", -Levers.whole("draft_bill_funds_cost"))
 	return true
 
 
@@ -4775,7 +4775,7 @@ func _conclude_patron_level() -> void:
 	if int(state["tries"]) >= 2:
 		state["status"] = PatronRequests.LAPSED
 		_apply_booster_delta(str(PatronLevel.patron_bill(patron_bill_id).get("organization", "")),
-				-int(DataDB.balance.get("patron_fail_standing", 2)))
+				-Levers.whole("patron_fail_standing"))
 	else:
 		state["status"] = PatronRequests.WAITING
 	patron_requests[patron_bill_id] = state
@@ -4796,7 +4796,7 @@ func _register_saved_patron_bills() -> void:
 ## A story about the player's sponsored legislation starts running on the
 ## Office ticker for `news_ticker_units` clock units.
 func record_news(key: String) -> void:
-	patron_news[key] = time_units + int(DataDB.balance.get("news_ticker_units", 12))
+	patron_news[key] = time_units + Levers.whole("news_ticker_units")
 
 
 ## The stories still running (expired ones are dropped).
@@ -4850,7 +4850,7 @@ func _won_over_member() -> void:
 	if visit.is_empty() or bool(visit.get("won", false)):
 		return
 	visit["won"] = true
-	add_won_over(str(visit.get("party_id", "")), int(DataDB.balance.get("mp_visit_seats_won", 1)))
+	add_won_over(str(visit.get("party_id", "")), Levers.whole("mp_visit_seats_won"))
 
 
 ## The player declined the visit: both of its stages pass with nothing earned
@@ -4950,21 +4950,21 @@ func conclude_trade_deal(dropped_id: String, rewards: Array, leverage: int) -> D
 	for reward: Variant in rewards:
 		match str(reward):
 			LobbyistTrade.DONATION:
-				var funds := int(DataDB.balance.get("trade_donation_funds", 10000))
-				var xp_gain := int(DataDB.balance.get("trade_donation_xp", 20))
+				var funds := Levers.whole("trade_donation_funds")
+				var xp_gain := Levers.whole("trade_donation_xp")
 				_apply_meta_reward("Funds", funds)
 				_move_xp(xp_gain)
 				gains.append({"type": LobbyistTrade.DONATION, "funds": funds, "xp": xp_gain})
 			LobbyistTrade.SENTIMENT:
-				_apply_booster_delta(org, int(DataDB.balance.get("trade_sentiment_standing", 5)))
+				_apply_booster_delta(org, Levers.whole("trade_sentiment_standing"))
 				gains.append({"type": LobbyistTrade.SENTIMENT, "org": org})
 			LobbyistTrade.PARTY_FAVOR:
 				var party := DataDB.get_party_by_id(favor_party_id)
 				if not party.is_empty():
-					apply_floor_vote_favorability({str(party.get("name", "")): int(DataDB.balance.get("trade_party_favor", 3))})
+					apply_floor_vote_favorability({str(party.get("name", "")): Levers.whole("trade_party_favor")})
 					gains.append({"type": LobbyistTrade.PARTY_FAVOR, "party": str(party.get("name", ""))})
 			LobbyistTrade.HELP:
-				var seats := int(DataDB.balance.get("trade_help_seats", 1))
+				var seats := Levers.whole("trade_help_seats")
 				if not help_party.is_empty():
 					add_won_over(help_party, seats)
 					gains.append({"type": LobbyistTrade.HELP, "count": seats})

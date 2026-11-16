@@ -142,7 +142,7 @@ func _show_offer() -> void:
 ## in natural speech. Empty when no researcher is hired or the one hired is
 ## below the staff rank the lever asks for.
 func briefing_text() -> String:
-	if not MpVisit.briefing_available(GameState.staff_hired, int(DataDB.balance.get("mp_visit_briefing_staff_rank", 2))):
+	if not MpVisit.briefing_available(GameState.staff_hired, Levers.whole("mp_visit_briefing_staff_rank")):
 		return ""
 	var styles := MpVisit.favored_styles(_member)
 	if styles.is_empty():
@@ -208,9 +208,9 @@ func _on_choice(letter: String) -> void:
 			picked = choice
 	var grade := str(picked.get("grade", MpVisit.WEAK))
 	_visit["rapport"] = int(_visit.get("rapport", 0)) + MpVisit.points(grade,
-		int(DataDB.balance.get("mp_visit_strong_points", 1)),
-		int(DataDB.balance.get("mp_visit_medium_points", 0)),
-		int(DataDB.balance.get("mp_visit_weak_points", -1)))
+		Levers.whole("mp_visit_strong_points"),
+		Levers.whole("mp_visit_medium_points"),
+		Levers.whole("mp_visit_weak_points"))
 	_portrait.expression = ArtLoader.GAINING if grade == MpVisit.STRONG else (ArtLoader.NEUTRAL if grade == MpVisit.MEDIUM else ArtLoader.DAMAGED)
 	var tone := "strong" if grade == MpVisit.STRONG else ("medium" if grade == MpVisit.MEDIUM else "weak")
 	_banner.say(CueBanner.OPPONENT, str(_visit.get("member_name", "")),
@@ -232,7 +232,7 @@ func _on_continue() -> void:
 func _show_done() -> void:
 	_phase = "done"
 	var rapport := int(_visit.get("rapport", 0))
-	var bonus := MpVisit.start_bonus(rapport, int(DataDB.balance.get("mp_visit_rapport_start_per_point", 5)))
+	var bonus := MpVisit.start_bonus(rapport, Levers.whole("mp_visit_rapport_start_per_point"))
 	_outcome_title.text = Text.say("visit.done_title")
 	_outcome_body.text = Text.say("visit.done_body", {
 		"name": str(_visit.get("member_name", "")),

@@ -578,7 +578,7 @@ func _picture_row(art_id: String) -> Control:
 	art.name = "Picture_" + art_id
 	art.kind = PlaceholderArt.Kind.BACKGROUND
 	art.art_id = art_id
-	art.custom_minimum_size = Vector2(0, int(DataDB.balance.get("event_picture_height", 640)))
+	art.custom_minimum_size = Vector2(0, Levers.whole("event_picture_height"))
 	return art
 
 
@@ -1708,7 +1708,7 @@ func _show_law(law: Dictionary) -> void:
 	var needed := int(law.get("yes_needed", 0))
 	if needed <= 0:   # a law recorded before the requirement was saved
 		needed = FloorVoteEngine.yes_needed(totals, requirement,
-			int(DataDB.balance.get("supermajority_percent_of_house", 67)))
+			Levers.whole("supermajority_percent_of_house"))
 	var house: int = totals["Yes"] + totals["No"] + totals["Abstain"]
 	rows.append(UiKit.line(Text.say("floor_vote.req_line", {
 		"requirement": VoteWords.requirement_label(requirement),
@@ -2288,7 +2288,7 @@ func _price_text(item: Dictionary) -> String:
 		parts.append(Text.say("shop.item_price_yen", {"count": price["Funds"]}))
 	if GameState.is_staff_slot_item(item):
 		parts.append(Text.say("shop.item_price_reputation",
-			{"count": int(DataDB.balance.get("staff_slots_reputation_cost", 0))}))
+			{"count": Levers.whole("staff_slots_reputation_cost")}))
 	return Text.say("shop.item_free") if parts.is_empty() else " + ".join(parts)
 
 
@@ -3009,7 +3009,7 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 		rows.append(UiKit.line(Text.say("request.reward_heading")))
 		rows.append(OrgChip.row(reward_chips, true))
 	if bool(composed["amended"]):
-		rows.append(UiKit.line(Text.say("request.amended", {"percent": int(DataDB.balance.get("patron_amend_reward_percent", 75))}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("request.amended", {"percent": Levers.whole("patron_amend_reward_percent")}), "SmallLabel"))
 
 	var accept := UiKit.action_button(Text.say("request.accept"), "", _on_request_accept.bind(patron_bill_id), 110.0)
 	accept.name = "RequestAcceptButton"
@@ -3020,7 +3020,7 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 	var options := PatronRequests.amend_options(live, ComposedBill.index(DataDB.bill_components), GameState.enacted_components)
 	if not options.is_empty() and replace.is_empty():
 		rows.append(UiKit.heading(Text.say("request.amend_title")))
-		rows.append(UiKit.line(Text.say("request.amend_note", {"percent": int(DataDB.balance.get("patron_amend_reward_percent", 75))}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("request.amend_note", {"percent": Levers.whole("patron_amend_reward_percent")}), "SmallLabel"))
 		var by_id := ComposedBill.index(DataDB.bill_components)
 		for option: Dictionary in options:
 			var swap := UiKit.action_button(Text.say("request.amend_option", {
@@ -3047,7 +3047,7 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 func _readiness_line(bill: Dictionary) -> Control:
 	var line := UiKit.line(RequestLines.readiness_line(bill, DataDB.vote_influence_triggers,
 		GameState.effective_meta(), GameState.booster_standing,
-		int(DataDB.balance.get("vote_influence_default_threshold", 85))), "SmallLabel")
+		Levers.whole("vote_influence_default_threshold")), "SmallLabel")
 	line.name = "InfluenceReadiness"
 	return line
 
@@ -3063,8 +3063,8 @@ func _open_draft(fresh: bool = false) -> void:
 	var by_id := ComposedBill.index(DataDB.bill_components)
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("draft.intro", {
-		"xp": int(DataDB.balance.get("draft_bill_xp_cost", 350)),
-		"funds": Phrase.with_separators(int(DataDB.balance.get("draft_bill_funds_cost", 300000)))})))
+		"xp": Levers.whole("draft_bill_xp_cost"),
+		"funds": Phrase.with_separators(Levers.whole("draft_bill_funds_cost"))})))
 
 	rows.append(UiKit.heading(Text.say("draft.parts_heading")))
 	if _draft_ids.is_empty():

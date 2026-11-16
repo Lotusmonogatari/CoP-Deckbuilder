@@ -10,6 +10,6 @@ extends RefCounted
 static func confirm() -> void:
 	if not Layout.haptics_enabled:
 		return
-	var milliseconds := int(DataDB.balance.get("haptics_confirm_milliseconds", 25))
+	var milliseconds := Levers.whole("haptics_confirm_milliseconds")
 	if milliseconds > 0:
 		Input.vibrate_handheld(milliseconds)
