@@ -425,7 +425,7 @@ static func popup_rows(uid: String, handlers: Dictionary) -> Array[Control]:
 
 
 ## The size of one staff picture tile in the row.
-const TILE_SIZE := Vector2(290, 540)
+const TILE_SIZE := Vector2(340, 580)
 
 
 ## A staff member as a large picture you tap to give them the task: their
@@ -450,13 +450,14 @@ static func _staff_tile(staff_id: String, role: String, note: String, on_press: 
 	picture.kind = PlaceholderArt.Kind.CHARACTER
 	picture.art_id = staff_id
 	picture.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	picture.custom_minimum_size = Vector2(0, 300)
+	picture.custom_minimum_size = Vector2(0, 280)
 	picture.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	column.add_child(picture)
 	var name_label := Label.new()
 	name_label.text = str(DataDB.get_staff(staff_id).get("name", staff_id))
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	name_label.custom_minimum_size = Vector2(0, 96)   # room for a name on two lines
 	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	column.add_child(name_label)
 	var caption := Label.new()
@@ -464,6 +465,7 @@ static func _staff_tile(staff_id: String, role: String, note: String, on_press: 
 	caption.text = note if not note.is_empty() else role
 	caption.theme_type_variation = "SmallLabel"
 	caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	caption.custom_minimum_size = Vector2(0, 76)      # room for a role on two lines
 	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	caption.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	column.add_child(caption)
