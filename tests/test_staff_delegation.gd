@@ -10,12 +10,14 @@ func before_each() -> void:
 	GameState.start_new_run("PC01")
 	GameState.meta["Funds"] = 900000
 	GameState.staff_recruitment_tier = 2
+	GameState.calendar["week"] = 9   # past the ramp-up: tasks are delivered
 	assert_eq(GameState.hire_staff("SF04"), "")   # a researcher
 	assert_eq(GameState.hire_staff("SF15"), "")   # a district representative
 	GameState.staff_loyalty["SF04"] = 60
 	GameState.staff_loyalty["SF15"] = 60
 	GameState.booster_standing["BO23"] = 50
 	GameState.staff_ensure_day()
+	_fix_pool()
 
 
 func _choice(event_id: String, letter: String) -> Dictionary:
@@ -101,3 +103,12 @@ func test_a_delegated_day_still_resolves_with_the_blocks_counted() -> void:
 	var result := StaffTasks.evaluate(GameState.staff_day_pool, DataDB.staff_tasks, plan,
 		GameState._staff_eval_members(), GameState._staff_day_info())
 	assert_eq(int(result["used"]["SF04"]), 1)
+
+
+## A fixed day for tests that need particular tasks: eight known tasks (TK17 is time off).
+func _fix_pool() -> void:
+	var ids := ["TK17", "TK11", "TK10", "TK04", "TK05", "TK14", "TK06", "TK01"]
+	var pool: Array = []
+	for i in ids.size():
+		pool.append(StaffTasks._entry(StaffTasks.task_for(DataDB.staff_tasks, ids[i]), i, {}))
+	GameState.staff_day_pool = pool

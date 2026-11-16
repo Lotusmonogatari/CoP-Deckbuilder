@@ -84,40 +84,108 @@ static func rank_scaled(amount: int, name: String, tier: int) -> int:
 # The day's pool
 # ---------------------------------------------------------------------------
 
-## Draws a day's pool. `targets` holds the named things the tasks need, from
+## The most tasks a day may deliver (the ramp tab): the row for the calendar
+## week (`week_index` 0 is the first week; the last row covers every later
+## week), a weekend day keeping that row's Weekend Factor of it, plus `delta`
+## from an item or event, never below 0.
+static func day_maximum(ramp: Array, week_index: int, weekend: bool, delta: int = 0) -> int:
+	if ramp.is_empty():
+		return maxi(0, delta)
+	var row: Dictionary = ramp[0]
+	for candidate: Dictionary in ramp:
+		if int(candidate.get("week", 1)) <= week_index + 1:
+			row = candidate
+	var most := int(row.get("max_tasks", 0))
+	if weekend:
+		most = int(floor(most * int(row.get("weekend_factor", 100)) / 100.0))
+	return maxi(0, most + delta)
+
+
+## How many tasks each family rolls today: a flat random number from its Min
+## to its Max (a weekend day keeps its Weekend Factor of that), plus any
+## driver or item change in `adds` ({ family: n }), held between 0 and its Cap.
+## Returns { family: count } in the tab's order.
+static func roll_quotas(families: Array, weekend: bool, adds: Dictionary, rng: RandomNumberGenerator) -> Dictionary:
+	var counts := {}
+	for row: Dictionary in families:
+		var family := str(row.get("family", ""))
+		var count := rng.randi_range(int(row.get("min", 0)), maxi(int(row.get("min", 0)), int(row.get("max", 0))))
+		if weekend:
+			count = int(round(count * int(row.get("weekend_factor", 100)) / 100.0))
+		count += int(adds.get(family, 0))
+		counts[family] = clampi(count, 0, int(row.get("cap", count)))
+	return counts
+
+
+## Draws a day's pool (Cameron, 2026-11-16). Each family rolls its own count
+## (roll_quotas); that many of its tasks are picked by weight without repeating
+## (a family with fewer tasks than its count supplies what it has, and a task
+## whose kind has nobody to name is skipped); then the whole list is trimmed to
+## `maximum`, keeping tasks at random with a family's chance proportional to
+## the count it rolled. `targets` holds the named things the tasks need, from
 ## the data: { "organization": [{id, name}], "committee": [...], "official": [...] }.
-## Time off is always offered; the rest are drawn by weight without repeating a
-## task, skipping a task whose kind has nobody to name. Each entry is
-## { uid, task_id, target_id, target_name, title, context }.
-static func draw_pool(tasks: Array, targets: Dictionary, size: int, rng: RandomNumberGenerator) -> Array[Dictionary]:
+## Each entry is { uid, task_id, target_id, target_name, title, context }.
+static func draw_pool(tasks: Array, families: Array, targets: Dictionary, maximum: int, weekend: bool,
+		adds: Dictionary, rng: RandomNumberGenerator) -> Array[Dictionary]:
 	var pool: Array[Dictionary] = []
-	var candidates: Array[Dictionary] = []
-	for task: Dictionary in tasks:
-		var kind := str(task.get("kind", KIND_PLAIN))
-		if kind == KIND_TIME_OFF:
-			pool.append(_entry(task, pool.size(), {}))
-		elif int(task.get("weight", 0)) > 0 and (kind == KIND_PLAIN or not (targets.get(kind, []) as Array).is_empty()):
-			candidates.append(task)
-	while pool.size() < size and not candidates.is_empty():
-		var total := 0
-		for task: Dictionary in candidates:
-			total += int(task.get("weight", 0))
-		var roll := rng.randi_range(1, maxi(1, total))
-		var picked := 0
-		for i in candidates.size():
-			roll -= int(candidates[i].get("weight", 0))
-			if roll <= 0:
-				picked = i
+	if maximum <= 0:
+		return pool
+	var quotas := roll_quotas(families, weekend, adds, rng)
+	var generated: Array[Dictionary] = []   # { task, target, family }
+	for family: String in quotas.keys():
+		var candidates: Array[Dictionary] = []
+		for task: Dictionary in tasks:
+			var kind := str(task.get("kind", KIND_PLAIN))
+			if str(task.get("family", "")) != family:
+				continue
+			if kind == KIND_TIME_OFF or (int(task.get("weight", 0)) > 0 and (kind == KIND_PLAIN or not (targets.get(kind, []) as Array).is_empty())):
+				candidates.append(task)
+		for _n in int(quotas[family]):
+			if candidates.is_empty():
 				break
-		var task: Dictionary = candidates[picked]
-		candidates.remove_at(picked)
-		var kind := str(task.get("kind", KIND_PLAIN))
-		var target: Dictionary = {}
-		if kind != KIND_PLAIN:
-			var named: Array = targets.get(kind, [])
-			target = named[rng.randi_range(0, named.size() - 1)]
-		pool.append(_entry(task, pool.size(), target))
+			var picked := _weighted_index(candidates, rng)
+			var task: Dictionary = candidates[picked]
+			candidates.remove_at(picked)
+			var kind := str(task.get("kind", KIND_PLAIN))
+			var target: Dictionary = {}
+			if kind != KIND_PLAIN and kind != KIND_TIME_OFF:
+				var named: Array = targets.get(kind, [])
+				target = named[rng.randi_range(0, named.size() - 1)]
+			generated.append({"task": task, "target": target, "family": family})
+	# Trim to the day's maximum, a family's chance following the count it rolled.
+	var kept: Array[int] = []
+	var left: Array[int] = []
+	for i in generated.size():
+		left.append(i)
+	while kept.size() < maximum and not left.is_empty():
+		var total := 0
+		for i: int in left:
+			total += maxi(1, int(quotas.get(str(generated[i]["family"]), 1)))
+		var roll := rng.randi_range(1, maxi(1, total))
+		var chosen := 0
+		for k in left.size():
+			roll -= maxi(1, int(quotas.get(str(generated[left[k]]["family"]), 1)))
+			if roll <= 0:
+				chosen = k
+				break
+		kept.append(left[chosen])
+		left.remove_at(chosen)
+	kept.sort()
+	for i: int in kept:
+		pool.append(_entry(generated[i]["task"], pool.size(), generated[i]["target"]))
 	return pool
+
+
+static func _weighted_index(candidates: Array, rng: RandomNumberGenerator) -> int:
+	var total := 0
+	for task: Dictionary in candidates:
+		total += maxi(1, int(task.get("weight", 1)))
+	var roll := rng.randi_range(1, maxi(1, total))
+	for i in candidates.size():
+		roll -= maxi(1, int((candidates[i] as Dictionary).get("weight", 1)))
+		if roll <= 0:
+			return i
+	return 0
 
 
 static func _entry(task: Dictionary, index: int, target: Dictionary) -> Dictionary:

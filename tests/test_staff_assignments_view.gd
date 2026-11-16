@@ -7,9 +7,11 @@ func before_each() -> void:
 	GameState.start_new_run("PC01")
 	GameState.meta["Funds"] = 900000
 	GameState.staff_recruitment_tier = 2
+	GameState.calendar["week"] = 9   # past the ramp-up: tasks are delivered
 	for id: String in ["SF04", "SF08", "SF18"]:
 		GameState.hire_staff(id)
 	GameState.staff_ensure_day()
+	_fix_pool()
 
 
 func _handlers() -> Dictionary:
@@ -25,10 +27,28 @@ func _free(nodes: Array[Control]) -> void:
 		node.free()
 
 
-func test_no_staff_says_to_hire_some() -> void:
+func test_the_first_week_with_no_staff_says_so() -> void:
 	GameState.start_new_run("PC01")
 	var rows := StaffAssignmentsView.rows(_handlers())
-	assert_eq(rows.size(), 1)
+	assert_eq(rows.size(), 2, "no tasks today, and a word about hiring")
+	_free(rows)
+
+
+func test_with_no_staff_the_days_tasks_can_be_read_but_not_given_out() -> void:
+	GameState.start_new_run("PC01")
+	GameState.calendar["week"] = 9
+	GameState.staff_ensure_day()
+	_fix_pool()
+	var rows := StaffAssignmentsView.rows(_handlers())
+	var chips := 0
+	var draggable := 0
+	for row: Control in rows:
+		for chip in row.find_children("Task_*", "TaskChip", true, false):
+			chips += 1
+			if (chip as TaskChip).draggable:
+				draggable += 1
+	assert_eq(chips, 8, "the tasks are shown")
+	assert_eq(draggable, 0, "but nobody can be given one")
 	_free(rows)
 
 
@@ -158,3 +178,12 @@ func test_the_report_reads_what_each_person_did() -> void:
 	var rows := StaffAssignmentsView.report_rows(report)
 	assert_gt(rows.size(), 2)
 	_free(rows)
+
+
+## A fixed day for tests that need particular tasks: eight known tasks (TK17 is time off).
+func _fix_pool() -> void:
+	var ids := ["TK17", "TK11", "TK10", "TK04", "TK05", "TK14", "TK06", "TK01"]
+	var pool: Array = []
+	for i in ids.size():
+		pool.append(StaffTasks._entry(StaffTasks.task_for(DataDB.staff_tasks, ids[i]), i, {}))
+	GameState.staff_day_pool = pool

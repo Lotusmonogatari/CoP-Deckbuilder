@@ -12,7 +12,7 @@ ROWS = [
     ("assign.nothing_assigned", "Staff Assignments, confirm button with nothing given out", "Give someone a task first", ""),
     ("office.staff_assignments", "Office · Management menu, button", "Staff Assignments", ""),
     ("assign.title", "Staff Assignments, heading", "Staff Assignments", ""),
-    ("assign.no_staff", "Staff Assignments, no staff hired", "Hire staff first. They do the day's tasks for you.", ""),
+    ("assign.no_staff", "Staff Assignments, no staff hired", "Hire staff to do the day's tasks for you.", ""),
     ("assign.date_line", "Staff Assignments, date and tasks left", "{date} · {count} tasks not yet given out", "date, count"),
     ("assign.hint", "Staff Assignments, how it works", "Drag a task into a person's box, or tap it to read it and choose who does it. The frame shows how well they suit it: gold strong, grey fair, red poor. Press Confirm to lock in the day.", ""),
     ("assign.tray_heading", "Staff Assignments, tasks heading", "Today's tasks", ""),
@@ -86,6 +86,7 @@ ROWS = [
     ("assign.item_effect_many", "Item popup", "Adds {hours} hours to one person's working day.", "hours"),
     ("assign.item_one_each", "Item popup, the rule", "Each person can have one item a day. It is used up when you confirm the day.", ""),
     ("assign.tile_none_left", "Item popup, a staff picture when none of the item is left", "None left", ""),
+    ("assign.no_staff_due", "Staff Assignments, tasks delivered but no staff hired", "You have no staff, so nobody can do these. Any marked Due that is left undone costs you when the day ends. Hire staff to take them on.", ""),
     ("assign.report_totals", "Day report, totals heading", "In all", ""),
 ]
 

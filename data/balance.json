@@ -307,8 +307,6 @@
   "staff_quit_reputation": 15,
   "staff_quit_ally_standing": 20,
   "staff_fire_ally_standing": 3,
-  "staff_tasks_pool_size": 8,
-  "staff_tasks_weekend_pool_size": 5,
   "staff_tasks_rank_bonus_percent": 25,
   "staff_tasks_cap_meta": 3,
   "staff_tasks_cap_xp": 6,

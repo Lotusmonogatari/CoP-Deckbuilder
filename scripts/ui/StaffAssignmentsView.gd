@@ -29,11 +29,22 @@ const BLOCK_USED := Color(0.18, 0.2, 0.26)
 static func rows(handlers: Dictionary) -> Array[Control]:
 	var out: Array[Control] = []
 	var members := GameState.staff_members()
-	if members.is_empty():
-		out.append(UiKit.line(Text.say("assign.no_staff")))
-		return out
 	if GameState.staff_day_pool.is_empty():
 		out.append(UiKit.line(Text.say("assign.no_tasks")))
+		if members.is_empty():
+			out.append(UiKit.line(Text.say("assign.no_staff")))
+		return out
+	# With no staff the day's tasks are still delivered: they can be read, not
+	# given out, and the Due ones cost their penalty when the day ends.
+	if members.is_empty():
+		out.append(UiKit.line(Text.say("assign.date_line", {"date": WeekCalendar.date_label(GameState.staff_day_key),
+			"count": GameState.staff_day_pool.size()})))
+		out.append(UiKit.line(Text.say("assign.no_staff_due")))
+		out.append(UiKit.heading(Text.say("assign.tray_heading")))
+		out.append(_tray({}, handlers))
+		out.append(UiKit.heading(Text.say("assign.projection_heading")))
+		for line: String in projection_lines(GameState.staff_projection(), GameState.staff_day_pool):
+			out.append(UiKit.line(line))
 		return out
 
 	var projection := GameState.staff_projection()
@@ -129,7 +140,7 @@ static func _chip(entry: Dictionary, frame: Color, compact: bool, handlers: Dict
 	var task := StaffTasks.task_for(DataDB.staff_tasks, str(entry.get("task_id", "")))
 	var chip := TaskChip.new()
 	chip.setup(str(entry["uid"]), str(entry.get("title", "")), str(task.get("icon", "")),
-		int(task.get("blocks", 1)), frame, compact, not GameState.staff_day_confirmed,
+		int(task.get("blocks", 1)), frame, compact, not GameState.staff_day_confirmed and not GameState.staff_members().is_empty(),
 		_family_of(task) if compact else "")
 	chip.theme = card_theme()
 	chip.tapped.connect(handlers["popup"])

@@ -7,10 +7,12 @@ func before_each() -> void:
 	GameState.start_new_run("PC01")
 	GameState.meta["Funds"] = 900000
 	GameState.staff_recruitment_tier = 2
+	GameState.calendar["week"] = 9   # past the ramp-up: tasks are delivered
 	GameState.hire_staff("SF04")
 	GameState.hire_staff("SF15")
 	GameState.inventory = {"SH04": 2, "SH15": 1}
 	GameState.staff_ensure_day()
+	_fix_pool()
 
 
 func test_the_shop_names_the_hours_each_item_adds() -> void:
@@ -112,3 +114,12 @@ func test_the_screen_has_an_items_section_and_the_popup_offers_the_staff() -> vo
 	assert_eq(tiles, 2)
 	for row: Control in popup:
 		row.free()
+
+
+## A fixed day for tests that need particular tasks: eight known tasks (TK17 is time off).
+func _fix_pool() -> void:
+	var ids := ["TK17", "TK11", "TK10", "TK04", "TK05", "TK14", "TK06", "TK01"]
+	var pool: Array = []
+	for i in ids.size():
+		pool.append(StaffTasks._entry(StaffTasks.task_for(DataDB.staff_tasks, ids[i]), i, {}))
+	GameState.staff_day_pool = pool

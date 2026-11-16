@@ -1404,7 +1404,9 @@ func staff_day_sync(force_resolve: bool = false) -> void:
 	var today := _staff_today_key()
 	if staff_day_key == today and not force_resolve:
 		return
-	if staff_day_confirmed and (force_resolve or today - staff_day_key == 1):
+	# A delivered day settles when it ends, confirmed or not, with staff or not
+	# (Cameron, 2026-11-16): at least the Due tasks nobody took cost their penalty.
+	if not staff_day_pool.is_empty() and (force_resolve or today - staff_day_key == 1):
 		_staff_resolve_day()
 	_staff_clear_day()
 
@@ -1413,13 +1415,15 @@ func staff_day_sync(force_resolve: bool = false) -> void:
 ## the protagonist so it is the same however often the screen opens).
 func staff_ensure_day() -> void:
 	staff_day_sync()
-	if staff_day_key >= 0 or staff_members().is_empty() or DataDB.staff_tasks.is_empty():
+	if staff_day_key >= 0 or DataDB.staff_tasks.is_empty():
 		return
 	var today := _staff_today_key()
 	var rng := RandomNumberGenerator.new()
 	rng.seed = hash("%s:%d" % [protagonist_id, today])
-	var size := Levers.whole("staff_tasks_weekend_pool_size") if in_weekend() else Levers.whole("staff_tasks_pool_size")
-	staff_day_pool = StaffTasks.draw_pool(DataDB.staff_tasks, _staff_task_targets(), size, rng)
+	var weekend := in_weekend()
+	var maximum := StaffTasks.day_maximum(DataDB.staff_task_ramp, int(calendar.get("week", 0)), weekend, 0)
+	staff_day_pool = StaffTasks.draw_pool(DataDB.staff_tasks, DataDB.staff_task_families, _staff_task_targets(),
+		maximum, weekend, {}, rng)
 	staff_day_key = today
 	staff_day_blocks_total = staff_day_blocks()
 	staff_day_plan = {}
@@ -1607,7 +1611,13 @@ func staff_confirm_day() -> String:
 ## Applies a confirmed day: meta, XP, awareness and standing from the tasks,
 ## and Loyalty into the week's task bucket. Leaves a report for the screen.
 func _staff_resolve_day() -> void:
-	var result := StaffTasks.evaluate(staff_day_pool, DataDB.staff_tasks, staff_day_plan, _staff_eval_members(), _staff_day_info())
+	# A day that was not confirmed (or has no staff) is judged as if nothing was
+	# given out: only the Due tasks nobody took cost anything.
+	var confirmed := staff_day_confirmed and not staff_members().is_empty()
+	var result := StaffTasks.evaluate(staff_day_pool, DataDB.staff_tasks, staff_day_plan if confirmed else {},
+		_staff_eval_members() if confirmed else [], _staff_day_info() if confirmed else {"blocks": staff_day_blocks_total})
+	if (result["lines"] as Array).is_empty() and (result["undone"] as Array).is_empty():
+		return
 	_under_cause(Text.say("record.cause_staff"), func() -> void:
 		for name: String in (result["meta"] as Dictionary).keys():
 			_move_meta(name, int(result["meta"][name]))

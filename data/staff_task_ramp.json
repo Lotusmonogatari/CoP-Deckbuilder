@@ -1,0 +1,32 @@
+[
+  {
+    "week": 1,
+    "max_tasks": 0,
+    "weekend_factor": 50,
+    "note": "The first week is free: no tasks are delivered."
+  },
+  {
+    "week": 2,
+    "max_tasks": 1,
+    "weekend_factor": 50,
+    "note": "One task a day."
+  },
+  {
+    "week": 3,
+    "max_tasks": 2,
+    "weekend_factor": 50,
+    "note": "Two tasks a day."
+  },
+  {
+    "week": 4,
+    "max_tasks": 3,
+    "weekend_factor": 50,
+    "note": "Three tasks a day."
+  },
+  {
+    "week": 5,
+    "max_tasks": 15,
+    "weekend_factor": 50,
+    "note": "From this week on, the default maximum; the last row applies to every later week."
+  }
+]

@@ -302,6 +302,7 @@ func _process(delta: float) -> void:
 func _build() -> void:
 	_building = true
 	GameState.staff_day_sync()   # a staff day that has ended is settled before the screen draws
+	GameState.staff_ensure_day()  # and today's tasks are delivered, whether or not anyone is hired
 	# Whose office it is. A placeholder name until the protagonist is cast,
 	# but a named desk reads better than an anonymous one.
 	var player := DataDB.player

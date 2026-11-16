@@ -1452,6 +1452,34 @@ SHEETS = {
         ],
         "optional": ["Family"],
     },
+    # 2026-11-16 (Cameron): how many tasks of each family a day rolls, between
+    # Min and Max (Cap is the most drivers and items can push it to), and how
+    # much of that a weekend day keeps. See StaffTasks.draw_pool().
+    "Staff Task Families": {
+        "out": "staff_task_families.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Family", "family", "str"),
+            ("Min", "min", "int"),
+            ("Max", "max", "int"),
+            ("Cap", "cap", "int"),
+            ("Weekend Factor", "weekend_factor", "int"),
+            ("Note", "note", "str"),
+        ],
+    },
+    # 2026-11-16 (Cameron): the most tasks a day delivers, by calendar week (the
+    # last row applies to every later week). The families decide how many
+    # tasks are generated; this maximum trims the list before it is shown.
+    "Staff Task Ramp": {
+        "out": "staff_task_ramp.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Week", "week", "int"),
+            ("Max Tasks", "max_tasks", "int"),
+            ("Weekend Factor", "weekend_factor", "int"),
+            ("Note", "note", "str"),
+        ],
+    },
     "Opponents": {
         "out": "opponents.json",
         "key": "opp_id",
@@ -4308,6 +4336,40 @@ def check_staff_tasks(data, report):
             report.error("Staff Assignments", f"{tid}: Weight cannot be negative")
 
 
+def check_staff_task_tables(data, report):
+    """Staff Task Families and Staff Task Ramp (2026-11-16): every family a task
+    names has a row, ranges make sense, and the ramp starts at week 1."""
+    named = {str(r.get("family")) for r in data.get("staff_tasks", []) if r.get("family")}
+    rows = data.get("staff_task_families", [])
+    listed = set()
+    for row in rows:
+        family = str(row.get("family") or "")
+        if family in listed:
+            report.error("Staff Task Families", f"{family} appears twice")
+        listed.add(family)
+        low, high, cap = row.get("min"), row.get("max"), row.get("cap")
+        if low is None or high is None or cap is None or not (0 <= int(low) <= int(high) <= int(cap)):
+            report.error("Staff Task Families", f"{family}: Min, Max and Cap must be numbers with 0 <= Min <= Max <= Cap")
+        factor = row.get("weekend_factor")
+        if factor is None or not (0 <= int(factor) <= 100):
+            report.error("Staff Task Families", f"{family}: Weekend Factor must be 0 to 100")
+    if data.get("staff_tasks"):
+        for family in sorted(named - listed):
+            report.error("Staff Task Families", f"tasks use the family '{family}', which has no row here")
+        for family in sorted(listed - named):
+            report.warn("Staff Task Families", f"the family '{family}' has no task, so it never appears")
+    ramp = data.get("staff_task_ramp", [])
+    weeks = [int(r["week"]) for r in ramp if r.get("week") is not None]
+    if data.get("staff_tasks") and (not weeks or weeks[0] != 1 or weeks != sorted(set(weeks))):
+        report.error("Staff Task Ramp", "Week must start at 1 and rise one row at a time")
+    for row in ramp:
+        if row.get("max_tasks") is None or int(row["max_tasks"]) < 0:
+            report.error("Staff Task Ramp", f"week {row.get('week')}: Max Tasks must be 0 or more")
+        factor = row.get("weekend_factor")
+        if factor is None or not (0 <= int(factor) <= 100):
+            report.error("Staff Task Ramp", f"week {row.get('week')}: Weekend Factor must be 0 to 100")
+
+
 def check_audit_gaps(data, report):
     """Five mistakes the audit (2026-11-16, audit/followup.md) showed the
     exporter let through: a Balance lever a script asks for that the workbook
@@ -4598,6 +4660,7 @@ def main():
     check_standing_names(data, report)
     check_move_flashes(data, report)
     check_staff_tasks(data, report)
+    check_staff_task_tables(data, report)
     check_audit_gaps(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)
 

@@ -1103,3 +1103,18 @@ Task popup redesign (2026-11-16, Cameron): the outcome is three slanted colour-c
 Staff pictures in the popups are wider and taller (340 x 580) with room for a name and a role on two lines each, so the longest names and "Policy Research Assistant" show in full. Cameron's icons `LL01` to `LL08` are in `assets/icons/` and show on the task cards.
 
 Task family names (2026-11-16, Cameron): a one-word `Family` column on the Staff Assignments tab (Correspondence, Press, Analysis, Meetings, Constituents, Administration, Chores, Rest) shows under each task icon in a staff box in place of the fit note.
+
+## Staff tasks expansion, phases 1 and 2 (2026-11-16, Cameron)
+
+From `design/proposals/STAFF_TASKS_EXPANSION_2026-11-16.md`.
+
+| Part | What |
+|---|---|
+| 47 new tasks | 64 in all, 8 per icon family (Claude's draft names, text and numbers). Rest has eight time-off variants (1 to 4 hours of the person's day) |
+| Staff Task Families tab | Each family's daily Min, Max, Cap and Weekend Factor |
+| Staff Task Ramp tab | The most tasks a day delivers by week: 0, 1, 2, 3, then 15 |
+| The draw | `StaffTasks.draw_pool` rolls each family, picks its tasks, then trims to the day's maximum (a family's chance follows the count it rolled) |
+| No staff, ignored days | Tasks arrive with no staff hired; every delivered day's Due tasks cost their penalty at day end, confirmed or not; the player sees a report |
+| Retired | Balance rows `Staff Tasks: Pool Size` and `Weekend Pool Size` |
+
+Tests: `test_staff_tasks.gd` (quotas, ramp, trim, no-staff, ignored days) and the other staff tests now use a fixed day. Next (not built): drivers, person items, pool items, gift tastes.

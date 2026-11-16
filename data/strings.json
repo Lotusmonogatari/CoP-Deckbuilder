@@ -7170,7 +7170,7 @@
   {
     "key": "assign.no_staff",
     "where": "Staff Assignments, no staff hired",
-    "english": "Hire staff first. They do the day's tasks for you.",
+    "english": "Hire staff to do the day's tasks for you.",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7689,6 +7689,13 @@
     "key": "assign.tile_none_left",
     "where": "Item popup, a staff picture when none of the item is left",
     "english": "None left",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.no_staff_due",
+    "where": "Staff Assignments, tasks delivered but no staff hired",
+    "english": "You have no staff, so nobody can do these. Any marked Due that is left undone costs you when the day ends. Hire staff to take them on.",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }

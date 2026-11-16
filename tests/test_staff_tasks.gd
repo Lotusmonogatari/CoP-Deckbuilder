@@ -38,8 +38,8 @@ func _eval(pool: Array, plan: Dictionary, members: Array, full_days: Dictionary 
 
 # --- the data ---------------------------------------------------------------
 
-func test_seventeen_tasks_in_eight_icon_families() -> void:
-	assert_eq(DataDB.staff_tasks.size(), 17)
+func test_sixty_four_tasks_in_eight_icon_families_of_eight() -> void:
+	assert_eq(DataDB.staff_tasks.size(), 64)
 	var icons := {}
 	for task: Dictionary in DataDB.staff_tasks:
 		icons[task["icon"]] = true
@@ -191,37 +191,107 @@ func test_the_lunch_lifts_everyone() -> void:
 
 # --- the pool ---------------------------------------------------------------
 
-func test_the_pool_always_holds_time_off_and_never_repeats_a_task() -> void:
-	var rng := RandomNumberGenerator.new()
-	rng.seed = 7
-	var targets := {"organization": [{"id": "BO01", "name": "A"}], "committee": [{"id": "C", "name": "Committee on X"}],
+func _targets() -> Dictionary:
+	return {"organization": [{"id": "BO01", "name": "A"}], "committee": [{"id": "C", "name": "Committee on X"}],
 		"official": [{"id": "OP01", "name": "Minister of Y"}]}
-	var pool := StaffTasks.draw_pool(DataDB.staff_tasks, targets, 8, rng)
-	assert_eq(pool.size(), 8)
-	var seen := {}
-	var has_time_off := false
-	for entry: Dictionary in pool:
-		assert_false(seen.has(entry["task_id"]), "no repeat")
-		seen[entry["task_id"]] = true
-		has_time_off = has_time_off or entry["task_id"] == "TK17"
-	assert_true(has_time_off)
+
+
+func _draw(seed_value: int, maximum: int = 15, weekend: bool = false, adds: Dictionary = {}, targets: Dictionary = {}) -> Array[Dictionary]:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed_value
+	return StaffTasks.draw_pool(DataDB.staff_tasks, DataDB.staff_task_families, targets if not targets.is_empty() else _targets(),
+		maximum, weekend, adds, rng)
+
+
+func test_a_pool_never_repeats_a_task_and_holds_at_most_one_rest() -> void:
+	for seed_value in 30:
+		var pool := _draw(seed_value)
+		var seen := {}
+		var rests := 0
+		for entry: Dictionary in pool:
+			assert_false(seen.has(entry["task_id"]), "no repeat")
+			seen[entry["task_id"]] = true
+			if str(_task(str(entry["task_id"]))["family"]) == "Rest":
+				rests += 1
+		assert_lte(rests, 1)
+		assert_gte(pool.size(), 1)
 
 
 func test_the_same_seed_draws_the_same_pool() -> void:
-	var targets := {"organization": [{"id": "BO01", "name": "A"}], "committee": [], "official": []}
-	var a := RandomNumberGenerator.new()
-	a.seed = 99
-	var b := RandomNumberGenerator.new()
-	b.seed = 99
-	assert_eq(StaffTasks.draw_pool(DataDB.staff_tasks, targets, 8, a), StaffTasks.draw_pool(DataDB.staff_tasks, targets, 8, b))
+	assert_eq(_draw(99), _draw(99))
+
+
+func test_every_family_stays_inside_its_range() -> void:
+	for seed_value in 40:
+		var counts := {}
+		var rng := RandomNumberGenerator.new()
+		rng.seed = seed_value
+		counts = StaffTasks.roll_quotas(DataDB.staff_task_families, false, {}, rng)
+		for row: Dictionary in DataDB.staff_task_families:
+			var count := int(counts[row["family"]])
+			assert_gte(count, int(row["min"]))
+			assert_lte(count, int(row["max"]))
+
+
+func test_drivers_can_push_a_family_up_to_its_cap_and_no_further() -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 1
+	var counts := StaffTasks.roll_quotas(DataDB.staff_task_families, false, {"Press": 99, "Chores": -99}, rng)
+	var press := 0
+	for row: Dictionary in DataDB.staff_task_families:
+		if row["family"] == "Press":
+			press = int(row["cap"])
+	assert_eq(int(counts["Press"]), press)
+	assert_eq(int(counts["Chores"]), 0, "never below nothing")
+
+
+func test_a_weekend_day_keeps_a_share_of_each_range() -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 5
+	var counts := StaffTasks.roll_quotas(DataDB.staff_task_families, true, {}, rng)
+	for row: Dictionary in DataDB.staff_task_families:
+		assert_lte(int(counts[row["family"]]), int(row["max"]))
+
+
+func test_the_maximum_trims_the_list_before_it_is_delivered() -> void:
+	# Even if every family rolled its most, a maximum of one delivers one.
+	for seed_value in 20:
+		assert_lte(_draw(seed_value, 1).size(), 1)
+		assert_lte(_draw(seed_value, 3).size(), 3)
+	assert_eq(_draw(4, 0).size(), 0, "a maximum of nothing delivers nothing")
+
+
+func test_a_trim_keeps_tasks_in_the_order_they_were_drawn() -> void:
+	var pool := _draw(8, 4)
+	for i in pool.size():
+		assert_eq(pool[i]["uid"], "T%d" % i)
 
 
 func test_a_kind_with_nobody_to_name_is_not_offered() -> void:
-	var rng := RandomNumberGenerator.new()
-	rng.seed = 3
-	var pool := StaffTasks.draw_pool(DataDB.staff_tasks, {"organization": [], "committee": [], "official": []}, 17, rng)
-	for entry: Dictionary in pool:
-		assert_false(["TK07", "TK08", "TK09"].has(entry["task_id"]))
+	var nobody := {"organization": [], "committee": [], "official": []}
+	for seed_value in 30:
+		for entry: Dictionary in _draw(seed_value, 15, false, {"Meetings": 9}, nobody):
+			assert_false(["TK07", "TK08", "TK09", "TK40"].has(entry["task_id"]))
+
+
+func test_the_ramp_sets_the_most_tasks_a_day_by_week() -> void:
+	var ramp := DataDB.staff_task_ramp
+	assert_eq(StaffTasks.day_maximum(ramp, 0, false), 0, "week 1")
+	assert_eq(StaffTasks.day_maximum(ramp, 1, false), 1, "week 2")
+	assert_eq(StaffTasks.day_maximum(ramp, 2, false), 2, "week 3")
+	assert_eq(StaffTasks.day_maximum(ramp, 3, false), 3, "week 4")
+	assert_eq(StaffTasks.day_maximum(ramp, 4, false), 15, "week 5")
+	assert_eq(StaffTasks.day_maximum(ramp, 40, false), 15, "every later week")
+
+
+func test_an_item_or_event_changes_the_maximum_but_never_below_nothing() -> void:
+	var ramp := DataDB.staff_task_ramp
+	assert_eq(StaffTasks.day_maximum(ramp, 1, false, 2), 3)
+	assert_eq(StaffTasks.day_maximum(ramp, 1, false, -5), 0)
+
+
+func test_a_weekend_keeps_the_ramps_weekend_share() -> void:
+	assert_eq(StaffTasks.day_maximum(DataDB.staff_task_ramp, 4, true), 7, "half of 15, rounded down")
 
 
 func test_names_come_from_the_title_column() -> void:
@@ -246,28 +316,60 @@ func test_the_real_data_names_ministers_and_committees() -> void:
 # --- a day in a real run -----------------------------------------------------
 
 func _staffed_run() -> void:
+	GameState.calendar["week"] = 9   # past the ramp-up: tasks are delivered
 	assert_eq(GameState.hire_staff("SF15"), "")   # a district representative
 	assert_eq(GameState.hire_staff("SF08"), "")   # a media spokesperson
 	GameState.booster_standing["BO18"] = 50
 
 
-func test_no_pool_without_staff() -> void:
+## Today's tasks, then a fixed set of eight so a test can name them.
+func _ensure_fixed() -> void:
+	GameState.staff_ensure_day()
+	_fix_pool()
+
+func _fix_pool() -> void:
+	var ids := ["TK17", "TK11", "TK10", "TK04", "TK05", "TK14", "TK06", "TK01"]
+	var pool: Array = []
+	for i in ids.size():
+		pool.append(StaffTasks._entry(StaffTasks.task_for(DataDB.staff_tasks, ids[i]), i, {}))
+	GameState.staff_day_pool = pool
+
+
+
+func test_the_first_week_delivers_no_tasks() -> void:
+	GameState.calendar["week"] = 0
 	GameState.staff_ensure_day()
 	assert_eq(GameState.staff_day_pool.size(), 0)
+
+
+func test_week_two_delivers_one_task_even_with_no_staff() -> void:
+	GameState.calendar["week"] = 1
+	GameState.staff_ensure_day()
+	assert_eq(GameState.staff_day_pool.size(), 1, "tasks arrive whether or not anyone is hired")
+	assert_eq(GameState.staff_members().size(), 0)
+
+
+func test_the_ramp_grows_a_task_a_week() -> void:
+	for week in 4:
+		GameState.start_new_run("PC01")
+		GameState.calendar["week"] = week
+		GameState.staff_ensure_day()
+		assert_lte(GameState.staff_day_pool.size(), week, "week %d delivers at most %d" % [week + 1, week])
 
 
 func test_the_pool_is_drawn_once_a_day_and_repeats_on_reopening() -> void:
 	_staffed_run()
 	GameState.staff_ensure_day()
 	var first := GameState.staff_day_pool.duplicate(true)
-	assert_eq(first.size(), 8)
+	assert_gt(first.size(), 0)
+	assert_lte(first.size(), 15)
 	GameState.staff_ensure_day()
 	assert_eq(GameState.staff_day_pool, first)
 
 
 func test_giving_and_taking_back_a_task() -> void:
 	_staffed_run()
-	GameState.staff_ensure_day()
+	_ensure_fixed()
 	var uid := str(GameState.staff_day_pool[0]["uid"])
 	assert_eq(GameState.staff_assign(uid, "SF15"), "")
 	assert_eq(GameState.staff_assign(uid, "SF08"), "", "moving it to someone else")
@@ -278,7 +380,7 @@ func test_giving_and_taking_back_a_task() -> void:
 
 func test_confirm_needs_something_assigned_and_locks_the_day() -> void:
 	_staffed_run()
-	GameState.staff_ensure_day()
+	_ensure_fixed()
 	assert_ne(GameState.staff_confirm_day(), "", "nothing given out yet")
 	GameState.staff_assign(str(GameState.staff_day_pool[0]["uid"]), "SF15")
 	assert_eq(GameState.staff_confirm_day(), "")
@@ -287,14 +389,11 @@ func test_confirm_needs_something_assigned_and_locks_the_day() -> void:
 
 func test_a_confirmed_day_is_applied_when_the_next_day_begins() -> void:
 	_staffed_run()
-	GameState.staff_ensure_day()
+	_ensure_fixed()
 	var uid := ""
 	for entry: Dictionary in GameState.staff_day_pool:
 		if entry["task_id"] == "TK10":   # greet constituents, strong for the district rep
 			uid = str(entry["uid"])
-	if uid.is_empty():
-		pending("the seeded pool did not draw TK10 today")
-		return
 	GameState.staff_assign(uid, "SF15")
 	GameState.staff_confirm_day()
 	var before := int(GameState.meta["Constituency support"])
@@ -309,7 +408,7 @@ func test_a_confirmed_day_is_applied_when_the_next_day_begins() -> void:
 
 func test_a_day_skipped_by_a_long_level_goes_out_of_effect() -> void:
 	_staffed_run()
-	GameState.staff_ensure_day()
+	_ensure_fixed()
 	GameState.staff_assign(str(GameState.staff_day_pool[0]["uid"]), "SF15")
 	GameState.staff_confirm_day()
 	var before := GameState.meta.duplicate()
@@ -320,14 +419,45 @@ func test_a_day_skipped_by_a_long_level_goes_out_of_effect() -> void:
 	assert_eq(GameState.staff_day_key, -1)
 
 
-func test_an_unconfirmed_day_applies_nothing() -> void:
+func test_an_unconfirmed_day_costs_only_the_due_tasks_nobody_took() -> void:
 	_staffed_run()
-	GameState.staff_ensure_day()
-	GameState.staff_assign(str(GameState.staff_day_pool[0]["uid"]), "SF15")
-	var before := GameState.meta.duplicate()
+	_ensure_fixed()
+	# Given out but never confirmed: no rewards, but the Due tasks (TK11 casework,
+	# TK14 scheduling) still cost their penalty.
+	GameState.staff_assign(_uid_of("TK10"), "SF15")
+	var before_constituency := int(GameState.meta["Constituency support"])
+	var before_reputation := int(GameState.meta["Reputation"])
 	GameState.spend_hours(8)
 	GameState.staff_day_sync()
-	assert_eq(GameState.meta, before)
+	assert_eq(int(GameState.meta["Constituency support"]), before_constituency - 1, "casework left undone")
+	assert_eq(int(GameState.meta["Reputation"]), before_reputation - 1, "scheduling left undone")
+
+
+func test_a_player_with_no_staff_still_pays_the_due_tasks() -> void:
+	GameState.calendar["week"] = 9
+	GameState.staff_ensure_day()
+	_fix_pool()
+	var before := int(GameState.meta["Constituency support"])
+	GameState.spend_hours(8)
+	GameState.staff_day_sync()
+	assert_eq(int(GameState.meta["Constituency support"]), before - 1, "no one did the casework")
+	assert_false(GameState.staff_report_pending.is_empty(), "and the player is told")
+
+
+func test_a_day_with_nothing_due_says_nothing() -> void:
+	GameState.calendar["week"] = 9
+	GameState.staff_ensure_day()
+	GameState.staff_day_pool = _pool(["TK10"])   # no Due task
+	GameState.spend_hours(8)
+	GameState.staff_day_sync()
+	assert_true(GameState.staff_report_pending.is_empty())
+
+
+func _uid_of(task_id: String) -> String:
+	for entry: Dictionary in GameState.staff_day_pool:
+		if entry["task_id"] == task_id:
+			return str(entry["uid"])
+	return ""
 
 
 func test_task_loyalty_reaches_the_week_end_within_its_cap() -> void:
@@ -345,7 +475,7 @@ func test_task_loyalty_reaches_the_week_end_within_its_cap() -> void:
 
 func test_the_day_state_survives_a_save() -> void:
 	_staffed_run()
-	GameState.staff_ensure_day()
+	_ensure_fixed()
 	GameState.staff_assign(str(GameState.staff_day_pool[0]["uid"]), "SF15")
 	var saved := GameState.to_save()
 	GameState.start_new_run("PC01")
