@@ -118,12 +118,19 @@ static func _tray(given: Dictionary, handlers: Dictionary) -> Control:
 	return flow
 
 
-static func _chip(entry: Dictionary, frame: Color, compact: bool, handlers: Dictionary, fit: String = "") -> TaskChip:
+## The one-word family name under a task's icon in a staff box (the Family
+## column on the Staff Assignments tab).
+static func _family_of(task: Dictionary) -> String:
+	var raw: Variant = task.get("family")
+	return "" if raw == null else str(raw)
+
+
+static func _chip(entry: Dictionary, frame: Color, compact: bool, handlers: Dictionary) -> TaskChip:
 	var task := StaffTasks.task_for(DataDB.staff_tasks, str(entry.get("task_id", "")))
 	var chip := TaskChip.new()
 	chip.setup(str(entry["uid"]), str(entry.get("title", "")), str(task.get("icon", "")),
 		int(task.get("blocks", 1)), frame, compact, not GameState.staff_day_confirmed,
-		"" if fit.is_empty() else fit_label(fit))
+		_family_of(task) if compact else "")
 	chip.theme = card_theme()
 	chip.tapped.connect(handlers["popup"])
 	return chip
@@ -214,7 +221,7 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 			continue
 		holds = true
 		var fit := str(fits.get(str(uid), "fair"))
-		inside.add_child(_chip(entry, FIT_COLORS.get(fit, PLAIN_FRAME), true, handlers, fit))
+		inside.add_child(_chip(entry, FIT_COLORS.get(fit, PLAIN_FRAME), true, handlers))
 	if not holds:
 		inside.add_child(UiKit.line(Text.say("assign.box_empty")))
 	return panel

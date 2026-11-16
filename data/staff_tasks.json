@@ -13,7 +13,8 @@
     "due_penalty": null,
     "context": "Letters from the district are stacking up on the desk.",
     "work": "Reads each letter, drafts a reply for your signature and files the case.",
-    "weight": 3
+    "weight": 3,
+    "family": "Correspondence"
   },
   {
     "task_id": "TK02",
@@ -29,7 +30,8 @@
     "due_penalty": "Party support:-1",
     "context": "A committee clerk wants answers before the next sitting.",
     "work": "Answers the clerk's questions and returns the corrected papers.",
-    "weight": 2
+    "weight": 2,
+    "family": "Correspondence"
   },
   {
     "task_id": "TK03",
@@ -45,7 +47,8 @@
     "due_penalty": null,
     "context": "Reporters remember who returns their calls.",
     "work": "Phones and lunches with reporters, offering background on your work.",
-    "weight": 2
+    "weight": 2,
+    "family": "Press"
   },
   {
     "task_id": "TK04",
@@ -61,7 +64,8 @@
     "due_penalty": null,
     "context": "The morning papers and wire stories are in.",
     "work": "Reads the coverage and flags what the office should answer.",
-    "weight": 3
+    "weight": 3,
+    "family": "Press"
   },
   {
     "task_id": "TK05",
@@ -77,7 +81,8 @@
     "due_penalty": null,
     "context": "A think tank has circulated a long paper on a bill before the house.",
     "work": "Reads the paper line by line and writes a one-page summary.",
-    "weight": 2
+    "weight": 2,
+    "family": "Analysis"
   },
   {
     "task_id": "TK06",
@@ -93,7 +98,8 @@
     "due_penalty": null,
     "context": "A conference on a current policy issue is open to staff.",
     "work": "Sits in the sessions, takes notes and collects contacts.",
-    "weight": 1
+    "weight": 1,
+    "family": "Meetings"
   },
   {
     "task_id": "TK07",
@@ -109,7 +115,8 @@
     "due_penalty": null,
     "context": "{target} has invited your office to its regular meeting.",
     "work": "Represents you in the room and reports back what members asked for.",
-    "weight": 2
+    "weight": 2,
+    "family": "Meetings"
   },
   {
     "task_id": "TK08",
@@ -125,7 +132,8 @@
     "due_penalty": null,
     "context": "The {target} is sitting today.",
     "work": "Follows the hearing from the gallery and notes who said what.",
-    "weight": 2
+    "weight": 2,
+    "family": "Meetings"
   },
   {
     "task_id": "TK09",
@@ -141,7 +149,8 @@
     "due_penalty": null,
     "context": "The {target} is holding a press conference today.",
     "work": "Stands with the press corps, asks nothing, and takes the quotes home.",
-    "weight": 2
+    "weight": 2,
+    "family": "Meetings"
   },
   {
     "task_id": "TK10",
@@ -157,7 +166,8 @@
     "due_penalty": null,
     "context": "Visitors are queueing at the district office door.",
     "work": "Welcomes each visitor, offers tea and takes down what they came for.",
-    "weight": 3
+    "weight": 3,
+    "family": "Constituents"
   },
   {
     "task_id": "TK11",
@@ -173,7 +183,8 @@
     "due_penalty": "Constituency support:-1",
     "context": "Several local cases are waiting for someone to chase them.",
     "work": "Phones the agencies, fills in the forms and reports back to each household.",
-    "weight": 3
+    "weight": 3,
+    "family": "Constituents"
   },
   {
     "task_id": "TK12",
@@ -189,7 +200,8 @@
     "due_penalty": null,
     "context": "A group of angry residents has asked for a word.",
     "work": "Listens, stays calm, and promises only what the office can do.",
-    "weight": 1
+    "weight": 1,
+    "family": "Constituents"
   },
   {
     "task_id": "TK13",
@@ -205,7 +217,8 @@
     "due_penalty": null,
     "context": "A ministry office has a form that only a patient person can finish.",
     "work": "Queues at the counter and chases signatures through three departments.",
-    "weight": 2
+    "weight": 2,
+    "family": "Administration"
   },
   {
     "task_id": "TK14",
@@ -221,7 +234,8 @@
     "due_penalty": "Reputation:-1",
     "context": "The calendar has clashes next week.",
     "work": "Rings round, moves appointments and sends the revised list.",
-    "weight": 2
+    "weight": 2,
+    "family": "Administration"
   },
   {
     "task_id": "TK15",
@@ -237,7 +251,8 @@
     "due_penalty": null,
     "context": "It is nearly noon and nobody has ordered.",
     "work": "Collects orders, collects money, collects chopsticks.",
-    "weight": 1
+    "weight": 1,
+    "family": "Chores"
   },
   {
     "task_id": "TK16",
@@ -253,7 +268,8 @@
     "due_penalty": null,
     "context": "Something has exploded in it again.",
     "work": "Scrubs, airs the room and leaves a note on the door.",
-    "weight": 1
+    "weight": 1,
+    "family": "Chores"
   },
   {
     "task_id": "TK17",
@@ -269,6 +285,7 @@
     "due_penalty": null,
     "context": "Your office has worked hard.",
     "work": "Takes the afternoon off.",
-    "weight": 0
+    "weight": 0,
+    "family": "Rest"
   }
 ]

@@ -55,8 +55,8 @@ func setup(task_uid: String, title: String, icon_id: String, blocks: int, frame:
 	column.add_child(art)
 	tooltip_text = title
 	if compact:
-		custom_minimum_size = Vector2(130, 0)
-		# The fit is said in words as well as by the frame's colour.
+		custom_minimum_size = Vector2(190, 0)
+		# The family is named in words under the icon.
 		if not caption.is_empty():
 			var fit_label := Label.new()
 			fit_label.text = caption

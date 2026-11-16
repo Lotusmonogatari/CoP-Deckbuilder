@@ -55,6 +55,18 @@ func test_every_task_has_one_strong_fair_and_poor_role() -> void:
 		assert_eq(roles, [D, M, R], str(task["task_id"]))
 
 
+func test_each_icon_family_has_one_one_word_name() -> void:
+	var names := {}
+	for task: Dictionary in DataDB.staff_tasks:
+		var word := str(task["family"])
+		assert_false(word.is_empty() or word.contains(" "), str(task["task_id"]) + " has a one-word family")
+		assert_eq(names.get(task["icon"], word), word, "one name per icon")
+		names[task["icon"]] = word
+	assert_eq(names["LL02"], "Press")
+	assert_eq(names["LL03"], "Analysis")
+	assert_eq(names["LL04"], "Meetings")
+
+
 # --- fit and rewards ---------------------------------------------------------
 
 func test_strong_fair_and_poor_fit() -> void:

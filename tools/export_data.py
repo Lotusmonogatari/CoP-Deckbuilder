@@ -1446,7 +1446,11 @@ SHEETS = {
             ("Context", "context", "str"),
             ("Work Performed", "work", "str"),
             ("Weight", "weight", "int"),
+            # 2026-11-16 (Cameron): the one-word name of the icon family, shown
+            # under the task's icon in a staff box. Same icon, same word.
+            ("Family", "family", "str"),
         ],
+        "optional": ["Family"],
     },
     "Opponents": {
         "out": "opponents.json",
@@ -4269,8 +4273,14 @@ def check_staff_tasks(data, report):
     roles = {str(r.get("role")) for r in data.get("staff", [])}
     effects = {"Constituency support", "Reputation", "Funds", "Party support", "XP",
                "District awareness", "National awareness", "Standing", "Loyalty", "Loyalty all"}
+    family_of_icon = {}
     for row in data.get("staff_tasks", []):
         tid = row.get("task_id")
+        word = str(row.get("family") or "").strip()
+        if not word or " " in word:
+            report.error("Staff Assignments", f"{tid}: Family must be one word")
+        elif family_of_icon.setdefault(row.get("icon"), word) != word:
+            report.error("Staff Assignments", f"{tid}: icon {row.get('icon')} is named '{word}' here but '{family_of_icon[row.get('icon')]}' on another task")
         if row.get("kind") not in kinds:
             report.error("Staff Assignments", f"{tid}: Kind '{row.get('kind')}' must be one of {sorted(kinds)}")
         blocks = row.get("blocks")

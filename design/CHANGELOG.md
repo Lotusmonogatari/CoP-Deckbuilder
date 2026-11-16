@@ -1101,3 +1101,5 @@ Task popup redesign (2026-11-16, Cameron): the outcome is three slanted colour-c
 "Blocks" is now "Hours" everywhere the player reads it (the Event Choices column is `Delegate Hours`). The task popup says "Assign To", its Time cost is one line ("Time cost" left, "3 Hours" right), and each staff picture shows the person's role with no fitness colour. New: the **Items for your staff** row at the top of the screen (coffee +1 hour, tea +1, Kaiju-sized +2), one item per person, drag into their box, used up when the day is confirmed. New Shop column `Staff Hours`; tests `test_staff_items.gd`.
 
 Staff pictures in the popups are wider and taller (340 x 580) with room for a name and a role on two lines each, so the longest names and "Policy Research Assistant" show in full. Cameron's icons `LL01` to `LL08` are in `assets/icons/` and show on the task cards.
+
+Task family names (2026-11-16, Cameron): a one-word `Family` column on the Staff Assignments tab (Correspondence, Press, Analysis, Meetings, Constituents, Administration, Chores, Rest) shows under each task icon in a staff box in place of the fit note.
