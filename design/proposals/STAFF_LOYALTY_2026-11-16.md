@@ -127,3 +127,90 @@ Decided 2026-11-16: all four variables in; allies come from the rewards (several
 Still open:
 1. "Repeats multiply" for the quit penalty: per ally weight as written (Marcus loses 30 with BO16), or only the affinity average, with one flat −10 split by weight?
 2. A 3x severance (120,000円 for Hana) is more than the starting Funds cap of 100,000円: acceptable (firing becomes a late-game choice), or cap severance at the Funds cap?
+
+---
+
+# Update 2 (Cameron's notes): numbers fixed, workload redesigned
+
+## A. Numbers now fixed (replace the drafts above)
+
+| Item | Value |
+|---|---|
+| Starting Loyalty | **30** |
+| Paid in full and on time | **+2** a week |
+| Missed wage | −20 (unchanged; still draft) |
+| Ally affinity | **±2 a week per 10 points of standing above or below 50**, using the weighted average of the person's allies. Standing 70 gives +4, 100 gives +10, 20 gives −6, 0 gives −10 |
+| Quit penalty | **Reputation −15**; each ally **−20** (per ally weight, as first drafted: see open question) |
+| Lost rank | Under 25 after a missed wage: one rank lost, its buffs and rewards reversed. 0: permanent quit |
+| Severance (firing) | 3 x hire price; −3 ally standing per weight; no Reputation penalty |
+
+Two consequences to know about:
+
+1. **A new hire is Restless on day one** (Loyalty 30 sits in the 25 to 49 band, where boosts halve and upgrades are refused). On pay alone they reach 50 in 10 weeks, but a well-liked ally (standing 70) adds +4 a week and gets them there in about 4 weeks. Options: (a) keep it, so hiring is an investment that matures; (b) move the Restless band to 15 to 29 so new hires work at full strength; (c) new hires get a one-off +20 welcome bonus that fades. **Recommended: (b).**
+2. **Affinity now outweighs pay.** +2 for paying against up to ±10 from affinity means a person whose ally you ignore (standing 30) loses 4 net a week even when paid, and one whose ally you love gains 12. This is intended (the organization relationship is the main lever), but it means wages mostly stop quits only for staff whose allies are at about 40 or above.
+
+## B. Workload, rethought
+
+Why the first version fails: counting **appearances** lets one long level (many transitions, many rooms) pile up uses, burn out one person in a week and punish having a single long bill. It also ignores that the three roles do different work, and gives events no way to say who did the work.
+
+Fixes that apply to **all** options below:
+- **Count assignments, not appearances.** Transitions, cues and Level Intro lines are cosmetic and count for nothing.
+- **A level counts once per person**, however many rooms it has, with a longer level adding at most +1 extra (levels over a set number of hours).
+- **Extras share load.** Each task goes to a named person; with extras hired the player (or the default order) spreads it.
+- **Roles use different measures** (table in section C).
+
+### Option W1: Assignments (counting tasks, capped)
+
+Each role has a short list of **countable tasks**. A task adds 1 to that person's load for the week; each person's load is capped per task type so no single thing can burn them. Zones: 0 idle (−4), 1 to 3 healthy (+3), 4 to 5 busy (0), 6 or more strained (−4). Simple to explain, easy to test; a long level is one task.
+
+### Option W2: Hours in your field
+
+Workload is the **hours** the player spent that week on work in the person's field, as a share of the week's 40. The share bands, not raw counts, set the Loyalty change: well under the role's target share is idle, around it is healthy, well over is strained. A long level takes hours, but only the matching role feels it, and the bands are set per role so a 10-hour bill level is normal for a researcher and heavy for a district rep. Fair, but harder for the player to read ("why is Hana busy?") and weaker as a choice.
+
+### Option W3: Assigned tasks with fatigue (player chooses who works)
+
+Work only counts when the player **assigns** a named person. Each assignment adds Fatigue (1 for ordinary work, 2 for heavy work). Fatigue recovers 2 a week; Loyalty moves with the **peak fatigue** that week: 0 means idle, 1 to 3 healthy, 4 or more strained. Assignment points: the Level Briefing (choose who briefs the bill), a Member Visit (who prepares you), and event **Delegate** choices (below). With extras, the player rotates people. Most agency and the best fit for "delegating in events"; needs the most interface.
+
+### Comparison
+
+| | W1 Assignments | W2 Hours in field | W3 Assigned with fatigue |
+|---|---|---|---|
+| Long level burns one person? | No (counts once, +1 at most) | Only the matching role, and its bands allow for it | No (one assignment, fatigue 1 or 2) |
+| Easy to read | Yes | Harder | Yes |
+| Player agency | Low | Low | High (who to assign, rotation) |
+| Helps extras matter | Somewhat | No | Strongly |
+| New interface | Small | Small | Medium (assign buttons, a Delegate choice) |
+| Build size | About 100 lines | About 120 lines | About 220 lines |
+
+**Recommended: W3 for the three assignable tasks, with W1 counting the rest.** Staff you never assign are idle; assigning is how you keep them useful, and it is how events can delegate.
+
+## C. Role differences (what each role's work is)
+
+| Role | Assignable tasks (W3 / countable tasks (W1) | Weight | What "heavy" looks like |
+|---|---|---|---|
+| **Policy Research Assistant** | Brief a bill level; prepare a member visit; Vote Intention Research (existing item); a delegated policy event | Bill level 1 (2 if over the long-level limit); visit 1; research 1; event 1 | Several bill levels and visits in one week |
+| **Media Spokesperson** | Press conference, TV debate and ambush stages; a delegated media event; the Press Coverage item (if added) | Each stage type 1 per **stage**, but a maximum of 2 per level | A week of three press-heavy levels |
+| **District Representative** | Town hall levels; Office Hours cases (1 per **visitor met**, capped at 3 a week); a delegated constituency event | Town hall 1; cases cap 3; event 1 | A week with many visitors and town halls |
+
+Idle is also role-specific: a spokesperson with no press work for the week is idle even if the researcher is busy. This is the point of the three roles, so a player who never does press stages will see the Media Spokesperson restless and must either use them (events, items) or let them go.
+
+## D. Event delegation (new)
+
+An event choice can carry an optional **Delegate** marker naming a role. In the choice list it reads "Delegate to <role>" with the cost and gain shown before pressing (information standards 1 and 2).
+
+| Piece | Rule |
+|---|---|
+| Who | The player taps the choice, then picks one of the hired people of that role (primary or extras), shown with name, Loyalty word and fatigue. One person only |
+| What it changes | A delegated choice saves player time (draft: hours cost halved) and avoids the Funds cost, but the result is **good or normal** depending on the person's Loyalty (Loyalty 50 and above: the stated result; 25 to 49: half the gains; under 25: none) |
+| Workload | Adds Fatigue 1 (2 for a heavy event) to the assigned person |
+| No suitable staff | The choice is greyed with "Needs a <role>: none hired" |
+| Data | Event choices tab gets an optional `Delegate Role` column and an optional `Delegate Fatigue` (needs your OK, since it adds columns); Text rows for the labels and result lines |
+| Loyalty effect | Being trusted with a case you can do well: +1 Loyalty the week they were delegated to; a person whose ally is the event's organization feels extra pride (+1 more) |
+
+## E. Open questions
+
+1. Workload option: W3 plus W1 (recommended), W1 alone (smallest), or W2?
+2. Restless band: keep at 25 to 49 (new hires start half effective), move to 15 to 29 (recommended), or a welcome bonus?
+3. Quit penalty multiplier: Reputation −15 flat, and **−20 per ally weight** as written (Marcus loses 60 with BO16), or −20 split by weight?
+4. Severance of 3 x hire price is above the starting Funds cap (100,000円 for 120,000円): keep, or cap at the Funds cap?
+5. Delegation columns on the Event choices tab: approve the two new columns?
