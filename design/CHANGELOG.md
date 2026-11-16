@@ -1069,3 +1069,7 @@ Future action item recorded: Party-support-locked events for the player's own pa
 | **C-9** | Measured on desktop: `DataDB.load_all()` takes about 0.7 s, JSON parsing about 0.3 s of it (the cue files are the largest). Not a problem at start-up; measure on a phone before changing anything. Tool: `audit/tests/load_profile.tscn` |
 
 Waiting on Cameron: W-3 (Sanban decay), W-5 (card drafts, `audit/w5_card_proposal.md`), W-8.
+
+## W-5 card power changes applied, W-3 left as is (2026-11-16, Cameron)
+
+Cameron approved the recommended Draft 2 (`audit/w5_card_proposal.md`) without the C41 change. Cards tab: C63 Opp −9 to −6, C64 −11 to −9, C65 −11 to −8, C67 Gain 11 to 8, C69 Gain 10 to 7; C04, C16 and C44 cost 3 to 2; C20 gaffe +3 to +2. Effect text updated to match. W-3: Cameron keeps the current Sanban decay values (no change).
