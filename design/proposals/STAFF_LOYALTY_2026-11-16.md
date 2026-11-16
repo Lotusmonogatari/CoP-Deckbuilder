@@ -50,13 +50,13 @@ All adds are summed, then Loyalty is clamped 0 to 100. Weekly swing is capped (�
 
 **Losing a rank** reverses that rank's one-time standing rewards (the same deltas, negated) and removes its buffs. Buying the rank again costs the normal upgrade price and pays the rewards again. Loyalty after a drop resets to 35 so a person does not fall two ranks in consecutive weeks.
 
-**Quitting costs** (draft): Reputation −8 and standing with the allied organization −10. Firing someone is still available at severance (10% of hire cost) with **no** Reputation penalty and a −3 standing hit to the ally, so the player can choose to part cleanly.
+**Quitting costs** [DECIDED]: Reputation −8 and −10 standing per ally weight (section 4). **Firing** has no Reputation penalty and −3 per ally weight, but **severance rises to 3 x the hire price** (Cameron, was 10%: Balance `Staff Severance Share` 0.1 to 3.0, and the Staff tab's Firing Cost column recalculated to match, which needs `Ledger.gd` and the exporter's checks re-run). Example: Hana Takahashi 120,000円 to fire, against 4,000円 a week to keep her.
 
-## 4. New variable 1: Allied organization (affinity)
+## 4. New variable 1: Allied organizations (affinity)  [DECIDED: from the rewards, several allowed, repeats multiply]
 
-Each staff member has one **allied organization**. Default is automatic: the organization named most often in their rank rewards (for example Yui Kobayashi: BO23, BO24 or BO16 tie, so the first listed; Marcus O'Connor: BO16). An optional Staff-tab column `Allied Organization` lets Cameron override it per person (needs his approval, since it adds a column).
+A person's **allies** are every organization named in the rewards of the ranks they currently hold, and an organization named several times counts that many times (its **weight**). No new column. Examples: Marcus O'Connor at top rank: BO16 x3, BO21 x2, BO17 x1; Hana Takahashi: BO21 x1; Yui Kobayashi at rank 0: BO23, BO24, BO16, each x1... (rank 0 rewards only until she is upgraded). Losing a rank removes that rank's rewards from the list.
 
-The weekly **affinity** swing uses the player's current standing with that organization:
+The weekly **affinity** swing is the **weighted average** of the table below over the person's allies (so BO16 x3 pulls three times as hard as BO17 x1, and the total stays between -6 and +6):
 
 | Standing with the ally | Loyalty change |
 |---|---|
@@ -66,7 +66,7 @@ The weekly **affinity** swing uses the player's current standing with that organ
 | 20 to 39 | −3 |
 | Under 20 | −6 |
 
-This links two existing systems: neglecting an organization makes its allied staff restless, and treating it well steadies them. The ally also pays the price when the staff member leaves (section 3), so the same variable carries both reward and risk.
+This links two existing systems: neglecting an organization makes its allied staff restless, and treating it well steadies them. The allies also pay when the staff member leaves: **each ally loses the quit penalty multiplied by its weight** (Marcus: BO16 -30, BO21 -20, BO17 -10), so a person tied heavily to one organization is costly to lose. Needs your confirmation that "multiplies" means this.
 
 ## 5. New variable 2: Workload (staff duty per week)
 
@@ -98,7 +98,7 @@ Recognition is the player's chosen way to say thanks. It decays 2 a week and add
 
 Gifts reuse existing items (SH25 to SH33), giving them a second use. A person's taste could later vary by their ally's organization tastes (`organization_tastes`), as hosted events already do.
 
-## 6b. Optional fourth variable: Rank pride
+## 6b. Fourth variable: Rank pride  [DECIDED: in]
 
 A person at a higher rank than their hire rank gets +2 Loyalty a week (they were promoted). This stops a fully upgraded person from feeling no different to a fresh hire. Drop it if three variables are enough.
 
@@ -122,8 +122,8 @@ A person at a higher rank than their hire rank gets +2 Loyalty a week (they were
 
 ## 9. Questions for Cameron
 
-1. Keep all three new variables (ally affinity, workload, recognition), or drop workload or recognition?
-2. Ally: derived automatically (recommended) or a new Staff-tab column you fill in?
-3. Quit penalty: Reputation −8 and ally standing −10 as drafted?
-4. Should firing carry a smaller penalty (ally −3, no Reputation) as drafted, or none?
-5. Rank pride (6b) in or out?
+Decided 2026-11-16: all four variables in; allies come from the rewards (several, repeats multiply); quit penalty Reputation −8 and ally −10; severance 3 x hire price.
+
+Still open:
+1. "Repeats multiply" for the quit penalty: per ally weight as written (Marcus loses 30 with BO16), or only the affinity average, with one flat −10 split by weight?
+2. A 3x severance (120,000円 for Hana) is more than the starting Funds cap of 100,000円: acceptable (firing becomes a late-game choice), or cap severance at the Funds cap?
