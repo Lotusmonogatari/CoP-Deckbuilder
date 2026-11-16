@@ -106,6 +106,10 @@ var active_cosmetics: Dictionary = {}
 ## Office Hours visitor's reward; emptied one at a time by the Use button in
 ## the Office or during a stage. See design/proposals/inventory.md.
 var inventory: Dictionary = {}
+## Uses left on each held copy (Cameron, 2026-11-16): { item_id: [uses_left, ...] },
+## one number per copy, fewest first, kept in step with `inventory` (see
+## ItemUses and `item_copies`). An id missing here has full-use copies.
+var item_uses: Dictionary = {}
 
 ## How many of each item have been bought during the current level. An
 ## item's Purchase Limit is checked against this; it resets when a level
@@ -253,6 +257,12 @@ var staff_pool_mods: Array = []
 var staff_office_item := ""
 var staff_day_reasons: Array = []
 var staff_day_max := 0
+## The task-count changes today's pool was drawn with, kept so a reshuffle (the
+## Priority Inbox) can draw it again, and how many times that has happened today.
+var staff_day_adds: Dictionary = {}
+var staff_day_shuffles := 0
+## What an Office item used on the Staff Assignments screen just did (shown once; not saved).
+var staff_use_notes: Array = []
 var staff_taste_known: Dictionary = {}
 ## What the gifts given at the last confirm did (shown once; not saved).
 var staff_gift_notes: Array = []
@@ -589,9 +599,9 @@ const _SAVED_FIELDS := [
 	"protagonist_id", "difficulty", "awareness_gaffe_tally", "stage_checkpoint", "pending_stage_result", "last_level_outcome", "meta", "xp",
 	"owned_cards", "deck", "owned_modifiers",
 	"owned_cosmetic_packages", "active_cosmetics",
-	"inventory", "shop_bought_this_level", "card_draw",
+	"inventory", "item_uses", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
-	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
+	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
@@ -932,6 +942,7 @@ func reset_collection() -> void:
 				owned_cards.append(card_id)
 	owned_modifiers = []
 	inventory = {}
+	item_uses = {}
 	# A new run starts with the protagonist's own Starting Items (the Player
 	# tab, 2026-10-30: a coupon and some drinks). Starting coupons are listed
 	# there too (Cameron, 2026-10-31); the older Balance lever "Starting
@@ -1438,6 +1449,8 @@ func _staff_clear_day() -> void:
 	staff_day_delegated = {}
 	staff_day_items = {}
 	staff_day_reasons = []
+	staff_day_adds = {}
+	staff_day_shuffles = 0
 
 
 ## Brings the staff day up to the calendar. A confirmed plan whose day has just
@@ -1481,6 +1494,8 @@ func staff_ensure_day() -> void:
 		maximum, weekend, changes["adds"], rng)
 	staff_day_reasons = changes["reasons"]
 	staff_day_max = maximum
+	staff_day_adds = changes["adds"]
+	staff_day_shuffles = 0
 	staff_day_key = today
 	staff_day_blocks_total = staff_day_blocks()
 	staff_day_plan = {}
@@ -1531,6 +1546,8 @@ func _staff_day_info() -> Dictionary:
 	var strong := {}
 	var percent := {}
 	var quiet := {}
+	var no_penalty := {}
+	var double_best := {}
 	for id: String in staff_day_items.keys():
 		var info := staff_item_info(str(staff_day_items[id]))
 		match str(info["effect"]):
@@ -1542,8 +1559,13 @@ func _staff_day_info() -> Dictionary:
 				percent[id] = int(info["value"])
 			"QUIET":
 				quiet[id] = true
+			"NO_PENALTY":
+				no_penalty[id] = true
+			"DOUBLE_BEST":
+				double_best[id] = int(info["value"])
 	return {"blocks": staff_day_blocks_total, "delegated": staff_day_delegated, "full_days": staff_full_days,
-		"bonus": bonus, "strong_family": strong, "reward_percent": percent, "quiet": quiet}
+		"bonus": bonus, "strong_family": strong, "reward_percent": percent, "quiet": quiet,
+		"no_penalty": no_penalty, "double_best": double_best}
 
 
 ## What the plan, as it stands, would do: the same numbers the day's end applies.
@@ -1584,13 +1606,15 @@ func staff_item_info(item_id: String) -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var effect := str(item.get("staff_effect", "")) if item.get("staff_effect") != null else ""
 	if effect.is_empty() and item.get("staff_hours") != null and int(item["staff_hours"]) > 0:
-		return {"effect": "HOURS", "value": int(item["staff_hours"]), "target": "", "slot": "Person", "days": 1}
+		return {"effect": "HOURS", "value": int(item["staff_hours"]), "target": "", "slot": "Person", "days": 1,
+			"uses": ItemUses.full_uses(item)}
 	if effect.is_empty():
 		return {"effect": ""}
 	return {"effect": effect, "value": int(item.get("staff_value", 0)) if item.get("staff_value") != null else 0,
 		"target": str(item.get("staff_target", "")) if item.get("staff_target") != null else "",
 		"slot": str(item.get("staff_slot", "Person")) if item.get("staff_slot") != null else "Person",
-		"days": maxi(1, int(item.get("staff_days", 1)) if item.get("staff_days") != null else 1)}
+		"days": maxi(1, int(item.get("staff_days", 1)) if item.get("staff_days") != null else 1),
+		"uses": ItemUses.full_uses(item)}
 
 
 ## The hours an item adds to a staff member's day; 0 for any other item.
@@ -1619,12 +1643,22 @@ func staff_usable_items() -> Array[Dictionary]:
 		out.append({"item_id": id, "name": str(item.get("name", id)), "effect": str(info["effect"]),
 			"slot": str(info["slot"]), "value": int(info["value"]), "target": str(info["target"]),
 			"hours": staff_item_hours(id), "held": held, "free": maxi(0, held - planned),
+			"uses": int(info.get("uses", 1)), "uses_left": item_uses_left(id),
 			"icon": str(item.get("icon", "")) if item.get("icon") != null else ""})
 	return out
 
 
 ## The place an item goes: a person's staff_id, or OFFICE for the Office box.
 const OFFICE_BOX := "OFFICE"
+
+## Office items that act the moment they are used (the day's tasks are already
+## delivered, so they cannot wait for the day to be confirmed): the Printer, the
+## Shredder and the Priority Inbox. Each spends one use when it acts.
+const INSTANT_EFFECTS := ["ADD_TASKS", "CLEAR_TASKS", "RESHUFFLE"]
+
+
+func staff_item_is_instant(item_id: String) -> bool:
+	return str(staff_item_info(item_id)["effect"]) in INSTANT_EFFECTS
 
 
 ## Why an item cannot go to a person (or the Office box) now: one of
@@ -1640,7 +1674,12 @@ func staff_item_refusal(item_id: String, target: String) -> String:
 		return StaffTasks.REFUSE_ITEM_SLOT
 	if not to_office and hired_member(target).is_empty():
 		return StaffTasks.REFUSE_UNKNOWN
-	if (to_office and staff_office_item == item_id) or (not to_office and str(staff_day_items.get(target, "")) == item_id):
+	if staff_item_is_instant(item_id):
+		if staff_day_pool.is_empty():
+			return StaffTasks.REFUSE_UNKNOWN
+		if str(info["effect"]) == "CLEAR_TASKS" and StaffTasks.clearable(staff_day_pool, DataDB.staff_tasks, staff_day_plan).is_empty():
+			return StaffTasks.REFUSE_NOTHING
+	elif (to_office and staff_office_item == item_id) or (not to_office and str(staff_day_items.get(target, "")) == item_id):
 		return StaffTasks.REFUSE_ITEM_HAVE
 	for entry: Dictionary in staff_usable_items():
 		if str(entry["item_id"]) == item_id and int(entry["free"]) > 0:
@@ -1654,11 +1693,45 @@ func staff_assign_item(item_id: String, target: String) -> String:
 	var refusal := staff_item_refusal(item_id, target)
 	if not refusal.is_empty():
 		return refusal
-	if target == OFFICE_BOX:
+	if staff_item_is_instant(item_id):
+		_staff_use_instant(item_id)
+	elif target == OFFICE_BOX:
 		staff_office_item = item_id
 	else:
 		staff_day_items[target] = item_id
 	return ""
+
+
+## Uses an Office item that acts at once, spending one use, and leaves a line
+## in `staff_use_notes` for the screen to show.
+func _staff_use_instant(item_id: String) -> void:
+	staff_use_notes = []
+	var info := staff_item_info(item_id)
+	var label := str(DataDB.get_shop_item(item_id).get("name", item_id))
+	var rng := RandomNumberGenerator.new()
+	staff_day_shuffles += 1
+	rng.seed = hash("use:%s:%d:%d:%s" % [protagonist_id, staff_day_key, staff_day_shuffles, item_id])
+	match str(info["effect"]):
+		"ADD_TASKS":
+			var extra := StaffTasks.draw_extra(DataDB.staff_tasks, _staff_task_targets(), staff_day_pool, int(info["value"]), rng)
+			for entry: Dictionary in extra:
+				staff_day_pool.append(entry)
+			staff_day_max += extra.size()
+			staff_use_notes.append(Text.say("assign.use_added", {"item": label, "count": extra.size()}))
+		"CLEAR_TASKS":
+			var gone := StaffTasks.pick_to_clear(staff_day_pool, DataDB.staff_tasks, staff_day_plan, int(info["value"]), rng)
+			var kept: Array[Dictionary] = []
+			for entry: Dictionary in staff_day_pool:
+				if not gone.has(str(entry.get("uid", ""))):
+					kept.append(entry)
+			staff_day_pool = kept
+			staff_use_notes.append(Text.say("assign.use_cleared", {"item": label, "count": gone.size()}))
+		"RESHUFFLE":
+			staff_day_pool = StaffTasks.draw_pool(DataDB.staff_tasks, DataDB.staff_task_families, _staff_task_targets(),
+				staff_day_max, in_weekend(), staff_day_adds, rng)
+			staff_day_plan = {}
+			staff_use_notes.append(Text.say("assign.use_reshuffled", {"item": label}))
+	_spend_use(item_id)
 
 
 ## Takes a person's item back, or empties the Office box (nothing once the day is confirmed).
@@ -1777,11 +1850,14 @@ func staff_confirm_day() -> String:
 	# The items given out are used up now: gifts are handed over, and an item in
 	# the Office box leaves a change for the next pool.
 	staff_gift_notes = []
+	staff_use_notes = []
 	for id: String in staff_day_items.keys():
 		var item_id := str(staff_day_items[id])
 		if str(staff_item_info(item_id)["effect"]) == "GIFT":
 			_give_gift(id, item_id)
-		_take_item(item_id)
+			_take_item(item_id)   # a gift is handed over whole
+		else:
+			_spend_use(item_id)
 	if not staff_office_item.is_empty():
 		var office := staff_item_info(staff_office_item)
 		var label := str(DataDB.get_shop_item(staff_office_item).get("name", staff_office_item))
@@ -1790,8 +1866,11 @@ func staff_confirm_day() -> String:
 				staff_add_pool_change(str(office["target"]), int(office["value"]), int(office["days"]), label)
 			"POOL_MAX":
 				staff_add_pool_change(StaffPoolModifiers.MAX, int(office["value"]), int(office["days"]), label)
-		_take_item(staff_office_item)
+		_spend_use(staff_office_item)
 		staff_office_item = ""
+	for note: Variant in staff_use_notes:
+		staff_gift_notes.append(note)
+	staff_use_notes = []
 	return ""
 
 
@@ -4159,6 +4238,48 @@ func item_count(item_id: String) -> int:
 	return int(inventory.get(item_id, 0))
 
 
+## The uses left on each held copy of an item, fewest first (Cameron, 2026-11-16).
+## Kept in step with the count held: a copy with no record (a starting item, a
+## coupon, a save from before uses) has full uses.
+func item_copies(item_id: String) -> Array[int]:
+	var count := item_count(item_id)
+	if count <= 0:
+		item_uses.erase(item_id)
+		return []
+	var copies := ItemUses.normalize(item_uses.get(item_id), count, ItemUses.full_uses(DataDB.get_shop_item(item_id)))
+	item_uses[item_id] = copies
+	return copies
+
+
+## Uses left on the copy the next use would spend (0 when none is held).
+func item_uses_left(item_id: String) -> int:
+	return ItemUses.next_left(item_copies(item_id))
+
+
+## Spends one use of an item (the most-used copy first). A copy with no uses left
+## is thrown away and a line says so in `staff_use_notes`. Returns true when a
+## copy wore out.
+func _spend_use(item_id: String) -> bool:
+	var result := ItemUses.spend(item_copies(item_id))
+	item_uses[item_id] = result["copies"]
+	var worn_out := bool(result["worn_out"])
+	if worn_out:
+		_drop_copy_count(item_id)
+		var full := ItemUses.full_uses(DataDB.get_shop_item(item_id))
+		if full > 1:
+			staff_use_notes.append(Text.say("item.worn_out", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))}))
+	return worn_out
+
+
+func _drop_copy_count(item_id: String) -> void:
+	var left := item_count(item_id) - 1
+	if left > 0:
+		inventory[item_id] = left
+	else:
+		inventory.erase(item_id)
+		item_uses.erase(item_id)
+
+
 ## Adds up to `count` of an item, never past its Stack Cap. Returns how many
 ## actually went in — a visitor's gift beyond the cap is lost, not banked.
 func add_item(item_id: String, count: int = 1) -> int:
@@ -4166,7 +4287,9 @@ func add_item(item_id: String, count: int = 1) -> int:
 	var cap := Items.stack_cap(item)
 	var room := count if cap <= 0 else clampi(cap - item_count(item_id), 0, count)
 	if room > 0:
+		item_copies(item_id)   # lock in the uses of the copies already held
 		inventory[item_id] = item_count(item_id) + room
+		item_copies(item_id)   # the new copies start with full uses
 	return room
 
 
@@ -4535,7 +4658,7 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 		return {"ok": true, "opens_draw": true,
 			"message": Text.say("rhetoric.coupon_used", {"name": name})}
 
-	_take_item(item_id)
+	_spend_use(item_id)
 	var split := Items.split_grants(item)
 	var cause_before := _cause
 	_cause = Text.say("record.cause_item", {"item": str(item.get("name_en", ""))})
@@ -4647,7 +4770,7 @@ func use_item_in_stage(item_id: String, engine: BattleEngine, chosen_target: Str
 	if not result.get("ok", false):
 		return {"ok": false, "message": str(result.get("reason", ""))}
 
-	_take_item(item_id)
+	_spend_use(item_id)
 	var cause_before := _cause
 	_cause = Text.say("record.cause_item", {"item": str(item.get("name_en", ""))})
 	var applied := _apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
@@ -4822,12 +4945,11 @@ static func _first_pleased_org(rewards: Variant) -> String:
 	return ""
 
 
+## One whole copy leaves the inventory (handed over, promised, given away): the
+## copy with the fewest uses left, whatever it had left.
 func _take_item(item_id: String) -> void:
-	var left := item_count(item_id) - 1
-	if left > 0:
-		inventory[item_id] = left
-	else:
-		inventory.erase(item_id)
+	item_uses[item_id] = ItemUses.remove_copy(item_copies(item_id))
+	_drop_copy_count(item_id)
 
 
 ## An item's stage-effect entries as [ { "token", "amount" } ], each pool

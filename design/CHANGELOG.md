@@ -1147,3 +1147,19 @@ Dragging a staff item or task card (2026-11-16, Cameron): the whole card is carr
 Words stay whole (2026-11-16, Cameron): wrapped text no longer breaks in the middle of a word and leaves a hanging letter. The `TextFit` autoload looks at every wrapping label and button once it has its real width, wraps at word boundaries only, and shrinks the type a size at a time (down to Balance `Text Fit: Minimum Font Size`, 20) when one word is wider than its box; only if even that fails does it allow a split. Cards are left alone. `WordFit.gd` measures; tests `test_word_fit.gd`. The Staff Assignments empty-box notes no longer force the screen wider than the phone.
 
 Kaiju-sized coffee and tea (2026-11-16, Cameron): now Office box items that add +1 hour to every staff member today (Shop effect HOURS_ALL); regular coffee and tea stay one-person items.
+
+## Items with uses, and six office-supply items (2026-11-16, Cameron)
+
+| Piece | What |
+|---|---|
+| Uses | New Shop column **Uses** (blank = 1). A copy has that many uses; one use comes off the **most-used copy first**; at 0 the copy is thrown away and a line says so. Handing an item over (gift, promise) removes a whole copy. Run state `item_uses`, saved; old saves and starting items get full uses (`ItemUses.gd`, `GameState._spend_use`, `item_copies`) |
+| Shown | Staff item cards ("· 2 uses left"), the item popup ("Uses left: 2 of 3"), Inventory (uses on each copy), Marketplace ("3 uses") |
+| Kaiju-sized coffee and tea | 2 uses each; one use is spent per confirmed day in the Office box, each use gives every staff member +1 hour that day |
+| SH36 Printer | Office, 3 uses. Used at once: adds 3 tasks to today's list, past the week's maximum |
+| SH37 Shredder | Office, 3 uses. Used at once: clears up to 3 tasks nobody has been given and that are not Due, at random |
+| SH38 Flex-Work | Person, 3 uses. The best-paying task that person completes pays double; +2 Loyalty |
+| SH39 Priority Inbox | Office, 1 use. Used at once: today's tasks are drawn again, given tasks included |
+| SH40 Commendation Gift | Person, 1 use. No Loyalty change from an idle or overworked day |
+| SH41 Lunch Delivery | Person, 1 use. None of a weak fit's penalties |
+
+The 17 draft staff items SH36 to SH52 are replaced. Prices are drafts (6,000 to 20,000円). Item pictures (`SH36.png` to `SH41.png`) are to come from Cameron; the Icon cells are blank until then. Builders: `tools/workbook/archive/shop_item_uses_2026-11-16.py`, `item_uses_text_2026-11-16.py`. Tests: `test_item_uses.gd`; `test_staff_pool_modifiers.gd` and `test_staff_items.gd` updated.

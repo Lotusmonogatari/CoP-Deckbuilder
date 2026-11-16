@@ -276,3 +276,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Staff tasks expansion, phases 1 and 2 (2026-11-16, Cameron)
 - Staff tasks expansion, phases 3 to 6 (2026-11-16, Cameron)
 - Staff Assignments rubric and first evaluation (2026-11-16, Cameron)
+- Items with uses, and six office-supply items SH36 to SH41 (2026-11-16, Cameron)

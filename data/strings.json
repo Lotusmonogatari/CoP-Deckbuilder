@@ -7722,10 +7722,10 @@
   },
   {
     "key": "assign.gift_title",
-    "where": "Gifts handed over, heading",
-    "english": "Gifts",
+    "where": "Staff Assignments, what items did, heading",
+    "english": "Office notes",
     "placeholders": null,
-    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
   },
   {
     "key": "assign.office_heading",
@@ -7943,5 +7943,180 @@
     "english": "Adds {hours} hours to every staff member's working day today.",
     "placeholders": "hours",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.uses_left",
+    "where": "Staff item card, uses left on the next copy",
+    "english": "· {left} uses left",
+    "placeholders": "left",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.uses_left_one",
+    "where": "Staff item card, one use left on the next copy",
+    "english": "· 1 use left",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_add",
+    "where": "Staff item card, adds tasks",
+    "english": "Adds {count} tasks",
+    "placeholders": "count",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_clear",
+    "where": "Staff item card, clears tasks",
+    "english": "Clears up to {count} tasks",
+    "placeholders": "count",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_reshuffle",
+    "where": "Staff item card, reshuffles the day",
+    "english": "Reshuffles today",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_double",
+    "where": "Staff item card, best task pays double",
+    "english": "Best task pays double",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_nopenalty",
+    "where": "Staff item card, no weak-fit penalty",
+    "english": "No weak-fit penalty",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_add",
+    "where": "Item popup, adds tasks",
+    "english": "Used at once: adds {count} more tasks to today's list, even past the week's usual maximum.",
+    "placeholders": "count",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_clear",
+    "where": "Item popup, clears tasks",
+    "english": "Used at once: clears up to {count} tasks that nobody has been given and that are not Due, picked at random.",
+    "placeholders": "count",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_reshuffle",
+    "where": "Item popup, reshuffles the day",
+    "english": "Used at once: today's tasks are drawn again, including the ones already given to staff. Items given to people stay with them.",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_double",
+    "where": "Item popup, best task pays double",
+    "english": "Today, the best-paying task that person completes pays double, and they gain {count} extra Loyalty.",
+    "placeholders": "count",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_nopenalty",
+    "where": "Item popup, no weak-fit penalty",
+    "english": "Today, that person takes none of the penalties of a weak fit.",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_uses_line",
+    "where": "Item popup, uses left",
+    "english": "Uses left: {left} of {full}. It is thrown away when they run out.",
+    "placeholders": "left, full",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.office_use_now",
+    "where": "Item popup, button for an Office item that acts at once",
+    "english": "Use now",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.use_instant_rule",
+    "where": "Item popup, an Office item that acts at once",
+    "english": "It acts as soon as you use it and costs one use.",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.use_added",
+    "where": "Office note, the Printer",
+    "english": "{item} added {count} tasks to today's list.",
+    "placeholders": "item, count",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.use_cleared",
+    "where": "Office note, the Shredder",
+    "english": "{item} cleared {count} tasks that nobody had been given.",
+    "placeholders": "item, count",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.use_reshuffled",
+    "where": "Office note, the Priority Inbox",
+    "english": "{item} reshuffled today's tasks. Tasks you had given out are back in the list.",
+    "placeholders": "item",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.office_nothing",
+    "where": "Item popup, refusal, nothing for the item to act on",
+    "english": "No task qualifies: each is given out or Due.",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.tile_nothing",
+    "where": "Item popup, refusal, short",
+    "english": "Nothing to clear",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.office_no_tasks",
+    "where": "Item popup, refusal, no tasks today",
+    "english": "Today has no tasks.",
+    "placeholders": null,
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "item.worn_out",
+    "where": "Office note, an item with uses ran out",
+    "english": "Your {item} wore out and was thrown away.",
+    "placeholders": "item",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "item.uses_line",
+    "where": "Inventory, uses left on one copy",
+    "english": "Uses left: {left} of {full}",
+    "placeholders": "left, full",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "item.uses_copies",
+    "where": "Inventory, uses left on several copies",
+    "english": "Uses left, copy by copy: {list}",
+    "placeholders": "list",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "shop.item_uses",
+    "where": "Marketplace, an item's uses",
+    "english": "{count} uses",
+    "placeholders": "count",
+    "notes": "2026-11-16 item uses (Cameron). Claude's draft."
   }
 ]

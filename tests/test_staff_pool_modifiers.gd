@@ -129,18 +129,18 @@ func test_every_staff_item_in_the_shop_is_valid() -> void:
 		var info := GameState.staff_item_info(str(item["item_id"]))
 		if not str(info["effect"]).is_empty():
 			effects[info["effect"]] = true
-	for effect in ["HOURS", "STRONG_FAMILY", "REWARD_MULT", "QUIET", "GIFT", "POOL_FAMILY", "POOL_MAX"]:
+	for effect in ["HOURS", "HOURS_ALL", "QUIET", "GIFT", "ADD_TASKS", "CLEAR_TASKS", "RESHUFFLE", "DOUBLE_BEST", "NO_PENALTY"]:
 		assert_true(effects.has(effect), effect + " has an item")
 
 
 func test_a_person_item_goes_to_a_person_and_an_office_item_to_the_box() -> void:
 	_hire(["SF04"])
-	GameState.inventory = {"SH36": 1, "SH45": 1}
+	GameState.inventory = {"SH41": 1, "SH15": 1}
 	GameState.staff_ensure_day()
-	assert_eq(GameState.staff_item_refusal("SH36", "SF04"), "")
-	assert_eq(GameState.staff_item_refusal("SH36", GameState.OFFICE_BOX), StaffTasks.REFUSE_ITEM_SLOT)
-	assert_eq(GameState.staff_item_refusal("SH45", "SF04"), StaffTasks.REFUSE_ITEM_SLOT)
-	assert_eq(GameState.staff_item_refusal("SH45", GameState.OFFICE_BOX), "")
+	assert_eq(GameState.staff_item_refusal("SH41", "SF04"), "")
+	assert_eq(GameState.staff_item_refusal("SH41", GameState.OFFICE_BOX), StaffTasks.REFUSE_ITEM_SLOT)
+	assert_eq(GameState.staff_item_refusal("SH15", "SF04"), StaffTasks.REFUSE_ITEM_SLOT)
+	assert_eq(GameState.staff_item_refusal("SH15", GameState.OFFICE_BOX), "")
 
 
 func _eval_with(items: Dictionary, task_ids: Array, tier: int = 0, loyalty: int = 60, role: String = R, left_out: Array = []) -> Dictionary:
@@ -161,55 +161,58 @@ func _eval_with(items: Dictionary, task_ids: Array, tier: int = 0, loyalty: int 
 		[{"staff_id": "SF04", "role": role, "tier": tier, "loyalty": loyalty}], info)
 
 
-func test_a_reference_set_makes_a_poor_fit_strong_for_its_family() -> void:
-	GameState.inventory = {"SH38": 1}
+func test_lunch_delivery_zeroes_the_weak_fit_penalties() -> void:
 	# TK10 (greet constituents) is a poor fit for a researcher.
 	var without := _eval_with({}, ["TK10"])
 	assert_eq(int(without["meta"]["Constituency support"]), -1)
-	var with_map := _eval_with({"SF04": "SH38"}, ["TK10"])
-	assert_eq(int(with_map["meta"]["Constituency support"]), 2, "a Ward Map makes it a strong fit")
+	var lunch := _eval_with({"SF04": "SH41"}, ["TK10"])
+	assert_eq(int(lunch["meta"].get("Constituency support", 0)), 0, "no penalty")
+	assert_gt(int(lunch["loyalty"]["SF04"]), int(without["loyalty"]["SF04"]), "no Loyalty lost for the weak fit")
 
 
-func test_a_reference_set_only_helps_its_own_family() -> void:
-	var result := _eval_with({"SF04": "SH38"}, ["TK03"])   # a Press task that is poor for a researcher; a Ward Map is for Constituents
-	assert_eq(str(result["lines"][0]["fit"]), StaffTasks.POOR)
-
-
-func test_a_training_voucher_makes_strong_rewards_bigger() -> void:
+func test_flex_work_doubles_the_best_paying_task_and_adds_two_loyalty() -> void:
 	var plain := _eval_with({}, ["TK36"])   # Funds +3,000 for a researcher
 	assert_eq(int(plain["meta"]["Funds"]), 3000)
-	var voucher := _eval_with({"SF04": "SH43"}, ["TK36"])
-	assert_eq(int(voucher["meta"]["Funds"]), 4500, "half as big again, rounded down")
+	var flex := _eval_with({"SF04": "SH38"}, ["TK36"])
+	assert_eq(int(flex["meta"]["Funds"]), 6000)
+	assert_eq(int(flex["loyalty"]["SF04"]), int(plain["loyalty"]["SF04"]) + 2)
 
 
-func test_a_quiet_desk_pass_stops_idle_loyalty_loss() -> void:
+func test_flex_work_doubles_only_one_task() -> void:
+	var plain := _eval_with({}, ["TK36", "TK36"])
+	var pay_one := int(_eval_with({}, ["TK36"])["meta"]["Funds"])
+	var flex := _eval_with({"SF04": "SH38"}, ["TK36", "TK36"])
+	assert_eq(int(flex["meta"]["Funds"]), int(plain["meta"]["Funds"]) + pay_one)
+
+
+func test_a_commendation_gift_stops_idle_loyalty_loss() -> void:
 	var idle := _eval_with({}, [], 0, 60, R, ["TK04"])
 	assert_eq(int(idle["loyalty"]["SF04"]), -1)
-	var quiet := _eval_with({"SF04": "SH44"}, [], 0, 60, R, ["TK04"])
+	var quiet := _eval_with({"SF04": "SH40"}, [], 0, 60, R, ["TK04"])
 	assert_eq(int(quiet["loyalty"]["SF04"]), 0)
 
 
-func test_the_office_box_item_is_used_up_and_leaves_a_change_when_confirmed() -> void:
+func test_a_kaiju_item_in_the_office_box_spends_one_use_a_confirmed_day() -> void:
 	_hire(["SF04"])
-	GameState.inventory = {"SH45": 1}
+	GameState.inventory = {"SH15": 1}
 	GameState.staff_ensure_day()
 	GameState.staff_day_pool = [StaffTasks._entry(StaffTasks.task_for(DataDB.staff_tasks, "TK04"), 0, {})]
-	assert_eq(GameState.staff_assign_item("SH45", GameState.OFFICE_BOX), "")
+	assert_eq(GameState.staff_assign_item("SH15", GameState.OFFICE_BOX), "")
 	assert_eq(GameState.staff_assign("T0", "SF04"), "")
 	assert_eq(GameState.staff_confirm_day(), "")
-	assert_eq(GameState.item_count("SH45"), 0)
-	assert_eq(GameState.staff_pool_mods.size(), 1)
-	assert_eq(GameState.staff_pool_mods[0]["family"], "Press")
-	assert_eq(int(GameState.staff_pool_mods[0]["amount"]), 2)
+	assert_eq(GameState.item_count("SH15"), 1, "still held, one use left")
+	assert_eq(GameState.item_uses_left("SH15"), 1)
+	assert_eq(GameState.staff_office_item, "")
 
 
 func test_an_item_in_the_office_box_can_be_taken_back_for_free() -> void:
-	GameState.inventory = {"SH45": 1}
+	GameState.inventory = {"SH15": 1}
 	GameState.staff_ensure_day()
-	GameState.staff_assign_item("SH45", GameState.OFFICE_BOX)
+	GameState.staff_assign_item("SH15", GameState.OFFICE_BOX)
 	GameState.staff_unassign_item(GameState.OFFICE_BOX)
 	assert_eq(GameState.staff_office_item, "")
-	assert_eq(GameState.item_count("SH45"), 1)
+	assert_eq(GameState.item_count("SH15"), 1)
+	assert_eq(GameState.item_uses_left("SH15"), 2)
 
 
 # --- gifts -------------------------------------------------------------------------
@@ -254,6 +257,6 @@ func test_confirming_hands_the_gift_over_and_the_taste_becomes_known() -> void:
 
 func test_an_item_in_the_office_box_does_not_get_a_person() -> void:
 	_hire(["SF04"])
-	GameState.inventory = {"SH45": 1}
+	GameState.inventory = {"SH15": 1}
 	GameState.staff_ensure_day()
 	assert_eq(GameState.staff_assign("T0", GameState.OFFICE_BOX), StaffTasks.REFUSE_UNKNOWN, "a task cannot go in the Office box")

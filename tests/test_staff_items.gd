@@ -99,7 +99,8 @@ func test_confirming_uses_the_items_up() -> void:
 	GameState.staff_assign(str(GameState.staff_day_pool[0]["uid"]), "SF04")
 	assert_eq(GameState.staff_confirm_day(), "")
 	assert_eq(GameState.item_count("SH04"), 1)
-	assert_eq(GameState.item_count("SH15"), 0)
+	assert_eq(GameState.item_count("SH15"), 1, "a Kaiju-sized item has two uses: one is spent")
+	assert_eq(GameState.item_uses_left("SH15"), 1)
 	assert_eq(GameState.staff_assign_item("SH04", "SF15"), StaffTasks.REFUSE_LOCKED)
 
 

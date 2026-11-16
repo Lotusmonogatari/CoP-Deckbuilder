@@ -108,6 +108,17 @@ func show_item(item_id: String) -> void:
 	rows.append(icon)
 
 	rows.append(UiKit.line(Text.say("item.quantity", {"count": GameState.item_count(item_id)})))
+	# An item with several uses says how many are left on each copy.
+	var full_uses := ItemUses.full_uses(item)
+	if full_uses > 1:
+		var copies := GameState.item_copies(item_id)
+		if copies.size() <= 1:
+			rows.append(UiKit.line(Text.say("item.uses_line", {"left": ItemUses.next_left(copies), "full": full_uses})))
+		else:
+			var parts: Array[String] = []
+			for value: int in copies:
+				parts.append(str(value))
+			rows.append(UiKit.line(Text.say("item.uses_copies", {"list": ", ".join(parts)})))
 	var cap := Items.stack_cap(item)
 	if cap > 0:
 		rows.append(UiKit.line(Text.say("item.stack_cap", {"count": cap}), "SmallLabel"))

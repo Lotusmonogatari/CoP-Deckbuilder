@@ -1704,7 +1704,7 @@ SHEETS = {
                      "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Duration Units", "Card Tier",
                      "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase",
                      "In Marketplace (Yes/No)", "Inventory (Personal/Office)", "Deck Size Increase", "Staff Hours",
-                     "Staff Effect", "Staff Value", "Staff Target", "Staff Slot", "Staff Days"],
+                     "Staff Effect", "Staff Value", "Staff Target", "Staff Slot", "Staff Days", "Uses"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -1819,6 +1819,10 @@ SHEETS = {
             ("Staff Target", "staff_target", "str"),
             ("Staff Slot", "staff_slot", "str"),
             ("Staff Days", "staff_days", "int"),
+            # 2026-11-16 (Cameron): how many uses one copy has before it is thrown
+            # away (blank = 1). ADD_TASKS, CLEAR_TASKS, RESHUFFLE act at once from
+            # the Office box; DOUBLE_BEST and NO_PENALTY are given to a person.
+            ("Uses", "uses", "int"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's
@@ -4435,7 +4439,9 @@ def check_staff_item_and_driver_tables(data, report):
         low, high = row.get("add_min"), row.get("add_max")
         if low is None or high is None or int(low) > int(high):
             report.error("Staff Task Drivers", f"{did}: Add Min and Add Max must be numbers with Add Min <= Add Max")
-    effects = {"HOURS", "HOURS_ALL", "STRONG_FAMILY", "REWARD_MULT", "QUIET", "GIFT", "POOL_FAMILY", "POOL_MAX"}
+    effects = {"HOURS", "HOURS_ALL", "STRONG_FAMILY", "REWARD_MULT", "QUIET", "GIFT", "POOL_FAMILY", "POOL_MAX",
+               "ADD_TASKS", "CLEAR_TASKS", "RESHUFFLE", "DOUBLE_BEST", "NO_PENALTY"}
+    office_effects = ("POOL_FAMILY", "POOL_MAX", "HOURS_ALL", "ADD_TASKS", "CLEAR_TASKS", "RESHUFFLE")
     for row in data.get("shop", []):
         effect = row.get("staff_effect")
         if effect in (None, ""):
@@ -4447,12 +4453,16 @@ def check_staff_item_and_driver_tables(data, report):
             report.error("Shop", f"{sid}: Staff Slot must be Person or Office")
         if effect in ("STRONG_FAMILY", "POOL_FAMILY") and row.get("staff_target") not in families:
             report.error("Shop", f"{sid}: Staff Target '{row.get('staff_target')}' is not a task family")
-        if effect in ("HOURS", "HOURS_ALL", "REWARD_MULT", "POOL_FAMILY", "POOL_MAX") and row.get("staff_value") is None:
+        if effect in ("HOURS", "HOURS_ALL", "REWARD_MULT", "POOL_FAMILY", "POOL_MAX", "ADD_TASKS", "CLEAR_TASKS", "DOUBLE_BEST") and row.get("staff_value") is None:
             report.error("Shop", f"{sid}: Staff Effect {effect} needs a Staff Value")
-        if effect in ("POOL_FAMILY", "POOL_MAX", "HOURS_ALL") and row.get("staff_slot") != "Office":
+        if effect in office_effects and row.get("staff_slot") != "Office":
             report.error("Shop", f"{sid}: {effect} items go in the Office box (Staff Slot = Office)")
-        if effect not in ("POOL_FAMILY", "POOL_MAX", "HOURS_ALL") and row.get("staff_slot") != "Person":
+        if effect not in office_effects and row.get("staff_slot") != "Person":
             report.error("Shop", f"{sid}: {effect} items are given to a person (Staff Slot = Person)")
+    for row in data.get("shop", []):
+        uses = row.get("uses")
+        if uses is not None and int(uses) < 1:
+            report.error("Shop", f"{row.get('item_id')}: Uses must be a whole number from 1 up (or blank)")
     shop_ids = {r.get("item_id") for r in data.get("shop", [])}
     for row in data.get("staff", []):
         for column in ("gift_likes", "gift_dislikes"):

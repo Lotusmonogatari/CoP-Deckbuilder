@@ -2356,7 +2356,10 @@ func _price_text(item: Dictionary) -> String:
 	if GameState.is_staff_slot_item(item):
 		parts.append(Text.say("shop.item_price_reputation",
 			{"count": Levers.whole("staff_slots_reputation_cost")}))
-	return Text.say("shop.item_free") if parts.is_empty() else " + ".join(parts)
+	var text := Text.say("shop.item_free") if parts.is_empty() else " + ".join(parts)
+	if ItemUses.full_uses(item) > 1:
+		text += " · " + Text.say("shop.item_uses", {"count": ItemUses.full_uses(item)})
+	return text
 
 
 ## Three kinds of Supplies item (level_tier/unlocks_recruitment_tier/
@@ -2922,9 +2925,18 @@ func _on_task_tapped(uid: String) -> void:
 
 
 func _on_item_given(item_id: String, staff_id: String) -> void:
+	GameState.staff_use_notes = []
 	GameState.staff_assign_item(item_id, staff_id)
 	SaveManager.autosave()
 	_show_staff_assignments()
+	# An Office item that acts at once answers in words, once.
+	if not GameState.staff_use_notes.is_empty():
+		var rows: Array[Control] = []
+		for note: Variant in GameState.staff_use_notes:
+			rows.append(UiKit.line(str(note)))
+		GameState.staff_use_notes = []
+		_staff_report_panel.top_aligned = true
+		_staff_report_panel.open(Text.say("assign.gift_title"), rows)
 
 
 func _on_item_given_from_popup(item_id: String, staff_id: String) -> void:

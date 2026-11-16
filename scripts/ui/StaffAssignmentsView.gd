@@ -97,6 +97,10 @@ static func rows(handlers: Dictionary) -> Array[Control]:
 ## how many are still free.
 static func item_caption(item: Dictionary, free: int = -1) -> String:
 	var tail := "" if free < 0 else " " + Text.say("assign.item_left", {"free": free})
+	# An item with several uses shows the uses left on its next copy instead.
+	if int(item.get("uses", 1)) > 1 and int(item.get("uses_left", 0)) > 0:
+		tail = " " + (Text.say("assign.uses_left_one") if int(item["uses_left"]) == 1
+			else Text.say("assign.uses_left", {"left": int(item["uses_left"])}))
 	match str(item.get("effect", "")):
 		"HOURS":
 			return (Text.say("assign.item_in_box_one") if int(item.get("hours", 0)) == 1
@@ -116,6 +120,16 @@ static func item_caption(item: Dictionary, free: int = -1) -> String:
 			return Text.say("assign.item_cap_pool", {"family": str(item.get("target", "")), "amount": "%+d" % int(item.get("value", 0))}) + tail
 		"POOL_MAX":
 			return Text.say("assign.item_cap_max", {"amount": "%+d" % int(item.get("value", 0))}) + tail
+		"ADD_TASKS":
+			return Text.say("assign.item_cap_add", {"count": int(item.get("value", 0))}) + tail
+		"CLEAR_TASKS":
+			return Text.say("assign.item_cap_clear", {"count": int(item.get("value", 0))}) + tail
+		"RESHUFFLE":
+			return Text.say("assign.item_cap_reshuffle") + tail
+		"DOUBLE_BEST":
+			return Text.say("assign.item_cap_double") + tail
+		"NO_PENALTY":
+			return Text.say("assign.item_cap_nopenalty") + tail
 	return tail.strip_edges()
 
 
@@ -126,6 +140,7 @@ static func _item_info(item_id: String) -> Dictionary:
 	return {"item_id": item_id, "name": str(item.get("name", item_id)), "effect": str(info["effect"]),
 		"slot": str(info["slot"]), "value": int(info["value"]), "target": str(info["target"]),
 		"hours": GameState.staff_item_hours(item_id),
+		"uses": int(info.get("uses", 1)), "uses_left": GameState.item_uses_left(item_id),
 		"icon": str(item.get("icon", "")) if item.get("icon") != null else ""}
 
 
@@ -593,7 +608,28 @@ static func item_popup_rows(item_id: String, handlers: Dictionary) -> Array[Cont
 	out.append(head)
 	out.append(UiKit.heading(Text.say("assign.item_effect_heading")))
 	out.append(UiKit.line(item_description(item_id)))
-	out.append(UiKit.line(Text.say("assign.office_one_rule" if str(info["slot"]) == "Office" else "assign.item_one_each")))
+	if int(info["uses"]) > 1:
+		out.append(UiKit.line(Text.say("assign.item_uses_line", {"left": int(info["uses_left"]), "full": int(info["uses"])})))
+	var instant := GameState.staff_item_is_instant(item_id)
+	out.append(UiKit.line(Text.say("assign.use_instant_rule" if instant
+		else ("assign.office_one_rule" if str(info["slot"]) == "Office" else "assign.item_one_each"))))
+
+	if instant:
+		var why := ""
+		match GameState.staff_item_refusal(item_id, GameState.OFFICE_BOX):
+			StaffTasks.REFUSE_LOCKED:
+				why = Text.say("assign.tile_locked")
+			StaffTasks.REFUSE_ITEM_NONE:
+				why = Text.say("assign.tile_none_left")
+			StaffTasks.REFUSE_NOTHING:
+				why = Text.say("assign.office_nothing")
+			StaffTasks.REFUSE_UNKNOWN:
+				why = Text.say("assign.office_no_tasks")
+		var use_now := UiKit.action_button(Text.say("assign.office_use_now"), why,
+			handlers["assign_item"].bind(item_id, GameState.OFFICE_BOX), 100.0)
+		use_now.name = "UseNowButton"
+		out.append(use_now)
+		return out
 
 	if str(info["slot"]) == "Office":
 		var holder := GameState.staff_office_item == item_id
@@ -665,6 +701,16 @@ static func item_description(item_id: String) -> String:
 		"POOL_MAX":
 			return Text.say("assign.item_desc_max_one", {"amount": "%+d" % int(info["value"])}) if days <= 1 \
 				else Text.say("assign.item_desc_max_many", {"amount": "%+d" % int(info["value"]), "days": days})
+		"ADD_TASKS":
+			return Text.say("assign.item_desc_add", {"count": int(info["value"])})
+		"CLEAR_TASKS":
+			return Text.say("assign.item_desc_clear", {"count": int(info["value"])})
+		"RESHUFFLE":
+			return Text.say("assign.item_desc_reshuffle")
+		"DOUBLE_BEST":
+			return Text.say("assign.item_desc_double", {"count": int(info["value"])})
+		"NO_PENALTY":
+			return Text.say("assign.item_desc_nopenalty")
 	return ""
 
 

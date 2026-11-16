@@ -27,6 +27,7 @@ const REFUSE_BLOCKS := "blocks"          # not enough of their day is left
 const REFUSE_UNKNOWN := "unknown"
 const REFUSE_ITEM_HAVE := "item_have"    # they already have this item
 const REFUSE_ITEM_NONE := "item_none"    # none left to give
+const REFUSE_NOTHING := "nothing"        # an Office item with nothing to act on
 const REFUSE_ITEM_SLOT := "item_slot"    # a person item for the Office box, or the reverse
 
 ## Effect names the Staff Assignments tab may use.
@@ -177,6 +178,67 @@ static func draw_pool(tasks: Array, families: Array, targets: Dictionary, maximu
 	return pool
 
 
+## Draws `count` MORE tasks for a pool already delivered (the Printer): picked by
+## weight from every family, never one already in the pool, with a target for the
+## kinds that name one. The day's maximum is ignored (Cameron, 2026-11-16). Returns
+## the new entries only, their uids continuing after the pool's own.
+static func draw_extra(tasks: Array, targets: Dictionary, pool: Array, count: int,
+		rng: RandomNumberGenerator) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var present := {}
+	var next_index := 0
+	for entry: Dictionary in pool:
+		present[str(entry.get("task_id", ""))] = true
+		next_index = maxi(next_index, int(str(entry.get("uid", "T-1")).trim_prefix("T")) + 1)
+	var candidates: Array[Dictionary] = []
+	for task: Dictionary in tasks:
+		var kind := str(task.get("kind", KIND_PLAIN))
+		if present.has(str(task.get("task_id", ""))):
+			continue
+		if kind == KIND_TIME_OFF or (int(task.get("weight", 0)) > 0 and (kind == KIND_PLAIN or not (targets.get(kind, []) as Array).is_empty())):
+			candidates.append(task)
+	for _n in count:
+		if candidates.is_empty():
+			break
+		var picked := _weighted_index(candidates, rng)
+		var task: Dictionary = candidates[picked]
+		candidates.remove_at(picked)
+		var kind := str(task.get("kind", KIND_PLAIN))
+		var target: Dictionary = {}
+		if kind != KIND_PLAIN and kind != KIND_TIME_OFF:
+			var named: Array = targets.get(kind, [])
+			target = named[rng.randi_range(0, named.size() - 1)]
+		out.append(_entry(task, next_index, target))
+		next_index += 1
+	return out
+
+
+## The uids the Shredder may clear: tasks nobody has been given that have no Due penalty.
+static func clearable(pool: Array, tasks: Array, plan: Dictionary) -> Array[String]:
+	var given := {}
+	for list: Variant in plan.values():
+		for uid: Variant in (list as Array):
+			given[str(uid)] = true
+	var out: Array[String] = []
+	for entry: Dictionary in pool:
+		var uid := str(entry.get("uid", ""))
+		var task := task_for(tasks, str(entry.get("task_id", "")))
+		if given.has(uid) or task.is_empty() or not parse_effects(task.get("due_penalty")).is_empty():
+			continue
+		out.append(uid)
+	return out
+
+
+## Up to `count` of the clearable uids, picked at random.
+static func pick_to_clear(pool: Array, tasks: Array, plan: Dictionary, count: int,
+		rng: RandomNumberGenerator) -> Array[String]:
+	var options := clearable(pool, tasks, plan)
+	var out: Array[String] = []
+	while out.size() < count and not options.is_empty():
+		out.append(options.pop_at(rng.randi_range(0, options.size() - 1)))
+	return out
+
+
 static func _weighted_index(candidates: Array, rng: RandomNumberGenerator) -> int:
 	var total := 0
 	for task: Dictionary in candidates:
@@ -284,7 +346,7 @@ static func assign_refusal(uid: String, staff_id: String, pool: Array, tasks: Ar
 
 ## Everything the plan does, as numbers. `members` are { staff_id, role, tier,
 ## loyalty }; `plan` is { staff_id: [uid, ...] }; `day` is { blocks, delegated,
-## full_days, bonus, strong_family, reward_percent, quiet } (each a { staff_id: ... }
+## full_days, bonus, strong_family, reward_percent, quiet, no_penalty, double_best } (each a { staff_id: ... }
 ## dictionary set by the items given to that person). Returns:
 ##   lines     one per given task { uid, staff_id, fit, effects [{name, amount}] }
 ##   meta      { "Reputation": +/-n, ... } after the daily caps
@@ -321,6 +383,9 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 	for member: Dictionary in members:
 		var id := str(member["staff_id"])
 		var change := 0
+		var best_pay := 0
+		var best_line := -1
+		var best_target := ""
 		for uid: Variant in plan.get(id, []):
 			var entry := entry_for(pool, str(uid))
 			var task := task_for(tasks, str(entry.get("task_id", "")))
@@ -335,6 +400,7 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 				fit = StaffLoyalty.weakened_fit(STRONG, int(member["loyalty"]))
 			var effects: Array[Dictionary] = []
 			var kind := str(task.get("kind", ""))
+			var no_penalty := bool((day.get("no_penalty", {}) as Dictionary).get(id, false))
 			if kind == KIND_TIME_OFF:
 				time_off_taken = true
 				change += Levers.whole("staff_tasks_time_off_loyalty")
@@ -348,7 +414,7 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 					if percent > 0 and amount > 0 and not str(effect["name"]).begins_with("Loyalty"):
 						amount = int(floor(amount * percent / 100.0))
 					effects.append({"name": effect["name"], "amount": amount})
-			elif fit == POOR:
+			elif fit == POOR and not no_penalty:
 				change -= Levers.whole("staff_tasks_fit_loyalty")
 				effects = parse_effects(task.get("poor_penalty"))
 			for effect: Dictionary in effects:
@@ -362,6 +428,26 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 					_add(totals, name, amount, str(entry.get("target_id", "")))
 			(result["lines"] as Array).append({"uid": str(uid), "staff_id": id, "fit": fit,
 				"base_fit": fit_of(task, str(member["role"])), "kind": kind, "effects": effects})
+			# Flex-Work: remember this person's best-paying task (the most points gained).
+			var pay := 0
+			for effect: Dictionary in effects:
+				if int(effect["amount"]) > 0 and not str(effect["name"]).begins_with("Loyalty"):
+					pay += int(effect["amount"])
+			if pay > best_pay:
+				best_pay = pay
+				best_line = (result["lines"] as Array).size() - 1
+				best_target = str(entry.get("target_id", ""))
+		# Flex-Work: that task pays double, and the person gains a little Loyalty.
+		var double_map: Dictionary = day.get("double_best", {})
+		var doubled := int(double_map.get(id, 0))
+		if double_map.has(id) and best_line >= 0:
+			for effect: Dictionary in (((result["lines"] as Array)[best_line] as Dictionary)["effects"] as Array):
+				var name := str(effect["name"])
+				if int(effect["amount"]) > 0 and not name.begins_with("Loyalty"):
+					_add(totals, name, int(effect["amount"]), best_target)
+					effect["amount"] = int(effect["amount"]) * 2
+			((result["lines"] as Array)[best_line] as Dictionary)["doubled"] = true
+			change += doubled
 		# The day's shape for this person.
 		var used := blocks_used(id, pool, tasks, plan, delegated)
 		(result["used"] as Dictionary)[id] = used
