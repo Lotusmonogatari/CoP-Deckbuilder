@@ -180,3 +180,15 @@ Total over 1,000 lines, so it is split into phases with a "Go" each (section 8).
 4. **Reference Sets:** one per family (8 items), or a single general "Strong fit for any one family" item you pick the family for?
 5. **Regional gifts as Loyalty:** use the nine existing SH25 to SH33 gifts (proposed), or new gift items?
 6. **Pool Maximum:** 14 (proposed), or lower?
+
+## 10. Decided by Cameron (2026-11-16)
+
+| Question | Decision | Effect on this plan |
+|---|---|---|
+| Task count | **About 64** (8 per family, 47 new) | Phase 1 becomes 47 new drafts; section 2's 31 is a first slice, 16 more to name |
+| Backlog | **One-day penalty only** | Section 5b is **dropped**: no carry-over, no backlog state, no x1.5. Drivers (5a) stay and are the only way volume rises |
+| Skew items | **One Office slot a day** | As proposed in 4b |
+| Reference Sets | **One item per family** | Eight items (Press Kit, Policy Binder, Ward Map, Style Guide and so on), as proposed in 4a |
+| Regional gifts as Loyalty; Pool Maximum | Not yet decided | Defaults stand: use SH25 to SH33; Pool Maximum 14 (with 64 tasks, a family quota of 0 to 3 may suit better) |
+
+Revised phases: 1 Content (47 tasks) · 2 Quotas · 3 Drivers (no backlog) · 4 Person items · 5 Pool items · 6 Tuning. Code estimate drops by about 120 lines.
