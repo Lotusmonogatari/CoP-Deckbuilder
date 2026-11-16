@@ -476,6 +476,9 @@ func _show_week_over_if_due() -> void:
 	if GameState.is_in_level() or not GameState.work_week_is_full():
 		return
 	var rows: Array[Control] = [UiKit.line(Text.say("office.week_over_body"))]
+	var wages := GameState.staff_wage_preview()
+	if bool(wages["short"]) and int(wages["total"]) > 0:
+		rows.append(UiKit.line(Text.say("staff.week_warning", {"yen": int(wages["total"])}), "SmallLabel"))
 	var weekend := Button.new()
 	weekend.name = "WorkWeekendButton"
 	weekend.custom_minimum_size = Vector2(0, 110)
@@ -509,6 +512,7 @@ func _go_home() -> void:
 	var rows: Array[Control] = [UiKit.line(Text.say("office.new_week_body",
 		{"date": str(result.get("date", ""))}))]
 	rows.append_array(_dues_report_rows(result.get("dues", {})))
+	rows.append_array(StaffLoyaltyView.week_rows(result.get("staff", {})))
 	for awareness_line: String in result.get("awareness", []):
 		rows.append(UiKit.line(awareness_line, "SmallLabel"))
 	_new_week_panel.open(Text.say("office.new_week_title"), rows, Text.say("office.new_week_go"))
@@ -2636,7 +2640,9 @@ func _show_staff() -> void:
 			rows.append(_staff_hired_row(role, members[i], i == 0 and GameState.staff_slots() > 1))
 		if members.size() < GameState.staff_slots():
 			for candidate: Dictionary in DataDB.get_staff_by_role(role):
-				if GameState.hired_member(str(candidate.get("staff_id", ""))).is_empty():
+				# Someone who resigned never comes back (Cameron, 2026-11-16).
+				if GameState.hired_member(str(candidate.get("staff_id", ""))).is_empty() \
+						and not bool(GameState.staff_quit.get(str(candidate.get("staff_id", "")), false)):
 					rows.append(_staff_candidate_row(candidate))
 
 	_staff_panel.open(Text.say("office.staff"), rows)
@@ -2677,6 +2683,7 @@ func _staff_hired_row(_role: String, hired: Dictionary, tag_primary: bool = fals
 	if tag_primary:
 		text += "  ·  " + Text.say("office.staff_primary_tag")
 	box.add_child(_profile_button(text, str(hired.get("staff_id", ""))))
+	box.add_child(UiKit.line(StaffLoyaltyView.summary(str(hired.get("staff_id", ""))), "SmallLabel"))
 	return box
 
 
@@ -2745,6 +2752,19 @@ func _show_staff_profile(staff_id: String) -> void:
 		var bio := UiKit.line(biography)
 		bio.name = "StaffBiography"
 		rows.append(bio)
+
+	if is_hired:
+		rows.append_array(StaffLoyaltyView.profile_rows(staff_id))
+		var raise := UiKit.action_button(Text.say("staff.raise_pay_button",
+			{"yen": StaffLoyalty.wage(GameState.staff_invested_in(staff_id), true), "count": Levers.whole("staff_raise_pay_loyalty")}),
+			GameState.raise_pay_refusal(staff_id), _on_raise_pay.bind(staff_id))
+		raise.name = "RaisePayButton"
+		rows.append(raise)
+		var thank := UiKit.action_button(Text.say("staff.thank_button",
+			{"hours": Levers.whole("staff_thank_in_public_hours"), "count": Levers.whole("staff_thank_in_public_loyalty")}),
+			GameState.thank_refusal(staff_id), _on_thank_staff.bind(staff_id))
+		thank.name = "ThankButton"
+		rows.append(thank)
 
 	rows.append(UiKit.heading(Text.say("staff.tiers_heading")))
 	for entry: Dictionary in StaffProfile.tiers(candidate, DataDB.boosters, DataDB.segments, Text.phrase()):
@@ -2816,6 +2836,14 @@ func _tier_label(entry: Dictionary, current_tier: int) -> String:
 	return Text.say("staff.tier_label", {"tier": tier})
 
 
+func _on_raise_pay(staff_id: String) -> void:
+	_after_spending(GameState.raise_pay(staff_id), _show_staff_profile.bind(staff_id))
+
+
+func _on_thank_staff(staff_id: String) -> void:
+	_after_spending(GameState.thank_in_public(staff_id), _show_staff_profile.bind(staff_id))
+
+
 func _on_profile_hire(staff_id: String) -> void:
 	_staff_profile_panel.close()
 	_after_spending(GameState.hire_staff(staff_id), _show_staff)
@@ -2847,12 +2875,17 @@ func _on_profile_make_primary(staff_id: String) -> void:
 func _confirm_fire_staff(staff_id: String, candidate: Dictionary) -> void:
 	_staff_profile_panel.close()
 	_firing_role = staff_id
-	_fire_staff_panel.open(Text.say("office.fire_staff"),
-		[UiKit.line(Text.say("office.fire_staff_warning", {
-			"name": candidate.get("name", candidate.get("staff_id", "")),
-			"cost": Ledger.staff_firing_cost(candidate),
-		}))],
-		Text.say("office.fire_staff_confirm"))
+	var fire_rows: Array[Control] = [UiKit.line(Text.say("office.fire_staff_warning", {
+		"name": candidate.get("name", candidate.get("staff_id", "")),
+		"cost": Ledger.staff_firing_cost(candidate),
+	}))]
+	var allies := StaffLoyalty.allies(candidate, int(GameState.hired_member(staff_id).get("tier", 0)))
+	var ally_names: Array[String] = []
+	for organization: String in allies.keys():
+		ally_names.append(str(DataDB.get_booster(organization).get("name_en", organization)))
+	if not ally_names.is_empty():
+		fire_rows.append(UiKit.line(Text.say("staff.fire_ally_note", {"names": ", ".join(PackedStringArray(ally_names))}), "SmallLabel"))
+	_fire_staff_panel.open(Text.say("office.fire_staff"), fire_rows, Text.say("office.fire_staff_confirm"))
 
 
 func _on_fire_staff_confirmed() -> void:

@@ -8,7 +8,7 @@
     "hiring_cost_yen": 40000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 4000,
+    "firing_cost_yen": 120000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -29,7 +29,7 @@
     "hiring_cost_yen": 30000,
     "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 3000,
+    "firing_cost_yen": 90000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -59,7 +59,7 @@
     "hiring_cost_yen": 30000,
     "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 3000,
+    "firing_cost_yen": 90000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -89,7 +89,7 @@
     "hiring_cost_yen": 50000,
     "upgrade_cost_0_to_1_yen": 30000,
     "upgrade_cost_1_to_2_yen": 50000,
-    "firing_cost_yen": 5000,
+    "firing_cost_yen": 150000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -132,7 +132,7 @@
     "hiring_cost_yen": 75000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 7500,
+    "firing_cost_yen": 225000,
     "tier_0_reward": null,
     "tier_1_reward": [
       {
@@ -157,7 +157,7 @@
     "hiring_cost_yen": 90000,
     "upgrade_cost_0_to_1_yen": 30000,
     "upgrade_cost_1_to_2_yen": 10000,
-    "firing_cost_yen": 9000,
+    "firing_cost_yen": 270000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -200,7 +200,7 @@
     "hiring_cost_yen": 100000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": 25000,
-    "firing_cost_yen": 10000,
+    "firing_cost_yen": 300000,
     "tier_0_reward": null,
     "tier_1_reward": [
       {
@@ -234,7 +234,7 @@
     "hiring_cost_yen": 40000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 4000,
+    "firing_cost_yen": 120000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -255,7 +255,7 @@
     "hiring_cost_yen": 30000,
     "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 3000,
+    "firing_cost_yen": 90000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -285,7 +285,7 @@
     "hiring_cost_yen": 30000,
     "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 3000,
+    "firing_cost_yen": 90000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -315,7 +315,7 @@
     "hiring_cost_yen": 50000,
     "upgrade_cost_0_to_1_yen": 30000,
     "upgrade_cost_1_to_2_yen": 50000,
-    "firing_cost_yen": 5000,
+    "firing_cost_yen": 150000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -350,7 +350,7 @@
     "hiring_cost_yen": 75000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 7500,
+    "firing_cost_yen": 225000,
     "tier_0_reward": null,
     "tier_1_reward": [
       {
@@ -375,7 +375,7 @@
     "hiring_cost_yen": 90000,
     "upgrade_cost_0_to_1_yen": 30000,
     "upgrade_cost_1_to_2_yen": 10000,
-    "firing_cost_yen": 9000,
+    "firing_cost_yen": 270000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -414,7 +414,7 @@
     "hiring_cost_yen": 100000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": 25000,
-    "firing_cost_yen": 10000,
+    "firing_cost_yen": 300000,
     "tier_0_reward": null,
     "tier_1_reward": [
       {
@@ -448,7 +448,7 @@
     "hiring_cost_yen": 40000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 4000,
+    "firing_cost_yen": 120000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -469,7 +469,7 @@
     "hiring_cost_yen": 30000,
     "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 3000,
+    "firing_cost_yen": 90000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -499,7 +499,7 @@
     "hiring_cost_yen": 30000,
     "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 3000,
+    "firing_cost_yen": 90000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -529,7 +529,7 @@
     "hiring_cost_yen": 50000,
     "upgrade_cost_0_to_1_yen": 30000,
     "upgrade_cost_1_to_2_yen": 50000,
-    "firing_cost_yen": 5000,
+    "firing_cost_yen": 150000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -572,7 +572,7 @@
     "hiring_cost_yen": 75000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 7500,
+    "firing_cost_yen": 225000,
     "tier_0_reward": null,
     "tier_1_reward": [
       {
@@ -597,7 +597,7 @@
     "hiring_cost_yen": 90000,
     "upgrade_cost_0_to_1_yen": 30000,
     "upgrade_cost_1_to_2_yen": 10000,
-    "firing_cost_yen": 9000,
+    "firing_cost_yen": 270000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -640,7 +640,7 @@
     "hiring_cost_yen": 100000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": 25000,
-    "firing_cost_yen": 10000,
+    "firing_cost_yen": 300000,
     "tier_0_reward": null,
     "tier_1_reward": [
       {

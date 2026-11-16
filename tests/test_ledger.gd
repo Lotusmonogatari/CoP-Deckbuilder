@@ -303,10 +303,12 @@ func test_firing_costs_the_workbooks_own_severance_column() -> void:
 	assert_eq(Ledger.staff_firing_cost(_candidate({"firing_cost_yen": 5000})), 5000)
 
 
-func test_firing_falls_back_to_a_tenth_of_the_hiring_cost() -> void:
+func test_firing_falls_back_to_the_severance_share_of_the_hiring_cost() -> void:
 	# Only for a hand-built candidate with no firing_cost_yen at all — the
-	# real data (data/staff.json) always has the workbook's own column.
-	assert_eq(Ledger.staff_firing_cost(_candidate({"firing_cost_yen": null})), 5000)
+	# real data (data/staff.json) always has the workbook's own column. The
+	# share is a Balance row (3 times the hiring price since 2026-11-16).
+	assert_eq(Ledger.staff_firing_cost(_candidate({"firing_cost_yen": null})),
+		int(round(50000 * Levers.num("staff_severance_share"))))
 
 
 func test_an_affordable_firing_is_allowed() -> void:

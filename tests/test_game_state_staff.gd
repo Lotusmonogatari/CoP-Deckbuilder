@@ -238,8 +238,11 @@ func test_firing_does_not_claw_back_the_reward_already_earned() -> void:
 	GameState.hire_staff("SF02")
 	GameState.fire_staff(role)
 
-	assert_eq(int(GameState.booster_standing.get(target)), before + int(reward["delta"]),
-		"the reward from hiring SF02 stands, even after firing them")
+	# The reward stands; firing only costs standing with the person's allies
+	# (3 per weight, Cameron 2026-11-16), which is a separate, new cost.
+	var firing_cost := int(StaffLoyalty.leaving_penalty(StaffLoyalty.allies(DataDB.get_staff("SF02"), 0), false)["standing"].get(target, 0))
+	assert_eq(int(GameState.booster_standing.get(target)), before + int(reward["delta"]) + firing_cost,
+		"the reward from hiring SF02 stands, even after firing them (less the firing penalty)")
 
 
 func test_firing_an_empty_role_is_refused() -> void:

@@ -6921,5 +6921,215 @@
     "english": "Pay the party's dues first",
     "placeholders": null,
     "notes": "2026-11-16, Cameron (audit W-2). Draft."
+  },
+  {
+    "key": "record.cause_staff_wages",
+    "where": "Reason: staff wages",
+    "english": "your staff wages",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.quit_never_returns",
+    "where": "Office · Staff, a candidate who resigned",
+    "english": "They resigned and will not come back.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.upgrade_refused_restless",
+    "where": "Office · Staff profile, upgrade refused for low Loyalty",
+    "english": "{name} is too unsettled for a promotion. Raise their Loyalty first.",
+    "placeholders": "name",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.raise_pay_done",
+    "where": "Office · Staff profile, raise pay already used",
+    "english": "Their pay is already raised this week",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.thank_done",
+    "where": "Office · Staff profile, thank-you already given",
+    "english": "You already thanked them this week",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.thank_reputation",
+    "where": "Office · Staff profile, thank-you needs Reputation",
+    "english": "Needs Reputation {count} to thank them in public",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.thank_hours",
+    "where": "Office · Staff profile, thank-you needs hours",
+    "english": "Needs {count} hours free",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.summary",
+    "where": "Office · Staff, line under a hired person",
+    "english": "{word} · wage {yen}円 a week",
+    "placeholders": "word, yen",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.word_devoted",
+    "where": "Staff Loyalty word, 80 and up",
+    "english": "Devoted",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.word_steady",
+    "where": "Staff Loyalty word, steady",
+    "english": "Steady",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.word_restless",
+    "where": "Staff Loyalty word, under the restless line",
+    "english": "Restless",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.word_leaving",
+    "where": "Staff Loyalty word, about to leave",
+    "english": "About to leave",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.loyalty_heading",
+    "where": "Office · Staff profile, heading",
+    "english": "Loyalty and pay",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.why_none",
+    "where": "Office · Staff profile, before the first week end",
+    "english": "Loyalty first moves at the week's end.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.why_heading",
+    "where": "Office · Staff profile, why Loyalty moved",
+    "english": "Why it moved at the last week's end:",
+    "placeholders": null,
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.why_paid",
+    "where": "Office · Staff profile, wage paid",
+    "english": "Wage paid in full: {count}",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.why_missed",
+    "where": "Office · Staff profile, wage missed",
+    "english": "Wage not paid: {count}",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.why_affinity",
+    "where": "Office · Staff profile, standing with their allied organizations",
+    "english": "Your standing with the organizations they care about: {count}",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.why_tenure",
+    "where": "Office · Staff profile, time with the office",
+    "english": "Time with your office: {count}",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.why_pride",
+    "where": "Office · Staff profile, promoted",
+    "english": "Promoted since they joined: {count}",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.why_tasks",
+    "where": "Office · Staff profile, daily tasks",
+    "english": "Daily tasks: {count}",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.why_total",
+    "where": "Office · Staff profile, total",
+    "english": "Total: {count}",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.raise_pay_button",
+    "where": "Office · Staff profile, button",
+    "english": "Raise pay this week ({yen}円, Loyalty {count})",
+    "placeholders": "yen, count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.thank_button",
+    "where": "Office · Staff profile, button",
+    "english": "Thank them in public ({hours} hours, Loyalty {count})",
+    "placeholders": "hours, count",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.fire_ally_note",
+    "where": "Office · fire confirmation, standing cost",
+    "english": "Firing also costs standing with {names}.",
+    "placeholders": "names",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.week_paid",
+    "where": "New week popup, staff wages",
+    "english": "Staff wages paid: {yen}円.",
+    "placeholders": "yen",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.week_missed",
+    "where": "New week popup, wages not paid",
+    "english": "Not paid this week: {names}. Their Loyalty falls.",
+    "placeholders": "names",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.week_rank_lost",
+    "where": "New week popup, rank lost",
+    "english": "{names} lost a rank because wages were late. Their rank rewards are gone until you buy the rank again.",
+    "placeholders": "names",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.week_quit",
+    "where": "New week popup, a resignation",
+    "english": "{name} resigned for good. Reputation {rep}; standing falls with {allies}.",
+    "placeholders": "name, rep, allies",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.week_warning",
+    "where": "Week over popup, wages may not be covered",
+    "english": "Staff wages this week: {yen}円. Funds after the party dues may not cover them.",
+    "placeholders": "yen",
+    "notes": "2026-11-16 staff wages and Loyalty (Cameron). Claude's draft."
   }
 ]

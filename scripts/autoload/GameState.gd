@@ -208,6 +208,22 @@ var staff_slot_buys := 0
 ## checks this before listing anyone as a candidate.
 var staff_fired: Dictionary = {}
 
+## Staff wages and Loyalty (Cameron, 2026-11-16; StaffLoyalty.gd). All keyed by
+## staff_id. Loyalty is 0 to 100; invested is everything paid for the person
+## (hire plus upgrades), the base of their weekly wage; weeks counts weeks
+## worked. `staff_quit` lists people who resigned: like the fired, they never
+## return. `staff_raise_pay` and `staff_thanked` last one week.
+## `staff_week_tasks` holds this week's Loyalty from daily tasks (StaffTasks.gd).
+## `staff_last_week` keeps the last week-end breakdown for the profile.
+var staff_loyalty: Dictionary = {}
+var staff_invested: Dictionary = {}
+var staff_weeks: Dictionary = {}
+var staff_quit: Dictionary = {}
+var staff_raise_pay: Dictionary = {}
+var staff_thanked: Dictionary = {}
+var staff_week_tasks: Dictionary = {}
+var staff_last_week: Dictionary = {}
+
 ## Level IDs the player has paid XP to unlock — only meaningful once
 ## rules.json's "level_gating_enabled" is true. A level whose relevant
 ## unlock_cost_* is already 0 does not need an entry here to be playable; see
@@ -542,7 +558,7 @@ const _SAVED_FIELDS := [
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
-	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "vote_unknown_percent", "vote_briefed",
+	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
@@ -637,6 +653,18 @@ func sanitize_loaded_run() -> int:
 	for scalar: String in ["xp", "xp_earned_total", "time_units"]:
 		if int(get(scalar)) < 0:
 			set(scalar, 0)
+			changed += 1
+	# Staff from a save made before wages existed start with the usual
+	# Loyalty and the price they cost; stored Loyalty stays inside 0 to 100.
+	for member: Dictionary in staff_members():
+		var id := str(member["staff_id"])
+		if not staff_loyalty.has(id):
+			staff_loyalty[id] = Levers.whole("staff_loyalty_start")
+			changed += 1
+		else:
+			staff_loyalty[id] = clampi(int(staff_loyalty[id]), 0, 100)
+		if not staff_invested.has(id):
+			staff_invested[id] = StaffLoyalty.invested_for(DataDB.get_staff(id), int(member["tier"]))
 			changed += 1
 	return changed
 
@@ -809,6 +837,14 @@ func reset_staff() -> void:
 	staff_extra = {}
 	staff_slot_buys = 0
 	staff_fired = {}
+	staff_loyalty = {}
+	staff_invested = {}
+	staff_weeks = {}
+	staff_quit = {}
+	staff_raise_pay = {}
+	staff_thanked = {}
+	staff_week_tasks = {}
+	staff_last_week = {}
 	staff_recruitment_tier = 0
 
 
@@ -1038,6 +1074,8 @@ func hire_staff(staff_id: String) -> String:
 	var role := str(candidate.get("role", ""))
 	if not hired_member(staff_id).is_empty():
 		return Text.say("shop.already_yours")
+	if bool(staff_quit.get(staff_id, false)):
+		return Text.say("staff.quit_never_returns")
 	var members := staff_in_role(role)
 	if members.size() >= staff_slots():
 		return Text.say("office.staff_slots_full") if staff_slots() > 1 else Text.say("shop.already_yours")
@@ -1057,6 +1095,9 @@ func hire_staff(staff_id: String) -> String:
 		if not staff_extra.has(role):
 			staff_extra[role] = []
 		(staff_extra[role] as Array).append(record)
+	staff_loyalty[staff_id] = Levers.whole("staff_loyalty_start")
+	staff_invested[staff_id] = int(candidate.get("hiring_cost_yen", 0))
+	staff_weeks[staff_id] = 0
 	_apply_staff_reward(candidate, starting_tier)
 	return ""
 
@@ -1088,9 +1129,12 @@ func upgrade_staff_member(staff_id: String) -> String:
 	var refusal := Ledger.staff_upgrade_refusal(candidate, tier, funds, Text.phrase())
 	if not refusal.is_empty():
 		return refusal
+	if StaffLoyalty.band(staff_loyalty_of(staff_id)) != StaffLoyalty.BAND_NORMAL:
+		return Text.say("staff.upgrade_refused_restless", {"name": str(candidate.get("name", staff_id))})
 
 	var cost := int(Ledger.staff_upgrade_cost(candidate, tier))
 	_move_meta("Funds", -cost)
+	staff_invested[staff_id] = staff_invested_in(staff_id) + cost
 
 	var new_tier := tier + 1
 	_set_member_tier(str(found["role"]), staff_id, new_tier)
@@ -1139,6 +1183,18 @@ func fire_staff_member(staff_id: String) -> String:
 		return refusal
 
 	_move_meta("Funds", -Ledger.staff_firing_cost(candidate))
+	# Firing costs standing with the people's allies, but no Reputation
+	# (Cameron, 2026-11-16); quitting costs more (_staff_leave).
+	_apply_leaving_penalty(candidate, int(found.get("tier", 0)), false)
+	_remove_staff_record(found)
+	staff_fired[staff_id] = true
+	return ""
+
+
+## Takes a person off the staff list (promoting the first extra when they were
+## the primary) and forgets their wage and Loyalty. Used by firing and quitting.
+func _remove_staff_record(found: Dictionary) -> void:
+	var staff_id := str(found.get("staff_id", ""))
 	var role := str(found["role"])
 	if bool(found.get("primary", false)):
 		staff_hired.erase(role)
@@ -1151,8 +1207,212 @@ func fire_staff_member(staff_id: String) -> String:
 			if str((extras[i] as Dictionary).get("staff_id", "")) == staff_id:
 				extras.remove_at(i)
 				break
-	staff_fired[staff_id] = true
+	for table: Dictionary in [staff_loyalty, staff_invested, staff_weeks, staff_raise_pay, staff_thanked, staff_week_tasks, staff_last_week]:
+		table.erase(staff_id)
+
+
+# ---------------------------------------------------------------------------
+# Staff wages and Loyalty (Cameron, 2026-11-16). StaffLoyalty.gd holds the
+# rules; the run state is the staff_* dictionaries near the top of this file.
+
+## A person's Loyalty (the starting value for someone with no record yet).
+func staff_loyalty_of(staff_id: String) -> int:
+	return int(staff_loyalty.get(staff_id, Levers.whole("staff_loyalty_start")))
+
+
+## Everything paid for a person so far: what the run recorded, or (an older
+## save) the hire and the upgrades up to the rank they hold.
+func staff_invested_in(staff_id: String) -> int:
+	if staff_invested.has(staff_id):
+		return int(staff_invested[staff_id])
+	var found := hired_member(staff_id)
+	return StaffLoyalty.invested_for(DataDB.get_staff(staff_id), int(found.get("tier", 0)))
+
+
+## This week's wage for a person (more when their pay was raised).
+func staff_wage_of(staff_id: String) -> int:
+	return StaffLoyalty.wage(staff_invested_in(staff_id), bool(staff_raise_pay.get(staff_id, false)))
+
+
+## Everyone hired, each { staff_id, role, primary, tier }, role by role.
+func staff_members() -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	for role: String in Ledger.staff_roles(DataDB.staff):
+		var members := staff_in_role(role)
+		for i in members.size():
+			out.append({"staff_id": str(members[i].get("staff_id", "")), "role": role,
+				"primary": i == 0, "tier": int(members[i].get("tier", 0))})
+	return out
+
+
+## What all staff cost this week, and whether Funds after the party dues would
+## cover it (the warning before the week ends).
+func staff_wage_preview() -> Dictionary:
+	var total := 0
+	for member: Dictionary in staff_members():
+		total += staff_wage_of(str(member["staff_id"]))
+	var after_dues := int(meta.get("Funds", 0)) - int(dues_preview()["total"])
+	return {"total": total, "funds_after_dues": after_dues, "short": total > maxi(0, after_dues)}
+
+
+func staff_loyalty_add(staff_id: String, amount: int) -> void:
+	if not staff_loyalty.has(staff_id) and hired_member(staff_id).is_empty():
+		return
+	staff_loyalty[staff_id] = clampi(staff_loyalty_of(staff_id) + amount, 0, 100)
+
+
+## Why this person cannot have their pay raised this week, or "".
+func raise_pay_refusal(staff_id: String) -> String:
+	if hired_member(staff_id).is_empty():
+		return Text.say("staff.nobody_hired")
+	if bool(staff_raise_pay.get(staff_id, false)):
+		return Text.say("staff.raise_pay_done")
 	return ""
+
+
+## Pays one person half as much again this week for a one-time Loyalty gain.
+func raise_pay(staff_id: String) -> String:
+	var refusal := raise_pay_refusal(staff_id)
+	if not refusal.is_empty():
+		return refusal
+	staff_raise_pay[staff_id] = true
+	staff_loyalty_add(staff_id, Levers.whole("staff_raise_pay_loyalty"))
+	return ""
+
+
+## Why the public thank-you is not open now, or "".
+func thank_refusal(staff_id: String) -> String:
+	if hired_member(staff_id).is_empty():
+		return Text.say("staff.nobody_hired")
+	if bool(staff_thanked.get(staff_id, false)):
+		return Text.say("staff.thank_done")
+	var need := Levers.whole("staff_thank_in_public_minimum_reputation")
+	if int(meta.get("Reputation", 0)) < need:
+		return Text.say("staff.thank_reputation", {"count": need})
+	var hours := Levers.whole("staff_thank_in_public_hours")
+	if hours > WeekCalendar.hours_left(calendar, calendar_config()) or is_in_level():
+		return Text.say("staff.thank_hours", {"count": hours})
+	return ""
+
+
+## Thanks a person in public: takes a few hours, once a week each, for a
+## one-time Loyalty gain.
+func thank_in_public(staff_id: String) -> String:
+	var refusal := thank_refusal(staff_id)
+	if not refusal.is_empty():
+		return refusal
+	spend_hours(Levers.whole("staff_thank_in_public_hours"))
+	staff_thanked[staff_id] = true
+	staff_loyalty_add(staff_id, Levers.whole("staff_thank_in_public_loyalty"))
+	return ""
+
+
+## Quit or fire penalty: standing with every ally (times its weight), and for a
+## resignation Reputation. Returns StaffLoyalty.leaving_penalty()'s result.
+func _apply_leaving_penalty(candidate: Dictionary, tier: int, quit: bool) -> Dictionary:
+	var penalty := StaffLoyalty.leaving_penalty(StaffLoyalty.allies(candidate, tier), quit)
+	var standing: Dictionary = penalty["standing"]
+	_under_cause(Text.say("record.cause_staff"), func() -> void:
+		for organization: String in standing.keys():
+			_apply_booster_delta(organization, int(standing[organization])))
+	if int(penalty["reputation"]) != 0:
+		_under_cause(Text.say("record.cause_staff"),
+			func() -> void: _apply_meta_reward("Reputation", int(penalty["reputation"])))
+	return penalty
+
+
+## The person resigns for good: off the list, never hireable again, with the
+## penalty. Returns what the report shows { name, reputation, allies }.
+func _staff_leave(staff_id: String) -> Dictionary:
+	var found := hired_member(staff_id)
+	var candidate := DataDB.get_staff(staff_id)
+	if found.is_empty() or candidate.is_empty():
+		return {}
+	var penalty := _apply_leaving_penalty(candidate, int(found.get("tier", 0)), true)
+	var names: Array[String] = []
+	for organization: String in (penalty["standing"] as Dictionary).keys():
+		names.append(str(DataDB.get_booster(organization).get("name_en", organization)))
+	_remove_staff_record(found)
+	staff_quit[staff_id] = true
+	return {"name": str(candidate.get("name", staff_id)), "reputation": int(penalty["reputation"]), "allies": names}
+
+
+## One rank lost: the rank's rewards are taken back (the standing they gave),
+## and it can be bought again at the normal price.
+func _staff_lose_rank(staff_id: String) -> void:
+	var found := hired_member(staff_id)
+	var candidate := DataDB.get_staff(staff_id)
+	if found.is_empty() or candidate.is_empty():
+		return
+	var tier := int(found.get("tier", 0))
+	_apply_staff_reward(candidate, tier, -1)
+	_set_member_tier(str(found["role"]), staff_id, tier - 1)
+
+
+## The week's end for the staff: wages are paid (in order, in full, while Funds
+## last), every person's Loyalty moves, ranks are lost, and people resign.
+## Called by go_home() after the party dues. Returns what the new-week popup
+## lists: { paid_total, paid [names], missed [names], rank_lost [names],
+## quit [{name, reputation, allies}] }.
+func _settle_staff_week() -> Dictionary:
+	var report := {"paid_total": 0, "paid": [], "missed": [], "rank_lost": [], "quit": []}
+	var members := staff_members()
+	if members.is_empty():
+		return report
+
+	var entries: Array = []
+	for member: Dictionary in members:
+		var id := str(member["staff_id"])
+		entries.append({"staff_id": id, "primary": member["primary"], "loyalty": staff_loyalty_of(id),
+			"wage": staff_wage_of(id)})
+	var settled := StaffLoyalty.settle_wages(StaffLoyalty.pay_order(entries), int(meta.get("Funds", 0)))
+	if int(settled["spent"]) > 0:
+		_links_suspended = true
+		_under_cause(Text.say("record.cause_staff_wages"),
+			func() -> void: _apply_meta_reward("Funds", -int(settled["spent"])))
+		_links_suspended = false
+	report["paid_total"] = int(settled["spent"])
+
+	var leaving: Array[String] = []
+	for member: Dictionary in members:
+		var id := str(member["staff_id"])
+		var candidate := DataDB.get_staff(id)
+		var name := str(candidate.get("name", id))
+		var paid := (settled["paid"] as Array).has(id)
+		var tier := int(member["tier"])
+		var starting := int(candidate.get("starting_tier", 0))
+		var weeks := int(staff_weeks.get(id, 0)) + 1
+		staff_weeks[id] = weeks
+		var parts := {
+			"paid": paid,
+			"affinity": StaffLoyalty.affinity(StaffLoyalty.allies(candidate, tier), booster_standing),
+			"tenure": StaffLoyalty.tenure_gain(weeks),
+			"pride": StaffLoyalty.pride_gain(tier, starting),
+			"tasks": int(staff_week_tasks.get(id, 0)),
+		}
+		var change := StaffLoyalty.weekly_total(paid, int(parts["affinity"]), int(parts["tenure"]),
+			int(parts["pride"]), int(parts["tasks"]))
+		parts["total"] = change
+		staff_last_week[id] = parts
+		var outcome := StaffLoyalty.after_week(clampi(staff_loyalty_of(id) + change, 0, 100), not paid, tier, starting)
+		staff_loyalty[id] = int(outcome["loyalty"])
+		if paid:
+			(report["paid"] as Array).append(name)
+		else:
+			(report["missed"] as Array).append(name)
+		if bool(outcome["quits"]):
+			leaving.append(id)
+		elif bool(outcome["rank_lost"]):
+			_staff_lose_rank(id)
+			(report["rank_lost"] as Array).append(name)
+	for id: String in leaving:
+		var gone := _staff_leave(id)
+		if not gone.is_empty():
+			(report["quit"] as Array).append(gone)
+	staff_raise_pay = {}
+	staff_thanked = {}
+	staff_week_tasks = {}
+	return report
 
 
 ## Makes a hired extra the role's primary, the person every scene, notice and
@@ -1222,7 +1482,7 @@ func buy_staff_slots(item_id: String) -> Dictionary:
 ## again on every upgrade that reaches a new tier).
 ##
 ## Each reward is {"delta": int, "target": "BOxx or SGxx"}.
-func _apply_staff_reward(candidate: Dictionary, tier: int) -> void:
+func _apply_staff_reward(candidate: Dictionary, tier: int, sign: int = 1) -> void:
 	var rewards: Variant = candidate.get("tier_%d_reward" % tier)
 	if not (rewards is Array):
 		return
@@ -1231,7 +1491,7 @@ func _apply_staff_reward(candidate: Dictionary, tier: int) -> void:
 		if not (reward is Dictionary):
 			continue
 		var target := str((reward as Dictionary).get("target", ""))
-		var delta := int((reward as Dictionary).get("delta", 0))
+		var delta := int((reward as Dictionary).get("delta", 0)) * sign
 		if target.begins_with("BO"):
 			_under_cause(Text.say("record.cause_staff"), func() -> void: _apply_booster_delta(target, delta))
 		elif target.begins_with("SG"):
@@ -2121,6 +2381,7 @@ func go_home() -> Dictionary:
 	if not in_weekend():
 		end_work_week()
 	var dues := _settle_dues()
+	var staff_report := _settle_staff_week()
 	var awareness_lines := _apply_awareness_week_end()
 	_update_election_strength()
 	var moved := WeekCalendar.go_home(calendar, calendar_config())
@@ -2129,7 +2390,7 @@ func go_home() -> Dictionary:
 	_apply_week_decay()
 	check_crisis_triggers()
 	event_roll_due = true
-	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines}
+	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines, "staff": staff_report}
 
 
 ## What the awareness effects take off the base dues (National Awareness at 80
@@ -4005,7 +4266,11 @@ func _staff_bonus_total(item: Dictionary) -> int:
 		if hired.is_empty():
 			continue
 		if int(hired.get("tier", -1)) >= int(row["min_tier"]):
-			total += int(row["amount"])
+			var amount := int(row["amount"])
+			# A restless person's boosts count half (StaffLoyalty.gd).
+			if StaffLoyalty.band(staff_loyalty_of(str(hired.get("staff_id", "")))) != StaffLoyalty.BAND_NORMAL:
+				amount = int(amount / 2)
+			total += amount
 	return total
 
 

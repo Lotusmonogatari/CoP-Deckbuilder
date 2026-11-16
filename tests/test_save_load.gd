@@ -30,6 +30,8 @@ func _a_run_in_progress() -> void:
 	GameState.booster_standing["BO03"] = 71
 	GameState.staff_hired = {"Media Spokesperson": {"staff_id": "SF08", "tier": 2}}
 	GameState.staff_fired = {"SF09": true}
+	GameState.staff_loyalty = {"SF08": 44}
+	GameState.staff_invested = {"SF08": 40000}
 	GameState.levels_unlocked.assign(["LV02"])
 	GameState.level_last_completed_at = {"LV01": 1}
 	GameState.levels_completed_count = 1
