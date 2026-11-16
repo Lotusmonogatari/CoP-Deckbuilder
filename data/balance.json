@@ -116,7 +116,7 @@
   "dues_party_support_start": 40,
   "dues_party_support_step": 15,
   "dues_step_amount": 10000,
-  "dues_overdue_party_support": 10,
+  "dues_overdue_party_support": 30,
   "dues_overdue_party_hq": 20,
   "dues_overdue_other_parties": 5,
   "dues_overdue_selection_committee": 5,

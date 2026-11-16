@@ -63,14 +63,14 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 
 | Group | Files (`data/`) |
 |---|---|
-| Numbers and switches | `balance` (every design number), `sanban` (the four meta numbers' ranges, starts, decay), `rules` (hand-written switches, below), `booster_standing`, `party_standing`, `awareness_effects`, `standing_links`, `vote_influence_triggers` |
+| Numbers and switches | `balance` (every design number), `sanban` (the four meta numbers' ranges, starts, decay), `rules` (the switches, below; from the Rules tab), `booster_standing` (Standing Rules tab), `party_standing` (Party Start Standing tab), `awareness_effects`, `standing_links`, `vote_influence_triggers` |
 | Cards and rooms | `cards`, `suits`, `affinity` (suit multipliers per room), `stages`, `segments`, `modifiers` (backings), `questions` (the room question pools and Stage Questions), `opponents`, `opponent_cues`, `player_cues`, `card_cues` |
 | Levels and people | `levels`, `level_intros`, `level_intro_thoughts`, `level_opponent_overrides`, `level_visitor_overrides`, `visitors`, `visitor_questions`, `staff`, `staff_names`, `player` (the four protagonists) |
 | Standing and parties | `boosters` (organizations), `parties`, `party_stakeholders`, `party_values`, `organization_tastes` |
 | Bills and laws | `floor_votes` (bills and party positions), `law_effects`, `vote_influence_cues`, `bill_components`, `patron_bills`, `bill_level_templates`, `visit_questions`, `visit_answers`, `trade_questions`, `lobbyist_lines` |
 | Week and events | `events`, `event_choices`, `event_options`, `hosted_events`, `reaction_lines`, `shop` (items), `cosmetic_packages`, `office_notices`, `office_ticker`, `transition_cast`, `transition_backgrounds`, `transition_dialogue` |
 | Text and presentation | `strings` (**every sentence**), `how_to_play`, `lists`, `art`, `sounds` |
-| Hand-written (the exporter never overwrites) | `rules`, `booster_standing`, `party_standing`, `art`, `sounds`, `staff_names`, `level_opponent_overrides`, `level_visitor_overrides`, `playtest_level`, `playtest_cards`; each carries its own `_README` |
+| Hand-written (the exporter never overwrites) | `art`, `sounds`, `staff_names`, `level_opponent_overrides`, `level_visitor_overrides`, `playtest_level`, `playtest_cards`; each carries its own `_README`. (`rules`, `booster_standing` and `party_standing` moved into workbook tabs on 2026-11-16: the exporter writes them) |
 
 **Data rules**
 
@@ -98,7 +98,7 @@ The meta numbers, stage rewards, crisis triggers (Town Hall, Steering Committee,
 
 ## 9. Open switches and unresolved decisions
 
-`data/rules.json` holds hand-written switches, each with its question, its options and what each means; a value outside the options is rejected at startup. Current values: `turn_limit_outcome` loss; `opponent_can_win_by_threshold` false; `opponent_engine` `intent_patterns` (the only one built); `press_answer_timer` false; `discard_hand_end_of_turn` true; `pass_energy_penalty` 1; `guard_cap` 5; `level_gating_enabled` true; `open_card_collection` false; `funds_starting_cap` 100,000; `card_training_looks` 3; `default_consumable_stack_cap` 5; `default_intent_pattern` attack 1–6, gain 1–6, block 0–2. An item marked **[DEFAULT]** in code is an implementation choice behind such a switch or a Balance number, for Cameron to change.
+`data/rules.json` is written by the exporter from the workbook's **Rules** tab (each switch has its question, options and meaning there); a value outside the options is rejected at startup. Current values: `turn_limit_outcome` loss; `opponent_can_win_by_threshold` false; `opponent_engine` `intent_patterns` (the only one built); `press_answer_timer` false; `discard_hand_end_of_turn` true; `pass_energy_penalty` 1; `guard_cap` 5; `level_gating_enabled` true; `open_card_collection` false; `funds_starting_cap` 100,000; `card_training_looks` 3; `default_consumable_stack_cap` 5; `default_intent_pattern` attack 1–6, gain 1–6, block 0–2. An item marked **[DEFAULT]** in code is an implementation choice behind such a switch or a Balance number, for Cameron to change.
 
 **Unresolved: ask, don't guess.**
 
@@ -268,3 +268,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Buttons above the BASE line on every screen that uses BASE (2026-11-13, Cameron)
 - Icon uploads wired to their items (2026-11-14, Cameron)
 - Salmon icon (2026-11-14, Cameron)
+- Hardening from the audit, rules and standing in the workbook, dues bite (2026-11-16, Cameron)

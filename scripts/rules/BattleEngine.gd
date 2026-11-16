@@ -150,7 +150,10 @@ func setup(config: Dictionary) -> bool:
 	# lost by the turn limit. The exporter now refuses such a row too; this
 	# keeps a hand-edited or stale data file from starting one.
 	for ending_field: String in ["win_threshold", "bar_max"]:
-		if _stage.get(ending_field) == null:
+		# Only a key that is PRESENT and blank (that is what an empty workbook
+		# cell exports as); a stage dictionary that leaves the key out, as the
+		# small test fixtures do, keeps the engine's own defaults.
+		if _stage.has(ending_field) and _stage[ending_field] == null:
 			setup_problems.append("the stage has no %s" % ending_field)
 	if not setup_problems.is_empty():
 		return false

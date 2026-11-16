@@ -167,7 +167,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 4. Decay runs once, multiplied by the **decay multiplier (2.5 at Standard; 2 Relaxed; 3 Harder)**: neglect decay, each organization's own Decay Percent, then meta decay (Constituency support 10%, Reputation 6%).
 5. The next week begins; a random event may be rolled.
 
-**Unpaid dues** roll over. A short week costs 10 Party support (once, not scaled), withdraws the party's backings, and costs standing with Party Headquarters (20), the other parties (5) and the Selection Committee (5); those standing penalties are multiplied by 1.5 for every full 100,000円 still owed.
+**Unpaid dues** roll over. A short week costs 30 Party support (once, not scaled; raised from 10 on 2026-11-16), withdraws the party's backings, **and while any dues are owed the party's backings cannot be taken and the free Party Backing (M09) is off** (Balance `Dues Debt Locks Backings`, 1 = on), and costs standing with Party Headquarters (20), the other parties (5) and the Selection Committee (5); those standing penalties are multiplied by 1.5 for every full 100,000円 still owed.
 
 **Crisis triggers** (checked after every stage and after Office time; each fires once when the value crosses in, and again only after it has come back out):
 
@@ -314,9 +314,9 @@ Every number below is in the workbook and exported to data; none is hard-coded.
 | Where | What |
 |---|---|
 | Balance tab → `data/balance.json` | About 230 levers, grouped by prefix: `starter_deck_*`, `question_*`, `stance_*`, `lean_*`, `party_*`, `vote_*`, `whip_*`, `patron_*`, `draft_bill_*`, `mp_visit_*`, `trade_*`, `workday_*` / `weekend_*` / `calendar_*`, `week_decay_multiplier`, `dues_*`, `awareness_*`, `election_*`, `event_*`, `hosted_*`, `promise_*`, `difficulty_*`, `text_scale_*`, `transition_*`, `win_over_*`, and the crisis thresholds (`jiban_town_hall_trigger`, `party_support_*`, `gaffes_lifetime_*`) |
-| `data/rules.json` (hand-written) | Switches with allowed options: `turn_limit_outcome`, `opponent_can_win_by_threshold`, `opponent_engine` (only `intent_patterns` exists), `discard_hand_end_of_turn`, `pass_energy_penalty`, `guard_cap`, `level_gating_enabled`, `open_card_collection`, `funds_starting_cap`, `card_training_looks`, `default_consumable_stack_cap`, `default_intent_pattern`, seasons |
-| `data/booster_standing.json` | Standing rules: start, please/displease amounts, the ±10 cap, gain and loss bands, neglect decay, default decay percent, default backing requirement |
-| `data/party_standing.json`, `data/vote_influence_triggers.json`, `data/awareness_effects.json`, `data/standing_links.json` | Party start values; the influence gate rows; awareness consequences; organization links |
+| Rules tab -> `data/rules.json` | Switches with allowed options: `turn_limit_outcome`, `opponent_can_win_by_threshold`, `opponent_engine` (only `intent_patterns` exists), `discard_hand_end_of_turn`, `pass_energy_penalty`, `guard_cap`, `level_gating_enabled`, `open_card_collection`, `funds_starting_cap`, `card_training_looks`, `default_consumable_stack_cap`, `default_intent_pattern`, seasons |
+| Standing Rules tab -> `data/booster_standing.json` | Standing rules: start, please/displease amounts, the ±10 cap, gain and loss bands, neglect decay, default decay percent, default backing requirement |
+| Party Start Standing tab -> `data/party_standing.json`; `data/vote_influence_triggers.json`, `data/awareness_effects.json`, `data/standing_links.json` | Party start values; the influence gate rows; awareness consequences; organization links |
 | Stages, Levels, Events, Shop, Boosters, Modifiers, Staff tabs | Per-room energy, hand, gaffe limit, turn limit, hours, rewards and penalties; level unlock prices, cooldowns and rewards; event choices; item prices and effects; backings; staff ranks |
 
 ## Addendum 2026-11-06: saving inside a stage

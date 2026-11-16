@@ -1036,3 +1036,22 @@ Cameron's 2026-11-13 uploads added nine item icons named after the items (`BOX_O
 
 Cameron uploaded the Wind-Dried Salmon picture as `WIND-DRIED_SALMON.png`. Every other icon file uses underscores, so it is now `WIND_DRIED_SALMON.png` and SH28's Icon cell names it. All regional gift items (SH25 to SH33) now have pictures. `test_icon_names.gd` also fails the build on a hyphen in an icon file name.
 
+
+## Audit hardening, rules in the workbook, dues that bite (2026-11-16, Cameron)
+
+Cameron approved the audit's roadmap items one popup at a time (`audit/roadmap.md`). Done so far:
+
+| Item | What changed |
+|---|---|
+| E-01 / W-9 | A blank win threshold, start or bar size on a combat room is now an **export error** (it was a warning) and `BattleEngine.setup` refuses such a stage; no fight can fail to end |
+| E-02 / C-5 | `int(null)` reads in the battle engine and set-up use `SafeNum` defaults (energy 3, hand 5, gaffe limit 5, card cost 0) |
+| E-03 / C-1 | Reading a newer-version backup or undo file no longer switches saving off; only the main slot does |
+| E-05, E-06 / C-2 | A loaded save is checked: ranges, a negative clock, a deck of the wrong size, and a text standing are put right (`GameState.sanitize_loaded_run`); Funds above the current cap are kept on purpose |
+| W-11 | The exporter now also errors on a Balance lever a script asks for that the workbook lacks, a Text row with no English, an Icon naming a missing file, and a visitor naming a missing stage |
+| F-16 / C-7 | `PatronVisit` no longer calls `DataDB`/`Text`; a new `test_rules_stay_pure.gd` fails the build if any rules file reaches an autoload or a file |
+| F-25 / C-10 | The button-outline colour follows the protagonist when one is chosen instead of being checked every frame |
+| C-12 | The party-body lean on laws is documented in `GAME_SYSTEMS.md` section 8 (intended, Cameron). The rubric tool still expects different numbers for BO01/BO32 on some bills: open, see `audit/followup.md` |
+| **W-1** | New workbook tabs **Rules**, **Standing Rules** and **Party Start Standing**. The exporter writes `rules.json`, `booster_standing.json` and `party_standing.json` from them; the values were copied across unchanged (checked identical). Lists and objects are JSON text in the cell; `true`/`false` are booleans. One-off builder: `tools/workbook/archive/w1_rules_tabs_2026-11-16.py` |
+| **W-2** | Owing party dues now (1) locks the party's backings and switches the free Party Backing off (Balance `Dues Debt Locks Backings`, new Text row `backing.refuse_dues_owed`) and (2) raises the unpaid-dues Party support penalty from 10 to 30 (**draft number**). In 30-week simulations (3 seeds) a debtor ends near Party support 70 instead of 90 (penalty 20: 80; 40: 29 to 55 and more lost stages). Tests: `test_dues_lock.gd`, `test_audit_hardening.gd` |
+
+Future action item recorded: Party-support-locked events for the player's own party (`design/proposals/PARTY_SUPPORT_LOCKED_EVENTS_2026-11-16.md`).

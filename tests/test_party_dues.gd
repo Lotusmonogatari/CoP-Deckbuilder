@@ -116,7 +116,8 @@ func test_a_short_week_rolls_over_and_costs_the_party_its_backings() -> void:
 	assert_eq(GameState.dues_balance, 30000)
 	assert_true(report["penalized"])
 	assert_eq(int(GameState.meta["Funds"]), 0)
-	assert_eq(int(GameState.meta["Party support"]), 30, "-10")
+	assert_eq(int(GameState.meta["Party support"]),
+		maxi(40 - int(DataDB.balance["dues_overdue_party_support"]), 0), "the workbook's overdue penalty")
 	assert_eq(int(GameState.booster_standing["BO01"]), 30, "-20")
 	assert_lte(int(GameState.booster_standing["BO32"]), 45, "-5, and the Standing Links to Party HQ can take a little more")
 	assert_false(GameState.owned_modifiers.has("M11"), "the party's backing is withdrawn")

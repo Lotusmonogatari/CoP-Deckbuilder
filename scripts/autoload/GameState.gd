@@ -638,20 +638,23 @@ func sanitize_loaded_run() -> int:
 		if int(get(scalar)) < 0:
 			set(scalar, 0)
 			changed += 1
-	var wanted := deck_size()
-	if deck.size() != wanted:
-		changed += 1
-		if deck.size() > wanted:
-			deck.resize(wanted)
-		else:
-			for card_id: String in owned_cards:
-				if deck.size() >= wanted:
-					break
-				if not deck.has(card_id):
-					deck.append(card_id)
-			if deck.size() < wanted:
-				deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
 	return changed
+
+
+## Brings the deck back to its legal size from cards the player owns, then
+## from the opening recipe if that is not enough. Only used after a load that
+## lost cards, so a saved deck of any other size is never touched.
+func _refill_deck() -> void:
+	var wanted := deck_size()
+	if deck.size() > wanted:
+		deck.resize(wanted)
+	for card_id: String in owned_cards:
+		if deck.size() >= wanted:
+			break
+		if not deck.has(card_id):
+			deck.append(card_id)
+	if deck.size() < wanted:
+		deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
 
 
 ## Fields whose keys are fixed by the current workbook (see load_save()).
@@ -666,7 +669,10 @@ const _KEYED_BY_CURRENT_DATA := ["meta", "booster_standing", "party_standing"]
 func drop_stale_ids() -> int:
 	var dropped := 0
 	dropped += _keep_known(owned_cards, DataDB.get_card)
-	dropped += _keep_known(deck, DataDB.get_card)
+	var deck_dropped := _keep_known(deck, DataDB.get_card)
+	dropped += deck_dropped
+	if deck_dropped > 0 or deck.is_empty():
+		_refill_deck()   # a deck that lost cards to a data update must stay a legal size (audit E-05)
 	dropped += _keep_known(owned_modifiers, DataDB.get_modifier)
 	dropped += _keep_known(owned_cosmetic_packages, DataDB.get_cosmetic_package)
 	dropped += _keep_known(levels_unlocked, DataDB.get_level)

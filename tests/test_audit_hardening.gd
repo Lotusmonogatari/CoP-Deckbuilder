@@ -58,15 +58,26 @@ func test_the_load_check_repairs_ranges_the_clock_and_the_deck() -> void:
 	GameState.booster_standing["BO01"] = -40
 	GameState.xp = -5
 	GameState.time_units = -9
-	GameState.deck = ["C23"]
 	var changed := GameState.sanitize_loaded_run()
-	assert_gte(changed, 6)
+	assert_gte(changed, 5)
 	assert_eq(int(GameState.meta["Reputation"]), 100)
 	assert_eq(int(GameState.meta["Funds"]), int(DataDB.get_sanban("Funds").get("max", 0)))
 	assert_eq(int(GameState.booster_standing["BO01"]), 0)
 	assert_eq(GameState.xp, 0)
 	assert_eq(GameState.time_units, 0)
+
+
+func test_a_deck_that_loses_a_stale_card_on_load_is_refilled() -> void:
+	GameState.deck.assign(["C23", "ZZ99"])
+	GameState.drop_stale_ids()
 	assert_eq(GameState.deck.size(), GameState.deck_size(), "the deck is refilled to its size")
+	assert_false(GameState.deck.has("ZZ99"))
+
+
+func test_a_saved_deck_of_another_size_is_left_alone() -> void:
+	GameState.deck.assign(["C23", "C05"])
+	GameState.sanitize_loaded_run()
+	assert_eq(GameState.deck.size(), 2, "only stale cards trigger a refill")
 
 
 func test_funds_above_the_current_cap_are_kept() -> void:
