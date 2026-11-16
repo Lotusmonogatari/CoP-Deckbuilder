@@ -82,3 +82,8 @@ A new `class_name` script is invisible to tests until `.tools/godot --headless -
 6. A new copy of a family room must be added to every modifier whose Effect Target names that family, or its backings silently do nothing there.
 7. Tests must read workbook values, never type them.
 8. An unreachable piece of content (a room in no level, a person seated nowhere) is invisible; the exporter errors on some cases but not all.
+
+
+## Addendum 2026-11-16: words stay whole
+
+`scripts/autoload/TextFit.gd` watches every Label and Button that wraps text (`autowrap_mode` not off). A few frames after it appears, when its box has a real width, it switches smart wrap to word wrap and, if the longest word is wider than the box, shrinks the font size (a step at a time, to Balance `Text Fit: Minimum Font Size`) until the word fits (`WordFit.gd` does the measuring). Cards (`CardView`, `CardBackView`) are skipped. Pitfall: a label with `custom_minimum_size.x` of 0 inside a flow container collapses to one letter wide, so give such notes a sensible minimum.

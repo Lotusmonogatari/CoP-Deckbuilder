@@ -329,5 +329,6 @@
   "staff_gift_neutral_loyalty": 4,
   "staff_gift_dislike_loyalty": -4,
   "staff_tasks_hours_per_tier": 1,
+  "text_fit_minimum_font_size": 20,
   "xp_tiers": {}
 }

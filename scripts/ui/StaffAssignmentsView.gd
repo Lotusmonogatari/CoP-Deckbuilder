@@ -161,7 +161,9 @@ static func _office_box(handlers: Dictionary) -> Control:
 	box.add_child(inside)
 	var placed := GameState.staff_office_item
 	if placed.is_empty():
-		inside.add_child(UiKit.line(Text.say("assign.office_empty")))
+		var office_note := UiKit.line(Text.say("assign.office_empty"))
+		office_note.custom_minimum_size.x = 380
+		inside.add_child(office_note)
 	else:
 		var info := _item_info(placed)
 		var chip := TaskChip.new()
@@ -292,7 +294,9 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 		var fit := str(fits.get(str(uid), "fair"))
 		inside.add_child(_chip(entry, FIT_COLORS.get(fit, PLAIN_FRAME), true, handlers))
 	if not holds:
-		inside.add_child(UiKit.line(Text.say("assign.box_empty")))
+		var empty_note := UiKit.line(Text.say("assign.box_empty"))
+		empty_note.custom_minimum_size.x = 380   # narrow enough for a staff card, wide enough not to wrap letter by letter
+		inside.add_child(empty_note)
 	return panel
 
 

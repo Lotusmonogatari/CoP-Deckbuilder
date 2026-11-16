@@ -31,6 +31,8 @@ SaveManager="*res://scripts/autoload/SaveManager.gd"
 Audio="*res://scripts/autoload/Audio.gd"
 ; Layout raises screen margins to the device safe area (notch, home bar).
 Layout="*res://scripts/autoload/Layout.gd"
+; TextFit keeps wrapped text from splitting a word across two lines.
+TextFit="*res://scripts/autoload/TextFit.gd"
 
 [audio]
 
