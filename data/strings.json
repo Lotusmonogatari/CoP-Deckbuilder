@@ -7908,5 +7908,12 @@
     "english": "nothing in particular",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.office_one_rule",
+    "where": "Item popup, the Office box rule",
+    "english": "Only one item can be in the Office box. It is used up when you confirm the day.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }
 ]

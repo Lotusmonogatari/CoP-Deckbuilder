@@ -63,6 +63,7 @@
   "assign.office_has_it": "Already in the Office box",
   "assign.office_heading": "Office box",
   "assign.office_hint": "An item placed here changes the tasks of the next day or days. It is used up when you confirm the day.",
+  "assign.office_one_rule": "Only one item can be in the Office box. It is used up when you confirm the day.",
   "assign.office_place": "Place in the Office box",
   "assign.outcome_line": "{fit} ({role}): {result}",
   "assign.outcome_nothing": "nothing happens",

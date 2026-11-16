@@ -589,7 +589,7 @@ static func item_popup_rows(item_id: String, handlers: Dictionary) -> Array[Cont
 	out.append(head)
 	out.append(UiKit.heading(Text.say("assign.item_effect_heading")))
 	out.append(UiKit.line(item_description(item_id)))
-	out.append(UiKit.line(Text.say("assign.item_one_each")))
+	out.append(UiKit.line(Text.say("assign.office_one_rule" if str(info["slot"]) == "Office" else "assign.item_one_each")))
 
 	if str(info["slot"]) == "Office":
 		var holder := GameState.staff_office_item == item_id

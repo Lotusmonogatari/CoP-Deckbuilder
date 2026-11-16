@@ -95,6 +95,7 @@ ROWS = [
     ("assign.office_hint", "Staff Assignments, Office box explanation", "An item placed here changes the tasks of the next day or days. It is used up when you confirm the day.", ""),
     ("assign.office_empty", "Staff Assignments, an empty Office box", "Drop an Office item here", ""),
     ("assign.office_place", "Item popup, button to put an item in the Office box", "Place in the Office box", ""),
+    ("assign.office_one_rule", "Item popup, the Office box rule", "Only one item can be in the Office box. It is used up when you confirm the day.", ""),
     ("assign.office_has_it", "Item popup, the item is already in the Office box", "Already in the Office box", ""),
     ("assign.why_line", "Staff Assignments, why today's tasks look as they do", "{note}: {family} {amount}", "note, family, amount"),
     ("assign.max_line", "Staff Assignments, the most tasks today", "Most tasks today: {count}", "count"),

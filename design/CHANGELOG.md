@@ -1118,3 +1118,14 @@ From `design/proposals/STAFF_TASKS_EXPANSION_2026-11-16.md`.
 | Retired | Balance rows `Staff Tasks: Pool Size` and `Weekend Pool Size` |
 
 Tests: `test_staff_tasks.gd` (quotas, ramp, trim, no-staff, ignored days) and the other staff tests now use a fixed day. Next (not built): drivers, person items, pool items, gift tastes.
+
+## Staff tasks expansion, phases 3 to 6 (2026-11-16, Cameron)
+
+| Phase | What |
+|---|---|
+| 3 Drivers | New Staff Task Drivers tab (14 draft rows); `StaffPoolModifiers.gd`; the screen says why the day looks as it does and how many tasks it may deliver |
+| 4 Person items and gifts | Seven Reference Sets, Training Voucher, Quiet Desk Pass; the nine regional gifts now work as Loyalty gifts; gift tastes (likes, dislikes, per-person Loyalty) on all 21 staff, revealed by giving a gift |
+| 5 Office box | Eight Office items change the next pool; event choices can too (Task Pool columns); the Office box on the screen |
+| 6 Tuning | `audit/tests/staff_pool_sim.tscn` and `audit/staff_tasks_tuning.md`: no numbers changed; the week 4 to 5 step is a cliff you may want to smooth |
+
+New Shop columns (Staff Effect, Value, Target, Slot, Days), Staff columns (Gift ...), Event Choices columns (Task Pool ...), Balance rows `Staff Gift: ...`. Fixed: a staff task's awareness change now reaches the right meter. Tests: `test_staff_pool_modifiers.gd`. New items have no pictures yet (the blue square shows): name the file in the Shop tab's Icon cell when drawn.

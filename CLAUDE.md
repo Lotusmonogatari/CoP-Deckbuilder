@@ -274,3 +274,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Staff wages, Loyalty, daily Staff Assignments and event delegation (2026-11-16, Cameron)
 - BASE pictures undimmed; staff text and pictures reviewed (2026-11-16, Cameron)
 - Staff tasks expansion, phases 1 and 2 (2026-11-16, Cameron)
+- Staff tasks expansion, phases 3 to 6 (2026-11-16, Cameron)
