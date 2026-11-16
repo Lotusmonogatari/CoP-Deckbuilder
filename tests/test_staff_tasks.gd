@@ -87,9 +87,9 @@ func test_a_strong_fit_pays_the_reward_a_poor_fit_the_penalty_a_fair_fit_nothing
 
 
 func test_rank_grows_a_strong_reward_but_not_a_penalty() -> void:
-	var pool := _pool(["TK10"])
-	var tier_two := _eval(pool, {"D1": ["T0"]}, [_member("D1", D, 2)])
-	assert_eq(int(tier_two["meta"]["Constituency support"]), 3, "2 grows by 25% per rank, rounded down: 2 + 1")
+	var pool := _pool(["TK05"])
+	var tier_two := _eval(pool, {"R1": ["T0"]}, [_member("R1", R, 2)])
+	assert_eq(int(tier_two["xp"]), 4, "3 grows by 25% per rank, rounded down: 3 + 1")
 	assert_eq(StaffTasks.rank_scaled(-2, "Reputation", 2), -2)
 	assert_eq(StaffTasks.rank_scaled(1, "Loyalty", 2), 1, "Loyalty never grows")
 
@@ -102,11 +102,11 @@ func test_a_restless_person_does_strong_work_as_fair() -> void:
 
 
 func test_daily_caps_hold_the_total() -> void:
-	# Four strong-fit constituent tasks would be +8, over the +3 cap.
+	# Four strong-fit constituent tasks would be +8, over the cap.
 	var pool := _pool(["TK10", "TK10", "TK10", "TK10"])
 	var plan := {"D1": ["T0", "T1"], "D2": ["T2", "T3"]}
 	var result := _eval(pool, plan, [_member("D1", D), _member("D2", D)])
-	assert_eq(int(result["meta"]["Constituency support"]), 3)
+	assert_eq(int(result["meta"]["Constituency support"]), Levers.whole("staff_tasks_cap_meta"))
 
 
 func test_standing_goes_to_the_task_target() -> void:

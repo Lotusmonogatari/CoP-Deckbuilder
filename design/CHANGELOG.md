@@ -1133,3 +1133,5 @@ New Shop columns (Staff Effect, Value, Target, Slot, Days), Staff columns (Gift 
 The "Most tasks today" and "why these tasks today" lines are no longer shown on the Staff Assignments screen (2026-11-16, Cameron): they are working detail, kept in the run state only.
 
 Staff Assignments testing rubric (`design/STAFF_ASSIGNMENTS_RUBRIC.md`) and its first evaluation (`audit/staff_assignments_rubric_run.md`, tool `audit/tests/staff_rubric_run.tscn`) (2026-11-16, Cameron): 20 back-to-back days, 20 days at full volume and 10 days interrupted by levels. Findings: the ramp strands staff (Loyalty), rewards run richer than intended, levels cost most of the staff value. No game numbers were changed.
+
+Rubric follow-up (2026-11-16, Cameron: "Both"): `Staff Tasks: Cap Meta` 3 to 2, `Staff Wage: Percent` 10 to 15, Funds rewards on five tasks roughly halved. Funds now PASS the rubric; net points a week still FAIL (XP). See `audit/staff_assignments_rubric_run.md`.

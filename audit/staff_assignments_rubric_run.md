@@ -208,3 +208,16 @@ Level lengths used for the interrupted run (hours): [4, 20, 3, 10, 3, 16, 20, 15
 - visit 13: 12 tasks, 20h, 3 due, confirmed, +0 pts
 - visit 14: 14 tasks, 32h, 2 due, confirmed, +3 pts
 
+
+## After the first changes (Cameron, 2026-11-16: "Both")
+
+Changed: `Staff Tasks: Cap Meta` 3 to 2; `Staff Wage: Percent` 10 to 15; Funds rewards roughly halved (TK13 +4,000, TK36 +3,000, TK46 +2,000, TK49 +2,000, TK50 +3,000).
+
+| Criterion | Before | After |
+|---|---|---|
+| R2.3 Best over Random (points a day) | 9.6 | 7.9 (PASS) |
+| R3.2 Cost of ignoring | 9.8 | 8.6 (PASS) |
+| R4.2 Best's net points a week | 39, 32, 23, 20 (FAIL) | **33, 30, 20, 18 (still FAIL)** |
+| R4.4 Funds from tasks vs the wage bill | +17,750円 vs 14,000円 (WARN) | +9,750円 vs 21,000円 (PASS) |
+
+The Funds problem is fixed; the points are not. Best play is now 6.5 points a day, but **XP is about 15 of each week's points** and has its own cap (6 a day, `Staff Tasks: Cap XP`), so lowering the meta cap does not touch it. Lowering `Cap XP` to 3 would take about 7 points off a week. The Loyalty problem in the ramp (R5.6, R1.7) is unchanged and waits on a decision.
