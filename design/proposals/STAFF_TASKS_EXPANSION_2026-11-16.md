@@ -283,3 +283,14 @@ No design number or sentence is left in a script. The current `Staff Tasks: Pool
 2. **Trim priority:** when the maximum cuts a list, which tasks are kept? Random (seeded) / Due tasks first / Family order?
 3. **Ignored days:** if staff exist and the player never confirms the day, do Due penalties still apply?
 4. **Gift tastes:** a list of liked and disliked items per person (proposed), or one favourite each?
+
+## 16. Decided (Revision 2)
+
+| Question | Decision |
+|---|---|
+| After week 4 | The maximum is **15** from week 5 (ramp row "5+", editable) |
+| Trim order | **Weighted by family quota**: when the maximum cuts the list, a family that rolled more tasks is kept more often (each task's chance to stay is proportional to its family's rolled count; seeded by date) |
+| Ignored days | **Yes**: any delivered Due task nobody took costs its penalty at day end, with or without staff and whether or not the plan was confirmed (a day skipped over by a long level still goes out of effect) |
+| Gift tastes | **Likes and dislikes lists** per person, with per-person Loyalty amounts (section 13) |
+
+Build order unchanged (1 Content, 2 Quotas **plus the ramp tab and trim**, 3 Drivers, 4 Person items **plus gift tastes**, 5 Pool items, 6 Tuning). The built "unconfirmed day does nothing" rule changes in Phase 2: Due penalties then apply to every delivered day.
