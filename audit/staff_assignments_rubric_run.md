@@ -221,3 +221,17 @@ Changed: `Staff Tasks: Cap Meta` 3 to 2; `Staff Wage: Percent` 10 to 15; Funds r
 | R4.4 Funds from tasks vs the wage bill | +17,750円 vs 14,000円 (WARN) | +9,750円 vs 21,000円 (PASS) |
 
 The Funds problem is fixed; the points are not. Best play is now 6.5 points a day, but **XP is about 15 of each week's points** and has its own cap (6 a day, `Staff Tasks: Cap XP`), so lowering the meta cap does not touch it. Lowering `Cap XP` to 3 would take about 7 points off a week. The Loyalty problem in the ramp (R5.6, R1.7) is unchanged and waits on a decision.
+
+## After fixes 1 and 3 (Cameron, 2026-11-16): idle only when work was left; Loyalty starts at 50
+
+Changed: a person is "idle" (Loyalty -1) only when some unassigned task, not time off, that would have fitted their day was left; new hires start at Loyalty 50 (was 30).
+
+| Criterion | Before | After |
+|---|---|---|
+| R1.7 Reward a day in weeks 2 to 4 | 0.0 (FAIL) | **2.2 (PASS)** |
+| R5.6 Lowest Loyalty after the 4 ramp weeks | 2 (FAIL) | **33 (PASS)**: 33, 37, 60 |
+| R5.1, R5.2 Loyalty at full volume | PASS | PASS (start 50; end 50, 51, 71) |
+| R6.4 Reward kept when levels interrupt | 23% (WARN) | 30% (WARN, informational) |
+| R4.2 Net points a week | 33, 30, 20, 18 (FAIL) | unchanged: still FAIL (XP, see the section above) |
+
+Remaining: **R4.2** (XP is about 15 of the week's points; `Staff Tasks: Cap XP` 6 to 3 would address it) and **R6.4** (informational). Loyalty still drifts down in the ramp (50 to 33) because the allies' low starting standing costs 7 to 10 a week; that is now slow enough to leave the staff working, and full-volume days outrun it.

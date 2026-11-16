@@ -24,7 +24,8 @@ func test_wage_is_ten_percent_of_everything_invested() -> void:
 
 func test_new_hire_starts_loyal_enough_to_work() -> void:
 	_hire("SF01")
-	assert_eq(GameState.staff_loyalty_of("SF01"), 30)
+	assert_eq(GameState.staff_loyalty_of("SF01"), 50, "new hires start at 50 (30 until 2026-11-16)")
+	assert_eq(StaffLoyalty.band(50), StaffLoyalty.BAND_NORMAL)
 	assert_eq(StaffLoyalty.band(30), StaffLoyalty.BAND_NORMAL, "30 is not restless")
 	assert_eq(StaffLoyalty.band(29), StaffLoyalty.BAND_RESTLESS)
 	assert_eq(StaffLoyalty.band(14), StaffLoyalty.BAND_LEAVING)
@@ -184,7 +185,7 @@ func test_a_restless_person_will_not_take_a_promotion() -> void:
 func test_raise_pay_costs_more_and_pays_loyalty_once_a_week() -> void:
 	_hire("SF01")
 	assert_eq(GameState.raise_pay("SF01"), "")
-	assert_eq(GameState.staff_loyalty_of("SF01"), 40)
+	assert_eq(GameState.staff_loyalty_of("SF01"), 60)
 	assert_eq(GameState.staff_wage_of("SF01"), 9000)
 	assert_ne(GameState.raise_pay("SF01"), "", "once a week")
 
@@ -203,7 +204,7 @@ func test_an_old_save_gets_loyalty_and_invested_filled_in() -> void:
 	GameState.staff_loyalty = {}
 	GameState.staff_invested = {}
 	GameState.sanitize_loaded_run()
-	assert_eq(GameState.staff_loyalty_of("SF01"), 30)
+	assert_eq(GameState.staff_loyalty_of("SF01"), 50)
 	assert_eq(int(GameState.staff_invested["SF01"]), 40000)
 
 

@@ -117,9 +117,20 @@ func test_standing_goes_to_the_task_target() -> void:
 
 # --- the shape of the day ----------------------------------------------------
 
-func test_a_person_with_nothing_to_do_is_idle() -> void:
-	var result := _eval(_pool(["TK04"]), {"M1": ["T0"]}, [_member("M1", M), _member("D1", D)])
-	assert_eq(int(result["loyalty"]["D1"]), -1, "idle")
+func test_a_person_with_nothing_to_do_is_idle_only_if_work_was_left() -> void:
+	# Two tasks, one given out: the other person could have taken the second one.
+	var left := _eval(_pool(["TK04", "TK05"]), {"M1": ["T0"]}, [_member("M1", M), _member("D1", D)])
+	assert_eq(int(left["loyalty"]["D1"]), -1, "idle with work left undone")
+	# Every task given out: nobody is idle just because the day was short of work.
+	var none_left := _eval(_pool(["TK04"]), {"M1": ["T0"]}, [_member("M1", M), _member("D1", D)])
+	assert_eq(int(none_left["loyalty"]["D1"]), 0, "no work left, so not idle")
+
+
+func test_work_too_long_for_the_day_does_not_make_someone_idle() -> void:
+	# A task longer than anyone's day could not have been taken.
+	var pool := _pool(["TK06"])   # 4 hours
+	var result := StaffTasks.evaluate(pool, DataDB.staff_tasks, {}, [_member("D1", D)], {"blocks": 3, "delegated": {}, "full_days": {}})
+	assert_eq(int(result["loyalty"]["D1"]), 0)
 
 
 func test_a_mostly_used_day_is_healthy_a_full_day_is_neutral() -> void:
@@ -170,7 +181,7 @@ func test_time_off_gives_loyalty_and_unused_time_off_costs_everyone() -> void:
 	assert_false(bool(taken["time_off_unused"]))
 	var unused := _eval(pool, {"R1": ["T1"]}, [_member("R1", R), _member("D1", D)])
 	assert_true(bool(unused["time_off_unused"]))
-	assert_lt(int(unused["loyalty"]["D1"]), int(taken["loyalty"]["D1"]), "an unused day off costs everyone")
+	assert_eq(int(unused["loyalty"]["D1"]), -1, "an unused day off costs everyone (and nobody was idle: no work was left)")
 
 
 func test_a_due_task_left_alone_costs_its_penalty() -> void:
@@ -186,7 +197,7 @@ func test_a_due_task_that_was_given_out_costs_nothing() -> void:
 
 func test_the_lunch_lifts_everyone() -> void:
 	var result := _eval(_pool(["TK15"]), {"D1": ["T0"]}, [_member("D1", D), _member("R1", R)])
-	assert_eq(int(result["loyalty"]["R1"]), -1 + 1, "idle -1, lunch +1")
+	assert_eq(int(result["loyalty"]["R1"]), 1, "not idle (no work left), lunch +1")
 
 
 # --- the pool ---------------------------------------------------------------

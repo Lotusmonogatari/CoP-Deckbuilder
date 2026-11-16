@@ -143,7 +143,7 @@ func test_a_person_item_goes_to_a_person_and_an_office_item_to_the_box() -> void
 	assert_eq(GameState.staff_item_refusal("SH45", GameState.OFFICE_BOX), "")
 
 
-func _eval_with(items: Dictionary, task_ids: Array, tier: int = 0, loyalty: int = 60, role: String = R) -> Dictionary:
+func _eval_with(items: Dictionary, task_ids: Array, tier: int = 0, loyalty: int = 60, role: String = R, left_out: Array = []) -> Dictionary:
 	if GameState.hired_member("SF04").is_empty():
 		_hire(["SF04"])
 	GameState.staff_loyalty["SF04"] = loyalty
@@ -153,6 +153,8 @@ func _eval_with(items: Dictionary, task_ids: Array, tier: int = 0, loyalty: int 
 	var plan := {"SF04": []}
 	for i in task_ids.size():
 		(plan["SF04"] as Array).append("T%d" % i)
+	for extra in left_out:   # work in the pool nobody is given
+		pool.append(StaffTasks._entry(StaffTasks.task_for(DataDB.staff_tasks, extra), pool.size(), {}))
 	GameState.staff_day_items = items
 	var info := GameState._staff_day_info()
 	return StaffTasks.evaluate(pool, DataDB.staff_tasks, plan,
@@ -181,9 +183,9 @@ func test_a_training_voucher_makes_strong_rewards_bigger() -> void:
 
 
 func test_a_quiet_desk_pass_stops_idle_loyalty_loss() -> void:
-	var idle := _eval_with({}, [])
+	var idle := _eval_with({}, [], 0, 60, R, ["TK04"])
 	assert_eq(int(idle["loyalty"]["SF04"]), -1)
-	var quiet := _eval_with({"SF04": "SH44"}, [])
+	var quiet := _eval_with({"SF04": "SH44"}, [], 0, 60, R, ["TK04"])
 	assert_eq(int(quiet["loyalty"]["SF04"]), 0)
 
 

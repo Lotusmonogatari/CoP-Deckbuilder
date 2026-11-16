@@ -306,6 +306,17 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 		if str(task_for(tasks, str(entry.get("task_id", ""))).get("kind", "")) == KIND_TIME_OFF:
 			time_off_in_pool = true
 	var time_off_taken := false
+	# Work nobody was given (not time off): a person is only "idle" if some of it
+	# was left that they could have taken (Cameron, 2026-11-16, rubric R5.6).
+	var planned := {}
+	for list: Variant in plan.values():
+		for planned_uid: Variant in (list as Array):
+			planned[str(planned_uid)] = true
+	var left_hours: Array[int] = []
+	for entry: Dictionary in pool:
+		var left_task := task_for(tasks, str(entry.get("task_id", "")))
+		if not planned.has(str(entry.get("uid", ""))) and str(left_task.get("kind", "")) != KIND_TIME_OFF:
+			left_hours.append(int(left_task.get("blocks", 1)))
 
 	for member: Dictionary in members:
 		var id := str(member["staff_id"])
@@ -361,7 +372,13 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 			# A Quiet Desk Pass: no Loyalty change from an idle or overworked day.
 			streak = 0
 		elif used <= 0:
-			change -= Levers.whole("staff_tasks_idle_loyalty")
+			# Idle only when some unassigned work would have fitted their day.
+			var could_have := false
+			for hours_left: int in left_hours:
+				if hours_left <= day_hours:
+					could_have = true
+			if could_have:
+				change -= Levers.whole("staff_tasks_idle_loyalty")
 			streak = 0
 		elif used >= day_hours:
 			streak += 1

@@ -287,7 +287,7 @@
   "staff_thank_in_public_loyalty": 5,
   "staff_thank_in_public_hours": 3,
   "staff_thank_in_public_minimum_reputation": 40,
-  "staff_loyalty_start": 30,
+  "staff_loyalty_start": 50,
   "staff_loyalty_paid_bonus": 2,
   "staff_loyalty_missed_penalty": 20,
   "staff_loyalty_affinity_pivot": 50,
