@@ -51,6 +51,13 @@ static func profile_rows(staff_id: String) -> Array[Control]:
 	rows.append(UiKit.heading(Text.say("staff.loyalty_heading")))
 	rows.append(UiKit.line(summary(staff_id)))
 	rows.append(bar(loyalty))
+	# What they like as a gift: shown once a gift has been given (Cameron, 2026-11-16).
+	if bool(GameState.staff_taste_known.get(staff_id, false)):
+		var taste := GameState.staff_gift_taste(staff_id)
+		rows.append(UiKit.line(Text.say("staff.taste_known", {"likes": _item_names(taste["likes"]),
+			"dislikes": _item_names(taste["dislikes"])})))
+	else:
+		rows.append(UiKit.line(Text.say("staff.taste_unknown")))
 	var last: Dictionary = GameState.staff_last_week.get(staff_id, {})
 	if last.is_empty():
 		rows.append(UiKit.line(Text.say("staff.why_none")))
@@ -67,6 +74,14 @@ static func profile_rows(staff_id: String) -> Array[Control]:
 			rows.append(UiKit.line(_why_line(str(part[1]), amount)))
 	rows.append(UiKit.line(Text.say("staff.why_total", {"count": _signed(int(last.get("total", 0)))})))
 	return rows
+
+
+## Item names for a list of item ids ("none" when empty).
+static func _item_names(ids: Array) -> String:
+	var names: Array[String] = []
+	for id: Variant in ids:
+		names.append(str(DataDB.get_shop_item(str(id)).get("name", str(id))))
+	return ", ".join(PackedStringArray(names)) if not names.is_empty() else Text.say("staff.taste_none")
 
 
 static func _why_line(key: String, amount: int) -> String:

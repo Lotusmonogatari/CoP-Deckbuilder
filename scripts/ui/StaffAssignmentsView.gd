@@ -63,8 +63,18 @@ static func rows(handlers: Dictionary) -> Array[Control]:
 	out.append(UiKit.line(Text.say("assign.date_line", {"date": WeekCalendar.date_label(GameState.staff_day_key), "count": waiting})))
 	out.append(UiKit.line(Text.say("assign.hint")))
 
+	out.append(UiKit.line(Text.say("assign.max_line", {"count": GameState.staff_day_max})))
+	for reason: Dictionary in GameState.staff_day_reasons:
+		var family := str(reason.get("family", ""))
+		out.append(UiKit.line(Text.say("assign.why_line", {"note": str(reason.get("note", "")),
+			"family": Text.say("assign.family_max") if family == StaffPoolModifiers.MAX else family,
+			"amount": "%+d" % int(reason.get("amount", 0))})))
+
 	out.append(UiKit.heading(Text.say("assign.items_heading")))
 	out.append(_items_row(handlers))
+	out.append(UiKit.heading(Text.say("assign.office_heading")))
+	out.append(UiKit.line(Text.say("assign.office_hint")))
+	out.append(_office_box(handlers))
 
 	out.append(UiKit.heading(Text.say("assign.tray_heading")))
 	out.append(_tray(given, handlers))
@@ -86,8 +96,41 @@ static func rows(handlers: Dictionary) -> Array[Control]:
 	return out
 
 
-## The coffee and tea you hold, as cards to drag into a person's box (one item
-## per person; each adds hours to their day).
+## The short note under a staff item card: what it does and (for the shelf)
+## how many are still free.
+static func item_caption(item: Dictionary, free: int = -1) -> String:
+	var tail := "" if free < 0 else " " + Text.say("assign.item_left", {"free": free})
+	match str(item.get("effect", "")):
+		"HOURS":
+			return (Text.say("assign.item_in_box_one") if int(item.get("hours", 0)) == 1
+				else Text.say("assign.item_in_box", {"hours": int(item.get("hours", 0))})) + tail
+		"STRONG_FAMILY":
+			return Text.say("assign.item_cap_family", {"family": str(item.get("target", ""))}) + tail
+		"REWARD_MULT":
+			return Text.say("assign.item_cap_mult", {"percent": int(item.get("value", 100))}) + tail
+		"QUIET":
+			return Text.say("assign.item_cap_quiet") + tail
+		"GIFT":
+			return Text.say("assign.item_cap_gift") + tail
+		"POOL_FAMILY":
+			return Text.say("assign.item_cap_pool", {"family": str(item.get("target", "")), "amount": "%+d" % int(item.get("value", 0))}) + tail
+		"POOL_MAX":
+			return Text.say("assign.item_cap_max", {"amount": "%+d" % int(item.get("value", 0))}) + tail
+	return tail.strip_edges()
+
+
+## The same card info for one item id (a placed item).
+static func _item_info(item_id: String) -> Dictionary:
+	var info := GameState.staff_item_info(item_id)
+	var item := DataDB.get_shop_item(item_id)
+	return {"item_id": item_id, "name": str(item.get("name", item_id)), "effect": str(info["effect"]),
+		"slot": str(info["slot"]), "value": int(info["value"]), "target": str(info["target"]),
+		"hours": GameState.staff_item_hours(item_id),
+		"icon": str(item.get("icon", "")) if item.get("icon") != null else ""}
+
+
+## The staff items you hold, as cards to drag into a person's box (one item per
+## person; each acts on their day) or, for the Office kind, into the Office box.
 static func _items_row(handlers: Dictionary) -> Control:
 	var flow := HFlowContainer.new()
 	flow.name = "ItemTray"
@@ -99,9 +142,8 @@ static func _items_row(handlers: Dictionary) -> Control:
 		any = true
 		var chip := TaskChip.new()
 		chip.setup_item(str(item["item_id"]), str(item["name"]), str(item["icon"]),
-			Text.say("assign.item_caption_one", {"free": int(item["free"])}) if int(item["hours"]) == 1 \
-				else Text.say("assign.item_caption", {"hours": int(item["hours"]), "free": int(item["free"])}),
-			PLAIN_FRAME, false, not GameState.staff_day_confirmed and int(item["free"]) > 0)
+			item_caption(item, int(item["free"])), PLAIN_FRAME, false,
+			not GameState.staff_day_confirmed and int(item["free"]) > 0)
 		chip.theme = card_theme()
 		chip.tapped.connect(handlers["popup"])
 		if int(item["free"]) <= 0:
@@ -110,6 +152,27 @@ static func _items_row(handlers: Dictionary) -> Control:
 	if not any:
 		flow.add_child(UiKit.line(Text.say("assign.items_none")))
 	return flow
+
+
+## The Office box: where an item that changes the next day's tasks is placed.
+static func _office_box(handlers: Dictionary) -> Control:
+	var box := TaskBox.new()
+	box.setup(GameState.OFFICE_BOX)
+	box.dropped.connect(handlers["dropped"])
+	box.item_dropped.connect(handlers["item_dropped"])
+	var inside := HFlowContainer.new()
+	box.add_child(inside)
+	var placed := GameState.staff_office_item
+	if placed.is_empty():
+		inside.add_child(UiKit.line(Text.say("assign.office_empty")))
+	else:
+		var info := _item_info(placed)
+		var chip := TaskChip.new()
+		chip.setup_item(placed, str(info["name"]), str(info["icon"]), item_caption(info), FIT_COLORS["strong"], true, false)
+		chip.theme = card_theme()
+		chip.tapped.connect(handlers["popup"])
+		inside.add_child(chip)
+	return box
 
 
 static func _tray(given: Dictionary, handlers: Dictionary) -> Control:
@@ -217,11 +280,9 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 	var given_item := str(GameState.staff_day_items.get(staff_id, ""))
 	if not given_item.is_empty():
 		holds = true
-		var held_item := DataDB.get_shop_item(given_item)
+		var held_info := _item_info(given_item)
 		var item_chip := TaskChip.new()
-		item_chip.setup_item(given_item, str(held_item.get("name", given_item)), str(held_item.get("icon", "")),
-			Text.say("assign.item_in_box_one") if GameState.staff_item_hours(given_item) == 1 \
-				else Text.say("assign.item_in_box", {"hours": GameState.staff_item_hours(given_item)}),
+		item_chip.setup_item(given_item, str(held_info["name"]), str(held_info["icon"]), item_caption(held_info),
 			FIT_COLORS["strong"], true, false)
 		item_chip.theme = card_theme()
 		item_chip.tapped.connect(handlers["popup"])
@@ -505,34 +566,55 @@ static func _slash(text: String, kind: String) -> SlashBlock:
 # The item popup (coffee and tea for staff)
 # ---------------------------------------------------------------------------
 
-## What one staff item does and who it can be given to. `handlers`:
-## assign_item(item_id, staff_id), unassign_item(staff_id).
+## What one staff item does and where it can go: a person (their picture in
+## the sideways row) or, for an Office item, the Office box. `handlers`:
+## assign_item(item_id, target), unassign_item(target).
 static func item_popup_rows(item_id: String, handlers: Dictionary) -> Array[Control]:
 	var out: Array[Control] = []
 	var item := DataDB.get_shop_item(item_id)
-	var hours := GameState.staff_item_hours(item_id)
-	if item.is_empty() or hours <= 0:
+	var info := _item_info(item_id)
+	if item.is_empty() or str(info["effect"]).is_empty():
 		return out
 	var head := HBoxContainer.new()
 	head.add_theme_constant_override("separation", 16)
 	var picture := TextureRect.new()
-	picture.texture = ArtLoader.item_icon(str(item.get("icon", "")))
+	picture.texture = ArtLoader.item_icon(str(info["icon"]))
 	picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	picture.custom_minimum_size = Vector2(120, 120)
 	head.add_child(picture)
-	var title := UiKit.heading(str(item.get("name", item_id)))
+	var title := UiKit.heading(str(info["name"]))
 	title.custom_minimum_size = Vector2(600, 0)
 	head.add_child(title)
 	out.append(head)
 	out.append(UiKit.heading(Text.say("assign.item_effect_heading")))
-	out.append(UiKit.line(Text.say("assign.item_effect_one" if hours == 1 else "assign.item_effect_many", {"hours": hours})))
+	out.append(UiKit.line(item_description(item_id)))
 	out.append(UiKit.line(Text.say("assign.item_one_each")))
 
-	var holder := ""
+	if str(info["slot"]) == "Office":
+		var holder := GameState.staff_office_item == item_id
+		var refusal := ""
+		match GameState.staff_item_refusal(item_id, GameState.OFFICE_BOX):
+			StaffTasks.REFUSE_LOCKED:
+				refusal = Text.say("assign.tile_locked")
+			StaffTasks.REFUSE_ITEM_HAVE:
+				refusal = Text.say("assign.office_has_it")
+			StaffTasks.REFUSE_ITEM_NONE:
+				refusal = Text.say("assign.tile_none_left")
+		var place := UiKit.action_button(Text.say("assign.office_place"), refusal,
+			handlers["assign_item"].bind(item_id, GameState.OFFICE_BOX), 100.0)
+		place.name = "PlaceInOfficeButton"
+		out.append(place)
+		var take := UiKit.action_button(Text.say("assign.no_assignment"), "", handlers["unassign_item"].bind(GameState.OFFICE_BOX), 100.0)
+		take.name = "NoAssignmentButton"
+		take.disabled = not holder or GameState.staff_day_confirmed
+		out.append(take)
+		return out
+
+	var holder_id := ""
 	for staff_id: String in GameState.staff_day_items.keys():
 		if str(GameState.staff_day_items[staff_id]) == item_id:
-			holder = staff_id
+			holder_id = staff_id
 	out.append(UiKit.heading(Text.say("assign.give_heading")))
 	var strip := HBoxContainer.new()
 	strip.name = "StaffStrip"
@@ -549,11 +631,35 @@ static func item_popup_rows(item_id: String, handlers: Dictionary) -> Array[Cont
 				note = Text.say("assign.tile_none_left")
 		strip.add_child(_staff_tile(staff_id, str(member["role"]), note, handlers["assign_item"].bind(item_id, staff_id)))
 	out.append(_strip_frame(strip))
-	var none := UiKit.action_button(Text.say("assign.no_assignment"), "", handlers["unassign_item"].bind(holder), 100.0)
+	var none := UiKit.action_button(Text.say("assign.no_assignment"), "", handlers["unassign_item"].bind(holder_id), 100.0)
 	none.name = "NoAssignmentButton"
-	none.disabled = holder.is_empty() or GameState.staff_day_confirmed
+	none.disabled = holder_id.is_empty() or GameState.staff_day_confirmed
 	out.append(none)
 	return out
+
+
+## One sentence on what an item does, from its Shop columns.
+static func item_description(item_id: String) -> String:
+	var info := _item_info(item_id)
+	var days := int(GameState.staff_item_info(item_id).get("days", 1))
+	match str(info["effect"]):
+		"HOURS":
+			return Text.say("assign.item_effect_one" if int(info["hours"]) == 1 else "assign.item_effect_many", {"hours": int(info["hours"])})
+		"STRONG_FAMILY":
+			return Text.say("assign.item_desc_family", {"family": str(info["target"])})
+		"REWARD_MULT":
+			return Text.say("assign.item_desc_mult", {"percent": int(info["value"])})
+		"QUIET":
+			return Text.say("assign.item_desc_quiet")
+		"GIFT":
+			return Text.say("assign.item_desc_gift")
+		"POOL_FAMILY":
+			return Text.say("assign.item_desc_pool_one", {"family": str(info["target"]), "amount": "%+d" % int(info["value"])}) if days <= 1 \
+				else Text.say("assign.item_desc_pool_many", {"family": str(info["target"]), "amount": "%+d" % int(info["value"]), "days": days})
+		"POOL_MAX":
+			return Text.say("assign.item_desc_max_one", {"amount": "%+d" % int(info["value"])}) if days <= 1 \
+				else Text.say("assign.item_desc_max_many", {"amount": "%+d" % int(info["value"]), "days": days})
+	return ""
 
 
 ## The gold-framed, sideways-scrolling row both popups put their staff pictures in.

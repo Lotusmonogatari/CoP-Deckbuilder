@@ -2961,6 +2961,14 @@ func _on_confirm_day() -> void:
 	GameState.staff_confirm_day()
 	SaveManager.autosave()
 	_show_staff_assignments()
+	# Gifts handed over are answered once, in words (Cameron, 2026-11-16).
+	if not GameState.staff_gift_notes.is_empty():
+		var rows: Array[Control] = []
+		for note: Variant in GameState.staff_gift_notes:
+			rows.append(UiKit.line(str(note)))
+		GameState.staff_gift_notes = []
+		_staff_report_panel.top_aligned = true
+		_staff_report_panel.open(Text.say("assign.gift_title"), rows)
 
 
 ## The day just ended, once, when the Office is free to show it.

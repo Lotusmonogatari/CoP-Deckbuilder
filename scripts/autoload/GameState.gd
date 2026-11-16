@@ -243,6 +243,19 @@ var staff_report_pending: Dictionary = {}
 ## Items given to staff for the day: { staff_id: item_id }, at most one each.
 ## They are only used up when the day is confirmed.
 var staff_day_items: Dictionary = {}
+## Changes to the next task pools left by items and events (Cameron,
+## 2026-11-16): { family (or "MAX"), amount, draws_left, label }, each applied to
+## the next `draws_left` pools drawn. `staff_office_item` is the item in the
+## Office box, used up (and turned into one of these) when the day is confirmed.
+## `staff_day_reasons` and `staff_day_max` say why today's pool looks as it does.
+## `staff_taste_known` marks people whose gift taste has been found out.
+var staff_pool_mods: Array = []
+var staff_office_item := ""
+var staff_day_reasons: Array = []
+var staff_day_max := 0
+var staff_taste_known: Dictionary = {}
+## What the gifts given at the last confirm did (shown once; not saved).
+var staff_gift_notes: Array = []
 
 ## Level IDs the player has paid XP to unlock — only meaningful once
 ## rules.json's "level_gating_enabled" is true. A level whose relevant
@@ -578,7 +591,7 @@ const _SAVED_FIELDS := [
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
-	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "vote_unknown_percent", "vote_briefed",
+	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
@@ -866,6 +879,9 @@ func reset_staff() -> void:
 	staff_week_tasks = {}
 	staff_last_week = {}
 	_staff_clear_day()
+	staff_pool_mods = []
+	staff_office_item = ""
+	staff_taste_known = {}
 	staff_full_days = {}
 	staff_report_pending = {}
 	staff_recruitment_tier = 0
@@ -1375,6 +1391,35 @@ func _staff_lose_rank(staff_id: String) -> void:
 # ---------------------------------------------------------------------------
 # Daily staff tasks (Cameron, 2026-11-16). StaffTasks.gd holds the rules.
 
+## The game state the drivers read, as plain numbers (StaffPoolModifiers).
+func staff_driver_state() -> Dictionary:
+	var members := staff_members()
+	var loyalty_sum := 0
+	for member: Dictionary in members:
+		loyalty_sum += staff_loyalty_of(str(member["staff_id"]))
+	return {
+		"dues_owed": dues_balance,
+		"open_promises": promises.size(),
+		"district_awareness": int(awareness.get("district", 0)),
+		"national_awareness": int(awareness.get("national", 0)),
+		"reputation": int(meta.get("Reputation", 0)),
+		"constituency_support": int(meta.get("Constituency support", 0)),
+		"party_support": int(meta.get("Party support", 0)),
+		"level_in_progress": 1 if is_in_level() else 0,
+		"avg_staff_loyalty": -1 if members.is_empty() else int(float(loyalty_sum) / float(members.size())),
+		"weekday": WeekCalendar.weekday_index(calendar, calendar_config()),
+	}
+
+
+## Leaves a change for the next `days` task pools: extra (or fewer) tasks of a
+## family, or `MAX` to change the day's maximum. `label` is what the screen
+## says caused it.
+func staff_add_pool_change(family: String, amount: int, days: int, label: String) -> void:
+	if amount == 0 or family.is_empty():
+		return
+	staff_pool_mods.append({"family": family, "amount": amount, "draws_left": maxi(1, days), "label": label})
+
+
 ## Blocks in one person's day: one per hour of the calendar day (8 on a
 ## weekday, 4 on a weekend day).
 func staff_day_blocks() -> int:
@@ -1392,6 +1437,7 @@ func _staff_clear_day() -> void:
 	staff_day_confirmed = false
 	staff_day_delegated = {}
 	staff_day_items = {}
+	staff_day_reasons = []
 
 
 ## Brings the staff day up to the calendar. A confirmed plan whose day has just
@@ -1421,9 +1467,20 @@ func staff_ensure_day() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = hash("%s:%d" % [protagonist_id, today])
 	var weekend := in_weekend()
-	var maximum := StaffTasks.day_maximum(DataDB.staff_task_ramp, int(calendar.get("week", 0)), weekend, 0)
+	# What changes today's pool: the drivers (game state) and the items and
+	# events that left a change for it, then the day's maximum from the ramp.
+	var driver_rng := RandomNumberGenerator.new()
+	driver_rng.seed = hash("drivers:%s:%d" % [protagonist_id, today])
+	var changes := StaffPoolModifiers.merged(
+		StaffPoolModifiers.from_drivers(DataDB.staff_task_drivers, staff_driver_state(), driver_rng),
+		StaffPoolModifiers.from_mods(staff_pool_mods))
+	staff_pool_mods = StaffPoolModifiers.after_draw(staff_pool_mods)
+	var maximum := StaffTasks.day_maximum(DataDB.staff_task_ramp, int(calendar.get("week", 0)), weekend,
+		int(changes["max_delta"]))
 	staff_day_pool = StaffTasks.draw_pool(DataDB.staff_tasks, DataDB.staff_task_families, _staff_task_targets(),
-		maximum, weekend, {}, rng)
+		maximum, weekend, changes["adds"], rng)
+	staff_day_reasons = changes["reasons"]
+	staff_day_max = maximum
 	staff_day_key = today
 	staff_day_blocks_total = staff_day_blocks()
 	staff_day_plan = {}
@@ -1467,9 +1524,22 @@ func _staff_eval_members() -> Array:
 
 func _staff_day_info() -> Dictionary:
 	var bonus := {}
+	var strong := {}
+	var percent := {}
+	var quiet := {}
 	for id: String in staff_day_items.keys():
-		bonus[id] = staff_item_hours(str(staff_day_items[id]))
-	return {"blocks": staff_day_blocks_total, "delegated": staff_day_delegated, "full_days": staff_full_days, "bonus": bonus}
+		var info := staff_item_info(str(staff_day_items[id]))
+		match str(info["effect"]):
+			"HOURS":
+				bonus[id] = int(info["value"])
+			"STRONG_FAMILY":
+				strong[id] = str(info["target"])
+			"REWARD_MULT":
+				percent[id] = int(info["value"])
+			"QUIET":
+				quiet[id] = true
+	return {"blocks": staff_day_blocks_total, "delegated": staff_day_delegated, "full_days": staff_full_days,
+		"bonus": bonus, "strong_family": strong, "reward_percent": percent, "quiet": quiet}
 
 
 ## What the plan, as it stands, would do: the same numbers the day's end applies.
@@ -1482,42 +1552,72 @@ func staff_day_hours(staff_id: String) -> int:
 	return staff_day_blocks_total + staff_item_hours(str(staff_day_items.get(staff_id, "")))
 
 
-## The hours an item adds to a staff member's day (the Shop tab's Staff Hours); 0 for any other item.
-func staff_item_hours(item_id: String) -> int:
+## What a staff item does (the Shop's Staff Effect columns): { effect, value,
+## target, slot, days }, effect "" for any other item. An item with only the
+## older Staff Hours cell counts as an HOURS item.
+func staff_item_info(item_id: String) -> Dictionary:
 	if item_id.is_empty():
-		return 0
-	var raw: Variant = DataDB.get_shop_item(item_id).get("staff_hours")
-	return 0 if raw == null else maxi(0, int(raw))
+		return {"effect": ""}
+	var item := DataDB.get_shop_item(item_id)
+	var effect := str(item.get("staff_effect", "")) if item.get("staff_effect") != null else ""
+	if effect.is_empty() and item.get("staff_hours") != null and int(item["staff_hours"]) > 0:
+		return {"effect": "HOURS", "value": int(item["staff_hours"]), "target": "", "slot": "Person", "days": 1}
+	if effect.is_empty():
+		return {"effect": ""}
+	return {"effect": effect, "value": int(item.get("staff_value", 0)) if item.get("staff_value") != null else 0,
+		"target": str(item.get("staff_target", "")) if item.get("staff_target") != null else "",
+		"slot": str(item.get("staff_slot", "Person")) if item.get("staff_slot") != null else "Person",
+		"days": maxi(1, int(item.get("staff_days", 1)) if item.get("staff_days") != null else 1)}
 
 
-## The items that can be given to staff, each { item_id, name, hours, held,
-## free }: how many you hold and how many are not yet promised to someone.
-## Only items you hold are listed.
+## The hours an item adds to a staff member's day; 0 for any other item.
+func staff_item_hours(item_id: String) -> int:
+	var info := staff_item_info(item_id)
+	return maxi(0, int(info.get("value", 0))) if str(info["effect"]) == "HOURS" else 0
+
+
+## The items that can be used on the Staff Assignments screen, each { item_id,
+## name, effect, slot, value, target, hours, held, free, icon }: how many you
+## hold and how many are not yet promised. Only items you hold are listed.
 func staff_usable_items() -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
 	for item: Dictionary in DataDB.shop:
 		var id := str(item.get("item_id", ""))
-		var hours := staff_item_hours(id)
+		var info := staff_item_info(id)
 		var held := item_count(id)
-		if hours <= 0 or held <= 0:
+		if str(info["effect"]).is_empty() or held <= 0:
 			continue
 		var planned := 0
 		for value: Variant in staff_day_items.values():
 			if str(value) == id:
 				planned += 1
-		out.append({"item_id": id, "name": str(item.get("name", id)), "hours": hours, "held": held,
-			"free": maxi(0, held - planned), "icon": str(item.get("icon", ""))})
+		if staff_office_item == id:
+			planned += 1
+		out.append({"item_id": id, "name": str(item.get("name", id)), "effect": str(info["effect"]),
+			"slot": str(info["slot"]), "value": int(info["value"]), "target": str(info["target"]),
+			"hours": staff_item_hours(id), "held": held, "free": maxi(0, held - planned),
+			"icon": str(item.get("icon", "")) if item.get("icon") != null else ""})
 	return out
 
 
-## Why an item cannot go to a person now: StaffTasks.REFUSE_LOCKED, REFUSE_ITEM_HAVE
-## (they already have one), REFUSE_ITEM_NONE (none left), or "".
-func staff_item_refusal(item_id: String, staff_id: String) -> String:
+## The place an item goes: a person's staff_id, or OFFICE for the Office box.
+const OFFICE_BOX := "OFFICE"
+
+
+## Why an item cannot go to a person (or the Office box) now: one of
+## StaffTasks.REFUSE_*, or "".
+func staff_item_refusal(item_id: String, target: String) -> String:
 	if staff_day_confirmed:
 		return StaffTasks.REFUSE_LOCKED
-	if staff_item_hours(item_id) <= 0 or hired_member(staff_id).is_empty():
+	var info := staff_item_info(item_id)
+	if str(info["effect"]).is_empty():
 		return StaffTasks.REFUSE_UNKNOWN
-	if str(staff_day_items.get(staff_id, "")) == item_id:
+	var to_office := target == OFFICE_BOX
+	if to_office != (str(info["slot"]) == "Office"):
+		return StaffTasks.REFUSE_ITEM_SLOT
+	if not to_office and hired_member(target).is_empty():
+		return StaffTasks.REFUSE_UNKNOWN
+	if (to_office and staff_office_item == item_id) or (not to_office and str(staff_day_items.get(target, "")) == item_id):
 		return StaffTasks.REFUSE_ITEM_HAVE
 	for entry: Dictionary in staff_usable_items():
 		if str(entry["item_id"]) == item_id and int(entry["free"]) > 0:
@@ -1525,19 +1625,66 @@ func staff_item_refusal(item_id: String, staff_id: String) -> String:
 	return StaffTasks.REFUSE_ITEM_NONE
 
 
-## Gives a person an item for the day, replacing any they were given (one each).
-func staff_assign_item(item_id: String, staff_id: String) -> String:
-	var refusal := staff_item_refusal(item_id, staff_id)
+## Gives a person an item for the day (one each; a second replaces the first),
+## or puts an Office item in the Office box.
+func staff_assign_item(item_id: String, target: String) -> String:
+	var refusal := staff_item_refusal(item_id, target)
 	if not refusal.is_empty():
 		return refusal
-	staff_day_items[staff_id] = item_id
+	if target == OFFICE_BOX:
+		staff_office_item = item_id
+	else:
+		staff_day_items[target] = item_id
 	return ""
 
 
-## Takes a person's item back (nothing once the day is confirmed).
-func staff_unassign_item(staff_id: String) -> void:
-	if not staff_day_confirmed:
-		staff_day_items.erase(staff_id)
+## Takes a person's item back, or empties the Office box (nothing once the day is confirmed).
+func staff_unassign_item(target: String) -> void:
+	if staff_day_confirmed:
+		return
+	if target == OFFICE_BOX:
+		staff_office_item = ""
+	else:
+		staff_day_items.erase(target)
+
+
+## The person's taste in gifts: { likes, dislikes } (item ids), and the Loyalty each gives.
+func staff_gift_taste(staff_id: String) -> Dictionary:
+	var row := DataDB.get_staff(staff_id)
+	var likes: Array = row.get("gift_likes", []) if row.get("gift_likes") != null else []
+	var dislikes: Array = row.get("gift_dislikes", []) if row.get("gift_dislikes") != null else []
+	return {"likes": likes, "dislikes": dislikes,
+		"like_loyalty": int(row["gift_like_loyalty"]) if row.get("gift_like_loyalty") != null else Levers.whole("staff_gift_like_loyalty"),
+		"neutral_loyalty": int(row["gift_neutral_loyalty"]) if row.get("gift_neutral_loyalty") != null else Levers.whole("staff_gift_neutral_loyalty"),
+		"dislike_loyalty": int(row["gift_dislike_loyalty"]) if row.get("gift_dislike_loyalty") != null else Levers.whole("staff_gift_dislike_loyalty")}
+
+
+## What a gift does to this person's Loyalty (no change made).
+func staff_gift_loyalty(staff_id: String, item_id: String) -> int:
+	var taste := staff_gift_taste(staff_id)
+	if (taste["likes"] as Array).has(item_id):
+		return int(taste["like_loyalty"])
+	if (taste["dislikes"] as Array).has(item_id):
+		return int(taste["dislike_loyalty"])
+	return int(taste["neutral_loyalty"])
+
+
+## Hands a gift over: Loyalty by taste, and their taste becomes known.
+func _give_gift(staff_id: String, item_id: String) -> void:
+	var change := staff_gift_loyalty(staff_id, item_id)
+	staff_loyalty_add(staff_id, change)
+	staff_taste_known[staff_id] = true
+	var taste := staff_gift_taste(staff_id)
+	var key := "assign.gift_loved" if (taste["likes"] as Array).has(item_id) \
+		else ("assign.gift_disliked" if (taste["dislikes"] as Array).has(item_id) else "assign.gift_fine")
+	var name := str(DataDB.get_staff(staff_id).get("name", staff_id))
+	match key:
+		"assign.gift_loved":
+			staff_gift_notes.append(Text.say("assign.gift_loved", {"name": name, "count": "%+d" % change}))
+		"assign.gift_disliked":
+			staff_gift_notes.append(Text.say("assign.gift_disliked", {"name": name, "count": "%+d" % change}))
+		_:
+			staff_gift_notes.append(Text.say("assign.gift_fine", {"name": name, "count": "%+d" % change}))
 
 
 ## Blocks of a person's day already taken (tasks and delegated work).
@@ -1555,6 +1702,8 @@ func staff_assign_refusal(uid: String, staff_id: String) -> String:
 func staff_assign(uid: String, staff_id: String) -> String:
 	if staff_day_confirmed:
 		return StaffTasks.REFUSE_LOCKED
+	if hired_member(staff_id).is_empty():
+		return StaffTasks.REFUSE_UNKNOWN
 	var holder := ""
 	for id: String in staff_day_plan.keys():
 		if (staff_day_plan[id] as Array).has(uid):
@@ -1602,9 +1751,24 @@ func staff_confirm_day() -> String:
 	if not refusal.is_empty():
 		return refusal
 	staff_day_confirmed = true
-	# The coffee and tea given out are used up now.
+	# The items given out are used up now: gifts are handed over, and an item in
+	# the Office box leaves a change for the next pool.
+	staff_gift_notes = []
 	for id: String in staff_day_items.keys():
-		_take_item(str(staff_day_items[id]))
+		var item_id := str(staff_day_items[id])
+		if str(staff_item_info(item_id)["effect"]) == "GIFT":
+			_give_gift(id, item_id)
+		_take_item(item_id)
+	if not staff_office_item.is_empty():
+		var office := staff_item_info(staff_office_item)
+		var label := str(DataDB.get_shop_item(staff_office_item).get("name", staff_office_item))
+		match str(office["effect"]):
+			"POOL_FAMILY":
+				staff_add_pool_change(str(office["target"]), int(office["value"]), int(office["days"]), label)
+			"POOL_MAX":
+				staff_add_pool_change(StaffPoolModifiers.MAX, int(office["value"]), int(office["days"]), label)
+		_take_item(staff_office_item)
+		staff_office_item = ""
 	return ""
 
 
@@ -1625,7 +1789,7 @@ func _staff_resolve_day() -> void:
 			_apply_booster_delta(organization, int(result["standing"][organization])))
 	_move_xp(int(result["xp"]))
 	for meter: String in (result["awareness"] as Dictionary).keys():
-		apply_awareness_delta(meter, int(result["awareness"][meter]))
+		apply_awareness_delta(meter.to_lower(), int(result["awareness"][meter]))
 	var cap := Levers.whole("staff_tasks_week_loyalty_cap")
 	for id: String in (result["loyalty"] as Dictionary).keys():
 		staff_week_tasks[id] = clampi(int(staff_week_tasks.get(id, 0)) + int(result["loyalty"][id]), -cap, cap)
@@ -2125,6 +2289,10 @@ func apply_event_choice(event_id: String, letter: String, delegate_id: String = 
 
 	# The event's own hours pass first, so a promise's deadline or a
 	# follow-up's delay counts from when the event is over (2026-10-31).
+	var pool_family: Variant = chosen.get("task_pool_family")
+	if pool_family != null and not str(pool_family).is_empty():
+		staff_add_pool_change(str(pool_family), int(chosen.get("task_pool_change", 0)),
+			int(chosen.get("task_pool_days", 1)) if chosen.get("task_pool_days") != null else 1, str(event.get("title", "")))
 	var hours := EventEngine.hours_of(event)
 	if not delegate_role.is_empty():
 		hours = StaffTasks.delegate_hours(hours)

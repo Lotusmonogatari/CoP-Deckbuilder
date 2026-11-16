@@ -26,7 +26,7 @@ func setup(id: String) -> void:
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	if data is Dictionary and (data as Dictionary).has("item"):
 		return GameState.staff_item_refusal(str((data as Dictionary)["item"]), staff_id).is_empty()
-	if not (data is Dictionary) or not (data as Dictionary).has("uid"):
+	if not (data is Dictionary) or not (data as Dictionary).has("uid") or staff_id == GameState.OFFICE_BOX:
 		return false
 	var uid := str((data as Dictionary)["uid"])
 	var refusal := GameState.staff_assign_refusal(uid, staff_id)

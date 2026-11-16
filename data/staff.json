@@ -18,7 +18,17 @@
     "tier_1_reward": null,
     "tier_2_reward": null,
     "biography": "Hana volunteered two winters at a Sapporo elder-care home, then rewrote its meal-subsidy application herself. It got funded.",
-    "role_flavor": "Welfare and elder-care programs are her beat as a policy researcher."
+    "role_flavor": "Welfare and elder-care programs are her beat as a policy researcher.",
+    "gift_likes": [
+      "SH25",
+      "SH28"
+    ],
+    "gift_dislikes": [
+      "SH30"
+    ],
+    "gift_like_loyalty": 8,
+    "gift_neutral_loyalty": 2,
+    "gift_dislike_loyalty": -2
   },
   {
     "staff_id": "SF02",
@@ -48,7 +58,17 @@
     ],
     "tier_2_reward": null,
     "biography": "Yui caught a 40,000,000円 double-count in last year’s budget draft. The Taxpayers’ Alliance still quotes her memo.",
-    "role_flavor": "Budget analyst covering taxes, spending, and economic growth."
+    "role_flavor": "Budget analyst covering taxes, spending, and economic growth.",
+    "gift_likes": [
+      "SH27",
+      "SH30"
+    ],
+    "gift_dislikes": [
+      "SH32"
+    ],
+    "gift_like_loyalty": 10,
+    "gift_neutral_loyalty": 3,
+    "gift_dislike_loyalty": -5
   },
   {
     "staff_id": "SF03",
@@ -78,7 +98,17 @@
     ],
     "tier_2_reward": null,
     "biography": "Sheen grew up after the war on a Tokachi dairy farm with few resources, and pieced together a simple mechanized system before he finished high school.",
-    "role_flavor": "On farming and agritech, he’s the office’s go-to researcher."
+    "role_flavor": "On farming and agritech, he’s the office’s go-to researcher.",
+    "gift_likes": [
+      "SH29",
+      "SH32"
+    ],
+    "gift_dislikes": [
+      "SH25"
+    ],
+    "gift_like_loyalty": 12,
+    "gift_neutral_loyalty": 4,
+    "gift_dislike_loyalty": -8
   },
   {
     "staff_id": "SF04",
@@ -121,7 +151,17 @@
       }
     ],
     "biography": "Marcus spent six years as a Ministry of Government Administration clerk. He knows which unit director actually reads the briefing binders.",
-    "role_flavor": "Liaison to the ministries and Members of Parliament."
+    "role_flavor": "Liaison to the ministries and Members of Parliament.",
+    "gift_likes": [
+      "SH31",
+      "SH25"
+    ],
+    "gift_dislikes": [
+      "SH27"
+    ],
+    "gift_like_loyalty": 15,
+    "gift_neutral_loyalty": 5,
+    "gift_dislike_loyalty": -4
   },
   {
     "staff_id": "SF05",
@@ -146,7 +186,17 @@
     ],
     "tier_2_reward": null,
     "biography": "Stephen flagged his Hakodate bank’s thin loan-loss reserves to regulators, then left for a job at a regional bank.",
-    "role_flavor": "Tax and banking regulation analyst, by way of a regional bank."
+    "role_flavor": "Tax and banking regulation analyst, by way of a regional bank.",
+    "gift_likes": [
+      "SH33",
+      "SH27"
+    ],
+    "gift_dislikes": [
+      "SH29"
+    ],
+    "gift_like_loyalty": 8,
+    "gift_neutral_loyalty": 2,
+    "gift_dislike_loyalty": -7
   },
   {
     "staff_id": "SF06",
@@ -189,7 +239,17 @@
       }
     ],
     "biography": "Hiromi spotted embarrassing errors in the party's 2018 election platform overnight and recalled every printed copy before the media caught on.",
-    "role_flavor": "Party platforms and candidate vetting fall to this policy adviser."
+    "role_flavor": "Party platforms and candidate vetting fall to this policy adviser.",
+    "gift_likes": [
+      "SH26",
+      "SH29"
+    ],
+    "gift_dislikes": [
+      "SH31"
+    ],
+    "gift_like_loyalty": 10,
+    "gift_neutral_loyalty": 3,
+    "gift_dislike_loyalty": -3
   },
   {
     "staff_id": "SF07",
@@ -223,7 +283,17 @@
       }
     ],
     "biography": "Ako brokered the Muroran steelworks wage deal by getting union and management to share one lunch table.",
-    "role_flavor": "A negotiator who works both sides of labor and business."
+    "role_flavor": "A negotiator who works both sides of labor and business.",
+    "gift_likes": [
+      "SH28",
+      "SH31"
+    ],
+    "gift_dislikes": [
+      "SH33"
+    ],
+    "gift_like_loyalty": 12,
+    "gift_neutral_loyalty": 4,
+    "gift_dislike_loyalty": -6
   },
   {
     "staff_id": "SF08",
@@ -244,7 +314,17 @@
     "tier_1_reward": null,
     "tier_2_reward": null,
     "biography": "Aoi ran her university’s campus radio show, and her interview with the official in charge of educational programming went viral among students.",
-    "role_flavor": "Press aide for youth and student media."
+    "role_flavor": "Press aide for youth and student media.",
+    "gift_likes": [
+      "SH30",
+      "SH33"
+    ],
+    "gift_dislikes": [
+      "SH26"
+    ],
+    "gift_like_loyalty": 15,
+    "gift_neutral_loyalty": 5,
+    "gift_dislike_loyalty": -2
   },
   {
     "staff_id": "SF09",
@@ -274,7 +354,17 @@
     ],
     "tier_2_reward": null,
     "biography": "Isela designed the Sapporo Daily’s monthly opinion poll. It called several 2018 single-member district seats within two points, beating long-established pollsters.",
-    "role_flavor": "Polls and public opinion are what this media strategist tracks."
+    "role_flavor": "Polls and public opinion are what this media strategist tracks.",
+    "gift_likes": [
+      "SH32",
+      "SH26"
+    ],
+    "gift_dislikes": [
+      "SH28"
+    ],
+    "gift_like_loyalty": 8,
+    "gift_neutral_loyalty": 2,
+    "gift_dislike_loyalty": -5
   },
   {
     "staff_id": "SF10",
@@ -304,7 +394,17 @@
     ],
     "tier_2_reward": null,
     "biography": "Himari’s photo essay on Nibutani woodcarvers filled the Artisans Guild’s gallery and doubled its apprenticeship applications.",
-    "role_flavor": "For arts, crafts, and Ainu culture coverage, she’s the spokesperson."
+    "role_flavor": "For arts, crafts, and Ainu culture coverage, she’s the spokesperson.",
+    "gift_likes": [
+      "SH25",
+      "SH28"
+    ],
+    "gift_dislikes": [
+      "SH30"
+    ],
+    "gift_like_loyalty": 10,
+    "gift_neutral_loyalty": 3,
+    "gift_dislike_loyalty": -8
   },
   {
     "staff_id": "SF11",
@@ -339,7 +439,17 @@
       }
     ],
     "biography": "Alejandro covered the Kushiro food-recall scandal as a reporter. Half the press gallery still owes him a favor.",
-    "role_flavor": "Handles the reporters and the press gallery as lead spokesman."
+    "role_flavor": "Handles the reporters and the press gallery as lead spokesman.",
+    "gift_likes": [
+      "SH27",
+      "SH30"
+    ],
+    "gift_dislikes": [
+      "SH32"
+    ],
+    "gift_like_loyalty": 12,
+    "gift_neutral_loyalty": 4,
+    "gift_dislike_loyalty": -4
   },
   {
     "staff_id": "SF12",
@@ -364,7 +474,17 @@
     ],
     "tier_2_reward": null,
     "biography": "Santiago wrote the speech for the Veterans’ Association’s 75th memorial at Asahikawa; three ministers asked for copies.",
-    "role_flavor": "Veterans and traditional-values messaging run through this speechwriter."
+    "role_flavor": "Veterans and traditional-values messaging run through this speechwriter.",
+    "gift_likes": [
+      "SH29",
+      "SH32"
+    ],
+    "gift_dislikes": [
+      "SH25"
+    ],
+    "gift_like_loyalty": 15,
+    "gift_neutral_loyalty": 5,
+    "gift_dislike_loyalty": -7
   },
   {
     "staff_id": "SF13",
@@ -403,7 +523,17 @@
       }
     ],
     "biography": "Kenta wrote the slogan on every party poster in the 2015 election, and activists still chant it at rallies.",
-    "role_flavor": "Communications lead for party messaging and activist outreach."
+    "role_flavor": "Communications lead for party messaging and activist outreach.",
+    "gift_likes": [
+      "SH31",
+      "SH25"
+    ],
+    "gift_dislikes": [
+      "SH27"
+    ],
+    "gift_like_loyalty": 8,
+    "gift_neutral_loyalty": 2,
+    "gift_dislike_loyalty": -3
   },
   {
     "staff_id": "SF14",
@@ -437,7 +567,17 @@
       }
     ],
     "biography": "Honoka organized a joint temple-and-shrine relief kitchen after a recent earthquake; both associations still call her first.",
-    "role_flavor": "Faith outreach to temples and shrines is her portfolio as a spokesperson."
+    "role_flavor": "Faith outreach to temples and shrines is her portfolio as a spokesperson.",
+    "gift_likes": [
+      "SH33",
+      "SH27"
+    ],
+    "gift_dislikes": [
+      "SH29"
+    ],
+    "gift_like_loyalty": 10,
+    "gift_neutral_loyalty": 3,
+    "gift_dislike_loyalty": -6
   },
   {
     "staff_id": "SF15",
@@ -458,7 +598,17 @@
     "tier_1_reward": null,
     "tier_2_reward": null,
     "biography": "Miharu knocked on 4,000 doors during her first campaign and remembers which households keep a dog.",
-    "role_flavor": "Field organizer running door-to-door voter contact."
+    "role_flavor": "Field organizer running door-to-door voter contact.",
+    "gift_likes": [
+      "SH26",
+      "SH29"
+    ],
+    "gift_dislikes": [
+      "SH31"
+    ],
+    "gift_like_loyalty": 12,
+    "gift_neutral_loyalty": 4,
+    "gift_dislike_loyalty": -2
   },
   {
     "staff_id": "SF16",
@@ -488,7 +638,17 @@
     ],
     "tier_2_reward": null,
     "biography": "Hiroki got the night bus route to Sapporo’s Higashi ward restored by riding it with the transit director.",
-    "role_flavor": "Commuters, families, and city wards rely on this district caseworker."
+    "role_flavor": "Commuters, families, and city wards rely on this district caseworker.",
+    "gift_likes": [
+      "SH28",
+      "SH31"
+    ],
+    "gift_dislikes": [
+      "SH33"
+    ],
+    "gift_like_loyalty": 15,
+    "gift_neutral_loyalty": 5,
+    "gift_dislike_loyalty": -5
   },
   {
     "staff_id": "SF17",
@@ -518,7 +678,17 @@
     ],
     "tier_2_reward": null,
     "biography": "Grant crewed a Nemuro kelp boat for three seasons, then won the fisheries cooperative a new cold-storage grant.",
-    "role_flavor": "In the fishing ports and farm towns, he’s the district’s representative."
+    "role_flavor": "In the fishing ports and farm towns, he’s the district’s representative.",
+    "gift_likes": [
+      "SH30",
+      "SH33"
+    ],
+    "gift_dislikes": [
+      "SH26"
+    ],
+    "gift_like_loyalty": 8,
+    "gift_neutral_loyalty": 2,
+    "gift_dislike_loyalty": -8
   },
   {
     "staff_id": "SF18",
@@ -561,7 +731,17 @@
       }
     ],
     "biography": "Leo turned a vacant Aomori lot into a community garden, and its volunteers became the ward’s first neighborhood association.",
-    "role_flavor": "Neighborhood associations owe their start to this community organizer."
+    "role_flavor": "Neighborhood associations owe their start to this community organizer.",
+    "gift_likes": [
+      "SH32",
+      "SH26"
+    ],
+    "gift_dislikes": [
+      "SH28"
+    ],
+    "gift_like_loyalty": 10,
+    "gift_neutral_loyalty": 3,
+    "gift_dislike_loyalty": -4
   },
   {
     "staff_id": "SF19",
@@ -586,7 +766,17 @@
     ],
     "tier_2_reward": null,
     "biography": "Kanima drove the Shiraoi elders to every council hearing on the land-use plan until it included Ainu place names.",
-    "role_flavor": "Local liaison to rural towns and Ainu communities."
+    "role_flavor": "Local liaison to rural towns and Ainu communities.",
+    "gift_likes": [
+      "SH25",
+      "SH28"
+    ],
+    "gift_dislikes": [
+      "SH30"
+    ],
+    "gift_like_loyalty": 12,
+    "gift_neutral_loyalty": 4,
+    "gift_dislike_loyalty": -7
   },
   {
     "staff_id": "SF20",
@@ -629,7 +819,17 @@
       }
     ],
     "biography": "Haruka managed three mayoral campaigns in Otaru and won all three; the Kōenkai treasurer calls her before every fundraiser.",
-    "role_flavor": "Works the mayors and the Kōenkai as the district’s political operative."
+    "role_flavor": "Works the mayors and the Kōenkai as the district’s political operative.",
+    "gift_likes": [
+      "SH27",
+      "SH30"
+    ],
+    "gift_dislikes": [
+      "SH32"
+    ],
+    "gift_like_loyalty": 15,
+    "gift_neutral_loyalty": 5,
+    "gift_dislike_loyalty": -3
   },
   {
     "staff_id": "SF21",
@@ -663,6 +863,16 @@
       }
     ],
     "biography": "Ari ran her family’s Obihiro bakery for a decade and recruited forty shop owners into the Small Business Association.",
-    "role_flavor": "Small business owners and their supporters have her as their district contact."
+    "role_flavor": "Small business owners and their supporters have her as their district contact.",
+    "gift_likes": [
+      "SH29",
+      "SH32"
+    ],
+    "gift_dislikes": [
+      "SH25"
+    ],
+    "gift_like_loyalty": 8,
+    "gift_neutral_loyalty": 2,
+    "gift_dislike_loyalty": -6
   }
 ]

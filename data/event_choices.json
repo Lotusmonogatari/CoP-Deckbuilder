@@ -67,7 +67,10 @@
     ],
     "promise_kept_text": "You spend two hours at the radio station making the case for a yearly tournament, and the callers remember it.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV01",
@@ -159,7 +162,10 @@
     ],
     "promise_kept_text": "You spend four hours handing out tickets and seeing constituents into the arena. Students fill the cheap seats, and the shopkeepers stay open late.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV01",
@@ -200,7 +206,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV02",
@@ -235,7 +244,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV02",
@@ -269,7 +281,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV02",
@@ -327,7 +342,10 @@
     ],
     "promise_kept_text": "You stand up in the heritage debate and name the bell tower roof. The abbot hears of it before you are back in your office.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV03",
@@ -354,7 +372,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV03",
@@ -384,7 +405,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV04",
@@ -411,7 +435,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV04",
@@ -441,7 +468,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV04",
@@ -471,7 +501,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV05",
@@ -506,7 +539,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV05",
@@ -538,7 +574,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV05",
@@ -568,7 +607,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV06",
@@ -601,7 +643,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV06",
@@ -631,7 +676,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV11",
@@ -661,7 +709,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV11",
@@ -685,7 +736,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV11",
@@ -715,7 +769,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV12",
@@ -748,7 +805,10 @@
     "promise_broken": null,
     "promise_kept_text": "You spend an hour on the rail plans and send the shopkeeper a short note on who pays for what. He pins it up by the register.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV12",
@@ -775,7 +835,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV12",
@@ -805,7 +868,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV13",
@@ -837,7 +903,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV13",
@@ -872,7 +941,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV14",
@@ -899,7 +971,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV14",
@@ -929,7 +1004,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV14",
@@ -959,7 +1037,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV15",
@@ -989,7 +1070,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV15",
@@ -1016,7 +1100,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV16",
@@ -1043,7 +1130,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV16",
@@ -1075,7 +1165,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV17",
@@ -1107,7 +1200,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV17",
@@ -1134,7 +1230,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV17",
@@ -1158,7 +1257,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV18",
@@ -1190,7 +1292,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV18",
@@ -1221,7 +1326,10 @@
     "promise_broken": null,
     "promise_kept_text": "The call runs long. The mayors read you their one page twice.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV18",
@@ -1248,7 +1356,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV19",
@@ -1281,7 +1392,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV19",
@@ -1316,7 +1430,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV19",
@@ -1345,7 +1462,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV20",
@@ -1380,7 +1500,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV20",
@@ -1411,7 +1534,10 @@
     "promise_broken": null,
     "promise_kept_text": "You call the founder back. He talks for forty minutes and sends three follow-up emails before you hang up.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV20",
@@ -1440,7 +1566,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV21",
@@ -1475,7 +1604,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV21",
@@ -1499,7 +1631,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV21",
@@ -1533,7 +1668,10 @@
     "promise_broken": null,
     "promise_kept_text": "The bottle of district sake arrives at the embassy with your card. The retired officers drink to your health.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV22",
@@ -1568,7 +1706,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV22",
@@ -1601,7 +1742,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV22",
@@ -1628,7 +1772,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV23",
@@ -1660,7 +1807,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV23",
@@ -1687,7 +1837,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV23",
@@ -1714,7 +1867,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV24",
@@ -1749,7 +1905,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV24",
@@ -1776,7 +1935,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV24",
@@ -1803,7 +1965,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV25",
@@ -1835,7 +2000,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV25",
@@ -1859,7 +2027,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV25",
@@ -1886,7 +2057,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV26",
@@ -1930,7 +2104,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV26",
@@ -1957,7 +2134,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV26",
@@ -1993,7 +2173,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV27",
@@ -2022,7 +2205,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV27",
@@ -2052,7 +2238,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV27",
@@ -2076,7 +2265,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV31",
@@ -2103,7 +2295,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV31",
@@ -2133,7 +2328,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV31",
@@ -2163,7 +2361,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV32",
@@ -2198,7 +2399,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV32",
@@ -2225,7 +2429,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV32",
@@ -2260,7 +2467,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV33",
@@ -2287,7 +2497,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV33",
@@ -2317,7 +2530,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV33",
@@ -2347,7 +2563,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV34",
@@ -2380,7 +2599,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV34",
@@ -2410,7 +2632,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV34",
@@ -2442,7 +2667,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV35",
@@ -2477,7 +2705,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV35",
@@ -2504,7 +2735,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV35",
@@ -2539,7 +2773,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV36",
@@ -2569,7 +2806,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV36",
@@ -2602,7 +2842,10 @@
     "promise_broken": null,
     "promise_kept_text": "You do the pre-arranged slot, with notes in hand. The host is warmer than he sounded on the phone.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV36",
@@ -2626,7 +2869,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV37",
@@ -2661,7 +2907,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV37",
@@ -2688,7 +2937,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV37",
@@ -2717,7 +2969,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV38",
@@ -2755,7 +3010,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV38",
@@ -2787,7 +3045,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV38",
@@ -2831,7 +3092,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV39",
@@ -2861,7 +3125,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV39",
@@ -2885,7 +3152,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV39",
@@ -2917,7 +3187,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV40",
@@ -2952,7 +3225,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV40",
@@ -2989,7 +3265,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV40",
@@ -3018,7 +3297,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV41",
@@ -3057,7 +3339,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV41",
@@ -3084,7 +3369,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV41",
@@ -3116,7 +3404,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV42",
@@ -3156,7 +3447,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV42",
@@ -3180,7 +3474,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV42",
@@ -3212,7 +3509,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV43",
@@ -3246,7 +3546,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV43",
@@ -3270,7 +3573,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV43",
@@ -3299,7 +3605,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV44",
@@ -3329,7 +3638,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV44",
@@ -3356,7 +3668,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV44",
@@ -3383,7 +3698,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV45",
@@ -3418,7 +3736,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV45",
@@ -3448,7 +3769,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV45",
@@ -3475,7 +3799,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV46",
@@ -3505,7 +3832,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV46",
@@ -3532,7 +3862,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV46",
@@ -3566,7 +3899,10 @@
     "promise_broken": null,
     "promise_kept_text": "The box of cookies reaches the fundraiser's organizers with your apologies. They are gone before the speeches start.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV47",
@@ -3596,7 +3932,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV47",
@@ -3623,7 +3962,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV47",
@@ -3650,7 +3992,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV12",
@@ -3677,7 +4022,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV13",
@@ -3709,7 +4057,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV15",
@@ -3739,7 +4090,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV16",
@@ -3766,7 +4120,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV17",
@@ -3798,7 +4155,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV18",
@@ -3830,7 +4190,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV19",
@@ -3863,7 +4226,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV22",
@@ -3898,7 +4264,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV23",
@@ -3930,7 +4299,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV25",
@@ -3959,7 +4331,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV26",
@@ -3998,7 +4373,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV27",
@@ -4027,7 +4405,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV37",
@@ -4059,7 +4440,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV38",
@@ -4091,7 +4475,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV41",
@@ -4130,7 +4517,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV42",
@@ -4165,7 +4555,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV43",
@@ -4194,7 +4587,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV48",
@@ -4237,7 +4633,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV48",
@@ -4267,7 +4666,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV48",
@@ -4294,7 +4696,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV48",
@@ -4337,7 +4742,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV49",
@@ -4376,7 +4784,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV49",
@@ -4408,7 +4819,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV49",
@@ -4448,7 +4862,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV49",
@@ -4483,7 +4900,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV50",
@@ -4522,7 +4942,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV50",
@@ -4554,7 +4977,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV50",
@@ -4581,7 +5007,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV50",
@@ -4616,7 +5045,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV51",
@@ -4643,7 +5075,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV51",
@@ -4673,7 +5108,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Media Spokesperson",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV51",
@@ -4697,7 +5135,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV51",
@@ -4724,7 +5165,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV52",
@@ -4753,7 +5197,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV52",
@@ -4780,7 +5227,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Media Spokesperson",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV52",
@@ -4812,7 +5262,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV52",
@@ -4841,7 +5294,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV53",
@@ -4870,7 +5326,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV53",
@@ -4897,7 +5356,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV53",
@@ -4928,7 +5390,10 @@
     "promise_broken": null,
     "promise_kept_text": "You raise the cooperative's concerns in committee and send the members the record of what was said.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV53",
@@ -4957,7 +5422,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV54",
@@ -4989,7 +5457,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV54",
@@ -5013,7 +5484,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Media Spokesperson",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV54",
@@ -5048,7 +5522,10 @@
     "promise_broken": null,
     "promise_kept_text": "You answer the Chamber's written questions, every one of them, in one long letter.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV54",
@@ -5080,7 +5557,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV55",
@@ -5112,7 +5592,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": "Press",
+    "task_pool_change": 2,
+    "task_pool_days": 1
   },
   {
     "event_id": "EV55",
@@ -5139,7 +5622,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Media Spokesperson",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV55",
@@ -5163,7 +5649,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV55",
@@ -5195,7 +5684,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV56",
@@ -5227,7 +5719,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV56",
@@ -5254,7 +5749,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV56",
@@ -5286,7 +5784,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV56",
@@ -5318,7 +5819,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV57",
@@ -5350,7 +5854,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV57",
@@ -5377,7 +5884,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV57",
@@ -5411,7 +5921,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV57",
@@ -5443,7 +5956,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV58",
@@ -5475,7 +5991,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV58",
@@ -5502,7 +6021,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV58",
@@ -5531,7 +6053,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV58",
@@ -5560,7 +6085,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV59",
@@ -5592,7 +6120,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV59",
@@ -5616,7 +6147,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV59",
@@ -5645,7 +6179,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV59",
@@ -5677,7 +6214,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV60",
@@ -5710,7 +6250,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV60",
@@ -5739,7 +6282,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV60",
@@ -5763,7 +6309,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV60",
@@ -5792,7 +6341,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV61",
@@ -5831,7 +6383,10 @@
     "promise_broken": null,
     "promise_kept_text": "You write back to the network with a reply from the ministry and a list of what happens next.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV61",
@@ -5858,7 +6413,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV61",
@@ -5887,7 +6445,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV61",
@@ -5916,7 +6477,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV62",
@@ -5952,7 +6516,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV62",
@@ -5984,7 +6551,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV62",
@@ -6013,7 +6583,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV62",
@@ -6045,7 +6618,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV63",
@@ -6074,7 +6650,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV63",
@@ -6101,7 +6680,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV63",
@@ -6130,7 +6712,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV64",
@@ -6157,7 +6742,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV64",
@@ -6184,7 +6772,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV64",
@@ -6208,7 +6799,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV63",
@@ -6237,7 +6831,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV64",
@@ -6264,7 +6861,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV65",
@@ -6321,7 +6921,10 @@
     ],
     "promise_kept_text": "You tell them about the haskap berries that local families have gathered for generations, and the confectioners who roll them into the iconic sponge cakes. They take pictures of it for their social media and leave with the story.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV65",
@@ -6361,7 +6964,10 @@
     ],
     "promise_kept_text": "The cookies arrive at the farewell reception. The delegation passes the box around and asks where to buy more.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV65",
@@ -6388,7 +6994,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV65",
@@ -6428,7 +7037,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV66",
@@ -6464,7 +7076,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV66",
@@ -6496,7 +7111,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV66",
@@ -6532,7 +7150,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV66",
@@ -6564,7 +7185,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV67",
@@ -6600,7 +7224,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV67",
@@ -6632,7 +7259,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV67",
@@ -6665,7 +7295,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV67",
@@ -6697,7 +7330,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV68",
@@ -6729,7 +7365,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV68",
@@ -6758,7 +7397,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV68",
@@ -6791,7 +7433,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV68",
@@ -6823,7 +7468,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV69",
@@ -6859,7 +7507,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV69",
@@ -6891,7 +7542,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV69",
@@ -6949,7 +7603,10 @@
     ],
     "promise_kept_text": "You press the prefecture until a crew is sent, and a gravel road is open within the week.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV69",
@@ -6981,7 +7638,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV70",
@@ -7014,7 +7674,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV70",
@@ -7043,7 +7706,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV70",
@@ -7076,7 +7742,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV71",
@@ -7112,7 +7781,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV71",
@@ -7141,7 +7813,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV71",
@@ -7179,7 +7854,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV71",
@@ -7206,7 +7884,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV72",
@@ -7242,7 +7923,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV72",
@@ -7274,7 +7958,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV72",
@@ -7332,7 +8019,10 @@
     ],
     "promise_kept_text": "You press the ward, and a covered drain goes on next year's public works list.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV72",
@@ -7364,7 +8054,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV73",
@@ -7400,7 +8093,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV73",
@@ -7429,7 +8125,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Media Spokesperson",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV73",
@@ -7462,7 +8161,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV73",
@@ -7494,7 +8196,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV74",
@@ -7526,7 +8231,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV74",
@@ -7555,7 +8263,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV74",
@@ -7605,7 +8316,10 @@
     ],
     "promise_kept_text": "You raise the next corner with the ward, and it goes on the same repair list.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV75",
@@ -7641,7 +8355,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV75",
@@ -7670,7 +8387,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV75",
@@ -7702,7 +8422,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV76",
@@ -7752,7 +8475,10 @@
     ],
     "promise_kept_text": "You get nets for the next street. The crows move on to the river.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV76",
@@ -7785,7 +8511,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV76",
@@ -7814,7 +8543,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV77",
@@ -7843,7 +8575,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV77",
@@ -7875,7 +8610,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV78",
@@ -7911,7 +8649,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV78",
@@ -7940,7 +8681,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV78",
@@ -7998,7 +8742,10 @@
     ],
     "promise_kept_text": "You ask the ministry. Forty claims are stuck the same way, and a clerk is assigned to them.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV79",
@@ -8031,7 +8778,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV79",
@@ -8064,7 +8814,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV79",
@@ -8097,7 +8850,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV80",
@@ -8134,7 +8890,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV80",
@@ -8167,7 +8926,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV80",
@@ -8196,7 +8958,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV81",
@@ -8250,7 +9015,10 @@
     ],
     "promise_kept_text": "You hold the second session. A man stands up to say he hung up on one this morning.",
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV81",
@@ -8283,7 +9051,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV81",
@@ -8312,7 +9083,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV82",
@@ -8345,7 +9119,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV82",
@@ -8378,7 +9155,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV82",
@@ -8415,7 +9195,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV83",
@@ -8448,7 +9231,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV83",
@@ -8477,7 +9263,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV83",
@@ -8510,7 +9299,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV83",
@@ -8539,7 +9331,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV84",
@@ -8576,7 +9371,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": "Meetings",
+    "task_pool_change": 2,
+    "task_pool_days": 1
   },
   {
     "event_id": "EV84",
@@ -8605,7 +9403,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV84",
@@ -8638,7 +9439,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV84",
@@ -8671,7 +9475,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV85",
@@ -8708,7 +9515,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV85",
@@ -8737,7 +9547,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Media Spokesperson",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV85",
@@ -8770,7 +9583,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV85",
@@ -8803,7 +9619,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV86",
@@ -8840,7 +9659,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV86",
@@ -8869,7 +9691,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV86",
@@ -8902,7 +9727,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV86",
@@ -8935,7 +9763,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV87",
@@ -8972,7 +9803,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV87",
@@ -9001,7 +9835,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV87",
@@ -9038,7 +9875,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV87",
@@ -9067,7 +9907,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV88",
@@ -9104,7 +9947,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV88",
@@ -9133,7 +9979,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV88",
@@ -9166,7 +10015,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV88",
@@ -9199,7 +10051,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV89",
@@ -9236,7 +10091,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV89",
@@ -9265,7 +10123,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV89",
@@ -9298,7 +10159,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV89",
@@ -9331,7 +10195,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV90",
@@ -9368,7 +10235,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV90",
@@ -9397,7 +10267,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV90",
@@ -9430,7 +10303,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV90",
@@ -9463,7 +10339,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV91",
@@ -9500,7 +10379,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV91",
@@ -9529,7 +10411,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV91",
@@ -9562,7 +10447,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV91",
@@ -9595,7 +10483,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV92",
@@ -9632,7 +10523,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV92",
@@ -9661,7 +10555,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV92",
@@ -9694,7 +10591,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV92",
@@ -9727,7 +10627,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV93",
@@ -9764,7 +10667,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV93",
@@ -9793,7 +10699,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "District Representative",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV93",
@@ -9826,7 +10735,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV93",
@@ -9859,7 +10771,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV94",
@@ -9896,7 +10811,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV94",
@@ -9925,7 +10843,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": "Policy Research Assistant",
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV94",
@@ -9958,7 +10879,10 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   },
   {
     "event_id": "EV94",
@@ -9991,6 +10915,9 @@
     "promise_broken": null,
     "promise_kept_text": null,
     "delegate_role": null,
-    "delegate_blocks": null
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   }
 ]

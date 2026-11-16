@@ -1298,9 +1298,16 @@ SHEETS = {
             # event's hours). StaffTasks.delegate_fit() says how well each person does it.
             ("Delegate Role", "delegate_role", "str"),
             ("Delegate Hours", "delegate_blocks", "int"),
+            # 2026-11-16 (Cameron): this choice changes the task pool of the next
+            # day(s): a task family (or MAX for the day's maximum), the change
+            # (+/-), and for how many days' pools (blank = 1).
+            ("Task Pool Family", "task_pool_family", "str"),
+            ("Task Pool Change", "task_pool_change", "int"),
+            ("Task Pool Days", "task_pool_days", "int"),
         ],
         "optional": ["Starts Level", "Commitment", "Promise Kept", "Promise Broken", "Promise Kept Text",
-                     "Delegate Role", "Delegate Hours"],
+                     "Delegate Role", "Delegate Hours",
+                     "Task Pool Family", "Task Pool Change", "Task Pool Days"],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
@@ -1480,6 +1487,24 @@ SHEETS = {
             ("Note", "note", "str"),
         ],
     },
+    # 2026-11-16 (Cameron): game-state conditions that add tasks to a family (or
+    # to the day's maximum, Family = MAX) when the day's pool is drawn.
+    # See StaffPoolModifiers.gd.
+    "Staff Task Drivers": {
+        "out": "staff_task_drivers.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Driver ID", "driver_id", "str"),
+            ("Note", "note", "str"),
+            ("Variable", "variable", "str"),
+            ("Test", "test", "str"),
+            ("Threshold", "threshold", "int"),
+            ("Family", "family", "str"),
+            ("Add Min", "add_min", "int"),
+            ("Add Max", "add_max", "int"),
+            ("Cap", "cap", "int"),
+        ],
+    },
     "Opponents": {
         "out": "opponents.json",
         "key": "opp_id",
@@ -1646,8 +1671,17 @@ SHEETS = {
             # Flavor text about what the role does, shown under the role line
             # on the profile (2026-10-28).
             ("Role Flavor Text", "role_flavor", "str"),
+            # 2026-11-16 (Cameron): gift tastes. Item IDs they like and dislike
+            # (any other gift is neutral) and the Loyalty each gives; blank
+            # amounts use the Balance rows `Staff Gift: ...`.
+            ("Gift Likes", "gift_likes", "list"),
+            ("Gift Dislikes", "gift_dislikes", "list"),
+            ("Gift Like Loyalty", "gift_like_loyalty", "int"),
+            ("Gift Neutral Loyalty", "gift_neutral_loyalty", "int"),
+            ("Gift Dislike Loyalty", "gift_dislike_loyalty", "int"),
         ],
-        "optional": ["Biography", "Role Flavor Text"],
+        "optional": ["Biography", "Role Flavor Text", "Gift Likes", "Gift Dislikes", "Gift Like Loyalty",
+                     "Gift Neutral Loyalty", "Gift Dislike Loyalty"],
     },
     # Bonus Condition 1/2 are free text in three shapes (a staff-tier gate,
     # an unlock gate, a stacking-buff rule) plus literal "N/A" — not a fixed
@@ -1669,7 +1703,8 @@ SHEETS = {
                      "Bonus 2 Role", "Bonus 2 Min Tier", "Bonus 2 Amount",
                      "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Duration Units", "Card Tier",
                      "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase",
-                     "In Marketplace (Yes/No)", "Inventory (Personal/Office)", "Deck Size Increase", "Staff Hours"],
+                     "In Marketplace (Yes/No)", "Inventory (Personal/Office)", "Deck Size Increase", "Staff Hours",
+                     "Staff Effect", "Staff Value", "Staff Target", "Staff Slot", "Staff Days"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -1774,6 +1809,16 @@ SHEETS = {
             # working day when given to them on the Staff Assignments screen
             # (coffee and tea). Blank = not a staff item.
             ("Staff Hours", "staff_hours", "int"),
+            # 2026-11-16 (Cameron): what a staff item does on the Staff Assignments
+            # screen. Effect: HOURS, STRONG_FAMILY, REWARD_MULT, QUIET, GIFT (given to
+            # a person) or POOL_FAMILY, POOL_MAX (placed in the Office box). Value:
+            # the amount (hours, a percent, or +/- tasks); Target: a task family;
+            # Slot: Person or Office; Days: how many days' pools it changes.
+            ("Staff Effect", "staff_effect", "str"),
+            ("Staff Value", "staff_value", "int"),
+            ("Staff Target", "staff_target", "str"),
+            ("Staff Slot", "staff_slot", "str"),
+            ("Staff Days", "staff_days", "int"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's
@@ -4370,6 +4415,58 @@ def check_staff_task_tables(data, report):
             report.error("Staff Task Ramp", f"week {row.get('week')}: Weekend Factor must be 0 to 100")
 
 
+def check_staff_item_and_driver_tables(data, report):
+    """Staff Task Drivers, the Shop's Staff Effect columns, gift tastes and the
+    event task-pool columns (2026-11-16)."""
+    families = {str(r.get("family")) for r in data.get("staff_task_families", [])}
+    variables = {"dues_owed", "open_promises", "district_awareness", "national_awareness", "reputation",
+                 "constituency_support", "party_support", "level_in_progress", "avg_staff_loyalty", "weekday"}
+    tests = {"At least", "At most", "Is true", "Per", "Equals"}
+    for row in data.get("staff_task_drivers", []):
+        did = row.get("driver_id")
+        if row.get("variable") not in variables:
+            report.error("Staff Task Drivers", f"{did}: Variable '{row.get('variable')}' must be one of {sorted(variables)}")
+        if row.get("test") not in tests:
+            report.error("Staff Task Drivers", f"{did}: Test '{row.get('test')}' must be one of {sorted(tests)}")
+        if row.get("test") in ("At least", "At most", "Per", "Equals") and row.get("threshold") is None:
+            report.error("Staff Task Drivers", f"{did}: Test '{row.get('test')}' needs a Threshold")
+        if row.get("family") != "MAX" and row.get("family") not in families:
+            report.error("Staff Task Drivers", f"{did}: Family '{row.get('family')}' is not on the Staff Task Families tab (or MAX)")
+        low, high = row.get("add_min"), row.get("add_max")
+        if low is None or high is None or int(low) > int(high):
+            report.error("Staff Task Drivers", f"{did}: Add Min and Add Max must be numbers with Add Min <= Add Max")
+    effects = {"HOURS", "STRONG_FAMILY", "REWARD_MULT", "QUIET", "GIFT", "POOL_FAMILY", "POOL_MAX"}
+    for row in data.get("shop", []):
+        effect = row.get("staff_effect")
+        if effect in (None, ""):
+            continue
+        sid = row.get("item_id")
+        if effect not in effects:
+            report.error("Shop", f"{sid}: Staff Effect '{effect}' must be one of {sorted(effects)}")
+        if row.get("staff_slot") not in ("Person", "Office"):
+            report.error("Shop", f"{sid}: Staff Slot must be Person or Office")
+        if effect in ("STRONG_FAMILY", "POOL_FAMILY") and row.get("staff_target") not in families:
+            report.error("Shop", f"{sid}: Staff Target '{row.get('staff_target')}' is not a task family")
+        if effect in ("HOURS", "REWARD_MULT", "POOL_FAMILY", "POOL_MAX") and row.get("staff_value") is None:
+            report.error("Shop", f"{sid}: Staff Effect {effect} needs a Staff Value")
+        if effect in ("POOL_FAMILY", "POOL_MAX") and row.get("staff_slot") != "Office":
+            report.error("Shop", f"{sid}: {effect} items go in the Office box (Staff Slot = Office)")
+        if effect not in ("POOL_FAMILY", "POOL_MAX") and row.get("staff_slot") != "Person":
+            report.error("Shop", f"{sid}: {effect} items are given to a person (Staff Slot = Person)")
+    shop_ids = {r.get("item_id") for r in data.get("shop", [])}
+    for row in data.get("staff", []):
+        for column in ("gift_likes", "gift_dislikes"):
+            for item_id in row.get(column) or []:
+                if item_id not in shop_ids:
+                    report.error("Staff", f"{row.get('staff_id')} {column} names '{item_id}', which is not a Shop item")
+    for row in data.get("event_choices", []):
+        family = row.get("task_pool_family")
+        if family not in (None, "") and family != "MAX" and family not in families:
+            report.error("Event Choices", f"{row.get('event_id')} {row.get('choice')}: Task Pool Family '{family}' is not a task family (or MAX)")
+        if family not in (None, "") and row.get("task_pool_change") is None:
+            report.error("Event Choices", f"{row.get('event_id')} {row.get('choice')}: a Task Pool Family needs a Task Pool Change")
+
+
 def check_audit_gaps(data, report):
     """Five mistakes the audit (2026-11-16, audit/followup.md) showed the
     exporter let through: a Balance lever a script asks for that the workbook
@@ -4661,6 +4758,7 @@ def main():
     check_move_flashes(data, report)
     check_staff_tasks(data, report)
     check_staff_task_tables(data, report)
+    check_staff_item_and_driver_tables(data, report)
     check_audit_gaps(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)
 

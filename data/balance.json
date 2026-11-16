@@ -325,5 +325,8 @@
   "staff_delegate_hours_percent": 50,
   "staff_delegate_fair_gain_percent": 50,
   "staff_delegate_loyalty": 1,
+  "staff_gift_like_loyalty": 12,
+  "staff_gift_neutral_loyalty": 4,
+  "staff_gift_dislike_loyalty": -4,
   "xp_tiers": {}
 }

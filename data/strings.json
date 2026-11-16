@@ -7698,5 +7698,215 @@
     "english": "You have no staff, so nobody can do these. Any marked Due that is left undone costs you when the day ends. Hire staff to take them on.",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.gift_loved",
+    "where": "Gift given, a liked gift",
+    "english": "{name} loves it. Loyalty {count}.",
+    "placeholders": "name, count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.gift_fine",
+    "where": "Gift given, a neutral gift",
+    "english": "{name} is glad of it. Loyalty {count}.",
+    "placeholders": "name, count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.gift_disliked",
+    "where": "Gift given, a disliked gift",
+    "english": "{name} did not care for it. Loyalty {count}.",
+    "placeholders": "name, count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.gift_title",
+    "where": "Gifts handed over, heading",
+    "english": "Gifts",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.office_heading",
+    "where": "Staff Assignments, Office box heading",
+    "english": "Office box",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.office_hint",
+    "where": "Staff Assignments, Office box explanation",
+    "english": "An item placed here changes the tasks of the next day or days. It is used up when you confirm the day.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.office_empty",
+    "where": "Staff Assignments, an empty Office box",
+    "english": "Drop an Office item here",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.office_place",
+    "where": "Item popup, button to put an item in the Office box",
+    "english": "Place in the Office box",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.office_has_it",
+    "where": "Item popup, the item is already in the Office box",
+    "english": "Already in the Office box",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.why_line",
+    "where": "Staff Assignments, why today's tasks look as they do",
+    "english": "{note}: {family} {amount}",
+    "placeholders": "note, family, amount",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.max_line",
+    "where": "Staff Assignments, the most tasks today",
+    "english": "Most tasks today: {count}",
+    "placeholders": "count",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.family_max",
+    "where": "Staff Assignments, the name of the day's maximum in a reason",
+    "english": "most tasks a day",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_left",
+    "where": "Staff item card, how many are still free",
+    "english": "· {free} left",
+    "placeholders": "free",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_family",
+    "where": "Staff item card, strong fit for a family",
+    "english": "Strong at {family}",
+    "placeholders": "family",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_mult",
+    "where": "Staff item card, reward boost",
+    "english": "Rewards {percent}%",
+    "placeholders": "percent",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_quiet",
+    "where": "Staff item card, quiet day",
+    "english": "Quiet day",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_gift",
+    "where": "Staff item card, gift",
+    "english": "Gift",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_pool",
+    "where": "Staff item card, Office item that changes a family",
+    "english": "{family} {amount}",
+    "placeholders": "family, amount",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_cap_max",
+    "where": "Staff item card, Office item that changes the most tasks",
+    "english": "Tasks {amount}",
+    "placeholders": "amount",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_family",
+    "where": "Item popup, strong fit for a family",
+    "english": "Today, the person you give it to counts as a strong fit for {family} tasks.",
+    "placeholders": "family",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_mult",
+    "where": "Item popup, reward boost",
+    "english": "Today, the rewards from that person's strong-fit tasks are {percent}% as big.",
+    "placeholders": "percent",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_quiet",
+    "where": "Item popup, quiet day",
+    "english": "Today, that person gains or loses no Loyalty from an idle or overworked day.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_gift",
+    "where": "Item popup, gift",
+    "english": "A gift. Their Loyalty changes by their taste, and you learn their taste when you hand it over.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_pool_one",
+    "where": "Item popup, an Office item for one day",
+    "english": "Changes the number of {family} tasks in the next day's tasks by {amount}.",
+    "placeholders": "family, amount",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_pool_many",
+    "where": "Item popup, an Office item for several days",
+    "english": "Changes the number of {family} tasks by {amount} on each of the next {days} days.",
+    "placeholders": "family, amount, days",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_max_one",
+    "where": "Item popup, changes the most tasks for one day",
+    "english": "Changes the most tasks the next day delivers by {amount}.",
+    "placeholders": "amount",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "assign.item_desc_max_many",
+    "where": "Item popup, changes the most tasks for several days",
+    "english": "Changes the most tasks delivered by {amount} on each of the next {days} days.",
+    "placeholders": "amount, days",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.taste_known",
+    "where": "Staff profile, gift taste once known",
+    "english": "Gifts: likes {likes}. Dislikes {dislikes}.",
+    "placeholders": "likes, dislikes",
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.taste_unknown",
+    "where": "Staff profile, gift taste not yet known",
+    "english": "Gifts: taste unknown. Give a gift to find out.",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+  },
+  {
+    "key": "staff.taste_none",
+    "where": "Staff profile, no liked or disliked gift",
+    "english": "nothing in particular",
+    "placeholders": null,
+    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   }
 ]

@@ -42,7 +42,7 @@ const REQUIRED_FILES := [
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "strings",
 	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues", "awareness_effects", "events", "event_choices", "hosted_events", "event_options", "organization_tastes", "reaction_lines",
-	"cosmetic_packages", "move_flashes", "staff_tasks", "staff_task_families", "staff_task_ramp", "transition_cast", "transition_backgrounds", "transition_dialogue",
+	"cosmetic_packages", "move_flashes", "staff_tasks", "staff_task_families", "staff_task_ramp", "staff_task_drivers", "transition_cast", "transition_backgrounds", "transition_dialogue",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -117,6 +117,7 @@ var staff_tasks: Array = []
 ## Each family's daily range, and the weekly ramp of the day's maximum (2026-11-16).
 var staff_task_families: Array = []
 var staff_task_ramp: Array = []
+var staff_task_drivers: Array = []
 var reaction_lines: Array = []
 
 ## The optional cutscene line for a bill the influence swing above flipped —
@@ -415,6 +416,7 @@ func load_all() -> void:
 			"staff_tasks": staff_tasks = content if content is Array else []
 			"staff_task_families": staff_task_families = content if content is Array else []
 			"staff_task_ramp": staff_task_ramp = content if content is Array else []
+			"staff_task_drivers": staff_task_drivers = content if content is Array else []
 			"parties": parties = content if content is Array else []
 			"floor_votes": floor_votes = content if content is Dictionary else {}
 

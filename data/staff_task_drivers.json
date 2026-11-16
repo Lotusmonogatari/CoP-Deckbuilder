@@ -1,0 +1,156 @@
+[
+  {
+    "driver_id": "DR01",
+    "note": "Party dues are owed",
+    "variable": "dues_owed",
+    "test": "Is true",
+    "threshold": null,
+    "family": "Administration",
+    "add_min": 1,
+    "add_max": 2,
+    "cap": 2
+  },
+  {
+    "driver_id": "DR02",
+    "note": "Promises are waiting",
+    "variable": "open_promises",
+    "test": "Per",
+    "threshold": 2,
+    "family": "Correspondence",
+    "add_min": 1,
+    "add_max": 1,
+    "cap": 2
+  },
+  {
+    "driver_id": "DR03",
+    "note": "The district has gone quiet",
+    "variable": "district_awareness",
+    "test": "At most",
+    "threshold": 25,
+    "family": "Constituents",
+    "add_min": 1,
+    "add_max": 2,
+    "cap": 2
+  },
+  {
+    "driver_id": "DR04",
+    "note": "The district is watching",
+    "variable": "district_awareness",
+    "test": "At least",
+    "threshold": 65,
+    "family": "Constituents",
+    "add_min": 1,
+    "add_max": 1,
+    "cap": 1
+  },
+  {
+    "driver_id": "DR05",
+    "note": "The district press is watching",
+    "variable": "district_awareness",
+    "test": "At least",
+    "threshold": 65,
+    "family": "Press",
+    "add_min": 1,
+    "add_max": 1,
+    "cap": 1
+  },
+  {
+    "driver_id": "DR06",
+    "note": "The nation is watching",
+    "variable": "national_awareness",
+    "test": "At least",
+    "threshold": 65,
+    "family": "Press",
+    "add_min": 1,
+    "add_max": 2,
+    "cap": 2
+  },
+  {
+    "driver_id": "DR07",
+    "note": "Your name needs repair",
+    "variable": "reputation",
+    "test": "At most",
+    "threshold": 30,
+    "family": "Press",
+    "add_min": 1,
+    "add_max": 2,
+    "cap": 2
+  },
+  {
+    "driver_id": "DR08",
+    "note": "Invitations are arriving",
+    "variable": "reputation",
+    "test": "At least",
+    "threshold": 60,
+    "family": "Meetings",
+    "add_min": 1,
+    "add_max": 1,
+    "cap": 1
+  },
+  {
+    "driver_id": "DR09",
+    "note": "Constituents are restless",
+    "variable": "constituency_support",
+    "test": "At most",
+    "threshold": 15,
+    "family": "Constituents",
+    "add_min": 1,
+    "add_max": 2,
+    "cap": 2
+  },
+  {
+    "driver_id": "DR10",
+    "note": "A bill is in progress",
+    "variable": "level_in_progress",
+    "test": "Is true",
+    "threshold": null,
+    "family": "Analysis",
+    "add_min": 1,
+    "add_max": 2,
+    "cap": 2
+  },
+  {
+    "driver_id": "DR11",
+    "note": "The office is sour",
+    "variable": "avg_staff_loyalty",
+    "test": "At most",
+    "threshold": 29,
+    "family": "Chores",
+    "add_min": 1,
+    "add_max": 1,
+    "cap": 1
+  },
+  {
+    "driver_id": "DR12",
+    "note": "Monday's letters",
+    "variable": "weekday",
+    "test": "Equals",
+    "threshold": 1,
+    "family": "Correspondence",
+    "add_min": 1,
+    "add_max": 1,
+    "cap": 1
+  },
+  {
+    "driver_id": "DR13",
+    "note": "Friday's filing",
+    "variable": "weekday",
+    "test": "Equals",
+    "threshold": 5,
+    "family": "Administration",
+    "add_min": 1,
+    "add_max": 1,
+    "cap": 1
+  },
+  {
+    "driver_id": "DR14",
+    "note": "The party is restless",
+    "variable": "party_support",
+    "test": "At most",
+    "threshold": 25,
+    "family": "Meetings",
+    "add_min": 1,
+    "add_max": 1,
+    "cap": 1
+  }
+]

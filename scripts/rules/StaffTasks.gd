@@ -27,6 +27,7 @@ const REFUSE_BLOCKS := "blocks"          # not enough of their day is left
 const REFUSE_UNKNOWN := "unknown"
 const REFUSE_ITEM_HAVE := "item_have"    # they already have this item
 const REFUSE_ITEM_NONE := "item_none"    # none left to give
+const REFUSE_ITEM_SLOT := "item_slot"    # a person item for the Office box, or the reverse
 
 ## Effect names the Staff Assignments tab may use.
 const META_NAMES := ["Constituency support", "Reputation", "Funds", "Party support"]
@@ -283,7 +284,8 @@ static func assign_refusal(uid: String, staff_id: String, pool: Array, tasks: Ar
 
 ## Everything the plan does, as numbers. `members` are { staff_id, role, tier,
 ## loyalty }; `plan` is { staff_id: [uid, ...] }; `day` is { blocks, delegated,
-## full_days, bonus } (bonus: { staff_id: extra hours from an item }). Returns:
+## full_days, bonus, strong_family, reward_percent, quiet } (each a { staff_id: ... }
+## dictionary set by the items given to that person). Returns:
 ##   lines     one per given task { uid, staff_id, fit, effects [{name, amount}] }
 ##   meta      { "Reputation": +/-n, ... } after the daily caps
 ##   xp, awareness { District, National }, standing { organization: n }
@@ -315,6 +317,11 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 				continue
 			given[str(uid)] = true
 			var fit := effective_fit(task, str(member["role"]), int(member["loyalty"]))
+			# A Reference Set makes the person a strong fit for its family today
+			# (unrest still weakens it, as it does for any strong fit).
+			if str((day.get("strong_family", {}) as Dictionary).get(id, "")) == str(task.get("family", "")) \
+					and str(task.get("kind", "")) != KIND_TIME_OFF:
+				fit = StaffLoyalty.weakened_fit(STRONG, int(member["loyalty"]))
 			var effects: Array[Dictionary] = []
 			var kind := str(task.get("kind", ""))
 			if kind == KIND_TIME_OFF:
@@ -325,6 +332,10 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 				change += Levers.whole("staff_tasks_fit_loyalty")
 				for effect: Dictionary in parse_effects(task.get("strong_reward")):
 					var amount := rank_scaled(int(effect["amount"]), str(effect["name"]), int(member["tier"]))
+					# A Training Voucher makes today's strong-fit gains bigger (a percent, rounded down).
+					var percent := int((day.get("reward_percent", {}) as Dictionary).get(id, 0))
+					if percent > 0 and amount > 0 and not str(effect["name"]).begins_with("Loyalty"):
+						amount = int(floor(amount * percent / 100.0))
 					effects.append({"name": effect["name"], "amount": amount})
 			elif fit == POOR:
 				change -= Levers.whole("staff_tasks_fit_loyalty")
@@ -346,7 +357,10 @@ static func evaluate(pool: Array, tasks: Array, plan: Dictionary, members: Array
 		# Coffee and tea add hours to this person's day (the bonus).
 		var day_hours := blocks + int((day.get("bonus", {}) as Dictionary).get(id, 0))
 		var streak := int(((day.get("full_days", {}) as Dictionary).get(id, 0)))
-		if used <= 0:
+		if bool((day.get("quiet", {}) as Dictionary).get(id, false)):
+			# A Quiet Desk Pass: no Loyalty change from an idle or overworked day.
+			streak = 0
+		elif used <= 0:
 			change -= Levers.whole("staff_tasks_idle_loyalty")
 			streak = 0
 		elif used >= day_hours:
