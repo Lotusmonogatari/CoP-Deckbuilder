@@ -148,6 +148,7 @@ func _ready() -> void:
 		%Portrait, %OpponentName, %IntentLabel, %GuardLabel, %OpponentGuardLabel,
 		%UpcomingIntentLabel)
 	_style_intent_tag(%IntentLabel)
+	_style_chrome()
 	_player_portrait = PlayerPortraitPresenter.new(%PlayerPortrait)
 	_hand = HandPresenter.new(%HandRow)
 	_hand.card_chosen.connect(_on_card_chosen)
@@ -860,6 +861,71 @@ func _open_card(card_id: String) -> void:
 	%ZoomPlay.disabled = (engine.card_cost(card) > engine.state.energy
 		or not engine.play_block(card).is_empty())
 	_card_zoom.show()
+
+
+## The battle's own furniture in the style in use (P9, 2026-11-17): the room and turn plates and the
+## End Turn button. Living Office: rounded plates and an amber pill. Broadcast: slanted plates with a
+## gold rule and a gold slanted End Turn. Woodblock: cartouches with a red offset shadow and an indigo
+## plank. The words are the same in every style.
+func _style_chrome() -> void:
+	var style := UiStyle.current()
+	var plate := UiStyle.plate_colour()
+	for label: Label in [_stage_name, _turn_label]:
+		var box := StyleBoxFlat.new()
+		box.bg_color = Color(plate.r, plate.g, plate.b, 0.9)
+		box.content_margin_left = 16.0
+		box.content_margin_right = 16.0
+		box.content_margin_top = 4.0
+		box.content_margin_bottom = 4.0
+		match style:
+			UiStyles.LIVING_OFFICE:
+				box.set_corner_radius_all(16)
+			UiStyles.BROADCAST:
+				box.skew = Vector2(SlantBar.SLANT * 0.5, 0.0)
+				box.border_width_bottom = 4
+				box.border_color = _gold()
+				box.set_corner_radius_all(2)
+			UiStyles.WOODBLOCK:
+				box.bg_color = UiStyle.colour("paper", Color(0.97, 0.94, 0.88))
+				box.border_color = UiStyle.colour("ink", Color(0.11, 0.1, 0.09))
+				box.set_border_width_all(2)
+				box.shadow_color = UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
+				box.shadow_offset = Vector2(6, 6)
+				box.shadow_size = 1
+				box.set_corner_radius_all(2)
+		label.add_theme_stylebox_override("normal", box)
+	var end_turn := %EndTurnButton as Button
+	var fill := StyleBoxFlat.new()
+	var ink: Color
+	match style:
+		UiStyles.BROADCAST:
+			fill.bg_color = UiStyle.colour("gold", Color(0.89, 0.7, 0.25))
+			fill.skew = Vector2(SlantBar.SLANT, 0.0)
+			fill.set_corner_radius_all(2)
+			ink = UiStyle.colour("ground", Color(0.04, 0.07, 0.12))
+		UiStyles.WOODBLOCK:
+			fill.bg_color = UiStyle.colour("indigo", Color(0.13, 0.19, 0.35))
+			fill.border_color = UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
+			fill.border_width_right = 22
+			fill.set_corner_radius_all(2)
+			ink = UiStyle.colour("paper", Color(0.97, 0.94, 0.88))
+		_:
+			fill.bg_color = UiStyle.colour("accent", Color(1.0, 0.84, 0.54))
+			fill.set_corner_radius_all(55)
+			ink = UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07))
+	fill.set_content_margin_all(14)
+	for state: String in ["normal", "hover", "pressed", "focus"]:
+		end_turn.add_theme_stylebox_override(state, fill)
+	var dim := fill.duplicate() as StyleBoxFlat
+	dim.bg_color = Color(fill.bg_color.r, fill.bg_color.g, fill.bg_color.b, 0.55)
+	end_turn.add_theme_stylebox_override("disabled", dim)
+	for colour: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
+		end_turn.add_theme_color_override(colour, ink)
+	end_turn.add_theme_color_override("font_disabled_color", Color(ink.r, ink.g, ink.b, 0.75))
+
+
+func _gold() -> Color:
+	return UiStyle.colour("gold", Color(0.89, 0.7, 0.25))
 
 
 ## The opponent's intent line as a red tag (P9, 2026-11-17): a pill in Living Office, a square-cut

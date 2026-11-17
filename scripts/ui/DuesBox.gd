@@ -27,7 +27,8 @@ static func make(on_tap: Callable = Callable()) -> PanelContainer:
 	var box := StyleBoxFlat.new()
 	var plate := UiStyle.plate_colour()
 	box.bg_color = Color(plate.r, plate.g, plate.b, 0.92)
-	box.border_color = CueBanner.EDGE_COLOUR
+	# Gold in Living Office and Broadcast; the red of a seal in Woodblock.
+	box.border_color = UiStyle.colour("vermilion", CueBanner.EDGE_COLOUR) if UiStyle.current() == UiStyles.WOODBLOCK else CueBanner.EDGE_COLOUR
 	box.set_border_width_all(CalendarSquare.EDGE_WIDTH)
 	box.set_corner_radius_all(10)
 	box.set_content_margin_all(14)

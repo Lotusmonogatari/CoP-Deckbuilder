@@ -371,6 +371,10 @@ func _process(delta: float) -> void:
 ## button becomes the paper docket card. Does nothing in the other styles.
 func _install_room_objects() -> void:
 	if UiStyle.current() != UiStyles.LIVING_OFFICE:
+		# Broadcast and Woodblock arrange the same buttons as tiles (OfficeLayouts).
+		OfficeLayouts.install(self, {"start": _start_button, "events": _events_button, "promises": _promises_button,
+			"staff": _management_button, "marketplace": find_child("InventoryButton", true, false) as Button,
+			"results": _reputation_button, "admin": find_child("AdministrationButton", true, false) as Button})
 		return
 	RoomObjects.install(self, {
 		"events": _events_button, "results": _reputation_button, "promises": _promises_button,
@@ -383,6 +387,10 @@ func _install_room_objects() -> void:
 	card.set_content_margin_all(18)
 	for state: String in ["normal", "hover", "pressed", "focus"]:
 		_start_button.add_theme_stylebox_override(state, card)
+	var card_dim := card.duplicate() as StyleBoxFlat
+	card_dim.bg_color = Color(paper.r, paper.g, paper.b, 0.6)
+	_start_button.add_theme_stylebox_override("disabled", card_dim)
+	_start_button.add_theme_color_override("font_disabled_color", Color(ink.r, ink.g, ink.b, 0.75))
 	for colour: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
 		_start_button.add_theme_color_override(colour, ink)
 
@@ -594,11 +602,36 @@ func _check_week_over() -> void:
 ## plate colour (P9, 2026-11-17), so the text on them keeps its contrast in every style.
 func _apply_ui_style_veils() -> void:
 	var plate := UiStyle.plate_colour()
-	for node: Control in [$Safe/Scroll/Column/HeadingBackdropMargin/HeadingBackdrop,
-			$Safe/Scroll/Column/TextBackdropMargin/TextBackdrop]:
+	var style := UiStyle.current()
+	var heading: Control = $Safe/Scroll/Column/HeadingBackdropMargin/HeadingBackdrop
+	var narration: Control = $Safe/Scroll/Column/TextBackdropMargin/TextBackdrop
+	for node: Control in [heading, narration]:
 		var veil := node.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
 		# A light (Woodblock) plate over a dark picture needs more body than a dark one.
-		veil.bg_color = Color(plate.r, plate.g, plate.b, 0.9 if UiStyle.current() == UiStyles.WOODBLOCK else 0.6)
+		veil.bg_color = Color(plate.r, plate.g, plate.b, 0.9 if style == UiStyles.WOODBLOCK else 0.6)
+		match style:
+			UiStyles.BROADCAST:
+				# The name is a slanted lower-third with a gold rule; the narration a red "office" strip.
+				if node == heading:
+					veil.skew = Vector2(SlantBar.SLANT * 0.5, 0.0)
+					veil.border_width_bottom = 4
+					veil.border_color = UiStyle.colour("gold", Color(0.89, 0.7, 0.25))
+					veil.bg_color = Color(plate.r, plate.g, plate.b, 0.92)
+				else:
+					veil.border_width_left = 12
+					veil.border_color = UiStyle.colour("live_red", Color(0.76, 0.23, 0.13))
+					veil.bg_color = Color(plate.r, plate.g, plate.b, 0.85)
+			UiStyles.WOODBLOCK:
+				# The name is a bordered cartouche with a red offset shadow; the narration a ruled print.
+				veil.border_color = UiStyle.colour("ink", Color(0.11, 0.1, 0.09))
+				veil.set_border_width_all(2)
+				if node == heading:
+					veil.shadow_color = UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
+					veil.shadow_offset = Vector2(8, 8)
+					veil.shadow_size = 1
+				else:
+					veil.border_width_bottom = 5
+					veil.border_color = UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
 		node.add_theme_stylebox_override("panel", veil)
 
 
@@ -3651,10 +3684,7 @@ func _on_request_decline(patron_bill_id: String) -> void:
 ## One level in the list: its name, its hours, and its button; Living Office draws it as a folder
 ## (P9, 2026-11-17). The rules and the refusal text are the same in every style.
 func _level_row(level: Dictionary) -> Control:
-	var row := _level_row_plain(level)
-	if UiStyle.current() == UiStyles.LIVING_OFFICE:
-		return LevelFolder.wrap(row, level)
-	return row
+	return LevelFolder.wrap_for_style(_level_row_plain(level), level)
 
 
 func _level_row_plain(level: Dictionary) -> Control:
