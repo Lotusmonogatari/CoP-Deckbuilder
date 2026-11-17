@@ -17,6 +17,9 @@ const SIZE := Vector2i(1080, 2340)
 const MIN_CONTRAST := 4.5
 const MIN_LUMINANCE_SHARE := 0.9
 
+## The UI style the faces are drawn in (P9, 2026-11-17). Card fronts and backs must read the
+## same in every style (decision D3), so the whole run is repeated once per style, unchanged.
+var _style := UiStyles.LIVING_OFFICE
 var _failures: PackedStringArray = []
 var _report: PackedStringArray = []
 
@@ -36,13 +39,16 @@ func _run() -> void:
 		if not seen.has(suit):
 			seen[suit] = true
 			ids.append(str(row.get("card_id", "")))
-	for card_id: String in ids:
-		await _one_card(card_id)
+	for style: String in UiStyles.ALL:
+		_style = style
+		_apply_style()
+		for card_id: String in ids:
+			await _one_card(card_id)
 	print("")
 	for line: String in _report:
 		print("  " + line)
 	if _failures.is_empty():
-		print("CARD FACES TEST: PASS (%d suits)" % ids.size())
+		print("CARD FACES TEST: PASS (%d suits, %d styles)" % [ids.size(), UiStyles.ALL.size()])
 		get_tree().quit(0)
 	else:
 		print("CARD FACES TEST: FAIL")
@@ -53,7 +59,7 @@ func _run() -> void:
 
 func _one_card(card_id: String) -> void:
 	var card := DataDB.get_card(card_id)
-	var tag := "%s %s: " % [card_id, str(card.get("suit", ""))]
+	var tag := "%s %s %s: " % [_style, card_id, str(card.get("suit", ""))]
 	# The reference: the faces with nothing around them (what the hand shows).
 	var plain := await _viewport()
 	var host := Control.new()
@@ -104,6 +110,7 @@ func _one_card(card_id: String) -> void:
 	# The battle: the hand and the zoom.
 	GameState.start_new_run("PC02")
 	GameState.awaiting_new_game = false
+	_apply_style()
 	GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(DataDB.get_level("LV04"))))
 	var vp2 := await _viewport()
 	var battle: Control = (load("res://scenes/battle/BattleScreen.tscn") as PackedScene).instantiate()
@@ -131,6 +138,20 @@ func _one_card(card_id: String) -> void:
 	vp2.queue_free()
 	GameState.end_level()
 
+
+
+## Equips the style under test (a run reset clears it) and puts it over the theme.
+func _apply_style() -> void:
+	var package := UiStyles.package_for(_style, DataDB.cosmetic_packages)
+	if not package.is_empty():
+		var id := str(package["package_id"])
+		if not GameState.owned_cosmetic_packages.has(id):
+			GameState.owned_cosmetic_packages.append(id)
+		GameState.equip_cosmetic(CosmeticPieces.UI_STYLE, id)
+	else:
+		GameState.equip_cosmetic(CosmeticPieces.UI_STYLE, "")
+	UiStyle.forget()
+	Layout.apply_ui_style()
 
 
 func _viewport() -> SubViewport:
