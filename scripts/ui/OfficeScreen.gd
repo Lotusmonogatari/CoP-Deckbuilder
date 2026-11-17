@@ -281,6 +281,18 @@ func _ready() -> void:
 	Audio.play_music("music_office")
 
 	_build()
+	# The portrait gives way when the screen is short or the text is big, so the calendar,
+	# dues box and buttons never land on the text or off the bottom (panel P3, 2026-11-17).
+	_portrait_behind = PortraitBehind.attach(self, _portrait, $Safe)
+	var office_column := get_node_or_null("Safe/Scroll/Column") as Control
+	var office_scroll := get_node_or_null("Safe/Scroll") as ScrollContainer
+	if office_scroll != null:
+		DragScroll.attach(office_scroll)
+		office_scroll.resized.connect(_fit_portrait.call_deferred)
+	if office_column != null:
+		office_column.minimum_size_changed.connect(_fit_portrait.call_deferred)
+		office_column.resized.connect(_fit_portrait.call_deferred)
+		_fit_portrait.call_deferred()
 
 	# No save to come back to: a new player chooses who they are first.
 	if GameState.awaiting_new_game:
@@ -292,6 +304,59 @@ func _ready() -> void:
 		if not GameState.card_draw.is_empty():
 			_show_rhetoric_training()
 			_show_card_offer()
+
+
+## The portrait keeps its drawn size (PortraitBehind): when the screen is short or the text is
+## big the column squeezes the portrait's slot and the text lies over the lower part of the
+## picture. The slot never goes below the floor (panel P3, 2026-11-17).
+var _portrait_behind: PortraitBehind
+const PORTRAIT_SLOT_FLOOR := 200.0
+## What the compact calendar and dues boxes save on the bottom stack (170 px down to 100 px).
+const COMPACT_SAVES := 70.0
+var _compact := false
+
+
+## The front page fits itself in three steps: the portrait's slot shrinks to its floor (the
+## picture stays full size, behind the text); then the calendar and the dues box turn compact
+## (the calendar drops its weekday row, both boxes are 100 px tall); then, only if it is still
+## too tall, the page scrolls (the Scroll box in the scene). At 1080 x 2340 and Normal text
+## nothing changes.
+func _fit_portrait() -> void:
+	var scroll := get_node_or_null("Safe/Scroll") as ScrollContainer
+	var column := get_node_or_null("Safe/Scroll/Column") as Control
+	if scroll == null or column == null or _portrait_behind == null:
+		return
+	var slot := _portrait_behind.slot
+	var others := column.get_combined_minimum_size().y - slot.custom_minimum_size.y
+	var room := scroll.size.y - others
+	if not _compact and room < PORTRAIT_SLOT_FLOOR:
+		_set_compact(true)
+		others = column.get_combined_minimum_size().y - slot.custom_minimum_size.y
+		room = scroll.size.y - others
+	elif _compact and room >= PORTRAIT_SLOT_FLOOR + COMPACT_SAVES + 20.0:
+		_set_compact(false)
+		others = column.get_combined_minimum_size().y - slot.custom_minimum_size.y
+		room = scroll.size.y - others
+	var want := clampf(room, PORTRAIT_SLOT_FLOOR, _portrait_behind.full_height)
+	if absf(want - slot.custom_minimum_size.y) > 1.0:
+		slot.custom_minimum_size.y = want
+	# The Promises button sits above whatever height the dues box really has at this text size.
+	if _dues_box != null and _promises_button != null:
+		var dues_height := maxf(_dues_box.custom_minimum_size.y, _dues_box.get_combined_minimum_size().y)
+		_promises_button.offset_bottom = -(dues_height + 16.0)
+		var spacer := get_node_or_null("Safe/Scroll/Column/VSpacer") as Control
+		if spacer != null:
+			spacer.custom_minimum_size.y = dues_height + 16.0 + 90.0 + 8.0
+
+
+func _set_compact(on: bool) -> void:
+	_compact = on
+	CalendarSquare.set_compact(_calendar_square, on)
+	DuesBox.set_compact(_dues_box, on)
+	var spacer := get_node_or_null("Safe/Scroll/Column/VSpacer") as Control
+	if spacer != null and _dues_box != null:
+		spacer.custom_minimum_size.y = _dues_box.custom_minimum_size.y + 16.0 + 90.0 + 8.0
+		_promises_button.offset_bottom = -(_dues_box.custom_minimum_size.y + 16.0)
 
 
 func _process(delta: float) -> void:
@@ -352,12 +417,14 @@ func _build() -> void:
 # optional, and "Pay Party Dues and Go Home" to end the week.
 
 func _build_week_controls() -> void:
-	var spacer := get_node_or_null("Safe/Column/VSpacer")
+	var spacer := get_node_or_null("Safe/Scroll/Column/VSpacer")
 	if spacer != null:
 		_calendar_square = CalendarSquare.make()
 		spacer.add_child(_calendar_square)
 		_dues_box = DuesBox.make()
 		spacer.add_child(_dues_box)
+		# The calendar and the dues stack sit in this space: it never shrinks below them.
+		spacer.custom_minimum_size.y = DuesBox.SIZE.y + 16.0 + 90.0 + 8.0
 		_promises_button = Button.new()
 		_promises_button.name = "PromisesButton"
 		_promises_button.custom_minimum_size = Vector2(DuesBox.SIZE.x, 90)

@@ -14,6 +14,8 @@
 #      Every tests/interaction/*_test.tscn is found and run by itself, so a new
 #      click test needs no edit here. They run in parallel, each with its own
 #      invisible screen and its own save folder so none can touch another's save.
+#   5. (Full run only) The text sweep: every screen at 1080 x 2340 and 1080 x 1920 and at
+#      Small, Normal and Large text, failing on letter-stacked or off-screen text.
 #
 # Exits non-zero if any of them fail, so it can be wired into a build server.
 set -uo pipefail
@@ -116,6 +118,20 @@ if [ -n "$click_pid" ]; then
       tail -40 "$WORK/$name/log.txt"
     fi
   done < <(sort -k2 "$WORK/results.txt" 2>/dev/null)
+fi
+
+# Every screen at both phone shapes and every text size: no word stacked a letter to a
+# line, nothing partly off screen (tools/text_sweep.gd; overlap and small buttons are
+# reported in the CSV but do not fail). Runs after the click tests, in the full run only.
+if [ "$QUICK" -eq 0 ] && command -v xvfb-run >/dev/null 2>&1; then
+  step "Text sweep: every screen at every text size"
+  if tools/text_sweep.sh "$WORK/text_sweep.csv" > "$WORK/text_sweep.log" 2>&1; then
+    cat "$WORK/text_sweep.log"
+  else
+    cat "$WORK/text_sweep.log"
+    grep -E "letter_stacking|off_screen" "$WORK/text_sweep.csv" | head -20
+    fail "a screen has letter-stacked or off-screen text (see tools/text_sweep.sh)."
+  fi
 fi
 
 echo

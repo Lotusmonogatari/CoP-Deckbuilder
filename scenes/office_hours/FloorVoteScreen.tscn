@@ -54,13 +54,16 @@ layout_mode = 2
 
 [node name="Title" type="HBoxContainer" parent="Safe/Column/Header"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
 [node name="StageName" type="Label" parent="Safe/Column/Header/Title"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"HeaderLabel"
 text = "National Assembly Floor Voting"
+autowrap_mode = 3
 
 [node name="StageNameJP" type="Label" parent="Safe/Column/Header/Title"]
 unique_name_in_owner = true
@@ -237,7 +240,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="ScrollArea" type="Control" parent="Safe/Column"]
-custom_minimum_size = Vector2(0, 240)
+custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
 size_flags_vertical = 3
 

@@ -14,6 +14,10 @@ extends RefCounted
 const PLATE_COLOUR := Color(0.07, 0.08, 0.11, 0.84)
 
 static var _plate_theme: Theme
+static var _faint_plate_theme: Theme
+## The lighter plate for text that lies over a character picture (PortraitBehind): enough to
+## read by, faint enough that the picture shows through.
+const FAINT_PLATE_ALPHA := 0.5
 
 
 ## A theme that puts a dark translucent plate behind every Label. Set it on a
@@ -31,6 +35,22 @@ static func plate_theme() -> Theme:
 		plate.content_margin_bottom = 4.0
 		_plate_theme.set_stylebox("normal", "Label", plate)
 	return _plate_theme
+
+
+## plate_theme() with a fainter plate (FAINT_PLATE_ALPHA), for a column of text laid over a
+## character picture.
+static func faint_plate_theme() -> Theme:
+	if _faint_plate_theme == null:
+		_faint_plate_theme = Theme.new()
+		var plate := StyleBoxFlat.new()
+		plate.bg_color = Color(PLATE_COLOUR.r, PLATE_COLOUR.g, PLATE_COLOUR.b, FAINT_PLATE_ALPHA)
+		plate.set_corner_radius_all(8)
+		plate.content_margin_left = 12.0
+		plate.content_margin_right = 12.0
+		plate.content_margin_top = 4.0
+		plate.content_margin_bottom = 4.0
+		_faint_plate_theme.set_stylebox("normal", "Label", plate)
+	return _faint_plate_theme
 
 
 ## The file a screen's base picture resolves to, or "" for none.

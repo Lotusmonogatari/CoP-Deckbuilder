@@ -52,3 +52,11 @@ static func refresh(square: PanelContainer) -> void:
 		{"dues": Phrase.with_separators(int(due["total"]))})
 	(square.get_node("Rows/FundsLine") as Label).text = Text.say("dues.box_funds",
 		{"funds": Phrase.with_separators(int(due["funds"]))})
+
+
+## Compact or full height, the same as the calendar square beside it.
+static func set_compact(square: PanelContainer, on: bool) -> void:
+	if square == null:
+		return
+	square.custom_minimum_size.y = CalendarSquare.COMPACT_HEIGHT if on else SIZE.y
+	(square.get_theme_stylebox("panel") as StyleBoxFlat).set_content_margin_all(8 if on else 14)

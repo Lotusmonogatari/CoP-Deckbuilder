@@ -83,6 +83,7 @@ A new `class_name` script is invisible to tests until `.tools/godot --headless -
 7. Tests must read workbook values, never type them.
 8. An unreachable piece of content (a room in no level, a person seated nowhere) is invisible; the exporter errors on some cases but not all.
 9. A theme set on a panel reaches every descendant: `BaseImage.plate_theme()` (a dark plate behind every Label) is on each Overlay and on the battle's card zoom, so any Label that must stay plain inside them (the card faces) overrides its own "normal" stylebox (`CardView.no_plate`). `tests/interaction/card_faces_test.gd` catches a regression.
+10. A wrapping label needs a width from a parent that gives it one: a label in a `HBoxContainer` that does not expand (the Floor Vote's title at Large text) gets zero width and stacks a letter to a line (the same trap as pitfall 2). Give the container and the label `size_flags_horizontal = 3`. `tools/text_sweep.sh` finds this and verify.sh fails on it.
 
 
 ## Addendum 2026-11-17: staff and item code
@@ -100,3 +101,18 @@ Design numbers and ids belong in the workbook: `tests/test_balance_keys.gd` chec
 ## Addendum 2026-11-16: words stay whole
 
 `scripts/autoload/TextFit.gd` watches every Label and Button that wraps text (`autowrap_mode` not off). A few frames after it appears, when its box has a real width, it switches smart wrap to word wrap and, if the longest word is wider than the box, shrinks the font size (a step at a time, to Balance `Text Fit: Minimum Font Size`) until the word fits (`WordFit.gd` does the measuring). Cards (`CardView`, `CardBackView`) are skipped. Pitfall: a label with `custom_minimum_size.x` of 0 inside a flow container collapses to one letter wide, so give such notes a sensible minimum.
+
+## Addendum 2026-11-17: the text sweep (panel P3)
+
+`tools/text_sweep.gd` (+ `.tscn`, run by `tools/text_sweep.sh`) opens about 50 screens (title, picker, Office and its panels, level intro, transition, fights, Office Hours, visit, trade, Floor Vote and the week popups) at **1080 x 2340 and 1080 x 1920** and at **Small, Normal and Large** text, inside SubViewports, and writes `screen,shape,text_size,control,problem,detail` rows:
+
+| Problem | Rule | Fails verify.sh |
+|---|---|---|
+| `letter_stacking` | a Label or Button wraps into more lines than it has words | yes |
+| `off_screen` | a visible text control, not inside a scroll or clip box, is partly outside the screen (or sideways inside one) | yes |
+| `overlap` | two visible text controls on the same layer overlap (rectangles cut down to what a scroll box shows) | no, report only |
+| `small_target` | a Button under 122 px on its smaller side (one row a screen) | no, report only |
+
+Deliberate overlays are named in `DELIBERATE` at the top of the script (the cue band, card faces, the hand, the ticker, listening strip and the labelled stand-in for undrawn art); only the top layer is checked when a panel is open. `tools/text_sweep.sh [out.csv] [shots_dir]` runs the three text sizes in parallel (about 70 seconds on 4 cores) and joins the files; `SWEEP_ALWAYS=id,id` also saves pictures of named screens. The full `tools/verify.sh` runs it after the click tests. To add a screen, add a step to `_sweep_shape`.
+
+Layout that makes a screen fit: the Office front page and the Level Intro sit in a `Scroll` box (`Safe/Scroll/Column`); the character picture keeps its full size and is drawn behind the text (`PortraitBehind`: the column squeezes an empty slot, the picture follows the slot and the text lies over its lower part, on its translucent plate), then the Office's calendar and dues boxes turn compact (100 px, no weekday row), and only then does the page scroll (Cameron, 2026-11-17: "compact first, then scroll"; "don't minimize the character images").

@@ -51,7 +51,36 @@ var _lean_resolved := false
 var _dossier: Overlay = null
 
 
+## The portrait keeps its drawn size (PortraitBehind): when the screen is short or the text is
+## big the column squeezes its slot and the text lies over the lower part of the picture; the
+## page scrolls only if it is still too tall (panel P3, 2026-11-17).
+const PORTRAIT_SLOT_FLOOR := 200.0
+var _portrait_behind: PortraitBehind
+
+
+func _fit_portrait() -> void:
+	var scroll := get_node_or_null("Safe/Scroll") as ScrollContainer
+	var column := get_node_or_null("Safe/Scroll/Column") as Control
+	if scroll == null or column == null or _portrait_behind == null:
+		return
+	var slot := _portrait_behind.slot
+	var others := column.get_combined_minimum_size().y - slot.custom_minimum_size.y
+	var want := clampf(scroll.size.y - others, PORTRAIT_SLOT_FLOOR, _portrait_behind.full_height)
+	if absf(want - slot.custom_minimum_size.y) > 1.0:
+		slot.custom_minimum_size.y = want
+	# Squeezed: the text lies over the picture, so each line gets a faint plate of its own.
+	column.theme = BaseImage.faint_plate_theme() if want < _portrait_behind.full_height - 1.0 else null
+
+
 func _ready() -> void:
+	_portrait_behind = PortraitBehind.attach(self, _portrait, $Safe)
+	var intro_scroll := get_node_or_null("Safe/Scroll") as ScrollContainer
+	var intro_column := get_node_or_null("Safe/Scroll/Column") as Control
+	if intro_scroll != null and intro_column != null:
+		DragScroll.attach(intro_scroll)
+		intro_scroll.resized.connect(_fit_portrait.call_deferred)
+		intro_column.minimum_size_changed.connect(_fit_portrait.call_deferred)
+		_fit_portrait.call_deferred()
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.art_id = "OFFICE"
 	_background.show_label = false
@@ -162,7 +191,7 @@ func _show_lean_choice() -> void:
 		# With no staff to speak and no choice to make, the screen shows the
 		# player at the top, centered, above the stance (2026-11-02, Cameron).
 		_show_player_speaker()
-		(get_node("Safe/Column/TopSpacer") as Control).size_flags_vertical = Control.SIZE_FILL
+		(get_node("Safe/Scroll/Column/TopSpacer") as Control).size_flags_vertical = Control.SIZE_FILL
 		_on_lean_chosen(BillLean.SUPPORT)
 		_add_read_button()
 		return

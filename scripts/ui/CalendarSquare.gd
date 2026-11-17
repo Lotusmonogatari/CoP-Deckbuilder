@@ -10,6 +10,8 @@ extends RefCounted
 
 const SIZE := Vector2(330, 170)
 const EDGE_WIDTH := 4
+## The compact square (a short screen or a big text size): 100 px tall, no weekday row.
+const COMPACT_HEIGHT := 100.0
 
 
 ## The square, empty; refresh() fills it from the run.
@@ -52,4 +54,14 @@ static func refresh(square: PanelContainer) -> void:
 	(square.get_node("Rows/CalendarHours") as Label).text = GameState.calendar_hours_text()
 	var weekday := square.get_node("Rows/CalendarWeekday") as Label
 	weekday.text = GameState.calendar_weekday_text()
-	weekday.visible = not weekday.text.is_empty()   # the Ainu calendar has two levels only
+	weekday.visible = not weekday.text.is_empty() and not bool(square.get_meta("compact", false))   # the Ainu calendar has two levels only
+
+
+## Compact or full height (the Office turns it on when the front page does not fit).
+static func set_compact(square: PanelContainer, on: bool) -> void:
+	if square == null:
+		return
+	square.set_meta("compact", on)
+	square.custom_minimum_size.y = COMPACT_HEIGHT if on else SIZE.y
+	(square.get_theme_stylebox("panel") as StyleBoxFlat).set_content_margin_all(8 if on else 14)
+	refresh(square)

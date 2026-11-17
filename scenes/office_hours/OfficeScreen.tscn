@@ -55,84 +55,90 @@ theme_override_constants/margin_top = 70
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 90
 
-[node name="Column" type="VBoxContainer" parent="Safe"]
+[node name="Scroll" type="ScrollContainer" parent="Safe"]
 layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Column" type="VBoxContainer" parent="Safe/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 24
 
-[node name="HeadingBackdropMargin" type="MarginContainer" parent="Safe/Column"]
+[node name="HeadingBackdropMargin" type="MarginContainer" parent="Safe/Scroll/Column"]
 layout_mode = 2
 theme_override_constants/margin_left = 21.6
 theme_override_constants/margin_right = 21.6
 
-[node name="HeadingBackdrop" type="PanelContainer" parent="Safe/Column/HeadingBackdropMargin"]
+[node name="HeadingBackdrop" type="PanelContainer" parent="Safe/Scroll/Column/HeadingBackdropMargin"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_textveil")
 
-[node name="Heading" type="HFlowContainer" parent="Safe/Column/HeadingBackdropMargin/HeadingBackdrop"]
+[node name="Heading" type="HFlowContainer" parent="Safe/Scroll/Column/HeadingBackdropMargin/HeadingBackdrop"]
 layout_mode = 2
 theme_override_constants/h_separation = 12
 
-[node name="Title" type="Label" parent="Safe/Column/HeadingBackdropMargin/HeadingBackdrop/Heading"]
+[node name="Title" type="Label" parent="Safe/Scroll/Column/HeadingBackdropMargin/HeadingBackdrop/Heading"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TitleLabel"
 text = "The Office"
 
-[node name="Subtitle" type="Label" parent="Safe/Column/HeadingBackdropMargin/HeadingBackdrop/Heading"]
+[node name="Subtitle" type="Label" parent="Safe/Scroll/Column/HeadingBackdropMargin/HeadingBackdrop/Heading"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"JapaneseAccent"
 text = "陳情"
 vertical_alignment = 2
 
-[node name="Portrait" type="Control" parent="Safe/Column"]
+[node name="Portrait" type="Control" parent="Safe/Scroll/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 525)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_uyci3")
 
-[node name="TextBackdropMargin" type="MarginContainer" parent="Safe/Column"]
+[node name="TextBackdropMargin" type="MarginContainer" parent="Safe/Scroll/Column"]
 layout_mode = 2
 theme_override_constants/margin_left = 21.6
 theme_override_constants/margin_right = 21.6
 
-[node name="TextBackdrop" type="PanelContainer" parent="Safe/Column/TextBackdropMargin"]
+[node name="TextBackdrop" type="PanelContainer" parent="Safe/Scroll/Column/TextBackdropMargin"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_textveil")
 
-[node name="TextColumn" type="VBoxContainer" parent="Safe/Column/TextBackdropMargin/TextBackdrop"]
+[node name="TextColumn" type="VBoxContainer" parent="Safe/Scroll/Column/TextBackdropMargin/TextBackdrop"]
 layout_mode = 2
 
-[node name="Report" type="Label" parent="Safe/Column/TextBackdropMargin/TextBackdrop/TextColumn"]
+[node name="Report" type="Label" parent="Safe/Scroll/Column/TextBackdropMargin/TextBackdrop/TextColumn"]
 unique_name_in_owner = true
 layout_mode = 2
 autowrap_mode = 3
 
-[node name="Resources" type="Label" parent="Safe/Column/TextBackdropMargin/TextBackdrop/TextColumn"]
+[node name="Resources" type="Label" parent="Safe/Scroll/Column/TextBackdropMargin/TextBackdrop/TextColumn"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "XP 0  ·  Funds 0"
 
-[node name="VSpacer" type="Control" parent="Safe/Column"]
+[node name="VSpacer" type="Control" parent="Safe/Scroll/Column"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="StartButton" type="Button" parent="Safe/Column"]
+[node name="StartButton" type="Button" parent="Safe/Scroll/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
 text = "Start the level"
 
-[node name="ManagementButton" type="Button" parent="Safe/Column"]
+[node name="ManagementButton" type="Button" parent="Safe/Scroll/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Office Management"
 
-[node name="ReputationButton" type="Button" parent="Safe/Column"]
+[node name="ReputationButton" type="Button" parent="Safe/Scroll/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2

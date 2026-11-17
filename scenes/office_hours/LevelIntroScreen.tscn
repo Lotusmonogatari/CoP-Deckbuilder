@@ -33,16 +33,22 @@ theme_override_constants/margin_top = 70
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 50
 
-[node name="Column" type="VBoxContainer" parent="Safe"]
+[node name="Scroll" type="ScrollContainer" parent="Safe"]
 layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Column" type="VBoxContainer" parent="Safe/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="TopSpacer" type="Control" parent="Safe/Column"]
+[node name="TopSpacer" type="Control" parent="Safe/Scroll/Column"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Portrait" type="Control" parent="Safe/Column"]
+[node name="Portrait" type="Control" parent="Safe/Scroll/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(260, 380)
 layout_mode = 2
@@ -51,7 +57,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 script = ExtResource("2_peovp")
 
-[node name="StaffName" type="Label" parent="Safe/Column"]
+[node name="StaffName" type="Label" parent="Safe/Scroll/Column"]
 autowrap_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
@@ -59,50 +65,50 @@ theme_type_variation = &"HeaderLabel"
 text = "Staff"
 horizontal_alignment = 1
 
-[node name="LeanRow" type="HBoxContainer" parent="Safe/Column"]
+[node name="LeanRow" type="HBoxContainer" parent="Safe/Scroll/Column"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="SupportCard" type="VBoxContainer" parent="Safe/Column/LeanRow"]
+[node name="SupportCard" type="VBoxContainer" parent="Safe/Scroll/Column/LeanRow"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="SupportPortrait" type="Control" parent="Safe/Column/LeanRow/SupportCard"]
+[node name="SupportPortrait" type="Control" parent="Safe/Scroll/Column/LeanRow/SupportCard"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 220)
 layout_mode = 2
 script = ExtResource("2_peovp")
 
-[node name="SupportButton" type="Button" parent="Safe/Column/LeanRow/SupportCard"]
+[node name="SupportButton" type="Button" parent="Safe/Scroll/Column/LeanRow/SupportCard"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 90)
 layout_mode = 2
 text = "Support"
 
-[node name="OpposeCard" type="VBoxContainer" parent="Safe/Column/LeanRow"]
+[node name="OpposeCard" type="VBoxContainer" parent="Safe/Scroll/Column/LeanRow"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="OpposePortrait" type="Control" parent="Safe/Column/LeanRow/OpposeCard"]
+[node name="OpposePortrait" type="Control" parent="Safe/Scroll/Column/LeanRow/OpposeCard"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 220)
 layout_mode = 2
 script = ExtResource("2_peovp")
 
-[node name="OpposeButton" type="Button" parent="Safe/Column/LeanRow/OpposeCard"]
+[node name="OpposeButton" type="Button" parent="Safe/Scroll/Column/LeanRow/OpposeCard"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 90)
 layout_mode = 2
 text = "Oppose"
 
-[node name="VSpacer" type="Control" parent="Safe/Column"]
+[node name="VSpacer" type="Control" parent="Safe/Scroll/Column"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="ContinueButton" type="Button" parent="Safe/Column"]
+[node name="ContinueButton" type="Button" parent="Safe/Scroll/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
