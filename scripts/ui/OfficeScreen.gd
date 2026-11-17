@@ -2294,6 +2294,7 @@ func _cosmetics_slot_label(slot: String) -> String:
 		CosmeticPieces.DINING: return Text.say("office.cosmetics_slot_dining")
 		CosmeticPieces.TOUR: return Text.say("office.cosmetics_slot_tour")
 		CosmeticPieces.CALENDAR: return Text.say("office.cosmetics_slot_calendar")
+		CosmeticPieces.UI_STYLE: return Text.say("office.cosmetics_slot_ui_style")
 	return slot
 
 
@@ -2359,6 +2360,10 @@ func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 		_refresh_calendar()
 	if slot == CosmeticPieces.MUSIC:
 		Audio.play_music("music_office")
+	if slot == CosmeticPieces.UI_STYLE:
+		Layout.apply_ui_style()
+		get_tree().reload_current_scene.call_deferred()
+		return
 	_show_cosmetics()
 
 
@@ -2391,17 +2396,22 @@ func _show_marketplace() -> void:
 	tabs.alignment = BoxContainer.ALIGNMENT_CENTER
 	tabs.add_theme_constant_override("separation", 16)
 	for tab: Array in [[Items.PERSONAL, "PersonalTab", "shop.tab_personal"],
-			[Items.OFFICE_INVENTORY, "OfficeTab", "shop.tab_office"]]:
+			[Items.OFFICE_INVENTORY, "OfficeTab", "shop.tab_office"],
+			[STYLES_TAB, "StylesTab", "shop.tab_styles"]]:
 		var button := Button.new()
 		button.name = str(tab[1])
 		button.text = Text.say(str(tab[2]))
-		button.custom_minimum_size = Vector2(360, 100)
+		button.custom_minimum_size = Vector2(300, 100)
 		button.toggle_mode = true
 		button.button_pressed = _market_tab == str(tab[0])
 		button.pressed.connect(_on_market_tab.bind(str(tab[0])))
 		tabs.add_child(button)
 	rows.append(tabs)
 	rows.append(funds_line)
+	if _market_tab == STYLES_TAB:
+		rows.append_array(_styles_rows())
+		_inventory_panel.open(Text.say("shop.supplies"), rows)
+		return
 	# At the Funds limit (or above it), say what the limit does (panel P4, item 3; Cameron's wording).
 	if int(GameState.meta.get("Funds", 0)) >= GameState.funds_limit():
 		var limit_note := UiKit.line(Text.say("shop.funds_limit_note"), "SmallLabel")
@@ -2422,6 +2432,82 @@ func _show_marketplace() -> void:
 				and not (GameState.is_staff_slot_item(item) and GameState.staff_slots_maxed()):
 			rows.append(_supply_row(item))
 	_inventory_panel.open(Text.say("shop.supplies"), rows)
+
+
+## The Marketplace's third tab (P9, 2026-11-17): one card per UI style with its state, and a
+## button that unlocks (a refusal says why) or switches to it. Uses CosmeticPieces' own rules.
+const STYLES_TAB := "Styles"
+
+
+func _styles_rows() -> Array[Control]:
+	var rows: Array[Control] = []
+	rows.append(UiKit.line(Text.say("shop.styles_blurb")))
+	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
+	var in_use := UiStyle.current()
+	for style: String in UiStyles.ALL:
+		var package := UiStyles.package_for(style, DataDB.cosmetic_packages)
+		var package_id := str(package.get("package_id", ""))
+		var card := VBoxContainer.new()
+		card.name = "StyleCard_" + style
+		card.add_theme_constant_override("separation", 8)
+		card.add_child(_style_swatch(style))
+		var is_living := style == UiStyles.LIVING_OFFICE
+		var name := Text.say("shop.style_living_name") if is_living else CosmeticPieces.field(package, "name_en")
+		card.add_child(UiKit.heading(name))
+		card.add_child(UiKit.line(Text.say("shop.style_living_desc") if is_living
+			else CosmeticPieces.field(package, "description"), "SmallLabel"))
+		if style == in_use:
+			var state := UiKit.line(Text.say("shop.style_in_use") + (" · " + Text.say("shop.style_included") if is_living else ""))
+			state.name = "StyleState_" + style
+			card.add_child(state)
+		elif is_living or GameState.owned_cosmetic_packages.has(package_id):
+			var use := UiKit.action_button(Text.say("shop.style_use"), "", _on_use_style.bind(package_id))
+			use.name = "StyleUse_" + style
+			card.add_child(use)
+		else:
+			var refusal := CosmeticPieces.buy_refusal(package, GameState.owned_cosmetic_packages, GameState.xp,
+				int(GameState.meta.get("Funds", 0)), Text.phrase())
+			var unlock := UiKit.action_button(Text.say("shop.style_unlock", {"price": _price_text(package)}),
+				refusal, _on_buy_style.bind(package_id))
+			unlock.name = "StyleUnlock_" + style
+			card.add_child(unlock)
+		rows.append(card)
+	rows.append(UiKit.line(Text.say("shop.style_footer"), "SmallLabel"))
+	return rows
+
+
+## A strip of the style's own colours: its ground, plate, accent and ink.
+func _style_swatch(style: String) -> Control:
+	var strip := HBoxContainer.new()
+	strip.name = "StyleSwatch_" + style
+	strip.add_theme_constant_override("separation", 0)
+	var idx := UiStyle.idx()
+	for colour: Color in [UiStyles.ground_colour(idx, style), UiStyles.plate_colour(idx, style),
+			UiStyles.colour(idx, style, "accent", UiStyles.colour(idx, style, "gold", UiStyles.colour(idx, style, "indigo"))),
+			UiStyles.plate_ink(idx, style)]:
+		var block := ColorRect.new()
+		block.color = colour
+		block.custom_minimum_size = Vector2(0, 70)
+		block.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		strip.add_child(block)
+	return strip
+
+
+func _on_buy_style(package_id: String) -> void:
+	var refusal := GameState.buy_cosmetic_package(package_id)
+	if refusal.is_empty():
+		SaveManager.autosave()
+		_refresh_resources()
+	_show_marketplace()
+
+
+## Switches style ("" = Living Office). The look is read as a screen builds, so the Office is
+## rebuilt from the saved run: nothing in the save changes but the equipped slot.
+func _on_use_style(package_id: String) -> void:
+	GameState.equip_cosmetic(CosmeticPieces.UI_STYLE, package_id)
+	SaveManager.autosave()
+	Layout.apply_ui_style()
+	get_tree().reload_current_scene.call_deferred()
 
 
 ## A Marketplace tab button: rebuild the page for that tab.

@@ -8279,5 +8279,75 @@
     "english": "A wage that is not paid costs that person {count} Loyalty.",
     "placeholders": "count",
     "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "shop.tab_styles",
+    "where": "Marketplace, third tab: the Office styles",
+    "english": "Office styles",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "shop.styles_blurb",
+    "where": "Marketplace, Office styles tab, intro",
+    "english": "How your office and your debates look. Living Office is included.",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "shop.style_living_name",
+    "where": "Office styles, the free default style's name",
+    "english": "Living Office",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "shop.style_living_desc",
+    "where": "Office styles, the free default style's one-line description",
+    "english": "Your office is the menu. Debates show the room as seats won and lost.",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "shop.style_in_use",
+    "where": "Office styles, the style in use",
+    "english": "In use",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "shop.style_included",
+    "where": "Office styles, the free style is included",
+    "english": "Included",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "shop.style_use",
+    "where": "Office styles, switch to an owned style (button)",
+    "english": "Use this style",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "shop.style_unlock",
+    "where": "Office styles, unlock a style (button) with its price",
+    "english": "Unlock · {price}",
+    "placeholders": "price",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "shop.style_footer",
+    "where": "Office styles tab, footer",
+    "english": "Once unlocked, change styles here or in Administration › Appearance and Music. Card fronts and backs look the same in every style.",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "office.cosmetics_slot_ui_style",
+    "where": "Administration, Appearance and Music, the Office style row",
+    "english": "Office style",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
   }
 ]

@@ -145,6 +145,15 @@ func refresh_outline_colour() -> void:
 		_recolour_outlines()
 
 
+## Puts the equipped UI style over the theme now (a style was just switched) and rebuilds the
+## button boxes in its colours. Screens read the style as they build, so call this, then rebuild
+## or reload the screen.
+func apply_ui_style() -> void:
+	UiStyle.sync()
+	_build_button_outlines()
+	_recolour_outlines()
+
+
 func _on_node_added(node: Node) -> void:
 	# A new screen at the top of the tree: put the equipped UI style over the theme first.
 	if node.get_parent() == get_tree().root and node is Control and UiStyle.sync():

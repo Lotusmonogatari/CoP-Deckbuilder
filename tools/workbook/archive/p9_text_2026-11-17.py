@@ -23,6 +23,18 @@ GROUPS = {
   ("week_end.breakdown_after", "End of Week Payments breakdown, Funds left after paying", "Office funds after paying", ""),
   ("week_end.breakdown_unpaid_wage", "End of Week Payments breakdown, what a missed wage costs", "A wage that is not paid costs that person {count} Loyalty.", "count"),
  ],
+ "styles": [
+  ("shop.tab_styles", "Marketplace, third tab: the Office styles", "Office styles", ""),
+  ("shop.styles_blurb", "Marketplace, Office styles tab, intro", "How your office and your debates look. Living Office is included.", ""),
+  ("shop.style_living_name", "Office styles, the free default style's name", "Living Office", ""),
+  ("shop.style_living_desc", "Office styles, the free default style's one-line description", "Your office is the menu. Debates show the room as seats won and lost.", ""),
+  ("shop.style_in_use", "Office styles, the style in use", "In use", ""),
+  ("shop.style_included", "Office styles, the free style is included", "Included", ""),
+  ("shop.style_use", "Office styles, switch to an owned style (button)", "Use this style", ""),
+  ("shop.style_unlock", "Office styles, unlock a style (button) with its price", "Unlock · {price}", "price"),
+  ("shop.style_footer", "Office styles tab, footer", "Once unlocked, change styles here or in Administration › Appearance and Music. Card fronts and backs look the same in every style.", ""),
+  ("office.cosmetics_slot_ui_style", "Administration, Appearance and Music, the Office style row", "Office style", ""),
+ ],
 }
 
 
