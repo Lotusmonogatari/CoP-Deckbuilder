@@ -10,6 +10,8 @@ extends RefCounted
 ## unused lower space, bottom right. The class keeps its old name so nothing that holds it changes.
 
 const SIZE := Vector2(460, 200)
+## Living Office's payments tray is wider: Funds on the left, the payments on the right.
+const TRAY_SIZE := Vector2(660, 200)
 const WARNING_RED := Color(1.0, 0.45, 0.4)
 
 
@@ -38,7 +40,28 @@ static func make(on_tap: Callable = Callable()) -> PanelContainer:
 	rows.alignment = BoxContainer.ALIGNMENT_CENTER
 	rows.add_theme_constant_override("separation", 2)
 	rows.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	square.add_child(rows)
+	rows.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# Living Office draws this as a bottom tray (P9 review): the Funds on hand on the left and the
+	# End of Week Payments on the right. The other styles stack everything in one column.
+	var tray := UiStyle.current() == UiStyles.LIVING_OFFICE
+	var funds_holder: Control = rows
+	if tray:
+		square.custom_minimum_size = TRAY_SIZE
+		var row := HBoxContainer.new()
+		row.name = "Tray"
+		row.add_theme_constant_override("separation", 24)
+		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		square.add_child(row)
+		var funds_column := VBoxContainer.new()
+		funds_column.name = "FundsColumn"
+		funds_column.alignment = BoxContainer.ALIGNMENT_CENTER
+		funds_column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		funds_column.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		row.add_child(funds_column)
+		row.add_child(rows)
+		funds_holder = funds_column
+	else:
+		square.add_child(rows)
 	# Title, the total, its two parts, the Funds on hand, and (only when short) the warning.
 	for spec: Array in [["TitleLine", &"SmallLabel"], ["TotalLine", &"HeaderLabel"],
 			["PartsLine", &"SmallLabel"], ["FundsLine", &"SmallLabel"], ["ShortLine", &"SmallLabel"]]:
@@ -48,7 +71,7 @@ static func make(on_tap: Callable = Callable()) -> PanelContainer:
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		rows.add_child(label)
+		(funds_holder if (tray and spec[0] == "FundsLine") else rows).add_child(label)
 	# Bottom right of whatever holds it, growing up and to the left.
 	square.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
 	square.grow_vertical = Control.GROW_DIRECTION_BEGIN
@@ -63,22 +86,22 @@ static func refresh(square: PanelContainer) -> void:
 	var preview := GameState.week_end_preview()
 	var pay: Dictionary = preview["payments"]
 	var dues_total := int((pay["dues"] as Dictionary)["total"])
-	(square.get_node("Rows/TitleLine") as Label).text = Text.say("office.week_payments_title")
-	(square.get_node("Rows/TotalLine") as Label).text = WeekPaymentsView.yen(int(pay["total"]))
+	(square.find_child("TitleLine", true, false) as Label).text = Text.say("office.week_payments_title")
+	(square.find_child("TotalLine", true, false) as Label).text = WeekPaymentsView.yen(int(pay["total"]))
 	var parts := Text.say("office.week_payments_parts_none", {"dues": Phrase.with_separators(dues_total)})
 	if (pay["wages"] as Array).size() > 0:
 		parts = Text.say("office.week_payments_parts", {"dues": Phrase.with_separators(dues_total),
 			"wages": Phrase.with_separators(int(pay["wages_total"]))})
-	(square.get_node("Rows/PartsLine") as Label).text = parts
-	(square.get_node("Rows/FundsLine") as Label).text = Text.say("dues.box_funds",
+	(square.find_child("PartsLine", true, false) as Label).text = parts
+	(square.find_child("FundsLine", true, false) as Label).text = Text.say("dues.box_funds",
 		{"funds": Phrase.with_separators(int(preview["funds"]["now"]))})
 	var short := WeekPaymentsView.short_line(pay)
-	var short_label := square.get_node("Rows/ShortLine") as Label
+	var short_label := square.find_child("ShortLine", true, false) as Label
 	short_label.text = short
 	short_label.visible = not short.is_empty()
 	var colour := WARNING_RED if not short.is_empty() else UiStyle.plate_ink()
 	for line: String in ["TotalLine", "ShortLine"]:
-		(square.get_node("Rows/" + line) as Label).add_theme_color_override("font_color", colour)
+		(square.find_child(line, true, false) as Label).add_theme_color_override("font_color", colour)
 
 
 ## Compact or full height, the same as the calendar square beside it.

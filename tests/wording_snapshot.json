@@ -673,6 +673,7 @@
   "office.deck_view": "View",
   "office.deck_warning": "Your deck: {reason}  —  see Office Management.",
   "office.deck_warning_suffix": "—  {reason}",
+  "office.docket_hours": "{count} hours left this week",
   "office.end_work_week": "End the Work Week",
   "office.end_work_week_body": "You still have {hours} work hours this week. End the work week now?",
   "office.end_work_week_body.one": "You still have {hours} work hour this week. End the work week now?",

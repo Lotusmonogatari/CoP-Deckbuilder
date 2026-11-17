@@ -24,6 +24,12 @@ static func pair(label: String, amount: String, small: bool = false, warn: bool 
 		if warn:
 			node.theme_type_variation = &"GaffeWarning"
 	row.add_child(left)
+	if UiStyle.current() == UiStyles.WOODBLOCK:
+		# A ledger line: dots lead the eye from the label to the amount (Woodblock).
+		left.size_flags_horizontal = 0
+		var leader := StyleMarks.make(StyleMarks.Kind.LEADER, UiStyle.colour("rule_dots", Color(0.64, 0.59, 0.5)), Vector2(40, 40))
+		leader.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(leader)
 	row.add_child(right)
 	return row
 

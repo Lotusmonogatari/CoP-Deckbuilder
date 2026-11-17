@@ -8370,5 +8370,12 @@
     "english": "{count} hours",
     "placeholders": "count",
     "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "office.docket_hours",
+    "where": "Office, under the Choose a level button, and at the top of the Levels list: hours left this week",
+    "english": "{count} hours left this week",
+    "placeholders": "count",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
   }
 ]

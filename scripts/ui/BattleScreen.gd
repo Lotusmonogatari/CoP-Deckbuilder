@@ -54,6 +54,8 @@ var _previewed_card_id := ""
 var _listening: ListeningStrip = null
 ## The paper note under the zoomed card (P9), built on first use.
 var _zoom_note: PanelContainer = null
+## Woodblock's intent seal (P9 review), drawn beside the intent line.
+var _intent_seal: StyleMarks = null
 
 ## False when the battle could not be set up. Everything that would touch
 ## the engine checks this first, so a stage that failed to start shows its
@@ -149,6 +151,7 @@ func _ready() -> void:
 		%UpcomingIntentLabel)
 	_style_intent_tag(%IntentLabel)
 	_style_chrome()
+	_add_gold_diagonal()
 	_player_portrait = PlayerPortraitPresenter.new(%PlayerPortrait)
 	_hand = HandPresenter.new(%HandRow)
 	_hand.card_chosen.connect(_on_card_chosen)
@@ -431,6 +434,7 @@ func _refresh() -> void:
 		else engine.turn_caption())
 
 	_speaker.show_state(engine, str(_stage.get("stage_id", "")))
+	_refresh_intent_seal()
 
 	if state.bar != null:
 		# A scored stage has no threshold, so the bar must not draw a line or
@@ -928,6 +932,28 @@ func _gold() -> Color:
 	return UiStyle.colour("gold", Color(0.89, 0.7, 0.25))
 
 
+## Broadcast splits the two characters' cut-ins with a thin gold diagonal (P9 review). A drawn line
+## over the picture area; it takes no touches and carries no words.
+func _add_gold_diagonal() -> void:
+	if UiStyle.current() != UiStyles.BROADCAST:
+		return
+	var art := $Safe/Column/OpponentRow/ArtBox as Control
+	var line := StyleMarks.make(StyleMarks.Kind.DIAGONAL, UiStyle.colour("gold", Color(0.89, 0.7, 0.25)), Vector2.ZERO)
+	line.name = "GoldDiagonal"
+	line.set_anchors_preset(Control.PRESET_FULL_RECT)
+	art.add_child(line)
+
+
+## 攻 for an attack, 守 for a guard, 得 for a gain; no seal while the opponent waits.
+func _refresh_intent_seal() -> void:
+	if _intent_seal == null or engine == null:
+		return
+	var verb := str(engine.current_intent().get("verb", "none"))
+	var glyph: String = {"attack": "攻", "block": "守", "gain": "得"}.get(verb, "")
+	_intent_seal.visible = not glyph.is_empty()
+	_intent_seal.set_glyph(glyph)
+
+
 ## The opponent's intent line as a red tag (P9, 2026-11-17): a pill in Living Office, a square-cut
 ## tag in Broadcast, a vermilion seal in Woodblock. Colours come from each style's tokens; the words
 ## ("Attacking · -1 to -2") are the same in every style and still come from IntentRunner.
@@ -945,6 +971,18 @@ func _style_intent_tag(label: Label) -> void:
 	label.add_theme_stylebox_override("normal", box)
 	label.add_theme_color_override("font_color", Color(1, 0.97, 0.92))
 	label.add_theme_constant_override("outline_size", 0)
+	if style == UiStyles.WOODBLOCK:
+		# A vermilion seal at the left of the tag: 攻 attacking, 守 guarding, 得 gaining (drawn, not text).
+		box.content_margin_left = 112.0
+		label.custom_minimum_size.y = 96.0
+		_intent_seal = StyleMarks.make(StyleMarks.Kind.SEAL, Color(1, 0.97, 0.92), Vector2(84, 84),
+			UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13)), "攻")
+		_intent_seal.set_anchors_preset(Control.PRESET_CENTER_LEFT)
+		_intent_seal.offset_left = 14.0
+		_intent_seal.offset_right = 98.0
+		_intent_seal.offset_top = -42.0
+		_intent_seal.offset_bottom = 42.0
+		label.add_child(_intent_seal)
 
 
 ## The note under the zoomed card (P9, 2026-11-17): what it does in this room and what it costs

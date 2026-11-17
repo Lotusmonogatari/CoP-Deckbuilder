@@ -8,6 +8,72 @@ extends RefCounted
 ## whether it works, so the refusal text and the rules are the same in every style.
 
 
+## A tier heading as a divider tab (Living Office), a gold chip (Broadcast) or a stamp (Woodblock).
+static func style_tier_heading(label: Label) -> Label:
+	var box := StyleBoxFlat.new()
+	box.set_content_margin_all(10.0)
+	box.content_margin_left = 24.0
+	box.content_margin_right = 24.0
+	var ink: Color
+	match UiStyle.current():
+		UiStyles.BROADCAST:
+			box.bg_color = UiStyle.colour("gold", Color(0.89, 0.7, 0.25))
+			box.skew = Vector2(SlantBar.SLANT * 0.6, 0.0)
+			box.set_corner_radius_all(2)
+			ink = UiStyle.colour("ground", Color(0.04, 0.07, 0.12))
+		UiStyles.WOODBLOCK:
+			box.bg_color = UiStyle.colour("paper", Color(0.97, 0.94, 0.88))
+			box.border_color = UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
+			box.set_border_width_all(3)
+			box.set_corner_radius_all(2)
+			ink = UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
+		_:
+			box.bg_color = UiStyle.colour("accent", Color(1.0, 0.84, 0.54))
+			box.corner_radius_top_left = 18
+			box.corner_radius_top_right = 18
+			ink = UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07))
+	label.add_theme_stylebox_override("normal", box)
+	label.add_theme_color_override("font_color", ink)
+	# A tab's width, not the full line: the shared wrapping pass turns wrapping back on, so give it room.
+	label.custom_minimum_size.x = 300.0
+	label.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	return label
+
+
+## The Draft a Bill button as a dashed-looking tab (Living Office), an outlined gold button
+## (Broadcast) or a stamped button (Woodblock).
+static func style_draft_button(button: Button) -> void:
+	var box := StyleBoxFlat.new()
+	box.set_content_margin_all(14.0)
+	var ink: Color
+	match UiStyle.current():
+		UiStyles.BROADCAST:
+			# Outlined in gold on a navy plate, so the gold reads on the light list panel.
+			var plate := UiStyle.plate_colour()
+			box.bg_color = Color(plate.r, plate.g, plate.b, 0.96)
+			box.border_color = UiStyle.colour("gold", Color(0.89, 0.7, 0.25))
+			box.set_border_width_all(3)
+			box.set_corner_radius_all(2)
+			ink = UiStyle.colour("gold", Color(0.89, 0.7, 0.25))
+		UiStyles.WOODBLOCK:
+			box.bg_color = UiStyle.colour("paper", Color(0.97, 0.94, 0.88))
+			box.border_color = UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
+			box.set_border_width_all(4)
+			box.set_corner_radius_all(2)
+			ink = UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
+		_:
+			# A paper tab with an amber edge, in dark ink (amber text would not read on the light panel).
+			box.bg_color = UiStyle.colour("paper_alt", Color(0.95, 0.89, 0.76))
+			box.border_color = UiStyle.colour("accent", Color(1.0, 0.84, 0.54))
+			box.set_border_width_all(4)
+			box.set_corner_radius_all(18)
+			ink = UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07))
+	for state: String in ["normal", "hover", "pressed", "focus"]:
+		button.add_theme_stylebox_override(state, box)
+	for colour: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
+		button.add_theme_color_override(colour, ink)
+
+
 ## Wraps `row` for the style in use: a manila folder (Living Office), a schedule row with a gold hour
 ## chip (Broadcast) or a print card with a framed picture and a red seal (Woodblock). The row's own
 ## children (name, hours, button) are the same in every style; only the dressing differs.

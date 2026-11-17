@@ -30,6 +30,9 @@ GROUPS = {
  "levels": [
   ("office.level_hours_line", "Levels list, under each level's name: how long it takes", "{count} hours", "count"),
  ],
+ "docket": [
+  ("office.docket_hours", "Office, under the Choose a level button, and at the top of the Levels list: hours left this week", "{count} hours left this week", "count"),
+ ],
  "styles": [
   ("shop.tab_styles", "Marketplace, third tab: the Office styles", "Office styles", ""),
   ("shop.styles_blurb", "Marketplace, Office styles tab, intro", "How your office and your debates look. Living Office is included.", ""),

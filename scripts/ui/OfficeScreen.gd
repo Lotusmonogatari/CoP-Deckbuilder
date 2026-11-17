@@ -375,6 +375,7 @@ func _install_room_objects() -> void:
 		OfficeLayouts.install(self, {"start": _start_button, "events": _events_button, "promises": _promises_button,
 			"staff": _management_button, "marketplace": find_child("InventoryButton", true, false) as Button,
 			"results": _reputation_button, "admin": find_child("AdministrationButton", true, false) as Button})
+		_dress_docket()
 		return
 	RoomObjects.install(self, {
 		"events": _events_button, "results": _reputation_button, "promises": _promises_button,
@@ -391,8 +392,78 @@ func _install_room_objects() -> void:
 	card_dim.bg_color = Color(paper.r, paper.g, paper.b, 0.6)
 	_start_button.add_theme_stylebox_override("disabled", card_dim)
 	_start_button.add_theme_color_override("font_disabled_color", Color(ink.r, ink.g, ink.b, 0.75))
+	_dress_docket()
 	for colour: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
 		_start_button.add_theme_color_override(colour, ink)
+
+
+## The Start button as a docket card (P9 review): its title, a second line saying how many hours are
+## left this week, and a mark (a folder and a chevron in Living Office, a chevron in Broadcast, a red
+## seal in Woodblock). The button, its name and its handler are the same in every style.
+func _dress_docket() -> void:
+	if _start_button.has_node("DocketHours"):
+		(_start_button.get_node("DocketHours") as Label).text = Text.say("office.docket_hours", {"count": GameState.work_hours_left()})
+		return
+	var style := UiStyle.current()
+	_start_button.custom_minimum_size.y = 160.0
+	for state: String in ["normal", "hover", "pressed", "focus", "disabled"]:
+		var box := _start_button.get_theme_stylebox(state)
+		if box is StyleBoxFlat:
+			var padded := (box as StyleBoxFlat).duplicate() as StyleBoxFlat
+			padded.content_margin_top = 14.0
+			padded.content_margin_bottom = 56.0
+			padded.content_margin_left = 130.0 if style == UiStyles.LIVING_OFFICE else 40.0
+			padded.content_margin_right = 130.0 if style != UiStyles.BROADCAST else 110.0
+			_start_button.add_theme_stylebox_override(state, padded)
+	var sub := Label.new()
+	sub.name = "DocketHours"
+	sub.theme_type_variation = &"SmallLabel"
+	sub.text = Text.say("office.docket_hours", {"count": GameState.work_hours_left()})
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	sub.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	sub.offset_top = -58.0
+	sub.offset_bottom = -12.0
+	sub.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
+	var ink: Color
+	match style:
+		UiStyles.LIVING_OFFICE: ink = UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07))
+		UiStyles.BROADCAST: ink = UiStyle.colour("ground", Color(0.04, 0.07, 0.12))
+		_: ink = UiStyle.colour("paper", Color(0.97, 0.94, 0.88))
+	sub.add_theme_color_override("font_color", ink)
+	_start_button.add_child(sub)
+	match style:
+		UiStyles.LIVING_OFFICE:
+			var icon := StyleMarks.make(StyleMarks.Kind.FOLDER, UiStyle.colour("paper", Color(1, 0.97, 0.92)), Vector2(84, 84),
+				UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07)))
+			icon.set_anchors_preset(Control.PRESET_CENTER_LEFT)
+			icon.offset_left = 24.0
+			icon.offset_right = 24.0 + 84.0
+			icon.offset_top = -42.0
+			icon.offset_bottom = 42.0
+			_start_button.add_child(icon)
+			_add_chevron(UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07)))
+		UiStyles.BROADCAST:
+			_add_chevron(UiStyle.colour("ground", Color(0.04, 0.07, 0.12)))
+		UiStyles.WOODBLOCK:
+			var seal := StyleMarks.make(StyleMarks.Kind.SEAL, UiStyle.colour("paper", Color(0.97, 0.94, 0.88)), Vector2(96, 96),
+				UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13)), "行")
+			seal.set_anchors_preset(Control.PRESET_CENTER_RIGHT)
+			seal.offset_left = -120.0
+			seal.offset_right = -24.0
+			seal.offset_top = -56.0
+			seal.offset_bottom = 40.0
+			_start_button.add_child(seal)
+
+
+func _add_chevron(colour: Color) -> void:
+	var chevron := StyleMarks.make(StyleMarks.Kind.CHEVRON, colour, Vector2(70, 70))
+	chevron.set_anchors_preset(Control.PRESET_CENTER_RIGHT)
+	chevron.offset_left = -96.0
+	chevron.offset_right = -26.0
+	chevron.offset_top = -50.0
+	chevron.offset_bottom = 20.0
+	_start_button.add_child(chevron)
 
 
 func _build() -> void:
@@ -3354,10 +3425,13 @@ func _on_fire_staff_confirmed() -> void:
 func _show_levels() -> void:
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("office.levels_blurb")))
+	# The hours left, at the top of the list (all styles; P9 review).
+	rows.append(UiKit.line(Text.say("office.docket_hours", {"count": GameState.work_hours_left()}), "HeaderLabel"))
 
 	# Drafting your own bill (patron step 7).
 	var draft_button := UiKit.action_button(Text.say("draft.button"), "", _open_draft.bind(true), 100.0)
 	draft_button.name = "DraftBillButton"
+	LevelFolder.style_draft_button(draft_button)
 	rows.append(draft_button)
 
 	# Organizations asking the player to carry a bill sit first (patron step 4).
@@ -3415,7 +3489,7 @@ func _show_levels() -> void:
 	var tiers: Array = by_tier.keys()
 	tiers.sort()
 	for tier: int in tiers:
-		rows.append(UiKit.heading(Text.say("office.tier_heading", {"tier": tier})))
+		rows.append(LevelFolder.style_tier_heading(UiKit.heading(Text.say("office.tier_heading", {"tier": tier}))))
 		# Within a tier the non-combat levels come first, then the battles
 		# (2026-11-09, Cameron; the gold line between them was dropped).
 		var stages_by_id := {}
