@@ -57,6 +57,8 @@ func _run() -> void:
 	var battle: Control = (load("res://scenes/battle/BattleScreen.tscn") as PackedScene).instantiate()
 	vp2.add_child(battle)
 	await get_tree().create_timer(1.0).timeout
+	# The cue (a paper bubble in Living Office) would lie over the Details while it is measured.
+	(battle.get("_banner") as CueBanner).set_suppressed(true)
 	battle.call("_toggle_details")
 	await get_tree().create_timer(0.7).timeout
 	var image2 := vp2.get_texture().get_image()

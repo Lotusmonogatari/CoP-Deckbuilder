@@ -129,3 +129,5 @@ Layout that makes a screen fit: the Office front page and the Level Intro sit in
 
 **Tests.** `test_ui_styles`, `test_ui_style_switch`, `test_seats_meter`, `test_week_payments`; real-screen: `hand_visible_test`, `broadcast_gold_lines_test`, `ui_style_parity_test`, and `card_faces_test`, which now repeats its run for each style.
 
+**Round 2 additions (P9).** `RoomObjects` moves five Office buttons onto the picture as pins from `art.json` `office_hotspots` (Living Office only; the same buttons keep their names and `%` lookups, so restore ownership when moving a node). `LevelFolder` wraps a level row in a folder (`OfficeScreen._level_row` calls `_level_row_plain`). `BattleScreen._style_intent_tag` skins the intent line; `CueBanner._skin_for_style` skins the band for each style (bubble, band with gold lines, scroll). `UiStyleTheme` gives Woodblock a paper plaque on every Label type but the cue's own.
+
