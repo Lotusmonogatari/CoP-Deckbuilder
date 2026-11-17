@@ -3181,14 +3181,16 @@ func week_end_preview() -> Dictionary:
 	var staff_funds := 0
 	if staff_day_confirmed and not staff_day_pool.is_empty() and not staff_members().is_empty():
 		staff_funds = int((staff_projection()["meta"] as Dictionary).get("Funds", 0))
-	var funds_before_wages := int(due["funds"]) - int(settled["paid"]) + staff_funds
 	var entries: Array = []
-	var wages_total := 0
 	for member: Dictionary in staff_members():
 		var id := str(member["staff_id"])
-		entries.append({"staff_id": id, "primary": member["primary"], "loyalty": staff_loyalty_of(id), "wage": staff_wage_of(id)})
-		wages_total += staff_wage_of(id)
-	var wage_result := StaffLoyalty.settle_wages(StaffLoyalty.pay_order(entries), funds_before_wages)
+		entries.append({"staff_id": id, "name": str(DataDB.get_staff(id).get("name", id)), "primary": member["primary"],
+			"loyalty": staff_loyalty_of(id), "wage": staff_wage_of(id), "raised": bool(staff_raise_pay.get(id, false))})
+	# The same functions the week end uses, in the same order (WeekPayments).
+	var payments := WeekPayments.build(int(due["total"]), dues_balance, int(due["funds"]), staff_funds, entries)
+	var wage_result := {"spent": int(payments["wages_paid"]), "missed": payments["unpaid"]}
+	var wages_total := int(payments["wages_total"])
+	var funds_before_wages := int(due["funds"]) - int(settled["paid"]) + staff_funds
 	return {
 		"dues": {"base": 0 if holiday else base_after, "share": 0 if holiday else share, "earned": week_funds_earned,
 			"relief": 0 if holiday else base_full - base_after,
@@ -3198,6 +3200,7 @@ func week_end_preview() -> Dictionary:
 			"wages_missed": (wage_result["missed"] as Array).size(), "funds_before_wages": funds_before_wages},
 		"funds": {"now": int(due["funds"]), "after": funds_before_wages - int(wage_result["spent"])},
 		"short": int(settled["owed"]), "penalties": penalties, "withdrawn": withdrawn,
+		"payments": payments,
 	}
 
 

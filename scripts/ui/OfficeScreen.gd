@@ -131,6 +131,8 @@ var _gathering_panel: Overlay
 var _hosted_panel: HostedEventPanel
 var _week_confirm_panel: Overlay
 var _week_over_panel: Overlay
+## The End of Week Payments breakdown a tap on the Office box opens (P9, 2026-11-17).
+var _payments_panel: Overlay
 ## Looks once a second for a work week that ran out of hours without the choice
 ## showing (2026-11-02), whichever way the hours were spent.
 var _week_watch: Timer
@@ -422,7 +424,7 @@ func _build_week_controls() -> void:
 	if spacer != null:
 		_calendar_square = CalendarSquare.make()
 		spacer.add_child(_calendar_square)
-		_dues_box = DuesBox.make()
+		_dues_box = DuesBox.make(_show_week_payments)
 		spacer.add_child(_dues_box)
 		# The calendar and the dues stack sit in this space: it never shrinks below them.
 		spacer.custom_minimum_size.y = DuesBox.SIZE.y + 16.0 + 90.0 + 8.0
@@ -481,6 +483,9 @@ func _build_week_controls() -> void:
 	_week_confirm_panel.name = "WeekConfirmPanel"
 	add_child(_week_confirm_panel)
 	_week_confirm_panel.confirmed.connect(_on_end_work_week_confirmed)
+	_payments_panel = Overlay.new()
+	_payments_panel.name = "PaymentsPanel"
+	add_child(_payments_panel)
 	_week_over_panel = Overlay.new()
 	_week_over_panel.name = "WeekOverPanel"
 	# The work week has no hours left: weekend or home are the only ways on.
@@ -605,18 +610,14 @@ func _week_cost_rows() -> Array[Control]:
 	var staff: Dictionary = preview["staff"]
 	var funds: Dictionary = preview["funds"]
 	out.append(UiKit.heading(Text.say("office.week_cost_heading")))
-	out.append(UiKit.line(Text.say("office.week_cost_dues", {"yen": Phrase.with_separators(int(dues["week_dues"]))})))
+	# The money lines are the End of Week Payments breakdown (WeekPaymentsView); what follows
+	# explains the dues' parts and what unpaid dues cost.
+	out.append_array(WeekPaymentsView.rows(preview))
 	if int(dues["week_dues"]) > 0:
 		out.append(UiKit.line(Text.say("office.week_cost_dues_parts", {"base": Phrase.with_separators(int(dues["base"])),
 			"share": Phrase.with_separators(int(dues["share"])), "earned": Phrase.with_separators(int(dues["earned"]))}), "SmallLabel"))
 	if int(dues["relief"]) > 0:
 		out.append(UiKit.line(Text.say("office.week_cost_relief", {"yen": Phrase.with_separators(int(dues["relief"]))}), "SmallLabel"))
-	if int(dues["carried"]) > 0:
-		out.append(UiKit.line(Text.say("office.week_cost_carried", {"yen": Phrase.with_separators(int(dues["carried"]))})))
-	if int(staff["count"]) > 0:
-		out.append(UiKit.line(Text.say("office.week_cost_wages", {"yen": Phrase.with_separators(int(staff["wages"])), "count": int(staff["count"])})))
-	out.append(UiKit.line(Text.say("office.week_cost_funds", {"now": Phrase.with_separators(int(funds["now"])),
-		"after": Phrase.with_separators(int(funds["after"]))})))
 	if int(preview["short"]) > 0:
 		var penalties: Dictionary = preview["penalties"]
 		var hq := str(DataDB.get_booster(str(DataDB.get_rule("party_dues_hq_organization", ""))).get("name_en", ""))
@@ -631,6 +632,13 @@ func _week_cost_rows() -> Array[Control]:
 		out.append(UiKit.line(Text.say("staff.week_warning", {"yen": int(staff["wages"])}), "SmallLabel"))
 	out.append(UiKit.line(Text.say("office.week_cost_settle"), "SmallLabel"))
 	return out
+
+
+## The breakdown behind the Office's End of Week Payments box.
+func _show_week_payments() -> void:
+	Haptics.confirm()
+	var rows := WeekPaymentsView.rows(GameState.week_end_preview(), false)
+	_payments_panel.open(Text.say("office.week_payments_title"), rows)
 
 
 func _on_work_weekend() -> void:

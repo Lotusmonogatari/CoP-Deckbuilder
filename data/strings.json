@@ -5362,13 +5362,6 @@
     "notes": "Cameron's list, 2026-10-27: toyto. Katakana. Edit freely."
   },
   {
-    "key": "dues.box_dues",
-    "where": "Office, box beside the calendar",
-    "english": "Party Dues: {dues}円",
-    "placeholders": "dues",
-    "notes": "2026-10-28 dues and funds box."
-  },
-  {
     "key": "dues.box_funds",
     "where": "Office, box beside the calendar, second line",
     "english": "Office Funds: {funds}円",
@@ -8127,13 +8120,6 @@
     "notes": "2026-11-17 panel P4 (Claude's draft)"
   },
   {
-    "key": "office.week_cost_dues",
-    "where": "Week-over popup, this week's dues",
-    "english": "Party dues this week: {yen}円.",
-    "placeholders": "yen",
-    "notes": "2026-11-17 panel P4 (Claude's draft)"
-  },
-  {
     "key": "office.week_cost_dues_parts",
     "where": "Week-over popup, how the dues are made up",
     "english": "That is {base}円 for your Party support plus {share}円, a share of the {earned}円 you earned this week.",
@@ -8145,27 +8131,6 @@
     "where": "Week-over popup, National awareness relief",
     "english": "National awareness has already taken {yen}円 off.",
     "placeholders": "yen",
-    "notes": "2026-11-17 panel P4 (Claude's draft)"
-  },
-  {
-    "key": "office.week_cost_carried",
-    "where": "Week-over popup, dues carried over",
-    "english": "Still owed from earlier weeks: {yen}円.",
-    "placeholders": "yen",
-    "notes": "2026-11-17 panel P4 (Claude's draft)"
-  },
-  {
-    "key": "office.week_cost_wages",
-    "where": "Week-over popup, staff wages",
-    "english": "Staff wages: {yen}円 for {count} staff.",
-    "placeholders": "yen, count",
-    "notes": "2026-11-17 panel P4 (Claude's draft)"
-  },
-  {
-    "key": "office.week_cost_funds",
-    "where": "Week-over popup, Funds before and after",
-    "english": "Funds now: {now}円. After dues and wages: {after}円.",
-    "placeholders": "now, after",
     "notes": "2026-11-17 panel P4 (Claude's draft)"
   },
   {
@@ -8223,5 +8188,96 @@
     "english": "Use this on the Staff Assignments screen.",
     "placeholders": null,
     "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_payments_title",
+    "where": "Office, End of Week Payments box title and breakdown heading",
+    "english": "End of Week Payments",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "office.week_payments_parts",
+    "where": "Office, End of Week Payments box, the two parts",
+    "english": "Dues {dues} · Wages {wages}",
+    "placeholders": "dues, wages",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "office.week_payments_parts_none",
+    "where": "Office, End of Week Payments box, no staff hired",
+    "english": "Dues {dues} · Staff wages · none",
+    "placeholders": "dues",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "office.week_payments_no_staff",
+    "where": "End of Week Payments breakdown, no staff hired",
+    "english": "Staff wages · none",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "office.week_payments_short",
+    "where": "Office, End of Week Payments box and breakdown, Funds short",
+    "english": "Funds are short by {amount}. Unpaid: {who}.",
+    "placeholders": "amount, who",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "office.week_payments_unpaid_dues",
+    "where": "End of Week Payments, the word for unpaid dues in the Unpaid list",
+    "english": "party dues",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "week_end.breakdown_dues",
+    "where": "End of Week Payments breakdown, this week's dues",
+    "english": "Party dues",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "week_end.breakdown_owed",
+    "where": "End of Week Payments breakdown, dues still owed from earlier weeks",
+    "english": "Still owed from earlier weeks",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "week_end.breakdown_wage",
+    "where": "End of Week Payments breakdown, one person's wage",
+    "english": "{name}'s wage",
+    "placeholders": "name",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "week_end.breakdown_wage_raised",
+    "where": "End of Week Payments breakdown, one person's raised wage",
+    "english": "{name}'s wage (raised)",
+    "placeholders": "name",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "week_end.breakdown_total",
+    "where": "End of Week Payments breakdown, the total",
+    "english": "Total",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "week_end.breakdown_after",
+    "where": "End of Week Payments breakdown, Funds left after paying",
+    "english": "Office funds after paying",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "week_end.breakdown_unpaid_wage",
+    "where": "End of Week Payments breakdown, what a missed wage costs",
+    "english": "A wage that is not paid costs that person {count} Loyalty.",
+    "placeholders": "count",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
   }
 ]
