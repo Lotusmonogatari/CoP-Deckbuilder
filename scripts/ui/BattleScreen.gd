@@ -52,6 +52,8 @@ var _pick_confirm: Button
 ## The card tapped once, whose organisation preview is showing.
 var _previewed_card_id := ""
 var _listening: ListeningStrip = null
+## The paper note under the zoomed card (P9), built on first use.
+var _zoom_note: PanelContainer = null
 
 ## False when the battle could not be set up. Everything that would touch
 ## the engine checks this first, so a stage that failed to start shows its
@@ -850,11 +852,51 @@ func _open_card(card_id: String) -> void:
 		%ZoomColumn.add_child(_card_back)
 		%ZoomColumn.move_child(_card_back, 0)
 
-	_card_back.show_card(card, CardView.describe_effect(engine.preview(card), card))
+	var effect_text := CardView.describe_effect(engine.preview(card), card)
+	_card_back.show_card(card, effect_text)
+	_show_zoom_note(effect_text, engine.card_cost(card))
 
 	%ZoomPlay.disabled = (engine.card_cost(card) > engine.state.energy
 		or not engine.play_block(card).is_empty())
 	_card_zoom.show()
+
+
+## The note under the zoomed card (P9, 2026-11-17): what it does in this room and what it costs
+## of the energy left, so the player reads both before pressing Play (Standard 1). The same words in
+## every style; Living Office draws it as a paper note, the others on their own plate.
+func _show_zoom_note(effect_text: String, cost: int) -> void:
+	if _zoom_note == null:
+		_zoom_note = PanelContainer.new()
+		_zoom_note.name = "ZoomNote"
+		_zoom_note.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		_zoom_note.custom_minimum_size = Vector2(900, 0)
+		var box := VBoxContainer.new()
+		box.name = "NoteColumn"
+		_zoom_note.add_child(box)
+		for label_name: String in ["NoteHeading", "NoteLine"]:
+			var label := Label.new()
+			label.name = label_name
+			label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			box.add_child(label)
+		%ZoomColumn.add_child(_zoom_note)
+		%ZoomColumn.move_child(_zoom_note, 1)
+	var living := UiStyle.current() == UiStyles.LIVING_OFFICE
+	var fill := UiStyle.colour("paper", Color(1, 0.97, 0.92)) if living else UiStyle.plate_colour()
+	var ink := UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07)) if living else UiStyle.plate_ink()
+	var style := StyleBoxFlat.new()
+	style.bg_color = fill
+	style.set_corner_radius_all(14)
+	style.set_content_margin_all(16)
+	_zoom_note.add_theme_stylebox_override("panel", style)
+	var heading := _zoom_note.get_node("NoteColumn/NoteHeading") as Label
+	var line := _zoom_note.get_node("NoteColumn/NoteLine") as Label
+	heading.text = Text.say("zoom.note_heading")
+	heading.theme_type_variation = &"SmallLabel"
+	line.text = Text.say("zoom.note_line", {"result": effect_text, "cost": cost, "energy": engine.state.energy})
+	for label: Label in [heading, line]:
+		label.add_theme_color_override("font_color", ink)
+		# The note is its own plate: no second plate behind each line.
+		label.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
 
 
 ## A card dragged up out of the hand and let go: played straight away, the

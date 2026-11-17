@@ -23,6 +23,10 @@ GROUPS = {
   ("week_end.breakdown_after", "End of Week Payments breakdown, Funds left after paying", "Office funds after paying", ""),
   ("week_end.breakdown_unpaid_wage", "End of Week Payments breakdown, what a missed wage costs", "A wage that is not paid costs that person {count} Loyalty.", "count"),
  ],
+ "zoom": [
+  ("zoom.note_heading", "Battle, card zoom, note under the card: heading", "If you play it now", ""),
+  ("zoom.note_line", "Battle, card zoom, note under the card: what it does here and what it costs", "{result} · costs {cost} of {energy} energy", "result, cost, energy"),
+ ],
  "styles": [
   ("shop.tab_styles", "Marketplace, third tab: the Office styles", "Office styles", ""),
   ("shop.styles_blurb", "Marketplace, Office styles tab, intro", "How your office and your debates look. Living Office is included.", ""),

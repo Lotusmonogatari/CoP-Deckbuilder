@@ -1191,5 +1191,7 @@
   "week_end.breakdown_total": "Total",
   "week_end.breakdown_unpaid_wage": "A wage that is not paid costs that person {count} Loyalty.",
   "week_end.breakdown_wage": "{name}'s wage",
-  "week_end.breakdown_wage_raised": "{name}'s wage (raised)"
+  "week_end.breakdown_wage_raised": "{name}'s wage (raised)",
+  "zoom.note_heading": "If you play it now",
+  "zoom.note_line": "{result} · costs {cost} of {energy} energy"
 }

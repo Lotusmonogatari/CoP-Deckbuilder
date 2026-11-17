@@ -8349,5 +8349,19 @@
     "english": "Office style",
     "placeholders": null,
     "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "zoom.note_heading",
+    "where": "Battle, card zoom, note under the card: heading",
+    "english": "If you play it now",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "zoom.note_line",
+    "where": "Battle, card zoom, note under the card: what it does here and what it costs",
+    "english": "{result} · costs {cost} of {energy} energy",
+    "placeholders": "result, cost, energy",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
   }
 ]
