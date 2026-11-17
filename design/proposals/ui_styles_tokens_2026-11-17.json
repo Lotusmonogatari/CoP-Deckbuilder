@@ -1,0 +1,91 @@
+{
+  "_README": "Starting tokens for the UI Styles workbook tab (proposal, 2026-11-17). One block per style. Colours are hex; sizes are points on a 390 pt phone (multiply by 2.77 for the 1080 px base); radii in base px. Text sizes follow the T1 decision; these are the sizes the mockups were drawn at.",
+  "living_office": {
+    "name": "Living Office",
+    "default": true,
+    "colour": {
+      "ground": "#140F0A",
+      "panel": "#2B1D12",
+      "panel_edge": "#6B4A2B",
+      "paper": "#FFF8EC",
+      "paper_alt": "#F3E3C3",
+      "ink_on_dark": "#FFF8EC",
+      "ink_on_paper": "#2B1D12",
+      "ink_quiet": "#D8C3A5",
+      "accent": "#FFD58A",
+      "warning": "#B3261E",
+      "ok": "#2F6B3A",
+      "seat_player": "#4F8FFF",
+      "seat_undecided": "#8A8173",
+      "seat_opponent": "party colour"
+    },
+    "font": { "display": "Antaka Brush Display", "body": "Zen Kaku Gothic New" },
+    "size_pt": { "title": 24, "heading": 18, "body": 15, "small": 12, "minimum": 11 },
+    "radius_px": { "panel": 14, "button": 26, "chip": 10 },
+    "motif": ["room objects with lamp pins", "manila folders", "seats semicircle", "speech bubbles"],
+    "support_count": "seats",
+    "cue": "speech_bubble",
+    "hand": "fan"
+  },
+  "broadcast": {
+    "name": "Broadcast",
+    "default": false,
+    "colour": {
+      "ground": "#0B1220",
+      "panel": "#141E33",
+      "panel_edge": "#39465F",
+      "plate": "#F4F1EA",
+      "ink_on_dark": "#F4F1EA",
+      "ink_on_plate": "#0B1220",
+      "ink_quiet": "#C9C3B6",
+      "gold": "#E3B341",
+      "live_red": "#C23B22",
+      "intent_red": "#B42318",
+      "info_blue": "#4F8FD6",
+      "bar_player": "#3B82F6",
+      "bar_undecided": "#475569",
+      "bar_opponent": "party colour"
+    },
+    "font": { "display": "Barlow Condensed", "display_style": "italic 700", "body": "Noto Sans JP" },
+    "size_pt": { "title": 30, "heading": 21, "body": 15, "small": 12, "minimum": 11 },
+    "slant_px": { "plate": 12, "primary_button": 18, "chip": 10 },
+    "gold_lines": { "support_bar": "top and bottom (SlantBar, unchanged)", "cue_band": "top and bottom (CueBanner, unchanged)", "threshold": "gold mark" },
+    "support_count": "slant_bar",
+    "cue": "band_with_gold_lines",
+    "hand": "overlap_row"
+  },
+  "woodblock": {
+    "name": "Woodblock",
+    "default": false,
+    "colour": {
+      "ground": "#EFE4CF",
+      "paper": "#F8F1E3",
+      "plaque": "#F7EFE0",
+      "ink": "#1C1A17",
+      "ink_quiet": "#5A5146",
+      "indigo": "#22305A",
+      "vermilion": "#C23B22",
+      "scroll_rod": "#6B4A2B",
+      "rule_dots": "#A39780",
+      "bar_player": "#22305A",
+      "bar_undecided": "#B8AD97",
+      "bar_opponent": "party colour"
+    },
+    "font": { "display": "Antaka Brush Display", "body": "Shippori Mincho B1" },
+    "size_pt": { "title": 30, "heading": 19, "body": 15, "small": 12, "minimum": 11 },
+    "border_px": { "ink": 2, "print_frame": 6 },
+    "motif": ["seals (攻 守 得 行 終)", "seigaiha band", "hanging scroll", "plaque-topped tiles", "framed prints"],
+    "support_count": "framed_bar",
+    "cue": "hanging_scroll",
+    "hand": "overlap_row"
+  },
+  "shared": {
+    "touch_target_min_pt": 44,
+    "contrast_text_min": 4.5,
+    "contrast_icon_min": 3.0,
+    "hand_visible_cards": "all, hand sizes 3 to 6",
+    "play_lift_px": 220,
+    "card_faces": "unchanged in every style (CardView, CardBackView, art.json card_frames)",
+    "seats": { "count": 20, "people_per_seat": 5, "rows": [12, 8] }
+  }
+}
