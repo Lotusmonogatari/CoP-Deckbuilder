@@ -26,7 +26,7 @@ func _ready() -> void:
 func _run() -> void:
 	for style: String in UiStyles.ALL:
 		await _one(style)
-	if _checked < 12:
+	if _checked < 21:
 		_failures.append("only %d pill checks ran" % _checked)
 	if _failures.is_empty():
 		print("INTENT PILL TEST: PASS (%d checks)" % _checked)
@@ -61,12 +61,11 @@ func _one(style: String) -> void:
 	(screen.get("_banner") as CueBanner).set_suppressed(true)
 	var own := PartyDisplay.party_name(DataDB.player)
 	var default_red := UiStyle.colour("intent_default", Color.MAGENTA, UiStyles.SHARED)
-	var cases := [
-		["Keizaijiyuutou", PartyDisplay.color_for(DataDB.get_party("Keizaijiyuutou"))],
-		["Butsutou", PartyDisplay.color_for(DataDB.get_party("Butsutou"))],
-		["", default_red],
-		[own, default_red],
-	]
+	# Every party, and no party: the pill's fill, and the text on it, for each (finding 4 of the review).
+	var cases: Array = [["", default_red]]
+	for party: Dictionary in DataDB.parties:
+		var party_name := str(party.get("name", ""))
+		cases.append([party_name, default_red if party_name == own else PartyDisplay.color_for(party)])
 	for case: Array in cases:
 		var row: Dictionary = screen.engine.current_opponent()
 		row["party"] = case[0]
@@ -89,6 +88,22 @@ func _one(style: String) -> void:
 		var sample := image.get_pixel(int(rect.end.x - 14.0), int(rect.position.y + rect.size.y * 0.5))
 		if absf(sample.r - want.r) + absf(sample.g - want.g) + absf(sample.b - want.b) > 0.12:
 			_failures.append(tag + "the rendered pill is %s, wanted %s" % [sample.to_html(false), want.to_html(false)])
+		# The text: its colour against the fill, and the rendered pixels (the pixel farthest in luminance from
+		# the fill inside the pill's words is the ink).
+		var ink := label.get_theme_color("font_color")
+		if IntentPill.contrast(want, ink) < 4.5:
+			_failures.append(tag + "the ink is %.1f to 1 on the pill (needs 4.5)" % IntentPill.contrast(want, ink))
+		var far := 0.0
+		var far_pixel := want
+		for y in range(int(rect.position.y + 8.0), int(rect.end.y - 8.0), 2):
+			for x in range(int(rect.position.x + rect.size.x * 0.3), int(rect.end.x - 24.0), 2):
+				var px := image.get_pixel(x, y)
+				var d := absf(IntentPill.luminance(px) - IntentPill.luminance(want))
+				if d > far:
+					far = d
+					far_pixel = px
+		if IntentPill.contrast(want, far_pixel) < 4.5:
+			_failures.append(tag + "the rendered text reads %.1f to 1 on the pill (needs 4.5)" % IntentPill.contrast(want, far_pixel))
 		_checked += 1
 	vp.queue_free()
 	await get_tree().process_frame

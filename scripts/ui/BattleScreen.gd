@@ -1006,6 +1006,7 @@ func _refresh_intent_pill() -> void:
 	var party_colour := PartyDisplay.color_for(DataDB.get_party(party)) if not party.is_empty() else Color.BLACK
 	var fill := IntentPill.colour(party, own_party, party_colour, _default_intent_red())
 	_intent_box.bg_color = fill
+	_support_bar.opponent_colour = fill
 	_intent_label_node.add_theme_color_override("font_color", IntentPill.ink_for(fill))
 	if _intent_seal != null:
 		_intent_seal.back = fill

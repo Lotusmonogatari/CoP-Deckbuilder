@@ -64,7 +64,9 @@ const SHORT_SCREEN := 2200.0
 const LIVING_HEIGHT_SHORT := 140.0
 const LIVING_READOUT_TOP_SHORT := 150.0
 ## Who holds the other share, in colour: the opponent's party colour where the screen knows it.
-var opponent_colour := Color(0.78, 0.42, 0.40)
+## The opponent's colour in the bar and the seats: the same colour as the intent pill (the party's, or
+## the default red), so each opponent is one colour (Cameron, 2026-11-17). BattleScreen sets it.
+var opponent_colour := Color(0.55, 0.11, 0.18): set = _set_opponent_colour
 var _living := false
 var _living_height := LIVING_HEIGHT
 
@@ -80,6 +82,11 @@ const THRESHOLD_COLOR := Color(1, 1, 1, 0.85)
 
 @onready var _caption: Label = $Caption
 @onready var _readout: Label = $Readout
+
+
+func _set_opponent_colour(value: Color) -> void:
+	opponent_colour = value
+	queue_redraw()
 
 
 func _set_opponent_name(value: String) -> void:
@@ -234,7 +241,7 @@ func _draw() -> void:
 	var parts: Array = [[player, PLAYER_COLOR]]
 	if two_sided:
 		parts.append([maxi(maximum - player - opponent, 0), UNDECIDED_COLOR])
-		parts.append([opponent, OPPONENT_COLOR])
+		parts.append([opponent, opponent_colour])
 	else:
 		parts.append([maxi(maximum - player, 0), UNDECIDED_COLOR])
 	SlantBar.draw_parts(self, bar, parts, BORDER, float(maximum))
