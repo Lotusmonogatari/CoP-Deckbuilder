@@ -147,6 +147,7 @@ func _ready() -> void:
 	_speaker = OpponentPresenter.new(
 		%Portrait, %OpponentName, %IntentLabel, %GuardLabel, %OpponentGuardLabel,
 		%UpcomingIntentLabel)
+	_style_intent_tag(%IntentLabel)
 	_player_portrait = PlayerPortraitPresenter.new(%PlayerPortrait)
 	_hand = HandPresenter.new(%HandRow)
 	_hand.card_chosen.connect(_on_card_chosen)
@@ -859,6 +860,25 @@ func _open_card(card_id: String) -> void:
 	%ZoomPlay.disabled = (engine.card_cost(card) > engine.state.energy
 		or not engine.play_block(card).is_empty())
 	_card_zoom.show()
+
+
+## The opponent's intent line as a red tag (P9, 2026-11-17): a pill in Living Office, a square-cut
+## tag in Broadcast, a vermilion seal in Woodblock. Colours come from each style's tokens; the words
+## ("Attacking · -1 to -2") are the same in every style and still come from IntentRunner.
+func _style_intent_tag(label: Label) -> void:
+	var style := UiStyle.current()
+	var tokens := {UiStyles.LIVING_OFFICE: "warning", UiStyles.BROADCAST: "intent_red", UiStyles.WOODBLOCK: "vermilion"}
+	var token: String = tokens.get(style, "warning")
+	var box := StyleBoxFlat.new()
+	box.bg_color = UiStyle.colour(token, Color(0.7, 0.15, 0.12))
+	box.set_corner_radius_all(26 if style == UiStyles.LIVING_OFFICE else 3)
+	box.content_margin_left = 20.0
+	box.content_margin_right = 20.0
+	box.content_margin_top = 4.0
+	box.content_margin_bottom = 4.0
+	label.add_theme_stylebox_override("normal", box)
+	label.add_theme_color_override("font_color", Color(1, 0.97, 0.92))
+	label.add_theme_constant_override("outline_size", 0)
 
 
 ## The note under the zoomed card (P9, 2026-11-17): what it does in this room and what it costs
