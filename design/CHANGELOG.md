@@ -1248,3 +1248,8 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
   - **Broadcast split cut-ins:** two slanted shots behind the characters, yours in blue and the opponent's in their pill colour, divided by the gold diagonal with gold rules top and bottom.
   - All are drawn marks (`StyleMarks`): no art files, no new words, so the same-information rule holds.
 
+
+## 2026-11-17: A held card no longer covers the Guard and Gaffes counters
+
+- While a card is held it rises only as far as just below the Guard and Gaffes counters, in every style and screen shape. Playing it still needs the same drag distance. No rule or number changed.
+- `hand_input_test` now checks mid-drag that the card does not overlap either counter. The nine mid-drag battle shots in the P9 review folder were retaken.

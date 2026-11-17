@@ -88,7 +88,15 @@ func _one(style: String) -> void:
 	var held: int = screen.engine.state.hand.size()
 	var energy: int = screen.engine.state.energy
 	var start := HandPoint.center(card)
-	await _drag(start, start + Vector2(0, -(CardView.PLAY_LIFT + 120)))
+	var guard := screen.get_node("%GuardLabel") as Control
+	var gaffes := screen.get_node("%GaffeLabel") as Control
+	await _drag(start, start + Vector2(0, -(CardView.PLAY_LIFT + 120)), 12, func() -> void:
+		# Mid-drag, the lifted card must not cover the Guard or Gaffes counters (P9 tidy).
+		var rect := card.get_global_rect()
+		if rect.intersects(guard.get_global_rect()):
+			_failures.append("%s: the lifted card covers the Guard counter (card %s, counter %s)" % [style, rect, guard.get_global_rect()])
+		if rect.intersects(gaffes.get_global_rect()):
+			_failures.append("%s: the lifted card covers the Gaffes counter (card %s, counter %s)" % [style, rect, gaffes.get_global_rect()]))
 	await get_tree().create_timer(0.4).timeout
 	if screen.engine.state.hand.size() >= held and screen.engine.state.energy >= energy:
 		_failures.append("%s: a drag up did not play the card" % style)
@@ -111,7 +119,7 @@ func _tap(at: Vector2) -> void:
 	await get_tree().create_timer(0.15).timeout
 
 
-func _drag(from: Vector2, to: Vector2, steps: int = 12) -> void:
+func _drag(from: Vector2, to: Vector2, steps: int = 12, before_release: Callable = Callable()) -> void:
 	var transform := get_viewport().get_screen_transform()
 	Input.parse_input_event(_event(true, from))
 	await get_tree().process_frame
@@ -122,6 +130,9 @@ func _drag(from: Vector2, to: Vector2, steps: int = 12) -> void:
 		motion.button_mask = MOUSE_BUTTON_MASK_LEFT
 		Input.parse_input_event(motion)
 		await get_tree().process_frame
+	await get_tree().process_frame
+	if before_release.is_valid():
+		before_release.call()
 	Input.parse_input_event(_event(false, to))
 	await get_tree().process_frame
 	await get_tree().process_frame

@@ -1,6 +1,6 @@
 # Panel P9: UI styles and End of Week Payments (2026-11-17)
 
-Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep are already in `main`). All wording is a draft for Cameron. **The design is built except the three items listed under "Left out" (section 4).** Section 4 lists exactly what is missing.
+Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep are already in `main`). All wording is a draft for Cameron. **The design is built, including the room objects and the five mockup elements the panel found missing.** Merged to `main` at `4937a12c` (fast-forward, after `tools/verify.sh` printed "All checks passed"). Section 4 lists the departures from the mockups.
 
 ## Review response (panel review of `b4dd74f`)
 
@@ -37,7 +37,7 @@ Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep a
 | 5 | Saved with the run or per device | **With the run** |
 | 6 | Three fonts | **Yes** (Latin subsets; Japanese falls back to Noto Sans JP) |
 | 7 | Seats | **20 seats of 5**, plus: for counts that are not people or votes (press tone) draw a **continuous semicircle that fills like the regular bar** (built) |
-| 8 | Room-object pairings | **Yes as listed** (not built yet) |
+| 8 | Room-object pairings | **Yes as listed** (**built**: pins on both Office pictures) |
 | - | Mockups | Cameron's PDFs were rendered to PNGs in `design/proposals/img/ui_styles/` |
 | R2-1 | Room objects | **I place them, you adjust**: placed from the two Office pictures in `art.json` `office_hotspots` |
 | R2-2 | Next build | **Living Office rest**: bubble cue, intent pill, folders list (and the room objects) |
@@ -59,7 +59,7 @@ Spec "Done means" (UI Styles section 9 and End of Week Payments section 6).
 | Touch targets of 44 pt or more (`tools/ui_target_audit.py`) | **Fail (existing)** | 420 targets on 21 screens: smallest side 80 to 100 px against 122. P9's own new controls are larger (Office styles buttons 90 to 100 px, payments box 200 px) but still not 122. This is the whole app's state, not a P9 regression; raising every button needs your decision |
 | `tools/verify.sh` passes; GAME_SYSTEMS, ARCHITECTURE, CHANGELOG updated | **Pass** (section 3) | Docs updated: GAME_SYSTEMS, INFORMATION_STANDARDS (Week end row), ARCHITECTURE, CHANGELOG, CLAUDE.md index |
 | EOW: the Office shows End of Week Payments in every style, total and both parts | **Pass** | `*_office_*` shots; parity test |
-| EOW: breakdown on tap and in the week-over pop-up before the choice | **Pass (pop-up not re-shot)** | `*_payments_panel_*` shots for the tap. The week-over pop-up uses the same `WeekPaymentsView` rows and passes `week_test`; I did not capture a new pop-up shot |
+| EOW: breakdown on tap and in the week-over pop-up before the choice | **Pass** | `*_payments_panel_*` shots for the tap; `*_weekover_*` shots for the week-over pop-up (same `WeekPaymentsView` rows; `week_test` passes) |
 | EOW: preview equals settlement, including a shortfall | **Pass** | `tests/test_week_payments.gd` (six tests: total is dues plus wages; raised pay shown and charged; a shortfall names who goes unpaid and matches the settlement; pay order; no staff) |
 | EOW: old Text rows retired through the workbook | **Pass** | `dues.box_dues` and four `office.week_cost_*` rows removed with `wbx.py` (the new rows replace them) |
 | EOW: GAME_SYSTEMS, Information Standards row, CHANGELOG | **Pass** | |
@@ -105,6 +105,31 @@ Existing click tests changed because the hand no longer scrolls sideways: `loop_
 | f99c66c | Tests expect the no-break 'n of m' captions |
 | 5675ac4 | Review fix 5: organization icons get a dark backing, so they read 3 to 1 in every style (measured from pixels) |
 | 11ec338 | Review response: changelog, architecture, report and 108 compressed shots; reason on a blocked level stays at full strength |
+| 5dd4cd7 | Review response: regenerated themes (stronger disabled text), report with the final verify result and commit list |
+| 5c90e74 | Hour rings: Living Office level rows show their hours in a ring (red and tilted when the level cannot start) |
+| 863ce5f | Last gaps: screenshot previews in the styles shop, room-object words on the pins, dashed Draft a Bill tab |
+| beff293 | Intent line is a pill in the opponent's party colour (default crimson, held apart from Keizaijiyuutou's red) |
+| 9a58399 | Seats and bar take the pill's colour (one colour per opponent); `hand_input_test` and a pill text-contrast check for every party |
+| c088547 | Icon backings and seat rings follow the colour they sit with; all shots retaken |
+| be9ebdc | Five mockup elements: Living page-a-day calendar (Era and Ainu aware) and narration bubble, Woodblock waves and framed print, Broadcast split cut-ins |
+| 4937a12 | Bubble ink fix, regression check, report/changelog/architecture, 114 shots including Era and Ainu calendars (**merged to `main` here**) |
+
+## 3b. Rounds 3 and 4: answers to the panel reviews
+
+**Round 3** (review of `b4dd74f`, seven findings; answered in `fd092fa` to `11ec338`, table above).
+
+**Round 4** (review of the round-3 work, all minor):
+
+| Finding | Answer |
+|---|---|
+| The report claimed more than was built | Fixed: the report lists exactly what differs (section 4); this version drops the "except three items" line |
+| Opponent showed two colours (pill and seats) | One colour per opponent: pill, bar segment and seats (`beff293`, `9a58399`) |
+| Six stale screenshots | All shots retaken, 114 in all (`c088547`, `4937a12`) |
+| Missing tests | `hand_input_test` (real drag) and a pill text-contrast check for every party |
+| Five unbuilt mockup elements | Built (`be9ebdc`), plus Era and Ainu calendar support |
+| Narration bubble late lines in light ink | Theme set on the bubble, with a regression check (`4937a12`) |
+
+**Tidy after the merge** (branch `panel/p9-tidy`): a lifted card covered the Guard and Gaffes counters in every style. The card now stops rising just below the counters (`CardView.max_rise`, set per lift from the counters' real positions); playing a card still needs the same 220 px of finger travel. `hand_input_test` checks mid-drag that the card does not overlap either counter (it fails without the cap, passes at 440x952 and 540x960). The nine `*_battle_*_drag` shots were retaken.
 
 ## 4. Departures from the mockups, and what is not built
 

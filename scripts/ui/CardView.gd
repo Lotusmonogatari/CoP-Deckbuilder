@@ -175,6 +175,10 @@ var _effect_label: Label
 var _press_at := Vector2.ZERO
 var _pressing := false
 var _lifting := false
+## How far the card may RISE on screen while held (the finger can travel further: playing still needs PLAY_LIFT
+## of travel). The battle screen sets it so the card stops below the Guard and Gaffes counters instead of
+## covering them mid-drag (P9 tidy). INF = no limit.
+var max_rise := INF
 var _rest_y := 0.0
 
 
@@ -529,7 +533,7 @@ func _gui_input(event: InputEvent) -> void:
 		if not _lifting and up > LIFT_START and up > absf(where.x - _press_at.x):
 			_lift()
 		if _lifting:
-			position.y = _rest_y - maxf(up, 0.0)
+			position.y = _rest_y - minf(maxf(up, 0.0), max_rise)
 			self_modulate = READY_TINT if up >= PLAY_LIFT else Color.WHITE
 			accept_event()
 
@@ -552,6 +556,7 @@ func _lift() -> void:
 
 func _drop(risen: float) -> void:
 	_lifting = false
+	max_rise = INF
 	z_index = 0
 	self_modulate = SELECT_TINT if selected else Color.WHITE
 	dropped.emit(card_id)

@@ -53,6 +53,8 @@ var _pick_confirm: Button
 var _previewed_card_id := ""
 var _listening: ListeningStrip = null
 ## The paper note under the zoomed card (P9), built on first use.
+## Space left between a held card's top and the status row above it.
+const LIFT_CLEARANCE := 12.0
 var _zoom_note: PanelContainer = null
 ## Woodblock's intent seal (P9 review), drawn beside the intent line.
 var _intent_seal: StyleMarks = null
@@ -1072,6 +1074,7 @@ func _on_card_flung(card_id: String) -> void:
 
 ## Holding a card up shows what it would do to the listening organisations.
 func _on_card_lifted(card_id: String) -> void:
+	_limit_lift(card_id)
 	if not _ready_to_play or not _pick_card_id.is_empty():
 		return
 	_listening.preview(OrgPreview.changes(engine, DataDB.get_card(card_id)))
@@ -1083,6 +1086,22 @@ func _on_card_dropped(_card_id: String) -> void:
 		_listening.clear_marks()
 	else:
 		_listening.preview(OrgPreview.changes(engine, DataDB.get_card(_previewed_card_id)))
+
+
+## A held card rises no higher than just below the status row (Guard, Gaffes, Inventory, Details), so the
+## counters stay readable mid-drag in every style and screen shape (P9 tidy). The card's travel for
+## playing is unchanged (CardView.PLAY_LIFT of finger travel); only how far it is drawn rising is capped.
+func _limit_lift(card_id: String) -> void:
+	var view := _hand.view_for(card_id) if _hand != null else null
+	if view == null:
+		return
+	var bottom := 0.0
+	for node: Control in [_gaffe_label, %GuardLabel, _gaffe_label.get_parent() as Control]:
+		if node != null and node.is_visible_in_tree():
+			bottom = maxf(bottom, node.get_global_rect().end.y)
+	if bottom <= 0.0:
+		return
+	view.max_rise = maxf(view.get_global_rect().position.y - bottom - LIFT_CLEARANCE, 0.0)
 
 
 func _clear_preview() -> void:
