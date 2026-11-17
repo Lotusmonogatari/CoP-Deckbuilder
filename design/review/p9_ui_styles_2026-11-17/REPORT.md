@@ -19,10 +19,10 @@ Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep a
 | | |
 |---|---|
 | Built and tested | Style framework; End of Week Payments; Office styles shop and switching; all three styles' Office, Levels and Battle arrangements; seats and arc; the raised-on-touch and fanned hand; the cue as bubble, band or scroll; zoom note; docket card in every style; tests for parity, gold lines, hand visibility and raise, card faces per style, switching, organization marks, style elements, and the text sweep in all three styles |
-| Living Office | Room-object pins and docket card, payments tray, folders and divider tabs, speech-bubble cue, red intent pill, seats with a threshold mark (or an arc), fanned hand, amber End Turn |
+| Living Office | Room-object pins and docket card, payments tray, folders with hour rings and divider tabs, speech-bubble cue, red intent pill, seats with a threshold mark (or an arc), fanned hand, amber End Turn |
 | Broadcast | Gold slanted docket bar, 2 x 2 tiles, lower-third and red-edged narration, schedule rows with a gold hour chip, gold tier chips, slanted plates, gold diagonal between the characters, gold slanted End Turn; the slant bar and cue band with their gold lines kept (D2) |
 | Woodblock | Indigo docket plank with a 行 seal, 3 x 2 plaque tiles, cartouches, print cards with a framed picture and a red hours seal, stamped tier headings, ledger lines with dotted leaders, hanging-scroll cue, 攻/守/得 intent seal, plaques on labels |
-| Still left out | The mockups' hours ring on level rows and "+ Draft a bill" dashed border (a tab is used), picture previews in the styles shop (no preview art), the "Phone ·" object words on the pins (same-information rule) |
+| Still left out | The "+ Draft a bill" dashed border (a solid edge is used), picture previews in the styles shop (no preview art), the "Phone ·" object words on the pins (same-information rule) |
 | `tools/verify.sh` | See section 3 |
 | Touch targets | Still a known gap by your decision: the app's buttons are 90 to 100 px against 122. The new tiles and pins are 122 px |
 
@@ -112,7 +112,7 @@ Existing click tests changed because the hand no longer scrolls sideways: `loop_
 |---|---|
 | Room-object labels | The pins read "Events", "Marketplace" and so on (the destination), not the mockup's "Phone · Events". An object word shown in one style only would break the same-information rule; the lamp sits where the object is |
 | Room-object positions | My first placement from the two pictures (`art.json` `office_hotspots`), not yet looked at by you. The Promises pin only shows when a promise is open, as before |
-| Levels list: hours ring and dashed tab | The hours are a line (Living Office), a gold chip (Broadcast) or a red seal (Woodblock), not a ring; the Draft a Bill tab has a solid edge, not a dashed one |
+| Levels list: dashed tab | The Draft a Bill tab has a solid edge, not a dashed one. The hours are a ring (Living Office, amber, or red and tilted when the level cannot start), a gold chip (Broadcast) or a red seal (Woodblock) |
 | Intent | A red band the width of the opponent block, not a floating pill (the label sits in the opponent block's column) |
 | Office styles tab | Cards with a colour swatch, not picture previews (no preview art exists) |
 | Seat colour for the opponent | The opponent's seats use the existing opponent red, not the party colour (the bar does not know the party yet) |

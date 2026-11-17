@@ -189,6 +189,55 @@ static func _picture_node(level: Dictionary, size: Vector2, frame: int, frame_co
 	return framed
 
 
+## Living Office's hours ring (P9 review): the level's "N hours" line moves into a ring at the right of
+## the folder. The ring is amber when the level can be started and red, and tilted, when it cannot
+## (the reason is on the button). The same words as every other style: the line is moved, not rewritten.
+## The ring sits in a plain Control so a container never resets its tilt.
+static func _hours_ring(row: Control) -> Control:
+	if row.get_child_count() < 3:
+		return null
+	var hours := row.get_child(1)
+	if not hours is Label:
+		return null
+	row.remove_child(hours)
+	var blocked := false
+	for child in row.find_children("*", "Button", true, false):
+		if (child as Button).disabled:
+			blocked = true
+	var size := 148.0
+	var holder := Control.new()
+	holder.name = "HoursRing"
+	holder.custom_minimum_size = Vector2(size + 16.0, size + 16.0)
+	holder.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var disc := PanelContainer.new()
+	disc.name = "Ring"
+	var box := StyleBoxFlat.new()
+	box.bg_color = UiStyle.colour("paper", Color(1, 0.97, 0.92))
+	box.border_color = UiStyle.colour("warning", Color(0.7, 0.15, 0.12)) if blocked else UiStyle.colour("accent", Color(1.0, 0.84, 0.54))
+	box.set_border_width_all(8)
+	box.set_corner_radius_all(int(size * 0.5))
+	box.set_content_margin_all(8.0)
+	disc.add_theme_stylebox_override("panel", box)
+	disc.size = Vector2(size, size)
+	disc.position = Vector2(8.0, 8.0)
+	disc.pivot_offset = Vector2(size, size) * 0.5
+	disc.rotation_degrees = -9.0 if blocked else 0.0
+	disc.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var label := hours as Label
+	label.add_theme_color_override("font_color", UiStyle.colour("warning", Color(0.7, 0.15, 0.12)) if blocked else UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07)))
+	label.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
+	label.custom_minimum_size = Vector2(0, 0)
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	disc.add_child(label)
+	holder.add_child(disc)
+	return holder
+
+
 ## The row's lines are built 760 px wide (UiKit.LINE_WIDTH); beside a picture and a chip they must be
 ## allowed to be narrower, or the list scrolls sideways.
 static func _narrow(row: Control) -> void:
@@ -241,6 +290,10 @@ static func folder(row: Control, level: Dictionary) -> Control:
 	line.add_child(picture)
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	line.add_child(row)
+	_narrow(row)
+	var ring := _hours_ring(row)
+	if ring != null:
+		line.add_child(ring)
 
 	_dim_if_disabled(folder, row)
 	return folder

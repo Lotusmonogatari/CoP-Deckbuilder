@@ -92,6 +92,27 @@ func _run() -> void:
 				leaders += 1
 		if (style == UiStyles.WOODBLOCK) != (leaders > 0):
 			_failures.append("%s: %d dotted leaders in the payments breakdown" % [style, leaders])
+		# The Levels list: Living Office draws each level's hours in a ring (red and tilted when the level
+		# cannot be started); the words are the same "N hours" line as in every style.
+		GameState.calendar["hours"] = 37
+		office.call("_show_levels")
+		await get_tree().create_timer(0.4).timeout
+		var rings: Array = office.find_children("HoursRing", "Control", true, false)
+		if (style == UiStyles.LIVING_OFFICE) != (rings.size() > 0):
+			_failures.append("%s: %d hours rings in the Levels list" % [style, rings.size()])
+		if style == UiStyles.LIVING_OFFICE and rings.size() > 0:
+			var tilted := 0
+			var upright := 0
+			for ring in rings:
+				var disc := (ring as Node).get_node("Ring") as Control
+				if not (disc.get_child(0) as Label).text.contains("hours"):
+					_failures.append("an hours ring does not say hours")
+				if absf(disc.rotation_degrees) > 1.0:
+					tilted += 1
+				else:
+					upright += 1
+			if tilted == 0 or upright == 0:
+				_failures.append("late in the week some rings should be tilted (cannot start) and some upright; got %d and %d" % [tilted, upright])
 		await _done(office)
 	if _failures.is_empty():
 		print("STYLE ELEMENTS TEST: PASS")
