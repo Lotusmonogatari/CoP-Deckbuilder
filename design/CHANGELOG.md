@@ -1217,4 +1217,12 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
   - **Intent tag.** The opponent's line ("Attacking · -1 to -2") is a red pill (Living Office), a square tag (Broadcast) or a vermilion tag (Woodblock).
   - **Speech-bubble cue** (Living Office): a paper bubble in dark ink, no gold lines, same timing and tap to skip. **Hanging-scroll cue** (Woodblock): paper between two rods. Broadcast keeps today's band with its gold lines.
   - **Woodblock plaques** replace the halo: each label carries a light paper plaque, so dark ink reads over a picture.
-  - Still not built: Broadcast and Woodblock room arrangements (slanted plates, 2 x 2 tiles, plaque tiles, framed prints), the rotated card fan, Broadcast schedule rows, Woodblock print cards.
+- **Finishing the design (Cameron: "Finish this design first").**
+  - **Broadcast Office:** the Start button is a gold slanted bar; Events, Promises, Office Management and Marketplace are a 2 x 2 grid of navy tiles with a gold edge; Reputation and Results is a wide bar with Administration beside it; the name is a slanted lower-third with a gold rule and the narration a strip with a red edge.
+  - **Woodblock Office:** the Start button is an indigo plank with a red seal edge; the six destinations are a 3 x 2 grid of paper plaques with indigo tops; the name is a cartouche with a red offset shadow; the calendar and payments boxes have red seal edges.
+  - **Levels:** Broadcast rows are schedule strips with a gold hours chip and the level's picture; Woodblock rows are print cards with a framed picture and a red hours seal.
+  - **Battle:** room and turn plates and the End Turn button per style (amber pill and rounded plates in Living Office; slanted gold bar and plates with a gold rule in Broadcast; indigo plank and cartouches in Woodblock).
+  - **Card fan:** Living Office tilts the hand's cards a little about their bottom centre.
+  - **Text sweep in all three styles.** `tools/text_sweep.sh` takes `SWEEP_STYLE`; `tools/verify.sh` runs it for Living Office, Broadcast and Woodblock. It found a sideways scroll in Broadcast's levels list and a broken party name in Woodblock's Floor Vote, both fixed.
+  - Everything in the Broadcast, Woodblock and Living Office mockups is now built, except the pieces listed in the report (folder-divider tier tabs, hours rings, picture previews in the styles shop).
+

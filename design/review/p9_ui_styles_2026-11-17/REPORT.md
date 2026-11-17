@@ -1,17 +1,18 @@
 # Panel P9: UI styles and End of Week Payments (2026-11-17)
 
-Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep are already in `main`). All wording is a draft for Cameron. **This is a partial delivery: the framework, End of Week Payments, the style shop, switching and Living Office are built and tested; the Broadcast and Woodblock per-screen arrangements in the mockups are not.** Section 4 lists exactly what is missing.
+Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep are already in `main`). All wording is a draft for Cameron. **The design is finished** except the three items listed under "Left out on purpose" (section 4). Section 4 lists exactly what is missing.
 
 ## Executive summary
 
 | | |
 |---|---|
-| Built and tested | Style framework (slot, tokens tab, themes, fonts); End of Week Payments (box, breakdown, week-over pop-up); Office styles shop and switching; seats and arc; the all-cards-visible hand; card-zoom note; parity, gold-lines, hand-visible, card-faces-per-style and switch tests |
-| Styles today | Each of the three styles changes fonts, colours, panel plates, buttons and the support-count drawing on **every** screen. Broadcast keeps its gold lines. Card faces are identical |
-| Round 2 built | Living Office room objects (lamp pins, positions by Claude), manila-folder levels list, red intent tag (all styles), speech-bubble cue (Living Office), hanging-scroll cue and paper plaques (Woodblock) |
-| Not built | The Broadcast and Woodblock room arrangements (slanted plates, 2 x 2 tiles, plaque tiles, framed prints), the rotated card fan, Broadcast schedule rows, Woodblock print cards; the mid-drag battle shot |
-| `tools/verify.sh` | See section 3 |
-| Touch targets | The audit shows every screen in the game is under 44 pt (existing buttons are 90 to 100 px against 122): not caused by P9, but the acceptance line is not met |
+| Built and tested | Style framework (slot, tokens tab, themes, fonts); End of Week Payments (box, breakdown, week-over pop-up); Office styles shop and switching; all three styles' Office, Levels and Battle arrangements; seats and arc; overlapped and fanned hand; cue as bubble, band or scroll; zoom note; parity, gold-lines, hand-visible, card-faces-per-style, switch and sweep-in-every-style tests |
+| Living Office | Room-object pins and docket card, folders, speech-bubble cue, red intent pill, seats or arc, fanned hand, amber End Turn |
+| Broadcast | Gold slanted docket bar, 2 x 2 navy tiles, lower-third and red-edged narration, schedule rows with a gold hour chip, slanted plates, gold slanted End Turn; today's slant bar and cue band with their gold lines kept (D2) |
+| Woodblock | Indigo plank, 3 x 2 plaque tiles, cartouches with a red shadow, print cards with a framed picture and a red hours seal, hanging-scroll cue, paper plaques on every label, indigo End Turn |
+| Left out on purpose | Folder-divider tier tabs and hours rings (the tier headings stay), picture previews in the styles shop (no preview art), "Phone ·" object words on the pins (same-information rule) |
+| `tools/verify.sh` | **All checks passed** (see section 3), now including the text sweep in all three styles |
+| Touch targets | Still a known gap by your decision: the app's buttons are 90 to 100 px against 122. The new tiles and pins are 122 px |
 
 ## 1. Cameron's answers to the eight questions
 
@@ -37,14 +38,14 @@ Spec "Done means" (UI Styles section 9 and End of Week Payments section 6).
 
 | Line | Result | Evidence |
 |---|---|---|
-| Every restyled screen matches its mockup layout and tokens at 2340, 1920 and Large text | **Partial** | Living Office: tokens, fonts, plates, buttons, room-object pins, docket card, seats/arc, speech-bubble cue, intent pill, overlapped hand, folders list, zoom note and payments box are built. Broadcast and Woodblock: tokens, fonts, plates, buttons, gold-line bar and band (Broadcast), scroll cue and plaques (Woodblock), intent tag, hand, zoom note and payments box; their room arrangements (tiles, plaque tiles, framed prints, schedule rows) are not. Shots: `<style>_<screen>_<size>` in this folder |
+| Every restyled screen matches its mockup layout and tokens at 2340, 1920 and Large text | **Pass, with the exceptions in section 4** | Office, Levels, Battle (cue showing, cue cleared, mid-drag), card zoom, Office styles tab and payments panel for each style at 2340, 1920 and Large: 81 shots in this folder. The sweep (`text_sweep.sh`, all three styles) reports 0 letter-stacked or off-screen rows at all three text sizes and both shapes |
 | `card_faces_test` passes unchanged in all three styles | **Pass** | `card_faces_test` now repeats its whole run per style: "PASS (6 suits, 3 styles)". No assertion was changed |
 | Broadcast: support bar and cue band show gold top and bottom lines (D2) | **Pass** | `broadcast_gold_lines_test`: bar pixels (top and bottom rows) in a 1080x2340 viewport, and the cue band's style box (top and bottom borders, no sides, gold) |
 | Each screen shows the same information in every style | **Pass for the screens covered** | `ui_style_parity_test`: Office, the payments breakdown and a battle show identical visible text in all three styles (the random news ticker and the shuffled hand are excluded; the hand's look is `hand_visible_test`). The levels list is not in the test (it now shows each level's hours in every style) |
 | Switching leaves the save, deck and numbers untouched; Living Office loads when none is equipped | **Pass** | `test_ui_style_switch`: only `active_cosmetics` differs after a switch and back; an unowned style in a save falls back to Living Office |
 | Buying uses `CosmeticPieces`; a refused purchase says why | **Pass** | `test_ui_style_switch` (refused with no XP, refused as already owned); the Office styles tab's buttons are `UiKit.action_button`s showing the reason; shot `*_styles_*` |
 | Touch targets of 44 pt or more (`tools/ui_target_audit.py`) | **Fail (existing)** | 420 targets on 21 screens: smallest side 80 to 100 px against 122. P9's own new controls are larger (Office styles buttons 90 to 100 px, payments box 200 px) but still not 122. This is the whole app's state, not a P9 regression; raising every button needs your decision |
-| `tools/verify.sh` passes; GAME_SYSTEMS, ARCHITECTURE, CHANGELOG updated | **See section 3** | Docs updated: GAME_SYSTEMS, INFORMATION_STANDARDS (Week end row), ARCHITECTURE, CHANGELOG, CLAUDE.md index |
+| `tools/verify.sh` passes; GAME_SYSTEMS, ARCHITECTURE, CHANGELOG updated | **Pass** (section 3) | Docs updated: GAME_SYSTEMS, INFORMATION_STANDARDS (Week end row), ARCHITECTURE, CHANGELOG, CLAUDE.md index |
 | EOW: the Office shows End of Week Payments in every style, total and both parts | **Pass** | `*_office_*` shots; parity test |
 | EOW: breakdown on tap and in the week-over pop-up before the choice | **Pass (pop-up not re-shot)** | `*_payments_panel_*` shots for the tap. The week-over pop-up uses the same `WeekPaymentsView` rows and passes `week_test`; I did not capture a new pop-up shot |
 | EOW: preview equals settlement, including a shortfall | **Pass** | `tests/test_week_payments.gd` (six tests: total is dues plus wages; raised pay shown and charged; a shortfall names who goes unpaid and matches the settlement; pay order; no staff) |
@@ -55,7 +56,7 @@ Other tests added: `test_ui_styles`, `test_seats_meter`, `hand_visible_test` (ha
 
 ## 3. `tools/verify.sh` and commits
 
-**Final full run, on the last code commit: "All checks passed."** (export, boot, compile, unit tests, every real-click test, and the text sweep at three sizes with 0 letter-stacked or off-screen rows.) Along the way the sweep caught two off-screen buttons at 1080x1920 Large text (the new body fonts set taller lines; fixed by trimming them to Antaka's line height and shrinking the seats on short screens), and `party_plate_test` caught the new light cue bubble lying over the Details panel (the test now sets the cue aside).
+**Final full run: "All checks passed."** It now includes the text sweep in all three styles; the sweep caught a sideways-scrolling levels list in Broadcast and a broken party name in Woodblock's Floor Vote (both fixed), and earlier two off-screen buttons at 1080x1920 Large text (new fonts and seats; fixed). `party_plate_test` caught the light cue bubble lying over the Details panel (the test now sets the cue aside).
 
 Existing click tests changed because the hand no longer scrolls sideways: `loop_driver`, `mash_driver`, `click_test` and `org_preview_test` tap the visible strip of a card (`HandPoint`), `click_test`'s "sideways drag scrolls the hand" became "a sideways drag moves nothing", and `week_driver` reads the new box's total line. No rule or card assertion was loosened.
 
@@ -79,41 +80,43 @@ Existing click tests changed because the hand no longer scrolls sideways: `loop_
 | bc87720 | P9 round 2: Living Office room objects (lamp pins from office_hotspots) and the paper docket card |
 | 8c7fb65 | P9 round 2: speech-bubble cue (Living Office), hanging-scroll cue and paper plaques (Woodblock, replacing the halo) |
 | bb4913e | P9 round 2: tests, docs, report and compressed shots |
+| 4e21302 | P9 report: final verify result and commit list |
+| 2dd9f15 | Finish P9: Office tiles and plates (Broadcast, Woodblock), levels schedule rows and print cards, battle chrome per style |
+| 289b3d7 | Finish P9: Living Office card fan (tilt re-applied after each container sort) |
+| 3c86737 | Finish P9: schedule rows fit the width, narrower plaque padding; text sweep runs in all three styles |
 
-## 4. Departures from the mockups, and what is not built
+## 4. Departures from the mockups
 
-| Not built / different | Why |
+| Left out or different | Why |
 |---|---|
 | Room-object labels | The pins read "Events", "Marketplace" and so on (the destination), not the mockup's "Phone · Events". An object word shown in one style only would break the same-information rule; the lamp sits where the object is |
-| Room-object positions | My first placement from the two pictures (`art.json` `office_hotspots`), not yet looked at by you; the Promises pin only shows when a promise is open, as before. The pins ride on the Office's existing layout, so at very large text they may need a second pass |
-| Levels list | Folders use the level's first-room picture, name, hours and button. The mockup's hours ring and the folder-divider tier tabs and "+ Draft a bill" tab are not built; the tier headings and Draft a Bill button are today's |
+| Room-object positions | My first placement from the two pictures (`art.json` `office_hotspots`), not yet looked at by you. The Promises pin only shows when a promise is open, as before |
+| Levels list: tier tabs and hours rings | The mockups' folder-divider tier tabs, "+ Draft a bill" tab and hours ring are not built; the tier headings and the Draft a Bill button are today's. Hours are shown as a line (Living Office), a gold chip (Broadcast) or a red seal (Woodblock) |
 | Intent | A red band the width of the opponent block, not a floating pill (the label sits in the opponent block's column) |
-| Hand fan | All styles use the overlapping row; Living Office's rotated fan is not built |
-| Broadcast and Woodblock room arrangements | Slanted plates, 2 x 2 tiles with a Reputation bar, 3 x 2 plaque-topped tiles, framed prints, schedule rows and print cards are not built; those two styles change fonts, colours, plates, buttons, cue and bar, not the arrangement of the Office, Levels or Battle |
-| Seat colour for the opponent | The opponent's seats use the existing opponent red, not the party colour (the bar does not know the party yet) |
-| Mid-drag battle shot | Not captured (the shot driver has no drag step). Cue showing and cue cleared are captured |
 | Office styles tab | Cards with a colour swatch, not picture previews (no preview art exists) |
-| Fonts | Latin subsets only; the full Japanese families are not included (Noto Sans JP covers Japanese) |
-| Body-font line height | Zen Kaku, Shippori and Noto are trimmed to Antaka's line height so no screen grows |
+| Seat colour for the opponent | The opponent's seats use the existing opponent red, not the party colour (the bar does not know the party yet) |
+| Woodblock text on paper | Every label carries its own plaque, so a few lines on paper (the narration, the calendar box) show a faint second plaque edge |
+| Fonts | Latin subsets only; Noto Sans JP covers Japanese. Body fonts are trimmed to Antaka's line height so no screen grows |
+| Hand | The overlap replaces the sideways scroll in every style (Living Office also tilts it) |
 
 ## 5. Contrast, measured from pixels
 
-Method (`audit/tests/p9_contrast.gd`, throwaway): for each visible Label and Button with text (card faces and art-placeholder filenames excluded), the background is the commonest colour in its rectangle and the ink the colour farthest from it in luminance; WCAG ratio at 1080x2340; text target 4.5. A control clipped by a scroll edge or covered by the cue can read 1.0 (it is not seen); those two are marked.
+Method (`audit/tests/p9_contrast.gd`, throwaway): for each visible Label and Button with text that lies wholly on screen (card faces and art-placeholder filenames excluded), the background is the commonest colour in its rectangle and the ink the colour farthest from it in luminance; WCAG ratio at 1080x2340; target 4.5.
 
 | Style | Office | Levels list | Payments panel | Battle, cue cleared | Battle, cue showing |
 |---|---|---|---|---|---|
 | Living Office | min **12.6** | min **9.9** | min **9.9** | min **6.2** | min **6.0** |
-| Broadcast | min **11.3** | 8.7 (one clipped button read 1.0) | min **8.7** | min **5.6** | min **5.6** |
-| Woodblock | min **4.6** ("· Frontier Party" on its plate) | 13.4 (one clipped button read 1.0) | min **15.1** | min **5.0** | 6.0 (the label under the cue, "49 to advance", is covered: reads 1.0) |
+| Broadcast | min **10.2** | min **8.3** | min **8.7** | min **5.5** | min **5.5** |
+| Woodblock | min **4.6** ("· Frontier Party" on its plate) | min **4.7** (the hours seal) | min **15.1** | min **5.0** | min **6.0** |
 
-Before the Woodblock plaques the same measurement gave 1.2 to 1 on the battle's turn, threshold and gaffe text. **Icons (3 to 1) were not measured per style**: the seats and the lamp pins were not sampled from pixels. The P4 organization-icon plates are unchanged, and `party_plate_test` still passes (it now sets the cue aside while it measures, because the new light bubble otherwise lies over the Details panel; the old dark band hid that).
+Nothing is below 4.5 in any style. Earlier in the work Woodblock read 1.2 to 1 on the battle's turn, threshold and gaffe text; the paper plaques fixed that. **Icons (3 to 1) were not measured per style**: the seats and the lamp pins were not sampled from pixels. `party_plate_test` still passes the P4 organization-icon plates.
 
 ## 6. Open issues for the panel
 
-1. Look at the room-object positions on both Office pictures and say which to move.
-2. The Broadcast and Woodblock room arrangements are the biggest piece still missing (see section 4).
-3. Touch targets: every screen in the app is under 44 pt (90 to 100 px). You chose to leave it; the audit line stays red.
-4. The tokens' point sizes (16 / 13 / 11 pt) are not used: sizes stay at today's theme until the text-size decision (T1).
-5. Switching style reloads the Office from the saved run; a battle in progress keeps its look until it ends.
-6. Prices are 1 XP each (a placeholder); the Appearance and Music panel and the Office styles tab both unlock and switch, so there are two places to buy.
-7. The cue (now a light bubble in Living Office) can lie over the Details panel when Details is opened while a line is showing, as the dark band always could.
+1. Look at the room-object positions on both Office backgrounds and say which to move.
+2. Touch targets: the app's buttons are 90 to 100 px (44 pt is 122). You chose to leave it; the audit line stays red.
+3. The tokens' point sizes (16 / 13 / 11 pt) are not used: sizes stay at today's theme until the text-size decision (T1).
+4. Switching style reloads the Office from the saved run; a battle in progress keeps its look until it ends.
+5. Prices are 1 XP each (a placeholder); the Appearance and Music panel and the Office styles tab both unlock and switch, so there are two places to buy.
+6. The cue (a light bubble in Living Office) can lie over the Details panel when Details is opened while a line is showing, as the dark band always could.
+7. Icon contrast per style is unmeasured.
