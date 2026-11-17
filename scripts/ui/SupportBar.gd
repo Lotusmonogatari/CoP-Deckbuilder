@@ -256,7 +256,8 @@ func _draw_living(width: float) -> void:
 	var seats := Levers.whole("ui_style_seat_count")
 	if two_sided and not as_percent:
 		SeatsMeter.draw_seats(self, rect, SeatsMeter.seat_split(maximum, player, opponent, seats), seats,
-			Levers.whole("ui_style_seat_outer_row_percent"), colours)
+			Levers.whole("ui_style_seat_outer_row_percent"), colours,
+			float(threshold) / float(maxi(maximum, 1)) if has_threshold else -1.0)
 		return
 	var parts: Array = [[player, colours["player"]]]
 	if two_sided:

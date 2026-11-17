@@ -40,7 +40,7 @@ GROUPS = {
   ("shop.style_use", "Office styles, switch to an owned style (button)", "Use this style", ""),
   ("shop.style_unlock", "Office styles, unlock a style (button) with its price", "Unlock · {price}", "price"),
   ("shop.style_footer", "Office styles tab, footer", "Once unlocked, change styles here or in Administration › Appearance and Music. Card fronts and backs look the same in every style.", ""),
-  ("office.cosmetics_slot_ui_style", "Administration, Appearance and Music, the Office style row", "Office style", ""),
+  ("office.cosmetics_slot_ui_style", "Administration, Appearance and Music, the Office styles row (matches the Marketplace tab)", "Office styles", ""),
  ],
 }
 

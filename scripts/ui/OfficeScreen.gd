@@ -2277,6 +2277,10 @@ func _show_cosmetics() -> void:
 	rows.append(UiKit.line(Text.say("office.cosmetics_blurb")))
 
 	for package: Dictionary in DataDB.cosmetic_packages:
+		# An Office style is unlocked on the Marketplace's Office styles tab only; this panel switches
+		# between the ones you own (review of P9, finding 6).
+		if CosmeticPieces.has_piece(package, CosmeticPieces.UI_STYLE):
+			continue
 		if not GameState.owned_cosmetic_packages.has(str(package.get("package_id", ""))):
 			rows.append(_cosmetic_package_row(package))
 

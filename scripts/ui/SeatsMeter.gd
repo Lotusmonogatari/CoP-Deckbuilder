@@ -56,7 +56,7 @@ static func height_for(width: float) -> float:
 
 ## Draws the seats into `canvas` inside `rect`.
 static func draw_seats(canvas: Control, rect: Rect2, split: Dictionary, seats: int, outer_percent: int,
-		colours: Dictionary) -> void:
+		colours: Dictionary, mark: float = -1.0) -> void:
 	var radius := minf(rect.size.x * 0.5 - SEAT_RADIUS_OUTER - 6.0, rect.size.y - SEAT_RADIUS_OUTER - 6.0)
 	var centre := Vector2(rect.position.x + rect.size.x * 0.5, rect.position.y + rect.size.y - 8.0)
 	var inner_radius := radius * 0.66
@@ -72,6 +72,13 @@ static func draw_seats(canvas: Control, rect: Rect2, split: Dictionary, seats: i
 		var seat_r := SEAT_RADIUS_OUTER if outer else SEAT_RADIUS_INNER
 		canvas.draw_circle(pos, seat_r + 2.0, OUTLINE)
 		canvas.draw_circle(pos, seat_r, colour)
+	# The threshold: a short line across both rows between the seat that reaches it and the next
+	# (0 to 1 of the way round). Review of P9, finding 4: the seats had no mark at the line to cross.
+	if mark >= 0.0 and mark <= 1.0:
+		var a := PI - mark * PI
+		var dir := Vector2(cos(a), -sin(a))
+		canvas.draw_line(centre + dir * (inner_radius - SEAT_RADIUS_OUTER - 4.0), centre + dir * (radius + SEAT_RADIUS_OUTER + 8.0),
+			Color(1, 1, 1, 0.95), 4.0)
 
 
 ## Draws the continuous arc: one band, filled left to right in proportion.
