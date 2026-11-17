@@ -53,6 +53,15 @@ const NAME_LIMIT := 18
 
 const HEIGHT := 56.0
 
+## Living Office (P9, 2026-11-17) draws the count as seats, or as a continuous arc where the
+## count is not a head count (SeatsMeter). This is the height of that drawing; the caption
+## sits in the middle of it and the readout under it.
+const LIVING_HEIGHT := 230.0
+const LIVING_READOUT_TOP := 244.0
+## Who holds the other share, in colour: the opponent's party colour where the screen knows it.
+var opponent_colour := Color(0.78, 0.42, 0.40)
+var _living := false
+
 ## The gold border along the top and bottom, thin beside the cue band's 8.
 const BORDER := 4.0
 
@@ -118,7 +127,17 @@ func _set_two_sided(value: bool) -> void:
 
 
 func _ready() -> void:
-	custom_minimum_size.y = HEIGHT + 84.0
+	_living = not Engine.is_editor_hint() and UiStyle.current() == UiStyles.LIVING_OFFICE
+	custom_minimum_size.y = (LIVING_READOUT_TOP + 48.0) if _living else HEIGHT + 84.0
+	if _living:
+		_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_caption.set_anchors_preset(Control.PRESET_TOP_WIDE)
+		_caption.offset_top = LIVING_HEIGHT - 64.0
+		_caption.offset_bottom = LIVING_HEIGHT - 8.0
+		_readout.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_readout.set_anchors_preset(Control.PRESET_TOP_WIDE)
+		_readout.offset_top = LIVING_READOUT_TOP
+		_readout.offset_bottom = LIVING_READOUT_TOP + 44.0
 	_refresh()
 
 
@@ -193,6 +212,9 @@ func _draw() -> void:
 	var width := size.x
 	if width <= 0.0:
 		return
+	if _living:
+		_draw_living(width)
+		return
 
 	# Below the caption, which sits on the line above it.
 	var top := 44.0
@@ -211,3 +233,26 @@ func _draw() -> void:
 	# there is nothing to reach.
 	if has_threshold:
 		SlantBar.draw_mark(self, bar, float(threshold) / float(maximum), THRESHOLD_COLOR, 3.0)
+
+
+## Living Office: seats for a room of people, a continuous arc for anything else.
+func _draw_living(width: float) -> void:
+	var rect := Rect2(0, 0, width, LIVING_HEIGHT)
+	var colours := {
+		"player": UiStyle.colour("seat_player", PLAYER_COLOR),
+		"undecided": UiStyle.colour("seat_undecided", UNDECIDED_COLOR),
+		"opponent": opponent_colour,
+	}
+	var seats := Levers.whole("ui_style_seat_count")
+	if two_sided and not as_percent:
+		SeatsMeter.draw_seats(self, rect, SeatsMeter.seat_split(maximum, player, opponent, seats), seats,
+			Levers.whole("ui_style_seat_outer_row_percent"), colours)
+		return
+	var parts: Array = [[player, colours["player"]]]
+	if two_sided:
+		parts.append([maxi(maximum - player - opponent, 0), colours["undecided"]])
+		parts.append([opponent, colours["opponent"]])
+	else:
+		parts.append([maxi(maximum - player, 0), colours["undecided"]])
+	SeatsMeter.draw_arc_band(self, rect, parts, float(maximum), colours,
+		float(threshold) / float(maximum) if has_threshold else -1.0)

@@ -332,5 +332,7 @@
   "text_fit_minimum_font_size": 20,
   "staff_loyalty_restless_boost_percent": 50,
   "patron_request_tries": 2,
+  "ui_style_seat_count": 20,
+  "ui_style_seat_outer_row_percent": 60,
   "xp_tiers": {}
 }
