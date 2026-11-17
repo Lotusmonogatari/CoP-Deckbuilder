@@ -55,22 +55,30 @@ Other tests added: `test_ui_styles`, `test_seats_meter`, `hand_visible_test` (ha
 
 ## 3. `tools/verify.sh` and commits
 
-The last complete run before the final changes: the text sweep failed (two off-screen buttons at 1080x1920, Large text), because the new body fonts set lines 25% taller than Antaka and the seats added height. Both were fixed (line height trimmed to Antaka's; seats shrink on short screens) and the sweep then reported 0 letter-stacked or off-screen rows at all three sizes. **Final full run (after those fixes, on commit 1f9cdb5 plus this report): "All checks passed."** (export, boot, compile, unit tests, every real-click test including the four new ones, and the text sweep at three sizes.)
+**Final full run, on the last code commit: "All checks passed."** (export, boot, compile, unit tests, every real-click test, and the text sweep at three sizes with 0 letter-stacked or off-screen rows.) Along the way the sweep caught two off-screen buttons at 1080x1920 Large text (the new body fonts set taller lines; fixed by trimming them to Antaka's line height and shrinking the seats on short screens), and `party_plate_test` caught the new light cue bubble lying over the Details panel (the test now sets the cue aside).
 
-| Commit | Content |
+Existing click tests changed because the hand no longer scrolls sideways: `loop_driver`, `mash_driver`, `click_test` and `org_preview_test` tap the visible strip of a card (`HandPoint`), `click_test`'s "sideways drag scrolls the hand" became "a sideways drag moves nothing", and `week_driver` reads the new box's total line. No rule or card assertion was loosened.
+
+| Commit | Subject |
 |---|---|
-| 5da1c58 | A1 framework: slot, tokens tab, `UiStyles`/`UiStyle`/`UiStyleTheme`, theme overlays, fonts |
-| 7bbbbd0 | A2 End of Week Payments |
-| 2eb60fe | A3 seats and arc |
-| 6e74cb4 | B3 Office styles shop, unlock, switch |
-| 0549eee | Hand overlap, hand-visible and gold-lines tests |
-| 7da54c4 | Card faces per style; parity test |
-| d46a095 | Docs |
-| 4585317 | Click tests tap the visible part of an overlapped card; line height; short-screen seats |
-| c7e74a2 | Zoom note |
-| 1f9cdb5 | Woodblock halo and veils |
-
-Existing click tests changed because the hand no longer scrolls sideways: `loop_driver`, `mash_driver`, `click_test` and `org_preview_test` now tap the visible strip of a card (`HandPoint`), `click_test`'s "sideways drag scrolls the hand" became "a sideways drag moves nothing", and `week_driver` reads the new box's total line. No rule or card assertion was loosened.
+| 5da1c58 | P9 A1: UI style framework (ui_style slot, UiStyle, UI Styles tab, theme overlays, three fonts) |
+| 7bbbbd0 | P9 A2: End of Week Payments (one total of dues and wages, breakdown on tap and in the week-over popup) |
+| 2eb60fe | P9 A3 (1): Living Office seats and the continuous arc for counts that are not people |
+| 6e74cb4 | P9 B3: Office styles shop tab, unlock and switch, Appearance row (styles cost 1 XP for now) |
+| 0549eee | P9: the hand shows every card (overlap), plus hand-visible and Broadcast gold-lines tests |
+| 7da54c4 | P9: card faces tested in every style; UI style parity test |
+| d46a095 | P9: docs (GAME_SYSTEMS, INFORMATION_STANDARDS, ARCHITECTURE, CHANGELOG, index) |
+| 4585317 | P9: click tests tap the visible part of an overlapped card; body fonts trimmed to Antaka's line height; seats shrink on short screens (text sweep clean) |
+| c7e74a2 | P9: a note under the zoomed card (what it does here, what it costs), same words in every style |
+| 1f9cdb5 | P9: Woodblock halo on labels over pictures; opaque Office veils in Woodblock (contrast measured from pixels) |
+| a1f2663 | P9 report and shots (compressed) |
+| fcd388f | P9 report: final verify result |
+| b41fad6 | P9: regenerate the three theme overlays (Woodblock halo, outline items on every style) |
+| 37a1f9c | P9 round 2: Living Office levels as manila folders; every style shows the hours under a level's name |
+| 8350d9f | P9 round 2: opponent intent as a red tag (pill, tag or seal by style) |
+| bc87720 | P9 round 2: Living Office room objects (lamp pins from office_hotspots) and the paper docket card |
+| 8c7fb65 | P9 round 2: speech-bubble cue (Living Office), hanging-scroll cue and paper plaques (Woodblock, replacing the halo) |
+| bb4913e | P9 round 2: tests, docs, report and compressed shots |
 
 ## 4. Departures from the mockups, and what is not built
 
