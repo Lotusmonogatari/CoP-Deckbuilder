@@ -1,17 +1,29 @@
 # Panel P9: UI styles and End of Week Payments (2026-11-17)
 
-Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep are already in `main`). All wording is a draft for Cameron. **The design is finished** except the three items listed under "Left out on purpose" (section 4). Section 4 lists exactly what is missing.
+Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep are already in `main`). All wording is a draft for Cameron. **The design is built except the three items listed under "Left out" (section 4).** Section 4 lists exactly what is missing.
+
+## Review response (panel review of `b4dd74f`)
+
+| # | Finding | Status | Evidence |
+|---|---|---|---|
+| 1 | Woodblock plaques covered the organization icons while a card was held | **Fixed** | `test_org_marks`, `org_marks_test` (fails without the fix); `woodblock_battle_*_touch` and `_drag` shots |
+| 2 | "Matches the mockups" overclaimed: no Woodblock seal, Broadcast diagonal, fuller docket card; Levels, payments and shop only recoloured | **Built** (Cameron: build all). The report row was wrong to say Pass; it now lists the exceptions | `style_elements_test`; shots `*_battle_*_clear`, `*_office_*`, `*_levels_*`, `*_payments_*` |
+| 3 | Overlapped hand: only the last card readable | **Fixed**: a touched or held card rises and is drawn on top | `hand_raise_test`; `*_battle_*_touch` shots |
+| 4 | Seats had no threshold mark | **Fixed** | `living_office_battle_*` shots (white line across both rows) |
+| 5 | No week-end pop-up shot, no cannot-start Levels shot, no icon contrast per style | **Added** | `*_weekover_*`, `*_levels_*_late` shots; icon table in section 5 |
+| 6 | Styles bought in two places; "Office style" label | **Fixed** (Cameron: Marketplace only); the Appearance row is "Office styles" | `test_ui_style_switch`; code |
+| 7 | "1 of 2" left "2" alone at Large text in Broadcast | **Fixed** (no-break spaces) | `broadcast_battle_large_clear` |
 
 ## Executive summary
 
 | | |
 |---|---|
-| Built and tested | Style framework (slot, tokens tab, themes, fonts); End of Week Payments (box, breakdown, week-over pop-up); Office styles shop and switching; all three styles' Office, Levels and Battle arrangements; seats and arc; overlapped and fanned hand; cue as bubble, band or scroll; zoom note; parity, gold-lines, hand-visible, card-faces-per-style, switch and sweep-in-every-style tests |
-| Living Office | Room-object pins and docket card, folders, speech-bubble cue, red intent pill, seats or arc, fanned hand, amber End Turn |
-| Broadcast | Gold slanted docket bar, 2 x 2 navy tiles, lower-third and red-edged narration, schedule rows with a gold hour chip, slanted plates, gold slanted End Turn; today's slant bar and cue band with their gold lines kept (D2) |
-| Woodblock | Indigo plank, 3 x 2 plaque tiles, cartouches with a red shadow, print cards with a framed picture and a red hours seal, hanging-scroll cue, paper plaques on every label, indigo End Turn |
-| Left out on purpose | Folder-divider tier tabs and hours rings (the tier headings stay), picture previews in the styles shop (no preview art), "Phone ·" object words on the pins (same-information rule) |
-| `tools/verify.sh` | **All checks passed** (see section 3), now including the text sweep in all three styles |
+| Built and tested | Style framework; End of Week Payments; Office styles shop and switching; all three styles' Office, Levels and Battle arrangements; seats and arc; the raised-on-touch and fanned hand; the cue as bubble, band or scroll; zoom note; docket card in every style; tests for parity, gold lines, hand visibility and raise, card faces per style, switching, organization marks, style elements, and the text sweep in all three styles |
+| Living Office | Room-object pins and docket card, payments tray, folders and divider tabs, speech-bubble cue, red intent pill, seats with a threshold mark (or an arc), fanned hand, amber End Turn |
+| Broadcast | Gold slanted docket bar, 2 x 2 tiles, lower-third and red-edged narration, schedule rows with a gold hour chip, gold tier chips, slanted plates, gold diagonal between the characters, gold slanted End Turn; the slant bar and cue band with their gold lines kept (D2) |
+| Woodblock | Indigo docket plank with a 行 seal, 3 x 2 plaque tiles, cartouches, print cards with a framed picture and a red hours seal, stamped tier headings, ledger lines with dotted leaders, hanging-scroll cue, 攻/守/得 intent seal, plaques on labels |
+| Still left out | The mockups' hours ring on level rows and "+ Draft a bill" dashed border (a tab is used), picture previews in the styles shop (no preview art), the "Phone ·" object words on the pins (same-information rule) |
+| `tools/verify.sh` | See section 3 |
 | Touch targets | Still a known gap by your decision: the app's buttons are 90 to 100 px against 122. The new tiles and pins are 122 px |
 
 ## 1. Cameron's answers to the eight questions
@@ -91,25 +103,33 @@ Existing click tests changed because the hand no longer scrolls sideways: `loop_
 |---|---|
 | Room-object labels | The pins read "Events", "Marketplace" and so on (the destination), not the mockup's "Phone · Events". An object word shown in one style only would break the same-information rule; the lamp sits where the object is |
 | Room-object positions | My first placement from the two pictures (`art.json` `office_hotspots`), not yet looked at by you. The Promises pin only shows when a promise is open, as before |
-| Levels list: tier tabs and hours rings | The mockups' folder-divider tier tabs, "+ Draft a bill" tab and hours ring are not built; the tier headings and the Draft a Bill button are today's. Hours are shown as a line (Living Office), a gold chip (Broadcast) or a red seal (Woodblock) |
+| Levels list: hours ring and dashed tab | The hours are a line (Living Office), a gold chip (Broadcast) or a red seal (Woodblock), not a ring; the Draft a Bill tab has a solid edge, not a dashed one |
 | Intent | A red band the width of the opponent block, not a floating pill (the label sits in the opponent block's column) |
 | Office styles tab | Cards with a colour swatch, not picture previews (no preview art exists) |
 | Seat colour for the opponent | The opponent's seats use the existing opponent red, not the party colour (the bar does not know the party yet) |
-| Woodblock text on paper | Every label carries its own plaque, so a few lines on paper (the narration, the calendar box) show a faint second plaque edge |
+| Woodblock text on paper | Every label carries its own plaque, so a few lines on paper show a faint second plaque edge |
 | Fonts | Latin subsets only; Noto Sans JP covers Japanese. Body fonts are trimmed to Antaka's line height so no screen grows |
-| Hand | The overlap replaces the sideways scroll in every style (Living Office also tilts it) |
+| Hand | The overlap replaces the sideways scroll in every style; Living Office also tilts it |
 
 ## 5. Contrast, measured from pixels
 
-Method (`audit/tests/p9_contrast.gd`, throwaway): for each visible Label and Button with text that lies wholly on screen (card faces and art-placeholder filenames excluded), the background is the commonest colour in its rectangle and the ink the colour farthest from it in luminance; WCAG ratio at 1080x2340; target 4.5.
+Text (`audit/tests/p9_contrast.gd`, throwaway): for each visible Label and Button with text that lies wholly on screen (card faces and art-placeholder filenames excluded), the background is the commonest colour in its rectangle and the ink the colour farthest from it in luminance; WCAG ratio at 1080x2340; target 4.5.
 
 | Style | Office | Levels list | Payments panel | Battle, cue cleared | Battle, cue showing |
 |---|---|---|---|---|---|
 | Living Office | min **12.6** | min **9.9** | min **9.9** | min **6.2** | min **6.0** |
-| Broadcast | min **10.2** | min **8.3** | min **8.7** | min **5.5** | min **5.5** |
-| Woodblock | min **4.6** ("· Frontier Party" on its plate) | min **4.7** (the hours seal) | min **15.1** | min **5.0** | min **6.0** |
+| Broadcast | min **8.6** | min **8.3** | min **8.7** | min **5.5** | min **5.5** |
+| Woodblock | min **4.6** | min **4.7** | min **15.1** | min **5.0** | min **6.0** |
 
-Nothing is below 4.5 in any style. Earlier in the work Woodblock read 1.2 to 1 on the battle's turn, threshold and gaffe text; the paper plaques fixed that. **Icons (3 to 1) were not measured per style**: the seats and the lamp pins were not sampled from pixels. `party_plate_test` still passes the P4 organization-icon plates.
+Icons (`audit/tests/p9_icons.gd`, throwaway): the median colour of the icon's centre against the median of a ring just outside it; target 3.
+
+| Style | Organization icons in the listening strip | Other icons |
+|---|---|---|
+| Living Office | min **4.3** | Lamp pins 10.3; seats: yours 6.4, undecided 3.4, opponent 4.1 |
+| Broadcast | min **3.7** (it was 2.7 before the dark backing) | none (the support bar is a bar, not icons) |
+| Woodblock | min **3.9** | none |
+
+Nothing is below target in any style. The IconPlate (Details) icons from P4 are unchanged and `party_plate_test` still passes.
 
 ## 6. Open issues for the panel
 
@@ -117,6 +137,6 @@ Nothing is below 4.5 in any style. Earlier in the work Woodblock read 1.2 to 1 o
 2. Touch targets: the app's buttons are 90 to 100 px (44 pt is 122). You chose to leave it; the audit line stays red.
 3. The tokens' point sizes (16 / 13 / 11 pt) are not used: sizes stay at today's theme until the text-size decision (T1).
 4. Switching style reloads the Office from the saved run; a battle in progress keeps its look until it ends.
-5. Prices are 1 XP each (a placeholder); the Appearance and Music panel and the Office styles tab both unlock and switch, so there are two places to buy.
+5. Prices are 1 XP each (a placeholder).
 6. The cue (a light bubble in Living Office) can lie over the Details panel when Details is opened while a line is showing, as the dark band always could.
-7. Icon contrast per style is unmeasured.
+7. Raised-on-touch shows a card's whole face; a card that is merely resting still shows only its strip (cost and the start of its name), by design.

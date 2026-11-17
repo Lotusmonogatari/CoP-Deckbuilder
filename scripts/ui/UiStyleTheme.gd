@@ -101,7 +101,7 @@ static func build(style: String, idx: Dictionary) -> Theme:
 	for key: String in ["font_color", "font_hover_color", "font_pressed_color",
 			"font_focus_color", "font_hover_pressed_color"]:
 		theme.set_color(key, "Button", ink)
-	theme.set_color("font_disabled_color", "Button", Color(ink.r, ink.g, ink.b, 0.6))
+	theme.set_color("font_disabled_color", "Button", Color(ink.r, ink.g, ink.b, 0.85))
 	# Woodblock's ink is dark, for paper. Text that sits straight on a room picture (the battle, the
 	# visits) would be dark on dark, so in Woodblock every label carries its own light paper plaque
 	# (measured from pixels: 1.2 to 1 on the battle without one). The other styles' ink is light and

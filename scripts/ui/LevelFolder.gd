@@ -196,10 +196,13 @@ static func _narrow(row: Control) -> void:
 		(label as Label).custom_minimum_size.x = 0.0
 
 
+## A level that cannot be started is shown by dimming its PICTURE only: the reason on its button stays
+## at full strength so it can be read (Information Standard 2; review of P9).
 static func _dim_if_disabled(wrapper: Control, row: Control) -> void:
 	for child in row.find_children("*", "Button", true, false):
 		if (child as Button).disabled:
-			wrapper.modulate = Color(1, 1, 1, 0.72)
+			for picture in wrapper.find_children("*Picture", "TextureRect", true, false):
+				(picture as TextureRect).modulate = Color(1, 1, 1, 0.5)
 			return
 
 
@@ -239,10 +242,7 @@ static func folder(row: Control, level: Dictionary) -> Control:
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	line.add_child(row)
 
-	for child in row.find_children("*", "Button", true, false):
-		if (child as Button).disabled:
-			folder.modulate = Color(1, 1, 1, 0.72)
-			break
+	_dim_if_disabled(folder, row)
 	return folder
 
 
