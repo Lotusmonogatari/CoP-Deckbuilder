@@ -109,7 +109,7 @@ func say(side: int, speaker: String, line: String, detail: String = "",
 	if line.strip_edges().is_empty():
 		return
 	_queue.append({"side": side, "speaker": speaker, "line": line, "detail": detail, "edge": edge})
-	if not _busy:
+	if not _busy and not _suppressed:
 		_show_next()
 
 
@@ -123,6 +123,53 @@ func clear() -> void:
 		_step_timer.stop()
 	if _band != null:
 		_band.hide()
+
+
+## Set while a screen that must be read through the band (the card zoom) is open.
+var _suppressed := false
+## Whether the band was on screen when it was suppressed.
+var _was_showing := false
+
+
+## Steps the banner aside while `on`, and puts it back exactly as it was when released
+## (design review P2, 2026-11-17). While suppressed the band and its flash are hidden,
+## the hold timer is paused, and the slide, flash and jolt tweens are paused, so the line
+## that was up keeps its remaining hold and nothing is counted as shown. Lines that arrive
+## meanwhile wait in the queue. On release the band returns only if it was showing when it
+## was suppressed and has not been cleared since; a band that was hidden for any other
+## reason stays hidden.
+func set_suppressed(on: bool) -> void:
+	if on == _suppressed:
+		return
+	_suppressed = on
+	if on:
+		_was_showing = _band != null and _band.visible
+		if _step_timer != null:
+			_step_timer.paused = true
+		for t: Tween in [_slide_tween, _out_tween, _flash_tween, _shake_tween]:
+			if t != null and t.is_valid():
+				t.pause()
+		if _band != null:
+			_band.hide()
+		if _flash != null:
+			_flash.hide()
+		return
+	if _flash != null:
+		_flash.show()
+	for t: Tween in [_slide_tween, _out_tween, _flash_tween, _shake_tween]:
+		if t != null and t.is_valid():
+			t.play()
+	if _step_timer != null:
+		_step_timer.paused = false
+	if _busy and _was_showing and _band != null:
+		_band.show()
+	elif not _busy and not _queue.is_empty():
+		_show_next()   # something was said while the banner was stepped aside
+
+
+## Whether the banner is stepped aside (the tests read it).
+func is_suppressed() -> bool:
+	return _suppressed
 
 
 var _slide_tween: Tween

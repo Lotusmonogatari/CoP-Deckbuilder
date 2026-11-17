@@ -232,8 +232,10 @@ func _ready() -> void:
 	add_child(_banner)
 	# The cue band sits above everything (z 50) and used to lie across the zoomed card,
 	# hiding its name and text (design review 2026-11-17, Cameron: hide it while the
-	# zoom is open). It comes back, with whatever it was saying, when the zoom closes.
-	_card_zoom.visibility_changed.connect(func() -> void: _banner.visible = not _card_zoom.visible)
+	# zoom is open). It steps aside (CueBanner.set_suppressed: its hold and tweens pause)
+	# and comes back, with the line it was saying and that line's remaining hold, when
+	# the zoom closes.
+	_card_zoom.visibility_changed.connect(func() -> void: _banner.set_suppressed(_card_zoom.visible))
 	start_battle()
 
 
