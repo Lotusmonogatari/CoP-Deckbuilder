@@ -22,7 +22,7 @@ Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep a
 | Living Office | Room-object pins with their object words, docket card, payments tray, folders with hour rings, divider tabs and a dashed Draft a Bill tab, speech-bubble cue, red intent pill, seats with a threshold mark (or an arc), fanned hand, amber End Turn |
 | Broadcast | Gold slanted docket bar, 2 x 2 tiles, lower-third and red-edged narration, schedule rows with a gold hour chip, gold tier chips, slanted plates, gold diagonal between the characters, gold slanted End Turn; the slant bar and cue band with their gold lines kept (D2) |
 | Woodblock | Indigo docket plank with a 行 seal, 3 x 2 plaque tiles, cartouches, print cards with a framed picture and a red hours seal, stamped tier headings, ledger lines with dotted leaders, hanging-scroll cue, 攻/守/得 intent seal, plaques on labels |
-| Still left out | Five mockup elements are not built: Woodblock's wave (seigaiha) pattern and the characters inside a framed print; Broadcast's split character cut-ins (a gold diagonal is drawn, but not two separate framed shots); Living Office's page-a-day calendar and the protagonist's narration speech bubble on the Office. Earlier versions of this report said nothing was missing; that was wrong |
+| Still left out | Nothing from the mockups. Two details are decisions, not gaps: the object word on a pin is its own label (the parity test lets it through), and the styles shop previews are real screenshots |
 | `tools/verify.sh` | See section 3 |
 | Touch targets | Still a known gap by your decision: the app's buttons are 90 to 100 px against 122. The new tiles and pins are 122 px |
 
@@ -110,10 +110,7 @@ Existing click tests changed because the hand no longer scrolls sideways: `loop_
 
 | Different from the mockup, or not built | Why |
 |---|---|
-| Woodblock wave pattern and framed print | Not built: the seigaiha (wave) pattern band and the indigo-framed print around the characters are not drawn. Woodblock's Office and Battle have plaques, cartouches and seals but no pattern and no framed picture |
-| Broadcast split character shots | Not built: Broadcast has a thin gold diagonal between the characters, not two separate cut-in shots divided by it |
-| Living Office page-a-day calendar | Not built: the calendar is the gold-edged square, not a tear-off page |
-| Living Office narration bubble | Not built: the Office narration is a translucent plate under the character, not a speech bubble from the protagonist |
+| Calendar (Living Office) | A page-a-day with the weekday in a red header; it shows the equipped calendar style: plain, Era years or the Ainu form, from the same text the square uses |
 | Pin object words | "Phone", "Bookshelf" and the rest are a small label above the destination, not one "Phone · Events" string, so the button text stays the destination alone. `ui_style_parity_test` lets only this label through |
 | Room-object positions | My first placement from the two pictures (`art.json` `office_hotspots`), not yet looked at by you. The Promises pin only shows when a promise is open, as before |
 | Intent | A floating pill in every style, filled with the opponent's party colour (the default crimson #8C1D2F when there is no party or it is the player's own; held apart from Keizaijiyuutou's red by `test_intent_pill`) |
@@ -121,6 +118,7 @@ Existing click tests changed because the hand no longer scrolls sideways: `loop_
 | Woodblock text on paper | Every label carries its own plaque, so a few lines on paper show a faint second plaque edge |
 | Styles shop previews | Real screenshots of the Office in each style, cropped and shrunk (`assets/ui_styles/`); retake them when a style's Office changes |
 | Fonts | Latin subsets only; Noto Sans JP covers Japanese. Body fonts are trimmed to Antaka's line height so no screen grows |
+| Woodblock wave band and framed print; Broadcast cut-ins; Living Office narration bubble | Built as drawn marks (no art files). The wave band sits behind the content, so it shows only in the gaps |
 | Hand | The overlap replaces the sideways scroll in every style; Living Office also tilts it |
 
 ## 5. Contrast, measured from pixels

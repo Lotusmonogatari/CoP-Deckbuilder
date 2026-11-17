@@ -96,6 +96,16 @@ func _run() -> void:
 			_failures.append("%s: the calendar's page curl is %s" % [style, "missing" if is_living else "present"])
 		if is_living != (office.find_child("BubbleTail", true, false) != null):
 			_failures.append("%s: the narration bubble's tail is %s" % [style, "missing" if is_living else "present"])
+		# Every line inside the narration bubble has dark ink, including lines added after the screen is styled.
+		if is_living:
+			var backdrop := office.find_child("TextBackdrop", true, false)
+			var lines := 0
+			for label in backdrop.find_children("*", "Label", true, false):
+				lines += 1
+				if IconBacking.luminance((label as Label).get_theme_color("font_color")) > 0.25:
+					_failures.append("living_office: the bubble line '%s' has light ink on paper" % (label as Label).text.left(30))
+			if lines < 3:
+				_failures.append("living_office: only %d lines in the narration bubble" % lines)
 		var wood := style == UiStyles.WOODBLOCK
 		if wood != (office.find_child("WaveBand", true, false) != null):
 			_failures.append("%s: the Office's wave band is %s" % [style, "missing" if wood else "present"])

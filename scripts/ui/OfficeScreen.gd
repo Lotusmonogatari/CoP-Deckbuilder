@@ -705,8 +705,13 @@ func _apply_ui_style_veils() -> void:
 					veil.shadow_color = Color(0, 0, 0, 0.3)
 					veil.shadow_size = 8
 					var ink := UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07))
-					for label in narration.find_children("*", "Label", true, false):
-						(label as Label).add_theme_color_override("font_color", ink)
+					# Dark ink for every line in the bubble, including lines added after this runs (a theme on the
+					# bubble reaches them; per-label overrides did not, and left light ink on paper).
+					var ink_theme := Theme.new()
+					for type_name: String in ["Label", "SmallLabel", "HeaderLabel", "TitleLabel", "JapaneseAccent"]:
+						ink_theme.set_color("font_color", type_name, ink)
+						ink_theme.set_stylebox("normal", type_name, StyleBoxEmpty.new())
+					narration.theme = ink_theme
 					if not narration.has_node("BubbleTail"):
 						var tail := StyleMarks.make(StyleMarks.Kind.TAIL, Color.TRANSPARENT, Vector2.ZERO, veil.bg_color)
 						tail.name = "BubbleTail"
