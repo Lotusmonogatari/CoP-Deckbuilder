@@ -282,3 +282,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Card faces readable everywhere; the question banner steps aside from the zoom (2026-11-17, Cameron)
 - Text sweep: every screen readable at every text size and screen shape (2026-11-17, Cameron)
 - Information standards, panel P4: week-end costs, Funds-limit reasons, contrast plates, win-result icons, staff item wording (2026-11-17, Cameron)
+- UI styles and End of Week Payments, panel P9 (2026-11-17, Cameron)

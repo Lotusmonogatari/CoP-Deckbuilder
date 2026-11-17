@@ -126,7 +126,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 | **Staff** (3 roles: Policy Research Assistant, Media Spokesperson, District Representative; 21 candidates) | Hired in Staff, upgraded rank by rank, paid a weekly wage, given daily tasks; fired for severance (3 x the hire price) or resign (neither returns) | Each rank pays a one-time bonus; hired staff speak Level Intro lines and transitions, brief you on a visiting member, and boost some items | Higher ranks need Staff Training Consultancy Sessions (recruitment tier starts at 0); the researcher's rank sets level unlock prices |
 | **Unlocked levels** | Spend XP; many early levels are free | Which levels can be played | Price depends on the researcher's rank |
 | **Laws** (Legislative Work) | Floor votes | Each law's effects pay once, and some pay again at the end of every later level | Permanent |
-| **Cosmetic packages** (6) | Funds or XP | An outfit, an Office background, music, a calendar style | Decorative only; one equipped per slot |
+| **Cosmetic packages** (8) | Funds or XP | An outfit, an Office background, music, a calendar style, a UI style (Broadcast, Woodblock) | Decorative only; one equipped per slot. **UI styles** (P9, 2026-11-17): Living Office is the free default and not a package; Broadcast and Woodblock are packages priced in the workbook (1 XP for now). A style changes look and arrangement only; no rule, number or Text row depends on it, and the card fronts and backs are the same in every style. The choice is saved with the run in `active_cosmetics["ui_style"]` |
 | **Promises** | Choices that promise an item or hours later | Owed from the Promises panel; kept ones earn standing | Deadline 48 hours by default (scaled by pressure); paused during levels |
 
 ## 5. Where the player chooses
@@ -162,7 +162,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 
 **Each week end (Going Home):**
 
-1. Party dues are settled (base 50,000円, plus 10,000円 per full 15 points of Party support above 40, plus 10% of the Funds earned Monday to Friday, less any National-awareness reduction).
+1. Party dues are settled (shown, with the staff wages that follow them, as **End of Week Payments**: the Office box's total, its breakdown on a tap and in the week-over pop-up; `WeekPayments`, which calls the same functions as the settlement) (base 50,000円, plus 10,000円 per full 15 points of Party support above 40, plus 10% of the Funds earned Monday to Friday, less any National-awareness reduction).
 2. Week-end awareness effects run.
 3. Election strength moves toward its potential.
 4. Decay runs once, multiplied by the **decay multiplier (2.5 at Standard; 2 Relaxed; 3 Harder)**: neglect decay, each organization's own Decay Percent, then meta decay (Constituency support 10%, Reputation 6%).

@@ -36,6 +36,7 @@
 | **Learning a card** | The card is shown, front and back, **before** anything is paid; Pass costs nothing | Rhetoric Training |
 | **Hiring staff** | A full profile: picture, name, cost, role, biography, what each rank gives | Staff Profile |
 | **The calendar** | Date (YY.MM.DD) with the weekday, hours left today and this week; the Office says when a week is over and offers the choice again from a button if the pop-up was missed | `WeekCalendar`, `OfficeScreen` |
+| **Week end (End of Week Payments)** | One total of the party dues and the staff wages, its two parts, each person's wage (raised pay marked), what is still owed, Funds after paying, and, when Funds are short, who goes unpaid and what that costs; the same breakdown on a tap on the Office box and in the week-over pop-up before the choice | `WeekPayments`, `WeekPaymentsView`, `DuesBox`, `tests/test_week_payments.gd` |
 
 **Rewards and penalties are shown together.** A player who leans on a bill must be able to see, at the start (the stakes line), at the vote (your vote versus the outcome) and afterwards (Legislative Work), every standing change that was caused and by what: a stage won, the vote, and the bill passing or failing. A change must never read as a penalty for the wrong cause (a failed bill's effect is labelled "Because the bill failed", not "Reactions to your vote").
 

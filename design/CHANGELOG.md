@@ -1201,3 +1201,15 @@ Item 5, the win result: the two organization icons seen "behind" Taken care of w
 Item 6, Staff Assignments items: the Office box note (`assign.office_hint`) now says that items which act at once (Printer, Shredder, Priority Inbox) are used from the Items row and take effect immediately; only Office-slot items placed in the box wait for Confirm. A Staff Assignments item opened in the Marketplace or Inventory pop-up now says "Use this on the Staff Assignments screen." (`item.refused.staff_screen`) instead of "This can't be used here.", and no longer shows the untrue "Takes effect immediately." line there. New `Items.is_staff_item`, with a test. Both are Text rows (drafts for Cameron).
 
 Item 7, Election Strength: Cameron said no, so the eight bars stay as they are. Nothing changed.
+
+## UI styles and End of Week Payments, panel P9 (2026-11-17, Cameron)
+
+What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` for the acceptance table.
+
+- **Framework (A1).** A `ui_style` cosmetic slot; a `UI Style` column on Cosmetic Packages and a new **UI Styles** tab (colours, fonts, radii per style, seeded from the proposal's tokens); `UiStyles`, `UiStyle`, `UiStyleTheme`; three theme overlays; three fonts added (Barlow Condensed Bold Italic, Shippori Mincho B1, Zen Kaku Gothic New, Latin subsets, SIL OFL; Japanese falls back to Noto Sans JP). Living Office is the default; the style is saved with the run.
+- **End of Week Payments (A2).** The Office dues box is now one total of party dues plus staff wages with its two parts and the Funds on hand; a tap opens the breakdown (each person's wage, raised pay marked, what is still owed, Funds after paying, who goes unpaid and what it costs); the same breakdown shows in the week-over pop-up before the choice. `WeekPayments` (pure) calls the same functions the week end settles with; `tests/test_week_payments.gd` checks the preview against the settlement line for line, including raised pay and a shortfall. Five old Text rows retired through the workbook.
+- **Living Office, battle seats (A3, first part).** Seats in a semicircle for a room of people (20 seats of 5, rows 12 and 8, Balance rows `UI Style: Seat Count` and `UI Style: Seat Outer Row Percent`); a continuous arc, filled like the regular bar, for the press tone and percentages (Cameron's note).
+- **The hand (all styles).** The cards overlap so every card of 3 to 6 shows; no sideways scroll needed.
+- **Buying and switching (B3).** A Marketplace **Office styles** tab (swatch, description, state, unlock with a reason when refused, use this style), a row in Administration › Appearance and Music; Broadcast and Woodblock cost 1 XP each (placeholder, for playtesting).
+- **Not yet built:** the Living Office room objects, speech-bubble cue, intent pill, lamp dots, manila-folder levels list and zoom note; the Broadcast and Woodblock per-screen layouts (slanted plates, scroll cue, seals, plaques). Those styles today change fonts, colours, panel plates and buttons across every screen.
+
