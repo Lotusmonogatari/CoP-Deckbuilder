@@ -400,7 +400,7 @@ func test_the_committee_lines_up_three_opponents() -> void:
 		"%s" % [engine.setup_problems])
 
 	assert_eq(engine.state.opponent_count, 3)
-	assert_eq(engine.opponent_caption(), "1 of 3")
+	assert_eq(engine.opponent_caption(), "1\u00a0of\u00a03")
 	assert_true(engine.state.bar != null, "three ordinary arguments, not a per-member voting model")
 
 
@@ -413,7 +413,7 @@ func test_winning_a_committee_bout_starts_the_next_one_clean() -> void:
 	engine._check_outcome()
 
 	assert_false(engine.state.is_over(), "two opponents still to go")
-	assert_eq(engine.opponent_caption(), "2 of 3")
+	assert_eq(engine.opponent_caption(), "2\u00a0of\u00a03")
 	assert_eq(engine.state.gaffe, 0, "a clean slate for the next argument")
 
 
@@ -440,7 +440,7 @@ func test_each_floor_debater_gets_their_own_division() -> void:
 	engine.state.bar.opponent_loses(engine.state.bar.opponent)
 	engine._check_outcome()
 
-	assert_eq(engine.opponent_caption(), "2 of 5")
+	assert_eq(engine.opponent_caption(), "2\u00a0of\u00a05")
 	assert_eq(engine.state.bar.player, opened_on, "the house divides again from the start")
 	assert_eq(engine.state.gaffe, 3, "but your record follows you in")
 	assert_eq(engine.state.turn, 7, "and so does the clock")
