@@ -360,5 +360,52 @@
       "cise",
       "showcase"
     ]
+  },
+  "office_hotspots": {
+    "_note": "Living Office room objects (P9, 2026-11-17). Where each menu pin sits on the Office picture, as fractions of the screen (x, y of the pin's centre). Placed by Claude from the two pictures; Cameron adjusts. Keys: events (the phone), results (the bookshelf), promises (the notice board), staff (the front desk), marketplace (the errand list). One set per Office background.",
+    "OFFICE": {
+      "results": [
+        0.22,
+        0.2
+      ],
+      "promises": [
+        0.78,
+        0.2
+      ],
+      "staff": [
+        0.22,
+        0.52
+      ],
+      "events": [
+        0.78,
+        0.52
+      ],
+      "marketplace": [
+        0.5,
+        0.59
+      ]
+    },
+    "OFFICE_UPGRADED": {
+      "results": [
+        0.22,
+        0.2
+      ],
+      "promises": [
+        0.78,
+        0.2
+      ],
+      "staff": [
+        0.22,
+        0.52
+      ],
+      "events": [
+        0.78,
+        0.52
+      ],
+      "marketplace": [
+        0.5,
+        0.59
+      ]
+    }
   }
 }

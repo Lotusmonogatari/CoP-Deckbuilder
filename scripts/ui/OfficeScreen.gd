@@ -367,6 +367,26 @@ func _process(delta: float) -> void:
 		_ticker.advance(delta)
 
 
+## Living Office: the menu's five destinations become pins in the room (RoomObjects). The Start
+## button becomes the paper docket card. Does nothing in the other styles.
+func _install_room_objects() -> void:
+	if UiStyle.current() != UiStyles.LIVING_OFFICE:
+		return
+	RoomObjects.install(self, {
+		"events": _events_button, "results": _reputation_button, "promises": _promises_button,
+		"staff": _management_button, "marketplace": find_child("InventoryButton", true, false) as Button})
+	var paper := UiStyle.colour("paper", Color(1, 0.97, 0.92))
+	var ink := UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07))
+	var card := StyleBoxFlat.new()
+	card.bg_color = paper
+	card.set_corner_radius_all(26)
+	card.set_content_margin_all(18)
+	for state: String in ["normal", "hover", "pressed", "focus"]:
+		_start_button.add_theme_stylebox_override(state, card)
+	for colour: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
+		_start_button.add_theme_color_override(colour, ink)
+
+
 func _build() -> void:
 	_building = true
 	GameState.staff_day_sync()   # a staff day that has ended is settled before the screen draws
@@ -410,6 +430,7 @@ func _build() -> void:
 		_show_random_event_if_due()
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
+	_install_room_objects()
 	_building = false
 	_maybe_show_staff_report.call_deferred()
 
