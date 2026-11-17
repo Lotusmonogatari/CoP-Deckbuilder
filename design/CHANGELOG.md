@@ -1253,3 +1253,7 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 
 - While a card is held it rises only as far as just below the Guard and Gaffes counters, in every style and screen shape. Playing it still needs the same drag distance. No rule or number changed.
 - `hand_input_test` now checks mid-drag that the card does not overlap either counter. The nine mid-drag battle shots in the P9 review folder were retaken.
+
+## 2026-11-17: Woodblock status labels get the same plates as the room and turn labels
+
+- In Woodblock, the speaker line, the threshold line, the tally, Guard and Gaffes now sit on paper plates with an ink edge and a vermilion offset shadow, like the room and turn plates at the top. The plates and their shadows are 10% see-through. The Inventory and Details buttons and the other styles are unchanged. No words or rules changed.

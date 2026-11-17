@@ -284,3 +284,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Information standards, panel P4: week-end costs, Funds-limit reasons, contrast plates, win-result icons, staff item wording (2026-11-17, Cameron)
 - UI styles and End of Week Payments, panel P9 (2026-11-17, Cameron)
 - A held card stops below the Guard and Gaffes counters (2026-11-17, Cameron)
+- Woodblock status labels get cartouche plates with a shadow (2026-11-17, Cameron)

@@ -55,6 +55,8 @@ var _listening: ListeningStrip = null
 ## The paper note under the zoomed card (P9), built on first use.
 ## Space left between a held card's top and the status row above it.
 const LIFT_CLEARANCE := 12.0
+## How solid the Woodblock status plaques and their shadows are (0.9 = 10% see-through).
+const STATUS_PLAQUE_ALPHA := 0.9
 var _zoom_note: PanelContainer = null
 ## Woodblock's intent seal (P9 review), drawn beside the intent line.
 var _intent_seal: StyleMarks = null
@@ -875,6 +877,30 @@ func _open_card(card_id: String) -> void:
 	_card_zoom.show()
 
 
+## Woodblock: the labels that sit straight on the room picture (the speaker line, the threshold, the
+## tally, Guard and Gaffes) get the same cartouche as the room and turn plates at the top: paper, an
+## ink edge and a vermilion offset shadow, with the plate and its shadow both 10% see-through. The
+## buttons beside them keep their own plain paper.
+func _style_status_plaques() -> void:
+	var paper := UiStyle.colour("paper", Color(0.97, 0.94, 0.88))
+	var shadow := UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
+	var bar := %SupportBar as Control
+	for label: Label in [%OpponentName, bar.get_node("Caption"), bar.get_node("Readout"), %GuardLabel, _gaffe_label]:
+		var box := StyleBoxFlat.new()
+		box.bg_color = Color(paper.r, paper.g, paper.b, STATUS_PLAQUE_ALPHA)
+		box.border_color = UiStyle.colour("ink", Color(0.11, 0.1, 0.09))
+		box.set_border_width_all(2)
+		box.shadow_color = Color(shadow.r, shadow.g, shadow.b, STATUS_PLAQUE_ALPHA)
+		box.shadow_offset = Vector2(6, 6)
+		box.shadow_size = 1
+		box.set_corner_radius_all(2)
+		box.content_margin_left = 5.0
+		box.content_margin_right = 5.0
+		box.content_margin_top = 3.0
+		box.content_margin_bottom = 3.0
+		label.add_theme_stylebox_override("normal", box)
+
+
 ## The battle's own furniture in the style in use (P9, 2026-11-17): the room and turn plates and the
 ## End Turn button. Living Office: rounded plates and an amber pill. Broadcast: slanted plates with a
 ## gold rule and a gold slanted End Turn. Woodblock: cartouches with a red offset shadow and an indigo
@@ -906,6 +932,8 @@ func _style_chrome() -> void:
 				box.shadow_size = 1
 				box.set_corner_radius_all(2)
 		label.add_theme_stylebox_override("normal", box)
+	if style == UiStyles.WOODBLOCK:
+		_style_status_plaques()
 	var end_turn := %EndTurnButton as Button
 	var fill := StyleBoxFlat.new()
 	var ink: Color
