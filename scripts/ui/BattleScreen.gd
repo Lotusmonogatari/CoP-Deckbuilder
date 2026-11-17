@@ -56,6 +56,8 @@ var _listening: ListeningStrip = null
 var _zoom_note: PanelContainer = null
 ## Woodblock's intent seal (P9 review), drawn beside the intent line.
 var _intent_seal: StyleMarks = null
+var _intent_box: StyleBoxFlat = null
+var _intent_label_node: Label = null
 
 ## False when the battle could not be set up. Everything that would touch
 ## the engine checks this first, so a stage that failed to start shows its
@@ -435,6 +437,7 @@ func _refresh() -> void:
 
 	_speaker.show_state(engine, str(_stage.get("stage_id", "")))
 	_refresh_intent_seal()
+	_refresh_intent_pill()
 
 	if state.bar != null:
 		# A scored stage has no threshold, so the bar must not draw a line or
@@ -959,30 +962,55 @@ func _refresh_intent_seal() -> void:
 ## ("Attacking · -1 to -2") are the same in every style and still come from IntentRunner.
 func _style_intent_tag(label: Label) -> void:
 	var style := UiStyle.current()
-	var tokens := {UiStyles.LIVING_OFFICE: "warning", UiStyles.BROADCAST: "intent_red", UiStyles.WOODBLOCK: "vermilion"}
-	var token: String = tokens.get(style, "warning")
-	var box := StyleBoxFlat.new()
-	box.bg_color = UiStyle.colour(token, Color(0.7, 0.15, 0.12))
-	box.set_corner_radius_all(26 if style == UiStyles.LIVING_OFFICE else 3)
-	box.content_margin_left = 20.0
-	box.content_margin_right = 20.0
-	box.content_margin_top = 4.0
-	box.content_margin_bottom = 4.0
-	label.add_theme_stylebox_override("normal", box)
-	label.add_theme_color_override("font_color", Color(1, 0.97, 0.92))
+	# A floating pill in every style (Cameron, 2026-11-17): rounded, as wide as its words, coloured for
+	# the opponent's party (see _refresh_intent_pill). One line, so it never stacks letters.
+	_intent_box = StyleBoxFlat.new()
+	_intent_box.bg_color = _default_intent_red()
+	_intent_box.set_corner_radius_all(48)
+	_intent_box.content_margin_left = 28.0
+	_intent_box.content_margin_right = 28.0
+	_intent_box.content_margin_top = 6.0
+	_intent_box.content_margin_bottom = 6.0
+	label.add_theme_stylebox_override("normal", _intent_box)
 	label.add_theme_constant_override("outline_size", 0)
+	label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	label.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	if style == UiStyles.WOODBLOCK:
-		# A vermilion seal at the left of the tag: 攻 attacking, 守 guarding, 得 gaining (drawn, not text).
-		box.content_margin_left = 112.0
+		# A seal at the left of the pill: 攻 attacking, 守 guarding, 得 gaining (drawn, not text).
+		_intent_box.content_margin_left = 112.0
 		label.custom_minimum_size.y = 96.0
 		_intent_seal = StyleMarks.make(StyleMarks.Kind.SEAL, Color(1, 0.97, 0.92), Vector2(84, 84),
-			UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13)), "攻")
+			_default_intent_red(), "攻")
 		_intent_seal.set_anchors_preset(Control.PRESET_CENTER_LEFT)
 		_intent_seal.offset_left = 14.0
 		_intent_seal.offset_right = 98.0
 		_intent_seal.offset_top = -42.0
 		_intent_seal.offset_bottom = 42.0
 		label.add_child(_intent_seal)
+	_intent_label_node = label
+	_refresh_intent_pill()
+
+
+func _default_intent_red() -> Color:
+	return UiStyle.colour("intent_default", Color(0.55, 0.11, 0.18), UiStyles.SHARED)
+
+
+## The pill's colour for whoever is speaking now: their party's colour when they have a party that is
+## not the player's, otherwise the default red (IntentPill). Light or dark ink, whichever reads.
+func _refresh_intent_pill() -> void:
+	if _intent_box == null or _intent_label_node == null or engine == null:
+		return
+	var opponent := engine.current_opponent()
+	var party := PartyDisplay.party_name(opponent)
+	var own_party := PartyDisplay.party_name(DataDB.player)
+	var party_colour := PartyDisplay.color_for(DataDB.get_party(party)) if not party.is_empty() else Color.BLACK
+	var fill := IntentPill.colour(party, own_party, party_colour, _default_intent_red())
+	_intent_box.bg_color = fill
+	_intent_label_node.add_theme_color_override("font_color", IntentPill.ink_for(fill))
+	if _intent_seal != null:
+		_intent_seal.back = fill
+		_intent_seal.colour = IntentPill.ink_for(fill)
+		_intent_seal.queue_redraw()
 
 
 ## The note under the zoomed card (P9, 2026-11-17): what it does in this room and what it costs

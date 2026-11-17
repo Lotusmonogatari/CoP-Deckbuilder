@@ -22,7 +22,7 @@ Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep a
 | Living Office | Room-object pins with their object words, docket card, payments tray, folders with hour rings, divider tabs and a dashed Draft a Bill tab, speech-bubble cue, red intent pill, seats with a threshold mark (or an arc), fanned hand, amber End Turn |
 | Broadcast | Gold slanted docket bar, 2 x 2 tiles, lower-third and red-edged narration, schedule rows with a gold hour chip, gold tier chips, slanted plates, gold diagonal between the characters, gold slanted End Turn; the slant bar and cue band with their gold lines kept (D2) |
 | Woodblock | Indigo docket plank with a 行 seal, 3 x 2 plaque tiles, cartouches, print cards with a framed picture and a red hours seal, stamped tier headings, ledger lines with dotted leaders, hanging-scroll cue, 攻/守/得 intent seal, plaques on labels |
-| Still left out | Nothing from the mockups. Three details are decisions, not gaps: the intent is a red band rather than a floating pill, the opponent's seats use the opponent red rather than the party colour, and the object word on a pin is its own label (the parity test lets it through) |
+| Still left out | Nothing from the mockups. Two details are decisions, not gaps: the opponent's seats use the opponent red rather than the party colour, and the object word on a pin is its own label (the parity test lets it through) |
 | `tools/verify.sh` | See section 3 |
 | Touch targets | Still a known gap by your decision: the app's buttons are 90 to 100 px against 122. The new tiles and pins are 122 px |
 
@@ -112,7 +112,7 @@ Existing click tests changed because the hand no longer scrolls sideways: `loop_
 |---|---|
 | Pin object words | "Phone", "Bookshelf" and the rest are a small label above the destination, not one "Phone · Events" string, so the button text stays the destination alone. `ui_style_parity_test` lets only this label through |
 | Room-object positions | My first placement from the two pictures (`art.json` `office_hotspots`), not yet looked at by you. The Promises pin only shows when a promise is open, as before |
-| Intent | A red band the width of the opponent block, not a floating pill (the label sits in the opponent block's column) |
+| Intent | A floating pill in every style, filled with the opponent's party colour (the default crimson #8C1D2F when there is no party or it is the player's own; held apart from Keizaijiyuutou's red by `test_intent_pill`) |
 | Seat colour for the opponent | The opponent's seats use the existing opponent red, not the party colour (the bar does not know the party yet) |
 | Woodblock text on paper | Every label carries its own plaque, so a few lines on paper show a faint second plaque edge |
 | Styles shop previews | Real screenshots of the Office in each style, cropped and shrunk (`assets/ui_styles/`); retake them when a style's Office changes |

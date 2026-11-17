@@ -662,5 +662,13 @@
     "token": "play_lift_px",
     "value": "220",
     "notes": null
+  },
+  {
+    "token_id": "US084",
+    "style": "shared",
+    "group": "colour",
+    "token": "intent_default",
+    "value": "#8C1D2F",
+    "notes": "The intent pill's default red: used when the opponent has no party or is in the player's own party. Must stay well apart from the Keizaijiyuutou red (255, 0, 0): test_intent_pill checks it. Cameron 2026-11-17."
   }
 ]
