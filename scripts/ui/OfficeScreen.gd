@@ -468,6 +468,9 @@ func _add_chevron(colour: Color) -> void:
 
 func _build() -> void:
 	_building = true
+	# Woodblock: a wave band along the foot of the Office, above the news ticker (P9 review).
+	StyleMarks.add_wave_band(self, 64.0, 56.0)
+	StyleMarks.add_print_frame(_portrait)
 	GameState.staff_day_sync()   # a staff day that has ended is settled before the screen draws
 	GameState.staff_ensure_day()  # and today's tasks are delivered, whether or not anyone is hired
 	# Whose office it is. A placeholder name until the protagonist is cast,
@@ -692,6 +695,23 @@ func _apply_ui_style_veils() -> void:
 					veil.border_width_left = 12
 					veil.border_color = UiStyle.colour("live_red", Color(0.76, 0.23, 0.13))
 					veil.bg_color = Color(plate.r, plate.g, plate.b, 0.85)
+			UiStyles.LIVING_OFFICE:
+				# The narration is a speech bubble from the protagonist (P9 review): paper, dark ink, rounded,
+				# with a tail pointing up at the portrait. The name stays a rounded plate.
+				if node == narration:
+					veil.bg_color = UiStyle.colour("paper", Color(1, 0.97, 0.92))
+					veil.set_corner_radius_all(34)
+					veil.set_content_margin_all(18)
+					veil.shadow_color = Color(0, 0, 0, 0.3)
+					veil.shadow_size = 8
+					var ink := UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07))
+					for label in narration.find_children("*", "Label", true, false):
+						(label as Label).add_theme_color_override("font_color", ink)
+					if not narration.has_node("BubbleTail"):
+						var tail := StyleMarks.make(StyleMarks.Kind.TAIL, Color.TRANSPARENT, Vector2.ZERO, veil.bg_color)
+						tail.name = "BubbleTail"
+						tail.set_anchors_preset(Control.PRESET_FULL_RECT)
+						narration.add_child(tail)
 			UiStyles.WOODBLOCK:
 				# The name is a bordered cartouche with a red offset shadow; the narration a ruled print.
 				veil.border_color = UiStyle.colour("ink", Color(0.11, 0.1, 0.09))

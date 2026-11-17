@@ -57,6 +57,7 @@ var _zoom_note: PanelContainer = null
 ## Woodblock's intent seal (P9 review), drawn beside the intent line.
 var _intent_seal: StyleMarks = null
 var _intent_box: StyleBoxFlat = null
+var _cutins: StyleMarks = null
 var _intent_label_node: Label = null
 
 ## False when the battle could not be set up. Everything that would touch
@@ -153,6 +154,8 @@ func _ready() -> void:
 		%UpcomingIntentLabel)
 	_style_intent_tag(%IntentLabel)
 	_style_chrome()
+	StyleMarks.add_wave_band(self, 0.0, 40.0)
+	StyleMarks.add_print_frame($Safe/Column/OpponentRow/ArtBox as Control)
 	_add_gold_diagonal()
 	_player_portrait = PlayerPortraitPresenter.new(%PlayerPortrait)
 	_hand = HandPresenter.new(%HandRow)
@@ -935,16 +938,19 @@ func _gold() -> Color:
 	return UiStyle.colour("gold", Color(0.89, 0.7, 0.25))
 
 
-## Broadcast splits the two characters' cut-ins with a thin gold diagonal (P9 review). A drawn line
-## over the picture area; it takes no touches and carries no words.
+## Broadcast shows the two characters as two cut-in shots (P9 review): a slanted panel behind each, yours
+## in blue and the opponent's in their pill colour, divided by a thin gold diagonal. Drawn behind the
+## characters; it takes no touches and carries no words.
 func _add_gold_diagonal() -> void:
 	if UiStyle.current() != UiStyles.BROADCAST:
 		return
 	var art := $Safe/Column/OpponentRow/ArtBox as Control
-	var line := StyleMarks.make(StyleMarks.Kind.DIAGONAL, UiStyle.colour("gold", Color(0.89, 0.7, 0.25)), Vector2.ZERO)
-	line.name = "GoldDiagonal"
-	line.set_anchors_preset(Control.PRESET_FULL_RECT)
-	art.add_child(line)
+	_cutins = StyleMarks.make(StyleMarks.Kind.CUTINS, UiStyle.colour("bar_player", Color(0.23, 0.51, 0.96)), Vector2.ZERO,
+		_default_intent_red())
+	_cutins.name = "CutIns"
+	_cutins.set_anchors_preset(Control.PRESET_FULL_RECT)
+	art.add_child(_cutins)
+	art.move_child(_cutins, 0)
 
 
 ## 攻 for an attack, 守 for a guard, 得 for a gain; no seal while the opponent waits.
@@ -1007,6 +1013,9 @@ func _refresh_intent_pill() -> void:
 	var fill := IntentPill.colour(party, own_party, party_colour, _default_intent_red())
 	_intent_box.bg_color = fill
 	_support_bar.opponent_colour = fill
+	if _cutins != null:
+		_cutins.back = fill
+		_cutins.queue_redraw()
 	_intent_label_node.add_theme_color_override("font_color", IntentPill.ink_for(fill))
 	if _intent_seal != null:
 		_intent_seal.back = fill

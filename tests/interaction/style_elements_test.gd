@@ -69,9 +69,16 @@ func _run() -> void:
 				_failures.append("woodblock: the seal shows '%s' for a '%s' move" % [(seal as StyleMarks).glyph, verb])
 		elif seal != null:
 			_failures.append("%s: has an intent seal" % style)
-		var diagonal := battle.find_child("GoldDiagonal", true, false)
+		var diagonal := battle.find_child("CutIns", true, false)
 		if (style == UiStyles.BROADCAST) != (diagonal != null):
-			_failures.append("%s: the gold diagonal is %s" % [style, "missing" if style == UiStyles.BROADCAST else "present"])
+			_failures.append("%s: the cut-in panels are %s" % [style, "missing" if style == UiStyles.BROADCAST else "present"])
+		# Woodblock: the wave band and the framed print; no other style has them.
+		var waves := battle.find_child("WaveBand", true, false)
+		var print_frame := battle.find_child("PrintFrame", true, false)
+		if (style == UiStyles.WOODBLOCK) != (waves != null):
+			_failures.append("%s: the battle's wave band is %s" % [style, "missing" if style == UiStyles.WOODBLOCK else "present"])
+		if (style == UiStyles.WOODBLOCK) != (print_frame != null):
+			_failures.append("%s: the battle's framed print is %s" % [style, "missing" if style == UiStyles.WOODBLOCK else "present"])
 		await _done(battle)
 	# Office: the docket card says the hours in every style; Living Office has the tray and the folder.
 	for style: String in UiStyles.ALL:
@@ -80,6 +87,20 @@ func _run() -> void:
 		var sub := office.find_child("DocketHours", true, false) as Label
 		if sub == null or not sub.text.contains(str(GameState.work_hours_left())):
 			_failures.append("%s: the docket card does not say the hours left" % style)
+		# Living Office: the calendar is a page-a-day with a header and a curled corner, and the narration a
+		# speech bubble with a tail. Woodblock: the wave band and the framed print on the portrait.
+		var is_living := style == UiStyles.LIVING_OFFICE
+		if is_living != (office.find_child("CalendarHeader", true, false) != null):
+			_failures.append("%s: the page-a-day calendar is %s" % [style, "missing" if is_living else "present"])
+		if is_living != (office.find_child("PageCurl", true, false) != null):
+			_failures.append("%s: the calendar's page curl is %s" % [style, "missing" if is_living else "present"])
+		if is_living != (office.find_child("BubbleTail", true, false) != null):
+			_failures.append("%s: the narration bubble's tail is %s" % [style, "missing" if is_living else "present"])
+		var wood := style == UiStyles.WOODBLOCK
+		if wood != (office.find_child("WaveBand", true, false) != null):
+			_failures.append("%s: the Office's wave band is %s" % [style, "missing" if wood else "present"])
+		if wood != (office.find_child("PrintFrame", true, false) != null):
+			_failures.append("%s: the Office's framed print is %s" % [style, "missing" if wood else "present"])
 		var tray := office.find_child("Tray", true, false)
 		if (style == UiStyles.LIVING_OFFICE) != (tray != null):
 			_failures.append("%s: the payments tray is %s" % [style, "missing" if style == UiStyles.LIVING_OFFICE else "present"])
@@ -129,6 +150,30 @@ func _run() -> void:
 			if tilted == 0 or upright == 0:
 				_failures.append("late in the week some rings should be tilted (cannot start) and some upright; got %d and %d" % [tilted, upright])
 		await _done(office)
+	# The Living Office calendar page follows the equipped calendar style: plain, Era years, or the Ainu form.
+	for package_id: String in ["", "CP05", "CP06"]:
+		_equip(UiStyles.LIVING_OFFICE)
+		if not package_id.is_empty():
+			GameState.owned_cosmetic_packages.append(package_id)
+			GameState.equip_cosmetic(CosmeticPieces.CALENDAR, package_id)
+		var office2 := await _screen(OFFICE)
+		var page := office2.find_child("CalendarSquare", true, false) as Control
+		var date := office2.find_child("CalendarDate", true, false) as Label
+		var week := office2.find_child("CalendarWeekday", true, false) as Label
+		var tag := "calendar '%s': " % GameState.calendar_style()
+		if date == null or date.text != GameState.calendar_date_text():
+			_failures.append(tag + "the page shows '%s', the calendar says '%s'" % [date.text if date != null else "nothing", GameState.calendar_date_text()])
+		if week == null or week.text != GameState.calendar_weekday_text():
+			_failures.append(tag + "the page header shows '%s', the calendar says '%s'" % [week.text if week != null else "nothing", GameState.calendar_weekday_text()])
+		if GameState.calendar_style() == CalendarStyles.ERA and not date.text.contains("年"):
+			_failures.append(tag + "the Era page does not show an era year: '%s'" % date.text)
+		if GameState.calendar_style() == CalendarStyles.AINU and date.text.contains("年"):
+			_failures.append(tag + "the Ainu page shows an era year: '%s'" % date.text)
+		if page != null and date != null:
+			var inside := page.get_global_rect().grow(2.0)
+			if not inside.encloses(date.get_global_rect()):
+				_failures.append(tag + "the date runs off the page")
+		await _done(office2)
 	if _failures.is_empty():
 		print("STYLE ELEMENTS TEST: PASS")
 		get_tree().quit(0)
