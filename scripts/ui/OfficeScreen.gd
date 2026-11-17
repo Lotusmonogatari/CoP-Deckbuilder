@@ -500,9 +500,7 @@ func _show_week_over_if_due() -> void:
 	if GameState.is_in_level() or not GameState.work_week_is_full():
 		return
 	var rows: Array[Control] = [UiKit.line(Text.say("office.week_over_body"))]
-	var wages := GameState.staff_wage_preview()
-	if bool(wages["short"]) and int(wages["total"]) > 0:
-		rows.append(UiKit.line(Text.say("staff.week_warning", {"yen": int(wages["total"])})))
+	rows.append_array(_week_cost_rows())
 	var weekend := Button.new()
 	weekend.name = "WorkWeekendButton"
 	weekend.custom_minimum_size = Vector2(0, 110)
@@ -516,6 +514,44 @@ func _show_week_over_if_due() -> void:
 	home.pressed.connect(_go_home)
 	rows.append(home)
 	_week_over_panel.open(Text.say("office.week_over_title"), rows)
+
+
+## What "Pay Party Dues and Go Home" will cost and pay, before the player chooses (Information
+## Standard 1; panel P4, 2026-11-17). Every number comes from GameState.week_end_preview(),
+## which uses the functions that settle the week, so the preview is the charge.
+func _week_cost_rows() -> Array[Control]:
+	var out: Array[Control] = []
+	var preview := GameState.week_end_preview()
+	var dues: Dictionary = preview["dues"]
+	var staff: Dictionary = preview["staff"]
+	var funds: Dictionary = preview["funds"]
+	out.append(UiKit.heading(Text.say("office.week_cost_heading")))
+	out.append(UiKit.line(Text.say("office.week_cost_dues", {"yen": Phrase.with_separators(int(dues["week_dues"]))})))
+	if int(dues["week_dues"]) > 0:
+		out.append(UiKit.line(Text.say("office.week_cost_dues_parts", {"base": Phrase.with_separators(int(dues["base"])),
+			"share": Phrase.with_separators(int(dues["share"])), "earned": Phrase.with_separators(int(dues["earned"]))}), "SmallLabel"))
+	if int(dues["relief"]) > 0:
+		out.append(UiKit.line(Text.say("office.week_cost_relief", {"yen": Phrase.with_separators(int(dues["relief"]))}), "SmallLabel"))
+	if int(dues["carried"]) > 0:
+		out.append(UiKit.line(Text.say("office.week_cost_carried", {"yen": Phrase.with_separators(int(dues["carried"]))})))
+	if int(staff["count"]) > 0:
+		out.append(UiKit.line(Text.say("office.week_cost_wages", {"yen": Phrase.with_separators(int(staff["wages"])), "count": int(staff["count"])})))
+	out.append(UiKit.line(Text.say("office.week_cost_funds", {"now": Phrase.with_separators(int(funds["now"])),
+		"after": Phrase.with_separators(int(funds["after"]))})))
+	if int(preview["short"]) > 0:
+		var penalties: Dictionary = preview["penalties"]
+		var hq := str(DataDB.get_booster(str(DataDB.get_rule("party_dues_hq_organization", ""))).get("name_en", ""))
+		var selection := str(DataDB.get_booster(str(DataDB.get_rule("party_dues_selection_organization", ""))).get("name_en", ""))
+		out.append(UiKit.line(Text.say("office.week_cost_short", {"yen": Phrase.with_separators(int(preview["short"]))})))
+		out.append(UiKit.line(Text.say("office.week_cost_penalty", {"support": int(penalties["party_support"]), "hq": hq,
+			"hq_n": int(penalties["hq"]), "selection": selection, "selection_n": int(penalties["selection"])}), "SmallLabel"))
+		var withdrawn: Array = preview["withdrawn"]
+		if not withdrawn.is_empty():
+			out.append(UiKit.line(Text.say("office.week_cost_backings", {"names": ", ".join(PackedStringArray(withdrawn))}), "SmallLabel"))
+	if int(staff["wages_missed"]) > 0:
+		out.append(UiKit.line(Text.say("staff.week_warning", {"yen": int(staff["wages"])}), "SmallLabel"))
+	out.append(UiKit.line(Text.say("office.week_cost_settle"), "SmallLabel"))
+	return out
 
 
 func _on_work_weekend() -> void:

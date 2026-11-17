@@ -8118,5 +8118,82 @@
     "english": "{count} uses",
     "placeholders": "count",
     "notes": "2026-11-16 item uses (Cameron). Claude's draft."
+  },
+  {
+    "key": "office.week_cost_heading",
+    "where": "Week-over popup, what going home costs, heading",
+    "english": "If you pay dues and go home",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_dues",
+    "where": "Week-over popup, this week's dues",
+    "english": "Party dues this week: {yen}円.",
+    "placeholders": "yen",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_dues_parts",
+    "where": "Week-over popup, how the dues are made up",
+    "english": "That is {base}円 for your Party support plus {share}円, a share of the {earned}円 you earned this week.",
+    "placeholders": "base, share, earned",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_relief",
+    "where": "Week-over popup, National awareness relief",
+    "english": "National awareness has already taken {yen}円 off.",
+    "placeholders": "yen",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_carried",
+    "where": "Week-over popup, dues carried over",
+    "english": "Still owed from earlier weeks: {yen}円.",
+    "placeholders": "yen",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_wages",
+    "where": "Week-over popup, staff wages",
+    "english": "Staff wages: {yen}円 for {count} staff.",
+    "placeholders": "yen, count",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_funds",
+    "where": "Week-over popup, Funds before and after",
+    "english": "Funds now: {now}円. After dues and wages: {after}円.",
+    "placeholders": "now, after",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_short",
+    "where": "Week-over popup, dues cannot be paid in full",
+    "english": "Your Funds fall {yen}円 short of the dues. That amount stays owed to the party.",
+    "placeholders": "yen",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_penalty",
+    "where": "Week-over popup, what unpaid dues cost",
+    "english": "Unpaid dues cost {support} Party support, {hq_n} standing with {hq} and {selection_n} with {selection}.",
+    "placeholders": "support, hq, hq_n, selection, selection_n",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_backings",
+    "where": "Week-over popup, backings withdrawn",
+    "english": "The party also withdraws these backings: {names}.",
+    "placeholders": "names",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "office.week_cost_settle",
+    "where": "Week-over popup, standing settles back",
+    "english": "Over the week, standing with organizations you did not move settles back toward where it started.",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
   }
 ]
