@@ -125,7 +125,10 @@ func show_item(item_id: String) -> void:
 	# The Description is display text, straight off the Shop tab — shown,
 	# never read for what the item does (that is the Grants column's job).
 	rows.append(UiKit.line(str(item.get("description", "")), "SmallLabel"))
-	rows.append(UiKit.line(Items.timing_line(item, context, Text.phrase()), "SmallLabel"))
+	# A Staff Assignments item opened where it cannot be used says where to use
+	# it (below) instead of "Takes effect immediately", which would be untrue here.
+	if not (Items.is_staff_item(item) and not Items.usable_in(item, context)):
+		rows.append(UiKit.line(Items.timing_line(item, context, Text.phrase()), "SmallLabel"))
 
 	var refusal := _refusal(item_id, item)
 	if not refusal.is_empty():

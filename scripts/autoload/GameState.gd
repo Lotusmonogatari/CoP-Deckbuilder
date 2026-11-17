@@ -3152,6 +3152,55 @@ func dues_preview() -> Dictionary:
 		"funds": int(meta.get("Funds", 0))}
 
 
+## What going home will cost and pay (panel P4, 2026-11-17), worked out with the very
+## functions that settle the week (PartyDues.settle and overdue_penalties and party_backings,
+## StaffLoyalty.pay_order and settle_wages), in the order go_home() uses them: dues first, then
+## the confirmed staff day's Funds, then wages. Returns:
+##   dues:   { base, share, earned, relief, week_dues, carried, total, paid, owed }
+##   staff:  { wages, count, wages_paid, wages_missed, funds_before_wages }
+##   funds:  { now, after }  (after dues, the confirmed staff day and wages)
+##   short:  the Funds the dues fall short by (0 when they can be paid)
+##   penalties: PartyDues.overdue_penalties for what stays owed ({} when nothing is owed)
+##   withdrawn: names of the party's backings that would be withdrawn
+func week_end_preview() -> Dictionary:
+	var cfg := PartyDues.settings(DataDB.balance)
+	var due := dues_preview()
+	var support := int(meta.get("Party support", 0))
+	var reduction := _dues_reduction()
+	var holiday := Difficulty.dues_holiday(int(calendar.get("week", 0)), Levers.whole("dues_holiday_weeks"))
+	var base_full := PartyDues.base_dues(cfg, support, 0)
+	var base_after := PartyDues.base_dues(cfg, support, reduction)
+	var share := PartyDues.week_dues(cfg, support, week_funds_earned, reduction) - base_after
+	var settled := PartyDues.settle(int(due["total"]), int(due["funds"]))
+	var penalties := PartyDues.overdue_penalties(cfg, int(settled["owed"]))
+	var withdrawn: Array[String] = []
+	if int(settled["owed"]) > 0:
+		for mod_id: String in PartyDues.party_backings(owned_modifiers, DataDB.modifiers, DataDB.boosters):
+			withdrawn.append(str(DataDB.get_modifier(mod_id).get("name_en", mod_id)))
+	# The confirmed staff day settles before wages and may move Funds.
+	var staff_funds := 0
+	if staff_day_confirmed and not staff_day_pool.is_empty() and not staff_members().is_empty():
+		staff_funds = int((staff_projection()["meta"] as Dictionary).get("Funds", 0))
+	var funds_before_wages := int(due["funds"]) - int(settled["paid"]) + staff_funds
+	var entries: Array = []
+	var wages_total := 0
+	for member: Dictionary in staff_members():
+		var id := str(member["staff_id"])
+		entries.append({"staff_id": id, "primary": member["primary"], "loyalty": staff_loyalty_of(id), "wage": staff_wage_of(id)})
+		wages_total += staff_wage_of(id)
+	var wage_result := StaffLoyalty.settle_wages(StaffLoyalty.pay_order(entries), funds_before_wages)
+	return {
+		"dues": {"base": 0 if holiday else base_after, "share": 0 if holiday else share, "earned": week_funds_earned,
+			"relief": 0 if holiday else base_full - base_after,
+			"week_dues": int(due["week_dues"]), "carried": dues_balance, "total": int(due["total"]),
+			"paid": int(settled["paid"]), "owed": int(settled["owed"]), "holiday": holiday},
+		"staff": {"wages": wages_total, "count": entries.size(), "wages_paid": int(wage_result["spent"]),
+			"wages_missed": (wage_result["missed"] as Array).size(), "funds_before_wages": funds_before_wages},
+		"funds": {"now": int(due["funds"]), "after": funds_before_wages - int(wage_result["spent"])},
+		"short": int(settled["owed"]), "penalties": penalties, "withdrawn": withdrawn,
+	}
+
+
 ## Pays the party at the week's end with whatever Funds there are. Anything
 ## unpaid rolls over; an unpaid week costs Party support, withdraws the
 ## party's backings, and applies the scaled overdue penalties.
@@ -3176,6 +3225,7 @@ func _settle_dues() -> Dictionary:
 
 	var penalties := PartyDues.overdue_penalties(cfg, dues_balance)
 	report["penalized"] = true
+	report["penalties"] = penalties
 	_under_cause(cause, func() -> void:
 		_apply_meta_reward("Party support", -int(penalties["party_support"]))
 		_apply_booster_delta(str(DataDB.get_rule("party_dues_hq_organization", "")), -int(penalties["hq"]))
@@ -5697,7 +5747,15 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 func draft_refusal(ids: Array, extra_visit: bool = false) -> String:
 	return DraftBill.refusal(ids, {"enacted": enacted_components, "xp": xp, "funds": int(meta.get("Funds", 0)),
 		"time_units": time_units, "last_draft_at": last_draft_at, "in_level": is_in_level(),
-		"extra_visit": extra_visit})
+		"extra_visit": extra_visit, "funds_limit": funds_limit(), "petition": funds_cap_item_name()})
+
+
+## The Marketplace item that raises the Funds limit (the one with a Funds Cap Increase), by name.
+func funds_cap_item_name() -> String:
+	for item: Dictionary in DataDB.shop:
+		if item.get("funds_cap_increase") != null:
+			return str(item.get("name", ""))
+	return ""
 
 
 ## Drafts a bill from `ids`: pays the cost, files it as a runtime patron row

@@ -383,7 +383,7 @@ func _build() -> void:
 	else:
 		_title.text = name_en
 		_title_party.text = "· %s" % party
-		_title_party.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
+		PartyLabel.apply(_title_party, DataDB.get_party(party))
 		_title_party.show()
 	_subtitle.text = Text.say("office.subtitle_jp")
 
@@ -567,9 +567,7 @@ func _show_week_over_if_due() -> void:
 	if GameState.is_in_level() or not GameState.work_week_is_full():
 		return
 	var rows: Array[Control] = [UiKit.line(Text.say("office.week_over_body"))]
-	var wages := GameState.staff_wage_preview()
-	if bool(wages["short"]) and int(wages["total"]) > 0:
-		rows.append(UiKit.line(Text.say("staff.week_warning", {"yen": int(wages["total"])})))
+	rows.append_array(_week_cost_rows())
 	var weekend := Button.new()
 	weekend.name = "WorkWeekendButton"
 	weekend.custom_minimum_size = Vector2(0, 110)
@@ -583,6 +581,44 @@ func _show_week_over_if_due() -> void:
 	home.pressed.connect(_go_home)
 	rows.append(home)
 	_week_over_panel.open(Text.say("office.week_over_title"), rows)
+
+
+## What "Pay Party Dues and Go Home" will cost and pay, before the player chooses (Information
+## Standard 1; panel P4, 2026-11-17). Every number comes from GameState.week_end_preview(),
+## which uses the functions that settle the week, so the preview is the charge.
+func _week_cost_rows() -> Array[Control]:
+	var out: Array[Control] = []
+	var preview := GameState.week_end_preview()
+	var dues: Dictionary = preview["dues"]
+	var staff: Dictionary = preview["staff"]
+	var funds: Dictionary = preview["funds"]
+	out.append(UiKit.heading(Text.say("office.week_cost_heading")))
+	out.append(UiKit.line(Text.say("office.week_cost_dues", {"yen": Phrase.with_separators(int(dues["week_dues"]))})))
+	if int(dues["week_dues"]) > 0:
+		out.append(UiKit.line(Text.say("office.week_cost_dues_parts", {"base": Phrase.with_separators(int(dues["base"])),
+			"share": Phrase.with_separators(int(dues["share"])), "earned": Phrase.with_separators(int(dues["earned"]))}), "SmallLabel"))
+	if int(dues["relief"]) > 0:
+		out.append(UiKit.line(Text.say("office.week_cost_relief", {"yen": Phrase.with_separators(int(dues["relief"]))}), "SmallLabel"))
+	if int(dues["carried"]) > 0:
+		out.append(UiKit.line(Text.say("office.week_cost_carried", {"yen": Phrase.with_separators(int(dues["carried"]))})))
+	if int(staff["count"]) > 0:
+		out.append(UiKit.line(Text.say("office.week_cost_wages", {"yen": Phrase.with_separators(int(staff["wages"])), "count": int(staff["count"])})))
+	out.append(UiKit.line(Text.say("office.week_cost_funds", {"now": Phrase.with_separators(int(funds["now"])),
+		"after": Phrase.with_separators(int(funds["after"]))})))
+	if int(preview["short"]) > 0:
+		var penalties: Dictionary = preview["penalties"]
+		var hq := str(DataDB.get_booster(str(DataDB.get_rule("party_dues_hq_organization", ""))).get("name_en", ""))
+		var selection := str(DataDB.get_booster(str(DataDB.get_rule("party_dues_selection_organization", ""))).get("name_en", ""))
+		out.append(UiKit.line(Text.say("office.week_cost_short", {"yen": Phrase.with_separators(int(preview["short"]))})))
+		out.append(UiKit.line(Text.say("office.week_cost_penalty", {"support": int(penalties["party_support"]), "hq": hq,
+			"hq_n": int(penalties["hq"]), "selection": selection, "selection_n": int(penalties["selection"])}), "SmallLabel"))
+		var withdrawn: Array = preview["withdrawn"]
+		if not withdrawn.is_empty():
+			out.append(UiKit.line(Text.say("office.week_cost_backings", {"names": ", ".join(PackedStringArray(withdrawn))}), "SmallLabel"))
+	if int(staff["wages_missed"]) > 0:
+		out.append(UiKit.line(Text.say("staff.week_warning", {"yen": int(staff["wages"])}), "SmallLabel"))
+	out.append(UiKit.line(Text.say("office.week_cost_settle"), "SmallLabel"))
+	return out
 
 
 func _on_work_weekend() -> void:
@@ -1426,7 +1462,7 @@ func _protagonist_row(protagonist: Dictionary) -> Control:
 	var party_label := UiKit.line(
 		party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel")
 	if not party.is_empty():
-		party_label.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
+		PartyLabel.apply(party_label, DataDB.get_party(party))
 	box.add_child(party_label)
 	var blurb := str(protagonist.get("blurb", ""))
 	if not blurb.is_empty():
@@ -1564,7 +1600,7 @@ func _show_parties() -> void:
 		if party_id == own:
 			title += " " + Text.say("party_opinion.own_tag")
 		var heading := UiKit.heading(title)
-		heading.add_theme_color_override("font_color", PartyDisplay.color_for(party))
+		PartyLabel.apply(heading, party)
 		box.add_child(heading)
 		box.add_child(UiKit.line(Text.say("party_opinion.line", {
 			"score": detail["opinion"],
@@ -1605,7 +1641,7 @@ func _show_party_detail(party_id: String) -> void:
 		var heading := UiKit.heading(Text.say(
 			"party_opinion.allies_heading" if is_ally else "party_opinion.rivals_heading"))
 		if is_ally:
-			heading.add_theme_color_override("font_color", colour)
+			PartyLabel.apply(heading, party)
 		rows.append(heading)
 		rows.append(UiKit.line(Text.say(
 			"party_opinion.allies_blurb" if is_ally else "party_opinion.rivals_blurb"), "SmallLabel"))
@@ -2346,6 +2382,11 @@ func _show_marketplace() -> void:
 		tabs.add_child(button)
 	rows.append(tabs)
 	rows.append(funds_line)
+	# At the Funds limit (or above it), say what the limit does (panel P4, item 3; Cameron's wording).
+	if int(GameState.meta.get("Funds", 0)) >= GameState.funds_limit():
+		var limit_note := UiKit.line(Text.say("shop.funds_limit_note"), "SmallLabel")
+		limit_note.name = "MarketLimitNote"
+		rows.append(limit_note)
 	rows.append(UiKit.line(Text.say("shop.supplies_blurb" if _market_tab == Items.PERSONAL else "shop.office_blurb")))
 	rows.append_array(_inventory_panel.inventory_rows(_market_tab))
 	rows.append(UiKit.heading(Text.say("office.marketplace")))
@@ -2398,7 +2439,7 @@ func _supply_row(item: Dictionary) -> Control:
 
 	var bought := int(GameState.shop_bought_this_level.get(item_id, 0))
 	var refusal := Items.buy_refusal(item, GameState.item_count(item_id), bought,
-		GameState.xp, int(GameState.meta.get("Funds", 0)), Text.phrase())
+		GameState.xp, int(GameState.meta.get("Funds", 0)), Text.phrase(), GameState.funds_limit(), GameState.funds_cap_item_name())
 	if refusal.is_empty() and GameState.is_staff_slot_item(item):
 		refusal = GameState.staff_slot_refusal(item)
 	var button := UiKit.action_button(Text.say("shop.buy"), refusal, _on_buy_item.bind(item_id))

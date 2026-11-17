@@ -281,3 +281,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Documents refreshed; the last fixed numbers and ids moved into the workbook (2026-11-17, Cameron)
 - Card faces readable everywhere; the question banner steps aside from the zoom (2026-11-17, Cameron)
 - Text sweep: every screen readable at every text size and screen shape (2026-11-17, Cameron)
+- Information standards, panel P4: week-end costs, Funds-limit reasons, contrast plates, win-result icons, staff item wording (2026-11-17, Cameron)

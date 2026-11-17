@@ -776,9 +776,11 @@ func _refresh_details_orgs(engine: BattleEngine) -> void:
 		for booster_id: String in scrutiny:
 			if not OrgChip.name_of(booster_id).is_empty():
 				flow.add_child(OrgChip.make(booster_id, 0, false, 80.0, false, str(tastes.get(booster_id, ""))))
-		rows.append(flow)
-	rows.append_array(StanceLines.org_group("battle.pleased_heading", engine.pleased_boosters(), true))
-	rows.append_array(StanceLines.org_group("battle.annoyed_heading", engine.displeased_boosters(), false))
+		rows.append(IconPlate.wrap(flow))
+	for group_rows: Array[Control] in [StanceLines.org_group("battle.pleased_heading", engine.pleased_boosters(), true),
+			StanceLines.org_group("battle.annoyed_heading", engine.displeased_boosters(), false)]:
+		for row: Control in group_rows:
+			rows.append(IconPlate.wrap(row) if row is HFlowContainer else row)
 	if rows.is_empty():
 		return
 	var box := VBoxContainer.new()
@@ -797,7 +799,7 @@ func _show_party_line(label: Label, party: String) -> void:
 		label.hide()
 		return
 	label.text = " · %s" % party
-	label.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
+	PartyLabel.apply(label, DataDB.get_party(party))
 	label.show()
 
 
@@ -899,6 +901,12 @@ func _build_listening() -> void:
 ## back, and any already moved this stage. Backed ones also show their tastes.
 func _refresh_listening() -> void:
 	if _listening == null or engine == null:
+		return
+	# Nobody is "listening" once the stage is over. The strip sits under the
+	# result panel, which is only 85% opaque, so its organization icons used
+	# to show through behind "Taken care of" (P4 item 5, 2026-11-17).
+	if engine.state.is_over():
+		_listening.hide()
 		return
 	# Icons only on the stage screen: the red and green marks say what a card does
 	# to each, and what each organization likes is in the tap-an-icon pop-up on the
