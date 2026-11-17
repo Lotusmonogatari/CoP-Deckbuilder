@@ -114,6 +114,17 @@ func _add_tile(booster_id: String, taste: String) -> void:
 	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.custom_minimum_size = Vector2(_icon_size, _icon_size)
 	root.add_child(box)
+	# A dark rounded backing, so the icon reads (3 to 1) against any room picture in every style
+	# (review of P9, finding 5: Broadcast's icons measured 2.7 to 1 straight on the picture).
+	var backing := Panel.new()
+	backing.name = "IconBacking"
+	var backing_box := StyleBoxFlat.new()
+	backing_box.bg_color = Color(0.07, 0.06, 0.05, 0.78)
+	backing_box.set_corner_radius_all(int(_icon_size * 0.28))
+	backing.add_theme_stylebox_override("panel", backing_box)
+	backing.set_anchors_preset(Control.PRESET_FULL_RECT)
+	backing.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	box.add_child(backing)
 	var icon := TextureRect.new()
 	icon.texture = ArtLoader.icon(booster_id)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
