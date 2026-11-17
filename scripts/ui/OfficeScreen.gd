@@ -2367,7 +2367,7 @@ func _supply_row(item: Dictionary) -> Control:
 
 	var bought := int(GameState.shop_bought_this_level.get(item_id, 0))
 	var refusal := Items.buy_refusal(item, GameState.item_count(item_id), bought,
-		GameState.xp, int(GameState.meta.get("Funds", 0)), Text.phrase())
+		GameState.xp, int(GameState.meta.get("Funds", 0)), Text.phrase(), GameState.funds_limit(), GameState.funds_cap_item_name())
 	if refusal.is_empty() and GameState.is_staff_slot_item(item):
 		refusal = GameState.staff_slot_refusal(item)
 	var button := UiKit.action_button(Text.say("shop.buy"), refusal, _on_buy_item.bind(item_id))

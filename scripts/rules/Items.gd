@@ -180,7 +180,7 @@ static func staff_bonus_rows(item: Dictionary) -> Array:
 ## Why this item cannot be bought, in the player's words, or "" when it can.
 ## `held` is how many the player has, `bought` how many this level.
 static func buy_refusal(item: Dictionary, held: int, bought: int, xp: int, funds: int,
-		words: Phrase = null) -> String:
+		words: Phrase = null, funds_limit: int = 0, petition: String = "") -> String:
 	var say := words if words != null else Phrase.new()
 	if str(item.get("item_id", "")).is_empty():
 		return say.say("shop.item_no_id")
@@ -197,6 +197,9 @@ static func buy_refusal(item: Dictionary, held: int, bought: int, xp: int, funds
 	if xp < int(price["XP"]):
 		return say.say("shop.xp_short", {"count": int(price["XP"]) - xp})
 	if funds < int(price["Funds"]):
+		# Priced above the Funds limit: no amount of saving reaches it until the limit is raised.
+		if funds_limit > 0 and int(price["Funds"]) > funds_limit and petition != "":
+			return say.say("shop.funds_over_limit", {"price": Phrase.with_separators(int(price["Funds"])), "limit": Phrase.with_separators(funds_limit), "petition": petition})
 		return say.say("shop.funds_short", {"count": int(price["Funds"]) - funds})
 	return ""
 

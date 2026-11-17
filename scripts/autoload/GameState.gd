@@ -5747,7 +5747,15 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 func draft_refusal(ids: Array, extra_visit: bool = false) -> String:
 	return DraftBill.refusal(ids, {"enacted": enacted_components, "xp": xp, "funds": int(meta.get("Funds", 0)),
 		"time_units": time_units, "last_draft_at": last_draft_at, "in_level": is_in_level(),
-		"extra_visit": extra_visit})
+		"extra_visit": extra_visit, "funds_limit": funds_limit(), "petition": funds_cap_item_name()})
+
+
+## The Marketplace item that raises the Funds limit (the one with a Funds Cap Increase), by name.
+func funds_cap_item_name() -> String:
+	for item: Dictionary in DataDB.shop:
+		if item.get("funds_cap_increase") != null:
+			return str(item.get("name", ""))
+	return ""
 
 
 ## Drafts a bill from `ids`: pays the cost, files it as a runtime patron row

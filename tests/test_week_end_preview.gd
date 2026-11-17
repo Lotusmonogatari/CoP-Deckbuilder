@@ -73,3 +73,27 @@ func test_the_dues_holiday_shows_nothing_owed() -> void:
 	var dues := GameState.week_end_preview()["dues"] as Dictionary
 	assert_eq(int(dues["week_dues"]), 0)
 	assert_eq(int(dues["base"]) + int(dues["share"]), 0)
+
+
+# --- item 2 and 3: costs above the Funds limit say why and what raises it ---------------------
+
+func test_a_draft_cost_above_the_funds_limit_names_the_petition() -> void:
+	var state := {"enacted": [], "xp": 500, "funds": 100000, "time_units": 0, "last_draft_at": -1, "in_level": false,
+		"extra_visit": false, "funds_limit": 100000, "petition": GameState.funds_cap_item_name()}
+	var why := DraftBill.refusal(["CB031", "CB032"], state)
+	assert_string_contains(why, GameState.funds_cap_item_name())
+	assert_string_contains(why, "100,000")
+	state["funds_limit"] = 1000000
+	assert_false(DraftBill.refusal(["CB031", "CB032"], state).contains(GameState.funds_cap_item_name()), "with room under the limit it is the ordinary short-Funds message")
+
+
+func test_an_item_priced_above_the_funds_limit_names_the_petition() -> void:
+	var item := {"item_id": "X1", "cost_yen": 200000, "cost_xp": 0}
+	var why := Items.buy_refusal(item, 0, 0, 500, 100000, Text.phrase(), 100000, "Funds Cap Increase Petition")
+	assert_string_contains(why, "Funds Cap Increase Petition")
+	var plain := Items.buy_refusal(item, 0, 0, 500, 100000, Text.phrase(), 1000000, "Funds Cap Increase Petition")
+	assert_false(plain.contains("Petition"), "an item the limit would allow is just short of Funds")
+
+
+func test_the_funds_cap_item_is_found_by_its_data() -> void:
+	assert_ne(GameState.funds_cap_item_name(), "")

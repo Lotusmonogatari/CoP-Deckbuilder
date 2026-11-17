@@ -95,6 +95,12 @@ static func refusal(ids: Array, state: Dictionary) -> String:
 		xp_cost += extra_visit_xp_cost()
 	var funds_cost := Levers.whole("draft_bill_funds_cost")
 	if int(state.get("xp", 0)) < xp_cost or int(state.get("funds", 0)) < funds_cost:
+		# A cost above the Funds limit can never be met until the limit is raised: say so, and
+		# what raises it (panel P4, 2026-11-17; Information Standard 2).
+		var limit := int(state.get("funds_limit", 0))
+		if limit > 0 and funds_cost > limit and int(state.get("xp", 0)) >= xp_cost:
+			return Text.say("draft.cost_over_limit", {"funds": Phrase.with_separators(funds_cost),
+				"limit": Phrase.with_separators(limit), "petition": str(state.get("petition", ""))})
 		return Text.say("draft.cost", {"xp": xp_cost, "funds": Phrase.with_separators(funds_cost)})
 	if not PatronLevel.carryable(bill_for(ids)):
 		return Text.say("draft.not_winnable")

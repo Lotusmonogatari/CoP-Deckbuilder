@@ -8195,5 +8195,19 @@
     "english": "Over the week, standing with organizations you did not move settles back toward where it started.",
     "placeholders": null,
     "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "draft.cost_over_limit",
+    "where": "Draft a Bill, the cost is above the Funds limit",
+    "english": "Drafting costs {funds}円, more than your Funds limit of {limit}円, so you cannot afford it yet. Buy the {petition} in the Marketplace to raise the limit.",
+    "placeholders": "funds, limit, petition",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "shop.funds_over_limit",
+    "where": "Marketplace, an item priced above the Funds limit",
+    "english": "Costs {price}円, more than your Funds limit of {limit}円. Buy the {petition} to raise the limit.",
+    "placeholders": "price, limit, petition",
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
   }
 ]
