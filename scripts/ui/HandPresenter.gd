@@ -137,6 +137,36 @@ func _fit_overlap() -> void:
 		if needed > available:
 			gap = int(floor((available - float(count) * CardView.WIDTH) / float(count - 1)))
 	_row.add_theme_constant_override("separation", gap)
+	_fan(count)
+
+
+## Living Office draws the hand as a fan (P9, 2026-11-17): each card tilts a little about its bottom
+## centre, the outer cards most. The look only: positions, sizes and every tap are the same. Other
+## styles keep the cards upright (and this resets any tilt left by a switch).
+func _fan(_count: int) -> void:
+	if not _row.sort_children.is_connected(_apply_tilts):
+		# A container sets its children's rotation back to zero every time it sorts them, so the tilt
+		# is applied again after each sort.
+		_row.sort_children.connect(_apply_tilts)
+	_apply_tilts()
+
+
+func _apply_tilts() -> void:
+	var count := _row.get_child_count()
+	var fanned := UiStyle.current() == UiStyles.LIVING_OFFICE and count >= 2
+	if _scroll != null:
+		# A tilted corner may reach past the scroll box: let it show rather than be clipped.
+		_scroll.clip_contents = not fanned
+	var step := minf(2.5, 8.0 / float(maxi(count - 1, 1)))
+	for index in count:
+		var view := _row.get_child(index) as Control
+		if view == null:
+			continue
+		if not fanned:
+			view.rotation_degrees = 0.0
+			continue
+		view.pivot_offset = Vector2(view.size.x * 0.5, view.size.y)
+		view.rotation_degrees = (float(index) - float(count - 1) * 0.5) * step
 
 
 ## Marks the one selected card (or none, with "").
