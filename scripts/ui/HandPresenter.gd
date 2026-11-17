@@ -25,6 +25,9 @@ signal card_flung(card_id: String)
 signal card_lifted(card_id: String)
 signal card_dropped(card_id: String)
 
+## The gap between cards when they all fit side by side (the scene's own 16).
+const HAND_GAP := 16
+
 var _row: HBoxContainer
 var _scroll: ScrollContainer
 
@@ -113,6 +116,27 @@ func show_state(engine: BattleEngine) -> void:
 	for index in ordered.size():
 		if ordered[index].get_index() != index:
 			_row.move_child(ordered[index], index)
+	_fit_overlap()
+
+
+## Every card in the hand is visible, whatever the hand size (P9, 2026-11-17; was a sideways
+## scroll). When the cards would not fit side by side they overlap, each one showing at least
+## its left strip (cost and name), the later ones lying over the earlier. The look is the real
+## CardView at its usual size; only the gap between cards changes. A card in view of this row
+## is one tap from zoom, and the selected card rises over its neighbours (select_only).
+func _fit_overlap() -> void:
+	if _scroll == null:
+		return
+	if not _scroll.resized.is_connected(_fit_overlap):
+		_scroll.resized.connect(_fit_overlap)
+	var count := _row.get_child_count()
+	var gap := HAND_GAP
+	var available := _scroll.size.x
+	if count >= 2 and available > 0.0:
+		var needed := float(count) * CardView.WIDTH + float(count - 1) * HAND_GAP
+		if needed > available:
+			gap = int(floor((available - float(count) * CardView.WIDTH) / float(count - 1)))
+	_row.add_theme_constant_override("separation", gap)
 
 
 ## Marks the one selected card (or none, with "").
@@ -120,6 +144,8 @@ func select_only(card_id: String) -> void:
 	for id: String in _views:
 		for view: CardView in _views[id]:
 			view.selected = (id == card_id and not card_id.is_empty())
+			# A raised card lies over its overlapping neighbours.
+			view.z_index = 2 if view.selected else 0
 
 
 ## Marks the cards chosen to be discarded for `played_id`, and dims that card
