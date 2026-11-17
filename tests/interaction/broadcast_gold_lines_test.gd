@@ -10,6 +10,7 @@ const BATTLE := "res://scenes/battle/BattleScreen.tscn"
 const GOLD := Color(0.95, 0.82, 0.38)
 
 var _failures: PackedStringArray = []
+var _vp: SubViewport
 
 
 func _ready() -> void:
@@ -37,10 +38,16 @@ func _run() -> void:
 	UiStyle.forget()
 	Layout.apply_ui_style()
 	GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(DataDB.get_level("LV04"))))
-	get_tree().change_scene_to_file(BATTLE)
+	# Drawn in a viewport of the full design size, so pixels are base pixels whatever the window is.
+	_vp = SubViewport.new()
+	_vp.size = Vector2i(1080, 2340)
+	_vp.disable_3d = true
+	_vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	add_child(_vp)
+	var screen: Control = (load(BATTLE) as PackedScene).instantiate()
+	_vp.add_child(screen)
 	await get_tree().process_frame
 	await get_tree().create_timer(1.2).timeout
-	var screen := get_tree().current_scene
 	var bar := screen.find_child("SupportBar", true, false) as SupportBar
 	if bar == null:
 		_failures.append("no support bar")
@@ -65,7 +72,7 @@ func _check_bar(bar: SupportBar) -> void:
 	if bar._living:
 		_failures.append("the support bar drew seats in Broadcast")
 		return
-	var image := get_viewport().get_texture().get_image()
+	var image := _vp.get_texture().get_image()
 	var rect := bar.get_global_rect()
 	var top := rect.position.y + 44.0   # SupportBar draws its bar 44 px under its caption
 	var bottom := top + SupportBar.HEIGHT

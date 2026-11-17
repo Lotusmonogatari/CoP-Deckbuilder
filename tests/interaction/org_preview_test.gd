@@ -82,7 +82,7 @@ func _check() -> void:
 
 func _click(control: Control) -> void:
 	await get_tree().process_frame
-	var where := control.get_global_rect().get_center()
+	var where := HandPoint.center(control)
 	var in_window: Vector2 = get_viewport().get_screen_transform() * where
 	for pressed in [true, false]:
 		var event := InputEventMouseButton.new()

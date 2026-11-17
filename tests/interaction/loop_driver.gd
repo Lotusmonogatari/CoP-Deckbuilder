@@ -294,7 +294,7 @@ func _click(control: Control) -> void:
 	# Injected clicks are read as window coordinates while control rectangles
 	# are in viewport coordinates, and the two differ: the game is drawn at
 	# 1080 wide inside a 440 wide window.
-	var where: Vector2 = get_viewport().get_screen_transform() * rect.get_center()
+	var where: Vector2 = get_viewport().get_screen_transform() * HandPoint.center(control)
 
 	for pressed in [true, false]:
 		var event := InputEventMouseButton.new()

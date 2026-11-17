@@ -138,7 +138,7 @@ func _check_card_double_drag() -> void:
 	var cost_before := {}
 	for card_id: String in hand_before:
 		cost_before[card_id] = engine.card_cost(DataDB.get_card(card_id))
-	var start := card.get_global_rect().get_center()
+	var start := HandPoint.center(card)
 	var lift := start + Vector2(0, -(CardView.PLAY_LIFT + 120))
 
 	# Two full drag-up gestures, back to back, no settle wait between the
@@ -427,7 +427,7 @@ func _click(control: Control) -> void:
 	if rect.size.x <= 0.0 or rect.size.y <= 0.0:
 		_failures.append("%s has no size, so nothing could click it" % control.name)
 		return
-	var where: Vector2 = get_viewport().get_screen_transform() * rect.get_center()
+	var where: Vector2 = get_viewport().get_screen_transform() * HandPoint.center(control)
 	for pressed in [true, false]:
 		var event := InputEventMouseButton.new()
 		event.button_index = MOUSE_BUTTON_LEFT
@@ -451,7 +451,7 @@ func _click_fast(control: Control) -> void:
 	if rect.size.x <= 0.0 or rect.size.y <= 0.0:
 		_failures.append("%s has no size, so nothing could click it" % control.name)
 		return
-	var where: Vector2 = get_viewport().get_screen_transform() * rect.get_center()
+	var where: Vector2 = get_viewport().get_screen_transform() * HandPoint.center(control)
 	for pressed in [true, false]:
 		var event := InputEventMouseButton.new()
 		event.button_index = MOUSE_BUTTON_LEFT

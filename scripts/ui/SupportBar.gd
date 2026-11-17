@@ -58,9 +58,15 @@ const HEIGHT := 56.0
 ## sits in the middle of it and the readout under it.
 const LIVING_HEIGHT := 230.0
 const LIVING_READOUT_TOP := 244.0
+## On a short screen (the 9:16 shape) the seats are drawn smaller, so the hand and End Turn keep
+## their room (the text sweep, P9).
+const SHORT_SCREEN := 2200.0
+const LIVING_HEIGHT_SHORT := 140.0
+const LIVING_READOUT_TOP_SHORT := 150.0
 ## Who holds the other share, in colour: the opponent's party colour where the screen knows it.
 var opponent_colour := Color(0.78, 0.42, 0.40)
 var _living := false
+var _living_height := LIVING_HEIGHT
 
 ## The gold border along the top and bottom, thin beside the cue band's 8.
 const BORDER := 4.0
@@ -128,16 +134,20 @@ func _set_two_sided(value: bool) -> void:
 
 func _ready() -> void:
 	_living = not Engine.is_editor_hint() and UiStyle.current() == UiStyles.LIVING_OFFICE
-	custom_minimum_size.y = (LIVING_READOUT_TOP + 48.0) if _living else HEIGHT + 84.0
+	var short_screen := not Engine.is_editor_hint() and get_viewport() != null \
+		and get_viewport().get_visible_rect().size.y < SHORT_SCREEN
+	_living_height = LIVING_HEIGHT_SHORT if short_screen else LIVING_HEIGHT
+	var readout_top := LIVING_READOUT_TOP_SHORT if short_screen else LIVING_READOUT_TOP
+	custom_minimum_size.y = (readout_top + 48.0) if _living else HEIGHT + 84.0
 	if _living:
 		_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		_caption.set_anchors_preset(Control.PRESET_TOP_WIDE)
-		_caption.offset_top = LIVING_HEIGHT - 64.0
-		_caption.offset_bottom = LIVING_HEIGHT - 8.0
+		_caption.offset_top = _living_height - 64.0
+		_caption.offset_bottom = _living_height - 8.0
 		_readout.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		_readout.set_anchors_preset(Control.PRESET_TOP_WIDE)
-		_readout.offset_top = LIVING_READOUT_TOP
-		_readout.offset_bottom = LIVING_READOUT_TOP + 44.0
+		_readout.offset_top = readout_top
+		_readout.offset_bottom = readout_top + 44.0
 	_refresh()
 
 
@@ -237,7 +247,7 @@ func _draw() -> void:
 
 ## Living Office: seats for a room of people, a continuous arc for anything else.
 func _draw_living(width: float) -> void:
-	var rect := Rect2(0, 0, width, LIVING_HEIGHT)
+	var rect := Rect2(0, 0, width, _living_height)
 	var colours := {
 		"player": UiStyle.colour("seat_player", PLAYER_COLOR),
 		"undecided": UiStyle.colour("seat_undecided", UNDECIDED_COLOR),

@@ -21,6 +21,8 @@ const DISPLAY_TYPES := ["TitleLabel", "HeaderLabel", "CueBanner", "CueSpeaker"]
 const BODY_TYPES := ["Label", "Button", "SmallLabel", "JapaneseAccent", "GaffeWarning"]
 const BUTTON_STATES := ["normal", "hover", "pressed", "disabled", "hover_pressed"]
 const JP_ACCENT_ALPHA := 0.55
+## Antaka Brush Text's line height at size 34: the height every body face is trimmed to.
+const ANTAKA_LINE_AT_34 := 40.0
 
 
 ## The display and body font files each style names.
@@ -44,6 +46,13 @@ static func face(path: String) -> Font:
 	var variation := FontVariation.new()
 	variation.base_font = base
 	variation.fallbacks = [japanese]
+	# Zen Kaku, Shippori and Noto set their lines about a quarter taller than Antaka (50 px against
+	# 40 at size 34). Trimmed to Antaka's line height so no screen grows when a style's body font is
+	# swapped in (the text sweep caught it at Large text on the 9:16 shape).
+	var excess := base.get_height(34) - ANTAKA_LINE_AT_34
+	if excess > 0.0:
+		variation.spacing_top = -int(floor(excess / 2.0))
+		variation.spacing_bottom = -int(ceil(excess / 2.0))
 	return variation
 
 
