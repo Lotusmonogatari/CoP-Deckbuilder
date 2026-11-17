@@ -50,7 +50,7 @@ Other tests added: `test_ui_styles`, `test_seats_meter`, `hand_visible_test` (ha
 
 ## 3. `tools/verify.sh` and commits
 
-The last complete run before the final changes: the text sweep failed (two off-screen buttons at 1080x1920, Large text), because the new body fonts set lines 25% taller than Antaka and the seats added height. Both were fixed (line height trimmed to Antaka's; seats shrink on short screens) and the sweep then reported 0 letter-stacked or off-screen rows at all three sizes. The final full run is recorded at the end of this report.
+The last complete run before the final changes: the text sweep failed (two off-screen buttons at 1080x1920, Large text), because the new body fonts set lines 25% taller than Antaka and the seats added height. Both were fixed (line height trimmed to Antaka's; seats shrink on short screens) and the sweep then reported 0 letter-stacked or off-screen rows at all three sizes. **Final full run (after those fixes, on commit 1f9cdb5 plus this report): "All checks passed."** (export, boot, compile, unit tests, every real-click test including the four new ones, and the text sweep at three sizes.)
 
 | Commit | Content |
 |---|---|
