@@ -20,8 +20,6 @@ const SEAT_RADIUS_OUTER := 17.0
 const SEAT_RADIUS_INNER := 14.0
 const ARC_WIDTH := 34.0
 const OUTLINE := Color(0.0, 0.0, 0.0, 0.35)
-## A thin light ring round every seat, so a dark colour (the default crimson) still reads against the room.
-const SEAT_RING := Color(1.0, 0.97, 0.92, 0.9)
 
 
 ## Seat counts for the player, undecided and opponent, always adding up to `seats`.
@@ -72,8 +70,10 @@ static func draw_seats(canvas: Control, rect: Rect2, split: Dictionary, seats: i
 		var r := radius if outer else inner_radius
 		var pos := centre + Vector2(cos(float(seat["angle"])), -sin(float(seat["angle"]))) * r
 		var seat_r := SEAT_RADIUS_OUTER if outer else SEAT_RADIUS_INNER
-		canvas.draw_circle(pos, seat_r + 3.0, SEAT_RING)
-		canvas.draw_circle(pos, seat_r + 1.0, OUTLINE)
+		# The ring round a seat follows the seat's colour: dark round a light seat, light round a dark one
+		# (IconBacking's rule), so every seat reads against what it touches.
+		var ring := IconBacking.backing_for(IconBacking.luminance(colour))
+		canvas.draw_circle(pos, seat_r + 4.0, Color(ring.r, ring.g, ring.b, 0.95))
 		canvas.draw_circle(pos, seat_r, colour)
 	# The threshold: a short line across both rows between the seat that reaches it and the next
 	# (0 to 1 of the way round). Review of P9, finding 4: the seats had no mark at the line to cross.

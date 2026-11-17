@@ -106,6 +106,22 @@ func _mark(changes: Array, grey_the_rest: bool) -> void:
 			mark.hide()
 
 
+## booster_id -> backing colour, worked out once from the icon's own pixels (IconBacking).
+static var _backings: Dictionary = {}
+
+
+static func _backing_for(booster_id: String) -> Color:
+	if not _backings.has(booster_id):
+		var colour := IconBacking.DARK
+		var texture := ArtLoader.icon(booster_id)
+		if texture != null:
+			var image := texture.get_image()
+			if image != null:
+				colour = IconBacking.backing_for(IconBacking.median_luminance(image))
+		_backings[booster_id] = colour
+	return _backings[booster_id]
+
+
 func _add_tile(booster_id: String, taste: String) -> void:
 	var root := VBoxContainer.new()
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -119,7 +135,7 @@ func _add_tile(booster_id: String, taste: String) -> void:
 	var backing := Panel.new()
 	backing.name = "IconBacking"
 	var backing_box := StyleBoxFlat.new()
-	backing_box.bg_color = Color(0.07, 0.06, 0.05, 0.78)
+	backing_box.bg_color = _backing_for(booster_id)
 	backing_box.set_corner_radius_all(int(_icon_size * 0.28))
 	backing.add_theme_stylebox_override("panel", backing_box)
 	backing.set_anchors_preset(Control.PRESET_FULL_RECT)

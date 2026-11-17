@@ -22,7 +22,7 @@ Branch `panel/p9-ui-styles`, from `main` (the card-face fix and the text sweep a
 | Living Office | Room-object pins with their object words, docket card, payments tray, folders with hour rings, divider tabs and a dashed Draft a Bill tab, speech-bubble cue, red intent pill, seats with a threshold mark (or an arc), fanned hand, amber End Turn |
 | Broadcast | Gold slanted docket bar, 2 x 2 tiles, lower-third and red-edged narration, schedule rows with a gold hour chip, gold tier chips, slanted plates, gold diagonal between the characters, gold slanted End Turn; the slant bar and cue band with their gold lines kept (D2) |
 | Woodblock | Indigo docket plank with a 行 seal, 3 x 2 plaque tiles, cartouches, print cards with a framed picture and a red hours seal, stamped tier headings, ledger lines with dotted leaders, hanging-scroll cue, 攻/守/得 intent seal, plaques on labels |
-| Still left out | Nothing from the mockups. Two details are decisions, not gaps: the opponent's seats use the opponent red rather than the party colour, and the object word on a pin is its own label (the parity test lets it through) |
+| Still left out | Five mockup elements are not built: Woodblock's wave (seigaiha) pattern and the characters inside a framed print; Broadcast's split character cut-ins (a gold diagonal is drawn, but not two separate framed shots); Living Office's page-a-day calendar and the protagonist's narration speech bubble on the Office. Earlier versions of this report said nothing was missing; that was wrong |
 | `tools/verify.sh` | See section 3 |
 | Touch targets | Still a known gap by your decision: the app's buttons are 90 to 100 px against 122. The new tiles and pins are 122 px |
 
@@ -106,14 +106,18 @@ Existing click tests changed because the hand no longer scrolls sideways: `loop_
 | 5675ac4 | Review fix 5: organization icons get a dark backing, so they read 3 to 1 in every style (measured from pixels) |
 | 11ec338 | Review response: changelog, architecture, report and 108 compressed shots; reason on a blocked level stays at full strength |
 
-## 4. Departures from the mockups
+## 4. Departures from the mockups, and what is not built
 
-| Different from the mockup | Why |
+| Different from the mockup, or not built | Why |
 |---|---|
+| Woodblock wave pattern and framed print | Not built: the seigaiha (wave) pattern band and the indigo-framed print around the characters are not drawn. Woodblock's Office and Battle have plaques, cartouches and seals but no pattern and no framed picture |
+| Broadcast split character shots | Not built: Broadcast has a thin gold diagonal between the characters, not two separate cut-in shots divided by it |
+| Living Office page-a-day calendar | Not built: the calendar is the gold-edged square, not a tear-off page |
+| Living Office narration bubble | Not built: the Office narration is a translucent plate under the character, not a speech bubble from the protagonist |
 | Pin object words | "Phone", "Bookshelf" and the rest are a small label above the destination, not one "Phone · Events" string, so the button text stays the destination alone. `ui_style_parity_test` lets only this label through |
 | Room-object positions | My first placement from the two pictures (`art.json` `office_hotspots`), not yet looked at by you. The Promises pin only shows when a promise is open, as before |
 | Intent | A floating pill in every style, filled with the opponent's party colour (the default crimson #8C1D2F when there is no party or it is the player's own; held apart from Keizaijiyuutou's red by `test_intent_pill`) |
-| Seat colour for the opponent | The opponent's seats use the existing opponent red, not the party colour (the bar does not know the party yet) |
+| Opponent colour | One colour per opponent: the seats, the bar segment and the intent pill all use the opponent's party colour (the default crimson when there is no party or it is the player's own). Seats have a thin light ring so a dark colour still reads |
 | Woodblock text on paper | Every label carries its own plaque, so a few lines on paper show a faint second plaque edge |
 | Styles shop previews | Real screenshots of the Office in each style, cropped and shrunk (`assets/ui_styles/`); retake them when a style's Office changes |
 | Fonts | Latin subsets only; Noto Sans JP covers Japanese. Body fonts are trimmed to Antaka's line height so no screen grows |
@@ -129,15 +133,15 @@ Text (`audit/tests/p9_contrast.gd`, throwaway): for each visible Label and Butto
 | Broadcast | min **8.6** | min **8.3** | min **8.7** | min **5.5** | min **5.5** |
 | Woodblock | min **4.6** | min **4.7** | min **15.1** | min **5.0** | min **6.0** |
 
-Icons (`audit/tests/p9_icons.gd`, throwaway): the median colour of the icon's centre against the median of a ring just outside it; target 3.
+Icons (`audit/tests/p9_icons.gd`, throwaway): the median colour of the icon's centre against the median of the ring or backing it touches; target 3. Organization icons now sit on a backing chosen per icon (dark behind a light icon, light behind a dark one: `IconBacking`; `test_icon_backing` holds every organization icon at 3 to 1 or better). Seats have a ring chosen the same way.
 
-| Style | Organization icons in the listening strip | Other icons |
+| Style | Organization icons in the listening strip (two runs) | Other icons |
 |---|---|---|
-| Living Office | min **4.3** | Lamp pins 10.3; seats: yours 6.4, undecided 3.4, opponent 4.1 |
-| Broadcast | min **3.7** (it was 2.7 before the dark backing) | none (the support bar is a bar, not icons) |
-| Woodblock | min **3.9** | none |
+| Living Office | min **3.0** and **3.7** | Lamp pins 10.3; seats against their ring: yours 6.1, undecided 4.9, opponent 7.0 |
+| Broadcast | min **3.4** and **4.5** | none (the support bar is a bar, not icons) |
+| Woodblock | min **3.2** and **3.6** | none |
 
-Nothing is below target in any style. The IconPlate (Details) icons from P4 are unchanged and `party_plate_test` still passes.
+Nothing is below target in any style. The numbers vary a little between runs because the hand, and so the listening organizations, is random. The IconPlate (Details) icons from P4 are unchanged and `party_plate_test` still passes.
 
 ## 6. Open issues for the panel
 
