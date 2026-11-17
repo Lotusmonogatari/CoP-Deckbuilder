@@ -902,6 +902,12 @@ func _build_listening() -> void:
 func _refresh_listening() -> void:
 	if _listening == null or engine == null:
 		return
+	# Nobody is "listening" once the stage is over. The strip sits under the
+	# result panel, which is only 85% opaque, so its organization icons used
+	# to show through behind "Taken care of" (P4 item 5, 2026-11-17).
+	if engine.state.is_over():
+		_listening.hide()
+		return
 	# Icons only on the stage screen: the red and green marks say what a card does
 	# to each, and what each organization likes is in the tap-an-icon pop-up on the
 	# Details screen (2026-11-02, Cameron).
