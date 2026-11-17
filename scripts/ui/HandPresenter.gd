@@ -71,6 +71,10 @@ func show_state(engine: BattleEngine) -> void:
 			view.chosen.connect(func(id: String) -> void: card_chosen.emit(id))
 			view.flung.connect(func(id: String) -> void: card_flung.emit(id))
 			view.lifted.connect(func(id: String) -> void: card_lifted.emit(id))
+			# A touched card rises over its neighbours so its whole face and name can be read
+			# (review of P9, finding 3: the overlapped cards showed only a few letters of their names).
+			view.button_down.connect(_raise.bind(view))
+			view.button_up.connect(_settle.bind(view))
 			view.dropped.connect(func(id: String) -> void: card_dropped.emit(id))
 
 		# On screen first, then filled in. A CardView builds its labels when
@@ -119,6 +123,20 @@ func show_state(engine: BattleEngine) -> void:
 	_fit_overlap()
 
 
+## How far a touched card rises, in base pixels.
+const RAISE := 44.0
+
+
+func _raise(view: Control) -> void:
+	view.z_index = 4
+	view.position.y = -RAISE
+
+
+func _settle(view: Control) -> void:
+	view.z_index = 2 if bool(view.get("selected")) else 0
+	view.position.y = 0.0
+
+
 ## Every card in the hand is visible, whatever the hand size (P9, 2026-11-17; was a sideways
 ## scroll). When the cards would not fit side by side they overlap, each one showing at least
 ## its left strip (cost and name), the later ones lying over the earlier. The look is the real
@@ -155,8 +173,9 @@ func _apply_tilts() -> void:
 	var count := _row.get_child_count()
 	var fanned := UiStyle.current() == UiStyles.LIVING_OFFICE and count >= 2
 	if _scroll != null:
-		# A tilted corner may reach past the scroll box: let it show rather than be clipped.
-		_scroll.clip_contents = not fanned
+		# A tilted or raised card may reach past the scroll box: let it show rather than be clipped
+		# (the hand no longer scrolls, so nothing needs clipping).
+		_scroll.clip_contents = false
 	var step := minf(2.5, 8.0 / float(maxi(count - 1, 1)))
 	for index in count:
 		var view := _row.get_child(index) as Control
