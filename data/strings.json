@@ -8377,5 +8377,40 @@
     "english": "{count} hours left this week",
     "placeholders": "count",
     "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "living.object_events",
+    "where": "Living Office, the room object the Events pin sits on",
+    "english": "Phone",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "living.object_results",
+    "where": "Living Office, the room object the Reputation and Results pin sits on",
+    "english": "Bookshelf",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "living.object_promises",
+    "where": "Living Office, the room object the Promises pin sits on",
+    "english": "Notice board",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "living.object_staff",
+    "where": "Living Office, the room object the Office Management pin sits on",
+    "english": "Front desk",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "living.object_marketplace",
+    "where": "Living Office, the room object the Marketplace pin sits on",
+    "english": "Errand list",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
   }
 ]

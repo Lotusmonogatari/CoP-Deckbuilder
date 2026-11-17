@@ -74,6 +74,16 @@ static func overlay(style: String) -> Theme:
 	return UiStyleTheme.build(style, idx())
 
 
+## A screenshot of the Office in `style`, for the Office styles tab (assets/ui_styles/), or null.
+static func preview(style: String) -> Texture2D:
+	var path := "res://assets/ui_styles/preview_%s.png" % style
+	if ResourceLoader.exists(path):
+		var texture: Variant = load(path)
+		if texture is Texture2D:
+			return texture
+	return null
+
+
 ## Forget what was applied (a new run, or a test that rebuilt the theme).
 static func forget() -> void:
 	_applied = ""

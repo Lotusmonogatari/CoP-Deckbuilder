@@ -92,12 +92,27 @@ func _run() -> void:
 				leaders += 1
 		if (style == UiStyles.WOODBLOCK) != (leaders > 0):
 			_failures.append("%s: %d dotted leaders in the payments breakdown" % [style, leaders])
+		# Living Office pins carry the room object's word; the other styles have none. Each style has a preview.
+		var words: Array = []
+		for node in office.find_children("ObjectWord", "Label", true, false):
+			words.append((node as Label).text)
+		if style == UiStyles.LIVING_OFFICE:
+			for want: String in ["Phone", "Bookshelf", "Front desk", "Errand list"]:
+				if not words.has(want):
+					_failures.append("living_office: no '%s' pin word (found %s)" % [want, str(words)])
+		elif not words.is_empty():
+			_failures.append("%s: has room-object words %s" % [style, str(words)])
+		if UiStyle.preview(style) == null:
+			_failures.append("%s: no screenshot preview for the styles shop" % style)
 		# The Levels list: Living Office draws each level's hours in a ring (red and tilted when the level
 		# cannot be started); the words are the same "N hours" line as in every style.
 		GameState.calendar["hours"] = 37
 		office.call("_show_levels")
 		await get_tree().create_timer(0.4).timeout
 		var rings: Array = office.find_children("HoursRing", "Control", true, false)
+		var draft := office.find_child("DraftBillButton", true, false)
+		if draft != null and (style == UiStyles.LIVING_OFFICE) != draft.has_node("DashedFrame"):
+			_failures.append("%s: the Draft a Bill dashed frame is %s" % [style, "missing" if style == UiStyles.LIVING_OFFICE else "present"])
 		if (style == UiStyles.LIVING_OFFICE) != (rings.size() > 0):
 			_failures.append("%s: %d hours rings in the Levels list" % [style, rings.size()])
 		if style == UiStyles.LIVING_OFFICE and rings.size() > 0:

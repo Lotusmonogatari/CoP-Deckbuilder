@@ -87,7 +87,9 @@ func _texts(screen_name: String, style: String) -> Array:
 			continue
 		# The news ticker rotates its lines at random and the hand is a shuffled draw: neither
 		# is a style's doing, so both are left out. (The hand's own look is hand_visible_test.)
-		if node.name == "TickerLabel" or _inside(node, scene, "CardView"):
+		# The small room-object word on a Living Office pin ("Phone", "Bookshelf") is part of that style's
+		# room metaphor, a label of its own beside the destination's text; it is the one allowed difference.
+		if node.name == "TickerLabel" or node.name == "ObjectWord" or _inside(node, scene, "CardView"):
 			continue
 		var text := str(node.get("text")).strip_edges()
 		# Elapsed-time wording changes between builds; it is the same line in every style.

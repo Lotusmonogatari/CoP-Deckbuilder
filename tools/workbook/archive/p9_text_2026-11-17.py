@@ -33,6 +33,13 @@ GROUPS = {
  "docket": [
   ("office.docket_hours", "Office, under the Choose a level button, and at the top of the Levels list: hours left this week", "{count} hours left this week", "count"),
  ],
+ "objects": [
+  ("living.object_events", "Living Office, the room object the Events pin sits on", "Phone", ""),
+  ("living.object_results", "Living Office, the room object the Reputation and Results pin sits on", "Bookshelf", ""),
+  ("living.object_promises", "Living Office, the room object the Promises pin sits on", "Notice board", ""),
+  ("living.object_staff", "Living Office, the room object the Office Management pin sits on", "Front desk", ""),
+  ("living.object_marketplace", "Living Office, the room object the Marketplace pin sits on", "Errand list", ""),
+ ],
  "styles": [
   ("shop.tab_styles", "Marketplace, third tab: the Office styles", "Office styles", ""),
   ("shop.styles_blurb", "Marketplace, Office styles tab, intro", "How your office and your debates look. Living Office is included.", ""),

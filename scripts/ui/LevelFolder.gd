@@ -63,11 +63,16 @@ static func style_draft_button(button: Button) -> void:
 			ink = UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13))
 		_:
 			# A paper tab with an amber edge, in dark ink (amber text would not read on the light panel).
+			# The mockup's dashed tab: a paper tab with a dashed amber frame drawn over it (a stylebox
+			# cannot dash). The frame is a mark, so it carries no words and takes no touches.
 			box.bg_color = UiStyle.colour("paper_alt", Color(0.95, 0.89, 0.76))
-			box.border_color = UiStyle.colour("accent", Color(1.0, 0.84, 0.54))
-			box.set_border_width_all(4)
 			box.set_corner_radius_all(18)
 			ink = UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07))
+			if not button.has_node("DashedFrame"):
+				var frame := StyleMarks.make(StyleMarks.Kind.DASHED_FRAME, UiStyle.colour("warning", Color(0.7, 0.15, 0.12)).lerp(UiStyle.colour("accent", Color(1.0, 0.84, 0.54)), 0.35), Vector2.ZERO)
+				frame.name = "DashedFrame"
+				frame.set_anchors_preset(Control.PRESET_FULL_RECT)
+				button.add_child(frame)
 	for state: String in ["normal", "hover", "pressed", "focus"]:
 		button.add_theme_stylebox_override(state, box)
 	for colour: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:

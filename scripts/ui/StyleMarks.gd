@@ -5,7 +5,7 @@ extends Control
 ## same-information rule) and need no art. Kinds: FOLDER, CHEVRON, SEAL (a vermilion square with a
 ## kanji), DIAGONAL (a thin gold slanted line across its rect).
 
-enum Kind { FOLDER, CHEVRON, SEAL, DIAGONAL, LEADER }
+enum Kind { FOLDER, CHEVRON, SEAL, DIAGONAL, LEADER, DASHED_FRAME }
 
 var kind := Kind.FOLDER
 var colour := Color(1, 1, 1)
@@ -64,6 +64,24 @@ func _draw() -> void:
 			while x < r.size.x - 4.0:
 				draw_circle(Vector2(x, r.size.y - 9.0), 2.0, colour)
 				x += 12.0
+		Kind.DASHED_FRAME:
+			# A dashed rounded frame: dashes along the four sides, a small arc at each corner.
+			var rad := minf(18.0, minf(r.size.x, r.size.y) * 0.5)
+			var inset := r.grow(-2.0)
+			var a := inset.position + Vector2(rad, 0)
+			var b := Vector2(inset.end.x - rad, inset.position.y)
+			var c := Vector2(inset.end.x, inset.position.y + rad)
+			var d := Vector2(inset.end.x, inset.end.y - rad)
+			var e := Vector2(inset.end.x - rad, inset.end.y)
+			var f := Vector2(inset.position.x + rad, inset.end.y)
+			var g := Vector2(inset.position.x, inset.end.y - rad)
+			var h := Vector2(inset.position.x, inset.position.y + rad)
+			for edge: Array in [[a, b], [c, d], [e, f], [g, h]]:
+				draw_dashed_line(edge[0], edge[1], colour, 4.0, 16.0, true)
+			draw_arc(Vector2(inset.end.x - rad, inset.position.y + rad), rad, -PI * 0.5, 0.0, 8, colour, 4.0, true)
+			draw_arc(Vector2(inset.end.x - rad, inset.end.y - rad), rad, 0.0, PI * 0.5, 8, colour, 4.0, true)
+			draw_arc(Vector2(inset.position.x + rad, inset.end.y - rad), rad, PI * 0.5, PI, 8, colour, 4.0, true)
+			draw_arc(Vector2(inset.position.x + rad, inset.position.y + rad), rad, PI, PI * 1.5, 8, colour, 4.0, true)
 		Kind.DIAGONAL:
 			var slant := SlantBar.SLANT * r.size.y
 			draw_line(Vector2(r.size.x * 0.5 + slant * 0.5, 0), Vector2(r.size.x * 0.5 - slant * 0.5, r.size.y), colour, 5.0, true)

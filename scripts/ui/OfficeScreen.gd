@@ -2606,8 +2606,18 @@ func _styles_rows() -> Array[Control]:
 	return rows
 
 
-## A strip of the style's own colours: its ground, plate, accent and ink.
+## The style's preview: a screenshot of the Office in that style, or, when none is drawn, a strip of
+## its own colours (ground, plate, accent, ink).
 func _style_swatch(style: String) -> Control:
+	var shot := UiStyle.preview(style)
+	if shot != null:
+		var picture := TextureRect.new()
+		picture.name = "StylePreview_" + style
+		picture.texture = shot
+		picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		picture.custom_minimum_size = Vector2(0, 560)
+		return picture
 	var strip := HBoxContainer.new()
 	strip.name = "StyleSwatch_" + style
 	strip.add_theme_constant_override("separation", 0)

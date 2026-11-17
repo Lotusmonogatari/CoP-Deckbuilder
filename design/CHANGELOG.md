@@ -1233,4 +1233,9 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
   - **Smaller:** a mark at the threshold on the seats; "1 of 2" and "Turn 1 of 10" use no-break spaces so the number is not left alone on a line; organization icons get a dark backing (Broadcast's measured 2.7 to 1, now 3.7 or more); a level that cannot be started dims only its picture, so the reason on its button stays at full strength.
   - **Evidence added:** week-end pop-up, a Levels list late in the week with levels that cannot start, a touched-card moment, and icon contrast per style measured from pixels.
 - **Hour rings (Cameron: "Build the hour rings").** In Living Office each level row has its hours in a ring at the right of the folder: amber when the level can be started, red and tilted when it cannot (the reason stays on the button). The ring holds the same "N hours" line every style shows, moved rather than rewritten, so the same-information rule holds. Test: `style_elements_test`.
+- **The last gaps closed (Cameron: "Finish the remaining gaps, use a screenshot for the preview").**
+  - **Styles shop previews are real screenshots** of the Office in each style (`assets/ui_styles/preview_<style>.png`, see its README to retake them), replacing the colour swatches.
+  - **Room-object words on the Living Office pins** ("Phone", "Bookshelf", "Notice board", "Front desk", "Errand list"): a small label of its own above each destination, so the button still reads only the destination. The parity test lets this one label through, as the room metaphor's decoration.
+  - **Draft a Bill is a dashed tab** in Living Office: a dashed frame drawn over a paper tab (`StyleMarks.DASHED_FRAME`).
+  - Nothing from the mockups is left out now.
 

@@ -64,7 +64,39 @@ static func install(office: Control, pins: Dictionary) -> Control:
 			button.owner = office
 			button.unique_name_in_owner = true
 		_place(button, float((place as Array)[0]), float((place as Array)[1]))
+		_add_object_word(button, key)
 	return layer
+
+
+## The room object a pin sits on ("Phone", "Bookshelf"...) as a small word above the destination, as
+## in the mockup ("Phone · Events"). It is its own label, not part of the button's text, so the button
+## still reads the destination alone and nothing else about the pin changes.
+static func _add_object_word(button: Button, key: String) -> void:
+	if button.has_node("ObjectWord"):
+		return
+	var label := Label.new()
+	label.name = "ObjectWord"
+	label.theme_type_variation = &"SmallLabel"
+	label.text = Text.say(_key_for(key))
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
+	label.add_theme_color_override("font_color", UiStyle.colour("accent", Color(1.0, 0.84, 0.54)))
+	label.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	label.offset_left = LAMP + 44.0
+	label.offset_top = 12.0
+	label.offset_right = -24.0
+	label.offset_bottom = 46.0
+	button.add_child(label)
+
+
+## The Text key for a pin's object word, one literal key each (the exporter checks them).
+static func _key_for(key: String) -> String:
+	match key:
+		"events": return "living.object_events"
+		"results": return "living.object_results"
+		"promises": return "living.object_promises"
+		"staff": return "living.object_staff"
+	return "living.object_marketplace"
 
 
 static func _place(button: Button, x: float, y: float) -> void:
@@ -91,7 +123,7 @@ static func _place(button: Button, x: float, y: float) -> void:
 	box.set_corner_radius_all(int(PIN_SIZE.y * 0.5))
 	box.content_margin_left = LAMP + 44.0
 	box.content_margin_right = 24.0
-	box.content_margin_top = 8.0
+	box.content_margin_top = 36.0
 	box.content_margin_bottom = 8.0
 	for state: String in ["normal", "hover", "pressed", "focus"]:
 		button.add_theme_stylebox_override(state, box)
