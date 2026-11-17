@@ -97,3 +97,20 @@ func test_an_item_priced_above_the_funds_limit_names_the_petition() -> void:
 
 func test_the_funds_cap_item_is_found_by_its_data() -> void:
 	assert_ne(GameState.funds_cap_item_name(), "")
+
+
+# --- item 3: the Marketplace header explains the limit when Funds are at it ---------------------
+
+func test_the_marketplace_header_explains_the_limit_at_the_limit() -> void:
+	GameState.awaiting_new_game = false
+	var office: Control = (load("res://scenes/office_hours/OfficeScreen.tscn") as PackedScene).instantiate()
+	add_child_autofree(office)
+	await get_tree().process_frame
+	GameState.meta["Funds"] = GameState.funds_limit() - 1000
+	office.call("_show_marketplace")
+	await get_tree().process_frame
+	assert_null(office.find_child("MarketLimitNote", true, false), "no note below the limit")
+	GameState.meta["Funds"] = GameState.funds_limit()
+	office.call("_show_marketplace")
+	await get_tree().process_frame
+	assert_not_null(office.find_child("MarketLimitNote", true, false), "the note shows at the limit")

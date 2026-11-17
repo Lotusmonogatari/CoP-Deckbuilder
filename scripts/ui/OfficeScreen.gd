@@ -2315,6 +2315,11 @@ func _show_marketplace() -> void:
 		tabs.add_child(button)
 	rows.append(tabs)
 	rows.append(funds_line)
+	# At the Funds limit (or above it), say what the limit does (panel P4, item 3; Cameron's wording).
+	if int(GameState.meta.get("Funds", 0)) >= GameState.funds_limit():
+		var limit_note := UiKit.line(Text.say("shop.funds_limit_note"), "SmallLabel")
+		limit_note.name = "MarketLimitNote"
+		rows.append(limit_note)
 	rows.append(UiKit.line(Text.say("shop.supplies_blurb" if _market_tab == Items.PERSONAL else "shop.office_blurb")))
 	rows.append_array(_inventory_panel.inventory_rows(_market_tab))
 	rows.append(UiKit.heading(Text.say("office.marketplace")))

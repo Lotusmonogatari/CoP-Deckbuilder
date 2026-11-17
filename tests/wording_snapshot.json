@@ -1011,6 +1011,7 @@
   "shop.funds_cap_increased": "Funds cap raised by {count}円.",
   "shop.funds_cap_maxed": "The Funds cap is already at its maximum.",
   "shop.funds_limit": "Funds {yen_funds}円 / Limit {yen_limit}円",
+  "shop.funds_limit_note": "Earnings exceed the approved limit. Request a Funds cap increase. Excess funds go to the parliament pension program.",
   "shop.funds_over_limit": "Costs {price}円, more than your Funds limit of {limit}円. Buy the {petition} to raise the limit.",
   "shop.funds_short": "{count}円 short.",
   "shop.in_twice": "{card} is in twice.",

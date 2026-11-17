@@ -8209,5 +8209,12 @@
     "english": "Costs {price}円, more than your Funds limit of {limit}円. Buy the {petition} to raise the limit.",
     "placeholders": "price, limit, petition",
     "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "shop.funds_limit_note",
+    "where": "Marketplace, header note at the Funds limit (Cameron's wording)",
+    "english": "Earnings exceed the approved limit. Request a Funds cap increase. Excess funds go to the parliament pension program.",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
   }
 ]
