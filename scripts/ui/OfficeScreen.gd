@@ -3627,7 +3627,16 @@ func _on_request_decline(patron_bill_id: String) -> void:
 		_report.text = declined_line
 
 
+## One level in the list: its name, its hours, and its button; Living Office draws it as a folder
+## (P9, 2026-11-17). The rules and the refusal text are the same in every style.
 func _level_row(level: Dictionary) -> Control:
+	var row := _level_row_plain(level)
+	if UiStyle.current() == UiStyles.LIVING_OFFICE:
+		return LevelFolder.wrap(row, level)
+	return row
+
+
+func _level_row_plain(level: Dictionary) -> Control:
 	var box := UiKit.tight_column()
 	box.name = "Level_" + str(level.get("level_id", ""))
 
@@ -3639,6 +3648,8 @@ func _level_row(level: Dictionary) -> Control:
 	# empty — the count was silently always 10. Simplest fix and the one
 	# asked for: just the name, which is what a player actually reads.
 	box.add_child(UiKit.line(str(level.get("description", ""))))
+	# How long it takes, so the list answers "can I fit it" before the button does (all styles).
+	box.add_child(UiKit.line(Text.say("office.level_hours_line", {"count": GameState.level_hours(level)}), "SmallLabel"))
 
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)

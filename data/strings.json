@@ -8363,5 +8363,12 @@
     "english": "{result} · costs {cost} of {energy} energy",
     "placeholders": "result, cost, energy",
     "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "office.level_hours_line",
+    "where": "Levels list, under each level's name: how long it takes",
+    "english": "{count} hours",
+    "placeholders": "count",
+    "notes": "2026-11-17 panel P9 (Claude's draft)"
   }
 ]

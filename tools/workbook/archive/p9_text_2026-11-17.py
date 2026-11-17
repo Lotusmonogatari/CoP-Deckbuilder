@@ -27,6 +27,9 @@ GROUPS = {
   ("zoom.note_heading", "Battle, card zoom, note under the card: heading", "If you play it now", ""),
   ("zoom.note_line", "Battle, card zoom, note under the card: what it does here and what it costs", "{result} · costs {cost} of {energy} energy", "result, cost, energy"),
  ],
+ "levels": [
+  ("office.level_hours_line", "Levels list, under each level's name: how long it takes", "{count} hours", "count"),
+ ],
  "styles": [
   ("shop.tab_styles", "Marketplace, third tab: the Office styles", "Office styles", ""),
   ("shop.styles_blurb", "Marketplace, Office styles tab, intro", "How your office and your debates look. Living Office is included.", ""),
