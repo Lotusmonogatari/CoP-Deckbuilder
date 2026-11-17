@@ -10,7 +10,7 @@ GODOT="${GODOT:-.tools/godot}"
 WORK="$(mktemp -d)"
 for t in small normal large; do
   (
-    SWEEP_TEXT=$t SWEEP_OUT="$WORK/$t.csv" SWEEP_SHOTS="$SHOTS" \
+    SWEEP_STYLE="${SWEEP_STYLE:-}" SWEEP_TEXT=$t SWEEP_OUT="$WORK/$t.csv" SWEEP_SHOTS="$SHOTS" \
     xvfb-run -a --server-args="-screen 0 1080x2340x24" "$GODOT" --path . tools/text_sweep.tscn > "$WORK/$t.log" 2>&1
     echo $? > "$WORK/$t.status"
   ) &

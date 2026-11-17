@@ -38,6 +38,7 @@ static func _schedule_row(row: Control, level: Dictionary) -> Control:
 	var chip := _chip(row, UiStyle.colour("gold", Color(0.89, 0.7, 0.25)), UiStyle.colour("ground", Color(0.04, 0.07, 0.12)), 0)
 	if chip != null:
 		line.add_child(chip)
+	_narrow(row)
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	line.add_child(row)
 	line.add_child(_picture_node(level, Vector2(170, 130), 0, Color.TRANSPARENT))
@@ -64,6 +65,7 @@ static func _print_card(row: Control, level: Dictionary) -> Control:
 	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	line.add_child(column)
 	var seal := _chip(row, UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13)), UiStyle.colour("paper", Color(0.97, 0.94, 0.88)), 1)
+	_narrow(row)
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	column.add_child(row)
 	if seal != null:
@@ -119,6 +121,13 @@ static func _picture_node(level: Dictionary, size: Vector2, frame: int, frame_co
 	framed.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	framed.add_child(picture)
 	return framed
+
+
+## The row's lines are built 760 px wide (UiKit.LINE_WIDTH); beside a picture and a chip they must be
+## allowed to be narrower, or the list scrolls sideways.
+static func _narrow(row: Control) -> void:
+	for label in row.find_children("*", "Label", true, false):
+		(label as Label).custom_minimum_size.x = 0.0
 
 
 static func _dim_if_disabled(wrapper: Control, row: Control) -> void:

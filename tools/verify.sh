@@ -124,14 +124,17 @@ fi
 # line, nothing partly off screen (tools/text_sweep.gd; overlap and small buttons are
 # reported in the CSV but do not fail). Runs after the click tests, in the full run only.
 if [ "$QUICK" -eq 0 ] && command -v xvfb-run >/dev/null 2>&1; then
-  step "Text sweep: every screen at every text size"
-  if tools/text_sweep.sh "$WORK/text_sweep.csv" > "$WORK/text_sweep.log" 2>&1; then
-    cat "$WORK/text_sweep.log"
-  else
-    cat "$WORK/text_sweep.log"
-    grep -E "letter_stacking|off_screen" "$WORK/text_sweep.csv" | head -20
-    fail "a screen has letter-stacked or off-screen text (see tools/text_sweep.sh)."
-  fi
+  # All three UI styles (P9): Living Office, then Broadcast and Woodblock.
+  for sweep_style in "" broadcast woodblock; do
+    step "Text sweep: every screen at every text size (${sweep_style:-living office})"
+    if SWEEP_STYLE="$sweep_style" tools/text_sweep.sh "$WORK/text_sweep_${sweep_style:-living}.csv" > "$WORK/text_sweep.log" 2>&1; then
+      cat "$WORK/text_sweep.log"
+    else
+      cat "$WORK/text_sweep.log"
+      grep -E "letter_stacking|off_screen" "$WORK/text_sweep_${sweep_style:-living}.csv" | head -20
+      fail "a screen has letter-stacked or off-screen text in ${sweep_style:-living office} (see tools/text_sweep.sh)."
+    fi
+  done
 fi
 
 echo

@@ -93,6 +93,14 @@ func _fresh_run(awaiting: bool = false) -> void:
 	GameState.staff_loyalty["SF04"] = 62
 	GameState.booster_standing["BO03"] = 50
 	GameState.inventory = {"SH04": 2, "SH37": 1, "SH38": 1}
+	# SWEEP_STYLE=broadcast|woodblock sweeps that UI style (P9, 2026-11-17); the default is Living Office.
+	var style := OS.get_environment("SWEEP_STYLE")
+	var package := UiStyles.package_for(style, DataDB.cosmetic_packages)
+	if not package.is_empty():
+		GameState.owned_cosmetic_packages.append(str(package["package_id"]))
+		GameState.equip_cosmetic(CosmeticPieces.UI_STYLE, str(package["package_id"]))
+	UiStyle.forget()
+	Layout.apply_ui_style()
 	GameState.promises.append({"id": "P1", "kind": Promises.PROMISE_ITEM, "item_id": "SH04", "for_org": "BO10",
 		"due_at": GameState.time_units + 96})
 	seed(4242)

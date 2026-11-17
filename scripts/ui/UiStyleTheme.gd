@@ -112,8 +112,8 @@ static func build(style: String, idx: Dictionary) -> Theme:
 		var base := UiStyles.plate_colour(idx, style)
 		paper_box.bg_color = Color(base.r, base.g, base.b, 0.94)
 		paper_box.set_corner_radius_all(4)
-		paper_box.content_margin_left = 12.0
-		paper_box.content_margin_right = 12.0
+		paper_box.content_margin_left = 5.0
+		paper_box.content_margin_right = 5.0
 		paper_box.content_margin_top = 3.0
 		paper_box.content_margin_bottom = 3.0
 		plaque = paper_box
