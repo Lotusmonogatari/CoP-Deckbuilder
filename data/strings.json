@@ -7736,10 +7736,10 @@
   },
   {
     "key": "assign.office_hint",
-    "where": "Staff Assignments, Office box explanation",
-    "english": "An item placed here changes the tasks of the next day or days. It is used up when you confirm the day.",
+    "where": "Staff Assignments, note under the Office box heading",
+    "english": "An item placed here changes the tasks of the next day or days, and is used up when you confirm the day. Items that act at once, such as the Printer, Shredder and Priority Inbox, are used from the Items row above and take effect the moment you use them.",
     "placeholders": null,
-    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
   },
   {
     "key": "assign.office_empty",
@@ -8214,6 +8214,13 @@
     "key": "shop.funds_limit_note",
     "where": "Marketplace, header note at the Funds limit (Cameron's wording)",
     "english": "Earnings exceed the approved limit. Request a Funds cap increase. Excess funds go to the parliament pension program.",
+    "placeholders": null,
+    "notes": "2026-11-17 panel P4 (Claude's draft)"
+  },
+  {
+    "key": "item.refused.staff_screen",
+    "where": "Item pop-up, a Staff Assignments item opened where it cannot be used",
+    "english": "Use this on the Staff Assignments screen.",
     "placeholders": null,
     "notes": "2026-11-17 panel P4 (Claude's draft)"
   }

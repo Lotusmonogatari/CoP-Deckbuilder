@@ -94,6 +94,12 @@ func test_none_left_is_refused_first() -> void:
 
 func test_an_item_marked_no_for_this_place_is_refused() -> void:
 	assert_eq(Items.use_refusal(_item({"use_in_stage": "No"}), Items.STAGE, 1), "item.refused.not_here")
+	# A Staff Assignments item (Shredder) says where it can be used instead.
+	var shredder := _item({"use_in_stage": "No", "use_in_office": "No", "staff_effect": "CLEAR_TASKS"})
+	assert_eq(Items.use_refusal(shredder, Items.OFFICE, 1), "item.refused.staff_screen")
+	assert_eq(Items.use_refusal(shredder, Items.STAGE, 1), "item.refused.staff_screen")
+	assert_true(Items.is_staff_item(shredder))
+	assert_false(Items.is_staff_item(_item({})))
 
 
 func test_an_item_with_no_grants_is_refused_rather_than_used_up() -> void:

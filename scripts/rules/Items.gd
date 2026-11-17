@@ -220,10 +220,25 @@ static func use_refusal(item: Dictionary, context: String, held: int,
 	if held <= 0:
 		return say.say("item.refused.none_left")
 	if not usable_in(item, context):
+		# An item for the Staff Assignments screen (Printer, Shredder, Priority
+		# Inbox, the person items) says where it CAN be used, instead of the
+		# bare "can't be used here" (P4 item 6, 2026-11-17).
+		if is_staff_item(item):
+			return say.say("item.refused.staff_screen")
 		return say.say("item.refused.not_here")
 	if not has_effect(item):
 		return say.say("item.refused.no_effect")
 	return ""
+
+
+## True for an item that is used on the Staff Assignments screen (it has a
+## staff effect or gives a staff member hours).
+static func is_staff_item(item: Dictionary) -> bool:
+	var effect: Variant = item.get("staff_effect")
+	if effect != null and not str(effect).strip_edges().is_empty():
+		return true
+	var hours: Variant = item.get("staff_hours")
+	return hours != null and str(hours).is_valid_int() and int(str(hours)) > 0
 
 
 ## The line in the item pop-up saying when its effect lands.

@@ -21,12 +21,14 @@ ROWS = [
     ("draft.cost_over_limit", "Draft a Bill, the cost is above the Funds limit", "Drafting costs {funds}円, more than your Funds limit of {limit}円, so you cannot afford it yet. Buy the {petition} in the Marketplace to raise the limit.", "funds, limit, petition"),
     ("shop.funds_over_limit", "Marketplace, an item priced above the Funds limit", "Costs {price}円, more than your Funds limit of {limit}円. Buy the {petition} to raise the limit.", "price, limit, petition"),
     ("shop.funds_limit_note", "Marketplace, header note at the Funds limit (Cameron's wording)", "Earnings exceed the approved limit. Request a Funds cap increase. Excess funds go to the parliament pension program.", ""),
+    ("assign.office_hint", "Staff Assignments, note under the Office box heading", "An item placed here changes the tasks of the next day or days, and is used up when you confirm the day. Items that act at once, such as the Printer, Shredder and Priority Inbox, are used from the Items row above and take effect the moment you use them.", ""),
+    ("item.refused.staff_screen", "Item pop-up, a Staff Assignments item opened where it cannot be used", "Use this on the Staff Assignments screen.", ""),
 ]
 
 
 # Which item of panel P4 each row belongs to (so each item's commit carries only its own rows).
 ITEM = {"office.week_cost": 1, "draft.cost_over_limit": 2, "shop.funds_over_limit": 2, "shop.funds_limit_note": 3,
-        "assign.office_note": 6, "inventory.staff_screen_only": 6}
+        "assign.office_hint": 6, "item.refused.staff_screen": 6}
 
 
 def item_of(key):
