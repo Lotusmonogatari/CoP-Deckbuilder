@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3]
+[gd_resource type="Theme" load_steps=16 format=3]
 
 [ext_resource type="FontFile" path="res://assets/fonts/ShipporiMinchoB1-Regular.woff2" id="1_jn1hd"]
 [ext_resource type="FontFile" path="res://assets/fonts/NotoSansJP[wght].ttf" id="2_cihb7"]
@@ -83,6 +83,21 @@ base_font = ExtResource("3_6801x")
 spacing_top = -2
 spacing_bottom = -2
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhqcv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ou3sj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5reig"]
+content_margin_left = 12.0
+content_margin_top = 3.0
+content_margin_right = 12.0
+content_margin_bottom = 3.0
+bg_color = Color(0.96862745, 0.9372549, 0.8784314, 0.94)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [resource]
 default_font = SubResource("FontVariation_h6h1f")
 Button/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
@@ -98,37 +113,46 @@ Button/styles/hover_pressed = SubResource("StyleBoxFlat_6boeg")
 Button/styles/normal = SubResource("StyleBoxFlat_4w7d8")
 Button/styles/pressed = SubResource("StyleBoxFlat_iupj0")
 CueBanner/base_type = &"Label"
-CueBanner/colors/font_outline_color = Color(0.972549, 0.94509804, 0.8901961, 1)
-CueBanner/constants/outline_size = 5
+CueBanner/colors/font_outline_color = Color(0, 0, 0, 0)
+CueBanner/constants/outline_size = 0
 CueBanner/fonts/font = SubResource("FontVariation_0qcdv")
+CueBanner/styles/normal = SubResource("StyleBoxEmpty_lhqcv")
 CueSpeaker/base_type = &"Label"
-CueSpeaker/colors/font_outline_color = Color(0.972549, 0.94509804, 0.8901961, 1)
-CueSpeaker/constants/outline_size = 5
+CueSpeaker/colors/font_color = Color(1, 0.97, 0.92, 1)
+CueSpeaker/colors/font_outline_color = Color(0, 0, 0, 0)
+CueSpeaker/constants/outline_size = 0
 CueSpeaker/fonts/font = SubResource("FontVariation_0qcdv")
-GaffeWarning/colors/font_outline_color = Color(0.972549, 0.94509804, 0.8901961, 1)
-GaffeWarning/constants/outline_size = 5
+CueSpeaker/styles/normal = SubResource("StyleBoxEmpty_ou3sj")
+GaffeWarning/colors/font_outline_color = Color(0, 0, 0, 0)
+GaffeWarning/constants/outline_size = 0
 GaffeWarning/fonts/font = SubResource("FontVariation_h6h1f")
+GaffeWarning/styles/normal = SubResource("StyleBoxFlat_5reig")
 HeaderLabel/base_type = &"Label"
 HeaderLabel/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
-HeaderLabel/colors/font_outline_color = Color(0.972549, 0.94509804, 0.8901961, 1)
-HeaderLabel/constants/outline_size = 5
+HeaderLabel/colors/font_outline_color = Color(0, 0, 0, 0)
+HeaderLabel/constants/outline_size = 0
 HeaderLabel/fonts/font = SubResource("FontVariation_0qcdv")
+HeaderLabel/styles/normal = SubResource("StyleBoxFlat_5reig")
 JapaneseAccent/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 0.55)
-JapaneseAccent/colors/font_outline_color = Color(0.972549, 0.94509804, 0.8901961, 1)
-JapaneseAccent/constants/outline_size = 5
+JapaneseAccent/colors/font_outline_color = Color(0, 0, 0, 0)
+JapaneseAccent/constants/outline_size = 0
 JapaneseAccent/fonts/font = SubResource("FontVariation_h6h1f")
+JapaneseAccent/styles/normal = SubResource("StyleBoxFlat_5reig")
 Label/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
-Label/colors/font_outline_color = Color(0.972549, 0.94509804, 0.8901961, 1)
-Label/constants/outline_size = 5
+Label/colors/font_outline_color = Color(0, 0, 0, 0)
+Label/constants/outline_size = 0
 Label/fonts/font = SubResource("FontVariation_h6h1f")
+Label/styles/normal = SubResource("StyleBoxFlat_5reig")
 RichTextLabel/colors/default_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
 RichTextLabel/fonts/normal_font = SubResource("FontVariation_h6h1f")
 SmallLabel/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
-SmallLabel/colors/font_outline_color = Color(0.972549, 0.94509804, 0.8901961, 1)
-SmallLabel/constants/outline_size = 5
+SmallLabel/colors/font_outline_color = Color(0, 0, 0, 0)
+SmallLabel/constants/outline_size = 0
 SmallLabel/fonts/font = SubResource("FontVariation_h6h1f")
+SmallLabel/styles/normal = SubResource("StyleBoxFlat_5reig")
 TitleLabel/base_type = &"Label"
 TitleLabel/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
-TitleLabel/colors/font_outline_color = Color(0.972549, 0.94509804, 0.8901961, 1)
-TitleLabel/constants/outline_size = 5
+TitleLabel/colors/font_outline_color = Color(0, 0, 0, 0)
+TitleLabel/constants/outline_size = 0
 TitleLabel/fonts/font = SubResource("FontVariation_0qcdv")
+TitleLabel/styles/normal = SubResource("StyleBoxFlat_5reig")

@@ -102,15 +102,31 @@ static func build(style: String, idx: Dictionary) -> Theme:
 			"font_focus_color", "font_hover_pressed_color"]:
 		theme.set_color(key, "Button", ink)
 	theme.set_color("font_disabled_color", "Button", Color(ink.r, ink.g, ink.b, 0.6))
-	# Woodblock's ink is dark, for paper. Where a label sits straight on a room picture (the battle,
-	# the visits) it gets a light paper halo, so dark ink reads on a dark picture too (measured from
-	# pixels: 1.2 to 1 without it). The other styles' ink is light and needs none; every style sets
-	# the same items so a switch leaves nothing behind.
-	var halo := style == UiStyles.WOODBLOCK
-	var paper := UiStyles.colour(idx, style, "paper", Color(0.97, 0.94, 0.88))
+	# Woodblock's ink is dark, for paper. Text that sits straight on a room picture (the battle, the
+	# visits) would be dark on dark, so in Woodblock every label carries its own light paper plaque
+	# (measured from pixels: 1.2 to 1 on the battle without one). The other styles' ink is light and
+	# their labels carry none; every style sets the same items so a switch leaves nothing behind.
+	var plaque: StyleBox = StyleBoxEmpty.new()
+	if style == UiStyles.WOODBLOCK:
+		var paper_box := StyleBoxFlat.new()
+		var base := UiStyles.plate_colour(idx, style)
+		paper_box.bg_color = Color(base.r, base.g, base.b, 0.94)
+		paper_box.set_corner_radius_all(4)
+		paper_box.content_margin_left = 12.0
+		paper_box.content_margin_right = 12.0
+		paper_box.content_margin_top = 3.0
+		paper_box.content_margin_bottom = 3.0
+		plaque = paper_box
+	for type_name: String in ["Label", "SmallLabel", "TitleLabel", "HeaderLabel", "JapaneseAccent", "GaffeWarning"]:
+		theme.set_stylebox("normal", type_name, plaque)
+	# The cue's own labels sit on a band or a coloured tag: no plaque of their own.
+	for type_name: String in ["CueBanner", "CueSpeaker"]:
+		theme.set_stylebox("normal", type_name, StyleBoxEmpty.new())
 	for type_name: String in ["Label", "SmallLabel", "TitleLabel", "HeaderLabel", "JapaneseAccent", "GaffeWarning", "CueBanner", "CueSpeaker"]:
-		theme.set_color("font_outline_color", type_name, paper)
-		theme.set_constant("outline_size", type_name, 5 if halo else 0)
+		theme.set_color("font_outline_color", type_name, Color(0, 0, 0, 0))
+		theme.set_constant("outline_size", type_name, 0)
+	# The speaker's tag is a coloured chip: its name is light in every style.
+	theme.set_color("font_color", "CueSpeaker", Color(1, 0.97, 0.92))
 	for state: String in BUTTON_STATES:
 		theme.set_stylebox(state, "Button", button_box(style, state, idx))
 	return theme

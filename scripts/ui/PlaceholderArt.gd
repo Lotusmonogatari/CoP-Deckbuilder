@@ -125,6 +125,8 @@ func _build() -> void:
 	_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	# A placeholder's filename sits straight on its colour: no paper plaque from a style's theme.
+	_label.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
 	# White on the mid-tone placeholder colour, with a dark outline so it
 	# stays readable whichever hue the ID hashes to.
 	_label.add_theme_color_override("font_color", Color.WHITE)

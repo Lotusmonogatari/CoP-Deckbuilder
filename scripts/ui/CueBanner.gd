@@ -267,6 +267,48 @@ func _on_step_timeout() -> void:
 	_show_next()
 
 
+## Living Office draws the cue as a speech bubble (P9, 2026-11-17): a rounded paper bubble in dark
+## ink, upright, with no gold lines; the speaker's tag sits on it as its header. Every other style
+## keeps the dark slanted band with its gold top and bottom lines (Broadcast's decision D2). Only the
+## look changes: the same timing, the same words, tap to skip. Called for every line, so a switch of
+## style never leaves the other look behind.
+func _skin_for_style(side: int) -> void:
+	if UiStyle.current() == UiStyles.LIVING_OFFICE:
+		_band_box.bg_color = UiStyle.colour("paper", Color(1, 0.97, 0.92))
+		_band_box.border_width_top = 0
+		_band_box.border_width_bottom = 0
+		_band_box.set_corner_radius_all(40)
+		_band_box.skew = Vector2.ZERO
+		_band_box.shadow_size = 12
+		var ink := UiStyle.colour("ink_on_paper", Color(0.17, 0.11, 0.07))
+		_line.add_theme_color_override("font_color", ink)
+		_line.add_theme_constant_override("outline_size", 0)
+		_detail.add_theme_color_override("font_color", ink)
+		return
+	if UiStyle.current() == UiStyles.WOODBLOCK:
+		# A hanging scroll: paper between two rods, in dark ink.
+		_band_box.bg_color = UiStyle.colour("paper", Color(0.97, 0.94, 0.88))
+		_band_box.border_color = UiStyle.colour("scroll_rod", Color(0.42, 0.29, 0.17))
+		_band_box.border_width_top = 14
+		_band_box.border_width_bottom = 14
+		_band_box.set_corner_radius_all(0)
+		_band_box.skew = Vector2.ZERO
+		_band_box.shadow_size = 10
+		var ink := UiStyle.colour("ink", Color(0.11, 0.1, 0.09))
+		_line.add_theme_color_override("font_color", ink)
+		_line.add_theme_constant_override("outline_size", 0)
+		_detail.add_theme_color_override("font_color", UiStyle.colour("ink_quiet", ink))
+		return
+	_band_box.bg_color = BAND_COLOUR
+	_band_box.border_width_top = 8
+	_band_box.border_width_bottom = 8
+	_band_box.set_corner_radius_all(0)
+	_band_box.shadow_size = 18
+	_line.remove_theme_color_override("font_color")
+	_line.add_theme_constant_override("outline_size", 10)
+	_detail.add_theme_color_override("font_color", DETAIL_COLOUR)
+
+
 func _present(entry: Dictionary) -> void:
 	var colour := OPPONENT_COLOUR
 	match int(entry["side"]):
@@ -280,6 +322,7 @@ func _present(entry: Dictionary) -> void:
 	# SlantBar.SLANT is the same angle, so the score bars always match.
 	_band_box.skew = Vector2(0.0 if entry["side"] == PHASE
 		else (SlantBar.SLANT if entry["side"] == PLAYER else -SlantBar.SLANT), 0.0)
+	_skin_for_style(int(entry["side"]))
 	_speaker.text = str(entry["speaker"])
 	_limit_tag_width()
 	_tag.visible = not _speaker.text.is_empty()
