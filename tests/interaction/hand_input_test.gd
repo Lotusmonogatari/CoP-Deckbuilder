@@ -81,6 +81,22 @@ func _one(style: String) -> void:
 	if card != null and absf(card.get_global_rect().position.y - resting_y) > 2.0:
 		_failures.append("%s: the card did not settle after the tap" % style)
 
+	# The party-colour halo (P9): none before the drag is halfway to a play, some after, none after letting go.
+	card = _playable(screen)
+	if card == null:
+		return
+	var from := HandPoint.center(card)
+	await _drag(from, from + Vector2(0, -CardView.PLAY_LIFT * 0.4), 8, func() -> void:
+		if card.halo_strength() > 0.0:
+			_failures.append("%s: the halo shows before the drag is halfway" % style))
+	await _drag(from, from + Vector2(0, -CardView.PLAY_LIFT * 0.8), 10, func() -> void:
+		var strength := card.halo_strength()
+		if strength < CardView.HALO_MIN_ALPHA or strength >= 1.0:
+			_failures.append("%s: the halo should be partway at 80%% of the pull (got %s)" % [style, strength]))
+	await get_tree().create_timer(0.3).timeout
+	if card.halo_strength() > 0.0:
+		_failures.append("%s: the halo stays after letting go" % style)
+
 	# A drag up plays it.
 	card = _playable(screen)
 	if card == null:

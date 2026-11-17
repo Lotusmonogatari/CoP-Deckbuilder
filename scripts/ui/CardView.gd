@@ -62,6 +62,13 @@ const PLAY_LIFT := 220.0
 ## The tint a lifted card takes once letting go would play it.
 const READY_TINT := Color(1.0, 0.93, 0.6)
 
+## The party-colour halo (P9): it starts to show once the drag is this fraction of the way to PLAY_LIFT and
+## is at full strength when letting go would play the card, as a nudge that the card is being activated.
+const HALO_START := 0.5
+const HALO_GLOW := 40
+## The halo never starts fainter than this, so its first appearance is plain to see.
+const HALO_MIN_ALPHA := 0.45
+
 const CARD_FONT: FontFile = preload("res://assets/fonts/AntakaBrushDisplay-Regular.ttf")
 
 ## Every card without its own drawn art shows this ONE picture, rather than
@@ -175,6 +182,8 @@ var _effect_label: Label
 var _press_at := Vector2.ZERO
 var _pressing := false
 var _lifting := false
+## The glow behind a held card, in the player's party colour. Built on the first lift.
+var _halo: Panel = null
 ## How far the card may RISE on screen while held (the finger can travel further: playing still needs PLAY_LIFT
 ## of travel). The battle screen sets it so the card stops below the Guard and Gaffes counters instead of
 ## covering them mid-drag (P9 tidy). INF = no limit.
@@ -535,11 +544,13 @@ func _gui_input(event: InputEvent) -> void:
 		if _lifting:
 			position.y = _rest_y - minf(maxf(up, 0.0), max_rise)
 			self_modulate = READY_TINT if up >= PLAY_LIFT else Color.WHITE
+			_show_halo(clampf((up / PLAY_LIFT - HALO_START) / (1.0 - HALO_START), 0.0, 1.0))
 			accept_event()
 
 
 func _lift() -> void:
 	_lifting = true
+	clip_contents = false   # the halo glows outside the card's own edge
 	lifted.emit(card_id)
 	_rest_y = position.y
 	z_index = 20
@@ -554,9 +565,43 @@ func _lift() -> void:
 		scroll.clip_contents = false
 
 
+## How strong the halo is, 0 to 1 (the tests read this).
+func halo_strength() -> float:
+	return _halo.modulate.a if _halo != null and _halo.visible else 0.0
+
+
+## An outline and glow in the player's party colour behind the card, fading in over the second half of
+## the pull. It sits behind the card (show_behind_parent), so only its edge and glow show.
+func _show_halo(strength: float) -> void:
+	if strength <= 0.0:
+		if _halo != null:
+			_halo.hide()
+		return
+	if _halo == null:
+		_halo = Panel.new()
+		_halo.name = "PartyHalo"
+		_halo.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_halo.show_behind_parent = true
+		_halo.set_anchors_preset(Control.PRESET_FULL_RECT)
+		var colour := CharacterCodex.party_color(str(DataDB.player.get("party", "")), DataDB.parties)
+		var box := StyleBoxFlat.new()
+		box.bg_color = colour
+		box.set_corner_radius_all(10)
+		box.shadow_color = Color(colour.r, colour.g, colour.b, 1.0)
+		box.shadow_size = HALO_GLOW
+		box.set_expand_margin_all(10.0)
+		_halo.add_theme_stylebox_override("panel", box)
+		add_child(_halo)
+	_halo.show()
+	_halo.modulate.a = lerpf(HALO_MIN_ALPHA, 1.0, strength)
+
+
 func _drop(risen: float) -> void:
 	_lifting = false
+	clip_contents = true
 	max_rise = INF
+	if _halo != null:
+		_halo.hide()
 	z_index = 0
 	self_modulate = SELECT_TINT if selected else Color.WHITE
 	dropped.emit(card_id)

@@ -285,3 +285,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - UI styles and End of Week Payments, panel P9 (2026-11-17, Cameron)
 - A held card stops below the Guard and Gaffes counters (2026-11-17, Cameron)
 - Woodblock status labels get cartouche plates with a shadow (2026-11-17, Cameron)
+- A party-colour halo around a held card past halfway (2026-11-17, Cameron)

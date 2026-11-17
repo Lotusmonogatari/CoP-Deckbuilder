@@ -1257,3 +1257,8 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 ## 2026-11-17: Woodblock status labels get the same plates as the room and turn labels
 
 - In Woodblock, the speaker line, the threshold line, the tally, Guard and Gaffes now sit on paper plates with an ink edge and a vermilion offset shadow, like the room and turn plates at the top. The plates and their shadows are 10% see-through. The Inventory and Details buttons and the other styles are unchanged. No words or rules changed.
+
+## 2026-11-17: A party-colour halo shows when a drag is past halfway
+
+- Once a held card has been pulled halfway to the distance that plays it, a glow and outline in the player's party colour fade in behind it, reaching full strength when letting go would play the card. It disappears on release. Purely visual: no rule or number changed. Shots: `*_battle_2340_halfway.png` in the P9 review folder.
+- `hand_input_test` checks there is no halo before halfway, some at 80% of the pull, and none after release.
