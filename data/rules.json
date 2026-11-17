@@ -334,5 +334,29 @@
     "value": "Committee on",
     "options": "words that introduce a committee's name",
     "notes": "The part of an opponent's Title from this phrase onward is a committee a staff task can name (\"Listen in on the Committee on Finance\")."
+  },
+  "training_coupon_item": {
+    "value": "SH21",
+    "options": "a Shop item id",
+    "question": "Which Shop item is the Training Session Coupon that events and rewards hand out?",
+    "notes": "The item given when a reward says 'training coupons'. Its Stack Cap limits how many can be held."
+  },
+  "bill_vote_stage": {
+    "value": "ST23",
+    "options": "a Stage id",
+    "question": "Which Stage row is the Floor Vote room that every bill's vote uses?",
+    "notes": "A level that names a bill instead of a stage plays this stage as its Floor Vote."
+  },
+  "party_dues_hq_organization": {
+    "value": "BO01",
+    "options": "an organization id",
+    "question": "Which organization loses standing when party dues go overdue (the party headquarters)?",
+    "notes": "Overdue dues lower this organization's standing by the amount in the Dues levers."
+  },
+  "party_dues_selection_organization": {
+    "value": "BO32",
+    "options": "an organization id",
+    "question": "Which organization is the party's candidate selection body, which loses standing when dues go overdue?",
+    "notes": "Overdue dues lower this organization's standing by the amount in the Dues levers."
   }
 }

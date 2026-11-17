@@ -56,16 +56,17 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 | `design/NEW_CHAT_STARTUP.md` | State of the project and working rules for a new session |
 | `design/CHANGELOG.md` | Summary of Sept–Oct 2026, then every dated change |
 | `design/CLEANUP_CANDIDATES.md` | Things that look removable (never delete without Cameron's say-so) |
+| `design/STAFF_ASSIGNMENTS_RUBRIC.md` | The test rubric for the staff mechanic |
 
 ## 6. Data contract
 
-`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 113 levels, 288 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 166 visitors, 56 events, 34 shop items, 21 staff, 180 bill components, 6 cosmetic packages, about 916 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
+`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 114 levels, 289 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 167 visitors, 87 events, 41 shop items, 21 staff, 64 staff tasks, 180 bill components, 6 cosmetic packages, about 1,160 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
 
 | Group | Files (`data/`) |
 |---|---|
 | Numbers and switches | `balance` (every design number), `sanban` (the four meta numbers' ranges, starts, decay), `rules` (the switches, below; from the Rules tab), `booster_standing` (Standing Rules tab), `party_standing` (Party Start Standing tab), `awareness_effects`, `standing_links`, `vote_influence_triggers` |
 | Cards and rooms | `cards`, `suits`, `affinity` (suit multipliers per room), `stages`, `segments`, `modifiers` (backings), `questions` (the room question pools and Stage Questions), `opponents`, `opponent_cues`, `player_cues`, `card_cues` |
-| Levels and people | `levels`, `level_intros`, `level_intro_thoughts`, `level_opponent_overrides`, `level_visitor_overrides`, `visitors`, `visitor_questions`, `staff`, `staff_names`, `staff_tasks` (the Staff Assignments tab), `player` (the four protagonists) |
+| Levels and people | `levels`, `level_intros`, `level_intro_thoughts`, `level_opponent_overrides`, `level_visitor_overrides`, `visitors`, `visitor_questions`, `staff`, `staff_names`, `staff_tasks` (the Staff Assignments tab), `staff_task_families`, `staff_task_ramp`, `staff_task_drivers`, `player` (the four protagonists) |
 | Standing and parties | `boosters` (organizations), `parties`, `party_stakeholders`, `party_values`, `organization_tastes` |
 | Bills and laws | `floor_votes` (bills and party positions), `law_effects`, `vote_influence_cues`, `bill_components`, `patron_bills`, `bill_level_templates`, `visit_questions`, `visit_answers`, `trade_questions`, `lobbyist_lines` |
 | Week and events | `events`, `event_choices`, `event_options`, `hosted_events`, `reaction_lines`, `shop` (items), `cosmetic_packages`, `office_notices`, `office_ticker`, `transition_cast`, `transition_backgrounds`, `transition_dialogue` |
@@ -277,3 +278,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Staff tasks expansion, phases 3 to 6 (2026-11-16, Cameron)
 - Staff Assignments rubric and first evaluation (2026-11-16, Cameron)
 - Items with uses, and six office-supply items SH36 to SH41 (2026-11-16, Cameron)
+- Documents refreshed; the last fixed numbers and ids moved into the workbook (2026-11-17, Cameron)

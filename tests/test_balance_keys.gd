@@ -42,3 +42,15 @@ func test_every_rules_key_the_scripts_read_is_in_the_workbook() -> void:
 func test_every_lever_a_rules_file_asks_levers_for_is_in_the_workbook() -> void:
 	var missing := _missing("Levers\\.(?:num|whole)\\(\"([A-Za-z_0-9]+)\"", DataDB.balance)
 	assert_eq(missing, [] as Array[String], "Levers keys with no Balance row")
+
+
+func test_every_rule_the_scripts_ask_get_rule_for_is_in_the_workbook() -> void:
+	var missing := _missing("get_rule\\(\"([A-Za-z_0-9]+)\"", DataDB.rules)
+	assert_eq(missing, [] as Array[String], "get_rule keys with no Rules row")
+
+
+func test_the_rules_that_name_rows_name_rows_that_exist() -> void:
+	assert_false(DataDB.get_shop_item(str(DataDB.get_rule("training_coupon_item", ""))).is_empty())
+	assert_false(DataDB.get_stage(str(DataDB.get_rule("bill_vote_stage", ""))).is_empty())
+	assert_false(DataDB.get_booster(str(DataDB.get_rule("party_dues_hq_organization", ""))).is_empty())
+	assert_false(DataDB.get_booster(str(DataDB.get_rule("party_dues_selection_organization", ""))).is_empty())

@@ -149,6 +149,7 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 | Lobbyist Trade | Which part of the bill to drop; which package; whether to use leverage | Seats, standing, Funds, XP |
 | Office: Rhetoric Training | Learn the card shown, or pass (up to 3 looks, the last must be learned) | New cards |
 | Office: Staff, Boosters, Marketplace, Deck, Appearance | Hire, upgrade, fire; buy backings; buy and use items; build the deck; equip cosmetics | Strength for the next level |
+| Office: Staff Assignments | Give each workday's tasks to staff (drag or tap), place staff and Office items, Confirm | Rewards and Loyalty when the day ends; a Due task nobody takes costs its penalty |
 | Office: Promises | Keep a promise (hand over the item or spend the hours) | Standing; or let it break |
 | Week end | End the work week early; weekend or home | Time passes; dues, decay |
 | Administration | Save, Load, backup, text size, New Game, abandon a level in progress | |
@@ -279,12 +280,23 @@ Everything below lives in the autoload `GameState`. **Saved** means it is in `_S
 | `deck_size_bonus`, `deck_expansions` | Extra deck slots bought; how many times | yes |
 | `card_draw` | A Rhetoric Training draw in progress (so quitting restores the same card) | yes |
 | `owned_modifiers`, `modifier_expires` | Backings owned; when timed ones lapse | yes |
-| `inventory` | Shop items held, by `SHxx` | yes |
+| `inventory` | Shop items held, by `SHxx` (copies; uses are in `item_uses`) | yes |
 | `shop_bought_this_level` | Per-item purchases this level (purchase limits) | yes |
 | `pending_stage_bonuses`, `pending_level_bonuses`, `level_bonuses`, `timed_bonuses` | Item effects waiting for the next stage or level; active for the level; or running on the clock | yes |
 | `staff_hired`, `staff_fired`, `staff_recruitment_tier` | Who is hired at what rank; who was fired; how many recruitment tiers are open | yes |
 | `owned_cosmetic_packages`, `active_cosmetics` | Bought packages; the one equipped per slot | yes |
 | `promises`, `promises_broken_unseen`, `promise_serial` | Owed promises; broken ones the Office has not yet announced; id counter | yes |
+
+**Staff and items (2026-11-16)**
+
+| Variable | Meaning | Saved |
+|---|---|---|
+| `item_uses` | Uses left on each held copy, `{item_id: [uses, ...]}`, kept in step with `inventory` (see `ItemUses.gd`); missing means full uses | yes |
+| `staff_loyalty`, `staff_invested`, `staff_weeks`, `staff_quit`, `staff_raise_pay`, `staff_thanked`, `staff_week_tasks`, `staff_last_week`, `staff_full_days` | Loyalty (0 to 100), what has been invested in each person, weeks worked, those who left for good, once-a-week actions, and the week's task and overwork tallies | yes |
+| `staff_day_key`, `staff_day_blocks_total`, `staff_day_pool`, `staff_day_plan`, `staff_day_confirmed`, `staff_day_delegated`, `staff_day_items`, `staff_office_item` | Today's delivered tasks, who was given what, whether it is confirmed, hours taken by delegation, items placed | yes |
+| `staff_day_max`, `staff_day_adds`, `staff_day_shuffles`, `staff_day_reasons` | Today's task maximum, the task-count changes it was drawn with (so a reshuffle can redraw it), how many instant Office items were used today, the reasons | yes |
+| `staff_pool_mods`, `staff_taste_known`, `staff_report_pending` | Changes left for the next pools, whose gift taste is known, the last day's report waiting to be shown | yes |
+| `staff_gift_notes`, `staff_use_notes` | What gifts and Office items just did, shown once | no |
 
 **Bills and laws**
 
@@ -314,10 +326,12 @@ Every number below is in the workbook and exported to data; none is hard-coded.
 | Where | What |
 |---|---|
 | Balance tab → `data/balance.json` | About 230 levers, grouped by prefix: `starter_deck_*`, `question_*`, `stance_*`, `lean_*`, `party_*`, `vote_*`, `whip_*`, `patron_*`, `draft_bill_*`, `mp_visit_*`, `trade_*`, `workday_*` / `weekend_*` / `calendar_*`, `week_decay_multiplier`, `dues_*`, `awareness_*`, `election_*`, `event_*`, `hosted_*`, `promise_*`, `difficulty_*`, `text_scale_*`, `transition_*`, `win_over_*`, and the crisis thresholds (`jiban_town_hall_trigger`, `party_support_*`, `gaffes_lifetime_*`) |
-| Rules tab -> `data/rules.json` | Switches with allowed options: `turn_limit_outcome`, `opponent_can_win_by_threshold`, `opponent_engine` (only `intent_patterns` exists), `discard_hand_end_of_turn`, `pass_energy_penalty`, `guard_cap`, `level_gating_enabled`, `open_card_collection`, `funds_starting_cap`, `card_training_looks`, `default_consumable_stack_cap`, `default_intent_pattern`, seasons |
+| Balance rows added 2026-11-17 | `Staff Loyalty: Restless Boost Percent` (what share of a boost a Restless person still gives) and `Patron Request: Tries` (tries before a request lapses); before that both were fixed in code |
+| Rules tab -> `data/rules.json` | Switches with allowed options (and four ids moved out of code on 2026-11-17: `training_coupon_item`, `bill_vote_stage`, `party_dues_hq_organization`, `party_dues_selection_organization`): `turn_limit_outcome`, `opponent_can_win_by_threshold`, `opponent_engine` (only `intent_patterns` exists), `discard_hand_end_of_turn`, `pass_energy_penalty`, `guard_cap`, `level_gating_enabled`, `open_card_collection`, `funds_starting_cap`, `card_training_looks`, `default_consumable_stack_cap`, `default_intent_pattern`, seasons |
 | Standing Rules tab -> `data/booster_standing.json` | Standing rules: start, please/displease amounts, the ±10 cap, gain and loss bands, neglect decay, default decay percent, default backing requirement |
 | Party Start Standing tab -> `data/party_standing.json`; `data/vote_influence_triggers.json`, `data/awareness_effects.json`, `data/standing_links.json` | Party start values; the influence gate rows; awareness consequences; organization links |
-| Stages, Levels, Events, Shop, Boosters, Modifiers, Staff tabs | Per-room energy, hand, gaffe limit, turn limit, hours, rewards and penalties; level unlock prices, cooldowns and rewards; event choices; item prices and effects; backings; staff ranks |
+| Staff Assignments, Staff Task Families, Staff Task Ramp, Staff Task Drivers tabs; Balance rows `Staff Wage`, `Staff Loyalty`, `Staff Quit`, `Staff Fire`, `Staff Tasks`, `Staff Delegate`, `Staff Gift` | The 64 tasks and their rewards and penalties, each family's daily range, the ramp, the drivers that add tasks, wages, Loyalty, caps, hours per rank |
+| Stages, Levels, Events, Shop (including Uses and the Staff Effect columns), Boosters, Modifiers, Staff tabs | Per-room energy, hand, gaffe limit, turn limit, hours, rewards and penalties; level unlock prices, cooldowns and rewards; event choices; item prices and effects; backings; staff ranks |
 
 ## Addendum 2026-11-06: saving inside a stage
 
@@ -363,7 +377,7 @@ The plan is applied when the day ends (the next day begins, or the week ends). *
 
 **Not built yet.** The gift form of recognition and a Recognition meter (only Raise pay and Thank in public exist); a weekend-only pool is the normal pool with fewer tasks; the eight icon families `LL01` to `LL08` are drawn (Cameron, 2026-11-16).
 
-**Items for staff (2026-11-16).** Coffee and tea (SH04, SH05: +1 hour to the person they are given to) and, since 2026-11-16, the Kaiju-sized coffee and tea (SH15, SH17: an **Office box** item that adds +1 hour to **every** staff member's day today; Shop `Staff Effect` HOURS_ALL) can be dragged from the **Items for your staff** row at the top of the screen into a person's box, or tapped and assigned. One item per person per day, only items you hold; the hours are added to that person's day for the tasks, and the item is **used up only when the day is confirmed** (taking it back before costs nothing). The popup wording is "Hours", not "blocks"; the Delegate column is now "Delegate Hours".
+**Items for staff (2026-11-16).** Coffee and tea (SH04, SH05: +1 hour to the person they are given to), the Kaiju-sized coffee and tea (SH15, SH17: an **Office box** item that adds +1 hour to **every** staff member's day today; Shop `Staff Effect` HOURS_ALL) and the six office-supply items (see the next addendum) can be dragged from the **Items for your staff** row at the top of the screen into a person's box, or tapped and assigned. One item per person per day, only items you hold; the hours are added to that person's day for the tasks, and a use is **spent only when the day is confirmed** (taking it back before costs nothing; the Printer, Shredder and Priority Inbox are the exception and act when used). The popup wording is "Hours", not "blocks"; the Delegate column is now "Delegate Hours".
 
 **Task families, the ramp and the day's maximum (2026-11-16, expansion phases 1 and 2).** There are now **64 tasks, 8 in each of the 8 icon families** (Staff Assignments tab). Each family rolls its own number of tasks each day between its **Min and Max** (Staff Task Families tab; **Cap** is the most it can reach, and a weekend day keeps its **Weekend Factor** of the range); that many of its tasks are picked by weight without repeats (Rest always offers one time-off task). The whole list is then **trimmed to the day's maximum** before it is shown, a family that rolled more tasks being more likely to keep its own. The maximum follows the **Staff Task Ramp** tab: **0 tasks a day in the first week, 1 in the second, 2 in the third, 3 in the fourth, then 15** (the last row covers every later week; a weekend day keeps the row's Weekend Factor; items and events will be able to change it for a day, phases 3 to 5).
 
@@ -374,16 +388,16 @@ The plan is applied when the day ends (the next day begins, or the week ends). *
 | Piece | Rule | Where it is edited |
 |---|---|---|
 | **Drivers** | When a day's pool is drawn, game-state conditions add tasks to a family (or change the day's maximum): dues owed (Administration), open promises (Correspondence), low or high awareness, Reputation, Constituency support, Party support (Constituents, Press, Meetings), a bill in progress (Analysis), a sour office (Chores), Monday and Friday. The reasons and the day's maximum are kept in the run (`staff_day_reasons`, `staff_day_max`) but not shown to the player. | Staff Task Drivers tab (Variable, Test, Threshold, Family or MAX, Add Min and Max, Cap, Note) |
-| **Person items** | Dragged into a person's box (one per person per day; used up at confirm): coffee and tea (+hours), **Reference Sets** (the person counts as a strong fit for one family today: Press Kit, Policy Binder, Ward Map, Style Guide, Meeting Folder, Filing Kit, Cleaning Cart), the **Training Voucher** (strong-fit rewards x1.5), the **Quiet Desk Pass** (no idle or overwork Loyalty change), and **gifts** (the nine regional items). | Shop tab: Staff Effect, Staff Value, Staff Target, Staff Slot, Staff Days |
+| **Person items** | Dragged into a person's box (one per person per day; one use is spent at confirm): coffee and tea (+1 hour), **Flex-Work** (the best-paying task that person completes pays double, +2 Loyalty), **Commendation Gift** (no Loyalty change from an idle or overworked day), **Lunch Delivery** (none of a weak fit's penalties), and **gifts** (the nine regional items; handed over whole). The earlier Reference Sets, Training Voucher and Quiet Desk Pass were replaced on 2026-11-16 (Cameron: no items that change staff fitness). | Shop tab: Staff Effect, Staff Value, Staff Slot, Uses |
 | **Gift tastes** | Each person likes some gifts, dislikes one, and the rest are neutral, with their own Loyalty amounts (Balance rows `Staff Gift: ...` when blank). Handing a gift over reveals the person's taste on their profile. | Staff tab: Gift Likes, Gift Dislikes, Gift Like, Neutral and Dislike Loyalty |
-| **Office box** | One Office item at a time: Press Subscription, Constituent Hotline Sign, Reading Stack (more tasks of a family), Outsourcing Contract, Do Not Disturb Sign, Chore Rota (fewer), Overflow Tray, Triage Desk (change the day's maximum). It changes the **next** pool(s) (today's was delivered at the start of the day), and is used up when the day is confirmed. | Shop tab (Staff Slot = Office) |
+| **Office box** | Kaiju-sized coffee and tea sit in the box: +1 hour for **every** staff member today, one use spent per confirmed day (2 uses each). The **Printer** (adds 3 tasks past the ramp maximum), **Shredder** (clears up to 3 untaken, non-Due tasks at random) and **Priority Inbox** (draws today's pool again, given tasks included) act **at once** when used, because today's pool is already delivered; they work only before the day is confirmed. | Shop tab (Staff Slot = Office; Staff Effect ADD_TASKS, CLEAR_TASKS, RESHUFFLE, HOURS_ALL) |
 | **Events** | An event choice can change the next day's pool: `Task Pool Family`, `Task Pool Change`, `Task Pool Days` (EV84 A and EV55 A are draft examples). | Event Choices tab |
 
 Tuning report: `audit/staff_tasks_tuning.md` (tool: `audit/tests/staff_pool_sim.tscn`). The Staff Hours column is kept for the four coffee and tea rows; the new Staff Effect columns supersede it.
 
 **Rank and the working day (2026-11-16, Cameron).** A staff member's weekday is **8 hours at Tier 0, 9 at Tier 1 and 10 at Tier 2**: one extra hour per rank (Balance `Staff Tasks: Hours Per Tier`). It is the rank they hold when tasks are given out, including a rank they were hired at (some candidates start at Tier 1), and it stacks with coffee and tea. A weekend day has no rank bonus. The workload bar on the Staff Assignments screen shows the longer day.
 
-**Kaiju-sized coffee and tea in the Office box (2026-11-16, Cameron).** Placed in the Office box, a Kaiju-sized coffee or tea adds 1 hour to every staff member's working day today (it stacks with a person's own coffee or tea and with rank hours), and is used up when the day is confirmed. Regular coffee and tea stay person items (+1 hour to one person). Shop effect `HOURS_ALL`, Slot Office.
+**Kaiju-sized coffee and tea in the Office box (2026-11-16, Cameron).** Placed in the Office box, a Kaiju-sized coffee or tea adds 1 hour to every staff member's working day today (it stacks with a person's own coffee or tea and with rank hours), and one of its two uses is spent when the day is confirmed. Regular coffee and tea stay person items (+1 hour to one person). Shop effect `HOURS_ALL`, Slot Office.
 
 ## Addendum 2026-11-16: items with uses
 

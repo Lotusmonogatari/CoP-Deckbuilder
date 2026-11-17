@@ -1163,3 +1163,15 @@ Kaiju-sized coffee and tea (2026-11-16, Cameron): now Office box items that add 
 | SH41 Lunch Delivery | Person, 1 use. None of a weak fit's penalties |
 
 The 17 draft staff items SH36 to SH52 are replaced. Prices are drafts (6,000 to 20,000円). Item pictures (`SH36.png` to `SH41.png`) are to come from Cameron; the Icon cells are blank until then. Builders: `tools/workbook/archive/shop_item_uses_2026-11-16.py`, `item_uses_text_2026-11-16.py`. Tests: `test_item_uses.gd`; `test_staff_pool_modifiers.gd` and `test_staff_items.gd` updated.
+
+## Documents refreshed; the last fixed numbers and ids moved into the workbook (2026-11-17, Cameron)
+
+| Piece | What |
+|---|---|
+| Documents | `NEW_CHAT_STARTUP.md` (counts, what was done, open items), `GAME_SYSTEMS.md` (person items, Office box, new state tables for staff and item uses, numbers section, where the player chooses), `GAME_DESIGN.md` (Staff Assignments and item uses), `ARCHITECTURE.md` (staff and item code), `CLAUDE.md` (snapshot counts, data files, guide list), `CLEANUP_CANDIDATES.md` (unused staff effect code and columns) |
+| Scan | Every script was searched for design numbers and ids typed into code, and every `.get("key", default)` was checked against the data. Nearly all of it was already in the workbook; the rest were runtime state keys, which are not design |
+| Balance (new) | `Staff Loyalty: Restless Boost Percent` 50 (a Restless person's boosts were fixed at half), `Patron Request: Tries` 2 (a request lapsed after a fixed two tries) |
+| Rules (new) | `training_coupon_item` SH21, `bill_vote_stage` ST23, `party_dues_hq_organization` BO01, `party_dues_selection_organization` BO32 (were typed into `GameState` and `BattleSetup`) |
+| Tests | `test_balance_keys.gd` now also checks every `get_rule("...")` key and that the four id rules name rows that exist |
+
+Known and left alone: the majority of 51 in two places (canon), default fallbacks used only when a data row is missing (`50` starting standing, `3` energy), and the 0 to 100 range of Loyalty.

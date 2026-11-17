@@ -127,7 +127,7 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 	# names its own Floor Vote by naming the bill directly, the same slot
 	# series every other room uses. It always means ST23; the bill itself is
 	# looked up by level_id below, in the "Vote" branch.
-	var real_stage_id := "ST23" if _is_bill_id(stage_id) else stage_id
+	var real_stage_id := str(DataDB.get_rule("bill_vote_stage", "")) if _is_bill_id(stage_id) else stage_id
 
 	var stage := DataDB.get_stage(real_stage_id)
 	if stage.is_empty():

@@ -1,4 +1,4 @@
-# Coliseum of Parliament: new session start-up (2026-11-13)
+# Coliseum of Parliament: new session start-up (2026-11-17)
 
 Point the assistant at this file at the start of a new session. The brief and the working rules are in `CLAUDE.md`; `README.md` is the short snapshot. This guide replaces the 2026-11-06 version.
 
@@ -7,10 +7,10 @@ Point the assistant at this file at the start of a new session. The brief and th
 | Item | State |
 |---|---|
 | Game | Godot 4.5, GDScript, portrait mobile card battler. Fictional nation Yezo (101 seats, floor majority 51, no early elections). |
-| Repo and branches | `lotusmonogatari/cop-deckbuilder`. Work on the designated session branch; merge to `main` only after `tools/verify.sh` says "All checks passed". Everything to date is merged; the session branch (`claude/new-session-klhgm8`) is level with `main` at `b6c643f`. |
+| Repo and branches | `lotusmonogatari/cop-deckbuilder`. Work on the designated session branch; merge to `main` only after `tools/verify.sh` says "All checks passed". The items-with-uses work is merged to `main`; later work stays on the session branch (`claude/new-session-klhgm8`) until Cameron says "merge". |
 | Workbook | `design/Game_Workbook.xlsx` |
-| Content (`data/`) | 289 stage rows, 114 levels, 70 cards, 32 organizations, 131 opponents, 50 floor-vote bills, 167 visitors and 423 visitor questions, 87 events, 35 shop items, 21 staff, 180 bill components, 6 cosmetic packages, 987 Text rows |
-| Tests | About 1,860 GUT tests (157 scripts) and 32 real-click interaction tests. `tools/verify.sh` (which also compiles every script) passes in about 2-3 minutes. |
+| Content (`data/`) | 289 stage rows, 114 levels, 70 cards, 32 organizations, 131 opponents, 50 floor-vote bills, 167 visitors and 429 visitor questions, 87 events, 41 shop items, 21 staff, 64 staff tasks in 8 families, 180 bill components, 6 cosmetic packages, 1,160 Text rows, 332 Balance levers |
+| Tests | About 2,070 GUT tests (177 scripts) and 32 real-click interaction tests. `tools/verify.sh` (which also compiles every script) passes in about 2-3 minutes. |
 | Missing | All audio files, most character art (opponents, students, visitors, PC02/PC03), 8 goods icons, `OUT_NEIGHBORHOOD`. No real-phone build yet (milestone M6). |
 
 ## 2. The document map
@@ -23,6 +23,7 @@ Point the assistant at this file at the start of a new session. The brief and th
 | `design/ARCHITECTURE.md` | How the code is organised, the rules-versus-screens split, pitfalls |
 | `design/CONTENT_GUIDE.md` | How to write levels, stages, events and the content they depend on |
 | `design/EDITING_TEXT.md` | How to reword existing text, tab by tab |
+| `design/STAFF_ASSIGNMENTS_RUBRIC.md` | The measurable test rubric for the staff mechanic, and how to run it |
 | `design/CHANGELOG.md` | A summary of September and October, then every dated change since 2026-11-01 |
 | `design/CLEANUP_CANDIDATES.md` | Things that look removable. Nothing is deleted without Cameron's say-so |
 
@@ -69,7 +70,7 @@ The code-level ones are in `design/ARCHITECTURE.md` section 8. Workbook and cont
 10. The Decline generator under `tools/workbook/archive/` is a one-off; add a new event's Decline by hand (1.5 times the shortfall of the staff choice against choice A).
 11. Shop item IDs were renumbered (2026-10-04): quote an item by name in prose, and never assume an old ID.
 
-## 6. What was done most recently (2026-11-06 to 2026-11-13)
+## 6. What was done most recently (2026-11-06 to 2026-11-17)
 
 Details are the sections at the end of `design/CHANGELOG.md`. In short:
 
@@ -80,6 +81,10 @@ Details are the sections at the end of `design/CHANGELOG.md`. In short:
 - **Rooms and items:** the lobbyist's organization always applies scrutiny; the TV debate bar shows the opponent again; items that take hours show a greyed Use button when there is no time; Your Record's changes sit behind buttons.
 - **Content:** transitions for custom-bill stages; EV83 to EV94 (twelve events favorable to six organizations); visitors 58 to 78 and 144 and 167 (VI167 has no stage, reward, penalty or questions yet, so it never appears); the Japanese font was re-subset for new names.
 - **Characters list (new, 2026-11-13):** Administration, Characters. A scrolling list of every opponent and visitor; the button colour is the party colour, the player's party colour for a party body with no named party, or one muted tier colour (nine Balance rows). Unmet people read 誰ですか。 (a deliberate exception to English-first). "Met" is saved in `GameState.met_characters` and recorded when someone actually appears. Rules in `scripts/rules/CharacterCodex.gd`, UI in `scripts/ui/CharacterCodexPanel.gd`.
+- **Staff Assignments (new, 2026-11-16):** staff have wages and Loyalty; each workday delivers tasks (64 tasks, 8 icon families, a ramp from 0 tasks in week 1 to 15) that the player gives to staff on Management > Staff Assignments; Due tasks nobody takes cost a penalty; events can delegate to staff. A person's day is 8, 9 or 10 hours by rank. Read `design/GAME_SYSTEMS.md` (Addendum: staff wages, Loyalty, daily tasks) and `design/STAFF_ASSIGNMENTS_RUBRIC.md` (the test rubric; run `audit/tests/staff_rubric_run.tscn` after any change to the staff tabs or rules).
+- **Items with uses (new, 2026-11-16):** a Shop row's Uses column; copies wear out; six office-supply items SH36 to SH41 (Printer, Shredder, Flex-Work, Priority Inbox, Commendation Gift, Lunch Delivery) and the Kaiju-sized coffee and tea (2 uses) are the staff items. The Printer, Shredder and Priority Inbox act at once.
+- **Words stay whole:** the `TextFit` autoload stops a wrapped word splitting across lines.
+- **Hard-coded numbers moved (2026-11-17):** the Restless boost share, a patron request's tries, and four fixed ids (training coupon, bill vote stage, the two party-dues organizations) are now Balance and Rules rows.
 - **Reviews (read-only reports):** `audit/` (project audit), `audit/gameplay/` (gameplay review), `design/review/ORG_REPRESENTATION_2026-11-13.md` and `ORG_OUTCOMES_2026-11-13.md` (how events and visitors treat each organization).
 
 ## 7. Open items
@@ -98,6 +103,7 @@ Details are the sections at the end of `design/CHANGELOG.md`. In short:
 | 10 | Taxpayers' Alliance | Still the most over-represented organization with net negative outcomes (EV83 choice C and the Decline rows); a rebalance was offered, not approved |
 | 11 | VI167 | Done 2026-11-13 as a draft: 16 rooms, standing and six questions (VQ424-VQ429). Cameron to rewrite |
 | 12 | Characters list | Colours and the nine Balance rows are drafts; opponents faced before 2026-11-13 show as unmet until they reappear; unmet popup not yet seen on a phone |
+| 15 | Staff Assignments tuning | The rubric (`design/STAFF_ASSIGNMENTS_RUBRIC.md`) has no FAIL; R4.2 (net points a week) is a WARN and the week 4 to 5 ramp step is a cliff (`audit/staff_tasks_tuning.md`). Item prices and the six office-supply items are drafts. Cameron decides |
 | 14 | Party-support-locked events | Own-party events and levels that open at a Party support level; proposal in `design/proposals/PARTY_SUPPORT_LOCKED_EVENTS_2026-11-16.md`; needs the Party support re-tune first |
 | 13 | Branches | Four old remote branches (`ccr-1bbd9851-yg8on5`, `claude/happy-ramanujan-e0mrxj`, `claude/optimistic-noether-1j0yqh`, `claude/new-session-s1juv4`) could not be deleted from a session (no permission); Cameron asked for them to be deleted, so he must do it on GitHub |
 

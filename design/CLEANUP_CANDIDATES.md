@@ -108,3 +108,9 @@ Several are test helpers (they exist so a test can look inside a presenter) and 
 
 `stages.win_pct`, `bar_value_kind`, `segment_check`; `shop.bonus_condition_1` and `_2` (13 items carry text); `sanban.low_consequence` and `high_consequence`; Balance `xp_tiers`; reference-only columns `cards.special_note`, `cards.suit_jp`, `suits.gloss`, `suit_jp`, `card_design_template`, `opponents.gender`, `party_acronym`; empty columns `bill_components.amend_options` and `each_level_effect`. `patron_bills.request_line`, `accept_line` and `decline_line` are now shown (2026-11-16, W-7). Source: `audit/mechanics.md` M-13 to M-19.
 
+
+## From the 2026-11-17 documents and hard-coding pass (nothing deleted; Cameron to rule)
+
+- Code for Shop effects no item uses any more (the six office-supply items replaced the drafts): `STRONG_FAMILY`, `REWARD_MULT`, `POOL_FAMILY`, `POOL_MAX` in `StaffTasks.gd`, `GameState` and the exporter's allowed list, with the Text rows `assign.item_cap_family`, `assign.item_desc_family`, `assign.item_cap_mult`, `assign.item_desc_mult`, `assign.item_cap_pool`, `assign.item_cap_max` and the `assign.item_desc_pool_*` and `assign.item_desc_max_*` rows. They still work if a row ever uses them (event choices still change the pool through `staff_pool_mods`).
+- The Shop columns `Staff Hours` (superseded by Staff Effect HOURS; kept for the coffee and tea rows), `Staff Target` and `Staff Days` (no current item sets them).
+- The Balance rows `Staff Tasks: Pool Size` and `Weekend Pool Size` were retired on 2026-11-16 (the ramp replaced them); confirm they are gone.

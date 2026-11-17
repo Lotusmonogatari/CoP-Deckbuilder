@@ -2836,7 +2836,7 @@ func level_hours(level: Dictionary) -> int:
 		# A bill's vote counts as the Floor Vote room: a written bill ("BI..") or
 		# a sponsored or drafted one (its runtime id).
 		if BattleSetup._is_bill_id(slot):
-			slot = "ST23"
+			slot = str(DataDB.get_rule("bill_vote_stage", ""))
 		total += TimeClock.units_for_stage(DataDB.get_stage(slot))
 	return total
 
@@ -3127,15 +3127,16 @@ func _awareness_standing_targets(effect: Dictionary) -> Array[String]:
 	return found
 
 
-## Adds Training Session Coupons (SH21) up to the item's own stack cap.
+## Adds Training Session Coupons (Rules: training_coupon_item) up to the item's own stack cap.
 func _give_training_coupons(count: int) -> bool:
-	var item := DataDB.get_shop_item("SH21")
+	var coupon := str(DataDB.get_rule("training_coupon_item", ""))
+	var item := DataDB.get_shop_item(coupon)
 	if item.is_empty() or count <= 0:
 		return false
 	var cap := int(item.get("stack_cap", 5)) if item.get("stack_cap") != null else 5
-	var before := int(inventory.get("SH21", 0))
-	inventory["SH21"] = mini(cap, before + count)
-	return int(inventory["SH21"]) > before
+	var before := int(inventory.get(coupon, 0))
+	inventory[coupon] = mini(cap, before + count)
+	return int(inventory[coupon]) > before
 
 
 ## What the party is owed at this week's end: { week_dues, owed (carried),
@@ -3177,8 +3178,8 @@ func _settle_dues() -> Dictionary:
 	report["penalized"] = true
 	_under_cause(cause, func() -> void:
 		_apply_meta_reward("Party support", -int(penalties["party_support"]))
-		_apply_booster_delta("BO01", -int(penalties["hq"]))
-		_apply_booster_delta("BO32", -int(penalties["selection"])))
+		_apply_booster_delta(str(DataDB.get_rule("party_dues_hq_organization", "")), -int(penalties["hq"]))
+		_apply_booster_delta(str(DataDB.get_rule("party_dues_selection_organization", "")), -int(penalties["selection"])))
 	var own_party := str(DataDB.player.get("party", ""))
 	for party: Dictionary in DataDB.parties:
 		var party_name := str(party.get("name", ""))
@@ -4991,9 +4992,9 @@ func _staff_bonus_total(item: Dictionary) -> int:
 			continue
 		if int(hired.get("tier", -1)) >= int(row["min_tier"]):
 			var amount := int(row["amount"])
-			# A restless person's boosts count half (StaffLoyalty.gd).
+			# A restless person's boosts count for less (Balance "Staff Loyalty: Restless Boost Percent").
 			if StaffLoyalty.band(staff_loyalty_of(str(hired.get("staff_id", "")))) != StaffLoyalty.BAND_NORMAL:
-				amount = int(amount / 2)
+				amount = int(amount * Levers.num("staff_loyalty_restless_boost_percent") / 100.0)
 			total += amount
 	return total
 
@@ -5761,7 +5762,7 @@ func _conclude_patron_level() -> void:
 		patron_requests[patron_bill_id] = state
 		return
 	state["tries"] = int(state.get("tries", 0)) + 1
-	if int(state["tries"]) >= 2:
+	if int(state["tries"]) >= Levers.whole("patron_request_tries"):
 		state["status"] = PatronRequests.LAPSED
 		_apply_booster_delta(str(PatronLevel.patron_bill(patron_bill_id).get("organization", "")),
 				-Levers.whole("patron_fail_standing"))

@@ -84,6 +84,18 @@ A new `class_name` script is invisible to tests until `.tools/godot --headless -
 8. An unreachable piece of content (a room in no level, a person seated nowhere) is invisible; the exporter errors on some cases but not all.
 
 
+## Addendum 2026-11-17: staff and item code
+
+| File | Role |
+|---|---|
+| `scripts/rules/StaffTasks.gd` | Pure: draws a day's pool (`draw_pool`, `roll_quotas`, `day_maximum`), the extra draw and clearing for the Printer and Shredder (`draw_extra`, `clearable`, `pick_to_clear`), and `evaluate` (what a plan does: fits, caps, Loyalty, Flex-Work doubling, no-penalty and quiet days) |
+| `scripts/rules/StaffLoyalty.gd`, `StaffPoolModifiers.gd` | Pure: wages and Loyalty bands; drivers and event changes to the pool |
+| `scripts/rules/ItemUses.gd` | Pure: copies with uses left, spend a use (most-used copy first), remove a whole copy, normalize against the count held |
+| `GameState` (`staff_*`, `item_uses`, `_spend_use`, `_take_item`, `item_copies`) | Run state and flow; instant Office items go through `_staff_use_instant` |
+| `scripts/ui/StaffAssignmentsView.gd`, `TaskChip.gd`, `TaskBox.gd`, `StaffLoyaltyView.gd` | The screens; drag and drop, item popup, uses shown |
+
+Design numbers and ids belong in the workbook: `tests/test_balance_keys.gd` checks Balance, Rules and `get_rule` keys against the data, and a scan on 2026-11-17 moved the last fixed numbers and ids out of code (see the CHANGELOG).
+
 ## Addendum 2026-11-16: words stay whole
 
 `scripts/autoload/TextFit.gd` watches every Label and Button that wraps text (`autowrap_mode` not off). A few frames after it appears, when its box has a real width, it switches smart wrap to word wrap and, if the longest word is wider than the box, shrinks the font size (a step at a time, to Balance `Text Fit: Minimum Font Size`) until the word fits (`WordFit.gd` does the measuring). Cards (`CardView`, `CardBackView`) are skipped. Pitfall: a label with `custom_minimum_size.x` of 0 inside a flow container collapses to one letter wide, so give such notes a sensible minimum.
