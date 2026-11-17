@@ -128,6 +128,8 @@ static func _dress(chip: Button, delta: int, preview: bool, size: float, numbere
 	mark.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	mark.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	mark.text = "" if not numbered else ("%+d" % delta if delta != 0 else "0")
+	# The mark lies over the icon; a style's paper plaque (Woodblock) would hide the icon.
+	mark.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
 	mark.add_theme_font_size_override("font_size", int(size / 3.0))
 	mark.add_theme_color_override("font_color", Color.WHITE)
 	mark.add_theme_color_override("font_outline_color", Color.BLACK)

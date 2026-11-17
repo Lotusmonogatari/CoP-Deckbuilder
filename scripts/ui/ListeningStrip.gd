@@ -133,6 +133,8 @@ func _add_tile(booster_id: String, taste: String) -> void:
 	mark.set_anchors_preset(Control.PRESET_FULL_RECT)
 	mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	mark.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	# The mark lies over the icon; a style's paper plaque (Woodblock) would hide the icon.
+	mark.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
 	mark.add_theme_font_size_override("font_size", 44)
 	mark.add_theme_color_override("font_outline_color", Color.BLACK)
 	mark.add_theme_constant_override("outline_size", 8)
