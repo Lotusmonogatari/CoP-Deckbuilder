@@ -576,7 +576,8 @@ func _apply_ui_style_veils() -> void:
 	for node: Control in [$Safe/Scroll/Column/HeadingBackdropMargin/HeadingBackdrop,
 			$Safe/Scroll/Column/TextBackdropMargin/TextBackdrop]:
 		var veil := node.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
-		veil.bg_color = Color(plate.r, plate.g, plate.b, 0.6)
+		# A light (Woodblock) plate over a dark picture needs more body than a dark one.
+		veil.bg_color = Color(plate.r, plate.g, plate.b, 0.9 if UiStyle.current() == UiStyles.WOODBLOCK else 0.6)
 		node.add_theme_stylebox_override("panel", veil)
 
 

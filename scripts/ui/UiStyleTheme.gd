@@ -102,6 +102,15 @@ static func build(style: String, idx: Dictionary) -> Theme:
 			"font_focus_color", "font_hover_pressed_color"]:
 		theme.set_color(key, "Button", ink)
 	theme.set_color("font_disabled_color", "Button", Color(ink.r, ink.g, ink.b, 0.6))
+	# Woodblock's ink is dark, for paper. Where a label sits straight on a room picture (the battle,
+	# the visits) it gets a light paper halo, so dark ink reads on a dark picture too (measured from
+	# pixels: 1.2 to 1 without it). The other styles' ink is light and needs none; every style sets
+	# the same items so a switch leaves nothing behind.
+	var halo := style == UiStyles.WOODBLOCK
+	var paper := UiStyles.colour(idx, style, "paper", Color(0.97, 0.94, 0.88))
+	for type_name: String in ["Label", "SmallLabel", "TitleLabel", "HeaderLabel", "JapaneseAccent", "GaffeWarning", "CueBanner", "CueSpeaker"]:
+		theme.set_color("font_outline_color", type_name, paper)
+		theme.set_constant("outline_size", type_name, 5 if halo else 0)
 	for state: String in BUTTON_STATES:
 		theme.set_stylebox(state, "Button", button_box(style, state, idx))
 	return theme
