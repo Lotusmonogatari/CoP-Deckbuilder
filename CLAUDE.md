@@ -280,3 +280,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Items with uses, and six office-supply items SH36 to SH41 (2026-11-16, Cameron)
 - Documents refreshed; the last fixed numbers and ids moved into the workbook (2026-11-17, Cameron)
 - Card faces readable everywhere; the question banner steps aside from the zoom (2026-11-17, Cameron)
+- Information standards, panel P4: week-end costs, Funds-limit reasons, contrast plates, win-result icons, staff item wording (2026-11-17, Cameron)
