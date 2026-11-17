@@ -68,7 +68,7 @@ Other tests added: `test_ui_styles`, `test_seats_meter`, `hand_visible_test` (ha
 
 ## 3. `tools/verify.sh` and commits
 
-**Final full run: "All checks passed."** It now includes the text sweep in all three styles; the sweep caught a sideways-scrolling levels list in Broadcast and a broken party name in Woodblock's Floor Vote (both fixed), and earlier two off-screen buttons at 1080x1920 Large text (new fonts and seats; fixed). `party_plate_test` caught the light cue bubble lying over the Details panel (the test now sets the cue aside).
+**Final full run: "All checks passed."** Export, boot, compile, unit tests, every real-click test (including the new `org_marks_test`, `hand_raise_test` and `style_elements_test`) and the text sweep in all three styles at three text sizes and both screen shapes (0 letter-stacked or off-screen rows in all nine). Problems the checks caught on the way, all fixed: an off-screen button at 1080x1920 Large text, a sideways-scrolling Broadcast levels list, a broken party name in Woodblock's Floor Vote, three older unit tests that compared "1 of 3" with ordinary spaces (now no-break spaces), and the light cue bubble lying over the Details panel in `party_plate_test`.
 
 Existing click tests changed because the hand no longer scrolls sideways: `loop_driver`, `mash_driver`, `click_test` and `org_preview_test` tap the visible strip of a card (`HandPoint`), `click_test`'s "sideways drag scrolls the hand" became "a sideways drag moves nothing", and `week_driver` reads the new box's total line. No rule or card assertion was loosened.
 
@@ -96,6 +96,15 @@ Existing click tests changed because the hand no longer scrolls sideways: `loop_
 | 2dd9f15 | Finish P9: Office tiles and plates (Broadcast, Woodblock), levels schedule rows and print cards, battle chrome per style |
 | 289b3d7 | Finish P9: Living Office card fan (tilt re-applied after each container sort) |
 | 3c86737 | Finish P9: schedule rows fit the width, narrower plaque padding; text sweep runs in all three styles |
+| 4a7ff47 | Finish P9: report, docs and compressed shots for the finished design |
+| b4dd74f | Finish P9: regenerate the Woodblock theme overlay (narrower plaque padding) |
+| fd092fa | Review fix 1: organization marks carry no plaque, so Woodblock no longer hides the icons while a card is held (with a test that fails without the fix) |
+| 848840b | Review fixes 4, 6, 7: seat threshold mark, styles are bought in the Marketplace only (Appearance switches), no-break 'n of m' |
+| b457b98 | Review fix 3: a touched card rises over its neighbours (hand_raise_test) |
+| 0b36727 | Review fix 2: Woodblock intent seal, Broadcast gold diagonal, docket card in every style, Living payments tray, Woodblock ledger leaders, tier tabs and Draft a Bill tab (with a test) |
+| f99c66c | Tests expect the no-break 'n of m' captions |
+| 5675ac4 | Review fix 5: organization icons get a dark backing, so they read 3 to 1 in every style (measured from pixels) |
+| 11ec338 | Review response: changelog, architecture, report and 108 compressed shots; reason on a blocked level stays at full strength |
 
 ## 4. Departures from the mockups
 
