@@ -82,6 +82,7 @@ A new `class_name` script is invisible to tests until `.tools/godot --headless -
 6. A new copy of a family room must be added to every modifier whose Effect Target names that family, or its backings silently do nothing there.
 7. Tests must read workbook values, never type them.
 8. An unreachable piece of content (a room in no level, a person seated nowhere) is invisible; the exporter errors on some cases but not all.
+9. A theme set on a panel reaches every descendant: `BaseImage.plate_theme()` (a dark plate behind every Label) is on each Overlay and on the battle's card zoom, so any Label that must stay plain inside them (the card faces) overrides its own "normal" stylebox (`CardView.no_plate`). `tests/interaction/card_faces_test.gd` catches a regression.
 
 
 ## Addendum 2026-11-17: staff and item code

@@ -141,6 +141,15 @@ const EFFECT_FONT_SIZE_MIN := 12
 
 
 
+## A label on a card face keeps no plate behind it. A panel built on Overlay (or the
+## battle's card zoom) carries BaseImage.plate_theme(), whose dark translucent "normal"
+## box for every Label reaches every descendant; on a cream card that put dark ink on a
+## dark plate (Rhetoric Training, the card View and the zoom; design review 2026-11-17).
+## An override on the label itself beats the inherited theme.
+static func no_plate(label: Label) -> void:
+	label.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
+
+
 ## Ink on a cream box wants to be dark, not the theme's pale text.
 const INK := Color(0.16, 0.13, 0.10)
 
@@ -238,6 +247,7 @@ func _build() -> void:
 	add_child(disc)
 
 	_cost_label = Label.new()
+	no_plate(_cost_label)
 	# Use the full circle rectangle with no added margin. Its center is the
 	# measured center of the printed cost circle on the card templates.
 	place(_cost_label, Rect2(
@@ -258,6 +268,7 @@ func _build() -> void:
 	_cost_label.add_theme_font_size_override("font_size", 31)
 
 	_name_label = Label.new()
+	no_plate(_name_label)
 	place(_name_label, NAME_RECT)
 	_name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -284,6 +295,7 @@ func _build() -> void:
 	_update_tag()
 
 	_effect_label = Label.new()
+	no_plate(_effect_label)
 	place(_effect_label, TEXT_RECT)
 	_effect_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_effect_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP

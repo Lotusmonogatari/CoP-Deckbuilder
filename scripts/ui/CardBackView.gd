@@ -112,6 +112,7 @@ func _build() -> void:
 
 	for i: int in RULES_DEEP:
 		var cell := Label.new()
+		CardView.no_plate(cell)
 		CardView.place(cell, Rect2(
 			TEXT_LEFT, RULE_TOP + i * RULE_PITCH, TEXT_WIDTH, RULE_PITCH))
 		cell.vertical_alignment = VERTICAL_ALIGNMENT_CENTER

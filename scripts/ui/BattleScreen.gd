@@ -230,6 +230,10 @@ func _ready() -> void:
 	_banner = CueBanner.new()
 	_banner.name = "CueBanner"
 	add_child(_banner)
+	# The cue band sits above everything (z 50) and used to lie across the zoomed card,
+	# hiding its name and text (design review 2026-11-17, Cameron: hide it while the
+	# zoom is open). It comes back, with whatever it was saying, when the zoom closes.
+	_card_zoom.visibility_changed.connect(func() -> void: _banner.visible = not _card_zoom.visible)
 	start_battle()
 
 
