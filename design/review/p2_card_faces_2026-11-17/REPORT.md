@@ -59,3 +59,27 @@ At 1080 x 2340, the `_169` suffix (1080 x 1920) and the `_bigtext` suffix (Large
 |---|---|
 | Duplicitous back | A pale disc is drawn behind the middle of the text; with the dark frame it looks busy. Art, not code. |
 | `design/CLEANUP_CANDIDATES.md` | Still lists the `card.question_*` rows as orphaned and later removed; accurate. |
+
+## Round 2 (panel review: accept with changes)
+
+Code commit: `6bcdce6` (branch `panel/p2-card-faces`). `tools/verify.sh` result line: **All checks passed.** (including `card_faces_test` and the new `cue_zoom_test`, both "ok").
+
+### Acceptance table
+
+| Requirement | Result | Evidence |
+|---|---|---|
+| Cue banner: a `CueBanner.set_suppressed(on)` replaces the visibility toggle (`BattleScreen.gd:238`, `CueBanner.gd:141`) | PASS | The toggle is gone; the zoom calls `set_suppressed(_card_zoom.visible)`. |
+| While suppressed: band hidden, hold timer paused, slide, flash and jolt tweens paused | PASS | `CueBanner.gd:141` to 168. Timed capture: hold left stays 5.66 s for the whole 5.9 s zoom (`round2/timed_capture.txt`). |
+| On release: the same line returns with its remaining hold | PASS | After release the same line shows and the hold counts down from 5.66 s (5.13, 4.58, 4.08, 3.55, 3.01, 2.50 s at about 0.55 s steps). |
+| If nothing was showing, it stays hidden; never show a band hidden for another reason | PASS | `cue_zoom_test` cases 2 (nothing showing) and 3 (cleared while the zoom was open) both stay hidden. |
+| Test: line started, zoom opened at 0.5 s, 10 s wait, closed: same line showing with at least its remaining hold, queue intact, `lines_shown` unchanged | PASS | `tests/interaction/cue_zoom_test.gd`. It fails on the old visibility toggle (eight failed checks when I put it back) and passes now. |
+| Extra case: a line said during the zoom waits and shows on release | PASS | `cue_zoom_test` case 4. |
+| Timed capture in the live battle: LV04 stage 1, seed 4242, play a card, open the zoom while its outcome line is up, hold, close | PASS | `design/review/p2_card_faces_2026-11-17/round2/`: 22 frames (`r2_a...` to `r2_d...`), `timed_capture.txt` with each frame's time, band state, hold left, `lines_shown` and queue, and `zoom_over_real_battle_still.png`. |
+| Capture spacing of 0.5 s | NEEDS HUMAN | The frames are saved after a 0.5 s timer, but the software renderer made the real gap 0.5 to 0.8 s (the log has each frame's true time). The held duration was 5.9 s, not exactly 5 s. A person should judge whether that is acceptable evidence. |
+| Faces readable, contrast, grade decision, banner decision (round 1) | PASS | Unchanged: `card_faces_test` passes; contrast 7.2 to 15.4 : 1. |
+| `.gdignore` for review pictures (Cameron's popup answer: yes) | PASS | Empty `.gdignore` added to `design/review/` and `design/proposals/img/`; the 34 `.import` files under them deleted (they were tracked) and none come back after an import. Generated `*.translation` files from the review CSVs remain on disk but are git-ignored, so they are not in the repo. |
+| `tools/verify.sh` passes | PASS | See the result line above. |
+
+### Merge order (Cameron's answer by popup)
+
+Merge `claude/new-session-klhgm8` to `main` first, then this branch, so this branch lands as only its own commits (`a610f86`, `6bcdce6` and this report's commit). Not merged: this branch, `claude/new-session-klhgm8` and `main` are all untouched until Cameron says "merge".
