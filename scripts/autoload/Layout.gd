@@ -93,6 +93,7 @@ func _ready() -> void:
 	image_pan_enabled = bool(DataDB.rules.get("image_pan_default", true))
 	_load_settings()
 	apply_text_scale()
+	UiStyle.sync()
 	_build_button_outlines()
 	refresh()
 	set_process(false)   # nothing here needs a frame: the outline colour follows use_protagonist()
@@ -145,6 +146,10 @@ func refresh_outline_colour() -> void:
 
 
 func _on_node_added(node: Node) -> void:
+	# A new screen at the top of the tree: put the equipped UI style over the theme first.
+	if node.get_parent() == get_tree().root and node is Control and UiStyle.sync():
+		_build_button_outlines()
+		_recolour_outlines()
 	if node is Button and node.get_class() == "Button":
 		_mark_cancel(node as Button)
 	if node is MarginContainer and node.name in NAMES:
@@ -268,8 +273,13 @@ func _build_button_outlines() -> void:
 	var base := ThemeDB.get_default_theme()
 	theme.add_type(CANCEL_VARIATION)
 	theme.set_type_variation(CANCEL_VARIATION, "Button")
+	_party_styles.clear()
+	var style := UiStyle.current()
 	for state: String in BUTTON_STATES:
-		var source := base.get_stylebox(state if state != "hover_pressed" else "pressed", "Button")
+		# The button's fill comes from the UI style; only the outline is the party's.
+		var source: StyleBox = UiStyleTheme.button_box(style, state, UiStyle.idx())
+		if not source is StyleBoxFlat:
+			source = base.get_stylebox(state if state != "hover_pressed" else "pressed", "Button")
 		if not source is StyleBoxFlat:
 			continue
 		var party_box := _outlined(source as StyleBoxFlat, NO_PARTY_OUTLINE)

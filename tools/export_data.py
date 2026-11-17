@@ -1408,6 +1408,24 @@ SHEETS = {
             ("Tour Variant", "tour_variant", "str"),
             # 2026-10-26: how the Office calendar is written: "era" or "ainu".
             ("Calendar Style", "calendar_style", "str"),
+            # 2026-11-17 (P9): which UI style this package unlocks: "broadcast" or "woodblock".
+            ("UI Style", "ui_style", "str"),
+        ],
+    },
+    # 2026-11-17 (P9): the three UI styles' colours, fonts and sizes, one row per
+    # token. Style is living_office, broadcast, woodblock or shared.
+    "UI Styles": {
+        "out": "ui_styles.json",
+        "key": "token_id",
+        "id_pattern": r"^US\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Token ID", "token_id", "id"),
+            ("Style", "style", "str"),
+            ("Group", "group", "str"),
+            ("Token", "token", "str"),
+            ("Value", "value", "str"),
+            ("Notes", "notes", "str"),
         ],
     },
     # 2026-11-13: the small flash behind a character when they move (attack,
@@ -4310,6 +4328,28 @@ def fold_questions(data, report):
     data.pop("question_themes", None)
 
 
+def check_ui_styles(data, report):
+    """UI Styles (2026-11-17): known styles, colours that are hex, one row per token,
+    and every UI Style a package names must be a style with tokens."""
+    styles = {"living_office", "broadcast", "woodblock", "shared"}
+    seen = set()
+    for row in data.get("ui_styles", []):
+        tid = row.get("token_id")
+        style, group, token = str(row.get("style") or ""), str(row.get("group") or ""), str(row.get("token") or "")
+        if style not in styles:
+            report.error("UI Styles", f"{tid}: Style '{style}' must be one of {sorted(styles)}")
+        if (style, group, token) in seen:
+            report.error("UI Styles", f"{tid}: a second row for {style} {group} {token}")
+        seen.add((style, group, token))
+        value = str(row.get("value") or "")
+        if group == "colour" and value != "party colour" and not re.fullmatch(r"#[0-9A-Fa-f]{6}", value):
+            report.error("UI Styles", f"{tid}: colour '{value}' must be #RRGGBB or 'party colour'")
+    for package in data.get("cosmetic_packages", []):
+        style = package.get("ui_style")
+        if style not in (None, "") and style not in styles - {"shared", "living_office"}:
+            report.error("Cosmetic Packages", f"{package.get('package_id')}: UI Style '{style}' must be broadcast or woodblock")
+
+
 def check_move_flashes(data, report):
     """Move Flashes (2026-11-13): known sides and moves, one row for each,
     a readable colour, and numbers in range."""
@@ -4766,6 +4806,7 @@ def main():
     check_text_keys(data, report)
     check_standing_names(data, report)
     check_move_flashes(data, report)
+    check_ui_styles(data, report)
     check_staff_tasks(data, report)
     check_staff_task_tables(data, report)
     check_staff_item_and_driver_tables(data, report)

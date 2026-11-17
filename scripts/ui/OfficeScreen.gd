@@ -185,6 +185,7 @@ var _ticker: TickerPresenter
 
 
 func _ready() -> void:
+	_apply_ui_style_veils()
 	# The picture under everything: BASE_OFFICE.png, else BASE.png (2026-10-31).
 	BaseImage.install(self, "OFFICE")
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
@@ -563,6 +564,17 @@ func _check_week_over() -> void:
 
 
 ## The work week ran out of hours: the player chooses the weekend or home.
+## The two translucent veils behind the title and the narration take the equipped UI style's
+## plate colour (P9, 2026-11-17), so the text on them keeps its contrast in every style.
+func _apply_ui_style_veils() -> void:
+	var plate := UiStyle.plate_colour()
+	for node: Control in [$Safe/Scroll/Column/HeadingBackdropMargin/HeadingBackdrop,
+			$Safe/Scroll/Column/TextBackdropMargin/TextBackdrop]:
+		var veil := node.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
+		veil.bg_color = Color(plate.r, plate.g, plate.b, 0.6)
+		node.add_theme_stylebox_override("panel", veil)
+
+
 func _show_week_over_if_due() -> void:
 	if GameState.is_in_level() or not GameState.work_week_is_full():
 		return

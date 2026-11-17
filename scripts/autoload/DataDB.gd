@@ -42,7 +42,7 @@ const REQUIRED_FILES := [
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "strings",
 	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues", "awareness_effects", "events", "event_choices", "hosted_events", "event_options", "organization_tastes", "reaction_lines",
-	"cosmetic_packages", "move_flashes", "staff_tasks", "staff_task_families", "staff_task_ramp", "staff_task_drivers", "transition_cast", "transition_backgrounds", "transition_dialogue",
+	"cosmetic_packages", "ui_styles", "move_flashes", "staff_tasks", "staff_task_families", "staff_task_ramp", "staff_task_drivers", "transition_cast", "transition_backgrounds", "transition_dialogue",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -129,6 +129,8 @@ var vote_influence_cues: Array = []
 ## four piece columns may be blank. See CosmeticPieces.gd, ArtLoader.gd's
 ## variant axis, and Audio.gd's music override.
 var cosmetic_packages: Array = []
+## One row per UI style token (P9, 2026-11-17): see UiStyle.
+var ui_styles: Array = []
 
 ## data/shop.json's SHxx rows — one-time Office actions (see the file's own
 ## comments), not previously loaded by anything. Added 2026-09-25 so a
@@ -412,6 +414,7 @@ func load_all() -> void:
 			"reaction_lines": reaction_lines = content if content is Array else []
 			"vote_influence_cues": vote_influence_cues = content if content is Array else []
 			"cosmetic_packages": cosmetic_packages = content if content is Array else []
+			"ui_styles": ui_styles = content if content is Array else []
 			"move_flashes": move_flashes = content if content is Array else []
 			"staff_tasks": staff_tasks = content if content is Array else []
 			"staff_task_families": staff_task_families = content if content is Array else []

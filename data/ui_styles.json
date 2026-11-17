@@ -1,0 +1,666 @@
+[
+  {
+    "token_id": "US001",
+    "style": "living_office",
+    "group": "colour",
+    "token": "ground",
+    "value": "#140F0A",
+    "notes": null
+  },
+  {
+    "token_id": "US002",
+    "style": "living_office",
+    "group": "colour",
+    "token": "panel",
+    "value": "#2B1D12",
+    "notes": null
+  },
+  {
+    "token_id": "US003",
+    "style": "living_office",
+    "group": "colour",
+    "token": "panel_edge",
+    "value": "#6B4A2B",
+    "notes": null
+  },
+  {
+    "token_id": "US004",
+    "style": "living_office",
+    "group": "colour",
+    "token": "paper",
+    "value": "#FFF8EC",
+    "notes": null
+  },
+  {
+    "token_id": "US005",
+    "style": "living_office",
+    "group": "colour",
+    "token": "paper_alt",
+    "value": "#F3E3C3",
+    "notes": null
+  },
+  {
+    "token_id": "US006",
+    "style": "living_office",
+    "group": "colour",
+    "token": "ink_on_dark",
+    "value": "#FFF8EC",
+    "notes": null
+  },
+  {
+    "token_id": "US007",
+    "style": "living_office",
+    "group": "colour",
+    "token": "ink_on_paper",
+    "value": "#2B1D12",
+    "notes": null
+  },
+  {
+    "token_id": "US008",
+    "style": "living_office",
+    "group": "colour",
+    "token": "ink_quiet",
+    "value": "#D8C3A5",
+    "notes": null
+  },
+  {
+    "token_id": "US009",
+    "style": "living_office",
+    "group": "colour",
+    "token": "accent",
+    "value": "#FFD58A",
+    "notes": null
+  },
+  {
+    "token_id": "US010",
+    "style": "living_office",
+    "group": "colour",
+    "token": "warning",
+    "value": "#B3261E",
+    "notes": null
+  },
+  {
+    "token_id": "US011",
+    "style": "living_office",
+    "group": "colour",
+    "token": "ok",
+    "value": "#2F6B3A",
+    "notes": null
+  },
+  {
+    "token_id": "US012",
+    "style": "living_office",
+    "group": "colour",
+    "token": "seat_player",
+    "value": "#4F8FFF",
+    "notes": null
+  },
+  {
+    "token_id": "US013",
+    "style": "living_office",
+    "group": "colour",
+    "token": "seat_undecided",
+    "value": "#8A8173",
+    "notes": null
+  },
+  {
+    "token_id": "US014",
+    "style": "living_office",
+    "group": "colour",
+    "token": "seat_opponent",
+    "value": "party colour",
+    "notes": null
+  },
+  {
+    "token_id": "US015",
+    "style": "living_office",
+    "group": "font",
+    "token": "display",
+    "value": "Antaka Brush Display",
+    "notes": null
+  },
+  {
+    "token_id": "US016",
+    "style": "living_office",
+    "group": "font",
+    "token": "body",
+    "value": "Zen Kaku Gothic New",
+    "notes": null
+  },
+  {
+    "token_id": "US017",
+    "style": "living_office",
+    "group": "size_pt",
+    "token": "title",
+    "value": "24",
+    "notes": null
+  },
+  {
+    "token_id": "US018",
+    "style": "living_office",
+    "group": "size_pt",
+    "token": "heading",
+    "value": "18",
+    "notes": null
+  },
+  {
+    "token_id": "US019",
+    "style": "living_office",
+    "group": "size_pt",
+    "token": "body",
+    "value": "15",
+    "notes": null
+  },
+  {
+    "token_id": "US020",
+    "style": "living_office",
+    "group": "size_pt",
+    "token": "small",
+    "value": "12",
+    "notes": null
+  },
+  {
+    "token_id": "US021",
+    "style": "living_office",
+    "group": "size_pt",
+    "token": "minimum",
+    "value": "11",
+    "notes": null
+  },
+  {
+    "token_id": "US022",
+    "style": "living_office",
+    "group": "radius_px",
+    "token": "panel",
+    "value": "14",
+    "notes": null
+  },
+  {
+    "token_id": "US023",
+    "style": "living_office",
+    "group": "radius_px",
+    "token": "button",
+    "value": "26",
+    "notes": null
+  },
+  {
+    "token_id": "US024",
+    "style": "living_office",
+    "group": "radius_px",
+    "token": "chip",
+    "value": "10",
+    "notes": null
+  },
+  {
+    "token_id": "US025",
+    "style": "living_office",
+    "group": "layout",
+    "token": "support_count",
+    "value": "seats",
+    "notes": null
+  },
+  {
+    "token_id": "US026",
+    "style": "living_office",
+    "group": "layout",
+    "token": "cue",
+    "value": "speech_bubble",
+    "notes": null
+  },
+  {
+    "token_id": "US027",
+    "style": "living_office",
+    "group": "layout",
+    "token": "hand",
+    "value": "fan",
+    "notes": null
+  },
+  {
+    "token_id": "US028",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "ground",
+    "value": "#0B1220",
+    "notes": null
+  },
+  {
+    "token_id": "US029",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "panel",
+    "value": "#141E33",
+    "notes": null
+  },
+  {
+    "token_id": "US030",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "panel_edge",
+    "value": "#39465F",
+    "notes": null
+  },
+  {
+    "token_id": "US031",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "plate",
+    "value": "#F4F1EA",
+    "notes": null
+  },
+  {
+    "token_id": "US032",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "ink_on_dark",
+    "value": "#F4F1EA",
+    "notes": null
+  },
+  {
+    "token_id": "US033",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "ink_on_plate",
+    "value": "#0B1220",
+    "notes": null
+  },
+  {
+    "token_id": "US034",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "ink_quiet",
+    "value": "#C9C3B6",
+    "notes": null
+  },
+  {
+    "token_id": "US035",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "gold",
+    "value": "#E3B341",
+    "notes": null
+  },
+  {
+    "token_id": "US036",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "live_red",
+    "value": "#C23B22",
+    "notes": null
+  },
+  {
+    "token_id": "US037",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "intent_red",
+    "value": "#B42318",
+    "notes": null
+  },
+  {
+    "token_id": "US038",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "info_blue",
+    "value": "#4F8FD6",
+    "notes": null
+  },
+  {
+    "token_id": "US039",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "bar_player",
+    "value": "#3B82F6",
+    "notes": null
+  },
+  {
+    "token_id": "US040",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "bar_undecided",
+    "value": "#475569",
+    "notes": null
+  },
+  {
+    "token_id": "US041",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "bar_opponent",
+    "value": "party colour",
+    "notes": null
+  },
+  {
+    "token_id": "US042",
+    "style": "broadcast",
+    "group": "font",
+    "token": "display",
+    "value": "Barlow Condensed",
+    "notes": null
+  },
+  {
+    "token_id": "US043",
+    "style": "broadcast",
+    "group": "font",
+    "token": "display_style",
+    "value": "italic 700",
+    "notes": null
+  },
+  {
+    "token_id": "US044",
+    "style": "broadcast",
+    "group": "font",
+    "token": "body",
+    "value": "Noto Sans JP",
+    "notes": null
+  },
+  {
+    "token_id": "US045",
+    "style": "broadcast",
+    "group": "size_pt",
+    "token": "title",
+    "value": "30",
+    "notes": null
+  },
+  {
+    "token_id": "US046",
+    "style": "broadcast",
+    "group": "size_pt",
+    "token": "heading",
+    "value": "21",
+    "notes": null
+  },
+  {
+    "token_id": "US047",
+    "style": "broadcast",
+    "group": "size_pt",
+    "token": "body",
+    "value": "15",
+    "notes": null
+  },
+  {
+    "token_id": "US048",
+    "style": "broadcast",
+    "group": "size_pt",
+    "token": "small",
+    "value": "12",
+    "notes": null
+  },
+  {
+    "token_id": "US049",
+    "style": "broadcast",
+    "group": "size_pt",
+    "token": "minimum",
+    "value": "11",
+    "notes": null
+  },
+  {
+    "token_id": "US050",
+    "style": "broadcast",
+    "group": "slant_px",
+    "token": "plate",
+    "value": "12",
+    "notes": null
+  },
+  {
+    "token_id": "US051",
+    "style": "broadcast",
+    "group": "slant_px",
+    "token": "primary_button",
+    "value": "18",
+    "notes": null
+  },
+  {
+    "token_id": "US052",
+    "style": "broadcast",
+    "group": "slant_px",
+    "token": "chip",
+    "value": "10",
+    "notes": null
+  },
+  {
+    "token_id": "US053",
+    "style": "broadcast",
+    "group": "layout",
+    "token": "support_count",
+    "value": "slant_bar",
+    "notes": null
+  },
+  {
+    "token_id": "US054",
+    "style": "broadcast",
+    "group": "layout",
+    "token": "cue",
+    "value": "band_with_gold_lines",
+    "notes": null
+  },
+  {
+    "token_id": "US055",
+    "style": "broadcast",
+    "group": "layout",
+    "token": "hand",
+    "value": "overlap_row",
+    "notes": null
+  },
+  {
+    "token_id": "US056",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "ground",
+    "value": "#EFE4CF",
+    "notes": null
+  },
+  {
+    "token_id": "US057",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "paper",
+    "value": "#F8F1E3",
+    "notes": null
+  },
+  {
+    "token_id": "US058",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "plaque",
+    "value": "#F7EFE0",
+    "notes": null
+  },
+  {
+    "token_id": "US059",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "ink",
+    "value": "#1C1A17",
+    "notes": null
+  },
+  {
+    "token_id": "US060",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "ink_quiet",
+    "value": "#5A5146",
+    "notes": null
+  },
+  {
+    "token_id": "US061",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "indigo",
+    "value": "#22305A",
+    "notes": null
+  },
+  {
+    "token_id": "US062",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "vermilion",
+    "value": "#C23B22",
+    "notes": null
+  },
+  {
+    "token_id": "US063",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_rod",
+    "value": "#6B4A2B",
+    "notes": null
+  },
+  {
+    "token_id": "US064",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "rule_dots",
+    "value": "#A39780",
+    "notes": null
+  },
+  {
+    "token_id": "US065",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "bar_player",
+    "value": "#22305A",
+    "notes": null
+  },
+  {
+    "token_id": "US066",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "bar_undecided",
+    "value": "#B8AD97",
+    "notes": null
+  },
+  {
+    "token_id": "US067",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "bar_opponent",
+    "value": "party colour",
+    "notes": null
+  },
+  {
+    "token_id": "US068",
+    "style": "woodblock",
+    "group": "font",
+    "token": "display",
+    "value": "Antaka Brush Display",
+    "notes": null
+  },
+  {
+    "token_id": "US069",
+    "style": "woodblock",
+    "group": "font",
+    "token": "body",
+    "value": "Shippori Mincho B1",
+    "notes": null
+  },
+  {
+    "token_id": "US070",
+    "style": "woodblock",
+    "group": "size_pt",
+    "token": "title",
+    "value": "30",
+    "notes": null
+  },
+  {
+    "token_id": "US071",
+    "style": "woodblock",
+    "group": "size_pt",
+    "token": "heading",
+    "value": "19",
+    "notes": null
+  },
+  {
+    "token_id": "US072",
+    "style": "woodblock",
+    "group": "size_pt",
+    "token": "body",
+    "value": "15",
+    "notes": null
+  },
+  {
+    "token_id": "US073",
+    "style": "woodblock",
+    "group": "size_pt",
+    "token": "small",
+    "value": "12",
+    "notes": null
+  },
+  {
+    "token_id": "US074",
+    "style": "woodblock",
+    "group": "size_pt",
+    "token": "minimum",
+    "value": "11",
+    "notes": null
+  },
+  {
+    "token_id": "US075",
+    "style": "woodblock",
+    "group": "border_px",
+    "token": "ink",
+    "value": "2",
+    "notes": null
+  },
+  {
+    "token_id": "US076",
+    "style": "woodblock",
+    "group": "border_px",
+    "token": "print_frame",
+    "value": "6",
+    "notes": null
+  },
+  {
+    "token_id": "US077",
+    "style": "woodblock",
+    "group": "layout",
+    "token": "support_count",
+    "value": "framed_bar",
+    "notes": null
+  },
+  {
+    "token_id": "US078",
+    "style": "woodblock",
+    "group": "layout",
+    "token": "cue",
+    "value": "hanging_scroll",
+    "notes": null
+  },
+  {
+    "token_id": "US079",
+    "style": "woodblock",
+    "group": "layout",
+    "token": "hand",
+    "value": "overlap_row",
+    "notes": null
+  },
+  {
+    "token_id": "US080",
+    "style": "shared",
+    "group": "shared",
+    "token": "touch_target_min_pt",
+    "value": "44",
+    "notes": null
+  },
+  {
+    "token_id": "US081",
+    "style": "shared",
+    "group": "shared",
+    "token": "contrast_text_min",
+    "value": "4.5",
+    "notes": null
+  },
+  {
+    "token_id": "US082",
+    "style": "shared",
+    "group": "shared",
+    "token": "contrast_icon_min",
+    "value": "3.0",
+    "notes": null
+  },
+  {
+    "token_id": "US083",
+    "style": "shared",
+    "group": "shared",
+    "token": "play_lift_px",
+    "value": "220",
+    "notes": null
+  }
+]

@@ -13,7 +13,8 @@
     "music_battle_sound": null,
     "dining_variant": null,
     "tour_variant": null,
-    "calendar_style": null
+    "calendar_style": null,
+    "ui_style": null
   },
   {
     "package_id": "CP02",
@@ -29,7 +30,8 @@
     "music_battle_sound": null,
     "dining_variant": null,
     "tour_variant": null,
-    "calendar_style": null
+    "calendar_style": null,
+    "ui_style": null
   },
   {
     "package_id": "CP03",
@@ -45,7 +47,8 @@
     "music_battle_sound": null,
     "dining_variant": "ALT",
     "tour_variant": null,
-    "calendar_style": null
+    "calendar_style": null,
+    "ui_style": null
   },
   {
     "package_id": "CP04",
@@ -61,7 +64,8 @@
     "music_battle_sound": null,
     "dining_variant": null,
     "tour_variant": "ALT",
-    "calendar_style": null
+    "calendar_style": null,
+    "ui_style": null
   },
   {
     "package_id": "CP05",
@@ -77,7 +81,8 @@
     "music_battle_sound": null,
     "dining_variant": null,
     "tour_variant": null,
-    "calendar_style": "era"
+    "calendar_style": "era",
+    "ui_style": null
   },
   {
     "package_id": "CP06",
@@ -93,6 +98,41 @@
     "music_battle_sound": null,
     "dining_variant": null,
     "tour_variant": null,
-    "calendar_style": "ainu"
+    "calendar_style": "ainu",
+    "ui_style": null
+  },
+  {
+    "package_id": "CP07",
+    "name_en": "Broadcast",
+    "name_jp": "ブロードキャスト",
+    "description": "Political drama on air: gold rules, captions and big cut-ins.",
+    "icon": null,
+    "cost_xp": 1,
+    "cost_yen": null,
+    "outfit_variant": null,
+    "background_variant": null,
+    "music_office_sound": null,
+    "music_battle_sound": null,
+    "dining_variant": null,
+    "tour_variant": null,
+    "calendar_style": null,
+    "ui_style": "broadcast"
+  },
+  {
+    "package_id": "CP08",
+    "name_en": "Woodblock",
+    "name_jp": "木版",
+    "description": "A printed Yezo: washi, indigo and seal stamps.",
+    "icon": null,
+    "cost_xp": 1,
+    "cost_yen": null,
+    "outfit_variant": null,
+    "background_variant": null,
+    "music_office_sound": null,
+    "music_battle_sound": null,
+    "dining_variant": null,
+    "tour_variant": null,
+    "calendar_style": null,
+    "ui_style": "woodblock"
   }
 ]

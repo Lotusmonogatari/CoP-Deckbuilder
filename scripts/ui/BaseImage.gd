@@ -15,6 +15,18 @@ const PLATE_COLOUR := Color(0.07, 0.08, 0.11, 0.84)
 
 static var _plate_theme: Theme
 static var _faint_plate_theme: Theme
+
+
+## Drops the cached plate themes so the next screen builds them in the new UI style's colours.
+static func reset_cache() -> void:
+	_plate_theme = null
+	_faint_plate_theme = null
+
+
+## The plate colour of the UI style in use (Living Office and Broadcast: dark; Woodblock: paper).
+static func _plate_colour() -> Color:
+	var base := UiStyle.plate_colour()
+	return Color(base.r, base.g, base.b, PLATE_COLOUR.a)
 ## The lighter plate for text that lies over a character picture (PortraitBehind): enough to
 ## read by, faint enough that the picture shows through.
 const FAINT_PLATE_ALPHA := 0.5
@@ -27,13 +39,14 @@ static func plate_theme() -> Theme:
 	if _plate_theme == null:
 		_plate_theme = Theme.new()
 		var plate := StyleBoxFlat.new()
-		plate.bg_color = PLATE_COLOUR
+		plate.bg_color = _plate_colour()
 		plate.set_corner_radius_all(8)
 		plate.content_margin_left = 12.0
 		plate.content_margin_right = 12.0
 		plate.content_margin_top = 4.0
 		plate.content_margin_bottom = 4.0
 		_plate_theme.set_stylebox("normal", "Label", plate)
+		_plate_theme.set_color("font_color", "Label", UiStyle.plate_ink())
 	return _plate_theme
 
 
@@ -43,13 +56,15 @@ static func faint_plate_theme() -> Theme:
 	if _faint_plate_theme == null:
 		_faint_plate_theme = Theme.new()
 		var plate := StyleBoxFlat.new()
-		plate.bg_color = Color(PLATE_COLOUR.r, PLATE_COLOUR.g, PLATE_COLOUR.b, FAINT_PLATE_ALPHA)
+		var base := UiStyle.plate_colour()
+		plate.bg_color = Color(base.r, base.g, base.b, FAINT_PLATE_ALPHA)
 		plate.set_corner_radius_all(8)
 		plate.content_margin_left = 12.0
 		plate.content_margin_right = 12.0
 		plate.content_margin_top = 4.0
 		plate.content_margin_bottom = 4.0
 		_faint_plate_theme.set_stylebox("normal", "Label", plate)
+		_faint_plate_theme.set_color("font_color", "Label", UiStyle.plate_ink())
 	return _faint_plate_theme
 
 

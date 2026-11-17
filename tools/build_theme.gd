@@ -122,7 +122,30 @@ func _init() -> void:
 		return
 
 	print("Wrote %s" % OUTPUT_PATH)
+	_write_style_overlays()
 	quit(0)
+
+
+## One overlay per UI style (P9, 2026-11-17): theme/cop_theme_living.tres, _broadcast.tres and
+## _woodblock.tres. cop_theme.tres stays the base every style is merged over (it is the
+## Broadcast-era look); an overlay holds only the fonts, ink colours and button boxes the style
+## changes. They are built from the tokens in data/ui_styles.json by UiStyleTheme.
+func _write_style_overlays() -> void:
+	var file := FileAccess.open("res://data/ui_styles.json", FileAccess.READ)
+	if file == null:
+		push_error("data/ui_styles.json is missing: run tools/export_data.py first.")
+		return
+	var rows: Array = JSON.parse_string(file.get_as_text())
+	var idx: Dictionary = load("res://scripts/rules/UiStyles.gd").index(rows)
+	var names := {"living_office": "living", "broadcast": "broadcast", "woodblock": "woodblock"}
+	for style: String in names:
+		var overlay: Theme = load("res://scripts/ui/UiStyleTheme.gd").build(style, idx)
+		var path := "res://theme/cop_theme_%s.tres" % names[style]
+		var error := ResourceSaver.save(overlay, path)
+		if error != OK:
+			push_error("Could not save %s: %d" % [path, error])
+		else:
+			print("Wrote %s" % path)
 
 
 ## Scrollbars a thumb can find. Godot's default is a few pixels wide, which

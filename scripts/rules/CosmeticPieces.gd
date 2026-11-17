@@ -20,7 +20,10 @@ const DINING := "dining"
 const TOUR := "tour"
 ## How the Office calendar is written (Era Name, Ainu): see CalendarStyles.
 const CALENDAR := "calendar"
-const SLOTS := [OUTFIT, BACKGROUND, MUSIC, DINING, TOUR, CALENDAR]
+## Which look the screens have (P9, 2026-11-17): "broadcast" or "woodblock".
+## Blank means Living Office, the free default, which is not a package.
+const UI_STYLE := "ui_style"
+const SLOTS := [OUTFIT, BACKGROUND, MUSIC, DINING, TOUR, CALENDAR, UI_STYLE]
 
 
 ## A blank-safe string read: a JSON null cell (a genuinely blank workbook
@@ -49,6 +52,8 @@ static func has_piece(package: Dictionary, slot: String) -> bool:
 			return not field(package, "tour_variant").is_empty()
 		CALENDAR:
 			return not field(package, "calendar_style").is_empty()
+		UI_STYLE:
+			return not field(package, "ui_style").is_empty()
 	return false
 
 

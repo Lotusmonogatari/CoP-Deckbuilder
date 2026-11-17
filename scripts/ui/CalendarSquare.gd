@@ -21,7 +21,8 @@ static func make() -> PanelContainer:
 	square.custom_minimum_size = SIZE
 	square.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var box := StyleBoxFlat.new()
-	box.bg_color = Color(0.08, 0.06, 0.05, 0.92)
+	var plate := UiStyle.plate_colour()
+	box.bg_color = Color(plate.r, plate.g, plate.b, 0.92)
 	box.border_color = CueBanner.EDGE_COLOUR
 	box.set_border_width_all(EDGE_WIDTH)
 	box.set_corner_radius_all(10)
