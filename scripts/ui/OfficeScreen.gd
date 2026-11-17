@@ -318,7 +318,7 @@ func _build() -> void:
 	else:
 		_title.text = name_en
 		_title_party.text = "· %s" % party
-		_title_party.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
+		PartyLabel.apply(_title_party, DataDB.get_party(party))
 		_title_party.show()
 	_subtitle.text = Text.say("office.subtitle_jp")
 
@@ -1395,7 +1395,7 @@ func _protagonist_row(protagonist: Dictionary) -> Control:
 	var party_label := UiKit.line(
 		party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel")
 	if not party.is_empty():
-		party_label.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
+		PartyLabel.apply(party_label, DataDB.get_party(party))
 	box.add_child(party_label)
 	var blurb := str(protagonist.get("blurb", ""))
 	if not blurb.is_empty():
@@ -1533,7 +1533,7 @@ func _show_parties() -> void:
 		if party_id == own:
 			title += " " + Text.say("party_opinion.own_tag")
 		var heading := UiKit.heading(title)
-		heading.add_theme_color_override("font_color", PartyDisplay.color_for(party))
+		PartyLabel.apply(heading, party)
 		box.add_child(heading)
 		box.add_child(UiKit.line(Text.say("party_opinion.line", {
 			"score": detail["opinion"],
@@ -1574,7 +1574,7 @@ func _show_party_detail(party_id: String) -> void:
 		var heading := UiKit.heading(Text.say(
 			"party_opinion.allies_heading" if is_ally else "party_opinion.rivals_heading"))
 		if is_ally:
-			heading.add_theme_color_override("font_color", colour)
+			PartyLabel.apply(heading, party)
 		rows.append(heading)
 		rows.append(UiKit.line(Text.say(
 			"party_opinion.allies_blurb" if is_ally else "party_opinion.rivals_blurb"), "SmallLabel"))

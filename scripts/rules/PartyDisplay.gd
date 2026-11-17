@@ -39,3 +39,29 @@ static func color_for(party: Dictionary) -> Color:
 static func party_name(row: Dictionary) -> String:
 	var party: Variant = row.get("party")
 	return "" if party == null else str(party)
+
+
+## WCAG relative luminance of a colour (0 black to 1 white).
+static func luminance(c: Color) -> float:
+	var parts: Array[float] = []
+	for v: float in [c.r, c.g, c.b]:
+		parts.append(v / 12.92 if v <= 0.04045 else pow((v + 0.055) / 1.055, 2.4))
+	return 0.2126 * parts[0] + 0.7152 * parts[1] + 0.0722 * parts[2]
+
+
+## WCAG contrast ratio of two colours (1 to 21).
+static func contrast(a: Color, b: Color) -> float:
+	var la := luminance(a)
+	var lb := luminance(b)
+	return (maxf(la, lb) + 0.05) / (minf(la, lb) + 0.05)
+
+
+## The plate a party's name is set on (panel P4, item 4, 2026-11-17; Cameron chose a plate per
+## party). The party colour is canon and never changes: the plate is near-white or near-black,
+## whichever reads better against it (every party in the data reaches 4.5 to 1).
+const PLATE_LIGHT := Color(0.96, 0.95, 0.92)
+const PLATE_DARK := Color(0.05, 0.05, 0.07)
+
+
+static func plate_for(party_colour: Color) -> Color:
+	return PLATE_LIGHT if contrast(party_colour, PLATE_LIGHT) >= contrast(party_colour, PLATE_DARK) else PLATE_DARK

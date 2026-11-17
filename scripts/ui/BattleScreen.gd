@@ -776,9 +776,11 @@ func _refresh_details_orgs(engine: BattleEngine) -> void:
 		for booster_id: String in scrutiny:
 			if not OrgChip.name_of(booster_id).is_empty():
 				flow.add_child(OrgChip.make(booster_id, 0, false, 80.0, false, str(tastes.get(booster_id, ""))))
-		rows.append(flow)
-	rows.append_array(StanceLines.org_group("battle.pleased_heading", engine.pleased_boosters(), true))
-	rows.append_array(StanceLines.org_group("battle.annoyed_heading", engine.displeased_boosters(), false))
+		rows.append(IconPlate.wrap(flow))
+	for group_rows: Array[Control] in [StanceLines.org_group("battle.pleased_heading", engine.pleased_boosters(), true),
+			StanceLines.org_group("battle.annoyed_heading", engine.displeased_boosters(), false)]:
+		for row: Control in group_rows:
+			rows.append(IconPlate.wrap(row) if row is HFlowContainer else row)
 	if rows.is_empty():
 		return
 	var box := VBoxContainer.new()
@@ -797,7 +799,7 @@ func _show_party_line(label: Label, party: String) -> void:
 		label.hide()
 		return
 	label.text = " · %s" % party
-	label.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
+	PartyLabel.apply(label, DataDB.get_party(party))
 	label.show()
 
 
