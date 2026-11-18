@@ -18,3 +18,17 @@ func test_a_band_piece_is_a_closed_shape_inside_the_ring() -> void:
 		assert_gte(pts.size(), 6)
 		for p: Vector2 in pts:
 			assert_true(p.distance_to(centre) >= 160.0 * 0.97 and p.distance_to(centre) <= 200.01, "inside the ring")
+
+
+## Broadcast's two feet are mirror images (the right one used to run flat while the left leaned).
+func test_the_band_feet_are_mirror_images() -> void:
+	var centre := Vector2(500, 500)
+	var pts := SeatsMeter._band(centre, 160.0, 200.0, PI, TAU, SeatsMeter.BROADCAST_FACETS, SeatsMeter.BROADCAST_LEAN)
+	for p: Vector2 in pts:
+		var mirrored := Vector2(2.0 * centre.x - p.x, p.y)
+		var found := false
+		for q: Vector2 in pts:
+			if q.distance_to(mirrored) < 0.5:
+				found = true
+				break
+		assert_true(found, "%s has a mirror image" % p)

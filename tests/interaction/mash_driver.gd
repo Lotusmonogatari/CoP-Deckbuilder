@@ -139,7 +139,7 @@ func _check_card_double_drag() -> void:
 	for card_id: String in hand_before:
 		cost_before[card_id] = engine.card_cost(DataDB.get_card(card_id))
 	var start := HandPoint.center(card)
-	var lift := start + Vector2(0, -(CardView.PLAY_LIFT + 120))
+	var lift := start + Vector2(0, -(card.pull_to_play() + CardView.LIFT_START + 120))
 
 	# Two full drag-up gestures, back to back, no settle wait between the
 	# first release and the second press — the same starting screen point

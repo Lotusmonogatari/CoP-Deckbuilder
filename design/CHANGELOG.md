@@ -1292,3 +1292,11 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 ## 2026-11-18: Broadcast and Woodblock draw the semicircle too
 
 - Every style now draws the battle bar as the semicircle (seats for Floor Debate and the special committees, a continuous arc for everything else), each in its own look. **Broadcast:** angular facets with slanted divisions, gold along the outer and inner rims (the bar's gold top and bottom), diamond seats edged in gold. **Woodblock:** a printed band with an ink edge, a vermilion offset shadow and ink division lines, printed discs for seats with the same shadow. The caption and the readout are centred and sized to their words, so Woodblock's plates no longer run across the arc. Visual only; the numbers and the straight bar code are unchanged.
+
+## 2026-11-18: Polish: symmetrical Broadcast arc, longer card pull, no jolt, bars name their metric, New Game strips
+
+- **Broadcast arc:** both feet are now mirror images (the right foot ran flat while the left leaned), and the inner gold rim stops at the leaned ends.
+- **Card pull:** letting go plays a card once its bottom edge has been pulled up to halfway up the screen (never less than the old 220 px). The held card follows the finger all the way, so the Guard and Gaffes counters are drawn above it instead of the card stopping beneath them.
+- **No jolt:** the held card used to leap by the lift distance (about 30 px) as the drag took over from the press; it now follows the finger from where the lift begins.
+- **Battle bars name their metric:** the row under "80% to advance" says what it measures (Favorability, Appeasement, Seats...), unless the sentence already does.
+- **New Game screen:** the difficulty and theme squares share their half of the row, so they fit with no scrolling and no cut-off, and the buttons' outlines are the title screen's gold.

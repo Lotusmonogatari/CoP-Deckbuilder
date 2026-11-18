@@ -54,10 +54,15 @@ var _read_tag: Label = null
 const SELECT_TINT := Color(1.0, 0.92, 0.6)
 const PICK_TINT := Color(1.0, 0.62, 0.62)
 
-## How far up a press must move before the card lifts, and how far it must
-## rise before letting go plays it.
+## How far up a press must move before the card lifts. The card then follows the finger from that point
+## (so it never jumps when the lift begins).
 const LIFT_START := 30.0
+## The least a card must travel before letting go plays it. The real distance is the one that brings the
+## card's bottom edge up to PLAY_SCREEN_FRACTION of the way up the screen (pull_to_play), never less than this.
 const PLAY_LIFT := 220.0
+## Letting go plays the card once its bottom edge has risen to this fraction of the screen height from the
+## top (0.5 = halfway up the screen), Cameron, 2026-11-18.
+const PLAY_SCREEN_FRACTION := 0.5
 
 ## The tint a lifted card takes once letting go would play it.
 const READY_TINT := Color(1.0, 0.93, 0.6)
@@ -184,10 +189,8 @@ var _pressing := false
 var _lifting := false
 ## The glow behind a held card, in the player's party colour. Built on the first lift.
 var _halo: Panel = null
-## How far the card may RISE on screen while held (the finger can travel further: playing still needs PLAY_LIFT
-## of travel). The battle screen sets it so the card stops below the Guard and Gaffes counters instead of
-## covering them mid-drag (P9 tidy). INF = no limit.
-var max_rise := INF
+## How far this held card must travel before letting go plays it (set when the lift begins).
+var play_lift := PLAY_LIFT
 var _rest_y := 0.0
 
 
@@ -532,7 +535,7 @@ func _gui_input(event: InputEvent) -> void:
 			_lifting = false
 		else:
 			if _lifting:
-				_drop(_press_at.y - button.global_position.y)
+				_drop(maxf(_press_at.y - button.global_position.y - LIFT_START, 0.0))
 			_pressing = false
 		return
 
@@ -542,13 +545,23 @@ func _gui_input(event: InputEvent) -> void:
 		if not _lifting and up > LIFT_START and up > absf(where.x - _press_at.x):
 			_lift()
 		if _lifting:
-			position.y = _rest_y - minf(maxf(up, 0.0), max_rise)
-			self_modulate = READY_TINT if up >= PLAY_LIFT else Color.WHITE
-			_show_halo(clampf((up / PLAY_LIFT - HALO_START) / (1.0 - HALO_START), 0.0, 1.0))
+			# The card follows the finger from where the lift began, so it flows on from the press with no jump.
+			var travel := maxf(up - LIFT_START, 0.0)
+			position.y = _rest_y - travel
+			self_modulate = READY_TINT if travel >= play_lift else Color.WHITE
+			_show_halo(clampf((travel / play_lift - HALO_START) / (1.0 - HALO_START), 0.0, 1.0))
 			accept_event()
 
 
+## How far a card must travel up for letting go to play it: enough to bring its bottom edge to halfway up the
+## screen (PLAY_SCREEN_FRACTION), and never less than PLAY_LIFT.
+func pull_to_play() -> float:
+	var screen_height := get_viewport_rect().size.y if get_viewport() != null else 0.0
+	return maxf(PLAY_LIFT, get_global_rect().end.y - screen_height * PLAY_SCREEN_FRACTION)
+
+
 func _lift() -> void:
+	play_lift = pull_to_play()
 	_lifting = true
 	clip_contents = false   # the halo glows outside the card's own edge
 	lifted.emit(card_id)
@@ -604,7 +617,6 @@ func _show_halo(strength: float) -> void:
 func _drop(risen: float) -> void:
 	_lifting = false
 	clip_contents = true
-	max_rise = INF
 	if _halo != null:
 		_halo.hide()
 	z_index = 0
@@ -618,7 +630,7 @@ func _drop(risen: float) -> void:
 		container.queue_sort()   # back into its place in the hand
 	else:
 		position.y = _rest_y
-	if risen >= PLAY_LIFT:
+	if risen >= play_lift:
 		flung.emit(card_id)
 
 

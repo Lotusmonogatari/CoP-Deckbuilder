@@ -1629,38 +1629,33 @@ func _swipe_strip(strip_name: String, heading: String, entries: Array, selected:
 	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.custom_minimum_size.x = (UiKit.LINE_WIDTH - 20.0) * 0.5
 	column.add_child(title)
-	var scroll := ScrollContainer.new()
-	scroll.name = "Swipe"
-	scroll.set_meta("swipe_strip", true)   # its squares past the edge are reached by swiping (the text sweep knows)
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
-	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	scroll.custom_minimum_size = Vector2((UiKit.LINE_WIDTH - 20.0) * 0.5, NEW_GAME_SQUARE + 12.0)
-	scroll.get_h_scroll_bar().modulate.a = 0.0   # swiping, not a bar, moves it
-	column.add_child(scroll)
+	# Three small squares that fit their half of the row: nothing to scroll or cut off.
 	var strip := HBoxContainer.new()
-	strip.add_theme_constant_override("separation", 12)
-	scroll.add_child(strip)
-	var picked_button: Control = null
+	strip.name = "Squares"
+	strip.add_theme_constant_override("separation", NEW_GAME_SQUARE_GAP)
+	column.add_child(strip)
 	for entry: Array in entries:
 		var button := Button.new()
 		button.name = "%s_%s" % [strip_name, str(entry[0])]
 		button.text = str(entry[1])
+		# As wide as their share of the half row (at least NEW_GAME_SQUARE), so they never overflow or wrap mid-word.
 		button.custom_minimum_size = Vector2(NEW_GAME_SQUARE, NEW_GAME_SQUARE)
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.clip_text = true
+		button.add_theme_font_size_override("font_size", NEW_GAME_SQUARE_FONT)
 		button.toggle_mode = true
 		button.button_pressed = str(entry[0]) == selected
-		if button.button_pressed:
-			picked_button = button
 		button.pressed.connect(Haptics.confirm)
 		button.pressed.connect(on_pick.bind(str(entry[0])))
 		strip.add_child(button)
-	# Bring the chosen square into view once the strip has a size.
-	if picked_button != null:
-		scroll.ensure_control_visible.call_deferred(picked_button)
 	return column
 
 
-const NEW_GAME_SQUARE := 170.0
+## The least a square gets: three of them and their gaps (3 x 104 + 2 x 8 = 328) fit even the narrowest half row (370).
+const NEW_GAME_SQUARE := 104.0
+const NEW_GAME_SQUARE_GAP := 8
+const NEW_GAME_SQUARE_FONT := 22
 
 
 ## A theme picked on the New Game screen: try it at once. The look is read as a screen builds, so the
@@ -1695,6 +1690,8 @@ func _adopt_chosen_style() -> void:
 ## button. `first_run` is the very first launch: backing out of it still
 ## leaves the player as the default protagonist, so there is a run to save.
 func _show_new_game(first_run: bool) -> void:
+	# The New Game screen's button outlines are the gold of the title screen, not the old run's party colour.
+	Layout.set_outline_override(CueBanner.EDGE_COLOUR, true)
 	var rows: Array[Control] = [UiKit.line(Text.say("new_game.blurb"))]
 	# Campaign Pressure (Difficulty.gd) on the left and the display theme on the right, each a strip of
 	# square buttons to swipe through. Difficulty is raised later in Administration; the theme is free here.
@@ -1784,6 +1781,7 @@ func _starting_stat_lines(protagonist: Dictionary) -> Array[String]:
 
 
 func _on_protagonist_chosen(player_id: String) -> void:
+	Layout.set_outline_override(Color(0, 0, 0, 0), false)
 	if _new_game_panel.closed.is_connected(_on_first_run_closed):
 		_new_game_panel.closed.disconnect(_on_first_run_closed)
 	if _new_game_panel.closed.is_connected(_on_new_game_dismissed):
@@ -1806,6 +1804,7 @@ func _on_protagonist_chosen(player_id: String) -> void:
 ## Backed out of New Game from Administration: the run carries on as it was, in the style it had.
 func _on_new_game_dismissed() -> void:
 	_new_game_panel.closed.disconnect(_on_new_game_dismissed)
+	Layout.set_outline_override(Color(0, 0, 0, 0), false)
 	_pending_pressure = Difficulty.STANDARD
 	if not UiStyle.trying.is_empty():
 		UiStyle.trying = ""
@@ -1817,6 +1816,7 @@ func _on_new_game_dismissed() -> void:
 ## next launch does not ask again from nothing.
 func _on_first_run_closed() -> void:
 	_new_game_panel.closed.disconnect(_on_first_run_closed)
+	Layout.set_outline_override(Color(0, 0, 0, 0), false)
 	if GameState.awaiting_new_game:
 		var chosen_style := UiStyle.current()
 		GameState.start_new_run(str(DataDB.player.get("player_id", "")))

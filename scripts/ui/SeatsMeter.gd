@@ -149,7 +149,7 @@ static func _draw_styled_band(canvas: Control, centre: Vector2, radius: float, p
 	if not angular:
 		canvas.draw_colored_polygon(_band(centre + Vector2(6, 6), inner, radius, PI, TAU, facets, 0.0), shadow)
 	# The unfilled track.
-	canvas.draw_colored_polygon(_band(centre, inner, radius, PI, TAU, facets, 0.0), OUTLINE if angular else Color(ink.r, ink.g, ink.b, 0.25))
+	canvas.draw_colored_polygon(_band(centre, inner, radius, PI, TAU, facets, lean), OUTLINE if angular else Color(ink.r, ink.g, ink.b, 0.25))
 	var cursor := 0.0
 	for part: Array in parts:
 		var amount := maxf(float(part[0]), 0.0)
@@ -162,7 +162,7 @@ static func _draw_styled_band(canvas: Control, centre: Vector2, radius: float, p
 	if angular:
 		# Gold along the outer and inner rims only, none on the ends.
 		canvas.draw_polyline(_rim(centre, radius, facets), gold, 4.0, true)
-		canvas.draw_polyline(_rim(centre, inner, facets), gold, 4.0, true)
+		canvas.draw_polyline(_rim_between(centre, inner, PI + lean, TAU - lean, facets), gold, 4.0, true)
 	else:
 		# An ink edge all round, and a thin ink line where one share meets the next.
 		var outline := _rim(centre, radius, facets)
@@ -194,6 +194,20 @@ static func _rim(centre: Vector2, r: float, facets: int) -> PackedVector2Array:
 	return points
 
 
+## The faceted rim at `r` from angle `a0` to `a1` (the ends sit exactly on the edge).
+static func _rim_between(centre: Vector2, r: float, a0: float, a1: float, facets: int) -> PackedVector2Array:
+	var step := PI / float(facets)
+	var points := PackedVector2Array()
+	points.append(_rim_point(centre, r, a0, facets))
+	var k := ceili((a0 - PI) / step + 0.0001)
+	while PI + float(k) * step < a1 - 0.0001:
+		var a := PI + float(k) * step
+		points.append(centre + Vector2(cos(a), sin(a)) * r)
+		k += 1
+	points.append(_rim_point(centre, r, a1, facets))
+	return points
+
+
 ## The point on the faceted rim at angle `a`: on the straight chord between its two grid vertices, so a
 ## division always sits exactly on the drawn edge.
 static func _rim_point(centre: Vector2, r: float, a: float, facets: int) -> Vector2:
@@ -217,8 +231,10 @@ static func _band(centre: Vector2, inner: float, outer: float, from: float, to: 
 		k += 1
 	pts.append(_rim_point(centre, outer, to, facets))
 	# The inner edge back again, leaning.
-	var from_in := clampf(from + lean, PI, TAU)
-	var to_in := clampf(to + lean, PI, TAU)
+	# Inner edges lean the same way inside the band; at the band's two ends they lean toward each other, so the
+	# left and right feet are mirror images (the right end used to run flat against the clamp).
+	var from_in := PI + lean if from <= PI + 0.0001 and lean > 0.0 else clampf(from + lean, PI, TAU)
+	var to_in := TAU - lean if to >= TAU - 0.0001 and lean > 0.0 else clampf(to + lean, PI, TAU)
 	pts.append(_rim_point(centre, inner, to_in, facets))
 	var j := floori((to_in - PI) / step - 0.0001)
 	while PI + float(j) * step > from_in + 0.0001:

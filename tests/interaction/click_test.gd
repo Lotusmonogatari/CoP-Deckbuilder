@@ -203,7 +203,7 @@ func _check_drag_card_to_play() -> void:
 		_failures.append("a short lift played the card anyway")
 		return
 
-	await _drag(start, start + Vector2(0, -(CardView.PLAY_LIFT + 120)))
+	await _drag(start, start + Vector2(0, -(card.pull_to_play() + CardView.LIFT_START + 120)))
 	if _screen.get_node("%CardZoom").visible:
 		_failures.append("dragging a card up opened the zoom instead of playing it")
 	elif engine.state.hand.size() >= held and engine.state.discard.is_empty():

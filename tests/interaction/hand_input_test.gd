@@ -81,15 +81,40 @@ func _one(style: String) -> void:
 	if card != null and absf(card.get_global_rect().position.y - resting_y) > 2.0:
 		_failures.append("%s: the card did not settle after the tap" % style)
 
-	# The party-colour halo (P9): none before the drag is halfway to a play, some after, none after letting go.
+	# The held card follows the finger from the moment the lift begins: no jump as the drag takes over from
+	# the press (it used to leap by the lift distance).
 	card = _playable(screen)
 	if card == null:
 		return
 	var from := HandPoint.center(card)
-	await _drag(from, from + Vector2(0, -CardView.PLAY_LIFT * 0.4), 8, func() -> void:
+	Input.parse_input_event(_event(true, from))
+	await get_tree().process_frame
+	var before_y := card.global_position.y
+	var transform := get_viewport().get_screen_transform()
+	for up in [CardView.LIFT_START * 0.5, CardView.LIFT_START + 12.0]:
+		var motion := InputEventMouseMotion.new()
+		motion.position = transform * (from + Vector2(0, -up))
+		motion.global_position = motion.position
+		motion.button_mask = MOUSE_BUTTON_MASK_LEFT
+		Input.parse_input_event(motion)
+		await get_tree().process_frame
+	await get_tree().process_frame
+	var jump := absf(card.global_position.y - before_y)
+	if jump > 20.0:
+		_failures.append("%s: the card jumped %.0f px as the drag began" % [style, jump])
+	Input.parse_input_event(_event(false, from + Vector2(0, -(CardView.LIFT_START + 12.0))))
+	await get_tree().create_timer(0.3).timeout
+
+	# The party-colour halo (P9): none before the drag is halfway to a play, some after, none after letting go.
+	card = _playable(screen)
+	if card == null:
+		return
+	from = HandPoint.center(card)
+	var need := card.pull_to_play()
+	await _drag(from, from + Vector2(0, -(CardView.LIFT_START + need * 0.4)), 8, func() -> void:
 		if card.halo_strength() > 0.0:
 			_failures.append("%s: the halo shows before the drag is halfway" % style))
-	await _drag(from, from + Vector2(0, -CardView.PLAY_LIFT * 0.8), 10, func() -> void:
+	await _drag(from, from + Vector2(0, -(CardView.LIFT_START + need * 0.8)), 10, func() -> void:
 		var strength := card.halo_strength()
 		if strength < CardView.HALO_MIN_ALPHA or strength >= 1.0:
 			_failures.append("%s: the halo should be partway at 80%% of the pull (got %s)" % [style, strength]))
@@ -97,27 +122,42 @@ func _one(style: String) -> void:
 	if card.halo_strength() > 0.0:
 		_failures.append("%s: the halo stays after letting go" % style)
 
-	# A drag up plays it.
+	# Short of halfway up the screen, letting go plays nothing.
+	card = _playable(screen)
+	if card == null:
+		return
+	var held_short: int = screen.engine.state.hand.size()
+	from = HandPoint.center(card)
+	need = card.pull_to_play()
+	await _drag(from, from + Vector2(0, -(CardView.LIFT_START + need * 0.9)))
+	await get_tree().create_timer(0.3).timeout
+	if screen.engine.state.hand.size() != held_short:
+		_failures.append("%s: a drag that left the card's bottom below halfway up the screen played it" % style)
+
+	# A drag that takes the card's bottom up to halfway plays it.
 	card = _playable(screen)
 	if card == null:
 		return
 	var held: int = screen.engine.state.hand.size()
 	var energy: int = screen.engine.state.energy
 	var start := HandPoint.center(card)
+	need = card.pull_to_play()
 	var guard := screen.get_node("%GuardLabel") as Control
 	var gaffes := screen.get_node("%GaffeLabel") as Control
-	await _drag(start, start + Vector2(0, -(CardView.PLAY_LIFT + 120)), 12, func() -> void:
+	var screen_height := get_viewport().get_visible_rect().size.y
+	await _drag(start, start + Vector2(0, -(CardView.LIFT_START + need + 20.0)), 12, func() -> void:
 		# Mid-drag, the held card stays on top of its neighbours (it dropped beneath them once the drag began).
 		for other in card.get_parent().get_children():
 			if other is CardView and other != card and (other as CardView).z_index >= card.z_index:
 				_failures.append("%s: a neighbouring card is drawn over the held card" % style)
 				break
-		# Mid-drag, the lifted card must not cover the Guard or Gaffes counters (P9 tidy).
-		var rect := card.get_global_rect()
-		if rect.intersects(guard.get_global_rect()):
-			_failures.append("%s: the lifted card covers the Guard counter (card %s, counter %s)" % [style, rect, guard.get_global_rect()])
-		if rect.intersects(gaffes.get_global_rect()):
-			_failures.append("%s: the lifted card covers the Gaffes counter (card %s, counter %s)" % [style, rect, gaffes.get_global_rect()]))
+		# The card has followed the finger up to halfway, and the Guard and Gaffes counters are drawn above it.
+		if card.get_global_rect().end.y > screen_height * CardView.PLAY_SCREEN_FRACTION + 4.0:
+			_failures.append("%s: the card's bottom is at %.0f, below halfway (%.0f)" % [style, card.get_global_rect().end.y, screen_height * 0.5])
+		for counter: Control in [guard, gaffes]:
+			if counter.z_as_relative or counter.z_index <= card.z_index:
+				_failures.append("%s: the %s counter is not drawn above the held card" % [style, counter.name])
+				break)
 	await get_tree().create_timer(0.4).timeout
 	if screen.engine.state.hand.size() >= held and screen.engine.state.energy >= energy:
 		_failures.append("%s: a drag up did not play the card" % style)
