@@ -161,6 +161,10 @@ func _one(style: String) -> void:
 	await get_tree().create_timer(0.4).timeout
 	if screen.engine.state.hand.size() >= held and screen.engine.state.energy >= energy:
 		_failures.append("%s: a drag up did not play the card" % style)
+	# Once the card is let go the counters are ordinary again (they dim with the screen when a stage ends).
+	for counter: Control in [guard, gaffes]:
+		if not counter.z_as_relative or counter.z_index != 0:
+			_failures.append("%s: the %s counter stays drawn above everything after the drop" % [style, counter.name])
 
 
 func _event(pressed: bool, at: Vector2) -> InputEventMouseButton:

@@ -116,6 +116,12 @@ func _answer_current_visitor(screen: Node) -> bool:
 
 
 func _click(control: Control) -> void:
+	# The question is also said aloud as a cue, which lies over the choices until it is tapped away (the cue
+	# banner's own rule): clear it before clicking an answer, as the next real tap would.
+	if str(control.name).begins_with("Choice"):
+		var cue := get_tree().current_scene.get_node_or_null("CueBanner") as CueBanner
+		if cue != null:
+			cue.clear()
 	await get_tree().process_frame
 	var rect := control.get_global_rect()
 	if rect.size.x <= 0.0 or rect.size.y <= 0.0:

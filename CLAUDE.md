@@ -294,3 +294,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Broadcast and Woodblock draw the semicircle too, in their own looks (2026-11-18, Cameron)
 - Polish: symmetrical Broadcast arc, longer card pull, no jolt, bars name their metric, New Game strips (2026-11-18, Cameron)
 - Bar caption on two rows; one chip for every organization icon (2026-11-18, Cameron)
+- Question text audit, Guard and Gaffes dim again, bar grammar (2026-11-18, Cameron)

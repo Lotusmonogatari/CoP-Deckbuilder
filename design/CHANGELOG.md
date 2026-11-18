@@ -1305,3 +1305,9 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 
 - **Bar caption** (Cameron): "[Number] of [Metric]" on one row and "to Advance" or "to Win" on the next, inside the arc: for example "80% of Favorability" over "to Advance". It replaces the separate metric line added earlier today. Text rows `bar.amount_of_metric`, `bar.to_win` and `bar.to_advance` (the last two now hold only "to Win" and "to Advance").
 - **Organization icons** (Cameron): every icon in the battle's listening strip sits on the same light chip at 50% see-through, instead of a light or dark chip chosen per icon. The seat ring's per-colour rule is unchanged.
+
+## 2026-11-18: Question text audit; Guard and Gaffes dim again; bar grammar
+
+- **Questions unreadable:** on the Office Hours visitor, member visit and lobbyist trade screens the question sat in light ink on the light lower panel (measured 1.0 to 1.2 to 1: invisible in Living Office and Broadcast; Woodblock's own plaque hid it). It now sits on the style's plate (13 to 1 and better, measured from pixels). The visitor, member or lobbyist also says the question aloud as a cue, as every other spoken line is; the cue gives way to their reply when an answer is picked.
+- **Guard and Gaffes at full brightness through the end-of-stage fade:** my "counters above the held card" change left them drawn above everything all the time. They now rise above the card only while a card is held, and dim with the rest of the screen otherwise (a check in `hand_input_test`).
+- **Bar grammar:** "of" read wrongly for most bars. The first row is now "[Number] [Metric]" for a count or a share ("51 Seats", "20 Members", "80% Favorability") and "[Number] points of [Metric]" for a score on a scale ("55 points of Press tone", "65 points of Viewer Interest"); the second row is "to Win" or "to Advance". Text rows `bar.amount_metric` and `bar.amount_points` replace `bar.amount_of_metric`.

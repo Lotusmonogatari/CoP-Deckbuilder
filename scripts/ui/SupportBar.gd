@@ -219,7 +219,8 @@ func _refresh() -> void:
 		# threshold ends ONE debater and the next rises, so a player told
 		# "55 seats to win" reasonably expects the stage to be over.
 		var key := "bar.to_win" if threshold_wins_stage else "bar.to_advance"
-		_caption.text = two_row_caption(_amount(threshold), unit, Text.say(key))
+		_caption.text = two_row_caption(_amount(threshold), unit, Text.say(key),
+			not as_percent and not BarModel.draws_as_seats(model_kind, as_percent))
 	elif as_percent:
 		_caption.text = Text.say("bar.take_the_room")
 	else:
@@ -239,10 +240,14 @@ func _refresh() -> void:
 	})
 
 
-## "[Number] of [Metric]" over "to Win" / "to Advance" (the metric is left out when the bar has none).
-static func two_row_caption(figure: String, metric: String, to_line: String) -> String:
+## The caption's two rows: the figure with its metric, then "to Win" / "to Advance". How the first row reads
+## depends on what the bar counts, so the grammar is right for each: a count or a share takes the metric as its
+## noun ("51 Seats", "80% Favorability"); a score on a scale is "points of" it ("55 points of Press tone").
+static func two_row_caption(figure: String, metric: String, to_line: String, scored: bool = false) -> String:
 	var name := metric.strip_edges()
-	var first := figure if name.is_empty() else Text.say("bar.amount_of_metric", {"amount": figure, "metric": name})
+	var first := figure
+	if not name.is_empty():
+		first = Text.say("bar.amount_points" if scored else "bar.amount_metric", {"amount": figure, "metric": name})
 	return first + "\n" + to_line
 
 
