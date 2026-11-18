@@ -68,6 +68,8 @@ const LIVING_READOUT_TOP_SHORT := 150.0
 ## the default red), so each opponent is one colour (Cameron, 2026-11-17). BattleScreen sets it.
 var opponent_colour := Color(0.55, 0.11, 0.18): set = _set_opponent_colour
 var _living := false
+## The UI style the semicircle is dressed in.
+var _look := UiStyles.LIVING_OFFICE
 ## Which kind of bar this is (a TV debate is a survival bar, a press conference a single score).
 var model_kind := BarModel.Model.SHARED_POOL
 var _living_height := LIVING_HEIGHT
@@ -157,19 +159,26 @@ func _set_two_sided(value: bool) -> void:
 
 
 func _ready() -> void:
-	_living = not Engine.is_editor_hint() and UiStyle.current() == UiStyles.LIVING_OFFICE
+	# Every style draws the semicircle now (Cameron, 2026-11-18); each dresses it in its own look.
+	_living = not Engine.is_editor_hint()
+	_look = UiStyle.current() if _living else UiStyles.LIVING_OFFICE
 	var short_screen := not Engine.is_editor_hint() and get_viewport() != null \
 		and get_viewport().get_visible_rect().size.y < SHORT_SCREEN
 	_living_height = LIVING_HEIGHT_SHORT if short_screen else LIVING_HEIGHT
 	var readout_top := LIVING_READOUT_TOP_SHORT if short_screen else LIVING_READOUT_TOP
 	custom_minimum_size.y = (readout_top + 48.0) if _living else HEIGHT + 84.0
 	if _living:
-		_caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		_caption.set_anchors_preset(Control.PRESET_TOP_WIDE)
+		# Centred, each as wide as its own words: a style that puts a plate behind a label (Woodblock) then
+		# draws a small plate, not one across the whole width over the arc's feet.
+		for label: Label in [_caption, _readout]:
+			label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			label.set_anchors_preset(Control.PRESET_CENTER_TOP)
+			label.grow_horizontal = Control.GROW_DIRECTION_BOTH
+			label.offset_left = 0.0
+			label.offset_right = 0.0
+			label.size = Vector2.ZERO
 		_caption.offset_top = _living_height - 64.0
 		_caption.offset_bottom = _living_height - 8.0
-		_readout.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		_readout.set_anchors_preset(Control.PRESET_TOP_WIDE)
 		_readout.offset_top = readout_top
 		_readout.offset_bottom = readout_top + 44.0
 	_refresh()
@@ -273,16 +282,22 @@ func _draw() -> void:
 ## Living Office: seats for a room of people, a continuous arc for anything else.
 func _draw_living(width: float) -> void:
 	var rect := Rect2(0, 0, width, _living_height)
+	var living := _look == UiStyles.LIVING_OFFICE
 	var colours := {
-		"player": player_fill(player_colour, UiStyle.colour("seat_player", PLAYER_COLOR)),
-		"undecided": UiStyle.colour("seat_undecided", UNDECIDED_COLOR),
+		"player": player_fill(player_colour, UiStyle.colour("seat_player" if living else "bar_player", PLAYER_COLOR)),
+		"undecided": UiStyle.colour("seat_undecided" if living else "bar_undecided", UNDECIDED_COLOR),
 		"opponent": opponent_colour,
+	}
+	var trim := {
+		"gold": UiStyle.colour("gold", Color(0.89, 0.7, 0.25)),
+		"ink": UiStyle.colour("ink", Color(0.11, 0.1, 0.09)),
+		"shadow": UiStyle.colour("vermilion", Color(0.76, 0.23, 0.13)),
 	}
 	var seats := Levers.whole("ui_style_seat_count")
 	if BarModel.draws_as_seats(model_kind, as_percent):
 		SeatsMeter.draw_seats(self, rect, SeatsMeter.seat_split(maximum, player, opponent, seats), seats,
 			Levers.whole("ui_style_seat_outer_row_percent"), colours,
-			float(threshold) / float(maxi(maximum, 1)) if has_threshold else -1.0)
+			float(threshold) / float(maxi(maximum, 1)) if has_threshold else -1.0, _look, trim)
 		return
 	var parts: Array = [[player, colours["player"]]]
 	if two_sided:
@@ -291,4 +306,4 @@ func _draw_living(width: float) -> void:
 	else:
 		parts.append([maxi(maximum - player, 0), colours["undecided"]])
 	SeatsMeter.draw_arc_band(self, rect, parts, float(maximum), colours,
-		float(threshold) / float(maximum) if has_threshold else -1.0)
+		float(threshold) / float(maximum) if has_threshold else -1.0, _look, trim)

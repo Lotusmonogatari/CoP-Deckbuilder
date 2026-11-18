@@ -48,6 +48,9 @@ func _run() -> void:
 	_vp.add_child(screen)
 	await get_tree().process_frame
 	await get_tree().create_timer(1.2).timeout
+	# The cue band lies over the bar while a line is showing: step it aside for the pixel check.
+	(screen.get("_banner") as CueBanner).set_suppressed(true)
+	await get_tree().create_timer(0.4).timeout
 	var bar := screen.find_child("SupportBar", true, false) as SupportBar
 	if bar == null:
 		_failures.append("no support bar")
@@ -69,34 +72,43 @@ func _run() -> void:
 
 
 func _check_bar(bar: SupportBar) -> void:
-	if bar._living:
-		_failures.append("the support bar drew seats in Broadcast")
+	# Since 2026-11-18 Broadcast draws the semicircle too, in its own look: faceted, with gold along the outer
+	# and inner rims (the bar's gold top and bottom), none on the ends.
+	if not bar._living or bar._look != UiStyles.BROADCAST:
+		_failures.append("the support bar is not the Broadcast semicircle")
 		return
 	var image := _vp.get_texture().get_image()
 	var rect := bar.get_global_rect()
-	var top := rect.position.y + 44.0   # SupportBar draws its bar 44 px under its caption
-	var bottom := top + SupportBar.HEIGHT
-	# Scan across the bar's width for gold on the first and last rows of the bar.
-	var gold_top := 0
-	var gold_bottom := 0
-	var x := int(rect.position.x) + 40
-	while x < int(rect.end.x) - 40:
-		for dy in range(1, 4):
-			if _near_gold(image.get_pixel(x, int(top) + dy)):
-				gold_top += 1
-				break
-		for dy in range(1, 4):
-			if _near_gold(image.get_pixel(x, int(bottom) - dy)):
-				gold_bottom += 1
-				break
-		x += 8
-	var columns := (int(rect.size.x) - 80) / 8
-	if gold_top < columns * 0.7:
-		_failures.append("the bar's top gold line shows on only %d of %d columns" % [gold_top, columns])
-	if gold_bottom < columns * 0.7:
-		_failures.append("the bar's bottom gold line shows on only %d of %d columns" % [gold_bottom, columns])
+	var h := bar._living_height
+	var radius := minf(rect.size.x * 0.5 - SeatsMeter.ARC_WIDTH, h - SeatsMeter.ARC_WIDTH * 0.5 - 8.0)
+	var centre := Vector2(rect.position.x + rect.size.x * 0.5, rect.position.y + h - 8.0)
+	var inner := radius - SeatsMeter.ARC_WIDTH
+	var outer_hits := 0
+	var inner_hits := 0
+	var samples := 0
+	for k in range(1, 12):
+		var a := PI + float(k) * PI / 12.0
+		var dir := Vector2(cos(a), sin(a))
+		samples += 1
+		if _gold_near(image, centre + dir * radius, dir):
+			outer_hits += 1
+		if _gold_near(image, centre + dir * inner, dir):
+			inner_hits += 1
+	if outer_hits < samples * 0.7:
+		_failures.append("the arc's outer gold rim shows at only %d of %d points" % [outer_hits, samples])
+	if inner_hits < samples * 0.7:
+		_failures.append("the arc's inner gold rim shows at only %d of %d points" % [inner_hits, samples])
 	if not bar.has_threshold:
 		_failures.append("this stage has no threshold to draw")
+
+
+## Gold within a few pixels of `at`, searching along the radius (a facet's chord sits a little inside the circle).
+func _gold_near(image: Image, at: Vector2, dir: Vector2) -> bool:
+	for step in range(-8, 4):
+		var p := at + dir * float(step)
+		if p.x >= 0 and p.y >= 0 and p.x < image.get_width() and p.y < image.get_height() and _near_gold(image.get_pixel(int(p.x), int(p.y))):
+			return true
+	return false
 
 
 func _check_band(banner: Node) -> void:

@@ -1288,3 +1288,7 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 ## 2026-11-18: Your side of the battle bar is your party's colour
 
 - The player's share of the bar (seats, arc and the straight bar in Broadcast and Woodblock) is drawn in the colour of the player's party, as in the demo. A player with no party keeps the usual blue. The opponent's side keeps its own rule (their party's colour, or the default crimson when they have no party or share yours). Visual only.
+
+## 2026-11-18: Broadcast and Woodblock draw the semicircle too
+
+- Every style now draws the battle bar as the semicircle (seats for Floor Debate and the special committees, a continuous arc for everything else), each in its own look. **Broadcast:** angular facets with slanted divisions, gold along the outer and inner rims (the bar's gold top and bottom), diamond seats edged in gold. **Woodblock:** a printed band with an ink edge, a vermilion offset shadow and ink division lines, printed discs for seats with the same shadow. The caption and the readout are centred and sized to their words, so Woodblock's plates no longer run across the arc. Visual only; the numbers and the straight bar code are unchanged.
