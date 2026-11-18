@@ -8433,5 +8433,47 @@
     "english": "{amount} points of {metric}",
     "placeholders": "amount, metric",
     "notes": "2026-11-18 Cameron: grammar audit; '55 points of Press tone', '65 points of Viewer Interest'"
+  },
+  {
+    "key": "intro.title_top",
+    "where": "Start screen, title plate line 1",
+    "english": "Coliseum",
+    "placeholders": null,
+    "notes": "Brand B (2026-11-18); draft"
+  },
+  {
+    "key": "intro.title_bottom",
+    "where": "Start screen, title plate line 2",
+    "english": "of Parliament",
+    "placeholders": null,
+    "notes": "Brand B (2026-11-18); draft"
+  },
+  {
+    "key": "intro.tagline",
+    "where": "Start screen, tagline under the title",
+    "english": "Gladiators of Politics, Enter the Arena!",
+    "placeholders": null,
+    "notes": "Cameron's line, 2026-11-18"
+  },
+  {
+    "key": "intro.footer_mark",
+    "where": "Start screen, footer right",
+    "english": "蓮物語 · Lotus Monogatari",
+    "placeholders": null,
+    "notes": "Cameron's choice, 2026-11-18"
+  },
+  {
+    "key": "intro.version",
+    "where": "Start screen, footer left",
+    "english": "v{version}",
+    "placeholders": "version",
+    "notes": "Brand B (2026-11-18); the number comes from project settings"
+  },
+  {
+    "key": "brand.hook",
+    "where": "Google Play feature graphic, under the title plate",
+    "english": "Can you talk your way to 51?",
+    "placeholders": null,
+    "notes": "Brand B (2026-11-18); draft; 51 is the floor majority"
   }
 ]
