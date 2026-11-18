@@ -199,7 +199,7 @@ static func buy_refusal(item: Dictionary, held: int, bought: int, xp: int, funds
 	if funds < int(price["Funds"]):
 		# Priced above the Funds limit: no amount of saving reaches it until the limit is raised.
 		if funds_limit > 0 and int(price["Funds"]) > funds_limit and petition != "":
-			return say.say("shop.funds_over_limit", {"price": Phrase.with_separators(int(price["Funds"])), "limit": Phrase.with_separators(funds_limit), "petition": petition})
+			return say.say("shop.funds_over_limit")
 		return say.say("shop.funds_short", {"count": int(price["Funds"]) - funds})
 	return ""
 

@@ -1262,3 +1262,11 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 
 - Once a held card has been pulled halfway to the distance that plays it, a glow and outline in the player's party colour fade in behind it, reaching full strength when letting go would play the card. It disappears on release. Purely visual: no rule or number changed. Shots: `*_battle_2340_halfway.png` in the P9 review folder.
 - `hand_input_test` checks there is no halo before halfway, some at 80% of the pull, and none after release.
+
+## 2026-11-18: New Game screen: swipe strips for difficulty and theme, even portraits; marketplace and coupon fixes
+
+- **New Game screen:** the three difficulty buttons (their descriptions removed) are now square buttons in a strip you swipe sideways, and beside it a second strip does the same for the display theme (Living Office, Broadcast, Woodblock). Picking a theme restyles the screen at once and the choice carries into the run: the chosen style is free here, owned from the start and equipped. A back-out from New Game in Administration restores the run's own style. Rules unchanged; the XP prices in the Marketplace stay.
+- **Portraits:** the four protagonists are cropped to the visible figure and held to one height, so none looks smaller.
+- **Party names:** Keizaijiyuutou (pure red) now sits on the light plate (3.6 to 1) instead of black; the plate rule is 3 to 1 on the light plate and 4.5 to 1 on the dark one. The party colour itself is untouched.
+- **Rhetoric Training coupon:** Learn it says "Free" instead of an XP price (nothing was ever charged).
+- **Marketplace:** an item above the Funds limit shows a greyed button reading "Insufficient Funds", not the long sentence. The header note about the limit is unchanged.

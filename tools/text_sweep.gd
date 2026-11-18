@@ -326,6 +326,17 @@ func _intro_to_lean(screen: Node) -> void:
 	await _settle(0.5)
 
 
+## True inside a strip built to be swiped sideways on purpose (a scroll box marked "swipe_strip", the New Game
+## screen's difficulty and theme squares): its later squares sit past the edge until swiped to.
+func _in_swipe_strip(c: Node) -> bool:
+	var node := c.get_parent()
+	while node != null:
+		if node is ScrollContainer and node.has_meta("swipe_strip"):
+			return true
+		node = node.get_parent()
+	return false
+
+
 # ---------------------------------------------------------------- the checks
 func _check(screen_id: String, root: Node) -> void:
 	_screens_checked += 1
@@ -343,7 +354,7 @@ func _check(screen_id: String, root: Node) -> void:
 	for c: Control in controls:
 		if _in_scroll(c, layer_root):
 			var r := _rect(c)
-			if r.position.x < -1.0 or r.end.x > size.x + 1.0:
+			if (r.position.x < -1.0 or r.end.x > size.x + 1.0) and not _in_swipe_strip(c):
 				found += _add(screen_id, c, "off_screen", "sideways inside a scroll box: x %d to %d of %d" % [r.position.x, r.end.x, size.x])
 			continue
 		var rect := _rect(c)

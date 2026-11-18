@@ -71,8 +71,41 @@ func _walk() -> void:
 		return
 	await _click(confirm)
 	await get_tree().create_timer(0.3).timeout
+	# The two swipe strips: difficulty on one side, display theme on the other (2026-11-18).
+	var spent := GameState.xp
+	if panel.find_child("PressureStrip_harder", true, false) == null or panel.find_child("ThemeStrip_woodblock", true, false) == null:
+		_failures.append("the New Game screen has no difficulty and theme strips")
+		return
+	await _click(panel.find_child("PressureStrip_harder", true, false) as Control)
+	await get_tree().create_timer(0.3).timeout
+	if not (panel.find_child("PressureStrip_harder", true, false) as Button).button_pressed:
+		_failures.append("tapping Harder did not select it")
+		return
+	# A theme restyles the screen at once: the Office reloads and the New Game screen comes back.
+	await _click(panel.find_child("ThemeStrip_woodblock", true, false) as Control)
+	await get_tree().create_timer(1.0).timeout
+	office = get_tree().current_scene
+	panel = office.get_node("NewGamePanel") as Overlay
+	if not panel.visible or UiStyle.current() != UiStyles.WOODBLOCK:
+		_failures.append("choosing the Woodblock theme did not restyle the New Game screen and keep it open")
+		return
+	if not (panel.find_child("PressureStrip_harder", true, false) as Button).button_pressed:
+		_failures.append("the difficulty choice was lost when the theme changed")
+		return
 	if not await _choose(panel, "PC02"):
 		return
+	if GameState.difficulty != Difficulty.HARDER:
+		_failures.append("the run did not start on Harder")
+		return
+	var package_id := str(GameState.active_cosmetics.get(CosmeticPieces.UI_STYLE, ""))
+	if UiStyle.current() != UiStyles.WOODBLOCK or package_id.is_empty() or not GameState.owned_cosmetic_packages.has(package_id):
+		_failures.append("the chosen theme did not come with the new run")
+		return
+	if GameState.xp != BattleSetup.starting_xp_for(DataDB.get_protagonist("PC02")) or spent != 77:
+		_failures.append("the chosen theme cost XP")
+		return
+	print("  difficulty and theme strips: both apply, the theme is free")
+
 	# PC02's own starting_xp (the difficulty ladder, data/player.json,
 	# 2026-09-25) rather than a bare 0 — "fresh run" means PC02's real
 	# starting numbers, not that every protagonist starts at zero.

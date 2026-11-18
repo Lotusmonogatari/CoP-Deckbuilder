@@ -40,6 +40,9 @@ enum Kind { CHARACTER, CARD, BACKGROUND, ICON }
 		ArtLoader.forget_pick(value)
 		_refresh()
 
+## Show a character cropped to its visible figure (see _trimmed). Set before the node enters the tree.
+@export var trim_margins: bool = false
+
 ## Only used for characters: neutral, attacking, guarding, gaining, damaged
 ## (data/art.json), plus the optional defeated and victory. A face that is
 ## not drawn falls back, in the end to neutral.
@@ -154,6 +157,11 @@ func _refresh() -> void:
 		Kind.BACKGROUND: _texture_rect.texture = ArtLoader.background(art_id)
 		Kind.ICON: _texture_rect.texture = ArtLoader.icon(art_id)
 
+	# A line-up of characters (the New Game screen) is shown trimmed of empty margins, so figures drawn
+	# with different amounts of blank canvas still stand the same height.
+	if trim_margins and kind == Kind.CHARACTER and _texture_rect.texture != null and not _is_placeholder:
+		_texture_rect.texture = _trimmed(_texture_rect.texture)
+
 	# A character is a full-body cutout: shown whole, never cropped, so its
 	# feet and head both stay on screen whatever the box's own proportions
 	# are. A background instead FILLS its box with no letterboxing, cropping
@@ -170,6 +178,23 @@ func _refresh() -> void:
 	_set_panning(kind == Kind.BACKGROUND and not _is_placeholder
 		and _texture_rect.texture != null and not Engine.is_editor_hint())
 	_update_soft_edges()
+
+
+## The picture cropped to its visible figure (fully transparent margins removed). A picture with no
+## margin, or one that cannot be read, comes back unchanged.
+func _trimmed(texture: Texture2D) -> Texture2D:
+	var image := texture.get_image()
+	if image == null:
+		return texture
+	if image.is_compressed():
+		image.decompress()
+	var used := image.get_used_rect()
+	if used.size.x <= 0 or used.size.y <= 0 or used.size == image.get_size():
+		return texture
+	var atlas := AtlasTexture.new()
+	atlas.atlas = texture
+	atlas.region = Rect2(used)
+	return atlas
 
 
 ## Soft edges (Cameron, 2026-10-31): a drawn background fades out over a few

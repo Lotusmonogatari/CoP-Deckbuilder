@@ -11,10 +11,14 @@ extends RefCounted
 static var _index: Dictionary = {}
 static var _index_rows := -1
 static var _applied := ""
+## A style being tried on the New Game screen before any run owns it ("" = none). While set it is the style in use.
+static var trying := ""
 
 
 ## The id of the style in use: "living_office", "broadcast" or "woodblock".
 static func current() -> String:
+	if not trying.is_empty():
+		return trying
 	var package_id := str(GameState.active_cosmetics.get(CosmeticPieces.UI_STYLE, ""))
 	if package_id.is_empty():
 		return UiStyles.LIVING_OFFICE

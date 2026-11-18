@@ -4501,6 +4501,11 @@ func _is_free_draw(item: Dictionary) -> bool:
 	return item.get("free_card_tier") != null
 
 
+## Whether a Rhetoric Training draw from this item costs nothing (a coupon), so the offer can say so.
+func draw_is_free(item: Dictionary) -> bool:
+	return _is_free_draw(item)
+
+
 func _unowned_cards_at_tier(tier: int) -> Array[String]:
 	var choices: Array[String] = []
 	for card: Dictionary in DataDB.cards:

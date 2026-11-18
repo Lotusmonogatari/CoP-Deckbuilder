@@ -87,12 +87,12 @@ func test_a_draft_cost_above_the_funds_limit_names_the_petition() -> void:
 	assert_false(DraftBill.refusal(["CB031", "CB032"], state).contains(GameState.funds_cap_item_name()), "with room under the limit it is the ordinary short-Funds message")
 
 
-func test_an_item_priced_above_the_funds_limit_names_the_petition() -> void:
+func test_an_item_priced_above_the_funds_limit_just_says_insufficient_funds() -> void:
 	var item := {"item_id": "X1", "cost_yen": 200000, "cost_xp": 0}
 	var why := Items.buy_refusal(item, 0, 0, 500, 100000, Text.phrase(), 100000, "Funds Cap Increase Petition")
-	assert_string_contains(why, "Funds Cap Increase Petition")
+	assert_eq(why, "Insufficient Funds")
 	var plain := Items.buy_refusal(item, 0, 0, 500, 100000, Text.phrase(), 1000000, "Funds Cap Increase Petition")
-	assert_false(plain.contains("Petition"), "an item the limit would allow is just short of Funds")
+	assert_ne(plain, "Insufficient Funds", "an item the limit would allow is just short of Funds")
 
 
 func test_the_funds_cap_item_is_found_by_its_data() -> void:

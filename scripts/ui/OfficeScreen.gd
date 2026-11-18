@@ -299,7 +299,12 @@ func _ready() -> void:
 
 	# No save to come back to: a new player chooses who they are first.
 	if GameState.awaiting_new_game:
+		_resume_new_game = ""
 		_show_new_game(true)
+	elif not _resume_new_game.is_empty():
+		var first := _resume_new_game == "first"
+		_resume_new_game = ""
+		_show_new_game.call_deferred(first)
 	else:
 		SaveManager.autosave()
 		# A Rhetoric Training draw left on screen when the app closed comes
@@ -1564,7 +1569,10 @@ func _on_new_game_confirmed() -> void:
 
 
 ## The tier chosen on the New Game screen, used when a protagonist is picked.
-var _pending_pressure := "standard"
+static var _pending_pressure := "standard"
+## Set while the New Game screen is open across a restyle: the screen is rebuilt in the new style and
+## reopened ("" = not resuming, "first" = the first-launch screen, "again" = started from Administration).
+static var _resume_new_game := ""
 
 
 func _pressure_name(tier: String) -> String:
@@ -1586,27 +1594,131 @@ func _on_pressure_picked(tier: String, first_run: bool) -> void:
 	_show_new_game.call_deferred(first_run)
 
 
+## The display name of a UI style: the free one from the Text tab, the others from their package.
+func _style_name(style: String) -> String:
+	if style == UiStyles.LIVING_OFFICE:
+		return Text.say("shop.style_living_name")
+	var package := _style_package(style)
+	return str(package.get("name_en", style))
+
+
+## The cosmetic package that unlocks `style` ({} for the free default or an unknown style).
+func _style_package(style: String) -> Dictionary:
+	for package: Dictionary in DataDB.cosmetic_packages:
+		if UiStyles.style_of(package) == style:
+			return package
+	return {}
+
+
+## The style this New Game screen is showing (and the new run will start in): one being tried, else the
+## one already equipped.
+func _chosen_style() -> String:
+	return UiStyle.current()
+
+
+## A row of square buttons in a strip you swipe sideways: a heading and `entries` ([id, label] pairs), the
+## selected one pressed in. Two squares show at once so the third peeks out as the cue to swipe.
+func _swipe_strip(strip_name: String, heading: String, entries: Array, selected: String, on_pick: Callable) -> Control:
+	var column := VBoxContainer.new()
+	column.name = strip_name
+	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	column.add_theme_constant_override("separation", 6)
+	var title := UiKit.heading(heading)
+	# Two strips share one row: each heading wraps inside its half rather than pushing the row wider.
+	title.custom_minimum_size = Vector2(0, 0)
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	column.custom_minimum_size.x = (UiKit.LINE_WIDTH - 20.0) * 0.5
+	column.add_child(title)
+	var scroll := ScrollContainer.new()
+	scroll.name = "Swipe"
+	scroll.set_meta("swipe_strip", true)   # its squares past the edge are reached by swiping (the text sweep knows)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.custom_minimum_size = Vector2((UiKit.LINE_WIDTH - 20.0) * 0.5, NEW_GAME_SQUARE + 12.0)
+	scroll.get_h_scroll_bar().modulate.a = 0.0   # swiping, not a bar, moves it
+	column.add_child(scroll)
+	var strip := HBoxContainer.new()
+	strip.add_theme_constant_override("separation", 12)
+	scroll.add_child(strip)
+	var picked_button: Control = null
+	for entry: Array in entries:
+		var button := Button.new()
+		button.name = "%s_%s" % [strip_name, str(entry[0])]
+		button.text = str(entry[1])
+		button.custom_minimum_size = Vector2(NEW_GAME_SQUARE, NEW_GAME_SQUARE)
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.toggle_mode = true
+		button.button_pressed = str(entry[0]) == selected
+		if button.button_pressed:
+			picked_button = button
+		button.pressed.connect(Haptics.confirm)
+		button.pressed.connect(on_pick.bind(str(entry[0])))
+		strip.add_child(button)
+	# Bring the chosen square into view once the strip has a size.
+	if picked_button != null:
+		scroll.ensure_control_visible.call_deferred(picked_button)
+	return column
+
+
+const NEW_GAME_SQUARE := 170.0
+
+
+## A theme picked on the New Game screen: try it at once. The look is read as a screen builds, so the
+## Office is rebuilt in the new style and this screen reopened where it was.
+func _on_theme_picked(style: String, first_run: bool) -> void:
+	if style == UiStyle.current():
+		_show_new_game.call_deferred(first_run)
+		return
+	UiStyle.trying = style
+	_resume_new_game = "first" if first_run else "again"
+	Layout.apply_ui_style()
+	get_tree().reload_current_scene.call_deferred()
+
+
+## The new run starts in the style chosen on the New Game screen. A style that needs buying is free here
+## (Cameron, 2026-11-18): the chosen one is added to the run and equipped.
+func _adopt_chosen_style() -> void:
+	var style: String = UiStyle.trying
+	UiStyle.trying = ""
+	if style.is_empty():
+		style = UiStyle.current()
+	var package_id := ""
+	if style != UiStyles.LIVING_OFFICE:
+		package_id = str(_style_package(style).get("package_id", ""))
+		if not package_id.is_empty() and not GameState.owned_cosmetic_packages.has(package_id):
+			GameState.owned_cosmetic_packages.append(package_id)
+	GameState.equip_cosmetic(CosmeticPieces.UI_STYLE, package_id)
+	Layout.apply_ui_style()
+
+
 ## The four protagonists (data/player.json), each with a portrait and a
 ## button. `first_run` is the very first launch: backing out of it still
 ## leaves the player as the default protagonist, so there is a run to save.
 func _show_new_game(first_run: bool) -> void:
 	var rows: Array[Control] = [UiKit.line(Text.say("new_game.blurb"))]
-	# Campaign Pressure (Difficulty.gd): picked here, raised later in Administration.
-	rows.append(UiKit.heading(Text.say("new_game.pressure_heading")))
+	# Campaign Pressure (Difficulty.gd) on the left and the display theme on the right, each a strip of
+	# square buttons to swipe through. Difficulty is raised later in Administration; the theme is free here.
+	var tiers: Array = []
 	for tier: String in Difficulty.TIERS:
-		var picked := tier == _pending_pressure
-		var tier_button := UiKit.action_button(
-			Text.say("pressure.picked" if picked else "pressure.pick", {"name": _pressure_name(tier)}),
-			"", _on_pressure_picked.bind(tier, first_run))
-		tier_button.name = "Pressure_" + tier
-		tier_button.disabled = picked
-		rows.append(tier_button)
-		rows.append(UiKit.line(_pressure_blurb(tier), "SmallLabel"))
+		tiers.append([tier, _pressure_name(tier)])
+	var styles: Array = []
+	for style: String in UiStyles.ALL:
+		styles.append([style, _style_name(style)])
+	var pair := HBoxContainer.new()
+	pair.name = "ChoiceStrips"
+	pair.add_theme_constant_override("separation", 20)
+	pair.add_child(_swipe_strip("PressureStrip", Text.say("new_game.pressure_heading"), tiers,
+		_pending_pressure, _on_pressure_picked.bind(first_run)))
+	pair.add_child(_swipe_strip("ThemeStrip", Text.say("new_game.theme_heading"), styles,
+		_chosen_style(), _on_theme_picked.bind(first_run)))
+	rows.append(pair)
 	for protagonist: Dictionary in DataDB.protagonists:
 		rows.append(_protagonist_row(protagonist))
 	_new_game_panel.open(Text.say("new_game.title"), rows)
 	if first_run and not _new_game_panel.closed.is_connected(_on_first_run_closed):
 		_new_game_panel.closed.connect(_on_first_run_closed)
+	if not first_run and not _new_game_panel.closed.is_connected(_on_new_game_dismissed):
+		_new_game_panel.closed.connect(_on_new_game_dismissed)
 
 
 func _protagonist_row(protagonist: Dictionary) -> Control:
@@ -1616,7 +1728,10 @@ func _protagonist_row(protagonist: Dictionary) -> Control:
 	row.add_theme_constant_override("separation", 20)
 
 	var portrait := PlaceholderArt.new()
-	portrait.custom_minimum_size = Vector2(200, 260)
+	# All four stand the same height: cropped to the figure and held to a fixed box, not stretched to the row.
+	portrait.custom_minimum_size = Vector2(200, 340)
+	portrait.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	portrait.trim_margins = true
 	portrait.kind = PlaceholderArt.Kind.CHARACTER
 	portrait.art_id = player_id
 	row.add_child(portrait)
@@ -1671,15 +1786,31 @@ func _starting_stat_lines(protagonist: Dictionary) -> Array[String]:
 func _on_protagonist_chosen(player_id: String) -> void:
 	if _new_game_panel.closed.is_connected(_on_first_run_closed):
 		_new_game_panel.closed.disconnect(_on_first_run_closed)
+	if _new_game_panel.closed.is_connected(_on_new_game_dismissed):
+		_new_game_panel.closed.disconnect(_on_new_game_dismissed)
 	_new_game_panel.close()
 	var pressure := _pending_pressure
 	_pending_pressure = Difficulty.STANDARD
+	var chosen_style := UiStyle.current()
 	if not GameState.start_new_run(player_id, pressure):
+		UiStyle.trying = ""
 		return
+	UiStyle.trying = chosen_style
+	_adopt_chosen_style()
 	SaveManager.autosave()
 	_build()
 	_report.text = Text.say("office.new_game_started",
 		{"name": DataDB.player.get("name_en", player_id)})
+
+
+## Backed out of New Game from Administration: the run carries on as it was, in the style it had.
+func _on_new_game_dismissed() -> void:
+	_new_game_panel.closed.disconnect(_on_new_game_dismissed)
+	_pending_pressure = Difficulty.STANDARD
+	if not UiStyle.trying.is_empty():
+		UiStyle.trying = ""
+		Layout.apply_ui_style()
+		get_tree().reload_current_scene.call_deferred()
 
 
 ## Backed out of the first-run choice: play as the default, and save, so the
@@ -1687,7 +1818,10 @@ func _on_protagonist_chosen(player_id: String) -> void:
 func _on_first_run_closed() -> void:
 	_new_game_panel.closed.disconnect(_on_first_run_closed)
 	if GameState.awaiting_new_game:
+		var chosen_style := UiStyle.current()
 		GameState.start_new_run(str(DataDB.player.get("player_id", "")))
+		UiStyle.trying = chosen_style
+		_adopt_chosen_style()
 		SaveManager.autosave()
 		_build()
 
@@ -2821,8 +2955,15 @@ func _show_card_offer() -> void:
 		pass_button.pressed.connect(_on_pass_card)
 		rows.append(pass_button)
 	_card_reveal_panel.open(Text.say("rhetoric.offer_title"), rows,
-		Text.say("rhetoric.learn", {"price": _price_text(
+		Text.say("rhetoric.learn", {"price": _offer_price_text(
 			DataDB.get_shop_item(str(draw.get("item_id", ""))))}))
+
+
+## The price on Learn it: "Free" for a coupon's draw (it is never charged), else the item's price.
+func _offer_price_text(item: Dictionary) -> String:
+	if GameState.draw_is_free(item):
+		return Text.say("shop.item_free")
+	return _price_text(item)
 
 
 ## How much of the screen's height the card pop-ups spend on everything that

@@ -63,5 +63,14 @@ const PLATE_LIGHT := Color(0.96, 0.95, 0.92)
 const PLATE_DARK := Color(0.05, 0.05, 0.07)
 
 
+## Large, heavy party names only need 3 to 1 (WCAG's large-text level), so a colour that reads that well on the
+## light plate keeps it: pure red (Keizaijiyuutou) is 3.6 to 1 on light, and on the near-black plate it was
+## harder to read (Cameron, 2026-11-18). A colour that fails even 3 to 1 on light goes to whichever plate is better.
+const LARGE_TEXT_CONTRAST := 3.0
+
+
 static func plate_for(party_colour: Color) -> Color:
-	return PLATE_LIGHT if contrast(party_colour, PLATE_LIGHT) >= contrast(party_colour, PLATE_DARK) else PLATE_DARK
+	var on_light := contrast(party_colour, PLATE_LIGHT)
+	if on_light >= LARGE_TEXT_CONTRAST:
+		return PLATE_LIGHT
+	return PLATE_LIGHT if on_light >= contrast(party_colour, PLATE_DARK) else PLATE_DARK

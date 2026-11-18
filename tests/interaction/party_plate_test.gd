@@ -118,7 +118,8 @@ func _check_party(label: Label, colour: Color, image: Image) -> void:
 	var ratio := (maxf(plate_lum, ink_lum) + 0.05) / (minf(plate_lum, ink_lum) + 0.05)
 	_report.append("%-34s %.1f : 1 (text colour found within %.2f)" % [label.text.strip_edges(), ratio, best])
 	_expect(best < 0.35, "%s: no pixel near the party colour (closest %.2f)" % [label.text, best])
-	_expect(ratio >= 4.5, "%s on its plate is %.1f : 1" % [label.text, ratio])
+	# A light plate needs 3 to 1 (large text), a dark one 4.5 to 1 (Cameron, 2026-11-18: red on black was harder to read).
+	_expect(ratio >= (3.0 if plate_lum > 0.5 else 4.5), "%s on its plate is %.1f : 1" % [label.text, ratio])
 
 
 func _check_icon(chip: Button, image: Image) -> void:

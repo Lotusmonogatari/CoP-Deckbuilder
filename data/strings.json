@@ -8171,9 +8171,9 @@
   {
     "key": "shop.funds_over_limit",
     "where": "Marketplace, an item priced above the Funds limit",
-    "english": "Costs {price}円, more than your Funds limit of {limit}円. Buy the {petition} to raise the limit.",
-    "placeholders": "price, limit, petition",
-    "notes": "2026-11-17 panel P4 (Claude's draft)"
+    "english": "Insufficient Funds",
+    "placeholders": null,
+    "notes": "2026-11-18 Cameron: only the words, no explanation (was a long sentence)"
   },
   {
     "key": "shop.funds_limit_note",
@@ -8412,5 +8412,12 @@
     "english": "Errand list",
     "placeholders": null,
     "notes": "2026-11-17 panel P9 (Claude's draft)"
+  },
+  {
+    "key": "new_game.theme_heading",
+    "where": "New Game, above the swipe strip of display themes",
+    "english": "Theme",
+    "placeholders": null,
+    "notes": "2026-11-18 Cameron: pick the display theme on the New Game screen (Claude's draft)"
   }
 ]
