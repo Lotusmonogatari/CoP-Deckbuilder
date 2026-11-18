@@ -61,6 +61,7 @@ func _ready() -> void:
 	_banner = CueBanner.new()
 	_banner.name = "CueBanner"
 	add_child(_banner)
+	QuestionPlate.apply(_question_label)
 
 	_choice_a.pressed.connect(_on_choice.bind("A"))
 	_choice_b.pressed.connect(_on_choice.bind("B"))
@@ -172,6 +173,9 @@ func _show_question() -> void:
 	var question: Dictionary = questions[_index]
 	_visitor_caption.text = Text.say("visit.caption", {"number": _index + 1, "total": questions.size()})
 	_question_label.text = str(question.get("text", ""))
+	# The member asks it aloud as a cue, too (it stays printed on its plate).
+	_banner.clear()
+	_banner.say(CueBanner.OPPONENT, str(_visit.get("member_name", "")), str(question.get("text", "")))
 	var buttons: Array[Button] = [_choice_a, _choice_b, _choice_c, _choice_d]
 	var choices: Array = question.get("choices", [])
 	for slot in range(buttons.size()):
@@ -213,6 +217,7 @@ func _on_choice(letter: String) -> void:
 		Levers.whole("mp_visit_weak_points"))
 	_portrait.expression = ArtLoader.GAINING if grade == MpVisit.STRONG else (ArtLoader.NEUTRAL if grade == MpVisit.MEDIUM else ArtLoader.DAMAGED)
 	var tone := "strong" if grade == MpVisit.STRONG else ("medium" if grade == MpVisit.MEDIUM else "weak")
+	_banner.clear()   # the question's band gives way to the reply
 	_banner.say(CueBanner.OPPONENT, str(_visit.get("member_name", "")),
 		Text.say((REACT_KEYS[tone] as Array)[randi_range(0, 2)], {"name": str(_visit.get("member_name", ""))}))
 

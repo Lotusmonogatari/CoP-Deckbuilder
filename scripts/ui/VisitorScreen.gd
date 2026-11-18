@@ -77,6 +77,7 @@ func _ready() -> void:
 	_banner = CueBanner.new()
 	_banner.name = "CueBanner"
 	add_child(_banner)
+	QuestionPlate.apply(_question_label)
 
 	_choice_a.pressed.connect(_on_choice.bind("A"))
 	_choice_b.pressed.connect(_on_choice.bind("B"))
@@ -204,6 +205,16 @@ func _show_visitor() -> void:
 
 	_continue_button.disabled = true
 	_continue_button.text = Text.say("office_hours.continue")
+	_speak_question.call_deferred()
+
+
+## The visitor says their question aloud as a cue, as every other spoken line is (the question also stays
+## printed on its plate for reading).
+func _speak_question() -> void:
+	if _banner == null or engine == null or _answered:
+		return
+	_banner.say(CueBanner.OPPONENT, str(engine.current_visitor().get("name_en", "")),
+		str(engine.current_question().get("question_text", "")))
 
 
 func _on_choice(letter: String) -> void:
@@ -227,6 +238,7 @@ func _on_choice(letter: String) -> void:
 	_visitor_presenter.react(correct)
 
 	var visitor := engine.current_visitor()
+	_banner.clear()   # the question's band gives way to the reply
 	_banner.say(CueBanner.OPPONENT, str(visitor.get("name_en", "")),
 		str(result.get("response_text", "")), str(result.get("reaction", "")))
 

@@ -157,11 +157,6 @@ func _ready() -> void:
 		%UpcomingIntentLabel)
 	_style_intent_tag(%IntentLabel)
 	_style_chrome()
-	# A held card may rise as far as halfway up the screen (CardView.pull_to_play), so the Guard and Gaffes
-	# counters are drawn above it, wherever it goes.
-	for counter: Label in [%GuardLabel, _gaffe_label]:
-		counter.z_as_relative = false
-		counter.z_index = 30
 	# Your side of the bar is your party's colour (none: the usual blue).
 	var own_party := PartyDisplay.party_name(DataDB.player)
 	if not own_party.is_empty():
@@ -1111,17 +1106,28 @@ func _on_card_flung(card_id: String) -> void:
 
 ## Holding a card up shows what it would do to the listening organisations.
 func _on_card_lifted(card_id: String) -> void:
+	_counters_above_card(true)
 	if not _ready_to_play or not _pick_card_id.is_empty():
 		return
 	_listening.preview(OrgPreview.changes(engine, DataDB.get_card(card_id)))
 
 
 func _on_card_dropped(_card_id: String) -> void:
+	_counters_above_card(false)
 	# A fling plays the card and redraws; a drop back just restores the view.
 	if _previewed_card_id.is_empty():
 		_listening.clear_marks()
 	else:
 		_listening.preview(OrgPreview.changes(engine, DataDB.get_card(_previewed_card_id)))
+
+
+## A held card may rise as far as halfway up the screen (CardView.pull_to_play), so while it is held the Guard
+## and Gaffes counters are drawn above it, wherever it goes. Only while it is held: they must dim with the rest
+## of the screen when a stage ends (the end-of-stage panel fades the battle behind it).
+func _counters_above_card(above: bool) -> void:
+	for counter: Label in [%GuardLabel, _gaffe_label]:
+		counter.z_as_relative = not above
+		counter.z_index = 30 if above else 0
 
 
 func _clear_preview() -> void:

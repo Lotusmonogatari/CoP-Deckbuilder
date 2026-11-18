@@ -8421,10 +8421,17 @@
     "notes": "2026-11-18 Cameron: pick the display theme on the New Game screen (Claude's draft)"
   },
   {
-    "key": "bar.amount_of_metric",
-    "where": "Battle · support bar, first row of the caption",
-    "english": "{amount} of {metric}",
+    "key": "bar.amount_metric",
+    "where": "Battle · support bar, first row of the caption: a count or a share",
+    "english": "{amount} {metric}",
     "placeholders": "amount, metric",
-    "notes": "2026-11-18 Cameron: \"[Number] of [Metric]\" then \"to Win\" or \"to Advance\" on the next row"
+    "notes": "2026-11-18 Cameron: grammar audit; '51 Seats', '20 Members', '80% Favorability'"
+  },
+  {
+    "key": "bar.amount_points",
+    "where": "Battle · support bar, first row of the caption: a score on a scale",
+    "english": "{amount} points of {metric}",
+    "placeholders": "amount, metric",
+    "notes": "2026-11-18 Cameron: grammar audit; '55 points of Press tone', '65 points of Viewer Interest'"
   }
 ]

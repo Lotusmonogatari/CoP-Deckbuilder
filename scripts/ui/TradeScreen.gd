@@ -69,6 +69,7 @@ func _ready() -> void:
 	_banner = CueBanner.new()
 	_banner.name = "CueBanner"
 	add_child(_banner)
+	QuestionPlate.apply(_question_label)
 	_choice_a.pressed.connect(_on_choice.bind("A"))
 	_choice_b.pressed.connect(_on_choice.bind("B"))
 	_choice_c.pressed.connect(_on_choice.bind("C"))
@@ -242,6 +243,9 @@ func _show_round() -> void:
 	_caption.text = Text.say("trade.caption", {"number": _round + 1, "total": questions.size()})
 	_show_meter(true)
 	_question_label.text = str(question.get("text", "")).replace("{component}", _dropped_phrase)
+	# The lobbyist puts it aloud as a cue, too (it stays printed on its plate).
+	_banner.clear()
+	_banner.say(CueBanner.OPPONENT, str(_trade.get("lobbyist_name", "")), _question_label.text)
 	var choices: Array = question.get("choices", [])
 	var buttons := _buttons()
 	for slot in range(buttons.size()):
@@ -267,6 +271,7 @@ func _answer(letter: String) -> void:
 	_show_meter(true)
 	_portrait.expression = ArtLoader.GAINING if grade == MpVisit.STRONG else (ArtLoader.NEUTRAL if grade == MpVisit.MEDIUM else ArtLoader.DAMAGED)
 	var tone := "strong" if grade == MpVisit.STRONG else ("medium" if grade == MpVisit.MEDIUM else "weak")
+	_banner.clear()   # the question's band gives way to the reply
 	_banner.say(CueBanner.OPPONENT, str(_trade.get("lobbyist_name", "")),
 		Text.say((REACT_KEYS[tone] as Array)[randi_range(0, 2)], {"name": str(_trade.get("lobbyist_name", ""))}))
 
