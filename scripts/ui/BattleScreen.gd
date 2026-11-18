@@ -158,6 +158,10 @@ func _ready() -> void:
 		%UpcomingIntentLabel)
 	_style_intent_tag(%IntentLabel)
 	_style_chrome()
+	# Your side of the bar is your party's colour (none: the usual blue).
+	var own_party := PartyDisplay.party_name(DataDB.player)
+	if not own_party.is_empty():
+		_support_bar.player_colour = PartyDisplay.color_for(DataDB.get_party(own_party))
 	StyleMarks.add_wave_band(self, 0.0, 40.0)
 	StyleMarks.add_print_frame($Safe/Column/OpponentRow/ArtBox as Control)
 	_add_gold_diagonal()

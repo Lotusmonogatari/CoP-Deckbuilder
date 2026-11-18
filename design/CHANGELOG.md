@@ -1284,3 +1284,7 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 - The stage data says which battles measure a share (Bar Value Kind "Percentage": 187 stages, such as Favorability, Support, Appeasement, Consensus and Media Ambush's Press tone), but the code looked for a flag nothing ever set, so every shared-pool battle drew seats and none showed a percentage. It now reads the data.
 - Living Office draws seats only where the bar counts people: Floor Debate and the four special committees. Percentage battles, the TV and radio debates (viewer interest) and the press conference (a single tone score) draw the continuous arc that fills like the plain bar. Those battles now also read in percent ("80% to advance", "You 30% · Undecided 25% · ..."). Other styles' bars are unchanged.
 - `test_bar_drawing` pins it: exactly five combat stages draw seats.
+
+## 2026-11-18: Your side of the battle bar is your party's colour
+
+- The player's share of the bar (seats, arc and the straight bar in Broadcast and Woodblock) is drawn in the colour of the player's party, as in the demo. A player with no party keeps the usual blue. The opponent's side keeps its own rule (their party's colour, or the default crimson when they have no party or share yours). Visual only.

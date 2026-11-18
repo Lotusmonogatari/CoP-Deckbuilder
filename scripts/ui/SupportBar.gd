@@ -86,6 +86,21 @@ const THRESHOLD_COLOR := Color(1, 1, 1, 0.85)
 @onready var _readout: Label = $Readout
 
 
+## The colour of the player's own side: their party's colour (Cameron, 2026-11-18), or transparent for none,
+## in which case the style's usual blue is used.
+var player_colour := Color(0, 0, 0, 0): set = _set_player_colour
+
+
+func _set_player_colour(value: Color) -> void:
+	player_colour = value
+	queue_redraw()
+
+
+## The party colour when there is one, else `fallback`.
+static func player_fill(chosen: Color, fallback: Color) -> Color:
+	return chosen if chosen.a > 0.0 else fallback
+
+
 func _set_opponent_colour(value: Color) -> void:
 	opponent_colour = value
 	queue_redraw()
@@ -241,7 +256,7 @@ func _draw() -> void:
 	# Three parts, left to right: yours, undecided, theirs, on the cue band's
 	# slant with its thin gold top and bottom (SlantBar, 2026-11-05).
 	var bar := Rect2(0, top, width, HEIGHT)
-	var parts: Array = [[player, PLAYER_COLOR]]
+	var parts: Array = [[player, player_fill(player_colour, PLAYER_COLOR)]]
 	if two_sided:
 		parts.append([maxi(maximum - player - opponent, 0), UNDECIDED_COLOR])
 		parts.append([opponent, opponent_colour])
@@ -259,7 +274,7 @@ func _draw() -> void:
 func _draw_living(width: float) -> void:
 	var rect := Rect2(0, 0, width, _living_height)
 	var colours := {
-		"player": UiStyle.colour("seat_player", PLAYER_COLOR),
+		"player": player_fill(player_colour, UiStyle.colour("seat_player", PLAYER_COLOR)),
 		"undecided": UiStyle.colour("seat_undecided", UNDECIDED_COLOR),
 		"opponent": opponent_colour,
 	}
