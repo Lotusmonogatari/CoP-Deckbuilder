@@ -85,3 +85,13 @@ Beyond the spec's list I made `icon_114.png` (Godot's `notification_114x114`) an
 | Seal on washi | 4.30 : 1 | 3 |
 | New Game outline | 9.75 : 1 | 3 |
 | How to Play outline | 3.16 : 1 | 3 |
+
+## Verify result and commits (final)
+
+**`tools/verify.sh`: "All checks passed."** (export, boot, compile, unit tests including `test_brand_assets`, every real-click test including `intro_brand_test`, `intro_test` and `how_to_play_test`, and the text sweep in all three UI styles at three text sizes and both screen shapes: 0 letter-stacked or off-screen rows in all nine; the start screen is screen A01 of that sweep.)
+
+| Commit | What |
+|---|---|
+| `e0bc09e` | Brand assets, export script, project icon and boot splash, export presets example, new Text rows |
+| `c5b55ec` | The start screen, `intro_brand_test`, docs, review shots and this report |
+| (next) | This report's final lines |
