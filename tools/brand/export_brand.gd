@@ -47,7 +47,11 @@ func _run() -> void:
 	_save(_svg("icon_b_adaptive_background.svg", 432), "adaptive_background_432.png")
 	_save(_svg("icon_b_monochrome.svg", 432), "adaptive_monochrome_432.png")
 	_save(_svg("mark_b.svg", 600), "splash_seal.png")
-	made += 4
+	# The wave band for the start screen's foot: 1080 x 199, the SVG scaled to that height and cropped
+	# from the top-left (spec section 5, row 13).
+	var waves := _svg("waves_b.svg", int(ceil(1020.0 * 199.0 / 170.0)))
+	_save(waves.get_region(Rect2i(0, 0, mini(1080, waves.get_width()), mini(199, waves.get_height()))), "waves_1080x199.png")
+	made += 5
 
 	await _feature_graphic()
 	made += 1

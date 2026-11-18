@@ -1321,3 +1321,10 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 
 - **Caption** (Cameron): the two-row caption covered the arc (Woodblock's plate sat over its feet). It is now one row under the arc, above the figures row: "65 points of Viewer Interest to Win". The arc is never covered, in every style.
 - **Organization icons** (Cameron): a card that moves no organization now shows a 0 on every listening icon when it is selected, as a card that moves some shows its changes. (The two-tap rule had left such a card with no marks at all.) `org_preview_test` checks it.
+
+## 2026-11-18: Brand B: app icon, boot splash and start screen (panel P10)
+
+- **Brand B, "The Assembly Seal"** is the brand: the icon, the boot splash and the start screen look the same whichever UI style is owned (the style is saved with the run; there is none before Continue). Card fronts and backs are untouched.
+- **Assets:** `tools/brand/export_brand.gd` rebuilds every PNG in `assets/brand/` from the SVGs in `design/brand/source/` (the 1024 render matches the reference to within 22 of 255 on any pixel): the store icons, every iOS size Godot 4.5.1 reads, Android's legacy and adaptive layers (the seal inside the 66% safe circle, plus the monochrome layer), the splash seal, the start screen's wave band and the Google Play feature graphic. `tests/test_brand_assets.gd` checks them.
+- **Project:** the icon, the version (0.1.0, a placeholder number) and the boot splash (the seal on washi) are set. Android and iOS export presets are in `tools/brand/export_presets.example.cfg` (copy to `export_presets.cfg`, which the repo ignores), with a placeholder package name and the short name "Coliseum".
+- **Start screen:** rebuilt as bands, a framed print of the `TITLE` painting, a paper title plate with the seal, three buttons and a footer, over waves. Only the print flexes (shorter screens and Large text shrink it). Behaviour is unchanged; words are Text rows (`intro.title_top`, `intro.title_bottom`, `intro.tagline`, `intro.footer_mark`, `intro.version`). `intro_brand_test` measures contrast from pixels.

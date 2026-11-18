@@ -24,6 +24,7 @@ Built from `design/brand/source/*.svg` by `tools/brand/export_brand.gd` (run wit
 | `adaptive_background_432.png` | 432 x 432 | `icon_b_adaptive_background.svg` | Android `launcher_icons/adaptive_background_432x432` (bands, washi, waves, no seal) |
 | `adaptive_monochrome_432.png` | 432 x 432, transparent | `icon_b_monochrome.svg` | Android 13 themed icons: `launcher_icons/adaptive_monochrome_432x432` |
 | `splash_seal.png` | 600 x 600 | `mark_b.svg` | Boot splash image (`boot_splash/image`), on the washi ground colour |
+| `waves_1080x199.png` | 1080 x 199 | `waves_b.svg`, scaled to 199 high and cropped from the top left | The start screen's wave band along the foot |
 | `feature_graphic_1024x500.png` | 1024 x 500, no alpha | composed in the script from `mark_b.svg`, `waves_b.svg`, the `TITLE` painting and the title text | Google Play feature graphic |
 
 ## Godot 4.5.1's export options (read from the engine, not guessed)

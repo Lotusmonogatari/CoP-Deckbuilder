@@ -13,6 +13,9 @@ const SQUARES := {
 	"splash_seal.png": 600,
 }
 
+## Not square: the start screen's wave band.
+const WAVES := Vector2i(1080, 199)
+
 
 func _image(file: String) -> Image:
 	return Image.load_from_file(ProjectSettings.globalize_path(DIR + file))
@@ -70,3 +73,10 @@ func test_the_monochrome_layer_is_white_on_transparent() -> void:
 				opaque += 1
 				assert_gt(c.r + c.g + c.b, 2.7, "opaque pixels are white")
 	assert_gt(opaque, 100, "there is a seal")
+
+
+func test_the_wave_band_is_1080_by_199() -> void:
+	var image := _image("waves_1080x199.png")
+	assert_not_null(image)
+	if image != null:
+		assert_eq(image.get_size(), WAVES)

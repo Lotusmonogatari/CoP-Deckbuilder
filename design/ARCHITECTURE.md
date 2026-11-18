@@ -137,3 +137,18 @@ Layout that makes a screen fit: the Office front page and the Level Intro sit in
 
 **Last five (P9).** `StyleMarks` gained CURL (the calendar page's corner), TAIL (the narration bubble's tail), WAVES (`add_wave_band`), FRAME (`add_print_frame`) and CUTINS (Broadcast's two shots). `CalendarSquare._make_page` builds the Living Office page-a-day; it reads `GameState.calendar_date_text()` and `calendar_weekday_text()`, which already follow the Era and Ainu calendar styles, so a new calendar style needs no change there. The narration bubble's ink comes from a Theme on the bubble (so lines added later inherit it). A panel stretches every child to fill it, so a mark that belongs in a corner draws itself in that corner of a full-size overlay.
 
+
+## Addendum 2026-11-18: the brand and the start screen (panel P10)
+
+| Piece | What it is |
+|---|---|
+| `design/brand/source/*.svg` | The brand art: the icon, its Android layers, the seal and the wave band. Never redrawn or recoloured. `design/brand/.gdignore` keeps Godot from importing them. |
+| `tools/brand/export_brand.gd` | Run with a display (`xvfb-run -a .tools/godot --path . -s tools/brand/export_brand.gd`): rasterizes the SVGs with Godot's own loader into `assets/brand/` and composes the feature graphic with real text. Reads Text rows straight from `data/strings.json` (autoloads do not run in a tool script). |
+| `tests/test_brand_assets.gd` | Sizes, no alpha on the store icons, the adaptive foreground inside the 66% safe circle, the monochrome layer white on transparent. |
+| `scripts/rules/IntroLayout.gd` | Pure: every rectangle of the start screen from the screen size, the safe-area insets and the plate's height; and the "cover" crop for the framed print. |
+| `scripts/ui/BrandTheme.gd` | The brand's colours, fonts (Shippori Mincho B1 with Noto Sans JP behind it) and the three button styles. Only the start screen reads it; it does not touch `UiStyle`. |
+| `scenes/menus/IntroScreen.tscn`, `scripts/ui/IntroScreen.gd` | The screen: nodes in the scene, positions from `IntroLayout`, the plate's height measured from the fonts (a wrapped `Label` knows its own height only a frame after it is sized). |
+| `tests/interaction/intro_brand_test.gd` | Words are Text rows, touch targets at least 122 px, text 4.5 to 1 and shapes 3 to 1 measured from pixels, nothing overlapping or off screen at 2340, 1920 and Large text, with and without a save. |
+| `tools/brand/export_presets.example.cfg` | Android and iOS presets with every icon wired and the short name "Coliseum". `export_presets.cfg` itself is git-ignored on purpose; copy the example to the project root. |
+
+Pitfall: a `Label` with `autowrap_mode` set reports a huge minimum height until it has a width, so a container that sizes itself from such labels (the title plate) must measure the text with the font (`Font.get_multiline_string_size`) rather than read the label.
