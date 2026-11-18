@@ -119,6 +119,20 @@ static func create(model_kind: Model, maximum_value: int, threshold_value: int,
 ## by the literal ID "ST06" and the six levels generate IDs of their own
 ## (TV_DEBATE_2 and the like). Declaring `bar_model` on the stage row is
 ## how a stage stops depending on being recognised.
+## True where a stage's bar is read as a share (a percentage) rather than a count of things. The stage data
+## says so in "Bar Value Kind"; an older "bar_as_percent" flag still counts. (Nothing ever set that flag, so
+## no stage was read as a percentage until this was added, 2026-11-18.)
+static func stage_is_percent(stage: Dictionary) -> bool:
+	return bool(stage.get("bar_as_percent", false)) or str(stage.get("bar_value_kind", "")) == "Percentage"
+
+
+## True where the Living Office bar draws one seat per head: a room of people counted as people (a shared
+## pool measured in seats or members). A share of an audience, a tone, an interest level and a single score
+## are not heads, so they are drawn as a continuous arc that fills like the plain bar (Cameron, 2026-11-18).
+static func draws_as_seats(model_kind: Model, as_percent: bool) -> bool:
+	return model_kind == Model.SHARED_POOL and not as_percent
+
+
 static func for_stage(stage: Dictionary) -> Model:
 	# THE <null> TRAP, explained once here — every other place in
 	# scripts/rules/ and scripts/BattleSetup.gd that reads an optional

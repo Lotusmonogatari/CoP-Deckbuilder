@@ -68,6 +68,8 @@ const LIVING_READOUT_TOP_SHORT := 150.0
 ## the default red), so each opponent is one colour (Cameron, 2026-11-17). BattleScreen sets it.
 var opponent_colour := Color(0.55, 0.11, 0.18): set = _set_opponent_colour
 var _living := false
+## Which kind of bar this is (a TV debate is a survival bar, a press conference a single score).
+var model_kind := BarModel.Model.SHARED_POOL
 var _living_height := LIVING_HEIGHT
 
 ## The gold border along the top and bottom, thin beside the cue band's 8.
@@ -172,6 +174,7 @@ func show_bar(bar: BarModel, threshold_applies: bool = true,
 	# A room with people in it has two sides, and the TV debate is one again
 	# (2026-11-12). Only a press tone is a single reading.
 	two_sided = bar.counts_people()
+	model_kind = bar.model
 	_refresh()
 
 
@@ -261,7 +264,7 @@ func _draw_living(width: float) -> void:
 		"opponent": opponent_colour,
 	}
 	var seats := Levers.whole("ui_style_seat_count")
-	if two_sided and not as_percent:
+	if BarModel.draws_as_seats(model_kind, as_percent):
 		SeatsMeter.draw_seats(self, rect, SeatsMeter.seat_split(maximum, player, opponent, seats), seats,
 			Levers.whole("ui_style_seat_outer_row_percent"), colours,
 			float(threshold) / float(maxi(maximum, 1)) if has_threshold else -1.0)

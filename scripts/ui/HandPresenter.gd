@@ -133,6 +133,10 @@ func _raise(view: Control) -> void:
 
 
 func _settle(view: Control) -> void:
+	# Starting a drag releases the press (CardView._lift), which lands here: a held card keeps its place on
+	# top of its neighbours until it is dropped.
+	if view is CardView and (view as CardView).is_lifted():
+		return
 	view.z_index = 2 if bool(view.get("selected")) else 0
 	view.position.y = 0.0
 

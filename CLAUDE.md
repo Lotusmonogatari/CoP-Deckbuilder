@@ -287,3 +287,6 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Woodblock status labels get cartouche plates with a shadow (2026-11-17, Cameron)
 - A party-colour halo around a held card past halfway (2026-11-17, Cameron)
 - New Game: swipe strips for difficulty and theme, even portraits, Marketplace and coupon text (2026-11-18, Cameron)
+- A held card stays on top of its neighbours (2026-11-18, Cameron)
+- Every card takes two taps: first raises it, second opens it (2026-11-18, Cameron)
+- Battle bars: seats only for people, a continuous arc for shares, tone and interest (2026-11-18, Cameron)

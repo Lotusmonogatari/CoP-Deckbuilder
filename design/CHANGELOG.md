@@ -1270,3 +1270,17 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 - **Party names:** Keizaijiyuutou (pure red) now sits on the light plate (3.6 to 1) instead of black; the plate rule is 3 to 1 on the light plate and 4.5 to 1 on the dark one. The party colour itself is untouched.
 - **Rhetoric Training coupon:** Learn it says "Free" instead of an XP price (nothing was ever charged).
 - **Marketplace:** an item above the Funds limit shows a greyed button reading "Insufficient Funds", not the long sentence. The header note about the limit is unchanged.
+## 2026-11-18: A held card stays on top of its neighbours
+
+- Pressing a card raised it above the others, but the moment the drag began it dropped back underneath the card on its right (starting a drag releases the press, which reset its layer). A held card now keeps its place on top until it is dropped. Visual only.
+- `hand_input_test` now checks mid-drag that no neighbouring card is drawn over the held one (it fails without the fix).
+
+## 2026-11-18: Every card takes two taps
+
+- A card that would move organisations already took two taps (the first raised it and showed the listening strip, the second opened it); a card that moved nobody opened at once, which read as inconsistent. Now every card takes two taps: the first raises it to the front and selects it (with the organisation preview when it has one), the second, or Read, opens the popup (Cameron's choice, 2026-11-18). No rule changed.
+
+## 2026-11-18: Battle bars: seats for people, a continuous arc for everything else
+
+- The stage data says which battles measure a share (Bar Value Kind "Percentage": 187 stages, such as Favorability, Support, Appeasement, Consensus and Media Ambush's Press tone), but the code looked for a flag nothing ever set, so every shared-pool battle drew seats and none showed a percentage. It now reads the data.
+- Living Office draws seats only where the bar counts people: Floor Debate and the four special committees. Percentage battles, the TV and radio debates (viewer interest) and the press conference (a single tone score) draw the continuous arc that fills like the plain bar. Those battles now also read in percent ("80% to advance", "You 30% · Undecided 25% · ..."). Other styles' bars are unchanged.
+- `test_bar_drawing` pins it: exactly five combat stages draw seats.

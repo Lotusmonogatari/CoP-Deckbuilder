@@ -107,6 +107,11 @@ func _one(style: String) -> void:
 	var guard := screen.get_node("%GuardLabel") as Control
 	var gaffes := screen.get_node("%GaffeLabel") as Control
 	await _drag(start, start + Vector2(0, -(CardView.PLAY_LIFT + 120)), 12, func() -> void:
+		# Mid-drag, the held card stays on top of its neighbours (it dropped beneath them once the drag began).
+		for other in card.get_parent().get_children():
+			if other is CardView and other != card and (other as CardView).z_index >= card.z_index:
+				_failures.append("%s: a neighbouring card is drawn over the held card" % style)
+				break
 		# Mid-drag, the lifted card must not cover the Guard or Gaffes counters (P9 tidy).
 		var rect := card.get_global_rect()
 		if rect.intersects(guard.get_global_rect()):
