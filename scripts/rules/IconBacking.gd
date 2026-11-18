@@ -5,6 +5,10 @@ extends RefCounted
 ## backing on any room picture (a single backing fails for some icons: measured 1.8 to 1 for the darkest on dark).
 ## Pure: it reads an Image it is given and decides; no autoload, file or scene.
 
+## The one chip every organization icon sits on (Cameron, 2026-11-18): the same light colour as the Details'
+## icon plates, half see-through, so all the chips look alike (the per-icon dark or light backing looked
+## inconsistent). The measured 3 to 1 reading per icon no longer applies: the icons are colourful art on a chip.
+const CHIP := Color(0.94, 0.93, 0.90, 0.5)
 const DARK := Color(0.07, 0.06, 0.05, 0.85)
 const LIGHT := Color(0.94, 0.93, 0.90, 0.92)
 

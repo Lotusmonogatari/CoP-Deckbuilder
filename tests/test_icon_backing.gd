@@ -1,23 +1,20 @@
 extends GutTest
-## Every organization icon reads at 3 to 1 or better against the backing IconBacking picks for it
-## (review of P9, finding on Broadcast's icons at 2.7 to 1): the backing follows the icon.
-
-func test_light_icons_get_the_dark_backing_and_dark_icons_the_light_one() -> void:
-	assert_false(IconBacking.use_light(0.6), "a light icon sits on the dark backing")
-	assert_true(IconBacking.use_light(0.02), "a dark icon sits on the light backing")
+## Organization icons all sit on the same chip (2026-11-18): one light colour at half strength.
 
 
-func test_every_organization_icon_reads_three_to_one() -> void:
-	var checked := 0
+func test_the_chip_is_one_light_half_see_through_colour() -> void:
+	assert_eq(IconBacking.CHIP.a, 0.5)
+	assert_gt(IconBacking.luminance(IconBacking.CHIP), 0.7, "a light chip")
+
+
+func test_every_icon_gets_the_same_chip() -> void:
+	var seen := {}
 	for booster: Dictionary in DataDB.boosters:
-		var id := str(booster.get("booster_id", ""))
-		if not ResourceLoader.exists("res://assets/icons/%s.png" % id):
-			continue
-		var image := (load("res://assets/icons/%s.png" % id) as Texture2D).get_image()
-		if image == null:
-			continue
-		var median := IconBacking.median_luminance(image)
-		var best := IconBacking.contrast_with(median, IconBacking.backing_for(median))
-		assert_gte(best, 3.0, "%s reads %.1f to 1 on its backing" % [id, best])
-		checked += 1
-	assert_gt(checked, 20, "most organization icons were checked")
+		seen[ListeningStrip._backing_for(str(booster.get("booster_id", "")))] = true
+	assert_eq(seen.size(), 1, "one chip for every organization")
+
+
+## The seat ring still follows its seat's colour (dark round a light seat and the other way round).
+func test_a_seat_ring_follows_the_seat_colour() -> void:
+	assert_true(IconBacking.use_light(0.02))
+	assert_false(IconBacking.use_light(0.6))

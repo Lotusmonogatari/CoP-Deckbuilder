@@ -106,20 +106,9 @@ func _mark(changes: Array, grey_the_rest: bool) -> void:
 			mark.hide()
 
 
-## booster_id -> backing colour, worked out once from the icon's own pixels (IconBacking).
-static var _backings: Dictionary = {}
-
-
-static func _backing_for(booster_id: String) -> Color:
-	if not _backings.has(booster_id):
-		var colour := IconBacking.DARK
-		var texture := ArtLoader.icon(booster_id)
-		if texture != null:
-			var image := texture.get_image()
-			if image != null:
-				colour = IconBacking.backing_for(IconBacking.median_luminance(image))
-		_backings[booster_id] = colour
-	return _backings[booster_id]
+## Every organization icon sits on the same half-see-through light chip (IconBacking.CHIP).
+static func _backing_for(_booster_id: String) -> Color:
+	return IconBacking.CHIP
 
 
 func _add_tile(booster_id: String, taste: String) -> void:

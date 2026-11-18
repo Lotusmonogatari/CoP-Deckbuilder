@@ -1300,3 +1300,8 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 - **No jolt:** the held card used to leap by the lift distance (about 30 px) as the drag took over from the press; it now follows the finger from where the lift begins.
 - **Battle bars name their metric:** the row under "80% to advance" says what it measures (Favorability, Appeasement, Seats...), unless the sentence already does.
 - **New Game screen:** the difficulty and theme squares share their half of the row, so they fit with no scrolling and no cut-off, and the buttons' outlines are the title screen's gold.
+
+## 2026-11-18: Bar caption on two rows; one chip for every organization icon
+
+- **Bar caption** (Cameron): "[Number] of [Metric]" on one row and "to Advance" or "to Win" on the next, inside the arc: for example "80% of Favorability" over "to Advance". It replaces the separate metric line added earlier today. Text rows `bar.amount_of_metric`, `bar.to_win` and `bar.to_advance` (the last two now hold only "to Win" and "to Advance").
+- **Organization icons** (Cameron): every icon in the battle's listening strip sits on the same light chip at 50% see-through, instead of a light or dark chip chosen per icon. The seat ring's per-colour rule is unchanged.

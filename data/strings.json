@@ -975,16 +975,16 @@
   {
     "key": "bar.to_win",
     "where": "Battle · support bar",
-    "english": "{amount} to win",
-    "placeholders": "amount",
-    "notes": null
+    "english": "to Win",
+    "placeholders": null,
+    "notes": "2026-11-18 Cameron: second row of the bar caption, under \"[Number] of [Metric]\""
   },
   {
     "key": "bar.to_advance",
     "where": "Battle · support bar",
-    "english": "{amount} to advance",
-    "placeholders": "amount",
-    "notes": "Shown on the floor, where the threshold ends one debater rather than the stage."
+    "english": "to Advance",
+    "placeholders": null,
+    "notes": "2026-11-18 Cameron: second row of the bar caption, under \"[Number] of [Metric]\""
   },
   {
     "key": "bar.take_the_room",
@@ -8419,5 +8419,12 @@
     "english": "Theme",
     "placeholders": null,
     "notes": "2026-11-18 Cameron: pick the display theme on the New Game screen (Claude's draft)"
+  },
+  {
+    "key": "bar.amount_of_metric",
+    "where": "Battle · support bar, first row of the caption",
+    "english": "{amount} of {metric}",
+    "placeholders": "amount, metric",
+    "notes": "2026-11-18 Cameron: \"[Number] of [Metric]\" then \"to Win\" or \"to Advance\" on the next row"
   }
 ]

@@ -68,10 +68,10 @@ const LIVING_READOUT_TOP_SHORT := 150.0
 ## the default red), so each opponent is one colour (Cameron, 2026-11-17). BattleScreen sets it.
 var opponent_colour := Color(0.55, 0.11, 0.18): set = _set_opponent_colour
 var _living := false
-## The label under the figure that names what the bar measures (built for the semicircle layout).
-var _metric: Label = null
-## Height of the metric row under the caption.
-const METRIC_ROW := 34.0
+## Height of the two-row caption inside the arc.
+const CAPTION_HEIGHT := 96.0
+## The caption's text size: small enough that "80% of Favorability" sits inside the arc in every style.
+const CAPTION_FONT := 30
 ## The UI style the semicircle is dressed in.
 var _look := UiStyles.LIVING_OFFICE
 ## Which kind of bar this is (a TV debate is a survival bar, a press conference a single score).
@@ -181,22 +181,11 @@ func _ready() -> void:
 			label.offset_left = 0.0
 			label.offset_right = 0.0
 			label.size = Vector2.ZERO
-		# The metric the bar tracks sits on the row under the figure, so "80% to advance" always says of what
-		# ("Favorability", "Appeasement", "Seats"...). The figure moves up one row to make room.
-		_metric = Label.new()
-		_metric.name = "Metric"
-		_metric.theme_type_variation = &"SmallLabel"
-		_metric.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		_metric.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		add_child(_metric)
-		_metric.set_anchors_preset(Control.PRESET_CENTER_TOP)
-		_metric.grow_horizontal = Control.GROW_DIRECTION_BOTH
-		_metric.offset_left = 0.0
-		_metric.offset_right = 0.0
-		_metric.offset_top = _living_height - METRIC_ROW - 6.0
-		_metric.offset_bottom = _living_height - 6.0
-		_caption.offset_top = _living_height - METRIC_ROW - 58.0
-		_caption.offset_bottom = _living_height - METRIC_ROW - 2.0
+		# Two rows inside the arc: "[Number] of [Metric]" and "to Win" / "to Advance".
+		_caption.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+		_caption.add_theme_font_size_override("font_size", CAPTION_FONT)
+		_caption.offset_top = _living_height - CAPTION_HEIGHT - 6.0
+		_caption.offset_bottom = _living_height - 6.0
 		_readout.offset_top = readout_top
 		_readout.offset_bottom = readout_top + 44.0
 	_refresh()
@@ -230,13 +219,12 @@ func _refresh() -> void:
 		# threshold ends ONE debater and the next rises, so a player told
 		# "55 seats to win" reasonably expects the stage to be over.
 		var key := "bar.to_win" if threshold_wins_stage else "bar.to_advance"
-		_caption.text = Text.say(key, {"amount": _amount(threshold)})
+		_caption.text = two_row_caption(_amount(threshold), unit, Text.say(key))
 	elif as_percent:
 		_caption.text = Text.say("bar.take_the_room")
 	else:
 		_caption.text = Text.say("bar.raise_as_high", {"unit": unit.to_lower()})
 
-	_refresh_metric()
 	if not two_sided:
 		_readout.text = Text.say("bar.one_sided",
 			{"unit": unit, "count": player, "total": maximum})
@@ -251,20 +239,11 @@ func _refresh() -> void:
 	})
 
 
-## Names what the bar measures under the figure, unless the figure's own sentence already says it.
-func _refresh_metric() -> void:
-	if _metric == null:
-		return
-	_metric.text = metric_for(unit, _caption.text)
-	_metric.visible = not _metric.text.is_empty()
-
-
-## The metric's name for the row under the figure, "" when the caption already contains it.
-static func metric_for(metric_unit: String, caption: String) -> String:
-	var name := metric_unit.strip_edges()
-	if name.is_empty() or caption.to_lower().contains(name.to_lower()):
-		return ""
-	return name
+## "[Number] of [Metric]" over "to Win" / "to Advance" (the metric is left out when the bar has none).
+static func two_row_caption(figure: String, metric: String, to_line: String) -> String:
+	var name := metric.strip_edges()
+	var first := figure if name.is_empty() else Text.say("bar.amount_of_metric", {"amount": figure, "metric": name})
+	return first + "\n" + to_line
 
 
 ## A number with its unit, where the unit is worth showing. On a percentage
