@@ -37,7 +37,7 @@ static func is_a_room(state: BattleState) -> bool:
 ## size changes. The bar is already 0-100, so the percentage is the number
 ## that is already there — this is a label, not a conversion.
 static func is_percent(stage: Dictionary) -> bool:
-	return bool(stage.get("bar_as_percent", false))
+	return BarModel.stage_is_percent(stage)
 
 
 ## The noun for one unit of the bar: "seat", "seats", or "%".

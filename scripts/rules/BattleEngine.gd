@@ -1047,7 +1047,7 @@ func _check_turn_limit() -> void:
 		# close on press tone rather than on "support".
 		var closing := (_words.say("outcome.reason.percent_of_room",
 				{"count": state.player_score()})
-			if bool(_stage.get("bar_as_percent", false))
+			if BarModel.stage_is_percent(_stage)
 			else _words.say("outcome.reason.amount_of_unit", {
 				"count": state.player_score(),
 				"unit": str(_stage.get("bar_unit", "support")).to_lower()}))
