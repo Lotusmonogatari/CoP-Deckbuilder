@@ -1267,3 +1267,7 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 
 - Pressing a card raised it above the others, but the moment the drag began it dropped back underneath the card on its right (starting a drag releases the press, which reset its layer). A held card now keeps its place on top until it is dropped. Visual only.
 - `hand_input_test` now checks mid-drag that no neighbouring card is drawn over the held one (it fails without the fix).
+
+## 2026-11-18: Every card takes two taps
+
+- A card that would move organisations already took two taps (the first raised it and showed the listening strip, the second opened it); a card that moved nobody opened at once, which read as inconsistent. Now every card takes two taps: the first raises it to the front and selects it (with the organisation preview when it has one), the second, or Read, opens the popup (Cameron's choice, 2026-11-18). No rule changed.

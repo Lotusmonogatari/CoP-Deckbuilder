@@ -834,16 +834,17 @@ func _on_card_chosen(card_id: String) -> void:
 		_toggle_pick(card_id)
 		return
 	var card := DataDB.get_card(card_id)
-	# A first tap on a card that would move organisations shows what it would
-	# do to them; a second tap, or Read, opens the card. A card that moves
-	# nobody (or a room with no question) opens straight away.
+	# Every card takes two taps (Cameron, 2026-11-18): the first raises it to the front and selects it, showing
+	# what it would do to organisations when it would move any; a second tap, or Read, opens the card.
 	if _previewed_card_id != card_id:
+		_previewed_card_id = card_id
+		_hand.select_only(card_id)
 		var changes := OrgPreview.changes(engine, card)
-		if not changes.is_empty():
-			_previewed_card_id = card_id
-			_hand.select_only(card_id)
+		if changes.is_empty():
+			_listening.clear_marks()
+		else:
 			_listening.preview(changes)
-			return
+		return
 	_open_card(card_id)
 
 
