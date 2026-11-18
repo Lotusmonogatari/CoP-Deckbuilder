@@ -51,6 +51,24 @@ func _check() -> void:
 		if not OrgPreview.changes(engine, DataDB.get_card(view.card_id)).is_empty():
 			target = view
 			break
+	# A card that moves no organization shows that too: a 0 on every listening icon (Cameron, 2026-11-18).
+	var zero_card: CardView = null
+	for view: CardView in hand.get_children():
+		if view.get_global_rect().get_center().x < width and OrgPreview.changes(engine, DataDB.get_card(view.card_id)).is_empty():
+			zero_card = view
+			break
+	if zero_card != null:
+		await _click(zero_card)
+		var zeros := 0
+		for booster_id: String in strip.listener_ids():
+			var mark := strip._tiles[booster_id]["mark"] as Label
+			if mark.visible and mark.text == "0":
+				zeros += 1
+		if zeros != strip.listener_ids().size():
+			_failures.append("a card with no effect on organizations showed 0 on %d of %d icons" % [zeros, strip.listener_ids().size()])
+		else:
+			print("  a no-effect card shows 0 on every icon")
+
 	if target == null:
 		# A random hand can hold no matching card in view (rare); nothing to click.
 		print("  SKIPPED: no card in view would move any organisation")

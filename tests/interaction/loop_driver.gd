@@ -286,6 +286,12 @@ func _play_affordable_cards(screen: Node) -> void:
 
 func _click(control: Control) -> void:
 	await get_tree().process_frame
+	# The question is also said aloud as a cue, which blocks the choices until it is tapped away: clear it
+	# before clicking an answer or Continue, as the next real tap would.
+	if str(control.name).begins_with("Choice") or str(control.name) == "ContinueButton":
+		var cue := get_tree().current_scene.get_node_or_null("CueBanner") as CueBanner
+		if cue != null:
+			cue.clear()
 	var rect := control.get_global_rect()
 	if rect.size.x <= 0.0 or rect.size.y <= 0.0:
 		_failures.append("%s has no size, so nothing could click it" % control.name)

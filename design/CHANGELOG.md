@@ -1316,3 +1316,8 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 
 - **Longer cues** (Cameron): every spoken line stays on screen 1.5 times as long (Balance "Cue: Hold Multiplier", 1.5, on top of reading time plus the extra hold). The slides in and out keep their speed.
 - **Click block** (Cameron): on the question screens (Office Hours visitor, member visit, lobbyist trade) the tap that dismissed a cue also pressed the choice behind it. While a cue is up, and for 0.35 s after it goes (Balance "Cue: Click Block Grace Seconds"), every tap on those screens is swallowed. Tapping the cue still dismisses it. In a battle the hand and End Turn stay usable while a line is up. `cue_block_test` taps with real clicks and fails without the block.
+
+## 2026-11-18: Bar caption on one row under the arc; a no-effect card shows 0 on the organization icons
+
+- **Caption** (Cameron): the two-row caption covered the arc (Woodblock's plate sat over its feet). It is now one row under the arc, above the figures row: "65 points of Viewer Interest to Win". The arc is never covered, in every style.
+- **Organization icons** (Cameron): a card that moves no organization now shows a 0 on every listening icon when it is selected, as a card that moves some shows its changes. (The two-tap rule had left such a card with no marks at all.) `org_preview_test` checks it.

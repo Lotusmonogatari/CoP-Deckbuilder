@@ -57,20 +57,18 @@ const HEIGHT := 56.0
 ## count is not a head count (SeatsMeter). This is the height of that drawing; the caption
 ## sits in the middle of it and the readout under it.
 const LIVING_HEIGHT := 230.0
-const LIVING_READOUT_TOP := 244.0
+const LIVING_READOUT_TOP := 284.0
 ## On a short screen (the 9:16 shape) the seats are drawn smaller, so the hand and End Turn keep
 ## their room (the text sweep, P9).
 const SHORT_SCREEN := 2200.0
-const LIVING_HEIGHT_SHORT := 140.0
-const LIVING_READOUT_TOP_SHORT := 150.0
+const LIVING_HEIGHT_SHORT := 106.0
+const LIVING_READOUT_TOP_SHORT := 160.0
 ## Who holds the other share, in colour: the opponent's party colour where the screen knows it.
 ## The opponent's colour in the bar and the seats: the same colour as the intent pill (the party's, or
 ## the default red), so each opponent is one colour (Cameron, 2026-11-17). BattleScreen sets it.
 var opponent_colour := Color(0.55, 0.11, 0.18): set = _set_opponent_colour
 var _living := false
-## Height of the two-row caption inside the arc.
-const CAPTION_HEIGHT := 96.0
-## The caption's text size: small enough that "80% of Favorability" sits inside the arc in every style.
+## The caption's text size: small enough that the one-row caption fits the width in every style.
 const CAPTION_FONT := 30
 ## The UI style the semicircle is dressed in.
 var _look := UiStyles.LIVING_OFFICE
@@ -181,11 +179,10 @@ func _ready() -> void:
 			label.offset_left = 0.0
 			label.offset_right = 0.0
 			label.size = Vector2.ZERO
-		# Two rows inside the arc: "[Number] of [Metric]" and "to Win" / "to Advance".
-		_caption.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+		# One row under the arc, so the arc is never covered: "[Number] [Metric] to Win".
 		_caption.add_theme_font_size_override("font_size", CAPTION_FONT)
-		_caption.offset_top = _living_height - CAPTION_HEIGHT - 6.0
-		_caption.offset_bottom = _living_height - 6.0
+		_caption.offset_top = _living_height + 4.0
+		_caption.offset_bottom = _living_height + 48.0
 		_readout.offset_top = readout_top
 		_readout.offset_bottom = readout_top + 44.0
 	_refresh()
@@ -219,7 +216,7 @@ func _refresh() -> void:
 		# threshold ends ONE debater and the next rises, so a player told
 		# "55 seats to win" reasonably expects the stage to be over.
 		var key := "bar.to_win" if threshold_wins_stage else "bar.to_advance"
-		_caption.text = two_row_caption(_amount(threshold), unit, Text.say(key),
+		_caption.text = caption_text(_amount(threshold), unit, Text.say(key),
 			not as_percent and not BarModel.draws_as_seats(model_kind, as_percent))
 	elif as_percent:
 		_caption.text = Text.say("bar.take_the_room")
@@ -240,15 +237,15 @@ func _refresh() -> void:
 	})
 
 
-## The caption's two rows: the figure with its metric, then "to Win" / "to Advance". How the first row reads
+## The caption, on one row: the figure with its metric, then "to Win" / "to Advance". How the figure reads
 ## depends on what the bar counts, so the grammar is right for each: a count or a share takes the metric as its
 ## noun ("51 Seats", "80% Favorability"); a score on a scale is "points of" it ("55 points of Press tone").
-static func two_row_caption(figure: String, metric: String, to_line: String, scored: bool = false) -> String:
+static func caption_text(figure: String, metric: String, to_line: String, scored: bool = false) -> String:
 	var name := metric.strip_edges()
 	var first := figure
 	if not name.is_empty():
 		first = Text.say("bar.amount_points" if scored else "bar.amount_metric", {"amount": figure, "metric": name})
-	return first + "\n" + to_line
+	return first + " " + to_line
 
 
 ## A number with its unit, where the unit is worth showing. On a percentage

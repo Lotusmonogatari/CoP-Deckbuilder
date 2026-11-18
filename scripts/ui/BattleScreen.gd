@@ -842,11 +842,9 @@ func _on_card_chosen(card_id: String) -> void:
 	if _previewed_card_id != card_id:
 		_previewed_card_id = card_id
 		_hand.select_only(card_id)
-		var changes := OrgPreview.changes(engine, card)
-		if changes.is_empty():
-			_listening.clear_marks()
-		else:
-			_listening.preview(changes)
+		# A card that moves no organization shows that too: a 0 on every icon, as a card that moves some shows its
+		# changes (Cameron, 2026-11-18).
+		_listening.preview(OrgPreview.changes(engine, card))
 		return
 	_open_card(card_id)
 
