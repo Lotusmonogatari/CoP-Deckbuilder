@@ -351,7 +351,7 @@ func _fit_portrait() -> void:
 	# The Promises button sits above whatever height the dues box really has at this text size.
 	if _dues_box != null and _promises_button != null:
 		var dues_height := maxf(_dues_box.custom_minimum_size.y, _dues_box.get_combined_minimum_size().y)
-		_promises_button.offset_bottom = -(dues_height + 16.0)
+		_pin_promises_above_dues(dues_height)
 		var spacer := get_node_or_null("Safe/Scroll/Column/VSpacer") as Control
 		if spacer != null:
 			spacer.custom_minimum_size.y = dues_height + 16.0 + 90.0 + 8.0
@@ -364,7 +364,21 @@ func _set_compact(on: bool) -> void:
 	var spacer := get_node_or_null("Safe/Scroll/Column/VSpacer") as Control
 	if spacer != null and _dues_box != null:
 		spacer.custom_minimum_size.y = _dues_box.custom_minimum_size.y + 16.0 + 90.0 + 8.0
-		_promises_button.offset_bottom = -(_dues_box.custom_minimum_size.y + 16.0)
+		_pin_promises_above_dues(_dues_box.custom_minimum_size.y)
+
+
+## The Promises button's corner spot, just above the dues box. It belongs to the button only while it
+## still sits in the spacer. Broadcast and Woodblock move it into a grid tile and Living Office onto a
+## pin in the room; there the container places it, and writing its bottom offset here would push the
+## tile up over the payments box (the 2026-11-18 playtest: fine on the first view, out of place after
+## buying the Funds cap increase, because that return re-fits the page).
+func _pin_promises_above_dues(dues_height: float) -> void:
+	if _promises_button == null:
+		return
+	var spacer := get_node_or_null("Safe/Scroll/Column/VSpacer")
+	if spacer == null or _promises_button.get_parent() != spacer:
+		return
+	_promises_button.offset_bottom = -(dues_height + 16.0)
 
 
 func _process(delta: float) -> void:

@@ -298,3 +298,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Cues stay up 1.5x as long; a cue blocks the buttons behind it (2026-11-18, Cameron)
 - Bar caption on one row under the arc; a no-effect card shows 0 on the icons (2026-11-18, Cameron)
 - Brand B: app icon, boot splash and start screen (panel P10, 2026-11-18, Cameron)
+- The Promises button stays in its place after the Office re-fits (2026-11-18, Cameron)
