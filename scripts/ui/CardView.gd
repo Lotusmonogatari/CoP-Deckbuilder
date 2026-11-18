@@ -565,6 +565,11 @@ func _lift() -> void:
 		scroll.clip_contents = false
 
 
+## True while the card is held off the hand (being dragged).
+func is_lifted() -> bool:
+	return _lifting
+
+
 ## How strong the halo is, 0 to 1 (the tests read this).
 func halo_strength() -> float:
 	return _halo.modulate.a if _halo != null and _halo.visible else 0.0

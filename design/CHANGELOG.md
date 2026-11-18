@@ -1262,3 +1262,8 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 
 - Once a held card has been pulled halfway to the distance that plays it, a glow and outline in the player's party colour fade in behind it, reaching full strength when letting go would play the card. It disappears on release. Purely visual: no rule or number changed. Shots: `*_battle_2340_halfway.png` in the P9 review folder.
 - `hand_input_test` checks there is no halo before halfway, some at 80% of the pull, and none after release.
+
+## 2026-11-18: A held card stays on top of its neighbours
+
+- Pressing a card raised it above the others, but the moment the drag began it dropped back underneath the card on its right (starting a drag releases the press, which reset its layer). A held card now keeps its place on top until it is dropped. Visual only.
+- `hand_input_test` now checks mid-drag that no neighbouring card is drawn over the held one (it fails without the fix).
