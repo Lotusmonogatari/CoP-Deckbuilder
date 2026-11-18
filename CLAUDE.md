@@ -295,3 +295,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Polish: symmetrical Broadcast arc, longer card pull, no jolt, bars name their metric, New Game strips (2026-11-18, Cameron)
 - Bar caption on two rows; one chip for every organization icon (2026-11-18, Cameron)
 - Question text audit, Guard and Gaffes dim again, bar grammar (2026-11-18, Cameron)
+- Cues stay up 1.5x as long; a cue blocks the buttons behind it (2026-11-18, Cameron)

@@ -76,6 +76,7 @@ func _ready() -> void:
 
 	_banner = CueBanner.new()
 	_banner.name = "CueBanner"
+	_banner.block_input = true   # a tap that dismisses a cue must not press a choice behind it
 	add_child(_banner)
 	QuestionPlate.apply(_question_label)
 

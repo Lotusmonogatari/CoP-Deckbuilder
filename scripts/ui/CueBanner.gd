@@ -58,6 +58,15 @@ const SIDE_MARGIN := 40.0
 ## Multiplies every duration. 1.0 in play.
 var speed := 1.0
 
+## Set on a screen whose buttons lie under the cue (the question screens): while a cue shows, and for
+## Balance "Cue: Click Block Grace Seconds" after it goes, every tap is swallowed, so the tap that dismisses a
+## cue never also presses a button behind it (Cameron, 2026-11-18). Off elsewhere: in a battle the hand and End
+## Turn stay usable while a line is up.
+var block_input := false
+var _blocker: Control = null
+var _grace_left := 0.0
+
+
 ## How many lines have finished showing. The tests read it.
 var lines_shown := 0
 
@@ -97,6 +106,18 @@ func _ready() -> void:
 	_step_timer.one_shot = true
 	add_child(_step_timer)
 	_step_timer.timeout.connect(_on_step_timeout)
+	set_process(true)
+
+
+func _process(delta: float) -> void:
+	if _blocker == null:
+		return
+	var showing := _band != null and _band.visible
+	if showing:
+		_grace_left = Levers.num("cue_click_block_grace_seconds")
+	elif _grace_left > 0.0:
+		_grace_left -= delta
+	_blocker.visible = block_input and (showing or _grace_left > 0.0)
 
 
 ## Says `line` as `speaker`, after anything already queued. `detail` is the
@@ -119,6 +140,9 @@ func clear() -> void:
 	_queue.clear()
 	_generation += 1
 	_busy = false
+	_grace_left = 0.0   # a cue the code takes away needs no grace (only a player's tap does)
+	if _blocker != null:
+		_blocker.hide()
 	if _step_timer != null:
 		_step_timer.stop()
 	if _band != null:
@@ -247,8 +271,8 @@ func _show_next() -> void:
 	# Reading time, plus a fixed extra hold while the line sits centered
 	# (Balance "Cue: Extra Hold Seconds", Cameron 2026-11-08); the slides in
 	# and out are untouched.
-	var hold := clampf(HOLD_MIN + HOLD_PER_CHAR * text_length, HOLD_MIN, HOLD_MAX) \
-		+ Levers.num("cue_extra_hold_seconds")
+	var hold := (clampf(HOLD_MIN + HOLD_PER_CHAR * text_length, HOLD_MIN, HOLD_MAX) \
+		+ Levers.num("cue_extra_hold_seconds")) * Levers.num("cue_hold_multiplier")
 	_step_timer.start(maxf(hold * speed, 0.001))
 
 
@@ -422,6 +446,14 @@ func _build() -> void:
 	_flash = ColorRect.new()
 	_flash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# The click block lies under the band: invisible, swallows every tap while it is up (see block_input).
+	_blocker = Control.new()
+	_blocker.name = "ClickBlock"
+	_blocker.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_blocker.mouse_filter = Control.MOUSE_FILTER_STOP
+	_blocker.hide()
+	add_child(_blocker)
+
 	_flash.color = Color(1, 1, 1, 0)
 	add_child(_flash)
 
