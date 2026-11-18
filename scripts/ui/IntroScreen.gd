@@ -78,7 +78,7 @@ func _dress() -> void:
 	%Tagline.text = Text.say("intro.tagline")
 	BrandTheme.style_label(%Title, 105, BrandTheme.SUMI, true)
 	BrandTheme.style_label(%TitleBottom, 55, BrandTheme.INDIGO, true)
-	BrandTheme.style_label(%Tagline, 34, BrandTheme.QUIET_INK, false, 0.04)
+	BrandTheme.style_label(%Tagline, 30, BrandTheme.QUIET_INK, false, 0.04)
 
 	var version := str(ProjectSettings.get_setting("application/config/version", "")).strip_edges()
 	%FooterVersion.text = Text.say("intro.version", {"version": version}) if not version.is_empty() else ""
@@ -129,10 +129,12 @@ func _layout() -> void:
 	%PlateColumn.size.x = plate_w - 100.0
 	# Its height follows its text, measured here from the fonts (a wrapped Label only knows its own height a
 	# frame after it is sized), plus the padding.
-	var text_w := plate_w - 100.0
+	var text_w := plate_w - 100.0 - 6.0   # a hair narrower than the label, so the measure never says one line fewer
 	var plate_h := 55.0 + 50.0 + 2.0 * 6.0
 	for label: Label in [%Title, %TitleBottom, %Tagline]:
 		plate_h += _text_height(label, text_w)
+	# Once the labels have a width, the column knows its real height: never less than that.
+	plate_h = maxf(plate_h, (%PlateColumn as Control).get_combined_minimum_size().y + 55.0 + 50.0)
 	var r := IntroLayout.rects(screen, insets, plate_h)
 
 	_place(%Bands, r["bands"])
@@ -163,12 +165,12 @@ func _layout() -> void:
 		%Painting.texture = atlas
 		%Painting.stretch_mode = TextureRect.STRETCH_SCALE
 	# A second pass once the wrapped text has settled (a Label's height follows its width).
-	if not _settled:
-		_settled = true
+	if _passes < 3:
+		_passes += 1
 		_layout.call_deferred()
 
 
-var _settled := false
+var _passes := 0
 
 
 ## How tall `label`'s text is when wrapped to `width` (its own font and size).

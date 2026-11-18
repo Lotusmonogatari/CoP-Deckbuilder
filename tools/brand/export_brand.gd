@@ -139,10 +139,11 @@ func _feature_graphic() -> void:
 	inner.add_theme_stylebox_override("panel", inner_box)
 	viewport.add_child(inner)
 
-	var bold: Font = load("res://assets/fonts/ShipporiMinchoB1-Bold.woff2")
-	var regular: Font = load("res://assets/fonts/ShipporiMinchoB1-Regular.woff2")
-	_label(viewport, _say("intro.title_top"), bold, 70, SUMI, Vector2(40, 112), Vector2(420, 84))
-	_label(viewport, _say("intro.title_bottom"), bold, 36, INDIGO, Vector2(40, 196), Vector2(420, 48))
+	# Antaka Brush Display, as on the start screen (Cameron, 2026-11-18).
+	var bold: Font = load("res://assets/fonts/AntakaBrushDisplay-Regular.ttf")
+	var regular: Font = bold
+	_label(viewport, _say("intro.title_top"), bold, 58, SUMI, Vector2(40, 118), Vector2(420, 84))
+	_label(viewport, _say("intro.title_bottom"), bold, 32, INDIGO, Vector2(40, 200), Vector2(420, 48))
 	_label(viewport, _say("brand.hook"), regular, 26, QUIET, Vector2(30, 318), Vector2(440, 40))
 
 	# The seal overlaps the plate's top-right corner.

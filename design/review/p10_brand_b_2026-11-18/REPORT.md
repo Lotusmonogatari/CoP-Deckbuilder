@@ -21,6 +21,7 @@ Branch `panel/p10-brand-b`, from `main`. Not merged. All wording is a draft for 
 | 4 | Short name under the phone icon | **Coliseum** |
 | 5 | Export presets | **Create now** (done as `tools/brand/export_presets.example.cfg`; see section 6) |
 | 6 | Noto Serif JP | **No**: Japanese is Noto Sans JP |
+| later | Font | **Antaka Brush Display** for the start screen and the feature graphic (instead of the spec's Shippori Mincho B1), with Noto Sans JP behind it for 蓮物語 |
 
 ## 2. Acceptance table ("Done means")
 
@@ -95,3 +96,7 @@ Beyond the spec's list I made `icon_114.png` (Godot's `notification_114x114`) an
 | `e0bc09e` | Brand assets, export script, project icon and boot splash, export presets example, new Text rows |
 | `c5b55ec` | The start screen, `intro_brand_test`, docs, review shots and this report |
 | (next) | This report's final lines |
+
+## Update: Antaka Brush Display (Cameron, 2026-11-18)
+
+After seeing the start screen in every custom font, Cameron chose **Antaka Brush Display** for the start screen and the feature graphic, with Noto Sans JP behind it so 蓮物語 is drawn by the Japanese font (Antaka is Latin only: it also lacks "·", which falls back the same way). The shots in this folder and `assets/brand/feature_graphic_1024x500.png` were retaken. Antaka is wider than Shippori, so the tagline is 30 px (one line at normal text, two at Large), the feature graphic's title is 58 px, and the plate now takes its height from the text's real height as well as the measured one (the plate no longer lets text touch its inner line). Contrast readings in section 7 are from the Shippori build; `intro_brand_test` re-measures on every run and passes.

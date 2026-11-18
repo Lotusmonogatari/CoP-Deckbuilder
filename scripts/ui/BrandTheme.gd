@@ -1,6 +1,6 @@
 class_name BrandTheme
 extends RefCounted
-## The look of Brand B, "The Assembly Seal" (P10, 2026-11-18), for the start screen: the colours, the fonts and the
+## The look of Brand B, "The Assembly Seal" (P10, 2026-11-18), for the start screen: the colours, the font and the
 ## three button styles. It is the brand, so it does not follow the UI style (the style is saved with the run, and
 ## the start screen comes before any run). Nothing else in the game reads this. Spec: design/proposals/BRAND_B_SPEC_2026-11-18.md.
 
@@ -20,16 +20,16 @@ const CORNER := 14
 static var _fonts := {}
 
 
-## Shippori Mincho B1 (Bold or Regular) with Noto Sans JP behind it, so the Japanese in the footer is drawn
-## per glyph by the Japanese font (Shippori's Latin subset has no kana or kanji).
-static func font(bold: bool) -> Font:
-	var key := "bold" if bold else "regular"
-	if not _fonts.has(key):
-		var base := (load("res://assets/fonts/ShipporiMinchoB1-%s.woff2" % ("Bold" if bold else "Regular")) as FontFile).duplicate() as FontFile
+## Antaka Brush Display (Cameron, 2026-11-18, after seeing every custom font on the start screen), with Noto Sans JP
+## behind it so the Japanese in the footer (蓮物語) and any glyph Antaka lacks (it is Latin only: no "·", "ō", "−",
+## "×", "•" or "→") are drawn per glyph by the Japanese font. Antaka has one weight, so `bold` makes no difference.
+static func font(_bold: bool = true) -> Font:
+	if not _fonts.has("display"):
+		var base := (load("res://assets/fonts/AntakaBrushDisplay-Regular.ttf") as FontFile).duplicate() as FontFile
 		var japanese: Font = load("res://assets/fonts/NotoSansJP[wght].ttf")
 		base.fallbacks = [japanese]
-		_fonts[key] = base
-	return _fonts[key]
+		_fonts["display"] = base
+	return _fonts["display"]
 
 
 ## The text-size setting's multiplier (Small, Normal or Large), so the start screen grows and shrinks with the rest.
