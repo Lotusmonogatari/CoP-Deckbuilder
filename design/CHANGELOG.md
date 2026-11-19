@@ -1381,3 +1381,15 @@ From the two-offices audit (`design/review/p11_two_offices_audit_2026-11-19/forc
 - **The crisis warning is saved:** `pending_trigger_alerts` is now in the save. It was left out, so closing the app between a stage and the Office lost the warning. It is still cleared once the Office has shown it.
 - **Checks:** `test_special_levels` gains 10 tests (recovery before the delay, after it is due, the Steering Committee, only its own level, a fresh countdown, a special level played to the end, the full-week override and its hours, the saved warning); `test_save_load` round-trips a warning. The recovery tests fail without the change.
 - **Also:** a blank line before the previous section's heading.
+
+## 2026-11-19: EV47 opens on a Monday, and its district choice becomes a Capitol one
+
+From the two-offices audit: a Decision! event (today's Dated trigger) will move the player to the Capitol and open the week, so EV47 (the Prime Minister's Opening Address) had two things that did not fit. Cameron chose the fix; the wording is Claude's draft for Cameron to rewrite.
+
+| What | Before | After |
+|---|---|---|
+| On Date | 18.10.09 (a Tuesday) | **18.10.08** (Monday, the first thing in the second week) |
+| Choice C | "Keep your appointments in the district instead" | "Skip it and work through committee papers" (a sincere Capitol option, the same length as B; Party support -1 unchanged) |
+| Choice C result | "The chamber is full without you. Someone in the party notices." | "You clear a stack of committee papers. The chamber is full without you, and someone in the party notices." |
+
+- **Checks:** `test_events` now checks the address is not due on Friday 18.10.05 or the weekend, is due on Monday 18.10.08 and plays once, and that none of EV47's three choices names the district; `event_driver` (real clicks) follows the new date. Only the Events and Event Choices sheets changed in the workbook.

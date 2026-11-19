@@ -210,16 +210,33 @@ func test_a_dated_event_is_due_from_its_day_and_only_once() -> void:
 	assert_eq(EventEngine.due_dated(events, day, ["E1"]).size(), 0, "already played")
 
 
-func test_the_prime_ministers_address_waits_for_october_9() -> void:
+func test_the_prime_ministers_address_opens_the_week_of_october_8() -> void:
+	# Monday 18.10.08 (moved from Tuesday 18.10.09 on 2026-11-19, so a Decision!
+	# event opens the week): nothing through the first week and its weekend.
 	GameState.dated_events_done = []
+	GameState.calendar = {"week": 0, "phase": "work", "hours": 39}
+	assert_eq(GameState.due_dated_event(), "", "Friday 18.10.05")
+	GameState.calendar = {"week": 0, "phase": "weekend", "hours": 0}
+	assert_eq(GameState.due_dated_event(), "", "the weekend before")
 	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
-	assert_eq(GameState.due_dated_event(), "", "Monday 08.10.18")
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 8}
-	assert_eq(GameState.due_dated_event(), "EV47", "Tuesday 18.10.09")
+	assert_eq(GameState.due_dated_event(), "EV47", "Monday 18.10.08, the first thing in the week")
 	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
 	assert_eq(GameState.due_dated_event(), "", "played once")
 	assert_true(GameState.dated_events_done.has("EV47"))
 	assert_true((GameState.to_save()["dated_events_done"] as Array).has("EV47"))
+
+
+func test_the_address_has_no_choice_that_needs_the_district() -> void:
+	# A Decision! event moves the player to the Capitol (the two-offices rules), so
+	# none of its choices may send them to the district.
+	var found := 0
+	for choice: Dictionary in DataDB.event_choices:
+		if str(choice.get("event_id", "")) != "EV47":
+			continue
+		found += 1
+		assert_false(str(choice.get("choice_text", "")).to_lower().contains("district"),
+			"EV47 %s" % str(choice.get("choice", "")))
+	assert_eq(found, 3, "the three choices are still there")
 
 
 func test_the_speaker_is_found_by_the_titles_column() -> void:

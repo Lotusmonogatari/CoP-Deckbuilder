@@ -3970,8 +3970,8 @@
   {
     "event_id": "EV47",
     "choice": "C",
-    "choice_text": "Keep your appointments in the district instead",
-    "result_text": "The chamber is full without you. Someone in the party notices.",
+    "choice_text": "Skip it and work through committee papers",
+    "result_text": "You clear a stack of committee papers. The chamber is full without you, and someone in the party notices.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
