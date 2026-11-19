@@ -30,6 +30,9 @@ signal card_released(card_id: String)
 
 ## The gap between cards when they all fit side by side (the scene's own 16).
 const HAND_GAP := 16
+## A hand that would overlap by up to this many pixels more than the chosen share still fits the row without
+## scrolling (four cards need about 5 px more than a third).
+const FIT_SLACK := 12.0
 
 var _row: HBoxContainer
 var _scroll: ScrollContainer
@@ -150,11 +153,12 @@ func _settle(view: Control) -> void:
 	view.position.y = 0.0
 
 
-## Every card in the hand is visible, whatever the hand size (P9, 2026-11-17; was a sideways
-## scroll). When the cards would not fit side by side they overlap, each one showing at least
-## its left strip (cost and name), the later ones lying over the earlier. The look is the real
-## CardView at its usual size; only the gap between cards changes. A card in view of this row
-## is one tap from zoom, and the selected card rises over its neighbours (select_only).
+## The hand's cards overlap only by their last third (Balance "Hand: Card Overlap Percent", Cameron,
+## 2026-11-19), so each card shows its left two thirds: its cost, name, picture and most of its effect.
+## Cards keep their size. A hand that fits with no more overlap than that is spread to fit the row (3 or 4
+## cards); a bigger hand keeps the one-third overlap and the row scrolls sideways (the gold bar above the
+## hand, or a finger drag), the way it did before the P9 change that squeezed every card on screen. The later
+## cards lie over the earlier ones.
 func _fit_overlap() -> void:
 	if _scroll == null:
 		return
@@ -164,9 +168,13 @@ func _fit_overlap() -> void:
 	var gap := HAND_GAP
 	var available := _scroll.size.x
 	if count >= 2 and available > 0.0:
-		var needed := float(count) * CardView.WIDTH + float(count - 1) * HAND_GAP
-		if needed > available:
-			gap = int(floor((available - float(count) * CardView.WIDTH) / float(count - 1)))
+		var natural := float(count) * CardView.WIDTH + float(count - 1) * HAND_GAP
+		if natural > available:
+			var fit_gap := (available - float(count) * CardView.WIDTH) / float(count - 1)
+			var chosen_gap := -CardView.WIDTH * float(Levers.whole("hand_card_overlap_percent")) / 100.0
+			# Spread to fit when that overlaps no more than the chosen share (a few pixels over is not worth a
+			# scroll); otherwise keep the chosen share and scroll.
+			gap = int(floor(fit_gap)) if fit_gap >= chosen_gap - FIT_SLACK else int(round(chosen_gap))
 	_row.add_theme_constant_override("separation", gap)
 	_fan(count)
 
@@ -186,8 +194,8 @@ func _apply_tilts() -> void:
 	var count := _row.get_child_count()
 	var fanned := UiStyle.current() == UiStyles.LIVING_OFFICE and count >= 2
 	if _scroll != null:
-		# A tilted or raised card may reach past the scroll box: let it show rather than be clipped
-		# (the hand no longer scrolls, so nothing needs clipping).
+		# A tilted or raised card may reach past the scroll box: let it show rather than be clipped. Cards
+		# scrolled past the row's edge then run on to the screen's edge, which reads as "more this way".
 		_scroll.clip_contents = false
 	var step := minf(2.5, 8.0 / float(maxi(count - 1, 1)))
 	for index in count:
@@ -217,6 +225,18 @@ func select_only(card_id: String) -> void:
 			view.selected = (id == card_id and not card_id.is_empty())
 			# A raised card lies over its overlapping neighbours.
 			view.z_index = 2 if view.selected else 0
+	# A card selected while part of it is past the edge scrolls into view, so its Read button can be pressed.
+	if not card_id.is_empty() and _scroll != null:
+		_reveal.call_deferred(card_id)
+
+
+func _reveal(card_id: String) -> void:
+	if _scroll == null or not _views.has(card_id):
+		return
+	for view: CardView in _views[card_id]:
+		if view.selected and view.is_inside_tree():
+			_scroll.ensure_control_visible(view)
+			return
 
 
 ## Marks the cards chosen to be discarded for `played_id`, and dims that card

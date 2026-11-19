@@ -344,5 +344,6 @@
   "report_max_saved": 10,
   "report_max_paste_characters": 120000,
   "resign_confirm_hold_seconds": 5,
+  "hand_card_overlap_percent": 33,
   "xp_tiers": {}
 }

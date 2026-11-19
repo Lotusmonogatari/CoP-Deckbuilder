@@ -4,7 +4,9 @@ extends Node
 ##  1. pressing a card makes the organization icons answer at once, not only once the card moves;
 ##  2. a raised card, and the popups, draw in the right order: a popup is above any raised card;
 ##  3. the cards overlap, and the one drawn on top is the one a tap reaches: with a card raised, pressing its
-##     Read button (which its neighbour overlaps) opens that card, not the neighbour.
+##     Read button (which its neighbour overlaps) opens that card, not the neighbour;
+##  4. a hand wider than the screen (the last third of each card overlapped, Cameron 2026-11-19) scrolls sideways:
+##     a card only partly in view scrolls into view when tapped, and a sideways drag scrolls without playing one.
 ##
 ##     xvfb-run .tools/godot --path . tests/interaction/hand_stack_test.tscn
 
@@ -55,6 +57,7 @@ func _one(style: String) -> void:
 	await _press_shows_the_icons(screen, style)
 	await _raised_card_takes_its_own_tap(screen, style)
 	await _popup_is_above_a_raised_card(screen, style)
+	await _hand_scrolls(screen, style)
 
 
 func _cards(screen: Node) -> Array[CardView]:
@@ -167,6 +170,40 @@ func _popup_is_above_a_raised_card(screen: Node, style: String) -> void:
 	await get_tree().process_frame
 
 
+# ----------------------------------------------------------------- 4. the hand scrolls sideways
+
+func _hand_scrolls(screen: Node, style: String) -> void:
+	var scroll := screen.get_node("Safe/Column/HandScroll") as ScrollContainer
+	var bar := scroll.get_h_scroll_bar()
+	if bar.max_value - bar.page < 1.0:
+		print("  %s: SKIPPED, this hand fits the screen" % style)
+		return
+	var width := get_viewport().get_visible_rect().size.x
+	var cards := _cards(screen)
+	var last := cards[cards.size() - 1]
+	_expect(last.get_global_rect().end.x > width, "%s: the last card starts partly off the screen" % style)
+	var held: int = screen.engine.state.hand.size()
+	# A sideways drag on a card scrolls the hand; it neither plays a card nor opens one. The hand scrolls with
+	# the finger (drag right to bring the cards on the right into view, Cameron 2026-09-24).
+	var from := HandPoint.center(cards[1])
+	await _drag(from, from + Vector2(200, 0), 8)
+	await get_tree().create_timer(0.2).timeout
+	_expect(scroll.scroll_horizontal > 0, "%s: a sideways drag scrolls the hand (scrolled %d)" % [style, scroll.scroll_horizontal])
+	_expect(screen.engine.state.hand.size() == held and not (screen.get_node("%CardZoom") as Control).visible,
+		"%s: and plays or opens no card" % style)
+	scroll.scroll_horizontal = 0
+	await get_tree().create_timer(0.2).timeout
+	# Tapping the partly hidden last card selects it and scrolls it fully into view.
+	var rect := last.get_global_rect()
+	await _tap(Vector2(minf(rect.position.x + 60.0, width - 40.0), rect.get_center().y))
+	_expect(last.selected, "%s: tapping the partly hidden last card selects it" % style)
+	await get_tree().create_timer(0.4).timeout
+	_expect(last.get_global_rect().end.x <= width + 1.0, "%s: and it scrolls fully into view (ends at %.0f of %.0f)" % [style, last.get_global_rect().end.x, width])
+	screen.call("_clear_preview")
+	scroll.scroll_horizontal = 0
+	await get_tree().process_frame
+
+
 # ----------------------------------------------------------------- input helpers
 
 func _event(pressed: bool, at: Vector2) -> InputEventMouseButton:
@@ -184,6 +221,22 @@ func _tap(at: Vector2) -> void:
 	Input.parse_input_event(_event(false, at))
 	await get_tree().process_frame
 	await get_tree().create_timer(0.2).timeout
+
+
+func _drag(from: Vector2, to: Vector2, steps: int = 8) -> void:
+	var transform := get_viewport().get_screen_transform()
+	Input.parse_input_event(_event(true, from))
+	await get_tree().process_frame
+	for step in range(1, steps + 1):
+		var motion := InputEventMouseMotion.new()
+		motion.position = transform * from.lerp(to, float(step) / steps)
+		motion.global_position = motion.position
+		motion.button_mask = MOUSE_BUTTON_MASK_LEFT
+		Input.parse_input_event(motion)
+		await get_tree().process_frame
+	Input.parse_input_event(_event(false, to))
+	await get_tree().process_frame
+	await get_tree().process_frame
 
 
 func _expect(ok: bool, what: String) -> void:
