@@ -2,7 +2,7 @@
 
 Read-only audit, 2026-11-19. Everything here is a **draft for Cameron**. No game code, data or workbook was changed; the only new files are in `audit/two_offices/` (the scripts) and in this folder (their output and the notes).
 
-Branch `review/p11-two-offices-audit`. Audit content commit: **AUDIT_COMMIT** (a second commit adds this hash to this line and changes nothing else).
+Branch `review/p11-two-offices-audit`. Audit content commit: **b5fae925** (a second commit adds this hash to this line and changes nothing else).
 
 ## Executive summary
 
