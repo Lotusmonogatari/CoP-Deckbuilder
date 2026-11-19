@@ -147,6 +147,10 @@ func test_what_was_circled_is_named_smallest_first() -> void:
 
 # ----------------------------------------------------------------- ReportCard
 
+func test_the_gzip_mode_is_the_engines_own() -> void:
+	assert_eq(ReportCard.GZIP_MODE, FileAccess.COMPRESSION_GZIP)
+
+
 func test_the_save_packs_into_text_and_comes_back_exactly() -> void:
 	var save := JSON.stringify({"version": 1, "run": {"meta": {"Funds": 50000}, "text": "日本語 and \"quotes\""}})
 	var blob := ReportCard.pack_blob(save)

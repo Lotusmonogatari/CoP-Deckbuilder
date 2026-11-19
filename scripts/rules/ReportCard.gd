@@ -15,6 +15,9 @@ const KINDS := ["looks", "broken", "wording", "balance", "idea", "crash"]
 const BEGIN := "-----BEGIN SAVE-----"
 const END := "-----END SAVE-----"
 const LINE_WIDTH := 76
+## Godot's gzip compression mode. The pure rules may not name the file classes, so the number is written
+## here (the unit test checks it still equals the engine's own constant).
+const GZIP_MODE := 3
 
 
 ## `card` keys (all optional): kind, note, source ("touch" | "volume" | "crash"), made_at, build,
@@ -70,7 +73,7 @@ static func to_text(card: Dictionary, save_blob: String = "") -> String:
 
 ## The save text, gzipped and written as base64 in lines of LINE_WIDTH characters.
 static func pack_blob(save_text: String) -> String:
-	var bytes := save_text.to_utf8_buffer().compress(FileAccess.COMPRESSION_GZIP)
+	var bytes := save_text.to_utf8_buffer().compress(GZIP_MODE)
 	var encoded := Marshalls.raw_to_base64(bytes)
 	var lines := PackedStringArray()
 	for start in range(0, encoded.length(), LINE_WIDTH):
@@ -86,7 +89,7 @@ static func unpack_blob(blob: String) -> String:
 	var bytes := Marshalls.base64_to_raw(joined)
 	if bytes.is_empty():
 		return ""
-	var raw := bytes.decompress_dynamic(64 * 1024 * 1024, FileAccess.COMPRESSION_GZIP)
+	var raw := bytes.decompress_dynamic(64 * 1024 * 1024, GZIP_MODE)
 	return raw.get_string_from_utf8()
 
 

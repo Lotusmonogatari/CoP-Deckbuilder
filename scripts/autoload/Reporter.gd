@@ -104,11 +104,11 @@ var _facts_snapshot: Dictionary = {}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	enabled = int(DataDB.balance.get("report_enabled", 1)) != 0
-	var seconds := float(DataDB.balance.get("report_hold_seconds", 2))
-	_touch = HoldGesture.new(int(DataDB.balance.get("report_hold_fingers", 3)), seconds)
+	enabled = Levers.whole("report_enabled") != 0
+	var seconds := Levers.num("report_hold_seconds")
+	_touch = HoldGesture.new(Levers.whole("report_hold_fingers"), seconds)
 	_volume = HoldGesture.new(VOLUME_KEYS.size(), seconds)
-	log = ActionLog.new(int(DataDB.balance.get("report_action_log_length", 60)))
+	log = ActionLog.new(Levers.whole("report_action_log_length"))
 	persist = SaveManager.enabled
 	if not enabled:
 		set_process(false)
@@ -184,7 +184,7 @@ func _check_scene() -> void:
 ## Looks at how the screen is laid out. A fault is written to the black box only when two looks, a
 ## second apart, both find it, so a button that is merely sliding in is not reported.
 func _scan_layout() -> void:
-	if int(DataDB.balance.get("report_layout_watch", 1)) == 0 or get_tree().current_scene == null:
+	if Levers.whole("report_layout_watch") == 0 or get_tree().current_scene == null:
 		return
 	var found: Dictionary = {}
 	for fault: Dictionary in current_layout_faults():
@@ -450,7 +450,7 @@ func save_report(request: Dictionary) -> Dictionary:
 		card["save_note"] = "(no run was in progress, so no save is included)"
 	else:
 		blob = ReportCard.pack_blob(save)
-		var most := int(DataDB.balance.get("report_max_paste_characters", 120000))
+		var most := Levers.whole("report_max_paste_characters")
 		if blob.length() > most:
 			blob = ""
 			card["save_note"] = "(the save is too large to paste; it is in save.json inside the zip)"
@@ -460,7 +460,7 @@ func save_report(request: Dictionary) -> Dictionary:
 	if persist:
 		var written := ReportFiles.write(report_dir, _report_id(), {"text": text, "save_text": save,
 			"screenshot": request.get("image"), "marked": request.get("marked")},
-			int(DataDB.balance.get("report_max_saved", 10)), copy_to_downloads)
+			Levers.whole("report_max_saved"), copy_to_downloads)
 		result.merge(written, true)
 	return result
 
