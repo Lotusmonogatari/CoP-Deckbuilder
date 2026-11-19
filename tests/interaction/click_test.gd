@@ -148,32 +148,40 @@ func _check_background_and_player_portrait() -> void:
 	print("  the player's and opponent's portraits share the art box as separate cutouts")
 
 
-## A sideways drag across the hand moves nothing (it no longer scrolls: the cards overlap so
-## every one shows) and does not open the card the finger started on.
+## A sideways drag across the hand scrolls it when the cards do not all fit (they overlap only by their last
+## third, so a 5-card hand is wider than the row: Cameron, 2026-11-19) and moves nothing when they do, and it
+## never opens the card the finger started on.
 func _check_hand_drags_sideways() -> void:
 	var hand: Control = _screen.get_node("%HandRow")
 	var scroll := hand.get_parent() as ScrollContainer
 	if hand.get_child_count() == 0 or scroll == null:
 		_failures.append("no hand to drag")
 		return
-	# The hand no longer scrolls sideways (P9, 2026-11-17): the cards overlap so every card shows.
-	# A sideways drag must therefore leave every card where it was, on screen, and nothing to scroll.
+	var bar := scroll.get_h_scroll_bar()
+	var scrollable := bar.max_value - bar.page > 1.0
 	var before: Array[float] = []
 	for child in hand.get_children():
 		before.append((child as Control).get_global_rect().position.x)
 	var start := HandPoint.center(hand.get_child(0) as Control)
 	await _drag(start, start + Vector2(400, 0))
 	await get_tree().create_timer(0.6).timeout
-	if scroll.scroll_horizontal != 0:
-		_failures.append("the hand scrolled sideways though every card fits")
-	for i in hand.get_child_count():
-		if absf((hand.get_child(i) as Control).get_global_rect().position.x - before[i]) > 1.0:
-			_failures.append("a sideways drag moved card %d" % i)
+	if scrollable:
+		# The hand scrolls with the finger (drag right to bring the cards on the right into view).
+		if scroll.scroll_horizontal <= 0:
+			_failures.append("a sideways drag did not scroll a hand wider than the row")
+		else:
+			print("  dragging the hand sideways scrolls it (%d px)" % scroll.scroll_horizontal)
+	else:
+		if scroll.scroll_horizontal != 0:
+			_failures.append("the hand scrolled sideways though every card fits")
+		for i in hand.get_child_count():
+			if absf((hand.get_child(i) as Control).get_global_rect().position.x - before[i]) > 1.0:
+				_failures.append("a sideways drag moved card %d" % i)
 	if _screen.get_node("%CardZoom").visible:
 		_failures.append("dragging the hand also opened a card")
 		_screen.get_node("%CardZoom").hide()
 	else:
-		print("  dragging the hand sideways moves nothing and opens nothing")
+		print("  and opens nothing")
 	scroll.scroll_horizontal = 0
 	await get_tree().process_frame
 
