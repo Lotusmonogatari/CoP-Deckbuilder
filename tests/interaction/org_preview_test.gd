@@ -68,6 +68,10 @@ func _check() -> void:
 			_failures.append("a card with no effect on organizations showed 0 on %d of %d icons" % [zeros, strip.listener_ids().size()])
 		else:
 			print("  a no-effect card shows 0 on every icon")
+		# Put that card back down. A selected card is raised over its neighbour, and a tap on the part it
+		# covers now reaches it (the card on top takes the tap, 2026-11-19), not the card beneath.
+		_screen.call("_clear_preview")
+		await get_tree().process_frame
 
 	if target == null:
 		# A random hand can hold no matching card in view (rare); nothing to click.
