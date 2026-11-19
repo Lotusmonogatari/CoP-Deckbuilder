@@ -152,3 +152,11 @@ Layout that makes a screen fit: the Office front page and the Level Intro sit in
 | `tools/brand/export_presets.example.cfg` | Android and iOS presets with every icon wired and the short name "Coliseum". `export_presets.cfg` itself is git-ignored on purpose; copy the example to the project root. |
 
 Pitfall: a `Label` with `autowrap_mode` set reports a huge minimum height until it has a width, so a container that sizes itself from such labels (the title plate) must measure the text with the font (`Font.get_multiline_string_size`) rather than read the label.
+
+## Addendum 2026-11-19: the hand's stacking and its taps
+
+Pitfalls found in a playtest:
+1. A click goes to the last child in the row that covers the point, ignoring `z_index`. The hand's cards overlap and the selected one is raised by z, so a tap on the raised card where a later card overlaps it went to the later card. `CardView._has_point` now refuses a point that a card drawn above it covers (higher z, or later in the row at equal z).
+2. A raised card (z 2 selected, 4 pressed, 20 held) draws over anything at z 0, popups included. Every popup is at `Overlay.POPUP_Z` (10), which is above a raised card and below the cue banner (50); a new popup that is not an `Overlay` must set it.
+3. The organization icons answer `card_pressed` (the press) as well as `card_lifted`; `card_released` settles them after the tap or the lift has had its say.
+

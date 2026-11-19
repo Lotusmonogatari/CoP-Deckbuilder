@@ -172,6 +172,8 @@ func _ready() -> void:
 	_hand.card_flung.connect(_on_card_flung)
 	_hand.card_lifted.connect(_on_card_lifted)
 	_hand.card_dropped.connect(_on_card_dropped)
+	_hand.card_pressed.connect(_on_card_pressed)
+	_hand.card_released.connect(_on_card_released)
 	_build_listening()
 	_build_pick_bar()
 	_messages = MessagePresenter.new(%Notice, get_tree())
@@ -240,6 +242,8 @@ func _ready() -> void:
 	BaseImage.install_behind_panel(_details_panel)
 	BaseImage.install_behind_panel(_card_zoom)
 	for panel: Control in [_details_panel, _card_zoom, %OutcomePanel]:
+		# Above a raised or selected card in the hand (z 2 to 4), below the cue banner (Overlay.POPUP_Z).
+		panel.z_index = Overlay.POPUP_Z
 		var scroll := panel.get_node_or_null("Margin/Scroll") as ScrollContainer
 		if scroll != null:
 			DragScroll.attach(scroll)
@@ -1102,6 +1106,29 @@ func _on_card_flung(card_id: String) -> void:
 		return
 	_selected_card_id = card_id
 	_play_selected()
+
+
+## The organization icons answer the moment a card is pressed, as the card rises, not only once it moves
+## (Cameron's playtest, 2026-11-19).
+func _on_card_pressed(card_id: String) -> void:
+	if not _ready_to_play or not _pick_card_id.is_empty():
+		return
+	_listening.preview(OrgPreview.changes(engine, DataDB.get_card(card_id)))
+
+
+## Whatever the press turned into, the icons settle on what is chosen once the tap (or the lift) has had its
+## say: a tap leaves the card selected and its marks showing; a press slid off the card leaves none.
+func _on_card_released(_card_id: String) -> void:
+	_settle_marks.call_deferred()
+
+
+func _settle_marks() -> void:
+	if _hand == null or _hand.any_lifted() or _listening == null:
+		return
+	if _previewed_card_id.is_empty():
+		_listening.clear_marks()
+	else:
+		_listening.preview(OrgPreview.changes(engine, DataDB.get_card(_previewed_card_id)))
 
 
 ## Holding a card up shows what it would do to the listening organisations.

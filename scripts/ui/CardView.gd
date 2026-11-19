@@ -586,6 +586,28 @@ func _lift() -> void:
 		scroll.clip_contents = false
 
 
+## The hand's cards overlap, and a click goes to the last card in the row that covers the point, whatever is
+## drawn above it. So with a card raised over its right-hand neighbour, pressing the raised card's Read
+## button, which the neighbour overlaps, opened the neighbour (Cameron's playtest, 2026-11-19). A card is
+## therefore hit only where no card drawn above it covers the point: higher z first, and among equals the
+## one later in the row.
+func _has_point(point: Vector2) -> bool:
+	if not Rect2(Vector2.ZERO, size).has_point(point):
+		return false
+	var row := get_parent()
+	if row == null:
+		return true
+	var on_screen := get_global_transform() * point
+	for sibling in row.get_children():
+		if sibling == self or not (sibling is CardView) or not (sibling as CardView).visible:
+			continue
+		var other := sibling as CardView
+		var above := other.z_index > z_index or (other.z_index == z_index and other.get_index() > get_index())
+		if above and Rect2(Vector2.ZERO, other.size).has_point(other.get_global_transform().affine_inverse() * on_screen):
+			return false
+	return true
+
+
 ## True while the card is held off the hand (being dragged).
 func is_lifted() -> bool:
 	return _lifting

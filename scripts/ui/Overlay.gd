@@ -49,6 +49,10 @@ signal confirmed
 ## screenshot showed the Office's headings ghosting through every shop.
 const BACKDROP := Color(0.07, 0.08, 0.11, 1.0)
 
+## Where every popup draws: above the hand's raised and selected cards (z 2 to 4, and 20 while one is held),
+## below the cue banner (z 50). A raised card used to show through a popup (Cameron's playtest, 2026-11-19).
+const POPUP_Z := 10
+
 var _body: VBoxContainer
 ## Width of the content column: the 1080 base width less 40 px margins.
 const COLUMN_WIDTH := 1000.0
@@ -70,6 +74,7 @@ func _ready() -> void:
 	# sits outside a zero-size scroll area, drawn but unclickable. Found by
 	# the inventory click test, 2026-09-25.
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	z_index = POPUP_Z
 	hide()
 	_build()
 

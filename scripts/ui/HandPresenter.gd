@@ -24,6 +24,9 @@ signal card_flung(card_id: String)
 ## A card lifted off the hand / put back without being played.
 signal card_lifted(card_id: String)
 signal card_dropped(card_id: String)
+## A card was pressed, and let go (whatever the press turned into: a tap, a lift, or a slide off the card).
+signal card_pressed(card_id: String)
+signal card_released(card_id: String)
 
 ## The gap between cards when they all fit side by side (the scene's own 16).
 const HAND_GAP := 16
@@ -78,6 +81,8 @@ func show_state(engine: BattleEngine) -> void:
 			# (review of P9, finding 3: the overlapped cards showed only a few letters of their names).
 			view.button_down.connect(_raise.bind(view))
 			view.button_up.connect(_settle.bind(view))
+			view.button_down.connect(func() -> void: card_pressed.emit(view.card_id))
+			view.button_up.connect(func() -> void: card_released.emit(view.card_id))
 			view.dropped.connect(func(id: String) -> void: card_dropped.emit(id))
 
 		# On screen first, then filled in. A CardView builds its labels when
@@ -194,6 +199,15 @@ func _apply_tilts() -> void:
 			continue
 		view.pivot_offset = Vector2(view.size.x * 0.5, view.size.y)
 		view.rotation_degrees = (float(index) - float(count - 1) * 0.5) * step
+
+
+## True while any card is held off the hand (being dragged).
+func any_lifted() -> bool:
+	for id: String in _views:
+		for view: CardView in _views[id]:
+			if view.is_lifted():
+				return true
+	return false
 
 
 ## Marks the one selected card (or none, with "").
