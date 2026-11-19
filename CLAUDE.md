@@ -145,6 +145,7 @@ How the code is organised (autoloads, the rules-versus-screens split, the battle
 
 - **Workbook edits.** Never save `design/Game_Workbook.xlsx` with openpyxl (it corrupts values and wipes formula caches). Edit raw XML with `tools/workbook/wbx.py` (`tools/workbook/README.md`). After every edit run `python3 tools/export_data.py` (it must say "No errors"); `--accept-wording` refreshes `tests/wording_snapshot.json` when Text rows change on purpose.
 - **Verification.** `tools/verify.sh` (about 2 minutes: export, workbook check, boot, compile every script, unit tests, real-click tests; `--quick` skips the click tests). Wait for the real "All checks passed" line. GUT alone: `.tools/godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit`. A new `class_name` script needs `.tools/godot --headless --path . --import` before tests see it.
+- **Scripted edits.** Change files with the Edit tool, or from a script with `tools/safe_edit.py` (`replace_once`, `replace_block`): they refuse an empty, missing or repeated search text and a block whose markers are backwards, and leave the file untouched when they refuse. Never cut a block with `text[text.index(a):text.index(b)]` and then `text.replace(block, new)`: when `b` comes before `a` the block is empty and `replace` inserts the new text between every character (this corrupted a test file twice, 2026-11-19).
 - **Screenshots** need a real display (`xvfb-run -a -s "-screen 0 1080x2340x24" ... --path .`), not `--headless`. Click drivers must be added to the scene root; delete throwaway drivers before committing.
 - **Memory leaks.** A lambda stored in a long-lived object must capture what it needs, not `self`; a Node must not `await` a timer.
 - **Scene builders.** Only the builders listed in `design/ARCHITECTURE.md` section 8 may be re-run; the Office and battle scenes are edited by hand.
@@ -306,3 +307,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Resign is confirmed by holding the button for five seconds (2026-11-19, Cameron)
 - Crisis levels: recovery cancels them, the warning is saved, a full week is overridden on purpose (2026-11-19, Cameron)
 - EV47 opens on a Monday and its district choice becomes a Capitol one (2026-11-19, Cameron)
+- Scripted edits can no longer corrupt a file the way two tests were (2026-11-19, Cameron)

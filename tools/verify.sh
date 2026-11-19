@@ -62,6 +62,8 @@ step "1/4  Exporting the workbook and checking the data"
 python3 tools/export_data.py || fail "the workbook has errors in it."
 # Excel's "repair" prompt on opening the workbook comes from broken formula records.
 python3 tools/workbook/check_formulas.py || fail "the workbook has formula records Excel would repair."
+# The helper that makes scripted edits refuse the mistakes that once corrupted a test file (2026-11-19).
+python3 tools/safe_edit.py --selftest || fail "the safe-edit helper's self-test failed."
 # Enough opponent bill lines for 30 turns without a repeat (a warning only: it
 # is a random simulation, so an unrelated edit can shift it by a line).
 python3 tools/cue_coverage.py --pct 85 --parts-pct 75 --runs 200 --check > /tmp/cue_coverage.txt \
