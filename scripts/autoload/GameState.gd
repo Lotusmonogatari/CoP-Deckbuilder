@@ -459,8 +459,10 @@ var special_forced := false
 var funding_frozen_active := false
 
 ## News from the level just finished, for the Office to show once and
-## forget — NOT in _SAVED_FIELDS on purpose, the same lifetime as
-## last_level_outcome/last_meta_change. Each entry is
+## forget. Saved (2026-11-19, Cameron's crisis-level review): it used to be
+## left out like last_level_outcome, so closing the app between a stage and
+## the Office lost a crisis warning for good; it is cleared the moment the
+## Office has shown it. Each entry is
 ## {"kind": "town_hall"/"steering_committee"/"funding_freeze"/"gaffe_penalty",
 ## "edge": "entered"/"left"}.
 var pending_trigger_alerts: Array[Dictionary] = []
@@ -611,7 +613,7 @@ const _SAVED_FIELDS := [
 	"patron_requests", "enacted_components", "patron_runtime", "patron_composed", "patron_armed",
 	"bill_assist", "patron_news", "patron_drafts", "draft_counter", "last_draft_at",
 	"promises", "promises_broken_unseen", "promise_serial", "scheduled_events",
-	"level_clock_started",
+	"level_clock_started", "pending_trigger_alerts",
 ]
 
 
@@ -3700,6 +3702,7 @@ func _check_town_hall() -> void:
 		pending_trigger_alerts.append({"kind": "town_hall", "edge": "entered", "count": jiban})
 	elif not triggered and town_hall_active:
 		town_hall_active = false
+		_cancel_special(SpecialLevels.TOWN_HALL)
 		pending_trigger_alerts.append({"kind": "town_hall", "edge": "left"})
 
 
@@ -3714,6 +3717,7 @@ func _check_steering_committee() -> void:
 		pending_trigger_alerts.append({"kind": "steering_committee", "edge": "entered", "count": party_support})
 	elif not triggered and steering_committee_active:
 		steering_committee_active = false
+		_cancel_special(SpecialLevels.STEERING_COMMITTEE)
 		pending_trigger_alerts.append({"kind": "steering_committee", "edge": "left"})
 
 
@@ -3722,6 +3726,18 @@ func _check_steering_committee() -> void:
 func _arm_special(trigger: String) -> void:
 	if not special_levels.has(trigger):
 		special_levels[trigger] = {"armed_at": time_units}
+
+
+## The meter that queued a special level has climbed back out (2026-11-19,
+## Cameron): the level is no longer needed, so a countdown still running, or a
+## level already due, is dropped and the Office does not force it in. The
+## player has been told ("... has recovered"). If the crisis crosses in again
+## it starts a fresh countdown. A level the player is already playing is
+## untouched: its own end clears it. Nothing is forced when nothing is due.
+func _cancel_special(trigger: String) -> void:
+	special_levels.erase(trigger)
+	if due_special_levels().is_empty():
+		special_forced = false
 
 
 ## The special levels whose countdown has run out, in the order they come due.

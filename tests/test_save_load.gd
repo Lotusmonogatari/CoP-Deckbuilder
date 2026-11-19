@@ -38,6 +38,8 @@ func _a_run_in_progress() -> void:
 	GameState.town_hall_active = true
 	GameState.steering_committee_active = false
 	GameState.funding_frozen_active = true
+	# A crisis warning not yet shown survives closing the app (2026-11-19).
+	GameState.pending_trigger_alerts.assign([{"kind": "town_hall", "edge": "entered", "count": 12}])
 	GameState.stage_type_results = {"ST02": {"wins": 3, "losses": 1}}
 	GameState.lifetime_gaffes = 27
 	GameState.stages_lost_to_gaffes = 2

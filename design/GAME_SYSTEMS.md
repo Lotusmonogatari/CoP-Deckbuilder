@@ -174,8 +174,8 @@ The Sanban tab's "low/high threshold consequence" notes (for example "LV10 canno
 
 | Trigger | Condition | Effect |
 |---|---|---|
-| Town Hall | Constituency support ≤ 15 | After a countdown (15 units) an "Urgent Matters" Town Hall level appears; if an ordinary level is played while it waits, it is forced in right after |
-| Steering Committee check-in | Your party's opinion of you (the blended Party support) < 25 | The same, as a Party Steering Committee check-in |
+| Town Hall | Constituency support ≤ 15 | After a countdown (15 units) an "Urgent Matters" Town Hall level appears; if an ordinary level is played while it waits, it is forced in right after. **If Constituency support climbs back out before the level is started, the level is dropped** (a countdown still running, or a level already listed); falling in again starts a fresh countdown. A forced crisis level always starts at once, **even in a full work week**; its hours stop at the cap (decided 2026-11-19) |
+| Steering Committee check-in | Your party's opinion of you (the blended Party support) < 25 | The same, as a Party Steering Committee check-in, including the drop on recovery and the full-week rule |
 | Funding freeze | Party support = 0 | Stage and level Funds income becomes 0 until Party support rises |
 | Party Backing | Party support > 75 | Backing M09 is active free |
 | Lifetime gaffes | 50 gaffes in a run | One-time −15 Constituency support |
@@ -259,7 +259,7 @@ Everything below lives in the autoload `GameState`. **Saved** means it is in `_S
 | `discovered_levels` | Hidden levels an event or hosting revealed | yes |
 | `special_levels`, `special_forced` | Countdowns running for the Town Hall and Steering check-in; one to start at once | yes |
 | `town_hall_active`, `steering_committee_active`, `funding_frozen_active` | Edge latches so each crisis fires once per zone | yes |
-| `pending_trigger_alerts` | News of triggers for the Office to show once | no |
+| `pending_trigger_alerts` | News of triggers for the Office to show once (saved since 2026-11-19, so closing the app does not lose a warning) | yes |
 | `stage_type_results`, `lifetime_gaffes`, `stages_lost_to_gaffes`, `gaffe_penalty_applied` | Win/loss per stage; gaffe tallies; whether the one-time penalty fired | yes |
 
 **Time**
