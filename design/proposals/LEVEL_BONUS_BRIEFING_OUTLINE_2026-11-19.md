@@ -87,9 +87,9 @@ Many ranges start at 0 ("0 to +3"), so showing the range, not one number, is the
 | Information overload | The block is one heading, up to five short lines and one row of chips, and absent where there is nothing to say |
 | The preview drifts from the payout later | One shared column map, and the honesty test |
 
-## Two choices for you
+## Two choices (decided 2026-11-19, Cameron)
 
-1. **Placement:** under "Total Rewards" (as pictured, recommended), or after the last room.
-2. **Chip label:** the range on the chip ("0-3", as pictured, recommended), or only the top ("up to +3").
+1. **Placement:** under "Total Rewards", before the first room, as pictured.
+2. **Chip label:** the full range on the chip ("0-3", "+2-4"), as pictured.
 
-Say **go** (with your two choices) and I build it on its own branch, run the full checks, and wait for "merge".
+Waiting for "go" before building. It would be built on its own branch (`feature/level-bonus-briefing`), checked with the full `tools/verify.sh`, and merged only on "merge".
