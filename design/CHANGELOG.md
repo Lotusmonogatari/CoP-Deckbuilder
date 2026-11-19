@@ -1393,3 +1393,11 @@ From the two-offices audit: a Decision! event (today's Dated trigger) will move 
 | Choice C result | "The chamber is full without you. Someone in the party notices." | "You clear a stack of committee papers. The chamber is full without you, and someone in the party notices." |
 
 - **Checks:** `test_events` now checks the address is not due on Friday 18.10.05 or the weekend, is due on Monday 18.10.08 and plays once, and that none of EV47's three choices names the district; `event_driver` (real clicks) follows the new date. Only the Events and Event Choices sheets changed in the workbook.
+
+## 2026-11-19: Draft office tags for the 167 visitors
+
+From the two-offices audit: Office Hours is an Either level (it is held at both offices), but constituents belong to the District and fellow members and party people to the Capitol, so the visitor draw will need each visitor to carry an office. Cameron asked for a draft. **Claude's draft for Cameron to correct; nothing in the workbook or the game uses it yet** (there is no Location column until the two-offices build).
+
+- **What:** `design/proposals/visitor_office_tags_2026-11-19/`: `visitor_office_tags.csv` (one row per visitor: proposed office, confidence, reason), `README.md` (method, the visitors to look at, three open questions) and `make_tags.py` (rebuilds the CSV from `data/visitors.json` and `data/boosters.json`).
+- **Result:** District 128, Capitol 23, Either 16. Confidence: 114 high, 41 medium, 12 low (the low ones are left Either: lobbyists and people whose title and organizations disagree).
+- **Method:** the title's words, and which kind of organization the visitor's reward and penalty touch (Party and Members of Parliament lean Capitol, Constituency organizations lean District); "Constituent" is always District, per the spec. Both agreeing is high confidence.
