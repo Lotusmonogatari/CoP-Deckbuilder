@@ -19,6 +19,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import *
 
+# Cameron's decisions (2026-11-19), applied over what the rule alone says. Each is a Mixed level that starts in the
+# District and finishes at the Capitol; its travel is built in and free, and (settled rule) the player ends where
+# they started. The rule alone gave Capitol for both (a committee makes a Mixed level Capitol).
+DECIDED = {
+    "LV12": (DISTRICT, "Cameron's decision, 2026-11-19: District. It starts in the District and finishes at the Capitol, with the travel built in"),
+    "LV62": (DISTRICT, "Cameron's decision, 2026-11-19: District. It starts in the District and finishes at the Capitol, with the travel built in"),
+}
+
 DISTRICT_NAME_WORDS = re.compile(r"constituen|outreach|neighbor|hometown|tour|festival|local|village|town|district|community|family|market|harbor|farm|fish", re.I)
 
 
@@ -99,6 +107,10 @@ def main():
     tally = collections.Counter()
     for level in levels:
         rooms, location, mixed, confidence, reason = classify_level(level, stages)
+        if level["level_id"] in DECIDED:
+            location, decided = DECIDED[level["level_id"]]
+            confidence = "high"
+            reason = decided + ". The rule alone said: " + reason
         stage_text = " | ".join("%s %s" % (sid, nm) for sid, nm, _o, _k, _h in rooms)
         room_summary = " / ".join("%s=%s" % (kind, office[0]) for _sid, _nm, office, kind, _h in rooms)
         rows.append([level["level_id"], level["description"], level["tier"], len(rooms), stage_text, room_summary,
