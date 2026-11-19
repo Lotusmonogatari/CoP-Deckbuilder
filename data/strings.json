@@ -8475,5 +8475,229 @@
     "english": "Can you talk your way to 51?",
     "placeholders": null,
     "notes": "Brand B (2026-11-18); draft; 51 is the floor majority"
+  },
+  {
+    "key": "report.hold_hint",
+    "where": "Administration menu, hint line",
+    "english": "Hold {fingers} fingers on the screen for {seconds} seconds to report a problem.",
+    "placeholders": "fingers, seconds",
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.hold_hint_volume",
+    "where": "Administration menu, hint line (Android only)",
+    "english": "On Android you can also hold both volume buttons for {seconds} seconds.",
+    "placeholders": "seconds",
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.holding",
+    "where": "Ring caption while the report gesture is held",
+    "english": "Keep holding to report a problem",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.error_noticed",
+    "where": "Brief message after the game noticed an error",
+    "english": "The game noticed a problem. Hold {fingers} fingers on the screen to report it.",
+    "placeholders": "fingers",
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.circle_help",
+    "where": "Report, circle step, instruction over the frozen screen",
+    "english": "Draw a circle around what looks wrong, then tap Next. Tap Skip the circle to go on without one.",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.cancel",
+    "where": "Report, button on every step",
+    "english": "Cancel",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.skip",
+    "where": "Report, circle step, button",
+    "english": "Skip the circle",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.undo",
+    "where": "Report, circle step, button",
+    "english": "Undo",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.next",
+    "where": "Report, circle step, button",
+    "english": "Next",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.form_title",
+    "where": "Report, form heading",
+    "english": "Report a problem",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.kind_heading",
+    "where": "Report, form, above the kind buttons",
+    "english": "What kind of problem is it?",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.kind_looks",
+    "where": "Report, form, kind button",
+    "english": "Looks wrong",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.kind_broken",
+    "where": "Report, form, kind button",
+    "english": "Doesn't work",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.kind_wording",
+    "where": "Report, form, kind button",
+    "english": "Unclear wording",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.kind_balance",
+    "where": "Report, form, kind button",
+    "english": "Too hard or too easy",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.kind_idea",
+    "where": "Report, form, kind button",
+    "english": "An idea",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.kind_crash",
+    "where": "Report, form, kind button (after the game stopped unexpectedly)",
+    "english": "The game closed or froze",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.note_placeholder",
+    "where": "Report, form, note box before anything is typed",
+    "english": "What happened? (optional)",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.includes",
+    "where": "Report, form, what the report holds",
+    "english": "This report holds a picture of the screen, the screen and display style you were using, your phone model and screen size, your week, hours and Funds, the last buttons you pressed, any errors the game noticed, and a copy of your save so the problem can be reproduced. It holds no name, email or device ID, and nothing leaves your phone until you send it.",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.save",
+    "where": "Report, form, button",
+    "english": "Save the report",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.saved_title",
+    "where": "Report, done step, heading",
+    "english": "Report saved",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.saved_copied",
+    "where": "Report, done step",
+    "english": "The report text is copied. Paste it into your message.",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.saved_shared",
+    "where": "Report, done step, where the zip went",
+    "english": "A zip with the picture and your save is in {where}.",
+    "placeholders": "where",
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.saved_file",
+    "where": "Report, done step, where the files went",
+    "english": "The picture and your save are in {where}.",
+    "placeholders": "where",
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.saved_nofile",
+    "where": "Report, done step, files could not be written",
+    "english": "The picture and save could not be written. The copied text still holds everything else.",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.copy_again",
+    "where": "Report, done step, button",
+    "english": "Copy the text again",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.copied_again",
+    "where": "Report, done step, button after copying",
+    "english": "Copied",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.done",
+    "where": "Report, done step, button",
+    "english": "Done",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.crash_title",
+    "where": "Report, offer after the game stopped unexpectedly",
+    "english": "The game closed unexpectedly last time.",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.crash_body",
+    "where": "Report, offer after the game stopped unexpectedly",
+    "english": "Would you like to save a report about it? It holds what you were doing just before.",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.crash_yes",
+    "where": "Report, offer, button",
+    "english": "Save a report",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "report.crash_no",
+    "where": "Report, offer, button",
+    "english": "Not now",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
   }
 ]

@@ -23,6 +23,7 @@ Game_Workbook.xlsx ──export_data.py──► data/*.json ──► DataDB �
 | `SaveManager` | One slot at `user://savegame.json`, plus one manual backup; when it saves is in `GAME_SYSTEMS.md` section 2 |
 | `Audio` | Listens to `EventBus` and plays whatever `data/sounds.json` names. Three buses (Music, Effects, Speech). **No sound files exist yet**, so the game is silent; a missing file logs one quiet line |
 | `Layout` | Keeps every full-screen container ("Safe" for screens, "Margin" for panels) inside the device's safe area |
+| `Reporter` | Loads last. The problem report: hold three fingers or both volume buttons for two seconds; keeps the black box (recent actions and errors) and offers a report after a crash. See the addendum of 2026-11-19 |
 
 ## 3. Folders
 
@@ -152,3 +153,23 @@ Layout that makes a screen fit: the Office front page and the Level Intro sit in
 | `tools/brand/export_presets.example.cfg` | Android and iOS presets with every icon wired and the short name "Coliseum". `export_presets.cfg` itself is git-ignored on purpose; copy the example to the project root. |
 
 Pitfall: a `Label` with `autowrap_mode` set reports a huge minimum height until it has a width, so a container that sizes itself from such labels (the title plate) must measure the text with the font (`Font.get_multiline_string_size`) rather than read the label.
+
+## Addendum 2026-11-19: problem reporting (the Reporter)
+
+A tester holds three fingers on the screen, or both volume buttons (Android), for two seconds; a ring fills while they hold. The screen freezes, they circle the problem, pick a kind, add a note and save. The report text goes to the clipboard and a zip is written; the text carries what the game was doing and a compressed copy of the save, so one paste is enough to reproduce the problem. The game makes no network call. Switched off with Balance "Report: Enabled" (0) for a release build.
+
+| Piece | What it is |
+|---|---|
+| `scripts/autoload/Reporter.gd` (autoload, loads last) | The black box (screens shown, button presses, taps and the engine's errors, through an `OS.add_logger` Logger that only queues; the newest 60 are kept and written to `user://reporter/blackbox.json` every few seconds), the clean-stop flag (`session.json`: a session that was neither closed nor sent to the background offers a report on the next start), the two gestures (`HoldGesture`), a layout check a moment after each screen and press, and `save_report()` which builds the text, copies it and writes the files. Nothing is written in test runs (`SaveManager.enabled` false) unless a test turns `persist` on and points `root_dir` and `report_dir` at a scratch folder. |
+| `scripts/ui/ReportScreen.gd` | The steps on a CanvasLayer above everything: offer (after a crash), circle, form, done. Pauses the tree while open. |
+| `scripts/ui/ReportHoldRing.gd`, `ControlProbe.gd`, `ReportFiles.gd` | The ring; the screen's controls as boxes; the folder and zip (and a copy to Downloads where the phone allows). |
+| `scripts/rules/ActionLog.gd`, `HoldGesture.gd`, `LayoutWatch.gd`, `ReportCard.gd`, `StrokePaint.gd` | Pure: the ring buffer; "hold N things for S seconds"; faults in a list of boxes (`outside_group`, `off_screen`, `overlapping`) and which box was circled; the report text and the packed save; the circle painted onto the picture. |
+| `tools/read_report.py` | Reads a pasted report, prints it, unpacks the save, and with `--install` puts it where the game reads it (keeping the existing save). |
+| `tests/test_report_pieces.gd`, `tests/interaction/report_test.gd` | The pure parts; and the whole thing with real touches and keys held for the real two seconds. `tools/text_sweep.gd` also runs LayoutWatch on every screen: a button outside its group fails the sweep. |
+
+Pitfalls found building it:
+1. `DragScroll` listens in `_input` and swallows a drag to scroll the page, so a finger drawing a circle over the Office never reached the drawing surface. The report pauses the tree while it is open (its own nodes run in `PROCESS_MODE_ALWAYS`).
+2. A Control that sets `set_anchors_preset(PRESET_FULL_RECT)` in its own `_ready` is zero-sized; use `set_anchors_and_offsets_preset` after the node is in the tree.
+3. The exporter's Text-key check reads any quoted `word.word` as a key the code asks for, so file names are written in two parts (`"report" + ".md"`).
+4. The Office's page is a ScrollContainer: a layout check that skips scrolled content skips the whole Office. LayoutWatch skips only the off-screen test there.
+5. The Android volume buttons arrive as `KEY_VOLUMEUP`/`KEY_VOLUMEDOWN` key events; this is tested with synthetic key events only. iOS does not pass those buttons to the game, so iOS has the touch gesture alone. Neither gesture has been tried on a real phone yet.

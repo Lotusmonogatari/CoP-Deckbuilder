@@ -10,14 +10,18 @@ extends Node
 ##   overlap          two visible text controls on the same layer whose rectangles overlap
 ##   small_target     a Button whose smaller side is under 122 px (the iOS 44 pt line);
 ##                    report only, one row per screen
+##   layout_outside_group  a Button outside the box of the container that holds it (the Promises tile
+##                    that jumped over the payments box, 2026-11-18); LayoutWatch. Fails the sweep.
+##   layout_off_screen, layout_overlapping  a Button off the screen, or over another Button (LayoutWatch);
+##                    report only
 ##
 ##     xvfb-run -a -s "-screen 0 1080x2340x24" .tools/godot --path . tools/text_sweep.tscn
 ##
 ## Environment: SWEEP_OUT=path.csv (default res://audit/text_sweep.csv), SWEEP_TEXT=small,normal,large,
 ## SWEEP_SHAPES=2340,1920, SWEEP_SHOTS=dir (a picture of every screen that had a problem, plus the
 ## screens named in SWEEP_ALWAYS, comma separated).
-## The exit code is 1 when there is any letter_stacking or off_screen row (overlap and
-## small_target are report only). Each text size can run in its own process; tools/text_sweep.sh
+## The exit code is 1 when there is any letter_stacking, off_screen or layout_outside_group row (overlap
+## and small_target are report only). Each text size can run in its own process; tools/text_sweep.sh
 ## runs the three in parallel and joins the files. Read-only for the game.
 
 const SHAPES := {"2340": Vector2i(1080, 2340), "1920": Vector2i(1080, 1920)}
@@ -63,7 +67,7 @@ func _run() -> void:
 	if out.is_empty():
 		out = "res://audit/text_sweep.csv"
 	_write(out)
-	var hard := _rows.filter(func(r: Dictionary) -> bool: return r["problem"] in ["letter_stacking", "off_screen"])
+	var hard := _rows.filter(func(r: Dictionary) -> bool: return r["problem"] in ["letter_stacking", "off_screen", "layout_outside_group"])
 	print("TEXT SWEEP: %d screens, %d rows (%d letter_stacking or off_screen), %.0f s -> %s" % [
 		_screens_checked, _rows.size(), hard.size(), (Time.get_ticks_msec() - started) / 1000.0, out])
 	get_tree().quit(1 if not hard.is_empty() else 0)
@@ -344,6 +348,11 @@ func _check(screen_id: String, root: Node) -> void:
 	var layer_root := _top_layer(root)
 	var controls := _text_controls(layer_root)
 	var found := 0
+	# Layout faults (LayoutWatch, 2026-11-19): a button outside the group that holds it fails the sweep (the
+	# Promises tile that jumped over the payments box); a button off the screen or on top of another
+	# is only reported here.
+	for fault: Dictionary in LayoutWatch.problems(ControlProbe.collect(layer_root), Rect2(Vector2.ZERO, size)):
+		found += _add_fault(screen_id, fault)
 	# letter stacking
 	for c: Control in controls:
 		var words := _words(c)
@@ -396,6 +405,16 @@ func _add(screen_id: String, c: Control, problem: String, detail: String) -> int
 		return 0
 	_targets_seen[key] = true
 	_rows.append({"screen": screen_id, "shape": _shape, "text": _text, "control": _path(c), "problem": problem, "detail": detail})
+	return 1
+
+
+func _add_fault(screen_id: String, fault: Dictionary) -> int:
+	var key := "%s|%s|%s|%s|%s" % [screen_id, _shape, _text, fault["what"], fault["path"]]
+	if _targets_seen.has(key):
+		return 0
+	_targets_seen[key] = true
+	_rows.append({"screen": screen_id, "shape": _shape, "text": _text, "control": str(fault["path"]),
+		"problem": "layout_" + str(fault["what"]), "detail": str(fault["detail"])})
 	return 1
 
 

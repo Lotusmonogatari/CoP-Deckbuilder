@@ -42,6 +42,9 @@ Audio="*res://scripts/autoload/Audio.gd"
 Layout="*res://scripts/autoload/Layout.gd"
 ; TextFit keeps wrapped text from splitting a word across two lines.
 TextFit="*res://scripts/autoload/TextFit.gd"
+; Reporter lets a tester send back a problem with what the game was doing (hold three fingers, or both
+; volume buttons, for two seconds). It loads last so every autoload it reads is ready.
+Reporter="*res://scripts/autoload/Reporter.gd"
 
 [audio]
 

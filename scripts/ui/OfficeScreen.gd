@@ -2381,6 +2381,9 @@ func _show_administration_menu() -> void:
 	rows.append(_menu_button("NewGameMenuButton", "office.new_game", func() -> void:
 		_administration_menu.close()
 		_confirm_new_game(), _new_game_panel))
+	# How to report a problem (2026-11-19): the two gestures, so testers know they exist.
+	for hint: String in Reporter.hint_lines():
+		rows.append(UiKit.line(hint, "SmallLabel"))
 	_administration_menu.open(Text.say("office.administration"), rows)
 
 
