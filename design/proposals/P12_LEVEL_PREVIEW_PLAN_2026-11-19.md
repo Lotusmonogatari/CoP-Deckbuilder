@@ -1,6 +1,6 @@
 # P12 plan: the level preview (briefing) redesign
 
-Draft for Cameron's approval. **Nothing is built.** Branch `panel/p12-level-preview`. Spec: `design/proposals/LEVEL_PREVIEW_SPEC_2026-11-19.md`; mockups: `design/proposals/img/level_preview/mockups/`.
+Draft for Cameron's approval. **Nothing is built.** Branch `panel/p12-level-preview`. Spec: `design/proposals/LEVEL_PREVIEW_SPEC_2026-11-19.md` (the updated copy from the second package); mockup sources: `design/proposals/img/level_preview/mockups/`; plain-HTML previews and 1080 × 2337 pictures of all six: `design/proposals/img/level_preview/previews/`.
 
 ## Executive summary
 
@@ -11,7 +11,7 @@ Draft for Cameron's approval. **Nothing is built.** Branch `panel/p12-level-prev
 | Loss costs | **Left out for now.** The data the new view receives keeps each room's loss cost, so a later change can show them. The standards document claims "If you lose" costs are shown, which is not true today, so I would correct that sentence. |
 | Size | About 650 lines of code (pure data builder 150, view 300, styles 100, panel 100), about 250 lines of tests, 24 Text rows, a few UI Styles tokens. No schema change. |
 | What stays | `OfficeScreen._show_briefing`'s reading of the data, `BriefingSummary`, `LevelBonus` and their tests. `LevelBonusView.rows()` stops being used by the screen and goes on the cleanup list (not deleted). |
-| What I need | Your **go**, and a quick yes or no on the four small points at the end. |
+| What I need | Your **go**, and a quick yes or no on the five small points at the end. |
 
 ## 1. The screen (the hybrid, top to bottom)
 
@@ -107,7 +107,7 @@ The three fonts are already in `assets/fonts` (added 2026-11-17), so the spec's 
 
 - **Cases:** LV11; a one-room level; a level with a hidden Media Ambush; the longest level (LV19: 10 rooms, 35 hours); a level with no organization changes (45 of the 114); a level that cannot start (a full week, set up by a throwaway driver, since the level list greys those levels out); a room with `loss_continues` (LV11's Policy Study Session).
 - **Sizes:** 1080 × 2340, 1080 × 1920 and Large text, in all three styles: 63 pictures, saved at 720 px wide, in `design/review/p12_level_preview_2026-11-19/`.
-- **`REPORT.md`** sets each picture beside its mockup artboard. **One limit:** the six mockup files need the design canvas's `support.js`, which was not in the package, so they cannot be drawn here. The report compares each screenshot with the spec's measurements and the artboard's structure, and I would ask you for PNG exports of the six artboards if you want a true side-by-side.
+- **`REPORT.md`** sets each screenshot beside the mockup pictures in `previews/png/` (the second package, 1080 × 2337). Because the layout is a hybrid, no single mockup matches it, so each comparison shows the matching **crops**: the top of the A picture beside the top of the screenshot, and the timeline of the B picture beside the timeline. Those mockup pictures used fallback fonts for Shippori Mincho B1 and Zen Kaku Gothic New (the repo has both), so letter shapes will differ a little; the layout, spacing and colours are what the comparison checks. The report also says what did not match and why.
 
 ## 6. Documents
 
@@ -129,7 +129,7 @@ The three fonts are already in `assets/fonts` (added 2026-11-17), so the spec's 
 | `briefing.how_it_pays` | Each room pays when you win it. The bonus is paid when you win the level. |
 | `briefing.orgs_if_win` | Organizations, if you win |
 | `briefing.rooms_in_order` | Rooms, in order |
-| `briefing.kind_conversation` / `kind_debate` / `kind_vote` / `kind_visit` / `kind_trade` | Conversation · no cards / Debate / Vote / Member visit / Trade |
+| `briefing.kind_conversation` / `kind_debate` / `kind_vote` / `kind_visit` / `kind_trade` | Conversation / Debate / Vote / Member visit / Trade (the spec's section 6 says "Conversation · no cards", but all six mockups show plain "Conversation · 2 h", so I follow the mockups) |
 | `briefing.finish_bonus` | Level bonus, paid when you win the level |
 | `briefing.go_in_hours` / `.one` | Go in · {count} hours / Go in · 1 hour |
 | `briefing.hour_mark` | {count} h |
@@ -152,3 +152,4 @@ The three fonts are already in `assets/fonts` (added 2026-11-17), so the spec's 
 2. **Block height:** follows the room's hours with a minimum, so the longest level scrolls (the middle region only). **Yes.**
 3. **Back twice:** the header's "Levels" link and the bottom bar's Back both go to the level list, as in the mockups. **Keep both.**
 4. **Level that cannot start:** reachable only from an event today (the level list greys such levels out), so the greyed Go in is built for that case and photographed with a driver. **Yes.**
+5. **"Conversation" without "· no cards"**, as the mockups show it, not as the spec's text-row table says. **Follow the mockups.**
