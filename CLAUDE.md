@@ -304,3 +304,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Card playtest: icons answer a press, popups over raised cards, the top card takes the tap (2026-11-19, Cameron)
 - The hand overlaps only the last third of each card and scrolls sideways (2026-11-19, Cameron)
 - Resign is confirmed by holding the button for five seconds (2026-11-19, Cameron)
+- EV47 opens on a Monday and its district choice becomes a Capitol one (2026-11-19, Cameron)

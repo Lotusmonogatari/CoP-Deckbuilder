@@ -1371,3 +1371,14 @@ What is in, what is not. See `design/review/p9_ui_styles_2026-11-17/REPORT.md` f
 - **Words:** the button reads "Resign (hold 5 seconds)" and a small line under it says "Keep holding while the screen darkens. Let go to stop." (Text rows `office.resign`, `resign.hold_hint`; Claude's draft).
 - **How:** `ResignHold` (a child of the button) draws a full-screen veil with a small shader on a canvas layer above every panel; the veil never takes a touch. The darkening maths (`ResignHold.shade`) is tested without a screen; `resign_hold_test` holds the real button: a tap does nothing, half a hold darkens the corners and then lightens, nothing happens at 4.4 seconds, the full hold resigns. Pictures at 0, 25, 50, 75 and 95 percent are in `design/review/resign_hold_2026-11-19/`.
 
+## 2026-11-19: EV47 opens on a Monday, and its district choice becomes a Capitol one
+
+From the two-offices audit: a Decision! event (today's Dated trigger) will move the player to the Capitol and open the week, so EV47 (the Prime Minister's Opening Address) had two things that did not fit. Cameron chose the fix; the wording is Claude's draft for Cameron to rewrite.
+
+| What | Before | After |
+|---|---|---|
+| On Date | 18.10.09 (a Tuesday) | **18.10.08** (Monday, the first thing in the second week) |
+| Choice C | "Keep your appointments in the district instead" | "Skip it and work through committee papers" (a sincere Capitol option, the same length as B; Party support -1 unchanged) |
+| Choice C result | "The chamber is full without you. Someone in the party notices." | "You clear a stack of committee papers. The chamber is full without you, and someone in the party notices." |
+
+- **Checks:** `test_events` now checks the address is not due on Friday 18.10.05 or the weekend, is due on Monday 18.10.08 and plays once, and that none of EV47's three choices names the district; `event_driver` (real clicks) follows the new date. Only the Events and Event Choices sheets changed in the workbook.
