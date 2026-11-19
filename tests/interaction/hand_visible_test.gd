@@ -1,9 +1,9 @@
 extends Node
-## Every card in a hand of 3 to 6 is on screen and has a strip of itself showing, in every UI
-## style (P9, 2026-11-17). The hand used to scroll sideways; now the cards overlap so none is
-## hidden. For each style and hand size the real battle screen is built and each CardView's
-## rectangle is checked: inside the screen, visible in the tree, and at least MIN_STRIP wide
-## where the next card does not cover it.
+## The hand's cards overlap only by their last third and keep their size (Cameron, 2026-11-19; it was every
+## card squeezed on screen after P9, a sideways scroll before). For each style and hand size the real battle
+## screen is built and each CardView is checked: visible in the tree, showing at least MIN_STRIP where the
+## next card covers it, and (hands of 5 or more, which no longer fit) showing about two thirds of itself, with
+## a sideways scroll that reaches every card. Hands that fit (3 or 4) are checked to sit inside the screen.
 ##
 ##     xvfb-run .tools/godot --path . tests/interaction/hand_visible_test.tscn
 
@@ -75,13 +75,36 @@ func _one(style: String, count: int) -> int:
 		_failures.append(tag + "%d card views on screen" % views.size())
 		return 1
 	var screen_rect := get_viewport().get_visible_rect()
+	var scroll := screen.find_child("HandScroll", true, false) as ScrollContainer
+	var share := float(Levers.whole("hand_card_overlap_percent")) / 100.0
+	var fits := views[views.size() - 1].get_global_rect().end.x <= screen_rect.end.x + 1.0
 	for i in views.size():
 		var rect := views[i].get_global_rect()
 		if not views[i].is_visible_in_tree():
 			_failures.append(tag + "card %d is hidden" % i)
-		if rect.position.x < -1.0 or rect.end.x > screen_rect.end.x + 1.0:
+		if fits and (rect.position.x < -1.0 or rect.end.x > screen_rect.end.x + 1.0):
 			_failures.append(tag + "card %d runs off the screen (%s)" % [i, rect])
-		var strip := rect.size.x if i == views.size() - 1 else views[i + 1].get_global_rect().position.x - rect.position.x
+		# Spacing is read from the cards' layout positions: Living Office tilts each card about its bottom
+		# centre, which moves the corner a global rectangle starts from.
+		var strip := rect.size.x if i == views.size() - 1 else views[i + 1].position.x - views[i].position.x
 		if strip < MIN_STRIP:
 			_failures.append(tag + "card %d shows only %d px" % [i, int(strip)])
+		# A hand that no longer fits keeps the chosen overlap: each card but the last shows about two thirds.
+		if not fits and i < views.size() - 1 and absf(strip - rect.size.x * (1.0 - share)) > 3.0:
+			_failures.append(tag + "card %d shows %d px, not about %d" % [i, int(strip), int(rect.size.x * (1.0 - share))])
+	if views[0].get_global_rect().position.x < -1.0:
+		_failures.append(tag + "the first card starts off the screen")
+	var range_px := scroll.get_h_scroll_bar().max_value - scroll.get_h_scroll_bar().page
+	if fits and range_px > 1.0:
+		_failures.append(tag + "the hand fits but it scrolls")
+	if not fits:
+		if range_px < 1.0:
+			_failures.append(tag + "the hand does not fit but it cannot scroll")
+		# Every card can be scrolled fully onto the screen.
+		for i in views.size():
+			scroll.ensure_control_visible(views[i])
+			await get_tree().process_frame
+			var seen := views[i].get_global_rect()
+			if seen.position.x < -1.0 or seen.end.x > screen_rect.end.x + 1.0:
+				_failures.append(tag + "card %d cannot be scrolled into view (%s)" % [i, seen])
 	return 1
