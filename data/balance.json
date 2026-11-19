@@ -343,5 +343,6 @@
   "report_layout_watch": 1,
   "report_max_saved": 10,
   "report_max_paste_characters": 120000,
+  "resign_confirm_hold_seconds": 5,
   "xp_tiers": {}
 }

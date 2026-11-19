@@ -2340,6 +2340,8 @@ func _show_reputation_menu() -> void:
 	# Resign sits at the very top, and only while all three standings are far
 	# down (Balance "Resign: ..." rows, ResignRules).
 	if ResignRules.available(GameState.meta, DataDB.balance):
+		# Resigning is a hold (the screen darkens from the edges), so the button is followed by how it works.
+		rows.push_front(UiKit.line(Text.say("resign.hold_hint"), "SmallLabel"))
 		rows.push_front(ResignScreen.button(_resign))
 	_reputation_menu.open(Text.say("office.reputation_and_results"), rows)
 

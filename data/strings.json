@@ -6680,9 +6680,9 @@
   {
     "key": "office.resign",
     "where": "Reputation and Results menu, top: the Resign button (only when Reputation, Party support and Constituency support are all very low)",
-    "english": "Resign",
-    "placeholders": null,
-    "notes": null
+    "english": "Resign (hold {seconds} seconds)",
+    "placeholders": "seconds",
+    "notes": "2026-11-19 Cameron: Resign is confirmed by holding the button; the screen darkens from the edges while you hold (Claude's draft)"
   },
   {
     "key": "resign.body",
@@ -8699,5 +8699,12 @@
     "english": "Not now",
     "placeholders": null,
     "notes": "2026-11-19 Cameron: built-in problem reporting (Claude's draft)"
+  },
+  {
+    "key": "resign.hold_hint",
+    "where": "Reputation and Results menu, under the Resign button",
+    "english": "Keep holding while the screen darkens. Let go to stop.",
+    "placeholders": null,
+    "notes": "2026-11-19 Cameron: hold to resign (Claude's draft)"
   }
 ]

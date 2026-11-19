@@ -85,15 +85,17 @@ func _to_title() -> void:
 	SceneChange.to(get_tree(), TITLE_SCENE)
 
 
-## The Resign button for the Reputation and Results menu: crimson outline and
-## fill, black text, on every state.
-static func button(on_press: Callable) -> Button:
+## The Resign button for the Reputation and Results menu: crimson outline and fill, black text, on every state.
+## It resigns only when it is HELD for Balance "Resign: Confirm Hold Seconds" while the screen darkens from the
+## edges (ResignHold, Cameron 2026-11-19); the hold is the confirmation, so a tap does nothing.
+static func button(on_confirmed: Callable) -> Button:
+	var seconds := Levers.num("resign_confirm_hold_seconds")
 	var resign := Button.new()
 	resign.name = "ResignButton"
-	resign.text = Text.say("office.resign")
+	resign.text = Text.say("office.resign", {"seconds": ResignHold.seconds_text(seconds)})
 	resign.custom_minimum_size = Vector2(0, 110)
 	style_crimson(resign)
-	resign.pressed.connect(on_press)
+	ResignHold.attach(resign, seconds, on_confirmed)
 	return resign
 
 
