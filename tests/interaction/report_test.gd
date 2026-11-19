@@ -91,19 +91,19 @@ func _check_black_box() -> void:
 
 func _check_gestures_that_must_not_open() -> void:
 	# Two fingers, however long, are not the gesture.
-	_touch(0, true, Vector2(300, 900))
-	_touch(1, true, Vector2(500, 900))
+	_touch(0, true, Vector2(300, 700))
+	_touch(1, true, Vector2(500, 700))
 	await get_tree().create_timer(2.4).timeout
 	_expect(not Reporter.is_open(), "two fingers do not open the report")
-	_touch(0, false, Vector2(300, 900))
-	_touch(1, false, Vector2(500, 900))
+	_touch(0, false, Vector2(300, 700))
+	_touch(1, false, Vector2(500, 700))
 	# Three fingers let go early.
 	for index in 3:
-		_touch(index, true, Vector2(300 + index * 200, 900))
+		_touch(index, true, Vector2(300 + index * 200, 700))
 	await get_tree().create_timer(1.2).timeout
 	_expect(_ring().visible, "a ring shows while the three fingers are held")
 	for index in 3:
-		_touch(index, false, Vector2(300 + index * 200, 900))
+		_touch(index, false, Vector2(300 + index * 200, 700))
 	await get_tree().create_timer(1.5).timeout
 	_expect(not Reporter.is_open(), "three fingers let go before two seconds do not open the report")
 	_expect(not _ring().visible, "and the ring is gone")
@@ -115,15 +115,17 @@ func _check_gestures_that_must_not_open() -> void:
 
 
 func _check_touch_report() -> void:
-	var promises := get_tree().current_scene.find_child("PromisesButton", true, false) as Button
-	var target := promises.get_global_rect().get_center()
 	for index in 3:
-		_touch(index, true, Vector2(300 + index * 200, 900))
+		_touch(index, true, Vector2(300 + index * 200, 700))
 	await get_tree().create_timer(2.5).timeout
 	for index in 3:
-		_touch(index, false, Vector2(300 + index * 200, 900))
+		_touch(index, false, Vector2(300 + index * 200, 700))
 	await get_tree().create_timer(0.5).timeout
 	_expect(Reporter.is_open(), "three fingers held for two seconds open the report")
+	# Where to circle is read now, after the report froze the screen: the page may still have been
+	# settling during the two-second hold (a loaded machine takes longer), and the picture is the frozen one.
+	var promises := get_tree().current_scene.find_child("PromisesButton", true, false) as Button
+	var target := promises.get_global_rect().get_center()
 	var screen := Reporter.get_node_or_null("ReportScreen")
 	if screen == null:
 		_failures.append("no report screen")
@@ -281,11 +283,14 @@ func _ring() -> Control:
 	return Reporter.get_node("ReportHoldLayer/HoldRing") as Control
 
 
+## A finger at a point in screen units (1080 x 2340), converted to the window's own pixels. The test fingers
+## rest on the portrait picture, where no button is: a finger also arrives as a click, and one on a button
+## would press it.
 func _touch(index: int, pressed: bool, at: Vector2) -> void:
 	var event := InputEventScreenTouch.new()
 	event.index = index
 	event.pressed = pressed
-	event.position = at
+	event.position = get_viewport().get_screen_transform() * at
 	Input.parse_input_event(event)
 
 
