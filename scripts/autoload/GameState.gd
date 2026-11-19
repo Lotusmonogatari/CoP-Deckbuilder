@@ -3892,19 +3892,16 @@ func _pay_level_rewards() -> void:
 ## first-time clear — that is a design decision for him to make, not one
 ## to guess at here.
 func _apply_level_bonus_win(level: Dictionary) -> void:
-	const RANGE_TO_META := {
-		"bonus_win_range_jiban": "Constituency support",
-		"bonus_win_range_yen": "Funds",
-		"bonus_win_range_reputation": "Reputation",
-		"bonus_win_range_party_support": "Party support",
-	}
-	for key: String in RANGE_TO_META.keys():
+	# Which columns are the bonus is LevelBonus's to say (2026-11-19), so the briefing's preview
+	# (LevelBonus.preview) and this payout read the same ones.
+	for key: String in LevelBonus.META_COLUMNS.keys():
+		var meta_name: String = LevelBonus.META_COLUMNS[key]
 		var rolled := _roll_range(level.get(key))
-		if RANGE_TO_META[key] == "Funds":
+		if meta_name == "Funds":
 			rolled = Difficulty.payout(rolled, DataDB.balance_base, difficulty)
-		_apply_meta_reward(RANGE_TO_META[key], _unless_frozen(RANGE_TO_META[key], rolled))
+		_apply_meta_reward(meta_name, _unless_frozen(meta_name, rolled))
 
-	var xp_amount := Difficulty.payout(_roll_range(level.get("bonus_win_range_xp")), DataDB.balance_base, difficulty)
+	var xp_amount := Difficulty.payout(_roll_range(level.get(LevelBonus.XP_COLUMN)), DataDB.balance_base, difficulty)
 	if xp_amount != 0:
 		_move_xp(xp_amount)
 		last_xp_gained += xp_amount
@@ -3919,8 +3916,7 @@ func _apply_level_bonus_win(level: Dictionary) -> void:
 		booster_ids.append(str(booster.get("booster_id", "")))
 	booster_ids.sort()
 	for booster_id: String in booster_ids:
-		var key := "win_delta_" + booster_id.to_lower()
-		var rolled := _roll_range(level.get(key))
+		var rolled := _roll_range(level.get(LevelBonus.column_for(booster_id)))
 		_under_cause(Text.say("record.cause_level_win"),
 			func() -> void: _apply_booster_delta(booster_id, rolled))
 

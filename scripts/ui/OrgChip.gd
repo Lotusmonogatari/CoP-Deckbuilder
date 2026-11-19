@@ -28,9 +28,10 @@ static func name_of(target_id: String) -> String:
 	return str(found.get("name_en", ""))
 
 
-## One chip. `delta` is the signed change; `preview` marks a pending one.
+## One chip. `delta` is the signed change; `preview` marks a pending one. `label` (2026-11-19) replaces
+## the number with other text, in a smaller font so it fits: the level briefing's range ("0-3").
 static func make(target_id: String, delta: int, preview: bool = false, size: float = CHIP_SIZE,
-		numbered: bool = true, detail: String = "") -> Button:
+		numbered: bool = true, detail: String = "", label: String = "") -> Button:
 	var chip := Button.new()
 	chip.name = "OrgChip_%s" % target_id
 	chip.icon = ArtLoader.icon(target_id)
@@ -41,7 +42,7 @@ static func make(target_id: String, delta: int, preview: bool = false, size: flo
 	chip.set_meta("delta", delta)
 	chip.set_meta("preview", preview)
 	chip.tooltip_text = name_of(target_id)
-	_dress(chip, delta, preview, size, numbered)
+	_dress(chip, delta, preview, size, numbered, label)
 	# `detail` (2026-11-02) is a second paragraph for the name pop-up: the
 	# styles this organization likes and dislikes, on the stage's Details screen.
 	var shown := name_of(target_id) if detail.is_empty() else "%s\n%s" % [name_of(target_id), detail]
@@ -60,7 +61,7 @@ static func side_row(ids: Array, supports: bool, size: float = 90.0) -> HFlowCon
 	return flow
 
 
-## A wrapping row of chips from [{ "id" or "target": String, "delta": int }],
+## A wrapping row of chips from [{ "id" or "target": String, "delta": int, "label": String (optional) }],
 ## biggest gain first, biggest loss last (ties keep their order). Entries with
 ## no icon or name in the data are skipped, like every other missing-data case.
 static func row(entries: Array, preview: bool = false, size: float = CHIP_SIZE) -> HFlowContainer:
@@ -72,7 +73,7 @@ static func row(entries: Array, preview: bool = false, size: float = CHIP_SIZE) 
 		var id := str(entry.get("id", entry.get("target", "")))
 		if name_of(id).is_empty():
 			continue
-		flow.add_child(make(id, int(entry.get("delta", 0)), preview, size))
+		flow.add_child(make(id, int(entry.get("delta", 0)), preview, size, true, "", str(entry.get("label", ""))))
 	return flow
 
 
@@ -111,7 +112,8 @@ static func merged(entries: Array) -> Array:
 
 
 ## The fade and the number, over the icon.
-static func _dress(chip: Button, delta: int, preview: bool, size: float, numbered: bool) -> void:
+static func _dress(chip: Button, delta: int, preview: bool, size: float, numbered: bool,
+		label: String = "") -> void:
 	var shade := TextureRect.new()
 	shade.name = "Shade"
 	shade.texture = ListeningStrip.soft_disc()
@@ -127,10 +129,10 @@ static func _dress(chip: Button, delta: int, preview: bool, size: float, numbere
 	mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	mark.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	mark.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	mark.text = "" if not numbered else ("%+d" % delta if delta != 0 else "0")
+	mark.text = label if not label.is_empty() else ("" if not numbered else ("%+d" % delta if delta != 0 else "0"))
 	# The mark lies over the icon; a style's paper plaque (Woodblock) would hide the icon.
 	mark.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
-	mark.add_theme_font_size_override("font_size", int(size / 3.0))
+	mark.add_theme_font_size_override("font_size", int(size / (4.0 if not label.is_empty() else 3.0)))
 	mark.add_theme_color_override("font_color", Color.WHITE)
 	mark.add_theme_color_override("font_outline_color", Color.BLACK)
 	mark.add_theme_constant_override("outline_size", 8)

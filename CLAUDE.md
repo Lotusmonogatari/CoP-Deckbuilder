@@ -306,3 +306,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Resign is confirmed by holding the button for five seconds (2026-11-19, Cameron)
 - Crisis levels: recovery cancels them, the warning is saved, a full week is overridden on purpose (2026-11-19, Cameron)
 - EV47 opens on a Monday and its district choice becomes a Capitol one (2026-11-19, Cameron)
+- The level briefing shows the level's end-of-level bonus (2026-11-19, Cameron)

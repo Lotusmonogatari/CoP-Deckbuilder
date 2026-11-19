@@ -4072,6 +4072,12 @@ func _show_briefing() -> void:
 		if not LevelRunner.rewards_are_unset(stage):
 			anything_set = true
 
+	# What winning the whole level pays on top of its rooms (2026-11-19, Cameron).
+	var bonus_rows := LevelBonusView.rows(expanded, GameState.difficulty, DataDB.balance_base)
+	if not bonus_rows.is_empty():
+		anything_set = true
+		rows.append_array(bonus_rows)
+
 	if BriefingSummary.lists_stages(shown):
 		for stage: Dictionary in shown:
 			rows.append(_gold_rule())
