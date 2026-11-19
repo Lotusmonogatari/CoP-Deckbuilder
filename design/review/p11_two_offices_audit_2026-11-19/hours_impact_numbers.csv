@@ -1,0 +1,17 @@
+protagonist,mode,order,trips_per_week,travel_hours_per_week,share_of_weeks_with_a_trip,worst_week_hours
+PC01,car,as played,1.837,9.19,0.769,30
+PC01,car,batched,0.806,4.03,0.806,5
+PC01,train,as played,1.837,11.02,0.769,36
+PC01,train,batched,0.806,4.84,0.806,6
+PC02,car,as played,1.856,1.86,0.770,8
+PC02,car,batched,0.816,0.82,0.816,1
+PC02,train,as played,1.856,1.86,0.770,8
+PC02,train,batched,0.816,0.82,0.816,1
+PC03,car,as played,1.855,1.85,0.762,8
+PC03,car,batched,0.805,0.80,0.805,1
+PC03,train,as played,1.855,1.85,0.762,8
+PC03,train,batched,0.805,0.80,0.805,1
+PC04,car,as played,1.890,17.01,0.761,63
+PC04,car,batched,0.794,7.15,0.794,9
+PC04,train,as played,1.890,11.34,0.761,42
+PC04,train,batched,0.794,4.77,0.794,6

@@ -1,0 +1,16 @@
+{
+ "by_location": {
+  "District": 26,
+  "Either": 5,
+  "Capitol": 87
+ },
+ "mixed_by_location": {
+  "Capitol": 26
+ },
+ "mixed": 26,
+ "confidence": {
+  "high": 106,
+  "low": 5,
+  "medium": 7
+ }
+}
