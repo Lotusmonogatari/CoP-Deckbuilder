@@ -299,5 +299,6 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Bar caption on one row under the arc; a no-effect card shows 0 on the icons (2026-11-18, Cameron)
 - Brand B: app icon, boot splash and start screen (panel P10, 2026-11-18, Cameron)
 - The Promises button stays in its place after the Office re-fits (2026-11-18, Cameron)
+- Built-in problem reporting: hold three fingers, or both volume buttons, for two seconds (2026-11-19, Cameron)
 - A card plays at the bottom of the battle bar; Guard and Gaffes stay under the card (2026-11-19, Cameron)
 - Card playtest: icons answer a press, popups over raised cards, the top card takes the tap (2026-11-19, Cameron)

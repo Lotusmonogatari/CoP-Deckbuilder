@@ -336,5 +336,12 @@
   "ui_style_seat_outer_row_percent": 60,
   "cue_hold_multiplier": 1.5,
   "cue_click_block_grace_seconds": 0.35,
+  "report_enabled": 1,
+  "report_hold_seconds": 2,
+  "report_hold_fingers": 3,
+  "report_action_log_length": 60,
+  "report_layout_watch": 1,
+  "report_max_saved": 10,
+  "report_max_paste_characters": 120000,
   "xp_tiers": {}
 }
