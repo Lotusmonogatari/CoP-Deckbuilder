@@ -1,0 +1,25 @@
+Archetype (token type),PC01 Sōya – Wakkanai,PC02 Tomakomai City,PC03 Sapporo Block 6,PC04 Aomori Block 3
+District office (district_office),Central Wakkanai (proposed),Central Tomakomai (proposed),"Open: Teine, western Kita Ward or Ishikari","Open: Mutsu, Towada or Noheji"
+Main station (station),Wakkanai Station,Tomakomai Station,Teine Station; Zenibako Station,Noheji Station; Shimokita Station (Mutsu)
+Travel route (travel_route),"Yezo Rail Sōya Line, the Northern Star limited express","Yezo Rail Muroran Line, the Harbor Light limited express","Yezo Rail Hakodate Line local, or the Sapporo City Subway","The Shinkansen through the Seikan Tunnel, then Yezo Rail's Ōminato Line from Noheji"
+City or town hall (town_hall),Wakkanai City Hall; Toyotomi Town Hall,Tomakomai City Hall,Teine Ward Office; Ishikari City Hall,Mutsu City Hall; Rokkasho Village Office; Towada City Hall
+Harbor or port (harbor),Port of Wakkanai (ferries to Rishiri and Rebun),Port of Tomakomai; the West Port fishing harbor,Ishikari Bay New Port; the Ishikari river-mouth fishing port,Noheji; Ōma port; Rokkasho's Pacific ports
+Onsen town (onsen_town),Toyotomi Onsen,"Tarumae Onsen, at the Tarumae Foothill Baths; the Seaview Baths on the Pacific shore","Ishikari Onsen, at the Ishikari Fish-House Baths",Yagen Onsen; Shimofuro Onsen
+Mountain (mountain),The Sōya Hills,Mount Tarumae,Mount Teine,Mount Osore; Mount Kamafuse
+Farmland (farmland),Sarobetsu dairy country,The Yūfutsu Plain,The Teine market gardens,Towada's garlic and nagaimo fields; Rokkasho stock farms
+Fishing grounds (fishing_grounds),Sōya Strait kelp and scallops,Tomakomai's hokki (surf clam) beds,The Ishikari salmon run,Mutsu Bay scallop farms; Ōma's tuna grounds
+School (school),Sōya Regional High School,Tomakomai Harbor High School,Teine Hillside High School,Shimokita Regional High School
+University (university),Wakkanai Northern College,Tomakomai Pacific University,Teine Institute of Technology,Towada Veterinary College
+Hospital (hospital),Wakkanai City Hospital,Tomakomai City Hospital,Teine General Hospital,Mutsu General Hospital
+Shrine or temple (shrine_temple),Hokumon Shrine,Tarumae Shrine,Ishikari Benten Shrine,Osorezan Bodaiji; Tanabu Shrine
+Market or shopping street (market),Wakkanai Central Arcade,Tomakomai Port Fish Market,"Benten historic street, Ishikari",Towada Farmers' Market
+Festival (festival),Wakkanai Minato Antarctic Festival (early August),Tomakomai Port Festival (early August); Hokki Festival (October),Ishikari Salmon Festival (late September),"Tanabu Festival, Mutsu (August 18–20)"
+Factory or industrial park (factory),The Sarobetsu Dairy Co-op creamery,Yezo Paper Company's Tomakomai Paper Works; the Northern Motors transmission plant,Ishikari Bay New Port industrial area,"Mutsu-Ogawara industrial area, Rokkasho"
+Energy site (energy_site),Sōya Hills Wind Park (57 turbines),Tomakomai Carbon Storage Center; Yezo Electric Power's planned LNG terminal,Bayside Wind Company's offshore wind farm; Yezo Gas's Ishikari LNG terminal,"Rokkasho Fuel Recycling Plant (Yezo Nuclear Fuel Corporation) and wind farms; Ōma nuclear plant (Northern Power Development, under construction)"
+Island (island),Rishiri and Rebun (if inside the district),None,None,Benten-jima off Cape Ōma
+Landmark (landmark),Cape Sōya,Lake Utonai,Hamanasu no Oka Park and the Ishikari lighthouse,Cape Ōma; Lake Towada and the Oirase Gorge
+Ainu cultural site (ainu_site),Wakkanai Ainu Center,Tomakomai Ainu Center,Kita Ward Ainu Center,Towada Ainu Center
+Beach (beach),"The Sarobetsu coast, facing Rishiri",The Pacific shore at Nishikioka,The Ishikari and Zenibako beaches,The Mutsu Bay shore at Noheji
+Ski area (ski_area),Wakkanai City Ski Hill,Tarumae Ski Hill,Mount Teine Ski Resort,Mount Kamafuse
+Park (park),Wakkanai Park,Midorigaoka Park,Maeda Forest Park,Mutsu Bayside Park
+Community hall (community_hall),Wakkanai Community Hall,Tomakomai Community Hall,Teine Community Hall,Mutsu Community Hall
