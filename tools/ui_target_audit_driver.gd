@@ -28,6 +28,13 @@ func _run() -> void:
 			office.call(panel)
 			await get_tree().create_timer(0.5).timeout
 			_measure("Office > " + panel.trim_prefix("_show_"))
+	# The level briefing (P12, 2026-11-19): Back, Go in and the Levels link.
+	await _go(OFFICE)
+	var briefed := get_tree().current_scene
+	briefed.set("_chosen_level", DataDB.get_level("LV11"))
+	briefed.call("_show_briefing")
+	await get_tree().create_timer(0.5).timeout
+	_measure("Office > level briefing")
 	await _go(OFFICE)
 	get_tree().current_scene.call("_open_draft", true)
 	await get_tree().create_timer(0.5).timeout

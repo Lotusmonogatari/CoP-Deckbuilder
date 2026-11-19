@@ -9021,5 +9021,12 @@
     "english": "{low} to {high}",
     "placeholders": "low, high",
     "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.how_it_pays_rooms",
+    "where": "Level briefing, the note in the totals card on a level with no level bonus: only the rooms pay",
+    "english": "Each room pays when you win it.",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
   }
 ]

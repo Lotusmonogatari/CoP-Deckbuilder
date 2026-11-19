@@ -1440,3 +1440,23 @@ From the two-offices audit: of 65 Random events, 37 were district casework and o
 - **The fix:** `tools/safe_edit.py` with `replace_once` and `replace_block`. They refuse an empty search text, a search text that is missing or occurs more than once, a block whose markers are backwards or ambiguous or too long, and an edit that gives the wrong length; a refused edit leaves the file untouched. `python3 tools/safe_edit.py --selftest` checks all of that, including the original mistake, and `tools/verify.sh` runs it first thing.
 - **The rule:** a "Scripted edits" note in `CLAUDE.md` section 14: use the Edit tool or `safe_edit.py`, never a slice followed by `replace`. The two docs, the verify step and this note were themselves written with `safe_edit.py`.
 
+## 2026-11-19: The level briefing is redrawn (P12)
+
+The panel that opens from the level list ("Go in, or Back") was rebuilt from the P12 package. **Cameron's choices: the top of the screen follows Template A (header, purpose, week, totals, organizations) and "Rooms, in order" follows Template B (a timeline with one block per room); the new Text rows were added with his corrections ("paid when you win the level", not "win all"); loss costs are left out for now.** The branch is `panel/p12-level-preview`; it is not merged.
+
+| Part | What it is now |
+|---|---|
+| Header | The level's name, "Tier N · N rooms", an hours badge (a tilted vermilion seal in Woodblock, an amber ring in Living Office, a gold slanted chip in Broadcast), the purpose line (a staff member's, or narration when no staff is hired), and the week as a bar with "This week: N hours left" and "N left after this level" |
+| "If you win every room" | A tile for each meter in the fixed order, then XP Growth and Funds, with the level bonus as a small line under each ("+1 to +2 bonus"), and a dashed note: each room pays when you win it, the bonus when you win the level (a level with no bonus says only the first half) |
+| "Organizations, if you win" | Icon, name and range for each organization the bonus touches; the whole card is absent when there are none (45 of 114 levels) |
+| "Rooms, in order" | One block per room, a number square, name, kind and hours ("Debate · 2 h"), reward chips, "Losing this stage costs you, but the level carries on." where it is true, an hour ruler and rail, and a marker for the level bonus at the end. One-room levels list no rooms |
+| Foot | Back and **Go in · N hours**, fixed while the middle scrolls. When the level cannot start, Go in is greyed and shows the game's own reason (`GameState.level_calendar_refusal`) |
+
+- **Rules and data:** `LevelBriefing.build()` (pure) gives the screen one plain dictionary. A test (`tests/test_level_briefing.gd`) checks it against a record of what the old briefing showed on all 114 levels at every Campaign Pressure, so no number changed; hidden rooms ("Reveal In Briefing" No) stay unnamed but their hours still count.
+- **Three styles:** the palette is 30 new `brief_*` colour rows in the UI Styles tab (Claude's draft from the mockups); shapes live in `LevelBriefingStyles`. The contrast test (`tests/test_level_briefing_contrast.gd`) holds every text pair to 4.5:1 and every icon, bar and rail to 3:1 in all three styles.
+- **Text:** 31 new `briefing.*` rows (a draft for Cameron to rewrite). No row says "win all" or "the whole level" (`tests/test_level_briefing_wording.gd`).
+- **Not built, on purpose:** the "District office" badge (it needs a Location column; the data builder carries an empty `location` for it) and "If you lose" costs (carried in the data, not shown). **`INFORMATION_STANDARDS.md` is corrected:** it said the briefing listed "If you lose" costs; it no longer does.
+- **Replaced:** the old Total Rewards, stage list and Level Bonus block. The Text rows they used are listed in `CLEANUP_CANDIDATES.md` (nothing deleted). `tests/interaction/level_bonus_driver.gd` was rewritten for the new layout.
+- **Bugs found while checking the screenshots, fixed:** a one-room level shrank to a narrow column with its words stacked letter by letter (the scroll box needs its child set to expand); at Large text the level-bonus marker did not wrap and pushed the whole panel wider than the phone; the hours ring was too small for Large text.
+- **Pictures and the deviations from the mockups** are in `design/review/p12_level_preview_2026-11-19/` (`REPORT.md`).
+

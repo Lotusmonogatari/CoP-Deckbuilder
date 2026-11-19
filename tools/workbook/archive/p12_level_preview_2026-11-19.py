@@ -39,6 +39,7 @@ ROWS = [
     ("briefing.bonus_range", "Level briefing, a total's level bonus when it is a range; {low} and {high} carry their signs", "{low} to {high} bonus", "low, high"),
     ("briefing.bonus_fixed", "Level briefing, a total's level bonus when it is one amount; {amount} carries its sign", "{amount} bonus", "amount"),
     ("briefing.how_it_pays", "Level briefing, the note in the totals card saying when rooms and the bonus pay", "Each room pays when you win it. The bonus is paid when you win the level.", ""),
+    ("briefing.how_it_pays_rooms", "Level briefing, the note in the totals card on a level with no level bonus: only the rooms pay", "Each room pays when you win it.", ""),
     ("briefing.tile_xp", "Level briefing, the label of the XP tile in the totals card", "XP Growth", ""),
     ("briefing.orgs_if_win", "Level briefing, heading of the organizations card", "Organizations, if you win", ""),
     ("briefing.rooms_in_order", "Level briefing, heading of the timeline of rooms", "Rooms, in order", ""),

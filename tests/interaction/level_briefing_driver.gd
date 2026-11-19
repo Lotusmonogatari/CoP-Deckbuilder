@@ -26,6 +26,8 @@ func _run() -> void:
 		await _open_office()
 		await _lv11(style)
 		await _long_level(style)
+		await _the_note(style)
+		await _large_text(style)
 		await _does_not_fit(style)
 	UiStyle.trying = ""
 	UiStyle.sync()
@@ -140,6 +142,46 @@ func _long_level(style: String) -> void:
 	await get_tree().process_frame
 
 
+## At Large text nothing may be wider than the phone: the scroll box, the bottom bar and every control stay inside the screen.
+func _large_text(style: String) -> void:
+	Layout.text_size_setting = "large"
+	Layout.apply_text_scale()
+	for id: String in ["LV11", "LV19"]:
+		var panel := await _brief(id)
+		var where := "%s at Large text in %s: " % [id, style]
+		var width := get_viewport().get_visible_rect().size.x
+		var scroll := panel.find_child("Scroll", true, false) as Control
+		_expect(is_equal_approx(scroll.size.x, width), where + "the scroll box is as wide as the screen (%.0f of %.0f)" % [scroll.size.x, width])
+		var bar := panel.find_child("BottomBar", true, false) as Control
+		_expect(bar.get_global_rect().end.x <= width + 1.0, where + "the bottom bar stays on screen")
+		var go := panel.find_child("Confirm", true, false) as Button
+		_expect(go.get_global_rect().end.x <= width + 1.0, where + "Go in stays on screen")
+		var worst := 0.0
+		for node: Node in (panel.find_child("Middle", true, false) as Control).find_children("*", "Control", true, false):
+			var control := node as Control
+			if control.is_visible_in_tree() and control.size.x > 0.0:
+				worst = maxf(worst, control.get_global_rect().end.x)
+		_expect(worst <= width + 1.0, where + "nothing in the middle reaches past the right edge (%.0f)" % worst)
+		var badge := panel.find_child("HoursBadge", true, false) as Control
+		_expect(badge != null and badge.get_global_rect().end.x <= width, where + "the hours badge is on screen")
+		panel.close()
+		await get_tree().process_frame
+	Layout.text_size_setting = "normal"
+	Layout.apply_text_scale()
+
+
+## LV11 pays a bonus and its note says so; LV85 pays none, so its note speaks only of the rooms.
+func _the_note(_style: String) -> void:
+	var with_bonus := await _brief("LV11")
+	_expect(_labels(with_bonus.find_child("HowItPays", true, false)).has(Text.say("briefing.how_it_pays")), "LV11's note names the bonus")
+	with_bonus.close()
+	await get_tree().process_frame
+	var without := await _brief("LV85")
+	_expect(_labels(without.find_child("HowItPays", true, false)).has(Text.say("briefing.how_it_pays_rooms")), "LV85 pays no bonus, so its note names none")
+	without.close()
+	await get_tree().process_frame
+
+
 func _does_not_fit(style: String) -> void:
 	GameState.calendar = {"week": 0, "phase": "work", "hours": 38}
 	var panel := await _brief("LV11")
@@ -188,5 +230,11 @@ func _hidden_and_one_room() -> void:
 		var panel := await _brief(one_id)
 		_expect(panel.find_child("Timeline", true, false) == null, "%s: a level with one room lists no rooms" % one_id)
 		_expect(panel.find_child("TotalsCard", true, false) != null, "%s: but shows its totals" % one_id)
+		var one_view := LevelBriefing.build(BattleSetup.expand_level(DataDB.get_level(one_id)), GameState.difficulty, DataDB.balance_base, {})
+		var note := _labels(panel.find_child("HowItPays", true, false))
+		if LevelBonus.is_empty(one_view["bonus"]):
+			_expect(note == PackedStringArray([Text.say("briefing.how_it_pays_rooms")]), "%s: no bonus, so the note speaks of the rooms only (%s)" % [one_id, note])
+		else:
+			_expect(note == PackedStringArray([Text.say("briefing.how_it_pays")]), "%s: a bonus, so the note names it (%s)" % [one_id, note])
 		panel.close()
 		await get_tree().process_frame

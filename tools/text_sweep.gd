@@ -161,6 +161,13 @@ func _sweep_shape(size: Vector2i) -> void:
 		["B03_level_briefing", func() -> void:
 			office._chosen_level = DataDB.get_level("LV04")
 			office._show_briefing()],
+		# P12 (2026-11-19): a level with one room (no timeline) and the longest level (ten rooms).
+		["B03b_level_briefing_one_room", func() -> void:
+			office._chosen_level = DataDB.get_level("LV85")
+			office._show_briefing()],
+		["B03c_level_briefing_longest", func() -> void:
+			office._chosen_level = DataDB.get_level("LV19")
+			office._show_briefing()],
 		["B04_rhetoric_training_list", func() -> void: office._show_rhetoric_training()],
 		["B04b_rhetoric_training_offer", func() -> void:
 			GameState.card_draw = {"item_id": "SH09", "card_id": "C23", "look": 1, "seen": ["C23"]}

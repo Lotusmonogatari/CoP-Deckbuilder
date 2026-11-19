@@ -50,6 +50,9 @@ func open_brief(view: Dictionary) -> void:
 	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	DragScroll.attach(_scroll)
 	var padding := MarginContainer.new()
+	# A scroll box gives its child the box's width only when the child asks to expand; without it a level with no
+	# timeline (one room) shrinks to its narrowest, and every line stacks letter by letter.
+	padding.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	padding.add_theme_constant_override("margin_left", 40)
 	padding.add_theme_constant_override("margin_right", 40)
 	padding.add_theme_constant_override("margin_top", 8)

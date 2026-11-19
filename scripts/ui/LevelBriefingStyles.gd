@@ -136,6 +136,8 @@ static func primary_ink(look: Dictionary, enabled: bool) -> Color:
 static func hours_badge(look: Dictionary, hours: int) -> Control:
 	var number := str(hours)
 	var word := Text.say("briefing.badge_hours.one" if hours == 1 else "briefing.badge_hours")
+	# The badge grows with the text-size setting (never shrinks), so "hours" stays inside its seal or ring at Large.
+	var grow := maxf(1.0, TextScale.factor(Layout.text_size_setting, DataDB.balance))
 	var plate := BriefingPlate.new()
 	plate.name = "HoursBadge"
 	plate.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
@@ -148,7 +150,7 @@ static func hours_badge(look: Dictionary, hours: int) -> Control:
 	var ink: Color = look["on_accent"]
 	var tilt := 0.0
 	if look["wood"]:
-		plate.custom_minimum_size = Vector2(len_px(56.0), len_px(56.0))
+		plate.custom_minimum_size = Vector2(len_px(56.0), len_px(56.0)) * grow
 		plate.shape = BriefingPlate.Shape.RECT
 		plate.fill = look["hot"]
 		plate.edge = look["ink"]
@@ -158,7 +160,7 @@ static func hours_badge(look: Dictionary, hours: int) -> Control:
 		column.add_child(_badge_label(number, SIZE_TITLE * 0.86, ink, true))
 		column.add_child(_badge_label(word, 11.0, ink, false))
 	elif look["living"]:
-		plate.custom_minimum_size = Vector2(len_px(58.0), len_px(58.0))
+		plate.custom_minimum_size = Vector2(len_px(58.0), len_px(58.0)) * grow
 		plate.shape = BriefingPlate.Shape.RING
 		plate.edge = look["accent"]
 		plate.edge_width = len_px(4.0)
@@ -166,7 +168,7 @@ static func hours_badge(look: Dictionary, hours: int) -> Control:
 		column.add_child(_badge_label(number, 20.0, ink, false))
 		column.add_child(_badge_label(word, 11.0, ink, false))
 	else:
-		plate.custom_minimum_size = Vector2(len_px(86.0), len_px(34.0))
+		plate.custom_minimum_size = Vector2(len_px(86.0), len_px(34.0)) * grow
 		plate.shape = BriefingPlate.Shape.SLANT
 		plate.fill = look["accent"]
 		plate.slant = len_px(10.0)

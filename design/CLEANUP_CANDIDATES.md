@@ -114,3 +114,24 @@ Several are test helpers (they exist so a test can look inside a presenter) and 
 - Code for Shop effects no item uses any more (the six office-supply items replaced the drafts): `STRONG_FAMILY`, `REWARD_MULT`, `POOL_FAMILY`, `POOL_MAX` in `StaffTasks.gd`, `GameState` and the exporter's allowed list, with the Text rows `assign.item_cap_family`, `assign.item_desc_family`, `assign.item_cap_mult`, `assign.item_desc_mult`, `assign.item_cap_pool`, `assign.item_cap_max` and the `assign.item_desc_pool_*` and `assign.item_desc_max_*` rows. They still work if a row ever uses them (event choices still change the pool through `staff_pool_mods`).
 - The Shop columns `Staff Hours` (superseded by Staff Effect HOURS; kept for the coffee and tea rows), `Staff Target` and `Staff Days` (no current item sets them).
 - The Balance rows `Staff Tasks: Pool Size` and `Weekend Pool Size` were retired on 2026-11-16 (the ramp replaced them); confirm they are gone.
+
+## From the 2026-11-19 level briefing redesign (P12): the old briefing's rows and code (nothing deleted; Cameron to rule)
+
+The redesigned briefing no longer asks for these Text rows. Where any code still does, it is `LevelBonusView.rows()` (the old Level Bonus block), which only `tests/test_level_bonus.gd` calls; it can go with them.
+
+| Text row | What it said |
+|---|---|
+| `briefing.level_hours` (and `.one`) | The old "Level hours" line |
+| `briefing.stage_hours` (and `.one`) | A stage's hours in the old stage list |
+| `briefing.stage_fallback` | The old stage name when a stage had none |
+| `briefing.total_rewards` | The old "Total Rewards" heading |
+| `briefing.rewards` | The old per-stage rewards line |
+| `briefing.bullet` | The "• " in front of an old reward line |
+| `briefing.level_bonus` | "Level Bonus (paid if you win the whole level):", the wording this redesign corrected |
+| `briefing.level_bonus_orgs` | The old Level Bonus organizations line |
+| `briefing.xp_growth_range` | The old XP range line |
+| `reward.delta_range`, `reward.chip_range` | The old range wording for a meter line and an organization chip |
+| `office.go_in` | The old plain "Go in" button on the briefing |
+
+Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its data (`LevelBriefing`'s rooms, kept so the loss costs can come back) without showing them. The exporter already prints the rows nothing asks for (`level_hours`, `rewards`, `stage_fallback`, `stage_hours`, `total_rewards`, `office.go_in`); the others on this list are asked for only by `LevelBonusView.rows()`. Removing these Text rows means `python3 tools/export_data.py --accept-wording` to refresh the wording snapshot.
+

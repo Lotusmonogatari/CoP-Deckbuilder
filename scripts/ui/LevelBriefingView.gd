@@ -253,7 +253,7 @@ static func _totals_card(view: Dictionary, look: Dictionary) -> Control:
 	grid.add_theme_constant_override("v_separation", int(LevelBriefingStyles.len_px(6.0)))
 	for name: String in BriefingSummary.ordered(names):
 		grid.add_child(_tile(name, int(totals.get(name, 0)), bonus.get(name, {}), look))
-	grid.add_child(_note_cell(look))
+	grid.add_child(_note_cell(look, not LevelBonus.is_empty(view.get("bonus", {}))))
 	column.add_child(grid)
 	return card
 
@@ -288,7 +288,8 @@ static func bonus_text(name: String, bounds: Dictionary) -> String:
 	return Text.say("briefing.bonus_range", {"low": Phrase.meta_amount(name, low, true), "high": Phrase.meta_amount(name, high, true)})
 
 
-static func _note_cell(look: Dictionary) -> Control:
+## The note says when the rooms pay, and when the bonus does only if the level has one.
+static func _note_cell(look: Dictionary, has_bonus: bool) -> Control:
 	# A panel gives every child the whole cell, so the dashed frame fills it and the words sit in a margin of their own.
 	var cell := PanelContainer.new()
 	cell.name = "HowItPays"
@@ -300,7 +301,8 @@ static func _note_cell(look: Dictionary) -> Control:
 	inset.add_theme_constant_override("margin_right", int(LevelBriefingStyles.len_px(9.0)))
 	inset.add_theme_constant_override("margin_top", int(LevelBriefingStyles.len_px(7.0)))
 	inset.add_theme_constant_override("margin_bottom", int(LevelBriefingStyles.len_px(7.0)))
-	inset.add_child(_label(Text.say("briefing.how_it_pays"), LevelBriefingStyles.SIZE_SMALL - 0.5, look["muted"], false))
+	var words := Text.say("briefing.how_it_pays") if has_bonus else Text.say("briefing.how_it_pays_rooms")
+	inset.add_child(_label(words, LevelBriefingStyles.SIZE_SMALL - 0.5, look["muted"], false))
 	cell.add_child(inset)
 	return cell
 
@@ -517,7 +519,8 @@ static func _finish_marker(look: Dictionary) -> Control:
 	if look["living"]:
 		box.set_corner_radius_all(int(LevelBriefingStyles.len_px(12.0)))
 	marker.add_theme_stylebox_override("panel", box)
-	marker.add_child(_label(Text.say("briefing.finish_bonus"), LevelBriefingStyles.SIZE_BODY - 0.5, look["on_accent"], false, false))
+	# It wraps, so at Large text it takes two lines instead of pushing the whole screen wider than the phone.
+	marker.add_child(_label(Text.say("briefing.finish_bonus"), LevelBriefingStyles.SIZE_BODY - 0.5, look["on_accent"], false))
 	return marker
 
 

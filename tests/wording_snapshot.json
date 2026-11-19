@@ -212,6 +212,7 @@
   "briefing.go_in_hours.one": "Go in · 1 hour",
   "briefing.hour_mark": "{count} h",
   "briefing.how_it_pays": "Each room pays when you win it. The bonus is paid when you win the level.",
+  "briefing.how_it_pays_rooms": "Each room pays when you win it.",
   "briefing.kind_conversation": "Conversation",
   "briefing.kind_debate": "Debate",
   "briefing.kind_trade": "Trade",
