@@ -1,7 +1,7 @@
 # Level preview (briefing) redesign: two templates (design spec, 2026-11-19)
 
 **Status:** draft for Cameron. Every wording below is a draft, and every new text row needs his OK.
-**Mockups:** the design canvas "Level preview redesign: two templates" (https://claude.ai/artifact/T5Y24ratCVPodAusFT7qi9). Its artboard sources are in `mockups/`. They use the canvas runtime, so read them as layout references; they don't open on their own. The row-1 artboards are `Main` (A, Woodblock), `A_Living` and `A_Broadcast`. The row-2 artboards are `B_Planner` (B, Woodblock), `B_Living` and `B_Broadcast`.
+**Mockups:** the design canvas "Level preview redesign: two templates" (https://claude.ai/artifact/T5Y24ratCVPodAusFT7qi9). Its artboard sources are in `mockups/`. They need the canvas runtime (`support.js`), which the canvas serves and can't be exported, so they don't open on their own. `previews/` has the same six screens as plain HTML that opens in any browser, plus PNG screenshots in `previews/png/`. The row-1 artboards are `Main` (A, Woodblock), `A_Living` and `A_Broadcast`. The row-2 artboards are `B_Planner` (B, Woodblock), `B_Living` and `B_Broadcast`.
 **Today's screen:** `reference/current_briefing_LV11_woodblock.png` (LV11, Meeting with Student Organizers).
 **Builds on:** branch `feature/level-bonus-briefing` (head 6f08f5a3, not merged at the time of writing). It added the Level Bonus section, `LevelBonusView.gd`, the `OrgChip` changes and their tests.
 

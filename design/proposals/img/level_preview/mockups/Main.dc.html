@@ -18,9 +18,9 @@ a{color:inherit}a:hover{opacity:.85}
 </helmet>
 <div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden">
 
-  <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 0 16px; flex: 1 1 auto; min-height: 0">
+  <div style="display: flex; flex-direction: column; gap: 8px; padding: 10px 16px 8px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
 
-    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
       <a href="#levels" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
         Levels
@@ -53,7 +53,7 @@ a{color:inherit}a:hover{opacity:.85}
       </sc-if>
     </div>
 
-    <p style="margin: 0; font-size: 13px; line-height: 1.45; color: {{t.onBgMuted}}"><span style="font-weight: 700; color: {{t.onBg}}">District Representative:</span> “Student organizers want a hearing. Meet them in the office, then at a town hall, and study what they are asking for.”</p>
+    <p style="margin: 0; font-size: 12.5px; line-height: 1.4; color: {{t.onBgMuted}}"><span style="font-weight: 700; color: {{t.onBg}}">District Representative:</span> “Student organizers want a hearing. Meet them in the office, then at a town hall, and study what they are asking for.”</p>
 
     <div style="display: flex; flex-direction: column; gap: 5px">
       <div style="display: flex; justify-content: space-between; font-size: 12px; color: {{t.onBgMuted}}">
@@ -67,15 +67,15 @@ a{color:inherit}a:hover{opacity:.85}
       </div>
     </div>
 
-    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; padding: 10px 12px 12px 12px; display: flex; flex-direction: column; gap: 8px">
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; padding: 8px 10px 10px 10px; display: flex; flex-direction: column; gap: 6px">
       <div style="display: flex; justify-content: space-between; align-items: baseline">
         <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">If you win every room</h2>
         <span style="font-size: 11px; color: {{t.muted}}">bonus in small type</span>
       </div>
       <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
         <sc-for list="{{stats}}" as="s" hint-placeholder-count="5">
-          <div style="background: {{t.tile}}; border-radius: {{t.rSmall}}; padding: 7px 8px; display: flex; flex-direction: column; gap: 1px; min-height: 58px; box-sizing: border-box">
-            <span style="font-size: 18px; font-weight: 700; line-height: 1.15; color: {{t.ink}}">{{s.value}}</span>
+          <div style="background: {{t.tile}}; border-radius: {{t.rSmall}}; padding: 6px 8px; display: flex; flex-direction: column; gap: 1px; min-height: 50px; box-sizing: border-box">
+            <span style="font-size: 17px; font-weight: 700; line-height: 1.1; color: {{t.ink}}">{{s.value}}</span>
             <span style="font-size: 11px; font-weight: 600; line-height: 1.2; color: {{t.ink}}">{{s.label}}</span>
             <span style="font-size: 11px; line-height: 1.2; color: {{t.muted}}">{{s.bonus}}</span>
           </div>
@@ -84,25 +84,24 @@ a{color:inherit}a:hover{opacity:.85}
       </div>
     </section>
 
-    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px">
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px">
       <h2 style="margin: 0 0 2px 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Organizations, if you win</h2>
       <sc-for list="{{orgs}}" as="o" hint-placeholder-count="3">
-        <div style="display: flex; align-items: center; gap: 10px; min-height: 30px">
-          <img src="{{o.icon}}" alt="" style="width: 28px; height: 28px; object-fit: contain; flex: 0 0 auto">
-          <span style="flex: 1 1 auto; font-size: 13px; line-height: 1.2">{{o.name}}</span>
-          <span style="flex: 0 0 auto; font-size: 13px; font-weight: 700">{{o.range}}</span>
+        <div style="display: flex; align-items: center; gap: 10px; min-height: 26px">
+          <img src="{{o.icon}}" alt="" style="width: 24px; height: 24px; object-fit: contain; flex: 0 0 auto">
+          <span style="flex: 1 1 auto; font-size: 12.5px; line-height: 1.2">{{o.name}}</span>
+          <span style="flex: 0 0 auto; font-size: 12.5px; font-weight: 700">{{o.range}}</span>
         </div>
       </sc-for>
     </section>
 
-    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px">
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; padding: 8px 10px; display: flex; flex-direction: column; gap: 0px">
       <h2 style="margin: 0 0 2px 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Rooms, in order</h2>
       <sc-for list="{{rooms}}" as="rm" hint-placeholder-count="3">
-        <div style="display: flex; gap: 10px; align-items: flex-start; padding: 5px 0; border-top: 1px solid {{t.divider}}">
+        <div style="display: flex; gap: 10px; align-items: flex-start; padding: 4px 0; border-top: 1px solid {{t.divider}}">
           <span style="flex: 0 0 auto; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.dot}}">{{rm.n}}</span>
           <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 1px">
-            <div style="display: flex; justify-content: space-between; gap: 8px; font-size: 14px; font-weight: 700"><span>{{rm.name}}</span><span style="font-weight: 600; color: {{t.muted}}">{{rm.hours}}</span></div>
-            <div style="font-size: 11px; color: {{t.muted}}">{{rm.kind}}</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 13.5px; font-weight: 700"><span>{{rm.name}}</span><span style="flex: 0 0 auto; font-size: 11px; font-weight: 600; color: {{t.muted}}">{{rm.kind}} · {{rm.hours}}</span></div>
             <div style="font-size: 11.5px; line-height: 1.3">{{rm.rewards}}</div>
           </div>
         </div>
@@ -120,9 +119,9 @@ a{color:inherit}a:hover{opacity:.85}
 class Component extends DCLogic {
   renderVals() {
     const T = {
-      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'28px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.25)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3' },
-      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'28px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12' },
-      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'30px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.25)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220' }
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'24px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.25)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'24px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'26px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.25)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220' }
     };
     const key = T[this.props.theme] ? this.props.theme : 'woodblock';
     return {
@@ -141,9 +140,9 @@ class Component extends DCLogic {
         { icon:'/_blob/66991ca98f50604b04b84564d617f136', name:'Ainu Language and Culture Foundation', range:'0 to +1' }
       ],
       rooms: [
-        { n:'1', name:'Office Hours', hours:'2 hours', kind:'Conversation · no cards', rewards:'Constituency support +5 · XP Growth +50 · Funds 10,000円' },
-        { n:'2', name:'Town Hall', hours:'2 hours', kind:'Debate', rewards:'Reputation +1 · Constituency support +5 · XP Growth +70 · Funds 30,000円' },
-        { n:'3', name:'Policy Study Session', hours:'2 hours', kind:'Debate', rewards:'Reputation +1 · Constituency support +1 · Party support +1 · XP Growth +55 · Funds 15,000円' }
+        { n:'1', name:'Office Hours', hours:'2 h', kind:'Conversation', rewards:'Constituency support +5 · XP Growth +50 · Funds 10,000円' },
+        { n:'2', name:'Town Hall', hours:'2 h', kind:'Debate', rewards:'Reputation +1 · Constituency support +5 · XP Growth +70 · Funds 30,000円' },
+        { n:'3', name:'Policy Study Session', hours:'2 h', kind:'Debate', rewards:'Reputation +1 · Constituency support +1 · Party support +1 · XP Growth +55 · Funds 15,000円' }
       ]
     };
   }
