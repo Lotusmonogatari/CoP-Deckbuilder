@@ -8811,5 +8811,208 @@
     "english": "You walk past with a nod. The delegates sit down on the bench and open the folder for no one.",
     "placeholders": null,
     "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "briefing.meta",
+    "where": "Level briefing, under the title: the level's tier and how many rooms it has",
+    "english": "Tier {tier} · {count} rooms",
+    "placeholders": "tier, count",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.meta.one",
+    "where": "Level briefing, under the title, a level with one room",
+    "english": "Tier {tier} · 1 room",
+    "placeholders": "tier",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.purpose",
+    "where": "Level briefing, what the level is for, said by a staff member",
+    "english": "{speaker}: “{line}”",
+    "placeholders": "speaker, line",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.purpose_plain",
+    "where": "Level briefing, what the level is for with no staff to say it (narration)",
+    "english": "“{line}”",
+    "placeholders": "line",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.back_levels",
+    "where": "Level briefing, the link at the top that goes back to the level list",
+    "english": "Levels",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.badge_hours",
+    "where": "Level briefing, the word under the hours number in the badge",
+    "english": "hours",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.badge_hours.one",
+    "where": "Level briefing, the word under the hours number in the badge, one hour",
+    "english": "hour",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.week_left",
+    "where": "Level briefing, the work week's hours left before this level",
+    "english": "This week: {count} hours left",
+    "placeholders": "count",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.week_left.one",
+    "where": "Level briefing, the work week's hours left before this level, one hour",
+    "english": "This week: 1 hour left",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.weekend_left",
+    "where": "Level briefing, the weekend's hours left before this level",
+    "english": "This weekend: {count} hours left",
+    "placeholders": "count",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.weekend_left.one",
+    "where": "Level briefing, the weekend's hours left before this level, one hour",
+    "english": "This weekend: 1 hour left",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.week_after",
+    "where": "Level briefing, the hours left once this level is played",
+    "english": "{count} left after this level",
+    "placeholders": "count",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.win_every_room",
+    "where": "Level briefing, heading of the totals card: what winning every room pays",
+    "english": "If you win every room",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.bonus_range",
+    "where": "Level briefing, a total's level bonus when it is a range; {low} and {high} carry their signs",
+    "english": "{low} to {high} bonus",
+    "placeholders": "low, high",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.bonus_fixed",
+    "where": "Level briefing, a total's level bonus when it is one amount; {amount} carries its sign",
+    "english": "{amount} bonus",
+    "placeholders": "amount",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.how_it_pays",
+    "where": "Level briefing, the note in the totals card saying when rooms and the bonus pay",
+    "english": "Each room pays when you win it. The bonus is paid when you win the level.",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.tile_xp",
+    "where": "Level briefing, the label of the XP tile in the totals card",
+    "english": "XP Growth",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.orgs_if_win",
+    "where": "Level briefing, heading of the organizations card",
+    "english": "Organizations, if you win",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.rooms_in_order",
+    "where": "Level briefing, heading of the timeline of rooms",
+    "english": "Rooms, in order",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.room_line",
+    "where": "Level briefing, a room's kind and length on its block",
+    "english": "{kind} · {hours}",
+    "placeholders": "kind, hours",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.kind_conversation",
+    "where": "Level briefing, a room of the Office Hours kind (no cards)",
+    "english": "Conversation",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.kind_debate",
+    "where": "Level briefing, a card battle room",
+    "english": "Debate",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.kind_vote",
+    "where": "Level briefing, the Floor Vote room",
+    "english": "Vote",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.kind_visit",
+    "where": "Level briefing, a member visit room",
+    "english": "Member visit",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.kind_trade",
+    "where": "Level briefing, a lobbyist trade room",
+    "english": "Trade",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.hour_mark",
+    "where": "Level briefing, hours as a short mark on the timeline ruler and a room's block",
+    "english": "{count} h",
+    "placeholders": "count",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.finish_bonus",
+    "where": "Level briefing, the marker at the end of the timeline",
+    "english": "Level bonus, paid when you win the level",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.go_in_hours",
+    "where": "Level briefing, the Go in button with the level's length",
+    "english": "Go in · {count} hours",
+    "placeholders": "count",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.go_in_hours.one",
+    "where": "Level briefing, the Go in button with the level's length, one hour",
+    "english": "Go in · 1 hour",
+    "placeholders": null,
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
   }
 ]

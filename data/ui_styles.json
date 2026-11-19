@@ -670,5 +670,245 @@
     "token": "intent_default",
     "value": "#8C1D2F",
     "notes": "The intent pill's default red: used when the opponent has no party or is in the player's own party. Must stay well apart from the Keizaijiyuutou red (255, 0, 0): test_intent_pill checks it. Cameron 2026-11-17."
+  },
+  {
+    "token_id": "US085",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_ground",
+    "value": "#EFE4CF",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US086",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_on_ground",
+    "value": "#1C1A17",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US087",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_on_ground_muted",
+    "value": "#463F36",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US088",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_card",
+    "value": "#F8F1E3",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US089",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_ink",
+    "value": "#1C1A17",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US090",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_muted",
+    "value": "#4E463C",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US091",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_tile",
+    "value": "#EFE4CF",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US092",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_accent",
+    "value": "#22305A",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US093",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_on_accent",
+    "value": "#F8F1E3",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US094",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "brief_hot",
+    "value": "#C23B22",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US095",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_ground",
+    "value": "#2B1D12",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US096",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_on_ground",
+    "value": "#FFF8EC",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US097",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_on_ground_muted",
+    "value": "#E8DAC3",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US098",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_card",
+    "value": "#FFF8EC",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US099",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_ink",
+    "value": "#2B1D12",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US100",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_muted",
+    "value": "#5C4A38",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US101",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_tile",
+    "value": "#F3E4C8",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US102",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_accent",
+    "value": "#FFD58A",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US103",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_on_accent",
+    "value": "#2B1D12",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US104",
+    "style": "living_office",
+    "group": "colour",
+    "token": "brief_hot",
+    "value": "#FFD58A",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US105",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_ground",
+    "value": "#0B1220",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US106",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_on_ground",
+    "value": "#F4F1EA",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US107",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_on_ground_muted",
+    "value": "#C3C9D6",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US108",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_card",
+    "value": "#141E33",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US109",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_ink",
+    "value": "#F4F1EA",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US110",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_muted",
+    "value": "#B9C0CF",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US111",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_tile",
+    "value": "#0E1728",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US112",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_accent",
+    "value": "#E3B341",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US113",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_on_accent",
+    "value": "#0B1220",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US114",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "brief_hot",
+    "value": "#E3B341",
+    "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
   }
 ]
