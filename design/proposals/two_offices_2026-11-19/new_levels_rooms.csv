@@ -1,0 +1,44 @@
+Level,#,Room (existing stage),Where,Hours,What it is about
+PC01 District: Keep the Sōya Line Running,1,Constituency Walkabout (ST267),District: {place:station},2,"Who still rides, and why"
+PC01 District: Keep the Sōya Line Running,2,Town Hall on Commuter Fares (ST24),District: Toyotomi town hall,2,"Emotional. Students, hospital trips, dairy farmers"
+PC01 District: Keep the Sōya Line Running,3,"Media Ambush (ST19), hidden",District: the platform,1,"""Will the last train run?"""
+PC01 District: Keep the Sōya Line Running,4,Policy Study on Rail Timetables (ST25),Either,2,"Data Driven. Riders per train, cost per kilometre"
+PC01 District: Keep the Sōya Line Running,5,Lobbyist Meeting (ST20),Either: the rail company,2,Appeal. A shared-cost deal
+PC01 District: Keep the Sōya Line Running,6,Town Hall (ST05),District: {place:town_hall},2,"Earnest. The deal, put to the city"
+PC01 Capitol: The Sakhalin Ferry,1,Lobbyist Meeting (ST20),Either: a shipping line,2,Appeal. They'll sail if someone covers the losses
+PC01 Capitol: The Sakhalin Ferry,2,Policy Study Session (ST21),Either,2,"Earnest. Customs, cost per passenger, tourism"
+PC01 Capitol: The Sakhalin Ferry,3,Committee on Foreign Affairs (ST14),Capitol,4,Appeal. National members weigh the neighbor
+PC01 Capitol: The Sakhalin Ferry,4,Press Conference (ST04),Capitol,2,"""Is this the time?"""
+PC01 Capitol: The Sakhalin Ferry,5,Party Caucus (ST03),Capitol,4,Divisive. The party splits
+PC02 District: Carbon Under the Harbor,1,Constituency Walkabout (ST267),District: the port and the paper-mill streets,2,Who works the port today
+PC02 District: Carbon Under the Harbor,2,Lobbyist Meeting (ST20),Either: the storage consortium,2,"Appeal. Jobs, and a climate story for the city"
+PC02 District: Carbon Under the Harbor,3,Town Hall at the Harbor (ST29),District: {place:harbor},2,Emotional. The hokki fishers
+PC02 District: Carbon Under the Harbor,4,"Media Ambush (ST19), hidden",District: outside the refinery gates,1,"""Is it safe in an earthquake?"""
+PC02 District: Carbon Under the Harbor,5,Town Hall on the Carbon Levy (ST53),District: {place:community_hall},2,"Data Driven. Who pays, who profits"
+PC02 District: Carbon Under the Harbor,6,Policy Study Session (ST21),Either,2,Earnest. The test found no quakes caused by injection; what else it found
+PC02 Capitol: A Casino by Lake Utonai?,1,Lobbyist Meeting on Integrated Resort (ST233),Either,2,Appeal. The operators' pitch
+PC02 Capitol: A Casino by Lake Utonai?,2,Policy Study Session on Integrated Resort (ST235),Either,2,"Earnest. Visitors, tax, gambling harm, the wetland"
+PC02 Capitol: A Casino by Lake Utonai?,3,"Media Ambush on Integrated Resort (ST234), hidden",Capitol,1,"""Did you take their money?"""
+PC02 Capitol: A Casino by Lake Utonai?,4,Committee on Construction and Development: Integrated Resort (ST236),Capitol,4,Duplicitous. Site rules and buffers
+PC02 Capitol: A Casino by Lake Utonai?,5,Party Caucus on Integrated Resort (ST238),Capitol,4,Divisive
+PC03 District: Wind on Ishikari Bay,1,Lobbyist Meeting (ST20),Either: the developer's office at {place:harbor},2,"Appeal. Work at the port, power for the grid"
+PC03 District: Wind on Ishikari Bay,2,Town Hall at the Harbor (ST29),District: the river-mouth fishing port,2,Emotional. The netters fear for the salmon run
+PC03 District: Wind on Ishikari Bay,3,"Media Ambush (ST19), hidden",District: {place:beach},1,"""Where will the turbines stand?"""
+PC03 District: Wind on Ishikari Bay,4,Town Hall on Grid Resilience and Renewable Energy (ST149),District: {place:community_hall} in Teine,2,"Earnest. Cheap, clean power and a clear view"
+PC03 District: Wind on Ishikari Bay,5,Policy Study Session (ST21),Either,2,"Earnest. Birds, fish and noise"
+PC03 District: Wind on Ishikari Bay,6,Closing Reception (ST276),District: {place:onsen_town} (the Ishikari Fish-House Baths),2,Non-combat. Both sides in one bath; the deal gets made
+PC03 Capitol: The Tunnel Under Teine,1,Lobbyist Meeting on Hokkaido Shinkansen Acceleration (ST138),Either,2,Appeal. The builders want certainty
+PC03 Capitol: The Tunnel Under Teine,2,Policy Study Session (ST21),Either,2,Earnest. The new cost and the new date
+PC03 Capitol: The Tunnel Under Teine,3,Committee on Finance: Hokkaido Shinkansen Acceleration (ST137),Capitol,4,Data Driven. Who pays
+PC03 Capitol: The Tunnel Under Teine,4,Committee on Construction and Development: Hokkaido Shinkansen Acceleration (ST139),Capitol,4,Duplicitous. What the tunnel's neighbors get
+PC03 Capitol: The Tunnel Under Teine,5,Press Conference (ST04),Capitol,2,"""Was it worth it?"""
+PC04 District: The Rokkasho Question,1,Constituency Walkabout (ST267),District: Rokkasho village,2,"Shops, the village office, the lake shore: who depends on the plant"
+PC04 District: The Rokkasho Question,2,Town Hall (ST05),District: the village hall,2,"Earnest. Jobs and grant money against ""how many more delays?"""
+PC04 District: The Rokkasho Question,3,"Media Ambush (ST19), hidden",District: outside the plant gates,1,A local reporter asks about the latest delay
+PC04 District: The Rokkasho Question,4,Lobbyist Meeting (ST20),Either: the operator's people,2,Appeal. Back another extension
+PC04 District: The Rokkasho Question,5,Policy Study Session (ST21),Either,2,"Earnest. The safety review, the money, the waste already stored"
+PC04 District: The Rokkasho Question,6,Town Hall at the Harbor (ST29),District: Rokkasho's Pacific fishing ports,2,Emotional. The fishers hear what the member will do
+PC04 Capitol: Ōma's Bluefin Quota,1,Lobbyist Meeting on Fishing Quotas (ST28),Either,2,Data Driven. The set-net operators' numbers
+PC04 Capitol: Ōma's Bluefin Quota,2,Hearing on Fishing Quota Reform (ST57),Capitol,4,Data Driven. How the slice is divided
+PC04 Capitol: Ōma's Bluefin Quota,3,Committee on Foreign Affairs (ST14),Capitol,4,Appeal. Yezo's place in the international commission
+PC04 Capitol: Ōma's Bluefin Quota,4,Press Conference (ST04),Capitol,2,"""Who gets the fish?"""

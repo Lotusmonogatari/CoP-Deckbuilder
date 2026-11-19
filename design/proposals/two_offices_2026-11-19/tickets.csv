@@ -1,0 +1,5 @@
+Ticket,Hours,Funds,Train encounters,Standing on each use,Offered for
+Member's rail pass (default),Train hours: 6 / 1 / 1 / 6 (PC01 to PC04),Free,Can happen,None,All
+Paid train ticket,Same as the pass,Price set by Cameron,Can happen,"+2 each with the Taxpayers' Alliance (BO23), the Chamber of Commerce (BO05) and the Commuter Committee (BO14)",All
+Private car,Car hours: 5 / 1 / 1 / 9 (PC01 to PC04),Price set by Cameron,Skipped,None,"All; faster only for PC01, otherwise the price is privacy, not speed"
+Airplane ticket,Not a travel mode on the strip (Nov 19). Stays a Marketplace item; its use is to be defined,Price set by Cameron,Not applicable,None,To be defined
