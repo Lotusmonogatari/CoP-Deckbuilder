@@ -166,6 +166,8 @@ func _ready() -> void:
 	_add_gold_diagonal()
 	_player_portrait = PlayerPortraitPresenter.new(%PlayerPortrait)
 	_hand = HandPresenter.new(%HandRow)
+	# A card plays when its middle reaches the bottom of the battle bar (2026-11-19, Cameron).
+	_hand.play_line = _support_bar.bottom_y
 	_hand.card_chosen.connect(_on_card_chosen)
 	_hand.card_flung.connect(_on_card_flung)
 	_hand.card_lifted.connect(_on_card_lifted)
@@ -1104,28 +1106,17 @@ func _on_card_flung(card_id: String) -> void:
 
 ## Holding a card up shows what it would do to the listening organisations.
 func _on_card_lifted(card_id: String) -> void:
-	_counters_above_card(true)
 	if not _ready_to_play or not _pick_card_id.is_empty():
 		return
 	_listening.preview(OrgPreview.changes(engine, DataDB.get_card(card_id)))
 
 
 func _on_card_dropped(_card_id: String) -> void:
-	_counters_above_card(false)
 	# A fling plays the card and redraws; a drop back just restores the view.
 	if _previewed_card_id.is_empty():
 		_listening.clear_marks()
 	else:
 		_listening.preview(OrgPreview.changes(engine, DataDB.get_card(_previewed_card_id)))
-
-
-## A held card may rise as far as halfway up the screen (CardView.pull_to_play), so while it is held the Guard
-## and Gaffes counters are drawn above it, wherever it goes. Only while it is held: they must dim with the rest
-## of the screen when a stage ends (the end-of-stage panel fades the battle behind it).
-func _counters_above_card(above: bool) -> void:
-	for counter: Label in [%GuardLabel, _gaffe_label]:
-		counter.z_as_relative = not above
-		counter.z_index = 30 if above else 0
 
 
 func _clear_preview() -> void:

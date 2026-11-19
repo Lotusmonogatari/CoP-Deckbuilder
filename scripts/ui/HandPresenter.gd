@@ -31,6 +31,9 @@ const HAND_GAP := 16
 var _row: HBoxContainer
 var _scroll: ScrollContainer
 
+## Where a held card plays: a Callable returning a screen y (the bottom of the battle bar). Given to every card.
+var play_line := Callable()
+
 ## card_id -> CardView currently on screen. A card ID can appear twice in a
 ## hand, so the views are held as a list per ID.
 var _views: Dictionary = {}
@@ -82,6 +85,7 @@ func show_state(engine: BattleEngine) -> void:
 		# twice over — which is how a hand of nameless cards happened once.
 		if view.get_parent() != _row:
 			_row.add_child(view)
+		view.play_line = play_line
 		ordered.append(view)
 
 		# Written every refresh, on a reused view as well as a new one.

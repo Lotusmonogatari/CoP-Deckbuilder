@@ -57,11 +57,11 @@ const PICK_TINT := Color(1.0, 0.62, 0.62)
 ## How far up a press must move before the card lifts. The card then follows the finger from that point
 ## (so it never jumps when the lift begins).
 const LIFT_START := 30.0
-## The least a card must travel before letting go plays it. The real distance is the one that brings the
-## card's bottom edge up to PLAY_SCREEN_FRACTION of the way up the screen (pull_to_play), never less than this.
+## The least a card must travel before letting go plays it, whatever the line below says.
 const PLAY_LIFT := 220.0
-## Letting go plays the card once its bottom edge has risen to this fraction of the screen height from the
-## top (0.5 = halfway up the screen), Cameron, 2026-11-18.
+## Where a held card plays, when nothing says otherwise (a card shown outside a battle): letting go plays it
+## once its bottom edge has risen to this fraction of the screen height from the top (0.5 = halfway up the
+## screen, Cameron, 2026-11-18).
 const PLAY_SCREEN_FRACTION := 0.5
 
 ## The tint a lifted card takes once letting go would play it.
@@ -191,6 +191,9 @@ var _lifting := false
 var _halo: Panel = null
 ## How far this held card must travel before letting go plays it (set when the lift begins).
 var play_lift := PLAY_LIFT
+## Returns the screen y a held card's middle must reach to be played (BattleScreen: the bottom of the battle bar).
+## Unset outside a battle.
+var play_line := Callable()
 var _rest_y := 0.0
 
 
@@ -553,11 +556,16 @@ func _gui_input(event: InputEvent) -> void:
 			accept_event()
 
 
-## How far a card must travel up for letting go to play it: enough to bring its bottom edge to halfway up the
-## screen (PLAY_SCREEN_FRACTION), and never less than PLAY_LIFT.
+## How far a card must travel up for letting go to play it, and never less than PLAY_LIFT. In a battle the
+## card plays when its MIDDLE reaches the bottom of the battle bar (`play_line`, Cameron 2026-11-19: "roughly
+## where the card crossed the bottom of the battle bar"). Without a play line, its bottom edge must reach
+## halfway up the screen (PLAY_SCREEN_FRACTION).
 func pull_to_play() -> float:
+	var rect := get_global_rect()
+	if play_line.is_valid():
+		return maxf(PLAY_LIFT, rect.get_center().y - float(play_line.call()))
 	var screen_height := get_viewport_rect().size.y if get_viewport() != null else 0.0
-	return maxf(PLAY_LIFT, get_global_rect().end.y - screen_height * PLAY_SCREEN_FRACTION)
+	return maxf(PLAY_LIFT, rect.end.y - screen_height * PLAY_SCREEN_FRACTION)
 
 
 func _lift() -> void:

@@ -189,6 +189,12 @@ func _ready() -> void:
 
 
 ## Takes the numbers straight off a running battle.
+## The screen y of the bottom of the drawn bar, the arc's feet (2026-11-19, Cameron). A card dragged up plays
+## when its middle reaches this line (CardView.play_line).
+func bottom_y() -> float:
+	return get_global_rect().position.y + (_living_height if _living else HEIGHT)
+
+
 func show_bar(bar: BarModel, threshold_applies: bool = true,
 		who: String = "", percent: bool = false, wins_stage: bool = true) -> void:
 	maximum = bar.maximum

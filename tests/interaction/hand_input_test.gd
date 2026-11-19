@@ -122,7 +122,7 @@ func _one(style: String) -> void:
 	if card.halo_strength() > 0.0:
 		_failures.append("%s: the halo stays after letting go" % style)
 
-	# Short of halfway up the screen, letting go plays nothing.
+	# Short of the bottom of the battle bar, letting go plays nothing.
 	card = _playable(screen)
 	if card == null:
 		return
@@ -132,9 +132,10 @@ func _one(style: String) -> void:
 	await _drag(from, from + Vector2(0, -(CardView.LIFT_START + need * 0.9)))
 	await get_tree().create_timer(0.3).timeout
 	if screen.engine.state.hand.size() != held_short:
-		_failures.append("%s: a drag that left the card's bottom below halfway up the screen played it" % style)
+		_failures.append("%s: a drag that left the card's middle below the bottom of the battle bar played it" % style)
 
-	# A drag that takes the card's bottom up to halfway plays it.
+	# A drag that takes the card's middle up to the bottom of the battle bar plays it (Cameron, 2026-11-19: the
+	# card plays roughly where it crosses the bottom of the bar).
 	card = _playable(screen)
 	if card == null:
 		return
@@ -144,27 +145,37 @@ func _one(style: String) -> void:
 	need = card.pull_to_play()
 	var guard := screen.get_node("%GuardLabel") as Control
 	var gaffes := screen.get_node("%GaffeLabel") as Control
-	var screen_height := get_viewport().get_visible_rect().size.y
+	var line: float = (screen.get("_support_bar") as SupportBar).bottom_y()
+	_expect_line(card, line, style)
 	await _drag(start, start + Vector2(0, -(CardView.LIFT_START + need + 20.0)), 12, func() -> void:
 		# Mid-drag, the held card stays on top of its neighbours (it dropped beneath them once the drag began).
 		for other in card.get_parent().get_children():
 			if other is CardView and other != card and (other as CardView).z_index >= card.z_index:
 				_failures.append("%s: a neighbouring card is drawn over the held card" % style)
 				break
-		# The card has followed the finger up to halfway, and the Guard and Gaffes counters are drawn above it.
-		if card.get_global_rect().end.y > screen_height * CardView.PLAY_SCREEN_FRACTION + 4.0:
-			_failures.append("%s: the card's bottom is at %.0f, below halfway (%.0f)" % [style, card.get_global_rect().end.y, screen_height * 0.5])
+		# The card has followed the finger up until its middle is past the bottom of the battle bar.
+		var middle := card.get_global_rect().get_center().y
+		if middle > line + 4.0:
+			_failures.append("%s: the card's middle is at %.0f, still below the bottom of the battle bar (%.0f)" % [style, middle, line])
+		# The Guard and Gaffes boxes stay under the held card (Cameron, 2026-11-19): ordinary drawing order, the card above.
 		for counter: Control in [guard, gaffes]:
-			if counter.z_as_relative or counter.z_index <= card.z_index:
-				_failures.append("%s: the %s counter is not drawn above the held card" % [style, counter.name])
+			if not counter.z_as_relative or counter.z_index >= card.z_index:
+				_failures.append("%s: the %s box is not under the held card" % [style, counter.name])
 				break)
 	await get_tree().create_timer(0.4).timeout
 	if screen.engine.state.hand.size() >= held and screen.engine.state.energy >= energy:
 		_failures.append("%s: a drag up did not play the card" % style)
-	# Once the card is let go the counters are ordinary again (they dim with the screen when a stage ends).
+	# The boxes are ordinary after the drop too (they dim with the screen when a stage ends).
 	for counter: Control in [guard, gaffes]:
 		if not counter.z_as_relative or counter.z_index != 0:
-			_failures.append("%s: the %s counter stays drawn above everything after the drop" % [style, counter.name])
+			_failures.append("%s: the %s box is drawn above everything" % [style, counter.name])
+
+
+## The pull is measured from the card's own middle to the bar's bottom line, and is never under the old minimum.
+func _expect_line(card: CardView, line: float, style: String) -> void:
+	var expected := maxf(CardView.PLAY_LIFT, card.get_global_rect().get_center().y - line)
+	if absf(card.pull_to_play() - expected) > 1.0:
+		_failures.append("%s: the pull is %.0f, the card's middle to the bar's bottom is %.0f" % [style, card.pull_to_play(), expected])
 
 
 func _event(pressed: bool, at: Vector2) -> InputEventMouseButton:
