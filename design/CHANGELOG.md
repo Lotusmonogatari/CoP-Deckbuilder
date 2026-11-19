@@ -1433,3 +1433,10 @@ From the two-offices audit: of 65 Random events, 37 were district casework and o
 - **Canon:** no new people, parties or committees. The only bodies named are the Ministry of Finance and the Candidate Selection Committee, both already in the data; organizations are existing ones.
 - **Next free event ID is now EV105** (`CONTENT_GUIDE.md`); the data snapshot is 97 events.
 - **Checks:** `python3 tools/export_data.py` "No errors" (the wording snapshot refreshed for the 10 new Decline lines); only the Events, Event Choices and Text sheets changed.
+
+## 2026-11-19: Scripted edits can no longer corrupt a file the way two tests were
+
+- **What went wrong (twice):** a script cut a block out of a file with `text[text.index(first):text.index(last)]` and then called `text.replace(block, new)`. When `last` came before `first`, the block was empty, and Python's `replace` on an empty string puts the new text between every character. The first time it mangled `hand_visible_test.gd`; the second, `event_driver.gd`, whose click test then hung and made a verify run time out. Both were caught and restored from git, and nothing broken was ever committed.
+- **The fix:** `tools/safe_edit.py` with `replace_once` and `replace_block`. They refuse an empty search text, a search text that is missing or occurs more than once, a block whose markers are backwards or ambiguous or too long, and an edit that gives the wrong length; a refused edit leaves the file untouched. `python3 tools/safe_edit.py --selftest` checks all of that, including the original mistake, and `tools/verify.sh` runs it first thing.
+- **The rule:** a "Scripted edits" note in `CLAUDE.md` section 14: use the Edit tool or `safe_edit.py`, never a slice followed by `replace`. The two docs, the verify step and this note were themselves written with `safe_edit.py`.
+
