@@ -10919,5 +10919,1346 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null
+  },
+  {
+    "event_id": "EV95",
+    "choice": "A",
+    "choice_text": "Read it through and sign",
+    "result_text": "It is a clean change. The clerk thanks you and remembers who was quick.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV95",
+    "choice": "B",
+    "choice_text": "Send a staffer to check it against the calendar",
+    "result_text": "Your staffer finds a clash with another hearing, and the clerk fixes it before anyone notices.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Policy Research Assistant",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV95",
+    "choice": "C",
+    "choice_text": "Sign it and ask for the full week's schedule",
+    "result_text": "The clerk agrees to send it. You agree to read it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 24,
+        "for": "BO17"
+      }
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": "You read the week's schedule and flag two clashes for the clerk.",
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV95",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You wave the clerk on. Someone else signs, and the clerk remembers who did not.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV96",
+    "choice": "A",
+    "choice_text": "Co-sign it",
+    "result_text": "Your name goes on it. Your colleagues notice whose name sits beside yours.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": 2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV96",
+    "choice": "B",
+    "choice_text": "Send a staffer to read the amendment first",
+    "result_text": "Your staffer reads it in an hour and reports that it changes less than claimed.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Policy Research Assistant",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV96",
+    "choice": "C",
+    "choice_text": "Ask for a day to read it yourself",
+    "result_text": "They agree, a little stiffly.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 24,
+        "for": "BO17"
+      }
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": "You read the amendment through and send back two questions. They answer both.",
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV96",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You tell them you cannot help. The amendment goes ahead without you, and they are polite about it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV97",
+    "choice": "A",
+    "choice_text": "Give them a clear answer on the stairs",
+    "result_text": "Your answer is short enough to quote, and they quote it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 2
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "rewards": [
+      {
+        "target": "BO08",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV97",
+    "choice": "B",
+    "choice_text": "Send your spokesperson to the stairs",
+    "result_text": "Your spokesperson handles it. The quote is careful and nearly forgotten by evening.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Media Spokesperson",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV97",
+    "choice": "C",
+    "choice_text": "Say you will put it in writing",
+    "result_text": "A thin statement goes out at nine. It says what it says.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO08",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 24,
+        "for": "BO08"
+      }
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": "You send a one-page statement before the evening bulletins go out.",
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV97",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You take the back stairs. The reporters get their quote from someone else.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -3,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "rewards": [
+      {
+        "target": "BO08",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV98",
+    "choice": "A",
+    "choice_text": "Return it with a polite note",
+    "result_text": "The group takes it well, or says it does. Your staff are visibly disappointed about the fruit.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV98",
+    "choice": "B",
+    "choice_text": "Have a staffer log it and pass it to the staff room",
+    "result_text": "It is logged, photographed and eaten by noon. Nobody can say you hid it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Policy Research Assistant",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV98",
+    "choice": "C",
+    "choice_text": "Keep it and send a thank-you",
+    "result_text": "The thank-you is warm. So, a little, is the note someone adds to your file.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -2,
+      "max": -1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV98",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You leave the basket on a side table and say nothing. By afternoon it is all anyone in the office talks about.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV99",
+    "choice": "A",
+    "choice_text": "Stay to the end",
+    "result_text": "You hear every speech. A clerk from the Candidate Selection Committee ticks a box.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO32",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV99",
+    "choice": "B",
+    "choice_text": "Send word that a staffer will take notes",
+    "result_text": "Your staffer takes good notes. The empty seat takes better ones.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Policy Research Assistant",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV99",
+    "choice": "C",
+    "choice_text": "Leave after your own vote and catch up on reading",
+    "result_text": "You vote, then leave quietly with a briefcase of papers. Nobody stops you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": {
+      "min": 5,
+      "max": 10
+    },
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV99",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You go home at the dinner hour without a word. The empty seat is remembered.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO32",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV100",
+    "choice": "A",
+    "choice_text": "Take the chair and listen",
+    "result_text": "You hear who is counting votes for what. You are asked for nothing, today.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO02",
+        "delta": 2
+      },
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV100",
+    "choice": "B",
+    "choice_text": "Send a staffer with your regrets and a question",
+    "result_text": "Your staffer brings back the menu and a few names.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Policy Research Assistant",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV100",
+    "choice": "C",
+    "choice_text": "Join them for coffee only",
+    "result_text": "You stay for coffee and leave before the toasts. It is noticed, in both directions.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV100",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You send your regrets without a reason. The chair stays empty, and people notice who it was meant for.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO02",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV101",
+    "choice": "A",
+    "choice_text": "Read the tables that matter and ask questions",
+    "result_text": "You find a line that does not add up and ask about it. The Ministry says it will check.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": {
+      "min": 10,
+      "max": 20
+    },
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV101",
+    "choice": "B",
+    "choice_text": "Have a staffer summarize it overnight",
+    "result_text": "Your staffer's summary is four pages, with the odd line circled.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": {
+      "min": 5,
+      "max": 10
+    },
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Policy Research Assistant",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV101",
+    "choice": "C",
+    "choice_text": "Ask the Ministry for a briefing",
+    "result_text": "A junior official comes to your office with a binder and a long afternoon.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 48,
+        "for": "BO23"
+      }
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": "You sit through the briefing and come away with three clear questions.",
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV101",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You send the annex back unread. A note from the Ministry politely records the fact.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV102",
+    "choice": "A",
+    "choice_text": "Come up and answer their questions",
+    "result_text": "A girl in the front row asks why the chamber is so loud. You tell her.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO11",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV102",
+    "choice": "B",
+    "choice_text": "Send a staffer to take them through the building",
+    "result_text": "Your staffer gives a good tour and a quiet photograph.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Policy Research Assistant",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV102",
+    "choice": "C",
+    "choice_text": "Wave from the gallery rail",
+    "result_text": "They wave back. It takes thirty seconds and a lot of waving.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV102",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You are in a meeting when the class goes home. The teacher leaves a polite note at the front desk.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV103",
+    "choice": "A",
+    "choice_text": "Trade a little, nothing you would not say aloud",
+    "result_text": "The notes are thin and mostly accurate. So, you suspect, are theirs.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": 2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV103",
+    "choice": "B",
+    "choice_text": "Send a staffer to meet theirs",
+    "result_text": "The two staffers swap business cards and nothing else.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Policy Research Assistant",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV103",
+    "choice": "C",
+    "choice_text": "Thank them and keep your notes to yourself",
+    "result_text": "They nod, a little amused. They will ask again next month.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV103",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You say you are late for a meeting. The aide shrugs and finds someone else to compare notes with.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV104",
+    "choice": "A",
+    "choice_text": "Hear them out for ten minutes",
+    "result_text": "They want a name on a letter. You give them ten minutes and a pen to borrow.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV104",
+    "choice": "B",
+    "choice_text": "Have a staffer take the folder and meet them later",
+    "result_text": "Your staffer takes the folder and a long list of dates.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "Policy Research Assistant",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV104",
+    "choice": "C",
+    "choice_text": "Promise to read the folder by Friday",
+    "result_text": "The delegates leave the folder on your desk and a polite note.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 48,
+        "for": "BO09"
+      }
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": "You read the folder and write back with a date for a proper meeting.",
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
+  },
+  {
+    "event_id": "EV104",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You walk past with a nod. The delegates sit down on the bench and open the folder for no one.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null
   }
 ]

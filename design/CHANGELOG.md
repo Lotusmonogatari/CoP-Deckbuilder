@@ -1393,3 +1393,25 @@ From the two-offices audit: a Decision! event (today's Dated trigger) will move 
 | Choice C result | "The chamber is full without you. Someone in the party notices." | "You clear a stack of committee papers. The chamber is full without you, and someone in the party notices." |
 
 - **Checks:** `test_events` now checks the address is not due on Friday 18.10.05 or the weekend, is due on Monday 18.10.08 and plays once, and that none of EV47's three choices names the district; `event_driver` (real clicks) follows the new date. Only the Events and Event Choices sheets changed in the workbook.
+
+## 2026-11-19: Ten Capitol events, EV95 to EV104
+
+From the two-offices audit: of 65 Random events, 37 were district casework and only 14 were Capitol, so once the Capitol is its own office its event pool would be thin. Cameron asked for about ten more. **All wording is Claude's draft for Cameron to rewrite.** Workbook rows only: no mechanic, no schema change, and no Location column (that waits for the two-offices build; each event's intended office is in the table below).
+
+| ID | Title | Hours | Weight | Needs National awareness | Organization it touches | Intended office |
+|---|---|---|---|---|---|---|
+| EV95 | A Committee Clerk Needs a Signature | 1 | 6 | none | Members of Parliament | Capitol |
+| EV96 | A Member From Another Party Asks You to Co-Sign | 1 | 5 | 10 | Members of Parliament | Capitol |
+| EV97 | The Press Gallery Wants a Word After the Vote | 1 | 6 | 15 | National Media | Capitol |
+| EV98 | A Lobbyist Leaves a Gift Basket | 1 | 5 | none | Chamber of Commerce | Capitol |
+| EV99 | The Session Runs Late | 2 | 6 | none | Candidate Selection Committee | Capitol |
+| EV100 | The Party Faction Invites You to Lunch | 2 | 5 | none | Party Faction, Party Headquarters | Capitol |
+| EV101 | A Budget Annex Arrives Without a Summary | 2 | 5 | none | Taxpayers' Alliance | Capitol |
+| EV102 | A School Group Visits the Gallery | 1 | 5 | none | Students United | Capitol (constituents visiting the Assembly) |
+| EV103 | A Rival's Aide Offers to Compare Notes | 1 | 4 | 20 | Members of Parliament | Capitol |
+| EV104 | The Labor Federation Asks for a Seat at the Table | 1 | 5 | none | Labor Federation | Capitol |
+
+- **Built like the nearest existing event** (EV54, EV55, EV61): Random, Weekday, three choices (A engage, B send a staffer, C a careful middle path, four of them with a promise) and a **Decline** row. The Decline rows are computed from the content guide's rule (1.5 times what sending staff gives up against accepting, rounded half up; standing and awareness only, never XP or Funds) so they are not hand-set. Sending staff uses the Policy Research Assistant, or the Media Spokesperson for the press event, and greys out with "No staff hired" when nobody is hired.
+- **Canon:** no new people, parties or committees. The only bodies named are the Ministry of Finance and the Candidate Selection Committee, both already in the data; organizations are existing ones.
+- **Next free event ID is now EV105** (`CONTENT_GUIDE.md`); the data snapshot is 97 events.
+- **Checks:** `python3 tools/export_data.py` "No errors" (the wording snapshot refreshed for the 10 new Decline lines); only the Events, Event Choices and Text sheets changed.
