@@ -102,3 +102,13 @@ The scripts that make the CSVs and the two tables-and-notes files are in `audit/
 - **The place and brand scan is wording-based.** It will over-report generic words and may miss a place described without a catalog word. The real-name and brand rows are the reliable ones.
 - **Hours are an order of magnitude**: the bot ignores location, the logs predate the staff change, and the weekend is left out.
 - **Nothing under `data/`, `design/Game_Workbook.xlsx`, `scripts/`, `scenes/` or `tests/` was touched.** `git diff main --stat` for this branch shows only `audit/two_offices/` and this folder.
+
+## Follow-up (2026-11-19, after Cameron's review)
+
+| File | What it adds |
+|---|---|
+| `mixed_levels_review.md` | A review sheet for the 12 low and medium confidence Mixed levels, with the case for Capitol and for District, my view, and a rule that would settle them. **LV12 and LV62 are the real judgment calls** |
+| `place_worklist.md`, `place_worklist.csv`, `place_worklist_casework.csv` | The part of `place_references.csv` that needs a decision: 1,174 real-name and real-brand hits in 945 text rows (239 of them in casework tables), with a blank decision column. The 11,200 generic-word hits stay in the long file |
+| `audit/two_offices/a7_worklist.py` | Rebuilds the worklist from `place_references.csv` |
+
+The follow-ups from the first report that are not on this branch: the crisis-level fixes and the EV47 change are merged into `main`, the level-bonus briefing is on `feature/level-bonus-briefing`, the ten Capitol events are on `content/capitol-events`, and the visitor office tags are on `content/visitor-office-tags` (see `design/CHANGELOG.md` on those branches).
