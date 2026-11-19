@@ -8741,5 +8741,75 @@
     "english": "{low}–{high}",
     "placeholders": "low, high",
     "notes": "2026-11-19 level bonus briefing (Claude's draft)"
+  },
+  {
+    "key": "event.decline.EV95",
+    "where": "Event Choices: the result of declining EV95",
+    "english": "You wave the clerk on. Someone else signs, and the clerk remembers who did not.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "event.decline.EV96",
+    "where": "Event Choices: the result of declining EV96",
+    "english": "You tell them you cannot help. The amendment goes ahead without you, and they are polite about it.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "event.decline.EV97",
+    "where": "Event Choices: the result of declining EV97",
+    "english": "You take the back stairs. The reporters get their quote from someone else.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "event.decline.EV98",
+    "where": "Event Choices: the result of declining EV98",
+    "english": "You leave the basket on a side table and say nothing. By afternoon it is all anyone in the office talks about.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "event.decline.EV99",
+    "where": "Event Choices: the result of declining EV99",
+    "english": "You go home at the dinner hour without a word. The empty seat is remembered.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "event.decline.EV100",
+    "where": "Event Choices: the result of declining EV100",
+    "english": "You send your regrets without a reason. The chair stays empty, and people notice who it was meant for.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "event.decline.EV101",
+    "where": "Event Choices: the result of declining EV101",
+    "english": "You send the annex back unread. A note from the Ministry politely records the fact.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "event.decline.EV102",
+    "where": "Event Choices: the result of declining EV102",
+    "english": "You are in a meeting when the class goes home. The teacher leaves a polite note at the front desk.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "event.decline.EV103",
+    "where": "Event Choices: the result of declining EV103",
+    "english": "You say you are late for a meeting. The aide shrugs and finds someone else to compare notes with.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
+  },
+  {
+    "key": "event.decline.EV104",
+    "where": "Event Choices: the result of declining EV104",
+    "english": "You walk past with a nod. The delegates sit down on the bench and open the folder for no one.",
+    "placeholders": null,
+    "notes": "2026-11-19 Capitol events (Claude's draft for Cameron to rewrite)"
   }
 ]

@@ -33,7 +33,7 @@ func test_the_existing_send_a_staff_member_choices_name_a_role() -> void:
 		if StaffDelegation.is_delegation(str(row["choice_text"]), DataDB.rules.get("staff_delegation_phrases", [])):
 			assert_ne(GameState.event_delegate_role(row), "", "%s %s names a role" % [row["event_id"], row["choice"]])
 			named += 1
-	assert_eq(named, 42)
+	assert_eq(named, 51, "42 before the Capitol events EV95 to EV104 added 9 more (2026-11-19)")
 
 
 func test_a_delegating_choice_needs_a_named_person() -> void:

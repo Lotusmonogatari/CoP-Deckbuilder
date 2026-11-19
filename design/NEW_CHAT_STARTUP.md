@@ -9,7 +9,7 @@ Point the assistant at this file at the start of a new session. The brief and th
 | Game | Godot 4.5, GDScript, portrait mobile card battler. Fictional nation Yezo (101 seats, floor majority 51, no early elections). |
 | Repo and branches | `lotusmonogatari/cop-deckbuilder`. Work on the designated session branch; merge to `main` only after `tools/verify.sh` says "All checks passed". The items-with-uses work is merged to `main`; later work stays on the session branch (`claude/new-session-klhgm8`) until Cameron says "merge". |
 | Workbook | `design/Game_Workbook.xlsx` |
-| Content (`data/`) | 289 stage rows, 114 levels, 70 cards, 32 organizations, 131 opponents, 50 floor-vote bills, 167 visitors and 429 visitor questions, 87 events, 41 shop items, 21 staff, 64 staff tasks in 8 families, 180 bill components, 6 cosmetic packages, 1,160 Text rows, 332 Balance levers |
+| Content (`data/`) | 289 stage rows, 114 levels, 70 cards, 32 organizations, 131 opponents, 50 floor-vote bills, 167 visitors and 429 visitor questions, 97 events, 41 shop items, 21 staff, 64 staff tasks in 8 families, 180 bill components, 6 cosmetic packages, 1,160 Text rows, 332 Balance levers |
 | Tests | About 2,070 GUT tests (177 scripts) and 32 real-click interaction tests. `tools/verify.sh` (which also compiles every script) passes in about 2-3 minutes. |
 | Missing | All audio files, most character art (opponents, students, visitors, PC02/PC03), 8 goods icons, `OUT_NEIGHBORHOOD`. No real-phone build yet (milestone M6). |
 

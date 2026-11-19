@@ -60,7 +60,7 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 
 ## 6. Data contract
 
-`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 114 levels, 289 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 167 visitors, 87 events, 41 shop items, 21 staff, 64 staff tasks, 180 bill components, 6 cosmetic packages, about 1,160 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
+`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 114 levels, 289 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 167 visitors, 97 events, 41 shop items, 21 staff, 64 staff tasks, 180 bill components, 6 cosmetic packages, about 1,160 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
 
 | Group | Files (`data/`) |
 |---|---|
@@ -308,3 +308,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - EV47 opens on a Monday and its district choice becomes a Capitol one (2026-11-19, Cameron)
 - The level briefing shows the level's end-of-level bonus (2026-11-19, Cameron)
 - Draft office tags for the 167 visitors (2026-11-19, Cameron)
+- Ten Capitol events, EV95 to EV104 (2026-11-19, Cameron)
