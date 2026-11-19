@@ -25,6 +25,7 @@ from common import *
 DECIDED = {
     "LV12": (DISTRICT, "Cameron's decision, 2026-11-19: District. It starts in the District and finishes at the Capitol, with the travel built in"),
     "LV62": (DISTRICT, "Cameron's decision, 2026-11-19: District. It starts in the District and finishes at the Capitol, with the travel built in"),
+    "LV61": (DISTRICT, "Cameron's decision, 2026-11-19: District. It starts in the District and finishes at the Capitol, with the travel built in"),
 }
 
 DISTRICT_NAME_WORDS = re.compile(r"constituen|outreach|neighbor|hometown|tour|festival|local|village|town|district|community|family|market|harbor|farm|fish", re.I)

@@ -12,46 +12,46 @@
 
 | Protagonist | Capitol | District | Either | Mean hours per level | Mean levels per week |
 |---|---|---|---|---|---|
-| Kenshin Sako (Wakkanai) | 75% | 20% | 5% | 7.5 | 4.7 |
-| Haru Yashi (Tomakomai) | 74% | 20% | 5% | 7.5 | 4.7 |
-| Arata Ran (Sapporo Block 6) | 75% | 20% | 5% | 7.6 | 4.7 |
-| Jyurou Nishihara (Aomori Block 3) | 74% | 21% | 5% | 7.3 | 4.8 |
+| Kenshin Sako (Wakkanai) | 74% | 21% | 5% | 7.5 | 4.7 |
+| Haru Yashi (Tomakomai) | 73% | 21% | 5% | 7.5 | 4.7 |
+| Arata Ran (Sapporo Block 6) | 74% | 21% | 5% | 7.6 | 4.7 |
+| Jyurou Nishihara (Aomori Block 3) | 73% | 22% | 5% | 7.3 | 4.8 |
 
 ## Travel per protagonist (all 144 runs; mean per week of 40 work hours)
 
 | Protagonist | Mode | Order | Trips per week | Travel hours per week | Share of the 40 hours | Weeks with at least one trip | Worst week (hours) |
 |---|---|---|---|---|---|---|---|
-| Kenshin Sako (Wakkanai) | train | as played | 1.87 | 11.2 | 28% | 77% | 42 |
+| Kenshin Sako (Wakkanai) | train | as played | 1.83 | 11.0 | 27% | 77% | 42 |
 | Kenshin Sako (Wakkanai) | train | batched | 0.80 | 4.8 | 12% | 80% | 6 |
-| Kenshin Sako (Wakkanai) | car | as played | 1.87 | 9.3 | 23% | 77% | 35 |
+| Kenshin Sako (Wakkanai) | car | as played | 1.83 | 9.1 | 23% | 77% | 35 |
 | Kenshin Sako (Wakkanai) | car | batched | 0.80 | 4.0 | 10% | 80% | 5 |
-| Haru Yashi (Tomakomai) | train | as played | 1.89 | 1.9 | 5% | 77% | 10 |
+| Haru Yashi (Tomakomai) | train | as played | 1.85 | 1.8 | 5% | 77% | 10 |
 | Haru Yashi (Tomakomai) | train | batched | 0.81 | 0.8 | 2% | 81% | 1 |
-| Haru Yashi (Tomakomai) | car | as played | 1.89 | 1.9 | 5% | 77% | 10 |
+| Haru Yashi (Tomakomai) | car | as played | 1.85 | 1.8 | 5% | 77% | 10 |
 | Haru Yashi (Tomakomai) | car | batched | 0.81 | 0.8 | 2% | 81% | 1 |
-| Arata Ran (Sapporo Block 6) | train | as played | 1.89 | 1.9 | 5% | 77% | 7 |
+| Arata Ran (Sapporo Block 6) | train | as played | 1.85 | 1.9 | 5% | 77% | 7 |
 | Arata Ran (Sapporo Block 6) | train | batched | 0.80 | 0.8 | 2% | 80% | 1 |
-| Arata Ran (Sapporo Block 6) | car | as played | 1.89 | 1.9 | 5% | 77% | 7 |
+| Arata Ran (Sapporo Block 6) | car | as played | 1.85 | 1.9 | 5% | 77% | 7 |
 | Arata Ran (Sapporo Block 6) | car | batched | 0.80 | 0.8 | 2% | 80% | 1 |
-| Jyurou Nishihara (Aomori Block 3) | train | as played | 1.92 | 11.5 | 29% | 76% | 42 |
+| Jyurou Nishihara (Aomori Block 3) | train | as played | 1.89 | 11.3 | 28% | 76% | 42 |
 | Jyurou Nishihara (Aomori Block 3) | train | batched | 0.79 | 4.7 | 12% | 79% | 6 |
-| Jyurou Nishihara (Aomori Block 3) | car | as played | 1.92 | 17.3 | 43% | 76% | 63 |
+| Jyurou Nishihara (Aomori Block 3) | car | as played | 1.89 | 17.0 | 43% | 76% | 63 |
 | Jyurou Nishihara (Aomori Block 3) | car | batched | 0.79 | 7.1 | 18% | 79% | 9 |
 
 ## Standard Campaign Pressure only, train, hours per week
 
 | Protagonist | As played | Batched |
 |---|---|---|
-| Kenshin Sako (Wakkanai) | 11.0 | 4.7 |
-| Haru Yashi (Tomakomai) | 1.9 | 0.8 |
+| Kenshin Sako (Wakkanai) | 10.9 | 4.7 |
+| Haru Yashi (Tomakomai) | 1.8 | 0.8 |
 | Arata Ran (Sapporo Block 6) | 1.9 | 0.8 |
-| Jyurou Nishihara (Aomori Block 3) | 10.8 | 4.5 |
+| Jyurou Nishihara (Aomori Block 3) | 10.7 | 4.5 |
 
 ## Reading
 
-- **Short routes are almost free.** PC02 and PC03 spend a trip hour each way: batched, about 0.8 hours a week (2% of the work week); the bot's order, about 1.9.
-- **PC01 and PC04 look harder.** A 6-hour train is 4.8 hours a week batched (12%) and 11.2 as played (28%). In the worst week a player who keeps crossing spends 42 hours travelling.
+- **Short routes are almost free.** PC02 and PC03 spend a trip hour each way: batched, about 0.8 hours a week (2% of the work week); the bot's order, about 1.8.
+- **PC01 and PC04 look harder.** A 6-hour train is 4.8 hours a week batched (12%) and 11.0 as played (27%). In the worst week a player who keeps crossing spends 42 hours travelling.
 - **PC04's car is slower, not faster** (9 hours against 6): by car it is 7.1 hours a week batched against 4.7 by train. PC01's car saves an hour a trip.
-- **Most weeks have a trip.** Because the logged levels are 75% Capitol by hours for PC01, a player who lives mostly at the Capitol and goes home for District levels crosses in about 80% of weeks (batched).
+- **Most weeks have a trip.** Because the logged levels are 74% Capitol by hours for PC01, a player who lives mostly at the Capitol and goes home for District levels crosses in about 80% of weeks (batched).
 - **The honest answer on Easy:** the cost is not the average, it is the lumpiness. A 12-hour round trip is 30% of a week at once, and the level hours a player can no longer fit. Whether PC01 stays Easy is Cameron's call; the numbers say a PC01 who uses the District office at all pays an order of magnitude more than PC02 or PC03, and PC04 pays the same by train and more by car.
 - **Levers that would soften it** (not recommended here, listed for the design): make Either levels more common for PC01 and PC04; let a District week be a fixed block; raise the hours pool for those two; or count a train ride as Office time (the train encounter turns the hours into play).
