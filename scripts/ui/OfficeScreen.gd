@@ -22,7 +22,7 @@ var _title_party: Label
 @onready var _reputation_button: Button = %ReputationButton
 @onready var _organisations_panel: Overlay = %OrganisationsPanel
 var _standing_panel: Overlay = null
-@onready var _briefing_panel: Overlay = %BriefingPanel
+@onready var _briefing_panel: LevelBriefingPanel = %BriefingPanel
 @onready var _levels_panel: Overlay = %LevelsPanel
 
 ## The level the player is looking at, chosen on the levels screen.
@@ -4042,94 +4042,20 @@ func _show_briefing() -> void:
 		_report.text = Text.say("office.level_cannot_start", {"problems": "\n• ".join(Array(runner.problems()))})
 		return
 
-	# The briefing follows Cameron's template (2026-10-30): the level's title,
-	# its total hours and total rewards; then, between gold lines, each stage
-	# with its hours and rewards. A level with a single shown stage lists no
-	# stage at all (2026-10-31): the level's totals are that stage's numbers.
-	# Rewards run Reputation, Constituency support, Party support, then XP and
-	# Funds last (BriefingSummary).
-	var shown: Array = []
-	for stage: Dictionary in expanded.get("stages", []):
-		# A stage marked "No" (Media Ambush, an ambush by name) is left out
-		# entirely, its rewards too, so nothing gives away it is there
-		# (2026-09-28, Cameron).
-		if _reveal_in_briefing(stage):
-			shown.append(stage)
-
-	var level_name := str(_chosen_level.get("description", "")).strip_edges()
-	if level_name.is_empty():
-		level_name = Text.say("office.briefing_fallback_title")
-	var rows: Array[Control] = []
-	var anything_set := false
-
-	rows.append(UiKit.line(Text.say("briefing.level_hours",
-		{"count": GameState.level_hours(_chosen_level)}), "HeaderLabel"))
-	var total := BriefingSummary.total_rewards(shown)
-	if not total.is_empty():
-		rows.append(UiKit.line(Text.say("briefing.total_rewards")))
-		rows.append_array(_reward_bullets(total))
-	for stage: Dictionary in shown:
-		if not LevelRunner.rewards_are_unset(stage):
-			anything_set = true
-
-	# What winning the whole level pays on top of its rooms (2026-11-19, Cameron).
-	var bonus_rows := LevelBonusView.rows(expanded, GameState.difficulty, DataDB.balance_base)
-	if not bonus_rows.is_empty():
-		anything_set = true
-		rows.append_array(bonus_rows)
-
-	if BriefingSummary.lists_stages(shown):
-		for stage: Dictionary in shown:
-			rows.append(_gold_rule())
-			rows.append(UiKit.heading(str(stage.get("name_en", Text.say("briefing.stage_fallback")))))
-			rows.append(UiKit.line(Text.say("briefing.stage_hours",
-				{"count": TimeClock.units_for_stage(stage)})))
-			if LevelRunner.rewards_are_unset(stage):
-				rows.append(UiKit.line(Text.say("reward.stage_not_set"), "SmallLabel"))
-				continue
-			var rewards := BriefingSummary.stage_rewards(stage)
-			if not rewards.is_empty():
-				rows.append(UiKit.line(Text.say("briefing.rewards")))
-				rows.append_array(_reward_bullets(rewards))
-
-	if not anything_set:
-		rows.append(UiKit.line(""))
-		rows.append(UiKit.line(Text.say("reward.nothing_set")))
-
-	_briefing_panel.open(level_name, rows, Text.say("office.go_in"))
-
-
-## One bullet per reward, in briefing order: "● Reputation +1" ... "● XP
-## Growth +60", "● Funds +30,000円".
-func _reward_bullets(rewards: Dictionary) -> Array[Control]:
-	var lines: Array[Control] = []
-	for name: String in BriefingSummary.ordered(rewards):
-		var amount := int(rewards[name])
-		var text := Text.say("briefing.xp_growth", {"amount": Phrase.meta_amount(name, amount, true)}) \
-			if name == BriefingSummary.XP else Text.say("reward.delta",
-				{"name": name, "amount": Phrase.meta_amount(name, amount, true)})
-		lines.append(UiKit.line(Text.say("briefing.bullet", {"line": text})))
-	return lines
-
-
-## A gold line between the stages of a briefing, the same gold as the cue
-## banner's edge and the title screen's button outlines.
-func _gold_rule() -> Control:
-	# The one shared gold line (audit R-03), a little thicker here.
-	var rule := UiKit.gold_rule(4.0)
-	rule.custom_minimum_size.x = UiKit.LINE_WIDTH
-	return rule
-
-
-## True unless the Stages tab's "Reveal In Briefing" column is explicitly
-## "No" for this stage. Blank (null, the shape every stage has today except
-## the one that has been set) keeps the old behaviour: every stage says what
-## it is before the player goes in.
-func _reveal_in_briefing(stage: Dictionary) -> bool:
-	var value: Variant = stage.get("reveal_in_briefing")
-	if value == null:
-		return true
-	return str(value).strip_edges().to_lower() != "no"
+	# What the level says before the player goes in (P12, 2026-11-19, Cameron). LevelBriefing gathers the numbers
+	# from the same rules the briefing always read (a room marked "Reveal In Briefing: No" stays out, its hours
+	# still counted), with the week's hours around the level and the reason the level cannot start; the panel draws
+	# them in the active style. The reading stays here, the drawing is LevelBriefingPanel's.
+	var cfg := GameState.calendar_config()
+	var phase := str(GameState.calendar["phase"])
+	var context := {
+		"hours_left": WeekCalendar.hours_left(GameState.calendar, cfg),
+		"pool": WeekCalendar.pool_hours(phase, cfg),
+		"phase": phase,
+		"purpose": LevelPurpose.resolve(_chosen_level, GameState.staff_hired, DataDB.staff),
+		"refusal": GameState.level_calendar_refusal(_chosen_level),
+	}
+	_briefing_panel.open_brief(LevelBriefing.build(expanded, GameState.difficulty, DataDB.balance_base, context))
 
 
 ## Start: choose a level — or, when a saved run stopped between the stages

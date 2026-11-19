@@ -9014,5 +9014,12 @@
     "english": "Go in · 1 hour",
     "placeholders": null,
     "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "briefing.range",
+    "where": "Level briefing, an organization's standing range in the organizations card; {low} and {high} carry their signs",
+    "english": "{low} to {high}",
+    "placeholders": "low, high",
+    "notes": "2026-11-19 P12 level preview (Claude's draft)"
   }
 ]

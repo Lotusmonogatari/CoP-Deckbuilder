@@ -227,6 +227,7 @@
   "briefing.orgs_if_win": "Organizations, if you win",
   "briefing.purpose": "{speaker}: “{line}”",
   "briefing.purpose_plain": "“{line}”",
+  "briefing.range": "{low} to {high}",
   "briefing.rewards": "Rewards:",
   "briefing.room_line": "{kind} · {hours}",
   "briefing.rooms_in_order": "Rooms, in order",

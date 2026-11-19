@@ -50,6 +50,7 @@ ROWS = [
     ("briefing.kind_trade", "Level briefing, a lobbyist trade room", "Trade", ""),
     ("briefing.hour_mark", "Level briefing, hours as a short mark on the timeline ruler and a room's block", "{count} h", "count"),
     ("briefing.finish_bonus", "Level briefing, the marker at the end of the timeline", "Level bonus, paid when you win the level", ""),
+    ("briefing.range", "Level briefing, an organization's standing range in the organizations card; {low} and {high} carry their signs", "{low} to {high}", "low, high"),
     ("briefing.go_in_hours", "Level briefing, the Go in button with the level's length", "Go in · {count} hours", "count"),
     ("briefing.go_in_hours.one", "Level briefing, the Go in button with the level's length, one hour", "Go in · 1 hour", ""),
 ]

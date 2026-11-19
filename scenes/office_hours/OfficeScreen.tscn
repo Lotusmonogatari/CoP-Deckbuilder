@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/OfficeScreen.gd" id="1_elj5r"]
 [ext_resource type="Script" path="res://scripts/ui/PlaceholderArt.gd" id="2_uyci3"]
 [ext_resource type="Script" path="res://scripts/ui/Overlay.gd" id="3_vhpdr"]
+[ext_resource type="Script" path="res://scripts/ui/LevelBriefingPanel.gd" id="9_brief"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_textveil"]
 bg_color = Color(0.06, 0.05, 0.04, 0.6)
@@ -188,7 +189,7 @@ unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource("3_vhpdr")
+script = ExtResource("9_brief")
 
 [node name="CardsPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
