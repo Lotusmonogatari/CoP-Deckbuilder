@@ -9,7 +9,9 @@ extends RefCounted
 ## out.
 
 ## The name box and the picture beside it.
-const NAME_BOX_WIDTH := 260.0
+## The box grows with the text-size setting (2026-11-20): at Large text a long name such as "Hyun-jae Hyeong" broke at its
+## hyphen into three lines in the narrower box, which the text sweep found when that member happened to be drawn.
+const NAME_BOX_WIDTH := 300.0
 const PICTURE_WIDTH := 760.0
 
 
@@ -47,8 +49,9 @@ static func fit(screen: Control, name_label: Label, portrait: Control,
 	if details.get_parent() != screen:
 		details.reparent(screen, false)
 	details.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	details.custom_minimum_size.x = NAME_BOX_WIDTH
-	details.size = Vector2(NAME_BOX_WIDTH, 0.0)
+	var box_width := NAME_BOX_WIDTH * maxf(1.0, TextScale.factor(Layout.text_size_setting, DataDB.balance))
+	details.custom_minimum_size.x = box_width
+	details.size = Vector2(box_width, 0.0)
 	details.position = Vector2(column.get_global_rect().position.x - screen.get_global_rect().position.x, row_top)
 
 	portrait.custom_minimum_size = Vector2(PICTURE_WIDTH, maxf(picture_bottom - row_top, 300.0))

@@ -27,6 +27,13 @@ func _run() -> void:
 				letter = str(choice["choice"])
 				item_id = str(entry["item_id"])
 	GameState.inventory.erase(item_id)
+	# A promise is kept at the office of its choice (two offices, 2026-11-20): stand there.
+	var promise_office := Offices.normalize(GameState.get_event(event_id).get("location"))
+	GameState.office_location = Offices.CAPITOL if promise_office == Offices.EITHER else promise_office
+	for choice: Dictionary in DataDB.event_choices:
+		if str(choice["event_id"]) == event_id and str(choice["choice"]) == letter and choice.get("location") != null:
+			var own := Offices.normalize(choice.get("location"))
+			GameState.office_location = Offices.CAPITOL if own == Offices.EITHER else own
 	get_tree().change_scene_to_file("res://scenes/office_hours/OfficeScreen.tscn")
 	await get_tree().process_frame
 	await get_tree().create_timer(0.6).timeout
