@@ -1,6 +1,6 @@
 # Two offices: what travel takes of the week (slice 7, 2026-11-20)
 
-A measurement, not a change: **no number, price or rating was changed by this report.** Everything below is a draft for Cameron; decision 14 ("is Kenshin still Easy?") is his and waits for this report. Generated tables: `hours_resim.md` (the log replay), `bench_comparison.md` (the live bot, all pressures); raw bot runs are in `design/bench/offices/`.
+A measurement, not a change: **no number, price or rating was changed by this report.** **Cameron's answers (2026-11-20, after reading it):** the labels stay (PC01 Easy, PC04 Very Hard); PC01 starts with four Plane Tickets and PC04 gets nothing (option B for PC01 only); the ticket prices are now 10,000 / 30,000 / 60,000円 (the ticket figures below use them; the bot runs never bought tickets, so they are unaffected); and the spellings Daikoku and Akeno Shinmachi. Decision 14 ("is Kenshin still Easy?") is therefore closed: yes. Generated tables: `hours_resim.md` (the log replay), `bench_comparison.md` (the live bot, all pressures); raw bot runs are in `design/bench/offices/`.
 
 ## Executive summary
 
@@ -11,7 +11,7 @@ A measurement, not a change: **no number, price or rating was changed by this re
 | Do the fights get harder? | **No.** Stage win rates move by about a point or less: the rooms are unchanged, the player simply has fewer hours. |
 | Is Kenshin (PC01) still Easy? | He keeps the easiest *start* (35 / 25 / 100,000円 / 40, 60 XP) but **ends level with Jyurou (PC04, Very Hard)**: Election Strength at week 30 is 65.0 for PC01, 64.8 for PC04, 69.7 for PC02, 70.6 for PC03 (all four were about 71 without offices). Options below; my recommendation is to **keep the labels and soften the first weeks with starting tickets**. |
 | A surprise | A player who **never leaves the Capitol** never meets District levels (the Capitol list never runs out) and ends with District awareness 56 to 69 instead of 100, losing about 6 Election Strength. Nothing in the game tells them to go home. |
-| Does the plane or car fix it? | The plane cuts PC01's travel from about 14 to about 4 hours a week for about 79,000円 a week. PC04's car saves about 4 hours for 28,000円. **PC02's and PC03's car saves no hours at all** (1 h either way): it only skips the train encounters. |
+| Does the plane or car fix it? | The plane cuts PC01's travel from about 14 to about 4 hours a week for about 118,000円 a week at the new 60,000円 price (about 12,000円 for each hour saved). PC04's car saves about 4 hours for about 57,000円. **PC02's and PC03's car saves no hours at all** (1 h either way): it only skips the train encounters. |
 
 ## How it was measured
 
@@ -40,10 +40,10 @@ Reading it: the same trips cost PC02 and PC03 one hour and PC01 and PC04 six or 
 
 | Protagonist | Travel h/week | Share of 40 h | By plane or car | Funds for those tickets a week |
 |---|---|---|---|---|
-| PC01 Kenshin (Aomori, Noheji) | 13.8 | 35% | 3.9 (plane) | 78,888円 |
-| PC02 Haru (Tomakomai, Akenoshinmachi) | 2.0 | 5% | 2.0 (car) | 29,388円 |
-| PC03 Arata (Teine Ward) | 2.0 | 5% | 2.0 (car) | 29,375円 |
-| PC04 Jyurou (Wakkanai, Daikoki) | 11.4 | 28% | 7.6 (car) | 28,486円 |
+| PC01 Kenshin (Aomori, Noheji) | 13.8 | 35% | 3.9 (plane) | 118,333円 |
+| PC02 Haru (Tomakomai, Akeno Shinmachi) | 2.0 | 5% | 2.0 (car) | 58,777円 |
+| PC03 Arata (Teine Ward) | 2.0 | 5% | 2.0 (car) | 58,750円 |
+| PC04 Jyurou (Wakkanai, Daikoku) | 11.4 | 28% | 7.6 (car) | 56,972円 |
 
 The replay is harsher than the live bot because the live bot, shown only one office's list, chooses levels that need fewer crossings (it plays far more of the five "Either" levels). The truth for a person lies between the two.
 
@@ -55,18 +55,18 @@ A mixed level (17 of the 24 appear in the old logs) takes a median **14 hours** 
 |---|---|---|---|
 | **A. Keep the labels, change nothing** | Nothing. | PC01 ends level with PC04 at week 30 and behind PC02 and PC03; the Easy label holds only for the first weeks. | None |
 | **B. Keep the labels; start PC01 with four Plane Tickets and PC04 with four Private Car Trips (recommended)** | Starting-item cells in the Player tab. | A small early cushion at no Funds cost: four plane trips save PC01 20 hours (half a work week), four car trips save PC04 8 hours. Does not change the late game. | Workbook cells only |
-| **C. Lower the two ticket prices** | SH44 40,000円 to about 20,000円 and SH43 15,000円 to about 8,000円 (one Shop cell each; the car is shared by PC02, PC03 and PC04). | The plane's price per hour saved falls from about 8,000円 to about 4,000円 and becomes a normal weekly purchase for PC01; PC04 still starts with only 10,000円. | Workbook cells only |
+| **C. Change the two ticket prices** | One Shop cell each (the car is shared by PC02, PC03 and PC04). | Not taken as a cut: **Cameron set the prices to 10,000 / 30,000 / 60,000円** instead of the drafts, which makes the plane a deliberate spend (about 12,000円 for each hour it saves). | Done |
 | **D. Relabel PC01 "Normal"** | The New Game blurb. | Matches where PC01 ends up, but two protagonists would share a label and the strong start would no longer be described. | Text only |
 | **E. Fewer built-in trips for PC01 and PC04** (for example one trip on a mixed level, not two) | A per-protagonist rule for `Travel Trips`. | Halves the mixed-level cost (14 h to 7 h for PC01). | New mechanic: needs its own proposal |
 
-**Recommendation:** A now, with **B** (and **C** if the plane proves too dear when a player tries it). The fights are unchanged and the labels describe starting strength, which has not changed. Cameron decides.
+**Recommendation (made before Cameron's answer):** A now, with **B**. **Cameron's decision:** A, and B for PC01 only (four plane tickets; PC04 gets nothing), with the new prices above.
 
 ## Things the numbers surfaced for Cameron
 
 | # | Finding | Why it matters | Suggested next step |
 |---|---|---|---|
 | 1 | The Capitol list never runs out, so nothing pulls the player to the District. A bot that stays gets District awareness 56 to 69 (15 of Election Strength's points) and never plays a District level in 30 weeks. | A player may not discover that the District is where District awareness comes from. | A proposal for a visible nudge (a District notice, an Office line, or awareness shown on the trip strip): new UI, so not built. |
-| 2 | PC02 and PC03 pay 15,000円 for a car trip that takes the same single hour as the train. | It buys only the skipped encounter (1 in 8). | Lower the price, or leave it as a luxury; Cameron's call. |
+| 2 | PC02 and PC03 pay 30,000円 for a car trip that takes the same single hour as the train. | It buys only the skipped encounter (1 in 8). | Lower the price, or leave it as a luxury; Cameron's call. |
 | 3 | LV10 (27 h) needs the plane ticket for PC01 (41 h on the pass). | A fixed rule makes one level unreachable without a purchase. | Already documented in `GAME_SYSTEMS.md` section 3.1; keep, or give PC01 a plane ticket at the start (option B does). |
 | 4 | The bot never plays the train encounters or buys tickets. | The real cost of travel to a person includes the encounters (a gain, sometimes) and the ticket spend. | A real-phone playtest (milestone M6) is the true test. |
 

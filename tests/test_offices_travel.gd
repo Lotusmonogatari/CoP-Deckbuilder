@@ -31,7 +31,7 @@ func test_the_settled_hours_are_in_the_balance() -> void:
 	assert_eq(Travel.hours(b, "PC01", Travel.CAR), -1, "PC01 has no private car")
 	assert_eq(Travel.hours(b, "PC02", Travel.PASS), 1)
 	assert_eq(Travel.hours(b, "PC03", Travel.CAR), 1)
-	assert_eq(Travel.hours(b, "PC04", Travel.PASS), 6, "Daikoki by train")
+	assert_eq(Travel.hours(b, "PC04", Travel.PASS), 6, "Daikoku by train")
 	assert_eq(Travel.hours(b, "PC04", Travel.CAR), 4)
 	assert_eq(Travel.hours(b, "PC04", Travel.TICKET), 6, "the paid ticket takes the train's hours")
 

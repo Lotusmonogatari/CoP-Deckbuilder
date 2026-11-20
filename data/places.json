@@ -670,5 +670,41 @@
     "place_type": "community_hall",
     "name": "Mutsu Community Hall",
     "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "station",
+    "name": "Shichinohe-Towada Station",
+    "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "town_hall",
+    "name": "Misawa City Hall",
+    "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "town_hall",
+    "name": "Shichinohe Town Hall",
+    "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "town_hall",
+    "name": "Tohoku Town Office",
+    "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "landmark",
+    "name": "Lake Ogawara",
+    "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "fishing_grounds",
+    "name": "Lake Ogawara's shijimi clam beds",
+    "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
   }
 ]

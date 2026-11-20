@@ -69,11 +69,20 @@ The spec's rule 5 said a mixed level's travel is built in, free and not shown. *
 
 | Item | Why it still matters |
 |---|---|
-| Spelling check: "Daikoki" (PC01's neighborhood of Wakkanai) | Cameron wrote "Daikoki". Claude recalls a Wakkanai district usually romanized "Daikoku" (from memory, not checked in the repo's research); confirm the spelling wanted before it appears in text or art. "Akenoshinmachi" for Tomakomai was likewise not checked. |
-| Are Misawa, Tohoku and Shichinohe inside Aomori Block 3? | Spec "Settled" paragraph: they "still need Cameron's word". Affects PC04's place catalog only. |
-| Paid train ticket and car: prices; are BO23, BO05 and BO14 the right groups; does the +2 scale as usual or apply flat? | Spec open question 10. Prices are Balance rows. |
+| ~~Spelling check: "Daikoki"~~ **Resolved 2026-11-20: Daikoku** (PC01's neighborhood of Wakkanai) | Cameron wrote "Daikoki". Claude recalls a Wakkanai district usually romanized "Daikoku" (from memory, not checked in the repo's research); confirm the spelling wanted before it appears in text or art. "Akenoshinmachi" for Tomakomai was likewise not checked. |
+| ~~Are Misawa, Tohoku and Shichinohe inside Aomori Block 3?~~ **Resolved 2026-11-20: yes.** | Spec "Settled" paragraph: they "still need Cameron's word". Affects PC04's place catalog only. |
+| ~~Paid train ticket and car: prices;~~ **Resolved 2026-11-20: 10,000 / 30,000 / 60,000円 (train, car, plane).** Original question:  are BO23, BO05 and BO14 the right groups; does the +2 scale as usual or apply flat? | Spec open question 10. Prices are Balance rows. |
 | PC04's car takes 9 hours against 6 by train, so as priced it costs Funds and 3 more hours (it only skips encounters, which are 1 in 8 trips on the pass). PC01's car saves 1 hour. | Not a new decision: the settled hours stand. Revisit with the re-simulation, together with the PC01 and PC04 rating (decision 14). |
 | Does the car still need a confirm tap before it fades, or does choosing it start the trip at once? | "Instant to do" is recorded; whether a confirm step stays for the refusal and promise warnings is a build detail. |
 | Which train encounters, riders and questions (about 8 rider types) | Content, after the format is built. |
 | A fixed place for one row (Rokkasho's ports, the Ishikari Fish-House Baths) | Build detail, a place ID in the token. |
 | Review of Claude's drafts: visitor office tags, the ten Capitol events EV95 to EV104, the P12 briefing text | Drafts for Cameron. The visitor tags are on `main` but unused (there is no Location column yet); EV95 to EV104 are on `main` and live as ordinary events; the P12 briefing text is on branch `panel/p12-level-preview`, not merged. |
+
+## Cameron's answers after the hours report (2026-11-20)
+
+| # | Decision | Detail |
+|---|---|---|
+| 25 | PC01 and PC04 ratings | **Keep the labels** (PC01 Easy, PC04 Very Hard). **PC01 starts a run with four Plane Tickets; PC04 gets nothing.** (The report's option B, for PC01 only.) Decision 14 is closed. |
+| 26 | Ticket prices | **Paid train ticket 10,000円, private car 30,000円, plane ticket 60,000円** (the build's drafts were 5,000 / 15,000 / 40,000円). |
+| 27 | Spellings | **Daikoku**, Wakkanai (not "Daikoki"). **Akeno Shinmachi** (明野新町), a residential neighborhood of Tomakomai (not "Akenoshinmachi"). Both are now the Player tab's District Office. The kanji accent is not shown anywhere yet. |
+| 28 | Aomori Block 3 | **Misawa, Tohoku and Shichinohe lie inside it** (PC01's district). Six draft names for them were added to PC01's places (Misawa City Hall, Shichinohe Town Hall, Tohoku Town Office, Shichinohe-Towada Station, Lake Ogawara, Lake Ogawara's shijimi clam beds). |

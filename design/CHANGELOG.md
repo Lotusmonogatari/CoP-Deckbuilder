@@ -1531,3 +1531,13 @@ The trip button became **a train on a track**. The words (where, how long, by wh
 | The strategy bot | `tools/strategy_playtest.gd` knows the offices: `PLAYTEST_OFFICES=0` plays the old way, `1` (default) crosses only when nothing is left at its office, `2` follows its own order and crosses whenever it needs to; it pays a mixed level's built-in trips. New: `tools/offices_bench_report.py` (the comparison tables), `tools/two_offices_hours.py` (the log replay); runs are in `design/bench/offices/`. |
 | How to Play | Four new entries in Between Levels, HT35 to HT38: the two offices, taking the train, tickets and trips inside levels, promises and staff. Drafts for Cameron. |
 | Documents | `NEW_CHAT_STARTUP.md` refreshed to 2026-11-20 (counts, the offices, P9 to P12, things that bite, the offices review list). |
+
+## 2026-11-20: Two offices: Cameron's answers to the hours report
+
+| Part | What changed |
+|---|---|
+| Ratings and starting items | The labels stay. **PC01 starts with four Plane Tickets (SH44 x4)**; PC04 gets nothing. New test: only PC01 starts with tickets. |
+| Ticket prices | Paid Train Ticket **10,000円**, Private Car Trip **30,000円**, Plane Ticket **60,000円** (Shop tab; they were 5,000 / 15,000 / 40,000円). At the new price a plane trip costs about 12,000円 for each hour it saves PC01. |
+| Spellings | PC04's District office is **Daikoku** and PC02's is **Akeno Shinmachi** (明野新町) in the Player tab; the tests and documents follow. The earlier changelog sections of 2026-11-20 still use the old spellings, which were Claude's guesses. |
+| Places | Misawa, Tohoku and Shichinohe are confirmed inside Aomori Block 3: six draft names for PC01 (Places 112 to 118 rows). |
+| Where it is written | `design/proposals/TWO_OFFICES_DECISIONS_2026-11-20.md` (decisions 25 to 28), the report's header, `GAME_SYSTEMS.md` section 3.1, `NEW_CHAT_STARTUP.md`. The workbook edit is `tools/workbook/archive/two_offices_decisions_2026-11-20.py`. |
