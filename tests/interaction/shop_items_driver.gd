@@ -143,14 +143,15 @@ func _check_staff_gate(office: Node, expect_open: bool) -> bool:
 
 	await _click(office.get_node("%ManagementButton"))
 	var management := office.get_node("%ManagementPanel") as Overlay
-	var staff_door := _button_with_text(management, Text.say("office.staff"))
+	# Office Management opens on its Staff tab (P13, 2026-11-20); an open place's dashed row opens the role's candidates.
+	var staff_door := management.find_child("HireSlot_%s_0" % str(tier_1_candidate.get("role", "")).replace(" ", "_"), true, false) as Button
 	if staff_door == null:
-		_failures.append("Office Management has no Staff button")
+		_failures.append("Office Management has no open place for the candidate's role")
 		return false
 	await _click(staff_door)
 	var staff := office.get_node("%StaffPanel") as Overlay
 	if not staff.visible:
-		_failures.append("the Staff button did not open the Staff screen")
+		_failures.append("the open place did not open the candidates")
 		return false
 
 	var staff_id := str(tier_1_candidate.get("staff_id", ""))
@@ -187,6 +188,8 @@ func _check_staff_gate(office: Node, expect_open: bool) -> bool:
 
 	profile.close()
 	staff.close()
+	# Office Management stays open under its pop-ups now (it used to close itself on the way in).
+	management.close()
 	await _wait(0.2)
 	return true
 
@@ -343,8 +346,9 @@ func _buy(supplies: Overlay, item_id: String) -> bool:
 func _walk_rhetoric_training(office: Node) -> bool:
 	await _click(office.get_node("%ManagementButton"))
 	var management := office.get_node("%ManagementPanel") as Overlay
-	await _click(_button_with_text(management, Text.say("office.rhetoric_training")))
-	var training := office.get_node("%CardsPanel") as Overlay
+	await _click(management.find_child("FrameTab_rhetoric", true, false) as Control)
+	# Rhetoric Training is a tab of Office Management now (P13, 2026-11-20): its rows live in the management panel.
+	var training := management
 	if not training.visible:
 		_failures.append("the Rhetoric Training button did not open Rhetoric Training")
 		return false

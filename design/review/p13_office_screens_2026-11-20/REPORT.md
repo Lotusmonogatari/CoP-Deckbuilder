@@ -9,7 +9,8 @@ Branch `panel/p13-office-screens`. Mockups are in `design/proposals/img/office_s
 | 1 | The shared frame (`OfficeScreenFrame`, `OfficeFrameStyles`, `Overlay.open_frame`) | Gate passed |
 | 2 | Administration (and two click tests updated on purpose) | Gate passed |
 | 3 | Reputation and Results (and two tests adjusted: the tabs wrap, the party plate test skips clipped labels) | Gate passed |
-| 4 | Marketplace | Gate pending |
+| 4 | Marketplace (and a fix so top-bar chips wrap and stack at Large text) | Gate passed |
+| 5 | Office Management | Gate pending |
 
 ## Your answers
 
@@ -130,3 +131,43 @@ The screenshots hold some items (Coffee at its carrying limit of three) and the 
 ### Tests
 
 `tests/test_market_screen.gd` (10): every item the old rows offered is still offered with the same title and description, a funds-short and a sold-out item say so, a full stack says you cannot carry more, a card with no reason has a working Buy and one with a reason is greyed with the reason in red, a sold-out card is dimmed, the three tabs keep their old names in every style, the chips, the Funds-limit note, the Styles tab and tab switching. `tests/interaction/inventory_driver.gd` now scrolls the frame's list instead of the panel's own scroll area, on purpose.
+
+
+## Office Management (commit 5)
+
+Three tabs (Staff, Your deck, Rhetoric Training) replace the menu of four buttons that each closed it and opened a panel. Funds, XP and the deck count are chips. The Staff tab shows a summary, then one section for each role with **a card for every hired person** and **a dashed "+ Hire a ..." row for every open place**; Staff Assignments is the fixed button under it.
+
+| Style | Mockup | Staff tab (1080 x 2340) | 1080 x 1920 | Large text | An open place's candidates | Your deck tab | Rhetoric Training tab |
+|---|---|---|---|---|---|---|---|
+| Woodblock | ![](../../proposals/img/office_screens/previews/png/office_management_woodblock.png) | ![](management_staff_woodblock_1080x2340.png) | ![](management_staff_woodblock_1080x1920.png) | ![](management_staff_woodblock_large.png) | ![](management_hire_woodblock.png) | ![](management_deck_woodblock.png) | ![](management_rhetoric_woodblock.png) |
+| Living Office | ![](../../proposals/img/office_screens/previews/png/office_management_living.png) | ![](management_staff_living_office_1080x2340.png) | ![](management_staff_living_office_1080x1920.png) | ![](management_staff_living_office_large.png) | ![](management_hire_living_office.png) | ![](management_deck_living_office.png) | ![](management_rhetoric_living_office.png) |
+| Broadcast | ![](../../proposals/img/office_screens/previews/png/office_management_broadcast.png) | ![](management_staff_broadcast_1080x2340.png) | ![](management_staff_broadcast_1080x1920.png) | ![](management_staff_broadcast_large.png) | ![](management_hire_broadcast.png) | ![](management_deck_broadcast.png) | ![](management_rhetoric_broadcast.png) |
+
+The screenshots use demo staff (four people hired, a second place in every role). "Rank 0 of 0" is the data: those people have no upgrade tiers.
+
+### What differs from the mockup, and why
+
+| Difference | Why |
+|---|---|
+| Your deck and Rhetoric Training show today's rows inside cards | The spec calls today's buttons "tabs". Their own redesign (two-column card faces, tiers as cards) is P14 groups 4 and 5, so here they keep their rows and flows. Taking the deck in is the fixed button under that tab ("Take these in", only while the deck is legal) and closes the screen, as before. |
+| The staff summary shows "3 of 6" without "places filled" | A compact tile; the role headings say "1 of 2 places filled". |
+| Each person's card shows the name, rank, tag and "Steady · wage 6000円 a week" (the old Loyalty and wage line) | Reuse of today's words. **The wage prints without a thousands comma ("6000円")**; this was already so on the old row and the Information Standards ask for commas. The cause is the placeholder name `{yen}` in the `staff.summary` row, which the formatter does not treat as money. I did not change it; say if you want it fixed (a one-word fix in that row or the view). |
+| An open place opens the candidates in a pop-up over the Staff tab | The spec: "opens today's candidate rows". Hiring, upgrading or firing refreshes the tab and puts the pop-up away. |
+| Staff Assignments opens over Office Management instead of closing it | Back from Staff Assignments now returns here. |
+| "Paid on" row (in the spec's list) is not used | The mockup does not show it, and I did not want an unused row. |
+| Tab names are "Staff", "Your deck", "Rhetoric Training" | The existing rows (`office.your_deck` reads "Your deck", not "Your Deck"). |
+
+### New Text rows (all drafts for you)
+
+| Key | English | Note |
+|---|---|---|
+| `office.wages_week` | Wages this week | In the approved list |
+| `office.hire_slot` | + Hire a {role} | In the approved list, reworded to show the role as the mockup does |
+| `office.staff_second_tag` · `office.staff_third_tag` | Second · Third | Flagged in the plan |
+| `office.open_place` | Open place | Flagged in the plan |
+| `office.places_per_role` · `office.staff_count_of` | Places per role · {count} of {total} | **Not in the approved list**: the summary tiles |
+| `office.subtitle_jp_management` | 事務所の管理 | **Not in the approved list**: the Japanese accent |
+
+### Tests
+
+`tests/test_management_screen.gd` (8): the staff count equals the people listed, open places are the places not filled, a person shows what the old row showed with a tag by place, a card for every hired person and a row for every open place in every style with taps reaching their handlers, three tabs plus Staff Assignments plus three chips, the deck tab confirms only a legal deck, a training card for every session, every tab builds in every style. `staff_profile_driver` and `shop_items_driver` were updated on purpose: they reached staff through the old menu's Staff button and the Rhetoric Training panel; they now go through the Staff tab's open-place row and the Rhetoric Training tab.

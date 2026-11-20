@@ -1353,36 +1353,57 @@ func _last_level_report() -> String:
 ## at all in the last playtest: knowing you have 30 Funds is no use if
 ## nothing says that Funds are what backing costs.
 func _show_management() -> void:
-	var rows: Array[Control] = []
-	var funds := int(GameState.meta.get("Funds", 0))
-	var size := GameState.deck_size()
+	_show_management_tab("staff")
 
-	rows.append(UiKit.heading(Text.say("office.xp", {"count": GameState.xp})))
-	rows.append(UiKit.heading(Text.say("office.funds", {"count": funds})))
-	rows.append(UiKit.line(
-		Text.say("office.funds_buys"), "SmallLabel"))
 
-	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
-	rows.append(UiKit.heading(Text.say("office.deck_count",
-		{"count": GameState.deck.size(), "size": size})))
-	rows.append(UiKit.line(
-		Text.say("office.deck_ready") if refusal.is_empty() else refusal, "SmallLabel"))
+## Office Management on the shared frame (P13, 2026-11-20): one screen with three tabs (Staff, Your Deck, Rhetoric
+## Training) in place of a menu of four buttons that each closed it and opened a panel. Funds, XP and the deck count are
+## chips; Staff Assignments is the fixed button under the Staff tab.
+var _management_tab := "staff"
 
-	for row: Array in [
-		[Text.say("office.rhetoric_training"), _show_rhetoric_training],
-		[Text.say("office.your_deck"), _show_deck],
-		[Text.say("office.staff"), _show_staff],
-		[Text.say("office.staff_assignments"), _show_staff_assignments],
-	]:
-		var button := Button.new()
-		button.custom_minimum_size = Vector2(0, 100)
-		button.text = str(row[0])
-		button.pressed.connect(func() -> void:
-			_management_panel.close()
-			(row[1] as Callable).call())
-		rows.append(button)
 
-	_management_panel.open(Text.say("office.management"), rows)
+func _on_management_tab(tab: String) -> void:
+	if tab == "deck":
+		_show_deck()
+	else:
+		_show_management_tab(tab)
+
+
+func _show_management_tab(tab: String) -> void:
+	# A refresh after a hire, upgrade or firing: the candidates pop-up of an open place is done with.
+	_staff_panel.close()
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control]
+	var footer: Button = null
+	match tab:
+		"deck":
+			rows = _deck_cards(look)
+			footer = _deck_confirm_button()
+		"rhetoric":
+			rows = _rhetoric_cards(look)
+		_:
+			tab = "staff"
+			rows = StaffRosterView.cards(StaffRosterModel.build(), {"profile": _show_staff_profile, "hire": _show_staff_candidates})
+			footer = UiKit.action_button(Text.say("office.staff_assignments"), "", _show_staff_assignments, OfficeFrameStyles.touch_height())
+			footer.name = "StaffAssignmentsButton"
+	_management_tab = tab
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("office.management"),
+		"subtitle": Text.say("office.subtitle_jp_management"),
+		"chips": [Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}), Text.say("office.xp", {"count": GameState.xp}),
+			Text.say("office.deck_count", {"count": GameState.deck.size(), "size": GameState.deck_size()})],
+		"tabs": [
+			{"id": "staff", "text": Text.say("office.staff")},
+			{"id": "deck", "text": Text.say("office.your_deck")},
+			{"id": "rhetoric", "text": Text.say("office.rhetoric_training")},
+		],
+		"active_tab": tab,
+		"rows": rows,
+		"footer": footer,
+	})
+	frame.tab_chosen.connect(_on_management_tab)
+	_management_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 ## The organizations, and where the player stands with each.
@@ -1533,15 +1554,24 @@ func _with_booster_icon(booster_id: String, content: Control) -> Control:
 ## learn_offered_card()). Replaced the old "New cards" list, which let any
 ## card be bought outright for its XP price with no draw at all.
 func _show_rhetoric_training() -> void:
-	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("rhetoric.blurb")))
-	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
-	rows.append(UiKit.line(Text.say("office.funds",
-		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
+	_show_management_tab("rhetoric")
+
+
+## The Rhetoric Training tab: the blurb, then one card for each training session. (XP and Funds are chips now.)
+func _rhetoric_cards(look: Dictionary) -> Array[Control]:
+	var rows: Array[Control] = [_ground_line(Text.say("rhetoric.blurb"), look)]
 	for item: Dictionary in DataDB.shop:
 		if item.get("card_tier") != null:
-			rows.append(_training_row(item))
-	_cards_panel.open(Text.say("office.rhetoric_training"), rows)
+			var card := OfficeFrameStyles.card(look)
+			card.name = "TrainingCard_" + str(item.get("item_id", ""))
+			var row := _training_row(item)
+			card.get_node("Column").add_child(row)
+			var button := row.find_child("SeeCard", true, false) as Button
+			if button != null:
+				OfficeFrameStyles.dress_card_button(button, look, not button.disabled)
+				button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+			rows.append(card)
+	return rows
 
 
 func _training_row(item: Dictionary) -> Control:
@@ -3114,30 +3144,50 @@ func _show_card_look(card_id: String) -> void:
 ## nothing to decide.
 func _show_deck() -> void:
 	_draft_deck = GameState.deck.duplicate()
-	_build_deck_screen()
+	_show_management_tab("deck")
 
 
 func _build_deck_screen() -> void:
-	var size := GameState.deck_size()
-	var rows: Array[Control] = []
+	_show_management_tab("deck")
 
-	var refusal := Ledger.deck_refusal(_draft_deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
+
+## Why the deck being built cannot be taken in, or "".
+func _deck_refusal() -> String:
+	return Ledger.deck_refusal(_draft_deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
+
+
+## The Your Deck tab: how many are chosen, the hint, then the cards you own in one card (tap to pick or drop, View to look).
+func _deck_cards(look: Dictionary) -> Array[Control]:
+	var size := GameState.deck_size()
+	var refusal := _deck_refusal()
 	var warning := ("" if refusal.is_empty()
 		else Text.say("office.deck_warning_suffix", {"reason": refusal}))
-	rows.append(UiKit.line(Text.say("office.deck_chosen",
-		{"count": _draft_deck.size(), "size": size, "warning": warning}), "HeaderLabel"))
-	rows.append(UiKit.line(Text.say("office.deck_tap")))
-
+	var chosen := UiKit.line(Text.say("office.deck_chosen",
+		{"count": _draft_deck.size(), "size": size, "warning": warning}), "HeaderLabel")
+	chosen.custom_minimum_size.x = 0.0
+	chosen.add_theme_color_override("font_color", look["on_ground"])
+	var rows: Array[Control] = [chosen, _ground_line(Text.say("office.deck_tap"), look)]
+	var card := OfficeFrameStyles.card(look)
+	card.name = "DeckCard"
 	for card_id: String in GameState.owned_cards:
-		var card := DataDB.get_card(card_id)
-		if card.is_empty():
+		var data := DataDB.get_card(card_id)
+		if data.is_empty():
 			continue
-		rows.append(_deck_row(card, card_id))
+		card.get_node("Column").add_child(_deck_row(data, card_id))
+	rows.append(card)
+	return rows
 
-	# Confirmed rather than saved as you go: a half-built deck should not be
-	# able to become the deck you start a level with.
-	_deck_panel.open(Text.say("office.your_deck"), rows,
-		Text.say("office.deck_confirm") if refusal.is_empty() else "")
+
+## "Take these in", the fixed button under the Your Deck tab: only while the deck can be taken in. A half-built deck
+## never becomes the deck you start a level with (confirmed rather than saved as you go).
+func _deck_confirm_button() -> Button:
+	if not _deck_refusal().is_empty():
+		return null
+	var button := UiKit.action_button(Text.say("office.deck_confirm"), "", func() -> void:
+		_management_panel.close()
+		_on_deck_confirmed(), OfficeFrameStyles.touch_height())
+	button.name = "DeckConfirmButton"
+	return button
 
 
 func _deck_row(card: Dictionary, card_id: String) -> Control:
@@ -3309,28 +3359,24 @@ func _on_buy_modifier(mod_id: String) -> void:
 ## be undone — see GameState.hire_staff()/upgrade_staff()/fire_staff() and
 ## design/proposals/staff_firing.md).
 func _show_staff() -> void:
+	_show_management_tab("staff")
+
+
+## The candidates for one open place (P13, 2026-11-20): today's candidate rows for the role, in a pop-up over the Staff tab.
+## Hiring, upgrading or firing refreshes the tab behind it and puts this pop-up away.
+func _show_staff_candidates(role: String) -> void:
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("office.staff_blurb") if GameState.staff_slots() <= 1
 		else Text.say("office.staff_blurb_places", {"places": GameState.staff_slots()})))
 	rows.append(UiKit.line(Text.say("office.funds",
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
-
-	for role: String in Ledger.staff_roles(DataDB.staff):
-		rows.append(UiKit.heading(role))
-		var members := GameState.staff_in_role(role)
-		if GameState.staff_slots() > 1:
-			rows.append(UiKit.line(Text.say("office.staff_role_places",
-				{"filled": members.size(), "places": GameState.staff_slots()}), "SmallLabel"))
-		for i in members.size():
-			rows.append(_staff_hired_row(role, members[i], i == 0 and GameState.staff_slots() > 1))
-		if members.size() < GameState.staff_slots():
-			for candidate: Dictionary in DataDB.get_staff_by_role(role):
-				# Someone who resigned never comes back (Cameron, 2026-11-16).
-				if GameState.hired_member(str(candidate.get("staff_id", ""))).is_empty() \
-						and not bool(GameState.staff_quit.get(str(candidate.get("staff_id", "")), false)):
-					rows.append(_staff_candidate_row(candidate))
-
-	_staff_panel.open(Text.say("office.staff"), rows)
+	for candidate: Dictionary in DataDB.get_staff_by_role(role):
+		# Someone who resigned never comes back (Cameron, 2026-11-16).
+		if GameState.hired_member(str(candidate.get("staff_id", ""))).is_empty() \
+				and not bool(GameState.staff_quit.get(str(candidate.get("staff_id", "")), false)):
+			rows.append(_staff_candidate_row(candidate))
+	_staff_panel.open(role, rows)
+	move_child(_staff_panel, get_child_count() - 1)
 
 
 ## One candidate for a vacant role: a button that opens their profile (what
@@ -3492,6 +3538,8 @@ func _show_staff_profile(staff_id: String) -> void:
 
 	_staff_profile_panel.top_aligned = true
 	_staff_profile_panel.open("", rows)
+	# Above the candidates pop-up or the management screen it was opened from.
+	move_child(_staff_profile_panel, get_child_count() - 1)
 
 
 ## The picture's box: the drawing fitted into STAFF_PORTRAIT_MAX with no

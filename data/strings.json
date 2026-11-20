@@ -9406,5 +9406,61 @@
     "english": "市場",
     "placeholders": null,
     "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.wages_week",
+    "where": "Office Management, Staff — summary: what the staff cost each week",
+    "english": "Wages this week",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.places_per_role",
+    "where": "Office Management, Staff — summary: how many people each role holds",
+    "english": "Places per role",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.staff_second_tag",
+    "where": "Office Management, Staff — tag on the second person in a role",
+    "english": "Second",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.staff_third_tag",
+    "where": "Office Management, Staff — tag on the third person in a role",
+    "english": "Third",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.hire_slot",
+    "where": "Office Management, Staff — the row that opens the candidates for an open place",
+    "english": "+ Hire a {role}",
+    "placeholders": "role",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.open_place",
+    "where": "Office Management, Staff — shown on a row for an open place",
+    "english": "Open place",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_management",
+    "where": "Office Management — the small Japanese accent under the title",
+    "english": "事務所の管理",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.staff_count_of",
+    "where": "Office Management, Staff — summary tile: people hired of all places",
+    "english": "{count} of {total}",
+    "placeholders": "count, total",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
   }
 ]
