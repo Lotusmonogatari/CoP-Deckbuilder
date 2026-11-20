@@ -1521,3 +1521,13 @@ The trip button became **a train on a track**. The words (where, how long, by wh
 | Places | District purpose lines use place tokens (`{place:landmark}`, `{place:harbor}`, `{place:beach}`) or a real town; the exporter now checks tokens in a level's purpose line too. |
 | Left out, on purpose | Weekend play for LV117 and LV119 (a weekend level must fit a 4-hour day); gating by discovery; a mixed Rokkasho variant; the spec's "unique hooks" (new mechanics need their own proposal). |
 | Tests | `test_protagonist_levels` (who sees each level, places, hours, the trade-off); the travel click test checks that PC01 sees its own two levels at the right offices and not another protagonist's. Counts in `test_offices_travel`, `test_level_bonus` and `test_level_briefing` moved with the data. |
+
+## 2026-11-20: Two offices, slice 7: measuring the week, the guide, the bot
+
+| Part | What changed |
+|---|---|
+| Report (no number changed) | `design/review/two_offices_hours_2026-11-20/REPORT.md`: what travel takes of the 40-hour week, from a replay of the 144 old bot runs and from 336 new live bot runs (standard, harder and relaxed pressure, three policies). **PC02 and PC03 lose 2 to 5% of the week; PC01 and PC04 lose 10% if they stay put and 18 to 19% if they cross whenever the next level is at the other office**, about 16% (PC01) and 23% (PC04) less XP by week 10. Stage win rates do not move. With offices Kenshin (Easy) ends level with Jyurou (Very Hard) at week 30. Five options for PC01's and PC04's rating are in the report; the choice is Cameron's. |
+| A finding | A bot that never leaves the Capitol never plays a District level, because the Capitol list never runs out, and ends with District awareness 56 to 69 instead of 100. Nothing in the game says to go home; a nudge would be a new proposal. |
+| The strategy bot | `tools/strategy_playtest.gd` knows the offices: `PLAYTEST_OFFICES=0` plays the old way, `1` (default) crosses only when nothing is left at its office, `2` follows its own order and crosses whenever it needs to; it pays a mixed level's built-in trips. New: `tools/offices_bench_report.py` (the comparison tables), `tools/two_offices_hours.py` (the log replay); runs are in `design/bench/offices/`. |
+| How to Play | Four new entries in Between Levels, HT35 to HT38: the two offices, taking the train, tickets and trips inside levels, promises and staff. Drafts for Cameron. |
+| Documents | `NEW_CHAT_STARTUP.md` refreshed to 2026-11-20 (counts, the offices, P9 to P12, things that bite, the offices review list). |
