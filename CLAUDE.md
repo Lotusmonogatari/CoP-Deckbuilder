@@ -322,3 +322,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Two offices: Cameron's answers to the hours report (ratings, four plane tickets, prices, spellings), 2026-11-20, Cameron
 - Cleanup pass: the old Level Bonus block, 14 Text rows and dead code removed (2026-11-20, Cameron)
 - The trip strip's train is kept as the main icon, no picture needed (2026-11-20, Cameron)
+- P13: the Office screens on one frame, six tabs for Reputation and Results, Marketplace cards, Office Management tabs, Events with a Decision! banner (2026-11-20, Cameron; branch `panel/p13-office-screens`)

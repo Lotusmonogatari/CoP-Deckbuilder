@@ -856,24 +856,46 @@ func _go_home() -> void:
 # variable rewards (GameState.apply_event_choice).
 
 func _show_events_list() -> void:
-	var rows: Array[Control] = [UiKit.line(Text.say("event.list_hint"), "SmallLabel")]
-	var events := GameState.buyable_events()
-	if events.is_empty():
-		rows.append(UiKit.line(Text.say("event.none")))
-	for event: Dictionary in events:
-		var cost: Variant = event.get("cost_funds")
-		var title_line := Text.say("event.row", {"title": str(event.get("title", "")),
-			"hours": GameState.event_hours_text(event), "count": GameState.event_hours_range(event)[1], "cost": int(cost)}) if cost != null and int(cost) > 0 \
-			else Text.say("event.row_free", {"title": str(event.get("title", "")),
-				"hours": GameState.event_hours_text(event), "count": GameState.event_hours_range(event)[1]})
-		var box := UiKit.tight_column()
-		box.add_child(UiKit.line(title_line))
-		var button := UiKit.action_button(Text.say("event.arrange"), GameState.event_refusal(event),
-			_on_arrange_event.bind(str(event.get("event_id", ""))), 90.0)
-		button.name = "Arrange_" + str(event.get("event_id", ""))
-		box.add_child(button)
-		rows.append(box)
-	_events_panel.open(Text.say("event.list_title"), rows)
+	_show_events("here")
+
+
+var _events_tab := "here"
+
+
+## Events on the shared frame (P13, 2026-11-20): chips for where you stand and the hours left, two tabs (Arrange here, Coming
+## up), the hint, a red Decision! banner for a dated event coming up (never a buy row), and one card for every event that can
+## be arranged at this office, with its location badge and, when it cannot be arranged now, the reason in red and a greyed
+## button. Only what can be arranged at the office the player stands at is listed (the two-offices filtering, unchanged).
+func _show_events(tab: String) -> void:
+	_events_tab = tab if tab == "coming" else "here"
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = []
+	var coming := EventsModel.coming()
+	if _events_tab == "coming":
+		if coming.is_empty():
+			rows.append(_ground_line(Text.say("event.coming_none"), look))
+		for event: Dictionary in coming:
+			rows.append(EventsView.decision_banner(look, event))
+	else:
+		rows.append(_ground_line(Text.say("event.list_hint"), look))
+		if not coming.is_empty():
+			rows.append(EventsView.decision_banner(look, coming[0]))
+		var arrangeable := EventsModel.rows()
+		if arrangeable.is_empty():
+			rows.append(_ground_line(Text.say("event.none"), look))
+		for event: Dictionary in arrangeable:
+			rows.append(EventsView.event_card(look, event, _on_arrange_event))
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("event.list_title"),
+		"subtitle": Text.say("office.subtitle_jp_events"),
+		"chips": EventsModel.chips(),
+		"tabs": [{"id": "here", "text": Text.say("event.tab_here")}, {"id": "coming", "text": Text.say("event.tab_coming")}],
+		"active_tab": _events_tab,
+		"rows": rows,
+	})
+	frame.tab_chosen.connect(_show_events)
+	_events_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 func _on_arrange_event(event_id: String) -> void:
@@ -1353,36 +1375,57 @@ func _last_level_report() -> String:
 ## at all in the last playtest: knowing you have 30 Funds is no use if
 ## nothing says that Funds are what backing costs.
 func _show_management() -> void:
-	var rows: Array[Control] = []
-	var funds := int(GameState.meta.get("Funds", 0))
-	var size := GameState.deck_size()
+	_show_management_tab("staff")
 
-	rows.append(UiKit.heading(Text.say("office.xp", {"count": GameState.xp})))
-	rows.append(UiKit.heading(Text.say("office.funds", {"count": funds})))
-	rows.append(UiKit.line(
-		Text.say("office.funds_buys"), "SmallLabel"))
 
-	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
-	rows.append(UiKit.heading(Text.say("office.deck_count",
-		{"count": GameState.deck.size(), "size": size})))
-	rows.append(UiKit.line(
-		Text.say("office.deck_ready") if refusal.is_empty() else refusal, "SmallLabel"))
+## Office Management on the shared frame (P13, 2026-11-20): one screen with three tabs (Staff, Your Deck, Rhetoric
+## Training) in place of a menu of four buttons that each closed it and opened a panel. Funds, XP and the deck count are
+## chips; Staff Assignments is the fixed button under the Staff tab.
+var _management_tab := "staff"
 
-	for row: Array in [
-		[Text.say("office.rhetoric_training"), _show_rhetoric_training],
-		[Text.say("office.your_deck"), _show_deck],
-		[Text.say("office.staff"), _show_staff],
-		[Text.say("office.staff_assignments"), _show_staff_assignments],
-	]:
-		var button := Button.new()
-		button.custom_minimum_size = Vector2(0, 100)
-		button.text = str(row[0])
-		button.pressed.connect(func() -> void:
-			_management_panel.close()
-			(row[1] as Callable).call())
-		rows.append(button)
 
-	_management_panel.open(Text.say("office.management"), rows)
+func _on_management_tab(tab: String) -> void:
+	if tab == "deck":
+		_show_deck()
+	else:
+		_show_management_tab(tab)
+
+
+func _show_management_tab(tab: String) -> void:
+	# A refresh after a hire, upgrade or firing: the candidates pop-up of an open place is done with.
+	_staff_panel.close()
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control]
+	var footer: Button = null
+	match tab:
+		"deck":
+			rows = _deck_cards(look)
+			footer = _deck_confirm_button()
+		"rhetoric":
+			rows = _rhetoric_cards(look)
+		_:
+			tab = "staff"
+			rows = StaffRosterView.cards(StaffRosterModel.build(), {"profile": _show_staff_profile, "hire": _show_staff_candidates})
+			footer = UiKit.action_button(Text.say("office.staff_assignments"), "", _show_staff_assignments, OfficeFrameStyles.touch_height())
+			footer.name = "StaffAssignmentsButton"
+	_management_tab = tab
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("office.management"),
+		"subtitle": Text.say("office.subtitle_jp_management"),
+		"chips": [Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}), Text.say("office.xp", {"count": GameState.xp}),
+			Text.say("office.deck_count", {"count": GameState.deck.size(), "size": GameState.deck_size()})],
+		"tabs": [
+			{"id": "staff", "text": Text.say("office.staff")},
+			{"id": "deck", "text": Text.say("office.your_deck")},
+			{"id": "rhetoric", "text": Text.say("office.rhetoric_training")},
+		],
+		"active_tab": tab,
+		"rows": rows,
+		"footer": footer,
+	})
+	frame.tab_chosen.connect(_on_management_tab)
+	_management_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 ## The organizations, and where the player stands with each.
@@ -1391,21 +1434,32 @@ func _show_management() -> void:
 ## distinction: a Constituency group is worth something different from a
 ## National one, and seeing them mixed together hides that.
 func _show_organisations() -> void:
-	var rows: Array[Control] = []
+	_show_reputation("stakeholders")
 
-	rows.append(UiKit.line(Text.say("office.orgs_blurb")))
 
+## The Stakeholders tab (P13, 2026-11-20): the blurb, then one card per scope (Party Bodies, Constituency, National),
+## each row an organization with what moved it last level as a change button.
+func _stakeholder_cards(look: Dictionary) -> Array[Control]:
+	var rows: Array[Control] = [_ground_line(Text.say("office.orgs_blurb"), look)]
 	for tier: String in ["Party", "Constituency", "National"]:
 		var in_tier := DataDB.boosters.filter(
 			func(b: Dictionary) -> bool: return str(b.get("tier", "")) == tier)
 		if in_tier.is_empty():
 			continue
-
-		rows.append(UiKit.heading(_scope_heading(tier)))
+		var card := OfficeFrameStyles.card(look, _scope_heading(tier))
+		card.name = "StakeholderScope_" + tier
 		for booster: Dictionary in in_tier:
-			rows.append(_organisation_row(booster))
+			card.get_node("Column").add_child(_organisation_row(booster))
+		rows.append(card)
+	return rows
 
-	_organisations_panel.open(Text.say("office.organisations"), rows)
+
+## A line of explanation on the frame's own ground (not inside a card), in the room's muted ink.
+func _ground_line(text: String, look: Dictionary) -> Label:
+	var line := UiKit.line(text, "SmallLabel")
+	line.custom_minimum_size.x = 0.0
+	line.add_theme_color_override("font_color", look["on_ground_muted"])
+	return line
 
 
 ## The heading over each scope of organization. The data value stays "Party"
@@ -1440,11 +1494,9 @@ func _organisation_row(booster: Dictionary) -> Control:
 	name_line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(name_line)
 	if change != 0:
-		var button := Button.new()
-		button.name = "StandingChange_" + booster_id
-		button.text = "%+d" % change
-		button.custom_minimum_size = Vector2(130, 72)
-		button.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		var button := OfficeFrameStyles.signed_button(OfficeFrameStyles.look(), "StandingChange_" + booster_id,
+			"%+d" % change, change)
+		button.pressed.connect(Haptics.confirm)
 		button.pressed.connect(_show_standing_factors.bind(booster))
 		top.add_child(button)
 	var box := UiKit.tight_column()
@@ -1456,8 +1508,11 @@ func _organisation_row(booster: Dictionary) -> Control:
 ## The reasons a stakeholder's standing moved last level, one per row.
 func _show_standing_factors(booster: Dictionary) -> void:
 	var booster_id := str(booster.get("booster_id", ""))
+	var now := int(GameState.booster_standing.get(booster_id, 50))
+	var change := int(GameState.last_booster_change.get(booster_id, 0))
 	_open_factors(str(booster.get("name_en", booster_id)),
-		GameState.last_booster_cause.get(booster_id, []), "")
+		GameState.last_booster_cause.get(booster_id, []), "",
+		Text.say("record.factors_standing", {"old": now - change, "new": now}))
 
 
 ## The reasons one of the four meta numbers moved last level, one per row, with
@@ -1468,12 +1523,15 @@ func _show_meta_factors(meta_name: String) -> void:
 
 ## The factors panel both buttons share. `meta_name` blank means a plain
 ## signed number; a meta name formats the amount the way that number is shown.
-func _open_factors(title_name: String, causes: Array, meta_name: String) -> void:
+func _open_factors(title_name: String, causes: Array, meta_name: String, lead: String = "") -> void:
 	if _standing_panel == null:
 		_standing_panel = Overlay.new()
 		_standing_panel.name = "StandingFactorsPanel"
 		add_child(_standing_panel)
 	var rows: Array[Control] = []
+	# An organization's pop-up starts with where its standing went (P13, 2026-11-20).
+	if not lead.is_empty():
+		rows.append(UiKit.line(lead, "HeaderLabel"))
 	if causes.is_empty():
 		rows.append(UiKit.line(Text.say("office.stakeholder_no_cause")))
 	for entry: Dictionary in causes:
@@ -1518,15 +1576,24 @@ func _with_booster_icon(booster_id: String, content: Control) -> Control:
 ## learn_offered_card()). Replaced the old "New cards" list, which let any
 ## card be bought outright for its XP price with no draw at all.
 func _show_rhetoric_training() -> void:
-	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("rhetoric.blurb")))
-	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
-	rows.append(UiKit.line(Text.say("office.funds",
-		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
+	_show_management_tab("rhetoric")
+
+
+## The Rhetoric Training tab: the blurb, then one card for each training session. (XP and Funds are chips now.)
+func _rhetoric_cards(look: Dictionary) -> Array[Control]:
+	var rows: Array[Control] = [_ground_line(Text.say("rhetoric.blurb"), look)]
 	for item: Dictionary in DataDB.shop:
 		if item.get("card_tier") != null:
-			rows.append(_training_row(item))
-	_cards_panel.open(Text.say("office.rhetoric_training"), rows)
+			var card := OfficeFrameStyles.card(look)
+			card.name = "TrainingCard_" + str(item.get("item_id", ""))
+			var row := _training_row(item)
+			card.get_node("Column").add_child(row)
+			var button := row.find_child("SeeCard", true, false) as Button
+			if button != null:
+				OfficeFrameStyles.dress_card_button(button, look, not button.disabled)
+				button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+			rows.append(card)
+	return rows
 
 
 func _training_row(item: Dictionary) -> Control:
@@ -1934,36 +2001,50 @@ func _build_record() -> void:
 ## mood from votes and rewards blended with how its stakeholder organisations
 ## feel. Your own party is tagged; every party is in its own official colour.
 func _show_parties() -> void:
-	var rows: Array[Control] = [UiKit.line(Text.say("party_opinion.blurb"), "SmallLabel")]
+	_show_reputation("parties")
+
+
+## The Parties tab (P13, 2026-11-20): the blurb, then one card per party with its opinion of you and the button that
+## opens its allies and rivals.
+func _party_cards(look: Dictionary) -> Array[Control]:
+	var rows: Array[Control] = [_ground_line(Text.say("party_opinion.blurb"), look)]
 	var own := GameState.own_party_id()
-	var names := BattleSetup.booster_names()
 	for party: Dictionary in DataDB.parties:
 		var party_id := str(party.get("party_id", ""))
 		var detail := GameState.party_opinion_detail(party_id)
-		var box := UiKit.tight_column()
+		var card := OfficeFrameStyles.card(look)
+		card.name = "PartyCard_" + party_id
+		var box := card.get_node("Column") as VBoxContainer
 		var title := str(party.get("name", party_id))
 		if party_id == own:
 			title += " " + Text.say("party_opinion.own_tag")
 		var heading := UiKit.heading(title)
+		heading.custom_minimum_size.x = 0.0
 		PartyLabel.apply(heading, party)
 		box.add_child(heading)
-		box.add_child(UiKit.line(Text.say("party_opinion.line", {
+		var opinion := UiKit.line(Text.say("party_opinion.line", {
 			"score": detail["opinion"],
 			"band": _band_word(str(detail["band"])),
-		})))
+		}))
+		opinion.custom_minimum_size.x = 0.0
+		box.add_child(opinion)
 		var held := int(detail["stakeholder"])
-		box.add_child(UiKit.line(Text.say("party_opinion.detail", {
+		var breakdown := UiKit.line(Text.say("party_opinion.detail", {
 			"direct": detail["direct"],
 			"stakeholder": "—" if held == PartyOpinion.NO_SCORE else str(held),
-		}), "SmallLabel"))
+		}), "SmallLabel")
+		breakdown.custom_minimum_size.x = 0.0
+		box.add_child(breakdown)
 		var view := Button.new()
 		view.name = "AlliesButton_" + party_id
 		view.text = Text.say("party_opinion.view_button")
-		view.custom_minimum_size = Vector2(0, 90)
+		view.custom_minimum_size = Vector2(0, OfficeFrameStyles.touch_height())
+		OfficeFrameStyles.dress_card_button(view, look)
+		view.pressed.connect(Haptics.confirm)
 		view.pressed.connect(_show_party_detail.bind(party_id))
 		box.add_child(view)
-		rows.append(box)
-	_parties_panel.open(Text.say("office.parties"), rows)
+		rows.append(card)
+	return rows
 
 
 ## The popup behind a party's "See allies and rivals" button: the
@@ -2042,10 +2123,19 @@ func _colour_bar(value: float, fill: Color) -> ProgressBar:
 ## bar in the colour of the player's own party: the two awareness meters (0-100)
 ## and each other input as its share of its own maximum. Names only, no numbers.
 func _show_election() -> void:
+	_show_reputation("election")
+
+
+## The Election tab: one card with the strength bar and each value that feeds it.
+func _election_cards(look: Dictionary) -> Array[Control]:
 	var colour := PartyDisplay.color_for(DataDB.get_party(str(DataDB.player.get("party", ""))))
-	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("election.bar_line")))
-	rows.append(_colour_bar(GameState.election_strength, CueBanner.EDGE_COLOUR))
+	var card := OfficeFrameStyles.card(look, Text.say("election.title"))
+	card.name = "ElectionCard"
+	var rows := card.get_node("Column") as VBoxContainer
+	var bar_line := UiKit.line(Text.say("election.bar_line"))
+	bar_line.custom_minimum_size.x = 0.0
+	rows.add_child(bar_line)
+	rows.add_child(_colour_bar(GameState.election_strength, CueBanner.EDGE_COLOUR))
 
 	var names := {
 		"district": Text.say("awareness.district"), "national": Text.say("awareness.national"),
@@ -2058,9 +2148,11 @@ func _show_election() -> void:
 		var caption := str(names[id])
 		if id == "district" or id == "national":
 			share = float(GameState.awareness.get(id, 0))
-		rows.append(UiKit.line(caption))
-		rows.append(_colour_bar(share, colour))
-	_election_panel.open(Text.say("election.title"), rows)
+		var line := UiKit.line(caption)
+		line.custom_minimum_size.x = 0.0
+		rows.add_child(line)
+		rows.add_child(_colour_bar(share, colour))
+	return [card]
 
 
 ## The word for an opinion band; each is its own Text row so it can be reworded.
@@ -2077,62 +2169,39 @@ func _band_word(band: String) -> String:
 ## tier (derived from the level tally at display time rather than kept as a
 ## third counter), and how many times each level has been cleared.
 func _show_record() -> void:
+	_show_reputation("overview")
+
+
+## The Overview tab (P13, 2026-11-20): the Resign box first while it is available, then the four numbers, the biggest
+## moves, the parties, the latest law and the levels cleared. Everything the old Your Record page showed is on this
+## tab or the Laws tab.
+func _overview_cards(look: Dictionary) -> Array[Control]:
 	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("record.pressure_line", {"name": _pressure_name(GameState.difficulty)})))
+	# Resign sits at the very top, and only while all three standings are far down (Balance "Resign: ..." rows,
+	# ResignRules). Cameron, 2026-11-20: it stays in Reputation and Results, as its own box.
+	if ResignRules.available(GameState.meta, DataDB.balance):
+		rows.append(ReputationView.resign_card(look, ResignScreen.button(_resign), Text.say("resign.hold_hint")))
+	var handlers := {"meta_factors": _show_meta_factors, "standing_factors": _show_standing_factors,
+		"open_law": _show_law, "tab": _show_reputation}
+	var model := ReputationModel.overview({"vote_word": _vote_word, "pressure_name": _pressure_name(GameState.difficulty)})
+	rows.append_array(ReputationView.overview_cards(model, handlers))
+	return rows
 
-	rows.append(UiKit.heading(Text.say("office.record_sanban_heading")))
-	for variable: Dictionary in DataDB.sanban:
-		var name := str(variable.get("name_en", ""))
-		# Party support is shown as the LIVE number the rules read (the blend of
-		# votes and stakeholders, GameState.party_support_effective()), not the
-		# stored half of it, so this page agrees with the Parties page.
-		var is_party := name == "Party support"
-		var shown: Variant = (GameState.party_support_effective()
-			if is_party else GameState.meta.get(name, 0))
-		var line := Text.say("new_game.stat_line", {"name": name, "value": Phrase.meta_amount(name, int(shown))})
-		# What moved this level is a button reading only the change, as on
-		# Important Stakeholders (2026-11-12, Cameron); pressing it lists the
-		# factors behind it, one per row. Commas and the 円 mark, as everywhere
-		# else (Cameron, 2026-10-31).
-		var change := (GameState.party_support_change_this_level()
-			if is_party else int(GameState.last_meta_change.get(name, 0)))
-		var stat_row := HBoxContainer.new()
-		stat_row.add_theme_constant_override("separation", 12)
-		var stat_line := UiKit.line(line)
-		stat_line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		# UiKit.line asks for a 760 px minimum, which leaves no room beside a
-		# wide "-115,820円" button; the line wraps instead.
-		stat_line.custom_minimum_size.x = 300.0
-		stat_row.add_child(stat_line)
-		if change != 0:
-			var change_button := Button.new()
-			change_button.name = "MetaChange_" + name.replace(" ", "_")
-			change_button.text = Phrase.meta_amount(name, change, true)
-			# Wide enough for "-115,820円" on one line (about 30 px a character; the Overlay turns wrapping on for every button, so the width is what keeps it on one line),
-			# and never wider than the row has room for.
-			change_button.custom_minimum_size = Vector2(maxf(130.0, 30.0 * change_button.text.length()), 72)
-			change_button.autowrap_mode = TextServer.AUTOWRAP_OFF
-			change_button.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-			change_button.pressed.connect(_show_meta_factors.bind(name))
-			stat_row.add_child(change_button)
-		rows.append(stat_row)
 
-	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))
-	if GameState.bills_flipped_by_influence.is_empty():
-		rows.append(UiKit.line(Text.say("office.record_bills_empty")))
-	else:
-		for bill_id: String in GameState.bills_flipped_by_influence:
-			var bill_name := str(DataDB.floor_votes.get(bill_id, {}).get("bill_name", bill_id))
-			rows.append(UiKit.line(bill_name))
-
-	# Legislative Work (2026-10-12, renamed 2026-11-05): every bill voted on,
-	# passed or failed. A bill an organization asked the player to carry says so
-	# in its own pop-up (_show_law), not in a section of its own.
-	rows.append(UiKit.heading(Text.say("office.record_statute_heading")))
+## The Laws tab: Legislative Work (every bill voted on, each opening its pop-up), then the bills your influence flipped.
+func _law_cards(look: Dictionary) -> Array[Control]:
+	var rows: Array[Control] = []
+	var statute := OfficeFrameStyles.card(look, Text.say("office.record_statute_heading"))
+	statute.name = "LawsCard"
+	var column := statute.get_node("Column") as VBoxContainer
 	if GameState.statute_book.is_empty():
-		rows.append(UiKit.line(Text.say("office.record_statute_empty")))
+		var empty := UiKit.line(Text.say("office.record_statute_empty"))
+		empty.custom_minimum_size.x = 0.0
+		column.add_child(empty)
 	else:
-		rows.append(UiKit.line(Text.say("record.law_tap_hint"), "SmallLabel"))
+		var hint := UiKit.line(Text.say("record.law_tap_hint"), "SmallLabel")
+		hint.custom_minimum_size.x = 0.0
+		column.add_child(hint)
 		for law: Dictionary in GameState.statute_book:
 			var law_id := str(law.get("bill_id", ""))
 			var button := UiKit.action_button(Text.say(_law_row_key(law), {
@@ -2141,34 +2210,23 @@ func _show_record() -> void:
 					"vote": _vote_word(str(law.get("player_vote", ""))),
 				}), "", _show_law.bind(law), 100.0)
 			button.name = "Law_" + law_id
-			rows.append(button)
-
-	rows.append(UiKit.heading(Text.say("office.record_tiers_heading")))
-	var tiers: Array = []
-	for level: Dictionary in DataDB.levels:
-		if not tiers.has(level.get("tier")):
-			tiers.append(level.get("tier"))
-	tiers.sort()
-	for tier: Variant in tiers:
-		var total := 0
-		for level: Dictionary in DataDB.levels:
-			if level.get("tier") == tier:
-				total += int(GameState.levels_cleared.get(str(level.get("level_id", "")), 0))
-		rows.append(UiKit.line(Text.say("office.record_tier_line", {"tier": int(tier), "count": total})))
-
-	rows.append(UiKit.heading(Text.say("office.record_levels_heading")))
-	var any_cleared := false
-	for level: Dictionary in DataDB.levels:
-		var level_id := str(level.get("level_id", ""))
-		var count := int(GameState.levels_cleared.get(level_id, 0))
-		if count > 0:
-			any_cleared = true
-			rows.append(UiKit.line(Text.say("office.record_level_line",
-				{"level": level.get("description", level_id), "count": count})))
-	if not any_cleared:
-		rows.append(UiKit.line(Text.say("office.record_levels_empty")))
-
-	_record_panel.open(Text.say("office.your_record"), rows)
+			OfficeFrameStyles.dress_card_button(button, look)
+			column.add_child(button)
+	rows.append(statute)
+	var flipped := OfficeFrameStyles.card(look, Text.say("office.record_bills_heading"))
+	flipped.name = "FlippedCard"
+	var flipped_column := flipped.get_node("Column") as VBoxContainer
+	if GameState.bills_flipped_by_influence.is_empty():
+		var none := UiKit.line(Text.say("office.record_bills_empty"))
+		none.custom_minimum_size.x = 0.0
+		flipped_column.add_child(none)
+	else:
+		for bill_id: String in GameState.bills_flipped_by_influence:
+			var line := UiKit.line(str(DataDB.floor_votes.get(bill_id, {}).get("bill_name", bill_id)))
+			line.custom_minimum_size.x = 0.0
+			flipped_column.add_child(line)
+	rows.append(flipped)
+	return rows
 
 
 ## One law in the statute book as a pop-up (2026-10-15): PASSED or FAILED,
@@ -2355,26 +2413,48 @@ func _resign() -> void:
 
 
 func _show_reputation_menu() -> void:
-	var rows: Array[Control] = [
-		_menu_button("OrganisationsButton", "office.organisations", _show_organisations,
-			_organisations_panel),
-		_menu_button("BackingButton", "office.backing", _show_backing, _backing_panel),
-		_menu_button("PartiesButton", "office.parties", _show_parties, _parties_panel),
-		_menu_button("ElectionButton", "election.title", _show_election, _election_panel),
-		_menu_button("RecordButton", "office.your_record", _show_record, _record_panel),
-	]
-	# Resign sits at the very top, and only while all three standings are far
-	# down (Balance "Resign: ..." rows, ResignRules).
-	if ResignRules.available(GameState.meta, DataDB.balance):
-		# Resigning is a hold (the screen darkens from the edges), so the button is followed by how it works.
-		rows.push_front(UiKit.line(Text.say("resign.hold_hint"), "SmallLabel"))
-		rows.push_front(ResignScreen.button(_resign))
-	_reputation_menu.open(Text.say("office.reputation_and_results"), rows)
+	_show_reputation("overview")
+
+
+## Reputation and Results on the Office frame (P13, 2026-11-20): one screen with tabs (Overview, Stakeholders, Backers,
+## Parties, Election, Laws) in place of the old menu of five buttons and the five panels they opened. The tab bodies
+## are the old panels' own rows, in cards; Overview is the new summary.
+func _show_reputation(tab: String) -> void:
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control]
+	match tab:
+		"stakeholders": rows = _stakeholder_cards(look)
+		"backers": rows = _backer_cards(look)
+		"parties": rows = _party_cards(look)
+		"election": rows = _election_cards(look)
+		"laws": rows = _law_cards(look)
+		_:
+			tab = "overview"
+			rows = _overview_cards(look)
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("office.reputation_and_results"),
+		"subtitle": Text.say("office.subtitle_jp_reputation"),
+		"chips": [Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}),
+			Text.say("office.xp", {"count": GameState.xp})],
+		"tabs": [
+			{"id": "overview", "text": Text.say("record.tab_overview")},
+			{"id": "stakeholders", "text": Text.say("record.tab_stakeholders")},
+			{"id": "backers", "text": Text.say("office.backing")},
+			{"id": "parties", "text": Text.say("office.parties")},
+			{"id": "election", "text": Text.say("record.tab_election")},
+			{"id": "laws", "text": Text.say("record.tab_laws")},
+		],
+		"active_tab": tab,
+		"rows": rows,
+	})
+	frame.tab_chosen.connect(_show_reputation)
+	_reputation_menu.open_frame(frame, Text.say("ui.back_office"))
 
 
 ## Campaign Pressure can be raised during a run, never lowered.
 func _raise_pressure_button() -> Button:
-	var next_tier := Difficulty.HARDER if GameState.difficulty == Difficulty.STANDARD else Difficulty.STANDARD
+	var next_tier := _next_pressure_tier()
 	var at_top := GameState.difficulty == Difficulty.HARDER
 	var button := UiKit.action_button(
 		Text.say("admin.raise_pressure", {"name": _pressure_name(next_tier)}),
@@ -2390,29 +2470,51 @@ func _raise_pressure_button() -> Button:
 
 
 func _show_administration_menu() -> void:
-	var rows: Array[Control] = [
-		_menu_button("CosmeticsButton", "office.cosmetics", _show_cosmetics, _cosmetics_panel),
-		_menu_button("HowToPlayButton", "office.how_to_play",
-			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
-		_menu_button("CharactersButton", "office.characters", _characters.open, _characters_panel),
-		_text_size_button(),
-		_image_scroll_button(),
-		_image_pan_button(),
-		_raise_pressure_button(),
-	]
-	# The save buttons sit directly in the menu's row list, so the gap between
-	# them is the same as between every other menu button.
-	rows.append_array(_backup_buttons())
-	# Starting over lives here, not in Office Management (Cameron,
-	# 2026-10-11). The menu closes first so it is not left open under the
-	# warning and the New Game screens.
-	rows.append(_menu_button("NewGameMenuButton", "office.new_game", func() -> void:
-		_administration_menu.close()
-		_confirm_new_game(), _new_game_panel))
-	# How to report a problem (2026-11-19): the two gestures, so testers know they exist.
-	for hint: String in Reporter.hint_lines():
-		rows.append(UiKit.line(hint, "SmallLabel"))
-	_administration_menu.open(Text.say("office.administration"), rows)
+	# The Office-screens frame (P13, 2026-11-20): the same controls, as grouped rows with their current value beside them.
+	# The old row list is replaced by AdministrationModel (what to show) and AdministrationView (how it is drawn).
+	var at_top := GameState.difficulty == Difficulty.HARDER
+	var actions := {
+		"redraw": _show_administration_menu,
+		"open_cosmetics": _open_over.bind(_show_cosmetics, _cosmetics_panel),
+		"open_how_to_play": _open_over.bind(HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
+		"open_characters": _open_over.bind(_characters.open, _characters_panel),
+		"backup_now": _on_backup_now,
+		"backup_restore": _confirm_backup_action.bind("restore"),
+		"backup_undo": _confirm_backup_action.bind("undo"),
+		# Starting over lives here, not in Office Management (Cameron, 2026-10-11). The menu closes first so it is not
+		# left open under the warning and the New Game screens.
+		"new_game": func() -> void:
+			_administration_menu.close()
+			_confirm_new_game(),
+		"pressure": {
+			"title": Text.say("new_game.pressure_heading"),
+			"now": Text.say("admin.pressure_now", {"name": _pressure_name(GameState.difficulty)}),
+			"blurb": _pressure_blurb(GameState.difficulty if at_top else _next_pressure_tier()),
+			"button": _raise_pressure_button(),
+		},
+	}
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("office.administration"),
+		"subtitle": Text.say("office.subtitle_jp_administration"),
+		# Cameron (2026-11-20): the mockup's "Saved" chip is always shown, as every button press saves.
+		"chips": [Text.say("save.saved")],
+		"rows": AdministrationView.cards(AdministrationModel.build(actions)),
+	})
+	_administration_menu.open_frame(frame, Text.say("ui.back_office"))
+
+
+## Runs `opener` (which opens `panel`) and then brings `panel` to the front. Panels are drawn in the order they were
+## added, and the menus were added after some of them, so without this the menu would sit on top of the very panel it
+## just opened (what _menu_button does for the other menus).
+func _open_over(opener: Callable, panel: Overlay) -> void:
+	opener.call()
+	move_child(panel, get_child_count() - 1)
+
+
+## The tier the Raise Political Pressure button would go to.
+func _next_pressure_tier() -> String:
+	return Difficulty.HARDER if GameState.difficulty == Difficulty.STANDARD else Difficulty.STANDARD
 
 
 ## One manual backup slot (2026-10-15): "Back up now" writes it; "Restore"
@@ -2715,58 +2817,42 @@ func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 ## tapping a held item still drills into its own detail view exactly as it
 ## always has.
 func _show_marketplace() -> void:
+	# The Office frame (P13, 2026-11-20): chips for Funds against the limit and XP, the same three tabs (Cameron,
+	# 2026-10-31), a "You have" card, and one card of the same shape for every item on offer. The old row builder is
+	# replaced by MarketModel (what to show) and MarketView (how it is drawn); buying is unchanged.
+	var look := OfficeFrameStyles.look()
 	var rows: Array[Control] = []
-	# Funds and the current Funds limit share the top line; the limit is read
-	# fresh every time the page is built, so buying a limit increase updates it.
-	var funds_line := UiKit.line(Text.say("shop.funds_limit", {
-		"yen_funds": int(GameState.meta.get("Funds", 0)), "yen_limit": GameState.funds_limit()}), "HeaderLabel")
-	funds_line.name = "MarketFunds"
-	# Two tabs at the very top (Cameron, 2026-10-31): Personal Inventory for
-	# items used in stages, levels or generally in the Office; Office
-	# Inventory for items only events use. Each filters both the held strip
-	# and the items for sale; the current one is shown pressed.
-	var tabs := HBoxContainer.new()
-	tabs.name = "MarketTabs"
-	tabs.alignment = BoxContainer.ALIGNMENT_CENTER
-	tabs.add_theme_constant_override("separation", 16)
-	for tab: Array in [[Items.PERSONAL, "PersonalTab", "shop.tab_personal"],
-			[Items.OFFICE_INVENTORY, "OfficeTab", "shop.tab_office"],
-			[STYLES_TAB, "StylesTab", "shop.tab_styles"]]:
-		var button := Button.new()
-		button.name = str(tab[1])
-		button.text = Text.say(str(tab[2]))
-		button.custom_minimum_size = Vector2(300, 100)
-		button.toggle_mode = true
-		button.button_pressed = _market_tab == str(tab[0])
-		button.pressed.connect(_on_market_tab.bind(str(tab[0])))
-		tabs.add_child(button)
-	rows.append(tabs)
-	rows.append(funds_line)
 	if _market_tab == STYLES_TAB:
-		rows.append_array(_styles_rows())
-		_inventory_panel.open(Text.say("shop.supplies"), rows)
-		return
-	# At the Funds limit (or above it), say what the limit does (panel P4, item 3; Cameron's wording).
-	if int(GameState.meta.get("Funds", 0)) >= GameState.funds_limit():
-		var limit_note := UiKit.line(Text.say("shop.funds_limit_note"), "SmallLabel")
-		limit_note.name = "MarketLimitNote"
-		rows.append(limit_note)
-	rows.append(UiKit.line(Text.say("shop.supplies_blurb" if _market_tab == Items.PERSONAL else "shop.office_blurb")))
-	rows.append_array(_inventory_panel.inventory_rows(_market_tab))
-	rows.append(UiKit.heading(Text.say("office.marketplace")))
-	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
-	for item: Dictionary in DataDB.shop:
-		# Card sessions live in Rhetoric Training, not here; an item marked
-		# "In Marketplace: No" (the Training Session Coupon) is only ever given.
-		if item.get("card_tier") == null and str(item.get("in_marketplace", "")).strip_edges().to_lower() != "no" \
-				and GameState.item_offered(item) \
-				and Items.inventory_tab(item) == _market_tab \
-				and not (Items.is_yes(item.get("unlocks_recruitment_tier")) and GameState.staff_recruitment_maxed()) \
-				and not (item.get("deck_size_increase") != null and GameState.deck_expansion_maxed()) \
-				and not (item.get("funds_cap_increase") != null and GameState.funds_cap_maxed()) \
-				and not (GameState.is_staff_slot_item(item) and GameState.staff_slots_maxed()):
-			rows.append(_supply_row(item))
-	_inventory_panel.open(Text.say("shop.supplies"), rows)
+		rows.append_array(_style_cards(look))
+	else:
+		# At the Funds limit (or above it), say what the limit does (panel P4, item 3; Cameron's wording).
+		if int(GameState.meta.get("Funds", 0)) >= GameState.funds_limit():
+			var note_card := OfficeFrameStyles.card(look)
+			var limit_note := UiKit.line(Text.say("shop.funds_limit_note"), "SmallLabel")
+			limit_note.name = "MarketLimitNote"
+			limit_note.custom_minimum_size.x = 0.0
+			note_card.get_node("Column").add_child(limit_note)
+			rows.append(note_card)
+		rows.append(_ground_line(Text.say("shop.supplies_blurb" if _market_tab == Items.PERSONAL else "shop.office_blurb"), look))
+		rows.append(MarketView.held_card(look, _inventory_panel.inventory_rows(_market_tab)))
+		for item: Dictionary in MarketModel.items(_market_tab, {"price_text": _price_text}):
+			rows.append(MarketView.item_card(look, item, _on_buy_item))
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("office.marketplace"),
+		"subtitle": Text.say("office.subtitle_jp_marketplace"),
+		"chips": MarketModel.chips(),
+		# The tabs keep their old node names, so a click test (and anything else) finds them as before.
+		"tabs": [
+			{"id": Items.PERSONAL, "node": "PersonalTab", "text": Text.say("shop.tab_personal")},
+			{"id": Items.OFFICE_INVENTORY, "node": "OfficeTab", "text": Text.say("shop.tab_office")},
+			{"id": STYLES_TAB, "node": "StylesTab", "text": Text.say("shop.tab_styles")},
+		],
+		"active_tab": _market_tab,
+		"rows": rows,
+	})
+	frame.tab_chosen.connect(_on_market_tab)
+	_inventory_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 ## The Marketplace's third tab (P9, 2026-11-17): one card per UI style with its state, and a
@@ -2774,30 +2860,38 @@ func _show_marketplace() -> void:
 const STYLES_TAB := "Styles"
 
 
-func _styles_rows() -> Array[Control]:
+func _style_cards(look: Dictionary) -> Array[Control]:
 	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("shop.styles_blurb")))
-	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
+	rows.append(_ground_line(Text.say("shop.styles_blurb"), look))
 	var in_use := UiStyle.current()
 	for style: String in UiStyles.ALL:
 		var package := UiStyles.package_for(style, DataDB.cosmetic_packages)
 		var package_id := str(package.get("package_id", ""))
+		var frame_card := OfficeFrameStyles.card(look)
 		var card := VBoxContainer.new()
 		card.name = "StyleCard_" + style
 		card.add_theme_constant_override("separation", 8)
+		frame_card.get_node("Column").add_child(card)
 		card.add_child(_style_swatch(style))
 		var is_living := style == UiStyles.LIVING_OFFICE
 		var name := Text.say("shop.style_living_name") if is_living else CosmeticPieces.field(package, "name_en")
-		card.add_child(UiKit.heading(name))
-		card.add_child(UiKit.line(Text.say("shop.style_living_desc") if is_living
-			else CosmeticPieces.field(package, "description"), "SmallLabel"))
+		var heading := UiKit.heading(name)
+		heading.custom_minimum_size.x = 0.0
+		card.add_child(heading)
+		var desc := UiKit.line(Text.say("shop.style_living_desc") if is_living
+			else CosmeticPieces.field(package, "description"), "SmallLabel")
+		desc.custom_minimum_size.x = 0.0
+		card.add_child(desc)
 		if style == in_use:
 			var state := UiKit.line(Text.say("shop.style_in_use") + (" · " + Text.say("shop.style_included") if is_living else ""))
 			state.name = "StyleState_" + style
+			state.custom_minimum_size.x = 0.0
 			card.add_child(state)
 		elif is_living or GameState.owned_cosmetic_packages.has(package_id):
 			var use := UiKit.action_button(Text.say("shop.style_use"), "", _on_use_style.bind(package_id))
 			use.name = "StyleUse_" + style
+			OfficeFrameStyles.dress_card_button(use, look)
+			use.custom_minimum_size.y = OfficeFrameStyles.touch_height()
 			card.add_child(use)
 		else:
 			var refusal := CosmeticPieces.buy_refusal(package, GameState.owned_cosmetic_packages, GameState.xp,
@@ -2805,9 +2899,12 @@ func _styles_rows() -> Array[Control]:
 			var unlock := UiKit.action_button(Text.say("shop.style_unlock", {"price": _price_text(package)}),
 				refusal, _on_buy_style.bind(package_id))
 			unlock.name = "StyleUnlock_" + style
+			OfficeFrameStyles.dress_card_button(unlock, look, refusal.is_empty())
+			unlock.custom_minimum_size.y = OfficeFrameStyles.touch_height()
 			card.add_child(unlock)
-		rows.append(card)
-	rows.append(UiKit.line(Text.say("shop.style_footer"), "SmallLabel"))
+		rows.append(frame_card)
+	var footer := _ground_line(Text.say("shop.style_footer"), look)
+	rows.append(footer)
 	return rows
 
 
@@ -3069,30 +3166,50 @@ func _show_card_look(card_id: String) -> void:
 ## nothing to decide.
 func _show_deck() -> void:
 	_draft_deck = GameState.deck.duplicate()
-	_build_deck_screen()
+	_show_management_tab("deck")
 
 
 func _build_deck_screen() -> void:
-	var size := GameState.deck_size()
-	var rows: Array[Control] = []
+	_show_management_tab("deck")
 
-	var refusal := Ledger.deck_refusal(_draft_deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
+
+## Why the deck being built cannot be taken in, or "".
+func _deck_refusal() -> String:
+	return Ledger.deck_refusal(_draft_deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
+
+
+## The Your Deck tab: how many are chosen, the hint, then the cards you own in one card (tap to pick or drop, View to look).
+func _deck_cards(look: Dictionary) -> Array[Control]:
+	var size := GameState.deck_size()
+	var refusal := _deck_refusal()
 	var warning := ("" if refusal.is_empty()
 		else Text.say("office.deck_warning_suffix", {"reason": refusal}))
-	rows.append(UiKit.line(Text.say("office.deck_chosen",
-		{"count": _draft_deck.size(), "size": size, "warning": warning}), "HeaderLabel"))
-	rows.append(UiKit.line(Text.say("office.deck_tap")))
-
+	var chosen := UiKit.line(Text.say("office.deck_chosen",
+		{"count": _draft_deck.size(), "size": size, "warning": warning}), "HeaderLabel")
+	chosen.custom_minimum_size.x = 0.0
+	chosen.add_theme_color_override("font_color", look["on_ground"])
+	var rows: Array[Control] = [chosen, _ground_line(Text.say("office.deck_tap"), look)]
+	var card := OfficeFrameStyles.card(look)
+	card.name = "DeckCard"
 	for card_id: String in GameState.owned_cards:
-		var card := DataDB.get_card(card_id)
-		if card.is_empty():
+		var data := DataDB.get_card(card_id)
+		if data.is_empty():
 			continue
-		rows.append(_deck_row(card, card_id))
+		card.get_node("Column").add_child(_deck_row(data, card_id))
+	rows.append(card)
+	return rows
 
-	# Confirmed rather than saved as you go: a half-built deck should not be
-	# able to become the deck you start a level with.
-	_deck_panel.open(Text.say("office.your_deck"), rows,
-		Text.say("office.deck_confirm") if refusal.is_empty() else "")
+
+## "Take these in", the fixed button under the Your Deck tab: only while the deck can be taken in. A half-built deck
+## never becomes the deck you start a level with (confirmed rather than saved as you go).
+func _deck_confirm_button() -> Button:
+	if not _deck_refusal().is_empty():
+		return null
+	var button := UiKit.action_button(Text.say("office.deck_confirm"), "", func() -> void:
+		_management_panel.close()
+		_on_deck_confirmed(), OfficeFrameStyles.touch_height())
+	button.name = "DeckConfirmButton"
+	return button
 
 
 func _deck_row(card: Dictionary, card_id: String) -> Control:
@@ -3159,10 +3276,16 @@ func _on_deck_confirmed() -> void:
 ## reason to — Cameron's decision, and the first thing standing has ever
 ## done. Pleasing a group at a press conference is what raises it.
 func _show_backing() -> void:
-	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("office.backing_blurb")))
-	rows.append(UiKit.line(Text.say("office.funds",
-		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
+	_show_reputation("backers")
+
+
+## The Backers tab (P13, 2026-11-20): the blurb, Funds, then one card per backing on offer.
+func _backer_cards(look: Dictionary) -> Array[Control]:
+	var rows: Array[Control] = [_ground_line(Text.say("office.backing_blurb"), look)]
+	var funds := UiKit.line(Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel")
+	funds.custom_minimum_size.x = 0.0
+	funds.add_theme_color_override("font_color", look["on_ground"])
+	rows.append(funds)
 
 	var names := BattleSetup.booster_names()
 	var stage_names := BattleSetup.stage_names()
@@ -3170,11 +3293,13 @@ func _show_backing() -> void:
 		func(m: Dictionary) -> bool: return Ledger.is_for_sale(m))
 
 	if for_sale.is_empty():
-		rows.append(UiKit.line(Text.say("office.nothing_for_sale")))
+		rows.append(_ground_line(Text.say("office.nothing_for_sale"), look))
 	for modifier: Dictionary in for_sale:
-		rows.append(_modifier_row(modifier, names, stage_names))
-
-	_backing_panel.open(Text.say("office.backing"), rows)
+		var card := OfficeFrameStyles.card(look)
+		card.name = "BackingCard_" + str(modifier.get("mod_id", ""))
+		card.get_node("Column").add_child(_modifier_row(modifier, names, stage_names))
+		rows.append(card)
+	return rows
 
 
 func _modifier_row(modifier: Dictionary, names: Dictionary, stage_names: Dictionary) -> Control:
@@ -3256,28 +3381,24 @@ func _on_buy_modifier(mod_id: String) -> void:
 ## be undone — see GameState.hire_staff()/upgrade_staff()/fire_staff() and
 ## design/proposals/staff_firing.md).
 func _show_staff() -> void:
+	_show_management_tab("staff")
+
+
+## The candidates for one open place (P13, 2026-11-20): today's candidate rows for the role, in a pop-up over the Staff tab.
+## Hiring, upgrading or firing refreshes the tab behind it and puts this pop-up away.
+func _show_staff_candidates(role: String) -> void:
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("office.staff_blurb") if GameState.staff_slots() <= 1
 		else Text.say("office.staff_blurb_places", {"places": GameState.staff_slots()})))
 	rows.append(UiKit.line(Text.say("office.funds",
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
-
-	for role: String in Ledger.staff_roles(DataDB.staff):
-		rows.append(UiKit.heading(role))
-		var members := GameState.staff_in_role(role)
-		if GameState.staff_slots() > 1:
-			rows.append(UiKit.line(Text.say("office.staff_role_places",
-				{"filled": members.size(), "places": GameState.staff_slots()}), "SmallLabel"))
-		for i in members.size():
-			rows.append(_staff_hired_row(role, members[i], i == 0 and GameState.staff_slots() > 1))
-		if members.size() < GameState.staff_slots():
-			for candidate: Dictionary in DataDB.get_staff_by_role(role):
-				# Someone who resigned never comes back (Cameron, 2026-11-16).
-				if GameState.hired_member(str(candidate.get("staff_id", ""))).is_empty() \
-						and not bool(GameState.staff_quit.get(str(candidate.get("staff_id", "")), false)):
-					rows.append(_staff_candidate_row(candidate))
-
-	_staff_panel.open(Text.say("office.staff"), rows)
+	for candidate: Dictionary in DataDB.get_staff_by_role(role):
+		# Someone who resigned never comes back (Cameron, 2026-11-16).
+		if GameState.hired_member(str(candidate.get("staff_id", ""))).is_empty() \
+				and not bool(GameState.staff_quit.get(str(candidate.get("staff_id", "")), false)):
+			rows.append(_staff_candidate_row(candidate))
+	_staff_panel.open(role, rows)
+	move_child(_staff_panel, get_child_count() - 1)
 
 
 ## One candidate for a vacant role: a button that opens their profile (what
@@ -3439,6 +3560,8 @@ func _show_staff_profile(staff_id: String) -> void:
 
 	_staff_profile_panel.top_aligned = true
 	_staff_profile_panel.open("", rows)
+	# Above the candidates pop-up or the management screen it was opened from.
+	move_child(_staff_profile_panel, get_child_count() - 1)
 
 
 ## The picture's box: the drawing fitted into STAFF_PORTRAIT_MAX with no

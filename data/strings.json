@@ -9203,5 +9203,313 @@
     "english": "You have no {mode} left.",
     "placeholders": "mode",
     "notes": "2026-11-20 two offices, slice 4 (Claude's draft)"
+  },
+  {
+    "key": "ui.back_office",
+    "where": "Office screens on the shared frame (P13) — the way out in the top bar",
+    "english": "‹ Office",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): the spec's back control. Claude's draft."
+  },
+  {
+    "key": "admin.group_display",
+    "where": "Administration — group heading",
+    "english": "Display",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.group_save",
+    "where": "Administration — group heading",
+    "english": "Save",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.group_help",
+    "where": "Administration — group heading",
+    "english": "Help",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.pressure_now",
+    "where": "Administration — Political Pressure box, the tier in force",
+    "english": "Now: {name}",
+    "placeholders": "name",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.label_text_size",
+    "where": "Administration — Display row label",
+    "english": "Text size",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.label_scroll_speed",
+    "where": "Administration — Display row label",
+    "english": "Scroll speed",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.label_image_scroll",
+    "where": "Administration — Display row label",
+    "english": "Image Scroll",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.label_image_pan",
+    "where": "Administration — Display row label",
+    "english": "Image Pan",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.chip_open",
+    "where": "Administration — value chip on a row that opens a page",
+    "english": "Open",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.chip_save",
+    "where": "Administration — value chip on the Save Game row",
+    "english": "Save",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.chip_load",
+    "where": "Administration — value chip on the Load Game row",
+    "english": "Load",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.chip_undo",
+    "where": "Administration — value chip on the Undo row",
+    "english": "Undo",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_administration",
+    "where": "Administration — the small Japanese accent under the title",
+    "english": "管理",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.tab_overview",
+    "where": "Reputation and Results — tab",
+    "english": "Overview",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.tab_stakeholders",
+    "where": "Reputation and Results — tab",
+    "english": "Stakeholders",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.tab_election",
+    "where": "Reputation and Results — tab",
+    "english": "Election",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.tab_laws",
+    "where": "Reputation and Results — tab",
+    "english": "Laws",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.biggest_moves",
+    "where": "Reputation and Results, Overview — heading of the three biggest standing changes",
+    "english": "Biggest moves last level",
+    "placeholders": null,
+    "notes": "P13: the spec said 'this week', but these changes are per level (GameState.last_booster_change resets each level), so the heading says so. Claude's draft."
+  },
+  {
+    "key": "record.tap_change_hint",
+    "where": "Reputation and Results, Overview — under the changes",
+    "english": "Tap a change to see what moved it.",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.factors_standing",
+    "where": "Reasons pop-up for an organization — first line",
+    "english": "Standing {old} → {new}",
+    "placeholders": "old, new",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.all_stakeholders",
+    "where": "Reputation and Results, Overview — link to the Stakeholders tab",
+    "english": "All {count} ›",
+    "placeholders": "count",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.all_laws",
+    "where": "Reputation and Results, Overview — link to the Laws tab",
+    "english": "All laws ›",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.all_parties",
+    "where": "Reputation and Results, Overview — link to the Parties tab",
+    "english": "All parties ›",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.resign_title",
+    "where": "Reputation and Results, Overview — heading of the Resign box",
+    "english": "Resign",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_reputation",
+    "where": "Reputation and Results — the small Japanese accent under the title",
+    "english": "評判と成績",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "shop.you_have",
+    "where": "Marketplace — heading of the strip of what you hold",
+    "english": "You have",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "shop.you_have_hint",
+    "where": "Marketplace — under the strip of what you hold",
+    "english": "Use from the Office or during a stage",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_marketplace",
+    "where": "Marketplace — the small Japanese accent under the title",
+    "english": "市場",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.wages_week",
+    "where": "Office Management, Staff — summary: what the staff cost each week",
+    "english": "Wages this week",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.places_per_role",
+    "where": "Office Management, Staff — summary: how many people each role holds",
+    "english": "Places per role",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.staff_second_tag",
+    "where": "Office Management, Staff — tag on the second person in a role",
+    "english": "Second",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.staff_third_tag",
+    "where": "Office Management, Staff — tag on the third person in a role",
+    "english": "Third",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.hire_slot",
+    "where": "Office Management, Staff — the row that opens the candidates for an open place",
+    "english": "+ Hire a {role}",
+    "placeholders": "role",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.open_place",
+    "where": "Office Management, Staff — shown on a row for an open place",
+    "english": "Open place",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_management",
+    "where": "Office Management — the small Japanese accent under the title",
+    "english": "事務所の管理",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.staff_count_of",
+    "where": "Office Management, Staff — summary tile: people hired of all places",
+    "english": "{count} of {total}",
+    "placeholders": "count, total",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.tab_here",
+    "where": "Events — tab",
+    "english": "Arrange here",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.tab_coming",
+    "where": "Events — tab",
+    "english": "Coming up",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.decision_banner",
+    "where": "Events — the red banner for a dated event coming up (its kind tag)",
+    "english": "DECISION! · COMING UP",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.decision_moves_you",
+    "where": "Events — banner line when the dated event is at the other office",
+    "english": "Your staff will move you to {place} for this.",
+    "placeholders": "place",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.coming_none",
+    "where": "Events, Coming up tab — nothing scheduled",
+    "english": "Nothing is scheduled for the next few days.",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.coming_meta",
+    "where": "Events — the day, office and hours of a dated event",
+    "english": "{day} · {office} · {hours} h",
+    "placeholders": "day, office, hours",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_events",
+    "where": "Events — the small Japanese accent under the title",
+    "english": "行事",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
   }
 ]

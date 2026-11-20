@@ -57,7 +57,10 @@ func _walk() -> void:
 	GameState.xp = 77
 	await _click(office.find_child("AdministrationButton", true, false) as Control)
 	var administration := office.get_node("AdministrationMenuPanel") as Overlay
-	var new_game := _button_with_text(administration, Text.say("office.new_game"))
+	# The Administration rows (P13, 2026-11-20) keep their node names; the text is a label inside the row.
+	var new_game := administration.find_child("NewGameMenuButton", true, false) as Button
+	if new_game != null and (new_game.find_child("RowLabel", true, false) as Label).text != Text.say("office.new_game"):
+		new_game = null
 	if new_game == null:
 		_failures.append("the Administration menu has no New game button")
 		return

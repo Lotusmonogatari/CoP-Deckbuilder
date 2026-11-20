@@ -145,6 +145,22 @@ static func due_dated(events: Array, today: int, done: Array) -> Array:
 	return found
 
 
+## The dated events coming up (P13, 2026-11-20): not yet played, dated after today and within `days_ahead` days, the
+## earliest first. These are the Decision! banner and the Events screen's Coming up tab; an event that is due today or
+## past is `due_dated`'s, not this one's.
+static func upcoming_dated(events: Array, today: int, days_ahead: int, done: Array) -> Array:
+	var found: Array = []
+	for event: Dictionary in events:
+		if str(event.get("trigger", "")) != "Dated" or done.has(str(event.get("event_id", ""))):
+			continue
+		var when := WeekCalendar.parse_date(str(event.get("on_date", "")))
+		if when > today and when <= today + days_ahead:
+			found.append(event)
+	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return WeekCalendar.parse_date(str(a["on_date"])) < WeekCalendar.parse_date(str(b["on_date"])))
+	return found
+
+
 ## The character an event is about: the first opponent whose Title (a
 ## "; "-separated list) names `speaker_title`. {} when none does or none is asked for.
 static func speaker(opponents: Array, speaker_title: String) -> Dictionary:

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Administration</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/e353844e6561de256f5a4d71a2401348') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <sc-for list="{{groups}}" as="g" hint-placeholder-count="4">
+      <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 4px 12px; display: flex; flex-direction: column">
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; padding: 8px 0 4px 0">{{g.title}}</h2>
+        <sc-for list="{{g.rows}}" as="r" hint-placeholder-count="3">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 44px; border-top: 1px solid {{t.divider}}">
+            <span style="font-size: 13px">{{r.label}}</span>
+            <span style="flex: 0 0 auto; padding: 4px 10px; font-size: 12px; font-weight: 700; background: {{t.tile}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}">{{r.value}}</span>
+          </div>
+        </sc-for>
+      </section>
+    </sc-for>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Political Pressure</h2><span style="font-size: 12px; font-weight: 700">Now: Standard</span></div>
+      <span style="font-size: 12px; line-height: 1.4; color: {{t.muted}}">Tighter fights, 15% less pay, pricier items, heavier dues, and faster-fading standing.</span>
+      <button style="min-height: 44px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.ink}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">Raise Political Pressure to Harder (cannot be undone)</button>
+    </section>
+    <section style="border: 2px solid {{t.bad}}; border-radius: {{t.r}}; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; background: {{t.warnBg}}; color: {{t.warnInk}}">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Resign</h2>
+      <span style="font-size: 12px; line-height: 1.4">Shows only while all three standings are far down. Hold the button for 5 seconds; the screen darkens from the edges.</span>
+      <button style="min-height: 44px; font-size: 14px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.warnInk}}; border: 2px solid {{t.bad}}; border-radius: {{t.pill}}; font-family: {{t.body}}">Hold to resign</button>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"state":{"editor":"enum","options":["list","factors"],"default":"list"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.22)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', good:'#2F6B3A', bad:'#A42A17', tabBg:'#F8F1E3', tabInk:'#1C1A17', tabEdge:'#1C1A17', tabOnBg:'#22305A', tabOnInk:'#F8F1E3', barTrack:'#E2D6BF', barFill:'#22305A', jp:'#6B5F50', warnBg:'#F6DDD3', warnInk:'#7A1E10' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', good:'#2E6B34', bad:'#A3261A', tabBg:'transparent', tabInk:'#E8DAC3', tabEdge:'rgba(255,248,236,.3)', tabOnBg:'#FFD58A', tabOnInk:'#2B1D12', barTrack:'#EADBC0', barFill:'#9A6413', jp:'#D9C8AC', warnBg:'#F8DDD6', warnInk:'#7A1E10' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'29px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.22)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', good:'#7BD88F', bad:'#FF8A80', tabBg:'transparent', tabInk:'#C3C9D6', tabEdge:'rgba(227,179,65,.45)', tabOnBg:'#E3B341', tabOnInk:'#0B1220', barTrack:'#22304D', barFill:'#E3B341', jp:'#9AA3B5', warnBg:'#3A1F27', warnInk:'#FFB4AB' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    const t = T[key];
+    const tabs = (labels, on) => labels.map((l) => ({ label: l, bg: l === on ? t.tabOnBg : t.tabBg, ink: l === on ? t.tabOnInk : t.tabInk, edge: l === on ? t.tabOnBg : t.tabEdge }));
+    return {
+      t, chips: ['Saved'], title: 'Administration', jp: '管理',
+      tabs: [],
+      groups: [
+        { title: 'Display', rows: [ { label: 'Text size', value: 'Normal' }, { label: 'Scroll speed', value: '3' }, { label: 'Image Scroll', value: 'On' }, { label: 'Image Pan', value: 'On' } ] },
+        { title: 'Appearance and Music', rows: [ { label: 'Office Background', value: 'Woodblock' }, { label: 'Music', value: 'Default' }, { label: 'Calendar', value: 'Era Name Calendar' } ] },
+        { title: 'Save', rows: [ { label: 'Save Game', value: 'Save' }, { label: 'Load Game', value: 'Today · LV11' }, { label: 'New game', value: 'Start over…' } ] },
+        { title: 'Help', rows: [ { label: 'How to Play', value: 'Open' }, { label: 'Characters', value: 'Open' }, { label: 'Report a problem', value: 'Hold 3 fingers' } ] }
+      ]
+    };
+
+  }
+}
+</script>
+</body>
+</html>

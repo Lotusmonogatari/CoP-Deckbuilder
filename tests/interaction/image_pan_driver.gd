@@ -20,6 +20,12 @@ func _ready() -> void:
 	_run.call_deferred()
 
 
+## The value chip on an Administration row ("On", "Off").
+func _value_of(row: Button) -> String:
+	var chip := row.find_child("RowValue", true, false) as Label
+	return chip.text if chip != null else ""
+
+
 func _run() -> void:
 	_scroll_before = Layout.image_scroll_enabled
 	_pan_before = Layout.image_pan_enabled
@@ -61,16 +67,15 @@ func _run() -> void:
 	_expect(scroll_button != null and pan_button != null, "Administration shows both switches")
 	if scroll_button == null or pan_button == null:
 		return _finish()
-	_expect(scroll_button.text == Text.say("office.image_scroll", {"state": Text.say("settings.on")}),
-		"Image Scroll reads On")
+	# The Administration rows (P13, 2026-11-20) show the value as a chip beside the label.
+	_expect(_value_of(scroll_button) == Text.say("settings.on"), "Image Scroll reads On")
 	await _click(scroll_button)
 	_expect(not Layout.image_scroll_enabled, "tapping Image Scroll turns it off")
 	pan_button = office.find_child("ImagePanButton", true, false) as Button
 	await _click(pan_button)
 	_expect(not Layout.image_pan_enabled, "tapping Image Pan turns it off")
 	pan_button = office.find_child("ImagePanButton", true, false) as Button
-	_expect(pan_button.text == Text.say("office.image_pan", {"state": Text.say("settings.off")}),
-		"Image Pan reads Off")
+	_expect(_value_of(pan_button) == Text.say("settings.off"), "Image Pan reads Off")
 	(office.get_node("AdministrationMenuPanel") as Overlay).close()
 
 	picture = await _open_event(office)

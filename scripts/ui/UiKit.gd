@@ -10,6 +10,9 @@ extends RefCounted
 ## Wide enough to wrap inside an Overlay's content column.
 const LINE_WIDTH := 760.0
 
+## Set on a Label (set_meta) that must stay on one line: wrap_all leaves it alone.
+const ONE_LINE_META := "one_line"
+
 
 ## A line that wraps rather than running off the screen.
 static func line(text: String, variation: String = "") -> Label:
@@ -42,6 +45,9 @@ static func wrap_all(root: Node) -> void:
 		# A card draws its own text to fit its own boxes; wrapping those
 		# labels pushed a card's name out of its one-line bar.
 		if _inside_card(node, root):
+			continue
+		# A label that must stay on one line (a value chip) says so, and is left alone (P13, 2026-11-20).
+		if node.has_meta(ONE_LINE_META):
 			continue
 		if node is Label:
 			var label := node as Label

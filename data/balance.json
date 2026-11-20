@@ -357,5 +357,6 @@
   "travel_swipe_commit_percent": 60,
   "travel_promise_warning_hours": 12,
   "travel_encounter_one_in": 8,
+  "events_coming_up_days": 7,
   "xp_tiers": {}
 }

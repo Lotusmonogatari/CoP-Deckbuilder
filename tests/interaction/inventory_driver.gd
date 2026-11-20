@@ -71,7 +71,10 @@ func _walk() -> void:
 
 	# A long list is dragged, not hunted through: a drag that starts on a Buy
 	# button scrolls the shop and buys nothing.
-	var scroll := supplies.get_node("Margin/Scroll") as ScrollContainer
+	# The Marketplace's list scrolls inside the Office frame (P13, 2026-11-20), not the panel's own scroll area.
+	var scroll := supplies.find_child("FrameScroll", true, false) as ScrollContainer
+	if scroll == null:
+		scroll = supplies.get_node("Margin/Scroll") as ScrollContainer
 	var funds_before := int(GameState.meta.get("Funds", 0))
 	scroll.scroll_vertical = 0
 	await get_tree().process_frame

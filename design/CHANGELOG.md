@@ -1554,3 +1554,18 @@ The trip button became **a train on a track**. The words (where, how long, by wh
 ## 2026-11-20: The trip strip's train is kept as the main icon
 
 Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keeps it as the main icon for now. So `TRAIN_STRIP` is no longer a picture to draw: the art list (`design/ART_ASSETS_TWO_OFFICES_2026-11-20.xlsx`) shows it as a grey Deferred row, the start-up guide and prompt no longer list it, and the comment in `TravelStrip.gd` says the code-drawn train is the icon. No behavior changed.
+
+## 2026-11-20: P13, the Office screens on one frame (branch `panel/p13-office-screens`, not merged)
+
+| Part | What changed |
+|---|---|
+| One frame | `OfficeScreenFrame` and `OfficeFrameStyles`: back control and chips, title with its Japanese accent, wrapping tabs, a scrolling column of cards, an optional fixed button; drawn in Woodblock, Living Office and Broadcast from the UI Styles tab (six new colours, `frame_up` and `frame_down`). It lives inside the panel (`Overlay.open_frame`), so the way out is unchanged. |
+| Administration | Four grouped cards and a Political Pressure box (`AdministrationModel`, `AdministrationView`); a Scroll speed row and a "Saved" chip (Cameron). |
+| Reputation and Results | Six tabs; a new Overview; Resign at its top (Cameron); every change a button showing only the signed number, the reasons only in the pop-up (`ReputationOverview`, `ReputationModel`, `ReputationView`). Your Record is folded into the Overview and the Laws tab. |
+| Marketplace | Chips, the three tabs under their old names, a "You have" card, one card shape; the reason as a red line with a greyed button (`MarketModel`, `MarketView`). |
+| Office Management | Tabs Staff, Your deck, Rhetoric Training; a card for every hired person, a dashed row for every open place, Staff Assignments fixed (`StaffRosterModel`, `StaffRosterView`, `DashedFrame`). |
+| Events | Two tabs, a Decision! banner with no price or button, location badges, reasons in red (`EventsModel`, `EventsView`); `EventEngine.upcoming_dated` and the Balance number Events Coming Up Days (7). |
+| Text and data | About 60 draft Text rows (the report lists which were not in the approved list), 6 UI Styles rows, 1 Balance row. |
+| Tests | 80 new unit tests across seven files; the office menus, staff profile, shop items, inventory, how to play, new game, event and party plate click tests were updated on purpose (each change is named in the report). The text sweep passes in all three styles at three sizes. |
+| Found, not fixed | A staff wage prints without a thousands comma ("6000円", an old row); the Resign button's black-on-crimson text is about 3.6:1; EV47's decision pop-up and the other pop-ups are still the old panels (P14). |
+| Where | Report with before-and-after pictures: `design/review/p13_office_screens_2026-11-20/REPORT.md`; plan: `design/proposals/P13_PLAN_2026-11-20.md`; roadmap: `design/proposals/P13_P14_ROADMAP_2026-11-20.md`. |

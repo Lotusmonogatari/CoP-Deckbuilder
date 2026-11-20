@@ -30,13 +30,18 @@ func _run() -> void:
 
 	await _click(office.get_node("%ManagementButton"))
 	var management := office.get_node("%ManagementPanel") as Overlay
-	await _click(_button_with_text(management, Text.say("office.staff")))
+	# Office Management opens on its Staff tab (P13, 2026-11-20); an open place's dashed row opens that role's candidates.
+	var candidate := DataDB.get_staff(CANDIDATE)
+	var hire_row := management.find_child("HireSlot_%s_0" % str(candidate.get("role", "")).replace(" ", "_"), true, false) as Button
+	if hire_row == null:
+		_failures.append("the Staff tab has no open place for %s's role" % CANDIDATE)
+		return _finish()
+	await _click(hire_row)
 	var staff := office.get_node("%StaffPanel") as Overlay
 	if not staff.visible:
-		_failures.append("the Staff screen did not open")
+		_failures.append("an open place did not open the candidates")
 		return _finish()
 
-	var candidate := DataDB.get_staff(CANDIDATE)
 	var opener := staff.find_child("Profile_" + CANDIDATE, true, false) as Button
 	if opener == null:
 		_failures.append("the Staff list has no profile button for %s" % CANDIDATE)
@@ -67,7 +72,8 @@ func _run() -> void:
 	print("  Hire on the profile hired them and closed it")
 
 	# The hired person's own profile: current tier marked, Upgrade and Fire.
-	var hired_opener := staff.find_child("Profile_" + CANDIDATE, true, false) as Button
+	# The hired person has their own card on the Staff tab now; the candidates pop-up was put away with the hire.
+	var hired_opener := management.find_child("Profile_" + CANDIDATE, true, false) as Button
 	if hired_opener == null:
 		_failures.append("the hired person has no profile button in the list")
 		return _finish()
@@ -83,7 +89,7 @@ func _run() -> void:
 		return _finish()
 	print("  Upgrade on the profile reached the next tier")
 
-	await _click(staff.find_child("Profile_" + CANDIDATE, true, false) as Button)
+	await _click(management.find_child("Profile_" + CANDIDATE, true, false) as Button)
 	var fire := profile.find_child("ProfileFireButton", true, false) as Button
 	if fire == null or fire.disabled:
 		_failures.append("the hired profile has no usable Fire button")

@@ -98,8 +98,10 @@ func _from_the_office() -> void:
 	if button == null:
 		_failures.append("the Office has no How to Play button")
 		return
-	if button.text != Text.say("office.how_to_play"):
-		_failures.append("the Office's button reads '%s'" % button.text)
+	# The Administration rows (P13, 2026-11-20) draw the name as a label inside the row.
+	var row_label := button.find_child("RowLabel", true, false) as Label
+	if row_label == null or row_label.text != Text.say("office.how_to_play"):
+		_failures.append("the Office's button reads '%s'" % (row_label.text if row_label != null else ""))
 	print("  the Office has a How to Play button")
 
 	await _click(button)

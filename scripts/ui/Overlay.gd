@@ -60,6 +60,12 @@ const COLUMN_WIDTH := 1000.0
 var _title: Label
 var _back: Button
 var _confirm: Button
+## The panel's own box, kept so the Office frame can recolour it and give it back (P13, 2026-11-20).
+var _backdrop: StyleBoxFlat
+## The Office frame being shown (open_frame), or null. While it is up the plain column is hidden.
+var _frame: OfficeScreenFrame
+## The theme the panel carried before a frame took over (the plates behind labels), put back afterwards.
+var _plain_theme: Theme
 
 ## Where a press outside the content began, or null. A tap outside closes
 ## the panel on the finger lifting, not landing, so a drag that starts in the
@@ -85,6 +91,7 @@ func _build() -> void:
 
 	var box := StyleBoxFlat.new()
 	box.bg_color = BACKDROP
+	_backdrop = box
 	add_theme_stylebox_override("panel", box)
 	# The scrolling-screen picture goes behind the content (Cameron, 2026-11-13).
 	BaseImage.install_behind_panel(self)
@@ -159,6 +166,7 @@ func _build() -> void:
 func open(heading: String, rows: Array[Control], confirm_text: String = "",
 		back_text: String = "", confirm_enabled: bool = true) -> void:
 	_build()
+	_leave_frame()
 	_title.text = heading
 	# A panel with no heading (the staff profile) shows no empty bar.
 	_title.visible = not heading.is_empty()
@@ -189,6 +197,53 @@ func open(heading: String, rows: Array[Control], confirm_text: String = "",
 		_pin_to_top.call_deferred()
 
 
+## Opens it as an Office screen on the shared frame (P13, 2026-11-20). The frame takes the whole panel, and this
+## panel's own Back button moves into its top bar as the "‹ Office" control, so Back, the escape key and the way
+## out are exactly what they were. Opening anything else with `open` puts the plain column and Back back.
+func open_frame(frame: OfficeScreenFrame, back_text: String) -> void:
+	_build()
+	_leave_frame()
+	var margin := get_node("Margin") as Control
+	margin.hide()
+	_backdrop.bg_color = OfficeFrameStyles.look()["ground"]
+	var picture := get_node_or_null("BaseImage") as Control
+	if picture != null:
+		picture.hide()
+	# The plates that BaseImage puts behind every label would show as dark blocks on a card.
+	_plain_theme = theme
+	theme = null
+	add_child(frame)
+	frame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	frame.attach_back(_back, back_text)
+	_back.visible = show_back
+	_frame = frame
+	show()
+
+
+## Takes the frame down and gives the plain column its Back button, backdrop and theme again.
+func _leave_frame() -> void:
+	if _frame == null:
+		return
+	if _back.get_parent() != _body:
+		_back.get_parent().remove_child(_back)
+		_body.add_child(_back)
+	OfficeFrameStyles.undress_back(_back)
+	remove_child(_frame)
+	_frame.queue_free()
+	_frame = null
+	(get_node("Margin") as Control).show()
+	_backdrop.bg_color = BACKDROP
+	theme = _plain_theme
+	var picture := get_node_or_null("BaseImage") as Control
+	if picture != null:
+		picture.show()
+
+
+## True while an Office frame is showing.
+func has_frame() -> bool:
+	return _frame != null
+
+
 func _pin_to_top() -> void:
 	var scroll := _body.get_parent().get_parent() as ScrollContainer
 	if scroll != null and visible:
@@ -212,6 +267,8 @@ func close() -> void:
 ## The content's own rectangle, so a caller can tell a tap on the dimmed
 ## surround from a tap on the panel itself.
 func content_rect() -> Rect2:
+	if _frame != null:
+		return _frame.get_global_rect()
 	return _body.get_global_rect() if _body != null else Rect2()
 
 

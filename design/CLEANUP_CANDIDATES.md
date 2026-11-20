@@ -163,3 +163,15 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 - Text rows the exporter says nothing asks for: `assign.already_theirs`, `assign.family_max`, `assign.give_to`, `assign.item_caption`, `assign.item_caption_one`, `assign.max_line`, `assign.outcome_line`, `assign.refuse_blocks`, `assign.refuse_locked`, `assign.take_back`, `assign.tile_nothing`, `assign.why_line`, `brand.hook`, `intro.title`, `pressure.pick`, `pressure.picked`.
 - Working-paper folders from finished, merged panels, about 210 MB in `design/review/` and 16 MB in `design/proposals/img/`: `director_shots_2026-11-17` (78 MB), `p3_text_sweep_2026-11-17` (40 MB), `p2_card_faces_2026-11-17` (32 MB), `p4_information_2026-11-17` (30 MB), `p9_ui_styles_2026-11-17` (16 MB), `p12_level_preview_2026-11-19` (7 MB), `hand_third_overlap`, `card_play_spot`, `p10_brand_b`, `card_overlap`, `report_2026-11-19`, `level_bonus_*`, `resign_hold`, and the mockups under `design/proposals/img/`. They are evidence screenshots for work already merged; they were not on the list, so they were left for Cameron's word.
 - The remote branch `review/p11-two-offices-audit` (the audit, deliberately not merged).
+
+## P13 Office screens (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen._text_size_button()`, `_image_scroll_button()`, `_image_pan_button()`, `_backup_buttons()` | The Administration screen is now drawn by `AdministrationModel` and `AdministrationView`; nothing calls these four any more. (`SettingsRows`, which the stage menu still uses, is unchanged.) |
+| The scene's `OrganisationsPanel`, `BackingPanel` and the code-built `RecordPanel`, `ElectionPanel`, `PartiesPanel`, and `OfficeScreen._menu_button()` | Reputation and Results is now one tabbed screen on the frame; these five panels and the helper that built the menu rows are no longer opened by anything (the Parties allies pop-up, the law pop-up and the factors pop-up are still used). |
+| Text rows `office.your_record`, `office.organisations` | The tabs use their own names; check the exporter's "nothing asks for it" list after P13. |
+| `OfficeScreen._supply_row()` | The Marketplace's cards are drawn by `MarketView` from `MarketModel`; nothing calls the old row builder. |
+| `OfficeScreen._staff_hired_row()`, `_menu_button()`, and the scene's `%CardsPanel`, `%DeckPanel` | Office Management is one tabbed screen in `ManagementPanel`; the hired-person row, the menu-row helper and the two panels (the deck and training bodies now live in the management frame) are no longer opened by anything. `_deck_panel.confirmed` is still connected but nothing emits it. |
+| Text rows `office.staff_blurb`'s old use, `office.deck_count` as a heading | Still used (the candidates pop-up and the chip); listed only so they are checked after P13. |
+| Text row `event.list_title`'s old heading use | Still used as the title; listed so it is checked after P13. The old list built its row title and button in `_show_events_list`; that code is gone (nothing to delete). |
