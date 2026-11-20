@@ -25,6 +25,7 @@ func _run() -> void:
 		await _open_office()
 		await _trip(style)
 		await _promise(style)
+		await _tickets(style)
 	UiStyle.trying = ""
 	UiStyle.sync()
 	print("")
@@ -199,6 +200,88 @@ func _promise(style: String) -> void:
 	(office.get("_promises_panel") as Overlay).close()
 	GameState.promises = []
 	GameState.office_location = Offices.CAPITOL
+
+
+## Tickets (slice 4): the mode row appears when the player holds one, a paid ticket is pulled like the pass and pleases three
+## organizations, a plane is instant (its own confirm), a mixed level's briefing has a row to pay for its trips, and a trip can
+## bring an encounter on the train.
+func _tickets(style: String) -> void:
+	var where := "in %s: " % style
+	var office := _screen()
+	GameState.office_location = Offices.CAPITOL
+	GameState.calendar = WeekCalendar.fresh()
+	GameState.inventory = {}
+	office.call("_refresh_calendar")
+	_expect(not (office.get("_travel_modes_row") as Control).visible, where + "with no ticket there is no row of modes")
+	GameState.add_item("SH42")
+	GameState.add_item("SH44")
+	GameState.add_item("SH44")
+	office.call("_refresh_calendar")
+	var row := office.get("_travel_modes_row") as Control
+	_expect(row.visible and row.get_child_count() == 3, where + "with tickets the modes are shown")
+	var strip := office.find_child("TravelButton", true, false) as TravelStrip
+	var standing := int(GameState.booster_standing.get("BO14", 0))
+	(row.find_child("TravelMode_ticket", true, false) as Button).pressed.emit()
+	await get_tree().process_frame
+	_expect(strip.text == "To Noheji · 7 h · Paid train ticket", where + "the strip is set to the ticket (%s)" % strip.text)
+	await _drag(strip, 0.9)
+	_expect(GameState.office_location == Offices.DISTRICT and GameState.item_count("SH42") == 0, where + "the ticket was handed over")
+	_expect(int(GameState.booster_standing.get("BO14", 0)) == standing + 2, where + "and the Commuter Committee noticed")
+	# A plane: the confirm names the cost, then the trip is instant.
+	office.call("_refresh_calendar")
+	var plane := row.find_child("TravelMode_plane", true, false) as Button
+	_expect(plane != null and plane.text == "Plane ticket · 2 h · 2 left", where + "the plane button says its hours and tickets (%s)" % [plane.text if plane != null else "none"])
+	plane.pressed.emit()
+	await get_tree().create_timer(0.3).timeout
+	var panel := office.get_node("TravelPanel") as Overlay
+	_expect(_texts(panel).has("Go to the Capitol: 2 h by plane ticket. Uses one plane ticket."), where + "the plane's confirm (%s)" % [_texts(panel)])
+	var go := _find_button(panel, "Take the trip")
+	go.pressed.emit()
+	await get_tree().create_timer(0.4).timeout
+	_expect(GameState.office_location == Offices.CAPITOL and GameState.item_count("SH44") == 1, where + "the plane took the player to the Capitol and used one ticket")
+
+	# A mixed level's briefing: a row of ways to pay for the trips, and the hours follow the choice.
+	GameState.calendar = WeekCalendar.fresh()
+	GameState.add_item("SH44")   # two plane tickets: one for each trip
+	var briefing := await _brief("LV10")
+	var modes := briefing.find_child("TravelModes", true, false)
+	_expect(modes != null, where + "LV10's briefing has the row of travel modes")
+	var go_in := briefing.find_child("Confirm", true, false) as Button
+	_expect(go_in != null and go_in.disabled, where + "by rail pass LV10 is too long for the week (%s)" % [go_in.text if go_in != null else "none"])
+	var by_plane := briefing.find_child("TravelMode_plane", true, false) as Button
+	_expect(by_plane != null and by_plane.text == "Plane ticket · 4 h" and not by_plane.disabled, where + "the plane row says 4 h")
+	by_plane.pressed.emit()
+	await get_tree().create_timer(0.5).timeout
+	briefing = office.get_node("BriefingPanel") as LevelBriefingPanel
+	go_in = briefing.find_child("Confirm", true, false) as Button
+	_expect(go_in != null and not go_in.disabled and go_in.text == "Go in · 31 hours", where + "by plane the briefing says 31 hours and Go in is open (%s)" % [go_in.text if go_in != null else "none"])
+	briefing.close()
+	await get_tree().process_frame
+
+	# An encounter: a trip brings one, and it is shown as an event.
+	OS.unset_environment("COP_NO_RANDOM_EVENTS")
+	DataDB.balance["travel_encounter_one_in"] = 1
+	GameState.inventory = {}
+	GameState.office_location = Offices.CAPITOL
+	GameState.calendar = WeekCalendar.fresh()
+	office.call("_refresh_calendar")
+	await _drag(strip, 0.9)
+	var event_panel := office.get_node("EventPanel") as Overlay
+	_expect(event_panel.visible and _texts(event_panel).has("On the train"), where + "the trip brought an encounter (%s)" % [_texts(event_panel)])
+	_expect(event_panel.find_child("EventChoice_C", true, false) != null, where + "with its choices")
+	event_panel.close()
+	DataDB.balance["travel_encounter_one_in"] = 8
+	OS.set_environment("COP_NO_RANDOM_EVENTS", "1")
+	GameState.office_location = Offices.CAPITOL
+	GameState.inventory = {}
+
+
+func _brief(level_id: String) -> LevelBriefingPanel:
+	var here := Offices.normalize(DataDB.get_level(level_id).get("location"))
+	GameState.office_location = Offices.CAPITOL if here == Offices.EITHER else here
+	_screen().call("_on_level_chosen", DataDB.get_level(level_id))
+	await get_tree().create_timer(0.5).timeout
+	return _screen().get_node("BriefingPanel") as LevelBriefingPanel
 
 
 ## A press on the train, a drag of `share` of the track in the way it goes, and a release (what a finger does).

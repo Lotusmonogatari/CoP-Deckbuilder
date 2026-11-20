@@ -8,6 +8,9 @@ extends Overlay
 ## It draws what LevelBriefing hands it (open_brief); the look comes from LevelBriefingStyles and the pieces from
 ## LevelBriefingView. Opening it again rebuilds everything, so a changed style or text size shows at once.
 
+## The player picked another way to pay for a mixed level's trips (two offices, slice 4).
+signal travel_mode_chosen(mode: String)
+
 var _root: VBoxContainer
 var _scroll: ScrollContainer
 
@@ -57,7 +60,7 @@ func open_brief(view: Dictionary) -> void:
 	padding.add_theme_constant_override("margin_right", 40)
 	padding.add_theme_constant_override("margin_top", 8)
 	padding.add_theme_constant_override("margin_bottom", 16)
-	padding.add_child(LevelBriefingView.middle(view, look))
+	padding.add_child(LevelBriefingView.middle(view, look, travel_mode_chosen.emit))
 	_scroll.add_child(padding)
 	_root.add_child(_scroll)
 

@@ -31,6 +31,13 @@ var _chosen_level: Dictionary = {}
 var _travel_button: TravelStrip
 var _travel_panel: Overlay
 var _travel_card: TravelCard
+## The mode the strip is set to (the rail pass or a paid ticket: both are pulled), and the mode the popup is about.
+var _strip_mode: String = Travel.PASS
+var _popup_mode: String = Travel.PASS
+var _travel_modes_row: HBoxContainer
+## A mixed level waiting on an encounter on the train before it begins (the encounter is shown first).
+var _start_after_encounter := false
+var _encounter_cleared := false
 ## How a level's built-in trips are priced in the briefing (the member's rail pass until tickets exist).
 var _travel_mode: String = Travel.PASS
 @onready var _resources: Label = %Resources
@@ -979,6 +986,8 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 				"name": str(speaker.get("name", "")), "title": OpponentDisplay.title_for(speaker)}), "SmallLabel"))
 	elif str(event.get("trigger", "")) == "Followup":
 		rows.append(UiKit.line(Text.say("event.heading_followup"), "SmallLabel"))
+	elif str(event.get("trigger", "")) == "Train":
+		rows.append(UiKit.line(Text.say("event.heading_train"), "SmallLabel"))
 	elif arrived:
 		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
 	rows.append(UiKit.line(str(event.get("flavor", ""))))
@@ -2750,6 +2759,7 @@ func _show_marketplace() -> void:
 		# Card sessions live in Rhetoric Training, not here; an item marked
 		# "In Marketplace: No" (the Training Session Coupon) is only ever given.
 		if item.get("card_tier") == null and str(item.get("in_marketplace", "")).strip_edges().to_lower() != "no" \
+				and GameState.item_offered(item) \
 				and Items.inventory_tab(item) == _market_tab \
 				and not (Items.is_yes(item.get("unlocks_recruitment_tier")) and GameState.staff_recruitment_maxed()) \
 				and not (item.get("deck_size_increase") != null and GameState.deck_expansion_maxed()) \
@@ -3672,6 +3682,13 @@ func _build_travel() -> void:
 	var column := _start_button.get_parent()
 	column.add_child(_travel_button)
 	column.move_child(_travel_button, _start_button.get_index() + 1)
+	# The ways to travel the player holds a ticket for (shown only when there is a choice).
+	_travel_modes_row = HBoxContainer.new()
+	_travel_modes_row.name = "TravelModes"
+	_travel_modes_row.add_theme_constant_override("separation", 10)
+	column.add_child(_travel_modes_row)
+	column.move_child(_travel_modes_row, _travel_button.get_index() + 1)
+	_briefing_panel.travel_mode_chosen.connect(_on_briefing_travel_mode)
 
 
 ## The trip button: where it goes, how long and by what, before it is pressed; greyed with the reason when it cannot.
@@ -3681,24 +3698,73 @@ func _refresh_travel() -> void:
 	var destination := Offices.other(GameState.office_location)
 	var refusal := GameState.travel_refusal(_travel_mode_for_strip())
 	_travel_button.text = refusal if not refusal.is_empty() else Text.say("travel.button", {
-		"place": TravelText.place_name(destination), "count": GameState.trip_hours(),
-		"mode": TravelText.mode_name(Travel.PASS)})
+		"place": TravelText.place_name(destination), "count": GameState.trip_hours(_travel_mode_for_strip()),
+		"mode": TravelText.mode_name(_travel_mode_for_strip())})
+	_refresh_travel_modes()
 	_travel_button.disabled = not refusal.is_empty()
 	_travel_button.direction = 1 if GameState.office_location == Offices.CAPITOL else -1
 
 
 func _travel_mode_for_strip() -> String:
-	return Travel.PASS
+	return _strip_mode if GameState.travel_modes().has(_strip_mode) and _strip_mode != Travel.CAR and _strip_mode != Travel.PLANE else Travel.PASS
+
+
+## One button for each way to travel the player holds a ticket for: the rail pass and a paid ticket set the mode the
+## strip is pulled with; a car or a plane ticket opens its own confirm (instant to do, same fade).
+func _refresh_travel_modes() -> void:
+	if _travel_modes_row == null:
+		return
+	for child in _travel_modes_row.get_children():
+		_travel_modes_row.remove_child(child)
+		child.queue_free()
+	var modes := GameState.travel_modes()
+	_travel_modes_row.visible = modes.size() > 1
+	if modes.size() < 2:
+		return
+	for mode: String in modes:
+		var button := Button.new()
+		button.name = "TravelMode_" + mode
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		# Three buttons share the width, so each one wraps its words rather than push the screen wider.
+		button.custom_minimum_size = Vector2(0, 110)
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.clip_text = false
+		var held := GameState.travel_tickets(mode)
+		button.text = Text.say("travel.mode_button", {"mode": TravelText.mode_name(mode), "count": GameState.trip_hours(mode)}) \
+			if mode == Travel.PASS else Text.say("travel.mode_button_owned", {"mode": TravelText.mode_name(mode),
+				"count": GameState.trip_hours(mode), "owned": held})
+		button.disabled = mode == _travel_mode_for_strip() and mode != Travel.CAR and mode != Travel.PLANE
+		button.pressed.connect(_on_travel_mode.bind(mode))
+		_travel_modes_row.add_child(button)
+
+
+func _on_travel_mode(mode: String) -> void:
+	if mode == Travel.CAR or mode == Travel.PLANE:
+		_show_travel(mode)
+		return
+	_strip_mode = mode
+	_refresh_travel()
+
+
+## Picking another way to pay in a mixed level's briefing: the same briefing again, with the hours for that way.
+func _on_briefing_travel_mode(mode: String) -> void:
+	_travel_mode = mode
+	_show_briefing()
 
 
 ## The popup that says what the trip costs before the player takes it (Information Standard 1).
-func _show_travel() -> void:
+func _show_travel(mode: String = "") -> void:
+	_popup_mode = mode if not mode.is_empty() else _travel_mode_for_strip()
 	var destination := Offices.other(GameState.office_location)
-	var hours := GameState.trip_hours()
+	var hours := GameState.trip_hours(_popup_mode)
 	var rows: Array[Control] = []
+	var cost := Text.say("travel.cost_free") if _popup_mode == Travel.PASS else Text.say("travel.cost_ticket", {"mode": TravelText.mode_name(_popup_mode).to_lower()})
 	rows.append(UiKit.line(Text.say("travel.confirm_line", {
 		"place": TravelText.place_name(destination), "count": hours,
-		"mode": TravelText.mode_name(Travel.PASS).to_lower(), "cost": Text.say("travel.cost_free")})))
+		"mode": TravelText.mode_name(_popup_mode).to_lower(), "cost": cost})))
+	var refusal := GameState.travel_refusal(_popup_mode)
+	if not refusal.is_empty():
+		rows.append(UiKit.line(refusal))
 	rows.append(UiKit.line(Text.say("travel.after_line", {"count": maxi(0, GameState.work_hours_left() - hours)})))
 	# A promise due soon that can only be kept where the player stands is named before they leave.
 	for promise: Dictionary in GameState.promises:
@@ -3712,26 +3778,28 @@ func _show_travel() -> void:
 		if not waiting.is_empty() and Offices.normalize(waiting.get("location")) == destination:
 			rows.append(UiKit.line(Text.say("travel.level_waiting", {
 				"place": TravelText.place_name(destination), "level": str(waiting.get("description", ""))})))
-	_travel_panel.open(Text.say("travel.confirm_title"), rows, Text.say("travel.confirm_go"), Text.say("travel.confirm_stay"))
+	_travel_panel.open(Text.say("travel.confirm_title"), rows, Text.say("travel.confirm_go"), Text.say("travel.confirm_stay"),
+		refusal.is_empty())
 
 
 func _on_travel_confirmed() -> void:
-	_start_trip()
+	_start_trip(_popup_mode)
 
 
 ## The trip, from the strip's drag or the popup's confirm: the card covers the Office, the trip is taken behind
 ## it, and the other office is there when the card fades.
-func _start_trip() -> void:
-	if not GameState.travel_refusal(_travel_mode_for_strip()).is_empty():
+func _start_trip(mode: String = "") -> void:
+	var by := mode if not mode.is_empty() else _travel_mode_for_strip()
+	if not GameState.travel_refusal(by).is_empty():
 		return
-	var words := Text.say("travel.card_line", {"mode": TravelText.mode_name(_travel_mode_for_strip()),
+	var words := Text.say("travel.card_line", {"mode": TravelText.mode_name(by),
 		"place": TravelText.place_name(Offices.other(GameState.office_location)),
-		"count": GameState.trip_hours(_travel_mode_for_strip())})
-	_travel_card.play(words, _arrive)
+		"count": GameState.trip_hours(by)})
+	_travel_card.play(words, _arrive.bind(by))
 
 
-func _arrive() -> void:
-	if not GameState.travel(_travel_mode_for_strip()):
+func _arrive(by: String) -> void:
+	if not GameState.travel(by):
 		return
 	_apply_office_look()
 	_report.text = _report_text()
@@ -3740,6 +3808,10 @@ func _arrive() -> void:
 	# A crisis level that was waiting here is forced in on arrival.
 	_show_forced_special_if_due()
 	_install_room_objects()
+	# An encounter on the train: shown first when the trip brought one (a short dilemma, like an event).
+	var encounter := GameState.take_travel_encounter()
+	if not encounter.is_empty():
+		_present_event(encounter, true)
 
 
 ## Why a level cannot be started now: not at its office first, then the calendar.
@@ -3747,6 +3819,9 @@ func _level_refusal(level: Dictionary) -> String:
 	var elsewhere := GameState.level_office_refusal(level)
 	if not elsewhere.is_empty():
 		return elsewhere
+	var tickets := GameState.level_travel_refusal(level, _travel_mode)
+	if not tickets.is_empty():
+		return tickets
 	return GameState.level_calendar_refusal(level, _travel_mode)
 
 
@@ -4169,6 +4244,7 @@ func _on_unlock_level(level_id: String) -> void:
 
 func _on_level_chosen(level: Dictionary) -> void:
 	_chosen_level = level
+	_travel_mode = Travel.PASS
 	_levels_panel.close()
 	_show_briefing()
 
@@ -4200,6 +4276,7 @@ func _show_briefing() -> void:
 		"travel_hours": GameState.level_trip_hours(_chosen_level, _travel_mode),
 		"travel_trips": Travel.level_trips(_chosen_level),
 		"travel_mode": _travel_mode,
+		"travel_options": GameState.level_travel_options(_chosen_level),
 	}
 	_briefing_panel.open_brief(LevelBriefing.build(expanded, GameState.difficulty, DataDB.balance_base, context))
 
@@ -4234,6 +4311,15 @@ func _back_to_levels_if_not_started() -> void:
 	_show_levels()
 
 
+## The encounter before a mixed level is dealt with: now the level begins.
+func _after_encounter_closed() -> void:
+	if not _start_after_encounter:
+		return
+	_start_after_encounter = false
+	_encounter_cleared = true
+	_on_start()
+
+
 func _on_start() -> void:
 	_briefing_went_in = true
 	var elsewhere := GameState.level_office_refusal(_chosen_level)
@@ -4247,6 +4333,17 @@ func _on_start() -> void:
 		_event_launch = {}
 		_report.text = Text.say("office.level_cannot_start", {"problems": "\n• ".join(Array(runner.problems()))})
 		return
+
+	# A mixed level's trips may bring an encounter on the train (one roll, by the rail pass or a paid ticket): it is
+	# shown first, and the level begins when the player has dealt with it (two offices, slice 4, 2026-11-20).
+	if Travel.level_trips(_chosen_level) > 0 and not _encounter_cleared:
+		var encounter := GameState.roll_travel_encounter(_travel_mode)
+		if not encounter.is_empty():
+			_start_after_encounter = true
+			_event_panel.closed.connect(_after_encounter_closed, CONNECT_ONE_SHOT)
+			_present_event(encounter, true)
+			return
+	_encounter_cleared = false
 
 	# Started from an event choice: the choice is taken now (its rewards and
 	# the event's own hours), then its level begins (2026-10-31).

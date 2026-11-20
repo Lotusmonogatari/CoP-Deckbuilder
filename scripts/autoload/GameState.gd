@@ -398,6 +398,8 @@ var office_location: String = Offices.CAPITOL
 ## While a level with built-in trips is in progress: { "start": office, "trips": n }. The trips' hours were spent
 ## when the level began; the player ends at the other office after an odd number of trips.
 var level_travel: Dictionary = {}
+## The train encounter the last trip brought, until the Office has shown it (not saved).
+var travel_encounter: String = ""
 
 ## Scales decay steps while the week-end decay runs; 1.0 the rest of the time.
 var _decay_scale := 1.0
@@ -6142,15 +6144,80 @@ func trip_hours(mode: String = Travel.PASS) -> int:
 	return Travel.hours(DataDB.balance, protagonist_id, mode)
 
 
-## The modes this player can travel by now. Slice 1 has the member's rail pass only; tickets and the fast
-## mode join when the Marketplace sells them.
+## The modes this player can travel by now: the member's rail pass always, and a paid train ticket or this
+## protagonist's fast mode (a private car, or a plane ticket for PC01) while they hold one.
 func travel_modes() -> Array[String]:
-	return [Travel.PASS]
+	var modes: Array[String] = [Travel.PASS]
+	for mode: String in [Travel.TICKET, Travel.fast_mode(DataDB.balance, protagonist_id)]:
+		if not mode.is_empty() and travel_tickets(mode) > 0:
+			modes.append(mode)
+	return modes
+
+
+## Whether a Shop item is sold to this protagonist (Offered For blank means everyone).
+func item_offered(item: Dictionary) -> bool:
+	var offered: Variant = item.get("offered_for")
+	return not (offered is Array) or (offered as Array).is_empty() or (offered as Array).has(protagonist_id)
+
+
+## The Shop item that pays for a travel mode, or "" for the rail pass (free) and a mode nothing pays for.
+func travel_item_id(mode: String) -> String:
+	if mode == Travel.PASS:
+		return ""
+	for item: Dictionary in DataDB.shop:
+		if str(item.get("travel_mode", "")) == mode and item_offered(item):
+			return str(item.get("item_id", ""))
+	return ""
+
+
+## How many trips by `mode` the player has paid for (tickets held).
+func travel_tickets(mode: String) -> int:
+	var id := travel_item_id(mode)
+	return item_count(id) if not id.is_empty() else 0
+
+
+## Pays for `uses` trips by `mode`: that many tickets are handed over, and each use applies the ticket's own
+## standing grants (the paid train ticket: +2 with three organizations). The rail pass costs nothing.
+func _use_travel_tickets(mode: String, uses: int) -> void:
+	var id := travel_item_id(mode)
+	if id.is_empty():
+		return
+	var item := DataDB.get_shop_item(id)
+	for _i in uses:
+		if item_count(id) <= 0:
+			break
+		_take_item(id)
+		var split := Items.split_grants(item)
+		var cause_before := _cause
+		_cause = Text.say("record.cause_item", {"item": str(item.get("name", id))})
+		_apply_reward_entries(split["meta"], "", 0)
+		_cause = cause_before
+
+
+## An encounter on the train, or "": one trip in `travel_encounter_one_in` by the rail pass or a paid ticket (a car
+## or a plane skips it). Real-click tests turn chance events off with COP_NO_RANDOM_EVENTS.
+func roll_travel_encounter(mode: String) -> String:
+	if mode == Travel.CAR or mode == Travel.PLANE or OS.has_environment("COP_NO_RANDOM_EVENTS"):
+		return ""
+	var one_in := Levers.whole("travel_encounter_one_in")
+	if one_in <= 0 or randi_range(1, one_in) != 1:
+		return ""
+	var pool := EventEngine.train_events(DataDB.events)
+	return str(EventEngine.pick_weighted(pool, randf()).get("event_id", ""))
+
+
+## The encounter a trip just brought, said once and forgotten ("" when none).
+func take_travel_encounter() -> String:
+	var found := travel_encounter
+	travel_encounter = ""
+	return found
 
 
 ## Why a trip cannot be taken now, as a sentence; "" when it can.
 func travel_refusal(mode: String = Travel.PASS) -> String:
 	var hours := trip_hours(mode)
+	if mode != Travel.PASS and travel_tickets(mode) < 1:
+		return Text.say("travel.refuse_no_ticket", {"mode": TravelText.mode_name(mode).to_lower()})
 	var why := Travel.refusal({
 		"in_level": is_in_level(), "weekend": in_weekend(),
 		"travel_at_weekend": bool(DataDB.get_rule("travel_at_weekend", false)),
@@ -6172,7 +6239,9 @@ func travel(mode: String = Travel.PASS) -> bool:
 	if not travel_refusal(mode).is_empty():
 		return false
 	spend_hours(trip_hours(mode))
+	_use_travel_tickets(mode, 1)
 	office_location = Offices.other(office_location)
+	travel_encounter = roll_travel_encounter(mode)
 	SaveManager.autosave()
 	return true
 
@@ -6201,6 +6270,25 @@ func level_total_hours(level: Dictionary, mode: String = Travel.PASS) -> int:
 	return level_hours(level) + level_trip_hours(level, mode)
 
 
+## Why a level's trips cannot be paid by `mode`: fewer tickets than trips. "" for the rail pass or enough tickets.
+func level_travel_refusal(level: Dictionary, mode: String) -> String:
+	var trips := Travel.level_trips(level)
+	if trips == 0 or mode == Travel.PASS or travel_tickets(mode) >= trips:
+		return ""
+	return Text.say("briefing.refuse_tickets", {"count": trips, "mode": TravelText.mode_name(mode).to_lower()})
+
+
+## The ways to pay for a mixed level's trips, for the briefing's row: [ { mode, hours, enough } ].
+func level_travel_options(level: Dictionary) -> Array:
+	var options: Array = []
+	if Travel.level_trips(level) == 0:
+		return options
+	for mode: String in travel_modes():
+		options.append({"mode": mode, "hours": level_trip_hours(level, mode), "owned": travel_tickets(mode),
+			"enough": level_travel_refusal(level, mode).is_empty()})
+	return options
+
+
 ## Charges a level's built-in trips as it begins: their hours come off the week, and the level remembers where
 ## the player started and how many trips it has, so it can end them at the right office. Call before begin_level.
 func pay_level_travel(level: Dictionary, mode: String = Travel.PASS) -> void:
@@ -6209,6 +6297,7 @@ func pay_level_travel(level: Dictionary, mode: String = Travel.PASS) -> void:
 		level_travel = {}
 		return
 	spend_hours(level_trip_hours(level, mode))
+	_use_travel_tickets(mode, trips)
 	level_travel = {"start": office_location, "trips": trips}
 
 

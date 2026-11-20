@@ -1490,3 +1490,13 @@ The trip button became **a train on a track**. The words (where, how long, by wh
 | Visitors | Office Hours draws the visitors tagged for the office first, and fills the room out with others rather than seating fewer people. |
 | Tests | `test_offices_content` (the tags, each office's own draw, a follow-up waiting, promises, notices, ticker, visitors); the travel click test covers the Promises panel, the Keep button and the trip warning; `test_promises` stands at a follow-up's office. |
 
+## 2026-11-20: Two offices, slice 4: tickets and train encounters
+
+| Part | What changed |
+|---|---|
+| Tickets (Shop; **prices are drafts for Cameron**) | Paid Train Ticket SH42 (5,000円; +2 with BO23, BO05 and BO14 on each use), Private Car Trip SH43 (15,000円; PC02, PC03, PC04) and Plane Ticket SH44 (40,000円; PC01). New Shop columns `Travel Mode` and `Offered For`; the Marketplace lists a ticket only for the protagonists it is for. |
+| Modes | With a ticket held, a row of modes appears under the train strip (the pass and a paid ticket set what the strip is pulled with; a car or plane has its own confirm and is instant). A mixed level's briefing has a "Travel by" row and its hours, badge, week bar and Go in follow the choice; each trip uses a ticket, and Go in is greyed when there are too few. **LV10 can now be played by PC01 by plane (31 h).** |
+| Encounters | One trip in 8 (Balance `Travel Encounter One In`) by the pass or a paid ticket brings a short dilemma on the train: six draft Events with Trigger Train (EV105 to EV110, three choices each). Shown after a swipe trip, and before a mixed level begins. |
+| Tests | `test_travel_tickets` (who is sold what, modes, a ticket's hours and standing, tickets per trip, the encounter rate and its exceptions); the travel click test covers the mode row, a ticket drag, a plane, the briefing row and an encounter. |
+| Pictures | Art IDs still to be drawn: `TICKET_*` icons (the items have none yet), `TRAIN_INTERIOR` (the encounters' picture; the export warns it is missing). |
+

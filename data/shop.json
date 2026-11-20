@@ -48,7 +48,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH02",
@@ -99,7 +101,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH03",
@@ -150,7 +154,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH04",
@@ -201,7 +207,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH05",
@@ -252,7 +260,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH06",
@@ -303,7 +313,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH07",
@@ -354,7 +366,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH08",
@@ -405,7 +419,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH09",
@@ -451,7 +467,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH10",
@@ -497,7 +515,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH11",
@@ -543,7 +563,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH12",
@@ -589,7 +611,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH13",
@@ -635,7 +659,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH14",
@@ -686,7 +712,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH15",
@@ -737,7 +765,9 @@
     "staff_target": null,
     "staff_slot": "Office",
     "staff_days": 1,
-    "uses": 2
+    "uses": 2,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH16",
@@ -788,7 +818,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH17",
@@ -839,7 +871,9 @@
     "staff_target": null,
     "staff_slot": "Office",
     "staff_days": 1,
-    "uses": 2
+    "uses": 2,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH18",
@@ -890,7 +924,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH19",
@@ -941,7 +977,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH20",
@@ -992,7 +1030,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH21",
@@ -1038,7 +1078,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH22",
@@ -1089,7 +1131,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH23",
@@ -1140,7 +1184,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH24",
@@ -1191,7 +1237,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH25",
@@ -1237,7 +1285,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH26",
@@ -1283,7 +1333,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH27",
@@ -1329,7 +1381,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH28",
@@ -1375,7 +1429,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH29",
@@ -1421,7 +1477,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH30",
@@ -1467,7 +1525,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH31",
@@ -1513,7 +1573,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH32",
@@ -1559,7 +1621,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH33",
@@ -1605,7 +1669,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH34",
@@ -1651,7 +1717,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH35",
@@ -1697,7 +1765,9 @@
     "staff_target": null,
     "staff_slot": null,
     "staff_days": null,
-    "uses": null
+    "uses": null,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH36",
@@ -1743,7 +1813,9 @@
     "staff_target": null,
     "staff_slot": "Office",
     "staff_days": 1,
-    "uses": 3
+    "uses": 3,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH37",
@@ -1789,7 +1861,9 @@
     "staff_target": null,
     "staff_slot": "Office",
     "staff_days": 1,
-    "uses": 3
+    "uses": 3,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH38",
@@ -1835,7 +1909,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": 3
+    "uses": 3,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH39",
@@ -1881,7 +1957,9 @@
     "staff_target": null,
     "staff_slot": "Office",
     "staff_days": 1,
-    "uses": 1
+    "uses": 1,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH40",
@@ -1927,7 +2005,9 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": 1
+    "uses": 1,
+    "travel_mode": null,
+    "offered_for": null
   },
   {
     "item_id": "SH41",
@@ -1973,6 +2053,171 @@
     "staff_target": null,
     "staff_slot": "Person",
     "staff_days": 1,
-    "uses": 1
+    "uses": 1,
+    "travel_mode": null,
+    "offered_for": null
+  },
+  {
+    "item_id": "SH42",
+    "name": "Paid Train Ticket",
+    "description": "A paid seat on the express, used for a trip or a mixed level's travel instead of the rail pass. The hours are the same. The Taxpayers' Alliance, the Chamber of Commerce and the Commuter Committee each notice when a member pays their own fare: +2 standing with each on every use.",
+    "cost_xp": 0,
+    "cost_yen": 5000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null,
+    "grants": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO14",
+        "delta": 2
+      }
+    ],
+    "icon": null,
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "duration_units": null,
+    "hours": null,
+    "image": null,
+    "hosted_event": null,
+    "uses_per_turn": null,
+    "stack_cap": 5,
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null,
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null,
+    "deck_size_increase": null,
+    "free_card_tier": null,
+    "in_marketplace": null,
+    "inventory": null,
+    "staff_hours": null,
+    "staff_effect": null,
+    "staff_value": null,
+    "staff_target": null,
+    "staff_slot": null,
+    "staff_days": null,
+    "uses": null,
+    "travel_mode": "ticket",
+    "offered_for": null
+  },
+  {
+    "item_id": "SH43",
+    "name": "Private Car Trip",
+    "description": "A hired car and driver for one trip, used instead of the rail pass. No encounters on the road.",
+    "cost_xp": 0,
+    "cost_yen": 15000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null,
+    "grants": null,
+    "icon": null,
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "duration_units": null,
+    "hours": null,
+    "image": null,
+    "hosted_event": null,
+    "uses_per_turn": null,
+    "stack_cap": 5,
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null,
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null,
+    "deck_size_increase": null,
+    "free_card_tier": null,
+    "in_marketplace": null,
+    "inventory": null,
+    "staff_hours": null,
+    "staff_effect": null,
+    "staff_value": null,
+    "staff_target": null,
+    "staff_slot": null,
+    "staff_days": null,
+    "uses": null,
+    "travel_mode": "car",
+    "offered_for": [
+      "PC02",
+      "PC03",
+      "PC04"
+    ]
+  },
+  {
+    "item_id": "SH44",
+    "name": "Plane Ticket",
+    "description": "A seat on the flight to Sapporo, used for one trip instead of the rail pass. Much faster than the train, and no encounters on the way.",
+    "cost_xp": 0,
+    "cost_yen": 40000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null,
+    "grants": null,
+    "icon": null,
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "duration_units": null,
+    "hours": null,
+    "image": null,
+    "hosted_event": null,
+    "uses_per_turn": null,
+    "stack_cap": 5,
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null,
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null,
+    "deck_size_increase": null,
+    "free_card_tier": null,
+    "in_marketplace": null,
+    "inventory": null,
+    "staff_hours": null,
+    "staff_effect": null,
+    "staff_value": null,
+    "staff_target": null,
+    "staff_slot": null,
+    "staff_days": null,
+    "uses": null,
+    "travel_mode": "plane",
+    "offered_for": [
+      "PC01"
+    ]
   }
 ]

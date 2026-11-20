@@ -109,7 +109,7 @@ static func bottom_bar(view: Dictionary, look: Dictionary, on_back: Callable, on
 # --- the scrolling middle ----------------------------------------------------------------
 
 ## Everything between the back row and the bottom bar: the title, purpose, week, totals, organizations and timeline.
-static func middle(view: Dictionary, look: Dictionary) -> VBoxContainer:
+static func middle(view: Dictionary, look: Dictionary, on_mode: Callable = Callable()) -> VBoxContainer:
 	var column := VBoxContainer.new()
 	column.name = "Middle"
 	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -119,6 +119,9 @@ static func middle(view: Dictionary, look: Dictionary) -> VBoxContainer:
 	if purpose != null:
 		column.add_child(purpose)
 	column.add_child(_week(view, look))
+	var modes := _travel_row(view, look, on_mode)
+	if modes != null:
+		column.add_child(modes)
 	column.add_child(_totals_card(view, look))
 	var orgs := _orgs_card(view, look)
 	if orgs != null:
@@ -167,6 +170,37 @@ static func _title_row(view: Dictionary, look: Dictionary) -> Control:
 	badge.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	row.add_child(badge)
 	return row
+
+
+## "Travel by": one button for each way to pay for a mixed level's trips (the rail pass, a paid ticket, this
+## protagonist's fast mode), with the hours each takes; the chosen one is filled. Only when there is a choice.
+static func _travel_row(view: Dictionary, look: Dictionary, on_mode: Callable) -> Control:
+	var options: Array = view.get("travel_options", [])
+	if options.size() < 2 or int(view.get("travel_trips", 0)) == 0:
+		return null
+	var box := VBoxContainer.new()
+	box.name = "TravelModes"
+	box.add_theme_constant_override("separation", int(LevelBriefingStyles.len_px(5.0)))
+	box.add_child(_label(Text.say("briefing.travel_by"), LevelBriefingStyles.SIZE_SMALL + 1.0, look["on_ground_muted"], false))
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", int(LevelBriefingStyles.len_px(6.0)))
+	box.add_child(row)
+	for option: Dictionary in options:
+		var mode := str(option["mode"])
+		var chosen := mode == str(view.get("travel_mode", ""))
+		var button := Button.new()
+		button.name = "TravelMode_" + mode
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.custom_minimum_size = Vector2(0, LevelBriefingStyles.len_px(46.0))
+		button.text = Text.say("travel.mode_button", {"mode": TravelText.mode_name(mode), "count": int(option["hours"])})
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.disabled = not bool(option.get("enough", true))
+		button.focus_mode = Control.FOCUS_NONE
+		LevelBriefingStyles.dress_button(button, look, chosen, not button.disabled)
+		if on_mode.is_valid():
+			button.pressed.connect(on_mode.bind(mode))
+		row.add_child(button)
+	return box
 
 
 static func _purpose(view: Dictionary, look: Dictionary) -> Control:

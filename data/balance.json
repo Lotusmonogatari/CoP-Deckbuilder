@@ -356,5 +356,6 @@
   "travel_forced_hours": 0,
   "travel_swipe_commit_percent": 60,
   "travel_promise_warning_hours": 12,
+  "travel_encounter_one_in": 8,
   "xp_tiers": {}
 }
