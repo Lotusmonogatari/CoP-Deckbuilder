@@ -13,7 +13,8 @@ extends RefCounted
 ## timeline, so nothing hints it exists; its hours still count in the total, as they always have.
 ##
 ## The dictionary (all keys always present):
-##   level_id, title, tier (int), hours (total, hidden rooms included), room_count (shown rooms),
+##   level_id, title, tier (int), hours (total, hidden rooms and built-in travel included), room_count (shown rooms),
+##   travel_hours (the built-in trips' hours, 0 for most levels), travel_trips, travel_mode (the mode id they are priced at),
 ##   lists_rooms (false for a level with one shown room: totals only),
 ##   anything_set (false when no shown room and no bonus has a reward),
 ##   purpose { text, speaker } ({} when the level has none; speaker "" is narration),
@@ -67,17 +68,22 @@ static func build(level: Dictionary, tier: String, base_balance: Dictionary, con
 	var bonus := LevelBonus.preview(level, tier, base_balance)
 	if not LevelBonus.is_empty(bonus):
 		any_reward = true
+	# A mixed level's trips between the offices (two offices, 2026-11-20) add their hours to the level's.
+	var travel_hours := maxi(0, int(context.get("travel_hours", 0)))
 
 	return {
 		"level_id": str(level.get("level_id", "")),
 		"title": str(level.get("description", "")).strip_edges(),
 		"tier": int(level.get("tier", 0)),
-		"hours": total_hours,
+		"hours": total_hours + travel_hours,
+		"travel_hours": travel_hours,
+		"travel_trips": int(context.get("travel_trips", 0)),
+		"travel_mode": str(context.get("travel_mode", "")),
 		"room_count": shown.size(),
 		"lists_rooms": BriefingSummary.lists_stages(shown),
 		"anything_set": any_reward,
 		"purpose": purpose_of(context.get("purpose", {})),
-		"week": week_of(total_hours, int(context.get("hours_left", 0)), int(context.get("pool", 0)),
+		"week": week_of(total_hours + travel_hours, int(context.get("hours_left", 0)), int(context.get("pool", 0)),
 			str(context.get("phase", "work"))),
 		"totals": BriefingSummary.total_rewards(shown),
 		"bonus": bonus,

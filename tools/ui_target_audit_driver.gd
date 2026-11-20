@@ -36,6 +36,10 @@ func _run() -> void:
 	await get_tree().create_timer(0.5).timeout
 	_measure("Office > level briefing")
 	await _go(OFFICE)
+	get_tree().current_scene.call("_show_travel")
+	await get_tree().create_timer(0.5).timeout
+	_measure("Office > trip popup")
+	await _go(OFFICE)
 	get_tree().current_scene.call("_open_draft", true)
 	await get_tree().create_timer(0.5).timeout
 	_measure("Office > draft a bill")

@@ -27,6 +27,11 @@ var _standing_panel: Overlay = null
 
 ## The level the player is looking at, chosen on the levels screen.
 var _chosen_level: Dictionary = {}
+## Two offices (2026-11-20): the trip button under "Choose a level", and the popup that states a trip's cost first.
+var _travel_button: Button
+var _travel_panel: Overlay
+## How a level's built-in trips are priced in the briefing (the member's rail pass until tickets exist).
+var _travel_mode: String = Travel.PASS
 @onready var _resources: Label = %Resources
 
 ## The Office's own dynamic flavor line(s) — data/office_notices.json,
@@ -191,8 +196,8 @@ func _ready() -> void:
 	# The picture under everything: BASE_OFFICE.png, else BASE.png (2026-10-31).
 	BaseImage.install(self, "OFFICE")
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
-	_background.art_id = "OFFICE"
-	_background.show_label = false
+	_apply_office_look()
+	_build_travel()
 
 	_start_button.pressed.connect(_on_start_pressed)
 	_briefing_panel.confirmed.connect(_on_start)
@@ -521,7 +526,7 @@ func _build() -> void:
 	# button goes straight back into that level rather than choosing another.
 	_start_button.text = Text.say(
 		"office.resume_level" if GameState.is_in_level() else "office.choose_level")
-	_report.text = _last_level_report()
+	_report.text = _report_text()
 	_refresh_resources()
 	_refresh_calendar()
 	_show_trigger_alerts_if_any()
@@ -631,6 +636,7 @@ func _build_week_controls() -> void:
 ## Work Week" on a Friday with hours left, "Pay Party Dues and Go Home" in
 ## the weekend, nothing otherwise (and nothing mid-level).
 func _refresh_calendar() -> void:
+	_refresh_travel()
 	CalendarSquare.refresh(_calendar_square)
 	DuesBox.refresh(_dues_box)
 	if _promises_button != null:
@@ -925,6 +931,12 @@ func _show_dated_event_if_due() -> bool:
 	var event_id := GameState.due_dated_event()
 	if event_id.is_empty():
 		return false
+	# A Dated event that belongs to one office opens the week there (two offices, 2026-11-20).
+	if GameState.arrive_for_event(GameState.get_event(event_id)):
+		_apply_office_look()
+		_report.text = "%s\n%s" % [Text.say("travel.forced_move", {"place": TravelText.place_name(GameState.office_location)}), _report_text()]
+		_refresh_resources()
+		_refresh_calendar()
 	_present_event(event_id, false)
 	return true
 
@@ -3617,6 +3629,95 @@ func _on_fire_staff_confirmed() -> void:
 ## Flip it true and a locked or on-cooldown level shows why, with an Unlock
 ## button where it can be bought (see _level_row(), Ledger.gd's "Levels"
 ## section, and GameState.levels_unlocked/levels_completed_count).
+# ---------------------------------------------------------------------------
+# Two offices (2026-11-20, Cameron): where the player stands and the trip between.
+
+## The picture behind the Office: the Capitol's, or this protagonist's District office (a labelled placeholder
+## until it is drawn). Called when the screen opens and after every trip.
+func _apply_office_look() -> void:
+	if GameState.office_location == Offices.DISTRICT:
+		_background.art_id = "DISTRICT_OFFICE_%s" % GameState.protagonist_id
+		_background.show_label = true
+	else:
+		_background.art_id = "OFFICE"
+		_background.show_label = false
+
+
+## The Office's own line about where you are, above the report of the last level.
+func _report_text() -> String:
+	var last := _last_level_report()
+	var here := TravelText.here_line()
+	return here if last.is_empty() else "%s\n%s" % [here, last]
+
+
+func _build_travel() -> void:
+	_travel_panel = Overlay.new()
+	_travel_panel.name = "TravelPanel"
+	add_child(_travel_panel)
+	_travel_panel.confirmed.connect(_on_travel_confirmed)
+	_travel_button = Button.new()
+	_travel_button.name = "TravelButton"
+	_travel_button.custom_minimum_size = Vector2(0, 100)
+	_travel_button.pressed.connect(_show_travel)
+	var column := _start_button.get_parent()
+	column.add_child(_travel_button)
+	column.move_child(_travel_button, _start_button.get_index() + 1)
+
+
+## The trip button: where it goes, how long and by what, before it is pressed; greyed with the reason when it cannot.
+func _refresh_travel() -> void:
+	if _travel_button == null:
+		return
+	var destination := Offices.other(GameState.office_location)
+	var refusal := GameState.travel_refusal(_travel_mode_for_strip())
+	_travel_button.text = refusal if not refusal.is_empty() else Text.say("travel.button", {
+		"place": TravelText.place_name(destination), "count": GameState.trip_hours(),
+		"mode": TravelText.mode_name(Travel.PASS)})
+	_travel_button.disabled = not refusal.is_empty()
+
+
+func _travel_mode_for_strip() -> String:
+	return Travel.PASS
+
+
+## The popup that says what the trip costs before the player takes it (Information Standard 1).
+func _show_travel() -> void:
+	var destination := Offices.other(GameState.office_location)
+	var hours := GameState.trip_hours()
+	var rows: Array[Control] = []
+	rows.append(UiKit.line(Text.say("travel.confirm_line", {
+		"place": TravelText.place_name(destination), "count": hours,
+		"mode": TravelText.mode_name(Travel.PASS).to_lower(), "cost": Text.say("travel.cost_free")})))
+	rows.append(UiKit.line(Text.say("travel.after_line", {"count": maxi(0, GameState.work_hours_left() - hours)})))
+	# A crisis level waiting at the other office is named, so the trip is not a surprise.
+	for trigger: String in GameState.due_special_levels():
+		var waiting := SpecialLevels.level_for(trigger, DataDB.levels)
+		if not waiting.is_empty() and Offices.normalize(waiting.get("location")) == destination:
+			rows.append(UiKit.line(Text.say("travel.level_waiting", {
+				"place": TravelText.place_name(destination), "level": str(waiting.get("description", ""))})))
+	_travel_panel.open(Text.say("travel.confirm_title"), rows, Text.say("travel.confirm_go"), Text.say("travel.confirm_stay"))
+
+
+func _on_travel_confirmed() -> void:
+	if not GameState.travel(_travel_mode_for_strip()):
+		return
+	_apply_office_look()
+	_report.text = _report_text()
+	_refresh_resources()
+	_refresh_calendar()
+	# A crisis level that was waiting here is forced in on arrival.
+	_show_forced_special_if_due()
+	_install_room_objects()
+
+
+## Why a level cannot be started now: not at its office first, then the calendar.
+func _level_refusal(level: Dictionary) -> String:
+	var elsewhere := GameState.level_office_refusal(level)
+	if not elsewhere.is_empty():
+		return elsewhere
+	return GameState.level_calendar_refusal(level, _travel_mode)
+
+
 func _show_levels() -> void:
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("office.levels_blurb")))
@@ -3675,6 +3776,9 @@ func _show_levels() -> void:
 			continue
 		# An Event Only level is started from an event choice, never the list.
 		if GameState.is_event_only(level):
+			continue
+		# A level starts only at its own office (Either levels from both; two offices, 2026-11-20).
+		if not GameState.level_at_this_office(level):
 			continue
 		var tier := int(level.get("tier", 0))
 		if not by_tier.has(tier):
@@ -3973,7 +4077,13 @@ func _level_row_plain(level: Dictionary) -> Control:
 	# asked for: just the name, which is what a player actually reads.
 	box.add_child(UiKit.line(str(level.get("description", ""))))
 	# How long it takes, so the list answers "can I fit it" before the button does (all styles).
-	box.add_child(UiKit.line(Text.say("office.level_hours_line", {"count": GameState.level_hours(level)}), "SmallLabel"))
+	box.add_child(UiKit.line(Text.say("office.level_hours_line", {"count": GameState.level_total_hours(level)}), "SmallLabel"))
+	# Where it starts, and that a mixed level's trips are in its hours (two offices, 2026-11-20).
+	var place_line := TravelText.level_badge(level.get("location"))
+	var trip_hours := GameState.level_trip_hours(level)
+	if trip_hours > 0:
+		place_line = "%s · %s" % [place_line, Text.say("office.level_travel_line", {"count": trip_hours})]
+	box.add_child(UiKit.line(place_line, "SmallLabel"))
 
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)
@@ -4053,7 +4163,11 @@ func _show_briefing() -> void:
 		"pool": WeekCalendar.pool_hours(phase, cfg),
 		"phase": phase,
 		"purpose": LevelPurpose.resolve(_chosen_level, GameState.staff_hired, DataDB.staff),
-		"refusal": GameState.level_calendar_refusal(_chosen_level),
+		"refusal": _level_refusal(_chosen_level),
+		"location": TravelText.level_badge(_chosen_level.get("location")) if Offices.normalize(_chosen_level.get("location")) != Offices.EITHER else "",
+		"travel_hours": GameState.level_trip_hours(_chosen_level, _travel_mode),
+		"travel_trips": Travel.level_trips(_chosen_level),
+		"travel_mode": _travel_mode,
 	}
 	_briefing_panel.open_brief(LevelBriefing.build(expanded, GameState.difficulty, DataDB.balance_base, context))
 
@@ -4090,6 +4204,11 @@ func _back_to_levels_if_not_started() -> void:
 
 func _on_start() -> void:
 	_briefing_went_in = true
+	var elsewhere := GameState.level_office_refusal(_chosen_level)
+	if not elsewhere.is_empty():
+		_event_launch = {}
+		_report.text = elsewhere
+		return
 	var expanded := BattleSetup.expand_level(_chosen_level)
 	var runner := LevelRunner.new(expanded)
 	if not runner.is_valid():
@@ -4102,6 +4221,9 @@ func _on_start() -> void:
 	if not _event_launch.is_empty():
 		GameState.apply_event_choice(str(_event_launch["event_id"]), str(_event_launch["letter"]))
 		_event_launch = {}
+
+	# A mixed level's trips between the offices come off the week as it begins (two offices, 2026-11-20).
+	GameState.pay_level_travel(_chosen_level, _travel_mode)
 
 	# The runner is handed over rather than rebuilt, so the level keeps its
 	# place and its carried buffs as the battle screen moves through it.

@@ -20,11 +20,12 @@
       "region": "Aomori",
       "district_name": "Aomori Proportional Block 3",
       "district_type": "Proportional Block",
+      "district_office": "Noheji",
       "starting_items": {
         "SH21": 1,
         "SH15": 2,
         "SH17": 2,
-        "SH29": 1
+        "SH25": 1
       }
     },
     {
@@ -47,6 +48,7 @@
       "region": "Iburi",
       "district_name": "Tomakomai City",
       "district_type": "Single Member",
+      "district_office": "Akenoshinmachi",
       "starting_items": {
         "SH21": 1,
         "SH15": 1,
@@ -74,6 +76,7 @@
       "region": "Sapporo",
       "district_name": "Sapporo Proportional Block 6",
       "district_type": "Proportional Block",
+      "district_office": "Teine Ward",
       "starting_items": {
         "SH21": 1,
         "SH04": 2,
@@ -100,9 +103,10 @@
       "region": "Sōya",
       "district_name": "Sōya - Wakkanai",
       "district_type": "Single Member",
+      "district_office": "Daikoki",
       "starting_items": {
         "SH21": 1,
-        "SH25": 1
+        "SH29": 1
       }
     }
   ]

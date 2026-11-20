@@ -15,9 +15,12 @@ func before_each() -> void:
 	DataDB.party_stakeholders = []
 	DataDB.balance["special_level_delay"] = 5
 	GameState.reset_crisis_triggers()
+	# The Town Hall (LV83) is a District level; the player stands there unless a test says otherwise.
+	GameState.office_location = Offices.DISTRICT
 
 
 func after_each() -> void:
+	GameState.office_location = Offices.CAPITOL
 	GameState.meta = _saved["meta"].duplicate(true)
 	GameState.level_runner = _saved["runner"]
 	GameState.mid_stage = _saved["mid"]
@@ -74,6 +77,23 @@ func test_a_due_special_level_is_forced_after_the_next_ordinary_level() -> void:
 	assert_eq(forced.get("level_id"), "LV83")
 	assert_false(GameState.special_forced, "taking it forgets the order")
 	assert_true(GameState.take_forced_special().is_empty())
+
+
+func test_a_crisis_waits_at_its_own_office_and_is_forced_on_arrival() -> void:
+	GameState.office_location = Offices.CAPITOL   # the Town Hall is a District level
+	GameState.special_levels = {"Town Hall": {"armed_at": 0}}
+	GameState.time_units = 10
+	GameState.meta["Constituency support"] = 50
+	_ordinary_level(1)
+	GameState.finish_stage(LevelRunner.WON)
+	assert_true(GameState.special_forced)
+	assert_eq(GameState.due_special_levels(), ["Town Hall"])
+	assert_true(GameState.due_special_level_rows().is_empty(), "not listed away from its office")
+	assert_true(GameState.take_forced_special().is_empty(), "and not forced there")
+	assert_true(GameState.special_forced, "the order waits")
+	assert_eq(GameState.office_location, Offices.CAPITOL, "it never moves the player")
+	GameState.office_location = Offices.DISTRICT
+	assert_eq(GameState.take_forced_special().get("level_id"), "LV83", "forced on arrival")
 
 
 func test_a_special_level_that_is_not_yet_due_is_not_forced() -> void:

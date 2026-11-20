@@ -391,6 +391,14 @@ var time_units := 0
 ## Saved; cleared on a new run. Time units keep counting every hour too.
 var calendar: Dictionary = WeekCalendar.fresh()
 
+## Where the player is standing (two offices, 2026-11-20): Offices.CAPITOL or Offices.DISTRICT. Its own saved
+## field, not part of `calendar` (WeekCalendar.normalized() would drop it on load). A save without it loads at
+## the Capitol.
+var office_location: String = Offices.CAPITOL
+## While a level with built-in trips is in progress: { "start": office, "trips": n }. The trips' hours were spent
+## when the level began; the player ends at the other office after an odd number of trips.
+var level_travel: Dictionary = {}
+
 ## Scales decay steps while the week-end decay runs; 1.0 the rest of the time.
 var _decay_scale := 1.0
 
@@ -586,6 +594,10 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 	reset_party_standing()
 	faced_people = {}
 	met_characters = {}
+	office_location = Offices.normalize(DataDB.get_rule("start_office", Offices.CAPITOL))
+	if office_location == Offices.EITHER:
+		office_location = Offices.CAPITOL
+	level_travel = {}
 	awaiting_new_game = false
 	return true
 
@@ -613,7 +625,7 @@ const _SAVED_FIELDS := [
 	"patron_requests", "enacted_components", "patron_runtime", "patron_composed", "patron_armed",
 	"bill_assist", "patron_news", "patron_drafts", "draft_counter", "last_draft_at",
 	"promises", "promises_broken_unseen", "promise_serial", "scheduled_events",
-	"level_clock_started", "pending_trigger_alerts",
+	"level_clock_started", "pending_trigger_alerts", "office_location", "level_travel",
 ]
 
 
@@ -2845,9 +2857,9 @@ func level_hours(level: Dictionary) -> int:
 
 ## Why this level cannot be started on the calendar right now, as a sentence;
 ## "" when it can.
-func level_calendar_refusal(level: Dictionary) -> String:
+func level_calendar_refusal(level: Dictionary, mode: String = Travel.PASS) -> String:
 	var weekend_ok := str(level.get("weekend_ok", "")).strip_edges().to_lower() == "yes"
-	match WeekCalendar.level_refusal(calendar, calendar_config(), level_hours(level), weekend_ok):
+	match WeekCalendar.level_refusal(calendar, calendar_config(), level_total_hours(level, mode), weekend_ok):
 		WeekCalendar.REFUSE_WEEK_OVER:
 			return Text.say("calendar.refuse_week_over")
 		WeekCalendar.REFUSE_NOT_WEEKEND:
@@ -2866,7 +2878,7 @@ func work_week_level_refusal(level: Dictionary) -> String:
 		return ""
 	if WeekCalendar.is_full(calendar, cfg):
 		return Text.say("calendar.refuse_week_over")
-	if level_hours(level) > WeekCalendar.hours_left(calendar, cfg):
+	if level_total_hours(level) > WeekCalendar.hours_left(calendar, cfg):
 		return Text.say("calendar.refuse_too_long")
 	return ""
 
@@ -3751,7 +3763,9 @@ func due_special_level_rows() -> Array[Dictionary]:
 	var rows: Array[Dictionary] = []
 	for trigger: String in due_special_levels():
 		var level := SpecialLevels.level_for(trigger, DataDB.levels)
-		if not level.is_empty():
+		# A crisis level waits at its own office (two offices, 2026-11-20): it is neither listed nor forced
+		# until the player is there, and it never moves them.
+		if not level.is_empty() and level_at_this_office(level):
 			rows.append(level)
 	return rows
 
@@ -3761,9 +3775,11 @@ func due_special_level_rows() -> Array[Dictionary]:
 func take_forced_special() -> Dictionary:
 	if not special_forced:
 		return {}
-	special_forced = false
 	var rows := due_special_level_rows()
-	return {} if rows.is_empty() else rows[0]
+	if rows.is_empty():
+		return {}   # still waiting at the other office: the order stays until the player arrives there
+	special_forced = false
+	return rows[0]
 
 
 ## Everything a finished stage is worth, in the order the brief sets out.
@@ -5582,6 +5598,7 @@ func end_level() -> void:
 	# Level buffs belong to the level; nothing else here to clear, since
 	# finish_stage() already reset the purchase counts when it concluded.
 	level_bonuses = {}
+	_arrive_after_level()
 
 
 ## Throws away a level in progress without recording a win, a loss, or a
@@ -5615,6 +5632,7 @@ func abandon_level() -> void:
 	bill_stance = {}
 	level_bonuses = {}
 	shop_bought_this_level = {}
+	_arrive_after_level()
 
 
 func _conclude_level_items() -> void:
@@ -6094,3 +6112,113 @@ func stage_checkpoint_key() -> String:
 		return ""
 	return "%s:%d:%s" % [str(level_runner.level.get("level_id", "")), level_runner.index,
 		str(level_runner.current_stage().get("stage_id", ""))]
+
+
+# ---------------------------------------------------------------------------
+# Two offices (2026-11-20, Cameron): the Capitol and a District office.
+# A level starts only at its own office (Either levels from both); a trip
+# between the offices costs hours from the same week as everything else; a
+# "mixed" level has its trips built in and charges them with its own hours.
+# The rules are in Offices and Travel (pure); this is the run's side of them.
+# ---------------------------------------------------------------------------
+
+## The town or neighborhood of this protagonist's District office ("Noheji"); "" if the data has none.
+func district_office_name() -> String:
+	return str(DataDB.player.get("district_office", ""))
+
+
+## One-way hours for `mode` for this protagonist; -1 when they do not have that mode.
+func trip_hours(mode: String = Travel.PASS) -> int:
+	return Travel.hours(DataDB.balance, protagonist_id, mode)
+
+
+## The modes this player can travel by now. Slice 1 has the member's rail pass only; tickets and the fast
+## mode join when the Marketplace sells them.
+func travel_modes() -> Array[String]:
+	return [Travel.PASS]
+
+
+## Why a trip cannot be taken now, as a sentence; "" when it can.
+func travel_refusal(mode: String = Travel.PASS) -> String:
+	var hours := trip_hours(mode)
+	var why := Travel.refusal({
+		"in_level": is_in_level(), "weekend": in_weekend(),
+		"travel_at_weekend": bool(DataDB.get_rule("travel_at_weekend", false)),
+		"hours_left": work_hours_left(), "trip_hours": hours,
+	})
+	match why:
+		Travel.REFUSE_IN_LEVEL:
+			return Text.say("travel.refuse_in_level")
+		Travel.REFUSE_WEEKEND:
+			return Text.say("travel.refuse_weekend")
+		Travel.REFUSE_HOURS:
+			return Text.say("travel.refuse_hours", {"count": hours})
+	return ""
+
+
+## Takes the trip: spends its hours (so promise deadlines keep running, as decided), crosses to the other
+## office and saves. False, changing nothing, when it is refused.
+func travel(mode: String = Travel.PASS) -> bool:
+	if not travel_refusal(mode).is_empty():
+		return false
+	spend_hours(trip_hours(mode))
+	office_location = Offices.other(office_location)
+	SaveManager.autosave()
+	return true
+
+
+## True when `level` (or anything with a Location) can be started where the player stands.
+func level_at_this_office(level: Dictionary) -> bool:
+	return Offices.is_here(level.get("location"), office_location)
+
+
+## Why `level` cannot start at this office, as a sentence; "" when it can.
+func level_office_refusal(level: Dictionary) -> String:
+	if level_at_this_office(level):
+		return ""
+	if Offices.normalize(level.get("location")) == Offices.CAPITOL:
+		return Text.say("travel.refuse_elsewhere_capitol")
+	return Text.say("travel.refuse_elsewhere_district")
+
+
+## The hours a level's built-in trips add at `mode` (0 when it has none).
+func level_trip_hours(level: Dictionary, mode: String = Travel.PASS) -> int:
+	return Travel.level_hours(level, DataDB.balance, protagonist_id, mode)
+
+
+## A level's own hours plus its built-in trips at `mode`: what it takes from the week.
+func level_total_hours(level: Dictionary, mode: String = Travel.PASS) -> int:
+	return level_hours(level) + level_trip_hours(level, mode)
+
+
+## Charges a level's built-in trips as it begins: their hours come off the week, and the level remembers where
+## the player started and how many trips it has, so it can end them at the right office. Call before begin_level.
+func pay_level_travel(level: Dictionary, mode: String = Travel.PASS) -> void:
+	var trips := Travel.level_trips(level)
+	if trips == 0:
+		level_travel = {}
+		return
+	spend_hours(level_trip_hours(level, mode))
+	level_travel = {"start": office_location, "trips": trips}
+
+
+## A level that had built-in trips is over (or abandoned): the player is where its trips left them.
+func _arrive_after_level() -> void:
+	if level_travel.is_empty():
+		return
+	office_location = Offices.end_office(str(level_travel.get("start", office_location)), int(level_travel.get("trips", 0)))
+	level_travel = {}
+
+
+## A Dated event that belongs to one office opens the week there: the player is taken to it, at the Balance
+## row's hours (0 = free). True when it moved them.
+func arrive_for_event(event: Dictionary) -> bool:
+	var office := Offices.normalize(event.get("location"))
+	if office == Offices.EITHER or office == office_location:
+		return false
+	var cost := Levers.whole("travel_forced_hours")
+	if cost > 0:
+		spend_hours(cost)
+	office_location = office
+	return true
+

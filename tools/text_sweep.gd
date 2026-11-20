@@ -168,6 +168,11 @@ func _sweep_shape(size: Vector2i) -> void:
 		["B03c_level_briefing_longest", func() -> void:
 			office._chosen_level = DataDB.get_level("LV19")
 			office._show_briefing()],
+		# Two offices (2026-11-20): a mixed level's briefing carries a travel line; and the trip popup.
+		["B03d_level_briefing_mixed", func() -> void:
+			office._chosen_level = DataDB.get_level("LV05")
+			office._show_briefing()],
+		["B03e_travel_popup", func() -> void: office._show_travel()],
 		["B04_rhetoric_training_list", func() -> void: office._show_rhetoric_training()],
 		["B04b_rhetoric_training_offer", func() -> void:
 			GameState.card_draw = {"item_id": "SH09", "card_id": "C23", "look": 1, "seen": ["C23"]}

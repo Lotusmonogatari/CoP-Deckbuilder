@@ -22,7 +22,8 @@
     "note": "Draft: a meeting with the organization, the committee hearing for the first component, a member visit in half of these (Visit Chance 50), an optional lobbyist trade (offered when a lobbyist speaks for an organization the bill hurts), the Floor Vote.",
     "public_room_constituency": "ST05",
     "public_room_national": "ST04",
-    "visit_chance_percent": 50
+    "visit_chance_percent": 50,
+    "location": "Capitol"
   },
   {
     "template_id": "BT02",
@@ -47,7 +48,8 @@
     "note": "Draft: adds an optional member visit (MP_VISIT), a public room (Town Hall for a Constituency organization, Press Conference for a National one), your own Party Caucus and an optional lobbyist trade.",
     "public_room_constituency": "ST05",
     "public_room_national": "ST04",
-    "visit_chance_percent": null
+    "visit_chance_percent": null,
+    "location": "Capitol"
   },
   {
     "template_id": "BT03",
@@ -72,7 +74,8 @@
     "note": "Draft a Bill, two parts: the hearing for the first part, a member visit in half of these (Visit Chance 50), an optional lobbyist trade, the Floor Vote.",
     "public_room_constituency": "ST05",
     "public_room_national": "ST04",
-    "visit_chance_percent": 50
+    "visit_chance_percent": 50,
+    "location": "Capitol"
   },
   {
     "template_id": "BT04",
@@ -97,6 +100,7 @@
     "note": "Draft a Bill, three parts: the hearing, an optional member visit, a public room, your own Party Caucus, an optional lobbyist trade, the Floor Vote.",
     "public_room_constituency": "ST05",
     "public_room_national": "ST04",
-    "visit_chance_percent": null
+    "visit_chance_percent": null,
+    "location": "Capitol"
   }
 ]

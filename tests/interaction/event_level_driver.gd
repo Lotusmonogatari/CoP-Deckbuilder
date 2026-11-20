@@ -21,9 +21,13 @@ func _run() -> void:
 	var event_id := ""
 	var letter := ""
 	for choice: Dictionary in DataDB.event_choices:
-		if not GameState.event_choice_level(choice).is_empty():
+		var started := GameState.event_choice_level(choice)
+		if not started.is_empty():
 			event_id = str(choice["event_id"])
 			letter = str(choice["choice"])
+			# A level starts only at its own office (two offices, 2026-11-20): stand where this one does.
+			var here := Offices.normalize(DataDB.get_level(started).get("location"))
+			GameState.office_location = Offices.CAPITOL if here == Offices.EITHER else here
 			break
 	get_tree().change_scene_to_file("res://scenes/office_hours/OfficeScreen.tscn")
 	await get_tree().process_frame

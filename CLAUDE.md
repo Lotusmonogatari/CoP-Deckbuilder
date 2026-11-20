@@ -312,3 +312,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Ten Capitol events, EV95 to EV104 (2026-11-19, Cameron)
 - Scripted edits can no longer corrupt a file the way two tests were (2026-11-19, Cameron)
 - The level briefing is redrawn: a summary on top, a timeline of rooms below, in all three styles (P12, 2026-11-19, Cameron)
+- Two offices, slice 1: where you are, trips that cost hours, levels by office, mixed-level travel (2026-11-20, Cameron)

@@ -89,6 +89,22 @@ Two clocks run side by side. The player sees only the first.
 - **Going home** ("Pay Party Dues and Go Home") ends the week: dues are settled, week-end awareness effects run, election strength moves, the calendar advances to the next Monday, decay runs once (section 6), a random event may be rolled for the next Office visit.
 - **Promise deadlines pause while a level is played** (you cannot reach the Office mid-level) and resume when it ends or is abandoned, moved on by the level's hours.
 
+### 3.1 Two offices (2026-11-20)
+
+The player stands in one of two places, **the Capitol** (Sapporo) or **their District office** (a town or neighborhood for each protagonist: Noheji for PC01, Akenoshinmachi for PC02, Teine Ward for PC03, Daikoki for PC04). A new run starts at the Capitol (Rules: `start_office`). The design and the decisions behind it: `design/proposals/TWO_OFFICES_SPEC_2026-11-19.md` and `TWO_OFFICES_DECISIONS_2026-11-20.md`.
+
+| Rule | How it works |
+|---|---|
+| **Where a level starts** | Each level has a `Location` (Levels tab): Capitol (80), District (29) or Either (5; a blank means Either). The level list shows only levels at the player's office and Either levels; a level elsewhere cannot start (its briefing's button says to travel first). Generated bill levels are Capitol (Bill Level Templates). |
+| **A trip** | The button under "Choose a level" goes to the other office. It spends hours from the same week as any level (so promise deadlines and the hidden clock run), by the member's **rail pass** (free): **Noheji 7 h, Akenoshinmachi 1 h, Teine Ward 1 h, Daikoki 6 h** one way (Balance, `Travel Hours: Train PCxx`). The popup states the cost before the trip is taken. Refused, with the reason, while a level is in progress, at the weekend (Rules: `travel_at_weekend`, off) or with too few hours left. |
+| **Fast modes** | Balance rows exist for them (PC01 a plane ticket, 2 h; the others a private car; PC02 and PC03 1 h, PC04 4 h) but the Marketplace does not sell tickets yet. |
+| **Mixed levels** | A level with `Travel Trips` has trips between the offices built in (24 levels): **2** (out and back) for 21 Capitol levels with a District room, **1** for LV12, LV61 and LV62 (District to Capitol). The trips' hours are added to the level's (a round trip is 14 h for PC01, 12 for PC04, 2 for PC02 and PC03) in the list, the briefing and the "too long for the hours left" check, and are spent as the level begins. An odd number of trips ends the level at the other office. LV10 (27 h) cannot be played by PC01 on the rail pass (41 h); it needs the plane ticket. |
+| **Crisis levels** | The Town Hall (LV83) is a District level and the Steering Committee (LV84) a Capitol level. Each waits at its own office, neither listed nor forced elsewhere, and is forced in on arrival; it never moves the player. |
+| **Dated events** | An event with a `Location` (EV47, Capitol) opens the week there: the player is taken to it at `Travel Forced Hours` (0). |
+| **The weekend** | No travel; the week starts where the weekend ended. |
+
+Not built yet (the plan is `design/proposals/TWO_OFFICES_BUILD_PLAN_2026-11-20.md`): the swipe strip and the District office in three styles, events, promises, notices and visitors by office, tickets and train encounters, the Places tab, and the protagonists' own levels.
+
 ## 4. What the player holds: resources and standing
 
 ### 4.1 The five numbers
@@ -269,6 +285,8 @@ Everything below lives in the autoload `GameState`. **Saved** means it is in `_S
 | `time_units` | The hidden clock | yes |
 | `calendar` | `{week, phase (work or weekend), hours}` | yes |
 | `level_clock_started` | Clock when the current level began (−1 between levels); promise deadlines pause while it is set | yes |
+| `office_location` | Where the player stands: Capitol or District (section 3.1). Its own field, because `WeekCalendar.normalized()` would drop it from `calendar`; a save without it loads at the Capitol | yes |
+| `level_travel` | While a level with built-in trips is in progress: `{start, trips}`, so the level ends at the right office | yes |
 | `week_funds_earned`, `dues_balance` | Funds earned Monday to Friday this week; unpaid dues carried | yes |
 | `event_last_at`, `dated_events_done`, `scheduled_events`, `event_roll_due` | When events last happened, dated events played, follow-ups scheduled, whether a random event may arrive | yes (`event_roll_due` no) |
 
