@@ -95,3 +95,4 @@ The spec's rule 5 said a mixed level's travel is built in, free and not shown. *
 | 30 | The private car's price for PC02 and PC03 | **No change** (30,000円, though it saves them no hours). |
 | 31 | LV10 for PC01 | **Fine** as it is: 41 hours on the rail pass, so it takes the plane. |
 | 32 | Four starting plane tickets for PC01 | **Sufficient for now.** |
+| 33 | The train on the trip strip | **Keep the train drawn in code as the main icon for now** (Cameron, 2026-11-20, after seeing it in the screenshots). The `TRAIN_STRIP` picture is not needed; it is a grey Deferred row in the art list. |

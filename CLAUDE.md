@@ -321,3 +321,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Two offices, slice 7: the hours report, the office-aware bot and four How to Play entries (2026-11-20, Cameron)
 - Two offices: Cameron's answers to the hours report (ratings, four plane tickets, prices, spellings), 2026-11-20, Cameron
 - Cleanup pass: the old Level Bonus block, 14 Text rows and dead code removed (2026-11-20, Cameron)
+- The trip strip's train is kept as the main icon, no picture needed (2026-11-20, Cameron)
