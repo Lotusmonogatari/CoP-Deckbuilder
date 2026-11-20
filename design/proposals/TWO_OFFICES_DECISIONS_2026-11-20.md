@@ -20,7 +20,7 @@ These are Cameron's answers to the open questions in `TWO_OFFICES_SPEC_2026-11-1
 | 4 | Places vs. the office | Each district keeps its own localized place catalog (the 24 archetypes), **independent of where its District office stands**. Each District office has **its own image**. |
 | 5 | Pins (room objects) on the District offices | **Same pin positions in all four.** The four images are drawn to one shared layout; one pin set serves all. The Capitol's set is unchanged. |
 | 6 | Either rooms that need a new District background | **Lobbyist meeting, policy study and the media ambush street**, shared by all four protagonists. The **Office Hours room reuses each District office's own image** (no extra art). The picture missing for `OUT_NEIGHBORHOOD` is still a gap to fill. |
-| 7 | Tickets | **Both ship:** the paid train ticket and the private car. The car **does not change the strip**: using it is **instant travel with the same fade out and in**. |
+| 7 | Tickets | **Both ship:** the paid train ticket and the private car. The car **does not change the strip**: using it is **instant to do (no drag) with the same fade out and in**, and **it still spends its hours** (5 / 1 / 1 / 9 for PC01 to PC04; Cameron, 2026-11-20). |
 | 8 | Brand names | **The proposed Yezo brand map is adopted now.** Cameron may edit it later; keep signs and logos minimal in art. |
 | 9 | Train encounter format | No preference given: **the short dilemma** (the spec's recommendation). Rider art is portraits, silhouettes first (P7). |
 | 10 | Train encounter rate | **1 in 8 trips on the rail pass.** (Cameron first said 1 in 12, then revised it back to 1 in 8.) The private car skips encounters. |
@@ -60,7 +60,8 @@ These are Cameron's answers to the open questions in `TWO_OFFICES_SPEC_2026-11-1
 | Spelling check: "Daikoki" (PC01's neighborhood of Wakkanai) | Cameron wrote "Daikoki". Claude recalls a Wakkanai district usually romanized "Daikoku" (from memory, not checked in the repo's research); confirm the spelling wanted before it appears in text or art. "Akenoshinmachi" for Tomakomai was likewise not checked. |
 | Are Misawa, Tohoku and Shichinohe inside Aomori Block 3? | Spec "Settled" paragraph: they "still need Cameron's word". Affects PC04's place catalog only. |
 | Paid train ticket and car: prices; are BO23, BO05 and BO14 the right groups; does the +2 scale as usual or apply flat? | Spec open question 10. Prices are Balance rows. |
-| The car's "instant travel": does it need any tap or confirm, or does choosing the car mode start the trip at once? | Recorded as given ("instant travel, same fade"); to be confirmed when the travel build starts. |
+| PC04's car takes 9 hours against 6 by train, so as priced it costs Funds and 3 more hours (it only skips encounters, which are 1 in 8 trips on the pass). PC01's car saves 1 hour. | Not a new decision: the settled hours stand. Revisit with the re-simulation, together with the PC01 and PC04 rating (decision 14). |
+| Does the car still need a confirm tap before it fades, or does choosing it start the trip at once? | "Instant to do" is recorded; whether a confirm step stays for the refusal and promise warnings is a build detail. |
 | Which train encounters, riders and questions (about 8 rider types) | Content, after the format is built. |
 | A fixed place for one row (Rokkasho's ports, the Ishikari Fish-House Baths) | Build detail, a place ID in the token. |
 | Review of Claude's drafts: visitor office tags, the ten Capitol events EV95 to EV104, the P12 briefing text | Drafts for Cameron. The visitor tags are on `main` but unused (there is no Location column yet); EV95 to EV104 are on `main` and live as ordinary events; the P12 briefing text is on branch `panel/p12-level-preview`, not merged. |
