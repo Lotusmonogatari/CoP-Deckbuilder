@@ -132,6 +132,25 @@ static func dress_tab(button: Button, look: Dictionary, chosen: bool) -> void:
 			box.content_margin_right = len_px(14.0)
 
 
+## Dresses a button that sits INSIDE a card: an outline in the card's own ink (the briefing's secondary button is inked
+## for the room, which is cream on cream in Living Office).
+static func dress_card_button(button: Button, look: Dictionary, enabled: bool = true) -> void:
+	var ink: Color = look["ink"] if enabled else look["muted"]
+	for state: String in _BACK_COLOURS:
+		button.add_theme_color_override(state, ink)
+	button.add_theme_font_size_override("font_size", px(LevelBriefingStyles.SIZE_BUTTON))
+	var box := StyleBoxFlat.new()
+	box.bg_color = Color(0, 0, 0, 0)
+	box.set_border_width_all(int(len_px(2.0 if look["wood"] else 1.0)))
+	box.border_color = ink
+	if look["living"]:
+		box.set_corner_radius_all(int(len_px(24.0)))
+	box.content_margin_left = len_px(12.0)
+	box.content_margin_right = len_px(12.0)
+	for state: String in _STATES:
+		button.add_theme_stylebox_override(state, box)
+
+
 ## Dresses the "‹ Office" control: no box, the room's ink, as tall as a touch target.
 static func dress_back(button: Button, look: Dictionary) -> void:
 	for state: String in _BACK_COLOURS:

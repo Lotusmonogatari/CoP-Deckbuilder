@@ -163,3 +163,9 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 - Text rows the exporter says nothing asks for: `assign.already_theirs`, `assign.family_max`, `assign.give_to`, `assign.item_caption`, `assign.item_caption_one`, `assign.max_line`, `assign.outcome_line`, `assign.refuse_blocks`, `assign.refuse_locked`, `assign.take_back`, `assign.tile_nothing`, `assign.why_line`, `brand.hook`, `intro.title`, `pressure.pick`, `pressure.picked`.
 - Working-paper folders from finished, merged panels, about 210 MB in `design/review/` and 16 MB in `design/proposals/img/`: `director_shots_2026-11-17` (78 MB), `p3_text_sweep_2026-11-17` (40 MB), `p2_card_faces_2026-11-17` (32 MB), `p4_information_2026-11-17` (30 MB), `p9_ui_styles_2026-11-17` (16 MB), `p12_level_preview_2026-11-19` (7 MB), `hand_third_overlap`, `card_play_spot`, `p10_brand_b`, `card_overlap`, `report_2026-11-19`, `level_bonus_*`, `resign_hold`, and the mockups under `design/proposals/img/`. They are evidence screenshots for work already merged; they were not on the list, so they were left for Cameron's word.
 - The remote branch `review/p11-two-offices-audit` (the audit, deliberately not merged).
+
+## P13 Office screens (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen._text_size_button()`, `_image_scroll_button()`, `_image_pan_button()`, `_backup_buttons()` | The Administration screen is now drawn by `AdministrationModel` and `AdministrationView`; nothing calls these four any more. (`SettingsRows`, which the stage menu still uses, is unchanged.) |

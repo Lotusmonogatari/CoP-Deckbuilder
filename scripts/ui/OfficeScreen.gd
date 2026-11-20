@@ -2374,7 +2374,7 @@ func _show_reputation_menu() -> void:
 
 ## Campaign Pressure can be raised during a run, never lowered.
 func _raise_pressure_button() -> Button:
-	var next_tier := Difficulty.HARDER if GameState.difficulty == Difficulty.STANDARD else Difficulty.STANDARD
+	var next_tier := _next_pressure_tier()
 	var at_top := GameState.difficulty == Difficulty.HARDER
 	var button := UiKit.action_button(
 		Text.say("admin.raise_pressure", {"name": _pressure_name(next_tier)}),
@@ -2390,29 +2390,50 @@ func _raise_pressure_button() -> Button:
 
 
 func _show_administration_menu() -> void:
-	var rows: Array[Control] = [
-		_menu_button("CosmeticsButton", "office.cosmetics", _show_cosmetics, _cosmetics_panel),
-		_menu_button("HowToPlayButton", "office.how_to_play",
-			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
-		_menu_button("CharactersButton", "office.characters", _characters.open, _characters_panel),
-		_text_size_button(),
-		_image_scroll_button(),
-		_image_pan_button(),
-		_raise_pressure_button(),
-	]
-	# The save buttons sit directly in the menu's row list, so the gap between
-	# them is the same as between every other menu button.
-	rows.append_array(_backup_buttons())
-	# Starting over lives here, not in Office Management (Cameron,
-	# 2026-10-11). The menu closes first so it is not left open under the
-	# warning and the New Game screens.
-	rows.append(_menu_button("NewGameMenuButton", "office.new_game", func() -> void:
-		_administration_menu.close()
-		_confirm_new_game(), _new_game_panel))
-	# How to report a problem (2026-11-19): the two gestures, so testers know they exist.
-	for hint: String in Reporter.hint_lines():
-		rows.append(UiKit.line(hint, "SmallLabel"))
-	_administration_menu.open(Text.say("office.administration"), rows)
+	# The Office-screens frame (P13, 2026-11-20): the same controls, as grouped rows with their current value beside them.
+	# The old row list is replaced by AdministrationModel (what to show) and AdministrationView (how it is drawn).
+	var at_top := GameState.difficulty == Difficulty.HARDER
+	var actions := {
+		"redraw": _show_administration_menu,
+		"open_cosmetics": _open_over.bind(_show_cosmetics, _cosmetics_panel),
+		"open_how_to_play": _open_over.bind(HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
+		"open_characters": _open_over.bind(_characters.open, _characters_panel),
+		"backup_now": _on_backup_now,
+		"backup_restore": _confirm_backup_action.bind("restore"),
+		"backup_undo": _confirm_backup_action.bind("undo"),
+		# Starting over lives here, not in Office Management (Cameron, 2026-10-11). The menu closes first so it is not
+		# left open under the warning and the New Game screens.
+		"new_game": func() -> void:
+			_administration_menu.close()
+			_confirm_new_game(),
+		"pressure": {
+			"title": Text.say("new_game.pressure_heading"),
+			"now": Text.say("admin.pressure_now", {"name": _pressure_name(GameState.difficulty)}),
+			"blurb": _pressure_blurb(GameState.difficulty if at_top else _next_pressure_tier()),
+			"button": _raise_pressure_button(),
+		},
+	}
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("office.administration"),
+		"subtitle": Text.say("office.subtitle_jp_administration"),
+		"chips": [],
+		"rows": AdministrationView.cards(AdministrationModel.build(actions)),
+	})
+	_administration_menu.open_frame(frame, Text.say("ui.back_office"))
+
+
+## Runs `opener` (which opens `panel`) and then brings `panel` to the front. Panels are drawn in the order they were
+## added, and the menus were added after some of them, so without this the menu would sit on top of the very panel it
+## just opened (what _menu_button does for the other menus).
+func _open_over(opener: Callable, panel: Overlay) -> void:
+	opener.call()
+	move_child(panel, get_child_count() - 1)
+
+
+## The tier the Raise Political Pressure button would go to.
+func _next_pressure_tier() -> String:
+	return Difficulty.HARDER if GameState.difficulty == Difficulty.STANDARD else Difficulty.STANDARD
 
 
 ## One manual backup slot (2026-10-15): "Back up now" writes it; "Restore"

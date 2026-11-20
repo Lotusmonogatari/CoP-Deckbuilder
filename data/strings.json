@@ -9210,5 +9210,96 @@
     "english": "‹ Office",
     "placeholders": null,
     "notes": "P13 (2026-11-20): the spec's back control. Claude's draft."
+  },
+  {
+    "key": "admin.group_display",
+    "where": "Administration — group heading",
+    "english": "Display",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.group_save",
+    "where": "Administration — group heading",
+    "english": "Save",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.group_help",
+    "where": "Administration — group heading",
+    "english": "Help",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.pressure_now",
+    "where": "Administration — Political Pressure box, the tier in force",
+    "english": "Now: {name}",
+    "placeholders": "name",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.label_text_size",
+    "where": "Administration — Display row label",
+    "english": "Text size",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.label_scroll_speed",
+    "where": "Administration — Display row label",
+    "english": "Scroll speed",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.label_image_scroll",
+    "where": "Administration — Display row label",
+    "english": "Image Scroll",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.label_image_pan",
+    "where": "Administration — Display row label",
+    "english": "Image Pan",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.chip_open",
+    "where": "Administration — value chip on a row that opens a page",
+    "english": "Open",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.chip_save",
+    "where": "Administration — value chip on the Save Game row",
+    "english": "Save",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.chip_load",
+    "where": "Administration — value chip on the Load Game row",
+    "english": "Load",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.chip_undo",
+    "where": "Administration — value chip on the Undo row",
+    "english": "Undo",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_administration",
+    "where": "Administration — the small Japanese accent under the title",
+    "english": "管理",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
   }
 ]

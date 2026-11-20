@@ -43,11 +43,21 @@ static func scroll_speed_button(on_changed: Callable) -> Button:
 
 
 static func text_size_label() -> String:
+	return Text.say("office.text_size", {"size": text_size_word()})
+
+
+## The word for the text size in use ("Normal"), without its label: the Administration screen shows it as a value.
+static func text_size_word() -> String:
 	var word := Text.say("text_size.normal")
 	match Layout.text_size_setting:
 		TextScale.SMALL: word = Text.say("text_size.small")
 		TextScale.LARGE: word = Text.say("text_size.large")
-	return Text.say("office.text_size", {"size": word})
+	return word
+
+
+## "On" or "Off" for a switch.
+static func on_off_word(enabled: bool) -> String:
+	return Text.say("settings.on") if enabled else Text.say("settings.off")
 
 
 static func _button(node_name: String, label: String, flip: Callable, on_changed: Callable) -> Button:

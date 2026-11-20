@@ -62,6 +62,8 @@ func setup(config: Dictionary) -> void:
 	_scroll.name = "FrameScroll"
 	_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	# Drags and wheels still scroll it; no bar is drawn beside the cards (the mockups have none).
+	_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 	column.add_child(_scroll)
 	DragScroll.attach(_scroll)
 	_body = VBoxContainer.new()
