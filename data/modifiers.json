@@ -281,7 +281,7 @@
     "name_jp": "漁協の支援",
     "romaji": "Gyokyō no Shien",
     "trigger_segment_or_booster": [
-      "BO10"
+      "BO07"
     ],
     "trigger_min_pct": 25.0,
     "effect": "Funds +15,000円 after successful completion of a level.",
@@ -295,7 +295,7 @@
     "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
-      "BO10"
+      "BO07"
     ]
   },
   {
@@ -445,13 +445,13 @@
       "BO07"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "ST13 Committee on Agriculture starts with +15 Favorability.",
+    "effect": "ST10 Committee on the Environment starts with +10 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
     "effect_type": "STAGE_START_BONUS",
-    "effect_target": "ST13; ST127",
-    "effect_value": 15.0,
+    "effect_target": "ST10; ST126; ST150; ST177; ST230",
+    "effect_value": 10.0,
     "duration_units": null,
     "required_standing": 45,
     "trigger_segment_ids": [],
@@ -514,13 +514,13 @@
       "BO10"
     ],
     "trigger_min_pct": 30.0,
-    "effect": "ST10 Committee on the Environment starts with +10 Favorability.",
+    "effect": "ST13 Committee on Agriculture starts with +15 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
     "effect_type": "STAGE_START_BONUS",
-    "effect_target": "ST10; ST126; ST150; ST177; ST230",
-    "effect_value": 10.0,
+    "effect_target": "ST13; ST127",
+    "effect_value": 15.0,
     "duration_units": null,
     "required_standing": 45,
     "trigger_segment_ids": [],

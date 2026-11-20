@@ -17,9 +17,9 @@
       "positioning": "Liberal",
       "element_1": "Earnest",
       "element_2": "Emotional",
-      "region": "Sōya",
-      "district_name": "Sōya - Wakkanai",
-      "district_type": "Single Member",
+      "region": "Aomori",
+      "district_name": "Aomori Proportional Block 3",
+      "district_type": "Proportional Block",
       "starting_items": {
         "SH21": 1,
         "SH15": 2,
@@ -97,9 +97,9 @@
       "positioning": "Traditionalist",
       "element_1": "Appeal",
       "element_2": "Duplicitous",
-      "region": "Aomori",
-      "district_name": "Aomori Proportional Block 3",
-      "district_type": "Proportional Block",
+      "region": "Sōya",
+      "district_name": "Sōya - Wakkanai",
+      "district_type": "Single Member",
       "starting_items": {
         "SH21": 1,
         "SH25": 1
