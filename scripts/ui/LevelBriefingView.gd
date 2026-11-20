@@ -155,6 +155,14 @@ static func _title_row(view: Dictionary, look: Dictionary) -> Control:
 		LevelBriefingStyles.SIZE_SMALL + 1.0, look["on_ground_muted"], false)
 	meta.name = "Meta"
 	text.add_child(meta)
+	# A mixed level says its trips are in the hours (Information Standard 1; two offices, 2026-11-20).
+	var travel_hours := int(view.get("travel_hours", 0))
+	if travel_hours > 0:
+		var travel := _label(Text.say("briefing.travel_included", {"count": travel_hours,
+			"mode": TravelText.mode_name(str(view.get("travel_mode", ""))).to_lower()}),
+			LevelBriefingStyles.SIZE_SMALL + 1.0, look["on_ground_muted"], false)
+		travel.name = "TravelIncluded"
+		text.add_child(travel)
 	var badge := LevelBriefingStyles.hours_badge(look, int(view.get("hours", 0)))
 	badge.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	row.add_child(badge)

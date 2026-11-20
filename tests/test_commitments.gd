@@ -33,6 +33,7 @@ func test_a_missing_item_is_named_in_words() -> void:
 
 func test_paying_spends_the_hours_the_funds_and_the_item() -> void:
 	GameState.meta["Funds"] = 100000
+	GameState.inventory.erase("SH25")   # PC01 now starts with the Aomori apples (the districts swapped, 2026-11-20)
 	GameState.add_item("SH25")
 	var hours_before := WeekCalendar.hours_left(GameState.calendar, GameState.calendar_config())
 	GameState.pay_commitments(LIST)

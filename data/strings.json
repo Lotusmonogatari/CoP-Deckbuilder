@@ -9028,5 +9028,201 @@
     "english": "Go in · 1 hour",
     "placeholders": null,
     "notes": "2026-11-19 P12 level preview (Claude's draft)"
+  },
+  {
+    "key": "travel.button",
+    "where": "Office, the button under Choose a level: where a trip goes, its hours and how",
+    "english": "To {place} · {count} h · {mode}",
+    "placeholders": "place, count, mode",
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.confirm_title",
+    "where": "Trip popup, heading",
+    "english": "Take the trip?",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.confirm_line",
+    "where": "Trip popup: where, how long, how, and what it costs",
+    "english": "Go to {place}: {count} h by {mode}. {cost}",
+    "placeholders": "place, count, mode, cost",
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.cost_free",
+    "where": "Trip popup: the rail pass costs no Funds",
+    "english": "Free on the member's rail pass.",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.after_line",
+    "where": "Trip popup: the week's hours left after the trip",
+    "english": "You will have {count} h left this week.",
+    "placeholders": "count",
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.level_waiting",
+    "where": "Trip popup: a crisis level is waiting at the office the trip goes to",
+    "english": "A level is waiting for you at {place}: {level}.",
+    "placeholders": "place, level",
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.confirm_go",
+    "where": "Trip popup, the button that takes the trip",
+    "english": "Take the trip",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.confirm_stay",
+    "where": "Trip popup, the button that stays",
+    "english": "Stay here",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.refuse_in_level",
+    "where": "Trip button, greyed: a level is in progress",
+    "english": "Finish the level in progress first.",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.refuse_weekend",
+    "where": "Trip button, greyed: no travel at the weekend",
+    "english": "No travel at the weekend.",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.refuse_hours",
+    "where": "Trip button, greyed: the week has too few hours left",
+    "english": "The trip takes {count} h and the week has less left.",
+    "placeholders": "count",
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.refuse_elsewhere_capitol",
+    "where": "A level that starts at the Capitol, seen from the District office",
+    "english": "This level starts at the Capitol. Travel there first.",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.refuse_elsewhere_district",
+    "where": "A level that starts at the District office, seen from the Capitol",
+    "english": "This level starts at your District office. Travel there first.",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.mode_pass",
+    "where": "A way to travel: the member's rail pass",
+    "english": "Rail pass",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.mode_ticket",
+    "where": "A way to travel: a paid train ticket",
+    "english": "Paid train ticket",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.mode_car",
+    "where": "A way to travel: a private car",
+    "english": "Private car",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.mode_plane",
+    "where": "A way to travel: a plane ticket",
+    "english": "Plane ticket",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.place_capitol",
+    "where": "A trip's destination",
+    "english": "the Capitol",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.district_plain",
+    "where": "A trip's destination when the protagonist has no District office town in the data",
+    "english": "your District office",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.here_capitol",
+    "where": "Office, the line about where you are",
+    "english": "You are at the Capitol.",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.here_district",
+    "where": "Office, the line about where you are",
+    "english": "You are at your District office in {place}.",
+    "placeholders": "place",
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.here_district_plain",
+    "where": "Office, the line about where you are, no town in the data",
+    "english": "You are at your District office.",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.forced_move",
+    "where": "Office: an appointment at one office has taken you there",
+    "english": "This appointment is at {place}, so you have been taken there.",
+    "placeholders": "place",
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "briefing.location_capitol",
+    "where": "Level briefing and level list: a level that starts at the Capitol",
+    "english": "Capitol",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "briefing.location_district",
+    "where": "Level briefing and level list: a level that starts at the District office",
+    "english": "District office",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "briefing.location_either",
+    "where": "Level list: a level that starts at either office",
+    "english": "Either office",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "briefing.travel_included",
+    "where": "Level briefing, under the meta line: a mixed level's trips are in its hours",
+    "english": "Includes {count} h of travel by {mode}",
+    "placeholders": "count, mode",
+    "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "office.level_travel_line",
+    "where": "Level list: a mixed level's trips are in its hours",
+    "english": "includes {count} h of travel between the offices",
+    "placeholders": "count",
+    "notes": "2026-11-20 two offices (Claude's draft)"
   }
 ]
