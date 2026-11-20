@@ -76,15 +76,6 @@ static func _favor_status(patron_bills: Array, statuses: Dictionary, org: String
 	return ""
 
 
-## How many more requests may be shown right now (waiting at once is a lever).
-static func room_to_open(statuses: Dictionary, balance: Dictionary) -> int:
-	var shown := 0
-	for id: String in statuses:
-		if statuses[id] == OPEN or statuses[id] == ACCEPTED:
-			shown += 1
-	return maxi(0, int(balance.get("patron_requests_waiting_at_once", 2)) - shown)
-
-
 static func decline_cost(kind: String, balance: Dictionary) -> int:
 	if kind == FLAGSHIP:
 		return int(balance.get("patron_flagship_decline_cost", 10))

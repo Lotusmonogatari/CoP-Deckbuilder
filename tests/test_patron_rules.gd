@@ -122,13 +122,6 @@ func test_requests_come_due_at_the_threshold_and_flagships_wait_for_the_favor() 
 	assert_eq(PatronRequests.due(bills, {"BO05": 65}, {"PB051": "failed"}, balance), ["PB052"])
 
 
-func test_how_many_requests_may_be_shown() -> void:
-	var balance := {"patron_requests_waiting_at_once": 2}
-	assert_eq(PatronRequests.room_to_open({}, balance), 2)
-	assert_eq(PatronRequests.room_to_open({"A": "open", "B": "accepted", "C": "waiting"}, balance), 0)
-	assert_eq(PatronRequests.room_to_open({"A": "passed", "B": "open"}, balance), 1)
-
-
 func test_decline_costs() -> void:
 	var balance := DataDB.balance
 	assert_eq(PatronRequests.decline_deltas({"organization": "BO05", "kind": "Favor"}, balance),

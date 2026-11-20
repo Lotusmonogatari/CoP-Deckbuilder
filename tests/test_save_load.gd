@@ -212,7 +212,6 @@ func test_the_manual_backup_is_a_separate_slot_that_restores() -> void:
 	assert_false(SaveManager.has_backup())
 	assert_true(SaveManager.backup_now())
 	assert_true(SaveManager.has_backup())
-	assert_ne(SaveManager.backup_time(), "")
 	GameState.xp = 5
 	assert_true(SaveManager.restore_backup())
 	assert_eq(GameState.xp, 77)

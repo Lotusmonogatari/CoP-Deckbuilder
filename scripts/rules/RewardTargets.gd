@@ -74,18 +74,6 @@ static func is_booster(target_id: String) -> bool:
 	return kind_of(target_id) == BOOSTER
 
 
-static func is_modifier(target_id: String) -> bool:
-	return kind_of(target_id) == MODIFIER
-
-
-static func is_shop_item(target_id: String) -> bool:
-	return kind_of(target_id) == SHOP_ITEM
-
-
-static func is_segment(target_id: String) -> bool:
-	return kind_of(target_id) == SEGMENT
-
-
 static func is_booster_tier(target_id: String) -> bool:
 	return kind_of(target_id) == BOOSTER_TIER
 

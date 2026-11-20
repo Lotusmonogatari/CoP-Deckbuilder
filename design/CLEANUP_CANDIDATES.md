@@ -135,3 +135,31 @@ The redesigned briefing no longer asks for these Text rows. Where any code still
 
 Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its data (`LevelBriefing`'s rooms, kept so the loss costs can come back) without showing them. The exporter already prints the rows nothing asks for (`level_hours`, `rewards`, `stage_fallback`, `stage_hours`, `total_rewards`, `office.go_in`); the others on this list are asked for only by `LevelBonusView.rows()`. Removing these Text rows means `python3 tools/export_data.py --accept-wording` to refresh the wording snapshot.
 
+
+## Cleanup pass (2026-11-20, Cameron: "execute the cleanup")
+
+**Removed (still in git history):**
+
+| What | Detail |
+|---|---|
+| The old Level Bonus block | `scripts/ui/LevelBonusView.gd` (nothing used it since the P12 briefing) and `LevelBonus.chip_numbers()` with its test. |
+| The P12 retired Text rows (14) | `briefing.level_hours` (and `.one`), `briefing.stage_hours` (and `.one`), `briefing.stage_fallback`, `briefing.total_rewards`, `briefing.rewards`, `briefing.bullet`, `briefing.level_bonus`, `briefing.level_bonus_orgs`, `briefing.xp_growth_range`, `reward.delta_range`, `reward.chip_range`, `office.go_in` (workbook script: `tools/workbook/archive/cleanup_2026-11-20.py`). |
+| Code only its own tests called | `scripts/rules/StageCarryOver.gd` and its test; `SaveManager.backup_time()`; `RewardTargets.is_modifier()`, `is_shop_item()` and `is_segment()`; `PatronRequests.room_to_open()` and its test; `BillName.sentence_start()`. |
+
+**Kept on purpose, with the reason:**
+
+| What | Why |
+|---|---|
+| `design/game_design_artifact.html` | The check was done: it is not an older copy of `GAME_DESIGN.md` but the HTML the game design page is published from (its commit says so). |
+| The 17 papers whose file names code or tools mention (balance audits, `DYNAMIC_SCREEN_PLAN`, `MECHANIC_COVERAGE`, `CHOICE_AUDIT`, `MC2T_TEST_KIT` and nine plans in `design/proposals/`) | Code comments cite them as the source of a rule (for example `inventory.md` from about twenty files); deleting them would leave the comments pointing nowhere. |
+| `design/bench/`, `design/archive/`, the "Ideas not built" group, the MC²T papers | As before: bots read and write the bench folder; the others were marked keep. |
+| Test helpers: `HandPresenter.view_for`, `CueBanner.current_line`, `MessagePresenter.is_saying_something`, `ListeningStrip.listener_ids`, `DataDB.is_loaded`, `IntentRunner.set_position`, `HowToPlay.unresolved_tokens`, `BarModel.totals_balance`, `Ledger.deck_is_legal` | Click tests, bots or real tests use them to look inside a screen or set up a state. |
+| `Ledger.can_buy_card`, `can_buy_modifier`, `can_hire_staff`, `can_upgrade_staff`, `can_fire_staff` | Thin wrappers whose tests are the only coverage of the rules under them; removing them means rewriting those tests. |
+| `LevelRunner.progress_caption()` and `variable_rewards()` | Not called by the game, but removing them would orphan Text rows (`caption.stage`, `reward.by_finish`, `reward.head_start`, `reward.standing` is still used); a pass of its own. |
+| Shop effect code and columns no item uses (the 2026-11-17 list), the unread workbook columns (the 2026-11 audit list) and `segment_favorability` | They are part of the workbook's schema, and removing a column or an effect a content author could still use is a schema change that needs its own go. |
+
+**New candidates found by this pass (nothing deleted):**
+
+- Text rows the exporter says nothing asks for: `assign.already_theirs`, `assign.family_max`, `assign.give_to`, `assign.item_caption`, `assign.item_caption_one`, `assign.max_line`, `assign.outcome_line`, `assign.refuse_blocks`, `assign.refuse_locked`, `assign.take_back`, `assign.tile_nothing`, `assign.why_line`, `brand.hook`, `intro.title`, `pressure.pick`, `pressure.picked`.
+- Working-paper folders from finished, merged panels, about 210 MB in `design/review/` and 16 MB in `design/proposals/img/`: `director_shots_2026-11-17` (78 MB), `p3_text_sweep_2026-11-17` (40 MB), `p2_card_faces_2026-11-17` (32 MB), `p4_information_2026-11-17` (30 MB), `p9_ui_styles_2026-11-17` (16 MB), `p12_level_preview_2026-11-19` (7 MB), `hand_third_overlap`, `card_play_spot`, `p10_brand_b`, `card_overlap`, `report_2026-11-19`, `level_bonus_*`, `resign_hold`, and the mockups under `design/proposals/img/`. They are evidence screenshots for work already merged; they were not on the list, so they were left for Cameron's word.
+- The remote branch `review/p11-two-offices-audit` (the audit, deliberately not merged).

@@ -2065,13 +2065,6 @@
     "notes": "A fallback only — every real level has its own description, so this cannot currently show."
   },
   {
-    "key": "office.go_in",
-    "where": "Office screen — level briefing button",
-    "english": "Go in",
-    "placeholders": null,
-    "notes": null
-  },
-  {
     "key": "office.levels_title",
     "where": "Office screen — Levels panel",
     "english": "Levels",
@@ -2560,13 +2553,6 @@
     "english": "{name}  ·  standing {have}, needs {needed}",
     "placeholders": "name, have, needed",
     "notes": "2026-10-15 text pass: was typed in OfficeScreen.gd."
-  },
-  {
-    "key": "briefing.stage_fallback",
-    "where": "Level briefing — a stage with no name",
-    "english": "A stage",
-    "placeholders": null,
-    "notes": "Fallback only; every real stage has a name."
   },
   {
     "key": "visitor.fallback_name",
@@ -5551,59 +5537,10 @@
     "notes": null
   },
   {
-    "key": "briefing.level_hours",
-    "where": "Level briefing, under the title: how long the whole level takes on the calendar",
-    "english": "Total Workload Duration: {count} Hours",
-    "placeholders": "count",
-    "notes": null
-  },
-  {
-    "key": "briefing.level_hours.one",
-    "where": "Level briefing, the same line for exactly one hour",
-    "english": "Total Workload Duration: {count} Hour",
-    "placeholders": "count",
-    "notes": null
-  },
-  {
-    "key": "briefing.stage_hours",
-    "where": "Level briefing, under each stage's name: how long that stage takes",
-    "english": "Duration: {count} Hours",
-    "placeholders": "count",
-    "notes": null
-  },
-  {
-    "key": "briefing.stage_hours.one",
-    "where": "Level briefing, the same line for exactly one hour",
-    "english": "Duration: {count} Hour",
-    "placeholders": "count",
-    "notes": null
-  },
-  {
-    "key": "briefing.total_rewards",
-    "where": "Level briefing, above the bullets of every stage's rewards added together",
-    "english": "Total Rewards:",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "briefing.rewards",
-    "where": "Level briefing, above one stage's reward bullets",
-    "english": "Rewards:",
-    "placeholders": null,
-    "notes": null
-  },
-  {
     "key": "briefing.xp_growth",
     "where": "Level briefing, the XP reward bullet; {amount} carries its sign",
     "english": "XP Growth {amount}",
     "placeholders": "amount",
-    "notes": null
-  },
-  {
-    "key": "briefing.bullet",
-    "where": "Level briefing, one reward as a bullet point",
-    "english": "● {line}",
-    "placeholders": "line",
     "notes": null
   },
   {
@@ -8706,41 +8643,6 @@
     "english": "Keep holding while the screen darkens. Let go to stop.",
     "placeholders": null,
     "notes": "2026-11-19 Cameron: hold to resign (Claude's draft)"
-  },
-  {
-    "key": "briefing.level_bonus",
-    "where": "Level briefing, above the level bonus lines: what winning the whole level pays on top of its rooms",
-    "english": "Level Bonus (paid if you win the whole level):",
-    "placeholders": null,
-    "notes": "2026-11-19 level bonus briefing (Claude's draft)"
-  },
-  {
-    "key": "briefing.level_bonus_orgs",
-    "where": "Level briefing, above the level bonus's organization chips",
-    "english": "Standing with organizations:",
-    "placeholders": null,
-    "notes": "2026-11-19 level bonus briefing (Claude's draft)"
-  },
-  {
-    "key": "briefing.xp_growth_range",
-    "where": "Level briefing, the XP level bonus as a range; {low} and {high} carry their signs",
-    "english": "XP Growth {low} to {high}",
-    "placeholders": "low, high",
-    "notes": "2026-11-19 level bonus briefing (Claude's draft)"
-  },
-  {
-    "key": "reward.delta_range",
-    "where": "Level briefing, a meter's level bonus as a range; {low} and {high} carry their signs",
-    "english": "{name} {low} to {high}",
-    "placeholders": "name, low, high",
-    "notes": "2026-11-19 level bonus briefing (Claude's draft)"
-  },
-  {
-    "key": "reward.chip_range",
-    "where": "Level briefing, an organization chip's level bonus range (a short label on a small icon)",
-    "english": "{low}–{high}",
-    "placeholders": "low, high",
-    "notes": "2026-11-19 level bonus briefing (Claude's draft)"
   },
   {
     "key": "event.decline.EV95",

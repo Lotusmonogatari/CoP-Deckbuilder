@@ -86,3 +86,12 @@ The spec's rule 5 said a mixed level's travel is built in, free and not shown. *
 | 26 | Ticket prices | **Paid train ticket 10,000円, private car 30,000円, plane ticket 60,000円** (the build's drafts were 5,000 / 15,000 / 40,000円). |
 | 27 | Spellings | **Daikoku**, Wakkanai (not "Daikoki"). **Akeno Shinmachi** (明野新町), a residential neighborhood of Tomakomai (not "Akenoshinmachi"). Both are now the Player tab's District Office. The kanji accent is not shown anywhere yet. |
 | 28 | Aomori Block 3 | **Misawa, Tohoku and Shichinohe lie inside it** (PC01's district). Six draft names for them were added to PC01's places (Misawa City Hall, Shichinohe Town Hall, Tohoku Town Office, Shichinohe-Towada Station, Lake Ogawara, Lake Ogawara's shijimi clam beds). |
+
+## Cameron's answers on the open items (2026-11-20, after the build)
+
+| # | Decision | Detail |
+|---|---|---|
+| 29 | A nudge to visit the District | **Not needed.** The Capitol list never running out is accepted. |
+| 30 | The private car's price for PC02 and PC03 | **No change** (30,000円, though it saves them no hours). |
+| 31 | LV10 for PC01 | **Fine** as it is: 41 hours on the rail pass, so it takes the plane. |
+| 32 | Four starting plane tickets for PC01 | **Sufficient for now.** |
