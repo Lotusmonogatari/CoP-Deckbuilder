@@ -29,6 +29,7 @@ var _standing_panel: Overlay = null
 var _chosen_level: Dictionary = {}
 ## Two offices (2026-11-20): the trip button under "Choose a level", and the popup that states a trip's cost first.
 var _travel_button: TravelStrip
+var _travel_page_panel: Overlay
 var _travel_panel: Overlay
 var _travel_card: TravelCard
 ## The mode the strip is set to (the rail pass or a paid ticket: both are pulled), and the mode the popup is about.
@@ -1196,17 +1197,35 @@ func _show_promises() -> void:
 	var rows: Array[Control] = []
 	if GameState.promises.is_empty():
 		rows.append(UiKit.line(Text.say("promises.none")))
+	var look := OfficeFrameStyles.look()
 	for promise: Dictionary in GameState.promises:
-		rows.append(UiKit.line(Text.say("promises.row", {"what": GameState.promise_what(promise),
-			"who": GameState.promise_who(promise), "count": Promises.hours_left(promise, GameState.time_units)})))
+		# One tile for each promise (P14b, 2026-11-20): what and for whom, the time left (in the fall colour when it is close),
+		# the office it can be kept at, and Keep, greyed with its reason when it cannot be kept yet.
+		var tile := PanelContainer.new()
+		tile.name = "PromiseTile_" + str(promise.get("id", ""))
+		tile.add_theme_stylebox_override("panel", LevelBriefingStyles.tile_box(look))
+		tile.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var inside := VBoxContainer.new()
+		inside.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(6.0)))
+		tile.add_child(inside)
+		var hours_left := Promises.hours_left(promise, GameState.time_units)
+		var due := UiKit.line(Text.say("promises.row", {"what": GameState.promise_what(promise),
+			"who": GameState.promise_who(promise), "count": hours_left}))
+		due.custom_minimum_size.x = 0.0
+		inside.add_child(due)
+		if hours_left <= Levers.whole("travel_promise_warning_hours"):
+			due.add_theme_color_override("font_color", look["down"])
 		# Where it can be kept (two offices, 2026-11-20): a badge for a promise tied to one office.
 		var promise_office := Offices.normalize(promise.get("location"))
 		if promise_office != Offices.EITHER:
-			rows.append(UiKit.line(Text.say("promises.badge", {"place": TravelText.place_name(promise_office)}), "SmallLabel"))
+			var badge := UiKit.line(Text.say("promises.badge", {"place": TravelText.place_name(promise_office)}), "SmallLabel")
+			badge.custom_minimum_size.x = 0.0
+			inside.add_child(badge)
 		var keep := UiKit.action_button(Text.say("promises.keep"), GameState.promise_keep_refusal(promise),
 			_on_keep_promise.bind(str(promise.get("id", ""))), 100.0)
 		keep.name = "Keep_" + str(promise.get("id", ""))
-		rows.append(keep)
+		inside.add_child(keep)
+		rows.append(tile)
 	_promises_panel.open_card({"tag": Text.say("popup.tag_promises"), "title": Text.say("promises.title"), "body": rows})
 
 
@@ -2103,27 +2122,56 @@ func _show_party_detail(party_id: String) -> void:
 	var detail := GameState.party_opinion_detail(party_id)
 	var groups := PartyAllies.groups(detail["contributions"])
 	var names := BattleSetup.booster_names()
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = []
 
-	var rows: Array[Control] = [UiKit.line(Text.say("party_opinion.popup_blurb"), "SmallLabel")]
+	# --- the party card (P14b, 2026-11-20): a band in its colour, its seats and leader, and how it sees you
+	var head := OfficeFrameStyles.card(look)
+	head.name = "PartyHeadCard"
+	var head_column := head.get_node("Column") as VBoxContainer
+	var band := ColorRect.new()
+	band.name = "PartyBand"
+	band.color = colour
+	band.custom_minimum_size = Vector2(0, 14)
+	head_column.add_child(band)
+	var leader_id := str(party.get("leader_opp_id", "")) if party.get("leader_opp_id") != null else ""
+	var leader := str(DataDB.get_opponent(leader_id).get("name", "")) if not leader_id.is_empty() else ""
+	var seats := int(party.get("seats", 0)) if party.get("seats") != null else 0
+	head_column.add_child(UiKit.line(Text.say("party_opinion.seats_line" if not leader.is_empty() else "party_opinion.seats_line_no_leader",
+		{"count": seats, "leader": leader}), "HeaderLabel"))
+	var opinion := UiKit.line(Text.say("party_opinion.line", {"score": detail["opinion"], "band": _band_word(str(detail["band"]))}))
+	head_column.add_child(opinion)
+	var held := int(detail["stakeholder"])
+	head_column.add_child(UiKit.line(Text.say("party_opinion.detail", {"direct": detail["direct"],
+		"stakeholder": "—" if held == PartyOpinion.NO_SCORE else str(held)}), "SmallLabel"))
+	rows.append(head)
+	rows.append(_ground_line(Text.say("party_opinion.popup_blurb"), look))
+
+	# --- Allies, then Rivals, one card each
 	for group in ["allies", "rivals"]:
 		var is_ally: bool = group == "allies"
-		var heading := UiKit.heading(Text.say(
+		var card := OfficeFrameStyles.card(look, Text.say(
 			"party_opinion.allies_heading" if is_ally else "party_opinion.rivals_heading"))
-		if is_ally:
-			PartyLabel.apply(heading, party)
-		rows.append(heading)
-		rows.append(UiKit.line(Text.say(
+		card.name = "PartyAllies" if is_ally else "PartyRivals"
+		var column := card.get_node("Column") as VBoxContainer
+		column.add_child(UiKit.line(Text.say(
 			"party_opinion.allies_blurb" if is_ally else "party_opinion.rivals_blurb"), "SmallLabel"))
 		if (groups[group] as Array).is_empty():
-			rows.append(UiKit.line(Text.say("party_opinion.none")))
+			column.add_child(UiKit.line(Text.say("party_opinion.none")))
 		for entry: Dictionary in groups[group]:
-			rows.append(_ally_row(entry, names, colour if group == "allies" else Color.WHITE))
-	_party_detail_panel.open(str(party.get("name", party_id)), rows)
-	# Panels draw in the order they were added, and the Parties page was just
-	# moved to the front by its menu: put the popup above it.
+			column.add_child(_ally_row(entry, names, colour if is_ally else look["ink"]))
+		rows.append(card)
+
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": str(party.get("name", party_id)),
+		"subtitle": str(party.get("japanese_name", "")) if party.get("japanese_name") != null else "",
+		"chips": [],
+		"rows": rows,
+	})
+	_party_detail_panel.open_frame(frame, Text.say("ui.back"))
+	# Panels draw in the order they were added, and the Parties page was just moved to the front by its menu: put this above it.
 	move_child(_party_detail_panel, get_child_count() - 1)
-	_party_detail_panel.get_node("Margin/Scroll/Centre/Column/Heading").add_theme_color_override(
-		"font_color", colour)
 
 
 ## One organisation in the popup: its name and standing, the favorability tag,
@@ -2291,17 +2339,15 @@ func _show_law(law: Dictionary) -> void:
 	var passed := bool(law.get("passed", false))
 	var rows: Array[Control] = []
 
-	var marker := UiKit.heading(Text.say(
-		"record.law_marker_passed" if passed else "record.law_marker_failed"))
-	marker.add_theme_color_override("font_color",
-		VoteMeter.PASS_COLOUR if passed else VoteMeter.FAIL_COLOUR)
-	rows.append(marker)
+	# The PASSED or FAILED marker is the pop-up card's kind tag (P14b, 2026-11-20): green or red, and the word says it too.
+	var marker_text := Text.say("record.law_marker_passed" if passed else "record.law_marker_failed")
+	var marker_kind := PopupCardStyles.GOOD if passed else PopupCardStyles.ALARM
 
 	# A limited entry (2026-11-12, Cameron): passed or failed, and a note that
 	# stakeholders saw the player's absence. No tally and no "you voted" line.
 	if bool(law.get("absent", false)):
 		rows.append(UiKit.line(Text.say("record.law_absent_note")))
-		_law_panel.open(str(bill.get("bill_name", bill_id)), rows)
+		_law_panel.open_card({"tag": marker_text, "tag_kind": marker_kind, "title": str(bill.get("bill_name", bill_id)), "body": rows})
 		move_child(_law_panel, get_child_count() - 1)
 		return
 
@@ -2357,7 +2403,7 @@ func _show_law(law: Dictionary) -> void:
 	if not any_effect:
 		rows.append(UiKit.line(Text.say("record.law_no_effects")))
 
-	_law_panel.open(str(bill.get("bill_name", bill_id)), rows)
+	_law_panel.open_card({"tag": marker_text, "tag_kind": marker_kind, "title": str(bill.get("bill_name", bill_id)), "body": rows})
 	move_child(_law_panel, get_child_count() - 1)   # above Your Record
 
 
@@ -3946,6 +3992,9 @@ func _report_text() -> String:
 
 
 func _build_travel() -> void:
+	_travel_page_panel = Overlay.new()
+	_travel_page_panel.name = "TravelPagePanel"
+	add_child(_travel_page_panel)
 	_travel_panel = Overlay.new()
 	_travel_panel.name = "TravelPanel"
 	add_child(_travel_panel)
@@ -4058,8 +4107,69 @@ func _show_travel(mode: String = "") -> void:
 		if not waiting.is_empty() and Offices.normalize(waiting.get("location")) == destination:
 			rows.append(UiKit.line(Text.say("travel.level_waiting", {
 				"place": TravelText.place_name(destination), "level": str(waiting.get("description", ""))})))
-	_travel_panel.open(Text.say("travel.confirm_title"), rows, Text.say("travel.confirm_go"), Text.say("travel.confirm_stay"),
-		refusal.is_empty())
+	# A bottom sheet over the room (P14b, 2026-11-20): the trip's cost and what is left, with the way to the Travel page
+	# above Take the trip, and Stay here as the way out.
+	var all_trips := Button.new()
+	all_trips.name = "AllTripsButton"
+	all_trips.text = Text.say("travel.all_trips")
+	all_trips.custom_minimum_size = Vector2(0, 110)
+	all_trips.pressed.connect(_show_travel_page)
+	var foot: Array[Control] = [all_trips]
+	_travel_panel.open_card({"title": Text.say("travel.confirm_title"), "body": rows, "buttons": foot, "bottom": true},
+		Text.say("travel.confirm_go"), Text.say("travel.confirm_stay"), refusal.is_empty())
+	move_child(_travel_panel, get_child_count() - 1)   # above the Travel page when it opened this
+
+
+## The Travel page (P14b, 2026-11-20, Cameron: the full page): where you are and how many hours are left, then the
+## other office with what waits there and one button for each way you can go (the rail pass, a paid ticket, a car, a plane).
+## Pressing one opens the confirm sheet, which says the cost before anything is spent.
+func _show_travel_page() -> void:
+	var look := OfficeFrameStyles.look()
+	var destination := Offices.other(GameState.office_location)
+	var rows: Array[Control] = []
+
+	var here := OfficeFrameStyles.card(look, Text.say("travel.where_title"))
+	here.name = "TravelHereCard"
+	here.get_node("Column").add_child(UiKit.line(TravelText.here_line()))
+	here.get_node("Column").add_child(UiKit.line(Text.say("office.docket_hours", {"count": GameState.work_hours_left()}), "SmallLabel"))
+	rows.append(here)
+
+	var there := OfficeFrameStyles.card(look, Text.say("travel.destination", {"place": TravelText.place_name(destination)}))
+	there.name = "TravelDestinationCard"
+	var column := there.get_node("Column") as VBoxContainer
+	# A crisis level waiting at the other office is named, so the trip is not a surprise.
+	for trigger: String in GameState.due_special_levels():
+		var waiting := SpecialLevels.level_for(trigger, DataDB.levels)
+		if not waiting.is_empty() and Offices.normalize(waiting.get("location")) == destination:
+			column.add_child(UiKit.line(Text.say("travel.level_waiting", {
+				"place": TravelText.place_name(destination), "level": str(waiting.get("description", ""))})))
+	# A promise due soon that can only be kept where the player stands is named before they leave.
+	for promise: Dictionary in GameState.promises:
+		if Offices.normalize(promise.get("location")) == GameState.office_location \
+				and Promises.hours_left(promise, GameState.time_units) <= Levers.whole("travel_promise_warning_hours"):
+			var warning := UiKit.line(Text.say("travel.promise_warning", {"what": GameState.promise_what(promise),
+				"place": TravelText.place_name(GameState.office_location), "count": Promises.hours_left(promise, GameState.time_units)}))
+			warning.add_theme_color_override("font_color", look["down"])
+			column.add_child(warning)
+	for mode: String in GameState.travel_modes():
+		var refusal := GameState.travel_refusal(mode)
+		var held := GameState.travel_tickets(mode)
+		var button := UiKit.action_button(Text.say("travel.mode_button", {"mode": TravelText.mode_name(mode), "count": GameState.trip_hours(mode)})
+			if mode == Travel.PASS else Text.say("travel.mode_button_owned", {"mode": TravelText.mode_name(mode),
+				"count": GameState.trip_hours(mode), "owned": held}), refusal, _show_travel.bind(mode), OfficeFrameStyles.touch_height())
+		button.name = "TravelPageMode_" + mode
+		TravelText.dress_mode_icon(button, mode, 90.0)
+		column.add_child(_dress_profile_button(button, look))
+	rows.append(there)
+
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("travel.page_title"),
+		"subtitle": "",
+		"chips": EventsModel.chips(),
+		"rows": rows,
+	})
+	_travel_page_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 func _on_travel_confirmed() -> void:
@@ -4224,7 +4334,8 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 	var asked := RequestLines.patron_line(row, "request_line", org_name, str(bill.get("bill_name", "")))
 	if asked.is_empty():
 		asked = Text.say("request.line", {"org": org_name, "bill": str(bill.get("bill_name", ""))})
-	rows.append(UiKit.line(asked))
+	# The organization's icon beside what it asks (P14b, 2026-11-20).
+	rows.append(_with_booster_icon(org, UiKit.line(asked)))
 	rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
 	rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
 	rows.append(_readiness_line(bill))
@@ -4240,7 +4351,6 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 
 	var accept := UiKit.action_button(Text.say("request.accept"), "", _on_request_accept.bind(patron_bill_id), 110.0)
 	accept.name = "RequestAcceptButton"
-	rows.append(accept)
 
 	var live := row.duplicate()
 	live["components"] = PatronLevel.compose(patron_bill_id, GameState.enacted_components)["component_ids"]
@@ -4265,8 +4375,10 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 		str(row.get("kind", PatronRequests.FAVOR)), DataDB.balance), "org": org_name}), "",
 		_on_request_decline.bind(patron_bill_id), 90.0)
 	decline.name = "RequestDeclineButton"
-	rows.append(decline)
-	_request_panel.open(Text.say("request.title"), rows)
+	# A pop-up card: Carry it is the filled button, Decline (with its cost) the last, and the amend options scroll in the body.
+	var foot: Array[Control] = [accept, decline]
+	_request_panel.open_card({"tag": Text.say("request.title"), "title": str(bill.get("bill_name", "")), "body": rows,
+		"buttons": foot, "primary": 0})
 
 
 ## What the player's influence still lacks for this bill's vote, today
@@ -4288,21 +4400,25 @@ func _open_draft(fresh: bool = false) -> void:
 		_draft_org = ""
 		_draft_extra_visit = false
 	var by_id := ComposedBill.index(DataDB.bill_components)
+	var look := OfficeFrameStyles.look()
 	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("draft.intro", {
+	rows.append(_ground_line(Text.say("draft.intro", {
 		"xp": Levers.whole("draft_bill_xp_cost"),
-		"funds": Phrase.with_separators(Levers.whole("draft_bill_funds_cost"))})))
+		"funds": Phrase.with_separators(Levers.whole("draft_bill_funds_cost"))}), look))
 
-	rows.append(UiKit.heading(Text.say("draft.parts_heading")))
+	# --- your bill: the parts chosen, each removable, and the committee the first one decides (P14b, 2026-11-20: cards on the frame)
+	var mine_card := OfficeFrameStyles.card(look, Text.say("draft.parts_heading"))
+	mine_card.name = "DraftBillCard"
+	var mine := mine_card.get_node("Column") as VBoxContainer
 	if _draft_ids.is_empty():
-		rows.append(UiKit.line(Text.say("draft.no_parts"), "SmallLabel"))
+		mine.add_child(UiKit.line(Text.say("draft.no_parts"), "SmallLabel"))
 	for id: Variant in _draft_ids:
 		var part: Dictionary = by_id.get(str(id), {})
 		var remove := UiKit.action_button(Text.say("draft.part_selected", {
 			"label": str(part.get("short_label", id)), "phrase": str(part.get("phrase", ""))}), "",
 			_draft_toggle.bind(str(id)), 90.0)
 		remove.name = "DraftRemove_" + str(id)
-		rows.append(remove)
+		mine.add_child(_dress_profile_button(remove, look))
 	if not _draft_ids.is_empty():
 		# The first part decides the hearing committee (component plan 4.4, 2026-11-03).
 		var first: Dictionary = by_id.get(str(_draft_ids[0]), {})
@@ -4310,17 +4426,21 @@ func _open_draft(fresh: bool = false) -> void:
 		if not committee.is_empty():
 			var hearing := UiKit.line(Text.say("draft.hearing", {"committee": committee}), "SmallLabel")
 			hearing.name = "DraftHearing"
-			rows.append(hearing)
+			mine.add_child(hearing)
+	rows.append(mine_card)
 
+	# --- if it passes: the vote, what influence it needs, what it does, and the extra visit
 	if _draft_ids.size() >= DraftBill.MIN_PARTS:
+		var preview_card := OfficeFrameStyles.card(look, Text.say("draft.effects_heading"))
+		preview_card.name = "DraftPreviewCard"
+		var preview := preview_card.get_node("Column") as VBoxContainer
 		var bill := DraftBill.bill_for(_draft_ids)
-		rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
-		rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
-		rows.append(_readiness_line(bill))
+		preview.add_child(UiKit.line(RequestLines.default_vote_line(bill)))
+		preview.add_child(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
+		preview.add_child(_readiness_line(bill))
 		var own := RequestLines.own_party_line(bill, str(DataDB.player.get("party", "")))
 		if not own.is_empty():
-			rows.append(UiKit.line(own))
-		rows.append(UiKit.line(Text.say("draft.effects_heading"), "SmallLabel"))
+			preview.add_child(UiKit.line(own))
 		var draft_chips: Array = []
 		for effect: Dictionary in (bill.get("effects", []) as Array):
 			var org_id := str(effect.get("target", ""))
@@ -4328,11 +4448,9 @@ func _open_draft(fresh: bool = false) -> void:
 				continue
 			draft_chips.append({"id": org_id, "delta": int(effect.get("delta", 0))})
 		if not draft_chips.is_empty():
-			rows.append(OrgChip.row(OrgChip.merged(draft_chips), true))
-	# An extra member visit, just before the vote: a second Member Visit and
-	# Win Over a Member pair (2026-11-05). Costs hours and XP; refused, with a
-	# reason, when no member is left to win over.
-	if _draft_ids.size() >= DraftBill.MIN_PARTS:
+			preview.add_child(OrgChip.row(OrgChip.merged(draft_chips), true))
+		# An extra member visit, just before the vote: a second Member Visit and Win Over a Member pair (2026-11-05). Costs hours
+		# and XP; refused, with a reason, when no member is left to win over.
 		var extra_hours := TimeClock.units_for_stage(DataDB.get_stage(MpVisit.VISIT_STAGE)) \
 			+ TimeClock.units_for_stage(DataDB.get_stage(MpVisit.FIGHT_STAGE))
 		var extra_args := {"count": extra_hours, "xp": DraftBill.extra_visit_xp_cost()}
@@ -4343,13 +4461,18 @@ func _open_draft(fresh: bool = false) -> void:
 			Text.say("draft.extra_visit_on" if _draft_extra_visit else "draft.extra_visit_off", extra_args),
 			extra_refusal, _draft_toggle_extra_visit, 90.0)
 		extra.name = "DraftExtraVisit"
-		rows.append(extra)
-	var go := UiKit.action_button(Text.say("draft.go"), GameState.draft_refusal(_draft_ids, _draft_extra_visit), _on_draft_go, 110.0)
+		preview.add_child(_dress_profile_button(extra, look))
+		rows.append(preview_card)
+	# Draft it: the button the frame fixes at the foot while the cards scroll (greyed with its reason).
+	var go := UiKit.action_button(Text.say("draft.go"), GameState.draft_refusal(_draft_ids, _draft_extra_visit), _on_draft_go, OfficeFrameStyles.touch_height())
 	go.name = "DraftGoButton"
-	rows.append(go)
 
+	# --- add a part from: the organizations with their standing, or one organization's parts
+	var parts_card := OfficeFrameStyles.card(look, Text.say("draft.orgs_heading") if _draft_org.is_empty()
+		else str(DataDB.get_booster(_draft_org).get("name_en", _draft_org)))
+	parts_card.name = "DraftPartsCard"
+	var parts := parts_card.get_node("Column") as VBoxContainer
 	if _draft_org.is_empty():
-		rows.append(UiKit.heading(Text.say("draft.orgs_heading")))
 		var owners := {}
 		for component: Dictionary in DataDB.bill_components:
 			owners[str(component.get("owner", ""))] = true
@@ -4362,12 +4485,11 @@ func _open_draft(fresh: bool = false) -> void:
 				"standing": int(GameState.booster_standing.get(org_id, 0))}), "",
 				_draft_open_org.bind(org_id), 90.0)
 			button.name = "DraftOrg_" + org_id
-			rows.append(_with_booster_icon(org_id, button))
+			parts.add_child(_with_booster_icon(org_id, _dress_profile_button(button, look)))
 	else:
 		var back := UiKit.action_button(Text.say("draft.back_to_orgs"), "", _draft_open_org.bind(""), 90.0)
 		back.name = "DraftOrgsBack"
-		rows.append(back)
-		rows.append(UiKit.heading(str(DataDB.get_booster(_draft_org).get("name_en", _draft_org))))
+		parts.add_child(_dress_profile_button(back, look))
 		for component: Dictionary in DataDB.bill_components:
 			if str(component.get("owner", "")) != _draft_org:
 				continue
@@ -4378,8 +4500,18 @@ func _open_draft(fresh: bool = false) -> void:
 					"label": str(component.get("short_label", id)), "phrase": str(component.get("phrase", ""))}), "",
 				_draft_toggle.bind(id), 90.0)
 			part_button.name = "DraftPart_" + id
-			rows.append(part_button)
-	_draft_panel.open(Text.say("draft.title"), rows)
+			parts.add_child(_dress_profile_button(part_button, look))
+	rows.append(parts_card)
+
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("draft.title"),
+		"subtitle": "",
+		"chips": [Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}), Text.say("office.xp", {"count": GameState.xp})],
+		"rows": rows,
+		"footer": go,
+	})
+	_draft_panel.open_frame(frame, Text.say("ui.back"))
 
 
 func _draft_open_org(org_id: String) -> void:

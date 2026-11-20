@@ -132,6 +132,35 @@ func _popup(office: Node, kind: String) -> Overlay:
 			GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(DataDB.levels[0])))
 			office._show_resume_choice_if_in_level()
 			return office.get_node("ResumeChoicePanel")
+		"travelpage":
+			GameState.add_item("SH42", 2)
+			office._show_travel_page()
+			return office._travel_page_panel
+		"travelsheet":
+			GameState.add_item("SH42", 2)
+			office._show_travel_page()
+			office._show_travel()
+			return office._travel_panel
+		"party":
+			office._show_party_detail("PT03")
+			return office._party_detail_panel
+		"draft":
+			var ids: Array = []
+			for component: Dictionary in DataDB.bill_components:
+				if ids.size() < 2:
+					ids.append(str(component.get("component_id", "")))
+			office._draft_ids = ids
+			office._open_draft()
+			return office._draft_panel
+		"law":
+			office._show_law({"bill_id": "BI01", "passed": true, "yes": 58, "no": 40, "abstain": 3, "player_vote": "Yes",
+				"requirement": "Majority", "yes_needed": 51})
+			return office._law_panel
+		"promises2":
+			GameState.promises = [{"id": "PR1", "who": "Visitor A", "what": "", "due": GameState.time_units + 6, "location": "District"},
+				{"id": "PR2", "who": "Visitor B", "what": "", "due": GameState.time_units + 40}]
+			office._show_promises()
+			return office._promises_panel
 		"offer":
 			for item: Dictionary in DataDB.shop:
 				if item.get("card_tier") != null:

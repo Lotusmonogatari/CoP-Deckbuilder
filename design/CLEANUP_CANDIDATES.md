@@ -204,3 +204,10 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 | What | Why it looks removable |
 |---|---|
 | `OfficeScreen.CARD_OFFER_CHROME` (700) | The card offer is a pop-up card now; the card's own header, foot and body sizing take the room the constant reserved. Still used to scale the faces; retune before removing. |
+
+## P14b commit 3 (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen._ally_row` colour argument for rivals, `party_opinion.popup_blurb` as a heading line | The party detail draws its own cards; check before removing. |
+| `UiKit.heading` calls in the old Draft a Bill rows | Replaced by card titles. |

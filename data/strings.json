@@ -9679,5 +9679,40 @@
     "english": "{suit} {count}",
     "placeholders": "suit, count",
     "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "party_opinion.seats_line",
+    "where": "Party detail: the party's seats and who leads it",
+    "english": "{count} seats · led by {leader}",
+    "placeholders": "count, leader",
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "party_opinion.seats_line_no_leader",
+    "where": "Party detail: the party's seats when no leader is cast yet",
+    "english": "{count} seats",
+    "placeholders": "count",
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "travel.page_title",
+    "where": "Travel page: the title",
+    "english": "Travel",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "travel.where_title",
+    "where": "Travel page: the card that says where you are",
+    "english": "Where you are",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "travel.all_trips",
+    "where": "Trip confirm sheet: the button that opens the Travel page",
+    "english": "All trips",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
   }
 ]

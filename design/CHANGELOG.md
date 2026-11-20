@@ -1630,3 +1630,16 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Card look | A pop-up card with the card's name, its Japanese name as a muted line, and both faces. |
 | Inventory | The picked item's details are a bottom sheet over the grid, with Use (greyed with its reason) and Close; the same view in the Office and the battle. |
 | Tests | `tests/test_group5_cards.gd` (4). No click test changed. |
+
+## 2026-11-20: P14b commit 3: Travel, Draft a Bill, a bill to carry, the law detail, the party detail and the promises (Cameron: Go)
+
+| Part | What changed |
+|---|---|
+| Travel | The confirm after a tap on the train strip is a **bottom sheet** (the cost, what is left, the promise and crisis-level warnings, Take the trip, Stay here) with a new **All trips** button. All trips opens the full **Travel page** (Cameron: the page too): where you are and the hours left, then the other office with what waits there and one button for each way you can go (rail pass, paid ticket, car, plane), each greyed with its reason. The strip and the mode row on the Office are unchanged. |
+| Draft a Bill | On the frame: Your bill (each part removable, the hearing committee), If it passes (the vote, the influence it needs, the effects, the extra visit), Add a part from (organizations, then one organization's parts). **Draft** is fixed in the foot, greyed with its reason. |
+| A bill to carry | A pop-up card: the organization's icon and what it asks, the vote and your party's position, the rewards, the amend options in the body; **Carry** filled and **Decline** (with its cost) last. |
+| Law detail | A pop-up card whose tag is the outcome: PASSED in green or FAILED in red. |
+| Party detail | On the frame: a band in the party's colour, its seats and leader (two Text rows), how it sees you, then Allies and Rivals as cards. Rival bars are the card's ink (white on the old dark panel would vanish on a light card): `office_menus_driver.gd` now expects that. |
+| Promises | One tile for each promise: what and for whom, the time left (in the fall colour when it is close), the office, Keep. |
+| Text | `travel.page_title`, `travel.where_title`, `travel.all_trips`, `party_opinion.seats_line`, `party_opinion.seats_line_no_leader`. |
+| Tests | `tests/test_group6_bills_travel.gd` (6). One click test changed on purpose (`office_menus_driver.gd`, the rival bar colour). |

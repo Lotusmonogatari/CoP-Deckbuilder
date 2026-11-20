@@ -206,8 +206,9 @@ func _check_allies_popup(office: Node) -> void:
 		var fill := (bar.get_theme_stylebox("fill") as StyleBoxFlat).bg_color
 		if fill == want:
 			ally_colours += 1
-		elif fill != Color.WHITE:
-			_failures.append("a bar is neither the party colour nor white")
+		elif fill != OfficeFrameStyles.look()["ink"]:
+			# A rival's bar was white on the old dark panel; on the style's card it is the card's own ink (P14b, 2026-11-20).
+			_failures.append("a bar is neither the party colour nor the card ink")
 	if ally_colours == 0:
 		_failures.append("no ally bar is in the party's colour")
 	print("  allies popup: %d bars, %d in the party colour" % [bars.size(), ally_colours])
