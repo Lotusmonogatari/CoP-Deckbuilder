@@ -9658,5 +9658,26 @@
     "english": "Likely {result}",
     "placeholders": "result",
     "notes": "P14b (2026-11-20, Cameron: likely outcome on the right in green or red). Claude's draft to reword."
+  },
+  {
+    "key": "deck.filter_deck",
+    "where": "Your Deck: the switch showing only the cards in the deck being built",
+    "english": "In your deck",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "deck.filter_all",
+    "where": "Your Deck: the switch showing every card you own",
+    "english": "Collection",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "deck.suit_chip",
+    "where": "Your Deck: a suit and how many of its cards are in the deck being built",
+    "english": "{suit} {count}",
+    "placeholders": "suit, count",
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
   }
 ]

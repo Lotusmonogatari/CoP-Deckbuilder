@@ -3129,18 +3129,19 @@ func _show_card_offer() -> void:
 	counter.name = "LookCounter"
 	counter.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
-	var rows: Array[Control] = [counter]
+	# A pop-up card (P14b, 2026-11-20): "Your coach suggests" and the counter in the header, the card's two faces in the body,
+	# and at the foot Pass (only while it is not the draw's last look) above Learn it, which the card always places last.
+	var rows: Array[Control] = [counter]   # "2/3": which look of the draw this is
 	rows.append_array(faces)
-	# Pass only while it is not the draw's last look. It sits above Learn it,
-	# which the panel always places last.
+	var foot: Array[Control] = []
 	if GameState.can_pass_offered_card():
 		var pass_button := Button.new()
 		pass_button.name = "Pass"
 		pass_button.text = Text.say("rhetoric.pass")
 		pass_button.custom_minimum_size = Vector2(0, 110)
 		pass_button.pressed.connect(_on_pass_card)
-		rows.append(pass_button)
-	_card_reveal_panel.open(Text.say("rhetoric.offer_title"), rows,
+		foot.append(pass_button)
+	_card_reveal_panel.open_card({"tag": Text.say("rhetoric.offer_title"), "body": rows, "buttons": foot},
 		Text.say("rhetoric.learn", {"price": _offer_price_text(
 			DataDB.get_shop_item(str(draw.get("item_id", ""))))}))
 
@@ -3198,8 +3199,12 @@ func _show_card_look(card_id: String) -> void:
 	if card.is_empty():
 		return
 	var rows: Array[Control] = []
+	# The Japanese name sits beside the English one as a muted line (Standard 6).
+	var japanese := str(card.get("name_jp", "")) if card.get("name_jp") != null else ""
+	if not japanese.is_empty():
+		rows.append(UiKit.line(japanese, "SmallLabel"))
 	rows.append_array(_card_faces(card, CARD_LOOK_CHROME))
-	_card_look_panel.open(str(card.get("name_en", card_id)), rows)
+	_card_look_panel.open_card({"title": str(card.get("name_en", card_id)), "body": rows})
 
 
 ## The deck: which of the cards you own are going in.
@@ -3221,7 +3226,13 @@ func _deck_refusal() -> String:
 	return Ledger.deck_refusal(_draft_deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
 
 
-## The Your Deck tab: how many are chosen, the hint, then the cards you own in one card (tap to pick or drop, View to look).
+## Which cards the Your Deck tab lists: "all" (the collection: every card you own, the ones left out dimmed) or "deck"
+## (only the ones going in).
+var _deck_view := "all"
+
+
+## The Your Deck tab (P14b, 2026-11-20): how many are chosen, the hint, the suit counts of the deck being built, a switch
+## between In your deck and the Collection, and the cards in two columns (tap to pick or drop, View to look).
 func _deck_cards(look: Dictionary) -> Array[Control]:
 	var size := GameState.deck_size()
 	var refusal := _deck_refusal()
@@ -3232,15 +3243,74 @@ func _deck_cards(look: Dictionary) -> Array[Control]:
 	chosen.custom_minimum_size.x = 0.0
 	chosen.add_theme_color_override("font_color", look["on_ground"])
 	var rows: Array[Control] = [chosen, _ground_line(Text.say("office.deck_tap"), look)]
+	rows.append(_deck_suit_chips(look))
+	rows.append(_deck_view_switch(look))
 	var card := OfficeFrameStyles.card(look)
 	card.name = "DeckCard"
+	var grid := GridContainer.new()
+	grid.name = "DeckGrid"
+	grid.columns = 2
+	grid.add_theme_constant_override("h_separation", int(OfficeFrameStyles.len_px(10.0)))
+	grid.add_theme_constant_override("v_separation", int(OfficeFrameStyles.len_px(10.0)))
 	for card_id: String in GameState.owned_cards:
 		var data := DataDB.get_card(card_id)
 		if data.is_empty():
 			continue
-		card.get_node("Column").add_child(_deck_row(data, card_id))
+		if _deck_view == "deck" and not _draft_deck.has(card_id):
+			continue
+		var tile := _deck_row(data, card_id)
+		tile.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		grid.add_child(tile)
+	card.get_node("Column").add_child(grid)
 	rows.append(card)
 	return rows
+
+
+## One chip for each suit in the deck being built, with its count: the balance of the deck at a glance.
+func _deck_suit_chips(look: Dictionary) -> Control:
+	var counts := {}
+	for card_id: String in _draft_deck:
+		var suit := str(DataDB.get_card(card_id).get("suit", ""))
+		if not suit.is_empty():
+			counts[suit] = int(counts.get(suit, 0)) + 1
+	var flow := HFlowContainer.new()
+	flow.name = "DeckSuits"
+	flow.add_theme_constant_override("h_separation", int(OfficeFrameStyles.len_px(8.0)))
+	flow.add_theme_constant_override("v_separation", int(OfficeFrameStyles.len_px(8.0)))
+	var suits: Array = counts.keys()
+	suits.sort()
+	for suit: String in suits:
+		var chip := OfficeFrameStyles.chip(look, Text.say("deck.suit_chip", {"suit": suit, "count": int(counts[suit])}))
+		# A chip stays on one line: the row builder would otherwise let its words wrap letter by letter.
+		var words := chip.find_child("ChipText", true, false) as Label
+		if words != null:
+			words.set_meta(UiKit.ONE_LINE_META, true)
+			words.autowrap_mode = TextServer.AUTOWRAP_OFF
+		chip.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		flow.add_child(chip)
+	return flow
+
+
+## "In your deck" and "Collection": two buttons, the one showing filled. Redraws the tab.
+func _deck_view_switch(look: Dictionary) -> Control:
+	var row := HBoxContainer.new()
+	row.name = "DeckViewSwitch"
+	row.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
+	for entry: Array in [["deck", "deck.filter_deck"], ["all", "deck.filter_all"]]:
+		var button := Button.new()
+		button.name = "DeckView_" + str(entry[0])
+		button.text = Text.say(str(entry[1]))
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+		button.pressed.connect(_on_deck_view.bind(str(entry[0])))
+		ConversationStyles.dress_button(button, look, _deck_view == str(entry[0]))
+		row.add_child(button)
+	return row
+
+
+func _on_deck_view(view: String) -> void:
+	_deck_view = view
+	_build_deck_screen()
 
 
 ## "Take these in", the fixed button under the Your Deck tab: only while the deck can be taken in. A half-built deck
@@ -3260,38 +3330,37 @@ func _deck_row(card: Dictionary, card_id: String) -> Control:
 
 	var box := UiKit.tight_column()
 
-	# The name goes on the button and the effect underneath it. Both on the
-	# button ran a long card off the side of the screen and gave the panel a
-	# horizontal scrollbar.
-	# The cost goes first, because that is what the choice turns on: a deck
-	# of twelve threes cannot be played three energy at a time.
-	#
-	# The PRINTED cost, not what a battle would charge. There is no battle
-	# here, so there is no discount to apply and no engine to ask.
+	# A tile in the two-column grid: the pick-or-drop button with the cost first (what the choice turns on: a deck of twelve
+	# threes cannot be played three energy at a time), the effect under it, and View below. The PRINTED cost, not what a
+	# battle would charge: there is no battle here, so no discount to apply.
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 80)
 	button.text = "%s  %d  %s" % [
 		"✓" if chosen else "–", int(card.get("cost", 0)), card.get("name_en", card_id)]
 	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.pressed.connect(_on_toggle_card.bind(card_id))
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	# View sits beside the pick/drop button and shows both faces of the card.
+	box.add_child(button)
+
+	var effect := UiKit.line(str(card.get("effect_text", "")), "SmallLabel")
+	effect.custom_minimum_size.x = 0.0
+	box.add_child(effect)
+
+	# View shows both faces of the card.
 	var view := Button.new()
 	view.name = "ViewCard_" + card_id
 	view.text = Text.say("office.deck_view")
-	view.custom_minimum_size = Vector2(190, 80)
+	view.custom_minimum_size = Vector2(0, 80)
 	view.pressed.connect(_show_card_look.bind(card_id))
-	var line := HBoxContainer.new()
-	line.add_theme_constant_override("separation", 12)
-	line.add_child(button)
-	line.add_child(view)
-	box.add_child(line)
+	box.add_child(view)
+	var look := OfficeFrameStyles.look()
+	OfficeFrameStyles.dress_card_button(button, look, true)
+	OfficeFrameStyles.dress_card_button(view, look, true)
+	button.custom_minimum_size.y = 80.0
+	view.custom_minimum_size.y = 80.0
 
-	var effect := UiKit.line(str(card.get("effect_text", "")), "SmallLabel")
-	box.add_child(effect)
-
-	# Dimmed as a whole when it is being left out, so the deck reads at a
-	# glance rather than by hunting for ticks.
+	# Dimmed as a whole when it is being left out, so the deck reads at a glance rather than by hunting for ticks.
 	if not chosen:
 		box.modulate = Color(1, 1, 1, 0.5)
 	return box

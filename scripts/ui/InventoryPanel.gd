@@ -139,13 +139,13 @@ func show_item(item_id: String) -> void:
 	# (2026-11-12, Cameron).
 	var no_time := "" if not refusal.is_empty() or context != Items.OFFICE \
 		else GameState.item_hours_refusal(item)
+	# The picked item's details are a bottom sheet over the grid (P14b, 2026-11-20): the same pop-up card the Office uses, at the
+	# foot, with Use (greyed with its reason when it cannot be used) and Close.
+	var sheet := {"title": str(item.get("name", item_id)), "body": rows, "bottom": true}
 	if not no_time.is_empty():
-		open(str(item.get("name", item_id)), rows, no_time, Text.say("item.close"), false)
+		open_card(sheet, no_time, Text.say("item.close"), false)
 		return
-
-	open(str(item.get("name", item_id)), rows,
-		Text.say("item.use") if refusal.is_empty() else "",
-		Text.say("item.close"))
+	open_card(sheet, Text.say("item.use") if refusal.is_empty() else "", Text.say("item.close"))
 
 
 ## The icon file name for an item: its Icon cell, or its ID when blank.

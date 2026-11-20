@@ -132,6 +132,15 @@ func _popup(office: Node, kind: String) -> Overlay:
 			GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(DataDB.levels[0])))
 			office._show_resume_choice_if_in_level()
 			return office.get_node("ResumeChoicePanel")
+		"offer":
+			for item: Dictionary in DataDB.shop:
+				if item.get("card_tier") != null:
+					GameState.meta["Funds"] = 1000000
+					GameState.xp = 100000
+					GameState.offer_random_card(str(item.get("item_id", "")))
+					break
+			office._show_card_offer()
+			return office._card_reveal_panel
 		"hosted":
 			GameState.hosted_session = {"hosted_id": str(DataDB.hosted_events[0].get("hosted_id", ""))}
 			office._hosted_panel.begin()

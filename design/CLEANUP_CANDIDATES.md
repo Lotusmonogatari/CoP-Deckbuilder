@@ -198,3 +198,9 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 | `OfficeScreen.STAFF_TOP_GAP` | The staff profile is a frame now; nothing leaves air above the picture. |
 | `StaffAssignmentsView.rows()`'s no-staff branch headings and `UiKit.heading` calls for the old section titles | The staff-present branch uses cards with titles; the no-staff branch still uses plain headings. |
 | `StaffAssignmentsView.PLAIN_FRAME` and the dark staff card colours | The person card is the style's card now; the chips keep their own tiles. |
+
+## P14b commit 2 (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen.CARD_OFFER_CHROME` (700) | The card offer is a pop-up card now; the card's own header, foot and body sizing take the room the constant reserved. Still used to scale the faces; retune before removing. |

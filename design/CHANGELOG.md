@@ -1620,3 +1620,13 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Staff profile | On the frame as cards: identity (picture, role, flavor, hiring cost, biography), Loyalty and pay with Raise pay and Thank, Bonuses by rank, and one actions card where **Fire is last, drawn in the fall colour**. Hire for a candidate. |
 | Rhetoric Training | Already cards on the frame from P13. It now names a coaching coupon you hold (the coupon is redeemed from your items for a free session; the spec's line "your next session is free" would have said something the game does not do, so the Text row is reworded). |
 | Tests | `tests/test_group4_staff.gd` (3): every hired person has a card and Confirm is in the foot, the profile's cards with Fire last, the coupon note. No click test changed. |
+
+## 2026-11-20: P14b commit 2: Your Deck, the card offer, the card look and the inventory sheet (Cameron: Go)
+
+| Part | What changed |
+|---|---|
+| Your Deck | The tab shows a chip for each suit with how many of its cards are in the deck being built, a switch between **In your deck** and **Collection** (the Collection, every card you own with the ones left out dimmed, is the default, as before), and the cards in two columns. Each tile is the pick-or-drop button with its cost, the effect, and View. Three Text rows: `deck.filter_deck`, `deck.filter_all`, `deck.suit_chip`. |
+| Card offer | A pop-up card: "Your coach suggests" in the header, the 1/3 counter, the card's two faces, Pass (while it is not the last look) above Learn it. |
+| Card look | A pop-up card with the card's name, its Japanese name as a muted line, and both faces. |
+| Inventory | The picked item's details are a bottom sheet over the grid, with Use (greyed with its reason) and Close; the same view in the Office and the battle. |
+| Tests | `tests/test_group5_cards.gd` (4). No click test changed. |
