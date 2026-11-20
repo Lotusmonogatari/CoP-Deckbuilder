@@ -63,7 +63,7 @@ func test_the_levels_are_tagged_and_the_trips_make_sense() -> void:
 		if trips > 0:
 			with_trips += 1
 			assert_ne(office, Offices.EITHER, "%s has trips but no office" % level["level_id"])
-	assert_eq(counts, {"Capitol": 80, "District": 29, "Either": 5})
+	assert_eq(counts, {"Capitol": 84, "District": 33, "Either": 5}, "the first 114 levels (80, 29, 5) and the eight protagonist levels (four each)")
 	assert_eq(with_trips, 24, "24 mixed levels")
 	for lid: String in ["LV12", "LV61", "LV62"]:
 		var level := DataDB.get_level(lid)

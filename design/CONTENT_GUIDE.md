@@ -330,3 +330,7 @@ Events, Event Choices (the rows that make a promise), Office Notices, Office Tic
 ## Place tokens in event text (2026-11-20)
 
 Write `{place:harbor}` (a type from the **Places** tab: district_office is `{office_city}`, then station, travel_route, town_hall, harbor, onsen_town, mountain, farmland, fishing_grounds, school, university, hospital, shrine_temple, market, festival, factory, energy_site, island, landmark, ainu_site, beach, ski_area, park, community_hall) where the line would otherwise name a real town. The token gives the whole name, so write "at {place:harbor}" and not "at the {place:harbor}". List every type the event uses in the Events tab's **Needs Place** column (separated by ";"): an event is never drawn for a protagonist whose district lacks one, and the exporter refuses a token that is not listed. Several names for one type are picked between by event, so a flavor line and its results agree.
+
+## A level for one protagonist (2026-11-20)
+
+The Levels tab's optional **Protagonist** column keeps a level to one protagonist: write an ID (`PC01` to `PC04`); a blank means everyone. Set **Location** (Capitol or District) at the same time: a District level reads naturally in place tokens (`{place:harbor}`) in its purpose line, a Capitol one in the Assembly's business. Copy the nearest existing level row (`tools/workbook/wbx.py copy_row`) and change it rather than starting empty. A level's stages must still fit the work week (a weekend level must fit a 4-hour day).

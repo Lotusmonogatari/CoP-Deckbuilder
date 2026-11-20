@@ -2588,6 +2588,13 @@ func event_choice_refusal(event: Dictionary, choice: Dictionary) -> String:
 	return ""
 
 
+## Whether a level is offered to this protagonist (the Levels tab's Protagonist column; blank means everyone): the eight
+## levels of slice 6 belong to one protagonist each.
+func level_is_for_player(level: Dictionary) -> bool:
+	var who: Variant = level.get("protagonist")
+	return not (who is Array) or (who as Array).is_empty() or (who as Array).has(protagonist_id)
+
+
 ## Whether a level an event can reveal is open to the player. Levels not
 ## marked "Needs Discovery" always are.
 func is_level_discovered(level: Dictionary) -> bool:
@@ -4570,7 +4577,7 @@ func buy_random_level(item_id: String) -> Dictionary:
 	var tier := int(item.get("level_tier", 0))
 	var choices: Array[String] = []
 	for level: Dictionary in DataDB.levels:
-		if int(level.get("tier", -1)) == tier and is_level_discovered(level) and not is_event_only(level) \
+		if int(level.get("tier", -1)) == tier and is_level_discovered(level) and not is_event_only(level) and level_is_for_player(level) \
 				and not act_is_settled(level) \
 				and not Ledger.is_level_unlocked(level, levels_unlocked, staff_hired):
 			choices.append(str(level.get("level_id", "")))

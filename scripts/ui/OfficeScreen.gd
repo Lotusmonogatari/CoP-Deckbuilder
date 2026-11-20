@@ -3884,8 +3884,9 @@ func _show_levels() -> void:
 		# An Event Only level is started from an event choice, never the list.
 		if GameState.is_event_only(level):
 			continue
-		# A level starts only at its own office (Either levels from both; two offices, 2026-11-20).
-		if not GameState.level_at_this_office(level):
+		# A level starts only at its own office (Either levels from both; two offices, 2026-11-20), and a protagonist's
+		# own levels (slice 6) are listed only for them.
+		if not GameState.level_at_this_office(level) or not GameState.level_is_for_player(level):
 			continue
 		var tier := int(level.get("tier", 0))
 		if not by_tier.has(tier):

@@ -26,6 +26,7 @@ func _run() -> void:
 		await _trip(style)
 		await _promise(style)
 		await _tickets(style)
+		await _own_levels(style)
 	UiStyle.trying = ""
 	UiStyle.sync()
 	print("")
@@ -274,6 +275,26 @@ func _tickets(style: String) -> void:
 	OS.set_environment("COP_NO_RANDOM_EVENTS", "1")
 	GameState.office_location = Offices.CAPITOL
 	GameState.inventory = {}
+
+
+## A protagonist's own levels (slice 6): PC01 is the Aomori protagonist, so the Rokkasho level is listed at the District office and
+## the bluefin quota at the Capitol; the Wakkanai levels (PC04's) never appear.
+func _own_levels(style: String) -> void:
+	var where := "in %s: " % style
+	GameState.office_location = Offices.DISTRICT
+	var panel := await _levels_panel()
+	var seen := _texts(panel)
+	_expect(seen.has("The Rokkasho Question"), where + "PC01's District level is listed at the District office")
+	_expect(not seen.has("Keep the Sōya Line Running"), where + "PC04's is not")
+	panel.close()
+	await get_tree().process_frame
+	GameState.office_location = Offices.CAPITOL
+	panel = await _levels_panel()
+	seen = _texts(panel)
+	_expect(seen.has("Ōma's Bluefin Quota"), where + "PC01's Capitol level is listed at the Capitol (autumn)")
+	_expect(not seen.has("The Sakhalin Ferry"), where + "PC04's is not")
+	panel.close()
+	await get_tree().process_frame
 
 
 func _brief(level_id: String) -> LevelBriefingPanel:

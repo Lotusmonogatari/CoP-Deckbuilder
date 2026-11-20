@@ -1510,3 +1510,14 @@ The trip button became **a train on a track**. The words (where, how long, by wh
 | Events rewritten (drafts) | 29 of the audit's 39 place-bound events now use tokens: EV02, EV12, EV13, EV17, EV19, EV20, EV24, EV26, EV27, EV35, EV37, EV39, EV42, EV48, EV49, EV50, EV52, EV53, EV56, EV57, EV58, EV63, EV66, EV69, EV82, EV86, EV87, EV90, EV94. **Ten were left as written because no place in their text could be replaced by a type:** EV01 (Sapporo's tournament), EV14, EV18, EV23, EV34, EV51 (a TV station, not a rail station), EV85, EV88, EV92, EV93. Some of the swaps change the setting (the Hakodate harbor letters now come from the district's own harbor; EV82's turbine meeting may pick a nuclear site in the Aomori district), so each is worth a read. |
 | Tests | `test_place_tokens` (fill, stable picks, the swap, no token left on screen for any protagonist, Needs Place). |
 
+
+## 2026-11-20: Two offices, slice 6: the eight protagonist levels
+
+| Part | What changed |
+|---|---|
+| Protagonist column | New optional `Protagonist` column on **Levels** (approved 2026-11-20): blank means every protagonist, `PC02` means only that one. The level list and the random level offer skip a level that is not for the player (`GameState.level_is_for_player`). The exporter checks the IDs. |
+| Eight levels (drafts for Cameron, LV115 to LV122) | One District fight and one Capitol policy fight for each protagonist, as ordinary workbook rows copied from the nearest level (LV11 for tier 1, LV21 for tier 2): **PC04 Wakkanai** "Keep the Sōya Line Running" (District) and "The Sakhalin Ferry" (Capitol); **PC02 Tomakomai** "Carbon Under the Harbor" (District) and "A Casino by Lake Utonai?" (Capitol); **PC03 Teine and Ishikari** "Wind on Ishikari Bay" (District) and "The Tunnel Under Teine" (Capitol); **PC01 Aomori** "The Rokkasho Question" (District) and "Ōma's Bluefin Quota" (Capitol). Each is 8 to 16 hours and reuses existing stages. |
+| Trade-off | LV118 (the casino) charges standing with two organizations (BO26 and BO19, -2 to -1) on a win, shown in the briefing's Organizations card, as decision 20 allows. |
+| Places | District purpose lines use place tokens (`{place:landmark}`, `{place:harbor}`, `{place:beach}`) or a real town; the exporter now checks tokens in a level's purpose line too. |
+| Left out, on purpose | Weekend play for LV117 and LV119 (a weekend level must fit a 4-hour day); gating by discovery; a mixed Rokkasho variant; the spec's "unique hooks" (new mechanics need their own proposal). |
+| Tests | `test_protagonist_levels` (who sees each level, places, hours, the trade-off); the travel click test checks that PC01 sees its own two levels at the right offices and not another protagonist's. Counts in `test_offices_travel`, `test_level_bonus` and `test_level_briefing` moved with the data. |
