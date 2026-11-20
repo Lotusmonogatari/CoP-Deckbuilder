@@ -9462,5 +9462,54 @@
     "english": "{count} of {total}",
     "placeholders": "count, total",
     "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.tab_here",
+    "where": "Events — tab",
+    "english": "Arrange here",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.tab_coming",
+    "where": "Events — tab",
+    "english": "Coming up",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.decision_banner",
+    "where": "Events — the red banner for a dated event coming up (its kind tag)",
+    "english": "DECISION! · COMING UP",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.decision_moves_you",
+    "where": "Events — banner line when the dated event is at the other office",
+    "english": "Your staff will move you to {place} for this.",
+    "placeholders": "place",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.coming_none",
+    "where": "Events, Coming up tab — nothing scheduled",
+    "english": "Nothing is scheduled for the next few days.",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.coming_meta",
+    "where": "Events — the day, office and hours of a dated event",
+    "english": "{day} · {office} · {hours} h",
+    "placeholders": "day, office, hours",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_events",
+    "where": "Events — the small Japanese accent under the title",
+    "english": "行事",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
   }
 ]

@@ -10,7 +10,8 @@ Branch `panel/p13-office-screens`. Mockups are in `design/proposals/img/office_s
 | 2 | Administration (and two click tests updated on purpose) | Gate passed |
 | 3 | Reputation and Results (and two tests adjusted: the tabs wrap, the party plate test skips clipped labels) | Gate passed |
 | 4 | Marketplace (and a fix so top-bar chips wrap and stack at Large text) | Gate passed |
-| 5 | Office Management | Gate pending |
+| 5 | Office Management | Gate passed |
+| 6 | Events | Gate pending |
 
 ## Your answers
 
@@ -171,3 +172,41 @@ The screenshots use demo staff (four people hired, a second place in every role)
 ### Tests
 
 `tests/test_management_screen.gd` (8): the staff count equals the people listed, open places are the places not filled, a person shows what the old row showed with a tag by place, a card for every hired person and a row for every open place in every style with taps reaching their handlers, three tabs plus Staff Assignments plus three chips, the deck tab confirms only a legal deck, a training card for every session, every tab builds in every style. `staff_profile_driver` and `shop_items_driver` were updated on purpose: they reached staff through the old menu's Staff button and the Rhetoric Training panel; they now go through the Staff tab's open-place row and the Rhetoric Training tab.
+
+
+## Events (commit 6)
+
+Two tabs (Arrange here, Coming up); chips for where you stand and the hours left this week; a red **Decision!** banner for a dated event coming up (no price, no button, never a buy row); one card for every event that can be arranged at this office, with a location badge, its cost and hours, the reason in red when it cannot be arranged now, and a greyed "Arrange it". Only what can be arranged at the office the player stands at is listed (the two-offices filtering, unchanged).
+
+| Style | Mockup | Arrange here (1080 x 2340) | 1080 x 1920 | Large text | Funds short: reasons and greyed buttons | Coming up tab |
+|---|---|---|---|---|---|---|
+| Woodblock | ![](../../proposals/img/office_screens/previews/png/events_woodblock.png) | ![](events_here_woodblock_1080x2340.png) | ![](events_here_woodblock_1080x1920.png) | ![](events_here_woodblock_large.png) | ![](events_refused_woodblock.png) | ![](events_coming_woodblock.png) |
+| Living Office | ![](../../proposals/img/office_screens/previews/png/events_living.png) | ![](events_here_living_office_1080x2340.png) | ![](events_here_living_office_1080x1920.png) | ![](events_here_living_office_large.png) | ![](events_refused_living_office.png) | ![](events_coming_living_office.png) |
+| Broadcast | ![](../../proposals/img/office_screens/previews/png/events_broadcast.png) | ![](events_here_broadcast_1080x2340.png) | ![](events_here_broadcast_1080x1920.png) | ![](events_here_broadcast_large.png) | ![](events_refused_broadcast.png) | ![](events_coming_broadcast.png) |
+
+### What differs from the mockup, and why
+
+| Difference | Why |
+|---|---|
+| A new Balance lever, **Events Coming Up Days = 7** | A dated event needs a rule for when it starts to show as coming up. EV47 is on 18.10.08, the Monday of the second week, so a "this week" rule would never show it. 7 = it shows a week before its date. This is a number for you to change, in the Balance tab. |
+| A small read-only reader, `EventEngine.upcoming_dated` | The "Coming up" list. It adds no rule: a dated event that is due today or past is still `due_dated`'s, as before. |
+| The banner shows only the first dated event on Arrange here; the Coming up tab lists all of them | The mockup shows one banner. |
+| "Coming up" lists dated events only | The spec also says "the week's scheduled items"; today the only scheduled things are dated events, and I did not want to invent a list. |
+| The banner's line says the staff will move you to the event's own place | The approved row named the Capitol; the draft row now takes the place (`{place}`), so a District event reads right. It shows only when the event is at the other office. |
+| Badges read "Capitol", "District office" and "Either office" | They reuse the level briefing's location words (`briefing.location_*`). |
+| The decision itself, when the day comes, is still today's pop-up | Its redesign is P14 group 1 (the pop-up card). |
+
+### New Text rows (all drafts for you)
+
+| Key | English | Note |
+|---|---|---|
+| `event.tab_here` · `event.tab_coming` | Arrange here · Coming up | In the approved list |
+| `event.decision_banner` | DECISION! · COMING UP | In the approved list |
+| `event.decision_moves_you` | Your staff will move you to {place} for this. | In the approved list, reworded with `{place}` |
+| `event.coming_none` | Nothing is scheduled for the next few days. | **Not in the approved list** |
+| `event.coming_meta` | {day} · {office} · {hours} h | **Not in the approved list**: the banner's day, office and hours line |
+| `office.subtitle_jp_events` | 行事 | **Not in the approved list**: the Japanese accent |
+
+### Tests
+
+`tests/test_events_screen.gd` (8): the reader (after today, within the horizon, unplayed, in date order; a due event is never also upcoming), only events that can be arranged here are listed with the rules' own reason, EV47 is coming up a week before its date, a Decision! banner has no price and no button, a card with no reason can be arranged and one with a reason is greyed with the reason in red, two tabs with the banner on both and no Arrange button on Coming up in every style, and the chips. `tests/interaction/event_driver.gd` now reads the reason from the red line instead of the greyed button's text, on purpose.

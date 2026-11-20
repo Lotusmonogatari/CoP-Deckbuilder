@@ -856,24 +856,46 @@ func _go_home() -> void:
 # variable rewards (GameState.apply_event_choice).
 
 func _show_events_list() -> void:
-	var rows: Array[Control] = [UiKit.line(Text.say("event.list_hint"), "SmallLabel")]
-	var events := GameState.buyable_events()
-	if events.is_empty():
-		rows.append(UiKit.line(Text.say("event.none")))
-	for event: Dictionary in events:
-		var cost: Variant = event.get("cost_funds")
-		var title_line := Text.say("event.row", {"title": str(event.get("title", "")),
-			"hours": GameState.event_hours_text(event), "count": GameState.event_hours_range(event)[1], "cost": int(cost)}) if cost != null and int(cost) > 0 \
-			else Text.say("event.row_free", {"title": str(event.get("title", "")),
-				"hours": GameState.event_hours_text(event), "count": GameState.event_hours_range(event)[1]})
-		var box := UiKit.tight_column()
-		box.add_child(UiKit.line(title_line))
-		var button := UiKit.action_button(Text.say("event.arrange"), GameState.event_refusal(event),
-			_on_arrange_event.bind(str(event.get("event_id", ""))), 90.0)
-		button.name = "Arrange_" + str(event.get("event_id", ""))
-		box.add_child(button)
-		rows.append(box)
-	_events_panel.open(Text.say("event.list_title"), rows)
+	_show_events("here")
+
+
+var _events_tab := "here"
+
+
+## Events on the shared frame (P13, 2026-11-20): chips for where you stand and the hours left, two tabs (Arrange here, Coming
+## up), the hint, a red Decision! banner for a dated event coming up (never a buy row), and one card for every event that can
+## be arranged at this office, with its location badge and, when it cannot be arranged now, the reason in red and a greyed
+## button. Only what can be arranged at the office the player stands at is listed (the two-offices filtering, unchanged).
+func _show_events(tab: String) -> void:
+	_events_tab = tab if tab == "coming" else "here"
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = []
+	var coming := EventsModel.coming()
+	if _events_tab == "coming":
+		if coming.is_empty():
+			rows.append(_ground_line(Text.say("event.coming_none"), look))
+		for event: Dictionary in coming:
+			rows.append(EventsView.decision_banner(look, event))
+	else:
+		rows.append(_ground_line(Text.say("event.list_hint"), look))
+		if not coming.is_empty():
+			rows.append(EventsView.decision_banner(look, coming[0]))
+		var arrangeable := EventsModel.rows()
+		if arrangeable.is_empty():
+			rows.append(_ground_line(Text.say("event.none"), look))
+		for event: Dictionary in arrangeable:
+			rows.append(EventsView.event_card(look, event, _on_arrange_event))
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("event.list_title"),
+		"subtitle": Text.say("office.subtitle_jp_events"),
+		"chips": EventsModel.chips(),
+		"tabs": [{"id": "here", "text": Text.say("event.tab_here")}, {"id": "coming", "text": Text.say("event.tab_coming")}],
+		"active_tab": _events_tab,
+		"rows": rows,
+	})
+	frame.tab_chosen.connect(_show_events)
+	_events_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 func _on_arrange_event(event_id: String) -> void:

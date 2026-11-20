@@ -55,7 +55,10 @@ func _walking_tour() -> void:
 	var arrange := list.find_child("Arrange_EV32", true, false) as Button
 	_expect(arrange != null and not arrange.disabled, "the sports sponsorship can be arranged")
 	var weekend_only := list.find_child("Arrange_EV34", true, false) as Button
-	_expect(weekend_only != null and weekend_only.disabled and weekend_only.text == "Weekend only", "the office open day waits for the weekend")
+	# The reason is a red line on the card and the button stays greyed, reading "Arrange it" (P13, 2026-11-20).
+	var weekend_reason := weekend_only.get_parent().find_child("EventRefusal", true, false) as Label if weekend_only != null else null
+	_expect(weekend_only != null and weekend_only.disabled and weekend_reason != null and weekend_reason.text == "Weekend only",
+		"the office open day waits for the weekend")
 	arrange.pressed.emit()
 	await get_tree().process_frame
 	await get_tree().create_timer(0.3).timeout

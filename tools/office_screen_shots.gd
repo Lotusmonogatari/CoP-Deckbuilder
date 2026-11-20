@@ -5,9 +5,10 @@ extends Node
 ##   xvfb-run -a -s "-screen 0 1080x2340x24" .tools/godot --path . --resolution 1080x2340 \
 ##       res://tools/office_screen_shots.tscn -- <screen> <style> <out.png> [text_size] [pressure] [bottom]
 ##
-## screen: administration | management[:staff|deck|rhetoric][:hire] | marketplace[:personal|office|styles] | reputation[:overview|stakeholders|backers|parties|election|laws][:resign][:factors] ·
+## screen: administration | events[:here|coming][:funds] | management[:staff|deck|rhetoric][:hire] | marketplace[:personal|office|styles] | reputation[:overview|stakeholders|backers|parties|election|laws][:resign][:factors] ·
 ## style: woodblock | living_office | broadcast · text_size: small | normal | large ·
 ## pressure: standard | harder (Political Pressure in force) · bottom: scroll the screen to its foot.
+## Events are drawn at the Capitol; ":funds" empties Funds so priced events show their reason and a greyed button.
 ## Office Management is drawn with two places per role and a few people hired; ":hire" opens an open place's candidates.
 ## The Marketplace is drawn with some items held, one at its carrying limit and one sold out for the level.
 ## Reputation is drawn with demo changes and one law so the Overview has something to show; ":resign" lowers the three
@@ -43,6 +44,11 @@ func _run() -> void:
 		"administration":
 			office._show_administration_menu()
 			menu = office.get_node("AdministrationMenuPanel")
+		"events":
+			if "funds" in parts:
+				GameState.meta["Funds"] = 0
+			office._show_events(parts[1] if parts.size() > 1 and parts[1] != "funds" else "here")
+			menu = office.get_node("EventsPanel")
 		"management":
 			_seed_staff()
 			var tab := parts[1] if parts.size() > 1 and parts[1] != "hire" else "staff"
