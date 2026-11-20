@@ -125,8 +125,9 @@ func test_the_real_data_has_the_counts_the_outline_gave() -> void:
 			with_meta += 1
 		if not (bonus["orgs"] as Array).is_empty():
 			with_orgs += 1
-	assert_eq(with_meta, 74, "levels that pay a meter or XP bonus")
-	assert_eq(with_orgs, 69, "levels that pay organization standing")
+	# 74 and 69 of the first 114 levels, plus the eight protagonist levels of slice 6 (2026-11-20), which all pay both.
+	assert_eq(with_meta, 82, "levels that pay a meter or XP bonus")
+	assert_eq(with_orgs, 77, "levels that pay organization standing")
 
 
 # --- the honesty check: a payout never leaves its preview ---------------------------

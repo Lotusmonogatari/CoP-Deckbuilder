@@ -506,7 +506,8 @@ func _fill_place_tokens() -> void:
 	var names := PlaceTokens.names_by_type(places, str(player.get("player_id", "")))
 	var town := str(player.get("district_office", ""))
 	for entry: Array in [[events, "event_id", ["title", "flavor"]],
-			[event_choices, "event_id", ["choice_text", "result_text", "promise_kept_text"]]]:
+			[event_choices, "event_id", ["choice_text", "result_text", "promise_kept_text"]],
+			[levels, "level_id", ["purpose"]]]:
 		var rows: Array = entry[0]
 		for index in rows.size():
 			var row: Dictionary = rows[index]

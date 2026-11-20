@@ -1696,8 +1696,10 @@ SHEETS = {
             # in (blank or 0 = none; 2 = out and back; 1 = it ends at the other office).
             ("Location", "location", "str"),
             ("Travel Trips", "travel_trips", "int"),
+            # 2026-11-20 (slice 6): the protagonists a level is offered to ("PC02"); blank means all of them.
+            ("Protagonist", "protagonist", "id_list"),
         ],
-        "optional": ["Seasons", "Event Only (Yes/No)", "Level Purpose", "Purpose Speaker", "Location", "Travel Trips"],
+        "optional": ["Seasons", "Event Only (Yes/No)", "Level Purpose", "Purpose Speaker", "Location", "Travel Trips", "Protagonist"],
     },
     # 3 roles (Policy Research Assistant, Media Spokesperson, District
     # Representative) x 7 starting/upgrade tier configs each. The Reward
@@ -3715,6 +3717,21 @@ def check_places(data, report):
     choices = {}
     for row in data.get("event_choices", []):
         choices.setdefault(row.get("event_id"), []).append(row)
+    # A level's purpose may use tokens too: the protagonists it is offered to must have those types (slice 6).
+    for level in data.get("levels", []):
+        who = [str(p) for p in (level.get("protagonist") or [])]
+        for pid in who:
+            if pid not in pids:
+                report.error(f"Levels {level.get('level_id')}", f"Protagonist '{pid}' is not in the Player tab")
+        for kind in {m for m in PLACE_TOKEN.findall(str(level.get("purpose") or ""))}:
+            if kind not in PLACE_TYPES:
+                report.error(f"Levels {level.get('level_id')}", f"Level Purpose asks for the place type '{kind}', which is not in the catalog")
+            elif not who:
+                report.error(f"Levels {level.get('level_id')}", f"Level Purpose uses {{place:{kind}}} but the level has no Protagonist, so some protagonists have no '{kind}'")
+            else:
+                for pid in who:
+                    if kind not in have.get(pid, set()):
+                        report.error(f"Levels {level.get('level_id')}", f"Level Purpose uses {{place:{kind}}} but {pid} has no '{kind}' in the Places tab")
     for event in data.get("events", []):
         eid = event.get("event_id")
         texts = [str(event.get("title") or ""), str(event.get("flavor") or "")]
