@@ -2079,7 +2079,7 @@
         "delta": 2
       }
     ],
-    "icon": null,
+    "icon": "PAID_TRAIN_TICKET",
     "use_in_office": "No",
     "use_in_stage": "No",
     "duration": null,
@@ -2127,7 +2127,7 @@
     "bonus_condition_1": null,
     "bonus_condition_2": null,
     "grants": null,
-    "icon": null,
+    "icon": "PRIVATE_CAR_TRIP",
     "use_in_office": "No",
     "use_in_stage": "No",
     "duration": null,
@@ -2179,7 +2179,7 @@
     "bonus_condition_1": null,
     "bonus_condition_2": null,
     "grants": null,
-    "icon": null,
+    "icon": "PLANE_TICKET",
     "use_in_office": "No",
     "use_in_stage": "No",
     "duration": null,

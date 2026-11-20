@@ -96,7 +96,9 @@ func _fill(template: String, values: Dictionary, key: String) -> String:
 ## the placeholders that carry an amount are touched, and only whole numbers
 ## of four digits or more, so a seat count or a year is never altered.
 ## A placeholder named yen_something is an amount too (2026-10-23).
-const AMOUNT_NAMES := ["count", "cost", "price"]
+## The placeholder names whose whole numbers are written with thousands separators ("6,000"). The money ones (`yen`, `funds`,
+## `base`, `share`, `earned`) were missing until 2026-11-20, so a staff wage printed as "6000円".
+const AMOUNT_NAMES := ["count", "cost", "price", "yen", "funds", "base", "share", "earned"]
 
 
 static func with_separators(amount: int) -> String:

@@ -7,24 +7,24 @@ stands in for every expression.
 
 | Kind | Drawn |
 |---|---|
-| Protagonists | 14 / 28 |
+| Protagonists | 24 / 28 |
 | Opponents | 7 / 655 |
 | Staff | 105 / 105 |
-| Visitors | 0 / 830 |
+| Visitors | 405 / 835 |
 | Card art | 70 / 70 |
-| Backgrounds | 45 / 46 |
+| Backgrounds | 44 / 45 |
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
-| Shop item icons | 21 / 31 |
-| Cosmetic package icons | 6 / 6 |
+| Shop item icons | 40 / 40 |
+| Cosmetic package icons | 6 / 8 |
 
 ## Protagonists — `assets/characters/protagonists/`
 
 | ID | Name | neutral | attacking | guarding | gaining | damaged | defeated | victory |
 |---|---|---|---|---|---|---|---|---|
-| PC01 | Kenshin Sako | ✓ | ✓ | ✓ | ✓ | ☐ | ☐ | ✓ |
-| PC02 | Haru Yashi | ✓ | ✓ | ☐ | ✓ | ☐ | ☐ | ☐ |
-| PC03 | Arata Ran | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| PC01 | Kenshin Sako | ✓ | ✓ | ✓ | ✓ | ✓ | ☐ | ✓ |
+| PC02 | Haru Yashi | ✓ | ✓ | ✓ | ✓ | ✓ | ☐ | ✓ |
+| PC03 | Arata Ran | ✓ | ✓ | ✓ | ✓ | ✓ | ☐ | ✓ |
 | PC04 | Jyurou Nishihara | ✓ | ✓ | ✓ | ✓ | ✓ | ☐ | ✓ |
 
 ## Opponents — `assets/characters/opponents/`
@@ -193,86 +193,86 @@ stands in for every expression.
 
 | ID | Name | neutral | attacking | guarding | gaining | damaged |
 |---|---|---|---|---|---|---|
-| VI01 | Hanako Okuda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI02 | Gen Tsukamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI03 | Saki Mori | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI04 | Ryo Kawabata | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI05 | Fumiko Sugawara | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI06 | Kaito Nishimura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI07 | Yuri Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI08 | Daigo Ishikari | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI09 | Emi Takasugi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI10 | Hiroshi Wada | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI11 | Leo Aoyama | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI12 | Kiyoshi Murata | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI13 | Tomoko Ide | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI14 | Shuhei Sakurai | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI15 | Shinji Ogawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI16 | Yuki Kirishima | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI17 | Haruto Ebina | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI18 | Granny Chiyo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI01 | Hanako Okuda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI02 | Gen Tsukamoto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI03 | Inra Mori | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI04 | Ryo Kawabata | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI05 | Fumiko Sugawara | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI06 | Kaito Nishimura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI07 | Yuri Hasegawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI08 | Daigo Ishikari | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI09 | Emi Takasugi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI10 | Hiroshi Wada | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI11 | Lele Aoyama | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI12 | Kiyoshi Murata | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI13 | Tomoko Ide | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI14 | Shuhei Sakurai | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI15 | Shinji Ogawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI16 | Yuki Kirishima | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI17 | Haruto Ebina | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI18 | Granny Chiyo | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI19 | Sora Kudo | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI20 | Akemi Ito | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI21 | Dog Man | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI22 | Brad Chunchun | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI23 | Aso Takeda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI24 | Party Member A | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI25 | Masato Fujimoto | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI26 | Rera Kayano | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI27 | Caroline Whitfield | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI28 | Kenji Arai-Mitchell | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI29 | Tomoe Sakamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI30 | Pirika Nolan | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI31 | Daniel Ikeda-Brooks | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI32 | Yoshiko Tanabe | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI33 | Shiro Kannari | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI34 | Gordon Hale-Takeda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI35 | Haruka Chiri | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI36 | Walter Kimura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI37 | Yukiko Rowan-Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI38 | Tetsuo Aoki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI39 | Ray Kaizawa-Mercer | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI40 | Sachi Morikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI41 | Tomoya Harada | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI42 | Nao Kuramoto | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI43 | Eri Shiratori | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI44 | Katsu Mizuhara | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI45 | Ryo Tachibana | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI46 | Mika Hoshino | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI47 | Daigo Nakaura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI48 | Hideo Funakoshi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI49 | Itsuki Sawamura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI50 | Yuna Kitahara | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI51 | Moto Shibata | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI52 | Kenji Aizawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI53 | Haruka Nomura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI54 | Satomi Ibuki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI55 | Aya Tsukishima | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI56 | Kota Hirayama | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI57 | Mitsuru Aoyagi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI58 | Fumiko Daidoji | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI59 | Jun Ogasawara | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI60 | Ainu Community Council Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI61 | Agricultural Cooperatives Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI62 | Care and Welfare Council Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI63 | National Media Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI64 | Buddhist Temples Association Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI65 | Members of Parliament Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI66 | Veterans' Association Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI67 | Chamber of Commerce Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI68 | Fisheries Cooperative Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI69 | Labor Federation Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI70 | Our Traditional Society Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI71 | Agricultural Cooperatives Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI72 | Students United Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI73 | Family Network Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI74 | Yezo Artisans Guild Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI75 | Members of Parliament Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI76 | Shrine Association Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI77 | Care and Welfare Council Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI78 | Urban Neighborhood Alliance Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI79 | Ainu Language and Culture Foundation Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI80 | Rural Revitalization Council Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI20 | Akemi Ito | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI21 | Dog Man | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI22 | Brad Chunchun | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI23 | Aso Takeda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI24 | Hiroshi Furuya | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI25 | Masato Fujimoto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI26 | Rera Kayano | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI27 | Caroline Whitfield | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI28 | Kenji Arai-Mitchell | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI29 | Tomoe Sakamoto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI30 | Pirika Nolan | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI31 | Daniel Ikeda-Brooks | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI32 | Yoshiko Tanabe | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI33 | Shiro Kannari | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI34 | Gordon Hale-Takeda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI35 | Haruka Chiri | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI36 | Walter Kimura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI37 | Yukiko Rowan-Sato | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI38 | Tetsuo Aoki | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI39 | Ray Kaizawa-Mercer | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI40 | Sachi Morikawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI41 | Tomoya Harada | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI42 | Nao Kuramoto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI43 | Eri Shiratori | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI44 | Katsu Mizuhara | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI45 | Ryo Tachibana | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI46 | Mika Hoshino | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI47 | Daigo Nakaura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI48 | Hideo Funakoshi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI49 | Itsuki Sawamura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI50 | Yuna Kitahara | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI51 | Saya Shimabuku | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI52 | Kenji Aizawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI53 | Haruka Nomura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI54 | Satomi Ibuki | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI55 | Aya Tsukishima | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI56 | Kota Hirayama | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI57 | Mitsuru Aoyagi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI58 | Fumiko Daidoji | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI59 | Jun Ogasawara | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI60 | Sannyoaino Masanori | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI61 | Atanemat Masanori | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI62 | Junko Watanabe | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI63 | Kenji Masanori | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI64 | Shōichi Satō | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI65 | Tadashi Kunimoto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI66 | Tadayoshi Muto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI67 | Riichi Fukuda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI68 | Ushio Hamano | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI69 | Tsutomu Chikaraishi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI70 | Den’ichi Moriyama | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI71 | Minoru Minoda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI72 | Shiro Wakaba | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI73 | Kizuna Ienaga | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI74 | Takumi Ezono | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI75 | Kohei Kunimitsu | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI76 | Megumi Fukui | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI77 | Kiyoshi Torii | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI78 | Yui Machida | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI79 | Rera Saru | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI80 | Koichi Satomi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI81 | Takashi Hamada | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI82 | Michiko Sasaki | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI83 | Daisuke Kondo | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -309,7 +309,7 @@ stands in for every expression.
 | VI114 | Sachiko Ono | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI115 | Daichi Mori | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI116 | Mayumi Hayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI117 | Kenta Yamaguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI117 | Kaede Okuda | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI118 | Fumiko Inoue | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI119 | Takuya Fujita | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI120 | Yoshie Nakajima | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -330,13 +330,13 @@ stands in for every expression.
 | VI135 | Satomi Morita | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI136 | Isamu Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI137 | Noriko Maeda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI138 | Ichiro Kawai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI138 | Ichiro Kawai | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI139 | Akemi Suzuki | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI140 | Masao Taniguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI141 | Chihiro Endo | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI142 | Ryuji Sugiyama | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI143 | Mika Kobayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI144 | Taiga Ogawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI144 | Taiga Ogawa | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI145 | Hanae Hirata | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI146 | Kazuo Hayakawa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI147 | Sayaka Matsumoto | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -359,6 +359,7 @@ stands in for every expression.
 | VI164 | Setsuko Omura | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI165 | Toshio Kuroda | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI166 | Yasuo Noda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI167 | Masashi Mumotsu | ◆ | ◆ | ◆ | ◆ | ◆ |
 
 ## Card art — `assets/cards/art/`
 
@@ -410,7 +411,7 @@ stands in for every expression.
 | C54.png | Off the Record | ✓ |
 | C04.png | Return to First Principles | ✓ |
 | C08.png | Speech from the Soul | ✓ |
-| C16.png | Table the White Paper | ✓ |
+| C16.png | Release the White Paper | ✓ |
 | C29.png | Appeal to Conscience | ✓ |
 | C37.png | Call for Common Cause | ✓ |
 | C39.png | We Have the Votes | ✓ |
@@ -432,7 +433,7 @@ stands in for every expression.
 | C62.png | Lose the Evidence | ✓ |
 | C64.png | The Full Audit | ✓ |
 | C66.png | No Quarter | ✓ |
-| C68.png | Words From the Soul | ✓ |
+| C68.png | Words from the Soul | ✓ |
 | C70.png | Back-Room Bargain | ✓ |
 
 ## Backgrounds — `assets/backgrounds/`
@@ -461,7 +462,6 @@ stands in for every expression.
 | ST19.png | Media Ambush | ✓ |
 | ST20.png | Lobbyist Meeting | ✓ |
 | ST21.png | Policy Study Session | ✓ |
-| ST22.png | Party Steering Committee Check-In | ✓ |
 | ST23.png | National Assembly Floor Voting | ✓ |
 | OUT_COAST_BATTERY.png | Outside scene | ✓ |
 | OUT_CULTURAL_CENTER_1_AINU.png | Outside scene | ✓ |
@@ -549,25 +549,34 @@ stands in for every expression.
 | unlock_card_t2.png | Unlock Random Tier 2 Card | ✓ |
 | unlock_card_t3.png | Unlock Random Tier 3 Card | ✓ |
 | staff_tier.png | Staff Training Consultancy Session | ✓ |
-| funds_cap.png | Fund Limit Increase Petition | ✓ |
+| funds_cap.png | Funds Cap Increase Petition | ✓ |
 | buff_draw.png | Commission a Speech Trainer | ✓ |
-| buff_energy.png | Kaiju Sized “ね3” Coffee | ✓ |
+| buff_energy.png | Kaiju-Sized “ね3” Coffee | ✓ |
 | buff_guard.png | Automated Dear Colleague Letters | ✓ |
-| buff_gaffe_cap.png | Kaiju Sized “ミレニ姫” Tea | ✓ |
-| buff_turn.png | AI Powered Clock | ✓ |
+| buff_gaffe_cap.png | Kaiju-Sized “ミレニ姫” Tea | ✓ |
+| buff_turn.png | AI-Powered Clock | ✓ |
 | booster_dinner.png | National Organization Outreach Dinner | ✓ |
 | walking_tour.png | Host a Constituency Group Walking Tour | ✓ |
 | BO01.png | Public Rebuke | ✓ |
-| SH25.png | Box of Aomori Apples | ☐ |
-| SH26.png | Tsugaru Lacquer Chopsticks | ☐ |
-| SH27.png | Dried Hokkaido Scallops | ☐ |
-| SH28.png | Wind-Dried Salmon | ☐ |
-| SH29.png | Wakkanai Milk Caramels | ☐ |
-| SH30.png | White Chocolate Cookies | ☐ |
-| SH31.png | Nebuta Festival Hand Towel | ☐ |
-| SH32.png | Bottle of District Sake | ☐ |
-| SH33.png | Haskap Yoitomake | ☐ |
-| deck_expansion.png | Expanded Briefing Binder | ☐ |
+| BOX_OF_AOMORI_APPLES.png | Box of Aomori Apples | ✓ |
+| TSUGARU_LACQUER_CHOPSTICKS.png | Tsugaru Lacquer Chopsticks | ✓ |
+| DRIED_HOKKAIDO_SCALLOPS.png | Dried Hokkaido Scallops | ✓ |
+| WIND_DRIED_SALMON.png | Wind-Dried Salmon | ✓ |
+| WAKKANAI_MILK_CARAMELS.png | Wakkanai Milk Caramels | ✓ |
+| WHITE_CHOCOLATE_COOKIES.png | White Chocolate Cookies | ✓ |
+| NEBUTA_FESTIVAL_HAND_TOWEL.png | Nebuta Festival Hand Towel | ✓ |
+| BOTTLE_OF_DISTRICT_SAKE.png | Bottle of District Sake | ✓ |
+| HASKAP_YOITOMAKE.png | Haskap Yoitomake | ✓ |
+| EXPANDED_BRIEFING_BINDER.png | Expanded Briefing Binder | ✓ |
+| SH36.png | Printer | ✓ |
+| SH37.png | Shredder | ✓ |
+| SH38.png | Flex-Work | ✓ |
+| SH39.png | Priority Inbox | ✓ |
+| SH40.png | Commendation Gift | ✓ |
+| SH41.png | Lunch Delivery | ✓ |
+| PAID_TRAIN_TICKET.png | Paid Train Ticket | ✓ |
+| PRIVATE_CAR_TRIP.png | Private Car Trip | ✓ |
+| PLANE_TICKET.png | Plane Ticket | ✓ |
 
 ## Cosmetic package icons — `assets/icons/`
 
@@ -579,3 +588,5 @@ stands in for every expression.
 | walking_tour.png | City Corridor Tour | ✓ |
 | calendar_era.png | Era Name Calendar | ✓ |
 | calendar_ainu.png | Ainu Calendar | ✓ |
+| CP07.png | Broadcast | ☐ |
+| CP08.png | Woodblock | ☐ |
