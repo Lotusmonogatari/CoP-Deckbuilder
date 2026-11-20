@@ -1,4 +1,17 @@
-# P13 Office screens: report (draft, grows with each commit)
+# P13 Office screens: report (draft for Cameron)
+
+## Summary
+
+| Item | State |
+|---|---|
+| Screens built | Administration, Reputation and Results, Marketplace, Office Management, Events, all on one frame (`OfficeScreenFrame`) in Woodblock, Living Office and Broadcast |
+| Commits | Seven on `panel/p13-office-screens`, each after a full `verify.sh` pass ("All checks passed") except the last, which is this report |
+| Not merged | As asked. Say "merge" when you are happy |
+| Rules, numbers, IDs, canon | Unchanged, apart from one new Balance number (Events Coming Up Days = 7) and a read-only reader for the dated events ahead |
+| New text | About 60 draft rows: the lists below say which were not in the approved list |
+| Audits | Text sweep: no letter-stacked or off-screen text in three styles at three sizes. Contrast: tests at 4.5:1 for the frame's colours and the Resign box. Touch targets: every control P13 built is at least 122 px (the audit's only smaller control on these screens is the Office's own Administration button behind them) |
+| Found, not fixed | A staff wage prints without a thousands comma ("6000円", an old row); the Resign button's black on crimson is about 3.6:1; the pop-ups these screens open (reasons, staff profile, items, the Decision! pop-up itself) are still the old ones until P14 |
+| Decisions for you | Reword any draft row; "Biggest moves last level" instead of "this week"; whether the Saved chip should stay a fixed label; the two kinds of change that need your word are listed per screen below |
 
 Branch `panel/p13-office-screens`. Mockups are in `design/proposals/img/office_screens/previews/png/`. Screenshots here are the real game at 1080 x 2340, 1080 x 1920 and Large text, made with `tools/office_screen_shots.tscn` (command in its header).
 
@@ -11,7 +24,8 @@ Branch `panel/p13-office-screens`. Mockups are in `design/proposals/img/office_s
 | 3 | Reputation and Results (and two tests adjusted: the tabs wrap, the party plate test skips clipped labels) | Gate passed |
 | 4 | Marketplace (and a fix so top-bar chips wrap and stack at Large text) | Gate passed |
 | 5 | Office Management | Gate passed |
-| 6 | Events | Gate pending |
+| 6 | Events | Gate passed |
+| 7 | Docs, final report, audits | Gate pending |
 
 ## Your answers
 
