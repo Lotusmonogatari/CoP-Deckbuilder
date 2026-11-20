@@ -22,6 +22,17 @@ func _viewport() -> SubViewport:
 	return vp
 
 
+## True when a scroll box above the label cuts it off (the label is not wholly inside the box's window), so its pixels
+## cannot be measured: a party card further down a scrolling page is only on screen once the player scrolls to it.
+func _clipped(label: Control) -> bool:
+	var parent := label.get_parent()
+	while parent != null:
+		if parent is ScrollContainer and not (parent as ScrollContainer).get_global_rect().encloses(label.get_global_rect()):
+			return true
+		parent = parent.get_parent()
+	return false
+
+
 func _run() -> void:
 	GameState.start_new_run("PC02")
 	GameState.awaiting_new_game = false
@@ -38,7 +49,7 @@ func _run() -> void:
 	var seen := 0
 	for node in office.find_children("*", "Label", true, false):
 		var label := node as Label
-		if not label.is_visible_in_tree() or label.text.is_empty() or not _under_overlay(label):
+		if not label.is_visible_in_tree() or label.text.is_empty() or not _under_overlay(label) or _clipped(label):
 			continue
 		for party: Dictionary in DataDB.parties:
 			var colour := PartyDisplay.color_for(party)
