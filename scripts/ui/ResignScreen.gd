@@ -11,7 +11,8 @@ extends Control
 ## (GameState.resign_run()). Pictures that do not exist yet show a labelled
 ## placeholder.
 
-## Crimson outline and fill with black text, for the Resign and Goodbye buttons.
+## Crimson outline and fill with white text (black text read at about 3.6 to 1; white reads at 5.9 to 1), for the Resign and
+## Goodbye buttons.
 const CRIMSON := Color(0.78, 0.07, 0.17)
 const TITLE_SCENE := "res://scenes/menus/IntroScreen.tscn"
 
@@ -99,7 +100,7 @@ static func button(on_confirmed: Callable) -> Button:
 	return resign
 
 
-## Crimson outline and fill with black text, on every state: the Resign
+## Crimson outline and fill with white text, on every state: the Resign
 ## button and the Goodbye button share it.
 static func style_crimson(target: Button) -> void:
 	for state: String in ["normal", "hover", "pressed", "focus"]:
@@ -110,4 +111,4 @@ static func style_crimson(target: Button) -> void:
 		box.set_corner_radius_all(10)
 		target.add_theme_stylebox_override(state, box)
 	for colour: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
-		target.add_theme_color_override(colour, Color.BLACK)
+		target.add_theme_color_override(colour, Color.WHITE)

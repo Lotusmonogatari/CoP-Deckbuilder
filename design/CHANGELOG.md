@@ -1569,3 +1569,11 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Tests | 80 new unit tests across seven files; the office menus, staff profile, shop items, inventory, how to play, new game, event and party plate click tests were updated on purpose (each change is named in the report). The text sweep passes in all three styles at three sizes. |
 | Found, not fixed | A staff wage prints without a thousands comma ("6000円", an old row); the Resign button's black-on-crimson text is about 3.6:1; EV47's decision pop-up and the other pop-ups are still the old panels (P14). |
 | Where | Report with before-and-after pictures: `design/review/p13_office_screens_2026-11-20/REPORT.md`; plan: `design/proposals/P13_PLAN_2026-11-20.md`; roadmap: `design/proposals/P13_P14_ROADMAP_2026-11-20.md`. |
+
+## 2026-11-20: Follow-ups to P13, and Cameron's art uploads wired
+
+| Part | What changed |
+|---|---|
+| Wage comma | A staff wage printed as "6000円". The money formatter only knew the placeholder names `count`, `cost`, `price` and `yen_*`, so rows written with `{yen}`, `{funds}`, `{base}`, `{share}` and `{earned}` (staff wages, dues, drafting costs) showed raw numbers. They now get thousands separators; a value already written with them is left alone. New test. |
+| Resign contrast | The Resign and Goodbye buttons' text is white instead of black on the crimson fill (3.6 to 1 became 5.9 to 1). Same crimson. |
+| Art uploads | Cameron's 27 pictures arrived named `X.png.png` and could not be found. They are renamed to `X.png` (a git rename). **Wired:** the three ticket icons (Shop Icon cells for SH42 to SH44: PAID_TRAIN_TICKET, PRIVATE_CAR_TRIP, PLANE_TICKET) and the six train interiors (the Image cell of EV105 to EV110 lists TRAIN_INTERIOR and _2 to _6; one is picked at random each time, the existing way). **Not wired, waiting on Cameron:** the District rooms (DISTRICT_LOBBYIST_MEETING, POLICY_STUDY and AMBUSH_STREET and their variants need a small code change so the shared rooms use them at the District office), DISTRICT_LEGISLATURE_1 to 3 and DISTRICT_LIBRARY_1 to 2 (not on the art list), and POLITICIAN_TRAIN_TICKET (a member's rail pass card; nothing shows an icon for the rail pass yet). |
