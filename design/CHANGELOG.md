@@ -1600,3 +1600,12 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Data | Parties tab: Short Name and Japanese Name. UI Styles: `scrim`, `alarm`, `scrim_alpha`. Text: 20 rows. |
 | Not built (P14b or later) | One card per promise, the redrawn bill card, the stacked Vote Projections, the staff speech card on a forced move. Left out on purpose: each answer's rhetorical style (Cameron to decide). |
 | Where | Report with pictures: `design/review/p14_remaining_screens_2026-11-20/REPORT.md`; plan: `design/proposals/P14_PLAN_2026-11-20.md`. |
+
+## 2026-11-20: The Floor Vote built to the mock-up (P14b, Cameron: "Build the mock up")
+
+| Part | What changed |
+|---|---|
+| Layout | Under the party discs the Floor Vote is now cards in the style's own look: the bill card (its name, what it does, the rule it must pass by, whether your influence can sway others), the Vote Projections card (one bar for each choice), the stance card when you lean, a research and whip note card, and one row of three actions (Influence Status, Vote Intention Research, Whip Details). The vote buttons stay fixed at the foot. |
+| Unchanged | The engine, every number and every sentence. The gold-ruled blocks and the grey veil are gone; the cards carry their own ground. |
+| Not built | The mock-up's "Likely Passes" at the right of each projection and its colour legend (they need new wording); the projection captions keep today's words. |
+| Where | Pictures: `design/review/p14_remaining_screens_2026-11-20/img/floor_vote_cards_*.png`; side-by-side with the old: `floor_vote_projections_side_by_side.png`. |

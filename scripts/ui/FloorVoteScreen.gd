@@ -188,16 +188,16 @@ func _add_text_veil() -> void:
 	SoftEdge.apply(veil)
 
 
-## Under the bill: whether the player's influence can sway other parties yet
-## (and what is still missing), then what each choice would give (2026-10-15).
-## The labels are built in code beside BillText.
+## The part under the party discs (P14b, 2026-11-20, Cameron: "build the mock up"): cards instead of gold-ruled blocks. The bill
+## card (its name, what it does, the rule it must pass by, whether your influence can sway others), the Vote Projections card
+## (one bar for each choice), the stance card (when you lean), a small research and whip note card, and, in one row, the
+## three actions: Influence Status, Vote Intention Research and Whip Details. The numbers, the engine and every sentence are
+## today's; only their grouping changed. The vote buttons stay fixed at the foot.
 func _show_influence_and_preview() -> void:
-	var holder := _bill_text.get_parent()
-	if holder.name == "InfoColumn":
-		holder = holder.get_parent().get_parent()
-	var column := holder.find_child("InfoColumn", true, false) as VBoxContainer
+	var column := find_child("InfoColumn", true, false) as VBoxContainer
 	if column == null:
 		# The text can run longer than the strip it sits in, so it scrolls.
+		var holder := _bill_text.get_parent()
 		var scroll := ScrollContainer.new()
 		scroll.name = "InfoScroll"
 		scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -209,11 +209,21 @@ func _show_influence_and_preview() -> void:
 		column.add_theme_constant_override("separation", 16)
 		scroll.add_child(column)
 		_bill_text.reparent(column, false)
+	# The bill text lives inside the bill card; take it out before the old cards go, then put it in the new one.
+	if _bill_text.get_parent() != column:
+		_bill_text.reparent(column, false)
 	for child in column.get_children():
 		if child != _bill_text:
 			child.queue_free()
+	var veil := get_node_or_null("Safe/Column/ScrollArea/TextVeil") as Control
+	if veil != null:
+		veil.hide()   # the cards carry their own ground, so the grey veil is not needed
+	var look := OfficeFrameStyles.look()
 
-	column.add_child(_gold_rule())
+	# --- the bill card
+	var bill_box := _section(column, look, str(engine.bill().get("bill_name", "")))
+	_bill_text.reparent(bill_box, false)
+	_bill_text.theme_type_variation = &""
 	var rule := Label.new()
 	rule.name = "VoteRequirement"
 	rule.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -224,25 +234,16 @@ func _show_influence_and_preview() -> void:
 	rule.text = Text.say("floor_vote.req_line", {
 		"requirement": VoteWords.requirement_label(engine.requirement()),
 		"needed": engine.yes_needed_now(), "house": house})
-	column.add_child(rule)
-
-	# The influence gate lives behind a button (2026-11-08 draft): the pop-up
-	# is built fresh on each press, so it always shows the standing right now.
+	bill_box.add_child(rule)
+	# Whether the influence gate is open lives in one line; the pop-up behind its button is built fresh on each press, so it
+	# always shows the standing right now.
 	var influence_line := Label.new()
 	influence_line.name = "InfluenceLine"
 	influence_line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	influence_line.text = Text.say("floor_vote.influence_line_will"
 		if bool(engine.influence_status().get("ready", false))
 		else "floor_vote.influence_line_will_not")
-	column.add_child(influence_line)
-	var influence_button := Button.new()
-	influence_button.name = "InfluenceStatusButton"
-	influence_button.text = Text.say("floor_vote.influence_button")
-	influence_button.custom_minimum_size.y = 96.0
-	influence_button.pressed.connect(_open_influence_status)
-	column.add_child(influence_button)
-	column.add_child(_gold_rule())
-
+	bill_box.add_child(influence_line)
 	# Members won over and lobbyists at work, when a patron bill's stages left any.
 	var won := BillAssist.total(GameState.bill_assist, "won_over")
 	var against := BillAssist.total(GameState.bill_assist, "worked_against")
@@ -251,29 +252,18 @@ func _show_influence_and_preview() -> void:
 		won_label.name = "AssistWon"
 		won_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		won_label.text = Text.say("floor_vote.assist_won", {"count": won})
-		column.add_child(won_label)
+		bill_box.add_child(won_label)
 	if against > 0:
 		var against_label := Label.new()
 		against_label.name = "AssistAgainst"
 		against_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		against_label.text = Text.say("floor_vote.assist_against", {"count": against})
-		column.add_child(against_label)
+		bill_box.add_child(against_label)
 
-	if won > 0 or against > 0:
-		column.add_child(_gold_rule())
-	_add_research_block(column)
-	_build_whip_row(column)
-	column.add_child(_gold_rule())
-
-	# Vote Projections: one bar per choice with a label above it. Part of the
-	# house is shown as Unknown (black) so the exact tally waits for the final
-	# outcome screen (draft 2026-11-08).
-	var preview := VBoxContainer.new()
+	# --- Vote Projections: one bar per choice with a label above it. Part of the house is shown as Unknown (black) so the
+	# exact tally waits for the final outcome screen (draft 2026-11-08).
+	var preview := _section(column, look, Text.say("floor_vote.preview_heading"))
 	preview.name = "VotePreview"
-	preview.add_theme_constant_override("separation", 8)
-	var preview_title := Label.new()
-	preview_title.text = Text.say("floor_vote.preview_heading")
-	preview.add_child(preview_title)
 	var labels := _vote_words.duplicate()
 	if GameState.vote_unknown_percent <= 0:
 		GameState.lock_vote_unknown_percent()
@@ -303,17 +293,12 @@ func _show_influence_and_preview() -> void:
 			parts.append({"color": bucket[1], "votes": int(shown[bucket[0]]), "label": ""})
 		bar.show_segments(parts)
 		preview.add_child(bar)
-	column.add_child(preview)
 
+	# --- what each vote does to the bill's supporters and opponents, when you lean
 	if not GameState.stance_lean().is_empty():
-		column.add_child(_gold_rule())
-		var stance := VBoxContainer.new()
+		var stance := _section(column, look, Text.say("floor_vote.stance_heading", {
+			"lean": StanceLines.lean_name(GameState.stance_lean())}))
 		stance.name = "StancePreview"
-		var heading := Label.new()
-		heading.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		heading.text = Text.say("floor_vote.stance_heading", {
-			"lean": StanceLines.lean_name(GameState.stance_lean())})
-		stance.add_child(heading)
 		for choice: String in ["Yes", "No", "Abstain"]:
 			var trial := GameState.preview_stance_vote(choice)
 			var chips := StanceLines.chip_entries(trial.get("deltas", {}))
@@ -327,20 +312,51 @@ func _show_influence_and_preview() -> void:
 			stance.add_child(line)
 			if not chips.is_empty():
 				stance.add_child(OrgChip.row(chips, true, 90.0))
-		column.add_child(stance)
+
+	# --- the research and whip notes, then the three actions in one row
+	var notes := _section(column, look, "")
+	notes.name = "ResearchBlock"
+	var actions := HBoxContainer.new()
+	actions.name = "ActionRow"
+	actions.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
+	var influence_button := Button.new()
+	influence_button.name = "InfluenceStatusButton"
+	influence_button.text = Text.say("floor_vote.influence_button")
+	influence_button.pressed.connect(_open_influence_status)
+	actions.add_child(influence_button)
+	_add_research_block(notes, actions)
+	_build_whip_row(notes, actions)
+	column.add_child(actions)
+	for button: Node in actions.get_children():
+		_dress_action(button as Button, look)
+	if notes.get_child_count() == 0:
+		notes.get_parent().queue_free()   # no research and no whip: the empty card goes
+
+
+## A card in the body: the style's own card with an optional heading. Returns the column to fill.
+func _section(column: VBoxContainer, look: Dictionary, title: String) -> VBoxContainer:
+	var card := OfficeFrameStyles.card(look, title)
+	column.add_child(card)
+	return card.get_node("Column") as VBoxContainer
+
+
+## An action button of the one row: outlined in the card ink, the same height as its neighbours, words wrapped.
+func _dress_action(button: Button, look: Dictionary) -> void:
+	if button == null:
+		return
+	OfficeFrameStyles.dress_card_button(button, look, not button.disabled)
+	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	button.custom_minimum_size = Vector2(0, 110)
+	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	button.clip_text = true
 
 
 ## The research assistant's part (draft 2026-11-08): a line when the staff
 ## member has already narrowed the unknown share, and a Research Briefing
 ## button that clears a little more, once per vote, for hours and XP.
-func _add_research_block(column: VBoxContainer) -> void:
+func _add_research_block(block: VBoxContainer, actions: Container) -> void:
 	if _voted:
 		return
-	var block := VBoxContainer.new()
-	block.name = "ResearchBlock"
-	block.add_theme_constant_override("separation", 8)
-	column.add_child(block)
-	column.add_child(_gold_rule())
 	if GameState.research_passive_points() > 0:
 		var passive := Label.new()
 		passive.name = "ResearchPassive"
@@ -364,7 +380,7 @@ func _add_research_block(column: VBoxContainer) -> void:
 	# A refusal is a sentence, so the button wraps it instead of widening the column.
 	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.clip_text = true
-	block.add_child(button)
+	actions.add_child(button)   # the button joins the one row of actions; its notes stay in the notes card
 
 
 func _on_research_briefing() -> void:
@@ -430,7 +446,7 @@ func _discount_orgs() -> Array[String]:
 
 ## "Whip the vote": fewer / more extra votes from your own party, with the
 ## price. The vote buttons carry the cost for the choice they make.
-func _build_whip_row(column: VBoxContainer) -> void:
+func _build_whip_row(notes: VBoxContainer, actions: Container) -> void:
 	var most := 0
 	for choice: String in ["Yes", "No", "Abstain"]:
 		most = maxi(most, int(_whip_numbers(choice)["allowed"]))
@@ -500,8 +516,8 @@ func _build_whip_row(column: VBoxContainer) -> void:
 		details.name = "WhipDetailsButton"
 		details.text = Text.say("floor_vote.whip_details_button")
 		details.pressed.connect(_open_whip_details)
-		box.add_child(details)
-	column.add_child(box)
+		actions.add_child(details)
+	notes.add_child(box)
 	_refresh_vote_buttons()
 
 
