@@ -54,33 +54,49 @@ METRICS = [
 
 def main():
     print("# Strategy bot with and without the offices\n")
+    print("Each cell reads *no offices → stays at its office (lazy) → follows its own order and crosses (pessimistic)*. "
+          "A policy with no runs shows a dash.\n")
     for pressure in PRESSURES:
-        off, on = load("0", pressure), load("1", pressure)
-        if not off or not on:
+        runs = {mode: load(mode, pressure) for mode in ("0", "1", "2")}
+        if not runs["0"] or not runs["1"]:
             continue
-        pcs = sorted({r["protagonist"] for r in on})
-        print("## Campaign Pressure: %s (%d runs without, %d with)\n" % (pressure, len(off), len(on)))
+        pcs = sorted({r["protagonist"] for r in runs["1"]})
+        counts = ", ".join("%d %s" % (len(v), {"0": "without", "1": "lazy", "2": "pessimistic"}[k]) for k, v in runs.items() if v)
+        print("## Campaign Pressure: %s (%s runs)\n" % (pressure, counts))
         print("| Metric | " + " | ".join("%s (%s)" % (pc, RATING.get(pc, "")) for pc in pcs) + " |")
         print("|---|" + "---|" * len(pcs))
+
+        def cells_for(fn, fmt):
+            cells = []
+            for pc in pcs:
+                parts = []
+                for mode in ("0", "1", "2"):
+                    sel = [fn(r) for r in runs[mode] if r["protagonist"] == pc]
+                    parts.append(fmt.format(mean(sel)) if sel else "-")
+                cells.append(" → ".join(parts))
+            return cells
+
         for title, fn, fmt in METRICS:
+            print("| %s | %s |" % (title, " | ".join(cells_for(fn, fmt))))
+        print("| District awareness at week 30 | %s |" % " | ".join(cells_for(lambda r: r["dist"], "{:.0f}")))
+        for title, key, fmt in (("Trips taken over 30 weeks", "trips", "{:.1f}"), ("Travel hours over 30 weeks", "trip_hours", "{:.0f}"),
+                                ("Mixed levels played over 30 weeks", "mixed_levels", "{:.1f}")):
             cells = []
             for pc in pcs:
-                a = [fn(r) for r in off if r["protagonist"] == pc]
-                b = [fn(r) for r in on if r["protagonist"] == pc]
-                cells.append("%s → %s" % (fmt.format(mean(a)), fmt.format(mean(b))))
-            print("| %s | %s |" % (title, " | ".join(cells)))
-        for title, key in (("Trips taken (swipes and built-in)", "trips"), ("Travel hours spent", "trip_hours"), ("Mixed levels played", "mixed_levels")):
-            cells = []
-            for pc in pcs:
-                b = [r.get(key, 0) for r in on if r["protagonist"] == pc]
-                cells.append("%.1f" % mean(b))
-            print("| %s (with offices, over 30 weeks) | %s |" % (title, " | ".join(cells)))
+                parts = []
+                for mode in ("1", "2"):
+                    sel = [r.get(key, 0) for r in runs[mode] if r["protagonist"] == pc]
+                    parts.append(fmt.format(mean(sel)) if sel else "-")
+                cells.append(" / ".join(parts))
+            print("| %s (lazy / pessimistic) | %s |" % (title, " | ".join(cells)))
         share = []
         for pc in pcs:
-            b = [r.get("trip_hours", 0) / max(1, r["weeks"] * 40) for r in on if r["protagonist"] == pc]
-            share.append("%.0f%%" % (100 * mean(b)))
-        print("| Share of the 40-hour week spent travelling | %s |\n" % " | ".join(share))
-        print("Each cell reads *without offices → with offices*.\n")
+            parts = []
+            for mode in ("1", "2"):
+                sel = [r.get("trip_hours", 0) / max(1, r["weeks"] * 40) for r in runs[mode] if r["protagonist"] == pc]
+                parts.append("%.0f%%" % (100 * mean(sel)) if sel else "-")
+            share.append(" / ".join(parts))
+        print("| Share of the 40-hour week spent travelling (lazy / pessimistic) | %s |\n" % " | ".join(share))
 
 
 main()
