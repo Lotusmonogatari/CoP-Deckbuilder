@@ -87,6 +87,11 @@ static func background(stage_id: String) -> Texture2D:
 ## itself uses, rather than only ever checking the plain file.
 static func background_path(stage_id: String) -> String:
 	var candidates: Array[String] = []
+	# At the District office the shared Lobbyist, Policy Study and Media Ambush rooms show their District picture for this
+	# protagonist (Cameron, 2026-11-20); a picture not drawn yet falls through to the usual one below.
+	var district := _district_picture(stage_id)
+	if not district.is_empty():
+		candidates.append(folder("background") + district + ".png")
 	var variant := _background_variant(stage_id)
 	if not variant.is_empty():
 		candidates.append(folder("background") + "%s_%s.png" % [stage_id, variant])
@@ -105,6 +110,30 @@ static func background_path(stage_id: String) -> String:
 			and (stage_id.begins_with(prefix) or borrowed.begins_with(prefix)):
 		candidates.append(folder("background") + fallback + ".png")
 	return _first_existing(candidates)
+
+
+## The District picture for a shared room, or "": the room is the stage itself (ST19, ST20, ST21) or the one it borrows its
+## Background ID from. DistrictRooms holds the rule.
+static func _district_picture(stage_id: String) -> String:
+	var rooms: Variant = _art().get("district_backgrounds", {})
+	if not rooms is Dictionary:
+		return ""
+	var room := stage_id
+	if not (rooms as Dictionary).get(room) is Array:
+		room = _stage_choice(stage_id, DataDB.stage_background_id(stage_id))
+	return DistrictRooms.picture(rooms as Dictionary, room, GameState.protagonist_id, GameState.office_location == Offices.DISTRICT)
+
+
+## The small picture on a travel-mode button (data/art.json "travel_mode_icons"), or null when none is drawn.
+static func mode_icon(mode: String) -> Texture2D:
+	var icons: Variant = _art().get("travel_mode_icons", {})
+	if not icons is Dictionary:
+		return null
+	var name := str((icons as Dictionary).get(mode, ""))
+	if name.is_empty():
+		return null
+	var path := _first_existing([folder("icon") + name + ".png"])
+	return load(path) as Texture2D if not path.is_empty() else null
 
 
 ## A stage whose Background ID lists several pictures shows one of them,
