@@ -110,16 +110,6 @@ func has_backup() -> bool:
 	return has_save(MANUAL_PATH)
 
 
-## When the backup was made, as the save file recorded it ("" if none).
-func backup_time() -> String:
-	if not has_backup():
-		return ""
-	var parsed: Variant = _parse(MANUAL_PATH)
-	if parsed is Dictionary:
-		return str((parsed as Dictionary).get("saved_at", "")).replace("T", " ")
-	return ""
-
-
 ## Loads the backup into the run and makes it the main save. True on success.
 ## The run being replaced is first written to UNDO_PATH.
 func restore_backup() -> bool:

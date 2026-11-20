@@ -82,12 +82,6 @@ static func is_empty(bonus: Dictionary) -> bool:
 	return (bonus.get("meta", {}) as Dictionary).is_empty() and (bonus.get("orgs", []) as Array).is_empty()
 
 
-## The two numbers of a chip's range as text parts: the low end carries its sign ("+2", "0", "-1"), the high
-## end only a minus ("4"). The wording that joins them is a Text row.
-static func chip_numbers(low: int, high: int) -> Dictionary:
-	return {"low": ("%+d" % low) if low != 0 else "0", "high": str(high)}
-
-
 static func _add_meta(meta: Dictionary, name: String, bounds: Dictionary, scaled: bool, tier: String,
 		base_balance: Dictionary) -> void:
 	if bounds.is_empty():

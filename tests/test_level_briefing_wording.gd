@@ -3,15 +3,10 @@ extends GutTest
 ## level is won, and the briefing never says "win all" or "the whole level", which an old draft did and which was not
 ## what the code does (a level can be won after losing a room that does not end it).
 
-## Rows of the old briefing block (LevelBonusView.rows(), no longer on the screen), listed in design/CLEANUP_CANDIDATES.md
-## for Cameron to remove. Their old wording ("paid if you win the whole level") is what this redesign corrected.
-const RETIRED := ["briefing.level_bonus", "briefing.level_bonus_orgs"]
-
-
 func _briefing_rows() -> Dictionary:
 	var out := {}
 	for key: String in DataDB.strings:
-		if key.begins_with("briefing.") and not RETIRED.has(key):
+		if key.begins_with("briefing."):
 			out[key] = str(DataDB.strings[key])
 	return out
 

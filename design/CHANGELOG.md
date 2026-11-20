@@ -1541,3 +1541,12 @@ The trip button became **a train on a track**. The words (where, how long, by wh
 | Spellings | PC04's District office is **Daikoku** and PC02's is **Akeno Shinmachi** (明野新町) in the Player tab; the tests and documents follow. The earlier changelog sections of 2026-11-20 still use the old spellings, which were Claude's guesses. |
 | Places | Misawa, Tohoku and Shichinohe are confirmed inside Aomori Block 3: six draft names for PC01 (Places 112 to 118 rows). |
 | Where it is written | `design/proposals/TWO_OFFICES_DECISIONS_2026-11-20.md` (decisions 25 to 28), the report's header, `GAME_SYSTEMS.md` section 3.1, `NEW_CHAT_STARTUP.md`. The workbook edit is `tools/workbook/archive/two_offices_decisions_2026-11-20.py`. |
+
+## 2026-11-20: Cleanup pass (Cameron: "execute the cleanup")
+
+| Part | What changed |
+|---|---|
+| Removed | The old Level Bonus block (`LevelBonusView`, `LevelBonus.chip_numbers`), 14 Text rows the redesigned briefing no longer asks for, `StageCarryOver` and its test, and five functions only their own tests called (`SaveManager.backup_time`, `RewardTargets.is_modifier` / `is_shop_item` / `is_segment`, `PatronRequests.room_to_open`, `BillName.sentence_start`). 2,270 unit tests pass (seven fewer, the tests of what was removed). |
+| Kept, and why | `game_design_artifact.html` (it is the source of the published game design page, not a copy), the 17 papers code comments cite, and the helpers and wrappers tests rely on. The reasons are in `CLEANUP_CANDIDATES.md`. |
+| New candidates | 16 more unused Text rows and about 210 MB of finished-panel screenshots in `design/review/`, noted for Cameron's word. |
+| Decisions recorded | `TWO_OFFICES_DECISIONS_2026-11-20.md` decisions 29 to 32: no District nudge, no car price change, LV10 stays, four tickets are enough. |

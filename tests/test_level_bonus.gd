@@ -54,12 +54,6 @@ func test_a_blank_or_odd_cell_is_no_range() -> void:
 	assert_eq(LevelBonus.range_of({}), {})
 
 
-func test_a_chip_range_carries_the_sign_on_the_low_end() -> void:
-	assert_eq(LevelBonus.chip_numbers(2, 4), {"low": "+2", "high": "4"})
-	assert_eq(LevelBonus.chip_numbers(0, 3), {"low": "0", "high": "3"})
-	assert_eq(LevelBonus.chip_numbers(-2, -1), {"low": "-2", "high": "-1"})
-
-
 # --- the preview ---------------------------------------------------------------
 
 func test_the_preview_reads_the_levels_own_columns() -> void:

@@ -19,17 +19,14 @@ func test_a_bo_id_is_a_booster() -> void:
 
 func test_an_sh_id_is_a_shop_item() -> void:
 	assert_eq(RewardTargets.kind_of("SH04"), RewardTargets.SHOP_ITEM)
-	assert_true(RewardTargets.is_shop_item("SH04"))
 
 
 func test_a_bare_m_id_is_a_modifier() -> void:
 	assert_eq(RewardTargets.kind_of("M12"), RewardTargets.MODIFIER)
-	assert_true(RewardTargets.is_modifier("M12"))
 
 
 func test_an_sg_id_is_a_segment() -> void:
 	assert_eq(RewardTargets.kind_of("SG02"), RewardTargets.SEGMENT)
-	assert_true(RewardTargets.is_segment("SG02"))
 
 
 func test_sh_is_checked_before_the_bare_m_prefix() -> void:

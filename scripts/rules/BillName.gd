@@ -24,12 +24,6 @@ static func phrase(bill_name: String) -> String:
 	return "the " + name
 
 
-## The same, ready to start a sentence ("This bill to ...", "The ... Act").
-static func sentence_start(bill_name: String) -> String:
-	var text := phrase(bill_name)
-	return text.substr(0, 1).to_upper() + text.substr(1)
-
-
 ## The short way to refer back to a bill: "the Act" or "the Agreement" for a bill
 ## named so, "the bill" for anything else. `variety` picks between "the Act" and
 ## "the bill" for an Act, so a run of lines does not all say the same one.

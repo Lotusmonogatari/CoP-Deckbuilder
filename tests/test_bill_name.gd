@@ -7,13 +7,11 @@ const DRAFTED := "A bill to cap the monthly cost of a commuter pass and run late
 
 func test_a_named_bill_reads_after_the() -> void:
 	assert_eq(BillName.phrase("Hokkaido Shinkansen Acceleration Act"), "the Hokkaido Shinkansen Acceleration Act")
-	assert_eq(BillName.sentence_start("Hokkaido Shinkansen Acceleration Act"), "The Hokkaido Shinkansen Acceleration Act")
 
 
 func test_a_drafted_bill_reads_as_this_bill() -> void:
 	assert_eq(BillName.phrase(DRAFTED),
 		"this bill to cap the monthly cost of a commuter pass and run late-night commuter trains")
-	assert_eq(BillName.sentence_start("An act to fund rural clinics"), "This act to fund rural clinics")
 
 
 func test_a_name_that_starts_with_the_gets_no_second_one() -> void:
