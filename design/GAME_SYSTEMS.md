@@ -108,7 +108,7 @@ The player stands in one of two places, **the Capitol** (Sapporo) or **their Dis
 | **Places** | The **Places** tab (112 rows) names each protagonist's own places by type (24 types: station, harbor, onsen town, school, festival and so on; PC01 and PC04 swapped with their districts). Text asks for a type, `{place:harbor}`, and the protagonist's own name takes its place; `{office_city}` is the District office's town. Where a district has several names for a type one is picked, the same one every time for the same event. **Events** have a `Needs Place` column: an event whose text asks for a type the district lacks is never drawn there. 29 place-bound events were rewritten with tokens (27 need a type; drafts for Cameron). The tokens are filled when a protagonist is chosen (`DataDB._fill_place_tokens`), so everything that shows event text shows the right names. The exporter checks every token's type and that the event lists it. |
 | **The weekend** | No travel; the week starts where the weekend ended. |
 
-The District offices share one set of room-object pin positions (art.json `office_hotspots.DISTRICT_OFFICE`). Not built yet (the plan is `design/proposals/TWO_OFFICES_BUILD_PLAN_2026-11-20.md`): the Places tab, and the protagonists' own levels.
+The District offices share one set of room-object pin positions (art.json `office_hotspots.DISTRICT_OFFICE`). Not built yet (the plan is `design/proposals/TWO_OFFICES_BUILD_PLAN_2026-11-20.md`): the protagonists' own levels.
 
 ## 4. What the player holds: resources and standing
 

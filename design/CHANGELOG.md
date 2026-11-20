@@ -1500,3 +1500,13 @@ The trip button became **a train on a track**. The words (where, how long, by wh
 | Tests | `test_travel_tickets` (who is sold what, modes, a ticket's hours and standing, tickets per trip, the encounter rate and its exceptions); the travel click test covers the mode row, a ticket drag, a plane, the briefing row and an encounter. |
 | Pictures | Art IDs still to be drawn: `TICKET_*` icons (the items have none yet), `TRAIN_INTERIOR` (the encounters' picture; the export warns it is missing). |
 
+## 2026-11-20: Two offices, slice 5: places and place tokens
+
+| Part | What changed |
+|---|---|
+| Places tab | New tab, 112 rows: each protagonist's named places by type, from the spec's catalog with PC01 and PC04 swapped. Real towns, mountains and straits keep their real names; companies and branded venues use the adopted Yezo brand names. A draft for Cameron to correct (notes such as "early August" were dropped from names). |
+| Tokens | `{place:harbor}` and `{office_city}` in event text become the protagonist's own names; the pick among several names is stable per event. New pure rule `PlaceTokens`; `DataDB` fills the text when a protagonist is chosen and keeps the unfilled text. |
+| Needs Place | New Events column. An event that asks for a type the district lacks is never drawn (and a Buyable one is not listed). The exporter errors on an unknown type, on a token the event does not list, and on a type no protagonist has. |
+| Events rewritten (drafts) | 29 of the audit's 39 place-bound events now use tokens: EV02, EV12, EV13, EV17, EV19, EV20, EV24, EV26, EV27, EV35, EV37, EV39, EV42, EV48, EV49, EV50, EV52, EV53, EV56, EV57, EV58, EV63, EV66, EV69, EV82, EV86, EV87, EV90, EV94. **Ten were left as written because no place in their text could be replaced by a type:** EV01 (Sapporo's tournament), EV14, EV18, EV23, EV34, EV51 (a TV station, not a rail station), EV85, EV88, EV92, EV93. Some of the swaps change the setting (the Hakodate harbor letters now come from the district's own harbor; EV82's turbine meeting may pick a nuclear site in the Aomori district), so each is worth a read. |
+| Tests | `test_place_tokens` (fill, stable picks, the swap, no token left on screen for any protagonist, Needs Place). |
+
