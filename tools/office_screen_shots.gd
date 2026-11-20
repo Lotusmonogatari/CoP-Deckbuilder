@@ -132,6 +132,19 @@ func _popup(office: Node, kind: String) -> Overlay:
 			GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(DataDB.levels[0])))
 			office._show_resume_choice_if_in_level()
 			return office.get_node("ResumeChoicePanel")
+		"cosmetics":
+			GameState.owned_cosmetic_packages.append(str(DataDB.cosmetic_packages[0].get("package_id", "")))
+			office._show_cosmetics()
+			return office._cosmetics_panel
+		"characters":
+			office._characters.open()
+			return office._characters_panel
+		"howto":
+			HowToPlayPanel.open(office._how_to_play_panel)
+			return office._how_to_play_panel
+		"newgame":
+			office._show_new_game(false)
+			return office._new_game_panel
 		"travelpage":
 			GameState.add_item("SH42", 2)
 			office._show_travel_page()

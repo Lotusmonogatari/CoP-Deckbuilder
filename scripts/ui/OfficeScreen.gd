@@ -1861,7 +1861,10 @@ func _adopt_chosen_style() -> void:
 func _show_new_game(first_run: bool) -> void:
 	# The New Game screen's button outlines are the gold of the title screen, not the old run's party colour.
 	Layout.set_outline_override(CueBanner.EDGE_COLOUR, true)
-	var rows: Array[Control] = [UiKit.line(Text.say("new_game.blurb"))]
+	# On the shared frame (P14b, 2026-11-20): the choice strips in a card, then one card for each champion with its Choose button
+	# in the accent colour. The choice itself is unchanged: tapping a champion's Choose starts the run.
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = [_ground_line(Text.say("new_game.blurb"), look)]
 	# Campaign Pressure (Difficulty.gd) on the left and the display theme on the right, each a strip of
 	# square buttons to swipe through. Difficulty is raised later in Administration; the theme is free here.
 	var tiers: Array = []
@@ -1877,10 +1880,22 @@ func _show_new_game(first_run: bool) -> void:
 		_pending_pressure, _on_pressure_picked.bind(first_run)))
 	pair.add_child(_swipe_strip("ThemeStrip", Text.say("new_game.theme_heading"), styles,
 		_chosen_style(), _on_theme_picked.bind(first_run)))
-	rows.append(pair)
+	var strips_card := OfficeFrameStyles.card(look)
+	strips_card.name = "NewGameStripsCard"
+	strips_card.get_node("Column").add_child(pair)
+	rows.append(strips_card)
 	for protagonist: Dictionary in DataDB.protagonists:
-		rows.append(_protagonist_row(protagonist))
-	_new_game_panel.open(Text.say("new_game.title"), rows)
+		var champion := OfficeFrameStyles.card(look)
+		champion.name = "NewGameCard_" + str(protagonist.get("player_id", ""))
+		var champion_row := _protagonist_row(protagonist)
+		champion.get_node("Column").add_child(champion_row)
+		var choose := champion_row.find_child("Choose", true, false) as Button
+		if choose != null:
+			ConversationStyles.dress_button(choose, look, true)
+		rows.append(champion)
+	var frame := OfficeScreenFrame.new()
+	frame.setup({"title": Text.say("new_game.title"), "subtitle": "", "chips": [], "rows": rows})
+	_new_game_panel.open_frame(frame, Text.say("ui.back"))
 	if first_run and not _new_game_panel.closed.is_connected(_on_first_run_closed):
 		_new_game_panel.closed.connect(_on_first_run_closed)
 	if not first_run and not _new_game_panel.closed.is_connected(_on_new_game_dismissed):
@@ -2739,8 +2754,10 @@ func _menu_button(button_name: String, text_key: String, opener: Callable,
 ## three slots (Outfit / Office Background / Music) is equipped
 ## independently from anything owned, per CosmeticPieces.gd.
 func _show_cosmetics() -> void:
-	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("office.cosmetics_blurb")))
+	# Appearance and Music on the shared frame (P14b, 2026-11-20): one card for each package still to buy, then one card for each
+	# slot with its owned options, the equipped one filled.
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = [_ground_line(Text.say("office.cosmetics_blurb"), look)]
 
 	for package: Dictionary in DataDB.cosmetic_packages:
 		# An Office style is unlocked on the Marketplace's Office styles tab only; this panel switches
@@ -2748,17 +2765,47 @@ func _show_cosmetics() -> void:
 		if CosmeticPieces.has_piece(package, CosmeticPieces.UI_STYLE):
 			continue
 		if not GameState.owned_cosmetic_packages.has(str(package.get("package_id", ""))):
-			rows.append(_cosmetic_package_row(package))
+			var package_card := OfficeFrameStyles.card(look)
+			package_card.name = "CosmeticCard_" + str(package.get("package_id", ""))
+			var package_row := _cosmetic_package_row(package)
+			package_card.get_node("Column").add_child(package_row)
+			for button: Node in package_row.find_children("*", "Button", true, false):
+				_dress_option_button(button as Button, look)
+			rows.append(package_card)
 
 	if not GameState.owned_cosmetic_packages.is_empty():
-		rows.append(UiKit.heading(Text.say("office.cosmetics_owned_heading")))
 		for slot: String in CosmeticPieces.SLOTS:
 			if not _owns_any_piece_for(slot):
 				continue
-			rows.append(UiKit.line(_cosmetics_slot_label(slot), "SmallLabel"))
-			rows.append(_cosmetics_slot_row(slot))
+			var slot_card := OfficeFrameStyles.card(look, _cosmetics_slot_label(slot))
+			slot_card.name = "CosmeticSlotCard_" + slot
+			var slot_row := _cosmetics_slot_row(slot)
+			slot_card.get_node("Column").add_child(slot_row)
+			for button: Node in slot_row.get_children():
+				_dress_option_button(button as Button, look)
+			rows.append(slot_card)
 
-	_cosmetics_panel.open(Text.say("office.cosmetics"), rows)
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("office.cosmetics"),
+		"subtitle": "",
+		"chips": [Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}), Text.say("office.xp", {"count": GameState.xp})],
+		"rows": rows,
+	})
+	_cosmetics_panel.open_frame(frame, Text.say("ui.back_office"))
+
+
+## An option button of a card: outlined in the card's ink; the equipped one (disabled, with its name and "Equipped") is filled.
+func _dress_option_button(button: Button, look: Dictionary) -> void:
+	if button == null:
+		return
+	if button.disabled and button.text.contains(Text.say("office.cosmetics_active")):
+		ConversationStyles.dress_button(button, look, true)
+		button.add_theme_stylebox_override("disabled", button.get_theme_stylebox("normal"))
+		button.add_theme_color_override("font_disabled_color", look["on_accent"])
+		button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+		return
+	_dress_profile_button(button, look)
 
 
 func _cosmetic_package_row(package: Dictionary) -> Control:

@@ -211,3 +211,10 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 |---|---|
 | `OfficeScreen._ally_row` colour argument for rivals, `party_opinion.popup_blurb` as a heading line | The party detail draws its own cards; check before removing. |
 | `UiKit.heading` calls in the old Draft a Bill rows | Replaced by card titles. |
+
+## P14b commit 4 (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `HowToPlayPanel.rows()` | The guide opens as cards (`cards()`); `rows()` is still used by tests that read the guide. |
+| `CharacterCodex.text_color_for()` | The Characters buttons use the card ink with a coloured edge, so nothing picks a text colour for a filled button now. Used in `tests/test_character_codex.gd`. |

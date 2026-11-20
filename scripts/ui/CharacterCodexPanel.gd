@@ -16,15 +16,33 @@ func _init(list_panel: Overlay, detail_panel: Overlay) -> void:
 
 ## Opens the list: Opponents, then Visitors; met people A to Z, unmet last.
 func open() -> void:
-	var rows: Array[Control] = [UiKit.line(Text.say("characters.blurb"))]
-	rows.append(UiKit.heading(Text.say("characters.opponents_heading")))
-	rows.append_array(_buttons("opponent", DataDB.opponents))
-	rows.append(UiKit.heading(Text.say("characters.visitors_heading")))
-	rows.append_array(_buttons("visitor", DataDB.visitors))
-	_list.open(Text.say("office.characters"), rows)
+	# On the shared frame (P14b, 2026-11-20): one card each for Opponents and Visitors, the names in two columns, each with its
+	# colour as a left edge; people not met yet are dimmed.
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = []
+	var blurb := UiKit.line(Text.say("characters.blurb"), "SmallLabel")
+	blurb.custom_minimum_size.x = 0.0
+	blurb.add_theme_color_override("font_color", look["on_ground_muted"])
+	rows.append(blurb)
+	for group: Array in [["opponent", DataDB.opponents, "characters.opponents_heading"], ["visitor", DataDB.visitors, "characters.visitors_heading"]]:
+		var card := OfficeFrameStyles.card(look, Text.say(str(group[2])))
+		card.name = "CharactersCard_" + str(group[0])
+		var grid := GridContainer.new()
+		grid.name = "CharactersGrid_" + str(group[0])
+		grid.columns = 2
+		grid.add_theme_constant_override("h_separation", int(OfficeFrameStyles.len_px(8.0)))
+		grid.add_theme_constant_override("v_separation", int(OfficeFrameStyles.len_px(8.0)))
+		for button: Control in _buttons(str(group[0]), group[1] as Array, look):
+			button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			grid.add_child(button)
+		card.get_node("Column").add_child(grid)
+		rows.append(card)
+	var frame := OfficeScreenFrame.new()
+	frame.setup({"title": Text.say("office.characters"), "subtitle": "", "chips": [], "rows": rows})
+	_list.open_frame(frame, Text.say("ui.back"))
 
 
-func _buttons(kind: String, people: Array) -> Array[Control]:
+func _buttons(kind: String, people: Array, look: Dictionary) -> Array[Control]:
 	var made: Array[Control] = []
 	var player_party := str(DataDB.player.get("party", ""))
 	for entry: Dictionary in CharacterCodex.entries(kind, people, DataDB.boosters, DataDB.parties,
@@ -33,24 +51,29 @@ func _buttons(kind: String, people: Array) -> Array[Control]:
 		var button := UiKit.action_button(
 			str(entry["name"]) if met else Text.say("characters.unmet_name"), "", _show.bind(entry), 110.0)
 		button.name = "Character_" + str(entry["id"])
-		button.custom_minimum_size.x = UiKit.LINE_WIDTH
-		_paint(button, entry["color"] as Color)
+		button.custom_minimum_size.x = 0.0
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_paint(button, entry["color"] as Color, look)
+		if not met:
+			button.modulate = Color(1, 1, 1, 0.6)
 		made.append(button)
 	return made
 
 
 ## The button takes the character's colour in every state, with readable text.
-static func _paint(button: Button, color: Color) -> void:
+static func _paint(button: Button, color: Color, look: Dictionary) -> void:
+	# The card's own fill and ink, with the character's colour as a thick left edge: the words always read on the card.
 	for state: String in ["normal", "hover", "pressed", "focus"]:
 		var box := StyleBoxFlat.new()
-		box.bg_color = color.lightened(0.12) if state == "hover" else (
-			color.darkened(0.15) if state == "pressed" else color)
-		box.set_corner_radius_all(10)
+		box.bg_color = (look["tile"] as Color).lightened(0.06) if state == "hover" else look["tile"]
+		box.border_width_left = int(OfficeFrameStyles.len_px(12.0))
+		box.border_color = color
+		box.set_corner_radius_all(int(OfficeFrameStyles.len_px(8.0)) if look["living"] else 0)
 		box.set_content_margin_all(12)
 		button.add_theme_stylebox_override(state, box)
-	var text := CharacterCodex.text_color_for(color)
 	for slot: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
-		button.add_theme_color_override(slot, text)
+		button.add_theme_color_override(slot, look["ink"])
+	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 
 
 func _show(entry: Dictionary) -> void:

@@ -1643,3 +1643,13 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Promises | One tile for each promise: what and for whom, the time left (in the fall colour when it is close), the office, Keep. |
 | Text | `travel.page_title`, `travel.where_title`, `travel.all_trips`, `party_opinion.seats_line`, `party_opinion.seats_line_no_leader`. |
 | Tests | `tests/test_group6_bills_travel.gd` (6). One click test changed on purpose (`office_menus_driver.gd`, the rival bar colour). |
+
+## 2026-11-20: P14b commit 4: Appearance and Music, How to Play, Characters and New Game (Cameron: Go)
+
+| Part | What changed |
+|---|---|
+| Appearance and Music | On the shared frame (Funds and XP chips): one card for each package still to buy (picture, name and price, description, Buy), then one card for each slot with its owned options. The equipped option is **filled** in the accent colour. |
+| How to Play | On the frame: the group names, then one numbered card for each entry with its picture or video slot. Used from the title screen, the Office and the battle. |
+| Characters | On the frame: a card for Opponents and one for Visitors, the names in **two columns**, each with the character's colour as a thick left edge; people not met yet are dimmed as 誰ですか。 |
+| New Game | On the frame: the Pressure and Theme strips in one card, then one card for each champion with its Choose button in the accent colour. **Not built:** the spec's pick-a-portrait-then-"Play as {name}" flow and three-way switches. That would change how a run starts, and you tuned the swipe strips and the Choose buttons recently, so I kept them; tell me if you want the new flow. |
+| Tests | `tests/test_group7_reference.gd` (4). No click test changed. |
