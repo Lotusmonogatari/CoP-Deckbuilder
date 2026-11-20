@@ -441,3 +441,7 @@ A Shop row's **Uses** (blank = 1) is how many uses one copy has. A use takes one
 ## Addendum 2026-11-20: pop-up cards and the party discs (P14 part one)
 
 No rule changed. The Office's pop-ups are one card (`PopupCard`, opened by `Overlay.open_card`) with a kind tag; a pop-up that had to be answered still cannot be dismissed. The stage outcome is a STAGE WON or STAGE LOST card. The Floor Vote shows each party as the leader's portrait, or a colour disc holding the first kanji of the party's Japanese name with its English initials (Parties tab: Short Name, Japanese Name). A held Continue shows "Hold for 2 seconds".
+
+## Addendum 2026-11-20: the rest of P14 (P14b)
+
+No rule changed. Every remaining Office screen is on the shared frame as cards (Staff Assignments, the staff profile, Your Deck, Draft a Bill, the party detail, Travel, Appearance and Music, How to Play, Characters, New Game) or is a pop-up card (the card offer, the card look, a bill to carry, the law detail, the inventory's item sheet, the trip confirm). The Floor Vote is cards under the party discs, with each projection's likely outcome at the right in green or red. The Travel page, opened from the trip confirm's All trips button, lists the ways you can go and what waits at the other office; the strip on the Office is unchanged. The level intro's bill is a card and its lean buttons use the leader's portrait or the party's kanji disc.

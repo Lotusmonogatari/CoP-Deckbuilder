@@ -1653,3 +1653,10 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Characters | On the frame: a card for Opponents and one for Visitors, the names in **two columns**, each with the character's colour as a thick left edge; people not met yet are dimmed as 誰ですか。 |
 | New Game | On the frame: the Pressure and Theme strips in one card, then one card for each champion with its Choose button in the accent colour. **Not built:** the spec's pick-a-portrait-then-"Play as {name}" flow and three-way switches. That would change how a run starts, and you tuned the swipe strips and the Choose buttons recently, so I kept them; tell me if you want the new flow. |
 | Tests | `tests/test_group7_reference.gd` (4). No click test changed. |
+
+## 2026-11-20: P14b commit 5: the level intro's bill card (Cameron: yes, redraw it)
+
+| Part | What changed |
+|---|---|
+| Bill card | The bill's name, what it does and who is for and against it are one card in the style's own look, with the stance note on a plate under it, so none of it sits as thin text on the room picture (it overlapped itself at some sizes before). Read the Bill and Let's go are dressed like every other choice. |
+| Party disc | The two lean buttons show the party leader's portrait where one is in the assets, else a round colour disc with the first kanji of the party's Japanese name and its English initials. `PartyDiscView` is shared with the Floor Vote's party strip. |

@@ -60,3 +60,13 @@ func test_a_partys_words_sit_on_a_plate_that_reads_for_white_text() -> void:
 	# Over the lightest possible room picture the plate is still dark enough: its fill at 82% over white.
 	var over_white := Color.WHITE.lerp(Color(plate.bg_color.r, plate.bg_color.g, plate.bg_color.b), plate.bg_color.a)
 	assert_gte(PartyDisplay.contrast(Color.WHITE, over_white), 7.0, "white words on the plate over a white picture")
+
+
+func test_a_party_disc_is_a_circle_with_its_kanji_and_initials() -> void:
+	var party: Dictionary = DataDB.parties[1]
+	var disc := PartyDiscView.build(party, 160.0)
+	add_child_autofree(disc)
+	assert_eq(disc.custom_minimum_size, Vector2(160, 160))
+	assert_eq(disc.size_flags_horizontal, Control.SIZE_SHRINK_CENTER, "not stretched into an oval")
+	assert_eq((disc.get_node("Kanji") as Label).text, "遺")
+	assert_eq((disc.get_node("Initials") as Label).text, "YHP")
