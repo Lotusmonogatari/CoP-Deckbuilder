@@ -152,8 +152,11 @@ SHEETS = {
             # 2026-10-30: what a new run with this protagonist starts holding,
             # "SH21 x1; SH15 x2" (fold_player checks the items exist).
             ("Starting Items", "starting_items", "str"),
+            # 2026-11-20 (two offices): the town or neighborhood where this protagonist's
+            # District office stands ("Noheji"); the strip says "To Noheji".
+            ("District Office", "district_office", "str"),
         ],
-        "optional": ["Starting Items"],
+        "optional": ["Starting Items", "District Office"],
     },
     # The Office's own dynamic flavor lines (design proposal, 2026-09-26):
     # a notice shows when its one condition (a staff role hired/not-hired, or
@@ -755,7 +758,7 @@ SHEETS = {
         "key": "template_id",
         "id_pattern": r"^BT\d+$",
         "optional_sheet": True,
-        "optional": ["Stage 4", "Stage 5", "Stage 6", "Stage 7", "Stage 8", "Visit Parties", "Note", "Public Room (Constituency)", "Public Room (National)", "Visit Chance (%)"],
+        "optional": ["Stage 4", "Stage 5", "Stage 6", "Stage 7", "Stage 8", "Visit Parties", "Note", "Public Room (Constituency)", "Public Room (National)", "Visit Chance (%)", "Location"],
         "columns": [
             ("Template ID", "template_id", "id"),
             ("Kind", "kind", "str"),
@@ -777,6 +780,8 @@ SHEETS = {
             # How often a template's MP_VISIT is offered, in percent (blank = always).
             # Two-part bills offer it half the time (Cameron, 2026-11-03).
             ("Visit Chance (%)", "visit_chance_percent", "int"),
+            # 2026-11-20 (two offices): where a level built from this template is played.
+            ("Location", "location", "str"),
         ],
     },
     # Visit Questions and Visit Answers: what a member says when they visit a
@@ -1259,8 +1264,10 @@ SHEETS = {
             # 2026-10-30: the seasons an event can be arranged or arrive in
             # (rules.json "seasons"; blank = all year).
             ("Seasons", "seasons", "id_list"),
+            # 2026-11-20 (two offices): Capitol, District or Either (blank means Either).
+            ("Location", "location", "str"),
         ],
-        "optional": ["Seasons"],
+        "optional": ["Seasons", "Location"],
     },
     "Event Choices": {
         "out": "event_choices.json",
@@ -1660,8 +1667,13 @@ SHEETS = {
             # the first hired staff member, or the player's own thought).
             ("Level Purpose", "purpose", "str"),
             ("Purpose Speaker", "purpose_speaker", "str"),
+            # 2026-11-20 (two offices, Cameron): where the level starts: Capitol, District or Either
+            # (blank means Either), and how many trips between the offices a "mixed" level has built
+            # in (blank or 0 = none; 2 = out and back; 1 = it ends at the other office).
+            ("Location", "location", "str"),
+            ("Travel Trips", "travel_trips", "int"),
         ],
-        "optional": ["Seasons", "Event Only (Yes/No)", "Level Purpose", "Purpose Speaker"],
+        "optional": ["Seasons", "Event Only (Yes/No)", "Level Purpose", "Purpose Speaker", "Location", "Travel Trips"],
     },
     # 3 roles (Policy Research Assistant, Media Spokesperson, District
     # Representative) x 7 starting/upgrade tier configs each. The Reward
@@ -3644,6 +3656,37 @@ def _starting_items(cell, player_id, data, report):
     return items
 
 
+OFFICES = ("Capitol", "District", "Either")
+
+
+def check_offices(data, report):
+    """Two offices (2026-11-20): every Location cell is Capitol, District, Either or blank; Travel Trips is 0, 1
+    or 2 and only on a level that has a real office; a protagonist's travel hours are Balance rows."""
+    for table, key in (("levels", "level_id"), ("events", "event_id"), ("bill_level_templates", "template_id")):
+        for row in data.get(table, []):
+            where = f"{table} {row.get(key)}"
+            value = row.get("location")
+            if value not in (None, "") and value not in OFFICES:
+                report.error(where, f"Location is {value!r}; it must be Capitol, District or Either (or blank)")
+    for row in data.get("levels", []):
+        trips = row.get("travel_trips")
+        if trips in (None, 0):
+            continue
+        if trips not in (1, 2):
+            report.error(f"levels {row.get('level_id')}", f"Travel Trips is {trips}; it must be 0, 1 or 2")
+        if row.get("location") in (None, "", "Either"):
+            report.error(f"levels {row.get('level_id')}", "has Travel Trips but is not a Capitol or District level")
+    balance = data.get("balance", {})
+    for protagonist in data.get("player", {}).get("protagonists", []):
+        pid = str(protagonist.get("player_id", "")).lower()
+        if f"travel_hours_train_{pid}" not in balance:
+            report.error(f"Balance {protagonist.get('player_id')}", f"has no 'Travel Hours: Train {protagonist.get('player_id')}' row")
+        if f"travel_hours_car_{pid}" not in balance and f"travel_hours_plane_{pid}" not in balance:
+            report.error(f"Balance {protagonist.get('player_id')}", "has no 'Travel Hours: Car' or 'Travel Hours: Plane' row")
+        if not protagonist.get("district_office"):
+            report.warn(f"Player {protagonist.get('player_id')}", "has no District Office name yet")
+
+
 def check_commitments(data, report):
     """A commitment's item must be a Shop item, and every event and visitor
     question keeps at least one choice that costs nothing, so the player is
@@ -3802,6 +3845,7 @@ def fold_player(data, report):
             "region": row["region"],
             "district_name": row["district_name"],
             "district_type": row["district_type"],
+            "district_office": row.get("district_office") or "",
             "starting_items": _starting_items(row.get("starting_items"), row["player_id"], data, report),
         })
     if not protagonists:
@@ -4802,6 +4846,7 @@ def main():
     check_inventory_tabs(data, report)
     check_event_levels(data, report)
     check_commitments(data, report)
+    check_offices(data, report)
     check_followups(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)

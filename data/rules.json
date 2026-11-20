@@ -358,5 +358,29 @@
     "options": "an organization id",
     "question": "Which organization is the party's candidate selection body, which loses standing when dues go overdue?",
     "notes": "Overdue dues lower this organization's standing by the amount in the Dues levers."
+  },
+  "travel_at_weekend": {
+    "value": false,
+    "options": [
+      true,
+      false
+    ],
+    "question": "Can the player travel between the offices during the optional weekend?",
+    "means": {
+      "false": "No. The weekend is played where the work week ended, and the next week starts there.",
+      "true": "Yes, a trip spends weekend hours like any hours."
+    }
+  },
+  "start_office": {
+    "value": "Capitol",
+    "options": [
+      "Capitol",
+      "District"
+    ],
+    "question": "Where does a new run begin?",
+    "means": {
+      "Capitol": "At the Capitol, where most levels are. The District office is reached by the first trip.",
+      "District": "At the protagonist's own District office."
+    }
   }
 }

@@ -75,7 +75,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Constituents want to see you in person. Hear them out at the town hall, then open your door for office hours.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV02",
@@ -141,7 +143,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Lobbyists have asked for your time, and reporters will catch you on the way out. Listen without promising too much.",
-    "purpose_speaker": "Media Spokesperson"
+    "purpose_speaker": "Media Spokesperson",
+    "location": "Either",
+    "travel_trips": null
   },
   {
     "level_id": "LV03",
@@ -216,7 +220,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A listening tour: a town hall, a lobbyist, and a study session. Learn the issues before you have to vote on them.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV04",
@@ -303,7 +309,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Committee on the Environment holds a hearing. Line up your party first, face the press, then make your case to the committee.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV05",
@@ -408,7 +416,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A full round of media: a press conference, a TV debate and an ambush or two. Keep your tone steady from start to finish.",
-    "purpose_speaker": "Media Spokesperson"
+    "purpose_speaker": "Media Spokesperson",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV06",
@@ -516,7 +526,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The party needs help with its agricultural policy. Work the caucus, the lobbyists, and the committee, then carry it on the floor.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV07",
@@ -615,7 +627,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The party's infrastructure plan needs a champion. Study it, sell it on TV and in committee, and defend it on the floor.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV08",
@@ -708,7 +722,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Three floor debates, with reporters in between. The party is counting on you to hold the line in the chamber.",
-    "purpose_speaker": "Media Spokesperson"
+    "purpose_speaker": "Media Spokesperson",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV09",
@@ -798,7 +814,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Colleagues are away, and you are filling their seats on several committees. Each one asks different questions.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV10",
@@ -897,7 +915,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Hometown markets want protection. Build support at home, then take the idea through committee and onto the floor.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV11",
@@ -987,7 +1007,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Student organizers want a hearing. Meet them in the office, then at a town hall, and study what they are asking for.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV12",
@@ -1077,7 +1099,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A tour of the district's families. Their worries lead to two committees: the environment and construction.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": 1
   },
   {
     "level_id": "LV13",
@@ -1164,7 +1188,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Local artisans need a friend in the Assembly. Hear their lobby, then argue their case on the floor and in two committees.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV14",
@@ -1251,7 +1277,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The daily commute is getting worse. Take the complaints from your office to the committees and then to the floor.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV15",
@@ -1344,7 +1372,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The party's traditionalist wing is wary of you. Win them over in caucus, on TV, and in the Cabinet's own committee.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV16",
@@ -1434,7 +1464,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The reform caucus wants you on its side. Expect cameras, three committees, and a floor debate.",
-    "purpose_speaker": "Media Spokesperson"
+    "purpose_speaker": "Media Spokesperson",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV17",
@@ -1527,7 +1559,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Younger voters could become a coalition. Meet them at home, carry their concerns through committee, and face the press.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV18",
@@ -1620,7 +1654,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Shop owners and transit riders want different things. Find the deal that serves both, from the lobby to the floor.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV19",
@@ -1713,7 +1749,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The party's old guard and its new wave are pulling apart. Bridge them across a long run of committees and a floor debate.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV20",
@@ -1806,7 +1844,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Young people and labor could stand together. Study the case, win the party bodies, then the floor.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV21",
@@ -1899,7 +1939,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Neighborhood families want a compact with the Assembly. Build it from the town hall up through committee to the floor.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV22",
@@ -1995,7 +2037,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Small businesses want a coalition behind them. Argue for them on the floor, in committee, and on TV.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV23",
@@ -2085,7 +2129,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A big push for metro infrastructure. Expect lobbyists, two floor debates, and the party's steering committee.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV24",
@@ -2178,7 +2224,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The party's old order wants you to defend it. Expect the Cabinet, foreign affairs, war, and two floor debates.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV25",
@@ -2268,7 +2316,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The reform wave is rising, and the cameras are on you. Ride it through the press, four committees, and the floor.",
-    "purpose_speaker": "Media Spokesperson"
+    "purpose_speaker": "Media Spokesperson",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV26",
@@ -2373,7 +2423,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Practice in coalition building: an office visitor, a town hall, and a lobbyist, each wanting something different.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV27",
@@ -2466,7 +2518,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Rural youth are leaving. Listen in the office, study the problem, and take it to the agriculture and environment committees.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV28",
@@ -2556,7 +2610,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Your Kōenkai family expects you to deliver. Show up at home, then in committee, in the party, and on the floor.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV29",
@@ -2649,7 +2705,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A main street infrastructure bill needs votes. Work the lobby, three committees, and the Cabinet, and keep the press calm.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV30",
@@ -2742,7 +2800,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A grand bargain across the party and the Cabinet. Every room wants something; the floor decides whether it holds.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV31",
@@ -2814,7 +2874,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Ainu Heritage and Language Act is heading for a floor vote in the National Assembly. Ainu families and language teachers are for it; town officials and landowners are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV32",
@@ -2880,7 +2942,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Agricultural Price Stabilization Act is heading for a floor vote in the National Assembly. Rice and dairy farmers are for it; taxpayers and grocery shoppers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV33",
@@ -2946,7 +3010,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Special Economic Zones Act is heading for a floor vote in the National Assembly. New employers and the workers they hire are for it; workers under looser labor rules are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV34",
@@ -3012,7 +3078,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Hokkaido Shinkansen Acceleration Act is heading for a floor vote in the National Assembly. Commuters, freight shippers, and tourist towns are for it; taxpayers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV35",
@@ -3087,7 +3155,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Chishima Coastal Defense Modernization Act is heading for a floor vote in the National Assembly. Island residents and coast guard crews are for it; taxpayers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV36",
@@ -3159,7 +3229,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Specified Skilled Worker Visa Act is heading for a floor vote in the National Assembly. Employers short of workers are for it; local workers whose wages could slip are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV37",
@@ -3231,7 +3303,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Grid Resilience and Renewable Energy Act is heading for a floor vote in the National Assembly. Rural towns and households that lost power are for it; utility customers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV38",
@@ -3306,7 +3380,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Consumption Tax Rate Act is heading for a floor vote in the National Assembly. Pensioners and care workers are for it; shoppers and small shops are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV39",
@@ -3378,7 +3454,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Prefectural Fiscal Devolution Act is heading for a floor vote in the National Assembly. Prefectural governments and local officials are for it; people in poorer prefectures are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV40",
@@ -3450,7 +3528,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Candidate Gender Parity Act is heading for a floor vote in the National Assembly. Women candidates and their voters are for it; candidates who might be passed over are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV41",
@@ -3522,7 +3602,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Tsugaru Strait Joint Commission Act is heading for a floor vote in the National Assembly. Ferry operators, fishers, and border towns are for it; taxpayers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV42",
@@ -3594,7 +3676,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Judicial Appointments Commission Act is heading for a floor vote in the National Assembly. Courts that want distance from politics are for it; citizens who want judges answerable are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV43",
@@ -3672,7 +3756,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Temple and Shrine Heritage Act is heading for a floor vote in the National Assembly. Temples, shrines, and festival towns are for it; taxpayers who prefer secular spending are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV44",
@@ -3750,7 +3836,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Constituency Development Grants Act is heading for a floor vote in the National Assembly. Districts with a member who can deliver are for it; taxpayers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV45",
@@ -3822,7 +3910,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Digital Economy Promotion Act is heading for a floor vote in the National Assembly. Tech firms and graduates are for it; taxpayers and local power users are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV46",
@@ -3897,7 +3987,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Organized Crime Conspiracy Act is heading for a floor vote in the National Assembly. Police and crime victims are for it; citizens whose phones could be tapped are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV47",
@@ -3969,7 +4061,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Partnership Registration Act is heading for a floor vote in the National Assembly. Same-sex couples and their families are for it; people who hold traditional views of the family are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV48",
@@ -4047,7 +4141,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The National Emergency Powers Act is heading for a floor vote in the National Assembly. Disaster responders are for it; citizens who value checks on power are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV49",
@@ -4122,7 +4218,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Yezo–US Security Consultation Agreement is heading for a floor vote in the National Assembly. Defense planners and allies are for it; people who prefer a neutral Yezo are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV50",
@@ -4194,7 +4292,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Yezo–EU Economic Partnership Agreement is heading for a floor vote in the National Assembly. Exporters and shoppers are for it; dairy and rural producers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV51",
@@ -4269,7 +4369,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Strategic Land and Port Screening Act is heading for a floor vote in the National Assembly. Coastal communities and security officials are for it; foreign investors and landowners who want to sell are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV52",
@@ -4344,7 +4446,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Inbound Tourism Visa Waiver Act is heading for a floor vote in the National Assembly. Hotels, shops, and artisans are for it; residents of crowded resort towns are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV53",
@@ -4416,7 +4520,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Chishima Joint Economic Activity Act is heading for a floor vote in the National Assembly. Fishers and island tour operators are for it; islanders who hold our claim dear are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV54",
@@ -4488,7 +4594,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Tomari Nuclear Restart Act is heading for a floor vote in the National Assembly. Power users and industrial employers are for it; fishers and families near the plant are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV55",
@@ -4560,7 +4668,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Integrated Resort Act is heading for a floor vote in the National Assembly. Construction workers, hotels, and the host town are for it; neighbors and gambling-prone households are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV56",
@@ -4638,7 +4748,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Civil Service Merit Act is heading for a floor vote in the National Assembly. Unconnected applicants and voters tired of patronage are for it; local hires who know the town are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV57",
@@ -4710,7 +4822,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Regional Minimum Wage Act is heading for a floor vote in the National Assembly. Low-wage workers and students are for it; small shops and farms are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV58",
@@ -4785,7 +4899,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Independent Election Commission Act is heading for a floor vote in the National Assembly. Voters in unfairly drawn districts are for it; voters who want elected mapmakers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV59",
@@ -4857,7 +4973,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Moral Education Curriculum Act is heading for a floor vote in the National Assembly. Schools and families who want a shared moral base are for it; students and teachers with other views are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV60",
@@ -4935,7 +5053,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Foreign Resident Local Suffrage Act is heading for a floor vote in the National Assembly. Foreign residents and their neighbors are for it; citizens who fear a diluted vote are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV61",
@@ -5019,7 +5139,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Commuters are angry about fares and timetables. Hear them out, study the schedule, face the press, then the rail safety hearing.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": 1
   },
   {
     "level_id": "LV62",
@@ -5103,7 +5225,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The harbor wants answers on fishing quotas. Meet the lobby and the town, handle the press, then the quota hearing.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": 1
   },
   {
     "level_id": "LV63",
@@ -5181,7 +5305,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Wilderness and Wildlife Protection Act is heading for a floor vote in the National Assembly. Ainu land users and tour operators are for it; loggers and developers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV64",
@@ -5259,7 +5385,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Rural Hospital Network Act is heading for a floor vote in the National Assembly. Rural patients are for it; taxpayers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV65",
@@ -5331,7 +5459,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Digital Identity Card Act is heading for a floor vote in the National Assembly. Residents who tire of paperwork are for it; people who guard their privacy are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV66",
@@ -5403,7 +5533,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Public Broadcasting Independence Act is heading for a floor vote in the National Assembly. Viewers who want independent news are for it; taxpayers who fund the broadcaster are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV67",
@@ -5481,7 +5613,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Political Donation Transparency Act is heading for a floor vote in the National Assembly. Voters who want clean politics are for it; small donors who fear being named in public are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV68",
@@ -5559,7 +5693,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Corporate Tax Reduction Act is heading for a floor vote in the National Assembly. Firms and the workers they hire are for it; people who depend on public services are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV69",
@@ -5631,7 +5767,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Carbon Levy Act is heading for a floor vote in the National Assembly. Clean-energy firms and households that get dividends are for it; fuel users, farmers, and fishers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV70",
@@ -5703,7 +5841,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Fisheries Quota Modernization Act is heading for a floor vote in the National Assembly. Fishers and consumers who want healthy stocks are for it; small boats that sell their quotas are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV71",
@@ -5778,7 +5918,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Shipbuilding and Defense Industry Act is heading for a floor vote in the National Assembly. Shipyard workers and defense suppliers are for it; taxpayers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV72",
@@ -5853,7 +5995,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Constitutional Review Commission Act is heading for a floor vote in the National Assembly. Members who want change studied are for it; voters who distrust amendments are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV73",
@@ -5928,7 +6072,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Japan Customs and Border Cooperation Act is heading for a floor vote in the National Assembly. Traders and travelers are for it; people who fear for privacy at the border are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV74",
@@ -6000,7 +6146,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Chishima Resource Development Agreement Act is heading for a floor vote in the National Assembly. Investors and islanders looking for work are for it; fishers and island communities are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV75",
@@ -6072,7 +6220,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Yezo–China Trade Normalization Act is heading for a floor vote in the National Assembly. Exporters and shoppers are for it; workers and producers who compete with imports are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV76",
@@ -6144,7 +6294,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Farm Succession Support Act is heading for a floor vote in the National Assembly. Young farmers and farm towns are for it; taxpayers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV77",
@@ -6216,7 +6368,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The University Autonomy and Research Funding Act is heading for a floor vote in the National Assembly. Researchers and students are for it; taxpayers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV78",
@@ -6288,7 +6442,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Workplace Equality Act is heading for a floor vote in the National Assembly. Women, minorities, and disabled workers are for it; employers who must change hiring are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV79",
@@ -6360,7 +6516,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Parental Leave and Childcare Act is heading for a floor vote in the National Assembly. Working parents and children are for it; small employers are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV80",
@@ -6438,7 +6596,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Public Safety Surveillance Act is heading for a floor vote in the National Assembly. Police and commuters are for it; people who value their privacy are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV81",
@@ -6513,7 +6673,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Local Government Mergers Act is heading for a floor vote in the National Assembly. Taxpayers and bigger towns are for it; residents of small towns are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": 2
   },
   {
     "level_id": "LV82",
@@ -6579,7 +6741,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The Party Leadership Selection Act is heading for a floor vote in the National Assembly. Rank-and-file members are for it; party elders and officials are wary.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV83",
@@ -6645,7 +6809,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Your constituents have called a town hall. Answer their questions honestly.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV84",
@@ -6711,7 +6877,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The party's steering committee wants a word about your recent record.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV85",
@@ -6777,7 +6945,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A lobbyist would like a quiet word. Listen carefully to what is being offered.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Either",
+    "travel_trips": null
   },
   {
     "level_id": "LV86",
@@ -6843,7 +7013,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "Your door is open. Visitors from the district are lining up.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "Either",
+    "travel_trips": null
   },
   {
     "level_id": "LV87",
@@ -6912,7 +7084,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A local festival, and a chance to be seen. Your neighbors will remember who came.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV88",
@@ -6978,7 +7152,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A few reporters have gathered outside. Keep it short and on message.",
-    "purpose_speaker": "Media Spokesperson"
+    "purpose_speaker": "Media Spokesperson",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV89",
@@ -7044,7 +7220,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A town hall on local issues. Expect questions about roads, clinics, and prices.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV90",
@@ -7110,7 +7288,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "An evening of policy study. Learn the details before someone tests you on them.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Either",
+    "travel_trips": null
   },
   {
     "level_id": "LV91",
@@ -7176,7 +7356,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A late TV interview. Keep your composure until the very end.",
-    "purpose_speaker": "Media Spokesperson"
+    "purpose_speaker": "Media Spokesperson",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV92",
@@ -7244,7 +7426,9 @@
     ],
     "event_only": null,
     "purpose": "The autumn harvest festival. The farming towns are watching who turns up.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV93",
@@ -7312,7 +7496,9 @@
     ],
     "event_only": null,
     "purpose": "The winter snow festival. A cold night, a big crowd, and a lot of hands to shake.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV94",
@@ -7381,7 +7567,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A walk around the district. Talk to whoever stops you.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV95",
@@ -7453,7 +7641,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A community clinic day. Hear from patients and staff about what is missing.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV96",
@@ -7519,7 +7709,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A school visit. The students' questions will be harder than they look.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV97",
@@ -7591,7 +7783,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A stall at the farmers' market. Talk prices with the growers and the shoppers.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV98",
@@ -7657,7 +7851,9 @@
     "seasons": null,
     "event_only": "Yes",
     "purpose": "A radio debate. Without pictures, every word has to carry.",
-    "purpose_speaker": "Media Spokesperson"
+    "purpose_speaker": "Media Spokesperson",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV99",
@@ -7723,7 +7919,9 @@
     "seasons": null,
     "event_only": "Yes",
     "purpose": "The morning call-in show. Anyone can call in, so expect anything.",
-    "purpose_speaker": "Media Spokesperson"
+    "purpose_speaker": "Media Spokesperson",
+    "location": "Capitol",
+    "travel_trips": null
   },
   {
     "level_id": "LV100",
@@ -7789,7 +7987,9 @@
     "seasons": null,
     "event_only": "Yes",
     "purpose": "Fishers have called a meeting at the harbor. They want to know whose side you are on.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV101",
@@ -7855,7 +8055,9 @@
     "seasons": null,
     "event_only": "Yes",
     "purpose": "Students have invited you to a campus Q&A. Be ready for sharp questions.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV102",
@@ -7927,7 +8129,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A ward-by-ward walk with the local leaders, and a conversation for each corner.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV103",
@@ -8002,7 +8206,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A tour of the whole district. Everyone you pass will be sizing you up.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV104",
@@ -8077,7 +8283,9 @@
     ],
     "event_only": null,
     "purpose": "A big regional festival draws people from several towns. Be seen, and stay for the speeches.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV105",
@@ -8152,7 +8360,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The great festival of the year. The shrine, the towns, and the press will all be there.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV106",
@@ -8224,7 +8434,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A long open day at your office, and a longer line at the door.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "Either",
+    "travel_trips": null
   },
   {
     "level_id": "LV107",
@@ -8299,7 +8511,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The doors are open to everyone for a day, and the town leaders have been invited to watch.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV108",
@@ -8371,7 +8585,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A health fair with the clinic, the care workers, and the families who rely on them.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV109",
@@ -8446,7 +8662,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A forum on local care, with hospital staff, patients, and caregivers on one stage.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV110",
@@ -8518,7 +8736,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "An education forum with teachers, parents, and students, all of whom have opinions.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV111",
@@ -8593,7 +8813,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A graduation ceremony, and a speech the families will quote for years.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV112",
@@ -8665,7 +8887,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A trade fair where local makers and buyers meet. Listen for what they cannot get done.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV113",
@@ -8740,7 +8964,9 @@
     "seasons": null,
     "event_only": null,
     "purpose": "A large export expo with growers, makers, and buyers from beyond the district.",
-    "purpose_speaker": "District Representative"
+    "purpose_speaker": "District Representative",
+    "location": "District",
+    "travel_trips": null
   },
   {
     "level_id": "LV114",
@@ -8806,6 +9032,8 @@
     "seasons": null,
     "event_only": null,
     "purpose": "The party's candidate selection committee wants to hear your case before it decides.",
-    "purpose_speaker": "Policy Research Assistant"
+    "purpose_speaker": "Policy Research Assistant",
+    "location": "Capitol",
+    "travel_trips": null
   }
 ]

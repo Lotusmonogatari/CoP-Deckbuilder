@@ -345,5 +345,14 @@
   "report_max_paste_characters": 120000,
   "resign_confirm_hold_seconds": 5,
   "hand_card_overlap_percent": 33,
+  "travel_hours_train_pc01": 7,
+  "travel_hours_train_pc02": 1,
+  "travel_hours_train_pc03": 1,
+  "travel_hours_train_pc04": 6,
+  "travel_hours_plane_pc01": 2,
+  "travel_hours_car_pc02": 1,
+  "travel_hours_car_pc03": 1,
+  "travel_hours_car_pc04": 4,
+  "travel_forced_hours": 0,
   "xp_tiers": {}
 }
