@@ -1460,3 +1460,18 @@ The panel that opens from the level list ("Go in, or Back") was rebuilt from the
 - **Bugs found while checking the screenshots, fixed:** a one-room level shrank to a narrow column with its words stacked letter by letter (the scroll box needs its child set to expand); at Large text the level-bonus marker did not wrap and pushed the whole panel wider than the phone; the hours ring was too small for Large text.
 - **Pictures and the deviations from the mockups** are in `design/review/p12_level_preview_2026-11-19/` (`REPORT.md`).
 
+## 2026-11-20: Two offices, slice 1: where you are
+
+**The first of seven slices of the two-offices build** (plan: `design/proposals/TWO_OFFICES_BUILD_PLAN_2026-11-20.md`; decisions: `TWO_OFFICES_DECISIONS_2026-11-20.md`). The player now stands at the Capitol or at their District office, and trips between them cost hours.
+
+| Part | What changed |
+|---|---|
+| Districts swapped | Cameron's workbook upload swapped PC01 and PC04's districts. **PC01 Kenshin Sako is now the Aomori protagonist (District office Noheji, 7 h by train, plane ticket 2 h), PC04 Jyurou Nishihara the Wakkanai one (Daikoki, 6 h by train, private car 4 h).** Their district starting items flip: PC01 starts with the Box of Aomori Apples, PC04 with the Wakkanai Milk Caramels. PC02 keeps Akenoshinmachi (Tomakomai) and PC03 Teine Ward. |
+| Data | `Location` (Capitol 80, District 29, Either 5) and `Travel Trips` on Levels, tagged from the audit; `Location` on Events (EV47 only for now) and on the Bill Level Templates; `District Office` on Player; nine Balance travel rows; two Rules switches (`travel_at_weekend` off, `start_office` Capitol); 28 Text rows (Claude's drafts). The exporter checks the new columns. |
+| The trip | A button under "Choose a level": "To Noheji · 7 h · Rail pass". A popup states the cost and the hours left; the trip spends the hours (promise deadlines keep running), swaps the office picture (a labelled placeholder until the District pictures are drawn) and the level list. Refused with a reason: a level in progress, the weekend, too few hours. |
+| Levels by office | The list shows only levels at the player's office, plus Either levels; each row says where it starts. A level elsewhere cannot start. |
+| Mixed levels (24) | **Cameron's change to the spec's rule 5:** a mixed level charges its trips with its hours: a full round trip (2 trips; +14 h for PC01, +12 for PC04, +2 for the others), 1 trip for LV12, LV61 and LV62 (they end at the Capitol). The briefing says so ("Includes 14 h of travel by rail pass") and the hours badge, week bar and Go in count it. **Consequence: PC01 cannot play LV10 (27 h + 14 h) on the rail pass; it needs the plane ticket, which the Marketplace does not sell yet.** |
+| Crisis levels, EV47 | LV83 (District) and LV84 (Capitol) wait at their own office and are forced in on arrival; the Dated EV47 opens the week at the Capitol. |
+| Tests | New: `test_offices_travel`, `test_office_state`, the travel click test; the existing click drivers now stand at the office of the level they start. The text sweep and touch-target audit include the trip popup and a mixed level's briefing. |
+| Not yet | The swipe, the District office in three styles, events/promises/notices/visitors by office, tickets and train encounters, the Places tab, the eight protagonist levels, re-simulation. |
+
