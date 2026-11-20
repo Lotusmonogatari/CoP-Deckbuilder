@@ -11,7 +11,7 @@ Where things stand (2026-11-20):
 - The two-offices build is finished and merged to main in seven slices: the Capitol and a District office per protagonist (Noheji PC01, Akeno Shinmachi PC02, Teine Ward PC03, Daikoku PC04), the train strip, tickets (paid train 10,000円, private car 30,000円, plane 60,000円), train encounters, the Places tab and place tokens, eight protagonist levels (LV115 to LV122) and four How to Play entries. PC01 starts with four plane tickets. The ratings did not change.
 - The cleanup pass is done (see the end of design/CLEANUP_CANDIDATES.md for what was kept and the new candidates).
 - Everything Claude wrote for this build is a draft for me to review: ticket text, the six train encounters (EV105 to EV110), the 118 place names, the 29 rewritten events, the eight levels, the Text rows and the How to Play entries.
-- Art still to draw is listed in design/ART_ASSETS_TWO_OFFICES_2026-11-20.xlsx (four District offices, the train interior, OUT_NEIGHBORHOOD, three ticket icons, the train strip, three District rooms, rider portraits). Missing art shows a labelled placeholder.
+- Art still to draw is listed in design/ART_ASSETS_TWO_OFFICES_2026-11-20.xlsx (four District offices, the train interior, OUT_NEIGHBORHOOD, three ticket icons, three District rooms, rider portraits). Missing art shows a labelled placeholder. The trip strip's train is drawn in code and is kept as the main icon, so it needs no picture.
 - Not started: the real-phone build (milestone M6), all audio, and what Election Strength should unlock (my decision).
 - Decided and closed: no nudge to visit the District, the private car's price stays, LV10 stays plane-only for PC01, four starting tickets are enough.
 

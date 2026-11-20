@@ -1550,3 +1550,7 @@ The trip button became **a train on a track**. The words (where, how long, by wh
 | Kept, and why | `game_design_artifact.html` (it is the source of the published game design page, not a copy), the 17 papers code comments cite, and the helpers and wrappers tests rely on. The reasons are in `CLEANUP_CANDIDATES.md`. |
 | New candidates | 16 more unused Text rows and about 210 MB of finished-panel screenshots in `design/review/`, noted for Cameron's word. |
 | Decisions recorded | `TWO_OFFICES_DECISIONS_2026-11-20.md` decisions 29 to 32: no District nudge, no car price change, LV10 stays, four tickets are enough. |
+
+## 2026-11-20: The trip strip's train is kept as the main icon
+
+Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keeps it as the main icon for now. So `TRAIN_STRIP` is no longer a picture to draw: the art list (`design/ART_ASSETS_TWO_OFFICES_2026-11-20.xlsx`) shows it as a grey Deferred row, the start-up guide and prompt no longer list it, and the comment in `TravelStrip.gd` says the code-drawn train is the icon. No behavior changed.

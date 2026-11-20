@@ -5,8 +5,8 @@ extends Control
 ## train along the track past the Balance row's share (about 60%) and let go to travel; short of that it springs
 ## back. A tap opens the same confirm instead, so the drag is the fast path and not the only one.
 ##
-## It is drawn here (a placeholder train) until the TRAIN_STRIP picture is drawn. `text` and `disabled` behave like a
-## Button's, so a greyed strip says why it cannot be used.
+## The train is drawn here, in code, and is the main icon for now (Cameron, 2026-11-20: he likes it, so no TRAIN_STRIP
+## picture is needed). `text` and `disabled` behave like a Button's, so a greyed strip says why it cannot be used.
 
 signal tapped
 signal committed
