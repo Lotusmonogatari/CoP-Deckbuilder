@@ -354,5 +354,6 @@
   "travel_hours_car_pc03": 1,
   "travel_hours_car_pc04": 4,
   "travel_forced_hours": 0,
+  "travel_swipe_commit_percent": 60,
   "xp_tiers": {}
 }

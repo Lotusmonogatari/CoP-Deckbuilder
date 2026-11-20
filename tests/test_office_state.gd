@@ -154,3 +154,14 @@ func test_the_calendar_refusal_counts_a_mixed_levels_trips() -> void:
 	var level := DataDB.get_level("LV10")
 	assert_eq(GameState.level_calendar_refusal(level), Text.say("calendar.refuse_too_long"))
 	assert_eq(GameState.level_calendar_refusal(level, Travel.PLANE), "")
+
+
+func test_the_district_offices_share_one_pin_set() -> void:
+	var shared: Dictionary = DataDB.art["office_hotspots"]["DISTRICT_OFFICE"]
+	GameState.office_location = Offices.DISTRICT
+	for pid: String in ["PC01", "PC02", "PC03", "PC04"]:
+		GameState.protagonist_id = pid
+		assert_eq(RoomObjects.hotspots(), shared, "the same pins in all four District offices (Cameron, 2026-11-20)")
+	GameState.protagonist_id = "PC01"
+	GameState.office_location = Offices.CAPITOL
+	assert_eq(RoomObjects.hotspots(), DataDB.art["office_hotspots"]["OFFICE"], "the Capitol keeps its own")

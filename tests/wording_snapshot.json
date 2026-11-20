@@ -1260,6 +1260,7 @@
   "trade.walk_away": "Walk away",
   "travel.after_line": "You will have {count} h left this week.",
   "travel.button": "To {place} · {count} h · {mode}",
+  "travel.card_line": "{mode}\nTo {place}\n{count} h",
   "travel.confirm_go": "Take the trip",
   "travel.confirm_line": "Go to {place}: {count} h by {mode}. {cost}",
   "travel.confirm_stay": "Stay here",

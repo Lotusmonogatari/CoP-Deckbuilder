@@ -9224,5 +9224,12 @@
     "english": "includes {count} h of travel between the offices",
     "placeholders": "count",
     "notes": "2026-11-20 two offices (Claude's draft)"
+  },
+  {
+    "key": "travel.card_line",
+    "where": "The card shown while a trip happens: how, where and how long",
+    "english": "{mode}\nTo {place}\n{count} h",
+    "placeholders": "mode, place, count",
+    "notes": "2026-11-20 two offices, slice 2 (Claude's draft)"
   }
 ]

@@ -22,6 +22,9 @@ static func hotspots() -> Dictionary:
 	if not all is Dictionary:
 		return {}
 	var key := "OFFICE_UPGRADED" if _upgraded() else "OFFICE"
+	# The District offices share one pin set (Cameron, 2026-11-20): the same positions in all four pictures.
+	if GameState.office_location == Offices.DISTRICT and (all as Dictionary).has("DISTRICT_OFFICE"):
+		key = "DISTRICT_OFFICE"
 	var set: Variant = (all as Dictionary).get(key, {})
 	return set if set is Dictionary else {}
 
@@ -63,9 +66,24 @@ static func install(office: Control, pins: Dictionary) -> Control:
 		if was_unique:
 			button.owner = office
 			button.unique_name_in_owner = true
+		button.set_meta("pin_key", key)
 		_place(button, float((place as Array)[0]), float((place as Array)[1]))
 		_add_object_word(button, key)
 	return layer
+
+
+## Moves the pins already on the layer to the places of the office the player is in now (after a trip). Does nothing
+## when the layer does not exist (Broadcast and Woodblock arrange the same buttons as tiles).
+static func refresh(office: Control) -> void:
+	var layer := office.get_node_or_null(LAYER_NAME)
+	if layer == null:
+		return
+	var places := hotspots()
+	for child: Node in layer.get_children():
+		if child is Button and child.has_meta("pin_key"):
+			var place: Variant = places.get(str(child.get_meta("pin_key")))
+			if place is Array and (place as Array).size() >= 2:
+				_place(child as Button, float((place as Array)[0]), float((place as Array)[1]))
 
 
 ## The room object a pin sits on ("Phone", "Bookshelf"...) as a small word above the destination, as

@@ -28,8 +28,9 @@ var _standing_panel: Overlay = null
 ## The level the player is looking at, chosen on the levels screen.
 var _chosen_level: Dictionary = {}
 ## Two offices (2026-11-20): the trip button under "Choose a level", and the popup that states a trip's cost first.
-var _travel_button: Button
+var _travel_button: TravelStrip
 var _travel_panel: Overlay
+var _travel_card: TravelCard
 ## How a level's built-in trips are priced in the briefing (the member's rail pass until tickets exist).
 var _travel_mode: String = Travel.PASS
 @onready var _resources: Label = %Resources
@@ -3641,6 +3642,7 @@ func _apply_office_look() -> void:
 	else:
 		_background.art_id = "OFFICE"
 		_background.show_label = false
+	RoomObjects.refresh(self)
 
 
 ## The Office's own line about where you are, above the report of the last level.
@@ -3655,10 +3657,14 @@ func _build_travel() -> void:
 	_travel_panel.name = "TravelPanel"
 	add_child(_travel_panel)
 	_travel_panel.confirmed.connect(_on_travel_confirmed)
-	_travel_button = Button.new()
+	# The card that covers the Office while a trip happens: above every popup.
+	_travel_card = TravelCard.new()
+	add_child(_travel_card)
+	# The strip: drag the train to go; a tap opens the confirm.
+	_travel_button = TravelStrip.new()
 	_travel_button.name = "TravelButton"
-	_travel_button.custom_minimum_size = Vector2(0, 100)
-	_travel_button.pressed.connect(_show_travel)
+	_travel_button.tapped.connect(_show_travel)
+	_travel_button.committed.connect(_start_trip)
 	var column := _start_button.get_parent()
 	column.add_child(_travel_button)
 	column.move_child(_travel_button, _start_button.get_index() + 1)
@@ -3674,6 +3680,7 @@ func _refresh_travel() -> void:
 		"place": TravelText.place_name(destination), "count": GameState.trip_hours(),
 		"mode": TravelText.mode_name(Travel.PASS)})
 	_travel_button.disabled = not refusal.is_empty()
+	_travel_button.direction = 1 if GameState.office_location == Offices.CAPITOL else -1
 
 
 func _travel_mode_for_strip() -> String:
@@ -3699,6 +3706,21 @@ func _show_travel() -> void:
 
 
 func _on_travel_confirmed() -> void:
+	_start_trip()
+
+
+## The trip, from the strip's drag or the popup's confirm: the card covers the Office, the trip is taken behind
+## it, and the other office is there when the card fades.
+func _start_trip() -> void:
+	if not GameState.travel_refusal(_travel_mode_for_strip()).is_empty():
+		return
+	var words := Text.say("travel.card_line", {"mode": TravelText.mode_name(_travel_mode_for_strip()),
+		"place": TravelText.place_name(Offices.other(GameState.office_location)),
+		"count": GameState.trip_hours(_travel_mode_for_strip())})
+	_travel_card.play(words, _arrive)
+
+
+func _arrive() -> void:
 	if not GameState.travel(_travel_mode_for_strip()):
 		return
 	_apply_office_look()

@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func _run() -> void:
 	OS.set_environment("COP_NO_RANDOM_EVENTS", "1")
+	OS.set_environment("COP_NO_TRAVEL_FADE", "1")
 	for style: String in STYLES:
 		UiStyle.trying = style
 		UiStyle.sync()
@@ -73,12 +74,18 @@ func _left() -> int:
 func _trip(style: String) -> void:
 	var where := "in %s: " % style
 	var office := _screen()
-	var button := office.find_child("TravelButton", true, false) as Button
-	_expect(button != null, where + "the Office has a trip button")
+	var button := office.find_child("TravelButton", true, false) as TravelStrip
+	_expect(button != null, where + "the Office has the train strip")
 	if button == null:
 		return
-	_expect(button.text == "To Noheji · 7 h · Rail pass" and not button.disabled, where + "the trip button says where, how long and how (%s)" % button.text)
+	_expect(button.text == "To Noheji · 7 h · Rail pass" and not button.disabled, where + "the strip says where, how long and how (%s)" % button.text)
 	_expect(button.size.y >= 100.0 and button.get_global_rect().end.x <= 1081.0, where + "it is big enough and on screen")
+	_expect(button.direction == 1, where + "from the Capitol the train is pulled to the right")
+
+	# A short drag springs back and takes no trip; a long drag takes it.
+	await _drag(button, 0.3)
+	_expect(GameState.office_location == Offices.CAPITOL and _left() == 40, where + "a short drag takes no trip")
+	_expect(button.progress() == 0.0, where + "and the train is back at the start (%.2f)" % button.progress())
 	var report := office.get_node("%Report") as Label
 	_expect(report.text.begins_with("You are at the Capitol."), where + "the Office says where you are (%s)" % report.text)
 
@@ -92,7 +99,7 @@ func _trip(style: String) -> void:
 	await get_tree().process_frame
 
 	# The popup says the cost before the trip is taken.
-	button.pressed.emit()
+	_tap(button)
 	await get_tree().create_timer(0.3).timeout
 	var panel := office.get_node("TravelPanel") as Overlay
 	var words := _texts(panel)
@@ -108,7 +115,7 @@ func _trip(style: String) -> void:
 		_expect(not panel.visible and GameState.office_location == Offices.CAPITOL, where + "staying changes nothing")
 
 	# Take it.
-	button.pressed.emit()
+	_tap(button)
 	await get_tree().create_timer(0.3).timeout
 	var go := _find_button(panel, "Take the trip")
 	_expect(go != null, where + "the popup has the button that takes the trip")
@@ -118,7 +125,8 @@ func _trip(style: String) -> void:
 	await get_tree().create_timer(0.5).timeout
 	_expect(GameState.office_location == Offices.DISTRICT, where + "the player is at the District office")
 	_expect(_left() == 33, where + "seven hours were spent (%d left)" % _left())
-	_expect(button.text == "To the Capitol · 7 h · Rail pass", where + "the button now goes back (%s)" % button.text)
+	_expect(button.text == "To the Capitol · 7 h · Rail pass", where + "the strip now goes back (%s)" % button.text)
+	_expect(button.direction == -1, where + "from the District office the train is pulled to the left")
 	_expect(report.text.begins_with("You are at your District office in Noheji."), where + "the Office says so (%s)" % report.text)
 	var background: Variant = office.get("_background")
 	_expect(background != null and str(background.art_id) == "DISTRICT_OFFICE_PC01", where + "the District office picture (a labelled placeholder until it is drawn)")
@@ -141,6 +149,54 @@ func _trip(style: String) -> void:
 	_expect(button.disabled and button.text == "No travel at the weekend.", where + "at the weekend: greyed, with the reason (%s)" % button.text)
 	GameState.calendar = WeekCalendar.fresh()
 	GameState.office_location = Offices.CAPITOL
+	office.call("_refresh_calendar")
+
+	# The drag takes the trip (the far side of the track), and back again.
+	await _drag(button, 0.9)
+	_expect(GameState.office_location == Offices.DISTRICT and _left() == 33, where + "a long drag takes the trip (%s, %d left)" % [GameState.office_location, _left()])
+	await _drag(button, 0.9)
+	_expect(GameState.office_location == Offices.CAPITOL and _left() == 26, where + "and a long drag from the District office brings the player back")
+	# A greyed strip ignores a drag.
+	GameState.calendar = {"week": 0, "phase": WeekCalendar.WORK, "hours": 36}
+	office.call("_refresh_calendar")
+	await _drag(button, 0.9)
+	_expect(GameState.office_location == Offices.CAPITOL, where + "a greyed strip ignores the drag")
+	GameState.calendar = WeekCalendar.fresh()
+	office.call("_refresh_calendar")
+
+
+## A press on the train, a drag of `share` of the track in the way it goes, and a release (what a finger does).
+func _drag(strip: TravelStrip, share: float) -> void:
+	var y := strip.size.y * 0.5
+	var start_x := TravelStrip.MARGIN + 40.0 if strip.direction > 0 else strip.size.x - TravelStrip.MARGIN - 40.0
+	var press := InputEventMouseButton.new()
+	press.button_index = MOUSE_BUTTON_LEFT
+	press.pressed = true
+	press.position = Vector2(start_x, y)
+	strip._gui_input(press)
+	var move := InputEventMouseMotion.new()
+	move.position = Vector2(start_x + float(strip.direction) * share * strip.track_length(), y)
+	strip._gui_input(move)
+	var release := InputEventMouseButton.new()
+	release.button_index = MOUSE_BUTTON_LEFT
+	release.pressed = false
+	release.position = move.position
+	strip._gui_input(release)
+	await get_tree().create_timer(0.6).timeout
+
+
+## A press and a release in the same place: a tap.
+func _tap(strip: TravelStrip) -> void:
+	var press := InputEventMouseButton.new()
+	press.button_index = MOUSE_BUTTON_LEFT
+	press.pressed = true
+	press.position = Vector2(100.0, 40.0)
+	strip._gui_input(press)
+	var release := InputEventMouseButton.new()
+	release.button_index = MOUSE_BUTTON_LEFT
+	release.pressed = false
+	release.position = Vector2(102.0, 40.0)
+	strip._gui_input(release)
 
 
 func _find_button(node: Node, text: String) -> Button:
