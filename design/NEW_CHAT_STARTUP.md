@@ -93,6 +93,9 @@ Details are the sections at the end of `design/CHANGELOG.md`. In short:
 - **Hard-coded numbers moved (2026-11-17):** the Restless boost share, a patron request's tries, and four fixed ids (training coupon, bill vote stage, the two party-dues organizations) are now Balance and Rules rows.
 - **Reviews (read-only reports):** `audit/` (project audit), `audit/gameplay/` (gameplay review), `design/review/ORG_REPRESENTATION_2026-11-13.md` and `ORG_OUTCOMES_2026-11-13.md` (how events and visitors treat each organization).
 
+- **Cleanup pass (2026-11-20):** the old Level Bonus block, 14 retired briefing Text rows and some dead code were removed; what was kept and why, and the new candidates, are at the end of `design/CLEANUP_CANDIDATES.md`.
+- **Art list for the two-offices build:** `design/ART_ASSETS_TWO_OFFICES_2026-11-20.xlsx` (14 assets: asset ID, file name, text name, how it is used, size, whether it is wired).
+
 ## 7. Open items
 
 | # | Item | Notes |
