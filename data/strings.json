@@ -9301,5 +9301,89 @@
     "english": "管理",
     "placeholders": null,
     "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.tab_overview",
+    "where": "Reputation and Results — tab",
+    "english": "Overview",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.tab_stakeholders",
+    "where": "Reputation and Results — tab",
+    "english": "Stakeholders",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.tab_election",
+    "where": "Reputation and Results — tab",
+    "english": "Election",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.tab_laws",
+    "where": "Reputation and Results — tab",
+    "english": "Laws",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.biggest_moves",
+    "where": "Reputation and Results, Overview — heading of the three biggest standing changes",
+    "english": "Biggest moves last level",
+    "placeholders": null,
+    "notes": "P13: the spec said 'this week', but these changes are per level (GameState.last_booster_change resets each level), so the heading says so. Claude's draft."
+  },
+  {
+    "key": "record.tap_change_hint",
+    "where": "Reputation and Results, Overview — under the changes",
+    "english": "Tap a change to see what moved it.",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.factors_standing",
+    "where": "Reasons pop-up for an organization — first line",
+    "english": "Standing {old} → {new}",
+    "placeholders": "old, new",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.all_stakeholders",
+    "where": "Reputation and Results, Overview — link to the Stakeholders tab",
+    "english": "All {count} ›",
+    "placeholders": "count",
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.all_laws",
+    "where": "Reputation and Results, Overview — link to the Laws tab",
+    "english": "All laws ›",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.all_parties",
+    "where": "Reputation and Results, Overview — link to the Parties tab",
+    "english": "All parties ›",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.resign_title",
+    "where": "Reputation and Results, Overview — heading of the Resign box",
+    "english": "Resign",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_reputation",
+    "where": "Reputation and Results — the small Japanese accent under the title",
+    "english": "評判と成績",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
   }
 ]

@@ -169,3 +169,5 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 | What | Why it looks removable |
 |---|---|
 | `OfficeScreen._text_size_button()`, `_image_scroll_button()`, `_image_pan_button()`, `_backup_buttons()` | The Administration screen is now drawn by `AdministrationModel` and `AdministrationView`; nothing calls these four any more. (`SettingsRows`, which the stage menu still uses, is unchanged.) |
+| The scene's `OrganisationsPanel`, `BackingPanel` and the code-built `RecordPanel`, `ElectionPanel`, `PartiesPanel`, and `OfficeScreen._menu_button()` | Reputation and Results is now one tabbed screen on the frame; these five panels and the helper that built the menu rows are no longer opened by anything (the Parties allies pop-up, the law pop-up and the factors pop-up are still used). |
+| Text rows `office.your_record`, `office.organisations` | The tabs use their own names; check the exporter's "nothing asks for it" list after P13. |

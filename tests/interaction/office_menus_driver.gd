@@ -58,16 +58,52 @@ func _walk() -> void:
 		_failures.append("the Administration button reads '%s'" % administration.text)
 	print("  the Office row has Reputation and Results and Administration")
 
-	await _menu(office, "ReputationButton", "ReputationMenuPanel",
-		[["OrganisationsButton", "OrganisationsPanel"], ["BackingButton", "BackingPanel"],
-		["PartiesButton", "PartiesPanel"], ["ElectionButton", "ElectionPanel"],
-		["RecordButton", "RecordPanel"]])
+	await _check_reputation_tabs(office)
 	await _menu(office, "AdministrationButton", "AdministrationMenuPanel",
 		[["CosmeticsButton", "CosmeticsPanel"], ["HowToPlayButton", "HowToPlayPanel"]])
 	await _check_election_page(office)
 	await _check_allies_popup(office)
 	await _check_text_size(office)
 	_check_backing_prices(office)
+
+
+## Reputation and Results is one screen with tabs (P13, 2026-11-20), no longer a menu of five buttons that open five
+## panels: each tab must show its own body, and Back must close the screen.
+func _check_reputation_tabs(office: Node) -> void:
+	await _click(office.find_child("ReputationButton", true, false) as Control)
+	await get_tree().create_timer(0.3).timeout
+	var menu := office.get_node("ReputationMenuPanel") as Overlay
+	if menu == null or not menu.visible:
+		_failures.append("ReputationButton did not open ReputationMenuPanel")
+		return
+	print("  ReputationButton opened ReputationMenuPanel")
+	var bodies := {"overview": "OverviewStand", "stakeholders": "StakeholderScope_*", "backers": "BackingCard_*",
+		"parties": "PartyCard_*", "election": "ElectionCard", "laws": "LawsCard"}
+	for tab: String in bodies:
+		var button := await _tab(menu, tab)
+		if button == null:
+			_failures.append("Reputation and Results has no %s tab" % tab)
+			continue
+		await _click(button)
+		await get_tree().create_timer(0.3).timeout
+		if menu.find_children(str(bodies[tab]), "", true, false).is_empty():
+			_failures.append("the %s tab did not show its body (%s)" % [tab, bodies[tab]])
+		else:
+			print("  the %s tab shows its body" % tab)
+	await _click_back(menu)
+	if menu.visible:
+		_failures.append("Back did not close Reputation and Results")
+
+
+## A tab of Reputation and Results, scrolled into view the way a player would swipe the tab row to it.
+func _tab(menu: Node, tab: String) -> Control:
+	var button := menu.find_child("FrameTab_" + tab, true, false) as Control
+	var row := menu.find_child("FrameTabsScroll", true, false) as ScrollContainer
+	if button != null and row != null:
+		row.ensure_control_visible(button)
+		await get_tree().process_frame
+		await get_tree().process_frame
+	return button
 
 
 ## Opens a menu, checks it holds the right buttons, then opens each in turn:
@@ -145,15 +181,15 @@ func _check_allies_popup(office: Node) -> void:
 	await _click(office.find_child("ReputationButton", true, false) as Control)
 	await get_tree().create_timer(0.3).timeout
 	var menu := office.get_node("ReputationMenuPanel") as Overlay
-	await _click(menu.find_child("PartiesButton", true, false) as Control)
+	await _click(await _tab(menu, "parties"))
 	await get_tree().create_timer(0.3).timeout
-	var parties := office.get_node("PartiesPanel") as Overlay
+	var parties := menu
 	var party: Dictionary = DataDB.parties[0]
 	var button := parties.find_child("AlliesButton_" + str(party["party_id"]), true, false) as Control
 	if button == null:
 		_failures.append("the Parties page has no allies button")
 		return
-	(parties.find_child("Scroll", true, false) as ScrollContainer).ensure_control_visible(button)
+	(parties.find_child("FrameScroll", true, false) as ScrollContainer).ensure_control_visible(button)
 	await _click(button)
 	await get_tree().create_timer(0.3).timeout
 	var popup := office.get_node("PartyDetailPanel") as Overlay
@@ -181,7 +217,6 @@ func _check_allies_popup(office: Node) -> void:
 		_failures.append("no ally bar is in the party's colour")
 	print("  allies popup: %d bars, %d in the party colour" % [bars.size(), ally_colours])
 	await _click_back(popup)
-	await _click_back(parties)
 	await _click_back(menu)
 
 
@@ -213,7 +248,7 @@ func _check_text_size(office: Node) -> void:
 ## bare run of digits, and no backing shows the typed-in word "free".
 func _check_backing_prices(office: Node) -> void:
 	office._show_backing()
-	var panel := office.get_node("BackingPanel") as Overlay
+	var panel := office.get_node("ReputationMenuPanel") as Overlay
 	var bare := RegEx.new()
 	bare.compile("(?<![0-9,])[0-9]{4,}(?![0-9,])")
 	var seen_comma := false
@@ -246,9 +281,9 @@ func _check_election_page(office: Node) -> void:
 		_failures.append("the Office still carries an election bar")
 	await _click(office.find_child("ReputationButton", true, false) as Control)
 	await get_tree().create_timer(0.3).timeout
-	await _click(office.find_child("ElectionButton", true, false) as Control)
+	await _click(await _tab(office.find_child("ReputationMenuPanel", true, false), "election"))
 	await get_tree().create_timer(0.3).timeout
-	var panel := office.find_child("ElectionPanel", true, false) as Control
+	var panel := office.find_child("ReputationMenuPanel", true, false) as Control
 	var bars: Array[Node] = panel.find_children("*", "ProgressBar", true, false)
 	if bars.size() != 9:
 		_failures.append("the Election Strength page has %d bars, not 9" % bars.size())
@@ -263,4 +298,3 @@ func _check_election_page(office: Node) -> void:
 	get_viewport().get_texture().get_image().save_png("user://shots/election_page.png")
 	print("  the Election Strength page shows a gold strength bar and eight party-coloured bars")
 	await _click_back(panel as Overlay)
-	await _click_back(office.find_child("ReputationMenuPanel", true, false) as Overlay)

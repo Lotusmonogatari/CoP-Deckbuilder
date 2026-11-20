@@ -45,12 +45,22 @@ static func title_size(look: Dictionary) -> float:
 ## A Theme that sets the ink for the labels inside a card. A card is paper in Woodblock and Living Office but navy in
 ## Broadcast, so its text takes the card's own ink instead of the room's.
 static func card_theme(look: Dictionary) -> Theme:
-	var theme := Theme.new()
+	var theme := frame_theme()
 	theme.set_color("font_color", "Label", look["ink"])
-	theme.set_type_variation("HeaderLabel", "Label")
 	theme.set_color("font_color", "HeaderLabel", look["ink"])
-	theme.set_type_variation("SmallLabel", "Label")
 	theme.set_color("font_color", "SmallLabel", look["muted"])
+	return theme
+
+
+## A Theme for everything on the frame: labels carry no plate box of their own. The styles' themes put a pale plaque
+## behind every label (Woodblock), which shows as a lighter block on a tile; the frame's cards and tiles are the
+## surfaces here, so the text sits straight on them.
+static func frame_theme() -> Theme:
+	var theme := Theme.new()
+	theme.set_type_variation("HeaderLabel", "Label")
+	theme.set_type_variation("SmallLabel", "Label")
+	for type_name: String in ["Label", "HeaderLabel", "SmallLabel"]:
+		theme.set_stylebox("normal", type_name, StyleBoxEmpty.new())
 	return theme
 
 ## A card: the style's box, a theme for its ink, and a column inside it named "Column". `title` is the card's heading
@@ -74,6 +84,48 @@ static func card(look: Dictionary, title: String = "") -> PanelContainer:
 		heading.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		column.add_child(heading)
 	return card
+
+
+## A danger box (the Resign box): a card with a red edge and a faint red wash, its title in the style's fall colour.
+static func danger_card(look: Dictionary, title: String) -> PanelContainer:
+	var box := card(look, title)
+	var base := LevelBriefingStyles.card_box(look)
+	var down: Color = look["down"]
+	base.bg_color = (look["card"] as Color).lerp(down, 0.12)
+	base.set_border_width_all(int(len_px(2.0)))
+	base.border_color = down
+	box.add_theme_stylebox_override("panel", base)
+	var heading := box.find_child("CardTitle", true, false) as Label
+	if heading != null:
+		heading.add_theme_color_override("font_color", down)
+	return box
+
+
+## A signed change as a button that shows only the number: outlined in the style's rise or fall colour, as tall as a
+## touch target. `change` decides the colour. Pressing it opens the reasons behind the number.
+static func signed_button(look: Dictionary, node: String, text: String, change: int) -> Button:
+	var button := Button.new()
+	button.name = node
+	button.text = text
+	button.autowrap_mode = TextServer.AUTOWRAP_OFF
+	button.set_meta(UiKit.ONE_LINE_META, true)
+	var ink: Color = look["up"] if change > 0 else look["down"]
+	for state: String in _BACK_COLOURS:
+		button.add_theme_color_override(state, ink)
+	button.add_theme_font_size_override("font_size", px(LevelBriefingStyles.SIZE_BODY + 1.0))
+	var box := StyleBoxFlat.new()
+	box.bg_color = Color(ink.r, ink.g, ink.b, 0.10)
+	box.set_border_width_all(int(len_px(1.5)))
+	box.border_color = ink
+	if look["living"]:
+		box.set_corner_radius_all(int(len_px(22.0)))
+	box.content_margin_left = len_px(14.0)
+	box.content_margin_right = len_px(14.0)
+	for state: String in _STATES:
+		button.add_theme_stylebox_override(state, box)
+	button.custom_minimum_size = Vector2(len_px(52.0), touch_height())
+	button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	return button
 
 
 ## A status chip on the top bar (Funds, XP, week, office, hours left, Saved): the accent fill with the ink on it; a pill

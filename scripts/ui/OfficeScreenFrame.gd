@@ -37,6 +37,7 @@ var _subtitle_label: Label
 func setup(config: Dictionary) -> void:
 	_look = OfficeFrameStyles.look()
 	name = "OfficeScreenFrame"
+	theme = OfficeFrameStyles.frame_theme()
 	var ground := StyleBoxFlat.new()
 	ground.bg_color = _look["ground"]
 	add_theme_stylebox_override("panel", ground)
@@ -74,6 +75,7 @@ func setup(config: Dictionary) -> void:
 	for row: Control in config.get("rows", []):
 		_body.add_child(row)
 		UiKit.wrap_all(row)
+		release_fixed_widths(row)
 
 	_footer_slot = VBoxContainer.new()
 	_footer_slot.name = "FrameFooter"
@@ -83,6 +85,18 @@ func setup(config: Dictionary) -> void:
 		LevelBriefingStyles.dress_button(footer as Button, _look, true, not (footer as Button).disabled)
 		(footer as Button).custom_minimum_size.y = maxf((footer as Button).custom_minimum_size.y, OfficeFrameStyles.touch_height())
 		_footer_slot.add_child(footer as Button)
+
+
+## The old panels' rows ask for a fixed 760 px line (UiKit.LINE_WIDTH), which does not fit beside an icon and a button
+## inside a card and would push the whole screen wider than the phone. On the frame the column's width decides, so every
+## control under `root` that asks for that fixed width gives it up (a wrapping label then takes the room it is given).
+static func release_fixed_widths(root: Node) -> void:
+	var nodes: Array = [root]
+	nodes.append_array(root.find_children("*", "Control", true, false))
+	for node: Variant in nodes:
+		var control := node as Control
+		if control != null and absf(control.custom_minimum_size.x - UiKit.LINE_WIDTH) < 0.5:
+			control.custom_minimum_size.x = 0.0
 
 
 ## Takes the Overlay's own Back button into the top bar as the "‹ Office" control. Its node, its name and its wiring
