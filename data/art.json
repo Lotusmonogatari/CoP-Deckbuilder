@@ -429,5 +429,33 @@
         0.59
       ]
     }
+  },
+  "district_backgrounds": {
+    "_README": "The District versions of the three shared rooms (2026-11-20, Cameron). At the District office a stage that is, or borrows, one of these rooms shows the picture at its protagonist's position in the list: the first for PC01, the second for PC02, the third for PC03, the fourth for PC04. At the Capitol nothing changes. A picture that is not drawn yet falls back to the room's usual one.",
+    "ST19": [
+      "DISTRICT_AMBUSH_STREET",
+      "DISTRICT_AMBUSH_STREET_2",
+      "DISTRICT_AMBUSH_STREET_3",
+      "DISTRICT_AMBUSH_STREET_4"
+    ],
+    "ST20": [
+      "DISTRICT_LOBBYIST_MEETING",
+      "DISTRICT_LOBBYIST_MEETING_2",
+      "DISTRICT_LOBBYIST_MEETING_3",
+      "DISTRICT_LOBBYIST_MEETING_4"
+    ],
+    "ST21": [
+      "DISTRICT_POLICY_STUDY_1",
+      "DISTRICT_POLICY_STUDY_2",
+      "DISTRICT_POLICY_STUDY_3",
+      "DISTRICT_POLICY_STUDY_4"
+    ]
+  },
+  "travel_mode_icons": {
+    "_README": "The small picture on each travel-mode button (assets/icons/). The keys are the modes: train is the member's rail pass, ticket the paid train ticket, car the private car, plane the plane ticket. A picture that is not drawn shows no icon.",
+    "train": "POLITICIAN_TRAIN_TICKET",
+    "ticket": "PAID_TRAIN_TICKET",
+    "car": "PRIVATE_CAR_TRIP",
+    "plane": "PLANE_TICKET"
   }
 }

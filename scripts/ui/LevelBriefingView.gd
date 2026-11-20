@@ -197,6 +197,7 @@ static func _travel_row(view: Dictionary, look: Dictionary, on_mode: Callable) -
 		button.disabled = not bool(option.get("enough", true))
 		button.focus_mode = Control.FOCUS_NONE
 		LevelBriefingStyles.dress_button(button, look, chosen, not button.disabled)
+		TravelText.dress_mode_icon(button, mode, LevelBriefingStyles.len_px(34.0))
 		if on_mode.is_valid():
 			button.pressed.connect(on_mode.bind(mode))
 		row.add_child(button)

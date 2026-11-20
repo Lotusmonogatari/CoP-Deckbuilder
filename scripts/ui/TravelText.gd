@@ -34,6 +34,18 @@ static func here_line() -> String:
 	return Text.say("travel.here_capitol")
 
 
+## Puts the mode's picture beside the words on a travel-mode button (a rail pass card, a ticket, a car, a plane). No picture
+## drawn: the button is as it was. The picture is scaled to the button's height; the text, name and hours do not change.
+static func dress_mode_icon(button: Button, mode: String, height: float) -> void:
+	var icon := ArtLoader.mode_icon(mode)
+	if icon == null:
+		return
+	button.icon = icon
+	button.expand_icon = true
+	button.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	button.add_theme_constant_override("icon_max_width", int(height))
+
+
 ## The word on a level's badge: where it starts. Empty for Either (nothing to say).
 static func level_badge(tag: Variant) -> String:
 	match Offices.normalize(tag):

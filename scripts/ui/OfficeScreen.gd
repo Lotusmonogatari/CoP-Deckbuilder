@@ -3857,6 +3857,7 @@ func _refresh_travel_modes() -> void:
 			if mode == Travel.PASS else Text.say("travel.mode_button_owned", {"mode": TravelText.mode_name(mode),
 				"count": GameState.trip_hours(mode), "owned": held})
 		button.disabled = mode == _travel_mode_for_strip() and mode != Travel.CAR and mode != Travel.PLANE
+		TravelText.dress_mode_icon(button, mode, 90.0)
 		button.pressed.connect(_on_travel_mode.bind(mode))
 		_travel_modes_row.add_child(button)
 

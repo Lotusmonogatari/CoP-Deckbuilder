@@ -5,7 +5,7 @@ extends Node
 ##   xvfb-run -a -s "-screen 0 1080x2340x24" .tools/godot --path . --resolution 1080x2340 \
 ##       res://tools/office_screen_shots.tscn -- <screen> <style> <out.png> [text_size] [pressure] [bottom]
 ##
-## screen: administration | events[:here|coming][:funds] | management[:staff|deck|rhetoric][:hire] | marketplace[:personal|office|styles] | reputation[:overview|stakeholders|backers|parties|election|laws][:resign][:factors] ·
+## screen: office (the Office with a paid ticket held, so the travel-mode row shows) | administration | events[:here|coming][:funds] | management[:staff|deck|rhetoric][:hire] | marketplace[:personal|office|styles] | reputation[:overview|stakeholders|backers|parties|election|laws][:resign][:factors] ·
 ## style: woodblock | living_office | broadcast · text_size: small | normal | large ·
 ## pressure: standard | harder (Political Pressure in force) · bottom: scroll the screen to its foot.
 ## Events are drawn at the Capitol; ":funds" empties Funds so priced events show their reason and a greyed button.
@@ -44,6 +44,10 @@ func _run() -> void:
 		"administration":
 			office._show_administration_menu()
 			menu = office.get_node("AdministrationMenuPanel")
+		"office":
+			GameState.add_item("SH42", 2)
+			office._refresh_travel_modes()
+			menu = null
 		"events":
 			if "funds" in parts:
 				GameState.meta["Funds"] = 0
@@ -78,7 +82,7 @@ func _run() -> void:
 			get_tree().quit(1)
 			return
 	await get_tree().create_timer(0.5).timeout
-	if bottom:
+	if bottom and menu != null:
 		var scroll := menu.find_child("FrameScroll", true, false) as ScrollContainer
 		scroll.scroll_vertical = 100000
 		await get_tree().create_timer(0.3).timeout
