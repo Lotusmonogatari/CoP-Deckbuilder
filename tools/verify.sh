@@ -22,6 +22,7 @@ set -uo pipefail
 # Random events are chance pop-ups; the real-click tests switch them off (GameState.roll_random_event).
 export COP_NO_RANDOM_EVENTS=1
 export COP_NO_CONTINUE_DELAY=1
+export COP_NO_TRAVEL_FADE=1   # the trip card's fades (two offices, 2026-11-20): the trip is taken at once in click tests
 
 QUICK=0
 [ "${1:-}" = "--quick" ] && QUICK=1

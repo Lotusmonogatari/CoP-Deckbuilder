@@ -1475,3 +1475,7 @@ The panel that opens from the level list ("Go in, or Back") was rebuilt from the
 | Tests | New: `test_offices_travel`, `test_office_state`, the travel click test; the existing click drivers now stand at the office of the level they start. The text sweep and touch-target audit include the trip popup and a mixed level's briefing. |
 | Not yet | The swipe, the District office in three styles, events/promises/notices/visitors by office, tickets and train encounters, the Places tab, the eight protagonist levels, re-simulation. |
 
+## 2026-11-20: Two offices, slice 2: the train strip
+
+The trip button became **a train on a track**. The words (where, how long, by what) are on the strip before anything is pressed. **Drag the train past 60% of the track and let go to travel** (a Balance number, `Travel Swipe Commit Percent`); short of that it springs back; **a tap opens the same confirm**, so the drag is the fast path and not the only one. The Office then fades to a card ("Rail pass / To Noheji / 7 h"), the trip is taken behind it, and the other office fades in. The train points the way it travels and sits at the other end after each trip. The strip is drawn in all three styles from the briefing's palette (placeholder train until `TRAIN_STRIP` is drawn). The four District offices share one set of room-object pins (`DISTRICT_OFFICE` in art.json, a copy of the Capitol's until the pictures exist), and the Living Office pins re-place after a trip. New: `Swipe` (pure) with `test_swipe`, drag/spring-back/greyed-strip checks in the travel click test.
+
