@@ -21,6 +21,9 @@ static func resolve(notices: Array, staff_hired: Dictionary, meta: Dictionary,
 			continue
 		if not condition_met(row, staff_hired, meta, laws):
 			continue
+		# A notice can belong to one office (two offices, 2026-11-20); `laws` also carries the player's office.
+		if laws.has("office") and not Offices.is_here(row.get("location"), str(laws["office"])):
+			continue
 		chosen_by_slot[slot] = _fill_staff_token(
 			str(row.get("text_en", "")), row, staff_hired, staff_directory)
 		slot_order.append(slot)

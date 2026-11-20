@@ -24,6 +24,7 @@ func _run() -> void:
 		GameState.calendar = WeekCalendar.fresh()
 		await _open_office()
 		await _trip(style)
+		await _promise(style)
 	UiStyle.trying = ""
 	UiStyle.sync()
 	print("")
@@ -163,6 +164,41 @@ func _trip(style: String) -> void:
 	_expect(GameState.office_location == Offices.CAPITOL, where + "a greyed strip ignores the drag")
 	GameState.calendar = WeekCalendar.fresh()
 	office.call("_refresh_calendar")
+
+
+## A promise is kept at the office of the choice that made it (two offices, slice 3): the Promises panel says where, the Keep
+## button is greyed with the reason at the other office, and the trip popup warns before the player leaves it behind.
+func _promise(style: String) -> void:
+	var where := "in %s: " % style
+	var office := _screen()
+	GameState.office_location = Offices.DISTRICT
+	GameState.calendar = WeekCalendar.fresh()
+	GameState.promises = []
+	GameState.pay_commitments([{"kind": Promises.PROMISE_HOURS, "amount": 2, "within": 6}], "A visit", "BO01")
+	office.call("_refresh_calendar")
+	office.call("_show_promises")
+	await get_tree().create_timer(0.3).timeout
+	var panel := office.get("_promises_panel") as Overlay
+	var keep := panel.find_child("Keep_*", true, false) as Button
+	_expect(_texts(panel).has("Keep it at Noheji"), where + "the Promises panel says where it is kept (%s)" % [_texts(panel)])
+	_expect(keep != null and not keep.disabled, where + "at the District office the promise can be kept")
+	panel.close()
+	office.call("_show_travel")
+	await get_tree().create_timer(0.3).timeout
+	var travel := office.get_node("TravelPanel") as Overlay
+	var warned := false
+	for line: String in _texts(travel):
+		warned = warned or line.begins_with("Before you go:") and line.contains("Noheji")
+	_expect(warned, where + "the trip popup warns about it (%s)" % [_texts(travel)])
+	travel.close()
+	GameState.office_location = Offices.CAPITOL
+	office.call("_show_promises")
+	await get_tree().create_timer(0.3).timeout
+	keep = (office.get("_promises_panel") as Overlay).find_child("Keep_*", true, false) as Button
+	_expect(keep != null and keep.disabled and keep.text == "Keep it at Noheji.", where + "at the Capitol the Keep button says where to go (%s)" % [keep.text if keep != null else "none"])
+	(office.get("_promises_panel") as Overlay).close()
+	GameState.promises = []
+	GameState.office_location = Offices.CAPITOL
 
 
 ## A press on the train, a drag of `share` of the track in the way it goes, and a release (what a finger does).

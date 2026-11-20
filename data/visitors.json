@@ -62,7 +62,8 @@
         "target": "BO06",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI02",
@@ -127,7 +128,8 @@
         "target": "BO07",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI03",
@@ -192,7 +194,8 @@
         "target": "BO01",
         "delta": -3
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI04",
@@ -261,7 +264,8 @@
         "target": "BO05",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI05",
@@ -330,7 +334,8 @@
         "target": "BO27",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI06",
@@ -399,7 +404,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI07",
@@ -464,7 +470,8 @@
         "target": "BO12",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI08",
@@ -533,7 +540,8 @@
         "target": "BO16",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI09",
@@ -602,7 +610,8 @@
         "target": "BO30",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI10",
@@ -671,7 +680,8 @@
         "target": "BO11",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI11",
@@ -740,7 +750,8 @@
         "target": "BO13",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI12",
@@ -805,7 +816,8 @@
         "target": "BO04",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI13",
@@ -874,7 +886,8 @@
         "target": "BO09",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI14",
@@ -943,7 +956,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI15",
@@ -1012,7 +1026,8 @@
         "target": "BO01",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI16",
@@ -1081,7 +1096,8 @@
         "target": "BO01",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI17",
@@ -1150,7 +1166,8 @@
         "target": "BO09",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI18",
@@ -1215,7 +1232,8 @@
         "target": "BO03",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI19",
@@ -1284,7 +1302,8 @@
         "target": "BO30",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI20",
@@ -1353,7 +1372,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI21",
@@ -1422,7 +1442,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI22",
@@ -1491,7 +1512,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI23",
@@ -1560,7 +1582,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI24",
@@ -1593,7 +1616,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI25",
@@ -1626,7 +1650,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI26",
@@ -1655,7 +1680,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI27",
@@ -1684,7 +1710,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI28",
@@ -1717,7 +1744,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI29",
@@ -1750,7 +1778,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI30",
@@ -1779,7 +1808,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI31",
@@ -1812,7 +1842,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI32",
@@ -1845,7 +1876,8 @@
         "target": "BO02",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI33",
@@ -1874,7 +1906,8 @@
         "target": "BO01",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI34",
@@ -1907,7 +1940,8 @@
         "target": "BO01",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI35",
@@ -1936,7 +1970,8 @@
         "target": "BO01",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI36",
@@ -1969,7 +2004,8 @@
         "target": "BO01",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI37",
@@ -1998,7 +2034,8 @@
         "target": "BO01",
         "delta": -3
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI38",
@@ -2031,7 +2068,8 @@
         "target": "BO01",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI39",
@@ -2064,7 +2102,8 @@
         "target": "BO01",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI40",
@@ -2097,7 +2136,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI41",
@@ -2130,7 +2170,8 @@
         "target": "BO27",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI42",
@@ -2163,7 +2204,8 @@
         "target": "BO13",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI43",
@@ -2196,7 +2238,8 @@
         "target": "BO01",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI44",
@@ -2229,7 +2272,8 @@
         "target": "BO24",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI45",
@@ -2262,7 +2306,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI46",
@@ -2295,7 +2340,8 @@
         "target": "BO13",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI47",
@@ -2324,7 +2370,8 @@
         "target": "BO07",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI48",
@@ -2357,7 +2404,8 @@
         "target": "BO11",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI49",
@@ -2390,7 +2438,8 @@
         "target": "BO18",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI50",
@@ -2423,7 +2472,8 @@
         "target": "BO09",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI51",
@@ -2456,7 +2506,8 @@
         "target": "BO13",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI52",
@@ -2489,7 +2540,8 @@
         "target": "BO09",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI53",
@@ -2522,7 +2574,8 @@
         "target": "BO27",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI54",
@@ -2555,7 +2608,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI55",
@@ -2588,7 +2642,8 @@
         "target": "BO05",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI56",
@@ -2617,7 +2672,8 @@
         "target": "BO12",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI57",
@@ -2650,7 +2706,8 @@
         "target": "BO11",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI58",
@@ -2683,7 +2740,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI59",
@@ -2716,7 +2774,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI60",
@@ -2749,7 +2808,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI61",
@@ -2782,7 +2842,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI62",
@@ -2811,7 +2872,8 @@
         "target": "BO26",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI63",
@@ -2844,7 +2906,8 @@
         "target": "BO03",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI64",
@@ -2877,7 +2940,8 @@
         "target": "BO03",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI65",
@@ -2910,7 +2974,8 @@
         "target": "BO23",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI66",
@@ -2943,7 +3008,8 @@
         "target": "BO26",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI67",
@@ -2976,7 +3042,8 @@
         "target": "BO30",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI68",
@@ -3009,7 +3076,8 @@
         "target": "BO22",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI69",
@@ -3042,7 +3110,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI70",
@@ -3075,7 +3144,8 @@
         "target": "BO27",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI71",
@@ -3144,7 +3214,8 @@
         "target": "BO26",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI72",
@@ -3213,7 +3284,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI73",
@@ -3282,7 +3354,8 @@
         "target": "BO05",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI74",
@@ -3351,7 +3424,8 @@
         "target": "BO16",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI75",
@@ -3420,7 +3494,8 @@
         "target": "BO08",
         "delta": -2
       }
-    ]
+    ],
+    "location": "Capitol"
   },
   {
     "visitor_id": "VI76",
@@ -3489,7 +3564,8 @@
         "target": "BO11",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI77",
@@ -3558,7 +3634,8 @@
         "target": "BO23",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI78",
@@ -3627,7 +3704,8 @@
         "target": "BO30",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI79",
@@ -3696,7 +3774,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI80",
@@ -3765,7 +3844,8 @@
         "target": "BO27",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI81",
@@ -3798,7 +3878,8 @@
         "target": "BO06",
         "delta": -3
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI82",
@@ -3831,7 +3912,8 @@
         "target": "BO20",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI83",
@@ -3864,7 +3946,8 @@
         "target": "BO30",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI84",
@@ -3897,7 +3980,8 @@
         "target": "BO30",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI85",
@@ -3926,7 +4010,8 @@
         "target": "BO10",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI86",
@@ -3959,7 +4044,8 @@
         "target": "BO10",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI87",
@@ -3992,7 +4078,8 @@
         "target": "BO25",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI88",
@@ -4025,7 +4112,8 @@
         "target": "BO25",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI89",
@@ -4058,7 +4146,8 @@
         "target": "BO30",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI90",
@@ -4091,7 +4180,8 @@
         "target": "BO30",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI91",
@@ -4124,7 +4214,8 @@
         "target": "BO07",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI92",
@@ -4157,7 +4248,8 @@
         "target": "BO25",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI93",
@@ -4190,7 +4282,8 @@
         "target": "BO12",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI94",
@@ -4223,7 +4316,8 @@
         "target": "BO16",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI95",
@@ -4248,7 +4342,8 @@
         "target": "BO10",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI96",
@@ -4277,7 +4372,8 @@
         "target": "BO10",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI97",
@@ -4306,7 +4402,8 @@
         "target": "BO13",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI98",
@@ -4331,7 +4428,8 @@
         "target": "BO07",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI99",
@@ -4360,7 +4458,8 @@
         "target": "BO12",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI100",
@@ -4389,7 +4488,8 @@
         "target": "BO06",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI101",
@@ -4418,7 +4518,8 @@
         "target": "BO25",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI102",
@@ -4447,7 +4548,8 @@
         "target": "BO21",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI103",
@@ -4472,7 +4574,8 @@
         "target": "BO13",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI104",
@@ -4501,7 +4604,8 @@
         "target": "BO06",
         "delta": -3
       }
-    ]
+    ],
+    "location": "Either"
   },
   {
     "visitor_id": "VI105",
@@ -4530,7 +4634,8 @@
         "target": "BO21",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI106",
@@ -4559,7 +4664,8 @@
         "target": "BO07",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI107",
@@ -4588,7 +4694,8 @@
         "target": "BO14",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI108",
@@ -4617,7 +4724,8 @@
         "target": "BO25",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI109",
@@ -4646,7 +4754,8 @@
         "target": "BO26",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI110",
@@ -4675,7 +4784,8 @@
         "target": "BO07",
         "delta": -3
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI111",
@@ -4706,7 +4816,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI112",
@@ -4737,7 +4848,8 @@
         "target": "BO14",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI113",
@@ -4768,7 +4880,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI114",
@@ -4799,7 +4912,8 @@
         "target": "BO06",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI115",
@@ -4830,7 +4944,8 @@
         "target": "BO14",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI116",
@@ -4861,7 +4976,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI117",
@@ -4892,7 +5008,8 @@
         "target": "BO11",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI118",
@@ -4923,7 +5040,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI119",
@@ -4954,7 +5072,8 @@
         "target": "BO14",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI120",
@@ -4985,7 +5104,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI121",
@@ -5016,7 +5136,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI122",
@@ -5047,7 +5168,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI123",
@@ -5078,7 +5200,8 @@
         "target": "BO06",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI124",
@@ -5109,7 +5232,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI125",
@@ -5140,7 +5264,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI126",
@@ -5171,7 +5296,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI127",
@@ -5202,7 +5328,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI128",
@@ -5233,7 +5360,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI129",
@@ -5264,7 +5392,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI130",
@@ -5295,7 +5424,8 @@
         "target": "BO30",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI131",
@@ -5326,7 +5456,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI132",
@@ -5357,7 +5488,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI133",
@@ -5388,7 +5520,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI134",
@@ -5419,7 +5552,8 @@
         "target": "BO09",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI135",
@@ -5450,7 +5584,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI136",
@@ -5481,7 +5616,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI137",
@@ -5512,7 +5648,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI138",
@@ -5543,7 +5680,8 @@
         "target": "BO21",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI139",
@@ -5574,7 +5712,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI140",
@@ -5605,7 +5744,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI141",
@@ -5636,7 +5776,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI142",
@@ -5667,7 +5808,8 @@
         "target": "BO11",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI143",
@@ -5698,7 +5840,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI144",
@@ -5729,7 +5872,8 @@
         "target": "BO11",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI145",
@@ -5760,7 +5904,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI146",
@@ -5791,7 +5936,8 @@
         "target": "BO15",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI147",
@@ -5822,7 +5968,8 @@
         "target": "BO09",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI148",
@@ -5853,7 +6000,8 @@
         "target": "BO06",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI149",
@@ -5884,7 +6032,8 @@
         "target": "BO11",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI150",
@@ -5915,7 +6064,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI151",
@@ -5946,7 +6096,8 @@
         "target": "BO04",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI152",
@@ -5977,7 +6128,8 @@
         "target": "BO12",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI153",
@@ -6008,7 +6160,8 @@
         "target": "BO10",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI154",
@@ -6039,7 +6192,8 @@
         "target": "BO10",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI155",
@@ -6070,7 +6224,8 @@
         "target": "BO07",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI156",
@@ -6101,7 +6256,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI157",
@@ -6132,7 +6288,8 @@
         "target": "BO10",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI158",
@@ -6163,7 +6320,8 @@
         "target": "BO10",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI159",
@@ -6194,7 +6352,8 @@
         "target": "BO10",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI160",
@@ -6225,7 +6384,8 @@
         "target": "BO07",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI161",
@@ -6256,7 +6416,8 @@
         "target": "BO30",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI162",
@@ -6287,7 +6448,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI163",
@@ -6318,7 +6480,8 @@
         "target": "BO30",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI164",
@@ -6349,7 +6512,8 @@
         "target": "BO10",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI165",
@@ -6380,7 +6544,8 @@
         "target": "BO25",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI166",
@@ -6411,7 +6576,8 @@
         "target": "BO10",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   },
   {
     "visitor_id": "VI167",
@@ -6455,6 +6621,7 @@
         "target": "BO16",
         "delta": -2
       }
-    ]
+    ],
+    "location": "District"
   }
 ]

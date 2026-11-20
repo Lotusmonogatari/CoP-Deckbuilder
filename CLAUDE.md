@@ -314,3 +314,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The level briefing is redrawn: a summary on top, a timeline of rooms below, in all three styles (P12, 2026-11-19, Cameron)
 - Two offices, slice 1: where you are, trips that cost hours, levels by office, mixed-level travel (2026-11-20, Cameron)
 - Two offices, slice 2: the train strip, the fade card, the shared District pins (2026-11-20, Cameron)
+- Two offices, slice 3: events, promises, notices, ticker and visitors by office (2026-11-20, Cameron)

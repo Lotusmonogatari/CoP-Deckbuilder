@@ -2227,7 +2227,7 @@ func event_context() -> Dictionary:
 		"funds": int(meta.get("Funds", 0)), "xp": xp, "now": time_units, "last_at": event_last_at,
 		"default_cooldown": Levers.whole("event_default_cooldown_hours"),
 		"district": int(awareness.get("district", 0)), "national": int(awareness.get("national", 0)), "dues_owed": dues_balance,
-		"month": current_month(), "seasons": DataDB.rules.get("seasons", {})}
+		"month": current_month(), "seasons": DataDB.rules.get("seasons", {}), "office": office_location}
 
 
 ## Today's calendar month, 1-12 (for seasonal levels and events).
@@ -2265,7 +2265,8 @@ func event_speaker(event_id: String) -> Dictionary:
 func buyable_events() -> Array:
 	var found: Array = []
 	for event: Dictionary in DataDB.events:
-		if str(event.get("trigger", "")) == "Buyable" and in_season(event):
+		if str(event.get("trigger", "")) == "Buyable" and in_season(event) \
+				and Offices.is_here(event.get("location"), office_location):
 			found.append(event)
 	return found
 
@@ -2415,7 +2416,7 @@ func apply_event_choice(event_id: String, letter: String, delegate_id: String = 
 		lines.append_array(_apply_delegation(delegate_id, delegate_blocks, fit))
 	spend_hours(hours)
 	lines.append_array(pay_commitments(commitments, str(event.get("title", "")), _first_pleased_org(chosen.get("rewards")),
-		Promises.terms_of(chosen)))
+		Promises.terms_of(chosen), str(chosen.get("location", "")) if chosen.get("location") != null else ""))
 	hours += Commitments.hours(commitments)
 	event_last_at[event_id] = time_units
 	if str(event.get("trigger", "")) == "Dated" and not dated_events_done.has(event_id):
@@ -2978,7 +2979,9 @@ func promise_what(promise: Dictionary) -> String:
 func promise_keep_refusal(promise: Dictionary) -> String:
 	var cfg := calendar_config()
 	var hours := 0 if WeekCalendar.is_full(calendar, cfg) else WeekCalendar.hours_left(calendar, cfg)
-	match Promises.keep_refusal(promise, inventory, hours, int(meta.get("Funds", 0))):
+	match Promises.keep_refusal(promise, inventory, hours, int(meta.get("Funds", 0)), office_location):
+		"office":
+			return Text.say("promises.refuse_elsewhere", {"place": TravelText.place_name(Offices.normalize(promise.get("location")))})
 		"item":
 			var item_id := str(promise.get("item_id", ""))
 			return Text.say("commit.refuse_item", {"item": str(DataDB.get_shop_item(item_id).get("name", item_id))})
@@ -3025,6 +3028,9 @@ func take_due_followup() -> String:
 		if _group_promise_open(str(entry.get("group", ""))):
 			continue
 		if time_units >= int(entry.get("due_at", 0)) and not get_event(str(entry.get("event_id", ""))).is_empty():
+			# A follow-up arrives at its own office (two offices, 2026-11-20); away from it, it waits.
+			if not Offices.is_here(get_event(str(entry.get("event_id", ""))).get("location"), office_location):
+				continue
 			scheduled_events.erase(entry)
 			return str(entry.get("event_id", ""))
 	return ""
@@ -4966,8 +4972,11 @@ func commitment_note(list: Array, paid_lines: Array[String]) -> String:
 ## Pays a choice's commitments: the hours pass, the Funds are spent, the items
 ## are handed over. Returns lines for a result screen.
 func pay_commitments(list: Array, source: String = "", fallback_org: String = "",
-		terms: Dictionary = {}) -> Array[String]:
+		terms: Dictionary = {}, location: String = "") -> Array[String]:
 	var lines: Array[String] = []
+	# A promise is kept at the office of the choice that made it (two offices, 2026-11-20): the choice's own
+	# Location when it sets one, else where the player stands now.
+	var promise_office := Offices.normalize(location) if not location.is_empty() else office_location
 	# A choice that owes more than one thing (hours and Funds) carries its own
 	# kept and broken terms on the first only; the rest use the Balance defaults.
 	var terms_given := false
@@ -4997,7 +5006,7 @@ func pay_commitments(list: Array, source: String = "", fallback_org: String = ""
 		if Promises.is_promise(entry):
 			promise_serial += 1
 			var promise := Promises.make(entry, time_units, Levers.whole("promise_default_deadline_hours"),
-				fallback_org, source, promise_serial)
+				fallback_org, source, promise_serial, promise_office)
 			# The choice's own kept/broken effects and kept line, when it has
 			# them (Event Choices, 2026-10-31); otherwise the Balance defaults.
 			for key: String in ["kept", "broken", "kept_text"]:
@@ -5903,6 +5912,7 @@ func ticker_facts() -> Dictionary:
 	var cfg := calendar_config()
 	facts["today"] = WeekCalendar.today_number(calendar, cfg)
 	facts["weekday"] = WeekCalendar.weekday_index(calendar, cfg)
+	facts["office"] = office_location   # a notice or a line can belong to one office (2026-11-20)
 	return facts
 
 

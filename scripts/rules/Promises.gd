@@ -21,7 +21,7 @@ static func is_promise(entry: Variant) -> bool:
 ## for_org, source}. `now` is the game clock; the entry's own `within` wins
 ## over `default_hours`; its `for` organization wins over `fallback_org`.
 static func make(entry: Dictionary, now: int, default_hours: int, fallback_org: String,
-		source: String, serial: int) -> Dictionary:
+		source: String, serial: int, location: String = "") -> Dictionary:
 	var within: Variant = entry.get("within")
 	var org := str(entry.get("for", "")) if entry.get("for") != null else ""
 	return {
@@ -34,6 +34,9 @@ static func make(entry: Dictionary, now: int, default_hours: int, fallback_org: 
 		"made_at": now,
 		"for_org": org if not org.is_empty() else fallback_org,
 		"source": source,
+		# Where it can be kept (two offices, 2026-11-20): Capitol, District or Either. An older save's promise has
+		# none and reads as Either.
+		"location": Offices.normalize(location),
 	}
 
 
@@ -80,10 +83,12 @@ static func overdue(promises: Array, now: int) -> Array:
 	return promises.filter(func(p: Variant) -> bool: return p is Dictionary and now > int(p.get("due_at", 0)))
 
 
-## Why a promise cannot be kept right now: "" (it can), "item" (not held),
+## Why a promise cannot be kept right now: "" (it can), "office" (it is kept at the other office), "item" (not held),
 ## "hours" (too few hours left) or "funds" (too little Funds on hand).
 static func keep_refusal(promise: Dictionary, inventory: Dictionary, hours_available: int,
-		funds_on_hand: int = 0) -> String:
+		funds_on_hand: int = 0, office: String = "") -> String:
+	if not office.is_empty() and not Offices.is_here(promise.get("location"), office):
+		return "office"
 	if str(promise.get("kind", "")) == PROMISE_FUNDS and int(promise.get("funds", 0)) > funds_on_hand:
 		return "funds"
 	if str(promise.get("kind", "")) == PROMISE_ITEM and int(inventory.get(str(promise.get("item_id", "")), 0)) <= 0:
