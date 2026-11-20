@@ -90,6 +90,8 @@ func _ready() -> void:
 	_vote_yes.pressed.connect(_on_vote.bind("Yes"))
 	_vote_no.pressed.connect(_on_vote.bind("No"))
 	_vote_abstain.pressed.connect(_on_vote.bind("Abstain"))
+	# The three vote buttons stay fixed at the foot, dressed like every choice (P14, 2026-11-20).
+	ConversationStyles.dress(null, [_vote_yes, _vote_no, _vote_abstain, _outcome_close], null)
 	_outcome_close.pressed.connect(_on_outcome_closed)
 
 	var outcome_scroll := _outcome_panel.get_node_or_null("Margin/Scroll") as ScrollContainer
@@ -615,10 +617,69 @@ func _show_parties(positions: Array) -> void:
 		portrait.expression = _expression_for(str(position.get("disposition", "")))
 
 		var color := _party_color(position)
+		_show_disc_if_no_portrait(card, portrait, leader_id, color, DataDB.get_party_by_id(str(position.get("party_id", ""))))
 		swatch.color = color
 		name_label.text = str(position.get("party_name", ""))
-		name_label.add_theme_color_override("font_color", color)
+		# The party's colour is in its disc and the bar under it; the words are light so they read on the room picture.
+		name_label.add_theme_color_override("font_color", Color.WHITE)
 		cue_label.text = str(position.get("cue_text", ""))
+
+
+## A party whose leader has no portrait yet shows a colour disc holding the first character of its Japanese name, with the
+## English initials small under it (P14, 2026-11-20, Cameron). With a portrait, the portrait stays and the disc is hidden.
+func _show_disc_if_no_portrait(card: Control, portrait: Control, leader_id: String, color: Color, party: Dictionary) -> void:
+	var has_picture := not leader_id.is_empty() and not ArtLoader.character_path(leader_id).is_empty()
+	var disc := card.get_node_or_null("Disc") as Control
+	if has_picture:
+		portrait.visible = true
+		if disc != null:
+			disc.visible = false
+		return
+	portrait.visible = false
+	if disc == null:
+		disc = _build_disc()
+		card.add_child(disc)
+		card.move_child(disc, 0)
+	disc.visible = true
+	(disc.get_node("Fill") as Panel).add_theme_stylebox_override("panel", _disc_box(color))
+	var kanji := disc.get_node("Kanji") as Label
+	kanji.text = PartyDisc.kanji(str(party.get("japanese_name", "")))
+	kanji.add_theme_color_override("font_color", PartyDisc.ink_on(color))
+	var initials := disc.get_node("Initials") as Label
+	initials.text = PartyDisc.initials(str(party.get("short_name", "")), str(party.get("name", "")))
+	initials.add_theme_color_override("font_color", PartyDisc.ink_on(color))
+
+
+func _build_disc() -> Control:
+	var disc := Control.new()
+	disc.name = "Disc"
+	disc.custom_minimum_size = Vector2(_CARD_WIDTH, _CARD_WIDTH)
+	var fill := Panel.new()
+	fill.name = "Fill"
+	fill.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	disc.add_child(fill)
+	var kanji := Label.new()
+	kanji.name = "Kanji"
+	kanji.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	kanji.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	kanji.vertical_alignment = VerticalAlignment.VERTICAL_ALIGNMENT_CENTER
+	kanji.add_theme_font_size_override("font_size", 72)
+	disc.add_child(kanji)
+	var initials := Label.new()
+	initials.name = "Initials"
+	initials.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+	initials.offset_top = -40.0
+	initials.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	initials.theme_type_variation = "SmallLabel"
+	disc.add_child(initials)
+	return disc
+
+
+func _disc_box(color: Color) -> StyleBoxFlat:
+	var box := StyleBoxFlat.new()
+	box.bg_color = color
+	box.set_corner_radius_all(int(_CARD_WIDTH / 2.0))
+	return box
 
 
 func _expression_for(disposition: String) -> String:

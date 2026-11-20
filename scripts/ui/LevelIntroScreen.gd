@@ -102,6 +102,7 @@ func _ready() -> void:
 	_oppose_button.text = Text.say("level_intro.lean_oppose")
 	_support_button.pressed.connect(_on_lean_chosen.bind(BillLean.SUPPORT))
 	_oppose_button.pressed.connect(_on_lean_chosen.bind(BillLean.OPPOSE))
+	ConversationStyles.dress(_name_label, [_support_button, _oppose_button], _continue_button)
 
 	var lid := str(GameState.level_runner.level.get("level_id", "")) \
 		if GameState.is_in_level() else level_id

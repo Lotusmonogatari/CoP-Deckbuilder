@@ -68,12 +68,57 @@ func show_outcome(engine: BattleEngine, stage: Dictionary) -> void:
 
 	_body.text = _body_for(engine, stage)
 	_build_booster_icons(engine, stage)
+	_dress_as_card(state.outcome)
 	_panel.show()
 
 	# Say what happens next, so the button is not a leap in the dark.
 	_button.text = next_step_label(state)
 
 	EventBus.battle_ended.emit(state.outcome, state.outcome_reason)
+
+
+## The pop-up card (P14, 2026-11-20): the room stays visible, dimmed, behind one card with a STAGE WON or STAGE LOST tag; the
+## button is the card's way on. The nodes keep their names and their order, so the panel is found and closed as before; only
+## their dress and a wrapper around the column change. A stage with no decision (a retry) gets no tag.
+func _dress_as_card(outcome: String) -> void:
+	var look := OfficeFrameStyles.look()
+	_panel.add_theme_stylebox_override("panel", _scrim_box())
+	var column := _title.get_parent() as Control
+	var card := column.get_parent() as PanelContainer
+	if card == null or card.name != "OutcomeCard":
+		var centre := column.get_parent()
+		card = PanelContainer.new()
+		card.name = "OutcomeCard"
+		centre.add_child(card)
+		# Taking a node out of the tree clears its owner, and the screen finds these nodes by their unique names (%OutcomeClose),
+		# which only resolve through the owner: put it back on the column and everything under it.
+		var scene_owner := column.owner
+		var moved: Array[Node] = [column]
+		moved.append_array(column.find_children("*", "", true, false))
+		centre.remove_child(column)
+		card.add_child(column)
+		for node: Node in moved:
+			node.owner = scene_owner
+	card.add_theme_stylebox_override("panel", LevelBriefingStyles.card_box(look))
+	card.theme = OfficeFrameStyles.card_theme(look)
+	var old := column.get_node_or_null("PopupTag")
+	if old != null:
+		column.remove_child(old)
+		old.queue_free()
+	var key := {"win": "popup.tag_stage_won", "loss": "popup.tag_stage_lost"}.get(outcome, "") as String
+	if not key.is_empty():
+		var kind := PopupCardStyles.GOOD if outcome == "win" else PopupCardStyles.ALARM
+		var tag := PopupCardStyles.tag(look, Text.say(key), kind)
+		tag.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		column.add_child(tag)
+		column.move_child(tag, 0)
+	ConversationStyles.dress_button(_button, look, true)
+
+
+static func _scrim_box() -> StyleBoxFlat:
+	var box := StyleBoxFlat.new()
+	box.bg_color = PopupCardStyles.scrim()
+	return box
 
 
 func _title_for(engine: BattleEngine, stage: Dictionary) -> String:

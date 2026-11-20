@@ -82,6 +82,7 @@ func _ready() -> void:
 		DragScroll.attach(outcome_scroll)
 	_outcome_panel.hide()
 	_build_leverage_meter()
+	ConversationStyles.dress(_person_name, [_choice_a, _choice_b, _choice_c, _choice_d, _walk_away], _continue_button)
 	_start()
 	_fit_layout.call_deferred()
 	get_tree().process_frame.connect(_fit_layout, CONNECT_ONE_SHOT)
