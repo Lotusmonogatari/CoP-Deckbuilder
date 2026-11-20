@@ -34,7 +34,7 @@ static func len_px(mockup_px: float) -> float:
 
 ## The smallest height of anything the player taps: 44 px in the 390 px mockup, 122 px at the 1080 px base.
 static func touch_height() -> float:
-	return len_px(44.0)
+	return ceilf(len_px(44.0))
 
 
 ## The screen title's size in mockup pixels: Broadcast's condensed face is narrower, so it can be larger.

@@ -17,7 +17,7 @@ signal tab_chosen(tab_id: String)
 
 var _look: Dictionary
 var _back_slot: HBoxContainer
-var _chips: HBoxContainer
+var _chips: HFlowContainer
 var _tabs_row: HFlowContainer
 var _scroll: ScrollContainer
 var _body: VBoxContainer
@@ -121,23 +121,33 @@ func scroll_to_top() -> void:
 
 
 func _build_top_bar(chips: Array) -> Control:
+	# The chips are a flow row, right-aligned: they wrap onto a second line when they do not fit. At the Large text
+	# size a long chip (Funds against the limit) no longer fits beside the back control, so the chips take their own
+	# row under it; anything wider than the column would otherwise widen the whole screen past the phone.
+	_back_slot = HBoxContainer.new()
+	_back_slot.name = "FrameBackSlot"
+	_chips = HFlowContainer.new()
+	_chips.name = "FrameChips"
+	_chips.alignment = FlowContainer.ALIGNMENT_END
+	_chips.add_theme_constant_override("h_separation", int(OfficeFrameStyles.len_px(6.0)))
+	_chips.add_theme_constant_override("v_separation", int(OfficeFrameStyles.len_px(6.0)))
+	_chips.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_chips.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	for text: Variant in chips:
+		_chips.add_child(OfficeFrameStyles.chip(_look, str(text)))
+	var large := TextScale.factor(Layout.text_size_setting, DataDB.balance) > 1.05
+	if large:
+		var stacked := VBoxContainer.new()
+		stacked.name = "FrameTopBar"
+		stacked.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(4.0)))
+		stacked.add_child(_back_slot)
+		stacked.add_child(_chips)
+		return stacked
 	var bar := HBoxContainer.new()
 	bar.name = "FrameTopBar"
 	bar.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
-	_back_slot = HBoxContainer.new()
-	_back_slot.name = "FrameBackSlot"
 	bar.add_child(_back_slot)
-	var spacer := Control.new()
-	spacer.name = "FrameSpacer"
-	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	bar.add_child(spacer)
-	_chips = HBoxContainer.new()
-	_chips.name = "FrameChips"
-	_chips.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(6.0)))
 	bar.add_child(_chips)
-	for text: Variant in chips:
-		_chips.add_child(OfficeFrameStyles.chip(_look, str(text)))
 	return bar
 
 
