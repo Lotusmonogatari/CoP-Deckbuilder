@@ -45,6 +45,15 @@ static func options_for(options: Array, hosted_id: String, step: int) -> Array:
 
 ## The pick screens inside a step: each distinct Slot in order ("Entree",
 ## "Drink", "Side"), or one unnamed screen when the step has no slots.
+## How many steps an arranged event has: the highest Step among its options (three today, read from the data, never typed).
+static func step_count(options: Array, hosted_id: String) -> int:
+	var most := 0
+	for row: Dictionary in options:
+		if str(row.get("hosted_id", "")) == hosted_id:
+			most = maxi(most, int(row.get("step", 0)))
+	return most
+
+
 static func slots_for(options: Array, hosted_id: String, step: int) -> Array[String]:
 	var slots: Array[String] = []
 	for row: Dictionary in options_for(options, hosted_id, step):

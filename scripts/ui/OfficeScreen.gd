@@ -774,14 +774,15 @@ func _show_week_over_if_due() -> void:
 	weekend.custom_minimum_size = Vector2(0, 110)
 	weekend.text = Text.say("office.weekend_work")
 	weekend.pressed.connect(_on_work_weekend)
-	rows.append(weekend)
 	var home := Button.new()
 	home.name = "GoHomeButton"
 	home.custom_minimum_size = Vector2(0, 110)
 	home.text = Text.say("office.go_home")
 	home.pressed.connect(_go_home)
-	rows.append(home)
-	_week_over_panel.open(Text.say("office.week_over_title"), rows)
+	# The pop-up card (P14, 2026-11-20): the payments scroll, the two ways on stay at the foot; going home is the filled one.
+	var foot: Array[Control] = [weekend, home]
+	_week_over_panel.open_card({"tag": Text.say("popup.tag_week_end"), "title": Text.say("office.week_over_title"), "body": rows,
+		"buttons": foot, "primary": 1})
 
 
 ## What "Pay Party Dues and Go Home" will cost and pay, before the player chooses (Information
@@ -925,8 +926,9 @@ func _show_gathering(result: Dictionary) -> void:
 	done.custom_minimum_size = Vector2(0, 100)
 	done.text = Text.say("event.continue")
 	done.pressed.connect(_gathering_panel.close)
-	rows.append(done)
-	_gathering_panel.open(Text.say("event.gathering_title"), rows)
+	var foot: Array[Control] = [done]
+	_gathering_panel.open_card({"tag": Text.say("popup.tag_arranged_result"), "title": Text.say("event.gathering_title"),
+		"body": rows, "buttons": foot, "primary": 0})
 
 
 ## A background picture as a row in a panel; a missing picture shows a
@@ -967,6 +969,7 @@ func _show_dated_event_if_due() -> bool:
 		_report.text = "%s\n%s" % [Text.say("travel.forced_move", {"place": TravelText.place_name(GameState.office_location)}), _report_text()]
 		_refresh_resources()
 		_refresh_calendar()
+		_event_moved_you = true
 	_present_event(event_id, false)
 	return true
 
@@ -980,12 +983,34 @@ func _show_random_event_if_due() -> void:
 		_present_event(event_id, true)
 
 
-## The event screen: its title, flavor text and one button per choice.
+## True when this Dated event has just taken the player to its office, so its card says so (travel.forced_move, and that the
+## trip cost no hours: forced moves are free). Cleared as the card is drawn.
+var _event_moved_you := false
+
+
+## The kind tag of an event's pop-up card: DECISION! for the calendar's own events, SOMETHING COMES UP for the rest.
+func _event_tag(event: Dictionary) -> String:
+	return Text.say("popup.tag_decision" if str(event.get("trigger", "")) == "Dated" else "popup.tag_scenario")
+
+
+## Red for a calendar event (the spec's alarm colour), the accent for the rest.
+func _event_tag_kind(event: Dictionary) -> String:
+	return PopupCardStyles.ALARM if str(event.get("trigger", "")) == "Dated" else PopupCardStyles.ACCENT
+
+
+## The event screen: its title, flavor text and one button per choice, on the pop-up card (P14, 2026-11-20): the choices are
+## the card's foot, so they stay in view while the story scrolls.
 func _present_event(event_id: String, arrived: bool, keep_picture: bool = false) -> void:
 	var event := GameState.get_event(event_id)
 	if event.is_empty():
 		return
 	var rows: Array[Control] = []
+	var choices: Array[Control] = []
+	var moved := _event_moved_you
+	_event_moved_you = false
+	if moved:
+		rows.append(UiKit.line(Text.say("travel.forced_move", {"place": TravelText.place_name(GameState.office_location)}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("travel.forced_free"), "SmallLabel"))
 	# An Image cell may list several pictures; one is picked each time the event
 	# comes up and kept for its result screen (and when Back returns to it from
 	# a level's briefing).
@@ -1050,8 +1075,12 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 			label = Text.say("event.delegate_label", {"text": label})
 		var button := UiKit.action_button(label, refusal, pressed, 100.0)
 		button.name = "EventChoice_" + letter
-		rows.append(button)
-	_event_panel.open(str(event.get("title", "")), rows)
+		choices.append(button)
+	# A calendar event is not for sale: nothing on a Decision! card is priced or bought, and it says so.
+	if str(event.get("trigger", "")) == "Dated":
+		rows.append(UiKit.line(Text.say("event.decision_note"), "SmallLabel"))
+	_event_panel.open_card({"tag": _event_tag(event), "tag_kind": _event_tag_kind(event), "meta": EventsModel.pop_meta(event),
+		"title": str(event.get("title", "")), "body": rows, "buttons": choices})
 
 
 ## A choice that starts a level (2026-10-31): show the level's usual briefing.
@@ -1125,8 +1154,10 @@ func _on_event_choice(event_id: String, letter: String, delegate_id: String = ""
 	done.custom_minimum_size = Vector2(0, 100)
 	done.text = Text.say("event.continue")
 	done.pressed.connect(_on_event_done)
-	rows.append(done)
-	_event_panel.open(str(GameState.get_event(event_id).get("title", "")), rows)
+	var foot: Array[Control] = [done]
+	var finished := GameState.get_event(event_id)
+	_event_panel.open_card({"tag": _event_tag(finished), "tag_kind": _event_tag_kind(finished), "title": str(finished.get("title", "")),
+		"body": rows, "buttons": foot, "primary": 0})
 
 
 func _on_event_done() -> void:
@@ -1176,7 +1207,7 @@ func _show_promises() -> void:
 			_on_keep_promise.bind(str(promise.get("id", ""))), 100.0)
 		keep.name = "Keep_" + str(promise.get("id", ""))
 		rows.append(keep)
-	_promises_panel.open(Text.say("promises.title"), rows)
+	_promises_panel.open_card({"tag": Text.say("popup.tag_promises"), "title": Text.say("promises.title"), "body": rows})
 
 
 func _on_keep_promise(promise_id: String) -> void:
@@ -1194,7 +1225,8 @@ func _on_keep_promise(promise_id: String) -> void:
 	# A promise with its own kept line (Event Choices, 2026-10-31) says it in a
 	# pop-up; the rest just flash.
 	if not kept_text.is_empty():
-		_promises_panel.open(Text.say("promises.kept_title"), [UiKit.line(kept_text)])
+		var kept_rows: Array[Control] = [UiKit.line(kept_text)]
+		_promises_panel.open_card({"tag": Text.say("popup.tag_promises"), "title": Text.say("promises.kept_title"), "body": kept_rows})
 		return
 	Layout.flash(Text.say("promises.kept", {"who": who}))
 	if GameState.promises.is_empty():
@@ -1212,7 +1244,8 @@ func _show_broken_promises_if_any() -> void:
 		rows.append(UiKit.line(Text.say("promises.broken_row", {"who": GameState.promise_who(promise),
 			"what": GameState.promise_what(promise)})))
 	GameState.promises_broken_unseen = []
-	_promises_panel.open(Text.say("promises.broken_title"), rows)
+	_promises_panel.open_card({"tag": Text.say("popup.tag_broken"), "tag_kind": PopupCardStyles.ALARM,
+		"title": Text.say("promises.broken_title"), "body": rows})
 
 
 ## Every crisis-trigger alert's Text row, written out so the exporter can check
@@ -1242,7 +1275,7 @@ func _show_trigger_alerts_if_any() -> void:
 		})))
 	GameState.pending_trigger_alerts = []
 
-	_trigger_alert_panel.open(Text.say("office.trigger_alert_title"), rows)
+	_trigger_alert_panel.open_card({"tag": Text.say("office.trigger_alert_title"), "tag_kind": PopupCardStyles.ALARM, "body": rows})
 
 
 ## The app was closed and reopened while a level was still in progress —
@@ -1269,15 +1302,15 @@ func _show_resume_choice_if_in_level() -> void:
 	resume_button.custom_minimum_size = Vector2(0, 110)
 	resume_button.text = Text.say("office.resume_level")
 	resume_button.pressed.connect(_on_resume_level_chosen)
-	rows.append(resume_button)
 
 	var abandon_button := Button.new()
 	abandon_button.custom_minimum_size = Vector2(0, 110)
 	abandon_button.text = Text.say("office.abandon_level")
 	abandon_button.pressed.connect(_on_abandon_level_chosen)
-	rows.append(abandon_button)
-
-	_resume_choice_panel.open(Text.say("office.resume_choice_title"), rows)
+	# Resume is the filled button; Abandon sits beside it at the foot (P14, 2026-11-20).
+	var foot: Array[Control] = [resume_button, abandon_button]
+	_resume_choice_panel.open_card({"tag": Text.say("popup.tag_resume"), "title": Text.say("office.resume_choice_title"),
+		"body": rows, "buttons": foot, "primary": 0})
 
 
 ## An ordinary level just ended with a special level due (GameState.special_forced):
@@ -1297,8 +1330,8 @@ func _show_forced_special_if_due() -> void:
 	go.custom_minimum_size = Vector2(0, 110)
 	go.text = Text.say("office.special_forced_go")
 	go.pressed.connect(_on_forced_special_go.bind(level))
-	rows.append(go)
-	_special_forced_panel.open(Text.say("office.special_forced_title"), rows)
+	var foot: Array[Control] = [go]
+	_special_forced_panel.open_card({"tag": Text.say("office.special_forced_title"), "body": rows, "buttons": foot, "primary": 0})
 
 
 func _on_forced_special_go(level: Dictionary) -> void:
@@ -1541,7 +1574,8 @@ func _open_factors(title_name: String, causes: Array, meta_name: String, lead: S
 			"amount": "%+d" % amount if meta_name.is_empty() else Phrase.meta_amount(meta_name, amount, true)}))
 		row.name = "StandingFactor"
 		rows.append(row)
-	_standing_panel.open(Text.say("office.stakeholder_change_title", {"name": title_name}), rows)
+	_standing_panel.open_card({"tag": Text.say("popup.tag_reasons"), "title": Text.say("office.stakeholder_change_title", {"name": title_name}),
+		"body": rows})
 
 
 ## A small organisation image to the left of whatever describes it.
@@ -3397,7 +3431,7 @@ func _show_staff_candidates(role: String) -> void:
 		if GameState.hired_member(str(candidate.get("staff_id", ""))).is_empty() \
 				and not bool(GameState.staff_quit.get(str(candidate.get("staff_id", "")), false)):
 			rows.append(_staff_candidate_row(candidate))
-	_staff_panel.open(role, rows)
+	_staff_panel.open_card({"tag": Text.say("popup.tag_hire"), "title": role, "body": rows})
 	move_child(_staff_panel, get_child_count() - 1)
 
 

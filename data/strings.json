@@ -9511,5 +9511,145 @@
     "english": "行事",
     "placeholders": null,
     "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "popup.tag_decision",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "DECISION!",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_scenario",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "SOMETHING COMES UP",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_arranged",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "YOUR EVENT · {step} OF {steps}",
+    "placeholders": "step, steps",
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_arranged_result",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "YOUR EVENT · RESULT",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_week_end",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "WEEK'S END",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_promises",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "PROMISES",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_broken",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "PROMISE BROKEN",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_moved",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "MOVED FOR YOU",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_resume",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "LEVEL IN PROGRESS",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_stage_won",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "STAGE WON",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_stage_lost",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "STAGE LOST",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "event.decision_note",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "This is set by the calendar, not bought.",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "travel.forced_free",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "The trip cost no hours.",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "travel.closed_here",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "Not open while you are here",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "travel.destination",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "To {place}",
+    "placeholders": "place",
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "event.delegate_who",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "{name} goes · 0 h of yours",
+    "placeholders": "name",
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "rhetoric.coupon_line",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "You hold {count} coaching coupon: your next Tier {tier} session is free.",
+    "placeholders": "count, tier",
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "outcome.hold_hint",
+    "where": "P14 pop-up card, kind tags and notes (spec section 4)",
+    "english": "Hold for 2 seconds",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+  },
+  {
+    "key": "popup.tag_reasons",
+    "where": "P14 pop-up card, kind tag (not in the spec's list)",
+    "english": "WHAT MOVED IT",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; not in the approved list."
+  },
+  {
+    "key": "popup.tag_hire",
+    "where": "P14 pop-up card, kind tag (not in the spec's list)",
+    "english": "OPEN PLACE",
+    "placeholders": null,
+    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; not in the approved list."
   }
 ]

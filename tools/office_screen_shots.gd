@@ -77,6 +77,9 @@ func _run() -> void:
 				var first: Dictionary = ReputationModel.moves()[0]
 				office._show_standing_factors(first["booster"])
 				menu = office.get_node("StandingFactorsPanel")
+		"popup":
+			# The group-1 pop-ups (P14): popup:decision | scenario | moved | week | promises | broken | alert | resume | forced | hosted | result
+			menu = _popup(office, parts[1] if parts.size() > 1 else "decision")
 		_:
 			push_error("unknown screen '%s'" % screen)
 			get_tree().quit(1)
@@ -88,6 +91,53 @@ func _run() -> void:
 		await get_tree().create_timer(0.3).timeout
 	get_viewport().get_texture().get_image().save_png(out)
 	get_tree().quit()
+
+
+## Opens one of the group-1 pop-up cards over the Office and returns its Overlay.
+func _popup(office: Node, kind: String) -> Overlay:
+	GameState.meta["Funds"] = 400000
+	match kind:
+		"decision", "moved":
+			var id := ""
+			for event: Dictionary in DataDB.events:
+				if str(event.get("trigger", "")) == "Dated" and not EventEngine.choices_for(DataDB.event_choices, str(event.get("event_id", ""))).is_empty():
+					id = str(event.get("event_id", ""))
+					break
+			office._event_moved_you = kind == "moved"
+			office._present_event(id, false)
+			return office.get_node("EventPanel")
+		"scenario":
+			for event: Dictionary in DataDB.events:
+				if str(event.get("trigger", "")) == "Random" and not EventEngine.choices_for(DataDB.event_choices, str(event.get("event_id", ""))).is_empty():
+					office._present_event(str(event.get("event_id", "")), true)
+					break
+			return office.get_node("EventPanel")
+		"week":
+			GameState.calendar = {"week": 3, "phase": "work", "hours": 40}
+			office._show_week_over_if_due()
+			return office.get_node("WeekOverPanel")
+		"promises":
+			GameState.promises = [{"id": "PR1", "who": "Visitor A", "what": "", "due": GameState.time_units + 12}]
+			office._show_promises()
+			return office.get_node("PromisesPanel")
+		"broken":
+			GameState.promises_broken_unseen = [{"id": "PR1", "who": "Visitor A"}]
+			office._show_broken_promises_if_any()
+			return office.get_node("PromisesPanel")
+		"alert":
+			GameState.pending_trigger_alerts = [{"kind": "funding_freeze", "edge": "entered", "count": 2, "amount": 1000, "name": ""}]
+			office._show_trigger_alerts_if_any()
+			return office.get_node("TriggerAlertPanel")
+		"resume":
+			GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(DataDB.levels[0])))
+			office._show_resume_choice_if_in_level()
+			return office.get_node("ResumeChoicePanel")
+		"hosted":
+			GameState.hosted_session = {"hosted_id": str(DataDB.hosted_events[0].get("hosted_id", ""))}
+			office._hosted_panel.begin()
+			return office._hosted_panel
+	push_error("unknown popup '%s'" % kind)
+	return null
 
 
 ## Demo numbers for the Reputation screens: three organizations that moved, the four meta changes, one law and a

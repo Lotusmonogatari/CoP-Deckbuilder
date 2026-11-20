@@ -39,6 +39,16 @@ func _begin_step() -> void:
 	_show_pick()
 
 
+## How many steps this evening has, read from its options.
+func _steps() -> int:
+	return HostedEvent.step_count(DataDB.event_options, str(_hosted.get("hosted_id", "")))
+
+
+## "YOUR EVENT · 1 OF 3": the kind tag of an arranged event.
+func _step_tag() -> String:
+	return Text.say("popup.tag_arranged", {"step": _step, "steps": _steps()})
+
+
 func _picture() -> Control:
 	var art := PlaceholderArt.new()
 	art.name = "Picture"
@@ -66,14 +76,16 @@ func _show_pick() -> void:
 		rows.append(UiKit.heading(str(_hosted.get("prompt_%d" % _step, ""))))
 	else:
 		rows.append(UiKit.heading(Text.say("hosted.pick_slot", {"slot": slot.to_lower()})))
+	var options: Array[Control] = []
 	for option: Dictionary in GameState.hosted_options(_step, slot):
 		var button := Button.new()
 		button.name = "HostedOption_" + str(option.get("option_id", ""))
 		button.custom_minimum_size = Vector2(0, 100)
 		button.text = GameState.commitment_label(str(option.get("choice_text", "")), Commitments.of(option))
 		button.pressed.connect(_on_pick.bind(str(option.get("option_id", ""))))
-		rows.append(button)
-	open(str(_hosted.get("title", "")), rows)
+		options.append(button)
+	# The options are a two-column grid at the foot of the card (P14, 2026-11-20).
+	open_card({"tag": _step_tag(), "meta": "", "title": str(_hosted.get("title", "")), "body": rows, "buttons": options, "grid": true})
 
 
 func _on_pick(option_id: String) -> void:
@@ -98,14 +110,14 @@ func _show_reactions() -> void:
 	var next := Button.new()
 	next.name = "HostedNextButton"
 	next.custom_minimum_size = Vector2(0, 100)
-	next.text = Text.say("hosted.next" if _step < 3 else "hosted.finish")
+	next.text = Text.say("hosted.next" if _step < _steps() else "hosted.finish")
 	next.pressed.connect(_on_next)
-	rows.append(next)
-	open(str(_hosted.get("title", "")), rows)
+	var foot: Array[Control] = [next]
+	open_card({"tag": _step_tag(), "meta": "", "title": str(_hosted.get("title", "")), "body": rows, "buttons": foot, "primary": 0})
 
 
 func _on_next() -> void:
-	if _step < 3:
+	if _step < _steps():
 		_step += 1
 		_begin_step()
 	else:
@@ -149,5 +161,6 @@ func _show_result() -> void:
 	done.custom_minimum_size = Vector2(0, 100)
 	done.text = Text.say("event.continue")
 	done.pressed.connect(close)
-	rows.append(done)
-	open(Text.say("hosted.result_title"), rows)
+	var foot: Array[Control] = [done]
+	open_card({"tag": Text.say("popup.tag_arranged_result"), "meta": "", "title": Text.say("hosted.result_title"), "body": rows,
+		"buttons": foot, "primary": 0})
