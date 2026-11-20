@@ -9385,5 +9385,26 @@
     "english": "評判と成績",
     "placeholders": null,
     "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "shop.you_have",
+    "where": "Marketplace — heading of the strip of what you hold",
+    "english": "You have",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "shop.you_have_hint",
+    "where": "Marketplace — under the strip of what you hold",
+    "english": "Use from the Office or during a stage",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.subtitle_jp_marketplace",
+    "where": "Marketplace — the small Japanese accent under the title",
+    "english": "市場",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): Claude's draft for Cameron to reword."
   }
 ]

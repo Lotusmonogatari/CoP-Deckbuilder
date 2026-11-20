@@ -2765,58 +2765,42 @@ func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 ## tapping a held item still drills into its own detail view exactly as it
 ## always has.
 func _show_marketplace() -> void:
+	# The Office frame (P13, 2026-11-20): chips for Funds against the limit and XP, the same three tabs (Cameron,
+	# 2026-10-31), a "You have" card, and one card of the same shape for every item on offer. The old row builder is
+	# replaced by MarketModel (what to show) and MarketView (how it is drawn); buying is unchanged.
+	var look := OfficeFrameStyles.look()
 	var rows: Array[Control] = []
-	# Funds and the current Funds limit share the top line; the limit is read
-	# fresh every time the page is built, so buying a limit increase updates it.
-	var funds_line := UiKit.line(Text.say("shop.funds_limit", {
-		"yen_funds": int(GameState.meta.get("Funds", 0)), "yen_limit": GameState.funds_limit()}), "HeaderLabel")
-	funds_line.name = "MarketFunds"
-	# Two tabs at the very top (Cameron, 2026-10-31): Personal Inventory for
-	# items used in stages, levels or generally in the Office; Office
-	# Inventory for items only events use. Each filters both the held strip
-	# and the items for sale; the current one is shown pressed.
-	var tabs := HBoxContainer.new()
-	tabs.name = "MarketTabs"
-	tabs.alignment = BoxContainer.ALIGNMENT_CENTER
-	tabs.add_theme_constant_override("separation", 16)
-	for tab: Array in [[Items.PERSONAL, "PersonalTab", "shop.tab_personal"],
-			[Items.OFFICE_INVENTORY, "OfficeTab", "shop.tab_office"],
-			[STYLES_TAB, "StylesTab", "shop.tab_styles"]]:
-		var button := Button.new()
-		button.name = str(tab[1])
-		button.text = Text.say(str(tab[2]))
-		button.custom_minimum_size = Vector2(300, 100)
-		button.toggle_mode = true
-		button.button_pressed = _market_tab == str(tab[0])
-		button.pressed.connect(_on_market_tab.bind(str(tab[0])))
-		tabs.add_child(button)
-	rows.append(tabs)
-	rows.append(funds_line)
 	if _market_tab == STYLES_TAB:
-		rows.append_array(_styles_rows())
-		_inventory_panel.open(Text.say("shop.supplies"), rows)
-		return
-	# At the Funds limit (or above it), say what the limit does (panel P4, item 3; Cameron's wording).
-	if int(GameState.meta.get("Funds", 0)) >= GameState.funds_limit():
-		var limit_note := UiKit.line(Text.say("shop.funds_limit_note"), "SmallLabel")
-		limit_note.name = "MarketLimitNote"
-		rows.append(limit_note)
-	rows.append(UiKit.line(Text.say("shop.supplies_blurb" if _market_tab == Items.PERSONAL else "shop.office_blurb")))
-	rows.append_array(_inventory_panel.inventory_rows(_market_tab))
-	rows.append(UiKit.heading(Text.say("office.marketplace")))
-	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
-	for item: Dictionary in DataDB.shop:
-		# Card sessions live in Rhetoric Training, not here; an item marked
-		# "In Marketplace: No" (the Training Session Coupon) is only ever given.
-		if item.get("card_tier") == null and str(item.get("in_marketplace", "")).strip_edges().to_lower() != "no" \
-				and GameState.item_offered(item) \
-				and Items.inventory_tab(item) == _market_tab \
-				and not (Items.is_yes(item.get("unlocks_recruitment_tier")) and GameState.staff_recruitment_maxed()) \
-				and not (item.get("deck_size_increase") != null and GameState.deck_expansion_maxed()) \
-				and not (item.get("funds_cap_increase") != null and GameState.funds_cap_maxed()) \
-				and not (GameState.is_staff_slot_item(item) and GameState.staff_slots_maxed()):
-			rows.append(_supply_row(item))
-	_inventory_panel.open(Text.say("shop.supplies"), rows)
+		rows.append_array(_style_cards(look))
+	else:
+		# At the Funds limit (or above it), say what the limit does (panel P4, item 3; Cameron's wording).
+		if int(GameState.meta.get("Funds", 0)) >= GameState.funds_limit():
+			var note_card := OfficeFrameStyles.card(look)
+			var limit_note := UiKit.line(Text.say("shop.funds_limit_note"), "SmallLabel")
+			limit_note.name = "MarketLimitNote"
+			limit_note.custom_minimum_size.x = 0.0
+			note_card.get_node("Column").add_child(limit_note)
+			rows.append(note_card)
+		rows.append(_ground_line(Text.say("shop.supplies_blurb" if _market_tab == Items.PERSONAL else "shop.office_blurb"), look))
+		rows.append(MarketView.held_card(look, _inventory_panel.inventory_rows(_market_tab)))
+		for item: Dictionary in MarketModel.items(_market_tab, {"price_text": _price_text}):
+			rows.append(MarketView.item_card(look, item, _on_buy_item))
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("office.marketplace"),
+		"subtitle": Text.say("office.subtitle_jp_marketplace"),
+		"chips": MarketModel.chips(),
+		# The tabs keep their old node names, so a click test (and anything else) finds them as before.
+		"tabs": [
+			{"id": Items.PERSONAL, "node": "PersonalTab", "text": Text.say("shop.tab_personal")},
+			{"id": Items.OFFICE_INVENTORY, "node": "OfficeTab", "text": Text.say("shop.tab_office")},
+			{"id": STYLES_TAB, "node": "StylesTab", "text": Text.say("shop.tab_styles")},
+		],
+		"active_tab": _market_tab,
+		"rows": rows,
+	})
+	frame.tab_chosen.connect(_on_market_tab)
+	_inventory_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 ## The Marketplace's third tab (P9, 2026-11-17): one card per UI style with its state, and a
@@ -2824,30 +2808,38 @@ func _show_marketplace() -> void:
 const STYLES_TAB := "Styles"
 
 
-func _styles_rows() -> Array[Control]:
+func _style_cards(look: Dictionary) -> Array[Control]:
 	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("shop.styles_blurb")))
-	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
+	rows.append(_ground_line(Text.say("shop.styles_blurb"), look))
 	var in_use := UiStyle.current()
 	for style: String in UiStyles.ALL:
 		var package := UiStyles.package_for(style, DataDB.cosmetic_packages)
 		var package_id := str(package.get("package_id", ""))
+		var frame_card := OfficeFrameStyles.card(look)
 		var card := VBoxContainer.new()
 		card.name = "StyleCard_" + style
 		card.add_theme_constant_override("separation", 8)
+		frame_card.get_node("Column").add_child(card)
 		card.add_child(_style_swatch(style))
 		var is_living := style == UiStyles.LIVING_OFFICE
 		var name := Text.say("shop.style_living_name") if is_living else CosmeticPieces.field(package, "name_en")
-		card.add_child(UiKit.heading(name))
-		card.add_child(UiKit.line(Text.say("shop.style_living_desc") if is_living
-			else CosmeticPieces.field(package, "description"), "SmallLabel"))
+		var heading := UiKit.heading(name)
+		heading.custom_minimum_size.x = 0.0
+		card.add_child(heading)
+		var desc := UiKit.line(Text.say("shop.style_living_desc") if is_living
+			else CosmeticPieces.field(package, "description"), "SmallLabel")
+		desc.custom_minimum_size.x = 0.0
+		card.add_child(desc)
 		if style == in_use:
 			var state := UiKit.line(Text.say("shop.style_in_use") + (" · " + Text.say("shop.style_included") if is_living else ""))
 			state.name = "StyleState_" + style
+			state.custom_minimum_size.x = 0.0
 			card.add_child(state)
 		elif is_living or GameState.owned_cosmetic_packages.has(package_id):
 			var use := UiKit.action_button(Text.say("shop.style_use"), "", _on_use_style.bind(package_id))
 			use.name = "StyleUse_" + style
+			OfficeFrameStyles.dress_card_button(use, look)
+			use.custom_minimum_size.y = OfficeFrameStyles.touch_height()
 			card.add_child(use)
 		else:
 			var refusal := CosmeticPieces.buy_refusal(package, GameState.owned_cosmetic_packages, GameState.xp,
@@ -2855,9 +2847,12 @@ func _styles_rows() -> Array[Control]:
 			var unlock := UiKit.action_button(Text.say("shop.style_unlock", {"price": _price_text(package)}),
 				refusal, _on_buy_style.bind(package_id))
 			unlock.name = "StyleUnlock_" + style
+			OfficeFrameStyles.dress_card_button(unlock, look, refusal.is_empty())
+			unlock.custom_minimum_size.y = OfficeFrameStyles.touch_height()
 			card.add_child(unlock)
-		rows.append(card)
-	rows.append(UiKit.line(Text.say("shop.style_footer"), "SmallLabel"))
+		rows.append(frame_card)
+	var footer := _ground_line(Text.say("shop.style_footer"), look)
+	rows.append(footer)
 	return rows
 
 

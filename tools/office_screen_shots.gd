@@ -5,9 +5,10 @@ extends Node
 ##   xvfb-run -a -s "-screen 0 1080x2340x24" .tools/godot --path . --resolution 1080x2340 \
 ##       res://tools/office_screen_shots.tscn -- <screen> <style> <out.png> [text_size] [pressure] [bottom]
 ##
-## screen: administration | reputation[:overview|stakeholders|backers|parties|election|laws][:resign][:factors] ·
+## screen: administration | marketplace[:personal|office|styles] | reputation[:overview|stakeholders|backers|parties|election|laws][:resign][:factors] ·
 ## style: woodblock | living_office | broadcast · text_size: small | normal | large ·
 ## pressure: standard | harder (Political Pressure in force) · bottom: scroll the screen to its foot.
+## The Marketplace is drawn with some items held, one at its carrying limit and one sold out for the level.
 ## Reputation is drawn with demo changes and one law so the Overview has something to show; ":resign" lowers the three
 ## standings so the Resign box is available; ":factors" opens the reasons pop-up of the biggest move. Draws the real screen from a fresh run; changes no saved game.
 
@@ -41,6 +42,14 @@ func _run() -> void:
 		"administration":
 			office._show_administration_menu()
 			menu = office.get_node("AdministrationMenuPanel")
+		"marketplace":
+			GameState.add_item("SH15", 3)
+			GameState.add_item("SH16", 2)
+			GameState.shop_bought_this_level["SH14"] = 2
+			var tabs := {"personal": Items.PERSONAL, "office": Items.OFFICE_INVENTORY, "styles": "Styles"}
+			office._market_tab = tabs.get(parts[1] if parts.size() > 1 else "personal", Items.PERSONAL)
+			office._show_marketplace()
+			menu = office.get_node("InventoryPanel")
 		"reputation":
 			_seed_demo("resign" in parts)
 			office._show_reputation(parts[1] if parts.size() > 1 and parts[1] != "resign" else "overview")

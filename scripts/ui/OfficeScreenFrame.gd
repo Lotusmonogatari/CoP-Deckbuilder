@@ -30,7 +30,7 @@ var _subtitle_label: Label
 ##   title      String, the screen's name
 ##   subtitle   String, its Japanese subtitle ("" for none)
 ##   chips      Array of String, shown on the right of the top bar
-##   tabs       Array of { "id": String, "text": String }; empty for a screen without tabs
+##   tabs       Array of { "id": String, "text": String, "node": String (optional node name) }; empty for none
 ##   active_tab String, the id of the chosen tab
 ##   rows       Array of Control, the cards in the scrolling column
 ##   footer     a Button for the fixed footer, or null
@@ -180,7 +180,8 @@ func _build_tabs(tabs: Array, active: String) -> Control:
 	for tab: Dictionary in tabs:
 		var id := str(tab.get("id", ""))
 		var button := Button.new()
-		button.name = "FrameTab_" + id
+		# A screen may keep its tabs' old node names (the Marketplace's PersonalTab, OfficeTab and StylesTab).
+		button.name = str(tab.get("node", "FrameTab_" + id))
 		button.text = str(tab.get("text", ""))
 		OfficeFrameStyles.dress_tab(button, _look, id == active)
 		button.pressed.connect(Haptics.confirm)

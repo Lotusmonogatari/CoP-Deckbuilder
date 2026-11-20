@@ -8,7 +8,8 @@ Branch `panel/p13-office-screens`. Mockups are in `design/proposals/img/office_s
 |---|---|---|
 | 1 | The shared frame (`OfficeScreenFrame`, `OfficeFrameStyles`, `Overlay.open_frame`) | Gate passed |
 | 2 | Administration (and two click tests updated on purpose) | Gate passed |
-| 3 | Reputation and Results | Gate pending |
+| 3 | Reputation and Results (and two tests adjusted: the tabs wrap, the party plate test skips clipped labels) | Gate passed |
+| 4 | Marketplace | Gate pending |
 
 ## Your answers
 
@@ -96,3 +97,36 @@ The screenshots use demo numbers (three organizations moved, one law passed) so 
 ### Tests
 
 `tests/test_reputation_screen.gd` (14): the biggest-moves pick, the four tiles equal what Your Record showed, the moves and parties and latest law, six tabs in every style, every organization on the Stakeholders tab with its change button, no reason text in any list, a tap on a change opens the factors pop-up with the same rows `_open_factors` has always built, Resign first on the Overview while available and nowhere else, the danger box contrast. `tests/interaction/office_menus_driver.gd` was rewritten on purpose for the tabbed screen (it clicked the five old buttons and read the five old panels); `party_plate_test` and `resign_hold_test` pass unchanged.
+
+
+## Marketplace (commit 4)
+
+The three tabs (Personal Inventory, Office Inventory, Office styles) keep their node names. Funds against the limit and XP are chips; a "You have" card holds what you carry; every item is one card of the same shape; the Styles tab uses the same cards.
+
+| Style | Mockup | Personal (1080 x 2340) | 1080 x 1920 | Large text | Scrolled to the bottom | Office styles tab |
+|---|---|---|---|---|---|---|
+| Woodblock | ![](../../proposals/img/office_screens/previews/png/marketplace_woodblock_full_length.png) | ![](marketplace_personal_woodblock_1080x2340.png) | ![](marketplace_personal_woodblock_1080x1920.png) | ![](marketplace_personal_woodblock_large.png) | ![](marketplace_personal_woodblock_bottom.png) | ![](marketplace_styles_woodblock.png) |
+| Living Office | ![](../../proposals/img/office_screens/previews/png/marketplace_living_full_length.png) | ![](marketplace_personal_living_office_1080x2340.png) | ![](marketplace_personal_living_office_1080x1920.png) | ![](marketplace_personal_living_office_large.png) | ![](marketplace_personal_living_office_bottom.png) | ![](marketplace_styles_living_office.png) |
+| Broadcast | ![](../../proposals/img/office_screens/previews/png/marketplace_broadcast_full_length.png) | ![](marketplace_personal_broadcast_1080x2340.png) | ![](marketplace_personal_broadcast_1080x1920.png) | ![](marketplace_personal_broadcast_large.png) | ![](marketplace_personal_broadcast_bottom.png) | ![](marketplace_styles_broadcast.png) |
+
+The screenshots hold some items (Coffee at its carrying limit of three) and the Speech Trainer sold out for the level, with Funds at the limit, so the Funds-limit note, a funds-short reason, Out of Stock and "can't carry any more" all show.
+
+### What differs from the mockup, and why
+
+| Difference | Why |
+|---|---|
+| The reason ("Insufficient Funds", "Out of Stock", "You can't carry any more of these.") is a red line on the card and Buy stays greyed, reading "Buy" | The spec's rule. Before, the greyed button itself carried the reason. The reason is still the rules' own words. |
+| The price stays in the title line ("Name — price") | That is how `shop.item_title` is written; the mockup shows it apart. Say so if you want it on the right, which would mean a new Text row. |
+| Ticket icons are the blue placeholder squares | The art is still to be drawn (art list, `TICKET_*`). |
+| The "You have" strip is the inventory's own tiles (icon and count), still tappable and swipeable | They are the same tiles the Office inventory shows; `inventory.entry` ("×3") is the count under each. |
+
+### New Text rows (all drafts for you)
+
+| Key | English | Note |
+|---|---|---|
+| `shop.you_have` · `shop.you_have_hint` | You have · Use from the Office or during a stage | In the approved list |
+| `office.subtitle_jp_marketplace` | 市場 | **Not in the approved list**: the Japanese accent |
+
+### Tests
+
+`tests/test_market_screen.gd` (10): every item the old rows offered is still offered with the same title and description, a funds-short and a sold-out item say so, a full stack says you cannot carry more, a card with no reason has a working Buy and one with a reason is greyed with the reason in red, a sold-out card is dimmed, the three tabs keep their old names in every style, the chips, the Funds-limit note, the Styles tab and tab switching. `tests/interaction/inventory_driver.gd` now scrolls the frame's list instead of the panel's own scroll area, on purpose.
