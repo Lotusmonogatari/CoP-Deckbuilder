@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Staff detail screens</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/ca907dae0239c528fdc7b76b7892835d') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+</helmet>
+<sc-if value="{{is.assignments}}" hint-placeholder-val="true">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <span style="font-size: 12.5px; color: {{t.onBgMuted}}">Tuesday 18.10.09 · 2 tasks not yet given out</span>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 9px 12px; display: flex; flex-direction: column; gap: 6px">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Today's tasks</h2>
+      <div style="display: flex; gap: 6px; flex-wrap: wrap">
+        <sc-for list="{{tray}}" as="k" hint-placeholder-count="2">
+          <button style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 4px 10px 4px 5px; cursor: pointer; background: {{t.tile}}; color: {{t.ink}}; border: 1.5px dashed {{t.muted}}; border-radius: {{t.rSmall}}; font-family: {{t.body}}; font-size: 12px; font-weight: 700"><img src="{{k.icon}}" alt="" style="width: 30px; height: 30px; object-fit: contain"><span style="display: flex; flex-direction: column; align-items: flex-start"><span>{{k.title}}</span><span style="font-size: 11px; font-weight: 600; color: {{t.muted}}">{{k.hours}}</span></span></button>
+        </sc-for>
+      </div>
+      <span style="font-size: 11px; color: {{t.muted}}">Drag a task into a person's box, or tap it to read it and choose who does it.</span>
+    </section>
+    <sc-for list="{{crew}}" as="p" hint-placeholder-count="4">
+      <article style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 8px 10px; display: flex; gap: 10px">
+        <div style="flex: 0 0 auto; width: 60px; height: 92px; background: {{t.tile}}; border-radius: {{t.rSmall}}; overflow: hidden; display: flex; align-items: flex-end; justify-content: center"><img src="{{p.portrait}}" alt="{{p.name}}" style="height: 90px; width: auto; max-width: 60px; object-fit: cover; object-position: top"></div>
+        <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+          <div style="display: flex; justify-content: space-between; gap: 6px"><span style="font-size: 13.5px; font-weight: 700">{{p.name}}</span><span style="font-size: 11px; font-weight: 700; color: {{p.loyalTone}}">{{p.loyal}}</span></div>
+          <span style="font-size: 11px; color: {{t.muted}}">{{p.role}}</span>
+          <div role="img" aria-label="{{p.blocksAria}}" style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px">
+            <sc-for list="{{p.blocks}}" as="b" hint-placeholder-count="8"><span style="height: 7px; background: {{b.c}}"></span></sc-for>
+          </div>
+          <div style="min-height: 40px; padding: 4px; display: flex; gap: 4px; flex-wrap: wrap; align-items: center; border: 1.5px dashed {{t.divider}}; border-radius: {{t.rSmall}}">
+            <sc-for list="{{p.tasks}}" as="k" hint-placeholder-count="1">
+              <span style="display: flex; align-items: center; gap: 4px; padding: 2px 7px 2px 3px; background: {{t.tile}}; border-radius: {{t.pill}}; font-size: 11px; font-weight: 700"><img src="{{k.icon}}" alt="" style="width: 22px; height: 22px; object-fit: contain">{{k.title}} · <span style="color: {{k.tone}}">{{k.fit}}</span></span>
+            </sc-for>
+            <span style="font-size: 11px; color: {{t.muted}}">{{p.empty}}</span>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 9px 12px; display: flex; flex-direction: column; gap: 4px">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">If you confirm</h2>
+      <span style="font-size: 12px">Constituency support +1 · XP +2 · Standing with Fisheries Cooperative +1</span>
+      <span style="font-size: 12px; color: {{t.bad}}">Left undone: Build media relationships (Reputation −1)</span>
+    </section>
+  </div>
+  <div style="flex: 0 0 auto; display: flex; gap: 10px; padding: 10px 16px 14px 16px; border-top: {{t.footTop}}; background: {{t.bg}}"><button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1 1 auto">Confirm today's work</button></div>
+</div>
+</sc-if>
+<sc-if value="{{is.profile}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; gap: 12px">
+      <div style="flex: 0 0 auto; width: 110px; height: 160px; background: {{t.tile}}; border-radius: {{t.rSmall}}; overflow: hidden; display: flex; align-items: flex-end; justify-content: center"><img src="/_blob/5a0b70a6f3677a9b1b573a5b3f18731f" alt="Hana Takahashi" style="height: 156px; width: auto; max-width: 110px; object-fit: cover; object-position: top"></div>
+      <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 5px">
+        <span style="font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: {{t.muted}}">Policy Research Assistant</span>
+        <span style="font-size: 18px; font-weight: 700">Hana Takahashi</span>
+        <div style="display: flex; gap: 5px; flex-wrap: wrap"><span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap; background: {{t.accent}}; color: {{t.accentInk}}">Primary</span><span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap">Rank 2 of 3</span></div>
+        <span style="font-size: 12.5px">Devoted · wage 18,000円 a week</span>
+        <span style="font-size: 11.5px; color: {{t.muted}}">Gifts: likes sake, apples. Dislikes nothing in particular.</span>
+      </div>
+    </section>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 5px">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Loyalty and pay</h2>
+      <div role="img" aria-label="Loyalty 72 of 100" style="height: 8px; background: {{t.barTrack}}; border-radius: {{t.pill}}; overflow: hidden"><div style="height: 8px; width: 72%; background: {{t.good}}"></div></div>
+      <span style="font-size: 12px; font-weight: 700">Why it moved at the last week's end:</span>
+      <sc-for list="{{why}}" as="w" hint-placeholder-count="4"><div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: {{w.weight}}"><span>{{w.label}}</span><span>{{w.value}}</span></div></sc-for>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px">
+        <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; font-size: 12px; line-height: 1.2">Raise pay this week (6,000円, Loyalty +4)</button>
+        <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; font-size: 12px; line-height: 1.2">Thank them in public (2 hours, Loyalty +3)</button>
+      </div>
+    </section>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 5px">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Bonuses by rank</h2>
+      <sc-for list="{{ranks}}" as="r" hint-placeholder-count="3"><div style="display: flex; flex-direction: column; padding-top: 5px; border-top: 1px solid {{t.divider}}"><span style="font-size: 12px; font-weight: 700">{{r.label}}</span><span style="font-size: 12px; color: {{t.muted}}">{{r.reward}}</span></div></sc-for>
+      <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; font-size: 14px; margin-top: 4px">Upgrade to Rank 3 · 60,000円</button>
+    </section>
+    <button style="min-height: 48px; padding: 0 16px; font-size: 14px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.onBg}}; border: {{t.bw}} solid {{t.secEdge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; border-color: {{t.bad}}; color: {{t.bad}}">Fire Hana Takahashi · 54,000円</button>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.rhetoric}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: {{t.onBgMuted}}">Book a session with a speaking coach. You are shown up to three cards, one at a time, and choose which to learn.</p>
+    <sc-for list="{{sessions}}" as="s" hint-placeholder-count="3">
+      <article style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; gap: 12px; align-items: center">
+        <div style="flex: 0 0 auto; width: 54px; height: 72px; border-radius: {{t.rSmall}}; background: {{s.back}}; border: 2px solid {{t.edge}}; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #FFFFFF; font-family: {{t.display}}" aria-hidden="true">{{s.tier}}</div>
+        <div style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">Tier {{s.tier}} session</span><span style="font-size: 12px; color: {{t.muted}}">{{s.line}}</span><span style="font-size: 11.5px; font-weight: 700; color: {{t.bad}}">{{s.note}}</span></div>
+        <button aria-disabled="{{s.off}}" style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 0 0 auto; opacity: {{s.op}}">{{s.price}}</button>
+      </article>
+    </sc-for>
+    <div style="display: flex; gap: 8px; align-items: center; padding: 8px 10px; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.rSmall}}"><span style="font-size: 12px">You hold 1 coaching coupon: your next Tier 1 session is free.</span></div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"screen":{"editor":"enum","options":["assignments", "profile", "rhetoric"],"default":"assignments"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.22)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', good:'#2F6B3A', bad:'#A42A17', tabBg:'#F8F1E3', tabInk:'#1C1A17', tabEdge:'#1C1A17', tabOnBg:'#22305A', tabOnInk:'#F8F1E3', barTrack:'#E2D6BF', barFill:'#22305A', jp:'#6B5F50', warnBg:'#F6DDD3', warnInk:'#7A1E10', alarm:'#B3311C', alarmInk:'#FFFFFF', scrim:'rgba(28,26,23,.55)', paper:'#F8F1E3' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', good:'#2E6B34', bad:'#A3261A', tabBg:'transparent', tabInk:'#E8DAC3', tabEdge:'rgba(255,248,236,.3)', tabOnBg:'#FFD58A', tabOnInk:'#2B1D12', barTrack:'#EADBC0', barFill:'#9A6413', jp:'#D9C8AC', warnBg:'#F8DDD6', warnInk:'#7A1E10', alarm:'#A3261A', alarmInk:'#FFFFFF', scrim:'rgba(20,12,6,.62)', paper:'#FFF8EC' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'29px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.22)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', good:'#7BD88F', bad:'#FF8A80', tabBg:'transparent', tabInk:'#C3C9D6', tabEdge:'rgba(227,179,65,.45)', tabOnBg:'#E3B341', tabOnInk:'#0B1220', barTrack:'#22304D', barFill:'#E3B341', jp:'#9AA3B5', warnBg:'#3A1F27', warnInk:'#FFB4AB', alarm:'#C8102E', alarmInk:'#FFFFFF', scrim:'rgba(5,9,18,.66)', paper:'#141E33' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    const t = T[key];
+    const tabs = (labels, on) => labels.map((l) => ({ label: l, bg: l === on ? t.tabOnBg : t.tabBg, ink: l === on ? t.tabOnInk : t.tabInk, edge: l === on ? t.tabOnBg : t.tabEdge }));
+    const screen = ["assignments", "profile", "rhetoric"].indexOf(this.props.screen) >= 0 ? this.props.screen : 'assignments';
+    const is = {}; ["assignments", "profile", "rhetoric"].forEach((s) => { is[s] = s === screen; });
+    const blocks = (used) => Array.from({ length: 8 }, (_, i) => ({ c: i < used ? t.barFill : t.barTrack }));
+    const C = {
+      assignments: { chips: ['Tuesday'], title: 'Staff Assignments', jp: '業務の割り振り', tabs: [] },
+      profile: { chips: ['Funds 182,000円'], title: 'Hana Takahashi', jp: '高橋花', tabs: [] },
+      rhetoric: { chips: ['Funds 182,000円', 'XP 1,240'], title: 'Rhetoric Training', jp: '弁論の稽古', tabs: [] }
+    };
+    return Object.assign({
+      t, is,
+      tray: [ { icon: '/_blob/2dc538ba515bacee8ae651e25eb487be', title: 'Build media relationships', hours: '2 h' }, { icon: '/_blob/3a7b97240b075d83128e3069145cdcf7', title: 'Take the day off', hours: '8 h' } ],
+      crew: [
+        { portrait: '/_blob/5a0b70a6f3677a9b1b573a5b3f18731f', name: 'Hana Takahashi', role: 'Policy Research Assistant · Rank 2', loyal: 'Devoted', loyalTone: t.good, blocks: blocks(3), blocksAria: '3 of 8 hours of their day used', empty: '', tasks: [ { icon: '/_blob/fdf4b6099c4939789b68b15922315040', title: 'Committee staff', fit: 'Strong fit', tone: t.good }, { icon: '/_blob/09bbd66bf9bfb11aab768905e64445b2', title: 'Brief', fit: 'Strong fit', tone: t.good } ] },
+        { portrait: '/_blob/5098bf22f916a214cc688909938abe51', name: 'Yui Kobayashi', role: 'Policy Research Assistant · Rank 1', loyal: 'Steady', loyalTone: t.muted, blocks: blocks(0), blocksAria: '0 of 8 hours used', empty: 'Drop a task here', tasks: [] },
+        { portrait: '/_blob/cd0bd77bda86bcbc098d06787231415f', name: 'Aoi Suzuki', role: 'Media Spokesperson · Rank 1', loyal: 'Restless', loyalTone: t.bad, blocks: blocks(0), blocksAria: '0 of 8 hours used', empty: 'Drop a task here', tasks: [] },
+        { portrait: '/_blob/f90afcf347a5217d1a16f8a72cd4b46a', name: 'Miharu Daitani', role: 'District Representative · Rank 3', loyal: 'Steady', loyalTone: t.muted, blocks: blocks(2), blocksAria: '2 of 8 hours used', empty: '', tasks: [ { icon: '/_blob/fdf4b6099c4939789b68b15922315040', title: 'Constituent letters', fit: 'Strong fit', tone: t.good } ] }
+      ],
+      why: [ { label: 'Wage paid in full', value: '+3', weight: '400' }, { label: 'Standing with the organizations they care about', value: '+1', weight: '400' }, { label: 'Time with your office', value: '+1', weight: '400' }, { label: 'Daily tasks', value: '+2', weight: '400' }, { label: 'Total', value: '+7', weight: '700' } ],
+      ranks: [ { label: 'Rank 1 · given when hired', reward: '+2 standing with Students United' }, { label: 'Rank 2 · current', reward: '+3 standing with Ainu Language and Culture Foundation' }, { label: 'Rank 3 · upgrade cost 60,000円', reward: '+4 standing with Innovation Society' } ],
+      sessions: [
+        { tier: '0', back: '#5C4A38', line: 'Basic cards · shows up to 3', price: '5,000円', note: '', off: 'false', op: '1' },
+        { tier: '1', back: '#22305A', line: 'Stronger cards · shows up to 3', price: 'Free (coupon)', note: '', off: 'false', op: '1' },
+        { tier: '2', back: '#A42A17', line: 'Rare cards · shows up to 3', price: '60,000円', note: '250 XP short', off: 'true', op: '0.55' }
+      ]
+    }, C[screen]);
+
+  }
+}
+</script>
+</body>
+</html>

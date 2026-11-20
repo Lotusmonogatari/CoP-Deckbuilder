@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pop-ups and notices</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/ca907dae0239c528fdc7b76b7892835d') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+</helmet>
+<sc-if value="{{is.decision}}" hint-placeholder-val="true">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 18px 14px">
+    <section role="dialog" aria-label="Decision: The Prime Minister's Opening Address" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .08em; background: {{t.alarm}}; color: {{t.alarmInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">DECISION!</span><span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">Monday · Capitol · 2 h</span></div>
+        <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">The Prime Minister's Opening Address</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; gap: 10px; align-items: center; padding: 8px 10px; background: {{t.tile}}; border-radius: {{t.rSmall}}">
+          <span style="flex: 0 0 auto; width: 34px; height: 34px; border-radius: {{t.dot}}; background: {{t.accent}}; color: {{t.accentInk}}; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700" aria-hidden="true">首</span>
+          <span style="font-size: 12px; line-height: 1.35">Scheduled for 18.10.08 · Aki Rono, Prime Minister</span>
+        </div>
+        <p style="margin: 0; font-size: 13.5px; line-height: 1.5">The National Assembly is full for the opening of the session. The Prime Minister rises to set out the government's agenda, and every party is watching how the others take it.</p>
+        <p style="margin: 0; font-size: 12px; line-height: 1.4; color: {{t.muted}}">This is set by the calendar, not bought. Your staff moved you to the Capitol for it.</p>
+        <div style="display: flex; flex-direction: column; gap: 7px">
+          <sc-for list="{{decisionChoices}}" as="c" hint-placeholder-count="3">
+            <button aria-disabled="{{c.off}}" style="width: 100%; min-height: 52px; padding: 9px 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; font-size: 13.5px; font-weight: 700; line-height: 1.3; cursor: pointer; background: {{t.tile}}; color: {{t.ink}}; border: 1px solid {{t.divider}}; border-radius: {{t.rSmall}}; font-family: {{t.body}}; box-sizing: border-box; opacity: {{c.op}}"><span>{{c.text}}</span><span style="font-size: 11.5px; font-weight: 600; color: {{t.muted}}">{{c.cost}}</span><span style="font-size: 11.5px; font-weight: 700; color: {{t.bad}}">{{c.note}}</span></button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <span style="font-size: 12px; line-height: 1.4; color: {{t.muted}}; align-self: center">Choose one to continue</span>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.event}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 18px 14px">
+    <section role="dialog" aria-label="Event: The Temple Bell Needs a Ringer" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">SOMETHING COMES UP</span><span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">District · 1 h</span></div>
+        <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">The Temple Bell Needs a Ringer</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <p style="margin: 0; font-size: 13.5px; line-height: 1.5">The Buddhist Temples Association is ringing the great bell at a hillside temple in Matsumae and asks you to take a turn. A neighbor mentions, quietly, that the bell tower roof leaks.</p>
+        <div style="display: flex; gap: 6px; align-items: center"><img src="/_blob/f5fd87d1a1f2a6858edfb72fc3d2b130" alt="" style="width: 26px; height: 26px; object-fit: contain"><span style="font-size: 12px; font-weight: 700">Buddhist Temples Association</span></div>
+        <div style="display: flex; flex-direction: column; gap: 7px">
+          <sc-for list="{{eventChoices}}" as="c" hint-placeholder-count="3">
+            <button aria-disabled="{{c.off}}" style="width: 100%; min-height: 52px; padding: 9px 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; font-size: 13.5px; font-weight: 700; line-height: 1.3; cursor: pointer; background: {{t.tile}}; color: {{t.ink}}; border: 1px solid {{t.divider}}; border-radius: {{t.rSmall}}; font-family: {{t.body}}; box-sizing: border-box; opacity: {{c.op}}"><span>{{c.text}}</span><span style="font-size: 11.5px; font-weight: 600; color: {{t.muted}}">{{c.cost}}</span><span style="font-size: 11.5px; font-weight: 700; color: {{t.bad}}">{{c.note}}</span></button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 auto">Follow-up later</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.hosted}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/f5ce65f69f3ae49144193a79ed0ae5be" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px 14px">
+    <section role="dialog" aria-label="Your event: Host a Constituency Group Walking Tour" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">YOUR EVENT · 1 OF 3</span><span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">4 h</span></div>
+        <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">Host a Constituency Group Walking Tour</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; flex-direction: column; gap: 5px">
+          <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Your guests</h2>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap">
+            <sc-for list="{{guests}}" as="g" hint-placeholder-count="3">
+              <span style="display: flex; align-items: center; gap: 5px; padding: 3px 9px 3px 4px; background: {{t.tile}}; border-radius: {{t.pill}}; font-size: 11.5px; font-weight: 700"><img src="{{g.icon}}" alt="" style="width: 22px; height: 22px; object-fit: contain">{{g.name}}</span>
+            </sc-for>
+          </div>
+        </div>
+        <p style="margin: 0; font-size: 14px; font-weight: 700">Where do you take them?</p>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px">
+          <sc-for list="{{routes}}" as="r" hint-placeholder-count="6">
+            <button style="width: 100%; min-height: 52px; padding: 9px 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; font-size: 13.5px; font-weight: 700; line-height: 1.3; cursor: pointer; background: {{t.tile}}; color: {{t.ink}}; border: 1px solid {{t.divider}}; border-radius: {{t.rSmall}}; font-family: {{t.body}}; box-sizing: border-box; min-height: 64px; background: {{r.bg}}; color: {{r.ink}}; border: {{r.edge}}"><span>{{r.text}}</span><span style="font-size: 11px; font-weight: 600; color: {{r.ink}}; opacity: .85">{{r.tags}}</span></button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1 1 auto">Next</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.result}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/f5ce65f69f3ae49144193a79ed0ae5be" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 18px 14px">
+    <section role="dialog" aria-label="How it went" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">YOUR EVENT · RESULT</span><span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">It took 4 hours.</span></div>
+        <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">How it went</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <p style="margin: 0; font-size: 14px; font-weight: 700">A good evening. People will talk about it.</p>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+          <sc-for list="{{resultMeta}}" as="m" hint-placeholder-count="2">
+            <div style="background: {{t.tile}}; border-radius: {{t.rSmall}}; padding: 7px 9px; display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 12px">{{m.label}}</span><span style="font-size: 16px; font-weight: 700; color: {{m.tone}}">{{m.value}}</span></div>
+          </sc-for>
+        </div>
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">How your guests took it</h2>
+        <sc-for list="{{resultOrgs}}" as="o" hint-placeholder-count="3">
+          <div style="display: flex; gap: 10px; align-items: center; padding-top: 6px; border-top: 1px solid {{t.divider}}">
+            <img src="{{o.icon}}" alt="" style="width: 30px; height: 30px; object-fit: contain">
+            <div style="flex: 1 1 auto; display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700">{{o.name}}</span><span style="font-size: 11.5px; color: {{t.muted}}">{{o.line}}</span></div>
+            <span style="font-size: 15px; font-weight: 700; color: {{o.tone}}">{{o.delta}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1 1 auto">Close</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.weekover}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 18px 14px">
+    <section role="dialog" aria-label="The work week is over" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">WEEK'S END</span><span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">Week 7 · Sunday</span></div>
+        <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">The work week is over</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <p style="margin: 0; font-size: 13px; line-height: 1.45">Party dues and staff wages are paid now. Here is where the money goes.</p>
+        <div style="display: flex; flex-direction: column">
+          <sc-for list="{{payRows}}" as="p" hint-placeholder-count="6">
+            <div style="display: flex; justify-content: space-between; gap: 8px; min-height: 30px; align-items: center; border-top: 1px solid {{t.divider}}; font-size: 13px; font-weight: {{p.weight}}"><span>{{p.label}}</span><span>{{p.value}}</span></div>
+          </sc-for>
+        </div>
+        <div style="padding: 8px 10px; background: {{t.warnBg}}; color: {{t.warnInk}}; border-radius: {{t.rSmall}}; font-size: 12px; line-height: 1.4">A wage that is not paid costs that person 5 Loyalty.</div>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1 1 auto">Pay and start Week 8</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.promises}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 18px 14px">
+    <section role="dialog" aria-label="Promises" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">PROMISES</span><span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">2 owed</span></div>
+        <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">Promises</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <sc-for list="{{promises}}" as="p" hint-placeholder-count="2">
+          <article style="background: {{t.tile}}; border-radius: {{t.rSmall}}; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+            <div style="display: flex; gap: 8px; align-items: center"><img src="{{p.icon}}" alt="" style="width: 28px; height: 28px; object-fit: contain"><span style="flex: 1 1 auto; font-size: 13.5px; font-weight: 700; line-height: 1.3">{{p.what}}</span></div>
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+              <span style="font-size: 12px; font-weight: 700; color: {{p.dueTone}}">{{p.due}}</span>
+              <span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap; background: {{t.card}}">{{p.place}}</span>
+            </div>
+            <button aria-disabled="{{p.off}}" style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; opacity: {{p.op}}">{{p.btn}}</button>
+            <span style="font-size: 11.5px; font-weight: 700; color: {{t.bad}}">{{p.note}}</span>
+          </article>
+        </sc-for>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1 1 auto">Close</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.broken}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 18px 14px">
+    <section role="dialog" aria-label="Promises broken" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .08em; background: {{t.alarm}}; color: {{t.alarmInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">PROMISE BROKEN</span><span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">Week 7</span></div>
+        <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">Promises broken</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <p style="margin: 0; font-size: 13.5px; line-height: 1.5">You broke your promise to Buddhist Temples Association: 1 hour of your time.</p>
+        <div style="display: flex; gap: 10px; align-items: center; padding: 8px 10px; background: {{t.warnBg}}; color: {{t.warnInk}}; border-radius: {{t.rSmall}}">
+          <img src="/_blob/f5fd87d1a1f2a6858edfb72fc3d2b130" alt="" style="width: 30px; height: 30px; object-fit: contain">
+          <span style="flex: 1 1 auto; font-size: 13px; font-weight: 700">Buddhist Temples Association</span>
+          <span style="font-size: 15px; font-weight: 700">−4</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; padding-top: 6px; border-top: 1px solid {{t.divider}}"><span>Reputation</span><span style="font-weight: 700; color: {{t.bad}}">−2</span></div>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1 1 auto">Close</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.forced}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/717da540b9c15c29ac3d92be539437ff" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 18px 14px">
+    <section role="dialog" aria-label="You have been taken to the Capitol" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .08em; background: {{t.alarm}}; color: {{t.alarmInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">MOVED FOR YOU</span><span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">Monday · 0 h</span></div>
+        <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">You are at the Capitol</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; gap: 10px; align-items: flex-end">
+          <div style="flex: 0 0 auto; width: 70px; height: 92px; background: {{t.tile}}; border-radius: {{t.rSmall}}; overflow: hidden; display: flex; align-items: flex-end; justify-content: center"><img src="/_blob/5a0b70a6f3677a9b1b573a5b3f18731f" alt="Hana Takahashi" style="height: 90px; width: auto; max-width: 70px; object-fit: cover; object-position: top"></div>
+          <div style="flex: 1 1 auto; position: relative; padding: 9px 11px; background: {{t.tile}}; border-radius: {{t.r}}; font-size: 13px; line-height: 1.45">
+            <span style="display: block; font-size: 11px; font-weight: 700; color: {{t.muted}}">Hana Takahashi · Policy Research Assistant</span>
+            The Prime Minister speaks at ten. I took the early train with you; your seat is ready.
+          </div>
+        </div>
+        <p style="margin: 0; font-size: 13.5px; line-height: 1.5">This appointment is at the Capitol, so you have been taken there.</p>
+        <div style="display: flex; flex-direction: column; gap: 5px">
+          <span style="font-size: 12px; font-weight: 700">Not open while you are here</span>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap">
+            <span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap; opacity: .5">District levels</span><span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap; opacity: .5">District events</span><span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap; opacity: .5">Office Hours</span>
+          </div>
+          <span style="font-size: 12px; line-height: 1.4; color: {{t.muted}}">The trip cost no hours.</span>
+        </div>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1 1 auto">Continue</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.resume}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 18px 14px">
+    <section role="dialog" aria-label="A level is in progress" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">LEVEL IN PROGRESS</span><span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">LV11 · Stage 2 of 3</span></div>
+        <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">Pick up where you left off?</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; background: {{t.tile}}; border-radius: {{t.rSmall}}">
+          <span style="font-size: 14px; font-weight: 700">Fisheries Quota Town Hall</span>
+          <span style="font-size: 12px">Next: Committee Hearing · 2 h</span>
+          <div role="img" aria-label="Stage 2 of 3" style="display: flex; gap: 4px; margin-top: 4px"><span style="flex: 1; height: 6px; background: {{t.barFill}}"></span><span style="flex: 1; height: 6px; background: {{t.barFill}}"></span><span style="flex: 1; height: 6px; background: {{t.barTrack}}"></span></div>
+        </div>
+        <p style="margin: 0; font-size: 12px; line-height: 1.4; color: {{t.muted}}">Abandoning counts this stage as lost, with its penalties, and the level ends now.</p>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 0">Abandon Level</button>
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1.4 1 0">Resume</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"screen":{"editor":"enum","options":["decision", "event", "hosted", "result", "weekover", "promises", "broken", "forced", "resume"],"default":"decision"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.22)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', good:'#2F6B3A', bad:'#A42A17', tabBg:'#F8F1E3', tabInk:'#1C1A17', tabEdge:'#1C1A17', tabOnBg:'#22305A', tabOnInk:'#F8F1E3', barTrack:'#E2D6BF', barFill:'#22305A', jp:'#6B5F50', warnBg:'#F6DDD3', warnInk:'#7A1E10', alarm:'#B3311C', alarmInk:'#FFFFFF', scrim:'rgba(28,26,23,.55)', paper:'#F8F1E3' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', good:'#2E6B34', bad:'#A3261A', tabBg:'transparent', tabInk:'#E8DAC3', tabEdge:'rgba(255,248,236,.3)', tabOnBg:'#FFD58A', tabOnInk:'#2B1D12', barTrack:'#EADBC0', barFill:'#9A6413', jp:'#D9C8AC', warnBg:'#F8DDD6', warnInk:'#7A1E10', alarm:'#A3261A', alarmInk:'#FFFFFF', scrim:'rgba(20,12,6,.62)', paper:'#FFF8EC' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'29px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.22)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', good:'#7BD88F', bad:'#FF8A80', tabBg:'transparent', tabInk:'#C3C9D6', tabEdge:'rgba(227,179,65,.45)', tabOnBg:'#E3B341', tabOnInk:'#0B1220', barTrack:'#22304D', barFill:'#E3B341', jp:'#9AA3B5', warnBg:'#3A1F27', warnInk:'#FFB4AB', alarm:'#C8102E', alarmInk:'#FFFFFF', scrim:'rgba(5,9,18,.66)', paper:'#141E33' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    const t = T[key];
+    const tabs = (labels, on) => labels.map((l) => ({ label: l, bg: l === on ? t.tabOnBg : t.tabBg, ink: l === on ? t.tabOnInk : t.tabInk, edge: l === on ? t.tabOnBg : t.tabEdge }));
+    const screen = ["decision", "event", "hosted", "result", "weekover", "promises", "broken", "forced", "resume"].indexOf(this.props.screen) >= 0 ? this.props.screen : 'decision';
+    const is = {}; ["decision", "event", "hosted", "result", "weekover", "promises", "broken", "forced", "resume"].forEach((s) => { is[s] = s === screen; });
+    const ch = (text, cost, note) => ({ text, cost: cost || '', note: note || '', off: note ? 'true' : 'false', op: note ? '0.55' : '1' });
+    return {
+      t, is,
+      decisionChoices: [ ch('Sit with your party in the chamber', '2 h · Party support may rise'), ch('Follow it from your office and take notes', '2 h · +10 to +20 XP'), ch('Skip it and work through committee papers', '2 h · Someone in the party notices') ],
+      eventChoices: [ ch('Take your turn at the bell and stay for tea', '1 h'), ch('Send a staff member with a donation for the repairs', '10,000円 · Miharu Daitani goes · 0 h of yours'), ch('Offer to speak for the roof at the next heritage debate', 'Promise: 1 hour of your time within 72 hours') ],
+      guests: [ { icon: '/_blob/f5fd87d1a1f2a6858edfb72fc3d2b130', name: 'Buddhist Temples Association' }, { icon: '/_blob/0909052c1207ba461c79de4499079ba2', name: 'Fisheries Cooperative' }, { icon: '/_blob/2a61c306d92c15d9bd26fa52b765debd', name: 'Local Kōenkai' } ],
+      routes: [
+        { text: 'Tour the shrine grounds', tags: 'heritage · local', bg: t.accent, ink: t.accentInk, edge: '2px solid ' + t.accent },
+        { text: 'Visit an orchard and a farm', tags: 'rural · humble', bg: t.tile, ink: t.ink, edge: '1px solid ' + t.divider },
+        { text: 'Walk through a manufacturing plant', tags: 'industry · labor', bg: t.tile, ink: t.ink, edge: '1px solid ' + t.divider },
+        { text: 'Stroll the shotengai', tags: 'small business', bg: t.tile, ink: t.ink, edge: '1px solid ' + t.divider },
+        { text: 'Walk a residential neighborhood', tags: 'family · local', bg: t.tile, ink: t.ink, edge: '1px solid ' + t.divider },
+        { text: 'Visit the fishing port', tags: 'fishing · rural', bg: t.tile, ink: t.ink, edge: '1px solid ' + t.divider }
+      ],
+      resultMeta: [ { label: 'Reputation', value: '+2', tone: t.good }, { label: 'District awareness', value: '+3', tone: t.good } ],
+      resultOrgs: [
+        { icon: '/_blob/f5fd87d1a1f2a6858edfb72fc3d2b130', name: 'Buddhist Temples Association', line: 'Loved the shrine grounds', delta: '+4', tone: t.good },
+        { icon: '/_blob/2a61c306d92c15d9bd26fa52b765debd', name: 'Local Kōenkai', line: 'Enjoyed the talk on transit', delta: '+2', tone: t.good },
+        { icon: '/_blob/0909052c1207ba461c79de4499079ba2', name: 'Fisheries Cooperative', line: 'Wanted to see the port', delta: '−1', tone: t.bad }
+      ],
+      payRows: [
+        { label: 'Party dues', value: '24,000円', weight: '400' }, { label: "Hana Takahashi's wage", value: '18,000円', weight: '400' },
+        { label: "Yui Kobayashi's wage", value: '9,000円', weight: '400' }, { label: "Aoi Suzuki's wage (raised)", value: '15,000円', weight: '400' },
+        { label: "Miharu Daitani's wage", value: '18,000円', weight: '400' }, { label: 'Total', value: '84,000円', weight: '700' },
+        { label: 'Office funds after paying', value: '98,000円', weight: '700' }
+      ],
+      promises: [
+        { icon: '/_blob/f5fd87d1a1f2a6858edfb72fc3d2b130', what: '1 hour of your time for Buddhist Temples Association', due: 'Due in 41 hours', dueTone: t.ink, place: 'Keep it at your District office', btn: 'Keep this promise', off: 'true', op: '0.55', note: 'Keep it at your District office.' },
+        { icon: '/_blob/0909052c1207ba461c79de4499079ba2', what: '10,000円 for Fisheries Cooperative', due: 'Due in 6 hours', dueTone: t.bad, place: 'Keep it anywhere', btn: 'Keep this promise', off: 'false', op: '1', note: '' }
+      ]
+    };
+
+  }
+}
+</script>
+</body>
+</html>

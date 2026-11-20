@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cards and items</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/ca907dae0239c528fdc7b76b7892835d') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+</helmet>
+<sc-if value="{{is.deck}}" hint-placeholder-val="true">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: {{t.onBgMuted}}"><span>Deck 12 of 12 cards · ready to play</span><span>Tap a card to look</span></div>
+    <div style="display: flex; gap: 6px; flex-wrap: wrap">
+      <sc-for list="{{suits}}" as="s" hint-placeholder-count="4"><span style="display: flex; align-items: center; gap: 5px; padding: 3px 9px; font-size: 11.5px; font-weight: 700; background: {{t.card}}; color: {{t.ink}}; border-radius: {{t.pill}}"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{s.color}}"></span>{{s.label}}</span></sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <sc-for list="{{cards}}" as="c" hint-placeholder-count="6">
+        <button aria-label="{{c.name}}" style="padding: 0; border: 0; background: transparent; text-align: left; cursor: pointer; font-family: {{t.body}}">
+          <div style="position: relative; display: flex; flex-direction: column; background: {{t.paper}}; color: {{t.ink}}; border: 2px solid {{c.suitColor}}; border-radius: {{t.rSmall}}; overflow: hidden; box-shadow: {{t.shadow}}">
+            <img src="{{c.art}}" alt="" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block">
+            <span style="position: absolute; left: 5px; top: 5px; width: 26px; height: 26px; border-radius: 50%; background: {{c.suitColor}}; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{c.cost}}</span>
+            <div style="padding: 6px 7px 7px 7px; display: flex; flex-direction: column; gap: 2px">
+              <span style="font-size: 12.5px; font-weight: 700; line-height: 1.2">{{c.name}}</span>
+              <span style="font-size: 10.5px; color: {{t.muted}}">{{c.suit}} · {{c.type}}</span>
+              <span style="font-size: 11px; line-height: 1.3">{{c.effect}}</span>
+            </div>
+          </div>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.offer}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; padding: 18px 14px; display: flex; flex-direction: column; justify-content: center">
+    <section role="dialog" aria-label="Your coach suggests" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; justify-content: space-between; align-items: center"><h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">Your coach suggests</h1><span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap">1/3</span></div>
+      <sc-for list="{{offer}}" as="c" hint-placeholder-count="1">
+        <div style="width: 230px; align-self: center">
+          <div style="position: relative; display: flex; flex-direction: column; background: {{t.paper}}; color: {{t.ink}}; border: 2px solid {{c.suitColor}}; border-radius: {{t.rSmall}}; overflow: hidden; box-shadow: {{t.shadow}}">
+            <img src="{{c.art}}" alt="" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block">
+            <span style="position: absolute; left: 5px; top: 5px; width: 26px; height: 26px; border-radius: 50%; background: {{c.suitColor}}; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{c.cost}}</span>
+            <div style="padding: 6px 7px 7px 7px; display: flex; flex-direction: column; gap: 2px">
+              <span style="font-size: 12.5px; font-weight: 700; line-height: 1.2">{{c.name}}</span>
+              <span style="font-size: 10.5px; color: {{t.muted}}">{{c.suit}} · {{c.type}}</span>
+              <span style="font-size: 11px; line-height: 1.3">{{c.effect}}</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+      <span style="font-size: 12px; text-align: center; color: {{t.muted}}">Tier 1 session · two more cards after this one</span>
+      <div style="display: flex; gap: 8px">
+        <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 0">Pass</button>
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1.5 1 0; font-size: 14px">Learn it (40 XP)</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.look}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; padding: 18px 14px; display: flex; flex-direction: column; justify-content: center">
+    <section role="dialog" aria-label="Call for Unity" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{look}}" as="c" hint-placeholder-count="1">
+        <div style="width: 210px; align-self: center">
+          <div style="position: relative; display: flex; flex-direction: column; background: {{t.paper}}; color: {{t.ink}}; border: 2px solid {{c.suitColor}}; border-radius: {{t.rSmall}}; overflow: hidden; box-shadow: {{t.shadow}}">
+            <img src="{{c.art}}" alt="" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block">
+            <span style="position: absolute; left: 5px; top: 5px; width: 26px; height: 26px; border-radius: 50%; background: {{c.suitColor}}; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{c.cost}}</span>
+            <div style="padding: 6px 7px 7px 7px; display: flex; flex-direction: column; gap: 2px">
+              <span style="font-size: 12.5px; font-weight: 700; line-height: 1.2">{{c.name}}</span>
+              <span style="font-size: 10.5px; color: {{t.muted}}">{{c.suit}} · {{c.type}}</span>
+              <span style="font-size: 11px; line-height: 1.3">{{c.effect}}</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+      <span lang="ja" style="font-size: 12px; text-align: center; color: {{t.muted}}">結束を呼びかける · Kessoku o Yobikakeru</span>
+      <div style="display: flex; flex-direction: column; gap: 4px; padding-top: 8px; border-top: 1px solid {{t.divider}}">
+        <span style="font-size: 12.5px; font-weight: 700">Appeal · Gain · costs 2</span>
+        <span style="font-size: 12.5px">Gain 4; +2 more if Party Members ≥ 50%.</span>
+        <span style="font-size: 12px; color: {{t.muted}}">Tier 1 · in your deck</span>
+      </div>
+      <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}">Close</button>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.inventory}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <sc-for list="{{items}}" as="i" hint-placeholder-count="6">
+        <button style="position: relative; min-height: 96px; padding: 8px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; background: {{t.card}}; color: {{t.ink}}; border: {{i.edge}}; border-radius: {{t.r}}; font-family: {{t.body}}; box-shadow: {{t.shadow}}">
+          <img src="{{i.icon}}" alt="" style="width: 46px; height: 46px; object-fit: contain">
+          <span style="font-size: 11.5px; font-weight: 700; line-height: 1.2; text-align: center">{{i.name}}</span>
+          <span style="position: absolute; right: 6px; top: 6px; padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap; font-size: 11px">×{{i.count}}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+  <section aria-label="Coffee" style="flex: 0 0 auto; background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; border-radius: {{t.r}} {{t.r}} 0 0; padding: 14px 16px 16px 16px; display: flex; flex-direction: column; gap: 6px">
+    <div style="display: flex; gap: 10px; align-items: center"><img src="/_blob/aed8b88896738cfbc762f0bf7dcd65be" alt="" style="width: 44px; height: 44px; object-fit: contain"><div style="display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700">“ね3” Coffee</span><span style="font-size: 12px; color: {{t.muted}}">You have 2. You can carry up to 3.</span></div></div>
+    <span style="font-size: 12.5px">+1 energy. Takes effect immediately.</span>
+    <div style="display: flex; gap: 8px"><button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 0">Close</button><button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1.5 1 0">Use</button></div>
+  </section>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"screen":{"editor":"enum","options":["deck", "offer", "look", "inventory"],"default":"deck"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.22)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', good:'#2F6B3A', bad:'#A42A17', tabBg:'#F8F1E3', tabInk:'#1C1A17', tabEdge:'#1C1A17', tabOnBg:'#22305A', tabOnInk:'#F8F1E3', barTrack:'#E2D6BF', barFill:'#22305A', jp:'#6B5F50', warnBg:'#F6DDD3', warnInk:'#7A1E10', alarm:'#B3311C', alarmInk:'#FFFFFF', scrim:'rgba(28,26,23,.55)', paper:'#F8F1E3' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', good:'#2E6B34', bad:'#A3261A', tabBg:'transparent', tabInk:'#E8DAC3', tabEdge:'rgba(255,248,236,.3)', tabOnBg:'#FFD58A', tabOnInk:'#2B1D12', barTrack:'#EADBC0', barFill:'#9A6413', jp:'#D9C8AC', warnBg:'#F8DDD6', warnInk:'#7A1E10', alarm:'#A3261A', alarmInk:'#FFFFFF', scrim:'rgba(20,12,6,.62)', paper:'#FFF8EC' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'29px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.22)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', good:'#7BD88F', bad:'#FF8A80', tabBg:'transparent', tabInk:'#C3C9D6', tabEdge:'rgba(227,179,65,.45)', tabOnBg:'#E3B341', tabOnInk:'#0B1220', barTrack:'#22304D', barFill:'#E3B341', jp:'#9AA3B5', warnBg:'#3A1F27', warnInk:'#FFB4AB', alarm:'#C8102E', alarmInk:'#FFFFFF', scrim:'rgba(5,9,18,.66)', paper:'#141E33' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    const t = T[key];
+    const tabs = (labels, on) => labels.map((l) => ({ label: l, bg: l === on ? t.tabOnBg : t.tabBg, ink: l === on ? t.tabOnInk : t.tabInk, edge: l === on ? t.tabOnBg : t.tabEdge }));
+    const screen = ["deck", "offer", "look", "inventory"].indexOf(this.props.screen) >= 0 ? this.props.screen : 'deck';
+    const is = {}; ["deck", "offer", "look", "inventory"].forEach((s) => { is[s] = s === screen; });
+    const SC = { Earnest: '#2F6B9A', Emotional: '#B3311C', Appeal: '#B7791F', 'Data-driven': '#3B7A57' };
+    const card = (art, name, suit, type, cost, effect) => ({ art, name, suit, type, cost, effect, suitColor: SC[suit] });
+    const C = {
+      deck: { chips: ['XP 1,240'], title: 'Your Deck', jp: '手札', tabs: tabs(['In your deck', 'Collection'], 'In your deck') },
+      offer: { chips: [], title: '', jp: '', tabs: [] },
+      look: { chips: [], title: '', jp: '', tabs: [] },
+      inventory: { chips: ['Personal'], title: 'Inventory', jp: '持ち物', tabs: tabs(['Personal', 'Office'], 'Personal') }
+    };
+    return Object.assign({
+      t, is,
+      suits: [ { label: 'Earnest 6', color: SC.Earnest }, { label: 'Emotional 3', color: SC.Emotional }, { label: 'Appeal 3', color: SC.Appeal } ],
+      cards: [
+        card('/_blob/922ba6ce423fdd53b06a74278e5a7627', 'Sincere Answer', 'Earnest', 'Defend', 1, 'Gain 1. Guard 4.'),
+        card('/_blob/eb60d6c1feb45f74f9ae9aa5e9fd9947', 'Impassioned Speech', 'Emotional', 'Gain', 2, 'Gain 5.'),
+        card('/_blob/e712eb0b9fe1d1d6456da6101aafcb3c', 'Call for Unity', 'Appeal', 'Gain', 2, 'Gain 4; +2 more if Party Members ≥ 50%.'),
+        card('/_blob/ea094b337c8b17a4bbbd5802b3d1b0e5', 'Record of Service', 'Earnest', 'Gain', 2, 'Gain 4.'),
+        card('/_blob/157da357bc849c924991dcc4b0f6dc0d', 'Formal Apology', 'Earnest', 'Gain', 3, 'Gain 2. Reduce your gaffe meter by 2.'),
+        card('/_blob/29341fb09f09acc7f1a2d356804da2c2', 'Return to First Principles', 'Earnest', 'Gain', 2, 'Gain 6; +2 more if Constituents ≥ 30%.')
+      ],
+      offer: [ card('/_blob/eb60d6c1feb45f74f9ae9aa5e9fd9947', 'Impassioned Speech', 'Emotional', 'Gain', 2, 'Gain 5.') ],
+      look: [ card('/_blob/e712eb0b9fe1d1d6456da6101aafcb3c', 'Call for Unity', 'Appeal', 'Gain', 2, 'Gain 4; +2 more if Party Members ≥ 50%.') ],
+      items: [
+        { icon: '/_blob/aed8b88896738cfbc762f0bf7dcd65be', name: '“ね3” Coffee', count: 2, edge: '2px solid ' + t.accent },
+        { icon: '/_blob/1ba0137e8a2e115bc351876b3e93a53b', name: '“ミレニ姫” Tea', count: 1, edge: '1px solid ' + t.divider },
+        { icon: '/_blob/0532843e19f05944d5638919b58f7723', name: 'Box of Aomori Apples', count: 1, edge: '1px solid ' + t.divider },
+        { icon: '/_blob/3604b44a60142767372a53e940d4220e', name: 'Wind-Dried Salmon', count: 3, edge: '1px solid ' + t.divider },
+        { icon: '/_blob/273bd55cc5a2ca91d31019f218cd0e5d', name: 'Walking Tour', count: 1, edge: '1px solid ' + t.divider }
+      ]
+    }, C[screen]);
+
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390">
+<title>Pop-ups and notices (living)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Barlow Condensed';font-style:italic;font-weight:700;src:url('assets/BarlowCondensed-BoldItalic.woff2') format('woff2')}
+@font-face{font-family:'Antaka Brush Display';src:url('assets/AntakaBrushDisplay-Regular.ttf') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+
+</head>
+<body>
+
+
+
+
+
+
+
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #2B1D12; color: #FFF8EC; font-family: 'Zen Kaku Gothic New', sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="assets/OFFICE.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: rgba(20,12,6,.62)"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 18px 14px">
+    <section role="dialog" aria-label="The work week is over" style="background: #FFF8EC; color: #2B1D12; border-top: 1px solid #E2CFAF; border-bottom: 1px solid #E2CFAF; border-left: 1px solid #E2CFAF; border-right: 1px solid #E2CFAF; border-radius: 18px; box-shadow: 0 8px 20px rgba(0,0,0,.35); box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: #FFD58A; color: #2B1D12; border-radius: 12px; clip-path: none; white-space: nowrap">WEEK'S END</span><span style="font-size: 12px; font-weight: 700; color: #5C4A38">Week 7 · Sunday</span></div>
+        <h1 style="margin: 0; font-family: 'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif; font-size: 24px; font-style: normal; font-weight: 400; line-height: 1.15; text-transform: none; color: #2B1D12">The work week is over</h1>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 12px 16px; display: flex; flex-direction: column; gap: 10px">
+        <p style="margin: 0; font-size: 13px; line-height: 1.45">Party dues and staff wages are paid now. Here is where the money goes.</p>
+        <div style="display: flex; flex-direction: column">
+          
+            <div style="display: flex; justify-content: space-between; gap: 8px; min-height: 30px; align-items: center; border-top: 1px solid rgba(43,29,18,.14); font-size: 13px; font-weight: 400"><span>Party dues</span><span>24,000円</span></div>
+          
+            <div style="display: flex; justify-content: space-between; gap: 8px; min-height: 30px; align-items: center; border-top: 1px solid rgba(43,29,18,.14); font-size: 13px; font-weight: 400"><span>Hana Takahashi's wage</span><span>18,000円</span></div>
+          
+            <div style="display: flex; justify-content: space-between; gap: 8px; min-height: 30px; align-items: center; border-top: 1px solid rgba(43,29,18,.14); font-size: 13px; font-weight: 400"><span>Yui Kobayashi's wage</span><span>9,000円</span></div>
+          
+            <div style="display: flex; justify-content: space-between; gap: 8px; min-height: 30px; align-items: center; border-top: 1px solid rgba(43,29,18,.14); font-size: 13px; font-weight: 400"><span>Aoi Suzuki's wage (raised)</span><span>15,000円</span></div>
+          
+            <div style="display: flex; justify-content: space-between; gap: 8px; min-height: 30px; align-items: center; border-top: 1px solid rgba(43,29,18,.14); font-size: 13px; font-weight: 400"><span>Miharu Daitani's wage</span><span>18,000円</span></div>
+          
+            <div style="display: flex; justify-content: space-between; gap: 8px; min-height: 30px; align-items: center; border-top: 1px solid rgba(43,29,18,.14); font-size: 13px; font-weight: 700"><span>Total</span><span>84,000円</span></div>
+          
+            <div style="display: flex; justify-content: space-between; gap: 8px; min-height: 30px; align-items: center; border-top: 1px solid rgba(43,29,18,.14); font-size: 13px; font-weight: 700"><span>Office funds after paying</span><span>98,000円</span></div>
+          
+        </div>
+        <div style="padding: 8px 10px; background: #F8DDD6; color: #7A1E10; border-radius: 12px; font-size: 12px; line-height: 1.4">A wage that is not paid costs that person 5 Loyalty.</div>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid rgba(43,29,18,.14)">
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: #FFD58A; color: #2B1D12; border: 1px solid #FFD58A; border-radius: 999px; clip-path: none; font-family: 'Zen Kaku Gothic New', sans-serif; font-style: normal; text-transform: none; letter-spacing: 0; flex: 1 1 auto">Pay and start Week 8</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
