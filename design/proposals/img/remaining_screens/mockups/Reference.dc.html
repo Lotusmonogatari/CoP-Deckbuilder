@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reference and settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/ca907dae0239c528fdc7b76b7892835d') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+</helmet>
+<sc-if value="{{is.cosmetics}}" hint-placeholder-val="true">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: {{t.onBgMuted}}">Purely decorative: an outfit, an office look, and music, all yours to mix and match.</p>
+    <sc-for list="{{slots}}" as="s" hint-placeholder-count="5">
+      <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 9px 12px; display: flex; flex-direction: column; gap: 6px">
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">{{s.title}}</h2>
+        <div style="display: flex; gap: 6px; overflow-x: auto">
+          <sc-for list="{{s.opts}}" as="o" hint-placeholder-count="3">
+            <button aria-pressed="{{o.on}}" style="flex: 0 0 auto; min-width: 92px; min-height: 64px; padding: 6px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; background: {{o.bg}}; color: {{o.ink}}; border: {{t.bw}} solid {{o.edge}}; border-radius: {{t.rSmall}}; font-family: {{t.body}}; font-size: 11.5px; font-weight: 700">
+              <img src="{{o.icon}}" alt="" style="width: 28px; height: 28px; object-fit: contain; display: {{o.show}}">
+              <span>{{o.label}}</span><span style="font-size: 10.5px; font-weight: 600; opacity: .85">{{o.state}}</span>
+            </button>
+          </sc-for>
+        </div>
+      </section>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.howto}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <sc-for list="{{guide}}" as="g" hint-placeholder-count="4">
+      <article style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; gap: 10px; align-items: baseline"><span style="font-size: 20px; font-weight: 700; font-family: {{t.display}}; color: {{t.muted}}">{{g.n}}</span><h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; font-size: 15px">{{g.title}}</h2></div>
+        <span style="font-size: 12.5px; line-height: 1.45">{{g.body}}</span>
+        <div style="height: 96px; border: 1.5px dashed {{t.divider}}; border-radius: {{t.rSmall}}; display: flex; align-items: center; justify-content: center; font-size: 11.5px; color: {{t.muted}}; display: {{g.pic}}">Screenshot: {{g.shot}}</div>
+      </article>
+    </sc-for>
+  </div>
+  <div style="flex: 0 0 auto; display: flex; gap: 10px; padding: 10px 16px 14px 16px; border-top: {{t.footTop}}; background: {{t.bg}}"><button style="min-height: 48px; padding: 0 16px; font-size: 14px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.onBg}}; border: {{t.bw}} solid {{t.secEdge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 auto">Watch the demo</button></div>
+</div>
+</sc-if>
+<sc-if value="{{is.characters}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <p style="margin: 0; font-size: 12.5px; color: {{t.onBgMuted}}">Everyone you meet is recorded here. Tap a name to see who they are.</p>
+    <sc-for list="{{people}}" as="g" hint-placeholder-count="2">
+      <section style="display: flex; flex-direction: column; gap: 6px">
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{g.heading}}</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+          <sc-for list="{{g.rows}}" as="p" hint-placeholder-count="6">
+            <button style="min-height: 52px; padding: 6px 8px; display: flex; gap: 8px; align-items: center; cursor: pointer; background: {{t.card}}; color: {{t.ink}}; border: 0; border-left: 5px solid {{p.color}}; border-radius: {{t.rSmall}}; font-family: {{t.body}}; text-align: left; opacity: {{p.op}}">
+              <span style="display: flex; flex-direction: column"><span style="font-size: 12.5px; font-weight: 700">{{p.name}}</span><span style="font-size: 10.5px; color: {{t.muted}}">{{p.sub}}</span></span>
+            </button>
+          </sc-for>
+        </div>
+      </section>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.newgame}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; flex-direction: column; gap: 2px; padding-top: 6px"><h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; font-size: 26px; color: {{t.onBg}}">Choose your champion</h1><span style="font-size: 12.5px; color: {{t.onBgMuted}}">Who are you in Parliament? You play the whole run as the one you choose.</span></div>
+    <div role="radiogroup" aria-label="Champion" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+      <sc-for list="{{champs}}" as="c" hint-placeholder-count="4">
+        <button role="radio" aria-checked="{{c.on}}" aria-label="{{c.name}}" style="height: 150px; padding: 0; overflow: hidden; cursor: pointer; background: {{t.card}}; border: {{c.edge}}; border-radius: {{t.rSmall}}; display: flex; align-items: flex-end; justify-content: center; opacity: {{c.op}}"><img src="{{c.img}}" alt="" style="height: 146px; width: auto; max-width: 100%; object-fit: cover; object-position: top"></button>
+      </sc-for>
+    </div>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 5px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; font-size: 17px">Kenshin Sako</h2><span style="display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700"><span style="width: 10px; height: 10px; border-radius: 50%; background: #008000"></span>Frontier Party</span></div>
+      <span style="font-size: 12px">Aomori Proportional Block 3 · office in Noheji</span>
+      <span style="font-size: 12.5px">A strong footing to begin with. Easy difficulty.</span>
+      <span style="font-size: 12px; font-weight: 700; padding-top: 5px; border-top: 1px solid {{t.divider}}">Starting numbers:</span>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px 10px; font-size: 12px"><span>Constituency support: 35</span><span>Reputation: 25</span><span>Funds: 100,000円</span><span>Party support: 40</span></div>
+    </section>
+    <sc-for list="{{strips}}" as="s" hint-placeholder-count="2">
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{s.title}}</h2>
+        <div role="radiogroup" aria-label="{{s.title}}" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+          <sc-for list="{{s.opts}}" as="o" hint-placeholder-count="3">
+            <button role="radio" aria-checked="{{o.on}}" style="min-height: 44px; cursor: pointer; background: {{o.bg}}; color: {{o.ink}}; border: {{t.bw}} solid {{o.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; font-size: 12.5px; font-weight: 700">{{o.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="flex: 0 0 auto; display: flex; gap: 10px; padding: 10px 16px 14px 16px; border-top: {{t.footTop}}; background: {{t.bg}}"><button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1 1 auto">Play as Kenshin Sako</button></div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"screen":{"editor":"enum","options":["cosmetics", "howto", "characters", "newgame"],"default":"cosmetics"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.22)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', good:'#2F6B3A', bad:'#A42A17', tabBg:'#F8F1E3', tabInk:'#1C1A17', tabEdge:'#1C1A17', tabOnBg:'#22305A', tabOnInk:'#F8F1E3', barTrack:'#E2D6BF', barFill:'#22305A', jp:'#6B5F50', warnBg:'#F6DDD3', warnInk:'#7A1E10', alarm:'#B3311C', alarmInk:'#FFFFFF', scrim:'rgba(28,26,23,.55)', paper:'#F8F1E3' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', good:'#2E6B34', bad:'#A3261A', tabBg:'transparent', tabInk:'#E8DAC3', tabEdge:'rgba(255,248,236,.3)', tabOnBg:'#FFD58A', tabOnInk:'#2B1D12', barTrack:'#EADBC0', barFill:'#9A6413', jp:'#D9C8AC', warnBg:'#F8DDD6', warnInk:'#7A1E10', alarm:'#A3261A', alarmInk:'#FFFFFF', scrim:'rgba(20,12,6,.62)', paper:'#FFF8EC' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'29px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.22)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', good:'#7BD88F', bad:'#FF8A80', tabBg:'transparent', tabInk:'#C3C9D6', tabEdge:'rgba(227,179,65,.45)', tabOnBg:'#E3B341', tabOnInk:'#0B1220', barTrack:'#22304D', barFill:'#E3B341', jp:'#9AA3B5', warnBg:'#3A1F27', warnInk:'#FFB4AB', alarm:'#C8102E', alarmInk:'#FFFFFF', scrim:'rgba(5,9,18,.66)', paper:'#141E33' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    const t = T[key];
+    const tabs = (labels, on) => labels.map((l) => ({ label: l, bg: l === on ? t.tabOnBg : t.tabBg, ink: l === on ? t.tabOnInk : t.tabInk, edge: l === on ? t.tabOnBg : t.tabEdge }));
+    const screen = ["cosmetics", "howto", "characters", "newgame"].indexOf(this.props.screen) >= 0 ? this.props.screen : 'cosmetics';
+    const is = {}; ["cosmetics", "howto", "characters", "newgame"].forEach((s) => { is[s] = s === screen; });
+    const C = {
+      cosmetics: { chips: ['XP 1,240'], title: 'Appearance and Music', jp: '外観と音楽', tabs: [] },
+      howto: { chips: [], title: 'How to Play', jp: '遊び方', tabs: [] },
+      characters: { chips: [], title: 'Characters', jp: '登場人物', tabs: [] },
+      newgame: { chips: [], title: '', jp: '', tabs: [] }
+    };
+    const o = (label, state, on, icon) => ({ label, state, on: on ? 'true' : 'false', bg: on ? t.accent : t.tile, ink: on ? t.accentInk : t.ink, edge: on ? t.accent : t.divider, icon: icon || '', show: icon ? 'block' : 'none' });
+    const s3 = (labels, on) => labels.map((l) => ({ label: l, on: l === on ? 'true' : 'false', bg: l === on ? t.go : 'transparent', ink: l === on ? t.goInk : t.onBg, edge: l === on ? t.go : t.secEdge }));
+    return Object.assign({
+      t, is,
+      slots: [
+        { title: 'Office styles', opts: [ o('Living Office', key === 'living' ? 'Equipped' : 'Owned', key === 'living'), o('Broadcast', key === 'broadcast' ? 'Equipped' : 'Owned', key === 'broadcast'), o('Woodblock', key === 'woodblock' ? 'Equipped' : 'Owned', key === 'woodblock') ] },
+        { title: 'Office Background', opts: [ o('Default', 'Equipped', true), o('Upgraded office', 'Owned') ] },
+        { title: 'Music', opts: [ o('Default', 'Equipped', true), o('Festival', 'Owned'), o('Off', '') ] },
+        { title: 'Calendar', opts: [ o('Era Name', 'Equipped', true, '/_blob/003b78f8ad93dfd69e729e3a557f85aa'), o('Ainu', 'Owned', false, '/_blob/84d431c911abbaaee579d3508791c6a6') ] },
+        { title: 'Walking route', opts: [ o('Default', 'Equipped', true, '/_blob/273bd55cc5a2ca91d31019f218cd0e5d'), o('Harbor route', 'Owned') ] }
+      ],
+      guide: [
+        { n: '1', title: 'Your week', body: 'You have 48 hours each work week. Levels, events and travel all spend them.', shot: 'the hours box', pic: 'flex' },
+        { n: '2', title: 'Rooms and cards', body: 'Each stage is a room. Play cards to gain support, guard, or knock the opponent back.', shot: 'a stage with a held card', pic: 'flex' },
+        { n: '3', title: 'Organizations', body: 'Your answers please some organizations and annoy others. Their standing decides who backs you.', shot: '', pic: 'none' },
+        { n: '4', title: 'Two offices', body: 'You work from your District office or the Capitol. Each level and event happens at one of them.', shot: 'the train strip', pic: 'flex' }
+      ],
+      people: [
+        { heading: 'Those in the arena.', rows: [ { name: 'Ayala Taiyounokage', sub: 'Five Point Independents', color: '#8000FF', op: '1' }, { name: 'Ichizaki Namu', sub: 'Frontier Party', color: '#008000', op: '1' }, { name: '誰ですか。', sub: 'Not met yet', color: '#9A9A9A', op: '0.6' }, { name: '誰ですか。', sub: 'Not met yet', color: '#9A9A9A', op: '0.6' } ] },
+        { heading: 'Those in the community.', rows: [ { name: 'Gen Tsukamoto', sub: 'Fisherman', color: '#2F6B9A', op: '1' }, { name: 'Kaito Nishimura', sub: 'Student Council President', color: '#B7791F', op: '1' }, { name: '誰ですか。', sub: 'Not met yet', color: '#9A9A9A', op: '0.6' }, { name: '誰ですか。', sub: 'Not met yet', color: '#9A9A9A', op: '0.6' } ] }
+      ],
+      champs: [
+        { name: 'Kenshin Sako', img: '/_blob/f8c3541a844f0788e0ab80874959ac9f', on: 'true', edge: '3px solid ' + t.accent, op: '1' },
+        { name: 'Haru Yashi', img: '/_blob/42b348236be7fa99d8cfe8dc157f58be', on: 'false', edge: '1px solid ' + t.divider, op: '0.75' },
+        { name: 'Arata Ran', img: '/_blob/2fb24d12d8b3073e55c6d344bbeab802', on: 'false', edge: '1px solid ' + t.divider, op: '0.75' },
+        { name: 'Jyurou Nishihara', img: '/_blob/0e46c114f62d4eed948f49c382e56848', on: 'false', edge: '1px solid ' + t.divider, op: '0.75' }
+      ],
+      strips: [ { title: 'Political Pressure', opts: s3(['Relaxed', 'Standard', 'Harder'], 'Standard') }, { title: 'Theme', opts: s3(['Living Office', 'Broadcast', 'Woodblock'], key === 'living' ? 'Living Office' : key === 'broadcast' ? 'Broadcast' : 'Woodblock') } ]
+    }, C[screen]);
+
+  }
+}
+</script>
+</body>
+</html>

@@ -66,6 +66,9 @@ var _backdrop: StyleBoxFlat
 var _frame: OfficeScreenFrame
 ## The theme the panel carried before a frame took over (the plates behind labels), put back afterwards.
 var _plain_theme: Theme
+## The holder of the pop-up card being shown (open_card), or null.
+var _card_host: Control
+var _card: PopupCard
 
 ## Where a press outside the content began, or null. A tap outside closes
 ## the panel on the finger lifting, not landing, so a drag that starts in the
@@ -220,8 +223,65 @@ func open_frame(frame: OfficeScreenFrame, back_text: String) -> void:
 	show()
 
 
-## Takes the frame down and gives the plain column its Back button, backdrop and theme again.
+## Opens it as a pop-up card (P14, 2026-11-20): the room stays visible behind a scrim, and one card carries a kind tag, a title,
+## a body and a foot. `config` is PopupCard.setup's. The Back and Confirm buttons of this panel are lent to the card's foot, so
+## the way out (Back, the escape key, a tap outside while `dismissable`) and the `confirmed` signal are exactly what they were.
+func open_card(config: Dictionary, confirm_text: String = "", back_text: String = "", confirm_enabled: bool = true) -> void:
+	_build()
+	_leave_frame()
+	(get_node("Margin") as Control).hide()
+	_backdrop.bg_color = PopupCardStyles.scrim()
+	var picture := get_node_or_null("BaseImage") as Control
+	if picture != null:
+		picture.hide()
+	_plain_theme = theme
+	theme = null
+	_card_host = MarginContainer.new()
+	_card_host.name = "CardHost"
+	_card_host.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	for side: String in ["left", "right", "top", "bottom"]:
+		_card_host.add_theme_constant_override("margin_" + side, int(PopupCard.CARD_MARGIN))
+	_card = PopupCard.new()
+	_card.setup(config)
+	_card.size_flags_vertical = Control.SIZE_SHRINK_END if bool(config.get("bottom", false)) else Control.SIZE_SHRINK_CENTER
+	_card_host.add_child(_card)
+	add_child(_card_host)
+	_confirm.text = confirm_text
+	_confirm.disabled = not confirm_enabled
+	_confirm.visible = not confirm_text.is_empty()
+	if _confirm.visible:
+		_card.lend(_confirm, true)
+	_back.text = back_text if not back_text.is_empty() else Text.say("ui.back")
+	_back.visible = show_back
+	if show_back:
+		_card.lend(_back, false)
+	show()
+
+
+## True while a pop-up card is showing.
+func has_card() -> bool:
+	return _card_host != null
+
+
+## Takes the frame or the card down and gives the plain column its Back button, backdrop and theme again.
 func _leave_frame() -> void:
+	if _card_host != null:
+		for lent: Button in [_confirm, _back]:
+			if lent.get_parent() != null and lent.get_parent() != _body:
+				lent.get_parent().remove_child(lent)
+				_body.add_child(lent)
+			PopupCardStyles.undress(lent)
+		remove_child(_card_host)
+		_card_host.queue_free()
+		_card_host = null
+		_card = null
+		(get_node("Margin") as Control).show()
+		_backdrop.bg_color = BACKDROP
+		theme = _plain_theme
+		var shown := get_node_or_null("BaseImage") as Control
+		if shown != null:
+			shown.show()
+		return
 	if _frame == null:
 		return
 	if _back.get_parent() != _body:
@@ -267,6 +327,8 @@ func close() -> void:
 ## The content's own rectangle, so a caller can tell a tap on the dimmed
 ## surround from a tap on the panel itself.
 func content_rect() -> Rect2:
+	if _card != null:
+		return _card.get_global_rect()
 	if _frame != null:
 		return _frame.get_global_rect()
 	return _body.get_global_rect() if _body != null else Rect2()

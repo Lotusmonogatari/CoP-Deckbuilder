@@ -958,5 +958,77 @@
     "token": "frame_down",
     "value": "#FF8A80",
     "notes": "P13 Office screens palette (mockups, 2026-11-19): a rise and a fall. Claude's draft."
+  },
+  {
+    "token_id": "US121",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scrim",
+    "value": "#1C1A17",
+    "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
+  },
+  {
+    "token_id": "US122",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scrim",
+    "value": "#140C06",
+    "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
+  },
+  {
+    "token_id": "US123",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scrim",
+    "value": "#050912",
+    "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
+  },
+  {
+    "token_id": "US124",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "alarm",
+    "value": "#B3311C",
+    "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
+  },
+  {
+    "token_id": "US125",
+    "style": "living_office",
+    "group": "colour",
+    "token": "alarm",
+    "value": "#A3261A",
+    "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
+  },
+  {
+    "token_id": "US126",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "alarm",
+    "value": "#C8102E",
+    "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
+  },
+  {
+    "token_id": "US127",
+    "style": "woodblock",
+    "group": "shared",
+    "token": "scrim_alpha",
+    "value": "0.55",
+    "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
+  },
+  {
+    "token_id": "US128",
+    "style": "living_office",
+    "group": "shared",
+    "token": "scrim_alpha",
+    "value": "0.62",
+    "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
+  },
+  {
+    "token_id": "US129",
+    "style": "broadcast",
+    "group": "shared",
+    "token": "scrim_alpha",
+    "value": "0.66",
+    "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
   }
 ]

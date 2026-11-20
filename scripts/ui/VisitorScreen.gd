@@ -86,6 +86,7 @@ func _ready() -> void:
 	_choice_d.pressed.connect(_on_choice.bind("D"))
 	_continue_button.pressed.connect(_on_continue)
 	_outcome_close.pressed.connect(_on_outcome_closed)
+	ConversationStyles.dress(_visitor_name, [_choice_a, _choice_b, _choice_c, _choice_d], _continue_button)
 
 	var outcome_scroll := _outcome_panel.get_node_or_null("Margin/Scroll") as ScrollContainer
 	if outcome_scroll != null:

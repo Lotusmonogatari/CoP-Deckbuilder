@@ -175,3 +175,11 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 | `OfficeScreen._staff_hired_row()`, `_menu_button()`, and the scene's `%CardsPanel`, `%DeckPanel` | Office Management is one tabbed screen in `ManagementPanel`; the hired-person row, the menu-row helper and the two panels (the deck and training bodies now live in the management frame) are no longer opened by anything. `_deck_panel.confirmed` is still connected but nothing emits it. |
 | Text rows `office.staff_blurb`'s old use, `office.deck_count` as a heading | Still used (the candidates pop-up and the chip); listed only so they are checked after P13. |
 | Text row `event.list_title`'s old heading use | Still used as the title; listed so it is checked after P13. The old list built its row title and button in `_show_events_list`; that code is gone (nothing to delete). |
+
+## P14 part one (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| Text rows `popup.tag_moved`, `event.delegate_who`, `rhetoric.coupon_line`, `travel.closed_here`, `travel.destination` | Added for P14 screens not built yet (the moved-for-you card, the staff delegation line, the coupon line, the Travel page); keep until P14b decides. |
+| The plain `Overlay.open(title, rows)` calls the nine group-1 pop-ups used to make | Those pop-ups are cards now (`open_card`); `open()` still serves every other panel, so nothing is dead yet. |
+| `design/review/p14_remaining_screens_2026-11-20/img/` (12 MB) | Working pictures; removable once P14 is merged and signed off. |

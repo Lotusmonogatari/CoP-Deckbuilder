@@ -1137,6 +1137,11 @@ SHEETS = {
             # own political-characterization call, the same bargain
             # Boosters' Starting Standing column already keeps.
             ("Vote Resistance", "vote_resistance", "int"),
+            # The Floor Vote's party discs (P14, 2026-11-20, Cameron): the initials and the Japanese name. The disc shows the
+            # leader's portrait when there is one, else a colour disc holding the Japanese name's first character, with the
+            # initials small beside it, so English stays next to the Japanese.
+            ("Short Name", "short_name", "str"),
+            ("Japanese Name", "japanese_name", "str"),
         ],
     },
     # One row per bill for National Assembly Floor Voting (ST23) — the

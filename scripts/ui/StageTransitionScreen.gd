@@ -43,6 +43,7 @@ func _ready() -> void:
 
 	_continue_button.text = Text.say("stage_transition.continue")
 	_continue_button.pressed.connect(_on_continue)
+	ConversationStyles.dress(null, [], _continue_button)
 	_hold_continue()
 
 	_player_portrait.kind = PlaceholderArt.Kind.CHARACTER
@@ -245,10 +246,14 @@ func _hold_continue() -> void:
 	if delay <= 0.0 or OS.has_environment("COP_NO_CONTINUE_DELAY"):
 		return
 	var button := _continue_button
+	var label := button.text
 	button.disabled = true
+	# A button that cannot be pressed says why (Information Standard 2): the hold is named while it lasts.
+	button.text = Text.say("outcome.hold_hint")
 	get_tree().create_timer(delay).timeout.connect(func() -> void:
 		if is_instance_valid(button):
-			button.disabled = false)
+			button.disabled = false
+			button.text = label)
 
 
 func _on_continue() -> void:

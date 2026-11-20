@@ -41,6 +41,18 @@ static func coming() -> Array:
 	return out
 
 
+## The meta line of an event's pop-up card: the day (the event's own date when it has one, else today), the office it is at
+## and the hours it takes ("Monday · District · 2 h").
+static func pop_meta(event: Dictionary) -> String:
+	var day := WeekCalendar.today_number(GameState.calendar, GameState.calendar_config())
+	if str(event.get("trigger", "")) == "Dated":
+		var dated := WeekCalendar.parse_date(str(event.get("on_date", "")))
+		if dated >= 0:
+			day = dated
+	return Text.say("event.coming_meta", {"day": _weekday(day), "office": TravelText.level_badge(event.get("location")),
+		"hours": GameState.event_hours_text(event)})
+
+
 ## The weekday of a day number ("Monday"), from the calendar's own rows.
 static func _weekday(number: int) -> String:
 	var names := [Text.say("calendar.weekday_sun"), Text.say("calendar.weekday_mon"), Text.say("calendar.weekday_tue"),

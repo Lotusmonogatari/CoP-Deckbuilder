@@ -113,6 +113,8 @@
 | **Money, long numbers and hours read naturally**: thousands commas, 円 on yen, "1 Hour"/"2 Hours" | `Phrase.meta_amount()` |
 | **Saving is visible**: a brief "Saved" flash; one automatic slot and one manual backup | |
 
+| **Pop-ups say what kind they are** (P14, 2026-11-20): every Office pop-up is a card with a kind tag (DECISION! for a calendar event, SOMETHING COMES UP, YOUR EVENT n OF 3, WEEK'S END, PROMISES, PROMISE BROKEN, LEVEL IN PROGRESS, STAGE WON or LOST). A Decision! card is never priced or bought. A held Continue says "Hold for 2 seconds". | `PopupCard`, `tests/test_group1_popups.gd` |
+
 **One deliberate exception to "Japanese only beside English":** the Characters list (Administration) labels a person the player has not met yet with **誰ですか。** alone, Cameron's own wording (Text row `characters.unmet_name`).
 
 ## 6. Wording is data

@@ -324,3 +324,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The trip strip's train is kept as the main icon, no picture needed (2026-11-20, Cameron)
 - P13: the Office screens on one frame, six tabs for Reputation and Results, Marketplace cards, Office Management tabs, Events with a Decision! banner (2026-11-20, Cameron; branch `panel/p13-office-screens`)
 - The District rooms and the trip row icons (2026-11-20, Cameron)
+- P14 part one: the pop-up card, conversation dress, party discs and the stage outcome card (2026-11-20, Cameron; branch `panel/p14-remaining-screens`)

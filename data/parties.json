@@ -7,7 +7,9 @@
     "b": 0,
     "leader_opp_id": "OP91",
     "seats": 19,
-    "vote_resistance": 87
+    "vote_resistance": 87,
+    "short_name": "BU",
+    "japanese_name": "仏党"
   },
   {
     "party_id": "PT02",
@@ -17,7 +19,9 @@
     "b": 255,
     "leader_opp_id": "OP10",
     "seats": 14,
-    "vote_resistance": 82
+    "vote_resistance": 82,
+    "short_name": "YHP",
+    "japanese_name": "エゾの遺産党"
   },
   {
     "party_id": "PT03",
@@ -27,7 +31,9 @@
     "b": 0,
     "leader_opp_id": "OP27",
     "seats": 27,
-    "vote_resistance": 71
+    "vote_resistance": 71,
+    "short_name": "FP",
+    "japanese_name": "辺境党"
   },
   {
     "party_id": "PT04",
@@ -37,7 +43,9 @@
     "b": 255,
     "leader_opp_id": "OP80",
     "seats": 5,
-    "vote_resistance": 99
+    "vote_resistance": 99,
+    "short_name": "FPI",
+    "japanese_name": "五無所属"
   },
   {
     "party_id": "PT05",
@@ -47,7 +55,9 @@
     "b": 0,
     "leader_opp_id": "OP83",
     "seats": 25,
-    "vote_resistance": 68
+    "vote_resistance": 68,
+    "short_name": "KJT",
+    "japanese_name": "経済自由党"
   },
   {
     "party_id": "PT06",
@@ -57,6 +67,8 @@
     "b": 0,
     "leader_opp_id": "OP67",
     "seats": 11,
-    "vote_resistance": 90
+    "vote_resistance": 90,
+    "short_name": "CI",
+    "japanese_name": "国家維新党"
   }
 ]

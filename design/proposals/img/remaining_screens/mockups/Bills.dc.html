@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Travel and bills</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/ca907dae0239c528fdc7b76b7892835d') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+</helmet>
+<sc-if value="{{is.travel}}" hint-placeholder-val="true">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center; padding: 9px 12px; background: {{t.card}}; color: {{t.ink}}; border-radius: {{t.r}}"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{t.good}}" aria-hidden="true"></span><span style="font-size: 13px; font-weight: 700">You are at your District office in Noheji.</span></div>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; font-size: 15px">To the Capitol</h2>
+      <span style="font-size: 12px">A level is waiting for you at the Capitol: Ainu Heritage and Language Act.</span>
+      <sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+        <button aria-pressed="{{m.on}}" style="min-height: 50px; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px; cursor: pointer; background: {{m.bg}}; color: {{m.ink}}; border: {{t.bw}} solid {{m.edge}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; font-family: {{t.body}}; text-align: left; opacity: {{m.op}}">
+          <span style="display: flex; flex-direction: column"><span style="font-size: 13.5px; font-weight: 700">{{m.label}}</span><span style="font-size: 11.5px; opacity: .9">{{m.sub}}</span></span>
+          <span style="font-size: 15px; font-weight: 700">{{m.hours}}</span>
+        </button>
+      </sc-for>
+    </section>
+    <div style="padding: 8px 10px; background: {{t.warnBg}}; color: {{t.warnInk}}; border-radius: {{t.rSmall}}; font-size: 12px; line-height: 1.4">Before you go: 1 hour of your time for Buddhist Temples Association is due in 41 h and can only be kept at your District office.</div>
+  </div>
+  <section aria-label="Take the trip?" style="flex: 0 0 auto; background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; border-radius: {{t.r}} {{t.r}} 0 0; padding: 14px 16px 16px 16px; display: flex; flex-direction: column; gap: 6px">
+    <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; font-size: 16px">Take the trip?</h2>
+    <span style="font-size: 12.5px">Go to the Capitol: 6 h by Rail pass. Free on the member's rail pass.</span>
+    <span style="font-size: 12px; color: {{t.muted}}">You will have 25 h left this week.</span>
+    <div style="display: flex; gap: 8px"><button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 0">Stay here</button><button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1.5 1 0">Take the trip</button></div>
+  </section>
+</div>
+</sc-if>
+<sc-if value="{{is.draft}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: {{t.onBgMuted}}">Pick two or three parts from any of the organizations and carry the bill yourself.</p>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Your bill</h2><span style="font-size: 11.5px; color: {{t.muted}}">2 of 3 parts</span></div>
+      <sc-for list="{{parts}}" as="p" hint-placeholder-count="2">
+        <div style="display: flex; gap: 8px; align-items: center; padding: 6px 8px; background: {{t.tile}}; border-radius: {{t.rSmall}}"><img src="{{p.icon}}" alt="" style="width: 26px; height: 26px; object-fit: contain"><span style="flex: 1 1 auto; font-size: 12.5px; font-weight: 700">{{p.text}}</span><button aria-label="Remove part" style="width: 36px; height: 36px; cursor: pointer; background: transparent; border: 0; color: {{t.muted}}; font-size: 18px">×</button></div>
+      </sc-for>
+      <span style="font-size: 12px">Hearing: Committee on Construction and Development. The first part chosen decides it.</span>
+    </section>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Add a part from</h2>
+      <sc-for list="{{draftOrgs}}" as="o" hint-placeholder-count="4">
+        <button style="min-height: 44px; display: flex; gap: 8px; align-items: center; cursor: pointer; background: transparent; color: {{t.ink}}; border: 0; border-top: 1px solid {{t.divider}}; font-family: {{t.body}}; text-align: left; padding: 4px 0"><img src="{{o.icon}}" alt="" style="width: 26px; height: 26px; object-fit: contain"><span style="flex: 1 1 auto; font-size: 12.5px">{{o.name}}</span><span style="font-size: 11.5px; color: {{t.muted}}">standing {{o.standing}}</span></button>
+      </sc-for>
+    </section>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">If it passes</h2>
+      <span style="font-size: 12px">Fisheries Cooperative +4 · Students United +2 · Taxpayers' Alliance −2 (example)</span>
+      <label style="display: flex; gap: 8px; align-items: center; min-height: 40px; font-size: 12px"><input type="checkbox" style="width: 20px; height: 20px">Add a second member visit (2 Hours, 30 XP)</label>
+    </section>
+  </div>
+  <div style="flex: 0 0 auto; display: flex; gap: 10px; padding: 10px 16px 14px 16px; border-top: {{t.footTop}}; background: {{t.bg}}; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: {{t.onBgMuted}}; text-align: center">Drafting needs 50 XP and 30,000円.</span><button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}">Draft this bill</button></div>
+</div>
+</sc-if>
+<sc-if value="{{is.request}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; padding: 18px 14px; display: flex; flex-direction: column; justify-content: center">
+    <section role="dialog" aria-label="A bill to carry" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 9px">
+      <div style="display: flex; gap: 10px; align-items: center"><img src="/_blob/0909052c1207ba461c79de4499079ba2" alt="" style="width: 40px; height: 40px; object-fit: contain"><div style="display: flex; flex-direction: column"><span style="font-size: 11px; font-weight: 700; letter-spacing: .06em; color: {{t.muted}}">A BILL TO CARRY</span><h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; font-size: 21px; color: {{t.ink}}">A bill to fund harbor repairs and subsidize fuel for fishing boats</h1></div></div>
+      <span style="font-size: 13px; line-height: 1.45">Fisheries Cooperative asks you to carry a bill: A bill to fund harbor repairs and subsidize fuel for fishing boats. Will you?</span>
+      <div style="display: flex; flex-direction: column; gap: 3px; padding: 8px 10px; background: {{t.tile}}; border-radius: {{t.rSmall}}; font-size: 12px">
+        <span>As things stand the vote runs 44 Aye, 49 Nay, and 8 abstaining.</span>
+        <span style="font-weight: 700">It will not pass unless you can sway other members.</span>
+        <span>Frontier Party backs this bill.</span>
+      </div>
+      <span style="font-size: 12px; font-weight: 700">If it passes, they will think more of you:</span>
+      <div style="display: flex; gap: 6px; flex-wrap: wrap"><span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap">Fisheries Cooperative +5</span><span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap">Mayors' Network +2</span></div>
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; padding-top: 6px; border-top: 1px solid {{t.divider}}">Or change one part</h2>
+      <button style="width: 100%; min-height: 52px; padding: 9px 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; font-size: 13.5px; font-weight: 700; line-height: 1.3; cursor: pointer; background: {{t.tile}}; color: {{t.ink}}; border: 1px solid {{t.divider}}; border-radius: {{t.rSmall}}; font-family: {{t.body}}; box-sizing: border-box"><span>Swap “Subsidize fuel for fishing boats” for “Fund new cold storage at fishing ports”</span><span style="font-size: 11px; font-weight: 600; color: {{t.muted}}">An amended bill earns 70% of the usual reward.</span></button>
+      <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}">Carry this bill</button>
+      <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">Decline (costs 3 standing with Fisheries Cooperative)</button>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.law}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <img src="/_blob/34c2d63087455501d360b2ae05994622" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; padding: 18px 14px; display: flex; flex-direction: column; justify-content: center">
+    <section role="dialog" aria-label="Fisheries Quota Modernization Act" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 9px">
+      <div style="display: flex; justify-content: space-between; align-items: center"><span style="padding: 3px 8px; font-size: 11px; font-weight: 700; letter-spacing: .06em; border: 2px solid {{t.good}}; color: {{t.good}}; border-radius: {{t.rSmall}}">PASSED</span><span style="font-size: 12px; color: {{t.muted}}">Week 6</span></div>
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: 24px; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.15; text-transform: {{t.titleCase}}; color: {{t.ink}}">Fisheries Quota Modernization Act</h1>
+      <span style="font-size: 12.5px">Aye 58 · Nay 39 · Abstain 4. You voted Aye.</span>
+      <sc-for list="{{dossier}}" as="d" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 2px; padding-top: 6px; border-top: 1px solid {{t.divider}}"><span style="font-size: 12px; font-weight: 700">{{d.h}}</span><span style="font-size: 12.5px; line-height: 1.4">{{d.b}}</span></div>
+      </sc-for>
+      <div style="display: flex; flex-direction: column; gap: 3px; padding: 8px 10px; background: {{t.tile}}; border-radius: {{t.rSmall}}"><span style="font-size: 12px; font-weight: 700">Now law</span><span style="font-size: 12px">Quota auctions every spring · Fisheries Cooperative +1 each week</span></div>
+      <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}">Close</button>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.party}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 0; overflow: hidden; display: flex; flex-direction: column">
+      <div style="height: 10px; background: #008000"></div>
+      <div style="padding: 10px 12px; display: flex; flex-direction: column; gap: 5px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; font-size: 17px">Frontier Party</h2><span style="padding: 3px 8px; font-size: 11.5px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}; white-space: nowrap">your party</span></div>
+        <span style="font-size: 12.5px">27 seats · leader Ichizaki Namu</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 6px; border-top: 1px solid {{t.divider}}"><span style="font-size: 13px">How they see you</span><span style="font-size: 18px; font-weight: 700">62 · Warm</span></div>
+        <div role="img" aria-label="62 of 100, Warm" style="height: 8px; background: {{t.barTrack}}; border-radius: {{t.pill}}; overflow: hidden"><div style="height: 8px; width: 62%; background: {{t.barFill}}"></div></div>
+        <span style="font-size: 11.5px; color: {{t.muted}}">Votes and rewards +8 · Organizations +4</span>
+      </div>
+    </section>
+    <sc-for list="{{sides}}" as="s" hint-placeholder-count="2">
+      <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">{{s.title}}</h2>
+        <span style="font-size: 11.5px; color: {{t.muted}}">{{s.blurb}}</span>
+        <sc-for list="{{s.rows}}" as="r" hint-placeholder-count="3">
+          <div style="display: flex; gap: 8px; align-items: center; min-height: 36px; border-top: 1px solid {{t.divider}}"><img src="{{r.icon}}" alt="" style="width: 26px; height: 26px; object-fit: contain"><span style="flex: 1 1 auto; font-size: 12.5px">{{r.name}}</span><span style="font-size: 12px; font-weight: 700">standing {{r.standing}}</span><span style="font-size: 11px; font-weight: 700; color: {{r.tone}}">{{r.tag}}</span></div>
+        </sc-for>
+      </section>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"screen":{"editor":"enum","options":["travel", "draft", "request", "law", "party"],"default":"travel"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.22)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', good:'#2F6B3A', bad:'#A42A17', tabBg:'#F8F1E3', tabInk:'#1C1A17', tabEdge:'#1C1A17', tabOnBg:'#22305A', tabOnInk:'#F8F1E3', barTrack:'#E2D6BF', barFill:'#22305A', jp:'#6B5F50', warnBg:'#F6DDD3', warnInk:'#7A1E10', alarm:'#B3311C', alarmInk:'#FFFFFF', scrim:'rgba(28,26,23,.55)', paper:'#F8F1E3' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', good:'#2E6B34', bad:'#A3261A', tabBg:'transparent', tabInk:'#E8DAC3', tabEdge:'rgba(255,248,236,.3)', tabOnBg:'#FFD58A', tabOnInk:'#2B1D12', barTrack:'#EADBC0', barFill:'#9A6413', jp:'#D9C8AC', warnBg:'#F8DDD6', warnInk:'#7A1E10', alarm:'#A3261A', alarmInk:'#FFFFFF', scrim:'rgba(20,12,6,.62)', paper:'#FFF8EC' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'29px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.22)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', good:'#7BD88F', bad:'#FF8A80', tabBg:'transparent', tabInk:'#C3C9D6', tabEdge:'rgba(227,179,65,.45)', tabOnBg:'#E3B341', tabOnInk:'#0B1220', barTrack:'#22304D', barFill:'#E3B341', jp:'#9AA3B5', warnBg:'#3A1F27', warnInk:'#FFB4AB', alarm:'#C8102E', alarmInk:'#FFFFFF', scrim:'rgba(5,9,18,.66)', paper:'#141E33' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    const t = T[key];
+    const tabs = (labels, on) => labels.map((l) => ({ label: l, bg: l === on ? t.tabOnBg : t.tabBg, ink: l === on ? t.tabOnInk : t.tabInk, edge: l === on ? t.tabOnBg : t.tabEdge }));
+    const screen = ["travel", "draft", "request", "law", "party"].indexOf(this.props.screen) >= 0 ? this.props.screen : 'travel';
+    const is = {}; ["travel", "draft", "request", "law", "party"].forEach((s) => { is[s] = s === screen; });
+    const C = {
+      travel: { chips: ['31 h left'], title: 'Travel', jp: '移動', tabs: [] },
+      draft: { chips: ['XP 1,240', 'Funds 182,000円'], title: 'Draft a Bill', jp: '議員立法', tabs: [] },
+      request: { chips: [], title: '', jp: '', tabs: [] },
+      law: { chips: [], title: '', jp: '', tabs: [] },
+      party: { chips: ['Week 7'], title: 'Parties', jp: '政党', tabs: [] }
+    };
+    const m = (label, sub, hours, on, off) => ({ label, sub, hours, on: on ? 'true' : 'false', bg: on ? t.accent : t.tile, ink: on ? t.accentInk : t.ink, edge: on ? t.accent : t.divider, op: off ? '0.5' : '1' });
+    return Object.assign({
+      t, is,
+      modes: [ m('Rail pass', 'Free on the member’s rail pass', '6 h', true), m('Paid train ticket', 'Uses one ticket · 2 left', '6 h'), m('Private car', 'Spends the hours, no ticket', '5 h') ],
+      parts: [ { icon: '/_blob/0909052c1207ba461c79de4499079ba2', text: 'Fund harbor repairs' }, { icon: '/_blob/f489d49cf8a6de153ac265290aeaa573', text: 'Fund scholarships for first-generation students' } ],
+      draftOrgs: [ { icon: '/_blob/0909052c1207ba461c79de4499079ba2', name: 'Fisheries Cooperative', standing: 58 }, { icon: '/_blob/f489d49cf8a6de153ac265290aeaa573', name: 'Students United', standing: 58 }, { icon: '/_blob/8156d1254fe99b21bd509902278631da', name: "Mayors' Network", standing: 47 }, { icon: '/_blob/f4b5a04790fffffe118f44e203eeb391', name: 'Ainu Language and Culture Foundation', standing: 63 } ],
+      dossier: [
+        { h: 'What it does', b: 'Sells quota by auction each spring instead of by history.' },
+        { h: 'Who gains', b: 'Younger crews and new co-operatives' },
+        { h: 'Who pays', b: 'Long-established boat owners' },
+        { h: 'Where the parties stand', b: 'For: Frontier Party, Keizaijiyuutou · Against: Country Initiative · Undecided: Butsutou' }
+      ],
+      sides: [
+        { title: 'Allies', blurb: 'Friends of this party. The higher their standing with you, the better.', rows: [ { icon: '/_blob/f489d49cf8a6de153ac265290aeaa573', name: 'Students United', standing: 58, tag: 'Improving', tone: t.good }, { icon: '/_blob/0909052c1207ba461c79de4499079ba2', name: 'Fisheries Cooperative', standing: 44, tag: 'Neutral', tone: t.muted } ] },
+        { title: 'Rivals', blurb: 'Opponents of this party. The lower their standing with you, the better.', rows: [ { icon: '/_blob/b897917b84b12fe1820300fc557597f4', name: "Taxpayers' Alliance", standing: 61, tag: 'Reducing', tone: t.bad } ] }
+      ]
+    }, C[screen]);
+
+  }
+}
+</script>
+</body>
+</html>
