@@ -17,6 +17,7 @@ func _ready() -> void:
 func _run() -> void:
 	SaveManager.delete_save()
 	GameState.start_new_run("PC02")
+	GameState.office_location = Offices.DISTRICT   # the Town Hall (LV83) is a District level (two offices, 2026-11-20)
 
 	# 1. Armed but not yet due: the level list shows no Special Levels block.
 	GameState.special_levels = {"Town Hall": {"armed_at": GameState.time_units}}

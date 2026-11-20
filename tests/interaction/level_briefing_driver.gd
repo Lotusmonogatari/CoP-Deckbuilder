@@ -26,6 +26,7 @@ func _run() -> void:
 		await _open_office()
 		await _lv11(style)
 		await _long_level(style)
+		await _mixed_level(style)
 		await _the_note(style)
 		await _large_text(style)
 		await _does_not_fit(style)
@@ -61,6 +62,9 @@ func _screen() -> Node:
 
 
 func _brief(level_id: String) -> LevelBriefingPanel:
+	# A level starts only at its own office (two offices, 2026-11-20): stand where this one does.
+	var here := Offices.normalize(DataDB.get_level(level_id).get("location"))
+	GameState.office_location = Offices.CAPITOL if here == Offices.EITHER else here
 	_screen().call("_on_level_chosen", DataDB.get_level(level_id))
 	await get_tree().create_timer(0.5).timeout
 	return _screen().get_node("BriefingPanel") as LevelBriefingPanel
@@ -127,6 +131,23 @@ func _lv11(style: String) -> void:
 	back.pressed.emit()
 	await get_tree().process_frame
 	_expect(not panel.visible, where + "Back closes the briefing")
+
+
+## A mixed level's trips are in its hours and the briefing says so (two offices, 2026-11-20): LV05 is a Capitol level with a
+## town hall in it, so PC01 (seven hours by rail from Noheji) goes out and back: 14 hours on top of its rooms.
+func _mixed_level(style: String) -> void:
+	var panel := await _brief("LV05")
+	var where := "LV05 in %s: " % style
+	var level := DataDB.get_level("LV05")
+	var texts := _labels(panel)
+	_expect(texts.has("Includes 14 h of travel by rail pass"), where + "the travel line (%s)" % [texts])
+	_expect(panel.find_child("TravelIncluded", true, false) != null, where + "named TravelIncluded")
+	_expect(texts.has("Capitol"), where + "the badge says where it starts")
+	var go := panel.find_child("Confirm", true, false) as Button
+	_expect(go != null and go.text == "Go in · %d hours" % GameState.level_total_hours(level), where + "Go in counts the trips (%s)" % [go.text if go != null else "none"])
+	_expect(GameState.level_total_hours(level) == GameState.level_hours(level) + 14, where + "rooms plus 14")
+	panel.close()
+	await get_tree().process_frame
 
 
 func _long_level(style: String) -> void:
@@ -212,7 +233,7 @@ func _hidden_and_one_room() -> void:
 		var panel := await _brief(hidden_id)
 		var level := BattleSetup.expand_level(DataDB.get_level(hidden_id))
 		var shown := 0
-		var hours := 0
+		var hours := GameState.level_trip_hours(DataDB.get_level(hidden_id))   # a mixed level's trips are in its hours
 		for stage: Dictionary in level["stages"]:
 			hours += TimeClock.units_for_stage(stage)
 			if LevelBriefing.is_revealed(stage):

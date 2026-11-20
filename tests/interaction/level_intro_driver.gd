@@ -225,6 +225,9 @@ func _check_bill_card_and_dossier() -> bool:
 ## button — the actual "Go in" click this feature's routing runs on.
 func _go_in_on(office: Node, level_id: String) -> bool:
 	var level := DataDB.get_level(level_id)
+	# A level starts only at its own office (two offices, 2026-11-20): stand where this one does.
+	var here := Offices.normalize(level.get("location"))
+	GameState.office_location = Offices.CAPITOL if here == Offices.EITHER else here
 	office.call("_on_level_chosen", level)
 	await get_tree().create_timer(0.3).timeout
 

@@ -213,9 +213,12 @@ func _check_levels_panel_reflects_unlock(office: Node) -> bool:
 	var level := DataDB.get_level(GameState.levels_unlocked[0])
 	var description := str(level.get("description", ""))
 
+	# 'Talking with Constituents' is a District level (two offices, 2026-11-20): the player stands there.
+	GameState.office_location = Offices.DISTRICT
 	await _click(office.get_node("%StartButton"))
 	var levels := office.get_node("%LevelsPanel") as Overlay
 	if not levels.visible:
+		GameState.office_location = Offices.CAPITOL
 		_failures.append("the Start button did not open the Levels panel")
 		return false
 
