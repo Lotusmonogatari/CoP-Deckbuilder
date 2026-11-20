@@ -89,6 +89,10 @@ static func eligible_random(events: Array, ctx: Dictionary) -> Array:
 			continue
 		if ctx.has("month") and not Seasons.in_season(event, int(ctx["month"]), ctx.get("seasons", {})):
 			continue
+		# An event belongs to an office (two offices, 2026-11-20): it arrives only where the player stands, or anywhere
+		# for an Either one.
+		if ctx.has("office") and not Offices.is_here(event.get("location"), str(ctx["office"])):
+			continue
 		if str(event.get("needs_dues_owed", "")) == "Yes" and int(ctx.get("dues_owed", 0)) <= 0:
 			continue
 		if event.get("min_district_awareness") != null \

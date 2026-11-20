@@ -125,7 +125,12 @@ func test_the_dated_event_opens_the_week_at_the_capitol() -> void:
 	assert_eq(GameState.office_location, Offices.CAPITOL)
 	assert_eq(_left(), before, "a forced move costs no hours (Balance: Travel Forced Hours is 0)")
 	assert_false(GameState.arrive_for_event(GameState.get_event("EV47")), "already there")
-	assert_false(GameState.arrive_for_event(GameState.get_event("EV01")), "an untagged event moves nobody")
+	var either_event := {}
+	for event: Dictionary in DataDB.events:
+		if Offices.normalize(event.get("location")) == Offices.EITHER:
+			either_event = event
+			break
+	assert_false(GameState.arrive_for_event(either_event), "an Either event moves nobody")
 
 
 func test_where_the_player_stands_is_saved() -> void:

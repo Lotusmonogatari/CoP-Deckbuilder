@@ -6,7 +6,8 @@
     "condition_target": "District Representative",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "{staff} is greeting visitors."
+    "text_en": "{staff} is greeting visitors.",
+    "location": "District"
   },
   {
     "notice_id": "ON02",
@@ -15,7 +16,8 @@
     "condition_target": "District Representative",
     "condition_op": "not_hired",
     "condition_value": null,
-    "text_en": "No one is at the front desk to greet visitors."
+    "text_en": "No one is at the front desk to greet visitors.",
+    "location": "District"
   },
   {
     "notice_id": "ON03",
@@ -24,7 +26,8 @@
     "condition_target": "Policy Research Assistant",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "{staff} is reviewing committee minutes and reports."
+    "text_en": "{staff} is reviewing committee minutes and reports.",
+    "location": "Capitol"
   },
   {
     "notice_id": "ON04",
@@ -33,7 +36,8 @@
     "condition_target": "Policy Research Assistant",
     "condition_op": "not_hired",
     "condition_value": null,
-    "text_en": "No one is reviewing new policy reports."
+    "text_en": "No one is reviewing new policy reports.",
+    "location": "Capitol"
   },
   {
     "notice_id": "ON05",
@@ -42,7 +46,8 @@
     "condition_target": "Media Spokesperson",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "{staff} is answering questions from reporters."
+    "text_en": "{staff} is answering questions from reporters.",
+    "location": "Capitol"
   },
   {
     "notice_id": "ON06",
@@ -51,7 +56,8 @@
     "condition_target": "Media Spokesperson",
     "condition_op": "not_hired",
     "condition_value": null,
-    "text_en": "Calls from the press are going unanswered."
+    "text_en": "Calls from the press are going unanswered.",
+    "location": "Capitol"
   },
   {
     "notice_id": "ON07",
@@ -60,7 +66,8 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "Few visitors are seeking out your office."
+    "text_en": "Few visitors are seeking out your office.",
+    "location": "Either"
   },
   {
     "notice_id": "ON08",
@@ -69,7 +76,8 @@
     "condition_target": "Reputation",
     "condition_op": ">=",
     "condition_value": 60.0,
-    "text_en": "The office is using a waitlist for visitors."
+    "text_en": "The office is using a waitlist for visitors.",
+    "location": "Either"
   },
   {
     "notice_id": "ON09",
@@ -78,7 +86,8 @@
     "condition_target": "SG01",
     "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "A volunteer student journalist recently visited the office."
+    "text_en": "A volunteer student journalist recently visited the office.",
+    "location": "Capitol"
   },
   {
     "notice_id": "ON10",
@@ -87,7 +96,8 @@
     "condition_target": "SG01",
     "condition_op": ">=",
     "condition_value": 60.0,
-    "text_en": "Veteran journalists are visiting the office for a profile piece."
+    "text_en": "Veteran journalists are visiting the office for a profile piece.",
+    "location": "Capitol"
   },
   {
     "notice_id": "ON11",
@@ -96,7 +106,8 @@
     "condition_target": "SG02",
     "condition_op": "<",
     "condition_value": 25.0,
-    "text_en": "No party colleagues have visited to chat."
+    "text_en": "No party colleagues have visited to chat.",
+    "location": "Capitol"
   },
   {
     "notice_id": "ON12",
@@ -105,7 +116,8 @@
     "condition_target": "SG02",
     "condition_op": ">=",
     "condition_value": 60.0,
-    "text_en": "Party members who want to take you to lunch are using a scheduling system."
+    "text_en": "Party members who want to take you to lunch are using a scheduling system.",
+    "location": "Capitol"
   },
   {
     "notice_id": "ON13",
@@ -114,7 +126,8 @@
     "condition_target": "SG03",
     "condition_op": "<",
     "condition_value": 10.0,
-    "text_en": "Security removed a constituent for shouting obscenities."
+    "text_en": "Security removed a constituent for shouting obscenities.",
+    "location": "District"
   },
   {
     "notice_id": "ON14",
@@ -123,7 +136,8 @@
     "condition_target": "SG03",
     "condition_op": "<",
     "condition_value": 25.0,
-    "text_en": "A constituent allegedly planned to spray graffiti on your office door."
+    "text_en": "A constituent allegedly planned to spray graffiti on your office door.",
+    "location": "District"
   },
   {
     "notice_id": "ON15",
@@ -132,7 +146,8 @@
     "condition_target": "SG03",
     "condition_op": ">=",
     "condition_value": 60.0,
-    "text_en": "An elderly constituent visited and left a gift basket for the office."
+    "text_en": "An elderly constituent visited and left a gift basket for the office.",
+    "location": "District"
   },
   {
     "notice_id": "ON16",
@@ -141,7 +156,8 @@
     "condition_target": "SG03",
     "condition_op": ">=",
     "condition_value": 80.0,
-    "text_en": "A family from your district visited to take a picture with you."
+    "text_en": "A family from your district visited to take a picture with you.",
+    "location": "District"
   },
   {
     "notice_id": "ON17",
@@ -150,7 +166,8 @@
     "condition_target": "SG04",
     "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "A former campaign donor left a note demanding a refund of 200,000円."
+    "text_en": "A former campaign donor left a note demanding a refund of 200,000円.",
+    "location": "Either"
   },
   {
     "notice_id": "ON18",
@@ -159,7 +176,8 @@
     "condition_target": "SG04",
     "condition_op": ">=",
     "condition_value": 70.0,
-    "text_en": "A benefactor stopped by the office to deliver a 100,000円 check for use during the next election campaign."
+    "text_en": "A benefactor stopped by the office to deliver a 100,000円 check for use during the next election campaign.",
+    "location": "Either"
   },
   {
     "notice_id": "ON19",
@@ -168,7 +186,8 @@
     "condition_target": "SG05",
     "condition_op": "<",
     "condition_value": 20.0,
-    "text_en": "A committee intern brought you a stack of outdated committee reports."
+    "text_en": "A committee intern brought you a stack of outdated committee reports.",
+    "location": "Capitol"
   },
   {
     "notice_id": "ON20",
@@ -177,6 +196,7 @@
     "condition_target": "SG05",
     "condition_op": ">=",
     "condition_value": 80.0,
-    "text_en": "Cabinet Legislation Bureau Chief Rika Ashikaga personally delivered the latest bill analysis reports."
+    "text_en": "Cabinet Legislation Bureau Chief Rika Ashikaga personally delivered the latest bill analysis reports.",
+    "location": "Capitol"
   }
 ]

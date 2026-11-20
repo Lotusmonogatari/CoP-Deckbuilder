@@ -1137,6 +1137,10 @@ func _show_promises() -> void:
 	for promise: Dictionary in GameState.promises:
 		rows.append(UiKit.line(Text.say("promises.row", {"what": GameState.promise_what(promise),
 			"who": GameState.promise_who(promise), "count": Promises.hours_left(promise, GameState.time_units)})))
+		# Where it can be kept (two offices, 2026-11-20): a badge for a promise tied to one office.
+		var promise_office := Offices.normalize(promise.get("location"))
+		if promise_office != Offices.EITHER:
+			rows.append(UiKit.line(Text.say("promises.badge", {"place": TravelText.place_name(promise_office)}), "SmallLabel"))
 		var keep := UiKit.action_button(Text.say("promises.keep"), GameState.promise_keep_refusal(promise),
 			_on_keep_promise.bind(str(promise.get("id", ""))), 100.0)
 		keep.name = "Keep_" + str(promise.get("id", ""))
@@ -3696,6 +3700,12 @@ func _show_travel() -> void:
 		"place": TravelText.place_name(destination), "count": hours,
 		"mode": TravelText.mode_name(Travel.PASS).to_lower(), "cost": Text.say("travel.cost_free")})))
 	rows.append(UiKit.line(Text.say("travel.after_line", {"count": maxi(0, GameState.work_hours_left() - hours)})))
+	# A promise due soon that can only be kept where the player stands is named before they leave.
+	for promise: Dictionary in GameState.promises:
+		if Offices.normalize(promise.get("location")) == GameState.office_location \
+				and Promises.hours_left(promise, GameState.time_units) <= Levers.whole("travel_promise_warning_hours"):
+			rows.append(UiKit.line(Text.say("travel.promise_warning", {"what": GameState.promise_what(promise),
+				"place": TravelText.place_name(GameState.office_location), "count": Promises.hours_left(promise, GameState.time_units)})))
 	# A crisis level waiting at the other office is named, so the trip is not a surprise.
 	for trigger: String in GameState.due_special_levels():
 		var waiting := SpecialLevels.level_for(trigger, DataDB.levels)

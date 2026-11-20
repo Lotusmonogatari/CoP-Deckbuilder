@@ -70,7 +70,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "District"
   },
   {
     "event_id": "EV01",
@@ -165,7 +166,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "District"
   },
   {
     "event_id": "EV01",
@@ -209,7 +211,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV02",
@@ -247,7 +250,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV02",
@@ -284,7 +288,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV02",
@@ -345,7 +350,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Either"
   },
   {
     "event_id": "EV03",
@@ -375,7 +381,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV03",
@@ -408,7 +415,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV04",
@@ -438,7 +446,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV04",
@@ -471,7 +480,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV04",
@@ -504,7 +514,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV05",
@@ -542,7 +553,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV05",
@@ -577,7 +589,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV05",
@@ -610,7 +623,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV06",
@@ -646,7 +660,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV06",
@@ -679,7 +694,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV11",
@@ -712,7 +728,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV11",
@@ -739,7 +756,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV11",
@@ -772,7 +790,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV12",
@@ -808,7 +827,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "District"
   },
   {
     "event_id": "EV12",
@@ -838,7 +858,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV12",
@@ -871,7 +892,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV13",
@@ -906,7 +928,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV13",
@@ -944,7 +967,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV14",
@@ -974,7 +998,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV14",
@@ -1007,7 +1032,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV14",
@@ -1040,7 +1066,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV15",
@@ -1073,7 +1100,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV15",
@@ -1103,7 +1131,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV16",
@@ -1133,7 +1162,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV16",
@@ -1168,7 +1198,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV17",
@@ -1203,7 +1234,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV17",
@@ -1233,7 +1265,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV17",
@@ -1260,7 +1293,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV18",
@@ -1295,7 +1329,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV18",
@@ -1329,7 +1364,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Either"
   },
   {
     "event_id": "EV18",
@@ -1359,7 +1395,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV19",
@@ -1395,7 +1432,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV19",
@@ -1433,7 +1471,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV19",
@@ -1465,7 +1504,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV20",
@@ -1503,7 +1543,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV20",
@@ -1537,7 +1578,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Either"
   },
   {
     "event_id": "EV20",
@@ -1569,7 +1611,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV21",
@@ -1607,7 +1650,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV21",
@@ -1634,7 +1678,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV21",
@@ -1671,7 +1716,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "District"
   },
   {
     "event_id": "EV22",
@@ -1709,7 +1755,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV22",
@@ -1745,7 +1792,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV22",
@@ -1775,7 +1823,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV23",
@@ -1810,7 +1859,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV23",
@@ -1840,7 +1890,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV23",
@@ -1870,7 +1921,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV24",
@@ -1908,7 +1960,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV24",
@@ -1938,7 +1991,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV24",
@@ -1968,7 +2022,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV25",
@@ -2003,7 +2058,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV25",
@@ -2030,7 +2086,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV25",
@@ -2060,7 +2117,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV26",
@@ -2107,7 +2165,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV26",
@@ -2137,7 +2196,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV26",
@@ -2176,7 +2236,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV27",
@@ -2208,7 +2269,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV27",
@@ -2241,7 +2303,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV27",
@@ -2268,7 +2331,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV31",
@@ -2298,7 +2362,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV31",
@@ -2331,7 +2396,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV31",
@@ -2364,7 +2430,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV32",
@@ -2402,7 +2469,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV32",
@@ -2432,7 +2500,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV32",
@@ -2470,7 +2539,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV33",
@@ -2500,7 +2570,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV33",
@@ -2533,7 +2604,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV33",
@@ -2566,7 +2638,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV34",
@@ -2602,7 +2675,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV34",
@@ -2635,7 +2709,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV34",
@@ -2670,7 +2745,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV35",
@@ -2708,7 +2784,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV35",
@@ -2738,7 +2815,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV35",
@@ -2776,7 +2854,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV36",
@@ -2809,7 +2888,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV36",
@@ -2845,7 +2925,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Either"
   },
   {
     "event_id": "EV36",
@@ -2872,7 +2953,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV37",
@@ -2910,7 +2992,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV37",
@@ -2940,7 +3023,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV37",
@@ -2972,7 +3056,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV38",
@@ -3013,7 +3098,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV38",
@@ -3048,7 +3134,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV38",
@@ -3095,7 +3182,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV39",
@@ -3128,7 +3216,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV39",
@@ -3155,7 +3244,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV39",
@@ -3190,7 +3280,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV40",
@@ -3228,7 +3319,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV40",
@@ -3268,7 +3360,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV40",
@@ -3300,7 +3393,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV41",
@@ -3342,7 +3436,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV41",
@@ -3372,7 +3467,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV41",
@@ -3407,7 +3503,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV42",
@@ -3450,7 +3547,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV42",
@@ -3477,7 +3575,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV42",
@@ -3512,7 +3611,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV43",
@@ -3549,7 +3649,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV43",
@@ -3576,7 +3677,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV43",
@@ -3608,7 +3710,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV44",
@@ -3641,7 +3744,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV44",
@@ -3671,7 +3775,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV44",
@@ -3701,7 +3806,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV45",
@@ -3739,7 +3845,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV45",
@@ -3772,7 +3879,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV45",
@@ -3802,7 +3910,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV46",
@@ -3835,7 +3944,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV46",
@@ -3865,7 +3975,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV46",
@@ -3902,7 +4013,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Either"
   },
   {
     "event_id": "EV47",
@@ -3935,7 +4047,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV47",
@@ -3965,7 +4078,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV47",
@@ -3995,7 +4109,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV12",
@@ -4025,7 +4140,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV13",
@@ -4060,7 +4176,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV15",
@@ -4093,7 +4210,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV16",
@@ -4123,7 +4241,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV17",
@@ -4158,7 +4277,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV18",
@@ -4193,7 +4313,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV19",
@@ -4229,7 +4350,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV22",
@@ -4267,7 +4389,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV23",
@@ -4302,7 +4425,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV25",
@@ -4334,7 +4458,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV26",
@@ -4376,7 +4501,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV27",
@@ -4408,7 +4534,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV37",
@@ -4443,7 +4570,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV38",
@@ -4478,7 +4606,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV41",
@@ -4520,7 +4649,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV42",
@@ -4558,7 +4688,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV43",
@@ -4590,7 +4721,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV48",
@@ -4636,7 +4768,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV48",
@@ -4669,7 +4802,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV48",
@@ -4699,7 +4833,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV48",
@@ -4745,7 +4880,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV49",
@@ -4787,7 +4923,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV49",
@@ -4822,7 +4959,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV49",
@@ -4865,7 +5003,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV49",
@@ -4903,7 +5042,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV50",
@@ -4945,7 +5085,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV50",
@@ -4980,7 +5121,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV50",
@@ -5010,7 +5152,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV50",
@@ -5048,7 +5191,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV51",
@@ -5078,7 +5222,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV51",
@@ -5111,7 +5256,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV51",
@@ -5138,7 +5284,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV51",
@@ -5168,7 +5315,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV52",
@@ -5200,7 +5348,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV52",
@@ -5230,7 +5379,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV52",
@@ -5265,7 +5415,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV52",
@@ -5297,7 +5448,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV53",
@@ -5329,7 +5481,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV53",
@@ -5359,7 +5512,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV53",
@@ -5393,7 +5547,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Capitol"
   },
   {
     "event_id": "EV53",
@@ -5425,7 +5580,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV54",
@@ -5460,7 +5616,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV54",
@@ -5487,7 +5644,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV54",
@@ -5525,7 +5683,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Either"
   },
   {
     "event_id": "EV54",
@@ -5560,7 +5719,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV55",
@@ -5595,7 +5755,8 @@
     "delegate_blocks": null,
     "task_pool_family": "Press",
     "task_pool_change": 2,
-    "task_pool_days": 1
+    "task_pool_days": 1,
+    "location": null
   },
   {
     "event_id": "EV55",
@@ -5625,7 +5786,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV55",
@@ -5652,7 +5814,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV55",
@@ -5687,7 +5850,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV56",
@@ -5722,7 +5886,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV56",
@@ -5752,7 +5917,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV56",
@@ -5787,7 +5953,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV56",
@@ -5822,7 +5989,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV57",
@@ -5857,7 +6025,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV57",
@@ -5887,7 +6056,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV57",
@@ -5924,7 +6094,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV57",
@@ -5959,7 +6130,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV58",
@@ -5994,7 +6166,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV58",
@@ -6024,7 +6197,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV58",
@@ -6056,7 +6230,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV58",
@@ -6088,7 +6263,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV59",
@@ -6123,7 +6299,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV59",
@@ -6150,7 +6327,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV59",
@@ -6182,7 +6360,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV59",
@@ -6217,7 +6396,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV60",
@@ -6253,7 +6433,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV60",
@@ -6285,7 +6466,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV60",
@@ -6312,7 +6494,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV60",
@@ -6344,7 +6527,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV61",
@@ -6386,7 +6570,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Capitol"
   },
   {
     "event_id": "EV61",
@@ -6416,7 +6601,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV61",
@@ -6448,7 +6634,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV61",
@@ -6480,7 +6667,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV62",
@@ -6519,7 +6707,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV62",
@@ -6554,7 +6743,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV62",
@@ -6586,7 +6776,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV62",
@@ -6621,7 +6812,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV63",
@@ -6653,7 +6845,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV63",
@@ -6683,7 +6876,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV63",
@@ -6715,7 +6909,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV64",
@@ -6745,7 +6940,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV64",
@@ -6775,7 +6971,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV64",
@@ -6802,7 +6999,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV63",
@@ -6834,7 +7032,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV64",
@@ -6864,7 +7063,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV65",
@@ -6924,7 +7124,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "District"
   },
   {
     "event_id": "EV65",
@@ -6967,7 +7168,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Either"
   },
   {
     "event_id": "EV65",
@@ -6997,7 +7199,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV65",
@@ -7040,7 +7243,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV66",
@@ -7079,7 +7283,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV66",
@@ -7114,7 +7319,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV66",
@@ -7153,7 +7359,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV66",
@@ -7188,7 +7395,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV67",
@@ -7227,7 +7435,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV67",
@@ -7262,7 +7471,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV67",
@@ -7298,7 +7508,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV67",
@@ -7333,7 +7544,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV68",
@@ -7368,7 +7580,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV68",
@@ -7400,7 +7613,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV68",
@@ -7436,7 +7650,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV68",
@@ -7471,7 +7686,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV69",
@@ -7510,7 +7726,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV69",
@@ -7545,7 +7762,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV69",
@@ -7606,7 +7824,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Capitol"
   },
   {
     "event_id": "EV69",
@@ -7641,7 +7860,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV70",
@@ -7677,7 +7897,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV70",
@@ -7709,7 +7930,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV70",
@@ -7745,7 +7967,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV71",
@@ -7784,7 +8007,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV71",
@@ -7816,7 +8040,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV71",
@@ -7857,7 +8082,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV71",
@@ -7887,7 +8113,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV72",
@@ -7926,7 +8153,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV72",
@@ -7961,7 +8189,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV72",
@@ -8022,7 +8251,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Either"
   },
   {
     "event_id": "EV72",
@@ -8057,7 +8287,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV73",
@@ -8096,7 +8327,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV73",
@@ -8128,7 +8360,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV73",
@@ -8164,7 +8397,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV73",
@@ -8199,7 +8433,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV74",
@@ -8234,7 +8469,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV74",
@@ -8266,7 +8502,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV74",
@@ -8319,7 +8556,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "District"
   },
   {
     "event_id": "EV75",
@@ -8358,7 +8596,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV75",
@@ -8390,7 +8629,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV75",
@@ -8425,7 +8665,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV76",
@@ -8478,7 +8719,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "District"
   },
   {
     "event_id": "EV76",
@@ -8514,7 +8756,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV76",
@@ -8546,7 +8789,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV77",
@@ -8578,7 +8822,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV77",
@@ -8613,7 +8858,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV78",
@@ -8652,7 +8898,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV78",
@@ -8684,7 +8931,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV78",
@@ -8745,7 +8993,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Capitol"
   },
   {
     "event_id": "EV79",
@@ -8781,7 +9030,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV79",
@@ -8817,7 +9067,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV79",
@@ -8853,7 +9104,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV80",
@@ -8893,7 +9145,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV80",
@@ -8929,7 +9182,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV80",
@@ -8961,7 +9215,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV81",
@@ -9018,7 +9273,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": "Either"
   },
   {
     "event_id": "EV81",
@@ -9054,7 +9310,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV81",
@@ -9086,7 +9343,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV82",
@@ -9122,7 +9380,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV82",
@@ -9158,7 +9417,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV82",
@@ -9198,7 +9458,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV83",
@@ -9234,7 +9495,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV83",
@@ -9266,7 +9528,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV83",
@@ -9302,7 +9565,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV83",
@@ -9334,7 +9598,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV84",
@@ -9374,7 +9639,8 @@
     "delegate_blocks": null,
     "task_pool_family": "Meetings",
     "task_pool_change": 2,
-    "task_pool_days": 1
+    "task_pool_days": 1,
+    "location": null
   },
   {
     "event_id": "EV84",
@@ -9406,7 +9672,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV84",
@@ -9442,7 +9709,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV84",
@@ -9478,7 +9746,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV85",
@@ -9518,7 +9787,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV85",
@@ -9550,7 +9820,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV85",
@@ -9586,7 +9857,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV85",
@@ -9622,7 +9894,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV86",
@@ -9662,7 +9935,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV86",
@@ -9694,7 +9968,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV86",
@@ -9730,7 +10005,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV86",
@@ -9766,7 +10042,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV87",
@@ -9806,7 +10083,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV87",
@@ -9838,7 +10116,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV87",
@@ -9878,7 +10157,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV87",
@@ -9910,7 +10190,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV88",
@@ -9950,7 +10231,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV88",
@@ -9982,7 +10264,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV88",
@@ -10018,7 +10301,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV88",
@@ -10054,7 +10338,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV89",
@@ -10094,7 +10379,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV89",
@@ -10126,7 +10412,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV89",
@@ -10162,7 +10449,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV89",
@@ -10198,7 +10486,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV90",
@@ -10238,7 +10527,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV90",
@@ -10270,7 +10560,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV90",
@@ -10306,7 +10597,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV90",
@@ -10342,7 +10634,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV91",
@@ -10382,7 +10675,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV91",
@@ -10414,7 +10708,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV91",
@@ -10450,7 +10745,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV91",
@@ -10486,7 +10782,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV92",
@@ -10526,7 +10823,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV92",
@@ -10558,7 +10856,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV92",
@@ -10594,7 +10893,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV92",
@@ -10630,7 +10930,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV93",
@@ -10670,7 +10971,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV93",
@@ -10702,7 +11004,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV93",
@@ -10738,7 +11041,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV93",
@@ -10774,7 +11078,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV94",
@@ -10814,7 +11119,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV94",
@@ -10846,7 +11152,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV94",
@@ -10882,7 +11189,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV94",
@@ -10918,7 +11226,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV95",
@@ -10953,7 +11262,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV95",
@@ -10980,7 +11290,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV95",
@@ -11014,7 +11325,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV95",
@@ -11049,7 +11361,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV96",
@@ -11084,7 +11397,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV96",
@@ -11116,7 +11430,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV96",
@@ -11150,7 +11465,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV96",
@@ -11182,7 +11498,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV97",
@@ -11220,7 +11537,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV97",
@@ -11250,7 +11568,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV97",
@@ -11289,7 +11608,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV97",
@@ -11327,7 +11647,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV98",
@@ -11362,7 +11683,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV98",
@@ -11392,7 +11714,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV98",
@@ -11427,7 +11750,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV98",
@@ -11457,7 +11781,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV99",
@@ -11492,7 +11817,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV99",
@@ -11522,7 +11848,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV99",
@@ -11555,7 +11882,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV99",
@@ -11590,7 +11918,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV100",
@@ -11629,7 +11958,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV100",
@@ -11661,7 +11991,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV100",
@@ -11696,7 +12027,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV100",
@@ -11731,7 +12063,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV101",
@@ -11766,7 +12099,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV101",
@@ -11796,7 +12130,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV101",
@@ -11835,7 +12170,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV101",
@@ -11867,7 +12203,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV102",
@@ -11902,7 +12239,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV102",
@@ -11929,7 +12267,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV102",
@@ -11959,7 +12298,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV102",
@@ -11994,7 +12334,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV103",
@@ -12029,7 +12370,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV103",
@@ -12061,7 +12403,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV103",
@@ -12091,7 +12434,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV103",
@@ -12123,7 +12467,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV104",
@@ -12158,7 +12503,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV104",
@@ -12185,7 +12531,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV104",
@@ -12224,7 +12571,8 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   },
   {
     "event_id": "EV104",
@@ -12259,6 +12607,7 @@
     "delegate_blocks": null,
     "task_pool_family": null,
     "task_pool_change": null,
-    "task_pool_days": null
+    "task_pool_days": null,
+    "location": null
   }
 ]

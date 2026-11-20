@@ -124,6 +124,9 @@ func test_a_followup_waits_for_its_time_then_arrives_once() -> void:
 			followup = str(event["event_id"])
 			break
 	assert_ne(followup, "", "the workbook has a Followup event")
+	# A follow-up arrives at its own office (two offices, 2026-11-20): stand there.
+	var here := Offices.normalize(GameState.get_event(followup).get("location"))
+	GameState.office_location = Offices.CAPITOL if here == Offices.EITHER else here
 	GameState.pay_commitments([{"kind": "followup", "event_id": followup, "after": 5}])
 	assert_eq(GameState.take_due_followup(), "", "not yet")
 	GameState.spend_hours(5)
@@ -297,6 +300,9 @@ func _promises_something(list: Variant) -> bool:
 func _a_followup_event() -> String:
 	for event: Dictionary in DataDB.events:
 		if str(event.get("trigger", "")) == "Followup":
+			# A follow-up arrives at its own office (two offices, 2026-11-20): stand there.
+			var here := Offices.normalize(event.get("location"))
+			GameState.office_location = Offices.CAPITOL if here == Offices.EITHER else here
 			return str(event["event_id"])
 	return ""
 

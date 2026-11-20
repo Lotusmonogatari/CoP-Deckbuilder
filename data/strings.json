@@ -9231,5 +9231,26 @@
     "english": "{mode}\nTo {place}\n{count} h",
     "placeholders": "mode, place, count",
     "notes": "2026-11-20 two offices, slice 2 (Claude's draft)"
+  },
+  {
+    "key": "promises.badge",
+    "where": "Promises panel: a promise tied to one office",
+    "english": "Keep it at {place}",
+    "placeholders": "place",
+    "notes": "2026-11-20 two offices, slice 3 (Claude's draft)"
+  },
+  {
+    "key": "promises.refuse_elsewhere",
+    "where": "Promises panel, a greyed Keep button: the promise is kept at the other office",
+    "english": "Keep it at {place}.",
+    "placeholders": "place",
+    "notes": "2026-11-20 two offices, slice 3 (Claude's draft)"
+  },
+  {
+    "key": "travel.promise_warning",
+    "where": "Trip popup: a promise due soon can only be kept at the office the player is leaving",
+    "english": "Before you go: {what} is due in {count} h and can only be kept at {place}.",
+    "placeholders": "what, place, count",
+    "notes": "2026-11-20 two offices, slice 3 (Claude's draft)"
   }
 ]

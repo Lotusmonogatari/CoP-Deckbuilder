@@ -174,7 +174,10 @@ SHEETS = {
             ("condition_op", "condition_op", "str"),
             ("condition_value", "condition_value", "num"),
             ("text_en", "text_en", "str"),
+            # 2026-11-20 (two offices): Capitol, District or Either (blank means Either).
+            ("Location", "location", "str"),
         ],
+        "optional": ["Location"],
     },
     # The Office screen's news ticker (2026-09-28): a scrolling strip of
     # lines at the bottom of the Office. Same condition schema as Office
@@ -200,7 +203,10 @@ SHEETS = {
             ("from_date", "from_date", "str"),
             ("to_date", "to_date", "str"),
             ("yearly", "yearly", "str"),
+            # 2026-11-20 (two offices): Capitol, District or Either (blank means Either).
+            ("Location", "location", "str"),
         ],
+        "optional": ["Location"],
     },
     # A hired staff member's own line about the level the player is about to
     # walk into, shown on the new Level Intro screen between the Office and
@@ -1311,10 +1317,12 @@ SHEETS = {
             ("Task Pool Family", "task_pool_family", "str"),
             ("Task Pool Change", "task_pool_change", "int"),
             ("Task Pool Days", "task_pool_days", "int"),
+            # 2026-11-20 (two offices): Capitol, District or Either (blank means Either).
+            ("Location", "location", "str"),
         ],
         "optional": ["Starts Level", "Commitment", "Promise Kept", "Promise Broken", "Promise Kept Text",
                      "Delegate Role", "Delegate Hours",
-                     "Task Pool Family", "Task Pool Change", "Task Pool Days"],
+                     "Task Pool Family", "Task Pool Change", "Task Pool Days", "Location"],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
@@ -1884,7 +1892,10 @@ SHEETS = {
             # — typically a negative delta against a booster ("BO05 -2"),
             # not a Sanban meta-variable hit.
             ("Penalty", "penalty", "target_delta_list"),
+            # 2026-11-20 (two offices): Capitol, District or Either (blank means Either).
+            ("Location", "location", "str"),
         ],
+        "optional": ["Location"],
     },
     # One row = one possible exchange; many rows can share a Visitor ID —
     # the "several questions per visitor" shape, resolved by drawing one at
@@ -3662,7 +3673,8 @@ OFFICES = ("Capitol", "District", "Either")
 def check_offices(data, report):
     """Two offices (2026-11-20): every Location cell is Capitol, District, Either or blank; Travel Trips is 0, 1
     or 2 and only on a level that has a real office; a protagonist's travel hours are Balance rows."""
-    for table, key in (("levels", "level_id"), ("events", "event_id"), ("bill_level_templates", "template_id")):
+    for table, key in (("levels", "level_id"), ("events", "event_id"), ("bill_level_templates", "template_id"),
+                       ("office_notices", "notice_id"), ("office_ticker", "ticker_id"), ("visitors", "visitor_id")):
         for row in data.get(table, []):
             where = f"{table} {row.get(key)}"
             value = row.get("location")

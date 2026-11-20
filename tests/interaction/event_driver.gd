@@ -42,6 +42,8 @@ func _screen() -> Node:
 
 
 func _walking_tour() -> void:
+	# The sports sponsorship and the open day are District events (two offices, 2026-11-20): the player stands there.
+	GameState.office_location = Offices.DISTRICT
 	var button := _screen().find_child("EventsButton", true, false) as Button
 	_expect(button != null and button.visible, "the Office has an Events button")
 	if button == null:
@@ -94,6 +96,7 @@ func _street_question() -> void:
 		done.pressed.emit()
 	await get_tree().process_frame
 	_expect(GameState.discovered_levels.has("LV35"), "the event revealed the coastal bill level")
+	GameState.office_location = Offices.CAPITOL   # LV35 is a Capitol level (two offices, 2026-11-20)
 	_expect(_levels_text(screen).contains("Coastal Defense"), "and it now shows in the levels list")
 
 

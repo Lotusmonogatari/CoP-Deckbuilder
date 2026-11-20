@@ -474,6 +474,19 @@ static func eligible_visitors(stage_id: String) -> Array:
 	return found
 
 
+## The visitors this office's room draws from (two offices, 2026-11-20): constituents come to the District, fellow
+## members and party people to the Capitol, and an Either visitor to both. If `count` visitors are wanted and fewer
+## belong here, the room is filled out with the others, so a room never seats fewer people than it always has.
+static func prefer_here(eligible: Array, count: int) -> Array:
+	var here: Array = eligible.filter(func(visitor: Dictionary) -> bool:
+		return Offices.is_here(visitor.get("location"), GameState.office_location))
+	if here.size() >= count:
+		return here
+	var others: Array = eligible.filter(func(visitor: Dictionary) -> bool:
+		return not Offices.is_here(visitor.get("location"), GameState.office_location))
+	return here + others.slice(0, count - here.size())
+
+
 ## The hand-written pin for one level+slot from
 ## data/level_visitor_overrides.json, or null when there isn't one.
 static func _visitor_override_for(level_id: String, slot: int) -> Variant:
@@ -518,7 +531,7 @@ static func salience_factor(position: Dictionary) -> float:
 ## parallel column just to mean the same thing for visitors instead of
 ## opponents, per office_hours.md §1.3).
 static func _visitors_for(level_id: String, stage_id: String, slot: int, count: int) -> Array:
-	var eligible := eligible_visitors(stage_id)
+	var eligible := prefer_here(eligible_visitors(stage_id), maxi(count, 1) + 1)
 	var pinned := _resolve_visitor_pin(level_id, stage_id, slot)
 
 	if count <= 1:

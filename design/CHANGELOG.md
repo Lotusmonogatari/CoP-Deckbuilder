@@ -1479,3 +1479,14 @@ The panel that opens from the level list ("Go in, or Back") was rebuilt from the
 
 The trip button became **a train on a track**. The words (where, how long, by what) are on the strip before anything is pressed. **Drag the train past 60% of the track and let go to travel** (a Balance number, `Travel Swipe Commit Percent`); short of that it springs back; **a tap opens the same confirm**, so the drag is the fast path and not the only one. The Office then fades to a card ("Rail pass / To Noheji / 7 h"), the trip is taken behind it, and the other office fades in. The train points the way it travels and sits at the other end after each trip. The strip is drawn in all three styles from the briefing's palette (placeholder train until `TRAIN_STRIP` is drawn). The four District offices share one set of room-object pins (`DISTRICT_OFFICE` in art.json, a copy of the Capitol's until the pictures exist), and the Living Office pins re-place after a trip. New: `Swipe` (pure) with `test_swipe`, drag/spring-back/greyed-strip checks in the travel click test.
 
+## 2026-11-20: Two offices, slice 3: events, promises, notices, ticker and visitors by office
+
+| Part | What changed |
+|---|---|
+| Data (drafts for Cameron, tagged from the audit) | `Location` on **Events** (all 97), **Event Choices** (the 20 promise-bearing rows), **Office Notices** (20), **Office Ticker** (the column exists; the audit flagged no line that must be pinned to one office) and **Visitors** (the 167 draft office tags); one Balance row, `Travel Promise Warning Hours`; three Text rows. |
+| Events | Random events arrive only at their office; Buyable ones are listed only where they can be held; a follow-up that falls due elsewhere waits until the player arrives. |
+| Promises | Each promise remembers where it can be kept (the choice's own Location, else where the player stood). "Keep it at Noheji" on the panel and on a greyed Keep button; the trip popup warns about a promise due soon that can only be kept at the office being left. |
+| Notices and ticker | A line shows only at its office (the District Representative's greeting and the constituents' visits at the District). |
+| Visitors | Office Hours draws the visitors tagged for the office first, and fills the room out with others rather than seating fewer people. |
+| Tests | `test_offices_content` (the tags, each office's own draw, a follow-up waiting, promises, notices, ticker, visitors); the travel click test covers the Promises panel, the Keep button and the trip warning; `test_promises` stands at a follow-up's office. |
+

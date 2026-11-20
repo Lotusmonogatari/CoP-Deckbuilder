@@ -100,6 +100,8 @@ static func eligible_lines(rows: Array, staff_hired: Dictionary, meta: Dictionar
 		player_name: String = "", laws: Dictionary = {}) -> Array[String]:
 	var lines: Array[String] = []
 	for row: Dictionary in rows:
+		if laws.has("office") and not Offices.is_here(row.get("location"), str(laws["office"])):
+			continue
 		if calendar_met(row, laws) and OfficeNotices.condition_met(row, staff_hired, meta, laws):
 			lines.append(fill_tokens(str(row.get("text_en", "")), player_name))
 	return lines
