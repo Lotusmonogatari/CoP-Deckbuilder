@@ -162,6 +162,19 @@ SHEETS = {
     # a notice shows when its one condition (a staff role hired/not-hired, or
     # a meta variable's value against a threshold) is true. See
     # OfficeNotices.gd for how a row is checked and CLAUDE.md for the schema.
+    # 2026-11-20 (two offices, slice 5): the named places of each protagonist's district, by type. Text asks for a type
+    # ("{place:harbor}") and gets the protagonist's own name. See PlaceTokens.gd.
+    "Places": {
+        "out": "places.json",
+        "optional_sheet": True,
+        "optional": ["Note"],
+        "columns": [
+            ("Protagonist", "protagonist", "str"),
+            ("Place Type", "place_type", "str"),
+            ("Name (EN)", "name", "str"),
+            ("Note", "note", "str"),
+        ],
+    },
     "Office Notices": {
         "out": "office_notices.json",
         "key": "notice_id",
@@ -1272,8 +1285,11 @@ SHEETS = {
             ("Seasons", "seasons", "id_list"),
             # 2026-11-20 (two offices): Capitol, District or Either (blank means Either).
             ("Location", "location", "str"),
+            # 2026-11-20 (slice 5): the place types its text asks for ("harbor; festival"). A protagonist whose
+            # district lacks one never draws the event.
+            ("Needs Place", "needs_place", "id_list"),
         ],
-        "optional": ["Seasons", "Location"],
+        "optional": ["Seasons", "Location", "Needs Place"],
     },
     "Event Choices": {
         "out": "event_choices.json",
@@ -3674,6 +3690,49 @@ def _starting_items(cell, player_id, data, report):
 
 OFFICES = ("Capitol", "District", "Either")
 
+# The 24 place types of the catalog (design/proposals/TWO_OFFICES_SPEC_2026-11-19.md). district_office has no Places rows:
+# the District office town is the Player tab's District Office column.
+PLACE_TYPES = ("district_office", "station", "travel_route", "town_hall", "harbor", "onsen_town", "mountain", "farmland",
+               "fishing_grounds", "school", "university", "hospital", "shrine_temple", "market", "festival", "factory",
+               "energy_site", "island", "landmark", "ainu_site", "beach", "ski_area", "park", "community_hall")
+PLACE_TOKEN = re.compile(r"\{place:([a-z_]+)\}")
+
+
+def check_places(data, report):
+    """Places (2026-11-20): every row names a real protagonist and a known type; a place token in an event's text names a
+    known type and the event lists it in Needs Place (so it is never drawn where the district lacks the type)."""
+    pids = {str(p.get("player_id")) for p in data.get("player", {}).get("protagonists", [])}
+    have = {}
+    for row in data.get("places", []):
+        where = f"Places {row.get('protagonist')} {row.get('place_type')}"
+        if row.get("protagonist") not in pids:
+            report.error(where, "names a protagonist who is not in the Player tab")
+        if row.get("place_type") not in PLACE_TYPES or row.get("place_type") == "district_office":
+            report.error(where, f"{row.get('place_type')!r} is not a place type with rows (see PLACE_TYPES)")
+        if not row.get("name"):
+            report.error(where, "has no name")
+        have.setdefault(row.get("protagonist"), set()).add(row.get("place_type"))
+    choices = {}
+    for row in data.get("event_choices", []):
+        choices.setdefault(row.get("event_id"), []).append(row)
+    for event in data.get("events", []):
+        eid = event.get("event_id")
+        texts = [str(event.get("title") or ""), str(event.get("flavor") or "")]
+        for choice in choices.get(eid, []):
+            texts += [str(choice.get("choice_text") or ""), str(choice.get("result_text") or ""), str(choice.get("promise_kept_text") or "")]
+        needed = set(event.get("needs_place") or [])
+        used = {m for text in texts for m in PLACE_TOKEN.findall(text)}
+        for kind in used:
+            if kind not in PLACE_TYPES:
+                report.error(f"Events {eid}", f"asks for the place type '{kind}', which is not in the catalog")
+            elif kind not in needed:
+                report.error(f"Events {eid}", f"uses {{place:{kind}}} but Needs Place does not list '{kind}'")
+        for kind in needed:
+            if kind not in PLACE_TYPES:
+                report.error(f"Events {eid}", f"Needs Place names '{kind}', which is not in the catalog")
+            elif kind != "district_office" and not any(kind in kinds for kinds in have.values()):
+                report.error(f"Events {eid}", f"needs '{kind}', which no protagonist has in the Places tab")
+
 
 def check_offices(data, report):
     """Two offices (2026-11-20): every Location cell is Capitol, District, Either or blank; Travel Trips is 0, 1
@@ -4868,6 +4927,7 @@ def main():
     check_event_levels(data, report)
     check_commitments(data, report)
     check_offices(data, report)
+    check_places(data, report)
     check_followups(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)

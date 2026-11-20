@@ -89,6 +89,9 @@ static func eligible_random(events: Array, ctx: Dictionary) -> Array:
 			continue
 		if ctx.has("month") and not Seasons.in_season(event, int(ctx["month"]), ctx.get("seasons", {})):
 			continue
+		# An event whose text asks for place types arrives only where the district has them (slice 5, 2026-11-20).
+		if ctx.has("place_types") and not _has_places(event, ctx["place_types"]):
+			continue
 		# An event belongs to an office (two offices, 2026-11-20): it arrives only where the player stands, or anywhere
 		# for an Either one.
 		if ctx.has("office") and not Offices.is_here(event.get("location"), str(ctx["office"])):
@@ -103,6 +106,17 @@ static func eligible_random(events: Array, ctx: Dictionary) -> Array:
 			continue
 		found.append(event)
 	return found
+
+
+## True when a district's place types cover the event's Needs Place (an event that needs none always does).
+static func _has_places(event: Dictionary, place_types: Array) -> bool:
+	var needed: Variant = event.get("needs_place")
+	if not (needed is Array):
+		return true
+	for kind: Variant in needed as Array:
+		if not place_types.has(str(kind)):
+			return false
+	return true
 
 
 ## The encounters that can happen on a trip (two offices, slice 4, 2026-11-20): the events whose Trigger is Train.

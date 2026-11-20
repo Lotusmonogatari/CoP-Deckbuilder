@@ -2229,7 +2229,8 @@ func event_context() -> Dictionary:
 		"funds": int(meta.get("Funds", 0)), "xp": xp, "now": time_units, "last_at": event_last_at,
 		"default_cooldown": Levers.whole("event_default_cooldown_hours"),
 		"district": int(awareness.get("district", 0)), "national": int(awareness.get("national", 0)), "dues_owed": dues_balance,
-		"month": current_month(), "seasons": DataDB.rules.get("seasons", {}), "office": office_location}
+		"month": current_month(), "seasons": DataDB.rules.get("seasons", {}), "office": office_location,
+		"place_types": DataDB.place_types_for(protagonist_id)}
 
 
 ## Today's calendar month, 1-12 (for seasonal levels and events).
@@ -2268,7 +2269,8 @@ func buyable_events() -> Array:
 	var found: Array = []
 	for event: Dictionary in DataDB.events:
 		if str(event.get("trigger", "")) == "Buyable" and in_season(event) \
-				and Offices.is_here(event.get("location"), office_location):
+				and Offices.is_here(event.get("location"), office_location) \
+				and PlaceTokens.has_types(PlaceTokens.names_by_type(DataDB.places, protagonist_id), event.get("needs_place")):
 			found.append(event)
 	return found
 
