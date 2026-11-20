@@ -1742,7 +1742,8 @@ SHEETS = {
                      "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Duration Units", "Card Tier",
                      "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase",
                      "In Marketplace (Yes/No)", "Inventory (Personal/Office)", "Deck Size Increase", "Staff Hours",
-                     "Staff Effect", "Staff Value", "Staff Target", "Staff Slot", "Staff Days", "Uses"],
+                     "Staff Effect", "Staff Value", "Staff Target", "Staff Slot", "Staff Days", "Uses",
+                     "Travel Mode", "Offered For"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -1861,6 +1862,10 @@ SHEETS = {
             # away (blank = 1). ADD_TASKS, CLEAR_TASKS, RESHUFFLE act at once from
             # the Office box; DOUBLE_BEST and NO_PENALTY are given to a person.
             ("Uses", "uses", "int"),
+            # 2026-11-20 (two offices, slice 4): an item that pays for a way to travel (ticket, car or plane) and the
+            # protagonists it is sold to (blank = all).
+            ("Travel Mode", "travel_mode", "str"),
+            ("Offered For", "offered_for", "id_list"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's
@@ -3246,8 +3251,8 @@ def validate(data, report):
     for row in data.get("events", []):
         eid = row["event_id"]
         event_ids.add(eid)
-        if row["trigger"] not in ("Buyable", "Random", "Dated", "Followup"):
-            report.error("Events", f"{eid} has Trigger '{row['trigger']}' — expected Buyable, Random, Dated or Followup")
+        if row["trigger"] not in ("Buyable", "Random", "Dated", "Followup", "Train"):
+            report.error("Events", f"{eid} has Trigger '{row['trigger']}' — expected Buyable, Random, Dated, Followup or Train")
         if row["trigger"] == "Dated":
             ok_date = False
             try:
@@ -3688,6 +3693,10 @@ def check_offices(data, report):
             report.error(f"levels {row.get('level_id')}", f"Travel Trips is {trips}; it must be 0, 1 or 2")
         if row.get("location") in (None, "", "Either"):
             report.error(f"levels {row.get('level_id')}", "has Travel Trips but is not a Capitol or District level")
+    for item in data.get("shop", []):
+        mode = item.get("travel_mode")
+        if mode not in (None, "", "ticket", "car", "plane"):
+            report.error(f"Shop {item.get('item_id')}", f"Travel Mode is {mode!r}; it must be ticket, car or plane")
     balance = data.get("balance", {})
     for protagonist in data.get("player", {}).get("protagonists", []):
         pid = str(protagonist.get("player_id", "")).lower()

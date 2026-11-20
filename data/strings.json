@@ -9252,5 +9252,54 @@
     "english": "Before you go: {what} is due in {count} h and can only be kept at {place}.",
     "placeholders": "what, place, count",
     "notes": "2026-11-20 two offices, slice 3 (Claude's draft)"
+  },
+  {
+    "key": "event.heading_train",
+    "where": "Event heading: an encounter on the train",
+    "english": "On the train",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices, slice 4 (Claude's draft)"
+  },
+  {
+    "key": "travel.mode_button",
+    "where": "Trip modes: one button, the mode and its hours",
+    "english": "{mode} · {count} h",
+    "placeholders": "mode, count",
+    "notes": "2026-11-20 two offices, slice 4 (Claude's draft)"
+  },
+  {
+    "key": "travel.mode_button_owned",
+    "where": "Trip modes: a ticket mode with how many tickets are left",
+    "english": "{mode} · {count} h · {owned} left",
+    "placeholders": "mode, count, owned",
+    "notes": "2026-11-20 two offices, slice 4 (Claude's draft)"
+  },
+  {
+    "key": "travel.cost_ticket",
+    "where": "Trip popup: what a ticket mode costs",
+    "english": "Uses one {mode}.",
+    "placeholders": "mode",
+    "notes": "2026-11-20 two offices, slice 4 (Claude's draft)"
+  },
+  {
+    "key": "briefing.travel_by",
+    "where": "Level briefing, the row of travel modes for a mixed level",
+    "english": "Travel by",
+    "placeholders": null,
+    "notes": "2026-11-20 two offices, slice 4 (Claude's draft)"
+  },
+  {
+    "key": "briefing.refuse_tickets",
+    "where": "Level briefing, Go in greyed: not enough tickets for this level's trips",
+    "english": "You need {count} {mode} for this level's trips.",
+    "placeholders": "count, mode",
+    "notes": "2026-11-20 two offices, slice 4 (Claude's draft)"
+  },
+  {
+    "key": "travel.refuse_no_ticket",
+    "where": "Trip mode greyed: no ticket of that kind is held",
+    "english": "You have no {mode} left.",
+    "placeholders": "mode",
+    "notes": "2026-11-20 two offices, slice 4 (Claude's draft)"
   }
 ]

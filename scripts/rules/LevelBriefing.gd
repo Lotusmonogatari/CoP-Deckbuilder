@@ -15,6 +15,7 @@ extends RefCounted
 ## The dictionary (all keys always present):
 ##   level_id, title, tier (int), hours (total, hidden rooms and built-in travel included), room_count (shown rooms),
 ##   travel_hours (the built-in trips' hours, 0 for most levels), travel_trips, travel_mode (the mode id they are priced at),
+##   travel_options ([ { mode, hours, owned, enough } ]: the ways to pay for the trips, for the briefing's row),
 ##   lists_rooms (false for a level with one shown room: totals only),
 ##   anything_set (false when no shown room and no bonus has a reward),
 ##   purpose { text, speaker } ({} when the level has none; speaker "" is narration),
@@ -79,6 +80,7 @@ static func build(level: Dictionary, tier: String, base_balance: Dictionary, con
 		"travel_hours": travel_hours,
 		"travel_trips": int(context.get("travel_trips", 0)),
 		"travel_mode": str(context.get("travel_mode", "")),
+		"travel_options": context.get("travel_options", []),
 		"room_count": shown.size(),
 		"lists_rooms": BriefingSummary.lists_stages(shown),
 		"anything_set": any_reward,

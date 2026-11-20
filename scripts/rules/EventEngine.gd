@@ -105,6 +105,15 @@ static func eligible_random(events: Array, ctx: Dictionary) -> Array:
 	return found
 
 
+## The encounters that can happen on a trip (two offices, slice 4, 2026-11-20): the events whose Trigger is Train.
+static func train_events(events: Array) -> Array:
+	var found: Array = []
+	for event: Dictionary in events:
+		if str(event.get("trigger", "")) == "Train" and int(event.get("weight", 0) if event.get("weight") != null else 0) > 0:
+			found.append(event)
+	return found
+
+
 ## Dated events (2026-10-23): an event with Trigger "Dated" happens on its On
 ## Date. It is due once that day has come (or passed, if the player was busy in a
 ## level), and only once: `done` lists the Event IDs already played. The earliest

@@ -54,7 +54,9 @@ func test_the_new_items_are_in_the_shop_with_their_uses() -> void:
 	var expect := {"SH15": 2, "SH17": 2, "SH36": 3, "SH37": 3, "SH38": 3, "SH39": 1, "SH40": 1, "SH41": 1}
 	for id: String in expect:
 		assert_eq(ItemUses.full_uses(DataDB.get_shop_item(id)), expect[id], id)
-	assert_true(DataDB.get_shop_item("SH42").is_empty(), "the old drafts are gone")
+	# SH42 to SH44 are the travel tickets now (two offices, 2026-11-20); the retired office-supply drafts are still gone.
+	assert_eq(str(DataDB.get_shop_item("SH42").get("travel_mode", "")), "ticket", "the old drafts are gone: SH42 is the paid train ticket")
+	assert_null(DataDB.get_shop_item("SH42").get("staff_effect"), "and it has no staff effect")
 
 
 func test_a_bought_copy_starts_with_full_uses_and_wears_out() -> void:
