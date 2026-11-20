@@ -1,8 +1,9 @@
 class_name LevelBonusDriver
 extends Node
-## The level briefing's "Level Bonus" block (2026-11-19, Cameron): opened through the level list as a player
-## does it. A level that pays a bonus shows the heading, the ranges and one chip per organization, between
-## the total rewards and the first room; a level that pays none shows nothing of the kind.
+## The level bonus on the level briefing (2026-11-19, rewritten for the P12 redesign): opened through the level list as a
+## player does it. A level that pays a bonus shows it as a small line in each meter's tile ("+1 to +2 bonus") and as a
+## row for each organization in the "Organizations, if you win" card with its name and range; a level that pays none
+## shows no such card and no bonus lines.
 
 var _failures: PackedStringArray = []
 
@@ -51,18 +52,11 @@ func _brief(level_id: String) -> Overlay:
 	return _screen().get_node("BriefingPanel") as Overlay
 
 
-func _texts(panel: Node) -> PackedStringArray:
+func _texts(node: Node) -> PackedStringArray:
 	var out := PackedStringArray()
-	for node: Node in panel.find_children("*", "Label", true, false):
-		out.append((node as Label).text)
+	for label: Node in node.find_children("*", "Label", true, false):
+		out.append((label as Label).text)
 	return out
-
-
-func _index_of(texts: PackedStringArray, start: String) -> int:
-	for i in texts.size():
-		if texts[i].begins_with(start):
-			return i
-	return -1
 
 
 func _level_with_a_bonus() -> void:
@@ -71,31 +65,25 @@ func _level_with_a_bonus() -> void:
 	var panel := await _brief("LV11")
 	_expect(panel.visible, "the briefing opens")
 	var texts := _texts(panel)
-	var total := _index_of(texts, "Total Rewards")
-	var heading := _index_of(texts, "Level Bonus")
-	var first_room := _index_of(texts, "Duration")
-	_expect(total >= 0 and heading > total, "the Level Bonus heading comes after Total Rewards")
-	_expect(first_room > heading, "and before the first room")
-	_expect(texts.has("Level Bonus (paid if you win the whole level):"), "the heading says it is paid on a win")
-	_expect(texts.has("● Reputation +1 to +2"), "a range reads as a range")
-	_expect(texts.has("● Funds +3,000円 to +12,000円"), "Funds read in yen with separators")
-	_expect(texts.has("● XP Growth +15 to +30"), "XP reads as a range")
-	_expect(texts.has("● Constituency support 0 to +1"), "a range from zero reads from 0")
-	_expect(texts.has("Standing with organizations:"), "the organizations are introduced")
-	var chips := panel.find_children("OrgChip_*", "Button", true, false)
-	var ids: Array = []
-	for chip: Node in chips:
-		ids.append(str(chip.get_meta("target_id")))
-	ids.sort()
-	_expect(ids == ["BO03", "BO11", "BO29"], "one chip per organization, got %s" % str(ids))
-	var labels := {}
-	for chip: Node in chips:
-		labels[str(chip.get_meta("target_id"))] = (chip.get_node("Mark") as Label).text
-	_expect(labels.get("BO11") == "+2–4", "a range shows both ends on its chip: %s" % str(labels.get("BO11")))
-	_expect(labels.get("BO03") == "0–1", "and a range from zero shows 0: %s" % str(labels.get("BO03")))
-	_expect(bool((chips[0] as Button).get_meta("preview")), "the chips are previews, with the white outline")
-	DirAccess.make_dir_recursive_absolute("user://shots")
-	get_viewport().get_texture().get_image().save_png("user://shots/level_bonus.png")
+	_expect(texts.has("+1 to +2 bonus"), "Reputation's tile carries its bonus range")
+	_expect(texts.has("0 to +1 bonus"), "a range from zero reads from 0")
+	_expect(texts.has("+1 to +4 bonus"), "Party support's tile carries its range")
+	_expect(texts.has("+15 to +30 bonus"), "XP Growth's tile carries its range")
+	_expect(texts.has("+3,000円 to +12,000円 bonus"), "Funds read in yen with separators")
+	var card := panel.find_child("OrgsCard", true, false)
+	_expect(card != null, "an Organizations card is shown")
+	var expected := {"BO03": "0 to +1", "BO11": "+2 to +4", "BO29": "0 to +1"}
+	var found := panel.find_children("OrgRow_*", "HBoxContainer", true, false)
+	_expect(found.size() == 3, "one row per organization, got %d" % found.size())
+	for row: Node in found:
+		var id := str(row.name).trim_prefix("OrgRow_")
+		_expect(expected.has(id), "%s is one of the bonus organizations" % id)
+		var range_label := row.find_child("Range", true, false) as Label
+		_expect(range_label != null and range_label.text == str(expected.get(id, "")),
+			"%s shows its range: %s" % [id, range_label.text if range_label != null else "none"])
+		var chip := row.find_child("OrgChip_*", true, false)
+		_expect(chip != null, "%s has its icon (an OrgChip)" % id)
+		_expect(_texts(row).has(OrgChip.name_of(id)), "%s shows its name" % id)
 	panel.close()
 	await get_tree().process_frame
 
@@ -111,8 +99,8 @@ func _level_without_one() -> void:
 	if none_id.is_empty():
 		return
 	var panel := await _brief(none_id)
-	var texts := _texts(panel)
-	_expect(_index_of(texts, "Level Bonus") < 0, "%s pays no bonus and shows no block" % none_id)
-	_expect(panel.find_children("OrgChip_*", "Button", true, false).is_empty(), "and no organization chips")
+	_expect(panel.find_child("OrgsCard", true, false) == null, "%s pays no bonus and shows no organizations card" % none_id)
+	for text: String in _texts(panel):
+		_expect(not text.ends_with(" bonus"), "%s shows no bonus line: %s" % [none_id, text])
 	panel.close()
 	await get_tree().process_frame

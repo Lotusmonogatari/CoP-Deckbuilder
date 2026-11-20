@@ -47,6 +47,7 @@
     "romaji": "Gyokyō",
     "tier": "Constituency",
     "linked_modifiers": [
+      "M15",
       "M22",
       "M49"
     ],
@@ -223,7 +224,6 @@
     "tier": "National",
     "linked_modifiers": [
       "M05",
-      "M15",
       "M25"
     ],
     "starting_standing": 15,

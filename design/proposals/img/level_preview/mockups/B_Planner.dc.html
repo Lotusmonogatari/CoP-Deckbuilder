@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Level preview, Template B: Day planner</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/d70e0bb3a02adc43a53e826711c0d359') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden">
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 0 16px; flex: 1 1 auto; min-height: 0">
+
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px">
+      <a href="#levels" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Levels
+      </a>
+      <span style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 0a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4Zm0 5.5A1.5 1.5 0 1 1 6 2.5a1.5 1.5 0 0 1 0 3Z"/></svg>
+        District office
+      </span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.12; text-transform: {{t.titleCase}}">Meeting with Student Organizers</h1>
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.4; color: {{t.onBgMuted}}">Student organizers want a hearing. Meet them in the office, then at a town hall, and study what they are asking for.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 5px">
+      <span style="font-size: 12px; font-weight: 700; color: {{t.onBg}}">If you win every room</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 5px">
+        <sc-for list="{{totals}}" as="c" hint-placeholder-count="5">
+          <span style="padding: 4px 9px; font-size: 12px; font-weight: 700; background: {{t.chip}}; color: {{t.chipInk}}; border: {{t.chipEdge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column">
+      <sc-for list="{{rooms}}" as="rm" hint-placeholder-count="3">
+        <div style="display: flex; gap: 8px; min-height: {{rm.h}}">
+          <div style="flex: 0 0 34px; display: flex; flex-direction: column; align-items: flex-end">
+            <span style="font-size: 11px; font-weight: 700; color: {{t.onBgMuted}}; line-height: 1">{{rm.start}}</span>
+            <div style="flex: 1 1 auto; width: 2px; margin: 4px 6px 0 0; background: {{t.rail}}"></div>
+          </div>
+          <div style="flex: 1 1 auto; min-width: 0; margin-bottom: 8px; background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; padding: 8px 10px; display: flex; flex-direction: column; gap: 5px; box-sizing: border-box">
+            <div style="display: flex; align-items: center; gap: 8px">
+              <span style="flex: 0 0 auto; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.dot}}">{{rm.n}}</span>
+              <span style="flex: 1 1 auto; font-size: 14.5px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}">{{rm.name}}</span>
+              <span style="flex: 0 0 auto; font-size: 11px; font-weight: 600; color: {{t.muted}}">{{rm.kind}} · 2 h</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 4px">
+              <sc-for list="{{rm.chips}}" as="ch" hint-placeholder-count="4">
+                <span style="padding: 2px 7px; font-size: 11px; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}">{{ch}}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+
+      <div style="display: flex; gap: 8px">
+        <div style="flex: 0 0 34px; display: flex; justify-content: flex-end">
+          <span style="font-size: 11px; font-weight: 700; color: {{t.onBgMuted}}; line-height: 1">6 h</span>
+        </div>
+        <div style="flex: 1 1 auto; min-width: 0; background: {{t.finish}}; color: {{t.finishInk}}; border-radius: {{t.r}}; clip-path: {{t.clipCard}}; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; box-sizing: border-box">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 15V1.5M3 2h9l-2 3 2 3H3"/></svg>
+            <span style="font-size: 14.5px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}">Win all three: level bonus</span>
+          </div>
+          <div style="font-size: 12px; line-height: 1.45">Reputation +1 to +2 · Constituency support 0 to +1 · Party support +1 to +4 · XP Growth +15 to +30 · Funds +3,000 to +12,000円</div>
+          <div style="display: flex; flex-direction: column; gap: 3px; padding-top: 6px; border-top: 1px solid {{t.finishRule}}">
+            <sc-for list="{{orgs}}" as="o" hint-placeholder-count="3">
+              <div style="display: flex; align-items: center; gap: 8px; min-height: 26px">
+                <img src="{{o.icon}}" alt="" style="width: 24px; height: 24px; object-fit: contain; flex: 0 0 auto">
+                <span style="flex: 1 1 auto; font-size: 12px; line-height: 1.2">{{o.name}}</span>
+                <span style="flex: 0 0 auto; font-size: 12px; font-weight: 700">{{o.range}}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 6px; padding: 8px 16px 14px 16px; background: {{t.bg}}; border-top: {{t.footTop}}">
+    <div style="display: flex; justify-content: space-between; font-size: 12px; color: {{t.onBgMuted}}">
+      <span>This week: 28 hours left</span>
+      <span style="font-weight: 700; color: {{t.onBg}}">22 left after this level</span>
+    </div>
+    <div style="display: flex; gap: 10px">
+      <a href="#back" style="flex: 0 0 auto; height: 48px; padding: 0 18px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; text-decoration: none; color: {{t.onBg}}; border: {{t.bw}} solid {{t.secEdge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}">Back</a>
+      <a href="#go" style="flex: 1 1 auto; height: 48px; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; background: {{t.go}}; color: {{t.goInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-size: 16px; font-weight: 700">Go in <span style="font-size: 12px; font-weight: 600; opacity: .9">· 6 hours</span></a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', chip:'#F8F1E3', chipInk:'#1C1A17', chipEdge:'2px solid #1C1A17', accent:'#22305A', accentInk:'#F8F1E3', rail:'#C23B22', bw:'2px', r:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'28px', titleCase:'none', headSpacing:'0', clip:'none', clipCard:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', finish:'#22305A', finishInk:'#F8F1E3', finishRule:'rgba(248,241,227,.35)' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', chip:'#FFF8EC', chipInk:'#2B1D12', chipEdge:'0px solid transparent', accent:'#FFD58A', accentInk:'#2B1D12', rail:'#FFD58A', bw:'1px', r:'18px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'28px', titleCase:'none', headSpacing:'0', clip:'none', clipCard:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', finish:'#FFD58A', finishInk:'#2B1D12', finishRule:'rgba(43,29,18,.25)' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', chip:'#141E33', chipInk:'#F4F1EA', chipEdge:'1px solid #E3B341', accent:'#E3B341', accentInk:'#0B1220', rail:'#E3B341', bw:'1px', r:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'30px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', clipCard:'polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', finish:'#E3B341', finishInk:'#0B1220', finishRule:'rgba(11,18,32,.3)' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    return {
+      t: T[key],
+      totals: ['Reputation +2', 'Constituency support +11', 'Party support +1', 'XP Growth +175', 'Funds 55,000円'],
+      rooms: [
+        { n:'1', start:'0 h', h:'98px', name:'Office Hours', kind:'Conversation', chips:['Constituency support +5', 'XP Growth +50', 'Funds 10,000円'] },
+        { n:'2', start:'2 h', h:'98px', name:'Town Hall', kind:'Debate', chips:['Reputation +1', 'Constituency support +5', 'XP Growth +70', 'Funds 30,000円'] },
+        { n:'3', start:'4 h', h:'98px', name:'Policy Study Session', kind:'Debate', chips:['Reputation +1', 'Constituency support +1', 'Party support +1', 'XP Growth +55', 'Funds 15,000円'] }
+      ],
+      orgs: [
+        { icon:'/_blob/51a4c04f50efd894b4ccf1650fc7a698', name:'Students United', range:'+2 to +4' },
+        { icon:'/_blob/2a84ff3e17888a8a09f9184e8ee77a6e', name:'Local Kōenkai', range:'0 to +1' },
+        { icon:'/_blob/66991ca98f50604b04b84564d617f136', name:'Ainu Language and Culture Foundation', range:'0 to +1' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
