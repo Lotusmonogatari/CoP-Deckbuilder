@@ -1611,3 +1611,12 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Actions | The row of three actions sits on its own card right under the bill, above the projections (Cameron: moved up); the research and whip notes close the body. |
 | Not built | The mock-up's colour legend under the bars (it needs new wording). |
 | Where | Pictures: `design/review/p14_remaining_screens_2026-11-20/img/floor_vote_cards_*.png`; side-by-side with the old: `floor_vote_projections_side_by_side.png`. |
+
+## 2026-11-20: P14b commit 1: Staff Assignments, the staff profile and Rhetoric Training (Cameron: Go)
+
+| Part | What changed |
+|---|---|
+| Staff Assignments | On the shared Office frame (place and hours as chips). Section cards: Today's tasks (date, how to play, the tray), Items for your staff, Office box, one card for **every hired person** (picture, role and rank, Loyalty, the 8-block bar, the box tasks are dropped into), and "If you confirm". Confirm is fixed in the frame's foot and greyed with its reason. Task and item chips stay dark tiles in every style. |
+| Staff profile | On the frame as cards: identity (picture, role, flavor, hiring cost, biography), Loyalty and pay with Raise pay and Thank, Bonuses by rank, and one actions card where **Fire is last, drawn in the fall colour**. Hire for a candidate. |
+| Rhetoric Training | Already cards on the frame from P13. It now names a coaching coupon you hold (the coupon is redeemed from your items for a free session; the spec's line "your next session is free" would have said something the game does not do, so the Text row is reworded). |
+| Tests | `tests/test_group4_staff.gd` (3): every hired person has a card and Confirm is in the foot, the profile's cards with Fire last, the coupon note. No click test changed. |

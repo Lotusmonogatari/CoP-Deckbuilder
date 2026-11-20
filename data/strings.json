@@ -9627,9 +9627,9 @@
   {
     "key": "rhetoric.coupon_line",
     "where": "P14 pop-up card, kind tags and notes (spec section 4)",
-    "english": "You hold {count} coaching coupon: your next Tier {tier} session is free.",
+    "english": "You hold {count} coaching coupon: use it from your items for a free Tier {tier} session.",
     "placeholders": "count, tier",
-    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+    "notes": "P14b (2026-11-20): reworded from the spec's 'your next session is free' because a coupon is redeemed from the items, it does not discount the list. Claude's draft for Cameron."
   },
   {
     "key": "outcome.hold_hint",

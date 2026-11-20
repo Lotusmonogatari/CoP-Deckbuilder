@@ -1616,6 +1616,15 @@ func _show_rhetoric_training() -> void:
 ## The Rhetoric Training tab: the blurb, then one card for each training session. (XP and Funds are chips now.)
 func _rhetoric_cards(look: Dictionary) -> Array[Control]:
 	var rows: Array[Control] = [_ground_line(Text.say("rhetoric.blurb"), look)]
+	# A coupon the player holds is named here (P14b, 2026-11-20): it is redeemed from the items, not taken off a price below.
+	for coupon: Dictionary in DataDB.shop:
+		var held := GameState.item_count(str(coupon.get("item_id", ""))) if coupon.get("free_card_tier") != null else 0
+		if held > 0:
+			var note := OfficeFrameStyles.card(look)
+			note.name = "CouponNote_" + str(coupon.get("item_id", ""))
+			note.get_node("Column").add_child(UiKit.line(Text.say("rhetoric.coupon_line",
+				{"count": held, "tier": int(coupon.get("free_card_tier", 0))})))
+			rows.append(note)
 	for item: Dictionary in DataDB.shop:
 		if item.get("card_tier") != null:
 			var card := OfficeFrameStyles.card(look)
@@ -3495,15 +3504,14 @@ func _show_staff_profile(staff_id: String) -> void:
 	var hired: Dictionary = GameState.hired_member(staff_id)
 	var is_hired := not hired.is_empty()
 	var current_tier := int(hired.get("tier", 0)) if is_hired else -1
+	var look := OfficeFrameStyles.look()
 	var rows: Array[Control] = []
 
-	# Top left, the full picture of the person; top right, the hiring
-	# information (name, role, cost); under both, a biography line when the
-	# Staff tab has one; then the tiers and the buttons (Cameron, 2026-10-28).
-	# Air above the picture (the panel has no heading bar) so its top sits at 146 px.
-	var top_gap := Control.new()
-	top_gap.custom_minimum_size = Vector2(0, STAFF_TOP_GAP)
-	rows.append(top_gap)
+	# --- the identity card: the full picture of the person at the left; name, role, flavor and the hiring cost at the right;
+	# a biography line under both when the Staff tab has one (Cameron, 2026-10-28; on the shared frame since P14b).
+	var identity := OfficeFrameStyles.card(look)
+	identity.name = "StaffIdentityCard"
+	var identity_column := identity.get_node("Column") as VBoxContainer
 	var head := HBoxContainer.new()
 	head.name = "StaffHead"
 	head.add_theme_constant_override("separation", 24)
@@ -3517,8 +3525,7 @@ func _show_staff_profile(staff_id: String) -> void:
 	who.name = "StaffHiring"
 	who.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	who.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-	who.add_child(UiKit.line(str(candidate.get("name", staff_id)), "HeaderLabel"))
-	who.add_child(UiKit.line(role))
+	who.add_child(UiKit.line(role, "HeaderLabel"))
 	# Flavor text about the role, from the Staff tab; no row when blank.
 	var role_flavor := str(candidate.get("role_flavor", "")).strip_edges() if candidate.get("role_flavor") != null else ""
 	if not role_flavor.is_empty():
@@ -3527,75 +3534,111 @@ func _show_staff_profile(staff_id: String) -> void:
 		who.add_child(flavor)
 	who.add_child(UiKit.line(Text.say("staff.profile_cost",
 		{"cost": int(candidate.get("hiring_cost_yen", 0))})))
-	# UiKit.line forces a full-column minimum width; in this narrower column
-	# that pushed the buttons off the right edge, so let these wrap instead.
+	# UiKit.line forces a full-column minimum width; in this narrower column that pushed the buttons off the right edge,
+	# so let these wrap instead.
 	for label: Node in who.get_children():
 		(label as Control).custom_minimum_size.x = 0
 	head.add_child(who)
-	rows.append(head)
-
+	identity_column.add_child(head)
 	var biography := str(candidate.get("biography", "")).strip_edges() if candidate.get("biography") != null else ""
 	if not biography.is_empty():
 		var bio := UiKit.line(biography)
 		bio.name = "StaffBiography"
-		rows.append(bio)
+		identity_column.add_child(bio)
+	rows.append(identity)
 
+	# --- Loyalty and pay (a hired person only): the bar, why it moved, and the two things to do about it
 	if is_hired:
-		rows.append_array(StaffLoyaltyView.profile_rows(staff_id))
+		var loyalty := OfficeFrameStyles.card(look)
+		loyalty.name = "StaffLoyaltyCard"
+		var loyalty_column := loyalty.get_node("Column") as VBoxContainer
+		for row: Control in StaffLoyaltyView.profile_rows(staff_id):
+			loyalty_column.add_child(row)
 		var raise := UiKit.action_button(Text.say("staff.raise_pay_button",
 			{"yen": StaffLoyalty.wage(GameState.staff_invested_in(staff_id), true), "count": Levers.whole("staff_raise_pay_loyalty")}),
 			GameState.raise_pay_refusal(staff_id), _on_raise_pay.bind(staff_id))
 		raise.name = "RaisePayButton"
-		rows.append(raise)
+		loyalty_column.add_child(_dress_profile_button(raise, look))
 		var thank := UiKit.action_button(Text.say("staff.thank_button",
 			{"hours": Levers.whole("staff_thank_in_public_hours"), "count": Levers.whole("staff_thank_in_public_loyalty")}),
 			GameState.thank_refusal(staff_id), _on_thank_staff.bind(staff_id))
 		thank.name = "ThankButton"
-		rows.append(thank)
+		loyalty_column.add_child(_dress_profile_button(thank, look))
+		rows.append(loyalty)
 
-	rows.append(UiKit.heading(Text.say("staff.tiers_heading")))
+	# --- the bonuses by rank
+	var tiers := OfficeFrameStyles.card(look, Text.say("staff.tiers_heading"))
+	tiers.name = "StaffTiersCard"
+	var tiers_column := tiers.get_node("Column") as VBoxContainer
 	for entry: Dictionary in StaffProfile.tiers(candidate, DataDB.boosters, DataDB.segments, Text.phrase()):
 		var box := UiKit.tight_column()
 		box.name = "Tier_%d" % int(entry["tier"])
 		box.add_child(UiKit.line(_tier_label(entry, current_tier), "HeaderLabel"))
 		for line: String in entry["lines"]:
 			box.add_child(UiKit.line(line))
-		rows.append(box)
+		tiers_column.add_child(box)
 	if int(candidate.get("highest_tier", 0)) <= int(candidate.get("starting_tier", 0)):
-		rows.append(UiKit.line(Text.say("staff.no_upgrades"), "SmallLabel"))
+		tiers_column.add_child(UiKit.line(Text.say("staff.no_upgrades"), "SmallLabel"))
+	rows.append(tiers)
 
+	# --- what can be done: Upgrade, Make primary, then Fire last as a red outline button (Hire for a candidate)
 	var funds := int(GameState.meta.get("Funds", 0))
+	var actions := OfficeFrameStyles.card(look)
+	actions.name = "StaffActionsCard"
+	var actions_column := actions.get_node("Column") as VBoxContainer
 	if is_hired:
 		var cost: Variant = Ledger.staff_upgrade_cost(candidate, current_tier)
 		if cost == null:
-			rows.append(UiKit.action_button("", Text.say("office.staff_at_max"), Callable()))
+			actions_column.add_child(_dress_profile_button(UiKit.action_button("", Text.say("office.staff_at_max"), Callable()), look))
 		else:
 			var upgrade := UiKit.action_button(Text.say("office.upgrade", {"cost": int(cost)}),
 				Ledger.staff_upgrade_refusal(candidate, current_tier, funds, Text.phrase()),
 				_on_profile_upgrade.bind(staff_id))
 			upgrade.name = "ProfileUpgradeButton"
-			rows.append(upgrade)
+			actions_column.add_child(_dress_profile_button(upgrade, look))
 		if not bool(hired.get("primary", true)):
 			var primary_button := UiKit.action_button(Text.say("office.staff_make_primary"), "",
 				_on_profile_make_primary.bind(staff_id))
 			primary_button.name = "ProfilePrimaryButton"
-			rows.append(primary_button)
+			actions_column.add_child(_dress_profile_button(primary_button, look))
 		var fire := UiKit.action_button(Text.say("office.fire_staff"),
 			Ledger.staff_fire_refusal(candidate, funds, Text.phrase()),
 			_confirm_fire_staff.bind(staff_id, candidate))
 		fire.name = "ProfileFireButton"
-		rows.append(fire)
+		actions_column.add_child(_dress_profile_button(fire, look, true))
 	else:
 		var hire := UiKit.action_button(Text.say("office.hire"),
 			_hire_refusal(candidate),
 			_on_profile_hire.bind(staff_id))
 		hire.name = "ProfileHireButton"
-		rows.append(hire)
+		actions_column.add_child(_dress_profile_button(hire, look))
+	rows.append(actions)
 
-	_staff_profile_panel.top_aligned = true
-	_staff_profile_panel.open("", rows)
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": str(candidate.get("name", staff_id)),
+		"subtitle": "",
+		"chips": [Text.say("office.funds", {"count": funds})],
+		"rows": rows,
+	})
+	_staff_profile_panel.open_frame(frame, Text.say("ui.back"))
 	# Above the candidates pop-up or the management screen it was opened from.
 	move_child(_staff_profile_panel, get_child_count() - 1)
+
+
+## A button of the staff profile, outlined in the card's ink and touch-sized; `danger` draws it in the fall colour (Fire).
+func _dress_profile_button(button: Button, look: Dictionary, danger: bool = false) -> Button:
+	OfficeFrameStyles.dress_card_button(button, look, not button.disabled)
+	button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+	if danger and not button.disabled:
+		var down: Color = look["down"]
+		for state: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
+			button.add_theme_color_override(state, down)
+		for state: String in ["normal", "hover", "pressed", "focus"]:
+			var box := (button.get_theme_stylebox(state) as StyleBoxFlat).duplicate() as StyleBoxFlat
+			box.border_color = down
+			button.add_theme_stylebox_override(state, box)
+	return button
 
 
 ## The picture's box: the drawing fitted into STAFF_PORTRAIT_MAX with no
@@ -3636,8 +3679,18 @@ func _assignment_handlers() -> Dictionary:
 
 func _show_staff_assignments() -> void:
 	GameState.staff_ensure_day()
-	_assignments_panel.top_aligned = true
-	_assignments_panel.open(Text.say("assign.title"), StaffAssignmentsView.rows(_assignment_handlers()))
+	var handlers := _assignment_handlers()
+	var frame := OfficeScreenFrame.new()
+	var confirm := StaffAssignmentsView.confirm_button(handlers) if not GameState.staff_members().is_empty() \
+		and not GameState.staff_day_pool.is_empty() else null
+	frame.setup({
+		"title": Text.say("assign.title"),
+		"subtitle": "",
+		"chips": EventsModel.chips(),
+		"rows": StaffAssignmentsView.rows(handlers, false),
+		"footer": confirm,
+	})
+	_assignments_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 func _on_task_tapped(uid: String) -> void:

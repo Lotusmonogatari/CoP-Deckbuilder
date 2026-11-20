@@ -190,3 +190,11 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 |---|---|
 | Text row `floor_vote.projection_label` ("{choice} - Likely {result}") | The projections now show the choice at the left and `floor_vote.projection_result` ("Likely {result}") at the right in green or red. Nothing asks for the old combined row. |
 | `FloorVoteScreen._gold_rule()` and `UiKit.gold_rule()`'s use there | The Floor Vote body is cards now; check other screens before removing `UiKit.gold_rule()`. |
+
+## P14b commit 1 (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen.STAFF_TOP_GAP` | The staff profile is a frame now; nothing leaves air above the picture. |
+| `StaffAssignmentsView.rows()`'s no-staff branch headings and `UiKit.heading` calls for the old section titles | The staff-present branch uses cards with titles; the no-staff branch still uses plain headings. |
+| `StaffAssignmentsView.PLAIN_FRAME` and the dark staff card colours | The person card is the style's card now; the chips keep their own tiles. |
