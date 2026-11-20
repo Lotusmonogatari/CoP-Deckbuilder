@@ -1279,6 +1279,7 @@
   "travel.refuse_no_ticket": "You have no {mode} left.",
   "travel.refuse_weekend": "No travel at the weekend.",
   "ui.back": "Back",
+  "ui.back_office": "‹ Office",
   "visit.brief_1": "{staff} leans in. \"{name} only really listens to {first}. Anything else, they tune out.\"",
   "visit.brief_2": "{staff} leans in. \"{name} tends to respond to {first}, and will hear out {second}. Anything else, they tune out.\"",
   "visit.brief_3": "{staff} leans in. \"{name} tends to respond to {first} and {second}. They will hear out {third}, and they are cold to the rest.\"",

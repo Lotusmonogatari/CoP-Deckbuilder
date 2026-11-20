@@ -910,5 +910,53 @@
     "token": "brief_hot",
     "value": "#E3B341",
     "notes": "P12 level preview palette (mockups, 2026-11-19). Claude's draft."
+  },
+  {
+    "token_id": "US115",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "frame_up",
+    "value": "#2F6B3A",
+    "notes": "P13 Office screens palette (mockups, 2026-11-19): a rise and a fall. Claude's draft."
+  },
+  {
+    "token_id": "US116",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "frame_down",
+    "value": "#A42A17",
+    "notes": "P13 Office screens palette (mockups, 2026-11-19): a rise and a fall. Claude's draft."
+  },
+  {
+    "token_id": "US117",
+    "style": "living_office",
+    "group": "colour",
+    "token": "frame_up",
+    "value": "#2E6B34",
+    "notes": "P13 Office screens palette (mockups, 2026-11-19): a rise and a fall. Claude's draft."
+  },
+  {
+    "token_id": "US118",
+    "style": "living_office",
+    "group": "colour",
+    "token": "frame_down",
+    "value": "#A3261A",
+    "notes": "P13 Office screens palette (mockups, 2026-11-19): a rise and a fall. Claude's draft."
+  },
+  {
+    "token_id": "US119",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "frame_up",
+    "value": "#7BD88F",
+    "notes": "P13 Office screens palette (mockups, 2026-11-19): a rise and a fall. Claude's draft."
+  },
+  {
+    "token_id": "US120",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "frame_down",
+    "value": "#FF8A80",
+    "notes": "P13 Office screens palette (mockups, 2026-11-19): a rise and a fall. Claude's draft."
   }
 ]

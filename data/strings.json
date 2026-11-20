@@ -9203,5 +9203,12 @@
     "english": "You have no {mode} left.",
     "placeholders": "mode",
     "notes": "2026-11-20 two offices, slice 4 (Claude's draft)"
+  },
+  {
+    "key": "ui.back_office",
+    "where": "Office screens on the shared frame (P13) — the way out in the top bar",
+    "english": "‹ Office",
+    "placeholders": null,
+    "notes": "P13 (2026-11-20): the spec's back control. Claude's draft."
   }
 ]
