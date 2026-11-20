@@ -319,3 +319,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Two offices, slice 5: the Places tab, place tokens, Needs Place and 29 rewritten events (2026-11-20, Cameron)
 - Two offices, slice 6: eight protagonist levels and the Protagonist column (2026-11-20, Cameron)
 - Two offices, slice 7: the hours report, the office-aware bot and four How to Play entries (2026-11-20, Cameron)
+- Two offices: Cameron's answers to the hours report (ratings, four plane tickets, prices, spellings), 2026-11-20, Cameron

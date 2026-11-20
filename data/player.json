@@ -25,7 +25,8 @@
         "SH21": 1,
         "SH15": 2,
         "SH17": 2,
-        "SH25": 1
+        "SH25": 1,
+        "SH44": 4
       }
     },
     {
@@ -48,7 +49,7 @@
       "region": "Iburi",
       "district_name": "Tomakomai City",
       "district_type": "Single Member",
-      "district_office": "Akenoshinmachi",
+      "district_office": "Akeno Shinmachi",
       "starting_items": {
         "SH21": 1,
         "SH15": 1,
@@ -103,7 +104,7 @@
       "region": "Sōya",
       "district_name": "Sōya - Wakkanai",
       "district_type": "Single Member",
-      "district_office": "Daikoki",
+      "district_office": "Daikoku",
       "starting_items": {
         "SH21": 1,
         "SH29": 1

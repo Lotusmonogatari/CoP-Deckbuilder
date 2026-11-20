@@ -23,7 +23,7 @@ func test_a_new_run_starts_at_the_capitol_and_names_its_district_office() -> voi
 	assert_eq(GameState.office_location, Offices.CAPITOL)
 	assert_eq(GameState.district_office_name(), "Noheji", "PC01 is the Aomori protagonist now")
 	GameState.start_new_run("PC04")
-	assert_eq(GameState.district_office_name(), "Daikoki")
+	assert_eq(GameState.district_office_name(), "Daikoku")
 	GameState.start_new_run("PC03")
 	assert_eq(GameState.district_office_name(), "Teine Ward")
 

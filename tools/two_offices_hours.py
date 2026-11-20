@@ -26,8 +26,8 @@ OUT.mkdir(parents=True, exist_ok=True)
 TRAIN = {"PC01": 7, "PC02": 1, "PC03": 1, "PC04": 6}
 FAST = {"PC01": 2, "PC02": 1, "PC03": 1, "PC04": 4}
 FAST_NAME = {"PC01": "plane", "PC02": "car", "PC03": "car", "PC04": "car"}
-NAMES = {"PC01": "PC01 Kenshin Sako (Aomori, Noheji)", "PC02": "PC02 Haru Yashi (Tomakomai, Akenoshinmachi)",
-         "PC03": "PC03 Arata Ran (Sapporo, Teine Ward)", "PC04": "PC04 Jyurou Nishihara (Wakkanai, Daikoki)"}
+NAMES = {"PC01": "PC01 Kenshin Sako (Aomori, Noheji)", "PC02": "PC02 Haru Yashi (Tomakomai, Akeno Shinmachi)",
+         "PC03": "PC03 Arata Ran (Sapporo, Teine Ward)", "PC04": "PC04 Jyurou Nishihara (Wakkanai, Daikoku)"}
 RATING = {"PC01": "Easy", "PC02": "Normal", "PC03": "Hard", "PC04": "Very Hard"}
 WEEK_HOURS = 40
 
