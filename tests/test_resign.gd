@@ -43,10 +43,11 @@ func test_resigning_ends_the_run_and_stops_saving() -> void:
 	assert_false(GameState.is_in_level())
 
 
-func test_the_button_is_crimson_with_black_text() -> void:
+func test_the_button_is_crimson_with_white_text() -> void:
 	var button := ResignScreen.button(func() -> void: pass)
 	var box := button.get_theme_stylebox("normal") as StyleBoxFlat
 	assert_eq(box.bg_color, ResignScreen.CRIMSON)
 	assert_eq(box.border_color, ResignScreen.CRIMSON)
-	assert_eq(button.get_theme_color("font_color"), Color.BLACK)
+	# White since 2026-11-20 (Cameron, a P13 follow-up): black on this crimson read at about 3.6 to 1.
+	assert_eq(button.get_theme_color("font_color"), Color.WHITE)
 	button.free()
