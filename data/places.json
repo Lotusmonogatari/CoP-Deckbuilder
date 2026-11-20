@@ -1,0 +1,674 @@
+[
+  {
+    "protagonist": "PC04",
+    "place_type": "station",
+    "name": "Wakkanai Station",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "station",
+    "name": "Tomakomai Station",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "station",
+    "name": "Teine Station",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "station",
+    "name": "Zenibako Station",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "station",
+    "name": "Noheji Station",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "station",
+    "name": "Shimokita Station",
+    "note": "Mutsu"
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "travel_route",
+    "name": "Yezo Rail Sōya Line, the Northern Star limited express",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "travel_route",
+    "name": "Yezo Rail Muroran Line, the Harbor Light limited express",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "travel_route",
+    "name": "Yezo Rail Hakodate Line local, or the Sapporo City Subway",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "travel_route",
+    "name": "The Shinkansen through the Seikan Tunnel, then Yezo Rail's Ōminato Line from Noheji",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "town_hall",
+    "name": "Wakkanai City Hall",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "town_hall",
+    "name": "Toyotomi Town Hall",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "town_hall",
+    "name": "Tomakomai City Hall",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "town_hall",
+    "name": "Teine Ward Office",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "town_hall",
+    "name": "Ishikari City Hall",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "town_hall",
+    "name": "Mutsu City Hall",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "town_hall",
+    "name": "Rokkasho Village Office",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "town_hall",
+    "name": "Towada City Hall",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "harbor",
+    "name": "Port of Wakkanai",
+    "note": "ferries to Rishiri and Rebun"
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "harbor",
+    "name": "Port of Tomakomai",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "harbor",
+    "name": "the West Port fishing harbor",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "harbor",
+    "name": "Ishikari Bay New Port",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "harbor",
+    "name": "the Ishikari river-mouth fishing port",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "harbor",
+    "name": "Noheji",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "harbor",
+    "name": "Ōma port",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "harbor",
+    "name": "Rokkasho's Pacific ports",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "onsen_town",
+    "name": "Toyotomi Onsen",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "onsen_town",
+    "name": "Tarumae Onsen, at the Tarumae Foothill Baths",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "onsen_town",
+    "name": "the Seaview Baths on the Pacific shore",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "onsen_town",
+    "name": "Ishikari Onsen, at the Ishikari Fish-House Baths",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "onsen_town",
+    "name": "Yagen Onsen",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "onsen_town",
+    "name": "Shimofuro Onsen",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "mountain",
+    "name": "The Sōya Hills",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "mountain",
+    "name": "Mount Tarumae",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "mountain",
+    "name": "Mount Teine",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "mountain",
+    "name": "Mount Osore",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "mountain",
+    "name": "Mount Kamafuse",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "farmland",
+    "name": "Sarobetsu dairy country",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "farmland",
+    "name": "The Yūfutsu Plain",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "farmland",
+    "name": "The Teine market gardens",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "farmland",
+    "name": "Towada's garlic and nagaimo fields",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "farmland",
+    "name": "Rokkasho stock farms",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "fishing_grounds",
+    "name": "Sōya Strait kelp and scallops",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "fishing_grounds",
+    "name": "Tomakomai's hokki (surf clam) beds",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "fishing_grounds",
+    "name": "The Ishikari salmon run",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "fishing_grounds",
+    "name": "Mutsu Bay scallop farms",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "fishing_grounds",
+    "name": "Ōma's tuna grounds",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "school",
+    "name": "Sōya Regional High School",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "school",
+    "name": "Tomakomai Harbor High School",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "school",
+    "name": "Teine Hillside High School",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "school",
+    "name": "Shimokita Regional High School",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "university",
+    "name": "Wakkanai Northern College",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "university",
+    "name": "Tomakomai Pacific University",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "university",
+    "name": "Teine Institute of Technology",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "university",
+    "name": "Towada Veterinary College",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "hospital",
+    "name": "Wakkanai City Hospital",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "hospital",
+    "name": "Tomakomai City Hospital",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "hospital",
+    "name": "Teine General Hospital",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "hospital",
+    "name": "Mutsu General Hospital",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "shrine_temple",
+    "name": "Hokumon Shrine",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "shrine_temple",
+    "name": "Tarumae Shrine",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "shrine_temple",
+    "name": "Ishikari Benten Shrine",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "shrine_temple",
+    "name": "Osorezan Bodaiji",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "shrine_temple",
+    "name": "Tanabu Shrine",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "market",
+    "name": "Wakkanai Central Arcade",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "market",
+    "name": "Tomakomai Port Fish Market",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "market",
+    "name": "Benten historic street, Ishikari",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "market",
+    "name": "Towada Farmers' Market",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "festival",
+    "name": "Wakkanai Minato Antarctic Festival",
+    "note": "early August"
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "festival",
+    "name": "Tomakomai Port Festival",
+    "note": "early August"
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "festival",
+    "name": "Hokki Festival",
+    "note": "October"
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "festival",
+    "name": "Ishikari Salmon Festival",
+    "note": "late September"
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "festival",
+    "name": "Tanabu Festival, Mutsu",
+    "note": "August 18–20"
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "factory",
+    "name": "The Sarobetsu Dairy Co-op creamery",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "factory",
+    "name": "Yezo Paper Company's Tomakomai Paper Works",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "factory",
+    "name": "the Northern Motors transmission plant",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "factory",
+    "name": "Ishikari Bay New Port industrial area",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "factory",
+    "name": "Mutsu-Ogawara industrial area, Rokkasho",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "energy_site",
+    "name": "Sōya Hills Wind Park",
+    "note": "57 turbines"
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "energy_site",
+    "name": "Tomakomai Carbon Storage Center",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "energy_site",
+    "name": "Yezo Electric Power's planned LNG terminal",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "energy_site",
+    "name": "Bayside Wind Company's offshore wind farm",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "energy_site",
+    "name": "Yezo Gas's Ishikari LNG terminal",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "energy_site",
+    "name": "Rokkasho Fuel Recycling Plant (Yezo Nuclear Fuel Corporation) and wind farms",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "energy_site",
+    "name": "Ōma nuclear plant",
+    "note": "Northern Power Development, under construction"
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "island",
+    "name": "Rishiri and Rebun",
+    "note": "if inside the district"
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "island",
+    "name": "Benten-jima off Cape Ōma",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "landmark",
+    "name": "Cape Sōya",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "landmark",
+    "name": "Lake Utonai",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "landmark",
+    "name": "Hamanasu no Oka Park and the Ishikari lighthouse",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "landmark",
+    "name": "Cape Ōma",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "landmark",
+    "name": "Lake Towada and the Oirase Gorge",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "ainu_site",
+    "name": "Wakkanai Ainu Center",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "ainu_site",
+    "name": "Tomakomai Ainu Center",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "ainu_site",
+    "name": "Kita Ward Ainu Center",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "ainu_site",
+    "name": "Towada Ainu Center",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "beach",
+    "name": "The Sarobetsu coast, facing Rishiri",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "beach",
+    "name": "The Pacific shore at Nishikioka",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "beach",
+    "name": "The Ishikari and Zenibako beaches",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "beach",
+    "name": "The Mutsu Bay shore at Noheji",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "ski_area",
+    "name": "Wakkanai City Ski Hill",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "ski_area",
+    "name": "Tarumae Ski Hill",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "ski_area",
+    "name": "Mount Teine Ski Resort",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "ski_area",
+    "name": "Mount Kamafuse",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "park",
+    "name": "Wakkanai Park",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "park",
+    "name": "Midorigaoka Park",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "park",
+    "name": "Maeda Forest Park",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "park",
+    "name": "Mutsu Bayside Park",
+    "note": null
+  },
+  {
+    "protagonist": "PC04",
+    "place_type": "community_hall",
+    "name": "Wakkanai Community Hall",
+    "note": null
+  },
+  {
+    "protagonist": "PC02",
+    "place_type": "community_hall",
+    "name": "Tomakomai Community Hall",
+    "note": null
+  },
+  {
+    "protagonist": "PC03",
+    "place_type": "community_hall",
+    "name": "Teine Community Hall",
+    "note": null
+  },
+  {
+    "protagonist": "PC01",
+    "place_type": "community_hall",
+    "name": "Mutsu Community Hall",
+    "note": null
+  }
+]

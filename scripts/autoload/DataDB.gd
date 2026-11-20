@@ -34,7 +34,7 @@ const DATA_PATH := "res://data/"
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
 	"bill_components", "bill_level_templates", "patron_bills", "party_values",
-	"visit_questions", "visit_answers", "trade_questions", "lobbyist_lines",
+	"visit_questions", "visit_answers", "trade_questions", "lobbyist_lines", "places",
 	"floor_votes", "how_to_play", "law_effects", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders", "standing_links",
@@ -261,6 +261,10 @@ var law_effects: Array = []
 var bill_components: Array = []
 var patron_bills: Array = []
 var bill_level_templates: Array = []
+## The named places of each protagonist's district, by type (two offices, slice 5): see PlaceTokens.
+var places: Array = []
+## The text of rows that ask for place tokens, as loaded, so choosing another protagonist refills them.
+var _place_templates: Dictionary = {}
 var party_values: Array = []
 var visit_questions: Array = []
 var visit_answers: Array = []
@@ -436,6 +440,7 @@ func load_all() -> void:
 			"visit_answers": visit_answers = content if content is Array else []
 			"trade_questions": trade_questions = content if content is Array else []
 			"lobbyist_lines": lobbyist_lines = content if content is Array else []
+			"places": places = content if content is Array else []
 			"questions": questions = content
 			"sounds":
 				sounds = _map_under(content, file_name, "sounds")
@@ -469,6 +474,7 @@ func load_all() -> void:
 	shop_base = shop.duplicate(true)
 
 	_fill_name_tokens()
+	_fill_place_tokens()
 	_build_lookups()
 	_validate()
 	_loaded = true
@@ -493,6 +499,33 @@ func is_loaded() -> bool:
 ## every screen, the web build — then sees an ordinary name and no consumer
 ## has to know tokens exist. This is the same cross-file resolution DataDB
 ## already does elsewhere, not presentation.
+## Fills the place tokens ("{place:harbor}", "{office_city}") in the text of events and their choices with the
+## protagonist's own names (two offices, slice 5). The unfilled text is kept, like _fill_name_tokens(), so choosing a
+## different protagonist refills it.
+func _fill_place_tokens() -> void:
+	var names := PlaceTokens.names_by_type(places, str(player.get("player_id", "")))
+	var town := str(player.get("district_office", ""))
+	for entry: Array in [[events, "event_id", ["title", "flavor"]],
+			[event_choices, "event_id", ["choice_text", "result_text", "promise_kept_text"]]]:
+		var rows: Array = entry[0]
+		for index in rows.size():
+			var row: Dictionary = rows[index]
+			for field: String in entry[2]:
+				var key := "%s|%d|%s" % [entry[1], index, field]
+				if not _place_templates.has(key):
+					var raw: Variant = row.get(field)
+					if raw is String and ((raw as String).contains("{place:") or (raw as String).contains(PlaceTokens.OFFICE_CITY)):
+						_place_templates[key] = raw
+					else:
+						continue
+				row[field] = PlaceTokens.fill(str(_place_templates[key]), names, town, str(row.get(entry[1], "")))
+
+
+## The place types this protagonist's district has (the Places tab), for Needs Place.
+func place_types_for(player_id: String) -> Array:
+	return PlaceTokens.names_by_type(places, player_id).keys()
+
+
 func _fill_name_tokens() -> void:
 	var party := str(player.get("party", "")).strip_edges()
 
@@ -545,6 +578,7 @@ func use_protagonist(player_id: String) -> bool:
 		return false
 	player = chosen
 	_fill_name_tokens()
+	_fill_place_tokens()
 	# The button outlines wear the protagonist's party colour (Layout loads
 	# after this autoload, so it may not exist yet at boot).
 	var layout := get_node_or_null("/root/Layout")

@@ -19,12 +19,13 @@
     "seasons": [
       "Summer"
     ],
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV02",
     "title": "The Temple Bell Needs a Ringer",
-    "flavor": "The Buddhist Temples Association is ringing the great bell at a hillside temple in Matsumae and asks you to take a turn. A neighbor mentions, quietly, that the bell tower roof leaks.",
+    "flavor": "The Buddhist Temples Association is ringing the great bell at {place:shrine_temple} and asks you to take a turn. A neighbor mentions, quietly, that the bell tower roof leaks.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -41,7 +42,10 @@
     "seasons": [
       "Winter"
     ],
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "shrine_temple"
+    ]
   },
   {
     "event_id": "EV03",
@@ -61,7 +65,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV04",
@@ -81,7 +86,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV05",
@@ -101,7 +107,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV06",
@@ -121,7 +128,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV11",
@@ -141,12 +149,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV12",
     "title": "A Question About the Street",
-    "flavor": "A shopkeeper stops you outside Shin-Hakodate-Hokuto Station. The road surface has been broken for years, and everyone keeps talking about a faster train but nobody says who pays.",
+    "flavor": "A shopkeeper stops you outside {place:station}. The road surface has been broken for years, and everyone keeps talking about a faster train but nobody says who pays.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -161,12 +170,15 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "station"
+    ]
   },
   {
     "event_id": "EV13",
     "title": "Neighborhood Festival Invitation",
-    "flavor": "The association is holding its festival on the weekend and has saved you a place at the head table.",
+    "flavor": "The association is holding {place:festival} on the weekend and has saved you a place at the head table.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -181,7 +193,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "festival"
+    ]
   },
   {
     "event_id": "EV14",
@@ -201,7 +216,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV15",
@@ -221,7 +237,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV16",
@@ -241,12 +258,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV17",
     "title": "A Veteran Writes About the Coast",
-    "flavor": "A veterans' hall secretary writes that the old coastal batteries on Mount Hakodate are being discussed again, and nobody has asked the people who served there.",
+    "flavor": "A veterans' hall secretary writes that the old coastal batteries at {place:landmark} are being discussed again, and nobody has asked the people who served there.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -261,7 +279,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "landmark"
+    ]
   },
   {
     "event_id": "EV18",
@@ -281,12 +302,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV19",
     "title": "A Priest Asks About the Old Gate",
-    "flavor": "A temple priest and a shrine caretaker from Hirosaki have come together, which almost never happens, to ask about the gate that both their congregations use.",
+    "flavor": "A temple priest and a shrine caretaker from {office_city} have come together, which almost never happens, to ask about the gate that both their congregations use.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -301,12 +323,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV20",
     "title": "A Founder Pitches You on the Train",
-    "flavor": "A young founder recognizes you on the express, sits down uninvited, and has a laptop open before you can say no.",
+    "flavor": "A young founder recognizes you on {place:travel_route}, sits down uninvited, and has a laptop open before you can say no.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -321,7 +344,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "travel_route"
+    ]
   },
   {
     "event_id": "EV21",
@@ -341,7 +367,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV22",
@@ -361,7 +388,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV23",
@@ -381,12 +409,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV24",
     "title": "A Parents' Meeting",
-    "flavor": "A school invites you to a parent-teacher night. The talk turns to what children are, and are not, being taught.",
+    "flavor": "{place:school} invites you to a parent-teacher night. The talk turns to what children are, and are not, being taught.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -401,7 +430,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "school"
+    ]
   },
   {
     "event_id": "EV25",
@@ -421,12 +453,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV26",
     "title": "The Clinic Is Closing on Fridays",
-    "flavor": "A nurse from the Toyotomi village clinic says the doctor now comes only four days a week, and the next clinic is ninety minutes away.",
+    "flavor": "A nurse from the village clinic at {place:onsen_town} says the doctor now comes only four days a week, and the next clinic is ninety minutes away.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -441,12 +474,15 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "onsen_town"
+    ]
   },
   {
     "event_id": "EV27",
     "title": "A Harbor Customs Officer Writes",
-    "flavor": "A letter in careful handwriting from Hakodate port: the harbor is short of staff, the paperwork has doubled, and no one in the capital seems to know.",
+    "flavor": "A letter in careful handwriting from {place:harbor}: the harbor is short of staff, the paperwork has doubled, and no one in the capital seems to know.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -461,7 +497,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "harbor"
+    ]
   },
   {
     "event_id": "EV31",
@@ -481,7 +520,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV32",
@@ -501,7 +541,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV33",
@@ -521,7 +562,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV34",
@@ -541,12 +583,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV35",
     "title": "Sponsor a Festival Float",
-    "flavor": "The festival committee needs a sponsor for the lead float. Your name would go on a banner.",
+    "flavor": "The {place:festival} committee needs a sponsor for the lead float. Your name would go on a banner.",
     "trigger": "Buyable",
     "available": "Weekend",
     "hours": 2,
@@ -561,7 +604,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "festival"
+    ]
   },
   {
     "event_id": "EV36",
@@ -581,12 +627,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV37",
     "title": "A School Asks You to Visit",
-    "flavor": "A teacher writes that the class has been studying the Assembly and would like a real legislator to answer questions.",
+    "flavor": "A teacher at {place:school} writes that the class has been studying the Assembly and would like a real legislator to answer questions.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -601,7 +648,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "school"
+    ]
   },
   {
     "event_id": "EV38",
@@ -621,12 +671,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV39",
     "title": "A Photograph Goes Around",
-    "flavor": "A picture of you at a market stall is being shared. It is not a bad picture. People you do not know are writing to you.",
+    "flavor": "A picture of you at a stall in {place:market} is being shared. It is not a bad picture. People you do not know are writing to you.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -641,7 +692,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "market"
+    ]
   },
   {
     "event_id": "EV40",
@@ -661,7 +715,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV41",
@@ -683,12 +738,13 @@
     "seasons": [
       "Winter"
     ],
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV42",
     "title": "A Bear Is Seen Near a School",
-    "flavor": "The principal of a school in Shari calls at seven in the morning. A bear has been seen at the edge of the school grounds.",
+    "flavor": "The principal of {place:school} calls at seven in the morning. A bear has been seen at the edge of the school grounds.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -703,7 +759,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "school"
+    ]
   },
   {
     "event_id": "EV43",
@@ -723,7 +782,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV44",
@@ -743,7 +803,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV45",
@@ -763,7 +824,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV46",
@@ -783,7 +845,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV47",
@@ -803,12 +866,13 @@
     "on_date": "18.10.08",
     "speaker_title": "Prime Minister",
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV48",
-    "title": "Morning Radio Exercises by the Lake",
-    "flavor": "A group of elders has done the same radio exercises on the Lake Tōya path every morning for decades. The organizer asks whether you would join them for the first set.",
+    "title": "Morning Radio Exercises at {place:landmark}",
+    "flavor": "A group of elders has done the same radio exercises on the path at {place:landmark} every morning for decades. The organizer asks whether you would join them for the first set.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -827,12 +891,15 @@
       "Summer",
       "Autumn"
     ],
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "landmark"
+    ]
   },
   {
     "event_id": "EV49",
-    "title": "Ainu Cultural Showcase Day at the Lake",
-    "flavor": "The Ainu Kotan at Lake Akan is holding its cultural showcase day: songs, dance, embroidery and food. The elders have asked whether you will come.",
+    "title": "Ainu Cultural Showcase Day",
+    "flavor": "{place:ainu_site} is holding its cultural showcase day: songs, dance, embroidery and food. The elders have asked whether you will come.",
     "trigger": "Random",
     "available": "Weekend",
     "hours": 2,
@@ -850,12 +917,15 @@
       "Summer",
       "Autumn"
     ],
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "ainu_site"
+    ]
   },
   {
     "event_id": "EV50",
     "title": "A College Visit to an Ainu Cultural Center",
-    "flavor": "A university student society has invited you to join its field visit to the Ainu cultural center at Shiraoi. The students will tour the exhibits and meet the staff, and they would like a legislator to come along.",
+    "flavor": "A university student society has invited you to join its field visit to {place:ainu_site}. The students will tour the exhibits and meet the staff, and they would like a legislator to come along.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 2,
@@ -870,7 +940,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "ainu_site"
+    ]
   },
   {
     "event_id": "EV51",
@@ -890,12 +963,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV52",
     "title": "Students Ask for a Campus Q&A",
-    "flavor": "Students United has booked the biggest lecture hall on campus and asked you to take their questions. They say they will not go easy on you.",
+    "flavor": "Students United has booked the biggest lecture hall at {place:university} and asked you to take their questions. They say they will not go easy on you.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -910,12 +984,15 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "university"
+    ]
   },
   {
     "event_id": "EV53",
     "title": "The Fisheries Cooperative Calls a Meeting",
-    "flavor": "The Fisheries Cooperative has called its members to the Rausu harbor hall about quotas, prices and the cracked breakwater, and asked you to stand in front of them.",
+    "flavor": "The Fisheries Cooperative has called its members to the hall at {place:harbor} about quotas, prices and the cracked breakwater, and asked you to stand in front of them.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -930,7 +1007,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "harbor"
+    ]
   },
   {
     "event_id": "EV54",
@@ -950,7 +1030,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV55",
@@ -970,12 +1051,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV56",
     "title": "The Co-op Invites You to the Harvest",
-    "flavor": "The agricultural cooperative in Memuro is bringing in the autumn harvest and invites you to spend a few hours in the fields with its members.",
+    "flavor": "The agricultural cooperative at {place:farmland} is bringing in the autumn harvest and invites you to spend a few hours in the fields with its members.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -992,12 +1074,15 @@
     "seasons": [
       "Autumn"
     ],
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "farmland"
+    ]
   },
   {
     "event_id": "EV57",
     "title": "A Workshop Opens on the Shopping Street",
-    "flavor": "A woodcarver and two potters have opened a shared workshop in an empty shop on Asahikawa's Heiwa-dori. The Artisans Guild asks you to cut the ribbon.",
+    "flavor": "A woodcarver and two potters have opened a shared workshop in an empty shop at {place:market}. The Artisans Guild asks you to cut the ribbon.",
     "trigger": "Random",
     "available": "Both",
     "hours": 1,
@@ -1012,12 +1097,15 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "market"
+    ]
   },
   {
     "event_id": "EV58",
     "title": "Commuters Ask You to Ride the Rush-Hour Train",
-    "flavor": "The Commuter Committee dares you to ride the packed rush-hour train from Otaru into Sapporo with them, standing, before you next speak on fares.",
+    "flavor": "The Commuter Committee dares you to ride the packed rush-hour train on {place:travel_route} with them, standing, before you next speak on fares.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1032,7 +1120,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": [
+      "travel_route"
+    ]
   },
   {
     "event_id": "EV59",
@@ -1052,7 +1143,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV60",
@@ -1072,7 +1164,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV61",
@@ -1092,7 +1185,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV62",
@@ -1112,12 +1206,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV63",
     "title": "The Ministry Replies About the Harbor",
-    "flavor": "The ministry has answered the letter you forwarded from Hakodate port: the harbor office will be reviewed, at some point, by someone.",
+    "flavor": "The ministry has answered the letter you forwarded from {place:harbor}: the harbor office will be reviewed, at some point, by someone.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1132,7 +1227,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "harbor"
+    ]
   },
   {
     "event_id": "EV64",
@@ -1152,7 +1250,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV65",
@@ -1172,12 +1271,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV66",
     "title": "Honoring the Elders at the Hall",
-    "flavor": "The neighborhood association in Furano is honoring every resident over eighty and asks you to hand out the certificates.",
+    "flavor": "The neighborhood association in {office_city} is honoring every resident over eighty and asks you to hand out the certificates.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -1194,7 +1294,8 @@
     "seasons": [
       "Autumn"
     ],
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV67",
@@ -1216,7 +1317,8 @@
     "seasons": [
       "Spring"
     ],
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV68",
@@ -1236,12 +1338,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV69",
     "title": "The Farm Road Washes Out",
-    "flavor": "Last night's storm took out the only road to six farms near Biei. The co-op asks whether you will come and see it.",
+    "flavor": "Last night's storm took out the only road to six farms near {place:farmland}. The co-op asks whether you will come and see it.",
     "trigger": "Random",
     "available": "Both",
     "hours": 2,
@@ -1259,7 +1362,10 @@
       "Summer",
       "Autumn"
     ],
-    "location": "Either"
+    "location": "Either",
+    "needs_place": [
+      "farmland"
+    ]
   },
   {
     "event_id": "EV70",
@@ -1279,7 +1385,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV71",
@@ -1299,7 +1406,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV72",
@@ -1321,7 +1429,8 @@
     "seasons": [
       "Summer"
     ],
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV73",
@@ -1341,7 +1450,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV74",
@@ -1361,7 +1471,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV75",
@@ -1381,7 +1492,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV76",
@@ -1401,7 +1513,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV77",
@@ -1421,7 +1534,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV78",
@@ -1441,7 +1555,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV79",
@@ -1461,7 +1576,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV80",
@@ -1481,7 +1597,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV81",
@@ -1501,12 +1618,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV82",
     "title": "The Wind Turbine Meeting",
-    "flavor": "The village hall below Cape Sōya is full. The company has brought a model of the turbine, and the sheep farmers have brought their questions.",
+    "flavor": "The village hall near {place:energy_site} is full. The company has brought a model of the turbine, and the sheep farmers have brought their questions.",
     "trigger": "Followup",
     "available": "Both",
     "hours": 1,
@@ -1521,7 +1639,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "energy_site"
+    ]
   },
   {
     "event_id": "EV83",
@@ -1541,7 +1662,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV84",
@@ -1561,7 +1683,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV85",
@@ -1581,11 +1704,12 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV86",
-    "title": "A Foreign Buyer Visits the Port",
+    "title": "A Foreign Buyer Visits {place:harbor}",
     "flavor": "A buyer from overseas wants a large order of local goods and asks whether the permits can move quickly. The Chamber of Commerce wants an answer.",
     "trigger": "Random",
     "available": "Both",
@@ -1601,12 +1725,15 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "harbor"
+    ]
   },
   {
     "event_id": "EV87",
     "title": "The Shopping Street Wants Late Hours",
-    "flavor": "Shopkeepers on the main street want evening hours extended. Residents nearby are worried about the noise. The Small Business Owners' Association asks for your support.",
+    "flavor": "Shopkeepers at {place:market} want evening hours extended. Residents nearby are worried about the noise. The Small Business Owners' Association asks for your support.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1621,7 +1748,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "market"
+    ]
   },
   {
     "event_id": "EV88",
@@ -1641,7 +1771,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV89",
@@ -1661,12 +1792,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV90",
-    "title": "A Savings Fair at the Community Hall",
-    "flavor": "The Financial Industry Association is running a free workshop on scams and savings at the community hall. The Family Network is holding a picnic at the same time.",
+    "title": "A Savings Fair at {place:community_hall}",
+    "flavor": "The Financial Industry Association is running a free workshop on scams and savings at {place:community_hall}. The Family Network is holding a picnic at the same time.",
     "trigger": "Random",
     "available": "Weekend",
     "hours": 2,
@@ -1681,7 +1813,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "community_hall"
+    ]
   },
   {
     "event_id": "EV91",
@@ -1701,7 +1836,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV92",
@@ -1721,7 +1857,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV93",
@@ -1741,12 +1878,13 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": null
   },
   {
     "event_id": "EV94",
     "title": "The Hall's Roof Is Failing",
-    "flavor": "The community hall that hosts the district's festivals needs a new roof. Our Traditional Society asks you to back a public grant.",
+    "flavor": "{place:community_hall}, which hosts the district's festivals, needs a new roof. Our Traditional Society asks you to back a public grant.",
     "trigger": "Random",
     "available": "Weekday",
     "hours": 1,
@@ -1761,7 +1899,10 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "District"
+    "location": "District",
+    "needs_place": [
+      "community_hall"
+    ]
   },
   {
     "event_id": "EV95",
@@ -1781,7 +1922,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV96",
@@ -1801,7 +1943,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV97",
@@ -1821,7 +1964,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV98",
@@ -1841,7 +1985,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV99",
@@ -1861,7 +2006,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV100",
@@ -1881,7 +2027,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV101",
@@ -1901,7 +2048,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV102",
@@ -1921,7 +2069,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV103",
@@ -1941,7 +2090,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV104",
@@ -1961,7 +2111,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "needs_place": null
   },
   {
     "event_id": "EV105",
@@ -1981,7 +2132,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV106",
@@ -2001,7 +2153,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV107",
@@ -2021,7 +2174,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV108",
@@ -2041,7 +2195,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV109",
@@ -2061,7 +2216,8 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   },
   {
     "event_id": "EV110",
@@ -2081,6 +2237,7 @@
     "on_date": null,
     "speaker_title": null,
     "seasons": null,
-    "location": "Either"
+    "location": "Either",
+    "needs_place": null
   }
 ]
