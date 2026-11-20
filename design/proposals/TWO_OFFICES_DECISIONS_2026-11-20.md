@@ -41,6 +41,18 @@ These are Cameron's answers to the open questions in `TWO_OFFICES_SPEC_2026-11-1
 | 20 | Negative level rewards | **Allowed**, a few true trade-offs where the story calls for one, always shown in the briefing's Organizations card before Go in. |
 | 21 | Real names in text | **Keep real geography** (towns, mountains, straits, neighbouring countries); **Yezo-ize companies and branded venues only**, per the adopted brand map. No mass rewrite of Hokkaido, Japan and similar. |
 
+## Added later on 2026-11-20: mixed levels now cost travel (replaces spec rule 5)
+
+The spec's rule 5 said a mixed level's travel is built in, free and not shown. **Cameron changed it:**
+
+| # | Decision | Detail |
+|---|---|---|
+| 22 | A mixed level charges its travel time | **Level hours plus travel hours**, shown in the briefing. A **full round trip, capped**: 2 trips for the 20 Capitol levels with a District room in the middle; **1 trip for LV12, LV61 and LV62** (District to Capitol); LV10 (which alternates four times) is capped at one round trip. Data: a `Travel Trips` number on Levels (blank or 0 = none), which also says where the player ends (an odd count ends at the other office; an even one where they started). PC01 and PC04 pay 12 hours per round trip, PC02 and PC03 2. |
+| 23 | Choosing the travel mode | **A mode row of three icons in the briefing** (rail pass, paid ticket, private car), showing only the modes the player has; the **hours in the briefing adjust at once** as the mode is picked. The rail pass is always there. |
+| 24 | Encounters on a mixed level | **One roll at the start** on the rail pass and the paid ticket; the car skips it (1 in 8 on the pass, as for the swipe). Built in slice 4. |
+
+**Effect on the numbers:** the audit's hours model assumed mixed-level travel was free. With 24 mixed levels, PC01 and PC04 now lose more hours than the audit's 5 to 11 a week; the re-simulation (slice 7) measures it, and decision 14 (the PC01 and PC04 rating) waits for it. By the audit's data no mixed level goes past 40 hours with its trips added (the longest, LV10, is 27 plus 12 for PC01 and PC04).
+
 ## What this means for the art list
 
 | Asset | Status |
