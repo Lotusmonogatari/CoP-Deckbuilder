@@ -121,6 +121,17 @@ var _visitors := {"questions": 0, "paid_hours": 0, "paid_funds": 0, "promises_ma
 var _weeks_overdue := 0
 var _idle_weeks := 0
 var _weekend_levels := 0
+## Two offices (2026-11-20): when on (the default; PLAYTEST_OFFICES=0 turns it off), the bot plays like a batching
+## player on the rail pass: levels at the office it stands at first, a trip only when nothing is left there, and a
+## mixed level's built-in trips paid. Off is the older behavior (offices ignored, no travel hours spent).
+var _offices := true
+## "here_first" (PLAYTEST_OFFICES=1, the default): a trip only when nothing is left at this office.
+## "ranked" (PLAYTEST_OFFICES=2): the bot's own order of levels wins and it travels whenever the best level is at the
+## other office (the pessimistic order: it crosses as often as its sequence demands).
+var _office_policy := "here_first"
+var _trips := 0
+var _trip_hours := 0
+var _mixed_levels := 0
 var _items_by_id: Dictionary = {}
 var _suit_plays: Dictionary = {}
 var _levels_played_by_tier: Dictionary = {}
@@ -149,6 +160,11 @@ func _run() -> void:
 	var protagonist := OS.get_environment("PLAYTEST_PROTAGONIST")
 	if not protagonist.is_empty():
 		_protagonist = protagonist
+	match OS.get_environment("PLAYTEST_OFFICES"):
+		"0": _office_policy = "off"
+		"2": _office_policy = "ranked"
+		_: _office_policy = "here_first"
+	_offices = _office_policy != "off"
 	_random_moves = bool(_s["random_cards"])
 	_patron_on = bool(_s["patron"])
 	_gaffe_price = 0.8 * float(_s["gaffe"])
@@ -391,9 +407,15 @@ func _choose_level() -> String:
 			continue
 		if Ledger.level_cooldown_remaining(level, GameState.time_units, GameState.level_cleared_units) > 0:
 			continue
-		if not GameState.level_calendar_refusal(level).is_empty():
+		if not _calendar_ok(level):
+			continue
+		if _offices and not GameState.level_is_for_player(level):
 			continue
 		candidates.append(level)
+	if _office_policy == "ranked":
+		return _choose_ranked_with_travel(candidates)
+	if _offices:
+		candidates = _candidates_here_or_travel(candidates)
 	if candidates.is_empty():
 		return ""
 	var mode := str(_s["level"])
@@ -402,6 +424,76 @@ func _choose_level() -> String:
 	candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return _level_rank(a, mode) > _level_rank(b, mode))
 	return str((candidates[0] as Dictionary).get("level_id", ""))
+
+
+## Does the week have room for `level`? With offices on, its built-in trips count (the game's own check);
+## off, only the level's own hours (the behavior before the offices existed).
+func _calendar_ok(level: Dictionary) -> bool:
+	if _offices:
+		return GameState.level_calendar_refusal(level).is_empty()
+	var weekend_ok := str(level.get("weekend_ok", "")).strip_edges().to_lower() == "yes"
+	return WeekCalendar.level_refusal(GameState.calendar, GameState.calendar_config(), GameState.level_hours(level), weekend_ok).is_empty()
+
+
+## A batching player: levels at the office they stand at; when there are none, a trip (if a level over there
+## still fits the week once the trip's hours are spent), then the levels over there.
+func _candidates_here_or_travel(candidates: Array) -> Array:
+	var here: Array = []
+	var there: Array = []
+	for level: Dictionary in candidates:
+		if GameState.level_at_this_office(level):
+			here.append(level)
+		else:
+			there.append(level)
+	if not here.is_empty() or there.is_empty() or not GameState.travel_refusal().is_empty():
+		return here
+	var reachable: Array = []
+	for level: Dictionary in there:
+		if _trip_fits(level):
+			reachable.append(level)
+	if reachable.is_empty():
+		return []
+	_take_trip()
+	var now_here: Array = []
+	for level: Dictionary in reachable:
+		if GameState.level_at_this_office(level):
+			now_here.append(level)
+	return now_here
+
+
+## True when a trip to the other office, then `level`, still fits the week (and a trip is allowed now).
+func _trip_fits(level: Dictionary) -> bool:
+	if not GameState.travel_refusal().is_empty():
+		return false
+	var weekend_ok := str(level.get("weekend_ok", "")).strip_edges().to_lower() == "yes"
+	return WeekCalendar.level_refusal(GameState.calendar, GameState.calendar_config(),
+			GameState.level_total_hours(level) + GameState.trip_hours(), weekend_ok).is_empty()
+
+
+func _take_trip() -> void:
+	var trip := GameState.trip_hours()
+	if GameState.travel():
+		_trips += 1
+		_trip_hours += trip
+		GameState.take_travel_encounter()   # the bot does not play the train dilemma
+
+
+## The pessimistic order: the bot's own ranking decides, and it crosses whenever the best level is at the other office
+## (and fits the week with the trip). Returns the level's id, or "" when nothing fits.
+func _choose_ranked_with_travel(candidates: Array) -> String:
+	var mode := str(_s["level"])
+	if mode == "random":
+		candidates.shuffle()
+	else:
+		candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+			return _level_rank(a, mode) > _level_rank(b, mode))
+	for level: Dictionary in candidates:
+		if GameState.level_at_this_office(level):
+			return str(level.get("level_id", ""))
+		if _trip_fits(level):
+			_take_trip()
+			return str(level.get("level_id", "")) if GameState.level_at_this_office(level) else ""
+	return ""
 
 
 ## Higher is better. Sequential = never-played first, lowest id first.
@@ -460,8 +552,15 @@ func _num(value: Variant) -> float:
 
 
 func _play_level(level_id: String) -> void:
-	var before := _snapshot()
 	var level := DataDB.get_level(level_id)
+	var level_travel_hours := 0
+	if _offices and Travel.level_trips(level) > 0:
+		level_travel_hours = GameState.level_trip_hours(level)
+		GameState.pay_level_travel(level)
+		_trips += Travel.level_trips(level)
+		_trip_hours += level_travel_hours
+		_mixed_levels += 1
+	var before := _snapshot()
 	var wins_before := _wins
 	var losses_before := _losses
 	super._play_level(level_id)
@@ -471,7 +570,7 @@ func _play_level(level_id: String) -> void:
 	var hours := maxi(int(after["t"]) - int(before["t"]), 1)
 	var election_move := (float(after["dist"]) - float(before["dist"])) + (float(after["nat"]) - float(before["nat"])) \
 		+ (float(after["con"]) - float(before["con"]))
-	var entry := {"level": level_id, "tier": tier, "week": _weeks, "hours": hours,
+	var entry := {"level": level_id, "tier": tier, "week": _weeks, "hours": hours, "travel_hours": level_travel_hours,
 		"funds": int(after["funds"]) - int(before["funds"]), "party": int(after["party"]) - int(before["party"]),
 		"con": int(after["con"]) - int(before["con"]), "rep": int(after["rep"]) - int(before["rep"]),
 		"xp": int(after["xp_total"]) - int(before["xp_total"]), "dist": int(after["dist"]) - int(before["dist"]),
@@ -518,7 +617,9 @@ func _end_week() -> void:
 					continue
 				if Ledger.level_cooldown_remaining(level, GameState.time_units, GameState.level_cleared_units) > 0:
 					continue
-				if GameState.level_calendar_refusal(level).is_empty():
+				if _offices and (not GameState.level_is_for_player(level) or not GameState.level_at_this_office(level)):
+					continue
+				if _calendar_ok(level):
 					weekend_levels.append(level)
 			if not weekend_levels.is_empty():
 				var rank_mode := "money" if str(_s["level"]) == "seq" else str(_s["level"])
@@ -809,6 +910,7 @@ func _finish() -> void:
 		"election_parts": GameState.election_parts(),
 		"level_attempts": _level_attempts, "stages": _stages_played, "wins": _wins, "losses": _losses,
 		"weekend_levels": _weekend_levels,
+		"offices": _offices, "office_policy": _office_policy, "trips": _trips, "trip_hours": _trip_hours, "mixed_levels": _mixed_levels,
 		"levels_cleared": GameState.level_last_completed_at.size(),
 		"levels_by_tier": _levels_played_by_tier,
 		"owned_cards": GameState.owned_cards.size(), "deck": GameState.deck,

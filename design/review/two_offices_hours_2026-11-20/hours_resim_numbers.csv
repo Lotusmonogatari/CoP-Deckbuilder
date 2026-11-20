@@ -1,0 +1,17 @@
+protagonist,mode,order,swipe_trips_per_week,mixed_trips_per_week,travel_hours_per_week,share_of_weeks_with_12h_or_more
+PC01,rail pass,as played,1.818,1.123,20.59,0.763
+PC01,rail pass,batched,0.849,1.123,13.81,0.491
+PC01,plane,as played,1.818,1.123,5.88,0.132
+PC01,plane,batched,0.849,1.123,3.94,0.014
+PC02,rail pass,as played,1.846,1.094,2.94,0.001
+PC02,rail pass,batched,0.865,1.094,1.96,0.000
+PC02,car,as played,1.846,1.094,2.94,0.001
+PC02,car,batched,0.865,1.094,1.96,0.000
+PC03,rail pass,as played,1.850,1.101,2.95,0.000
+PC03,rail pass,batched,0.857,1.101,1.96,0.000
+PC03,car,as played,1.850,1.101,2.95,0.000
+PC03,car,batched,0.857,1.101,1.96,0.000
+PC04,rail pass,as played,1.874,1.071,17.67,0.745
+PC04,rail pass,batched,0.828,1.071,11.39,0.463
+PC04,car,as played,1.874,1.071,11.78,0.504
+PC04,car,batched,0.828,1.071,7.60,0.383

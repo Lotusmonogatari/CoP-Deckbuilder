@@ -109,3 +109,18 @@ func test_every_guide_entry_is_at_most_three_sentences() -> void:
 			sentences += body.count(ch + " ") + (1 if body.ends_with(ch) else 0)
 		sentences += body.count(".\n") + body.count("!\n") + body.count("?\n")
 		assert_lte(sentences, 3, "%s has %d sentences" % [entry.get("entry_id", ""), sentences])
+
+
+func test_the_guide_explains_the_two_offices() -> void:
+	# Two offices, slice 7 (2026-11-20): four entries after the week and events entries.
+	var wanted := {"HT35": "Capitol", "HT36": "train", "HT37": "ticket", "HT38": "Promises"}
+	var by_id := {}
+	for entry: Dictionary in DataDB.how_to_play:
+		by_id[str(entry.get("entry_id", ""))] = entry
+	for id: String in wanted:
+		assert_true(by_id.has(id), "%s is in the guide" % id)
+		if not by_id.has(id):
+			continue
+		var entry: Dictionary = by_id[id]
+		assert_eq(str(entry.get("group", "")), "Between Levels", "%s sits with the week and events entries" % id)
+		assert_string_contains(str(entry.get("body_en", "")) + str(entry.get("heading_en", "")), wanted[id], "%s says what it is about" % id)
