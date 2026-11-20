@@ -32,7 +32,7 @@ func test_the_events_are_tagged() -> void:
 	for event: Dictionary in DataDB.events:
 		counts[Offices.normalize(event.get("location"))] += 1
 		assert_true(event.get("location") != null, "%s has a Location" % event["event_id"])
-	assert_eq(counts, {"Capitol": 28, "District": 52, "Either": 17})
+	assert_eq(counts, {"Capitol": 28, "District": 52, "Either": 23}, "the 17 tagged Either and the six train encounters")
 	for n in range(95, 105):
 		assert_eq(Offices.normalize(GameState.get_event("EV%d" % n).get("location")), Offices.CAPITOL, "EV%d is a Capitol event" % n)
 
