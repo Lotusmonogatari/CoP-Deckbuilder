@@ -9651,5 +9651,12 @@
     "english": "OPEN PLACE",
     "placeholders": null,
     "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; not in the approved list."
+  },
+  {
+    "key": "floor_vote.projection_result",
+    "where": "Floor Vote: the likely outcome of a choice, at the right of its bar (green when it passes, red when it fails)",
+    "english": "Likely {result}",
+    "placeholders": "result",
+    "notes": "P14b (2026-11-20, Cameron: likely outcome on the right in green or red). Claude's draft to reword."
   }
 ]

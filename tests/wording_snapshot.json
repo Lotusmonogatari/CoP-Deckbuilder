@@ -542,6 +542,7 @@
   "floor_vote.projection_fails": "Fails",
   "floor_vote.projection_label": "{choice} - Likely {result}",
   "floor_vote.projection_passes": "Passes",
+  "floor_vote.projection_result": "Likely {result}",
   "floor_vote.req_line": "{requirement}: {needed} of {house} Aye votes needed.",
   "floor_vote.req_majority": "Majority Vote to Pass",
   "floor_vote.req_supermajority": "Supermajority Vote to Pass",

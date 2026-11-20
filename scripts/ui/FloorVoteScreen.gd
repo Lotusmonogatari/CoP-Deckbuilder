@@ -260,6 +260,28 @@ func _show_influence_and_preview() -> void:
 		against_label.text = Text.say("floor_vote.assist_against", {"count": against})
 		bill_box.add_child(against_label)
 
+	# --- the three actions in one row, right under the bill (Cameron, 2026-11-20: moved up), then their notes after the projections
+	var notes_card := OfficeFrameStyles.card(look, "")
+	var notes := notes_card.get_node("Column") as VBoxContainer
+	notes.name = "ResearchBlock"
+	var actions := HBoxContainer.new()
+	actions.name = "ActionRow"
+	actions.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
+	var influence_button := Button.new()
+	influence_button.name = "InfluenceStatusButton"
+	influence_button.text = Text.say("floor_vote.influence_button")
+	influence_button.pressed.connect(_open_influence_status)
+	actions.add_child(influence_button)
+	_add_research_block(notes, actions)
+	_build_whip_row(notes, actions)
+	# The row sits on a card of its own, so the outlined buttons read on any room picture.
+	var actions_card := OfficeFrameStyles.card(look, "")
+	actions_card.name = "ActionCard"
+	actions_card.get_node("Column").add_child(actions)
+	column.add_child(actions_card)
+	for button: Node in actions.get_children():
+		_dress_action(button as Button, look)
+
 	# --- Vote Projections: one bar per choice with a label above it. Part of the house is shown as Unknown (black) so the
 	# exact tally waits for the final outcome screen (draft 2026-11-08).
 	var preview := _section(column, look, Text.say("floor_vote.preview_heading"))
@@ -273,16 +295,28 @@ func _show_influence_and_preview() -> void:
 		var trial := engine.preview(choice)
 		if trial.is_empty():
 			continue
-		var result := Text.say("floor_vote.projection_passes" if bool(trial.get("passed", false))
-			else "floor_vote.projection_fails")
+		var passed := bool(trial.get("passed", false))
+		# The choice at the left; the likely outcome at the right, green when the bill passes and red when it fails
+		# (Cameron, 2026-11-20). The words say it too, so colour is never the only signal.
+		var head := HBoxContainer.new()
+		head.name = "ProjectionHead"
 		var caption := Label.new()
 		caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		caption.text = Text.say("floor_vote.projection_label",
-			{"choice": labels[choice], "result": result})
+		caption.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		caption.text = str(labels[choice])
 		if _whips > 0:
 			caption.text += " " + Text.say("floor_vote.preview_whip",
 				{"cost": int(_whip_numbers(choice)["unit"]) * _whips})
-		preview.add_child(caption)
+		head.add_child(caption)
+		var outcome := Label.new()
+		outcome.name = "ProjectionOutcome"
+		outcome.text = Text.say("floor_vote.projection_result", {"result": Text.say(
+			"floor_vote.projection_passes" if passed else "floor_vote.projection_fails")})
+		outcome.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		outcome.set_meta(UiKit.ONE_LINE_META, true)
+		outcome.add_theme_color_override("font_color", look["up"] if passed else look["down"])
+		head.add_child(outcome)
+		preview.add_child(head)
 		var shown := VoteProjection.split(trial.get("totals", {}), unknown_percent)
 		var bar := PartyVoteBar.new()
 		bar.name = "ProjectionBar"
@@ -312,25 +346,9 @@ func _show_influence_and_preview() -> void:
 			stance.add_child(line)
 			if not chips.is_empty():
 				stance.add_child(OrgChip.row(chips, true, 90.0))
-
-	# --- the research and whip notes, then the three actions in one row
-	var notes := _section(column, look, "")
-	notes.name = "ResearchBlock"
-	var actions := HBoxContainer.new()
-	actions.name = "ActionRow"
-	actions.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
-	var influence_button := Button.new()
-	influence_button.name = "InfluenceStatusButton"
-	influence_button.text = Text.say("floor_vote.influence_button")
-	influence_button.pressed.connect(_open_influence_status)
-	actions.add_child(influence_button)
-	_add_research_block(notes, actions)
-	_build_whip_row(notes, actions)
-	column.add_child(actions)
-	for button: Node in actions.get_children():
-		_dress_action(button as Button, look)
-	if notes.get_child_count() == 0:
-		notes.get_parent().queue_free()   # no research and no whip: the empty card goes
+	# --- the research and whip notes close the body (the one row of actions is up under the bill)
+	if notes.get_child_count() > 0:
+		column.add_child(notes_card)
 
 
 ## A card in the body: the style's own card with an optional heading. Returns the column to fill.

@@ -183,3 +183,10 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 | Text rows `popup.tag_moved`, `event.delegate_who`, `rhetoric.coupon_line`, `travel.closed_here`, `travel.destination` | Added for P14 screens not built yet (the moved-for-you card, the staff delegation line, the coupon line, the Travel page); keep until P14b decides. |
 | The plain `Overlay.open(title, rows)` calls the nine group-1 pop-ups used to make | Those pop-ups are cards now (`open_card`); `open()` still serves every other panel, so nothing is dead yet. |
 | `design/review/p14_remaining_screens_2026-11-20/img/` (12 MB) | Working pictures; removable once P14 is merged and signed off. |
+
+## P14b: Floor Vote (2026-11-20)
+
+| What | Why it looks removable |
+|---|---|
+| Text row `floor_vote.projection_label` ("{choice} - Likely {result}") | The projections now show the choice at the left and `floor_vote.projection_result` ("Likely {result}") at the right in green or red. Nothing asks for the old combined row. |
+| `FloorVoteScreen._gold_rule()` and `UiKit.gold_rule()`'s use there | The Floor Vote body is cards now; check other screens before removing `UiKit.gold_rule()`. |
