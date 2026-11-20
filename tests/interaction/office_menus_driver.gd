@@ -95,15 +95,10 @@ func _check_reputation_tabs(office: Node) -> void:
 		_failures.append("Back did not close Reputation and Results")
 
 
-## A tab of Reputation and Results, scrolled into view the way a player would swipe the tab row to it.
+## A tab of Reputation and Results. The tabs wrap onto a second line rather than scroll sideways, so every one is
+## on the screen and a click can reach it.
 func _tab(menu: Node, tab: String) -> Control:
-	var button := menu.find_child("FrameTab_" + tab, true, false) as Control
-	var row := menu.find_child("FrameTabsScroll", true, false) as ScrollContainer
-	if button != null and row != null:
-		row.ensure_control_visible(button)
-		await get_tree().process_frame
-		await get_tree().process_frame
-	return button
+	return menu.find_child("FrameTab_" + tab, true, false) as Control
 
 
 ## Opens a menu, checks it holds the right buttons, then opens each in turn:

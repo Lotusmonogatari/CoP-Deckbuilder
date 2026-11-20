@@ -18,7 +18,7 @@ signal tab_chosen(tab_id: String)
 var _look: Dictionary
 var _back_slot: HBoxContainer
 var _chips: HBoxContainer
-var _tabs_row: HBoxContainer
+var _tabs_row: HFlowContainer
 var _scroll: ScrollContainer
 var _body: VBoxContainer
 var _footer_slot: VBoxContainer
@@ -171,18 +171,12 @@ func _build_title(title: String, subtitle: String) -> Control:
 
 
 func _build_tabs(tabs: Array, active: String) -> Control:
-	# A row that scrolls sideways when the tabs do not fit; the vertical scroll is off so it never grabs a downward drag.
-	var scroll := ScrollContainer.new()
-	scroll.name = "FrameTabsScroll"
-	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	# Drags sideways, with no bar drawn under the tabs.
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
-	scroll.custom_minimum_size.y = OfficeFrameStyles.touch_height() + 8.0
-	DragScroll.attach(scroll, false)
-	_tabs_row = HBoxContainer.new()
+	# A flow row: the tabs sit on one line when they fit and wrap onto a second when they do not (a large text size, or
+	# six tabs), so every tab is always on the screen. The text sweep forbids text off the edge, even in a scroll box.
+	_tabs_row = HFlowContainer.new()
 	_tabs_row.name = "FrameTabs"
-	_tabs_row.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
-	scroll.add_child(_tabs_row)
+	_tabs_row.add_theme_constant_override("h_separation", int(OfficeFrameStyles.len_px(6.0)))
+	_tabs_row.add_theme_constant_override("v_separation", int(OfficeFrameStyles.len_px(6.0)))
 	for tab: Dictionary in tabs:
 		var id := str(tab.get("id", ""))
 		var button := Button.new()
@@ -192,4 +186,4 @@ func _build_tabs(tabs: Array, active: String) -> Control:
 		button.pressed.connect(Haptics.confirm)
 		button.pressed.connect(func() -> void: tab_chosen.emit(id))
 		_tabs_row.add_child(button)
-	return scroll
+	return _tabs_row

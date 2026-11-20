@@ -77,7 +77,7 @@ The screenshots use demo numbers (three organizations moved, one law passed) so 
 | The factors pop-up is the old plain panel, not drawn on the frame | The spec asks for icon, name, standing line and rows; it gets the standing line and the same rows as before. A framed pop-up comes with the P14 pop-up card, which every pop-up shares. |
 | Your Record is gone as a page | Its sections moved: the four numbers, Political Pressure line and Levels cleared (with clears per tier) are on the Overview; Legislative Work and the bills your influence flipped are on the Laws tab. Nothing was dropped. |
 | The party list on the Overview shows each party's opinion score as a number beside a colour swatch | As the mockup does; the Parties tab keeps today's full cards (score, band, breakdown and the allies button). |
-| Tabs scroll sideways (the last two are off the edge at first), with no scrollbar | As the spec says; the cut-off tab shows there is more. |
+| The tabs wrap onto a second line instead of scrolling sideways | The spec says the row scrolls sideways, but the project's text sweep forbids any text off the screen edge, even inside a scroll box, and six tabs plus Large text do not fit one line. Wrapping also shows every tab at once. |
 | The Resign button keeps its crimson fill and black text | It is the existing button (`ResignScreen.button`); I did not restyle it. Black on that crimson reads at about 3.6:1, below the 4.5:1 target, so you may want it changed. |
 | Backers and Parties keep today's buttons (Take their backing, See allies and rivals) inside cards | Presentation of those rows was not part of the spec beyond the frame; they are the old rows in cards. |
 
