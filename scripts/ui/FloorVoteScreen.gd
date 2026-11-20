@@ -620,8 +620,12 @@ func _show_parties(positions: Array) -> void:
 		_show_disc_if_no_portrait(card, portrait, leader_id, color, DataDB.get_party_by_id(str(position.get("party_id", ""))))
 		swatch.color = color
 		name_label.text = str(position.get("party_name", ""))
-		# The party's colour is in its disc and the bar under it; the words are light so they read on the room picture.
+		# The party's colour stays in its disc and the line under it (Cameron, 2026-11-20); the name and the blurb are white on a
+		# dark plate so they read on any room picture.
 		name_label.add_theme_color_override("font_color", Color.WHITE)
+		cue_label.add_theme_color_override("font_color", Color.WHITE)
+		name_label.add_theme_stylebox_override("normal", ConversationStyles.words_plate())
+		cue_label.add_theme_stylebox_override("normal", ConversationStyles.words_plate())
 		cue_label.text = str(position.get("cue_text", ""))
 
 

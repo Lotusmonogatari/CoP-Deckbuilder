@@ -1596,7 +1596,7 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Screens on the card | Decision! and scenario events and their results, the arranged event (its step count read from its options), the gathering result, week over, promises, promise broken, trigger alerts, the level in progress, the forced special level, and the P13 reasons and open-place pop-ups. |
 | Conversation dress | `ConversationStyles`: name plate, filled choices, accent Continue on Office Hours, the member visit, the lobbyist trade, the level intro, the stage transition and the Floor Vote's buttons. A held Continue now says "Hold for 2 seconds". |
 | Stage outcome | A STAGE WON or STAGE LOST card over the dimmed room. |
-| Floor Vote | Party discs: the leader's portrait, or else a colour disc with the first kanji of the Japanese name and the English initials (`PartyDisc`). Party names are white. |
+| Floor Vote | Party discs: the leader's portrait, or else a colour disc with the first kanji of the Japanese name and the English initials (`PartyDisc`). The line under each party stays in its colour; the party name and position blurb are white on a dark plate so they read on the room picture (Cameron). |
 | Data | Parties tab: Short Name and Japanese Name. UI Styles: `scrim`, `alarm`, `scrim_alpha`. Text: 20 rows. |
 | Not built (P14b or later) | One card per promise, the redrawn bill card, the stacked Vote Projections, the staff speech card on a forced move. Left out on purpose: each answer's rhetorical style (Cameron to decide). |
 | Where | Report with pictures: `design/review/p14_remaining_screens_2026-11-20/REPORT.md`; plan: `design/proposals/P14_PLAN_2026-11-20.md`. |

@@ -57,6 +57,8 @@ Branch `panel/p14-remaining-screens`. Presentation only: no rule, number, ID or 
 | 3 | Promises: one card per promise with a place chip (the spec's 1.6) is not built yet. Do it in P14b with the Travel work? | Yes |
 | 4 | Party names on the Floor Vote are now white (they were in the party colour, which could not be read on the room picture); the colour stays in the disc and the bar. OK? | Yes |
 
+**Cameron's answers (2026-11-20):** (2) Yes, redraw the level intro's bill card in P14b; wherever a party leader's picture exists in the assets it is used, and a kanji disc stands in only where it does not (the same rule as the Floor Vote). (3) The horizontal line under each party stays in the party colour; the name and the position blurb under it must be legible. Done: both now sit on a dark plate in white (over 7:1), the line is unchanged.
+
 ## 6. Found, not fixed
 
 | What | Where |

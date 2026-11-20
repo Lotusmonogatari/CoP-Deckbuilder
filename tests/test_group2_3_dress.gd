@@ -53,3 +53,10 @@ func test_a_conversation_button_is_dressed_in_every_style_and_keeps_its_state() 
 		assert_gte(IntentPill.contrast(look["on_accent"], look["accent"]), 4.5, style + ": Continue words on their fill")
 		way_on.disabled = true
 		assert_not_null(way_on.get_theme_stylebox("disabled"), style + ": a disabled look exists")
+
+
+func test_a_partys_words_sit_on_a_plate_that_reads_for_white_text() -> void:
+	var plate := ConversationStyles.words_plate()
+	# Over the lightest possible room picture the plate is still dark enough: its fill at 82% over white.
+	var over_white := Color.WHITE.lerp(Color(plate.bg_color.r, plate.bg_color.g, plate.bg_color.b), plate.bg_color.a)
+	assert_gte(PartyDisplay.contrast(Color.WHITE, over_white), 7.0, "white words on the plate over a white picture")

@@ -60,3 +60,16 @@ static func _plate_the_name(label: Label, look: Dictionary) -> void:
 		return
 	label.add_theme_stylebox_override("normal", LevelBriefingStyles.card_box(look))
 	label.add_theme_color_override("font_color", look["ink"])
+
+
+## The dark plate behind words that sit straight on a room picture (a party's name and blurb on the Floor Vote): white on this
+## is far above 7:1 whatever the picture under it.
+static func words_plate() -> StyleBoxFlat:
+	var box := StyleBoxFlat.new()
+	box.bg_color = Color(0.05, 0.05, 0.07, 0.82)
+	box.set_corner_radius_all(8)
+	box.content_margin_left = 6.0
+	box.content_margin_right = 6.0
+	box.content_margin_top = 3.0
+	box.content_margin_bottom = 3.0
+	return box
