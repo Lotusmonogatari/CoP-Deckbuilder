@@ -125,6 +125,10 @@ var _weekend_levels := 0
 ## player on the rail pass: levels at the office it stands at first, a trip only when nothing is left there, and a
 ## mixed level's built-in trips paid. Off is the older behavior (offices ignored, no travel hours spent).
 var _offices := true
+## "here_first" (PLAYTEST_OFFICES=1, the default): a trip only when nothing is left at this office.
+## "ranked" (PLAYTEST_OFFICES=2): the bot's own order of levels wins and it travels whenever the best level is at the
+## other office (the pessimistic order: it crosses as often as its sequence demands).
+var _office_policy := "here_first"
 var _trips := 0
 var _trip_hours := 0
 var _mixed_levels := 0
@@ -156,7 +160,11 @@ func _run() -> void:
 	var protagonist := OS.get_environment("PLAYTEST_PROTAGONIST")
 	if not protagonist.is_empty():
 		_protagonist = protagonist
-	_offices = OS.get_environment("PLAYTEST_OFFICES") != "0"
+	match OS.get_environment("PLAYTEST_OFFICES"):
+		"0": _office_policy = "off"
+		"2": _office_policy = "ranked"
+		_: _office_policy = "here_first"
+	_offices = _office_policy != "off"
 	_random_moves = bool(_s["random_cards"])
 	_patron_on = bool(_s["patron"])
 	_gaffe_price = 0.8 * float(_s["gaffe"])
@@ -404,6 +412,8 @@ func _choose_level() -> String:
 		if _offices and not GameState.level_is_for_player(level):
 			continue
 		candidates.append(level)
+	if _office_policy == "ranked":
+		return _choose_ranked_with_travel(candidates)
 	if _offices:
 		candidates = _candidates_here_or_travel(candidates)
 	if candidates.is_empty():
@@ -437,23 +447,53 @@ func _candidates_here_or_travel(candidates: Array) -> Array:
 			there.append(level)
 	if not here.is_empty() or there.is_empty() or not GameState.travel_refusal().is_empty():
 		return here
-	var trip := GameState.trip_hours()
 	var reachable: Array = []
 	for level: Dictionary in there:
-		var weekend_ok := str(level.get("weekend_ok", "")).strip_edges().to_lower() == "yes"
-		if WeekCalendar.level_refusal(GameState.calendar, GameState.calendar_config(), GameState.level_total_hours(level) + trip, weekend_ok).is_empty():
+		if _trip_fits(level):
 			reachable.append(level)
 	if reachable.is_empty():
 		return []
-	if GameState.travel():
-		_trips += 1
-		_trip_hours += trip
-		GameState.take_travel_encounter()   # the bot does not play the train dilemma
+	_take_trip()
 	var now_here: Array = []
 	for level: Dictionary in reachable:
 		if GameState.level_at_this_office(level):
 			now_here.append(level)
 	return now_here
+
+
+## True when a trip to the other office, then `level`, still fits the week (and a trip is allowed now).
+func _trip_fits(level: Dictionary) -> bool:
+	if not GameState.travel_refusal().is_empty():
+		return false
+	var weekend_ok := str(level.get("weekend_ok", "")).strip_edges().to_lower() == "yes"
+	return WeekCalendar.level_refusal(GameState.calendar, GameState.calendar_config(),
+			GameState.level_total_hours(level) + GameState.trip_hours(), weekend_ok).is_empty()
+
+
+func _take_trip() -> void:
+	var trip := GameState.trip_hours()
+	if GameState.travel():
+		_trips += 1
+		_trip_hours += trip
+		GameState.take_travel_encounter()   # the bot does not play the train dilemma
+
+
+## The pessimistic order: the bot's own ranking decides, and it crosses whenever the best level is at the other office
+## (and fits the week with the trip). Returns the level's id, or "" when nothing fits.
+func _choose_ranked_with_travel(candidates: Array) -> String:
+	var mode := str(_s["level"])
+	if mode == "random":
+		candidates.shuffle()
+	else:
+		candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+			return _level_rank(a, mode) > _level_rank(b, mode))
+	for level: Dictionary in candidates:
+		if GameState.level_at_this_office(level):
+			return str(level.get("level_id", ""))
+		if _trip_fits(level):
+			_take_trip()
+			return str(level.get("level_id", "")) if GameState.level_at_this_office(level) else ""
+	return ""
 
 
 ## Higher is better. Sequential = never-played first, lowest id first.
@@ -870,7 +910,7 @@ func _finish() -> void:
 		"election_parts": GameState.election_parts(),
 		"level_attempts": _level_attempts, "stages": _stages_played, "wins": _wins, "losses": _losses,
 		"weekend_levels": _weekend_levels,
-		"offices": _offices, "trips": _trips, "trip_hours": _trip_hours, "mixed_levels": _mixed_levels,
+		"offices": _offices, "office_policy": _office_policy, "trips": _trips, "trip_hours": _trip_hours, "mixed_levels": _mixed_levels,
 		"levels_cleared": GameState.level_last_completed_at.size(),
 		"levels_by_tier": _levels_played_by_tier,
 		"owned_cards": GameState.owned_cards.size(), "deck": GameState.deck,
