@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reputation and Results</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/e353844e6561de256f5a4d71a2401348') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Where you stand</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+        <sc-for list="{{stats}}" as="s" hint-placeholder-count="4">
+          <div style="background: {{t.tile}}; border-radius: {{t.rSmall}}; padding: 7px 9px; display: flex; flex-direction: column; gap: 1px">
+            <span style="font-size: 11.5px; font-weight: 600">{{s.label}}</span>
+            <span style="font-size: 20px; font-weight: 700; line-height: 1.15">{{s.value}}</span>
+            <button aria-label="{{s.aria}}" style="align-self: flex-start; min-height: 30px; margin-top: 2px; padding: 0 9px; font-size: 12px; font-weight: 700; cursor: pointer; background: {{t.card}}; color: {{s.tone}}; border: 1px solid {{s.tone}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{s.delta}}</button>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 12px; color: {{t.muted}}"><span>XP 1,240</span><span>Political Pressure: Standard</span></div>
+    </section>
+
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Biggest moves this week</h2>
+        <a href="#orgs" style="font-size: 12px; font-weight: 700; text-decoration: none; color: {{t.ink}}; min-height: 32px; display: flex; align-items: center">All 32 ›</a>
+      </div>
+      <sc-for list="{{moves}}" as="m" hint-placeholder-count="3">
+        <div style="display: flex; gap: 10px; align-items: center; padding-top: 6px; border-top: 1px solid {{t.divider}}">
+          <img src="{{m.icon}}" alt="" style="width: 32px; height: 32px; object-fit: contain; flex: 0 0 auto">
+          <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <span style="font-size: 13px; font-weight: 700">{{m.name}}</span>
+            <div role="img" aria-label="{{m.aria}}" style="height: 6px; background: {{t.barTrack}}; border-radius: {{t.pill}}; overflow: hidden"><div style="height: 6px; width: {{m.width}}; background: {{t.barFill}}"></div></div>
+            <span style="font-size: 11px; color: {{t.muted}}">{{m.value}}</span>
+          </div>
+          <button aria-label="{{m.btnAria}}" style="flex: 0 0 auto; min-width: 52px; min-height: 40px; padding: 0 10px; font-size: 14px; font-weight: 700; cursor: pointer; background: {{t.card}}; color: {{m.tone}}; border: {{t.bw}} solid {{m.tone}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{m.delta}}</button>
+        </div>
+      </sc-for>
+    </section>
+
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+      <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Parties</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px">
+        <sc-for list="{{parties}}" as="p" hint-placeholder-count="6">
+          <div style="display: flex; align-items: center; gap: 7px; min-height: 24px; font-size: 12px">
+            <span style="flex: 0 0 auto; width: 12px; height: 12px; background: {{p.color}}; border: 1px solid {{t.ink}}; border-radius: {{t.dot}}"></span>
+            <span style="flex: 1 1 auto; min-width: 0; line-height: 1.15">{{p.name}}</span>
+            <span style="flex: 0 0 auto; font-weight: 700">{{p.value}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">Legislative Work</h2>
+        <a href="#laws" style="font-size: 12px; font-weight: 700; text-decoration: none; color: {{t.ink}}; min-height: 32px; display: flex; align-items: center">All laws ›</a>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+        <span style="font-size: 13.5px; font-weight: 700">Fisheries Quota Modernization Act</span>
+        <span style="flex: 0 0 auto; padding: 3px 8px; font-size: 11px; font-weight: 700; letter-spacing: .06em; border: 2px solid {{t.good}}; color: {{t.good}}; border-radius: {{t.rSmall}}">PASSED</span>
+      </div>
+      <span style="font-size: 12px">Aye 58 · Nay 39 · Abstain 4. You voted Aye.</span>
+      <span style="font-size: 11.5px; color: {{t.muted}}">Your influence turned this result.</span>
+    </section>
+    <p style="margin: 0; font-size: 11.5px; color: {{t.onBgMuted}}">Tap a change to see what moved it.</p>
+  </div>
+  <sc-if value="{{showFactors}}" hint-placeholder-val="false">
+    <div style="position: absolute; inset: 0; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; padding: 20px">
+      <div role="dialog" aria-label="Why Students United moved" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; width: 100%; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 10px">
+          <img src="/_blob/d643646af4a511527aaefb32a751b764" alt="" style="width: 36px; height: 36px; object-fit: contain">
+          <div style="display: flex; flex-direction: column"><span style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}; font-size: 16px">Students United</span><span style="font-size: 12px; color: {{t.muted}}">Standing 52 → 58</span></div>
+        </div>
+        <sc-for list="{{factors}}" as="f" hint-placeholder-count="3">
+          <div style="display: flex; gap: 10px; align-items: baseline; padding-top: 7px; border-top: 1px solid {{t.divider}}">
+            <span style="flex: 0 0 40px; font-size: 14px; font-weight: 700; color: {{f.tone}}">{{f.amount}}</span>
+            <span style="font-size: 13px; line-height: 1.35">{{f.why}}</span>
+          </div>
+        </sc-for>
+        <button style="margin-top: 4px; min-height: 44px; font-size: 14px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">Close</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"state":{"editor":"enum","options":["list","factors"],"default":"list"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.22)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', good:'#2F6B3A', bad:'#A42A17', tabBg:'#F8F1E3', tabInk:'#1C1A17', tabEdge:'#1C1A17', tabOnBg:'#22305A', tabOnInk:'#F8F1E3', barTrack:'#E2D6BF', barFill:'#22305A', jp:'#6B5F50', warnBg:'#F6DDD3', warnInk:'#7A1E10' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', good:'#2E6B34', bad:'#A3261A', tabBg:'transparent', tabInk:'#E8DAC3', tabEdge:'rgba(255,248,236,.3)', tabOnBg:'#FFD58A', tabOnInk:'#2B1D12', barTrack:'#EADBC0', barFill:'#9A6413', jp:'#D9C8AC', warnBg:'#F8DDD6', warnInk:'#7A1E10' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'29px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.22)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', good:'#7BD88F', bad:'#FF8A80', tabBg:'transparent', tabInk:'#C3C9D6', tabEdge:'rgba(227,179,65,.45)', tabOnBg:'#E3B341', tabOnInk:'#0B1220', barTrack:'#22304D', barFill:'#E3B341', jp:'#9AA3B5', warnBg:'#3A1F27', warnInk:'#FFB4AB' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    const t = T[key];
+    const tabs = (labels, on) => labels.map((l) => ({ label: l, bg: l === on ? t.tabOnBg : t.tabBg, ink: l === on ? t.tabOnInk : t.tabInk, edge: l === on ? t.tabOnBg : t.tabEdge }));
+    const tone = (up) => (up ? t.good : t.bad);
+    return {
+      t, chips: ['Week 7'], title: 'Reputation and Results', jp: '評判と成績',
+      tabs: tabs(['Overview', 'Stakeholders', 'Backers', 'Parties', 'Election', 'Laws'], 'Overview'),
+      stats: [
+        { label: 'Constituency support', value: '62', delta: '+4', aria: 'Constituency support +4 this week. Show why.', tone: tone(true) },
+        { label: 'Reputation', value: '41', delta: '−1', aria: 'Reputation −1 this week. Show why.', tone: tone(false) },
+        { label: 'Funds', value: '182,000円', delta: '+35,000円', aria: 'Funds +35,000円 this week. Show why.', tone: tone(true) },
+        { label: 'Party support', value: '55', delta: '+2', aria: 'Party support +2 this week. Show why.', tone: tone(true) }
+      ],
+      moves: [
+        { icon: '/_blob/d643646af4a511527aaefb32a751b764', name: 'Students United', delta: '+6', btnAria: 'Students United +6. Show why.', tone: tone(true), value: 'Standing 58', width: '58%', aria: 'Standing 58 of 100' },
+        { icon: '/_blob/0af1a6ab97ef1608849e55f887bac87d', name: 'Fisheries Cooperative', delta: '−3', btnAria: 'Fisheries Cooperative −3. Show why.', tone: tone(false), value: 'Standing 44', width: '44%', aria: 'Standing 44 of 100' },
+        { icon: '/_blob/bb15af5b5ebae2b1b018fab6163c1036', name: 'Innovation Society', delta: '+2', btnAria: 'Innovation Society +2. Show why.', tone: tone(true), value: 'Standing 51', width: '51%', aria: 'Standing 51 of 100' }
+      ],
+      showFactors: this.props.state === 'factors',
+      factors: [
+        { amount: '+4', why: 'winning Town Hall', tone: tone(true) },
+        { amount: '+3', why: 'your lean on Tuition Support Act', tone: tone(true) },
+        { amount: '−1', why: 'losing Press Gaggle', tone: tone(false) }
+      ],
+      parties: [
+        { name: 'Frontier Party', value: '62', color: '#008000' },
+        { name: 'Butsutou', value: '48', color: '#FF8C00' },
+        { name: 'Five Point Independents', value: '40', color: '#8000FF' },
+        { name: 'Country Initiative', value: '36', color: '#964B00' },
+        { name: 'Yezo Heritage Party', value: '31', color: '#00FFFF' },
+        { name: 'Keizaijiyuutou', value: '27', color: '#FF0000' }
+      ]
+    };
+
+  }
+}
+</script>
+</body>
+</html>

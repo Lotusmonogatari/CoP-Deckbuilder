@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Office Management</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/e353844e6561de256f5a4d71a2401348') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <section style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+      <sc-for list="{{summary}}" as="s" hint-placeholder-count="3">
+        <div style="display: flex; flex-direction: column; gap: 1px">
+          <span style="font-size: 11px; color: {{t.muted}}">{{s.label}}</span>
+          <span style="font-size: 16px; font-weight: 700">{{s.value}}</span>
+        </div>
+      </sc-for>
+    </section>
+    <sc-for list="{{roles}}" as="r" hint-placeholder-count="3">
+      <section style="display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 2px 2px 0 2px; color: {{t.onBg}}">
+          <h2 style="margin: 0; font-size: 14px; font-weight: 700; font-family: {{t.head}}; font-style: {{t.titleStyle}}; letter-spacing: {{t.headSpacing}}; text-transform: {{t.titleCase}}">{{r.role}}</h2>
+          <span style="font-size: 11.5px; color: {{t.onBgMuted}}">{{r.places}}</span>
+        </div>
+        <sc-for list="{{r.people}}" as="p" hint-placeholder-count="2">
+          <article style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 8px 10px; display: flex; gap: 10px; align-items: center; min-height: 76px">
+            <div style="flex: 0 0 auto; width: 52px; height: 68px; background: {{t.tile}}; border-radius: {{t.rSmall}}; overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
+              <img src="{{p.portrait}}" alt="{{p.person}}" style="height: 66px; width: auto; max-width: 52px; object-fit: cover; object-position: top">
+            </div>
+            <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+              <div style="display: flex; justify-content: space-between; gap: 8px; align-items: baseline"><span style="font-size: 14.5px; font-weight: 700">{{p.person}}</span><span style="font-size: 12px; font-weight: 700; white-space: nowrap">{{p.wage}}</span></div>
+              <div style="display: flex; flex-wrap: wrap; gap: 5px">
+                <span style="padding: 2px 7px; font-size: 11px; font-weight: 700; background: {{p.primaryBg}}; color: {{p.primaryInk}}; border-radius: {{t.pill}}">{{p.primary}}</span>
+                <span style="padding: 2px 7px; font-size: 11px; font-weight: 700; background: {{t.tile}}; border-radius: {{t.pill}}">Rank {{p.rank}}</span>
+                <span style="padding: 2px 7px; font-size: 11px; font-weight: 700; border: 1px solid {{p.loyalTone}}; color: {{p.loyalTone}}; border-radius: {{t.pill}}">{{p.loyalty}}</span>
+              </div>
+            </div>
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="flex: 0 0 auto; color: {{t.muted}}"><path d="m2 2 6 6-6 6"/></svg>
+          </article>
+        </sc-for>
+        <sc-for list="{{r.open}}" as="o" hint-placeholder-count="1">
+          <button style="min-height: 52px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.onBg}}; border: 1.5px dashed {{t.onBgMuted}}; border-radius: {{t.r}}; font-family: {{t.body}}"><span>{{o.label}}</span><span style="font-size: 12px; color: {{t.onBgMuted}}">{{o.note}}</span></button>
+        </sc-for>
+      </section>
+    </sc-for>
+  </div>
+  <div style="flex: 0 0 auto; padding: 10px 16px 14px 16px; border-top: {{t.footTop}}; background: {{t.bg}}">
+    <button style="width: 100%; min-height: 48px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; box-shadow: {{t.shadow}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}">Staff Assignments</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"state":{"editor":"enum","options":["list","factors"],"default":"list"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.22)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', good:'#2F6B3A', bad:'#A42A17', tabBg:'#F8F1E3', tabInk:'#1C1A17', tabEdge:'#1C1A17', tabOnBg:'#22305A', tabOnInk:'#F8F1E3', barTrack:'#E2D6BF', barFill:'#22305A', jp:'#6B5F50', warnBg:'#F6DDD3', warnInk:'#7A1E10' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', good:'#2E6B34', bad:'#A3261A', tabBg:'transparent', tabInk:'#E8DAC3', tabEdge:'rgba(255,248,236,.3)', tabOnBg:'#FFD58A', tabOnInk:'#2B1D12', barTrack:'#EADBC0', barFill:'#9A6413', jp:'#D9C8AC', warnBg:'#F8DDD6', warnInk:'#7A1E10' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'29px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.22)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', good:'#7BD88F', bad:'#FF8A80', tabBg:'transparent', tabInk:'#C3C9D6', tabEdge:'rgba(227,179,65,.45)', tabOnBg:'#E3B341', tabOnInk:'#0B1220', barTrack:'#22304D', barFill:'#E3B341', jp:'#9AA3B5', warnBg:'#3A1F27', warnInk:'#FFB4AB' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    const t = T[key];
+    const tabs = (labels, on) => labels.map((l) => ({ label: l, bg: l === on ? t.tabOnBg : t.tabBg, ink: l === on ? t.tabOnInk : t.tabInk, edge: l === on ? t.tabOnBg : t.tabEdge }));
+    const prim = { primary: 'Primary', primaryBg: t.accent, primaryInk: t.accentInk };
+    const extra = { primary: 'Second', primaryBg: t.tile, primaryInk: t.ink };
+    return {
+      t, chips: ['Funds 182,000円'], title: 'Office Management', jp: '事務所の管理',
+      tabs: tabs(['Staff', 'Your Deck', 'Rhetoric Training'], 'Staff'),
+      summary: [ { label: 'Wages this week', value: '57,000円' }, { label: 'Staff', value: '4 of 6' }, { label: 'Places per role', value: '2' } ],
+      roles: [
+        { role: 'Policy Research Assistant', places: '2 of 2 places filled', open: [], people: [
+          Object.assign({ portrait: '/_blob/baeec41f803a753c54c3122353a7e1e9', person: 'Hana Takahashi', rank: '2 of 3', loyalty: 'Devoted', loyalTone: t.good, wage: '18,000円 / wk' }, prim),
+          Object.assign({ portrait: '/_blob/d62784a1ec00b39c3cb3091d2c4aef9a', person: 'Yui Kobayashi', rank: '1 of 3', loyalty: 'Steady', loyalTone: t.muted, wage: '9,000円 / wk' }, extra) ] },
+        { role: 'Media Spokesperson', places: '1 of 2 places filled', open: [ { label: '+ Hire a Media Spokesperson', note: '1 open place' } ], people: [
+          Object.assign({ portrait: '/_blob/d320d07fde7781c4c951e2f1b0a9c83d', person: 'Aoi Suzuki', rank: '1 of 3', loyalty: 'Restless', loyalTone: t.bad, wage: '12,000円 / wk' }, prim) ] },
+        { role: 'District Representative', places: '1 of 2 places filled', open: [ { label: '+ Hire a District Representative', note: '1 open place' } ], people: [
+          Object.assign({ portrait: '/_blob/54a4029d9b75ab33bce50e7e68abd991', person: 'Miharu Daitani', rank: '3 of 3', loyalty: 'Steady', loyalTone: t.muted, wage: '18,000円 / wk' }, prim) ] }
+      ]
+    };
+
+  }
+}
+</script>
+</body>
+</html>
