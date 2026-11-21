@@ -1732,3 +1732,10 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | District swap (final, Cameron) | Kenshin Sako (PC01) is now **Sōya, office Daikoku**; Jyurou Nishihara (PC04) is now **Aomori, office Noheji**. Everything that follows a district moved with it: the **travel hours** (PC01 6 h train and 4 h car; PC04 7 h train and 2 h plane), the **plane ticket** offer and the four **starting plane tickets** (now PC04's; the private car is offered to PC01, PC02 and PC03), all **65 Places rows**, the four **protagonist levels** (LV115 and LV116, Sōya, to PC01; LV121 and LV122, Aomori, to PC04), and the district starting items (SH25 and SH29, from the Player tab). The **District office pictures are not swapped**: each protagonist keeps `DISTRICT_OFFICE_<their id>`. |
 | Neighborhood pictures | The four events and three stages that named `OUT_NEIGHBORHOOD` now list all eight numbered pictures (`_1` to `_5` and `WINTER_1` to `_3`); the winter ones are chosen when the text is wintry. |
 | Tests | Eight tests that pinned the old assignment now expect the new one: `test_office_state`, `test_offices_content`, `test_offices_travel`, `test_place_tokens`, `test_protagonist_levels`, `test_travel_tickets`, and the click drivers `travel_driver` and `level_briefing_driver`. |
+## 2026-11-21: New backgrounds uploaded (Cameron): 12 pictures
+
+| Picture | State |
+|---|---|
+| `DISTRICT_OFFICE_PC01` to `_PC04` | **In use already.** The Office asks for `DISTRICT_OFFICE_<protagonist>` at the District, so each protagonist now shows their own District office picture (before, a labelled placeholder). Checked for all four. |
+| `OUT_NEIGHBORHOOD_1` to `_5`, `OUT_NEIGHBORHOOD_WINTER_1` to `_3` | **Not yet used.** Events and stages name the scene `OUT_NEIGHBORHOOD` with no number, so these need the workbook's Image cells to list them (`OUT_NEIGHBORHOOD_1; OUT_NEIGHBORHOOD_2; ...`); a picture whose name carries WINTER is chosen when the text is wintry. Waiting for Cameron's workbook merge so the two edits do not collide. |
+| Files | The import files Godot makes for the 12 pictures are added. |
