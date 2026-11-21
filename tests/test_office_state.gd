@@ -3,7 +3,7 @@ extends GutTest
 ## built-in trips do to the list, the hours and the end of the level, and the saved state.
 
 func before_each() -> void:
-	GameState.start_new_run("PC01")
+	GameState.start_new_run("PC04")
 	GameState.calendar = WeekCalendar.fresh()
 	GameState.office_location = Offices.CAPITOL
 	GameState.level_travel = {}
@@ -21,8 +21,8 @@ func _left() -> int:
 
 func test_a_new_run_starts_at_the_capitol_and_names_its_district_office() -> void:
 	assert_eq(GameState.office_location, Offices.CAPITOL)
-	assert_eq(GameState.district_office_name(), "Noheji", "PC01 is the Aomori protagonist now")
-	GameState.start_new_run("PC04")
+	assert_eq(GameState.district_office_name(), "Noheji", "PC04 is the Aomori protagonist now")
+	GameState.start_new_run("PC01")
 	assert_eq(GameState.district_office_name(), "Daikoku")
 	GameState.start_new_run("PC03")
 	assert_eq(GameState.district_office_name(), "Teine Ward")
@@ -80,7 +80,7 @@ func test_a_mixed_levels_trips_are_in_its_hours() -> void:
 	assert_eq(Travel.level_trips(level), 2)
 	assert_eq(GameState.level_trip_hours(level), 14, "two seven-hour trips")
 	assert_eq(GameState.level_total_hours(level), GameState.level_hours(level) + 14)
-	assert_eq(GameState.level_trip_hours(level, Travel.PLANE), 4, "PC01's fast mode is a plane ticket")
+	assert_eq(GameState.level_trip_hours(level, Travel.PLANE), 4, "PC04's fast mode is a plane ticket")
 	assert_eq(GameState.level_trip_hours(DataDB.get_level("LV01")), 0, "an ordinary level has none")
 
 
@@ -149,13 +149,13 @@ func test_an_old_save_without_an_office_loads_at_the_capitol() -> void:
 	saved.erase("office_location")
 	saved.erase("level_travel")
 	GameState.office_location = Offices.DISTRICT
-	GameState.start_new_run("PC01")
+	GameState.start_new_run("PC04")
 	GameState.load_save(saved)
 	assert_eq(GameState.office_location, Offices.CAPITOL)
 
 
 func test_the_calendar_refusal_counts_a_mixed_levels_trips() -> void:
-	# LV10 is 27 hours; PC01 by rail adds 14 (41): too long for any week. With the plane it is 31.
+	# LV10 is 27 hours; PC04 by rail adds 14 (41): too long for any week. With the plane it is 31.
 	var level := DataDB.get_level("LV10")
 	assert_eq(GameState.level_calendar_refusal(level), Text.say("calendar.refuse_too_long"))
 	assert_eq(GameState.level_calendar_refusal(level, Travel.PLANE), "")
@@ -164,9 +164,9 @@ func test_the_calendar_refusal_counts_a_mixed_levels_trips() -> void:
 func test_the_district_offices_share_one_pin_set() -> void:
 	var shared: Dictionary = DataDB.art["office_hotspots"]["DISTRICT_OFFICE"]
 	GameState.office_location = Offices.DISTRICT
-	for pid: String in ["PC01", "PC02", "PC03", "PC04"]:
+	for pid: String in ["PC04", "PC02", "PC03", "PC01"]:
 		GameState.protagonist_id = pid
 		assert_eq(RoomObjects.hotspots(), shared, "the same pins in all four District offices (Cameron, 2026-11-20)")
-	GameState.protagonist_id = "PC01"
+	GameState.protagonist_id = "PC04"
 	GameState.office_location = Offices.CAPITOL
 	assert_eq(RoomObjects.hotspots(), DataDB.art["office_hotspots"]["OFFICE"], "the Capitol keeps its own")

@@ -4,7 +4,7 @@ extends RefCounted
 ##
 ## Hours are Balance rows, one for each protagonist and mode ("Travel Hours: Train PC01"); a mode a protagonist
 ## does not have has no row. The rail pass and the paid train ticket both take the train's hours; the fast mode is
-## a private car for most protagonists and a plane ticket for PC01. Pure: callers pass the Balance dictionary in.
+## a private car for most protagonists and a plane ticket for PC04. Pure: callers pass the Balance dictionary in.
 
 const PASS := "train"      # the member's rail pass: free, always there
 const TICKET := "ticket"   # a paid train ticket: the train's hours

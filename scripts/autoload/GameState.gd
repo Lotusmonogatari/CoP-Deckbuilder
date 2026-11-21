@@ -6172,7 +6172,7 @@ func trip_hours(mode: String = Travel.PASS) -> int:
 
 
 ## The modes this player can travel by now: the member's rail pass always, and a paid train ticket or this
-## protagonist's fast mode (a private car, or a plane ticket for PC01) while they hold one.
+## protagonist's fast mode (a private car, or a plane ticket for PC04) while they hold one.
 func travel_modes() -> Array[String]:
 	var modes: Array[String] = [Travel.PASS]
 	for mode: String in [Travel.TICKET, Travel.fast_mode(DataDB.balance, protagonist_id)]:

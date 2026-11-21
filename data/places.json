@@ -1,6 +1,6 @@
 [
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "station",
     "name": "Wakkanai Station",
     "note": null
@@ -24,19 +24,19 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "station",
     "name": "Noheji Station",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "station",
     "name": "Shimokita Station",
     "note": "Mutsu"
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "travel_route",
     "name": "Yezo Rail Sōya Line, the Northern Star limited express",
     "note": null
@@ -54,19 +54,19 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "travel_route",
     "name": "The Shinkansen through the Seikan Tunnel, then Yezo Rail's Ōminato Line from Noheji",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "town_hall",
     "name": "Wakkanai City Hall",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "town_hall",
     "name": "Toyotomi Town Hall",
     "note": null
@@ -90,25 +90,25 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "town_hall",
     "name": "Mutsu City Hall",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "town_hall",
     "name": "Rokkasho Village Office",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "town_hall",
     "name": "Towada City Hall",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "harbor",
     "name": "Port of Wakkanai",
     "note": "ferries to Rishiri and Rebun"
@@ -138,25 +138,25 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "harbor",
     "name": "Noheji",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "harbor",
     "name": "Ōma port",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "harbor",
     "name": "Rokkasho's Pacific ports",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "onsen_town",
     "name": "Toyotomi Onsen",
     "note": null
@@ -180,19 +180,19 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "onsen_town",
     "name": "Yagen Onsen",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "onsen_town",
     "name": "Shimofuro Onsen",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "mountain",
     "name": "The Sōya Hills",
     "note": null
@@ -210,19 +210,19 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "mountain",
     "name": "Mount Osore",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "mountain",
     "name": "Mount Kamafuse",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "farmland",
     "name": "Sarobetsu dairy country",
     "note": null
@@ -240,19 +240,19 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "farmland",
     "name": "Towada's garlic and nagaimo fields",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "farmland",
     "name": "Rokkasho stock farms",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "fishing_grounds",
     "name": "Sōya Strait kelp and scallops",
     "note": null
@@ -270,19 +270,19 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "fishing_grounds",
     "name": "Mutsu Bay scallop farms",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "fishing_grounds",
     "name": "Ōma's tuna grounds",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "school",
     "name": "Sōya Regional High School",
     "note": null
@@ -300,13 +300,13 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "school",
     "name": "Shimokita Regional High School",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "university",
     "name": "Wakkanai Northern College",
     "note": null
@@ -324,13 +324,13 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "university",
     "name": "Towada Veterinary College",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "hospital",
     "name": "Wakkanai City Hospital",
     "note": null
@@ -348,13 +348,13 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "hospital",
     "name": "Mutsu General Hospital",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "shrine_temple",
     "name": "Hokumon Shrine",
     "note": null
@@ -372,19 +372,19 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "shrine_temple",
     "name": "Osorezan Bodaiji",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "shrine_temple",
     "name": "Tanabu Shrine",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "market",
     "name": "Wakkanai Central Arcade",
     "note": null
@@ -402,13 +402,13 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "market",
     "name": "Towada Farmers' Market",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "festival",
     "name": "Wakkanai Minato Antarctic Festival",
     "note": "early August"
@@ -432,13 +432,13 @@
     "note": "late September"
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "festival",
     "name": "Tanabu Festival, Mutsu",
     "note": "August 18–20"
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "factory",
     "name": "The Sarobetsu Dairy Co-op creamery",
     "note": null
@@ -462,13 +462,13 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "factory",
     "name": "Mutsu-Ogawara industrial area, Rokkasho",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "energy_site",
     "name": "Sōya Hills Wind Park",
     "note": "57 turbines"
@@ -498,31 +498,31 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "energy_site",
     "name": "Rokkasho Fuel Recycling Plant (Yezo Nuclear Fuel Corporation) and wind farms",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "energy_site",
     "name": "Ōma nuclear plant",
     "note": "Northern Power Development, under construction"
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "island",
     "name": "Rishiri and Rebun",
     "note": "if inside the district"
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "island",
     "name": "Benten-jima off Cape Ōma",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "landmark",
     "name": "Cape Sōya",
     "note": null
@@ -540,19 +540,19 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "landmark",
     "name": "Cape Ōma",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "landmark",
     "name": "Lake Towada and the Oirase Gorge",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "ainu_site",
     "name": "Wakkanai Ainu Center",
     "note": null
@@ -570,13 +570,13 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "ainu_site",
     "name": "Towada Ainu Center",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "beach",
     "name": "The Sarobetsu coast, facing Rishiri",
     "note": null
@@ -594,13 +594,13 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "beach",
     "name": "The Mutsu Bay shore at Noheji",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "ski_area",
     "name": "Wakkanai City Ski Hill",
     "note": null
@@ -618,13 +618,13 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "ski_area",
     "name": "Mount Kamafuse",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "park",
     "name": "Wakkanai Park",
     "note": null
@@ -642,13 +642,13 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "park",
     "name": "Mutsu Bayside Park",
     "note": null
   },
   {
-    "protagonist": "PC04",
+    "protagonist": "PC01",
     "place_type": "community_hall",
     "name": "Wakkanai Community Hall",
     "note": null
@@ -666,43 +666,43 @@
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "community_hall",
     "name": "Mutsu Community Hall",
     "note": null
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "station",
     "name": "Shichinohe-Towada Station",
     "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "town_hall",
     "name": "Misawa City Hall",
     "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "town_hall",
     "name": "Shichinohe Town Hall",
     "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "town_hall",
     "name": "Tohoku Town Office",
     "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "landmark",
     "name": "Lake Ogawara",
     "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"
   },
   {
-    "protagonist": "PC01",
+    "protagonist": "PC04",
     "place_type": "fishing_grounds",
     "name": "Lake Ogawara's shijimi clam beds",
     "note": "Draft, 2026-11-20: Misawa, Tohoku and Shichinohe confirmed inside Aomori Block 3"

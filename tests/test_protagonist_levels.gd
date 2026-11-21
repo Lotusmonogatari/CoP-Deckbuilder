@@ -2,16 +2,16 @@ extends GutTest
 ## Two offices, slice 6 (2026-11-20): the eight protagonist levels, each offered to one protagonist and to one office.
 
 const LEVELS := {
-	"LV115": ["PC04", "District"], "LV116": ["PC04", "Capitol"],   # Wakkanai: the Soya Line, the Sakhalin Ferry
+	"LV115": ["PC01", "District"], "LV116": ["PC01", "Capitol"],   # Wakkanai: the Soya Line, the Sakhalin Ferry
 	"LV117": ["PC02", "District"], "LV118": ["PC02", "Capitol"],   # Tomakomai: carbon under the harbor, the casino
 	"LV119": ["PC03", "District"], "LV120": ["PC03", "Capitol"],   # Teine and Ishikari: wind, the tunnel
-	"LV121": ["PC01", "District"], "LV122": ["PC01", "Capitol"],   # Aomori: Rokkasho, the bluefin quota
+	"LV121": ["PC04", "District"], "LV122": ["PC04", "Capitol"],   # Aomori: Rokkasho, the bluefin quota
 }
 
 
 func after_each() -> void:
-	DataDB.use_protagonist("PC01")
-	GameState.protagonist_id = "PC01"
+	DataDB.use_protagonist("PC04")
+	GameState.protagonist_id = "PC04"
 	GameState.office_location = Offices.CAPITOL
 
 
@@ -27,21 +27,21 @@ func test_each_level_belongs_to_one_protagonist_and_one_office() -> void:
 
 func test_a_level_is_offered_only_to_its_protagonist() -> void:
 	for id: String in LEVELS:
-		for pid: String in ["PC01", "PC02", "PC03", "PC04"]:
+		for pid: String in ["PC04", "PC02", "PC03", "PC01"]:
 			GameState.protagonist_id = pid
 			assert_eq(GameState.level_is_for_player(DataDB.get_level(id)), pid == LEVELS[id][0], "%s for %s" % [id, pid])
-	GameState.protagonist_id = "PC01"
+	GameState.protagonist_id = "PC04"
 	assert_true(GameState.level_is_for_player(DataDB.get_level("LV01")), "an ordinary level is for everyone")
 
 
 func test_a_district_level_reads_in_its_own_places() -> void:
 	DataDB.use_protagonist("PC03")
 	assert_string_contains(str(DataDB.get_level("LV119").get("purpose")), "Ishikari", "the beach is PC03's own")
-	DataDB.use_protagonist("PC04")
+	DataDB.use_protagonist("PC01")
 	assert_string_contains(str(DataDB.get_level("LV116").get("purpose")), "Cape Sōya")
 	DataDB.use_protagonist("PC02")
 	assert_string_contains(str(DataDB.get_level("LV118").get("purpose")), "Lake Utonai")
-	for pid: String in ["PC01", "PC02", "PC03", "PC04"]:
+	for pid: String in ["PC04", "PC02", "PC03", "PC01"]:
 		DataDB.use_protagonist(pid)
 		for id: String in LEVELS:
 			assert_false(str(DataDB.get_level(id).get("purpose")).contains("{"), "%s for %s has no token left" % [id, pid])

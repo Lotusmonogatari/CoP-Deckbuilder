@@ -2,7 +2,7 @@ extends GutTest
 ## Two offices, slice 5 (2026-11-20): place tokens in text, the Places tab, and Needs Place.
 
 func after_each() -> void:
-	DataDB.use_protagonist("PC01")
+	DataDB.use_protagonist("PC04")
 
 
 func test_a_token_becomes_the_protagonists_own_name() -> void:
@@ -40,30 +40,30 @@ func test_the_types_in_a_text_and_whether_a_district_has_them() -> void:
 
 
 func test_every_protagonist_has_a_district_of_places() -> void:
-	for pid: String in ["PC01", "PC02", "PC03", "PC04"]:
+	for pid: String in ["PC04", "PC02", "PC03", "PC01"]:
 		var names := PlaceTokens.names_by_type(DataDB.places, pid)
 		assert_gt(names.size(), 18, "%s has most of the 23 place types" % pid)
 	assert_gt(DataDB.places.size(), 100, "the catalog is not empty")
 
 
-func test_pc01_and_pc04_have_swapped_districts() -> void:
-	var pc01 := PlaceTokens.names_by_type(DataDB.places, "PC01")
+func test_pc04_and_pc01_have_swapped_districts() -> void:
 	var pc04 := PlaceTokens.names_by_type(DataDB.places, "PC04")
-	assert_true((pc01["station"] as Array).has("Noheji Station"), "PC01 is the Aomori protagonist now")
-	assert_true((pc04["station"] as Array).has("Wakkanai Station"), "PC04 is the Wakkanai protagonist now")
+	var pc01 := PlaceTokens.names_by_type(DataDB.places, "PC01")
+	assert_true((pc04["station"] as Array).has("Noheji Station"), "PC04 is the Aomori protagonist now")
+	assert_true((pc01["station"] as Array).has("Wakkanai Station"), "PC01 is the Wakkanai protagonist now")
 
 
 func test_events_read_in_the_protagonists_own_places() -> void:
-	DataDB.use_protagonist("PC04")
+	DataDB.use_protagonist("PC01")
 	assert_string_contains(str(GameState.get_event("EV02").get("flavor")), "Hokumon Shrine")
 	DataDB.use_protagonist("PC03")
 	assert_string_contains(str(GameState.get_event("EV02").get("flavor")), "Ishikari Benten Shrine")
-	DataDB.use_protagonist("PC01")
+	DataDB.use_protagonist("PC04")
 	assert_string_contains(str(GameState.get_event("EV19").get("flavor")), "Noheji", "{office_city}")
 
 
 func test_no_token_is_left_on_screen_for_any_protagonist() -> void:
-	for pid: String in ["PC01", "PC02", "PC03", "PC04"]:
+	for pid: String in ["PC04", "PC02", "PC03", "PC01"]:
 		DataDB.use_protagonist(pid)
 		for event: Dictionary in DataDB.events:
 			for field: String in ["title", "flavor"]:
@@ -98,8 +98,8 @@ func test_the_events_with_tokens_each_list_what_they_need() -> void:
 
 
 func test_aomori_block_3_names_misawa_tohoku_and_shichinohe() -> void:
-	# Cameron confirmed on 2026-11-20 that all three lie inside the block (PC01's district).
-	var names := PlaceTokens.names_by_type(DataDB.places, "PC01")
+	# Cameron confirmed on 2026-11-20 that all three lie inside the block (PC04's district).
+	var names := PlaceTokens.names_by_type(DataDB.places, "PC04")
 	assert_true((names["town_hall"] as Array).has("Misawa City Hall"))
 	assert_true((names["town_hall"] as Array).has("Shichinohe Town Hall"))
 	assert_true((names["town_hall"] as Array).has("Tohoku Town Office"))

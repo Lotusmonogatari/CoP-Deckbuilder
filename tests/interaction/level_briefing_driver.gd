@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func _run() -> void:
-	GameState.start_new_run("PC01")
+	GameState.start_new_run("PC04")
 	GameState.awaiting_new_game = false
 	OS.set_environment("COP_NO_RANDOM_EVENTS", "1")
 	for style: String in STYLES:
@@ -134,7 +134,7 @@ func _lv11(style: String) -> void:
 
 
 ## A mixed level's trips are in its hours and the briefing says so (two offices, 2026-11-20): LV05 is a Capitol level with a
-## town hall in it, so PC01 (seven hours by rail from Noheji) goes out and back: 14 hours on top of its rooms.
+## town hall in it, so PC04 (seven hours by rail from Noheji) goes out and back: 14 hours on top of its rooms.
 func _mixed_level(style: String) -> void:
 	var panel := await _brief("LV05")
 	var where := "LV05 in %s: " % style

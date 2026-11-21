@@ -6,7 +6,7 @@ var _saved_one_in: Variant
 
 
 func before_each() -> void:
-	GameState.start_new_run("PC01")
+	GameState.start_new_run("PC04")
 	GameState.calendar = WeekCalendar.fresh()
 	GameState.office_location = Offices.CAPITOL
 	GameState.level_travel = {}
@@ -23,9 +23,9 @@ func after_each() -> void:
 
 func test_each_protagonist_is_sold_the_right_tickets() -> void:
 	assert_eq(GameState.travel_item_id(Travel.TICKET), "SH42", "the paid train ticket is sold to everyone")
-	assert_eq(GameState.travel_item_id(Travel.PLANE), "SH44", "PC01 flies")
+	assert_eq(GameState.travel_item_id(Travel.PLANE), "SH44", "PC04 flies")
 	assert_eq(GameState.travel_item_id(Travel.CAR), "", "and has no private car")
-	GameState.start_new_run("PC04")
+	GameState.start_new_run("PC01")
 	assert_eq(GameState.travel_item_id(Travel.CAR), "SH43")
 	assert_eq(GameState.travel_item_id(Travel.PLANE), "")
 
@@ -126,13 +126,13 @@ func test_the_encounter_rate_is_one_trip_in_eight() -> void:
 	assert_eq(Levers.whole("travel_encounter_one_in"), 8)
 
 
-func test_only_pc01_starts_with_plane_tickets() -> void:
-	# Cameron, 2026-11-20: PC01 (Noheji, seven hours by rail) starts with four plane tickets; nobody else gets a ticket.
-	GameState.start_new_run("PC01")
-	assert_eq(GameState.item_count("SH44"), 4, "PC01 starts with four plane tickets")
+func test_only_pc04_starts_with_plane_tickets() -> void:
+	# Cameron, 2026-11-20: PC04 (Noheji, seven hours by rail) starts with four plane tickets; nobody else gets a ticket.
+	GameState.start_new_run("PC04")
+	assert_eq(GameState.item_count("SH44"), 4, "PC04 starts with four plane tickets")
 	assert_eq(GameState.travel_tickets(Travel.PLANE), 4, "and they count as tickets for the trip")
-	for pid: String in ["PC02", "PC03", "PC04"]:
+	for pid: String in ["PC02", "PC03", "PC01"]:
 		GameState.start_new_run(pid)
 		for item: String in ["SH42", "SH43", "SH44"]:
 			assert_eq(GameState.item_count(item), 0, "%s starts with no %s" % [pid, item])
-	GameState.start_new_run("PC01")
+	GameState.start_new_run("PC04")
