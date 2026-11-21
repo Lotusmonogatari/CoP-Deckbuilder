@@ -224,3 +224,10 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 | What | Why it looks removable |
 |---|---|
 | `OfficeScreen._swipe_strip()`, `_protagonist_row()` and the `NEW_GAME_SQUARE*` constants | New Game uses `_switch_row()`, `_champion_portraits()` and `_champion_card()`; nothing calls the old ones. |
+
+## Branches closed with no action needed (Cameron, 2026-11-21)
+
+| Remote branch | What it holds | Decision |
+|---|---|---|
+| `review/p11-two-offices-audit` | The two-offices audit (5 commits, 31 files, read-only review data) | **Not merged. No action needed.** Closed. The branch is kept; nothing is deleted. |
+| `claude/vibrant-keller-w6u40g` | One file, `design/proposals/ART_WIRING_PLAN_2026-11-20.md` (the plan for the District pictures, which shipped) | **Not merged. No action needed.** Closed. The branch is kept; nothing is deleted. |
