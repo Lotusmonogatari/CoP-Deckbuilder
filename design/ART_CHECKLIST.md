@@ -16,7 +16,7 @@ stands in for every expression.
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
-| Cosmetic package icons | 8 / 8 |
+| Cosmetic package icons | 9 / 9 |
 | Decision scenes with a picture to show | 0 / 1 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -598,6 +598,7 @@ stands in for every expression.
 | calendar_ainu.png | Ainu Calendar | ✓ |
 | CP07.png | Broadcast | ✓ |
 | CP08.png | Woodblock | ✓ |
+| CP09.png | Yezo Office | ✓ |
 
 ## Decision scenes
 

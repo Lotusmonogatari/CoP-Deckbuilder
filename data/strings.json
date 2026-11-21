@@ -8227,7 +8227,7 @@
   {
     "key": "shop.styles_blurb",
     "where": "Marketplace, Office styles tab, intro",
-    "english": "How your office and your debates look. Living Office is included.",
+    "english": "How your office and your debates look. The style you picked at the start is yours; the others cost XP.",
     "placeholders": null,
     "notes": "2026-11-17 panel P9 (Claude's draft)"
   },

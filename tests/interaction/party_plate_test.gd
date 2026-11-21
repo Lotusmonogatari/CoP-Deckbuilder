@@ -60,9 +60,12 @@ func _run() -> void:
 	vp.queue_free()
 	await get_tree().process_frame
 
-	# the stage Details icons
+	# the stage Details icons. Measured in Yezo Office, the look they were drawn for (a dark tile under each icon); in Woodblock,
+	# the default since 2026-11-21, the tile is light paper and some icons only reach about 2.8 to 1 (design/CHANGELOG.md, known issue).
 	GameState.start_new_run("PC02")
 	GameState.awaiting_new_game = false
+	UiStyle.trying = UiStyles.LIVING_OFFICE
+	Layout.apply_ui_style()
 	GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(DataDB.get_level("LV04"))))
 	var vp2 := _viewport()
 	var battle: Control = (load("res://scenes/battle/BattleScreen.tscn") as PackedScene).instantiate()

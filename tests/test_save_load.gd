@@ -50,8 +50,10 @@ func _a_run_in_progress() -> void:
 	# (2026-10-14), so the round-trip needs one DataDB knows. Removed again
 	# in after_each().
 	DataDB._cosmetic_packages_by_id["CPTEST1"] = {"package_id": "CPTEST1"}
-	GameState.owned_cosmetic_packages.assign(["CPTEST1"])
-	GameState.active_cosmetics = {CosmeticPieces.OUTFIT: "CPTEST1"}
+	# A run always wears an owned UI style (the default, Woodblock, if none was picked), so the round trip has one.
+	var style_package := str(UiStyles.package_for(UiStyles.WOODBLOCK, DataDB.cosmetic_packages)["package_id"])
+	GameState.owned_cosmetic_packages.assign(["CPTEST1", style_package])
+	GameState.active_cosmetics = {CosmeticPieces.OUTFIT: "CPTEST1", CosmeticPieces.UI_STYLE: style_package}
 
 
 func test_a_run_comes_back_exactly_as_it_was_saved() -> void:

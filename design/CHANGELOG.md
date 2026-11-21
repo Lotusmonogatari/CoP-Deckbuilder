@@ -1817,3 +1817,18 @@ The scheme is now fully built. Nothing in play changes until you write scenes: o
 | Pictures | A scene with no Scene Picture and no event Image wears `DEC_PLACE_CAPITOL` or `DEC_PLACE_DISTRICT` when drawn (one picture per office, a simplification of the planned `DEC_PLACE_<OFFICE>_<name>`). The art checklist has a Decision scenes section. |
 | Text | Eight Text rows (`event.optional_*`, `decision.lapsed_*`). |
 | Tests | Nine unit tests (windows, lapse, never self-opening, the hidden letter, penalty once, quiet lapse) and a real-click test `optional_scene_test` (lapse card on opening the Office, the listed card with its days, Open it, the note, answering once). |
+
+## Woodblock is the default look; Yezo Office is a package (2026-11-21, Cameron; branch `feature/ui-default-woodblock`)
+
+| Part | What changed |
+|---|---|
+| Default | A new Rules-tab switch, `default_ui_style`, is `woodblock`. The New Game screens, the loading screen and any run or save with no style picked show Woodblock. Before, the code assumed Living Office in these places. |
+| Yezo Office | The old Living Office is now **Yezo Office**, package **CP09** (Name 会議室, "A modern office inspired by tradition.", 1 XP, UI Style `living_office`). All three styles are packages; the exporter requires exactly one package for each. |
+| The pick | The style chosen on the New Game screen is owned free and equipped; the other two are bought in the Marketplace Styles tab ("Unlock · 1 XP"). A run with no pick, and a loaded save with no style, is given Woodblock free. A loaded save that already wears an owned style keeps it. |
+| Marketplace | The Styles tab draws all three cards from their packages, with the icon beside the name. The blurb reads "The style you picked at the start is yours; the others cost XP." |
+| Icons | CP07, CP08 and CP09 are named in the Icon column, so the three new pictures show. |
+| Old saves | A save made before this with the old default (no style equipped) now opens in Woodblock. |
+| Tests | Three test files updated for the new default; two new tests (a save with no style is given the default; a worn style is never overwritten). |
+| Cleanup candidates | Three Text rows are now unused: `shop.style_living_name`, `shop.style_living_desc`, `shop.style_included` (listed in `design/CLEANUP_CANDIDATES.md`). |
+
+**Known issue found while making Woodblock the default (2026-11-21), for Cameron:** on the stage Details screen the organization icons sit on a light plate. In Yezo Office each icon has a dark tile and reaches 8.7 to 1; in Woodblock the tile is light paper and some icons reach only about 2.8 to 1 (the standard is 3 to 1), with a grey halo behind neutral ones. `tests/interaction/party_plate_test.gd` therefore measures those icons in Yezo Office. Options: give organization icons a dark tile in every style, or redraw the icons for light paper.

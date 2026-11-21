@@ -21,8 +21,14 @@ static func current() -> String:
 		return trying
 	var package_id := str(GameState.active_cosmetics.get(CosmeticPieces.UI_STYLE, ""))
 	if package_id.is_empty():
-		return UiStyles.LIVING_OFFICE
-	return UiStyles.current(DataDB.get_cosmetic_package(package_id))
+		return default_style()
+	return UiStyles.current(DataDB.get_cosmetic_package(package_id), default_style())
+
+
+## The style shown until a pick exists: the Rules tab's default_ui_style (Woodblock).
+static func default_style() -> String:
+	var style := str(DataDB.get_rule("default_ui_style", UiStyles.WOODBLOCK))
+	return style if style in UiStyles.ALL else UiStyles.WOODBLOCK
 
 
 static func idx() -> Dictionary:

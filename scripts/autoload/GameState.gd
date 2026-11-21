@@ -609,7 +609,23 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 		office_location = Offices.CAPITOL
 	level_travel = {}
 	awaiting_new_game = false
+	grant_default_ui_style()
 	return true
+
+
+## A run with no UI style picked owns and wears the default one free (Rules tab, default_ui_style: Woodblock). Called when a run
+## starts and after a save loads; a run that already wears an owned style is left alone. New Game's pick replaces the default.
+func grant_default_ui_style() -> void:
+	var worn := str(active_cosmetics.get(CosmeticPieces.UI_STYLE, ""))
+	if not worn.is_empty() and owned_cosmetic_packages.has(worn):
+		return
+	var wanted := str(DataDB.get_rule("default_ui_style", UiStyles.WOODBLOCK))
+	var package_id := str(UiStyles.package_for(wanted if wanted in UiStyles.ALL else UiStyles.WOODBLOCK, DataDB.cosmetic_packages).get("package_id", ""))
+	if package_id.is_empty():
+		return
+	if not owned_cosmetic_packages.has(package_id):
+		owned_cosmetic_packages.append(package_id)
+	active_cosmetics[CosmeticPieces.UI_STYLE] = package_id
 
 
 # ---------------------------------------------------------------------------
@@ -690,6 +706,7 @@ func load_save(saved: Dictionary) -> void:
 	if level_runner == null:
 		patron_runtime = {}
 	drop_stale_ids()
+	grant_default_ui_style()
 	sanitize_loaded_run()
 
 

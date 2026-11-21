@@ -8,9 +8,10 @@ extends RefCounted
 ## answers "which style is this package" and "what is this style's token".
 ## Pure, like everything in scripts/rules/: no autoload, no file, no scene.
 ##
-## Living Office is the free default and is NOT a package, so it can never be
-## un-owned. Broadcast and Woodblock are Cosmetic Packages with a UI Style
-## value (the `ui_style` slot in CosmeticPieces).
+## Every style is a Cosmetic Package with a UI Style value (the `ui_style` slot in
+## CosmeticPieces): Yezo Office (living_office), Broadcast and Woodblock. The one a
+## player picks at New Game is owned free; the others are bought. The default
+## (Rules tab, default_ui_style: Woodblock) is what shows until a pick exists.
 
 const LIVING_OFFICE := "living_office"
 const BROADCAST := "broadcast"
@@ -26,16 +27,17 @@ static func style_of(package: Dictionary) -> String:
 	return style if style in ALL else ""
 
 
-## The style in use: the equipped package's, else Living Office.
-static func current(equipped_package: Dictionary) -> String:
+## The style in use: the equipped package's, else `default_style`.
+static func current(equipped_package: Dictionary, default_style: String = WOODBLOCK) -> String:
 	var style := style_of(equipped_package)
-	return LIVING_OFFICE if style.is_empty() else style
+	if style.is_empty():
+		return default_style if default_style in ALL else WOODBLOCK
+	return style
 
 
-## Every style the player may switch to: Living Office, then each owned
-## package's style (once each, in the order they were bought).
+## Every style the player may switch to: each owned package's style (once each, in the order they were bought).
 static func owned_styles(owned_package_ids: Array, packages_by_id: Callable) -> Array:
-	var out: Array = [LIVING_OFFICE]
+	var out: Array = []
 	for package_id: Variant in owned_package_ids:
 		var style := style_of(packages_by_id.call(str(package_id)))
 		if not style.is_empty() and not out.has(style):
@@ -43,7 +45,7 @@ static func owned_styles(owned_package_ids: Array, packages_by_id: Callable) -> 
 	return out
 
 
-## The package that carries a style, or {} (Living Office has none).
+## The package that carries a style, or {}.
 static func package_for(style: String, packages: Array) -> Dictionary:
 	for package: Dictionary in packages:
 		if style_of(package) == style:

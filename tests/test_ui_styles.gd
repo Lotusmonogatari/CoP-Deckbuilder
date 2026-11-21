@@ -1,6 +1,6 @@
 extends GutTest
-## UiStyles (P9): the equipped package decides the style, Living Office is the
-## free default, and the token index reads the workbook rows.
+## UiStyles (P9): the equipped package decides the style, Woodblock is the
+## default until a pick exists (2026-11-21), and the token index reads the workbook rows.
 
 func _packages() -> Dictionary:
 	return {
@@ -10,9 +10,11 @@ func _packages() -> Dictionary:
 	}
 
 
-func test_no_package_is_living_office() -> void:
-	assert_eq(UiStyles.current({}), UiStyles.LIVING_OFFICE)
-	assert_eq(UiStyles.current(_packages()["CP01"]), UiStyles.LIVING_OFFICE)
+func test_no_package_is_the_default_style() -> void:
+	assert_eq(UiStyles.current({}), UiStyles.WOODBLOCK)
+	assert_eq(UiStyles.current(_packages()["CP01"]), UiStyles.WOODBLOCK)
+	assert_eq(UiStyles.current({}, UiStyles.LIVING_OFFICE), UiStyles.LIVING_OFFICE, "the default can be named")
+	assert_eq(UiStyles.current({}, "nonsense"), UiStyles.WOODBLOCK, "an unknown default is Woodblock")
 
 
 func test_a_style_package_sets_the_style() -> void:
@@ -20,11 +22,10 @@ func test_a_style_package_sets_the_style() -> void:
 	assert_eq(UiStyles.current(_packages()["CP08"]), UiStyles.WOODBLOCK)
 
 
-func test_owned_styles_always_include_living_office_once() -> void:
+func test_owned_styles_are_the_owned_packages_styles_once() -> void:
 	var lookup := func(id: String) -> Dictionary: return _packages().get(id, {})
-	assert_eq(UiStyles.owned_styles([], lookup), [UiStyles.LIVING_OFFICE])
-	assert_eq(UiStyles.owned_styles(["CP01", "CP08", "CP07", "CP08"], lookup),
-		[UiStyles.LIVING_OFFICE, UiStyles.WOODBLOCK, UiStyles.BROADCAST])
+	assert_eq(UiStyles.owned_styles([], lookup), [], "no style is owned for free any more")
+	assert_eq(UiStyles.owned_styles(["CP01", "CP08", "CP07", "CP08"], lookup), [UiStyles.WOODBLOCK, UiStyles.BROADCAST])
 
 
 func test_ui_style_is_a_cosmetic_slot() -> void:
