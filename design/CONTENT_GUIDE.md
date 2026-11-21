@@ -334,3 +334,9 @@ Write `{place:harbor}` (a type from the **Places** tab: district_office is `{off
 ## A level for one protagonist (2026-11-20)
 
 The Levels tab's optional **Protagonist** column keeps a level to one protagonist: write an ID (`PC01` to `PC04`); a blank means everyone. Set **Location** (Capitol or District) at the same time: a District level reads naturally in place tokens (`{place:harbor}`) in its purpose line, a Capitol one in the Assembly's business. Copy the nearest existing level row (`tools/workbook/wbx.py copy_row`) and change it rather than starting empty. A level's stages must still fit the work week (a weekend level must fit a 4-hour day).
+
+## Event lead organizations (2026-11-21)
+
+The Events tab has an optional **Lead Organizations** column: up to two organization IDs (`BO19` or `BO05; BO16`). A lead is an organization the event's own title or flavor text **names**, usually the one bringing the issue forward. An organization that only gets a passive plus or minus from one of the choices is **not** a lead. A blank cell means no lead, and the card shows nothing. The event card shows each lead's icon and name under the story.
+
+The exporter errors on more than two, or an ID that is not an organization, and warns when a lead is not named in the event's own title or flavor. `python3 tools/audit_event_leads.py` lists what needs a look (events that name more than two, a lead that is not named, organizations named only in a choice).

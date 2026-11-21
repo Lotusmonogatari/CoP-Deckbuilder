@@ -29,6 +29,7 @@ var _standing_panel: Overlay = null
 var _chosen_level: Dictionary = {}
 ## Two offices (2026-11-20): the trip button under "Choose a level", and the popup that states a trip's cost first.
 var _travel_button: TravelStrip
+var _moved_panel: Overlay
 var _travel_page_panel: Overlay
 var _travel_panel: Overlay
 var _travel_card: TravelCard
@@ -970,7 +971,9 @@ func _show_dated_event_if_due() -> bool:
 		_report.text = "%s\n%s" % [Text.say("travel.forced_move", {"place": TravelText.place_name(GameState.office_location)}), _report_text()]
 		_refresh_resources()
 		_refresh_calendar()
-		_event_moved_you = true
+		# A card first (P14b, 2026-11-21): MOVED FOR YOU, who says so, what is not open here and that the trip was free.
+		_show_moved_card(event_id)
+		return true
 	_present_event(event_id, false)
 	return true
 
@@ -984,9 +987,77 @@ func _show_random_event_if_due() -> void:
 		_present_event(event_id, true)
 
 
-## True when this Dated event has just taken the player to its office, so its card says so (travel.forced_move, and that the
-## trip cost no hours: forced moves are free). Cleared as the card is drawn.
-var _event_moved_you := false
+## The card that comes before a Dated event which has just taken the player to its office (P14b, 2026-11-21): MOVED FOR YOU in
+## the alarm colour, a line from the primary staff member (one line per role to start, Cameron), why they are here, what is not
+## open at this office (read from the data's Location tags, so it is true of whichever office this is), and that the trip cost
+## no hours. Continue opens the event.
+func _show_moved_card(event_id: String) -> void:
+	var look := OfficeFrameStyles.look()
+	var place := TravelText.place_name(GameState.office_location)
+	var rows: Array[Control] = []
+	var speaker := _moved_speaker()
+	if not speaker.is_empty():
+		var tile := PanelContainer.new()
+		tile.name = "MovedSpeech"
+		tile.add_theme_stylebox_override("panel", LevelBriefingStyles.tile_box(look))
+		var inside := VBoxContainer.new()
+		tile.add_child(inside)
+		var who := UiKit.line(Text.say("travel.moved_speaker", {"name": str(speaker["name"]), "role": str(speaker["role"])}), "SmallLabel")
+		who.custom_minimum_size.x = 0.0
+		inside.add_child(who)
+		var said := UiKit.line(str(speaker["line"]))
+		said.custom_minimum_size.x = 0.0
+		inside.add_child(said)
+		rows.append(tile)
+	rows.append(UiKit.line(Text.say("travel.forced_move", {"place": place})))
+	var closed := ClosedHere.kinds(GameState.office_location, DataDB.levels, DataDB.events, DataDB.visitors)
+	if not closed.is_empty():
+		rows.append(UiKit.line(Text.say("travel.closed_here"), "HeaderLabel"))
+		for kind: String in closed:
+			var other := TravelText.place_name(Offices.other(GameState.office_location))
+			var key := "travel.closed_levels"
+			if kind == ClosedHere.EVENTS:
+				key = "travel.closed_events"
+			elif kind == ClosedHere.VISITORS:
+				key = "travel.closed_visitors"
+			rows.append(UiKit.line(Text.say(key, {"place": other}), "SmallLabel"))
+	rows.append(UiKit.line(Text.say("travel.forced_free"), "SmallLabel"))
+	var go := Button.new()
+	go.name = "MovedContinueButton"
+	go.custom_minimum_size = Vector2(0, 110)
+	go.text = Text.say("event.continue")
+	go.pressed.connect(_on_moved_continue.bind(event_id))
+	var foot: Array[Control] = [go]
+	var meta := Text.say("event.coming_meta", {"day": EventsModel.weekday_name(WeekCalendar.today_number(GameState.calendar,
+		GameState.calendar_config())), "office": TravelText.level_badge(GameState.office_location), "hours": 0})
+	_moved_panel.open_card({"tag": Text.say("popup.tag_moved"), "tag_kind": PopupCardStyles.ALARM, "meta": meta,
+		"title": TravelText.here_line(), "body": rows, "buttons": foot, "primary": 0})
+
+
+func _on_moved_continue(event_id: String) -> void:
+	_moved_panel.close()
+	_present_event(event_id, false)
+
+
+## The first primary staff member and the line their role gives; {} when no one is hired.
+func _moved_speaker() -> Dictionary:
+	var lines := {"Policy Research Assistant": "travel.moved_line_research", "Media Spokesperson": "travel.moved_line_media",
+		"District Representative": "travel.moved_line_district"}
+	for member: Dictionary in GameState.staff_members():
+		if not bool(member.get("primary", false)):
+			continue
+		var role := str(member.get("role", ""))
+		var key := str(lines.get(role, ""))
+		if key.is_empty():
+			continue
+		var staff := DataDB.get_staff(str(member.get("staff_id", "")))
+		var text := ""
+		match key:
+			"travel.moved_line_research": text = Text.say("travel.moved_line_research")
+			"travel.moved_line_media": text = Text.say("travel.moved_line_media")
+			_: text = Text.say("travel.moved_line_district")
+		return {"name": str(staff.get("name", "")), "role": role, "line": text}
+	return {}
 
 
 ## The kind tag of an event's pop-up card: DECISION! for the calendar's own events, SOMETHING COMES UP for the rest.
@@ -1007,11 +1078,6 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 		return
 	var rows: Array[Control] = []
 	var choices: Array[Control] = []
-	var moved := _event_moved_you
-	_event_moved_you = false
-	if moved:
-		rows.append(UiKit.line(Text.say("travel.forced_move", {"place": TravelText.place_name(GameState.office_location)}), "SmallLabel"))
-		rows.append(UiKit.line(Text.say("travel.forced_free"), "SmallLabel"))
 	# An Image cell may list several pictures; one is picked each time the event
 	# comes up and kept for its result screen (and when Back returns to it from
 	# a level's briefing).
@@ -1039,6 +1105,13 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 	elif arrived:
 		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
 	rows.append(UiKit.line(str(event.get("flavor", ""))))
+	# The organizations that lead the event, with their icons (Lead Organizations column; at most two).
+	for lead_id: String in EventLeads.of(event):
+		var lead_name := str(DataDB.get_booster(lead_id).get("name_en", ""))
+		if not lead_name.is_empty():
+			var lead_row := _with_booster_icon(lead_id, UiKit.line(lead_name))
+			lead_row.name = "EventLead_" + lead_id
+			rows.append(lead_row)
 	# How long it can take, from the quickest choice to the longest (a choice
 	# that starts a level adds that level's hours), 2026-10-31.
 	var span := GameState.event_hours_range(event)
@@ -4124,6 +4197,12 @@ func _build_travel() -> void:
 	_travel_page_panel = Overlay.new()
 	_travel_page_panel.name = "TravelPagePanel"
 	add_child(_travel_page_panel)
+	# The card that comes before an event that moved the player (must be answered, so it cannot be dismissed).
+	_moved_panel = Overlay.new()
+	_moved_panel.name = "MovedPanel"
+	_moved_panel.dismissable = false
+	_moved_panel.show_back = false
+	add_child(_moved_panel)
 	_travel_panel = Overlay.new()
 	_travel_panel.name = "TravelPanel"
 	add_child(_travel_panel)
