@@ -10,9 +10,9 @@ stands in for every expression.
 | Protagonists | 24 / 28 |
 | Opponents | 7 / 655 |
 | Staff | 105 / 105 |
-| Visitors | 405 / 835 |
+| Visitors | 520 / 835 |
 | Card art | 70 / 70 |
-| Backgrounds | 44 / 45 |
+| Backgrounds | 52 / 52 |
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
@@ -271,28 +271,28 @@ stands in for every expression.
 | VI76 | Megumi Fukui | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI77 | Kiyoshi Torii | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI78 | Yui Machida | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI79 | Rera Saru | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI80 | Koichi Satomi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI81 | Takashi Hamada | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI82 | Michiko Sasaki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI83 | Daisuke Kondo | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI84 | Ichiro Watanabe | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI85 | Yoshie Narita | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI86 | Kazuo Abe | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI87 | Akemi Fujiwara | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI88 | Hiroshi Kimura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI89 | Rina Kurosawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI90 | Noboru Ishikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI91 | Fumiko Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI92 | Tetsuya Ota | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI93 | Haruko Mori | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI94 | Yuto Matsuda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI95 | Masaru Takeda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI96 | Chiyo Hayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI97 | Genji Endo | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI98 | Shinobu Kikuchi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI99 | Emi Yoshida | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI100 | Kenta Aoki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI79 | Rera Saru | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI80 | Koichi Satomi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI81 | Takashi Hamada | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI82 | Michiko Sasaki | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI83 | Daisuke Kondo | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI84 | Ichiro Watanabe | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI85 | Yoshie Narita | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI86 | Kazuo Abe | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI87 | Akemi Fujiwara | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI88 | Hiroshi Kimura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI89 | Rina Kurosawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI90 | Noboru Ishikawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI91 | Fumiko Sato | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI92 | Tetsuya Ota | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI93 | Haruko Mori | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI94 | Yuto Matsuda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI95 | Masaru Takeda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI96 | Chiyo Hayashi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI97 | Genji Endo | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI98 | Shinobu Kikuchi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI99 | Emi Yoshida | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI100 | Kenta Aoki | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI101 | Sachiko Nomura | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI102 | Tomekichi Sakai | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI103 | Ryo Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -356,7 +356,7 @@ stands in for every expression.
 | VI161 | Goro Hamamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI162 | Chieko Wakabayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI163 | Haruki Nagano | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI164 | Setsuko Omura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI164 | Setsuko Omura | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI165 | Toshio Kuroda | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI166 | Yasuo Noda | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI167 | Masashi Mumotsu | ◆ | ◆ | ◆ | ◆ | ◆ |
@@ -475,7 +475,14 @@ stands in for every expression.
 | OUT_LAKESIDE_1.png | Outside scene | ✓ |
 | OUT_LAKESIDE_2_MORNING.png | Outside scene | ✓ |
 | OUT_LAKESIDE_3_AINU.png | Outside scene | ✓ |
-| OUT_NEIGHBORHOOD.png | Outside scene | ☐ |
+| OUT_NEIGHBORHOOD_1.png | Outside scene | ✓ |
+| OUT_NEIGHBORHOOD_2.png | Outside scene | ✓ |
+| OUT_NEIGHBORHOOD_3.png | Outside scene | ✓ |
+| OUT_NEIGHBORHOOD_4.png | Outside scene | ✓ |
+| OUT_NEIGHBORHOOD_5.png | Outside scene | ✓ |
+| OUT_NEIGHBORHOOD_WINTER_1.png | Outside scene | ✓ |
+| OUT_NEIGHBORHOOD_WINTER_2.png | Outside scene | ✓ |
+| OUT_NEIGHBORHOOD_WINTER_3.png | Outside scene | ✓ |
 | OUT_SCHOOL_1.png | Outside scene | ✓ |
 | OUT_SCHOOL_2.png | Outside scene | ✓ |
 | OUT_SHRINE_1.png | Outside scene | ✓ |
