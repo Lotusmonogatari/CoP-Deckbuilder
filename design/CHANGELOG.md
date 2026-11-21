@@ -1706,3 +1706,12 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Code | `Items.office_refusal` (pure), `GameState.item_office_refusal`, used by `use_item_in_office` and by the inventory's Use button. The exporter checks the new column like every other Location. |
 | Text | `item.refused.hosted_office`, a draft for you to reword. |
 | Tests | `tests/test_hosted_office_lock.gd` (5). Changed on purpose: `inventory_driver.gd` (host the tour from the District) and three unit tests that used the dinner or tour (`test_gated_levels`, `test_hosted_event`, `test_inventory`) now stand at the right office. |
+
+## 2026-11-21: Sponsored and custom bills are Capitol-only (Cameron)
+
+| Part | What changed |
+|---|---|
+| Where | Sponsored bills (organizations asking you to carry one) and custom bills (**Draft a Bill**) are carried at the Capitol only. At the District the levels list hides both and says so ("Sponsored and custom bills are carried at the Capitol."). |
+| Rules | The office is read from the bill-level templates' Location (all four are Capitol), so retagging a template moves the bills. A bill level now carries that office, so the same office check as every other level refuses a sponsored bill started from the other office, and a draft is refused with "go to the Capitol". Nothing is spent and the request stays as it was. |
+| Text | `office.bills_capitol_only`, a draft for you to reword. |
+| Tests | `tests/test_bills_capitol_only.gd` (4). No existing test needed changing. |

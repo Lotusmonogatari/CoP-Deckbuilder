@@ -4429,14 +4429,22 @@ func _show_levels() -> void:
 	# The hours left, at the top of the list (all styles; P9 review).
 	rows.append(UiKit.line(Text.say("office.docket_hours", {"count": GameState.work_hours_left()}), "HeaderLabel"))
 
+	# Sponsored and custom bills are carried at the Capitol only (Cameron, 2026-11-21): elsewhere the list says so instead.
+	var bills_here := Offices.is_here(PatronLevel.office(), GameState.office_location)
+	if not bills_here:
+		var elsewhere := UiKit.line(Text.say("office.bills_capitol_only", {"place": TravelText.place_name(PatronLevel.office())}), "SmallLabel")
+		elsewhere.name = "BillsElsewhere"
+		rows.append(elsewhere)
+
 	# Drafting your own bill (patron step 7).
-	var draft_button := UiKit.action_button(Text.say("draft.button"), "", _open_draft.bind(true), 100.0)
-	draft_button.name = "DraftBillButton"
-	LevelFolder.style_draft_button(draft_button)
-	rows.append(draft_button)
+	if bills_here:
+		var draft_button := UiKit.action_button(Text.say("draft.button"), "", _open_draft.bind(true), 100.0)
+		draft_button.name = "DraftBillButton"
+		LevelFolder.style_draft_button(draft_button)
+		rows.append(draft_button)
 
 	# Organizations asking the player to carry a bill sit first (patron step 4).
-	var shown := GameState.patron_requests_shown()
+	var shown := GameState.patron_requests_shown() if bills_here else []
 	if not shown.is_empty():
 		rows.append(UiKit.heading(Text.say("office.requests_heading")))
 		rows.append(UiKit.line(Text.say("office.requests_hint"), "SmallLabel"))

@@ -730,6 +730,7 @@
   "office.backup_undo": "Undo the last load",
   "office.backup_undo_confirm": "Undo it",
   "office.backup_undo_warning": "This returns you to the run you had just before you loaded: {saved}.",
+  "office.bills_capitol_only": "Sponsored and custom bills are carried at {place}.",
   "office.briefing_fallback_title": "Before you go in",
   "office.characters": "Characters",
   "office.choose_level": "Choose a level",

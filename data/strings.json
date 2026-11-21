@@ -9777,5 +9777,12 @@
     "english": "This can only be hosted at {place}.",
     "placeholders": "place",
     "notes": "2026-11-21 (Cameron): the dinner is locked to the Capitol and the walking tour to the District. Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.bills_capitol_only",
+    "where": "The levels list at the other office: where sponsored and custom bills are carried",
+    "english": "Sponsored and custom bills are carried at {place}.",
+    "placeholders": "place",
+    "notes": "2026-11-21 (Cameron): sponsored and custom bills are Capitol-only. Claude's draft for Cameron to reword."
   }
 ]
