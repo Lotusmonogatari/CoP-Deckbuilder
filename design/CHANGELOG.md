@@ -1678,3 +1678,13 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | "Not open while you are here" | **Reflective of the office** (Cameron): `ClosedHere` reads the Location tags on levels, events and visitors and lists the kinds that belong only to the other office, so it is true at either office and a kind with nothing tagged is not listed. |
 | Text | Seven new rows, all drafts for you to reword: `travel.moved_line_research`, `_media`, `_district`, `travel.moved_speaker`, `travel.closed_levels`, `_events`, `_visitors`. |
 | Tests | `tests/test_closed_here.gd` (4). |
+
+## 2026-11-21: Lead organizations on events (Cameron)
+
+| Part | What changed |
+|---|---|
+| Column | The Events tab has an optional **Lead Organizations** column (workbook schema change, approved): up to two organization IDs. A lead is an organization the event's own text names, usually the one bringing the issue forward; an organization with only a passive plus or minus from a choice is not a lead. |
+| Filled | 24 events name one or two organizations in their own title or flavor, and those are filled as drafts for you to confirm. 79 events name none and stay blank by your rule. **EV90** is flagged: Family Network is named only as the picnic held at the same time. |
+| Checked | The exporter errors on more than two or an unknown organization, and warns when a lead is not named in the event's own text. `EventLeads` reads the column; `tools/audit_event_leads.py` writes the review (`design/review/event_lead_organizations_2026-11-21.md`): no event names more than two; organizations named only in choices (EV01, EV93, EV99); 22 events whose choices give a passive plus to three or more organizations; 16 events with no organization at all. |
+| Shown | The event card shows each lead's icon and name under the story. |
+| Tests | `tests/test_event_leads.gd` (4). |

@@ -1105,6 +1105,13 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 	elif arrived:
 		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
 	rows.append(UiKit.line(str(event.get("flavor", ""))))
+	# The organizations that lead the event, with their icons (Lead Organizations column; at most two).
+	for lead_id: String in EventLeads.of(event):
+		var lead_name := str(DataDB.get_booster(lead_id).get("name_en", ""))
+		if not lead_name.is_empty():
+			var lead_row := _with_booster_icon(lead_id, UiKit.line(lead_name))
+			lead_row.name = "EventLead_" + lead_id
+			rows.append(lead_row)
 	# How long it can take, from the quickest choice to the longest (a choice
 	# that starts a level adds that level's hours), 2026-10-31.
 	var span := GameState.event_hours_range(event)

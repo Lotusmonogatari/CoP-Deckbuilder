@@ -1293,8 +1293,12 @@ SHEETS = {
             # 2026-11-20 (slice 5): the place types its text asks for ("harbor; festival"). A protagonist whose
             # district lacks one never draws the event.
             ("Needs Place", "needs_place", "id_list"),
+            # 2026-11-21 (Cameron): up to two organizations that LEAD the event, shown with their icons on its card. A lead is an
+            # organization the event's own text names, usually the one bringing the issue forward; an organization that only has a
+            # passive plus or minus from a choice is not a lead. Blank = no lead.
+            ("Lead Organizations", "lead_organizations", "id_list"),
         ],
-        "optional": ["Seasons", "Location", "Needs Place"],
+        "optional": ["Seasons", "Location", "Needs Place", "Lead Organizations"],
     },
     "Event Choices": {
         "out": "event_choices.json",
@@ -3756,6 +3760,26 @@ def check_places(data, report):
                 report.error(f"Events {eid}", f"needs '{kind}', which no protagonist has in the Places tab")
 
 
+MAX_EVENT_LEADS = 2
+
+
+def check_event_leads(data, report):
+    """Lead Organizations (2026-11-21): at most two per event, each an organization that exists, and each named in the event's
+    own title or flavor text (a warning when it is not, since an organization can be named by another phrase)."""
+    names = {str(b.get("booster_id")): str(b.get("name_en") or "") for b in data.get("boosters", [])}
+    for event in data.get("events", []):
+        eid = event.get("event_id")
+        leads = [str(x) for x in (event.get("lead_organizations") or [])]
+        if len(leads) > MAX_EVENT_LEADS:
+            report.error(f"Events {eid}", f"Lead Organizations lists {len(leads)}; at most {MAX_EVENT_LEADS} may lead an event")
+        own_text = (str(event.get("title") or "") + " " + str(event.get("flavor") or "")).lower()
+        for lead in leads:
+            if lead not in names:
+                report.error(f"Events {eid}", f"Lead Organizations names '{lead}', which is not an organization")
+            elif names[lead] and names[lead].lower() not in own_text:
+                report.warn(f"Events {eid}", f"lead {lead} ({names[lead]}) is not named in the event's own title or flavor text")
+
+
 def check_offices(data, report):
     """Two offices (2026-11-20): every Location cell is Capitol, District, Either or blank; Travel Trips is 0, 1
     or 2 and only on a level that has a real office; a protagonist's travel hours are Balance rows."""
@@ -4949,6 +4973,7 @@ def main():
     check_event_levels(data, report)
     check_commitments(data, report)
     check_offices(data, report)
+    check_event_leads(data, report)
     check_places(data, report)
     check_followups(data, report)
     check_text_keys(data, report)

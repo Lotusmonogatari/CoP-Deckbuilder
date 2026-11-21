@@ -97,6 +97,9 @@ func _run() -> void:
 func _popup(office: Node, kind: String) -> Overlay:
 	GameState.meta["Funds"] = 400000
 	match kind:
+		"lead":
+			office._present_event("EV02", true)
+			return office.get_node("EventPanel")
 		"decision", "moved":
 			var id := ""
 			for event: Dictionary in DataDB.events:

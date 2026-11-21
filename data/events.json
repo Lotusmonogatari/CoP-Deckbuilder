@@ -20,7 +20,8 @@
       "Summer"
     ],
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV02",
@@ -45,6 +46,9 @@
     "location": "District",
     "needs_place": [
       "shrine_temple"
+    ],
+    "lead_organizations": [
+      "BO19"
     ]
   },
   {
@@ -66,7 +70,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV04",
@@ -87,7 +92,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV05",
@@ -108,7 +114,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV06",
@@ -129,7 +136,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV11",
@@ -150,7 +158,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV12",
@@ -173,7 +182,8 @@
     "location": "District",
     "needs_place": [
       "station"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV13",
@@ -196,7 +206,8 @@
     "location": "District",
     "needs_place": [
       "festival"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV14",
@@ -217,7 +228,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV15",
@@ -238,7 +250,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV16",
@@ -259,7 +272,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV17",
@@ -282,7 +296,8 @@
     "location": "Either",
     "needs_place": [
       "landmark"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV18",
@@ -303,7 +318,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV19",
@@ -324,7 +340,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV20",
@@ -347,7 +364,8 @@
     "location": "Either",
     "needs_place": [
       "travel_route"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV21",
@@ -368,7 +386,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV22",
@@ -389,7 +408,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV23",
@@ -410,7 +430,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV24",
@@ -433,7 +454,8 @@
     "location": "Either",
     "needs_place": [
       "school"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV25",
@@ -454,7 +476,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV26",
@@ -477,7 +500,8 @@
     "location": "District",
     "needs_place": [
       "onsen_town"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV27",
@@ -500,7 +524,8 @@
     "location": "Either",
     "needs_place": [
       "harbor"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV31",
@@ -521,7 +546,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV32",
@@ -542,7 +568,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV33",
@@ -563,7 +590,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV34",
@@ -584,7 +612,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV35",
@@ -607,7 +636,8 @@
     "location": "District",
     "needs_place": [
       "festival"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV36",
@@ -628,7 +658,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV37",
@@ -651,7 +682,8 @@
     "location": "Either",
     "needs_place": [
       "school"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV38",
@@ -672,7 +704,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV39",
@@ -695,7 +728,8 @@
     "location": "Either",
     "needs_place": [
       "market"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV40",
@@ -716,7 +750,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV41",
@@ -739,7 +774,8 @@
       "Winter"
     ],
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV42",
@@ -762,7 +798,8 @@
     "location": "District",
     "needs_place": [
       "school"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV43",
@@ -783,7 +820,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV44",
@@ -804,7 +842,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO01"
+    ]
   },
   {
     "event_id": "EV45",
@@ -825,7 +866,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV46",
@@ -846,7 +888,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV47",
@@ -867,7 +910,8 @@
     "speaker_title": "Prime Minister",
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV48",
@@ -894,7 +938,8 @@
     "location": "Either",
     "needs_place": [
       "landmark"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV49",
@@ -920,7 +965,8 @@
     "location": "Either",
     "needs_place": [
       "ainu_site"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV50",
@@ -943,7 +989,8 @@
     "location": "Either",
     "needs_place": [
       "ainu_site"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV51",
@@ -964,7 +1011,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV52",
@@ -987,6 +1035,9 @@
     "location": "District",
     "needs_place": [
       "university"
+    ],
+    "lead_organizations": [
+      "BO11"
     ]
   },
   {
@@ -1010,6 +1061,9 @@
     "location": "District",
     "needs_place": [
       "harbor"
+    ],
+    "lead_organizations": [
+      "BO07"
     ]
   },
   {
@@ -1031,7 +1085,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO05"
+    ]
   },
   {
     "event_id": "EV55",
@@ -1052,7 +1109,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV56",
@@ -1077,7 +1135,8 @@
     "location": "District",
     "needs_place": [
       "farmland"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV57",
@@ -1100,7 +1159,8 @@
     "location": "District",
     "needs_place": [
       "market"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV58",
@@ -1123,6 +1183,9 @@
     "location": "Capitol",
     "needs_place": [
       "travel_route"
+    ],
+    "lead_organizations": [
+      "BO14"
     ]
   },
   {
@@ -1144,7 +1207,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO23"
+    ]
   },
   {
     "event_id": "EV60",
@@ -1165,7 +1231,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO24"
+    ]
   },
   {
     "event_id": "EV61",
@@ -1186,7 +1255,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO26"
+    ]
   },
   {
     "event_id": "EV62",
@@ -1207,7 +1279,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV63",
@@ -1230,7 +1303,8 @@
     "location": "Either",
     "needs_place": [
       "harbor"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV64",
@@ -1251,7 +1325,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV65",
@@ -1272,7 +1347,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV66",
@@ -1295,7 +1371,8 @@
       "Autumn"
     ],
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV67",
@@ -1318,7 +1395,8 @@
       "Spring"
     ],
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV68",
@@ -1339,7 +1417,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV69",
@@ -1365,7 +1444,8 @@
     "location": "Either",
     "needs_place": [
       "farmland"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV70",
@@ -1386,7 +1466,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV71",
@@ -1407,7 +1488,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO03"
+    ]
   },
   {
     "event_id": "EV72",
@@ -1430,7 +1514,8 @@
       "Summer"
     ],
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV73",
@@ -1451,7 +1536,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV74",
@@ -1472,7 +1558,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV75",
@@ -1493,7 +1580,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV76",
@@ -1514,7 +1602,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV77",
@@ -1535,7 +1624,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV78",
@@ -1556,7 +1646,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO22"
+    ]
   },
   {
     "event_id": "EV79",
@@ -1577,7 +1670,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV80",
@@ -1598,7 +1692,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV81",
@@ -1619,7 +1714,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV82",
@@ -1642,7 +1738,8 @@
     "location": "District",
     "needs_place": [
       "energy_site"
-    ]
+    ],
+    "lead_organizations": null
   },
   {
     "event_id": "EV83",
@@ -1663,7 +1760,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO23"
+    ]
   },
   {
     "event_id": "EV84",
@@ -1684,7 +1784,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO23"
+    ]
   },
   {
     "event_id": "EV85",
@@ -1705,7 +1808,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO05"
+    ]
   },
   {
     "event_id": "EV86",
@@ -1728,6 +1834,9 @@
     "location": "District",
     "needs_place": [
       "harbor"
+    ],
+    "lead_organizations": [
+      "BO05"
     ]
   },
   {
@@ -1751,6 +1860,9 @@
     "location": "District",
     "needs_place": [
       "market"
+    ],
+    "lead_organizations": [
+      "BO25"
     ]
   },
   {
@@ -1772,7 +1884,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO25"
+    ]
   },
   {
     "event_id": "EV89",
@@ -1793,7 +1908,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO24"
+    ]
   },
   {
     "event_id": "EV90",
@@ -1816,6 +1934,10 @@
     "location": "District",
     "needs_place": [
       "community_hall"
+    ],
+    "lead_organizations": [
+      "BO12",
+      "BO24"
     ]
   },
   {
@@ -1837,7 +1959,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO16"
+    ]
   },
   {
     "event_id": "EV92",
@@ -1858,7 +1983,11 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO05",
+      "BO16"
+    ]
   },
   {
     "event_id": "EV93",
@@ -1879,7 +2008,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "District",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV94",
@@ -1902,6 +2032,9 @@
     "location": "District",
     "needs_place": [
       "community_hall"
+    ],
+    "lead_organizations": [
+      "BO15"
     ]
   },
   {
@@ -1923,7 +2056,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV96",
@@ -1944,7 +2078,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV97",
@@ -1965,7 +2100,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV98",
@@ -1986,7 +2122,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV99",
@@ -2007,7 +2144,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV100",
@@ -2028,7 +2166,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO02"
+    ]
   },
   {
     "event_id": "EV101",
@@ -2049,7 +2190,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV102",
@@ -2070,7 +2212,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV103",
@@ -2091,7 +2234,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV104",
@@ -2112,7 +2256,10 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Capitol",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": [
+      "BO09"
+    ]
   },
   {
     "event_id": "EV105",
@@ -2133,7 +2280,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV106",
@@ -2154,7 +2302,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV107",
@@ -2175,7 +2324,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV108",
@@ -2196,7 +2346,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV109",
@@ -2217,7 +2368,8 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   },
   {
     "event_id": "EV110",
@@ -2238,6 +2390,7 @@
     "speaker_title": null,
     "seasons": null,
     "location": "Either",
-    "needs_place": null
+    "needs_place": null,
+    "lead_organizations": null
   }
 ]
