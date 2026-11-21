@@ -9714,5 +9714,12 @@
     "english": "All trips",
     "placeholders": null,
     "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "new_game.district_line",
+    "where": "New Game: the picked champion's district and the office there",
+    "english": "{district} · office in {office}",
+    "placeholders": "district, office",
+    "notes": "P14b (2026-11-21): the mock-up's New Game card. Claude's draft for Cameron to reword."
   }
 ]

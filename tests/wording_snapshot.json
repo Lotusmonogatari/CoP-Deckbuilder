@@ -702,6 +702,7 @@
   "narration.won_over_them": "won over {amount}",
   "new_game.blurb": "Who are you in Parliament? You play the whole run as the one you choose.",
   "new_game.choose": "Play as {name}",
+  "new_game.district_line": "{district} · office in {office}",
   "new_game.no_party": "No party yet",
   "new_game.pressure_heading": "Political Pressure",
   "new_game.starting_stats": "Starting numbers:",

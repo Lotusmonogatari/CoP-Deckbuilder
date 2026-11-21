@@ -218,3 +218,9 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 |---|---|
 | `HowToPlayPanel.rows()` | The guide opens as cards (`cards()`); `rows()` is still used by tests that read the guide. |
 | `CharacterCodex.text_color_for()` | The Characters buttons use the card ink with a coloured edge, so nothing picks a text colour for a filled button now. Used in `tests/test_character_codex.gd`. |
+
+## New Game mock-up (2026-11-21): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen._swipe_strip()`, `_protagonist_row()` and the `NEW_GAME_SQUARE*` constants | New Game uses `_switch_row()`, `_champion_portraits()` and `_champion_card()`; nothing calls the old ones. |

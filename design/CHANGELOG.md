@@ -1660,3 +1660,12 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 |---|---|
 | Bill card | The bill's name, what it does and who is for and against it are one card in the style's own look, with the stance note on a plate under it, so none of it sits as thin text on the room picture (it overlapped itself at some sizes before). Read the Bill and Let's go are dressed like every other choice. |
 | Party disc | The two lean buttons show the party leader's portrait where one is in the assets, else a round colour disc with the first kanji of the party's Japanese name and its English initials. `PartyDiscView` is shared with the Floor Vote's party strip. |
+
+## 2026-11-21: New Game built to the mock-up (Cameron: "Use the mock up version")
+
+| Part | What changed |
+|---|---|
+| Flow | The four champions are a row of portraits; tapping one shows that champion's card (name, party, district and office, blurb, starting numbers in two columns). **Political Pressure** and **Theme** are three-way switches under it. **Play as {name}** is fixed in the foot and starts the run. Before, each champion had a card with its own Choose button, and the two choices were swipe strips. |
+| Behavior kept | Choosing a theme still tries it at once and reopens this screen; the picked champion is remembered across that restyle. Backing out works as before (a first launch plays the default champion). |
+| Text | `new_game.district_line` ("{district} · office in {office}"). |
+| Tests | `new_game_driver.gd` and `intro_driver.gd` changed on purpose (tap the portrait, then Play as); `tests/test_group7_reference.gd` checks the portraits, the picked card, Play as in the foot and the switches. |

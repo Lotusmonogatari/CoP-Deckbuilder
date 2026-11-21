@@ -1858,43 +1858,51 @@ func _adopt_chosen_style() -> void:
 ## The four protagonists (data/player.json), each with a portrait and a
 ## button. `first_run` is the very first launch: backing out of it still
 ## leaves the player as the default protagonist, so there is a run to save.
+## Who is picked on the New Game screen ("" = the first champion). Static, so it survives the restyle that reloads the Office
+## when a theme is tried on this screen.
+static var _new_game_pick := ""
+
+
+## The New Game screen as the mock-up has it (P14b, 2026-11-21, Cameron: "use the mock up version"): the four champions as a
+## row of portraits, the picked one's card (party, district, blurb, starting numbers), Political Pressure and Theme as
+## three-way switches, and Play as {name} fixed in the foot. Tapping a portrait picks; Play as starts the run.
 func _show_new_game(first_run: bool) -> void:
 	# The New Game screen's button outlines are the gold of the title screen, not the old run's party colour.
 	Layout.set_outline_override(CueBanner.EDGE_COLOUR, true)
-	# On the shared frame (P14b, 2026-11-20): the choice strips in a card, then one card for each champion with its Choose button
-	# in the accent colour. The choice itself is unchanged: tapping a champion's Choose starts the run.
 	var look := OfficeFrameStyles.look()
+	var picked := _picked_protagonist()
+	var picked_id := str(picked.get("player_id", ""))
 	var rows: Array[Control] = [_ground_line(Text.say("new_game.blurb"), look)]
-	# Campaign Pressure (Difficulty.gd) on the left and the display theme on the right, each a strip of
-	# square buttons to swipe through. Difficulty is raised later in Administration; the theme is free here.
+	rows.append(_champion_portraits(first_run, look, picked_id))
+
+	var card := OfficeFrameStyles.card(look)
+	card.name = "NewGameCard_" + picked_id
+	card.get_node("Column").add_child(_champion_card(picked))
+	rows.append(card)
+
+	# Campaign Pressure (Difficulty.gd) and the display theme, each a three-way switch. Difficulty is raised later in
+	# Administration; the theme is free here.
 	var tiers: Array = []
 	for tier: String in Difficulty.TIERS:
 		tiers.append([tier, _pressure_name(tier)])
 	var styles: Array = []
 	for style: String in UiStyles.ALL:
 		styles.append([style, _style_name(style)])
-	var pair := HBoxContainer.new()
-	pair.name = "ChoiceStrips"
-	pair.add_theme_constant_override("separation", 20)
-	pair.add_child(_swipe_strip("PressureStrip", Text.say("new_game.pressure_heading"), tiers,
-		_pending_pressure, _on_pressure_picked.bind(first_run)))
-	pair.add_child(_swipe_strip("ThemeStrip", Text.say("new_game.theme_heading"), styles,
-		_chosen_style(), _on_theme_picked.bind(first_run)))
-	var strips_card := OfficeFrameStyles.card(look)
-	strips_card.name = "NewGameStripsCard"
-	strips_card.get_node("Column").add_child(pair)
-	rows.append(strips_card)
-	for protagonist: Dictionary in DataDB.protagonists:
-		var champion := OfficeFrameStyles.card(look)
-		champion.name = "NewGameCard_" + str(protagonist.get("player_id", ""))
-		var champion_row := _protagonist_row(protagonist)
-		champion.get_node("Column").add_child(champion_row)
-		var choose := champion_row.find_child("Choose", true, false) as Button
-		if choose != null:
-			ConversationStyles.dress_button(choose, look, true)
-		rows.append(champion)
+	var switches := OfficeFrameStyles.card(look)
+	switches.name = "NewGameStripsCard"
+	var column := switches.get_node("Column") as VBoxContainer
+	column.add_child(_switch_row("PressureStrip", Text.say("new_game.pressure_heading"), tiers,
+		_pending_pressure, _on_pressure_picked.bind(first_run), look))
+	column.add_child(_switch_row("ThemeStrip", Text.say("new_game.theme_heading"), styles,
+		_chosen_style(), _on_theme_picked.bind(first_run), look))
+	rows.append(switches)
+
+	var play := UiKit.action_button(Text.say("new_game.choose", {"name": picked.get("name_en", picked_id)}), "",
+		_on_protagonist_chosen.bind(picked_id), OfficeFrameStyles.touch_height())
+	play.name = "PlayAsButton"
+	ConversationStyles.dress_button(play, look, true)
 	var frame := OfficeScreenFrame.new()
-	frame.setup({"title": Text.say("new_game.title"), "subtitle": "", "chips": [], "rows": rows})
+	frame.setup({"title": Text.say("new_game.title"), "subtitle": "", "chips": [], "rows": rows, "footer": play})
 	_new_game_panel.open_frame(frame, Text.say("ui.back"))
 	if first_run and not _new_game_panel.closed.is_connected(_on_first_run_closed):
 		_new_game_panel.closed.connect(_on_first_run_closed)
@@ -1902,49 +1910,123 @@ func _show_new_game(first_run: bool) -> void:
 		_new_game_panel.closed.connect(_on_new_game_dismissed)
 
 
-func _protagonist_row(protagonist: Dictionary) -> Control:
-	var player_id := str(protagonist.get("player_id", ""))
+## The champion on show: the one tapped, else the first in the data.
+func _picked_protagonist() -> Dictionary:
+	for protagonist: Dictionary in DataDB.protagonists:
+		if str(protagonist.get("player_id", "")) == _new_game_pick:
+			return protagonist
+	return DataDB.protagonists[0] if not DataDB.protagonists.is_empty() else {}
+
+
+## The four champions as a row of portraits; the picked one has the accent border.
+func _champion_portraits(first_run: bool, look: Dictionary, picked_id: String) -> Control:
 	var row := HBoxContainer.new()
-	row.name = "Protagonist_" + player_id
-	row.add_theme_constant_override("separation", 20)
+	row.name = "ChampionRow"
+	row.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
+	for protagonist: Dictionary in DataDB.protagonists:
+		var player_id := str(protagonist.get("player_id", ""))
+		var button := Button.new()
+		button.name = "Pick_" + player_id
+		button.toggle_mode = true
+		button.button_pressed = player_id == picked_id
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.custom_minimum_size = Vector2(0, 360)
+		button.tooltip_text = str(protagonist.get("name_en", player_id))
+		for state: String in ["normal", "hover", "pressed", "hover_pressed", "focus", "disabled"]:
+			var selected := player_id == picked_id
+			var box := StyleBoxFlat.new()
+			box.bg_color = look["tile"]
+			box.set_border_width_all(int(OfficeFrameStyles.len_px(6.0 if selected else 1.0)))
+			box.border_color = look["accent"] if selected else look["muted"]
+			box.set_content_margin_all(4)
+			if look["living"]:
+				box.set_corner_radius_all(int(OfficeFrameStyles.len_px(12.0)))
+			button.add_theme_stylebox_override(state, box)
+		var portrait := PlaceholderArt.new()
+		portrait.name = "Portrait"
+		portrait.trim_margins = true
+		portrait.kind = PlaceholderArt.Kind.CHARACTER
+		portrait.art_id = player_id
+		portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		portrait.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		portrait.offset_left = 6.0
+		portrait.offset_right = -6.0
+		portrait.offset_top = 6.0
+		portrait.offset_bottom = -6.0
+		button.add_child(portrait)
+		button.pressed.connect(Haptics.confirm)
+		button.pressed.connect(_on_champion_picked.bind(player_id, first_run))
+		row.add_child(button)
+	return row
 
-	var portrait := PlaceholderArt.new()
-	# All four stand the same height: cropped to the figure and held to a fixed box, not stretched to the row.
-	portrait.custom_minimum_size = Vector2(200, 340)
-	portrait.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-	portrait.trim_margins = true
-	portrait.kind = PlaceholderArt.Kind.CHARACTER
-	portrait.art_id = player_id
-	row.add_child(portrait)
 
+func _on_champion_picked(player_id: String, first_run: bool) -> void:
+	_new_game_pick = player_id
+	_show_new_game.call_deferred(first_run)
+
+
+## The picked champion's card: name, party, district and office, what they are like, and the numbers they open with.
+func _champion_card(protagonist: Dictionary) -> Control:
+	var player_id := str(protagonist.get("player_id", ""))
 	var box := UiKit.tight_column()
-	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(box)
-	var name_line := UiKit.heading(str(protagonist.get("name_en", player_id)))
-	box.add_child(name_line)
+	box.name = "Protagonist_" + player_id
+	box.add_child(UiKit.heading(str(protagonist.get("name_en", player_id))))
 	var name_jp := str(protagonist.get("name_jp", ""))
 	if not name_jp.is_empty():
 		box.add_child(UiKit.line(name_jp, "JapaneseAccent"))
 	var party := PartyDisplay.party_name(protagonist)
-	var party_label := UiKit.line(
-		party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel")
+	var party_label := UiKit.line(party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel")
 	if not party.is_empty():
 		PartyLabel.apply(party_label, DataDB.get_party(party))
 	box.add_child(party_label)
+	var district := str(protagonist.get("district_name", "")) if protagonist.get("district_name") != null else ""
+	var office := str(protagonist.get("district_office", "")) if protagonist.get("district_office") != null else ""
+	if not district.is_empty():
+		box.add_child(UiKit.line(Text.say("new_game.district_line", {"district": district, "office": office}), "SmallLabel"))
 	var blurb := str(protagonist.get("blurb", ""))
 	if not blurb.is_empty():
-		box.add_child(UiKit.line(blurb, "SmallLabel"))
+		box.add_child(UiKit.line(blurb))
 	box.add_child(UiKit.line(Text.say("new_game.starting_stats"), "SmallLabel"))
+	var grid := GridContainer.new()
+	grid.name = "StartingNumbers"
+	grid.columns = 2
+	grid.add_theme_constant_override("h_separation", int(OfficeFrameStyles.len_px(16.0)))
 	for line: String in _starting_stat_lines(protagonist):
-		box.add_child(UiKit.line(line, "SmallLabel"))
-	for label: Label in box.get_children().filter(func(n: Node) -> bool: return n is Label):
-		label.custom_minimum_size.x = UiKit.LINE_WIDTH - 220.0
+		var cell := UiKit.line(line, "SmallLabel")
+		cell.custom_minimum_size.x = 0.0
+		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		grid.add_child(cell)
+	box.add_child(grid)
+	return box
 
-	var choose := UiKit.action_button(Text.say("new_game.choose",
-		{"name": protagonist.get("name_en", player_id)}), "", _on_protagonist_chosen.bind(player_id))
-	choose.name = "Choose"
-	box.add_child(choose)
-	return row
+
+## A heading over a row of toggle buttons, the chosen one filled: three ways to switch between. The buttons keep the names
+## "<strip>_<id>" so a click finds them as it always did.
+func _switch_row(strip_name: String, heading: String, entries: Array, selected: String, on_pick: Callable, look: Dictionary) -> Control:
+	var column := VBoxContainer.new()
+	column.name = strip_name
+	column.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(6.0)))
+	var title := UiKit.heading(heading)
+	title.custom_minimum_size.x = 0.0
+	column.add_child(title)
+	var strip := HBoxContainer.new()
+	strip.name = "Squares"
+	strip.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
+	column.add_child(strip)
+	for entry: Array in entries:
+		var button := Button.new()
+		button.name = "%s_%s" % [strip_name, str(entry[0])]
+		button.text = str(entry[1])
+		button.toggle_mode = true
+		button.button_pressed = str(entry[0]) == selected
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.pressed.connect(Haptics.confirm)
+		button.pressed.connect(on_pick.bind(str(entry[0])))
+		ConversationStyles.dress_button(button, look, str(entry[0]) == selected)
+		button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+		strip.add_child(button)
+	return column
 
 
 ## Constituency support, Reputation, Funds, Party support and XP this

@@ -25,7 +25,7 @@ Branch `panel/p14b-remaining-screens` (from `main` at the merged part one, `ec5f
 | 6.3, 6.4 | A bill to carry, law detail | Yes | Pop-up cards; the law's tag is PASSED (green) or FAILED (red) |
 | 6.5 | Party detail | Yes | Colour band, seats and leader, how they see you, Allies and Rivals cards |
 | 7.1 to 7.3 | Appearance and Music, How to Play, Characters | Yes | Cards; the equipped option filled; Characters in two columns with the colour as a left edge |
-| 7.4 | New Game | Partly | Cards, a Choose button in the accent colour. The pick-then-"Play as" flow is **not** built |
+| 7.4 | New Game | Yes (2026-11-21) | Built to the mock-up at Cameron's word: four portraits, the picked champion's card, Pressure and Theme as three-way switches, Play as in the foot. Two click drivers changed on purpose (`new_game_driver.gd`, `intro_driver.gd`): tap the portrait, then Play as |
 | 1.6 | One card per promise | Yes | A tile for each, with the office and the time left (red when close) |
 | 3.1 | Floor Vote | Yes | Built to the mock-up; the action row is up under the bill; each projection shows "Likely Passes" or "Likely Fails" at the right in green or red |
 | 2.5 | Level intro bill card | Yes | A card, the stance note on a plate, leader portrait or kanji disc on the lean buttons |
@@ -70,3 +70,5 @@ Text rows (all Claude drafts for you to reword): `floor_vote.projection_result`,
 | 3 | No colour legend under the projection bars. |
 | 4 | The All trips button stays as the way into the Travel page, for now. |
 | 5 | The reworded coaching coupon line is accepted. |
+
+**Update 2026-11-21:** Cameron chose the mock-up New Game. It is built (pictures `img/new_game_mockup_*.png`). One new Text row: `new_game.district_line`. The swipe strips and the four-card list are no longer used (see `CLEANUP_CANDIDATES.md`).
