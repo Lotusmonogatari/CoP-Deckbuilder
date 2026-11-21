@@ -3,7 +3,7 @@ extends GutTest
 ## office, and the data is tagged.
 
 func before_each() -> void:
-	GameState.start_new_run("PC01")
+	GameState.start_new_run("PC04")
 	GameState.calendar = WeekCalendar.fresh()
 	GameState.office_location = Offices.CAPITOL
 	GameState.promises = []

@@ -19,7 +19,7 @@ func _run() -> void:
 	for style: String in STYLES:
 		UiStyle.trying = style
 		UiStyle.sync()
-		GameState.start_new_run("PC01")
+		GameState.start_new_run("PC04")
 		GameState.awaiting_new_game = false
 		GameState.calendar = WeekCalendar.fresh()
 		await _open_office()
@@ -132,7 +132,7 @@ func _trip(style: String) -> void:
 	_expect(button.direction == -1, where + "from the District office the train is pulled to the left")
 	_expect(report.text.begins_with("You are at your District office in Noheji."), where + "the Office says so (%s)" % report.text)
 	var background: Variant = office.get("_background")
-	_expect(background != null and str(background.art_id) == "DISTRICT_OFFICE_PC01", where + "the District office picture (a labelled placeholder until it is drawn)")
+	_expect(background != null and str(background.art_id) == "DISTRICT_OFFICE_PC04", where + "the District office picture (a labelled placeholder until it is drawn)")
 
 	# At the District: the lists swap.
 	levels = await _levels_panel()
@@ -277,22 +277,22 @@ func _tickets(style: String) -> void:
 	GameState.inventory = {}
 
 
-## A protagonist's own levels (slice 6): PC01 is the Aomori protagonist, so the Rokkasho level is listed at the District office and
-## the bluefin quota at the Capitol; the Wakkanai levels (PC04's) never appear.
+## A protagonist's own levels (slice 6): PC04 is the Aomori protagonist, so the Rokkasho level is listed at the District office and
+## the bluefin quota at the Capitol; the Wakkanai levels (PC01's) never appear.
 func _own_levels(style: String) -> void:
 	var where := "in %s: " % style
 	GameState.office_location = Offices.DISTRICT
 	var panel := await _levels_panel()
 	var seen := _texts(panel)
-	_expect(seen.has("The Rokkasho Question"), where + "PC01's District level is listed at the District office")
-	_expect(not seen.has("Keep the Sōya Line Running"), where + "PC04's is not")
+	_expect(seen.has("The Rokkasho Question"), where + "PC04's District level is listed at the District office")
+	_expect(not seen.has("Keep the Sōya Line Running"), where + "PC01's is not")
 	panel.close()
 	await get_tree().process_frame
 	GameState.office_location = Offices.CAPITOL
 	panel = await _levels_panel()
 	seen = _texts(panel)
-	_expect(seen.has("Ōma's Bluefin Quota"), where + "PC01's Capitol level is listed at the Capitol (autumn)")
-	_expect(not seen.has("The Sakhalin Ferry"), where + "PC04's is not")
+	_expect(seen.has("Ōma's Bluefin Quota"), where + "PC04's Capitol level is listed at the Capitol (autumn)")
+	_expect(not seen.has("The Sakhalin Ferry"), where + "PC01's is not")
 	panel.close()
 	await get_tree().process_frame
 

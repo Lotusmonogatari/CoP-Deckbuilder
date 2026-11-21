@@ -26,31 +26,31 @@ func test_an_odd_number_of_trips_ends_at_the_other_office() -> void:
 
 func test_the_settled_hours_are_in_the_balance() -> void:
 	var b := DataDB.balance
-	assert_eq(Travel.hours(b, "PC01", Travel.PASS), 7, "Noheji by train")
-	assert_eq(Travel.hours(b, "PC01", Travel.PLANE), 2, "PC01's fast mode is a plane ticket")
-	assert_eq(Travel.hours(b, "PC01", Travel.CAR), -1, "PC01 has no private car")
+	assert_eq(Travel.hours(b, "PC04", Travel.PASS), 7, "Noheji by train")
+	assert_eq(Travel.hours(b, "PC04", Travel.PLANE), 2, "PC04's fast mode is a plane ticket")
+	assert_eq(Travel.hours(b, "PC04", Travel.CAR), -1, "PC04 has no private car")
 	assert_eq(Travel.hours(b, "PC02", Travel.PASS), 1)
 	assert_eq(Travel.hours(b, "PC03", Travel.CAR), 1)
-	assert_eq(Travel.hours(b, "PC04", Travel.PASS), 6, "Daikoku by train")
-	assert_eq(Travel.hours(b, "PC04", Travel.CAR), 4)
-	assert_eq(Travel.hours(b, "PC04", Travel.TICKET), 6, "the paid ticket takes the train's hours")
+	assert_eq(Travel.hours(b, "PC01", Travel.PASS), 6, "Daikoku by train")
+	assert_eq(Travel.hours(b, "PC01", Travel.CAR), 4)
+	assert_eq(Travel.hours(b, "PC01", Travel.TICKET), 6, "the paid ticket takes the train's hours")
 
 
 func test_each_protagonist_has_one_fast_mode() -> void:
-	assert_eq(Travel.fast_mode(DataDB.balance, "PC01"), Travel.PLANE)
-	for pid: String in ["PC02", "PC03", "PC04"]:
+	assert_eq(Travel.fast_mode(DataDB.balance, "PC04"), Travel.PLANE)
+	for pid: String in ["PC02", "PC03", "PC01"]:
 		assert_eq(Travel.fast_mode(DataDB.balance, pid), Travel.CAR, pid)
 
 
 func test_a_mixed_levels_trips_add_their_hours() -> void:
 	var level := {"travel_trips": 2}
-	assert_eq(Travel.level_hours(level, DataDB.balance, "PC01", Travel.PASS), 14, "a round trip from Noheji")
-	assert_eq(Travel.level_hours(level, DataDB.balance, "PC04", Travel.PASS), 12)
+	assert_eq(Travel.level_hours(level, DataDB.balance, "PC04", Travel.PASS), 14, "a round trip from Noheji")
+	assert_eq(Travel.level_hours(level, DataDB.balance, "PC01", Travel.PASS), 12)
 	assert_eq(Travel.level_hours(level, DataDB.balance, "PC03", Travel.PASS), 2)
-	assert_eq(Travel.level_hours(level, DataDB.balance, "PC01", Travel.PLANE), 4)
-	assert_eq(Travel.level_hours({"travel_trips": 1}, DataDB.balance, "PC04", Travel.CAR), 4)
-	assert_eq(Travel.level_hours({}, DataDB.balance, "PC01", Travel.PASS), 0, "no trips, no hours")
-	assert_eq(Travel.level_hours({"travel_trips": null}, DataDB.balance, "PC01", Travel.PASS), 0)
+	assert_eq(Travel.level_hours(level, DataDB.balance, "PC04", Travel.PLANE), 4)
+	assert_eq(Travel.level_hours({"travel_trips": 1}, DataDB.balance, "PC01", Travel.CAR), 4)
+	assert_eq(Travel.level_hours({}, DataDB.balance, "PC04", Travel.PASS), 0, "no trips, no hours")
+	assert_eq(Travel.level_hours({"travel_trips": null}, DataDB.balance, "PC04", Travel.PASS), 0)
 
 
 func test_the_levels_are_tagged_and_the_trips_make_sense() -> void:
@@ -76,16 +76,16 @@ func test_the_levels_are_tagged_and_the_trips_make_sense() -> void:
 
 
 func test_no_mixed_level_passes_forty_hours_with_its_trips() -> void:
-	# The audit's concern: a level must end within the 40-hour week. PC01's seven-hour train is the worst case.
+	# The audit's concern: a level must end within the 40-hour week. PC04's seven-hour train is the worst case.
 	var over: Array[String] = []
 	for level: Dictionary in DataDB.levels:
-		for pid: String in ["PC01", "PC04"]:
+		for pid: String in ["PC04", "PC01"]:
 			var rooms := GameState.level_hours(level)
 			var total := rooms + Travel.level_hours(level, DataDB.balance, pid, Travel.PASS)
 			if total > 40:
 				over.append("%s %s %d" % [pid, level["level_id"], total])
-	# LV10 (27 hours) with a 14-hour round trip is 41 for PC01 by train: it needs the plane ticket (4 hours).
-	assert_eq(over, ["PC01 LV10 41"] as Array[String])
+	# LV10 (27 hours) with a 14-hour round trip is 41 for PC04 by train: it needs the plane ticket (4 hours).
+	assert_eq(over, ["PC04 LV10 41"] as Array[String])
 
 
 func test_a_trip_is_refused_in_a_level_at_the_weekend_or_with_too_few_hours() -> void:

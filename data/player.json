@@ -4,7 +4,7 @@
       "player_id": "PC01",
       "name_en": "Kenshin Sako",
       "party": "Frontier Party",
-      "blurb": "A strong footing to begin with. Easy difficulty.",
+      "blurb": "The northern reaches of Hokkaido were no barrier to Sako-san during the election. He carried the party talking points and earned a district of his own that is willing to elevate fresh faces.",
       "starting_meta": {
         "Constituency support": 35,
         "Reputation": 25,
@@ -17,23 +17,22 @@
       "positioning": "Liberal",
       "element_1": "Earnest",
       "element_2": "Emotional",
-      "region": "Aomori",
-      "district_name": "Aomori Proportional Block 3",
-      "district_type": "Proportional Block",
-      "district_office": "Noheji",
+      "region": "Sōya",
+      "district_name": "Sōya - Wakkanai",
+      "district_type": "Single Member",
+      "district_office": "Daikoku",
       "starting_items": {
         "SH21": 1,
         "SH15": 2,
         "SH17": 2,
-        "SH25": 1,
-        "SH44": 4
+        "SH29": 1
       }
     },
     {
       "player_id": "PC02",
       "name_en": "Haru Yashi",
       "party": "Frontier Party",
-      "blurb": "A steady start. Normal difficulty.",
+      "blurb": "Yashi-san was steady during the election and capable of balancing a national interest message for the district against the Frontier Party’s major factions.",
       "starting_meta": {
         "Constituency support": 20,
         "Reputation": 15,
@@ -61,7 +60,7 @@
       "player_id": "PC03",
       "name_en": "Arata Ran",
       "party": "Keizaijiyuutou",
-      "blurb": "An uphill climb from day one. Hard difficulty.",
+      "blurb": "A newcomer to politics, she had sufficient energy to convince more of Sapporo to vote Keizaijiyuutou in this election.",
       "starting_meta": {
         "Constituency support": 10,
         "Reputation": 5,
@@ -88,7 +87,7 @@
       "player_id": "PC04",
       "name_en": "Jyurou Nishihara",
       "party": "Country Initiative",
-      "blurb": "Already in crisis before your first vote. Very Hard difficulty.",
+      "blurb": "Who? Serious question. Who in the district knows Nishihara-san? Why was his name put on the proportional list?",
       "starting_meta": {
         "Constituency support": 5,
         "Reputation": 0,
@@ -101,13 +100,14 @@
       "positioning": "Traditionalist",
       "element_1": "Appeal",
       "element_2": "Duplicitous",
-      "region": "Sōya",
-      "district_name": "Sōya - Wakkanai",
-      "district_type": "Single Member",
-      "district_office": "Daikoku",
+      "region": "Aomori",
+      "district_name": "Aomori Proportional Block 3",
+      "district_type": "Proportional Block",
+      "district_office": "Noheji",
       "starting_items": {
         "SH21": 1,
-        "SH29": 1
+        "SH25": 1,
+        "SH44": 4
       }
     }
   ]

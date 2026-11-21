@@ -198,5 +198,1045 @@
     "condition_value": 80.0,
     "text_en": "Cabinet Legislation Bureau Chief Rika Ashikaga personally delivered the latest bill analysis reports.",
     "location": "Capitol"
+  },
+  {
+    "notice_id": "ON21",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is meeting with people asking about constituent services.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON22",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "not_hired",
+    "condition_value": null,
+    "text_en": "Visitors glance in and find no one at the front desk.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON23",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is asking passersby about lesser-discussed policy topics.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON24",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "not_hired",
+    "condition_value": null,
+    "text_en": "No one is answering questions from constituents about your policy positions.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON25",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is answering questions from local reporters.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON26",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "not_hired",
+    "condition_value": null,
+    "text_en": "The local reporters keep leaving written messages hoping for someone to reply.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON27",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Constituents, tourists, and delegations visiting Yezo are keeping {staff} busy with their questions.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON28",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "not_hired",
+    "condition_value": null,
+    "text_en": "Tourists are being diverted to offices that can be more attentive to their queries.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON29",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A man from a nearby shōtengai is bending {staff}'s ear about sales and staff morale.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON30",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is engaging with a college administrator from an adjacent district who is asking for help finding space for a new campus.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON31",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A woman from a local technical training academy is talking to {staff} about national regulations for hands-on training.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON32",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A set of transit advocates are telling {staff} about the economic and social value of self-driving cars.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON33",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Visitors to the district office are picking up copies of {staff}'s latest newsletter.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON34",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} looks annoyed, listening to an elderly and overzealous reporter from Otaru Radio 今日 lecture about sending press releases by fax.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON35",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A retired schoolteacher is showing {staff} a hand-drawn map of every streetlight on her block that flickers.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON36",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is helping a young father with a daycare application that is three pages longer than it needs to be.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON37",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A home-care nurse on her lunch break is telling {staff} how many visits she fits into one shift.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON38",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Two fishermen, still in their boots, are waiting to ask {staff} when a harbor crane will be fixed.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON39",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A shrine caretaker dropped off festival schedules and asked {staff} to pin one somewhere visible.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON40",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is patiently explaining to a newly registered voter how the single-member and proportional districts work.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON41",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A group of tenants is asking {staff} who is responsible for the broken elevator in their apartment block.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON42",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A couple who moved here from Japan is asking {staff} about grants for restoring an empty farmhouse.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON43",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A rice farmer is explaining to {staff}, at length, why the timing of year's rain is insufficient.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON44",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "An elderly veteran stops by every week to ask {staff} whether the memorial bench has been ordered yet.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON45",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A town mayor in from the north is asking {staff} which ministry handles snow-removal subsidies this year.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON46",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is guiding a school group from your district through the visitors' gallery, counting heads at every door.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON47",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Elders from an Ainu kotan are asking {staff} for a quiet room before their meeting at the ministry.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON48",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is finding a meeting room for a delegation of village council members who arrived a day early.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON49",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A business delegation from the Kantō region wants {staff} to recommend a restaurant that can seat twenty.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON50",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is leading a lost foreign delegation to the right committee room, two floors and one wing away.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON51",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A group of commuters rode the train down to hand {staff} a petition about the last train home.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON52",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A care home director in town for a hearing is asking {staff} to save seats in the public gallery.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON53",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is on the phone with a parents' group that wants to tour the Capitol during the school holidays.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON54",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Another member's office sent someone over to ask {staff} whether you would co-sign a letter.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON55",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is reading the fine print on a seed-subsidy form a farmer brought in, frowning at clause seven.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON56",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A shopper is showing {staff} two identical jars of honey with very different labels and asking which one is lying.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON57",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A lacquerware maker is asking {staff} whether a traditional workshop counts as a factory under the current safety rules.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON58",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is taking notes as a ramen shop owner explains what card-payment fees cost him each month.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON59",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A union steward from the cannery is asking {staff} what the overtime rules actually say.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON60",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A high school robotics club wants {staff} to explain how patents work, preferably before their competition.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON61",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is comparing last year's catch limits with this year's while a fisherman reads over their shoulder.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON62",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A daughter caring for her father is asking {staff} which benefits he qualifies for and which form comes first.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON63",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is asking visitors whether the district needs more parking or more bus routes, and hearing both.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON64",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A local historian is insisting to {staff} that the town's old place names belong in the school curriculum.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON65",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is politely declining yet another binder of interest-rate charts from a visiting bank analyst.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON66",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A budget watchdog left {staff} a spending summary with every line circled in red.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON67",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A startup founder is explaining to {staff}, very quickly, why drone deliveries need rules of their own.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON68",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is checking a trade group's export figures against the ministry's, which do not match.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON69",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A labor economist is walking {staff} through a wage chart that has more arrows than numbers.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON70",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A linguist is asking {staff} how dictionaries for lesser-spoken languages in Yezo get funded in the national budget.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON71",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Party headquarters sent {staff} a twenty-page platform draft with a note: comments by Friday.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON72",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is reading a senior member's position paper, trying to work out which side of the bill it is on.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON73",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A pensions officer for former servicemembers is asking {staff} for the record of a recent committee debate.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON74",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} has three committee reports open at once and is quietly color-coding the parts that contradict each other.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON75",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is proofreading a temple's festival flyer that somehow became the office's job.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON76",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Your kōenkai wants {staff} to write a short message for its upcoming newsletter.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON77",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A student reporter is interviewing {staff} for a campus paper that prints forty copies.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON78",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is arranging a photo of you with the winners of the district's children's baseball tournament.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON79",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A neaby vendor asked {staff} to mention their anniversary sale in your next newsletter.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON80",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is recording a short greeting for the harbor community's early-morning radio broadcast.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON81",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "The editor of a neighborhood bulletin wants one paragraph from {staff} on the new crosswalk, no more.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON82",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is answering letters from constituents who saw you on the evening news and have notes.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON83",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A farm newsletter wants a photo of you holding a vegetable; {staff} is negotiating which one.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON84",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A youth volunteer group asked {staff} to share their river clean-up on the office's social media.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON85",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is turning down a talk show that wants you to debate a celebrity chef.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON86",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Party headquarters is on the line asking {staff} for your talking points before the evening broadcasts.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON87",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A traditional arts magazine is asking {staff} whether you own a kimono and would wear it for a photo.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON88",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A union newsletter wants your quote on the minimum wage; {staff} is drafting three versions.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON89",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is telling a financial wire reporter, again, that you have not commented on a specific interpretation of interest rates.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON90",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A party volunteer dropped off a stack of campaign posters and asked {staff} where you would like to sign them.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON91",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A veterans' magazine is asking {staff} for a photo of you at an upcoming memorial service.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON92",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A shrine newsletter is asking {staff} for your New Year greeting.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON93",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A technology blogger wants {staff} to confirm whether you really still use a flip phone.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON94",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Someone from the party's candidate selection panel asked {staff}, very casually, how your district events have been going.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON95",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A couple from the Kansai region stopped in to ask {staff} where the locals actually eat.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON96",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is helping a family visiting from Kyūshū track down their grandfather's old address in the district.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON97",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A retired fisherman from the Tōhoku coast is comparing harbor repairs with {staff}, port by port.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON98",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A cyclist touring from Shikoku is asking {staff} which roads in the district have a proper shoulder.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON99",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A potter from the Chūgoku region wants {staff}'s advice on renting a stall at the local market.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON100",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A delegation of town councillors from Kyūshū is asking {staff} for directions to the ministry annex.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON101",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is arranging visitor badges for a sister-city group from the Hokuriku region.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON102",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A student exchange group from the Kansai region wants {staff} to explain how a bill becomes law in Yezo compared to Japan, briefly.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON103",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A rail company delegation from the Chūbu region is asking {staff} which committee hears transit requests and if Yezo updated procurement rules to favor Japanese companies.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON104",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A tour guide from Okinawa is asking {staff} whether visitors may photograph the main hall.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON105",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is comparing the district's farm cooperative rules with a model a visitor brought from the Tōhoku region.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON106",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A sake brewer from the Chūgoku region is asking {staff} how Yezo labels rice for export.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON107",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A lumber merchant from Shikoku wants {staff} to explain the municipal and provincial rules on forest thinning.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON108",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "An engineer from the Chūbu region is showing {staff} a plan for small hydropower on mountain streams.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON109",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A care worker trained in Kyūshū is asking {staff} whether her license is recognized in Yezo.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON110",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is reading a Kansai port authority study on container traffic that runs to four volumes.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON111",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A researcher from the Kantō region is asking {staff} for Yezo's figures on rural clinic staffing.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON112",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "An earthquake-planning expert from the Tōkai region is walking {staff} through building-code tables.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON113",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A delegation from Okinawa is asking {staff} how Yezo protects local languages in schools.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON114",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is rewriting a Hokuriku manufacturers' report on tariffs in plainer language for you.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON115",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A travel writer from the Kansai region wants {staff} to name three sights in the district worth the trip.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON116",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is answering questions from a Kyūshū newspaper writing a series on fishing towns and coastal economies.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON117",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A documentary crew from the Tōhoku region asked {staff} whether they may film the shōtengai and which municipal office to call.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON118",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A food blogger from Shikoku wants {staff} to confirm which local noodle shop you prefer.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON119",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is sending photos of the district's craft fair to a magazine in the Chūgoku region.",
+    "location": "District"
+  },
+  {
+    "notice_id": "ON120",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A Kantō business paper wants {staff} to clarify your position on cross-border trade.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON121",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is setting up a video interview with a Kansai television station.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON122",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A reporter from Okinawa is asking {staff} for your view on regional languages in broadcasting.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON123",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "A Hokuriku radio host wants {staff} to book you for a segment on rural depopulation.",
+    "location": "Capitol"
+  },
+  {
+    "notice_id": "ON124",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is declining an invitation from a Chūbu car magazine to review the newest electric model.",
+    "location": "Capitol"
   }
 ]

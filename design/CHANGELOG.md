@@ -1723,3 +1723,12 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Fix | You asked for the Latin-extended pieces and for Antaka to be checked. The Latin-extended pieces of Shippori and Zen turned out to hold no macron letters at all (the fonts do not have them), so none were added for those two. **Antaka Brush Text has every accent the game uses**, so it is now the first fallback behind both body fonts; Noto stays last for Japanese and the symbols none of them has. Barlow Condensed (Broadcast headings) takes its own Latin-extended piece (one new font file, 15 KB, same family and licence). Antaka Brush Display and Text are unchanged where they are used. |
 | Documents | The brief said Antaka had no ō; it does. Fixed in `CLAUDE.md`. |
 | Tests | `tests/test_accent_fonts.gd` (2): the fallback order, and every accented letter the text uses is in a face of the chain. |
+
+## 2026-11-21: Cameron's workbook merge, the district swap and the neighborhood pictures
+
+| Part | What changed |
+|---|---|
+| Workbook merge | Cameron's upload (`cee6b85`) is exported into the game's data: **104 new office notices** (ON21 to ON124, 54 at the District and 50 at the Capitol, by staff role) and new blurbs for the four protagonists. |
+| District swap (final, Cameron) | Kenshin Sako (PC01) is now **Sōya, office Daikoku**; Jyurou Nishihara (PC04) is now **Aomori, office Noheji**. Everything that follows a district moved with it: the **travel hours** (PC01 6 h train and 4 h car; PC04 7 h train and 2 h plane), the **plane ticket** offer and the four **starting plane tickets** (now PC04's; the private car is offered to PC01, PC02 and PC03), all **65 Places rows**, the four **protagonist levels** (LV115 and LV116, Sōya, to PC01; LV121 and LV122, Aomori, to PC04), and the district starting items (SH25 and SH29, from the Player tab). The **District office pictures are not swapped**: each protagonist keeps `DISTRICT_OFFICE_<their id>`. |
+| Neighborhood pictures | The four events and three stages that named `OUT_NEIGHBORHOOD` now list all eight numbered pictures (`_1` to `_5` and `WINTER_1` to `_3`); the winter ones are chosen when the text is wintry. |
+| Tests | Eight tests that pinned the old assignment now expect the new one: `test_office_state`, `test_offices_content`, `test_offices_travel`, `test_place_tokens`, `test_protagonist_levels`, `test_travel_tickets`, and the click drivers `travel_driver` and `level_briefing_driver`. |
