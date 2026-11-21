@@ -76,6 +76,8 @@ func test_hosting_reveals_one_hidden_level_at_a_time() -> void:
 
 func _host_to_the_end(item_id: String, org: String) -> Dictionary:
 	GameState.inventory[item_id] = 1
+	# The dinner is the Capitol's and the walking tour the District's (Hosted Events' Location, 2026-11-21).
+	GameState.office_location = Offices.CAPITOL if item_id == "SH19" else Offices.DISTRICT
 	var started := GameState.use_item_in_office(item_id, org)
 	assert_true(started["ok"])
 	for step in [1, 2, 3]:
@@ -97,6 +99,7 @@ func test_the_dinner_takes_four_hours_and_can_reveal_a_bill() -> void:
 func test_a_gathering_is_refused_when_the_week_is_full() -> void:
 	GameState.calendar = {"week": 0, "phase": "work", "hours": 40}
 	GameState.inventory["SH20"] = 1
+	GameState.office_location = Offices.DISTRICT   # the walking tour is the District's (2026-11-21)
 	assert_false(GameState.use_item_in_office("SH20", "BO07")["ok"])
 	assert_eq(int(GameState.inventory["SH20"]), 1, "nothing used")
 
@@ -104,6 +107,7 @@ func test_a_gathering_is_refused_when_the_week_is_full() -> void:
 func test_a_gathering_must_fit_the_weekend_hours_left() -> void:
 	GameState.calendar = {"week": 0, "phase": "weekend", "hours": 6}
 	GameState.inventory["SH20"] = 1
+	GameState.office_location = Offices.DISTRICT   # the walking tour is the District's (2026-11-21)
 	assert_false(GameState.use_item_in_office("SH20", "BO07")["ok"])
 	GameState.calendar = {"week": 0, "phase": "weekend", "hours": 4}
 	assert_true(GameState.use_item_in_office("SH20", "BO07")["ok"])

@@ -4726,9 +4726,21 @@ func buy_funds_cap(item_id: String) -> Dictionary:
 ## rather than a reason to show the player.
 ##
 ## Returns { "ok": bool, "message": String } or { "ok": false, "needs_choice": true }.
+## Why an item that hosts an event cannot be used at the office the player stands in, or "" (the dinner is locked to the
+## Capitol and the walking tour to the District, by the Hosted Events tab's Location).
+func item_office_refusal(item: Dictionary) -> String:
+	var hosted_id := str(item.get("hosted_event", "")) if item.get("hosted_event") != null else ""
+	if hosted_id.is_empty():
+		return ""
+	var hosted := get_hosted_event(hosted_id)
+	return Items.office_refusal(hosted, office_location, TravelText.place_name(Offices.normalize(hosted.get("location"))), Text.phrase())
+
+
 func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := Items.use_refusal(item, Items.OFFICE, item_count(item_id), Text.phrase())
+	if refusal.is_empty():
+		refusal = item_office_refusal(item)
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
 	if Items.is_player_choice(item) and chosen_target.is_empty():

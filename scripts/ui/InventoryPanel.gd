@@ -158,6 +158,9 @@ static func icon_name(item: Dictionary) -> String:
 
 func _refusal(item_id: String, item: Dictionary) -> String:
 	var refusal := Items.use_refusal(item, context, GameState.item_count(item_id), Text.phrase())
+	# A dinner or a walking tour belongs to one office (Hosted Events' Location): greyed with the reason at the other one.
+	if refusal.is_empty() and context == Items.OFFICE:
+		refusal = GameState.item_office_refusal(item)
 	if not refusal.is_empty() or context != Items.STAGE:
 		return refusal
 	# During a stage the battle has two more reasons of its own. Asked here

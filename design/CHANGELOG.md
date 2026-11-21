@@ -1697,3 +1697,12 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | EV93, EV99, EV01 | No lead: their organizations appear only in choice results (passive). |
 | 22 events with passive plus to three or more organizations; 16 with no organization | No change, by the rule. |
 | Audit | `tools/audit_event_leads.py` keeps these decisions in `REVIEWED` and lists them under "Closed", so they are not raised again. No data changed. |
+
+## 2026-11-21: The dinner is the Capitol's and the walking tour the District's (Cameron)
+
+| Part | What changed |
+|---|---|
+| Lock | The Hosted Events tab has an optional **Location** column (workbook schema change, approved): HE02 the dinner = Capitol, HE01 the walking tour = District (blank or Either means anywhere). At the other office the Marketplace item's **Use button is greyed with the reason** ("This can only be hosted at the Capitol."), and the rules refuse it too, so nothing is spent and no evening begins. The item can still be bought. |
+| Code | `Items.office_refusal` (pure), `GameState.item_office_refusal`, used by `use_item_in_office` and by the inventory's Use button. The exporter checks the new column like every other Location. |
+| Text | `item.refused.hosted_office`, a draft for you to reword. |
+| Tests | `tests/test_hosted_office_lock.gd` (5). Changed on purpose: `inventory_driver.gd` (host the tour from the District) and three unit tests that used the dinner or tour (`test_gated_levels`, `test_hosted_event`, `test_inventory`) now stand at the right office. |

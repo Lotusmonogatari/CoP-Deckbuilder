@@ -9770,5 +9770,12 @@
     "english": "{name} · {role}",
     "placeholders": "name, role",
     "notes": "P14b (2026-11-21): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "item.refused.hosted_office",
+    "where": "An item that hosts an event, used at the wrong office",
+    "english": "This can only be hosted at {place}.",
+    "placeholders": "place",
+    "notes": "2026-11-21 (Cameron): the dinner is locked to the Capitol and the walking tour to the District. Claude's draft for Cameron to reword."
   }
 ]

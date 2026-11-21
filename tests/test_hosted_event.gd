@@ -128,9 +128,11 @@ func test_totals_weight_the_patron_cap_each_org_and_clamp_awareness() -> void:
 
 func test_the_items_start_the_right_events() -> void:
 	GameState.inventory["SH20"] = 1
+	GameState.office_location = Offices.DISTRICT   # the walking tour is the District's
 	assert_eq(str(GameState.use_item_in_office("SH20", "BO07")["opens_hosted"]), "HE01")
 	GameState.hosted_session = {}
 	GameState.inventory["SH19"] = 1
+	GameState.office_location = Offices.CAPITOL   # the dinner is the Capitol's
 	assert_eq(str(GameState.use_item_in_office("SH19", "BO05")["opens_hosted"]), "HE02")
 
 

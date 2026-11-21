@@ -632,6 +632,7 @@
   "item.refuse_hours": "Not enough hours left for that.",
   "item.refuse_week_over": "The work week is over.",
   "item.refused.battle_over": "This stage is already over.",
+  "item.refused.hosted_office": "This can only be hosted at {place}.",
   "item.refused.no_effect": "This item has no effect set yet.",
   "item.refused.none_left": "You have none left.",
   "item.refused.not_here": "This can't be used here.",
