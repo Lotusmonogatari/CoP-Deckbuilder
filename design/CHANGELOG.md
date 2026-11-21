@@ -1715,3 +1715,11 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Rules | The office is read from the bill-level templates' Location (all four are Capitol), so retagging a template moves the bills. A bill level now carries that office, so the same office check as every other level refuses a sponsored bill started from the other office, and a draft is refused with "go to the Capitol". Nothing is spent and the request stays as it was. |
 | Text | `office.bills_capitol_only`, a draft for you to reword. |
 | Tests | `tests/test_bills_capitol_only.gd` (4). No existing test needed changing. |
+## 2026-11-21: Accented letters match their sentence (a tester's problem report; Cameron)
+
+| Part | What changed |
+|---|---|
+| The problem | A tester's report: the "Ō" in "Ōminato" was drawn in a different font from the rest of its sentence. Shippori Mincho B1 (Woodblock body) and Zen Kaku Gothic New (Living Office body) have no ō, Ō, ū, Ū, ā or ī, so those letters were borrowed from Noto Sans JP. |
+| Fix | You asked for the Latin-extended pieces and for Antaka to be checked. The Latin-extended pieces of Shippori and Zen turned out to hold no macron letters at all (the fonts do not have them), so none were added for those two. **Antaka Brush Text has every accent the game uses**, so it is now the first fallback behind both body fonts; Noto stays last for Japanese and the symbols none of them has. Barlow Condensed (Broadcast headings) takes its own Latin-extended piece (one new font file, 15 KB, same family and licence). Antaka Brush Display and Text are unchanged where they are used. |
+| Documents | The brief said Antaka had no ō; it does. Fixed in `CLAUDE.md`. |
+| Tests | `tests/test_accent_fonts.gd` (2): the fallback order, and every accented letter the text uses is in a face of the chain. |

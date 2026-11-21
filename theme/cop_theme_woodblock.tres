@@ -1,22 +1,23 @@
-[gd_resource type="Theme" load_steps=16 format=3]
+[gd_resource type="Theme" load_steps=17 format=3]
 
-[ext_resource type="FontFile" path="res://assets/fonts/ShipporiMinchoB1-Regular.woff2" id="1_jn1hd"]
-[ext_resource type="FontFile" path="res://assets/fonts/NotoSansJP[wght].ttf" id="2_cihb7"]
-[ext_resource type="FontFile" path="res://assets/fonts/AntakaBrushDisplay-Regular.ttf" id="3_6801x"]
+[ext_resource type="FontFile" path="res://assets/fonts/ShipporiMinchoB1-Regular.woff2" id="1_cihb7"]
+[ext_resource type="FontFile" path="res://assets/fonts/AntakaBrushText-Regular.ttf" id="2_6801x"]
+[ext_resource type="FontFile" path="res://assets/fonts/NotoSansJP[wght].ttf" id="3_5v8jq"]
+[ext_resource type="FontFile" path="res://assets/fonts/AntakaBrushDisplay-Regular.ttf" id="4_h6h1f"]
 
-[sub_resource type="FontVariation" id="FontVariation_5v8jq"]
-base_font = ExtResource("2_cihb7")
+[sub_resource type="FontVariation" id="FontVariation_2cquu"]
+base_font = ExtResource("3_5v8jq")
 variation_opentype = {
 2003265652: 400
 }
 
-[sub_resource type="FontVariation" id="FontVariation_h6h1f"]
-fallbacks = Array[Font]([SubResource("FontVariation_5v8jq")])
-base_font = ExtResource("1_jn1hd")
+[sub_resource type="FontVariation" id="FontVariation_q4lqg"]
+fallbacks = Array[Font]([ExtResource("2_6801x"), SubResource("FontVariation_2cquu")])
+base_font = ExtResource("1_cihb7")
 spacing_top = -5
 spacing_bottom = -5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cquu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6boeg"]
 content_margin_left = 16.0
 content_margin_top = 10.0
 content_margin_right = 16.0
@@ -27,34 +28,12 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4lqg"]
-content_margin_left = 16.0
-content_margin_top = 10.0
-content_margin_right = 16.0
-content_margin_bottom = 10.0
-bg_color = Color(0.92019606, 0.8903921, 0.8345098, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6boeg"]
-content_margin_left = 16.0
-content_margin_top = 10.0
-content_margin_right = 16.0
-content_margin_bottom = 10.0
-bg_color = Color(0.92019606, 0.8903921, 0.8345098, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4w7d8"]
 content_margin_left = 16.0
 content_margin_top = 10.0
 content_margin_right = 16.0
 content_margin_bottom = 10.0
-bg_color = Color(0.96862745, 0.9372549, 0.8784314, 1)
+bg_color = Color(0.92019606, 0.8903921, 0.8345098, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -65,29 +44,51 @@ content_margin_left = 16.0
 content_margin_top = 10.0
 content_margin_right = 16.0
 content_margin_bottom = 10.0
+bg_color = Color(0.92019606, 0.8903921, 0.8345098, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xx04"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.96862745, 0.9372549, 0.8784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qcdv"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
 bg_color = Color(0.87176466, 0.8435294, 0.7905882, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="FontVariation" id="FontVariation_0xx04"]
-base_font = ExtResource("2_cihb7")
+[sub_resource type="FontVariation" id="FontVariation_lhqcv"]
+base_font = ExtResource("3_5v8jq")
 variation_opentype = {
 2003265652: 400
 }
 
-[sub_resource type="FontVariation" id="FontVariation_0qcdv"]
-fallbacks = Array[Font]([SubResource("FontVariation_0xx04")])
-base_font = ExtResource("3_6801x")
+[sub_resource type="FontVariation" id="FontVariation_ou3sj"]
+fallbacks = Array[Font]([SubResource("FontVariation_lhqcv")])
+base_font = ExtResource("4_h6h1f")
 spacing_top = -2
 spacing_bottom = -2
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhqcv"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5reig"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ou3sj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k244y"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5reig"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtfmu"]
 content_margin_left = 5.0
 content_margin_top = 3.0
 content_margin_right = 5.0
@@ -99,60 +100,60 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [resource]
-default_font = SubResource("FontVariation_h6h1f")
+default_font = SubResource("FontVariation_q4lqg")
 Button/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
 Button/colors/font_disabled_color = Color(0.10980392, 0.101960786, 0.09019608, 0.85)
 Button/colors/font_focus_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
 Button/colors/font_hover_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
 Button/colors/font_hover_pressed_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
 Button/colors/font_pressed_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
-Button/fonts/font = SubResource("FontVariation_h6h1f")
-Button/styles/disabled = SubResource("StyleBoxFlat_2cquu")
-Button/styles/hover = SubResource("StyleBoxFlat_q4lqg")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_6boeg")
-Button/styles/normal = SubResource("StyleBoxFlat_4w7d8")
-Button/styles/pressed = SubResource("StyleBoxFlat_iupj0")
+Button/fonts/font = SubResource("FontVariation_q4lqg")
+Button/styles/disabled = SubResource("StyleBoxFlat_6boeg")
+Button/styles/hover = SubResource("StyleBoxFlat_4w7d8")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_iupj0")
+Button/styles/normal = SubResource("StyleBoxFlat_0xx04")
+Button/styles/pressed = SubResource("StyleBoxFlat_0qcdv")
 CueBanner/base_type = &"Label"
 CueBanner/colors/font_outline_color = Color(0, 0, 0, 0)
 CueBanner/constants/outline_size = 0
-CueBanner/fonts/font = SubResource("FontVariation_0qcdv")
-CueBanner/styles/normal = SubResource("StyleBoxEmpty_lhqcv")
+CueBanner/fonts/font = SubResource("FontVariation_ou3sj")
+CueBanner/styles/normal = SubResource("StyleBoxEmpty_5reig")
 CueSpeaker/base_type = &"Label"
 CueSpeaker/colors/font_color = Color(1, 0.97, 0.92, 1)
 CueSpeaker/colors/font_outline_color = Color(0, 0, 0, 0)
 CueSpeaker/constants/outline_size = 0
-CueSpeaker/fonts/font = SubResource("FontVariation_0qcdv")
-CueSpeaker/styles/normal = SubResource("StyleBoxEmpty_ou3sj")
+CueSpeaker/fonts/font = SubResource("FontVariation_ou3sj")
+CueSpeaker/styles/normal = SubResource("StyleBoxEmpty_k244y")
 GaffeWarning/colors/font_outline_color = Color(0, 0, 0, 0)
 GaffeWarning/constants/outline_size = 0
-GaffeWarning/fonts/font = SubResource("FontVariation_h6h1f")
-GaffeWarning/styles/normal = SubResource("StyleBoxFlat_5reig")
+GaffeWarning/fonts/font = SubResource("FontVariation_q4lqg")
+GaffeWarning/styles/normal = SubResource("StyleBoxFlat_qtfmu")
 HeaderLabel/base_type = &"Label"
 HeaderLabel/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
 HeaderLabel/colors/font_outline_color = Color(0, 0, 0, 0)
 HeaderLabel/constants/outline_size = 0
-HeaderLabel/fonts/font = SubResource("FontVariation_0qcdv")
-HeaderLabel/styles/normal = SubResource("StyleBoxFlat_5reig")
+HeaderLabel/fonts/font = SubResource("FontVariation_ou3sj")
+HeaderLabel/styles/normal = SubResource("StyleBoxFlat_qtfmu")
 JapaneseAccent/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 0.55)
 JapaneseAccent/colors/font_outline_color = Color(0, 0, 0, 0)
 JapaneseAccent/constants/outline_size = 0
-JapaneseAccent/fonts/font = SubResource("FontVariation_h6h1f")
-JapaneseAccent/styles/normal = SubResource("StyleBoxFlat_5reig")
+JapaneseAccent/fonts/font = SubResource("FontVariation_q4lqg")
+JapaneseAccent/styles/normal = SubResource("StyleBoxFlat_qtfmu")
 Label/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 0)
 Label/constants/outline_size = 0
-Label/fonts/font = SubResource("FontVariation_h6h1f")
-Label/styles/normal = SubResource("StyleBoxFlat_5reig")
+Label/fonts/font = SubResource("FontVariation_q4lqg")
+Label/styles/normal = SubResource("StyleBoxFlat_qtfmu")
 RichTextLabel/colors/default_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
-RichTextLabel/fonts/normal_font = SubResource("FontVariation_h6h1f")
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_q4lqg")
 SmallLabel/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
 SmallLabel/colors/font_outline_color = Color(0, 0, 0, 0)
 SmallLabel/constants/outline_size = 0
-SmallLabel/fonts/font = SubResource("FontVariation_h6h1f")
-SmallLabel/styles/normal = SubResource("StyleBoxFlat_5reig")
+SmallLabel/fonts/font = SubResource("FontVariation_q4lqg")
+SmallLabel/styles/normal = SubResource("StyleBoxFlat_qtfmu")
 TitleLabel/base_type = &"Label"
 TitleLabel/colors/font_color = Color(0.10980392, 0.101960786, 0.09019608, 1)
 TitleLabel/colors/font_outline_color = Color(0, 0, 0, 0)
 TitleLabel/constants/outline_size = 0
-TitleLabel/fonts/font = SubResource("FontVariation_0qcdv")
-TitleLabel/styles/normal = SubResource("StyleBoxFlat_5reig")
+TitleLabel/fonts/font = SubResource("FontVariation_ou3sj")
+TitleLabel/styles/normal = SubResource("StyleBoxFlat_qtfmu")
