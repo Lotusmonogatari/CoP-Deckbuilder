@@ -431,6 +431,9 @@ var event_last_at: Dictionary = {}
 var discovered_levels: Array[String] = []
 ## Dated events already played (2026-10-23).
 var dated_events_done: Array[String] = []
+## Decision! scenes already answered (2026-11-21): {scene_id: {"day": day number, "choice": letter}}. A follow-up counts its
+## Delay from "day" and may need the earlier "choice" (DecisionScenes.gd).
+var decision_log: Dictionary = {}
 ## Promises owed (Promises.gd, 2026-10-31): records made by a choice's
 ## "Promise ..." commitment, kept from the Office's Promises panel.
 var promises: Array = []
@@ -620,7 +623,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
 	"bill_stance",
@@ -856,6 +859,7 @@ func reset_crisis_triggers() -> void:
 	event_last_at = {}
 	discovered_levels = []
 	dated_events_done = []
+	decision_log = {}
 	promises = []
 	promises_broken_unseen = []
 	promise_serial = 0
@@ -2255,7 +2259,11 @@ func get_event(event_id: String) -> Dictionary:
 func due_dated_event() -> String:
 	var today := WeekCalendar.today_number(calendar, calendar_config())
 	var due := EventEngine.due_dated(DataDB.events, today, dated_events_done)
-	return str(due[0].get("event_id", "")) if not due.is_empty() else ""
+	if not due.is_empty():
+		return str(due[0].get("event_id", ""))
+	# A Decision! follow-up whose Delay has run out comes next (Mandatory: it opens by itself).
+	var follow_ups := DecisionScenes.due_follow_ups(DataDB.decision_scenes, decision_log, today)
+	return str(follow_ups[0].get("event_id", "")) if not follow_ups.is_empty() else ""
 
 
 ## The opponent row an event is about, or {}: the Decision Scenes tab's Speaker when the event is a scene (and that speaker is
@@ -2465,6 +2473,10 @@ func apply_event_choice(event_id: String, letter: String, delegate_id: String = 
 	event_last_at[event_id] = time_units
 	if str(event.get("trigger", "")) == "Dated" and not dated_events_done.has(event_id):
 		dated_events_done.append(event_id)
+	# A Decision! scene is remembered with the day it was answered and the choice made, so its follow-ups can count their Delay.
+	var scene := decision_scene_of(event_id)
+	if not scene.is_empty() and not decision_log.has(str(scene.get("scene_id", ""))):
+		decision_log[str(scene.get("scene_id", ""))] = {"day": WeekCalendar.today_number(calendar, calendar_config()), "choice": letter}
 	check_crisis_triggers()
 	return {"ok": true, "result_text": str(chosen.get("result_text", "")), "lines": lines,
 		"chips": chips, "revealed": revealed, "hours": hours,

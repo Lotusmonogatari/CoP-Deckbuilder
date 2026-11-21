@@ -38,6 +38,19 @@ static func coming() -> Array:
 			"meta": Text.say("event.coming_meta", {"day": _weekday(when), "office": TravelText.level_badge(GameState.event_office(event)),
 				"hours": GameState.event_hours_text(event)}),
 			"flavor": "" if flavor == null else str(flavor), "moves": line})
+	# Follow-up scenes whose earlier scene is answered and whose Delay is still running (Decision! scenes, phase 2).
+	for scene: Dictionary in DecisionScenes.upcoming_follow_ups(DataDB.decision_scenes, GameState.decision_log, today, Levers.whole("events_coming_up_days")):
+		var event := GameState.get_event(str(scene.get("event_id", "")))
+		if event.is_empty():
+			continue
+		var tag := GameState.event_office(event)
+		var flavor: Variant = event.get("flavor")
+		out.append({"event_id": str(event.get("event_id", "")), "title": str(event.get("title", "")),
+			"meta": Text.say("event.coming_meta", {"day": _weekday(DecisionScenes.due_day(scene, GameState.decision_log)),
+				"office": TravelText.level_badge(tag), "hours": GameState.event_hours_text(event)}),
+			"flavor": "" if flavor == null else str(flavor),
+			"moves": Text.say("event.decision_moves_you", {"place": TravelText.place_name(tag)}) \
+				if tag != Offices.normalize(GameState.office_location) and tag != Offices.EITHER else ""})
 	return out
 
 

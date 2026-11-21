@@ -1768,3 +1768,17 @@ The first of four phases of the plan in `design/proposals/DECISION_SCENES_SCHEME
 | Rules | `scripts/rules/DecisionScenes.gd` (pure) and `GameState.decision_scene_of`, `event_speakers`, `event_office`. A scene fires once because its event is Dated and is remembered in `dated_events_done`, as before. |
 | Tests | `tests/test_decision_scenes.gd` (new) and a Mandatory check in the Dated-event click test. |
 | Not yet | Follow-ups (phase 2), activations (phase 3), Optional scenes (phase 4), the `DEC_` picture fallback chain and the art checklist section. |
+
+## Decision! scenes, phase 2: follow-ups with branching (2026-11-21, Cameron; branch `feature/decision-scenes-2`, stacked on `feature/decision-scenes-1`)
+
+Content is still only DS01; the machinery now exists for you to write follow-ups in the Decision Scenes tab. Nothing in play changes until a follow-up row is added.
+
+| Part | What changed |
+|---|---|
+| How to write one | A follow-up is a row whose **Follows** names an earlier scene, with **Delay** (days after that scene was *answered*) and **Follow If** (the earlier scene's choice letters that lead here; blank = any choice). Its **Event ID** is an Events row with Trigger **Followup** that holds its title, text and choices. **Opens** stays blank. |
+| Branching | Two follow-ups may follow the same scene with different Follow If letters; only the one matching the choice made comes. A follow-up may itself be followed. |
+| Limit | One first scene has at most **five** follow-ups in all, down every branch; the exporter errors above that. It also errors on a Follows that is not a scene or loops back, a Follow If letter the earlier event has no choice for, and a follow-up whose event is not Followup or which has an Opens. A blank Delay is a warning (the follow-up comes the day the earlier scene is answered). |
+| In play | Answering a scene records the day and the letter (`GameState.decision_log`, saved). A follow-up comes due on that day plus its Delay and opens by itself at the next Office open, taking you to its office free, like any Mandatory scene; it wears the same DECISION! tag and Mandatory note, with no counter. It fires once. |
+| Coming up | A follow-up whose Delay is running shows in the Events screen's Coming up tab. |
+| Rules | `DecisionScenes.due_day`, `due_follow_ups`, `upcoming_follow_ups`, `descendant_count`, `follow_if`, `children_of` (pure). |
+| Tests | Eight new tests in `tests/test_decision_scenes.gd` (delay from the answered day, branching, window, five-limit counting, loops, saving). |

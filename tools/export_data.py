@@ -3810,6 +3810,7 @@ def check_event_leads(data, report):
 
 
 SCENE_KINDS = ("Mandatory", "Optional")
+MAX_SCENE_FOLLOW_UPS = 5
 SCENE_FACES = ("neutral", "attacking", "gaining")
 
 
@@ -3847,13 +3848,20 @@ def check_decision_scenes(data, report):
                 report.error(where, f"Event {eid} already belongs to another scene")
             seen_events.add(eid)
             if scene.get("follows"):
-                report.error(where, "Follows is not built yet (phase 2)")
+                if str(event.get("trigger")) != "Followup":
+                    report.error(where, f"Event {eid} has Trigger '{event.get('trigger')}'; a follow-up's event must be Followup")
+                if scene.get("opens"):
+                    report.error(where, "A follow-up has no Opens; its day comes from Delay (days after the earlier scene is answered)")
+                if scene.get("delay") is not None and scene["delay"] < 0:
+                    report.error(where, "Delay cannot be negative")
             elif str(event.get("trigger")) != "Dated":
                 report.error(where, f"Event {eid} has Trigger '{event.get('trigger')}'; a first scene's event must be Dated")
             elif str(event.get("on_date") or "") != str(scene.get("opens") or ""):
                 report.error(where, f"Opens is {scene.get('opens')!r} but Event {eid}'s On Date is {event.get('on_date')!r}; they must match")
         if scene.get("kind") not in SCENE_KINDS:
             report.error(where, f"Kind is {scene.get('kind')!r}; it must be Mandatory or Optional")
+        if scene.get("follows") and not scene.get("delay") and scene.get("delay") != 0:
+            report.warn(where, "A follow-up with no Delay comes due the day the earlier scene is answered")
         if not scene.get("follows") and not _real_date(scene.get("opens")):
             report.error(where, f"Opens {scene.get('opens')!r} is not a real YY.MM.DD date")
         if scene.get("kind") == "Optional":
@@ -3875,6 +3883,38 @@ def check_decision_scenes(data, report):
         for pic in scene.get("scene_picture") or []:
             if not (bg_dir / f"{pic}.png").exists():
                 report.warn(where, f"Scene Picture '{pic}' has no file in assets/backgrounds")
+    # Chains (phase 2): Follows names a real scene, never loops, Follow If letters are choices of the earlier scene's event, and
+    # one first scene has at most the first scene plus five follow-ups in total, down every branch.
+    by_id = {str(s.get("scene_id")): s for s in data.get("decision_scenes", [])}
+    letters = {}
+    for row in data.get("event_choices", []):
+        letters.setdefault(str(row.get("event_id")), set()).add(str(row.get("choice")))
+    roots = {}
+    for sid, scene in by_id.items():
+        where = f"Decision Scenes {sid}"
+        if not scene.get("follows"):
+            roots.setdefault(sid, [])
+            continue
+        parent = by_id.get(str(scene["follows"]))
+        if parent is None:
+            report.error(where, f"Follows '{scene['follows']}', which is not a Scene ID")
+            continue
+        for letter in scene.get("follow_if") or []:
+            if str(letter).upper() not in letters.get(str(parent.get("event_id")), set()):
+                report.error(where, f"Follow If '{letter}' is not a choice of {parent.get('scene_id')}'s event {parent.get('event_id')}")
+        seen, cursor = {sid}, parent
+        while cursor is not None and cursor.get("follows"):
+            if str(cursor.get("scene_id")) in seen:
+                report.error(where, "Follows loops back on itself")
+                cursor = None
+                break
+            seen.add(str(cursor.get("scene_id")))
+            cursor = by_id.get(str(cursor["follows"]))
+        if cursor is not None:
+            roots.setdefault(str(cursor.get("scene_id")), []).append(sid)
+    for root, members in roots.items():
+        if len(members) > MAX_SCENE_FOLLOW_UPS:
+            report.error(f"Decision Scenes {root}", f"has {len(members)} follow-ups in all; at most {MAX_SCENE_FOLLOW_UPS} are allowed")
 
 
 def check_offices(data, report):
@@ -3990,8 +4030,9 @@ def check_followups(data, report):
                 report.error(where, f"Followup names {entry.get('event_id')}, which is not an event")
             elif str(event.get("trigger")) != "Followup":
                 report.error(where, f"Followup names {entry.get('event_id')}, whose Trigger is not Followup")
+    scene_events = {str(s.get("event_id")) for s in data.get("decision_scenes", [])}
     for event_id, event in events.items():
-        if str(event.get("trigger")) == "Followup" and event_id not in named:
+        if str(event.get("trigger")) == "Followup" and event_id not in named and event_id not in scene_events:
             report.warn("Events", f"{event_id} is a Followup event that no choice schedules")
 
 

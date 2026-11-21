@@ -1062,12 +1062,17 @@ func _moved_speaker() -> Dictionary:
 
 ## The kind tag of an event's pop-up card: DECISION! for the calendar's own events, SOMETHING COMES UP for the rest.
 func _event_tag(event: Dictionary) -> String:
-	return Text.say("popup.tag_decision" if str(event.get("trigger", "")) == "Dated" else "popup.tag_scenario")
+	return Text.say("popup.tag_decision" if _is_decision(event) else "popup.tag_scenario")
 
 
 ## Red for a calendar event (the spec's alarm colour), the accent for the rest.
 func _event_tag_kind(event: Dictionary) -> String:
-	return PopupCardStyles.ALARM if str(event.get("trigger", "")) == "Dated" else PopupCardStyles.ACCENT
+	return PopupCardStyles.ALARM if _is_decision(event) else PopupCardStyles.ACCENT
+
+
+## A DECISION! event: a Dated one, or any Decision! scene (a follow-up is a scene whose event is not Dated).
+func _is_decision(event: Dictionary) -> bool:
+	return str(event.get("trigger", "")) == "Dated" or not GameState.decision_scene_of(str(event.get("event_id", ""))).is_empty()
 
 
 ## The event screen: its title, flavor text and one button per choice, on the pop-up card (P14, 2026-11-20): the choices are
@@ -1090,8 +1095,9 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 	_event_pictures[event_id] = picture
 	if not picture.is_empty():
 		rows.append(_picture_row(picture))
-	if str(event.get("trigger", "")) == "Dated":
-		rows.append(UiKit.line(Text.say("event.heading_dated", {"date": _event_date_label(str(event.get("on_date", "")))}), "SmallLabel"))
+	if str(event.get("trigger", "")) == "Dated" or not scene.is_empty():
+		if str(event.get("trigger", "")) == "Dated":
+			rows.append(UiKit.line(Text.say("event.heading_dated", {"date": _event_date_label(str(event.get("on_date", "")))}), "SmallLabel"))
 		var speakers := GameState.event_speakers(event_id)
 		if not speakers.is_empty():
 			# One speaker stands tall; two stand side by side (the Second Speaker column).
