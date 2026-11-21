@@ -542,7 +542,7 @@ func _build() -> void:
 	_show_trigger_alerts_if_any()
 	_show_broken_promises_if_any()
 	_show_resume_choice_if_in_level()
-	if not _show_followup_if_due() and not _show_dated_event_if_due():
+	if not _show_followup_if_due() and not _show_dated_event_if_due() and not _show_activation_if_pending():
 		_show_random_event_if_due()
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
@@ -956,6 +956,19 @@ func _show_followup_if_due() -> bool:
 	if event_id.is_empty():
 		return false
 	_present_event(event_id, true)
+	return true
+
+
+## A level, stage or vote that an answered Decision! scene started (phase 3): its briefing opens, and Back leaves it waiting for
+## the next time the Office opens. True when one was shown.
+func _show_activation_if_pending() -> bool:
+	if GameState.is_in_level() or OS.has_environment("COP_NO_RANDOM_EVENTS"):
+		return false
+	var next := GameState.next_activation()
+	if next.is_empty():
+		return false
+	_chosen_level = next["level"] as Dictionary
+	_show_briefing()
 	return true
 
 
@@ -5006,6 +5019,8 @@ func _on_start() -> void:
 
 	# A mixed level's trips between the offices come off the week as it begins (two offices, 2026-11-20).
 	GameState.pay_level_travel(_chosen_level, _travel_mode)
+	# A level a Decision! scene started is no longer waiting (phase 3).
+	GameState.finish_activation(str(_chosen_level.get("level_id", "")))
 
 	# The runner is handed over rather than rebuilt, so the level keeps its
 	# place and its carried buffs as the battle screen moves through it.

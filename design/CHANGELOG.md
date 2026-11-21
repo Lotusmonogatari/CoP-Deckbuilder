@@ -1782,3 +1782,18 @@ Content is still only DS01; the machinery now exists for you to write follow-ups
 | Coming up | A follow-up whose Delay is running shows in the Events screen's Coming up tab. |
 | Rules | `DecisionScenes.due_day`, `due_follow_ups`, `upcoming_follow_ups`, `descendant_count`, `follow_if`, `children_of` (pure). |
 | Tests | Eight new tests in `tests/test_decision_scenes.gd` (delay from the answered day, branching, window, five-limit counting, loops, saving). |
+
+## Decision! scenes, phase 3: scenes that start other parts of the game (2026-11-21, Cameron; branch `feature/decision-scenes-3`, stacked on phase 2)
+
+Machinery only; no scene in the workbook activates anything yet, so nothing in play changes until you fill an **Activates** cell.
+
+| Part | What changed |
+|---|---|
+| How to write it | The **Activates** cell lists entries `kind:ID` separated by `;`. Kinds: `level:LVxx` (an existing level, usually Event Only), `stage:STxx` (one room on its own), `vote:BIxx` (a Floor Vote on a named bill or motion row of the Floor Votes tab), `event:EVxx` (queued for the next Office visit), `unlock:LVxx` (the level becomes available, like a choice's Unlocks Level). |
+| One addition to the scheme | An entry may end with `@A,B` to fire only for those choices ("vote:BI51@A; event:EV30"). Without it the entry fires whatever was chosen. This lets "Skip it" differ from "Take part" without a second scene. |
+| In play | Answering the scene applies unlock and event at once. A level, stage or vote waits: the result card says "Next: <name>.", Continue opens its normal briefing, **Back leaves it waiting** and the Office offers it again each time it opens until Go in begins it. A stage or vote becomes a one-stage level (`DSL_<kind>_<ID>`); a debate-then-vote is a level that ends in the vote, or a stage entry followed by a vote entry on a later follow-up scene. |
+| Not a cleared level | A scene's one-stage level is not added to the levels-cleared list. |
+| Saving | Waiting activations and the level being played are saved (`pending_activations`, `scene_runtime`). |
+| Checks | The exporter errors on an unknown kind, an ID that is not a level, stage, bill or event, a malformed entry, and an `@` letter the scene's event has no choice for. |
+| Tests | Six unit tests (parsing, limits by choice, the one-stage level, unlock, queued event, playing a vote to its end) and a real-click test `scene_activation_test` (answer, result card, briefing, Back, offered again, Go in, a one-stage Floor Vote). |
+| Not yet | Optional scenes (phase 4) and the `DEC_` picture fallback chain. |

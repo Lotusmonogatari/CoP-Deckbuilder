@@ -198,3 +198,110 @@ func test_a_follow_up_wears_the_decision_tag_and_its_office_moves_you() -> void:
 	var event := GameState.get_event("EV_TEST_F")
 	assert_eq(GameState.event_office(event), Offices.DISTRICT, "the scene's office, not the event's location")
 	_drop_follow_up()
+
+
+# --- Activations (phase 3) -------------------------------------------------------------------------------------------------------
+
+func test_activates_cells_parse_into_kind_id_and_choice_limits() -> void:
+	var entries := DecisionScenes.parse_activates("level:LV98@A; vote:BI01 ;event:EV31@b,c; nonsense; stage:")
+	assert_eq(entries.size(), 3, "a piece that is not kind:ID is skipped")
+	assert_eq(entries[0], {"kind": "level", "id": "LV98", "letters": ["A"]})
+	assert_eq(entries[1], {"kind": "vote", "id": "BI01", "letters": []})
+	assert_eq(entries[2]["letters"], ["B", "C"], "letters are upper-cased")
+	assert_eq(DecisionScenes.parse_activates(null), [])
+	var scene := {"activates": "level:LV98@A; vote:BI01; event:EV31@B,C"}
+	assert_eq(DecisionScenes.activations_for(scene, "A").size(), 2, "A: the level and the any-choice vote")
+	assert_eq(DecisionScenes.activations_for(scene, "B").size(), 2, "B: the vote and the event")
+	assert_eq(DecisionScenes.activations_for(scene, "D").size(), 1, "D: only the any-choice vote")
+
+
+func test_stage_and_vote_activations_become_a_one_stage_level() -> void:
+	var level := DecisionScenes.ad_hoc_level("vote", "BI01", "A vote", "Capitol")
+	assert_eq(level["level_id"], "DSL_vote_BI01")
+	assert_eq(level["stage_1"], "BI01")
+	assert_eq(level["location"], "Capitol")
+	assert_true(DecisionScenes.is_ad_hoc_level_id(level["level_id"]))
+	assert_false(DecisionScenes.is_ad_hoc_level_id("LV01"))
+
+
+func _give_ds01(activates: String) -> Variant:
+	var scene := GameState.decision_scene_of("EV47")
+	var before: Variant = scene.get("activates")
+	scene["activates"] = activates
+	return before
+
+
+func test_answering_a_scene_starts_what_it_activates() -> void:
+	var before: Variant = _give_ds01("unlock:LV98; event:EV31; vote:BI01@A; stage:ST271@B")
+	GameState.dated_events_done = []
+	GameState.decision_log = {}
+	GameState.pending_activations = []
+	GameState.scheduled_events = []
+	GameState.discovered_levels = []
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	var result := GameState.apply_event_choice("EV47", "A")
+	assert_true(result["ok"])
+	assert_true(GameState.discovered_levels.has("LV98"), "the unlock is applied at once")
+	assert_eq(GameState.scheduled_events.size(), 1, "the event is queued")
+	assert_eq(GameState.scheduled_events[0]["event_id"], "EV31")
+	assert_eq(GameState.pending_activations.size(), 1, "only the A-limited vote waits; the B stage does not")
+	assert_eq(GameState.pending_activations[0]["kind"], "vote")
+	var lines: String = "\n".join(PackedStringArray(result["lines"]))
+	assert_true(lines.contains("Next:"), "the result card says a vote is ready")
+	GameState.scene_decision_scene_restore("EV47", before)
+
+
+func test_a_pending_vote_becomes_a_runnable_level_and_leaves_when_begun() -> void:
+	var before: Variant = _give_ds01("vote:BI01")
+	GameState.dated_events_done = []
+	GameState.decision_log = {}
+	GameState.pending_activations = []
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
+	var next := GameState.next_activation()
+	assert_eq(next["kind"], "vote")
+	var level: Dictionary = next["level"]
+	assert_eq(level["level_id"], "DSL_vote_BI01")
+	assert_true(DataDB.is_runtime_level("DSL_vote_BI01"), "the briefing and runner can find it by id")
+	var runner := LevelRunner.new(BattleSetup.expand_level(level))
+	assert_true(runner.is_valid(), "a vote on its own is a playable level: %s" % str(runner.problems()))
+	GameState.finish_activation("DSL_vote_BI01")
+	assert_true(GameState.pending_activations.is_empty(), "begun, so no longer waiting")
+	assert_eq(GameState.scene_runtime["level"]["level_id"], "DSL_vote_BI01", "kept for a mid-level save")
+	assert_true((GameState.to_save()["scene_runtime"] as Dictionary).has("level"))
+	GameState.end_level()
+	assert_true(GameState.scene_runtime.is_empty(), "cleared with the level")
+	GameState.scene_decision_scene_restore("EV47", before)
+	DataDB.clear_runtime()
+
+
+func test_a_pending_existing_level_is_offered_as_itself() -> void:
+	var before: Variant = _give_ds01("level:LV98")
+	GameState.dated_events_done = []
+	GameState.decision_log = {}
+	GameState.pending_activations = []
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
+	assert_eq(str(GameState.next_activation()["level"]["level_id"]), "LV98")
+	GameState.finish_activation("LV98")
+	assert_true(GameState.next_activation().is_empty())
+	GameState.scene_decision_scene_restore("EV47", before)
+
+
+func test_a_scene_started_vote_can_be_played_to_its_end() -> void:
+	var before: Variant = _give_ds01("vote:BI01")
+	GameState.dated_events_done = []
+	GameState.decision_log = {}
+	GameState.pending_activations = []
+	GameState.levels_cleared = {}
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
+	var level: Dictionary = GameState.next_activation()["level"]
+	GameState.finish_activation(str(level["level_id"]))
+	GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(level)))
+	assert_true(GameState.is_in_level())
+	GameState.finish_stage(LevelRunner.WON, 0, [], false, 0)
+	assert_false(GameState.levels_cleared.has("DSL_vote_BI01"), "a scene's one-stage level is not a cleared level of its own")
+	GameState.end_level()
+	GameState.scene_decision_scene_restore("EV47", before)
+	DataDB.clear_runtime()

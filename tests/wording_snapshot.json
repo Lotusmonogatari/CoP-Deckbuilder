@@ -344,6 +344,7 @@
   "custom_bill.name_1": "A bill to {a}",
   "custom_bill.name_2": "A bill to {a} and {b}",
   "custom_bill.name_3": "A bill to {a}, {b}, and {c}",
+  "decision.activation_ready": "Next: {name}.",
   "deck.filter_all": "Collection",
   "deck.filter_deck": "In your deck",
   "deck.suit_chip": "{suit} {count}",

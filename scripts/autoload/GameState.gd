@@ -434,6 +434,11 @@ var dated_events_done: Array[String] = []
 ## Decision! scenes already answered (2026-11-21): {scene_id: {"day": day number, "choice": letter}}. A follow-up counts its
 ## Delay from "day" and may need the earlier "choice" (DecisionScenes.gd).
 var decision_log: Dictionary = {}
+## What answered Decision! scenes have started but the player has not yet played (2026-11-21, phase 3): [{"kind", "id", "scene_id"}]
+## for kinds level, stage and vote. The Office offers the first each time it opens, until its level is begun.
+var pending_activations: Array = []
+## The one-stage level a stage or vote activation is playing, kept so a save mid-level can rebuild it (DecisionScenes.ad_hoc_level).
+var scene_runtime: Dictionary = {}
 ## Promises owed (Promises.gd, 2026-10-31): records made by a choice's
 ## "Promise ..." commitment, kept from the Office's Promises panel.
 var promises: Array = []
@@ -623,7 +628,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
 	"bill_stance",
@@ -860,6 +865,8 @@ func reset_crisis_triggers() -> void:
 	discovered_levels = []
 	dated_events_done = []
 	decision_log = {}
+	pending_activations = []
+	scene_runtime = {}
 	promises = []
 	promises_broken_unseen = []
 	promise_serial = 0
@@ -2266,6 +2273,81 @@ func due_dated_event() -> String:
 	return str(follow_ups[0].get("event_id", "")) if not follow_ups.is_empty() else ""
 
 
+## What answering a scene with choice `letter` starts (Activates column, phase 3): an unlock and a queued event happen at once;
+## a level, stage or vote waits in pending_activations for the Office to offer. Returns the lines that tell the player.
+func _start_scene_activations(scene: Dictionary, letter: String) -> Array[String]:
+	var lines: Array[String] = []
+	for entry: Dictionary in DecisionScenes.activations_for(scene, letter):
+		var kind := str(entry["kind"])
+		var id := str(entry["id"])
+		match kind:
+			DecisionScenes.KIND_UNLOCK:
+				if not discovered_levels.has(id):
+					discovered_levels.append(id)
+					lines.append(Text.say("event.level_revealed", {"name": str(DataDB.get_level(id).get("description", id))}))
+			DecisionScenes.KIND_EVENT:
+				if not get_event(id).is_empty():
+					scheduled_events.append({"event_id": id, "due_at": time_units})
+			_:
+				if DecisionScenes.LEVEL_KINDS.has(kind) and not _activation_pending(kind, id):
+					pending_activations.append({"kind": kind, "id": id, "scene_id": str(scene.get("scene_id", ""))})
+					lines.append(Text.say("decision.activation_ready", {"name": activation_name(kind, id)}))
+	return lines
+
+
+## Puts a scene's Activates cell back as it was (a test changes it on the loaded data and undoes it here).
+func scene_decision_scene_restore(event_id: String, activates: Variant) -> void:
+	decision_scene_of(event_id)["activates"] = activates
+
+
+func _activation_pending(kind: String, id: String) -> bool:
+	for entry: Dictionary in pending_activations:
+		if str(entry.get("kind")) == kind and str(entry.get("id")) == id:
+			return true
+	return false
+
+
+## What the briefing and the notice call an activation: the level's description, the stage's name or the bill's name.
+func activation_name(kind: String, id: String) -> String:
+	match kind:
+		DecisionScenes.KIND_LEVEL:
+			return str(DataDB.get_level(id).get("description", id))
+		DecisionScenes.KIND_STAGE:
+			return str(DataDB.get_stage(id).get("name_en", id))
+		_:
+			return str(DataDB.get_bill(id).get("bill_name", id))
+
+
+## The first level a scene has started and the player has not yet played, as {"kind", "id", "scene_id", "level"}; {} when none.
+## A stage or vote becomes a one-stage level here (registered so the briefing and the level runner can find it by its ID).
+func next_activation() -> Dictionary:
+	for entry: Dictionary in pending_activations:
+		var kind := str(entry.get("kind", ""))
+		var id := str(entry.get("id", ""))
+		var scene := DecisionScenes.find(DataDB.decision_scenes, str(entry.get("scene_id", "")))
+		var level := {}
+		if kind == DecisionScenes.KIND_LEVEL:
+			level = DataDB.get_level(id)
+		else:
+			level = DecisionScenes.ad_hoc_level(kind, id, activation_name(kind, id), DecisionScenes.office(scene))
+			DataDB.register_runtime_level(level)
+		if not level.is_empty():
+			return {"kind": kind, "id": id, "scene_id": str(entry.get("scene_id", "")), "level": level}
+	return {}
+
+
+## The level has begun: its activation is no longer pending, and a one-stage level is remembered for a mid-level save.
+func finish_activation(level_id: String) -> void:
+	for entry: Dictionary in pending_activations.duplicate():
+		var kind := str(entry.get("kind", ""))
+		var id := str(entry.get("id", ""))
+		var made := DecisionScenes.AD_HOC_PREFIX + kind + "_" + id
+		if (kind == DecisionScenes.KIND_LEVEL and id == level_id) or made == level_id:
+			pending_activations.erase(entry)
+			if made == level_id:
+				scene_runtime = {"level": DataDB.get_level(level_id)}
+
+
 ## The opponent row an event is about, or {}: the Decision Scenes tab's Speaker when the event is a scene (and that speaker is
 ## an opponent), else the event's Speaker Title.
 func event_speaker(event_id: String) -> Dictionary:
@@ -2477,6 +2559,7 @@ func apply_event_choice(event_id: String, letter: String, delegate_id: String = 
 	var scene := decision_scene_of(event_id)
 	if not scene.is_empty() and not decision_log.has(str(scene.get("scene_id", ""))):
 		decision_log[str(scene.get("scene_id", ""))] = {"day": WeekCalendar.today_number(calendar, calendar_config()), "choice": letter}
+		lines.append_array(_start_scene_activations(scene, letter))
 	check_crisis_triggers()
 	return {"ok": true, "result_text": str(chosen.get("result_text", "")), "lines": lines,
 		"chips": chips, "revealed": revealed, "hours": hours,
@@ -3695,7 +3778,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 			_pay_level_rewards()
 			_apply_level_bonus_win(level_runner.level)
 			_cause = ""
-			if not level_id.is_empty() and not patron_level:
+			if not level_id.is_empty() and not patron_level and not DecisionScenes.is_ad_hoc_level_id(level_id):
 				levels_cleared[level_id] = int(levels_cleared.get(level_id, 0)) + 1
 		if patron_level:
 			_conclude_patron_level()
@@ -5677,6 +5760,7 @@ func end_level() -> void:
 	level_runner = null
 	_resume_promise_deadlines()
 	patron_runtime = {}
+	scene_runtime = {}
 	bill_assist = BillAssist.empty()
 	bill_stance = {}
 	# Level buffs belong to the level; nothing else here to clear, since
@@ -5710,6 +5794,7 @@ func abandon_level() -> void:
 			# A drafted bill cannot be offered again: its cost is spent.
 			patron_requests[abandoned]["status"] = PatronRequests.LAPSED if patron_drafts.has(abandoned) else PatronRequests.OPEN
 		patron_runtime = {}
+	scene_runtime = {}
 	bill_assist = BillAssist.empty()
 	level_runner = null
 	_resume_promise_deadlines()
@@ -5967,6 +6052,9 @@ func _register_saved_patron_bills() -> void:
 	var level: Variant = patron_runtime.get("level")
 	if level is Dictionary:
 		DataDB.register_runtime_level(level as Dictionary)
+	var scene_level: Variant = scene_runtime.get("level")
+	if scene_level is Dictionary:
+		DataDB.register_runtime_level(scene_level as Dictionary)
 
 
 ## A story about the player's sponsored legislation starts running on the

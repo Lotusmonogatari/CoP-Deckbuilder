@@ -9798,5 +9798,12 @@
     "english": "Optional. Open it from the Events screen within {days} days.",
     "placeholders": "days",
     "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 1; used from phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "decision.activation_ready",
+    "where": "Decision! result card: a level, stage or vote the scene has started",
+    "english": "Next: {name}.",
+    "placeholders": "name",
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 3). Claude's draft for Cameron to reword."
   }
 ]

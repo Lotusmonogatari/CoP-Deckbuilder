@@ -144,6 +144,68 @@ static func _follow_ups_between(scenes: Array, log: Dictionary, first: int, last
 	return out
 
 
+# --- Activations (phase 3) -----------------------------------------------------------------------------------------------------
+# The Activates column lists what answering a scene starts: `kind:ID` entries separated by `;`, each optionally limited to some
+# of the earlier choices with `@A,B` ("level:LV12@A; event:EV30"). Kinds: level (an existing level), stage (one room on its own),
+# vote (a Floor Vote on a named bill or motion), event (an event queued for the next Office visit), unlock (a level made
+# available). level, stage and vote begin as a level; event and unlock are applied at once.
+
+const KIND_LEVEL := "level"
+const KIND_STAGE := "stage"
+const KIND_VOTE := "vote"
+const KIND_EVENT := "event"
+const KIND_UNLOCK := "unlock"
+const ACTIVATION_KINDS: Array[String] = [KIND_LEVEL, KIND_STAGE, KIND_VOTE, KIND_EVENT, KIND_UNLOCK]
+## The kinds that begin as a level, in a battle or vote screen.
+const LEVEL_KINDS: Array[String] = [KIND_LEVEL, KIND_STAGE, KIND_VOTE]
+## The ID prefix of the one-stage levels built for stage and vote activations.
+const AD_HOC_PREFIX := "DSL_"
+
+
+## The entries of an Activates cell as [{"kind", "id", "letters"}], in order. A piece that is not `kind:ID` is skipped (the
+## exporter rejects it); `letters` is [] for "any choice".
+static func parse_activates(cell: Variant) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	if cell == null:
+		return out
+	for piece: String in str(cell).split(";"):
+		var text := piece.strip_edges()
+		var letters: Array[String] = []
+		if text.contains("@"):
+			for letter: String in text.get_slice("@", 1).split(","):
+				if not letter.strip_edges().is_empty():
+					letters.append(letter.strip_edges().to_upper())
+			text = text.get_slice("@", 0).strip_edges()
+		if not text.contains(":"):
+			continue
+		var kind := text.get_slice(":", 0).strip_edges().to_lower()
+		var id := text.get_slice(":", 1).strip_edges()
+		if not kind.is_empty() and not id.is_empty():
+			out.append({"kind": kind, "id": id, "letters": letters})
+	return out
+
+
+## The activations of a scene that the choice `letter` triggers.
+static func activations_for(scene: Dictionary, letter: String) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	for entry: Dictionary in parse_activates(scene.get("activates")):
+		var letters: Array = entry["letters"]
+		if letters.is_empty() or letters.has(letter.to_upper()):
+			out.append(entry)
+	return out
+
+
+## The one-stage level a stage or vote activation plays: the stage (or the bill, whose Floor Vote stage it is) as its only
+## stage. `description` is what the briefing calls it; `office` is where it happens.
+static func ad_hoc_level(kind: String, id: String, description: String, office: String) -> Dictionary:
+	return {"level_id": AD_HOC_PREFIX + kind + "_" + id, "description": description, "tier": 0, "stage_1": id,
+		"event_only": "Yes", "location": office if office != "Either" else null, "decision_scene": true}
+
+
+static func is_ad_hoc_level_id(level_id: String) -> bool:
+	return level_id.begins_with(AD_HOC_PREFIX)
+
+
 ## What kind of person an ID names, by its prefix: "opponent" (OP..), "staff" (SF..), "visitor" (VI..), or "" for anything else.
 static func person_kind(id: String) -> String:
 	if id.begins_with("OP"):

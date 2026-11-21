@@ -3811,6 +3811,7 @@ def check_event_leads(data, report):
 
 SCENE_KINDS = ("Mandatory", "Optional")
 MAX_SCENE_FOLLOW_UPS = 5
+SCENE_ACTIVATIONS = ("level", "stage", "vote", "event", "unlock")
 SCENE_FACES = ("neutral", "attacking", "gaining")
 
 
@@ -3883,12 +3884,35 @@ def check_decision_scenes(data, report):
         for pic in scene.get("scene_picture") or []:
             if not (bg_dir / f"{pic}.png").exists():
                 report.warn(where, f"Scene Picture '{pic}' has no file in assets/backgrounds")
+    letters_by_event = {}
+    for row in data.get("event_choices", []):
+        letters_by_event.setdefault(str(row.get("event_id")), set()).add(str(row.get("choice")))
+    # Activates (phase 3): `kind:ID` entries separated by ";", each optionally limited to choices with "@A,B".
+    level_ids = {str(l.get("level_id")): l for l in data.get("levels", [])}
+    stage_ids = {str(s.get("stage_id")) for s in data.get("stages", [])}
+    bill_ids = {str(k) for k in data.get("floor_votes", {})}
+    for scene in data.get("decision_scenes", []):
+        where = f"Decision Scenes {scene.get('scene_id')} Activates"
+        event_letters = letters_by_event.get(str(scene.get("event_id")), set())
+        for piece in [p_.strip() for p_ in str(scene.get("activates") or "").split(";") if p_.strip()]:
+            body, _, limit = piece.partition("@")
+            kind, _, ident = body.partition(":")
+            kind, ident = kind.strip().lower(), ident.strip()
+            if kind not in SCENE_ACTIVATIONS or not ident:
+                report.error(where, f"'{piece}' is not kind:ID with a kind of {', '.join(SCENE_ACTIVATIONS)}")
+                continue
+            known = {"level": set(level_ids), "unlock": set(level_ids), "stage": stage_ids, "vote": bill_ids,
+                     "event": {str(e.get('event_id')) for e in data.get('events', [])}}[kind]
+            if ident not in known:
+                report.error(where, f"{kind}:{ident} is not a known {'bill' if kind == 'vote' else kind}")
+            for letter in [x.strip().upper() for x in limit.split(",") if x.strip()]:
+                if letter not in event_letters:
+                    report.error(where, f"'@{letter}' is not a choice of event {scene.get('event_id')}")
     # Chains (phase 2): Follows names a real scene, never loops, Follow If letters are choices of the earlier scene's event, and
     # one first scene has at most the first scene plus five follow-ups in total, down every branch.
     by_id = {str(s.get("scene_id")): s for s in data.get("decision_scenes", [])}
-    letters = {}
-    for row in data.get("event_choices", []):
-        letters.setdefault(str(row.get("event_id")), set()).add(str(row.get("choice")))
+    letters = letters_by_event
+
     roots = {}
     for sid, scene in by_id.items():
         where = f"Decision Scenes {sid}"

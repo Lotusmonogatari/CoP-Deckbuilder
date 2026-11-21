@@ -329,3 +329,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - P14b: the remaining screens on the frame and pop-up cards: staff, deck, inventory, Travel page, bills, parties, reference screens, the level intro's bill card (2026-11-20, Cameron; branch `panel/p14b-remaining-screens`)
 - Decision! scenes, phase 1: the Decision Scenes tab, Mandatory scenes, EV47 becomes DS01 (2026-11-21, Cameron; branch `feature/decision-scenes-1`)
 - Decision! scenes, phase 2: follow-ups with branching, up to five per first scene (2026-11-21, Cameron; branch `feature/decision-scenes-2`)
+- Decision! scenes, phase 3: scenes that start a level, stage, named vote, event or unlock (2026-11-21, Cameron; branch `feature/decision-scenes-3`)
