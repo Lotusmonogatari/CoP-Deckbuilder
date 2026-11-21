@@ -39,7 +39,45 @@ static func attach(host: Node) -> Overlay:
 
 
 static func open(panel: Overlay) -> void:
-	panel.open(Text.say("how_to_play.title"), rows())
+	# On the shared frame (P14b, 2026-11-20): one numbered card for each entry, the group names between them.
+	var frame := OfficeScreenFrame.new()
+	frame.setup({"title": Text.say("how_to_play.title"), "subtitle": "", "chips": [], "rows": cards(OfficeFrameStyles.look())})
+	panel.open_frame(frame, Text.say("ui.back"))
+
+
+## The guide as cards: a muted heading for each group, then one card for each entry with its position in the guide.
+static func cards(look: Dictionary) -> Array[Control]:
+	var out: Array[Control] = []
+	var tokens := data_tokens()
+	var groups := HowToPlay.grouped(DataDB.how_to_play)
+	if groups.is_empty():
+		out.append(UiKit.line(Text.say("how_to_play.empty")))
+		return out
+	var number := 0
+	for group: Dictionary in groups:
+		var group_name := str(group["group"])
+		if not group_name.is_empty():
+			var heading := UiKit.line(group_name, "HeaderLabel")
+			heading.custom_minimum_size.x = 0.0
+			heading.add_theme_color_override("font_color", look["on_ground"])
+			out.append(heading)
+		for entry: Dictionary in group["entries"]:
+			number += 1
+			var card := OfficeFrameStyles.card(look)
+			card.name = "HowToCard_%s" % _cell(entry, "entry_id")
+			var row := _entry_row(entry, tokens, look)
+			var heading_row := row.get_child(0) if row.get_child_count() > 0 else null
+			card.get_node("Column").add_child(row)
+			# The entry's number leads its heading, so the guide reads as a numbered list.
+			var first_label: Label = null
+			if heading_row != null:
+				for candidate: Node in heading_row.find_children("*", "Label", true, false):
+					first_label = candidate as Label
+					break
+			if first_label != null:
+				first_label.text = "%d  %s" % [number, first_label.text]
+			out.append(card)
+	return out
 
 
 ## The guide's live tokens from the real game data (one place, so the panel,
@@ -73,14 +111,14 @@ static func rows() -> Array[Control]:
 	return out
 
 
-static func _entry_row(entry: Dictionary, tokens: Dictionary) -> Control:
+static func _entry_row(entry: Dictionary, tokens: Dictionary, look: Dictionary = {}) -> Control:
 	var column := VBoxContainer.new()
 	column.name = "Entry_%s" % _cell(entry, "entry_id")
 	column.add_theme_constant_override("separation", 10)
 
 	var heading := _cell(entry, "heading_en")
 	if not heading.is_empty():
-		column.add_child(_entry_heading(heading, _cell(entry, "heading_jp")))
+		column.add_child(_entry_heading(heading, _cell(entry, "heading_jp"), look))
 
 	var body := _cell(entry, "body_en")
 	if not body.is_empty():
@@ -104,7 +142,7 @@ static func _entry_row(entry: Dictionary, tokens: Dictionary) -> Control:
 
 ## English heading with the Japanese beside it as a small muted accent
 ## (CLAUDE.md §3), when the row has one.
-static func _entry_heading(english: String, japanese: String) -> Control:
+static func _entry_heading(english: String, japanese: String, look: Dictionary = {}) -> Control:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 14)
 
@@ -113,7 +151,8 @@ static func _entry_heading(english: String, japanese: String) -> Control:
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	label.add_theme_font_size_override("font_size", ENTRY_HEADING_SIZE)
-	label.add_theme_color_override("font_color", ENTRY_HEADING_COLOUR)
+	# The gold heading is for the dark panel; on a card the heading is the card's own ink.
+	label.add_theme_color_override("font_color", ENTRY_HEADING_COLOUR if look.is_empty() else look["ink"])
 	row.add_child(label)
 
 	if not japanese.is_empty():

@@ -71,12 +71,18 @@ func _walk_with_no_save() -> void:
 		return
 	print("  New Game (no save) opened the picker directly, with no warning")
 
-	var row := panel.find_child("Protagonist_PC03", true, false)
-	if row == null:
+	# The mock-up flow (P14b, 2026-11-21): tap the portrait, then Play as.
+	var pick := panel.find_child("Pick_PC03", true, false)
+	if pick == null:
 		_failures.append("the picker does not list PC03")
 		return
-	_scroll_into_view(panel, row)
-	await _click(row.find_child("Choose", true, false) as Control)
+	await _click(pick as Control)
+	await get_tree().create_timer(0.3).timeout
+	var play := panel.find_child("PlayAsButton", true, false)
+	if play == null:
+		_failures.append("the picker has no Play as button after picking PC03")
+		return
+	await _click(play as Control)
 	await get_tree().create_timer(0.2).timeout
 
 	if GameState.protagonist_id != "PC03":

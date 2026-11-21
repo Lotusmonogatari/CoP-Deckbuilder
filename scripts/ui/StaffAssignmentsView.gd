@@ -26,8 +26,9 @@ const BLOCK_USED := Color(0.18, 0.2, 0.26)
 
 ## The rows of the screen. `handlers`: popup(uid), dropped(uid, staff_id),
 ## profile(staff_id), confirm().
-static func rows(handlers: Dictionary) -> Array[Control]:
+static func rows(handlers: Dictionary, with_confirm: bool = true) -> Array[Control]:
 	var out: Array[Control] = []
+	var look := OfficeFrameStyles.look()
 	var members := GameState.staff_members()
 	if GameState.staff_day_pool.is_empty():
 		out.append(UiKit.line(Text.say("assign.no_tasks")))
@@ -60,37 +61,51 @@ static func rows(handlers: Dictionary) -> Array[Control]:
 	for entry: Dictionary in GameState.staff_day_pool:
 		if not given.has(str(entry["uid"])):
 			waiting += 1
-	out.append(UiKit.line(Text.say("assign.date_line", {"date": WeekCalendar.date_label(GameState.staff_day_key), "count": waiting})))
-	out.append(UiKit.line(Text.say("assign.hint")))
+	# The date and how to play it open the tasks card (P14b, 2026-11-20: the screen is cards on the shared frame).
+	var tasks_card := OfficeFrameStyles.card(look, Text.say("assign.tray_heading"))
+	tasks_card.name = "TasksCard"
+	var tasks := tasks_card.get_node("Column") as VBoxContainer
+	tasks.add_child(UiKit.line(Text.say("assign.date_line", {"date": WeekCalendar.date_label(GameState.staff_day_key), "count": waiting})))
+	tasks.add_child(UiKit.line(Text.say("assign.hint"), "SmallLabel"))
+	tasks.add_child(_tray(given, handlers))
+	out.append(tasks_card)
 
 	# How the day's tasks were arranged (the drivers, the maximum) is a working
 	# detail, not shown to the player (Cameron, 2026-11-16); GameState keeps it
 	# in staff_day_reasons and staff_day_max.
 
-	out.append(UiKit.heading(Text.say("assign.items_heading")))
-	out.append(_items_row(handlers))
-	out.append(UiKit.heading(Text.say("assign.office_heading")))
-	out.append(UiKit.line(Text.say("assign.office_hint")))
-	out.append(_office_box(handlers))
-
-	out.append(UiKit.heading(Text.say("assign.tray_heading")))
-	out.append(_tray(given, handlers))
+	var items_card := OfficeFrameStyles.card(look, Text.say("assign.items_heading"))
+	items_card.name = "ItemsCard"
+	items_card.get_node("Column").add_child(_items_row(handlers))
+	out.append(items_card)
+	var office_card := OfficeFrameStyles.card(look, Text.say("assign.office_heading"))
+	office_card.name = "OfficeBoxCard"
+	office_card.get_node("Column").add_child(UiKit.line(Text.say("assign.office_hint"), "SmallLabel"))
+	office_card.get_node("Column").add_child(_office_box(handlers))
+	out.append(office_card)
 
 	out.append(UiKit.heading(Text.say("assign.staff_heading")))
 	for member: Dictionary in members:
 		out.append(_staff_card(member, projection, fits, handlers))
 
-	out.append(UiKit.heading(Text.say("assign.projection_heading")))
+	var projection_card := OfficeFrameStyles.card(look, Text.say("assign.projection_heading"))
+	projection_card.name = "ProjectionCard"
 	for line: String in projection_lines(projection, GameState.staff_day_pool):
-		out.append(UiKit.line(line))
+		projection_card.get_node("Column").add_child(UiKit.line(line))
+	out.append(projection_card)
 
-	var refusal := GameState.staff_confirm_refusal()
-	var confirm := UiKit.action_button(Text.say("assign.confirm"), refusal, handlers["confirm"], 110.0)
-	confirm.name = "ConfirmDayButton"
-	out.append(confirm)
+	if with_confirm:
+		out.append(confirm_button(handlers))
 	if GameState.staff_day_confirmed:
 		out.append(UiKit.line(Text.say("assign.locked_note")))
 	return out
+
+
+## Confirm the day: the button the frame fixes at the foot while the cards scroll (greyed with the reason when it cannot be pressed).
+static func confirm_button(handlers: Dictionary) -> Button:
+	var confirm := UiKit.action_button(Text.say("assign.confirm"), GameState.staff_confirm_refusal(), handlers["confirm"], 110.0)
+	confirm.name = "ConfirmDayButton"
+	return confirm
 
 
 ## The short note under a staff item card: what it does and (for the shelf)
@@ -230,20 +245,13 @@ static func _chip(entry: Dictionary, frame: Color, compact: bool, handlers: Dict
 static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictionary, handlers: Dictionary) -> Control:
 	var staff_id := str(member["staff_id"])
 	var candidate := DataDB.get_staff(staff_id)
-	var panel := PanelContainer.new()
+	# One card for every hired person, in the style's own look (P14b, 2026-11-20).
+	var panel := OfficeFrameStyles.card(OfficeFrameStyles.look())
 	panel.name = "StaffCard_" + staff_id
-	panel.theme = card_theme()
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.1, 0.12, 0.17, 0.96)
-	style.border_color = Color("#2d3344")
-	style.set_border_width_all(2)
-	style.set_corner_radius_all(14)
-	style.set_content_margin_all(12)
-	panel.add_theme_stylebox_override("panel", style)
 
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 14)
-	panel.add_child(row)
+	panel.get_node("Column").add_child(row)
 
 	var portrait := PlaceholderArt.new()
 	portrait.name = "StaffPortrait_" + staff_id
@@ -323,6 +331,8 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 static func card_theme() -> Theme:
 	var theme := Theme.new()
 	theme.set_stylebox("normal", "Label", StyleBoxEmpty.new())
+	# A chip is a dark tile in every style; the words on it stay light even inside a light card (P14b, 2026-11-20).
+	theme.set_color("font_color", "Label", Color(0.93, 0.94, 0.96))
 	return theme
 
 

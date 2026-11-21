@@ -74,6 +74,13 @@ func _walk() -> void:
 
 
 func _click(control: Control) -> void:
+	# The Floor Vote body scrolls (P14b, 2026-11-20): a player scrolls to a control below the fold, so the click does too.
+	var scroll := control.get_parent()
+	while scroll != null and not scroll is ScrollContainer:
+		scroll = scroll.get_parent()
+	if scroll != null:
+		(scroll as ScrollContainer).ensure_control_visible(control)
+		await get_tree().process_frame
 	await get_tree().process_frame
 	var in_window: Vector2 = get_viewport().get_screen_transform() * control.get_global_rect().get_center()
 	for pressed in [true, false]:

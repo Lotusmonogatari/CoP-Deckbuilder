@@ -211,6 +211,17 @@ func _show_lean_choice() -> void:
 	_support_portrait.expression = "neutral"
 	_oppose_portrait.art_id = leader_id
 	_oppose_portrait.expression = "neutral"
+	# The leader's portrait where there is one; else the party's colour disc with the first kanji of its Japanese name.
+	for portrait: Control in [_support_portrait, _oppose_portrait]:
+		var existing := portrait.get_parent().get_node_or_null("Disc")
+		if existing != null:
+			existing.free()
+		portrait.visible = true
+		if not PartyDiscView.has_portrait(leader_id):
+			portrait.visible = false
+			var disc := PartyDiscView.build(own_party, 160.0)
+			portrait.get_parent().add_child(disc)
+			portrait.get_parent().move_child(disc, 0)
 	_lean_row.visible = true
 
 
@@ -238,7 +249,7 @@ func _on_lean_chosen(lean: String) -> void:
 
 	_lean_row.visible = false
 	# The stance chips below replace the card's For it / Against it rows.
-	var sides := _lean_row.get_parent().get_node_or_null("BillSides")
+	var sides := find_child("BillSides", true, false)
 	if sides != null:
 		sides.free()
 	_stance_note().text = StanceLines.stance_line()
@@ -284,6 +295,10 @@ func _stance_note() -> Label:
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		note.visible = false
+		# On a plate in the style's card colour and ink, so it reads over the room picture (P14b, 2026-11-20).
+		var look := OfficeFrameStyles.look()
+		note.add_theme_stylebox_override("normal", LevelBriefingStyles.card_box(look))
+		note.add_theme_color_override("font_color", look["ink"])
 		_lean_row.get_parent().add_child(note)
 		_lean_row.get_parent().move_child(note, _lean_row.get_index())
 	return note
@@ -297,6 +312,10 @@ func _stance_note() -> Label:
 ## for and against it, and a "Read the bill" button for the full page.
 func _show_bill_card() -> void:
 	var column := _lean_row.get_parent()
+	# The bill is a card in the style's own look (P14b, 2026-11-20): its name, what it does, and who is for and against it.
+	var look := OfficeFrameStyles.look()
+	var panel := OfficeFrameStyles.card(look)
+	panel.name = "BillCardPanel"
 	var card := VBoxContainer.new()
 	card.name = "BillCard"
 	var title := UiKit.heading(str(_bill.get("bill_name", "")))
@@ -306,9 +325,12 @@ func _show_bill_card() -> void:
 	if not description.is_empty():
 		var line := UiKit.line(description)
 		line.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		line.custom_minimum_size.x = 0.0
 		card.add_child(line)
-	column.add_child(card)
-	column.move_child(card, _stance_note().get_index())
+	title.custom_minimum_size.x = 0.0
+	panel.get_node("Column").add_child(card)
+	column.add_child(panel)
+	column.move_child(panel, _stance_note().get_index())
 
 	var sides := BillStance.sides(_bill, DataDB.law_effects, GameState._party_tier_booster_ids())
 	var box := VBoxContainer.new()
@@ -324,8 +346,7 @@ func _show_bill_card() -> void:
 		chips.alignment = FlowContainer.ALIGNMENT_CENTER
 		box.add_child(chips)
 	if box.get_child_count() > 0:
-		column.add_child(box)
-		column.move_child(box, _stance_note().get_index() + 1)
+		card.add_child(box)   # inside the bill card, under what it does
 	else:
 		box.free()
 	_add_read_button()
@@ -340,6 +361,7 @@ func _add_read_button() -> void:
 	button.text = Text.say("level_intro.read_bill")
 	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	button.pressed.connect(_open_dossier)
+	ConversationStyles.dress_button(button, OfficeFrameStyles.look(), false)
 	column.add_child(button)
 	column.move_child(button, _lean_row.get_index())
 

@@ -1600,3 +1600,72 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Data | Parties tab: Short Name and Japanese Name. UI Styles: `scrim`, `alarm`, `scrim_alpha`. Text: 20 rows. |
 | Not built (P14b or later) | One card per promise, the redrawn bill card, the stacked Vote Projections, the staff speech card on a forced move. Left out on purpose: each answer's rhetorical style (Cameron to decide). |
 | Where | Report with pictures: `design/review/p14_remaining_screens_2026-11-20/REPORT.md`; plan: `design/proposals/P14_PLAN_2026-11-20.md`. |
+
+## 2026-11-20: The Floor Vote built to the mock-up (P14b, Cameron: "Build the mock up")
+
+| Part | What changed |
+|---|---|
+| Layout | Under the party discs the Floor Vote is now cards in the style's own look: the bill card (its name, what it does, the rule it must pass by, whether your influence can sway others), the Vote Projections card (one bar for each choice), the stance card when you lean, a research and whip note card, and one row of three actions (Influence Status, Vote Intention Research, Whip Details). The vote buttons stay fixed at the foot. |
+| Unchanged | The engine, every number and every sentence. The gold-ruled blocks and the grey veil are gone; the cards carry their own ground. |
+| Likely outcome | Each projection shows the choice at the left and "Likely Passes" or "Likely Fails" at the right, green when the bill passes and red when it fails (Cameron). The words carry the meaning too. New Text row `floor_vote.projection_result`. |
+| Actions | The row of three actions sits on its own card right under the bill, above the projections (Cameron: moved up); the research and whip notes close the body. |
+| Not built | The mock-up's colour legend under the bars (it needs new wording). |
+| Where | Pictures: `design/review/p14_remaining_screens_2026-11-20/img/floor_vote_cards_*.png`; side-by-side with the old: `floor_vote_projections_side_by_side.png`. |
+
+## 2026-11-20: P14b commit 1: Staff Assignments, the staff profile and Rhetoric Training (Cameron: Go)
+
+| Part | What changed |
+|---|---|
+| Staff Assignments | On the shared Office frame (place and hours as chips). Section cards: Today's tasks (date, how to play, the tray), Items for your staff, Office box, one card for **every hired person** (picture, role and rank, Loyalty, the 8-block bar, the box tasks are dropped into), and "If you confirm". Confirm is fixed in the frame's foot and greyed with its reason. Task and item chips stay dark tiles in every style. |
+| Staff profile | On the frame as cards: identity (picture, role, flavor, hiring cost, biography), Loyalty and pay with Raise pay and Thank, Bonuses by rank, and one actions card where **Fire is last, drawn in the fall colour**. Hire for a candidate. |
+| Rhetoric Training | Already cards on the frame from P13. It now names a coaching coupon you hold (the coupon is redeemed from your items for a free session; the spec's line "your next session is free" would have said something the game does not do, so the Text row is reworded). |
+| Tests | `tests/test_group4_staff.gd` (3): every hired person has a card and Confirm is in the foot, the profile's cards with Fire last, the coupon note. No click test changed. |
+
+## 2026-11-20: P14b commit 2: Your Deck, the card offer, the card look and the inventory sheet (Cameron: Go)
+
+| Part | What changed |
+|---|---|
+| Your Deck | The tab shows a chip for each suit with how many of its cards are in the deck being built, a switch between **In your deck** and **Collection** (the Collection, every card you own with the ones left out dimmed, is the default, as before), and the cards in two columns. Each tile is the pick-or-drop button with its cost, the effect, and View. Three Text rows: `deck.filter_deck`, `deck.filter_all`, `deck.suit_chip`. |
+| Card offer | A pop-up card: "Your coach suggests" in the header, the 1/3 counter, the card's two faces, Pass (while it is not the last look) above Learn it. |
+| Card look | A pop-up card with the card's name, its Japanese name as a muted line, and both faces. |
+| Inventory | The picked item's details are a bottom sheet over the grid, with Use (greyed with its reason) and Close; the same view in the Office and the battle. |
+| Tests | `tests/test_group5_cards.gd` (4). No click test changed. |
+
+## 2026-11-20: P14b commit 3: Travel, Draft a Bill, a bill to carry, the law detail, the party detail and the promises (Cameron: Go)
+
+| Part | What changed |
+|---|---|
+| Travel | The confirm after a tap on the train strip is a **bottom sheet** (the cost, what is left, the promise and crisis-level warnings, Take the trip, Stay here) with a new **All trips** button. All trips opens the full **Travel page** (Cameron: the page too): where you are and the hours left, then the other office with what waits there and one button for each way you can go (rail pass, paid ticket, car, plane), each greyed with its reason. The strip and the mode row on the Office are unchanged. |
+| Draft a Bill | On the frame: Your bill (each part removable, the hearing committee), If it passes (the vote, the influence it needs, the effects, the extra visit), Add a part from (organizations, then one organization's parts). **Draft** is fixed in the foot, greyed with its reason. |
+| A bill to carry | A pop-up card: the organization's icon and what it asks, the vote and your party's position, the rewards, the amend options in the body; **Carry** filled and **Decline** (with its cost) last. |
+| Law detail | A pop-up card whose tag is the outcome: PASSED in green or FAILED in red. |
+| Party detail | On the frame: a band in the party's colour, its seats and leader (two Text rows), how it sees you, then Allies and Rivals as cards. Rival bars are the card's ink (white on the old dark panel would vanish on a light card): `office_menus_driver.gd` now expects that. |
+| Promises | One tile for each promise: what and for whom, the time left (in the fall colour when it is close), the office, Keep. |
+| Text | `travel.page_title`, `travel.where_title`, `travel.all_trips`, `party_opinion.seats_line`, `party_opinion.seats_line_no_leader`. |
+| Tests | `tests/test_group6_bills_travel.gd` (6). One click test changed on purpose (`office_menus_driver.gd`, the rival bar colour). |
+
+## 2026-11-20: P14b commit 4: Appearance and Music, How to Play, Characters and New Game (Cameron: Go)
+
+| Part | What changed |
+|---|---|
+| Appearance and Music | On the shared frame (Funds and XP chips): one card for each package still to buy (picture, name and price, description, Buy), then one card for each slot with its owned options. The equipped option is **filled** in the accent colour. |
+| How to Play | On the frame: the group names, then one numbered card for each entry with its picture or video slot. Used from the title screen, the Office and the battle. |
+| Characters | On the frame: a card for Opponents and one for Visitors, the names in **two columns**, each with the character's colour as a thick left edge; people not met yet are dimmed as 誰ですか。 |
+| New Game | On the frame: the Pressure and Theme strips in one card, then one card for each champion with its Choose button in the accent colour. **Not built:** the spec's pick-a-portrait-then-"Play as {name}" flow and three-way switches. That would change how a run starts, and you tuned the swipe strips and the Choose buttons recently, so I kept them; tell me if you want the new flow. |
+| Tests | `tests/test_group7_reference.gd` (4). No click test changed. |
+
+## 2026-11-20: P14b commit 5: the level intro's bill card (Cameron: yes, redraw it)
+
+| Part | What changed |
+|---|---|
+| Bill card | The bill's name, what it does and who is for and against it are one card in the style's own look, with the stance note on a plate under it, so none of it sits as thin text on the room picture (it overlapped itself at some sizes before). Read the Bill and Let's go are dressed like every other choice. |
+| Party disc | The two lean buttons show the party leader's portrait where one is in the assets, else a round colour disc with the first kanji of the party's Japanese name and its English initials. `PartyDiscView` is shared with the Floor Vote's party strip. |
+
+## 2026-11-21: New Game built to the mock-up (Cameron: "Use the mock up version")
+
+| Part | What changed |
+|---|---|
+| Flow | The four champions are a row of portraits; tapping one shows that champion's card (name, party, district and office, blurb, starting numbers in two columns). **Political Pressure** and **Theme** are three-way switches under it. **Play as {name}** is fixed in the foot and starts the run. Before, each champion had a card with its own Choose button, and the two choices were swipe strips. |
+| Behavior kept | Choosing a theme still tries it at once and reopens this screen; the picked champion is remembered across that restyle. Backing out works as before (a first launch plays the default champion). |
+| Text | `new_game.district_line` ("{district} · office in {office}"). |
+| Tests | `new_game_driver.gd` and `intro_driver.gd` changed on purpose (tap the portrait, then Play as); `tests/test_group7_reference.gd` checks the portraits, the picked card, Play as in the foot and the switches. |

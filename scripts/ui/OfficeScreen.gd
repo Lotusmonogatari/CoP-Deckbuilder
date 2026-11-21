@@ -29,6 +29,7 @@ var _standing_panel: Overlay = null
 var _chosen_level: Dictionary = {}
 ## Two offices (2026-11-20): the trip button under "Choose a level", and the popup that states a trip's cost first.
 var _travel_button: TravelStrip
+var _travel_page_panel: Overlay
 var _travel_panel: Overlay
 var _travel_card: TravelCard
 ## The mode the strip is set to (the rail pass or a paid ticket: both are pulled), and the mode the popup is about.
@@ -1196,17 +1197,35 @@ func _show_promises() -> void:
 	var rows: Array[Control] = []
 	if GameState.promises.is_empty():
 		rows.append(UiKit.line(Text.say("promises.none")))
+	var look := OfficeFrameStyles.look()
 	for promise: Dictionary in GameState.promises:
-		rows.append(UiKit.line(Text.say("promises.row", {"what": GameState.promise_what(promise),
-			"who": GameState.promise_who(promise), "count": Promises.hours_left(promise, GameState.time_units)})))
+		# One tile for each promise (P14b, 2026-11-20): what and for whom, the time left (in the fall colour when it is close),
+		# the office it can be kept at, and Keep, greyed with its reason when it cannot be kept yet.
+		var tile := PanelContainer.new()
+		tile.name = "PromiseTile_" + str(promise.get("id", ""))
+		tile.add_theme_stylebox_override("panel", LevelBriefingStyles.tile_box(look))
+		tile.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var inside := VBoxContainer.new()
+		inside.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(6.0)))
+		tile.add_child(inside)
+		var hours_left := Promises.hours_left(promise, GameState.time_units)
+		var due := UiKit.line(Text.say("promises.row", {"what": GameState.promise_what(promise),
+			"who": GameState.promise_who(promise), "count": hours_left}))
+		due.custom_minimum_size.x = 0.0
+		inside.add_child(due)
+		if hours_left <= Levers.whole("travel_promise_warning_hours"):
+			due.add_theme_color_override("font_color", look["down"])
 		# Where it can be kept (two offices, 2026-11-20): a badge for a promise tied to one office.
 		var promise_office := Offices.normalize(promise.get("location"))
 		if promise_office != Offices.EITHER:
-			rows.append(UiKit.line(Text.say("promises.badge", {"place": TravelText.place_name(promise_office)}), "SmallLabel"))
+			var badge := UiKit.line(Text.say("promises.badge", {"place": TravelText.place_name(promise_office)}), "SmallLabel")
+			badge.custom_minimum_size.x = 0.0
+			inside.add_child(badge)
 		var keep := UiKit.action_button(Text.say("promises.keep"), GameState.promise_keep_refusal(promise),
 			_on_keep_promise.bind(str(promise.get("id", ""))), 100.0)
 		keep.name = "Keep_" + str(promise.get("id", ""))
-		rows.append(keep)
+		inside.add_child(keep)
+		rows.append(tile)
 	_promises_panel.open_card({"tag": Text.say("popup.tag_promises"), "title": Text.say("promises.title"), "body": rows})
 
 
@@ -1616,6 +1635,15 @@ func _show_rhetoric_training() -> void:
 ## The Rhetoric Training tab: the blurb, then one card for each training session. (XP and Funds are chips now.)
 func _rhetoric_cards(look: Dictionary) -> Array[Control]:
 	var rows: Array[Control] = [_ground_line(Text.say("rhetoric.blurb"), look)]
+	# A coupon the player holds is named here (P14b, 2026-11-20): it is redeemed from the items, not taken off a price below.
+	for coupon: Dictionary in DataDB.shop:
+		var held := GameState.item_count(str(coupon.get("item_id", ""))) if coupon.get("free_card_tier") != null else 0
+		if held > 0:
+			var note := OfficeFrameStyles.card(look)
+			note.name = "CouponNote_" + str(coupon.get("item_id", ""))
+			note.get_node("Column").add_child(UiKit.line(Text.say("rhetoric.coupon_line",
+				{"count": held, "tier": int(coupon.get("free_card_tier", 0))})))
+			rows.append(note)
 	for item: Dictionary in DataDB.shop:
 		if item.get("card_tier") != null:
 			var card := OfficeFrameStyles.card(look)
@@ -1830,78 +1858,175 @@ func _adopt_chosen_style() -> void:
 ## The four protagonists (data/player.json), each with a portrait and a
 ## button. `first_run` is the very first launch: backing out of it still
 ## leaves the player as the default protagonist, so there is a run to save.
+## Who is picked on the New Game screen ("" = the first champion). Static, so it survives the restyle that reloads the Office
+## when a theme is tried on this screen.
+static var _new_game_pick := ""
+
+
+## The New Game screen as the mock-up has it (P14b, 2026-11-21, Cameron: "use the mock up version"): the four champions as a
+## row of portraits, the picked one's card (party, district, blurb, starting numbers), Political Pressure and Theme as
+## three-way switches, and Play as {name} fixed in the foot. Tapping a portrait picks; Play as starts the run.
 func _show_new_game(first_run: bool) -> void:
 	# The New Game screen's button outlines are the gold of the title screen, not the old run's party colour.
 	Layout.set_outline_override(CueBanner.EDGE_COLOUR, true)
-	var rows: Array[Control] = [UiKit.line(Text.say("new_game.blurb"))]
-	# Campaign Pressure (Difficulty.gd) on the left and the display theme on the right, each a strip of
-	# square buttons to swipe through. Difficulty is raised later in Administration; the theme is free here.
+	var look := OfficeFrameStyles.look()
+	var picked := _picked_protagonist()
+	var picked_id := str(picked.get("player_id", ""))
+	var rows: Array[Control] = [_ground_line(Text.say("new_game.blurb"), look)]
+	rows.append(_champion_portraits(first_run, look, picked_id))
+
+	var card := OfficeFrameStyles.card(look)
+	card.name = "NewGameCard_" + picked_id
+	card.get_node("Column").add_child(_champion_card(picked))
+	rows.append(card)
+
+	# Campaign Pressure (Difficulty.gd) and the display theme, each a three-way switch. Difficulty is raised later in
+	# Administration; the theme is free here.
 	var tiers: Array = []
 	for tier: String in Difficulty.TIERS:
 		tiers.append([tier, _pressure_name(tier)])
 	var styles: Array = []
 	for style: String in UiStyles.ALL:
 		styles.append([style, _style_name(style)])
-	var pair := HBoxContainer.new()
-	pair.name = "ChoiceStrips"
-	pair.add_theme_constant_override("separation", 20)
-	pair.add_child(_swipe_strip("PressureStrip", Text.say("new_game.pressure_heading"), tiers,
-		_pending_pressure, _on_pressure_picked.bind(first_run)))
-	pair.add_child(_swipe_strip("ThemeStrip", Text.say("new_game.theme_heading"), styles,
-		_chosen_style(), _on_theme_picked.bind(first_run)))
-	rows.append(pair)
-	for protagonist: Dictionary in DataDB.protagonists:
-		rows.append(_protagonist_row(protagonist))
-	_new_game_panel.open(Text.say("new_game.title"), rows)
+	var switches := OfficeFrameStyles.card(look)
+	switches.name = "NewGameStripsCard"
+	var column := switches.get_node("Column") as VBoxContainer
+	column.add_child(_switch_row("PressureStrip", Text.say("new_game.pressure_heading"), tiers,
+		_pending_pressure, _on_pressure_picked.bind(first_run), look))
+	column.add_child(_switch_row("ThemeStrip", Text.say("new_game.theme_heading"), styles,
+		_chosen_style(), _on_theme_picked.bind(first_run), look))
+	rows.append(switches)
+
+	var play := UiKit.action_button(Text.say("new_game.choose", {"name": picked.get("name_en", picked_id)}), "",
+		_on_protagonist_chosen.bind(picked_id), OfficeFrameStyles.touch_height())
+	play.name = "PlayAsButton"
+	ConversationStyles.dress_button(play, look, true)
+	var frame := OfficeScreenFrame.new()
+	frame.setup({"title": Text.say("new_game.title"), "subtitle": "", "chips": [], "rows": rows, "footer": play})
+	_new_game_panel.open_frame(frame, Text.say("ui.back"))
 	if first_run and not _new_game_panel.closed.is_connected(_on_first_run_closed):
 		_new_game_panel.closed.connect(_on_first_run_closed)
 	if not first_run and not _new_game_panel.closed.is_connected(_on_new_game_dismissed):
 		_new_game_panel.closed.connect(_on_new_game_dismissed)
 
 
-func _protagonist_row(protagonist: Dictionary) -> Control:
-	var player_id := str(protagonist.get("player_id", ""))
+## The champion on show: the one tapped, else the first in the data.
+func _picked_protagonist() -> Dictionary:
+	for protagonist: Dictionary in DataDB.protagonists:
+		if str(protagonist.get("player_id", "")) == _new_game_pick:
+			return protagonist
+	return DataDB.protagonists[0] if not DataDB.protagonists.is_empty() else {}
+
+
+## The four champions as a row of portraits; the picked one has the accent border.
+func _champion_portraits(first_run: bool, look: Dictionary, picked_id: String) -> Control:
 	var row := HBoxContainer.new()
-	row.name = "Protagonist_" + player_id
-	row.add_theme_constant_override("separation", 20)
+	row.name = "ChampionRow"
+	row.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
+	for protagonist: Dictionary in DataDB.protagonists:
+		var player_id := str(protagonist.get("player_id", ""))
+		var button := Button.new()
+		button.name = "Pick_" + player_id
+		button.toggle_mode = true
+		button.button_pressed = player_id == picked_id
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.custom_minimum_size = Vector2(0, 360)
+		button.tooltip_text = str(protagonist.get("name_en", player_id))
+		for state: String in ["normal", "hover", "pressed", "hover_pressed", "focus", "disabled"]:
+			var selected := player_id == picked_id
+			var box := StyleBoxFlat.new()
+			box.bg_color = look["tile"]
+			box.set_border_width_all(int(OfficeFrameStyles.len_px(6.0 if selected else 1.0)))
+			box.border_color = look["accent"] if selected else look["muted"]
+			box.set_content_margin_all(4)
+			if look["living"]:
+				box.set_corner_radius_all(int(OfficeFrameStyles.len_px(12.0)))
+			button.add_theme_stylebox_override(state, box)
+		var portrait := PlaceholderArt.new()
+		portrait.name = "Portrait"
+		portrait.trim_margins = true
+		portrait.kind = PlaceholderArt.Kind.CHARACTER
+		portrait.art_id = player_id
+		portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		portrait.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		portrait.offset_left = 6.0
+		portrait.offset_right = -6.0
+		portrait.offset_top = 6.0
+		portrait.offset_bottom = -6.0
+		button.add_child(portrait)
+		button.pressed.connect(Haptics.confirm)
+		button.pressed.connect(_on_champion_picked.bind(player_id, first_run))
+		row.add_child(button)
+	return row
 
-	var portrait := PlaceholderArt.new()
-	# All four stand the same height: cropped to the figure and held to a fixed box, not stretched to the row.
-	portrait.custom_minimum_size = Vector2(200, 340)
-	portrait.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-	portrait.trim_margins = true
-	portrait.kind = PlaceholderArt.Kind.CHARACTER
-	portrait.art_id = player_id
-	row.add_child(portrait)
 
+func _on_champion_picked(player_id: String, first_run: bool) -> void:
+	_new_game_pick = player_id
+	_show_new_game.call_deferred(first_run)
+
+
+## The picked champion's card: name, party, district and office, what they are like, and the numbers they open with.
+func _champion_card(protagonist: Dictionary) -> Control:
+	var player_id := str(protagonist.get("player_id", ""))
 	var box := UiKit.tight_column()
-	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(box)
-	var name_line := UiKit.heading(str(protagonist.get("name_en", player_id)))
-	box.add_child(name_line)
+	box.name = "Protagonist_" + player_id
+	box.add_child(UiKit.heading(str(protagonist.get("name_en", player_id))))
 	var name_jp := str(protagonist.get("name_jp", ""))
 	if not name_jp.is_empty():
 		box.add_child(UiKit.line(name_jp, "JapaneseAccent"))
 	var party := PartyDisplay.party_name(protagonist)
-	var party_label := UiKit.line(
-		party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel")
+	var party_label := UiKit.line(party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel")
 	if not party.is_empty():
 		PartyLabel.apply(party_label, DataDB.get_party(party))
 	box.add_child(party_label)
+	var district := str(protagonist.get("district_name", "")) if protagonist.get("district_name") != null else ""
+	var office := str(protagonist.get("district_office", "")) if protagonist.get("district_office") != null else ""
+	if not district.is_empty():
+		box.add_child(UiKit.line(Text.say("new_game.district_line", {"district": district, "office": office}), "SmallLabel"))
 	var blurb := str(protagonist.get("blurb", ""))
 	if not blurb.is_empty():
-		box.add_child(UiKit.line(blurb, "SmallLabel"))
+		box.add_child(UiKit.line(blurb))
 	box.add_child(UiKit.line(Text.say("new_game.starting_stats"), "SmallLabel"))
+	var grid := GridContainer.new()
+	grid.name = "StartingNumbers"
+	grid.columns = 2
+	grid.add_theme_constant_override("h_separation", int(OfficeFrameStyles.len_px(16.0)))
 	for line: String in _starting_stat_lines(protagonist):
-		box.add_child(UiKit.line(line, "SmallLabel"))
-	for label: Label in box.get_children().filter(func(n: Node) -> bool: return n is Label):
-		label.custom_minimum_size.x = UiKit.LINE_WIDTH - 220.0
+		var cell := UiKit.line(line, "SmallLabel")
+		cell.custom_minimum_size.x = 0.0
+		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		grid.add_child(cell)
+	box.add_child(grid)
+	return box
 
-	var choose := UiKit.action_button(Text.say("new_game.choose",
-		{"name": protagonist.get("name_en", player_id)}), "", _on_protagonist_chosen.bind(player_id))
-	choose.name = "Choose"
-	box.add_child(choose)
-	return row
+
+## A heading over a row of toggle buttons, the chosen one filled: three ways to switch between. The buttons keep the names
+## "<strip>_<id>" so a click finds them as it always did.
+func _switch_row(strip_name: String, heading: String, entries: Array, selected: String, on_pick: Callable, look: Dictionary) -> Control:
+	var column := VBoxContainer.new()
+	column.name = strip_name
+	column.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(6.0)))
+	var title := UiKit.heading(heading)
+	title.custom_minimum_size.x = 0.0
+	column.add_child(title)
+	var strip := HBoxContainer.new()
+	strip.name = "Squares"
+	strip.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
+	column.add_child(strip)
+	for entry: Array in entries:
+		var button := Button.new()
+		button.name = "%s_%s" % [strip_name, str(entry[0])]
+		button.text = str(entry[1])
+		button.toggle_mode = true
+		button.button_pressed = str(entry[0]) == selected
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.pressed.connect(Haptics.confirm)
+		button.pressed.connect(on_pick.bind(str(entry[0])))
+		ConversationStyles.dress_button(button, look, str(entry[0]) == selected)
+		button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+		strip.add_child(button)
+	return column
 
 
 ## Constituency support, Reputation, Funds, Party support and XP this
@@ -2094,27 +2219,56 @@ func _show_party_detail(party_id: String) -> void:
 	var detail := GameState.party_opinion_detail(party_id)
 	var groups := PartyAllies.groups(detail["contributions"])
 	var names := BattleSetup.booster_names()
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = []
 
-	var rows: Array[Control] = [UiKit.line(Text.say("party_opinion.popup_blurb"), "SmallLabel")]
+	# --- the party card (P14b, 2026-11-20): a band in its colour, its seats and leader, and how it sees you
+	var head := OfficeFrameStyles.card(look)
+	head.name = "PartyHeadCard"
+	var head_column := head.get_node("Column") as VBoxContainer
+	var band := ColorRect.new()
+	band.name = "PartyBand"
+	band.color = colour
+	band.custom_minimum_size = Vector2(0, 14)
+	head_column.add_child(band)
+	var leader_id := str(party.get("leader_opp_id", "")) if party.get("leader_opp_id") != null else ""
+	var leader := str(DataDB.get_opponent(leader_id).get("name", "")) if not leader_id.is_empty() else ""
+	var seats := int(party.get("seats", 0)) if party.get("seats") != null else 0
+	head_column.add_child(UiKit.line(Text.say("party_opinion.seats_line" if not leader.is_empty() else "party_opinion.seats_line_no_leader",
+		{"count": seats, "leader": leader}), "HeaderLabel"))
+	var opinion := UiKit.line(Text.say("party_opinion.line", {"score": detail["opinion"], "band": _band_word(str(detail["band"]))}))
+	head_column.add_child(opinion)
+	var held := int(detail["stakeholder"])
+	head_column.add_child(UiKit.line(Text.say("party_opinion.detail", {"direct": detail["direct"],
+		"stakeholder": "—" if held == PartyOpinion.NO_SCORE else str(held)}), "SmallLabel"))
+	rows.append(head)
+	rows.append(_ground_line(Text.say("party_opinion.popup_blurb"), look))
+
+	# --- Allies, then Rivals, one card each
 	for group in ["allies", "rivals"]:
 		var is_ally: bool = group == "allies"
-		var heading := UiKit.heading(Text.say(
+		var card := OfficeFrameStyles.card(look, Text.say(
 			"party_opinion.allies_heading" if is_ally else "party_opinion.rivals_heading"))
-		if is_ally:
-			PartyLabel.apply(heading, party)
-		rows.append(heading)
-		rows.append(UiKit.line(Text.say(
+		card.name = "PartyAllies" if is_ally else "PartyRivals"
+		var column := card.get_node("Column") as VBoxContainer
+		column.add_child(UiKit.line(Text.say(
 			"party_opinion.allies_blurb" if is_ally else "party_opinion.rivals_blurb"), "SmallLabel"))
 		if (groups[group] as Array).is_empty():
-			rows.append(UiKit.line(Text.say("party_opinion.none")))
+			column.add_child(UiKit.line(Text.say("party_opinion.none")))
 		for entry: Dictionary in groups[group]:
-			rows.append(_ally_row(entry, names, colour if group == "allies" else Color.WHITE))
-	_party_detail_panel.open(str(party.get("name", party_id)), rows)
-	# Panels draw in the order they were added, and the Parties page was just
-	# moved to the front by its menu: put the popup above it.
+			column.add_child(_ally_row(entry, names, colour if is_ally else look["ink"]))
+		rows.append(card)
+
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": str(party.get("name", party_id)),
+		"subtitle": str(party.get("japanese_name", "")) if party.get("japanese_name") != null else "",
+		"chips": [],
+		"rows": rows,
+	})
+	_party_detail_panel.open_frame(frame, Text.say("ui.back"))
+	# Panels draw in the order they were added, and the Parties page was just moved to the front by its menu: put this above it.
 	move_child(_party_detail_panel, get_child_count() - 1)
-	_party_detail_panel.get_node("Margin/Scroll/Centre/Column/Heading").add_theme_color_override(
-		"font_color", colour)
 
 
 ## One organisation in the popup: its name and standing, the favorability tag,
@@ -2282,17 +2436,15 @@ func _show_law(law: Dictionary) -> void:
 	var passed := bool(law.get("passed", false))
 	var rows: Array[Control] = []
 
-	var marker := UiKit.heading(Text.say(
-		"record.law_marker_passed" if passed else "record.law_marker_failed"))
-	marker.add_theme_color_override("font_color",
-		VoteMeter.PASS_COLOUR if passed else VoteMeter.FAIL_COLOUR)
-	rows.append(marker)
+	# The PASSED or FAILED marker is the pop-up card's kind tag (P14b, 2026-11-20): green or red, and the word says it too.
+	var marker_text := Text.say("record.law_marker_passed" if passed else "record.law_marker_failed")
+	var marker_kind := PopupCardStyles.GOOD if passed else PopupCardStyles.ALARM
 
 	# A limited entry (2026-11-12, Cameron): passed or failed, and a note that
 	# stakeholders saw the player's absence. No tally and no "you voted" line.
 	if bool(law.get("absent", false)):
 		rows.append(UiKit.line(Text.say("record.law_absent_note")))
-		_law_panel.open(str(bill.get("bill_name", bill_id)), rows)
+		_law_panel.open_card({"tag": marker_text, "tag_kind": marker_kind, "title": str(bill.get("bill_name", bill_id)), "body": rows})
 		move_child(_law_panel, get_child_count() - 1)
 		return
 
@@ -2348,7 +2500,7 @@ func _show_law(law: Dictionary) -> void:
 	if not any_effect:
 		rows.append(UiKit.line(Text.say("record.law_no_effects")))
 
-	_law_panel.open(str(bill.get("bill_name", bill_id)), rows)
+	_law_panel.open_card({"tag": marker_text, "tag_kind": marker_kind, "title": str(bill.get("bill_name", bill_id)), "body": rows})
 	move_child(_law_panel, get_child_count() - 1)   # above Your Record
 
 
@@ -2684,8 +2836,10 @@ func _menu_button(button_name: String, text_key: String, opener: Callable,
 ## three slots (Outfit / Office Background / Music) is equipped
 ## independently from anything owned, per CosmeticPieces.gd.
 func _show_cosmetics() -> void:
-	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("office.cosmetics_blurb")))
+	# Appearance and Music on the shared frame (P14b, 2026-11-20): one card for each package still to buy, then one card for each
+	# slot with its owned options, the equipped one filled.
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = [_ground_line(Text.say("office.cosmetics_blurb"), look)]
 
 	for package: Dictionary in DataDB.cosmetic_packages:
 		# An Office style is unlocked on the Marketplace's Office styles tab only; this panel switches
@@ -2693,17 +2847,47 @@ func _show_cosmetics() -> void:
 		if CosmeticPieces.has_piece(package, CosmeticPieces.UI_STYLE):
 			continue
 		if not GameState.owned_cosmetic_packages.has(str(package.get("package_id", ""))):
-			rows.append(_cosmetic_package_row(package))
+			var package_card := OfficeFrameStyles.card(look)
+			package_card.name = "CosmeticCard_" + str(package.get("package_id", ""))
+			var package_row := _cosmetic_package_row(package)
+			package_card.get_node("Column").add_child(package_row)
+			for button: Node in package_row.find_children("*", "Button", true, false):
+				_dress_option_button(button as Button, look)
+			rows.append(package_card)
 
 	if not GameState.owned_cosmetic_packages.is_empty():
-		rows.append(UiKit.heading(Text.say("office.cosmetics_owned_heading")))
 		for slot: String in CosmeticPieces.SLOTS:
 			if not _owns_any_piece_for(slot):
 				continue
-			rows.append(UiKit.line(_cosmetics_slot_label(slot), "SmallLabel"))
-			rows.append(_cosmetics_slot_row(slot))
+			var slot_card := OfficeFrameStyles.card(look, _cosmetics_slot_label(slot))
+			slot_card.name = "CosmeticSlotCard_" + slot
+			var slot_row := _cosmetics_slot_row(slot)
+			slot_card.get_node("Column").add_child(slot_row)
+			for button: Node in slot_row.get_children():
+				_dress_option_button(button as Button, look)
+			rows.append(slot_card)
 
-	_cosmetics_panel.open(Text.say("office.cosmetics"), rows)
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("office.cosmetics"),
+		"subtitle": "",
+		"chips": [Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}), Text.say("office.xp", {"count": GameState.xp})],
+		"rows": rows,
+	})
+	_cosmetics_panel.open_frame(frame, Text.say("ui.back_office"))
+
+
+## An option button of a card: outlined in the card's ink; the equipped one (disabled, with its name and "Equipped") is filled.
+func _dress_option_button(button: Button, look: Dictionary) -> void:
+	if button == null:
+		return
+	if button.disabled and button.text.contains(Text.say("office.cosmetics_active")):
+		ConversationStyles.dress_button(button, look, true)
+		button.add_theme_stylebox_override("disabled", button.get_theme_stylebox("normal"))
+		button.add_theme_color_override("font_disabled_color", look["on_accent"])
+		button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+		return
+	_dress_profile_button(button, look)
 
 
 func _cosmetic_package_row(package: Dictionary) -> Control:
@@ -3120,18 +3304,19 @@ func _show_card_offer() -> void:
 	counter.name = "LookCounter"
 	counter.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
-	var rows: Array[Control] = [counter]
+	# A pop-up card (P14b, 2026-11-20): "Your coach suggests" and the counter in the header, the card's two faces in the body,
+	# and at the foot Pass (only while it is not the draw's last look) above Learn it, which the card always places last.
+	var rows: Array[Control] = [counter]   # "2/3": which look of the draw this is
 	rows.append_array(faces)
-	# Pass only while it is not the draw's last look. It sits above Learn it,
-	# which the panel always places last.
+	var foot: Array[Control] = []
 	if GameState.can_pass_offered_card():
 		var pass_button := Button.new()
 		pass_button.name = "Pass"
 		pass_button.text = Text.say("rhetoric.pass")
 		pass_button.custom_minimum_size = Vector2(0, 110)
 		pass_button.pressed.connect(_on_pass_card)
-		rows.append(pass_button)
-	_card_reveal_panel.open(Text.say("rhetoric.offer_title"), rows,
+		foot.append(pass_button)
+	_card_reveal_panel.open_card({"tag": Text.say("rhetoric.offer_title"), "body": rows, "buttons": foot},
 		Text.say("rhetoric.learn", {"price": _offer_price_text(
 			DataDB.get_shop_item(str(draw.get("item_id", ""))))}))
 
@@ -3189,8 +3374,12 @@ func _show_card_look(card_id: String) -> void:
 	if card.is_empty():
 		return
 	var rows: Array[Control] = []
+	# The Japanese name sits beside the English one as a muted line (Standard 6).
+	var japanese := str(card.get("name_jp", "")) if card.get("name_jp") != null else ""
+	if not japanese.is_empty():
+		rows.append(UiKit.line(japanese, "SmallLabel"))
 	rows.append_array(_card_faces(card, CARD_LOOK_CHROME))
-	_card_look_panel.open(str(card.get("name_en", card_id)), rows)
+	_card_look_panel.open_card({"title": str(card.get("name_en", card_id)), "body": rows})
 
 
 ## The deck: which of the cards you own are going in.
@@ -3212,7 +3401,13 @@ func _deck_refusal() -> String:
 	return Ledger.deck_refusal(_draft_deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
 
 
-## The Your Deck tab: how many are chosen, the hint, then the cards you own in one card (tap to pick or drop, View to look).
+## Which cards the Your Deck tab lists: "all" (the collection: every card you own, the ones left out dimmed) or "deck"
+## (only the ones going in).
+var _deck_view := "all"
+
+
+## The Your Deck tab (P14b, 2026-11-20): how many are chosen, the hint, the suit counts of the deck being built, a switch
+## between In your deck and the Collection, and the cards in two columns (tap to pick or drop, View to look).
 func _deck_cards(look: Dictionary) -> Array[Control]:
 	var size := GameState.deck_size()
 	var refusal := _deck_refusal()
@@ -3223,15 +3418,74 @@ func _deck_cards(look: Dictionary) -> Array[Control]:
 	chosen.custom_minimum_size.x = 0.0
 	chosen.add_theme_color_override("font_color", look["on_ground"])
 	var rows: Array[Control] = [chosen, _ground_line(Text.say("office.deck_tap"), look)]
+	rows.append(_deck_suit_chips(look))
+	rows.append(_deck_view_switch(look))
 	var card := OfficeFrameStyles.card(look)
 	card.name = "DeckCard"
+	var grid := GridContainer.new()
+	grid.name = "DeckGrid"
+	grid.columns = 2
+	grid.add_theme_constant_override("h_separation", int(OfficeFrameStyles.len_px(10.0)))
+	grid.add_theme_constant_override("v_separation", int(OfficeFrameStyles.len_px(10.0)))
 	for card_id: String in GameState.owned_cards:
 		var data := DataDB.get_card(card_id)
 		if data.is_empty():
 			continue
-		card.get_node("Column").add_child(_deck_row(data, card_id))
+		if _deck_view == "deck" and not _draft_deck.has(card_id):
+			continue
+		var tile := _deck_row(data, card_id)
+		tile.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		grid.add_child(tile)
+	card.get_node("Column").add_child(grid)
 	rows.append(card)
 	return rows
+
+
+## One chip for each suit in the deck being built, with its count: the balance of the deck at a glance.
+func _deck_suit_chips(look: Dictionary) -> Control:
+	var counts := {}
+	for card_id: String in _draft_deck:
+		var suit := str(DataDB.get_card(card_id).get("suit", ""))
+		if not suit.is_empty():
+			counts[suit] = int(counts.get(suit, 0)) + 1
+	var flow := HFlowContainer.new()
+	flow.name = "DeckSuits"
+	flow.add_theme_constant_override("h_separation", int(OfficeFrameStyles.len_px(8.0)))
+	flow.add_theme_constant_override("v_separation", int(OfficeFrameStyles.len_px(8.0)))
+	var suits: Array = counts.keys()
+	suits.sort()
+	for suit: String in suits:
+		var chip := OfficeFrameStyles.chip(look, Text.say("deck.suit_chip", {"suit": suit, "count": int(counts[suit])}))
+		# A chip stays on one line: the row builder would otherwise let its words wrap letter by letter.
+		var words := chip.find_child("ChipText", true, false) as Label
+		if words != null:
+			words.set_meta(UiKit.ONE_LINE_META, true)
+			words.autowrap_mode = TextServer.AUTOWRAP_OFF
+		chip.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		flow.add_child(chip)
+	return flow
+
+
+## "In your deck" and "Collection": two buttons, the one showing filled. Redraws the tab.
+func _deck_view_switch(look: Dictionary) -> Control:
+	var row := HBoxContainer.new()
+	row.name = "DeckViewSwitch"
+	row.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
+	for entry: Array in [["deck", "deck.filter_deck"], ["all", "deck.filter_all"]]:
+		var button := Button.new()
+		button.name = "DeckView_" + str(entry[0])
+		button.text = Text.say(str(entry[1]))
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+		button.pressed.connect(_on_deck_view.bind(str(entry[0])))
+		ConversationStyles.dress_button(button, look, _deck_view == str(entry[0]))
+		row.add_child(button)
+	return row
+
+
+func _on_deck_view(view: String) -> void:
+	_deck_view = view
+	_build_deck_screen()
 
 
 ## "Take these in", the fixed button under the Your Deck tab: only while the deck can be taken in. A half-built deck
@@ -3251,38 +3505,37 @@ func _deck_row(card: Dictionary, card_id: String) -> Control:
 
 	var box := UiKit.tight_column()
 
-	# The name goes on the button and the effect underneath it. Both on the
-	# button ran a long card off the side of the screen and gave the panel a
-	# horizontal scrollbar.
-	# The cost goes first, because that is what the choice turns on: a deck
-	# of twelve threes cannot be played three energy at a time.
-	#
-	# The PRINTED cost, not what a battle would charge. There is no battle
-	# here, so there is no discount to apply and no engine to ask.
+	# A tile in the two-column grid: the pick-or-drop button with the cost first (what the choice turns on: a deck of twelve
+	# threes cannot be played three energy at a time), the effect under it, and View below. The PRINTED cost, not what a
+	# battle would charge: there is no battle here, so no discount to apply.
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 80)
 	button.text = "%s  %d  %s" % [
 		"✓" if chosen else "–", int(card.get("cost", 0)), card.get("name_en", card_id)]
 	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.pressed.connect(_on_toggle_card.bind(card_id))
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	# View sits beside the pick/drop button and shows both faces of the card.
+	box.add_child(button)
+
+	var effect := UiKit.line(str(card.get("effect_text", "")), "SmallLabel")
+	effect.custom_minimum_size.x = 0.0
+	box.add_child(effect)
+
+	# View shows both faces of the card.
 	var view := Button.new()
 	view.name = "ViewCard_" + card_id
 	view.text = Text.say("office.deck_view")
-	view.custom_minimum_size = Vector2(190, 80)
+	view.custom_minimum_size = Vector2(0, 80)
 	view.pressed.connect(_show_card_look.bind(card_id))
-	var line := HBoxContainer.new()
-	line.add_theme_constant_override("separation", 12)
-	line.add_child(button)
-	line.add_child(view)
-	box.add_child(line)
+	box.add_child(view)
+	var look := OfficeFrameStyles.look()
+	OfficeFrameStyles.dress_card_button(button, look, true)
+	OfficeFrameStyles.dress_card_button(view, look, true)
+	button.custom_minimum_size.y = 80.0
+	view.custom_minimum_size.y = 80.0
 
-	var effect := UiKit.line(str(card.get("effect_text", "")), "SmallLabel")
-	box.add_child(effect)
-
-	# Dimmed as a whole when it is being left out, so the deck reads at a
-	# glance rather than by hunting for ticks.
+	# Dimmed as a whole when it is being left out, so the deck reads at a glance rather than by hunting for ticks.
 	if not chosen:
 		box.modulate = Color(1, 1, 1, 0.5)
 	return box
@@ -3495,15 +3748,14 @@ func _show_staff_profile(staff_id: String) -> void:
 	var hired: Dictionary = GameState.hired_member(staff_id)
 	var is_hired := not hired.is_empty()
 	var current_tier := int(hired.get("tier", 0)) if is_hired else -1
+	var look := OfficeFrameStyles.look()
 	var rows: Array[Control] = []
 
-	# Top left, the full picture of the person; top right, the hiring
-	# information (name, role, cost); under both, a biography line when the
-	# Staff tab has one; then the tiers and the buttons (Cameron, 2026-10-28).
-	# Air above the picture (the panel has no heading bar) so its top sits at 146 px.
-	var top_gap := Control.new()
-	top_gap.custom_minimum_size = Vector2(0, STAFF_TOP_GAP)
-	rows.append(top_gap)
+	# --- the identity card: the full picture of the person at the left; name, role, flavor and the hiring cost at the right;
+	# a biography line under both when the Staff tab has one (Cameron, 2026-10-28; on the shared frame since P14b).
+	var identity := OfficeFrameStyles.card(look)
+	identity.name = "StaffIdentityCard"
+	var identity_column := identity.get_node("Column") as VBoxContainer
 	var head := HBoxContainer.new()
 	head.name = "StaffHead"
 	head.add_theme_constant_override("separation", 24)
@@ -3517,8 +3769,7 @@ func _show_staff_profile(staff_id: String) -> void:
 	who.name = "StaffHiring"
 	who.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	who.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-	who.add_child(UiKit.line(str(candidate.get("name", staff_id)), "HeaderLabel"))
-	who.add_child(UiKit.line(role))
+	who.add_child(UiKit.line(role, "HeaderLabel"))
 	# Flavor text about the role, from the Staff tab; no row when blank.
 	var role_flavor := str(candidate.get("role_flavor", "")).strip_edges() if candidate.get("role_flavor") != null else ""
 	if not role_flavor.is_empty():
@@ -3527,75 +3778,111 @@ func _show_staff_profile(staff_id: String) -> void:
 		who.add_child(flavor)
 	who.add_child(UiKit.line(Text.say("staff.profile_cost",
 		{"cost": int(candidate.get("hiring_cost_yen", 0))})))
-	# UiKit.line forces a full-column minimum width; in this narrower column
-	# that pushed the buttons off the right edge, so let these wrap instead.
+	# UiKit.line forces a full-column minimum width; in this narrower column that pushed the buttons off the right edge,
+	# so let these wrap instead.
 	for label: Node in who.get_children():
 		(label as Control).custom_minimum_size.x = 0
 	head.add_child(who)
-	rows.append(head)
-
+	identity_column.add_child(head)
 	var biography := str(candidate.get("biography", "")).strip_edges() if candidate.get("biography") != null else ""
 	if not biography.is_empty():
 		var bio := UiKit.line(biography)
 		bio.name = "StaffBiography"
-		rows.append(bio)
+		identity_column.add_child(bio)
+	rows.append(identity)
 
+	# --- Loyalty and pay (a hired person only): the bar, why it moved, and the two things to do about it
 	if is_hired:
-		rows.append_array(StaffLoyaltyView.profile_rows(staff_id))
+		var loyalty := OfficeFrameStyles.card(look)
+		loyalty.name = "StaffLoyaltyCard"
+		var loyalty_column := loyalty.get_node("Column") as VBoxContainer
+		for row: Control in StaffLoyaltyView.profile_rows(staff_id):
+			loyalty_column.add_child(row)
 		var raise := UiKit.action_button(Text.say("staff.raise_pay_button",
 			{"yen": StaffLoyalty.wage(GameState.staff_invested_in(staff_id), true), "count": Levers.whole("staff_raise_pay_loyalty")}),
 			GameState.raise_pay_refusal(staff_id), _on_raise_pay.bind(staff_id))
 		raise.name = "RaisePayButton"
-		rows.append(raise)
+		loyalty_column.add_child(_dress_profile_button(raise, look))
 		var thank := UiKit.action_button(Text.say("staff.thank_button",
 			{"hours": Levers.whole("staff_thank_in_public_hours"), "count": Levers.whole("staff_thank_in_public_loyalty")}),
 			GameState.thank_refusal(staff_id), _on_thank_staff.bind(staff_id))
 		thank.name = "ThankButton"
-		rows.append(thank)
+		loyalty_column.add_child(_dress_profile_button(thank, look))
+		rows.append(loyalty)
 
-	rows.append(UiKit.heading(Text.say("staff.tiers_heading")))
+	# --- the bonuses by rank
+	var tiers := OfficeFrameStyles.card(look, Text.say("staff.tiers_heading"))
+	tiers.name = "StaffTiersCard"
+	var tiers_column := tiers.get_node("Column") as VBoxContainer
 	for entry: Dictionary in StaffProfile.tiers(candidate, DataDB.boosters, DataDB.segments, Text.phrase()):
 		var box := UiKit.tight_column()
 		box.name = "Tier_%d" % int(entry["tier"])
 		box.add_child(UiKit.line(_tier_label(entry, current_tier), "HeaderLabel"))
 		for line: String in entry["lines"]:
 			box.add_child(UiKit.line(line))
-		rows.append(box)
+		tiers_column.add_child(box)
 	if int(candidate.get("highest_tier", 0)) <= int(candidate.get("starting_tier", 0)):
-		rows.append(UiKit.line(Text.say("staff.no_upgrades"), "SmallLabel"))
+		tiers_column.add_child(UiKit.line(Text.say("staff.no_upgrades"), "SmallLabel"))
+	rows.append(tiers)
 
+	# --- what can be done: Upgrade, Make primary, then Fire last as a red outline button (Hire for a candidate)
 	var funds := int(GameState.meta.get("Funds", 0))
+	var actions := OfficeFrameStyles.card(look)
+	actions.name = "StaffActionsCard"
+	var actions_column := actions.get_node("Column") as VBoxContainer
 	if is_hired:
 		var cost: Variant = Ledger.staff_upgrade_cost(candidate, current_tier)
 		if cost == null:
-			rows.append(UiKit.action_button("", Text.say("office.staff_at_max"), Callable()))
+			actions_column.add_child(_dress_profile_button(UiKit.action_button("", Text.say("office.staff_at_max"), Callable()), look))
 		else:
 			var upgrade := UiKit.action_button(Text.say("office.upgrade", {"cost": int(cost)}),
 				Ledger.staff_upgrade_refusal(candidate, current_tier, funds, Text.phrase()),
 				_on_profile_upgrade.bind(staff_id))
 			upgrade.name = "ProfileUpgradeButton"
-			rows.append(upgrade)
+			actions_column.add_child(_dress_profile_button(upgrade, look))
 		if not bool(hired.get("primary", true)):
 			var primary_button := UiKit.action_button(Text.say("office.staff_make_primary"), "",
 				_on_profile_make_primary.bind(staff_id))
 			primary_button.name = "ProfilePrimaryButton"
-			rows.append(primary_button)
+			actions_column.add_child(_dress_profile_button(primary_button, look))
 		var fire := UiKit.action_button(Text.say("office.fire_staff"),
 			Ledger.staff_fire_refusal(candidate, funds, Text.phrase()),
 			_confirm_fire_staff.bind(staff_id, candidate))
 		fire.name = "ProfileFireButton"
-		rows.append(fire)
+		actions_column.add_child(_dress_profile_button(fire, look, true))
 	else:
 		var hire := UiKit.action_button(Text.say("office.hire"),
 			_hire_refusal(candidate),
 			_on_profile_hire.bind(staff_id))
 		hire.name = "ProfileHireButton"
-		rows.append(hire)
+		actions_column.add_child(_dress_profile_button(hire, look))
+	rows.append(actions)
 
-	_staff_profile_panel.top_aligned = true
-	_staff_profile_panel.open("", rows)
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": str(candidate.get("name", staff_id)),
+		"subtitle": "",
+		"chips": [Text.say("office.funds", {"count": funds})],
+		"rows": rows,
+	})
+	_staff_profile_panel.open_frame(frame, Text.say("ui.back"))
 	# Above the candidates pop-up or the management screen it was opened from.
 	move_child(_staff_profile_panel, get_child_count() - 1)
+
+
+## A button of the staff profile, outlined in the card's ink and touch-sized; `danger` draws it in the fall colour (Fire).
+func _dress_profile_button(button: Button, look: Dictionary, danger: bool = false) -> Button:
+	OfficeFrameStyles.dress_card_button(button, look, not button.disabled)
+	button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+	if danger and not button.disabled:
+		var down: Color = look["down"]
+		for state: String in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
+			button.add_theme_color_override(state, down)
+		for state: String in ["normal", "hover", "pressed", "focus"]:
+			var box := (button.get_theme_stylebox(state) as StyleBoxFlat).duplicate() as StyleBoxFlat
+			box.border_color = down
+			button.add_theme_stylebox_override(state, box)
+	return button
 
 
 ## The picture's box: the drawing fitted into STAFF_PORTRAIT_MAX with no
@@ -3636,8 +3923,18 @@ func _assignment_handlers() -> Dictionary:
 
 func _show_staff_assignments() -> void:
 	GameState.staff_ensure_day()
-	_assignments_panel.top_aligned = true
-	_assignments_panel.open(Text.say("assign.title"), StaffAssignmentsView.rows(_assignment_handlers()))
+	var handlers := _assignment_handlers()
+	var frame := OfficeScreenFrame.new()
+	var confirm := StaffAssignmentsView.confirm_button(handlers) if not GameState.staff_members().is_empty() \
+		and not GameState.staff_day_pool.is_empty() else null
+	frame.setup({
+		"title": Text.say("assign.title"),
+		"subtitle": "",
+		"chips": EventsModel.chips(),
+		"rows": StaffAssignmentsView.rows(handlers, false),
+		"footer": confirm,
+	})
+	_assignments_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 func _on_task_tapped(uid: String) -> void:
@@ -3824,6 +4121,9 @@ func _report_text() -> String:
 
 
 func _build_travel() -> void:
+	_travel_page_panel = Overlay.new()
+	_travel_page_panel.name = "TravelPagePanel"
+	add_child(_travel_page_panel)
 	_travel_panel = Overlay.new()
 	_travel_panel.name = "TravelPanel"
 	add_child(_travel_panel)
@@ -3936,8 +4236,69 @@ func _show_travel(mode: String = "") -> void:
 		if not waiting.is_empty() and Offices.normalize(waiting.get("location")) == destination:
 			rows.append(UiKit.line(Text.say("travel.level_waiting", {
 				"place": TravelText.place_name(destination), "level": str(waiting.get("description", ""))})))
-	_travel_panel.open(Text.say("travel.confirm_title"), rows, Text.say("travel.confirm_go"), Text.say("travel.confirm_stay"),
-		refusal.is_empty())
+	# A bottom sheet over the room (P14b, 2026-11-20): the trip's cost and what is left, with the way to the Travel page
+	# above Take the trip, and Stay here as the way out.
+	var all_trips := Button.new()
+	all_trips.name = "AllTripsButton"
+	all_trips.text = Text.say("travel.all_trips")
+	all_trips.custom_minimum_size = Vector2(0, 110)
+	all_trips.pressed.connect(_show_travel_page)
+	var foot: Array[Control] = [all_trips]
+	_travel_panel.open_card({"title": Text.say("travel.confirm_title"), "body": rows, "buttons": foot, "bottom": true},
+		Text.say("travel.confirm_go"), Text.say("travel.confirm_stay"), refusal.is_empty())
+	move_child(_travel_panel, get_child_count() - 1)   # above the Travel page when it opened this
+
+
+## The Travel page (P14b, 2026-11-20, Cameron: the full page): where you are and how many hours are left, then the
+## other office with what waits there and one button for each way you can go (the rail pass, a paid ticket, a car, a plane).
+## Pressing one opens the confirm sheet, which says the cost before anything is spent.
+func _show_travel_page() -> void:
+	var look := OfficeFrameStyles.look()
+	var destination := Offices.other(GameState.office_location)
+	var rows: Array[Control] = []
+
+	var here := OfficeFrameStyles.card(look, Text.say("travel.where_title"))
+	here.name = "TravelHereCard"
+	here.get_node("Column").add_child(UiKit.line(TravelText.here_line()))
+	here.get_node("Column").add_child(UiKit.line(Text.say("office.docket_hours", {"count": GameState.work_hours_left()}), "SmallLabel"))
+	rows.append(here)
+
+	var there := OfficeFrameStyles.card(look, Text.say("travel.destination", {"place": TravelText.place_name(destination)}))
+	there.name = "TravelDestinationCard"
+	var column := there.get_node("Column") as VBoxContainer
+	# A crisis level waiting at the other office is named, so the trip is not a surprise.
+	for trigger: String in GameState.due_special_levels():
+		var waiting := SpecialLevels.level_for(trigger, DataDB.levels)
+		if not waiting.is_empty() and Offices.normalize(waiting.get("location")) == destination:
+			column.add_child(UiKit.line(Text.say("travel.level_waiting", {
+				"place": TravelText.place_name(destination), "level": str(waiting.get("description", ""))})))
+	# A promise due soon that can only be kept where the player stands is named before they leave.
+	for promise: Dictionary in GameState.promises:
+		if Offices.normalize(promise.get("location")) == GameState.office_location \
+				and Promises.hours_left(promise, GameState.time_units) <= Levers.whole("travel_promise_warning_hours"):
+			var warning := UiKit.line(Text.say("travel.promise_warning", {"what": GameState.promise_what(promise),
+				"place": TravelText.place_name(GameState.office_location), "count": Promises.hours_left(promise, GameState.time_units)}))
+			warning.add_theme_color_override("font_color", look["down"])
+			column.add_child(warning)
+	for mode: String in GameState.travel_modes():
+		var refusal := GameState.travel_refusal(mode)
+		var held := GameState.travel_tickets(mode)
+		var button := UiKit.action_button(Text.say("travel.mode_button", {"mode": TravelText.mode_name(mode), "count": GameState.trip_hours(mode)})
+			if mode == Travel.PASS else Text.say("travel.mode_button_owned", {"mode": TravelText.mode_name(mode),
+				"count": GameState.trip_hours(mode), "owned": held}), refusal, _show_travel.bind(mode), OfficeFrameStyles.touch_height())
+		button.name = "TravelPageMode_" + mode
+		TravelText.dress_mode_icon(button, mode, 90.0)
+		column.add_child(_dress_profile_button(button, look))
+	rows.append(there)
+
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("travel.page_title"),
+		"subtitle": "",
+		"chips": EventsModel.chips(),
+		"rows": rows,
+	})
+	_travel_page_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 func _on_travel_confirmed() -> void:
@@ -4102,7 +4463,8 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 	var asked := RequestLines.patron_line(row, "request_line", org_name, str(bill.get("bill_name", "")))
 	if asked.is_empty():
 		asked = Text.say("request.line", {"org": org_name, "bill": str(bill.get("bill_name", ""))})
-	rows.append(UiKit.line(asked))
+	# The organization's icon beside what it asks (P14b, 2026-11-20).
+	rows.append(_with_booster_icon(org, UiKit.line(asked)))
 	rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
 	rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
 	rows.append(_readiness_line(bill))
@@ -4118,7 +4480,6 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 
 	var accept := UiKit.action_button(Text.say("request.accept"), "", _on_request_accept.bind(patron_bill_id), 110.0)
 	accept.name = "RequestAcceptButton"
-	rows.append(accept)
 
 	var live := row.duplicate()
 	live["components"] = PatronLevel.compose(patron_bill_id, GameState.enacted_components)["component_ids"]
@@ -4143,8 +4504,10 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 		str(row.get("kind", PatronRequests.FAVOR)), DataDB.balance), "org": org_name}), "",
 		_on_request_decline.bind(patron_bill_id), 90.0)
 	decline.name = "RequestDeclineButton"
-	rows.append(decline)
-	_request_panel.open(Text.say("request.title"), rows)
+	# A pop-up card: Carry it is the filled button, Decline (with its cost) the last, and the amend options scroll in the body.
+	var foot: Array[Control] = [accept, decline]
+	_request_panel.open_card({"tag": Text.say("request.title"), "title": str(bill.get("bill_name", "")), "body": rows,
+		"buttons": foot, "primary": 0})
 
 
 ## What the player's influence still lacks for this bill's vote, today
@@ -4166,21 +4529,25 @@ func _open_draft(fresh: bool = false) -> void:
 		_draft_org = ""
 		_draft_extra_visit = false
 	var by_id := ComposedBill.index(DataDB.bill_components)
+	var look := OfficeFrameStyles.look()
 	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("draft.intro", {
+	rows.append(_ground_line(Text.say("draft.intro", {
 		"xp": Levers.whole("draft_bill_xp_cost"),
-		"funds": Phrase.with_separators(Levers.whole("draft_bill_funds_cost"))})))
+		"funds": Phrase.with_separators(Levers.whole("draft_bill_funds_cost"))}), look))
 
-	rows.append(UiKit.heading(Text.say("draft.parts_heading")))
+	# --- your bill: the parts chosen, each removable, and the committee the first one decides (P14b, 2026-11-20: cards on the frame)
+	var mine_card := OfficeFrameStyles.card(look, Text.say("draft.parts_heading"))
+	mine_card.name = "DraftBillCard"
+	var mine := mine_card.get_node("Column") as VBoxContainer
 	if _draft_ids.is_empty():
-		rows.append(UiKit.line(Text.say("draft.no_parts"), "SmallLabel"))
+		mine.add_child(UiKit.line(Text.say("draft.no_parts"), "SmallLabel"))
 	for id: Variant in _draft_ids:
 		var part: Dictionary = by_id.get(str(id), {})
 		var remove := UiKit.action_button(Text.say("draft.part_selected", {
 			"label": str(part.get("short_label", id)), "phrase": str(part.get("phrase", ""))}), "",
 			_draft_toggle.bind(str(id)), 90.0)
 		remove.name = "DraftRemove_" + str(id)
-		rows.append(remove)
+		mine.add_child(_dress_profile_button(remove, look))
 	if not _draft_ids.is_empty():
 		# The first part decides the hearing committee (component plan 4.4, 2026-11-03).
 		var first: Dictionary = by_id.get(str(_draft_ids[0]), {})
@@ -4188,17 +4555,21 @@ func _open_draft(fresh: bool = false) -> void:
 		if not committee.is_empty():
 			var hearing := UiKit.line(Text.say("draft.hearing", {"committee": committee}), "SmallLabel")
 			hearing.name = "DraftHearing"
-			rows.append(hearing)
+			mine.add_child(hearing)
+	rows.append(mine_card)
 
+	# --- if it passes: the vote, what influence it needs, what it does, and the extra visit
 	if _draft_ids.size() >= DraftBill.MIN_PARTS:
+		var preview_card := OfficeFrameStyles.card(look, Text.say("draft.effects_heading"))
+		preview_card.name = "DraftPreviewCard"
+		var preview := preview_card.get_node("Column") as VBoxContainer
 		var bill := DraftBill.bill_for(_draft_ids)
-		rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
-		rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
-		rows.append(_readiness_line(bill))
+		preview.add_child(UiKit.line(RequestLines.default_vote_line(bill)))
+		preview.add_child(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
+		preview.add_child(_readiness_line(bill))
 		var own := RequestLines.own_party_line(bill, str(DataDB.player.get("party", "")))
 		if not own.is_empty():
-			rows.append(UiKit.line(own))
-		rows.append(UiKit.line(Text.say("draft.effects_heading"), "SmallLabel"))
+			preview.add_child(UiKit.line(own))
 		var draft_chips: Array = []
 		for effect: Dictionary in (bill.get("effects", []) as Array):
 			var org_id := str(effect.get("target", ""))
@@ -4206,11 +4577,9 @@ func _open_draft(fresh: bool = false) -> void:
 				continue
 			draft_chips.append({"id": org_id, "delta": int(effect.get("delta", 0))})
 		if not draft_chips.is_empty():
-			rows.append(OrgChip.row(OrgChip.merged(draft_chips), true))
-	# An extra member visit, just before the vote: a second Member Visit and
-	# Win Over a Member pair (2026-11-05). Costs hours and XP; refused, with a
-	# reason, when no member is left to win over.
-	if _draft_ids.size() >= DraftBill.MIN_PARTS:
+			preview.add_child(OrgChip.row(OrgChip.merged(draft_chips), true))
+		# An extra member visit, just before the vote: a second Member Visit and Win Over a Member pair (2026-11-05). Costs hours
+		# and XP; refused, with a reason, when no member is left to win over.
 		var extra_hours := TimeClock.units_for_stage(DataDB.get_stage(MpVisit.VISIT_STAGE)) \
 			+ TimeClock.units_for_stage(DataDB.get_stage(MpVisit.FIGHT_STAGE))
 		var extra_args := {"count": extra_hours, "xp": DraftBill.extra_visit_xp_cost()}
@@ -4221,13 +4590,18 @@ func _open_draft(fresh: bool = false) -> void:
 			Text.say("draft.extra_visit_on" if _draft_extra_visit else "draft.extra_visit_off", extra_args),
 			extra_refusal, _draft_toggle_extra_visit, 90.0)
 		extra.name = "DraftExtraVisit"
-		rows.append(extra)
-	var go := UiKit.action_button(Text.say("draft.go"), GameState.draft_refusal(_draft_ids, _draft_extra_visit), _on_draft_go, 110.0)
+		preview.add_child(_dress_profile_button(extra, look))
+		rows.append(preview_card)
+	# Draft it: the button the frame fixes at the foot while the cards scroll (greyed with its reason).
+	var go := UiKit.action_button(Text.say("draft.go"), GameState.draft_refusal(_draft_ids, _draft_extra_visit), _on_draft_go, OfficeFrameStyles.touch_height())
 	go.name = "DraftGoButton"
-	rows.append(go)
 
+	# --- add a part from: the organizations with their standing, or one organization's parts
+	var parts_card := OfficeFrameStyles.card(look, Text.say("draft.orgs_heading") if _draft_org.is_empty()
+		else str(DataDB.get_booster(_draft_org).get("name_en", _draft_org)))
+	parts_card.name = "DraftPartsCard"
+	var parts := parts_card.get_node("Column") as VBoxContainer
 	if _draft_org.is_empty():
-		rows.append(UiKit.heading(Text.say("draft.orgs_heading")))
 		var owners := {}
 		for component: Dictionary in DataDB.bill_components:
 			owners[str(component.get("owner", ""))] = true
@@ -4240,12 +4614,11 @@ func _open_draft(fresh: bool = false) -> void:
 				"standing": int(GameState.booster_standing.get(org_id, 0))}), "",
 				_draft_open_org.bind(org_id), 90.0)
 			button.name = "DraftOrg_" + org_id
-			rows.append(_with_booster_icon(org_id, button))
+			parts.add_child(_with_booster_icon(org_id, _dress_profile_button(button, look)))
 	else:
 		var back := UiKit.action_button(Text.say("draft.back_to_orgs"), "", _draft_open_org.bind(""), 90.0)
 		back.name = "DraftOrgsBack"
-		rows.append(back)
-		rows.append(UiKit.heading(str(DataDB.get_booster(_draft_org).get("name_en", _draft_org))))
+		parts.add_child(_dress_profile_button(back, look))
 		for component: Dictionary in DataDB.bill_components:
 			if str(component.get("owner", "")) != _draft_org:
 				continue
@@ -4256,8 +4629,18 @@ func _open_draft(fresh: bool = false) -> void:
 					"label": str(component.get("short_label", id)), "phrase": str(component.get("phrase", ""))}), "",
 				_draft_toggle.bind(id), 90.0)
 			part_button.name = "DraftPart_" + id
-			rows.append(part_button)
-	_draft_panel.open(Text.say("draft.title"), rows)
+			parts.add_child(_dress_profile_button(part_button, look))
+	rows.append(parts_card)
+
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": Text.say("draft.title"),
+		"subtitle": "",
+		"chips": [Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}), Text.say("office.xp", {"count": GameState.xp})],
+		"rows": rows,
+		"footer": go,
+	})
+	_draft_panel.open_frame(frame, Text.say("ui.back"))
 
 
 func _draft_open_org(org_id: String) -> void:

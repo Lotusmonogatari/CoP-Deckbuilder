@@ -183,3 +183,44 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 | Text rows `popup.tag_moved`, `event.delegate_who`, `rhetoric.coupon_line`, `travel.closed_here`, `travel.destination` | Added for P14 screens not built yet (the moved-for-you card, the staff delegation line, the coupon line, the Travel page); keep until P14b decides. |
 | The plain `Overlay.open(title, rows)` calls the nine group-1 pop-ups used to make | Those pop-ups are cards now (`open_card`); `open()` still serves every other panel, so nothing is dead yet. |
 | `design/review/p14_remaining_screens_2026-11-20/img/` (12 MB) | Working pictures; removable once P14 is merged and signed off. |
+
+## P14b: Floor Vote (2026-11-20)
+
+| What | Why it looks removable |
+|---|---|
+| Text row `floor_vote.projection_label` ("{choice} - Likely {result}") | The projections now show the choice at the left and `floor_vote.projection_result` ("Likely {result}") at the right in green or red. Nothing asks for the old combined row. |
+| `FloorVoteScreen._gold_rule()` and `UiKit.gold_rule()`'s use there | The Floor Vote body is cards now; check other screens before removing `UiKit.gold_rule()`. |
+
+## P14b commit 1 (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen.STAFF_TOP_GAP` | The staff profile is a frame now; nothing leaves air above the picture. |
+| `StaffAssignmentsView.rows()`'s no-staff branch headings and `UiKit.heading` calls for the old section titles | The staff-present branch uses cards with titles; the no-staff branch still uses plain headings. |
+| `StaffAssignmentsView.PLAIN_FRAME` and the dark staff card colours | The person card is the style's card now; the chips keep their own tiles. |
+
+## P14b commit 2 (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen.CARD_OFFER_CHROME` (700) | The card offer is a pop-up card now; the card's own header, foot and body sizing take the room the constant reserved. Still used to scale the faces; retune before removing. |
+
+## P14b commit 3 (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen._ally_row` colour argument for rivals, `party_opinion.popup_blurb` as a heading line | The party detail draws its own cards; check before removing. |
+| `UiKit.heading` calls in the old Draft a Bill rows | Replaced by card titles. |
+
+## P14b commit 4 (2026-11-20): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `HowToPlayPanel.rows()` | The guide opens as cards (`cards()`); `rows()` is still used by tests that read the guide. |
+| `CharacterCodex.text_color_for()` | The Characters buttons use the card ink with a coloured edge, so nothing picks a text colour for a filled button now. Used in `tests/test_character_codex.gd`. |
+
+## New Game mock-up (2026-11-21): found while building, nothing deleted
+
+| What | Why it looks removable |
+|---|---|
+| `OfficeScreen._swipe_strip()`, `_protagonist_row()` and the `NEW_GAME_SQUARE*` constants | New Game uses `_switch_row()`, `_champion_portraits()` and `_champion_card()`; nothing calls the old ones. |

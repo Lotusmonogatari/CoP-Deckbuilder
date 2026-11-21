@@ -9627,9 +9627,9 @@
   {
     "key": "rhetoric.coupon_line",
     "where": "P14 pop-up card, kind tags and notes (spec section 4)",
-    "english": "You hold {count} coaching coupon: your next Tier {tier} session is free.",
+    "english": "You hold {count} coaching coupon: use it from your items for a free Tier {tier} session.",
     "placeholders": "count, tier",
-    "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; approved as written."
+    "notes": "P14b (2026-11-20): reworded from the spec's 'your next session is free' because a coupon is redeemed from the items, it does not discount the list. Claude's draft for Cameron."
   },
   {
     "key": "outcome.hold_hint",
@@ -9651,5 +9651,75 @@
     "english": "OPEN PLACE",
     "placeholders": null,
     "notes": "P14 (2026-11-20): Claude's draft for Cameron to reword; not in the approved list."
+  },
+  {
+    "key": "floor_vote.projection_result",
+    "where": "Floor Vote: the likely outcome of a choice, at the right of its bar (green when it passes, red when it fails)",
+    "english": "Likely {result}",
+    "placeholders": "result",
+    "notes": "P14b (2026-11-20, Cameron: likely outcome on the right in green or red). Claude's draft to reword."
+  },
+  {
+    "key": "deck.filter_deck",
+    "where": "Your Deck: the switch showing only the cards in the deck being built",
+    "english": "In your deck",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "deck.filter_all",
+    "where": "Your Deck: the switch showing every card you own",
+    "english": "Collection",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "deck.suit_chip",
+    "where": "Your Deck: a suit and how many of its cards are in the deck being built",
+    "english": "{suit} {count}",
+    "placeholders": "suit, count",
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "party_opinion.seats_line",
+    "where": "Party detail: the party's seats and who leads it",
+    "english": "{count} seats · led by {leader}",
+    "placeholders": "count, leader",
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "party_opinion.seats_line_no_leader",
+    "where": "Party detail: the party's seats when no leader is cast yet",
+    "english": "{count} seats",
+    "placeholders": "count",
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "travel.page_title",
+    "where": "Travel page: the title",
+    "english": "Travel",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "travel.where_title",
+    "where": "Travel page: the card that says where you are",
+    "english": "Where you are",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "travel.all_trips",
+    "where": "Trip confirm sheet: the button that opens the Travel page",
+    "english": "All trips",
+    "placeholders": null,
+    "notes": "P14b (2026-11-20): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "new_game.district_line",
+    "where": "New Game: the picked champion's district and the office there",
+    "english": "{district} · office in {office}",
+    "placeholders": "district, office",
+    "notes": "P14b (2026-11-21): the mock-up's New Game card. Claude's draft for Cameron to reword."
   }
 ]

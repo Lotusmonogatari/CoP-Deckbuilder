@@ -121,12 +121,18 @@ func _walk() -> void:
 
 func _choose(panel: Overlay, player_id: String) -> bool:
 	await get_tree().create_timer(0.2).timeout
-	var row := panel.find_child("Protagonist_" + player_id, true, false)
-	if row == null:
+	# The mock-up flow (P14b, 2026-11-21): tap the champion's portrait, then Play as in the foot.
+	var pick := panel.find_child("Pick_" + player_id, true, false)
+	if pick == null:
 		_failures.append("the New Game screen does not list %s" % player_id)
 		return false
-	_scroll_into_view(panel, row)
-	await _click(row.find_child("Choose", true, false) as Control)
+	await _click(pick as Control)
+	await get_tree().create_timer(0.3).timeout   # the screen is redrawn for the picked champion
+	var play := panel.find_child("PlayAsButton", true, false)
+	if play == null or not (panel.find_child("Protagonist_" + player_id, true, false) != null):
+		_failures.append("tapping %s did not show their card and the Play as button" % player_id)
+		return false
+	await _click(play as Control)
 	if panel.visible:
 		_failures.append("choosing %s did not close the New Game screen" % player_id)
 		return false
