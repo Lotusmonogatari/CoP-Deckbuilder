@@ -1916,15 +1916,13 @@ func _on_pressure_picked(tier: String, first_run: bool) -> void:
 	_show_new_game.call_deferred(first_run)
 
 
-## The display name of a UI style: the free one from the Text tab, the others from their package.
+## The display name of a UI style: its package's name (Yezo Office, Broadcast, Woodblock).
 func _style_name(style: String) -> String:
-	if style == UiStyles.LIVING_OFFICE:
-		return Text.say("shop.style_living_name")
 	var package := _style_package(style)
 	return str(package.get("name_en", style))
 
 
-## The cosmetic package that unlocks `style` ({} for the free default or an unknown style).
+## The cosmetic package that unlocks `style` ({} for an unknown style).
 func _style_package(style: String) -> Dictionary:
 	for package: Dictionary in DataDB.cosmetic_packages:
 		if UiStyles.style_of(package) == style:
@@ -1992,18 +1990,19 @@ func _on_theme_picked(style: String, first_run: bool) -> void:
 	get_tree().reload_current_scene.call_deferred()
 
 
-## The new run starts in the style chosen on the New Game screen. A style that needs buying is free here
-## (Cameron, 2026-11-18): the chosen one is added to the run and equipped.
+## The new run starts in the style chosen on the New Game screen. The pick is free (Cameron, 2026-11-18 and 2026-11-21): a new run
+## owns only the style picked, which is equipped; the other two are bought later for XP. A run given the default style at
+## start (GameState.grant_default_ui_style) hands it back here when another is picked.
 func _adopt_chosen_style() -> void:
 	var style: String = UiStyle.trying
 	UiStyle.trying = ""
 	if style.is_empty():
 		style = UiStyle.current()
-	var package_id := ""
-	if style != UiStyles.LIVING_OFFICE:
-		package_id = str(_style_package(style).get("package_id", ""))
-		if not package_id.is_empty() and not GameState.owned_cosmetic_packages.has(package_id):
-			GameState.owned_cosmetic_packages.append(package_id)
+	var package_id := str(_style_package(style).get("package_id", ""))
+	GameState.owned_cosmetic_packages.assign(GameState.owned_cosmetic_packages.filter(
+		func(owned: String) -> bool: return UiStyles.style_of(DataDB.get_cosmetic_package(owned)).is_empty()))
+	if not package_id.is_empty():
+		GameState.owned_cosmetic_packages.append(package_id)
 	GameState.equip_cosmetic(CosmeticPieces.UI_STYLE, package_id)
 	Layout.apply_ui_style()
 
@@ -3244,21 +3243,31 @@ func _style_cards(look: Dictionary) -> Array[Control]:
 		card.add_theme_constant_override("separation", 8)
 		frame_card.get_node("Column").add_child(card)
 		card.add_child(_style_swatch(style))
-		var is_living := style == UiStyles.LIVING_OFFICE
-		var name := Text.say("shop.style_living_name") if is_living else CosmeticPieces.field(package, "name_en")
+		var name := CosmeticPieces.field(package, "name_en")
+		# The style's icon (assets/icons/CP07 to CP09) beside its name.
+		var title_row := HBoxContainer.new()
+		title_row.add_theme_constant_override("separation", 12)
+		var icon := TextureRect.new()
+		icon.name = "StyleIcon_" + style
+		icon.texture = ArtLoader.item_icon(CosmeticPieces.field(package, "icon"))
+		icon.custom_minimum_size = Vector2(96, 96)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		title_row.add_child(icon)
 		var heading := UiKit.heading(name)
 		heading.custom_minimum_size.x = 0.0
-		card.add_child(heading)
-		var desc := UiKit.line(Text.say("shop.style_living_desc") if is_living
-			else CosmeticPieces.field(package, "description"), "SmallLabel")
+		heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		title_row.add_child(heading)
+		card.add_child(title_row)
+		var desc := UiKit.line(CosmeticPieces.field(package, "description"), "SmallLabel")
 		desc.custom_minimum_size.x = 0.0
 		card.add_child(desc)
 		if style == in_use:
-			var state := UiKit.line(Text.say("shop.style_in_use") + (" · " + Text.say("shop.style_included") if is_living else ""))
+			var state := UiKit.line(Text.say("shop.style_in_use"))
 			state.name = "StyleState_" + style
 			state.custom_minimum_size.x = 0.0
 			card.add_child(state)
-		elif is_living or GameState.owned_cosmetic_packages.has(package_id):
+		elif GameState.owned_cosmetic_packages.has(package_id):
 			var use := UiKit.action_button(Text.say("shop.style_use"), "", _on_use_style.bind(package_id))
 			use.name = "StyleUse_" + style
 			OfficeFrameStyles.dress_card_button(use, look)

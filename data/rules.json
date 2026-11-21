@@ -382,5 +382,20 @@
       "Capitol": "At the Capitol, where most levels are. The District office is reached by the first trip.",
       "District": "At the protagonist's own District office."
     }
+  },
+  "default_ui_style": {
+    "value": "woodblock",
+    "options": [
+      "living_office",
+      "broadcast",
+      "woodblock"
+    ],
+    "question": "Which look do the screens have until the player picks one, and for a game that loads without a pick?",
+    "means": {
+      "woodblock": "Woodblock, the printed look: washi, indigo and seal stamps.",
+      "living_office": "Yezo Office, the office as the menu.",
+      "broadcast": "Broadcast, political drama on air."
+    },
+    "notes": "2026-11-21 (Cameron): Woodblock is the default. The player picks a style as part of New Game and owns it free; a run or save with no pick is given this one free. The other styles are bought in the Marketplace."
   }
 }

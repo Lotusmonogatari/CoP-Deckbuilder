@@ -4684,8 +4684,16 @@ def check_ui_styles(data, report):
             report.error("UI Styles", f"{tid}: colour '{value}' must be #RRGGBB or 'party colour'")
     for package in data.get("cosmetic_packages", []):
         style = package.get("ui_style")
-        if style not in (None, "") and style not in styles - {"shared", "living_office"}:
-            report.error("Cosmetic Packages", f"{package.get('package_id')}: UI Style '{style}' must be broadcast or woodblock")
+        if style not in (None, "") and style not in styles - {"shared"}:
+            report.error("Cosmetic Packages", f"{package.get('package_id')}: UI Style '{style}' must be living_office, broadcast or woodblock")
+    # Every style is a package now (2026-11-21): the default is the Rules tab's default_ui_style, and each style has exactly one.
+    carried = [str(p.get("ui_style")) for p in data.get("cosmetic_packages", []) if p.get("ui_style")]
+    for style in sorted(styles - {"shared"}):
+        if carried.count(style) != 1:
+            report.error("Cosmetic Packages", f"UI style '{style}' must be carried by exactly one package; it is carried by {carried.count(style)}")
+    default_style = (data.get("rules") or {}).get("default_ui_style")
+    if default_style not in styles - {"shared"}:
+        report.error("Rules", f"default_ui_style '{default_style}' must be living_office, broadcast or woodblock")
 
 
 def check_move_flashes(data, report):

@@ -239,3 +239,7 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 | Problem | A tester's report: when the keyboard opens for the problem report's note, the screen shrinks into the top part of the display. Probable cause: the keyboard resizes the Android window, and the game's scaling (canvas_items, expand) shrinks everything to fit what is left. |
 | Scope | Cameron: the keyboard does not disturb other screens (the problem report is the only text box), so this is **not urgent**. |
 | When | Look at it with the real mobile app build (M6). The likely fix is in the Android export settings (the manifest's soft-input mode, so the window is panned or left alone instead of resized), or a native text dialog for the note. The repo has no Android export settings yet, and it cannot be tested without a phone. |
+
+## Living Office text rows no longer used (2026-11-21)
+
+`shop.style_living_name` ("Living Office"), `shop.style_living_desc` and `shop.style_included` were for the free default style, which is now the package Yezo Office (CP09) with its name and description in the Cosmetic Packages tab. Nothing asks for them; the exporter lists them as unused. Safe to delete when you say so.

@@ -27,6 +27,11 @@ func _ready() -> void:
 
 
 func _run() -> void:
+	# This walk is about the shop's contents and was written against the Yezo Office layout (the old default), so it wears that.
+	var yezo := str(UiStyles.package_for(UiStyles.LIVING_OFFICE, DataDB.cosmetic_packages)["package_id"])
+	GameState.owned_cosmetic_packages.append(yezo)
+	GameState.equip_cosmetic(CosmeticPieces.UI_STYLE, yezo)
+	Layout.apply_ui_style()
 	GameState.xp = 100000
 	GameState.meta["Funds"] = 99999999
 	GameState.owned_cards = []
