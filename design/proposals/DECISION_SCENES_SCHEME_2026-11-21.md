@@ -1,6 +1,6 @@
-# A scheme for the Decision! scenes (version 2, draft for Cameron, 2026-11-21)
+# A scheme for the Decision! scenes (version 3, draft for Cameron, 2026-11-21)
 
-Version 2 folds in your answers: **one DECISION! tag with a Mandatory or Optional note; scenes fire once, on the date or in the window the workbook names; up to five follow-up Decision! moments; rewards and penalties; scenes that start other parts of the game (a unique vote screen, stages, events); and one new tab.** A proposal only. Nothing is built, and no data or schema changes until you say "Go".
+**Version 3 records the last five decisions (section 7). The design is settled and waiting for a "Go".** Version 2 folded in your answers: **one DECISION! tag with a Mandatory or Optional note; scenes fire once, on the date or in the window the workbook names; up to five follow-up Decision! moments; rewards and penalties; scenes that start other parts of the game (a unique vote screen, stages, events); and one new tab.** A proposal only. Nothing is built, and no data or schema changes until you say "Go".
 
 ## 1. Executive summary
 
@@ -99,12 +99,31 @@ An activation can also hang on one choice instead of the whole scene, using the 
 | 4 | Optional scenes: windows on the Events screen, the lapse rule and its reserved choice | Medium |
 | Alongside | The `DEC_` pictures and the art checklist section | Small |
 
-## 7. Questions still open
+## 7. Decisions (Cameron, 2026-11-21)
 
-| # | Question | My recommendation |
+| # | Question | Decision |
 |---|---|---|
-| 1 | Does a Mandatory scene also have a "lapse"? You cannot miss it, so I say no: a penalty for skipping lives on the declining choice. | Yes, no lapse for Mandatory |
-| 2 | Can a follow-up branch (two different follow-ups after different choices), or is it one line of up to five? | Branching allowed, with the total capped at five follow-ups per first scene |
-| 3 | What is a "unique vote screen"? A normal Floor Vote on a special bill, or a different layout (for example a confidence vote or a speech vote)? | Start with a normal Floor Vote on the named bill; add a layout when you describe one |
-| 4 | Delay counts days from when the earlier scene was answered. Is that right for Optional follow-ups too? | Yes |
-| 5 | Does the DECISION! card for a follow-up say "Follow-up 2 of 5", or just Mandatory or Optional? | The note plus "Follow-up 2 of 5" |
+| 1 | Does a Mandatory scene have a lapse? | **No.** A penalty for skipping lives on the declining choice. Only Optional scenes lapse. |
+| 2 | Can a follow-up branch? | **Yes.** Different choices can lead to different follow-ups, with at most five follow-ups in total for one first scene. |
+| 3 | What is the unique vote screen? | **A Floor Vote on a specific, named bill or motion**, reached from the scene, for example a floor debate about CPTPP that goes into a vote on CPTPP. It uses the normal Floor Vote screen. The `vote:` entry names the bill or motion row in the Floor Votes tab; a motion is a row there like any bill, which you write. |
+| 4 | Does a follow-up's delay count days from when the earlier scene was answered? | **Yes**, for Mandatory and Optional follow-ups alike. |
+| 5 | Does a follow-up's card say "Follow-up n of 5"? | **No.** A follow-up wears the same DECISION! tag and its Mandatory or Optional note, like any scene. |
+
+## 8. What changes in the design
+
+| Part | Result |
+|---|---|
+| The Kind column | Mandatory or Optional; a lapse penalty (the reserved choice `L`) exists only for Optional |
+| Follows, Delay, Follow If | Branching works: two scenes may follow the same one, each with its own Follow If choice letters; the exporter counts every follow-up under one first scene and errors above five |
+| Activates `vote:` | Names a bill or motion in the Floor Votes tab. A debate-then-vote scene is a `level` or `stage` activation followed by that vote |
+| The card | The tag and the note only; no chain counter |
+
+## 9. Order of work after "Go"
+
+| Phase | What |
+|---|---|
+| 1 | The tab and checks; Mandatory scenes; the note on the card; fires once; EV47 becomes DS01 |
+| 2 | Follow-ups, with branching and the five-follow-up limit |
+| 3 | Activations: level, event, unlock, then the named vote |
+| 4 | Optional scenes: windows on the Events screen and the lapse rule |
+| Alongside | The `DEC_` pictures and the art checklist section |
