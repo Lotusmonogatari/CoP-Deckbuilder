@@ -327,3 +327,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - P14 part one: the pop-up card, conversation dress, party discs and the stage outcome card (2026-11-20, Cameron; branch `panel/p14-remaining-screens`)
 - The Floor Vote built to the mock-up: cards, the action row up, likely outcome in green or red (2026-11-20, Cameron)
 - P14b: the remaining screens on the frame and pop-up cards: staff, deck, inventory, Travel page, bills, parties, reference screens, the level intro's bill card (2026-11-20, Cameron; branch `panel/p14b-remaining-screens`)
+- New visitor pictures VI101 and VI102, VI100 updated, three style icons (2026-11-21, Cameron)
