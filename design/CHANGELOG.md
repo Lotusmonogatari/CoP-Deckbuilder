@@ -1739,3 +1739,11 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | `DISTRICT_OFFICE_PC01` to `_PC04` | **In use already.** The Office asks for `DISTRICT_OFFICE_<protagonist>` at the District, so each protagonist now shows their own District office picture (before, a labelled placeholder). Checked for all four. |
 | `OUT_NEIGHBORHOOD_1` to `_5`, `OUT_NEIGHBORHOOD_WINTER_1` to `_3` | **Not yet used.** Events and stages name the scene `OUT_NEIGHBORHOOD` with no number, so these need the workbook's Image cells to list them (`OUT_NEIGHBORHOOD_1; OUT_NEIGHBORHOOD_2; ...`); a picture whose name carries WINTER is chosen when the text is wintry. Waiting for Cameron's workbook merge so the two edits do not collide. |
 | Files | The import files Godot makes for the 12 pictures are added. |
+
+## 2026-11-21: New visitor pictures (Cameron): 23 visitors
+
+| Part | What changed |
+|---|---|
+| Pictures | `VI79` to `VI100` and `VI164` arrived (Rera Saru, Koichi Satomi, Takashi Hamada, Michiko Sasaki, Setsuko Omura and the rest). All 23 are in the Visitors tab and use the `<ID>.png` name the loader expects, so they show at once. The import files Godot makes for them are added. |
+| To check | **VI79 (Rera Saru) is 154 x 493 px**, about a third the height of the others (most are over 1,300 px), so it will look soft at the size a visitor is shown. |
+| Still without a picture | 63 visitors in the Visitors tab (VI19 and VI101 onward, with gaps) still show the labelled placeholder. |
