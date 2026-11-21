@@ -2258,10 +2258,50 @@ func due_dated_event() -> String:
 	return str(due[0].get("event_id", "")) if not due.is_empty() else ""
 
 
-## The opponent row an event is about (its Speaker Title), or {}.
+## The opponent row an event is about, or {}: the Decision Scenes tab's Speaker when the event is a scene (and that speaker is
+## an opponent), else the event's Speaker Title.
 func event_speaker(event_id: String) -> Dictionary:
+	var scene := decision_scene_of(event_id)
+	for id: String in DecisionScenes.speaker_ids(scene):
+		if DecisionScenes.person_kind(id) == "opponent":
+			return DataDB.get_opponent(id)
 	var title: Variant = get_event(event_id).get("speaker_title")
 	return EventEngine.speaker(DataDB.opponents, "" if title == null else str(title))
+
+
+## The Decision Scenes row that holds this event, or {} when it is not a scene (2026-11-21).
+func decision_scene_of(event_id: String) -> Dictionary:
+	return DecisionScenes.of_event(DataDB.decision_scenes, event_id)
+
+
+## The people on a Decision! card, first speaker then second: {id, name, title, face}. Each id may be an opponent, a staff
+## member or a visitor (the Decision Scenes tab's Speaker columns). With no scene, the event's own speaker (a title lookup), if any.
+func event_speakers(event_id: String) -> Array:
+	var scene := decision_scene_of(event_id)
+	var out: Array = []
+	if scene.is_empty():
+		var lone := event_speaker(event_id)
+		if not lone.is_empty():
+			out.append({"id": str(lone.get("opp_id", "")), "name": str(lone.get("name", "")),
+				"title": OpponentDisplay.title_for(lone), "face": "neutral"})
+		return out
+	for id: String in DecisionScenes.speaker_ids(scene):
+		var kind := DecisionScenes.person_kind(id)
+		var opponent := DataDB.get_opponent(id) if kind == "opponent" else {}
+		var staff := DataDB.get_staff(id) if kind == "staff" else {}
+		var visitor := DataDB.get_visitor(id) if kind == "visitor" else {}
+		var name := str(opponent.get("name", staff.get("name", visitor.get("name_en", ""))))
+		var title := OpponentDisplay.title_for(opponent) if not opponent.is_empty() \
+			else str(staff.get("role", visitor.get("title", "")))
+		out.append({"id": id, "name": name, "title": title, "face": DecisionScenes.face(scene)})
+	return out
+
+
+## The office an event belongs to ("Capitol", "District", "Either"): its Decision Scenes row's Office when it is a scene, else
+## its own Location cell.
+func event_office(event: Dictionary) -> String:
+	var scene := decision_scene_of(str(event.get("event_id", "")))
+	return Offices.normalize(DecisionScenes.office(scene) if not scene.is_empty() else event.get("location"))
 
 
 ## The Buyable events, in workbook order.
@@ -6339,7 +6379,7 @@ func _arrive_after_level() -> void:
 ## A Dated event that belongs to one office opens the week there: the player is taken to it, at the Balance
 ## row's hours (0 = free). True when it moved them.
 func arrive_for_event(event: Dictionary) -> bool:
-	var office := Offices.normalize(event.get("location"))
+	var office := event_office(event)
 	if office == Offices.EITHER or office == office_location:
 		return false
 	var cost := Levers.whole("travel_forced_hours")

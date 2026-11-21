@@ -161,6 +161,7 @@ func _dated_address() -> void:
 	_expect(panel.visible, "the address opens on Monday 18.10.08")
 	_expect(panel.find_child("Speaker_OP10", true, false) != null, "the Prime Minister is shown")
 	_expect(_label_text(panel).contains("Scheduled for 18.10.08"), "the date is named")
+	_expect(_label_text(panel).contains("Mandatory"), "a scene says it is Mandatory (Decision Scenes tab)")
 	DirAccess.make_dir_recursive_absolute("user://shots")
 	get_viewport().get_texture().get_image().save_png("user://shots/dated_event.png")
 	var choice := panel.find_child("EventChoice_A", true, false) as Button

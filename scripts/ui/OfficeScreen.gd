@@ -1081,23 +1081,36 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 	# An Image cell may list several pictures; one is picked each time the event
 	# comes up and kept for its result screen (and when Back returns to it from
 	# a level's briefing).
-	var picture := str(_event_pictures.get(event_id, "")) if keep_picture else EventPicture.pick(event.get("image"),
+	# A Decision! scene's own pictures come first; with none, the event's Image cell (the fallback chain in the scheme).
+	var scene := GameState.decision_scene_of(event_id)
+	var scene_pictures := DecisionScenes.pictures(scene)
+	var picture_cell: Variant = "; ".join(scene_pictures) if not scene_pictures.is_empty() else event.get("image")
+	var picture := str(_event_pictures.get(event_id, "")) if keep_picture else EventPicture.pick(picture_cell,
 		"%s %s" % [event.get("title", ""), event.get("flavor", "")], DataDB.art.get("image_terms", {}))
 	_event_pictures[event_id] = picture
 	if not picture.is_empty():
 		rows.append(_picture_row(picture))
 	if str(event.get("trigger", "")) == "Dated":
 		rows.append(UiKit.line(Text.say("event.heading_dated", {"date": _event_date_label(str(event.get("on_date", "")))}), "SmallLabel"))
-		var speaker := GameState.event_speaker(event_id)
-		if not speaker.is_empty():
-			var face := PlaceholderArt.new()
-			face.name = "Speaker_" + str(speaker.get("opp_id", ""))
-			face.kind = PlaceholderArt.Kind.CHARACTER
-			face.art_id = str(speaker.get("opp_id", ""))
-			face.custom_minimum_size = Vector2(0, 420)
-			rows.append(face)
-			rows.append(UiKit.line(Text.say("event.speaker_line", {
-				"name": str(speaker.get("name", "")), "title": OpponentDisplay.title_for(speaker)}), "SmallLabel"))
+		var speakers := GameState.event_speakers(event_id)
+		if not speakers.is_empty():
+			# One speaker stands tall; two stand side by side (the Second Speaker column).
+			var faces := HBoxContainer.new()
+			faces.name = "Speakers"
+			faces.add_theme_constant_override("separation", 12)
+			for speaker: Dictionary in speakers:
+				var face := PlaceholderArt.new()
+				face.name = "Speaker_" + str(speaker.get("id", ""))
+				face.kind = PlaceholderArt.Kind.CHARACTER
+				face.art_id = str(speaker.get("id", ""))
+				face.expression = str(speaker.get("face", "neutral"))
+				face.custom_minimum_size = Vector2(0, 420 if speakers.size() == 1 else 340)
+				face.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				faces.add_child(face)
+			rows.append(faces)
+			for speaker: Dictionary in speakers:
+				rows.append(UiKit.line(Text.say("event.speaker_line", {
+					"name": str(speaker.get("name", "")), "title": str(speaker.get("title", ""))}), "SmallLabel"))
 	elif str(event.get("trigger", "")) == "Followup":
 		rows.append(UiKit.line(Text.say("event.heading_followup"), "SmallLabel"))
 	elif str(event.get("trigger", "")) == "Train":
@@ -1151,7 +1164,12 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 		button.name = "EventChoice_" + letter
 		choices.append(button)
 	# A calendar event is not for sale: nothing on a Decision! card is priced or bought, and it says so.
-	if str(event.get("trigger", "")) == "Dated":
+	# A scene says whether it is Mandatory or Optional (the Decision Scenes tab's Kind); any other calendar event, that it is
+	# set by the calendar.
+	if not scene.is_empty():
+		rows.append(UiKit.line(Text.say("event.scene_note_mandatory") if DecisionScenes.is_mandatory(scene)
+			else Text.say("event.scene_note_optional", {"days": 0}), "SmallLabel"))
+	elif str(event.get("trigger", "")) == "Dated":
 		rows.append(UiKit.line(Text.say("event.decision_note"), "SmallLabel"))
 	_event_panel.open_card({"tag": _event_tag(event), "tag_kind": _event_tag_kind(event), "meta": EventsModel.pop_meta(event),
 		"title": str(event.get("title", "")), "body": rows, "buttons": choices})

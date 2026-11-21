@@ -9784,5 +9784,19 @@
     "english": "Sponsored and custom bills are carried at {place}.",
     "placeholders": "place",
     "notes": "2026-11-21 (Cameron): sponsored and custom bills are Capitol-only. Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.scene_note_mandatory",
+    "where": "Decision! card: the note under the tag of a Mandatory scene",
+    "english": "Mandatory. It opens on its date, wherever you are.",
+    "placeholders": null,
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 1). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.scene_note_optional",
+    "where": "Decision! card: the note under the tag of an Optional scene, with the days left",
+    "english": "Optional. Open it from the Events screen within {days} days.",
+    "placeholders": "days",
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 1; used from phase 4). Claude's draft for Cameron to reword."
   }
 ]

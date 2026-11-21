@@ -29,13 +29,13 @@ static func coming() -> Array:
 	var out: Array = []
 	for event: Dictionary in EventEngine.upcoming_dated(DataDB.events, today, Levers.whole("events_coming_up_days"), GameState.dated_events_done):
 		var when := WeekCalendar.parse_date(str(event.get("on_date", "")))
-		var tag := Offices.normalize(event.get("location"))
+		var tag := GameState.event_office(event)
 		var line := ""
 		if tag != Offices.normalize(GameState.office_location) and tag != Offices.EITHER:
 			line = Text.say("event.decision_moves_you", {"place": TravelText.place_name(tag)})
 		var flavor: Variant = event.get("flavor")
 		out.append({"event_id": str(event.get("event_id", "")), "title": str(event.get("title", "")),
-			"meta": Text.say("event.coming_meta", {"day": _weekday(when), "office": TravelText.level_badge(event.get("location")),
+			"meta": Text.say("event.coming_meta", {"day": _weekday(when), "office": TravelText.level_badge(GameState.event_office(event)),
 				"hours": GameState.event_hours_text(event)}),
 			"flavor": "" if flavor == null else str(flavor), "moves": line})
 	return out
@@ -49,7 +49,7 @@ static func pop_meta(event: Dictionary) -> String:
 		var dated := WeekCalendar.parse_date(str(event.get("on_date", "")))
 		if dated >= 0:
 			day = dated
-	return Text.say("event.coming_meta", {"day": _weekday(day), "office": TravelText.level_badge(event.get("location")),
+	return Text.say("event.coming_meta", {"day": _weekday(day), "office": TravelText.level_badge(GameState.event_office(event)),
 		"hours": GameState.event_hours_text(event)})
 
 

@@ -521,6 +521,8 @@
   "event.row.one": "{title} ({hours} hour, {cost}円)",
   "event.row_free": "{title} ({hours} hours)",
   "event.row_free.one": "{title} ({hours} hour)",
+  "event.scene_note_mandatory": "Mandatory. It opens on its date, wherever you are.",
+  "event.scene_note_optional": "Optional. Open it from the Events screen within {days} days.",
   "event.speaker_line": "{name}, {title}",
   "event.tab_coming": "Coming up",
   "event.tab_here": "Arrange here",

@@ -1349,6 +1349,31 @@ SHEETS = {
                      "Delegate Role", "Delegate Hours",
                      "Task Pool Family", "Task Pool Change", "Task Pool Days", "Location"],
     },
+    # Decision scenes (2026-11-21, Cameron): the calendar's own DECISION! moments. A scene names the event that holds its title,
+    # flavor, choices and effects, says whether it is Mandatory (opens by itself and moves you) or Optional (opened from the Events
+    # screen inside a window), who speaks and which picture it wears. Follow-ups (Follows, Delay, Follow If) and what a scene starts
+    # (Activates) come in later phases. See design/proposals/DECISION_SCENES_SCHEME_2026-11-21.md and DecisionScenes.gd.
+    "Decision Scenes": {
+        "out": "decision_scenes.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Scene ID", "scene_id", "str"),
+            ("Event ID", "event_id", "str"),
+            ("Kind", "kind", "str"),
+            ("Opens", "opens", "str"),
+            ("Closes", "closes", "str"),
+            ("Office", "office", "str"),
+            ("Speaker", "speaker", "str"),
+            ("Second Speaker", "second_speaker", "str"),
+            ("Speaker Face", "speaker_face", "str"),
+            ("Scene Picture", "scene_picture", "id_list"),
+            ("Follows", "follows", "str"),
+            ("Delay", "delay", "int"),
+            ("Follow If", "follow_if", "id_list"),
+            ("Activates", "activates", "str"),
+            ("Notes", "notes", "str"),
+        ],
+    },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
     # followed by guest reactions. Options carry tags; organizations like and
@@ -3784,6 +3809,74 @@ def check_event_leads(data, report):
                 report.warn(f"Events {eid}", f"lead {lead} ({names[lead]}) is not named in the event's own title or flavor text")
 
 
+SCENE_KINDS = ("Mandatory", "Optional")
+SCENE_FACES = ("neutral", "attacking", "gaining")
+
+
+def _real_date(text):
+    """True when text is a real YY.MM.DD date."""
+    try:
+        y, m, d = (int(x) for x in str(text or "").split("."))
+        datetime.date(2000 + y, m, d)
+        return True
+    except ValueError:
+        return False
+
+
+def check_decision_scenes(data, report):
+    """Decision Scenes (2026-11-21): each row names a real event that is Dated on the scene's Opens day, a Kind (Mandatory or
+    Optional), an office, speakers that exist (opponent, staff or visitor IDs) and a face. A picture with no file is only a
+    warning. Follow-ups and Activates are checked in the later phases that build them."""
+    events = {str(e.get("event_id")): e for e in data.get("events", [])}
+    people = {str(o.get("opp_id")) for o in data.get("opponents", [])} | {str(s.get("staff_id")) for s in data.get("staff", [])} \
+        | {str(v.get("visitor_id")) for v in data.get("visitors", [])}
+    bg_dir = REPO_ROOT / "assets" / "backgrounds"
+    seen_ids, seen_events = set(), set()
+    for scene in data.get("decision_scenes", []):
+        sid = str(scene.get("scene_id"))
+        where = f"Decision Scenes {sid}"
+        if sid in seen_ids:
+            report.error(where, "Scene ID appears twice")
+        seen_ids.add(sid)
+        eid = str(scene.get("event_id") or "")
+        event = events.get(eid)
+        if event is None:
+            report.error(where, f"Event ID '{eid}' is not in the Events tab")
+        else:
+            if eid in seen_events:
+                report.error(where, f"Event {eid} already belongs to another scene")
+            seen_events.add(eid)
+            if scene.get("follows"):
+                report.error(where, "Follows is not built yet (phase 2)")
+            elif str(event.get("trigger")) != "Dated":
+                report.error(where, f"Event {eid} has Trigger '{event.get('trigger')}'; a first scene's event must be Dated")
+            elif str(event.get("on_date") or "") != str(scene.get("opens") or ""):
+                report.error(where, f"Opens is {scene.get('opens')!r} but Event {eid}'s On Date is {event.get('on_date')!r}; they must match")
+        if scene.get("kind") not in SCENE_KINDS:
+            report.error(where, f"Kind is {scene.get('kind')!r}; it must be Mandatory or Optional")
+        if not scene.get("follows") and not _real_date(scene.get("opens")):
+            report.error(where, f"Opens {scene.get('opens')!r} is not a real YY.MM.DD date")
+        if scene.get("kind") == "Optional":
+            if not _real_date(scene.get("closes")):
+                report.error(where, f"An Optional scene needs a real Closes date; it has {scene.get('closes')!r}")
+            elif _real_date(scene.get("opens")) and str(scene.get("closes")) < str(scene.get("opens")):
+                report.error(where, "Closes is before Opens")
+        elif scene.get("closes"):
+            report.warn(where, "Closes is only used by Optional scenes")
+        if scene.get("office") not in ("Capitol", "District"):
+            report.error(where, f"Office is {scene.get('office')!r}; it must be Capitol or District")
+        elif event is not None and event.get("location") not in (None, "", "Either", scene.get("office")):
+            report.error(where, f"Office is {scene.get('office')!r} but Event {eid}'s Location is {event.get('location')!r}; they must match")
+        for column in ("speaker", "second_speaker"):
+            if scene.get(column) and str(scene[column]) not in people:
+                report.error(where, f"{column.replace('_', ' ').title()} '{scene[column]}' is not an opponent, staff or visitor ID")
+        if scene.get("speaker_face") not in (None, "") and scene["speaker_face"] not in SCENE_FACES:
+            report.error(where, f"Speaker Face is {scene.get('speaker_face')!r}; it must be neutral, attacking or gaining")
+        for pic in scene.get("scene_picture") or []:
+            if not (bg_dir / f"{pic}.png").exists():
+                report.warn(where, f"Scene Picture '{pic}' has no file in assets/backgrounds")
+
+
 def check_offices(data, report):
     """Two offices (2026-11-20): every Location cell is Capitol, District, Either or blank; Travel Trips is 0, 1
     or 2 and only on a level that has a real office; a protagonist's travel hours are Balance rows."""
@@ -4979,6 +5072,7 @@ def main():
     check_commitments(data, report)
     check_offices(data, report)
     check_event_leads(data, report)
+    check_decision_scenes(data, report)
     check_places(data, report)
     check_followups(data, report)
     check_text_keys(data, report)

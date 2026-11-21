@@ -1754,3 +1754,17 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Pictures | `VI79` to `VI100` and `VI164` arrived (Rera Saru, Koichi Satomi, Takashi Hamada, Michiko Sasaki, Setsuko Omura and the rest). All 23 are in the Visitors tab and use the `<ID>.png` name the loader expects, so they show at once. The import files Godot makes for them are added. |
 | To check | **VI79 (Rera Saru) is 154 x 493 px**, about a third the height of the others (most are over 1,300 px), so it will look soft at the size a visitor is shown. |
 | Still without a picture | 63 visitors in the Visitors tab (VI19 and VI101 onward, with gaps) still show the labelled placeholder. |
+
+## Decision! scenes, phase 1: the Decision Scenes tab and Mandatory scenes (2026-11-21, Cameron; branch `feature/decision-scenes-1`)
+
+The first of four phases of the plan in `design/proposals/DECISION_SCENES_SCHEME_2026-11-21.md` (on branch `docs/art-gaps-and-decision-scenes-2026-11-21`). Content only so far: the Prime Minister's Opening Address (EV47) is now scene **DS01**, and plays exactly as before with two differences: its speaker comes from the new tab, and its card says **Mandatory**.
+
+| Part | What changed |
+|---|---|
+| New tab | **Decision Scenes** in the workbook: Scene ID, Event ID, Kind (Mandatory or Optional), Opens, Closes, Office, Speaker, Second Speaker, Speaker Face, Scene Picture, Follows, Delay, Follow If, Activates, Notes. Exported to `data/decision_scenes.json`. The Events row still holds the title, flavor text, choices and rewards. |
+| Checks | The exporter errors on: an Event ID that is not in Events, is not Dated, or whose On Date or Location differs from the scene's Opens or Office; an unknown Kind, Office or Speaker Face; a Speaker that is not an opponent, staff or visitor ID; an Optional scene with no Closes or a Closes before Opens; a scene ID or event used twice. A Scene Picture with no file is a warning. Follows is refused until phase 2. |
+| Card | A scene's card ends with a note: "Mandatory. It opens on its date, wherever you are." (Optional text exists for phase 4.) Speakers can be opponents, staff or visitors, up to two side by side, wearing the Speaker Face. A scene's own pictures come before the event's Image cell. |
+| Where you are taken | The scene's Office decides where a Mandatory scene takes you, and the Events lists show it. |
+| Rules | `scripts/rules/DecisionScenes.gd` (pure) and `GameState.decision_scene_of`, `event_speakers`, `event_office`. A scene fires once because its event is Dated and is remembered in `dated_events_done`, as before. |
+| Tests | `tests/test_decision_scenes.gd` (new) and a Mandatory check in the Dated-event click test. |
+| Not yet | Follow-ups (phase 2), activations (phase 3), Optional scenes (phase 4), the `DEC_` picture fallback chain and the art checklist section. |

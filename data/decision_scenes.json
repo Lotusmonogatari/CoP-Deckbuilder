@@ -1,0 +1,19 @@
+[
+  {
+    "scene_id": "DS01",
+    "event_id": "EV47",
+    "kind": "Mandatory",
+    "opens": "18.10.08",
+    "closes": null,
+    "office": "Capitol",
+    "speaker": "OP10",
+    "second_speaker": null,
+    "speaker_face": "neutral",
+    "scene_picture": null,
+    "follows": null,
+    "delay": null,
+    "follow_if": null,
+    "activates": null,
+    "notes": "Pilot (2026-11-21). The Prime Minister's Opening Address. Mandatory: opens by itself on its date and moves you to the Capitol. Claude's draft."
+  }
+]
