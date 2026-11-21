@@ -231,6 +231,7 @@ func test_hiring_a_different_role_does_not_trigger_the_bonus() -> void:
 
 func test_a_player_choice_item_asks_for_a_choice_before_doing_anything() -> void:
 	GameState.inventory["SH19"] = 1
+	GameState.office_location = Offices.CAPITOL   # the dinner is the Capitol's (2026-11-21)
 	var result := GameState.use_item_in_office("SH19")
 	assert_false(result.get("ok", true))
 	assert_true(result.get("needs_choice", false))
@@ -241,6 +242,7 @@ func test_a_player_choice_item_moves_exactly_the_chosen_booster() -> void:
 	# SH19 is TIER:National — pick one specific National booster and confirm
 	# only THAT one moved, never a random other member of the tier.
 	GameState.inventory["SH19"] = 1
+	GameState.office_location = Offices.CAPITOL   # the dinner is the Capitol's (2026-11-21)
 	GameState.booster_standing["BO05"] = 50
 	GameState.booster_standing["BO08"] = 50
 	var result := GameState.use_item_in_office("SH19", "BO08")

@@ -231,6 +231,17 @@ static func use_refusal(item: Dictionary, context: String, held: int,
 	return ""
 
 
+## Why an item that hosts an event cannot be used at this office, or "": a hosted event may belong to one office (Hosted Events'
+## Location: the dinner at the Capitol, the walking tour in the District; blank or Either means anywhere). `place` is the name of
+## the office it belongs to, for the sentence. Pure.
+static func office_refusal(hosted: Dictionary, here: String, place: String, words: Phrase = null) -> String:
+	var where := Offices.normalize(hosted.get("location"))
+	if hosted.is_empty() or where == Offices.EITHER or where == Offices.normalize(here):
+		return ""
+	var say := words if words != null else Phrase.new()
+	return say.say("item.refused.hosted_office", {"place": place})
+
+
 ## True for an item that is used on the Staff Assignments screen (it has a
 ## staff effect or gives a staff member hours).
 static func is_staff_item(item: Dictionary) -> bool:

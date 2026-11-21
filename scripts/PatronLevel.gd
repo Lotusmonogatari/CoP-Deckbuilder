@@ -108,6 +108,16 @@ static func _stakeholders(effects: Array) -> String:
 	return "; ".join(parts)
 
 
+## The office sponsored and custom bills are carried at: the Location of the bill-level templates (Capitol today); Either when
+## they are untagged. Read from the data, so retagging a template moves the bills.
+static func office() -> String:
+	for template: Dictionary in DataDB.bill_level_templates:
+		var tag := Offices.normalize(template.get("location"))
+		if tag != Offices.EITHER:
+			return tag
+	return Offices.EITHER
+
+
 ## A levels.json-shaped row: the template's stages in order, the last slot
 ## holding the bill's id (the Floor Vote), as every bill level does.
 static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenerator = null) -> Dictionary:
@@ -147,6 +157,8 @@ static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenera
 		"description": str(bill.get("bill_name", "")),
 		"tier": template.get("level_tier"),
 		"patron_bill_id": str(row.get("patron_bill_id", "")),
+		# The office its template belongs to (Capitol): sponsored and custom bills are carried there only (Cameron, 2026-11-21).
+		"location": template.get("location"),
 	}
 	# The visits, in the order their stages come up (visit_key()).
 	for index in range(visits.size()):

@@ -1366,7 +1366,11 @@ SHEETS = {
             ("Step 1 Prompt", "prompt_1", "str"),
             ("Step 2 Prompt", "prompt_2", "str"),
             ("Step 3 Prompt", "prompt_3", "str"),
+            # 2026-11-21 (Cameron): where it can be hosted: Capitol, District or Either (blank means Either). The dinner is the
+            # Capitol's and the walking tour the District's; the item that starts it is refused at the other office.
+            ("Location", "location", "str"),
         ],
+        "optional": ["Location"],
     },
     "Event Options": {
         "out": "event_options.json",
@@ -3784,7 +3788,8 @@ def check_offices(data, report):
     """Two offices (2026-11-20): every Location cell is Capitol, District, Either or blank; Travel Trips is 0, 1
     or 2 and only on a level that has a real office; a protagonist's travel hours are Balance rows."""
     for table, key in (("levels", "level_id"), ("events", "event_id"), ("bill_level_templates", "template_id"),
-                       ("office_notices", "notice_id"), ("office_ticker", "ticker_id"), ("visitors", "visitor_id")):
+                       ("office_notices", "notice_id"), ("office_ticker", "ticker_id"), ("visitors", "visitor_id"),
+                       ("hosted_events", "hosted_id")):
         for row in data.get(table, []):
             where = f"{table} {row.get(key)}"
             value = row.get("location")

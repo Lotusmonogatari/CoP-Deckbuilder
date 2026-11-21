@@ -255,6 +255,8 @@ const WALKING_TOUR := "SH20"
 
 func _walk_choice_picker_stays_visible_with_more_choices(office: Node) -> bool:
 	GameState.inventory[WALKING_TOUR] = 1
+	# The walking tour is the District's (Hosted Events' Location, 2026-11-21): host it from there.
+	GameState.office_location = Offices.DISTRICT
 	var constituency := DataDB.boosters_for_tier("Constituency")
 
 	await _click(office.find_child("InventoryButton", true, false) as Control)

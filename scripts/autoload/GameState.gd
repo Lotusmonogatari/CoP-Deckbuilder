@@ -4726,9 +4726,21 @@ func buy_funds_cap(item_id: String) -> Dictionary:
 ## rather than a reason to show the player.
 ##
 ## Returns { "ok": bool, "message": String } or { "ok": false, "needs_choice": true }.
+## Why an item that hosts an event cannot be used at the office the player stands in, or "" (the dinner is locked to the
+## Capitol and the walking tour to the District, by the Hosted Events tab's Location).
+func item_office_refusal(item: Dictionary) -> String:
+	var hosted_id := str(item.get("hosted_event", "")) if item.get("hosted_event") != null else ""
+	if hosted_id.is_empty():
+		return ""
+	var hosted := get_hosted_event(hosted_id)
+	return Items.office_refusal(hosted, office_location, TravelText.place_name(Offices.normalize(hosted.get("location"))), Text.phrase())
+
+
 func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := Items.use_refusal(item, Items.OFFICE, item_count(item_id), Text.phrase())
+	if refusal.is_empty():
+		refusal = item_office_refusal(item)
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
 	if Items.is_player_choice(item) and chosen_target.is_empty():
@@ -5734,7 +5746,9 @@ func start_patron_level(patron_bill_id: String, replace: String = "", with_id: S
 		return false
 	# The same rule as a written level: it must end within the work week
 	# (Cameron, 2026-11-04). Sponsored and drafted bills are work-week levels.
-	last_level_start_refusal = work_week_level_refusal(built["level"] as Dictionary)
+	last_level_start_refusal = level_office_refusal(built["level"] as Dictionary)
+	if last_level_start_refusal.is_empty():
+		last_level_start_refusal = work_week_level_refusal(built["level"] as Dictionary)
 	if not last_level_start_refusal.is_empty():
 		return false
 	var tries := int((patron_requests.get(patron_bill_id, {}) as Dictionary).get("tries", 0))
@@ -5803,6 +5817,10 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 
 ## Why a bill of `ids` cannot be drafted now ("" when it can).
 func draft_refusal(ids: Array, extra_visit: bool = false) -> String:
+	# A custom bill is carried at the Capitol only (Cameron, 2026-11-21): refused first, with where to go.
+	var elsewhere := level_office_refusal({"location": PatronLevel.office()})
+	if not elsewhere.is_empty():
+		return elsewhere
 	return DraftBill.refusal(ids, {"enacted": enacted_components, "xp": xp, "funds": int(meta.get("Funds", 0)),
 		"time_units": time_units, "last_draft_at": last_draft_at, "in_level": is_in_level(),
 		"extra_visit": extra_visit, "funds_limit": funds_limit(), "petition": funds_cap_item_name()})
