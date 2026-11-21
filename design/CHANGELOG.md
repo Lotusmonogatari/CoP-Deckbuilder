@@ -1739,3 +1739,11 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | `DISTRICT_OFFICE_PC01` to `_PC04` | **In use already.** The Office asks for `DISTRICT_OFFICE_<protagonist>` at the District, so each protagonist now shows their own District office picture (before, a labelled placeholder). Checked for all four. |
 | `OUT_NEIGHBORHOOD_1` to `_5`, `OUT_NEIGHBORHOOD_WINTER_1` to `_3` | **Not yet used.** Events and stages name the scene `OUT_NEIGHBORHOOD` with no number, so these need the workbook's Image cells to list them (`OUT_NEIGHBORHOOD_1; OUT_NEIGHBORHOOD_2; ...`); a picture whose name carries WINTER is chosen when the text is wintry. Waiting for Cameron's workbook merge so the two edits do not collide. |
 | Files | The import files Godot makes for the 12 pictures are added. |
+
+## 2026-11-21: Protagonist pictures for PC02 and PC03 (Cameron)
+
+| Part | What changed |
+|---|---|
+| Updated pictures | The six expressions (neutral, attacking, damaged, gaining, guarding, victory) of **PC02 Haru Yashi** and **PC03 Arata Ran** were replaced with the new drawings. |
+| Red outfit | Twelve new red-outfit pictures arrived named `PC02_attacking_red.png` and so on. The game looks for `<ID>_RED_<expression>.png` (as PC01 and PC04 already have), so the files were **renamed** (a git rename) to `PC02_RED_attacking.png` etc. The red outfit (cosmetic package CP01) now has all four protagonists and all six expressions. |
+| Test | `tests/test_protagonist_outfit_pictures.gd` (2): the red picture resolves for every protagonist and expression, and the plain one is used without the outfit. |
