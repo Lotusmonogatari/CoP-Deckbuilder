@@ -10,13 +10,14 @@ stands in for every expression.
 | Protagonists | 24 / 28 |
 | Opponents | 7 / 655 |
 | Staff | 105 / 105 |
-| Visitors | 520 / 835 |
+| Visitors | 530 / 835 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
-| Cosmetic package icons | 6 / 8 |
+| Cosmetic package icons | 8 / 8 |
+| Decision scenes with a picture to show | 0 / 1 |
 
 ## Protagonists — `assets/characters/protagonists/`
 
@@ -293,8 +294,8 @@ stands in for every expression.
 | VI98 | Shinobu Kikuchi | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI99 | Emi Yoshida | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI100 | Kenta Aoki | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI101 | Sachiko Nomura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI102 | Tomekichi Sakai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI101 | Sachiko Nomura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI102 | Tomekichi Sakai | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI103 | Ryo Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI104 | Misao Ogawa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI105 | Noriko Taniguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -595,5 +596,11 @@ stands in for every expression.
 | walking_tour.png | City Corridor Tour | ✓ |
 | calendar_era.png | Era Name Calendar | ✓ |
 | calendar_ainu.png | Ainu Calendar | ✓ |
-| CP07.png | Broadcast | ☐ |
-| CP08.png | Woodblock | ☐ |
+| CP07.png | Broadcast | ✓ |
+| CP08.png | Woodblock | ✓ |
+
+## Decision scenes
+
+| Scene | Event | Own picture(s) | Shared office picture | Speakers |
+|---|---|---|---|---|
+| DS01 (Mandatory) | EV47 | none named | DEC_PLACE_CAPITOL ☐ | OP10 ☐ |

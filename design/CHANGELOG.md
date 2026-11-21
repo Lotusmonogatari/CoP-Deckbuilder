@@ -1762,3 +1762,58 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Pictures | `VI101` (Sachiko Nomura, Farmers' Market Manager) and `VI102` (Tomekichi Sakai, Eighty-Four-Year-Old Farmer) arrived and match their Visitors-tab rows, so they show at once. `VI100` (Kenta Aoki) was replaced with a new picture. Their import files are added. |
 | Style icons | `CP07`, `CP08` and `CP09` arrived in `assets/icons`, with import files. They are not shown yet: the Cosmetic Packages tab's Icon cells for CP07 and CP08 are blank and CP09 has no row; that waits on the Yezo Office decision. |
 | Still without a picture | 61 visitors in the Visitors tab. |
+## Decision! scenes, phase 1: the Decision Scenes tab and Mandatory scenes (2026-11-21, Cameron; branch `feature/decision-scenes-1`)
+
+The first of four phases of the plan in `design/proposals/DECISION_SCENES_SCHEME_2026-11-21.md` (on branch `docs/art-gaps-and-decision-scenes-2026-11-21`). Content only so far: the Prime Minister's Opening Address (EV47) is now scene **DS01**, and plays exactly as before with two differences: its speaker comes from the new tab, and its card says **Mandatory**.
+
+| Part | What changed |
+|---|---|
+| New tab | **Decision Scenes** in the workbook: Scene ID, Event ID, Kind (Mandatory or Optional), Opens, Closes, Office, Speaker, Second Speaker, Speaker Face, Scene Picture, Follows, Delay, Follow If, Activates, Notes. Exported to `data/decision_scenes.json`. The Events row still holds the title, flavor text, choices and rewards. |
+| Checks | The exporter errors on: an Event ID that is not in Events, is not Dated, or whose On Date or Location differs from the scene's Opens or Office; an unknown Kind, Office or Speaker Face; a Speaker that is not an opponent, staff or visitor ID; an Optional scene with no Closes or a Closes before Opens; a scene ID or event used twice. A Scene Picture with no file is a warning. Follows is refused until phase 2. |
+| Card | A scene's card ends with a note: "Mandatory. It opens on its date, wherever you are." (Optional text exists for phase 4.) Speakers can be opponents, staff or visitors, up to two side by side, wearing the Speaker Face. A scene's own pictures come before the event's Image cell. |
+| Where you are taken | The scene's Office decides where a Mandatory scene takes you, and the Events lists show it. |
+| Rules | `scripts/rules/DecisionScenes.gd` (pure) and `GameState.decision_scene_of`, `event_speakers`, `event_office`. A scene fires once because its event is Dated and is remembered in `dated_events_done`, as before. |
+| Tests | `tests/test_decision_scenes.gd` (new) and a Mandatory check in the Dated-event click test. |
+| Not yet | Follow-ups (phase 2), activations (phase 3), Optional scenes (phase 4), the `DEC_` picture fallback chain and the art checklist section. |
+
+## Decision! scenes, phase 2: follow-ups with branching (2026-11-21, Cameron; branch `feature/decision-scenes-2`, stacked on `feature/decision-scenes-1`)
+
+Content is still only DS01; the machinery now exists for you to write follow-ups in the Decision Scenes tab. Nothing in play changes until a follow-up row is added.
+
+| Part | What changed |
+|---|---|
+| How to write one | A follow-up is a row whose **Follows** names an earlier scene, with **Delay** (days after that scene was *answered*) and **Follow If** (the earlier scene's choice letters that lead here; blank = any choice). Its **Event ID** is an Events row with Trigger **Followup** that holds its title, text and choices. **Opens** stays blank. |
+| Branching | Two follow-ups may follow the same scene with different Follow If letters; only the one matching the choice made comes. A follow-up may itself be followed. |
+| Limit | One first scene has at most **five** follow-ups in all, down every branch; the exporter errors above that. It also errors on a Follows that is not a scene or loops back, a Follow If letter the earlier event has no choice for, and a follow-up whose event is not Followup or which has an Opens. A blank Delay is a warning (the follow-up comes the day the earlier scene is answered). |
+| In play | Answering a scene records the day and the letter (`GameState.decision_log`, saved). A follow-up comes due on that day plus its Delay and opens by itself at the next Office open, taking you to its office free, like any Mandatory scene; it wears the same DECISION! tag and Mandatory note, with no counter. It fires once. |
+| Coming up | A follow-up whose Delay is running shows in the Events screen's Coming up tab. |
+| Rules | `DecisionScenes.due_day`, `due_follow_ups`, `upcoming_follow_ups`, `descendant_count`, `follow_if`, `children_of` (pure). |
+| Tests | Eight new tests in `tests/test_decision_scenes.gd` (delay from the answered day, branching, window, five-limit counting, loops, saving). |
+
+## Decision! scenes, phase 3: scenes that start other parts of the game (2026-11-21, Cameron; branch `feature/decision-scenes-3`, stacked on phase 2)
+
+Machinery only; no scene in the workbook activates anything yet, so nothing in play changes until you fill an **Activates** cell.
+
+| Part | What changed |
+|---|---|
+| How to write it | The **Activates** cell lists entries `kind:ID` separated by `;`. Kinds: `level:LVxx` (an existing level, usually Event Only), `stage:STxx` (one room on its own), `vote:BIxx` (a Floor Vote on a named bill or motion row of the Floor Votes tab), `event:EVxx` (queued for the next Office visit), `unlock:LVxx` (the level becomes available, like a choice's Unlocks Level). |
+| One addition to the scheme | An entry may end with `@A,B` to fire only for those choices ("vote:BI51@A; event:EV30"). Without it the entry fires whatever was chosen. This lets "Skip it" differ from "Take part" without a second scene. |
+| In play | Answering the scene applies unlock and event at once. A level, stage or vote waits: the result card says "Next: <name>.", Continue opens its normal briefing, **Back leaves it waiting** and the Office offers it again each time it opens until Go in begins it. A stage or vote becomes a one-stage level (`DSL_<kind>_<ID>`); a debate-then-vote is a level that ends in the vote, or a stage entry followed by a vote entry on a later follow-up scene. |
+| Not a cleared level | A scene's one-stage level is not added to the levels-cleared list. |
+| Saving | Waiting activations and the level being played are saved (`pending_activations`, `scene_runtime`). |
+| Checks | The exporter errors on an unknown kind, an ID that is not a level, stage, bill or event, a malformed entry, and an `@` letter the scene's event has no choice for. |
+| Tests | Six unit tests (parsing, limits by choice, the one-stage level, unlock, queued event, playing a vote to its end) and a real-click test `scene_activation_test` (answer, result card, briefing, Back, offered again, Go in, a one-stage Floor Vote). |
+| Not yet | Optional scenes (phase 4) and the `DEC_` picture fallback chain. |
+
+## Decision! scenes, phase 4: Optional scenes, lapses and the picture fallback (2026-11-21, Cameron; branch `feature/decision-scenes-4`, stacked on phase 3)
+
+The scheme is now fully built. Nothing in play changes until you write scenes: only DS01 (Mandatory) exists. A how-to is in `design/CONTENT_GUIDE.md` ("Decision! scenes").
+
+| Part | What changed |
+|---|---|
+| Optional scenes | Kind `Optional` with a Closes date (or, for a follow-up, a window from its Delay to its Closes). They never open by themselves and never move you. The Events screen's Arrange here tab lists each as a red DECISION! card with "Optional · N days left" (or "last day"), its office, and **Open it**; away from its office the button is greyed with "Open this at <place>." The Coming up tab lists ones opening soon. Opening one shows the usual card, with the note "Optional. You chose to open this one." |
+| Lapse | When the window closes unopened, the Office opens with one "Missed decisions" card: each title, "You let this one pass.", the L choice's result text and its effects. The scene is then remembered, so it is told once. The penalty charges what there is (never refused), spends no hours, and a scene with no L row lapses quietly. Follow If may use `L`. |
+| Reserved letter | An event may have a choice lettered `L` only if its scene is Optional; it is never a button (`EventEngine.choices_for` hides it). |
+| Pictures | A scene with no Scene Picture and no event Image wears `DEC_PLACE_CAPITOL` or `DEC_PLACE_DISTRICT` when drawn (one picture per office, a simplification of the planned `DEC_PLACE_<OFFICE>_<name>`). The art checklist has a Decision scenes section. |
+| Text | Eight Text rows (`event.optional_*`, `decision.lapsed_*`). |
+| Tests | Nine unit tests (windows, lapse, never self-opening, the hidden letter, penalty once, quiet lapse) and a real-click test `optional_scene_test` (lapse card on opening the Office, the listed card with its days, Open it, the note, answering once). |

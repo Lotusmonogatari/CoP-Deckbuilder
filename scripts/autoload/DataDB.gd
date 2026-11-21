@@ -41,7 +41,7 @@ const REQUIRED_FILES := [
 	"player", "player_cues", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "strings",
-	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues", "awareness_effects", "events", "event_choices", "hosted_events", "event_options", "organization_tastes", "reaction_lines",
+	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues", "awareness_effects", "events", "decision_scenes", "event_choices", "hosted_events", "event_options", "organization_tastes", "reaction_lines",
 	"cosmetic_packages", "ui_styles", "move_flashes", "staff_tasks", "staff_task_families", "staff_task_ramp", "staff_task_drivers", "transition_cast", "transition_backgrounds", "transition_dialogue",
 ]
 
@@ -106,6 +106,8 @@ var transition_dialogue: Array = []
 var vote_influence_triggers: Array = []
 var awareness_effects: Array = []
 var events: Array = []
+## Decision! scenes (2026-11-21): the Decision Scenes tab, one row per scene (DecisionScenes.gd).
+var decision_scenes: Array = []
 var event_choices: Array = []
 var hosted_events: Array = []
 var event_options: Array = []
@@ -411,6 +413,7 @@ func load_all() -> void:
 			"vote_influence_triggers": vote_influence_triggers = content if content is Array else []
 			"awareness_effects": awareness_effects = content if content is Array else []
 			"events": events = content if content is Array else []
+			"decision_scenes": decision_scenes = content if content is Array else []
 			"event_choices": event_choices = content if content is Array else []
 			"hosted_events": hosted_events = content if content is Array else []
 			"event_options": event_options = content if content is Array else []

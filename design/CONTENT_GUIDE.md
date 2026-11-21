@@ -340,3 +340,18 @@ The Levels tab's optional **Protagonist** column keeps a level to one protagonis
 The Events tab has an optional **Lead Organizations** column: up to two organization IDs (`BO19` or `BO05; BO16`). A lead is an organization the event's own title or flavor text **names**, usually the one bringing the issue forward. An organization that only gets a passive plus or minus from one of the choices is **not** a lead. A blank cell means no lead, and the card shows nothing. The event card shows each lead's icon and name under the story.
 
 The exporter errors on more than two, or an ID that is not an organization, and warns when a lead is not named in the event's own title or flavor. `python3 tools/audit_event_leads.py` lists what needs a look (events that name more than two, a lead that is not named, organizations named only in a choice).
+
+## Decision! scenes (2026-11-21)
+
+A Decision! scene is an event the calendar schedules, shown on the red DECISION! card. The **Decision Scenes** tab holds one row per scene; the title, flavor text, choices and their rewards stay in **Events** and **Event Choices**.
+
+| To make | Do this |
+|---|---|
+| A **Mandatory** scene | An Events row with Trigger `Dated` and an On Date; a Decision Scenes row with that Event ID, Kind `Mandatory`, **Opens** equal to the On Date, an Office and a Speaker (opponent, staff or visitor ID). It opens by itself on that day and moves you to its office, free. |
+| An **Optional** scene | The same, with Kind `Optional` and a **Closes** date. It never opens by itself and never moves you: the Events screen lists it (with its days left) at its own office. If the window closes unopened it lapses and applies **Event Choices letter `L`** for its event (never shown as a button; any reward or cost column works as the penalty). |
+| A **follow-up** | An Events row with Trigger `Followup`; a scene row with **Follows** (the earlier scene's ID), **Delay** (days after that scene was answered) and optionally **Follow If** (the earlier choice letters that lead here; blank = any; `L` for a lapsed Optional scene). Leave Opens blank. Up to five follow-ups in all under one first scene, branching allowed. An Optional follow-up needs a Closes date. |
+| Something a scene **starts** | The **Activates** cell: `level:LV12; stage:ST30; vote:BI51; event:EV30; unlock:LV98`, each optionally limited to some choices with `@A,B` (`vote:BI51@A`). A vote is a Floor Vote on a bill or motion row in the Floor Votes tab; a debate-then-vote is a level ending in that vote. |
+| Pictures | Name them in **Scene Picture** (`DEC_EV47_1`). With none, the scene shows `DEC_PLACE_CAPITOL` or `DEC_PLACE_DISTRICT` if drawn, else the event's Image cell. `tools/art_checklist.py` lists what is missing. |
+| Speakers | **Speaker** and **Second Speaker** with a **Speaker Face** (`neutral`, `attacking`, `gaining`). |
+
+The exporter checks every cell and says what to fix. A scene fires once: answering it, or letting an Optional one lapse, is remembered for the run.

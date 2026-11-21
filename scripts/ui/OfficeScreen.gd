@@ -542,7 +542,7 @@ func _build() -> void:
 	_show_trigger_alerts_if_any()
 	_show_broken_promises_if_any()
 	_show_resume_choice_if_in_level()
-	if not _show_followup_if_due() and not _show_dated_event_if_due():
+	if not _show_lapses_if_any() and not _show_followup_if_due() and not _show_dated_event_if_due() and not _show_activation_if_pending():
 		_show_random_event_if_due()
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
@@ -883,6 +883,9 @@ func _show_events(tab: String) -> void:
 		rows.append(_ground_line(Text.say("event.list_hint"), look))
 		if not coming.is_empty():
 			rows.append(EventsView.decision_banner(look, coming[0]))
+		# Optional Decision! scenes open now: opened from here, at their own office (phase 4).
+		for entry: Dictionary in EventsModel.optional_rows():
+			rows.append(EventsView.optional_card(look, entry, _on_open_optional))
 		var arrangeable := EventsModel.rows()
 		if arrangeable.is_empty():
 			rows.append(_ground_line(Text.say("event.none"), look))
@@ -899,6 +902,41 @@ func _show_events(tab: String) -> void:
 	})
 	frame.tab_chosen.connect(_show_events)
 	_events_panel.open_frame(frame, Text.say("ui.back_office"))
+
+
+## An Optional Decision! scene is opened from the Events screen: nothing is charged to open it, and it shows like any scene.
+func _on_open_optional(event_id: String) -> void:
+	if not GameState.optional_scene_refusal(event_id).is_empty():
+		_show_events_list()
+		return
+	_events_panel.close()
+	_present_event(event_id, false)
+
+
+## Optional scenes whose window closed unopened apply their penalty and are told here, once, as one card (phase 4). True when shown.
+func _show_lapses_if_any() -> bool:
+	if GameState.is_in_level() or OS.has_environment("COP_NO_RANDOM_EVENTS"):
+		return false
+	var told := GameState.apply_scene_lapses()
+	if told.is_empty():
+		return false
+	var rows: Array[Control] = []
+	for entry: Dictionary in told:
+		rows.append(UiKit.heading(str(GameState.get_event(str(entry["event_id"])).get("title", ""))))
+		rows.append(UiKit.line(Text.say("decision.lapsed_note"), "SmallLabel"))
+		if not str(entry["result_text"]).is_empty():
+			rows.append(UiKit.line(str(entry["result_text"])))
+		for line: String in entry["lines"]:
+			rows.append(UiKit.line(line, "SmallLabel"))
+	var done := Button.new()
+	done.name = "LapseContinueButton"
+	done.custom_minimum_size = Vector2(0, 100)
+	done.text = Text.say("event.continue")
+	done.pressed.connect(_on_event_done)
+	var foot: Array[Control] = [done]
+	_event_panel.open_card({"tag": Text.say("popup.tag_decision"), "tag_kind": PopupCardStyles.ALARM,
+		"title": Text.say("decision.lapsed_title"), "body": rows, "buttons": foot, "primary": 0})
+	return true
 
 
 func _on_arrange_event(event_id: String) -> void:
@@ -956,6 +994,19 @@ func _show_followup_if_due() -> bool:
 	if event_id.is_empty():
 		return false
 	_present_event(event_id, true)
+	return true
+
+
+## A level, stage or vote that an answered Decision! scene started (phase 3): its briefing opens, and Back leaves it waiting for
+## the next time the Office opens. True when one was shown.
+func _show_activation_if_pending() -> bool:
+	if GameState.is_in_level() or OS.has_environment("COP_NO_RANDOM_EVENTS"):
+		return false
+	var next := GameState.next_activation()
+	if next.is_empty():
+		return false
+	_chosen_level = next["level"] as Dictionary
+	_show_briefing()
 	return true
 
 
@@ -1062,12 +1113,17 @@ func _moved_speaker() -> Dictionary:
 
 ## The kind tag of an event's pop-up card: DECISION! for the calendar's own events, SOMETHING COMES UP for the rest.
 func _event_tag(event: Dictionary) -> String:
-	return Text.say("popup.tag_decision" if str(event.get("trigger", "")) == "Dated" else "popup.tag_scenario")
+	return Text.say("popup.tag_decision" if _is_decision(event) else "popup.tag_scenario")
 
 
 ## Red for a calendar event (the spec's alarm colour), the accent for the rest.
 func _event_tag_kind(event: Dictionary) -> String:
-	return PopupCardStyles.ALARM if str(event.get("trigger", "")) == "Dated" else PopupCardStyles.ACCENT
+	return PopupCardStyles.ALARM if _is_decision(event) else PopupCardStyles.ACCENT
+
+
+## A DECISION! event: a Dated one, or any Decision! scene (a follow-up is a scene whose event is not Dated).
+func _is_decision(event: Dictionary) -> bool:
+	return str(event.get("trigger", "")) == "Dated" or not GameState.decision_scene_of(str(event.get("event_id", ""))).is_empty()
 
 
 ## The event screen: its title, flavor text and one button per choice, on the pop-up card (P14, 2026-11-20): the choices are
@@ -1081,23 +1137,42 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 	# An Image cell may list several pictures; one is picked each time the event
 	# comes up and kept for its result screen (and when Back returns to it from
 	# a level's briefing).
-	var picture := str(_event_pictures.get(event_id, "")) if keep_picture else EventPicture.pick(event.get("image"),
+	# A Decision! scene's own pictures come first; with none, the event's Image cell (the fallback chain in the scheme).
+	var scene := GameState.decision_scene_of(event_id)
+	var scene_pictures := DecisionScenes.pictures(scene)
+	var picture_cell: Variant = "; ".join(scene_pictures) if not scene_pictures.is_empty() else event.get("image")
+	# With neither, a scene wears its office's shared picture (DEC_PLACE_CAPITOL, DEC_PLACE_DISTRICT) when one is drawn.
+	if not scene.is_empty() and EventPicture.options(picture_cell).is_empty():
+		var place_picture := "DEC_PLACE_" + DecisionScenes.office(scene).to_upper()
+		if not ArtLoader.background_path(place_picture).is_empty():
+			picture_cell = place_picture
+	var picture := str(_event_pictures.get(event_id, "")) if keep_picture else EventPicture.pick(picture_cell,
 		"%s %s" % [event.get("title", ""), event.get("flavor", "")], DataDB.art.get("image_terms", {}))
 	_event_pictures[event_id] = picture
 	if not picture.is_empty():
 		rows.append(_picture_row(picture))
-	if str(event.get("trigger", "")) == "Dated":
-		rows.append(UiKit.line(Text.say("event.heading_dated", {"date": _event_date_label(str(event.get("on_date", "")))}), "SmallLabel"))
-		var speaker := GameState.event_speaker(event_id)
-		if not speaker.is_empty():
-			var face := PlaceholderArt.new()
-			face.name = "Speaker_" + str(speaker.get("opp_id", ""))
-			face.kind = PlaceholderArt.Kind.CHARACTER
-			face.art_id = str(speaker.get("opp_id", ""))
-			face.custom_minimum_size = Vector2(0, 420)
-			rows.append(face)
-			rows.append(UiKit.line(Text.say("event.speaker_line", {
-				"name": str(speaker.get("name", "")), "title": OpponentDisplay.title_for(speaker)}), "SmallLabel"))
+	if str(event.get("trigger", "")) == "Dated" or not scene.is_empty():
+		if str(event.get("trigger", "")) == "Dated":
+			rows.append(UiKit.line(Text.say("event.heading_dated", {"date": _event_date_label(str(event.get("on_date", "")))}), "SmallLabel"))
+		var speakers := GameState.event_speakers(event_id)
+		if not speakers.is_empty():
+			# One speaker stands tall; two stand side by side (the Second Speaker column).
+			var faces := HBoxContainer.new()
+			faces.name = "Speakers"
+			faces.add_theme_constant_override("separation", 12)
+			for speaker: Dictionary in speakers:
+				var face := PlaceholderArt.new()
+				face.name = "Speaker_" + str(speaker.get("id", ""))
+				face.kind = PlaceholderArt.Kind.CHARACTER
+				face.art_id = str(speaker.get("id", ""))
+				face.expression = str(speaker.get("face", "neutral"))
+				face.custom_minimum_size = Vector2(0, 420 if speakers.size() == 1 else 340)
+				face.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				faces.add_child(face)
+			rows.append(faces)
+			for speaker: Dictionary in speakers:
+				rows.append(UiKit.line(Text.say("event.speaker_line", {
+					"name": str(speaker.get("name", "")), "title": str(speaker.get("title", ""))}), "SmallLabel"))
 	elif str(event.get("trigger", "")) == "Followup":
 		rows.append(UiKit.line(Text.say("event.heading_followup"), "SmallLabel"))
 	elif str(event.get("trigger", "")) == "Train":
@@ -1151,7 +1226,12 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 		button.name = "EventChoice_" + letter
 		choices.append(button)
 	# A calendar event is not for sale: nothing on a Decision! card is priced or bought, and it says so.
-	if str(event.get("trigger", "")) == "Dated":
+	# A scene says whether it is Mandatory or Optional (the Decision Scenes tab's Kind); any other calendar event, that it is
+	# set by the calendar.
+	if not scene.is_empty():
+		rows.append(UiKit.line(Text.say("event.scene_note_mandatory") if DecisionScenes.is_mandatory(scene)
+			else Text.say("event.scene_note_optional"), "SmallLabel"))
+	elif str(event.get("trigger", "")) == "Dated":
 		rows.append(UiKit.line(Text.say("event.decision_note"), "SmallLabel"))
 	_event_panel.open_card({"tag": _event_tag(event), "tag_kind": _event_tag_kind(event), "meta": EventsModel.pop_meta(event),
 		"title": str(event.get("title", "")), "body": rows, "buttons": choices})
@@ -4982,6 +5062,8 @@ func _on_start() -> void:
 
 	# A mixed level's trips between the offices come off the week as it begins (two offices, 2026-11-20).
 	GameState.pay_level_travel(_chosen_level, _travel_mode)
+	# A level a Decision! scene started is no longer waiting (phase 3).
+	GameState.finish_activation(str(_chosen_level.get("level_id", "")))
 
 	# The runner is handed over rather than rebuilt, so the level keeps its
 	# place and its carried buffs as the battle screen moves through it.

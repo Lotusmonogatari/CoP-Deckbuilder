@@ -328,3 +328,7 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The Floor Vote built to the mock-up: cards, the action row up, likely outcome in green or red (2026-11-20, Cameron)
 - P14b: the remaining screens on the frame and pop-up cards: staff, deck, inventory, Travel page, bills, parties, reference screens, the level intro's bill card (2026-11-20, Cameron; branch `panel/p14b-remaining-screens`)
 - New visitor pictures VI101 and VI102, VI100 updated, three style icons (2026-11-21, Cameron)
+- Decision! scenes, phase 1: the Decision Scenes tab, Mandatory scenes, EV47 becomes DS01 (2026-11-21, Cameron; branch `feature/decision-scenes-1`)
+- Decision! scenes, phase 2: follow-ups with branching, up to five per first scene (2026-11-21, Cameron; branch `feature/decision-scenes-2`)
+- Decision! scenes, phase 3: scenes that start a level, stage, named vote, event or unlock (2026-11-21, Cameron; branch `feature/decision-scenes-3`)
+- Decision! scenes, phase 4: Optional scenes, lapses, the picture fallback and a writing guide (2026-11-21, Cameron; branch `feature/decision-scenes-4`)

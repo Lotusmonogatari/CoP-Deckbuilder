@@ -9784,5 +9784,82 @@
     "english": "Sponsored and custom bills are carried at {place}.",
     "placeholders": "place",
     "notes": "2026-11-21 (Cameron): sponsored and custom bills are Capitol-only. Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.scene_note_mandatory",
+    "where": "Decision! card: the note under the tag of a Mandatory scene",
+    "english": "Mandatory. It opens on its date, wherever you are.",
+    "placeholders": null,
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 1). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.scene_note_optional",
+    "where": "Decision! card: the note under the tag of an Optional scene, with the days left",
+    "english": "Optional. You chose to open this one.",
+    "placeholders": null,
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 1; used from phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "decision.activation_ready",
+    "where": "Decision! result card: a level, stage or vote the scene has started",
+    "english": "Next: {name}.",
+    "placeholders": "name",
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 3). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.optional_elsewhere",
+    "where": "Events screen: why an open Optional decision cannot be opened here",
+    "english": "Open this at {place}.",
+    "placeholders": "place",
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.optional_closed",
+    "where": "Events screen: an Optional decision whose window has closed",
+    "english": "This is no longer open.",
+    "placeholders": null,
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.optional_open",
+    "where": "Events screen: the button that opens an Optional decision",
+    "english": "Open it",
+    "placeholders": null,
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.optional_meta",
+    "where": "Events screen: an Optional decision's time left",
+    "english": "Optional · {days} days left",
+    "placeholders": "days",
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.optional_meta_one",
+    "where": "Events screen: an Optional decision's last day",
+    "english": "Optional · last day",
+    "placeholders": null,
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "event.optional_coming_meta",
+    "where": "Events screen, Coming up: when an Optional decision opens",
+    "english": "Optional · opens {day}",
+    "placeholders": "day",
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "decision.lapsed_title",
+    "where": "Office: the card for Optional decisions that closed unopened",
+    "english": "Missed decisions",
+    "placeholders": null,
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "decision.lapsed_note",
+    "where": "Office: the line under each missed decision",
+    "english": "You let this one pass.",
+    "placeholders": null,
+    "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 4). Claude's draft for Cameron to reword."
   }
 ]
