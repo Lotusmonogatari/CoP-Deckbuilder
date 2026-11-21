@@ -1747,3 +1747,10 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Updated pictures | The six expressions (neutral, attacking, damaged, gaining, guarding, victory) of **PC02 Haru Yashi** and **PC03 Arata Ran** were replaced with the new drawings. |
 | Red outfit | Twelve new red-outfit pictures arrived named `PC02_attacking_red.png` and so on. The game looks for `<ID>_RED_<expression>.png` (as PC01 and PC04 already have), so the files were **renamed** (a git rename) to `PC02_RED_attacking.png` etc. The red outfit (cosmetic package CP01) now has all four protagonists and all six expressions. |
 | Test | `tests/test_protagonist_outfit_pictures.gd` (2): the red picture resolves for every protagonist and expression, and the plain one is used without the outfit. |
+## 2026-11-21: New visitor pictures (Cameron): 23 visitors
+
+| Part | What changed |
+|---|---|
+| Pictures | `VI79` to `VI100` and `VI164` arrived (Rera Saru, Koichi Satomi, Takashi Hamada, Michiko Sasaki, Setsuko Omura and the rest). All 23 are in the Visitors tab and use the `<ID>.png` name the loader expects, so they show at once. The import files Godot makes for them are added. |
+| To check | **VI79 (Rera Saru) is 154 x 493 px**, about a third the height of the others (most are over 1,300 px), so it will look soft at the size a visitor is shown. |
+| Still without a picture | 63 visitors in the Visitors tab (VI19 and VI101 onward, with gaps) still show the labelled placeholder. |
