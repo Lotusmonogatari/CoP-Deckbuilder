@@ -15,6 +15,13 @@ const NOTO := "res://assets/fonts/NotoSansJP[wght].ttf"
 const BARLOW := "res://assets/fonts/BarlowCondensed-BoldItalic.woff2"
 const SHIPPORI := "res://assets/fonts/ShipporiMinchoB1-Regular.woff2"
 const ZEN := "res://assets/fonts/ZenKakuGothicNew-Regular.woff2"
+## Accented Latin letters (2026-11-21, a tester's report: the Ō in "Ōminato" was drawn in a different font from its sentence).
+## Shippori Mincho B1 and Zen Kaku Gothic New have no ō, Ō, ū, Ū, ā or ī at all (not even in their Latin-extended pieces), so
+## those letters come from Antaka Brush Text, which has them; Barlow Condensed has them in its Latin-extended piece. Noto Sans JP
+## stays behind both for Japanese and the symbols none of them has (−, ×, →).
+const ANTAKA_TEXT := "res://assets/fonts/AntakaBrushText-Regular.ttf"
+const BARLOW_EXT := "res://assets/fonts/BarlowCondensed-BoldItalic-LatinExt.woff2"
+const ACCENT_FALLBACK := {BARLOW: BARLOW_EXT, SHIPPORI: ANTAKA_TEXT, ZEN: ANTAKA_TEXT}
 
 ## Label types that take the display face, and the ones that take the body face.
 const DISPLAY_TYPES := ["TitleLabel", "HeaderLabel", "CueBanner", "CueSpeaker"]
@@ -45,7 +52,13 @@ static func face(path: String) -> Font:
 	japanese.variation_opentype = {_tag("wght"): 400}
 	var variation := FontVariation.new()
 	variation.base_font = base
-	variation.fallbacks = [japanese]
+	# The accented letters first (from the face that has them), then Noto for everything else.
+	var behind: Array[Font] = []
+	var accents: String = str(ACCENT_FALLBACK.get(path, ""))
+	if not accents.is_empty():
+		behind.append(load(accents) as Font)
+	behind.append(japanese)
+	variation.fallbacks = behind
 	# Zen Kaku, Shippori and Noto set their lines about a quarter taller than Antaka (50 px against
 	# 40 at size 34). Trimmed to Antaka's line height so no screen grows when a style's body font is
 	# swapped in (the text sweep caught it at Large text on the 9:16 shape).

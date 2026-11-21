@@ -231,3 +231,11 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 |---|---|---|
 | `review/p11-two-offices-audit` | The two-offices audit (5 commits, 31 files, read-only review data) | **Not merged. No action needed.** Closed. The branch is kept; nothing is deleted. |
 | `claude/vibrant-keller-w6u40g` | One file, `design/proposals/ART_WIRING_PLAN_2026-11-20.md` (the plan for the District pictures, which shipped) | **Not merged. No action needed.** Closed. The branch is kept; nothing is deleted. |
+
+## For the mobile app build (Cameron, 2026-11-21): the on-screen keyboard
+
+| What | Detail |
+|---|---|
+| Problem | A tester's report: when the keyboard opens for the problem report's note, the screen shrinks into the top part of the display. Probable cause: the keyboard resizes the Android window, and the game's scaling (canvas_items, expand) shrinks everything to fit what is left. |
+| Scope | Cameron: the keyboard does not disturb other screens (the problem report is the only text box), so this is **not urgent**. |
+| When | Look at it with the real mobile app build (M6). The likely fix is in the Android export settings (the manifest's soft-input mode, so the window is panned or left alone instead of resized), or a native text dialog for the note. The repo has no Android export settings yet, and it cannot be tested without a phone. |

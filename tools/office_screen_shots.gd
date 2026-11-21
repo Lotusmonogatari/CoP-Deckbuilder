@@ -96,6 +96,10 @@ func _run() -> void:
 ## Opens one of the group-1 pop-up cards over the Office and returns its Overlay.
 func _popup(office: Node, kind: String) -> Overlay:
 	GameState.meta["Funds"] = 400000
+	if kind.begins_with("event_"):
+		# popup:event_EV58 (the id after the underscore): any event card
+		office._present_event(kind.trim_prefix("event_"), true)
+		return office.get_node("EventPanel")
 	match kind:
 		"lead":
 			office._present_event("EV02", true)

@@ -1697,3 +1697,12 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | EV93, EV99, EV01 | No lead: their organizations appear only in choice results (passive). |
 | 22 events with passive plus to three or more organizations; 16 with no organization | No change, by the rule. |
 | Audit | `tools/audit_event_leads.py` keeps these decisions in `REVIEWED` and lists them under "Closed", so they are not raised again. No data changed. |
+
+## 2026-11-21: Accented letters match their sentence (a tester's problem report; Cameron)
+
+| Part | What changed |
+|---|---|
+| The problem | A tester's report: the "Ō" in "Ōminato" was drawn in a different font from the rest of its sentence. Shippori Mincho B1 (Woodblock body) and Zen Kaku Gothic New (Living Office body) have no ō, Ō, ū, Ū, ā or ī, so those letters were borrowed from Noto Sans JP. |
+| Fix | You asked for the Latin-extended pieces and for Antaka to be checked. The Latin-extended pieces of Shippori and Zen turned out to hold no macron letters at all (the fonts do not have them), so none were added for those two. **Antaka Brush Text has every accent the game uses**, so it is now the first fallback behind both body fonts; Noto stays last for Japanese and the symbols none of them has. Barlow Condensed (Broadcast headings) takes its own Latin-extended piece (one new font file, 15 KB, same family and licence). Antaka Brush Display and Text are unchanged where they are used. |
+| Documents | The brief said Antaka had no ō; it does. Fixed in `CLAUDE.md`. |
+| Tests | `tests/test_accent_fonts.gd` (2): the fallback order, and every accented letter the text uses is in a face of the chain. |
