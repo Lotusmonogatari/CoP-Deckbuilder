@@ -1754,3 +1754,11 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Pictures | `VI79` to `VI100` and `VI164` arrived (Rera Saru, Koichi Satomi, Takashi Hamada, Michiko Sasaki, Setsuko Omura and the rest). All 23 are in the Visitors tab and use the `<ID>.png` name the loader expects, so they show at once. The import files Godot makes for them are added. |
 | To check | **VI79 (Rera Saru) is 154 x 493 px**, about a third the height of the others (most are over 1,300 px), so it will look soft at the size a visitor is shown. |
 | Still without a picture | 63 visitors in the Visitors tab (VI19 and VI101 onward, with gaps) still show the labelled placeholder. |
+
+## New visitor pictures VI101 and VI102, VI100 updated, three style icons (2026-11-21, Cameron)
+
+| Part | What changed |
+|---|---|
+| Pictures | `VI101` (Sachiko Nomura, Farmers' Market Manager) and `VI102` (Tomekichi Sakai, Eighty-Four-Year-Old Farmer) arrived and match their Visitors-tab rows, so they show at once. `VI100` (Kenta Aoki) was replaced with a new picture. Their import files are added. |
+| Style icons | `CP07`, `CP08` and `CP09` arrived in `assets/icons`, with import files. They are not shown yet: the Cosmetic Packages tab's Icon cells for CP07 and CP08 are blank and CP09 has no row; that waits on the Yezo Office decision. |
+| Still without a picture | 61 visitors in the Visitors tab. |
