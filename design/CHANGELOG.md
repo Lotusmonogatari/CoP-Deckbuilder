@@ -1723,3 +1723,11 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Fix | You asked for the Latin-extended pieces and for Antaka to be checked. The Latin-extended pieces of Shippori and Zen turned out to hold no macron letters at all (the fonts do not have them), so none were added for those two. **Antaka Brush Text has every accent the game uses**, so it is now the first fallback behind both body fonts; Noto stays last for Japanese and the symbols none of them has. Barlow Condensed (Broadcast headings) takes its own Latin-extended piece (one new font file, 15 KB, same family and licence). Antaka Brush Display and Text are unchanged where they are used. |
 | Documents | The brief said Antaka had no ō; it does. Fixed in `CLAUDE.md`. |
 | Tests | `tests/test_accent_fonts.gd` (2): the fallback order, and every accented letter the text uses is in a face of the chain. |
+
+## 2026-11-21: New backgrounds uploaded (Cameron): 12 pictures
+
+| Picture | State |
+|---|---|
+| `DISTRICT_OFFICE_PC01` to `_PC04` | **In use already.** The Office asks for `DISTRICT_OFFICE_<protagonist>` at the District, so each protagonist now shows their own District office picture (before, a labelled placeholder). Checked for all four. |
+| `OUT_NEIGHBORHOOD_1` to `_5`, `OUT_NEIGHBORHOOD_WINTER_1` to `_3` | **Not yet used.** Events and stages name the scene `OUT_NEIGHBORHOOD` with no number, so these need the workbook's Image cells to list them (`OUT_NEIGHBORHOOD_1; OUT_NEIGHBORHOOD_2; ...`); a picture whose name carries WINTER is chosen when the text is wintry. Waiting for Cameron's workbook merge so the two edits do not collide. |
+| Files | The import files Godot makes for the 12 pictures are added. |

@@ -44,6 +44,12 @@ func _run() -> void:
 		"administration":
 			office._show_administration_menu()
 			menu = office.get_node("AdministrationMenuPanel")
+		"district":
+			# district:PC02 — the District office's picture for that protagonist
+			GameState.protagonist_id = parts[1] if parts.size() > 1 else "PC01"
+			GameState.office_location = Offices.DISTRICT
+			office._apply_office_look()
+			menu = null
 		"office":
 			GameState.add_item("SH42", 2)
 			office._refresh_travel_modes()
