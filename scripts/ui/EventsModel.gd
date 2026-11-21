@@ -54,6 +54,10 @@ static func pop_meta(event: Dictionary) -> String:
 
 
 ## The weekday of a day number ("Monday"), from the calendar's own rows.
+static func weekday_name(number: int) -> String:
+	return _weekday(number)
+
+
 static func _weekday(number: int) -> String:
 	var names := [Text.say("calendar.weekday_sun"), Text.say("calendar.weekday_mon"), Text.say("calendar.weekday_tue"),
 		Text.say("calendar.weekday_wed"), Text.say("calendar.weekday_thu"), Text.say("calendar.weekday_fri"),

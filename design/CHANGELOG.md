@@ -1669,3 +1669,12 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Behavior kept | Choosing a theme still tries it at once and reopens this screen; the picked champion is remembered across that restyle. Backing out works as before (a first launch plays the default champion). |
 | Text | `new_game.district_line` ("{district} · office in {office}"). |
 | Tests | `new_game_driver.gd` and `intro_driver.gd` changed on purpose (tap the portrait, then Play as); `tests/test_group7_reference.gd` checks the portraits, the picked card, Play as in the foot and the switches. |
+
+## 2026-11-21: The forced move card, with one line per staff role and a list true of the office (Cameron)
+
+| Part | What changed |
+|---|---|
+| MOVED FOR YOU | A calendar event at the other office now opens a card of its own first (red tag, the day and "0 h"), then the event. The card says where you are, has a line from your **first primary staff member, one line per role** (Policy Research Assistant, Media Spokesperson, District Representative), says why you were taken there, lists what is not open here, and says the trip cost no hours. Continue opens the event. |
+| "Not open while you are here" | **Reflective of the office** (Cameron): `ClosedHere` reads the Location tags on levels, events and visitors and lists the kinds that belong only to the other office, so it is true at either office and a kind with nothing tagged is not listed. |
+| Text | Seven new rows, all drafts for you to reword: `travel.moved_line_research`, `_media`, `_district`, `travel.moved_speaker`, `travel.closed_levels`, `_events`, `_visitors`. |
+| Tests | `tests/test_closed_here.gd` (4). |

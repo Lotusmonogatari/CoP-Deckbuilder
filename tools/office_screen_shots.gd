@@ -103,7 +103,11 @@ func _popup(office: Node, kind: String) -> Overlay:
 				if str(event.get("trigger", "")) == "Dated" and not EventEngine.choices_for(DataDB.event_choices, str(event.get("event_id", ""))).is_empty():
 					id = str(event.get("event_id", ""))
 					break
-			office._event_moved_you = kind == "moved"
+			if kind == "moved":
+				GameState.hire_staff(str(DataDB.staff[0].get("staff_id", "")))
+				GameState.office_location = Offices.CAPITOL
+				office._show_moved_card(id)
+				return office._moved_panel
 			office._present_event(id, false)
 			return office.get_node("EventPanel")
 		"scenario":

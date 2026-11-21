@@ -9721,5 +9721,54 @@
     "english": "{district} · office in {office}",
     "placeholders": "district, office",
     "notes": "P14b (2026-11-21): the mock-up's New Game card. Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "travel.moved_line_research",
+    "where": "Forced move card: the Policy Research Assistant's line (the speaker is the first primary staff member, by role)",
+    "english": "I took the early train with you, and your seat is ready.",
+    "placeholders": null,
+    "notes": "P14b (2026-11-21): Claude's draft for Cameron to reword; one line per staff role to start (Cameron)."
+  },
+  {
+    "key": "travel.moved_line_media",
+    "where": "Forced move card: the Media Spokesperson's line",
+    "english": "The press will be waiting. I told them you are on your way.",
+    "placeholders": null,
+    "notes": "P14b (2026-11-21): Claude's draft for Cameron to reword; one line per staff role to start (Cameron)."
+  },
+  {
+    "key": "travel.moved_line_district",
+    "where": "Forced move card: the District Representative's line",
+    "english": "I called ahead. The people there know to expect you today.",
+    "placeholders": null,
+    "notes": "P14b (2026-11-21): Claude's draft for Cameron to reword; one line per staff role to start (Cameron)."
+  },
+  {
+    "key": "travel.closed_levels",
+    "where": "Forced move card: levels that belong to the other office",
+    "english": "{place} levels",
+    "placeholders": "place",
+    "notes": "P14b (2026-11-21): Claude's draft for Cameron to reword; one line per staff role to start (Cameron)."
+  },
+  {
+    "key": "travel.closed_events",
+    "where": "Forced move card: events that belong to the other office",
+    "english": "{place} events",
+    "placeholders": "place",
+    "notes": "P14b (2026-11-21): Claude's draft for Cameron to reword; one line per staff role to start (Cameron)."
+  },
+  {
+    "key": "travel.closed_visitors",
+    "where": "Forced move card: visitors who belong to the other office",
+    "english": "Visitors from {place}",
+    "placeholders": "place",
+    "notes": "P14b (2026-11-21): Claude's draft for Cameron to reword; one line per staff role to start (Cameron)."
+  },
+  {
+    "key": "travel.moved_speaker",
+    "where": "Forced move card: who is speaking",
+    "english": "{name} · {role}",
+    "placeholders": "name, role",
+    "notes": "P14b (2026-11-21): Claude's draft for Cameron to reword."
   }
 ]
