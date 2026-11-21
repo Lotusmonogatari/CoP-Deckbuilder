@@ -1688,3 +1688,12 @@ Cameron likes the train drawn in code (seen in the slice 2 screenshots) and keep
 | Checked | The exporter errors on more than two or an unknown organization, and warns when a lead is not named in the event's own text. `EventLeads` reads the column; `tools/audit_event_leads.py` writes the review (`design/review/event_lead_organizations_2026-11-21.md`): no event names more than two; organizations named only in choices (EV01, EV93, EV99); 22 events whose choices give a passive plus to three or more organizations; 16 events with no organization at all. |
 | Shown | The event card shows each lead's icon and name under the story. |
 | Tests | `tests/test_event_leads.gd` (4). |
+
+## 2026-11-21: Lead organization flags closed (Cameron: "Close out the flags")
+
+| Flag | Decision |
+|---|---|
+| EV90 | Both organizations stay leads: the event is a choice between the Financial Industry Association's workshop and the Family Network's picnic, and both are named in its own flavor. Delete one ID to change it. |
+| EV93, EV99, EV01 | No lead: their organizations appear only in choice results (passive). |
+| 22 events with passive plus to three or more organizations; 16 with no organization | No change, by the rule. |
+| Audit | `tools/audit_event_leads.py` keeps these decisions in `REVIEWED` and lists them under "Closed", so they are not raised again. No data changed. |

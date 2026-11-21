@@ -12,11 +12,9 @@ None.
 
 None.
 
-## No organization named in the event's own text, but a choice or result text names one (candidates for you to decide) (3)
+## No organization named in the event's own text, but a choice or result text names one (candidates for you to decide) (0)
 
-- EV01: BO03 Local Kōenkai, BO11 Students United, BO16 Innovation Society, BO21 Care and Welfare Council, BO23 Taxpayers' Alliance
-- EV93: BO24 Financial Industry Association
-- EV99: BO32 Candidate Selection Committee
+None.
 
 ## Choices give a passive plus to three or more organizations (not leads; listed for information) (22)
 
@@ -43,7 +41,7 @@ None.
 - EV93: 3 organizations
 - EV94: 3 organizations
 
-## No organization at all (no name, no reward) (16)
+## No organization at all (no name, no reward): no lead, by the rule (16)
 
 - EV03
 - EV04
@@ -62,10 +60,23 @@ None.
 - EV51
 - EV64
 
-## Filled as a draft, and one to check
+## Closed: decided by the rule (edit REVIEWED in this script to add one) (4)
 
-The 24 events that name one or two organizations in their own title or flavor have those organizations as leads (draft, for you to confirm). One to look at:
+- EV01: five organizations appear only in choice results (passive); the sumo association's committee brings it and is not an organization in the data. No lead.
+- EV90: the event is a choice between two named parties, the Financial Industry Association's workshop and the Family Network's picnic, both named in its own flavor. Both lead. Delete one from the cell to change it.
+- EV93: the craft fair brings it; the Financial Industry Association only reacts in a result (passive). No lead.
+- EV99: the Candidate Selection Committee appears only as a clerk in a result (passive). No lead.
 
-- **EV90** lists two leads, Family Network and Financial Industry Association. Family Network is named only as the picnic held at the same time, so it may not be a lead; the savings-fair organizer (Financial Industry Association) is. Your call.
 
-Not filled on purpose (your rule): the 79 events that name no organization in their own text, and organizations that only get a passive plus or minus from a choice.
+
+## Closed (2026-11-21)
+
+| Flag | Decision | Why |
+|---|---|---|
+| EV90 | Both stay leads (Financial Industry Association, Family Network) | The event is a choice between the two, and both are named in its own flavor. Delete one ID from the cell to change it. |
+| EV93 | No lead | The craft fair brings it; the Financial Industry Association only reacts in a result. |
+| EV99 | No lead | The Candidate Selection Committee appears only as a clerk in a result. |
+| EV01 | No lead | Five organizations appear only in choice results (passive). The sumo association is not an organization in the data. |
+| 22 events with a passive plus to three or more organizations | No change | A passive plus or minus never makes a lead (your rule). |
+| 16 events with no organization | No change | Blank by the rule. |
+| Events and "coming up" lists | Not shown there | Cameron did not ask; say if you want the icons in those lists. |
