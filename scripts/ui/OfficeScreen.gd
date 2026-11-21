@@ -542,7 +542,7 @@ func _build() -> void:
 	_show_trigger_alerts_if_any()
 	_show_broken_promises_if_any()
 	_show_resume_choice_if_in_level()
-	if not _show_followup_if_due() and not _show_dated_event_if_due() and not _show_activation_if_pending():
+	if not _show_lapses_if_any() and not _show_followup_if_due() and not _show_dated_event_if_due() and not _show_activation_if_pending():
 		_show_random_event_if_due()
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
@@ -883,6 +883,9 @@ func _show_events(tab: String) -> void:
 		rows.append(_ground_line(Text.say("event.list_hint"), look))
 		if not coming.is_empty():
 			rows.append(EventsView.decision_banner(look, coming[0]))
+		# Optional Decision! scenes open now: opened from here, at their own office (phase 4).
+		for entry: Dictionary in EventsModel.optional_rows():
+			rows.append(EventsView.optional_card(look, entry, _on_open_optional))
 		var arrangeable := EventsModel.rows()
 		if arrangeable.is_empty():
 			rows.append(_ground_line(Text.say("event.none"), look))
@@ -899,6 +902,41 @@ func _show_events(tab: String) -> void:
 	})
 	frame.tab_chosen.connect(_show_events)
 	_events_panel.open_frame(frame, Text.say("ui.back_office"))
+
+
+## An Optional Decision! scene is opened from the Events screen: nothing is charged to open it, and it shows like any scene.
+func _on_open_optional(event_id: String) -> void:
+	if not GameState.optional_scene_refusal(event_id).is_empty():
+		_show_events_list()
+		return
+	_events_panel.close()
+	_present_event(event_id, false)
+
+
+## Optional scenes whose window closed unopened apply their penalty and are told here, once, as one card (phase 4). True when shown.
+func _show_lapses_if_any() -> bool:
+	if GameState.is_in_level() or OS.has_environment("COP_NO_RANDOM_EVENTS"):
+		return false
+	var told := GameState.apply_scene_lapses()
+	if told.is_empty():
+		return false
+	var rows: Array[Control] = []
+	for entry: Dictionary in told:
+		rows.append(UiKit.heading(str(GameState.get_event(str(entry["event_id"])).get("title", ""))))
+		rows.append(UiKit.line(Text.say("decision.lapsed_note"), "SmallLabel"))
+		if not str(entry["result_text"]).is_empty():
+			rows.append(UiKit.line(str(entry["result_text"])))
+		for line: String in entry["lines"]:
+			rows.append(UiKit.line(line, "SmallLabel"))
+	var done := Button.new()
+	done.name = "LapseContinueButton"
+	done.custom_minimum_size = Vector2(0, 100)
+	done.text = Text.say("event.continue")
+	done.pressed.connect(_on_event_done)
+	var foot: Array[Control] = [done]
+	_event_panel.open_card({"tag": Text.say("popup.tag_decision"), "tag_kind": PopupCardStyles.ALARM,
+		"title": Text.say("decision.lapsed_title"), "body": rows, "buttons": foot, "primary": 0})
+	return true
 
 
 func _on_arrange_event(event_id: String) -> void:
@@ -1103,6 +1141,11 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 	var scene := GameState.decision_scene_of(event_id)
 	var scene_pictures := DecisionScenes.pictures(scene)
 	var picture_cell: Variant = "; ".join(scene_pictures) if not scene_pictures.is_empty() else event.get("image")
+	# With neither, a scene wears its office's shared picture (DEC_PLACE_CAPITOL, DEC_PLACE_DISTRICT) when one is drawn.
+	if not scene.is_empty() and EventPicture.options(picture_cell).is_empty():
+		var place_picture := "DEC_PLACE_" + DecisionScenes.office(scene).to_upper()
+		if not ArtLoader.background_path(place_picture).is_empty():
+			picture_cell = place_picture
 	var picture := str(_event_pictures.get(event_id, "")) if keep_picture else EventPicture.pick(picture_cell,
 		"%s %s" % [event.get("title", ""), event.get("flavor", "")], DataDB.art.get("image_terms", {}))
 	_event_pictures[event_id] = picture
@@ -1187,7 +1230,7 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 	# set by the calendar.
 	if not scene.is_empty():
 		rows.append(UiKit.line(Text.say("event.scene_note_mandatory") if DecisionScenes.is_mandatory(scene)
-			else Text.say("event.scene_note_optional", {"days": 0}), "SmallLabel"))
+			else Text.say("event.scene_note_optional"), "SmallLabel"))
 	elif str(event.get("trigger", "")) == "Dated":
 		rows.append(UiKit.line(Text.say("event.decision_note"), "SmallLabel"))
 	_event_panel.open_card({"tag": _event_tag(event), "tag_kind": _event_tag_kind(event), "meta": EventsModel.pop_meta(event),

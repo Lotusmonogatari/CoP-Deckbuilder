@@ -2265,7 +2265,12 @@ func get_event(event_id: String) -> Dictionary:
 ## until the player has made its choice.
 func due_dated_event() -> String:
 	var today := WeekCalendar.today_number(calendar, calendar_config())
-	var due := EventEngine.due_dated(DataDB.events, today, dated_events_done)
+	# An Optional scene's event is opened from the Events screen, never by itself.
+	var held_back: Array[String] = dated_events_done.duplicate()
+	for scene: Dictionary in DataDB.decision_scenes:
+		if DecisionScenes.is_optional(scene):
+			held_back.append(str(scene.get("event_id", "")))
+	var due := EventEngine.due_dated(DataDB.events, today, held_back)
 	if not due.is_empty():
 		return str(due[0].get("event_id", ""))
 	# A Decision! follow-up whose Delay has run out comes next (Mandatory: it opens by itself).
@@ -2346,6 +2351,49 @@ func finish_activation(level_id: String) -> void:
 			pending_activations.erase(entry)
 			if made == level_id:
 				scene_runtime = {"level": DataDB.get_level(level_id)}
+
+
+# --- Optional scenes (phase 4) ---------------------------------------------------------------------------------------------------
+
+## The Optional scenes that can be opened today, as [{scene, event, days_left, refusal}]: refusal is "" when the player stands at
+## the scene's office, else why not.
+func optional_scenes_open() -> Array:
+	var today := WeekCalendar.today_number(calendar, calendar_config())
+	var out: Array = []
+	for scene: Dictionary in DecisionScenes.open_now(DataDB.decision_scenes, decision_log, today):
+		var event := get_event(str(scene.get("event_id", "")))
+		if event.is_empty():
+			continue
+		var office := Offices.normalize(DecisionScenes.office(scene))
+		var refusal := ""
+		if office != Offices.EITHER and office != office_location:
+			refusal = Text.say("event.optional_elsewhere", {"place": TravelText.place_name(office)})
+		out.append({"scene": scene, "event": event, "days_left": DecisionScenes.days_left(scene, decision_log, today), "refusal": refusal})
+	return out
+
+
+## Whether an Optional scene's event can be opened now; "" when it can, else why not.
+func optional_scene_refusal(event_id: String) -> String:
+	for entry: Dictionary in optional_scenes_open():
+		if str((entry["event"] as Dictionary).get("event_id", "")) == event_id:
+			return str(entry["refusal"])
+	return Text.say("event.optional_closed")
+
+
+## Optional scenes whose window closed unopened apply their lapse penalty (the reserved choice L) and are remembered as lapsed.
+## Returns what happened, one entry each: {event_id, result_text, lines}, for the Office to tell the player.
+func apply_scene_lapses() -> Array:
+	var today := WeekCalendar.today_number(calendar, calendar_config())
+	var told: Array = []
+	for scene: Dictionary in DecisionScenes.lapsed(DataDB.decision_scenes, decision_log, today):
+		var event_id := str(scene.get("event_id", ""))
+		var result := apply_event_choice(event_id, DecisionScenes.LAPSE_LETTER, "", true)
+		# A scene with no penalty row still lapses (and is remembered), so it is not checked again every day.
+		if not decision_log.has(str(scene.get("scene_id", ""))):
+			decision_log[str(scene.get("scene_id", ""))] = {"day": today, "choice": DecisionScenes.LAPSE_LETTER}
+		if bool(result.get("ok", false)):
+			told.append({"event_id": event_id, "result_text": str(result.get("result_text", "")), "lines": result.get("lines", [])})
+	return told
 
 
 ## The opponent row an event is about, or {}: the Decision Scenes tab's Speaker when the event is a scene (and that speaker is
@@ -2455,15 +2503,20 @@ func roll_random_event() -> String:
 ## The player's choice: pays any choice price, rolls and applies every reward,
 ## reveals a level, spends the event's hours and starts its cooldown.
 ## Returns { ok, result_text, lines: [String], chips: [..], revealed: level name }.
-func apply_event_choice(event_id: String, letter: String, delegate_id: String = "") -> Dictionary:
+## `lapse` is for an Optional Decision! scene whose window closed unopened: its reserved choice L is applied as the penalty, no
+## hours pass, no price can refuse it and the player is not asked.
+func apply_event_choice(event_id: String, letter: String, delegate_id: String = "", lapse: bool = false) -> Dictionary:
 	var event := get_event(event_id)
-	var chosen := {}
-	for row: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):
-		if str(row.get("choice", "")) == letter:
-			chosen = row
+	var chosen := EventEngine.lapse_choice(DataDB.event_choices, event_id) if lapse else {}
+	if not lapse:
+		for row: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):
+			if str(row.get("choice", "")) == letter:
+				chosen = row
 	if event.is_empty() or chosen.is_empty():
 		return {"ok": false}
 	var price := int(chosen.get("funds_cost", 0)) if chosen.get("funds_cost") != null else 0
+	if lapse:
+		price = mini(price, maxi(0, int(meta.get("Funds", 0))))   # a penalty takes what there is
 	# A choice that hands the job to a role needs a named person (Cameron,
 	# 2026-11-16): how well they do it decides the result.
 	var delegate_role := event_delegate_role(chosen)
@@ -2482,7 +2535,7 @@ func apply_event_choice(event_id: String, letter: String, delegate_id: String = 
 			price = 0   # the right person handles it without the spend
 	if price > 0 and int(meta.get("Funds", 0)) < price:
 		return {"ok": false}
-	var commitments := Commitments.of(chosen)
+	var commitments := [] if lapse else Commitments.of(chosen)
 	if not commitment_refusal(commitments).is_empty():
 		return {"ok": false}
 
@@ -2544,7 +2597,7 @@ func apply_event_choice(event_id: String, letter: String, delegate_id: String = 
 	if pool_family != null and not str(pool_family).is_empty():
 		staff_add_pool_change(str(pool_family), int(chosen.get("task_pool_change", 0)),
 			int(chosen.get("task_pool_days", 1)) if chosen.get("task_pool_days") != null else 1, str(event.get("title", "")))
-	var hours := EventEngine.hours_of(event)
+	var hours := 0 if lapse else EventEngine.hours_of(event)
 	if not delegate_role.is_empty():
 		hours = StaffTasks.delegate_hours(hours)
 		lines.append_array(_apply_delegation(delegate_id, delegate_blocks, fit))

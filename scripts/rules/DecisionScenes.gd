@@ -132,7 +132,8 @@ static func upcoming_follow_ups(scenes: Array, log: Dictionary, today: int, days
 static func _follow_ups_between(scenes: Array, log: Dictionary, first: int, last: int) -> Array:
 	var found: Array = []
 	for scene: Variant in scenes:
-		if not (scene is Dictionary) or log.has(str((scene as Dictionary).get("scene_id", ""))):
+		# An Optional follow-up is opened by the player from the Events screen, never by itself.
+		if not (scene is Dictionary) or log.has(str((scene as Dictionary).get("scene_id", ""))) or is_optional(scene as Dictionary):
 			continue
 		var day := due_day(scene as Dictionary, log)
 		if day >= 0 and day >= first and day <= last:
@@ -142,6 +143,77 @@ static func _follow_ups_between(scenes: Array, log: Dictionary, first: int, last
 	for entry: Dictionary in found:
 		out.append(entry["scene"])
 	return out
+
+
+# --- Optional scenes (phase 4) -------------------------------------------------------------------------------------------------
+# An Optional scene is opened by the player from the Events screen, at its own office, while its window is open. The window runs
+# from Opens (a first scene) or the day its Delay runs out (a follow-up) to Closes. If it closes unopened the scene LAPSES: it is
+# remembered as answered with the reserved choice letter L, and that choice's effects are the penalty. Optional scenes never open
+# by themselves and never move the player.
+
+## The reserved choice letter an Optional scene's penalty lives under. It is never shown as a button.
+const LAPSE_LETTER := "L"
+
+
+static func is_optional(scene: Dictionary) -> bool:
+	return str(scene.get("kind", MANDATORY)) == OPTIONAL
+
+
+## [first day, last day] a scene can be opened, as day numbers; [-1, -1] when it has no window yet (a follow-up whose earlier
+## scene is not answered, or a cell that is not a date).
+static func window(scene: Dictionary, log: Dictionary) -> Array[int]:
+	var closes := WeekCalendar.parse_date(str(scene.get("closes", ""))) if scene.get("closes") != null else -1
+	var opens := due_day(scene, log) if is_follow_up(scene) \
+		else (WeekCalendar.parse_date(str(scene.get("opens", ""))) if scene.get("opens") != null else -1)
+	if opens < 0 or closes < 0:
+		return [-1, -1]
+	return [opens, closes]
+
+
+## The Optional scenes that can be opened today and have not been answered or lapsed, earliest closing first.
+static func open_now(scenes: Array, log: Dictionary, today: int) -> Array:
+	var found: Array = []
+	for scene: Variant in scenes:
+		if not (scene is Dictionary) or not is_optional(scene as Dictionary) or log.has(str((scene as Dictionary).get("scene_id", ""))):
+			continue
+		var span := window(scene as Dictionary, log)
+		if span[0] >= 0 and span[0] <= today and today <= span[1]:
+			found.append({"closes": span[1], "scene": scene})
+	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return int(a["closes"]) < int(b["closes"]))
+	var out: Array = []
+	for entry: Dictionary in found:
+		out.append(entry["scene"])
+	return out
+
+
+## The Optional scenes whose window opens after today and within `days_ahead` days.
+static func optional_upcoming(scenes: Array, log: Dictionary, today: int, days_ahead: int) -> Array:
+	var out: Array = []
+	for scene: Variant in scenes:
+		if not (scene is Dictionary) or not is_optional(scene as Dictionary) or log.has(str((scene as Dictionary).get("scene_id", ""))):
+			continue
+		var span := window(scene as Dictionary, log)
+		if span[0] > today and span[0] <= today + days_ahead:
+			out.append(scene)
+	return out
+
+
+## The Optional scenes whose window closed before today without being opened.
+static func lapsed(scenes: Array, log: Dictionary, today: int) -> Array:
+	var out: Array = []
+	for scene: Variant in scenes:
+		if not (scene is Dictionary) or not is_optional(scene as Dictionary) or log.has(str((scene as Dictionary).get("scene_id", ""))):
+			continue
+		var span := window(scene as Dictionary, log)
+		if span[1] >= 0 and span[1] < today:
+			out.append(scene)
+	return out
+
+
+## Days left to open a scene, counting today (1 on its last day); 0 when it is not open today.
+static func days_left(scene: Dictionary, log: Dictionary, today: int) -> int:
+	var span := window(scene, log)
+	return span[1] - today + 1 if span[0] >= 0 and span[0] <= today and today <= span[1] else 0
 
 
 # --- Activations (phase 3) -----------------------------------------------------------------------------------------------------

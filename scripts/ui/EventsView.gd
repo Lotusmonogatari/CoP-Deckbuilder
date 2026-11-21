@@ -29,6 +29,45 @@ static func decision_banner(look: Dictionary, event: Dictionary) -> Control:
 	return card
 
 
+## One Optional Decision! scene open now: the tag, how long is left, the title and a line about it, the office badge, the reason in
+## red when it cannot be opened from here and an "Open it" button (greyed then). Never priced.
+static func optional_card(look: Dictionary, entry: Dictionary, on_open: Callable) -> Control:
+	var card := OfficeFrameStyles.danger_card(look, Text.say("popup.tag_decision"))
+	card.name = "Optional_" + str(entry["event_id"])
+	var column := card.get_node("Column") as VBoxContainer
+	var meta := UiKit.line(str(entry["meta"]) + " · " + str(entry["badge"]), "SmallLabel")
+	meta.name = "OptionalMeta"
+	meta.custom_minimum_size.x = 0.0
+	column.add_child(meta)
+	var title := Label.new()
+	title.text = str(entry["title"])
+	title.theme_type_variation = "HeaderLabel"
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	column.add_child(title)
+	if not str(entry["flavor"]).is_empty():
+		var line := UiKit.line(str(entry["flavor"]), "SmallLabel")
+		line.custom_minimum_size.x = 0.0
+		column.add_child(line)
+	var refusal := str(entry["refusal"])
+	if not refusal.is_empty():
+		var why := UiKit.line(refusal)
+		why.name = "OptionalRefusal"
+		why.custom_minimum_size.x = 0.0
+		why.add_theme_color_override("font_color", look["down"])
+		column.add_child(why)
+	var button := Button.new()
+	button.name = str(entry["node"])
+	button.text = Text.say("event.optional_open")
+	button.disabled = not refusal.is_empty()
+	button.custom_minimum_size.y = OfficeFrameStyles.touch_height()
+	OfficeFrameStyles.dress_card_button(button, look, refusal.is_empty())
+	if refusal.is_empty():
+		button.pressed.connect(Haptics.confirm)
+		button.pressed.connect(on_open.bind(str(entry["event_id"])))
+	column.add_child(button)
+	return card
+
+
 ## One event that can be arranged here. `on_arrange` is called with the event's id when Arrange it is pressed (never when
 ## it is greyed).
 static func event_card(look: Dictionary, event: Dictionary, on_arrange: Callable) -> Control:

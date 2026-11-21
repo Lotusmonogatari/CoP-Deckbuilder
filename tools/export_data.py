@@ -3341,8 +3341,13 @@ def validate(data, report):
             report.error("Event Choices", f"{eid} {row.get('choice')}: Delegate Hours must be 1 to 8")
         if eid not in event_ids:
             report.error("Event Choices", f"{eid} is not an Event ID in the Events tab")
-        if row["choice"] not in ("A", "B", "C", "D"):
-            report.error("Event Choices", f"{eid} has Choice '{row['choice']}' — expected A to D")
+        optional_scene_events = {str(s.get("event_id")) for s in data.get("decision_scenes", []) if s.get("kind") == "Optional"}
+        if row["choice"] == "L":
+            # Reserved (2026-11-21): the penalty an Optional Decision! scene applies when its window closes unopened.
+            if eid not in optional_scene_events:
+                report.error("Event Choices", f"{eid} has Choice 'L', which is reserved for the lapse penalty of an Optional scene's event")
+        elif row["choice"] not in ("A", "B", "C", "D"):
+            report.error("Event Choices", f"{eid} has Choice '{row['choice']}' — expected A to D (or L for an Optional scene's lapse penalty)")
         key = (eid, row["choice"])
         if key in letters_seen:
             report.error("Event Choices", f"{eid} has two choices lettered {row['choice']}")

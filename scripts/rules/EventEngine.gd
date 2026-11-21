@@ -22,11 +22,24 @@ const REFUSE_XP := "xp"
 static func choices_for(choices: Array, event_id: String) -> Array:
 	var found: Array = []
 	for row: Dictionary in choices:
-		if str(row.get("event_id", "")) == event_id:
+		# The reserved lapse letter (an Optional Decision! scene's penalty) is never a choice the player can make.
+		if str(row.get("event_id", "")) == event_id and str(row.get("choice", "")) != LAPSE_LETTER:
 			found.append(row)
 	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return str(a.get("choice", "")) < str(b.get("choice", "")))
 	return found
+
+
+## The reserved choice letter an Optional scene's lapse penalty lives under (see DecisionScenes.LAPSE_LETTER).
+const LAPSE_LETTER := "L"
+
+
+## The lapse penalty row of an event ({} when it has none): its choice L.
+static func lapse_choice(choices: Array, event_id: String) -> Dictionary:
+	for row: Dictionary in choices:
+		if str(row.get("event_id", "")) == event_id and str(row.get("choice", "")) == LAPSE_LETTER:
+			return row
+	return {}
 
 
 static func hours_of(event: Dictionary) -> int:

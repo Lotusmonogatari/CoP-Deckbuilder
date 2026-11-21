@@ -143,6 +143,32 @@ def main():
     flat("Cosmetic package icons", "icon",
          icon_rows(load("cosmetic_packages"), "package_id", "name_en"))
 
+    # Decision! scenes (2026-11-21): one row each with its own picture(s), the shared picture for its office (the fallback when it
+    # has none of its own) and its speakers' portraits. A scene with no picture of its own and no shared picture shows the event's
+    # Image cell, then a labelled placeholder.
+    scenes = load("decision_scenes")
+    scene_section = ["## Decision scenes", "",
+                     "| Scene | Event | Own picture(s) | Shared office picture | Speakers |", "|---|---|---|---|---|"]
+    scene_done = 0
+    events_by_id = {e["event_id"]: e for e in load("events")}
+    for scene in scenes:
+        own = [p for p in (scene.get("scene_picture") or [])]
+        own_cell = ", ".join(f"{p} {'✓' if drawn('background', p + '.png') else '☐'}" for p in own) or "none named"
+        place = "DEC_PLACE_" + str(scene.get("office") or "").upper()
+        place_cell = f"{place} {'✓' if drawn('background', place + '.png') else '☐'}"
+        speakers = []
+        for who in (scene.get("speaker"), scene.get("second_speaker")):
+            if who:
+                kind = "opponent" if who.startswith("OP") else "staff" if who.startswith("SF") else "visitor"
+                have = drawn(kind, f"{who}_neutral.png", "character") or drawn(kind, f"{who}.png", "character")
+                speakers.append(f"{who} {'✓' if have else '☐'}")
+        shown = bool(own) and all(drawn("background", p + ".png") for p in own) or drawn("background", place + ".png") \
+            or any(drawn("background", p.strip() + ".png") for p in str(events_by_id.get(scene["event_id"], {}).get("image") or "").split(";") if p.strip())
+        scene_done += shown
+        scene_section.append(f"| {scene['scene_id']} ({scene.get('kind')}) | {scene['event_id']} | {own_cell} | {place_cell} | {', '.join(speakers) or 'none'} |")
+    summary.append(f"| Decision scenes with a picture to show | {scene_done} / {len(scenes)} |")
+    body += scene_section + [""]
+
     lines += ["| Kind | Drawn |", "|---|---|"] + summary + [""] + body
     OUTPUT.write_text("\n".join(lines), encoding="utf-8")
     print(f"Wrote {OUTPUT.relative_to(REPO)}")
