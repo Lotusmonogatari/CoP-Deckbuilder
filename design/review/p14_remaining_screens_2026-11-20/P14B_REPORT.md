@@ -60,3 +60,13 @@ Text rows (all Claude drafts for you to reword): `floor_vote.projection_result`,
 |---|---|
 | Promises demo text in my pictures shows "0 hours of your time for , due in 0 hours": the demo promises have no text; real ones do | pictures only |
 | 40 MB of review pictures now in `design/review/` for P14 | `CLEANUP_CANDIDATES.md` |
+
+## 7. Cameron's answers (2026-11-21)
+
+| # | Answer |
+|---|---|
+| 1 | New Game: wants a side-by-side of today and the mock-up before deciding: `img/new_game_side_by_side.png` (three styles, today on the left of each pair). Open. |
+| 2 | No: the member visit and trade do not show each answer's rhetorical style. |
+| 3 | No colour legend under the projection bars. |
+| 4 | The All trips button stays as the way into the Travel page, for now. |
+| 5 | The reworded coaching coupon line is accepted. |
