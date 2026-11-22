@@ -10,7 +10,7 @@ stands in for every expression.
 | Protagonists | 24 / 28 |
 | Opponents | 7 / 655 |
 | Staff | 105 / 105 |
-| Visitors | 530 / 835 |
+| Visitors | 640 / 835 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
 | Organisation icons | 32 / 32 |
@@ -296,29 +296,29 @@ stands in for every expression.
 | VI100 | Kenta Aoki | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI101 | Sachiko Nomura | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI102 | Tomekichi Sakai | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI103 | Ryo Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI104 | Misao Ogawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI105 | Noriko Taniguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI106 | Satoru Imai | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI107 | Kunio Fukuda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI108 | Mai Nishimura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI109 | Isamu Kato | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI110 | Reiko Shimizu | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI111 | Haruo Kimura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI112 | Emi Sasaki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI113 | Ryo Takeda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI114 | Sachiko Ono | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI115 | Daichi Mori | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI116 | Mayumi Hayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI103 | Ryo Hasegawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI104 | Misao Ogawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI105 | Noriko Taniguchi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI106 | Satoru Imai | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI107 | Kunio Fukuda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI108 | Mai Nishimura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI109 | Isamu Kato | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI110 | Reiko Shimizu | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI111 | Haruo Kimura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI112 | Emi Sasaki | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI113 | Ryo Takeda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI114 | Sachiko Ono | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI115 | Daichi Mori | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI116 | Mayumi Hayashi | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI117 | Kaede Okuda | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI118 | Fumiko Inoue | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI119 | Takuya Fujita | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI120 | Yoshie Nakajima | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI121 | Shinji Ishikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI122 | Reiko Tanabe | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI123 | Masato Kondo | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI124 | Michiko Aoki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI125 | Kaori Matsuda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI118 | Fumiko Inoue | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI119 | Takuya Fujita | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI120 | Yoshie Nakajima | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI121 | Shinji Ishikawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI122 | Reiko Tanabe | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI123 | Javier Santos | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI124 | Gabriella Santos | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI125 | Kaori Matsuda | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI126 | Tetsuo Nishida | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI127 | Yuko Sakamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI128 | Hiroshi Ueda | ☐ | ☐ | ☐ | ☐ | ☐ |

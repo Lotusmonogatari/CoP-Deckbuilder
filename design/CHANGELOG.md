@@ -1832,3 +1832,12 @@ The scheme is now fully built. Nothing in play changes until you write scenes: o
 | Cleanup candidates | Three Text rows are now unused: `shop.style_living_name`, `shop.style_living_desc`, `shop.style_included` (listed in `design/CLEANUP_CANDIDATES.md`). |
 
 **Known issue found while making Woodblock the default (2026-11-21), for Cameron:** on the stage Details screen the organization icons sit on a light plate. In Yezo Office each icon has a dark tile and reaches 8.7 to 1; in Woodblock the tile is light paper and some icons reach only about 2.8 to 1 (the standard is 3 to 1), with a grey halo behind neutral ones. `tests/interaction/party_plate_test.gd` therefore measures those icons in Yezo Office. Options: give organization icons a dark tile in every style, or redraw the icons for light paper.
+
+## Visitor pictures VI103 to VI125, VI168, VI169; VI100 replaced again; two renames (2026-11-22, Cameron; branch `feature/visitor-images-4`)
+
+| Part | What changed |
+|---|---|
+| **Replaced picture (flagged)** | **`VI100` (Kenta Aoki) was replaced again** (first on 2026-11-21, now a second time). No other existing picture changed. |
+| New pictures | `VI103` to `VI116`, `VI118` to `VI125` (VI117 is not in the upload), plus `VI168` and `VI169`, with their import files. Visitors VI103 to VI125 already had rows; **VI168 and VI169 have no workbook rows yet**, so their pictures wait (see `design/proposals/UPCOMING_VISITORS_VI168_VI169_2026-11-22.md`, with the questions for you). |
+| Renames | VI123 is now **Javier Santos** (ハビエル・サントス, was Masato Kondo) and VI124 **Gabriella Santos** (ガブリエラ・サントス, was Michiko Aoki). Name, Japanese name and the romaji cell changed; nothing else did. |
+| Font | The shrunken Japanese font was re-subset so the new katakana names draw in Japanese rather than the fallback. |

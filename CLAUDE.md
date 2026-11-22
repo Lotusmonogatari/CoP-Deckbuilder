@@ -333,3 +333,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Decision! scenes, phase 3: scenes that start a level, stage, named vote, event or unlock (2026-11-21, Cameron; branch `feature/decision-scenes-3`)
 - Decision! scenes, phase 4: Optional scenes, lapses, the picture fallback and a writing guide (2026-11-21, Cameron; branch `feature/decision-scenes-4`)
 - Woodblock is the default look; Yezo Office (CP09) is a package; the New Game pick is free (2026-11-21, Cameron; branch `feature/ui-default-woodblock`)
+- Visitor pictures VI103 to VI125, VI168 and VI169; VI100 replaced again; VI123 and VI124 renamed (2026-11-22, Cameron; branch `feature/visitor-images-4`)
