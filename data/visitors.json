@@ -6623,5 +6623,89 @@
       }
     ],
     "location": "District"
+  },
+  {
+    "visitor_id": "VI168",
+    "name_en": "Picante Paul",
+    "name_jp": "ピカンテ・ポール",
+    "romaji": "Picante Paul",
+    "title": "Celebrity",
+    "stages": [
+      "ST07",
+      "ST113",
+      "ST153",
+      "ST213",
+      "ST281",
+      "ST275",
+      "ST276",
+      "ST282",
+      "ST274"
+    ],
+    "reward": [
+      {
+        "target": "BO05",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO05",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "location": "Capitol"
+  },
+  {
+    "visitor_id": "VI169",
+    "name_en": "Kakata Jishinka",
+    "name_jp": "侍臣家 過形",
+    "romaji": "Kakata Jishinka",
+    "title": "Retired",
+    "stages": [
+      "ST07",
+      "ST281",
+      "ST105",
+      "ST110",
+      "ST170",
+      "ST193",
+      "ST118",
+      "ST120",
+      "ST274"
+    ],
+    "reward": [
+      {
+        "target": "BO17",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO17",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "location": "Capitol"
   }
 ]

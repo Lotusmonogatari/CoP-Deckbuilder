@@ -71,7 +71,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ02",
@@ -140,7 +141,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ03",
@@ -215,7 +219,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You meet the ward office about the crosswalk and the crossing guard, and send the parents the date the work begins.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ04",
@@ -300,7 +305,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ministry about the patrol boats and pass what you learn back to the fleet, plainly.",
-    "promise_kept_text_d": "You say on the record that the fleet's safety comes first, and send the crews the transcript."
+    "promise_kept_text_d": "You say on the record that the fleet's safety comes first, and send the crews the transcript.",
+    "seasons": null
   },
   {
     "question_id": "VQ05",
@@ -376,7 +382,8 @@
     "promise_kept_text_a": "You put the case for fuel relief to the ministry and send the crews a copy of your letter.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ06",
@@ -455,7 +462,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You carry the dredging request to the capital and ask about it again the following week.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ07",
@@ -527,7 +535,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ08",
@@ -592,7 +601,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ09",
@@ -664,7 +674,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ10",
@@ -736,7 +747,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ11",
@@ -819,7 +831,8 @@
     "promise_kept_text_a": "You sit in on the roundtable and keep workers and owners at one table.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ12",
@@ -900,7 +913,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ13",
@@ -978,7 +992,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You make the case for dairy relief in a meeting with the ministry and tell the farmers how it went."
+    "promise_kept_text_d": "You make the case for dairy relief in a meeting with the ministry and tell the farmers how it went.",
+    "seasons": null
   },
   {
     "question_id": "VQ14",
@@ -1065,7 +1080,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You speak up for the rural routes at the transport hearing and send the villages a copy of your remarks.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ15",
@@ -1143,7 +1159,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You try a small piece of the cheese on camera. It is very good, and you say so.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ16",
@@ -1215,7 +1232,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ17",
@@ -1303,7 +1321,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You take the campus debate, with the questions screened beforehand.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ18",
@@ -1397,7 +1416,8 @@
     "promise_kept_text_a": "You take on a student intern for office support work.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You go through the office budget and find room for one student intern next term.",
-    "promise_kept_text_d": "You take on a paid student intern and give them real work."
+    "promise_kept_text_d": "You take on a paid student intern and give them real work.",
+    "seasons": null
   },
   {
     "question_id": "VQ19",
@@ -1471,7 +1491,8 @@
     "promise_kept_text_a": "You press the ministry for more childcare spots and share the answer with the parents who asked.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ20",
@@ -1554,7 +1575,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You speak for the shared community center at the ward.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ21",
@@ -1637,7 +1659,8 @@
     "promise_kept_text_a": "You eat a proper lunch and send Granny Chiyo a photo of the empty bowl.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ22",
@@ -1705,7 +1728,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ23",
@@ -1800,7 +1824,8 @@
     "promise_kept_text_a": "You defend heritage and craft funding in the budget debate.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ24",
@@ -1876,7 +1901,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ25",
@@ -1950,7 +1976,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You press the railway for more cars on the morning line and post its reply for the commuters."
+    "promise_kept_text_d": "You press the railway for more cars on the morning line and post its reply for the commuters.",
+    "seasons": null
   },
   {
     "question_id": "VQ26",
@@ -2033,7 +2060,8 @@
     "promise_kept_text_a": "You push for a faster airport rail link at the transport office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ27",
@@ -2113,7 +2141,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You ride the 7:40 standing in the crush, and arrive understanding exactly what the commuters mean."
+    "promise_kept_text_d": "You ride the 7:40 standing in the crush, and arrive understanding exactly what the commuters mean.",
+    "seasons": null
   },
   {
     "question_id": "VQ28",
@@ -2188,7 +2217,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You make the call about the road closure. The festival permit comes through the same week.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ29",
@@ -2281,7 +2311,8 @@
     "promise_kept_text_a": "The hand towel reaches the shrine festival with your respects. The organizers hang it by the entrance.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You make it to the shrine festival for part of the day.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ30",
@@ -2358,7 +2389,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ31",
@@ -2441,7 +2473,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You back spin-off funding at the ministry and tell the university.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ32",
@@ -2513,7 +2546,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ33",
@@ -2589,7 +2626,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ34",
@@ -2665,7 +2703,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ35",
@@ -2745,7 +2784,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ36",
@@ -2842,7 +2882,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You stop by the rally for a short appearance and shake hands on the way out.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ37",
@@ -2929,7 +2970,8 @@
     "promise_kept_text_a": "You sit in on the dinner planning and take the seating chart off the organizers' hands.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ38",
@@ -3001,7 +3043,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ39",
@@ -3073,7 +3116,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ40",
@@ -3155,7 +3199,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You appear on the show, in a suit the host approves of.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ41",
@@ -3238,7 +3283,8 @@
     "promise_kept_text_a": "You help the tourism office promote Yezo at its next campaign abroad.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ42",
@@ -3314,7 +3360,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ43",
@@ -3400,7 +3447,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You find the office that handles ferry clearance and send the fleet the right name and number.",
-    "promise_kept_text_d": "You press the customs office for faster ferry clearance and send the fleet the reply."
+    "promise_kept_text_d": "You press the customs office for faster ferry clearance and send the fleet the reply.",
+    "seasons": null
   },
   {
     "question_id": "VQ44",
@@ -3493,7 +3541,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You cross on the night ferry in a cabin and see the delays for yourself.",
     "promise_kept_text_c": "You cross on the night ferry, seasick most of the way, and see the delays for yourself.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ45",
@@ -3574,7 +3623,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ46",
@@ -3654,7 +3704,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ47",
@@ -3742,7 +3793,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You pass the route question to the Committee on Construction and Development with a short note."
+    "promise_kept_text_d": "You pass the route question to the Committee on Construction and Development with a short note.",
+    "seasons": null
   },
   {
     "question_id": "VQ48",
@@ -3822,7 +3874,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ49",
@@ -3904,7 +3957,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You set out your objections to the platform at the branch meeting, calmly and on the record."
+    "promise_kept_text_d": "You set out your objections to the platform at the branch meeting, calmly and on the record.",
+    "seasons": null
   },
   {
     "question_id": "VQ50",
@@ -3980,7 +4034,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ51",
@@ -4062,7 +4117,8 @@
     "promise_kept_text_a": "You send headquarters a note on which talking points did not land at home, and why.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ52",
@@ -4144,7 +4200,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You call headquarters before the reporter, and return the reporter's call with a clear answer.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ53",
@@ -4222,7 +4279,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You raise a youth seat on the board at the next party meeting and keep raising it."
+    "promise_kept_text_d": "You raise a youth seat on the board at the next party meeting and keep raising it.",
+    "seasons": null
   },
   {
     "question_id": "VQ54",
@@ -4306,7 +4364,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You meet the young member and check they are serious about running.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You spend an afternoon with the young member and leave with as many ideas as you gave."
+    "promise_kept_text_d": "You spend an afternoon with the young member and leave with as many ideas as you gave.",
+    "seasons": null
   },
   {
     "question_id": "VQ55",
@@ -4382,7 +4441,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ56",
@@ -4463,7 +4523,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ57",
@@ -4539,7 +4600,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ58",
@@ -4628,7 +4690,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You meet the paid campaign staff and set out what you expect from them.",
     "promise_kept_text_c": "You thank your volunteers by name and visit two of them at work. Word gets around the branch.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ59",
@@ -4703,7 +4766,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You check with your office, and the dues are paid that afternoon.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ60",
@@ -4779,7 +4843,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ61",
@@ -4855,7 +4920,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ62",
@@ -4927,7 +4993,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ63",
@@ -4999,7 +5066,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ64",
@@ -5075,7 +5143,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ65",
@@ -5163,7 +5232,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You spend an afternoon on doorsteps in the district and listen more than you talk.",
     "promise_kept_text_c": "You find a pollster who knows the district and book a fresh survey.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ66",
@@ -5239,7 +5309,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ67",
@@ -5315,7 +5386,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ68",
@@ -5391,7 +5463,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ69",
@@ -5467,7 +5540,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ70",
@@ -5549,7 +5623,8 @@
     "promise_kept_text_a": "You sit down with the nervous newcomer and walk them through their first month.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ71",
@@ -5625,7 +5700,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ72",
@@ -5701,7 +5777,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ73",
@@ -5787,7 +5864,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You send a short paper on how the party could listen better. Someone at headquarters reads it."
+    "promise_kept_text_d": "You send a short paper on how the party could listen better. Someone at headquarters reads it.",
+    "seasons": null
   },
   {
     "question_id": "VQ74",
@@ -5859,7 +5937,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ75",
@@ -5935,7 +6014,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ76",
@@ -6011,7 +6091,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ77",
@@ -6087,7 +6168,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ78",
@@ -6169,7 +6251,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "The cookies reach the donor with a handwritten thank-you. The photo goes up on their office wall.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ79",
@@ -6256,7 +6339,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You give the dinner speech. It is shorter than planned, and it goes over fine.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ80",
@@ -6328,7 +6412,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ81",
@@ -6410,7 +6495,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You meet a member of the other faction for coffee, and keep the conversation going.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ82",
@@ -6492,7 +6578,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You hear out the plan and its risks in full before giving your answer.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ83",
@@ -6564,7 +6651,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ84",
@@ -6645,7 +6733,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ85",
@@ -6721,7 +6810,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ86",
@@ -6797,7 +6887,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ87",
@@ -6873,7 +6964,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ88",
@@ -6955,7 +7047,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You speak up for the party at a meeting where staying is not the easy choice.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ89",
@@ -7038,7 +7131,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You visit the places the reports describe and come back with notes the reports left out."
+    "promise_kept_text_d": "You visit the places the reports describe and come back with notes the reports left out.",
+    "seasons": null
   },
   {
     "question_id": "VQ90",
@@ -7114,7 +7208,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ91",
@@ -7190,7 +7285,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ92",
@@ -7266,7 +7362,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ93",
@@ -7342,7 +7439,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ94",
@@ -7418,7 +7516,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ95",
@@ -7500,7 +7599,8 @@
     "promise_kept_text_a": "You ask the prefecture for a seasonal road closure and send the reply to the nesting-ground group.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ96",
@@ -7576,7 +7676,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ97",
@@ -7652,7 +7753,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ98",
@@ -7728,7 +7830,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ99",
@@ -7804,7 +7907,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ100",
@@ -7880,7 +7984,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ101",
@@ -7956,7 +8061,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ102",
@@ -8038,7 +8144,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You look at the regional desk in the budget papers and tell the editor what you found."
+    "promise_kept_text_d": "You look at the regional desk in the budget papers and tell the editor what you found.",
+    "seasons": null
   },
   {
     "question_id": "VQ103",
@@ -8114,7 +8221,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ104",
@@ -8190,7 +8298,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ105",
@@ -8270,7 +8379,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ106",
@@ -8346,7 +8456,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ107",
@@ -8422,7 +8533,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ108",
@@ -8498,7 +8613,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ109",
@@ -8574,7 +8690,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ110",
@@ -8650,7 +8767,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ111",
@@ -8726,7 +8844,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ112",
@@ -8798,7 +8917,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ113",
@@ -8874,7 +8994,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ114",
@@ -8950,7 +9071,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ115",
@@ -9026,7 +9148,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ116",
@@ -9108,7 +9231,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": "You obtain the data-sharing agreement and send a plain summary of what it covers.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ117",
@@ -9184,7 +9308,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ118",
@@ -9260,7 +9385,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ119",
@@ -9336,7 +9462,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ120",
@@ -9412,7 +9539,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ121",
@@ -9488,7 +9616,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ122",
@@ -9564,7 +9693,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ123",
@@ -9640,7 +9770,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ124",
@@ -9716,7 +9847,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ125",
@@ -9792,7 +9924,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ126",
@@ -9868,7 +10001,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ127",
@@ -9944,7 +10078,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ128",
@@ -10020,7 +10155,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ129",
@@ -10096,7 +10232,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ130",
@@ -10172,7 +10309,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ131",
@@ -10256,7 +10394,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ132",
@@ -10348,7 +10487,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ133",
@@ -10424,7 +10564,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ134",
@@ -10500,7 +10641,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ135",
@@ -10576,7 +10718,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ136",
@@ -10659,7 +10802,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Ainu Heritage and Language Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Ainu Heritage and Language Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ137",
@@ -10735,7 +10879,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ138",
@@ -10818,7 +10963,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Specified Skilled Worker Visa Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Specified Skilled Worker Visa Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ139",
@@ -10890,7 +11036,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ140",
@@ -10965,7 +11112,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Consumption Tax Rate Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Consumption Tax Rate Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ141",
@@ -11041,7 +11189,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ142",
@@ -11124,7 +11273,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Judicial Appointments Commission Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Judicial Appointments Commission Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ143",
@@ -11200,7 +11350,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ144",
@@ -11283,7 +11434,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Temple and Shrine Heritage Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Temple and Shrine Heritage Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ145",
@@ -11359,7 +11511,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ146",
@@ -11442,7 +11595,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Constituency Development Grants Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Constituency Development Grants Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ147",
@@ -11518,7 +11672,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ148",
@@ -11601,7 +11756,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Organized Crime Conspiracy Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Organized Crime Conspiracy Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ149",
@@ -11677,7 +11833,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ150",
@@ -11760,7 +11917,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Yezo–EU Economic Partnership Agreement and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Yezo–EU Economic Partnership Agreement and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ151",
@@ -11836,7 +11994,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ152",
@@ -11919,7 +12078,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Chishima Joint Economic Activity Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Chishima Joint Economic Activity Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ153",
@@ -11995,7 +12155,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ154",
@@ -12078,7 +12239,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Regional Minimum Wage Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Regional Minimum Wage Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ155",
@@ -12154,7 +12316,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ156",
@@ -12237,7 +12400,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You find out who would pay for the Moral Education Curriculum Act and report back, as promised."
+    "promise_kept_text_d": "You find out who would pay for the Moral Education Curriculum Act and report back, as promised.",
+    "seasons": null
   },
   {
     "question_id": "VQ157",
@@ -12319,7 +12483,8 @@
     "promise_kept_text_a": "You speak for a rice price floor in committee and send the cooperative the minutes.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ158",
@@ -12409,7 +12574,11 @@
     "promise_kept_text_a": "You find money in the regional fund for shared irrigation and tell the cooperative before the summer.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ministry for a drought report and send it to the cooperative when it arrives.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Spring",
+      "Summer"
+    ]
   },
   {
     "question_id": "VQ159",
@@ -12497,7 +12666,8 @@
     "promise_kept_text_a": "You make the case for student housing at the ward and tell the students how it went.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You look at how other cities handled campus rents and send the students a short summary.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ160",
@@ -12579,7 +12749,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You raise a student seat on the board with the university president and pass the answer to the students.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ161",
@@ -12668,7 +12839,8 @@
     "promise_kept_text_a": "You press the ministry for more daycare spots and share the answer with the parents.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ministry how many families are waiting for daycare and share the figure.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ162",
@@ -12744,7 +12916,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ163",
@@ -12832,7 +13005,8 @@
     "promise_kept_text_a": "You put the case for apprenticeship stipends to the culture office and tell the workshop.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the arts office what support exists and pass the list to the workshop.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ164",
@@ -12920,7 +13094,8 @@
     "promise_kept_text_a": "You push the trade office for a quality mark for local crafts and report back.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You talk to the tourist board about craft labels and tell the makers what they said.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ165",
@@ -13008,7 +13183,8 @@
     "promise_kept_text_a": "You speak up for the Assembly in your next press round.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You speak up for members in the press, fairly, and say where criticism has been earned.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ166",
@@ -13096,7 +13272,8 @@
     "promise_kept_text_a": "You back more bill-reading staff in the Assembly budget talks.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a costed plan for more bill-reading staff and send it to the members.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ167",
@@ -13184,7 +13361,11 @@
     "promise_kept_text_a": "You speak against rezoning the festival route at the planning office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the city to consult everyone on the festival route, and it schedules a meeting.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Spring",
+      "Summer"
+    ]
   },
   {
     "question_id": "VQ168",
@@ -13272,7 +13453,8 @@
     "promise_kept_text_a": "You thank the grove volunteers by name at a town meeting.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You name the grove volunteers in your speech. Several of them are in the room.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ169",
@@ -13360,7 +13542,8 @@
     "promise_kept_text_a": "You raise care workers' pay at the welfare office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a pay review for care workers and send the council the terms of reference.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ170",
@@ -13448,7 +13631,8 @@
     "promise_kept_text_a": "You argue for funded home visits at the welfare office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You set up a home-visit pilot in one district and share the first month's results.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ171",
@@ -13536,7 +13720,8 @@
     "promise_kept_text_a": "You ask the transport office to set bus routes by ridership data.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the transport office for a bus service review and send the alliance its timetable.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ172",
@@ -13624,7 +13809,8 @@
     "promise_kept_text_a": "You back mixed-use zoning near stations at the planning office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the planning office to name pilot areas for mixed-use zoning near stations.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ173",
@@ -13712,7 +13898,8 @@
     "promise_kept_text_a": "You help arrange recordings of the elders speaking the language.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You find out what recording the elders' language would cost and send the foundation the figures.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ174",
@@ -13800,7 +13987,8 @@
     "promise_kept_text_a": "You argue for language teachers in the school budget.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ministry about training language teachers and send the foundation its answer.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ175",
@@ -13889,7 +14077,8 @@
     "promise_kept_text_a": "You argue for a regular rural bus service at the transport office and tell the village.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a passenger count on the noon bus and send the council the numbers.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ176",
@@ -13977,7 +14166,8 @@
     "promise_kept_text_a": "You back relocation grants for young families at the ministry.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You look into a small pilot of grants for young families and send the council the outline.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ177",
@@ -14061,7 +14251,8 @@
     "promise_kept_text_a": "You find a repair grant for the hall roof and help the association fill in the forms.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask what repair grants exist and send the association the list.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ178",
@@ -14144,7 +14335,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You hand out the association's flyers at the station one morning. Three newcomers call that week.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ179",
@@ -14233,7 +14425,8 @@
     "promise_kept_text_a": "You make sure the neighbors get a hearing before the lot is decided, and you attend it.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a public hearing on the vacant lot, and the date goes up on the notice board.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ180",
@@ -14322,7 +14515,8 @@
     "promise_kept_text_a": "You back a study of the seals and fair compensation at the fisheries office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ministry for data on seals and the catch, and send the fleet the report.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ181",
@@ -14410,7 +14604,8 @@
     "promise_kept_text_a": "You press for a vessel renewal fund at the fisheries office and tell the crews.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You look into loan guarantees for new engines and send the fleet what you found.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ182",
@@ -14497,7 +14692,8 @@
     "promise_kept_text_a": "You make the case for crew training and housing at the fisheries office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ183",
@@ -14573,7 +14769,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ184",
@@ -14649,7 +14846,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ185",
@@ -14730,7 +14928,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ186",
@@ -14818,7 +15017,8 @@
     "promise_kept_text_a": "You speak up about the night-shift cuts and ask the factory for fair notice.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the factory owners to meet the union about the night shifts, and they agree to a date.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ187",
@@ -14906,7 +15106,8 @@
     "promise_kept_text_a": "You back reform of temp workers' benefits at the labor office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You study how other places treat temp workers and send the union a short summary.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ188",
@@ -14994,7 +15195,8 @@
     "promise_kept_text_a": "You ask the labor office why the safety inspector was removed.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You write to the ministry about the removed safety inspector and share its reply with the plant.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ189",
@@ -15083,7 +15285,11 @@
     "promise_kept_text_a": "You push the prefecture to put the dairy road high on the winter plowing list.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the prefecture about the winter plow schedule, and the milk road is added to the list.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ190",
@@ -15171,7 +15377,8 @@
     "promise_kept_text_a": "You argue for feed support at the agriculture office and tell the dairy farmers how it went.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You bring the feed prices to the committee and send the farmers the minutes.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ191",
@@ -15259,7 +15466,8 @@
     "promise_kept_text_a": "You speak for successor grants at the agriculture office and tell the family.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You find out which successor programs exist and send the family the details.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ192",
@@ -15344,7 +15552,8 @@
     "promise_kept_text_a": "You make the case for open textbook funding and tell the students how it went.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the university about textbook costs and pass on what it can offer.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ193",
@@ -15428,7 +15637,8 @@
     "promise_kept_text_a": "You push the campus for longer library hours.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You raise longer library hours with the rector, and a trial of later closing is agreed.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ194",
@@ -15513,7 +15723,8 @@
     "promise_kept_text_a": "You argue for student housing support at the ward and share the answer with the students.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the university about transit passes and send the students its answer.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ195",
@@ -15597,7 +15808,8 @@
     "promise_kept_text_a": "You get the ward to book the playground repair and tell the parents the date.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You report the broken playground to the parks office and pass on the reference number.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ196",
@@ -15683,7 +15895,8 @@
     "promise_kept_text_a": "You ask for an audit of school lunches and send the parents the auditor's terms.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You check what the budget allows for school lunches and tell the parents plainly.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ197",
@@ -15767,7 +15980,8 @@
     "promise_kept_text_a": "You push the school board for online meeting options and tell the parents.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You pass the concern to the school board with a short note of your own.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ198",
@@ -15848,7 +16062,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ199",
@@ -15938,7 +16153,8 @@
     "promise_kept_text_a": "You ask the forest office for a managed wood supply for carvers and send the guild its plan.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the forest office what is possible on wood for carvers and pass on the answer.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ200",
@@ -16026,7 +16242,8 @@
     "promise_kept_text_a": "You spend an afternoon at the workshop and hear how the work is done.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You visit the workshop for an hour and hear exactly how the carvers work.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ201",
@@ -16110,7 +16327,8 @@
     "promise_kept_text_a": "You press the railway for platform doors.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the railway for a plan on platform doors and post its reply for the commuters.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ202",
@@ -16195,7 +16413,8 @@
     "promise_kept_text_a": "You ask the railway to modernize the ticket machines, and it names a date for the new ones.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You report the faulty ticket machine to the station office.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ203",
@@ -16279,7 +16498,8 @@
     "promise_kept_text_a": "You push for delay compensation at the transport office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the railway for delay figures and send them to the commuter who asked.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ204",
@@ -16363,7 +16583,8 @@
     "promise_kept_text_a": "You find a heritage restoration grant for the shrine roof and help with the forms.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the culture office about the shrine roof and pass the answer on.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ205",
@@ -16447,7 +16668,8 @@
     "promise_kept_text_a": "You help arrange cleanup support and new signs for the shrine grounds.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You talk to the tourist board about the litter and tell the shrine what they said.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ206",
@@ -16525,7 +16747,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You mention the shrine carriers to the local schools, and a few older students sign up.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ207",
@@ -16603,7 +16826,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a clear explainer on the tax rules and send it to the investor's office.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ208",
@@ -16687,7 +16911,8 @@
     "promise_kept_text_a": "You argue for housing and lab support for young engineers at the ministry.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the university about closer ties with local firms and report back.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ209",
@@ -16771,7 +16996,8 @@
     "promise_kept_text_a": "You tell the cold-climate data center story in your next speeches.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask for a study of data center costs in a cold climate.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ210",
@@ -16859,7 +17085,8 @@
     "promise_kept_text_a": "You argue for a small-town building fund at the ministry and tell the town office.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You look for an existing repair fund and send the town office what you find.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ211",
@@ -16947,7 +17174,8 @@
     "promise_kept_text_a": "You make the case for rural placement bonuses at the ministry.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You raise the loss of young staff with the ministry and tell the town how it went.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ212",
@@ -17029,7 +17257,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You study how other prefectures set budget priorities and send the mayor your notes.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ213",
@@ -17113,7 +17342,8 @@
     "promise_kept_text_a": "You argue for rent support for small shops at the ward and tell the shopkeeper.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You meet the landlord association about rising shop rents and pass on what they said.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ214",
@@ -17197,7 +17427,8 @@
     "promise_kept_text_a": "You speak up for local-shop programs at the ward and tell the shopkeeper.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You spend an afternoon at the shop-local day and buy something at every stall.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ215",
@@ -17283,7 +17514,8 @@
     "promise_kept_text_a": "You ask the city for short-term parking near the shop, and a trial bay is marked out.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You raise the parking problem at the council meeting and send the shop owner the minutes.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ216",
@@ -17369,7 +17601,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ217",
@@ -17457,7 +17690,8 @@
     "promise_kept_text_a": "You back the members' call for a voice in the platform.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You pass the new members' request on to headquarters and send them the reply.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ218",
@@ -17553,7 +17787,8 @@
     "promise_kept_text_a": "You find a donor for the local office's copier. It arrives the following week.",
     "promise_kept_text_b": "You attend the small fundraiser for the copier and say a few words.",
     "promise_kept_text_c": "You ask headquarters for an equipment grant for the copier and send the office the form.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ219",
@@ -17625,7 +17860,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ220",
@@ -17702,7 +17938,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ221",
@@ -17778,7 +18015,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ222",
@@ -17862,7 +18100,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Spring",
+      "Summer"
+    ]
   },
   {
     "question_id": "VQ223",
@@ -17946,7 +18188,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ224",
@@ -18030,7 +18273,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ225",
@@ -18102,7 +18346,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ226",
@@ -18182,7 +18427,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ227",
@@ -18258,7 +18504,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ228",
@@ -18330,7 +18577,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ229",
@@ -18414,7 +18665,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ230",
@@ -18478,7 +18730,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ231",
@@ -18542,7 +18797,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ232",
@@ -18618,7 +18874,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ233",
@@ -18686,7 +18945,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ234",
@@ -18758,7 +19018,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ235",
@@ -18834,7 +19098,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ236",
@@ -18922,7 +19187,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ237",
@@ -18994,7 +19260,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ238",
@@ -19066,7 +19333,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ239",
@@ -19138,7 +19406,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ240",
@@ -19210,7 +19479,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ241",
@@ -19282,7 +19552,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Summer",
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ242",
@@ -19362,7 +19636,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ243",
@@ -19438,7 +19713,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ244",
@@ -19510,7 +19786,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ245",
@@ -19586,7 +19866,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ246",
@@ -19658,7 +19942,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ247",
@@ -19738,7 +20023,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ248",
@@ -19814,7 +20100,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ249",
@@ -19890,7 +20177,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ250",
@@ -19962,7 +20250,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ251",
@@ -20034,7 +20325,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ252",
@@ -20106,7 +20398,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ253",
@@ -20182,7 +20475,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ254",
@@ -20254,7 +20548,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ255",
@@ -20326,7 +20621,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ256",
@@ -20398,7 +20694,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Summer",
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ257",
@@ -20470,7 +20770,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ258",
@@ -20546,7 +20847,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ259",
@@ -20622,7 +20924,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Summer",
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ260",
@@ -20694,7 +21000,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ261",
@@ -20778,7 +21087,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ262",
@@ -20850,7 +21162,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ263",
@@ -20926,7 +21239,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ264",
@@ -20998,7 +21312,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ265",
@@ -21070,7 +21385,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ266",
@@ -21138,7 +21457,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ267",
@@ -21214,7 +21537,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ268",
@@ -21278,7 +21602,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ269",
@@ -21358,7 +21686,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ270",
@@ -21426,7 +21758,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ271",
@@ -21494,7 +21829,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ272",
@@ -21570,7 +21909,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ273",
@@ -21646,7 +21989,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ274",
@@ -21718,7 +22062,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ275",
@@ -21802,7 +22150,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ276",
@@ -21874,7 +22223,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ277",
@@ -21942,7 +22292,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ278",
@@ -22014,7 +22365,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ279",
@@ -22082,7 +22437,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ280",
@@ -22158,7 +22517,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ281",
@@ -22234,7 +22597,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ282",
@@ -22316,7 +22680,8 @@
     "promise_kept_text_a": "You push for a review of flour costs and send the baker what you learned.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ283",
@@ -22396,7 +22761,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ284",
@@ -22481,7 +22847,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ285",
@@ -22557,7 +22924,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ286",
@@ -22633,7 +23004,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ287",
@@ -22713,7 +23085,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ288",
@@ -22805,7 +23178,11 @@
     "promise_kept_text_a": "You set a date for the summer cleanup and bring volunteers from three blocks.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You arrange for a representative to turn up to the cleanup in your place."
+    "promise_kept_text_d": "You arrange for a representative to turn up to the cleanup in your place.",
+    "seasons": [
+      "Spring",
+      "Summer"
+    ]
   },
   {
     "question_id": "VQ289",
@@ -22886,7 +23263,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ290",
@@ -22962,7 +23340,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ291",
@@ -23048,7 +23427,8 @@
     "promise_kept_text_a": "You report the cracked road with a photo and follow up until a repair date is set.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ292",
@@ -23128,7 +23508,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ293",
@@ -23204,7 +23585,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ294",
@@ -23280,7 +23662,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ295",
@@ -23360,7 +23743,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ296",
@@ -23440,7 +23824,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ297",
@@ -23516,7 +23901,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ298",
@@ -23592,7 +23978,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ299",
@@ -23677,7 +24064,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ300",
@@ -23757,7 +24145,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ301",
@@ -23833,7 +24222,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ302",
@@ -23915,7 +24305,8 @@
     "promise_kept_text_a": "You come back to the barber's chair a month later, and listen first.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ303",
@@ -23995,7 +24386,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ304",
@@ -24075,7 +24467,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ305",
@@ -24151,7 +24544,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ306",
@@ -24227,7 +24621,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ307",
@@ -24307,7 +24702,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ308",
@@ -24387,7 +24783,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ309",
@@ -24463,7 +24860,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ310",
@@ -24539,7 +24937,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ311",
@@ -24619,7 +25018,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ312",
@@ -24699,7 +25099,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ313",
@@ -24775,7 +25176,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ314",
@@ -24851,7 +25253,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ315",
@@ -24931,7 +25334,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ316",
@@ -25011,7 +25415,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ317",
@@ -25087,7 +25492,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ318",
@@ -25163,7 +25569,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ319",
@@ -25243,7 +25650,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ320",
@@ -25323,7 +25731,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ321",
@@ -25399,7 +25808,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ322",
@@ -25475,7 +25885,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ323",
@@ -25560,7 +25971,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ324",
@@ -25640,7 +26054,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ325",
@@ -25716,7 +26131,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ326",
@@ -25792,7 +26208,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ327",
@@ -25872,7 +26289,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ328",
@@ -25952,7 +26370,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ329",
@@ -26028,7 +26447,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ330",
@@ -26104,7 +26524,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ331",
@@ -26184,7 +26605,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ332",
@@ -26276,7 +26698,8 @@
     "promise_kept_text_a": "You raise the clinic ramp and elevator with the ward and push for a funded repair.",
     "promise_kept_text_b": "You ask for a repair date for the clinic ramp and elevator and pass it on.",
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ333",
@@ -26352,7 +26775,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ334",
@@ -26428,7 +26852,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ335",
@@ -26508,7 +26933,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ336",
@@ -26588,7 +27014,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ337",
@@ -26670,7 +27097,8 @@
     "promise_kept_text_a": "You find a respite care service and a volunteer who can sit with his wife.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ338",
@@ -26746,7 +27174,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ339",
@@ -26826,7 +27255,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ340",
@@ -26906,7 +27336,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ341",
@@ -26988,7 +27419,8 @@
     "promise_kept_text_a": "You ask the school board what to drop and what to protect, and share the answer.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ342",
@@ -27064,7 +27496,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ343",
@@ -27144,7 +27577,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ344",
@@ -27224,7 +27658,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ345",
@@ -27300,7 +27735,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ346",
@@ -27376,7 +27812,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ347",
@@ -27456,7 +27893,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ348",
@@ -27536,7 +27974,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ349",
@@ -27612,7 +28051,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ350",
@@ -27688,7 +28128,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ351",
@@ -27768,7 +28209,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ352",
@@ -27848,7 +28290,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ353",
@@ -27924,7 +28367,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ354",
@@ -28000,7 +28444,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ355",
@@ -28080,7 +28525,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ356",
@@ -28160,7 +28606,11 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ357",
@@ -28242,7 +28692,11 @@
     "promise_kept_text_a": "You ask for a bus replacement plan and a published schedule, and pass it on.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ358",
@@ -28318,7 +28772,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ359",
@@ -28398,7 +28853,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ360",
@@ -28478,7 +28934,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ361",
@@ -28554,7 +29011,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ362",
@@ -28630,7 +29088,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ363",
@@ -28710,7 +29169,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ364",
@@ -28796,7 +29256,8 @@
     "promise_kept_text_a": "You ask the ward for a flat grant for small kindergartens and tell the staff.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ365",
@@ -28872,7 +29333,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ366",
@@ -28948,7 +29410,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ367",
@@ -29028,7 +29491,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ368",
@@ -29108,7 +29572,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ369",
@@ -29184,7 +29649,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ370",
@@ -29260,7 +29726,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ371",
@@ -29340,7 +29807,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ372",
@@ -29420,7 +29888,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ373",
@@ -29496,7 +29965,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ374",
@@ -29572,7 +30042,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Spring"
+    ]
   },
   {
     "question_id": "VQ375",
@@ -29652,7 +30125,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ376",
@@ -29732,7 +30208,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ377",
@@ -29808,7 +30285,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ378",
@@ -29884,7 +30362,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ379",
@@ -29964,7 +30443,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ380",
@@ -30044,7 +30524,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Summer"
+    ]
   },
   {
     "question_id": "VQ381",
@@ -30120,7 +30603,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ382",
@@ -30196,7 +30680,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ383",
@@ -30282,7 +30767,8 @@
     "promise_kept_text_a": "You ask the tourism office for a farm-visit scheme and a shared booking site.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ384",
@@ -30362,7 +30848,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ385",
@@ -30438,7 +30925,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ386",
@@ -30514,7 +31002,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ387",
@@ -30600,7 +31089,8 @@
     "promise_kept_text_a": "You ask the agriculture office for a start-up loan guarantee for new farmers.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ388",
@@ -30680,7 +31170,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ389",
@@ -30756,7 +31247,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ390",
@@ -30832,7 +31324,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ391",
@@ -30918,7 +31411,8 @@
     "promise_kept_text_a": "You ask the ward to host regular meetings between producers and buyers.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ392",
@@ -30998,7 +31492,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ393",
@@ -31074,7 +31569,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ394",
@@ -31159,7 +31655,8 @@
     "promise_kept_text_a": "You push for a cap on card fees for small shops and tell the shopkeeper.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the banks to meet the shop owners about card fees, and they agree to sit down.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ395",
@@ -31244,7 +31741,8 @@
     "promise_kept_text_a": "You push to cut hiring paperwork for small firms and tell the shopkeeper how it went.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You send the help sheet on hiring part-timers. It saves the shop owner most of a day.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ396",
@@ -31328,7 +31826,8 @@
     "promise_kept_text_a": "You look for a heritage grant for the temple roof and help with the forms.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the temple association what the roof needs and pass it to the town.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ397",
@@ -31417,7 +31916,8 @@
     "promise_kept_text_a": "You speak at both the temple and the shrine on festival day.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": "You attend the festival they choose and stay for the opening."
+    "promise_kept_text_d": "You attend the festival they choose and stay for the opening.",
+    "seasons": null
   },
   {
     "question_id": "VQ398",
@@ -31504,7 +32004,8 @@
     "promise_kept_text_a": "You press the Hakodate ward office until the market-road pothole is on this month's repair list.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ399",
@@ -31597,7 +32098,8 @@
     "promise_kept_text_a": "You get the ward to send nets for every collection point on the street.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You ask the ward about an earlier pickup and pass the answer on.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ400",
@@ -31679,7 +32181,8 @@
     "promise_kept_text_a": "You get the garbage calendar printed in several languages, with pictures, for every collection point.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ401",
@@ -31761,7 +32264,10 @@
     "promise_kept_text_a": "You find the snow-guard grant and walk the shop owners through the form.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ402",
@@ -31847,7 +32353,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ403",
@@ -31929,7 +32436,8 @@
     "promise_kept_text_a": "You sit with him at the pension office until they find the missing payment.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ404",
@@ -32016,7 +32524,8 @@
     "promise_kept_text_a": "You raise the veteran's claim with the ministry and keep asking until it reaches the right desk.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ405",
@@ -32098,7 +32607,8 @@
     "promise_kept_text_a": "You visit her mother on her hundredth birthday with a signed letter. She asks how old you are.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ406",
@@ -32180,7 +32690,8 @@
     "promise_kept_text_a": "You sit with Granny Chiyo and her neighbor. The dog gets a quieter corner of the yard.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ407",
@@ -32262,7 +32773,8 @@
     "promise_kept_text_a": "You back the fenced dog corner at the ward meeting, and the park plan gets a new gate.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ408",
@@ -32344,7 +32856,8 @@
     "promise_kept_text_a": "You press the rail company, and the station goes on next year's elevator list.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ409",
@@ -32426,7 +32939,8 @@
     "promise_kept_text_a": "You push for the station bicycle lot, and the ward marks out spaces by the end of the month.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ410",
@@ -32513,7 +33027,8 @@
     "promise_kept_text_a": "You get the town office to trace the owner of the empty house in Imabetsu. A letter goes to a nephew in Sapporo.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ411",
@@ -32595,7 +33110,8 @@
     "promise_kept_text_a": "You find a community grant for the bathhouse boiler, and the owner agrees to stay open another year.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ412",
@@ -32677,7 +33193,8 @@
     "promise_kept_text_a": "You get the ward to allow small sidewalk signs for shops, inside a marked line.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ413",
@@ -32758,7 +33275,10 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn"
+    ]
   },
   {
     "question_id": "VQ414",
@@ -32840,7 +33360,8 @@
     "promise_kept_text_a": "You back the park naming at the town council, and her former students fill the gallery.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ415",
@@ -32922,7 +33443,8 @@
     "promise_kept_text_a": "You find the money for a sealed case, and the robes go back on display.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ416",
@@ -33004,7 +33526,10 @@
     "promise_kept_text_a": "You find winter space for the float in the town's road-equipment garage.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Winter"
+    ]
   },
   {
     "question_id": "VQ417",
@@ -33086,7 +33611,8 @@
     "promise_kept_text_a": "You find funding for a handrail up the temple steps, and lights for winter evenings.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ418",
@@ -33173,7 +33699,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You meet the nephew over coffee. He is better prepared than you expected.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ419",
@@ -33254,7 +33781,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ420",
@@ -33341,7 +33869,8 @@
     "promise_kept_text_a": "You hold a warning session at the Obihiro community hall. The room fills with seniors and their notebooks.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ421",
@@ -33423,7 +33952,10 @@
     "promise_kept_text_a": "You press for the inspection, and the plant fits new filters before autumn.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Summer"
+    ]
   },
   {
     "question_id": "VQ422",
@@ -33510,7 +34042,8 @@
     "promise_kept_text_a": "You hold the meeting in the village hall near Cape Sōya, and the company answers questions for two hours.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ423",
@@ -33597,7 +34130,8 @@
     "promise_kept_text_a": "You press the carriers, and one agrees to survey the valley road.",
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ424",
@@ -33678,7 +34212,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ425",
@@ -33761,7 +34296,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": "You gather the mayors, and the towns begin drawing one evacuation map.",
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ426",
@@ -33842,7 +34378,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ427",
@@ -33915,7 +34452,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ428",
@@ -33987,7 +34525,8 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
   },
   {
     "question_id": "VQ429",
@@ -34068,6 +34607,631 @@
     "promise_kept_text_a": null,
     "promise_kept_text_b": null,
     "promise_kept_text_c": null,
-    "promise_kept_text_d": null
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ430",
+    "visitor_ids": [
+      "VI168"
+    ],
+    "question_text": "The cherry blossoms are out, and my crew is shooting the spring bottle of Doki Doki Picante Pulse. Which flavor goes on the label?",
+    "choice_a": "Durian",
+    "choice_b": "Mikan",
+    "choice_c": "Tamarind",
+    "choice_d": "Blackcurrant",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Durian? The cameras would run for the exits.",
+    "response_b": "Mikan! ドキドキ・ピカンテ・パルス, spring edition. Bright, sweet, and a little fire.",
+    "response_c": "Tamarind is lovely, but it is nobody's spring.",
+    "response_d": "Blackcurrant is a long way from the blossoms.",
+    "reaction_a": "Waves a hand in front of his nose.",
+    "reaction_b": "Snaps a finger gun at the lens.",
+    "reaction_c": "Tilts the bottle, unconvinced.",
+    "reaction_d": "Lowers the sunglasses to look at you.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Spring"
+    ]
+  },
+  {
+    "question_id": "VQ431",
+    "visitor_ids": [
+      "VI168"
+    ],
+    "question_text": "The beach shoot starts at noon, and the summer bottle of Doki Doki Picante Pulse still has no flavor. What do we put on the label?",
+    "choice_a": "Pumpkin Spice",
+    "choice_b": "Cranberry",
+    "choice_c": "Candied Yam",
+    "choice_d": "Cherries",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Pumpkin spice on a beach? Folks would melt.",
+    "response_b": "Cranberry is for the cold months, my friend.",
+    "response_c": "Candied yam at noon in the sun? No.",
+    "response_d": "Cherries! ドキドキ・ピカンテ・パルス for the sand: red, hot and ready.",
+    "reaction_a": "Fans himself with the label.",
+    "reaction_b": "Shakes his head at the thermometer.",
+    "reaction_c": "Stares at the sand in disbelief.",
+    "reaction_d": "Kisses his fingertips like a chef.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Summer"
+    ]
+  },
+  {
+    "question_id": "VQ432",
+    "visitor_ids": [
+      "VI168"
+    ],
+    "question_text": "The leaves are turning, and the autumn bottle of Doki Doki Picante Pulse ships next week. Which flavor sells it?",
+    "choice_a": "Chestnut",
+    "choice_b": "Watermelon",
+    "choice_c": "Lychee",
+    "choice_d": "Coconut",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Chestnut! ドキドキ・ピカンテ・パルス, warm and nutty for a cold evening.",
+    "response_b": "Watermelon? In this chill?",
+    "response_c": "Lychee is a summer-island fruit, not an autumn one.",
+    "response_d": "Coconut says beach, and the beach is closed.",
+    "reaction_a": "Pounds the table in delight.",
+    "reaction_b": "Pulls his scarf tighter.",
+    "reaction_c": "Squints at the falling leaves.",
+    "reaction_d": "Looks out the window at the grey sky.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn"
+    ]
+  },
+  {
+    "question_id": "VQ433",
+    "visitor_ids": [
+      "VI168"
+    ],
+    "question_text": "Snow is falling outside the studio, and the winter bottle of Doki Doki Picante Pulse needs a flavor. What goes on the label?",
+    "choice_a": "Passion Fruit",
+    "choice_b": "Guava",
+    "choice_c": "Yuzu",
+    "choice_d": "Dragon Fruit",
+    "correct_choice": "C",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Passion fruit in a snowstorm? Not on my label.",
+    "response_b": "Guava is a long way from this weather.",
+    "response_c": "Yuzu! ドキドキ・ピカンテ・パルス, sharp, fragrant and made for winter.",
+    "response_d": "Dragon fruit belongs somewhere warm.",
+    "reaction_a": "Brushes snow off the bottle.",
+    "reaction_b": "Glances at the frosted window.",
+    "reaction_c": "Raises the bottle like a trophy.",
+    "reaction_d": "Shivers theatrically.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Winter"
+    ]
+  },
+  {
+    "question_id": "VQ434",
+    "visitor_ids": [
+      "VI169"
+    ],
+    "question_text": "Tell me, do you know what the Liberal Party stood for in the nineties?",
+    "choice_a": "Equal rights for women and protection for minorities.",
+    "choice_b": "Higher tariffs to shelter the farms.",
+    "choice_c": "Closer ties with the old Soviet bloc.",
+    "choice_d": "A bigger role for the temples in public life.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO17",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO17",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO17",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO17",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Then someone taught you the history I lived.",
+    "response_b": "The farms never asked us for that.",
+    "response_c": "Not once, in any room I sat in.",
+    "response_d": "We kept the temples at a respectful distance.",
+    "reaction_a": "Taps the table twice, as if calling a long-ago meeting to order.",
+    "reaction_b": "Shakes his head slowly.",
+    "reaction_c": "Frowns at the very idea.",
+    "reaction_d": "Raises one eyebrow.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ435",
+    "visitor_ids": [
+      "VI169"
+    ],
+    "question_text": "They wanted courts that no minister could lean on. Would you keep the courts that way?",
+    "choice_a": "Yes. Judges answer to the law, not to ministers.",
+    "choice_b": "A minister should be able to correct a court that errs.",
+    "choice_c": "It depends on who holds the office.",
+    "choice_d": "Courts are slow. Ministers get things done.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO17",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO17",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO17",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO17",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Good. A minister learns to keep his hands in his pockets.",
+    "response_b": "A correction like that is how a court becomes an office.",
+    "response_c": "Everything depends on the holder. That is exactly the trouble.",
+    "response_d": "Fast is not the same as fair.",
+    "reaction_a": "Nods, the way a man does when he once signed such papers.",
+    "reaction_b": "Sets down his cup with care.",
+    "reaction_c": "Gives a thin, patient smile.",
+    "reaction_d": "Looks past you at the window.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ436",
+    "visitor_ids": [
+      "VI169"
+    ],
+    "question_text": "The Ministry of Ethics and Prosecution has no friends in any party. Should it stay that way?",
+    "choice_a": "Yes. An ethics office with friends is not an ethics office.",
+    "choice_b": "It should answer to the biggest party. Votes matter.",
+    "choice_c": "Trim its budget. It makes too many enemies.",
+    "choice_d": "I would rather not comment on it.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO17",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO17",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO17",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO17",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "It never had friends, and it was better for it.",
+    "response_b": "Votes decide who sits there, not what is right.",
+    "response_c": "Enemies are what the work is for.",
+    "response_d": "A quiet answer is an answer all the same.",
+    "reaction_a": "Folds his hands, remembering something.",
+    "reaction_b": "Frowns at the table.",
+    "reaction_c": "Presses his lips together.",
+    "reaction_d": "Waits a beat too long.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ437",
+    "visitor_ids": [
+      "VI169"
+    ],
+    "question_text": "A member sends a favor to a supporter and calls it good service. What should the Ministry do?",
+    "choice_a": "Investigate it, and publish what it finds.",
+    "choice_b": "Remind the member quietly and move on.",
+    "choice_c": "Ask the supporter whether they were pleased.",
+    "choice_d": "Nothing. Favors keep a district loyal.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO17",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO17",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO17",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO17",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Publish it. Daylight cleans better than a reminder.",
+    "response_b": "A quiet word is how the second favor begins.",
+    "response_c": "Pleased supporters are how it gets worse.",
+    "response_d": "Loyal, and bought. That is not a district. That is a ledger.",
+    "reaction_a": "Gives a single, approving nod.",
+    "reaction_b": "Shakes his head slowly.",
+    "reaction_c": "Sighs through his nose.",
+    "reaction_d": "Closes the notebook with a snap.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
   }
 ]

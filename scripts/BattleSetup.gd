@@ -562,6 +562,10 @@ static func _question_for_visitor(visitor_id: String) -> Dictionary:
 	var questions := DataDB.get_questions_for_visitor(visitor_id)
 	if questions.is_empty():
 		return {}
+	# A question with a Seasons cell is only asked in those seasons' months (Cameron, 2026-11-22); if none is in season, any is.
+	var in_season: Array = questions.filter(func(question: Dictionary) -> bool: return GameState.in_season(question))
+	if not in_season.is_empty():
+		questions = in_season
 	return questions[randi() % questions.size()]
 
 

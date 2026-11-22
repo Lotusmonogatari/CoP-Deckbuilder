@@ -341,6 +341,10 @@ The Events tab has an optional **Lead Organizations** column: up to two organiza
 
 The exporter errors on more than two, or an ID that is not an organization, and warns when a lead is not named in the event's own title or flavor. `python3 tools/audit_event_leads.py` lists what needs a look (events that name more than two, a lead that is not named, organizations named only in a choice).
 
+## Seasonal visitor questions (2026-11-22)
+
+The Visitor Questions tab has a **Seasons** column like the Events and Levels tabs: `Winter`, or `Autumn; Winter`; blank means all year. A question with a Seasons cell is only asked in those seasons' months (the table is the Rules tab's `seasons`). If none of a visitor's questions is in season, any may be asked, so a visitor is never left without one.
+
 ## Decision! scenes (2026-11-21)
 
 A Decision! scene is an event the calendar schedules, shown on the red DECISION! card. The **Decision Scenes** tab holds one row per scene; the title, flavor text, choices and their rewards stay in **Events** and **Event Choices**.

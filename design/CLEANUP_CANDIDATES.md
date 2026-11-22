@@ -242,4 +242,4 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 
 ## Living Office text rows no longer used (2026-11-21)
 
-`shop.style_living_name` ("Living Office"), `shop.style_living_desc` and `shop.style_included` were for the free default style, which is now the package Yezo Office (CP09) with its name and description in the Cosmetic Packages tab. Nothing asks for them; the exporter lists them as unused. Safe to delete when you say so.
+`shop.style_living_name` ("Living Office"), `shop.style_living_desc` and `shop.style_included` were for the free default style, which is now the package Yezo Office (CP09) with its name and description in the Cosmetic Packages tab. Nothing asks for them; the exporter lists them as unused. **Deleted 2026-11-22 on Cameron's say-so** (the three rows were removed from the Text tab).

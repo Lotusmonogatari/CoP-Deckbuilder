@@ -1841,3 +1841,31 @@ The scheme is now fully built. Nothing in play changes until you write scenes: o
 | New pictures | `VI103` to `VI116`, `VI118` to `VI125` (VI117 is not in the upload), plus `VI168` and `VI169`, with their import files. Visitors VI103 to VI125 already had rows; **VI168 and VI169 have no workbook rows yet**, so their pictures wait (see `design/proposals/UPCOMING_VISITORS_VI168_VI169_2026-11-22.md`, with the questions for you). |
 | Renames | VI123 is now **Javier Santos** (ハビエル・サントス, was Masato Kondo) and VI124 **Gabriella Santos** (ガブリエラ・サントス, was Michiko Aoki). Name, Japanese name and the romaji cell changed; nothing else did. |
 | Font | The shrunken Japanese font was re-subset so the new katakana names draw in Japanese rather than the fallback. |
+
+## VI168 Picante Paul and VI169 Kakata Jishinka; a Seasons column for visitor questions (2026-11-22, Cameron; branch `feature/visitors-vi168-vi169`)
+
+All wording, effects and rooms are **drafts for Cameron**. The full record of his answers is in `design/proposals/UPCOMING_VISITORS_VI168_VI169_2026-11-22.md`.
+
+| Part | What changed |
+|---|---|
+| Seasons column | The Visitor Questions tab has a **Seasons** column. A question naming seasons is only asked in those months, using the same season table as Events and Levels; if none of a visitor's questions is in season, any may be asked. The exporter checks the names. |
+| VI168 Picante Paul (ピカンテ・ポール), Celebrity | Capitol only; Chamber of Commerce (BO05) and Innovation Society (BO16). Four questions, VQ430 to VQ433, one per season, about the brand Doki Doki Picante Pulse. The season's flavor is right (Spring Mikan, Summer Cherries, Autumn Chestnut, Winter Yuzu); the other twelve flavors are out of season or not Japanese, and none repeats across the questions. |
+| VI169 Kakata Jishinka (侍臣家 過形), Retired | Capitol only; Members of Parliament (BO17) and Innovation Society (BO16). Four questions, VQ434 to VQ437, on the Liberal Party of the nineties and the Ministry of Ethics and Prosecution. His 1993 ministry and the coalition are never stated; his reactions only hint at them. |
+| Rooms | Both use VI14's Capitol room list as a draft; please say where they should appear. |
+| Liberal Party | The values Cameron gave are saved in `design/proposals/LIBERAL_PARTY_VALUES_2026-11-22.md`; it is historic and not in the game's parliament, so it is not in the Parties tab. |
+| Tests | `tests/test_picante_and_jishinka.gd`: one question per season, the right flavor for each, sixteen distinct flavors, the question drawn matches the current season, no backstory in the questions, Capitol and organizations. |
+| To do | Review the other 421 visitor questions for seasonality (noted, not started). |
+
+The four right-answer replies of Picante Paul's questions carry ドキドキ・ピカンテ・パルス as an emphasis (Cameron's note, 2026-11-22). The draft effects were rebalanced to the content budget (a gain needs a cost, every choice 2 to 7 in size), and the Capitol visitor count in `tests/test_offices_content.gd` is now 25.
+
+## Seasons on 42 older visitor questions, rooms for VI168 and VI169, a start-up guide refresh (2026-11-22, Cameron)
+
+| Part | What changed |
+|---|---|
+| Seasons applied | Cameron approved the draft list (`design/review/visitor_questions_seasonality_draft_2026-11-22.md`) with a rule: a question about a **general matter** also takes the season before ("Autumn; Winter"); a **temporal** matter about what is happening now takes only its own season (VQ230, VQ260, VQ232, VQ250, VQ261, VQ270, VQ323, VQ374, VQ375, VQ380, VQ401, VQ413, VQ416, VQ421, VQ02). 42 Seasons cells were filled. |
+| VI168 rooms | ST07, ST113, ST153, ST213, ST281, ST275, ST276, ST282, ST274 (Cameron's list). |
+| VI169 rooms | ST07, ST281, ST105, ST110, ST170, ST193, ST118, ST120, ST274 (the suggestion without ST253, ST22 and ST276). |
+| Text rows deleted | `shop.style_living_name`, `shop.style_living_desc` and `shop.style_included` (Cameron's go). |
+| Documents | `design/NEW_CHAT_STARTUP.md` and the data snapshot in `CLAUDE.md` now describe Decision! scenes, Woodblock as the default, the new visitors and the current counts. |
+
+**Layout fix found by the text sweep (2026-11-22):** adding VI168 and VI169 to the Office Hours room changed which visitor the sweep's fixed random draw picks (it now draws VI74), and that exposed an old problem: at 1080 x 1920 with Normal or Large text, a question whose choices wrap pushed Continue (and at Large, Choice D) partly off the bottom of the screen. The Office Hours window now keeps its usual height but gives up room when the question and choices below it need it, and grows back when they do not (`VisitLayout.fit`, new `shrink_only` option, used by `VisitorScreen`). Nothing changes on a screen where everything already fits.

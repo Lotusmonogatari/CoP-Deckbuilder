@@ -41,7 +41,7 @@ func test_the_visitors_and_notices_are_tagged() -> void:
 	var visitors := {"Capitol": 0, "District": 0, "Either": 0}
 	for visitor: Dictionary in DataDB.visitors:
 		visitors[Offices.normalize(visitor.get("location"))] += 1
-	assert_eq(visitors, {"Capitol": 23, "District": 128, "Either": 16})
+	assert_eq(visitors, {"Capitol": 25, "District": 128, "Either": 16})
 	var greeting: Dictionary = {}
 	for row: Dictionary in DataDB.office_notices:
 		if str(row["notice_id"]) == "ON01":
