@@ -2011,8 +2011,10 @@ SHEETS = {
             ("Promise Kept Text B", "promise_kept_text_b", "str"),
             ("Promise Kept Text C", "promise_kept_text_c", "str"),
             ("Promise Kept Text D", "promise_kept_text_d", "str"),
+            # 2026-11-22 (Cameron): the seasons a question can be asked in ("Winter"; blank = all year), like Events and Levels.
+            ("Seasons", "seasons", "id_list"),
         ],
-        "optional": ["Promise Kept Text A", "Promise Kept Text B", "Promise Kept Text C", "Promise Kept Text D",
+        "optional": ["Seasons", "Promise Kept Text A", "Promise Kept Text B", "Promise Kept Text C", "Promise Kept Text D",
                      "Correct Choice", "Response - Right", "Response - Wrong",
                      "Reaction - Right", "Reaction - Wrong",
                      "Effects A", "Effects B", "Effects C", "Effects D",
@@ -4100,7 +4102,7 @@ def check_seasons(data, report):
     except (OSError, ValueError):
         return
     names = set((rules.get("seasons", {}).get("value") or {}).keys())
-    for table, key in (("levels", "level_id"), ("events", "event_id")):
+    for table, key in (("levels", "level_id"), ("events", "event_id"), ("visitor_questions", "question_id")):
         for row in data.get(table, []):
             for season in row.get("seasons") or []:
                 if season not in names:

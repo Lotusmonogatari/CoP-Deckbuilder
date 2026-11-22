@@ -60,7 +60,7 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 
 ## 6. Data contract
 
-`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 114 levels, 289 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 167 visitors, 97 events, 41 shop items, 21 staff, 64 staff tasks, 180 bill components, 6 cosmetic packages, about 1,160 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
+`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 122 levels, 289 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 169 visitors, 103 events, 44 shop items, 21 staff, 64 staff tasks, 180 bill components, 9 cosmetic packages, 1 Decision! scene, about 1,400 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
 
 | Group | Files (`data/`) |
 |---|---|
@@ -69,7 +69,7 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 | Levels and people | `levels`, `level_intros`, `level_intro_thoughts`, `level_opponent_overrides`, `level_visitor_overrides`, `visitors`, `visitor_questions`, `staff`, `staff_names`, `staff_tasks` (the Staff Assignments tab), `staff_task_families`, `staff_task_ramp`, `staff_task_drivers`, `player` (the four protagonists) |
 | Standing and parties | `boosters` (organizations), `parties`, `party_stakeholders`, `party_values`, `organization_tastes` |
 | Bills and laws | `floor_votes` (bills and party positions), `law_effects`, `vote_influence_cues`, `bill_components`, `patron_bills`, `bill_level_templates`, `visit_questions`, `visit_answers`, `trade_questions`, `lobbyist_lines` |
-| Week and events | `events`, `event_choices`, `event_options`, `hosted_events`, `reaction_lines`, `shop` (items), `cosmetic_packages`, `office_notices`, `office_ticker`, `transition_cast`, `transition_backgrounds`, `transition_dialogue` |
+| Week and events | `events`, `decision_scenes`, `event_choices`, `event_options`, `hosted_events`, `reaction_lines`, `shop` (items), `cosmetic_packages`, `office_notices`, `office_ticker`, `transition_cast`, `transition_backgrounds`, `transition_dialogue` |
 | Text and presentation | `strings` (**every sentence**), `how_to_play`, `lists`, `art`, `sounds` |
 | Hand-written (the exporter never overwrites) | `art`, `sounds`, `staff_names`, `level_opponent_overrides`, `level_visitor_overrides`, `playtest_level`, `playtest_cards`; each carries its own `_README`. (`rules`, `booster_standing` and `party_standing` moved into workbook tabs on 2026-11-16: the exporter writes them) |
 
@@ -334,3 +334,5 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Decision! scenes, phase 4: Optional scenes, lapses, the picture fallback and a writing guide (2026-11-21, Cameron; branch `feature/decision-scenes-4`)
 - Woodblock is the default look; Yezo Office (CP09) is a package; the New Game pick is free (2026-11-21, Cameron; branch `feature/ui-default-woodblock`)
 - Visitor pictures VI103 to VI125, VI168 and VI169; VI100 replaced again; VI123 and VI124 renamed (2026-11-22, Cameron; branch `feature/visitor-images-4`)
+- VI168 Picante Paul and VI169 Kakata Jishinka, with seasonal visitor questions (2026-11-22, Cameron; branch `feature/visitors-vi168-vi169`)
+- Seasons on 42 older visitor questions, rooms for VI168 and VI169, start-up guide refresh (2026-11-22, Cameron)

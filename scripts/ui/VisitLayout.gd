@@ -1,5 +1,9 @@
 class_name VisitLayout
 extends RefCounted
+
+## Where the room window's own bottom edge is remembered (Office Hours shrinks it for a tall question, then grows it back).
+const FULL_BOTTOM_META := "visit_layout_full_bottom"
+
 ## The layout shared by Office Hours, the member visit and the lobbyist trade
 ## (Cameron's sketches, 2026-11-07; shared with the visit and the trade
 ## 2026-11-13): the person's picture is big and centered, filling the office
@@ -26,7 +30,7 @@ const PICTURE_WIDTH := 760.0
 ## shorter than in Office Hours; the name box simply sits over its corner.
 static func fit(screen: Control, name_label: Label, portrait: Control,
 		background: Control, continue_button: Control, banner: CueBanner,
-		fit_to_content: bool = false) -> void:
+		fit_to_content: bool = false, shrink_only: bool = false) -> void:
 	if not screen.is_inside_tree():
 		return
 	var header := screen.get_node("Safe/Column/Header") as Control
@@ -37,8 +41,19 @@ static func fit(screen: Control, name_label: Label, portrait: Control,
 	var row_top := header.get_global_rect().end.y - top + gap
 	# The window's bottom edge comes from its own anchor, not a measured
 	# rectangle, so it is right even before the first layout pass has run.
-	var window_bottom := background.anchor_bottom * screen_height
+	# The window's own anchor is remembered the first time, so a window shrunk for a tall question grows back when the room does.
+	if not background.has_meta(FULL_BOTTOM_META):
+		background.set_meta(FULL_BOTTOM_META, background.anchor_bottom)
+	var window_bottom := float(background.get_meta(FULL_BOTTOM_META)) * screen_height if shrink_only else background.anchor_bottom * screen_height
 	var picture_bottom := window_bottom - gap
+	# shrink_only (Office Hours, 2026-11-22): the window keeps its usual height, but gives up room when the question and choices
+	# below it would otherwise push Continue off a short screen (the text sweep's 1080 x 1920 shape).
+	if shrink_only:
+		var needed := row_top + _room_for_picture(screen, column, portrait, row_top, gap, screen_height)
+		if needed < picture_bottom:
+			picture_bottom = needed
+		window_bottom = picture_bottom + gap
+		_move_window_edge(screen, background, window_bottom / screen_height)
 	if fit_to_content:
 		picture_bottom = row_top + _room_for_picture(screen, column, portrait, row_top, gap, screen_height)
 		window_bottom = picture_bottom + gap

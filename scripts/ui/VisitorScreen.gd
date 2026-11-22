@@ -107,7 +107,7 @@ func _ready() -> void:
 func _fit_layout() -> void:
 	if not is_inside_tree():
 		return
-	VisitLayout.fit(self, _visitor_name, _portrait, _background, _continue_button, _banner)
+	VisitLayout.fit(self, _visitor_name, _portrait, _background, _continue_button, _banner, false, true)
 	_place_effect_chips(get_node_or_null("EffectChips") as Control)
 
 

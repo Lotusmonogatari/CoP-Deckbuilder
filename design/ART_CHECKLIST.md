@@ -10,7 +10,7 @@ stands in for every expression.
 | Protagonists | 24 / 28 |
 | Opponents | 7 / 655 |
 | Staff | 105 / 105 |
-| Visitors | 640 / 835 |
+| Visitors | 650 / 845 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
 | Organisation icons | 32 / 32 |
@@ -361,6 +361,8 @@ stands in for every expression.
 | VI165 | Toshio Kuroda | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI166 | Yasuo Noda | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI167 | Masashi Mumotsu | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI168 | Picante Paul | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI169 | Kakata Jishinka | ◆ | ◆ | ◆ | ◆ | ◆ |
 
 ## Card art — `assets/cards/art/`
 
