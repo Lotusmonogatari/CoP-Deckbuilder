@@ -1787,7 +1787,25 @@ func _show_rhetoric_training() -> void:
 
 ## The Rhetoric Training tab: the blurb, then one card for each training session. (XP and Funds are chips now.)
 func _rhetoric_cards(look: Dictionary) -> Array[Control]:
-	var rows: Array[Control] = [_ground_line(Text.say("rhetoric.blurb"), look)]
+	# The speech coach's picture (assets/characters/capital_area/SPEECH_COACH.png) beside the page's own introduction (2026-11-22).
+	var coach_card := OfficeFrameStyles.card(look)
+	coach_card.name = "SpeechCoachCard"
+	var coach_row := HBoxContainer.new()
+	coach_row.add_theme_constant_override("separation", 16)
+	var coach := PlaceholderArt.new()
+	coach.name = "SpeechCoach"
+	coach.kind = PlaceholderArt.Kind.CHARACTER
+	coach.art_id = "SPEECH_COACH"
+	coach.custom_minimum_size = Vector2(240, 270)
+	coach.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	coach_row.add_child(coach)
+	var coach_words := UiKit.tight_column()
+	coach_words.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	coach_words.add_child(UiKit.heading(Text.say("rhetoric.coach_title")))
+	coach_words.add_child(UiKit.line(Text.say("rhetoric.blurb"), "SmallLabel"))
+	coach_row.add_child(coach_words)
+	coach_card.get_node("Column").add_child(coach_row)
+	var rows: Array[Control] = [coach_card]
 	# A coupon the player holds is named here (P14b, 2026-11-20): it is redeemed from the items, not taken off a price below.
 	for coupon: Dictionary in DataDB.shop:
 		var held := GameState.item_count(str(coupon.get("item_id", ""))) if coupon.get("free_card_tier") != null else 0
