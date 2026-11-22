@@ -122,6 +122,7 @@ def main():
          + [(s["stage_id"], s.get("name_en", "")) for s in load("stages")
             if not str(s.get("background_id") or "").strip()]
          + [(i, "Outside scene") for i in sorted(out_ids)])
+    flat("Capital Area characters (outside the Capitol building)", "capital_area", [("SPEECH_COACH", "The speech coach, on the Rhetoric Training page")])
     flat("Organisation icons", "icon", [(b["booster_id"], b.get("name_en", "")) for b in load("boosters")])
 
     flat("Audience icons (Boosters panel)", "icon",

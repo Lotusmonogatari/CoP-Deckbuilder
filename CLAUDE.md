@@ -338,3 +338,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Seasons on 42 older visitor questions, rooms for VI168 and VI169, start-up guide refresh (2026-11-22, Cameron)
 - Visitor pictures VI126 to VI136 and VI170 to VI173 (2026-11-22, Cameron; branch `feature/visitor-images-5`)
 - VI170 to VI173: four District service workers with 24 draft questions (2026-11-22, Cameron; branch `feature/visitor-images-5`)
+- The speech coach on the Rhetoric Training page; a Capitol characters picture folder (2026-11-22, Cameron; branch `feature/speech-coach`)

@@ -9840,5 +9840,12 @@
     "english": "You let this one pass.",
     "placeholders": null,
     "notes": "2026-11-21 (Cameron's Decision! scenes plan, phase 4). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "rhetoric.coach_title",
+    "where": "Office Management, Rhetoric Training: the heading beside the speech coach's picture",
+    "english": "Speech Coach",
+    "placeholders": null,
+    "notes": "2026-11-22 (Cameron's SPEECH_COACH upload). Title only: no name yet. Claude's draft for Cameron to reword."
   }
 ]

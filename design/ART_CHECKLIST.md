@@ -13,6 +13,7 @@ stands in for every expression.
 | Visitors | 725 / 865 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
+| Capital Area characters (outside the Capitol building) | 1 / 1 |
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
@@ -499,6 +500,12 @@ stands in for every expression.
 | OUT_STREET_3.png | Outside scene | ✓ |
 | OUT_VILLAGE_ROAD_SNOW_1.png | Outside scene | ✓ |
 | OUT_VILLAGE_ROAD_SNOW_2.png | Outside scene | ✓ |
+
+## Capital Area characters (outside the Capitol building) — `assets/characters/capital_area/`
+
+| File | For | Drawn |
+|---|---|---|
+| SPEECH_COACH.png | The speech coach, on the Rhetoric Training page | ✓ |
 
 ## Organisation icons — `assets/icons/`
 

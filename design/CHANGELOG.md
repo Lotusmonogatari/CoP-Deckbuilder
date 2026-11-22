@@ -1892,3 +1892,13 @@ All names, titles, wording and effect numbers are **drafts for Cameron to rewrit
 | **VI173** Reina Mochizuki 望月玲奈 | Courier Rider | Labor Federation, Small Business Owners' Association | VQ456 to VQ461: insurance, snow-day bans, per-parcel pay, fines for road delays, medicine runs, small-shop shipping |
 
 All four are District visitors in the same rooms as VI125 (ST268, ST283, ST284). Each question follows the content budget (a friend-pleasing choice, a rival-pleasing one, a middle path and a refusal; a gain always has a cost) and the right answer rotates through A to D. The four winter questions (VQ441, VQ446, VQ452, VQ457, each a general matter) carry `Autumn; Winter`. `tests/test_visitors_170_to_173.gd` covers it, and the District visitor count in `tests/test_offices_content.gd` is now 132.
+
+## The speech coach on the Rhetoric Training page (2026-11-22, Cameron; branch `feature/speech-coach`)
+
+| Part | What changed |
+|---|---|
+| Picture | Cameron's `SPEECH_COACH.png` (an older man in a wheelchair with a microphone and headphones, 720 x 815) was uploaded into a folder spelled `captial area`. It now lives in **`assets/characters/capital_area/`**, a new folder kind for **special characters in the Capital Area, outside the Capitol building** (Cameron: the Capitol and the Capital Area are distinct), registered in `data/art.json` (`folders.capital_area`, and `character_prefixes` maps `SPEECH_COACH` to it). Future Capital Area pictures go in `assets/characters/capital_area/` named by their ID. |
+| The page | The **Rhetoric Training** tab (Office Management) opens with a card: the coach's picture, the heading **Speech Coach** and the page's own introduction ("Book a session with a speaking coach..."), then the coupon note and the three sessions as before. |
+| Name | The heading is a title only: **no personal name has been given**, so none is shown. Please say if he has one (and a Japanese name). |
+| Art checklist | A new "Capital Area characters" line lists SPEECH_COACH. |
+| Tests | `tests/test_speech_coach.gd`. |

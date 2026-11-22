@@ -11,6 +11,7 @@
     "  opponents     OP01...            opponents.json",
     "  staff         SF01...            staff.json",
     "  visitors      VI01...            visitors.json",
+    "  capital_area  SPEECH_COACH       special characters in the Capital Area, outside the Capitol building (2026-11-22)",
     "  e.g. assets/characters/opponents/OP03_attacking.png",
     "",
     "Journalists are opponents.json rows now (Role=Journalist), so their art",
@@ -81,13 +82,15 @@
     "visitor": "res://assets/characters/visitors/",
     "card": "res://assets/cards/art/",
     "background": "res://assets/backgrounds/",
-    "icon": "res://assets/icons/"
+    "icon": "res://assets/icons/",
+    "capital_area": "res://assets/characters/capital_area/"
   },
   "character_prefixes": {
     "PC": "protagonist",
     "OP": "opponent",
     "SF": "staff",
-    "VI": "visitor"
+    "VI": "visitor",
+    "SPEECH_COACH": "capital_area"
   },
   "expressions": [
     "neutral",
