@@ -10,7 +10,7 @@ stands in for every expression.
 | Protagonists | 24 / 28 |
 | Opponents | 7 / 655 |
 | Staff | 105 / 105 |
-| Visitors | 650 / 845 |
+| Visitors | 705 / 845 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
 | Organisation icons | 32 / 32 |
@@ -319,17 +319,17 @@ stands in for every expression.
 | VI123 | Javier Santos | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI124 | Gabriella Santos | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI125 | Kaori Matsuda | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI126 | Tetsuo Nishida | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI127 | Yuko Sakamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI128 | Hiroshi Ueda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI129 | Natsuki Hirano | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI130 | Genji Okada | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI131 | Ayako Kudo | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI132 | Katsumi Shimizu | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI133 | Megumi Ishii | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI134 | Taro Yoshida | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI135 | Satomi Morita | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI136 | Isamu Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI126 | Tetsuo Nishida | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI127 | Yuko Sakamoto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI128 | Hiroshi Ueda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI129 | Natsuki Hirano | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI130 | Genji Okada | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI131 | Ayako Kudo | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI132 | Katsumi Shimizu | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI133 | Megumi Ishii | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI134 | Taro Yoshida | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI135 | Satomi Morita | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI136 | Isamu Hasegawa | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI137 | Noriko Maeda | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI138 | Ichiro Kawai | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI139 | Akemi Suzuki | ☐ | ☐ | ☐ | ☐ | ☐ |

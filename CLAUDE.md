@@ -336,3 +336,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Visitor pictures VI103 to VI125, VI168 and VI169; VI100 replaced again; VI123 and VI124 renamed (2026-11-22, Cameron; branch `feature/visitor-images-4`)
 - VI168 Picante Paul and VI169 Kakata Jishinka, with seasonal visitor questions (2026-11-22, Cameron; branch `feature/visitors-vi168-vi169`)
 - Seasons on 42 older visitor questions, rooms for VI168 and VI169, start-up guide refresh (2026-11-22, Cameron)
+- Visitor pictures VI126 to VI136 and VI170 to VI173 (2026-11-22, Cameron; branch `feature/visitor-images-5`)

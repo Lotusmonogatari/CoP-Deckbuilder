@@ -1869,3 +1869,13 @@ The four right-answer replies of Picante Paul's questions carry ドキドキ・�
 | Documents | `design/NEW_CHAT_STARTUP.md` and the data snapshot in `CLAUDE.md` now describe Decision! scenes, Woodblock as the default, the new visitors and the current counts. |
 
 **Layout fix found by the text sweep (2026-11-22):** adding VI168 and VI169 to the Office Hours room changed which visitor the sweep's fixed random draw picks (it now draws VI74), and that exposed an old problem: at 1080 x 1920 with Normal or Large text, a question whose choices wrap pushed Continue (and at Large, Choice D) partly off the bottom of the screen. The Office Hours window now keeps its usual height but gives up room when the question and choices below it need it, and grows back when they do not (`VisitLayout.fit`, new `shrink_only` option, used by `VisitorScreen`). Nothing changes on a screen where everything already fits.
+
+## Visitor pictures VI126 to VI136 and VI170 to VI173 (2026-11-22, Cameron; branch `feature/visitor-images-5`)
+
+| Part | What changed |
+|---|---|
+| Where they were | The upload put the 15 pictures in `assets/` instead of `assets/characters/visitors/`; they were moved. |
+| Typo fixed | `V134.png` was renamed **`VI134.png`** (Taro Yoshida, Hospital Cleaner). |
+| New pictures | `VI126` to `VI133`, `VI134`, `VI135`, `VI136`: all have visitor rows, so they show at once. **No existing picture was replaced.** |
+| Pictures without a visitor | `VI170`, `VI171`, `VI172` and `VI173` have **no rows in the Visitors tab**, so nothing shows them yet. They need a name, a title, an office, rooms and questions. |
+| Still without a picture | 28 of the 169 visitors. |
