@@ -1877,5 +1877,18 @@ The four right-answer replies of Picante Paul's questions carry ドキドキ・�
 | Where they were | The upload put the 15 pictures in `assets/` instead of `assets/characters/visitors/`; they were moved. |
 | Typo fixed | `V134.png` was renamed **`VI134.png`** (Taro Yoshida, Hospital Cleaner). |
 | New pictures | `VI126` to `VI133`, `VI134`, `VI135`, `VI136`: all have visitor rows, so they show at once. **No existing picture was replaced.** |
-| Pictures without a visitor | `VI170`, `VI171`, `VI172` and `VI173` have **no rows in the Visitors tab**, so nothing shows them yet. They need a name, a title, an office, rooms and questions. |
-| Still without a picture | 28 of the 169 visitors. |
+| Pictures without a visitor | `VI170` to `VI173` had no rows; they were drafted the same day (next entry). |
+| Still without a picture | 28 of the 173 visitors. |
+
+## VI170 to VI173: four District service workers, 24 draft questions (2026-11-22, Cameron's "Go")
+
+All names, titles, wording and effect numbers are **drafts for Cameron to rewrite**; the descriptions were drawn from the pictures.
+
+| Visitor | Draft | Organizations | Questions |
+|---|---|---|---|
+| **VI170** Chizuru Nagai 長井千鶴 | Home Care Agency Coordinator | Care and Welfare Council, Labor Federation | VQ438 to VQ443: unpaid travel, night staff, forms, snow-closed routes, mentors, pay |
+| **VI171** Mio Sugita 杉田美緒 | Senior Meal Delivery Worker | Care and Welfare Council, Family Network | VQ444 to VQ449: fuel, a skipped lunch, a broken van heater, the menu, paid chat time, cutting delivery days |
+| **VI172** Nanami Arai 新井七海 | Visiting Nurse | Care and Welfare Council, Labor Federation | VQ450 to VQ455: travel pay, a patient who refuses help, a snowed-in dialysis patient, overtime, medication records, rural placements |
+| **VI173** Reina Mochizuki 望月玲奈 | Courier Rider | Labor Federation, Small Business Owners' Association | VQ456 to VQ461: insurance, snow-day bans, per-parcel pay, fines for road delays, medicine runs, small-shop shipping |
+
+All four are District visitors in the same rooms as VI125 (ST268, ST283, ST284). Each question follows the content budget (a friend-pleasing choice, a rival-pleasing one, a middle path and a refusal; a gain always has a cost) and the right answer rotates through A to D. The four winter questions (VQ441, VQ446, VQ452, VQ457, each a general matter) carry `Autumn; Winter`. `tests/test_visitors_170_to_173.gd` covers it, and the District visitor count in `tests/test_offices_content.gd` is now 132.

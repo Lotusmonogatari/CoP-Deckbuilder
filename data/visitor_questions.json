@@ -35233,5 +35233,1985 @@
     "promise_kept_text_c": null,
     "promise_kept_text_d": null,
     "seasons": null
+  },
+  {
+    "question_id": "VQ438",
+    "visitor_ids": [
+      "VI170"
+    ],
+    "question_text": "My staff drive forty minutes between home visits and are paid for none of it. Can that change?",
+    "choice_a": "Pay travel time as work time.",
+    "choice_b": "Agencies cannot afford that. Cut the visit list.",
+    "choice_c": "Pay half the travel now and review in a year.",
+    "choice_d": "Travel is part of the job. Leave it.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Finally, someone counts the road.",
+    "response_b": "Cut the list and my clients wait longer.",
+    "response_c": "Half is a start, if it is written down.",
+    "response_d": "Then the road keeps eating their wages.",
+    "reaction_a": "Lets out a breath she has held all week.",
+    "reaction_b": "Closes the folder.",
+    "reaction_c": "Writes a number in the margin.",
+    "reaction_d": "Looks at the clock.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ439",
+    "visitor_ids": [
+      "VI170"
+    ],
+    "question_text": "Nobody wants the night shift, and three clients cannot be left alone till morning. What do we do?",
+    "choice_a": "Night calls can wait for morning.",
+    "choice_b": "Fund a night allowance for care workers.",
+    "choice_c": "Let families cover the night hours.",
+    "choice_d": "Try a rotating night shift for one month.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "A fall at three in the morning cannot wait.",
+    "response_b": "Money for nights is how I keep them.",
+    "response_c": "Families work too. That is why they call us.",
+    "response_d": "A month will show me who can bear it.",
+    "reaction_a": "Her jaw tightens.",
+    "reaction_b": "Nods, once.",
+    "reaction_c": "Shakes her head slowly.",
+    "reaction_d": "Marks the calendar.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ440",
+    "visitor_ids": [
+      "VI170"
+    ],
+    "question_text": "Each visit needs forty minutes of forms and the visit itself takes thirty. Who reads them?",
+    "choice_a": "Move the forms to a tablet and see.",
+    "choice_b": "Forms are the price of public money.",
+    "choice_c": "Cut the forms to one page.",
+    "choice_d": "Keep the forms. Records protect the agency.",
+    "correct_choice": "C",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "A tablet at least saves my staff the ink.",
+    "response_b": "Public money should not mean public paper.",
+    "response_c": "One page. I could kiss you. I will not.",
+    "response_d": "Records protect the agency, not the client.",
+    "reaction_a": "Turns her wrist to check the watch.",
+    "reaction_b": "Sighs through her nose.",
+    "reaction_c": "A rare half-smile.",
+    "reaction_d": "Taps the badge on her shirt.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ441",
+    "visitor_ids": [
+      "VI170"
+    ],
+    "question_text": "Snow closes half my routes by January and clients go unvisited for days. What can be done?",
+    "choice_a": "Move clients to town facilities for the winter.",
+    "choice_b": "Pair staff on the worst routes.",
+    "choice_c": "That is what winter is.",
+    "choice_d": "Fund snow-ready vehicles for care routes.",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "response_a": "Nobody wants to leave their own house in winter.",
+    "response_b": "Pairs help, if there are pairs to send.",
+    "response_c": "Winter is exactly when they need us.",
+    "response_d": "A van that starts is half the visit.",
+    "reaction_a": "Frowns.",
+    "reaction_b": "Counts on her fingers.",
+    "reaction_c": "Says nothing for a moment.",
+    "reaction_d": "Looks out the window as if at the snow.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
+  },
+  {
+    "question_id": "VQ442",
+    "visitor_ids": [
+      "VI170"
+    ],
+    "question_text": "New hires quit within a year because nobody trains them. Can the council fund mentors?",
+    "choice_a": "Fund mentors for new care workers.",
+    "choice_b": "Let agencies pay for their own training.",
+    "choice_c": "Pilot mentors in one ward.",
+    "choice_d": "Turnover is how this work is.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "A mentor is the difference between leaving and staying.",
+    "response_b": "Small agencies do not have a training budget.",
+    "response_c": "One ward is where I would start.",
+    "response_d": "Turnover is a choice somebody makes.",
+    "reaction_a": "Straightens her bag strap.",
+    "reaction_b": "Folds her arms.",
+    "reaction_c": "Writes a name down.",
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ443",
+    "visitor_ids": [
+      "VI170"
+    ],
+    "question_text": "A caregiver earns less than a store clerk. Will you say so out loud?",
+    "choice_a": "That is not my fight.",
+    "choice_b": "Yes, and I will press for a pay floor.",
+    "choice_c": "Wages follow what the market pays.",
+    "choice_d": "I will ask the council for a pay study.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Then whose fight is it?",
+    "response_b": "Say it loud. They have heard the quiet version.",
+    "response_c": "The market pays what it pays. That is the problem.",
+    "response_d": "A study is a start. A date is better.",
+    "reaction_a": "Turns toward the door.",
+    "reaction_b": "Meets your eyes at last.",
+    "reaction_c": "Her expression does not change.",
+    "reaction_d": "Nods, unconvinced.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ444",
+    "visitor_ids": [
+      "VI171"
+    ],
+    "question_text": "Fuel on my route doubled, and the meal price did not. Who covers it?",
+    "choice_a": "Merge routes to save fuel.",
+    "choice_b": "Fuel is a business cost.",
+    "choice_c": "Subsidize fuel for meal routes.",
+    "choice_d": "Raise the meal price. Seniors can pay.",
+    "correct_choice": "C",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "Fewer routes means longer waits.",
+    "response_b": "A business that loses money closes.",
+    "response_c": "Then my route stays on the road.",
+    "response_d": "Most of my customers live on a pension.",
+    "reaction_a": "Taps her chin.",
+    "reaction_b": "Looks at the floor.",
+    "reaction_c": "Grins and pats the steering-wheel cover in her bag.",
+    "reaction_d": "Winces.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ445",
+    "visitor_ids": [
+      "VI171"
+    ],
+    "question_text": "One customer left her lunch on the step three days in a row. Who should I tell?",
+    "choice_a": "Respect her privacy. Call her family.",
+    "choice_b": "Knock twice, then leave a note.",
+    "choice_c": "She is an adult. Let it be.",
+    "choice_d": "Tell the ward welfare office the same day.",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "response_a": "Her son lives far away. I will try.",
+    "response_b": "A note is something.",
+    "response_c": "Three days is not a choice, it is a warning.",
+    "response_d": "I will go today. Thank you.",
+    "reaction_a": "Thinks for a moment.",
+    "reaction_b": "Pulls out a pen.",
+    "reaction_c": "Looks troubled.",
+    "reaction_d": "Reaches for her phone.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ446",
+    "visitor_ids": [
+      "VI171"
+    ],
+    "question_text": "The van heater broke in January and the soup was cold by the last stop. What now?",
+    "choice_a": "Fund heated, insulated meal vans.",
+    "choice_b": "Switch to cold meals in winter.",
+    "choice_c": "Use thermal boxes on the old van.",
+    "choice_d": "Cold soup is still soup.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Warm food is how they know someone cares.",
+    "response_b": "Cold lunch in January? Never.",
+    "response_c": "Boxes will do until spring.",
+    "response_d": "It is not soup if it is cold.",
+    "reaction_a": "Holds her hands to the imagined heat.",
+    "reaction_b": "Frowns at the idea.",
+    "reaction_c": "Nods slowly.",
+    "reaction_d": "Her smile fades.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
+  },
+  {
+    "question_id": "VQ447",
+    "visitor_ids": [
+      "VI171"
+    ],
+    "question_text": "Customers say the menu has not changed in years. A little variety would mean a lot.",
+    "choice_a": "Food is food.",
+    "choice_b": "Add a seasonal menu, paid for by the ward.",
+    "choice_c": "Variety costs. Keep it simple.",
+    "choice_d": "Rotate four menus every quarter.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Ask them what they eat at the end of the day.",
+    "response_b": "They will notice the first spring dish.",
+    "response_c": "Simple is cheap. It is also dull.",
+    "response_d": "Four menus is a good place to start.",
+    "reaction_a": "Her smile thins.",
+    "reaction_b": "Her eyes light up.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Counts on her fingers.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ448",
+    "visitor_ids": [
+      "VI171"
+    ],
+    "question_text": "The ten minutes I stay to chat are their best part of the day, but nobody pays for them.",
+    "choice_a": "Pilot paid chat time in one town.",
+    "choice_b": "Chat on your own time.",
+    "choice_c": "Pay a visiting allowance for meal workers.",
+    "choice_d": "Volunteers can do the visiting.",
+    "correct_choice": "C",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "One town can show it works.",
+    "response_b": "I have a family too.",
+    "response_c": "They are not just meals. They are visits.",
+    "response_d": "Volunteers do not know their names.",
+    "reaction_a": "Writes the town down.",
+    "reaction_b": "Turns the bag on her shoulder.",
+    "reaction_c": "Her eyes shine.",
+    "reaction_d": "Shakes her head.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ449",
+    "visitor_ids": [
+      "VI171"
+    ],
+    "question_text": "The ward wants to cut meal deliveries to three days a week. Customers will go hungry on the others.",
+    "choice_a": "Three days is what the budget allows.",
+    "choice_b": "Keep five days and cut the paperwork.",
+    "choice_c": "Let the ward decide.",
+    "choice_d": "Keep six days. I will find the money.",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "response_a": "Hunger does not take days off.",
+    "response_b": "Five is a compromise I can carry.",
+    "response_c": "The ward has not met my customers.",
+    "response_d": "Six days is what they need.",
+    "reaction_a": "Her smile vanishes.",
+    "reaction_b": "Gives a small nod.",
+    "reaction_c": "Looks down at her shoes.",
+    "reaction_d": "Relief crosses her face.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ450",
+    "visitor_ids": [
+      "VI172"
+    ],
+    "question_text": "My agency pays by the visit and not by the road. My farthest patient costs me an hour I am not paid for.",
+    "choice_a": "Pay travel time on rural routes.",
+    "choice_b": "Cluster patients by district instead.",
+    "choice_c": "Trial a travel allowance for a year.",
+    "choice_d": "Distance is a fact of rural nursing.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "An hour of road is an hour of work.",
+    "response_b": "Clustering ends up shortchanging the farthest patients.",
+    "response_c": "A year gives me time to prove it.",
+    "response_d": "Distance is why they need nurses.",
+    "reaction_a": "Smiles with relief.",
+    "reaction_b": "Presses her lips together.",
+    "reaction_c": "Writes the date in her notebook.",
+    "reaction_d": "Her eyes drop.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ451",
+    "visitor_ids": [
+      "VI172"
+    ],
+    "question_text": "An old farmer refuses my visits. His wound is getting worse.",
+    "choice_a": "It is his decision. Leave it.",
+    "choice_b": "Bring a neighbor he trusts.",
+    "choice_c": "Respect his choice and document it.",
+    "choice_d": "Visit as a friend, not a nurse.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "A wound is not a decision.",
+    "response_b": "A neighbor will get him to the door.",
+    "response_c": "I will sit with that and I will not like it.",
+    "response_d": "A friendly visit might be enough.",
+    "reaction_a": "Her smile disappears.",
+    "reaction_b": "Her expression softens.",
+    "reaction_c": "Looks pained.",
+    "reaction_d": "Nods thoughtfully.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ452",
+    "visitor_ids": [
+      "VI172"
+    ],
+    "question_text": "Snow closed the pass and I could not reach a dialysis patient for two days.",
+    "choice_a": "Keep a plow priority list for patients.",
+    "choice_b": "Nobody can fight snow.",
+    "choice_c": "Fund snowmobiles for emergency visits.",
+    "choice_d": "Move dialysis patients to town in winter.",
+    "correct_choice": "C",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "A list will help the plow find us.",
+    "response_b": "Snow is the reason I ask.",
+    "response_c": "Two wheels in a drift are no good, but a track is.",
+    "response_d": "Moving a patient is not a small ask.",
+    "reaction_a": "Nods.",
+    "reaction_b": "Folds her hands tighter.",
+    "reaction_c": "Looks out at a distant white road.",
+    "reaction_d": "Frowns.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
+  },
+  {
+    "question_id": "VQ453",
+    "visitor_ids": [
+      "VI172"
+    ],
+    "question_text": "I am paid for eight hours and work eleven. Half my colleagues are looking at other jobs.",
+    "choice_a": "Overtime is how care survives.",
+    "choice_b": "Study staffing levels first.",
+    "choice_c": "Take it up with the agency.",
+    "choice_d": "Enforce hour limits for care workers.",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "response_a": "If it survives on overtime, it is not surviving.",
+    "response_b": "A study counts the hours honestly.",
+    "response_c": "The agency has had its chance.",
+    "response_d": "Limits mean someone else covers the shift.",
+    "reaction_a": "Shakes her head.",
+    "reaction_b": "Writes a number.",
+    "reaction_c": "Folds her hands.",
+    "reaction_d": "Relaxes her shoulders.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ454",
+    "visitor_ids": [
+      "VI172"
+    ],
+    "question_text": "Every medication change goes on three forms. One mistake is a danger.",
+    "choice_a": "Fund one shared digital record.",
+    "choice_b": "Keep paper. Computers fail.",
+    "choice_c": "Test a shared record in one ward.",
+    "choice_d": "Forms are forms.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "One record means one truth.",
+    "response_b": "I have seen paper fail more than screens.",
+    "response_c": "One ward would tell us.",
+    "response_d": "Forms are where mistakes happen.",
+    "reaction_a": "Nods firmly.",
+    "reaction_b": "Presses her lips.",
+    "reaction_c": "Gives a small, hopeful nod.",
+    "reaction_d": "Sighs.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ455",
+    "visitor_ids": [
+      "VI172"
+    ],
+    "question_text": "Nursing students will not take rural placements, and the old nurses are retiring.",
+    "choice_a": "Rural nursing is a calling or it is nothing.",
+    "choice_b": "Pay students a rural placement grant.",
+    "choice_c": "Let wages draw them in.",
+    "choice_d": "Start with short placements first.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "A calling needs a bed to sleep in.",
+    "response_b": "A grant tells them they are wanted.",
+    "response_c": "Wages cannot pay for the road.",
+    "response_d": "A short stay is a first look.",
+    "reaction_a": "Looks hurt.",
+    "reaction_b": "Smiles warmly.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Nods.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ456",
+    "visitor_ids": [
+      "VI173"
+    ],
+    "question_text": "If a car hits me on the road, the company says I am a contractor and pays nothing.",
+    "choice_a": "Study the rules first.",
+    "choice_b": "That is not a Diet matter.",
+    "choice_c": "Require insurance for courier riders.",
+    "choice_d": "Contractors choose their risks.",
+    "correct_choice": "C",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "A study is a start. A bruise is not.",
+    "response_b": "Where else would it be?",
+    "response_c": "Insurance is the least a road asks.",
+    "response_d": "Nobody chooses to be hit.",
+    "reaction_a": "Spins the keys on her finger.",
+    "reaction_b": "Rolls her eyes.",
+    "reaction_c": "Lifts the helmet slightly.",
+    "reaction_d": "Looks away.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ457",
+    "visitor_ids": [
+      "VI173"
+    ],
+    "question_text": "The ward wants motorcycles off the road on snow days, and those are the days people need deliveries most.",
+    "choice_a": "Ban them. Safety comes first.",
+    "choice_b": "Ban them only on the worst roads.",
+    "choice_c": "Snow rules are the ward's business.",
+    "choice_d": "Allow studded-tire couriers on snow days.",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "response_a": "Safety also means a hot meal gets there.",
+    "response_b": "Worst roads, yes. Not all roads.",
+    "response_c": "The ward is not the one on the bike.",
+    "response_d": "Studs are not the problem. Bad roads are.",
+    "reaction_a": "Looks down at the helmet.",
+    "reaction_b": "Taps her keys.",
+    "reaction_c": "Gives a short laugh.",
+    "reaction_d": "Sets her jaw.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
+  },
+  {
+    "question_id": "VQ458",
+    "visitor_ids": [
+      "VI173"
+    ],
+    "question_text": "The app pays by the parcel and cuts the rate when I am fast. What can be done?",
+    "choice_a": "Set a minimum rate per delivery.",
+    "choice_b": "Apps compete and rates settle.",
+    "choice_c": "Ask for rate transparency.",
+    "choice_d": "Stop using the app.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "A floor is all I ask.",
+    "response_b": "Rates settle at the bottom.",
+    "response_c": "If I can read the rate I can argue it.",
+    "response_d": "I need the app to eat.",
+    "reaction_a": "Taps the keychain, brightening.",
+    "reaction_b": "Shakes her head.",
+    "reaction_c": "Looks slightly hopeful.",
+    "reaction_d": "Her face goes flat.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ459",
+    "visitor_ids": [
+      "VI173"
+    ],
+    "question_text": "The company tracks me to the minute and fines me when a road delays me.",
+    "choice_a": "Late is late.",
+    "choice_b": "Ban fines for road delays.",
+    "choice_c": "Companies must manage their own routes.",
+    "choice_d": "Ask for a grace period.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Late costs me. I keep the road.",
+    "response_b": "A road is not my fault.",
+    "response_c": "Their route, their fine.",
+    "response_d": "A grace period at least saves a day's pay.",
+    "reaction_a": "Her mouth thins.",
+    "reaction_b": "Her shoulders drop.",
+    "reaction_c": "Gives a dry look.",
+    "reaction_d": "Nods slowly.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ460",
+    "visitor_ids": [
+      "VI173"
+    ],
+    "question_text": "I carry medicine to houses with no pharmacy. If I am late, someone suffers. Can it count as essential work?",
+    "choice_a": "Pilot a medicine route in one county.",
+    "choice_b": "Delivery is delivery.",
+    "choice_c": "Recognize medicine couriers as essential workers.",
+    "choice_d": "Pharmacies should deliver themselves.",
+    "correct_choice": "C",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "One county is a good test.",
+    "response_b": "Delivery is when the pills arrive.",
+    "response_c": "Essential means rules for me, and rules for the road.",
+    "response_d": "They do not have the vans.",
+    "reaction_a": "Nods.",
+    "reaction_b": "Looks past you.",
+    "reaction_c": "Looks pleased.",
+    "reaction_d": "Frowns at the keys.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ461",
+    "visitor_ids": [
+      "VI173"
+    ],
+    "question_text": "Small shops use me because the big carriers price them out. Will you help keep it fair?",
+    "choice_a": "Prices follow volume.",
+    "choice_b": "Ask the Chamber of Commerce to negotiate.",
+    "choice_c": "That is the market.",
+    "choice_d": "Cap shipping surcharges for small shops.",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "response_a": "Volume is a polite word for size.",
+    "response_b": "They know the shops. Let them speak.",
+    "response_c": "Markets have owners.",
+    "response_d": "The shop on my corner would thank you.",
+    "reaction_a": "Looks tired.",
+    "reaction_b": "Nods.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Rubs the dog charm.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
   }
 ]

@@ -10,7 +10,7 @@ stands in for every expression.
 | Protagonists | 24 / 28 |
 | Opponents | 7 / 655 |
 | Staff | 105 / 105 |
-| Visitors | 705 / 845 |
+| Visitors | 725 / 865 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
 | Organisation icons | 32 / 32 |
@@ -363,6 +363,10 @@ stands in for every expression.
 | VI167 | Masashi Mumotsu | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI168 | Picante Paul | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI169 | Kakata Jishinka | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI170 | Chizuru Nagai | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI171 | Mio Sugita | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI172 | Nanami Arai | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI173 | Reina Mochizuki | ◆ | ◆ | ◆ | ◆ | ◆ |
 
 ## Card art — `assets/cards/art/`
 

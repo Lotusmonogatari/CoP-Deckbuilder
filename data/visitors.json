@@ -6707,5 +6707,133 @@
       }
     ],
     "location": "Capitol"
+  },
+  {
+    "visitor_id": "VI170",
+    "name_en": "Chizuru Nagai",
+    "name_jp": "長井千鶴",
+    "romaji": "Chizuru Nagai",
+    "title": "Home Care Agency Coordinator",
+    "stages": [
+      "ST268",
+      "ST283",
+      "ST284"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "location": "District"
+  },
+  {
+    "visitor_id": "VI171",
+    "name_en": "Mio Sugita",
+    "name_jp": "杉田美緒",
+    "romaji": "Mio Sugita",
+    "title": "Senior Meal Delivery Worker",
+    "stages": [
+      "ST268",
+      "ST283",
+      "ST284"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "location": "District"
+  },
+  {
+    "visitor_id": "VI172",
+    "name_en": "Nanami Arai",
+    "name_jp": "新井七海",
+    "romaji": "Nanami Arai",
+    "title": "Visiting Nurse",
+    "stages": [
+      "ST268",
+      "ST283",
+      "ST284"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "location": "District"
+  },
+  {
+    "visitor_id": "VI173",
+    "name_en": "Reina Mochizuki",
+    "name_jp": "望月玲奈",
+    "romaji": "Reina Mochizuki",
+    "title": "Courier Rider",
+    "stages": [
+      "ST268",
+      "ST283",
+      "ST284"
+    ],
+    "reward": [
+      {
+        "target": "BO09",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "location": "District"
   }
 ]
