@@ -60,7 +60,7 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 
 ## 6. Data contract
 
-`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 122 levels, 289 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 169 visitors, 103 events, 44 shop items, 21 staff, 64 staff tasks, 180 bill components, 9 cosmetic packages, 1 Decision! scene, about 1,400 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
+`design/Game_Workbook.xlsx` is exported by `tools/export_data.py` into `data/*.json`; the exporter maps each tab (some outputs are objects or nested structures) and validates cross-references, wording and ID ranges. `DataDB` loads every file, validates it again, and prints a readable error report. The current snapshot: 122 levels, 289 stages, 32 organizations, 53 backings, 70 cards, 131 opponents, 6 parties, 50 floor-vote bills, 173 visitors, 103 events, 44 shop items, 21 staff, 64 staff tasks, 180 bill components, 9 cosmetic packages, 1 Decision! scene, about 1,400 Text rows (`design/NEW_CHAT_STARTUP.md` keeps the current counts).
 
 | Group | Files (`data/`) |
 |---|---|
@@ -336,3 +336,5 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Visitor pictures VI103 to VI125, VI168 and VI169; VI100 replaced again; VI123 and VI124 renamed (2026-11-22, Cameron; branch `feature/visitor-images-4`)
 - VI168 Picante Paul and VI169 Kakata Jishinka, with seasonal visitor questions (2026-11-22, Cameron; branch `feature/visitors-vi168-vi169`)
 - Seasons on 42 older visitor questions, rooms for VI168 and VI169, start-up guide refresh (2026-11-22, Cameron)
+- Visitor pictures VI126 to VI136 and VI170 to VI173 (2026-11-22, Cameron; branch `feature/visitor-images-5`)
+- VI170 to VI173: four District service workers with 24 draft questions (2026-11-22, Cameron; branch `feature/visitor-images-5`)
