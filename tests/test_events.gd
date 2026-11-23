@@ -210,16 +210,20 @@ func test_a_dated_event_is_due_from_its_day_and_only_once() -> void:
 	assert_eq(EventEngine.due_dated(events, day, ["E1"]).size(), 0, "already played")
 
 
-func test_the_prime_ministers_address_opens_the_week_of_october_8() -> void:
-	# Monday 18.10.08 (moved from Tuesday 18.10.09 on 2026-11-19, so a Decision!
-	# event opens the week): nothing through the first week and its weekend.
+func test_the_prime_ministers_address_opens_parliament_on_october_15() -> void:
+	# Monday 18.10.15 (Cameron, 2026-11-23: parliament opens on October 15): nothing through the first week, its weekend and
+	# the second week's Friday before.
 	GameState.dated_events_done = []
 	GameState.calendar = {"week": 0, "phase": "work", "hours": 39}
 	assert_eq(GameState.due_dated_event(), "", "Friday 18.10.05")
 	GameState.calendar = {"week": 0, "phase": "weekend", "hours": 0}
 	assert_eq(GameState.due_dated_event(), "", "the weekend before")
 	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
-	assert_eq(GameState.due_dated_event(), "EV47", "Monday 18.10.08, the first thing in the week")
+	assert_eq(GameState.due_dated_event(), "", "Monday 18.10.08: parliament has not opened")
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 39}
+	assert_eq(GameState.due_dated_event(), "", "Friday 18.10.12")
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
+	assert_eq(GameState.due_dated_event(), "EV47", "Monday 18.10.15, the first thing in the week")
 	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
 	assert_eq(GameState.due_dated_event(), "", "played once")
 	assert_true(GameState.dated_events_done.has("EV47"))

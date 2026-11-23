@@ -11,6 +11,8 @@ func before_each() -> void:
 	GameState.start_new_run("PC01")
 	GameState.awaiting_new_game = false
 	GameState.dated_events_done = []
+	# Monday 18.10.08: a week before the Prime Minister's address (18.10.15, parliament opens), so it is coming up.
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
 	UiStyle.trying = ""
 
 
@@ -70,7 +72,7 @@ func test_only_events_that_can_be_arranged_here_are_listed_with_their_reason() -
 
 func test_the_first_dated_event_is_coming_up_a_week_before_its_date() -> void:
 	var coming := EventsModel.coming()
-	assert_gt(coming.size(), 0, "EV47 is dated 18.10.08 and the run starts 18.10.01")
+	assert_gt(coming.size(), 0, "EV47 is dated 18.10.15 and today is 18.10.08")
 	assert_eq(coming[0]["event_id"], "EV47")
 	assert_eq(coming[0]["title"], str(GameState.get_event("EV47").get("title", "")))
 

@@ -92,7 +92,7 @@ stands in for every expression.
 | OP12 | Chi Zoku | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP25 | Hikari Suimoto | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP70 | Poiya Kanu | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP74 | Seong Yun-hee | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP74 | Yun-hee Seong | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP79 | Sikanna Sapanipa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP84 | Tian Zhao Bo | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP94 | Xiaobo Jiang | ☐ | ☐ | ☐ | ☐ | ☐ |

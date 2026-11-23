@@ -145,7 +145,7 @@ func _expect(ok: bool, what: String) -> void:
 		_failures.append(what)
 
 
-## The Prime Minister's opening address (18.10.08, a Monday, since 2026-11-19): nothing
+## The Prime Minister's opening address (18.10.15, a Monday: parliament opens, Cameron 2026-11-23): nothing
 ## before it, then the Office opens it by itself as the week begins, with the
 ## speaker's picture and a "Scheduled for" line, and a choice plays it once.
 func _dated_address() -> void:
@@ -155,12 +155,12 @@ func _dated_address() -> void:
 	await _open_office()
 	var panel := _screen().get_node("EventPanel") as Overlay
 	_expect(not panel.visible, "nothing opens on Friday 18.10.05")
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
 	await _open_office()
 	panel = _screen().get_node("EventPanel") as Overlay
-	_expect(panel.visible, "the address opens on Monday 18.10.08")
+	_expect(panel.visible, "the address opens on Monday 18.10.15")
 	_expect(panel.find_child("Speaker_OP10", true, false) != null, "the Prime Minister is shown")
-	_expect(_label_text(panel).contains("Scheduled for 18.10.08"), "the date is named")
+	_expect(_label_text(panel).contains("Scheduled for 18.10.15"), "the date is named")
 	_expect(_label_text(panel).contains("Mandatory"), "a scene says it is Mandatory (Decision Scenes tab)")
 	DirAccess.make_dir_recursive_absolute("user://shots")
 	get_viewport().get_texture().get_image().save_png("user://shots/dated_event.png")

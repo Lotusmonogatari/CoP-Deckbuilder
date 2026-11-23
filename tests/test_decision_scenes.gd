@@ -71,7 +71,7 @@ func test_the_scene_names_its_speaker_and_office() -> void:
 
 func test_a_scene_fires_once() -> void:
 	GameState.dated_events_done = []
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
 	assert_eq(GameState.due_dated_event(), "EV47")
 	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
 	GameState.calendar = {"week": 30, "phase": "work", "hours": 0}
@@ -162,14 +162,14 @@ func test_answering_a_scene_logs_the_day_and_the_choice_and_its_follow_up_comes_
 	_with_follow_up({})
 	GameState.dated_events_done = []
 	GameState.decision_log = {}
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
 	var day := WeekCalendar.today_number(GameState.calendar, GameState.calendar_config())
 	assert_eq(GameState.due_dated_event(), "EV47")
 	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
 	assert_eq(int((GameState.decision_log["DS01"] as Dictionary)["day"]), day)
 	assert_eq((GameState.decision_log["DS01"] as Dictionary)["choice"], "A")
 	assert_eq(GameState.due_dated_event(), "", "its delay is still running")
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 40 * 3}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 40 * 3}
 	var later := WeekCalendar.today_number(GameState.calendar, GameState.calendar_config())
 	if later >= day + 3:
 		assert_eq(GameState.due_dated_event(), "EV_TEST_F", "three days on")
@@ -186,7 +186,7 @@ func test_a_choice_outside_follow_if_never_brings_the_follow_up() -> void:
 	_with_follow_up({})
 	GameState.dated_events_done = []
 	GameState.decision_log = {}
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
 	assert_true(GameState.apply_event_choice("EV47", "B")["ok"])
 	GameState.decision_log["DS01"]["day"] = 0
 	assert_eq(GameState.due_dated_event(), "", "Follow If is A and the choice was B")
@@ -238,7 +238,7 @@ func test_answering_a_scene_starts_what_it_activates() -> void:
 	GameState.pending_activations = []
 	GameState.scheduled_events = []
 	GameState.discovered_levels = []
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
 	var result := GameState.apply_event_choice("EV47", "A")
 	assert_true(result["ok"])
 	assert_true(GameState.discovered_levels.has("LV98"), "the unlock is applied at once")
@@ -256,7 +256,7 @@ func test_a_pending_vote_becomes_a_runnable_level_and_leaves_when_begun() -> voi
 	GameState.dated_events_done = []
 	GameState.decision_log = {}
 	GameState.pending_activations = []
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
 	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
 	var next := GameState.next_activation()
 	assert_eq(next["kind"], "vote")
@@ -280,7 +280,7 @@ func test_a_pending_existing_level_is_offered_as_itself() -> void:
 	GameState.dated_events_done = []
 	GameState.decision_log = {}
 	GameState.pending_activations = []
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
 	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
 	assert_eq(str(GameState.next_activation()["level"]["level_id"]), "LV98")
 	GameState.finish_activation("LV98")
@@ -294,7 +294,7 @@ func test_a_scene_started_vote_can_be_played_to_its_end() -> void:
 	GameState.decision_log = {}
 	GameState.pending_activations = []
 	GameState.levels_cleared = {}
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
 	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
 	var level: Dictionary = GameState.next_activation()["level"]
 	GameState.finish_activation(str(level["level_id"]))
@@ -310,7 +310,7 @@ func test_a_scene_started_vote_can_be_played_to_its_end() -> void:
 # --- Optional scenes (phase 4) ---------------------------------------------------------------------------------------------------
 
 func _optional(over: Dictionary = {}) -> Dictionary:
-	var base := {"scene_id": "DS30", "event_id": "E_DS30", "kind": "Optional", "office": "Capitol", "opens": "18.10.08", "closes": "18.10.12",
+	var base := {"scene_id": "DS30", "event_id": "E_DS30", "kind": "Optional", "office": "Capitol", "opens": "18.10.15", "closes": "18.10.19",
 		"follows": null, "delay": null, "follow_if": null}
 	base.merge(over, true)
 	return base
@@ -318,8 +318,8 @@ func _optional(over: Dictionary = {}) -> Dictionary:
 
 func test_an_optional_scene_window_runs_from_opens_to_closes() -> void:
 	var scene := _optional()
-	var opens := WeekCalendar.parse_date("18.10.08")
-	var closes := WeekCalendar.parse_date("18.10.12")
+	var opens := WeekCalendar.parse_date("18.10.15")
+	var closes := WeekCalendar.parse_date("18.10.19")
 	assert_true(DecisionScenes.is_optional(scene))
 	assert_eq(DecisionScenes.window(scene, {}), [opens, closes])
 	assert_eq(DecisionScenes.open_now([scene], {}, opens - 1).size(), 0, "not yet")
@@ -335,14 +335,14 @@ func test_an_optional_scene_window_runs_from_opens_to_closes() -> void:
 
 func test_an_answered_optional_scene_is_neither_open_nor_lapsed() -> void:
 	var scene := _optional()
-	var log := {"DS30": {"day": WeekCalendar.parse_date("18.10.09"), "choice": "A"}}
-	assert_eq(DecisionScenes.open_now([scene], log, WeekCalendar.parse_date("18.10.10")).size(), 0)
-	assert_eq(DecisionScenes.lapsed([scene], log, WeekCalendar.parse_date("18.10.20")).size(), 0)
+	var log := {"DS30": {"day": WeekCalendar.parse_date("18.10.16"), "choice": "A"}}
+	assert_eq(DecisionScenes.open_now([scene], log, WeekCalendar.parse_date("18.10.17")).size(), 0)
+	assert_eq(DecisionScenes.lapsed([scene], log, WeekCalendar.parse_date("18.10.27")).size(), 0)
 
 
 func test_an_unopened_optional_scene_lapses_after_closes() -> void:
 	var scene := _optional()
-	var closes := WeekCalendar.parse_date("18.10.12")
+	var closes := WeekCalendar.parse_date("18.10.19")
 	assert_eq(DecisionScenes.lapsed([scene], {}, closes).size(), 0, "still open on its last day")
 	assert_eq(DecisionScenes.lapsed([scene], {}, closes + 1).size(), 1)
 	assert_eq(DecisionScenes.lapsed([_scene()], {}, closes + 1).size(), 0, "a Mandatory scene never lapses")
@@ -350,12 +350,12 @@ func test_an_unopened_optional_scene_lapses_after_closes() -> void:
 
 func test_an_optional_follow_up_opens_from_its_delay_and_never_by_itself() -> void:
 	var parent := _scene({"scene_id": "DS10"})
-	var child := _optional({"scene_id": "DS31", "follows": "DS10", "opens": null, "delay": 2, "closes": "18.10.30"})
-	var log := {"DS10": {"day": WeekCalendar.parse_date("18.10.10"), "choice": "A"}}
-	assert_eq(DecisionScenes.window(child, log)[0], WeekCalendar.parse_date("18.10.12"))
+	var child := _optional({"scene_id": "DS31", "follows": "DS10", "opens": null, "delay": 2, "closes": "18.11.06"})
+	var log := {"DS10": {"day": WeekCalendar.parse_date("18.10.17"), "choice": "A"}}
+	assert_eq(DecisionScenes.window(child, log)[0], WeekCalendar.parse_date("18.10.19"))
 	assert_eq(DecisionScenes.window(child, {}), [-1, -1], "no window until the earlier scene is answered")
-	assert_eq(DecisionScenes.due_follow_ups([parent, child], log, WeekCalendar.parse_date("18.10.20")).size(), 0, "not a self-opening follow-up")
-	assert_eq(DecisionScenes.open_now([parent, child], log, WeekCalendar.parse_date("18.10.20")).size(), 1)
+	assert_eq(DecisionScenes.due_follow_ups([parent, child], log, WeekCalendar.parse_date("18.10.27")).size(), 0, "not a self-opening follow-up")
+	assert_eq(DecisionScenes.open_now([parent, child], log, WeekCalendar.parse_date("18.10.27")).size(), 1)
 
 
 func test_the_reserved_choice_is_never_offered_but_can_be_found() -> void:
@@ -368,11 +368,11 @@ func test_the_reserved_choice_is_never_offered_but_can_be_found() -> void:
 func _with_optional(closes: String, penalty_funds: int) -> void:
 	# A throwaway Optional scene on a throwaway event with a choice A and a lapse penalty L (Funds).
 	DataDB.events.append({"event_id": "EV_TEST_O", "title": "Test optional", "flavor": "x", "trigger": "Dated", "available": "Both",
-		"hours": 2, "location": "Capitol", "on_date": "18.10.08"})
+		"hours": 2, "location": "Capitol", "on_date": "18.10.15"})
 	DataDB.event_choices.append({"event_id": "EV_TEST_O", "choice": "A", "choice_text": "Go", "result_text": "You went."})
 	DataDB.event_choices.append({"event_id": "EV_TEST_O", "choice": "L", "choice_text": "(lapse)", "result_text": "It passed without you.",
 		"funds_delta": {"min": -penalty_funds, "max": -penalty_funds}})
-	DataDB.decision_scenes.append({"scene_id": "DS_TEST_O", "event_id": "EV_TEST_O", "kind": "Optional", "opens": "18.10.08",
+	DataDB.decision_scenes.append({"scene_id": "DS_TEST_O", "event_id": "EV_TEST_O", "kind": "Optional", "opens": "18.10.15",
 		"closes": closes, "office": "Capitol"})
 
 
@@ -385,11 +385,11 @@ func _drop_optional() -> void:
 
 
 func test_an_optional_scene_never_opens_by_itself_and_is_listed_where_you_can_open_it() -> void:
-	_with_optional("18.10.12", 500)
+	_with_optional("18.10.19", 500)
 	GameState.dated_events_done = []
 	GameState.decision_log = {}
 	GameState.office_location = Offices.CAPITOL
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}   # Monday 18.10.08
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}   # Monday 18.10.15
 	assert_eq(GameState.due_dated_event(), "EV47", "the Mandatory address, never the Optional one")
 	GameState.dated_events_done.append("EV47")
 	assert_eq(GameState.due_dated_event(), "", "an Optional scene waits for the player")
@@ -407,11 +407,11 @@ func test_an_optional_scene_never_opens_by_itself_and_is_listed_where_you_can_op
 
 
 func test_a_lapsed_optional_scene_applies_its_penalty_once() -> void:
-	_with_optional("18.10.09", 500)
+	_with_optional("18.10.16", 500)
 	GameState.dated_events_done = []
 	GameState.decision_log = {}
 	GameState.meta["Funds"] = 10000
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 40}   # past 18.10.09
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 40}   # past 18.10.16
 	var funds_before := int(GameState.meta["Funds"])
 	var hours_before := WeekCalendar.hours_left(GameState.calendar, GameState.calendar_config())
 	var told := GameState.apply_scene_lapses()
@@ -425,11 +425,11 @@ func test_a_lapsed_optional_scene_applies_its_penalty_once() -> void:
 
 
 func test_a_lapse_with_no_penalty_row_is_remembered_quietly() -> void:
-	_with_optional("18.10.09", 0)
+	_with_optional("18.10.16", 0)
 	DataDB.event_choices = DataDB.event_choices.filter(func(c: Dictionary) -> bool: return not (str(c.get("event_id")) == "EV_TEST_O" and str(c.get("choice")) == "L"))
 	GameState.dated_events_done = []
 	GameState.decision_log = {}
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 40}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 40}
 	assert_eq(GameState.apply_scene_lapses().size(), 0, "nothing to tell")
 	assert_true(GameState.decision_log.has("DS_TEST_O"), "but it is not checked again")
 	_drop_optional()
