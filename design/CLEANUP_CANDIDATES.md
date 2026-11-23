@@ -247,3 +247,7 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 ## Capitol venues (P16, 2026-11-23)
 
 `venue.tip_saved` and `venue.tip_saved_opponent` are used; the package's rows `venue.gossip_only` ("Gossip only. Nothing changes.") is shown only on plain lines. The tab-title Text row `office.rhetoric_training` is still the Speech Coach page's fallback title, and `office.subtitle_jp_*` rows for the old Rhetoric tab were never separate. Nothing is removable yet; once the Speech Coach venue's name comes from the Venues tab everywhere, `office.rhetoric_training` could go (ask Cameron first).
+
+## "You overhear" lead (2026-11-23)
+
+`venue.overhear_lead` ("You overhear two aides on the bench behind the hedge.") and the lead option of `VenueViews.speaker_row` are no longer used (Cameron: no automatic lead). Ask before removing the row; a line that wants the words can use them in its own Text.

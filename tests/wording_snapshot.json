@@ -1346,6 +1346,7 @@
   "tips.badge_one": "1 tip",
   "tips.briefing_from": "heard in the Cafeteria",
   "tips.briefing_from_gardens": "overheard in the Gardens",
+  "tips.briefing_if_seated": "If {name} is seated here, they respond to",
   "tips.briefing_responds": "Responds to",
   "tips.button": "Tips",
   "tips.close": "Close",

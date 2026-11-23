@@ -10596,5 +10596,12 @@
     "english": "{count} tips",
     "placeholders": "count",
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.briefing_if_seated",
+    "where": "Briefing: an opponent's tip under a room they can be seated in",
+    "english": "If {name} is seated here, they respond to",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
   }
 ]
