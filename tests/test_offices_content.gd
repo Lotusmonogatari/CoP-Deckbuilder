@@ -32,7 +32,7 @@ func test_the_events_are_tagged() -> void:
 	for event: Dictionary in DataDB.events:
 		counts[Offices.normalize(event.get("location"))] += 1
 		assert_true(event.get("location") != null, "%s has a Location" % event["event_id"])
-	assert_eq(counts, {"Capitol": 28, "District": 52, "Either": 23}, "the 17 tagged Either and the six train encounters")
+	assert_eq(counts, {"Capitol": 35, "District": 54, "Either": 23}, "the 17 tagged Either and the six train encounters; nine CPTPP scene events (P15) add seven Capitol and two District")
 	for n in range(95, 105):
 		assert_eq(Offices.normalize(GameState.get_event("EV%d" % n).get("location")), Offices.CAPITOL, "EV%d is a Capitol event" % n)
 
@@ -41,7 +41,7 @@ func test_the_visitors_and_notices_are_tagged() -> void:
 	var visitors := {"Capitol": 0, "District": 0, "Either": 0}
 	for visitor: Dictionary in DataDB.visitors:
 		visitors[Offices.normalize(visitor.get("location"))] += 1
-	assert_eq(visitors, {"Capitol": 25, "District": 133, "Either": 16})
+	assert_eq(visitors, {"Capitol": 27, "District": 133, "Either": 16})   # VI175 and VI176, the new party whips (P15)
 	var greeting: Dictionary = {}
 	for row: Dictionary in DataDB.office_notices:
 		if str(row["notice_id"]) == "ON01":
