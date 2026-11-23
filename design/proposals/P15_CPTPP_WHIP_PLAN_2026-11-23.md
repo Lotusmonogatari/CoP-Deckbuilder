@@ -1,12 +1,12 @@
-# P15 plan, version 2: the CPTPP Decision! sequence, two whipping scenes and two votes (draft for Cameron, 2026-11-23)
+# P15 plan, version 3: the CPTPP Decision! sequence, two whipping scenes and two votes (draft for Cameron, 2026-11-23)
 
-Nothing in this plan is built. It folds in Cameron's eight design changes and the corrected `Story_Votes.xlsx`. **It waits for the four answers in section 6 and a "Go".**
+Nothing in this plan is built. It folds in Cameron's eight design changes, the corrected `Story_Votes.xlsx` and his answers to the second popup (level clash, staff travel, free amendment vote, both votes the same day). **It waits for one last answer (section 6) and a "Go".**
 
 ## 1. Executive summary
 
 | Question | Answer |
 |---|---|
-| What the sequence is | DS02 opens **Monday 18.10.22**; two whipping scenes (the party whip, and **OP29 Imekanu Resu**, a unique whip for every player); an amendment vote and a final vote; all votes **done by Monday 18.10.29** (before Tuesday 18.10.30). |
+| What the sequence is | DS02 opens **Monday 18.10.22**; two whipping scenes (the party whip, and **OP29 Imekanu Resu**, a unique whip for every player); an amendment vote and a final vote **on the same day, Monday 18.10.29** (before Tuesday 18.10.30). |
 | New game rules asked for | (a) a Decision! on a weekday keeps levels from running over it; (b) the evening before a Mandatory Decision!, staff bring a player who is in the wrong office back, at 100 XP; (c) a chain may exceed 5 follow-ups when Cameron approves it; (d) two whips, three outcomes (free, locked to the winner, abstain). |
 | Already done | DS01 moved to **18.10.15** (parliament opens); OP74 is **Yun-hee Seong** (branch `fix/ds01-oct15-and-yun-hee`, pushed, not merged). |
 | Worksheet | Corrected: the right-hand ID block matches the data; all 101 members and parties match. It is the source for both Floor Votes rows. |
@@ -37,7 +37,7 @@ Nothing in this plan is built. It folds in Cameron's eight design changes and th
 |---|---|---|
 | 1 | Parliament opens 15 October; DS01 then. A weekday Decision! must not be run over by a level (Mandatory: prevent; Optional: alert). | DS01 moved (done). The level rule is section 4A. |
 | 2 | The day before a Decision!, staff bring the player to the right office at day's end. 100 XP (or all the XP they have, up to 100); no work hours. | Section 4B. |
-| 3 | All CPTPP floor votes done before Tuesday 18.10.30. | Exporter check that the chain's last vote day (Opens plus every Mandatory delay) is **18.10.29 or earlier**; section 4C. |
+| 3 | All CPTPP floor votes done before Tuesday 18.10.30. | Exporter check that the chain's last vote day (Opens plus every Mandatory delay) is **18.10.29 or earlier**; section 4C. Both votes are on 18.10.29. |
 | 4 | A chain may exceed 5 scenes if Cameron approves. | A **Max Follow-Ups** column on a first scene's row: blank means 5; Cameron's number overrides it for that chain. The CPTPP chain is approved at 8 (see section 5). |
 | 5 | OP29 Imekanu Resu whips every player, regardless of party, in her own scene, separate from the standard whip scene. Win both: free vote. Lose one: locked to whoever they lost to. Lose both: abstain, penalties from both sides. | Section 4D. |
 | 6 | Reorder "Seong Yun-hee" to "Yun-hee Seong". | Done. |
@@ -58,36 +58,40 @@ IDs to use today: opponents **OP132 to OP134**, visitors **VI175 and VI176**, th
 
 | Part | Build |
 |---|---|
-| The party whip | As in the brief: Party support picks who whips (0 to 30 Assistant Whip, 31 to 71 Deputy, 72 to 89 Chief, 90 to 97 the minister **OP82 Tama Tsujikonou** if in the player's party else the Chief, 98 to 100 the party leader). Winning the whip stage means no lock from the party; losing locks the vote to the **party line**. |
-| OP29's whip | Her own scene and the same whip stage with her as the opponent, shown to every player. Winning means no lock from her; losing locks the votes to **her ask**: Aye on the amendment (which stops the Prime Minister signing if Australia signs first) and Nay on the final. |
-| The outcomes | Both won: both votes are free. One lost: locked to the party who won. Both lost: both votes are **abstain** and the player takes both whips' penalties. |
+| The party whip | As in the brief: Party support picks who whips (0 to 30 Assistant Whip, 31 to 71 Deputy, 72 to 89 Chief, 90 to 97 the minister **OP82 Tama Tsujikonou** if in the player's party else the Chief, 98 to 100 the party leader). Winning the whip stage means no lock from the party; losing locks the **final vote** to the **party line**. The party whip does not whip the amendment: **the amendment is a free vote for the party.** |
+| OP29's whip | Her own scene and the same whip stage with her as the opponent, shown to every player. **She asks for the amendment** (Aye). Winning means no lock from her; losing locks the **amendment** to Aye. Whether she also asks anything on the final vote is the open question in section 6. |
+| The outcomes | Both won: every vote is free. One lost: locked to the whip who won. Both lost: **abstain** and both whips' penalties (the exact votes this covers is the open question in section 6). |
 | The lock | Greys the other buttons with "You gave the whip your word."; an abstain lock leaves only Abstain. |
 
 **4E. Workbook.** Floor Votes gets **Decision Scene**; Decision Scenes gets **Whip Bill**, **Minister**, **Vote Bill**, **Max Follow-Ups**, **Must End By**; Parties gets three whip columns; Rules gets `whip_bands` and `training`-style rows for the bands; a **Story Votes** tab is imported by name from your sheet and BI51 and BI52's party counts are computed from it (no duplicate numbers).
 
 **Commits:** 1 data and exporter; 2 pure rules (`WhipPick`, `DecisionClash`, lock and outcomes); 3 level clash guard and alert; 4 evening travel; 5 whip card and stage ST290 (Resolve bar: I read the Survival model and propose numbers before changing it); 6 lock and abstain on the Floor Vote; 7 scenes, cues and votes; 8 tests, screenshots in three styles, docs. One full check, then push `feature/p15-cptpp-whip`. **No merge.**
 
-## 5. The timetable I propose (weekdays only; all votes by Monday 18.10.29)
+## 5. The timetable I propose (weekdays only; both votes Monday 18.10.29)
 
 | Date | Scene | Kind | Follows |
 |---|---|---|---|
 | Mon 18.10.22 | DS02 The Government Tables the CPTPP Motion | Mandatory, Capitol | first scene |
 | Wed 18.10.24 | DS03 The Home Front Wants Answers (window to Fri 18.10.26) | Optional, District | DS02 +2 |
 | Wed 18.10.24 | DS04 The Business Lobby Comes Calling (window to Fri 18.10.26) | Optional, Capitol | DS02 +2 |
-| Thu 18.10.25 | DS05 OP29: the Minister of Agriculture's appeal | Mandatory, Capitol | DS02 +3 |
-| Thu 18.10.25 | DS06 The Whip Counts Heads (standard whip) | Mandatory, Capitol | DS02 +3 |
-| Fri 18.10.26 | DS07 Floor Vote: the Australia amendment | Mandatory, Capitol | DS02 +4 |
-| Mon 18.10.29 | DS08 Floor Vote: Joining the CPTPP | Mandatory, Capitol | DS02 +7 |
-| Wed 18.10.31 | DS09 After the Vote, Back Home | Optional, District | DS08 +2 |
+| Thu 18.10.25 | DS05 The Minister of Agriculture's Appeal (OP29, asks for the amendment) | Mandatory, Capitol | DS02 +3 |
+| Fri 18.10.26 | DS06 The Whip Counts Heads (standard whip, final vote) | Mandatory, Capitol | DS02 +4 |
+| Mon 18.10.29 | DS07 Floor Vote: the amendment | Mandatory, Capitol | DS02 +7 |
+| Mon 18.10.29 | DS08 Floor Vote: Joining the CPTPP (the same sitting, straight after DS07) | Mandatory, Capitol | DS07 +0 |
+| Wed 18.10.31 | DS09 After the Vote, Back Home (window to Mon 18.11.05) | Optional, District | DS08 +2 |
 
-That is 8 follow-ups under DS02 (the approved limit), and the last vote is on the last day allowed.
+That is 7 follow-ups under DS02 (the approved limit is 8). DS08 needs a delay of 0 (follows the earlier scene the same day); I will check the engine accepts that and, if not, add it as part of this build. Both votes sit on 18.10.29, the last day allowed.
 
-## 6. Questions for Cameron (the next popup)
+## 6. Cameron's answers, and what is left
 
-1. **What "runs over" means** (4A): refuse a level that cannot finish by the end of the day before the scene, and alert for an Optional scene when the level would end after the window closes.
-2. **The evening travel** (4B): no staff hired; which scenes; the exact moment.
-3. **The party line on the amendment** (4D): use the party's majority in Story Votes (BU, FP, FPI and KJT No; CI Yes; Yezo Heritage Party split 7 to 7).
-4. **The timetable** (section 5).
+| Question | Answer (Cameron, 2026-11-23) |
+|---|---|
+| A level "running over" a Decision! | Refuse a level that cannot finish by the end of the day before a Mandatory scene (reason shown); for an Optional scene alert with Start anyway / Back. |
+| Evening travel | Mandatory scenes only; with or without staff; 100 XP or all the XP the player has. |
+| Party line on the amendment | **There is none.** Minister Resu asks for the amendment; the party does not whip it; it is a free vote. |
+| Timetable | The amendment and the final vote happen on the same day. I put them on Monday 18.10.29, the last day allowed. |
+
+**One thing left:** the rules for winning and losing the two whips only make sense for a vote both whips have a say on. Which votes does each whip cover? My reading: the party whip covers the **final** vote only; OP29 covers the **amendment** (Aye) and also asks something on the final vote. See the popup.
 
 ## 7. Risks I will check first and stop on
 
