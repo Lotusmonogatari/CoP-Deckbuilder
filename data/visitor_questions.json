@@ -37213,5 +37213,485 @@
     "promise_kept_text_c": null,
     "promise_kept_text_d": null,
     "seasons": null
+  },
+  {
+    "question_id": "VQ462",
+    "visitor_ids": [
+      "VI174"
+    ],
+    "question_text": "My sister's milk goes into a tanker. Mine goes into glass bottles in Nakashibetsu, under the same inspection rules as a plant. Can small bottlers get a lighter rule?",
+    "choice_a": "Ask for a lighter inspection rule for small bottlers.",
+    "choice_b": "A rule is a rule. Milk safety comes first.",
+    "choice_c": "Let small bottlers share one inspection fee.",
+    "choice_d": "Bottle it in the big plant instead.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Thank you. A bottle of mine should not cost what a plant's does.",
+    "response_b": "Safe milk is why people trust me. I only want fair rules.",
+    "response_c": "A shared fee is a start. I would join it.",
+    "response_d": "And lose the label with my name on it?",
+    "reaction_a": "Grins and lifts the jug.",
+    "reaction_b": "Her smile slips.",
+    "reaction_c": "Nods, thinking it over.",
+    "reaction_d": "Hugs the jug closer.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ463",
+    "visitor_ids": [
+      "VI174"
+    ],
+    "question_text": "A license for a tiny cheese room costs more than my first year's profit. Will you speak for the small makers?",
+    "choice_a": "Sell your milk to the cheese factories.",
+    "choice_b": "Push for a lower license fee for farm cheese rooms.",
+    "choice_c": "A big license keeps standards high.",
+    "choice_d": "Let small makers pay the fee over three years.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "The factories already set my sister's price.",
+    "response_b": "Farm cheese is how a farm lives on. Thank you.",
+    "response_c": "Standards are fine. The price is the wall.",
+    "response_d": "Three years is a door left open.",
+    "reaction_a": "Looks at the floor.",
+    "reaction_b": "Her eyes light up.",
+    "reaction_c": "Frowns behind her glasses.",
+    "reaction_d": "Counts on her fingers.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ464",
+    "visitor_ids": [
+      "VI174"
+    ],
+    "question_text": "The school lunch contract goes to the big dairy, though my milk is ten minutes from the school. Can local farms bid?",
+    "choice_a": "Set aside a share of school milk for local farms.",
+    "choice_b": "Ask the school to buy more cheese.",
+    "choice_c": "Let local farms bid for school lunch milk.",
+    "choice_d": "Contracts go to the lowest price.",
+    "correct_choice": "C",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_d": null,
+    "response_a": "A share is a fair start. I will take it.",
+    "response_b": "Cheese is not what a child drinks at lunch.",
+    "response_c": "The children would know the cows. I would deliver on foot.",
+    "response_d": "The lowest price is the big dairy's price, always.",
+    "reaction_a": "Taps the jug twice.",
+    "reaction_b": "Raises an eyebrow.",
+    "reaction_c": "Beams.",
+    "reaction_d": "Her grin fades.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ465",
+    "visitor_ids": [
+      "VI174"
+    ],
+    "question_text": "Snow cuts my bottle route to Kushiro twice a month in winter, and the shops want milk every morning.",
+    "choice_a": "Stop deliveries in winter and sell at the farm.",
+    "choice_b": "Pair routes with other producers in the worst months.",
+    "choice_c": "Winter is winter. Customers can wait.",
+    "choice_d": "Fund a snow-ready delivery van for small producers.",
+    "correct_choice": "D",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Farm sales alone would starve the creamery.",
+    "response_b": "Sharing a route would halve the snow days.",
+    "response_c": "The milk will not wait, and neither will the shop.",
+    "response_d": "A van that starts is a shop that stays open.",
+    "reaction_a": "Shakes her head.",
+    "reaction_b": "Nods.",
+    "reaction_c": "Sighs, breath fogging.",
+    "reaction_d": "Looks out at an imagined snowbank.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": [
+      "Autumn",
+      "Winter"
+    ]
+  },
+  {
+    "question_id": "VQ466",
+    "visitor_ids": [
+      "VI174"
+    ],
+    "question_text": "Shoppers think milk from a small farm is the same as any carton. Can the label say where it comes from?",
+    "choice_a": "Require clear farm-of-origin labels on milk.",
+    "choice_b": "Labels are expensive and shoppers ignore them.",
+    "choice_c": "Offer an optional local-milk mark.",
+    "choice_d": "Put your name on it and hope.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "commitment_a": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ],
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "Then they will taste the difference they are paying for.",
+    "response_b": "I have watched shoppers read labels. They notice.",
+    "response_c": "An optional mark would help me and hurt nobody.",
+    "response_d": "My name is already on it. It is not enough.",
+    "reaction_a": "Holds up the bottle to show the cap.",
+    "reaction_b": "Raises a skeptical brow.",
+    "reaction_c": "Smiles and nods.",
+    "reaction_d": "Her smile flattens.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
+  },
+  {
+    "question_id": "VQ467",
+    "visitor_ids": [
+      "VI174"
+    ],
+    "question_text": "My sister and I split the farm and the creamery between us. When our parents are gone the tax treats them as two separate estates. Will you look at succession for family farms?",
+    "choice_a": "Sell the creamery to pay it.",
+    "choice_b": "Ask for a succession review for farms with a creamery.",
+    "choice_c": "The tax treats everyone the same, and it should.",
+    "choice_d": "Let farm families spread the tax over ten years.",
+    "correct_choice": "B",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "commitment_a": null,
+    "commitment_b": null,
+    "commitment_c": null,
+    "commitment_d": null,
+    "response_a": "The creamery is the part my father built.",
+    "response_b": "Kimiko and I would sleep better. Thank you.",
+    "response_c": "Same for everyone and heavier for us.",
+    "response_d": "Ten years is something. It is not nothing.",
+    "reaction_a": "Tightens her grip on the jug.",
+    "reaction_b": "Her eyes go bright.",
+    "reaction_c": "Looks toward the barn.",
+    "reaction_d": "Nods thoughtfully.",
+    "promise_kept_text_a": null,
+    "promise_kept_text_b": null,
+    "promise_kept_text_c": null,
+    "promise_kept_text_d": null,
+    "seasons": null
   }
 ]

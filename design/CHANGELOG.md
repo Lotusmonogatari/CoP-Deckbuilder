@@ -1929,3 +1929,26 @@ The Rhetoric Training card now shows **Masayuki Katō** as its heading with **�
 ## The speech coach's kanji: 加藤正幸 (2026-11-23, Cameron; branch `feature/coach-name-kanji`)
 
 Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** now reads **加藤正幸** (family name first, as is usual in Japanese). The Japanese font was re-subset so 正 and 幸 draw in it. **Merged without the full check at Cameron's instruction** (a one-text change); the speech coach unit test and the data export were run.
+
+## New visitor pictures VI137 to VI166, VI174 checked; VI174 Harue Kobayashi added (2026-11-23, Cameron; branch `feature/visitor-images-6`)
+
+**Review of the upload (28 files):**
+
+| Check | Result |
+|---|---|
+| Replaced pictures | **None.** All 28 are new files; no existing picture changed. |
+| Valid files | All 28 are PNGs in `assets/characters/visitors/` and imported (import files added). |
+| Rows | 27 match a Visitors-tab row (`VI137`, `VI139` to `VI143`, `VI145` to `VI163`, `VI165`, `VI166`). `VI174` had none; it is drafted below. |
+| Low resolution (flag) | `VI143` (Mika Kobayashi) is **397 x 915**, under half the usual 720 x 1648 and soft at portrait size. `VI79` (Rera Saru) is 411 x 1122 (it was 154 x 493 before it was redrawn; better, still small). Every other picture is at least 413 x 1181. |
+| Gaps left | **1 of 174 visitors has no picture: `VI19`.** Every other visitor has one, and every picture has a visitor. |
+
+**VI174, a draft for Cameron to rewrite.** From the picture (short brown hair with orange tips, glasses, a cow-print vest, a grey apron, pink boots, a big grin, a jug of milk) and the sister link to VI154 Kimiko Hasegawa, Dairy Farmer in Nakashibetsu:
+
+| Part | Draft |
+|---|---|
+| Name | **Harue Kobayashi**, 小林春江 (Cameron, 2026-11-23: the family-name kanji VI143 Mika Kobayashi has; a different name from her sister Kimiko Hasegawa) |
+| Title | Farm Creamery Owner |
+| Office and rooms | District; the same rooms as her sister (ST270, ST287, ST288) |
+| Organizations | Rural Revitalization Council (BO30), Small Business Owners' Association (BO25); Taxpayers' Alliance (BO23) as the cost-minded rival |
+| Questions VQ462 to VQ467 | lighter inspection rules for small bottlers; a cheese-room license fee; school lunch milk for local farms; a snow-closed delivery route to Kushiro (`Autumn; Winter`); farm-of-origin labels; succession for a farm with a creamery. Real places only (Nakashibetsu, Kushiro). The right answer rotates through A to D. |
+| Tests | `tests/test_visitor_174.gd`; the District count in `tests/test_offices_content.gd` is now 133. |
