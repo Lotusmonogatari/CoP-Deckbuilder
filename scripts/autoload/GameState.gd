@@ -4639,11 +4639,13 @@ func offer_random_card(item_id: String) -> Dictionary:
 	if not card_draw.is_empty():
 		return _draw_result()
 	var item := DataDB.get_shop_item(item_id)
-	var refusal := _card_training_refusal(item)
+	var refusal := card_training_refusal(item_id)
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
 	var choices := _unowned_cards_at_tier(_draw_tier(item))
 	var card_id: String = choices[randi() % choices.size()]
+	# The session takes its hours when it begins; passing on a card or two costs no more.
+	spend_hours(training_hours(int(item.get("card_tier", 0))))
 	card_draw = {"item_id": item_id, "card_id": card_id, "look": 1, "seen": [card_id]}
 	return _draw_result()
 
@@ -4723,7 +4725,12 @@ func _draw_result() -> Dictionary:
 ## is left to learn. Shared by the Office's row (to grey its button) and
 ## both steps above.
 func card_training_refusal(item_id: String) -> String:
-	return _card_training_refusal(DataDB.get_shop_item(item_id))
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := _card_training_refusal(item)
+	# Starting a session takes its hours; reopening a draw already in progress does not (they were taken when it began).
+	if refusal.is_empty() and (card_draw.is_empty() or str(card_draw.get("item_id", "")) != item_id):
+		refusal = _hours_refusal(training_hours(int(item.get("card_tier", 0))))
+	return refusal
 
 
 func _card_training_refusal(item: Dictionary) -> String:
@@ -4951,8 +4958,8 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 	if Items.is_player_choice(item) and chosen_target.is_empty():
 		return {"ok": false, "needs_choice": true}
 
-	# Some Office items take time (the dinner and the walking tour: Shop "Hours").
-	var hours := int(item.get("hours", 0)) if item.get("hours") != null else 0
+	# Some Office items take time (the dinner and the walking tour: Shop "Hours"); a coaching coupon's session takes its tier's hours.
+	var hours := _item_hours(item)
 	var hours_refusal := _hours_refusal(hours)
 	if not hours_refusal.is_empty():
 		return {"ok": false, "message": hours_refusal}
@@ -4974,6 +4981,7 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 		if choices.is_empty():
 			return {"ok": false, "message": Text.say("shop.no_cards_left_at_tier", {"tier": _draw_tier(item)})}
 		_take_item(item_id)
+		spend_hours(hours)
 		var card_id: String = choices[randi() % choices.size()]
 		card_draw = {"item_id": item_id, "card_id": card_id, "look": 1, "seen": [card_id]}
 		return {"ok": true, "opens_draw": true,
@@ -5022,8 +5030,19 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 ## used right now for lack of time, else blank. The item pop-up shows it on a
 ## disabled Use button (2026-11-12, Cameron).
 func item_hours_refusal(item: Dictionary) -> String:
-	var hours := int(item.get("hours", 0)) if item.get("hours") != null else 0
-	return _hours_refusal(hours)
+	return _hours_refusal(_item_hours(item))
+
+
+## The hours using an item takes: its Shop Hours cell, or for a coaching coupon the hours of its tier's session.
+func _item_hours(item: Dictionary) -> int:
+	if item.get("free_card_tier") != null:
+		return training_hours(int(item.get("free_card_tier", 0)))
+	return int(item.get("hours", 0)) if item.get("hours") != null else 0
+
+
+## The hours a Rhetoric Training session of `tier` takes (Balance: Rhetoric Training: Hours Per Tier, times the tier).
+func training_hours(tier: int) -> int:
+	return maxi(0, tier) * Levers.whole("rhetoric_training_hours_per_tier")
 
 
 func _hours_refusal(hours: int) -> String:

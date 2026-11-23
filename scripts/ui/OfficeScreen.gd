@@ -1833,8 +1833,9 @@ func _training_row(item: Dictionary) -> Control:
 	var item_id := str(item.get("item_id", ""))
 	var box := UiKit.tight_column()
 	box.name = "Training_" + item_id
-	box.add_child(UiKit.line(Text.say("rhetoric.session",
-		{"tier": int(item.get("card_tier", 0)), "price": _price_text(item)})))
+	var session_hours := GameState.training_hours(int(item.get("card_tier", 0)))
+	box.add_child(UiKit.line(Text.say("rhetoric.session_one" if session_hours == 1 else "rhetoric.session",
+		{"tier": int(item.get("card_tier", 0)), "price": _price_text(item), "hours": session_hours})))
 	var button := UiKit.action_button(Text.say("rhetoric.see_card"),
 		GameState.card_training_refusal(item_id), _on_see_card.bind(item_id))
 	button.name = "SeeCard"

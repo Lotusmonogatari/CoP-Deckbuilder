@@ -19,7 +19,7 @@ The player never sees internal names. Documents and code use these pairs:
 | Level | module in old docs | An ordered chain of stages |
 | Stage / room | `STxx` | One screen's worth of play |
 | Hours | game calendar hours (`calendar`), and the hidden clock `time_units` | See section 3 |
-| Training Session | Rhetoric Training, `card_tier` shop items | The only way new cards arrive |
+| Training Session | Rhetoric Training, `card_tier` shop items | The only way new cards arrive. A session takes **one hour per tier** (Balance `Rhetoric Training: Hours Per Tier`), taken when it begins and refused with a reason when the week has no time; a coupon session takes the hours too |
 | Political Pressure | `difficulty`: relaxed / standard / harder | Chosen at New Game |
 
 **Four names are lookup keys as well as text** (`Constituency support`, `Reputation`, `Funds`, `Party support`): renaming one in the workbook alone is an export error.
