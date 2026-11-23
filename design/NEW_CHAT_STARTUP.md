@@ -11,7 +11,7 @@ Point the assistant at this file at the start of a new session. The brief and th
 | Workbook | `design/Game_Workbook.xlsx` |
 | Content (`data/`) | 289 stage rows, 122 levels, 70 cards, 32 organizations, 131 opponents, 50 floor-vote bills, 174 visitors and 467 visitor questions, 103 events (EV105 to EV110 are train encounters), 44 shop items (SH42 to SH44 are travel tickets), 21 staff, 64 staff tasks in 8 families, 180 bill components, 9 cosmetic packages (three of them the UI styles), 112 Places rows, 1 Decision! scene, about 1,400 Text rows, 359 Balance levers |
 | Tests | About 2,450 GUT tests (about 230 scripts) and 54 real-click interaction tests. `tools/verify.sh` (export, compile of every script, unit tests, click tests, and the text sweep in three styles at three text sizes) takes about 9 minutes. |
-| Missing | All audio files, most character art (opponents, students, visitors, PC02/PC03), 8 goods icons, `OUT_NEIGHBORHOOD`, and the two-offices art (four District office pictures, `TRAIN_INTERIOR`, `TICKET_*` icons, the three District rooms; a labelled placeholder shows until each exists). No real-phone build yet (milestone M6). |
+| Missing | All audio files, most character art (opponents, students, PC02/PC03; every visitor now has a picture), 8 goods icons, `OUT_NEIGHBORHOOD`, and the two-offices art (four District office pictures, `TRAIN_INTERIOR`, `TICKET_*` icons, the three District rooms; a labelled placeholder shows until each exists). No real-phone build yet (milestone M6). |
 
 ## 2. The document map
 

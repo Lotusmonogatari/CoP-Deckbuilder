@@ -1952,3 +1952,7 @@ Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** no
 | Organizations | Rural Revitalization Council (BO30), Small Business Owners' Association (BO25); Taxpayers' Alliance (BO23) as the cost-minded rival |
 | Questions VQ462 to VQ467 | lighter inspection rules for small bottlers; a cheese-room license fee; school lunch milk for local farms; a snow-closed delivery route to Kushiro (`Autumn; Winter`); farm-of-origin labels; succession for a farm with a creamery. Real places only (Nakashibetsu, Kushiro). The right answer rotates through A to D. |
 | Tests | `tests/test_visitor_174.gd`; the District count in `tests/test_offices_content.gd` is now 133. |
+
+## VI19 Sora Kudo's picture arrives: every visitor has one (2026-11-23, Cameron)
+
+`VI19.png` (592 x 1452, Ferry Captain Sora Kudo) was uploaded; it is a new file and replaces nothing. With it **all 174 visitors have a picture** and every picture has a visitor. The import file is added. Merged after the quick check.

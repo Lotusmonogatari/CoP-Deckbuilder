@@ -10,7 +10,7 @@ stands in for every expression.
 | Protagonists | 24 / 28 |
 | Opponents | 7 / 655 |
 | Staff | 105 / 105 |
-| Visitors | 865 / 870 |
+| Visitors | 870 / 870 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
 | Capital Area characters (outside the Capitol building) | 1 / 1 |
@@ -213,7 +213,7 @@ stands in for every expression.
 | VI16 | Yuki Kirishima | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI17 | Haruto Ebina | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI18 | Granny Chiyo | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI19 | Sora Kudo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI19 | Sora Kudo | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI20 | Akemi Ito | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI21 | Dog Man | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI22 | Brad Chunchun | ◆ | ◆ | ◆ | ◆ | ◆ |
@@ -368,7 +368,7 @@ stands in for every expression.
 | VI171 | Mio Sugita | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI172 | Nanami Arai | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI173 | Reina Mochizuki | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI174 | Harue Hasegawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI174 | Harue Kobayashi | ◆ | ◆ | ◆ | ◆ | ◆ |
 
 ## Card art — `assets/cards/art/`
 

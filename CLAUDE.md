@@ -344,3 +344,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Checks: full gate only before a merge; `tools/click_test.sh` for one area (2026-11-23, Cameron)
 - The speech coach's kanji is 加藤正幸 (2026-11-23, Cameron; branch `feature/coach-name-kanji`)
 - Visitor pictures VI137 to VI166 and VI174 checked; VI174 Harue Kobayashi drafted (2026-11-23, Cameron; branch `feature/visitor-images-6`)
+- VI19 Sora Kudo's picture arrives: every visitor has one (2026-11-23, Cameron)
