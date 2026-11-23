@@ -54,14 +54,18 @@ IDs to use today: opponents **OP132 to OP134**, visitors **VI175 and VI176**, th
 
 **4C. The deadline.** A **Must End By** column on a first scene (YY.MM.DD). The exporter works out the latest day any Mandatory scene in the chain can happen (Opens plus delays) and refuses a chain that passes it. 4A is what makes that arithmetic true in play.
 
-**4D. Two whips.**
+**4D. Two whips (Cameron's final rules).**
 
-| Part | Build |
+| Step | What happens |
 |---|---|
-| The party whip | As in the brief: Party support picks who whips (0 to 30 Assistant Whip, 31 to 71 Deputy, 72 to 89 Chief, 90 to 97 the minister **OP82 Tama Tsujikonou** if in the player's party else the Chief, 98 to 100 the party leader). Winning the whip stage means no lock from the party; losing locks the **final vote** to the **party line**. The party whip does not whip the amendment: **the amendment is a free vote for the party.** |
-| OP29's whip | Her own scene and the same whip stage with her as the opponent, shown to every player. **She asks for the amendment** (Aye). Winning means no lock from her; losing locks the **amendment** to Aye. Whether she also asks anything on the final vote is the open question in section 6. |
-| The outcomes | Both won: every vote is free. One lost: locked to the whip who won. Both lost: **abstain** and both whips' penalties (the exact votes this covers is the open question in section 6). |
-| The lock | Greys the other buttons with "You gave the whip your word."; an abstain lock leaves only Abstain. |
+| 1. Resu's scene (DS05, Thu 18.10.25), amendment | Her ask is **Aye** on the amendment. The text screen offers: side with her (moves on, no battle) or not (the Resolve stage starts with her as the opponent). Win: the amendment is free. Lose: the amendment is locked to Aye. |
+| 2. Resu's scene, final vote (back to back, same scene sequence) | Her ask on the final vote is **Nay** (my reading: she is the Frontier Party's agriculture voice; Cameron to confirm). Same choice: side with her or fight a second Resolve stage. Win: free. Lose: locked to Nay. |
+| 3. The party whip's scene (DS06, Fri 18.10.26), final vote only | The standard whip by Party support bands; no amendment whipping. Side with the party line (moves on) or fight a Resolve stage. Win: free. Lose: locked to the party line. |
+| The final vote, three cases | Won both whips (Resu's final stage and the party's): your choice. Lost one: locked to whoever won. **Lost both: you abstain** and take the penalties from both. |
+| The amendment | Only Resu can lock it. The party never does. |
+| Lock text | Greys the other buttons with "You gave the whip your word." An abstain lock leaves only Abstain. |
+
+Up to three Resolve battles are possible (Resu on the amendment, Resu on the final, the party whip on the final). Penalties and rewards are the brief's: a win gives Reputation +1 and Party support −2; a loss gives Party support +1 and Constituency support −1 plus the lock.
 
 **4E. Workbook.** Floor Votes gets **Decision Scene**; Decision Scenes gets **Whip Bill**, **Minister**, **Vote Bill**, **Max Follow-Ups**, **Must End By**; Parties gets three whip columns; Rules gets `whip_bands` and `training`-style rows for the bands; a **Story Votes** tab is imported by name from your sheet and BI51 and BI52's party counts are computed from it (no duplicate numbers).
 
@@ -91,7 +95,9 @@ That is 7 follow-ups under DS02 (the approved limit is 8). DS08 needs a delay of
 | Party line on the amendment | **There is none.** Minister Resu asks for the amendment; the party does not whip it; it is a free vote. |
 | Timetable | The amendment and the final vote happen on the same day. I put them on Monday 18.10.29, the last day allowed. |
 
-**One thing left:** the rules for winning and losing the two whips only make sense for a vote both whips have a say on. Which votes does each whip cover? My reading: the party whip covers the **final** vote only; OP29 covers the **amendment** (Aye) and also asks something on the final vote. See the popup.
+**Whip scope (Cameron, 2026-11-23):** Resu whips two items back to back, the amendment and the final vote. If the player sides with her on the text screen it moves on; if not, the Resolve stage plays for each item. The party whip comes after and only for the final vote. Losing both final-vote battles forces an abstain and both penalties.
+
+**Still my assumption, to be corrected:** Resu's ask on the final vote is Nay (the amendment is Aye).
 
 ## 7. Risks I will check first and stop on
 
