@@ -1913,3 +1913,6 @@ All four are District visitors in the same rooms as VI125 (ST268, ST283, ST284).
 | No time | The "See a card" button is greyed with the usual reason ("Not enough hours left for that." or "The work week is over."), and a coupon's Use button is greyed the same way. |
 | The page | Each session row names its hours: "Tier 2 session  —  500 XP  —  2 hours" (Text rows `rhetoric.session` and `rhetoric.session_one`). |
 | Tests | `tests/test_training_hours.gd`. |
+## The speech coach has a name: Masayuki Katō (2026-11-23, Cameron; branch `feature/coach-name`)
+
+The Rhetoric Training card now shows **Masayuki Katō** as its heading with **加藤** (the surname, the only kanji given) as a muted accent beside it, then "Speech Coach" and the page's introduction. Two Text rows (`rhetoric.coach_name`, `rhetoric.coach_name_jp`). If he has a given-name kanji, say so and the accent can read in full.

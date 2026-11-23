@@ -340,3 +340,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - VI170 to VI173: four District service workers with 24 draft questions (2026-11-22, Cameron; branch `feature/visitor-images-5`)
 - The speech coach on the Rhetoric Training page; a Capitol characters picture folder (2026-11-22, Cameron; branch `feature/speech-coach`)
 - Rhetoric Training sessions take one hour per tier (2026-11-23, Cameron; branch `feature/training-hours`)
+- The speech coach is Masayuki Katō (2026-11-23, Cameron; branch `feature/coach-name`)

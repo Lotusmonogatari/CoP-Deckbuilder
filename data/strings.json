@@ -9854,5 +9854,19 @@
     "english": "Tier {tier} session  —  {price}  —  1 hour",
     "placeholders": "tier, price",
     "notes": "2026-11-23 (Cameron: a session takes an hour per tier). Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "rhetoric.coach_name",
+    "where": "Office Management, Rhetoric Training: the speech coach's name",
+    "english": "Masayuki Katō",
+    "placeholders": null,
+    "notes": "2026-11-23 (Cameron: the speech coach is Masayuki Katō, 加藤)."
+  },
+  {
+    "key": "rhetoric.coach_name_jp",
+    "where": "Office Management, Rhetoric Training: the speech coach's surname in kanji, a muted accent beside his name",
+    "english": "加藤",
+    "placeholders": null,
+    "notes": "2026-11-23 (Cameron: the speech coach is Masayuki Katō, 加藤). Only the surname was given."
   }
 ]

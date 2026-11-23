@@ -1801,7 +1801,23 @@ func _rhetoric_cards(look: Dictionary) -> Array[Control]:
 	coach_row.add_child(coach)
 	var coach_words := UiKit.tight_column()
 	coach_words.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	coach_words.add_child(UiKit.heading(Text.say("rhetoric.coach_title")))
+	# His name with the surname in kanji as a muted accent beside it, then his title, then the page's introduction.
+	var name_row := HBoxContainer.new()
+	name_row.add_theme_constant_override("separation", 12)
+	var coach_name := UiKit.heading(Text.say("rhetoric.coach_name"))
+	coach_name.name = "CoachName"
+	coach_name.set_meta(UiKit.ONE_LINE_META, true)
+	coach_name.autowrap_mode = TextServer.AUTOWRAP_OFF
+	name_row.add_child(coach_name)
+	var coach_name_jp := UiKit.line(Text.say("rhetoric.coach_name_jp"), "SmallLabel")
+	coach_name_jp.name = "CoachNameJp"
+	coach_name_jp.custom_minimum_size.x = 0.0
+	coach_name_jp.set_meta(UiKit.ONE_LINE_META, true)
+	coach_name_jp.autowrap_mode = TextServer.AUTOWRAP_OFF
+	coach_name_jp.size_flags_vertical = Control.SIZE_SHRINK_END
+	name_row.add_child(coach_name_jp)
+	coach_words.add_child(name_row)
+	coach_words.add_child(UiKit.line(Text.say("rhetoric.coach_title"), "SmallLabel"))
 	coach_words.add_child(UiKit.line(Text.say("rhetoric.blurb"), "SmallLabel"))
 	coach_row.add_child(coach_words)
 	coach_card.get_node("Column").add_child(coach_row)

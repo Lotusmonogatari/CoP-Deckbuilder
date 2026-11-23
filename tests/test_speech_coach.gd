@@ -28,5 +28,7 @@ func test_the_rhetoric_training_page_opens_with_the_coach() -> void:
 	var coach := first.find_child("SpeechCoach", true, false) as PlaceholderArt
 	assert_not_null(coach)
 	assert_eq(coach.art_id, "SPEECH_COACH")
+	assert_eq((first.find_child("CoachName", true, false) as Label).text, "Masayuki Katō", "his name, with the accented ō")
+	assert_eq((first.find_child("CoachNameJp", true, false) as Label).text, "加藤", "the surname in kanji beside it")
 	for row: Variant in rows:
 		(row as Node).queue_free()
