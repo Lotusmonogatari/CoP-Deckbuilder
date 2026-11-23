@@ -1902,3 +1902,7 @@ All four are District visitors in the same rooms as VI125 (ST268, ST283, ST284).
 | Name | The heading is a title only: **no personal name has been given**, so none is shown. Please say if he has one (and a Japanese name). |
 | Art checklist | A new "Capital Area characters" line lists SPEECH_COACH. |
 | Tests | `tests/test_speech_coach.gd`. |
+
+## The speech coach has a name: Masayuki Katō (2026-11-23, Cameron; branch `feature/coach-name`)
+
+The Rhetoric Training card now shows **Masayuki Katō** as its heading with **加藤** (the surname, the only kanji given) as a muted accent beside it, then "Speech Coach" and the page's introduction. Two Text rows (`rhetoric.coach_name`, `rhetoric.coach_name_jp`). If he has a given-name kanji, say so and the accent can read in full.
