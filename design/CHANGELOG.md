@@ -1996,3 +1996,10 @@ Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** no
 | "You overhear..." | No longer added to Gardens tips. A line that wants it writes it in its own words. |
 | Opponent tips | Marked under every room the person can be seated in, and worded as a condition: "If {name} is seated here, they respond to [suit]". A stage tip is unchanged. |
 | Guide | The rules, style guide and hint and chatter guidelines are compiled in one claude.ai doc; `CONTENT_GUIDE.md` points to it. |
+
+## Tip wording: each suit gets a grammatical phrase; hint phrasings reviewed (2026-11-23, Cameron's comment on the venues guide)
+
+| Part | What changed |
+|---|---|
+| Suit phrases | Tips say "responds to earnest / emotional / appealing / data-driven / divisive / duplicitous rhetoric" instead of the suit's name; the suit chip stays only in the Tips you hold list. A stage tip reads "The audience in the {stage} responds to ...". |
+| Phrasing review | Eleven hint phrasings rewritten: no past events ("last session", "once changed a vote"), no invented facts about people ("half the committee are accountants"), and the people in the room, not the stage, do the liking and deciding, so a TV debate or a press conference reads right. |

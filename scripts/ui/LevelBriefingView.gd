@@ -520,11 +520,11 @@ static func _tip_mark(tip: Dictionary, look: Dictionary) -> Control:
 	row.add_theme_constant_override("h_separation", int(LevelBriefingStyles.len_px(8.0)))
 	# A stage tip is certain; an opponent tip is marked on every room the person can be seated in, so it reads as a condition
 	# (Cameron, 2026-11-23: "rooms they can appear in but not certainly will appear in").
-	var lead := Text.say("tips.briefing_responds")
+	var rhetoric := VenueViews.rhetoric_phrase(str(tip.get("suit", "")))
+	var lead := Text.say("tips.briefing_responds", {"rhetoric": rhetoric})
 	if str(tip.get("kind", "")) == RhetoricTips.OPPONENT:
-		lead = Text.say("tips.briefing_if_seated", {"name": VenueViews.tip_target_name(tip)})
+		lead = Text.say("tips.briefing_if_seated", {"name": VenueViews.tip_target_name(tip), "rhetoric": rhetoric})
 	row.add_child(_label(lead, LevelBriefingStyles.SIZE_SMALL, look["ink"], false, false))
-	row.add_child(VenueViews.suit_chip(str(tip.get("suit", ""))))
 	row.add_child(_label("· " + VenueViews.heard_text(tip, true), LevelBriefingStyles.SIZE_SMALL, look["muted"], false, false))
 	return row
 

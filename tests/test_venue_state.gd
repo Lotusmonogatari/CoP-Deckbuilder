@@ -156,3 +156,17 @@ func test_every_suit_chip_reads_at_4_5_to_1_against_its_white_name() -> void:
 	for suit: String in VenueViews.SUIT_COLORS:
 		var color: Color = VenueViews.SUIT_COLORS[suit]
 		assert_gte(PartyDisplay.contrast(Color.WHITE, color), 4.5, "%s chip contrast" % suit)
+
+
+func test_every_suit_has_grammatical_wording_that_ends_a_responds_to_sentence() -> void:
+	var seen := {}
+	for suit: Dictionary in DataDB.suits:
+		var phrase := VenueViews.rhetoric_phrase(str(suit["element"]))
+		assert_true(phrase.ends_with("rhetoric"), "%s: '%s'" % [suit["element"], phrase])
+		assert_false(phrase.begins_with("tips."), "%s has its Text row" % suit["element"])
+		seen[phrase] = true
+	assert_eq(seen.size(), DataDB.suits.size(), "each suit has its own phrase")
+	var line := Text.say("venue.tip_responds_stage", {"target": "Committee on Finance", "rhetoric": VenueViews.rhetoric_phrase("Data Driven")})
+	assert_eq(line, "The audience in the Committee on Finance responds to data-driven rhetoric")
+	assert_eq(Text.say("tips.briefing_if_seated", {"name": "Imekanu Resu", "rhetoric": VenueViews.rhetoric_phrase("Appeal")}),
+		"If Imekanu Resu is seated here, they respond to appealing rhetoric")
