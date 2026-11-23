@@ -1930,7 +1930,7 @@ The Rhetoric Training card now shows **Masayuki Katō** as its heading with **�
 
 Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** now reads **加藤正幸** (family name first, as is usual in Japanese). The Japanese font was re-subset so 正 and 幸 draw in it. **Merged without the full check at Cameron's instruction** (a one-text change); the speech coach unit test and the data export were run.
 
-## New visitor pictures VI137 to VI166, VI174 checked; VI174 Harue Hasegawa added (2026-11-23, Cameron; branch `feature/visitor-images-6`)
+## New visitor pictures VI137 to VI166, VI174 checked; VI174 Harue Kobayashi added (2026-11-23, Cameron; branch `feature/visitor-images-6`)
 
 **Review of the upload (28 files):**
 
@@ -1946,7 +1946,7 @@ Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** no
 
 | Part | Draft |
 |---|---|
-| Name | **Harue Hasegawa**, 長谷川春江 |
+| Name | **Harue Kobayashi**, 小林春江 (Cameron, 2026-11-23: the family-name kanji VI143 Mika Kobayashi has; a different name from her sister Kimiko Hasegawa) |
 | Title | Farm Creamery Owner |
 | Office and rooms | District; the same rooms as her sister (ST270, ST287, ST288) |
 | Organizations | Rural Revitalization Council (BO30), Small Business Owners' Association (BO25); Taxpayers' Alliance (BO23) as the cost-minded rival |

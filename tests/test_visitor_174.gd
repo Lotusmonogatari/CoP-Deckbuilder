@@ -1,13 +1,13 @@
 extends GutTest
-## VI174 Harue Hasegawa (2026-11-23, Cameron): the sister of VI154 Kimiko Hasegawa, a dairy farmer; she runs a farm creamery.
+## VI174 Harue Kobayashi 小林春江 (2026-11-23, Cameron): the sister of VI154 Kimiko Hasegawa, a dairy farmer; she runs a farm creamery under her married name Kobayashi, the family name (and kanji) VI143 Mika Kobayashi has.
 
 
-func test_she_is_kimikos_sister_in_the_same_district_and_rooms() -> void:
+func test_she_is_in_kimikos_district_and_rooms() -> void:
 	var harue := DataDB.get_visitor("VI174")
 	var kimiko := DataDB.get_visitor("VI154")
-	assert_eq(str(harue.get("name_en")), "Harue Hasegawa")
-	assert_eq(str(harue.get("name_en")).split(" ")[1], str(kimiko.get("name_en")).split(" ")[1], "the same family name")
-	assert_eq(str(harue.get("name_jp")).substr(0, 3), str(kimiko.get("name_jp")).substr(0, 3), "長谷川 in kanji")
+	assert_eq(str(harue.get("name_en")), "Harue Kobayashi")
+	assert_eq(str(harue.get("name_jp")), "小林春江")
+	assert_eq(str(harue.get("name_jp")).substr(0, 2), str(DataDB.get_visitor("VI143").get("name_jp")).substr(0, 2), "the same family-name kanji as VI143")
 	assert_eq(str(harue.get("location")), "District")
 	assert_eq(harue.get("stages"), kimiko.get("stages"), "she turns up where her sister does")
 	assert_true(FileAccess.file_exists("res://assets/characters/visitors/VI174.png"))

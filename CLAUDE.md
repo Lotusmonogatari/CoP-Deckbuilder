@@ -343,4 +343,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The speech coach is Masayuki Katō (2026-11-23, Cameron; branch `feature/coach-name`)
 - Checks: full gate only before a merge; `tools/click_test.sh` for one area (2026-11-23, Cameron)
 - The speech coach's kanji is 加藤正幸 (2026-11-23, Cameron; branch `feature/coach-name-kanji`)
-- Visitor pictures VI137 to VI166 and VI174 checked; VI174 Harue Hasegawa drafted (2026-11-23, Cameron; branch `feature/visitor-images-6`)
+- Visitor pictures VI137 to VI166 and VI174 checked; VI174 Harue Kobayashi drafted (2026-11-23, Cameron; branch `feature/visitor-images-6`)
