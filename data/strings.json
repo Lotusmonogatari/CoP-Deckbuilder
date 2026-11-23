@@ -10365,5 +10365,61 @@
     "english": "heard in the Cafeteria",
     "placeholders": null,
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.refuse_elsewhere",
+    "where": "Venues: why a venue cannot be visited away from the Capitol office",
+    "english": "Venues are reached from the Capitol office.",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.refuse_in_level",
+    "where": "Venues: why a venue cannot be visited during a level",
+    "english": "Not during a level.",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.refuse_week_full",
+    "where": "Venues: why a venue cannot be visited when the work week is full",
+    "english": "No work hours left this week.",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.coming_soon",
+    "where": "Place map: a venue not built yet",
+    "english": "Coming soon",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.refuse_hours",
+    "where": "Venues: a visit needs more work hours than are left",
+    "english": "Not enough work hours",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.refuse_funds",
+    "where": "Venues: a visit needs more Funds than the player has",
+    "english": "Not enough Funds",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.refuse_xp",
+    "where": "Venues: a visit needs more XP than the player has",
+    "english": "Not enough XP",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.nothing_new",
+    "where": "Venues: the line when the dry pool has none",
+    "english": "Nothing new today.",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
   }
 ]

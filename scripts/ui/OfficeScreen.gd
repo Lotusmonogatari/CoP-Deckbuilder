@@ -4641,41 +4641,8 @@ func _show_levels() -> void:
 			rows.append(_level_row(special))
 
 	var by_tier := {}
-	for level: Dictionary in DataDB.levels:
-		# Special levels are listed above, and only once due.
-		if SpecialLevels.is_special(level):
-			continue
-		# A "One-Time (Yes/No)" level (levels.json's own "one_time" column)
-		# that has already been completed — win or loss — is left out of the
-		# list entirely, not shown-but-disabled like a locked or cooling-
-		# down one: Cameron's own request was that it disappear outright.
-		# Independent of "level_gating_enabled" below, which only gates
-		# cost/cooldown, not this.
-		if Ledger.level_is_hidden(level, GameState.level_last_completed_at):
-			continue
-		# An Act whose bill the player voted Aye or Nay on never comes back
-		# (2026-11-13); one they were absent for or abstained on returns once its
-		# 7,488-hour replay timer is over, like any cooling-down level.
-		if GameState.act_is_settled(level):
-			continue
-		# A level still cooling down is taken off the list until its cooldown
-		# is over (Cameron, 2026-11-06; it used to show as a disabled row).
-		if DataDB.get_rule("level_gating_enabled", false) and Ledger.level_cooldown_remaining(
-				level, GameState.time_units, GameState.level_cleared_units) > 0:
-			continue
-		# A level only an event can reveal ("Needs Discovery") stays out of sight until then.
-		if not GameState.is_level_discovered(level):
-			continue
-		# A seasonal level (its Seasons cell) only shows in its season (2026-10-30).
-		if not GameState.in_season(level):
-			continue
-		# An Event Only level is started from an event choice, never the list.
-		if GameState.is_event_only(level):
-			continue
-		# A level starts only at its own office (Either levels from both; two offices, 2026-11-20), and a protagonist's
-		# own levels (slice 6) are listed only for them.
-		if not GameState.level_at_this_office(level) or not GameState.level_is_for_player(level):
-			continue
+	# The levels the list shows: GameState.levels_on_offer() holds the filters (the rhetoric tips read the same list, P16).
+	for level: Dictionary in GameState.levels_on_offer():
 		var tier := int(level.get("tier", 0))
 		if not by_tier.has(tier):
 			by_tier[tier] = []
