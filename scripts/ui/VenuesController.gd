@@ -121,6 +121,17 @@ func _venue_card(look: Dictionary, venue: Dictionary) -> Control:
 	return card
 
 
+## The venue's background for the season it is now (CAPITOL_GARDENS_AUTUMN and _WINTER exist; a venue with no seasonal picture
+## keeps its plain one). Seasons are rules.json's table, the same one the seasonal levels and events use.
+static func venue_picture_id(venue: Dictionary, month: int, table: Dictionary) -> String:
+	return VenueRules.seasonal_background(str(venue.get("background", "")), Seasons.season_of(month, table),
+		func(id: String) -> bool: return ArtLoader.exists(ArtLoader.folder("background") + id + ".png"))
+
+
+func _venue_picture_id(venue: Dictionary) -> String:
+	return venue_picture_id(venue, GameState.current_month(), DataDB.rules.get("seasons", {}))
+
+
 # --- A venue's screen ---------------------------------------------------------------------------------------------------------------
 
 func show_venue(venue_id: String) -> void:
@@ -133,7 +144,7 @@ func show_venue(venue_id: String) -> void:
 	var picture := PlaceholderArt.new()
 	picture.name = "VenuePicture"
 	picture.kind = PlaceholderArt.Kind.BACKGROUND
-	picture.art_id = str(venue.get("background", ""))
+	picture.art_id = _venue_picture_id(venue)
 	picture.custom_minimum_size = Vector2(0, 460)
 	picture.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	rows.append(picture)

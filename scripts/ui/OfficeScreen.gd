@@ -1847,13 +1847,23 @@ func _show_rhetoric_training() -> void:
 func _show_speech_coach_page() -> void:
 	var look := OfficeFrameStyles.look()
 	var venue := GameState.venue_row("VN04")
+	# The studio's own picture (AREA_COACH_STUDIO) tops the page, as on the other venues' screens.
+	var rows: Array[Control] = []
+	var studio := PlaceholderArt.new()
+	studio.name = "VenuePicture"
+	studio.kind = PlaceholderArt.Kind.BACKGROUND
+	studio.art_id = str(venue.get("background", ""))
+	studio.custom_minimum_size = Vector2(0, 460)
+	studio.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	rows.append(studio)
+	rows.append_array(_rhetoric_cards(look))
 	var frame := OfficeScreenFrame.new()
 	frame.setup({
 		"title": str(venue.get("name", Text.say("office.rhetoric_training"))),
 		"subtitle": str(venue.get("name_jp", "")),
 		"chips": [Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}), Text.say("office.xp", {"count": GameState.xp}),
 			Text.say("office.deck_count", {"count": GameState.deck.size(), "size": GameState.deck_size()})],
-		"rows": _rhetoric_cards(look),
+		"rows": rows,
 	})
 	_management_panel.open_frame(frame, Text.say("ui.back_office"))
 

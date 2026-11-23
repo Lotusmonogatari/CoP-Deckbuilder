@@ -18,7 +18,7 @@ stands in for every expression.
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
 | Cosmetic package icons | 9 / 9 |
-| Venue backgrounds | 0 / 6 |
+| Venue backgrounds | 6 / 6 |
 | Venue icons | 0 / 6 |
 | Venue activity icons | 0 / 6 |
 | Decision scenes with a picture to show | 0 / 10 |
@@ -626,12 +626,12 @@ stands in for every expression.
 
 | File | For | Drawn |
 |---|---|---|
-| CAPITOL_CAFETERIA.png | Cafeteria | ☐ |
-| CAPITOL_LIBRARY.png | National Assembly Library | ☐ |
-| CAPITOL_GARDENS.png | Capitol Gardens | ☐ |
-| AREA_COACH_STUDIO.png | Speech Coach | ☐ |
-| AREA_SAPPORO_STAGE.png | Sapporo Stage | ☐ |
-| AREA_SUPER_STATION.png | Sapporo Super Station | ☐ |
+| CAPITOL_CAFETERIA.png | Cafeteria | ✓ |
+| CAPITOL_LIBRARY.png | National Assembly Library | ✓ |
+| CAPITOL_GARDENS.png | Capitol Gardens | ✓ |
+| AREA_COACH_STUDIO.png | Speech Coach | ✓ |
+| AREA_SAPPORO_STAGE.png | Sapporo Stage | ✓ |
+| AREA_SUPER_STATION.png | Sapporo Super Station | ✓ |
 
 ## Venue icons — `assets/icons/`
 

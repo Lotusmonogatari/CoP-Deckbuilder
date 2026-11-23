@@ -2012,3 +2012,18 @@ Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** no
 | 2. American spelling | Partly matched | "theatre" became "theater" in the Earnest stage hint. No other British spelling found in the venue content. |
 | 3. Hours, weekdays and weekends | Mostly matched (the hours were already the current phase's pool) | The reasons now say weekday or weekend (two new Text rows), and a refused visit or a look at a venue deals no set. |
 | 4. Tip slots from hint rows | Matched | Tests added; the exporter now fails a hint row with Text or a Topic other than `hint`. |
+
+## Venue backgrounds arrive: Gardens follow the season, the Speech Coach page gets its studio (2026-11-23, Cameron; branch `feature/venue-backgrounds`)
+
+Fourteen new pictures in `assets/backgrounds/` (all landscape, 1456 x 816 for rooms and 1792 x 672 or 1792 x 603 for stations). Only Capitol-side work was done; the District places are noted below and left unbuilt, as asked.
+
+| Picture | Used now? |
+|---|---|
+| `CAPITOL_CAFETERIA`, `CAPITOL_GARDENS`, `AREA_COACH_STUDIO` | Yes: the Cafeteria and Gardens screens, and the Speech Coach page (a new picture at the top). |
+| `CAPITOL_GARDENS_AUTUMN`, `CAPITOL_GARDENS_WINTER` | Yes: a venue shows `<its background>_<SEASON>` when that file exists, else the plain one. Seasons are rules.json's table (September to November autumn, December to March winter), the same one the seasonal levels and events use. Any venue gets seasons by adding such files. |
+| `CAPITOL_LIBRARY` | Named by the Library's row already; shows when the Library is built ("Coming soon" today). |
+| `AREA_SUPER_STATION`, `AREA_SUPER_STATION_TRACKS` | Not wired: Sapporo Super Station (the Departures venue) is "Coming soon". Two views: the concourse and the tracks. |
+| `AREA_SAPPORO_STAGE` (renamed from `AREA_SAPPORO_STAGE_STAGE`, Cameron's say-so), `AREA_SAPPORO_STAGE_WINTER` | Named right for the Sapporo Stage row and the seasonal rule; shown when the Stage is built ("Coming soon" today). |
+| `AREA_AOMORI_STATION`, `AREA_SAPPORO_WEST_STATION`, `AREA_TOMAKOMAI_STATION`, `AREA_WAKKANAI_STATION` | Not wired: District stations, noted for the later District venues work. |
+
+Code: `VenueRules.seasonal_background`, `VenuesController.venue_picture_id`, the studio picture in `OfficeScreen._show_speech_coach_page`, and a `venue:gardens` screenshot case. Tests: two in `test_venue_rules.gd`.

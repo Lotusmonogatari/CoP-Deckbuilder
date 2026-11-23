@@ -81,5 +81,15 @@ static func visit_refusal(activity: Dictionary, hours_left: int, funds: int, xp:
 	return ""
 
 
+## The picture a venue shows in a season (Cameron, 2026-11-23): the venue's own background ID with the season on the end in capitals
+## (CAPITOL_GARDENS_WINTER) when that picture exists, else the plain one, so a venue with no seasonal pictures never changes.
+## `exists` takes a background ID and says whether its picture is there. A blank season gives the plain one.
+static func seasonal_background(base_id: String, season: String, exists: Callable) -> String:
+	if base_id.is_empty() or season.strip_edges().is_empty():
+		return base_id
+	var seasonal := "%s_%s" % [base_id, season.strip_edges().to_upper()]
+	return seasonal if bool(exists.call(seasonal)) else base_id
+
+
 static func _whole(raw: Variant) -> int:
 	return 0 if raw == null else int(raw)

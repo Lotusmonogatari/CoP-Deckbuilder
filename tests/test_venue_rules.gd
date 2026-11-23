@@ -48,3 +48,22 @@ func test_a_venues_activity_is_found_by_venue_id() -> void:
 	var activities := [{"venue_id": "VN01", "kind": "chat"}, {"venue_id": "VN03", "kind": "watch"}]
 	assert_eq(VenueRules.activity_of(activities, "VN03")["kind"], "watch")
 	assert_true(VenueRules.activity_of(activities, "VN09").is_empty())
+
+
+func test_a_venue_shows_its_seasonal_picture_when_one_exists_and_the_plain_one_otherwise() -> void:
+	var have := ["CAPITOL_GARDENS", "CAPITOL_GARDENS_AUTUMN", "CAPITOL_GARDENS_WINTER", "CAPITOL_CAFETERIA"]
+	var exists := func(id: String) -> bool: return have.has(id)
+	assert_eq(VenueRules.seasonal_background("CAPITOL_GARDENS", "Winter", exists), "CAPITOL_GARDENS_WINTER")
+	assert_eq(VenueRules.seasonal_background("CAPITOL_GARDENS", "Autumn", exists), "CAPITOL_GARDENS_AUTUMN")
+	assert_eq(VenueRules.seasonal_background("CAPITOL_GARDENS", "Spring", exists), "CAPITOL_GARDENS", "no spring picture: the plain one")
+	assert_eq(VenueRules.seasonal_background("CAPITOL_CAFETERIA", "Winter", exists), "CAPITOL_CAFETERIA", "a venue with no seasons never changes")
+	assert_eq(VenueRules.seasonal_background("CAPITOL_GARDENS", "", exists), "CAPITOL_GARDENS", "no season known: the plain one")
+	assert_eq(VenueRules.seasonal_background("", "Winter", exists), "")
+
+
+func test_the_real_gardens_pictures_follow_the_rules_tables_months() -> void:
+	var gardens := {"background": "CAPITOL_GARDENS"}
+	var table: Dictionary = DataDB.rules.get("seasons", {})
+	assert_eq(VenuesController.venue_picture_id(gardens, 1, table), "CAPITOL_GARDENS_WINTER", "January is winter")
+	assert_eq(VenuesController.venue_picture_id(gardens, 10, table), "CAPITOL_GARDENS_AUTUMN", "October is autumn")
+	assert_eq(VenuesController.venue_picture_id(gardens, 6, table), "CAPITOL_GARDENS", "summer uses the plain picture")
