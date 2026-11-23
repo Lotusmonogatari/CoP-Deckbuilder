@@ -45,8 +45,9 @@ tools/get_godot.sh                         # if .tools/godot is missing
 python3 tools/export_data.py               # must say "No errors" (add --accept-wording when Text rows change)
 python3 tools/workbook/check_formulas.py   # Excel-repair check; verify.sh runs it
 .tools/godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit
-tools/verify.sh                            # the whole gate, about 9 minutes; merge only on "All checks passed"
-tools/verify.sh --quick                    # data, boot and unit tests only (JOBS=2 limits parallel click tests)
+tools/verify.sh                            # the whole gate, about 15 to 18 minutes; run it once, right before a merge (merge only on "All checks passed")
+tools/verify.sh --quick                    # data, boot and unit tests only, about 3 to 4 minutes: use while working
+tools/click_test.sh NAME [NAME...]         # just the click tests you name (12 to 36 s each); --list shows them all
 python3 tools/cue_coverage.py              # which opponent bill-line pools would repeat inside 30 turns
 python3 tools/outdoor_backgrounds.py       # the outside scenes: drawn?, who uses them, art prompts
 xvfb-run -a -s "-screen 0 1080x2340x24" .tools/godot --path . --resolution 1080x2340 <scene>   # screenshots / one click test
@@ -122,7 +123,7 @@ Details are the sections at the end of `design/CHANGELOG.md`. In short:
 | 17 | Pinned art (Cameron, 2026-11-20) | `DISTRICT_LEGISLATURE_1` to `_3` and `DISTRICT_LIBRARY_1` and `_2` are in `assets/backgrounds/` and not used by anything: **pinned for future stages and events, after P14**. |
 | 18 | P13 and P14 | **P13 (the Office screens on one frame) is merged** (`design/review/p13_office_screens_2026-11-20/REPORT.md`). **P14 (the 32 remaining screens) is next**: the roadmap is `design/proposals/P13_P14_ROADMAP_2026-11-20.md`; the package is in the repo's upload, not yet copied in; groups 1 to 3 first, then P14b. Cameron's decisions so far: two `panel/` branches, party discs show the leader's portrait else a colour disc with the single kanji (initials BU, YHP, FP, FPI, KJT, CI; Japanese names 仏党, エゾの遺産党, 辺境党, 五無所属, 経済自由党, 国家維新党). |
 | 19 | Decision! scenes content | Only DS01 exists. Cameron wants more scenes written after the other tasks; the shared pictures `DEC_PLACE_CAPITOL` and `DEC_PLACE_DISTRICT` are not drawn |
-| 20 | Woodblock icon contrast | Stage Details organization icons reach about 2.8 to 1 on Woodblock's light paper (standard 3 to 1). Options: a dark tile under organization icons in every style, or redrawn icons. Cameron decides |
+| 20 | Woodblock icon contrast | **Closed (Cameron, 2026-11-23): accepted as is.** Some stage Details organization icons reach about 2.8 to 1 on Woodblock's light paper; `party_plate_test` measures them in Yezo Office |
 | 21 | Merged branches | The `feature/decision-scenes-*`, `feature/visitor-images-*`, `feature/ui-default-woodblock`, `feature/visitors-vi168-vi169` and docs branches are merged; deleting them needs Cameron's OK |
 | 22 | Keyboard on Android | A phone keyboard coming up must not resize other screens: check at the mobile build (M6) |
 | 13 | Branches | Four old remote branches (`ccr-1bbd9851-yg8on5`, `claude/happy-ramanujan-e0mrxj`, `claude/optimistic-noether-1j0yqh`, `claude/new-session-s1juv4`) could not be deleted from a session (no permission); Cameron asked for them to be deleted, so he must do it on GitHub |

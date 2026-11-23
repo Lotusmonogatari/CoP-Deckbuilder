@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Checks the whole project in one go. Run this before committing.
 #
-#   tools/verify.sh           everything (about 2 to 3 minutes)
-#   tools/verify.sh --quick   data, boot and unit tests only (about 1 minute)
+#   tools/verify.sh           everything: the gate before a merge (about 15 to 18 minutes on a 4-core machine, 2026-11-23)
+#   tools/verify.sh --quick   data, boot and unit tests only (about 3 to 4 minutes)
+#   tools/click_test.sh NAME  just the real-click tests you name (12 to 36 seconds each), for working on one area
 #   JOBS=2 tools/verify.sh    how many real-click tests run at once (default 4)
 #
 # It does four things:

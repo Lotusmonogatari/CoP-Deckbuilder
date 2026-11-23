@@ -61,7 +61,7 @@ func _run() -> void:
 	await get_tree().process_frame
 
 	# the stage Details icons. Measured in Yezo Office, the look they were drawn for (a dark tile under each icon); in Woodblock,
-	# the default since 2026-11-21, the tile is light paper and some icons only reach about 2.8 to 1 (design/CHANGELOG.md, known issue).
+	# the default since 2026-11-21, the tile is light paper and some icons only reach about 2.8 to 1 (accepted as is by Cameron, 2026-11-23: design/CHANGELOG.md).
 	GameState.start_new_run("PC02")
 	GameState.awaiting_new_game = false
 	UiStyle.trying = UiStyles.LIVING_OFFICE
