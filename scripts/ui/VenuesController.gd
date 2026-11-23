@@ -154,8 +154,9 @@ func show_venue(venue_id: String) -> void:
 		button.pressed.connect(_on_activity.bind(venue_id))
 	column.add_child(button)
 	if VenueRules.deals_lines(activity):
-		var heard := GameState.venue_day(venue_id)
-		var counter := UiKit.line(Text.say("venue.heard_today", {"count": int(heard["heard"]), "limit": GameState.venue_limit()}), "SmallLabel")
+		# A look at the venue deals nothing: the counter reads today's set only if it has been dealt (P16b).
+		var heard := GameState.venue_day_peek(venue_id)
+		var counter := UiKit.line(Text.say("venue.heard_today", {"count": int(heard.get("heard", 0)), "limit": GameState.venue_limit()}), "SmallLabel")
 		counter.name = "HeardToday"
 		counter.custom_minimum_size.x = 0.0
 		column.add_child(counter)

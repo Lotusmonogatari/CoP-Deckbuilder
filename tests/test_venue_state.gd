@@ -158,15 +158,128 @@ func test_every_suit_chip_reads_at_4_5_to_1_against_its_white_name() -> void:
 		assert_gte(PartyDisplay.contrast(Color.WHITE, color), 4.5, "%s chip contrast" % suit)
 
 
-func test_every_suit_has_grammatical_wording_that_ends_a_responds_to_sentence() -> void:
+const SUIT_PHRASES := {"Earnest": "earnest rhetoric", "Emotional": "emotive rhetoric", "Appeal": "appealing rhetoric",
+	"Data Driven": "logical rhetoric and data", "Divisive": "divisive rhetoric", "Duplicitous": "double-speak"}
+
+
+func test_each_suit_has_its_own_phrase_with_the_agreed_wording() -> void:
+	assert_eq(DataDB.suits.size(), SUIT_PHRASES.size())
 	var seen := {}
 	for suit: Dictionary in DataDB.suits:
 		var phrase := VenueViews.rhetoric_phrase(str(suit["element"]))
-		assert_true(phrase.ends_with("rhetoric"), "%s: '%s'" % [suit["element"], phrase])
-		assert_false(phrase.begins_with("tips."), "%s has its Text row" % suit["element"])
+		assert_eq(phrase, SUIT_PHRASES[str(suit["element"])], "%s" % suit["element"])
 		seen[phrase] = true
 	assert_eq(seen.size(), DataDB.suits.size(), "each suit has its own phrase")
-	var line := Text.say("venue.tip_responds_stage", {"target": "Committee on Finance", "rhetoric": VenueViews.rhetoric_phrase("Data Driven")})
-	assert_eq(line, "The audience in the Committee on Finance responds to data-driven rhetoric")
-	assert_eq(Text.say("tips.briefing_if_seated", {"name": "Imekanu Resu", "rhetoric": VenueViews.rhetoric_phrase("Appeal")}),
-		"If Imekanu Resu is seated here, they respond to appealing rhetoric")
+
+
+func test_no_text_row_builds_rhetoric_of_a_suit_or_prints_a_bare_suit_name_in_a_tip_sentence() -> void:
+	for key: Variant in DataDB.strings.keys():
+		var row: Variant = DataDB.strings[key]
+		var english := str((row as Dictionary).get("english", "")) if row is Dictionary else str(row)
+		assert_false(english.to_lower().contains("rhetoric of"), "%s says 'rhetoric of ...': %s" % [key, english])
+	for key: String in ["venue.tip_responds", "venue.tip_responds_stage", "tips.briefing_responds", "tips.briefing_if_seated"]:
+		var sentence := Text.say(key, {"target": "X", "name": "X", "rhetoric": "PHRASE"})
+		assert_true(sentence.contains("PHRASE"), "%s takes the suit phrase" % key)
+		for suit: String in SUIT_PHRASES:
+			assert_false(sentence.contains(suit), "%s does not print the bare suit name %s" % [key, suit])
+
+
+func test_the_tip_box_and_the_briefing_marks_use_the_suit_phrase() -> void:
+	var phrase := VenueViews.rhetoric_phrase("Data Driven")
+	assert_eq(Text.say("venue.tip_responds_stage", {"target": "Committee on Finance", "rhetoric": phrase}),
+		"The audience in the Committee on Finance responds to logical rhetoric and data")
+	assert_eq(Text.say("venue.tip_responds", {"target": "Imekanu Resu", "rhetoric": VenueViews.rhetoric_phrase("Appeal")}),
+		"Imekanu Resu responds to appealing rhetoric")
+	var box := VenueViews.tip_box({"kind": "stage_suit", "target": "ST16", "suit": "Duplicitous"}, "cafeteria")
+	add_child_autofree(box)
+	assert_true((box.find_child("TipSentence", true, false) as Label).text.ends_with("double-speak"), "the tip box ends in the phrase")
+	var look := OfficeFrameStyles.look()
+	for kind: String in ["stage_suit", "opponent_suit"]:
+		var target := "ST16" if kind == "stage_suit" else "OP29"
+		var mark := LevelBriefingView._tip_mark({"kind": kind, "target": target, "suit": "Data Driven", "where": "cafeteria", "day": 0}, look)
+		add_child_autofree(mark)
+		var words := ""
+		for label: Node in mark.find_children("*", "Label", true, false):
+			words += (label as Label).text + " "
+		assert_true(words.contains("logical rhetoric and data"), "%s mark: %s" % [kind, words])
+		assert_true(words.contains("heard in the Cafeteria"))
+		if kind == "opponent_suit":
+			assert_true(words.contains("is seated here, they respond to"), "the opponent mark reads as a condition")
+
+
+# --- Hours on weekdays and weekends (P16b, 2026-11-23) --------------------------------------------------------------------------
+
+const WEEK_FULL := {"week": 2, "phase": "work", "hours": 40}
+const WEEKEND_FULL := {"week": 2, "phase": "weekend", "hours": 8}
+const WEEKEND_OPEN := {"week": 2, "phase": "weekend", "hours": 0}
+
+
+func test_step_out_is_greyed_with_its_reason_when_the_work_week_is_full() -> void:
+	GameState.calendar = WEEK_FULL.duplicate()
+	assert_eq(GameState.step_out_state(), VenueRules.WEEK_FULL)
+	assert_eq(GameState.step_out_refusal(), Text.say("venue.refuse_week_full"))
+
+
+func test_step_out_is_greyed_with_its_reason_when_no_weekend_hours_are_left() -> void:
+	GameState.calendar = WEEKEND_FULL.duplicate()
+	assert_eq(GameState.step_out_state(), VenueRules.WEEK_FULL)
+	assert_eq(GameState.step_out_refusal(), Text.say("venue.no_hours_weekend"), "the weekend's own words")
+	assert_ne(Text.say("venue.no_hours_weekend"), Text.say("venue.refuse_week_full"))
+
+
+func test_step_out_is_available_on_a_weekend_while_weekend_hours_are_left() -> void:
+	GameState.calendar = WEEKEND_OPEN.duplicate()
+	assert_eq(GameState.step_out_state(), VenueRules.OPEN)
+	assert_eq(GameState.step_out_refusal(), "")
+	assert_eq(GameState.venue_visit_refusal("VN01"), "")
+
+
+func test_a_weekend_visit_spends_weekend_hours_and_leaves_the_work_week_alone() -> void:
+	GameState.calendar = WEEKEND_OPEN.duplicate()
+	assert_true(GameState.venue_visit("VN01")["ok"])
+	assert_eq(GameState.calendar["phase"], "weekend")
+	assert_eq(int(GameState.calendar["hours"]), 1, "one weekend hour spent")
+	assert_eq(GameState.work_hours_left(), 7, "of the weekend's eight")
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
+	assert_eq(GameState.work_hours_left(), 40, "the work week is untouched by a weekend visit")
+
+
+func test_an_activity_needing_more_hours_than_are_left_is_refused_with_no_hour_taken_and_no_line_dealt() -> void:
+	var activity := VenueRules.activity_of(DataDB.venue_activities, "VN01")
+	var saved: Variant = activity["hours"]
+	activity["hours"] = 2
+	for case: Array in [[{"week": 2, "phase": "work", "hours": 39}, "venue.refuse_hours"], [{"week": 2, "phase": "weekend", "hours": 7}, "venue.refuse_hours_weekend"]]:
+		GameState.venue_days = {}
+		GameState.calendar = (case[0] as Dictionary).duplicate()
+		assert_eq(GameState.venue_visit_refusal("VN01"), Text.say(str(case[1])), str(case[1]))
+		var before := GameState.work_hours_left()
+		var result := GameState.venue_visit("VN01")
+		assert_false(result["ok"])
+		assert_eq(GameState.work_hours_left(), before, "no hour taken")
+		assert_false(GameState.venue_days.has("VN01"), "no set dealt for a refused visit")
+	activity["hours"] = saved
+
+
+func test_a_one_hour_activity_is_refused_at_zero_hours_and_deals_nothing() -> void:
+	for calendar: Dictionary in [WEEK_FULL, WEEKEND_FULL]:
+		GameState.venue_days = {}
+		GameState.calendar = calendar.duplicate()
+		assert_false(GameState.venue_visit("VN01")["ok"])
+		assert_false(GameState.venue_visit("VN03")["ok"])
+		assert_true(GameState.venue_days.is_empty(), "nothing dealt")
+
+
+func test_looking_at_a_venue_deals_nothing() -> void:
+	assert_true(GameState.venue_day_peek("VN01").is_empty())
+	assert_false(GameState.venue_days.has("VN01"))
+	GameState.venue_visit("VN01")
+	assert_false(GameState.venue_day_peek("VN01").is_empty(), "a real visit deals the set")
+
+
+func test_keep_listening_stays_free_even_when_the_visit_took_the_last_hour() -> void:
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 39}
+	assert_true(GameState.venue_visit("VN01")["ok"])
+	assert_eq(GameState.work_hours_left(), 0, "the last hour is gone")
+	for i in 3:
+		assert_true(GameState.venue_hear_next("VN01")["ok"], "line %d is still heard" % (i + 1))
+	assert_eq(GameState.work_hours_left(), 0)
