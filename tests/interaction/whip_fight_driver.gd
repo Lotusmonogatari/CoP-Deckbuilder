@@ -21,7 +21,7 @@ func _run() -> void:
 	var monday := WeekCalendar.parse_date("18.10.22")
 	var thursday := WeekCalendar.parse_date("18.10.25")
 	GameState.decision_log = {"DS01": {"day": 0, "choice": "A"}, "DS02": {"day": monday, "choice": "A"},
-		"DS05": {"day": thursday, "choice": "A"}, "DS06": {"day": thursday, "choice": "A"}}
+		"DS03": {"day": thursday, "choice": "A"}, "DS05": {"day": thursday, "choice": "A"}, "DS06": {"day": thursday, "choice": "A"}}
 	GameState.pending_activations = []
 	GameState.whip_picks = {}
 	GameState.whip_locks = {}

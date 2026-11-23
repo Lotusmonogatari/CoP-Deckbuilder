@@ -8,7 +8,7 @@ Branch `feature/p15-cptpp-whip`. **Not merged.** All writing is Claude's draft (
 |---|---|
 | Built | Nine Decision! scenes (DS02 to DS10), both votes, the whips, the lock, the level guard, the after-hours trip, the exporter checks, cues, tests and a click test. |
 | Pictures | 21 screenshots in this folder: the whip card at five Party support bands, the whip stage's first turn and the locked Floor Vote, in each of the three styles. |
-| Needs your decision | (1) Whip difficulty: with your numbers a player who only passes survives about two fights in three. (2) The Optional-scene alert cannot trigger for the CPTPP scenes (explained below). (3) The after-hours trip happens when the scene opens, not at literally the end of the day before. |
+| Decided (Cameron, 2026-11-23) | (1) Whip difficulty stays as briefed (Resolve 12). (2) DS03's window now closes mid-week (Thu 18.10.25) so the Optional alert can fire. (3) The after-hours trip happens when the scene opens: accepted. |
 | Not run | The full gate (`tools/verify.sh`); only the unit tests, the click tests for scenes, events, votes and travel, and the new click test were run. Run the gate before any merge. |
 
 ## Your answers, as built
@@ -63,7 +63,7 @@ A minister or leader keeps their own row's ranges, so they hit softer or harder 
 |---|---|
 | Party blank on the whip opponents | Works. The battle fills the player's party in at fight time so the cue "sides" (For, Against) read the player's party's line; no change to the cue engine. |
 | Two whips on one bill | The lock is per bill: one lock holds the vote to that whip's ask, two locks force Abstain. Resu's ask on the final is Nay (you confirmed). |
-| Optional alert | Levels never carry into the next week, and the CPTPP Optional windows close on Fridays, so a level can never outlast them inside a week. The alert is built and tested (a window closing mid-week triggers it); to make it matter for these scenes, give an Optional window a mid-week close. |
+| Optional alert | Levels never carry into the next week, so only a window that closes mid-week can be outlasted. DS03 now closes on Thursday 18.10.25 (you approved); a level of 33 hours or more started on the Monday asks "Start anyway or Back". DS04 and DS10 still close on Fridays. |
 | After-hours trip | It happens when a Mandatory scene opens and the player is at the other office (the staff "arranged it last evening"), not as a separate popup at the end of the previous day, because the calendar counts pooled hours, not a day's end. The existing MOVED FOR YOU card carries the staff's line, the text and the XP cost. |
 | The amendment | Generic name and one-line description ("Amendment to the CPTPP Motion"). I wrote no detail of what it does; that is yours to supply. |
 | Follow-up order | A follow-up now waits until the fight or vote its earlier scene started has been played, so the final vote scene cannot open before the amendment vote. |

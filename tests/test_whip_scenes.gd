@@ -196,15 +196,12 @@ func test_an_optional_scene_asks_before_a_level_that_outlasts_its_window() -> vo
 	GameState.decision_log = {"DS01": {"day": 0, "choice": "A"}, "DS02": {"day": _day("18.10.22"), "choice": "A"}}
 	GameState.calendar = {"week": 3, "phase": "work", "hours": 0}
 	assert_true(GameState.optional_decision_clash(8).is_empty(), "a short level ends before the window closes")
-	assert_true(GameState.optional_decision_clash(40).is_empty(), "a window closing on the Friday is never outlasted inside the week")
-	# A window that closes mid-week can be outlasted: DS03 closing on the Wednesday and a 32-hour level from Monday.
-	var scene := DecisionScenes.find(DataDB.decision_scenes, "DS03")
-	var saved: Variant = scene["closes"]
-	scene["closes"] = "18.10.24"
-	var clash := GameState.optional_decision_clash(32)
-	scene["closes"] = saved
-	assert_false(clash.is_empty())
-	assert_eq(clash["closes"], "18.10.24")
+	# DS03's window closes on the Thursday: a level from Monday ending by Thursday evening (32 hours) clears it.
+	assert_true(GameState.optional_decision_clash(32).is_empty(), "32 hours end Thursday evening, the last day")
+	var clash := GameState.optional_decision_clash(33)
+	assert_false(clash.is_empty(), "one more hour runs into Friday, after the window closed")
+	assert_eq(clash["closes"], "18.10.25")
+	assert_true(str(clash["title"]).contains("Home Front"))
 
 
 func test_the_staff_bring_the_player_back_after_hours_for_a_mandatory_scene() -> void:

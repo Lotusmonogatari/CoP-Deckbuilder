@@ -121,7 +121,7 @@ SCENES = [
     dict(id="DS02", ev="EV111", kind="Mandatory", opens="18.10.22", office="Capitol", speaker="OP10", face="neutral",
          max=8, must="18.10.29",
          note="P15 CPTPP chain, first scene. The Government Tables the CPTPP Motion. Chain approved at 8 follow-ups (Cameron, 2026-11-23); both votes by 18.10.29."),
-    dict(id="DS03", ev="EV112", kind="Optional", closes="18.10.26", office="District", speaker="VI95", follows="DS02", delay=2,
+    dict(id="DS03", ev="EV112", kind="Optional", closes="18.10.25", office="District", speaker="VI95", follows="DS02", delay=2,
          note="The Home Front Wants Answers. Optional, window Wed 18.10.24 to Fri 18.10.26."),
     dict(id="DS04", ev="EV113", kind="Optional", closes="18.10.26", office="Capitol", speaker="VI23", follows="DS02", delay=2,
          note="The Business Lobby Comes Calling. Optional, window Wed 18.10.24 to Fri 18.10.26."),
