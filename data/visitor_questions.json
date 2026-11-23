@@ -4926,7 +4926,9 @@
   {
     "question_id": "VQ62",
     "visitor_ids": [
-      "VI29"
+      "VI29",
+      "VI175",
+      "VI176"
     ],
     "question_text": "I count votes for a living. The next vote will be close. Where do you stand?",
     "choice_a": "I'm deciding after the final debate.",
@@ -4999,7 +5001,9 @@
   {
     "question_id": "VQ63",
     "visitor_ids": [
-      "VI29"
+      "VI29",
+      "VI175",
+      "VI176"
     ],
     "question_text": "You'll miss a vote for a family event. What do you do?",
     "choice_a": "Go; one vote may not matter.",
@@ -5072,7 +5076,9 @@
   {
     "question_id": "VQ64",
     "visitor_ids": [
-      "VI29"
+      "VI29",
+      "VI175",
+      "VI176"
     ],
     "question_text": "Someone in your group wants to break ranks. What do you do?",
     "choice_a": "Report it to the whip right away.",

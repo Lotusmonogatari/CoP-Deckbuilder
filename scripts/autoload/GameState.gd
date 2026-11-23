@@ -2547,7 +2547,11 @@ func event_speakers(event_id: String) -> Array:
 			out.append({"id": str(lone.get("opp_id", "")), "name": str(lone.get("name", "")),
 				"title": OpponentDisplay.title_for(lone), "face": "neutral"})
 		return out
-	for id: String in DecisionScenes.speaker_ids(scene):
+	var ids := DecisionScenes.speaker_ids(scene)
+	# A whip scene with no Speaker is spoken by the whip the player's Party support picks (P15).
+	if DecisionScenes.whip_is_banded(scene):
+		ids = [whip_pick_for(scene)]
+	for id: String in ids:
 		var kind := DecisionScenes.person_kind(id)
 		var opponent := DataDB.get_opponent(id) if kind == "opponent" else {}
 		var staff := DataDB.get_staff(id) if kind == "staff" else {}
