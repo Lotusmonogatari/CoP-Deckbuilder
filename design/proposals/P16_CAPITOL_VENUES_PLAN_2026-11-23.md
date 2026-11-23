@@ -10,7 +10,7 @@ Nothing in this plan is built. It waits for one answer (section 5) and a "Go". B
 | Size | Large: about 1,500 lines of code and tests, three new workbook tabs, 90 lines and about 70 Text rows, in seven commits (the brief's order) on `feature/p16-capitol-venues`; a full check before pushing; no merge. |
 | Name checks | **Clear.** `Venues`, `Venue Activities`, `Venue Lines` do not exist (only `Places`, a different tab), and no Text row starts `hint.`, `venue.` or `tips.`. |
 | Package checks | The brief and README say 90 Venue Lines and 56 Hint Text rows; the workbook's "Read me" tab says 120 lines (an older count). The sheet holds 90 (VL001 to VL090). I build with 90. |
-| Needs you | The one popup in section 5: all 90 lines and the Text rows as written, or the structure with a handful. |
+| Answered | Cameron, 2026-11-23: all 90 lines and the Text rows go in as written (section 5). Now waiting only for "Go". |
 
 ## 2. What I found in the code
 
@@ -45,7 +45,7 @@ Then: unit tests, the real-click test the brief describes, screenshots of the se
 | Where it happens | Walking is free (0 h); the visit's hour is charged once when a visit starts; Keep listening never costs hours and a reload never reshuffles the set (the set is dealt from run seed, day and venue). |
 | A hint's target | Stage tips use the stage's Favored Suit, opponent tips use `suit_1`; never a stage with no Favored Suit, a level not on offer this week, or an opponent the player cannot face. |
 
-## 5. The one question
+## 5. The one question (answered: all as written, Cameron 2026-11-23)
 
 Do the **90 Venue Lines and 56 Text rows go in as written** (all "Claude's draft" in Notes), or **only the structure with a handful of lines**?
 
