@@ -1,70 +1,100 @@
-# P15 plan: the CPTPP Decision! sequence, two whips and two votes (draft for Cameron, 2026-11-23)
+# P15 plan, version 2: the CPTPP Decision! sequence, two whipping scenes and two votes (draft for Cameron, 2026-11-23)
 
-Nothing is built. This plan folds in Cameron's answers and `Story_Votes.xlsx`. **It waits for "Go" and for the four questions in section 4.**
+Nothing in this plan is built. It folds in Cameron's eight design changes and the corrected `Story_Votes.xlsx`. **It waits for the four answers in section 6 and a "Go".**
 
 ## 1. Executive summary
 
 | Question | Answer |
 |---|---|
-| What changed from the brief | The brief had one whip and one Floor Vote. Cameron's answers make it **two whips** (OP82 the lead minister for joining, OP29 an FP minister against joining and for an amendment) and **two Floor Votes** (an amendment, then the final bill). The date is **18.10.22**. The draft text is marked "Claude's draft". |
-| What the worksheet gives | A vote by every one of the 101 seats on both votes, which fixes both Floor Votes rows (party counts) and gives the final-vote party positions you listed. |
-| What blocks "Go" | Four decisions (section 4): the follow-up limit, what OP29's scene is, how to use the worksheet (its IDs are shifted for 27 members), and where the party positions and parent ID go in the workbook. |
-| Size | Large: about 600 to 900 lines of code and tests, 10 data tabs and 40 or so new Text rows, in six commits on one branch `feature/p15-cptpp-whip`, one full check at the end. |
+| What the sequence is | DS02 opens **Monday 18.10.22**; two whipping scenes (the party whip, and **OP29 Imekanu Resu**, a unique whip for every player); an amendment vote and a final vote; all votes **done by Monday 18.10.29** (before Tuesday 18.10.30). |
+| New game rules asked for | (a) a Decision! on a weekday keeps levels from running over it; (b) the evening before a Mandatory Decision!, staff bring a player who is in the wrong office back, at 100 XP; (c) a chain may exceed 5 follow-ups when Cameron approves it; (d) two whips, three outcomes (free, locked to the winner, abstain). |
+| Already done | DS01 moved to **18.10.15** (parliament opens); OP74 is **Yun-hee Seong** (branch `fix/ds01-oct15-and-yun-hee`, pushed, not merged). |
+| Worksheet | Corrected: the right-hand ID block matches the data; all 101 members and parties match. It is the source for both Floor Votes rows. |
+| Size | Very large: about 1,000 lines of code and tests, ten data tabs, about 60 Text rows, in eight commits on `feature/p15-cptpp-whip`, one full check at the end. |
 
-## 2. What the worksheet says (read, not yet used)
+## 2. The worksheet, verified
 
-101 rows, one per seat, with an amendment vote and a final vote (`Yes`, `No` or `Absent`). **Absent counts as abstain** in the party counts below (to confirm).
-
-| Party | Seats | Amendment (Yes / No / Absent) | Final (Yes / No / Absent) | Majority |
-|---|---|---|---|---|
-| Butsutou (BU) | 19 | 4 / 14 / 1 | 13 / 5 / 1 | Amendment No, Final Yes |
-| Yezo Heritage Party (YHP) | 14 | 7 / 7 / 0 | 9 / 5 / 0 | Amendment split, Final Yes |
-| Frontier Party (FP) | 27 | 9 / 16 / 2 | 16 / 9 / 2 | Amendment No, Final Yes |
-| Five Point Independents (FPI) | 5 | 0 / 4 / 1 | 4 / 0 / 1 | Amendment No, Final Yes |
-| Keizaijiyuutou (KJT) | 25 | 4 / 17 / 4 | 21 / 0 / 4 | Amendment No, Final Yes |
-| Country Initiative (CI) | 11 | 10 / 0 / 1 | 0 / 10 / 1 | Amendment Yes, Final No |
-| **Total** | **101** | **34 / 58 / 9: the amendment fails** | **63 / 29 / 9: the final passes** | |
-
-The final-vote majorities match your list (YHP, KJT, FPI, FP and BU aye, CI no). Party seat counts match the Parties tab exactly.
-
-**Problems found in the worksheet (they need your answers, section 4 question 3):**
-
-| Finding | Detail |
+| Check | Result |
 |---|---|
-| **27 member IDs are shifted** | From OP74 to OP100 the sheet's IDs are one off from `opponents.json` while the **names match**: for example the sheet's OP82 is Teinei Macmillan, the data's OP83 is, and the data's OP82 is **Tama Tsujikonou** (the sheet's OP81). I would key every row by **name** and use the data's IDs. |
-| One name written the other way round | The sheet's "Yun-hee Seong" is "Seong Yun-hee" in the data (OP99/OP100 region). |
-| **Two parties differ** | Harumi Asato: sheet FP, data Keizaijiyuutou. Hee-seop Han: sheet KJT, data Frontier Party. Swapping them keeps every party's seat count, so one of the two is stale. |
-| Who is who | The sheet has OP29 Imekanu Resu (Agriculture, Chair, FP; amendment Yes, final No), as you describe. **OP82 Tama Tsujikonou (the lead minister, Foreign Affairs, FP) voted Amendment No, Final Yes** by the sheet's OP81 row. |
+| Layout | Votes in columns A to E (name, committee, party, amendment, final); an ID lookup block in F to H. I match each name to an ID through that block. |
+| IDs and parties | All 101 IDs are in the data; every party matches the data. |
+| Small name variants (no problem) | "Ayala" is "Ayala Taiyounokage" (OP01) and "Han Hee-seop" is "Hee-seop Han" (OP21) in the data. The lookup block still lists OP74 as "Seong Yun-hee"; the vote block has "Yun-hee Seong". |
+| Absent | 9 members on both votes. I count Absent as abstain. |
 
-## 3. The build, in order
-
-IDs to use today: opponents **OP132 to OP134**, visitors **VI175 and VI176** (VI174 is taken), the whip stage **ST290**, Floor Votes **BI51** (the amendment) and **BI52** (the final bill), scenes **DS02 onward**. Names are checked unused.
-
-| # | Commit | What |
+| Party (seats) | Amendment Yes / No / Absent | Final Yes / No / Absent |
 |---|---|---|
-| 1 | **Data and exporter** | New columns: Parties (`assistant_whip_opp_id`, `deputy_whip_opp_id`, `chief_whip_opp_id`); Decision Scenes (**Whip Bill**, **Minister**, plus the party-position and parent columns from question 4); Rules `whip_bands` (0-30, 31-71, 72-89, 90-97, 98-100, checked gap-free); a **Story Votes** tab if you agree (question 3). The three whips as opponents (Tomoe Sakamoto, Isamu Takaoka, Nobuko Ezaki) and Takaoka and Ezaki as visitors, sharing portraits; BI51 and BI52 with party counts from the worksheet; the new Text rows. Exporter checks for each. |
-| 2 | **Pure rules** | `WhipPick.gd`: the band pick (30/31, 71/72, 89/90, 97/98 edges), the minister-must-be-in-your-party rule, a blank Minister, the party line, "no line means the scene never opens", and the lock check. Headless tests. |
-| 3 | **The whip scene card** | A whip scene shows the picked whip as its speaker; the pick is saved with the run so the card, the stage and a reloaded game agree. |
-| 4 | **The whip stage ST290** | "Whipped into Line" (党議拘束 Tōgi Kōsoku): Survival bar with a new unit **Resolve**, 3 turns, 6 energy never refilled, win Reputation +1 and Party support -2, loss Party support +1, Constituency support -1 and the lock, 1 hour. **I will read the Survival model and propose the Resolve numbers before changing anything** (brief section D). |
-| 5 | **The Floor Vote lock** | A lost whip stage records the lock; the Floor Vote on that bill greys the other two buttons with "You gave the whip your word." |
-| 6 | **Scenes, cues and votes** | The six or more scenes with their Events and Event Choices rows (draft text, marked "Claude's draft"), the opponent and player cue rows from the brief's appendix, and the two votes wired through `vote:` activations. |
+| Butsutou (19) | 4 / 14 / 1 | 13 / 5 / 1 |
+| Yezo Heritage Party (14) | 7 / 7 / 0 | 9 / 5 / 0 |
+| Frontier Party (27) | 9 / 16 / 2 | 16 / 9 / 2 |
+| Five Point Independents (5) | 0 / 4 / 1 | 4 / 0 / 1 |
+| Keizaijiyuutou (25) | 4 / 17 / 4 | 21 / 0 / 4 |
+| Country Initiative (11) | 10 / 0 / 1 | 0 / 10 / 1 |
+| **Total** | **34 / 58 / 9: the amendment fails** | **63 / 29 / 9: the final passes** |
 
-Then: unit tests, one real-click test (DS05 at Party support 50 shows the Deputy Party Whip, choose C, lose the stage, and the final vote has only the party-line button live), screenshots in the three styles in `design/review/p15_cptpp_whip_2026-11-23/` with a REPORT.md, the docs, one full check, push `feature/p15-cptpp-whip`, **no merge**.
+## 3. Cameron's decisions, as I will build them
 
-## 4. Decisions I need before "Go"
+| # | Decision | Build |
+|---|---|---|
+| 1 | Parliament opens 15 October; DS01 then. A weekday Decision! must not be run over by a level (Mandatory: prevent; Optional: alert). | DS01 moved (done). The level rule is section 4A. |
+| 2 | The day before a Decision!, staff bring the player to the right office at day's end. 100 XP (or all the XP they have, up to 100); no work hours. | Section 4B. |
+| 3 | All CPTPP floor votes done before Tuesday 18.10.30. | Exporter check that the chain's last vote day (Opens plus every Mandatory delay) is **18.10.29 or earlier**; section 4C. |
+| 4 | A chain may exceed 5 scenes if Cameron approves. | A **Max Follow-Ups** column on a first scene's row: blank means 5; Cameron's number overrides it for that chain. The CPTPP chain is approved at 8 (see section 5). |
+| 5 | OP29 Imekanu Resu whips every player, regardless of party, in her own scene, separate from the standard whip scene. Win both: free vote. Lose one: locked to whoever they lost to. Lose both: abstain, penalties from both sides. | Section 4D. |
+| 6 | Reorder "Seong Yun-hee" to "Yun-hee Seong". | Done. |
+| 7 | Cameron fixes Story Votes first. | Done: re-read, matches. |
+| 8 | Floor Votes holds each party's votes and position, filled from Story Votes; a **Decision Scene** column there names the parent scene; a **Vote Bill** column on Decision Scenes. No duplicated numbers. | Section 4E. |
 
-| # | Question | Why | My recommendation |
+## 4. The build
+
+IDs to use today: opponents **OP132 to OP134**, visitors **VI175 and VI176**, the whip stage **ST290**, Floor Votes **BI51** (the amendment) and **BI52** (the final), Decision Scenes **DS02 onward**.
+
+**4A. A weekday Decision! and levels.** A level is checked when chosen: if starting it now would carry the clock to the start of a Mandatory scene's day (it would not finish by the end of the day before), the level is refused with a reason ("This level would run past the Decision! on Monday 18.10.22"). For an Optional scene the player gets a popup before the level starts: the level would finish after the window closes on 18.10.26, with **Start anyway** and **Back**. Pure rules (`DecisionClash.gd`) and tests.
+
+**4B. Evening travel.** At the end of the work day before a Mandatory scene, if the player's office is not the scene's, a popup from their primary staff member says the staff arranged the trip back; the player is moved at once, no work hours are spent, and 100 XP (or all they have) is spent. Pure rule for the cost; the card reuses the MOVED FOR YOU card with a new line.
+
+**4C. The deadline.** A **Must End By** column on a first scene (YY.MM.DD). The exporter works out the latest day any Mandatory scene in the chain can happen (Opens plus delays) and refuses a chain that passes it. 4A is what makes that arithmetic true in play.
+
+**4D. Two whips.**
+
+| Part | Build |
+|---|---|
+| The party whip | As in the brief: Party support picks who whips (0 to 30 Assistant Whip, 31 to 71 Deputy, 72 to 89 Chief, 90 to 97 the minister **OP82 Tama Tsujikonou** if in the player's party else the Chief, 98 to 100 the party leader). Winning the whip stage means no lock from the party; losing locks the vote to the **party line**. |
+| OP29's whip | Her own scene and the same whip stage with her as the opponent, shown to every player. Winning means no lock from her; losing locks the votes to **her ask**: Aye on the amendment (which stops the Prime Minister signing if Australia signs first) and Nay on the final. |
+| The outcomes | Both won: both votes are free. One lost: locked to the party who won. Both lost: both votes are **abstain** and the player takes both whips' penalties. |
+| The lock | Greys the other buttons with "You gave the whip your word."; an abstain lock leaves only Abstain. |
+
+**4E. Workbook.** Floor Votes gets **Decision Scene**; Decision Scenes gets **Whip Bill**, **Minister**, **Vote Bill**, **Max Follow-Ups**, **Must End By**; Parties gets three whip columns; Rules gets `whip_bands` and `training`-style rows for the bands; a **Story Votes** tab is imported by name from your sheet and BI51 and BI52's party counts are computed from it (no duplicate numbers).
+
+**Commits:** 1 data and exporter; 2 pure rules (`WhipPick`, `DecisionClash`, lock and outcomes); 3 level clash guard and alert; 4 evening travel; 5 whip card and stage ST290 (Resolve bar: I read the Survival model and propose numbers before changing it); 6 lock and abstain on the Floor Vote; 7 scenes, cues and votes; 8 tests, screenshots in three styles, docs. One full check, then push `feature/p15-cptpp-whip`. **No merge.**
+
+## 5. The timetable I propose (weekdays only; all votes by Monday 18.10.29)
+
+| Date | Scene | Kind | Follows |
 |---|---|---|---|
-| 1 | **The follow-up limit.** One first scene may have at most 5 follow-ups (your rule, 2026-11-21). This chain has DS02 (first) then the home front, the business lobby, two whips, the amendment vote, the final vote and the aftermath: **7 follow-ups**. | The exporter would refuse it. | Raise the limit to a Rules row (`Decision Scene Max Follow-Ups`) set to 8, so the rule stays yours to change. |
-| 2 | **What is OP29's scene?** You said OP29 (Frontier Party) appears to **all** player characters and whips against the CPTPP and for the amendment. Your other rule: a minister from another party never whips the player. | A non-FP player cannot be whipped by an FP minister; and the lock means "your party line", not OP29's ask. | An **appeal**, not a whip: OP29 asks every player; choices move organization standing and the vote cues; no stage and no lock. The party whips and the lock stay as designed. |
-| 3 | **How to use the worksheet.** | See section 2: shifted IDs, two parties, Absent. | Import it as a new **Story Votes** tab keyed by **name**, mapped to the data's IDs, with **Absent as abstain**; Floor Votes party counts for BI51 and BI52 are computed from it, and you decide the two party swaps (Harumi Asato, Hee-seop Han). |
-| 4 | **The workbook columns you asked for.** | "A column to receive the party position" and "the parent ID". | Floor Votes already holds each party's votes and position per bill: add a **Decision Scene** column there (the parent scene's ID) and a **Vote Bill** column on Decision Scenes; positions stay in Floor Votes, filled from Story Votes. |
+| Mon 18.10.22 | DS02 The Government Tables the CPTPP Motion | Mandatory, Capitol | first scene |
+| Wed 18.10.24 | DS03 The Home Front Wants Answers (window to Fri 18.10.26) | Optional, District | DS02 +2 |
+| Wed 18.10.24 | DS04 The Business Lobby Comes Calling (window to Fri 18.10.26) | Optional, Capitol | DS02 +2 |
+| Thu 18.10.25 | DS05 OP29: the Minister of Agriculture's appeal | Mandatory, Capitol | DS02 +3 |
+| Thu 18.10.25 | DS06 The Whip Counts Heads (standard whip) | Mandatory, Capitol | DS02 +3 |
+| Fri 18.10.26 | DS07 Floor Vote: the Australia amendment | Mandatory, Capitol | DS02 +4 |
+| Mon 18.10.29 | DS08 Floor Vote: Joining the CPTPP | Mandatory, Capitol | DS02 +7 |
+| Wed 18.10.31 | DS09 After the Vote, Back Home | Optional, District | DS08 +2 |
 
-## 5. Risks I will check first and stop on
+That is 8 follow-ups under DS02 (the approved limit), and the last vote is on the last day allowed.
+
+## 6. Questions for Cameron (the next popup)
+
+1. **What "runs over" means** (4A): refuse a level that cannot finish by the end of the day before the scene, and alert for an Optional scene when the level would end after the window closes.
+2. **The evening travel** (4B): no staff hired; which scenes; the exact moment.
+3. **The party line on the amendment** (4D): use the party's majority in Story Votes (BU, FP, FPI and KJT No; CI Yes; Yezo Heritage Party split 7 to 7).
+4. **The timetable** (section 5).
+
+## 7. Risks I will check first and stop on
 
 | Risk | Plan |
 |---|---|
-| A blank party on a whip opponent row | The pick needs "the player's own party's whip". I found `party` read in three places (patron levels, member stance, party display); I will test a blank before relying on it and report if one fails. |
-| Two IDs sharing one portrait | `art.json` maps by ID prefix; the three new whips need their picture copied or mapped. The art is not drawn yet, so a labelled placeholder shows. |
-| The cue "side" for a party line | If the side columns cannot say "the party's line", I report and propose; I do not change the cue engine. |
-| New canon | The amendment text and Australia's role come from your answer only. I write them as drafts and mark them. |
+| A blank party on a whip opponent row | Test before relying on it; report if a place fails. |
+| Two IDs sharing one portrait | `art.json` maps by prefix; copy or map the picture; a labelled placeholder shows until drawn. |
+| The cue "side" for a party line | If the cue columns cannot say "the party's line", report and propose; no change to the cue engine without asking. |
+| The Resolve bar numbers | Propose, do not change the Survival model. |
+| New canon | The amendment and Australia come from Cameron's wording only, marked "Claude's draft". |
