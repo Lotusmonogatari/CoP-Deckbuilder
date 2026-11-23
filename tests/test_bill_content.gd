@@ -190,6 +190,10 @@ func test_transition_dialogue_is_scoped_by_bill_and_stance() -> void:
 
 func test_every_real_bill_has_questions_cues_and_transition_lines() -> void:
 	for bill_id: String in DataDB.floor_votes.keys():
+		# A story vote (a Decision! scene's Vote Bill, P15) is voted in a scene, not fought over level by level; its lines are the
+		# whip fight's (tests/test_whip_scenes.gd), so the full bill-level set is not asked of it.
+		if not str(DataDB.floor_votes[bill_id].get("decision_scene", "")).is_empty():
+			continue
 		assert_gte(DataDB.get_bill_questions(bill_id).size(), 4, "%s has bill questions" % bill_id)
 		for suit: String in ["Earnest", "Emotional", "Appeal", "Data Driven", "Divisive", "Duplicitous"]:
 			for stance: String in ["Support", "Oppose"]:

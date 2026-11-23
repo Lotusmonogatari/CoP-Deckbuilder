@@ -58,6 +58,8 @@ var _stance_chips: Array = []
 ## Extra votes the player has chosen to whip, and the vote buttons' own words.
 var _whips := 0
 var _whip_note := ""
+## What lost whip fights allow on this bill (GameState.vote_lock, P15, 2026-11-23): free, locked to one answer, or abstain only.
+var _lock: Dictionary = {"state": "free", "allowed": ["Yes", "No", "Abstain"]}
 var _vote_words := {}
 @onready var _bar_yes: PartyVoteBar = %BarYes
 @onready var _bar_no: PartyVoteBar = %BarNo
@@ -161,6 +163,31 @@ func start_voting() -> void:
 	_vote_words = {"Yes": _vote_yes.text, "No": _vote_no.text, "Abstain": _vote_abstain.text}
 	_show_parties(engine.positions())
 	_show_influence_and_preview()
+	_lock = GameState.vote_lock(str(engine.bill().get("bill_id", "")))
+	_show_lock_note()
+	_refresh_vote_buttons()
+
+
+## When a lost whip fight holds this vote (P15, 2026-11-23, Cameron), one line says why the other buttons are greyed; nothing
+## else on the screen changes.
+func _show_lock_note() -> void:
+	var old := find_child("WhipLockNote", true, false)
+	if old != null:
+		old.queue_free()
+	if str(_lock.get("state", "free")) == "free":
+		return
+	var column := _vote_yes.get_parent().get_parent() as VBoxContainer
+	var note := UiKit.line(Text.say("floor_vote.whip_abstain" if str(_lock["state"]) == "abstain" else "floor_vote.whip_word"), "SmallLabel")
+	note.name = "WhipLockNote"
+	note.custom_minimum_size.x = 0.0
+	note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	column.add_child(note)
+	column.move_child(note, _vote_yes.get_parent().get_index())
+
+
+## True when the lock lets the player press this choice.
+func _lock_allows(choice: String) -> bool:
+	return (_lock.get("allowed", ["Yes", "No", "Abstain"]) as Array).has(choice)
 
 
 ## A translucent grey veil behind the bill text in the middle of the screen, its
@@ -575,6 +602,9 @@ func _refresh_vote_buttons() -> void:
 		else:
 			button.text = _vote_words[choice]
 			button.disabled = _voted
+		# A lost whip fight holds the vote to what the whip asked (P15): the other buttons are greyed.
+		if not _lock_allows(choice):
+			button.disabled = true
 
 
 ## Every real party's own "Vote Resistance" (parties.json's own
@@ -694,7 +724,7 @@ func _party_color(position: Dictionary) -> Color:
 
 func _on_vote(choice: String) -> void:
 	Haptics.confirm()
-	if not _ready_to_play or _voted or engine == null:
+	if not _ready_to_play or _voted or engine == null or not _lock_allows(choice):
 		return
 	var numbers := _whip_numbers(choice)
 	if _whips > int(numbers["allowed"]):

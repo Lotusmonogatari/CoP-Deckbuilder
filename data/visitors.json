@@ -6867,5 +6867,73 @@
       }
     ],
     "location": "District"
+  },
+  {
+    "visitor_id": "VI175",
+    "name_en": "Isamu Takaoka",
+    "name_jp": "高岡勇",
+    "romaji": "Isamu Takaoka",
+    "title": "Deputy Party Whip",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -3
+      },
+      {
+        "target": "BO02",
+        "delta": -2
+      }
+    ],
+    "location": "Capitol"
+  },
+  {
+    "visitor_id": "VI176",
+    "name_en": "Nobuko Ezaki",
+    "name_jp": "江崎信子",
+    "romaji": "Nobuko Ezaki",
+    "title": "Chief Party Whip",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -3
+      },
+      {
+        "target": "BO02",
+        "delta": -2
+      }
+    ],
+    "location": "Capitol"
   }
 ]

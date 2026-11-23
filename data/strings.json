@@ -9868,5 +9868,110 @@
     "english": "加藤正幸",
     "placeholders": null,
     "notes": "2026-11-23 (Cameron: the speech coach is Masayuki Katō, 加藤; given name 正幸 added the same day)."
+  },
+  {
+    "key": "calendar.refuse_decision",
+    "where": "Levels list, a level that would run into a Mandatory Decision!",
+    "english": "Would run past the Decision! on {day}",
+    "placeholders": "day",
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "floor_vote.whip_word",
+    "where": "Floor Vote: why the other buttons are greyed after a lost whip fight",
+    "english": "You gave the whip your word.",
+    "placeholders": null,
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "floor_vote.whip_abstain",
+    "where": "Floor Vote: why only Abstain is live after two lost whip fights",
+    "english": "You gave both whips your word. You must abstain.",
+    "placeholders": null,
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "decision.clash_title",
+    "where": "Office: the card warning a level would outlast an Optional Decision!",
+    "english": "A Decision! is waiting",
+    "placeholders": null,
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "decision.clash_body",
+    "where": "Office: the warning's body",
+    "english": "This level would still be running when the window for \"{title}\" closes on {closes}. If you start it anyway, you may miss that Decision!.",
+    "placeholders": "title, closes",
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "decision.clash_start",
+    "where": "Office: the warning's go-ahead button",
+    "english": "Start anyway",
+    "placeholders": null,
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "decision.clash_back",
+    "where": "Office: the warning's back button",
+    "english": "Back",
+    "placeholders": null,
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "decision.whip_asks",
+    "where": "Decision! card: what a whip asks",
+    "english": "{name} asks you to vote {vote} on {bill}.",
+    "placeholders": "name, vote, bill",
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "whip.aye",
+    "where": "A whip's ask, the aye answer",
+    "english": "Aye",
+    "placeholders": null,
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "whip.nay",
+    "where": "A whip's ask, the nay answer",
+    "english": "Nay",
+    "placeholders": null,
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "travel.evening_arranged",
+    "where": "Moved card: a Mandatory Decision! brought the player back after hours",
+    "english": "Your staff arranged an after-hours trip back to {place} last evening, so you are here in time.",
+    "placeholders": "place",
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "travel.evening_cost",
+    "where": "Moved card: what the after-hours trip cost",
+    "english": "The trip took no work hours, but it cost {xp} XP.",
+    "placeholders": "xp",
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "travel.evening_free",
+    "where": "Moved card: the after-hours trip when the player had no XP",
+    "english": "The trip took no work hours, and you had no XP to spend.",
+    "placeholders": null,
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "office.trigger.whip_lost.entered",
+    "where": "Office alert: a lost whip fight locks the vote",
+    "english": "{name} holds you to your word. Your vote on {bill} is locked to {vote}.",
+    "placeholders": "name, bill, vote",
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "office.trigger.whip_lost.abstain",
+    "where": "Office alert: two lost whip fights force an abstention",
+    "english": "Both whips hold you to your word. You must abstain on {bill}.",
+    "placeholders": "bill",
+    "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
   }
 ]

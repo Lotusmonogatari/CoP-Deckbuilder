@@ -40,6 +40,9 @@ var _travel_modes_row: HBoxContainer
 ## A mixed level waiting on an encounter on the train before it begins (the encounter is shown first).
 var _start_after_encounter := false
 var _encounter_cleared := false
+## P15 (2026-11-23): the card that warns a level would outlast an Optional Decision!'s window, and whether the player said to go on.
+var _clash_panel: Overlay
+var _clash_accepted := false
 ## How a level's built-in trips are priced in the briefing (the member's rail pass until tickets exist).
 var _travel_mode: String = Travel.PASS
 @onready var _resources: Label = %Resources
@@ -1060,7 +1063,11 @@ func _show_moved_card(event_id: String) -> void:
 		said.custom_minimum_size.x = 0.0
 		inside.add_child(said)
 		rows.append(tile)
-	rows.append(UiKit.line(Text.say("travel.forced_move", {"place": place})))
+	if GameState.last_evening_trip.is_empty():
+		rows.append(UiKit.line(Text.say("travel.forced_move", {"place": place})))
+	else:
+		# A Mandatory Decision!: the staff arranged the trip after hours the evening before (P15, 2026-11-23).
+		rows.append(UiKit.line(Text.say("travel.evening_arranged", {"place": place})))
 	var closed := ClosedHere.kinds(GameState.office_location, DataDB.levels, DataDB.events, DataDB.visitors)
 	if not closed.is_empty():
 		rows.append(UiKit.line(Text.say("travel.closed_here"), "HeaderLabel"))
@@ -1072,7 +1079,11 @@ func _show_moved_card(event_id: String) -> void:
 			elif kind == ClosedHere.VISITORS:
 				key = "travel.closed_visitors"
 			rows.append(UiKit.line(Text.say(key, {"place": other}), "SmallLabel"))
-	rows.append(UiKit.line(Text.say("travel.forced_free"), "SmallLabel"))
+	if GameState.last_evening_trip.is_empty():
+		rows.append(UiKit.line(Text.say("travel.forced_free"), "SmallLabel"))
+	else:
+		var spent := int(GameState.last_evening_trip.get("xp", 0))
+		rows.append(UiKit.line(Text.say("travel.evening_cost", {"xp": spent}) if spent > 0 else Text.say("travel.evening_free"), "SmallLabel"))
 	var go := Button.new()
 	go.name = "MovedContinueButton"
 	go.custom_minimum_size = Vector2(0, 110)
@@ -1083,6 +1094,37 @@ func _show_moved_card(event_id: String) -> void:
 		GameState.calendar_config())), "office": TravelText.level_badge(GameState.office_location), "hours": 0})
 	_moved_panel.open_card({"tag": Text.say("popup.tag_moved"), "tag_kind": PopupCardStyles.ALARM, "meta": meta,
 		"title": TravelText.here_line(), "body": rows, "buttons": foot, "primary": 0})
+
+
+## The warning before a level that would outlast an Optional Decision!'s window: what would be missed and when, and the choice to
+## start anyway or go back to the list.
+func _show_clash_card(clash: Dictionary) -> void:
+	var rows: Array[Control] = [UiKit.line(Text.say("decision.clash_body", {"title": str(clash["title"]), "closes": str(clash["closes"])}))]
+	var go := Button.new()
+	go.name = "ClashStartAnywayButton"
+	go.custom_minimum_size = Vector2(0, 110)
+	go.text = Text.say("decision.clash_start")
+	go.pressed.connect(_on_clash_start_anyway)
+	var back := Button.new()
+	back.name = "ClashBackButton"
+	back.custom_minimum_size = Vector2(0, 110)
+	back.text = Text.say("decision.clash_back")
+	back.pressed.connect(_on_clash_back)
+	var foot: Array[Control] = [go, back]
+	_clash_panel.open_card({"tag": Text.say("popup.tag_decision"), "tag_kind": PopupCardStyles.ALARM,
+		"title": Text.say("decision.clash_title"), "body": rows, "buttons": foot, "primary": 1})
+
+
+func _on_clash_start_anyway() -> void:
+	_clash_panel.close()
+	_clash_accepted = true
+	_on_start()
+
+
+func _on_clash_back() -> void:
+	_clash_panel.close()
+	_clash_accepted = false
+	_show_levels()
 
 
 func _on_moved_continue(event_id: String) -> void:
@@ -1180,6 +1222,13 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 	elif arrived:
 		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
 	rows.append(UiKit.line(str(event.get("flavor", ""))))
+	# A whip scene says what the whip asks, so a choice worded "with the party" is not a guess (P15, 2026-11-23).
+	if DecisionScenes.is_whip(scene):
+		var asked := GameState.whip_line(scene)
+		if not asked.is_empty():
+			rows.append(UiKit.line(Text.say("decision.whip_asks", {"name": str(GameState.event_speaker(event_id).get("name", "")),
+				"vote": Text.say("whip.aye" if asked == WhipPick.YES else "whip.nay"),
+				"bill": str(GameState.whip_bill_of(scene).get("bill_name", ""))}), "SmallLabel"))
 	# The organizations that lead the event, with their icons (Lead Organizations column; at most two).
 	for lead_id: String in EventLeads.of(event):
 		var lead_name := str(DataDB.get_booster(lead_id).get("name_en", ""))
@@ -1428,6 +1477,8 @@ const TRIGGER_ALERT_KEYS := {
 	"gaffe_penalty": {"entered": "office.trigger.gaffe_penalty.entered"},
 	"steering_committee": {"entered": "office.trigger.steering_committee.entered", "left": "office.trigger.steering_committee.left"},
 	"town_hall": {"entered": "office.trigger.town_hall.entered", "left": "office.trigger.town_hall.left"},
+	# A whip fight lost (P15, 2026-11-23): the vote is locked to what the whip asked, or, after two losses, to Abstain.
+	"whip_lost": {"entered": "office.trigger.whip_lost.entered", "abstain": "office.trigger.whip_lost.abstain"},
 }
 
 
@@ -1444,6 +1495,8 @@ func _show_trigger_alerts_if_any() -> void:
 			"count": int(alert.get("count", 0)),
 			"amount": int(alert.get("amount", 0)),
 			"name": str(alert.get("name", "")),
+			"bill": str(alert.get("bill", "")),
+			"vote": str(alert.get("vote", "")),
 		})))
 	GameState.pending_trigger_alerts = []
 
@@ -4327,6 +4380,11 @@ func _build_travel() -> void:
 	_moved_panel.dismissable = false
 	_moved_panel.show_back = false
 	add_child(_moved_panel)
+	_clash_panel = Overlay.new()
+	_clash_panel.name = "ClashPanel"
+	_clash_panel.dismissable = false
+	_clash_panel.show_back = false
+	add_child(_clash_panel)
 	_travel_panel = Overlay.new()
 	_travel_panel.name = "TravelPanel"
 	add_child(_travel_panel)
@@ -5080,6 +5138,14 @@ func _on_start() -> void:
 		_event_launch = {}
 		_report.text = elsewhere
 		return
+	# A level that would still be running when an Optional Decision!'s window closes asks first (P15, 2026-11-23, Cameron): the
+	# player may still go on. (A Mandatory Decision! refuses the level in the list before this point.)
+	if not _clash_accepted:
+		var clash := GameState.optional_decision_clash(GameState.level_total_hours(_chosen_level, _travel_mode))
+		if not clash.is_empty():
+			_show_clash_card(clash)
+			return
+	_clash_accepted = false
 	var expanded := BattleSetup.expand_level(_chosen_level)
 	var runner := LevelRunner.new(expanded)
 	if not runner.is_valid():

@@ -359,5 +359,6 @@
   "travel_encounter_one_in": 8,
   "events_coming_up_days": 7,
   "rhetoric_training_hours_per_tier": 1,
+  "evening_travel_xp_cap": 100,
   "xp_tiers": {}
 }

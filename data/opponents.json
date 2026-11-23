@@ -6099,5 +6099,80 @@
       "min": 0,
       "max": 1
     }
+  },
+  {
+    "opp_id": "OP132",
+    "name": "Tomoe Sakamoto",
+    "title": "Assistant Party Whip",
+    "gender": "F",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO01",
+    "role": "Party Whip's Office",
+    "stages": [
+      "ST290"
+    ],
+    "suit_1": "Divisive",
+    "suit_2": "Emotional",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_gain_range": null,
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP133",
+    "name": "Isamu Takaoka",
+    "title": "Deputy Party Whip",
+    "gender": "M",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO01",
+    "role": "Party Whip's Office",
+    "stages": [
+      "ST290"
+    ],
+    "suit_1": "Divisive",
+    "suit_2": "Emotional",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_gain_range": null,
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP134",
+    "name": "Nobuko Ezaki",
+    "title": "Chief Party Whip",
+    "gender": "F",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO01",
+    "role": "Party Whip's Office",
+    "stages": [
+      "ST290"
+    ],
+    "suit_1": "Divisive",
+    "suit_2": "Emotional",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_gain_range": null,
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
   }
 ]

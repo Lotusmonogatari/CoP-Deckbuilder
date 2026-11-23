@@ -17,6 +17,7 @@
     "case_against": "It divides towns along ethnic lines.",
     "main_risk": "Disputes over ancestral land claims.",
     "middle_ground": "A language-school fund with no land process.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI01",
@@ -98,6 +99,7 @@
     "case_against": "It rewards big farms and raises prices.",
     "main_risk": "Overproduction paid for by the treasury.",
     "middle_ground": "A temporary support fund for bad years.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI02",
@@ -179,6 +181,7 @@
     "case_against": "It carves out a second set of rules for the rich.",
     "main_risk": "A race to the bottom on labor protections.",
     "middle_ground": "A single pilot zone with a review.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI03",
@@ -260,6 +263,7 @@
     "case_against": "It spends billions to save minutes.",
     "main_risk": "Cost overruns on tunnels and track.",
     "middle_ground": "Freight upgrades first, with passengers in a second step.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI04",
@@ -341,6 +345,7 @@
     "case_against": "It provokes a neighbor we need.",
     "main_risk": "Escalating tension with Russia.",
     "middle_ground": "Shared patrols with allies.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI05",
@@ -422,6 +427,7 @@
     "case_against": "It undercuts local wages.",
     "main_risk": "Exploitation of workers and strained housing.",
     "middle_ground": "A smaller visa quota for seasonal work only.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI06",
@@ -503,6 +509,7 @@
     "case_against": "It buys power that costs more.",
     "main_risk": "Projects delayed by local objections.",
     "middle_ground": "Backup generators for hospitals first.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI07",
@@ -584,6 +591,7 @@
     "case_against": "It taxes the poor to pay for the old.",
     "main_risk": "Weaker spending in poorer households.",
     "middle_ground": "A tax on the largest incomes.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI08",
@@ -665,6 +673,7 @@
     "case_against": "It lets wealthy areas keep their wealth.",
     "main_risk": "Gaps between rich and poor prefectures.",
     "middle_ground": "Devolving one budget line as a trial.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI09",
@@ -746,6 +755,7 @@
     "case_against": "It treats candidates as numbers.",
     "main_risk": "Qualified candidates passed over.",
     "middle_ground": "Voluntary party targets with public reports.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI10",
@@ -827,6 +837,7 @@
     "case_against": "It hands control of our waters to talks.",
     "main_risk": "A commission with no power to settle anything.",
     "middle_ground": "A yearly meeting with no standing body.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI11",
@@ -908,6 +919,7 @@
     "case_against": "It takes power from elected leaders.",
     "main_risk": "An unelected body choosing judges.",
     "middle_ground": "Public hearings on Cabinet nominees.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI12",
@@ -989,6 +1001,7 @@
     "case_against": "It spends public money on religion.",
     "main_risk": "Favoring some faiths over others.",
     "middle_ground": "Grants for building safety only.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI13",
@@ -1070,6 +1083,7 @@
     "case_against": "It lets members spend money to win elections.",
     "main_risk": "Pork spending that buys votes.",
     "middle_ground": "Grants allocated by an independent panel.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI14",
@@ -1151,6 +1165,7 @@
     "case_against": "It hands tax breaks to giants.",
     "main_risk": "Subsidies for firms that would come anyway.",
     "middle_ground": "Grants for small tech firms only.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI15",
@@ -1232,6 +1247,7 @@
     "case_against": "It criminalizes thoughts.",
     "main_risk": "Wiretaps used against ordinary protest.",
     "middle_ground": "Wiretaps only with a court order each time.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI16",
@@ -1313,6 +1329,7 @@
     "case_against": "It redefines the family.",
     "main_risk": "A split in public opinion.",
     "middle_ground": "Letting each town decide for itself.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI17",
@@ -1394,6 +1411,7 @@
     "case_against": "It hands one person too much power.",
     "main_risk": "Power held past the end of the crisis.",
     "middle_ground": "Emergency powers needing an Assembly vote.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI18",
@@ -1475,6 +1493,7 @@
     "case_against": "It ties us to another country's wars.",
     "main_risk": "Being drawn into a foreign conflict.",
     "middle_ground": "Observer status at exercises.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI19",
@@ -1556,6 +1575,7 @@
     "case_against": "It sells out our farmers.",
     "main_risk": "Foreign dairy undercutting local farms.",
     "middle_ground": "Phasing tariffs down over a long period.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI20",
@@ -1637,6 +1657,7 @@
     "case_against": "It treats every buyer as a spy.",
     "main_risk": "Scaring off honest investment.",
     "middle_ground": "A registry of foreign owners without review.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI21",
@@ -1718,6 +1739,7 @@
     "case_against": "It opens the door too wide.",
     "main_risk": "Overcrowded resorts and strained services.",
     "middle_ground": "Visa waivers for group tours only.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI22",
@@ -1799,6 +1821,7 @@
     "case_against": "It concedes what we hold as ours.",
     "main_risk": "Weakening our claim to the islands.",
     "middle_ground": "A fishing agreement without tourism.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI23",
@@ -1880,6 +1903,7 @@
     "case_against": "It repeats the risks we promised to leave.",
     "main_risk": "An accident after a quake.",
     "middle_ground": "A restart only after an outside safety review.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI24",
@@ -1961,6 +1985,7 @@
     "case_against": "It makes the town depend on losing gamblers.",
     "main_risk": "Gambling addiction and organized crime.",
     "middle_ground": "A resort with no casino floor.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI25",
@@ -2042,6 +2067,7 @@
     "case_against": "It makes public service a quiz.",
     "main_risk": "Exams that miss real-world skill.",
     "middle_ground": "Exams for senior posts only.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI26",
@@ -2123,6 +2149,7 @@
     "case_against": "It ignores how much costs differ by town.",
     "main_risk": "Closed shops and fewer jobs in poor towns.",
     "middle_ground": "A lower rate in the poorest towns for a few years.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI27",
@@ -2204,6 +2231,7 @@
     "case_against": "It takes elections away from the elected.",
     "main_risk": "An unelected commission with too much say.",
     "middle_ground": "Public hearings on redistricting.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI28",
@@ -2285,6 +2313,7 @@
     "case_against": "It teaches obedience instead of thought.",
     "main_risk": "The state teaching one view of virtue.",
     "middle_ground": "An optional ethics elective.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI29",
@@ -2366,6 +2395,7 @@
     "case_against": "It dilutes citizens' voting power.",
     "main_risk": "A backlash that harms community ties.",
     "middle_ground": "Advisory seats on town councils.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI30",
@@ -2447,6 +2477,7 @@
     "case_against": "It locks away land that people use.",
     "main_risk": "Lost jobs in forest towns.",
     "middle_ground": "A few core reserves with managed use around them.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI31",
@@ -2528,6 +2559,7 @@
     "case_against": "It spreads thin what should be concentrated.",
     "main_risk": "Small hospitals with too few doctors.",
     "middle_ground": "Mobile clinics only.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI32",
@@ -2609,6 +2641,7 @@
     "case_against": "It puts our whole lives in one database.",
     "main_risk": "A data breach exposing everyone's records.",
     "middle_ground": "Separate cards with a single sign-in.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI33",
@@ -2690,6 +2723,7 @@
     "case_against": "It gives an unelected board a megaphone.",
     "main_risk": "A broadcaster answerable to no one.",
     "middle_ground": "A fixed budget but a ministerial appointee.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI34",
@@ -2771,6 +2805,7 @@
     "case_against": "It silences honest supporters.",
     "main_risk": "Money moving to groups outside the rules.",
     "middle_ground": "Publication without caps.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI35",
@@ -2852,6 +2887,7 @@
     "case_against": "It cuts taxes for the strongest first.",
     "main_risk": "Cuts to services to pay for the tax cut.",
     "middle_ground": "A cut for small firms only.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI36",
@@ -2933,6 +2969,7 @@
     "case_against": "It makes winter more expensive for the north.",
     "main_risk": "Higher costs in cold, spread-out towns.",
     "middle_ground": "A carbon price with exemptions for fuel in cold regions.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI37",
@@ -3014,6 +3051,7 @@
     "case_against": "It turns the sea into a commodity.",
     "main_risk": "Quotas concentrated in a few large boats.",
     "middle_ground": "Quotas that cannot be traded.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI38",
@@ -3095,6 +3133,7 @@
     "case_against": "It feeds a defense lobby.",
     "main_risk": "Waste on a closed circle of contractors.",
     "middle_ground": "Short contracts with open bidding.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI39",
@@ -3176,6 +3215,7 @@
     "case_against": "It starts a slide toward rewriting the constitution.",
     "main_risk": "A commission that pushes a hidden agenda.",
     "middle_ground": "A temporary commission with one report.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI40",
@@ -3257,6 +3297,7 @@
     "case_against": "It gives away control of our border.",
     "main_risk": "Data shared without limits.",
     "middle_ground": "A trial at one port.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI41",
@@ -3338,6 +3379,7 @@
     "case_against": "It sells off the islands' wealth.",
     "main_risk": "Damage to fisheries and sacred sites.",
     "middle_ground": "Fishing only, no mining.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI42",
@@ -3419,6 +3461,7 @@
     "case_against": "It makes us rely on a rival.",
     "main_risk": "Dependence on one big trading partner.",
     "middle_ground": "Phased tariff cuts on non-sensitive goods.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI43",
@@ -3500,6 +3543,7 @@
     "case_against": "It pays people to farm who will not stay.",
     "main_risk": "Grants for farms that cannot survive.",
     "middle_ground": "Mentoring programs with no grants.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI44",
@@ -3581,6 +3625,7 @@
     "case_against": "It frees universities from public accountability.",
     "main_risk": "Funds spent on the wrong things.",
     "middle_ground": "Matching grants tied to results.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI45",
@@ -3662,6 +3707,7 @@
     "case_against": "It burdens small firms with lawsuits.",
     "main_risk": "Red tape and disputes at small firms.",
     "middle_ground": "Guidance and mediation ahead of penalties.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI46",
@@ -3743,6 +3789,7 @@
     "case_against": "It asks small firms to carry too much.",
     "main_risk": "Staff shortages at small firms.",
     "middle_ground": "Leave for parents, with childcare as a second step.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI47",
@@ -3824,6 +3871,7 @@
     "case_against": "It makes every citizen a suspect.",
     "main_risk": "Tracking innocent people.",
     "middle_ground": "Cameras without facial recognition.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI48",
@@ -3905,6 +3953,7 @@
     "case_against": "It erases small towns.",
     "main_risk": "Far-away offices and lost local voices.",
     "middle_ground": "Voluntary sharing of services between towns.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI49",
@@ -3986,6 +4035,7 @@
     "case_against": "It hands parties to their most extreme members.",
     "main_risk": "Leaders chosen by loud, small factions.",
     "middle_ground": "A ballot of party delegates.",
+    "decision_scene": null,
     "positions": [
       {
         "bill_id": "BI50",
@@ -4046,6 +4096,170 @@
         "disposition": "Opposed",
         "cue_text": "Leadership is earned, not voted by the crowd.",
         "salience": 60
+      }
+    ]
+  },
+  "BI51": {
+    "bill_id": "BI51",
+    "bill_name": "Amendment to the CPTPP Motion",
+    "bill_description": "An amendment to the motion on joining the CPTPP, put to the house before the final vote.",
+    "favorability_delta_supportive": 1,
+    "favorability_delta_opposed": -1,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "vote_requirement": null,
+    "proponent_party": "PT02",
+    "stakeholders_override": null,
+    "who_gains": null,
+    "who_pays": null,
+    "case_for": null,
+    "case_against": null,
+    "main_risk": null,
+    "middle_ground": null,
+    "decision_scene": "DS08",
+    "positions": [
+      {
+        "bill_id": "BI51",
+        "party_id": "PT01",
+        "votes_yes": 4,
+        "votes_no": 14,
+        "votes_abstain": 1,
+        "disposition": "Opposed",
+        "cue_text": "A safeguard we can trust is worth a vote; this is not it.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI51",
+        "party_id": "PT02",
+        "votes_yes": 7,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Neutral",
+        "cue_text": "The party will say its piece in the chamber.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI51",
+        "party_id": "PT03",
+        "votes_yes": 9,
+        "votes_no": 16,
+        "votes_abstain": 2,
+        "disposition": "Opposed",
+        "cue_text": "Farms and fisheries need more than this amendment.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI51",
+        "party_id": "PT04",
+        "votes_yes": 0,
+        "votes_no": 4,
+        "votes_abstain": 1,
+        "disposition": "Opposed",
+        "cue_text": "Five points, one answer: no.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI51",
+        "party_id": "PT05",
+        "votes_yes": 4,
+        "votes_no": 17,
+        "votes_abstain": 4,
+        "disposition": "Opposed",
+        "cue_text": "Markets, not amendments, make the pact work.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI51",
+        "party_id": "PT06",
+        "votes_yes": 10,
+        "votes_no": 0,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Without this amendment, we cannot let the pact through.",
+        "salience": null
+      }
+    ]
+  },
+  "BI52": {
+    "bill_id": "BI52",
+    "bill_name": "Joining the CPTPP",
+    "bill_description": "Approves Yezo joining the CPTPP trade pact.",
+    "favorability_delta_supportive": 1,
+    "favorability_delta_opposed": -1,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "vote_requirement": null,
+    "proponent_party": "PT02",
+    "stakeholders_override": null,
+    "who_gains": null,
+    "who_pays": null,
+    "case_for": null,
+    "case_against": null,
+    "main_risk": null,
+    "middle_ground": null,
+    "decision_scene": "DS09",
+    "positions": [
+      {
+        "bill_id": "BI52",
+        "party_id": "PT01",
+        "votes_yes": 13,
+        "votes_no": 5,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Open trade is how Yezo grows.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI52",
+        "party_id": "PT02",
+        "votes_yes": 9,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "The government's pact is this party's pact.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI52",
+        "party_id": "PT03",
+        "votes_yes": 16,
+        "votes_no": 9,
+        "votes_abstain": 2,
+        "disposition": "Supportive",
+        "cue_text": "Trade built this region, and the pact keeps it open.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI52",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 0,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Five points, one answer: join.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI52",
+        "party_id": "PT05",
+        "votes_yes": 21,
+        "votes_no": 0,
+        "votes_abstain": 4,
+        "disposition": "Supportive",
+        "cue_text": "Free markets are the whole point.",
+        "salience": null
+      },
+      {
+        "bill_id": "BI52",
+        "party_id": "PT06",
+        "votes_yes": 0,
+        "votes_no": 10,
+        "votes_abstain": 1,
+        "disposition": "Opposed",
+        "cue_text": "Sovereignty is not for trading.",
+        "salience": null
       }
     ]
   }
