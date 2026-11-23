@@ -9864,9 +9864,9 @@
   },
   {
     "key": "rhetoric.coach_name_jp",
-    "where": "Office Management, Rhetoric Training: the speech coach's surname in kanji, a muted accent beside his name",
-    "english": "加藤",
+    "where": "Office Management, Rhetoric Training: the speech coach's name in kanji, a muted accent beside his name",
+    "english": "加藤正幸",
     "placeholders": null,
-    "notes": "2026-11-23 (Cameron: the speech coach is Masayuki Katō, 加藤). Only the surname was given."
+    "notes": "2026-11-23 (Cameron: the speech coach is Masayuki Katō, 加藤; given name 正幸 added the same day)."
   }
 ]
