@@ -1752,8 +1752,8 @@
   {
     "key": "rhetoric.session",
     "where": "Office — Rhetoric Training, one row",
-    "english": "Tier {tier} session  —  {price}",
-    "placeholders": "tier, price",
+    "english": "Tier {tier} session  —  {price}  —  {hours} hours",
+    "placeholders": "tier, price, hours",
     "notes": null
   },
   {
@@ -9847,5 +9847,12 @@
     "english": "Speech Coach",
     "placeholders": null,
     "notes": "2026-11-22 (Cameron's SPEECH_COACH upload). Title only: no name yet. Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "rhetoric.session_one",
+    "where": "Office — Rhetoric Training, one row, a one-hour session",
+    "english": "Tier {tier} session  —  {price}  —  1 hour",
+    "placeholders": "tier, price",
+    "notes": "2026-11-23 (Cameron: a session takes an hour per tier). Claude's draft for Cameron to reword."
   }
 ]

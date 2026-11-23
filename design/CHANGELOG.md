@@ -1902,3 +1902,14 @@ All four are District visitors in the same rooms as VI125 (ST268, ST283, ST284).
 | Name | The heading is a title only: **no personal name has been given**, so none is shown. Please say if he has one (and a Japanese name). |
 | Art checklist | A new "Capital Area characters" line lists SPEECH_COACH. |
 | Tests | `tests/test_speech_coach.gd`. |
+
+## Rhetoric Training sessions take time: one hour per tier (2026-11-23, Cameron; branch `feature/training-hours`)
+
+| Part | What changed |
+|---|---|
+| The rule | A Tier 1 session takes 1 hour, Tier 2 takes 2 and Tier 3 takes 3. The number is a new Balance row, **Rhetoric Training: Hours Per Tier** (1), times the tier. |
+| When | The hours are taken when the session **begins** ("See a card"). Passing on a card, learning it, or reopening a draw already in progress takes nothing more, and a draw left open when the app closes has already been paid for. |
+| Coupons | A Training Session Coupon's free session takes its tier's hours too (decided here; say if a coupon should be free of time as well). |
+| No time | The "See a card" button is greyed with the usual reason ("Not enough hours left for that." or "The work week is over."), and a coupon's Use button is greyed the same way. |
+| The page | Each session row names its hours: "Tier 2 session  —  500 XP  —  2 hours" (Text rows `rhetoric.session` and `rhetoric.session_one`). |
+| Tests | `tests/test_training_hours.gd`. |
