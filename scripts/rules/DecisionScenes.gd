@@ -63,6 +63,13 @@ static func office(scene: Dictionary) -> String:
 const MAX_FOLLOW_UPS := 5
 
 
+## The most follow-ups one first scene may have: its own Max Follow-Ups cell when Cameron has approved a longer chain (P15,
+## 2026-11-23), else MAX_FOLLOW_UPS.
+static func max_follow_ups(scene: Dictionary) -> int:
+	var raw: Variant = scene.get("max_follow_ups")
+	return maxi(MAX_FOLLOW_UPS, int(raw)) if raw != null else MAX_FOLLOW_UPS
+
+
 static func is_follow_up(scene: Dictionary) -> bool:
 	var raw: Variant = scene.get("follows")
 	return raw != null and not str(raw).strip_edges().is_empty()
@@ -143,6 +150,55 @@ static func _follow_ups_between(scenes: Array, log: Dictionary, first: int, last
 	for entry: Dictionary in found:
 		out.append(entry["scene"])
 	return out
+
+
+## The day each scene of a chain happens when the player answers every scene on the day it opens: {scene_id: day number}. The
+## first scene is its Opens date; a follow-up is its earlier scene's day plus its Delay. A scene in no chain from `root_id` is left
+## out. Used to check a deadline (the exporter does the same sum) and in tests.
+static func chain_days(scenes: Array, root_id: String) -> Dictionary:
+	var root := find(scenes, root_id)
+	var out := {}
+	if root.is_empty() or root.get("opens") == null:
+		return out
+	out[root_id] = WeekCalendar.parse_date(str(root.get("opens")))
+	var queue: Array = [root_id]
+	while not queue.is_empty():
+		var parent_id := str(queue.pop_front())
+		for child: Dictionary in children_of(scenes, parent_id):
+			var id := str(child.get("scene_id", ""))
+			if out.has(id):
+				continue
+			var delay: Variant = child.get("delay")
+			out[id] = int(out[parent_id]) + (0 if delay == null else int(delay))
+			queue.append(id)
+	return out
+
+
+# --- Whip scenes and vote scenes (P15) -------------------------------------------------------------------------------------------
+
+## A scene with a Whip Bill is a whip scene: a whip asks the player to vote the party's way on that bill.
+static func whip_bill(scene: Dictionary) -> String:
+	return _text_cell(scene, "whip_bill")
+
+
+static func is_whip(scene: Dictionary) -> bool:
+	return not whip_bill(scene).is_empty()
+
+
+## A scene with a Vote Bill ends in that bill's Floor Vote.
+static func vote_bill(scene: Dictionary) -> String:
+	return _text_cell(scene, "vote_bill")
+
+
+## A whip scene with no Speaker picks its whip from the player's Party support; one with a Speaker (the Minister of
+## Agriculture) is that person's, for every player.
+static func whip_is_banded(scene: Dictionary) -> bool:
+	return is_whip(scene) and speaker_ids(scene).is_empty()
+
+
+static func _text_cell(scene: Dictionary, key: String) -> String:
+	var raw: Variant = scene.get(key)
+	return "" if raw == null else str(raw).strip_edges()
 
 
 # --- Optional scenes (phase 4) -------------------------------------------------------------------------------------------------
@@ -264,6 +320,10 @@ static func activations_for(scene: Dictionary, letter: String) -> Array[Dictiona
 		var letters: Array = entry["letters"]
 		if letters.is_empty() or letters.has(letter.to_upper()):
 			out.append(entry)
+	# A Vote Bill is its scene's Floor Vote: it follows whatever choice the player makes, unless Activates already names a vote.
+	var bill := vote_bill(scene)
+	if not bill.is_empty() and not out.any(func(entry: Dictionary) -> bool: return str(entry["kind"]) == KIND_VOTE):
+		out.append({"kind": KIND_VOTE, "id": bill, "letters": []})
 	return out
 
 
