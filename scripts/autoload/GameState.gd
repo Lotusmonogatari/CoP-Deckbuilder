@@ -2592,7 +2592,8 @@ func step_out_refusal() -> String:
 	match step_out_state():
 		VenueRules.ELSEWHERE: return Text.say("venue.refuse_elsewhere")
 		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
-		VenueRules.WEEK_FULL: return Text.say("venue.refuse_week_full")
+		# No hours left: work hours on a weekday, weekend hours on a weekend (P16b, 2026-11-23).
+		VenueRules.WEEK_FULL: return Text.say("venue.no_hours_weekend" if in_weekend() else "venue.refuse_week_full")
 	return ""
 
 
@@ -2722,22 +2723,32 @@ func venue_lines_left(venue_id: String) -> int:
 	return maxi(mini((entry["dealt"] as Array).size(), venue_limit()) - int(entry["heard"]), 0)
 
 
-## Why a venue's activity cannot be started: "" when it can, else a Text row's sentence. A visit with nothing left to hear today is
-## refused ("Come back tomorrow") without taking the hour.
+## Today's set for a venue if it has been dealt, else {}. Never deals: a refused visit, or a look at a venue's screen, deals no line.
+func venue_day_peek(venue_id: String) -> Dictionary:
+	var kept: Variant = venue_days.get(venue_id)
+	if kept is Dictionary and int((kept as Dictionary).get("day", -1)) == venue_today():
+		return kept as Dictionary
+	return {}
+
+
+## Why a venue's activity cannot be started: "" when it can, else a Text row's sentence. The hours it needs come from the pool the
+## player is in: work hours on a weekday, weekend hours on a weekend (P16b, 2026-11-23). A refused visit takes no hour and deals no
+## line; a visit with nothing left to hear today is refused ("Come back tomorrow") the same way.
 func venue_visit_refusal(venue_id: String) -> String:
 	match step_out_state():
 		VenueRules.ELSEWHERE: return Text.say("venue.refuse_elsewhere")
 		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
-		VenueRules.WEEK_FULL: return Text.say("venue.refuse_week_full")
+		VenueRules.WEEK_FULL: return Text.say("venue.no_hours_weekend" if in_weekend() else "venue.refuse_week_full")
 	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)
 	if activity.is_empty() or not VenueRules.is_built(activity):
 		return Text.say("venue.coming_soon")
-	if VenueRules.deals_lines(activity) and venue_lines_left(venue_id) <= 0 and bool(venue_day(venue_id)["dry"]):
-		return Text.say("venue.come_back")
 	match VenueRules.visit_refusal(activity, work_hours_left() - venue_walk_hours(venue_id), int(meta.get("Funds", 0)), xp):
-		"hours": return Text.say("venue.refuse_hours")
+		"hours": return Text.say("venue.refuse_hours_weekend" if in_weekend() else "venue.refuse_hours")
 		"funds": return Text.say("venue.refuse_funds")
 		"xp": return Text.say("venue.refuse_xp")
+	var dealt := venue_day_peek(venue_id)
+	if VenueRules.deals_lines(activity) and not dealt.is_empty() and bool(dealt["dry"]):
+		return Text.say("venue.come_back")
 	return ""
 
 

@@ -9977,7 +9977,7 @@
   {
     "key": "hint.stage_suit.earnest_1",
     "where": "Rhetoric hint about a stage; {stage} = its name",
-    "english": "In the {stage}, they want sincerity, not theatre.",
+    "english": "In the {stage}, they want sincerity, not theater.",
     "placeholders": "stage",
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
   },
@@ -10614,7 +10614,7 @@
   {
     "key": "tips.rhetoric_emotional",
     "where": "Tips: the suit as a phrase",
-    "english": "emotional rhetoric",
+    "english": "emotive rhetoric",
     "placeholders": null,
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
   },
@@ -10628,7 +10628,7 @@
   {
     "key": "tips.rhetoric_data_driven",
     "where": "Tips: the suit as a phrase",
-    "english": "data-driven rhetoric",
+    "english": "logical rhetoric and data",
     "placeholders": null,
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
   },
@@ -10642,7 +10642,7 @@
   {
     "key": "tips.rhetoric_duplicitous",
     "where": "Tips: the suit as a phrase",
-    "english": "duplicitous rhetoric",
+    "english": "double-speak",
     "placeholders": null,
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
   },
@@ -10652,5 +10652,19 @@
     "english": "The audience in the {target} responds to {rhetoric}",
     "placeholders": "target, rhetoric",
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.no_hours_weekend",
+    "where": "Venues: why Step out or a visit cannot be used when no weekend hours are left",
+    "english": "No weekend hours left.",
+    "placeholders": null,
+    "notes": "P16b (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.refuse_hours_weekend",
+    "where": "Venues: a visit needs more weekend hours than are left",
+    "english": "Not enough weekend hours",
+    "placeholders": null,
+    "notes": "P16b (2026-11-23): Claude's draft for Cameron to reword."
   }
 ]

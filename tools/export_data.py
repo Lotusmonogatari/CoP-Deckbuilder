@@ -4229,6 +4229,12 @@ def check_venues(data, report):
         hint = line.get("hint_kind")
         if not hint and not line.get("text"):
             report.error(where, "A line with no Text must be a hint (Hint Kind)")
+        # A hint row (P16b, 2026-11-23) fills a tip slot and is never dealt as an ordinary line: its Topic is `hint` and its words
+        # come from the hint.* Text rows, so its own Text stays blank.
+        if hint and str(line.get("topic") or "") != "hint":
+            report.error(where, f"A hint row (Hint Kind {hint!r}) must have Topic 'hint', not {line.get('topic')!r}")
+        if hint and line.get("text"):
+            report.error(where, "A hint row must have a blank Text; its words come from the hint.* Text rows")
         parsed = {}
         for column in ("on_date", "date_from", "date_to"):
             if line.get(column):

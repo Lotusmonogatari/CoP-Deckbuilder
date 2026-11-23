@@ -176,3 +176,81 @@ func test_the_real_lines_never_have_a_protagonist_speaker() -> void:
 	assert_eq(DataDB.venue_lines.size(), 90)
 	for line: Dictionary in DataDB.venue_lines:
 		assert_false(protagonists.has(str(line.get("speaker", ""))), "%s: a protagonist never speaks" % line["line_id"])
+
+
+# --- Tip slots are filled from hint rows (P16b, 2026-11-23) --------------------------------------------------------------------
+
+const REAL_TARGETS := {"stage_suit": [{"id": "ST16", "suit": "Data Driven"}, {"id": "ST08", "suit": "Divisive"}],
+	"opponent_suit": [{"id": "OP29", "suit": "Emotional"}, {"id": "OP82", "suit": "Earnest"}]}
+const REAL_PHRASINGS := {"stage_suit.data_driven": 4, "stage_suit.divisive": 3, "opponent_suit.emotional": 3, "opponent_suit.earnest": 4}
+
+
+func _real_deal(pool: String, day: int, lines: Array = []) -> Array:
+	var rows: Array = lines if not lines.is_empty() else DataDB.venue_lines
+	var ctx := _ctx("18.10.15")
+	ctx["today"] = _day("18.10.15") + day
+	return VenueLines.deal(rows, pool, ctx, VenueLines.seed_for(1, day, pool), 12, 8, REAL_TARGETS, REAL_PHRASINGS)
+
+
+func test_every_tip_comes_from_a_hint_row_of_the_venue_it_was_heard_at() -> void:
+	var tips := 0
+	for pool: String in ["cafeteria", "gardens"]:
+		for day in 300:
+			for entry: Dictionary in _real_deal(pool, day):
+				var row := VenueLines.find(DataDB.venue_lines, str(entry["line_id"]))
+				if (entry["hint"] as Dictionary).is_empty():
+					continue
+				tips += 1
+				assert_true(VenueLines.is_hint(row), "%s is a hint row" % row["line_id"])
+				assert_eq(row["pool"], pool, "a %s tip comes from a %s hint row" % [pool, pool])
+				assert_eq(entry["hint"]["kind"], row["hint_kind"], "the row sets the kind")
+	assert_gt(tips, 100, "tips were dealt")
+
+
+func test_no_hint_row_is_ever_dealt_as_an_ordinary_line() -> void:
+	for pool: String in ["cafeteria", "gardens"]:
+		for day in 300:
+			for entry: Dictionary in _real_deal(pool, day):
+				var row := VenueLines.find(DataDB.venue_lines, str(entry["line_id"]))
+				if (entry["hint"] as Dictionary).is_empty():
+					assert_false(VenueLines.is_hint(row), "%s is a hint row dealt as a plain line" % row["line_id"])
+					assert_false(str(row.get("text", "")).is_empty(), "an ordinary line has its own words")
+
+
+func test_a_venue_with_its_hint_rows_gated_out_deals_no_tips_that_day() -> void:
+	var gated: Array = []
+	for row: Dictionary in DataDB.venue_lines:
+		var copy := row.duplicate()
+		if VenueLines.is_hint(copy):
+			copy["date_from"] = "30.01.01"   # opens far in the future
+		gated.append(copy)
+	for pool: String in ["cafeteria", "gardens"]:
+		for day in 50:
+			for entry: Dictionary in _real_deal(pool, day, gated):
+				assert_true((entry["hint"] as Dictionary).is_empty(), "no tip with every hint row gated out")
+				assert_false(VenueLines.is_hint(VenueLines.find(gated, str(entry["line_id"]))))
+
+
+func test_the_real_deal_still_makes_about_one_slot_in_eight_a_tip() -> void:
+	var tips := 0
+	var slots := 0
+	for day in 400:
+		for entry: Dictionary in _real_deal("cafeteria", day):
+			slots += 1
+			tips += 0 if (entry["hint"] as Dictionary).is_empty() else 1
+	var share := float(tips) / float(slots)
+	assert_between(share, 0.09, 0.16, "about 1 in 8 (%.3f)" % share)
+
+
+func test_a_hint_rows_own_target_and_weight_decide_what_it_says() -> void:
+	var lines := _plain(20)
+	lines.append(_line("HA", {"hint_kind": "stage_suit", "hint_target": "ST08", "weight": 1}))
+	for day in 80:
+		for entry: Dictionary in VenueLines.deal(lines, "cafeteria", _ctx(), day, 12, 2, REAL_TARGETS, REAL_PHRASINGS):
+			if not (entry["hint"] as Dictionary).is_empty():
+				assert_eq(entry["hint"]["target"], "ST08", "the row's own target")
+
+
+func test_the_same_seed_deals_the_same_tips_after_a_reload() -> void:
+	for pool: String in ["cafeteria", "gardens"]:
+		assert_eq(_real_deal(pool, 17), _real_deal(pool, 17), "a reload deals the same set, tips included")

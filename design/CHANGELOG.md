@@ -2003,3 +2003,12 @@ Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** no
 |---|---|
 | Suit phrases | Tips say "responds to earnest / emotional / appealing / data-driven / divisive / duplicitous rhetoric" instead of the suit's name; the suit chip stays only in the Tips you hold list. A stage tip reads "The audience in the {stage} responds to ...". |
 | Phrasing review | Eleven hint phrasings rewritten: no past events ("last session", "once changed a vote"), no invented facts about people ("half the committee are accountants"), and the people in the room, not the stage, do the liking and deciding, so a TV debate or a press conference reads right. |
+
+## P16b: suit phrases, American spelling, weekend hours, tip slots from hint rows (2026-11-23, Cameron; branch `feature/p16b-venue-rules`)
+
+| Task | Status before | What changed |
+|---|---|---|
+| 1. Suit phrases | Partly matched (mechanism built, three values differed) | `tips.rhetoric_emotional` is "emotive rhetoric", `_data_driven` "logical rhetoric and data", `_duplicitous` "double-speak". The test now checks the six values and fails on any Text row saying "rhetoric of". |
+| 2. American spelling | Partly matched | "theatre" became "theater" in the Earnest stage hint. No other British spelling found in the venue content. |
+| 3. Hours, weekdays and weekends | Mostly matched (the hours were already the current phase's pool) | The reasons now say weekday or weekend (two new Text rows), and a refused visit or a look at a venue deals no set. |
+| 4. Tip slots from hint rows | Matched | Tests added; the exporter now fails a hint row with Text or a Topic other than `hint`. |
