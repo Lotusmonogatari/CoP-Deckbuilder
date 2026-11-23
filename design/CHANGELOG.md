@@ -2023,7 +2023,7 @@ Fourteen new pictures in `assets/backgrounds/` (all landscape, 1456 x 816 for ro
 | `CAPITOL_GARDENS_AUTUMN`, `CAPITOL_GARDENS_WINTER` | Yes: a venue shows `<its background>_<SEASON>` when that file exists, else the plain one. Seasons are rules.json's table (September to November autumn, December to March winter), the same one the seasonal levels and events use. Any venue gets seasons by adding such files. |
 | `CAPITOL_LIBRARY` | Named by the Library's row already; shows when the Library is built ("Coming soon" today). |
 | `AREA_SUPER_STATION`, `AREA_SUPER_STATION_TRACKS` | Not wired: Sapporo Super Station (the Departures venue) is "Coming soon". Two views: the concourse and the tracks. |
-| `AREA_SAPPORO_STAGE_STAGE`, `AREA_SAPPORO_STAGE_WINTER` | Not wired: the row asks for `AREA_SAPPORO_STAGE`, so the file names or the row need one decision (see below). |
+| `AREA_SAPPORO_STAGE` (renamed from `AREA_SAPPORO_STAGE_STAGE`, Cameron's say-so), `AREA_SAPPORO_STAGE_WINTER` | Named right for the Sapporo Stage row and the seasonal rule; shown when the Stage is built ("Coming soon" today). |
 | `AREA_AOMORI_STATION`, `AREA_SAPPORO_WEST_STATION`, `AREA_TOMAKOMAI_STATION`, `AREA_WAKKANAI_STATION` | Not wired: District stations, noted for the later District venues work. |
 
 Code: `VenueRules.seasonal_background`, `VenuesController.venue_picture_id`, the studio picture in `OfficeScreen._show_speech_coach_page`, and a `venue:gardens` screenshot case. Tests: two in `test_venue_rules.gd`.

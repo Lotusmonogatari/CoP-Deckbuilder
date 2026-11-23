@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brj3iujelm44t"
-path="res://.godot/imported/AREA_SAPPORO_STAGE_STAGE.png-3160e7b22c7636e0e8e7298fc2033dc1.ctex"
+uid="uid://b38i1ddrwfh7m"
+path="res://.godot/imported/AREA_SAPPORO_STAGE.png-71845e840026084aee7e6feb37790e72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/AREA_SAPPORO_STAGE_STAGE.png"
-dest_files=["res://.godot/imported/AREA_SAPPORO_STAGE_STAGE.png-3160e7b22c7636e0e8e7298fc2033dc1.ctex"]
+source_file="res://assets/backgrounds/AREA_SAPPORO_STAGE.png"
+dest_files=["res://.godot/imported/AREA_SAPPORO_STAGE.png-71845e840026084aee7e6feb37790e72.ctex"]
 
 [params]
 
