@@ -15,11 +15,11 @@ func _ready() -> void:
 func _run() -> void:
 	GameState.start_new_run("PC01")
 	GameState.awaiting_new_game = false
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}   # Monday 18.10.08
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}   # Monday 18.10.15
 	GameState.office_location = Offices.CAPITOL
 	GameState.dated_events_done = ["EV47"]
 	GameState.decision_log = {}
-	_add_scene("O1", "18.10.08", "18.10.12", "Capitol")
+	_add_scene("O1", "18.10.15", "18.10.19", "Capitol")
 	_add_scene("O2", "18.10.01", "18.10.05", "Capitol")   # closed before today: lapses
 	GameState.meta["Funds"] = 10000
 	OS.unset_environment("COP_NO_RANDOM_EVENTS")

@@ -1956,3 +1956,12 @@ Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** no
 ## VI19 Sora Kudo's picture arrives: every visitor has one (2026-11-23, Cameron)
 
 `VI19.png` (592 x 1452, Ferry Captain Sora Kudo) was uploaded; it is a new file and replaces nothing. With it **all 174 visitors have a picture** and every picture has a visitor. The import file is added. Merged after the quick check.
+
+## Parliament opens on 18.10.15; Yun-hee Seong (2026-11-23, Cameron; branch `fix/ds01-oct15-and-yun-hee`)
+
+| Part | What changed |
+|---|---|
+| DS01 date | The Prime Minister's Opening Address (EV47, scene DS01) now opens on **Monday 18.10.15**, the day parliament opens (it was 18.10.08). Events On Date and Decision Scenes Opens both read 18.10.15. It shows on the Events screen's "Coming up" list from 18.10.08. |
+| Name order | **OP74** is now **Yun-hee Seong** (was "Seong Yun-hee"), matching Lee-min Seong's order. The opponent data, the art checklist and the tests that mention her follow from the Opponents tab. |
+| Tests | Date-pinned Decision! and events tests moved a week (week 2, 18.10.15); one new check that nothing opens on Monday 18.10.08 or the Friday after it. |
+| Not part of this | The rules asked for with it (staff arranging evening travel the day before a Decision!, keeping levels from running over a Decision!) are in `design/proposals/P15_CPTPP_WHIP_PLAN_2026-11-23.md` and wait for "Go". |

@@ -15,7 +15,7 @@ func _ready() -> void:
 func _run() -> void:
 	GameState.start_new_run("PC01")
 	GameState.awaiting_new_game = false
-	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	GameState.calendar = {"week": 2, "phase": "work", "hours": 0}
 	GameState.office_location = Offices.CAPITOL
 	GameState.dated_events_done = []
 	GameState.decision_log = {}
