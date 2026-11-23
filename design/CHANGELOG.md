@@ -1988,3 +1988,18 @@ Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** no
 | Speech Coach | Now a Capital Area venue; its activity opens the Rhetoric Training page unchanged (sessions, coupons, 1 hour per tier). The Rhetoric Training tab is gone from Office Management. |
 | Data | New tabs Venues (6), Venue Activities (6) and Venue Lines (90); the 56 hint and UI Text rows; Rules rows `venue_walk_hours_building`, `venue_walk_hours_area`, `venue_daily_set`, `venue_daily_heard`, `venue_hint_share` (8 = one in eight), `tips_max_held`, `tips_days`. Exporter checks for every column. The run gains `run_seed`, `venue_days`, `venue_heard_once` and `held_tips` (old saves load with none). `GameState.levels_on_offer()` now holds the Levels list's filters. |
 | Tests | `test_venue_rules`, `test_venue_lines`, `test_rhetoric_tips`, `test_venue_state`, the click test `venue_test`; the Rhetoric Training click path now goes through Step out. Review pictures: `design/review/p16_capitol_venues_2026-11-23/REPORT.md`. |
+
+## Venue wording: no automatic "You overhear", opponent tips read as a condition (2026-11-23, Cameron; branch `feature/p16-venue-wording`)
+
+| Part | What changed |
+|---|---|
+| "You overhear..." | No longer added to Gardens tips. A line that wants it writes it in its own words. |
+| Opponent tips | Marked under every room the person can be seated in, and worded as a condition: "If {name} is seated here, they respond to [suit]". A stage tip is unchanged. |
+| Guide | The rules, style guide and hint and chatter guidelines are compiled in one claude.ai doc; `CONTENT_GUIDE.md` points to it. |
+
+## Tip wording: each suit gets a grammatical phrase; hint phrasings reviewed (2026-11-23, Cameron's comment on the venues guide)
+
+| Part | What changed |
+|---|---|
+| Suit phrases | Tips say "responds to earnest / emotional / appealing / data-driven / divisive / duplicitous rhetoric" instead of the suit's name; the suit chip stays only in the Tips you hold list. A stage tip reads "The audience in the {stage} responds to ...". |
+| Phrasing review | Eleven hint phrasings rewritten: no past events ("last session", "once changed a vote"), no invented facts about people ("half the committee are accountants"), and the people in the room, not the stage, do the liking and deciding, so a TV debate or a press conference reads right. |

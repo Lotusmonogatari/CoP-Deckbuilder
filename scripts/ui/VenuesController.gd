@@ -196,9 +196,8 @@ func _hear(venue_id: String) -> void:
 	var venue := GameState.venue_row(venue_id)
 	var pool := str(heard.get("where", ""))
 	var body: Array[Control] = []
-	# A tip overheard in the Gardens leads with "You overhear ..." (the mockup), the words quoted beneath it.
-	var lead := Text.say("venue.overhear_lead") if pool == "gardens" and str(heard["kind"]) == "hint" else ""
-	body.append(VenueViews.speaker_row(str(heard["text"]), str(heard.get("speaker", "")), lead))
+	# No automatic "You overhear ..." lead (Cameron, 2026-11-23): a line that wants it says so in its own words.
+	body.append(VenueViews.speaker_row(str(heard["text"]), str(heard.get("speaker", ""))))
 	var hint: Dictionary = heard.get("hint", {})
 	if not hint.is_empty():
 		body.append(VenueViews.tip_box(hint, pool))

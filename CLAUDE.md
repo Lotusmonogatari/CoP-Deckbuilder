@@ -348,3 +348,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Parliament opens on 18.10.15 (DS01 moves); OP74 is Yun-hee Seong (2026-11-23, Cameron; branch `fix/ds01-oct15-and-yun-hee`)
 - P15: the CPTPP Decision! sequence, two whips and two votes (2026-11-23, Cameron; branch `feature/p15-cptpp-whip`)
 - P16: Capitol venues, phase 1: Step out, the Cafeteria, the Gardens, rhetoric tips, the Speech Coach (2026-11-23, Cameron; branch `feature/p16-capitol-venues`)
+- Venue wording: no automatic "You overhear", opponent tips read as a condition (2026-11-23, Cameron; branch `feature/p16-venue-wording`)

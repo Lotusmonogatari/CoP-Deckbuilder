@@ -29,6 +29,19 @@ static func suit_chip(suit: String) -> Control:
 	return holder
 
 
+## The suit as a phrase that ends "responds to ...": "data-driven rhetoric" (Cameron, 2026-11-23: each suit needs grammatical wording).
+## Literal Text keys, one for each suit, so the exporter can check each exists.
+static func rhetoric_phrase(suit: String) -> String:
+	match suit:
+		"Earnest": return Text.say("tips.rhetoric_earnest")
+		"Emotional": return Text.say("tips.rhetoric_emotional")
+		"Appeal": return Text.say("tips.rhetoric_appeal")
+		"Data Driven": return Text.say("tips.rhetoric_data_driven")
+		"Divisive": return Text.say("tips.rhetoric_divisive")
+		"Duplicitous": return Text.say("tips.rhetoric_duplicitous")
+	return suit
+
+
 ## The name a tip is about: the stage's name or the person's.
 static func tip_target_name(tip: Dictionary) -> String:
 	var target := str(tip.get("target", ""))
@@ -66,15 +79,14 @@ static func tip_box(hint: Dictionary, where: String) -> Control:
 	heading.custom_minimum_size.x = 0.0
 	column.add_child(heading)
 	var target := {"kind": hint.get("kind", ""), "target": hint.get("target", "")}
-	var sentence := UiKit.line(Text.say("venue.tip_responds", {"target": tip_target_name(target)}), "HeaderLabel")
+	var rhetoric := rhetoric_phrase(str(hint.get("suit", "")))
+	var words := Text.say("venue.tip_responds_stage", {"target": tip_target_name(target), "rhetoric": rhetoric}) \
+		if str(hint.get("kind", "")) == RhetoricTips.STAGE \
+		else Text.say("venue.tip_responds", {"target": tip_target_name(target), "rhetoric": rhetoric})
+	var sentence := UiKit.line(words, "HeaderLabel")
 	sentence.name = "TipSentence"
 	sentence.custom_minimum_size.x = 0.0
-	sentence.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	var chip_row := HBoxContainer.new()
-	chip_row.add_theme_constant_override("separation", 12)
-	chip_row.add_child(sentence)
-	chip_row.add_child(suit_chip(str(hint.get("suit", ""))))
-	column.add_child(chip_row)
+	column.add_child(sentence)
 	var saved := UiKit.line(Text.say("venue.tip_saved_opponent", {"name": tip_target_name(target)})
 		if str(hint.get("kind", "")) == RhetoricTips.OPPONENT else Text.say("venue.tip_saved"), "SmallLabel")
 	saved.custom_minimum_size.x = 0.0
