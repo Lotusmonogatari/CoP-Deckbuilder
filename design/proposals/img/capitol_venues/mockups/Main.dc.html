@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Capitol venues: tips and gossip</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<style>
+@font-face{font-family:'Antaka Brush Display';src:url('/_blob/cc6269ff37b8f3cb52dc950ce881f528') format('truetype');font-display:swap}
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+button{font:inherit}
+</style>
+</helmet>
+<sc-if value="{{is.tip}}" hint-placeholder-val="true">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="position: absolute; inset: 0; background: {{t.tile}}; display: flex; align-items: flex-start; justify-content: center; padding-top: 40px">
+    <span style="font-size: 11px; letter-spacing: .08em; color: {{t.muted}}">CAFETERIA · picture not drawn yet</span>
+  </div>
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; padding: 18px 14px; display: flex; flex-direction: column; justify-content: center">
+    <section role="dialog" aria-label="Lunch with colleagues" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; justify-content: space-between; align-items: center; gap: 8px">
+        <span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">CAFETERIA · LUNCH</span>
+        <span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">Line 3 of 8 today</span>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 4px 16px 14px 16px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; gap: 12px; align-items: flex-start">
+          <div style="flex: 0 0 auto; width: 64px; height: 84px; background: {{t.tile}}; border-radius: {{t.rSmall}}; overflow: hidden; display: flex; align-items: flex-end; justify-content: center"><img src="/_blob/c468e9bd5ac794ccf77704751c40a1b8" alt="Ayala Taiyounokage" style="height: 82px; width: auto; max-width: 64px; object-fit: cover; object-position: top"></div>
+          <div style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px">
+            <p style="margin: 0; font-size: 15px; line-height: 1.5; font-family: {{t.head}}">“The Committee on Finance? Bring charts. They don’t hear anything without a chart.”</p>
+            <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700"><span style="width: 10px; height: 10px; border-radius: {{t.dot}}; background: #8000FF; border: 1px solid {{t.ink}}" aria-hidden="true"></span>— Ayala Taiyounokage</span>
+            <span style="font-size: 11.5px; color: {{t.muted}}">Five Point Independents · over curry</span>
+          </div>
+        </div>
+        <div role="note" style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; background: {{t.tile}}; border: 2px solid #3B7A57; border-radius: {{t.rSmall}}">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+            <span style="font-size: 11px; font-weight: 700; letter-spacing: .08em; color: {{t.muted}}">RHETORIC TIP · HEARD IN THE CAFETERIA</span>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" style="color: #3B7A57"><path d="M9 2a5 5 0 0 0-3 9v2h6v-2a5 5 0 0 0-3-9zM7 15.5h4"/></svg>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+            <span style="font-size: 14px; font-weight: 700">Committee on Finance</span>
+            <span style="font-size: 13px">responds to</span>
+            <span style="display: flex; align-items: center; gap: 5px; padding: 3px 10px; font-size: 12.5px; font-weight: 700; background: #3B7A57; color: #FFFFFF; border-radius: {{t.pill}}">Data Driven</span>
+          </div>
+          <span style="font-size: 11.5px; color: {{t.muted}}">Saved: the briefing for any level with this room will show it.</span>
+        </div>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 0">Back to the Cafeteria</button>
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1.4 1 0; font-size: 14px">Keep listening</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.gossip}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="position: absolute; inset: 0; background: {{t.tile}}; display: flex; align-items: flex-start; justify-content: center; padding-top: 40px">
+    <span style="font-size: 11px; letter-spacing: .08em; color: {{t.muted}}">CAFETERIA · picture not drawn yet</span>
+  </div>
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; padding: 18px 14px; display: flex; flex-direction: column; justify-content: center">
+    <section role="dialog" aria-label="Lunch with colleagues" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; justify-content: space-between; align-items: center; gap: 8px">
+        <span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">CAFETERIA · LUNCH</span>
+        <span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">Line 5 of 8 today</span>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 4px 16px 14px 16px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; gap: 12px; align-items: flex-start">
+          <div style="flex: 0 0 auto; width: 64px; height: 84px; background: {{t.tile}}; border-radius: {{t.rSmall}}; overflow: hidden; display: flex; align-items: flex-end; justify-content: center"><img src="/_blob/c468e9bd5ac794ccf77704751c40a1b8" alt="Ayala Taiyounokage" style="height: 82px; width: auto; max-width: 64px; object-fit: cover; object-position: top"></div>
+          <div style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px">
+            <p style="margin: 0; font-size: 15px; line-height: 1.5; font-family: {{t.head}}">“Five seats, five opinions. We call it a caucus.”</p>
+            <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700"><span style="width: 10px; height: 10px; border-radius: {{t.dot}}; background: #8000FF; border: 1px solid {{t.ink}}" aria-hidden="true"></span>— Ayala Taiyounokage</span>
+            <span style="font-size: 11.5px; color: {{t.muted}}">Five Point Independents · at the next table</span>
+          </div>
+        </div>
+        <span style="font-size: 12px; color: {{t.muted}}">Gossip only. Nothing changes.</span>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 0">Back to the Cafeteria</button>
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1.4 1 0; font-size: 14px">Keep listening</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.overheard}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="position: absolute; inset: 0; background: {{t.tile}}; display: flex; align-items: flex-start; justify-content: center; padding-top: 40px">
+    <span style="font-size: 11px; letter-spacing: .08em; color: {{t.muted}}">GARDENS · picture not drawn yet</span>
+  </div>
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; padding: 18px 14px; display: flex; flex-direction: column; justify-content: center">
+    <section role="dialog" aria-label="People watching" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; justify-content: space-between; align-items: center; gap: 8px">
+        <span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">GARDENS · PEOPLE WATCHING</span>
+        <span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">Line 2 of 8 today</span>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 4px 16px 14px 16px; display: flex; flex-direction: column; gap: 12px">
+        <p style="margin: 0; font-size: 12.5px; color: {{t.muted}}">You overhear two aides on the bench behind the hedge.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; font-family: {{t.head}}">“Don’t open with figures. Minister Resu melts for a good story. Bring her a story.”</p>
+        <div role="note" style="display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; background: {{t.tile}}; border: 2px solid #B3311C; border-radius: {{t.rSmall}}">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+            <span style="font-size: 11px; font-weight: 700; letter-spacing: .08em; color: {{t.muted}}">RHETORIC TIP · OVERHEARD IN THE GARDENS</span>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" style="color: #B3311C"><path d="M9 2a5 5 0 0 0-3 9v2h6v-2a5 5 0 0 0-3-9zM7 15.5h4"/></svg>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+            <span style="font-size: 14px; font-weight: 700">Minister Imekanu Resu</span>
+            <span style="font-size: 13px">responds to</span>
+            <span style="display: flex; align-items: center; gap: 5px; padding: 3px 10px; font-size: 12.5px; font-weight: 700; background: #B3311C; color: #FFFFFF; border-radius: {{t.pill}}">Emotional</span>
+          </div>
+          <span style="font-size: 11.5px; color: {{t.muted}}">Saved: her opening card in your next stage against her.</span>
+        </div>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 0">Back to the Gardens</button>
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1.4 1 0; font-size: 14px">Keep listening</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.dry}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="position: absolute; inset: 0; background: {{t.tile}}; display: flex; align-items: flex-start; justify-content: center; padding-top: 40px">
+    <span style="font-size: 11px; letter-spacing: .08em; color: {{t.muted}}">CAFETERIA · picture not drawn yet</span>
+  </div>
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; padding: 18px 14px; display: flex; flex-direction: column; justify-content: center">
+    <section role="dialog" aria-label="Lunch with colleagues" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; justify-content: space-between; align-items: center; gap: 8px">
+        <span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">CAFETERIA · LUNCH</span>
+        <span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">8 of 8 heard today</span>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 4px 16px 14px 16px; display: flex; flex-direction: column; gap: 12px">
+        <p style="margin: 0; font-size: 16px; line-height: 1.5; font-style: italic; font-family: {{t.head}}">The rumor mill is on the same subjects as before.</p>
+        <span style="font-size: 12px; color: {{t.muted}}">New talk tomorrow. Lunch still counts toward your day.</span>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 44px; padding: 0 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.ink}}; border: {{t.bw}} solid {{t.muted}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 0">Back to the Cafeteria</button>
+        <button aria-disabled="true" style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1.4 1 0; font-size: 13px; opacity: .45">Come back tomorrow</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.briefing}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <span style="font-size: 12.5px; color: {{t.onBgMuted}}">LV27 · Tier 2 · 3 rooms · 6 h at the Capitol</span>
+    <sc-for list="{{rooms}}" as="r" hint-placeholder-count="3">
+      <article style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 14px; font-weight: 700">{{r.n}}. {{r.name}}</span><span style="font-size: 11.5px; color: {{t.muted}}">{{r.kind}} · {{r.hours}}</span></div>
+        <span style="font-size: 12px">{{r.win}}</span>
+        <div style="display: {{r.tipShow}}; align-items: center; gap: 6px; flex-wrap: wrap; padding: 6px 8px; background: {{t.tile}}; border-left: 4px solid {{r.tipColor}}; border-radius: {{t.rSmall}}">
+          <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" style="color: {{r.tipColor}}"><path d="M9 2a5 5 0 0 0-3 9v2h6v-2a5 5 0 0 0-3-9zM7 15.5h4"/></svg>
+          <span style="font-size: 12px">Responds to</span>
+          <span style="padding: 2px 8px; font-size: 11.5px; font-weight: 700; background: {{r.tipColor}}; color: #FFFFFF; border-radius: {{t.pill}}">{{r.tipSuit}}</span>
+          <span style="font-size: 11px; color: {{t.muted}}">{{r.tipFrom}}</span>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+  <div style="flex: 0 0 auto; display: flex; gap: 10px; padding: 10px 16px 14px 16px; border-top: {{t.footTop}}; background: {{t.bg}}"><button style="min-height: 48px; padding: 0 16px; font-size: 14px; font-weight: 700; cursor: pointer; background: transparent; color: {{t.onBg}}; border: {{t.bw}} solid {{t.secEdge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; flex: 1 1 0">Back</button><button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1.6 1 0">Go in</button></div>
+</div>
+</sc-if>
+<sc-if value="{{is.levels}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px 16px 12px 16px; flex: 1 1 auto; min-height: 0; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: center; height: 44px; flex: 0 0 auto">
+      <a href="#office" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 4px; font-size: 14px; font-weight: 600; text-decoration: none; color: {{t.onBg}}">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+        Office
+      </a>
+      <div style="display: flex; gap: 6px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="1">
+          <span style="padding: 5px 10px; font-size: 12px; font-weight: 700; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; white-space: nowrap">{{c}}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; flex: 0 0 auto">
+      <h1 style="margin: 0; font-family: {{t.display}}; font-size: {{t.titleSize}}; font-style: {{t.titleStyle}}; font-weight: {{t.titleWeight}}; line-height: 1.1; text-transform: {{t.titleCase}}; color: {{t.onBg}}">{{title}}</h1>
+      <span lang="ja" style="font-size: 12px; color: {{t.jp}}">{{jp}}</span>
+    </div>
+    <div role="tablist" style="display: flex; gap: 6px; flex: 0 0 auto; overflow-x: auto">
+      <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+        <button role="tab" style="flex: 0 0 auto; min-height: 36px; padding: 0 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; background: {{tb.bg}}; color: {{tb.ink}}; border: {{t.bw}} solid {{tb.edge}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}">{{tb.label}}</button>
+      </sc-for>
+    </div>
+    <button aria-label="Tips you hold: 4" style="align-self: flex-start; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; cursor: pointer; background: {{t.card}}; color: {{t.ink}}; border: {{t.bw}} solid {{t.accent}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.body}}; font-size: 13.5px; font-weight: 700">
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 2a5 5 0 0 0-3 9v2h6v-2a5 5 0 0 0-3-9zM7 15.5h4"/></svg>
+      Tips <span style="padding: 1px 8px; font-size: 12px; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.pill}}">4</span>
+    </button>
+    <sc-for list="{{levels}}" as="l" hint-placeholder-count="5">
+      <article style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; padding: 10px 12px; display: flex; gap: 10px; align-items: center">
+        <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+          <span style="font-size: 14px; font-weight: 700; line-height: 1.25">{{l.name}}</span>
+          <span style="font-size: 11.5px; color: {{t.muted}}">{{l.meta}}</span>
+        </div>
+        <span style="display: {{l.tipShow}}; align-items: center; gap: 4px; padding: 2px 8px; font-size: 11px; font-weight: 700; background: {{t.tile}}; color: {{t.ink}}; border-radius: {{t.pill}}"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 2a5 5 0 0 0-3 9v2h6v-2a5 5 0 0 0-3-9zM7 15.5h4"/></svg>{{l.tips}}</span>
+      </article>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{is.tips}}" hint-placeholder-val="false">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{t.bg}}; color: {{t.onBg}}; font-family: {{t.body}}; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="position: absolute; inset: 0; background: {{t.tile}}; display: flex; align-items: flex-start; justify-content: center; padding-top: 40px">
+    <span style="font-size: 11px; letter-spacing: .08em; color: {{t.muted}}">Levels list behind</span>
+  </div>
+  <div style="position: absolute; inset: 0; background: {{t.scrim}}"></div>
+  <div style="position: relative; flex: 1 1 auto; min-height: 0; padding: 18px 14px; display: flex; flex-direction: column; justify-content: center">
+    <section role="dialog" aria-label="Tips you hold" style="background: {{t.card}}; color: {{t.ink}}; border-top: {{t.cardTop}}; border-bottom: {{t.cardTop}}; border-left: {{t.cardSide}}; border-right: {{t.cardSide}}; border-radius: {{t.r}}; box-shadow: {{t.shadow}}; box-sizing: border-box; max-height: 100%; display: flex; flex-direction: column; overflow: hidden">
+      <div style="padding: 14px 16px 8px 16px; display: flex; justify-content: space-between; align-items: center; gap: 8px">
+        <span style="padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: {{t.accent}}; color: {{t.accentInk}}; border-radius: {{t.rSmall}}; clip-path: {{t.clip}}; white-space: nowrap">TIPS YOU HOLD</span>
+        <span style="font-size: 12px; font-weight: 700; color: {{t.muted}}">4 of 10</span>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 4px 16px 14px 16px; display: flex; flex-direction: column; gap: 12px">
+        <span style="font-size: 12px; color: {{t.muted}}">A tip lasts 2 weeks. When you hold 10, a new one replaces the oldest.</span>
+        <sc-for list="{{tips}}" as="p" hint-placeholder-count="4">
+          <div style="display: flex; flex-direction: column; gap: 4px; padding: 8px 0; border-top: 1px solid {{t.divider}}">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+              <span style="font-size: 13.5px; font-weight: 700">{{p.target}}</span>
+              <span style="padding: 2px 9px; font-size: 11.5px; font-weight: 700; background: {{p.color}}; color: #FFFFFF; border-radius: {{t.pill}}; white-space: nowrap">{{p.suit}}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: {{t.muted}}"><span>{{p.from}}</span><span style="font-weight: 700; color: {{p.dayTone}}">{{p.days}}</span></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="flex: 0 0 auto; padding: 12px 16px 16px 16px; display: flex; gap: 8px; border-top: 1px solid {{t.divider}}">
+        <button style="min-height: 48px; padding: 0 16px; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.go}}; color: {{t.goInk}}; border: {{t.bw}} solid {{t.go}}; border-radius: {{t.pill}}; clip-path: {{t.clip}}; font-family: {{t.head}}; font-style: {{t.titleStyle}}; text-transform: {{t.titleCase}}; letter-spacing: {{t.headSpacing}}; flex: 1 1 auto">Close</button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["woodblock","living","broadcast"],"default":"woodblock"},"screen":{"editor":"enum","options":["tip", "gossip", "overheard", "dry", "briefing", "levels", "tips"],"default":"tip"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      woodblock: { bg:'#EFE4CF', onBg:'#1C1A17', onBgMuted:'#463F36', card:'#F8F1E3', ink:'#1C1A17', muted:'#4E463C', tile:'#EFE4CF', accent:'#22305A', accentInk:'#F8F1E3', hot:'#C23B22', edge:'#1C1A17', bw:'2px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'4px 4px 0 #C23B22', display:"'Antaka Brush Display', 'Shippori Mincho B1', serif", head:"'Shippori Mincho B1', serif", body:"'Shippori Mincho B1', serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'2px solid #1C1A17', cardSide:'2px solid #1C1A17', divider:'rgba(28,26,23,.22)', footTop:'2px solid #1C1A17', secEdge:'#1C1A17', go:'#22305A', goInk:'#F8F1E3', good:'#2F6B3A', bad:'#A42A17', tabBg:'#F8F1E3', tabInk:'#1C1A17', tabEdge:'#1C1A17', tabOnBg:'#22305A', tabOnInk:'#F8F1E3', barTrack:'#E2D6BF', barFill:'#22305A', jp:'#6B5F50', warnBg:'#F6DDD3', warnInk:'#7A1E10', alarm:'#B3311C', alarmInk:'#FFFFFF', scrim:'rgba(28,26,23,.55)', paper:'#F8F1E3' },
+      living: { bg:'#2B1D12', onBg:'#FFF8EC', onBgMuted:'#E8DAC3', card:'#FFF8EC', ink:'#2B1D12', muted:'#5C4A38', tile:'#F3E4C8', accent:'#FFD58A', accentInk:'#2B1D12', hot:'#FFD58A', edge:'#E8DAC3', bw:'1px', r:'18px', rSmall:'12px', pill:'999px', dot:'50%', shadow:'0 8px 20px rgba(0,0,0,.35)', display:"'Antaka Brush Display', 'Zen Kaku Gothic New', sans-serif", head:"'Zen Kaku Gothic New', sans-serif", body:"'Zen Kaku Gothic New', sans-serif", titleStyle:'normal', titleWeight:'400', titleSize:'27px', titleCase:'none', headSpacing:'0', clip:'none', cardTop:'1px solid #E2CFAF', cardSide:'1px solid #E2CFAF', divider:'rgba(43,29,18,.14)', footTop:'1px solid rgba(255,248,236,.15)', secEdge:'#E8DAC3', go:'#FFD58A', goInk:'#2B1D12', good:'#2E6B34', bad:'#A3261A', tabBg:'transparent', tabInk:'#E8DAC3', tabEdge:'rgba(255,248,236,.3)', tabOnBg:'#FFD58A', tabOnInk:'#2B1D12', barTrack:'#EADBC0', barFill:'#9A6413', jp:'#D9C8AC', warnBg:'#F8DDD6', warnInk:'#7A1E10', alarm:'#A3261A', alarmInk:'#FFFFFF', scrim:'rgba(20,12,6,.62)', paper:'#FFF8EC' },
+      broadcast: { bg:'#0B1220', onBg:'#F4F1EA', onBgMuted:'#C3C9D6', card:'#141E33', ink:'#F4F1EA', muted:'#B9C0CF', tile:'#0E1728', accent:'#E3B341', accentInk:'#0B1220', hot:'#E3B341', edge:'#E3B341', bw:'1px', r:'0px', rSmall:'0px', pill:'0px', dot:'0px', shadow:'none', display:"'Barlow Condensed', sans-serif", head:"'Barlow Condensed', sans-serif", body:"'Noto Sans JP', sans-serif", titleStyle:'italic', titleWeight:'700', titleSize:'29px', titleCase:'uppercase', headSpacing:'.04em', clip:'polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)', cardTop:'2px solid #E3B341', cardSide:'0px solid transparent', divider:'rgba(227,179,65,.22)', footTop:'2px solid #E3B341', secEdge:'#E3B341', go:'#E3B341', goInk:'#0B1220', good:'#7BD88F', bad:'#FF8A80', tabBg:'transparent', tabInk:'#C3C9D6', tabEdge:'rgba(227,179,65,.45)', tabOnBg:'#E3B341', tabOnInk:'#0B1220', barTrack:'#22304D', barFill:'#E3B341', jp:'#9AA3B5', warnBg:'#3A1F27', warnInk:'#FFB4AB', alarm:'#C8102E', alarmInk:'#FFFFFF', scrim:'rgba(5,9,18,.66)', paper:'#141E33' }
+    };
+    const key = T[this.props.theme] ? this.props.theme : 'woodblock';
+    const t = T[key];
+    const tabs = (labels, on) => labels.map((l) => ({ label: l, bg: l === on ? t.tabOnBg : t.tabBg, ink: l === on ? t.tabOnInk : t.tabInk, edge: l === on ? t.tabOnBg : t.tabEdge }));
+    const screen = ["tip", "gossip", "overheard", "dry", "briefing", "levels", "tips"].indexOf(this.props.screen) >= 0 ? this.props.screen : 'tip';
+    const is = {}; ["tip", "gossip", "overheard", "dry", "briefing", "levels", "tips"].forEach((s) => { is[s] = s === screen; });
+    const none = { tipShow: 'none', tipColor: t.divider, tipSuit: '', tipFrom: '' };
+    const C = {
+      tip: { chips: [], title: '', jp: '', tabs: [] }, gossip: { chips: [], title: '', jp: '', tabs: [] },
+      overheard: { chips: [], title: '', jp: '', tabs: [] }, dry: { chips: [], title: '', jp: '', tabs: [] },
+      briefing: { chips: ['Capitol', '31 h left'], title: 'Budget Scrutiny', jp: '予算審査', tabs: [] },
+      levels: { chips: ['Capitol', '31 h left'], title: 'Levels', jp: '活動', tabs: tabs(['Here', 'Done'], 'Here') },
+      tips: { chips: [], title: '', jp: '', tabs: [] }
+    };
+    return Object.assign({
+      t, is,
+      levels: [
+        { name: 'Budget Scrutiny', meta: 'Tier 2 · 3 rooms · 6 h', tips: '1 tip', tipShow: 'flex' },
+        { name: 'Fisheries Quota Modernization Act', meta: 'Tier 1 · 3 rooms · 5 h', tips: '1 tip', tipShow: 'flex' },
+        { name: 'Grid Resilience and Renewable Energy Act', meta: 'Tier 2 · 4 rooms · 7 h', tips: '', tipShow: 'none' },
+        { name: 'Party Steering Committee', meta: 'Tier 1 · 1 room · 2 h', tips: '1 tip', tipShow: 'flex' },
+        { name: 'Public Broadcasting Independence Act', meta: 'Tier 3 · 4 rooms · 8 h', tips: '', tipShow: 'none' }
+      ],
+      tips: [
+        { target: 'Committee on Finance', suit: 'Data Driven', color: '#3B7A57', from: 'Heard in the Cafeteria', days: '13 days left', dayTone: t.ink },
+        { target: 'Minister Imekanu Resu', suit: 'Emotional', color: '#B3311C', from: 'Overheard in the Gardens', days: '9 days left', dayTone: t.ink },
+        { target: 'Party Steering Committee', suit: 'Divisive', color: '#5B3E8E', from: 'Heard in the Cafeteria', days: '4 days left', dayTone: t.ink },
+        { target: 'Lobbyist Meeting on Fishing Quotas', suit: 'Data Driven', color: '#3B7A57', from: 'Overheard in the Gardens', days: 'Last day', dayTone: t.bad }
+      ],
+      rooms: [
+        Object.assign({ n: 1, name: 'Party Caucus', kind: 'Debate', hours: '2 h', win: 'Win: Party support +2' }, none),
+        { n: 2, name: 'Committee on Finance', kind: 'Debate', hours: '2 h', win: 'Win: +20,000円, XP +40', tipShow: 'flex', tipColor: '#3B7A57', tipSuit: 'Data Driven', tipFrom: 'heard in the Cafeteria' },
+        Object.assign({ n: 3, name: 'National Assembly Floor Voting', kind: 'Vote', hours: '2 h', win: 'Majority to pass' }, none)
+      ]
+    }, C[screen]);
+
+  }
+}
+</script>
+</body>
+</html>

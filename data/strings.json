@@ -9973,5 +9973,397 @@
     "english": "Both whips hold you to your word. You must abstain on {bill}.",
     "placeholders": "bill",
     "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
+  },
+  {
+    "key": "hint.stage_suit.earnest_1",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "In the {stage}, they want sincerity, not theatre.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.earnest_2",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "Talk to the {stage} like a neighbor. They can smell a speechwriter.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.earnest_3",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "The {stage} rewards anyone who admits what they don't know.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.earnest_4",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "Plain words go far in the {stage}. Leave the slogans at the door.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.emotional_1",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "The {stage} decides with its heart. Bring a story that hurts a little.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.emotional_2",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "Numbers won't move the {stage}. A family's name might.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.emotional_3",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "Someone cried in the {stage} last session, and they won the vote.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.appeal_1",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "The {stage} likes to be told it matters. Tell them.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.appeal_2",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "Flatter the room in the {stage}. It works more often than it should.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.appeal_3",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "In the {stage}, speak to everyone at once. They hate being left out.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.data_driven_1",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "The {stage}? Bring charts. They don't hear anything without a chart.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.data_driven_2",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "Footnotes win in the {stage}. Cite the page number.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.data_driven_3",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "The {stage} checks every figure. Get them right and they're yours.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.data_driven_4",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "Half the {stage} are former accountants. Speak in sums.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.divisive_1",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "The {stage} likes a fight. Pick a side, and pick it loudly.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.divisive_2",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "In the {stage}, the member who names an enemy wins the room.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.divisive_3",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "Nobody in the {stage} trusts a peacemaker. Draw a line.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.duplicitous_1",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "The {stage} runs on favors. Promise little, imply more.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.duplicitous_2",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "In the {stage}, what you leave unsaid counts more than what you say.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.stage_suit.duplicitous_3",
+    "where": "Rhetoric hint about a stage; {stage} = its name",
+    "english": "Find out who in the {stage} owes whom before you open your mouth.",
+    "placeholders": "stage",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.earnest_1",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} respects a straight answer, even a bad one.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.earnest_2",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} can't stand spin. Say it plain.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.earnest_3",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "Be honest with {name}; it disarms them.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.earnest_4",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} once changed a vote because a farmer said thank you.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.emotional_1",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} melts for a good story. Bring a story.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.emotional_2",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "Move {name} and you've won. Facts won't do it.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.emotional_3",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} remembers how a speech made them feel, not what it said.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.appeal_1",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} likes to hear their own name in a speech.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.appeal_2",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "Tell {name} the district is watching. They care what voters think.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.appeal_3",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} goes where the crowd goes. Show them the crowd.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.data_driven_1",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} reads the annex before the bill. Know the annex.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.data_driven_2",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "Don't open with feelings around {name}. Open with figures.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.data_driven_3",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} will ask for the source. Have it ready.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.divisive_1",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} enjoys a brawl. Don't be the one who flinches.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.divisive_2",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} respects anyone who hits back.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.divisive_3",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "Give {name} an enemy to share and they'll stand with you.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.duplicitous_1",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} always has a second reason. Find it.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.duplicitous_2",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} smiles at everyone. Watch the hands, not the face.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.duplicitous_3",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "With {name}, the deal is never on the table. It's under it.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "hint.opponent_suit.duplicitous_4",
+    "where": "Rhetoric hint about an opponent; {name} = their name",
+    "english": "{name} will tell you what you want to hear. Ask what they want.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.tip_heading_cafeteria",
+    "where": "Tip box heading",
+    "english": "RHETORIC TIP · HEARD IN THE CAFETERIA",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.tip_heading_gardens",
+    "where": "Tip box heading",
+    "english": "RHETORIC TIP · OVERHEARD IN THE GARDENS",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.tip_responds",
+    "where": "Tip box line",
+    "english": "{target} responds to {suit}",
+    "placeholders": "target, suit",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.tip_saved",
+    "where": "Tip box foot (stage)",
+    "english": "Saved: the briefing for any level with this room will show it.",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.tip_saved_opponent",
+    "where": "Tip box foot (opponent)",
+    "english": "Saved: shown when you next face {name}.",
+    "placeholders": "name",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.line_counter",
+    "where": "Pop-up meta",
+    "english": "Line {count} of {limit} today",
+    "placeholders": "count, limit",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.keep_listening",
+    "where": "Button",
+    "english": "Keep listening",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.come_back",
+    "where": "Greyed button after 8 lines",
+    "english": "Come back tomorrow",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.overhear_lead",
+    "where": "Gardens lead-in (one of several)",
+    "english": "You overhear two aides on the bench behind the hedge.",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "venue.gossip_only",
+    "where": "Under a plain line",
+    "english": "Gossip only. Nothing changes.",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "tips.button",
+    "where": "Levels list button",
+    "english": "Tips",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "tips.title",
+    "where": "Tips list tag",
+    "english": "TIPS YOU HOLD",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "tips.rule",
+    "where": "Tips list lead",
+    "english": "A tip lasts {days} days. When you hold {max}, a new one replaces the oldest.",
+    "placeholders": "days, max",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "tips.days_left",
+    "where": "Tips list row",
+    "english": "{count} days left",
+    "placeholders": "count",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "tips.last_day",
+    "where": "Tips list row",
+    "english": "Last day",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "tips.briefing_from",
+    "where": "Briefing chip (or overheard in the Gardens)",
+    "english": "heard in the Cafeteria",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
   }
 ]
