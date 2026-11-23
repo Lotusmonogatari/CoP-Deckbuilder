@@ -1831,7 +1831,7 @@ The scheme is now fully built. Nothing in play changes until you write scenes: o
 | Tests | Three test files updated for the new default; two new tests (a save with no style is given the default; a worn style is never overwritten). |
 | Cleanup candidates | Three Text rows are now unused: `shop.style_living_name`, `shop.style_living_desc`, `shop.style_included` (listed in `design/CLEANUP_CANDIDATES.md`). |
 
-**Known issue found while making Woodblock the default (2026-11-21), for Cameron:** on the stage Details screen the organization icons sit on a light plate. In Yezo Office each icon has a dark tile and reaches 8.7 to 1; in Woodblock the tile is light paper and some icons reach only about 2.8 to 1 (the standard is 3 to 1), with a grey halo behind neutral ones. `tests/interaction/party_plate_test.gd` therefore measures those icons in Yezo Office. Options: give organization icons a dark tile in every style, or redraw the icons for light paper.
+**Known issue found while making Woodblock the default (2026-11-21); closed 2026-11-23: Cameron accepted it as is.** on the stage Details screen the organization icons sit on a light plate. In Yezo Office each icon has a dark tile and reaches 8.7 to 1; in Woodblock the tile is light paper and some icons reach only about 2.8 to 1 (the standard is 3 to 1), with a grey halo behind neutral ones. `tests/interaction/party_plate_test.gd` therefore measures those icons in Yezo Office. (Options were a dark tile under organization icons in every style, or redrawn icons; neither is planned.)
 
 ## Visitor pictures VI103 to VI125, VI168, VI169; VI100 replaced again; two renames (2026-11-22, Cameron; branch `feature/visitor-images-4`)
 
@@ -1902,3 +1902,13 @@ All four are District visitors in the same rooms as VI125 (ST268, ST283, ST284).
 | Name | The heading is a title only: **no personal name has been given**, so none is shown. Please say if he has one (and a Japanese name). |
 | Art checklist | A new "Capital Area characters" line lists SPEECH_COACH. |
 | Tests | `tests/test_speech_coach.gd`. |
+
+## Checks: the full gate only before a merge; one-area click tests (2026-11-23, Cameron's option A; branch `docs/checks-option-a`)
+
+| Part | What changed |
+|---|---|
+| Why it was slow | A full `tools/verify.sh` takes 15 to 18 minutes on this 4-core machine: data, boot and about 2,450 unit tests about 3.5 minutes; 54 real-click tests (each starts a fresh game on a virtual screen, 12 to 36 s) about 10 minutes at two at a time; the text sweep in three UI styles about 5 minutes. The old header said 2 to 3 minutes. |
+| The routine now | While working: `tools/verify.sh --quick` (about 3 to 4 minutes) and `tools/click_test.sh NAME...` for the click tests of the area touched. The full gate runs once, right before a merge, and a merge still needs its "All checks passed". |
+| New tool | `tools/click_test.sh`: runs only the named click tests the way verify.sh runs them; `--list` shows all 54. |
+| Docs | `tools/verify.sh`'s header, `CLAUDE.md` section 14 and `design/NEW_CHAT_STARTUP.md` section 4 say this. |
+| Closed out | The Woodblock icon contrast item (accepted as is) and the coupon-takes-hours decision (confirmed). |
