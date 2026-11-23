@@ -27,5 +27,8 @@ func test_every_workbook_bill_has_a_full_dossier() -> void:
 	for bill_id: String in DataDB.floor_votes:
 		if not bill_id.begins_with("BI"):
 			continue
+		# A story vote (P15) is not read on the stance screen, so it carries no dossier.
+		if not str(DataDB.floor_votes[bill_id].get("decision_scene", "")).is_empty():
+			continue
 		assert_eq(BillDossier.sections(DataDB.floor_votes[bill_id]).size(), BillDossier.PROSE_FIELDS.size(),
 			"%s is missing a dossier section" % bill_id)

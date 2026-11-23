@@ -9,7 +9,10 @@
     "seats": 19,
     "vote_resistance": 87,
     "short_name": "BU",
-    "japanese_name": "仏党"
+    "japanese_name": "仏党",
+    "assistant_whip_opp_id": "OP132",
+    "deputy_whip_opp_id": "OP133",
+    "chief_whip_opp_id": "OP134"
   },
   {
     "party_id": "PT02",
@@ -21,7 +24,10 @@
     "seats": 14,
     "vote_resistance": 82,
     "short_name": "YHP",
-    "japanese_name": "エゾの遺産党"
+    "japanese_name": "エゾの遺産党",
+    "assistant_whip_opp_id": "OP132",
+    "deputy_whip_opp_id": "OP133",
+    "chief_whip_opp_id": "OP134"
   },
   {
     "party_id": "PT03",
@@ -33,7 +39,10 @@
     "seats": 27,
     "vote_resistance": 71,
     "short_name": "FP",
-    "japanese_name": "辺境党"
+    "japanese_name": "辺境党",
+    "assistant_whip_opp_id": "OP132",
+    "deputy_whip_opp_id": "OP133",
+    "chief_whip_opp_id": "OP134"
   },
   {
     "party_id": "PT04",
@@ -45,7 +54,10 @@
     "seats": 5,
     "vote_resistance": 99,
     "short_name": "FPI",
-    "japanese_name": "五無所属"
+    "japanese_name": "五無所属",
+    "assistant_whip_opp_id": "OP132",
+    "deputy_whip_opp_id": "OP133",
+    "chief_whip_opp_id": "OP134"
   },
   {
     "party_id": "PT05",
@@ -57,7 +69,10 @@
     "seats": 25,
     "vote_resistance": 68,
     "short_name": "KJT",
-    "japanese_name": "経済自由党"
+    "japanese_name": "経済自由党",
+    "assistant_whip_opp_id": "OP132",
+    "deputy_whip_opp_id": "OP133",
+    "chief_whip_opp_id": "OP134"
   },
   {
     "party_id": "PT06",
@@ -69,6 +84,9 @@
     "seats": 11,
     "vote_resistance": 90,
     "short_name": "CI",
-    "japanese_name": "国家維新党"
+    "japanese_name": "国家維新党",
+    "assistant_whip_opp_id": "OP132",
+    "deputy_whip_opp_id": "OP133",
+    "chief_whip_opp_id": "OP134"
   }
 ]

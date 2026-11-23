@@ -12,6 +12,8 @@
     "  staff         SF01...            staff.json",
     "  visitors      VI01...            visitors.json",
     "  capital_area  SPEECH_COACH       special characters in the Capital Area, outside the Capitol building (2026-11-22)",
+    "  character_aliases (below): one person who is both an opponent and a visitor (the party whips, P15, 2026-11-23) has one",
+    "  picture. OP132 uses VI29's, OP133 VI175's, OP134 VI176's, until a picture of its own is dropped in.",
     "  e.g. assets/characters/opponents/OP03_attacking.png",
     "",
     "Journalists are opponents.json rows now (Role=Journalist), so their art",
@@ -85,6 +87,7 @@
     "icon": "res://assets/icons/",
     "capital_area": "res://assets/characters/capital_area/"
   },
+  "character_aliases": {"OP132": "VI29", "OP133": "VI175", "OP134": "VI176"},
   "character_prefixes": {
     "PC": "protagonist",
     "OP": "opponent",

@@ -71884,5 +71884,347 @@
     "reply_kinds": [
       "Principle"
     ]
+  },
+  {
+    "cue_id": "PL3697",
+    "suit": "Earnest",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "Our exporters need markets bigger than Yezo.",
+    "cue_2": "The pact rewards the nations that join early.",
+    "cue_3": "Safeguards are in the text; I've read them.",
+    "cue_4": "Lower tariffs mean cheaper goods for every family.",
+    "cue_5": "Standing outside a trade bloc isn't independence. It's isolation.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Support",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3698",
+    "suit": "Earnest",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "My district's farmers didn't vote for this.",
+    "cue_2": "Who negotiated the rice and dairy chapters, and for whom?",
+    "cue_3": "We'd trade away rules we can't take back.",
+    "cue_4": "Cheaper imports today, empty fishing towns tomorrow.",
+    "cue_5": "A pact this large deserves more than one session's debate.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Oppose",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3699",
+    "suit": "Earnest",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "I'll vote when someone shows me the transition fund.",
+    "cue_2": "Where's the impact study for the northern districts?",
+    "cue_3": "The party line isn't an argument.",
+    "cue_4": "My constituents elected me, not the whip's office.",
+    "cue_5": "Ask me again after the committee hearing.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": null,
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3700",
+    "suit": "Emotional",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "Our exporters need markets bigger than Yezo.",
+    "cue_2": "The pact rewards the nations that join early.",
+    "cue_3": "Safeguards are in the text; I've read them.",
+    "cue_4": "Lower tariffs mean cheaper goods for every family.",
+    "cue_5": "Standing outside a trade bloc isn't independence. It's isolation.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Support",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3701",
+    "suit": "Emotional",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "My district's farmers didn't vote for this.",
+    "cue_2": "Who negotiated the rice and dairy chapters, and for whom?",
+    "cue_3": "We'd trade away rules we can't take back.",
+    "cue_4": "Cheaper imports today, empty fishing towns tomorrow.",
+    "cue_5": "A pact this large deserves more than one session's debate.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Oppose",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3702",
+    "suit": "Emotional",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "I'll vote when someone shows me the transition fund.",
+    "cue_2": "Where's the impact study for the northern districts?",
+    "cue_3": "The party line isn't an argument.",
+    "cue_4": "My constituents elected me, not the whip's office.",
+    "cue_5": "Ask me again after the committee hearing.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": null,
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3703",
+    "suit": "Appeal",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "Our exporters need markets bigger than Yezo.",
+    "cue_2": "The pact rewards the nations that join early.",
+    "cue_3": "Safeguards are in the text; I've read them.",
+    "cue_4": "Lower tariffs mean cheaper goods for every family.",
+    "cue_5": "Standing outside a trade bloc isn't independence. It's isolation.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Support",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3704",
+    "suit": "Appeal",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "My district's farmers didn't vote for this.",
+    "cue_2": "Who negotiated the rice and dairy chapters, and for whom?",
+    "cue_3": "We'd trade away rules we can't take back.",
+    "cue_4": "Cheaper imports today, empty fishing towns tomorrow.",
+    "cue_5": "A pact this large deserves more than one session's debate.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Oppose",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3705",
+    "suit": "Appeal",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "I'll vote when someone shows me the transition fund.",
+    "cue_2": "Where's the impact study for the northern districts?",
+    "cue_3": "The party line isn't an argument.",
+    "cue_4": "My constituents elected me, not the whip's office.",
+    "cue_5": "Ask me again after the committee hearing.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": null,
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3706",
+    "suit": "Data Driven",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "Our exporters need markets bigger than Yezo.",
+    "cue_2": "The pact rewards the nations that join early.",
+    "cue_3": "Safeguards are in the text; I've read them.",
+    "cue_4": "Lower tariffs mean cheaper goods for every family.",
+    "cue_5": "Standing outside a trade bloc isn't independence. It's isolation.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Support",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3707",
+    "suit": "Data Driven",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "My district's farmers didn't vote for this.",
+    "cue_2": "Who negotiated the rice and dairy chapters, and for whom?",
+    "cue_3": "We'd trade away rules we can't take back.",
+    "cue_4": "Cheaper imports today, empty fishing towns tomorrow.",
+    "cue_5": "A pact this large deserves more than one session's debate.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Oppose",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3708",
+    "suit": "Data Driven",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "I'll vote when someone shows me the transition fund.",
+    "cue_2": "Where's the impact study for the northern districts?",
+    "cue_3": "The party line isn't an argument.",
+    "cue_4": "My constituents elected me, not the whip's office.",
+    "cue_5": "Ask me again after the committee hearing.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": null,
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3709",
+    "suit": "Divisive",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "Our exporters need markets bigger than Yezo.",
+    "cue_2": "The pact rewards the nations that join early.",
+    "cue_3": "Safeguards are in the text; I've read them.",
+    "cue_4": "Lower tariffs mean cheaper goods for every family.",
+    "cue_5": "Standing outside a trade bloc isn't independence. It's isolation.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Support",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3710",
+    "suit": "Divisive",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "My district's farmers didn't vote for this.",
+    "cue_2": "Who negotiated the rice and dairy chapters, and for whom?",
+    "cue_3": "We'd trade away rules we can't take back.",
+    "cue_4": "Cheaper imports today, empty fishing towns tomorrow.",
+    "cue_5": "A pact this large deserves more than one session's debate.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Oppose",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3711",
+    "suit": "Divisive",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "I'll vote when someone shows me the transition fund.",
+    "cue_2": "Where's the impact study for the northern districts?",
+    "cue_3": "The party line isn't an argument.",
+    "cue_4": "My constituents elected me, not the whip's office.",
+    "cue_5": "Ask me again after the committee hearing.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": null,
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3712",
+    "suit": "Duplicitous",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "Our exporters need markets bigger than Yezo.",
+    "cue_2": "The pact rewards the nations that join early.",
+    "cue_3": "Safeguards are in the text; I've read them.",
+    "cue_4": "Lower tariffs mean cheaper goods for every family.",
+    "cue_5": "Standing outside a trade bloc isn't independence. It's isolation.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Support",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3713",
+    "suit": "Duplicitous",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "My district's farmers didn't vote for this.",
+    "cue_2": "Who negotiated the rice and dairy chapters, and for whom?",
+    "cue_3": "We'd trade away rules we can't take back.",
+    "cue_4": "Cheaper imports today, empty fishing towns tomorrow.",
+    "cue_5": "A pact this large deserves more than one session's debate.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": "Oppose",
+    "component_ids": null,
+    "reply_kinds": null
+  },
+  {
+    "cue_id": "PL3714",
+    "suit": "Duplicitous",
+    "verb": null,
+    "stage_ids": [
+      "ST290"
+    ],
+    "cue_1": "I'll vote when someone shows me the transition fund.",
+    "cue_2": "Where's the impact study for the northern districts?",
+    "cue_3": "The party line isn't an argument.",
+    "cue_4": "My constituents elected me, not the whip's office.",
+    "cue_5": "Ask me again after the committee hearing.",
+    "bill_ids": [
+      "BI52"
+    ],
+    "stance": null,
+    "component_ids": null,
+    "reply_kinds": null
   }
 ]

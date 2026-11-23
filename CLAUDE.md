@@ -346,3 +346,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Visitor pictures VI137 to VI166 and VI174 checked; VI174 Harue Kobayashi drafted (2026-11-23, Cameron; branch `feature/visitor-images-6`)
 - VI19 Sora Kudo's picture arrives: every visitor has one (2026-11-23, Cameron)
 - Parliament opens on 18.10.15 (DS01 moves); OP74 is Yun-hee Seong (2026-11-23, Cameron; branch `fix/ds01-oct15-and-yun-hee`)
+- P15: the CPTPP Decision! sequence, two whips and two votes (2026-11-23, Cameron; branch `feature/p15-cptpp-whip`)

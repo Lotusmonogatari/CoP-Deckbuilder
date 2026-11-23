@@ -15,6 +15,9 @@ func test_every_bill_style_and_lean_has_fifteen_distinct_short_lines() -> void:
 	for bill_id: String in DataDB.floor_votes.keys():
 		if not bill_id.begins_with("BI"):
 			continue
+		# A story vote (P15) has the whip fight's five lines per stance, not the full bill-level set.
+		if not str(DataDB.floor_votes[bill_id].get("decision_scene", "")).is_empty():
+			continue
 		for suit: String in ["Earnest", "Emotional", "Appeal", "Data Driven", "Divisive", "Duplicitous"]:
 			for stance: String in ["Support", "Oppose"]:
 				var lines := _lines(bill_id, suit, stance)

@@ -52,7 +52,9 @@ func test_the_tabs_ship_events_with_choices() -> void:
 	assert_gte(DataDB.events.size(), 12)
 	for event: Dictionary in DataDB.events:
 		var found := EventEngine.choices_for(DataDB.event_choices, str(event["event_id"]))
-		assert_gt(found.size(), 1, "%s has choices" % event["event_id"])
+		# A vote scene (P15) has one choice, taking your seat; every other event has a real choice to make.
+		var is_vote_scene := not DecisionScenes.vote_bill(DecisionScenes.of_event(DataDB.decision_scenes, str(event["event_id"]))).is_empty()
+		assert_gt(found.size(), 0 if is_vote_scene else 1, "%s has choices" % event["event_id"])
 
 
 func test_choices_come_back_in_letter_order() -> void:

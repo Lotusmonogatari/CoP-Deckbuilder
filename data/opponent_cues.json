@@ -81127,5 +81127,309 @@
     "cue_3_side": null,
     "cue_4_side": null,
     "cue_5_side": null
+  },
+  {
+    "cue_id": "OC3864",
+    "suit": "Divisive",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP132",
+      "OP133",
+      "OP134",
+      "OP82",
+      "OP10",
+      "OP27",
+      "OP67",
+      "OP80",
+      "OP83",
+      "OP91"
+    ],
+    "cue_1": "The party signed on to this pact. So did you, when you took the nomination.",
+    "cue_2": "Exporters have waited years for this. Don't be the reason they wait longer.",
+    "cue_3": "Every abstention reads as doubt in the leader.",
+    "cue_4": "Farmers will adjust. The party won't forget.",
+    "cue_5": "Name one trading nation that regrets joining.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI52"
+    ],
+    "component_ids": null,
+    "cue_1_side": "For",
+    "cue_2_side": "For",
+    "cue_3_side": "For",
+    "cue_4_side": "For",
+    "cue_5_side": "For"
+  },
+  {
+    "cue_id": "OC3865",
+    "suit": "Divisive",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP132",
+      "OP133",
+      "OP134",
+      "OP82",
+      "OP10",
+      "OP27",
+      "OP67",
+      "OP80",
+      "OP83",
+      "OP91"
+    ],
+    "cue_1": "We stand with the farms and fisheries. Where do you stand?",
+    "cue_2": "Open the market and the cheapest rice in the Pacific comes in.",
+    "cue_3": "Sovereignty doesn't come back once it's traded away.",
+    "cue_4": "Vote with the government on this and you vote against us.",
+    "cue_5": "Your district's harbor won't survive a tariff cut.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI52"
+    ],
+    "component_ids": null,
+    "cue_1_side": "Against",
+    "cue_2_side": "Against",
+    "cue_3_side": "Against",
+    "cue_4_side": "Against",
+    "cue_5_side": "Against"
+  },
+  {
+    "cue_id": "OC3866",
+    "suit": "Divisive",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP132",
+      "OP133",
+      "OP134",
+      "OP82",
+      "OP10",
+      "OP27",
+      "OP67",
+      "OP80",
+      "OP83",
+      "OP91"
+    ],
+    "cue_1": "Have you even read the dispute-settlement chapter?",
+    "cue_2": "A free vote is a luxury for members with safe seats.",
+    "cue_3": "Who briefed you on this, the lobby or the party?",
+    "cue_4": "Doubts are fine. Votes are counted.",
+    "cue_5": "You can question the bill after you've voted for it.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI52"
+    ],
+    "component_ids": null,
+    "cue_1_side": null,
+    "cue_2_side": null,
+    "cue_3_side": null,
+    "cue_4_side": null,
+    "cue_5_side": null
+  },
+  {
+    "cue_id": "OC3867",
+    "suit": "Divisive",
+    "verb": "block",
+    "opponent_ids": [
+      "OP132",
+      "OP133",
+      "OP134",
+      "OP82",
+      "OP10",
+      "OP27",
+      "OP67",
+      "OP80",
+      "OP83",
+      "OP91"
+    ],
+    "cue_1": "The party signed on to this pact. So did you, when you took the nomination.",
+    "cue_2": "Exporters have waited years for this. Don't be the reason they wait longer.",
+    "cue_3": "Every abstention reads as doubt in the leader.",
+    "cue_4": "Farmers will adjust. The party won't forget.",
+    "cue_5": "Name one trading nation that regrets joining.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI52"
+    ],
+    "component_ids": null,
+    "cue_1_side": "For",
+    "cue_2_side": "For",
+    "cue_3_side": "For",
+    "cue_4_side": "For",
+    "cue_5_side": "For"
+  },
+  {
+    "cue_id": "OC3868",
+    "suit": "Divisive",
+    "verb": "block",
+    "opponent_ids": [
+      "OP132",
+      "OP133",
+      "OP134",
+      "OP82",
+      "OP10",
+      "OP27",
+      "OP67",
+      "OP80",
+      "OP83",
+      "OP91"
+    ],
+    "cue_1": "We stand with the farms and fisheries. Where do you stand?",
+    "cue_2": "Open the market and the cheapest rice in the Pacific comes in.",
+    "cue_3": "Sovereignty doesn't come back once it's traded away.",
+    "cue_4": "Vote with the government on this and you vote against us.",
+    "cue_5": "Your district's harbor won't survive a tariff cut.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI52"
+    ],
+    "component_ids": null,
+    "cue_1_side": "Against",
+    "cue_2_side": "Against",
+    "cue_3_side": "Against",
+    "cue_4_side": "Against",
+    "cue_5_side": "Against"
+  },
+  {
+    "cue_id": "OC3869",
+    "suit": "Divisive",
+    "verb": "block",
+    "opponent_ids": [
+      "OP132",
+      "OP133",
+      "OP134",
+      "OP82",
+      "OP10",
+      "OP27",
+      "OP67",
+      "OP80",
+      "OP83",
+      "OP91"
+    ],
+    "cue_1": "Have you even read the dispute-settlement chapter?",
+    "cue_2": "A free vote is a luxury for members with safe seats.",
+    "cue_3": "Who briefed you on this, the lobby or the party?",
+    "cue_4": "Doubts are fine. Votes are counted.",
+    "cue_5": "You can question the bill after you've voted for it.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI52"
+    ],
+    "component_ids": null,
+    "cue_1_side": null,
+    "cue_2_side": null,
+    "cue_3_side": null,
+    "cue_4_side": null,
+    "cue_5_side": null
+  },
+  {
+    "cue_id": "OC3870",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP29"
+    ],
+    "cue_1": "The amendment is the least the farms can ask.",
+    "cue_2": "Every farmer in the north is counting your vote.",
+    "cue_3": "I am not asking for a favor. I am asking for a vote.",
+    "cue_4": "Safeguards on paper are worth nothing without a vote behind them.",
+    "cue_5": "Stand with the farms and fisheries.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI51"
+    ],
+    "component_ids": null,
+    "cue_1_side": null,
+    "cue_2_side": null,
+    "cue_3_side": null,
+    "cue_4_side": null,
+    "cue_5_side": null
+  },
+  {
+    "cue_id": "OC3871",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP29"
+    ],
+    "cue_1": "Say what you like. My answer is the same.",
+    "cue_2": "The ministry has done the sums. The amendment holds.",
+    "cue_3": "You will not talk me out of this.",
+    "cue_4": "I have heard every excuse before breakfast.",
+    "cue_5": "Hold your ground, or give it up.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI51"
+    ],
+    "component_ids": null,
+    "cue_1_side": null,
+    "cue_2_side": null,
+    "cue_3_side": null,
+    "cue_4_side": null,
+    "cue_5_side": null
+  },
+  {
+    "cue_id": "OC3872",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP29"
+    ],
+    "cue_1": "Vote for this pact and see who stands with you at harvest.",
+    "cue_2": "Cheaper rice abroad does not feed a village at home.",
+    "cue_3": "You were not elected to sell the north.",
+    "cue_4": "Tell the fishing towns it was for the best.",
+    "cue_5": "I will remember who voted for it.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI52"
+    ],
+    "component_ids": null,
+    "cue_1_side": null,
+    "cue_2_side": null,
+    "cue_3_side": null,
+    "cue_4_side": null,
+    "cue_5_side": null
+  },
+  {
+    "cue_id": "OC3873",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP29"
+    ],
+    "cue_1": "I have made my case and it stands.",
+    "cue_2": "The farms are not asking twice.",
+    "cue_3": "Nothing in that chapter protects them.",
+    "cue_4": "I am not moved by export figures.",
+    "cue_5": "Think of your district.",
+    "stage_ids": [
+      "ST290"
+    ],
+    "bill_ids": [
+      "BI52"
+    ],
+    "component_ids": null,
+    "cue_1_side": null,
+    "cue_2_side": null,
+    "cue_3_side": null,
+    "cue_4_side": null,
+    "cue_5_side": null
   }
 ]

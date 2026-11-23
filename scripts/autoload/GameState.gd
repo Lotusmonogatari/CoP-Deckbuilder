@@ -439,6 +439,15 @@ var decision_log: Dictionary = {}
 var pending_activations: Array = []
 ## The one-stage level a stage or vote activation is playing, kept so a save mid-level can rebuild it (DecisionScenes.ad_hoc_level).
 var scene_runtime: Dictionary = {}
+## Whip scenes (P15, 2026-11-23): who whips the player in a scene picked by Party support, {scene_id: opp_id}, fixed when the scene
+## first opens so its card, its stage and a reloaded game agree; and the locks lost whip fights put on a vote,
+## {bill_id: [{"choice", "by", "scene_id"}]} (WhipPick.resolve).
+var whip_picks: Dictionary = {}
+var whip_locks: Dictionary = {}
+## The after-hours trip the staff made for a Mandatory scene when it opened (not saved): {"xp": cost, "place": office}, or {}.
+var last_evening_trip: Dictionary = {}
+## What the whip stage that just ended did to the vote (not saved): WhipPick.resolve's answer, or {} when it was won or not a whip.
+var last_whip_lock: Dictionary = {}
 ## Promises owed (Promises.gd, 2026-10-31): records made by a choice's
 ## "Promise ..." commitment, kept from the Office's Promises panel.
 var promises: Array = []
@@ -644,7 +653,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
 	"bill_stance",
@@ -884,6 +893,9 @@ func reset_crisis_triggers() -> void:
 	decision_log = {}
 	pending_activations = []
 	scene_runtime = {}
+	whip_picks = {}
+	whip_locks = {}
+	last_evening_trip = {}
 	promises = []
 	promises_broken_unseen = []
 	promise_serial = 0
@@ -2290,9 +2302,91 @@ func due_dated_event() -> String:
 	var due := EventEngine.due_dated(DataDB.events, today, held_back)
 	if not due.is_empty():
 		return str(due[0].get("event_id", ""))
-	# A Decision! follow-up whose Delay has run out comes next (Mandatory: it opens by itself).
-	var follow_ups := DecisionScenes.due_follow_ups(DataDB.decision_scenes, decision_log, today)
-	return str(follow_ups[0].get("event_id", "")) if not follow_ups.is_empty() else ""
+	# A Decision! follow-up whose Delay has run out comes next (Mandatory: it opens by itself). One waits while what its earlier
+	# scene started (a whip fight, a vote) has not been played yet, and a whip scene for a party with no line never opens (P15).
+	for scene: Dictionary in DecisionScenes.due_follow_ups(DataDB.decision_scenes, decision_log, today):
+		if _scene_waits_for_activation(str(scene.get("follows", ""))):
+			continue
+		if DecisionScenes.whip_is_banded(scene) and whip_line(scene).is_empty():
+			decision_log[str(scene.get("scene_id", ""))] = {"day": today, "choice": WHIP_SKIPPED_LETTER}
+			continue
+		return str(scene.get("event_id", ""))
+	return ""
+
+
+## The reserved choice letter a whip scene is remembered under when the player's party has no line on its bill: the scene never
+## opens and never comes later.
+const WHIP_SKIPPED_LETTER := "S"
+
+
+## True while a scene's answer has started a level, stage or vote the player has not played yet.
+func _scene_waits_for_activation(scene_id: String) -> bool:
+	for entry: Dictionary in pending_activations:
+		if str(entry.get("scene_id", "")) == scene_id:
+			return true
+	return false
+
+
+# --- Whip scenes (P15, 2026-11-23) -------------------------------------------------------------------------------------------
+
+## The Floor Vote bill a whip scene is about, as its data row; {} when the scene is not a whip scene.
+func whip_bill_of(scene: Dictionary) -> Dictionary:
+	return DataDB.floor_votes.get(DecisionScenes.whip_bill(scene), {}) if DecisionScenes.is_whip(scene) else {}
+
+
+## What the whip of this scene asks of the player: "Yes" or "No", or "" for a free vote (no line).
+func whip_line(scene: Dictionary) -> String:
+	return WhipPick.line_for(scene, whip_bill_of(scene), own_party_id())
+
+
+## Who whips the player in this scene, as an opponent ID: the scene's own Speaker, or, for a scene picked by Party support, the
+## party's whip for the band (WhipPick). Fixed the first time it is asked, so the card, the stage and a reload agree.
+func whip_pick_for(scene: Dictionary) -> String:
+	var speakers := DecisionScenes.speaker_ids(scene)
+	if not speakers.is_empty():
+		return speakers[0]
+	var scene_id := str(scene.get("scene_id", ""))
+	if not whip_picks.has(scene_id):
+		var bands: Dictionary = DataDB.rules.get("whip_bands", {})
+		var minister := DataDB.get_opponent(str(scene.get("minister", ""))) if scene.get("minister") != null else {}
+		whip_picks[scene_id] = WhipPick.pick(party_support_effective(), bands, DataDB.get_party(str(DataDB.player.get("party", ""))), minister)
+	return str(whip_picks[scene_id])
+
+
+## The opponent a whip fights as: the pick, with the player's own party written on a Party Whip's Office row (their party cell is
+## blank so one row serves every party), so the cue lines "the party backs / opposes joining" read the player's party's line.
+func whip_opponent(opp_id: String) -> Dictionary:
+	var opponent := DataDB.get_opponent(opp_id).duplicate(true)
+	if opponent.is_empty():
+		return opponent
+	var written: Variant = opponent.get("party")
+	if written == null or str(written).strip_edges().is_empty():
+		var party := DataDB.get_party(str(DataDB.player.get("party", "")))
+		opponent["party"] = str(party.get("name", ""))
+		opponent["party_acronym"] = str(party.get("short_name", ""))
+	return opponent
+
+
+## What the player may press on a Floor Vote for this bill: WhipPick.resolve over the locks lost whip fights put on it.
+func vote_lock(bill_id: String) -> Dictionary:
+	return WhipPick.resolve(whip_locks.get(bill_id, []))
+
+
+## A whip stage has ended: losing it locks the bill's vote to what the whip asked (the level carries "whip"). Returns the lock
+## state after, {} when the stage was not a whip fight or was won.
+func _record_whip_result(level: Dictionary, outcome: String) -> Dictionary:
+	var whip: Variant = level.get("whip")
+	if not (whip is Dictionary) or outcome != LevelRunner.LOST:
+		return {}
+	var bill_id := str((whip as Dictionary).get("bill", ""))
+	var lock := {"choice": str((whip as Dictionary).get("line", "")), "by": str((whip as Dictionary).get("opp_id", "")),
+		"scene_id": str((whip as Dictionary).get("scene_id", ""))}
+	whip_locks[bill_id] = WhipPick.with_lock(whip_locks.get(bill_id, []), lock)
+	var state := vote_lock(bill_id)
+	pending_trigger_alerts.append({"kind": "whip_lost", "edge": "abstain" if str(state["state"]) == "abstain" else "entered",
+		"name": str(DataDB.get_opponent(str(lock["by"])).get("name", "")), "bill": str(DataDB.get_bill(bill_id).get("bill_name", bill_id)),
+		"vote": Text.say("whip.aye" if str(lock["choice"]) == WhipPick.YES else "whip.nay")})
+	return state
 
 
 ## What answering a scene with choice `letter` starts (Activates column, phase 3): an unlock and a queued event happen at once;
@@ -2312,7 +2406,12 @@ func _start_scene_activations(scene: Dictionary, letter: String) -> Array[String
 					scheduled_events.append({"event_id": id, "due_at": time_units})
 			_:
 				if DecisionScenes.LEVEL_KINDS.has(kind) and not _activation_pending(kind, id):
-					pending_activations.append({"kind": kind, "id": id, "scene_id": str(scene.get("scene_id", ""))})
+					var started := {"kind": kind, "id": id, "scene_id": str(scene.get("scene_id", ""))}
+					# A whip scene's stage is the fight with its whip: who it is and what they asked go with it.
+					if kind == DecisionScenes.KIND_STAGE and DecisionScenes.is_whip(scene):
+						started["whip"] = {"opp_id": whip_pick_for(scene), "bill": DecisionScenes.whip_bill(scene),
+							"line": whip_line(scene), "scene_id": str(scene.get("scene_id", ""))}
+					pending_activations.append(started)
 					lines.append(Text.say("decision.activation_ready", {"name": activation_name(kind, id)}))
 	return lines
 
@@ -2352,6 +2451,11 @@ func next_activation() -> Dictionary:
 			level = DataDB.get_level(id)
 		else:
 			level = DecisionScenes.ad_hoc_level(kind, id, activation_name(kind, id), DecisionScenes.office(scene))
+			var whip: Variant = entry.get("whip")
+			if whip is Dictionary:
+				level["whip"] = whip
+				level["opponent_pin"] = str((whip as Dictionary).get("opp_id", ""))
+				level["whip_bill"] = str((whip as Dictionary).get("bill", ""))
 			DataDB.register_runtime_level(level)
 		if not level.is_empty():
 			return {"kind": kind, "id": id, "scene_id": str(entry.get("scene_id", "")), "level": level}
@@ -2417,6 +2521,9 @@ func apply_scene_lapses() -> Array:
 ## an opponent), else the event's Speaker Title.
 func event_speaker(event_id: String) -> Dictionary:
 	var scene := decision_scene_of(event_id)
+	# A whip scene with no Speaker is spoken by the whip the player's Party support picks (P15).
+	if DecisionScenes.whip_is_banded(scene):
+		return whip_opponent(whip_pick_for(scene))
 	for id: String in DecisionScenes.speaker_ids(scene):
 		if DecisionScenes.person_kind(id) == "opponent":
 			return DataDB.get_opponent(id)
@@ -2440,7 +2547,11 @@ func event_speakers(event_id: String) -> Array:
 			out.append({"id": str(lone.get("opp_id", "")), "name": str(lone.get("name", "")),
 				"title": OpponentDisplay.title_for(lone), "face": "neutral"})
 		return out
-	for id: String in DecisionScenes.speaker_ids(scene):
+	var ids := DecisionScenes.speaker_ids(scene)
+	# A whip scene with no Speaker is spoken by the whip the player's Party support picks (P15).
+	if DecisionScenes.whip_is_banded(scene):
+		ids = [whip_pick_for(scene)]
+	for id: String in ids:
 		var kind := DecisionScenes.person_kind(id)
 		var opponent := DataDB.get_opponent(id) if kind == "opponent" else {}
 		var staff := DataDB.get_staff(id) if kind == "staff" else {}
@@ -3083,7 +3194,27 @@ func level_calendar_refusal(level: Dictionary, mode: String = Travel.PASS) -> St
 			return Text.say("calendar.refuse_not_weekend")
 		WeekCalendar.REFUSE_TOO_LONG:
 			return Text.say("calendar.refuse_too_long")
-	return ""
+	return decision_clash_refusal(level_total_hours(level, mode))
+
+
+## A level that would still be running when a Mandatory Decision! opens is refused (P15, 2026-11-23, Cameron): the sentence saying
+## which day it would run into; "" when it clears them all.
+func decision_clash_refusal(level_hours: int) -> String:
+	var cfg := calendar_config()
+	var clash := DecisionClash.mandatory_clash(DataDB.decision_scenes, decision_log, calendar, cfg, level_hours)
+	if clash.is_empty():
+		return ""
+	return Text.say("calendar.refuse_decision", {"day": EventsModel.weekday_name(int(clash["day"]))})
+
+
+## An unanswered Optional Decision! whose window a level of this length would outlast, as {"title", "closes"}; {} when it fits
+## them all. The Office asks the player before starting the level (they may still choose to).
+func optional_decision_clash(level_hours: int) -> Dictionary:
+	var clash := DecisionClash.optional_clash(DataDB.decision_scenes, decision_log, calendar, calendar_config(), level_hours)
+	if clash.is_empty():
+		return {}
+	var event := get_event(str((clash["scene"] as Dictionary).get("event_id", "")))
+	return {"title": str(event.get("title", "")), "closes": WeekCalendar.date_label(int(clash["closes"]))}
 
 
 ## Why a sponsored or drafted bill's level cannot start now: the work week is
@@ -3796,6 +3927,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	if outcome == LevelRunner.WON and str(stage.get("stage_id", "")) == MpVisit.FIGHT_STAGE:
 		_won_over_member()
 	_apply_stage_rewards(stage, outcome, score)
+	last_whip_lock = _record_whip_result(level_runner.level, outcome)
 	if outcome == LevelRunner.WON:
 		apply_awareness_delta("district", MetaRules.stage_delta(stage, "win_delta_awareness_district"))
 		apply_awareness_delta("national", MetaRules.stage_delta(stage, "win_delta_awareness_national"))
@@ -6568,12 +6700,21 @@ func _arrive_after_level() -> void:
 ## A Dated event that belongs to one office opens the week there: the player is taken to it, at the Balance
 ## row's hours (0 = free). True when it moved them.
 func arrive_for_event(event: Dictionary) -> bool:
+	last_evening_trip = {}
 	var office := event_office(event)
 	if office == Offices.EITHER or office == office_location:
 		return false
 	var cost := Levers.whole("travel_forced_hours")
 	if cost > 0:
 		spend_hours(cost)
+	# A Mandatory Decision! scene sends the staff to bring the player back the evening before (P15, 2026-11-23, Cameron): no work
+	# hours, but the after-hours trip costs XP, all they have up to the Balance cap.
+	var scene := decision_scene_of(str(event.get("event_id", "")))
+	if not scene.is_empty() and DecisionScenes.is_mandatory(scene):
+		var xp_cost := DecisionClash.evening_xp_cost(xp, Levers.whole("evening_travel_xp_cap"))
+		last_evening_trip = {"xp": xp_cost, "place": office}
+		if xp_cost > 0:
+			_move_xp(-xp_cost)
 	office_location = office
 	return true
 

@@ -8,9 +8,9 @@ stands in for every expression.
 | Kind | Drawn |
 |---|---|
 | Protagonists | 24 / 28 |
-| Opponents | 7 / 655 |
+| Opponents | 7 / 670 |
 | Staff | 105 / 105 |
-| Visitors | 870 / 870 |
+| Visitors | 870 / 880 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
 | Capital Area characters (outside the Capitol building) | 1 / 1 |
@@ -18,7 +18,7 @@ stands in for every expression.
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
 | Cosmetic package icons | 9 / 9 |
-| Decision scenes with a picture to show | 0 / 1 |
+| Decision scenes with a picture to show | 0 / 10 |
 
 ## Protagonists — `assets/characters/protagonists/`
 
@@ -164,6 +164,9 @@ stands in for every expression.
 | OP129 | Daiki Funabashi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP130 | Aoi Kamishiro | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP131 | Yuto Hanazono | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP132 | Tomoe Sakamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP133 | Isamu Takaoka | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP134 | Nobuko Ezaki | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Staff — `assets/characters/staff/`
 
@@ -369,6 +372,8 @@ stands in for every expression.
 | VI172 | Nanami Arai | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI173 | Reina Mochizuki | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI174 | Harue Kobayashi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI175 | Isamu Takaoka | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI176 | Nobuko Ezaki | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Card art — `assets/cards/art/`
 
@@ -619,3 +624,12 @@ stands in for every expression.
 | Scene | Event | Own picture(s) | Shared office picture | Speakers |
 |---|---|---|---|---|
 | DS01 (Mandatory) | EV47 | none named | DEC_PLACE_CAPITOL ☐ | OP10 ☐ |
+| DS02 (Mandatory) | EV111 | none named | DEC_PLACE_CAPITOL ☐ | OP10 ☐ |
+| DS03 (Optional) | EV112 | none named | DEC_PLACE_DISTRICT ☐ | VI95 ✓ |
+| DS04 (Optional) | EV113 | none named | DEC_PLACE_CAPITOL ☐ | VI23 ✓ |
+| DS05 (Mandatory) | EV114 | none named | DEC_PLACE_CAPITOL ☐ | OP29 ☐ |
+| DS06 (Mandatory) | EV115 | none named | DEC_PLACE_CAPITOL ☐ | OP29 ☐ |
+| DS07 (Mandatory) | EV116 | none named | DEC_PLACE_CAPITOL ☐ | none |
+| DS08 (Mandatory) | EV117 | none named | DEC_PLACE_CAPITOL ☐ | OP27 ☐ |
+| DS09 (Mandatory) | EV118 | none named | DEC_PLACE_CAPITOL ☐ | OP27 ☐ |
+| DS10 (Optional) | EV119 | none named | DEC_PLACE_DISTRICT ☐ | VI98 ✓ |

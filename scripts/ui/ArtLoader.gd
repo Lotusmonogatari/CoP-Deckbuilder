@@ -225,6 +225,11 @@ static func character_path_candidates(character_id: String, expression: String =
 	# staff portraits SF01.png ...) serves every expression (Cameron, 2026-10-28).
 	for where: String in folders:
 		candidates.append(where + "%s.png" % character_id)
+	# A person who is both an opponent and a visitor shares one picture (art.json's character_aliases, P15, 2026-11-23): the
+	# alias's pictures come after the character's own, so a picture drawn for this ID always wins.
+	var alias := str((_art().get("character_aliases", {}) as Dictionary).get(character_id, ""))
+	if not alias.is_empty() and alias != character_id:
+		candidates.append_array(character_path_candidates(alias, expression, stage_id, ""))
 	return candidates
 
 

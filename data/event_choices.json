@@ -13193,5 +13193,970 @@
     "task_pool_change": null,
     "task_pool_days": null,
     "location": null
+  },
+  {
+    "event_id": "EV111",
+    "choice": "A",
+    "choice_text": "Back it publicly",
+    "result_text": "You rise to say Yezo's exporters cannot wait. The farm benches go quiet.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO07",
+        "delta": -1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV111",
+    "choice": "B",
+    "choice_text": "Reserve judgment and call for hearings",
+    "result_text": "You ask for hearings before any vote. Nobody can quite call it an answer.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV111",
+    "choice": "C",
+    "choice_text": "Oppose it, for the sake of farms and fisheries",
+    "result_text": "You say the pact asks farmers and fishers to pay for everyone else. The government benches murmur.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "rewards": [
+      {
+        "target": "BO10",
+        "delta": 2
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV112",
+    "choice": "A",
+    "choice_text": "Promise to fight for safeguards",
+    "result_text": "You promise to press for safeguards in the debate. He folds the paper into his pocket and nods.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO10",
+        "delta": 2
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 2,
+        "within": 96,
+        "for": "BO10"
+      }
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": "You kept your word to the farmer: the District office pushed for safeguards, and he knows it.",
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV112",
+    "choice": "B",
+    "choice_text": "Explain the export upside",
+    "result_text": "You explain who gains if the pact opens markets. He listens, and does not agree.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV112",
+    "choice": "C",
+    "choice_text": "Send your District Representative",
+    "result_text": "Your staffer takes his questions and writes every one down. He says it is something.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "funds",
+        "amount": 10000
+      }
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": "District Representative",
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV112",
+    "choice": "L",
+    "choice_text": "(lapse)",
+    "result_text": "You let the farmer wait, and the District office hears about it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -1,
+      "max": -1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV113",
+    "choice": "A",
+    "choice_text": "Take the briefing",
+    "result_text": "You take the briefing and keep the slides. The numbers are good, and they are the lobby's own.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV113",
+    "choice": "B",
+    "choice_text": "Demand labor and consumer protections",
+    "result_text": "You say any pact needs protections for workers and shoppers. He writes it down without smiling.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV113",
+    "choice": "C",
+    "choice_text": "Decline the meeting",
+    "result_text": "You send your regrets. The company boss says he understands, which is not the same as agreeing.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV113",
+    "choice": "L",
+    "choice_text": "(lapse)",
+    "result_text": "The company boss leaves with his slides. Nobody on his side will forget it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV114",
+    "choice": "A",
+    "choice_text": "I'll stand with you on the amendment.",
+    "result_text": "She nods once. You know where you stand, and so does she.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV114",
+    "choice": "B",
+    "choice_text": "I'd rather decide this one myself.",
+    "result_text": "Her smile does not reach her eyes. She says she hopes you will not regret it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV114",
+    "choice": "C",
+    "choice_text": "I may vote against you.",
+    "result_text": "She says that is a mistake, and means it. The corridor empties around you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV115",
+    "choice": "A",
+    "choice_text": "I'll vote against joining, as you ask.",
+    "result_text": "She nods again. The farm benches will hear of it before you reach your seat.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV115",
+    "choice": "B",
+    "choice_text": "I want a free vote on the final bill.",
+    "result_text": "She says the free vote is a luxury. She does not say it kindly.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV115",
+    "choice": "C",
+    "choice_text": "I may vote for it anyway.",
+    "result_text": "She says you will answer for it at harvest. The words follow you down the corridor.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV116",
+    "choice": "A",
+    "choice_text": "I'll vote with the party.",
+    "result_text": "You tell the whip you will vote with the party. A tick goes next to your name.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO01",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV116",
+    "choice": "B",
+    "choice_text": "I want a free vote on this one.",
+    "result_text": "You ask for a free vote. The whip says it will be noted, which is not a yes.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV116",
+    "choice": "C",
+    "choice_text": "I may vote against the party line.",
+    "result_text": "You say you may vote against the line. The whip's pen stops moving.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO01",
+        "delta": -2
+      },
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV117",
+    "choice": "A",
+    "choice_text": "Take your seat",
+    "result_text": "You take your seat as the bell rings. The chamber settles.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV118",
+    "choice": "A",
+    "choice_text": "Take your seat",
+    "result_text": "You take your seat for the main vote. The chamber settles.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV119",
+    "choice": "A",
+    "choice_text": "Hold a town hall",
+    "result_text": "You hold a town hall at the harbor office. The room is packed, and the answers are long.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": [
+      {
+        "kind": "hours",
+        "amount": 2
+      }
+    ],
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV119",
+    "choice": "B",
+    "choice_text": "Issue a statement",
+    "result_text": "You put out a statement the same afternoon. The paper prints it in full and the town reads it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV119",
+    "choice": "C",
+    "choice_text": "Stay quiet",
+    "result_text": "You say nothing, and the town notices. Some call it prudence, and some do not.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
+  },
+  {
+    "event_id": "EV119",
+    "choice": "L",
+    "choice_text": "(lapse)",
+    "result_text": "You let the week go by without a word. The harbor town does not forget.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -1,
+      "max": -1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null,
+    "commitment": null,
+    "promise_kept": null,
+    "promise_broken": null,
+    "promise_kept_text": null,
+    "delegate_role": null,
+    "delegate_blocks": null,
+    "task_pool_family": null,
+    "task_pool_change": null,
+    "task_pool_days": null,
+    "location": null
   }
 ]

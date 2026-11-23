@@ -222,6 +222,9 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 	# A level about a bill (2026-10-18) carries the bill's ID on its Combat
 	# stages, so the questions and lines written about that bill reach them.
 	var bill_id := str(DataDB.get_floor_vote(level_id).get("bill_id", ""))
+	# A whip fight is about the bill the whip asks about, so the lines written for that bill reach it.
+	if bill_id.is_empty():
+		bill_id = str(DataDB.get_level(level_id).get("whip_bill", ""))
 	if not bill_id.is_empty():
 		stage["bill_id"] = bill_id
 	stage["question_pool_size"] = (DataDB.questions.get(_question_pool_name(stage, stage_id), []).size()
@@ -341,6 +344,13 @@ static func _override_for(level_id: String, slot: int) -> Variant:
 ## (with a warning) otherwise, rather than seating someone in a room the
 ## workbook does not say they belong in.
 static func _opponent_for(level_id: String, stage_id: String, slot: int) -> Dictionary:
+	# A whip fight (P15, 2026-11-23) is against the whip the scene picked: the level carries their opponent ID and the room's own
+	# Stage cell is not consulted (a minister or a leader is not listed for it).
+	var whip_pin := str(DataDB.get_level(level_id).get("opponent_pin", ""))
+	if not whip_pin.is_empty():
+		var whip := GameState.whip_opponent(whip_pin)
+		if not whip.is_empty():
+			return whip
 	var eligible := eligible_opponents(stage_id)
 	var pinned := _resolve_pin(level_id, stage_id, slot)
 	if not pinned.is_empty():

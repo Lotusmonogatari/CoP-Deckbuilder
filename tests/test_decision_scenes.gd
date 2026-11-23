@@ -75,7 +75,7 @@ func test_a_scene_fires_once() -> void:
 	assert_eq(GameState.due_dated_event(), "EV47")
 	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
 	GameState.calendar = {"week": 30, "phase": "work", "hours": 0}
-	assert_eq(GameState.due_dated_event(), "", "never again, however late")
+	assert_ne(GameState.due_dated_event(), "EV47", "never again, however late (the CPTPP scenes are due by then, which is fine)")
 
 
 func test_every_scene_row_is_consistent() -> void:

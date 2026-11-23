@@ -43,5 +43,8 @@ func test_floor_vote_deltas_scale_with_each_partys_salience() -> void:
 
 func test_real_bills_carry_a_salience_for_every_party() -> void:
 	for bill_id: String in DataDB.floor_votes:
+		# A story vote (a Decision! scene's Vote Bill, P15) has no policy-area salience; blank means no scaling.
+		if not str(DataDB.floor_votes[bill_id].get("decision_scene", "")).is_empty():
+			continue
 		for position: Dictionary in DataDB.floor_votes[bill_id]["positions"]:
 			assert_not_null(position.get("salience"), "%s %s has a Salience" % [bill_id, position["party_id"]])

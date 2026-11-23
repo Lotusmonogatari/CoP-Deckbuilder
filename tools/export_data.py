@@ -1142,7 +1142,13 @@ SHEETS = {
             # initials small beside it, so English stays next to the Japanese.
             ("Short Name", "short_name", "str"),
             ("Japanese Name", "japanese_name", "str"),
+            # Whip scenes (P15, 2026-11-23, Cameron): the party whips by Party support band (Rules whip_bands). The party leader is
+            # the Leader Opp ID above. Each must be an opponent; a blank cell is checked only when a whip scene needs it.
+            ("Assistant Whip Opp ID", "assistant_whip_opp_id", "str"),
+            ("Deputy Whip Opp ID", "deputy_whip_opp_id", "str"),
+            ("Chief Whip Opp ID", "chief_whip_opp_id", "str"),
         ],
+        "optional": ["Assistant Whip Opp ID", "Deputy Whip Opp ID", "Chief Whip Opp ID"],
     },
     # One row per bill for National Assembly Floor Voting (ST23) — the
     # bill's own name, its scroll text, and the favorability swing each
@@ -1192,9 +1198,12 @@ SHEETS = {
             ("Case Against", "case_against", "str"),
             ("Main Risk", "main_risk", "str"),
             ("Middle Ground", "middle_ground", "str"),
+            # P15 (2026-11-23, Cameron): the Decision! scene whose Vote Bill this is. The scene's Vote Bill and this cell name each
+            # other (the exporter checks both), so a story vote is described in one place and linked from the other.
+            ("Decision Scene", "decision_scene", "str"),
         ],
         "optional": ["Proponent Party", "Stakeholders Override", "Who Gains", "Who Pays",
-                     "Case For", "Case Against", "Main Risk", "Middle Ground"],
+                     "Case For", "Case Against", "Main Risk", "Middle Ground", "Decision Scene"],
     },
     # Six rows per bill above (one per party) — folded into that bill's own
     # "positions" list by fold_floor_votes() below, the same
@@ -1372,7 +1381,18 @@ SHEETS = {
             ("Follow If", "follow_if", "id_list"),
             ("Activates", "activates", "str"),
             ("Notes", "notes", "str"),
+            # P15 (2026-11-23, Cameron). Whip Bill: a Floor Votes bill; the scene is a whip scene. Whip Line: Aye or Nay when the
+            # whip asks a fixed answer (blank = the player's party's own line on the Whip Bill). Minister: an opponent for the
+            # 90-97 Party support band. Vote Bill: the Floor Vote the scene ends in. Max Follow-Ups: an approved longer chain
+            # (first scene only). Must End By: no vote scene of the chain may fall after this date (first scene only).
+            ("Whip Bill", "whip_bill", "str"),
+            ("Whip Line", "whip_line", "str"),
+            ("Minister", "minister", "str"),
+            ("Vote Bill", "vote_bill", "str"),
+            ("Max Follow-Ups", "max_follow_ups", "int"),
+            ("Must End By", "must_end_by", "str"),
         ],
+        "optional": ["Whip Bill", "Whip Line", "Minister", "Vote Bill", "Max Follow-Ups", "Must End By"],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
@@ -3122,7 +3142,10 @@ def validate(data, report):
                 f"{bill_id} is named by more than one level ({', '.join(levels_naming_it)}) "
                 "— a bill can only be played once",
             )
-    for bill_id in bill_ids - bills_used_by.keys():
+    # A story vote (P15) is played by its Decision! scene, as a one-stage level made when the scene is answered, so a bill whose
+    # scene names it needs no level of its own.
+    scene_votes = {str(s.get("vote_bill")) for s in data.get("decision_scenes", []) if s.get("vote_bill")}
+    for bill_id in bill_ids - bills_used_by.keys() - scene_votes:
         report.warn("Floor Vote Bills", f"{bill_id} is not named by any level's own stage list")
 
     # --- staff ---------------------------------------------------------------
@@ -3944,8 +3967,122 @@ def check_decision_scenes(data, report):
         if cursor is not None:
             roots.setdefault(str(cursor.get("scene_id")), []).append(sid)
     for root, members in roots.items():
-        if len(members) > MAX_SCENE_FOLLOW_UPS:
-            report.error(f"Decision Scenes {root}", f"has {len(members)} follow-ups in all; at most {MAX_SCENE_FOLLOW_UPS} are allowed")
+        allowed = MAX_SCENE_FOLLOW_UPS
+        approved = (by_id.get(root) or {}).get("max_follow_ups")
+        if approved is not None:
+            if approved < MAX_SCENE_FOLLOW_UPS:
+                report.warn(f"Decision Scenes {root}", f"Max Follow-Ups is {approved}; the usual limit of {MAX_SCENE_FOLLOW_UPS} still applies")
+            allowed = max(MAX_SCENE_FOLLOW_UPS, approved)
+        if len(members) > allowed:
+            report.error(f"Decision Scenes {root}", f"has {len(members)} follow-ups in all; at most {allowed} are allowed"
+                         + ("" if approved is not None else " (Cameron may approve more with the Max Follow-Ups cell)"))
+    check_whip_and_vote_scenes(data, report, by_id, roots)
+
+
+def _scene_days(by_id, root):
+    """Day of each scene in a chain if the player answers each on the day it opens (YY.MM.DD strings compare in order)."""
+    def number(text):
+        y, m, d = (int(x) for x in str(text).split("."))
+        return datetime.date(2000 + y, m, d).toordinal()
+    days = {}
+    first = by_id[root]
+    if not _real_date(first.get("opens")):
+        return days
+    days[root] = number(first["opens"])
+    changed = True
+    while changed:
+        changed = False
+        for sid, scene in by_id.items():
+            parent = str(scene.get("follows") or "")
+            if sid not in days and parent in days:
+                days[sid] = days[parent] + int(scene.get("delay") or 0)
+                changed = True
+    return days
+
+
+def check_whip_and_vote_scenes(data, report, by_id, roots):
+    """P15 (2026-11-23): Whip Bill, Whip Line, Minister, Vote Bill, Must End By and the whip rules.
+    A whip scene names a real bill; a whip with no Speaker picks by Party support, so it needs the Rules whip_bands (covering 0 to
+    100 once) and every party's whip cells; a Whip Line is Aye or Nay; a Minister is an opponent and only on a banded whip scene;
+    a Vote Bill and the Floor Votes tab's Decision Scene name each other; and no vote scene of a chain falls after Must End By."""
+    bills = data.get("floor_votes", {})
+    opponents = {str(o.get("opp_id")): o for o in data.get("opponents", [])}
+    banded = False
+    for sid, scene in by_id.items():
+        where = f"Decision Scenes {sid}"
+        whip_bill, vote_bill = scene.get("whip_bill"), scene.get("vote_bill")
+        if whip_bill and str(whip_bill) not in bills:
+            report.error(where, f"Whip Bill '{whip_bill}' is not in Floor Vote Bills")
+        if vote_bill:
+            if str(vote_bill) not in bills:
+                report.error(where, f"Vote Bill '{vote_bill}' is not in Floor Vote Bills")
+            elif str(bills[str(vote_bill)].get("decision_scene") or "") != sid:
+                report.error(where, f"Vote Bill {vote_bill} must name this scene in the Floor Vote Bills tab's Decision Scene cell")
+            if whip_bill:
+                report.error(where, "A scene is a whip scene or a vote scene, not both")
+        if scene.get("whip_line") and not whip_bill:
+            report.error(where, "A Whip Line needs a Whip Bill")
+        if scene.get("whip_line") and str(scene["whip_line"]).strip().lower() not in ("aye", "nay"):
+            report.error(where, f"Whip Line is {scene['whip_line']!r}; it must be Aye or Nay")
+        if scene.get("minister"):
+            if not whip_bill:
+                report.error(where, "A Minister needs a Whip Bill")
+            elif scene.get("speaker"):
+                report.error(where, "A Minister is only for a whip picked by Party support; a scene with a Speaker has its own whip")
+            if str(scene["minister"]) not in opponents:
+                report.error(where, f"Minister '{scene['minister']}' is not an opponent ID")
+        if whip_bill and not scene.get("speaker"):
+            banded = True
+            if scene.get("whip_line"):
+                report.warn(where, "A Whip Line on a whip picked by Party support applies to every party; leave it blank to use each party's line")
+        if whip_bill and not any(str(a).startswith("stage:") for a in str(scene.get("activates") or "").split(";")):
+            report.error(where, "A whip scene needs a stage: activation (the Whipped into Line stage) on the choices that push back")
+    for bid, bill in bills.items():
+        named = bill.get("decision_scene")
+        if named and not (str((by_id.get(str(named)) or {}).get("vote_bill") or "") == bid):
+            report.error(f"Floor Vote Bills {bid}", f"Decision Scene {named!r} must be a scene whose Vote Bill is {bid}")
+    if banded:
+        bands = (data.get("rules") or {}).get("whip_bands")
+        ok = isinstance(bands, dict)
+        if ok:
+            for value in range(0, 101):
+                hits = sum(1 for span in bands.values() if isinstance(span, list) and len(span) == 2 and span[0] <= value <= span[1])
+                if hits != 1:
+                    report.error("Rules whip_bands", f"Party support {value} is in {hits} bands; the bands must cover 0 to 100 once each")
+                    break
+            for role in bands:
+                if role not in ("assistant", "deputy", "chief", "minister", "leader"):
+                    report.error("Rules whip_bands", f"'{role}' is not a whip role (assistant, deputy, chief, minister, leader)")
+        else:
+            report.error("Rules whip_bands", "Missing: a whip scene picked by Party support needs the whip_bands block")
+        for party in data.get("parties", []):
+            for key in ("assistant_whip_opp_id", "deputy_whip_opp_id", "chief_whip_opp_id", "leader_opp_id"):
+                if not party.get(key):
+                    report.error(f"Parties {party.get('party_id')}", f"{key.replace('_', ' ')} is blank; a whip scene picked by Party support needs it")
+                elif str(party[key]) not in opponents:
+                    report.error(f"Parties {party.get('party_id')}", f"{key.replace('_', ' ')} '{party[key]}' is not an opponent")
+    raw_stage = (data.get("rules") or {}).get("whip_stage")
+    stage = raw_stage.get("value") if isinstance(raw_stage, dict) else raw_stage
+    if any(s.get("whip_bill") for s in by_id.values()) and str(stage) not in {str(s.get("stage_id")) for s in data.get("stages", [])}:
+        report.error("Rules whip_stage", f"'{stage}' is not a Stage ID; whip scenes need the Whipped into Line stage")
+    # The deadline: every vote scene of a chain falls on or before its first scene's Must End By.
+    for root, members in roots.items():
+        first = by_id[root]
+        deadline = first.get("must_end_by")
+        for sid in members:
+            if by_id[sid].get("must_end_by"):
+                report.error(f"Decision Scenes {sid}", "Must End By belongs on the first scene of a chain")
+        if not deadline:
+            continue
+        if not _real_date(deadline):
+            report.error(f"Decision Scenes {root}", f"Must End By {deadline!r} is not a real YY.MM.DD date")
+            continue
+        days = _scene_days(by_id, root)
+        y, m, d = (int(x) for x in str(deadline).split("."))
+        limit = datetime.date(2000 + y, m, d).toordinal()
+        for sid, day in days.items():
+            if by_id[sid].get("vote_bill") and day > limit:
+                report.error(f"Decision Scenes {sid}", f"is a vote on {datetime.date.fromordinal(day).strftime('%y.%m.%d')}, after {root}'s Must End By {deadline}")
 
 
 def check_offices(data, report):

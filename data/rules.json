@@ -397,5 +397,33 @@
       "broadcast": "Broadcast, political drama on air."
     },
     "notes": "2026-11-21 (Cameron): Woodblock is the default. The player picks a style as part of New Game and owns it free; a run or save with no pick is given this one free. The other styles are bought in the Marketplace."
+  },
+  "whip_bands": {
+    "assistant": [
+      0,
+      30
+    ],
+    "deputy": [
+      31,
+      71
+    ],
+    "chief": [
+      72,
+      89
+    ],
+    "minister": [
+      90,
+      97
+    ],
+    "leader": [
+      98,
+      100
+    ]
+  },
+  "whip_stage": {
+    "value": "ST290",
+    "options": "a Stage id",
+    "question": "Which Stage row is the fight a whip scene starts when the player pushes back?",
+    "notes": "P15 (2026-11-23, Cameron)."
   }
 }
