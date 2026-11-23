@@ -350,3 +350,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - P16: Capitol venues, phase 1: Step out, the Cafeteria, the Gardens, rhetoric tips, the Speech Coach (2026-11-23, Cameron; branch `feature/p16-capitol-venues`)
 - Venue wording: no automatic "You overhear", opponent tips read as a condition (2026-11-23, Cameron; branch `feature/p16-venue-wording`)
 - P16b: suit phrases, American spelling, weekend hours for venues, tip slots from hint rows (2026-11-23, Cameron; branch `feature/p16b-venue-rules`)
+- Venue backgrounds arrive: Gardens follow the season, the Speech Coach page gets its studio (2026-11-23, Cameron; branch `feature/venue-backgrounds`)

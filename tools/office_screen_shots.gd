@@ -32,6 +32,9 @@ func _venue(office: Node, which: String) -> Overlay:
 		"cafeteria":
 			office._venues.show_venue("VN01")
 			return office.get_node("VenuePanel")
+		"gardens":
+			office._venues.show_venue("VN03")
+			return office.get_node("VenuePanel")
 		"gossip", "tip", "dry":
 			var entry := GameState.venue_day("VN01")
 			var dealt: Array = entry["dealt"]
@@ -141,7 +144,7 @@ func _run() -> void:
 				office._show_standing_factors(first["booster"])
 				menu = office.get_node("StandingFactorsPanel")
 		"venue":
-			# venue:map | cafeteria | gossip | tip | overheard | dry | tips | levels | briefing | coach (P16, 2026-11-23)
+			# venue:map | cafeteria | gardens | gossip | tip | overheard | dry | tips | levels | briefing | coach (P16, 2026-11-23)
 			menu = await _venue(office, parts[1] if parts.size() > 1 else "map")
 		"popup":
 			# The group-1 pop-ups (P14): popup:decision | scenario | moved | week | promises | broken | alert | resume | forced | hosted | result
