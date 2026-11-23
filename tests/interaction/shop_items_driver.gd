@@ -344,16 +344,16 @@ func _buy(supplies: Overlay, item_id: String) -> bool:
 
 
 ## Rhetoric Training end to end, with real clicks (Cameron, 2026-09-27):
-## Office Management -> Rhetoric Training -> "See a card" opens the offer
+## Step out -> Speech Coach -> Rhetoric Training (P16: it left Office Management) -> "See a card" opens the offer
 ## with the card's front and back BEFORE anything is paid. One draw is
 ## passed twice and its third card learned; then each other session is
 ## seen and learned, each adding exactly the card shown.
 func _walk_rhetoric_training(office: Node) -> bool:
-	await _click(office.get_node("%ManagementButton"))
-	var management := office.get_node("%ManagementPanel") as Overlay
-	await _click(management.find_child("FrameTab_rhetoric", true, false) as Control)
-	# Rhetoric Training is a tab of Office Management now (P13, 2026-11-20): its rows live in the management panel.
-	var training := management
+	await _click(office.find_child("StepOutButton", true, false) as Control)
+	await _click((office.get_node("VenueMapPanel") as Overlay).find_child("Venue_VN04", true, false) as Control)
+	await _click((office.get_node("VenuePanel") as Overlay).find_child("Activity_VN04", true, false) as Control)
+	# The Speech Coach opens the Rhetoric Training page unchanged; its rows live in the management panel's frame.
+	var training := office.get_node("%ManagementPanel") as Overlay
 	if not training.visible:
 		_failures.append("the Rhetoric Training button did not open Rhetoric Training")
 		return false

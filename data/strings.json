@@ -10271,8 +10271,8 @@
   {
     "key": "venue.tip_responds",
     "where": "Tip box line",
-    "english": "{target} responds to {suit}",
-    "placeholders": "target, suit",
+    "english": "{target} responds to",
+    "placeholders": "target",
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to rewrite."
   },
   {
@@ -10420,6 +10420,181 @@
     "where": "Venues: the line when the dry pool has none",
     "english": "Nothing new today.",
     "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.step_out",
+    "where": "Office: the Step out button",
+    "english": "Step out",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.map_title",
+    "where": "Place map: the screen's title",
+    "english": "Step out",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.map_subtitle_jp",
+    "where": "Place map: the Japanese accent beside the title",
+    "english": "外出",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.map_blurb",
+    "where": "Place map: the line under the title",
+    "english": "Choose where to go. Walking is free, and every place is open every day.",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.zone_capitol_building",
+    "where": "Place map: the section for the Capitol Building",
+    "english": "Capitol Building",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.zone_capital_area",
+    "where": "Place map: the section for the Capital Area",
+    "english": "Capital Area",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.go",
+    "where": "Place map: a venue's button",
+    "english": "Go",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.tag_cafeteria",
+    "where": "Line pop-up: the kind tag at the Cafeteria",
+    "english": "CAFETERIA · LUNCH",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.tag_gardens",
+    "where": "Line pop-up: the kind tag at the Gardens",
+    "english": "GARDENS · PEOPLE WATCHING",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.back_to",
+    "where": "Line pop-up: the back button",
+    "english": "Back to the {venue}",
+    "placeholders": "venue",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.speaker_colleague",
+    "where": "Line pop-up: the speaker when the line is a colleague's",
+    "english": "A colleague",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.responds_to",
+    "where": "Tip box: the words between a target and a suit",
+    "english": "responds to",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.activity_cost",
+    "where": "Venue screen: what the activity costs",
+    "english": "{hours} h",
+    "placeholders": "hours",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.activity_free",
+    "where": "Venue screen: an activity that costs nothing",
+    "english": "Free",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.heard_today",
+    "where": "Venue screen: how many lines have been heard today",
+    "english": "{count} of {limit} lines heard today",
+    "placeholders": "count, limit",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.screen_back",
+    "where": "Venue screen: the way back to the map",
+    "english": "Back to the map",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.heard_cafeteria",
+    "where": "Tips: where a tip was heard",
+    "english": "Heard in the Cafeteria",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.heard_gardens",
+    "where": "Tips: where a tip was heard",
+    "english": "Overheard in the Gardens",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.briefing_from_gardens",
+    "where": "Briefing: where the tip was heard",
+    "english": "overheard in the Gardens",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.briefing_responds",
+    "where": "Briefing: the tip mark's lead",
+    "english": "Responds to",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.count",
+    "where": "Tips pop-up: how many tips are held",
+    "english": "{count} of {max}",
+    "placeholders": "count, max",
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.close",
+    "where": "Tips pop-up: the close button",
+    "english": "Close",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.empty",
+    "where": "Tips pop-up: no tips held",
+    "english": "You hold no tips. Listen in the Cafeteria and the Gardens.",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.badge_one",
+    "where": "Levels list: a level with one tipped room",
+    "english": "1 tip",
+    "placeholders": null,
+    "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.badge_many",
+    "where": "Levels list: a level with several tipped rooms",
+    "english": "{count} tips",
+    "placeholders": "count",
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
   }
 ]

@@ -2587,6 +2587,43 @@ func step_out_state() -> String:
 	return VenueRules.step_out_state(office_location == Offices.CAPITOL, is_in_level(), work_hours_left())
 
 
+## Why Step out cannot be used now, as a sentence; "" when it can.
+func step_out_refusal() -> String:
+	match step_out_state():
+		VenueRules.ELSEWHERE: return Text.say("venue.refuse_elsewhere")
+		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
+		VenueRules.WEEK_FULL: return Text.say("venue.refuse_week_full")
+	return ""
+
+
+## The held tips about a room (the stage's own tip, and the tip of each person who may be seated there), as
+## [{"kind", "target", "suit", "where", "day"}].
+func tips_for_stage(stage_id: String) -> Array:
+	var found: Array = []
+	for tip: Dictionary in tips_held():
+		if str(tip.get("kind", "")) == RhetoricTips.STAGE:
+			if str(tip.get("target", "")) == stage_id:
+				found.append(tip)
+		elif (DataDB.get_opponent(str(tip.get("target", ""))).get("stages", []) as Array).has(stage_id):
+			found.append(tip)
+	return found
+
+
+## How many rooms of a level carry a held tip (the Levels list's badge).
+func tipped_rooms(level: Dictionary) -> int:
+	var count := 0
+	if held_tips.is_empty():
+		return 0
+	for slot in range(1, 11):
+		var raw: Variant = level.get("stage_%d" % slot)
+		var stage_id := "" if raw == null else str(raw)
+		if stage_id.is_empty() or stage_id == "N/A" or BattleSetup._is_bill_id(stage_id):
+			continue
+		if not tips_for_stage(stage_id).is_empty():
+			count += 1
+	return count
+
+
 ## Today as a day number (the venue lines' day).
 func venue_today() -> int:
 	return WeekCalendar.today_number(calendar, calendar_config())
@@ -2747,7 +2784,9 @@ func venue_hear_next(venue_id: String) -> Dictionary:
 	var raw_speaker: Variant = row.get("speaker")
 	return {"ok": true, "number": heard + 1, "limit": venue_limit(), "kind": "hint" if not hint.is_empty() else str(row.get("topic", "")),
 		"speaker": "" if raw_speaker == null else str(raw_speaker), "text": text, "hint": hint,
-		"last": VenueLines.next_dealt(entry["dealt"] as Array, heard + 1, venue_limit()).is_empty(), "where": str(activity.get("pool", ""))}
+		# After the last dealt line the dry line follows (Keep listening stays live for it); with no dry line, this one is the last.
+		"last": VenueLines.next_dealt(entry["dealt"] as Array, heard + 1, venue_limit()).is_empty() \
+			and VenueLines.dry_line(DataDB.venue_lines, venue_context(), 0).is_empty(), "where": str(activity.get("pool", ""))}
 
 
 ## The sentence of a dealt hint: its Text row with the stage's or the person's name filled in.
