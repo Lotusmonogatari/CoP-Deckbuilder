@@ -77,7 +77,7 @@ func test_the_profile_is_cards_with_fire_last() -> void:
 	assert_eq(column.get_child(column.get_child_count() - 1), fire, "Fire is the last button")
 
 
-func test_a_held_coupon_is_named_on_the_rhetoric_tab() -> void:
+func test_a_held_coupon_is_named_on_the_speech_coachs_page() -> void:
 	var coupon := ""
 	for item: Dictionary in DataDB.shop:
 		if item.get("free_card_tier") != null:
@@ -88,8 +88,8 @@ func test_a_held_coupon_is_named_on_the_rhetoric_tab() -> void:
 	var panel := office.get_node("ManagementPanel") as Overlay
 	# The run starts with some coupons (or none): the note is there exactly when one is held.
 	GameState.inventory.erase(coupon)
-	office._show_management_tab("rhetoric")
+	office._show_speech_coach_page()   # P16: the Rhetoric Training page is the Speech Coach's now
 	assert_null(panel.find_child("CouponNote_" + coupon, true, false), "no note while none is held")
 	GameState.add_item(coupon, 1)
-	office._show_management_tab("rhetoric")
+	office._show_speech_coach_page()
 	assert_not_null(panel.find_child("CouponNote_" + coupon, true, false), "named once one is held")
