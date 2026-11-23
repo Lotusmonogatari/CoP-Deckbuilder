@@ -6835,5 +6835,37 @@
       }
     ],
     "location": "District"
+  },
+  {
+    "visitor_id": "VI174",
+    "name_en": "Harue Hasegawa",
+    "name_jp": "長谷川春江",
+    "romaji": "Harue Hasegawa",
+    "title": "Farm Creamery Owner",
+    "stages": [
+      "ST270",
+      "ST287",
+      "ST288"
+    ],
+    "reward": [
+      {
+        "target": "BO30",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "location": "District"
   }
 ]

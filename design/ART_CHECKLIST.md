@@ -10,7 +10,7 @@ stands in for every expression.
 | Protagonists | 24 / 28 |
 | Opponents | 7 / 655 |
 | Staff | 105 / 105 |
-| Visitors | 725 / 865 |
+| Visitors | 865 / 870 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
 | Capital Area characters (outside the Capitol building) | 1 / 1 |
@@ -331,36 +331,36 @@ stands in for every expression.
 | VI134 | Taro Yoshida | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI135 | Satomi Morita | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI136 | Isamu Hasegawa | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI137 | Noriko Maeda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI137 | Noriko Maeda | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI138 | Ichiro Kawai | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI139 | Akemi Suzuki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI140 | Masao Taniguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI141 | Chihiro Endo | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI142 | Ryuji Sugiyama | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI143 | Mika Kobayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI139 | Akemi Suzuki | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI140 | Masao Taniguchi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI141 | Chihiro Endo | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI142 | Ryuji Sugiyama | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI143 | Mika Kobayashi | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI144 | Taiga Ogawa | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI145 | Hanae Hirata | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI146 | Kazuo Hayakawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI147 | Sayaka Matsumoto | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI148 | Eiji Nakamura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI149 | Yoko Takeuchi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI150 | Satoshi Yamamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI151 | Rina Fukuda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI152 | Misaki Hori | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI153 | Shigeru Ito | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI154 | Kimiko Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI155 | Tadashi Kato | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI156 | Hiromi Sakurai | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI157 | Mamoru Tsuchiya | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI158 | Etsuko Oshima | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI159 | Kenzo Ikeda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI160 | Yumiko Hoshino | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI161 | Goro Hamamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI162 | Chieko Wakabayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI163 | Haruki Nagano | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI145 | Hanae Hirata | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI146 | Kazuo Hayakawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI147 | Sayaka Matsumoto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI148 | Eiji Nakamura | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI149 | Yoko Takeuchi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI150 | Satoshi Yamamoto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI151 | Rina Fukuda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI152 | Misaki Hori | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI153 | Shigeru Ito | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI154 | Kimiko Hasegawa | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI155 | Tadashi Kato | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI156 | Hiromi Sakurai | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI157 | Mamoru Tsuchiya | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI158 | Etsuko Oshima | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI159 | Kenzo Ikeda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI160 | Yumiko Hoshino | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI161 | Goro Hamamoto | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI162 | Chieko Wakabayashi | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI163 | Haruki Nagano | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI164 | Setsuko Omura | ◆ | ◆ | ◆ | ◆ | ◆ |
-| VI165 | Toshio Kuroda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| VI166 | Yasuo Noda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI165 | Toshio Kuroda | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI166 | Yasuo Noda | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI167 | Masashi Mumotsu | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI168 | Picante Paul | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI169 | Kakata Jishinka | ◆ | ◆ | ◆ | ◆ | ◆ |
@@ -368,6 +368,7 @@ stands in for every expression.
 | VI171 | Mio Sugita | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI172 | Nanami Arai | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI173 | Reina Mochizuki | ◆ | ◆ | ◆ | ◆ | ◆ |
+| VI174 | Harue Hasegawa | ◆ | ◆ | ◆ | ◆ | ◆ |
 
 ## Card art — `assets/cards/art/`
 
