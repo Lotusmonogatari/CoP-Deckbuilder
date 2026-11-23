@@ -1925,3 +1925,7 @@ The Rhetoric Training card now shows **Masayuki Katō** as its heading with **�
 | New tool | `tools/click_test.sh`: runs only the named click tests the way verify.sh runs them; `--list` shows all 54. |
 | Docs | `tools/verify.sh`'s header, `CLAUDE.md` section 14 and `design/NEW_CHAT_STARTUP.md` section 4 say this. |
 | Closed out | The Woodblock icon contrast item (accepted as is) and the coupon-takes-hours decision (confirmed). |
+
+## The speech coach's kanji: 加藤正幸 (2026-11-23, Cameron; branch `feature/coach-name-kanji`)
+
+Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** now reads **加藤正幸** (family name first, as is usual in Japanese). The Japanese font was re-subset so 正 and 幸 draw in it. **Merged without the full check at Cameron's instruction** (a one-text change); the speech coach unit test and the data export were run.

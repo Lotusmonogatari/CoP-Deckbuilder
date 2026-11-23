@@ -342,3 +342,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Rhetoric Training sessions take one hour per tier (2026-11-23, Cameron; branch `feature/training-hours`)
 - The speech coach is Masayuki Katō (2026-11-23, Cameron; branch `feature/coach-name`)
 - Checks: full gate only before a merge; `tools/click_test.sh` for one area (2026-11-23, Cameron)
+- The speech coach's kanji is 加藤正幸 (2026-11-23, Cameron; branch `feature/coach-name-kanji`)
