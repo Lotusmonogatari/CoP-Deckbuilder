@@ -4,7 +4,7 @@ extends RefCounted
 ## line pop-up, a tip row. They draw what they are given; nothing here reads a rule. The sentences are Text rows.
 
 ## The colour of each suit's chip (a drawing choice, not content).
-const SUIT_COLORS := {"Earnest": Color("2f5f8f"), "Emotional": Color("b03a2e"), "Appeal": Color("b87333"), "Data Driven": Color("3a7d5a"),
+const SUIT_COLORS := {"Earnest": Color("2f5f8f"), "Emotional": Color("b03a2e"), "Appeal": Color("9c5a1a"), "Data Driven": Color("3a7d5a"),
 	"Divisive": Color("5b3a8c"), "Duplicitous": Color("5a5a5a")}
 
 
@@ -23,6 +23,7 @@ static func suit_chip(suit: String) -> Control:
 	label.text = suit
 	label.add_theme_color_override("font_color", Color.WHITE)
 	label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	label.set_meta(UiKit.ONE_LINE_META, true)   # the popup wrapper must not break a chip's name into letters
 	holder.add_child(label)
 	holder.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	return holder
@@ -64,15 +65,16 @@ static func tip_box(hint: Dictionary, where: String) -> Control:
 	heading.name = "TipHeading"
 	heading.custom_minimum_size.x = 0.0
 	column.add_child(heading)
-	var row := HFlowContainer.new()
-	row.add_theme_constant_override("h_separation", 12)
 	var target := {"kind": hint.get("kind", ""), "target": hint.get("target", "")}
 	var sentence := UiKit.line(Text.say("venue.tip_responds", {"target": tip_target_name(target)}), "HeaderLabel")
 	sentence.name = "TipSentence"
 	sentence.custom_minimum_size.x = 0.0
-	row.add_child(sentence)
-	row.add_child(suit_chip(str(hint.get("suit", ""))))
-	column.add_child(row)
+	sentence.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var chip_row := HBoxContainer.new()
+	chip_row.add_theme_constant_override("separation", 12)
+	chip_row.add_child(sentence)
+	chip_row.add_child(suit_chip(str(hint.get("suit", ""))))
+	column.add_child(chip_row)
 	var saved := UiKit.line(Text.say("venue.tip_saved_opponent", {"name": tip_target_name(target)})
 		if str(hint.get("kind", "")) == RhetoricTips.OPPONENT else Text.say("venue.tip_saved"), "SmallLabel")
 	saved.custom_minimum_size.x = 0.0
@@ -175,6 +177,7 @@ static func tip_row(look: Dictionary, tip: Dictionary, days_left: int) -> Contro
 	var left := UiKit.line(Text.say("tips.last_day") if last else Text.say("tips.days_left", {"count": days_left}), "SmallLabel")
 	left.name = "DaysLeft"
 	left.custom_minimum_size.x = 0.0
+	left.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	if last:
 		left.add_theme_color_override("font_color", Color("b03a2e"))
 	bottom.add_child(left)

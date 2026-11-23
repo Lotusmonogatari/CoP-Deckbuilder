@@ -35,6 +35,24 @@ func _run() -> void:
 	briefed.call("_show_briefing")
 	await get_tree().create_timer(0.5).timeout
 	_measure("Office > level briefing")
+	# The Capitol venues (P16, 2026-11-23): the place map, a venue, a line pop-up and the Tips you hold pop-up.
+	await _go(OFFICE)
+	var venues_office := get_tree().current_scene
+	GameState.held_tips = [{"kind": "stage_suit", "target": "ST16", "suit": "Data Driven", "where": "cafeteria", "day": GameState.venue_today()}]
+	venues_office._venues.show_map()
+	await get_tree().create_timer(0.5).timeout
+	_measure("Office > place map")
+	venues_office._venues.show_venue("VN01")
+	await get_tree().create_timer(0.5).timeout
+	_measure("Office > venue")
+	GameState.venue_visit("VN01")
+	venues_office._venues._current_venue = "VN01"
+	venues_office._venues._hear("VN01")
+	await get_tree().create_timer(0.5).timeout
+	_measure("Office > venue line")
+	venues_office._venues.show_tips()
+	await get_tree().create_timer(0.5).timeout
+	_measure("Office > tips you hold")
 	await _go(OFFICE)
 	get_tree().current_scene.call("_show_travel")
 	await get_tree().create_timer(0.5).timeout

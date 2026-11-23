@@ -212,6 +212,17 @@ func _sweep_shape(size: Vector2i) -> void:
 		["B27b_management_menu", func() -> void: office._show_management()],
 		["B27c_reputation_menu", func() -> void: office._show_reputation_menu()],
 		["B27d_appearance", func() -> void: office._show_cosmetics()],
+		["B27e_venue_map", func() -> void: office._venues.show_map()],
+		["B27f_venue_screen", func() -> void: office._venues.show_venue("VN01")],
+		["B27g_venue_line", func() -> void:
+			GameState.venue_visit("VN01")
+			office._venues._current_venue = "VN01"
+			office._venues._hear("VN01")],
+		["B27h_venue_tips", func() -> void:
+			GameState.held_tips = [{"kind": "stage_suit", "target": "ST16", "suit": "Data Driven", "where": "cafeteria", "day": GameState.venue_today()},
+				{"kind": "opponent_suit", "target": "OP29", "suit": "Emotional", "where": "gardens", "day": GameState.venue_today() - 13}]
+			office._venues.show_tips()],
+		["B27i_speech_coach", func() -> void: office._show_speech_coach_page()],
 		["B28_how_to_play", func() -> void: HowToPlayPanel.open(HowToPlayPanel.attach(office))],
 	]
 	for entry: Array in panels:

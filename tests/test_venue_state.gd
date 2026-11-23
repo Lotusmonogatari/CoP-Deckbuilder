@@ -150,3 +150,9 @@ func test_the_hint_targets_are_only_rooms_and_people_in_levels_on_offer() -> voi
 		var stage := DataDB.get_stage(str(target["id"]))
 		assert_true(offered.has(str(target["id"])), "%s is on offer" % target["id"])
 		assert_true(stage.get("favored_suit") != null and str(stage["favored_suit"]) != "—", "%s has a Favored Suit" % target["id"])
+
+
+func test_every_suit_chip_reads_at_4_5_to_1_against_its_white_name() -> void:
+	for suit: String in VenueViews.SUIT_COLORS:
+		var color: Color = VenueViews.SUIT_COLORS[suit]
+		assert_gte(PartyDisplay.contrast(Color.WHITE, color), 4.5, "%s chip contrast" % suit)

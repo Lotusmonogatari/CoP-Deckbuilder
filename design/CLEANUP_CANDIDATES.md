@@ -243,3 +243,7 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 ## Living Office text rows no longer used (2026-11-21)
 
 `shop.style_living_name` ("Living Office"), `shop.style_living_desc` and `shop.style_included` were for the free default style, which is now the package Yezo Office (CP09) with its name and description in the Cosmetic Packages tab. Nothing asks for them; the exporter lists them as unused. **Deleted 2026-11-22 on Cameron's say-so** (the three rows were removed from the Text tab).
+
+## Capitol venues (P16, 2026-11-23)
+
+`venue.tip_saved` and `venue.tip_saved_opponent` are used; the package's rows `venue.gossip_only` ("Gossip only. Nothing changes.") is shown only on plain lines. The tab-title Text row `office.rhetoric_training` is still the Speech Coach page's fallback title, and `office.subtitle_jp_*` rows for the old Rhetoric tab were never separate. Nothing is removable yet; once the Speech Coach venue's name comes from the Venues tab everywhere, `office.rhetoric_training` could go (ask Cameron first).

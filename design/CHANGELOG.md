@@ -1977,3 +1977,14 @@ Cameron added 正幸 for Masayuki: the muted accent beside **Masayuki Katō** no
 | Rules | A level that would run over a Mandatory Decision! is refused; one that would outlast an Optional window asks first. When a Mandatory scene opens and the player is at the other office, the staff's after-hours trip costs 100 XP (or all they have). A follow-up waits for the fight or vote its earlier scene started. |
 | Tests | `test_whip_pick.gd`, `test_decision_clash.gd`, `test_whip_scenes.gd`, the click test `whip_fight_test`, and an exporter check for every new column. Review pictures: `design/review/p15_cptpp_whip_2026-11-23/REPORT.md`. |
 | Also recorded | VI143 (Mika Kobayashi, 397 x 915) was accepted on screen: no redraw (Cameron, 2026-11-23). |
+
+## P16: Capitol venues, phase 1 (2026-11-23, Cameron; branch `feature/p16-capitol-venues`)
+
+| Part | What changed |
+|---|---|
+| Step out | A button on the Capitol office opens a place map: the Capitol Building (Cafeteria, Library, Gardens) and the Capital Area (Speech Coach, Sapporo Stage, Super Station). Walking is free; every venue is open every day; the Library, Stage and Station are greyed "Coming soon". Hidden at the District office, greyed with a reason during a level or when the week is full. |
+| Cafeteria and Gardens | Eat with Colleagues and People Watching cost 1 hour a visit. Each venue deals 12 lines a day (seeded by run, day and venue, so a reload never reshuffles); Keep listening reveals up to 8 a day free, then one dry line and "Come back tomorrow". |
+| Rhetoric tips | About 1 in 8 lines is a tip about a stage's Favored Suit or an opponent's lead suit, only for levels on offer this week or the next Decision!. Up to 10 are held, each for 14 days; a new one replaces the oldest; the same target refreshes. They show in the tip box, as a Tips button and pop-up on the Levels list, a "tip" badge on a level, and a mark under the tipped room in the briefing. |
+| Speech Coach | Now a Capital Area venue; its activity opens the Rhetoric Training page unchanged (sessions, coupons, 1 hour per tier). The Rhetoric Training tab is gone from Office Management. |
+| Data | New tabs Venues (6), Venue Activities (6) and Venue Lines (90); the 56 hint and UI Text rows; Rules rows `venue_walk_hours_building`, `venue_walk_hours_area`, `venue_daily_set`, `venue_daily_heard`, `venue_hint_share` (8 = one in eight), `tips_max_held`, `tips_days`. Exporter checks for every column. The run gains `run_seed`, `venue_days`, `venue_heard_once` and `held_tips` (old saves load with none). `GameState.levels_on_offer()` now holds the Levels list's filters. |
+| Tests | `test_venue_rules`, `test_venue_lines`, `test_rhetoric_tips`, `test_venue_state`, the click test `venue_test`; the Rhetoric Training click path now goes through Step out. Review pictures: `design/review/p16_capitol_venues_2026-11-23/REPORT.md`. |

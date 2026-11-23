@@ -18,6 +18,63 @@ func _ready() -> void:
 	_run.call_deferred()
 
 
+## The Capitol venues screens (P16): each is drawn from a state set up here, with the day's set arranged to match the mockups.
+func _venue(office: Node, which: String) -> Overlay:
+	var today := GameState.venue_today()
+	var stage_tip := {"kind": "stage_suit", "target": "ST16", "suit": "Data Driven", "where": "cafeteria", "day": today - 1}
+	var tips := [stage_tip, {"kind": "opponent_suit", "target": "OP29", "suit": "Emotional", "where": "gardens", "day": today - 5},
+		{"kind": "stage_suit", "target": "ST08", "suit": "Divisive", "where": "cafeteria", "day": today - 10},
+		{"kind": "stage_suit", "target": "ST28", "suit": "Data Driven", "where": "gardens", "day": today - 13}]
+	match which:
+		"map":
+			office._venues.show_map()
+			return office.get_node("VenueMapPanel")
+		"cafeteria":
+			office._venues.show_venue("VN01")
+			return office.get_node("VenuePanel")
+		"gossip", "tip", "dry":
+			var entry := GameState.venue_day("VN01")
+			var dealt: Array = entry["dealt"]
+			dealt[0] = {"line_id": "VL001", "hint": {}}
+			if which == "tip":
+				dealt[0] = {"line_id": "VL081", "hint": {"kind": "stage_suit", "target": "ST16", "suit": "Data Driven", "text_key": "hint.stage_suit.data_driven_1"}}
+			if which == "dry":
+				entry["heard"] = dealt.size()
+			GameState.venue_visit("VN01")
+			office._venues._current_venue = "VN01"
+			office._venues._hear("VN01")
+			return office.get_node("VenueLinePanel")
+		"overheard":
+			var entry := GameState.venue_day("VN03")
+			(entry["dealt"] as Array)[0] = {"line_id": "VL088", "hint": {"kind": "opponent_suit", "target": "OP29", "suit": "Emotional",
+				"text_key": "hint.opponent_suit.emotional_1"}}
+			GameState.venue_visit("VN03")
+			office._venues._current_venue = "VN03"
+			office._venues._hear("VN03")
+			return office.get_node("VenueLinePanel")
+		"tips":
+			GameState.held_tips = tips
+			office._venues.show_tips()
+			return office.get_node("TipsPanel")
+		"levels":
+			GameState.held_tips = tips
+			office._show_levels()
+			return office.get_node("LevelsPanel")
+		"briefing":
+			GameState.held_tips = tips
+			for level: Dictionary in DataDB.levels:
+				if str(level.get("description", "")) == "Backing the Local Artisans":
+					office._on_level_chosen(level)
+			await get_tree().create_timer(0.6).timeout
+			for scroller in office.get_node("BriefingPanel").find_children("*", "ScrollContainer", true, false):
+				(scroller as ScrollContainer).scroll_vertical = 100000
+			return office.get_node("BriefingPanel")
+		"coach":
+			office._show_speech_coach_page()
+			return office.get_node("ManagementPanel")
+	return null
+
+
 func _run() -> void:
 	var args := OS.get_cmdline_user_args()
 	var screen := args[0] if args.size() > 0 else "administration"
@@ -83,6 +140,9 @@ func _run() -> void:
 				var first: Dictionary = ReputationModel.moves()[0]
 				office._show_standing_factors(first["booster"])
 				menu = office.get_node("StandingFactorsPanel")
+		"venue":
+			# venue:map | cafeteria | gossip | tip | overheard | dry | tips | levels | briefing | coach (P16, 2026-11-23)
+			menu = await _venue(office, parts[1] if parts.size() > 1 else "map")
 		"popup":
 			# The group-1 pop-ups (P14): popup:decision | scenario | moved | week | promises | broken | alert | resume | forced | hosted | result
 			menu = _popup(office, parts[1] if parts.size() > 1 else "decision")
