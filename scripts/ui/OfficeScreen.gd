@@ -40,6 +40,8 @@ var _travel_modes_row: HBoxContainer
 ## A mixed level waiting on an encounter on the train before it begins (the encounter is shown first).
 var _start_after_encounter := false
 var _encounter_cleared := false
+## Capitol venues (P16, 2026-11-23): Step out, the place map, the venues and the Tips pop-up.
+var _venues: VenuesController
 ## P15 (2026-11-23): the card that warns a level would outlast an Optional Decision!'s window, and whether the player said to go on.
 var _clash_panel: Overlay
 var _clash_accepted := false
@@ -219,6 +221,8 @@ func _ready() -> void:
 	_reputation_button.pressed.connect(_show_reputation_menu)
 	_management_button.pressed.connect(_show_management)
 	_build_inventory()
+	_venues = VenuesController.new()
+	_venues.setup(self, find_child("InventoryButton", true, false) as Button, _show_rhetoric_training, _refresh_resources)
 	_build_menus()
 	_build_record()
 	_build_cosmetics()
@@ -1589,6 +1593,9 @@ func _on_abandon_level_chosen() -> void:
 func _refresh_resources() -> void:
 	# The funds box under the calendar shows Funds, which every purchase changes.
 	DuesBox.refresh(_dues_box)
+	# Step out follows where the player stands, whether a level is running and the hours left (P16).
+	if _venues != null:
+		_venues.refresh_button()
 	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, GameState.deck_balance(), Text.phrase())
 	if refusal.is_empty():
 		_resources.text = Text.say("office.in_order")
@@ -1659,8 +1666,6 @@ func _show_management_tab(tab: String) -> void:
 		"deck":
 			rows = _deck_cards(look)
 			footer = _deck_confirm_button()
-		"rhetoric":
-			rows = _rhetoric_cards(look)
 		_:
 			tab = "staff"
 			rows = StaffRosterView.cards(StaffRosterModel.build(), {"profile": _show_staff_profile, "hire": _show_staff_candidates})
@@ -1676,7 +1681,6 @@ func _show_management_tab(tab: String) -> void:
 		"tabs": [
 			{"id": "staff", "text": Text.say("office.staff")},
 			{"id": "deck", "text": Text.say("office.your_deck")},
-			{"id": "rhetoric", "text": Text.say("office.rhetoric_training")},
 		],
 		"active_tab": tab,
 		"rows": rows,
@@ -1835,7 +1839,23 @@ func _with_booster_icon(booster_id: String, content: Control) -> Control:
 ## learn_offered_card()). Replaced the old "New cards" list, which let any
 ## card be bought outright for its XP price with no draw at all.
 func _show_rhetoric_training() -> void:
-	_show_management_tab("rhetoric")
+	_show_speech_coach_page()
+
+
+## The Speech Coach's page (P16, 2026-11-23): the Rhetoric Training page, unchanged, now opened from the Speech Coach venue in the
+## Capital Area and no longer a tab of Office Management.
+func _show_speech_coach_page() -> void:
+	var look := OfficeFrameStyles.look()
+	var venue := GameState.venue_row("VN04")
+	var frame := OfficeScreenFrame.new()
+	frame.setup({
+		"title": str(venue.get("name", Text.say("office.rhetoric_training"))),
+		"subtitle": str(venue.get("name_jp", "")),
+		"chips": [Text.say("office.funds", {"count": int(GameState.meta.get("Funds", 0))}), Text.say("office.xp", {"count": GameState.xp}),
+			Text.say("office.deck_count", {"count": GameState.deck.size(), "size": GameState.deck_size()})],
+		"rows": _rhetoric_cards(look),
+	})
+	_management_panel.open_frame(frame, Text.say("ui.back_office"))
 
 
 ## The Rhetoric Training tab: the blurb, then one card for each training session. (XP and Funds are chips now.)
@@ -4610,6 +4630,13 @@ func _show_levels() -> void:
 	rows.append(UiKit.line(Text.say("office.levels_blurb")))
 	# The hours left, at the top of the list (all styles; P9 review).
 	rows.append(UiKit.line(Text.say("office.docket_hours", {"count": GameState.work_hours_left()}), "HeaderLabel"))
+	# The rhetoric tips the player holds (P16, 2026-11-23): a button with their count opens the Tips you hold pop-up.
+	var tips_button := Button.new()
+	tips_button.name = "TipsButton"
+	tips_button.custom_minimum_size = Vector2(0, 100)
+	tips_button.text = "%s  %d" % [Text.say("tips.button"), GameState.tips_held().size()]
+	tips_button.pressed.connect(_venues.show_tips)
+	rows.append(tips_button)
 
 	# Sponsored and custom bills are carried at the Capitol only (Cameron, 2026-11-21): elsewhere the list says so instead.
 	var bills_here := Offices.is_here(PatronLevel.office(), GameState.office_location)
@@ -4641,41 +4668,8 @@ func _show_levels() -> void:
 			rows.append(_level_row(special))
 
 	var by_tier := {}
-	for level: Dictionary in DataDB.levels:
-		# Special levels are listed above, and only once due.
-		if SpecialLevels.is_special(level):
-			continue
-		# A "One-Time (Yes/No)" level (levels.json's own "one_time" column)
-		# that has already been completed — win or loss — is left out of the
-		# list entirely, not shown-but-disabled like a locked or cooling-
-		# down one: Cameron's own request was that it disappear outright.
-		# Independent of "level_gating_enabled" below, which only gates
-		# cost/cooldown, not this.
-		if Ledger.level_is_hidden(level, GameState.level_last_completed_at):
-			continue
-		# An Act whose bill the player voted Aye or Nay on never comes back
-		# (2026-11-13); one they were absent for or abstained on returns once its
-		# 7,488-hour replay timer is over, like any cooling-down level.
-		if GameState.act_is_settled(level):
-			continue
-		# A level still cooling down is taken off the list until its cooldown
-		# is over (Cameron, 2026-11-06; it used to show as a disabled row).
-		if DataDB.get_rule("level_gating_enabled", false) and Ledger.level_cooldown_remaining(
-				level, GameState.time_units, GameState.level_cleared_units) > 0:
-			continue
-		# A level only an event can reveal ("Needs Discovery") stays out of sight until then.
-		if not GameState.is_level_discovered(level):
-			continue
-		# A seasonal level (its Seasons cell) only shows in its season (2026-10-30).
-		if not GameState.in_season(level):
-			continue
-		# An Event Only level is started from an event choice, never the list.
-		if GameState.is_event_only(level):
-			continue
-		# A level starts only at its own office (Either levels from both; two offices, 2026-11-20), and a protagonist's
-		# own levels (slice 6) are listed only for them.
-		if not GameState.level_at_this_office(level) or not GameState.level_is_for_player(level):
-			continue
+	# The levels the list shows: GameState.levels_on_offer() holds the filters (the rhetoric tips read the same list, P16).
+	for level: Dictionary in GameState.levels_on_offer():
 		var tier := int(level.get("tier", 0))
 		if not by_tier.has(tier):
 			by_tier[tier] = []
@@ -5002,6 +4996,12 @@ func _level_row_plain(level: Dictionary) -> Control:
 	if trip_hours > 0:
 		place_line = "%s · %s" % [place_line, Text.say("office.level_travel_line", {"count": trip_hours})]
 	box.add_child(UiKit.line(place_line, "SmallLabel"))
+	# A level with a tipped room says so (P16).
+	var tipped := GameState.tipped_rooms(level)
+	if tipped > 0:
+		var badge := UiKit.line(Text.say("tips.badge_one") if tipped == 1 else Text.say("tips.badge_many", {"count": tipped}), "SmallLabel")
+		badge.name = "TipBadge"
+		box.add_child(badge)
 
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)
@@ -5088,8 +5088,20 @@ func _show_briefing() -> void:
 		"travel_trips": Travel.level_trips(_chosen_level),
 		"travel_mode": _travel_mode,
 		"travel_options": GameState.level_travel_options(_chosen_level),
+		"room_tips": _room_tips(expanded),
 	}
 	_briefing_panel.open_brief(LevelBriefing.build(expanded, GameState.difficulty, DataDB.balance_base, context))
+
+
+## The held rhetoric tips for each room of an expanded level, {stage_id: [tips]} (P16, 2026-11-23).
+func _room_tips(expanded: Dictionary) -> Dictionary:
+	var out := {}
+	for stage: Dictionary in expanded.get("stages", []):
+		var stage_id := str(stage.get("stage_id", ""))
+		var tips := GameState.tips_for_stage(stage_id)
+		if not tips.is_empty():
+			out[stage_id] = tips
+	return out
 
 
 ## Start: choose a level — or, when a saved run stopped between the stages

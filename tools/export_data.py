@@ -1394,6 +1394,84 @@ SHEETS = {
         ],
         "optional": ["Whip Bill", "Whip Line", "Minister", "Vote Bill", "Max Follow-Ups", "Must End By"],
     },
+    # Capitol venues (P16, 2026-11-23, Cameron): the places the player steps out to from the Capitol office. A venue is a place on the map
+    # (Capitol Building or Capital Area), an activity is what you do there (one visit costs its hours once), and a venue line is one
+    # piece of gossip, people watching or a rhetoric tip dealt each day. See design/proposals/CAPITOL_VENUES_SPEC_2026-11-23.md.
+    "Venues": {
+        "out": "venues.json",
+        "key": "venue_id",
+        "id_pattern": r"^VN\d+$",
+        "optional_sheet": True,
+        "optional": ["Unlock", "Open Days"],
+        "columns": [
+            ("Venue ID", "venue_id", "id"),
+            ("Name", "name", "str"),
+            ("Name JP", "name_jp", "str"),
+            ("Romaji", "romaji", "str"),
+            ("Zone", "zone", "str"),
+            ("Order", "order", "int"),
+            ("Icon", "icon", "str"),
+            ("Background", "background", "str"),
+            ("Blurb", "blurb", "str"),
+            ("Open Days", "open_days", "str"),
+            ("Unlock", "unlock", "str"),
+        ],
+    },
+    "Venue Activities": {
+        "out": "venue_activities.json",
+        "key": "activity_id",
+        "id_pattern": r"^VA\d+$",
+        "optional_sheet": True,
+        "optional": ["Per Day", "Per Week", "Condition Type", "Condition Target", "Condition Op", "Condition Value"],
+        "columns": [
+            ("Activity ID", "activity_id", "id"),
+            ("Venue ID", "venue_id", "str"),
+            ("Kind", "kind", "str"),
+            ("Name", "name", "str"),
+            ("Icon", "icon", "str"),
+            ("Pool", "pool", "str"),
+            ("Hours", "hours", "int"),
+            ("Funds", "funds", "int"),
+            ("XP", "xp", "int"),
+            ("Per Day", "per_day", "int"),
+            ("Per Week", "per_week", "int"),
+            ("Condition Type", "condition_type", "str"),
+            ("Condition Target", "condition_target", "str"),
+            ("Condition Op", "condition_op", "str"),
+            ("Condition Value", "condition_value", "num"),
+        ],
+    },
+    "Venue Lines": {
+        "out": "venue_lines.json",
+        "key": "line_id",
+        "id_pattern": r"^VL\d+$",
+        "optional_sheet": True,
+        "optional": ["Topic", "Condition Type", "Condition Target", "Condition Op", "Condition Value", "On Date", "Date From", "Date To",
+                     "Seasons", "After Law", "Weight", "Once", "Hint Kind", "Hint Target", "Unlocks Doc", "Effects", "Note (tone)"],
+        "columns": [
+            ("Line ID", "line_id", "id"),
+            ("Pool", "pool", "str"),
+            ("Topic", "topic", "str"),
+            ("Speaker", "speaker", "str"),
+            ("Text", "text", "str"),
+            ("Condition Type", "condition_type", "str"),
+            ("Condition Target", "condition_target", "str"),
+            ("Condition Op", "condition_op", "str"),
+            ("Condition Value", "condition_value", "num"),
+            ("On Date", "on_date", "str"),
+            ("Date From", "date_from", "str"),
+            ("Date To", "date_to", "str"),
+            ("Seasons", "seasons", "id_list"),
+            ("After Law", "after_law", "str"),
+            ("Weight", "weight", "int"),
+            ("Once", "once", "str"),
+            ("Hint Kind", "hint_kind", "str"),
+            ("Hint Target", "hint_target", "str"),
+            ("Unlocks Doc", "unlocks_doc", "str"),
+            ("Effects", "effects", "str"),
+            ("Note (tone)", "note", "str"),
+        ],
+    },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
     # three screens of choices (what to do, a policy topic, a modest promise)
     # followed by guest reactions. Options carry tags; organizations like and
@@ -4085,6 +4163,109 @@ def check_whip_and_vote_scenes(data, report, by_id, roots):
                 report.error(f"Decision Scenes {sid}", f"is a vote on {datetime.date.fromordinal(day).strftime('%y.%m.%d')}, after {root}'s Must End By {deadline}")
 
 
+VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel")
+VENUE_ZONES = ("Capitol Building", "Capital Area")
+VENUE_HINT_KINDS = ("stage_suit", "opponent_suit")
+VENUE_POOLS = ("cafeteria", "gardens", "dry")
+VENUE_CONDITIONS = ("meta", "law", "staff_role", "party", "seen", "always")
+# The playable characters: never a speaker in a venue line (P16).
+PROTAGONIST_OPPONENTS = ("OP06", "OP22", "OP35", "OP40")
+
+
+def check_venues(data, report):
+    """Capitol venues (P16, 2026-11-23): IDs, kinds and zones; an activity names a real venue and a pool that has lines; a line's Pool,
+    Speaker (opponent, staff, visitor, a Capital Area ID, 'colleague' or blank, never a protagonist), dates (YY.MM.DD, From not after
+    To), Seasons, After Law (BIxx passed or failed), condition and hint columns; and every hint Text row keeps its token."""
+    venues = {str(v.get("venue_id")): v for v in data.get("venues", [])}
+    activities = data.get("venue_activities", [])
+    lines = data.get("venue_lines", [])
+    if not venues and not lines:
+        return
+    people = {str(o.get("opp_id")) for o in data.get("opponents", [])} | {str(s.get("staff_id")) for s in data.get("staff", [])} \
+        | {str(v.get("visitor_id")) for v in data.get("visitors", [])}
+    protagonists = set(PROTAGONIST_OPPONENTS)
+    player_names = {str(p.get("name_en")) for p in (data.get("player") or {}).get("protagonists", [])}
+    for o in data.get("opponents", []):
+        if str(o.get("name")) in player_names:
+            protagonists.add(str(o.get("opp_id")))
+    area_ids = {"SPEECH_COACH"}
+    bills = {str(k) for k in data.get("floor_votes", {})}
+    stages = {str(s.get("stage_id")): s for s in data.get("stages", [])}
+    opponent_ids = {str(o.get("opp_id")) for o in data.get("opponents", [])}
+    season_table = (data.get("rules") or {}).get("seasons")
+    season_table = season_table.get("value") if isinstance(season_table, dict) and "value" in season_table else season_table
+    seasons = set(season_table.keys()) if isinstance(season_table, dict) else set()
+    for venue in venues.values():
+        where = f"Venues {venue.get('venue_id')}"
+        if venue.get("zone") not in VENUE_ZONES:
+            report.error(where, f"Zone is {venue.get('zone')!r}; it must be Capitol Building or Capital Area")
+        if venue.get("order") is None:
+            report.error(where, "Order is blank")
+        if venue.get("unlock"):
+            report.warn(where, "Unlock is not used yet; the venue is open to everyone")
+    activity_pools = set()
+    for activity in activities:
+        where = f"Venue Activities {activity.get('activity_id')}"
+        if str(activity.get("venue_id")) not in venues:
+            report.error(where, f"Venue ID {activity.get('venue_id')!r} is not in the Venues tab")
+        if activity.get("kind") not in VENUE_KINDS:
+            report.error(where, f"Kind {activity.get('kind')!r} must be one of {', '.join(VENUE_KINDS)}")
+        if activity.get("pool"):
+            activity_pools.add(str(activity["pool"]))
+            if str(activity["pool"]) not in VENUE_POOLS:
+                report.error(where, f"Pool {activity['pool']!r} must be one of {', '.join(VENUE_POOLS)}")
+    for pool in activity_pools:
+        if not any(str(l.get("pool")) == pool for l in lines):
+            report.error("Venue Activities", f"Pool '{pool}' has no Venue Lines")
+    for line in lines:
+        where = f"Venue Lines {line.get('line_id')}"
+        if str(line.get("pool")) not in VENUE_POOLS:
+            report.error(where, f"Pool {line.get('pool')!r} must be one of {', '.join(VENUE_POOLS)}")
+        speaker = str(line.get("speaker") or "")
+        if speaker and speaker != "colleague" and speaker not in people and speaker not in area_ids:
+            report.error(where, f"Speaker '{speaker}' is not an opponent, staff, visitor or Capital Area ID, 'colleague' or blank")
+        if speaker in protagonists:
+            report.error(where, f"Speaker '{speaker}' is a protagonist; a player character never speaks in a venue line")
+        hint = line.get("hint_kind")
+        if not hint and not line.get("text"):
+            report.error(where, "A line with no Text must be a hint (Hint Kind)")
+        parsed = {}
+        for column in ("on_date", "date_from", "date_to"):
+            if line.get(column):
+                if not _real_date(line[column]):
+                    report.error(where, f"{column.replace('_', ' ').title()} {line[column]!r} is not a real YY.MM.DD date")
+                else:
+                    parsed[column] = str(line[column])
+        if "date_from" in parsed and "date_to" in parsed and parsed["date_from"] > parsed["date_to"]:
+            report.error(where, "Date From is after Date To")
+        for season in line.get("seasons") or []:
+            if seasons and season not in seasons:
+                report.error(where, f"Seasons names '{season}', which is not one of the Rules tab's seasons")
+        if line.get("after_law"):
+            parts = str(line["after_law"]).split()
+            if len(parts) != 2 or parts[0] not in bills or parts[1] not in ("passed", "failed"):
+                report.error(where, f"After Law {line['after_law']!r} must be 'BIxx passed' or 'BIxx failed' with a real bill")
+        if line.get("condition_type") and line["condition_type"] not in VENUE_CONDITIONS:
+            report.error(where, f"Condition Type {line['condition_type']!r} must be one of {', '.join(VENUE_CONDITIONS)}")
+        if hint:
+            if hint not in VENUE_HINT_KINDS:
+                report.error(where, f"Hint Kind {hint!r} must be stage_suit or opponent_suit")
+            target = str(line.get("hint_target") or "")
+            if target:
+                if hint == "stage_suit" and not (target in stages and stages[target].get("favored_suit")):
+                    report.error(where, f"Hint Target '{target}' must be a stage with a Favored Suit")
+                if hint == "opponent_suit" and target not in opponent_ids:
+                    report.error(where, f"Hint Target '{target}' must be an opponent")
+    strings = data.get("strings")
+    for row in strings if isinstance(strings, list) else []:
+        key = str(row.get("key") or "")
+        text = str(row.get("english") or "")
+        if key.startswith("hint.stage_suit.") and "{stage}" not in text:
+            report.error(f"Text {key}", "a stage hint keeps its {stage} token")
+        if key.startswith("hint.opponent_suit.") and "{name}" not in text:
+            report.error(f"Text {key}", "an opponent hint keeps its {name} token")
+
+
 def check_offices(data, report):
     """Two offices (2026-11-20): every Location cell is Capitol, District, Either or blank; Travel Trips is 0, 1
     or 2 and only on a level that has a real office; a protagonist's travel hours are Balance rows."""
@@ -5290,6 +5471,7 @@ def main():
     check_offices(data, report)
     check_event_leads(data, report)
     check_decision_scenes(data, report)
+    check_venues(data, report)
     check_places(data, report)
     check_followups(data, report)
     check_text_keys(data, report)

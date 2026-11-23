@@ -1,0 +1,80 @@
+[
+  {
+    "venue_id": "VN01",
+    "name": "Cafeteria",
+    "name_jp": "食堂",
+    "romaji": "Shokudō",
+    "zone": "Capitol Building",
+    "order": 1,
+    "icon": "VEN_CAFETERIA",
+    "background": "CAPITOL_CAFETERIA",
+    "blurb": "Long tables, short tempers, good curry.",
+    "open_days": "Any",
+    "unlock": null
+  },
+  {
+    "venue_id": "VN02",
+    "name": "National Assembly Library",
+    "name_jp": "国会図書館",
+    "romaji": "Kokkai Toshokan",
+    "zone": "Capitol Building",
+    "order": 2,
+    "icon": "VEN_LIBRARY",
+    "background": "CAPITOL_LIBRARY",
+    "blurb": "Every law Yezo ever argued about, and the arguments.",
+    "open_days": "Any",
+    "unlock": null
+  },
+  {
+    "venue_id": "VN03",
+    "name": "Capitol Gardens",
+    "name_jp": "国会庭園",
+    "romaji": "Kokkai Teien",
+    "zone": "Capitol Building",
+    "order": 3,
+    "icon": "VEN_GARDENS",
+    "background": "CAPITOL_GARDENS",
+    "blurb": "Everyone who wants something passes the fountain.",
+    "open_days": "Any",
+    "unlock": null
+  },
+  {
+    "venue_id": "VN04",
+    "name": "Speech Coach",
+    "name_jp": "話し方教室",
+    "romaji": "Hanashikata Kyōshitsu",
+    "zone": "Capital Area",
+    "order": 4,
+    "icon": "VEN_COACH",
+    "background": "AREA_COACH_STUDIO",
+    "blurb": "Masayuki Katō will hear you now.",
+    "open_days": "Any",
+    "unlock": null
+  },
+  {
+    "venue_id": "VN05",
+    "name": "Sapporo Stage",
+    "name_jp": "札幌ステージ",
+    "romaji": "Sapporo Sutēji",
+    "zone": "Capital Area",
+    "order": 5,
+    "icon": "VEN_STAGE",
+    "background": "AREA_SAPPORO_STAGE",
+    "blurb": "Concerts, team days and festivals under the open sky.",
+    "open_days": "Any",
+    "unlock": null
+  },
+  {
+    "venue_id": "VN06",
+    "name": "Sapporo Super Station",
+    "name_jp": "札幌スーパー駅",
+    "romaji": "Sapporo Sūpā Eki",
+    "zone": "Capital Area",
+    "order": 6,
+    "icon": "VEN_STATION",
+    "background": "AREA_SUPER_STATION",
+    "blurb": "Every line in Yezo starts here.",
+    "open_days": "Any",
+    "unlock": null
+  }
+]

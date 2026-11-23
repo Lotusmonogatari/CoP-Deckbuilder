@@ -362,3 +362,11 @@ A Decision! scene is an event the calendar schedules, shown on the red DECISION!
 | Speakers | **Speaker** and **Second Speaker** with a **Speaker Face** (`neutral`, `attacking`, `gaining`). |
 
 The exporter checks every cell and says what to fix. A scene fires once: answering it, or letting an Optional one lapse, is remembered for the run.
+
+## Venue lines (P16, 2026-11-23)
+
+The Capitol venues (Venues, Venue Activities, Venue Lines tabs) deal gossip, people watching and rhetoric tips. The full spec is `design/proposals/CAPITOL_VENUES_SPEC_2026-11-23.md`.
+
+**A line** is a Venue Lines row: Pool (`cafeteria`, `gardens` or `dry`), Topic, Speaker (an opponent, staff or visitor ID, `colleague`, or blank for narration; never a protagonist: OP06, OP22, OP35, OP40), Text, an optional condition (as Office Notices: meta, law, staff role), and optional gates: **On Date**, **Date From / Date To**, **Seasons**, **After Law** (`BIxx passed` or `BIxx failed`). Weight raises a line's chance; **Once** (Y) keeps a line from coming back. A **hint row** has no Text and a Hint Kind (`stage_suit` or `opponent_suit`); its Hint Target is a stage with a Favored Suit or an opponent, or blank to pick one. Its words are the Text rows `hint.stage_suit.<suit>_<n>` (with `{stage}`) and `hint.opponent_suit.<suit>_<n>` (with `{name}`), suits in lower case with underscores (`data_driven`).
+
+**Writing rules.** One or two sentences, 8 to 25 words, no exclamation marks; dry and observational. An attributed line is "Line." and the name below it: the speaker's lead suit sets the tone (Earnest plain, Emotional personal, Appeal rallying, Data Driven a figure, Divisive needling, Duplicitous a wink), and their party's position sets the subject (a governing party: the coalition and ministries; an opposition party: its cracks). Plain gossip names no organization; a bill or stage appears only in a law line or a hint. A line about a moment fills its date, season or After Law. A hint's wording keeps its token and never names the suit; write at least three phrasings per suit per kind; a hint is a tilt, never a promise.

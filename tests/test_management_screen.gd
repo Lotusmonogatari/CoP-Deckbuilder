@@ -1,5 +1,5 @@
 extends GutTest
-## Office Management on the shared frame (P13, 2026-11-20). Three tabs (Staff, Your deck, Rhetoric Training); the Staff tab
+## Office Management on the shared frame (P13, 2026-11-20). Two tabs (Staff, Your deck; Rhetoric Training moved to the Speech Coach venue in P16); the Staff tab
 ## shows one card for every hired person (so the staff count always equals the cards shown), one dashed row for every open
 ## place, and the Staff Assignments button fixed under it; the deck and training bodies are the old ones in cards.
 
@@ -100,13 +100,14 @@ func test_every_hired_person_has_a_card_and_every_open_place_a_row_in_every_styl
 		assert_eq(taps, ["p:" + str(person["staff_id"]), "h:" + role_name], style + ": taps reach their handlers")
 
 
-func test_the_screen_has_three_tabs_a_staff_assignments_button_and_three_chips() -> void:
+func test_the_screen_has_two_tabs_a_staff_assignments_button_and_three_chips() -> void:
 	var office := _office()
 	await get_tree().process_frame
 	office._show_management()
 	var panel := office.get_node("ManagementPanel") as Overlay
-	for tab: String in ["staff", "deck", "rhetoric"]:
+	for tab: String in ["staff", "deck"]:
 		assert_not_null(panel.find_child("FrameTab_" + tab, true, false), tab + " tab")
+	assert_null(panel.find_child("FrameTab_rhetoric", true, false), "Rhetoric Training is no longer a tab (P16: the Speech Coach venue)")
 	var footer := panel.find_child("StaffAssignmentsButton", true, false) as Button
 	assert_not_null(footer, "Staff Assignments is the fixed button")
 	assert_eq(panel.find_child("FrameChips", true, false).get_child_count(), 3, "Funds, XP and the deck count")
@@ -126,7 +127,7 @@ func test_the_deck_tab_confirms_only_a_deck_that_can_be_taken_in() -> void:
 		assert_false(panel.visible, "taking the deck in closes the screen, as it did")
 
 
-func test_the_training_tab_has_a_card_for_every_session() -> void:
+func test_the_speech_coachs_page_has_a_card_for_every_session() -> void:
 	var office := _office()
 	await get_tree().process_frame
 	office._show_rhetoric_training()
@@ -145,7 +146,7 @@ func test_each_tab_builds_in_every_style() -> void:
 		UiStyle.trying = style
 		var office := _office()
 		await get_tree().process_frame
-		for tab: String in ["staff", "deck", "rhetoric"]:
+		for tab: String in ["staff", "deck"]:
 			office._on_management_tab(tab)
 			assert_true((office.get_node("ManagementPanel") as Overlay).visible, "%s: %s opens" % [style, tab])
 		office.queue_free()

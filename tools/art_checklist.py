@@ -144,6 +144,11 @@ def main():
     flat("Cosmetic package icons", "icon",
          icon_rows(load("cosmetic_packages"), "package_id", "name_en"))
 
+    # Capitol venues (P16, 2026-11-23): a background and an icon for each venue, and an icon for each activity.
+    flat("Venue backgrounds", "background", [(str(v["background"]), str(v["name"])) for v in load("venues") if v.get("background")])
+    flat("Venue icons", "icon", [(str(v["icon"]), str(v["name"])) for v in load("venues") if v.get("icon")])
+    flat("Venue activity icons", "icon", [(str(a["icon"]), str(a["name"])) for a in load("venue_activities") if a.get("icon")])
+
     # Decision! scenes (2026-11-21): one row each with its own picture(s), the shared picture for its office (the fallback when it
     # has none of its own) and its speakers' portraits. A scene with no picture of its own and no shared picture shows the event's
     # Image cell, then a labelled placeholder.

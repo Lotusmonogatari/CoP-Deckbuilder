@@ -507,7 +507,24 @@ static func _block(room: Dictionary, look: Dictionary) -> Control:
 		var carries := _label(Text.say("briefing.loss_continues"), LevelBriefingStyles.SIZE_SMALL - 0.5, look["muted"], false)
 		carries.name = "LossContinues"
 		column.add_child(carries)
+	# A rhetoric tip the player holds about this room, or a person who may sit in it (P16, 2026-11-23).
+	for tip: Dictionary in room.get("tips", []):
+		column.add_child(_tip_mark(tip, look))
 	return block
+
+
+## "Responds to [suit] · heard in the Cafeteria", led by the person's name for an opponent's tip.
+static func _tip_mark(tip: Dictionary, look: Dictionary) -> Control:
+	var row := HFlowContainer.new()
+	row.name = "TipMark_" + str(tip.get("target", ""))
+	row.add_theme_constant_override("h_separation", int(LevelBriefingStyles.len_px(8.0)))
+	var lead := Text.say("tips.briefing_responds")
+	if str(tip.get("kind", "")) == RhetoricTips.OPPONENT:
+		lead = "%s %s" % [VenueViews.tip_target_name(tip), lead.to_lower()]
+	row.add_child(_label(lead, LevelBriefingStyles.SIZE_SMALL, look["ink"], false, false))
+	row.add_child(VenueViews.suit_chip(str(tip.get("suit", ""))))
+	row.add_child(_label("· " + VenueViews.heard_text(tip, true), LevelBriefingStyles.SIZE_SMALL, look["muted"], false, false))
+	return row
 
 
 ## The label for a kind of room (LevelBriefing's KIND_ names), by literal Text keys.

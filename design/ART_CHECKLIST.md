@@ -18,6 +18,9 @@ stands in for every expression.
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
 | Cosmetic package icons | 9 / 9 |
+| Venue backgrounds | 0 / 6 |
+| Venue icons | 0 / 6 |
+| Venue activity icons | 0 / 6 |
 | Decision scenes with a picture to show | 0 / 10 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -618,6 +621,39 @@ stands in for every expression.
 | CP07.png | Broadcast | ✓ |
 | CP08.png | Woodblock | ✓ |
 | CP09.png | Yezo Office | ✓ |
+
+## Venue backgrounds — `assets/backgrounds/`
+
+| File | For | Drawn |
+|---|---|---|
+| CAPITOL_CAFETERIA.png | Cafeteria | ☐ |
+| CAPITOL_LIBRARY.png | National Assembly Library | ☐ |
+| CAPITOL_GARDENS.png | Capitol Gardens | ☐ |
+| AREA_COACH_STUDIO.png | Speech Coach | ☐ |
+| AREA_SAPPORO_STAGE.png | Sapporo Stage | ☐ |
+| AREA_SUPER_STATION.png | Sapporo Super Station | ☐ |
+
+## Venue icons — `assets/icons/`
+
+| File | For | Drawn |
+|---|---|---|
+| VEN_CAFETERIA.png | Cafeteria | ☐ |
+| VEN_LIBRARY.png | National Assembly Library | ☐ |
+| VEN_GARDENS.png | Capitol Gardens | ☐ |
+| VEN_COACH.png | Speech Coach | ☐ |
+| VEN_STAGE.png | Sapporo Stage | ☐ |
+| VEN_STATION.png | Sapporo Super Station | ☐ |
+
+## Venue activity icons — `assets/icons/`
+
+| File | For | Drawn |
+|---|---|---|
+| ACT_EAT.png | Eat with Colleagues | ☐ |
+| ACT_READ.png | Browse the Shelves | ☐ |
+| ACT_WATCH.png | People Watching | ☐ |
+| ACT_TRAIN.png | Rhetoric Training | ☐ |
+| ACT_SHOW.png | Watch the Show | ☐ |
+| ACT_TRAVEL.png | Departures | ☐ |
 
 ## Decision scenes
 

@@ -444,6 +444,13 @@ var scene_runtime: Dictionary = {}
 ## {bill_id: [{"choice", "by", "scene_id"}]} (WhipPick.resolve).
 var whip_picks: Dictionary = {}
 var whip_locks: Dictionary = {}
+## Capitol venues (P16, 2026-11-23): the run's own number, which (with the day and the venue) deals each venue's lines so a reload does
+## not reshuffle them; per venue the day's dealt set and how many were heard {venue_id: {"day", "dealt", "heard", "dry"}}; the Once lines
+## already heard {line_id: true}; and the rhetoric tips held (RhetoricTips.gd). An old save has none of them and starts with none.
+var run_seed := 0
+var venue_days: Dictionary = {}
+var venue_heard_once: Dictionary = {}
+var held_tips: Array = []
 ## The after-hours trip the staff made for a Mandatory scene when it opened (not saved): {"xp": cost, "place": office}, or {}.
 var last_evening_trip: Dictionary = {}
 ## What the whip stage that just ended did to the vote (not saved): WhipPick.resolve's answer, or {} when it was won or not a whip.
@@ -653,7 +660,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
 	"bill_stance",
@@ -681,6 +688,9 @@ func load_save(saved: Dictionary) -> void:
 	if not start_new_run(player_id):
 		start_new_run(str(DataDB.player.get("player_id", "")))
 
+	# An old save has no run number: one is made from what the save does hold, so its venue lines stay the same on every load.
+	if not saved.has("run_seed"):
+		run_seed = absi(("%s|%s" % [player_id, str(saved.get("time_units", 0))]).hash())
 	for field: String in _SAVED_FIELDS:
 		if not saved.has(field) or field == "protagonist_id":
 			continue
@@ -896,6 +906,10 @@ func reset_crisis_triggers() -> void:
 	whip_picks = {}
 	whip_locks = {}
 	last_evening_trip = {}
+	run_seed = randi()
+	venue_days = {}
+	venue_heard_once = {}
+	held_tips = []
 	promises = []
 	promises_broken_unseen = []
 	promise_serial = 0
@@ -2563,6 +2577,236 @@ func event_speakers(event_id: String) -> Array:
 	return out
 
 
+# ---------------------------------------------------------------------------
+# Capitol venues (P16, 2026-11-23, Cameron): Step out from the Capitol office to the Cafeteria, the Gardens and the Speech Coach.
+# The pure rules are VenueRules.gd, VenueLines.gd and RhetoricTips.gd; this is the state they read and write.
+# ---------------------------------------------------------------------------
+
+## Whether the player may step out now: one of VenueRules's reason codes (VenueRules.OPEN when they may).
+func step_out_state() -> String:
+	return VenueRules.step_out_state(office_location == Offices.CAPITOL, is_in_level(), work_hours_left())
+
+
+## Why Step out cannot be used now, as a sentence; "" when it can.
+func step_out_refusal() -> String:
+	match step_out_state():
+		VenueRules.ELSEWHERE: return Text.say("venue.refuse_elsewhere")
+		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
+		VenueRules.WEEK_FULL: return Text.say("venue.refuse_week_full")
+	return ""
+
+
+## The held tips about a room (the stage's own tip, and the tip of each person who may be seated there), as
+## [{"kind", "target", "suit", "where", "day"}].
+func tips_for_stage(stage_id: String) -> Array:
+	var found: Array = []
+	for tip: Dictionary in tips_held():
+		if str(tip.get("kind", "")) == RhetoricTips.STAGE:
+			if str(tip.get("target", "")) == stage_id:
+				found.append(tip)
+		elif (DataDB.get_opponent(str(tip.get("target", ""))).get("stages", []) as Array).has(stage_id):
+			found.append(tip)
+	return found
+
+
+## How many rooms of a level carry a held tip (the Levels list's badge).
+func tipped_rooms(level: Dictionary) -> int:
+	var count := 0
+	if held_tips.is_empty():
+		return 0
+	for slot in range(1, 11):
+		var raw: Variant = level.get("stage_%d" % slot)
+		var stage_id := "" if raw == null else str(raw)
+		if stage_id.is_empty() or stage_id == "N/A" or BattleSetup._is_bill_id(stage_id):
+			continue
+		if not tips_for_stage(stage_id).is_empty():
+			count += 1
+	return count
+
+
+## Today as a day number (the venue lines' day).
+func venue_today() -> int:
+	return WeekCalendar.today_number(calendar, calendar_config())
+
+
+## The venue row, its activity row and the Rules rows' walking hours, for the screens.
+func venue_row(venue_id: String) -> Dictionary:
+	for venue: Dictionary in DataDB.venues:
+		if str(venue.get("venue_id", "")) == venue_id:
+			return venue
+	return {}
+
+
+func venue_walk_hours(venue_id: String) -> int:
+	return VenueRules.walk_hours(str(venue_row(venue_id).get("zone", "")), int(DataDB.get_rule("venue_walk_hours_building", 0)),
+		int(DataDB.get_rule("venue_walk_hours_area", 0)))
+
+
+func venue_limit() -> int:
+	return int(DataDB.get_rule("venue_daily_heard", 8))
+
+
+## What the lines' conditions, dates and seasons read today.
+func venue_context() -> Dictionary:
+	return {"today": venue_today(), "month": current_month(), "seasons": DataDB.rules.get("seasons", {}),
+		"meta": effective_meta(), "laws": law_statuses(), "staff_hired": staff_hired, "heard": venue_heard_once}
+
+
+## How many Text rows each hint kind and suit has, {"stage_suit.earnest": 3, ...}, counted from the Text tab.
+func hint_phrasings() -> Dictionary:
+	var counts := {}
+	for key: Variant in DataDB.strings.keys():
+		var text := str(key)
+		for kind: String in [RhetoricTips.STAGE, RhetoricTips.OPPONENT]:
+			var prefix := "hint.%s." % kind
+			if text.begins_with(prefix):
+				var rest := text.substr(prefix.length())
+				var suit := rest.substr(0, rest.rfind("_"))
+				counts["%s.%s" % [kind, suit]] = int(counts.get("%s.%s" % [kind, suit], 0)) + 1
+	return counts
+
+
+## The stages and people a rhetoric tip may be about this week: the rooms of the levels on offer here and of the next Decision! scene.
+func tip_targets() -> Dictionary:
+	var stage_ids: Array = []
+	var by_stage := {}
+	for level: Dictionary in levels_on_offer():
+		for slot in range(1, 11):
+			var raw: Variant = level.get("stage_%d" % slot)
+			var stage_id := "" if raw == null else str(raw)
+			if stage_id.is_empty() or stage_id == "N/A" or BattleSetup._is_bill_id(stage_id) or stage_ids.has(stage_id):
+				continue
+			stage_ids.append(stage_id)
+			by_stage[stage_id] = BattleSetup.eligible_opponents(stage_id)
+	var stage_rows := {}
+	for stage_id: Variant in stage_ids:
+		stage_rows[str(stage_id)] = DataDB.get_stage(str(stage_id))
+	var extra: Array = []
+	var today := venue_today()
+	for scene: Dictionary in DataDB.decision_scenes:
+		if decision_log.has(str(scene.get("scene_id", ""))):
+			continue
+		for id: String in DecisionScenes.speaker_ids(scene):
+			if DecisionScenes.person_kind(id) == "opponent":
+				extra.append(DataDB.get_opponent(id))
+		for entry: Dictionary in DecisionScenes.parse_activates(scene.get("activates")):
+			if str(entry["kind"]) == DecisionScenes.KIND_STAGE and not stage_ids.has(str(entry["id"])):
+				stage_ids.append(str(entry["id"]))
+				stage_rows[str(entry["id"])] = DataDB.get_stage(str(entry["id"]))
+		break   # only the next scene (the first unanswered one in the tab's order)
+	if today < 0:
+		extra = []
+	return RhetoricTips.targets(stage_ids, stage_rows, by_stage, extra)
+
+
+## Today's dealt set for a venue, dealt once and kept (so a reload never reshuffles): {"day", "dealt", "heard", "dry"}.
+func venue_day(venue_id: String) -> Dictionary:
+	var today := venue_today()
+	var kept: Variant = venue_days.get(venue_id)
+	if kept is Dictionary and int((kept as Dictionary).get("day", -1)) == today:
+		return kept as Dictionary
+	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)
+	var dealt: Array = []
+	if VenueRules.deals_lines(activity):
+		dealt = VenueLines.deal(DataDB.venue_lines, str(activity.get("pool", "")), venue_context(),
+			VenueLines.seed_for(run_seed, today, venue_id), int(DataDB.get_rule("venue_daily_set", 12)),
+			int(DataDB.get_rule("venue_hint_share", 8)), tip_targets(), hint_phrasings())
+	var entry := {"day": today, "dealt": dealt, "heard": 0, "dry": false}
+	venue_days[venue_id] = entry
+	return entry
+
+
+## Lines the player may still hear at a venue today before the dry line (0 when the set is used up).
+func venue_lines_left(venue_id: String) -> int:
+	var entry := venue_day(venue_id)
+	return maxi(mini((entry["dealt"] as Array).size(), venue_limit()) - int(entry["heard"]), 0)
+
+
+## Why a venue's activity cannot be started: "" when it can, else a Text row's sentence. A visit with nothing left to hear today is
+## refused ("Come back tomorrow") without taking the hour.
+func venue_visit_refusal(venue_id: String) -> String:
+	match step_out_state():
+		VenueRules.ELSEWHERE: return Text.say("venue.refuse_elsewhere")
+		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
+		VenueRules.WEEK_FULL: return Text.say("venue.refuse_week_full")
+	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)
+	if activity.is_empty() or not VenueRules.is_built(activity):
+		return Text.say("venue.coming_soon")
+	if VenueRules.deals_lines(activity) and venue_lines_left(venue_id) <= 0 and bool(venue_day(venue_id)["dry"]):
+		return Text.say("venue.come_back")
+	match VenueRules.visit_refusal(activity, work_hours_left() - venue_walk_hours(venue_id), int(meta.get("Funds", 0)), xp):
+		"hours": return Text.say("venue.refuse_hours")
+		"funds": return Text.say("venue.refuse_funds")
+		"xp": return Text.say("venue.refuse_xp")
+	return ""
+
+
+## Starts a visit: takes the walking and the activity's hours (once) and its Funds and XP. {"ok": false, "reason"} when it cannot.
+func venue_visit(venue_id: String) -> Dictionary:
+	var why := venue_visit_refusal(venue_id)
+	if not why.is_empty():
+		return {"ok": false, "reason": why}
+	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)
+	var cost := VenueRules.visit_cost(activity)
+	spend_hours(venue_walk_hours(venue_id) + int(cost["hours"]))
+	if int(cost["funds"]) > 0:
+		_apply_meta_reward("Funds", -int(cost["funds"]))
+	if int(cost["xp"]) > 0:
+		_move_xp(-int(cost["xp"]))
+	venue_day(venue_id)
+	return {"ok": true, "reason": ""}
+
+
+## The next line at a venue, free of hours: {"ok", "number", "limit", "kind": "gossip", "watch", "hint" or "dry", "speaker", "text",
+## "hint": {...}, "last": true when no line is left}. After the limit (or the set) one dry line is shown, once; {"ok": false} after it.
+func venue_hear_next(venue_id: String) -> Dictionary:
+	var entry := venue_day(venue_id)
+	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)
+	var heard := int(entry["heard"])
+	var next := VenueLines.next_dealt(entry["dealt"] as Array, heard, venue_limit())
+	if next.is_empty():
+		if bool(entry["dry"]):
+			return {"ok": false}
+		var dry := VenueLines.dry_line(DataDB.venue_lines, venue_context(), VenueLines.seed_for(run_seed, venue_today(), venue_id + "|dry"))
+		entry["dry"] = true
+		return {"ok": true, "number": heard, "limit": venue_limit(), "kind": "dry", "speaker": str(dry.get("speaker", "")),
+			"text": str(dry.get("text", Text.say("venue.nothing_new"))), "hint": {}, "last": true, "where": str(activity.get("pool", ""))}
+	var row := VenueLines.find(DataDB.venue_lines, str(next["line_id"]))
+	entry["heard"] = heard + 1
+	if str(row.get("once", "")).strip_edges().to_upper() == "Y":
+		venue_heard_once[str(row.get("line_id", ""))] = true
+	var hint: Dictionary = next.get("hint", {})
+	var text := str(row.get("text", ""))
+	if not hint.is_empty():
+		text = _hint_text(hint)
+		held_tips = RhetoricTips.add(held_tips, RhetoricTips.make(hint, str(activity.get("pool", "")), venue_today()),
+			int(DataDB.get_rule("tips_max_held", 10)))
+	var raw_speaker: Variant = row.get("speaker")
+	return {"ok": true, "number": heard + 1, "limit": venue_limit(), "kind": "hint" if not hint.is_empty() else str(row.get("topic", "")),
+		"speaker": "" if raw_speaker == null else str(raw_speaker), "text": text, "hint": hint,
+		# After the last dealt line the dry line follows (Keep listening stays live for it); with no dry line, this one is the last.
+		"last": VenueLines.next_dealt(entry["dealt"] as Array, heard + 1, venue_limit()).is_empty() \
+			and VenueLines.dry_line(DataDB.venue_lines, venue_context(), 0).is_empty(), "where": str(activity.get("pool", ""))}
+
+
+## The sentence of a dealt hint: its Text row with the stage's or the person's name filled in.
+func _hint_text(hint: Dictionary) -> String:
+	var target := str(hint.get("target", ""))
+	if str(hint.get("kind", "")) == RhetoricTips.STAGE:
+		return Text.say(str(hint.get("text_key", "")), {"stage": str(DataDB.get_stage(target).get("name_en", target))})
+	return Text.say(str(hint.get("text_key", "")), {"name": str(DataDB.get_opponent(target).get("name", target))})
+
+
+## The rhetoric tips still held today (expired ones are dropped).
+func tips_held() -> Array:
+	held_tips = RhetoricTips.unexpired(held_tips, venue_today(), int(DataDB.get_rule("tips_days", 14)))
+	return held_tips
+
+
+func tip_days_left(tip: Dictionary) -> int:
+	return RhetoricTips.days_left(tip, venue_today(), int(DataDB.get_rule("tips_days", 14)))
+
+
 ## The office an event belongs to ("Capitol", "District", "Either"): its Decision Scenes row's Office when it is a scene, else
 ## its own Location cell.
 func event_office(event: Dictionary) -> String:
@@ -3181,6 +3425,42 @@ func level_hours(level: Dictionary) -> int:
 			slot = str(DataDB.get_rule("bill_vote_stage", ""))
 		total += TimeClock.units_for_stage(DataDB.get_stage(slot))
 	return total
+
+
+## The ordinary levels on offer at the office the player stands at, in the Levels tab's order (P16 moved the filters here from the
+## Levels list so the rhetoric tips can read the same list): not special levels (listed above the rest, once due), not a One-Time level
+## already completed, not an Act already voted on, not a level cooling down, not one an event has yet to reveal, not out of season,
+## not Event Only, and only levels that start at this office and are for this protagonist.
+func levels_on_offer() -> Array:
+	var out: Array = []
+	for level: Dictionary in DataDB.levels:
+		if SpecialLevels.is_special(level):
+			continue
+		# A One-Time level already completed, win or loss, disappears outright.
+		if Ledger.level_is_hidden(level, level_last_completed_at):
+			continue
+		# An Act the player voted Aye or Nay on never comes back (2026-11-13); one they were absent for or abstained on returns
+		# once its replay timer is over, like any cooling-down level.
+		if act_is_settled(level):
+			continue
+		# A level still cooling down is off the list until its cooldown is over (Cameron, 2026-11-06).
+		if DataDB.get_rule("level_gating_enabled", false) and Ledger.level_cooldown_remaining(level, time_units, level_cleared_units) > 0:
+			continue
+		# A level only an event can reveal ("Needs Discovery") stays out of sight until then.
+		if not is_level_discovered(level):
+			continue
+		# A seasonal level (its Seasons cell) only shows in its season (2026-10-30).
+		if not in_season(level):
+			continue
+		# An Event Only level is started from an event choice, never the list.
+		if is_event_only(level):
+			continue
+		# A level starts only at its own office (Either levels from both; two offices, 2026-11-20), and a protagonist's own levels
+		# (slice 6) are listed only for them.
+		if not level_at_this_office(level) or not level_is_for_player(level):
+			continue
+		out.append(level)
+	return out
 
 
 ## Why this level cannot be started on the calendar right now, as a sentence;

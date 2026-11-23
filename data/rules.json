@@ -425,5 +425,47 @@
     "options": "a Stage id",
     "question": "Which Stage row is the fight a whip scene starts when the player pushes back?",
     "notes": "P15 (2026-11-23, Cameron)."
+  },
+  "venue_walk_hours_building": {
+    "value": 0,
+    "options": "a whole number",
+    "question": "Hours from the Capitol office to the Capitol Building (Step out).",
+    "notes": "P16 (2026-11-23, Cameron)."
+  },
+  "venue_walk_hours_area": {
+    "value": 0,
+    "options": "a whole number",
+    "question": "Hours from the Capitol Building to the Capital Area.",
+    "notes": "P16 (2026-11-23, Cameron)."
+  },
+  "venue_daily_set": {
+    "value": 12,
+    "options": "a whole number",
+    "question": "Lines dealt per line-giving venue per day.",
+    "notes": "P16 (2026-11-23, Cameron)."
+  },
+  "venue_daily_heard": {
+    "value": 8,
+    "options": "a whole number",
+    "question": "Lines a player can hear per venue per day before the dry pool.",
+    "notes": "P16 (2026-11-23, Cameron)."
+  },
+  "venue_hint_share": {
+    "value": 8,
+    "options": "a whole number",
+    "question": "One in N dealt lines is a rhetoric tip (8 means one in eight).",
+    "notes": "P16 (2026-11-23, Cameron)."
+  },
+  "tips_max_held": {
+    "value": 10,
+    "options": "a whole number",
+    "question": "Rhetoric tips held at once; a new one replaces the oldest.",
+    "notes": "P16 (2026-11-23, Cameron)."
+  },
+  "tips_days": {
+    "value": 14,
+    "options": "a whole number",
+    "question": "Days a rhetoric tip lasts on the game calendar.",
+    "notes": "P16 (2026-11-23, Cameron)."
   }
 }

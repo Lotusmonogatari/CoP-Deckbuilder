@@ -21,7 +21,7 @@ extends RefCounted
 ##   purpose { text, speaker } ({} when the level has none; speaker "" is narration),
 ##   week { phase, pool, used, left, this_level, after, overflow },
 ##   totals { name: amount } (BriefingSummary.total_rewards), bonus (LevelBonus.preview),
-##   rooms [ { n, name, start, hours, kind, rewards, rewards_unset, loss_continues, loss } ],
+##   rooms [ { n, name, start, hours, kind, rewards, rewards_unset, loss_continues, loss, stage_id, tips } ],
 ##   refusal (why the level cannot start, "" when it can), location ("" until the two-offices plan has one).
 ## `loss` is each room's loss cost, carried so a later change can show it; the screen does not show it yet.
 
@@ -63,6 +63,10 @@ static func build(level: Dictionary, tier: String, base_balance: Dictionary, con
 			"rewards_unset": unset,
 			"loss_continues": loses_continue(stage),
 			"loss": LevelRunner.loss_penalties(stage),
+			# The rhetoric tips the player holds about this room, or a person who may sit in it (P16, 2026-11-23): "room_tips" in
+			# the context is {stage_id: [tip rows]}.
+			"stage_id": str(stage.get("stage_id", "")),
+			"tips": (context.get("room_tips", {}) as Dictionary).get(str(stage.get("stage_id", "")), []),
 		})
 		start += hours
 
