@@ -61,15 +61,16 @@ func _texts(node: Node) -> PackedStringArray:
 
 func _level_with_a_bonus() -> void:
 	# LV11, Meeting with Student Organizers: Reputation 1 to 2, Constituency support 0 to 1, Party support
-	# 1 to 4, XP 15 to 30, Funds 3,000 to 12,000, and standing with BO03, BO11 and BO29.
+	# 1 to 4, XP 10 and Funds 4,000 (a tier 1 completion bonus since the P17 economy pass, 10% of its rooms; min = max), and
+	# standing with BO03, BO11 and BO29.
 	var panel := await _brief("LV11")
 	_expect(panel.visible, "the briefing opens")
 	var texts := _texts(panel)
 	_expect(texts.has("+1 to +2 bonus"), "Reputation's tile carries its bonus range")
 	_expect(texts.has("0 to +1 bonus"), "a range from zero reads from 0")
 	_expect(texts.has("+1 to +4 bonus"), "Party support's tile carries its range")
-	_expect(texts.has("+15 to +30 bonus"), "XP Growth's tile carries its range")
-	_expect(texts.has("+3,000円 to +12,000円 bonus"), "Funds read in yen with separators")
+	_expect(texts.has("+10 bonus"), "XP Growth's tile carries its bonus (one figure when min = max)")
+	_expect(texts.has("+4,000円 bonus"), "Funds read in yen with separators")
 	var card := panel.find_child("OrgsCard", true, false)
 	_expect(card != null, "an Organizations card is shown")
 	var expected := {"BO03": "0 to +1", "BO11": "+2 to +4", "BO29": "0 to +1"}
