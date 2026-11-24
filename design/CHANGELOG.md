@@ -2140,3 +2140,8 @@ Built as briefed (`SPEC.md` and `P18_LIBRARY_CODEX_PROMPT.md`). Cameron approved
 | 4. Checks | The exporter checks Library Documents (IDs, categories, unlocks, `line` documents named by a line and the reverse, `law` values, `own_party` parties) and warns on DRAFT rows. The text sweep draws the three screens. | | `tools/test_venue_exporter.py` (12 new) |
 
 Differences from the spec: the desk's hours and daily limit live on the activity row (Hours 2, Per Day 1), so there are no `reference_desk_*` Rules rows; the Room file keeps its read mark when its room is researched again; the reader uses the Office's dimmed ground of each style rather than a separate picture. The three placeholder rows are in the tab so the structure is visible, and are hidden until their Note stops beginning with DRAFT.
+
+## The place map's cards use a wide picture banner (2026-11-24, Cameron; branch `feature/place-card-banner`)
+
+Each place on the Step out map now shows its picture as a wide banner across the top of the card (in the season it is now, so the Gardens follow the year), then its name, Japanese name and blurb, then Go. The 170 px thumbnail is gone. Cameron picked this from a mock-up of three ways to use a venue picture or the unused `VEN_*` icons (`design/review/venue_icons_2026-11-24/`) and chose the picture without a new icon; the Venues tab's Icon column and the nine `VEN_*.png` rows in the art checklist are therefore not needed by the map (left in place until Cameron says to remove them: candidates for `design/CLEANUP_CANDIDATES.md`).
+

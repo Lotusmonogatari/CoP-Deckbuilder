@@ -115,6 +115,8 @@ func _activities(office: Node) -> void:
 	await get_tree().create_timer(0.3).timeout
 	var go := (office.get_node("VenueMapPanel") as Overlay).find_child("Venue_VN02", true, false) as Button
 	_expect(go != null and not go.disabled, "the Library is open (it has a Nap and reading now)")
+	var banner := (office.get_node("VenueMapPanel") as Overlay).find_child("VenueBanner", true, false) as PlaceholderArt
+	_expect(banner != null and banner.fade_all_sides and banner.size.x > 600.0, "each place card shows its picture as a wide banner that fades on all four sides")
 	await _click(go)
 	var venue := office.get_node("VenuePanel") as Overlay
 	_expect(venue.visible and venue.find_child("ActivityCard_VA14", true, false) != null, "the Library lists its activities")
