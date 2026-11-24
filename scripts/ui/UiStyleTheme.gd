@@ -38,8 +38,10 @@ static func font_paths(style: String) -> Dictionary:
 		UiStyles.BROADCAST:
 			return {"display": BARLOW, "body": NOTO}
 		UiStyles.WOODBLOCK:
-			return {"display": ANTAKA_DISPLAY, "body": SHIPPORI}
-	return {"display": ANTAKA_DISPLAY, "body": ZEN}
+			return {"display": ANTAKA_DISPLAY, "body": ANTAKA_TEXT}
+	# Woodblock and Living Office both use Antaka Brush Text for body text (Cameron, 2026-11-24); SHIPPORI and ZEN are kept for the
+	# font files still in the project (see design/CLEANUP_CANDIDATES.md).
+	return {"display": ANTAKA_DISPLAY, "body": ANTAKA_TEXT}
 
 
 ## A face with Noto Sans JP behind it, so anything it lacks (Japanese, −, ×, →)

@@ -2107,3 +2107,7 @@ Follow-up on the same branch: a long screen title ("National Assembly Library" a
 The Speech Coach's screen now lists three cards: **Rhetoric Training** (opens the page, as before), **Practice your talking points** (1 h, 10,000円, +1 to the gaffe limit for the next stage, once a day) and **Work on your speech timing** (1 h, 20,000円, +1 turn for the next stage). The effects are the same one-stage bonuses the Tea and Wristwatch items give (`GAFFE_CAP`, `TURNS`), so they are handed to the next stage's setup.
 
 Cameron gave a daily limit for the first only. The second is **once a day too**, so the bonus cannot be stacked without end; say if you want that changed. Workbook script: `tools/workbook/archive/speech_coach_activities_build.py` (VA16, VA17, three Text rows). Wording of the two result lines is a draft.
+
+## Body text is Antaka Brush Text in Woodblock and Living Office (2026-11-24, Cameron; branch `feature/antaka-body-font`)
+
+Woodblock's body face was Shippori Mincho B1 and Living Office's Zen Kaku Gothic New; both now use Antaka Brush Text, as the project did before the UI styles (P9). Headings stay Antaka Brush Display. Broadcast is unchanged (Barlow Condensed titles, Noto Sans JP body). Antaka Brush Text draws lowercase as small capitals, so body lines are wider; the text sweep checks every screen at every text size. `scripts/ui/UiStyleTheme.gd` names the fonts; `theme/cop_theme_woodblock.tres` and `cop_theme_living.tres` were rebuilt with `tools/build_theme.gd`. The `CLAUDE.md` fonts line is updated to match.
