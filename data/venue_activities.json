@@ -444,5 +444,28 @@
     "bonus_after_uses": null,
     "bonus_staff_hours": null,
     "result_text": "You work on the pauses between your sentences. You will have more room to make your points."
+  },
+  {
+    "activity_id": "VA18",
+    "venue_id": "VN02",
+    "kind": "research",
+    "name": "Ask the Reference Desk",
+    "icon": "ACT_DESK",
+    "pool": null,
+    "hours": 2,
+    "funds": null,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": null
   }
 ]

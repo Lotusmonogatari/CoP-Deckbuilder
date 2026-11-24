@@ -299,6 +299,16 @@ func _leave_frame() -> void:
 		picture.show()
 
 
+## Paints the plain column's backdrop in `colour` with no scrolling-screen picture behind it (the Codex reader's dim ground, P18).
+## Lasts until another panel kind is opened on this Overlay; call it after `open`.
+func set_ground(colour: Color) -> void:
+	_build()
+	_backdrop.bg_color = colour
+	var picture := get_node_or_null("BaseImage") as Control
+	if picture != null:
+		picture.hide()
+
+
 ## True while an Office frame is showing.
 func has_frame() -> bool:
 	return _frame != null

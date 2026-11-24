@@ -467,5 +467,11 @@
     "options": "a whole number",
     "question": "Days a rhetoric tip lasts on the game calendar.",
     "notes": "P16 (2026-11-23, Cameron)."
+  },
+  "codex_first_read_xp": {
+    "value": "5",
+    "options": "a whole number",
+    "question": "XP paid the first time each Library document is read (never for a Room file, and never again for the same document).",
+    "notes": "P18 (2026-11-24, Cameron)."
   }
 }

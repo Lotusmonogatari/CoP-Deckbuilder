@@ -2127,3 +2127,16 @@ Cameron's economy review, built as briefed (`P17_ECONOMY_PROMPT.md`). One hour o
 | 5. Prices | Commission Policy Research 12,000円, Press and District Engagement 24,000円; events EV03, EV05, EV06, EV31, EV35 cheaper; EV04's gains x4; the Paid Train Ticket gives +1 with the Commuter Committee only. |
 | Campaign Pressure dues | Relaxed share 10% (was 5%), Standard 15%, Harder 20%: five either side of Standard (Cameron's call, 2026-11-24). |
 | 6. Tests | `test_economy_p17.gd` (no Funds where there were none, the limit, Funds earned above the Funds limit, 10% wages); the briefing record's pay figures refreshed; tests that pinned the old wages, ticket standing, non-combat XP rate and bonus counts updated. |
+
+## P18: the National Assembly Library's Codex and reference desk (2026-11-24, Cameron; branch `feature/p18-library-codex`)
+
+Built as briefed (`SPEC.md` and `P18_LIBRARY_CODEX_PROMPT.md`). Cameron approved the schema first and chose: one hidden placeholder row per category, Nap and Read under the Reference desk tab below the desk, the kanji seal as drawn, and no XP for Room files.
+
+| Step | What changed | Rows added | Tests added |
+|---|---|---|---|
+| 1. Codex | `read` is a built kind; Browse the Shelves opens the Codex tab. Categories, closed scrolls (NEW, Sealed), the reader with Previous, Roll up and Next, the first-read XP once, the four unlocks, "Added to the Codex" under a venue line. Scroll look is 14 colour and 13 other tokens per style in the UI Styles tab (`ScrollStyle`, `ScrollPaper`, `ScrollRoller`, `CodexViews`). | Library Documents tab (LD01 to LD03, hidden drafts); Rules `codex_first_read_xp`; UI Styles US130 to US213; 48 Text rows (`codex.*`, `desk.*`, `tips.source_library`) | `test_codex_rules.gd` (10), `test_codex_state.gd` (13) |
+| 2. Reference desk | Kind `research`, VA18 (2 h, once a day). Room picker, the six-style reading with five-step meters, the tip box, the tip added through `RhetoricTips` (source `library`) and a Room file that lives as long as its tip. | Venue Activities VA18 | in the state tests above; the venue click test drives the desk, the Room file and the reader |
+| 3. Saving | `codex_found` and `room_files` are saved; an old save has only its start and own-party documents and no Room files. | | state tests |
+| 4. Checks | The exporter checks Library Documents (IDs, categories, unlocks, `line` documents named by a line and the reverse, `law` values, `own_party` parties) and warns on DRAFT rows. The text sweep draws the three screens. | | `tools/test_venue_exporter.py` (12 new) |
+
+Differences from the spec: the desk's hours and daily limit live on the activity row (Hours 2, Per Day 1), so there are no `reference_desk_*` Rules rows; the Room file keeps its read mark when its room is researched again; the reader uses the Office's dimmed ground of each style rather than a separate picture. The three placeholder rows are in the tab so the structure is visible, and are hidden until their Note stops beginning with DRAFT.

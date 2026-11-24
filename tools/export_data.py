@@ -1450,6 +1450,27 @@ SHEETS = {
             ("Result Text", "result_text", "str"),
         ],
     },
+    "Library Documents": {
+        "out": "library_documents.json",
+        "key": "doc_id",
+        "id_pattern": r"^LD\d+$",
+        "optional_sheet": True,
+        "optional": ["Title JP", "Kicker", "Party", "Unlock Value", "Hint", "Note"],
+        "columns": [
+            ("Doc ID", "doc_id", "id"),
+            ("Category", "category", "str"),
+            ("Order", "order", "int"),
+            ("Title", "title", "str"),
+            ("Title JP", "title_jp", "str"),
+            ("Kicker", "kicker", "str"),
+            ("Body", "body", "str"),
+            ("Party", "party", "str"),
+            ("Unlock", "unlock", "str"),
+            ("Unlock Value", "unlock_value", "str"),
+            ("Hint", "hint", "str"),
+            ("Note", "note", "str"),
+        ],
+    },
     "Venue Milestones": {
         "out": "venue_milestones.json",
         "key": "milestone_id",
@@ -4188,13 +4209,57 @@ def check_whip_and_vote_scenes(data, report, by_id, roots):
                 report.error(f"Decision Scenes {sid}", f"is a vote on {datetime.date.fromordinal(day).strftime('%y.%m.%d')}, after {root}'s Must End By {deadline}")
 
 
-VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act")
+VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act", "research")
 VENUE_ZONES = ("Capitol Building", "Capital Area", "District")
 VENUE_HINT_KINDS = ("stage_suit", "opponent_suit")
 VENUE_POOLS = ("cafeteria", "gardens", "dry")
 VENUE_CONDITIONS = ("meta", "law", "staff_role", "party", "seen", "always")
 # The playable characters: never a speaker in a venue line (P16).
 PROTAGONIST_OPPONENTS = ("OP06", "OP22", "OP35", "OP40")
+
+
+LIBRARY_CATEGORIES = ("party_platform", "ne3", "history")
+LIBRARY_UNLOCKS = ("start", "own_party", "line", "law")
+
+
+def check_library_documents(data, report):
+    """Library Documents (P18, 2026-11-24): IDs, categories and unlocks; a `line` document is named by some venue line's Unlocks Doc and
+    every Unlocks Doc names a real document; a `law` Unlock Value is 'BIxx passed' or 'BIxx failed' for a real bill; an own_party
+    row has a real Party."""
+    docs = {str(d.get("doc_id")): d for d in data.get("library_documents", [])}
+    parties = {str(p.get("party_id")) for p in data.get("parties", [])}
+    bills = {str(k) for k in data.get("floor_votes", {})}
+    named = {}
+    for line in data.get("venue_lines", []):
+        target = line.get("unlocks_doc")
+        if target:
+            named.setdefault(str(target), []).append(str(line.get("line_id")))
+            if str(target) not in docs:
+                report.error(f"Venue Lines {line.get('line_id')}", f"Unlocks Doc '{target}' is not a Library Documents row")
+    for doc in docs.values():
+        where = f"Library Documents {doc.get('doc_id')}"
+        if doc.get("category") not in LIBRARY_CATEGORIES:
+            report.error(where, f"Category {doc.get('category')!r} must be one of {', '.join(LIBRARY_CATEGORIES)}")
+        if doc.get("unlock") not in LIBRARY_UNLOCKS:
+            report.error(where, f"Unlock {doc.get('unlock')!r} must be one of {', '.join(LIBRARY_UNLOCKS)}")
+        if not doc.get("title"):
+            report.error(where, "Title is blank")
+        if doc.get("order") is None:
+            report.error(where, "Order is blank")
+        if doc.get("unlock") == "line" and str(doc.get("doc_id")) not in named:
+            report.error(where, "Unlock is line but no venue line's Unlocks Doc names this document")
+        if doc.get("unlock") == "law":
+            match = re.fullmatch(r"(BI\d+) (passed|failed)", str(doc.get("unlock_value") or ""))
+            if not match:
+                report.error(where, f"Unlock Value {doc.get('unlock_value')!r} must be 'BIxx passed' or 'BIxx failed'")
+            elif match.group(1) not in bills:
+                report.error(where, f"Unlock Value names bill {match.group(1)}, which is not a Floor Vote bill")
+        if doc.get("unlock") == "own_party" and str(doc.get("party") or "") not in parties:
+            report.error(where, f"own_party needs a real Party ID, not {doc.get('party')!r}")
+        if doc.get("party") and str(doc.get("party")) not in parties:
+            report.error(where, f"Party {doc.get('party')!r} is not a party ID")
+        if str(doc.get("note") or "").upper().startswith("DRAFT"):
+            report.warn(where, "A draft row: hidden from players until its Note stops beginning with DRAFT")
 
 
 def check_venues(data, report):
@@ -5530,6 +5595,7 @@ def main():
     check_event_leads(data, report)
     check_decision_scenes(data, report)
     check_venues(data, report)
+    check_library_documents(data, report)
     check_places(data, report)
     check_followups(data, report)
     check_text_keys(data, report)

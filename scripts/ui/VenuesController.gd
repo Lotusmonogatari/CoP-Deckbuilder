@@ -19,6 +19,8 @@ var _tracks_panel: Overlay
 ## What was just done at a venue (a costed activity's result card), over the venue's screen.
 var _result_panel: Overlay
 var _result_venue := ""
+## The Library's two tabs and the Codex reader (P18).
+var _library: LibraryController
 ## What a station's screens call on the Office: the trip's mode, confirm and go (see StationViews).
 var _trip_hooks: Dictionary = {}
 ## The venue whose line pop-up is up (Keep listening needs to know which).
@@ -42,6 +44,8 @@ func setup(office: Control, after_button: Button, open_coach_page: Callable, on_
 	_tracks_panel = _panel("StationTracksPanel")
 	_result_panel = _panel("VenueResultPanel")
 	_result_panel.closed.connect(_on_result_closed)
+	_library = LibraryController.new()
+	_library.setup(office, self, _venue_panel, _chips)
 	_step_button = Button.new()
 	_step_button.name = "StepOutButton"
 	_step_button.set_meta("party_outline", true)
@@ -164,7 +168,12 @@ func show_venue(venue_id: String) -> void:
 	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)
 	if venue.is_empty():
 		return
-	# A venue with costed activities (the shrine, the shotengai, the Library) lists them all.
+	# The Library has a Codex and a reference desk: two tabs.
+	if LibraryController.draws(venue_id):
+		_library.open(venue_id, _library_tab)
+		_library_tab = LibraryController.TAB_DESK
+		return
+	# A venue with costed activities (the shrine, the shotengai) lists them all.
 	if GameState.venue_activities_of(venue_id).any(func(row: Dictionary) -> bool: return VenueActivities.is_act(row)):
 		_show_activities(venue)
 		return
@@ -209,6 +218,21 @@ func show_venue(venue_id: String) -> void:
 	var frame := OfficeScreenFrame.new()
 	frame.setup({"title": str(venue.get("name", venue_id)), "subtitle": str(venue.get("name_jp", "")), "chips": _chips(), "rows": rows})
 	_venue_panel.open_frame(frame, Text.say("venue.screen_back"))
+
+
+## The tab the Library opens on when show_venue draws it next (the Codex after a document is read in the line pop-up).
+var _library_tab := LibraryController.TAB_DESK
+
+
+## Hours (or XP) were spent in a venue screen the Library controller draws: the Office's resources line and the Step out button follow.
+func hours_spent() -> void:
+	_on_spent.call()
+	refresh_button()
+
+
+## Does a costed activity (the Library's Nap and reading call this).
+func do_activity(activity_id: String) -> void:
+	_on_do_activity(activity_id)
 
 
 ## The venue's activity: a chat or watch starts a visit and shows the first line; the Speech Coach opens the Rhetoric Training page.
@@ -366,6 +390,7 @@ func _show_tracks(venue_id: String) -> void:
 ## Every venue screen closed: the Office calls this when a trip begins, so the other office is what shows when the card fades.
 func close_all() -> void:
 	_result_venue = ""   # a trip leaves; the venue screen is not drawn again behind it
+	_library.close_all()
 	for panel: Overlay in [_result_panel, _tracks_panel, _line_panel, _venue_panel, _map_panel, _tips_panel]:
 		if panel != null and panel.visible:
 			panel.close()
@@ -393,6 +418,17 @@ func _hear(venue_id: String) -> void:
 		note.name = "GossipOnly"
 		note.custom_minimum_size.x = 0.0
 		body.append(note)
+	var unlocked := str(heard.get("unlocked", ""))
+	if not unlocked.is_empty():
+		# A line that finds a document says so under its words (P18); the title is the document's own.
+		var added := UiKit.line(Text.say("codex.added"), "SmallLabel")
+		added.name = "CodexAdded"
+		added.custom_minimum_size.x = 0.0
+		body.append(added)
+		var added_title := UiKit.line(unlocked, "HeaderLabel")
+		added_title.name = "CodexAddedTitle"
+		added_title.custom_minimum_size.x = 0.0
+		body.append(added_title)
 	var meta := Text.say("venue.line_counter", {"count": int(heard["number"]), "limit": int(heard["limit"])}) if str(heard["kind"]) != "dry" else ""
 	var done := bool(heard.get("last", false))
 	_line_panel.open_card({"tag": Text.say("venue.tag_gardens" if pool == "gardens" else "venue.tag_cafeteria"), "meta": meta,

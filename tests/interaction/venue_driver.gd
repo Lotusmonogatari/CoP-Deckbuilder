@@ -119,7 +119,8 @@ func _activities(office: Node) -> void:
 	var venue := office.get_node("VenuePanel") as Overlay
 	_expect(venue.visible and venue.find_child("ActivityCard_VA14", true, false) != null, "the Library lists its activities")
 	var shelves := venue.find_child("Activity_VA02", true, false) as Button
-	_expect(shelves != null and shelves.disabled and shelves.text == Text.say("venue.coming_soon"), "Browse the Shelves stays greyed: Coming soon")
+	_expect(shelves != null and not shelves.disabled, "Browse the Shelves is built now: it opens the Codex")
+	_expect(venue.find_child("DeskTab", true, false) != null and venue.find_child("CodexTab", true, false) != null, "the Library has a Reference desk tab and a Codex tab")
 	var card_text := _texts(venue.find_child("ActivityCard_VA14", true, false))
 	_expect(card_text.contains("Costs 2 h") and card_text.contains("Energy in your next stage +1") and card_text.contains("1 of 1 left today"),
 		"the Nap says its cost, its gift and its limit before it is done (%s)" % card_text.replace("\n", " | "))
@@ -133,6 +134,34 @@ func _activities(office: Node) -> void:
 	await get_tree().create_timer(0.3).timeout
 	var again := (office.get_node("VenuePanel") as Overlay).find_child("Activity_VA14", true, false) as Button
 	_expect(again != null and again.disabled and again.text == Text.say("venue.refuse_limit"), "the Library is drawn again: Nap is done for today")
+	# The reference desk (P18): pick a room, read it, find its Room file in the Codex and unroll it.
+	var library := office.get_node("VenuePanel") as Overlay
+	var hours_before_desk := GameState.work_hours_left()
+	await _click(library.find_child("Activity_VA18", true, false))
+	var room_button: Button = null
+	for button in library.find_children("Room_*", "Button", true, false):
+		room_button = button
+		break
+	_expect(room_button != null, "the desk lists the rooms on offer")
+	var room_id := String(room_button.name).split("_")[1]
+	await _click(room_button)
+	await get_tree().create_timer(0.3).timeout
+	_expect(library.find_child("DeskResult", true, false) != null and library.find_child("DeskTipBox", true, false) != null, "the reading and the tip box show")
+	_expect(library.find_children("Reading_*", "", true, false).size() == 6, "all six styles are read")
+	_expect(GameState.work_hours_left() == hours_before_desk - 2, "the desk took two hours")
+	await _click(library.find_child("CodexTab", true, false))
+	await get_tree().create_timer(0.3).timeout
+	var file_button := library.find_child("RoomFile_" + room_id, true, false) as Button
+	_expect(file_button != null and library.find_child(CodexViews.NEW_NODE, true, false) != null, "the Room file is in the Codex, marked NEW")
+	await _click(file_button)
+	await get_tree().create_timer(0.3).timeout
+	var reader := office.get_node("CodexReaderPanel") as Overlay
+	_expect(reader.visible and reader.find_child("ScrollSeal", true, false) != null, "the scroll unrolls with its seal")
+	_expect((reader.find_child("ReaderPrevious", true, false) as Button).disabled and (reader.find_child("ReaderNext", true, false) as Button).disabled,
+		"with one file, Previous and Next are greyed")
+	await _click(reader.find_child("ReaderRollUp", true, false))
+	await get_tree().create_timer(0.3).timeout
+	_expect(not reader.visible and library.find_child(CodexViews.NEW_NODE, true, false) == null, "Roll up closes it and the NEW mark is gone")
 	# The District office's shrine.
 	office.get("_venues").call("close_all")
 	GameState.office_location = Offices.DISTRICT

@@ -454,6 +454,10 @@ var venue_heard_once: Dictionary = {}
 ## Library gave today ({"day", "hours"}; the staff day reads them only while "day" is today).
 var venue_activity_log: Dictionary = {}
 var venue_activity_totals: Dictionary = {}
+## The Library's Codex (P18, 2026-11-24): {doc_id: {"day", "read"}} for the documents found, and the Room files the reference desk made
+## ({stage_id: {"day", "level_id", "reading", "read"}}; each shows only while a tip for its stage is held).
+var codex_found: Dictionary = {}
+var room_files: Dictionary = {}
 var staff_activity_hours: Dictionary = {}
 var held_tips: Array = []
 ## The after-hours trip the staff made for a Mandatory scene when it opened (not saved): {"xp": cost, "place": office}, or {}.
@@ -631,6 +635,7 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 	level_travel = {}
 	awaiting_new_game = false
 	grant_default_ui_style()
+	_codex_start()
 	return true
 
 
@@ -665,7 +670,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
 	"bill_stance",
@@ -917,6 +922,8 @@ func reset_crisis_triggers() -> void:
 	venue_activity_log = {}
 	venue_activity_totals = {}
 	staff_activity_hours = {}
+	codex_found = {}
+	room_files = {}
 	held_tips = []
 	promises = []
 	promises_broken_unseen = []
@@ -2806,6 +2813,174 @@ func venue_visit(venue_id: String) -> Dictionary:
 	return {"ok": true, "reason": ""}
 
 
+# --- The Library's Codex and reference desk (P18, 2026-11-24) -----------------------------------------------------------------------
+
+## The player's party ID ("" when the protagonist has none), for an own_party document.
+func _player_party_id() -> String:
+	return str(DataDB.get_party(PartyDisplay.party_name(DataDB.player)).get("party_id", ""))
+
+
+## A fresh run: the `start` documents and the player's own party's are found; no Room files.
+func _codex_start() -> void:
+	codex_found = {}
+	room_files = {}
+	for doc_id: String in Codex.found_at_start(DataDB.library_documents, _player_party_id()):
+		codex_found = Codex.with_found(codex_found, doc_id, venue_today())
+
+
+func _library_document(doc_id: String) -> Dictionary:
+	for doc: Dictionary in DataDB.library_documents:
+		if str(doc.get("doc_id", "")) == doc_id:
+			return doc
+	return {}
+
+
+## The documents players can see (no placeholders), in the tab's order.
+func codex_documents() -> Array:
+	return Codex.visible(DataDB.library_documents)
+
+
+## Adds a document to the Codex (found today, unread). True only when it was newly found.
+func codex_find(doc_id: String) -> bool:
+	if _library_document(doc_id).is_empty() or Codex.is_draft(_library_document(doc_id)) or codex_found.has(doc_id):
+		return false
+	codex_found = Codex.with_found(codex_found, doc_id, venue_today())
+	SaveManager.autosave()
+	return true
+
+
+## Finds the `law` documents whose bill has the result they name (called when a law is recorded and when the Library opens).
+func codex_sync_laws() -> void:
+	for doc_id: String in Codex.found_by_laws(DataDB.library_documents, law_statuses()):
+		codex_find(doc_id)
+
+
+func codex_state(doc_id: String) -> String:
+	return Codex.state_of(codex_found, doc_id)
+
+
+## The Room files shown, newest first, and how many of everything is unread (the Codex tab's count).
+func room_file_ids() -> Array[String]:
+	return Codex.room_file_ids(room_files, tips_held())
+
+
+func codex_unread_count() -> int:
+	return Codex.unread_count(DataDB.library_documents, codex_found, Codex.room_files_unread(room_files, tips_held()))
+
+
+## Reads a document: clears NEW and pays Balance-free Rules `codex_first_read_xp` once. Returns the XP paid (0 when it was read before).
+func codex_read(doc_id: String) -> int:
+	var result := Codex.with_read(codex_found, doc_id)
+	if not bool(result["first"]):
+		return 0
+	codex_found = result["found"]
+	var xp_paid := int(DataDB.get_rule("codex_first_read_xp", 5))
+	_move_xp(xp_paid)
+	SaveManager.autosave()
+	return xp_paid
+
+
+## A Library Documents row by ID, or {}.
+func codex_find_row(doc_id: String) -> Dictionary:
+	return _library_document(doc_id)
+
+
+## A Room file's stored record ({day, level_id, reading, number, total, read}), or {}.
+func room_file(stage_id: String) -> Dictionary:
+	return (room_files.get(stage_id, {}) as Dictionary).duplicate(true) if room_files.has(stage_id) else {}
+
+
+## Days a Room file stays (its tip's days left), 0 when it has none.
+func room_file_days_left(stage_id: String) -> int:
+	for tip: Variant in tips_held():
+		var held := tip as Dictionary
+		if str(held.get("kind", "")) == RhetoricTips.STAGE and str(held.get("target", "")) == stage_id:
+			return tip_days_left(held)
+	return 0
+
+
+## A day number as the plain date, "YY.MM.DD".
+func day_date_text(day: int) -> String:
+	var date := WeekCalendar.civil_from_days(day)
+	return "%02d.%02d.%02d" % [int(date[0]) % 100, int(date[1]), int(date[2])]
+
+
+## Reading a Room file clears its NEW mark (it never pays XP: it is a receipt for the reference desk's hours).
+func room_file_read(stage_id: String) -> void:
+	room_files = Codex.room_file_read(room_files, stage_id)
+
+
+## The reference desk's activity row (Kind research), or {}.
+func desk_activity() -> Dictionary:
+	for activity: Dictionary in venue_activities_of("VN02"):
+		if str(activity.get("kind", "")) == "research":
+			return activity
+	return {}
+
+
+## Why the desk cannot be used now, as a sentence; "" when it can (the hours, today's use, a level in progress, the office).
+func desk_refusal() -> String:
+	var activity := desk_activity()
+	return Text.say("venue.coming_soon") if activity.is_empty() else activity_refusal(str(activity["activity_id"]))
+
+
+## The rooms the desk may look up: the stages with a Favored Suit in the levels on offer, as [{"stage_id", "stage", "level_id",
+## "level", "number", "total"}] in the list's order.
+func desk_rooms() -> Array:
+	var out: Array = []
+	for level: Dictionary in levels_on_offer():
+		var stage_ids: Array = []
+		for slot in range(1, 11):
+			var raw: Variant = level.get("stage_%d" % slot)
+			var stage_id := "" if raw == null else str(raw)
+			if stage_id.is_empty() or stage_id == "N/A" or BattleSetup._is_bill_id(stage_id):
+				continue
+			stage_ids.append(stage_id)
+		for index in stage_ids.size():
+			var stage := DataDB.get_stage(str(stage_ids[index]))
+			var favored: Variant = stage.get("favored_suit")
+			if stage.is_empty() or favored == null or str(favored).strip_edges().is_empty() or str(favored) == "—":
+				continue
+			out.append({"stage_id": str(stage_ids[index]), "stage": str(stage.get("name_en", stage_ids[index])),
+				"level_id": str(level.get("level_id", "")), "level": str(level.get("description", "")), "number": index + 1, "total": stage_ids.size()})
+	return out
+
+
+## Looks a room up: spends the desk's hours, uses today's one visit, saves the stage's tip (certain, source "library") and a Room file.
+## {"ok": false, "reason"} when refused (nothing changes); otherwise {"ok": true, "stage_id", "stage", "level_id", "level", "number",
+## "total", "suit", "reading": [...], "days": the tip's days}.
+func do_research(stage_id: String, level_id: String) -> Dictionary:
+	var why := desk_refusal()
+	if not why.is_empty():
+		return {"ok": false, "reason": why}
+	var room := {}
+	for candidate: Dictionary in desk_rooms():
+		if str(candidate["stage_id"]) == stage_id and str(candidate["level_id"]) == level_id:
+			room = candidate
+			break
+	if room.is_empty():
+		return {"ok": false, "reason": Text.say("desk.pick_none")}
+	var activity := desk_activity()
+	var activity_id := str(activity["activity_id"])
+	var cost := VenueRules.visit_cost(activity)
+	spend_hours(venue_walk_hours("VN02") + int(cost["hours"]))
+	venue_activity_log = VenueActivities.with_use(venue_activity_log, activity_id, venue_today())
+	venue_activity_totals[activity_id] = activity_times_done(activity_id) + 1
+	var suit := str(DataDB.get_stage(stage_id).get("favored_suit", ""))
+	var reading := Codex.reading(stage_id, DataDB.affinity)
+	var today := venue_today()
+	held_tips = RhetoricTips.add(held_tips, RhetoricTips.make({"kind": RhetoricTips.STAGE, "target": stage_id, "suit": suit}, "library", today),
+		int(DataDB.get_rule("tips_max_held", 10)))
+	room_files = Codex.with_room_file(room_files, stage_id, today, level_id, reading)
+	(room_files[stage_id] as Dictionary)["number"] = int(room["number"])
+	(room_files[stage_id] as Dictionary)["total"] = int(room["total"])
+	tips_held()   # drops what the 10-tip limit pushed out, and its Room file
+	SaveManager.autosave()
+	var result := room.duplicate()
+	result.merge({"ok": true, "suit": suit, "reading": reading, "days": int(DataDB.get_rule("tips_days", 14))})
+	return result
+
+
 # --- Costed venue activities (2026-11-24) -----------------------------------------------------------------------------------------
 
 ## A venue activity row by ID, or {}.
@@ -2961,8 +3136,13 @@ func venue_hear_next(venue_id: String) -> Dictionary:
 		held_tips = RhetoricTips.add(held_tips, RhetoricTips.make(hint, str(activity.get("pool", "")), venue_today()),
 			int(DataDB.get_rule("tips_max_held", 10)))
 	var raw_speaker: Variant = row.get("speaker")
+	# A line may add a document to the Codex (its Unlocks Doc, P18): the title is told once, under the line.
+	var unlocked_title := ""
+	var unlocks: Variant = row.get("unlocks_doc")
+	if unlocks != null and not str(unlocks).strip_edges().is_empty() and codex_find(str(unlocks)):
+		unlocked_title = str(_library_document(str(unlocks)).get("title", ""))
 	return {"ok": true, "number": heard + 1, "limit": venue_limit(), "kind": "hint" if not hint.is_empty() else str(row.get("topic", "")),
-		"speaker": "" if raw_speaker == null else str(raw_speaker), "text": text, "hint": hint,
+		"speaker": "" if raw_speaker == null else str(raw_speaker), "text": text, "hint": hint, "unlocked": unlocked_title,
 		# After the last dealt line the dry line follows (Keep listening stays live for it); with no dry line, this one is the last.
 		"last": VenueLines.next_dealt(entry["dealt"] as Array, heard + 1, venue_limit()).is_empty() \
 			and VenueLines.dry_line(DataDB.venue_lines, venue_context(), 0).is_empty(), "where": str(activity.get("pool", ""))}
@@ -2979,6 +3159,7 @@ func _hint_text(hint: Dictionary) -> String:
 ## The rhetoric tips still held today (expired ones are dropped).
 func tips_held() -> Array:
 	held_tips = RhetoricTips.unexpired(held_tips, venue_today(), int(DataDB.get_rule("tips_days", 14)))
+	room_files = Codex.pruned(room_files, held_tips)   # a Room file goes the day its tip does
 	return held_tips
 
 
@@ -6201,6 +6382,7 @@ func record_floor_vote(bill: Dictionary, result: Dictionary, choice: String, abs
 		level_id = str(level_runner.level.get("level_id", ""))
 	var law := StatuteBook.entry(bill, result, choice, level_id, levels_completed_count, absent)
 	statute_book.append(law)
+	codex_sync_laws()
 	_apply_law_effect_rows(StatuteBook.effects_for(
 		DataDB.law_effects, bill_id, bool(law["passed"]), StatuteBook.ONCE))
 	_apply_party_tier_lean(bill_id, bool(law["passed"]))
