@@ -10834,5 +10834,26 @@
     "english": "{activity}",
     "placeholders": "activity",
     "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.effect_gaffe_limit",
+    "where": "Venue activity effect: the gaffe limit in the next stage",
+    "english": "Gaffe limit in your next stage {delta}",
+    "placeholders": "delta",
+    "notes": "Speech Coach activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.effect_turns",
+    "where": "Venue activity effect: turns in the next stage",
+    "english": "Turns in your next stage {delta}",
+    "placeholders": "delta",
+    "notes": "Speech Coach activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.act_open",
+    "where": "Venue activity that opens a page (Rhetoric Training): the button",
+    "english": "Open",
+    "placeholders": null,
+    "notes": "Speech Coach activities (2026-11-24): Claude's draft for Cameron to reword."
   }
 ]

@@ -2101,3 +2101,9 @@ Shrine gifts (Venue Milestones tab, cumulative count of Pay your respects): 5 gi
 | Tests | `test_venue_activities.gd` (rules), `test_venue_activity_state.gd` (the run), the venue click test drives the Library and the shrine. |
 
 Follow-up on the same branch: a long screen title ("National Assembly Library" at the large text size) now steps down in size until it fits the width of the screen (`OfficeScreenFrame._fit_title`); before, it pushed the whole Library screen wider than the phone. Found by the text sweep, which now covers the shrine, its result card and the Library.
+
+## Speech Coach: two practice activities beside Rhetoric Training (2026-11-24, Cameron; branch `feature/speech-coach-activities`)
+
+The Speech Coach's screen now lists three cards: **Rhetoric Training** (opens the page, as before), **Practice your talking points** (1 h, 10,000円, +1 to the gaffe limit for the next stage, once a day) and **Work on your speech timing** (1 h, 20,000円, +1 turn for the next stage). The effects are the same one-stage bonuses the Tea and Wristwatch items give (`GAFFE_CAP`, `TURNS`), so they are handed to the next stage's setup.
+
+Cameron gave a daily limit for the first only. The second is **once a day too**, so the bonus cannot be stacked without end; say if you want that changed. Workbook script: `tools/workbook/archive/speech_coach_activities_build.py` (VA16, VA17, three Text rows). Wording of the two result lines is a draft.

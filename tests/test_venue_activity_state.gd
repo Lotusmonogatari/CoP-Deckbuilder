@@ -147,3 +147,35 @@ func test_an_activity_is_refused_away_from_its_office_in_a_level_and_when_the_we
 func test_the_use_counts_are_part_of_the_save() -> void:
 	for field: String in ["venue_activity_log", "venue_activity_totals", "staff_activity_hours"]:
 		assert_true(GameState._SAVED_FIELDS.has(field), field + " is saved with the run")
+
+
+func test_the_speech_coach_lists_training_and_two_practice_activities() -> void:
+	GameState.office_location = Offices.CAPITOL
+	var names: Array = GameState.venue_activities_of("VN04").map(func(a: Dictionary) -> String: return str(a["name"]))
+	assert_eq(names, ["Rhetoric Training", "Practice your talking points", "Work on your speech timing"])
+
+
+func test_practising_talking_points_costs_an_hour_and_10000_yen_and_adds_to_the_next_stages_gaffe_limit() -> void:
+	GameState.office_location = Offices.CAPITOL
+	GameState.pending_stage_bonuses = {}
+	var done := GameState.do_activity("VA16")
+	assert_true(bool(done["ok"]))
+	assert_eq(GameState.work_hours_left(), 39)
+	assert_eq(int(GameState.meta["Funds"]), 40000, "10,000円 spent")
+	assert_eq(int(GameState.pending_stage_bonuses.get("GAFFE_CAP", 0)), 1, "+1 to the gaffe limit for the next stage")
+	assert_eq(done["effects"], ["Gaffe limit in your next stage +1"])
+	assert_false(bool(GameState.do_activity("VA16")["ok"]), "once a day")
+
+
+func test_working_on_speech_timing_costs_20000_yen_and_an_hour_and_adds_a_turn_to_the_next_stage() -> void:
+	GameState.office_location = Offices.CAPITOL
+	GameState.pending_stage_bonuses = {}
+	var done := GameState.do_activity("VA17")
+	assert_true(bool(done["ok"]))
+	assert_eq(GameState.work_hours_left(), 39)
+	assert_eq(int(GameState.meta["Funds"]), 30000, "20,000円 spent")
+	assert_eq(int(GameState.pending_stage_bonuses.get("TURNS", 0)), 1, "+1 turn for the next stage")
+	assert_eq(done["effects"], ["Turns in your next stage +1"])
+	GameState.meta["Funds"] = 19999
+	_next_day()
+	assert_eq(GameState.activity_refusal("VA17"), Text.say("venue.refuse_funds"), "too little Funds is refused with the reason")

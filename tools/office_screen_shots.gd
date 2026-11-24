@@ -35,9 +35,9 @@ func _venue(office: Node, which: String) -> Overlay:
 		"gardens":
 			office._venues.show_venue("VN03")
 			return office.get_node("VenuePanel")
-		"shrine", "shotengai", "library", "shrinedone":
+		"shrine", "shotengai", "library", "shrinedone", "coachvenue":
 			# Costed activities (2026-11-24): the shrine's, the shotengai's and the Library's screens, and a result card.
-			GameState.office_location = Offices.CAPITOL if which == "library" else Offices.DISTRICT
+			GameState.office_location = Offices.CAPITOL if which in ["library", "coachvenue"] else Offices.DISTRICT
 			office._apply_office_look()
 			GameState.meta["Funds"] = 50000
 			if which == "shrinedone":
@@ -45,7 +45,7 @@ func _venue(office: Node, which: String) -> Overlay:
 				office._venues.show_venue("VN08")
 				office._venues._on_do_activity("VA11")
 				return office.get_node("VenueResultPanel")
-			office._venues.show_venue({"shrine": "VN08", "shotengai": "VN09", "library": "VN02"}[which])
+			office._venues.show_venue({"shrine": "VN08", "shotengai": "VN09", "library": "VN02", "coachvenue": "VN04"}[which])
 			return office.get_node("VenuePanel")
 		"station", "tracks", "districtmap", "districtstation":
 			# Travel at the stations (2026-11-24): the Capitol's concourse and tracks, the District office's map and station.
