@@ -100,5 +100,22 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null
+  },
+  {
+    "activity_id": "VA07",
+    "venue_id": "VN07",
+    "kind": "travel",
+    "name": "Departures",
+    "icon": "ACT_TRAVEL",
+    "pool": null,
+    "hours": null,
+    "funds": null,
+    "xp": null,
+    "per_day": null,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null
   }
 ]

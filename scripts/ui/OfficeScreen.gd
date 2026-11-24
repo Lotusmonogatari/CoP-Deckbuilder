@@ -28,7 +28,6 @@ var _standing_panel: Overlay = null
 ## The level the player is looking at, chosen on the levels screen.
 var _chosen_level: Dictionary = {}
 ## Two offices (2026-11-20): the trip button under "Choose a level", and the popup that states a trip's cost first.
-var _travel_button: TravelStrip
 var _moved_panel: Overlay
 var _travel_page_panel: Overlay
 var _travel_panel: Overlay
@@ -36,7 +35,6 @@ var _travel_card: TravelCard
 ## The mode the strip is set to (the rail pass or a paid ticket: both are pulled), and the mode the popup is about.
 var _strip_mode: String = Travel.PASS
 var _popup_mode: String = Travel.PASS
-var _travel_modes_row: HBoxContainer
 ## A mixed level waiting on an encounter on the train before it begins (the encounter is shown first).
 var _start_after_encounter := false
 var _encounter_cleared := false
@@ -222,7 +220,9 @@ func _ready() -> void:
 	_management_button.pressed.connect(_show_management)
 	_build_inventory()
 	_venues = VenuesController.new()
-	_venues.setup(self, find_child("InventoryButton", true, false) as Button, _show_rhetoric_training, _refresh_resources)
+	# Trips leave from the stations (2026-11-24): the station screens draw the strip and the ways to go and call the trip back here.
+	_venues.setup(self, find_child("InventoryButton", true, false) as Button, _show_rhetoric_training, _refresh_resources, {
+		"mode": _travel_mode_for_strip, "set_mode": _set_strip_mode, "confirm": _show_travel, "go": _start_trip})
 	_build_menus()
 	_build_record()
 	_build_cosmetics()
@@ -653,7 +653,8 @@ func _build_week_controls() -> void:
 ## Work Week" on a Friday with hours left, "Pay Party Dues and Go Home" in
 ## the weekend, nothing otherwise (and nothing mid-level).
 func _refresh_calendar() -> void:
-	_refresh_travel()
+	if _venues != null:
+		_venues.refresh_button()
 	CalendarSquare.refresh(_calendar_square)
 	DuesBox.refresh(_dues_box)
 	if _promises_button != null:
@@ -4422,77 +4423,17 @@ func _build_travel() -> void:
 	# The card that covers the Office while a trip happens: above every popup.
 	_travel_card = TravelCard.new()
 	add_child(_travel_card)
-	# The strip: drag the train to go; a tap opens the confirm.
-	_travel_button = TravelStrip.new()
-	_travel_button.name = "TravelButton"
-	_travel_button.tapped.connect(_show_travel)
-	_travel_button.committed.connect(_start_trip)
-	var column := _start_button.get_parent()
-	column.add_child(_travel_button)
-	column.move_child(_travel_button, _start_button.get_index() + 1)
-	# The ways to travel the player holds a ticket for (shown only when there is a choice).
-	_travel_modes_row = HBoxContainer.new()
-	_travel_modes_row.name = "TravelModes"
-	_travel_modes_row.add_theme_constant_override("separation", 10)
-	column.add_child(_travel_modes_row)
-	column.move_child(_travel_modes_row, _travel_button.get_index() + 1)
+	# The strip and the ways to go are not on the Office any more (2026-11-24, Cameron): they are on the station screens.
 	_briefing_panel.travel_mode_chosen.connect(_on_briefing_travel_mode)
-
-
-## The trip button: where it goes, how long and by what, before it is pressed; greyed with the reason when it cannot.
-func _refresh_travel() -> void:
-	if _travel_button == null:
-		return
-	var destination := Offices.other(GameState.office_location)
-	var refusal := GameState.travel_refusal(_travel_mode_for_strip())
-	_travel_button.text = refusal if not refusal.is_empty() else Text.say("travel.button", {
-		"place": TravelText.place_name(destination), "count": GameState.trip_hours(_travel_mode_for_strip()),
-		"mode": TravelText.mode_name(_travel_mode_for_strip())})
-	_refresh_travel_modes()
-	_travel_button.disabled = not refusal.is_empty()
-	_travel_button.direction = 1 if GameState.office_location == Offices.CAPITOL else -1
 
 
 func _travel_mode_for_strip() -> String:
 	return _strip_mode if GameState.travel_modes().has(_strip_mode) and _strip_mode != Travel.CAR and _strip_mode != Travel.PLANE else Travel.PASS
 
 
-## One button for each way to travel the player holds a ticket for: the rail pass and a paid ticket set the mode the
-## strip is pulled with; a car or a plane ticket opens its own confirm (instant to do, same fade).
-func _refresh_travel_modes() -> void:
-	if _travel_modes_row == null:
-		return
-	for child in _travel_modes_row.get_children():
-		_travel_modes_row.remove_child(child)
-		child.queue_free()
-	var modes := GameState.travel_modes()
-	_travel_modes_row.visible = modes.size() > 1
-	if modes.size() < 2:
-		return
-	for mode: String in modes:
-		var button := Button.new()
-		button.name = "TravelMode_" + mode
-		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		# Three buttons share the width, so each one wraps its words rather than push the screen wider.
-		button.custom_minimum_size = Vector2(0, 110)
-		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		button.clip_text = false
-		var held := GameState.travel_tickets(mode)
-		button.text = Text.say("travel.mode_button", {"mode": TravelText.mode_name(mode), "count": GameState.trip_hours(mode)}) \
-			if mode == Travel.PASS else Text.say("travel.mode_button_owned", {"mode": TravelText.mode_name(mode),
-				"count": GameState.trip_hours(mode), "owned": held})
-		button.disabled = mode == _travel_mode_for_strip() and mode != Travel.CAR and mode != Travel.PLANE
-		TravelText.dress_mode_icon(button, mode, 90.0)
-		button.pressed.connect(_on_travel_mode.bind(mode))
-		_travel_modes_row.add_child(button)
-
-
-func _on_travel_mode(mode: String) -> void:
-	if mode == Travel.CAR or mode == Travel.PLANE:
-		_show_travel(mode)
-		return
+## The station's rail pass and paid-ticket buttons choose how the train strip is pulled.
+func _set_strip_mode(mode: String) -> void:
 	_strip_mode = mode
-	_refresh_travel()
 
 
 ## Picking another way to pay in a mixed level's briefing: the same briefing again, with the hours for that way.
@@ -4605,12 +4546,14 @@ func _start_trip(mode: String = "") -> void:
 	var words := Text.say("travel.card_line", {"mode": TravelText.mode_name(by),
 		"place": TravelText.place_name(Offices.other(GameState.office_location)),
 		"count": GameState.trip_hours(by)})
+	move_child(_travel_card, get_child_count() - 1)   # above the station screens the trip may start from
 	_travel_card.play(words, _arrive.bind(by))
 
 
 func _arrive(by: String) -> void:
 	if not GameState.travel(by):
 		return
+	_venues.close_all()   # the station the trip left from, behind the card
 	_apply_office_look()
 	_report.text = _report_text()
 	_refresh_resources()

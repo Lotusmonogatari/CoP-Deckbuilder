@@ -214,6 +214,10 @@ func _sweep_shape(size: Vector2i) -> void:
 		["B27d_appearance", func() -> void: office._show_cosmetics()],
 		["B27e_venue_map", func() -> void: office._venues.show_map()],
 		["B27f_venue_screen", func() -> void: office._venues.show_venue("VN01")],
+		["B27f2_station_concourse", func() -> void: office._venues.show_venue("VN06")],
+		["B27f3_station_tracks", func() -> void:
+			office._venues.show_venue("VN06")
+			office._venues._show_tracks("VN06")],
 		["B27g_venue_line", func() -> void:
 			GameState.venue_visit("VN01")
 			office._venues._current_venue = "VN01"

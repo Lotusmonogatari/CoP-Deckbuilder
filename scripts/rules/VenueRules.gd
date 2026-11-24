@@ -1,26 +1,24 @@
 class_name VenueRules
 extends RefCounted
 ## Capitol venues (P16, 2026-11-23, Cameron): when the player may step out, what a visit costs, and which venues are built so far.
-## Venues are reachable only from the Capitol office, not during a level, and not once the work week is full; every venue is open
-## every day, weekends included. Walking between the Capitol office, the Capitol Building and the Capital Area costs the Rules rows'
-## hours (0 today). Pure: no screens, no autoloads, no files (the tests prove it).
+## Venues are reached by Step out, not during a level and not once the work week is full; every venue is open every day, weekends
+## included. At the Capitol office the map lists the Capitol Building and the Capital Area; at the District office it lists the
+## District's own places (the station, 2026-11-24). Walking between the Capitol office, the Capitol Building and the Capital Area
+## costs the Rules rows' hours (0 today). Pure: no screens, no autoloads, no files (the tests prove it).
 
 ## Why the player cannot step out right now; "" when they can.
 const OPEN := ""
-const ELSEWHERE := "elsewhere"     # not at the Capitol office
 const IN_LEVEL := "in_level"       # a level is in progress
 const WEEK_FULL := "week_full"     # no work hours left this week
 
 ## The activity kinds built so far (P16 phase 1). A venue whose activity is another kind shows as "Coming soon".
-const BUILT_KINDS: Array[String] = ["chat", "watch", "train"]
+const BUILT_KINDS: Array[String] = ["chat", "watch", "train", "travel"]
 ## The kinds that deal daily lines.
 const LINE_KINDS: Array[String] = ["chat", "watch"]
 
 
-## Whether the player may step out from where they are, as one of the reason codes above (OPEN when they may).
-static func step_out_state(at_capitol: bool, in_level: bool, hours_left: int) -> String:
-	if not at_capitol:
-		return ELSEWHERE
+## Whether the player may step out, as one of the reason codes above (OPEN when they may). Both offices can step out.
+static func step_out_state(in_level: bool, hours_left: int) -> String:
 	if in_level:
 		return IN_LEVEL
 	if hours_left <= 0:
@@ -89,6 +87,36 @@ static func seasonal_background(base_id: String, season: String, exists: Callabl
 		return base_id
 	var seasonal := "%s_%s" % [base_id, season.strip_edges().to_upper()]
 	return seasonal if bool(exists.call(seasonal)) else base_id
+
+
+## The zone a venue sits in for the player's office: "District" venues belong to the District office, every other venue to the Capitol.
+const ZONE_DISTRICT := "District"
+
+
+## The venues the map lists at an office (the District's own places there, the Capitol's at the Capitol), in Order.
+static func venues_at(venues: Array, at_capitol: bool) -> Array:
+	var found: Array = []
+	for venue: Variant in venues:
+		if venue is Dictionary and (str((venue as Dictionary).get("zone", "")) == ZONE_DISTRICT) != at_capitol:
+			found.append(venue)
+	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return int(a.get("order", 0)) < int(b.get("order", 0)))
+	return found
+
+
+## A District venue's words and picture follow the District office: `{office}` becomes its town ("Daikoku") and `{OFFICE_ID}` the
+## same in capitals with underscores ("AKENO_SHINMACHI"), the spelling the picture files use (AREA_DAIKOKU_STATION). A blank town
+## leaves the text as it is.
+static func fill_office(text: String, office_town: String) -> String:
+	var town := office_town.strip_edges()
+	if town.is_empty():
+		return text
+	return text.replace("{office}", town).replace("{OFFICE_ID}", town.to_upper().replace(" ", "_").replace("-", "_"))
+
+
+## The second screen inside a station (the tracks): the venue's picture with `_TRACKS` on the end, when that picture exists.
+static func tracks_background(base_id: String, exists: Callable) -> String:
+	var tracks := "%s_TRACKS" % base_id
+	return tracks if not base_id.is_empty() and bool(exists.call(tracks)) else ""
 
 
 static func _whole(raw: Variant) -> int:

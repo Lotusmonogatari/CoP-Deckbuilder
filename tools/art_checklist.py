@@ -145,7 +145,25 @@ def main():
          icon_rows(load("cosmetic_packages"), "package_id", "name_en"))
 
     # Capitol venues (P16, 2026-11-23): a background and an icon for each venue, and an icon for each activity.
-    flat("Venue backgrounds", "background", [(str(v["background"]), str(v["name"])) for v in load("venues") if v.get("background")])
+    # A District venue's name and picture follow each protagonist's District office ({office}, {OFFICE_ID}): one picture each.
+    # A station with a tracks view (a venue of kind travel outside the District) has a second picture, <background>_TRACKS.
+    offices = [str(p.get("district_office", "")) for p in load("player")["protagonists"] if p.get("district_office")]
+
+    def expand(text):
+        if "{OFFICE_ID}" not in text and "{office}" not in text:
+            return [text]
+        return [text.replace("{office}", o).replace("{OFFICE_ID}", o.upper().replace(" ", "_").replace("-", "_")) for o in offices]
+
+    venue_pictures = []
+    travel_venues = {str(a.get("venue_id")) for a in load("venue_activities") if a.get("kind") == "travel"}
+    for v in load("venues"):
+        if not v.get("background"):
+            continue
+        for picture, name in zip(expand(str(v["background"])), expand(str(v["name"]))):
+            venue_pictures.append((picture, name))
+        if str(v.get("venue_id")) in travel_venues and v.get("zone") != "District":
+            venue_pictures.append((str(v["background"]) + "_TRACKS", str(v["name"]) + " (the tracks)"))
+    flat("Venue backgrounds", "background", venue_pictures)
     flat("Venue icons", "icon", [(str(v["icon"]), str(v["name"])) for v in load("venues") if v.get("icon")])
     flat("Venue activity icons", "icon", [(str(a["icon"]), str(a["name"])) for a in load("venue_activities") if a.get("icon")])
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqqv32xdsob1j"
-path="res://.godot/imported/AREA_SAPPORO_WEST_STATION.png-17704306b9d11b27f4c8f355b261a9db.ctex"
+uid="uid://gfqi6ebsqjtl"
+path="res://.godot/imported/AREA_NOHEJI_STATION.png-864fbdef5f0aac120c070e7f7ab76f05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/AREA_SAPPORO_WEST_STATION.png"
-dest_files=["res://.godot/imported/AREA_SAPPORO_WEST_STATION.png-17704306b9d11b27f4c8f355b261a9db.ctex"]
+source_file="res://assets/backgrounds/AREA_NOHEJI_STATION.png"
+dest_files=["res://.godot/imported/AREA_NOHEJI_STATION.png-864fbdef5f0aac120c070e7f7ab76f05.ctex"]
 
 [params]
 

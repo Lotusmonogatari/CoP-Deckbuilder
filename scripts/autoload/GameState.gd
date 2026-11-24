@@ -2584,13 +2584,12 @@ func event_speakers(event_id: String) -> Array:
 
 ## Whether the player may step out now: one of VenueRules's reason codes (VenueRules.OPEN when they may).
 func step_out_state() -> String:
-	return VenueRules.step_out_state(office_location == Offices.CAPITOL, is_in_level(), work_hours_left())
+	return VenueRules.step_out_state(is_in_level(), work_hours_left())
 
 
 ## Why Step out cannot be used now, as a sentence; "" when it can.
 func step_out_refusal() -> String:
 	match step_out_state():
-		VenueRules.ELSEWHERE: return Text.say("venue.refuse_elsewhere")
 		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
 		# No hours left: work hours on a weekday, weekend hours on a weekend (P16b, 2026-11-23).
 		VenueRules.WEEK_FULL: return Text.say("venue.no_hours_weekend" if in_weekend() else "venue.refuse_week_full")
@@ -2634,8 +2633,28 @@ func venue_today() -> int:
 func venue_row(venue_id: String) -> Dictionary:
 	for venue: Dictionary in DataDB.venues:
 		if str(venue.get("venue_id", "")) == venue_id:
-			return venue
+			return _venue_for_office(venue)
 	return {}
+
+
+## The venues the map lists where the player stands (the Capitol's at the Capitol, the District's own places at the District
+## office), in Order, with a District venue's town and picture filled in.
+func venues_here() -> Array:
+	var found: Array = []
+	for venue: Dictionary in VenueRules.venues_at(DataDB.venues, office_location == Offices.CAPITOL):
+		found.append(_venue_for_office(venue))
+	return found
+
+
+## A copy of the venue row with {office} and {OFFICE_ID} filled from the protagonist's District office (travel at the stations,
+## 2026-11-24); a venue with neither token comes back unchanged.
+func _venue_for_office(venue: Dictionary) -> Dictionary:
+	var town := district_office_name()
+	var filled := venue.duplicate()
+	for key: String in ["name", "background", "blurb"]:
+		if venue.get(key) != null:
+			filled[key] = VenueRules.fill_office(str(venue[key]), town)
+	return filled
 
 
 func venue_walk_hours(venue_id: String) -> int:
@@ -2735,8 +2754,11 @@ func venue_day_peek(venue_id: String) -> Dictionary:
 ## player is in: work hours on a weekday, weekend hours on a weekend (P16b, 2026-11-23). A refused visit takes no hour and deals no
 ## line; a visit with nothing left to hear today is refused ("Come back tomorrow") the same way.
 func venue_visit_refusal(venue_id: String) -> String:
+	# A place at the other office cannot be reached from here (the map lists only this office's places).
+	var here := venues_here()
+	if not here.any(func(venue: Dictionary) -> bool: return str(venue.get("venue_id", "")) == venue_id):
+		return Text.say("venue.refuse_elsewhere")
 	match step_out_state():
-		VenueRules.ELSEWHERE: return Text.say("venue.refuse_elsewhere")
 		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
 		VenueRules.WEEK_FULL: return Text.say("venue.no_hours_weekend" if in_weekend() else "venue.refuse_week_full")
 	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)

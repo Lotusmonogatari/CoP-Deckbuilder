@@ -2024,6 +2024,35 @@ Fourteen new pictures in `assets/backgrounds/` (all landscape, 1456 x 816 for ro
 | `CAPITOL_LIBRARY` | Named by the Library's row already; shows when the Library is built ("Coming soon" today). |
 | `AREA_SUPER_STATION`, `AREA_SUPER_STATION_TRACKS` | Not wired: Sapporo Super Station (the Departures venue) is "Coming soon". Two views: the concourse and the tracks. |
 | `AREA_SAPPORO_STAGE` (renamed from `AREA_SAPPORO_STAGE_STAGE`, Cameron's say-so), `AREA_SAPPORO_STAGE_WINTER` | Named right for the Sapporo Stage row and the seasonal rule; shown when the Stage is built ("Coming soon" today). |
-| `AREA_AOMORI_STATION`, `AREA_SAPPORO_WEST_STATION`, `AREA_TOMAKOMAI_STATION`, `AREA_WAKKANAI_STATION` | Not wired: District stations, noted for the later District venues work. |
+| `AREA_NOHEJI_STATION`, `AREA_TEINE_WARD_STATION`, `AREA_AKENO_SHINMACHI_STATION`, `AREA_DAIKOKU_STATION` | Not wired: District stations, noted for the later District venues work. Renamed 2026-11-24 (Cameron) from Aomori, Sapporo West, Tomakomai and Wakkanai to the District office each serves. |
 
 Code: `VenueRules.seasonal_background`, `VenuesController.venue_picture_id`, the studio picture in `OfficeScreen._show_speech_coach_page`, and a `venue:gardens` screenshot case. Tests: two in `test_venue_rules.gd`.
+
+## Travel at the stations: Cameron's decisions on the mock-up (2026-11-24, Cameron; branch `docs/travel-stations-mockup`; nothing built)
+
+Mock-up: `design/proposals/img/travel_stations/` (board and eight screens).
+
+| Question | Decision |
+|---|---|
+| Plane tickets and the private car | As mocked up: the plane boards on the concourse (no tracks), the car is listed greyed for protagonists who do not have one. Stations are the hub for travel for now. |
+| District offices | Get **Step out**, listing the local station. |
+| District station picture names | Named for the District office they serve: `AREA_DAIKOKU_STATION` (PC01), `AREA_AKENO_SHINMACHI_STATION` (PC02), `AREA_TEINE_WARD_STATION` (PC03), `AREA_NOHEJI_STATION` (PC04). The files are renamed. |
+| Mixed levels with built-in trips | Travel **stays built into the level**: the trip is taken as the level begins, with the level briefing's own "Travel by" row, unchanged. |
+
+Not built yet: moving the train strip, the mode row and the Travel page to the Super Station and the District stations. That needs a build brief (it touches the Office screen, the venue map and the trip rules) and is outlined for approval before any code.
+
+## Travel at the stations: built (2026-11-24, Cameron; branch `feature/travel-at-stations`)
+
+Cameron's go-ahead on the mock-up and his decisions (above), built as one piece. The train slider is the same component, unchanged in look and behavior (no extra marks).
+
+| Part | What changed |
+|---|---|
+| The Office | The train strip and the row of ways to go are gone. Step out shows at both offices. |
+| Capitol | Sapporo Super Station is built (VN06): the concourse with the Departures card and a To the tracks button, then the tracks screen with the strip. A plane or car leaves from the concourse. Only the protagonist's own fast mode is listed (Cameron, 2026-11-24: no plane for a protagonist who cannot use it, unless other destinations are added); the other is not shown at all. |
+| District | One place, `{office} Station` (new Venues row VN07, zone District, new Venue Activities row VA07): one screen with the Departures card and the strip. Its picture is `AREA_<OFFICE>_STATION`, so the renamed files are found by office. |
+| Trip | Unchanged (confirm sheet, fade card, hours, tickets, train encounters). Arriving closes the station screens. Travel in a level stays built in. |
+| Workbook | 7 new Text rows (`station.*`, `venue.zone_district`), HT36 and HT37 rewritten (three sentences each), `venue.refuse_elsewhere` reworded ("You cannot get there from this office."). Script: `tools/workbook/archive/travel_stations_build.py`. |
+| Exporter and tools | Zone District allowed; the art checklist expands the four station pictures and the tracks picture; screenshot, text-sweep and touch-target audits cover the station screens. |
+| Tests | New rules and state tests; the travel click test now drives the stations. |
+
+Note on the mock-up: it showed a plane for Kenshin Sako (PC01). The Balance rows give PC01 a private car (4 h) and only PC04 a plane (2 h), so the screens follow the data.

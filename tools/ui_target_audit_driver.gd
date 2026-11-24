@@ -45,6 +45,12 @@ func _run() -> void:
 	venues_office._venues.show_venue("VN01")
 	await get_tree().create_timer(0.5).timeout
 	_measure("Office > venue")
+	venues_office._venues.show_venue("VN06")
+	await get_tree().create_timer(0.5).timeout
+	_measure("Office > station concourse")
+	venues_office._venues._show_tracks("VN06")
+	await get_tree().create_timer(0.5).timeout
+	_measure("Office > station tracks")
 	GameState.venue_visit("VN01")
 	venues_office._venues._current_venue = "VN01"
 	venues_office._venues._hear("VN01")

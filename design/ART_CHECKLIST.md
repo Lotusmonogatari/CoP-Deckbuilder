@@ -18,9 +18,9 @@ stands in for every expression.
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
 | Cosmetic package icons | 9 / 9 |
-| Venue backgrounds | 6 / 6 |
-| Venue icons | 0 / 6 |
-| Venue activity icons | 0 / 6 |
+| Venue backgrounds | 11 / 11 |
+| Venue icons | 0 / 7 |
+| Venue activity icons | 7 / 7 |
 | Decision scenes with a picture to show | 0 / 10 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -632,6 +632,11 @@ stands in for every expression.
 | AREA_COACH_STUDIO.png | Speech Coach | ✓ |
 | AREA_SAPPORO_STAGE.png | Sapporo Stage | ✓ |
 | AREA_SUPER_STATION.png | Sapporo Super Station | ✓ |
+| AREA_SUPER_STATION_TRACKS.png | Sapporo Super Station (the tracks) | ✓ |
+| AREA_DAIKOKU_STATION.png | Daikoku Station | ✓ |
+| AREA_AKENO_SHINMACHI_STATION.png | Akeno Shinmachi Station | ✓ |
+| AREA_TEINE_WARD_STATION.png | Teine Ward Station | ✓ |
+| AREA_NOHEJI_STATION.png | Noheji Station | ✓ |
 
 ## Venue icons — `assets/icons/`
 
@@ -643,17 +648,19 @@ stands in for every expression.
 | VEN_COACH.png | Speech Coach | ☐ |
 | VEN_STAGE.png | Sapporo Stage | ☐ |
 | VEN_STATION.png | Sapporo Super Station | ☐ |
+| VEN_STATION.png | {office} Station | ☐ |
 
 ## Venue activity icons — `assets/icons/`
 
 | File | For | Drawn |
 |---|---|---|
-| ACT_EAT.png | Eat with Colleagues | ☐ |
-| ACT_READ.png | Browse the Shelves | ☐ |
-| ACT_WATCH.png | People Watching | ☐ |
-| ACT_TRAIN.png | Rhetoric Training | ☐ |
-| ACT_SHOW.png | Watch the Show | ☐ |
-| ACT_TRAVEL.png | Departures | ☐ |
+| ACT_EAT.png | Eat with Colleagues | ✓ |
+| ACT_READ.png | Browse the Shelves | ✓ |
+| ACT_WATCH.png | People Watching | ✓ |
+| ACT_TRAIN.png | Rhetoric Training | ✓ |
+| ACT_SHOW.png | Watch the Show | ✓ |
+| ACT_TRAVEL.png | Departures | ✓ |
+| ACT_TRAVEL.png | Departures | ✓ |
 
 ## Decision scenes
 

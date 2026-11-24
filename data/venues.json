@@ -76,5 +76,18 @@
     "blurb": "Every line in Yezo starts here.",
     "open_days": "Any",
     "unlock": null
+  },
+  {
+    "venue_id": "VN07",
+    "name": "{office} Station",
+    "name_jp": "駅",
+    "romaji": "Eki",
+    "zone": "District",
+    "order": 7,
+    "icon": "VEN_STATION",
+    "background": "AREA_{OFFICE_ID}_STATION",
+    "blurb": "The line to the Capitol begins here.",
+    "open_days": "Any",
+    "unlock": null
   }
 ]

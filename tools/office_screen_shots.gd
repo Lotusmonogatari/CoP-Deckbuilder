@@ -35,6 +35,22 @@ func _venue(office: Node, which: String) -> Overlay:
 		"gardens":
 			office._venues.show_venue("VN03")
 			return office.get_node("VenuePanel")
+		"station", "tracks", "districtmap", "districtstation":
+			# Travel at the stations (2026-11-24): the Capitol's concourse and tracks, the District office's map and station.
+			GameState.add_item("SH42", 2)
+			GameState.add_item("SH44", 2)
+			if which.begins_with("district"):
+				GameState.office_location = Offices.DISTRICT
+				office._apply_office_look()
+			if which == "districtmap":
+				office._venues.show_map()
+				return office.get_node("VenueMapPanel")
+			if which == "tracks":
+				office._venues.show_venue("VN06")
+				office._venues._show_tracks("VN06")
+				return office.get_node("StationTracksPanel")
+			office._venues.show_venue("VN07" if which == "districtstation" else "VN06")
+			return office.get_node("VenuePanel")
 		"gossip", "tip", "dry":
 			var entry := GameState.venue_day("VN01")
 			var dealt: Array = entry["dealt"]
@@ -112,7 +128,6 @@ func _run() -> void:
 			menu = null
 		"office":
 			GameState.add_item("SH42", 2)
-			office._refresh_travel_modes()
 			menu = null
 		"events":
 			if "funds" in parts:
@@ -144,7 +159,7 @@ func _run() -> void:
 				office._show_standing_factors(first["booster"])
 				menu = office.get_node("StandingFactorsPanel")
 		"venue":
-			# venue:map | cafeteria | gardens | gossip | tip | overheard | dry | tips | levels | briefing | coach (P16, 2026-11-23)
+			# venue:map | cafeteria | gardens | station | tracks | districtmap | districtstation | gossip | tip | overheard | dry | tips | levels | briefing | coach (P16, 2026-11-23)
 			menu = await _venue(office, parts[1] if parts.size() > 1 else "map")
 		"popup":
 			# The group-1 pop-ups (P14): popup:decision | scenario | moved | week | promises | broken | alert | resume | forced | hosted | result

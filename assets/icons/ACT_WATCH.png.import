@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvypknwckblvo"
-path="res://.godot/imported/AREA_TOMAKOMAI_STATION.png-a7a5a71cc7dffc852ffc96b50271562d.ctex"
+uid="uid://blw0m4gdn7hwm"
+path="res://.godot/imported/ACT_WATCH.png-124ea9eda2bc01f26bab005c40a9c41c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/AREA_TOMAKOMAI_STATION.png"
-dest_files=["res://.godot/imported/AREA_TOMAKOMAI_STATION.png-a7a5a71cc7dffc852ffc96b50271562d.ctex"]
+source_file="res://assets/icons/ACT_WATCH.png"
+dest_files=["res://.godot/imported/ACT_WATCH.png-124ea9eda2bc01f26bab005c40a9c41c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqvw4627leswo"
-path="res://.godot/imported/AREA_AOMORI_STATION.png-0465d55f79b475df6f91b449e2192602.ctex"
+uid="uid://bw7f7y563k0bd"
+path="res://.godot/imported/AREA_TEINE_WARD_STATION.png-52a6b08aada45d6aded168d507fdb49e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/AREA_AOMORI_STATION.png"
-dest_files=["res://.godot/imported/AREA_AOMORI_STATION.png-0465d55f79b475df6f91b449e2192602.ctex"]
+source_file="res://assets/backgrounds/AREA_TEINE_WARD_STATION.png"
+dest_files=["res://.godot/imported/AREA_TEINE_WARD_STATION.png-52a6b08aada45d6aded168d507fdb49e.ctex"]
 
 [params]
 

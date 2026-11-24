@@ -14,19 +14,21 @@ func after_each() -> void:
 	GameState.office_location = Offices.CAPITOL
 
 
-func test_the_player_may_step_out_only_from_the_capitol_with_hours_left_and_no_level() -> void:
+func test_the_player_may_step_out_from_either_office_with_hours_left_and_no_level() -> void:
 	assert_eq(GameState.step_out_state(), VenueRules.OPEN)
 	GameState.office_location = Offices.DISTRICT
-	assert_eq(GameState.step_out_state(), VenueRules.ELSEWHERE)
-	assert_ne(GameState.venue_visit_refusal("VN01"), "", "the Cafeteria is not reachable from the District")
+	assert_eq(GameState.step_out_state(), VenueRules.OPEN, "the District office can step out too")
+	assert_eq(GameState.venue_visit_refusal("VN01"), Text.say("venue.refuse_elsewhere"), "the Cafeteria is not reachable from the District")
 	GameState.office_location = Offices.CAPITOL
 	GameState.calendar = {"week": 2, "phase": "work", "hours": 40}
 	assert_eq(GameState.step_out_state(), VenueRules.WEEK_FULL, "a full work week")
 
 
-func test_the_library_stage_and_station_are_coming_soon() -> void:
-	for venue_id: String in ["VN02", "VN05", "VN06"]:
+func test_the_library_and_stage_are_coming_soon_and_the_stations_are_built() -> void:
+	for venue_id: String in ["VN02", "VN05"]:
 		assert_eq(GameState.venue_visit_refusal(venue_id), Text.say("venue.coming_soon"), venue_id)
+	assert_true(VenueRules.is_built(VenueRules.activity_of(DataDB.venue_activities, "VN06")), "Sapporo Super Station is built")
+	assert_true(VenueRules.is_built(VenueRules.activity_of(DataDB.venue_activities, "VN07")), "the District station is built")
 	for venue_id: String in ["VN01", "VN03", "VN04"]:
 		assert_ne(GameState.venue_visit_refusal(venue_id), Text.say("venue.coming_soon"), venue_id)
 
@@ -283,3 +285,25 @@ func test_keep_listening_stays_free_even_when_the_visit_took_the_last_hour() -> 
 	for i in 3:
 		assert_true(GameState.venue_hear_next("VN01")["ok"], "line %d is still heard" % (i + 1))
 	assert_eq(GameState.work_hours_left(), 0)
+
+
+func test_the_map_lists_the_capitols_places_at_the_capitol_and_the_station_at_the_district() -> void:
+	var ids := func() -> Array: return GameState.venues_here().map(func(v: Dictionary) -> String: return str(v["venue_id"]))
+	assert_eq(ids.call(), ["VN01", "VN02", "VN03", "VN04", "VN05", "VN06"])
+	GameState.office_location = Offices.DISTRICT
+	assert_eq(ids.call(), ["VN07"], "the District office has its own station only")
+
+
+func test_the_district_station_is_named_for_the_district_office() -> void:
+	var town := GameState.district_office_name()
+	assert_ne(town, "", "the test protagonist has a District office")
+	var station := GameState.venue_row("VN07")
+	assert_eq(str(station["name"]), "%s Station" % town)
+	assert_eq(str(station["background"]), "AREA_%s_STATION" % town.to_upper().replace(" ", "_"))
+	assert_true(ResourceLoader.exists("res://assets/backgrounds/%s.png" % station["background"]), "the picture is in the project")
+
+
+func test_every_district_office_has_its_station_picture() -> void:
+	for protagonist: Dictionary in DataDB.protagonists:
+		var picture := VenueRules.fill_office("AREA_{OFFICE_ID}_STATION", str(protagonist.get("district_office", "")))
+		assert_true(ResourceLoader.exists("res://assets/backgrounds/%s.png" % picture), picture)

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Travel at the stations: mock-up (draft)</title>
+<style>
+@font-face{font-family:'AntakaD';src:url('../../../../assets/fonts/AntakaBrushDisplay-Regular.ttf')}
+@font-face{font-family:'AntakaT';src:url('../../../../assets/fonts/AntakaBrushText-Regular.ttf')}
+:root{--paper:#f0e5d1;--card:#f8f1e3;--ink:#1a1a1a;--muted:#5d5648;--red:#c23a22;--navy:#1f2a5c;--green:#2f7a3a;--gold:#b88a1e}
+*{box-sizing:border-box}
+body{margin:0;background:#d9d2c3;font-family:'AntakaT','Noto Sans JP',serif;color:var(--ink)}
+h1.board{font-family:AntakaD;margin:18px 24px 0;font-size:28px}
+p.sub{margin:4px 24px 14px;color:var(--muted);font-size:15px;max-width:1500px}
+.grid{display:grid;grid-template-columns:repeat(4,390px);gap:26px 22px;padding:0 24px 30px}
+.cell .cap{font-size:13px;margin:0 0 6px;height:64px;color:#2a2a2a;line-height:1.25}
+.cell .cap b{font-family:AntakaD;font-size:16px}
+.phone{width:390px;height:844px;background:var(--paper);position:relative;overflow:hidden;border:1px solid #888}
+.pad{padding:14px 14px}
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.back{font-size:18px;padding-top:6px}
+.chips{display:flex;flex-direction:column;gap:5px;align-items:flex-end}
+.chip{background:var(--navy);color:#f3ead6;font-size:14px;padding:4px 12px}
+h2{font-family:AntakaD;font-size:30px;margin:10px 0 6px;font-weight:normal}
+h2 small{font-family:'Noto Sans JP';font-size:14px;color:var(--muted);margin-left:8px}
+.pic{width:100%;border:0;background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(#0000,#000 7%,#000 93%,#0000),linear-gradient(90deg,#0000,#000 4%,#000 96%,#0000);-webkit-mask-composite:source-in;mask-composite:intersect}
+.blurb{font-size:16px;margin:8px 2px 10px}
+.card{background:var(--card);border:3px solid var(--ink);box-shadow:5px 6px 0 var(--red);padding:10px 12px;margin:0 6px 14px 0}
+.btn{display:block;width:100%;text-align:center;border:3px solid var(--ink);background:var(--card);font-size:19px;padding:13px 6px;margin-top:8px}
+.btn.go{background:var(--navy);color:#f3ead6}
+.btn.off{color:#7a7366;border-color:#5b5547}
+.small{font-size:13px;color:var(--muted);margin-top:6px}
+.mode{display:flex;justify-content:space-between;align-items:center;border:2px solid var(--green);background:var(--card);padding:9px 10px;margin-top:7px;font-size:17px}
+.mode.sel{background:#e3efd9;border-width:3px}
+.mode .hrs{font-size:15px;color:#333}
+.mode.no{border-color:#9a9484;color:#8b8577;border-style:dashed}
+.tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+.draft{position:absolute;right:6px;bottom:6px;font-size:10px;color:#6b6456;background:#fff8;padding:1px 5px}
+.strip{border:2px solid var(--ink);background:var(--card);border-radius:12px;height:64px;position:relative;margin-top:10px;overflow:hidden}
+.strip .rail{position:absolute;left:10px;right:10px;bottom:12px;height:3px;background:var(--ink);opacity:.5}
+.strip .train{position:absolute;left:10px;top:8px;width:96px;height:38px;background:var(--navy);clip-path:polygon(0 0,86% 0,100% 50%,86% 100%,0 100%)}
+.strip .train i{position:absolute;top:8px;width:16px;height:12px;background:#9fa6c8}
+.strip .hint{position:absolute;left:120px;right:10px;top:16px;text-align:center;font-size:15px}
+.strip .goal{position:absolute;right:0;top:0;bottom:0;width:60px;border-left:2px dashed var(--red)}
+.fade{position:absolute;inset:0;background:#000a;display:flex;align-items:center;justify-content:center;text-align:center;color:#f3ead6;font-size:26px;line-height:1.5;white-space:pre-line}
+.mapsec{font-family:AntakaD;font-size:19px;margin:14px 0 6px}
+.place{display:flex;align-items:center;gap:10px;border:3px solid var(--ink);background:var(--card);padding:10px;margin-top:8px;font-size:18px}
+.place img{width:46px;height:46px;border:2px solid var(--ink);background:#cfc4aa;object-fit:cover}
+.place.soon{color:#8b8577;border-color:#8b8577}
+.place small{display:block;font-size:12px;color:var(--muted)}
+.office-bottom{background:#2b1c10;height:100%;padding:0}
+.crop{width:100%;height:100%;background:url(before_office.png) 0 -1840px/390px auto no-repeat}
+.lvl{background:var(--navy);color:#f3ead6;padding:16px;text-align:center;font-size:20px;margin:0 0 12px}
+.lvl small{display:block;font-size:14px;margin-top:6px}
+.menu3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px}
+.menu3 div,.menu2 div{background:var(--card);border-top:6px solid var(--navy);border-bottom:2px solid var(--ink);padding:14px 4px;text-align:center;font-size:16px}
+.mini{background:#e9dfc9;padding:12px;height:100%}
+.diff{border:2px dashed var(--red);padding:8px;margin:8px 0;font-size:14px;background:#fff7}
+.stationshot{height:150px}
+table.t{border-collapse:collapse;width:100%;font-size:13px;margin-top:6px}
+table.t td,table.t th{border:1px solid #888;padding:4px 5px;text-align:left;vertical-align:top}
+.sm{height:48px;width:100%;background-size:cover;background-position:center}
+</style></head><body>
+<h1 class="board">Travel at the stations: mock-up</h1>
+<p class="sub">Draft for Cameron. Woodblock look, real pictures from <code>assets/backgrounds</code>, wording is a placeholder (new Text rows would follow if approved). Nothing is built. Hours shown are PC01 Kenshin Sako's: rail pass 6 h to Daikoku, plane ticket 2 h.</p>
+<div class="grid">
+
+<!-- 1 BEFORE / AFTER OFFICE -->
+<div class="cell"><p class="cap"><b>1 · The Office, before and after.</b> The train strip and "Travel by" row leave the Office. Step out stays and becomes the way to every departure.</p>
+<div class="phone"><div class="pad" style="padding:0;height:100%;display:flex;flex-direction:column">
+ <div style="flex:0 0 290px;border-bottom:3px solid var(--red);position:relative;overflow:hidden"><div style="position:absolute;inset:0;background:url(before_office.png) 0 -555px/390px auto no-repeat"></div><span class="draft" style="left:6px;right:auto;top:6px;bottom:auto;background:#c23a22;color:#fff">TODAY</span></div>
+ <div style="flex:1;background:linear-gradient(#2b1c10,#3a2616);padding:12px 14px;position:relative">
+  <div class="lvl">Choose a level<small>40 hours left this week</small></div>
+  <div class="menu3"><div>Events</div><div>Office Management</div><div>Marketplace</div></div>
+  <div class="menu3" style="grid-template-columns:1fr 1fr 1fr"><div>Reputation and Results</div><div>Administration</div><div></div></div>
+  <div class="btn" style="margin-top:6px">Step out</div>
+  <span class="draft" style="left:6px;right:auto;top:6px;bottom:auto;background:var(--navy);color:#fff">PROPOSED</span>
+ </div></div></div></div>
+
+<!-- 2 MAP -->
+<div class="cell"><p class="cap"><b>2 · Step out → Capitol map.</b> Sapporo Super Station is live (it is "Coming soon" now) and is where every departure begins.</p>
+<div class="phone"><div class="pad">
+ <div class="row"><div class="back">‹ Office</div><div class="chips"><span class="chip">Capitol</span><span class="chip">40 hours left this week</span></div></div>
+ <h2>Step out<small>外出</small></h2>
+ <div class="mapsec">Capitol Building</div>
+ <div class="place"><div class="pic" style="width:46px;height:46px;background-image:url(../../../../assets/backgrounds/CAPITOL_CAFETERIA.png);-webkit-mask-image:none;mask-image:none;border:2px solid var(--ink)"></div><div>Cafeteria<small>Eat with colleagues</small></div></div>
+ <div class="place soon"><div class="pic" style="width:46px;height:46px;background-image:url(../../../../assets/backgrounds/CAPITOL_LIBRARY.png);-webkit-mask-image:none;mask-image:none;border:2px solid #8b8577"></div><div>National Assembly Library<small>Coming soon</small></div></div>
+ <div class="place"><div class="pic" style="width:46px;height:46px;background-image:url(../../../../assets/backgrounds/CAPITOL_GARDENS.png);-webkit-mask-image:none;mask-image:none;border:2px solid var(--ink)"></div><div>Capitol Gardens<small>People watching</small></div></div>
+ <div class="mapsec">Capital Area</div>
+ <div class="place"><div class="pic" style="width:46px;height:46px;background-image:url(../../../../assets/backgrounds/AREA_COACH_STUDIO.png);-webkit-mask-image:none;mask-image:none;border:2px solid var(--ink)"></div><div>Speech Coach<small>Rhetoric Training</small></div></div>
+ <div class="place soon"><div class="pic" style="width:46px;height:46px;background-image:url(../../../../assets/backgrounds/AREA_SAPPORO_STAGE.png);-webkit-mask-image:none;mask-image:none;border:2px solid #8b8577"></div><div>Sapporo Stage<small>Coming soon</small></div></div>
+ <div class="place" style="box-shadow:5px 6px 0 var(--red)"><div class="pic" style="width:46px;height:46px;background-image:url(../../../../assets/backgrounds/AREA_SUPER_STATION.png);-webkit-mask-image:none;mask-image:none;border:2px solid var(--ink)"></div><div>Sapporo Super Station<small>Trains and planes to the District <span class="tag">NEW</span></small></div></div>
+</div></div></div>
+
+<!-- 3 CONCOURSE -->
+<div class="cell"><p class="cap"><b>3 · The concourse (AREA_SUPER_STATION).</b> Pick where and how. This is the old Travel page and "Travel by" row, in one place.</p>
+<div class="phone"><div class="pad">
+ <div class="row"><div class="back">‹ Back to the map</div><div class="chips"><span class="chip">Capitol</span><span class="chip">40 hours left this week</span></div></div>
+ <h2>Sapporo Super Station<small>札幌スーパー駅</small></h2>
+ <div class="pic" style="height:166px;background-image:url(../../../../assets/backgrounds/AREA_SUPER_STATION.png)"></div>
+ <div class="blurb">Every train to the District leaves from here.</div>
+ <div class="card"><b style="font-family:AntakaD;font-size:20px">Departures</b>
+  <div class="small" style="margin:2px 0 4px">To Daikoku, your District office</div>
+  <div class="mode sel"><span>Rail pass</span><span class="hrs">6 h · free</span></div>
+  <div class="mode"><span>Paid train ticket</span><span class="hrs">6 h · 2 left</span></div>
+  <div class="mode"><span>Plane ticket</span><span class="hrs">2 h · 4 left</span></div>
+  <div class="mode no"><span>Private car</span><span class="hrs">not yours</span></div>
+  <div class="small">You will have 34 h left this week.</div>
+ </div>
+ <div class="btn go" style="margin-right:6px">To the tracks</div>
+ <div class="small" style="margin-top:8px">A plane ticket skips the tracks: it boards right here.</div>
+</div></div></div>
+
+<!-- 4 TRACKS -->
+<div class="cell"><p class="cap"><b>4 · The tracks (AREA_SUPER_STATION_TRACKS).</b> A second screen inside the station. The train strip lives here: pull it along the rail to board.</p>
+<div class="phone"><div class="pad">
+ <div class="row"><div class="back">‹ Concourse</div><div class="chips"><span class="chip">Rail pass · 6 h</span><span class="chip">34 h left after</span></div></div>
+ <h2>The tracks<small>線路</small></h2>
+ <div class="pic" style="height:230px;background-image:url(../../../../assets/backgrounds/AREA_SUPER_STATION_TRACKS.png)"></div>
+ <div class="blurb">The Daikoku service is boarding.</div>
+ <div class="card"><b style="font-family:AntakaD;font-size:20px">Platform 1 · To Daikoku</b>
+  <div class="small">Rail pass · 6 h · free on the member's rail pass.</div>
+  <div class="strip"><div class="rail"></div><div class="train"><i style="left:10px"></i><i style="left:32px"></i><i style="left:54px"></i></div><div class="hint">Pull to board</div><div class="goal"></div></div>
+  <div class="small">Or tap the strip to confirm.</div>
+ </div>
+ <div class="btn">Back to the concourse</div>
+</div></div></div>
+
+<!-- 5 FADE CARD -->
+<div class="cell"><p class="cap"><b>5 · The trip.</b> Unchanged: the fade card, the hours taken behind it, then the other office (and the train encounter, one time in eight, on arrival).</p>
+<div class="phone"><div class="pic" style="position:absolute;inset:0;height:100%;-webkit-mask-image:none;mask-image:none;background-image:url(../../../../assets/backgrounds/AREA_SUPER_STATION_TRACKS.png)"></div>
+ <div class="fade">Rail pass
+To Daikoku
+6 h</div></div></div>
+
+<!-- 6 DISTRICT OFFICE -->
+<div class="cell"><p class="cap"><b>6 · The District office.</b> Today the strip is the only way home. Proposed: Step out appears at the District too and lists the local station (one place).</p>
+<div class="phone"><div class="pad">
+ <div class="row"><div class="back">‹ Office</div><div class="chips"><span class="chip">Daikoku</span><span class="chip">34 hours left this week</span></div></div>
+ <h2>Step out<small>外出</small></h2>
+ <div class="mapsec">Around Daikoku</div>
+ <div class="place" style="box-shadow:5px 6px 0 var(--red)"><div class="pic" style="width:46px;height:46px;background-image:url(../../../../assets/backgrounds/AREA_DAIKOKU_STATION.png);-webkit-mask-image:none;mask-image:none;border:2px solid var(--ink)"></div><div>Wakkanai Station<small>Trains and planes to the Capitol <span class="tag">NEW</span></small></div></div>
+ <div class="diff"><b>Decided.</b> District offices get Step out. Room for more local places later on this same list; none planned.</div>
+</div></div></div>
+
+<!-- 7 DISTRICT STATION -->
+<div class="cell"><p class="cap"><b>7 · A District station (AREA_DAIKOKU_STATION).</b> One screen, no tracks view: the District stations have a single picture, so the strip sits right under it.</p>
+<div class="phone"><div class="pad">
+ <div class="row"><div class="back">‹ Back</div><div class="chips"><span class="chip">Daikoku</span><span class="chip">34 hours left this week</span></div></div>
+ <h2>Wakkanai Station<small>稚内駅</small></h2>
+ <div class="pic stationshot" style="background-image:url(../../../../assets/backgrounds/AREA_DAIKOKU_STATION.png)"></div>
+ <div class="blurb">The line south begins here.</div>
+ <div class="card"><b style="font-family:AntakaD;font-size:20px">Departures</b>
+  <div class="small" style="margin:2px 0 4px">To the Capitol</div>
+  <div class="mode sel"><span>Rail pass</span><span class="hrs">6 h · free</span></div>
+  <div class="mode"><span>Paid train ticket</span><span class="hrs">6 h · 2 left</span></div>
+  <div class="mode"><span>Plane ticket</span><span class="hrs">2 h · 4 left</span></div>
+  <div class="strip"><div class="rail"></div><div class="train"><i style="left:10px"></i><i style="left:32px"></i><i style="left:54px"></i></div><div class="hint">Pull to board</div><div class="goal"></div></div>
+  <div class="small">28 h left after this trip.</div>
+ </div>
+</div></div></div>
+
+<!-- 8 STATION BY PROTAGONIST -->
+<div class="cell"><p class="cap"><b>8 · Which station for whom.</b> The four District station pictures against each protagonist's own places.</p>
+<div class="phone"><div class="pad">
+ <h2 style="font-size:24px;margin-top:0">One station each</h2>
+ <table class="t"><tr><th>Protagonist (office)</th><th>Place name today</th><th>Picture (by office)</th></tr>
+ <tr><td>PC01 Kenshin Sako (Daikoku)</td><td>Wakkanai Station</td><td><div class="sm" style="background-image:url(../../../../assets/backgrounds/AREA_DAIKOKU_STATION.png)"></div>Daikoku</td></tr>
+ <tr><td>PC02 Haru Yashi (Akeno Shinmachi)</td><td>Tomakomai Station</td><td><div class="sm" style="background-image:url(../../../../assets/backgrounds/AREA_AKENO_SHINMACHI_STATION.png)"></div>Akeno Shinmachi</td></tr>
+ <tr><td>PC03 Arata Ran (Teine Ward)</td><td>Teine Station, Zenibako Station</td><td><div class="sm" style="background-image:url(../../../../assets/backgrounds/AREA_TEINE_WARD_STATION.png)"></div>Teine Ward</td></tr>
+ <tr><td>PC04 Jyurou Nishihara (Noheji)</td><td>Noheji Station, Shimokita Station, Shichinohe-Towada Station</td><td><div class="sm" style="background-image:url(../../../../assets/backgrounds/AREA_NOHEJI_STATION.png)"></div>Noheji</td></tr></table>
+ <div class="diff"><b>Decided.</b> Each station picture is named for the District office it serves (AREA_DAIKOKU_STATION and so on). The place name shown is the Places tab's own.</div>
+</div></div></div>
+
+</div></body></html>

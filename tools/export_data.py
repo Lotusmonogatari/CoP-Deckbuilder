@@ -4164,7 +4164,7 @@ def check_whip_and_vote_scenes(data, report, by_id, roots):
 
 
 VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel")
-VENUE_ZONES = ("Capitol Building", "Capital Area")
+VENUE_ZONES = ("Capitol Building", "Capital Area", "District")
 VENUE_HINT_KINDS = ("stage_suit", "opponent_suit")
 VENUE_POOLS = ("cafeteria", "gardens", "dry")
 VENUE_CONDITIONS = ("meta", "law", "staff_role", "party", "seen", "always")
@@ -4198,7 +4198,7 @@ def check_venues(data, report):
     for venue in venues.values():
         where = f"Venues {venue.get('venue_id')}"
         if venue.get("zone") not in VENUE_ZONES:
-            report.error(where, f"Zone is {venue.get('zone')!r}; it must be Capitol Building or Capital Area")
+            report.error(where, f"Zone is {venue.get('zone')!r}; it must be Capitol Building, Capital Area or District")
         if venue.get("order") is None:
             report.error(where, "Order is blank")
         if venue.get("unlock"):

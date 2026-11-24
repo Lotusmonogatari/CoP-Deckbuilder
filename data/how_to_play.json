@@ -390,7 +390,7 @@
     "group": "Between Levels",
     "heading_en": "Taking the train",
     "heading_jp": null,
-    "body_en": "The train strip under the level list takes you to the other office: drag the train along the track and let go, or tap the strip to confirm. A trip spends hours from the same week as a level, and its cost is on the strip before you go. It is refused at the weekend and in the middle of a level, and how long it takes depends on your district.",
+    "body_en": "Trips leave from the stations: press Step out, then go to Sapporo Super Station at the Capitol, or to the station at your District office. Choose how to go, then drag the train along the track and let go, or tap it to confirm. A trip spends hours from the same week as a level, its cost is shown before you go, and it is refused at the weekend and in the middle of a level.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -401,7 +401,7 @@
     "group": "Between Levels",
     "heading_en": "Tickets and trips inside levels",
     "heading_jp": null,
-    "body_en": "Some levels have their trips built in: the briefing adds the travel to the level's hours and, if you own more than one way of going, lets you pick. The rail pass is free; a paid train ticket, a private car or a plane ticket from the Marketplace costs Funds, and the car and plane can save hours. On the rail pass or a paid ticket, now and then a fellow passenger starts a conversation that needs an answer; a car or plane never does.",
+    "body_en": "Some levels have their trips built in: the briefing adds the travel to the level's hours and, if you own more than one way of going, lets you pick. The rail pass is free; a paid train ticket, a private car or a plane ticket from the Marketplace costs Funds, and a car or plane leaves from the station concourse with no tracks and can save hours. On the rail pass or a paid ticket, now and then a fellow passenger starts a conversation that needs an answer; a car or plane never does.",
     "screenshot": null,
     "caption": null,
     "video": null

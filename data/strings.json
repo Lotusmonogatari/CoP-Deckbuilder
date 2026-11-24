@@ -10368,8 +10368,8 @@
   },
   {
     "key": "venue.refuse_elsewhere",
-    "where": "Venues: why a venue cannot be visited away from the Capitol office",
-    "english": "Venues are reached from the Capitol office.",
+    "where": "Venues: a place that belongs to the other office (the map lists only this office's places)",
+    "english": "You cannot get there from this office.",
     "placeholders": null,
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
   },
@@ -10666,5 +10666,54 @@
     "english": "Not enough weekend hours",
     "placeholders": null,
     "notes": "P16b (2026-11-23): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.zone_district",
+    "where": "Venue map: the heading over the District office's own places",
+    "english": "Around {office}",
+    "placeholders": "office",
+    "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "station.to_tracks",
+    "where": "Station concourse: the button that goes to the tracks",
+    "english": "To the tracks",
+    "placeholders": null,
+    "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "station.tracks_title",
+    "where": "The tracks screen: the title",
+    "english": "The tracks",
+    "placeholders": null,
+    "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "station.tracks_title_jp",
+    "where": "The tracks screen: the Japanese accent beside the title",
+    "english": "線路",
+    "placeholders": null,
+    "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "station.tracks_blurb",
+    "where": "The tracks screen: the line under the picture",
+    "english": "Your train is waiting.",
+    "placeholders": null,
+    "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "station.back_concourse",
+    "where": "The tracks screen: the way back to the concourse",
+    "english": "Back to the concourse",
+    "placeholders": null,
+    "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "station.concourse_hint",
+    "where": "Station concourse: how a plane or a car leaves",
+    "english": "A plane or a car leaves from right here.",
+    "placeholders": null,
+    "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
   }
 ]
