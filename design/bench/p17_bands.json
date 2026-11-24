@@ -1,0 +1,128 @@
+{
+ "Special Committee": [
+  0.92,
+  "Easy",
+  0.8,
+  4
+ ],
+ "Floor Debate": [
+  0.73,
+  "Standard",
+  1.0,
+  1
+ ],
+ "Party Caucus": [
+  0.355,
+  "Hard",
+  1.25,
+  51
+ ],
+ "Press Conference": [
+  0.952,
+  "Easy",
+  0.8,
+  26
+ ],
+ "Town Hall": [
+  0.818,
+  "Standard",
+  1.0,
+  17
+ ],
+ "TV Debate": [
+  0.999,
+  "Easy",
+  0.8,
+  10
+ ],
+ "Party Steering Committee": [
+  0.25,
+  "Very hard",
+  1.5,
+  1
+ ],
+ "Committee": [
+  0.735,
+  "Standard",
+  1.0,
+  63
+ ],
+ "Committee of the Cabinet": [
+  0.95,
+  "Easy",
+  0.8,
+  1
+ ],
+ "Media Ambush": [
+  0.935,
+  "Easy",
+  0.8,
+  6
+ ],
+ "Lobbyist Meeting": [
+  0.932,
+  "Easy",
+  0.8,
+  13
+ ],
+ "Policy Study Session": [
+  0.961,
+  "Easy",
+  0.8,
+  7
+ ],
+ "Policy Study": [
+  0.98,
+  "Easy",
+  0.8,
+  7
+ ],
+ "Hearing": [
+  0.915,
+  "Easy",
+  0.8,
+  17
+ ],
+ "Town Hall at the Harbor": [
+  0.87,
+  "Easy",
+  0.8,
+  1
+ ],
+ "Convince Your Colleague": [
+  0.0,
+  "Very hard",
+  1.5,
+  1
+ ],
+ "Radio Debate": [
+  0.99,
+  "Easy",
+  0.8,
+  1
+ ],
+ "Radio Call-In Hour": [
+  0.96,
+  "Easy",
+  0.8,
+  1
+ ],
+ "Campus Q&A": [
+  0.86,
+  "Easy",
+  0.8,
+  1
+ ],
+ "Candidate Selection Committee": [
+  0.21,
+  "Very hard",
+  1.5,
+  1
+ ],
+ "Whipped into Line": [
+  1.0,
+  "Easy",
+  0.8,
+  1
+ ]
+}

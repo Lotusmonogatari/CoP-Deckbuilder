@@ -2,9 +2,11 @@ class_name PartyDues
 extends RefCounted
 ## Party dues (2026-10-23, Cameron). At each week end the player owes the party:
 ##
-##   base 50,000円, plus 50,000円 for every full 15 points of Party support above 40,
-##   plus a share (Balance: Dues Reward Percent, 15% at Standard) of the Funds earned Monday to Friday that week,
-##   minus whatever the awareness effects take off the base (National Awareness).
+##   base 50,000円, plus a step (Balance: Dues Step Amount) for every full 15 points of Party support above 40,
+##   plus a share (Balance: Dues Reward Percent, 15% at Standard) of the Funds EARNED Monday to Friday that week (counted before the
+##   Funds limit clamps a win, P17),
+##   capped at Balance: Dues Max Per Week (0 or missing: no limit),
+##   minus whatever the awareness effects take off (National Awareness), which still lowers what is owed under the limit.
 ##
 ## Whatever cannot be paid rolls over. An unpaid balance costs Party support,
 ## withdraws the party's backings, and applies penalties that grow by a factor
@@ -19,6 +21,7 @@ static func settings(balance: Dictionary) -> Dictionary:
 		"support_start": int(balance.get("dues_party_support_start", 40)),
 		"support_step": maxi(1, int(balance.get("dues_party_support_step", 15))),
 		"step_amount": int(balance.get("dues_step_amount", 50000)),
+		"max_per_week": int(balance.get("dues_max_per_week", 0)),
 		"overdue_party_support": int(balance.get("dues_overdue_party_support", 10)),
 		"overdue_hq": int(balance.get("dues_overdue_party_hq", 20)),
 		"overdue_other_parties": int(balance.get("dues_overdue_other_parties", 5)),
@@ -36,11 +39,27 @@ static func base_dues(cfg: Dictionary, party_support: int, reduction: int = 0) -
 	return maxi(0, int(cfg["base"]) + steps * int(cfg["step_amount"]) - maxi(0, reduction))
 
 
-## This week's dues: the base plus the share of the Funds earned Monday to Friday.
+## The dues before the weekly limit and any reduction: the base, the steps and the share of the Funds earned Monday to Friday.
+static func gross_dues(cfg: Dictionary, party_support: int, funds_earned: int) -> int:
+	var share := roundi(maxi(0, funds_earned) * float(cfg["reward_percent"]) / 100.0)
+	return base_dues(cfg, party_support, 0) + share
+
+
+## Whether the weekly limit (Balance: Dues Max Per Week) is holding this week's dues down.
+static func is_capped(cfg: Dictionary, party_support: int, funds_earned: int) -> bool:
+	var limit := int(cfg.get("max_per_week", 0))
+	return limit > 0 and gross_dues(cfg, party_support, funds_earned) > limit
+
+
+## This week's dues: the base, the steps and the share of the Funds earned Monday to Friday, never more than the weekly limit, less the
+## reduction (the National-awareness relief takes off what is left, so it still lowers what is owed under the limit). 0 or above.
 static func week_dues(cfg: Dictionary, party_support: int, funds_earned: int,
 		reduction: int = 0) -> int:
-	var share := roundi(maxi(0, funds_earned) * float(cfg["reward_percent"]) / 100.0)
-	return base_dues(cfg, party_support, reduction) + share
+	var total := gross_dues(cfg, party_support, funds_earned)
+	var limit := int(cfg.get("max_per_week", 0))
+	if limit > 0:
+		total = mini(total, limit)
+	return maxi(0, total - maxi(0, reduction))
 
 
 ## How much of `total` the player's Funds can cover, and what is left over.

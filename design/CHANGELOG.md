@@ -2107,3 +2107,16 @@ Follow-up on the same branch: a long screen title ("National Assembly Library" a
 The Speech Coach's screen now lists three cards: **Rhetoric Training** (opens the page, as before), **Practice your talking points** (1 h, 10,000円, +1 to the gaffe limit for the next stage, once a day) and **Work on your speech timing** (1 h, 20,000円, +1 turn for the next stage). The effects are the same one-stage bonuses the Tea and Wristwatch items give (`GAFFE_CAP`, `TURNS`), so they are handed to the next stage's setup.
 
 Cameron gave a daily limit for the first only. The second is **once a day too**, so the bonus cannot be stacked without end; say if you want that changed. Workbook script: `tools/workbook/archive/speech_coach_activities_build.py` (VA16, VA17, three Text rows). Wording of the two result lines is a draft.
+
+## P17: economy rebalance, the hourly standard (2026-11-24, Cameron; branch `feature/p17-economy`)
+
+Cameron's economy review, built as briefed (`P17_ECONOMY_PROMPT.md`). One hour of play at standard difficulty now pays **8,000円 and 20 XP**; a room pays hours x that x a difficulty factor from its room type's starter-kit win rate in a fresh balance audit; a level adds a completion bonus by tier. The full report, with the bands, totals and every difference from the brief, is `design/bench/p17_economy_report.md`.
+
+| Step | What changed |
+|---|---|
+| 1. Bands | Fresh starter-kit sweep (`tools/balance_audit.sh`), room types banded Easy 0.8, Standard 1.0, Hard 1.25, Very hard 1.5; bands saved in `design/bench/p17_bands.json`. |
+| 2. Room pay | `tools/economy_apply.py` (rates as named constants, rerunnable, `--dry-run`): Win Funds and Win XP on 284 of 290 stages. A room that paid no Funds still pays none. |
+| 3. Level bonus | Tier 0 none; tier 1 10% and tier 2 25% of the rooms' total (a level with no Funds bonus keeps none): 122 levels. |
+| 4. Dues and wages | Balance: dues reward 15%, dues step 5,000円, staff wage 10%, new `Dues: Max Per Week` 90,000円. `PartyDues.week_dues` caps the dues, then the National-awareness relief comes off. Funds earned this week are counted before the Funds limit clamps them (`MetaRules` `requested`). The week-cost screen says when the limit holds the dues down. |
+| 5. Prices | Commission Policy Research 12,000円, Press and District Engagement 24,000円; events EV03, EV05, EV06, EV31, EV35 cheaper; EV04's gains x4; the Paid Train Ticket gives +1 with the Commuter Committee only. |
+| 6. Tests | `test_economy_p17.gd` (no Funds where there were none, the limit, Funds earned above the Funds limit, 10% wages); the briefing record's pay figures refreshed; tests that pinned the old wages, ticket standing, non-combat XP rate and bonus counts updated. |

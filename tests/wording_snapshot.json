@@ -940,6 +940,7 @@
   "office.week_cost_backings": "The party also withdraws these backings: {names}.",
   "office.week_cost_dues_parts": "That is {base}円 for your Party support plus {share}円, a share of the {earned}円 you earned this week.",
   "office.week_cost_heading": "If you pay dues and go home",
+  "office.week_cost_limit": "The party never asks for more than {yen}円 in dues in a week.",
   "office.week_cost_penalty": "Unpaid dues cost {support} Party support, {hq_n} standing with {hq} and {selection_n} with {selection}.",
   "office.week_cost_relief": "National awareness has already taken {yen}円 off.",
   "office.week_cost_settle": "Over the week, standing with organizations you did not move settles back toward where it started.",

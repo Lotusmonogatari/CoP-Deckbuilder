@@ -356,3 +356,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The District's Old Shrine and Local Shotengai on the Step out map, a picture on every place card (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
 - Venue activities: the shrine, the shotengai and the Library get costed activities, limits and the shrine's gifts (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
 - Speech Coach: two practice activities beside Rhetoric Training (2026-11-24, Cameron; branch `feature/speech-coach-activities`)
+- P17: economy rebalance, the 8,000円-and-20-XP hour, room pay, level bonuses, dues limit, wages and prices (2026-11-24, Cameron; branch `feature/p17-economy`)

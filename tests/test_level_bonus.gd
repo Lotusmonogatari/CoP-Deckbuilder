@@ -120,7 +120,8 @@ func test_the_real_data_has_the_counts_the_outline_gave() -> void:
 		if not (bonus["orgs"] as Array).is_empty():
 			with_orgs += 1
 	# 74 and 69 of the first 114 levels, plus the eight protagonist levels of slice 6 (2026-11-20), which all pay both.
-	assert_eq(with_meta, 82, "levels that pay a meter or XP bonus")
+	# P17 (2026-11-24): every tier 1 and tier 2 level now has an XP completion bonus (10% or 25% of its rooms' XP) and tier 0 has none.
+	assert_eq(with_meta, 95, "levels that pay a meter or XP bonus")
 	assert_eq(with_orgs, 77, "levels that pay organization standing")
 
 

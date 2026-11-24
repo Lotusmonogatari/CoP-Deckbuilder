@@ -42,7 +42,8 @@ func test_pay_per_hour_stays_near_tier_zero() -> void:
 	for level: Dictionary in _levels():
 		var hours := _sum(level, "time_units")
 		var rate := float(_sum(level, "win_delta_xp")) / maxf(hours, 1.0)
-		assert_between(rate, 20.0, 25.0, "%s XP per hour" % level["level_id"])
+		# The economy pass (P17, 2026-11-24): non-combat rooms pay 0.8 of the 20 XP an hour standard, so 16.
+		assert_between(rate, 15.0, 17.0, "%s XP per hour" % level["level_id"])
 		assert_between(hours, 5, 12, "%s hours" % level["level_id"])
 
 

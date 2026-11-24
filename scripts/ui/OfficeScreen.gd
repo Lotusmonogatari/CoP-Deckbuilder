@@ -811,6 +811,8 @@ func _week_cost_rows() -> Array[Control]:
 	if int(dues["week_dues"]) > 0:
 		out.append(UiKit.line(Text.say("office.week_cost_dues_parts", {"base": Phrase.with_separators(int(dues["base"])),
 			"share": Phrase.with_separators(int(dues["share"])), "earned": Phrase.with_separators(int(dues["earned"]))}), "SmallLabel"))
+	if int(dues["limit"]) > 0:
+		out.append(UiKit.line(Text.say("office.week_cost_limit", {"yen": Phrase.with_separators(int(dues["limit"]))}), "SmallLabel"))
 	if int(dues["relief"]) > 0:
 		out.append(UiKit.line(Text.say("office.week_cost_relief", {"yen": Phrase.with_separators(int(dues["relief"]))}), "SmallLabel"))
 	if int(preview["short"]) > 0:

@@ -4,7 +4,7 @@
     "name": "Commission Policy Research",
     "description": "Spend Funds to raise your standing with one randomly chosen Party Bodies organization. Once per Office visit; available again after your next level, won or lost.",
     "cost_xp": 0,
-    "cost_yen": 200000,
+    "cost_yen": 12000,
     "bonus_condition_1": "Policy Research Assistant is Rank 1: +1 to the selected Party Bodies booster group.",
     "bonus_condition_2": "Policy Research Assistant is Rank 2: +2 to the selected Party Bodies booster group.",
     "grants": [
@@ -57,7 +57,7 @@
     "name": "Commission Press Engagement",
     "description": "Spend Funds to raise your standing with one randomly chosen National organization. Once per Office visit; available again after your next level, won or lost.",
     "cost_xp": 0,
-    "cost_yen": 200000,
+    "cost_yen": 24000,
     "bonus_condition_1": "Media Spokesperson is Rank 1: +2 to the selected National booster group.",
     "bonus_condition_2": "Media Spokesperson is Rank 2: +4 to the selected National booster group.",
     "grants": [
@@ -110,7 +110,7 @@
     "name": "Commission District Engagement",
     "description": "Spend Funds to raise your standing with one randomly chosen Constituency organization. Once per Office visit; available again after your next level, won or lost.",
     "cost_xp": 0,
-    "cost_yen": 200000,
+    "cost_yen": 24000,
     "bonus_condition_1": "District Representative is Rank 1: +2 to the selected Constituency booster group.",
     "bonus_condition_2": "District Representative is Rank 2: +4 to the selected Constituency booster group.",
     "grants": [
@@ -2060,23 +2060,15 @@
   {
     "item_id": "SH42",
     "name": "Paid Train Ticket",
-    "description": "A paid seat on the express, used for a trip or a mixed level's travel instead of the rail pass. The hours are the same. The Taxpayers' Alliance, the Chamber of Commerce and the Commuter Committee each notice when a member pays their own fare: +2 standing with each on every use.",
+    "description": "A paid seat on the express, used for a trip or a mixed level's travel instead of the rail pass. The hours are the same. The Commuter Committee notices when a member pays their own fare: +1 standing with it on every use.",
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
     "grants": [
       {
-        "target": "BO23",
-        "delta": 2
-      },
-      {
-        "target": "BO05",
-        "delta": 2
-      },
-      {
         "target": "BO14",
-        "delta": 2
+        "delta": 1
       }
     ],
     "icon": "PAID_TRAIN_TICKET",
