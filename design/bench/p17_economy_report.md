@@ -78,7 +78,7 @@ No other Text row named the old 10%, the old step or the three organizations (`-
 
 - **Loss pay.** The brief says loss pay is "0円 and 1 XP". The data has 0円 for most rooms with XP from 0 to 10, and 16 rooms that give back 1,000円 on a loss. Loss columns are untouched, as briefed.
 - **Funds bonus where a level had none.** Step 3 says a level whose rooms pay no Funds keeps a blank Funds bonus; the "fixed by decision" rule is stronger (no Funds where none are paid). 13 non-combat levels (7 tier 1, 6 tier 2) have rooms that pay Funds but never had a Funds bonus, so they keep a blank Funds bonus. A first run gave them one; a test caught it and it was undone. This is the main reason the totals are below the brief's estimate.
-- **Relaxed and harder dues.** Relaxed (5%) and harder (20%) no longer sit symmetrically around the new 15% (10 below, 5 above). Not changed; Cameron's call.
+- **Relaxed and harder dues.** Relaxed (5%) and harder (20%) no longer sat symmetrically around the new 15%. Cameron chose to move them: **Relaxed is now 10%, Harder stays 20%** (five either side of Standard).
 - **Staff wage rubric.** Wages went from 15% to 10% (the 2026-11-16 change "so staff cost more than the Funds their tasks bring", rubric R4.4). `design/STAFF_ASSIGNMENTS_RUBRIC.md` may need R4.4 reviewed.
 - **Shrine gifts count as earned.** The 150th-respect gift (100,000円) and the other Funds gifts go through the same path, so they add to that week's dues share; only weekday positive amounts count.
 - **Generated bill levels** (Bill Level Templates tab) are not in the Levels tab and were not touched.
