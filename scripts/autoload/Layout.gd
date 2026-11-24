@@ -38,6 +38,10 @@ var _original_default := 0
 ## same style boxes, so buttons already on screen follow it.
 const OUTLINE_WIDTH := 2
 const CANCEL_VARIATION := "CancelButton"
+## The battle's Inventory and Details buttons (meta "compact") are cancel buttons with slim top and bottom padding: Antaka Brush Text's
+## capitals are taller, and on the shortest phone shape the character's picture must keep its height (Cameron, 2026-11-24).
+const COMPACT_CANCEL_VARIATION := "CompactCancelButton"
+const COMPACT_PADDING := 4.0
 const BUTTON_STATES := ["normal", "hover", "pressed", "disabled", "hover_pressed"]
 ## Node names of buttons that get the white outline: the ones that go back or
 ## close rather than forward, plus the battle screen's own End Turn,
@@ -282,6 +286,8 @@ func _build_button_outlines() -> void:
 	var base := ThemeDB.get_default_theme()
 	theme.add_type(CANCEL_VARIATION)
 	theme.set_type_variation(CANCEL_VARIATION, "Button")
+	theme.add_type(COMPACT_CANCEL_VARIATION)
+	theme.set_type_variation(COMPACT_CANCEL_VARIATION, CANCEL_VARIATION)
 	_party_styles.clear()
 	var style := UiStyle.current()
 	for state: String in BUTTON_STATES:
@@ -295,6 +301,10 @@ func _build_button_outlines() -> void:
 		theme.set_stylebox(state, "Button", party_box)
 		_party_styles.append(party_box)
 		theme.set_stylebox(state, CANCEL_VARIATION, _outlined(source as StyleBoxFlat, Color.WHITE))
+		var compact := _outlined(source as StyleBoxFlat, Color.WHITE)
+		compact.content_margin_top = COMPACT_PADDING
+		compact.content_margin_bottom = COMPACT_PADDING
+		theme.set_stylebox(state, COMPACT_CANCEL_VARIATION, compact)
 
 
 func _outlined(source: StyleBoxFlat, colour: Color) -> StyleBoxFlat:
@@ -336,4 +346,4 @@ static func is_cancel_button(button: Button) -> bool:
 
 func _mark_cancel(button: Button) -> void:
 	if is_cancel_button(button):
-		button.theme_type_variation = CANCEL_VARIATION
+		button.theme_type_variation = COMPACT_CANCEL_VARIATION if bool(button.get_meta("compact", false)) else CANCEL_VARIATION

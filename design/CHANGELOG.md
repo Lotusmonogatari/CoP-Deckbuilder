@@ -2108,6 +2108,12 @@ The Speech Coach's screen now lists three cards: **Rhetoric Training** (opens th
 
 Cameron gave a daily limit for the first only. The second is **once a day too**, so the bonus cannot be stacked without end; say if you want that changed. Workbook script: `tools/workbook/archive/speech_coach_activities_build.py` (VA16, VA17, three Text rows). Wording of the two result lines is a draft.
 
+## Body text is Antaka Brush Text in Woodblock and Living Office (2026-11-24, Cameron; branch `feature/antaka-body-font`)
+
+Woodblock's body face was Shippori Mincho B1 and Living Office's Zen Kaku Gothic New; both now use Antaka Brush Text, as the project did before the UI styles (P9). Headings stay Antaka Brush Display. Broadcast is unchanged (Barlow Condensed titles, Noto Sans JP body). Antaka Brush Text draws lowercase as small capitals, so body lines are wider; the text sweep checks every screen at every text size. `scripts/ui/UiStyleTheme.gd` names the fonts; `theme/cop_theme_woodblock.tres` and `cop_theme_living.tres` were rebuilt with `tools/build_theme.gd`. The `CLAUDE.md` fonts line is updated to match.
+
+Follow-up on the same branch: with the body text in Antaka Brush Text, the Inventory and Details buttons on the battle screen came out about 10 px taller, which pushed End turn 10 px off the bottom of the 9:16 screen at the large text size (the text sweep and the aspect matrix click test both caught it). First fix tried: the opponent picture's minimum height 300 px instead of 320. **Reversed on Cameron's say-so (the character image has priority):** the picture is 320 px again, and the room is won from the two buttons instead. The battle's Inventory and Details buttons (metadata `compact`) are cancel buttons with 4 px of top and bottom padding instead of 8 (`Layout.COMPACT_CANCEL_VARIATION`), about 12 px shorter.
+
 ## P17: economy rebalance, the hourly standard (2026-11-24, Cameron; branch `feature/p17-economy`)
 
 Cameron's economy review, built as briefed (`P17_ECONOMY_PROMPT.md`). One hour of play at standard difficulty now pays **8,000円 and 20 XP**; a room pays hours x that x a difficulty factor from its room type's starter-kit win rate in a fresh balance audit; a level adds a completion bonus by tier. The full report, with the bands, totals and every difference from the brief, is `design/bench/p17_economy_report.md`.
