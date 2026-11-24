@@ -34,7 +34,7 @@ const DATA_PATH := "res://data/"
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
 	"bill_components", "bill_level_templates", "patron_bills", "party_values",
-	"visit_questions", "visit_answers", "trade_questions", "lobbyist_lines", "places", "venues", "venue_activities", "venue_lines",
+	"visit_questions", "visit_answers", "trade_questions", "lobbyist_lines", "places", "venues", "venue_activities", "venue_milestones", "venue_lines",
 	"floor_votes", "how_to_play", "law_effects", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders", "standing_links",
@@ -268,6 +268,7 @@ var places: Array = []
 ## Capitol venues (P16, 2026-11-23): the places on the map, what you do there, and the daily gossip lines.
 var venues: Array = []
 var venue_activities: Array = []
+var venue_milestones: Array = []
 var venue_lines: Array = []
 ## The text of rows that ask for place tokens, as loaded, so choosing another protagonist refills them.
 var _place_templates: Dictionary = {}
@@ -450,6 +451,7 @@ func load_all() -> void:
 			"places": places = content if content is Array else []
 			"venues": venues = content if content is Array else []
 			"venue_activities": venue_activities = content if content is Array else []
+			"venue_milestones": venue_milestones = content if content is Array else []
 			"venue_lines": venue_lines = content if content is Array else []
 			"questions": questions = content
 			"sounds":

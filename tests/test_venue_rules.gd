@@ -95,3 +95,9 @@ func test_a_station_has_a_tracks_picture_only_when_one_exists() -> void:
 
 func test_the_travel_kind_is_built() -> void:
 	assert_true(VenueRules.is_built({"kind": "travel"}))
+
+
+func test_a_district_places_picture_follows_the_protagonist() -> void:
+	assert_eq(VenueRules.fill_protagonist("AREA_SHRINE_{PC_ID}", "PC03"), "AREA_SHRINE_PC03")
+	assert_eq(VenueRules.fill_protagonist("AREA_SHRINE_{PC_ID}", ""), "AREA_SHRINE_{PC_ID}", "no protagonist yet: left as written")
+	assert_eq(VenueRules.fill_protagonist("Cafeteria", "PC01"), "Cafeteria")

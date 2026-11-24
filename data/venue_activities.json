@@ -14,7 +14,13 @@
     "condition_type": null,
     "condition_target": null,
     "condition_op": null,
-    "condition_value": null
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": null
   },
   {
     "activity_id": "VA02",
@@ -31,7 +37,13 @@
     "condition_type": null,
     "condition_target": null,
     "condition_op": null,
-    "condition_value": null
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": null
   },
   {
     "activity_id": "VA03",
@@ -48,7 +60,13 @@
     "condition_type": null,
     "condition_target": null,
     "condition_op": null,
-    "condition_value": null
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": null
   },
   {
     "activity_id": "VA04",
@@ -65,7 +83,13 @@
     "condition_type": null,
     "condition_target": null,
     "condition_op": null,
-    "condition_value": null
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": null
   },
   {
     "activity_id": "VA05",
@@ -82,7 +106,13 @@
     "condition_type": null,
     "condition_target": null,
     "condition_op": null,
-    "condition_value": null
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": null
   },
   {
     "activity_id": "VA06",
@@ -99,7 +129,13 @@
     "condition_type": null,
     "condition_target": null,
     "condition_op": null,
-    "condition_value": null
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": null
   },
   {
     "activity_id": "VA07",
@@ -116,6 +152,241 @@
     "condition_type": null,
     "condition_target": null,
     "condition_op": null,
-    "condition_value": null
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": null
+  },
+  {
+    "activity_id": "VA08",
+    "venue_id": "VN08",
+    "kind": "act",
+    "name": "Clean the surroundings",
+    "icon": "ACT_SHRINE",
+    "pool": null,
+    "hours": 2,
+    "funds": null,
+    "xp": null,
+    "per_day": 2,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": [
+      {
+        "target": "BO20",
+        "delta": 2
+      },
+      {
+        "target": "BO19",
+        "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": "You sweep the path no one else sweeps, rinse the stone basin and clear the leaves that no one else comes to clear."
+  },
+  {
+    "activity_id": "VA09",
+    "venue_id": "VN09",
+    "kind": "act",
+    "name": "Distribute district office flyers",
+    "icon": "ACT_SHOTENGAI",
+    "pool": null,
+    "hours": 2,
+    "funds": null,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": 1,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": "You hand out flyers outside the shops. Some people stop to read them, and some stop to talk."
+  },
+  {
+    "activity_id": "VA10",
+    "venue_id": "VN08",
+    "kind": "act",
+    "name": "Place 1,000円 in the saisenbako",
+    "icon": "ACT_SHRINE",
+    "pool": null,
+    "hours": null,
+    "funds": 1000,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": [
+      {
+        "target": "BO20",
+        "delta": 2
+      },
+      {
+        "target": "BO19",
+        "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": "You find the saisenbako half hidden by weeds, drop 1,000円 in, bow twice, clap twice and bow once."
+  },
+  {
+    "activity_id": "VA11",
+    "venue_id": "VN08",
+    "kind": "act",
+    "name": "Pay your respects",
+    "icon": "ACT_SHRINE",
+    "pool": null,
+    "hours": 1,
+    "funds": null,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": "You walk the long path out to the old hall and bow your head. No one else is here, and the whole forest is quiet."
+  },
+  {
+    "activity_id": "VA12",
+    "venue_id": "VN09",
+    "kind": "act",
+    "name": "Speak through a megaphone",
+    "icon": "ACT_SHOTENGAI",
+    "pool": null,
+    "hours": 3,
+    "funds": null,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": [
+      {
+        "target": "BO18",
+        "delta": -1
+      },
+      {
+        "target": "BO03",
+        "delta": -1
+      }
+    ],
+    "district_delta": 3,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": "You speak through a megaphone from the corner of the street. Some listen. Some wave you away, and a few shops close their doors."
+  },
+  {
+    "activity_id": "VA13",
+    "venue_id": "VN09",
+    "kind": "act",
+    "name": "Treat local kōenkai members to a meal",
+    "icon": "ACT_SHOTENGAI",
+    "pool": null,
+    "hours": 1,
+    "funds": 15000,
+    "xp": null,
+    "per_day": 2,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": [
+      {
+        "target": "BO03",
+        "delta": 3
+      }
+    ],
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": "You treat your kōenkai members to a meal. The talk goes on long after the dishes are cleared."
+  },
+  {
+    "activity_id": "VA14",
+    "venue_id": "VN02",
+    "kind": "act",
+    "name": "Nap",
+    "icon": "ACT_NAP",
+    "pool": null,
+    "hours": 2,
+    "funds": null,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": [
+      {
+        "target": "ENERGY",
+        "delta": null
+      }
+    ],
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": "You find a quiet corner of the Library and sleep. You wake rested."
+  },
+  {
+    "activity_id": "VA15",
+    "venue_id": "VN02",
+    "kind": "act",
+    "name": "Read about management practices",
+    "icon": "ACT_READ",
+    "pool": null,
+    "hours": 2,
+    "funds": null,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": null,
+    "district_delta": null,
+    "staff_hours": 1,
+    "bonus_after_uses": 50,
+    "bonus_staff_hours": 1,
+    "result_text": "You read about how to run an office well. Your staff will get more done today."
   }
 ]

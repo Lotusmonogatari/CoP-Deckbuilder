@@ -450,6 +450,11 @@ var whip_locks: Dictionary = {}
 var run_seed := 0
 var venue_days: Dictionary = {}
 var venue_heard_once: Dictionary = {}
+## Costed venue activities (2026-11-24): {activity_id: {"day", "count"}} uses today, {activity_id: uses ever}, and the staff hours the
+## Library gave today ({"day", "hours"}; the staff day reads them only while "day" is today).
+var venue_activity_log: Dictionary = {}
+var venue_activity_totals: Dictionary = {}
+var staff_activity_hours: Dictionary = {}
 var held_tips: Array = []
 ## The after-hours trip the staff made for a Mandatory scene when it opened (not saved): {"xp": cost, "place": office}, or {}.
 var last_evening_trip: Dictionary = {}
@@ -660,7 +665,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
 	"bill_stance",
@@ -909,6 +914,9 @@ func reset_crisis_triggers() -> void:
 	run_seed = randi()
 	venue_days = {}
 	venue_heard_once = {}
+	venue_activity_log = {}
+	venue_activity_totals = {}
+	staff_activity_hours = {}
 	held_tips = []
 	promises = []
 	promises_broken_unseen = []
@@ -1653,7 +1661,15 @@ func staff_day_hours(staff_id: String) -> int:
 ## (the Kaiju-sized coffee and tea), 0 when the box holds something else.
 func staff_office_hours() -> int:
 	var info := staff_item_info(staff_office_item)
-	return maxi(0, int(info.get("value", 0))) if str(info["effect"]) == "HOURS_ALL" else 0
+	var from_item := maxi(0, int(info.get("value", 0))) if str(info["effect"]) == "HOURS_ALL" else 0
+	return from_item + staff_activity_hours_today()
+
+
+## The hours the Library's Read about management practices gave every staff member today (0 on another day).
+func staff_activity_hours_today() -> int:
+	if int(staff_activity_hours.get("day", -1)) != venue_today():
+		return 0
+	return maxi(0, int(staff_activity_hours.get("hours", 0)))
 
 
 ## The extra hours a person's rank gives them on a weekday (Cameron,
@@ -2646,14 +2662,14 @@ func venues_here() -> Array:
 	return found
 
 
-## A copy of the venue row with {office} and {OFFICE_ID} filled from the protagonist's District office (travel at the stations,
-## 2026-11-24); a venue with neither token comes back unchanged.
+## A copy of the venue row with {office} and {OFFICE_ID} filled from the protagonist's District office and {PC_ID} from the
+## protagonist (travel at the stations and the District places, 2026-11-24); a venue with none of the tokens comes back unchanged.
 func _venue_for_office(venue: Dictionary) -> Dictionary:
 	var town := district_office_name()
 	var filled := venue.duplicate()
 	for key: String in ["name", "background", "blurb"]:
 		if venue.get(key) != null:
-			filled[key] = VenueRules.fill_office(str(venue[key]), town)
+			filled[key] = VenueRules.fill_protagonist(VenueRules.fill_office(str(venue[key]), town), protagonist_id)
 	return filled
 
 
@@ -2788,6 +2804,132 @@ func venue_visit(venue_id: String) -> Dictionary:
 		_move_xp(-int(cost["xp"]))
 	venue_day(venue_id)
 	return {"ok": true, "reason": ""}
+
+
+# --- Costed venue activities (2026-11-24) -----------------------------------------------------------------------------------------
+
+## A venue activity row by ID, or {}.
+func venue_activity(activity_id: String) -> Dictionary:
+	for activity: Dictionary in DataDB.venue_activities:
+		if str(activity.get("activity_id", "")) == activity_id:
+			return activity
+	return {}
+
+
+## Every activity of a venue, in the workbook's order.
+func venue_activities_of(venue_id: String) -> Array:
+	return VenueActivities.activities_of(DataDB.venue_activities, venue_id)
+
+
+func activity_times_done(activity_id: String) -> int:
+	return int(venue_activity_totals.get(activity_id, 0))
+
+
+## Times still allowed today; -1 when there is no daily limit.
+func activity_left_today(activity_id: String) -> int:
+	return VenueActivities.left_today(venue_activity(activity_id), venue_activity_log, venue_today())
+
+
+## Why an activity cannot be done now, as a sentence; "" when it can.
+func activity_refusal(activity_id: String) -> String:
+	var activity := venue_activity(activity_id)
+	if activity.is_empty() or not VenueRules.is_built(activity):
+		return Text.say("venue.coming_soon")
+	var venue_id := str(activity.get("venue_id", ""))
+	if not venues_here().any(func(venue: Dictionary) -> bool: return str(venue.get("venue_id", "")) == venue_id):
+		return Text.say("venue.refuse_elsewhere")
+	match step_out_state():
+		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
+		VenueRules.WEEK_FULL: return Text.say("venue.no_hours_weekend" if in_weekend() else "venue.refuse_week_full")
+	if activity_left_today(activity_id) == 0:
+		return Text.say("venue.refuse_limit")
+	match VenueRules.visit_refusal(activity, work_hours_left() - venue_walk_hours(venue_id), int(meta.get("Funds", 0)), xp):
+		"hours": return Text.say("venue.refuse_hours_weekend" if in_weekend() else "venue.refuse_hours")
+		"funds": return Text.say("venue.refuse_funds")
+		"xp": return Text.say("venue.refuse_xp")
+	return ""
+
+
+## Does the activity: takes its hours and Funds, gives its standing, awareness, next-stage energy and staff hours, counts the use,
+## and hands out any gift the count reaches. {"ok": false, "reason"} when it is refused (nothing changes); otherwise
+## {"ok": true, "text": the result sentence, "effects": [lines], "gifts": [{"text", "effects": [lines]}]}.
+func do_activity(activity_id: String) -> Dictionary:
+	var why := activity_refusal(activity_id)
+	if not why.is_empty():
+		return {"ok": false, "reason": why}
+	var activity := venue_activity(activity_id)
+	var cost := VenueRules.visit_cost(activity)
+	spend_hours(venue_walk_hours(str(activity.get("venue_id", ""))) + int(cost["hours"]))
+	if int(cost["funds"]) > 0:
+		_apply_meta_reward("Funds", -int(cost["funds"]))
+	var before := activity_times_done(activity_id)
+	venue_activity_log = VenueActivities.with_use(venue_activity_log, activity_id, venue_today())
+	venue_activity_totals[activity_id] = before + 1
+	var effects: Array[String] = []
+	_under_cause(Text.say("record.cause_venue", {"activity": str(activity.get("name", activity_id))}), func() -> void:
+		effects.append_array(_give_activity_effects(activity.get("rewards"), activity.get("district_delta"), 0)))
+	var hours_for_staff := VenueActivities.staff_hours(activity, before)
+	if hours_for_staff > 0:
+		staff_activity_hours = {"day": venue_today(), "hours": staff_activity_hours_today() + hours_for_staff}
+		effects.append(Text.say("venue.effect_staff_hours", {"delta": "%+d" % hours_for_staff}))
+	var gifts: Array = []
+	for row: Dictionary in VenueActivities.milestones_crossed(DataDB.venue_milestones, activity_id, before, before + 1):
+		var gift_effects: Array[String] = []
+		var gift_funds: Variant = row.get("funds_delta")   # a blank cell is null
+		var funds_amount := int(gift_funds) if gift_funds != null else 0
+		_under_cause(Text.say("record.cause_venue", {"activity": str(activity.get("name", activity_id))}), func() -> void:
+			gift_effects.append_array(_give_activity_effects(row.get("rewards"), row.get("district_delta"), funds_amount)))
+		gifts.append({"text": str(row.get("result_text", "")), "effects": gift_effects})
+	SaveManager.autosave()
+	return {"ok": true, "text": str(activity.get("result_text", "")), "effects": effects, "gifts": gifts}
+
+
+## Gives a row's rewards (standing, next-stage energy, items), its District awareness and any Funds; the lines that say what was given.
+func _give_activity_effects(rewards: Variant, awareness_delta: Variant, funds_delta: int) -> Array[String]:
+	var lines: Array[String] = []
+	if funds_delta != 0:
+		# Said as it landed: a gift that would pass the Funds limit is told as the part that fit.
+		var funds_before := int(meta.get("Funds", 0))
+		_apply_meta_reward("Funds", funds_delta)
+		var landed := int(meta.get("Funds", 0)) - funds_before
+		if landed > 0:
+			lines.append(Text.say("venue.effect_funds", {"delta": landed}))
+	if rewards is Array and not (rewards as Array).is_empty():
+		_apply_reward_entries(rewards as Array)
+	if awareness_delta != null and int(awareness_delta) != 0:
+		apply_awareness_delta("district", int(awareness_delta))
+	lines.append_array(activity_reward_lines(rewards, awareness_delta))
+	return lines
+
+
+## The lines that say what a row's rewards and District awareness give: "Shrine Association +2", "Energy in your next stage +1",
+## "District awareness +1". Used before an activity is done (what it gives) and after (what it gave).
+func activity_reward_lines(rewards: Variant, awareness_delta: Variant) -> Array[String]:
+	var lines: Array[String] = []
+	if rewards is Array:
+		for entry: Variant in rewards as Array:
+			if not (entry is Dictionary):
+				continue
+			var target := str((entry as Dictionary).get("target", ""))
+			var delta := int((entry as Dictionary).get("delta", 1)) if (entry as Dictionary).get("delta") != null else 1
+			match RewardTargets.kind_of(target):
+				RewardTargets.BOOSTER:
+					lines.append(Text.say("venue.effect_standing", {"name": str(DataDB.get_booster(target).get("name_en", target)),
+						"delta": "%+d" % delta}))
+				RewardTargets.STAGE_EFFECT:
+					lines.append(Text.say("venue.effect_energy", {"delta": "%+d" % delta}))
+	if awareness_delta != null and int(awareness_delta) != 0:
+		lines.append(Text.say("venue.effect_awareness", {"delta": "%+d" % int(awareness_delta)}))
+	return lines
+
+
+## What an activity will give if done now, as lines (its rewards, awareness and staff hours, the bonus included once earned).
+func activity_gives_lines(activity: Dictionary) -> Array[String]:
+	var lines := activity_reward_lines(activity.get("rewards"), activity.get("district_delta"))
+	var staff := VenueActivities.staff_hours(activity, activity_times_done(str(activity.get("activity_id", ""))))
+	if staff > 0:
+		lines.append(Text.say("venue.effect_staff_hours", {"delta": "%+d" % staff}))
+	return lines
 
 
 ## The next line at a venue, free of hours: {"ok", "number", "limit", "kind": "gossip", "watch", "hint" or "dry", "speaker", "text",

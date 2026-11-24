@@ -1422,7 +1422,8 @@ SHEETS = {
         "key": "activity_id",
         "id_pattern": r"^VA\d+$",
         "optional_sheet": True,
-        "optional": ["Per Day", "Per Week", "Condition Type", "Condition Target", "Condition Op", "Condition Value"],
+        "optional": ["Per Day", "Per Week", "Condition Type", "Condition Target", "Condition Op", "Condition Value",
+                     "Rewards", "District Awareness Δ", "Staff Hours", "Bonus After Uses", "Bonus Staff Hours", "Result Text"],
         "columns": [
             ("Activity ID", "activity_id", "id"),
             ("Venue ID", "venue_id", "str"),
@@ -1439,6 +1440,30 @@ SHEETS = {
             ("Condition Target", "condition_target", "str"),
             ("Condition Op", "condition_op", "str"),
             ("Condition Value", "condition_value", "num"),
+            # 2026-11-24: what a costed activity (Kind act) gives. Rewards is standing ("BO20 +2; BO19 +2") or ENERGY (+1 energy next
+            # stage); the awareness and staff-hour columns are whole numbers; the bonus gives more staff hours after that many uses.
+            ("Rewards", "rewards", "target_delta_list"),
+            ("District Awareness Δ", "district_delta", "int"),
+            ("Staff Hours", "staff_hours", "int"),
+            ("Bonus After Uses", "bonus_after_uses", "int"),
+            ("Bonus Staff Hours", "bonus_staff_hours", "int"),
+            ("Result Text", "result_text", "str"),
+        ],
+    },
+    "Venue Milestones": {
+        "out": "venue_milestones.json",
+        "key": "milestone_id",
+        "id_pattern": r"^VM\d+$",
+        "optional_sheet": True,
+        "optional": ["Rewards", "District Awareness Δ", "Funds Δ"],
+        "columns": [
+            ("Milestone ID", "milestone_id", "id"),
+            ("Activity ID", "activity_id", "str"),
+            ("Count", "count", "int"),
+            ("Result Text", "result_text", "str"),
+            ("Rewards", "rewards", "target_delta_list"),
+            ("District Awareness Δ", "district_delta", "int"),
+            ("Funds Δ", "funds_delta", "int"),
         ],
     },
     "Venue Lines": {
@@ -4163,7 +4188,7 @@ def check_whip_and_vote_scenes(data, report, by_id, roots):
                 report.error(f"Decision Scenes {sid}", f"is a vote on {datetime.date.fromordinal(day).strftime('%y.%m.%d')}, after {root}'s Must End By {deadline}")
 
 
-VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel")
+VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act")
 VENUE_ZONES = ("Capitol Building", "Capital Area", "District")
 VENUE_HINT_KINDS = ("stage_suit", "opponent_suit")
 VENUE_POOLS = ("cafeteria", "gardens", "dry")
@@ -4214,6 +4239,33 @@ def check_venues(data, report):
             activity_pools.add(str(activity["pool"]))
             if str(activity["pool"]) not in VENUE_POOLS:
                 report.error(where, f"Pool {activity['pool']!r} must be one of {', '.join(VENUE_POOLS)}")
+    milestones = data.get("venue_milestones", [])
+    for activity in activities:
+        if activity.get("kind") == "act":
+            where = f"Venue Activities {activity.get('activity_id')}"
+            if not activity.get("result_text"):
+                report.warn(where, "A costed activity has no Result Text")
+            for column in ("hours", "funds", "per_day", "staff_hours", "bonus_after_uses", "bonus_staff_hours"):
+                if activity.get(column) is not None and int(activity[column]) < 0:
+                    report.error(where, f"{column.replace('_', ' ').title()} cannot be negative")
+            if (activity.get("bonus_after_uses") is None) != (activity.get("bonus_staff_hours") is None):
+                report.error(where, "Bonus After Uses and Bonus Staff Hours go together")
+    acts = {str(a.get("activity_id")): a for a in activities}
+    seen_counts = set()
+    for row in milestones:
+        where = f"Venue Milestones {row.get('milestone_id')}"
+        activity = acts.get(str(row.get("activity_id")))
+        if activity is None or activity.get("kind") != "act":
+            report.error(where, f"Activity ID {row.get('activity_id')!r} is not a Kind act row in Venue Activities")
+        count = row.get("count")
+        if count is None or int(count) < 1:
+            report.error(where, "Count must be 1 or more")
+        elif (str(row.get("activity_id")), int(count)) in seen_counts:
+            report.error(where, f"Activity {row.get('activity_id')} already has a milestone at {count}")
+        else:
+            seen_counts.add((str(row.get("activity_id")), int(count)))
+        if not row.get("result_text"):
+            report.error(where, "Result Text is blank")
     for pool in activity_pools:
         if not any(str(l.get("pool")) == pool for l in lines):
             report.error("Venue Activities", f"Pool '{pool}' has no Venue Lines")
