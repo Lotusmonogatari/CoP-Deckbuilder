@@ -2099,3 +2099,5 @@ Shrine gifts (Venue Milestones tab, cumulative count of Pay your respects): 5 gi
 | Screens | `VenueActivityViews` (the card), `VenuesController._show_activities` and a result card. |
 | Funds limit | A Funds gift is told as the part that fit under the Funds limit (the 150th respect gives up to 100,000円, less if the player is already near the limit). |
 | Tests | `test_venue_activities.gd` (rules), `test_venue_activity_state.gd` (the run), the venue click test drives the Library and the shrine. |
+
+Follow-up on the same branch: a long screen title ("National Assembly Library" at the large text size) now steps down in size until it fits the width of the screen (`OfficeScreenFrame._fit_title`); before, it pushed the whole Library screen wider than the phone. Found by the text sweep, which now covers the shrine, its result card and the Library.

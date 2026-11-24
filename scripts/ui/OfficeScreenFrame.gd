@@ -177,7 +177,21 @@ func _build_title(title: String, subtitle: String) -> Control:
 	_subtitle_label.add_theme_color_override("font_color", _look["on_ground_muted"])
 	_subtitle_label.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
 	row.add_child(_subtitle_label)
+	_fit_title.call_deferred()
 	return row
+
+
+## A long title ("National Assembly Library" at the large text size) steps down in size until it fits the screen's width, so it never
+## pushes the whole screen wider than the phone (the text sweep, 2026-11-24). A short title is left at its size.
+func _fit_title() -> void:
+	if _title_label == null or not is_inside_tree():
+		return
+	var limit := get_viewport_rect().size.x - OfficeFrameStyles.len_px(100.0)
+	var width := _title_label.get_combined_minimum_size().x
+	if width <= limit or width <= 0.0:
+		return
+	var base := OfficeFrameStyles.px(OfficeFrameStyles.title_size(_look))
+	_title_label.add_theme_font_size_override("font_size", maxi(int(float(base) * limit / width), int(base * 0.5)))
 
 
 func _build_tabs(tabs: Array, active: String) -> Control:
