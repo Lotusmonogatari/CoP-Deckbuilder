@@ -12,7 +12,7 @@ const IN_LEVEL := "in_level"       # a level is in progress
 const WEEK_FULL := "week_full"     # no work hours left this week
 
 ## The activity kinds built so far (P16 phase 1). A venue whose activity is another kind shows as "Coming soon".
-const BUILT_KINDS: Array[String] = ["chat", "watch", "train", "travel"]
+const BUILT_KINDS: Array[String] = ["chat", "watch", "train", "travel", "act"]
 ## The kinds that deal daily lines.
 const LINE_KINDS: Array[String] = ["chat", "watch"]
 
@@ -55,6 +55,14 @@ static func activity_of(activities: Array, venue_id: String) -> Dictionary:
 ## A venue is built in this phase when its activity's kind is one of BUILT_KINDS; the rest are "Coming soon".
 static func is_built(activity: Dictionary) -> bool:
 	return BUILT_KINDS.has(str(activity.get("kind", "")))
+
+
+## A venue is built when any of its activities is built (the Library has a greyed Browse the Shelves beside two that are).
+static func venue_built(activities: Array, venue_id: String) -> bool:
+	for activity: Variant in activities:
+		if activity is Dictionary and str((activity as Dictionary).get("venue_id", "")) == venue_id and is_built(activity as Dictionary):
+			return true
+	return false
 
 
 ## Whether the venue's activity deals daily lines.

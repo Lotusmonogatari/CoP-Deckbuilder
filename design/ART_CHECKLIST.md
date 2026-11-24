@@ -20,7 +20,7 @@ stands in for every expression.
 | Cosmetic package icons | 9 / 9 |
 | Venue backgrounds | 19 / 19 |
 | Venue icons | 0 / 9 |
-| Venue activity icons | 9 / 9 |
+| Venue activity icons | 14 / 15 |
 | Decision scenes with a picture to show | 0 / 10 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -671,8 +671,14 @@ stands in for every expression.
 | ACT_SHOW.png | Watch the Show | ✓ |
 | ACT_TRAVEL.png | Departures | ✓ |
 | ACT_TRAVEL.png | Departures | ✓ |
-| ACT_SHRINE.png | Visit the Shrine | ✓ |
-| ACT_SHOTENGAI.png | Walk the Shotengai | ✓ |
+| ACT_SHRINE.png | Clean the surroundings | ✓ |
+| ACT_SHOTENGAI.png | Distribute district office flyers | ✓ |
+| ACT_SHRINE.png | Place 1,000円 in the saisenbako | ✓ |
+| ACT_SHRINE.png | Pay your respects | ✓ |
+| ACT_SHOTENGAI.png | Speak through a megaphone | ✓ |
+| ACT_SHOTENGAI.png | Treat local kōenkai members to a meal | ✓ |
+| ACT_NAP.png | Nap | ☐ |
+| ACT_READ.png | Read about management practices | ✓ |
 
 ## Decision scenes
 

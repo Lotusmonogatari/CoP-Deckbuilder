@@ -2073,3 +2073,29 @@ Eight new backgrounds (`AREA_SHRINE_PC01` to `PC04`, `AREA_SHOTENGAI_PC01` to `P
 | Art checklist | Lists each protagonist's shrine and shotengai picture, and the two new venue icons (`VEN_SHRINE`, `VEN_SHOTENGAI`) still to draw. |
 
 Names, blurbs and Japanese are Claude's drafts. The Places tab has real names for each protagonist's shrine and market (Hokumon Shrine, Tarumae Shrine, Ishikari Benten Shrine, Osorezan Bodaiji or Tanabu Shrine; Wakkanai Central Arcade, Tomakomai Port Fish Market, Benten historic street, Towada Farmers' Market); the venues use generic names until Cameron says whether to show those.
+
+## Venue activities: the Old Shrine, the Local Shotengai and the Library (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
+
+Cameron's spec for what each place lets the player do, built as one piece with the shrine and shotengai places above (they merge together). A venue now lists **every** activity it has, one card each, showing cost, what it gives and how many times are left today before it is pressed; doing one shows a result card.
+
+| Place | Activity | Cost | Gives | Limit per day |
+|---|---|---|---|---|
+| Old Shrine | Clean the surroundings | 2 h | +2 Shrine Association, Buddhist Temples Association, Our Traditional Society | 2 |
+| | Place 1,000円 in the saisenbako | 1,000円 | +2 to the same three | 1 |
+| | Pay your respects | 1 h | counted; gifts at 5, 30, 75 and 150 times | 1 |
+| Local Shotengai | Distribute district office flyers | 2 h | +1 District awareness | 1 |
+| | Speak through a megaphone | 3 h | -1 Constituency Voters, -1 Local Kōenkai, +3 District awareness | 1 |
+| | Treat local kōenkai members to a meal | 1 h, 15,000円 | +3 Local Kōenkai | 2 |
+| Library | Nap | 2 h | +1 energy in the next stage | 1 |
+| | Read about management practices | 2 h | +1 work hour for all staff today (+2 from the 51st use) | 1 |
+
+Shrine gifts (Venue Milestones tab, cumulative count of Pay your respects): 5 gives 5,000円; 30 gives a free rhetoric training coupon; 75 gives +10 to the three organizations and District awareness; 150 gives +25 to the same and 100,000円. The screen shows only "Times done: N"; the gifts are a surprise. The Library's Browse the Shelves stays as a greyed Coming soon row.
+
+| Part | What changed |
+|---|---|
+| Workbook | Venue Activities has six new columns (Rewards, District Awareness Δ, Staff Hours, Bonus After Uses, Bonus Staff Hours, Result Text) and a new Venue Milestones tab (VM01 to VM04). A new Kind `act` (the two placeholder kinds `shrine` and `shotengai` from the places commit are gone). 17 Text rows. Script: `tools/workbook/archive/venue_activities_build.py`. |
+| Rules | `VenueActivities` (pure): daily limits, the use log, the staff-hour bonus, milestones crossed. `VenueRules.venue_built`. |
+| Game state | `do_activity`, `activity_refusal`, `activity_gives_lines`; saved: `venue_activity_log`, `venue_activity_totals`, `staff_activity_hours`. The Library's staff hours join the Office-box hours in the staff day (`staff_office_hours`). |
+| Screens | `VenueActivityViews` (the card), `VenuesController._show_activities` and a result card. |
+| Funds limit | A Funds gift is told as the part that fit under the Funds limit (the 150th respect gives up to 100,000円, less if the player is already near the limit). |
+| Tests | `test_venue_activities.gd` (rules), `test_venue_activity_state.gd` (the run), the venue click test drives the Library and the shrine. |

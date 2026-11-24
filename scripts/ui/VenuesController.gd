@@ -16,6 +16,9 @@ var _line_panel: Overlay
 var _tips_panel: Overlay
 ## The tracks screen of a station, over the concourse (so its Back control returns to the concourse).
 var _tracks_panel: Overlay
+## What was just done at a venue (a costed activity's result card), over the venue's screen.
+var _result_panel: Overlay
+var _result_venue := ""
 ## What a station's screens call on the Office: the trip's mode, confirm and go (see StationViews).
 var _trip_hooks: Dictionary = {}
 ## The venue whose line pop-up is up (Keep listening needs to know which).
@@ -37,6 +40,8 @@ func setup(office: Control, after_button: Button, open_coach_page: Callable, on_
 	_line_panel.confirmed.connect(_on_keep_listening)
 	_tips_panel = _panel("TipsPanel")
 	_tracks_panel = _panel("StationTracksPanel")
+	_result_panel = _panel("VenueResultPanel")
+	_result_panel.closed.connect(_on_result_closed)
 	_step_button = Button.new()
 	_step_button.name = "StepOutButton"
 	_step_button.set_meta("party_outline", true)
@@ -101,8 +106,7 @@ func _chips() -> Array:
 ## A venue's card on the map: its name with the Japanese accent, its blurb, and Go (or Coming soon, greyed).
 func _venue_card(look: Dictionary, venue: Dictionary) -> Control:
 	var venue_id := str(venue.get("venue_id", ""))
-	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)
-	var built := VenueRules.is_built(activity)
+	var built := VenueRules.venue_built(DataDB.venue_activities, venue_id)
 	var card := OfficeFrameStyles.card(look)
 	card.name = "VenueCard_" + venue_id
 	var column := card.get_node("Column") as VBoxContainer
@@ -158,7 +162,13 @@ func _venue_picture_id(venue: Dictionary) -> String:
 func show_venue(venue_id: String) -> void:
 	var venue := GameState.venue_row(venue_id)
 	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)
-	if venue.is_empty() or not VenueRules.is_built(activity):
+	if venue.is_empty():
+		return
+	# A venue with costed activities (the shrine, the shotengai, the Library) lists them all.
+	if GameState.venue_activities_of(venue_id).any(func(row: Dictionary) -> bool: return VenueActivities.is_act(row)):
+		_show_activities(venue)
+		return
+	if not VenueRules.is_built(activity):
 		return
 	if str(activity.get("kind", "")) == "travel":
 		_show_station(venue, activity)
@@ -218,6 +228,50 @@ func _on_activity(venue_id: String) -> void:
 	_venue_panel.close()
 	_current_venue = venue_id
 	_hear(venue_id)
+
+
+# --- Costed activities (2026-11-24) ------------------------------------------------------------------------------------------------
+# The Old Shrine, the Local Shotengai and the Library: one card for each activity, with its cost, what it gives and how many times are
+# left today before it is pressed. Doing one shows a result card over the venue, and the venue screen is drawn again after it.
+
+func _show_activities(venue: Dictionary) -> void:
+	var venue_id := str(venue.get("venue_id", ""))
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = [_picture(_venue_picture_id(venue), 460), UiKit.line(str(venue.get("blurb", "")))]
+	for activity: Dictionary in GameState.venue_activities_of(venue_id):
+		rows.append(VenueActivityViews.card(look, activity, _on_do_activity))
+	var frame := OfficeScreenFrame.new()
+	frame.setup({"title": str(venue.get("name", venue_id)), "subtitle": str(venue.get("name_jp", "")), "chips": _chips(), "rows": rows})
+	_venue_panel.open_frame(frame, Text.say("venue.screen_back"))
+
+
+func _on_do_activity(activity_id: String) -> void:
+	var activity := GameState.venue_activity(activity_id)
+	var venue_id := str(activity.get("venue_id", ""))
+	var done := GameState.do_activity(activity_id)
+	if not bool(done["ok"]):
+		show_venue(venue_id)
+		return
+	_on_spent.call()
+	refresh_button()
+	_result_venue = venue_id
+	var body: Array[Control] = [UiKit.line(str(done["text"]))]
+	for line: String in done["effects"]:
+		body.append(UiKit.line(line, "SmallLabel"))
+	for gift: Dictionary in done["gifts"]:
+		body.append(UiKit.line(str(gift["text"])))
+		for line: String in gift["effects"]:
+			body.append(UiKit.line(line, "SmallLabel"))
+	_result_panel.open_card({"tag": Text.say("venue.tag_done"), "meta": str(activity.get("name", "")), "body": body}, "",
+		Text.say("venue.back_to", {"venue": str(GameState.venue_row(venue_id).get("name", ""))}))
+
+
+## Closing the result card draws the venue's screen again, so the counts and limits are today's.
+func _on_result_closed() -> void:
+	if not _result_venue.is_empty():
+		var venue_id := _result_venue
+		_result_venue = ""
+		show_venue(venue_id)
 
 
 # --- Stations (travel at the stations, 2026-11-24) ----------------------------------------------------------------------------------
@@ -311,7 +365,8 @@ func _show_tracks(venue_id: String) -> void:
 
 ## Every venue screen closed: the Office calls this when a trip begins, so the other office is what shows when the card fades.
 func close_all() -> void:
-	for panel: Overlay in [_tracks_panel, _line_panel, _venue_panel, _map_panel, _tips_panel]:
+	_result_venue = ""   # a trip leaves; the venue screen is not drawn again behind it
+	for panel: Overlay in [_result_panel, _tracks_panel, _line_panel, _venue_panel, _map_panel, _tips_panel]:
 		if panel != null and panel.visible:
 			panel.close()
 

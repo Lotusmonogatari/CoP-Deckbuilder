@@ -99,7 +99,7 @@
     "order": 8,
     "icon": "VEN_SHRINE",
     "background": "AREA_SHRINE_{PC_ID}",
-    "blurb": "Rope, moss and a bell older than the town.",
+    "blurb": "A long walk off the beaten track, and almost no one comes.",
     "open_days": "Any",
     "unlock": null
   },

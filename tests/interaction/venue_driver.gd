@@ -53,7 +53,7 @@ func _run() -> void:
 	await _click(office.find_child("StepOutButton", true, false))
 	var map := office.get_node("VenueMapPanel") as Overlay
 	_expect(map.visible, "Step out opens the place map")
-	_expect((map.find_child("Venue_VN02", true, false) as Button).disabled, "the Library is greyed: Coming soon")
+	_expect((map.find_child("Venue_VN05", true, false) as Button).disabled, "the Stage is greyed: Coming soon")
 	_expect(not (map.find_child("Venue_VN01", true, false) as Button).disabled, "the Cafeteria is open")
 	await _click(map.find_child("Venue_VN01", true, false))
 	var venue := office.get_node("VenuePanel") as Overlay
@@ -96,7 +96,57 @@ func _run() -> void:
 		var briefing := office.get_node("%BriefingPanel") as Overlay
 		_expect(briefing.visible and briefing.find_child("TipMark_" + stage_id, true, false) != null, "the briefing marks the tipped room")
 	OS.set_environment("COP_NO_RANDOM_EVENTS", "1")
+	await _activities(office)
 	_finish()
+
+
+## Costed activities (2026-11-24): the Library's Nap at the Capitol, then the Old Shrine's saisenbako at the District office. Each is
+## chosen from the map, shows its cost and limit before it is done, and after it shows a result card; the screen then says it is
+## done for today.
+func _activities(office: Node) -> void:
+	office.get("_venues").call("close_all")
+	(office.get_node("%BriefingPanel") as Overlay).close()
+	(office.get_node("%LevelsPanel") as Overlay).close()
+	GameState.office_location = Offices.CAPITOL
+	GameState.calendar = {"week": 3, "phase": "work", "hours": 0}
+	GameState.pending_stage_bonuses = {}
+	office.call("_refresh_calendar")
+	office.get("_venues").call("show_map")
+	await get_tree().create_timer(0.3).timeout
+	var go := (office.get_node("VenueMapPanel") as Overlay).find_child("Venue_VN02", true, false) as Button
+	_expect(go != null and not go.disabled, "the Library is open (it has a Nap and reading now)")
+	await _click(go)
+	var venue := office.get_node("VenuePanel") as Overlay
+	_expect(venue.visible and venue.find_child("ActivityCard_VA14", true, false) != null, "the Library lists its activities")
+	var shelves := venue.find_child("Activity_VA02", true, false) as Button
+	_expect(shelves != null and shelves.disabled and shelves.text == Text.say("venue.coming_soon"), "Browse the Shelves stays greyed: Coming soon")
+	var card_text := _texts(venue.find_child("ActivityCard_VA14", true, false))
+	_expect(card_text.contains("Costs 2 h") and card_text.contains("Energy in your next stage +1") and card_text.contains("1 of 1 left today"),
+		"the Nap says its cost, its gift and its limit before it is done (%s)" % card_text.replace("\n", " | "))
+	var hours := GameState.work_hours_left()
+	(venue.find_child("Activity_VA14", true, false) as Button).pressed.emit()
+	await get_tree().create_timer(0.4).timeout
+	var result := office.get_node("VenueResultPanel") as Overlay
+	_expect(result.visible and _texts(result).contains("You wake rested"), "the result card tells what happened")
+	_expect(GameState.work_hours_left() == hours - 2 and int(GameState.pending_stage_bonuses.get("ENERGY", 0)) == 1, "two hours spent and +1 energy for the next stage")
+	await _click(result.find_child("Back", true, false))
+	await get_tree().create_timer(0.3).timeout
+	var again := (office.get_node("VenuePanel") as Overlay).find_child("Activity_VA14", true, false) as Button
+	_expect(again != null and again.disabled and again.text == Text.say("venue.refuse_limit"), "the Library is drawn again: Nap is done for today")
+	# The District office's shrine.
+	office.get("_venues").call("close_all")
+	GameState.office_location = Offices.DISTRICT
+	GameState.meta["Funds"] = 5000
+	office.call("_refresh_calendar")
+	office.get("_venues").call("show_map")
+	await get_tree().create_timer(0.3).timeout
+	var shrine_go := (office.get_node("VenueMapPanel") as Overlay).find_child("Venue_VN08", true, false) as Button
+	_expect(shrine_go != null and not shrine_go.disabled, "the District office's map lists an open Old Shrine")
+	await _click(shrine_go)
+	(office.get_node("VenuePanel") as Overlay).find_child("Activity_VA10", true, false).emit_signal("pressed")
+	await get_tree().create_timer(0.4).timeout
+	_expect(int(GameState.meta["Funds"]) == 4000, "the saisenbako took 1,000円")
+	_expect(GameState.activity_left_today("VA10") == 0, "and it is once a day")
 
 
 func _texts(node: Node) -> String:

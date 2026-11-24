@@ -10,7 +10,7 @@ from wbx import WB
 w = WB("design/Game_Workbook.xlsx")
 # {PC_ID} is the protagonist's ID ("PC03"), the spelling of the pictures AREA_SHRINE_<PC_ID> and AREA_SHOTENGAI_<PC_ID>.
 w.append_row("Venues", {"A": "VN08", "B": "Old Shrine", "C": "古い神社", "D": "Furui Jinja", "E": "District", "F": 8, "G": "VEN_SHRINE",
-                        "H": "AREA_SHRINE_{PC_ID}", "I": "Rope, moss and a bell older than the town.", "J": "Any"},
+                        "H": "AREA_SHRINE_{PC_ID}", "I": "A long walk off the beaten track, and almost no one comes.", "J": "Any"},
              style_row=w.last_data_row("Venues"))
 w.append_row("Venues", {"A": "VN09", "B": "Local Shotengai", "C": "商店街", "D": "Shōtengai", "E": "District", "F": 9, "G": "VEN_SHOTENGAI",
                         "H": "AREA_SHOTENGAI_{PC_ID}", "I": "Every shop knows your name, and your business.", "J": "Any"},

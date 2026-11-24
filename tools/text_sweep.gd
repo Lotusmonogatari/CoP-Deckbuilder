@@ -218,6 +218,17 @@ func _sweep_shape(size: Vector2i) -> void:
 		["B27f3_station_tracks", func() -> void:
 			office._venues.show_venue("VN06")
 			office._venues._show_tracks("VN06")],
+		["B27f4_shrine", func() -> void:
+			GameState.office_location = Offices.DISTRICT
+			office._venues.show_venue("VN08")],
+		["B27f5_shrine_result", func() -> void:
+			GameState.office_location = Offices.DISTRICT
+			GameState.meta["Funds"] = 5000
+			office._venues.show_venue("VN08")
+			office._venues._on_do_activity("VA10")],
+		["B27f6_library", func() -> void:
+			GameState.office_location = Offices.CAPITOL
+			office._venues.show_venue("VN02")],
 		["B27g_venue_line", func() -> void:
 			GameState.venue_visit("VN01")
 			office._venues._current_venue = "VN01"

@@ -10715,5 +10715,124 @@
     "english": "A plane or a car leaves from right here.",
     "placeholders": null,
     "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.act_do",
+    "where": "Venue activity: the button that does it",
+    "english": "Do this",
+    "placeholders": null,
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.act_costs",
+    "where": "Venue activity: what it costs, before it is done",
+    "english": "Costs {list}",
+    "placeholders": "list",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.act_free",
+    "where": "Venue activity: it costs nothing",
+    "english": "Costs nothing",
+    "placeholders": null,
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.act_gives",
+    "where": "Venue activity: what it gives, before it is done",
+    "english": "Gives: {list}",
+    "placeholders": "list",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.act_counted",
+    "where": "Venue activity with gifts: what it gives, before it is done",
+    "english": "Each visit is counted.",
+    "placeholders": null,
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.act_left",
+    "where": "Venue activity: how many times are left today",
+    "english": "{count} of {limit} left today",
+    "placeholders": "count, limit",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.act_times",
+    "where": "Venue activity with gifts: how many times it has been done",
+    "english": "Times done: {count}",
+    "placeholders": "count",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.cost_hours",
+    "where": "Venue activity cost: hours",
+    "english": "{count} h",
+    "placeholders": "count",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.cost_funds",
+    "where": "Venue activity cost: Funds",
+    "english": "{count}円",
+    "placeholders": "count",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.effect_standing",
+    "where": "Venue activity effect: an organization's standing",
+    "english": "{name} {delta}",
+    "placeholders": "name, delta",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.effect_awareness",
+    "where": "Venue activity effect: District awareness",
+    "english": "District awareness {delta}",
+    "placeholders": "delta",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.effect_funds",
+    "where": "Venue activity effect: Funds",
+    "english": "Funds +{delta}円",
+    "placeholders": "delta",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.effect_staff_hours",
+    "where": "Venue activity effect: work hours for all staff today",
+    "english": "Staff work hours today {delta}",
+    "placeholders": "delta",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.effect_energy",
+    "where": "Venue activity effect: energy in the next stage",
+    "english": "Energy in your next stage {delta}",
+    "placeholders": "delta",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.tag_done",
+    "where": "Venue activity result card: the tag",
+    "english": "Done",
+    "placeholders": null,
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.refuse_limit",
+    "where": "Venue activity: the limit for today is reached",
+    "english": "Done for today. Come back tomorrow.",
+    "placeholders": null,
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "record.cause_venue",
+    "where": "What moved your standing: a venue activity",
+    "english": "{activity}",
+    "placeholders": "activity",
+    "notes": "Venue activities (2026-11-24): Claude's draft for Cameron to reword."
   }
 ]

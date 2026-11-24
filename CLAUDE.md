@@ -354,3 +354,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Travel at the stations: the train slider moves to Sapporo Super Station and each District office's station (2026-11-24, Cameron; branch `feature/travel-at-stations`)
 - Characters: the person's page puts the name on top, a big picture in the middle, the facts low (2026-11-24, Cameron; branch `fix/characters-detail-layout`)
 - The District's Old Shrine and Local Shotengai on the Step out map, a picture on every place card (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
+- Venue activities: the shrine, the shotengai and the Library get costed activities, limits and the shrine's gifts (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
