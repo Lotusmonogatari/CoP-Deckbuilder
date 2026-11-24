@@ -2040,3 +2040,19 @@ Mock-up: `design/proposals/img/travel_stations/` (board and eight screens).
 | Mixed levels with built-in trips | Travel **stays built into the level**: the trip is taken as the level begins, with the level briefing's own "Travel by" row, unchanged. |
 
 Not built yet: moving the train strip, the mode row and the Travel page to the Super Station and the District stations. That needs a build brief (it touches the Office screen, the venue map and the trip rules) and is outlined for approval before any code.
+
+## Travel at the stations: built (2026-11-24, Cameron; branch `feature/travel-at-stations`)
+
+Cameron's go-ahead on the mock-up and his decisions (above), built as one piece. The train slider is the same component, unchanged in look and behavior (no extra marks).
+
+| Part | What changed |
+|---|---|
+| The Office | The train strip and the row of ways to go are gone. Step out shows at both offices. |
+| Capitol | Sapporo Super Station is built (VN06): the concourse with the Departures card and a To the tracks button, then the tracks screen with the strip. A plane or car leaves from the concourse; the one that is not the protagonist's shows greyed "not yours". |
+| District | One place, `{office} Station` (new Venues row VN07, zone District, new Venue Activities row VA07): one screen with the Departures card and the strip. Its picture is `AREA_<OFFICE>_STATION`, so the renamed files are found by office. |
+| Trip | Unchanged (confirm sheet, fade card, hours, tickets, train encounters). Arriving closes the station screens. Travel in a level stays built in. |
+| Workbook | 8 new Text rows (`station.*`, `venue.zone_district`, `travel.mode_not_yours`), HT36 and HT37 rewritten (three sentences each), `venue.refuse_elsewhere` reworded ("You cannot get there from this office."). Script: `tools/workbook/archive/travel_stations_build.py`. |
+| Exporter and tools | Zone District allowed; the art checklist expands the four station pictures and the tracks picture; screenshot, text-sweep and touch-target audits cover the station screens. |
+| Tests | New rules and state tests; the travel click test now drives the stations. |
+
+Note on the mock-up: it showed a plane for Kenshin Sako (PC01). The Balance rows give PC01 a private car (4 h) and only PC04 a plane (2 h), so the screens follow the data.

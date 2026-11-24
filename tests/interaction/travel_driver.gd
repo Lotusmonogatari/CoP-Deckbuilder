@@ -1,8 +1,9 @@
 class_name TravelDriver
 extends Node
-## Two offices, slice 1 (2026-11-20): the Office as a player uses it. The trip button states where it goes, how long
-## and by what before it is pressed; the popup states the cost again; a trip spends the hours, changes the office
-## picture and the level list (a level is listed only at its own office); a trip that cannot be taken says why.
+## Two offices, slice 1 (2026-11-20), moved to the stations on 2026-11-24: the Office as a player uses it. The train strip is on the
+## station screens now (the Capitol's Sapporo Super Station: concourse, then tracks; the District office's own station). The strip
+## states where it goes, how long and by what before it is pressed; the popup states the cost again; a trip spends the hours,
+## changes the office picture and the level list (a level is listed only at its own office); a trip that cannot be taken says why.
 
 const STYLES := [UiStyles.LIVING_OFFICE, UiStyles.BROADCAST, UiStyles.WOODBLOCK]
 
@@ -74,11 +75,33 @@ func _left() -> int:
 	return WeekCalendar.hours_left(GameState.calendar, GameState.calendar_config())
 
 
+## The train strip where the player stands: the Capitol's is on the tracks (reached from the concourse), the District office's is on
+## its station screen. Null when the concourse's To the tracks button is greyed (the trip is refused).
+func _strip_here() -> TravelStrip:
+	var office := _screen()
+	office.get("_venues").call("close_all")
+	if GameState.office_location == Offices.CAPITOL:
+		office.get("_venues").call("show_venue", "VN06")
+		await get_tree().create_timer(0.4).timeout
+		var tracks := office.get_node("VenuePanel").find_child("ToTracksButton", true, false) as Button
+		if tracks == null or tracks.disabled:
+			return null
+		tracks.pressed.emit()
+		await get_tree().create_timer(0.4).timeout
+		return office.get_node("StationTracksPanel").find_child("TravelButton", true, false) as TravelStrip
+	office.get("_venues").call("show_venue", "VN07")
+	await get_tree().create_timer(0.4).timeout
+	return office.get_node("VenuePanel").find_child("TravelButton", true, false) as TravelStrip
+
+
 func _trip(style: String) -> void:
 	var where := "in %s: " % style
 	var office := _screen()
-	var button := office.find_child("TravelButton", true, false) as TravelStrip
-	_expect(button != null, where + "the Office has the train strip")
+	# The Office no longer carries the strip or a row of modes.
+	_expect(office.find_child("TravelButton", true, false) == null, where + "the Office has no train strip")
+	_expect(office.find_child("TravelModes", true, false) == null, where + "and no row of travel modes")
+	var button := await _strip_here()
+	_expect(button != null, where + "the tracks have the train strip")
 	if button == null:
 		return
 	_expect(button.text == "To Noheji · 7 h · Rail pass" and not button.disabled, where + "the strip says where, how long and how (%s)" % button.text)
@@ -93,6 +116,7 @@ func _trip(style: String) -> void:
 	_expect(report.text.begins_with("You are at the Capitol."), where + "the Office says where you are (%s)" % report.text)
 
 	# At the Capitol: Capitol and Either levels are listed, District levels are not.
+	office.get("_venues").call("close_all")
 	var levels := await _levels_panel()
 	var seen := _texts(levels)
 	_expect(seen.has("Hearing at the Committee on the Environment"), where + "a Capitol level is listed at the Capitol")
@@ -102,6 +126,7 @@ func _trip(style: String) -> void:
 	await get_tree().process_frame
 
 	# The popup says the cost before the trip is taken.
+	button = await _strip_here()
 	_tap(button)
 	await get_tree().create_timer(0.3).timeout
 	var panel := office.get_node("TravelPanel") as Overlay
@@ -127,14 +152,17 @@ func _trip(style: String) -> void:
 	go.pressed.emit()
 	await get_tree().create_timer(0.5).timeout
 	_expect(GameState.office_location == Offices.DISTRICT, where + "the player is at the District office")
+	_expect(not office.get_node("VenuePanel").visible and not office.get_node("StationTracksPanel").visible, where + "the station screens closed behind the trip")
 	_expect(_left() == 33, where + "seven hours were spent (%d left)" % _left())
-	_expect(button.text == "To the Capitol · 7 h · Rail pass", where + "the strip now goes back (%s)" % button.text)
-	_expect(button.direction == -1, where + "from the District office the train is pulled to the left")
+	button = await _strip_here()
+	_expect(button != null and button.text == "To the Capitol · 7 h · Rail pass", where + "the District station's strip now goes back (%s)" % [button.text if button != null else "none"])
+	_expect(button != null and button.direction == -1, where + "from the District office the train is pulled to the left")
 	_expect(report.text.begins_with("You are at your District office in Noheji."), where + "the Office says so (%s)" % report.text)
 	var background: Variant = office.get("_background")
 	_expect(background != null and str(background.art_id) == "DISTRICT_OFFICE_PC04", where + "the District office picture (a labelled placeholder until it is drawn)")
 
 	# At the District: the lists swap.
+	office.get("_venues").call("close_all")
 	levels = await _levels_panel()
 	seen = _texts(levels)
 	_expect(seen.has("Talking with Constituents"), where + "a District level is listed at the District office")
@@ -143,29 +171,37 @@ func _trip(style: String) -> void:
 	levels.close()
 	await get_tree().process_frame
 
-	# A trip that cannot be taken says why (Information Standard 2).
+	# A trip that cannot be taken says why (Information Standard 2): the District station's strip is greyed with the reason, and so is
+	# the Capitol concourse's To the tracks button.
 	GameState.calendar = {"week": 0, "phase": WeekCalendar.WORK, "hours": 36}
-	office.call("_refresh_calendar")
-	_expect(button.disabled and button.text == "The trip takes 7 h and the week has less left.", where + "too few hours: greyed, with the reason (%s)" % button.text)
+	button = await _strip_here()
+	_expect(button != null and button.disabled and button.text == "The trip takes 7 h and the week has less left.", where + "too few hours: greyed, with the reason (%s)" % [button.text if button != null else "none"])
 	GameState.calendar = {"week": 0, "phase": WeekCalendar.WEEKEND, "hours": 0}
-	office.call("_refresh_calendar")
-	_expect(button.disabled and button.text == "No travel at the weekend.", where + "at the weekend: greyed, with the reason (%s)" % button.text)
-	GameState.calendar = WeekCalendar.fresh()
+	button = await _strip_here()
+	_expect(button != null and button.disabled and button.text == "No travel at the weekend.", where + "at the weekend: greyed, with the reason (%s)" % [button.text if button != null else "none"])
 	GameState.office_location = Offices.CAPITOL
-	office.call("_refresh_calendar")
+	GameState.calendar = {"week": 0, "phase": WeekCalendar.WORK, "hours": 36}
+	_expect(await _strip_here() == null, where + "at the Capitol the concourse's To the tracks button is greyed when the trip is refused")
+	var why := office.get_node("VenuePanel").find_child("ToTracksButton", true, false) as Button
+	_expect(why != null and why.disabled and why.text == "The trip takes 7 h and the week has less left.", where + "and says why (%s)" % [why.text if why != null else "none"])
+	GameState.calendar = WeekCalendar.fresh()
 
 	# The drag takes the trip (the far side of the track), and back again.
+	button = await _strip_here()
 	await _drag(button, 0.9)
 	_expect(GameState.office_location == Offices.DISTRICT and _left() == 33, where + "a long drag takes the trip (%s, %d left)" % [GameState.office_location, _left()])
+	button = await _strip_here()
 	await _drag(button, 0.9)
 	_expect(GameState.office_location == Offices.CAPITOL and _left() == 26, where + "and a long drag from the District office brings the player back")
 	# A greyed strip ignores a drag.
+	GameState.office_location = Offices.DISTRICT
 	GameState.calendar = {"week": 0, "phase": WeekCalendar.WORK, "hours": 36}
-	office.call("_refresh_calendar")
+	button = await _strip_here()
 	await _drag(button, 0.9)
-	_expect(GameState.office_location == Offices.CAPITOL, where + "a greyed strip ignores the drag")
+	_expect(GameState.office_location == Offices.DISTRICT, where + "a greyed strip ignores the drag")
+	GameState.office_location = Offices.CAPITOL
 	GameState.calendar = WeekCalendar.fresh()
-	office.call("_refresh_calendar")
+	office.get("_venues").call("close_all")
 
 
 ## A promise is kept at the office of the choice that made it (two offices, slice 3): the Promises panel says where, the Keep
@@ -203,34 +239,42 @@ func _promise(style: String) -> void:
 	GameState.office_location = Offices.CAPITOL
 
 
-## Tickets (slice 4): the mode row appears when the player holds one, a paid ticket is pulled like the pass and pleases three
-## organizations, a plane is instant (its own confirm), a mixed level's briefing has a row to pay for its trips, and a trip can
-## bring an encounter on the train.
+## Tickets (slice 4, at the stations since 2026-11-24): the concourse lists every way of going (the ones the player has no ticket for,
+## and the one that is not theirs, greyed), a paid ticket is pulled like the pass and pleases three organizations, a plane is
+## instant (its own confirm), a mixed level's briefing has a row to pay for its trips, and a trip can bring an encounter on the train.
 func _tickets(style: String) -> void:
 	var where := "in %s: " % style
 	var office := _screen()
 	GameState.office_location = Offices.CAPITOL
 	GameState.calendar = WeekCalendar.fresh()
 	GameState.inventory = {}
-	office.call("_refresh_calendar")
-	_expect(not (office.get("_travel_modes_row") as Control).visible, where + "with no ticket there is no row of modes")
+	office.get("_venues").call("show_venue", "VN06")
+	await get_tree().create_timer(0.4).timeout
+	var concourse := office.get_node("VenuePanel")
+	var none_ticket := concourse.find_child("TravelMode_ticket", true, false) as Button
+	var none_plane := concourse.find_child("TravelMode_plane", true, false) as Button
+	var not_car := concourse.find_child("TravelMode_car", true, false) as Button
+	_expect(none_ticket != null and none_ticket.disabled and none_ticket.text == "Paid train ticket · 7 h · 0 left", where + "with no ticket the paid ticket is greyed (%s)" % [none_ticket.text if none_ticket != null else "none"])
+	_expect(none_plane != null and none_plane.disabled and none_plane.text == "Plane ticket · 2 h · 0 left", where + "and so is the plane (%s)" % [none_plane.text if none_plane != null else "none"])
+	_expect(not_car != null and not_car.disabled and not_car.text == "Private car · not yours", where + "the car is not PC04's, greyed and says so (%s)" % [not_car.text if not_car != null else "none"])
 	GameState.add_item("SH42")
 	GameState.add_item("SH44")
 	GameState.add_item("SH44")
-	office.call("_refresh_calendar")
-	var row := office.get("_travel_modes_row") as Control
-	_expect(row.visible and row.get_child_count() == 3, where + "with tickets the modes are shown")
-	var strip := office.find_child("TravelButton", true, false) as TravelStrip
+	office.get("_venues").call("show_venue", "VN06")
+	await get_tree().create_timer(0.4).timeout
 	var standing := int(GameState.booster_standing.get("BO14", 0))
-	(row.find_child("TravelMode_ticket", true, false) as Button).pressed.emit()
-	await get_tree().process_frame
-	_expect(strip.text == "To Noheji · 7 h · Paid train ticket", where + "the strip is set to the ticket (%s)" % strip.text)
+	(office.get_node("VenuePanel").find_child("TravelMode_ticket", true, false) as Button).pressed.emit()
+	await get_tree().create_timer(0.4).timeout
+	var strip := await _strip_here()
+	_expect(strip != null and strip.text == "To Noheji · 7 h · Paid train ticket", where + "the strip is set to the ticket (%s)" % [strip.text if strip != null else "none"])
 	await _drag(strip, 0.9)
 	_expect(GameState.office_location == Offices.DISTRICT and GameState.item_count("SH42") == 0, where + "the ticket was handed over")
 	_expect(int(GameState.booster_standing.get("BO14", 0)) == standing + 2, where + "and the Commuter Committee noticed")
 	# A plane: the confirm names the cost, then the trip is instant.
-	office.call("_refresh_calendar")
-	var plane := row.find_child("TravelMode_plane", true, false) as Button
+	office.get("_venues").call("close_all")
+	office.get("_venues").call("show_venue", "VN07")
+	await get_tree().create_timer(0.4).timeout
+	var plane := office.get_node("VenuePanel").find_child("TravelMode_plane", true, false) as Button
 	_expect(plane != null and plane.text == "Plane ticket · 2 h · 2 left", where + "the plane button says its hours and tickets (%s)" % [plane.text if plane != null else "none"])
 	plane.pressed.emit()
 	await get_tree().create_timer(0.3).timeout
@@ -266,6 +310,7 @@ func _tickets(style: String) -> void:
 	GameState.office_location = Offices.CAPITOL
 	GameState.calendar = WeekCalendar.fresh()
 	office.call("_refresh_calendar")
+	strip = await _strip_here()
 	await _drag(strip, 0.9)
 	var event_panel := office.get_node("EventPanel") as Overlay
 	_expect(event_panel.visible and _texts(event_panel).has("On the train"), where + "the trip brought an encounter (%s)" % [_texts(event_panel)])
