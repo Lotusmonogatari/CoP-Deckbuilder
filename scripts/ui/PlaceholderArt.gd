@@ -78,6 +78,9 @@ const STANDARD_GRAVITY := 9.81
 ## A reading weaker than this is no sensor at all (a desktop reports zero).
 const NO_SENSOR := 0.5
 
+## True for a picture that sits inside a card or a list (the place map's banner): all four sides fade, whatever the picture's place on
+## the screen is when it is laid out. Off for a picture that fills a screen, whose sides at the screen's edge stay sharp.
+var fade_all_sides := false
 var _texture_rect: TextureRect
 var _label: Label
 var _is_placeholder := false
@@ -222,11 +225,13 @@ func _update_soft_edges() -> void:
 	width = minf(width, minf(size.x, size.y) * 0.5)
 	var box := get_global_rect()
 	var screen := get_viewport_rect()
-	var fade := Vector4(
-		0.0 if box.position.x <= screen.position.x + SCREEN_EDGE_TOLERANCE else width,
-		0.0 if box.position.y <= screen.position.y + SCREEN_EDGE_TOLERANCE else width,
-		0.0 if box.end.x >= screen.end.x - SCREEN_EDGE_TOLERANCE else width,
-		0.0 if box.end.y >= screen.end.y - SCREEN_EDGE_TOLERANCE else width)
+	var fade := Vector4(width, width, width, width)
+	if not fade_all_sides:
+		fade = Vector4(
+			0.0 if box.position.x <= screen.position.x + SCREEN_EDGE_TOLERANCE else width,
+			0.0 if box.position.y <= screen.position.y + SCREEN_EDGE_TOLERANCE else width,
+			0.0 if box.end.x >= screen.end.x - SCREEN_EDGE_TOLERANCE else width,
+			0.0 if box.end.y >= screen.end.y - SCREEN_EDGE_TOLERANCE else width)
 	# The box in the picture's own pixels: the picture hangs past the box
 	# while it is dragged or tilted, so the box starts at minus its position.
 	material.set_shader_parameter("box_rect", Vector4(-_texture_rect.position.x, -_texture_rect.position.y, size.x, size.y))

@@ -118,6 +118,7 @@ func _venue_card(look: Dictionary, venue: Dictionary) -> Control:
 	# (Cameron chose this card over the thumbnail one, 2026-11-24).
 	var banner := _picture(_venue_picture_id(venue), 230.0)
 	banner.name = "VenueBanner"
+	banner.fade_all_sides = true   # all four sides blur out into the card, wherever the card is on the screen
 	column.add_child(banner)
 	var words := UiKit.tight_column()
 	words.size_flags_horizontal = Control.SIZE_EXPAND_FILL
