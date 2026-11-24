@@ -10855,5 +10855,12 @@
     "english": "Open",
     "placeholders": null,
     "notes": "Speech Coach activities (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "office.week_cost_limit",
+    "where": "Week-end costs: the party's weekly limit on dues is holding this week's dues down",
+    "english": "The party never asks for more than {yen}円 in dues in a week.",
+    "placeholders": "yen",
+    "notes": "P17 (2026-11-24): Claude's draft for Cameron to reword."
   }
 ]

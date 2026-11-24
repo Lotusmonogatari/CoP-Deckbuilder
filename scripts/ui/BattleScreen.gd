@@ -277,6 +277,7 @@ func _build_inventory() -> void:
 
 	var button := Button.new()
 	button.name = "InventoryButton"
+	button.set_meta("compact", true)   # slim padding like Details, so the row stays short on a 9:16 phone (Layout)
 	button.text = Text.say("inventory.button")
 	button.custom_minimum_size = _details_button.custom_minimum_size
 	button.size_flags_vertical = _details_button.size_flags_vertical

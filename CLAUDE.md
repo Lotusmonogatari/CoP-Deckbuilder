@@ -21,7 +21,7 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 | Resolution | Base 1080 × 2340 (9:19.5). Stretch mode `canvas_items`, aspect `expand`. Respect device safe areas. |
 | Data-driven | **All content comes from `/data/*.json`**, exported from the workbook. Never hardcode card values, stage rules, names, sentences or design numbers in scripts. |
 | Art | 2D PNGs only, loaded by ID from `/assets/` with fallbacks; missing art falls back to a labelled placeholder. No 3D, no rigging. |
-| Text | English is primary everywhere. Japanese appears only as a small, muted accent **next to** English, never alone. Fonts: cards use Antaka Brush Display; everything else Antaka Brush Text with Noto Sans JP as its fallback (Antaka has the accented Latin letters ō Ō ū Ū ā ī é ü but not −, ×, • or →). `tools/build_theme.gd` builds the theme. |
+| Text | English is primary everywhere. Japanese appears only as a small, muted accent **next to** English, never alone. Fonts: headings and card faces use Antaka Brush Display; body text uses Antaka Brush Text in Woodblock and Living Office (Broadcast: Barlow Condensed bold italic for titles, Noto Sans JP for body); Noto Sans JP is the fallback (Antaka has the accented Latin letters ō Ō ū Ū ā ī é ü but not −, ×, • or →, and no Japanese). `tools/build_theme.gd` builds the base theme and the three look overlays (`scripts/ui/UiStyleTheme.gd` holds each look's fonts). |
 | Code style | Heavily commented, small files, descriptive names. Pure game rules live separately from UI code. |
 | Source control | Git. Commit at the end of each piece of work with a plain-English message. Merge to `main` only after `tools/verify.sh` prints "All checks passed". |
 
@@ -356,3 +356,5 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The District's Old Shrine and Local Shotengai on the Step out map, a picture on every place card (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
 - Venue activities: the shrine, the shotengai and the Library get costed activities, limits and the shrine's gifts (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
 - Speech Coach: two practice activities beside Rhetoric Training (2026-11-24, Cameron; branch `feature/speech-coach-activities`)
+- Body text is Antaka Brush Text in Woodblock and Living Office (2026-11-24, Cameron; branch `feature/antaka-body-font`)
+- P17: economy rebalance, the 8,000円-and-20-XP hour, room pay, level bonuses, dues limit, wages and prices (2026-11-24, Cameron; branch `feature/p17-economy`)

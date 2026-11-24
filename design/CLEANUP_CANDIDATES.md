@@ -251,3 +251,5 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 ## "You overhear" lead (2026-11-23)
 
 `venue.overhear_lead` ("You overhear two aides on the bench behind the hedge.") and the lead option of `VenueViews.speaker_row` are no longer used (Cameron: no automatic lead). Ask before removing the row; a line that wants the words can use them in its own Text.
+
+- **Shippori Mincho B1 and Zen Kaku Gothic New fonts** (2026-11-24): `assets/fonts/ShipporiMinchoB1-*.woff2` and `ZenKakuGothicNew-*.woff2`, and the `SHIPPORI` and `ZEN` constants in `scripts/ui/UiStyleTheme.gd`, are no longer used for body text since Woodblock and Living Office moved to Antaka Brush Text. Kept in case the look returns; remove only with Cameron's say-so.

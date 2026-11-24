@@ -90,7 +90,7 @@ func _lv11(style: String) -> void:
 	_expect(panel.find_child("WeekBar", true, false) != null, where + "the week bar")
 	_expect(panel.find_children("Tile_*", "PanelContainer", true, false).size() == 5, where + "five totals tiles")
 	_expect(panel.find_child("HowItPays", true, false) != null, where + "the note about when rooms and the bonus pay")
-	_expect(texts.has("+55,000円"), where + "the Funds total, in yen, signed")
+	_expect(texts.has("+42,000円"), where + "the Funds total, in yen, signed (the rooms' 42,000円 since the P17 economy pass; the bonus is shown on its own)")
 	_expect(panel.find_children("OrgRow_*", "HBoxContainer", true, false).size() == 3, where + "three organization rows")
 	_expect(texts.has("Students United"), where + "organizations are named")
 

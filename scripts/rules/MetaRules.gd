@@ -104,6 +104,7 @@ static func deltas_for(stage: Dictionary, outcome: String) -> Dictionary:
 static func _apply_deltas(meta: Dictionary, deltas: Dictionary, sanban_rows: Array) -> Dictionary:
 	var updated := meta.duplicate()
 	var applied := {}
+	var requested := {}   # what was asked for before the limit clamped it (Funds earned count toward dues in full, P17)
 
 	for name: String in deltas.keys():
 		var delta: int = deltas[name]
@@ -114,8 +115,9 @@ static func _apply_deltas(meta: Dictionary, deltas: Dictionary, sanban_rows: Arr
 		var after := clamp_meta(before, delta, variable)
 		updated[name] = after
 		applied[name] = after - before
+		requested[name] = delta
 
-	return {"meta": updated, "applied": applied}
+	return {"meta": updated, "applied": applied, "requested": requested}
 
 
 ## Applies what a stage's closing score did to the player's standing.
@@ -131,11 +133,12 @@ static func apply_score_effects(meta: Dictionary, stage: Dictionary, score: int,
 		sanban_rows: Array) -> Dictionary:
 	var updated := meta.duplicate()
 	var applied := {}
+	var requested := {}
 
 	var effects: Dictionary = stage.get("tone_effects", {})
 	var per_variable: Dictionary = effects.get("meta", {})
 	if per_variable.is_empty():
-		return {"meta": updated, "applied": applied}
+		return {"meta": updated, "applied": applied, "requested": {}}
 
 	var baseline := int(effects.get("baseline", 50))
 	var distance := score - baseline
@@ -156,8 +159,9 @@ static func apply_score_effects(meta: Dictionary, stage: Dictionary, score: int,
 		var after := clamp_meta(before, delta, variable)
 		updated[name] = after
 		applied[name] = after - before
+		requested[name] = delta
 
-	return {"meta": updated, "applied": applied}
+	return {"meta": updated, "applied": applied, "requested": requested}
 
 
 ## Which modifiers are switched on by the player's standing with their party.

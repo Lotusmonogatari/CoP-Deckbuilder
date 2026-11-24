@@ -17,9 +17,9 @@ func _hire(staff_id: String) -> void:
 # --- rules ----------------------------------------------------------------
 
 func test_wage_is_ten_percent_of_everything_invested() -> void:
-	assert_eq(StaffLoyalty.wage(40000, false), 6000)
-	assert_eq(StaffLoyalty.wage(130000, false), 19500, "hire plus upgrades")
-	assert_eq(StaffLoyalty.wage(40000, true), 9000, "raised pay is half as much again")
+	assert_eq(StaffLoyalty.wage(40000, false), 4000, "10% of the 40,000円 invested (P17, 2026-11-24)")
+	assert_eq(StaffLoyalty.wage(130000, false), 13000, "hire plus upgrades")
+	assert_eq(StaffLoyalty.wage(40000, true), 6000, "raised pay is half as much again")
 
 
 func test_new_hire_starts_loyal_enough_to_work() -> void:
@@ -121,8 +121,8 @@ func test_wages_are_paid_after_dues_and_loyalty_rises() -> void:
 	GameState.booster_standing["BO21"] = 60   # an ally you treat well
 	var before := int(GameState.meta["Funds"])
 	var report := GameState._settle_staff_week()
-	assert_eq(int(report["paid_total"]), 6000)
-	assert_eq(int(GameState.meta["Funds"]), before - 6000)
+	assert_eq(int(report["paid_total"]), 4000)
+	assert_eq(int(GameState.meta["Funds"]), before - 4000)
 	assert_gt(GameState.staff_loyalty_of("SF01"), 30, "paid on time: Loyalty up")
 
 
@@ -169,10 +169,10 @@ func test_a_lost_rank_takes_its_rewards_back_and_can_be_bought_again() -> void:
 
 func test_upgrades_count_toward_the_wage() -> void:
 	_hire("SF02")
-	assert_eq(GameState.staff_wage_of("SF02"), 4500)
+	assert_eq(GameState.staff_wage_of("SF02"), 3000)
 	GameState.staff_loyalty["SF02"] = 60
 	assert_eq(GameState.upgrade_staff_member("SF02"), "")
-	assert_eq(GameState.staff_wage_of("SF02"), 13500, "30,000 hire plus 60,000 upgrade is 90,000")
+	assert_eq(GameState.staff_wage_of("SF02"), 9000, "30,000 hire plus 60,000 upgrade is 90,000, and the wage 10% of it")
 
 
 func test_a_restless_person_will_not_take_a_promotion() -> void:
@@ -186,7 +186,7 @@ func test_raise_pay_costs_more_and_pays_loyalty_once_a_week() -> void:
 	_hire("SF01")
 	assert_eq(GameState.raise_pay("SF01"), "")
 	assert_eq(GameState.staff_loyalty_of("SF01"), 60)
-	assert_eq(GameState.staff_wage_of("SF01"), 9000)
+	assert_eq(GameState.staff_wage_of("SF01"), 6000)
 	assert_ne(GameState.raise_pay("SF01"), "", "once a week")
 
 

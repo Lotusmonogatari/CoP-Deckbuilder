@@ -250,10 +250,7 @@
       "min": 0,
       "max": 3
     },
-    "bonus_win_range_yen": {
-      "min": 0,
-      "max": 1100
-    },
+    "bonus_win_range_yen": null,
     "bonus_win_range_reputation": {
       "min": 0,
       "max": 5
@@ -337,18 +334,12 @@
     "stage_9": null,
     "stage_10": null,
     "bonus_win_range_jiban": null,
-    "bonus_win_range_yen": {
-      "min": 0,
-      "max": 6000
-    },
+    "bonus_win_range_yen": null,
     "bonus_win_range_reputation": {
       "min": 2,
       "max": 2
     },
-    "bonus_win_range_xp": {
-      "min": 30,
-      "max": 30
-    },
+    "bonus_win_range_xp": null,
     "bonus_win_range_party_support": {
       "min": 0,
       "max": 4
@@ -448,15 +439,9 @@
       "min": 0,
       "max": 4
     },
-    "bonus_win_range_yen": {
-      "min": 0,
-      "max": 26400
-    },
+    "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": {
-      "min": 6,
-      "max": 6
-    },
+    "bonus_win_range_xp": null,
     "bonus_win_range_party_support": {
       "min": 2,
       "max": 12
@@ -559,15 +544,9 @@
       "min": 0,
       "max": 2
     },
-    "bonus_win_range_yen": {
-      "min": 0,
-      "max": 30000
-    },
+    "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": {
-      "min": 6,
-      "max": 6
-    },
+    "bonus_win_range_xp": null,
     "bonus_win_range_party_support": {
       "min": 4,
       "max": 14
@@ -658,18 +637,12 @@
     "stage_9": null,
     "stage_10": null,
     "bonus_win_range_jiban": null,
-    "bonus_win_range_yen": {
-      "min": 3000,
-      "max": 19000
-    },
+    "bonus_win_range_yen": null,
     "bonus_win_range_reputation": {
       "min": 7,
       "max": 7
     },
-    "bonus_win_range_xp": {
-      "min": 15,
-      "max": 15
-    },
+    "bonus_win_range_xp": null,
     "bonus_win_range_party_support": {
       "min": 10,
       "max": 17
@@ -754,18 +727,12 @@
     "stage_9": null,
     "stage_10": null,
     "bonus_win_range_jiban": null,
-    "bonus_win_range_yen": {
-      "min": 0,
-      "max": 22000
-    },
+    "bonus_win_range_yen": null,
     "bonus_win_range_reputation": {
       "min": 3,
       "max": 3
     },
-    "bonus_win_range_xp": {
-      "min": 10,
-      "max": 10
-    },
+    "bonus_win_range_xp": null,
     "bonus_win_range_party_support": {
       "min": 10,
       "max": 22
@@ -851,16 +818,16 @@
       "max": 19
     },
     "bonus_win_range_yen": {
-      "min": 6000,
-      "max": 30000
+      "min": 19000,
+      "max": 19000
     },
     "bonus_win_range_reputation": {
       "min": 7,
       "max": 14
     },
     "bonus_win_range_xp": {
-      "min": 66,
-      "max": 114
+      "min": 48,
+      "max": 48
     },
     "bonus_win_range_party_support": {
       "min": 2,
@@ -953,16 +920,16 @@
       "max": 1
     },
     "bonus_win_range_yen": {
-      "min": 3000,
-      "max": 12000
+      "min": 4000,
+      "max": 4000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 2
     },
     "bonus_win_range_xp": {
-      "min": 15,
-      "max": 30
+      "min": 10,
+      "max": 10
     },
     "bonus_win_range_party_support": {
       "min": 1,
@@ -1046,16 +1013,16 @@
       "max": 2
     },
     "bonus_win_range_yen": {
-      "min": 5000,
-      "max": 15000
+      "min": 9000,
+      "max": 9000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 3
     },
     "bonus_win_range_xp": {
-      "min": 20,
-      "max": 35
+      "min": 23,
+      "max": 23
     },
     "bonus_win_range_party_support": {
       "min": 2,
@@ -1139,16 +1106,16 @@
       "max": 2
     },
     "bonus_win_range_yen": {
-      "min": 5000,
-      "max": 18000
+      "min": 11000,
+      "max": 11000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 3
     },
     "bonus_win_range_xp": {
-      "min": 20,
-      "max": 35
+      "min": 27,
+      "max": 27
     },
     "bonus_win_range_party_support": {
       "min": 2,
@@ -1229,16 +1196,16 @@
       "max": 2
     },
     "bonus_win_range_yen": {
-      "min": 6000,
-      "max": 20000
+      "min": 12000,
+      "max": 12000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 3
     },
     "bonus_win_range_xp": {
-      "min": 25,
-      "max": 40
+      "min": 30,
+      "max": 30
     },
     "bonus_win_range_party_support": {
       "min": 2,
@@ -1319,16 +1286,16 @@
       "max": 4
     },
     "bonus_win_range_yen": {
-      "min": 9600,
-      "max": 26400
+      "min": 16000,
+      "max": 16000
     },
     "bonus_win_range_reputation": {
       "min": 2,
       "max": 5
     },
     "bonus_win_range_xp": {
-      "min": 30,
-      "max": 54
+      "min": 40,
+      "max": 40
     },
     "bonus_win_range_party_support": {
       "min": 4,
@@ -1415,16 +1382,16 @@
       "max": 4
     },
     "bonus_win_range_yen": {
-      "min": 12000,
-      "max": 30000
+      "min": 18000,
+      "max": 18000
     },
     "bonus_win_range_reputation": {
       "min": 2,
       "max": 6
     },
     "bonus_win_range_xp": {
-      "min": 36,
-      "max": 66
+      "min": 45,
+      "max": 45
     },
     "bonus_win_range_party_support": {
       "min": 4,
@@ -1508,16 +1475,16 @@
       "max": 4
     },
     "bonus_win_range_yen": {
-      "min": 12000,
-      "max": 28000
+      "min": 17000,
+      "max": 17000
     },
     "bonus_win_range_reputation": {
       "min": 2,
       "max": 5
     },
     "bonus_win_range_xp": {
-      "min": 35,
-      "max": 60
+      "min": 43,
+      "max": 43
     },
     "bonus_win_range_party_support": {
       "min": 4,
@@ -1604,16 +1571,16 @@
       "max": 5
     },
     "bonus_win_range_yen": {
-      "min": 18000,
-      "max": 36000
+      "min": 24000,
+      "max": 24000
     },
     "bonus_win_range_reputation": {
       "min": 4,
       "max": 7
     },
     "bonus_win_range_xp": {
-      "min": 48,
-      "max": 78
+      "min": 59,
+      "max": 59
     },
     "bonus_win_range_party_support": {
       "min": 6,
@@ -1700,16 +1667,16 @@
       "max": 5
     },
     "bonus_win_range_yen": {
-      "min": 18000,
-      "max": 36000
+      "min": 27000,
+      "max": 27000
     },
     "bonus_win_range_reputation": {
       "min": 4,
       "max": 7
     },
     "bonus_win_range_xp": {
-      "min": 48,
-      "max": 78
+      "min": 68,
+      "max": 68
     },
     "bonus_win_range_party_support": {
       "min": 6,
@@ -1796,16 +1763,16 @@
       "max": 6
     },
     "bonus_win_range_yen": {
-      "min": 18000,
-      "max": 42000
+      "min": 33000,
+      "max": 33000
     },
     "bonus_win_range_reputation": {
       "min": 4,
       "max": 8
     },
     "bonus_win_range_xp": {
-      "min": 48,
-      "max": 84
+      "min": 83,
+      "max": 83
     },
     "bonus_win_range_party_support": {
       "min": 6,
@@ -1892,16 +1859,16 @@
       "max": 6
     },
     "bonus_win_range_yen": {
-      "min": 21600,
-      "max": 45600
+      "min": 40000,
+      "max": 40000
     },
     "bonus_win_range_reputation": {
       "min": 4,
       "max": 8
     },
     "bonus_win_range_xp": {
-      "min": 54,
-      "max": 90
+      "min": 100,
+      "max": 100
     },
     "bonus_win_range_party_support": {
       "min": 7,
@@ -1988,16 +1955,16 @@
       "max": 7
     },
     "bonus_win_range_yen": {
-      "min": 24000,
-      "max": 50400
+      "min": 43000,
+      "max": 43000
     },
     "bonus_win_range_reputation": {
       "min": 5,
       "max": 10
     },
     "bonus_win_range_xp": {
-      "min": 60,
-      "max": 102
+      "min": 108,
+      "max": 108
     },
     "bonus_win_range_party_support": {
       "min": 8,
@@ -2087,16 +2054,16 @@
       "max": 10
     },
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 66000
+      "min": 63000,
+      "max": 63000
     },
     "bonus_win_range_reputation": {
       "min": 6,
       "max": 12
     },
     "bonus_win_range_xp": {
-      "min": 72,
-      "max": 120
+      "min": 158,
+      "max": 158
     },
     "bonus_win_range_party_support": {
       "min": 10,
@@ -2180,16 +2147,16 @@
       "max": 10
     },
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 66000
+      "min": 70000,
+      "max": 70000
     },
     "bonus_win_range_reputation": {
       "min": 6,
       "max": 12
     },
     "bonus_win_range_xp": {
-      "min": 72,
-      "max": 120
+      "min": 175,
+      "max": 175
     },
     "bonus_win_range_party_support": {
       "min": 10,
@@ -2276,16 +2243,16 @@
       "max": 10
     },
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 66000
+      "min": 63000,
+      "max": 63000
     },
     "bonus_win_range_reputation": {
       "min": 6,
       "max": 12
     },
     "bonus_win_range_xp": {
-      "min": 72,
-      "max": 120
+      "min": 158,
+      "max": 158
     },
     "bonus_win_range_party_support": {
       "min": 10,
@@ -2369,16 +2336,16 @@
       "max": 1
     },
     "bonus_win_range_yen": {
-      "min": 2000,
-      "max": 10000
+      "min": 4000,
+      "max": 4000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 2
     },
     "bonus_win_range_xp": {
-      "min": 15,
-      "max": 25
+      "min": 10,
+      "max": 10
     },
     "bonus_win_range_party_support": {
       "min": 1,
@@ -2477,16 +2444,16 @@
       "max": 5
     },
     "bonus_win_range_yen": {
-      "min": 18000,
-      "max": 38000
+      "min": 34000,
+      "max": 34000
     },
     "bonus_win_range_reputation": {
       "min": 3,
       "max": 7
     },
     "bonus_win_range_xp": {
-      "min": 45,
-      "max": 75
+      "min": 86,
+      "max": 86
     },
     "bonus_win_range_party_support": {
       "min": 6,
@@ -2573,16 +2540,16 @@
       "max": 7
     },
     "bonus_win_range_yen": {
-      "min": 24000,
-      "max": 50400
+      "min": 53000,
+      "max": 53000
     },
     "bonus_win_range_reputation": {
       "min": 5,
       "max": 10
     },
     "bonus_win_range_xp": {
-      "min": 60,
-      "max": 102
+      "min": 133,
+      "max": 133
     },
     "bonus_win_range_party_support": {
       "min": 8,
@@ -2666,16 +2633,16 @@
       "max": 8
     },
     "bonus_win_range_yen": {
-      "min": 26400,
-      "max": 57600
+      "min": 46000,
+      "max": 46000
     },
     "bonus_win_range_reputation": {
       "min": 5,
       "max": 11
     },
     "bonus_win_range_xp": {
-      "min": 66,
-      "max": 108
+      "min": 116,
+      "max": 116
     },
     "bonus_win_range_party_support": {
       "min": 8,
@@ -2762,16 +2729,16 @@
       "max": 12
     },
     "bonus_win_range_yen": {
-      "min": 48000,
-      "max": 96000
+      "min": 68000,
+      "max": 68000
     },
     "bonus_win_range_reputation": {
       "min": 10,
       "max": 18
     },
     "bonus_win_range_xp": {
-      "min": 108,
-      "max": 180
+      "min": 171,
+      "max": 171
     },
     "bonus_win_range_party_support": {
       "min": 14,
@@ -3137,13 +3104,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 8000,
+      "max": 8000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 21,
+      "max": 21
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3215,13 +3182,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 12000,
+      "max": 12000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 29,
+      "max": 29
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3290,13 +3257,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 12000,
+      "max": 12000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 30,
+      "max": 30
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3365,13 +3332,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 10000,
+      "max": 10000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 24,
+      "max": 24
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3443,13 +3410,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 12000,
+      "max": 12000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 29,
+      "max": 29
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3518,13 +3485,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 12000,
+      "max": 12000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 29,
+      "max": 29
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3593,13 +3560,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 13000,
+      "max": 13000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 32,
+      "max": 32
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3668,13 +3635,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 10000,
+      "max": 10000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 24,
+      "max": 24
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3743,13 +3710,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 15000,
+      "max": 15000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 36,
+      "max": 36
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3824,13 +3791,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 36000,
-      "max": 60000
+      "min": 15000,
+      "max": 15000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 96,
-      "max": 144
+      "min": 36,
+      "max": 36
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3905,13 +3872,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 36000,
-      "max": 60000
+      "min": 15000,
+      "max": 15000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 96,
-      "max": 144
+      "min": 37,
+      "max": 37
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -3980,13 +3947,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 10000,
+      "max": 10000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 26,
+      "max": 26
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4058,13 +4025,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 9000,
+      "max": 9000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 22,
+      "max": 22
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4133,13 +4100,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 36000,
-      "max": 60000
+      "min": 17000,
+      "max": 17000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 96,
-      "max": 144
+      "min": 44,
+      "max": 44
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4214,13 +4181,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 32000,
+      "max": 32000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 81,
+      "max": 81
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4292,13 +4259,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 32000,
+      "max": 32000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 81,
+      "max": 81
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4367,13 +4334,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 96000,
-      "max": 144000
+      "min": 36000,
+      "max": 36000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 240,
-      "max": 360
+      "min": 89,
+      "max": 89
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4445,13 +4412,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 31000,
+      "max": 31000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 77,
+      "max": 77
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4523,13 +4490,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 8000,
+      "max": 8000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 21,
+      "max": 21
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4598,13 +4565,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 26000,
+      "max": 26000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 65,
+      "max": 65
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4673,13 +4640,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 96000,
-      "max": 144000
+      "min": 37000,
+      "max": 37000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 240,
-      "max": 360
+      "min": 93,
+      "max": 93
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4748,13 +4715,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 29000,
+      "max": 29000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 73,
+      "max": 73
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4829,13 +4796,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 96000,
-      "max": 144000
+      "min": 40000,
+      "max": 40000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 240,
-      "max": 360
+      "min": 101,
+      "max": 101
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4904,13 +4871,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 29000,
+      "max": 29000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 73,
+      "max": 73
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -4982,13 +4949,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 28000,
+      "max": 28000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 69,
+      "max": 69
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5057,13 +5024,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 21000,
+      "max": 21000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 53,
+      "max": 53
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5141,16 +5108,16 @@
       "max": 2
     },
     "bonus_win_range_yen": {
-      "min": 6000,
-      "max": 20000
+      "min": 8000,
+      "max": 8000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 3
     },
     "bonus_win_range_xp": {
-      "min": 25,
-      "max": 40
+      "min": 20,
+      "max": 20
     },
     "bonus_win_range_party_support": {
       "min": 2,
@@ -5228,16 +5195,16 @@
       "max": 2
     },
     "bonus_win_range_yen": {
-      "min": 6000,
-      "max": 20000
+      "min": 7000,
+      "max": 7000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 3
     },
     "bonus_win_range_xp": {
-      "min": 25,
-      "max": 40
+      "min": 18,
+      "max": 18
     },
     "bonus_win_range_party_support": {
       "min": 2,
@@ -5312,13 +5279,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 11000,
+      "max": 11000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 27,
+      "max": 27
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5393,13 +5360,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 27000,
+      "max": 27000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 67,
+      "max": 67
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5474,13 +5441,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 8000,
+      "max": 8000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 21,
+      "max": 21
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5549,13 +5516,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 36000,
-      "max": 60000
+      "min": 8000,
+      "max": 8000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 96,
-      "max": 144
+      "min": 21,
+      "max": 21
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5624,13 +5591,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 96000,
-      "max": 144000
+      "min": 26000,
+      "max": 26000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 240,
-      "max": 360
+      "min": 65,
+      "max": 65
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5705,13 +5672,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 23000,
+      "max": 23000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 57,
+      "max": 57
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5786,13 +5753,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 27000,
+      "max": 27000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 67,
+      "max": 67
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5861,13 +5828,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 10000,
+      "max": 10000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 24,
+      "max": 24
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -5936,13 +5903,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 96000,
-      "max": 144000
+      "min": 24000,
+      "max": 24000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 240,
-      "max": 360
+      "min": 59,
+      "max": 59
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6014,13 +5981,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 9000,
+      "max": 9000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 23,
+      "max": 23
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6092,13 +6059,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 9000,
+      "max": 9000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 23,
+      "max": 23
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6170,13 +6137,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 10000,
+      "max": 10000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 26,
+      "max": 26
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6245,13 +6212,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 80000,
-      "max": 120000
+      "min": 24000,
+      "max": 24000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 200,
-      "max": 300
+      "min": 61,
+      "max": 61
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6320,13 +6287,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 10000,
+      "max": 10000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 24,
+      "max": 24
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6395,13 +6362,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 9000,
+      "max": 9000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 23,
+      "max": 23
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6470,13 +6437,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 96000,
-      "max": 144000
+      "min": 25000,
+      "max": 25000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 240,
-      "max": 360
+      "min": 63,
+      "max": 63
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6545,13 +6512,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 10000,
+      "max": 10000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 24,
+      "max": 24
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6620,13 +6587,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 96000,
-      "max": 144000
+      "min": 28000,
+      "max": 28000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 240,
-      "max": 360
+      "min": 69,
+      "max": 69
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -6701,13 +6668,13 @@
     "stage_10": null,
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": {
-      "min": 30000,
-      "max": 50000
+      "min": 11000,
+      "max": 11000
     },
     "bonus_win_range_reputation": null,
     "bonus_win_range_xp": {
-      "min": 80,
-      "max": 120
+      "min": 27,
+      "max": 27
     },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
@@ -8182,7 +8149,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 10,
+      "max": 10
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8257,7 +8227,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 40,
+      "max": 40
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8335,7 +8308,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 11,
+      "max": 11
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8413,7 +8389,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 44,
+      "max": 44
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8491,7 +8470,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 10,
+      "max": 10
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8566,7 +8548,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 40,
+      "max": 40
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8644,7 +8629,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 10,
+      "max": 10
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8719,7 +8707,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 40,
+      "max": 40
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8797,7 +8788,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 10,
+      "max": 10
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8872,7 +8866,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 40,
+      "max": 40
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -8950,7 +8947,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 11,
+      "max": 11
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -9025,7 +9025,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 44,
+      "max": 44
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -9103,7 +9106,10 @@
     "bonus_win_range_jiban": null,
     "bonus_win_range_yen": null,
     "bonus_win_range_reputation": null,
-    "bonus_win_range_xp": null,
+    "bonus_win_range_xp": {
+      "min": 12,
+      "max": 12
+    },
     "bonus_win_range_party_support": null,
     "win_delta_bo01": null,
     "win_delta_bo02": null,
@@ -9174,16 +9180,16 @@
       "max": 1
     },
     "bonus_win_range_yen": {
-      "min": 3000,
-      "max": 12000
+      "min": 6000,
+      "max": 6000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 2
     },
     "bonus_win_range_xp": {
-      "min": 15,
-      "max": 30
+      "min": 19,
+      "max": 19
     },
     "bonus_win_range_party_support": {
       "min": 1,
@@ -9275,16 +9281,16 @@
       "max": 6
     },
     "bonus_win_range_yen": {
-      "min": 21600,
-      "max": 45600
+      "min": 28000,
+      "max": 28000
     },
     "bonus_win_range_reputation": {
       "min": 4,
       "max": 8
     },
     "bonus_win_range_xp": {
-      "min": 54,
-      "max": 90
+      "min": 69,
+      "max": 69
     },
     "bonus_win_range_party_support": {
       "min": 7,
@@ -9376,16 +9382,16 @@
       "max": 1
     },
     "bonus_win_range_yen": {
-      "min": 3000,
-      "max": 12000
+      "min": 6000,
+      "max": 6000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 2
     },
     "bonus_win_range_xp": {
-      "min": 15,
-      "max": 30
+      "min": 18,
+      "max": 18
     },
     "bonus_win_range_party_support": {
       "min": 1,
@@ -9477,16 +9483,16 @@
       "max": 6
     },
     "bonus_win_range_yen": {
-      "min": 21600,
-      "max": 45600
+      "min": 26000,
+      "max": 26000
     },
     "bonus_win_range_reputation": {
       "min": 4,
       "max": 8
     },
     "bonus_win_range_xp": {
-      "min": 54,
-      "max": 90
+      "min": 65,
+      "max": 65
     },
     "bonus_win_range_party_support": {
       "min": 7,
@@ -9581,16 +9587,16 @@
       "max": 1
     },
     "bonus_win_range_yen": {
-      "min": 3000,
-      "max": 12000
+      "min": 6000,
+      "max": 6000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 2
     },
     "bonus_win_range_xp": {
-      "min": 15,
-      "max": 30
+      "min": 18,
+      "max": 18
     },
     "bonus_win_range_party_support": {
       "min": 1,
@@ -9684,16 +9690,16 @@
       "max": 6
     },
     "bonus_win_range_yen": {
-      "min": 21600,
-      "max": 45600
+      "min": 26000,
+      "max": 26000
     },
     "bonus_win_range_reputation": {
       "min": 4,
       "max": 8
     },
     "bonus_win_range_xp": {
-      "min": 54,
-      "max": 90
+      "min": 64,
+      "max": 64
     },
     "bonus_win_range_party_support": {
       "min": 7,
@@ -9785,16 +9791,16 @@
       "max": 6
     },
     "bonus_win_range_yen": {
-      "min": 21600,
-      "max": 45600
+      "min": 15000,
+      "max": 15000
     },
     "bonus_win_range_reputation": {
       "min": 4,
       "max": 8
     },
     "bonus_win_range_xp": {
-      "min": 54,
-      "max": 90
+      "min": 46,
+      "max": 46
     },
     "bonus_win_range_party_support": {
       "min": 7,
@@ -9886,16 +9892,16 @@
       "max": 1
     },
     "bonus_win_range_yen": {
-      "min": 3000,
-      "max": 12000
+      "min": 8000,
+      "max": 8000
     },
     "bonus_win_range_reputation": {
       "min": 1,
       "max": 2
     },
     "bonus_win_range_xp": {
-      "min": 15,
-      "max": 30
+      "min": 21,
+      "max": 21
     },
     "bonus_win_range_party_support": {
       "min": 1,

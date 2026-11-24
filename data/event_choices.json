@@ -431,8 +431,8 @@
     "party_support_delta": null,
     "district_delta": null,
     "national_delta": {
-      "min": 4,
-      "max": 6
+      "min": 16,
+      "max": 24
     },
     "rewards": null,
     "unlocks_level": null,
@@ -459,14 +459,14 @@
     "xp_delta": null,
     "constituency_delta": null,
     "reputation_delta": {
-      "min": 1,
-      "max": 2
+      "min": 4,
+      "max": 8
     },
     "party_support_delta": null,
     "district_delta": null,
     "national_delta": {
-      "min": 3,
-      "max": 5
+      "min": 12,
+      "max": 20
     },
     "rewards": null,
     "unlocks_level": null,
@@ -499,8 +499,8 @@
     "party_support_delta": null,
     "district_delta": null,
     "national_delta": {
-      "min": 4,
-      "max": 7
+      "min": 16,
+      "max": 28
     },
     "rewards": null,
     "unlocks_level": null,

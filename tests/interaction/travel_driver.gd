@@ -269,7 +269,7 @@ func _tickets(style: String) -> void:
 	_expect(strip != null and strip.text == "To Noheji · 7 h · Paid train ticket", where + "the strip is set to the ticket (%s)" % [strip.text if strip != null else "none"])
 	await _drag(strip, 0.9)
 	_expect(GameState.office_location == Offices.DISTRICT and GameState.item_count("SH42") == 0, where + "the ticket was handed over")
-	_expect(int(GameState.booster_standing.get("BO14", 0)) == standing + 2, where + "and the Commuter Committee noticed")
+	_expect(int(GameState.booster_standing.get("BO14", 0)) == standing + 1, where + "and the Commuter Committee noticed (+1 since P17)")
 	# A plane: the confirm names the cost, then the trip is instant.
 	office.get("_venues").call("close_all")
 	office.get("_venues").call("show_venue", "VN07")

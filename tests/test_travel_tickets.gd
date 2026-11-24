@@ -37,14 +37,18 @@ func test_the_modes_are_the_pass_and_whatever_tickets_are_held() -> void:
 	assert_eq(GameState.travel_modes(), [Travel.PASS, Travel.TICKET, Travel.PLANE] as Array[String])
 
 
-func test_a_paid_ticket_has_the_trains_hours_and_pleases_three_organizations() -> void:
+func test_a_paid_ticket_has_the_trains_hours_and_pleases_the_commuter_committee_alone() -> void:
 	GameState.add_item("SH42")
-	var before := int(GameState.booster_standing.get("BO23", 0))
+	var before := int(GameState.booster_standing.get("BO14", 0))
+	var taxpayers := int(GameState.booster_standing.get("BO23", 0))
+	var chamber := int(GameState.booster_standing.get("BO05", 0))
 	var left := WeekCalendar.hours_left(GameState.calendar, GameState.calendar_config())
 	assert_true(GameState.travel(Travel.TICKET))
 	assert_eq(GameState.item_count("SH42"), 0, "the ticket is handed over")
 	assert_eq(WeekCalendar.hours_left(GameState.calendar, GameState.calendar_config()), left - 7, "the same seven hours as the pass")
-	assert_eq(int(GameState.booster_standing.get("BO23", 0)), before + 2, "+2 with the Taxpayers' Alliance")
+	assert_eq(int(GameState.booster_standing.get("BO14", 0)), before + 1, "+1 with the Commuter Committee (P17, 2026-11-24)")
+	assert_eq(int(GameState.booster_standing.get("BO23", 0)), taxpayers, "no change with the Taxpayers' Alliance any more")
+	assert_eq(int(GameState.booster_standing.get("BO05", 0)), chamber, "or the Chamber of Commerce")
 	assert_eq(GameState.office_location, Offices.DISTRICT)
 
 

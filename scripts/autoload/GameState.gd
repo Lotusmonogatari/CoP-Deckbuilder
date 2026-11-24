@@ -3996,7 +3996,7 @@ func week_end_preview() -> Dictionary:
 	var holiday := Difficulty.dues_holiday(int(calendar.get("week", 0)), Levers.whole("dues_holiday_weeks"))
 	var base_full := PartyDues.base_dues(cfg, support, 0)
 	var base_after := PartyDues.base_dues(cfg, support, reduction)
-	var share := PartyDues.week_dues(cfg, support, week_funds_earned, reduction) - base_after
+	var share := maxi(0, PartyDues.week_dues(cfg, support, week_funds_earned, reduction) - base_after)
 	var settled := PartyDues.settle(int(due["total"]), int(due["funds"]))
 	var penalties := PartyDues.overdue_penalties(cfg, int(settled["owed"]))
 	var withdrawn: Array[String] = []
@@ -4020,6 +4020,7 @@ func week_end_preview() -> Dictionary:
 	return {
 		"dues": {"base": 0 if holiday else base_after, "share": 0 if holiday else share, "earned": week_funds_earned,
 			"relief": 0 if holiday else base_full - base_after,
+			"limit": int(cfg["max_per_week"]) if not holiday and PartyDues.is_capped(cfg, support, week_funds_earned) else 0,
 			"week_dues": int(due["week_dues"]), "carried": dues_balance, "total": int(due["total"]),
 			"paid": int(settled["paid"]), "owed": int(settled["owed"]), "holiday": holiday},
 		"staff": {"wages": wages_total, "count": entries.size(), "wages_paid": int(wage_result["spent"]),
@@ -4644,13 +4645,13 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 		var moved := (MetaRules.apply_win_deltas(meta, paid_stage, sanban_rows_with_bonuses()) if side == "win"
 			else MetaRules.apply_loss_deltas(meta, paid_stage, sanban_rows_with_bonuses()))
 		meta = moved["meta"]
-		_record_meta_change(moved["applied"])
+		_record_meta_change(moved["applied"], moved.get("requested", {}))
 		last_xp_gained = MetaRules.stage_delta(paid_stage, side + "_delta_xp")
 		_move_xp(last_xp_gained)
 
 	var scored := MetaRules.apply_score_effects(meta, stage, score, sanban_rows_with_bonuses())
 	meta = scored["meta"]
-	_record_meta_change(scored["applied"])
+	_record_meta_change(scored["applied"], scored.get("requested", {}))
 	_cause = ""
 
 
@@ -4758,7 +4759,7 @@ func _apply_meta_reward(name: String, amount: int) -> void:
 	var before := int(meta.get(name, 0))
 	var after := MetaRules.clamp_meta(before, amount, _sanban_row(name))
 	meta[name] = after
-	_record_meta_change({name: after - before})
+	_record_meta_change({name: after - before}, {name: amount})
 
 
 ## A level's range columns are {"min": x, "max": y} or null ("this level
@@ -4929,12 +4930,15 @@ func _under_cause(cause: String, change: Callable) -> void:
 ## A stage can move the same variable twice — a flat reward for winning and
 ## again for the score it closed on — and the player should be told the
 ## total, not shown the second overwriting the first.
-func _record_meta_change(applied: Dictionary) -> void:
+func _record_meta_change(applied: Dictionary, requested: Dictionary = {}) -> void:
 	for name: String in applied.keys():
 		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
-		# Funds earned on a weekday add to that week's dues (PartyDues.gd).
-		if name == "Funds" and int(applied[name]) > 0 and not in_weekend():
-			week_funds_earned += int(applied[name])
+		# Funds earned on a weekday add to that week's dues (PartyDues.gd), counted as EARNED: what the win was worth before the
+		# Funds limit clamped it (P17, 2026-11-24), so a player sitting at the limit still owes the share. What is banked is unchanged.
+		if name == "Funds" and not in_weekend():
+			var earned := int(requested[name]) if requested.has(name) else int(applied[name])
+			if earned > 0:
+				week_funds_earned += earned
 		if int(applied[name]) != 0 and not _cause.is_empty():
 			_note_cause(last_meta_cause, name, int(applied[name]))
 		if int(applied[name]) != 0 and not DataDB.standing_links.is_empty():
