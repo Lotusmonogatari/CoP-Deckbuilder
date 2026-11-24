@@ -114,20 +114,14 @@ func _venue_card(look: Dictionary, venue: Dictionary) -> Control:
 	var card := OfficeFrameStyles.card(look)
 	card.name = "VenueCard_" + venue_id
 	var column := card.get_node("Column") as VBoxContainer
-	# A small square of the place's picture at the left, its name and blurb beside it (the mock-up's place card, 2026-11-24).
-	var top := HBoxContainer.new()
-	top.name = "VenueTop"
-	top.add_theme_constant_override("separation", 16)
-	var thumb := _picture(str(venue.get("background", "")), 170.0)
-	thumb.name = "VenueThumb"
-	thumb.custom_minimum_size = Vector2(170, 170)
-	thumb.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	thumb.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-	top.add_child(thumb)
+	# The place's picture as a wide banner across the top of the card (in the season it is now), then its name and blurb, then Go
+	# (Cameron chose this card over the thumbnail one, 2026-11-24).
+	var banner := _picture(_venue_picture_id(venue), 230.0)
+	banner.name = "VenueBanner"
+	column.add_child(banner)
 	var words := UiKit.tight_column()
 	words.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	top.add_child(words)
-	column.add_child(top)
+	column.add_child(words)
 	# The name on its own row (it may wrap), the Japanese accent under it.
 	var title := UiKit.heading(str(venue.get("name", venue_id)))
 	title.custom_minimum_size.x = 0.0
