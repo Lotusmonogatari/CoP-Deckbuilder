@@ -355,3 +355,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Characters: the person's page puts the name on top, a big picture in the middle, the facts low (2026-11-24, Cameron; branch `fix/characters-detail-layout`)
 - The District's Old Shrine and Local Shotengai on the Step out map, a picture on every place card (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
 - Venue activities: the shrine, the shotengai and the Library get costed activities, limits and the shrine's gifts (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
+- Speech Coach: two practice activities beside Rhetoric Training (2026-11-24, Cameron; branch `feature/speech-coach-activities`)

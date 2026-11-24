@@ -239,7 +239,7 @@ func _show_activities(venue: Dictionary) -> void:
 	var look := OfficeFrameStyles.look()
 	var rows: Array[Control] = [_picture(_venue_picture_id(venue), 460), UiKit.line(str(venue.get("blurb", "")))]
 	for activity: Dictionary in GameState.venue_activities_of(venue_id):
-		rows.append(VenueActivityViews.card(look, activity, _on_do_activity))
+		rows.append(VenueActivityViews.card(look, activity, _on_do_activity, _on_activity))
 	var frame := OfficeScreenFrame.new()
 	frame.setup({"title": str(venue.get("name", venue_id)), "subtitle": str(venue.get("name_jp", "")), "chips": _chips(), "rows": rows})
 	_venue_panel.open_frame(frame, Text.say("venue.screen_back"))

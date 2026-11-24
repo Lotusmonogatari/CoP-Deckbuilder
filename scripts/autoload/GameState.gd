@@ -2917,7 +2917,11 @@ func activity_reward_lines(rewards: Variant, awareness_delta: Variant) -> Array[
 					lines.append(Text.say("venue.effect_standing", {"name": str(DataDB.get_booster(target).get("name_en", target)),
 						"delta": "%+d" % delta}))
 				RewardTargets.STAGE_EFFECT:
-					lines.append(Text.say("venue.effect_energy", {"delta": "%+d" % delta}))
+					# The one-stage effects: energy (the Nap), the gaffe limit and the turns (the Speech Coach).
+					match target.to_upper():
+						"ENERGY": lines.append(Text.say("venue.effect_energy", {"delta": "%+d" % delta}))
+						"GAFFE_CAP": lines.append(Text.say("venue.effect_gaffe_limit", {"delta": "%+d" % delta}))
+						"TURNS": lines.append(Text.say("venue.effect_turns", {"delta": "%+d" % delta}))
 	if awareness_delta != null and int(awareness_delta) != 0:
 		lines.append(Text.say("venue.effect_awareness", {"delta": "%+d" % int(awareness_delta)}))
 	return lines

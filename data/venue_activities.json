@@ -388,5 +388,61 @@
     "bonus_after_uses": 50,
     "bonus_staff_hours": 1,
     "result_text": "You read about how to run an office well. Your staff will get more done today."
+  },
+  {
+    "activity_id": "VA16",
+    "venue_id": "VN04",
+    "kind": "act",
+    "name": "Practice your talking points",
+    "icon": "ACT_TRAIN",
+    "pool": null,
+    "hours": 1,
+    "funds": 10000,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": [
+      {
+        "target": "GAFFE_CAP",
+        "delta": null
+      }
+    ],
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": "You practice your talking points aloud until each one comes out clean. Tomorrow's slips will be fewer."
+  },
+  {
+    "activity_id": "VA17",
+    "venue_id": "VN04",
+    "kind": "act",
+    "name": "Work on your speech timing",
+    "icon": "ACT_TRAIN",
+    "pool": null,
+    "hours": 1,
+    "funds": 20000,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": [
+      {
+        "target": "TURNS",
+        "delta": null
+      }
+    ],
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": "You work on the pauses between your sentences. You will have more room to make your points."
   }
 ]

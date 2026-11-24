@@ -5,12 +5,22 @@ extends RefCounted
 ## Draws what GameState tells it; nothing here decides a rule. Every sentence is a Text row or the workbook's own result text.
 
 
-## One card. `on_do` is called with the activity ID when the button is pressed.
-static func card(look: Dictionary, activity: Dictionary, on_do: Callable) -> PanelContainer:
+## One card. `on_do` is called with the activity ID when the button is pressed; `on_open` with the venue ID for an activity that opens a
+## page instead (the Speech Coach's Rhetoric Training).
+static func card(look: Dictionary, activity: Dictionary, on_do: Callable, on_open: Callable = Callable()) -> PanelContainer:
 	var id := str(activity.get("activity_id", ""))
 	var card := OfficeFrameStyles.card(look, str(activity.get("name", id)))
 	card.name = "ActivityCard_" + id
 	var column := card.get_node("Column") as VBoxContainer
+	if str(activity.get("kind", "")) == "train":
+		var open := Button.new()
+		open.name = "Activity_" + str(activity.get("venue_id", ""))   # the name the Speech Coach's button has always had
+		open.custom_minimum_size = Vector2(0, OfficeFrameStyles.touch_height())
+		open.text = Text.say("venue.act_open")
+		OfficeFrameStyles.dress_card_button(open, look, true)
+		open.pressed.connect(on_open.bind(str(activity.get("venue_id", ""))))
+		column.add_child(open)
+		return card
 	var built := VenueRules.is_built(activity)
 	if built:
 		var cost := cost_text(activity)
