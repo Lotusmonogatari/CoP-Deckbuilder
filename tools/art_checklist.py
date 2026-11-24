@@ -149,7 +149,12 @@ def main():
     # A station with a tracks view (a venue of kind travel outside the District) has a second picture, <background>_TRACKS.
     offices = [str(p.get("district_office", "")) for p in load("player")["protagonists"] if p.get("district_office")]
 
+    pcs = [str(p.get("player_id", "")) for p in load("player")["protagonists"] if p.get("player_id")]
+
     def expand(text):
+        # {PC_ID}: one picture per protagonist (the District shrine and shotengai); {office}/{OFFICE_ID}: one per District office.
+        if "{PC_ID}" in text:
+            return [text.replace("{PC_ID}", pc) for pc in pcs]
         if "{OFFICE_ID}" not in text and "{office}" not in text:
             return [text]
         return [text.replace("{office}", o).replace("{OFFICE_ID}", o.upper().replace(" ", "_").replace("-", "_")) for o in offices]
@@ -159,7 +164,10 @@ def main():
     for v in load("venues"):
         if not v.get("background"):
             continue
-        for picture, name in zip(expand(str(v["background"])), expand(str(v["name"]))):
+        pictures = expand(str(v["background"]))
+        names = expand(str(v["name"]))
+        for index, picture in enumerate(pictures):
+            name = names[index] if len(names) == len(pictures) else str(v["name"]) + (" (%s)" % picture.rsplit("_", 1)[-1] if len(pictures) > 1 else "")
             venue_pictures.append((picture, name))
         if str(v.get("venue_id")) in travel_venues and v.get("zone") != "District":
             venue_pictures.append((str(v["background"]) + "_TRACKS", str(v["name"]) + " (the tracks)"))

@@ -2060,3 +2060,16 @@ Note on the mock-up: it showed a plane for Kenshin Sako (PC01). The Balance rows
 ## Characters: the person's page puts the name on top, a big picture in the middle, the facts low (2026-11-24, Cameron; branch `fix/characters-detail-layout`)
 
 On the Characters list's detail page for someone you have met, the name is pinned to the top, the picture is trimmed of empty margin and fills all the room between, and the four facts (name, Japanese name, title, party, organization) and Back sit at the bottom. A person not yet met keeps the old centered page. No rule or wording changed. Screenshot case: `popup:characterdetail`.
+
+## The District's Old Shrine and Local Shotengai on the Step out map (2026-11-24, Cameron; branch `feature/district-shrine-shotengai`)
+
+Eight new backgrounds (`AREA_SHRINE_PC01` to `PC04`, `AREA_SHOTENGAI_PC01` to `PC04`, one of each for every protagonist) and two activity icons (`ACT_SHRINE`, `ACT_SHOTENGAI`) arrived.
+
+| Part | What changed |
+|---|---|
+| Step out at the District office | Now lists three places under "Around <office>": the station, the Old Shrine (VN08) and the Local Shotengai (VN09). The shrine and shotengai show their own protagonist's picture (a `{PC_ID}` token in the Background cell, filled from the protagonist). |
+| What they do | Nothing yet: both are "Coming soon" until Cameron says what a visit gives. Their Venue Activities rows (VA08, VA09) use two placeholder kinds, `shrine` and `shotengai`, which the exporter now accepts. |
+| Map cards | Every place card (Capitol too) has a small square of its picture at the left, with the name, Japanese accent and blurb beside it, as in the mock-up. |
+| Art checklist | Lists each protagonist's shrine and shotengai picture, and the two new venue icons (`VEN_SHRINE`, `VEN_SHOTENGAI`) still to draw. |
+
+Names, blurbs and Japanese are Claude's drafts. The Places tab has real names for each protagonist's shrine and market (Hokumon Shrine, Tarumae Shrine, Ishikari Benten Shrine, Osorezan Bodaiji or Tanabu Shrine; Wakkanai Central Arcade, Tomakomai Port Fish Market, Benten historic street, Towada Farmers' Market); the venues use generic names until Cameron says whether to show those.

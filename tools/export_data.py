@@ -4163,7 +4163,7 @@ def check_whip_and_vote_scenes(data, report, by_id, roots):
                 report.error(f"Decision Scenes {sid}", f"is a vote on {datetime.date.fromordinal(day).strftime('%y.%m.%d')}, after {root}'s Must End By {deadline}")
 
 
-VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel")
+VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "shrine", "shotengai")
 VENUE_ZONES = ("Capitol Building", "Capital Area", "District")
 VENUE_HINT_KINDS = ("stage_suit", "opponent_suit")
 VENUE_POOLS = ("cafeteria", "gardens", "dry")

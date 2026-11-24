@@ -117,5 +117,39 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null
+  },
+  {
+    "activity_id": "VA08",
+    "venue_id": "VN08",
+    "kind": "shrine",
+    "name": "Visit the Shrine",
+    "icon": "ACT_SHRINE",
+    "pool": null,
+    "hours": null,
+    "funds": null,
+    "xp": null,
+    "per_day": null,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null
+  },
+  {
+    "activity_id": "VA09",
+    "venue_id": "VN09",
+    "kind": "shotengai",
+    "name": "Walk the Shotengai",
+    "icon": "ACT_SHOTENGAI",
+    "pool": null,
+    "hours": null,
+    "funds": null,
+    "xp": null,
+    "per_day": null,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null
   }
 ]

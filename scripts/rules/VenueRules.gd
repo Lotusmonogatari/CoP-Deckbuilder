@@ -113,6 +113,11 @@ static func fill_office(text: String, office_town: String) -> String:
 	return text.replace("{office}", town).replace("{OFFICE_ID}", town.to_upper().replace(" ", "_").replace("-", "_"))
 
 
+## A District venue's picture is the protagonist's own: `{PC_ID}` becomes their ID ("PC03"), as in AREA_SHRINE_PC03 and AREA_SHOTENGAI_PC03.
+static func fill_protagonist(text: String, protagonist_id: String) -> String:
+	return text if protagonist_id.strip_edges().is_empty() else text.replace("{PC_ID}", protagonist_id.strip_edges())
+
+
 ## The second screen inside a station (the tracks): the venue's picture with `_TRACKS` on the end, when that picture exists.
 static func tracks_background(base_id: String, exists: Callable) -> String:
 	var tracks := "%s_TRACKS" % base_id

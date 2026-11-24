@@ -25,8 +25,13 @@ func test_the_player_may_step_out_from_either_office_with_hours_left_and_no_leve
 
 
 func test_the_library_and_stage_are_coming_soon_and_the_stations_are_built() -> void:
+	GameState.office_location = Offices.CAPITOL
 	for venue_id: String in ["VN02", "VN05"]:
 		assert_eq(GameState.venue_visit_refusal(venue_id), Text.say("venue.coming_soon"), venue_id)
+	GameState.office_location = Offices.DISTRICT
+	for venue_id: String in ["VN08", "VN09"]:
+		assert_eq(GameState.venue_visit_refusal(venue_id), Text.say("venue.coming_soon"), venue_id + " (the District's shrine and shotengai)")
+	GameState.office_location = Offices.CAPITOL
 	assert_true(VenueRules.is_built(VenueRules.activity_of(DataDB.venue_activities, "VN06")), "Sapporo Super Station is built")
 	assert_true(VenueRules.is_built(VenueRules.activity_of(DataDB.venue_activities, "VN07")), "the District station is built")
 	for venue_id: String in ["VN01", "VN03", "VN04"]:
@@ -291,7 +296,7 @@ func test_the_map_lists_the_capitols_places_at_the_capitol_and_the_station_at_th
 	var ids := func() -> Array: return GameState.venues_here().map(func(v: Dictionary) -> String: return str(v["venue_id"]))
 	assert_eq(ids.call(), ["VN01", "VN02", "VN03", "VN04", "VN05", "VN06"])
 	GameState.office_location = Offices.DISTRICT
-	assert_eq(ids.call(), ["VN07"], "the District office has its own station only")
+	assert_eq(ids.call(), ["VN07", "VN08", "VN09"], "the District office has its station, shrine and shotengai only")
 
 
 func test_the_district_station_is_named_for_the_district_office() -> void:
@@ -307,3 +312,13 @@ func test_every_district_office_has_its_station_picture() -> void:
 	for protagonist: Dictionary in DataDB.protagonists:
 		var picture := VenueRules.fill_office("AREA_{OFFICE_ID}_STATION", str(protagonist.get("district_office", "")))
 		assert_true(ResourceLoader.exists("res://assets/backgrounds/%s.png" % picture), picture)
+
+
+func test_the_district_shrine_and_shotengai_use_the_protagonists_own_pictures() -> void:
+	for protagonist: Dictionary in DataDB.protagonists:
+		var pc := str(protagonist.get("player_id", ""))
+		for stem: String in ["AREA_SHRINE_", "AREA_SHOTENGAI_"]:
+			assert_true(ResourceLoader.exists("res://assets/backgrounds/%s%s.png" % [stem, pc]), stem + pc)
+	assert_eq(str(GameState.venue_row("VN08")["background"]), "AREA_SHRINE_%s" % GameState.protagonist_id)
+	assert_eq(str(GameState.venue_row("VN09")["background"]), "AREA_SHOTENGAI_%s" % GameState.protagonist_id)
+	assert_true(ResourceLoader.exists("res://assets/icons/ACT_SHRINE.png") and ResourceLoader.exists("res://assets/icons/ACT_SHOTENGAI.png"))

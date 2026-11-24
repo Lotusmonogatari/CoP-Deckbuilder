@@ -18,9 +18,9 @@ stands in for every expression.
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
 | Cosmetic package icons | 9 / 9 |
-| Venue backgrounds | 11 / 11 |
-| Venue icons | 0 / 7 |
-| Venue activity icons | 7 / 7 |
+| Venue backgrounds | 19 / 19 |
+| Venue icons | 0 / 9 |
+| Venue activity icons | 9 / 9 |
 | Decision scenes with a picture to show | 0 / 10 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -637,6 +637,14 @@ stands in for every expression.
 | AREA_AKENO_SHINMACHI_STATION.png | Akeno Shinmachi Station | ✓ |
 | AREA_TEINE_WARD_STATION.png | Teine Ward Station | ✓ |
 | AREA_NOHEJI_STATION.png | Noheji Station | ✓ |
+| AREA_SHRINE_PC01.png | Old Shrine (PC01) | ✓ |
+| AREA_SHRINE_PC02.png | Old Shrine (PC02) | ✓ |
+| AREA_SHRINE_PC03.png | Old Shrine (PC03) | ✓ |
+| AREA_SHRINE_PC04.png | Old Shrine (PC04) | ✓ |
+| AREA_SHOTENGAI_PC01.png | Local Shotengai (PC01) | ✓ |
+| AREA_SHOTENGAI_PC02.png | Local Shotengai (PC02) | ✓ |
+| AREA_SHOTENGAI_PC03.png | Local Shotengai (PC03) | ✓ |
+| AREA_SHOTENGAI_PC04.png | Local Shotengai (PC04) | ✓ |
 
 ## Venue icons — `assets/icons/`
 
@@ -649,6 +657,8 @@ stands in for every expression.
 | VEN_STAGE.png | Sapporo Stage | ☐ |
 | VEN_STATION.png | Sapporo Super Station | ☐ |
 | VEN_STATION.png | {office} Station | ☐ |
+| VEN_SHRINE.png | Old Shrine | ☐ |
+| VEN_SHOTENGAI.png | Local Shotengai | ☐ |
 
 ## Venue activity icons — `assets/icons/`
 
@@ -661,6 +671,8 @@ stands in for every expression.
 | ACT_SHOW.png | Watch the Show | ✓ |
 | ACT_TRAVEL.png | Departures | ✓ |
 | ACT_TRAVEL.png | Departures | ✓ |
+| ACT_SHRINE.png | Visit the Shrine | ✓ |
+| ACT_SHOTENGAI.png | Walk the Shotengai | ✓ |
 
 ## Decision scenes
 

@@ -2646,14 +2646,14 @@ func venues_here() -> Array:
 	return found
 
 
-## A copy of the venue row with {office} and {OFFICE_ID} filled from the protagonist's District office (travel at the stations,
-## 2026-11-24); a venue with neither token comes back unchanged.
+## A copy of the venue row with {office} and {OFFICE_ID} filled from the protagonist's District office and {PC_ID} from the
+## protagonist (travel at the stations and the District places, 2026-11-24); a venue with none of the tokens comes back unchanged.
 func _venue_for_office(venue: Dictionary) -> Dictionary:
 	var town := district_office_name()
 	var filled := venue.duplicate()
 	for key: String in ["name", "background", "blurb"]:
 		if venue.get(key) != null:
-			filled[key] = VenueRules.fill_office(str(venue[key]), town)
+			filled[key] = VenueRules.fill_protagonist(VenueRules.fill_office(str(venue[key]), town), protagonist_id)
 	return filled
 
 
