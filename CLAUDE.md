@@ -352,3 +352,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - P16b: suit phrases, American spelling, weekend hours for venues, tip slots from hint rows (2026-11-23, Cameron; branch `feature/p16b-venue-rules`)
 - Venue backgrounds arrive: Gardens follow the season, the Speech Coach page gets its studio (2026-11-23, Cameron; branch `feature/venue-backgrounds`)
 - Travel at the stations: the train slider moves to Sapporo Super Station and each District office's station (2026-11-24, Cameron; branch `feature/travel-at-stations`)
+- Characters: the person's page puts the name on top, a big picture in the middle, the facts low (2026-11-24, Cameron; branch `fix/characters-detail-layout`)

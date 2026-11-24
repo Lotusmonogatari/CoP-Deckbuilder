@@ -234,6 +234,11 @@ func _popup(office: Node, kind: String) -> Overlay:
 		"characters":
 			office._characters.open()
 			return office._characters_panel
+		"characterdetail":
+			# popup:characterdetail: one met visitor's page (name on top, big picture, facts low; 2026-11-24)
+			office._characters._show({"met": true, "id": "VI19", "name": "Dog Man", "name_jp": "犬男", "title": "Constituent",
+				"party": "", "organizations": ["Party Headquarters", "Party Faction"]})
+			return office._character_detail_panel
 		"howto":
 			HowToPlayPanel.open(office._how_to_play_panel)
 			return office._how_to_play_panel
