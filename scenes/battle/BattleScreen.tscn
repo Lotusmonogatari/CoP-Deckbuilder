@@ -104,7 +104,7 @@ size_flags_stretch_ratio = 8.0
 theme_override_constants/separation = 16
 
 [node name="ArtBox" type="Control" parent="Safe/Column/OpponentRow"]
-custom_minimum_size = Vector2(0, 300)
+custom_minimum_size = Vector2(0, 320)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -206,6 +206,7 @@ vertical_alignment = 1
 [node name="DetailsButton" type="Button" parent="Safe/Column/StatusRow"]
 unique_name_in_owner = true
 layout_mode = 2
+metadata/compact = true
 text = "Details"
 
 [node name="VSpacer" type="Control" parent="Safe/Column"]
