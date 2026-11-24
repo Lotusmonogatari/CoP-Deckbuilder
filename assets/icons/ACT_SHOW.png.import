@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4sqe5i1tk0kl"
-path="res://.godot/imported/AREA_WAKKANAI_STATION.png-df61c281f3062d7a26c34806570ba2fe.ctex"
+uid="uid://d4db62tea82cc"
+path="res://.godot/imported/ACT_SHOW.png-893ba4877b8bace8ba3e71556797cb1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/AREA_WAKKANAI_STATION.png"
-dest_files=["res://.godot/imported/AREA_WAKKANAI_STATION.png-df61c281f3062d7a26c34806570ba2fe.ctex"]
+source_file="res://assets/icons/ACT_SHOW.png"
+dest_files=["res://.godot/imported/ACT_SHOW.png-893ba4877b8bace8ba3e71556797cb1c.ctex"]
 
 [params]
 

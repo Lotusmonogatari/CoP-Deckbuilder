@@ -2024,6 +2024,19 @@ Fourteen new pictures in `assets/backgrounds/` (all landscape, 1456 x 816 for ro
 | `CAPITOL_LIBRARY` | Named by the Library's row already; shows when the Library is built ("Coming soon" today). |
 | `AREA_SUPER_STATION`, `AREA_SUPER_STATION_TRACKS` | Not wired: Sapporo Super Station (the Departures venue) is "Coming soon". Two views: the concourse and the tracks. |
 | `AREA_SAPPORO_STAGE` (renamed from `AREA_SAPPORO_STAGE_STAGE`, Cameron's say-so), `AREA_SAPPORO_STAGE_WINTER` | Named right for the Sapporo Stage row and the seasonal rule; shown when the Stage is built ("Coming soon" today). |
-| `AREA_AOMORI_STATION`, `AREA_SAPPORO_WEST_STATION`, `AREA_TOMAKOMAI_STATION`, `AREA_WAKKANAI_STATION` | Not wired: District stations, noted for the later District venues work. |
+| `AREA_NOHEJI_STATION`, `AREA_TEINE_WARD_STATION`, `AREA_AKENO_SHINMACHI_STATION`, `AREA_DAIKOKU_STATION` | Not wired: District stations, noted for the later District venues work. Renamed 2026-11-24 (Cameron) from Aomori, Sapporo West, Tomakomai and Wakkanai to the District office each serves. |
 
 Code: `VenueRules.seasonal_background`, `VenuesController.venue_picture_id`, the studio picture in `OfficeScreen._show_speech_coach_page`, and a `venue:gardens` screenshot case. Tests: two in `test_venue_rules.gd`.
+
+## Travel at the stations: Cameron's decisions on the mock-up (2026-11-24, Cameron; branch `docs/travel-stations-mockup`; nothing built)
+
+Mock-up: `design/proposals/img/travel_stations/` (board and eight screens).
+
+| Question | Decision |
+|---|---|
+| Plane tickets and the private car | As mocked up: the plane boards on the concourse (no tracks), the car is listed greyed for protagonists who do not have one. Stations are the hub for travel for now. |
+| District offices | Get **Step out**, listing the local station. |
+| District station picture names | Named for the District office they serve: `AREA_DAIKOKU_STATION` (PC01), `AREA_AKENO_SHINMACHI_STATION` (PC02), `AREA_TEINE_WARD_STATION` (PC03), `AREA_NOHEJI_STATION` (PC04). The files are renamed. |
+| Mixed levels with built-in trips | Travel **stays built into the level**: the trip is taken as the level begins, with the level briefing's own "Travel by" row, unchanged. |
+
+Not built yet: moving the train strip, the mode row and the Travel page to the Super Station and the District stations. That needs a build brief (it touches the Office screen, the venue map and the trip rules) and is outlined for approval before any code.
