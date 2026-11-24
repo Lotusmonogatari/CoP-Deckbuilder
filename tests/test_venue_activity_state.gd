@@ -136,7 +136,7 @@ func test_an_activity_is_refused_away_from_its_office_in_a_level_and_when_the_we
 	assert_eq(GameState.activity_refusal("VA14"), Text.say("venue.refuse_elsewhere"), "the Library is at the Capitol")
 	GameState.office_location = Offices.CAPITOL
 	assert_eq(GameState.activity_refusal("VA08"), Text.say("venue.refuse_elsewhere"), "the shrine is at the District office")
-	assert_eq(GameState.activity_refusal("VA02"), Text.say("venue.coming_soon"), "Browse the Shelves is still to come")
+	assert_eq(GameState.activity_refusal("VA02"), "", "Browse the Shelves is built now (the Codex)")
 	GameState.calendar = {"week": 2, "phase": "work", "hours": 40}
 	GameState.office_location = Offices.DISTRICT
 	assert_eq(GameState.activity_refusal("VA08"), Text.say("venue.refuse_week_full"))

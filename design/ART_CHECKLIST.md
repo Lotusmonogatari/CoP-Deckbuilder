@@ -20,7 +20,7 @@ stands in for every expression.
 | Cosmetic package icons | 9 / 9 |
 | Venue backgrounds | 19 / 19 |
 | Venue icons | 0 / 9 |
-| Venue activity icons | 14 / 15 |
+| Venue activity icons | 16 / 18 |
 | Decision scenes with a picture to show | 0 / 10 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -679,6 +679,9 @@ stands in for every expression.
 | ACT_SHOTENGAI.png | Treat local kōenkai members to a meal | ✓ |
 | ACT_NAP.png | Nap | ☐ |
 | ACT_READ.png | Read about management practices | ✓ |
+| ACT_TRAIN.png | Practice your talking points | ✓ |
+| ACT_TRAIN.png | Work on your speech timing | ✓ |
+| ACT_DESK.png | Ask the Reference Desk | ☐ |
 
 ## Decision scenes
 

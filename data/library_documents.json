@@ -1,0 +1,44 @@
+[
+  {
+    "doc_id": "LD01",
+    "category": "party_platform",
+    "order": 1,
+    "title": "Party platform (placeholder)",
+    "title_jp": null,
+    "kicker": "PARTY PLATFORM",
+    "body": "Placeholder text.",
+    "party": null,
+    "unlock": "start",
+    "unlock_value": null,
+    "hint": null,
+    "note": "DRAFT: placeholder, hidden from players until real text is written (remove the word DRAFT from this note to show it)."
+  },
+  {
+    "doc_id": "LD02",
+    "category": "ne3",
+    "order": 1,
+    "title": "ね3 (placeholder)",
+    "title_jp": null,
+    "kicker": "ね3",
+    "body": "Placeholder text.",
+    "party": null,
+    "unlock": "start",
+    "unlock_value": null,
+    "hint": null,
+    "note": "DRAFT: placeholder, hidden from players until real text is written."
+  },
+  {
+    "doc_id": "LD03",
+    "category": "history",
+    "order": 1,
+    "title": "History (placeholder)",
+    "title_jp": null,
+    "kicker": "HISTORY",
+    "body": "Placeholder text.",
+    "party": null,
+    "unlock": "start",
+    "unlock_value": null,
+    "hint": null,
+    "note": "DRAFT: placeholder, hidden from players until real text is written."
+  }
+]

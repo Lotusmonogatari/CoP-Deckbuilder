@@ -1030,5 +1030,677 @@
     "token": "scrim_alpha",
     "value": "0.66",
     "notes": "P14 pop-up card (mockups, 2026-11-19): scrim, alarm tag and scrim strength. Claude's draft."
+  },
+  {
+    "token_id": "US130",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_paper",
+    "value": "#F4E8CC",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US131",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_ink",
+    "value": "#1C1A17",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US132",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_muted",
+    "value": "#5A4F42",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US133",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_edge",
+    "value": "#A8A08D",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US134",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_kicker",
+    "value": "#C23B22",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US135",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_rule_line",
+    "value": "#1C1A17",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US136",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_dots",
+    "value": "#B3AA96",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US137",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_fibre",
+    "value": "#785A28",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US138",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_roller_top",
+    "value": "#4A3424",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US139",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_roller_mid",
+    "value": "#1E140D",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US140",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_roller_bottom",
+    "value": "#3A2A1E",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US141",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_cap",
+    "value": "#C9A14A",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US142",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_seal",
+    "value": "#C23B22",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US143",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_seal_ink",
+    "value": "#F8F1E3",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US144",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_cord",
+    "value": "#C23B22",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US145",
+    "style": "woodblock",
+    "group": "colour",
+    "token": "scroll_row_shadow",
+    "value": "#D78871",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US146",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "texture",
+    "value": "fibers",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US147",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "texture_alpha",
+    "value": "0.06",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US148",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "texture_step",
+    "value": "6",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US149",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "roller_radius_px",
+    "value": "2",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US150",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "seal_shape",
+    "value": "square",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US151",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "seal_tilt",
+    "value": "-4",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US152",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "seal_text",
+    "value": "国会図書館",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US153",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "seal_vertical",
+    "value": "yes",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US154",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "seal_ring",
+    "value": "no",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US155",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "cord",
+    "value": "yes",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US156",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "row_shadow",
+    "value": "hard",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US157",
+    "style": "woodblock",
+    "group": "scroll",
+    "token": "rule_px",
+    "value": "2",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US158",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_paper",
+    "value": "#FFFBF3",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US159",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_ink",
+    "value": "#2B1D12",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US160",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_muted",
+    "value": "#6B5843",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US161",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_edge",
+    "value": "#E6E0D8",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US162",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_kicker",
+    "value": "#9A6413",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US163",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_rule_line",
+    "value": "#E2CFAF",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US164",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_dots",
+    "value": "#D9D3CB",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US165",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_fibre",
+    "value": "#785028",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US166",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_roller_top",
+    "value": "#D19A64",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US167",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_roller_mid",
+    "value": "#8A5A33",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US168",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_roller_bottom",
+    "value": "#B47E4E",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US169",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_cap",
+    "value": "#F0DDBF",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US170",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_seal",
+    "value": "#B5562F",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US171",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_seal_ink",
+    "value": "#FFF8EC",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US172",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_cord",
+    "value": "#B5562F",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US173",
+    "style": "living_office",
+    "group": "colour",
+    "token": "scroll_row_shadow",
+    "value": "#140F0A",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US174",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "texture",
+    "value": "shade",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US175",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "texture_alpha",
+    "value": "0.08",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US176",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "texture_step",
+    "value": "6",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US177",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "roller_radius_px",
+    "value": "10",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US178",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "seal_shape",
+    "value": "round",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US179",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "seal_tilt",
+    "value": "-8",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US180",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "seal_text",
+    "value": "図書館",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US181",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "seal_vertical",
+    "value": "yes",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US182",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "seal_ring",
+    "value": "no",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US183",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "cord",
+    "value": "yes",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US184",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "row_shadow",
+    "value": "soft",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US185",
+    "style": "living_office",
+    "group": "scroll",
+    "token": "rule_px",
+    "value": "1",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US186",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_paper",
+    "value": "#0F1A2E",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US187",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_ink",
+    "value": "#F2F4F8",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US188",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_muted",
+    "value": "#AEB8CC",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US189",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_edge",
+    "value": "#E3B341",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US190",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_kicker",
+    "value": "#E3B341",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US191",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_rule_line",
+    "value": "#E3B341",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US192",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_dots",
+    "value": "#595035",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US193",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_fibre",
+    "value": "#FFFFFF",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US194",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_roller_top",
+    "value": "#F5C75A",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US195",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_roller_mid",
+    "value": "#DDAA3E",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US196",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_roller_bottom",
+    "value": "#C8921F",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US197",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_cap",
+    "value": "#0B1322",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US198",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_seal",
+    "value": "#E3B341",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US199",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_seal_ink",
+    "value": "#0B1322",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US200",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_cord",
+    "value": "#E3B341",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US201",
+    "style": "broadcast",
+    "group": "colour",
+    "token": "scroll_row_shadow",
+    "value": "#0F1A2E",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US202",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "texture",
+    "value": "scanlines",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US203",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "texture_alpha",
+    "value": "0.035",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US204",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "texture_step",
+    "value": "4",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US205",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "roller_radius_px",
+    "value": "0",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US206",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "seal_shape",
+    "value": "round",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US207",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "seal_tilt",
+    "value": "0",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US208",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "seal_text",
+    "value": "FILED",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US209",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "seal_vertical",
+    "value": "no",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US210",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "seal_ring",
+    "value": "yes",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US211",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "cord",
+    "value": "no",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US212",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "row_shadow",
+    "value": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US213",
+    "style": "broadcast",
+    "group": "scroll",
+    "token": "rule_px",
+    "value": "2",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
   }
 ]

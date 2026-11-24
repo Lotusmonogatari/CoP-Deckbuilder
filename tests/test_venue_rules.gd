@@ -34,10 +34,10 @@ func test_a_visit_costs_its_hours_funds_and_xp_and_says_what_is_short() -> void:
 	assert_eq(VenueRules.visit_refusal({"hours": 0, "xp": 20}, 5, 100, 10), "xp")
 
 
-func test_only_the_chat_watch_train_and_travel_venues_are_built() -> void:
-	for kind: String in ["chat", "watch", "train", "travel"]:
+func test_every_kind_but_the_show_is_built() -> void:
+	for kind: String in ["chat", "watch", "train", "travel", "act", "read", "research"]:
 		assert_true(VenueRules.is_built({"kind": kind}), kind)
-	for kind: String in ["read", "show"]:
+	for kind: String in ["show"]:
 		assert_false(VenueRules.is_built({"kind": kind}), kind + " is Coming soon")
 	assert_true(VenueRules.deals_lines({"kind": "chat"}))
 	assert_false(VenueRules.deals_lines({"kind": "train"}))

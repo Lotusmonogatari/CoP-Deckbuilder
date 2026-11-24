@@ -27,7 +27,7 @@ func test_the_player_may_step_out_from_either_office_with_hours_left_and_no_leve
 func test_the_stage_is_coming_soon_and_the_stations_library_shrine_and_shotengai_are_built() -> void:
 	GameState.office_location = Offices.CAPITOL
 	assert_eq(GameState.venue_visit_refusal("VN05"), Text.say("venue.coming_soon"), "the Stage")
-	assert_eq(GameState.activity_refusal("VA02"), Text.say("venue.coming_soon"), "Browse the Shelves, the Library's greyed row")
+	assert_eq(GameState.activity_refusal("VA02"), "", "Browse the Shelves is built (the Codex)")
 	assert_eq(GameState.activity_refusal("VA05"), Text.say("venue.coming_soon"), "Watch the Show")
 	# The shrine, the shotengai and the Library's Nap and reading have activities now (test_venue_activity_state.gd).
 	for venue_id: String in ["VN02", "VN08", "VN09"]:

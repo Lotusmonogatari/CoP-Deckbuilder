@@ -22,6 +22,7 @@ static func suit_chip(suit: String) -> Control:
 	var label := Label.new()
 	label.text = suit
 	label.add_theme_color_override("font_color", Color.WHITE)
+	label.add_theme_stylebox_override("normal", StyleBoxEmpty.new())   # no plate behind the name on a scroll's paper
 	label.autowrap_mode = TextServer.AUTOWRAP_OFF
 	label.set_meta(UiKit.ONE_LINE_META, true)   # the popup wrapper must not break a chip's name into letters
 	holder.add_child(label)
@@ -52,6 +53,8 @@ static func tip_target_name(tip: Dictionary) -> String:
 
 ## "Heard in the Cafeteria" / "Overheard in the Gardens".
 static func heard_text(tip: Dictionary, short: bool = false) -> String:
+	if str(tip.get("where", "")) == "library":
+		return Text.say("tips.source_library")
 	var gardens := str(tip.get("where", "")) == "gardens"
 	if short:
 		return Text.say("tips.briefing_from_gardens" if gardens else "tips.briefing_from")

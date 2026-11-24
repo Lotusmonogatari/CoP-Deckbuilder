@@ -49,6 +49,20 @@ func _ready() -> void:
 	_run.call_deferred()
 
 
+## Made-up Library Documents rows (the shipped ones are hidden placeholders) so the sweep can draw a found and a sealed scroll.
+func _sweep_documents() -> Array:
+	var base := {"title_jp": "", "party": null, "unlock_value": null, "note": null, "order": 1}
+	var docs: Array = []
+	for row: Dictionary in [
+		{"doc_id": "LD01", "category": "party_platform", "title": "A long fixture title that will need two lines at the large text size", "kicker": "PARTY PLATFORM", "unlock": "start", "hint": ""},
+		{"doc_id": "LD02", "category": "ne3", "title": "Fixture", "kicker": "ね3", "unlock": "line", "hint": "A word in the Cafeteria may lead here, and a longer hint to wrap"}]:
+		var merged := base.duplicate()
+		merged.merge(row)
+		merged["body"] = "A fixture paragraph for the sweep, long enough to wrap over several lines at every text size and screen shape.\n\nA second paragraph."
+		docs.append(merged)
+	return docs
+
+
 func _run() -> void:
 	_shots = OS.get_environment("SWEEP_SHOTS")
 	var texts: PackedStringArray = (OS.get_environment("SWEEP_TEXT") if OS.has_environment("SWEEP_TEXT") and not OS.get_environment("SWEEP_TEXT").is_empty() else "small,normal,large").split(",")
@@ -229,6 +243,27 @@ func _sweep_shape(size: Vector2i) -> void:
 		["B27f6_library", func() -> void:
 			GameState.office_location = Offices.CAPITOL
 			office._venues.show_venue("VN02")],
+		["B27f7_library_desk_reading", func() -> void:
+			GameState.office_location = Offices.CAPITOL
+			GameState.calendar = {"week": 3, "phase": "work", "hours": 0}
+			var rooms := GameState.desk_rooms()
+			var done := GameState.do_research(str(rooms[0]["stage_id"]), str(rooms[0]["level_id"]))
+			office._venues.show_venue("VN02")
+			office._venues._library._result = done
+			office._venues._library._mode = "result"
+			office._venues._library._draw()],
+		["B27f8_library_codex", func() -> void:
+			GameState.office_location = Offices.CAPITOL
+			DataDB.library_documents = _sweep_documents()
+			GameState.codex_found = {"LD01": {"day": GameState.venue_today(), "read": false}}
+			office._venues.show_venue("VN02")
+			office._venues._library._on_tab("codex")],
+		["B27f9_library_scroll", func() -> void:
+			GameState.office_location = Offices.CAPITOL
+			DataDB.library_documents = _sweep_documents()
+			GameState.codex_found = {"LD01": {"day": GameState.venue_today(), "read": false}}
+			office._venues.show_venue("VN02")
+			office._venues._library._on_open_doc("LD01")],
 		["B27g_venue_line", func() -> void:
 			GameState.venue_visit("VN01")
 			office._venues._current_venue = "VN01"

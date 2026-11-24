@@ -10862,5 +10862,341 @@
     "english": "The party never asks for more than {yen}円 in dues in a week.",
     "placeholders": "yen",
     "notes": "P17 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.tab_desk",
+    "where": "Library: the reference desk tab",
+    "english": "Reference desk",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.tab_codex",
+    "where": "Library: the Codex tab with nothing unread",
+    "english": "Codex",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.tab_codex_new",
+    "where": "Library: the Codex tab with unread documents",
+    "english": "Codex · {count} new",
+    "placeholders": "count",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.intro",
+    "where": "Codex: the line under the tabs",
+    "english": "Documents you have found. Tap one to unroll it.",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.empty",
+    "where": "Codex: nothing found yet",
+    "english": "The shelves are bare for now. Ask the reference desk about a room, and listen around the Capitol.",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.category_room_file",
+    "where": "Codex: the Room files heading",
+    "english": "Room files",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.category_party_platform",
+    "where": "Codex: the Party platforms heading",
+    "english": "Party platforms",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.category_ne3",
+    "where": "Codex: the ね3 heading",
+    "english": "ね3",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.category_history",
+    "where": "Codex: the Histories heading",
+    "english": "Histories",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.count_found",
+    "where": "Codex: a category's count",
+    "english": "{found} of {total}",
+    "placeholders": "found, total",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.count_room_files",
+    "where": "Codex: the Room files count",
+    "english": "{count} found",
+    "placeholders": "count",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.new",
+    "where": "Codex: the mark on a document not yet read",
+    "english": "NEW",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.sealed",
+    "where": "Codex: a document not yet found",
+    "english": "Sealed",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.not_found",
+    "where": "Codex: the title of a document not yet found",
+    "english": "Not yet found",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.from_start",
+    "where": "Codex: where a document found at the start came from",
+    "english": "Found at the start",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.from_party",
+    "where": "Codex: where your own party's document came from",
+    "english": "Your own party",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.from_line",
+    "where": "Codex: where a document found by listening came from",
+    "english": "Heard at the Capitol",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.from_law",
+    "where": "Codex: where a document found by a law came from",
+    "english": "Found when the law was decided",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.from_desk",
+    "where": "Codex: a Room file's line",
+    "english": "From the reference desk · kept {days} more days",
+    "placeholders": "days",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.from_desk_last",
+    "where": "Codex: a Room file's line on its last day",
+    "english": "From the reference desk · last day",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.added",
+    "where": "A venue line that adds a document to the Codex",
+    "english": "Added to the Codex",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.roll_up",
+    "where": "Codex reader: close the scroll",
+    "english": "Roll up",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.previous",
+    "where": "Codex reader: the earlier document",
+    "english": "‹ Previous",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.next",
+    "where": "Codex reader: the later document",
+    "english": "Next ›",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.reader_header",
+    "where": "Codex reader: the line above the scroll",
+    "english": "Codex · {category} · {number} of {total}",
+    "placeholders": "category, number, total",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.room_kicker",
+    "where": "Codex reader: a Room file's small heading with the committee's Japanese name",
+    "english": "Room file · {jp}",
+    "placeholders": "jp",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.room_kicker_plain",
+    "where": "Codex reader: a Room file's small heading",
+    "english": "Room file",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.room_intro",
+    "where": "Codex reader: a Room file's opening line",
+    "english": "What the members of this room respond to, as read at the reference desk.",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.room_footer",
+    "where": "Codex reader: a Room file's closing note",
+    "english": "Researched at the National Assembly Library, {date}. The file stays in the Codex while its tip lasts: {days} more days.",
+    "placeholders": "date, days",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "codex.room_footer_last",
+    "where": "Codex reader: a Room file's closing note on its last day",
+    "english": "Researched at the National Assembly Library, {date}. The file stays in the Codex while its tip lasts: today is the last day.",
+    "placeholders": "date",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.intro",
+    "where": "Reference desk: the line under the tabs",
+    "english": "Look up one room in a level on offer this week. The reading is certain, and it is saved as a tip.",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.tag",
+    "where": "Reference desk: the tag on a reading",
+    "english": "Reference desk",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.spent",
+    "where": "Reference desk: what the reading cost",
+    "english": "{hours} h spent · {limit} a day",
+    "placeholders": "hours, limit",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.pick_heading",
+    "where": "Reference desk: the heading over the list of rooms",
+    "english": "Which room?",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.pick_row",
+    "where": "Reference desk: one room in the list",
+    "english": "{stage} · {level}",
+    "placeholders": "stage, level",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.pick_none",
+    "where": "Reference desk: no room can be looked up",
+    "english": "No room on offer this week has a known favored style.",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.room_line",
+    "where": "Reference desk: where the room is, under its name",
+    "english": "In {level} · room {number} of {total} · what the room's members respond to",
+    "placeholders": "level, number, total",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.band_strongest",
+    "where": "Reference desk: a style's reading, the highest",
+    "english": "Strongest",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.band_strong",
+    "where": "Reference desk: a style's reading",
+    "english": "Strong",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.band_neutral",
+    "where": "Reference desk: a style's reading",
+    "english": "Neutral",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.band_weak",
+    "where": "Reference desk: a style's reading",
+    "english": "Weak",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.band_weakest",
+    "where": "Reference desk: a style's reading, the lowest",
+    "english": "Weakest",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.tip_heading",
+    "where": "Reference desk: the tip box heading",
+    "english": "Rhetoric tip · Researched at the Library",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.tip_line",
+    "where": "Reference desk: the tip's sentence",
+    "english": "The audience in the {stage} responds to {phrase}.",
+    "placeholders": "stage, phrase",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.tip_foot",
+    "where": "Reference desk: the tip box's closing note",
+    "english": "Certain. Saved for {days} days. The full reading stays in the Codex under Room files until the tip ends.",
+    "placeholders": "days",
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.back",
+    "where": "Reference desk: back to the Library",
+    "english": "Back",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "desk.done_today",
+    "where": "Reference desk: used for today",
+    "english": "Done for today",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "tips.source_library",
+    "where": "The Tips you hold list: a tip researched at the Library",
+    "english": "Researched at the Library",
+    "placeholders": null,
+    "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
   }
 ]

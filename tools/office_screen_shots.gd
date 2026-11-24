@@ -35,6 +35,33 @@ func _venue(office: Node, which: String) -> Overlay:
 		"gardens":
 			office._venues.show_venue("VN03")
 			return office.get_node("VenuePanel")
+		"desk", "codex", "scroll":
+			# The Library's reference desk reading, the Codex list and an unrolled document (P18, 2026-11-24). The shipped Library
+			# Documents rows are hidden placeholders, so the tool draws these three from fixture documents it makes up here
+			# (never saved, never in the data).
+			GameState.office_location = Offices.CAPITOL
+			office._apply_office_look()
+			GameState.meta["Funds"] = 50000
+			DataDB.library_documents = _fixture_documents()
+			GameState.codex_found = {"LD01": {"day": today, "read": false}}
+			GameState.codex_find("LD01")
+			if which == "desk" or which == "scroll":
+				var rooms := GameState.desk_rooms()
+				var done := GameState.do_research(str(rooms[0]["stage_id"]), str(rooms[0]["level_id"]))
+				office._venues.show_venue("VN02")
+				if which == "desk":
+					var library: Node = office._venues._library
+					library._result = done
+					library._mode = "result"
+					library._draw()
+					return office.get_node("VenuePanel")
+				office._venues._library._tab = "codex"
+				office._venues._library._on_open_room_file(str(rooms[0]["stage_id"]))
+				return office.get_node("CodexReaderPanel")
+			GameState.codex_found["LD01"] = {"day": today, "read": true}
+			office._venues.show_venue("VN02")
+			office._venues._library._on_tab("codex")
+			return office.get_node("VenuePanel")
 		"shrine", "shotengai", "library", "shrinedone", "coachvenue":
 			# Costed activities (2026-11-24): the shrine's, the shotengai's and the Library's screens, and a result card.
 			GameState.office_location = Offices.CAPITOL if which in ["library", "coachvenue"] else Offices.DISTRICT
@@ -104,6 +131,22 @@ func _venue(office: Node, which: String) -> Overlay:
 			office._show_speech_coach_page()
 			return office.get_node("ManagementPanel")
 	return null
+
+
+## Made-up Library Documents rows for the P18 screenshots: one found and read, one sealed in each of two other categories.
+func _fixture_documents() -> Array:
+	var base := {"title_jp": "", "party": null, "unlock_value": null, "note": null, "order": 1}
+	var docs: Array = []
+	for row: Dictionary in [
+		{"doc_id": "LD01", "category": "party_platform", "title": "Frontier Party", "kicker": "PARTY PLATFORM", "unlock": "start", "hint": ""},
+		{"doc_id": "LD02", "category": "party_platform", "title": "Heritage Party", "kicker": "PARTY PLATFORM", "unlock": "line", "hint": "Five more parties"},
+		{"doc_id": "LD03", "category": "ne3", "title": "ね3 (fixture)", "kicker": "ね3", "unlock": "line", "hint": "A word in the Cafeteria may lead here"},
+		{"doc_id": "LD04", "category": "history", "title": "History (fixture)", "kicker": "HISTORY", "unlock": "line", "hint": "Visits around the Capital Area may lead here"}]:
+		var merged := base.duplicate()
+		merged.merge(row)
+		merged["body"] = "A fixture paragraph for the screenshot.\n\nA second paragraph."
+		docs.append(merged)
+	return docs
 
 
 func _run() -> void:
