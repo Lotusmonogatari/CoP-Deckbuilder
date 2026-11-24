@@ -2048,10 +2048,10 @@ Cameron's go-ahead on the mock-up and his decisions (above), built as one piece.
 | Part | What changed |
 |---|---|
 | The Office | The train strip and the row of ways to go are gone. Step out shows at both offices. |
-| Capitol | Sapporo Super Station is built (VN06): the concourse with the Departures card and a To the tracks button, then the tracks screen with the strip. A plane or car leaves from the concourse; the one that is not the protagonist's shows greyed "not yours". |
+| Capitol | Sapporo Super Station is built (VN06): the concourse with the Departures card and a To the tracks button, then the tracks screen with the strip. A plane or car leaves from the concourse. Only the protagonist's own fast mode is listed (Cameron, 2026-11-24: no plane for a protagonist who cannot use it, unless other destinations are added); the other is not shown at all. |
 | District | One place, `{office} Station` (new Venues row VN07, zone District, new Venue Activities row VA07): one screen with the Departures card and the strip. Its picture is `AREA_<OFFICE>_STATION`, so the renamed files are found by office. |
 | Trip | Unchanged (confirm sheet, fade card, hours, tickets, train encounters). Arriving closes the station screens. Travel in a level stays built in. |
-| Workbook | 8 new Text rows (`station.*`, `venue.zone_district`, `travel.mode_not_yours`), HT36 and HT37 rewritten (three sentences each), `venue.refuse_elsewhere` reworded ("You cannot get there from this office."). Script: `tools/workbook/archive/travel_stations_build.py`. |
+| Workbook | 7 new Text rows (`station.*`, `venue.zone_district`), HT36 and HT37 rewritten (three sentences each), `venue.refuse_elsewhere` reworded ("You cannot get there from this office."). Script: `tools/workbook/archive/travel_stations_build.py`. |
 | Exporter and tools | Zone District allowed; the art checklist expands the four station pictures and the tracks picture; screenshot, text-sweep and touch-target audits cover the station screens. |
 | Tests | New rules and state tests; the travel click test now drives the stations. |
 

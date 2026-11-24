@@ -28,7 +28,6 @@ TEXT = [
     ("station.tracks_blurb", "The tracks screen: the line under the picture", "Your train is waiting.", None),
     ("station.back_concourse", "The tracks screen: the way back to the concourse", "Back to the concourse", None),
     ("station.concourse_hint", "Station concourse: how a plane or a car leaves", "A plane or a car leaves from right here.", None),
-    ("travel.mode_not_yours", "A way to travel this protagonist does not have (greyed)", "{mode} · not yours", "mode"),
 ]
 for key, where, english, placeholders in TEXT:
     cells = {"A": key, "B": where, "C": english, "E": NOTE}

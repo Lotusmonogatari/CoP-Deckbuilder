@@ -253,10 +253,10 @@ func _tickets(style: String) -> void:
 	var concourse := office.get_node("VenuePanel")
 	var none_ticket := concourse.find_child("TravelMode_ticket", true, false) as Button
 	var none_plane := concourse.find_child("TravelMode_plane", true, false) as Button
-	var not_car := concourse.find_child("TravelMode_car", true, false) as Button
+	var not_car := concourse.find_child("TravelMode_car", true, false) as Button   # null: PC04's fast mode is the plane
 	_expect(none_ticket != null and none_ticket.disabled and none_ticket.text == "Paid train ticket · 7 h · 0 left", where + "with no ticket the paid ticket is greyed (%s)" % [none_ticket.text if none_ticket != null else "none"])
 	_expect(none_plane != null and none_plane.disabled and none_plane.text == "Plane ticket · 2 h · 0 left", where + "and so is the plane (%s)" % [none_plane.text if none_plane != null else "none"])
-	_expect(not_car != null and not_car.disabled and not_car.text == "Private car · not yours", where + "the car is not PC04's, greyed and says so (%s)" % [not_car.text if not_car != null else "none"])
+	_expect(not_car == null, where + "the car is not PC04's, so it is not listed at all")
 	GameState.add_item("SH42")
 	GameState.add_item("SH44")
 	GameState.add_item("SH44")

@@ -1436,7 +1436,6 @@
   "travel.mode_button": "{mode} · {count} h",
   "travel.mode_button_owned": "{mode} · {count} h · {owned} left",
   "travel.mode_car": "Private car",
-  "travel.mode_not_yours": "{mode} · not yours",
   "travel.mode_pass": "Rail pass",
   "travel.mode_plane": "Plane ticket",
   "travel.mode_ticket": "Paid train ticket",

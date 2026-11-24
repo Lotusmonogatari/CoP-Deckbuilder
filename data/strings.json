@@ -10715,12 +10715,5 @@
     "english": "A plane or a car leaves from right here.",
     "placeholders": null,
     "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
-  },
-  {
-    "key": "travel.mode_not_yours",
-    "where": "A way to travel this protagonist does not have (greyed)",
-    "english": "{mode} · not yours",
-    "placeholders": "mode",
-    "notes": "Travel at the stations (2026-11-24): Claude's draft for Cameron to reword."
   }
 ]

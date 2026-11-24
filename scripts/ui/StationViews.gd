@@ -15,7 +15,7 @@ const MODE_ORDER: Array[String] = [Travel.PASS, Travel.TICKET, Travel.PLANE, Tra
 
 
 ## Whether this protagonist has the way of going at all: the rail pass always, a paid ticket if one is sold to them, and the fast mode
-## their Balance rows give them (a plane or a car), never the other one.
+## their Balance rows give them (a plane or a car), never the other one. Only these are listed on a station's Departures card.
 static func is_yours(mode: String) -> bool:
 	match mode:
 		Travel.PASS: return true
@@ -24,7 +24,7 @@ static func is_yours(mode: String) -> bool:
 
 
 ## One button for a way of going: its name and hours (and how many tickets are left), the mode's picture beside it, greyed when it
-## cannot be used (not theirs, none left, or the one the strip already uses).
+## cannot be used (none left, or the one the strip already uses). A way that is not the protagonist's is not listed at all.
 static func mode_button(look: Dictionary, mode: String, hooks: Dictionary) -> Button:
 	var button := Button.new()
 	button.name = "TravelMode_" + mode
@@ -32,10 +32,7 @@ static func mode_button(look: Dictionary, mode: String, hooks: Dictionary) -> Bu
 	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.clip_text = false
 	var usable := true
-	if not is_yours(mode):
-		button.text = Text.say("travel.mode_not_yours", {"mode": TravelText.mode_name(mode)})
-		usable = false
-	elif mode == Travel.PASS:
+	if mode == Travel.PASS:
 		button.text = Text.say("travel.mode_button", {"mode": TravelText.mode_name(mode), "count": GameState.trip_hours(mode)})
 	else:
 		var held := GameState.travel_tickets(mode)
@@ -46,8 +43,7 @@ static func mode_button(look: Dictionary, mode: String, hooks: Dictionary) -> Bu
 	var is_strip_mode: bool = (mode == Travel.PASS or mode == Travel.TICKET) and mode == strip_mode
 	button.disabled = not usable or is_strip_mode
 	OfficeFrameStyles.dress_card_button(button, look, usable and not is_strip_mode)
-	if is_yours(mode):
-		TravelText.dress_mode_icon(button, mode, 90.0)
+	TravelText.dress_mode_icon(button, mode, 90.0)
 	if usable and not is_strip_mode:
 		button.pressed.connect(_on_mode.bind(mode, hooks))
 	return button
@@ -74,7 +70,9 @@ static func departures_card(look: Dictionary, title: String, hooks: Dictionary) 
 	to.custom_minimum_size.x = 0.0
 	column.add_child(to)
 	for mode: String in MODE_ORDER:
-		column.add_child(mode_button(look, mode, hooks))
+		# A plane for a protagonist who has none (or a car for one who has the plane) is never listed: only their own ways of going.
+		if is_yours(mode):
+			column.add_child(mode_button(look, mode, hooks))
 	var why := GameState.travel_refusal(by)
 	var after := UiKit.line(why if not why.is_empty() else Text.say("travel.after_line", {"count": maxi(0, GameState.work_hours_left() - GameState.trip_hours(by))}), "SmallLabel")
 	after.name = "DeparturesAfter"
