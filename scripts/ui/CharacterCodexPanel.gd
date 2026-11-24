@@ -85,7 +85,11 @@ func _show(entry: Dictionary) -> void:
 		portrait.kind = PlaceholderArt.Kind.CHARACTER
 		portrait.art_id = str(entry["id"])
 		portrait.expression = "neutral"
-		portrait.custom_minimum_size = Vector2(520, 520)
+		# The name sits at the top, the picture takes all the room between, and the facts sit low (Cameron, 2026-11-24).
+		portrait.trim_margins = true
+		portrait.custom_minimum_size = Vector2(0, 700)
+		portrait.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		portrait.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		rows.append(portrait)
 		rows.append(UiKit.line(Text.say("characters.detail_name", {"name": entry["name"]})))
 		if not str(entry["name_jp"]).is_empty():
@@ -97,6 +101,7 @@ func _show(entry: Dictionary) -> void:
 		var organizations := ", ".join(PackedStringArray(entry["organizations"] as Array))
 		if not organizations.is_empty():
 			rows.append(UiKit.line(Text.say("characters.detail_organization", {"organization": organizations})))
+	_detail.top_aligned = bool(entry["met"])   # pins the name to the top and lets the picture fill the middle
 	_detail.open(Text.say("characters.unmet_name") if not bool(entry["met"]) else str(entry["name"]), rows)
 	var parent := _detail.get_parent()
 	if parent != null:

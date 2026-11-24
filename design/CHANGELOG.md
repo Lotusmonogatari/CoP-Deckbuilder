@@ -2056,3 +2056,7 @@ Cameron's go-ahead on the mock-up and his decisions (above), built as one piece.
 | Tests | New rules and state tests; the travel click test now drives the stations. |
 
 Note on the mock-up: it showed a plane for Kenshin Sako (PC01). The Balance rows give PC01 a private car (4 h) and only PC04 a plane (2 h), so the screens follow the data.
+
+## Characters: the person's page puts the name on top, a big picture in the middle, the facts low (2026-11-24, Cameron; branch `fix/characters-detail-layout`)
+
+On the Characters list's detail page for someone you have met, the name is pinned to the top, the picture is trimmed of empty margin and fills all the room between, and the four facts (name, Japanese name, title, party, organization) and Back sit at the bottom. A person not yet met keeps the old centered page. No rule or wording changed. Screenshot case: `popup:characterdetail`.
