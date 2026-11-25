@@ -2225,3 +2225,8 @@ Cameron uploaded 57 venue character pictures (`assets/characters/area/`) and a d
 | Area Characters | A row for every picture: VEN02 to VEN07 and CA, CB and DI people (57 in all). **Names are placeholders** ("Passerby" for zone people) until Cameron names them. The VEN roles and Sites: Cameron's for VEN03 (Sapporo Stage Manager, VN05), VEN06 (Special Parliament Staff, Library, VN02) and VEN07 (Special Parliament Staff, Cafeteria, VN01); read from the picture and still his to confirm for VEN02 (station attendant, VN06 and VN07), VEN04 (street musician, VN05) and VEN05 (shamisen player, VN05). A test keeps the tab and the folder in step (every picture has a row, every row a picture). |
 
 Cameron's answers (same day): the District office streets lines are district wide (Where `District`, so any District place can have them, 50 lines); VEN03, VEN06 and VEN07 as above.
+
+## The office-supply items move to the Marketplace's Office Inventory (2026-11-25, Cameron; branch `feature/office-items-tab`)
+
+The Printer, Shredder, Flex-Work, Priority Inbox, Commendation Gift and Lunch Delivery (SH36 to SH41) had a blank Inventory cell, so the Marketplace and the inventory screen listed them under Personal Inventory. Their Shop row's `Inventory (Personal/Office)` is now `Office`, so they are bought and held under Office Inventory, beside the gifts (SH25 to SH33). Workbook cells only; `test_office_items_tab.gd`.
+
