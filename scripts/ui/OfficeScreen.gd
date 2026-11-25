@@ -2342,6 +2342,9 @@ func _on_protagonist_chosen(player_id: String) -> void:
 	_adopt_chosen_style()
 	SaveManager.autosave()
 	_build()
+	# The new run starts at the Capitol: the picture behind the Office must follow it (a tester's report, 2026-11-25: a new run
+	# after one left at the District office still showed that District office, even for another protagonist).
+	_apply_office_look()
 	_report.text = Text.say("office.new_game_started",
 		{"name": DataDB.player.get("name_en", player_id)})
 
@@ -2369,6 +2372,7 @@ func _on_first_run_closed() -> void:
 		_adopt_chosen_style()
 		SaveManager.autosave()
 		_build()
+		_apply_office_look()
 
 
 ## The Marketplace button beside Office Management, and the one panel it

@@ -368,3 +368,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - The office-supply items move to the Marketplace's Office Inventory (2026-11-25, Cameron; branch `feature/office-items-tab`)
 - The Sapporo Stage: Stage Events, scheduled performers, Sit and Listen, Watch the Performance (2026-11-25, Cameron; branch `feature/sapporo-stage`)
 - Run statistics and an exported report in Administration (2026-11-25, Cameron; branch `feature/sapporo-stage`)
+- A new run draws the Capitol office again (2026-11-25, a tester's report; branch `fix/new-run-office-look`)

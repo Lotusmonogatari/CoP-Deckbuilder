@@ -2260,3 +2260,12 @@ Still to supply: real Stage Events rows; whether VEN02/VEN04/VEN05's roles and S
 | Times going to each place; times each activity was done | each Go press; the venues' own activity counts |
 
 Saved with the run, cleared by New Game, and an older save loads with none. **Administration, Your Statistics** shows them and **Export report** saves a text file (game folder and, on a phone, Downloads) and copies it to the clipboard. Tests: `test_run_stats.gd` (16) and four win-kind cases in `test_battle_engine.gd`. All wording is `stats.*` Text rows, a draft for Cameron.
+
+## A new run draws the Capitol office again (2026-11-25, a tester's report; branch `fix/new-run-office-look`)
+
+Report: after a run left at the PC01 District office, a new run as PC01 still drew that District office, and a new run as PC02 showed the same PC01 District office.
+
+| What was wrong | What changed |
+|---|---|
+| A new run puts the player back at the Capitol (the rules did), but the picture behind the Office is set only when the screen opens or after a trip, so it kept the District office. | The Office re-applies its picture right after a new run starts (from New Game, and from backing out of the first-run choice). |
+| Test | `test_new_run_office_look.gd` fails without the fix and passes with it. |
