@@ -2183,3 +2183,11 @@ Your draft places map as: the Capitol and the Capital Area and District streets 
 
 A tester's idea (Android, 2026-11-24): "when purchasing an item don't spring back to the top of the page". Buying redraws the Marketplace; it now returns to the scroll place it had when drawn again on the same tab (`OfficeScreenFrame.restore_scroll`, waiting for the cards to be laid out), and a tab change still starts at the top. `test_market_scroll.gd`. Other screens that redraw after a button press were not changed.
 
+## Tester reports: Staff Assignments text (2026-11-25; branch `feature/overheard-lines`)
+
+| Report | Fix |
+|---|---|
+| "Staff text is too hard to read, could just be regular colour" (the staff result lines on the new-week screen, "Fair fit" in pale grey) | The result lines use the room's own ink; the words ("Strong fit", "Fair fit", "Poor fit") already say how well they suited it. The gold, grey and red frames on the task boxes are unchanged. |
+| "The assignments said the outcome would be shown at the end of the day, not the end of the work week" | `assign.locked_note` now reads "Locked in. The results are shown at the end of the week." (Claude's draft wording for Cameron.) The results are settled each day and shown on the new-week screen. |
+| "Vertical text" (Staff Assignments, "Every task has been given out." one letter per line) | The empty-tray message sat inside the wrapping flow of task chips, which gave it no width once the Office frame released its fixed width. It now sits in a column. `test_staff_assign_empty_tray.gd`. |
+

@@ -77,7 +77,7 @@
   "assign.item_uses_line": "Uses left: {left} of {full}. It is thrown away when they run out.",
   "assign.items_heading": "Items for your staff",
   "assign.items_none": "You hold no coffee or tea. They are sold in the Marketplace.",
-  "assign.locked_note": "Locked in. The results arrive when the day ends.",
+  "assign.locked_note": "Locked in. The results are shown at the end of the week.",
   "assign.loyalty_line": "Loyalty: {word} · today {count}",
   "assign.max_line": "Most tasks today: {count}",
   "assign.name_xp": "XP",

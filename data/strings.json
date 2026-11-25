@@ -7163,9 +7163,9 @@
   {
     "key": "assign.locked_note",
     "where": "Staff Assignments, after confirming",
-    "english": "Locked in. The results arrive when the day ends.",
+    "english": "Locked in. The results are shown at the end of the week.",
     "placeholders": null,
-    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+    "notes": "2026-11-25: results are shown in the end-of-week summary, not at the end of the day (a tester's report). Claude's draft for Cameron to reword."
   },
   {
     "key": "assign.blocks_short",
