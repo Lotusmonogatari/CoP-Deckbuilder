@@ -147,6 +147,8 @@ var _events_panel: Overlay
 var _event_panel: Overlay
 ## The Marketplace tab showing: Items.PERSONAL or Items.OFFICE_INVENTORY.
 var _market_tab := Items.PERSONAL
+## The tab the Marketplace was last drawn on: drawing it again on the same tab (after a purchase) keeps the scroll place, a new tab starts at the top.
+var _market_drawn_tab := ""
 var _gathering_panel: Overlay
 var _hosted_panel: HostedEventPanel
 var _week_confirm_panel: Overlay
@@ -3310,6 +3312,12 @@ func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 ## tapping a held item still drills into its own detail view exactly as it
 ## always has.
 func _show_marketplace() -> void:
+	# Buying redraws the screen: keep the place the player had scrolled to, unless the tab changed.
+	var keep_scroll := 0
+	if _inventory_panel.visible and _inventory_panel.has_frame() and _market_tab == _market_drawn_tab:
+		var old_scroll := _inventory_panel.find_child("FrameScroll", true, false) as ScrollContainer
+		if old_scroll != null:
+			keep_scroll = old_scroll.scroll_vertical
 	# The Office frame (P13, 2026-11-20): chips for Funds against the limit and XP, the same three tabs (Cameron,
 	# 2026-10-31), a "You have" card, and one card of the same shape for every item on offer. The old row builder is
 	# replaced by MarketModel (what to show) and MarketView (how it is drawn); buying is unchanged.
@@ -3346,6 +3354,8 @@ func _show_marketplace() -> void:
 	})
 	frame.tab_chosen.connect(_on_market_tab)
 	_inventory_panel.open_frame(frame, Text.say("ui.back_office"))
+	_market_drawn_tab = _market_tab
+	frame.restore_scroll(keep_scroll)
 
 
 ## The Marketplace's third tab (P9, 2026-11-17): one card per UI style with its state, and a

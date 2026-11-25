@@ -2179,3 +2179,7 @@ Your draft places map as: the Capitol and the Capital Area and District streets 
 | "The back to office button is gone" (Android, Marketplace after a hosted event result) | A pop-up card wraps the buttons it borrows (its Back). When the Marketplace was drawn again on the same panel, the Back control kept the wrapping and shrank to one letter wide and many lines tall, so it could not be seen or tapped. | `dress_back` always sets one line (and marks it so nothing wraps it again); the card's `undress` turns wrapping off. `test_frame_back_button.gd` repeats the card-then-frame sequence. |
 | "A bill opened after the district tour, but the level is District Tour" | The reveal sentence `item.hosted_reveal` said "a bill comes up"; what a gathering reveals is a level. | Now "Over the evening a new subject comes up: {name}. It is now open to you to pursue." (Cameron's wording.) |
 
+## The Marketplace keeps your place after a purchase (2026-11-25; branch `feature/overheard-lines`)
+
+A tester's idea (Android, 2026-11-24): "when purchasing an item don't spring back to the top of the page". Buying redraws the Marketplace; it now returns to the scroll place it had when drawn again on the same tab (`OfficeScreenFrame.restore_scroll`, waiting for the cards to be laid out), and a tab change still starts at the top. `test_market_scroll.gd`. Other screens that redraw after a button press were not changed.
+
