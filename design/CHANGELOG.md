@@ -2210,3 +2210,7 @@ Cameron's ideas, built from his answers (meals free, the Ainu bonus drawn at ran
 
 Not built: lines spoken at a table (a seat could add its own overheard lines); say if wanted.
 
+## Staff assignment drag and drop on a phone (2026-11-25, a tester's report; branch `feature/cafeteria-seats`)
+
+Report (Android): "The staff assignment drag and drop feature was not working." The task chips already ask `DragScroll` to leave their drags alone, so the code path was right on a desktop and in the click tests. **Diagnosis (not reproduced; there is no touchscreen here):** on a phone Godot's own touch panning in the list's `ScrollContainer` runs as well as `DragScroll`, takes a finger's drag from a chip before the chip's drag-and-drop can start, and would scroll the list a second time. **Fix:** `DragScroll.attach` now sets the scroll's `scroll_deadzone` to a number no finger can cross, which turns the built-in panning off on every list `DragScroll` scrolls (`test_drag_scroll_deadzone.gd`). If a drag still fails on the phone, the fallback is a hold-to-pick-up of the chip's own; tapping a task and choosing who does it works either way.
+
