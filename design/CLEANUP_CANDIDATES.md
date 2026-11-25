@@ -257,3 +257,7 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 ## Venue icons (2026-11-24)
 
 The Venues tab's Icon column (`VEN_*`) and the nine `VEN_*.png` rows of `tools/art_checklist.py` are drawn by nothing now that the place map's cards use a picture banner (`feature/place-card-banner`). Left in place until Cameron says to remove them.
+
+## Speech coach Text rows (2026-11-25)
+
+`rhetoric.coach_name`, `rhetoric.coach_name_jp` and `rhetoric.coach_title` are no longer asked for by any code: the Rhetoric Training page reads the coach's name, kanji and title from his Area Characters row (VEN01). Left in place until Cameron says to remove them.

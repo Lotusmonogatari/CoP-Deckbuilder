@@ -1471,6 +1471,22 @@ SHEETS = {
             ("Note", "note", "str"),
         ],
     },
+    "Area Characters": {
+        "out": "area_characters.json",
+        "key": "character_id",
+        "id_pattern": r"^(VEN|CA|CB|DI)\d+$",
+        "optional_sheet": True,
+        "optional": ["Name JP", "Romaji", "Title", "Site", "Note"],
+        "columns": [
+            ("Character ID", "character_id", "id"),
+            ("Name", "name", "str"),
+            ("Name JP", "name_jp", "str"),
+            ("Romaji", "romaji", "str"),
+            ("Title", "title", "str"),
+            ("Site", "site", "str"),
+            ("Note", "note", "str"),
+        ],
+    },
     "Venue Milestones": {
         "out": "venue_milestones.json",
         "key": "milestone_id",
@@ -4262,6 +4278,43 @@ def check_library_documents(data, report):
             report.warn(where, "A draft row: hidden from players until its Note stops beginning with DRAFT")
 
 
+AREA_PREFIX_ZONES = {"CA": "Capital Area", "CB": "Capitol Building", "DI": "District"}
+
+
+def area_allowed(character, venue):
+    """Whether an Area Characters row appears at a venue row: a VEN person only at the venues in Site; a CA/CB/DI person in their zone,
+    narrowed to Site when Site is filled."""
+    cid = str(character.get("character_id"))
+    sites = [s.strip() for s in str(character.get("site") or "").replace(",", ";").split(";") if s.strip()]
+    if sites and str(venue.get("venue_id")) not in sites:
+        return False
+    if cid.startswith("VEN"):
+        return bool(sites)
+    return venue.get("zone") == AREA_PREFIX_ZONES.get(cid[:2])
+
+
+def check_area_characters(data, report):
+    """Area Characters (2026-11-25): a VEN## person names the venues they stand in (Site, required); a CA##, CB## or DI## person belongs to
+    their zone (Capital Area, Capitol Building, District), and a Site, if filled, narrows them to venues of that zone. Every Site names
+    real venues (semicolon-separated)."""
+    rows = data.get("area_characters", [])
+    venues = {str(v.get("venue_id")): v for v in data.get("venues", [])}
+    for row in rows:
+        cid = str(row.get("character_id"))
+        where = f"Area Characters {cid}"
+        if not row.get("name"):
+            report.error(where, "Name is blank")
+        sites = [s.strip() for s in str(row.get("site") or "").replace(",", ";").split(";") if s.strip()]
+        prefix = "VEN" if cid.startswith("VEN") else cid[:2]
+        if prefix == "VEN" and not sites:
+            report.error(where, "A VEN## person needs a Site: the venue ID(s) they stand in, such as VN04")
+        for site in sites:
+            if site not in venues:
+                report.error(where, f"Site '{site}' is not a venue ID in the Venues tab")
+            elif prefix in AREA_PREFIX_ZONES and venues[site].get("zone") != AREA_PREFIX_ZONES[prefix]:
+                report.error(where, f"Site '{site}' is in the {venues[site].get('zone')}, but a {prefix}## person belongs to the {AREA_PREFIX_ZONES[prefix]}")
+
+
 def check_venues(data, report):
     """Capitol venues (P16, 2026-11-23): IDs, kinds and zones; an activity names a real venue and a pool that has lines; a line's Pool,
     Speaker (opponent, staff, visitor, a Capital Area ID, 'colleague' or blank, never a protagonist), dates (YY.MM.DD, From not after
@@ -4278,7 +4331,8 @@ def check_venues(data, report):
     for o in data.get("opponents", []):
         if str(o.get("name")) in player_names:
             protagonists.add(str(o.get("opp_id")))
-    area_ids = {"SPEECH_COACH"}
+    area_characters = {str(c.get("character_id")): c for c in data.get("area_characters", [])}
+    area_ids = set(area_characters) | {"area"}   # 'area' = someone from the venue's zone pool (P: Area Characters, 2026-11-25)
     bills = {str(k) for k in data.get("floor_votes", {})}
     stages = {str(s.get("stage_id")): s for s in data.get("stages", [])}
     opponent_ids = {str(o.get("opp_id")) for o in data.get("opponents", [])}
@@ -4340,9 +4394,16 @@ def check_venues(data, report):
             report.error(where, f"Pool {line.get('pool')!r} must be one of {', '.join(VENUE_POOLS)}")
         speaker = str(line.get("speaker") or "")
         if speaker and speaker != "colleague" and speaker not in people and speaker not in area_ids:
-            report.error(where, f"Speaker '{speaker}' is not an opponent, staff, visitor or Capital Area ID, 'colleague' or blank")
+            report.error(where, f"Speaker '{speaker}' is not an opponent, staff, visitor or Area Characters ID, 'area', 'colleague' or blank")
         if speaker in protagonists:
             report.error(where, f"Speaker '{speaker}' is a protagonist; a player character never speaks in a venue line")
+        if speaker in area_characters:
+            # The person must be allowed at every venue whose activity deals this line's pool.
+            for activity in activities:
+                if str(activity.get("pool")) == str(line.get("pool")) and str(activity.get("venue_id")) in venues:
+                    venue = venues[str(activity["venue_id"])]
+                    if not area_allowed(area_characters[speaker], venue):
+                        report.error(where, f"Speaker '{speaker}' does not appear at {venue.get('name')} (its zone and Site rule them out)")
         hint = line.get("hint_kind")
         if not hint and not line.get("text"):
             report.error(where, "A line with no Text must be a hint (Hint Kind)")
@@ -5594,6 +5655,7 @@ def main():
     check_offices(data, report)
     check_event_leads(data, report)
     check_decision_scenes(data, report)
+    check_area_characters(data, report)
     check_venues(data, report)
     check_library_documents(data, report)
     check_places(data, report)

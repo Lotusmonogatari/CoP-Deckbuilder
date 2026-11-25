@@ -11,7 +11,7 @@
     "  opponents     OP01...            opponents.json",
     "  staff         SF01...            staff.json",
     "  visitors      VI01...            visitors.json",
-    "  capital_area  SPEECH_COACH       special characters in the Capital Area, outside the Capitol building (2026-11-22)",
+    "  area          VEN01 CA01 CB01 DI01...  open-world people (Area Characters tab, 2026-11-25): VEN = one venue, CA = Capital Area, CB = Capitol interior, DI = District",
     "  character_aliases (below): one person who is both an opponent and a visitor (the party whips, P15, 2026-11-23) has one",
     "  picture. OP132 uses VI29's, OP133 VI175's, OP134 VI176's, until a picture of its own is dropped in.",
     "  e.g. assets/characters/opponents/OP03_attacking.png",
@@ -85,7 +85,7 @@
     "card": "res://assets/cards/art/",
     "background": "res://assets/backgrounds/",
     "icon": "res://assets/icons/",
-    "capital_area": "res://assets/characters/capital_area/"
+    "area": "res://assets/characters/area/"
   },
   "character_aliases": {"OP132": "VI29", "OP133": "VI175", "OP134": "VI176"},
   "character_prefixes": {
@@ -93,7 +93,10 @@
     "OP": "opponent",
     "SF": "staff",
     "VI": "visitor",
-    "SPEECH_COACH": "capital_area"
+    "VEN": "area",
+    "CA": "area",
+    "CB": "area",
+    "DI": "area"
   },
   "expressions": [
     "neutral",

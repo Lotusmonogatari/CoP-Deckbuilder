@@ -137,6 +137,8 @@ var _event_launch := {}
 ## The picture chosen for each event as it was shown, reused on its result screen.
 var _event_pictures: Dictionary = {}
 ## The biggest a staff picture is drawn on the profile, and the gap above it.
+## The speech coach's Area Characters row (his name, kanji and title come from it; his picture is its ID).
+const COACH_ID := "VEN01"
 const STAFF_PORTRAIT_MAX := Vector2(480, 860)
 const STAFF_TOP_GAP := 88.0
 var _election_panel: Overlay
@@ -1873,7 +1875,7 @@ func _show_speech_coach_page() -> void:
 
 ## The Rhetoric Training tab: the blurb, then one card for each training session. (XP and Funds are chips now.)
 func _rhetoric_cards(look: Dictionary) -> Array[Control]:
-	# The speech coach's picture (assets/characters/capital_area/SPEECH_COACH.png) beside the page's own introduction (2026-11-22).
+	# The speech coach's picture (assets/characters/area/VEN01.png, an Area Characters row) beside the page's own introduction (2026-11-22).
 	var coach_card := OfficeFrameStyles.card(look)
 	coach_card.name = "SpeechCoachCard"
 	var coach_row := HBoxContainer.new()
@@ -1881,7 +1883,7 @@ func _rhetoric_cards(look: Dictionary) -> Array[Control]:
 	var coach := PlaceholderArt.new()
 	coach.name = "SpeechCoach"
 	coach.kind = PlaceholderArt.Kind.CHARACTER
-	coach.art_id = "SPEECH_COACH"
+	coach.art_id = COACH_ID
 	coach.custom_minimum_size = Vector2(240, 270)
 	coach.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	coach_row.add_child(coach)
@@ -1890,12 +1892,12 @@ func _rhetoric_cards(look: Dictionary) -> Array[Control]:
 	# His name with the surname in kanji as a muted accent beside it, then his title, then the page's introduction.
 	var name_row := HBoxContainer.new()
 	name_row.add_theme_constant_override("separation", 12)
-	var coach_name := UiKit.heading(Text.say("rhetoric.coach_name"))
+	var coach_name := UiKit.heading(str(DataDB.get_area_character(COACH_ID).get("name", "")))
 	coach_name.name = "CoachName"
 	coach_name.set_meta(UiKit.ONE_LINE_META, true)
 	coach_name.autowrap_mode = TextServer.AUTOWRAP_OFF
 	name_row.add_child(coach_name)
-	var coach_name_jp := UiKit.line(Text.say("rhetoric.coach_name_jp"), "SmallLabel")
+	var coach_name_jp := UiKit.line(str(DataDB.get_area_character(COACH_ID).get("name_jp", "")), "SmallLabel")
 	coach_name_jp.name = "CoachNameJp"
 	coach_name_jp.custom_minimum_size.x = 0.0
 	coach_name_jp.set_meta(UiKit.ONE_LINE_META, true)
@@ -1903,7 +1905,7 @@ func _rhetoric_cards(look: Dictionary) -> Array[Control]:
 	coach_name_jp.size_flags_vertical = Control.SIZE_SHRINK_END
 	name_row.add_child(coach_name_jp)
 	coach_words.add_child(name_row)
-	coach_words.add_child(UiKit.line(Text.say("rhetoric.coach_title"), "SmallLabel"))
+	coach_words.add_child(UiKit.line(str(DataDB.get_area_character(COACH_ID).get("title", "")), "SmallLabel"))
 	coach_words.add_child(UiKit.line(Text.say("rhetoric.blurb"), "SmallLabel"))
 	coach_row.add_child(coach_words)
 	coach_card.get_node("Column").add_child(coach_row)

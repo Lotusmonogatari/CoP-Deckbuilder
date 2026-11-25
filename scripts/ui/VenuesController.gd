@@ -21,6 +21,8 @@ var _result_panel: Overlay
 var _result_venue := ""
 ## The Library's two tabs and the Codex reader (P18).
 var _library: LibraryController
+## The scene behind an overheard line spoken by an area character (VenueSceneViews), or null.
+var _scene: Control
 ## What a station's screens call on the Office: the trip's mode, confirm and go (see StationViews).
 var _trip_hooks: Dictionary = {}
 ## The venue whose line pop-up is up (Keep listening needs to know which).
@@ -40,6 +42,7 @@ func setup(office: Control, after_button: Button, open_coach_page: Callable, on_
 	_line_panel = _panel("VenueLinePanel")
 	_line_panel.dismissable = true
 	_line_panel.confirmed.connect(_on_keep_listening)
+	_line_panel.closed.connect(_clear_scene)
 	_tips_panel = _panel("TipsPanel")
 	_tracks_panel = _panel("StationTracksPanel")
 	_result_panel = _panel("VenueResultPanel")
@@ -400,11 +403,20 @@ func _hear(venue_id: String) -> void:
 		show_venue(venue_id)
 		return
 	SaveManager.autosave()
+	_show_heard(venue_id, heard)
+
+
+## Draws a heard line. An Area Characters speaker stands over the venue's background with the card at the foot; any other line is the plain
+## card over the Office (Cameron, 2026-11-25). Split from `_hear` so a screen can be drawn from a line without dealing one.
+func _show_heard(venue_id: String, heard: Dictionary) -> void:
+	_clear_scene()
 	var venue := GameState.venue_row(venue_id)
 	var pool := str(heard.get("where", ""))
+	var speaker := str(heard.get("speaker", ""))
+	var on_scene := AreaCharacters.is_area_id(speaker)
 	var body: Array[Control] = []
 	# No automatic "You overhear ..." lead (Cameron, 2026-11-23): a line that wants it says so in its own words.
-	body.append(VenueViews.speaker_row(str(heard["text"]), str(heard.get("speaker", ""))))
+	body.append(VenueViews.speaker_row(str(heard["text"]), speaker, "", not on_scene))
 	var hint: Dictionary = heard.get("hint", {})
 	if not hint.is_empty():
 		body.append(VenueViews.tip_box(hint, pool))
@@ -426,10 +438,26 @@ func _hear(venue_id: String) -> void:
 		body.append(added_title)
 	var meta := Text.say("venue.line_counter", {"count": int(heard["number"]), "limit": int(heard["limit"])}) if str(heard["kind"]) != "dry" else ""
 	var done := bool(heard.get("last", false))
-	_line_panel.open_card({"tag": Text.say("venue.tag_gardens" if pool == "gardens" else "venue.tag_cafeteria"), "meta": meta,
-		"body": body},
+	# The Cafeteria and the Gardens have their own tags; any other place (a line an area person speaks there) is tagged with its name.
+	var tag := str(venue.get("name", "")) if pool not in ["gardens", "cafeteria"] else Text.say("venue.tag_gardens" if pool == "gardens" else "venue.tag_cafeteria")
+	_line_panel.open_card({"tag": tag, "meta": meta, "bottom": on_scene, "body": body},
 		Text.say("venue.come_back") if done else Text.say("venue.keep_listening"),
 		Text.say("venue.back_to", {"venue": str(venue.get("name", ""))}), not done)
+	if on_scene:
+		# The scene sits behind the card, over an opaque ground (the pop-up's usual scrim would show the Office through the picture).
+		_scene = VenueSceneViews.build(_venue_picture_id(venue), speaker)
+		_line_panel.add_child(_scene)
+		_line_panel.move_child(_scene, _line_panel.get_node("CardHost").get_index())
+		_line_panel.set_ground(OfficeFrameStyles.look()["ground"])
+
+
+## The scene of the last overheard line is taken down before another line or the pop-up closing.
+func _clear_scene() -> void:
+	if _scene != null:
+		if _scene.get_parent() != null:
+			_scene.get_parent().remove_child(_scene)   # out of the tree now, so a new scene is the only one in it
+		_scene.queue_free()
+		_scene = null
 
 
 func _on_keep_listening() -> void:

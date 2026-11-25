@@ -2145,3 +2145,17 @@ Differences from the spec: the desk's hours and daily limit live on the activity
 
 Each place on the Step out map now shows its picture as a wide banner across the top of the card (in the season it is now, so the Gardens follow the year), then its name, Japanese name and blurb, then Go. The 170 px thumbnail is gone. Cameron picked this from a mock-up of three ways to use a venue picture or the unused `VEN_*` icons (`design/review/venue_icons_2026-11-24/`) and chose the picture without a new icon; the Venues tab's Icon column and the nine `VEN_*.png` rows in the art checklist are therefore not needed by the map (left in place until Cameron says to remove them: candidates for `design/CLEANUP_CANDIDATES.md`).
 
+## Area Characters: open-world people who speak in venues and stand over their backgrounds (2026-11-25, Cameron; branch `feature/area-characters`)
+
+Cameron's design: a new tab for open-world characters, with a prefix on each ID. `VEN##` are specific venue characters (limited by a **Site** column, such as the speech coach), `CA##` appear in the Capital Area, `CB##` in the Capitol interior (Cameron's choice over `CP##`, which the Cosmetic Packages use) and `DI##` in the District. A venue pulls its zone's prefix unless a line names a VEN person; a line whose Speaker is `area` takes someone from the venue's pool.
+
+| Step | What changed |
+|---|---|
+| Tab and checks | **Area Characters** tab (`area_characters.json`); the exporter checks the ID shape, that a VEN person has a Site, that every Site names real venues of the right zone, and that a line's speaker can appear at its venue. |
+| Speech coach | `SPEECH_COACH` is now **VEN01** (picture `assets/characters/area/VEN01.png`, folder renamed from `capital_area`); his name, kanji and title are read from his row, so the Text rows `rhetoric.coach_name`, `coach_name_jp` and `coach_title` are no longer asked for (left in place). |
+| Pictures | `art.json` maps `VEN`, `CA`, `CB` and `DI` to the area folder; the art checklist lists each person. |
+| Overheard lines | A line an area person speaks puts the person full height over the venue's background with the card at the foot (`VenueSceneViews`); any other line keeps the plain card. The tag of a line at a place other than the Cafeteria or the Gardens is the place's name. |
+| Tests | `test_area_characters.gd` (pool and Site rules, the seeded pick, the prefix folders, the coach as VEN01, speaker `area`, and the scene against the plain card for Cameron's six sample lines, used as fixtures: none is in the data); `tools/test_venue_exporter.py`; the text sweep draws the scene. |
+
+Not built: lines for Capital Area and District places. Only the Cafeteria and the Gardens deal lines, so those venues need a line pool before their people can be overheard in the game itself.
+

@@ -34,7 +34,7 @@ const DATA_PATH := "res://data/"
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
 	"bill_components", "bill_level_templates", "patron_bills", "party_values",
-	"visit_questions", "visit_answers", "trade_questions", "lobbyist_lines", "places", "venues", "venue_activities", "venue_milestones", "library_documents", "venue_lines",
+	"visit_questions", "visit_answers", "trade_questions", "lobbyist_lines", "places", "venues", "venue_activities", "venue_milestones", "library_documents", "area_characters", "venue_lines",
 	"floor_votes", "how_to_play", "law_effects", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders", "standing_links",
@@ -270,6 +270,8 @@ var venues: Array = []
 var venue_activities: Array = []
 var venue_milestones: Array = []
 var library_documents: Array = []
+## Area Characters (2026-11-25): the open-world people who speak in venues and stand over their backgrounds (VEN##, CA##, CB##, DI##).
+var area_characters: Array = []
 var venue_lines: Array = []
 ## The text of rows that ask for place tokens, as loaded, so choosing another protagonist refills them.
 var _place_templates: Dictionary = {}
@@ -454,6 +456,7 @@ func load_all() -> void:
 			"venue_activities": venue_activities = content if content is Array else []
 			"venue_milestones": venue_milestones = content if content is Array else []
 			"library_documents": library_documents = content if content is Array else []
+			"area_characters": area_characters = content if content is Array else []
 			"venue_lines": venue_lines = content if content is Array else []
 			"questions": questions = content
 			"sounds":
@@ -1104,6 +1107,14 @@ func resolve_reward_target(entry: Dictionary) -> Dictionary:
 		"delta": entry.get("delta"),
 		"record": record,
 	}
+
+
+## An Area Characters row by ID (VEN01, CA01...), or {}.
+func get_area_character(character_id: String) -> Dictionary:
+	for row: Dictionary in area_characters:
+		if str(row.get("character_id", "")) == character_id:
+			return row
+	return {}
 
 
 func get_visitor(visitor_id: String) -> Dictionary:

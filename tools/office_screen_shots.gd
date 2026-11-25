@@ -90,6 +90,26 @@ func _venue(office: Node, which: String) -> Overlay:
 				return office.get_node("StationTracksPanel")
 			office._venues.show_venue("VN07" if which == "districtstation" else "VN06")
 			return office.get_node("VenuePanel")
+		"scene_cb", "scene_ca", "scene_di", "scene_coach", "scene_opponent":
+			# An overheard line spoken by an area person stands over the venue's background (2026-11-25). The sample people and lines are the
+			# fixtures from Cameron's test list; none is in the data. scene_opponent is the plain card (an opponent speaks).
+			DataDB.area_characters = [
+				{"character_id": "CB01", "name": "Passerby", "name_jp": null, "title": "Capitol staff", "site": null},
+				{"character_id": "CA01", "name": "Passerby", "name_jp": null, "title": "Capital Area resident", "site": null},
+				{"character_id": "DI01", "name": "Passerby", "name_jp": null, "title": "District resident", "site": null},
+				{"character_id": "VEN01", "name": "Masayuki Katō", "name_jp": "加藤正幸", "title": "Speech Coach", "site": "VN04"}]
+			var cases := {
+				"scene_cb": ["VN01", "CB01", "Too many new staff getting lost all day.", "cafeteria"],
+				"scene_ca": ["VN06", "CA01", "Heading to the office again only to join remote calls.", ""],
+				"scene_di": ["VN09", "DI01", "The wind is nice today.", ""],
+				"scene_coach": ["VN04", "VEN01", "Breathe from the belly, not the throat.", ""],
+				"scene_opponent": ["VN01", "OP47", "Budget tables are like choreography.", "cafeteria"]}
+			var case: Array = cases[which]
+			GameState.office_location = Offices.DISTRICT if case[0] == "VN09" else Offices.CAPITOL
+			office._apply_office_look()
+			office._venues._show_heard(case[0], {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": case[1], "text": case[2],
+				"hint": {}, "unlocked": "", "last": false, "where": case[3]})
+			return office.get_node("VenueLinePanel")
 		"gossip", "tip", "dry":
 			var entry := GameState.venue_day("VN01")
 			var dealt: Array = entry["dealt"]

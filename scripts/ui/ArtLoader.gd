@@ -39,7 +39,7 @@ const _DEFAULT_FOLDERS := {
 	"opponent": "res://assets/characters/opponents/",
 	"staff": "res://assets/characters/staff/",
 	"visitor": "res://assets/characters/visitors/",
-	"capital_area": "res://assets/characters/capital_area/",
+	"area": "res://assets/characters/area/",
 	"card": "res://assets/cards/art/",
 	"background": "res://assets/backgrounds/",
 	"icon": "res://assets/icons/",

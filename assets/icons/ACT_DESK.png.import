@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwc3mtqrgl3ux"
-path="res://.godot/imported/SPEECH_COACH.png-0dc0039e8ec36d2cfc4e9c19a0ec863d.ctex"
+uid="uid://cqcwnlt4s6eg2"
+path="res://.godot/imported/ACT_DESK.png-da612a1c4bcc7fe8fc11fa8ad0e2fca7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/capital_area/SPEECH_COACH.png"
-dest_files=["res://.godot/imported/SPEECH_COACH.png-0dc0039e8ec36d2cfc4e9c19a0ec863d.ctex"]
+source_file="res://assets/icons/ACT_DESK.png"
+dest_files=["res://.godot/imported/ACT_DESK.png-da612a1c4bcc7fe8fc11fa8ad0e2fca7.ctex"]
 
 [params]
 
