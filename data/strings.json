@@ -4867,9 +4867,9 @@
   {
     "key": "item.hosted_reveal",
     "where": "Item result and hosted-event result: a level revealed by a gathering you hosted",
-    "english": "Over the evening a new level comes up: {name}. It is now open to you.",
+    "english": "Over the evening a new subject comes up: {name}. It is now open to you to pursue.",
     "placeholders": "name",
-    "notes": "2026-10-23 hosting. 2026-11-25: says \"level\", not \"bill\": what a gathering reveals is a level (a tester's report). Claude's draft for Cameron to reword."
+    "notes": "2026-10-23 hosting. 2026-11-25: a level, not a bill, is what a gathering reveals (a tester's report); wording by Cameron."
   },
   {
     "key": "item.hosted_hours",

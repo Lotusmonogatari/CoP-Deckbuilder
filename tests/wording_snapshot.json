@@ -729,7 +729,7 @@
   "item.close": "Close",
   "item.hosted_hours": "It took {hours} hours.",
   "item.hosted_hours.one": "It took {hours} hour.",
-  "item.hosted_reveal": "Over the evening a new level comes up: {name}. It is now open to you.",
+  "item.hosted_reveal": "Over the evening a new subject comes up: {name}. It is now open to you to pursue.",
   "item.quantity": "You have {count}.",
   "item.queued": "{name} is ready for your next stage.",
   "item.queued_level": "{name} will last through your next level.",
