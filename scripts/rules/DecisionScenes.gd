@@ -346,6 +346,8 @@ static func person_kind(id: String) -> String:
 		return "staff"
 	if id.begins_with("VI"):
 		return "visitor"
+	if AreaCharacters.is_area_id(id):
+		return "area"
 	return ""
 
 

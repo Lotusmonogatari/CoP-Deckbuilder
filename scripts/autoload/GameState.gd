@@ -3123,7 +3123,7 @@ func venue_hear_next(venue_id: String) -> Dictionary:
 			return {"ok": false}
 		var dry := VenueLines.dry_line(DataDB.venue_lines, venue_context(), VenueLines.seed_for(run_seed, venue_today(), venue_id + "|dry"))
 		entry["dry"] = true
-		return {"ok": true, "number": heard, "limit": venue_limit(), "kind": "dry", "speaker": str(dry.get("speaker", "")),
+		return {"ok": true, "number": heard, "limit": venue_limit(), "kind": "dry", "speaker": _venue_speaker(dry.get("speaker"), venue_id, "dry"),
 			"text": str(dry.get("text", Text.say("venue.nothing_new"))), "hint": {}, "last": true, "where": str(activity.get("pool", ""))}
 	var row := VenueLines.find(DataDB.venue_lines, str(next["line_id"]))
 	entry["heard"] = heard + 1
@@ -3142,10 +3142,20 @@ func venue_hear_next(venue_id: String) -> Dictionary:
 	if unlocks != null and not str(unlocks).strip_edges().is_empty() and codex_find(str(unlocks)):
 		unlocked_title = str(_library_document(str(unlocks)).get("title", ""))
 	return {"ok": true, "number": heard + 1, "limit": venue_limit(), "kind": "hint" if not hint.is_empty() else str(row.get("topic", "")),
-		"speaker": "" if raw_speaker == null else str(raw_speaker), "text": text, "hint": hint, "unlocked": unlocked_title,
+		"speaker": _venue_speaker(raw_speaker, venue_id, str(row.get("line_id", ""))), "text": text, "hint": hint, "unlocked": unlocked_title,
 		# After the last dealt line the dry line follows (Keep listening stays live for it); with no dry line, this one is the last.
 		"last": VenueLines.next_dealt(entry["dealt"] as Array, heard + 1, venue_limit()).is_empty() \
 			and VenueLines.dry_line(DataDB.venue_lines, venue_context(), 0).is_empty(), "where": str(activity.get("pool", ""))}
+
+
+## A venue line's speaker ID: the row's own, or, for the word `area`, someone from the venue's pool (its zone's people plus the VEN people
+## whose Site names it), picked from a seed so a reload never reshuffles ("" when the pool is empty: the line is then narration).
+func _venue_speaker(raw: Variant, venue_id: String, salt: String) -> String:
+	var id := "" if raw == null else str(raw)
+	if id != AreaCharacters.ANY:
+		return id
+	var pool := AreaCharacters.pool_for(DataDB.area_characters, venue_row(venue_id))
+	return AreaCharacters.pick(pool, VenueLines.seed_for(run_seed, venue_today(), "%s|speaker|%s" % [venue_id, salt]))
 
 
 ## The sentence of a dealt hint: its Text row with the stage's or the person's name filled in.

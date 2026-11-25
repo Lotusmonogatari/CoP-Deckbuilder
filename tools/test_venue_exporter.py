@@ -70,6 +70,42 @@ def library_tests(expect):
     expect(any("LD12" in w for w, m in run_library([doc("LD12", note="DRAFT: placeholder")]).warnings), "a DRAFT row is reported as a warning")
 
 
+VENUES = [{"venue_id": "VN01", "zone": "Capitol Building", "name": "Cafeteria"}, {"venue_id": "VN04", "zone": "Capital Area", "name": "Speech Coach"},
+          {"venue_id": "VN08", "zone": "District", "name": "Old Shrine"}]
+
+
+def run_area(people):
+    report = Report()
+    export_data.check_area_characters({"area_characters": people, "venues": VENUES}, report)
+    return report
+
+
+def person(cid, **over):
+    base = {"character_id": cid, "name": "Someone", "site": None}
+    base.update(over)
+    return base
+
+
+def area_tests(expect):
+    expect(not run_area([person("VEN01", site="VN04"), person("CA01"), person("CB01"), person("DI01")]).errors, "valid VEN, CA, CB and DI rows pass")
+    expect(any("VEN02" in w for w, m in run_area([person("VEN02")]).errors), "a VEN row with no Site fails")
+    expect(any("VEN03" in w for w, m in run_area([person("VEN03", site="VN99")]).errors), "a Site naming no venue fails")
+    expect(any("CA02" in w for w, m in run_area([person("CA02", site="VN01")]).errors), "a Capital Area person sited in the Capitol fails")
+    expect(not run_area([person("CB02", site="VN01")]).errors, "a zone person narrowed to a venue of their zone passes")
+    expect(any("CA03" in w for w, m in run_area([person("CA03", name=None)]).errors), "a blank Name fails")
+    people = {"VEN01": person("VEN01", site="VN04"), "CA01": person("CA01")}
+    expect(export_data.area_allowed(people["VEN01"], VENUES[1]) and not export_data.area_allowed(people["VEN01"], VENUES[0]),
+           "a VEN person is allowed only at their Site")
+    expect(export_data.area_allowed(people["CA01"], VENUES[1]) and not export_data.area_allowed(people["CA01"], VENUES[2]), "a zone person only in their zone")
+    data = {"venues": VENUES, "venue_activities": [{"activity_id": "VA01", "venue_id": "VN01", "kind": "chat", "pool": "cafeteria"}],
+            "venue_lines": [line("VL001", speaker="VEN01"), line("VL002", speaker="area")], "opponents": [], "staff": [], "visitors": [], "stages": [],
+            "floor_votes": {}, "rules": {}, "strings": [], "area_characters": [people["VEN01"], people["CA01"]]}
+    report = Report()
+    export_data.check_venues(data, report)
+    expect(any("VL001" in w and "does not appear" in m for w, m in report.errors), "a line whose speaker cannot appear at its venue fails")
+    expect(not any("VL002" in w for w, m in report.errors), "the speaker word 'area' passes")
+
+
 def main():
     failures = []
 
@@ -87,6 +123,7 @@ def main():
     both = run([line("VL005", topic="watch", text="Words.", hint_kind="stage_suit")])
     expect(len([e for e in both.errors if "VL005" in e[0]]) >= 2, "a row wrong in both ways is reported twice")
     library_tests(expect)
+    area_tests(expect)
     print("")
     print("VENUE EXPORTER TEST: " + ("PASS" if not failures else "FAIL"))
     return 1 if failures else 0

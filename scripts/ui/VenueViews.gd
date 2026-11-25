@@ -167,6 +167,10 @@ static func _speaker_facts(speaker_id: String) -> Dictionary:
 		"visitor":
 			var visitor := DataDB.get_visitor(speaker_id)
 			return {"name": str(visitor.get("name_en", speaker_id)), "detail": str(visitor.get("title", "")), "color": null, "colleague": false}
+		"area":
+			var person := DataDB.get_area_character(speaker_id)
+			return {"name": str(person.get("name", speaker_id)), "detail": str(person.get("title", "") if person.get("title") != null else ""),
+				"color": null, "colleague": false}
 	return {"name": speaker_id, "detail": "", "color": null, "colleague": false}
 
 
