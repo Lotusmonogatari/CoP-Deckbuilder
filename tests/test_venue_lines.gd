@@ -173,7 +173,7 @@ func test_the_dry_line_comes_from_the_dry_pool_and_is_the_same_on_a_reload() -> 
 
 func test_the_real_lines_never_have_a_protagonist_speaker() -> void:
 	var protagonists := ["OP06", "OP22", "OP35", "OP40"]
-	assert_eq(DataDB.venue_lines.size(), 90)
+	assert_eq(DataDB.venue_lines.size(), 96, "90 dealt lines and Cameron's six overheard sample lines (2026-11-25)")
 	for line: Dictionary in DataDB.venue_lines:
 		assert_false(protagonists.has(str(line.get("speaker", ""))), "%s: a protagonist never speaks" % line["line_id"])
 
