@@ -28,6 +28,9 @@ func test_event_text_about_unnamed_people_has_no_gendered_words() -> void:
 		var speaker := str(row.get("speaker", "")) if row.get("speaker") != null else ""
 		if not speaker.is_empty() and speaker != "area":
 			continue   # a line spoken by a named person is tied to that character
-		if rx.search(str(row.get("text", ""))) != null:
+		var line_text := str(row.get("text", ""))
+		if line_text.contains("women-only"):
+			continue   # a train car's rule (the women-only car), not a person
+		if rx.search(line_text) != null:
 			bad.append("%s: %s" % [row.get("line_id"), str(row.get("text", "")).left(70)])
 	assert_eq(bad, [], "gendered words in text about an unnamed person (say 'they' or the person's role)")

@@ -13,13 +13,13 @@ stands in for every expression.
 | Visitors | 870 / 880 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
-| Area characters (open-world people: VEN = one venue, CA = Capital Area, CB = Capitol interior, DI = District) | 1 / 1 |
+| Area characters (open-world people: VEN = one venue, CA = Capital Area, CB = Capitol interior, DI = District) | 57 / 57 |
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
 | Cosmetic package icons | 9 / 9 |
 | Venue backgrounds | 19 / 19 |
-| Venue activity icons | 18 / 18 |
+| Venue activity icons | 18 / 19 |
 | Decision scenes with a picture to show | 0 / 10 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -514,6 +514,62 @@ stands in for every expression.
 | File | For | Drawn |
 |---|---|---|
 | VEN01.png | Masayuki Katō (VN04) | ✓ |
+| CA01.png | Passerby (whole zone) | ✓ |
+| CA02.png | Passerby (whole zone) | ✓ |
+| CA03.png | Passerby (whole zone) | ✓ |
+| CA04.png | Passerby (whole zone) | ✓ |
+| CA05.png | Passerby (whole zone) | ✓ |
+| CA06.png | Passerby (whole zone) | ✓ |
+| CA07.png | Passerby (whole zone) | ✓ |
+| CA08.png | Passerby (whole zone) | ✓ |
+| CA09.png | Passerby (whole zone) | ✓ |
+| CA10.png | Passerby (whole zone) | ✓ |
+| CA11.png | Passerby (whole zone) | ✓ |
+| CA13.png | Passerby (whole zone) | ✓ |
+| CA14.png | Passerby (whole zone) | ✓ |
+| CA16.png | Passerby (whole zone) | ✓ |
+| CB01.png | Passerby (whole zone) | ✓ |
+| CB02.png | Passerby (whole zone) | ✓ |
+| CB03.png | Passerby (whole zone) | ✓ |
+| CB04.png | Passerby (whole zone) | ✓ |
+| CB05.png | Passerby (whole zone) | ✓ |
+| CB06.png | Passerby (whole zone) | ✓ |
+| CB07.png | Passerby (whole zone) | ✓ |
+| CB08.png | Passerby (whole zone) | ✓ |
+| CB09.png | Passerby (whole zone) | ✓ |
+| CB10.png | Passerby (whole zone) | ✓ |
+| CB12.png | Passerby (whole zone) | ✓ |
+| CB13.png | Passerby (whole zone) | ✓ |
+| CB14.png | Passerby (whole zone) | ✓ |
+| CB15.png | Passerby (whole zone) | ✓ |
+| CB16.png | Passerby (whole zone) | ✓ |
+| CB17.png | Passerby (whole zone) | ✓ |
+| CB18.png | Passerby (whole zone) | ✓ |
+| CB19.png | Passerby (whole zone) | ✓ |
+| CB20.png | Passerby (whole zone) | ✓ |
+| CB21.png | Passerby (whole zone) | ✓ |
+| CB22.png | Passerby (whole zone) | ✓ |
+| CB23.png | Passerby (whole zone) | ✓ |
+| CB24.png | Passerby (whole zone) | ✓ |
+| DI01.png | Passerby (whole zone) | ✓ |
+| DI02.png | Passerby (whole zone) | ✓ |
+| DI03.png | Passerby (whole zone) | ✓ |
+| DI05.png | Passerby (whole zone) | ✓ |
+| DI06.png | Passerby (whole zone) | ✓ |
+| DI07.png | Passerby (whole zone) | ✓ |
+| DI08.png | Passerby (whole zone) | ✓ |
+| DI09.png | Passerby (whole zone) | ✓ |
+| DI10.png | Passerby (whole zone) | ✓ |
+| DI11.png | Passerby (whole zone) | ✓ |
+| DI12.png | Passerby (whole zone) | ✓ |
+| DI13.png | Passerby (whole zone) | ✓ |
+| DI14.png | Passerby (whole zone) | ✓ |
+| VEN02.png | Station attendant (VN06; VN07) | ✓ |
+| VEN03.png | Shopkeeper (VN09) | ✓ |
+| VEN04.png | Street musician (VN05) | ✓ |
+| VEN05.png | Shamisen player (VN05) | ✓ |
+| VEN06.png | Reporter (VN01; VN03) | ✓ |
+| VEN07.png | Reporter (VN02; VN03) | ✓ |
 
 ## Organisation icons — `assets/icons/`
 
@@ -667,6 +723,7 @@ stands in for every expression.
 | ACT_TRAIN.png | Practice your talking points | ✓ |
 | ACT_TRAIN.png | Work on your speech timing | ✓ |
 | ACT_DESK.png | Ask the Reference Desk | ✓ |
+| ACT_PAPERWORK.png | Catch Up on Paperwork | ☐ |
 
 ## Decision scenes
 

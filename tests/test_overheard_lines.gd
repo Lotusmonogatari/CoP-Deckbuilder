@@ -195,20 +195,34 @@ func test_a_once_line_is_not_heard_again() -> void:
 	assert_true(GameState.overheard_on_move("VN01").is_empty(), "heard once, never again")
 
 
-func test_the_six_sample_lines_are_in_the_data_and_each_can_come_up_in_its_zone() -> void:
-	var by_zone := {}
+func test_cameron_s_six_sample_lines_and_550_draft_lines_are_in_the_data_and_every_place_has_some() -> void:
+	var samples := {"Heading to the office again only to join remote calls.": "Capital Area", "When will the city fix the street parking signs?": "Capital Area",
+		"Another chain restaurant opening soon?": "District", "The wind is nice today.": "District", "Too many new staff getting lost all day.": "Capitol Building",
+		"The new interns and their \"ideas.\" Ugh.": "Capitol Building"}
+	var found := 0
+	var overheard := 0
 	for row: Dictionary in DataDB.venue_lines:
-		if str(row.get("pool", "")) == "overheard":
-			assert_eq(str(row["speaker"]), "area", str(row["line_id"]))
-			by_zone[str(row["where"])] = int(by_zone.get(str(row["where"]), 0)) + 1
-	assert_eq(by_zone, {"Capital Area": 2, "District": 2, "Capitol Building": 2})
+		if str(row.get("pool", "")) != "overheard":
+			continue
+		overheard += 1
+		assert_eq(str(row["speaker"]), "area", str(row["line_id"]))
+		if samples.has(str(row["text"])):
+			assert_eq(str(row["where"]), samples[str(row["text"])], str(row["text"]))
+			found += 1
+	assert_eq(found, 6, "the six sample lines")
+	assert_eq(overheard, 556, "the 550 lines of Cameron's draft and the six sample lines")
 	for venue: Dictionary in DataDB.venues:
 		var fits := 0
 		for row: Dictionary in DataDB.venue_lines:
 			if str(row.get("pool", "")) == "overheard" and OverheardLines.fit(row, venue, "") != OverheardLines.NONE:
 				fits += 1
-		if str(venue["venue_id"]) in ["VN01", "VN04", "VN06", "VN08"]:
-			assert_gt(fits, 0, "%s has overheard lines" % venue["name"])
+		assert_gt(fits, 0, "%s has overheard lines" % venue["name"])
+	var station: Dictionary = {}
+	for venue: Dictionary in DataDB.venues:
+		if str(venue["venue_id"]) == "VN06":
+			station = venue
+	var tracks := DataDB.venue_lines.filter(func(row: Dictionary) -> bool: return str(row.get("pool", "")) == "overheard" and OverheardLines.fit(row, station, "tracks") == OverheardLines.SPECIFIC)
+	assert_eq(tracks.size(), 50, "the tracks have their own 50 lines")
 
 
 # --- The pop-up ---------------------------------------------------------------------------------------------------------------------

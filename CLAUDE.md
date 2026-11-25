@@ -364,3 +364,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - Overheard lines: a passing line every few moves to a place, places and seasons in the workbook (2026-11-25, Cameron; branch `feature/overheard-lines`)
 - Genderless text about unnamed people: 94 rows reworded, with a test (2026-11-25, Cameron; branch `fix/genderless-events`)
 - Cafeteria seats and meals, and Catch Up on Paperwork (2026-11-25, Cameron's playtest ideas; branch `feature/cafeteria-seats`)
+- Cameron's draft overheard lines (550) and the venue character pictures (2026-11-25, Cameron; branch `feature/venue-lines-draft`)
