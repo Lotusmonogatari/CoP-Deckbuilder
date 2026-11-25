@@ -469,12 +469,12 @@
   },
   {
     "character_id": "VEN03",
-    "name": "Shopkeeper",
+    "name": "Sapporo Stage Manager",
     "name_jp": null,
     "romaji": null,
     "title": null,
-    "site": "VN09",
-    "note": "Placeholder name and Site, read from the picture (an older person in an apron carrying parcels): Cameron to confirm or rename (2026-11-25)."
+    "site": "VN05",
+    "note": "Cameron: Sapporo Stage Manager (2026-11-25)."
   },
   {
     "character_id": "VEN04",
@@ -496,20 +496,20 @@
   },
   {
     "character_id": "VEN06",
-    "name": "Reporter",
+    "name": "Special Parliament Staff",
     "name_jp": null,
     "romaji": null,
-    "title": null,
-    "site": "VN01; VN03",
-    "note": "Placeholder name and Site, read from the picture (a woman with a phone and a camera, in a suit): Cameron to confirm or rename (2026-11-25)."
+    "title": "Library",
+    "site": "VN02",
+    "note": "Cameron: Special Parliament Staff, Library (2026-11-25)."
   },
   {
     "character_id": "VEN07",
-    "name": "Reporter",
+    "name": "Special Parliament Staff",
     "name_jp": null,
     "romaji": null,
-    "title": null,
-    "site": "VN02; VN03",
-    "note": "Placeholder name and Site, read from the picture (a woman in a coat with a notebook): Cameron to confirm or rename (2026-11-25)."
+    "title": "Cafeteria",
+    "site": "VN01",
+    "note": "Cameron: Special Parliament Staff, Cafeteria (2026-11-25)."
   }
 ]
