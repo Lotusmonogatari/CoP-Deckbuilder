@@ -13,13 +13,13 @@ stands in for every expression.
 | Visitors | 870 / 880 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
-| Capital Area characters (outside the Capitol building) | 1 / 1 |
+| Area characters (open-world people: VEN = one venue, CA = Capital Area, CB = Capitol interior, DI = District) | 1 / 1 |
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
 | Cosmetic package icons | 9 / 9 |
 | Venue backgrounds | 19 / 19 |
-| Venue activity icons | 16 / 18 |
+| Venue activity icons | 18 / 18 |
 | Decision scenes with a picture to show | 0 / 10 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -509,11 +509,11 @@ stands in for every expression.
 | OUT_VILLAGE_ROAD_SNOW_1.png | Outside scene | ✓ |
 | OUT_VILLAGE_ROAD_SNOW_2.png | Outside scene | ✓ |
 
-## Capital Area characters (outside the Capitol building) — `assets/characters/capital_area/`
+## Area characters (open-world people: VEN = one venue, CA = Capital Area, CB = Capitol interior, DI = District) — `assets/characters/area/`
 
 | File | For | Drawn |
 |---|---|---|
-| SPEECH_COACH.png | The speech coach, on the Rhetoric Training page | ✓ |
+| VEN01.png | Masayuki Katō (VN04) | ✓ |
 
 ## Organisation icons — `assets/icons/`
 
@@ -662,11 +662,11 @@ stands in for every expression.
 | ACT_SHRINE.png | Pay your respects | ✓ |
 | ACT_SHOTENGAI.png | Speak through a megaphone | ✓ |
 | ACT_SHOTENGAI.png | Treat local kōenkai members to a meal | ✓ |
-| ACT_NAP.png | Nap | ☐ |
+| ACT_NAP.png | Nap | ✓ |
 | ACT_READ.png | Read about management practices | ✓ |
 | ACT_TRAIN.png | Practice your talking points | ✓ |
 | ACT_TRAIN.png | Work on your speech timing | ✓ |
-| ACT_DESK.png | Ask the Reference Desk | ☐ |
+| ACT_DESK.png | Ask the Reference Desk | ✓ |
 
 ## Decision scenes
 
