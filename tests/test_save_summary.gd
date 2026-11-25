@@ -17,23 +17,3 @@ func test_summary_picks_the_most_recently_cleared_level() -> void:
 
 func test_summary_of_a_fresh_run_has_no_level() -> void:
 	assert_eq(SaveSummary.of({})["level_id"], "")
-
-
-func test_a_restore_keeps_an_undo_copy_that_brings_the_old_run_back() -> void:
-	var was_enabled := SaveManager.enabled
-	SaveManager.enabled = true
-	SaveManager.delete_save(SaveManager.MANUAL_PATH)
-	SaveManager.delete_save(SaveManager.UNDO_PATH)
-	GameState.start_new_run("PC01")
-	GameState.xp = 100
-	assert_true(SaveManager.backup_now())
-	GameState.xp = 900
-	assert_true(SaveManager.restore_backup())
-	assert_eq(GameState.xp, 100)
-	assert_true(SaveManager.has_undo())
-	assert_true(SaveManager.restore_undo())
-	assert_eq(GameState.xp, 900)
-	assert_false(SaveManager.has_undo(), "the undo copy is spent")
-	SaveManager.delete_save(SaveManager.MANUAL_PATH)
-	SaveManager.delete_save()
-	SaveManager.enabled = was_enabled

@@ -261,3 +261,7 @@ The Venues tab's Icon column (`VEN_*`) is read by nothing now that the place map
 ## Speech coach Text rows (2026-11-25)
 
 `rhetoric.coach_name`, `rhetoric.coach_name_jp` and `rhetoric.coach_title` are no longer asked for by any code: the Rhetoric Training page reads the coach's name, kanji and title from his Area Characters row (VEN01). Left in place until Cameron says to remove them.
+
+## Text rows left by the two save files (2026-11-25)
+
+The manual Save Game button is gone, so nothing asks for: `office.backup_now`, `office.backup_restore`, `office.backup_made`, `office.backup_failed`, `office.backup_overwrite`, `office.backup_overwrite_confirm`, `admin.chip_save`. Also unused: `SaveManager.LEGACY_MANUAL_PATH` can go once nobody has an old manual backup. Remove only with Cameron's say-so.

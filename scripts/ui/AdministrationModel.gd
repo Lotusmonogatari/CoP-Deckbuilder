@@ -13,7 +13,7 @@ static func _row(node: String, label: String, value: String, press: Callable) ->
 
 
 ## The groups and the pressure box. `actions` carries:
-##   redraw, open_cosmetics, open_how_to_play, open_characters, open_statistics, backup_now, backup_restore, backup_undo, new_game
+##   redraw, open_cosmetics, open_how_to_play, open_characters, open_statistics, load_main, load_second, backup_undo, new_game
 ##   (Callables), and pressure (a dictionary: title, now, blurb, button).
 static func build(actions: Dictionary) -> Dictionary:
 	var redraw: Callable = actions["redraw"]
@@ -35,11 +35,16 @@ static func build(actions: Dictionary) -> Dictionary:
 		_row("CosmeticsCalendarButton", Text.say("office.cosmetics_slot_calendar"),
 			_equipped_name(CosmeticPieces.CALENDAR), actions["open_cosmetics"]),
 	]
-	var save: Array = [_row("BackupNowButton", Text.say("office.backup_now"), Text.say("admin.chip_save"), actions["backup_now"])]
-	# As the old menu did: Load Game only once a backup exists, Undo only while there is something to undo.
-	if SaveManager.has_backup():
-		save.append(_row("BackupRestoreButton", Text.say("office.backup_restore"), Text.say("admin.chip_load"),
-			actions["backup_restore"]))
+	# Two save files (2026-11-25, Cameron): the main one is written on every save, the second on every other save. Each row loads
+	# one, and shows when it was written; a row appears only once its file exists. Undo shows only while there is something to undo.
+	var save: Array = [{"node": "SaveSlotsNote", "label": Text.say("admin.slots_title"), "value": "", "press": Callable(),
+		"hints": [Text.say("admin.slots_hint")]}]
+	if SaveManager.has_save():
+		save.append(_row("SaveMainButton", Text.say("admin.slot_main", {"when": _stamp(SaveManager.save_path)}),
+			Text.say("admin.chip_load"), actions["load_main"]))
+	if SaveManager.has_second():
+		save.append(_row("SaveSecondButton", Text.say("admin.slot_second", {"when": _stamp(SaveManager.second_path())}),
+			Text.say("admin.chip_load"), actions["load_second"]))
 	if SaveManager.has_undo():
 		save.append(_row("BackupUndoButton", Text.say("office.backup_undo"), Text.say("admin.chip_undo"),
 			actions["backup_undo"]))
@@ -63,6 +68,14 @@ static func build(actions: Dictionary) -> Dictionary:
 		],
 		"pressure": actions["pressure"],
 	}
+
+
+## When a save file was written, as "YY.MM.DD HH:MM" (the game's date style), or a dash when it cannot be read.
+static func _stamp(path: String) -> String:
+	var written := str(SaveManager.summary_of(path).get("when", ""))   # "2026-11-25 07:37:12"
+	if written.length() < 16:
+		return "-"
+	return "%s.%s.%s %s" % [written.substr(2, 2), written.substr(5, 2), written.substr(8, 2), written.substr(11, 5)]
 
 
 ## Flips a setting, then redraws the screen (the old menu's buttons did exactly this).

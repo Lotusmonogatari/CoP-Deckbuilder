@@ -11667,5 +11667,47 @@
     "english": "Legislator: {name}",
     "placeholders": "name",
     "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "admin.slot_main",
+    "where": "Administration: the main save row",
+    "english": "Main save · {when}",
+    "placeholders": "when",
+    "notes": "Cameron 2026-11-25 (two save files); a draft for Cameron to reword."
+  },
+  {
+    "key": "admin.slot_second",
+    "where": "Administration: the second save row",
+    "english": "Second save · {when}",
+    "placeholders": "when",
+    "notes": "Cameron 2026-11-25 (two save files); a draft for Cameron to reword."
+  },
+  {
+    "key": "admin.slots_title",
+    "where": "Administration: how saving works, heading",
+    "english": "How saving works",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (two save files); a draft for Cameron to reword."
+  },
+  {
+    "key": "admin.slots_hint",
+    "where": "Administration: how saving works",
+    "english": "Every change is saved to the main save. The second save is written every other time, so it may be one step behind. Load either one below.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (two save files); a draft for Cameron to reword."
+  },
+  {
+    "key": "office.slot_load_main",
+    "where": "Load the main save: the confirm window's title",
+    "english": "Load the main save",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (two save files); a draft for Cameron to reword."
+  },
+  {
+    "key": "office.slot_load_second",
+    "where": "Load the second save: the confirm window's title",
+    "english": "Load the second save",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (two save files); a draft for Cameron to reword."
   }
 ]

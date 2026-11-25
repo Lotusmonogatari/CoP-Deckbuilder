@@ -4,6 +4,7 @@ extends GutTest
 ## save before Continue could load it. Nothing may be written until a run has really been started or loaded.
 
 const PATH := "user://audit_boot_save.json"
+const SECOND := "user://audit_boot_save.second.json"   # SaveManager.second_path() while save_path is PATH
 
 
 func before_each() -> void:
@@ -14,6 +15,7 @@ func before_each() -> void:
 	SaveManager.save_path = PATH
 	DirAccess.remove_absolute(PATH)
 	DirAccess.remove_absolute(PATH + ".bak")
+	DirAccess.remove_absolute(SECOND)
 
 
 func after_each() -> void:
@@ -21,6 +23,7 @@ func after_each() -> void:
 	SaveManager.save_path = SaveManager.SAVE_PATH
 	DirAccess.remove_absolute(PATH)
 	DirAccess.remove_absolute(PATH + ".bak")
+	DirAccess.remove_absolute(SECOND)
 	GameState.run_is_live = true
 
 
@@ -51,12 +54,12 @@ func test_a_title_screen_button_press_does_not_overwrite_the_save() -> void:
 	assert_eq(int(SaveManager.read_save(PATH)["xp"]), 777)
 
 
-func test_the_checkpoint_and_the_backup_wait_too() -> void:
+func test_the_checkpoint_and_the_second_save_wait_too() -> void:
 	_real_run_on_disk()
 	_boot()
 	SaveManager.save_checkpoint()
 	assert_eq(int(SaveManager.read_save(PATH)["xp"]), 777)
-	assert_false(SaveManager.backup_now(), "no manual backup of a blank run either")
+	assert_false(FileAccess.file_exists(SaveManager.second_path()), "and the second save is not written either")
 
 
 func test_continue_loads_the_run_and_saving_then_works() -> void:

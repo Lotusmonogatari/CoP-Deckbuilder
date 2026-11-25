@@ -16,6 +16,7 @@ func before_each() -> void:
 
 func after_each() -> void:
 	SaveManager.enabled = false
+	DirAccess.remove_absolute(PATH.get_basename() + ".second." + PATH.get_extension())
 	SaveManager.save_path = SaveManager.SAVE_PATH
 	DirAccess.remove_absolute(PATH)
 	DirAccess.remove_absolute(PATH + ".bak")

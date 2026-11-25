@@ -2949,8 +2949,8 @@ func _show_administration_menu() -> void:
 		"open_how_to_play": _open_over.bind(HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
 		"open_characters": _open_over.bind(_characters.open, _characters_panel),
 		"open_statistics": _open_over.bind(_statistics.open, _statistics_panel),
-		"backup_now": _on_backup_now,
-		"backup_restore": _confirm_backup_action.bind("restore"),
+		"load_main": _confirm_backup_action.bind("main"),
+		"load_second": _confirm_backup_action.bind("second"),
 		"backup_undo": _confirm_backup_action.bind("undo"),
 		# Starting over lives here, not in Office Management (Cameron, 2026-10-11). The menu closes first so it is not
 		# left open under the warning and the New Game screens.
@@ -2988,30 +2988,6 @@ func _next_pressure_tier() -> String:
 	return Difficulty.HARDER if GameState.difficulty == Difficulty.STANDARD else Difficulty.STANDARD
 
 
-## One manual backup slot (2026-10-15): "Back up now" writes it; "Restore"
-## (after a warning) replaces the run with it. Shown with when it was made.
-func _backup_buttons() -> Array[Control]:
-	var box: Array[Control] = []
-	var now := UiKit.action_button(Text.say("office.backup_now"), "", _on_backup_now, 100.0)
-	now.name = "BackupNowButton"
-	now.custom_minimum_size.x = UiKit.LINE_WIDTH
-	box.append(now)
-	if SaveManager.has_backup():
-		var restore := UiKit.action_button(Text.say("office.backup_restore"), "",
-			_confirm_backup_action.bind("restore"), 100.0)
-		restore.name = "BackupRestoreButton"
-		restore.custom_minimum_size.x = UiKit.LINE_WIDTH
-		box.append(restore)
-		# No floating summary line here: the summary shows in the restore warning.
-	if SaveManager.has_undo():
-		var undo := UiKit.action_button(Text.say("office.backup_undo"), "",
-			_confirm_backup_action.bind("undo"), 100.0)
-		undo.name = "BackupUndoButton"
-		undo.custom_minimum_size.x = UiKit.LINE_WIDTH
-		box.append(undo)
-	return box
-
-
 ## "15 Oct 14:32 · Last level cleared: ... · Inventory: 3 items · XP: 340 · Funds: 80,000".
 func _summary_label(summary: Dictionary) -> String:
 	if summary.is_empty():
@@ -3035,55 +3011,39 @@ func _current_summary() -> Dictionary:
 	return summary
 
 
-func _on_backup_now() -> void:
-	if SaveManager.has_backup():
-		_confirm_backup_action("overwrite")   # a backup exists: ask before replacing it
-		return
-	_do_backup()
-
-
-func _do_backup() -> void:
-	var ok := SaveManager.backup_now()
-	Layout.flash(Text.say("office.backup_made" if ok else "office.backup_failed"))
-	_show_administration_menu()
-
-
-## "restore", "undo" and "overwrite" each ask first, showing what would be
-## lost; the answer comes back through _on_backup_confirmed().
+## "main", "second" and "undo" each ask first, showing what would be lost; the answer comes back through _on_backup_confirmed().
 func _confirm_backup_action(kind: String) -> void:
 	_backup_action = kind
-	var backup := SaveManager.summary_of(SaveManager.MANUAL_PATH)
 	match kind:
-		"restore":
-			_new_game_panel.open(Text.say("office.backup_restore"),
-				[UiKit.line(Text.say("office.backup_compare", {
-					"backup": _summary_label(backup),
-					"current": _summary_label(_current_summary())}))],
-				Text.say("office.backup_restore_confirm"))
 		"undo":
 			_new_game_panel.open(Text.say("office.backup_undo"),
 				[UiKit.line(Text.say("office.backup_undo_warning", {
 					"saved": _summary_label(SaveManager.summary_of(SaveManager.UNDO_PATH))}))],
 				Text.say("office.backup_undo_confirm"))
 		_:
-			_new_game_panel.open(Text.say("office.backup_now"),
-				[UiKit.line(Text.say("office.backup_overwrite", {"backup": _summary_label(backup)}))],
-				Text.say("office.backup_overwrite_confirm"))
+			var main := kind == "main"
+			var saved := SaveManager.summary_of(SaveManager.save_path if main else SaveManager.second_path())
+			_new_game_panel.open(Text.say("office.slot_load_main" if main else "office.slot_load_second"),
+				[UiKit.line(Text.say("office.backup_compare", {
+					"backup": _summary_label(saved),
+					"current": _summary_label(_current_summary())}))],
+				Text.say("office.backup_restore_confirm"))
 	if not _new_game_panel.confirmed.is_connected(_on_backup_confirmed):
 		_new_game_panel.confirmed.connect(_on_backup_confirmed)
 
 
 func _on_backup_confirmed() -> void:
 	_new_game_panel.confirmed.disconnect(_on_backup_confirmed)
+	var loaded := false
 	match _backup_action:
-		"restore":
-			if SaveManager.restore_backup():
-				get_tree().reload_current_scene.call_deferred()
+		"main":
+			loaded = SaveManager.restore_main()
+		"second":
+			loaded = SaveManager.restore_second()
 		"undo":
-			if SaveManager.restore_undo():
-				get_tree().reload_current_scene.call_deferred()
-		_:
-			_do_backup()
+			loaded = SaveManager.restore_undo()
+	if loaded:
+		get_tree().reload_current_scene.call_deferred()
 
 
 ## The settings buttons are shared with a stage's own menu (SettingsRows.gd);

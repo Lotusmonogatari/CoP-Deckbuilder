@@ -5,6 +5,10 @@ extends Node
 ## own storage on each platform, so on a phone it is private to the game.
 ##
 ## WHEN IT SAVES
+## TWO SAVE FILES (2026-11-25, Cameron): the MAIN file is written on every save; the SECOND file is written on every other save (the
+## first, third, fifth ...), so it is the same run or one save behind. Either can be loaded from Administration. If one file is ever
+## damaged or written badly, the other still holds a recent run.
+##
 ##   - after every stage, win or loss (GameState.finish_stage())
 ##   - whenever the Office opens, and after anything bought or changed there
 ##   - whenever a button is pressed (outside a stage), once a run has been started or loaded
@@ -30,9 +34,12 @@ extends Node
 
 const SAVE_PATH := "user://savegame.json"
 const VERSION := 1
-## The one manual backup slot (2026-10-15): written only when the player asks,
-## never by autosave, so it survives whatever happens to the main save.
-const MANUAL_PATH := "user://savegame.manual.json"
+## The second save file's name (see "TWO SAVE FILES"). Its path follows `save_path`, so a test that points the main save at a scratch
+## file never touches the player's real second one.
+const SECOND_PATH := "user://savegame.second.json"
+## The old manual backup (2026-10-15 to 2026-11-25). Nothing writes it now; a player who made one has it copied into the second save
+## the first time the game starts without a second save, so it is not lost.
+const LEGACY_MANUAL_PATH := "user://savegame.manual.json"
 ## The run as it was just before the last restore, so one mistaken restore can
 ## be undone (2026-10-15).
 const UNDO_PATH := "user://savegame.undo.json"
@@ -45,11 +52,16 @@ var enabled := true
 ## it can prove a save happened without touching the player's real one.
 var save_path := SAVE_PATH
 
+## How many times a save has been written this session. The second file is written when this is even (0, 2, 4 ...): the first save of a
+## session writes both files, the next only the main one, and so on.
+var _saves_made := 0
+
 
 func _ready() -> void:
 	enabled = not _is_test_run()
 	if not enabled:
 		return
+	_adopt_legacy_backup()
 	if not has_save():
 		GameState.awaiting_new_game = true
 	# Every button press saves the game (2026-11-11, Cameron).
@@ -95,7 +107,7 @@ func _may_write() -> bool:
 ## finished stage).
 func autosave(announce: bool = false) -> void:
 	if _may_write() and not GameState.mid_stage:
-		if save_game() and announce:
+		if save_both() and announce:
 			Layout.flash(Text.say("save.saved"))
 
 
@@ -103,22 +115,42 @@ func autosave(announce: bool = false) -> void:
 ## holds where to resume). The one save allowed while a stage is fought.
 func save_checkpoint() -> void:
 	if _may_write():
-		save_game()
+		save_both()
 
 
-## Writes the manual backup slot. True when written.
-func backup_now() -> bool:
-	return _may_write() and save_game(MANUAL_PATH)
+## Writes the main file, and the second file on every other call. True when the main file was written.
+func save_both() -> bool:
+	var wrote_main := save_game()
+	if wrote_main:
+		if _saves_made % 2 == 0:
+			save_game(second_path())
+		_saves_made += 1
+	return wrote_main
 
 
-func has_backup() -> bool:
-	return has_save(MANUAL_PATH)
+## The second file's path: beside the main one, "<name>.second.<extension>".
+func second_path() -> String:
+	return save_path.get_basename() + ".second." + save_path.get_extension()
 
 
-## Loads the backup into the run and makes it the main save. True on success.
-## The run being replaced is first written to UNDO_PATH.
-func restore_backup() -> bool:
-	return _restore_from(MANUAL_PATH)
+## Copies an old manual backup into the second save when there is no second save yet.
+func _adopt_legacy_backup() -> void:
+	if has_save(LEGACY_MANUAL_PATH) and not has_save(second_path()):
+		DirAccess.copy_absolute(LEGACY_MANUAL_PATH, second_path())
+
+
+func has_second() -> bool:
+	return has_save(second_path())
+
+
+## Loads the main file into the run (a way back to the last save), keeping the run it replaces for Undo. True on success.
+func restore_main() -> bool:
+	return _restore_from(save_path)
+
+
+## Loads the second file into the run and makes it the main save, keeping the run it replaces for Undo. True on success.
+func restore_second() -> bool:
+	return _restore_from(second_path())
 
 
 func has_undo() -> bool:
