@@ -79,6 +79,9 @@ func setup(office: Control, after_button: Button, open_coach_page: Callable, on_
 	after_button.get_parent().move_child(row, after_button.get_index() + 1)
 	for button: Button in [_step_button, _paperwork_button]:
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		# Each takes half the row and wraps its words, so the two never push the Office wider than the screen at the large text size.
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.custom_minimum_size.x = 0.0
 		row.add_child(button)
 	refresh_button()
 
