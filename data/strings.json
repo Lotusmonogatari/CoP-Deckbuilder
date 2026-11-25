@@ -5392,7 +5392,7 @@
   {
     "key": "event.decline.EV12",
     "where": "Event Choices: the result of declining EV12",
-    "english": "You decline to take it on. He says nothing more about the street, and a few people nearby notice.",
+    "english": "You decline to take it on. The shopkeeper says nothing more about the street, and a few people nearby notice.",
     "placeholders": null,
     "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
   },
@@ -5448,14 +5448,14 @@
   {
     "key": "event.decline.EV23",
     "where": "Event Choices: the result of declining EV23",
-    "english": "You decline to look at the slip. She puts it away without a word.",
+    "english": "You decline to look at the slip. The clerk puts it away without a word.",
     "placeholders": null,
     "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
   },
   {
     "key": "event.decline.EV25",
     "where": "Event Choices: the result of declining EV25",
-    "english": "You decline to discuss it. He says he understands, in the tone of someone who does not.",
+    "english": "You decline to discuss it. The resident says they understand, in the tone of someone who does not.",
     "placeholders": null,
     "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
   },

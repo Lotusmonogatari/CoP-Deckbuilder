@@ -286,7 +286,7 @@
     "condition_target": "District Representative",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "A man from a nearby shōtengai is bending {staff}'s ear about sales and staff morale.",
+    "text_en": "A shopkeeper from a nearby shōtengai is bending {staff}'s ear about sales and staff morale.",
     "location": "District"
   },
   {
@@ -306,7 +306,7 @@
     "condition_target": "Policy Research Assistant",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "A woman from a local technical training academy is talking to {staff} about national regulations for hands-on training.",
+    "text_en": "A representative from a local technical training academy is talking to {staff} about national regulations for hands-on training.",
     "location": "District"
   },
   {
@@ -346,7 +346,7 @@
     "condition_target": "District Representative",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "A retired schoolteacher is showing {staff} a hand-drawn map of every streetlight on her block that flickers.",
+    "text_en": "A retired schoolteacher is showing {staff} a hand-drawn map of every streetlight on the block that flickers.",
     "location": "District"
   },
   {
@@ -366,7 +366,7 @@
     "condition_target": "District Representative",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "A home-care nurse on her lunch break is telling {staff} how many visits she fits into one shift.",
+    "text_en": "A home-care nurse on a lunch break is telling {staff} how many visits fit into one shift.",
     "location": "District"
   },
   {
@@ -576,7 +576,7 @@
     "condition_target": "Policy Research Assistant",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "{staff} is taking notes as a ramen shop owner explains what card-payment fees cost him each month.",
+    "text_en": "{staff} is taking notes as a ramen shop owner explains what card-payment fees cost each month.",
     "location": "District"
   },
   {
@@ -616,7 +616,7 @@
     "condition_target": "Policy Research Assistant",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "A daughter caring for her father is asking {staff} which benefits he qualifies for and which form comes first.",
+    "text_en": "A caregiver for an aging parent is asking {staff} which benefits the parent qualifies for and which form comes first.",
     "location": "District"
   },
   {
@@ -956,7 +956,7 @@
     "condition_target": "District Representative",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "{staff} is helping a family visiting from Kyūshū track down their grandfather's old address in the district.",
+    "text_en": "{staff} is helping a family visiting from Kyūshū track down a relative's old address in the district.",
     "location": "District"
   },
   {
@@ -1086,7 +1086,7 @@
     "condition_target": "Policy Research Assistant",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "A care worker trained in Kyūshū is asking {staff} whether her license is recognized in Yezo.",
+    "text_en": "A care worker trained in Kyūshū is asking {staff} whether the license is recognized in Yezo.",
     "location": "District"
   },
   {
