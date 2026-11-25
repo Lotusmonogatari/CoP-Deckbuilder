@@ -2,6 +2,7 @@ extends GutTest
 ## Area Characters (2026-11-25): who appears where (VEN by Site, CA/CB/DI by zone, narrowed by Site), the seeded pick, the speaker word
 ## `area` in a venue line, the speech coach as VEN01, and the art folder for each prefix.
 
+var _real_area_characters: Array
 var _people := [
 	{"character_id": "VEN01", "name": "Coach", "site": "VN04"},
 	{"character_id": "VEN02", "name": "Two-venue", "site": "VN04; VN06"},
@@ -14,6 +15,15 @@ var _cafeteria := {"venue_id": "VN01", "zone": "Capitol Building"}
 var _library := {"venue_id": "VN02", "zone": "Capitol Building"}
 var _coach_room := {"venue_id": "VN04", "zone": "Capital Area"}
 var _district := {"venue_id": "VN08", "zone": "District"}
+
+
+func before_each() -> void:
+	_real_area_characters = DataDB.area_characters
+
+
+func after_each() -> void:
+	# Several tests below swap in made-up people; the real ones go back so later tests (the Rhetoric Training page) see the coach.
+	DataDB.area_characters = _real_area_characters
 
 
 func _ids(pool: Array) -> Array:
