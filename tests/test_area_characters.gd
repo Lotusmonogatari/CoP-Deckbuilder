@@ -92,3 +92,62 @@ func test_a_line_that_names_area_takes_someone_from_the_venues_pool() -> void:
 	for row: Dictionary in DataDB.venue_lines:
 		if str(row.get("line_id", "")) == "VL001":
 			row["speaker"] = null
+
+
+# --- The overheard-line screen (2026-11-25): an area person stands over the venue's background; anyone else keeps the plain card --------
+
+const SAMPLE_LINES := [
+	["VN04", "CA01", "Heading to the office again only to join remote calls."],
+	["VN06", "CA01", "When will the city fix the street parking signs?"],
+	["VN09", "DI01", "Another chain restaurant opening soon?"],
+	["VN08", "DI01", "The wind is nice today."],
+	["VN01", "CB01", "Too many new staff getting lost all day."],
+	["VN03", "CB01", "The new interns and their \"ideas.\" Ugh."],
+]
+
+
+func _office_with_people() -> Control:
+	DataDB.clear_runtime()
+	GameState.start_new_run("PC01")
+	GameState.awaiting_new_game = false
+	DataDB.area_characters = [{"character_id": "CB01", "name": "Passerby", "site": null}, {"character_id": "CA01", "name": "Passerby", "site": null},
+		{"character_id": "DI01", "name": "Passerby", "site": null}]
+	var office: Control = (load("res://scenes/office_hours/OfficeScreen.tscn") as PackedScene).instantiate()
+	add_child_autofree(office)
+	await get_tree().process_frame
+	return office
+
+
+func _heard(speaker: String, text: String) -> Dictionary:
+	return {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": speaker, "text": text, "hint": {}, "unlocked": "", "last": false, "where": ""}
+
+
+func test_each_sample_line_stands_the_speaker_over_the_venue_background() -> void:
+	var real_people := DataDB.area_characters
+	var office := await _office_with_people()
+	for sample: Array in SAMPLE_LINES:
+		office._venues._show_heard(sample[0], _heard(sample[1], sample[2]))
+		var panel := office.get_node("VenueLinePanel") as Overlay
+		var scene := panel.find_child("VenueScene", true, false)
+		assert_not_null(scene, "%s: a scene stands behind the card" % sample[2])
+		assert_eq((scene.find_child("ScenePerson", true, false) as PlaceholderArt).art_id, sample[1])
+		var background := scene.find_child("SceneBackground", true, false) as PlaceholderArt
+		assert_true(background.art_id.begins_with("CAPITOL_") or background.art_id.begins_with("AREA_"), "the venue's own picture (%s)" % background.art_id)
+		assert_null(panel.find_child("SpeakerPortrait", true, false), "no thumbnail beside the quote: the person stands in the scene")
+		assert_eq((panel.find_child("LineText", true, false) as Label).text, "“%s”" % sample[2])
+	DataDB.area_characters = real_people
+
+
+func test_a_line_with_no_character_or_another_kind_of_speaker_keeps_the_plain_card() -> void:
+	var office := await _office_with_people()
+	office._venues._show_heard("VN01", _heard("", "A narrated line."))
+	var panel := office.get_node("VenueLinePanel") as Overlay
+	assert_null(panel.find_child("VenueScene", true, false), "narration has no scene")
+	office._venues._show_heard("VN01", _heard("OP47", "An opponent speaks."))
+	assert_null(panel.find_child("VenueScene", true, false), "an opponent's line keeps the plain card")
+	assert_not_null(panel.find_child("SpeakerPortrait", true, false), "with its small portrait beside the quote")
+	office._venues._show_heard("VN01", _heard("CB01", "A passerby speaks."))
+	assert_not_null(panel.find_child("VenueScene", true, false))
+	office._venues._show_heard("VN01", _heard("", "Narration again."))
+	await get_tree().process_frame
+	assert_null(panel.find_child("VenueScene", true, false), "the scene is taken down when the next line has no character")

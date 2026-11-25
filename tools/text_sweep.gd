@@ -268,6 +268,11 @@ func _sweep_shape(size: Vector2i) -> void:
 			GameState.venue_visit("VN01")
 			office._venues._current_venue = "VN01"
 			office._venues._hear("VN01")],
+		["B27g2_area_line_scene", func() -> void:
+			DataDB.area_characters = [{"character_id": "CB01", "name": "Passerby", "name_jp": null, "title": "Capitol staff", "site": null}]
+			GameState.office_location = Offices.CAPITOL
+			office._venues._show_heard("VN01", {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": "CB01",
+				"text": "The new interns and their \"ideas.\" Ugh.", "hint": {}, "unlocked": "", "last": false, "where": "cafeteria"})],
 		["B27h_venue_tips", func() -> void:
 			GameState.held_tips = [{"kind": "stage_suit", "target": "ST16", "suit": "Data Driven", "where": "cafeteria", "day": GameState.venue_today()},
 				{"kind": "opponent_suit", "target": "OP29", "suit": "Emotional", "where": "gardens", "day": GameState.venue_today() - 13}]

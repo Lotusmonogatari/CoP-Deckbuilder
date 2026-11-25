@@ -98,7 +98,7 @@ static func tip_box(hint: Dictionary, where: String) -> Control:
 
 
 ## The speaker of a line: a portrait beside the quote and "— Name" with the party's colour, or just the words for narration.
-static func speaker_row(text: String, speaker_id: String, narration_lead: String = "") -> Control:
+static func speaker_row(text: String, speaker_id: String, narration_lead: String = "", show_portrait: bool = true) -> Control:
 	var column := VBoxContainer.new()
 	column.name = "LineBody"
 	column.add_theme_constant_override("separation", 10)
@@ -115,7 +115,7 @@ static func speaker_row(text: String, speaker_id: String, narration_lead: String
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 18)
 	var who := _speaker_facts(speaker_id)
-	if not bool(who["colleague"]):
+	if show_portrait and not bool(who["colleague"]):
 		var portrait := PlaceholderArt.new()
 		portrait.name = "SpeakerPortrait"
 		portrait.kind = PlaceholderArt.Kind.CHARACTER
