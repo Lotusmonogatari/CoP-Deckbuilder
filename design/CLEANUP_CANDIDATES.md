@@ -256,7 +256,7 @@ Also `LevelRunner.loss_penalties()`, which the briefing now only carries in its 
 
 ## Venue icons (2026-11-24)
 
-The Venues tab's Icon column (`VEN_*`) and the nine `VEN_*.png` rows of `tools/art_checklist.py` are drawn by nothing now that the place map's cards use a picture banner (`feature/place-card-banner`). Left in place until Cameron says to remove them.
+The Venues tab's Icon column (`VEN_*`) is read by nothing now that the place map's cards use a picture banner (`feature/place-card-banner`). Left in place until Cameron says to remove it. The nine `VEN_*.png` rows were dropped from `tools/art_checklist.py` and `design/ART_CHECKLIST.md` on Cameron's say-so (2026-11-25).
 
 ## Speech coach Text rows (2026-11-25)
 

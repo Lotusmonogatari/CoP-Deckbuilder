@@ -173,7 +173,6 @@ def main():
         if str(v.get("venue_id")) in travel_venues and v.get("zone") != "District":
             venue_pictures.append((str(v["background"]) + "_TRACKS", str(v["name"]) + " (the tracks)"))
     flat("Venue backgrounds", "background", venue_pictures)
-    flat("Venue icons", "icon", [(str(v["icon"]), str(v["name"])) for v in load("venues") if v.get("icon")])
     flat("Venue activity icons", "icon", [(str(a["icon"]), str(a["name"])) for a in load("venue_activities") if a.get("icon")])
 
     # Decision! scenes (2026-11-21): one row each with its own picture(s), the shared picture for its office (the fallback when it
