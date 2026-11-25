@@ -11394,5 +11394,89 @@
     "english": "Do the paperwork",
     "placeholders": null,
     "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.event_today",
+    "where": "Sapporo Stage: an event is on",
+    "english": "On today: {name}",
+    "placeholders": "name",
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.performer_today",
+    "where": "Sapporo Stage: who is on stage",
+    "english": "On stage today: {name}",
+    "placeholders": "name",
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.quiet",
+    "where": "Sapporo Stage: nothing is on",
+    "english": "Nothing is on today. You may sit and listen.",
+    "placeholders": null,
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.no_performer",
+    "where": "Watch the Performance: nobody is performing",
+    "english": "Nobody is performing today.",
+    "placeholders": null,
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.gives_one_of",
+    "where": "Watch the Performance: what it may give",
+    "english": "one of {first}, or {second}",
+    "placeholders": "first, second",
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.or_xp",
+    "where": "Watch the Performance: the XP option",
+    "english": "XP {delta}",
+    "placeholders": "delta",
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.back",
+    "where": "Sit and Listen and Watch the Performance: go back to the Stage",
+    "english": "Back to the Stage",
+    "placeholders": null,
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.tag_listen",
+    "where": "The Stage: the tag of a heard line",
+    "english": "Sapporo Stage · Listening",
+    "placeholders": null,
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.tag_perform",
+    "where": "The Stage: the tag of a performance",
+    "english": "Sapporo Stage · Performance",
+    "placeholders": null,
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.watched",
+    "where": "The Stage: what a performance gave",
+    "english": "You watched {name} perform.",
+    "placeholders": "name",
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.nobody_said",
+    "where": "The Stage: nobody had anything to say",
+    "english": "It is quiet. Nobody says anything worth hearing.",
+    "placeholders": null,
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "stage.and_two",
+    "where": "Two rewards given together",
+    "english": "{a} and {b}",
+    "placeholders": "a, b",
+    "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
   }
 ]

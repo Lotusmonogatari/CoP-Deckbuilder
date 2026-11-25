@@ -387,11 +387,41 @@ func _show_activities(venue: Dictionary) -> void:
 	var venue_id := str(venue.get("venue_id", ""))
 	var look := OfficeFrameStyles.look()
 	var rows: Array[Control] = [_picture(_venue_picture_id(venue), 460), UiKit.line(str(venue.get("blurb", "")))]
+	rows.append_array(_stage_rows(venue_id))
 	for activity: Dictionary in GameState.venue_activities_of(venue_id):
 		rows.append(VenueActivityViews.card(look, activity, _on_do_activity, _on_activity))
 	var frame := OfficeScreenFrame.new()
 	frame.setup({"title": str(venue.get("name", venue_id)), "subtitle": str(venue.get("name_jp", "")), "chips": _chips(), "rows": rows})
 	_venue_panel.open_frame(frame, Text.say("venue.screen_back"))
+
+
+## The Stage's header: the events on today (name and blurb) and who is on stage; "Nothing is on today" when neither. Other venues add nothing.
+func _stage_rows(venue_id: String) -> Array[Control]:
+	var rows: Array[Control] = []
+	if not GameState.venue_activities_of(venue_id).any(func(row: Dictionary) -> bool: return str(row.get("kind", "")) in ["listen", "perform"]):
+		return rows
+	var events := GameState.stage_events_today()
+	var performers := GameState.stage_performers(venue_id)
+	for event: Dictionary in events:
+		var title := UiKit.heading(Text.say("stage.event_today", {"name": str(event.get("name", ""))}))
+		title.name = "StageEvent_" + str(event.get("event_id", ""))
+		title.custom_minimum_size.x = 0.0
+		rows.append(title)
+		if event.get("blurb") != null:
+			var blurb := UiKit.line(str(event["blurb"]), "SmallLabel")
+			blurb.custom_minimum_size.x = 0.0
+			rows.append(blurb)
+	for person: Dictionary in performers:
+		var on_stage := UiKit.line(Text.say("stage.performer_today", {"name": str(person.get("name", ""))}))
+		on_stage.name = "StagePerformer_" + str(person.get("character_id", ""))
+		on_stage.custom_minimum_size.x = 0.0
+		rows.append(on_stage)
+	if events.is_empty() and performers.is_empty():
+		var quiet := UiKit.line(Text.say("stage.quiet"), "SmallLabel")
+		quiet.name = "StageQuiet"
+		quiet.custom_minimum_size.x = 0.0
+		rows.append(quiet)
+	return rows
 
 
 func _on_do_activity(activity_id: String) -> void:
@@ -403,6 +433,19 @@ func _on_do_activity(activity_id: String) -> void:
 		return
 	_on_spent.call()
 	refresh_button()
+	# Sit and Listen and Watch the Performance end on the person standing over the Stage with their line, then back to the Stage.
+	if str(activity.get("kind", "")) in ["listen", "perform"]:
+		_venue_panel.close()
+		_continue_to = {"venue": venue_id, "screen": ""}
+		var heard: Dictionary = done["heard"]
+		var extra: Array = []
+		if str(activity.get("kind", "")) == "perform":
+			var person := DataDB.get_area_character(str(heard.get("speaker", "")))
+			extra.append(Text.say("stage.watched", {"name": str(person.get("name", ""))}))
+			extra.append_array(done["effects"])
+		_show_heard(venue_id, {"ok": true, "kind": "overheard", "speaker": str(heard.get("speaker", "")), "text": str(heard.get("text", "")), "hint": {},
+			"unlocked": "", "last": true, "where": ""}, true, Text.say("stage.back"), extra)
+		return
 	_result_venue = venue_id
 	var body: Array[Control] = [UiKit.line(str(done["text"]))]
 	for line: String in done["effects"]:
@@ -562,7 +605,7 @@ func _hear(venue_id: String) -> void:
 
 ## Draws a heard line. An Area Characters speaker stands over the venue's background with the card at the foot; any other line is the plain
 ## card over the Office (Cameron, 2026-11-25). Split from `_hear` so a screen can be drawn from a line without dealing one.
-func _show_heard(venue_id: String, heard: Dictionary, overheard: bool = false) -> void:
+func _show_heard(venue_id: String, heard: Dictionary, overheard: bool = false, confirm_text: String = "", extra_lines: Array = []) -> void:
 	_clear_scene()
 	var venue := GameState.venue_row(venue_id)
 	var pool := str(heard.get("where", ""))
@@ -579,6 +622,10 @@ func _show_heard(venue_id: String, heard: Dictionary, overheard: bool = false) -
 		note.name = "GossipOnly"
 		note.custom_minimum_size.x = 0.0
 		body.append(note)
+	for extra: Variant in extra_lines:
+		var extra_label := UiKit.line(str(extra), "SmallLabel")
+		extra_label.custom_minimum_size.x = 0.0
+		body.append(extra_label)
 	var unlocked := str(heard.get("unlocked", ""))
 	if not unlocked.is_empty():
 		# A line that finds a document says so under its words (P18); the title is the document's own.
@@ -598,7 +645,7 @@ func _show_heard(venue_id: String, heard: Dictionary, overheard: bool = false) -
 	_line_panel.show_back = not overheard
 	_line_panel.dismissable = not overheard
 	_line_panel.open_card({"tag": tag, "meta": meta, "bottom": on_scene, "body": body},
-		Text.say("venue.overheard_continue") if overheard else (Text.say("venue.come_back") if done else Text.say("venue.keep_listening")),
+		confirm_text if not confirm_text.is_empty() else (Text.say("venue.overheard_continue") if overheard else (Text.say("venue.come_back") if done else Text.say("venue.keep_listening"))),
 		Text.say("venue.back_to", {"venue": str(venue.get("name", ""))}), overheard or not done)
 	if on_scene:
 		# The scene sits behind the card, over an opaque ground (the pop-up's usual scrim would show the Office through the picture).

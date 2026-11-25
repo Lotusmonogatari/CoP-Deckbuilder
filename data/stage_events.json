@@ -1,0 +1,13 @@
+[
+  {
+    "event_id": "SE01",
+    "name": "Placeholder event",
+    "name_jp": null,
+    "kind": "event",
+    "date_from": "18.10.01",
+    "date_to": "18.10.01",
+    "performer": "VEN04",
+    "blurb": "An event on the Sapporo Stage (placeholder).",
+    "note": "DRAFT: placeholder, hidden from players until its Note stops beginning with DRAFT (add real events as rows)."
+  }
+]

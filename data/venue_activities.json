@@ -22,7 +22,8 @@
     "bonus_staff_hours": null,
     "result_text": null,
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA02",
@@ -47,7 +48,8 @@
     "bonus_staff_hours": null,
     "result_text": null,
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA03",
@@ -72,7 +74,8 @@
     "bonus_staff_hours": null,
     "result_text": null,
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA04",
@@ -97,19 +100,20 @@
     "bonus_staff_hours": null,
     "result_text": null,
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA05",
     "venue_id": "VN05",
-    "kind": "show",
-    "name": "Watch the Show",
-    "icon": "ACT_SHOW",
+    "kind": "listen",
+    "name": "Sit and Listen",
+    "icon": "ACT_WATCH",
     "pool": null,
-    "hours": 2,
+    "hours": 1,
     "funds": 0,
     "xp": 0,
-    "per_day": null,
+    "per_day": 3,
     "per_week": null,
     "condition_type": null,
     "condition_target": null,
@@ -122,7 +126,8 @@
     "bonus_staff_hours": null,
     "result_text": null,
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA06",
@@ -147,7 +152,8 @@
     "bonus_staff_hours": null,
     "result_text": null,
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA07",
@@ -172,7 +178,8 @@
     "bonus_staff_hours": null,
     "result_text": null,
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA08",
@@ -210,7 +217,8 @@
     "bonus_staff_hours": null,
     "result_text": "You sweep the path no one else sweeps, rinse the stone basin and clear the leaves that no one else comes to clear.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA09",
@@ -235,7 +243,8 @@
     "bonus_staff_hours": null,
     "result_text": "You hand out flyers outside the shops. Some people stop to read them, and some stop to talk.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA10",
@@ -273,7 +282,8 @@
     "bonus_staff_hours": null,
     "result_text": "You find the saisenbako half hidden by weeds, drop 1,000円 in, bow twice, clap twice and bow once.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA11",
@@ -298,7 +308,8 @@
     "bonus_staff_hours": null,
     "result_text": "You walk the long path out to the old hall and bow your head. No one else is here, and the whole forest is quiet.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA12",
@@ -332,7 +343,8 @@
     "bonus_staff_hours": null,
     "result_text": "You speak through a megaphone from the corner of the street. Some listen. Some wave you away, and a few shops close their doors.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA13",
@@ -362,7 +374,8 @@
     "bonus_staff_hours": null,
     "result_text": "You treat your kōenkai members to a meal. The talk goes on long after the dishes are cleared.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA14",
@@ -392,7 +405,8 @@
     "bonus_staff_hours": null,
     "result_text": "You find a quiet corner of the Library and sleep. You wake rested.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA15",
@@ -417,7 +431,8 @@
     "bonus_staff_hours": 1,
     "result_text": "You read about how to run an office well. Your staff will get more done today.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA16",
@@ -447,7 +462,8 @@
     "bonus_staff_hours": null,
     "result_text": "You practice your talking points aloud until each one comes out clean. Tomorrow's slips will be fewer.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA17",
@@ -477,7 +493,8 @@
     "bonus_staff_hours": null,
     "result_text": "You work on the pauses between your sentences. You will have more room to make your points.",
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA18",
@@ -502,7 +519,8 @@
     "bonus_staff_hours": null,
     "result_text": null,
     "chance": null,
-    "extra_rewards": null
+    "extra_rewards": null,
+    "or_xp": null
   },
   {
     "activity_id": "VA19",
@@ -538,6 +556,42 @@
         ],
         "delta": 1
       }
-    ]
+    ],
+    "or_xp": null
+  },
+  {
+    "activity_id": "VA20",
+    "venue_id": "VN05",
+    "kind": "perform",
+    "name": "Watch the Performance",
+    "icon": "ACT_SHOW",
+    "pool": null,
+    "hours": 2,
+    "funds": null,
+    "xp": null,
+    "per_day": 1,
+    "per_week": null,
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "district_delta": null,
+    "staff_hours": null,
+    "bonus_after_uses": null,
+    "bonus_staff_hours": null,
+    "result_text": null,
+    "chance": null,
+    "extra_rewards": null,
+    "or_xp": 50
   }
 ]

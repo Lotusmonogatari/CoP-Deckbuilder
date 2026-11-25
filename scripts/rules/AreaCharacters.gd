@@ -59,3 +59,77 @@ static func pick(pool: Array, seed_value: int) -> String:
 	if pool.is_empty():
 		return ""
 	return str((pool[absi(seed_value) % pool.size()] as Dictionary).get("character_id", ""))
+
+
+# --- When a person is about (2026-11-25, Sapporo Stage) ----------------------------------------------------------------------------------
+# Days ("Wed; Sun") and Months ("10-12; 4-7", a range may wrap: "8-3" is August through March) say when a person is about; blank means always.
+# VEN04 and VEN05 perform on the Stage on their own days and months. A Speaker cell may list several people ("VEN04|VEN05"): whichever is about.
+
+const WEEKDAY_NAMES := ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+
+
+## The weekdays of a Days cell as 0 = Sunday ... 6 = Saturday; [] for blank. A name is read by its first three letters.
+static func days_of(cell: Variant) -> Array[int]:
+	var out: Array[int] = []
+	if cell == null:
+		return out
+	for part: String in str(cell).replace(",", ";").split(";"):
+		var name := part.strip_edges().to_lower().left(3)
+		if WEEKDAY_NAMES.has(name):
+			out.append(WEEKDAY_NAMES.find(name))
+	return out
+
+
+## The months (1 to 12) of a Months cell: "10-12; 4-7", "8", "11-2" (wrapping past December); [] for blank.
+static func months_of(cell: Variant) -> Array[int]:
+	var out: Array[int] = []
+	if cell == null:
+		return out
+	for part: String in str(cell).replace(",", ";").split(";"):
+		var text := part.strip_edges()
+		if text.is_empty():
+			continue
+		var ends := text.split("-")
+		var first := int(ends[0])
+		var last := int(ends[ends.size() - 1])
+		if first < 1 or first > 12 or last < 1 or last > 12:
+			continue
+		var month := first
+		while true:
+			if not out.has(month):
+				out.append(month)
+			if month == last:
+				break
+			month = month % 12 + 1
+	return out
+
+
+## Whether a person is about on a weekday (0 = Sunday) in a month (1 to 12): blank Days and Months mean always.
+static func present_on(character: Dictionary, weekday: int, month: int) -> bool:
+	var days := days_of(character.get("days"))
+	var months := months_of(character.get("months"))
+	return (days.is_empty() or days.has(weekday)) and (months.is_empty() or months.has(month))
+
+
+## True for a person who keeps a schedule (Days or Months filled): a performer on the Stage.
+static func is_scheduled(character: Dictionary) -> bool:
+	return not days_of(character.get("days")).is_empty() or not months_of(character.get("months")).is_empty()
+
+
+## The people a Speaker cell lists: "VEN04|VEN05" gives both, "area" or one ID gives itself.
+static func speakers_of(cell: String) -> Array[String]:
+	var out: Array[String] = []
+	for part: String in cell.split("|"):
+		var id := part.strip_edges()
+		if not id.is_empty():
+			out.append(id)
+	return out
+
+
+## The people who appear at a venue and are about on that weekday and month (the rows in the tab's order).
+static func pool_present(characters: Array, venue: Dictionary, weekday: int, month: int) -> Array:
+	var out: Array = []
+	for row: Variant in pool_for(characters, venue):
+		if present_on(row as Dictionary, weekday, month):
+			out.append(row)
+	return out

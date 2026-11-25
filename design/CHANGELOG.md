@@ -2230,3 +2230,19 @@ Cameron's answers (same day): the District office streets lines are district wid
 
 The Printer, Shredder, Flex-Work, Priority Inbox, Commendation Gift and Lunch Delivery (SH36 to SH41) had a blank Inventory cell, so the Marketplace and the inventory screen listed them under Personal Inventory. Their Shop row's `Inventory (Personal/Office)` is now `Office`, so they are bought and held under Office Inventory, beside the gifts (SH25 to SH33). Workbook cells only; `test_office_items_tab.gd`.
 
+
+## The Sapporo Stage (2026-11-25, Cameron; branch `feature/sapporo-stage`)
+
+Cameron's spec: events by calendar dates, scheduled performers (VEN04 and VEN05), Sit and Listen always open, and Watch the Performance with one of two rewards.
+
+| Piece | What it does |
+|---|---|
+| Stage Events tab (new) | Event ID, Name, Dates, Performer; one hidden DRAFT row, ready for real events |
+| Area Characters: Days, Months | VEN04: Wed and Sun, October to December and April to July. VEN05: Fri and Sat, August to March |
+| Sit and Listen (VA05) | Always open, 1 hour, 3 a day, same icon as the Gardens; one passer-by and line |
+| Watch the Performance (VA20) | 2 hours, once a day, only when a performer or event is on; one of (+1 Our Traditional Society and +1 Urban Neighborhood Alliance) or +50 XP |
+| Shared lines | VL647 and VL648 (the crisp notes, the birds swaying), spoken by whichever of VEN04 and VEN05 is about |
+| Wording | `stage.*` Text rows; the card reads "Gives: one of ..., or XP 50" |
+| Tests | `test_sapporo_stage.gd` (11), exporter cases, the venue click test |
+
+Still to supply: real Stage Events rows; whether VEN02/VEN04/VEN05's roles and Sites are right (they are my guesses).

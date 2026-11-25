@@ -205,12 +205,12 @@ func test_cameron_s_six_sample_lines_and_550_draft_lines_are_in_the_data_and_eve
 		if str(row.get("pool", "")) != "overheard":
 			continue
 		overheard += 1
-		assert_eq(str(row["speaker"]), "area", str(row["line_id"]))
+		assert_true(str(row["speaker"]) == "area" or str(row["speaker"]) == "VEN04|VEN05", "%s: someone from the pool, or a performer" % row["line_id"])
 		if samples.has(str(row["text"])):
 			assert_eq(str(row["where"]), samples[str(row["text"])], str(row["text"]))
 			found += 1
 	assert_eq(found, 6, "the six sample lines")
-	assert_eq(overheard, 556, "the 550 lines of Cameron's draft and the six sample lines")
+	assert_eq(overheard, 558, "the 550 lines of Cameron's draft, the six sample lines and the performers' two basic lines")
 	for venue: Dictionary in DataDB.venues:
 		var fits := 0
 		for row: Dictionary in DataDB.venue_lines:

@@ -62,13 +62,16 @@ static func due(moves: int, every: int, wobble: int, seed_value: int) -> bool:
 
 ## The line to hear at a place, or {}: the eligible overheard lines that fit the place (conditions, dates, seasons, After Law, Once), those
 ## heard in the last few skipped while another can be drawn, drawn by Weight with a line that names the place itself weighing `boost` times.
-static func pick(lines: Array, venue: Dictionary, screen: String, ctx: Dictionary, recent: Array, boost: int, seed_value: int) -> Dictionary:
+static func pick(lines: Array, venue: Dictionary, screen: String, ctx: Dictionary, recent: Array, boost: int, seed_value: int,
+		usable: Callable = Callable()) -> Dictionary:
 	var fresh: Array = []
 	var all: Array = []
 	for line: Variant in lines:
 		var row := line as Dictionary
 		if str(row.get("pool", "")) != POOL or fit(row, venue, screen) == NONE or not VenueLines.line_ok(row, ctx):
 			continue
+		if usable.is_valid() and not bool(usable.call(row)):
+			continue   # e.g. its speaker is not about today
 		all.append(row)
 		if not recent.has(str(row.get("line_id", ""))):
 			fresh.append(row)

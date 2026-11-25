@@ -1425,7 +1425,7 @@ SHEETS = {
         "optional_sheet": True,
         "optional": ["Per Day", "Per Week", "Condition Type", "Condition Target", "Condition Op", "Condition Value",
                      "Rewards", "District Awareness Δ", "Staff Hours", "Bonus After Uses", "Bonus Staff Hours", "Result Text", "Chance",
-                     "Extra Rewards"],
+                     "Extra Rewards", "Or XP"],
         "columns": [
             ("Activity ID", "activity_id", "id"),
             ("Venue ID", "venue_id", "str"),
@@ -1452,6 +1452,7 @@ SHEETS = {
             ("Result Text", "result_text", "str"),
             ("Chance", "chance", "int"),
             ("Extra Rewards", "extra_rewards", "target_delta_list"),
+            ("Or XP", "or_xp", "int"),
         ],
     },
     "Venue Choices": {
@@ -1504,7 +1505,7 @@ SHEETS = {
         "key": "character_id",
         "id_pattern": r"^(VEN|CA|CB|DI)\d+$",
         "optional_sheet": True,
-        "optional": ["Name JP", "Romaji", "Title", "Site", "Note"],
+        "optional": ["Name JP", "Romaji", "Title", "Site", "Note", "Days", "Months"],
         "columns": [
             ("Character ID", "character_id", "id"),
             ("Name", "name", "str"),
@@ -1512,6 +1513,26 @@ SHEETS = {
             ("Romaji", "romaji", "str"),
             ("Title", "title", "str"),
             ("Site", "site", "str"),
+            ("Note", "note", "str"),
+            ("Days", "days", "str"),
+            ("Months", "months", "str"),
+        ],
+    },
+    "Stage Events": {
+        "out": "stage_events.json",
+        "key": "event_id",
+        "id_pattern": r"^SE\d+$",
+        "optional_sheet": True,
+        "optional": ["Name JP", "Performer", "Blurb", "Note"],
+        "columns": [
+            ("Event ID", "event_id", "id"),
+            ("Name", "name", "str"),
+            ("Name JP", "name_jp", "str"),
+            ("Kind", "kind", "str"),
+            ("Date From", "date_from", "str"),
+            ("Date To", "date_to", "str"),
+            ("Performer", "performer", "str"),
+            ("Blurb", "blurb", "str"),
             ("Note", "note", "str"),
         ],
     },
@@ -4254,7 +4275,7 @@ def check_whip_and_vote_scenes(data, report, by_id, roots):
                 report.error(f"Decision Scenes {sid}", f"is a vote on {datetime.date.fromordinal(day).strftime('%y.%m.%d')}, after {root}'s Must End By {deadline}")
 
 
-VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act", "research", "office")
+VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act", "research", "office", "listen", "perform")
 # The pseudo-venue of an activity done at the player's own office (Catch Up on Paperwork): no Venues row.
 OFFICE_VENUE = "OFFICE"
 CHOICE_STEPS = ("seat", "meal")
@@ -4328,6 +4349,46 @@ def area_allowed(character, venue):
     return venue.get("zone") == AREA_PREFIX_ZONES.get(cid[:2])
 
 
+WEEKDAY_NAMES = ("sun", "mon", "tue", "wed", "thu", "fri", "sat")
+
+
+def check_schedule_cells(row, where, report):
+    """Days ("Wed; Sun": weekday names) and Months ("10-12; 4-7": numbers 1 to 12, a range may wrap past December) of an Area Characters row."""
+    for part in [p.strip() for p in str(row.get("days") or "").replace(",", ";").split(";") if p.strip()]:
+        if part.lower()[:3] not in WEEKDAY_NAMES:
+            report.error(where, f"Days '{part}' is not a weekday name (Mon, Tue, Wed, Thu, Fri, Sat, Sun)")
+    for part in [p.strip() for p in str(row.get("months") or "").replace(",", ";").split(";") if p.strip()]:
+        ends = part.split("-")
+        if len(ends) > 2 or not all(e.strip().isdigit() and 1 <= int(e) <= 12 for e in ends):
+            report.error(where, f"Months '{part}' must be a month number 1 to 12 or a range such as 10-12 or 8-3")
+
+
+def check_stage_events(data, report):
+    """Stage Events (2026-11-25): an ID, a Kind (event or performance), real dates (YY.MM.DD, Date From not after Date To) and a Performer that is an
+    Area Characters VEN ID; a DRAFT row is reported as a warning."""
+    people = {str(c.get("character_id")) for c in data.get("area_characters", [])}
+    for row in data.get("stage_events", []):
+        where = f"Stage Events {row.get('event_id')}"
+        if not row.get("name"):
+            report.error(where, "Name is blank")
+        if row.get("kind") not in ("event", "performance"):
+            report.error(where, f"Kind {row.get('kind')!r} must be event or performance")
+        days = []
+        for field in ("date_from", "date_to"):
+            if row.get(field):
+                if not _real_date(str(row[field])):
+                    report.error(where, f"{field.replace('_', ' ').title()} '{row[field]}' must be a date as YY.MM.DD")
+                else:
+                    days.append(tuple(int(x) for x in str(row[field]).split(".")))
+        if len(days) == 2 and days[0] > days[1]:
+            report.error(where, "Date From is after Date To")
+        if row.get("performer") and str(row["performer"]) not in people:
+            report.error(where, f"Performer '{row['performer']}' is not an Area Characters ID")
+        note = str(row.get("note") or "")
+        if note.strip().upper().startswith("DRAFT"):
+            report.warn(where, "A draft row: hidden from players until its Note stops beginning with DRAFT")
+
+
 def check_area_characters(data, report):
     """Area Characters (2026-11-25): a VEN## person names the venues they stand in (Site, required); a CA##, CB## or DI## person belongs to
     their zone (Capital Area, Capitol Building, District), and a Site, if filled, narrows them to venues of that zone. Every Site names
@@ -4343,6 +4404,7 @@ def check_area_characters(data, report):
         prefix = "VEN" if cid.startswith("VEN") else cid[:2]
         if prefix == "VEN" and not sites:
             report.error(where, "A VEN## person needs a Site: the venue ID(s) they stand in, such as VN04")
+        check_schedule_cells(row, where, report)
         for site in sites:
             if site not in venues:
                 report.error(where, f"Site '{site}' is not a venue ID in the Venues tab")
@@ -4419,10 +4481,11 @@ def check_overheard_line(line, where, venues, activities, area_characters, repor
     if line.get("hint_kind"):
         report.error(where, "An overheard line cannot be a hint row")
     speaker = str(line.get("speaker") or "")
-    if speaker in area_characters:
-        for venue in places:
-            if not area_allowed(area_characters[speaker], venue):
-                report.error(where, f"Speaker '{speaker}' does not appear at {venue.get('name')} (its zone and Site rule them out)")
+    for each in [s for s in speaker.split("|") if s]:   # "VEN04|VEN05": whichever is about
+        if each in area_characters:
+            for venue in places:
+                if not area_allowed(area_characters[each], venue):
+                    report.error(where, f"Speaker '{each}' does not appear at {venue.get('name')} (its zone and Site rule them out)")
 
 
 def check_venues(data, report):
@@ -4515,7 +4578,12 @@ def check_venues(data, report):
         elif line.get("where"):
             report.warn(where, "Where is only used by overheard lines (Pool 'overheard'); it is ignored here")
         speaker = str(line.get("speaker") or "")
-        if speaker and speaker != "colleague" and speaker not in people and speaker not in area_ids:
+        alternatives = [s for s in speaker.split("|") if s]
+        if len(alternatives) > 1 and not all(s in area_characters for s in alternatives):
+            report.error(where, f"Speaker '{speaker}': a list with | may name only Area Characters IDs (whichever is about speaks)")
+        elif len(alternatives) > 1 and str(line.get("pool")) != OVERHEARD_POOL:
+            report.error(where, "A list of speakers with | is only for overheard lines")
+        elif speaker and len(alternatives) <= 1 and speaker != "colleague" and speaker not in people and speaker not in area_ids:
             report.error(where, f"Speaker '{speaker}' is not an opponent, staff, visitor or Area Characters ID, 'area', 'colleague' or blank")
         if speaker in protagonists:
             report.error(where, f"Speaker '{speaker}' is a protagonist; a player character never speaks in a venue line")
@@ -5778,6 +5846,7 @@ def main():
     check_event_leads(data, report)
     check_decision_scenes(data, report)
     check_area_characters(data, report)
+    check_stage_events(data, report)
     check_venue_choices(data, report)
     check_venues(data, report)
     check_library_documents(data, report)

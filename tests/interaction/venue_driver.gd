@@ -55,7 +55,7 @@ func _run() -> void:
 	await _click(office.find_child("StepOutButton", true, false))
 	var map := office.get_node("VenueMapPanel") as Overlay
 	_expect(map.visible, "Step out opens the place map")
-	_expect((map.find_child("Venue_VN05", true, false) as Button).disabled, "the Stage is greyed: Coming soon")
+	_expect(not (map.find_child("Venue_VN05", true, false) as Button).disabled, "the Stage is open (Sit and Listen, Watch the Performance)")
 	_expect(not (map.find_child("Venue_VN01", true, false) as Button).disabled, "the Cafeteria is open")
 	await _click(map.find_child("Venue_VN01", true, false))
 	var venue := office.get_node("VenuePanel") as Overlay

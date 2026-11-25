@@ -63,6 +63,15 @@ func _sweep_documents() -> Array:
 	return docs
 
 
+## Moves the calendar to a Wednesday in October (VEN04 is about), for the Sapporo Stage screens.
+func _wednesday_in_october() -> void:
+	for week in range(0, 45):
+		for day in range(0, 7):
+			GameState.calendar = {"week": week, "phase": "work", "hours": day * 8}
+			if GameState.weekday_today() == 3 and GameState.current_month() == 10:
+				return
+
+
 func _run() -> void:
 	_shots = OS.get_environment("SWEEP_SHOTS")
 	var texts: PackedStringArray = (OS.get_environment("SWEEP_TEXT") if OS.has_environment("SWEEP_TEXT") and not OS.get_environment("SWEEP_TEXT").is_empty() else "small,normal,large").split(",")
@@ -273,6 +282,15 @@ func _sweep_shape(size: Vector2i) -> void:
 			GameState.office_location = Offices.CAPITOL
 			office._venues._show_heard("VN01", {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": "CB01",
 				"text": "The new interns and their \"ideas.\" Ugh.", "hint": {}, "unlocked": "", "last": false, "where": "cafeteria"})],
+		["B27g2b_stage", func() -> void:
+			GameState.office_location = Offices.CAPITOL
+			_wednesday_in_october()
+			office._venues.show_venue("VN05")],
+		["B27g2c_stage_performance", func() -> void:
+			GameState.office_location = Offices.CAPITOL
+			_wednesday_in_october()
+			office._venues.show_venue("VN05")
+			office._venues._on_do_activity("VA20")],
 		["B27g3_cafeteria_seats", func() -> void:
 			GameState.office_location = Offices.CAPITOL
 			office._venues._on_activity("VN01")],

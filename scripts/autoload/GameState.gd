@@ -3036,6 +3036,8 @@ func activity_refusal(activity_id: String) -> String:
 	match step_out_state():
 		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
 		VenueRules.WEEK_FULL: return Text.say("venue.no_hours_weekend" if in_weekend() else "venue.refuse_week_full")
+	if str(activity.get("kind", "")) == "perform" and stage_performers(venue_id).is_empty():
+		return Text.say("stage.no_performer")
 	if activity_left_today(activity_id) == 0:
 		return Text.say("venue.refuse_limit")
 	match VenueRules.visit_refusal(activity, work_hours_left() - venue_walk_hours(venue_id), int(meta.get("Funds", 0)), xp):
@@ -3061,8 +3063,16 @@ func do_activity(activity_id: String) -> Dictionary:
 	venue_activity_log = VenueActivities.with_use(venue_activity_log, activity_id, venue_today())
 	venue_activity_totals[activity_id] = before + 1
 	var effects: Array[String] = []
+	var either := activity.get("or_xp") != null and activity.get("rewards") is Array and not (activity["rewards"] as Array).is_empty()
 	_under_cause(Text.say("record.cause_venue", {"activity": str(activity.get("name", activity_id))}), func() -> void:
-		effects.append_array(_give_activity_effects(activity.get("rewards"), activity.get("district_delta"), 0)))
+		if either:
+			effects.append_array(_give_either(activity, before))
+		else:
+			effects.append_array(_give_activity_effects(activity.get("rewards"), activity.get("district_delta"), 0)))
+	var heard := {}
+	match str(activity.get("kind", "")):
+		"listen": heard = _stage_listen(str(activity.get("venue_id", "")), activity_id, before)
+		"perform": heard = _stage_perform(str(activity.get("venue_id", "")), activity_id, before)
 	# A 1-in-N extra (Catch Up on Paperwork: a standing point with a party organization or Members of Parliament), from a seed of the run, the
 	# day and how many times this has been done, so a reload does not change the luck.
 	if VenueChoices.hits(activity.get("chance"), hash("%d|%d|activity|%s|%d" % [run_seed, venue_today(), activity_id, before])):
@@ -3082,7 +3092,87 @@ func do_activity(activity_id: String) -> Dictionary:
 			gift_effects.append_array(_give_activity_effects(row.get("rewards"), row.get("district_delta"), funds_amount)))
 		gifts.append({"text": str(row.get("result_text", "")), "effects": gift_effects})
 	SaveManager.autosave()
-	return {"ok": true, "text": str(activity.get("result_text", "")), "effects": effects, "gifts": gifts}
+	return {"ok": true, "text": str(activity.get("result_text", "")), "effects": effects, "gifts": gifts, "heard": heard}
+
+
+# --- The Sapporo Stage (2026-11-25, Cameron) --------------------------------------------------------------------------------------------
+
+func weekday_today() -> int:
+	return WeekCalendar.weekday_index(calendar, calendar_config())
+
+
+## The Stage's events on today (Stage Events rows inside their dates, not drafts).
+func stage_events_today() -> Array:
+	return StageEvents.active(DataDB.stage_events, venue_today())
+
+
+## Who is on stage at a venue today: an event's Performer, and the scheduled people (VEN04, VEN05) on their own days and months.
+func stage_performers(venue_id: String) -> Array:
+	return StageEvents.performers(DataDB.stage_events, venue_today(), DataDB.area_characters, venue_row(venue_id), weekday_today(), current_month())
+
+
+## Whether a line's speaker (a person, "area" or "VEN04|VEN05") is about today: a named person on their schedule, a list when one of them is.
+func _line_speaker_about(line: Dictionary) -> bool:
+	var raw: Variant = line.get("speaker")
+	var cell := "" if raw == null else str(raw)
+	var ids := AreaCharacters.speakers_of(cell)
+	if ids.is_empty() or cell == AreaCharacters.ANY:
+		return true
+	var listed := 0
+	for id: String in ids:
+		var person := DataDB.get_area_character(id)
+		if person.is_empty():
+			return true   # an opponent, a staff member, a visitor: not scheduled
+		listed += 1
+		if AreaCharacters.present_on(person, weekday_today(), current_month()):
+			return true
+	return listed == 0
+
+
+## The people of a Speaker cell who are about today (an alternatives list), for the draw.
+func _speakers_about(cell: String) -> Array[String]:
+	var out: Array[String] = []
+	for id: String in AreaCharacters.speakers_of(cell):
+		var person := DataDB.get_area_character(id)
+		if person.is_empty() or AreaCharacters.present_on(person, weekday_today(), current_month()):
+			out.append(id)
+	return out
+
+
+## Sit and Listen: one eligible line from the Stage's pool (its own lines first, then the Capital Area's) and who says it, drawn from a seed.
+func _stage_listen(venue_id: String, activity_id: String, before: int) -> Dictionary:
+	var seed_text := "%d|%d|listen|%s|%d" % [run_seed, venue_today(), activity_id, before]
+	var line := OverheardLines.pick(DataDB.venue_lines, venue_row(venue_id), "", venue_context(), [], int(DataDB.get_balance("overheard_specific_boost", 5)),
+		hash(seed_text), _line_speaker_about)
+	if line.is_empty():
+		return {"speaker": "", "text": Text.say("stage.nobody_said")}
+	return {"speaker": _venue_speaker(line.get("speaker"), venue_id, "listen|%d|%d" % [venue_today(), before]), "text": str(line.get("text", ""))}
+
+
+## Watch the Performance: who is on stage (drawn if several) and one of their lines; "" when they have none.
+func _stage_perform(venue_id: String, activity_id: String, before: int) -> Dictionary:
+	var performers := stage_performers(venue_id)
+	if performers.is_empty():
+		return {"speaker": "", "text": ""}
+	var rng := RandomNumberGenerator.new()
+	rng.seed = absi(hash("%d|%d|perform|%s|%d" % [run_seed, venue_today(), activity_id, before]))
+	var performer: Dictionary = performers[rng.randi_range(0, performers.size() - 1)]
+	var id := str(performer.get("character_id", ""))
+	var own := func(line: Dictionary) -> bool:
+		return AreaCharacters.speakers_of(str(line.get("speaker", "")) if line.get("speaker") != null else "").has(id)
+	var line := OverheardLines.pick(DataDB.venue_lines, venue_row(venue_id), "", venue_context(), [], int(DataDB.get_balance("overheard_specific_boost", 5)),
+		hash("%d|%d|perform-line|%s|%d" % [run_seed, venue_today(), activity_id, before]), own)
+	return {"speaker": id, "text": str(line.get("text", "")) if not line.is_empty() else ""}
+
+
+## An activity with both Rewards and Or XP gives one of them, drawn from a seed: its rewards, or its XP.
+func _give_either(activity: Dictionary, before: int) -> Array[String]:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = absi(hash("%d|%d|either|%s|%d" % [run_seed, venue_today(), str(activity.get("activity_id", "")), before]))
+	if rng.randi_range(0, 1) == 0:
+		return _give_activity_effects(activity.get("rewards"), activity.get("district_delta"), 0)
+	_move_xp(int(activity["or_xp"]))
+	return [Text.say("stage.or_xp", {"delta": "%+d" % int(activity["or_xp"])})]
 
 
 ## Gives a row's rewards (standing, next-stage energy, items), its District awareness and any Funds; the lines that say what was given.
@@ -3131,6 +3221,10 @@ func activity_reward_lines(rewards: Variant, awareness_delta: Variant) -> Array[
 ## What an activity will give if done now, as lines (its rewards, awareness and staff hours, the bonus included once earned).
 func activity_gives_lines(activity: Dictionary) -> Array[String]:
 	var lines := activity_reward_lines(activity.get("rewards"), activity.get("district_delta"))
+	if activity.get("or_xp") != null and not lines.is_empty():
+		# Rewards or XP, one drawn: told as one line before it is done ("Gives one of: A and B, or XP +50").
+		var first := lines[0] if lines.size() == 1 else Text.say("stage.and_two", {"a": lines[0], "b": lines[1]})
+		return [Text.say("stage.gives_one_of", {"first": first, "second": Text.say("stage.or_xp", {"delta": "%+d" % int(activity["or_xp"])})})]
 	var staff := VenueActivities.staff_hours(activity, activity_times_done(str(activity.get("activity_id", ""))))
 	if staff > 0:
 		lines.append(Text.say("venue.effect_staff_hours", {"delta": "%+d" % staff}))
@@ -3368,7 +3462,7 @@ func overheard_on_move(venue_id: String, screen: String = "") -> Dictionary:
 	if not OverheardLines.due(overheard_moves, every, wobble, hash("%d|overheard|%d" % [run_seed, overheard_fired])):
 		return {}
 	var line := OverheardLines.pick(DataDB.venue_lines, venue, screen, venue_context(), overheard_recent, int(DataDB.get_balance("overheard_specific_boost", 5)),
-		hash("%d|overheard-line|%d" % [run_seed, overheard_fired]))
+		hash("%d|overheard-line|%d" % [run_seed, overheard_fired]), _line_speaker_about)
 	if line.is_empty():
 		return {}
 	overheard_moves = 0
@@ -3384,10 +3478,16 @@ func overheard_on_move(venue_id: String, screen: String = "") -> Dictionary:
 ## whose Site names it), picked from a seed so a reload never reshuffles ("" when the pool is empty: the line is then narration).
 func _venue_speaker(raw: Variant, venue_id: String, salt: String) -> String:
 	var id := "" if raw == null else str(raw)
+	var seed_value := VenueLines.seed_for(run_seed, venue_today(), "%s|speaker|%s" % [venue_id, salt])
+	if id.contains("|"):
+		# "VEN04|VEN05": whichever is about today (both when both are).
+		var about := _speakers_about(id)
+		return "" if about.is_empty() else about[absi(seed_value) % about.size()]
 	if id != AreaCharacters.ANY:
 		return id
-	var pool := AreaCharacters.pool_for(DataDB.area_characters, venue_row(venue_id))
-	return AreaCharacters.pick(pool, VenueLines.seed_for(run_seed, venue_today(), "%s|speaker|%s" % [venue_id, salt]))
+	# Someone from the place's pool who is about today (VEN04 and VEN05 only on their days and months).
+	var pool := AreaCharacters.pool_present(DataDB.area_characters, venue_row(venue_id), weekday_today(), current_month())
+	return AreaCharacters.pick(pool, seed_value)
 
 
 ## The sentence of a dealt hint: its Text row with the stage's or the person's name filled in.

@@ -11,7 +11,8 @@ const KIND := "act"
 
 
 static func is_act(activity: Dictionary) -> bool:
-	return str(activity.get("kind", "")) == KIND
+	# A costed activity listed on its venue's screen: an act, and the Sapporo Stage's Sit and Listen and Watch the Performance.
+	return str(activity.get("kind", "")) in [KIND, "listen", "perform"]
 
 
 ## Every activity row of a venue, in the workbook's order.

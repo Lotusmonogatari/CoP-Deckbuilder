@@ -110,6 +110,19 @@ func _venue(office: Node, which: String) -> Overlay:
 			office._venues._show_heard(case[0], {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": case[1], "text": case[2],
 				"hint": {}, "unlocked": "", "last": false, "where": case[3]})
 			return office.get_node("VenueLinePanel")
+		"stage", "listen", "perform":
+			# The Sapporo Stage (2026-11-25): its screen on a Wednesday in October (VEN04 about), a Sit and Listen result and a Watch the Performance result.
+			GameState.office_location = Offices.CAPITOL
+			office._apply_office_look()
+			_wednesday_in_october()
+			office._venues.show_venue("VN05")
+			if which == "listen":
+				office._venues._on_do_activity("VA05")
+				return office.get_node("VenueLinePanel")
+			if which == "perform":
+				office._venues._on_do_activity("VA20")
+				return office.get_node("VenueLinePanel")
+			return office.get_node("VenuePanel")
 		"seats", "meals", "lunch", "paperwork":
 			# The Cafeteria's seat and meal screens, the lunch result card and the paperwork confirm card (2026-11-25).
 			GameState.office_location = Offices.CAPITOL
@@ -193,6 +206,15 @@ func _fixture_documents() -> Array:
 		merged["body"] = "A fixture paragraph for the screenshot.\n\nA second paragraph."
 		docs.append(merged)
 	return docs
+
+
+## Moves the calendar to a Wednesday in October (VEN04 is about), for the Sapporo Stage screens.
+func _wednesday_in_october() -> void:
+	for week in range(0, 45):
+		for day in range(0, 7):
+			GameState.calendar = {"week": week, "phase": "work", "hours": day * 8}
+			if GameState.weekday_today() == 3 and GameState.current_month() == 10:
+				return
 
 
 func _run() -> void:

@@ -168,6 +168,40 @@ def choice_tests(expect):
     expect(not run_choices(good + [seat("VC36", party="PT01", extra_tip="opponent", chance=3)]).errors, "an opponent tip with a Party passes")
 
 
+def run_stage(events, people=None):
+    report = Report()
+    export_data.check_stage_events({"stage_events": events, "area_characters": people or [{"character_id": "VEN04"}]}, report)
+    return report
+
+
+def ev(eid, **o):
+    base = {"event_id": eid, "name": "A festival", "kind": "event", "date_from": "18.10.10", "date_to": "18.10.20", "performer": "VEN04", "note": None}
+    base.update(o)
+    return base
+
+
+def stage_tests(expect):
+    expect(not run_stage([ev("SE01")]).errors, "a stage event with real dates and a performer passes")
+    expect(any("SE02" in w and "Kind" in m for w, m in run_stage([ev("SE02", kind="show")]).errors), "an unknown Kind fails")
+    expect(any("SE03" in w and "YY.MM.DD" in m for w, m in run_stage([ev("SE03", date_from="October")]).errors), "a date that is not YY.MM.DD fails")
+    expect(any("SE04" in w and "after" in m for w, m in run_stage([ev("SE04", date_from="18.11.01", date_to="18.10.01")]).errors), "Date From after Date To fails")
+    expect(any("SE05" in w and "Performer" in m for w, m in run_stage([ev("SE05", performer="VEN99")]).errors), "an unknown performer fails")
+    expect(any("SE06" in w for w, m in run_stage([ev("SE06", note="DRAFT: hidden")]).warnings), "a DRAFT row is a warning")
+    for cells, ok, what in [({"days": "Wed; Sun", "months": "10-12; 4-7"}, True, "valid Days and Months pass"), ({"days": "Someday"}, False, "an unknown weekday fails"),
+                            ({"months": "13"}, False, "a month past 12 fails"), ({"months": "8-3"}, True, "a wrapping month range passes")]:
+        report = Report()
+        export_data.check_schedule_cells(cells, "Area Characters VEN04", report)
+        expect((not report.errors) == ok, what)
+    data = {"venues": [dict(v, order=1) for v in VENUES], "venue_activities": [], "venue_lines": [line("VL900")] + [
+        over("VL950", "VN04", speaker="VEN04|VEN05"), over("VL951", "VN04", speaker="VEN04|OP01")],
+        "opponents": [{"opp_id": "OP01"}], "staff": [], "visitors": [], "stages": [], "floor_votes": {}, "rules": {}, "strings": [],
+        "area_characters": [{"character_id": "VEN04", "site": "VN04"}, {"character_id": "VEN05", "site": "VN04"}]}
+    report = Report()
+    export_data.check_venues(data, report)
+    expect(not any("VL950" in w for w, m in report.errors), "a speaker list of Area Characters IDs passes")
+    expect(any("VL951" in w and "Area Characters IDs" in m for w, m in report.errors), "a speaker list that names an opponent fails")
+
+
 def main():
     failures = []
 
@@ -188,6 +222,7 @@ def main():
     area_tests(expect)
     overheard_tests(expect)
     choice_tests(expect)
+    stage_tests(expect)
     print("")
     print("VENUE EXPORTER TEST: " + ("PASS" if not failures else "FAIL"))
     return 1 if failures else 0
