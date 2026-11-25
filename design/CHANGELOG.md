@@ -2297,3 +2297,11 @@ Cameron's request: a report on the game closing cannot be run (the game restarts
 | Tests | five two-file cases in `test_save_load.gd`; the administration, boot and save-point tests follow. |
 
 Text rows nothing asks for now (listed in `CLEANUP_CANDIDATES.md`): `office.backup_now`, `office.backup_restore`, `office.backup_made`, `office.backup_failed`, `office.backup_overwrite`, `office.backup_overwrite_confirm`, `admin.chip_save`. Nothing was deleted.
+## A new run draws the Capitol office again (2026-11-25, a tester's report; branch `fix/new-run-office-look`)
+
+Report: after a run left at the PC01 District office, a new run as PC01 still drew that District office, and a new run as PC02 showed the same PC01 District office.
+
+| What was wrong | What changed |
+|---|---|
+| A new run puts the player back at the Capitol (the rules did), but the picture behind the Office is set only when the screen opens or after a trip, so it kept the District office. | The Office re-applies its picture right after a new run starts (from New Game, and from backing out of the first-run choice). |
+| Test | `test_new_run_office_look.gd` fails without the fix and passes with it. |
