@@ -7,7 +7,8 @@ extends Node
 ## WHEN IT SAVES
 ##   - after every stage, win or loss (GameState.finish_stage())
 ##   - whenever the Office opens, and after anything bought or changed there
-##   - whenever a button is pressed (outside a stage), once a run exists
+##   - whenever a button is pressed (outside a stage), once a run has been started or loaded
+##     (GameState.run_is_live: never the blank run the game holds at boot, 2026-11-25)
 ##   - when the phone sends the game to the background, or the window closes,
 ##     unless a stage is being fought
 ## A stage in progress is never saved: coming back mid-stage starts that
@@ -80,16 +81,20 @@ func _queue_click_save() -> void:
 
 func _save_for_click() -> void:
 	_click_save_queued = false
-	if GameState.protagonist_id.is_empty():
-		return
 	autosave()
+
+
+## True when writing a save is safe: saving is on, no new game is being chosen, and a run has really been started or loaded. At
+## boot the game holds a blank default run, which must never be written over the player's save before Continue loads it.
+func _may_write() -> bool:
+	return enabled and not GameState.awaiting_new_game and GameState.run_is_live
 
 
 ## Saves unless a stage is being fought. What every caller should use.
 ## `announce` flashes "Saved" on screen once the write succeeds (used after a
 ## finished stage).
 func autosave(announce: bool = false) -> void:
-	if enabled and not GameState.mid_stage and not GameState.awaiting_new_game:
+	if _may_write() and not GameState.mid_stage:
 		if save_game() and announce:
 			Layout.flash(Text.say("save.saved"))
 
@@ -97,13 +102,13 @@ func autosave(announce: bool = false) -> void:
 ## Saves inside a stage at an opponent's defeat (GameState.stage_checkpoint
 ## holds where to resume). The one save allowed while a stage is fought.
 func save_checkpoint() -> void:
-	if enabled and not GameState.awaiting_new_game:
+	if _may_write():
 		save_game()
 
 
 ## Writes the manual backup slot. True when written.
 func backup_now() -> bool:
-	return enabled and not GameState.awaiting_new_game and save_game(MANUAL_PATH)
+	return _may_write() and save_game(MANUAL_PATH)
 
 
 func has_backup() -> bool:

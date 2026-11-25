@@ -2260,3 +2260,14 @@ Still to supply: real Stage Events rows; whether VEN02/VEN04/VEN05's roles and S
 | Times going to each place; times each activity was done | each Go press; the venues' own activity counts |
 
 Saved with the run, cleared by New Game, and an older save loads with none. **Administration, Your Statistics** shows them and **Export report** saves a text file (game folder and, on a phone, Downloads) and copies it to the clipboard. Tests: `test_run_stats.gd` (16) and four win-kind cases in `test_battle_engine.gd`. All wording is `stats.*` Text rows, a draft for Cameron.
+
+## A blank run can no longer be saved over a real one at the title screen (2026-11-25, a tester's report; branch `fix/save-overwrite-at-title`)
+
+Report (Android): "game closed on the cafeteria listening scene. rebooted it and pressed continue but the run reset to day one."
+
+| What was wrong | What changed |
+|---|---|
+| At boot the game already holds a blank default run (`GameState._ready` picks the first protagonist). The guard before every save only asked for a protagonist, which is never empty, so the phone pausing the game at the title screen, or any title-screen button, could write that blank run over the real save before Continue loaded it. A second boot then found day one. | `GameState.run_is_live` is false until a run is really started or loaded (`start_new_run`, which loading uses too). `SaveManager` writes nothing (autosave, button-press save, checkpoint, manual backup) until it is true. |
+| Tests | `test_save_not_overwritten_at_boot.gd` (5): a pause, a button press, a checkpoint and a backup at the title screen leave the save alone; Continue loads it and saving then works; a new game makes saving live. |
+
+This is the cause the code shows; I could not read the tester's lost save, so it is the likely, not a proven, explanation of that report. A run already overwritten cannot be brought back (the manual backup, if one was made, still can).
