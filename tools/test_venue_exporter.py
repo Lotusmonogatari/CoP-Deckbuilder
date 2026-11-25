@@ -106,6 +106,41 @@ def area_tests(expect):
     expect(not any("VL002" in w for w, m in report.errors), "the speaker word 'area' passes")
 
 
+def run_overheard(lines, people=None, venue_extra=None):
+    venues = [dict(v, order=1) for v in VENUES] + [{"venue_id": "VN06", "zone": "Capital Area", "name": "Super Station", "order": 1}]
+    if venue_extra:
+        venues[0].update(venue_extra)
+    data = {"venues": venues, "venue_activities": [{"activity_id": "VA01", "venue_id": "VN01", "kind": "chat", "pool": "cafeteria"},
+                                                   {"activity_id": "VA06", "venue_id": "VN06", "kind": "travel", "pool": None}],
+            "venue_lines": [line("VL900")] + lines, "opponents": [], "staff": [], "visitors": [], "stages": [], "floor_votes": {}, "rules": {},
+            "strings": [], "area_characters": people or []}
+    report = Report()
+    export_data.check_venues(data, report)
+    return report
+
+
+def over(line_id, where, **over_):
+    return line(line_id, pool="overheard", where=where, **over_)
+
+
+def overheard_tests(expect):
+    expect(not run_overheard([over("VL901", "Capital Area"), over("VL902", "VN01"), over("VL903", "VN06/tracks"), over("VL904", "District; VN04")]).errors,
+           "overheard lines naming a zone, a venue, a station's tracks or several places pass")
+    expect(any("VL905" in w and "needs a Where" in m for w, m in run_overheard([over("VL905", None)]).errors), "an overheard line with no Where fails")
+    expect(any("VL906" in w and "Where 'Nowhere'" in m for w, m in run_overheard([over("VL906", "Nowhere")]).errors), "a Where naming nothing fails")
+    expect(any("VL907" in w for w, m in run_overheard([over("VL907", "VN01/tracks")]).errors), "/tracks on a venue that is not a station fails")
+    expect(any("VL908" in w and "hint" in m for w, m in run_overheard([over("VL908", "VN01", topic="hint", text=None, hint_kind="stage_suit")]).errors),
+           "an overheard line cannot be a hint row")
+    coach = {"VEN01": {"character_id": "VEN01", "name": "Coach", "site": "VN04"}}
+    expect(any("VL909" in w and "does not appear" in m for w, m in run_overheard([over("VL909", "VN01", speaker="VEN01")], list(coach.values())).errors),
+           "a speaker who cannot appear at the place fails")
+    expect(not run_overheard([over("VL910", "VN04", speaker="VEN01")], list(coach.values())).errors, "a VEN speaker at their own venue passes")
+    expect(not [e for e in run_overheard([over("VL911", "Capitol Building", speaker="area")]).errors if "VL911" in e[0]], "the speaker word area passes")
+    expect(any("Overheard Every" in m for w, m in run_overheard([over("VL912", "VN01")], venue_extra={"overheard_every": -1}).errors),
+           "a negative Overheard Every fails")
+    expect(any("VL913" in w for w, m in run_overheard([line("VL913", pool="cafeteria", where="VN01")]).warnings), "Where on a non-overheard line is reported")
+
+
 def main():
     failures = []
 
@@ -124,6 +159,7 @@ def main():
     expect(len([e for e in both.errors if "VL005" in e[0]]) >= 2, "a row wrong in both ways is reported twice")
     library_tests(expect)
     area_tests(expect)
+    overheard_tests(expect)
     print("")
     print("VENUE EXPORTER TEST: " + ("PASS" if not failures else "FAIL"))
     return 1 if failures else 0

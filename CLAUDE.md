@@ -361,3 +361,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - P18: the National Assembly Library's Codex and reference desk (2026-11-24, Cameron; branch `feature/p18-library-codex`)
 - The place map's cards use a wide picture banner (2026-11-24, Cameron; branch `feature/place-card-banner`)
 - Area Characters: VEN/CA/CB/DI people who speak in venues and stand over their backgrounds; the speech coach becomes VEN01 (2026-11-25, Cameron; branch `feature/area-characters`)
+- Overheard lines: a passing line every few moves to a place, places and seasons in the workbook (2026-11-25, Cameron; branch `feature/overheard-lines`)

@@ -220,7 +220,13 @@ static func _tray(given: Dictionary, handlers: Dictionary) -> Control:
 		any = true
 		flow.add_child(_chip(entry, PLAIN_FRAME, false, handlers))
 	if not any:
-		flow.add_child(UiKit.line(Text.say("assign.tray_empty")))
+		# The message goes in a column, not the flow: a wrapping label inside a flow gets no width and stacks one letter per line (a tester's
+		# report, 2026-11-24: "Every task has been given out." ran down the screen).
+		flow.free()
+		var empty := VBoxContainer.new()
+		empty.name = "TaskTray"
+		empty.add_child(UiKit.line(Text.say("assign.tray_empty")))
+		return empty
 	return flow
 
 
@@ -773,9 +779,9 @@ static func report_rows(report: Dictionary) -> Array[Control]:
 			# Say why when unrest made it count as a weaker fit than the role's own.
 			if str(line.get("base_fit", line["fit"])) != str(line["fit"]):
 				text += " " + Text.say("assign.report_unsettled")
-		var label := UiKit.line(text)
-		label.add_theme_color_override("font_color", FIT_COLORS.get(str(line["fit"]), Color.WHITE))
-		out.append(label)
+		# The room's own ink, not the fit's colour: "Fair fit" in pale grey was hard to read (a tester's report, 2026-11-24); the words
+		# already say how well they suited it.
+		out.append(UiKit.line(text))
 	for gone: Dictionary in result["undone"]:
 		var entry := StaffTasks.entry_for(pool, str(gone["uid"]))
 		out.append(UiKit.line(Text.say("assign.proj_undone", {"title": str(entry.get("title", "")),

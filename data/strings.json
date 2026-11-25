@@ -4866,10 +4866,10 @@
   },
   {
     "key": "item.hosted_reveal",
-    "where": "Item result, a bill raised at a gathering you hosted",
-    "english": "Over the evening a bill comes up: {name}. It is now open to you.",
+    "where": "Item result and hosted-event result: a level revealed by a gathering you hosted",
+    "english": "Over the evening a new subject comes up: {name}. It is now open to you to pursue.",
     "placeholders": "name",
-    "notes": "2026-10-23 hosting."
+    "notes": "2026-10-23 hosting. 2026-11-25: a level, not a bill, is what a gathering reveals (a tester's report); wording by Cameron."
   },
   {
     "key": "item.hosted_hours",
@@ -7163,9 +7163,9 @@
   {
     "key": "assign.locked_note",
     "where": "Staff Assignments, after confirming",
-    "english": "Locked in. The results arrive when the day ends.",
+    "english": "Locked in. The results are shown at the end of the week.",
     "placeholders": null,
-    "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
+    "notes": "2026-11-25: results are shown in the end-of-week summary, not at the end of the day (a tester's report). Claude's draft for Cameron to reword."
   },
   {
     "key": "assign.blocks_short",
@@ -11198,5 +11198,12 @@
     "english": "Researched at the Library",
     "placeholders": null,
     "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.overheard_continue",
+    "where": "Overheard line: go on into the place",
+    "english": "Continue",
+    "placeholders": null,
+    "notes": "2026-11-25 (overheard lines): Claude's draft for Cameron to reword."
   }
 ]

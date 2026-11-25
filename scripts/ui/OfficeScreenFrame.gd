@@ -114,6 +114,22 @@ func body() -> VBoxContainer:
 	return _body
 
 
+## How far the column is scrolled now.
+func scroll_value() -> int:
+	return _scroll.scroll_vertical if _scroll != null else 0
+
+
+## Scrolls the column to `value` once it has been laid out (a screen drawn again after a purchase keeps the player's place; a tester's idea,
+## 2026-11-24). Waits two frames so the cards have their heights; never past the end.
+func restore_scroll(value: int) -> void:
+	if _scroll == null or value <= 0:
+		return
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if is_instance_valid(_scroll) and _scroll.is_inside_tree():
+		_scroll.scroll_vertical = value
+
+
 ## Scrolls the column back to the top (a tab change shows its list from the start).
 func scroll_to_top() -> void:
 	if _scroll != null:

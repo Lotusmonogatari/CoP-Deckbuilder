@@ -2159,3 +2159,35 @@ Cameron's design: a new tab for open-world characters, with a prefix on each ID.
 
 Not built: lines for Capital Area and District places. Only the Cafeteria and the Gardens deal lines, so those venues need a line pool before their people can be overheard in the game itself.
 
+## Overheard lines: a passing line every few moves, with the places and seasons in the workbook (2026-11-25, Cameron; branch `feature/overheard-lines`)
+
+Cameron chose "every N moves" from three ways to make venues trigger lines, with N = 6, a wobble of 2 and a priority weight of 5, and asked that new venues and seasons need no code and that venue-specific lines beat general area lines.
+
+| Step | What changed |
+|---|---|
+| Workbook | Venue Lines gets a **Where** column and the Pool value `overheard`; Venues gets **Overheard Every**; four Balance rows (`Overheard Every` 6, `Wobble` 2, `Specific Boost` 5, `No Repeat` 4); Cameron's six sample lines are rows (Capital Area, District and Capitol Building, speaker `area`). |
+| Rules | `OverheardLines`: where a line fits (venue, zone or tracks), the pace and its seeded wobble, the weighted draw with the boost for a line that names the place, and the recent-line skip. The move counter, recent list and line count are saved; an old save starts at 0. |
+| On screen | Go (and To the tracks) counts a move; on the N-th a line is overheard first (the stand-over scene for an area speaker, the plain card otherwise) with one Continue button, and the place opens after it. |
+| Checks and tests | The exporter checks Where (places that exist, `/tracks` only on a station, no hint rows, speakers who can appear there) and Overheard Every; `test_overheard_lines.gd` (18) and 10 exporter cases. |
+
+Your draft places map as: the Capitol and the Capital Area and District streets are zone names; Capitol Gardens, Library, the Shotengai and the Old Shrine are their venue IDs; Sapporo Odori Park is the Sapporo Stage (VN05); the station concourse is VN06 and the tracks `VN06/tracks`. The six sample lines are in the data; the Capital Area and District zone lines are heard at the stations, the shrine and the shotengai.
+
+## Tester reports: the Marketplace's Back control, and "a bill comes up" for a level (2026-11-25; branch `feature/overheard-lines`)
+
+| Report | Cause | Fix |
+|---|---|---|
+| "The back to office button is gone" (Android, Marketplace after a hosted event result) | A pop-up card wraps the buttons it borrows (its Back). When the Marketplace was drawn again on the same panel, the Back control kept the wrapping and shrank to one letter wide and many lines tall, so it could not be seen or tapped. | `dress_back` always sets one line (and marks it so nothing wraps it again); the card's `undress` turns wrapping off. `test_frame_back_button.gd` repeats the card-then-frame sequence. |
+| "A bill opened after the district tour, but the level is District Tour" | The reveal sentence `item.hosted_reveal` said "a bill comes up"; what a gathering reveals is a level. | Now "Over the evening a new subject comes up: {name}. It is now open to you to pursue." (Cameron's wording.) |
+
+## The Marketplace keeps your place after a purchase (2026-11-25; branch `feature/overheard-lines`)
+
+A tester's idea (Android, 2026-11-24): "when purchasing an item don't spring back to the top of the page". Buying redraws the Marketplace; it now returns to the scroll place it had when drawn again on the same tab (`OfficeScreenFrame.restore_scroll`, waiting for the cards to be laid out), and a tab change still starts at the top. `test_market_scroll.gd`. Other screens that redraw after a button press were not changed.
+
+## Tester reports: Staff Assignments text (2026-11-25; branch `feature/overheard-lines`)
+
+| Report | Fix |
+|---|---|
+| "Staff text is too hard to read, could just be regular colour" (the staff result lines on the new-week screen, "Fair fit" in pale grey) | The result lines use the room's own ink; the words ("Strong fit", "Fair fit", "Poor fit") already say how well they suited it. The gold, grey and red frames on the task boxes are unchanged. |
+| "The assignments said the outcome would be shown at the end of the day, not the end of the work week" | `assign.locked_note` now reads "Locked in. The results are shown at the end of the week." (Claude's draft wording for Cameron.) The results are settled each day and shown on the new-week screen. |
+| "Vertical text" (Staff Assignments, "Every task has been given out." one letter per line) | The empty-tray message sat inside the wrapping flow of task chips, which gave it no width once the Office frame released its fixed width. It now sits in a column. `test_staff_assign_empty_tray.gd`. |
+

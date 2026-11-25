@@ -15,6 +15,8 @@ func _ready() -> void:
 
 
 func _run() -> void:
+	# Overheard lines come up on a chance of moves; a click test must not meet one by luck (they have their own tests).
+	DataDB.balance["overheard_every"] = 0
 	OS.set_environment("COP_NO_RANDOM_EVENTS", "1")
 	OS.set_environment("COP_NO_TRAVEL_FADE", "1")
 	for style: String in STYLES:

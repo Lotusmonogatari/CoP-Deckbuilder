@@ -20,7 +20,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "FPI, Finance Minister, former idol; Data Driven"
+    "note": "FPI, Finance Minister, former idol; Data Driven",
+    "where": null
   },
   {
     "line_id": "VL002",
@@ -43,7 +44,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "FP, Foreign Affairs; Earnest, dry"
+    "note": "FP, Foreign Affairs; Earnest, dry",
+    "where": null
   },
   {
     "line_id": "VL003",
@@ -66,7 +68,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "YHP, Prime Minister; Earnest"
+    "note": "YHP, Prime Minister; Earnest",
+    "where": null
   },
   {
     "line_id": "VL004",
@@ -89,7 +92,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "KJT leader, opposition; Appeal, needling"
+    "note": "KJT leader, opposition; Appeal, needling",
+    "where": null
   },
   {
     "line_id": "VL005",
@@ -112,7 +116,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "CI leader, opposition; Appeal"
+    "note": "CI leader, opposition; Appeal",
+    "where": null
   },
   {
     "line_id": "VL006",
@@ -135,7 +140,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "BU leader, Ethics Minister; Emotional"
+    "note": "BU leader, Ethics Minister; Emotional",
+    "where": null
   },
   {
     "line_id": "VL007",
@@ -158,7 +164,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "FP, Agriculture; Emotional, warm"
+    "note": "FP, Agriculture; Emotional, warm",
+    "where": null
   },
   {
     "line_id": "VL008",
@@ -181,7 +188,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "FPI, Construction; Duplicitous wink"
+    "note": "FPI, Construction; Duplicitous wink",
+    "where": null
   },
   {
     "line_id": "VL009",
@@ -204,7 +212,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "YHP, Government Administration; Appeal"
+    "note": "YHP, Government Administration; Appeal",
+    "where": null
   },
   {
     "line_id": "VL010",
@@ -227,7 +236,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "BU, Environment; Data Driven"
+    "note": "BU, Environment; Data Driven",
+    "where": null
   },
   {
     "line_id": "VL011",
@@ -250,7 +260,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "BU, War; Earnest, stoic"
+    "note": "BU, War; Earnest, stoic",
+    "where": null
   },
   {
     "line_id": "VL012",
@@ -273,7 +284,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "FP, Speaker; Appeal"
+    "note": "FP, Speaker; Appeal",
+    "where": null
   },
   {
     "line_id": "VL013",
@@ -296,7 +308,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "FPI; Duplicitous"
+    "note": "FPI; Duplicitous",
+    "where": null
   },
   {
     "line_id": "VL014",
@@ -319,7 +332,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "CI, opposition; Duplicitous"
+    "note": "CI, opposition; Duplicitous",
+    "where": null
   },
   {
     "line_id": "VL015",
@@ -342,7 +356,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "KJT, opposition; Data Driven"
+    "note": "KJT, opposition; Data Driven",
+    "where": null
   },
   {
     "line_id": "VL016",
@@ -365,7 +380,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "YHP; Earnest, Emotional"
+    "note": "YHP; Earnest, Emotional",
+    "where": null
   },
   {
     "line_id": "VL017",
@@ -388,7 +404,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "FP; Divisive"
+    "note": "FP; Divisive",
+    "where": null
   },
   {
     "line_id": "VL018",
@@ -411,7 +428,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "CI, opposition; Appeal"
+    "note": "CI, opposition; Appeal",
+    "where": null
   },
   {
     "line_id": "VL019",
@@ -434,7 +452,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "KJT; Data Driven"
+    "note": "KJT; Data Driven",
+    "where": null
   },
   {
     "line_id": "VL020",
@@ -457,7 +476,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "FP; Divisive, playful"
+    "note": "FP; Divisive, playful",
+    "where": null
   },
   {
     "line_id": "VL021",
@@ -480,7 +500,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL022",
@@ -503,7 +524,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL023",
@@ -526,7 +548,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL024",
@@ -551,7 +574,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL025",
@@ -576,7 +600,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL026",
@@ -601,7 +626,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL027",
@@ -626,7 +652,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL028",
@@ -649,7 +676,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL029",
@@ -672,7 +700,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL030",
@@ -695,7 +724,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL031",
@@ -718,7 +748,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL032",
@@ -741,7 +772,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL033",
@@ -764,7 +796,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL034",
@@ -787,7 +820,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL035",
@@ -810,7 +844,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL036",
@@ -833,7 +868,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL037",
@@ -856,7 +892,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL038",
@@ -879,7 +916,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL039",
@@ -902,7 +940,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL040",
@@ -925,7 +964,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL041",
@@ -948,7 +988,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL042",
@@ -971,7 +1012,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL043",
@@ -994,7 +1036,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL044",
@@ -1017,7 +1060,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL045",
@@ -1040,7 +1084,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL046",
@@ -1063,7 +1108,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL047",
@@ -1086,7 +1132,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL048",
@@ -1109,7 +1156,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL049",
@@ -1132,7 +1180,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL050",
@@ -1155,7 +1204,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL051",
@@ -1178,7 +1228,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL052",
@@ -1201,7 +1252,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL053",
@@ -1224,7 +1276,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL054",
@@ -1247,7 +1300,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL055",
@@ -1270,7 +1324,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL056",
@@ -1293,7 +1348,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL057",
@@ -1316,7 +1372,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL058",
@@ -1341,7 +1398,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL059",
@@ -1366,7 +1424,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL060",
@@ -1389,7 +1448,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL061",
@@ -1412,7 +1472,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL062",
@@ -1435,7 +1496,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL063",
@@ -1458,7 +1520,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL064",
@@ -1481,7 +1544,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL065",
@@ -1504,7 +1568,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL066",
@@ -1527,7 +1592,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL067",
@@ -1550,7 +1616,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL068",
@@ -1573,7 +1640,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL069",
@@ -1596,7 +1664,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL070",
@@ -1619,7 +1688,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL071",
@@ -1642,7 +1712,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL072",
@@ -1665,7 +1736,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL073",
@@ -1688,7 +1760,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL074",
@@ -1711,7 +1784,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL075",
@@ -1734,7 +1808,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL076",
@@ -1757,7 +1832,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL077",
@@ -1780,7 +1856,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL078",
@@ -1803,7 +1880,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL079",
@@ -1826,7 +1904,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL080",
@@ -1849,7 +1928,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": null
+    "note": null,
+    "where": null
   },
   {
     "line_id": "VL081",
@@ -1872,7 +1952,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
   },
   {
     "line_id": "VL082",
@@ -1895,7 +1976,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
   },
   {
     "line_id": "VL083",
@@ -1918,7 +2000,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
   },
   {
     "line_id": "VL084",
@@ -1941,7 +2024,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
   },
   {
     "line_id": "VL085",
@@ -1964,7 +2048,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
   },
   {
     "line_id": "VL086",
@@ -1987,7 +2072,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
   },
   {
     "line_id": "VL087",
@@ -2010,7 +2096,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
   },
   {
     "line_id": "VL088",
@@ -2033,7 +2120,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
   },
   {
     "line_id": "VL089",
@@ -2056,7 +2144,8 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
   },
   {
     "line_id": "VL090",
@@ -2079,6 +2168,151 @@
     "hint_target": null,
     "unlocks_doc": null,
     "effects": null,
-    "note": "Text from Hint Text; target picked by the game"
+    "note": "Text from Hint Text; target picked by the game",
+    "where": null
+  },
+  {
+    "line_id": "VL091",
+    "pool": "overheard",
+    "topic": "gossip",
+    "speaker": "area",
+    "text": "Heading to the office again only to join remote calls.",
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "on_date": null,
+    "date_from": null,
+    "date_to": null,
+    "seasons": null,
+    "after_law": null,
+    "weight": 1,
+    "once": "N",
+    "hint_kind": null,
+    "hint_target": null,
+    "unlocks_doc": null,
+    "effects": null,
+    "note": "Cameron's sample line (2026-11-25): overheard in passing by someone from the zone's pool.",
+    "where": "Capital Area"
+  },
+  {
+    "line_id": "VL092",
+    "pool": "overheard",
+    "topic": "gossip",
+    "speaker": "area",
+    "text": "When will the city fix the street parking signs?",
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "on_date": null,
+    "date_from": null,
+    "date_to": null,
+    "seasons": null,
+    "after_law": null,
+    "weight": 1,
+    "once": "N",
+    "hint_kind": null,
+    "hint_target": null,
+    "unlocks_doc": null,
+    "effects": null,
+    "note": "Cameron's sample line (2026-11-25): overheard in passing by someone from the zone's pool.",
+    "where": "Capital Area"
+  },
+  {
+    "line_id": "VL093",
+    "pool": "overheard",
+    "topic": "gossip",
+    "speaker": "area",
+    "text": "Another chain restaurant opening soon?",
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "on_date": null,
+    "date_from": null,
+    "date_to": null,
+    "seasons": null,
+    "after_law": null,
+    "weight": 1,
+    "once": "N",
+    "hint_kind": null,
+    "hint_target": null,
+    "unlocks_doc": null,
+    "effects": null,
+    "note": "Cameron's sample line (2026-11-25): overheard in passing by someone from the zone's pool.",
+    "where": "District"
+  },
+  {
+    "line_id": "VL094",
+    "pool": "overheard",
+    "topic": "gossip",
+    "speaker": "area",
+    "text": "The wind is nice today.",
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "on_date": null,
+    "date_from": null,
+    "date_to": null,
+    "seasons": null,
+    "after_law": null,
+    "weight": 1,
+    "once": "N",
+    "hint_kind": null,
+    "hint_target": null,
+    "unlocks_doc": null,
+    "effects": null,
+    "note": "Cameron's sample line (2026-11-25): overheard in passing by someone from the zone's pool.",
+    "where": "District"
+  },
+  {
+    "line_id": "VL095",
+    "pool": "overheard",
+    "topic": "gossip",
+    "speaker": "area",
+    "text": "Too many new staff getting lost all day.",
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "on_date": null,
+    "date_from": null,
+    "date_to": null,
+    "seasons": null,
+    "after_law": null,
+    "weight": 1,
+    "once": "N",
+    "hint_kind": null,
+    "hint_target": null,
+    "unlocks_doc": null,
+    "effects": null,
+    "note": "Cameron's sample line (2026-11-25): overheard in passing by someone from the zone's pool.",
+    "where": "Capitol Building"
+  },
+  {
+    "line_id": "VL096",
+    "pool": "overheard",
+    "topic": "gossip",
+    "speaker": "area",
+    "text": "The new interns and their \"ideas.\" Ugh.",
+    "condition_type": null,
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "on_date": null,
+    "date_from": null,
+    "date_to": null,
+    "seasons": null,
+    "after_law": null,
+    "weight": 1,
+    "once": "N",
+    "hint_kind": null,
+    "hint_target": null,
+    "unlocks_doc": null,
+    "effects": null,
+    "note": "Cameron's sample line (2026-11-25): overheard in passing by someone from the zone's pool.",
+    "where": "Capitol Building"
   }
 ]

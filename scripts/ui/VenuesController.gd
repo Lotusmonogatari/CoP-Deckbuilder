@@ -23,6 +23,8 @@ var _result_venue := ""
 var _library: LibraryController
 ## The scene behind an overheard line spoken by an area character (VenueSceneViews), or null.
 var _scene: Control
+## Where Continue leads after an overheard line ({"venue", "screen"}), or {} when the pop-up is an ordinary line.
+var _continue_to: Dictionary = {}
 ## What a station's screens call on the Office: the trip's mode, confirm and go (see StationViews).
 var _trip_hooks: Dictionary = {}
 ## The venue whose line pop-up is up (Keep listening needs to know which).
@@ -143,7 +145,7 @@ func _venue_card(look: Dictionary, venue: Dictionary) -> Control:
 	go.disabled = not built
 	OfficeFrameStyles.dress_card_button(go, look, built)
 	if built:
-		go.pressed.connect(show_venue.bind(venue_id))
+		go.pressed.connect(_go_to.bind(venue_id, ""))
 	column.add_child(go)
 	return card
 
@@ -320,6 +322,27 @@ func _redraw_station() -> void:
 		show_venue(_station_venue)
 
 
+## Going to a place (the Go button, or To the tracks): counts a move, and on the N-th a line is overheard first (OverheardLines); Continue then
+## opens the place. The place's screen is drawn only after the line, so the move is not lost if the player leaves.
+func _go_to(venue_id: String, screen: String) -> void:
+	var heard := GameState.overheard_on_move(venue_id, screen)
+	SaveManager.autosave()   # the move counter changed
+	if heard.is_empty():
+		_enter_place(venue_id, screen)
+		return
+	_continue_to = {"venue": venue_id, "screen": screen}
+	_show_heard(venue_id, {"ok": true, "kind": "overheard", "speaker": str(heard["speaker"]), "text": str(heard["text"]), "hint": {},
+		"unlocked": "", "last": true, "where": ""}, true)
+
+
+func _enter_place(venue_id: String, screen: String) -> void:
+	_continue_to = {}
+	if screen == "tracks":
+		_show_tracks(venue_id)
+	else:
+		show_venue(venue_id)
+
+
 func _picture(art_id: String, height: float) -> PlaceholderArt:
 	var picture := PlaceholderArt.new()
 	picture.name = "VenuePicture"
@@ -354,7 +377,7 @@ func _show_station(venue: Dictionary, activity: Dictionary) -> void:
 		tracks.disabled = not why.is_empty()
 		OfficeFrameStyles.dress_card_button(tracks, look, why.is_empty())
 		if why.is_empty():
-			tracks.pressed.connect(_show_tracks.bind(venue_id))
+			tracks.pressed.connect(_go_to.bind(venue_id, "tracks"))
 		rows.append(tracks)
 		var hint := UiKit.line(Text.say("station.concourse_hint"), "SmallLabel")
 		hint.name = "ConcourseHint"
@@ -408,7 +431,7 @@ func _hear(venue_id: String) -> void:
 
 ## Draws a heard line. An Area Characters speaker stands over the venue's background with the card at the foot; any other line is the plain
 ## card over the Office (Cameron, 2026-11-25). Split from `_hear` so a screen can be drawn from a line without dealing one.
-func _show_heard(venue_id: String, heard: Dictionary) -> void:
+func _show_heard(venue_id: String, heard: Dictionary, overheard: bool = false) -> void:
 	_clear_scene()
 	var venue := GameState.venue_row(venue_id)
 	var pool := str(heard.get("where", ""))
@@ -420,7 +443,7 @@ func _show_heard(venue_id: String, heard: Dictionary) -> void:
 	var hint: Dictionary = heard.get("hint", {})
 	if not hint.is_empty():
 		body.append(VenueViews.tip_box(hint, pool))
-	elif str(heard["kind"]) != "dry":
+	elif str(heard["kind"]) not in ["dry", "overheard"]:
 		var note := UiKit.line(Text.say("venue.gossip_only"), "SmallLabel")
 		note.name = "GossipOnly"
 		note.custom_minimum_size.x = 0.0
@@ -436,13 +459,16 @@ func _show_heard(venue_id: String, heard: Dictionary) -> void:
 		added_title.name = "CodexAddedTitle"
 		added_title.custom_minimum_size.x = 0.0
 		body.append(added_title)
-	var meta := Text.say("venue.line_counter", {"count": int(heard["number"]), "limit": int(heard["limit"])}) if str(heard["kind"]) != "dry" else ""
+	var meta := Text.say("venue.line_counter", {"count": int(heard["number"]), "limit": int(heard["limit"])}) if str(heard["kind"]) not in ["dry", "overheard"] else ""
 	var done := bool(heard.get("last", false))
 	# The Cafeteria and the Gardens have their own tags; any other place (a line an area person speaks there) is tagged with its name.
 	var tag := str(venue.get("name", "")) if pool not in ["gardens", "cafeteria"] else Text.say("venue.tag_gardens" if pool == "gardens" else "venue.tag_cafeteria")
+	# An overheard line has one way on, Continue into the place: no Back, and a tap outside does not close it.
+	_line_panel.show_back = not overheard
+	_line_panel.dismissable = not overheard
 	_line_panel.open_card({"tag": tag, "meta": meta, "bottom": on_scene, "body": body},
-		Text.say("venue.come_back") if done else Text.say("venue.keep_listening"),
-		Text.say("venue.back_to", {"venue": str(venue.get("name", ""))}), not done)
+		Text.say("venue.overheard_continue") if overheard else (Text.say("venue.come_back") if done else Text.say("venue.keep_listening")),
+		Text.say("venue.back_to", {"venue": str(venue.get("name", ""))}), overheard or not done)
 	if on_scene:
 		# The scene sits behind the card, over an opaque ground (the pop-up's usual scrim would show the Office through the picture).
 		_scene = VenueSceneViews.build(_venue_picture_id(venue), speaker)
@@ -461,6 +487,9 @@ func _clear_scene() -> void:
 
 
 func _on_keep_listening() -> void:
+	if not _continue_to.is_empty():
+		_enter_place(str(_continue_to["venue"]), str(_continue_to["screen"]))
+		return
 	if not _current_venue.is_empty():
 		_hear(_current_venue)
 

@@ -12,6 +12,8 @@ func _ready() -> void:
 
 
 func _run() -> void:
+	# Overheard lines come up on a chance of moves; a click test must not meet one by luck (they have their own tests).
+	DataDB.balance["overheard_every"] = 0
 	GameState.start_new_run("PC01")
 	GameState.awaiting_new_game = false
 	GameState.office_location = Offices.CAPITOL

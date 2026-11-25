@@ -456,6 +456,10 @@ var venue_activity_log: Dictionary = {}
 var venue_activity_totals: Dictionary = {}
 ## The Library's Codex (P18, 2026-11-24): {doc_id: {"day", "read"}} for the documents found, and the Room files the reference desk made
 ## ({stage_id: {"day", "level_id", "reading", "read"}}; each shows only while a tip for its stage is held).
+## Overheard lines (2026-11-25): moves since the last one, how many have come up (the seed of the next wait), and the last few line IDs.
+var overheard_moves := 0
+var overheard_fired := 0
+var overheard_recent: Array = []
 var codex_found: Dictionary = {}
 var room_files: Dictionary = {}
 var staff_activity_hours: Dictionary = {}
@@ -670,7 +674,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
 	"bill_stance",
@@ -922,6 +926,9 @@ func reset_crisis_triggers() -> void:
 	venue_activity_log = {}
 	venue_activity_totals = {}
 	staff_activity_hours = {}
+	overheard_moves = 0
+	overheard_fired = 0
+	overheard_recent = []
 	codex_found = {}
 	room_files = {}
 	held_tips = []
@@ -3146,6 +3153,31 @@ func venue_hear_next(venue_id: String) -> Dictionary:
 		# After the last dealt line the dry line follows (Keep listening stays live for it); with no dry line, this one is the last.
 		"last": VenueLines.next_dealt(entry["dealt"] as Array, heard + 1, venue_limit()).is_empty() \
 			and VenueLines.dry_line(DataDB.venue_lines, venue_context(), 0).is_empty(), "where": str(activity.get("pool", ""))}
+
+
+## Counts a move to a place (`screen` is "" or "tracks") and, when a line is due, returns it: {"line": the row, "speaker": the speaker ID or "",
+## "text"}; {} when no line comes up. The wait is the Balance pace (or the place's own) with its wobble, seeded by the run and the number of
+## lines so far, so a reload never changes it. A place with no fitting line keeps counting until one fits.
+func overheard_on_move(venue_id: String, screen: String = "") -> Dictionary:
+	var venue := venue_row(venue_id)
+	if venue.is_empty():
+		return {}
+	overheard_moves += 1
+	var every := OverheardLines.pace(venue, int(DataDB.get_balance("overheard_every", 6)))
+	var wobble := int(DataDB.get_balance("overheard_wobble", 2))
+	if not OverheardLines.due(overheard_moves, every, wobble, hash("%d|overheard|%d" % [run_seed, overheard_fired])):
+		return {}
+	var line := OverheardLines.pick(DataDB.venue_lines, venue, screen, venue_context(), overheard_recent, int(DataDB.get_balance("overheard_specific_boost", 5)),
+		hash("%d|overheard-line|%d" % [run_seed, overheard_fired]))
+	if line.is_empty():
+		return {}
+	overheard_moves = 0
+	overheard_fired += 1
+	overheard_recent = OverheardLines.with_recent(overheard_recent, str(line.get("line_id", "")), int(DataDB.get_balance("overheard_no_repeat", 4)))
+	if str(line.get("once", "")).strip_edges().to_upper() == "Y":
+		venue_heard_once[str(line.get("line_id", ""))] = true
+	var raw_speaker: Variant = line.get("speaker")
+	return {"line": line, "speaker": _venue_speaker(raw_speaker, venue_id, "overheard|%d" % overheard_fired), "text": str(line.get("text", ""))}
 
 
 ## A venue line's speaker ID: the row's own, or, for the word `area`, someone from the venue's pool (its zone's people plus the VEN people
