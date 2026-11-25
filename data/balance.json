@@ -361,5 +361,9 @@
   "rhetoric_training_hours_per_tier": 1,
   "evening_travel_xp_cap": 100,
   "dues_max_per_week": 90000,
+  "overheard_every": 6,
+  "overheard_wobble": 2,
+  "overheard_specific_boost": 5,
+  "overheard_no_repeat": 4,
   "xp_tiers": {}
 }

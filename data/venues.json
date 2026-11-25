@@ -10,7 +10,8 @@
     "background": "CAPITOL_CAFETERIA",
     "blurb": "Long tables, short tempers, good curry.",
     "open_days": "Any",
-    "unlock": null
+    "unlock": null,
+    "overheard_every": null
   },
   {
     "venue_id": "VN02",
@@ -23,7 +24,8 @@
     "background": "CAPITOL_LIBRARY",
     "blurb": "Every law Yezo ever argued about, and the arguments.",
     "open_days": "Any",
-    "unlock": null
+    "unlock": null,
+    "overheard_every": null
   },
   {
     "venue_id": "VN03",
@@ -36,7 +38,8 @@
     "background": "CAPITOL_GARDENS",
     "blurb": "Everyone who wants something passes the fountain.",
     "open_days": "Any",
-    "unlock": null
+    "unlock": null,
+    "overheard_every": null
   },
   {
     "venue_id": "VN04",
@@ -49,7 +52,8 @@
     "background": "AREA_COACH_STUDIO",
     "blurb": "Masayuki Katō will hear you now.",
     "open_days": "Any",
-    "unlock": null
+    "unlock": null,
+    "overheard_every": null
   },
   {
     "venue_id": "VN05",
@@ -62,7 +66,8 @@
     "background": "AREA_SAPPORO_STAGE",
     "blurb": "Concerts, team days and festivals under the open sky.",
     "open_days": "Any",
-    "unlock": null
+    "unlock": null,
+    "overheard_every": null
   },
   {
     "venue_id": "VN06",
@@ -75,7 +80,8 @@
     "background": "AREA_SUPER_STATION",
     "blurb": "Every line in Yezo starts here.",
     "open_days": "Any",
-    "unlock": null
+    "unlock": null,
+    "overheard_every": null
   },
   {
     "venue_id": "VN07",
@@ -88,7 +94,8 @@
     "background": "AREA_{OFFICE_ID}_STATION",
     "blurb": "The line to the Capitol begins here.",
     "open_days": "Any",
-    "unlock": null
+    "unlock": null,
+    "overheard_every": null
   },
   {
     "venue_id": "VN08",
@@ -101,7 +108,8 @@
     "background": "AREA_SHRINE_{PC_ID}",
     "blurb": "A long walk off the beaten track, and almost no one comes.",
     "open_days": "Any",
-    "unlock": null
+    "unlock": null,
+    "overheard_every": null
   },
   {
     "venue_id": "VN09",
@@ -114,6 +122,7 @@
     "background": "AREA_SHOTENGAI_{PC_ID}",
     "blurb": "Every shop knows your name, and your business.",
     "open_days": "Any",
-    "unlock": null
+    "unlock": null,
+    "overheard_every": null
   }
 ]

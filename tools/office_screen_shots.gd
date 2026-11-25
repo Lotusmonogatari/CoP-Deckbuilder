@@ -110,6 +110,14 @@ func _venue(office: Node, which: String) -> Overlay:
 			office._venues._show_heard(case[0], {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": case[1], "text": case[2],
 				"hint": {}, "unlocked": "", "last": false, "where": case[3]})
 			return office.get_node("VenueLinePanel")
+		"scene_go":
+			# Going to a place on the move that brings an overheard line: the line first (Continue, no Back), then the place.
+			DataDB.area_characters = [{"character_id": "CB01", "name": "Passerby", "name_jp": null, "title": "Capitol staff", "site": null}]
+			DataDB.balance["overheard_every"] = 1
+			DataDB.balance["overheard_wobble"] = 0
+			GameState.office_location = Offices.CAPITOL
+			office._venues._go_to("VN01", "")
+			return office.get_node("VenueLinePanel")
 		"gossip", "tip", "dry":
 			var entry := GameState.venue_day("VN01")
 			var dealt: Array = entry["dealt"]

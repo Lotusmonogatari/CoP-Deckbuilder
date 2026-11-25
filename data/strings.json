@@ -11198,5 +11198,12 @@
     "english": "Researched at the Library",
     "placeholders": null,
     "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "venue.overheard_continue",
+    "where": "Overheard line: go on into the place",
+    "english": "Continue",
+    "placeholders": null,
+    "notes": "2026-11-25 (overheard lines): Claude's draft for Cameron to reword."
   }
 ]

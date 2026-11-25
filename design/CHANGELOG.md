@@ -2159,3 +2159,16 @@ Cameron's design: a new tab for open-world characters, with a prefix on each ID.
 
 Not built: lines for Capital Area and District places. Only the Cafeteria and the Gardens deal lines, so those venues need a line pool before their people can be overheard in the game itself.
 
+## Overheard lines: a passing line every few moves, with the places and seasons in the workbook (2026-11-25, Cameron; branch `feature/overheard-lines`)
+
+Cameron chose "every N moves" from three ways to make venues trigger lines, with N = 6, a wobble of 2 and a priority weight of 5, and asked that new venues and seasons need no code and that venue-specific lines beat general area lines.
+
+| Step | What changed |
+|---|---|
+| Workbook | Venue Lines gets a **Where** column and the Pool value `overheard`; Venues gets **Overheard Every**; four Balance rows (`Overheard Every` 6, `Wobble` 2, `Specific Boost` 5, `No Repeat` 4); Cameron's six sample lines are rows (Capital Area, District and Capitol Building, speaker `area`). |
+| Rules | `OverheardLines`: where a line fits (venue, zone or tracks), the pace and its seeded wobble, the weighted draw with the boost for a line that names the place, and the recent-line skip. The move counter, recent list and line count are saved; an old save starts at 0. |
+| On screen | Go (and To the tracks) counts a move; on the N-th a line is overheard first (the stand-over scene for an area speaker, the plain card otherwise) with one Continue button, and the place opens after it. |
+| Checks and tests | The exporter checks Where (places that exist, `/tracks` only on a station, no hint rows, speakers who can appear there) and Overheard Every; `test_overheard_lines.gd` (18) and 10 exporter cases. |
+
+Your draft places map as: the Capitol and the Capital Area and District streets are zone names; Capitol Gardens, Library, the Shotengai and the Old Shrine are their venue IDs; Sapporo Odori Park is the Sapporo Stage (VN05); the station concourse is VN06 and the tracks `VN06/tracks`. The six sample lines are in the data; the Capital Area and District zone lines are heard at the stations, the shrine and the shotengai.
+

@@ -1402,7 +1402,7 @@ SHEETS = {
         "key": "venue_id",
         "id_pattern": r"^VN\d+$",
         "optional_sheet": True,
-        "optional": ["Unlock", "Open Days"],
+        "optional": ["Unlock", "Open Days", "Overheard Every"],
         "columns": [
             ("Venue ID", "venue_id", "id"),
             ("Name", "name", "str"),
@@ -1415,6 +1415,7 @@ SHEETS = {
             ("Blurb", "blurb", "str"),
             ("Open Days", "open_days", "str"),
             ("Unlock", "unlock", "str"),
+            ("Overheard Every", "overheard_every", "int"),
         ],
     },
     "Venue Activities": {
@@ -1509,7 +1510,7 @@ SHEETS = {
         "id_pattern": r"^VL\d+$",
         "optional_sheet": True,
         "optional": ["Topic", "Condition Type", "Condition Target", "Condition Op", "Condition Value", "On Date", "Date From", "Date To",
-                     "Seasons", "After Law", "Weight", "Once", "Hint Kind", "Hint Target", "Unlocks Doc", "Effects", "Note (tone)"],
+                     "Seasons", "After Law", "Weight", "Once", "Hint Kind", "Hint Target", "Unlocks Doc", "Effects", "Note (tone)", "Where"],
         "columns": [
             ("Line ID", "line_id", "id"),
             ("Pool", "pool", "str"),
@@ -1532,6 +1533,7 @@ SHEETS = {
             ("Unlocks Doc", "unlocks_doc", "str"),
             ("Effects", "effects", "str"),
             ("Note (tone)", "note", "str"),
+            ("Where", "where", "str"),
         ],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
@@ -4229,6 +4231,8 @@ VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act", "resea
 VENUE_ZONES = ("Capitol Building", "Capital Area", "District")
 VENUE_HINT_KINDS = ("stage_suit", "opponent_suit")
 VENUE_POOLS = ("cafeteria", "gardens", "dry")
+# Lines drawn when the player goes to a place (2026-11-25): their Where column names the places; they are no activity's pool.
+OVERHEARD_POOL = "overheard"
 VENUE_CONDITIONS = ("meta", "law", "staff_role", "party", "seen", "always")
 # The playable characters: never a speaker in a venue line (P16).
 PROTAGONIST_OPPONENTS = ("OP06", "OP22", "OP35", "OP40")
@@ -4315,6 +4319,42 @@ def check_area_characters(data, report):
                 report.error(where, f"Site '{site}' is in the {venues[site].get('zone')}, but a {prefix}## person belongs to the {AREA_PREFIX_ZONES[prefix]}")
 
 
+def overheard_places(where_cell, venues, activities):
+    """The venues an overheard line can come up at, and the tokens of its Where cell that name nothing. A token is a zone name (every venue of
+    that zone), a venue ID, or a venue ID and /tracks for a station's tracks screen (a Kind travel venue)."""
+    kinds = {str(a.get("venue_id")): str(a.get("kind")) for a in activities}
+    found, bad = [], []
+    for token in [t.strip() for t in str(where_cell or "").replace(",", ";").split(";") if t.strip()]:
+        base = token.split("/")[0].strip()
+        if token in VENUE_ZONES:
+            found.extend(v for v in venues.values() if v.get("zone") == token)
+        elif base in venues and token == base:
+            found.append(venues[base])
+        elif base in venues and token.lower() == base.lower() + "/tracks" and kinds.get(base) == "travel":
+            found.append(venues[base])
+        else:
+            bad.append(token)
+    return found, bad
+
+
+def check_overheard_line(line, where, venues, activities, area_characters, report):
+    """An overheard line (2026-11-25): Where names places that exist, it is not a hint row, and an Area Characters speaker can appear at
+    every place it can come up at."""
+    if not line.get("where"):
+        report.error(where, "An overheard line needs a Where: venue IDs, zone names or VNxx/tracks, separated by semicolons")
+        return
+    places, bad = overheard_places(line.get("where"), venues, activities)
+    for token in bad:
+        report.error(where, f"Where '{token}' is not a venue ID, a zone name (Capitol Building, Capital Area, District) or VNxx/tracks of a travel venue")
+    if line.get("hint_kind"):
+        report.error(where, "An overheard line cannot be a hint row")
+    speaker = str(line.get("speaker") or "")
+    if speaker in area_characters:
+        for venue in places:
+            if not area_allowed(area_characters[speaker], venue):
+                report.error(where, f"Speaker '{speaker}' does not appear at {venue.get('name')} (its zone and Site rule them out)")
+
+
 def check_venues(data, report):
     """Capitol venues (P16, 2026-11-23): IDs, kinds and zones; an activity names a real venue and a pool that has lines; a line's Pool,
     Speaker (opponent, staff, visitor, a Capital Area ID, 'colleague' or blank, never a protagonist), dates (YY.MM.DD, From not after
@@ -4341,6 +4381,8 @@ def check_venues(data, report):
     seasons = set(season_table.keys()) if isinstance(season_table, dict) else set()
     for venue in venues.values():
         where = f"Venues {venue.get('venue_id')}"
+        if venue.get("overheard_every") is not None and int(venue["overheard_every"]) < 0:
+            report.error(where, "Overheard Every must be 0 (never), 1 or more, or blank (the Balance default)")
         if venue.get("zone") not in VENUE_ZONES:
             report.error(where, f"Zone is {venue.get('zone')!r}; it must be Capitol Building, Capital Area or District")
         if venue.get("order") is None:
@@ -4390,14 +4432,18 @@ def check_venues(data, report):
             report.error("Venue Activities", f"Pool '{pool}' has no Venue Lines")
     for line in lines:
         where = f"Venue Lines {line.get('line_id')}"
-        if str(line.get("pool")) not in VENUE_POOLS:
-            report.error(where, f"Pool {line.get('pool')!r} must be one of {', '.join(VENUE_POOLS)}")
+        if str(line.get("pool")) == OVERHEARD_POOL:
+            check_overheard_line(line, where, venues, activities, area_characters, report)
+        elif str(line.get("pool")) not in VENUE_POOLS:
+            report.error(where, f"Pool {line.get('pool')!r} must be one of {', '.join(VENUE_POOLS + (OVERHEARD_POOL,))}")
+        elif line.get("where"):
+            report.warn(where, "Where is only used by overheard lines (Pool 'overheard'); it is ignored here")
         speaker = str(line.get("speaker") or "")
         if speaker and speaker != "colleague" and speaker not in people and speaker not in area_ids:
             report.error(where, f"Speaker '{speaker}' is not an opponent, staff, visitor or Area Characters ID, 'area', 'colleague' or blank")
         if speaker in protagonists:
             report.error(where, f"Speaker '{speaker}' is a protagonist; a player character never speaks in a venue line")
-        if speaker in area_characters:
+        if speaker in area_characters and str(line.get("pool")) != OVERHEARD_POOL:
             # The person must be allowed at every venue whose activity deals this line's pool.
             for activity in activities:
                 if str(activity.get("pool")) == str(line.get("pool")) and str(activity.get("venue_id")) in venues:
