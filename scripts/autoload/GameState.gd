@@ -369,6 +369,12 @@ var faced_people: Dictionary = {}
 ## a visit, a trade), not at level start, so no one is spoiled.
 var met_characters: Dictionary = {}
 
+## The run's statistics (2026-11-25, Cameron): suits played, items used, people met and how often, venues gone to, promises kept and
+## broken, and how stages were won. RunStats.gd counts them; StatsReport turns them into the Administration screen and the exported
+## report. Saved with the run, cleared by New Game. Gaffes are read from `lifetime_gaffes` and each activity's count from
+## `venue_activity_totals`, which the run already keeps.
+var run_stats: Dictionary = RunStats.fresh()
+
 ## Who spoke at the last stage transition and which lines this level has
 ## already heard ({"speaker": id, "lines": {key: true}}), so the next one can
 ## avoid repeating them (2026-11-02). Not saved; cleared when a level begins.
@@ -635,6 +641,7 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 	reset_party_standing()
 	faced_people = {}
 	met_characters = {}
+	run_stats = RunStats.fresh()
 	office_location = Offices.normalize(DataDB.get_rule("start_office", Offices.CAPITOL))
 	if office_location == Offices.EITHER:
 		office_location = Offices.CAPITOL
@@ -678,7 +685,7 @@ const _SAVED_FIELDS := [
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
-	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
+	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters", "run_stats",
 	"bill_stance",
 	"patron_requests", "enacted_components", "patron_runtime", "patron_composed", "patron_armed",
 	"bill_assist", "patron_news", "patron_drafts", "draft_counter", "last_draft_at",
@@ -729,6 +736,7 @@ func load_save(saved: Dictionary) -> void:
 		elif typeof(current) == typeof(value):
 			set(field, value)
 	calendar = WeekCalendar.normalized(calendar)
+	run_stats = RunStats.normalized(run_stats)
 	if not Difficulty.is_tier(difficulty):
 		difficulty = Difficulty.STANDARD
 	_apply_difficulty()
@@ -4242,6 +4250,7 @@ func _break_overdue_promises() -> void:
 		return
 	for promise: Dictionary in Promises.overdue(promises, time_units):
 		promises.erase(promise)
+		RunStats.note_promise(run_stats, false)
 		_drop_followups_of(promise)
 		var org := str(promise.get("for_org", ""))
 		var cause := Text.say("record.cause_promise_broken")
@@ -4331,6 +4340,7 @@ func keep_promise(promise_id: String) -> String:
 		if not why.is_empty():
 			return why
 		promises.erase(promise)
+		RunStats.note_promise(run_stats, true)
 		if str(promise.get("kind", "")) == Promises.PROMISE_ITEM:
 			_take_item(str(promise.get("item_id", "")))
 		var org := str(promise.get("for_org", ""))
@@ -4805,11 +4815,23 @@ func begin_level(runner: LevelRunner) -> void:
 	SaveManager.autosave()
 
 
+## One card played in a battle (its suit), for the statistics. Called by the battle screen after the engine accepts the card.
+func record_card_played(card_id: String) -> void:
+	RunStats.bump(run_stats, "suits", str(DataDB.get_card(card_id).get("suit", "")))
+
+
+## One press of Go on the Step out map (or To the tracks), for the statistics.
+func record_venue_visit(venue_id: String) -> void:
+	RunStats.bump(run_stats, "venues", venue_id)
+
+
 ## Notes that the player has met this opponent or visitor (Characters list).
 ## Safe to call again and again; blank ids are ignored.
 func meet_character(id: String) -> void:
 	if not id.is_empty():
 		met_characters[id] = true
+		# Each meeting counts once per stage in play, however often the person is drawn on screen (RunStats.note_met).
+		RunStats.note_met(run_stats, id, stage_checkpoint_key() if level_runner != null else "")
 
 
 ## Counts everyone seated in `stage` (opponents and visitors) as met once
@@ -4884,7 +4906,7 @@ func is_in_level() -> bool:
 func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		gaffe_caused_loss: bool = false, gaffes: int = 0,
 		displeased_boosters: Array = [], crushed_boosters: Array = [],
-		opposed_boosters: Array = [], booster_tally: Dictionary = {}) -> bool:
+		opposed_boosters: Array = [], booster_tally: Dictionary = {}, win_kind: String = "") -> bool:
 	lock_vote_unknown_percent()
 	mid_stage = false
 	stage_checkpoint = {}
@@ -4900,6 +4922,8 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	# or week end (mechanics audit, 2026-10-31).
 	_advance_clock(stage_hours)
 	_record_stage_type_result(str(stage.get("stage_id", "")), outcome)
+	if outcome == LevelRunner.WON:
+		RunStats.note_win(run_stats, win_kind)
 	_record_lifetime_gaffes(gaffes, outcome, gaffe_caused_loss)
 	last_awareness_change = {}
 	if str(stage.get("mode", "")) == "Combat":
@@ -5682,6 +5706,7 @@ func item_uses_left(item_id: String) -> int:
 ## is thrown away and a line says so in `staff_use_notes`. Returns true when a
 ## copy wore out.
 func _spend_use(item_id: String) -> bool:
+	RunStats.bump(run_stats, "items", item_id)
 	var result := ItemUses.spend(item_copies(item_id))
 	item_uses[item_id] = result["copies"]
 	var worn_out := bool(result["worn_out"])
@@ -6087,6 +6112,7 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 	# on how the guests react, not on whom you chose (Cameron, 2026-10-23).
 	var hosted_id := str(item.get("hosted_event", "")) if item.get("hosted_event") != null else ""
 	if not hosted_id.is_empty():
+		RunStats.bump(run_stats, "items", item_id)
 		_take_item(item_id)
 		begin_hosted_event(hosted_id, chosen_target, hours)
 		return {"ok": true, "opens_hosted": hosted_id, "org": chosen_target, "message": ""}
@@ -6098,6 +6124,7 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 		var choices := _unowned_cards_at_tier(_draw_tier(item))
 		if choices.is_empty():
 			return {"ok": false, "message": Text.say("shop.no_cards_left_at_tier", {"tier": _draw_tier(item)})}
+		RunStats.bump(run_stats, "items", item_id)
 		_take_item(item_id)
 		spend_hours(hours)
 		var card_id: String = choices[randi() % choices.size()]

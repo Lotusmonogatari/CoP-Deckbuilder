@@ -282,6 +282,12 @@ func _sweep_shape(size: Vector2i) -> void:
 			GameState.office_location = Offices.CAPITOL
 			office._venues._show_heard("VN01", {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": "CB01",
 				"text": "The new interns and their \"ideas.\" Ugh.", "hint": {}, "unlocked": "", "last": false, "where": "cafeteria"})],
+		["B27h_statistics", func() -> void:
+			RunStats.bump(GameState.run_stats, "suits", "Earnest", 14)
+			RunStats.bump(GameState.run_stats, "items", "SH20", 2)
+			RunStats.bump(GameState.run_stats, "venues", "VN01", 5)
+			RunStats.note_win(GameState.run_stats, RunStats.KIND_ZERO)
+			office._statistics.open()],
 		["B27g2b_stage", func() -> void:
 			GameState.office_location = Offices.CAPITOL
 			_wednesday_in_october()

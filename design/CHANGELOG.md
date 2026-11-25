@@ -2246,3 +2246,17 @@ Cameron's spec: events by calendar dates, scheduled performers (VEN04 and VEN05)
 | Tests | `test_sapporo_stage.gd` (11), exporter cases, the venue click test |
 
 Still to supply: real Stage Events rows; whether VEN02/VEN04/VEN05's roles and Sites are right (they are my guesses).
+
+## Run statistics and an exported report (2026-11-25, Cameron; branch `feature/sapporo-stage`)
+
+| Counted over the run | How |
+|---|---|
+| Suit played most, and every suit's count | each card the engine accepts |
+| Each item used | each copy spent (hosted dinners, tours and coupons too) |
+| Each person met | once per stage in play |
+| Promises kept and broken | at keeping and at the deadline |
+| Gaffes made, stages lost to the gaffe meter | already kept by the run; now shown |
+| Stage wins: threshold, opponent argued to zero, neither | the battle records how it ended |
+| Times going to each place; times each activity was done | each Go press; the venues' own activity counts |
+
+Saved with the run, cleared by New Game, and an older save loads with none. **Administration, Your Statistics** shows them and **Export report** saves a text file (game folder and, on a phone, Downloads) and copies it to the clipboard. Tests: `test_run_stats.gd` (16) and four win-kind cases in `test_battle_engine.gd`. All wording is `stats.*` Text rows, a draft for Cameron.

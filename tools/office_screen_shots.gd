@@ -357,6 +357,19 @@ func _popup(office: Node, kind: String) -> Overlay:
 		"characters":
 			office._characters.open()
 			return office._characters_panel
+		"statistics":
+			# popup:statistics: Your Statistics with a few counts, and the Export report card (2026-11-25)
+			RunStats.bump(GameState.run_stats, "suits", "Earnest", 14)
+			RunStats.bump(GameState.run_stats, "suits", "Appeal", 9)
+			RunStats.bump(GameState.run_stats, "items", "SH20", 2)
+			RunStats.bump(GameState.run_stats, "met", "OP01", 3)
+			RunStats.bump(GameState.run_stats, "venues", "VN01", 5)
+			RunStats.note_promise(GameState.run_stats, true)
+			RunStats.note_win(GameState.run_stats, RunStats.KIND_THRESHOLD)
+			RunStats.note_win(GameState.run_stats, RunStats.KIND_ZERO)
+			GameState.venue_activity_totals["VA01"] = 5
+			office._statistics.open()
+			return office._statistics_panel
 		"characterdetail":
 			# popup:characterdetail: one met visitor's page (name on top, big picture, facts low; 2026-11-24)
 			office._characters._show({"met": true, "id": "VI19", "name": "Dog Man", "name_jp": "犬男", "title": "Constituent",

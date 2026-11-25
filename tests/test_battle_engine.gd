@@ -2396,3 +2396,37 @@ func test_no_organization_is_added_outside_a_lobbyist_meeting_or_without_one() -
 	assert_eq(elsewhere.room_organization(), "")
 	assert_eq(elsewhere.turn_question()["pleases_boosters"], ["BO10"])
 	assert_eq(_lobbyist_room(null, ["BO10"], []).room_organization(), "")
+
+
+# --- How a stage was won, for the run statistics (2026-11-25) ---------------------------------------------------------------------------
+
+func test_a_threshold_win_says_so() -> void:
+	var engine := _start({"opponent": TestFixtures.opponent()})
+	engine.state.bar.player_gains(11)   # 40 -> 51, the threshold
+	engine._check_outcome()
+	assert_eq(engine.state.outcome, "win")
+	assert_eq(engine.state.win_kind, RunStats.KIND_THRESHOLD)
+
+
+func test_arguing_the_opponent_to_zero_says_so() -> void:
+	var engine := _start({"opponent": TestFixtures.opponent()})
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)
+	engine._check_outcome()
+	assert_eq(engine.state.outcome, "win")
+	assert_eq(engine.state.win_kind, RunStats.KIND_ZERO)
+
+
+func test_reaching_the_threshold_and_zeroing_together_counts_as_the_threshold() -> void:
+	var engine := _start({"opponent": TestFixtures.opponent()})
+	engine.state.bar.player_gains(11)
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)
+	engine._check_outcome()
+	assert_eq(engine.state.win_kind, RunStats.KIND_THRESHOLD)
+
+
+func test_a_loss_has_no_win_kind() -> void:
+	var engine := _start({"opponent": TestFixtures.opponent()})
+	engine.state.bar.player_loses(engine.state.bar.player)
+	engine._check_outcome()
+	assert_eq(engine.state.outcome, "loss")
+	assert_eq(engine.state.win_kind, "")

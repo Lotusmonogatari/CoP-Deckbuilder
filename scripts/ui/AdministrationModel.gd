@@ -13,7 +13,7 @@ static func _row(node: String, label: String, value: String, press: Callable) ->
 
 
 ## The groups and the pressure box. `actions` carries:
-##   redraw, open_cosmetics, open_how_to_play, open_characters, backup_now, backup_restore, backup_undo, new_game
+##   redraw, open_cosmetics, open_how_to_play, open_characters, open_statistics, backup_now, backup_restore, backup_undo, new_game
 ##   (Callables), and pressure (a dictionary: title, now, blurb, button).
 static func build(actions: Dictionary) -> Dictionary:
 	var redraw: Callable = actions["redraw"]
@@ -47,6 +47,7 @@ static func build(actions: Dictionary) -> Dictionary:
 	var help: Array = [
 		_row("HowToPlayButton", Text.say("office.how_to_play"), Text.say("admin.chip_open"), actions["open_how_to_play"]),
 		_row("CharactersButton", Text.say("office.characters"), Text.say("admin.chip_open"), actions["open_characters"]),
+		_row("StatisticsButton", Text.say("admin.label_statistics"), Text.say("admin.chip_open"), actions["open_statistics"]),
 	]
 	# Reporting a problem is a gesture, not a button: its row says how, from the Reporter's own lines.
 	var hints := Reporter.hint_lines()

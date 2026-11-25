@@ -91,6 +91,8 @@ var _cosmetics_panel: Overlay
 var _characters_panel: Overlay
 var _character_detail_panel: Overlay
 var _characters: CharacterCodexPanel
+var _statistics_panel: Overlay
+var _statistics: StatsPanel
 
 ## The How to Play guide (HowToPlayPanel.gd), opened from the row of buttons.
 var _how_to_play_panel: Overlay
@@ -2840,6 +2842,11 @@ func _build_cosmetics() -> void:
 	_character_detail_panel.name = "CharacterDetailPanel"
 	add_child(_character_detail_panel)
 	_characters = CharacterCodexPanel.new(_characters_panel, _character_detail_panel)
+	# Your Statistics (2026-11-25): the run's counts and the Export report button (Administration).
+	_statistics_panel = Overlay.new()
+	_statistics_panel.name = "StatisticsPanel"
+	add_child(_statistics_panel)
+	_statistics = StatsPanel.new(_statistics_panel)
 
 
 ## Two intermediary menus (2026-10-06, Cameron) so the Office's button row
@@ -2941,6 +2948,7 @@ func _show_administration_menu() -> void:
 		"open_cosmetics": _open_over.bind(_show_cosmetics, _cosmetics_panel),
 		"open_how_to_play": _open_over.bind(HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
 		"open_characters": _open_over.bind(_characters.open, _characters_panel),
+		"open_statistics": _open_over.bind(_statistics.open, _statistics_panel),
 		"backup_now": _on_backup_now,
 		"backup_restore": _confirm_backup_action.bind("restore"),
 		"backup_undo": _confirm_backup_action.bind("undo"),

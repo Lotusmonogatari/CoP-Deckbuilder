@@ -498,6 +498,7 @@ func _redraw_station() -> void:
 ## Going to a place (the Go button, or To the tracks): counts a move, and on the N-th a line is overheard first (OverheardLines); Continue then
 ## opens the place. The place's screen is drawn only after the line, so the move is not lost if the player leaves.
 func _go_to(venue_id: String, screen: String) -> void:
+	GameState.record_venue_visit(venue_id)
 	var heard := GameState.overheard_on_move(venue_id, screen)
 	SaveManager.autosave()   # the move counter changed
 	if heard.is_empty():

@@ -1367,6 +1367,7 @@ func _play_card_now(card_id: String, discards: Array) -> void:
 		_messages.say(str(result.get("reason", Text.say("battle.card_refused"))))
 		return
 	Haptics.confirm()
+	GameState.record_card_played(card_id)
 
 	_selected_card_id = ""
 	# Announced before the redraw, so anything listening can reach the card
@@ -1703,7 +1704,7 @@ func _stage_result_args() -> Dictionary:
 		"gaffe_loss": state.outcome == "loss" and state.gaffe >= state.gaffe_limit,
 		"gaffes": state.gaffe, "displeased": engine.displeased_boosters(),
 		"crushed": engine.crushed_opponent_boosters(), "opposed": engine.opposed_boosters(),
-		"tally": engine.booster_tally(),
+		"tally": engine.booster_tally(), "win_kind": state.win_kind,
 	}
 
 
@@ -1722,7 +1723,7 @@ func _conclude_stage(args: Dictionary) -> void:
 	var level_over := GameState.finish_stage(
 		str(args["outcome"]), int(args["score"]), args["boosters"] as Array,
 		bool(args["gaffe_loss"]), int(args["gaffes"]), args["displeased"] as Array,
-		args["crushed"] as Array, args["opposed"] as Array, args["tally"] as Dictionary)
+		args["crushed"] as Array, args["opposed"] as Array, args["tally"] as Dictionary, str(args.get("win_kind", "")))
 
 	if level_over:
 		GameState.end_level()

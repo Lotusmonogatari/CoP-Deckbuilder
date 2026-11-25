@@ -154,6 +154,9 @@ var opponent_count := 1
 ## How the battle finished: "ongoing", "win", "loss", or "retry".
 var outcome := "ongoing"
 var outcome_reason := ""
+## How a win came about (RunStats.KIND_*): the threshold was reached, the opponent was argued down to nothing, or neither (a survival, a
+## vote, a scored room). Blank until the battle is won.
+var win_kind := ""
 
 
 func is_over() -> bool:
@@ -180,4 +183,5 @@ func to_dictionary() -> Dictionary:
 		"bar": bar.to_dictionary() if bar != null else null,
 		"outcome": outcome,
 		"outcome_reason": outcome_reason,
+		"win_kind": win_kind,
 	}

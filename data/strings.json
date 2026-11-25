@@ -11478,5 +11478,194 @@
     "english": "{a} and {b}",
     "placeholders": "a, b",
     "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "admin.label_statistics",
+    "where": "Administration: the statistics row",
+    "english": "Your Statistics",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.title",
+    "where": "Statistics screen: title",
+    "english": "Your Statistics",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.blurb",
+    "where": "Statistics screen: what it is",
+    "english": "What this run has counted so far. A new game starts the count again.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.nothing",
+    "where": "Statistics screen: a list with nothing in it",
+    "english": "Nothing yet.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.suits_heading",
+    "where": "Statistics: cards played by suit",
+    "english": "Cards played by suit",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.suits_most",
+    "where": "Statistics: the suit played most",
+    "english": "Played most",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.items_heading",
+    "where": "Statistics: items used",
+    "english": "Items used",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.people_heading",
+    "where": "Statistics: people met",
+    "english": "People met",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.promises_heading",
+    "where": "Statistics: promises",
+    "english": "Promises",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.promises_kept",
+    "where": "Statistics: promises kept",
+    "english": "Kept",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.promises_broken",
+    "where": "Statistics: promises broken",
+    "english": "Broken",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.gaffes_heading",
+    "where": "Statistics: gaffes",
+    "english": "Gaffes",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.gaffes_made",
+    "where": "Statistics: gaffes made over the run",
+    "english": "Gaffes made",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.gaffes_lost",
+    "where": "Statistics: stages lost to the gaffe meter",
+    "english": "Stages lost to the gaffe meter",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.wins_heading",
+    "where": "Statistics: how stages were won",
+    "english": "Stages won",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.win_threshold",
+    "where": "Statistics: won by reaching the threshold",
+    "english": "By reaching the threshold",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.win_zero",
+    "where": "Statistics: won by arguing the opponent down to nothing",
+    "english": "By arguing the opponent down to nothing",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.win_other",
+    "where": "Statistics: won in a room with neither",
+    "english": "In a room with neither",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.venues_heading",
+    "where": "Statistics: places gone to",
+    "english": "Places gone to",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.activities_heading",
+    "where": "Statistics: activities done",
+    "english": "Activities done",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.export_button",
+    "where": "Statistics screen: the export button",
+    "english": "Export report",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.export_hint",
+    "where": "Statistics screen: what the export button does",
+    "english": "Saves these numbers as a text file and copies them to the clipboard.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.exported_downloads",
+    "where": "Statistics export: saved to Downloads",
+    "english": "Saved to your Downloads folder as {file}. A copy is on the clipboard.",
+    "placeholders": "file",
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.exported_app",
+    "where": "Statistics export: saved only in the game's folder",
+    "english": "Saved in the game's own folder as {file}. A copy is on the clipboard.",
+    "placeholders": "file",
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.export_failed",
+    "where": "Statistics export: the file could not be written",
+    "english": "The file could not be saved. A copy is on the clipboard.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.report_title",
+    "where": "Statistics report: first line",
+    "english": "Coliseum of Parliament: run statistics",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "stats.report_player",
+    "where": "Statistics report: who played",
+    "english": "Legislator: {name}",
+    "placeholders": "name",
+    "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
   }
 ]

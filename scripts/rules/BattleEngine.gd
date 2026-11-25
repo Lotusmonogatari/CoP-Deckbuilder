@@ -958,6 +958,7 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 			_advance_to_next_opponent()
 			return
 		_finish("win", _victory_reason())
+		state.win_kind = RunStats.KIND_THRESHOLD
 		return
 
 	# Arguing an opponent's own support down to nothing ends them too, even
@@ -981,6 +982,7 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 			_advance_to_next_opponent()
 			return
 		_finish("win", _words.say("outcome.reason.all_argued_out"))
+		state.win_kind = RunStats.KIND_ZERO
 		return
 	# The mirror image of the rule above: the player's own support argued
 	# down to nothing ends the whole stage in a loss outright, not just the
@@ -1654,6 +1656,7 @@ func forfeit() -> void:
 func _finish(outcome: String, reason: String) -> void:
 	state.outcome = outcome
 	state.outcome_reason = reason
+	state.win_kind = RunStats.KIND_OTHER if outcome == "win" else ""   # the two paths that know better set it right after
 
 
 # ---------------------------------------------------------------------------
