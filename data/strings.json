@@ -4866,10 +4866,10 @@
   },
   {
     "key": "item.hosted_reveal",
-    "where": "Item result, a bill raised at a gathering you hosted",
-    "english": "Over the evening a bill comes up: {name}. It is now open to you.",
+    "where": "Item result and hosted-event result: a level revealed by a gathering you hosted",
+    "english": "Over the evening a new level comes up: {name}. It is now open to you.",
     "placeholders": "name",
-    "notes": "2026-10-23 hosting."
+    "notes": "2026-10-23 hosting. 2026-11-25: says \"level\", not \"bill\": what a gathering reveals is a level (a tester's report). Claude's draft for Cameron to reword."
   },
   {
     "key": "item.hosted_hours",

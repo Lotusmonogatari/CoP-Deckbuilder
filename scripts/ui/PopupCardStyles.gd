@@ -99,3 +99,4 @@ static func undress(button: Button) -> void:
 	button.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	button.size_flags_horizontal = Control.SIZE_FILL
 	button.custom_minimum_size = Vector2(0.0, 110.0)
+	button.autowrap_mode = TextServer.AUTOWRAP_OFF

@@ -3,7 +3,8 @@ extends GutTest
 ## line that names the place, the move counter in the run (saved, reload-safe, a place's own pace), the six sample lines in the data and
 ## the pop-up that shows one and then opens the place.
 
-var _real_balance: Dictionary
+const _KEYS := ["overheard_every", "overheard_wobble", "overheard_specific_boost", "overheard_no_repeat"]
+var _real_balance := {}
 var _real_lines: Array
 var _real_people: Array
 var _capitol := {"venue_id": "VN01", "zone": "Capitol Building", "overheard_every": null}
@@ -12,13 +13,16 @@ var _ctx := {"today": 100, "month": 4, "seasons": {"Spring": [4, 5], "Winter": [
 
 
 func before_each() -> void:
-	_real_balance = DataDB.balance.duplicate()
+	# Changed in place and put back key by key: Levers holds the same dictionary, so swapping in a copy would split the two.
+	for key: String in _KEYS:
+		_real_balance[key] = DataDB.balance[key]
 	_real_lines = DataDB.venue_lines
 	_real_people = DataDB.area_characters
 
 
 func after_each() -> void:
-	DataDB.balance = _real_balance
+	for key: String in _KEYS:
+		DataDB.balance[key] = _real_balance[key]
 	DataDB.venue_lines = _real_lines
 	DataDB.area_characters = _real_people
 

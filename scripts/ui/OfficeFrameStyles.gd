@@ -216,6 +216,10 @@ static func dress_back(button: Button, look: Dictionary) -> void:
 	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	button.custom_minimum_size = Vector2(0.0, touch_height())
 	button.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	# One line, whatever the Back button did before: a pop-up card wraps the buttons it borrows, and a wrapping Back shrinks to one letter
+	# wide and tall (a tester's report, 2026-11-24: the Marketplace's "‹ Office" disappeared after an event result over it).
+	button.autowrap_mode = TextServer.AUTOWRAP_OFF
+	button.set_meta(UiKit.ONE_LINE_META, true)
 
 
 ## Takes the frame's dress off the Back control again, so an ordinary panel gets the plain button back.

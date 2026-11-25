@@ -2172,3 +2172,10 @@ Cameron chose "every N moves" from three ways to make venues trigger lines, with
 
 Your draft places map as: the Capitol and the Capital Area and District streets are zone names; Capitol Gardens, Library, the Shotengai and the Old Shrine are their venue IDs; Sapporo Odori Park is the Sapporo Stage (VN05); the station concourse is VN06 and the tracks `VN06/tracks`. The six sample lines are in the data; the Capital Area and District zone lines are heard at the stations, the shrine and the shotengai.
 
+## Tester reports: the Marketplace's Back control, and "a bill comes up" for a level (2026-11-25; branch `feature/overheard-lines`)
+
+| Report | Cause | Fix |
+|---|---|---|
+| "The back to office button is gone" (Android, Marketplace after a hosted event result) | A pop-up card wraps the buttons it borrows (its Back). When the Marketplace was drawn again on the same panel, the Back control kept the wrapping and shrank to one letter wide and many lines tall, so it could not be seen or tapped. | `dress_back` always sets one line (and marks it so nothing wraps it again); the card's `undress` turns wrapping off. `test_frame_back_button.gd` repeats the card-then-frame sequence. |
+| "A bill opened after the district tour, but the level is District Tour" | The reveal sentence `item.hosted_reveal` said "a bill comes up"; what a gathering reveals is a level. | Now "Over the evening a new level comes up: {name}. It is now open to you." (Claude's draft wording for Cameron.) |
+
