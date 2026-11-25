@@ -19,7 +19,6 @@ stands in for every expression.
 | Shop item icons | 40 / 40 |
 | Cosmetic package icons | 9 / 9 |
 | Venue backgrounds | 19 / 19 |
-| Venue icons | 0 / 9 |
 | Venue activity icons | 16 / 18 |
 | Decision scenes with a picture to show | 0 / 10 |
 
@@ -645,20 +644,6 @@ stands in for every expression.
 | AREA_SHOTENGAI_PC02.png | Local Shotengai (PC02) | ✓ |
 | AREA_SHOTENGAI_PC03.png | Local Shotengai (PC03) | ✓ |
 | AREA_SHOTENGAI_PC04.png | Local Shotengai (PC04) | ✓ |
-
-## Venue icons — `assets/icons/`
-
-| File | For | Drawn |
-|---|---|---|
-| VEN_CAFETERIA.png | Cafeteria | ☐ |
-| VEN_LIBRARY.png | National Assembly Library | ☐ |
-| VEN_GARDENS.png | Capitol Gardens | ☐ |
-| VEN_COACH.png | Speech Coach | ☐ |
-| VEN_STAGE.png | Sapporo Stage | ☐ |
-| VEN_STATION.png | Sapporo Super Station | ☐ |
-| VEN_STATION.png | {office} Station | ☐ |
-| VEN_SHRINE.png | Old Shrine | ☐ |
-| VEN_SHOTENGAI.png | Local Shotengai | ☐ |
 
 ## Venue activity icons — `assets/icons/`
 
