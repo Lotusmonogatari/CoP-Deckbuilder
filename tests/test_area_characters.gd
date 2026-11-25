@@ -161,3 +161,15 @@ func test_a_line_with_no_character_or_another_kind_of_speaker_keeps_the_plain_ca
 	office._venues._show_heard("VN01", _heard("", "Narration again."))
 	await get_tree().process_frame
 	assert_null(panel.find_child("VenueScene", true, false), "the scene is taken down when the next line has no character")
+
+
+func test_every_area_character_has_a_picture_and_every_picture_has_a_row() -> void:
+	var ids := {}
+	for row: Dictionary in DataDB.area_characters:
+		ids[str(row["character_id"])] = true
+		assert_true(ArtLoader.exists(ArtLoader.character_path(str(row["character_id"]))), "%s has a picture" % row["character_id"])
+	var dir := DirAccess.open("res://assets/characters/area/")
+	for file: String in dir.get_files():
+		if file.ends_with(".png"):
+			assert_true(ids.has(file.trim_suffix(".png")), "%s has a row in the Area Characters tab" % file)
+
