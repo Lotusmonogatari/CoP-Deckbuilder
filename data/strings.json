@@ -11205,5 +11205,194 @@
     "english": "Continue",
     "placeholders": null,
     "notes": "2026-11-25 (overheard lines): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.seat_heading",
+    "where": "Cafeteria: the heading over the three seats",
+    "english": "Where will you sit?",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.meal_heading",
+    "where": "Cafeteria: the heading over the meals",
+    "english": "What will you eat?",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.sit",
+    "where": "Cafeteria: the button on a seat",
+    "english": "Sit here",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.order",
+    "where": "Cafeteria: the button on a meal",
+    "english": "Order this",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.gives",
+    "where": "A seat or meal: what it gives for sure",
+    "english": "Gives: {list}",
+    "placeholders": "list",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.gives_nothing",
+    "where": "A seat or meal: it gives nothing extra",
+    "english": "Nothing extra: you hear what is said around you.",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.chance",
+    "where": "A seat or meal, or the paperwork: the chance of an extra",
+    "english": "1 in {count}: {list}",
+    "placeholders": "count, list",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.opinion",
+    "where": "What a seat gives: a party's opinion of you",
+    "english": "{party} opinion of you {delta}",
+    "placeholders": "party, delta",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.xp",
+    "where": "What a seat gives: XP",
+    "english": "XP {delta}",
+    "placeholders": "delta",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.opinion_random",
+    "where": "What the mixed table may give: a random party's opinion",
+    "english": "one party's opinion of you {delta}",
+    "placeholders": "delta",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.tip_stage",
+    "where": "What a seat may give: a rhetoric tip about a room",
+    "english": "a rhetoric tip about a room",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.tip_opponent",
+    "where": "What a seat may give: a rhetoric tip about one of the party's members",
+    "english": "a rhetoric tip about one of their members",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.or_many",
+    "where": "Between three or more groups: one of them gets the standing",
+    "english": "{list}, or {last}",
+    "placeholders": "list, last",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.result_tag",
+    "where": "The lunch result card tag",
+    "english": "Lunch",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.result_seat",
+    "where": "The lunch result: where you sat",
+    "english": "Seat: {seat}",
+    "placeholders": "seat",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.result_meal",
+    "where": "The lunch result: what you ate",
+    "english": "Meal: {meal}",
+    "placeholders": "meal",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.result_hour",
+    "where": "The lunch result: the time it took",
+    "english": "It took 1 hour.",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.result_nothing",
+    "where": "The lunch result when nothing extra came up",
+    "english": "Nothing extra came of it.",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.result_continue",
+    "where": "The lunch result: go on to the conversation",
+    "english": "Listen in",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.tip_stage_line",
+    "where": "The lunch result: a tip about a room",
+    "english": "A rhetoric tip: the audience in the {stage} responds to {phrase}.",
+    "placeholders": "stage, phrase",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.tip_opponent_line",
+    "where": "The lunch result: a tip about a party member",
+    "english": "A rhetoric tip: {name} responds to {phrase}.",
+    "placeholders": "name, phrase",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "paperwork.button",
+    "where": "The Catch Up on Paperwork button",
+    "english": "Catch Up on Paperwork · {hours} h",
+    "placeholders": "hours",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "paperwork.tag",
+    "where": "The paperwork result card tag",
+    "english": "Paperwork",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "paperwork.back",
+    "where": "The paperwork result card button",
+    "english": "Back to the Office",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "paperwork.cost",
+    "where": "The paperwork card: what it costs",
+    "english": "It takes {hours} hour. Nothing else is spent.",
+    "placeholders": "hours",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "choice.or_two",
+    "where": "Between two groups: one of them gets the standing",
+    "english": "{first} or {second}",
+    "placeholders": "first, second",
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
+  },
+  {
+    "key": "paperwork.do",
+    "where": "The paperwork card: the button",
+    "english": "Do the paperwork",
+    "placeholders": null,
+    "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
   }
 ]

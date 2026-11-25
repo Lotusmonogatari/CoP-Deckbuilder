@@ -10,6 +10,11 @@ var _open_coach_page: Callable
 var _on_spent: Callable
 var _office: Control
 var _step_button: Button
+## Catch Up on Paperwork, beside Step out (2026-11-25): an hour at the desk with a small chance of a standing point.
+var _paperwork_button: Button
+## What to do when the lunch result card closes (listen in), instead of redrawing the venue.
+var _after_result: Callable
+var _paperwork_panel: Overlay
 var _map_panel: Overlay
 var _venue_panel: Overlay
 var _line_panel: Overlay
@@ -47,6 +52,8 @@ func setup(office: Control, after_button: Button, open_coach_page: Callable, on_
 	_line_panel.closed.connect(_clear_scene)
 	_tips_panel = _panel("TipsPanel")
 	_tracks_panel = _panel("StationTracksPanel")
+	_paperwork_panel = _panel("PaperworkPanel")
+	_paperwork_panel.confirmed.connect(_paperwork_confirmed)
 	_result_panel = _panel("VenueResultPanel")
 	_result_panel.closed.connect(_on_result_closed)
 	_library = LibraryController.new()
@@ -58,8 +65,24 @@ func setup(office: Control, after_button: Button, open_coach_page: Callable, on_
 	_step_button.custom_minimum_size = after_button.custom_minimum_size
 	_step_button.size_flags_horizontal = after_button.size_flags_horizontal
 	_step_button.pressed.connect(show_map)
-	after_button.get_parent().add_child(_step_button)
-	after_button.get_parent().move_child(_step_button, after_button.get_index() + 1)
+	_paperwork_button = Button.new()
+	_paperwork_button.name = "PaperworkButton"
+	_paperwork_button.set_meta("party_outline", true)
+	_paperwork_button.custom_minimum_size = after_button.custom_minimum_size
+	_paperwork_button.size_flags_horizontal = after_button.size_flags_horizontal
+	_paperwork_button.pressed.connect(_do_paperwork)
+	# Step out and Catch Up on Paperwork share one row under the Office's buttons (Cameron's idea: the paperwork button beside Step out).
+	var row := HBoxContainer.new()
+	row.name = "StepOutRow"
+	row.add_theme_constant_override("separation", 16)
+	after_button.get_parent().add_child(row)
+	after_button.get_parent().move_child(row, after_button.get_index() + 1)
+	for button: Button in [_step_button, _paperwork_button]:
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		# Each takes half the row and wraps its words, so the two never push the Office wider than the screen at the large text size.
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.custom_minimum_size.x = 0.0
+		row.add_child(button)
 	refresh_button()
 
 
@@ -77,6 +100,100 @@ func refresh_button() -> void:
 	var why := GameState.step_out_refusal()
 	_step_button.disabled = not why.is_empty()
 	_step_button.text = Text.say("venue.step_out") if why.is_empty() else "%s · %s" % [Text.say("venue.step_out"), why]
+	_refresh_paperwork()
+
+
+func _refresh_paperwork() -> void:
+	if _paperwork_button == null:
+		return
+	var activity := GameState.office_activity()
+	_paperwork_button.visible = not activity.is_empty()
+	if activity.is_empty():
+		return
+	var why := GameState.activity_refusal(str(activity["activity_id"]))
+	var label := Text.say("paperwork.button", {"hours": int(VenueRules.visit_cost(activity)["hours"])})
+	_paperwork_button.disabled = not why.is_empty()
+	_paperwork_button.text = label if why.is_empty() else "%s · %s" % [label, why]
+
+
+# --- Seats and meals (2026-11-25) -----------------------------------------------------------------------------------------------------
+# Eat with Colleagues asks where to sit (three seats drawn for the visit) and what to eat; ordering takes the hour, gives what the two choices
+# give and shows a result card, and Listen in then opens the conversation as before.
+
+func _show_seats(venue_id: String) -> void:
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = [UiKit.heading(Text.say("choice.seat_heading"))]
+	for row: Dictionary in GameState.seat_options(venue_id):
+		rows.append(VenueChoiceViews.card(look, row, Text.say("choice.sit"), _on_seat.bind(venue_id)))
+	_open_choice_frame(venue_id, rows)
+
+
+func _on_seat(seat_id: String, venue_id: String) -> void:
+	var look := OfficeFrameStyles.look()
+	var rows: Array[Control] = [UiKit.heading(Text.say("choice.meal_heading"))]
+	for row: Dictionary in GameState.meal_options(venue_id):
+		rows.append(VenueChoiceViews.card(look, row, Text.say("choice.order"), _on_meal.bind(venue_id, seat_id)))
+	_open_choice_frame(venue_id, rows)
+
+
+func _open_choice_frame(venue_id: String, rows: Array[Control]) -> void:
+	var venue := GameState.venue_row(venue_id)
+	var frame := OfficeScreenFrame.new()
+	frame.setup({"title": str(venue.get("name", venue_id)), "subtitle": str(venue.get("name_jp", "")), "chips": _chips(), "rows": rows})
+	_venue_panel.open_frame(frame, Text.say("venue.screen_back"))
+
+
+func _on_meal(meal_id: String, venue_id: String, seat_id: String) -> void:
+	var done := GameState.do_choice_visit(venue_id, seat_id, meal_id)
+	if not bool(done["ok"]):
+		show_venue(venue_id)
+		return
+	_on_spent.call()
+	refresh_button()
+	_venue_panel.close()
+	_current_venue = venue_id
+	_result_venue = ""
+	_after_result = _hear.bind(venue_id)
+	var body: Array[Control] = [UiKit.line(Text.say("choice.result_seat", {"seat": str(done["seat"])})), UiKit.line(Text.say("choice.result_meal", {"meal": str(done["meal"])}))]
+	var effects: Array = done["effects"]
+	if effects.is_empty():
+		body.append(UiKit.line(Text.say("choice.result_nothing"), "SmallLabel"))
+	for line: String in effects:
+		body.append(UiKit.line(line, "SmallLabel"))
+	body.append(UiKit.line(Text.say("choice.result_hour"), "SmallLabel"))
+	_result_panel.open_card({"tag": Text.say("choice.result_tag"), "meta": str(GameState.venue_row(venue_id).get("name", "")), "body": body}, "",
+		Text.say("choice.result_continue"))
+
+
+## Catch Up on Paperwork asks first, saying what it costs and the odds of an extra (the information standards), then does it.
+func _do_paperwork() -> void:
+	var activity := GameState.office_activity()
+	if activity.is_empty():
+		return
+	var odds := GameState.chance_line(activity)
+	var body: Array[Control] = [UiKit.line(Text.say("paperwork.cost", {"hours": int(VenueRules.visit_cost(activity)["hours"])}))]
+	if not odds.is_empty():
+		body.append(UiKit.line(odds))
+	_paperwork_panel.open_card({"tag": Text.say("paperwork.tag"), "meta": str(activity.get("name", "")), "body": body}, Text.say("paperwork.do"),
+		Text.say("ui.back"))
+
+
+func _paperwork_confirmed() -> void:
+	var activity := GameState.office_activity()
+	if activity.is_empty():
+		return
+	var done := GameState.do_activity(str(activity["activity_id"]))
+	if not bool(done["ok"]):
+		refresh_button()
+		return
+	_on_spent.call()
+	refresh_button()
+	_result_venue = ""
+	_after_result = Callable()
+	var body: Array[Control] = [UiKit.line(str(done["text"]))]
+	for line: String in done["effects"]:
+		body.append(UiKit.line(line, "SmallLabel"))
+	_result_panel.open_card({"tag": Text.say("paperwork.tag"), "meta": str(activity.get("name", "")), "body": body}, "", Text.say("paperwork.back"))
 
 
 # --- The place map -----------------------------------------------------------------------------------------------------------------
@@ -243,6 +360,14 @@ func _on_activity(venue_id: String) -> void:
 		_map_panel.close()
 		_open_coach_page.call()
 		return
+	# A venue with seats and meals (the Cafeteria) asks where to sit and what to eat first; the hour is taken when the meal is ordered.
+	if GameState.venue_has_choices(venue_id):
+		var why := GameState.venue_visit_refusal(venue_id)
+		if not why.is_empty():
+			show_venue(venue_id)
+			return
+		_show_seats(venue_id)
+		return
 	var visit := GameState.venue_visit(venue_id)
 	if not bool(visit["ok"]):
 		show_venue(venue_id)
@@ -292,6 +417,11 @@ func _on_do_activity(activity_id: String) -> void:
 
 ## Closing the result card draws the venue's screen again, so the counts and limits are today's.
 func _on_result_closed() -> void:
+	if _after_result.is_valid():
+		var next := _after_result
+		_after_result = Callable()
+		next.call()
+		return
 	if not _result_venue.is_empty():
 		var venue_id := _result_venue
 		_result_venue = ""
@@ -410,6 +540,7 @@ func _show_tracks(venue_id: String) -> void:
 
 ## Every venue screen closed: the Office calls this when a trip begins, so the other office is what shows when the card fades.
 func close_all() -> void:
+	_after_result = Callable()
 	_result_venue = ""   # a trip leaves; the venue screen is not drawn again behind it
 	_library.close_all()
 	for panel: Overlay in [_result_panel, _tracks_panel, _line_panel, _venue_panel, _map_panel, _tips_panel]:

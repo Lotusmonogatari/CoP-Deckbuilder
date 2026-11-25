@@ -23,6 +23,9 @@ extends Node
 ## enough that a slightly shaky tap is still a tap.
 const DRAG_START := 24.0
 
+## A touch-panning deadzone no finger can cross, in pixels (see `attach`).
+const NO_BUILT_IN_PAN := 100000
+
 ## How far one notch of a mouse wheel moves the list, in pixels. Godot's own
 ## default wheel step is small and fixed regardless of the list, so a tall
 ## panel (Backing, with 31 modifiers to scroll past) reads as far slower
@@ -57,6 +60,11 @@ static func attach(scroll: ScrollContainer, vertical: bool = true) -> DragScroll
 	helper.name = "DragScroll"
 	helper._scroll = scroll
 	helper._vertical = vertical
+	# This helper does the drag-scrolling (on a desktop, a phone and in the click tests alike). Godot's own touch panning would also run on a
+	# phone: it takes a finger's drag from a task chip or a card before the chip's own drag-and-drop can start (a tester's report, 2026-11-24:
+	# "the staff assignment drag and drop was not working"), and it would scroll the list a second time. Its deadzone is made too wide to ever
+	# be crossed, which turns it off and leaves the one scroller.
+	scroll.scroll_deadzone = NO_BUILT_IN_PAN
 	scroll.add_child(helper, false, Node.INTERNAL_MODE_BACK)
 	return helper
 

@@ -141,6 +141,33 @@ def overheard_tests(expect):
     expect(any("VL913" in w for w, m in run_overheard([line("VL913", pool="cafeteria", where="VN01")]).warnings), "Where on a non-overheard line is reported")
 
 
+def run_choices(rows):
+    report = Report()
+    export_data.check_venue_choices({"venue_choices": rows, "venues": [{"venue_id": "VN01"}], "parties": [{"party_id": "PT01"}]}, report)
+    return report
+
+
+def seat(cid, **o):
+    base = {"choice_id": cid, "venue_id": "VN01", "step": "seat", "name": "A seat", "party": None, "chance": None, "extra_rewards": None,
+            "extra_party_opinion": None, "extra_tip": None, "weight": None}
+    base.update(o)
+    return base
+
+
+def choice_tests(expect):
+    good = [seat("VC01"), seat("VC02"), seat("VC03"), seat("VC20", step="meal")]
+    expect(not run_choices(good).errors, "three seats and a meal pass")
+    expect(any("at least 3" in m for w, m in run_choices(good[:2] + good[3:]).errors), "a venue with fewer than three seats fails")
+    expect(any("at least one meal" in m for w, m in run_choices(good[:3]).errors), "seats with no meal fail")
+    expect(any("VC30" in w and "Step" in m for w, m in run_choices(good + [seat("VC30", step="dessert")]).errors), "an unknown Step fails")
+    expect(any("VC31" in w and "Venues tab" in m for w, m in run_choices(good + [seat("VC31", venue_id="VN99")]).errors), "an unknown venue fails")
+    expect(any("VC32" in w and "party" in m.lower() for w, m in run_choices(good + [seat("VC32", party="PT99")]).errors), "an unknown party fails")
+    expect(any("VC33" in w and "Chance" in m for w, m in run_choices(good + [seat("VC33", extra_tip="stage")]).errors), "an extra with no Chance fails")
+    expect(any("VC34" in w and "stage or opponent" in m for w, m in run_choices(good + [seat("VC34", extra_tip="gossip", chance=3)]).errors), "an unknown Extra Tip fails")
+    expect(any("VC35" in w and "Party" in m for w, m in run_choices(good + [seat("VC35", extra_tip="opponent", chance=3)]).errors), "an opponent tip with no Party fails")
+    expect(not run_choices(good + [seat("VC36", party="PT01", extra_tip="opponent", chance=3)]).errors, "an opponent tip with a Party passes")
+
+
 def main():
     failures = []
 
@@ -160,6 +187,7 @@ def main():
     library_tests(expect)
     area_tests(expect)
     overheard_tests(expect)
+    choice_tests(expect)
     print("")
     print("VENUE EXPORTER TEST: " + ("PASS" if not failures else "FAIL"))
     return 1 if failures else 0
