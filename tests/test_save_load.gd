@@ -203,20 +203,96 @@ func test_an_unreadable_save_is_reported_and_its_backup_is_used() -> void:
 	SaveManager.delete_save(path)
 
 
-# The manual backup slot is its own file: writing it never touches the main
-# save, and restoring it brings the run back (2026-10-15).
-func test_the_manual_backup_is_a_separate_slot_that_restores() -> void:
-	var was_enabled := SaveManager.enabled
+# Two save files (2026-11-25, Cameron): the main file is written on every save, the second on every other save (the first, third ...).
+const SCRATCH := "user://test_two_files.json"
+
+
+func _two_file_setup() -> void:
 	SaveManager.enabled = true
-	SaveManager.delete_save(SaveManager.MANUAL_PATH)
+	SaveManager.save_path = SCRATCH
+	SaveManager._saves_made = 0
+	SaveManager.delete_save(SCRATCH)
+	SaveManager.delete_save(SaveManager.second_path())
 	GameState.start_new_run("PC01")
-	GameState.xp = 77
-	assert_false(SaveManager.has_backup())
-	assert_true(SaveManager.backup_now())
-	assert_true(SaveManager.has_backup())
-	GameState.xp = 5
-	assert_true(SaveManager.restore_backup())
-	assert_eq(GameState.xp, 77)
-	SaveManager.delete_save(SaveManager.MANUAL_PATH)
-	SaveManager.delete_save()
+	GameState.run_is_live = true
+
+
+func _two_file_cleanup(was_enabled: bool) -> void:
+	SaveManager.delete_save(SCRATCH)
+	SaveManager.delete_save(SaveManager.second_path())
+	SaveManager.save_path = SaveManager.SAVE_PATH
 	SaveManager.enabled = was_enabled
+
+
+func _xp_in(path: String) -> int:
+	return int(SaveManager.read_save(path)["xp"])
+
+
+func test_the_second_path_sits_beside_the_main_one() -> void:
+	assert_eq(SaveManager.second_path(), "user://savegame.second.json", "for the real save")
+	SaveManager.save_path = SCRATCH
+	assert_eq(SaveManager.second_path(), "user://test_two_files.second.json")
+	SaveManager.save_path = SaveManager.SAVE_PATH
+
+
+func test_the_main_file_is_written_every_time_and_the_second_every_other_time() -> void:
+	var was_enabled := SaveManager.enabled
+	_two_file_setup()
+	GameState.xp = 10
+	assert_true(SaveManager.save_both())
+	assert_eq(_xp_in(SCRATCH), 10)
+	assert_eq(_xp_in(SaveManager.second_path()), 10, "the first save writes both files")
+	GameState.xp = 20
+	SaveManager.save_both()
+	assert_eq(_xp_in(SCRATCH), 20)
+	assert_eq(_xp_in(SaveManager.second_path()), 10, "the second save leaves the second file one behind")
+	GameState.xp = 30
+	SaveManager.save_both()
+	assert_eq(_xp_in(SCRATCH), 30)
+	assert_eq(_xp_in(SaveManager.second_path()), 30, "the third writes both again")
+	GameState.xp = 40
+	SaveManager.autosave()
+	assert_eq(_xp_in(SCRATCH), 40)
+	assert_eq(_xp_in(SaveManager.second_path()), 30, "autosave follows the same rhythm")
+	_two_file_cleanup(was_enabled)
+
+
+func test_either_file_loads_and_becomes_the_main_save_with_an_undo_copy() -> void:
+	var was_enabled := SaveManager.enabled
+	_two_file_setup()
+	SaveManager.delete_save(SaveManager.UNDO_PATH)
+	GameState.xp = 10
+	SaveManager.save_both()
+	GameState.xp = 20
+	SaveManager.save_both()   # main 20, second 10
+	assert_true(SaveManager.has_second())
+	GameState.xp = 99
+	assert_true(SaveManager.restore_second())
+	assert_eq(GameState.xp, 10, "the second file's run is back")
+	assert_eq(_xp_in(SCRATCH), 10, "and it is now the main save")
+	assert_true(SaveManager.has_undo())
+	assert_true(SaveManager.restore_undo())
+	assert_eq(GameState.xp, 99, "undo returns the run that was replaced")
+	assert_true(SaveManager.restore_main())
+	assert_eq(GameState.xp, 99, "the main file holds what undo put back")
+	SaveManager.delete_save(SaveManager.UNDO_PATH)
+	_two_file_cleanup(was_enabled)
+
+
+func test_an_old_manual_backup_is_adopted_as_the_second_save() -> void:
+	if FileAccess.file_exists(SaveManager.LEGACY_MANUAL_PATH):
+		pending("the real manual backup file is present on this machine; not touching it")
+		return
+	var was_enabled := SaveManager.enabled
+	_two_file_setup()
+	GameState.xp = 55
+	assert_true(SaveManager.save_game(SaveManager.LEGACY_MANUAL_PATH))
+	SaveManager.delete_save(SaveManager.second_path())
+	SaveManager._adopt_legacy_backup()
+	assert_eq(_xp_in(SaveManager.second_path()), 55)
+	GameState.xp = 77
+	SaveManager.save_game(SaveManager.second_path())
+	SaveManager._adopt_legacy_backup()
+	assert_eq(_xp_in(SaveManager.second_path()), 77, "an existing second save is never replaced")
+	SaveManager.delete_save(SaveManager.LEGACY_MANUAL_PATH)
+	_two_file_cleanup(was_enabled)

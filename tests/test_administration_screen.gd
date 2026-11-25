@@ -33,7 +33,7 @@ func _actions() -> Dictionary:
 	return {
 		"redraw": _note.bind("redraw"), "open_cosmetics": _note.bind("cosmetics"),
 		"open_how_to_play": _note.bind("how_to"), "open_characters": _note.bind("characters"), "open_statistics": _note.bind("statistics"),
-		"backup_now": _note.bind("backup"), "backup_restore": _note.bind("restore"), "backup_undo": _note.bind("undo"),
+		"load_main": _note.bind("main"), "load_second": _note.bind("second"), "backup_undo": _note.bind("undo"),
 		"new_game": _note.bind("new_game"),
 		"pressure": {"title": "Political Pressure", "now": "Now: Standard", "blurb": "Blurb", "button": button},
 	}
@@ -76,15 +76,17 @@ func test_values_follow_the_settings_when_they_change() -> void:
 
 func test_every_control_the_old_menu_had_is_still_there_under_its_old_name() -> void:
 	var rows := _rows(AdministrationModel.build(_actions()))
-	for node: String in ["TextSizeButton", "ImageScrollButton", "ImagePanButton", "CosmeticsButton", "BackupNowButton",
+	for node: String in ["TextSizeButton", "ImageScrollButton", "ImagePanButton", "CosmeticsButton", "SaveSlotsNote",
 			"NewGameMenuButton", "HowToPlayButton", "CharactersButton", "StatisticsButton"]:
 		assert_true(rows.has(node), node + " is on the screen")
 
 
-func test_load_and_undo_follow_the_save_exactly_as_before() -> void:
+func test_each_save_file_and_undo_show_only_when_there_is_something_to_load() -> void:
 	var rows := _rows(AdministrationModel.build(_actions()))
-	assert_eq(rows.has("BackupRestoreButton"), SaveManager.has_backup())
+	assert_eq(rows.has("SaveMainButton"), SaveManager.has_save())
+	assert_eq(rows.has("SaveSecondButton"), SaveManager.has_second())
 	assert_eq(rows.has("BackupUndoButton"), SaveManager.has_undo())
+	assert_false(rows.has("BackupNowButton"), "no manual Save Game row any more")
 
 
 func test_the_appearance_rows_name_what_is_equipped() -> void:

@@ -2273,3 +2273,27 @@ Reports: the staff assignment drag and drop still did not work on a phone, and (
 | Tests | `test_task_chip_tap.gd` replaces `test_task_chip_drag.gd`; two gift cases. |
 
 Text rows are drafts for Cameron to reword.
+## A blank run can no longer be saved over a real one at the title screen (2026-11-25, a tester's report; branch `fix/save-overwrite-at-title`)
+
+Report (Android): "game closed on the cafeteria listening scene. rebooted it and pressed continue but the run reset to day one."
+
+| What was wrong | What changed |
+|---|---|
+| At boot the game already holds a blank default run (`GameState._ready` picks the first protagonist). The guard before every save only asked for a protagonist, which is never empty, so the phone pausing the game at the title screen, or any title-screen button, could write that blank run over the real save before Continue loaded it. A second boot then found day one. | `GameState.run_is_live` is false until a run is really started or loaded (`start_new_run`, which loading uses too). `SaveManager` writes nothing (autosave, button-press save, checkpoint, manual backup) until it is true. |
+| Tests | `test_save_not_overwritten_at_boot.gd` (5): a pause, a button press, a checkpoint and a backup at the title screen leave the save alone; Continue loads it and saving then works; a new game makes saving live. |
+
+This is the cause the code shows; I could not read the tester's lost save, so it is the likely, not a proven, explanation of that report. A run already overwritten cannot be brought back (the manual backup, if one was made, still can).
+
+## Two save files (2026-11-25, Cameron; branch `feature/two-save-files`)
+
+Cameron's request: a report on the game closing cannot be run (the game restarts), so keep two saves: "saves in the main file each time but skips every other save in the secondary file", both reachable in Administration. His answers: the second is a **copy of the current run**, and the manual backup is **replaced** by the two files.
+
+| Piece | What it does |
+|---|---|
+| Main file | `user://savegame.json`, written on every save (as before). |
+| Second file | `user://savegame.second.json`, written on the 1st, 3rd, 5th ... save of a session; so it is the same run or one save behind. Its path follows the main path (`SaveManager.second_path`), so tests never touch a real one. |
+| Administration | The Save group has a short "How saving works" note, **Main save · YY.MM.DD HH:MM** and **Second save · ...** rows (each only once its file exists) that load that file after a confirm showing both runs, and Undo as before. Loading makes that run the main save; the other file is left alone. |
+| Removed | The manual "Save Game" button and its overwrite question, and `SaveManager.backup_now/restore_backup/has_backup`. A manual backup file from an older build is copied into the second save once, when there is no second save. |
+| Tests | five two-file cases in `test_save_load.gd`; the administration, boot and save-point tests follow. |
+
+Text rows nothing asks for now (listed in `CLEANUP_CANDIDATES.md`): `office.backup_now`, `office.backup_restore`, `office.backup_made`, `office.backup_failed`, `office.backup_overwrite`, `office.backup_overwrite_confirm`, `admin.chip_save`. Nothing was deleted.

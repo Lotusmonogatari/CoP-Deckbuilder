@@ -241,7 +241,12 @@ func _run() -> void:
 	var parts := screen.split(":")
 	match parts[0]:
 		"administration":
+			# Both save files written (as after two saves), so the two Load rows show; removed again below.
+			SaveManager.save_game()
+			SaveManager.save_game(SaveManager.second_path())
 			office._show_administration_menu()
+			SaveManager.delete_save()
+			SaveManager.delete_save(SaveManager.second_path())
 			menu = office.get_node("AdministrationMenuPanel")
 		"district":
 			# district:PC02 — the District office's picture for that protagonist

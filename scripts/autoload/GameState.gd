@@ -18,6 +18,12 @@ var protagonist_id: String = ""
 ## sets it; tests and the editor never do, so they start as the default.
 var awaiting_new_game := false
 
+## False from boot until a run is really started or loaded (start_new_run, which load_save uses too). At boot this object already holds a
+## blank default run, so without this flag the phone pausing the game, or a title-screen button, would save that blank run over the
+## player's real save before Continue was pressed (a tester's report, 2026-11-25: Continue brought back day one). SaveManager never
+## writes while it is false.
+var run_is_live := false
+
 ## True while a stage is being fought. A save is not taken then — the last
 ## one, from the stage boundary, is the one to come back to.
 var mid_stage := false
@@ -649,6 +655,7 @@ func start_new_run(player_id: String, pressure: String = "standard") -> bool:
 		office_location = Offices.CAPITOL
 	level_travel = {}
 	awaiting_new_game = false
+	run_is_live = true
 	grant_default_ui_style()
 	_codex_start()
 	return true
