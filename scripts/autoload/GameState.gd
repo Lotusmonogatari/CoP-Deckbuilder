@@ -266,6 +266,8 @@ var staff_use_notes: Array = []
 var staff_taste_known: Dictionary = {}
 ## What the gifts given at the last confirm did (shown once; not saved).
 var staff_gift_notes: Array = []
+## The same gifts as scenes, so the Office can show who got what: [{"staff_id", "item_id", "text"}] (shown once; not saved).
+var staff_gift_scenes: Array = []
 
 ## Level IDs the player has paid XP to unlock — only meaningful once
 ## rules.json's "level_gating_enabled" is true. A level whose relevant
@@ -1885,13 +1887,17 @@ func _give_gift(staff_id: String, item_id: String) -> void:
 	var key := "assign.gift_loved" if (taste["likes"] as Array).has(item_id) \
 		else ("assign.gift_disliked" if (taste["dislikes"] as Array).has(item_id) else "assign.gift_fine")
 	var name := str(DataDB.get_staff(staff_id).get("name", staff_id))
+	var item := str(DataDB.get_shop_item(item_id).get("name", item_id))
+	var said := ""
 	match key:
 		"assign.gift_loved":
-			staff_gift_notes.append(Text.say("assign.gift_loved", {"name": name, "count": "%+d" % change}))
+			said = Text.say("assign.gift_loved", {"name": name, "item": item, "count": "%+d" % change})
 		"assign.gift_disliked":
-			staff_gift_notes.append(Text.say("assign.gift_disliked", {"name": name, "count": "%+d" % change}))
+			said = Text.say("assign.gift_disliked", {"name": name, "item": item, "count": "%+d" % change})
 		_:
-			staff_gift_notes.append(Text.say("assign.gift_fine", {"name": name, "count": "%+d" % change}))
+			said = Text.say("assign.gift_fine", {"name": name, "item": item, "count": "%+d" % change})
+	staff_gift_notes.append(said)
+	staff_gift_scenes.append({"staff_id": staff_id, "item_id": item_id, "text": said})
 
 
 ## Blocks of a person's day already taken (tasks and delegated work).
@@ -1961,6 +1967,7 @@ func staff_confirm_day() -> String:
 	# The items given out are used up now: gifts are handed over, and an item in
 	# the Office box leaves a change for the next pool.
 	staff_gift_notes = []
+	staff_gift_scenes = []
 	staff_use_notes = []
 	for id: String in staff_day_items.keys():
 		var item_id := str(staff_day_items[id])

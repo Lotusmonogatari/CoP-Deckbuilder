@@ -192,3 +192,19 @@ func test_a_weekend_day_has_no_rank_bonus() -> void:
 	GameState.upgrade_staff_member("SF04")
 	GameState.staff_day_blocks_total = 4   # a weekend day
 	assert_eq(GameState.staff_day_hours("SF04"), 4)
+
+
+func test_a_gift_is_told_as_a_scene_with_the_person_and_the_gift() -> void:
+	GameState.start_new_run("PC01")
+	var member: Dictionary = DataDB.staff[0]
+	GameState.staff_hired = {str(member["role"]): {"staff_id": str(member["staff_id"]), "tier": 0}}
+	GameState.staff_gift_notes = []
+	GameState.staff_gift_scenes = []
+	GameState._give_gift(str(member["staff_id"]), "SH04")
+	assert_eq(GameState.staff_gift_scenes.size(), 1)
+	var scene: Dictionary = GameState.staff_gift_scenes[0]
+	assert_eq(scene["staff_id"], str(member["staff_id"]))
+	assert_eq(scene["item_id"], "SH04")
+	assert_string_contains(str(scene["text"]), str(DataDB.get_shop_item("SH04").get("name", "")), "the words name the gift")
+	assert_string_contains(str(scene["text"]), str(member["name"]), "and the person")
+	assert_eq(GameState.staff_gift_notes, [scene["text"]])

@@ -41,14 +41,14 @@ func test_with_no_staff_the_days_tasks_can_be_read_but_not_given_out() -> void:
 	_fix_pool()
 	var rows := StaffAssignmentsView.rows(_handlers())
 	var chips := 0
-	var draggable := 0
+	var giveable := 0
 	for row: Control in rows:
 		for chip in row.find_children("Task_*", "TaskChip", true, false):
 			chips += 1
-			if (chip as TaskChip).draggable:
-				draggable += 1
+			if (chip as TaskChip).giveable:
+				giveable += 1
 	assert_eq(chips, 8, "the tasks are shown")
-	assert_eq(draggable, 0, "but nobody can be given one")
+	assert_eq(giveable, 0, "but nobody can be given one")
 	_free(rows)
 
 

@@ -330,6 +330,22 @@ func _popup(office: Node, kind: String) -> Overlay:
 					office._present_event(str(event.get("event_id", "")), true)
 					break
 			return office.get_node("EventPanel")
+		"gift":
+			# popup:gift: a gift handed to a staff member after Confirm (2026-11-25): the person beside the gift, the answer as narration
+			var member: Dictionary = DataDB.staff[0]
+			GameState.staff_hired = {str(member["role"]): {"staff_id": str(member["staff_id"]), "tier": 0}}
+			GameState.staff_gift_notes = []
+			GameState.staff_gift_scenes = []
+			GameState._give_gift(str(member["staff_id"]), "SH04")
+			office._staff_report_panel.open_card({"tag": Text.say("assign.gift_title"), "body": [StaffAssignmentsView.gift_scene(GameState.staff_gift_scenes[0])]}, "", Text.say("assign.close"))
+			return office._staff_report_panel
+		"assignments":
+			var worker: Dictionary = DataDB.staff[0]
+			GameState.staff_hired = {str(worker["role"]): {"staff_id": str(worker["staff_id"]), "tier": 0}}
+			GameState.inventory["SH04"] = 1
+			GameState.calendar["week"] = 9
+			office._show_staff_assignments()
+			return office._assignments_panel
 		"week":
 			GameState.calendar = {"week": 3, "phase": "work", "hours": 40}
 			office._show_week_over_if_due()

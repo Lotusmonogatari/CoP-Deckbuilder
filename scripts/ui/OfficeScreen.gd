@@ -4219,9 +4219,9 @@ func _tier_label(entry: Dictionary, current_tier: int) -> String:
 # Staff Assignments (Cameron, 2026-11-16): the day's tasks, given to staff.
 
 func _assignment_handlers() -> Dictionary:
-	return {"popup": _on_task_tapped, "dropped": _on_task_given, "profile": _show_staff_profile,
+	return {"popup": _on_task_tapped, "profile": _show_staff_profile,
 		"confirm": _on_confirm_day, "assign": _on_task_given_from_popup, "unassign": _on_task_taken_back,
-		"item_dropped": _on_item_given, "assign_item": _on_item_given_from_popup, "unassign_item": _on_item_taken_back}
+		"assign_item": _on_item_given_from_popup, "unassign_item": _on_item_taken_back}
 
 
 func _show_staff_assignments() -> void:
@@ -4296,14 +4296,20 @@ func _on_confirm_day() -> void:
 	GameState.staff_confirm_day()
 	SaveManager.autosave()
 	_show_staff_assignments()
-	# Gifts handed over are answered once, in words (Cameron, 2026-11-16).
+	# Gifts handed over are answered once (Cameron, 2026-11-16): each as a scene, the person beside the gift and the answer as narration
+	# beneath them (a tester's report, 2026-11-25: the plain note did not say what it was about).
 	if not GameState.staff_gift_notes.is_empty():
-		var rows: Array[Control] = []
+		var body: Array[Control] = []
+		var told: Array[String] = []
+		for scene: Variant in GameState.staff_gift_scenes:
+			body.append(StaffAssignmentsView.gift_scene(scene as Dictionary))
+			told.append(str((scene as Dictionary)["text"]))
 		for note: Variant in GameState.staff_gift_notes:
-			rows.append(UiKit.line(str(note)))
+			if not told.has(str(note)):
+				body.append(UiKit.line(str(note)))
 		GameState.staff_gift_notes = []
-		_staff_report_panel.top_aligned = true
-		_staff_report_panel.open(Text.say("assign.gift_title"), rows)
+		GameState.staff_gift_scenes = []
+		_staff_report_panel.open_card({"tag": Text.say("assign.gift_title"), "body": body}, "", Text.say("assign.close"))
 
 
 ## The day just ended, once, when the Office is free to show it.

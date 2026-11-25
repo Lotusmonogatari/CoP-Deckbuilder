@@ -2260,3 +2260,16 @@ Still to supply: real Stage Events rows; whether VEN02/VEN04/VEN05's roles and S
 | Times going to each place; times each activity was done | each Go press; the venues' own activity counts |
 
 Saved with the run, cleared by New Game, and an older save loads with none. **Administration, Your Statistics** shows them and **Export report** saves a text file (game folder and, on a phone, Downloads) and copies it to the clipboard. Tests: `test_run_stats.gd` (16) and four win-kind cases in `test_battle_engine.gd`. All wording is `stats.*` Text rows, a draft for Cameron.
+
+## Staff assignments: no dragging, and gifts show who got what (2026-11-25, a tester's reports; branch `fix/staff-assign-tap`)
+
+Reports: the staff assignment drag and drop still did not work on a phone, and (Wording report, Android) after a gift the "Office notes" pop-up said only "Miharu Daitani is glad of it. Loyalty +4." with no clear connection to the gift.
+
+| Change | Detail |
+|---|---|
+| No dragging | A task or item card is only tapped: its pop-up lists the people (and, for an Office item, the Office box). `TaskChip` lost its drag code and `TaskBox` its drop code, so a drag can no longer swallow a tap. |
+| Wording | The hint, the empty-box lines, the "Choose a person" heading and a new hint over the items say "tap, then choose in the window that opens". |
+| Gift scene | After Confirm, each gift is a pop-up card showing the person beside the gift's picture, with the answer as narration under them ("You hand <item> to <name>. <name> is glad of it. Loyalty +4."). |
+| Tests | `test_task_chip_tap.gd` replaces `test_task_chip_drag.gd`; two gift cases. |
+
+Text rows are drafts for Cameron to reword.

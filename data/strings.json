@@ -7114,7 +7114,7 @@
   {
     "key": "assign.hint",
     "where": "Staff Assignments, how it works",
-    "english": "Drag a task into a person's box, or tap it to read it and choose who does it. The frame shows how well they suit it: gold strong, grey fair, red poor. Press Confirm to lock in the day.",
+    "english": "Tap a task to read it, then choose who does it in the window that opens. The frame shows how well they suit it: gold strong, grey fair, red poor. Press Confirm to lock in the day.",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7198,7 +7198,7 @@
   {
     "key": "assign.box_empty",
     "where": "Staff Assignments, an empty task box",
-    "english": "Drop a task here",
+    "english": "No task given yet",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7338,7 +7338,7 @@
   {
     "key": "assign.give_heading",
     "where": "Task popup, who can do it",
-    "english": "Assign To",
+    "english": "Choose a person",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -7632,22 +7632,22 @@
   {
     "key": "assign.gift_loved",
     "where": "Gift given, a liked gift",
-    "english": "{name} loves it. Loyalty {count}.",
-    "placeholders": "name, count",
+    "english": "You hand {item} to {name}. {name} loves it. Loyalty {count}.",
+    "placeholders": "name, item, count",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
   {
     "key": "assign.gift_fine",
     "where": "Gift given, a neutral gift",
-    "english": "{name} is glad of it. Loyalty {count}.",
-    "placeholders": "name, count",
+    "english": "You hand {item} to {name}. {name} is glad of it. Loyalty {count}.",
+    "placeholders": "name, item, count",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
   {
     "key": "assign.gift_disliked",
     "where": "Gift given, a disliked gift",
-    "english": "{name} did not care for it. Loyalty {count}.",
-    "placeholders": "name, count",
+    "english": "You hand {item} to {name}. {name} does not care for it. Loyalty {count}.",
+    "placeholders": "name, item, count",
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
   {
@@ -7674,7 +7674,7 @@
   {
     "key": "assign.office_empty",
     "where": "Staff Assignments, an empty Office box",
-    "english": "Drop an Office item here",
+    "english": "No Office item placed",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -11667,5 +11667,12 @@
     "english": "Legislator: {name}",
     "placeholders": "name",
     "notes": "Cameron 2026-11-25 (run statistics); a draft for Cameron to reword."
+  },
+  {
+    "key": "assign.items_hint",
+    "where": "Staff assignments: how to give an item",
+    "english": "Tap an item, then choose who gets it in the window that opens.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (no dragging); a draft for Cameron to reword."
   }
 ]

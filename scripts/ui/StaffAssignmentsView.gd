@@ -24,8 +24,8 @@ const BLOCK_USED := Color(0.18, 0.2, 0.26)
 # The screen
 # ---------------------------------------------------------------------------
 
-## The rows of the screen. `handlers`: popup(uid), dropped(uid, staff_id),
-## profile(staff_id), confirm().
+## The rows of the screen. `handlers`: popup(uid), assign(uid, staff_id) and the other
+## popup buttons, profile(staff_id), confirm().
 static func rows(handlers: Dictionary, with_confirm: bool = true) -> Array[Control]:
 	var out: Array[Control] = []
 	var look := OfficeFrameStyles.look()
@@ -76,6 +76,7 @@ static func rows(handlers: Dictionary, with_confirm: bool = true) -> Array[Contr
 
 	var items_card := OfficeFrameStyles.card(look, Text.say("assign.items_heading"))
 	items_card.name = "ItemsCard"
+	items_card.get_node("Column").add_child(UiKit.line(Text.say("assign.items_hint"), "SmallLabel"))
 	items_card.get_node("Column").add_child(_items_row(handlers))
 	out.append(items_card)
 	var office_card := OfficeFrameStyles.card(look, Text.say("assign.office_heading"))
@@ -102,6 +103,39 @@ static func rows(handlers: Dictionary, with_confirm: bool = true) -> Array[Contr
 
 
 ## Confirm the day: the button the frame fixes at the foot while the cards scroll (greyed with the reason when it cannot be pressed).
+## One gift as a scene (2026-11-25): the person and the gift side by side, and what came of it as narration beneath. `scene` is
+## GameState.staff_gift_scenes' entry: {"staff_id", "item_id", "text"}.
+static func gift_scene(scene: Dictionary) -> Control:
+	var column := VBoxContainer.new()
+	column.name = "GiftScene"
+	column.add_theme_constant_override("separation", 10)
+	var pictures := HBoxContainer.new()
+	pictures.alignment = BoxContainer.ALIGNMENT_CENTER
+	pictures.add_theme_constant_override("separation", 24)
+	var person := PlaceholderArt.new()
+	person.name = "GiftPerson"
+	person.kind = PlaceholderArt.Kind.CHARACTER
+	person.art_id = str(scene.get("staff_id", ""))
+	person.custom_minimum_size = Vector2(170, 230)
+	pictures.add_child(person)
+	var item := DataDB.get_shop_item(str(scene.get("item_id", "")))
+	var gift := TextureRect.new()
+	gift.name = "GiftPicture"
+	gift.texture = ArtLoader.item_icon(str(item.get("icon", "")) if item.get("icon") != null else "")
+	gift.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	gift.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	gift.custom_minimum_size = Vector2(150, 150)
+	gift.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	pictures.add_child(gift)
+	column.add_child(pictures)
+	var narration := UiKit.line(str(scene.get("text", "")))
+	narration.name = "GiftText"
+	narration.custom_minimum_size.x = 0.0
+	narration.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	column.add_child(narration)
+	return column
+
+
 static func confirm_button(handlers: Dictionary) -> Button:
 	var confirm := UiKit.action_button(Text.say("assign.confirm"), GameState.staff_confirm_refusal(), handlers["confirm"], 110.0)
 	confirm.name = "ConfirmDayButton"
@@ -159,8 +193,8 @@ static func _item_info(item_id: String) -> Dictionary:
 		"icon": str(item.get("icon", "")) if item.get("icon") != null else ""}
 
 
-## The staff items you hold, as cards to drag into a person's box (one item per
-## person; each acts on their day) or, for the Office kind, into the Office box.
+## The staff items you hold, as cards: tap one and choose the person in its popup (one item per
+## person; each acts on their day) or, for the Office kind, the Office box.
 static func _items_row(handlers: Dictionary) -> Control:
 	var flow := HFlowContainer.new()
 	flow.name = "ItemTray"
@@ -188,8 +222,6 @@ static func _items_row(handlers: Dictionary) -> Control:
 static func _office_box(handlers: Dictionary) -> Control:
 	var box := TaskBox.new()
 	box.setup(GameState.OFFICE_BOX)
-	box.dropped.connect(handlers["dropped"])
-	box.item_dropped.connect(handlers["item_dropped"])
 	var inside := HFlowContainer.new()
 	box.add_child(inside)
 	var placed := GameState.staff_office_item
@@ -300,8 +332,6 @@ static func _staff_card(member: Dictionary, projection: Dictionary, fits: Dictio
 			(child as Control).custom_minimum_size.x = 0
 	var box := TaskBox.new()
 	box.setup(staff_id)
-	box.dropped.connect(handlers["dropped"])
-	box.item_dropped.connect(handlers["item_dropped"])
 	column.add_child(box)
 	var inside := HFlowContainer.new()
 	inside.add_theme_constant_override("h_separation", 8)

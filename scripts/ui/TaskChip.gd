@@ -2,7 +2,8 @@ class_name TaskChip
 extends PanelContainer
 ## One daily staff task as a small card: its icon family picture (a labelled
 ## LL## placeholder until it is drawn), its title and its block cost. It can be
-## dragged into a person's TaskBox, or tapped to read about it. The coloured
+## tapped to read about it and choose who does it (there is no dragging: a tester's phone
+## could not drag, 2026-11-25). The coloured
 ## frame shows how well the person it was given to fits it (gold strong, grey
 ## fair, red poor); a task not yet given has a plain frame.
 ## Cameron, 2026-11-16 (design/proposals/STAFF_ASSIGNMENTS_2026-11-16.md).
@@ -14,27 +15,20 @@ const TAP_SLOP := 24.0
 const ITEM_PREFIX := "ITEM:"
 
 var uid := ""
-var draggable := true
+## Whether the person can give this out now (shown by the popup; the card itself is only ever tapped).
+var giveable := true
 var _press_at := Vector2.ZERO
 var _pressing := false
-var _dragged := false
 var _icon_id := ""
-## What is dragged: a task's uid, or an item ({"item": item_id}). Set by setup_item().
-var payload: Dictionary = {}
 var _item_texture: Texture2D
-## How this chip was set up, so a drag can show a copy of the whole card.
-var _setup_item := false
-var _setup_args: Array = []
 
 
 ## `compact` is the small icon-only version shown inside a person's box.
 func setup(task_uid: String, title: String, icon_id: String, blocks: int, frame: Color,
-		compact: bool, can_drag: bool, caption: String = "") -> void:
+		compact: bool, can_give: bool, caption: String = "") -> void:
 	uid = task_uid
-	draggable = can_drag
+	giveable = can_give
 	_icon_id = icon_id
-	_setup_item = false
-	_setup_args = [task_uid, title, icon_id, blocks, frame, compact, can_drag, caption]
 	name = "Task_" + task_uid
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	# The list this sits in scrolls by dragging; a press on a chip is the chip's own.
@@ -90,15 +84,12 @@ func setup(task_uid: String, title: String, icon_id: String, blocks: int, frame:
 
 ## An item for staff (coffee, tea) as a card: its picture, name and the hours it
 ## adds, and how many are held. `compact` is the small version inside a person's
-## box. Dragged into a box it carries {"item": item_id}; tapped it opens its popup
+## box. Tapped, it opens its popup, where the recipient is chosen
 ## (the uid is "ITEM:" and the item id, so one tap handler tells them apart).
 func setup_item(item_id: String, title: String, icon_name: String, caption: String, frame: Color,
-		compact: bool, can_drag: bool) -> void:
+		compact: bool, can_give: bool) -> void:
 	uid = ITEM_PREFIX + item_id
-	payload = {"item": item_id}
-	_setup_item = true
-	_setup_args = [item_id, title, icon_name, caption, frame, compact, can_drag]
-	draggable = can_drag
+	giveable = can_give
 	_item_texture = ArtLoader.item_icon(icon_name)
 	name = "Item_" + item_id
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -147,46 +138,10 @@ func _gui_input(event: InputEvent) -> void:
 		var button := event as InputEventMouseButton
 		if button.pressed:
 			_pressing = true
-			_dragged = false
 			_press_at = button.global_position
 		else:
-			var was_tap := _pressing and not _dragged and button.global_position.distance_to(_press_at) < TAP_SLOP
+			var was_tap := _pressing and button.global_position.distance_to(_press_at) < TAP_SLOP
 			_pressing = false
 			if was_tap:
 				tapped.emit(uid)
 				accept_event()
-
-
-## What is shown while the card is dragged: a copy of the whole card (frame,
-## picture and words) as one piece, held up and to the left of the finger so the
-## finger does not cover it.
-func drag_preview() -> Control:
-	var copy := TaskChip.new()
-	if _setup_item:
-		copy.setup_item(str(_setup_args[0]), str(_setup_args[1]), str(_setup_args[2]), str(_setup_args[3]),
-			_setup_args[4], bool(_setup_args[5]), false)
-	else:
-		copy.setup(str(_setup_args[0]), str(_setup_args[1]), str(_setup_args[2]), int(_setup_args[3]),
-			_setup_args[4], bool(_setup_args[5]), false, str(_setup_args[7]))
-	copy.theme = theme
-	copy.custom_minimum_size = size
-	copy.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	copy.modulate = Color(1, 1, 1, 0.92)
-	copy.position = Vector2(-size.x - 16.0, -size.y - 16.0)
-	var holder := Control.new()
-	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	holder.add_child(copy)
-	return holder
-
-
-func _get_drag_data(_at_position: Vector2) -> Variant:
-	if not draggable:
-		return null
-	_dragged = true
-	set_drag_preview(drag_preview())
-	return payload if not payload.is_empty() else {"uid": uid}
-
-
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_DRAG_END:
-		_pressing = false
