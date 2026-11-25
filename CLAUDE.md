@@ -372,3 +372,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - A blank run can no longer be saved over a real one at the title screen (2026-11-25, a tester's report; branch `fix/save-overwrite-at-title`)
 - Two save files: the main on every save, the second on every other save, both loadable in Administration (2026-11-25, Cameron; branch `feature/two-save-files`)
 - A new run draws the Capitol office again (2026-11-25, a tester's report; branch `fix/new-run-office-look`)
+- P19: the economy map, tools/economy_map.py and design/economy/ (2026-11-25, Cameron; branch `feature/p19-economy-map`)

@@ -1,0 +1,35 @@
+{
+  "dues_balance": {
+    "base": 50000,
+    "max_per_week": 90000,
+    "reward_percent": 15.0,
+    "step_amount": 5000,
+    "support_start": 40,
+    "support_step": 15
+  },
+  "early": {
+    "dues": 87431,
+    "forced_funds": 95431,
+    "invested": [
+      40000,
+      40000
+    ],
+    "party_support": 40,
+    "share": 0.38242912646555927,
+    "wages": 8000
+  },
+  "funds_earned": 249539,
+  "standard": {
+    "dues": 90000,
+    "forced_funds": 129000,
+    "invested": [
+      130000,
+      130000,
+      130000
+    ],
+    "party_support": 70,
+    "share": 0.5169531631656081,
+    "wages": 39000
+  },
+  "wage_percent": 10.0
+}

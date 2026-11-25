@@ -2305,3 +2305,16 @@ Report: after a run left at the PC01 District office, a new run as PC01 still dr
 |---|---|
 | A new run puts the player back at the Capitol (the rules did), but the picture behind the Office is set only when the screen opens or after a trip, so it kept the District office. | The Office re-applies its picture right after a new run starts (from New Game, and from backing out of the first-run choice). |
 | Test | `test_new_run_office_look.gd` fails without the fix and passes with it. |
+
+## P19: the economy map, `tools/economy_map.py` (2026-11-25, Cameron; branch `feature/p19-economy-map`)
+
+Tooling only: no game data, rules or code paths changed. Built from Cameron's "Economy and mechanics map" method doc and the P19 prompt.
+
+| Output (`design/economy/`) | Contents |
+|---|---|
+| `economy_catalog.csv` | 108 flows: a generated data pass (stages, levels, shop, events, event choices, venues, staff, staff tasks, backings, laws, cosmetics, grouped by mechanic with median and range) and 57 hand-kept rows (`economy_flows_manual.csv`: dues, wages, decay, awareness effects, thresholds, whipping, the Funds cap, difficulty, the two unused stocks) |
+| `economy_links.csv` | 87 links between stocks, signed + - g ~, with the gate condition and which side of it |
+| `economy_loops.md` | 387 simple cycles of up to six links, R or B, with the 20 expected loops checked, spirals grouped by low gate and dead ends named |
+| `economy_week.md` / `.json` | the standard and early weeks in hours-equivalent; dues and wages; the forced-sink share against 35-50%; the levers in no catalog row |
+
+`verify.sh` now runs `tools/test_economy_map.py` and `economy_map.py --check`: a change to Balance, the shop, events, staff or stage pay must be followed by rerunning the tool and committing the outputs. `tests/test_economy_week.gd` runs the real `PartyDues` and `StaffLoyalty` on the tool's week inputs. DRAFT weekly frequencies and typical stock levels are constants at the top of the script. `design/economy/.gdignore` stops Godot importing the CSVs.
