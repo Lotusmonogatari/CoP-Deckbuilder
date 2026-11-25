@@ -273,6 +273,19 @@ func _sweep_shape(size: Vector2i) -> void:
 			GameState.office_location = Offices.CAPITOL
 			office._venues._show_heard("VN01", {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": "CB01",
 				"text": "The new interns and their \"ideas.\" Ugh.", "hint": {}, "unlocked": "", "last": false, "where": "cafeteria"})],
+		["B27g3_cafeteria_seats", func() -> void:
+			GameState.office_location = Offices.CAPITOL
+			office._venues._on_activity("VN01")],
+		["B27g4_cafeteria_meals", func() -> void:
+			GameState.office_location = Offices.CAPITOL
+			office._venues._on_activity("VN01")
+			office._venues._on_seat(str(GameState.seat_options("VN01")[0]["choice_id"]), "VN01")],
+		["B27g5_cafeteria_lunch", func() -> void:
+			GameState.office_location = Offices.CAPITOL
+			office._venues._on_activity("VN01")
+			office._venues._on_meal("VC22", "VN01", str(GameState.seat_options("VN01")[0]["choice_id"]))],
+		["B27g6_paperwork_card", func() -> void:
+			office._venues._do_paperwork()],
 		["B27h_venue_tips", func() -> void:
 			GameState.held_tips = [{"kind": "stage_suit", "target": "ST16", "suit": "Data Driven", "where": "cafeteria", "day": GameState.venue_today()},
 				{"kind": "opponent_suit", "target": "OP29", "suit": "Emotional", "where": "gardens", "day": GameState.venue_today() - 13}]

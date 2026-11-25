@@ -1424,7 +1424,8 @@ SHEETS = {
         "id_pattern": r"^VA\d+$",
         "optional_sheet": True,
         "optional": ["Per Day", "Per Week", "Condition Type", "Condition Target", "Condition Op", "Condition Value",
-                     "Rewards", "District Awareness Δ", "Staff Hours", "Bonus After Uses", "Bonus Staff Hours", "Result Text"],
+                     "Rewards", "District Awareness Δ", "Staff Hours", "Bonus After Uses", "Bonus Staff Hours", "Result Text", "Chance",
+                     "Extra Rewards"],
         "columns": [
             ("Activity ID", "activity_id", "id"),
             ("Venue ID", "venue_id", "str"),
@@ -1449,6 +1450,32 @@ SHEETS = {
             ("Bonus After Uses", "bonus_after_uses", "int"),
             ("Bonus Staff Hours", "bonus_staff_hours", "int"),
             ("Result Text", "result_text", "str"),
+            ("Chance", "chance", "int"),
+            ("Extra Rewards", "extra_rewards", "target_delta_list"),
+        ],
+    },
+    "Venue Choices": {
+        "out": "venue_choices.json",
+        "key": "choice_id",
+        "id_pattern": r"^VC\d+$",
+        "optional_sheet": True,
+        "optional": ["Party", "Weight", "Rewards", "Party Opinion", "XP", "Chance", "Extra Rewards", "Extra Party Opinion", "Extra Tip", "Note"],
+        "columns": [
+            ("Choice ID", "choice_id", "id"),
+            ("Venue ID", "venue_id", "str"),
+            ("Step", "step", "str"),
+            ("Name", "name", "str"),
+            ("Blurb", "blurb", "str"),
+            ("Party", "party", "str"),
+            ("Weight", "weight", "int"),
+            ("Rewards", "rewards", "target_delta_list"),
+            ("Party Opinion", "party_opinion", "int"),
+            ("XP", "xp", "int"),
+            ("Chance", "chance", "int"),
+            ("Extra Rewards", "extra_rewards", "target_delta_list"),
+            ("Extra Party Opinion", "extra_party_opinion", "int"),
+            ("Extra Tip", "extra_tip", "str"),
+            ("Note", "note", "str"),
         ],
     },
     "Library Documents": {
@@ -4227,7 +4254,11 @@ def check_whip_and_vote_scenes(data, report, by_id, roots):
                 report.error(f"Decision Scenes {sid}", f"is a vote on {datetime.date.fromordinal(day).strftime('%y.%m.%d')}, after {root}'s Must End By {deadline}")
 
 
-VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act", "research")
+VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act", "research", "office")
+# The pseudo-venue of an activity done at the player's own office (Catch Up on Paperwork): no Venues row.
+OFFICE_VENUE = "OFFICE"
+CHOICE_STEPS = ("seat", "meal")
+EXTRA_TIPS = ("stage", "opponent")
 VENUE_ZONES = ("Capitol Building", "Capital Area", "District")
 VENUE_HINT_KINDS = ("stage_suit", "opponent_suit")
 VENUE_POOLS = ("cafeteria", "gardens", "dry")
@@ -4319,6 +4350,45 @@ def check_area_characters(data, report):
                 report.error(where, f"Site '{site}' is in the {venues[site].get('zone')}, but a {prefix}## person belongs to the {AREA_PREFIX_ZONES[prefix]}")
 
 
+def check_venue_choices(data, report):
+    """Venue Choices (2026-11-25): seats and meals at a venue. A row names a real venue and a Step (seat or meal); a party seat names a real
+    party; Chance (1 in N) is needed for Extra Rewards, an Extra Party Opinion or an Extra Tip; an Extra Tip is stage or opponent (opponent needs
+    a Party); a venue that has seats has at least three of them to draw from, and a seat step needs a meal step to follow it."""
+    rows = data.get("venue_choices", [])
+    venues = {str(v.get("venue_id")) for v in data.get("venues", [])}
+    parties = {str(p.get("party_id")) for p in data.get("parties", [])}
+    by_venue = {}
+    for row in rows:
+        where = f"Venue Choices {row.get('choice_id')}"
+        if str(row.get("venue_id")) not in venues:
+            report.error(where, f"Venue ID {row.get('venue_id')!r} is not in the Venues tab")
+        if row.get("step") not in CHOICE_STEPS:
+            report.error(where, f"Step {row.get('step')!r} must be seat or meal")
+        if not row.get("name"):
+            report.error(where, "Name is blank")
+        if row.get("party") and str(row["party"]) not in parties:
+            report.error(where, f"Party {row['party']!r} is not a party ID in the Parties tab")
+        extras = row.get("extra_rewards") or row.get("extra_party_opinion") or row.get("extra_tip")
+        if extras and not row.get("chance"):
+            report.error(where, "An extra reward needs a Chance (1 in N)")
+        if row.get("chance") is not None and int(row["chance"]) < 1:
+            report.error(where, "Chance must be 1 or more (1 in N)")
+        if row.get("extra_tip") and row["extra_tip"] not in EXTRA_TIPS:
+            report.error(where, f"Extra Tip {row['extra_tip']!r} must be stage or opponent")
+        if row.get("extra_tip") == "opponent" and not row.get("party"):
+            report.error(where, "An opponent tip needs the seat's Party")
+        if row.get("weight") is not None and int(row["weight"]) < 1:
+            report.error(where, "Weight must be 1 or more")
+        by_venue.setdefault(str(row.get("venue_id")), {"seat": 0, "meal": 0})
+        if row.get("step") in CHOICE_STEPS:
+            by_venue[str(row["venue_id"])][row["step"]] += 1
+    for venue_id, counts in by_venue.items():
+        if counts["seat"] and counts["seat"] < 3:
+            report.error(f"Venue Choices {venue_id}", "A venue with seats needs at least 3 to draw from")
+        if counts["seat"] and not counts["meal"]:
+            report.error(f"Venue Choices {venue_id}", "A venue with seats needs at least one meal")
+
+
 def overheard_places(where_cell, venues, activities):
     """The venues an overheard line can come up at, and the tokens of its Where cell that name nothing. A token is a zone name (every venue of
     that zone), a venue ID, or a venue ID and /tracks for a station's tracks screen (a Kind travel venue)."""
@@ -4392,8 +4462,14 @@ def check_venues(data, report):
     activity_pools = set()
     for activity in activities:
         where = f"Venue Activities {activity.get('activity_id')}"
-        if str(activity.get("venue_id")) not in venues:
+        if str(activity.get("venue_id")) not in venues and not (activity.get("kind") == "office" and str(activity.get("venue_id")) == OFFICE_VENUE):
             report.error(where, f"Venue ID {activity.get('venue_id')!r} is not in the Venues tab")
+        if activity.get("kind") == "office" and str(activity.get("venue_id")) != OFFICE_VENUE:
+            report.error(where, f"An office activity's Venue ID must be {OFFICE_VENUE}")
+        if activity.get("extra_rewards") and not activity.get("chance"):
+            report.error(where, "Extra Rewards needs a Chance (1 in N)")
+        if activity.get("chance") is not None and int(activity["chance"]) < 1:
+            report.error(where, "Chance must be 1 or more (1 in N)")
         if activity.get("kind") not in VENUE_KINDS:
             report.error(where, f"Kind {activity.get('kind')!r} must be one of {', '.join(VENUE_KINDS)}")
         if activity.get("pool"):
@@ -5702,6 +5778,7 @@ def main():
     check_event_leads(data, report)
     check_decision_scenes(data, report)
     check_area_characters(data, report)
+    check_venue_choices(data, report)
     check_venues(data, report)
     check_library_documents(data, report)
     check_places(data, report)

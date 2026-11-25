@@ -61,7 +61,16 @@ func _run() -> void:
 	var venue := office.get_node("VenuePanel") as Overlay
 	_expect(venue.visible, "the Cafeteria's screen opens")
 	await _click(venue.find_child("Activity_VN01", true, false))
+	# Eat with Colleagues asks where to sit and what to eat first (2026-11-25); the hour is taken when the meal is ordered.
+	_expect(GameState.work_hours_left() == hours, "nothing is spent before the meal is ordered")
+	_expect(venue.find_children("Choice_*", "PanelContainer", true, false).size() == 3, "three seats are offered")
+	await _click(venue.find_children("Pick_*", "Button", true, false)[0])
+	_expect(venue.find_children("Choice_*", "PanelContainer", true, false).size() == 10, "ten meals are offered")
+	await _click(venue.find_children("Pick_*", "Button", true, false)[0])
 	_expect(GameState.work_hours_left() == hours - 1, "Eat with Colleagues takes one hour")
+	var lunch := office.get_node("VenueResultPanel") as Overlay
+	_expect(lunch.visible and _texts(lunch).contains("Seat: "), "the lunch result says where you sat")
+	await _click(lunch.find_child("Back", true, false))
 	var line := office.get_node("VenueLinePanel") as Overlay
 	_expect(line.visible and _texts(line).contains("Line 1 of 8 today"), "the first line is up")
 	for number in range(2, 9):

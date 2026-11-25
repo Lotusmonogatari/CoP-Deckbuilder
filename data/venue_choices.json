@@ -1,0 +1,407 @@
+[
+  {
+    "choice_id": "VC01",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "A {party} member's table",
+    "blurb": "A member of {party} waves you over to a free chair.",
+    "party": "PT01",
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": 1,
+    "xp": null,
+    "chance": 5,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": "opponent",
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC02",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "A {party} member's table",
+    "blurb": "A member of {party} waves you over to a free chair.",
+    "party": "PT02",
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": 1,
+    "xp": null,
+    "chance": 5,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": "opponent",
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC03",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "A {party} member's table",
+    "blurb": "A member of {party} waves you over to a free chair.",
+    "party": "PT03",
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": 1,
+    "xp": null,
+    "chance": 5,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": "opponent",
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC04",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "A {party} member's table",
+    "blurb": "A member of {party} waves you over to a free chair.",
+    "party": "PT04",
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": 1,
+    "xp": null,
+    "chance": 5,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": "opponent",
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC05",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "A {party} member's table",
+    "blurb": "A member of {party} waves you over to a free chair.",
+    "party": "PT05",
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": 1,
+    "xp": null,
+    "chance": 5,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": "opponent",
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC06",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "A {party} member's table",
+    "blurb": "A member of {party} waves you over to a free chair.",
+    "party": "PT06",
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": 1,
+    "xp": null,
+    "chance": 5,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": "opponent",
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC07",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "The mixed-party table",
+    "blurb": "Members of several parties argue amicably over one tray of tea.",
+    "party": null,
+    "weight": 1,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "party_opinion": null,
+    "xp": null,
+    "chance": 5,
+    "extra_rewards": null,
+    "extra_party_opinion": 1,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC08",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "The young staffers' table",
+    "blurb": "Interns and junior aides compare which committee is the worst.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": 5,
+    "chance": 3,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": "stage",
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC09",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "A member and a staffer",
+    "blurb": "A member and an aide are going over tomorrow's schedule between bites.",
+    "party": null,
+    "weight": 1,
+    "rewards": [
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "party_opinion": null,
+    "xp": null,
+    "chance": 3,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": "stage",
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC10",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "The older staffers' table",
+    "blurb": "Long-serving staff, who have seen every kind of sitting.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": 5,
+    "chance": 3,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": "stage",
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC11",
+    "venue_id": "VN01",
+    "step": "seat",
+    "name": "Anywhere open",
+    "blurb": "Whichever chair is free. You hear what is said around you.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": null,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC20",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Persimmon and fruit medley",
+    "blurb": "Sweet, cold and cut by someone who cares.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": 10,
+    "extra_rewards": [
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC21",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Grilled salmon set",
+    "blurb": "Salmon, rice and pickles, the way the coast does it.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": 10,
+    "extra_rewards": [
+      {
+        "target": "BO07",
+        "delta": 1
+      }
+    ],
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC22",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Sito dumplings",
+    "blurb": "Soft millet dumplings in a savory broth.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": 10,
+    "extra_rewards": [
+      {
+        "target_pool": [
+          "BO28",
+          "BO29"
+        ],
+        "delta": 1
+      }
+    ],
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC23",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Genghis Khan grilled lamb set",
+    "blurb": "Sizzling lamb and onions, a Hokkaido classic.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": 10,
+    "extra_rewards": [
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC24",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Miso ramen",
+    "blurb": "A big bowl, a little salty, very hot.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": 10,
+    "extra_rewards": [
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC25",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Tofu and vegetable plate",
+    "blurb": "Light, plain and gentle on the stomach.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": 10,
+    "extra_rewards": [
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC26",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Soup curry",
+    "blurb": "Chicken, vegetables and spice in a thin golden soup.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": 10,
+    "extra_rewards": [
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC27",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Set lunch",
+    "blurb": "Today's fixed lunch: fish, rice, soup and pickles.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": null,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC28",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Rice ball and miso soup",
+    "blurb": "Quick, warm and eaten standing up.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": null,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  },
+  {
+    "choice_id": "VC29",
+    "venue_id": "VN01",
+    "step": "meal",
+    "name": "Coffee and a sandwich",
+    "blurb": "The cafeteria's strong coffee and an egg sandwich.",
+    "party": null,
+    "weight": 1,
+    "rewards": null,
+    "party_opinion": null,
+    "xp": null,
+    "chance": null,
+    "extra_rewards": null,
+    "extra_party_opinion": null,
+    "extra_tip": null,
+    "note": "Claude's draft for Cameron to reword (2026-11-25, playtest idea)."
+  }
+]

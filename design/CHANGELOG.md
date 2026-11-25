@@ -2197,3 +2197,16 @@ Cameron noticed a train reaction that said "He": unless a text is tied to a spec
 
 Not changed, and for Cameron to decide: the 34 room questions in `questions.json` (an audience member asks "my mother ... she", "my uncle ... his shop"; relatives are gendered by nature), the visitors' and staff members' own lines (they are named characters), and `rules.json` notes.
 
+## Cafeteria seats and meals, and Catch Up on Paperwork (2026-11-25, Cameron's playtest ideas; branch `feature/cafeteria-seats`)
+
+Cameron's ideas, built from his answers (meals free, the Ainu bonus drawn at random between the two Ainu groups, the paperwork button beside Step out).
+
+| Piece | What it does |
+|---|---|
+| Venue Choices tab (new) | Seats and meals for any venue (Venue ID, Step, Name, Blurb, Party, Weight, sure Rewards, Party Opinion, XP, then a Chance 1 in N with Extra Rewards, Extra Party Opinion and Extra Tip). The Cafeteria has **11 seats** (a member of each of the six parties, the mixed-party table, young staffers, a member and a staffer, older staffers, anywhere open) and **10 meals**. Every name, blurb and extra is Claude's draft; the 1 in 10 odds on meals and paperwork are Cameron's. |
+| Eat with Colleagues | Asks where to sit (three seats drawn by weight from a seed of the run, day and lunches taken, so a reload shows the same three) and what to eat. **The hour is taken when the meal is ordered**, so backing out costs nothing. A party's table gives +1 to that party's opinion of you (your own party: Party support); each choice may give an extra on its chance (a rhetoric tip about a room or about one of that party's members; +1 to a group; one of two Ainu groups for the Sito dumplings). The odds and what they may give are shown on the card before choosing. A lunch result card says what landed, and Listen in opens the conversation as before. |
+| Catch Up on Paperwork | A button beside Step out at both offices (VA19, Kind `office`, Venue ID `OFFICE`): asks first (cost and odds), takes one hour and 1 time in 10 gives +1 to Party Headquarters, Party Faction, Party Activists, the Candidate Selection Committee or Members of Parliament (an explicit pool in the cell, so it can be edited). Venue Activities gets Chance and Extra Rewards columns. |
+| Tests | `test_venue_choices.gd` (16), 10 exporter cases, the venue click test now picks a seat and a meal. |
+
+Not built: lines spoken at a table (a seat could add its own overheard lines); say if wanted.
+

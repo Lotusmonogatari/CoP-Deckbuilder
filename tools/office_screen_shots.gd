@@ -110,6 +110,24 @@ func _venue(office: Node, which: String) -> Overlay:
 			office._venues._show_heard(case[0], {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": case[1], "text": case[2],
 				"hint": {}, "unlocked": "", "last": false, "where": case[3]})
 			return office.get_node("VenueLinePanel")
+		"seats", "meals", "lunch", "paperwork":
+			# The Cafeteria's seat and meal screens, the lunch result card and the paperwork confirm card (2026-11-25).
+			GameState.office_location = Offices.CAPITOL
+			office._apply_office_look()
+			if which == "paperwork":
+				office._venues._do_paperwork()
+				return office.get_node("PaperworkPanel")
+			office._venues._on_activity("VN01")
+			var seat_id := str(GameState.seat_options("VN01")[0]["choice_id"])
+			if which == "meals":
+				office._venues._on_seat(seat_id, "VN01")
+			elif which == "lunch":
+				for row: Dictionary in DataDB.venue_choices:
+					if str(row["name"]) == "Sito dumplings":
+						row["chance"] = 1
+				office._venues._on_meal("VC22", "VN01", seat_id)
+				return office.get_node("VenueResultPanel")
+			return office.get_node("VenuePanel")
 		"scene_go":
 			# Going to a place on the move that brings an overheard line: the line first (Continue, no Back), then the place.
 			DataDB.area_characters = [{"character_id": "CB01", "name": "Passerby", "name_jp": null, "title": "Capitol staff", "site": null}]

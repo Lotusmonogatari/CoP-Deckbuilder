@@ -457,6 +457,8 @@ var venue_activity_totals: Dictionary = {}
 ## The Library's Codex (P18, 2026-11-24): {doc_id: {"day", "read"}} for the documents found, and the Room files the reference desk made
 ## ({stage_id: {"day", "level_id", "reading", "read"}}; each shows only while a tip for its stage is held).
 ## Overheard lines (2026-11-25): moves since the last one, how many have come up (the seed of the next wait), and the last few line IDs.
+## Seats and meals (2026-11-25): lunches taken, which makes each visit's three seats and its luck its own and is saved with the run.
+var venue_choice_rolls := 0
 var overheard_moves := 0
 var overheard_fired := 0
 var overheard_recent: Array = []
@@ -674,7 +676,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters",
 	"bill_stance",
@@ -926,6 +928,7 @@ func reset_crisis_triggers() -> void:
 	venue_activity_log = {}
 	venue_activity_totals = {}
 	staff_activity_hours = {}
+	venue_choice_rolls = 0
 	overheard_moves = 0
 	overheard_fired = 0
 	overheard_recent = []
@@ -2626,6 +2629,14 @@ func step_out_refusal() -> String:
 	return ""
 
 
+## The Office's own activity (Kind office: Catch Up on Paperwork), or {}.
+func office_activity() -> Dictionary:
+	for activity: Dictionary in DataDB.venue_activities:
+		if str(activity.get("kind", "")) == "office":
+			return activity
+	return {}
+
+
 ## The held tips about a room (the stage's own tip, and the tip of each person who may be seated there), as
 ## [{"kind", "target", "suit", "where", "day"}].
 func tips_for_stage(stage_id: String) -> Array:
@@ -3018,7 +3029,9 @@ func activity_refusal(activity_id: String) -> String:
 	if activity.is_empty() or not VenueRules.is_built(activity):
 		return Text.say("venue.coming_soon")
 	var venue_id := str(activity.get("venue_id", ""))
-	if not venues_here().any(func(venue: Dictionary) -> bool: return str(venue.get("venue_id", "")) == venue_id):
+	# An office activity (Catch Up on Paperwork) is done at either office, so it belongs to no place on the map.
+	if str(activity.get("kind", "")) != "office" \
+			and not venues_here().any(func(venue: Dictionary) -> bool: return str(venue.get("venue_id", "")) == venue_id):
 		return Text.say("venue.refuse_elsewhere")
 	match step_out_state():
 		VenueRules.IN_LEVEL: return Text.say("venue.refuse_in_level")
@@ -3041,7 +3054,7 @@ func do_activity(activity_id: String) -> Dictionary:
 		return {"ok": false, "reason": why}
 	var activity := venue_activity(activity_id)
 	var cost := VenueRules.visit_cost(activity)
-	spend_hours(venue_walk_hours(str(activity.get("venue_id", ""))) + int(cost["hours"]))
+	spend_hours((0 if str(activity.get("kind", "")) == "office" else venue_walk_hours(str(activity.get("venue_id", "")))) + int(cost["hours"]))
 	if int(cost["funds"]) > 0:
 		_apply_meta_reward("Funds", -int(cost["funds"]))
 	var before := activity_times_done(activity_id)
@@ -3050,6 +3063,12 @@ func do_activity(activity_id: String) -> Dictionary:
 	var effects: Array[String] = []
 	_under_cause(Text.say("record.cause_venue", {"activity": str(activity.get("name", activity_id))}), func() -> void:
 		effects.append_array(_give_activity_effects(activity.get("rewards"), activity.get("district_delta"), 0)))
+	# A 1-in-N extra (Catch Up on Paperwork: a standing point with a party organization or Members of Parliament), from a seed of the run, the
+	# day and how many times this has been done, so a reload does not change the luck.
+	if VenueChoices.hits(activity.get("chance"), hash("%d|%d|activity|%s|%d" % [run_seed, venue_today(), activity_id, before])):
+		_under_cause(Text.say("record.cause_venue", {"activity": str(activity.get("name", activity_id))}), func() -> void:
+			effects.append_array(_give_activity_effects(VenueChoices.settle_pools(activity.get("extra_rewards"),
+				hash("%d|%d|activity-pool|%s|%d" % [run_seed, venue_today(), activity_id, before])), null, 0)))
 	var hours_for_staff := VenueActivities.staff_hours(activity, before)
 	if hours_for_staff > 0:
 		staff_activity_hours = {"day": venue_today(), "hours": staff_activity_hours_today() + hours_for_staff}
@@ -3153,6 +3172,187 @@ func venue_hear_next(venue_id: String) -> Dictionary:
 		# After the last dealt line the dry line follows (Keep listening stays live for it); with no dry line, this one is the last.
 		"last": VenueLines.next_dealt(entry["dealt"] as Array, heard + 1, venue_limit()).is_empty() \
 			and VenueLines.dry_line(DataDB.venue_lines, venue_context(), 0).is_empty(), "where": str(activity.get("pool", ""))}
+
+
+# --- Seats and meals (2026-11-25, Cameron's playtest ideas) ---------------------------------------------------------------------------
+
+## True when the venue's visit starts with a choice of seat and meal (it has Venue Choices seat rows).
+func venue_has_choices(venue_id: String) -> bool:
+	return VenueChoices.has_choices(DataDB.venue_choices, venue_id)
+
+
+## The three seats on offer this visit, from a seed of the run, the day, the venue and the lunches taken: the same three until one is taken.
+func seat_options(venue_id: String) -> Array:
+	var pool := VenueChoices.rows_for(DataDB.venue_choices, venue_id, VenueChoices.SEAT)
+	return VenueChoices.draw(pool, 3, hash("%d|%d|seats|%s|%d" % [run_seed, venue_today(), venue_id, venue_choice_rolls]))
+
+
+func meal_options(venue_id: String) -> Array:
+	return VenueChoices.rows_for(DataDB.venue_choices, venue_id, VenueChoices.MEAL)
+
+
+func choice_row(choice_id: String) -> Dictionary:
+	for row: Dictionary in DataDB.venue_choices:
+		if str(row.get("choice_id", "")) == choice_id:
+			return row
+	return {}
+
+
+func _choice_party_name(row: Dictionary) -> String:
+	var party_id: Variant = row.get("party")
+	return "" if party_id == null else str(DataDB.get_party_by_id(str(party_id)).get("name", ""))
+
+
+## A seat's or meal's name and blurb with its {party} filled in.
+func choice_name(row: Dictionary) -> String:
+	return VenueChoices.display_name(str(row.get("name", "")), _choice_party_name(row))
+
+
+func choice_blurb(row: Dictionary) -> String:
+	return VenueChoices.display_name(str(row.get("blurb", "")), _choice_party_name(row))
+
+
+## What a choice gives for sure, as lines ("Frontier Party opinion of you +1", "XP +5", a standing change); [] for nothing.
+func choice_sure_lines(row: Dictionary) -> Array[String]:
+	var lines: Array[String] = []
+	lines.append_array(activity_reward_lines(row.get("rewards"), null))
+	if row.get("party_opinion") != null and int(row["party_opinion"]) != 0:
+		lines.append(Text.say("choice.opinion", {"party": _choice_party_name(row), "delta": "%+d" % int(row["party_opinion"])}))
+	if row.get("xp") != null and int(row["xp"]) != 0:
+		lines.append(Text.say("choice.xp", {"delta": "%+d" % int(row["xp"])}))
+	return lines
+
+
+## "1 in 5: a rhetoric tip about one of their members" for a choice or activity that has an extra, "" otherwise. What it would give is
+## told before it is chosen (the odds too), as the information standards ask.
+func chance_line(row: Dictionary) -> String:
+	var items := _extra_lines(row)
+	if row.get("chance") == null or int(row["chance"]) < 1 or items.is_empty():
+		return ""
+	return Text.say("choice.chance", {"count": int(row["chance"]), "list": ", ".join(PackedStringArray(items))})
+
+
+## The extra's parts as words. A pool of groups reads "A or B +1" because one of them gets it.
+func _extra_lines(row: Dictionary) -> Array[String]:
+	var items: Array[String] = []
+	var entries: Variant = row.get("extra_rewards")
+	if entries is Array:
+		for raw: Variant in entries as Array:
+			var entry := raw as Dictionary
+			var pool: Variant = entry.get("target_pool")
+			if pool is Array and (pool as Array).size() > 1:
+				var names: Array[String] = []
+				for id: Variant in pool as Array:
+					names.append(str(DataDB.get_booster(str(id)).get("name_en", id)))
+				items.append(Text.say("venue.effect_standing", {"name": _names_or(names), "delta": "%+d" % int(entry.get("delta", 1))}))
+			else:
+				var single := entry.duplicate()
+				if pool is Array and not (pool as Array).is_empty():
+					single["target"] = str((pool as Array)[0])
+				items.append_array(activity_reward_lines([single], null))
+	if row.get("extra_party_opinion") != null and int(row["extra_party_opinion"]) != 0:
+		items.append(Text.say("choice.opinion", {"party": _choice_party_name(row), "delta": "%+d" % int(row["extra_party_opinion"])}) \
+			if not _choice_party_name(row).is_empty() else Text.say("choice.opinion_random", {"delta": "%+d" % int(row["extra_party_opinion"])}))
+	match str(row.get("extra_tip", "")) if row.get("extra_tip") != null else "":
+		"stage": items.append(Text.say("choice.tip_stage"))
+		"opponent": items.append(Text.say("choice.tip_opponent"))
+	return items
+
+
+## Sits at `seat_id`, eats `meal_id` and starts the visit (the hour is taken now, not before): each gives its sure reward and, on its chance, an
+## extra. {"ok", "seat", "meal", "effects": [lines]}, or {"ok": false, "reason"} with nothing changed.
+func do_choice_visit(venue_id: String, seat_id: String, meal_id: String) -> Dictionary:
+	var seat := choice_row(seat_id)
+	var meal := choice_row(meal_id)
+	var on_offer := seat_options(venue_id).any(func(row: Dictionary) -> bool: return str(row.get("choice_id", "")) == seat_id)
+	if seat.is_empty() or meal.is_empty() or not on_offer or str(meal.get("venue_id", "")) != venue_id or str(meal.get("step", "")) != VenueChoices.MEAL:
+		return {"ok": false, "reason": Text.say("venue.coming_soon")}
+	var visit := venue_visit(venue_id)
+	if not bool(visit["ok"]):
+		return visit
+	var effects: Array[String] = []
+	var lunch := venue_choice_rolls
+	_under_cause(Text.say("record.cause_venue", {"activity": str(VenueRules.activity_of(DataDB.venue_activities, venue_id).get("name", venue_id))}),
+		func() -> void:
+			effects.append_array(_apply_choice(seat, "%d|seat" % lunch))
+			effects.append_array(_apply_choice(meal, "%d|meal" % lunch)))
+	venue_choice_rolls += 1
+	SaveManager.autosave()
+	return {"ok": true, "seat": choice_name(seat), "meal": choice_name(meal), "effects": effects}
+
+
+## One choice's sure reward and, if its chance comes up, its extra: the lines that say what landed.
+func _apply_choice(row: Dictionary, salt: String) -> Array[String]:
+	var lines: Array[String] = []
+	var seed_base := "%d|%d|choice|%s|%s" % [run_seed, venue_today(), str(row.get("choice_id", "")), salt]
+	lines.append_array(_give_activity_effects(row.get("rewards"), null, 0))
+	if row.get("party_opinion") != null and int(row["party_opinion"]) != 0:
+		lines.append(_give_party_opinion(_choice_party_name(row), int(row["party_opinion"])))
+	if row.get("xp") != null and int(row["xp"]) != 0:
+		_move_xp(int(row["xp"]))
+		lines.append(Text.say("choice.xp", {"delta": "%+d" % int(row["xp"])}))
+	if VenueChoices.hits(row.get("chance"), hash(seed_base + "|roll")):
+		lines.append_array(_give_activity_effects(VenueChoices.settle_pools(row.get("extra_rewards"), hash(seed_base + "|pool")), null, 0))
+		if row.get("extra_party_opinion") != null and int(row["extra_party_opinion"]) != 0:
+			var party_name := _choice_party_name(row)
+			if party_name.is_empty():
+				var parties := DataDB.parties
+				var rng := RandomNumberGenerator.new()
+				rng.seed = absi(hash(seed_base + "|party"))
+				party_name = str((parties[rng.randi_range(0, parties.size() - 1)] as Dictionary).get("name", ""))
+			lines.append(_give_party_opinion(party_name, int(row["extra_party_opinion"])))
+		match str(row.get("extra_tip", "")) if row.get("extra_tip") != null else "":
+			"stage": lines.append_array(_give_choice_tip(RhetoricTips.STAGE, "", hash(seed_base + "|tip")))
+			"opponent": lines.append_array(_give_choice_tip(RhetoricTips.OPPONENT, _choice_party_name(row), hash(seed_base + "|tip")))
+	return lines
+
+
+## "A or B", "A, B, or C".
+func _names_or(names: Array[String]) -> String:
+	if names.size() == 2:
+		return Text.say("choice.or_two", {"first": names[0], "second": names[1]})
+	return Text.say("choice.or_many", {"list": ", ".join(PackedStringArray(names.slice(0, names.size() - 1))), "last": names[names.size() - 1]})
+
+
+## A party's opinion of the player moves by `delta` (the player's own party moves Party support); the line that says so.
+func _give_party_opinion(party_name: String, delta: int) -> String:
+	apply_floor_vote_favorability({party_name: delta}, _cause)
+	return Text.say("choice.opinion", {"party": party_name, "delta": "%+d" % delta})
+
+
+## A rhetoric tip held from the cafeteria: about a room on offer (with a Favored Suit) or about an opponent of `party_name`. [] when none fits.
+func _give_choice_tip(kind: String, party_name: String, seed_value: int) -> Array[String]:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = absi(seed_value)
+	var made := {}
+	var line := ""
+	if kind == RhetoricTips.STAGE:
+		var seen := {}
+		var rooms: Array = []
+		for room: Dictionary in desk_rooms():
+			if not seen.has(str(room["stage_id"])):
+				seen[str(room["stage_id"])] = true
+				rooms.append(room)
+		if rooms.is_empty():
+			return []
+		var room: Dictionary = rooms[rng.randi_range(0, rooms.size() - 1)]
+		var suit := str(DataDB.get_stage(str(room["stage_id"])).get("favored_suit", ""))
+		made = {"kind": RhetoricTips.STAGE, "target": str(room["stage_id"]), "suit": suit}
+		line = Text.say("choice.tip_stage_line", {"stage": str(room["stage"]), "phrase": VenueViews.rhetoric_phrase(suit)})
+	else:
+		var people: Array = []
+		for person: Dictionary in (tip_targets().get(RhetoricTips.OPPONENT, []) as Array):
+			if PartyDisplay.party_name(DataDB.get_opponent(str(person["id"]))) == party_name:
+				people.append(person)
+		if people.is_empty():
+			return []
+		var person: Dictionary = people[rng.randi_range(0, people.size() - 1)]
+		made = {"kind": RhetoricTips.OPPONENT, "target": str(person["id"]), "suit": str(person["suit"])}
+		line = Text.say("choice.tip_opponent_line", {"name": str(DataDB.get_opponent(str(person["id"])).get("name", "")),
+			"phrase": VenueViews.rhetoric_phrase(str(person["suit"]))})
+	held_tips = RhetoricTips.add(held_tips, RhetoricTips.make(made, "cafeteria", venue_today()), int(DataDB.get_rule("tips_max_held", 10)))
+	tips_held()
+	return [line]
 
 
 ## Counts a move to a place (`screen` is "" or "tracks") and, when a line is due, returns it: {"line": the row, "speaker": the speaker ID or "",
