@@ -12276,5 +12276,614 @@
     "english": "The campaign fund cannot cover it.",
     "placeholders": null,
     "notes": "P20 phase A (2026-11-26): a refusal a button shows; a draft for Cameron."
+  },
+  {
+    "key": "campaign.reason.in_level",
+    "where": "P20 campaign: campaign.reason",
+    "english": "A level is in progress.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.pick_org",
+    "where": "P20 campaign: campaign.reason",
+    "english": "Choose an organization first.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.not_district",
+    "where": "P20 campaign: campaign.reason",
+    "english": "Donations are made at your district office.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.no_funds",
+    "where": "P20 campaign: campaign.reason",
+    "english": "Not enough Funds.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.van_max",
+    "where": "P20 campaign: campaign.reason",
+    "english": "The van is fully upgraded.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.hire_blocked",
+    "where": "P20 campaign: campaign.reason",
+    "english": "Campaign staff cannot be hired until the new year.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.not_available",
+    "where": "P20 campaign: campaign.reason",
+    "english": "This person is not available yet.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.already_hired",
+    "where": "P20 campaign: campaign.reason",
+    "english": "Already on your campaign.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.no_capital",
+    "where": "P20 campaign: campaign.reason",
+    "english": "Not enough campaign capital.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.not_hired",
+    "where": "P20 campaign: campaign.reason",
+    "english": "Not on your campaign.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.top_tier",
+    "where": "P20 campaign: campaign.reason",
+    "english": "Already at their highest rank.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.tab.actions",
+    "where": "P20 campaign: campaign.tab",
+    "english": "Actions",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.stat.strength",
+    "where": "P20 campaign: campaign.stat",
+    "english": "Campaign strength",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.stat.line",
+    "where": "P20 campaign: campaign.stat",
+    "english": "{name}: {value}",
+    "placeholders": "name, value",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.hours",
+    "where": "P20 campaign: campaign.action",
+    "english": "{hours} h",
+    "placeholders": "hours",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.cost_xp",
+    "where": "P20 campaign: campaign.action",
+    "english": "{xp} XP",
+    "placeholders": "xp",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.cost_fund",
+    "where": "P20 campaign: campaign.action",
+    "english": "{yen}円 from the campaign fund",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.button",
+    "where": "P20 campaign: campaign.action",
+    "english": "{name} · {hours} h",
+    "placeholders": "hours, name",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.blurb_fundraise",
+    "where": "P20 campaign: campaign.action",
+    "english": "Telephone supporters and ask for a donation. The effort becomes campaign capital.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.blurb_letters",
+    "where": "P20 campaign: campaign.action",
+    "english": "Write to one organization to win its goodwill. The effort becomes campaign capital.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.blurb_mailings",
+    "where": "P20 campaign: campaign.action",
+    "english": "Mail every local organization and the district. The effort becomes campaign capital.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.blurb_van",
+    "where": "P20 campaign: campaign.action",
+    "english": "Drive the van and speak through the loudspeaker. It costs the campaign fund and a little goodwill.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.preview.fundraise",
+    "where": "P20 campaign: campaign.preview",
+    "english": "Raises {yen}円 for the campaign fund.",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.preview.letters",
+    "where": "P20 campaign: campaign.preview",
+    "english": "Standing {delta} with the organization you choose.",
+    "placeholders": "delta",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.preview.mailings",
+    "where": "P20 campaign: campaign.preview",
+    "english": "Standing {delta} with each local organization; District awareness {district}.",
+    "placeholders": "delta, district",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.preview.national",
+    "where": "P20 campaign: campaign.preview",
+    "english": "National awareness {delta}.",
+    "placeholders": "delta",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.preview.van",
+    "where": "P20 campaign: campaign.preview",
+    "english": "District awareness {district}; standing {penalty} with {orgs}.",
+    "placeholders": "district, orgs, penalty",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.result.title",
+    "where": "P20 campaign: campaign.result",
+    "english": "Campaign action",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.result.fund_gain",
+    "where": "P20 campaign: campaign.result",
+    "english": "The campaign fund gains {yen}円.",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.result.fund_lost",
+    "where": "P20 campaign: campaign.result",
+    "english": "{yen}円 did not fit and was lost.",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.result.standing",
+    "where": "P20 campaign: campaign.result",
+    "english": "{org}: standing {delta}.",
+    "placeholders": "delta, org",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.result.district",
+    "where": "P20 campaign: campaign.result",
+    "english": "District awareness {delta}.",
+    "placeholders": "delta",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.result.national",
+    "where": "P20 campaign: campaign.result",
+    "english": "National awareness {delta}.",
+    "placeholders": "delta",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.result.capital",
+    "where": "P20 campaign: campaign.result",
+    "english": "Campaign capital +{count}.",
+    "placeholders": "count",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.result.continue",
+    "where": "P20 campaign: campaign.result",
+    "english": "Back to the Campaign Office",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.letters.title",
+    "where": "P20 campaign: campaign.letters",
+    "english": "Who should the letters go to?",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.letters.row",
+    "where": "P20 campaign: campaign.letters",
+    "english": "{org} · standing {standing}",
+    "placeholders": "org, standing",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.intro",
+    "where": "P20 campaign: campaign.staff",
+    "english": "Campaign staff work only for the campaign and are paid from the campaign fund. They go home after Election Day.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.hire",
+    "where": "P20 campaign: campaign.staff",
+    "english": "Hire",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.upgrade",
+    "where": "P20 campaign: campaign.staff",
+    "english": "Upgrade to tier {tier}",
+    "placeholders": "tier",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.cost",
+    "where": "P20 campaign: campaign.staff",
+    "english": "{capital} campaign capital and {yen}円 from the fund",
+    "placeholders": "capital, yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.wage",
+    "where": "P20 campaign: campaign.staff",
+    "english": "Wage {yen}円 a week",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.loyalty",
+    "where": "P20 campaign: campaign.staff",
+    "english": "Loyalty: {word}",
+    "placeholders": "word",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.tier",
+    "where": "P20 campaign: campaign.staff",
+    "english": "Tier {tier}",
+    "placeholders": "tier",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.unavailable",
+    "where": "P20 campaign: campaign.staff",
+    "english": "Not available yet.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.chain",
+    "where": "P20 campaign: campaign.staff",
+    "english": "Found through a Campaign Moment!",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.intro",
+    "where": "P20 campaign: campaign.van",
+    "english": "The van carries your voice. Each tier adds to the van speech.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.buy",
+    "where": "P20 campaign: campaign.van",
+    "english": "Buy the van · {yen}円",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.upgrade",
+    "where": "P20 campaign: campaign.van",
+    "english": "Upgrade the van to tier {tier} · {yen}円",
+    "placeholders": "tier, yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.owned",
+    "where": "P20 campaign: campaign.van",
+    "english": "Your van: tier {tier}",
+    "placeholders": "tier",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.none",
+    "where": "P20 campaign: campaign.van",
+    "english": "You have no van yet.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.price",
+    "where": "P20 campaign: campaign.van",
+    "english": "{yen}円 from the campaign fund",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.donate.title",
+    "where": "P20 campaign: campaign.donate",
+    "english": "Donate to your campaign",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.donate.body",
+    "where": "P20 campaign: campaign.donate",
+    "english": "Move some of your own Funds into the campaign fund. This cannot be undone.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.donate.step",
+    "where": "P20 campaign: campaign.donate",
+    "english": "{yen}円",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.donate.done",
+    "where": "P20 campaign: campaign.donate",
+    "english": "{yen}円 moved into the campaign fund.",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.donate.choose",
+    "where": "P20 campaign: campaign.donate",
+    "english": "Choose an amount.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase_note.building",
+    "where": "P20 campaign: campaign.phase_note",
+    "english": "{days} days to Banners of War Rising",
+    "placeholders": "days",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase_note.mustering",
+    "where": "P20 campaign: campaign.phase_note",
+    "english": "{days} days to the campaign · ×{sprint}",
+    "placeholders": "days, sprint",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase_note.campaign",
+    "where": "P20 campaign: campaign.phase_note",
+    "english": "{days} days to Sengoku no Hi",
+    "placeholders": "days",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase_note.election_day",
+    "where": "P20 campaign: campaign.phase_note",
+    "english": "Election Day",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.phase_line",
+    "where": "P20 campaign: campaign.office",
+    "english": "Now: {phase}",
+    "placeholders": "phase",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.week.wages",
+    "where": "P20 campaign: campaign.week",
+    "english": "Campaign staff wages: {yen}円 from the campaign fund.",
+    "placeholders": "yen",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.week.missed",
+    "where": "P20 campaign: campaign.week",
+    "english": "{name} was not paid.",
+    "placeholders": "name",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.week.rank_lost",
+    "where": "P20 campaign: campaign.week",
+    "english": "{name} lost a rank.",
+    "placeholders": "name",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.week.quit",
+    "where": "P20 campaign: campaign.week",
+    "english": "{name} left the campaign.",
+    "placeholders": "name",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.week.faded",
+    "where": "P20 campaign: campaign.week",
+    "english": "{count} campaign capital faded.",
+    "placeholders": "count",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "record.cause_campaign",
+    "where": "P20 campaign: record.cause_campaign",
+    "english": "Campaign",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase.announcement_jp",
+    "where": "P20 campaign: campaign.phase",
+    "english": "旗揚げ",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase.mustering_jp",
+    "where": "P20 campaign: campaign.phase",
+    "english": "出陣準備",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase.campaign_jp",
+    "where": "P20 campaign: campaign.phase",
+    "english": "選挙戦",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.announcement.kicker",
+    "where": "P20 campaign: campaign.banner",
+    "english": "The Prime Minister speaks · {date}",
+    "placeholders": "date",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.announcement.sub",
+    "where": "P20 campaign: campaign.banner",
+    "english": "The election is called for {election_day}. The party opens its muster today: {weeks} weeks to make your case to the Candidate Selection Committee.",
+    "placeholders": "election_day, weeks",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.announcement.cta",
+    "where": "P20 campaign: campaign.banner",
+    "english": "Raise the banners",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.mustering.kicker",
+    "where": "P20 campaign: campaign.banner",
+    "english": "{weeks} weeks · {from} to {to}",
+    "placeholders": "from, to, weeks",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.mustering.sub",
+    "where": "P20 campaign: campaign.banner",
+    "english": "{actions} campaign actions a week, each worth half again as much. Campaign strength can rise up to {gain} a week.",
+    "placeholders": "actions, gain",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.mustering.cta",
+    "where": "P20 campaign: campaign.banner",
+    "english": "To the Campaign Office",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.campaign.kicker",
+    "where": "P20 campaign: campaign.banner",
+    "english": "{days} days · {from} to {to}",
+    "placeholders": "days, from, to",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.campaign.sub",
+    "where": "P20 campaign: campaign.banner",
+    "english": "The committee has ruled. From today only your hours limit the campaign.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.campaign.cta",
+    "where": "P20 campaign: campaign.banner",
+    "english": "Into the arena",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.election_day.kicker",
+    "where": "P20 campaign: campaign.banner",
+    "english": "{weekday} {date}",
+    "placeholders": "date, weekday",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.election_day.sub",
+    "where": "P20 campaign: campaign.banner",
+    "english": "Election Day. The polls open at 7:00. There is nothing left to do but wait for the count.",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.banner.election_day.cta",
+    "where": "P20 campaign: campaign.banner",
+    "english": "Wait for the count",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.howto.title",
+    "where": "P20 campaign: campaign.howto",
+    "english": "How the campaign works",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.howto.page",
+    "where": "P20 campaign: campaign.howto",
+    "english": "{n} of {total}",
+    "placeholders": "n, total",
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.howto.next",
+    "where": "P20 campaign: campaign.howto",
+    "english": "Next",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.howto.done",
+    "where": "P20 campaign: campaign.howto",
+    "english": "Got it",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
   }
 ]

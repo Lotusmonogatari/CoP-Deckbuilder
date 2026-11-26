@@ -491,5 +491,11 @@
     "options": "an organization ID",
     "question": "The organization a Campaign Van Announcer's flat bonus goes to on a van speech (Constituency Voters).",
     "notes": "P20 (2026-11-26, Cameron)."
+  },
+  "campaign_donate_steps": {
+    "value": "10000;50000;100000;500000",
+    "options": "yen amounts separated by semicolons",
+    "question": "The amounts the Donate to your campaign button offers (Funds moved into the campaign fund, one way).",
+    "notes": "P20 phase B (2026-11-26, Cameron)."
   }
 }

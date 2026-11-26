@@ -699,7 +699,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters", "run_stats",
 	"bill_stance",
@@ -940,6 +940,13 @@ func reset_crisis_triggers() -> void:
 	campaign_fund = 0
 	campaign_capital = 0
 	venues_opened = []
+	campaign_staff_hired = []
+	campaign_staff_unlocked = []
+	campaign_van_tier = -1
+	campaign_actions_week = 0
+	campaign_staff_weeks = {}
+	campaign_howto_seen = false
+	campaign_banners_shown = []
 	event_last_at = {}
 	discovered_levels = []
 	dated_events_done = []
@@ -2288,6 +2295,339 @@ func apply_awareness_gaffes(gaffes: int) -> void:
 
 # ---------------------------------------------------------------------------
 # Election strength (2026-10-23, Cameron): built and shown, fires no outcome.
+
+# ---------------------------------------------------------------------------
+# The campaign (P20 phase B, 2026-11-26, Cameron). The rules are CampaignOffice, CampaignStaff, ElectionCycle and PartyAlignment; this is the
+# run's side: the ledgers, the staff, the van, the week's count, what a button does and what the week's end settles.
+# ---------------------------------------------------------------------------
+
+const CAMPAIGN_VENUE := "VN10"
+
+## The campaign staff hired (CampaignStaff members), the chain candidates a Campaign Moment! has found (phase C), the van's tier (-1 none), the
+## actions taken this week, the weeks each hire has served, whether the how-to pages were shown, and the phase banners already shown.
+var campaign_staff_hired: Array = []
+var campaign_staff_unlocked: Array = []
+var campaign_van_tier := -1
+var campaign_actions_week := 0
+var campaign_staff_weeks: Dictionary = {}
+var campaign_howto_seen := false
+var campaign_banners_shown: Array = []
+
+
+func campaign_office_open() -> bool:
+	return venues_opened.has(CAMPAIGN_VENUE)
+
+
+func campaign_today() -> int:
+	return WeekCalendar.today_number(calendar, calendar_config())
+
+
+## "" while the player's own campaign is open; "stepped_aside" in the cycle the player does not run in (phase D adds "not_selected").
+func campaign_locked() -> String:
+	return "" if bool(election_phase()["player_runs"]) else "stepped_aside"
+
+
+## What CampaignOffice reads: the run's readings for today.
+func campaign_state() -> Dictionary:
+	var constituency: Array[String] = []
+	for booster: Dictionary in DataDB.boosters:
+		if str(booster.get("tier", "")) == "Constituency":
+			constituency.append(str(booster.get("booster_id", "")))
+	var penalty: Array[String] = []
+	for id: String in str(DataDB.get_rule("campaign_van_speech_penalty_orgs", "")).split(";"):
+		if not id.strip_edges().is_empty():
+			penalty.append(id.strip_edges())
+	return {"office_open": campaign_office_open(), "locked": campaign_locked(), "work_hours_left": 0 if in_weekend() else work_hours_left(),
+		"actions_this_week": campaign_actions_week, "phase": str(election_phase()["phase"]), "xp": xp, "campaign_fund": campaign_fund,
+		"van_tier": campaign_van_tier, "staff": campaign_staff_hired, "date": campaign_today(), "penalty_orgs": penalty,
+		"voters_org": str(DataDB.get_rule("campaign_van_voters_org", "")), "constituency_orgs": constituency}
+
+
+## Why a campaign action cannot be taken now, in words, or "".
+func campaign_refusal(kind: String) -> String:
+	if is_in_level():
+		return Text.say("campaign.reason.in_level")
+	var verdict := CampaignOffice.can_act(kind, campaign_state())
+	return "" if bool(verdict["ok"]) else Text.say(str(verdict["reason_key"]))
+
+
+## Takes a campaign action: {ok, reason, result, lines}. `target_org` is the organization the letters go to. The hours, the Political Capital,
+## the campaign fund, standing and awareness all move here, once.
+func campaign_act(kind: String, target_org: String = "") -> Dictionary:
+	var why := campaign_refusal(kind)
+	if why.is_empty() and kind == CampaignOffice.LETTERS and target_org.is_empty():
+		why = Text.say("campaign.reason.pick_org")
+	if not why.is_empty():
+		return {"ok": false, "reason": why, "result": {}, "lines": []}
+	var result := CampaignOffice.resolve(kind, campaign_state(), target_org)
+	spend_hours(int(result["hours"]))
+	if int(result["xp_spent"]) > 0:
+		_move_xp(-int(result["xp_spent"]))
+	campaign_capital = CampaignOffice.capital_after_spend(campaign_capital, int(result["xp_spent"]))
+	campaign_fund -= int(result["fund_spent"])
+	var lines: Array[String] = []
+	if int(result["fund_gain"]) > 0:
+		var income := CampaignOffice.fund_after_income(campaign_fund, int(result["fund_gain"]))
+		campaign_fund = int(income["fund"])
+		lines.append(Text.say("campaign.result.fund_gain", {"yen": int(result["fund_gain"]) - int(income["lost"])}))
+		if int(income["lost"]) > 0:
+			lines.append(Text.say("campaign.result.fund_lost", {"yen": int(income["lost"])}))
+	for org: String in (result["standing"] as Dictionary).keys():
+		var delta := int((result["standing"] as Dictionary)[org])
+		_under_cause(Text.say("record.cause_campaign"), func() -> void: _apply_booster_delta(org, delta))
+		lines.append(Text.say("campaign.result.standing", {"org": str(DataDB.get_booster(org).get("name_en", org)), "delta": "%+d" % delta}))
+	if int(result["district"]) != 0:
+		apply_awareness_delta("district", int(result["district"]))
+		lines.append(Text.say("campaign.result.district", {"delta": "%+d" % int(result["district"])}))
+	if int(result["national"]) != 0:
+		apply_awareness_delta("national", int(result["national"]))
+		lines.append(Text.say("campaign.result.national", {"delta": "%+d" % int(result["national"])}))
+	if int(result["capital_gained"]) > 0:
+		lines.append(Text.say("campaign.result.capital", {"count": int(result["capital_gained"])}))
+	campaign_actions_week += 1
+	return {"ok": true, "reason": "", "result": result, "lines": lines}
+
+
+## The amounts the District office's Donate button offers (Rules campaign_donate_steps, semicolons).
+func campaign_donate_steps() -> Array[int]:
+	var steps: Array[int] = []
+	for piece: String in str(DataDB.get_rule("campaign_donate_steps", "")).split(";"):
+		if piece.strip_edges().is_valid_int():
+			steps.append(int(piece.strip_edges()))
+	return steps
+
+
+## Whether the Donate button shows: at the District office, with the Campaign Office open and the player's own campaign open.
+func campaign_donate_visible() -> bool:
+	return office_location == Offices.DISTRICT and campaign_office_open() and campaign_locked().is_empty()
+
+
+## Moves `amount` of the player's Funds into the campaign fund, one way: "" when done, else why not.
+func campaign_donate(amount: int) -> String:
+	if not campaign_donate_visible():
+		return Text.say("campaign.reason.not_district")
+	if amount <= 0:
+		return Text.say("campaign.donate.choose")
+	if int(meta.get("Funds", 0)) < amount:
+		return Text.say("campaign.reason.no_funds")
+	_move_meta("Funds", -amount)
+	campaign_fund = int(CampaignOffice.fund_after_income(campaign_fund, amount)["fund"])
+	return ""
+
+
+# --- The van -----------------------------------------------------------------------------------------------------------------------
+
+## What the next van step costs from the campaign fund (buying it, then tier 1, then tier 2), or -1 at the top.
+func campaign_van_next_cost() -> int:
+	var next := campaign_van_tier + 1
+	return Levers.whole("campaign_van_tier_%d_cost" % next) if next <= 2 else -1
+
+
+func campaign_van_refusal() -> String:
+	if not campaign_office_open() or not campaign_locked().is_empty():
+		return Text.say("campaign.reason.office_closed")
+	if campaign_van_next_cost() < 0:
+		return Text.say("campaign.reason.van_max")
+	if campaign_fund < campaign_van_next_cost():
+		return Text.say("campaign.reason.no_fund")
+	return ""
+
+
+func campaign_buy_van() -> String:
+	var why := campaign_van_refusal()
+	if not why.is_empty():
+		return why
+	campaign_fund -= campaign_van_next_cost()
+	campaign_van_tier += 1
+	return ""
+
+
+# --- Campaign staff ----------------------------------------------------------------------------------------------------------------
+
+func campaign_member(staff_id: String) -> Dictionary:
+	for member: Variant in campaign_staff_hired:
+		if str((member as Dictionary).get("staff_id", "")) == staff_id:
+			return member as Dictionary
+	return {}
+
+
+## Every Campaign Staff row with what the player can do about it: [{row, member, available}] in the tab's order.
+func campaign_staff_rows() -> Array:
+	var out: Array = []
+	for row: Dictionary in DataDB.campaign_staff:
+		out.append({"row": row, "member": campaign_member(str(row["staff_id"])),
+			"available": CampaignStaff.available(row, campaign_office_open(), campaign_staff_unlocked)})
+	return out
+
+
+func _campaign_row(staff_id: String) -> Dictionary:
+	for row: Dictionary in DataDB.campaign_staff:
+		if str(row["staff_id"]) == staff_id:
+			return row
+	return {}
+
+
+func campaign_hire_refusal(staff_id: String) -> String:
+	var row := _campaign_row(staff_id)
+	if row.is_empty() or not CampaignStaff.available(row, campaign_office_open(), campaign_staff_unlocked):
+		return Text.say("campaign.reason.not_available")
+	if not campaign_locked().is_empty():
+		return Text.say("campaign.office.locked_stepped_aside")
+	if not campaign_member(staff_id).is_empty():
+		return Text.say("campaign.reason.already_hired")
+	if not CampaignStaff.can_hire_on(campaign_today(), DataDB.election_cycles, campaign_office_open()):
+		return Text.say("campaign.reason.hire_blocked")
+	var cost := CampaignStaff.hire_cost()
+	if campaign_capital < int(cost["capital"]):
+		return Text.say("campaign.reason.no_capital")
+	if campaign_fund < int(cost["yen"]):
+		return Text.say("campaign.reason.no_fund")
+	return ""
+
+
+func campaign_hire(staff_id: String) -> String:
+	var why := campaign_hire_refusal(staff_id)
+	if not why.is_empty():
+		return why
+	var cost := CampaignStaff.hire_cost()
+	campaign_capital -= int(cost["capital"])
+	campaign_fund -= int(cost["yen"])
+	campaign_staff_hired.append(CampaignStaff.hire(_campaign_row(staff_id)))
+	campaign_staff_weeks[staff_id] = 0
+	return ""
+
+
+func campaign_upgrade_refusal(staff_id: String) -> String:
+	var member := campaign_member(staff_id)
+	if member.is_empty():
+		return Text.say("campaign.reason.not_hired")
+	var row := _campaign_row(staff_id)
+	var tier := int(member.get("tier", 0))
+	if tier >= CampaignStaff.highest_tier(row):
+		return Text.say("campaign.reason.top_tier")
+	var cost := CampaignStaff.upgrade_cost(tier)
+	if campaign_capital < int(cost["capital"]):
+		return Text.say("campaign.reason.no_capital")
+	if campaign_fund < int(cost["yen"]):
+		return Text.say("campaign.reason.no_fund")
+	return ""
+
+
+func campaign_upgrade(staff_id: String) -> String:
+	var why := campaign_upgrade_refusal(staff_id)
+	if not why.is_empty():
+		return why
+	var member := campaign_member(staff_id)
+	var cost := CampaignStaff.upgrade_cost(int(member.get("tier", 0)))
+	campaign_capital -= int(cost["capital"])
+	campaign_fund -= int(cost["yen"])
+	var next := CampaignStaff.upgraded(member, _campaign_row(staff_id))
+	campaign_staff_hired[campaign_staff_hired.find(member)] = next
+	return ""
+
+
+# --- Alignment, the week's end and the phase banners ---------------------------------------------------------------------------------
+
+## How closely the player's votes match their own party, 0 to 100 (PartyAlignment): floor-vote bills and composed bills both carry positions.
+func party_alignment() -> int:
+	var bills := {}
+	for law: Variant in statute_book:
+		var bill_id := str((law as Dictionary).get("bill_id", ""))
+		var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
+		if bill.is_empty():
+			for entry: Variant in patron_composed.values():
+				var composed: Dictionary = (entry as Dictionary).get("bill", {})
+				if str(composed.get("bill_id", "")) == bill_id:
+					bill = composed
+		bills[bill_id] = bill
+	return PartyAlignment.score(statute_book, bills, own_party_id())
+
+
+## The campaign's part of a week's end, after the dues and the staff wages and before the strength step: campaign staff wages from the fund,
+## Loyalty, capital fading, and the week's action count back to zero. Returns lines for the new-week popup.
+func _settle_campaign_week() -> Array[String]:
+	var lines: Array[String] = []
+	if not campaign_staff_hired.is_empty():
+		var settled := CampaignStaff.settle_week(campaign_staff_hired, campaign_fund)
+		campaign_fund -= int(settled["spent"])
+		if int(settled["spent"]) > 0:
+			lines.append(Text.say("campaign.week.wages", {"yen": int(settled["spent"])}))
+		var leaving: Array = []
+		for member: Variant in campaign_staff_hired.duplicate():
+			var staff := member as Dictionary
+			var id := str(staff.get("staff_id", ""))
+			var row := _campaign_row(id)
+			var name := str(row.get("name", id))
+			var paid := (settled["paid"] as Array).has(id)
+			var weeks := int(campaign_staff_weeks.get(id, 0)) + 1
+			campaign_staff_weeks[id] = weeks
+			var change := StaffLoyalty.weekly_total(paid, 0, StaffLoyalty.tenure_gain(weeks),
+				StaffLoyalty.pride_gain(int(staff.get("tier", 0)), int(row.get("starting_tier", 0))), 0)
+			var outcome := StaffLoyalty.after_week(clampi(int(staff.get("loyalty", 0)) + change, 0, 100), not paid, int(staff.get("tier", 0)), int(row.get("starting_tier", 0)))
+			var updated := staff.duplicate()
+			updated["loyalty"] = int(outcome["loyalty"])
+			if bool(outcome["rank_lost"]):
+				updated["tier"] = maxi(int(row.get("starting_tier", 0)), int(staff.get("tier", 0)) - 1)
+				lines.append(Text.say("campaign.week.rank_lost", {"name": name}))
+			if not paid:
+				lines.append(Text.say("campaign.week.missed", {"name": name}))
+			campaign_staff_hired[campaign_staff_hired.find(member)] = updated
+			if bool(outcome["quits"]):
+				leaving.append(updated)
+				lines.append(Text.say("campaign.week.quit", {"name": name}))
+		for gone: Variant in leaving:
+			campaign_staff_hired.erase(gone)
+	var faded := CampaignOffice.capital_after_week(campaign_capital)
+	if faded < campaign_capital:
+		lines.append(Text.say("campaign.week.faded", {"count": campaign_capital - faded}))
+	campaign_capital = faded
+	campaign_actions_week = 0
+	return lines
+
+
+## Every campaign staff member goes home the day after an Election Day (no firing cost). `from_day` and `to_day` are the day numbers before
+## and after the week's end moved the calendar. Returns a line for the new-week popup, or none.
+func _campaign_after_election(from_day: int, to_day: int) -> Array[String]:
+	if campaign_staff_hired.is_empty() or not ElectionCycle.passed_between(from_day, to_day, DataDB.election_cycles):
+		return []
+	campaign_staff_hired = CampaignStaff.after_leaving(campaign_staff_hired)
+	campaign_staff_weeks = {}
+	return [Text.say("campaign.staff.left")]
+
+
+## The phase banner the Office should show now, or {}: {key, pages, cycle_id}. Banners of War Rising (then Mustering the War Campaign) on the
+## Banners date, Gladiators of War Unleashed on Campaign Open and Sengoku no Hi on Election Day; a banner missed (the date passed mid-week) shows
+## the next time the Office opens. None in the cycle the player does not run in. A banner already shown is never due again.
+func campaign_banner_due() -> Dictionary:
+	var info := election_phase()
+	if str(info["cycle_id"]).is_empty() or not bool(info["player_runs"]):
+		return {}
+	var today := campaign_today()
+	var latest := {}
+	for phase: String in [ElectionCycle.ANNOUNCEMENT, ElectionCycle.CAMPAIGN, ElectionCycle.ELECTION_DAY]:
+		var start := ElectionCycle.start_of(phase, today, DataDB.election_cycles)
+		if start >= 0 and today >= start:
+			latest = {"key": "%s:%s" % [info["cycle_id"], phase], "phase": phase}
+	if latest.is_empty() or campaign_banners_shown.has(str(latest["key"])):
+		return {}
+	var pages: Array[String] = [str(latest["phase"])]
+	if str(latest["phase"]) == ElectionCycle.ANNOUNCEMENT:
+		pages.append(ElectionCycle.MUSTERING)
+	return {"key": str(latest["key"]), "pages": pages, "cycle_id": str(info["cycle_id"])}
+
+
+## Remembers a banner as shown (and the ones before it in the cycle, so a late save does not show three in a row).
+func campaign_banner_shown(key: String) -> void:
+	if not campaign_banners_shown.has(key):
+		campaign_banners_shown.append(key)
+	var cycle := key.get_slice(":", 0)
+	var order: Array[String] = [ElectionCycle.ANNOUNCEMENT, ElectionCycle.CAMPAIGN, ElectionCycle.ELECTION_DAY]
+	var at := order.find(key.get_slice(":", 1))
+	for i in range(0, maxi(at, 0)):
+		var earlier := "%s:%s" % [cycle, order[i]]
+		if not campaign_banners_shown.has(earlier):
+			campaign_banners_shown.append(earlier)
+
 
 ## Opens a venue that a scene unlocks (a no-op for an ID that is already open).
 func open_venue(venue_id: String) -> void:
@@ -4464,14 +4804,17 @@ func go_home() -> Dictionary:
 	staff_day_sync(true)   # the day being left counts if it was confirmed
 	var staff_report := _settle_staff_week()
 	var awareness_lines := _apply_awareness_week_end()
+	var campaign_lines := _settle_campaign_week()
 	_update_election_strength()
+	var day_before := campaign_today()
 	var moved := WeekCalendar.go_home(calendar, calendar_config())
 	calendar = moved["state"]
 	_advance_clock(int(moved["skipped"]))
+	campaign_lines.append_array(_campaign_after_election(day_before, campaign_today()))
 	_apply_week_decay()
 	check_crisis_triggers()
 	event_roll_due = true
-	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines, "staff": staff_report}
+	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines, "staff": staff_report, "campaign": campaign_lines}
 
 
 ## What the awareness effects take off the base dues (National Awareness at 80

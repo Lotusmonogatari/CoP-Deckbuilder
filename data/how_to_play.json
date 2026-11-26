@@ -416,5 +416,60 @@
     "screenshot": null,
     "caption": null,
     "video": null
+  },
+  {
+    "entry_id": "HT39",
+    "order": 190.0,
+    "group": "The Campaign",
+    "heading_en": "The campaign fund",
+    "heading_jp": null,
+    "body_en": "The Campaign Office runs on its own money: the campaign fund. Fundraising fills it, and you can donate your own Funds at the district office. Every campaign cost comes out of it.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT40",
+    "order": 191.0,
+    "group": "The Campaign",
+    "heading_en": "Campaign capital",
+    "heading_jp": null,
+    "body_en": "Political Capital spent here becomes campaign capital, which counts toward your campaign strength. It fades a little each week, so keep the office busy.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT41",
+    "order": 192.0,
+    "group": "The Campaign",
+    "heading_en": "Campaign actions",
+    "heading_jp": null,
+    "body_en": "Until the campaign opens you can take two campaign actions a week. Once Gladiators of War Unleashed begins, only your hours limit you.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT42",
+    "order": 193.0,
+    "group": "The Campaign",
+    "heading_en": "Campaign staff",
+    "heading_jp": null,
+    "body_en": "Campaign staff work only on the campaign. They leave after Sengoku no Hi, and you can hire them again from January.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT43",
+    "order": 194.0,
+    "group": "The Campaign",
+    "heading_en": "Candidate selection",
+    "heading_jp": null,
+    "body_en": "On the morning the campaign opens, the Candidate Selection Committee reads your campaign strength, how closely you have voted with the party, and your standing with the party. If it does not select you, your career ends on Sengoku no Hi.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
   }
 ]

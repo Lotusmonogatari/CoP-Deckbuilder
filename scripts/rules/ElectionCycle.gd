@@ -115,3 +115,43 @@ static func run_end_date(cycles: Array) -> int:
 		if not bool(cycle["player_runs"]):
 			return int(cycle["day"])
 	return -1
+
+
+## Days from `date` to the next phase boundary the player is counting toward: {next, days}. While building it is the Banners date; during
+## announcement and mustering, Campaign Open; during the campaign, Election Day. {"", 0} on Election Day or after the last election.
+static func days_until_next_phase(date: int, cycles: Array) -> Dictionary:
+	var cycle := cycle_ahead(date, cycles)
+	if cycle.is_empty():
+		return {"next": "", "days": 0}
+	match str(phase_on(date, cycles)["phase"]):
+		BUILDING:
+			return {"next": ANNOUNCEMENT, "days": int(cycle["banners"]) - date}
+		ANNOUNCEMENT, MUSTERING:
+			return {"next": CAMPAIGN, "days": int(cycle["open"]) - date}
+		CAMPAIGN:
+			return {"next": ELECTION_DAY, "days": int(cycle["day"]) - date}
+	return {"next": "", "days": 0}
+
+
+## True when an Election Day falls from `from_day` up to (not including) `to_day`: a week that has just ended passed an election.
+static func passed_between(from_day: int, to_day: int, cycles: Array) -> bool:
+	for cycle: Dictionary in normalized(cycles):
+		if int(cycle["day"]) >= from_day and int(cycle["day"]) < to_day:
+			return true
+	return false
+
+
+## The day a phase starts in the cycle ahead of `date`: ANNOUNCEMENT and MUSTERING start on the Banners date, CAMPAIGN on Campaign Open,
+## ELECTION_DAY on Election Day. -1 when there is no cycle ahead or the phase is `building`.
+static func start_of(phase: String, date: int, cycles: Array) -> int:
+	var cycle := cycle_ahead(date, cycles)
+	if cycle.is_empty():
+		return -1
+	match phase:
+		ANNOUNCEMENT, MUSTERING:
+			return int(cycle["banners"])
+		CAMPAIGN:
+			return int(cycle["open"])
+		ELECTION_DAY:
+			return int(cycle["day"])
+	return -1
