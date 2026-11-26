@@ -14,7 +14,9 @@ var _texture_colour := Color(0.47, 0.35, 0.16, 0.07)
 
 ## `page`: {kicker, title, jp, sub, cta, phase}. Called inside CampaignLook.begin() so `_look` is the skin.
 func show_page(page: Dictionary) -> void:
+	# Taken out of the tree first, so the new page's nodes keep their names (a queued-for-free node still holds its name).
 	for child in get_children():
+		remove_child(child)
 		child.queue_free()
 	_look = OfficeFrameStyles.look()
 	name = "CampaignBannerPanel"

@@ -102,14 +102,14 @@ The dues limit (`dues_limit_cap_percent` of the Funds cap: 90,000円 at the star
 
 Balance and Rules rows whose key is named in no catalog row's Amount, Caps, Inputs, Source or Difficulty (a warning, not a failure). 79 presentation levers (images, scrolling, cue timing, colours and the like) are left out of this list.
 
-285 levers in 59 groups (by the first word of the key):
+288 levers in 59 groups (by the first word of the key):
 
 - **audience** (1): `audience_scale_largest_bonus`
 - **awareness** (2): `awareness_gaffes_per_national_point`, `awareness_maximum`
 - **bill** (3): `bill_position_lean_threshold`, `bill_question_share_percent`, `bill_vote_stage`
 - **brief** (2): `brief_standard_energy`, `brief_standard_hand`
 - **calendar** (1): `calendar_eras`
-- **campaign** (18): `campaign_announcer_district_bonus`, `campaign_announcer_voters_bonus`, `campaign_fundraise_yield`, `campaign_fundraiser_multiplier_tier_0`, `campaign_fundraiser_multiplier_tier_1`, `campaign_fundraiser_multiplier_tier_2`, `campaign_moments_per_week_late`, `campaign_organizer_letters_bonus`, `campaign_organizer_mailings_national`, `campaign_staff_hire_capital`, `campaign_staff_hire_yen`, `campaign_van_tier_0_cost`, `campaign_van_tier_1_cost`, `campaign_van_tier_2_cost`, `campaign_committee_org`, `campaign_office_open_date`, `campaign_van_speech_penalty_orgs`, `campaign_van_voters_org`
+- **campaign** (21): `campaign_announcer_district_bonus`, `campaign_announcer_voters_bonus`, `campaign_fundraise_yield`, `campaign_fundraiser_multiplier_tier_0`, `campaign_fundraiser_multiplier_tier_1`, `campaign_fundraiser_multiplier_tier_2`, `campaign_moments_per_week_late`, `campaign_organizer_letters_bonus`, `campaign_organizer_mailings_national`, `campaign_staff_hire_capital`, `campaign_staff_hire_yen`, `campaign_van_tier_0_cost`, `campaign_van_tier_1_cost`, `campaign_van_tier_2_cost`, `campaign_banner_parties`, `campaign_banner_spare_party`, `campaign_committee_org`, `campaign_office_open_date`, `campaign_skin`, `campaign_van_speech_penalty_orgs`, `campaign_van_voters_org`
 - **cap** (9): `cap_call_finance_min_standing`, `cap_call_finance_standing`, `cap_call_finance_xp`, `cap_call_finance_yen`, `cap_call_min_support`, `cap_call_party_support`, `cap_call_xp`, `cap_call_yen`, `cap_call_finance_org`
 - **custom** (1): `custom_law_scale_percent`
 - **decay** (1): `decay_interval`
