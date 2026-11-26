@@ -23,17 +23,29 @@ static func _line(text: String, small: bool = false) -> Label:
 ## The committee's card: its three parts, the score and what it decided.
 static func selection_config(result: Dictionary) -> Dictionary:
 	var body: Array[Control] = [_line(Text.say("selection.intro"))]
-	body.append(_line(Text.say("selection.part_line", {"name": Text.say("selection.part.strength"), "value": str(roundi(float(result["strength"])))}), true))
-	body.append(_line(Text.say("selection.part_line", {"name": Text.say("selection.part.alignment"), "value": str(roundi(float(result["alignment"])))}), true))
-	body.append(_line(Text.say("selection.part_line", {"name": Text.say("selection.part.influence"), "value": str(roundi(float(result["influence"])))}), true))
+	var skin := CampaignViews.look() if not UiStyle.scope.is_empty() else {}
+	for part: Array in [["selection.part.strength", float(result["strength"])], ["selection.part.alignment", float(result["alignment"])], ["selection.part.influence", float(result["influence"])]]:
+		var part_name := Text.say(str(part[0]))
+		body.append(_line(Text.say("selection.part_line", {"name": part_name, "value": str(roundi(float(part[1])))}), true))
+		if not skin.is_empty():
+			body.append(CampaignSkinParts.bar(skin, float(part[1]) / 100.0))   # a bar under each of the three parts (P22)
 	body.append(_line(Text.say("selection.score_line", {"score": int(result["score"])}), true))
 	var outcome := str(result["outcome"])
-	var headline := UiKit.heading(outcome_text(outcome))
-	headline.name = "SelectionOutcome"
-	body.append(headline)
+	if skin.is_empty():
+		var headline := UiKit.heading(outcome_text(outcome))
+		headline.name = "SelectionOutcome"
+		body.append(headline)
+	else:
+		# The outcome is a tilted stamp; Not Selected wears the same stamp in the same colour.
+		var stamp_word := Text.say("selection.stamp_not_selected") if outcome == Selection.NOT_SELECTED else Text.say("selection.stamp_selected")
+		var stamp := CampaignSkinParts.stamp(skin, stamp_word, "" if outcome == Selection.NOT_SELECTED else outcome_text(outcome))
+		stamp.name = "SelectionOutcome"
+		body.append(stamp)
 	body.append(_line(Text.say("selection.not_selected_note") if outcome == Selection.NOT_SELECTED else Text.say("selection.selected_note"), true))
-	return {"tag": Text.say("selection.tag"), "tag_kind": PopupCardStyles.ALARM if outcome == Selection.NOT_SELECTED else PopupCardStyles.GOOD,
+	var config := {"tag": Text.say("selection.tag"), "tag_kind": PopupCardStyles.ALARM if outcome == Selection.NOT_SELECTED else PopupCardStyles.GOOD,
 		"title": Text.say("selection.title"), "body": body, "meta": WeekCalendar.date_label(GameState.campaign_today())}
+	_skin_card(config)
+	return config
 
 
 static func source_text(source_key: String) -> String:
@@ -66,11 +78,22 @@ static func mover_text(key: String) -> String:
 	return ""
 
 
+## A card in the campaign skin wears its emblem and the skin's label colour (the accent) instead of the green and red tags (P22).
+static func _skin_card(config: Dictionary) -> void:
+	if UiStyle.scope.is_empty():
+		return
+	config["tag_icon"] = CampaignLook.emblem(UiStyle.scope, 16.0)
+	config["tag_kind"] = PopupCardStyles.ACCENT
+
+
 ## The poll card: who ran it, the range, the outlook (or what the committee decided), the arrow against the last poll and the two mover lines.
 static func poll_config(poll: Dictionary) -> Dictionary:
 	var body: Array[Control] = []
 	body.append(_line(source_text(str(poll["source"]))))
 	body.append(UiKit.heading(Text.say("poll.range", {"low": int(poll["low"]), "high": int(poll["high"])})))
+	if not UiStyle.scope.is_empty():
+		var marks: Array[int] = [Levers.whole("selection_threshold_list"), Levers.whole("selection_threshold_smd"), Levers.whole("selection_threshold_safety_net")]
+		body.append(CampaignSkinParts.range_bar(CampaignViews.look(), int(poll["low"]), int(poll["high"]), marks))   # the range with the three marks (P22)
 	var selected := str(poll.get("selected", ""))
 	if not selected.is_empty():
 		body.append(_line(Text.say("poll.selected_as", {"outcome": outcome_text(selected)})))
@@ -98,7 +121,9 @@ static func poll_config(poll: Dictionary) -> Dictionary:
 			body.append(_line(text, true))
 	if bool(poll.get("final", false)):
 		body.append(_line(Text.say("poll.final"), true))
-	return {"tag": Text.say("poll.tag"), "title": Text.say("poll.title"), "body": body, "meta": WeekCalendar.date_label(int(poll["date"]))}
+	var config := {"tag": Text.say("poll.tag"), "title": Text.say("poll.title"), "body": body, "meta": WeekCalendar.date_label(int(poll["date"]))}
+	_skin_card(config)
+	return config
 
 
 ## The end of the run: "not_selected" (a game over) or "stepped_aside".

@@ -272,7 +272,10 @@ func _run() -> void:
 	var size_setting := args[3] if args.size() > 3 else ""
 	var pressure := args[4] if args.size() > 4 else ""
 	var bottom := args.size() > 5 and args[5] == "bottom"
-	GameState.start_new_run("PC01")
+	GameState.start_new_run(OS.get_environment("COP_PC") if OS.has_environment("COP_PC") else "PC01")
+	# P22: the campaign skin to draw (samurai or gladiator); anything else leaves the Rules default.
+	if OS.has_environment("COP_SKIN"):
+		DataDB.rules["campaign_skin"] = OS.get_environment("COP_SKIN")
 	GameState.awaiting_new_game = false
 	UiStyle.trying = style
 	UiStyle.sync()
@@ -369,13 +372,17 @@ func _popup(office: Node, kind: String) -> Overlay:
 			if kind == "selectionno":
 				result = {"cycle_id": "EC01", "strength": 22.0, "alignment": 50.0, "influence": 30.0, "score": 31, "outcome": "not_selected"}
 			if kind == "poll":
+				CampaignLook.begin()
 				office._campaign_card_panel.open_card(CampaignCards.poll_config({"date": GameState.campaign_today(), "source": "poll.source.pr02", "low": 47, "high": 63,
 					"likely": "smd", "could_be": "list", "selected": "", "previous_mid": 48.0, "up": "poll.up.capital", "down": "poll.down.district", "final": false}), "Continue")
+				CampaignLook.end()
 				return office._campaign_card_panel
 			if kind == "endrun" or kind == "endaside":
 				office._campaign_end_panel.open_card(CampaignCards.end_config("not_selected" if kind == "endrun" else "stepped_aside"), "Goodbye")
 				return office._campaign_end_panel
+			CampaignLook.begin()
 			office._campaign_card_panel.open_card(CampaignCards.selection_config(result), "Continue")
+			CampaignLook.end()
 			return office._campaign_card_panel
 		"moment", "momentstaff":
 			# A CAMPAIGN MOMENT! (P20 phase C): a colleague asks for money (EV131), or for a campaign staffer (EV132, with one hired).

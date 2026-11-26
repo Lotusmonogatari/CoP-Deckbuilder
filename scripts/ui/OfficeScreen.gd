@@ -890,7 +890,9 @@ func _show_campaign_card_if_due() -> bool:
 	if not cycle.is_empty():
 		var result := GameState.take_selection(cycle)
 		SaveManager.autosave()
+		CampaignLook.begin()
 		_campaign_card_panel.open_card(CampaignCards.selection_config(result), Text.say("event.continue"))
+		CampaignLook.end()
 		return true
 	var due := GameState.election_due()
 	if not due.is_empty():
@@ -903,7 +905,9 @@ func _show_campaign_card_if_due() -> bool:
 	if GameState.poll_due():
 		var poll := GameState.take_poll()
 		SaveManager.autosave()
+		CampaignLook.begin()
 		_campaign_card_panel.open_card(CampaignCards.poll_config(poll), Text.say("event.continue"))
+		CampaignLook.end()
 		return true
 	return false
 
@@ -1441,8 +1445,17 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 		rows.append(UiKit.line(scene_note, "SmallLabel"))
 	elif str(event.get("trigger", "")) == "Dated":
 		rows.append(UiKit.line(Text.say("event.decision_note"), "SmallLabel"))
-	_event_panel.open_card({"tag": _event_tag(event), "tag_kind": _event_tag_kind(event), "meta": EventsModel.pop_meta(event),
-		"title": str(event.get("title", "")), "body": rows, "buttons": choices})
+	var moment_config := {"tag": _event_tag(event), "tag_kind": _event_tag_kind(event), "meta": EventsModel.pop_meta(event),
+		"title": str(event.get("title", "")), "body": rows, "buttons": choices}
+	# A CAMPAIGN MOMENT! wears the campaign skin, with its emblem before the label (P22).
+	if _is_campaign_moment(event) and CampaignLook.begin():
+		moment_config["tag"] = str(moment_config["tag"]).to_upper()
+		moment_config["tag_kind"] = PopupCardStyles.ACCENT
+		moment_config["tag_icon"] = CampaignLook.emblem(UiStyle.scope, 16.0)
+		_event_panel.open_card(moment_config)
+		CampaignLook.end()
+	else:
+		_event_panel.open_card(moment_config)
 
 
 ## A choice that starts a level (2026-10-31): show the level's usual briefing.

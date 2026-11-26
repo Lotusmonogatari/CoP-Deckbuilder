@@ -32,6 +32,15 @@ static func look() -> Dictionary:
 		"broadcast": style == UiStyles.BROADCAST}
 	for name: String in ["ground", "on_ground", "on_ground_muted", "card", "ink", "muted", "tile", "accent", "on_accent", "hot"]:
 		look[name] = UiStyle.colour("brief_" + name, Color.MAGENTA)
+	# A campaign skin (P22) also sets the display face, the capitals and tracking of its titles, the numerals and the other skin colours.
+	look["skin"] = UiStyle.scope
+	look["caps"] = UiStyle.scoped_token("type", "title_case") == "upper"
+	look["numerals"] = UiStyle.scoped_token("type", "numerals", "arabic")
+	look["display_font"] = CampaignLook.display_font(UiStyle.scope) if not UiStyle.scope.is_empty() else null
+	if not UiStyle.scope.is_empty():
+		for token: String in ["card_label", "card_label_ink", "phase_bar", "phase_bar_ink", "phase_rule", "emblem_fill", "emblem_ink", "stamp", "jp", "bar_fill", "bar_track",
+				"button", "button_ink", "tab_on", "shadow"]:
+			look["skin_" + token] = UiStyle.colour(token, Color.MAGENTA)
 	return look
 
 
@@ -48,7 +57,7 @@ static func len_px(mockup_px: float) -> float:
 
 ## The style's title, in capitals in Broadcast.
 static func title_text(look: Dictionary, text: String) -> String:
-	return text.to_upper() if look["broadcast"] else text
+	return text.to_upper() if look["broadcast"] or bool(look.get("caps", false)) else text
 
 
 ## A card (the totals card, the organizations card, a room's block).

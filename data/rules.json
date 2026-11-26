@@ -509,5 +509,28 @@
     "options": "an organization ID",
     "question": "The organization the call on the financial industry spends standing with (the Financial Industry Association).",
     "notes": "P21 phase A (2026-11-26, Cameron)."
+  },
+  "campaign_skin": {
+    "value": "samurai",
+    "options": [
+      "phase",
+      "samurai",
+      "gladiator",
+      "off"
+    ],
+    "question": "Which skin do the campaign screens wear? phase: Samurai except Gladiator during Gladiators of War Unleashed; samurai or gladiator: that one always; off: the player's own look.",
+    "notes": "P22 (2026-11-26, Cameron): Samurai always. The skin replaces the player's look on the campaign screens only."
+  },
+  "campaign_banner_parties": {
+    "value": "PT05;PT02",
+    "options": "party IDs separated by semicolons",
+    "question": "Which parties' colours, after the player's own, the three nobori on the phase banners take (Keizaijiyuutou and the Yezo Heritage Party).",
+    "notes": "P22 (2026-11-26, Cameron)."
+  },
+  "campaign_banner_spare_party": {
+    "value": "PT03",
+    "options": "a party ID",
+    "question": "The party whose colour fills a nobori when the player's own party is one of the others (the Frontier Party).",
+    "notes": "P22 (2026-11-26, Cameron's answer to edge case 1)."
   }
 }

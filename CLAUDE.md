@@ -379,3 +379,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - P20 phase D: the selection card, polls, Election Day, Stepping Aside and the end of the run (2026-11-26, Cameron; branch `feature/p20c-campaign-moments`)
 - P21 phase A: Political Capital, decay, holds, the Funds limit and dues (2026-11-26, Cameron; branch `feature/p21a-pc-decay-dues`)
 - P21 phase B: gaffes and Blunders! (2026-11-26, Cameron; branch `feature/p21b-blunders`)
+- P22: campaign skins, Samurai and Gladiator, with the player's party colour (2026-11-26, Cameron; branch `feature/p22-campaign-skins`)

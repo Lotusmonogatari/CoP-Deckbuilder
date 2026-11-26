@@ -182,6 +182,8 @@ func _build_title(title: String, subtitle: String) -> Control:
 	_title_label.add_theme_font_size_override("font_size", OfficeFrameStyles.px(OfficeFrameStyles.title_size(_look)))
 	_title_label.add_theme_color_override("font_color", _look["on_ground"])
 	_title_label.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
+	if _look.get("display_font") != null:
+		_title_label.add_theme_font_override("font", _look["display_font"])   # a campaign skin's display face (P22)
 	row.add_child(_title_label)
 	_subtitle_label = Label.new()
 	_subtitle_label.name = "FrameSubtitle"

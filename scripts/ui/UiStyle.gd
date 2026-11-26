@@ -13,10 +13,17 @@ static var _index_rows := -1
 static var _applied := ""
 ## A style being tried on the New Game screen before any run owns it ("" = none). While set it is the style in use.
 static var trying := ""
+## The campaign skin (P22) a campaign screen is being built in ("" = none) and the player's party colour the skin's accent family takes. While it is
+## set the colour and number tokens come from the skin (anything it does not list from Woodblock) and `current()` answers Woodblock, so every
+## shape that depends on the style is Woodblock's. Set with begin_scope, always cleared with end_scope.
+static var scope := ""
+static var scope_accent := Color(0, 0, 0, 0)
 
 
 ## The id of the style in use: "living_office", "broadcast" or "woodblock".
 static func current() -> String:
+	if not scope.is_empty():
+		return UiStyles.WOODBLOCK
 	if not trying.is_empty():
 		return trying
 	var package_id := str(GameState.active_cosmetics.get(CosmeticPieces.UI_STYLE, ""))
@@ -39,11 +46,33 @@ static func idx() -> Dictionary:
 
 
 static func colour(name: String, fallback: Color = Color.MAGENTA, style: String = "") -> Color:
+	if style.is_empty() and not scope.is_empty():
+		if scope_accent.a > 0.0 and CampaignSkin.accent_family(idx(), scope).has(name):
+			return scope_accent
+		return UiStyles.colour(idx(), scope, name, fallback)
 	return UiStyles.colour(idx(), style if not style.is_empty() else current(), name, fallback)
 
 
 static func number(group: String, name: String, fallback: float = 0.0, style: String = "") -> float:
+	if style.is_empty() and not scope.is_empty():
+		return UiStyles.number(idx(), scope, group, name, fallback)
 	return UiStyles.number(idx(), style if not style.is_empty() else current(), group, name, fallback)
+
+
+## One token of the skin being built (any group), or `fallback`.
+static func scoped_token(group: String, name: String, fallback: String = "") -> String:
+	return UiStyles.token(idx(), scope, group, name, fallback) if not scope.is_empty() else fallback
+
+
+## Starts a campaign screen's skin; `accent` is the player's party colour (alpha 0 for none: the skin's own accent shows).
+static func begin_scope(skin: String, accent: Color = Color(0, 0, 0, 0)) -> void:
+	scope = skin
+	scope_accent = accent
+
+
+static func end_scope() -> void:
+	scope = ""
+	scope_accent = Color(0, 0, 0, 0)
 
 
 static func plate_colour() -> Color:

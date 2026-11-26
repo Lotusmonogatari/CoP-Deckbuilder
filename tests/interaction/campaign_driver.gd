@@ -87,7 +87,7 @@ func _run() -> void:
 	GameState.campaign_banners_shown = []
 	await _open_office()
 	office = get_tree().current_scene
-	var banner := office.get_node("CampaignBannerPanel") as Overlay
+	var banner := office.get_node("CampaignBannerPanel") as Control
 	_expect(banner.visible, "the announcement banner shows when the Office opens that week")
 	await _click(banner.find_child("Confirm", true, false))
 	_expect(banner.visible, "a second page follows: Mustering the War Campaign")

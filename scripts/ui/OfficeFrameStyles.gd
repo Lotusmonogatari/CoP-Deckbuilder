@@ -46,6 +46,8 @@ static func title_size(look: Dictionary) -> float:
 ## Broadcast, so its text takes the card's own ink instead of the room's.
 static func card_theme(look: Dictionary) -> Theme:
 	var theme := frame_theme()
+	if look.get("display_font") != null:
+		theme.set_font("font", "HeaderLabel", look["display_font"])   # a campaign skin's display face (P22)
 	theme.set_color("font_color", "Label", look["ink"])
 	theme.set_color("font_color", "HeaderLabel", look["ink"])
 	theme.set_color("font_color", "SmallLabel", look["muted"])
@@ -61,6 +63,12 @@ static func frame_theme() -> Theme:
 	theme.set_type_variation("SmallLabel", "Label")
 	for type_name: String in ["Label", "HeaderLabel", "SmallLabel"]:
 		theme.set_stylebox("normal", type_name, StyleBoxEmpty.new())
+	# A campaign skin replaces every look (P22): its text takes Woodblock's faces even when the player's look is another.
+	if not UiStyle.scope.is_empty():
+		var wood := UiStyle.overlay(UiStyles.WOODBLOCK)
+		for type_name: String in ["Label", "HeaderLabel", "SmallLabel", "Button"]:
+			if wood.has_font("font", type_name):
+				theme.set_font("font", type_name, wood.get_font("font", type_name))
 	return theme
 
 ## A card: the style's box, a theme for its ink, and a column inside it named "Column". `title` is the card's heading
