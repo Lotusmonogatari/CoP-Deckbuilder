@@ -18,8 +18,8 @@ stands in for every expression.
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 40 / 40 |
 | Cosmetic package icons | 9 / 9 |
-| Venue backgrounds | 19 / 19 |
-| Venue activity icons | 18 / 19 |
+| Venue backgrounds | 19 / 20 |
+| Venue activity icons | 19 / 24 |
 | Decision scenes with a picture to show | 0 / 10 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -565,11 +565,11 @@ stands in for every expression.
 | DI13.png | Passerby (whole zone) | ✓ |
 | DI14.png | Passerby (whole zone) | ✓ |
 | VEN02.png | Station attendant (VN06; VN07) | ✓ |
-| VEN03.png | Shopkeeper (VN09) | ✓ |
+| VEN03.png | Sapporo Stage Manager (VN05) | ✓ |
 | VEN04.png | Street musician (VN05) | ✓ |
 | VEN05.png | Shamisen player (VN05) | ✓ |
-| VEN06.png | Reporter (VN01; VN03) | ✓ |
-| VEN07.png | Reporter (VN02; VN03) | ✓ |
+| VEN06.png | Special Parliament Staff (VN02) | ✓ |
+| VEN07.png | Special Parliament Staff (VN01) | ✓ |
 
 ## Organisation icons — `assets/icons/`
 
@@ -700,6 +700,7 @@ stands in for every expression.
 | AREA_SHOTENGAI_PC02.png | Local Shotengai (PC02) | ✓ |
 | AREA_SHOTENGAI_PC03.png | Local Shotengai (PC03) | ✓ |
 | AREA_SHOTENGAI_PC04.png | Local Shotengai (PC04) | ✓ |
+| AREA_CAMPAIGN_OFFICE.png | Campaign Office | ☐ |
 
 ## Venue activity icons — `assets/icons/`
 
@@ -709,7 +710,7 @@ stands in for every expression.
 | ACT_READ.png | Browse the Shelves | ✓ |
 | ACT_WATCH.png | People Watching | ✓ |
 | ACT_TRAIN.png | Rhetoric Training | ✓ |
-| ACT_SHOW.png | Watch the Show | ✓ |
+| ACT_WATCH.png | Sit and Listen | ✓ |
 | ACT_TRAVEL.png | Departures | ✓ |
 | ACT_TRAVEL.png | Departures | ✓ |
 | ACT_SHRINE.png | Clean the surroundings | ✓ |
@@ -724,6 +725,11 @@ stands in for every expression.
 | ACT_TRAIN.png | Work on your speech timing | ✓ |
 | ACT_DESK.png | Ask the Reference Desk | ✓ |
 | ACT_PAPERWORK.png | Catch Up on Paperwork | ☐ |
+| ACT_SHOW.png | Watch the Performance | ✓ |
+| ACT_CAMPAIGN_FUNDRAISE.png | Fundraising calls | ☐ |
+| ACT_CAMPAIGN_LETTERS.png | Outreach letters | ☐ |
+| ACT_CAMPAIGN_MAILINGS.png | Mailings to local organizations | ☐ |
+| ACT_CAMPAIGN_VAN.png | Campaign van speech | ☐ |
 
 ## Decision scenes
 

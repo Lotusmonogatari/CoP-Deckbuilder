@@ -12,7 +12,8 @@ const IN_LEVEL := "in_level"       # a level is in progress
 const WEEK_FULL := "week_full"     # no work hours left this week
 
 ## The activity kinds built so far (P16 phase 1). A venue whose activity is another kind shows as "Coming soon".
-const BUILT_KINDS: Array[String] = ["chat", "watch", "train", "travel", "act", "read", "research", "office", "listen", "perform"]
+const BUILT_KINDS: Array[String] = ["chat", "watch", "train", "travel", "act", "read", "research", "office", "listen", "perform",
+	"campaign_fundraise", "campaign_letters", "campaign_mailings", "campaign_van"]
 ## The kinds that deal daily lines.
 const LINE_KINDS: Array[String] = ["chat", "watch"]
 

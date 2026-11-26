@@ -26,6 +26,10 @@ var _result_panel: Overlay
 var _result_venue := ""
 ## The Library's two tabs and the Codex reader (P18).
 var _library: LibraryController
+## The Campaign Office (P20): its screens, the Donate card and the phase banners.
+var _campaign: CampaignController
+## Donate to your campaign, under the Step out row at the District office once the Campaign Office is open.
+var _donate_button: Button
 ## The scene behind an overheard line spoken by an area character (VenueSceneViews), or null.
 var _scene: Control
 ## Where Continue leads after an overheard line ({"venue", "screen"}), or {} when the pop-up is an ordinary line.
@@ -58,6 +62,8 @@ func setup(office: Control, after_button: Button, open_coach_page: Callable, on_
 	_result_panel.closed.connect(_on_result_closed)
 	_library = LibraryController.new()
 	_library.setup(office, self, _venue_panel, _chips)
+	_campaign = CampaignController.new()
+	_campaign.setup(office, self, _venue_panel, _chips, hours_spent)
 	_step_button = Button.new()
 	_step_button.name = "StepOutButton"
 	_step_button.set_meta("party_outline", true)
@@ -83,6 +89,17 @@ func setup(office: Control, after_button: Button, open_coach_page: Callable, on_
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		button.custom_minimum_size.x = 0.0
 		row.add_child(button)
+	_donate_button = Button.new()
+	_donate_button.name = "DonateButton"
+	_donate_button.set_meta("party_outline", true)
+	_donate_button.text = Text.say("campaign.action.donate")
+	_donate_button.custom_minimum_size = after_button.custom_minimum_size
+	_donate_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_donate_button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_donate_button.custom_minimum_size.x = 0.0
+	_donate_button.pressed.connect(func() -> void: _campaign.open_donate())
+	row.get_parent().add_child(_donate_button)
+	row.get_parent().move_child(_donate_button, row.get_index() + 1)
 	refresh_button()
 
 
@@ -101,6 +118,8 @@ func refresh_button() -> void:
 	_step_button.disabled = not why.is_empty()
 	_step_button.text = Text.say("venue.step_out") if why.is_empty() else "%s · %s" % [Text.say("venue.step_out"), why]
 	_refresh_paperwork()
+	if _donate_button != null:
+		_donate_button.visible = GameState.campaign_donate_visible()
 
 
 func _refresh_paperwork() -> void:
@@ -285,6 +304,10 @@ func show_venue(venue_id: String) -> void:
 	var activity := VenueRules.activity_of(DataDB.venue_activities, venue_id)
 	if venue.is_empty():
 		return
+	# The Campaign Office has its own screens (P20).
+	if CampaignController.draws(venue_id):
+		_campaign.open()
+		return
 	# The Library has a Codex and a reference desk: two tabs.
 	if LibraryController.draws(venue_id):
 		_library.open(venue_id, _library_tab)
@@ -335,6 +358,11 @@ func show_venue(venue_id: String) -> void:
 	var frame := OfficeScreenFrame.new()
 	frame.setup({"title": str(venue.get("name", venue_id)), "subtitle": str(venue.get("name_jp", "")), "chips": _chips(), "rows": rows})
 	_venue_panel.open_frame(frame, Text.say("venue.screen_back"))
+
+
+## The phase banner that is due, if any (the Office asks when it opens and after the new week's report). True when one went up.
+func show_campaign_banner_if_due() -> bool:
+	return _campaign != null and _campaign.show_banner_if_due()
 
 
 ## The tab the Library opens on when show_venue draws it next (the Codex after a document is read in the line pop-up).

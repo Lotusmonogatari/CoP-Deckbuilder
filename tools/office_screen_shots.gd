@@ -18,6 +18,15 @@ func _ready() -> void:
 	_run.call_deferred()
 
 
+## Moves the calendar to the first Monday in `phase` of a cycle the player runs in.
+func _go_to_phase(phase: String) -> void:
+	for week in range(1, 400):
+		GameState.calendar = {"week": week, "phase": "work", "hours": 0}
+		var info := GameState.election_phase()
+		if str(info["phase"]) == phase and bool(info["player_runs"]):
+			return
+
+
 ## The Capitol venues screens (P16): each is drawn from a state set up here, with the day's set arranged to match the mockups.
 func _venue(office: Node, which: String) -> Overlay:
 	var today := GameState.venue_today()
@@ -110,6 +119,44 @@ func _venue(office: Node, which: String) -> Overlay:
 			office._venues._show_heard(case[0], {"ok": true, "number": 1, "limit": 8, "kind": "gossip", "speaker": case[1], "text": case[2],
 				"hint": {}, "unlocked": "", "last": false, "where": case[3]})
 			return office.get_node("VenueLinePanel")
+		"campaign", "campaignstaff", "campaignvan", "campaignletters", "campaignresult", "donate", "banner_announcement", "banner_mustering", \
+		"banner_campaign", "banner_election_day":
+			# The Campaign Office (P20 phase B, 2026-11-26): its tabs, the letters picker, a result card, the Donate card and the four banners.
+			GameState.office_location = Offices.DISTRICT
+			office._apply_office_look()
+			GameState.open_venue("VN10")
+			GameState.meta["Funds"] = 600000
+			GameState.xp = 2000
+			GameState.campaign_fund = 1200000
+			GameState.campaign_capital = 420
+			GameState.campaign_howto_seen = true
+			var phase := "mustering" if which.begins_with("campaign") or which == "donate" else which.trim_prefix("banner_")
+			_go_to_phase("announcement" if phase == "announcement" else phase)
+			if which == "campaignstaff":
+				GameState.campaign_hire("CS01")
+			if which == "campaignvan":
+				GameState.campaign_buy_van()
+			office._venues.show_venue("VN10")
+			match which:
+				"campaignstaff":
+					office._venues._campaign._on_tab("staff")
+				"campaignvan":
+					office._venues._campaign._on_tab("van")
+				"campaignletters":
+					office._venues._campaign._on_action("campaign_letters")
+				"campaignresult":
+					office._venues._campaign._do("campaign_fundraise", "")
+					return office.get_node("CampaignResultPanel")
+				"donate":
+					office._venues._campaign.open_donate()
+					return office.get_node("CampaignDonatePanel")
+				"banner_announcement", "banner_mustering", "banner_campaign", "banner_election_day":
+					GameState.campaign_banners_shown = []
+					office._venues._campaign._banner_pages = [phase]
+					office._venues._campaign._banner_cycle = str(GameState.election_phase()["cycle_id"])
+					office._venues._campaign._show_banner_page()
+					return office.get_node("CampaignBannerPanel")
+			return office.get_node("VenuePanel")
 		"stage", "listen", "perform":
 			# The Sapporo Stage (2026-11-25): its screen on a Wednesday in October (VEN04 about), a Sit and Listen result and a Watch the Performance result.
 			GameState.office_location = Offices.CAPITOL

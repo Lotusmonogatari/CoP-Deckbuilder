@@ -2333,3 +2333,18 @@ Source: Cameron's "Election and campaign: final guidance" and the P20 prompt (`d
 | Economy map | Refreshed; FL525 (election strength) describes the new inputs. |
 
 **Decided without the prompt** (questions for Cameron): campaign capital fades by `floor(capital x 5%)` (so under 20 it does not fade); the Balance row `Election: Max Experience` keeps its name though it now caps the capital input; `Election: Experience Target` was removed (nothing reads it); the Banners day counts as mustering; a poll outlook shows the lower outcome as "could be" when both ends differ from the middle; the Voters' organization for the Announcer bonus is a Rules row (BO18); refusal reasons are Text rows `campaign.reason.*`. The merge check that needs a scripted run to Sengoku no Hi waits for phases B to D.
+
+## P20 phase B: the Campaign Office (2026-11-26, Cameron; branch `feature/p20b-campaign-office`)
+
+The campaign becomes playable: spend hours and Political Capital on campaign actions, build a campaign fund, hire campaign staff, buy the van and donate your own Funds.
+
+| Piece | What was done |
+|---|---|
+| Screens | `CampaignController` and `CampaignViews`: Actions, Staff and Van tabs, the letters' organization list, a result card, the Donate card (District office only), a first-visit How To pager (HT39 to HT43), two-page phase banners, a status card also on the Election tab. All through `CampaignViews.look()`, the one place a campaign skin (P22) will change. |
+| State | `GameState` campaign section: `campaign_act`, `campaign_preview`, donate, van, hire and upgrade (each with a refusal that says why), week-end settling (`_settle_campaign_week`: wages from the fund, Loyalty, quits, rank loss, capital fading, the weekly count back to zero), staff leaving after Election Day, banners due and shown. Seven new saved fields. |
+| Rules | `ElectionCycle.days_until_next_phase`, `passed_between`, `start_of`; `VenueRules` counts the four campaign kinds as built. |
+| Data | 91 Text rows, five How To Play entries (HT39 to HT43), Rules `campaign_donate_steps`. Build scripts `tools/workbook/archive/p20b_build.py` and `p20b_build2.py`. |
+| Tests | `tests/test_campaign_state.gd` (22). |
+| Economy map | Six campaign flows (FL570 to FL575) added to the manual rows; the map regenerated. |
+
+**Still open for later phases:** Campaign Moment!, the selection card, Not Selected, polls and the Election Day result (phases C and D); campaign staff have no portraits yet; the Mustering banner's "half again" is tied to `campaign_sprint_multiplier` 1.5 by a test. Cameron's P22 answers are recorded: the third nobori banner takes the Frontier Party when the player is KJT or YHP; party-coloured accents use the party colours as given; "The Prime Minister speaks" is the announcement kicker.

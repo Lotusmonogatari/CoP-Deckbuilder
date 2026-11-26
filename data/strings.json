@@ -12885,5 +12885,33 @@
     "english": "Got it",
     "placeholders": null,
     "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.howto.group",
+    "where": "P20 campaign: campaign.howto",
+    "english": "The Campaign",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.tab.staff",
+    "where": "P20 campaign: campaign.tab",
+    "english": "Staff",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.tab.van",
+    "where": "P20 campaign: campaign.tab",
+    "english": "Van",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.status",
+    "where": "P20 campaign: campaign.office",
+    "english": "Your campaign",
+    "placeholders": null,
+    "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
   }
 ]

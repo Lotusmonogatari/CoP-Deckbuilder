@@ -2388,6 +2388,11 @@ func campaign_act(kind: String, target_org: String = "") -> Dictionary:
 	return {"ok": true, "reason": "", "result": result, "lines": lines}
 
 
+## What an action would do right now, before it is taken (the same numbers campaign_act applies): CampaignOffice.resolve's Dictionary.
+func campaign_preview(kind: String, target_org: String = "") -> Dictionary:
+	return CampaignOffice.resolve(kind, campaign_state(), target_org)
+
+
 ## The amounts the District office's Donate button offers (Rules campaign_donate_steps, semicolons).
 func campaign_donate_steps() -> Array[int]:
 	var steps: Array[int] = []

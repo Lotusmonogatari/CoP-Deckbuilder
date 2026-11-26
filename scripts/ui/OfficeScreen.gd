@@ -559,6 +559,8 @@ func _build() -> void:
 		_show_random_event_if_due()
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
+	if not _week_report_open and _venues != null:
+		_venues.show_campaign_banner_if_due()
 	_install_room_objects()
 	_building = false
 	_maybe_show_staff_report.call_deferred()
@@ -646,6 +648,7 @@ func _build_week_controls() -> void:
 	_new_week_panel.name = "NewWeekPanel"
 	_new_week_panel.dismissable = false
 	_new_week_panel.show_back = false
+	_new_week_panel.closed.connect(_on_new_week_closed)
 	add_child(_new_week_panel)
 	_week_watch = Timer.new()
 	_week_watch.name = "WeekWatch"
@@ -851,6 +854,17 @@ func _on_work_weekend() -> void:
 	_build()
 
 
+## True from the moment a week ends until its report is closed: a phase banner waits for the report instead of covering it.
+var _week_report_open := false
+
+
+## The week's report is closed: the phase banner the new date brings (P20) comes next.
+func _on_new_week_closed() -> void:
+	_week_report_open = false
+	if _venues != null:
+		_venues.show_campaign_banner_if_due()
+
+
 ## Ends the week: a cue popup on this same screen says a new week begins.
 func _go_home() -> void:
 	Haptics.confirm()
@@ -858,6 +872,7 @@ func _go_home() -> void:
 	_week_confirm_panel.close()
 	var result := GameState.go_home()
 	SaveManager.autosave()
+	_week_report_open = true
 	_build()
 	var rows: Array[Control] = [UiKit.line(Text.say("office.new_week_body",
 		{"date": str(result.get("date", ""))}))]
@@ -866,6 +881,8 @@ func _go_home() -> void:
 	rows.append_array(StaffLoyaltyView.week_rows(result.get("staff", {})))
 	for awareness_line: String in result.get("awareness", []):
 		rows.append(UiKit.line(awareness_line, "SmallLabel"))
+	for campaign_line: String in result.get("campaign", []):
+		rows.append(UiKit.line(campaign_line, "SmallLabel"))
 	_new_week_panel.open(Text.say("office.new_week_title"), rows, Text.say("office.new_week_go"))
 
 
@@ -2607,6 +2624,12 @@ func _election_cards(look: Dictionary) -> Array[Control]:
 	bar_line.custom_minimum_size.x = 0.0
 	rows.add_child(bar_line)
 	rows.add_child(_colour_bar(GameState.election_strength, CueBanner.EDGE_COLOUR))
+	var phase_note := CampaignViews.phase_note()
+	if not phase_note.is_empty():
+		var note_line := UiKit.line(phase_note, "SmallLabel")
+		note_line.name = "ElectionPhaseNote"
+		note_line.custom_minimum_size.x = 0.0
+		rows.add_child(note_line)
 
 	var names := {
 		"district": Text.say("awareness.district"), "national": Text.say("awareness.national"),
@@ -2623,7 +2646,10 @@ func _election_cards(look: Dictionary) -> Array[Control]:
 		line.custom_minimum_size.x = 0.0
 		rows.add_child(line)
 		rows.add_child(_colour_bar(share, colour))
-	return [card]
+	var cards: Array[Control] = [card]
+	if GameState.campaign_office_open():
+		cards.append(CampaignViews.status_card(look))
+	return cards
 
 
 ## The word for an opinion band; each is its own Text row so it can be reworded.
