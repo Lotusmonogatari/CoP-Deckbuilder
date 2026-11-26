@@ -2397,3 +2397,14 @@ The steady player falls short of the 40 line, which is the point of the bot chec
 | Economy map | Flows FL580 to FL585. |
 
 **Measurement** (`design/proposals/P21A_MEASUREMENT_2026-11-26.md`): with the draft week's gains the new decay lets Party support settle near 92 and both awareness meters near 99, so the runaway Cameron feared is only slowed. The numbers are Balance rows ready to retune.
+
+## P21 phase B: gaffes and Blunders! (2026-11-26, Cameron; branch `feature/p21b-blunders`)
+
+| Piece | What was done |
+|---|---|
+| Rules | `Blunders`: threshold crossings, the seeded draw, the loss with its floor, the cancel price by tier, the accusation roll. |
+| State | `apply_awareness_gaffes` replaced by one run total with threshold rolls and a roll for each stage lost to gaffes; the Blunder! card queue, the spokesperson (highest tier, free of delegated work), `resolve_blunder` (cancel or take), pending accusations; five new saved fields; the per-meter tally migrates. |
+| Screens | The Blunder! card (what it costs, Have the spokesperson handle it with its price and reason, Take it) and its result; a counter card on the Upkeep tab. |
+| Data | 13 Balance rows (two old rows removed), 12 Text rows. Build script `tools/workbook/archive/p21b_build.py`. |
+| Tests | 13 in `test_blunders.gd`; `test_awareness.gd` updated for the run total. |
+| Economy map | FL523 rewritten; FL590 to FL592 added (FL592, the accusation, is `planned` until phase D). |

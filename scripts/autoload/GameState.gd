@@ -341,8 +341,13 @@ var funds_cap_bonus: int = 0
 ## New Game, raised but never lowered, saved with the run.
 var difficulty: String = "standard"
 
-## Leftover gaffes added up over the run, per meter (see apply_awareness_gaffes).
-var awareness_gaffe_tally: Dictionary = {"district": 0, "national": 0}
+## Leftover gaffes added up over the run (P21 phase B: one total; Blunders decides what the thresholds cost), the Blunders! so far, the Blunder! cards
+## waiting for the player ({id}), the accusations they left (recorded only; phase D turns them into cards) and the counter that seeds each roll.
+var gaffe_total := 0
+var blunder_count := 0
+var blunder_cards: Array = []
+var accusations_pending: Array = []
+var blunder_rolls := 0
 ## Extra deck slots bought (SH34-style items, Shop "Deck Size Increase";
 ## Cameron, 2026-10-31), and how many times such an item has been bought.
 var deck_size_bonus: int = 0
@@ -692,7 +697,7 @@ func grant_default_ui_style() -> void:
 # test rather than half-saved.
 
 const _SAVED_FIELDS := [
-	"protagonist_id", "difficulty", "awareness_gaffe_tally", "stage_checkpoint", "pending_stage_result", "last_level_outcome", "meta", "xp",
+	"protagonist_id", "difficulty", "gaffe_total", "blunder_count", "blunder_cards", "accusations_pending", "blunder_rolls", "stage_checkpoint", "pending_stage_result", "last_level_outcome", "meta", "xp",
 	"owned_cards", "deck", "owned_modifiers",
 	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "item_uses", "shop_bought_this_level", "card_draw",
@@ -700,7 +705,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "campaign_moments_week", "campaign_moment_open", "campaign_draw_day", "scene_cooldowns", "scene_colleagues", "campaign_challenges", "campaign_favors", "van_speech_done", "decay_holds", "hold_streaks", "cap_calls_done", "awareness_paid_months", "funds_cap_petitions", "selection_results", "campaign_polls", "campaign_last_poll", "campaign_poll_parts", "campaign_poll_late", "campaign_office_opened_on", "election_results", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "campaign_moments_week", "campaign_moment_open", "campaign_draw_day", "scene_cooldowns", "scene_colleagues", "campaign_challenges", "campaign_favors", "van_speech_done", "suit_plays", "segment_debits", "decay_holds", "hold_streaks", "cap_calls_done", "awareness_paid_months", "funds_cap_petitions", "selection_results", "campaign_polls", "campaign_last_poll", "campaign_poll_parts", "campaign_poll_late", "campaign_office_opened_on", "election_results", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters", "run_stats",
 	"bill_stance",
@@ -759,6 +764,9 @@ func load_save(saved: Dictionary) -> void:
 	# A save from before the petition's price stepped up: the petitions already bought are what the cap bonus was made of.
 	if not saved.has("funds_cap_petitions"):
 		funds_cap_petitions = funds_cap_bonus / 100000
+	# A save from before Blunders had one tally per meter; the District one (the larger count) is the run's total.
+	if not saved.has("gaffe_total") and saved.get("awareness_gaffe_tally") is Dictionary:
+		gaffe_total = int((saved["awareness_gaffe_tally"] as Dictionary).get("district", 0))
 	_apply_difficulty()
 
 	_register_saved_patron_bills()
@@ -959,6 +967,8 @@ func reset_crisis_triggers() -> void:
 	campaign_challenges = []
 	campaign_favors = []
 	van_speech_done = false
+	suit_plays = {}
+	segment_debits = {}
 	decay_holds = []
 	hold_streaks = {}
 	cap_calls_done = []
@@ -2277,7 +2287,11 @@ func _apply_time_decays() -> void:
 
 ## Both meters back to their starting values (Balance), for a fresh run.
 func reset_awareness() -> void:
-	awareness_gaffe_tally = {"district": 0, "national": 0}
+	gaffe_total = 0
+	blunder_count = 0
+	blunder_cards = []
+	accusations_pending = []
+	blunder_rolls = 0
 	awareness = {
 		"district": clampi(Levers.whole("awareness_start_district"), 0, awareness_max()),
 		"national": clampi(Levers.whole("awareness_start_national"), 0, awareness_max()),
@@ -2304,18 +2318,98 @@ func apply_awareness_delta(meter: String, delta: int) -> void:
 ## Gaffes still on the counter when a stage ends count against BOTH meters, one
 ## point each. A player who clears them before the end loses nothing; a stage
 ## lost to gaffes costs the stage's whole gaffe limit.
-func apply_awareness_gaffes(gaffes: int) -> void:
+func apply_awareness_gaffes(gaffes: int, stage_lost: bool = false) -> void:
 	gaffes = Difficulty.awareness_gaffes(gaffes, DataDB.balance_base, difficulty)
-	if gaffes <= 0:
-		return
-	# Gaffes left over add up across the whole run (Cameron, 2026-11-02): every
-	# "Awareness Gaffes Per District Point" cost 1 District awareness, and every
-	# "... Per National Point" cost 1 National.
-	for meter: String in ["district", "national"]:
-		var per := maxi(1, Levers.whole("awareness_gaffes_per_%s_point" % meter))
-		var before := int(awareness_gaffe_tally.get(meter, 0))
-		awareness_gaffe_tally[meter] = before + gaffes
-		apply_awareness_delta(meter, -((before + gaffes) / per - before / per))
+	if gaffes > 0:
+		# Leftover gaffes add up across the whole run (Cameron, 2026-11-02) and, since P21 phase B, every threshold the total passes is a roll (Blunders):
+		# an awareness check every 30, a Blunder! check every 25.
+		var before := gaffe_total
+		gaffe_total += gaffes
+		for step in Blunders.crossed(before, gaffe_total, Levers.whole("awareness_gaffes_per_roll")):
+			if _blunder_roll(Levers.num("awareness_gaffe_roll_chance")):
+				for meter: String in ["district", "national"]:
+					apply_awareness_delta(meter, -Levers.whole("awareness_gaffe_roll_delta"))
+		for step in Blunders.crossed(before, gaffe_total, Levers.whole("blunder_gaffes_per_roll")):
+			if _blunder_roll(Levers.num("blunder_chance")):
+				_queue_blunder()
+	# A stage lost to gaffes is a Blunder! check of its own.
+	if stage_lost and _blunder_roll(Levers.num("blunder_chance")):
+		_queue_blunder()
+
+
+## One seeded roll against `chance` (the run's seed and a counter that goes up each time, so a reload gives the same results).
+func _blunder_roll(chance: float) -> bool:
+	blunder_rolls += 1
+	return Blunders.draw(run_seed, blunder_rolls) < chance
+
+
+func _queue_blunder() -> void:
+	blunder_count += 1
+	blunder_cards.append({"id": blunder_count})
+
+
+## The Media Spokesperson who could cancel a Blunder! now: the highest tier among those hired with time in their day (not away on delegated work), as
+## {staff_id, name, tier, price} (the price follows the difficulty); {} when there is none.
+func blunder_spokesperson() -> Dictionary:
+	staff_ensure_day()
+	var best := {}
+	for member: Dictionary in staff_members():
+		if str(member["role"]) != "Media Spokesperson" or staff_blocks_left(str(member["staff_id"])) <= 0:
+			continue
+		if best.is_empty() or int(member["tier"]) > int(best["tier"]):
+			best = member
+	if best.is_empty():
+		return {}
+	return {"staff_id": str(best["staff_id"]), "name": str(DataDB.get_staff(str(best["staff_id"])).get("name", "")), "tier": int(best["tier"]),
+		"price": pc_price(Blunders.cancel_price(int(best["tier"])))}
+
+
+## What the first waiting Blunder! would cost in each meter now, with the floor applied: {district, national}.
+func blunder_loss_preview() -> Dictionary:
+	return {"district": Blunders.loss(int(awareness.get("district", 0))), "national": Blunders.loss(int(awareness.get("national", 0)))}
+
+
+## Why the spokesperson cannot be asked, or "".
+func blunder_cancel_refusal() -> String:
+	var spokesperson := blunder_spokesperson()
+	if spokesperson.is_empty():
+		return Text.say("blunder.no_spokesperson")
+	if xp < int(spokesperson["price"]):
+		return Text.say("blunder.refuse_pc")
+	return ""
+
+
+## Settles the first waiting Blunder!: cancelled (the spokesperson's price in Political Capital, no awareness lost) or taken (District and National awareness
+## fall, never below the floor). Then the accusation roll: a Scandal! or Rumor! is recorded as pending (phase D shows it). Returns {ok, cancelled, spokesperson,
+## lost_district, lost_national, accusation}.
+func resolve_blunder(cancel: bool) -> Dictionary:
+	if blunder_cards.is_empty():
+		return {"ok": false}
+	var spokesperson := blunder_spokesperson()
+	if cancel and (not blunder_cancel_refusal().is_empty()):
+		return {"ok": false}
+	blunder_cards.remove_at(0)
+	var lost := {"district": 0, "national": 0}
+	if cancel:
+		_move_xp(-int(spokesperson["price"]))
+	else:
+		lost = blunder_loss_preview()
+		apply_awareness_delta("district", -int(lost["district"]))
+		apply_awareness_delta("national", -int(lost["national"]))
+	var kind := Blunders.accusation(cancel, Blunders.draw(run_seed, blunder_rolls + 1), Blunders.draw(run_seed, blunder_rolls + 2))
+	blunder_rolls += 2
+	if not kind.is_empty():
+		accusations_pending.append({"kind": kind, "target": "player", "source": "blunder", "cancelled": cancel, "day": campaign_today()})
+	return {"ok": true, "cancelled": cancel, "spokesperson": str(spokesperson.get("name", "")), "lost_district": int(lost["district"]),
+		"lost_national": int(lost["national"]), "accusation": kind}
+
+
+## How far the gaffe total is toward its next awareness check and Blunder! check, for the Office: {total, awareness_at, blunder_at, count}.
+func blunder_progress() -> Dictionary:
+	var awareness_per := maxi(1, Levers.whole("awareness_gaffes_per_roll"))
+	var blunder_per := maxi(1, Levers.whole("blunder_gaffes_per_roll"))
+	return {"total": gaffe_total, "awareness_at": (gaffe_total / awareness_per + 1) * awareness_per, "blunder_at": (gaffe_total / blunder_per + 1) * blunder_per,
+		"count": blunder_count}
 
 
 # ---------------------------------------------------------------------------
@@ -2354,6 +2448,9 @@ var van_speech_done := false
 var selection_results: Array = []
 ## P21 phase A: what is held against this week's decay ("meter:<name>" or "org:<id>"), how many weeks in a row each has been held, the cap calls
 ## used (once each per run), the month each monthly awareness effect last paid, and how many Funds-cap petitions were bought (the price steps up).
+## Cards played by suit in each calendar week ({week: {suit: count}}), the credibility spent that still weighs on each segment ({segment_id: debit}) (P21 phase C).
+var suit_plays: Dictionary = {}
+var segment_debits: Dictionary = {}
 var decay_holds: Array = []
 var hold_streaks: Dictionary = {}
 var cap_calls_done: Array = []
@@ -3069,6 +3166,59 @@ func _apply_pc_and_meter_decay() -> Array[String]:
 	hold_streaks = PcDecay.next_streaks(hold_streaks, decay_holds)
 	decay_holds = []
 	return lines
+
+
+# --- Segments and credibility (P21 phase C) ----------------------------------------------------------------------------------------------------
+
+## Each segment with what it is made of and how it stands: [{segment_id, name, suit, orgs (names), plays, favorability, debit}] in the Segment Map's order.
+func segment_rows() -> Array:
+	var out: Array = []
+	var week := int(calendar.get("week", 0))
+	for row: Dictionary in DataDB.segment_map:
+		var id := str(row.get("segment_id", ""))
+		var standings: Array = []
+		var names: Array[String] = []
+		for org: Variant in row.get("organizations", []):
+			standings.append(int(booster_standing.get(str(org), 0)))
+			names.append(str(DataDB.get_booster(str(org)).get("name_en", org)))
+		var suit := str(row.get("suit", ""))
+		var plays := Segments.plays_in_window(suit_plays, week, Levers.whole("segment_suit_use_weeks"), suit)
+		var debit := int(segment_debits.get(id, 0))
+		out.append({"segment_id": id, "name": str(DataDB.get_segment(id).get("name_en", id)), "suit": suit, "orgs": names, "plays": plays,
+			"favorability": Segments.favorability(Segments.average_standing(standings), plays, debit), "debit": debit})
+	return out
+
+
+## The player's credibility: the average of the five favorabilities.
+func credibility_now() -> int:
+	return Segments.credibility(segment_rows().map(func(r: Dictionary) -> int: return int(r["favorability"])))
+
+
+## Why `amount` of credibility cannot be spent, or "": it is more than there is, or nothing.
+func credibility_refusal(amount: int) -> String:
+	return "" if Segments.can_spend(credibility_now(), amount) else Text.say("credibility.refuse")
+
+
+## Spends credibility: the amount is added to every segment's debit, so credibility falls by that amount. "" when done, else why not.
+func spend_credibility(amount: int) -> String:
+	var why := credibility_refusal(amount)
+	if not why.is_empty():
+		return why
+	for row: Dictionary in DataDB.segment_map:
+		var id := str(row.get("segment_id", ""))
+		segment_debits[id] = int(segment_debits.get(id, 0)) + amount
+	return ""
+
+
+## At a week's end every debit shrinks by the Balance percent (rounded down), and suit plays older than the window are forgotten.
+func _recover_credibility() -> void:
+	for id: Variant in segment_debits.keys():
+		segment_debits[id] = Segments.debit_after_week(int(segment_debits[id]))
+	var week := int(calendar.get("week", 0))
+	var keep := Levers.whole("segment_suit_use_weeks") + 1
+	for key: Variant in suit_plays.keys():
+		if int(key) < week - keep:
+			suit_plays.erase(key)
 
 
 # --- Dues relief and the Funds limit -------------------------------------------------------------------------------------------------------
@@ -5359,6 +5509,7 @@ func go_home() -> Dictionary:
 	campaign_lines.append_array(_campaign_after_election(day_before, campaign_today()))
 	_apply_week_decay()
 	var decay_lines := _apply_pc_and_meter_decay()
+	_recover_credibility()
 	check_crisis_triggers()
 	event_roll_due = true
 	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines, "staff": staff_report, "campaign": campaign_lines, "decay": decay_lines}
@@ -5755,7 +5906,13 @@ func begin_level(runner: LevelRunner) -> void:
 
 ## One card played in a battle (its suit), for the statistics. Called by the battle screen after the engine accepts the card.
 func record_card_played(card_id: String) -> void:
-	RunStats.bump(run_stats, "suits", str(DataDB.get_card(card_id).get("suit", "")))
+	var suit := str(DataDB.get_card(card_id).get("suit", ""))
+	RunStats.bump(run_stats, "suits", suit)
+	if not suit.is_empty():
+		var week := str(int(calendar.get("week", 0)))
+		var this_week: Dictionary = suit_plays.get(week, {})
+		this_week[suit] = int(this_week.get(suit, 0)) + 1
+		suit_plays[week] = this_week
 
 
 ## One press of Go on the Step out map (or To the tracks), for the statistics.
@@ -5865,7 +6022,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	_record_lifetime_gaffes(gaffes, outcome, gaffe_caused_loss)
 	last_awareness_change = {}
 	if str(stage.get("mode", "")) == "Combat":
-		apply_awareness_gaffes(gaffes)
+		apply_awareness_gaffes(gaffes, gaffe_caused_loss)
 
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.

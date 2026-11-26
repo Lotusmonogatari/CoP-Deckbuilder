@@ -29,23 +29,20 @@ func test_meters_stay_between_zero_and_the_maximum() -> void:
 	assert_eq(int(GameState.awareness["district"]), 100)
 
 
-func test_leftover_gaffes_add_up_and_cost_a_point_per_threshold() -> void:
-	# Cameron, 2026-11-02: 1 District point per 65 gaffes, 1 National per 35.
+func test_leftover_gaffes_add_up_into_one_run_total() -> void:
+	# P21 phase B (2026-11-26): one total; each threshold it passes is a seeded roll (Blunders), not a certain point.
 	GameState.apply_awareness_gaffes(34)
-	assert_eq(int(GameState.awareness["national"]), 10, "34 gaffes is under the National threshold")
 	GameState.apply_awareness_gaffes(1)
-	assert_eq(int(GameState.awareness["national"]), 9, "35 gaffes cost 1 National")
-	assert_eq(int(GameState.awareness["district"]), 20, "and nothing yet from District")
-	GameState.apply_awareness_gaffes(30)
-	assert_eq(int(GameState.awareness["district"]), 19, "65 gaffes cost 1 District")
-	assert_eq(int(GameState.awareness["national"]), 9, "65 is still one National step (35 to 70)")
+	assert_eq(GameState.gaffe_total, 35)
+	assert_eq(GameState.blunder_progress()["awareness_at"], 60)
+	assert_eq(GameState.blunder_progress()["blunder_at"], 50)
 
 
-func test_the_gaffe_tally_is_saved_and_reset_with_a_new_run() -> void:
+func test_the_gaffe_total_is_saved_and_reset_with_a_new_run() -> void:
 	GameState.apply_awareness_gaffes(20)
-	assert_eq(int((GameState.to_save()["awareness_gaffe_tally"] as Dictionary)["national"]), 20)
+	assert_eq(int(GameState.to_save()["gaffe_total"]), 20)
 	GameState.reset_awareness()
-	assert_eq(int(GameState.awareness_gaffe_tally["national"]), 0)
+	assert_eq(GameState.gaffe_total, 0)
 
 
 func test_no_gaffes_left_costs_nothing() -> void:
@@ -58,7 +55,7 @@ func test_finishing_a_combat_stage_applies_the_gaffes_it_ended_with() -> void:
 		{"seq": 1, "stage_id": "ST05", "mode": "Combat", "time_units": 2}]}))
 	# A stage lost to gaffes ends with the whole limit on the counter.
 	GameState.finish_stage(LevelRunner.LOST, 0, [], true, 5)
-	assert_eq(int(GameState.awareness_gaffe_tally["district"]), 5, "the gaffes go on the tally")
+	assert_eq(GameState.gaffe_total, 5, "the gaffes go on the total")
 	assert_eq(int(GameState.awareness["district"]), 20, "5 is under both thresholds")
 	GameState.level_cleared_units.erase("LV_AW")
 	GameState.level_last_completed_at.erase("LV_AW")

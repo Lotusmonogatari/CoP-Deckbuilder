@@ -86,7 +86,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | spiral | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (-) -> xp | threshold | FL009, FL016, FL535, FL563 |
 | R | spiral | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL017, FL533, FL563 |
 | R | spiral | awareness_district (g+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> awareness_district | once | FL006, FL518, FL520, FL524, FL548 |
-| R | spiral | constituency (g-) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> constituency | threshold | FL048, FL520, FL523, FL535, FL548 |
+| R | spiral | constituency (g-) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> constituency | threshold | FL048, FL520, FL523, FL535, FL548, FL590 |
 | R | spiral | funds (+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> xp (+) -> funds | once | FL006, FL023, FL046, FL521 |
 | R | spiral | funds (+) -> items (+) -> win_rate (+) -> awareness_district (g+) -> xp (+) -> funds | once | FL006, FL022, FL023, FL521 |
 | R | spiral | funds (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> win_rate (+) -> funds | once | FL001, FL008, FL014, FL522, FL524, FL536, FL541, FL550 |
@@ -119,11 +119,11 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | spiral | xp (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL522, FL524, FL536, FL550 |
 | R | spiral | xp (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL518, FL521, FL524, FL550 |
 | R | spiral | xp (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> party_support (-) -> xp | threshold | FL005, FL018, FL048, FL535, FL550, FL585 |
-| R | spiral | xp (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL048, FL521, FL523, FL535, FL550 |
+| R | spiral | xp (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL048, FL521, FL523, FL535, FL550, FL590 |
 | R | spiral | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> xp | threshold | FL009, FL048, FL535, FL548, FL573 |
 | R | spiral | xp (+) -> org_standing (g+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL046, FL521, FL573 |
 | R | spiral | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (+) -> party_support (-) -> xp | threshold | FL005, FL016, FL018, FL535, FL563, FL585 |
-| R | spiral | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL016, FL521, FL523, FL535, FL563 |
+| R | spiral | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL016, FL521, FL523, FL535, FL563, FL590 |
 | R | spiral | xp (+) -> unlocked_levels (+) -> party_support (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL018, FL521, FL534, FL563 |
 | R | spiral | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL017, FL521, FL533, FL563 |
 | R | spiral | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL017, FL521, FL532, FL563 |
@@ -152,7 +152,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | spiral | funds (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (+) -> party_support (g+) -> funds | threshold | FL005, FL018, FL046, FL048, FL503, FL550 |
 | R | spiral | funds (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> party_support (-) -> xp (+) -> funds | threshold | FL005, FL018, FL023, FL048, FL535, FL550, FL585 |
 | R | spiral | funds (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> reputation (+) -> staff (-) -> funds | threshold | FL004, FL017, FL048, FL507, FL535, FL550, FL559 |
-| R | spiral | funds (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | threshold | FL023, FL048, FL521, FL523, FL535, FL550 |
+| R | spiral | funds (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | threshold | FL023, FL048, FL521, FL523, FL535, FL550, FL590 |
 | R | spiral | funds (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> xp (+) -> unlocked_levels (+) -> funds | threshold | FL009, FL014, FL048, FL535, FL550, FL563 |
 | R | spiral | funds (+) -> staff (+) -> win_rate (+) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL006, FL034, FL038, FL047, FL508, FL520, FL548 |
 | R | spiral | funds (+) -> staff (+) -> win_rate (+) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL006, FL034, FL038, FL047, FL508, FL521, FL550 |
@@ -164,7 +164,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | spiral | funds (+) -> win_rate (+) -> awareness_district (g+) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL006, FL047, FL521, FL538, FL548, FL573 |
 | R | spiral | funds (+) -> win_rate (+) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> party_support (g+) -> funds | threshold | FL006, FL018, FL503, FL521, FL538, FL563 |
 | R | spiral | funds (+) -> win_rate (+) -> xp (+) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL047, FL520, FL538, FL548, FL574 |
-| R | spiral | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> party_support (-) -> funds | once | FL018, FL501, FL521, FL523, FL538, FL563 |
+| R | spiral | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> party_support (-) -> funds | once | FL018, FL501, FL521, FL523, FL538, FL563, FL590 |
 | R | spiral | funds (g+) -> party_standing (+) -> laws (+) -> awareness_national (-) -> awareness_district (g+) -> win_rate (-) -> funds | once | FL008, FL505, FL519, FL524, FL548, FL582 |
 | R | spiral | funds (g+) -> party_standing (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> win_rate (+) -> funds | once | FL001, FL008, FL014, FL505, FL522, FL524, FL536, FL541, FL548 |
 | R | spiral | funds (g+) -> party_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> party_support (g+) -> funds | threshold | FL005, FL018, FL503, FL505, FL518, FL524, FL548 |
@@ -209,7 +209,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | spiral | xp (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | threshold | FL007, FL048, FL521, FL535, FL550, FL582 |
 | R | spiral | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL518, FL521, FL524, FL548, FL573 |
 | R | spiral | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> party_support (-) -> xp | threshold | FL005, FL018, FL048, FL535, FL548, FL573, FL585 |
-| R | spiral | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL048, FL521, FL523, FL535, FL548, FL573 |
+| R | spiral | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL048, FL521, FL523, FL535, FL548, FL573, FL590 |
 | R | spiral | xp (+) -> unlocked_levels (+) -> constituency (+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL016, FL046, FL521, FL563 |
 | R | spiral | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | threshold | FL007, FL016, FL521, FL535, FL563, FL582 |
 | R | spiral | xp (+) -> unlocked_levels (+) -> party_support (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> xp | threshold | FL009, FL018, FL048, FL535, FL546, FL563 |
@@ -229,9 +229,9 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | party_support (-) -> party_support | once | FL545, FL581 |
 | B | party_support (g-) -> party_support | threshold | FL506 |
 | B | reputation (-) -> reputation | week | FL511 |
-| B | xp (-) -> xp | once | FL570, FL580, FL583, FL584, FL585 |
+| B | xp (-) -> xp | once | FL570, FL580, FL583, FL584, FL585, FL591 |
 | R | awareness_district (g+) -> win_rate (+) -> awareness_district | stage | FL006, FL519 |
-| B | awareness_district (g+) -> win_rate (-) -> awareness_district | stage | FL519, FL523 |
+| B | awareness_district (g+) -> win_rate (-) -> awareness_district | stage | FL519, FL523, FL590 |
 | R | awareness_national (g+) -> win_rate (+) -> awareness_national | stage | FL007, FL518 |
 | B | constituency (g-) -> win_rate (+) -> constituency | threshold | FL003, FL016, FL535 |
 | R | constituency (g-) -> win_rate (-) -> constituency | threshold | FL010, FL535, FL537 |
@@ -253,9 +253,9 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | xp (+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL539 |
 | B | xp (+) -> win_rate (-) -> xp | once | FL009, FL539 |
 | R | awareness_district (g+) -> items (+) -> win_rate (+) -> awareness_district | week | FL006, FL517 |
-| B | awareness_district (g+) -> items (+) -> win_rate (-) -> awareness_district | week | FL517, FL523 |
+| B | awareness_district (g+) -> items (+) -> win_rate (-) -> awareness_district | week | FL517, FL523, FL590 |
 | R | awareness_district (g+) -> org_standing (g+) -> win_rate (+) -> awareness_district | once | FL006, FL520, FL536 |
-| B | awareness_district (g+) -> org_standing (g+) -> win_rate (-) -> awareness_district | once | FL520, FL523, FL536 |
+| B | awareness_district (g+) -> org_standing (g+) -> win_rate (-) -> awareness_district | once | FL520, FL523, FL536, FL590 |
 | B | awareness_district (g+) -> win_rate (+) -> awareness_national (-) -> awareness_district | week | FL007, FL519, FL582 |
 | R | awareness_national (g+) -> org_standing (+) -> laws (+) -> awareness_national | once | FL522, FL524, FL548 |
 | R | awareness_national (g+) -> org_standing (g+) -> win_rate (+) -> awareness_national | once | FL007, FL522, FL536 |
@@ -296,12 +296,12 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | xp (+) -> unlocked_levels (+) -> party_support (-) -> xp | once | FL018, FL563, FL585 |
 | R | xp (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL521, FL539 |
 | B | xp (+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL018, FL539, FL585 |
-| B | xp (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL521, FL523, FL539 |
+| B | xp (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL521, FL523, FL539, FL590 |
 | R | xp (+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL539, FL585 |
 | B | awareness_district (g+) -> items (+) -> win_rate (+) -> awareness_national (-) -> awareness_district | week | FL007, FL517, FL582 |
 | B | awareness_district (g+) -> org_standing (+) -> laws (+) -> awareness_national (-) -> awareness_district | once | FL520, FL524, FL548, FL582 |
 | R | awareness_district (g+) -> org_standing (g+) -> backings (+) -> win_rate (+) -> awareness_district | once | FL006, FL046, FL520 |
-| B | awareness_district (g+) -> org_standing (g+) -> backings (+) -> win_rate (-) -> awareness_district | once | FL046, FL520, FL523 |
+| B | awareness_district (g+) -> org_standing (g+) -> backings (+) -> win_rate (-) -> awareness_district | once | FL046, FL520, FL523, FL590 |
 | B | awareness_district (g+) -> org_standing (g+) -> win_rate (+) -> awareness_national (-) -> awareness_district | once | FL007, FL520, FL536, FL582 |
 | R | awareness_national (g+) -> org_standing (g+) -> backings (+) -> win_rate (+) -> awareness_national | once | FL007, FL046, FL522 |
 | R | awareness_national (g+) -> win_rate (+) -> org_standing (+) -> laws (+) -> awareness_national | once | FL019, FL518, FL524, FL548 |
@@ -340,7 +340,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | funds (+) -> win_rate (+) -> reputation (+) -> staff (-) -> funds | once | FL004, FL017, FL507, FL538, FL559 |
 | R | funds (+) -> win_rate (+) -> xp (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL047, FL538, FL550 |
 | R | funds (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL002, FL009, FL014, FL015, FL538, FL563 |
-| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL521, FL523, FL538 |
+| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL521, FL523, FL538, FL590 |
 | B | funds (+) -> win_rate (-) -> party_support (+) -> laws (+) -> funds | once | FL012, FL047, FL538, FL546 |
 | R | funds (+) -> win_rate (-) -> party_support (-) -> xp (+) -> funds | once | FL012, FL023, FL538, FL585 |
 | R | funds (+) -> win_rate (-) -> reputation (+) -> staff (-) -> funds | once | FL011, FL507, FL538, FL559 |
@@ -365,11 +365,11 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | xp (+) -> awareness_district (g+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL519, FL574, FL585 |
 | R | xp (+) -> cards (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL521, FL530, FL556 |
 | B | xp (+) -> cards (+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL018, FL530, FL556, FL585 |
-| B | xp (+) -> cards (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL521, FL523, FL530, FL556 |
+| B | xp (+) -> cards (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL521, FL523, FL530, FL556, FL590 |
 | R | xp (+) -> cards (+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL530, FL556, FL585 |
 | R | xp (+) -> items (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL022, FL521 |
 | B | xp (+) -> items (+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL018, FL022, FL585 |
-| B | xp (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL022, FL521, FL523 |
+| B | xp (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL022, FL521, FL523, FL590 |
 | R | xp (+) -> items (+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL022, FL585 |
 | B | xp (+) -> laws (+) -> awareness_national (-) -> awareness_district (g+) -> xp | once | FL521, FL524, FL550, FL582 |
 | R | xp (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL518, FL524, FL550 |
@@ -380,7 +380,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | xp (+) -> org_standing (g+) -> backings (+) -> win_rate (-) -> xp | once | FL009, FL046, FL573 |
 | R | xp (+) -> org_standing (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL521, FL536, FL573 |
 | B | xp (+) -> org_standing (g+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL018, FL536, FL573, FL585 |
-| B | xp (+) -> org_standing (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL521, FL523, FL536, FL573 |
+| B | xp (+) -> org_standing (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL521, FL523, FL536, FL573, FL590 |
 | R | xp (+) -> org_standing (g+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL536, FL573, FL585 |
 | B | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (+) -> xp | threshold | FL002, FL009, FL015, FL016, FL535, FL563 |
 | R | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (-) -> xp | threshold | FL009, FL016, FL535, FL563 |
@@ -392,7 +392,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (-) -> xp | once | FL009, FL017, FL532, FL563 |
 | B | xp (+) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | once | FL007, FL521, FL539, FL582 |
 | R | awareness_district (g+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> awareness_district | once | FL006, FL518, FL520, FL524, FL548 |
-| B | awareness_district (g+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> awareness_district | once | FL518, FL520, FL523, FL524, FL548 |
+| B | awareness_district (g+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> awareness_district | once | FL518, FL520, FL523, FL524, FL548, FL590 |
 | B | awareness_district (g+) -> org_standing (g+) -> backings (+) -> win_rate (+) -> awareness_national (-) -> awareness_district | once | FL007, FL046, FL520, FL582 |
 | B | awareness_district (g+) -> win_rate (+) -> org_standing (+) -> laws (+) -> awareness_national (-) -> awareness_district | once | FL019, FL519, FL524, FL548, FL582 |
 | R | constituency (+) -> backings (+) -> win_rate (+) -> org_standing (+) -> laws (+) -> constituency | once | FL019, FL046, FL048, FL548 |
@@ -400,7 +400,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | constituency (+) -> backings (+) -> win_rate (-) -> party_support (+) -> laws (+) -> constituency | once | FL012, FL046, FL048, FL546 |
 | B | constituency (g-) -> win_rate (+) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> constituency | threshold | FL006, FL048, FL520, FL535, FL548 |
 | B | constituency (g-) -> win_rate (+) -> awareness_national (g+) -> org_standing (+) -> laws (+) -> constituency | threshold | FL007, FL048, FL522, FL535, FL548 |
-| R | constituency (g-) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> constituency | threshold | FL048, FL520, FL523, FL535, FL548 |
+| R | constituency (g-) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> constituency | threshold | FL048, FL520, FL523, FL535, FL548, FL590 |
 | R | funds (+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> xp (+) -> funds | once | FL006, FL023, FL046, FL521 |
 | R | funds (+) -> backings (+) -> win_rate (+) -> org_standing (+) -> laws (+) -> funds | once | FL019, FL046, FL047, FL548 |
 | R | funds (+) -> backings (+) -> win_rate (+) -> party_support (+) -> laws (+) -> funds | once | FL005, FL018, FL046, FL047, FL546 |
@@ -408,7 +408,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | funds (+) -> backings (+) -> win_rate (+) -> reputation (+) -> staff (-) -> funds | once | FL004, FL017, FL046, FL507, FL559 |
 | R | funds (+) -> backings (+) -> win_rate (+) -> xp (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL046, FL047, FL550 |
 | R | funds (+) -> backings (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL002, FL009, FL014, FL015, FL046, FL563 |
-| B | funds (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL046, FL521, FL523 |
+| B | funds (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL046, FL521, FL523, FL590 |
 | B | funds (+) -> backings (+) -> win_rate (-) -> party_support (+) -> laws (+) -> funds | once | FL012, FL046, FL047, FL546 |
 | R | funds (+) -> backings (+) -> win_rate (-) -> party_support (-) -> xp (+) -> funds | once | FL012, FL023, FL046, FL585 |
 | R | funds (+) -> backings (+) -> win_rate (-) -> reputation (+) -> staff (-) -> funds | once | FL011, FL046, FL507, FL559 |
@@ -421,7 +421,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | funds (+) -> items (+) -> win_rate (+) -> reputation (+) -> staff (-) -> funds | once | FL004, FL017, FL022, FL507, FL559 |
 | R | funds (+) -> items (+) -> win_rate (+) -> xp (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL022, FL047, FL550 |
 | R | funds (+) -> items (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL002, FL009, FL014, FL015, FL022, FL563 |
-| B | funds (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL022, FL023, FL521, FL523 |
+| B | funds (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL022, FL023, FL521, FL523, FL590 |
 | B | funds (+) -> items (+) -> win_rate (-) -> party_support (+) -> laws (+) -> funds | once | FL012, FL022, FL047, FL546 |
 | R | funds (+) -> items (+) -> win_rate (-) -> party_support (-) -> xp (+) -> funds | once | FL012, FL022, FL023, FL585 |
 | R | funds (+) -> items (+) -> win_rate (-) -> reputation (+) -> staff (-) -> funds | once | FL011, FL022, FL507, FL559 |
@@ -453,7 +453,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | funds (+) -> staff (+) -> win_rate (+) -> party_support (-) -> xp (+) -> funds | once | FL005, FL018, FL023, FL034, FL038, FL508, FL585 |
 | R | funds (+) -> staff (+) -> win_rate (+) -> xp (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL034, FL038, FL047, FL508, FL550 |
 | R | funds (+) -> staff (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL002, FL009, FL014, FL015, FL034, FL038, FL508, FL563 |
-| B | funds (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL034, FL038, FL508, FL521, FL523 |
+| B | funds (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL034, FL038, FL508, FL521, FL523, FL590 |
 | B | funds (+) -> staff (+) -> win_rate (-) -> party_support (+) -> laws (+) -> funds | once | FL012, FL034, FL038, FL047, FL508, FL546 |
 | R | funds (+) -> staff (+) -> win_rate (-) -> party_support (-) -> xp (+) -> funds | once | FL012, FL023, FL034, FL038, FL508, FL585 |
 | B | funds (+) -> staff (+) -> win_rate (-) -> xp (+) -> laws (+) -> funds | once | FL009, FL034, FL038, FL047, FL508, FL550 |
@@ -471,9 +471,9 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | funds (+) -> win_rate (+) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL047, FL538, FL548, FL573 |
 | B | funds (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> party_support (-) -> funds | once | FL002, FL009, FL015, FL018, FL501, FL538, FL563 |
 | R | funds (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> party_support (g+) -> funds | threshold | FL002, FL009, FL015, FL018, FL503, FL538, FL563 |
-| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL047, FL520, FL523, FL538, FL548 |
-| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL047, FL521, FL523, FL538, FL550 |
-| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL521, FL523, FL538, FL563 |
+| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL047, FL520, FL523, FL538, FL548, FL590 |
+| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL047, FL521, FL523, FL538, FL550, FL590 |
+| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL521, FL523, FL538, FL563, FL590 |
 | B | funds (+) -> win_rate (-) -> party_support (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL012, FL516, FL524, FL538, FL546 |
 | R | funds (+) -> win_rate (-) -> party_support (-) -> xp (+) -> laws (+) -> funds | once | FL012, FL047, FL538, FL550, FL585 |
 | R | funds (+) -> win_rate (-) -> party_support (-) -> xp (+) -> unlocked_levels (+) -> funds | once | FL012, FL014, FL538, FL563, FL585 |
@@ -505,7 +505,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | funds (g+) -> party_support (g+) -> win_rate (+) -> reputation (+) -> staff (-) -> funds | once | FL004, FL017, FL504, FL507, FL534, FL559 |
 | R | funds (g+) -> party_support (g+) -> win_rate (+) -> xp (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL047, FL504, FL534, FL550 |
 | R | funds (g+) -> party_support (g+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL002, FL009, FL014, FL015, FL504, FL534, FL563 |
-| B | funds (g+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL504, FL521, FL523, FL534 |
+| B | funds (g+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL504, FL521, FL523, FL534, FL590 |
 | R | funds (g+) -> party_support (g+) -> win_rate (-) -> reputation (+) -> staff (-) -> funds | once | FL011, FL504, FL507, FL534, FL559 |
 | B | funds (g+) -> party_support (g+) -> win_rate (-) -> xp (+) -> laws (+) -> funds | once | FL009, FL047, FL504, FL534, FL550 |
 | B | funds (g+) -> party_support (g+) -> win_rate (-) -> xp (+) -> unlocked_levels (+) -> funds | once | FL009, FL014, FL504, FL534, FL563 |
@@ -527,13 +527,13 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | xp (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> win_rate (-) -> xp | once | FL009, FL522, FL524, FL536, FL550 |
 | R | xp (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL518, FL521, FL524, FL550 |
 | B | xp (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL018, FL518, FL524, FL550, FL585 |
-| B | xp (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL518, FL521, FL523, FL524, FL550 |
+| B | xp (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL518, FL521, FL523, FL524, FL550, FL590 |
 | R | xp (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL518, FL524, FL550, FL585 |
 | R | xp (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL046, FL048, FL550 |
 | B | xp (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (-) -> xp | once | FL009, FL046, FL048, FL550 |
 | B | xp (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> awareness_district (g+) -> xp | threshold | FL006, FL048, FL521, FL535, FL550 |
 | R | xp (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> party_support (-) -> xp | threshold | FL005, FL018, FL048, FL535, FL550, FL585 |
-| R | xp (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL048, FL521, FL523, FL535, FL550 |
+| R | xp (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL048, FL521, FL523, FL535, FL550, FL590 |
 | B | xp (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> party_support (-) -> xp | threshold | FL012, FL048, FL535, FL550, FL585 |
 | B | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (-) -> awareness_district (g+) -> xp | once | FL521, FL524, FL548, FL573, FL582 |
 | R | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL518, FL524, FL548, FL573 |
@@ -542,17 +542,17 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> xp | threshold | FL009, FL048, FL535, FL548, FL573 |
 | R | xp (+) -> org_standing (g+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL046, FL521, FL573 |
 | B | xp (+) -> org_standing (g+) -> backings (+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL018, FL046, FL573, FL585 |
-| B | xp (+) -> org_standing (g+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL046, FL521, FL523, FL573 |
+| B | xp (+) -> org_standing (g+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL046, FL521, FL523, FL573, FL590 |
 | R | xp (+) -> org_standing (g+) -> backings (+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL046, FL573, FL585 |
 | B | xp (+) -> org_standing (g+) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | once | FL007, FL521, FL536, FL573, FL582 |
 | R | xp (+) -> unlocked_levels (+) -> constituency (+) -> backings (+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL016, FL046, FL563 |
 | B | xp (+) -> unlocked_levels (+) -> constituency (+) -> backings (+) -> win_rate (-) -> xp | once | FL009, FL016, FL046, FL563 |
 | B | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (+) -> awareness_district (g+) -> xp | threshold | FL006, FL016, FL521, FL535, FL563 |
 | R | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (+) -> party_support (-) -> xp | threshold | FL005, FL016, FL018, FL535, FL563, FL585 |
-| R | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL016, FL521, FL523, FL535, FL563 |
+| R | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL016, FL521, FL523, FL535, FL563, FL590 |
 | B | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (-) -> party_support (-) -> xp | threshold | FL012, FL016, FL535, FL563, FL585 |
 | R | xp (+) -> unlocked_levels (+) -> party_support (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL018, FL521, FL534, FL563 |
-| B | xp (+) -> unlocked_levels (+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL018, FL521, FL523, FL534, FL563 |
+| B | xp (+) -> unlocked_levels (+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL018, FL521, FL523, FL534, FL563, FL590 |
 | R | xp (+) -> unlocked_levels (+) -> reputation (+) -> backings (+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL017, FL046, FL563 |
 | B | xp (+) -> unlocked_levels (+) -> reputation (+) -> backings (+) -> win_rate (-) -> xp | once | FL009, FL017, FL046, FL563 |
 | R | xp (+) -> unlocked_levels (+) -> reputation (+) -> staff (+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL017, FL559, FL563 |
@@ -561,14 +561,14 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL017, FL521, FL532, FL563 |
 | B | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL017, FL018, FL533, FL563, FL585 |
 | B | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL017, FL018, FL532, FL563, FL585 |
-| B | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL017, FL521, FL523, FL533, FL563 |
-| B | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL017, FL521, FL523, FL532, FL563 |
+| B | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL017, FL521, FL523, FL533, FL563, FL590 |
+| B | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL017, FL521, FL523, FL532, FL563, FL590 |
 | R | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL017, FL533, FL563, FL585 |
 | R | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL017, FL532, FL563, FL585 |
 | B | awareness_district (g+) -> items (+) -> win_rate (+) -> org_standing (+) -> laws (+) -> awareness_national (-) -> awareness_district | once | FL019, FL517, FL524, FL548, FL582 |
 | R | constituency (+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> constituency | once | FL006, FL046, FL048, FL520, FL548 |
 | R | constituency (+) -> backings (+) -> win_rate (+) -> awareness_national (g+) -> org_standing (+) -> laws (+) -> constituency | once | FL007, FL046, FL048, FL522, FL548 |
-| B | constituency (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> constituency | once | FL046, FL048, FL520, FL523, FL548 |
+| B | constituency (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> constituency | once | FL046, FL048, FL520, FL523, FL548, FL590 |
 | R | constituency (g-) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> constituency | threshold | FL007, FL048, FL520, FL535, FL548, FL582 |
 | R | funds (+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL006, FL046, FL047, FL520, FL548 |
 | R | funds (+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL006, FL046, FL047, FL521, FL550 |
@@ -583,9 +583,9 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | funds (+) -> backings (+) -> win_rate (+) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL046, FL047, FL548, FL573 |
 | B | funds (+) -> backings (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> party_support (-) -> funds | once | FL002, FL009, FL015, FL018, FL046, FL501, FL563 |
 | R | funds (+) -> backings (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> party_support (g+) -> funds | threshold | FL002, FL009, FL015, FL018, FL046, FL503, FL563 |
-| B | funds (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL046, FL047, FL520, FL523, FL548 |
-| B | funds (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL046, FL047, FL521, FL523, FL550 |
-| B | funds (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL046, FL521, FL523, FL563 |
+| B | funds (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL046, FL047, FL520, FL523, FL548, FL590 |
+| B | funds (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL046, FL047, FL521, FL523, FL550, FL590 |
+| B | funds (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL046, FL521, FL523, FL563, FL590 |
 | B | funds (+) -> backings (+) -> win_rate (-) -> party_support (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL012, FL046, FL516, FL524, FL546 |
 | R | funds (+) -> backings (+) -> win_rate (-) -> party_support (-) -> xp (+) -> laws (+) -> funds | once | FL012, FL046, FL047, FL550, FL585 |
 | R | funds (+) -> backings (+) -> win_rate (-) -> party_support (-) -> xp (+) -> unlocked_levels (+) -> funds | once | FL012, FL014, FL046, FL563, FL585 |
@@ -606,9 +606,9 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | funds (+) -> items (+) -> win_rate (+) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL022, FL047, FL548, FL573 |
 | B | funds (+) -> items (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> party_support (-) -> funds | once | FL002, FL009, FL015, FL018, FL022, FL501, FL563 |
 | R | funds (+) -> items (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> party_support (g+) -> funds | threshold | FL002, FL009, FL015, FL018, FL022, FL503, FL563 |
-| B | funds (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL022, FL047, FL520, FL523, FL548 |
-| B | funds (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL022, FL047, FL521, FL523, FL550 |
-| B | funds (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL022, FL521, FL523, FL563 |
+| B | funds (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL022, FL047, FL520, FL523, FL548, FL590 |
+| B | funds (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL022, FL047, FL521, FL523, FL550, FL590 |
+| B | funds (+) -> items (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL022, FL521, FL523, FL563, FL590 |
 | B | funds (+) -> items (+) -> win_rate (-) -> party_support (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL012, FL022, FL516, FL524, FL546 |
 | R | funds (+) -> items (+) -> win_rate (-) -> party_support (-) -> xp (+) -> laws (+) -> funds | once | FL012, FL022, FL047, FL550, FL585 |
 | R | funds (+) -> items (+) -> win_rate (-) -> party_support (-) -> xp (+) -> unlocked_levels (+) -> funds | once | FL012, FL014, FL022, FL563, FL585 |
@@ -641,7 +641,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | funds (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> party_support (-) -> xp (+) -> funds | once | FL005, FL018, FL023, FL518, FL524, FL550, FL585 |
 | B | funds (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> reputation (+) -> staff (-) -> funds | once | FL004, FL017, FL507, FL518, FL524, FL550, FL559 |
 | R | funds (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL002, FL009, FL014, FL015, FL518, FL524, FL550, FL563 |
-| B | funds (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL518, FL521, FL523, FL524, FL550 |
+| B | funds (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | once | FL023, FL518, FL521, FL523, FL524, FL550, FL590 |
 | R | funds (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> party_support (-) -> xp (+) -> funds | once | FL012, FL023, FL518, FL524, FL550, FL585 |
 | R | funds (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> reputation (+) -> staff (-) -> funds | once | FL011, FL507, FL518, FL524, FL550, FL559 |
 | B | funds (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> xp (+) -> unlocked_levels (+) -> funds | once | FL009, FL014, FL518, FL524, FL550, FL563 |
@@ -656,7 +656,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | funds (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> party_support (-) -> xp (+) -> funds | threshold | FL005, FL018, FL023, FL048, FL535, FL550, FL585 |
 | R | funds (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> reputation (+) -> staff (-) -> funds | threshold | FL004, FL017, FL048, FL507, FL535, FL550, FL559 |
 | B | funds (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> funds | threshold | FL002, FL009, FL014, FL015, FL048, FL535, FL550, FL563 |
-| R | funds (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | threshold | FL023, FL048, FL521, FL523, FL535, FL550 |
+| R | funds (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> funds | threshold | FL023, FL048, FL521, FL523, FL535, FL550, FL590 |
 | B | funds (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> party_support (-) -> xp (+) -> funds | threshold | FL012, FL023, FL048, FL535, FL550, FL585 |
 | B | funds (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> reputation (+) -> staff (-) -> funds | threshold | FL011, FL048, FL507, FL535, FL550, FL559 |
 | R | funds (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> xp (+) -> unlocked_levels (+) -> funds | threshold | FL009, FL014, FL048, FL535, FL550, FL563 |
@@ -673,9 +673,9 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | funds (+) -> staff (+) -> win_rate (+) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL034, FL038, FL047, FL508, FL548, FL573 |
 | B | funds (+) -> staff (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> party_support (-) -> funds | once | FL002, FL009, FL015, FL018, FL034, FL038, FL501, FL508, FL563 |
 | R | funds (+) -> staff (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> party_support (g+) -> funds | threshold | FL002, FL009, FL015, FL018, FL034, FL038, FL503, FL508, FL563 |
-| B | funds (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL034, FL038, FL047, FL508, FL520, FL523, FL548 |
-| B | funds (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL034, FL038, FL047, FL508, FL521, FL523, FL550 |
-| B | funds (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL034, FL038, FL508, FL521, FL523, FL563 |
+| B | funds (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL034, FL038, FL047, FL508, FL520, FL523, FL548, FL590 |
+| B | funds (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL034, FL038, FL047, FL508, FL521, FL523, FL550, FL590 |
+| B | funds (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL034, FL038, FL508, FL521, FL523, FL563, FL590 |
 | B | funds (+) -> staff (+) -> win_rate (-) -> party_support (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL012, FL034, FL038, FL508, FL516, FL524, FL546 |
 | R | funds (+) -> staff (+) -> win_rate (-) -> party_support (-) -> xp (+) -> laws (+) -> funds | once | FL012, FL034, FL038, FL047, FL508, FL550, FL585 |
 | R | funds (+) -> staff (+) -> win_rate (-) -> party_support (-) -> xp (+) -> unlocked_levels (+) -> funds | once | FL012, FL014, FL034, FL038, FL508, FL563, FL585 |
@@ -697,11 +697,11 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | funds (+) -> win_rate (+) -> xp (+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL002, FL009, FL015, FL516, FL524, FL538, FL548, FL573 |
 | R | funds (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> party_support (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL018, FL047, FL538, FL546, FL563 |
 | B | funds (+) -> win_rate (+) -> xp (+) -> unlocked_levels (+) -> reputation (+) -> staff (-) -> funds | once | FL002, FL009, FL015, FL017, FL507, FL538, FL559, FL563 |
-| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL516, FL520, FL523, FL524, FL538, FL548 |
-| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL516, FL521, FL523, FL524, FL538, FL550 |
-| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL047, FL521, FL523, FL538, FL548, FL573 |
-| R | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> party_support (-) -> funds | once | FL018, FL501, FL521, FL523, FL538, FL563 |
-| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> party_support (g+) -> funds | threshold | FL018, FL503, FL521, FL523, FL538, FL563 |
+| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL516, FL520, FL523, FL524, FL538, FL548, FL590 |
+| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL516, FL521, FL523, FL524, FL538, FL550, FL590 |
+| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL047, FL521, FL523, FL538, FL548, FL573, FL590 |
+| R | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> party_support (-) -> funds | once | FL018, FL501, FL521, FL523, FL538, FL563, FL590 |
+| B | funds (+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> party_support (g+) -> funds | threshold | FL018, FL503, FL521, FL523, FL538, FL563, FL590 |
 | R | funds (+) -> win_rate (-) -> party_support (-) -> xp (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL012, FL516, FL524, FL538, FL550, FL585 |
 | R | funds (+) -> win_rate (-) -> party_support (-) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL012, FL047, FL538, FL548, FL573, FL585 |
 | B | funds (+) -> win_rate (-) -> xp (+) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL009, FL047, FL520, FL538, FL548, FL574 |
@@ -774,9 +774,9 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | R | funds (g+) -> party_support (g+) -> win_rate (+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL019, FL504, FL516, FL524, FL534, FL548 |
 | R | funds (g+) -> party_support (g+) -> win_rate (+) -> xp (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL002, FL009, FL015, FL504, FL516, FL524, FL534, FL550 |
 | R | funds (g+) -> party_support (g+) -> win_rate (+) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL002, FL009, FL015, FL047, FL504, FL534, FL548, FL573 |
-| B | funds (g+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL047, FL504, FL520, FL523, FL534, FL548 |
-| B | funds (g+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL047, FL504, FL521, FL523, FL534, FL550 |
-| B | funds (g+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL504, FL521, FL523, FL534, FL563 |
+| B | funds (g+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> org_standing (+) -> laws (+) -> funds | once | FL047, FL504, FL520, FL523, FL534, FL548, FL590 |
+| B | funds (g+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> laws (+) -> funds | once | FL047, FL504, FL521, FL523, FL534, FL550, FL590 |
+| B | funds (g+) -> party_support (g+) -> win_rate (-) -> awareness_district (g+) -> xp (+) -> unlocked_levels (+) -> funds | once | FL014, FL504, FL521, FL523, FL534, FL563, FL590 |
 | B | funds (g+) -> party_support (g+) -> win_rate (-) -> xp (+) -> laws (+) -> awareness_national (g+) -> funds | once | FL009, FL504, FL516, FL524, FL534, FL550 |
 | B | funds (g+) -> party_support (g+) -> win_rate (-) -> xp (+) -> org_standing (+) -> laws (+) -> funds | once | FL009, FL047, FL504, FL534, FL548, FL573 |
 | B | party_support (+) -> laws (+) -> awareness_national (-) -> awareness_district (g+) -> items (+) -> win_rate (+) -> party_support | once | FL005, FL018, FL517, FL524, FL546, FL582 |
@@ -801,29 +801,29 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | xp (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> backings (+) -> win_rate (-) -> xp | once | FL009, FL046, FL522, FL524, FL550 |
 | R | xp (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL521, FL522, FL524, FL536, FL550 |
 | B | xp (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL018, FL522, FL524, FL536, FL550, FL585 |
-| B | xp (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL521, FL522, FL523, FL524, FL536, FL550 |
+| B | xp (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL521, FL522, FL523, FL524, FL536, FL550, FL590 |
 | R | xp (+) -> laws (+) -> awareness_national (g+) -> org_standing (g+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL522, FL524, FL536, FL550, FL585 |
 | R | xp (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL046, FL048, FL521, FL550 |
 | B | xp (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL018, FL046, FL048, FL550, FL585 |
-| B | xp (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL046, FL048, FL521, FL523, FL550 |
+| B | xp (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL046, FL048, FL521, FL523, FL550, FL590 |
 | R | xp (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL046, FL048, FL550, FL585 |
 | R | xp (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | threshold | FL007, FL048, FL521, FL535, FL550, FL582 |
 | B | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (-) -> awareness_district (g+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL519, FL524, FL548, FL573, FL582 |
 | R | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (-) -> awareness_district (g+) -> win_rate (-) -> xp | once | FL009, FL519, FL524, FL548, FL573, FL582 |
 | R | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL518, FL521, FL524, FL548, FL573 |
 | B | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL018, FL518, FL524, FL548, FL573, FL585 |
-| B | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL518, FL521, FL523, FL524, FL548, FL573 |
+| B | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL518, FL521, FL523, FL524, FL548, FL573, FL590 |
 | R | xp (+) -> org_standing (+) -> laws (+) -> awareness_national (g+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL518, FL524, FL548, FL573, FL585 |
 | R | xp (+) -> org_standing (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (+) -> xp | once | FL002, FL009, FL015, FL046, FL048, FL548, FL573 |
 | B | xp (+) -> org_standing (+) -> laws (+) -> constituency (+) -> backings (+) -> win_rate (-) -> xp | once | FL009, FL046, FL048, FL548, FL573 |
 | B | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> awareness_district (g+) -> xp | threshold | FL006, FL048, FL521, FL535, FL548, FL573 |
 | R | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (+) -> party_support (-) -> xp | threshold | FL005, FL018, FL048, FL535, FL548, FL573, FL585 |
-| R | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL048, FL521, FL523, FL535, FL548, FL573 |
+| R | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> awareness_district (g+) -> xp | threshold | FL048, FL521, FL523, FL535, FL548, FL573, FL590 |
 | B | xp (+) -> org_standing (+) -> laws (+) -> constituency (g-) -> win_rate (-) -> party_support (-) -> xp | threshold | FL012, FL048, FL535, FL548, FL573, FL585 |
 | B | xp (+) -> org_standing (g+) -> backings (+) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | once | FL007, FL046, FL521, FL573, FL582 |
 | R | xp (+) -> unlocked_levels (+) -> constituency (+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL016, FL046, FL521, FL563 |
 | B | xp (+) -> unlocked_levels (+) -> constituency (+) -> backings (+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL016, FL018, FL046, FL563, FL585 |
-| B | xp (+) -> unlocked_levels (+) -> constituency (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL016, FL046, FL521, FL523, FL563 |
+| B | xp (+) -> unlocked_levels (+) -> constituency (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL016, FL046, FL521, FL523, FL563, FL590 |
 | R | xp (+) -> unlocked_levels (+) -> constituency (+) -> backings (+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL016, FL046, FL563, FL585 |
 | R | xp (+) -> unlocked_levels (+) -> constituency (g-) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | threshold | FL007, FL016, FL521, FL535, FL563, FL582 |
 | B | xp (+) -> unlocked_levels (+) -> party_support (+) -> laws (+) -> awareness_national (-) -> awareness_district (g+) -> xp | once | FL018, FL521, FL524, FL546, FL563, FL582 |
@@ -834,11 +834,11 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | xp (+) -> unlocked_levels (+) -> party_support (g+) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | once | FL007, FL018, FL521, FL534, FL563, FL582 |
 | R | xp (+) -> unlocked_levels (+) -> reputation (+) -> backings (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL017, FL046, FL521, FL563 |
 | B | xp (+) -> unlocked_levels (+) -> reputation (+) -> backings (+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL017, FL018, FL046, FL563, FL585 |
-| B | xp (+) -> unlocked_levels (+) -> reputation (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL017, FL046, FL521, FL523, FL563 |
+| B | xp (+) -> unlocked_levels (+) -> reputation (+) -> backings (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL017, FL046, FL521, FL523, FL563, FL590 |
 | R | xp (+) -> unlocked_levels (+) -> reputation (+) -> backings (+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL017, FL046, FL563, FL585 |
 | R | xp (+) -> unlocked_levels (+) -> reputation (+) -> staff (+) -> win_rate (+) -> awareness_district (g+) -> xp | once | FL006, FL017, FL521, FL559, FL563 |
 | B | xp (+) -> unlocked_levels (+) -> reputation (+) -> staff (+) -> win_rate (+) -> party_support (-) -> xp | once | FL005, FL017, FL018, FL559, FL563, FL585 |
-| B | xp (+) -> unlocked_levels (+) -> reputation (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL017, FL521, FL523, FL559, FL563 |
+| B | xp (+) -> unlocked_levels (+) -> reputation (+) -> staff (+) -> win_rate (-) -> awareness_district (g+) -> xp | once | FL017, FL521, FL523, FL559, FL563, FL590 |
 | R | xp (+) -> unlocked_levels (+) -> reputation (+) -> staff (+) -> win_rate (-) -> party_support (-) -> xp | once | FL012, FL017, FL559, FL563, FL585 |
 | B | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | once | FL007, FL017, FL521, FL533, FL563, FL582 |
 | B | xp (+) -> unlocked_levels (+) -> reputation (g+) -> win_rate (+) -> awareness_national (-) -> awareness_district (g+) -> xp | once | FL007, FL017, FL521, FL532, FL563, FL582 |

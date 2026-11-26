@@ -1,0 +1,64 @@
+[
+  {
+    "segment_id": "SG01",
+    "suit": "Divisive",
+    "organizations": [
+      "BO08",
+      "BO26"
+    ]
+  },
+  {
+    "segment_id": "SG02",
+    "suit": "Appeal",
+    "organizations": [
+      "BO01",
+      "BO02",
+      "BO17",
+      "BO31",
+      "BO32"
+    ]
+  },
+  {
+    "segment_id": "SG03",
+    "suit": "Earnest",
+    "organizations": [
+      "BO03",
+      "BO04",
+      "BO06",
+      "BO07",
+      "BO11",
+      "BO12",
+      "BO14",
+      "BO18",
+      "BO25",
+      "BO27",
+      "BO28",
+      "BO30"
+    ]
+  },
+  {
+    "segment_id": "SG04",
+    "suit": "Emotional",
+    "organizations": [
+      "BO05",
+      "BO09",
+      "BO13",
+      "BO15",
+      "BO16",
+      "BO19",
+      "BO20",
+      "BO22",
+      "BO29"
+    ]
+  },
+  {
+    "segment_id": "SG05",
+    "suit": "Data Driven",
+    "organizations": [
+      "BO10",
+      "BO21",
+      "BO23",
+      "BO24"
+    ]
+  }
+]

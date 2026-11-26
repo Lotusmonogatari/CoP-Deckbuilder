@@ -166,6 +166,8 @@ var _new_week_panel: Overlay
 ## The campaign's system cards (P20 phase D): selection, a poll, and the end of the run.
 var _campaign_card_panel: Overlay
 var _campaign_end_panel: Overlay
+## The Blunder! card and its result (P21 phase B).
+var _blunder_panel: Overlay
 var _draft_ids: Array = []
 ## The draft adds a second member visit (2026-11-05).
 var _draft_extra_visit := false
@@ -556,7 +558,7 @@ func _build() -> void:
 	_refresh_resources()
 	_refresh_calendar()
 	# The campaign's own cards come before anything else that day (P20 phase D); each closes into a fresh build, which checks for the next.
-	if not _week_report_open and _show_campaign_card_if_due():
+	if not _week_report_open and (_show_campaign_card_if_due() or _show_blunder_if_any()):
 		_building = false
 		return
 	_show_trigger_alerts_if_any()
@@ -663,6 +665,12 @@ func _build_week_controls() -> void:
 	_campaign_card_panel.show_back = false
 	_campaign_card_panel.confirmed.connect(_on_campaign_card_done)
 	add_child(_campaign_card_panel)
+	_blunder_panel = Overlay.new()
+	_blunder_panel.name = "BlunderPanel"
+	_blunder_panel.dismissable = false
+	_blunder_panel.show_back = false
+	_blunder_panel.confirmed.connect(_on_blunder_card_done)
+	add_child(_blunder_panel)
 	_campaign_end_panel = Overlay.new()
 	_campaign_end_panel.name = "CampaignEndPanel"
 	_campaign_end_panel.dismissable = false
@@ -898,6 +906,54 @@ func _show_campaign_card_if_due() -> bool:
 		_campaign_card_panel.open_card(CampaignCards.poll_config(poll), Text.say("event.continue"))
 		return true
 	return false
+
+
+## The first waiting Blunder! (P21 phase B), as a card: what it costs, and a button to have a Media Spokesperson handle it (with its price in PC and why not,
+## when it cannot be asked), or to take it. True when a card went up.
+func _show_blunder_if_any() -> bool:
+	if GameState.is_in_level() or _blunder_panel == null or GameState.blunder_cards.is_empty():
+		return false
+	var loss := GameState.blunder_loss_preview()
+	var body: Array[Control] = [UiKit.line(Text.say("blunder.body", {"amount": maxi(int(loss["district"]), int(loss["national"]))}))]
+	if int(loss["district"]) <= 0 and int(loss["national"]) <= 0:
+		body.append(UiKit.line(Text.say("blunder.floor"), "SmallLabel"))
+	var buttons: Array[Control] = []
+	var spokesperson := GameState.blunder_spokesperson()
+	if spokesperson.is_empty():
+		body.append(UiKit.line(Text.say("blunder.no_spokesperson"), "SmallLabel"))
+	else:
+		var why := GameState.blunder_cancel_refusal()
+		var cancel := UiKit.action_button(Text.say("blunder.cancel", {"spokesperson": str(spokesperson["name"]), "price": int(spokesperson["price"])}), why,
+			_on_blunder_choice.bind(true), 100.0)
+		cancel.name = "BlunderCancel"
+		buttons.append(cancel)
+	var take := UiKit.action_button(Text.say("blunder.take_it"), "", _on_blunder_choice.bind(false), 100.0)
+	take.name = "BlunderTake"
+	buttons.append(take)
+	_blunder_panel.open_card({"tag": Text.say("blunder.title").to_upper(), "tag_kind": PopupCardStyles.ALARM, "title": Text.say("blunder.title"), "body": body,
+		"buttons": buttons, "primary": buttons.size() - 1})
+	return true
+
+
+## The player's answer: settle it, then show what happened on the same card.
+func _on_blunder_choice(cancel: bool) -> void:
+	var done := GameState.resolve_blunder(cancel)
+	SaveManager.autosave()
+	_refresh_resources()
+	if not bool(done["ok"]):
+		_build.call_deferred()
+		return
+	var body: Array[Control] = []
+	if bool(done["cancelled"]):
+		body.append(UiKit.line(Text.say("blunder.cancelled", {"spokesperson": str(done["spokesperson"])})))
+	else:
+		body.append(UiKit.line(Text.say("blunder.taken", {"district": int(done["lost_district"]), "national": int(done["lost_national"])})))
+	_blunder_panel.open_card({"tag": Text.say("blunder.title").to_upper(), "title": Text.say("blunder.title"), "body": body}, Text.say("event.continue"))
+
+
+## The result is read: the Office builds again and shows the next waiting Blunder!, if any.
+func _on_blunder_card_done() -> void:
+	_build.call_deferred()
 
 
 ## A selection or poll card is read: the Office builds again and checks for the next thing owed.

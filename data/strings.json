@@ -13277,5 +13277,152 @@
     "english": "A call on the party or the financial industry",
     "placeholders": null,
     "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.title",
+    "where": "P21 economy: blunder.title",
+    "english": "Blunder!",
+    "placeholders": null,
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.body",
+    "where": "P21 economy: blunder.body",
+    "english": "Too many slips have piled up, and the papers noticed. District and National awareness fall by {amount}.",
+    "placeholders": "amount",
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.floor",
+    "where": "P21 economy: blunder.floor",
+    "english": "Your name was already quiet. Nothing more is lost.",
+    "placeholders": null,
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.cancel",
+    "where": "P21 economy: blunder.cancel",
+    "english": "Have {spokesperson} handle it ({price} PC)",
+    "placeholders": "price, spokesperson",
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.cancelled",
+    "where": "P21 economy: blunder.cancelled",
+    "english": "{spokesperson} spends the afternoon on the phone. By evening the story has gone nowhere.",
+    "placeholders": "spokesperson",
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.no_spokesperson",
+    "where": "P21 economy: blunder.no_spokesperson",
+    "english": "A Media Spokesperson could have handled this.",
+    "placeholders": null,
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.take_it",
+    "where": "P21 economy: blunder.take_it",
+    "english": "Take it",
+    "placeholders": null,
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.taken",
+    "where": "P21 economy: blunder.taken",
+    "english": "District awareness fell by {district} and National awareness by {national}.",
+    "placeholders": "district, national",
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.refuse_pc",
+    "where": "P21 economy: blunder.refuse_pc",
+    "english": "Not enough PC.",
+    "placeholders": null,
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.counter",
+    "where": "P21 economy: blunder.counter",
+    "english": "Blunders!: {count}",
+    "placeholders": "count",
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.progress",
+    "where": "P21 economy: blunder.progress",
+    "english": "Slips on the record: {total}. The next awareness check comes at {awareness_at}; the next Blunder! check at {blunder_at}.",
+    "placeholders": "awareness_at, blunder_at, total",
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "blunder.card_title",
+    "where": "P21 economy: blunder.card_title",
+    "english": "Slips and Blunders!",
+    "placeholders": null,
+    "notes": "P21 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "credibility.title",
+    "where": "P21 economy: credibility.title",
+    "english": "Credibility",
+    "placeholders": null,
+    "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "credibility.body",
+    "where": "P21 economy: credibility.body",
+    "english": "How far the five groups who watch you take your word. Spending it costs you with all of them, and it comes back slowly.",
+    "placeholders": null,
+    "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "credibility.value",
+    "where": "P21 economy: credibility.value",
+    "english": "Credibility: {value}",
+    "placeholders": "value",
+    "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "segments.suit",
+    "where": "P21 economy: segments.suit",
+    "english": "Responds to {suit}",
+    "placeholders": "suit",
+    "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "segments.line",
+    "where": "P21 economy: segments.line",
+    "english": "{name}: {value}",
+    "placeholders": "name, value",
+    "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "segments.plays",
+    "where": "P21 economy: segments.plays",
+    "english": "{count} of {target} plays in the last {weeks} weeks",
+    "placeholders": "count, target, weeks",
+    "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "segments.debit",
+    "where": "P21 economy: segments.debit",
+    "english": "Still owed from spent credibility: {debit}",
+    "placeholders": "debit",
+    "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "segments.orgs",
+    "where": "P21 economy: segments.orgs",
+    "english": "{orgs}",
+    "placeholders": "orgs",
+    "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "credibility.refuse",
+    "where": "P21 economy: credibility.refuse",
+    "english": "Not enough credibility.",
+    "placeholders": null,
+    "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
   }
 ]

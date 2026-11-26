@@ -1419,6 +1419,18 @@ SHEETS = {
     },
     # P20 (2026-11-26, Cameron): the election cycles. Banners < Campaign Open < Election Day (YY.MM.DD). Exactly one cycle may have Player Runs N,
     # and it is the last: the player steps aside and the run ends on its Election Day.
+    # P21 phase C (2026-11-26, Cameron): which organizations each segment is made of and the suit that moves it. An organization may be in several segments.
+    "Segment Map": {
+        "out": "segment_map.json",
+        "key": "segment_id",
+        "id_pattern": r"^SG\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Segment ID", "segment_id", "id"),
+            ("Suit", "suit", "str"),
+            ("Organizations", "organizations", "id_list"),
+        ],
+    },
     "Election Cycles": {
         "out": "election_cycles.json",
         "key": "cycle_id",
@@ -4513,6 +4525,24 @@ def check_election_cycles(data, report):
         report.error(f"Election Cycles {stepping_aside[0].get('cycle_id')}", "The cycle with Player Runs N must be the last one")
 
 
+def check_segment_map(data, report):
+    """Segment Map (P21 phase C): every segment is in the Segments tab, has one suit from the Suits tab, and names real organizations."""
+    segments = {str(s.get("segment_id")) for s in data.get("segments", [])}
+    suits = {str(s.get("element")) for s in data.get("suits", [])}
+    boosters = {str(b.get("booster_id")) for b in data.get("boosters", [])}
+    for row in data.get("segment_map", []):
+        sid = row.get("segment_id")
+        if sid not in segments:
+            report.error("Segment Map", f"{sid} is not a segment in the Segments tab")
+        if str(row.get("suit")) not in suits:
+            report.error("Segment Map", f"{sid} has Suit '{row.get('suit')}', which is not in the Suits tab")
+        if not row.get("organizations"):
+            report.error("Segment Map", f"{sid} names no organizations")
+        for org in row.get("organizations") or []:
+            if org not in boosters:
+                report.error("Segment Map", f"{sid} names {org}, which is not an organization")
+
+
 def check_campaign_staff(data, report):
     """Campaign Staff (P20): CS IDs, one of the three campaign roles, tiers 0 to 2 with the starting tier not above the highest, Available
     office or chain, and gift likes and dislikes that are shop items. Prices and rewards are Balance rows, so no such columns exist."""
@@ -6033,6 +6063,7 @@ def main():
     check_stage_events(data, report)
     check_election_cycles(data, report)
     check_campaign_staff(data, report)
+    check_segment_map(data, report)
     check_campaign_choices(data, report)
     check_venue_choices(data, report)
     check_venues(data, report)

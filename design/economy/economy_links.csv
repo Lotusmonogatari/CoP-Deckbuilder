@@ -65,7 +65,7 @@ LK063,unlocked_levels,party_support,+,,End-of-level bonus,level,FL018
 LK064,unlocked_levels,reputation,+,,End-of-level bonus,level,FL017
 LK065,unlocked_levels,xp,+,,End-of-level bonus,level,FL015
 LK066,win_rate,awareness_district,+,,Room win pay; room and level pay,stage,FL006
-LK067,win_rate,awareness_district,-,,Gaffes cost awareness,stage,FL523
+LK067,win_rate,awareness_district,-,,Gaffes cost awareness; Blunder!,stage,"FL523,FL590"
 LK068,win_rate,awareness_national,+,,Room win pay; room and level pay,stage,FL007
 LK069,win_rate,constituency,+,,Room win pay; End-of-level bonus; room and level pay,level,"FL003,FL016"
 LK070,win_rate,constituency,-,,Room loss delta; Lifetime gaffe penalty,threshold,"FL010,FL537"
@@ -91,4 +91,4 @@ LK089,xp,laws,+,,Draft a bill,once,FL550
 LK090,xp,org_standing,+,,Campaign actions: organization standing,day,FL573
 LK091,xp,unlocked_levels,+,,Level unlock cost,once,FL563
 LK092,xp,win_rate,+,,Strength in a fight: XP,once,FL539
-LK093,xp,xp,-,,Campaign actions: Political Capital; Political Capital decay; Shore up support and Keep in touch; Dues bailout; Funds limit: petition steps and calls,once,"FL570,FL580,FL583,FL584,FL585"
+LK093,xp,xp,-,,Campaign actions: Political Capital; Political Capital decay; Shore up support and Keep in touch; Dues bailout; Funds limit: petition steps and calls; Blunder!: cancelling,once,"FL570,FL580,FL583,FL584,FL585,FL591"

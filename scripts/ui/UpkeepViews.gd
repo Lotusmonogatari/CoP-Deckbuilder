@@ -43,6 +43,29 @@ static func _meter_value(meter: String) -> int:
 ## The three cards. `on_hold` is called with the hold key, `on_bailout` with nothing, `on_cap` with the kind.
 static func cards(look: Dictionary, on_hold: Callable, on_bailout: Callable, on_cap: Callable) -> Array[Control]:
 	var out: Array[Control] = []
+	# The slips and Blunders! on the record, and how far the next checks are (P21 phase B).
+	var slips := OfficeFrameStyles.card(look, Text.say("blunder.card_title"))
+	slips.name = "BlunderCounterCard"
+	var slips_column := slips.get_node("Column") as VBoxContainer
+	var progress := GameState.blunder_progress()
+	slips_column.add_child(_small("BlunderCount", Text.say("blunder.counter", {"count": int(progress["count"])})))
+	slips_column.add_child(_small("BlunderProgress", Text.say("blunder.progress", {"total": int(progress["total"]), "awareness_at": int(progress["awareness_at"]), "blunder_at": int(progress["blunder_at"])})))
+	out.append(slips)
+	# Credibility and the five segments, each with its suit and organizations (P21 phase C).
+	var credibility := OfficeFrameStyles.card(look, Text.say("credibility.title"))
+	credibility.name = "CredibilityCard"
+	var cred_column := credibility.get_node("Column") as VBoxContainer
+	cred_column.add_child(_small("CredibilityBody", Text.say("credibility.body")))
+	cred_column.add_child(_small("CredibilityValue", Text.say("credibility.value", {"value": GameState.credibility_now()})))
+	for segment: Dictionary in GameState.segment_rows():
+		var id := str(segment["segment_id"])
+		cred_column.add_child(_small("Segment_" + id, Text.say("segments.line", {"name": str(segment["name"]), "value": int(segment["favorability"])})))
+		cred_column.add_child(_small("SegmentSuit_" + id, "%s · %s" % [Text.say("segments.suit", {"suit": str(segment["suit"])}),
+			Text.say("segments.plays", {"count": int(segment["plays"]), "target": Levers.whole("segment_suit_use_target"), "weeks": Levers.whole("segment_suit_use_weeks")})]))
+		cred_column.add_child(_small("SegmentOrgs_" + id, Text.say("segments.orgs", {"orgs": ", ".join(PackedStringArray(segment["orgs"]))})))
+		if int(segment["debit"]) > 0:
+			cred_column.add_child(_small("SegmentDebit_" + id, Text.say("segments.debit", {"debit": int(segment["debit"])})))
+	out.append(credibility)
 	var shore := OfficeFrameStyles.card(look, Text.say("upkeep.shore_title"))
 	shore.name = "ShoreUpCard"
 	var column := shore.get_node("Column") as VBoxContainer
