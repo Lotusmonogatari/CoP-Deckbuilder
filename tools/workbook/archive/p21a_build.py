@@ -14,8 +14,8 @@ XP = re.compile(r"\bXP\b")
 # Text rows whose short form reads better as a name or a label than "PC"
 NAMED = {
     "office.backup_label": "Political Capital",
-    "briefing.xp_growth": "Political Capital Growth",
-    "briefing.tile_xp": "PC Growth",
+    "briefing.xp_growth": "PC Growth",
+    "briefing.tile_xp": "PC",
     "assign.name_xp": "Political Capital",
     "shop.styles_blurb": "Political Capital",
     "travel.evening_free": "Political Capital",

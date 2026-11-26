@@ -5539,7 +5539,7 @@
   {
     "key": "briefing.xp_growth",
     "where": "Level briefing, the XP reward bullet; {amount} carries its sign",
-    "english": "Political Capital Growth Growth {amount}",
+    "english": "PC Growth {amount}",
     "placeholders": "amount",
     "notes": null
   },
@@ -8815,7 +8815,7 @@
   {
     "key": "briefing.tile_xp",
     "where": "Level briefing, the label of the XP tile in the totals card",
-    "english": "PC Growth Growth",
+    "english": "PC Growth",
     "placeholders": null,
     "notes": "2026-11-19 P12 level preview (Claude's draft)"
   },
