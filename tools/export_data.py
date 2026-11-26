@@ -5547,7 +5547,9 @@ def fold_questions(data, report):
 def check_ui_styles(data, report):
     """UI Styles (2026-11-17): known styles, colours that are hex, one row per token,
     and every UI Style a package names must be a style with tokens."""
-    styles = {"living_office", "broadcast", "woodblock", "shared"}
+    # The two campaign skins (P22, 2026-11-26) are styles with tokens but never a choice: no package carries them and the player cannot pick them.
+    campaign_styles = {"campaign_samurai", "campaign_gladiator"}
+    styles = {"living_office", "broadcast", "woodblock", "shared"} | campaign_styles
     seen = set()
     for row in data.get("ui_styles", []):
         tid = row.get("token_id")
@@ -5562,15 +5564,31 @@ def check_ui_styles(data, report):
             report.error("UI Styles", f"{tid}: colour '{value}' must be #RRGGBB or 'party colour'")
     for package in data.get("cosmetic_packages", []):
         style = package.get("ui_style")
-        if style not in (None, "") and style not in styles - {"shared"}:
+        if style not in (None, "") and style not in styles - {"shared"} - campaign_styles:
             report.error("Cosmetic Packages", f"{package.get('package_id')}: UI Style '{style}' must be living_office, broadcast or woodblock")
+    # Each campaign skin carries every token of the design spec (P22): colours are #RRGGBB, the party family names real colour tokens.
+    required = {
+        "colour": ["ground", "paper", "ink", "ink_quiet", "accent", "on_accent", "tab_on", "button", "button_ink", "shadow", "bar_fill", "bar_track", "phase_bar",
+                   "phase_bar_ink", "phase_rule", "card_label", "card_label_ink", "emblem_fill", "emblem_ink", "stamp", "jp", "brief_ground", "brief_on_ground",
+                   "brief_on_ground_muted", "brief_card", "brief_ink", "brief_muted", "brief_tile", "brief_accent", "brief_on_accent", "brief_hot"],
+        "font": ["display"], "type": ["title_case", "title_tracking_em", "heading_tracking_em", "numerals"],
+        "art": ["emblem", "banner", "van", "texture", "texture_direction", "texture_step", "texture_alpha"], "shape": ["stamp_tilt_deg"], "party": ["accent_family"]}
+    for campaign in sorted(campaign_styles):
+        carried_tokens = {(str(r.get("group")), str(r.get("token"))): str(r.get("value") or "") for r in data.get("ui_styles", []) if r.get("style") == campaign}
+        for group, tokens in required.items():
+            for token in tokens:
+                if (group, token) not in carried_tokens:
+                    report.error("UI Styles", f"{campaign} lacks the {group} token '{token}'")
+        for token in carried_tokens.get(("party", "accent_family"), "").split(";"):
+            if token and ("colour", token) not in carried_tokens:
+                report.error("UI Styles", f"{campaign}: the party accent family names '{token}', which is not one of its colour tokens")
     # Every style is a package now (2026-11-21): the default is the Rules tab's default_ui_style, and each style has exactly one.
     carried = [str(p.get("ui_style")) for p in data.get("cosmetic_packages", []) if p.get("ui_style")]
-    for style in sorted(styles - {"shared"}):
+    for style in sorted(styles - {"shared"} - campaign_styles):
         if carried.count(style) != 1:
             report.error("Cosmetic Packages", f"UI style '{style}' must be carried by exactly one package; it is carried by {carried.count(style)}")
     default_style = (data.get("rules") or {}).get("default_ui_style")
-    if default_style not in styles - {"shared"}:
+    if default_style not in styles - {"shared"} - campaign_styles:
         report.error("Rules", f"default_ui_style '{default_style}' must be living_office, broadcast or woodblock")
 
 

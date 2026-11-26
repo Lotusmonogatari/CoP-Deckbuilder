@@ -1,0 +1,20 @@
+<svg viewBox="0 0 390 520" width="390" height="520" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="195" cy="170" r="120" fill="none" stroke="#8C5A2B" stroke-width="3"/>
+      <g fill="none" stroke="#4E6B3A" stroke-width="5" stroke-linecap="round">
+        <path d="M195 300 C120 290 95 220 112 150"/><path d="M195 300 C270 290 295 220 278 150"/>
+      </g>
+      <g fill="#4E6B3A">
+        <ellipse cx="114" cy="168" rx="7" ry="15" transform="rotate(-15 114 168)"/><ellipse cx="116" cy="204" rx="7" ry="15" transform="rotate(-35 116 204)"/><ellipse cx="130" cy="238" rx="7" ry="15" transform="rotate(-55 130 238)"/><ellipse cx="152" cy="266" rx="7" ry="15" transform="rotate(-70 152 266)"/>
+        <ellipse cx="276" cy="168" rx="7" ry="15" transform="rotate(15 276 168)"/><ellipse cx="274" cy="204" rx="7" ry="15" transform="rotate(35 274 204)"/><ellipse cx="260" cy="238" rx="7" ry="15" transform="rotate(55 260 238)"/><ellipse cx="238" cy="266" rx="7" ry="15" transform="rotate(70 238 266)"/>
+      </g>
+      <g fill="#F3ECDD" stroke="#221A12" stroke-width="3">
+        <path d="M0 360 H390 V520 H0z"/>
+      </g>
+      <g fill="#7E1F1A">
+        <path d="M14 520 V430 a22 22 0 0 1 44 0 V520z"/><path d="M78 520 V430 a22 22 0 0 1 44 0 V520z"/><path d="M142 520 V430 a22 22 0 0 1 44 0 V520z"/><path d="M206 520 V430 a22 22 0 0 1 44 0 V520z"/><path d="M270 520 V430 a22 22 0 0 1 44 0 V520z"/><path d="M334 520 V430 a22 22 0 0 1 44 0 V520z"/>
+      </g>
+      <g fill="#8C5A2B">
+        <path d="M24 400 V378 a12 12 0 0 1 24 0 V400z"/><path d="M88 400 V378 a12 12 0 0 1 24 0 V400z"/><path d="M152 400 V378 a12 12 0 0 1 24 0 V400z"/><path d="M216 400 V378 a12 12 0 0 1 24 0 V400z"/><path d="M280 400 V378 a12 12 0 0 1 24 0 V400z"/><path d="M344 400 V378 a12 12 0 0 1 24 0 V400z"/>
+      </g>
+      <rect x="0" y="352" width="390" height="10" fill="#221A12"/>
+    </svg>

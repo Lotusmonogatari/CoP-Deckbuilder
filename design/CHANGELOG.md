@@ -2397,3 +2397,15 @@ The steady player falls short of the 40 line, which is the point of the bot chec
 | Economy map | Flows FL580 to FL585. |
 
 **Measurement** (`design/proposals/P21A_MEASUREMENT_2026-11-26.md`): with the draft week's gains the new decay lets Party support settle near 92 and both awareness meters near 99, so the runaway Cameron feared is only slowed. The numbers are Balance rows ready to retune.
+
+## P22: campaign skins, Samurai and Gladiator (2026-11-26, Cameron; branch `feature/p22-campaign-skins`)
+
+| Piece | What was done |
+|---|---|
+| Your answers | Samurai always; the accent family takes the player's party colour; the banners' nobori are the player's party, Keizaijiyuutou and the Yezo Heritage Party (a third banner takes the Frontier Party when the player is one of those two); skins replace every look; the phase bar is on the Campaign Office only; short variants for stepping aside and Not Selected come later. |
+| Data | 114 UI Styles rows for the two skins (the spec's tokens plus the briefing palette and the party accent family), Rules `campaign_skin`, `campaign_banner_parties`, `campaign_banner_spare_party`, 3 Text rows, 12 SVGs in `assets/campaign/`. The exporter checks that each skin carries every token, that colours are `#RRGGBB`, and that a skin is never a selectable style. Build script `tools/workbook/archive/p22_build.py`. |
+| Rules | `CampaignSkin` (which skin a phase wears, the numerals, the party colours and the nobori recolouring). |
+| Screens | `CampaignLook` (the scope around each build, the display face, the SVG art), `CampaignSkinParts` (phase bar, stat tiles, pips and badges, van with the player's name, range bar, stamp), `CampaignBannerLayer` (the full-screen phase banners), the Selection and Poll cards, the Campaign Moment! card and the Office frame all read the skin from `UiStyle.scope`. |
+| Checks | `test_campaign_skin.gd` (6) and `test_campaign_look.gd` (8); the text sweep covers the campaign screens in both skins and the Upkeep tab; `design/proposals/img/campaign_skins/` holds the 20 states and the differences I kept. |
+
+**Decided without your say:** no saved `.tres` theme overlays (the scoped tokens and an explicit display face do the same work with nothing merged into the project theme); the emblem sits beside the card label rather than inside it; action-card tags, stat captions and the bottom action bar of the mock-ups are not built.

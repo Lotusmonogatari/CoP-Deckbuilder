@@ -13277,5 +13277,26 @@
     "english": "A call on the party or the financial industry",
     "placeholders": null,
     "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.stamp_selected",
+    "where": "P22 campaign skins: selection.stamp_selected",
+    "english": "Selected",
+    "placeholders": null,
+    "notes": "P22 (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.stamp_not_selected",
+    "where": "P22 campaign skins: selection.stamp_not_selected",
+    "english": "Not Selected",
+    "placeholders": null,
+    "notes": "P22 (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase.building",
+    "where": "P22 campaign skins: campaign.phase",
+    "english": "Building the campaign",
+    "placeholders": null,
+    "notes": "P22 (2026-11-26); a draft for Cameron to edit."
   }
 ]

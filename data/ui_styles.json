@@ -1702,5 +1702,725 @@
     "token": "rule_px",
     "value": "2",
     "notes": "P18 (2026-11-24): Claude's draft for Cameron to reword."
+  },
+  {
+    "token_id": "US215",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "ground",
+    "value": "#EDE3CF",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US216",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "paper",
+    "value": "#F7F0E1",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US217",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "ink",
+    "value": "#16130F",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US218",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "ink_quiet",
+    "value": "#4E463C",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US219",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "accent",
+    "value": "#A61E1E",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US220",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "on_accent",
+    "value": "#F7F0E1",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US221",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "tab_on",
+    "value": "#A61E1E",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US222",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "button",
+    "value": "#16130F",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US223",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "button_ink",
+    "value": "#F1D58C",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US224",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "shadow",
+    "value": "#16130F",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US225",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "bar_fill",
+    "value": "#A61E1E",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US226",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "bar_track",
+    "value": "#DDD0B6",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US227",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "phase_bar",
+    "value": "#16130F",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US228",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "phase_bar_ink",
+    "value": "#F1D58C",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US229",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "phase_rule",
+    "value": "#A61E1E",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US230",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "card_label",
+    "value": "#A61E1E",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US231",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "card_label_ink",
+    "value": "#F7F0E1",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US232",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "emblem_fill",
+    "value": "#F7F0E1",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US233",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "emblem_ink",
+    "value": "#16130F",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US234",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "stamp",
+    "value": "#A61E1E",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US235",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "jp",
+    "value": "#6B5F50",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US236",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_ground",
+    "value": "#EDE3CF",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US237",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_on_ground",
+    "value": "#16130F",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US238",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_on_ground_muted",
+    "value": "#4E463C",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US239",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_card",
+    "value": "#F7F0E1",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US240",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_ink",
+    "value": "#16130F",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US241",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_muted",
+    "value": "#4E463C",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US242",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_tile",
+    "value": "#EDE3CF",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US243",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_accent",
+    "value": "#A61E1E",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US244",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_on_accent",
+    "value": "#F7F0E1",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US245",
+    "style": "campaign_samurai",
+    "group": "colour",
+    "token": "brief_hot",
+    "value": "#16130F",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US246",
+    "style": "campaign_samurai",
+    "group": "font",
+    "token": "display",
+    "value": "Antaka Brush Display",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US247",
+    "style": "campaign_samurai",
+    "group": "type",
+    "token": "title_case",
+    "value": "as_written",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US248",
+    "style": "campaign_samurai",
+    "group": "type",
+    "token": "title_tracking_em",
+    "value": "0",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US249",
+    "style": "campaign_samurai",
+    "group": "type",
+    "token": "heading_tracking_em",
+    "value": "0",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US250",
+    "style": "campaign_samurai",
+    "group": "type",
+    "token": "numerals",
+    "value": "arabic",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US251",
+    "style": "campaign_samurai",
+    "group": "art",
+    "token": "emblem",
+    "value": "crest",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US252",
+    "style": "campaign_samurai",
+    "group": "art",
+    "token": "banner",
+    "value": "nobori",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US253",
+    "style": "campaign_samurai",
+    "group": "art",
+    "token": "van",
+    "value": "van_samurai",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US254",
+    "style": "campaign_samurai",
+    "group": "art",
+    "token": "texture",
+    "value": "fibers",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US255",
+    "style": "campaign_samurai",
+    "group": "art",
+    "token": "texture_direction",
+    "value": "vertical",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US256",
+    "style": "campaign_samurai",
+    "group": "art",
+    "token": "texture_step",
+    "value": "7",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US257",
+    "style": "campaign_samurai",
+    "group": "art",
+    "token": "texture_alpha",
+    "value": "0.07",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US258",
+    "style": "campaign_samurai",
+    "group": "shape",
+    "token": "stamp_tilt_deg",
+    "value": "-6",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US259",
+    "style": "campaign_samurai",
+    "group": "party",
+    "token": "accent_family",
+    "value": "accent;tab_on;bar_fill;card_label;stamp;phase_rule;brief_accent",
+    "notes": "P22 (2026-11-26, Cameron's answer): these colour tokens take the player's party colour; the hex values stay as the fallback."
+  },
+  {
+    "token_id": "US260",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "ground",
+    "value": "#E6DCC6",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US261",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "paper",
+    "value": "#F3ECDD",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US262",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "ink",
+    "value": "#221A12",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US263",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "ink_quiet",
+    "value": "#54473A",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US264",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "accent",
+    "value": "#7E1F1A",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US265",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "on_accent",
+    "value": "#F3ECDD",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US266",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "tab_on",
+    "value": "#8C5A2B",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US267",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "button",
+    "value": "#7E1F1A",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US268",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "button_ink",
+    "value": "#F3ECDD",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US269",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "shadow",
+    "value": "#8C5A2B",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US270",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "bar_fill",
+    "value": "#7E1F1A",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US271",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "bar_track",
+    "value": "#D6CBB2",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US272",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "phase_bar",
+    "value": "#7E1F1A",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US273",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "phase_bar_ink",
+    "value": "#F3ECDD",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US274",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "phase_rule",
+    "value": "#8C5A2B",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US275",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "card_label",
+    "value": "#8C5A2B",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US276",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "card_label_ink",
+    "value": "#F3ECDD",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US277",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "emblem_fill",
+    "value": "#F3ECDD",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US278",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "emblem_ink",
+    "value": "#F1D9A0",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US279",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "stamp",
+    "value": "#7E1F1A",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US280",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "jp",
+    "value": "#6E6050",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US281",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_ground",
+    "value": "#E6DCC6",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US282",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_on_ground",
+    "value": "#221A12",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US283",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_on_ground_muted",
+    "value": "#54473A",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US284",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_card",
+    "value": "#F3ECDD",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US285",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_ink",
+    "value": "#221A12",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US286",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_muted",
+    "value": "#54473A",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US287",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_tile",
+    "value": "#E6DCC6",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US288",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_accent",
+    "value": "#7E1F1A",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US289",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_on_accent",
+    "value": "#F3ECDD",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US290",
+    "style": "campaign_gladiator",
+    "group": "colour",
+    "token": "brief_hot",
+    "value": "#8C5A2B",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US291",
+    "style": "campaign_gladiator",
+    "group": "font",
+    "token": "display",
+    "value": "Shippori Mincho B1",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US292",
+    "style": "campaign_gladiator",
+    "group": "type",
+    "token": "title_case",
+    "value": "upper",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US293",
+    "style": "campaign_gladiator",
+    "group": "type",
+    "token": "title_tracking_em",
+    "value": "0.14",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US294",
+    "style": "campaign_gladiator",
+    "group": "type",
+    "token": "heading_tracking_em",
+    "value": "0.12",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US295",
+    "style": "campaign_gladiator",
+    "group": "type",
+    "token": "numerals",
+    "value": "roman",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US296",
+    "style": "campaign_gladiator",
+    "group": "art",
+    "token": "emblem",
+    "value": "laurel",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US297",
+    "style": "campaign_gladiator",
+    "group": "art",
+    "token": "banner",
+    "value": "arena",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US298",
+    "style": "campaign_gladiator",
+    "group": "art",
+    "token": "van",
+    "value": "van_gladiator",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US299",
+    "style": "campaign_gladiator",
+    "group": "art",
+    "token": "texture",
+    "value": "stone",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US300",
+    "style": "campaign_gladiator",
+    "group": "art",
+    "token": "texture_direction",
+    "value": "horizontal",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US301",
+    "style": "campaign_gladiator",
+    "group": "art",
+    "token": "texture_step",
+    "value": "11",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US302",
+    "style": "campaign_gladiator",
+    "group": "art",
+    "token": "texture_alpha",
+    "value": "0.06",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US303",
+    "style": "campaign_gladiator",
+    "group": "shape",
+    "token": "stamp_tilt_deg",
+    "value": "0",
+    "notes": "P22 (2026-11-26, Cameron): campaign skin token from the design spec."
+  },
+  {
+    "token_id": "US304",
+    "style": "campaign_gladiator",
+    "group": "party",
+    "token": "accent_family",
+    "value": "accent;tab_on;bar_fill;card_label;stamp;phase_rule;brief_accent",
+    "notes": "P22 (2026-11-26, Cameron's answer): these colour tokens take the player's party colour; the hex values stay as the fallback."
   }
 ]

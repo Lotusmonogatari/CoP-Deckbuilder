@@ -163,6 +163,49 @@ func _close_all(root: Node) -> void:
 	for child in root.get_children():
 		if child is Overlay and (child as Overlay).visible:
 			(child as Overlay).close()
+		elif child is CampaignBannerLayer:
+			(child as CampaignBannerLayer).hide()
+
+
+## One campaign screen in a skin: the Rules switch is set, the Campaign Office opened (and the Banners date's calendar), then the screen shown.
+func _campaign_screen(office: Node, skin: String, which: String) -> void:
+	DataDB.rules["campaign_skin"] = skin
+	GameState.open_venue("VN10")
+	GameState.office_location = Offices.DISTRICT
+	GameState.campaign_howto_seen = true
+	GameState.campaign_fund = 1200000
+	GameState.campaign_capital = 420
+	for week in range(1, 400):
+		GameState.calendar = {"week": week, "phase": "work", "hours": 0}
+		if str(GameState.election_phase()["phase"]) == "mustering" and bool(GameState.election_phase()["player_runs"]):
+			break
+	match which:
+		"office": office._venues.show_venue("VN10")
+		"staff":
+			office._venues.show_venue("VN10")
+			office._venues._campaign._on_tab("staff")
+		"van":
+			office._venues.show_venue("VN10")
+			office._venues._campaign._on_tab("van")
+		"moment":
+			var party := DataDB.get_party(str(DataDB.player.get("party", "")))
+			GameState.scene_colleagues["DS22"] = CampaignMoments.pick_colleague(DataDB.opponents, party, 0.3)
+			office._present_event("EV131", true)
+		"poll":
+			CampaignLook.begin()
+			office._campaign_card_panel.open_card(CampaignCards.poll_config({"date": GameState.campaign_today(), "source": "poll.source.pr02", "low": 47, "high": 63,
+				"likely": "smd", "could_be": "list", "selected": "", "previous_mid": 48.0, "up": "poll.up.capital", "down": "poll.down.district", "final": false}), "Continue")
+			CampaignLook.end()
+		"selection":
+			CampaignLook.begin()
+			office._campaign_card_panel.open_card(CampaignCards.selection_config({"cycle_id": "EC01", "strength": 55.0, "alignment": 50.0, "influence": 85.0,
+				"score": 61, "outcome": "smd"}), "Continue")
+			CampaignLook.end()
+		"banner":
+			office._venues._campaign._banner_pages = ["announcement"]
+			office._venues._campaign._banner_cycle = str(GameState.election_phase()["cycle_id"])
+			office._venues._campaign._show_banner_page()
+	DataDB.rules["campaign_skin"] = "samurai"
 
 
 func _sweep_shape(size: Vector2i) -> void:
@@ -316,6 +359,22 @@ func _sweep_shape(size: Vector2i) -> void:
 			office._venues.show_tips()],
 		["B27i_speech_coach", func() -> void: office._show_speech_coach_page()],
 		["B28_how_to_play", func() -> void: HowToPlayPanel.open(HowToPlayPanel.attach(office))],
+		# P20 and P22 (2026-11-26): the campaign screens, in the Samurai skin and in the Gladiator skin (the Rules switch changed for each).
+		["B29a_campaign_office", func() -> void: _campaign_screen(office, "samurai", "office")],
+		["B29b_campaign_staff", func() -> void: _campaign_screen(office, "samurai", "staff")],
+		["B29c_campaign_van", func() -> void: _campaign_screen(office, "samurai", "van")],
+		["B29d_campaign_moment", func() -> void: _campaign_screen(office, "samurai", "moment")],
+		["B29e_campaign_poll", func() -> void: _campaign_screen(office, "samurai", "poll")],
+		["B29f_campaign_selection", func() -> void: _campaign_screen(office, "samurai", "selection")],
+		["B29g_campaign_banner", func() -> void: _campaign_screen(office, "samurai", "banner")],
+		["B29h_campaign_office_gladiator", func() -> void: _campaign_screen(office, "gladiator", "office")],
+		["B29i_campaign_staff_gladiator", func() -> void: _campaign_screen(office, "gladiator", "staff")],
+		["B29j_campaign_van_gladiator", func() -> void: _campaign_screen(office, "gladiator", "van")],
+		["B29k_campaign_moment_gladiator", func() -> void: _campaign_screen(office, "gladiator", "moment")],
+		["B29l_campaign_poll_gladiator", func() -> void: _campaign_screen(office, "gladiator", "poll")],
+		["B29m_campaign_selection_gladiator", func() -> void: _campaign_screen(office, "gladiator", "selection")],
+		["B29n_campaign_banner_gladiator", func() -> void: _campaign_screen(office, "gladiator", "banner")],
+		["B29o_upkeep", func() -> void: office._show_reputation("upkeep")],
 	]
 	for entry: Array in panels:
 		_close_all(office)
@@ -548,8 +607,8 @@ func _path(c: Control) -> String:
 func _top_layer(root: Node) -> Node:
 	var top: Node = root
 	for child in root.get_children():
-		if child is Overlay and (child as Overlay).visible:
-			top = child
+		if (child is Overlay and (child as Overlay).visible) or (child is CampaignBannerLayer and (child as CampaignBannerLayer).visible):
+			top = child   # a skinned phase banner covers the whole screen (P22)
 	if top == root:
 		for name_ in ["OutcomePanel", "CardZoom", "DetailsPanel"]:
 			var n := root.find_child(name_, true, false)

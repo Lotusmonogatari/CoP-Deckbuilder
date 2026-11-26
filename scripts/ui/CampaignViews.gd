@@ -5,9 +5,22 @@ extends RefCounted
 ## sentence is a Text row. The one place the look is chosen is `look()`, so a campaign skin (P22) changes it in one line.
 
 
-## The look every campaign screen draws with.
+## The look every campaign screen draws with. Called inside CampaignLook.begin() it carries the campaign skin (P22); otherwise it is the player's own.
 static func look() -> Dictionary:
 	return OfficeFrameStyles.look()
+
+
+## True while the look being drawn is a campaign skin.
+static func skinned(look: Dictionary) -> bool:
+	return not str(look.get("skin", "")).is_empty()
+
+
+## The phase bar of a skinned Campaign Office: the phase's name and the days to the next one, between two rules. null when no skin is in force.
+static func phase_bar(look: Dictionary) -> Control:
+	if not skinned(look):
+		return null
+	var phase := phase_name(str(GameState.election_phase()["phase"]))
+	return CampaignSkinParts.phase_bar(look, phase if not phase.is_empty() else Text.say("campaign.office.name"), phase_note())
 
 
 # --- Small helpers -----------------------------------------------------------------------------------------------------------------
@@ -51,6 +64,7 @@ static func role_name(role: String) -> String:
 
 static func phase_name(phase: String) -> String:
 	match phase:
+		ElectionCycle.BUILDING: return Text.say("campaign.phase.building")
 		ElectionCycle.ANNOUNCEMENT: return Text.say("campaign.phase.announcement")
 		ElectionCycle.MUSTERING: return Text.say("campaign.phase.mustering")
 		ElectionCycle.CAMPAIGN: return Text.say("campaign.phase.campaign")
@@ -82,6 +96,9 @@ static func status_card(look: Dictionary) -> PanelContainer:
 	var card := OfficeFrameStyles.card(look, Text.say("campaign.office.status"))
 	card.name = "CampaignStatusCard"
 	var column := card.get_node("Column") as VBoxContainer
+	if skinned(look):
+		_skinned_status(column, look)
+		return card
 	var info := GameState.election_phase()
 	var phase := phase_name(str(info["phase"]))
 	if not phase.is_empty():
@@ -104,6 +121,26 @@ static func status_card(look: Dictionary) -> PanelContainer:
 		column.add_child(_small("ActionsLine", Text.say("campaign.office.actions_left",
 			{"used": GameState.campaign_actions_week, "limit": Levers.whole("campaign_actions_per_week")})))
 	return card
+
+
+## The skinned status card: four tiles (fund, capital, strength, alignment) with bars, then the actions line and any locked or full note.
+static func _skinned_status(column: VBoxContainer, look: Dictionary) -> void:
+	var fund_target := float(Levers.whole("election_war_chest_target"))
+	var tiles: Array[Control] = [
+		CampaignSkinParts.stat_tile(look, Text.say("campaign.office.fund"), _yen(GameState.campaign_fund), clampf(float(GameState.campaign_fund) / maxf(1.0, fund_target), 0.0, 1.0), "", "FundTile"),
+		CampaignSkinParts.stat_tile(look, Text.say("campaign.office.capital"), str(GameState.campaign_capital),
+			clampf(float(GameState.campaign_capital) / maxf(1.0, float(Levers.whole("election_capital_target"))), 0.0, 1.0), "", "CapitalTile"),
+		CampaignSkinParts.stat_tile(look, Text.say("campaign.stat.strength"), str(roundi(GameState.election_strength)), clampf(GameState.election_strength / 100.0, 0.0, 1.0), "", "StrengthTile"),
+		CampaignSkinParts.stat_tile(look, Text.say("campaign.alignment"), str(GameState.party_alignment()), clampf(float(GameState.party_alignment()) / 100.0, 0.0, 1.0), "", "AlignmentTile")]
+	column.add_child(CampaignSkinParts.tile_grid(tiles))
+	if not GameState.campaign_locked().is_empty():
+		column.add_child(_small("LockedLine", Text.say("campaign.office.locked_stepped_aside")))
+	if GameState.campaign_fund >= Levers.whole("election_war_chest_limit"):
+		column.add_child(_small("FundFull", Text.say("campaign.office.fund_full")))
+	if ElectionCycle.is_campaign(str(GameState.election_phase()["phase"])):
+		column.add_child(_small("ActionsLine", Text.say("campaign.office.actions_unlimited")))
+	else:
+		column.add_child(_small("ActionsLine", Text.say("campaign.office.actions_left", {"used": GameState.campaign_actions_week, "limit": Levers.whole("campaign_actions_per_week")})))
 
 
 # --- An action ---------------------------------------------------------------------------------------------------------------------
@@ -208,7 +245,9 @@ static func staff_card(look: Dictionary, entry: Dictionary, on_hire: Callable, o
 		column.add_child(hire)
 		return card
 	var tier := int(member.get("tier", 0))
-	column.add_child(_small("StaffTier", Text.say("campaign.staff.tier", {"tier": tier})))
+	column.add_child(_small("StaffTier", Text.say("campaign.staff.tier", {"tier": CampaignSkin.numeral(tier, str(look.get("numerals", "arabic")))})))
+	if skinned(look):
+		column.add_child(CampaignSkinParts.tier_pips(look, tier, CampaignStaff.highest_tier(row)))
 	column.add_child(_small("StaffWage", Text.say("campaign.staff.wage", {"yen": CampaignStaff.wage_for(member)})))
 	column.add_child(_small("StaffLoyalty", Text.say("campaign.staff.loyalty", {"word": StaffLoyaltyView.word_text(int(member.get("loyalty", 0)))})))
 	if CampaignStaff.is_lent(member, GameState.campaign_today()):
@@ -232,12 +271,23 @@ static func van_card(look: Dictionary, on_buy: Callable) -> PanelContainer:
 	card.name = "CampaignVanCard"
 	var column := card.get_node("Column") as VBoxContainer
 	column.add_child(_small("VanIntro", Text.say("campaign.van.intro")))
+	if skinned(look):
+		column.add_child(CampaignSkinParts.van_picture(look, str(DataDB.player.get("name_en", ""))))
 	var tier := GameState.campaign_van_tier
 	column.add_child(_small("VanOwned", Text.say("campaign.van.none") if tier < 0 else Text.say("campaign.van.owned", {"tier": tier})))
 	for step in range(0, 3):
 		var line := _small("VanStep_%d" % step, _step_text(step))
 		line.add_theme_color_override("font_color", look["ink"] if step <= tier else look["muted"])
-		column.add_child(line)
+		if skinned(look):
+			var row := HBoxContainer.new()
+			row.name = "VanStepRow_%d" % step
+			row.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
+			row.add_child(CampaignSkinParts.badge(look, step, step <= tier))
+			line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			row.add_child(line)
+			column.add_child(row)
+		else:
+			column.add_child(line)
 	var next_cost := GameState.campaign_van_next_cost()
 	if next_cost >= 0:
 		var why := GameState.campaign_van_refusal()
@@ -319,4 +369,5 @@ static func banner_config(phase: String, cycle_id: String) -> Dictionary:
 			sub = Text.say("campaign.banner.election_day.sub")
 			cta = Text.say("campaign.banner.election_day.cta")
 			jp = Text.say("campaign.phase.election_day_jp")
-	return {"config": {"tag": kicker, "title": phase_name(phase), "body": [UiKit.line(jp, "SmallLabel"), UiKit.line(sub)]}, "cta": cta}
+	return {"config": {"tag": kicker, "title": phase_name(phase), "body": [UiKit.line(jp, "SmallLabel"), UiKit.line(sub)]}, "cta": cta,
+		"kicker": kicker, "title": phase_name(phase), "jp": jp, "sub": sub, "phase": phase}

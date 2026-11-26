@@ -43,6 +43,17 @@ func setup(config: Dictionary) -> void:
 	header.add_theme_constant_override("separation", int(OfficeFrameStyles.len_px(8.0)))
 	column.add_child(header)
 	var tag_text := str(config.get("tag", ""))
+	# A campaign skin's emblem sits before the label (P22): `tag_icon` is a Texture2D.
+	var tag_icon: Variant = config.get("tag_icon")
+	if tag_icon is Texture2D:
+		var icon := TextureRect.new()
+		icon.name = "TagEmblem"
+		icon.texture = tag_icon as Texture2D
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.custom_minimum_size = Vector2.ONE * OfficeFrameStyles.len_px(22.0)
+		icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		header.add_child(icon)
 	if not tag_text.is_empty():
 		header.add_child(PopupCardStyles.tag(_look, tag_text, str(config.get("tag_kind", PopupCardStyles.ACCENT))))
 	var meta_text := str(config.get("meta", ""))

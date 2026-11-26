@@ -16,6 +16,8 @@ var _on_spent: Callable
 var _result_panel: Overlay
 var _donate_panel: Overlay
 var _banner_panel: Overlay
+## The skinned phase banner (P22): a full-screen layer; _banner_panel is the plain card used when the skin is off.
+var _banner_layer: CampaignBannerLayer
 var _howto_panel: Overlay
 var _tab := TAB_ACTIONS
 ## True while the letters' organization list is showing in place of the action cards.
@@ -39,8 +41,13 @@ func setup(office: Control, venues: Node, venue_panel: Overlay, chips: Callable,
 	_result_panel = _panel(office, "CampaignResultPanel", true)
 	_result_panel.closed.connect(_draw)
 	_donate_panel = _panel(office, "CampaignDonatePanel", true)
-	_banner_panel = _panel(office, "CampaignBannerPanel", false)
+	_banner_panel = _panel(office, "CampaignBannerCardPanel", false)
 	_banner_panel.confirmed.connect(_on_banner_next)
+	_banner_layer = CampaignBannerLayer.new()
+	_banner_layer.name = "CampaignBannerPanel"
+	_banner_layer.hide()
+	_banner_layer.confirmed.connect(_on_banner_next)
+	office.add_child(_banner_layer)
 	_howto_panel = _panel(office, "CampaignHowToPanel", false)
 	_howto_panel.confirmed.connect(_on_howto_next)
 
@@ -71,7 +78,16 @@ func open(tab: String = TAB_ACTIONS) -> void:
 	_draw()
 
 
+## Opens a card in the campaign skin (when one is in force), with the skin's emblem before its label.
+func _open_card(panel: Overlay, config: Dictionary, confirm_text: String = "", back_text: String = "") -> void:
+	if CampaignLook.begin():
+		config["tag_icon"] = CampaignLook.emblem(UiStyle.scope, 16.0)
+	panel.open_card(config, confirm_text, back_text)
+	CampaignLook.end()
+
+
 func _draw() -> void:
+	CampaignLook.begin()
 	var look := CampaignViews.look()
 	var venue := GameState.venue_row(GameState.CAMPAIGN_VENUE)
 	var rows: Array[Control] = []
@@ -82,6 +98,10 @@ func _draw() -> void:
 			rows = [CampaignViews.van_card(look, _on_buy_van)]
 		_:
 			rows = _picker_rows(look) if _picking else _action_rows(look)
+	# The skinned Campaign Office has a phase bar under the tabs (P22): the first row of every tab.
+	var bar := CampaignViews.phase_bar(look)
+	if bar != null:
+		rows.push_front(bar)
 	var frame := OfficeScreenFrame.new()
 	frame.setup({
 		"title": str(venue.get("name", Text.say("campaign.office.name"))), "subtitle": str(venue.get("name_jp", "")), "chips": _chips.call(),
@@ -92,6 +112,7 @@ func _draw() -> void:
 	})
 	frame.tab_chosen.connect(_on_tab)
 	_venue_panel.open_frame(frame, Text.say("venue.screen_back"))
+	CampaignLook.end()
 
 
 func _on_tab(tab_id: String) -> void:
@@ -159,7 +180,7 @@ func _do(kind: String, org_id: String) -> void:
 	for line: String in done["lines"]:
 		body.append(UiKit.line(line, "SmallLabel"))
 	body.append(UiKit.line(CampaignViews.cost_line(done["result"]), "SmallLabel"))
-	_result_panel.open_card({"tag": Text.say("campaign.result.title"), "meta": CampaignViews.action_name(kind), "body": body}, "",
+	_open_card(_result_panel, {"tag": Text.say("campaign.result.title"), "meta": CampaignViews.action_name(kind), "body": body}, "",
 		Text.say("campaign.result.continue"))
 
 
@@ -207,7 +228,7 @@ func open_donate(done: String = "") -> void:
 		if enabled:
 			button.pressed.connect(_on_donate.bind(amount))
 		buttons.append(button)
-	_donate_panel.open_card({"tag": Text.say("campaign.donate.title"), "meta": Text.say("campaign.stat.line",
+	_open_card(_donate_panel, {"tag": Text.say("campaign.donate.title"), "meta": Text.say("campaign.stat.line",
 		{"name": Text.say("campaign.office.fund"), "value": WeekPaymentsView.yen(GameState.campaign_fund)}), "body": body, "buttons": buttons},
 		"", Text.say("ui.back"))
 
@@ -241,7 +262,7 @@ func _show_howto() -> void:
 func _show_howto_page() -> void:
 	var entry: Dictionary = _howto_pages[_howto_index]
 	var last := _howto_index >= _howto_pages.size() - 1
-	_howto_panel.open_card({"tag": Text.say("campaign.howto.title"), "meta": Text.say("campaign.howto.page", {"n": _howto_index + 1, "total": _howto_pages.size()}),
+	_open_card(_howto_panel, {"tag": Text.say("campaign.howto.title"), "meta": Text.say("campaign.howto.page", {"n": _howto_index + 1, "total": _howto_pages.size()}),
 		"title": str(entry.get("heading_en", "")), "body": [UiKit.line(str(entry.get("body_en", "")))]},
 		Text.say("campaign.howto.done") if last else Text.say("campaign.howto.next"))
 
@@ -260,7 +281,7 @@ func _on_howto_next() -> void:
 
 ## Shows the phase banner that is due, if there is one and the player is not in a level. True when a banner went up.
 func show_banner_if_due() -> bool:
-	if GameState.is_in_level() or _banner_panel.visible:
+	if GameState.is_in_level() or _banner_panel.visible or _banner_layer.visible:
 		return false
 	var due := GameState.campaign_banner_due()
 	if due.is_empty():
@@ -281,10 +302,17 @@ func _show_banner_page() -> void:
 	# The last page of a muster says "To the Campaign Office" only when there is one to go to.
 	if last and phase == ElectionCycle.MUSTERING and not GameState.campaign_office_open():
 		cta = Text.say("event.continue")
-	_banner_panel.open_card(page["config"], cta)
+	if CampaignLook.begin():
+		var shown: Dictionary = page.duplicate()
+		shown["cta"] = cta
+		_banner_layer.show_page(shown)
+		CampaignLook.end()
+	else:
+		_banner_panel.open_card(page["config"], cta)
 
 
 func _on_banner_next() -> void:
+	_banner_layer.hide()
 	if _banner_index < _banner_pages.size() - 1:
 		_banner_index += 1
 		_show_banner_page()

@@ -77,6 +77,9 @@ static func token(idx: Dictionary, style: String, group: String, name: String, f
 		var value: Variant = ((groups as Dictionary)[group] as Dictionary).get(name)
 		if value != null:
 			return str(value)
+	# A campaign skin (P22) lists only what it changes; anything else is Woodblock's.
+	if style.begins_with("campaign_"):
+		return token(idx, WOODBLOCK, group, name, fallback)
 	return fallback
 
 
