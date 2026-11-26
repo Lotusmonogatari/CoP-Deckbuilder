@@ -50,7 +50,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH02",
@@ -103,7 +104,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH03",
@@ -156,7 +158,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH04",
@@ -209,7 +212,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH05",
@@ -262,7 +266,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH06",
@@ -315,7 +320,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH07",
@@ -368,7 +374,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH08",
@@ -421,7 +428,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH09",
@@ -469,7 +477,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH10",
@@ -517,7 +526,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH11",
@@ -565,7 +575,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH12",
@@ -613,7 +624,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH13",
@@ -661,7 +673,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": 50
   },
   {
     "item_id": "SH14",
@@ -669,7 +682,7 @@
     "description": "One-use item. Lasts for the whole of your next level: +1 card drawn.",
     "cost_xp": 50,
     "cost_yen": 0,
-    "bonus_condition_1": "Stackable up to +2 total per level; each additional stack costs another 50 XP.",
+    "bonus_condition_1": "Stackable up to +2 total per level; each additional stack costs another 50 PC.",
     "bonus_condition_2": null,
     "grants": [
       {
@@ -714,7 +727,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH15",
@@ -722,7 +736,7 @@
     "description": "One-use item. Lasts for the whole of your next level: +1 energy. On the Staff Assignments screen, placed in the Office box, it adds 1 hour to every staff member's working day today.",
     "cost_xp": 60,
     "cost_yen": 0,
-    "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 60 XP.",
+    "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 60 PC.",
     "bonus_condition_2": null,
     "grants": [
       {
@@ -767,7 +781,8 @@
     "staff_days": 1,
     "uses": 2,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH16",
@@ -775,7 +790,7 @@
     "description": "One-use item. Lasts for the whole of your next level: +1 guard.",
     "cost_xp": 70,
     "cost_yen": 0,
-    "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 70 XP.",
+    "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 70 PC.",
     "bonus_condition_2": null,
     "grants": [
       {
@@ -820,7 +835,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH17",
@@ -828,7 +844,7 @@
     "description": "One-use item. Lasts for the whole of your next level: +1 to the gaffe (失言) limit. On the Staff Assignments screen, placed in the Office box, it adds 1 hour to every staff member's working day today.",
     "cost_xp": 80,
     "cost_yen": 0,
-    "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 80 XP.",
+    "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 80 PC.",
     "bonus_condition_2": null,
     "grants": [
       {
@@ -873,7 +889,8 @@
     "staff_days": 1,
     "uses": 2,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH18",
@@ -881,7 +898,7 @@
     "description": "One-use item. Lasts for the whole of your next level: +1 turn on the stage clock.",
     "cost_xp": 100,
     "cost_yen": 0,
-    "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 100 XP.",
+    "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 100 PC.",
     "bonus_condition_2": null,
     "grants": [
       {
@@ -926,7 +943,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH19",
@@ -979,7 +997,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH20",
@@ -1032,7 +1051,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH21",
@@ -1080,7 +1100,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH22",
@@ -1133,7 +1154,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH23",
@@ -1186,7 +1208,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH24",
@@ -1239,7 +1262,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH25",
@@ -1287,7 +1311,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH26",
@@ -1335,7 +1360,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH27",
@@ -1383,7 +1409,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH28",
@@ -1431,7 +1458,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH29",
@@ -1479,7 +1507,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH30",
@@ -1527,7 +1556,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH31",
@@ -1575,7 +1605,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH32",
@@ -1623,7 +1654,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH33",
@@ -1671,7 +1703,8 @@
     "staff_days": 1,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH34",
@@ -1719,7 +1752,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH35",
@@ -1767,7 +1801,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH36",
@@ -1815,7 +1850,8 @@
     "staff_days": 1,
     "uses": 3,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH37",
@@ -1863,7 +1899,8 @@
     "staff_days": 1,
     "uses": 3,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH38",
@@ -1911,7 +1948,8 @@
     "staff_days": 1,
     "uses": 3,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH39",
@@ -1959,7 +1997,8 @@
     "staff_days": 1,
     "uses": 1,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH40",
@@ -2007,7 +2046,8 @@
     "staff_days": 1,
     "uses": 1,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH41",
@@ -2055,7 +2095,8 @@
     "staff_days": 1,
     "uses": 1,
     "travel_mode": null,
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH42",
@@ -2108,7 +2149,8 @@
     "staff_days": null,
     "uses": null,
     "travel_mode": "ticket",
-    "offered_for": null
+    "offered_for": null,
+    "cost_step_xp": null
   },
   {
     "item_id": "SH43",
@@ -2160,7 +2202,8 @@
       "PC01",
       "PC02",
       "PC03"
-    ]
+    ],
+    "cost_step_xp": null
   },
   {
     "item_id": "SH44",
@@ -2210,6 +2253,7 @@
     "travel_mode": "plane",
     "offered_for": [
       "PC04"
-    ]
+    ],
+    "cost_step_xp": null
   }
 ]

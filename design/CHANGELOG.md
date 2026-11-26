@@ -2381,3 +2381,19 @@ The campaign trail now has scenes of its own: a storefront that opens the Campai
 | Strong (Party support 90, committee standing 80, awareness 70 and 60, Constituency 75) | 43 | 55 | 50 | 61 | Single-Member District, seated |
 
 The steady player falls short of the 40 line, which is the point of the bot checkpoint that follows (does a typical player reach it?).
+
+## P21 phase A: Political Capital, decay, holds, dues and the Funds limit (2026-11-26, Cameron; branch `feature/p21a-pc-decay-dues`)
+
+| Piece | What was done |
+|---|---|
+| The name | 25 Text rows, the How To Play pages, the backing and price texts and three labels in the code say **Political Capital** (PC); the data key, save field and Balance rows stay `xp`. |
+| Decay | `PcDecay`: Political Capital, Party support and both awareness meters fade at the week's end; the Office shows the fade from Wednesday; the new-week report lists what faded. |
+| Holds | Shore up support and Keep in touch, with streak prices, on a new **Upkeep** tab of Reputation and Results. |
+| Dues and the Funds limit | Dues limit is 90% of the current cap (the flat row removed); the petition's price steps up (new Shop column Cost Step XP); the two cap calls; Funds maximum 2,000,000; dues bailout. |
+| Coupon | The District 80 coupon pays once a calendar month (new Awareness Effects column Once Per). |
+| Difficulty | PC prices follow Relaxed 85% and Harder 115%. |
+| Data | 25 Balance rows, 27 Text rows, 2 Rules rows (`campaign_committee_org` came with phase D), Sanban Funds maximum, two new columns. Build scripts `tools/workbook/archive/p21a_build.py`, `p21a_build2.py`, `p21a_build3.py`. |
+| Tests | 7 in `test_pc_decay.gd`, 12 in `test_pc_upkeep.gd`. |
+| Economy map | Flows FL580 to FL585. |
+
+**Measurement** (`design/proposals/P21A_MEASUREMENT_2026-11-26.md`): with the draft week's gains the new decay lets Party support settle near 92 and both awareness meters near 99, so the runaway Cameron feared is only slowed. The numbers are Balance rows ready to retune.

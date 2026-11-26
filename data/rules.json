@@ -503,5 +503,11 @@
     "options": "an organization ID",
     "question": "The organization that stands for the Candidate Selection Committee (its standing with the player counts toward the selection score).",
     "notes": "P20 phase D (2026-11-26, Cameron)."
+  },
+  "cap_call_finance_org": {
+    "value": "BO24",
+    "options": "an organization ID",
+    "question": "The organization the call on the financial industry spends standing with (the Financial Industry Association).",
+    "notes": "P21 phase A (2026-11-26, Cameron)."
   }
 }

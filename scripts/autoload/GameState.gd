@@ -622,6 +622,7 @@ func _ready() -> void:
 func _apply_difficulty() -> void:
 	Difficulty.apply_balance(DataDB.balance, DataDB.balance_base, difficulty)
 	Difficulty.apply_shop(DataDB.shop, DataDB.shop_base, DataDB.balance_base, difficulty)
+	_sync_petition_price()
 
 
 ## Raises the pressure; never lowers it. False (nothing changed) when `tier`
@@ -699,7 +700,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "campaign_moments_week", "campaign_moment_open", "campaign_draw_day", "scene_cooldowns", "scene_colleagues", "campaign_challenges", "campaign_favors", "van_speech_done", "selection_results", "campaign_polls", "campaign_last_poll", "campaign_poll_parts", "campaign_poll_late", "campaign_office_opened_on", "election_results", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "campaign_moments_week", "campaign_moment_open", "campaign_draw_day", "scene_cooldowns", "scene_colleagues", "campaign_challenges", "campaign_favors", "van_speech_done", "decay_holds", "hold_streaks", "cap_calls_done", "awareness_paid_months", "funds_cap_petitions", "selection_results", "campaign_polls", "campaign_last_poll", "campaign_poll_parts", "campaign_poll_late", "campaign_office_opened_on", "election_results", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters", "run_stats",
 	"bill_stance",
@@ -755,6 +756,9 @@ func load_save(saved: Dictionary) -> void:
 	run_stats = RunStats.normalized(run_stats)
 	if not Difficulty.is_tier(difficulty):
 		difficulty = Difficulty.STANDARD
+	# A save from before the petition's price stepped up: the petitions already bought are what the cap bonus was made of.
+	if not saved.has("funds_cap_petitions"):
+		funds_cap_petitions = funds_cap_bonus / 100000
 	_apply_difficulty()
 
 	_register_saved_patron_bills()
@@ -955,6 +959,12 @@ func reset_crisis_triggers() -> void:
 	campaign_challenges = []
 	campaign_favors = []
 	van_speech_done = false
+	decay_holds = []
+	hold_streaks = {}
+	cap_calls_done = []
+	awareness_paid_months = {}
+	funds_cap_petitions = 0
+	_sync_petition_price()
 	selection_results = []
 	campaign_polls = []
 	campaign_last_poll = -1
@@ -2342,6 +2352,13 @@ var van_speech_done := false
 ## parts at the last poll, how many mustering and campaign polls were taken (to rotate the outlets), the day the Campaign Office opened (-1 while it has
 ## not), and the settled Election Days ({cycle_id, kind, seated}).
 var selection_results: Array = []
+## P21 phase A: what is held against this week's decay ("meter:<name>" or "org:<id>"), how many weeks in a row each has been held, the cap calls
+## used (once each per run), the month each monthly awareness effect last paid, and how many Funds-cap petitions were bought (the price steps up).
+var decay_holds: Array = []
+var hold_streaks: Dictionary = {}
+var cap_calls_done: Array = []
+var awareness_paid_months: Dictionary = {}
+var funds_cap_petitions := 0
 var campaign_polls: Array = []
 var campaign_last_poll := -1
 var campaign_poll_parts: Array = []
@@ -2925,6 +2942,208 @@ func take_poll() -> Dictionary:
 	campaign_last_poll = today
 	campaign_poll_parts = parts
 	return poll
+
+
+# --- Political Capital upkeep (P21 phase A, 2026-11-26) -----------------------------------------------------------------------------------
+# What the game calls XP is Political Capital (PC) on screen. At each week's end Political Capital, Party support and both awareness meters fade
+# (PcDecay); the player can hold one meter or one organization back for a price, write off dues, and raise the Funds limit past the petition's ceiling.
+
+const HOLD_METERS: Array[String] = ["Party support", "District awareness", "National awareness", "Constituency support", "Reputation"]
+
+
+## A Political Capital price on the current difficulty.
+func pc_price(base: int) -> int:
+	return PcDecay.scaled_price(base, difficulty)
+
+
+## The calendar month as a key ("2018-11"): a monthly awareness effect pays once per key.
+func _month_key() -> String:
+	var date := WeekCalendar.civil_from_days(campaign_today())
+	return "%04d-%02d" % [int(date[0]), int(date[1])]
+
+
+## The petition's own price: its base plus Cost Step XP for every petition already bought, on the difficulty's item price.
+func _sync_petition_price() -> void:
+	for i in mini(DataDB.shop.size(), DataDB.shop_base.size()):
+		var row: Dictionary = DataDB.shop[i]
+		var original: Dictionary = DataDB.shop_base[i]
+		if original.get("funds_cap_increase") == null or original.get("cost_xp") == null:
+			continue
+		var step := int(original.get("cost_step_xp", 0)) if original.get("cost_step_xp") != null else 0
+		var percent := Difficulty.number(DataDB.balance_base, difficulty, "item_price_percent", 100.0)
+		row["cost_xp"] = Difficulty.scale(int(original["cost_xp"]) + step * funds_cap_petitions, percent)
+
+
+func _meta_start(name: String) -> int:
+	return int(BattleSetup.starting_meta_for(DataDB.player).get(name, 0))
+
+
+## How much of a meter would fade at this week's end if nothing were held.
+func meter_fade(name: String) -> int:
+	match name:
+		"Party support":
+			return PcDecay.party_support_loss(int(meta.get("Party support", 0)))
+		"District awareness":
+			return PcDecay.awareness_loss(int(awareness.get("district", 0)), Levers.whole("awareness_start_district"))
+		"National awareness":
+			return PcDecay.awareness_loss(int(awareness.get("national", 0)), Levers.whole("awareness_start_national"))
+	var now := int(meta.get(name, 0))
+	for variable: Dictionary in DataDB.sanban:
+		if str(variable.get("name_en", "")) == name and variable.get("decay_percent") != null:
+			var scale := maxf(0.0, Levers.num("week_decay_multiplier"))
+			return maxi(0, now - BoosterStanding.decayed_percent(now, _meta_start(name), float(variable["decay_percent"]) * scale))
+	return 0
+
+
+## How much of an organization's standing would fade at this week's end if nothing were held (its own decay, not neglect).
+func org_fade(booster_id: String) -> int:
+	var booster := DataDB.get_booster(booster_id)
+	var default_start := int(DataDB.booster_standing.get("start", 30))
+	var own_start: Variant = booster.get("starting_standing")
+	var own_percent: Variant = booster.get("decay_percent")
+	var percent := float(DataDB.booster_standing.get("decay_percent", 0)) if own_percent == null else float(own_percent)
+	var now := int(booster_standing.get(booster_id, 0))
+	return maxi(0, now - BoosterStanding.decayed_percent(now, default_start if own_start == null else int(own_start), percent * maxf(0.0, Levers.num("week_decay_multiplier"))))
+
+
+func hold_price_of(key: String) -> int:
+	var organization := key.begins_with("org:")
+	var base := Levers.whole("keep_in_touch_xp") if organization else Levers.whole("decay_hold_xp")
+	var step := Levers.whole("keep_in_touch_step_xp") if organization else Levers.whole("decay_hold_step_xp")
+	return pc_price(PcDecay.hold_price(base, step, int(hold_streaks.get(key, 0))))
+
+
+## Why a hold cannot be bought now, or "".
+func hold_refusal(key: String) -> String:
+	if decay_holds.has(key):
+		return Text.say("upkeep.refuse_held")
+	var fading := org_fade(key.substr(4)) if key.begins_with("org:") else meter_fade(key.substr(6))
+	if fading <= 0:
+		return Text.say("upkeep.refuse_not_fading")
+	if xp < hold_price_of(key):
+		return Text.say("upkeep.refuse_pc")
+	return ""
+
+
+## Buys a hold against this week's end: "" when done, else why not.
+func buy_hold(key: String) -> String:
+	var why := hold_refusal(key)
+	if not why.is_empty():
+		return why
+	_move_xp(-hold_price_of(key))
+	decay_holds.append(key)
+	return ""
+
+
+## What will fade from the Political Capital at this week's end.
+func pc_fade_preview() -> int:
+	return PcDecay.xp_loss(xp)
+
+
+## True from Wednesday on (and at the weekend): the Office tells the player what will fade.
+func pc_fade_visible() -> bool:
+	return in_weekend() or weekday_today() >= 3
+
+
+## Political Capital, Party support and the awareness meters fade (holds respected), the holds are spent and their streaks counted.
+## Returns lines for the new-week report.
+func _apply_pc_and_meter_decay() -> Array[String]:
+	var lines: Array[String] = []
+	var lost := PcDecay.xp_loss(xp)
+	if lost > 0:
+		_move_xp(-lost)
+		lines.append(Text.say("pc.fade_report", {"count": lost}))
+	var loss := 0 if decay_holds.has("meter:Party support") else PcDecay.party_support_loss(int(meta.get("Party support", 0)))
+	if loss > 0:
+		_links_suspended = true
+		_under_cause(Text.say("record.cause_decay"), func() -> void: _apply_meta_reward("Party support", -loss))
+		_links_suspended = false
+		lines.append(Text.say("decay.week_meter", {"name": "Party support", "count": loss}))
+	for pair: Array in [["District awareness", "district", Text.say("awareness.district")], ["National awareness", "national", Text.say("awareness.national")]]:
+		if decay_holds.has("meter:" + str(pair[0])):
+			continue
+		var fade := meter_fade(str(pair[0]))
+		if fade > 0:
+			apply_awareness_delta(str(pair[1]), -fade)
+			lines.append(Text.say("decay.week_meter", {"name": str(pair[2]), "count": fade}))
+	hold_streaks = PcDecay.next_streaks(hold_streaks, decay_holds)
+	decay_holds = []
+	return lines
+
+
+# --- Dues relief and the Funds limit -------------------------------------------------------------------------------------------------------
+
+func bailout_price() -> int:
+	return pc_price(Levers.whole("dues_bailout_xp"))
+
+
+func bailout_refusal() -> String:
+	if dues_balance <= 0:
+		return Text.say("upkeep.refuse_no_dues")
+	if xp < bailout_price():
+		return Text.say("upkeep.refuse_pc")
+	return ""
+
+
+## Writes off Balance dues_bailout_yen of the dues owed (never below nothing owed) for Political Capital. "" when done.
+func buy_bailout() -> String:
+	var why := bailout_refusal()
+	if not why.is_empty():
+		return why
+	_move_xp(-bailout_price())
+	dues_balance = maxi(0, dues_balance - Levers.whole("dues_bailout_yen"))
+	return ""
+
+
+const CAP_PARTY := "party"
+const CAP_FINANCE := "finance"
+
+
+func _cap_value(kind: String, party_key: String, finance_key: String) -> int:
+	return Levers.whole(party_key if kind == CAP_PARTY else finance_key)
+
+
+func cap_call_price(kind: String) -> int:
+	return pc_price(_cap_value(kind, "cap_call_xp", "cap_call_finance_xp"))
+
+
+## The organization whose standing the financial call spends (Rules cap_call_finance_org).
+func cap_call_org() -> String:
+	return str(DataDB.get_rule("cap_call_finance_org", ""))
+
+
+## Why a call on the party or the financial industry cannot be made now, or "": already used, the petition not at its ceiling, standing too low, or
+## not enough Political Capital.
+func cap_call_refusal(kind: String) -> String:
+	if cap_calls_done.has(kind):
+		return Text.say("upkeep.cap_refuse_done")
+	var starting_cap := int(DataDB.rules.get("funds_starting_cap", 100000))
+	if starting_cap + funds_cap_bonus < Levers.whole("funds_petition_ceiling"):
+		return Text.say("upkeep.cap_refuse_petition", {"ceiling": Levers.whole("funds_petition_ceiling")})
+	if kind == CAP_PARTY:
+		if int(meta.get("Party support", 0)) <= Levers.whole("cap_call_min_support"):
+			return Text.say("upkeep.cap_refuse_support", {"min": Levers.whole("cap_call_min_support")})
+	elif int(booster_standing.get(cap_call_org(), 0)) <= Levers.whole("cap_call_finance_min_standing"):
+		return Text.say("upkeep.cap_refuse_standing", {"org": str(DataDB.get_booster(cap_call_org()).get("name_en", "")), "min": Levers.whole("cap_call_finance_min_standing")})
+	if xp < cap_call_price(kind):
+		return Text.say("upkeep.refuse_pc")
+	return ""
+
+
+## Calls on the party or the financial industry: pays the standing and the Political Capital together, raises the Funds limit. "" when done.
+func buy_cap_call(kind: String) -> String:
+	var why := cap_call_refusal(kind)
+	if not why.is_empty():
+		return why
+	_move_xp(-cap_call_price(kind))
+	if kind == CAP_PARTY:
+		_under_cause(Text.say("record.cause_cap_call"), func() -> void: _apply_meta_reward("Party support", -Levers.whole("cap_call_party_support")))
+		funds_cap_bonus += Levers.whole("cap_call_yen")
+	else:
+		_under_cause(Text.say("record.cause_cap_call"), func() -> void: _apply_booster_delta(cap_call_org(), -Levers.whole("cap_call_finance_standing")))
+		funds_cap_bonus += Levers.whole("cap_call_finance_yen")
+	cap_calls_done.append(kind)
+	return ""
 
 
 ## Opens a venue that a scene unlocks (a no-op for an ID that is already open).
@@ -4343,7 +4562,7 @@ func apply_event_choice(event_id: String, letter: String, delegate_id: String = 
 	var xp_rolled := StaffTasks.delegate_gain(_roll_range(chosen.get("xp_delta")), fit)
 	if xp_rolled != 0:
 		_move_xp(xp_rolled)
-		lines.append(Text.say("event.effect_line", {"name": "XP", "change": "%+d" % xp_rolled}))
+		lines.append(Text.say("event.effect_line", {"name": Text.say("pc.name"), "change": "%+d" % xp_rolled}))
 	for meter: String in ["district", "national"]:
 		var meter_rolled := StaffTasks.delegate_gain(_roll_range(chosen.get(meter + "_delta")), fit)
 		if meter_rolled == 0:
@@ -5139,9 +5358,10 @@ func go_home() -> Dictionary:
 	_advance_clock(int(moved["skipped"]))
 	campaign_lines.append_array(_campaign_after_election(day_before, campaign_today()))
 	_apply_week_decay()
+	var decay_lines := _apply_pc_and_meter_decay()
 	check_crisis_triggers()
 	event_roll_due = true
-	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines, "staff": staff_report, "campaign": campaign_lines}
+	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines, "staff": staff_report, "campaign": campaign_lines, "decay": decay_lines}
 
 
 ## What the awareness effects take off the base dues (National Awareness at 80
@@ -5159,8 +5379,10 @@ func awareness_start_bonus(stage_id: String) -> int:
 ## awareness meters earn or cost. Returns lines for the popup (Text rows).
 func _apply_awareness_week_end() -> Array[String]:
 	var lines: Array[String] = []
-	var result := AwarenessEffects.week_end(DataDB.awareness_effects, awareness, awareness_streaks)
+	var result := AwarenessEffects.week_end(DataDB.awareness_effects, awareness, awareness_streaks, _month_key(), awareness_paid_months)
 	awareness_streaks = result["streaks"]
+	for paid: Variant in result["monthly"]:
+		awareness_paid_months[str(paid)] = _month_key()
 	for entry: Dictionary in result["applied"]:
 		var effect: Dictionary = entry["effect"]
 		var amount := int(entry["amount"])
@@ -5212,7 +5434,7 @@ func _give_training_coupons(count: int) -> bool:
 ## What the party is owed at this week's end: { week_dues, owed (carried),
 ## total, funds }. Shown above the week button.
 func dues_preview() -> Dictionary:
-	var cfg := PartyDues.settings(DataDB.balance)
+	var cfg := PartyDues.settings(DataDB.balance, funds_limit())
 	var week_dues := PartyDues.week_dues(cfg, int(meta.get("Party support", 0)),
 		week_funds_earned, _dues_reduction())
 	# The first weeks of a run owe nothing (Balance "Dues Holiday Weeks"; Campaign Pressure sets it).
@@ -5233,7 +5455,7 @@ func dues_preview() -> Dictionary:
 ##   penalties: PartyDues.overdue_penalties for what stays owed ({} when nothing is owed)
 ##   withdrawn: names of the party's backings that would be withdrawn
 func week_end_preview() -> Dictionary:
-	var cfg := PartyDues.settings(DataDB.balance)
+	var cfg := PartyDues.settings(DataDB.balance, funds_limit())
 	var due := dues_preview()
 	var support := int(meta.get("Party support", 0))
 	var reduction := _dues_reduction()
@@ -5280,7 +5502,7 @@ func week_end_preview() -> Dictionary:
 ## party's backings, and applies the scaled overdue penalties.
 ## Returns { week_dues, carried, total, paid, owed, penalized, withdrawn }.
 func _settle_dues() -> Dictionary:
-	var cfg := PartyDues.settings(DataDB.balance)
+	var cfg := PartyDues.settings(DataDB.balance, funds_limit())
 	var preview := dues_preview()
 	var settled := PartyDues.settle(int(preview["total"]), int(preview["funds"]))
 	var report := {"week_dues": int(preview["week_dues"]), "carried": dues_balance,
@@ -5344,6 +5566,9 @@ func _apply_neglect_decay() -> void:
 	step = maxi(1, roundi(step * _decay_scale))
 	var default_start := int(DataDB.booster_standing.get("start", 30))
 	var touched := booster_moved_in_period.keys()
+	for held: Variant in decay_holds:
+		if str(held).begins_with("org:"):
+			touched.append(str(held).substr(4))   # a held organization does not drift either
 	var starts := {}
 	for booster: Dictionary in DataDB.boosters:
 		var own_start: Variant = booster.get("starting_standing")
@@ -5371,6 +5596,8 @@ func _apply_meta_decay() -> void:
 		if percent == null:
 			continue
 		var name := str(variable.get("name_en", ""))
+		if decay_holds.has("meter:" + name):
+			continue
 		var now := int(meta.get(name, 0))
 		var target := BoosterStanding.decayed_percent(now, int(starts.get(name, now)), float(percent) * _decay_scale)
 		if target != now:
@@ -5389,7 +5616,7 @@ func _apply_standing_decay() -> void:
 	var default_start := int(DataDB.booster_standing.get("start", 30))
 	for booster: Dictionary in DataDB.boosters:
 		var id := str(booster.get("booster_id", ""))
-		if not booster_standing.has(id):
+		if not booster_standing.has(id) or decay_holds.has("org:" + id):
 			continue
 		var own_start: Variant = booster.get("starting_standing")
 		var own_percent: Variant = booster.get("decay_percent")
@@ -6758,7 +6985,7 @@ func buy_deck_expansion(item_id: String) -> Dictionary:
 ## raise it further (2026-11-11, Cameron: the Marketplace then stops listing it).
 func funds_cap_maxed() -> bool:
 	var starting_cap := int(DataDB.rules.get("funds_starting_cap", 100000))
-	return starting_cap + funds_cap_bonus >= _funds_hard_max()
+	return starting_cap + funds_cap_bonus >= mini(Levers.whole("funds_petition_ceiling"), _funds_hard_max())
 
 
 func buy_funds_cap(item_id: String) -> Dictionary:
@@ -6778,6 +7005,8 @@ func buy_funds_cap(item_id: String) -> Dictionary:
 
 	var increase := int(item.get("funds_cap_increase", 0))
 	funds_cap_bonus += increase
+	funds_cap_petitions += 1
+	_sync_petition_price()
 	return {"ok": true, "message": Text.say("shop.funds_cap_increased", {"count": increase})}
 
 

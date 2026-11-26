@@ -940,6 +940,8 @@ func _go_home() -> void:
 		rows.append(UiKit.line(awareness_line, "SmallLabel"))
 	for campaign_line: String in result.get("campaign", []):
 		rows.append(UiKit.line(campaign_line, "SmallLabel"))
+	for decay_line: String in result.get("decay", []):
+		rows.append(UiKit.line(decay_line, "SmallLabel"))
 	_new_week_panel.open(Text.say("office.new_week_title"), rows, Text.say("office.new_week_go"))
 
 
@@ -1698,6 +1700,9 @@ func _refresh_resources() -> void:
 		_resources.text = Text.say("office.in_order")
 	else:
 		_resources.text = Text.say("office.deck_warning", {"reason": refusal})
+	# From Wednesday the Office says how much Political Capital will fade at the week's end (P21 phase A).
+	if GameState.pc_fade_visible() and GameState.pc_fade_preview() > 0:
+		_resources.text += "\n" + Text.say("pc.fade_note", {"count": GameState.pc_fade_preview()})
 	_refresh_notices()
 
 
@@ -2409,7 +2414,7 @@ func _starting_stat_lines(protagonist: Dictionary) -> Array[String]:
 		var name := str(variable.get("name_en", ""))
 		lines.append(Text.say("new_game.stat_line", {"name": name, "value": Phrase.meta_amount(name, int(meta.get(name, 0)))}))
 	lines.append(Text.say("new_game.stat_line",
-		{"name": "XP", "value": BattleSetup.starting_xp_for(protagonist)}))
+		{"name": Text.say("pc.name"), "value": BattleSetup.starting_xp_for(protagonist)}))
 	return lines
 
 
@@ -2756,6 +2761,29 @@ func _overview_cards(look: Dictionary) -> Array[Control]:
 	return rows
 
 
+## The Upkeep tab's buttons (P21 phase A): each buys, then draws the tab again.
+func _on_upkeep_hold(key: String) -> void:
+	GameState.buy_hold(key)
+	_after_upkeep()
+
+
+func _on_upkeep_bailout() -> void:
+	GameState.buy_bailout()
+	_after_upkeep()
+
+
+func _on_upkeep_cap(kind: String) -> void:
+	GameState.buy_cap_call(kind)
+	_after_upkeep()
+
+
+func _after_upkeep() -> void:
+	SaveManager.autosave()
+	_refresh_resources()
+	_refresh_calendar()
+	_show_reputation("upkeep")
+
+
 ## The Laws tab: Legislative Work (every bill voted on, each opening its pop-up), then the bills your influence flipped.
 func _law_cards(look: Dictionary) -> Array[Control]:
 	var rows: Array[Control] = []
@@ -2908,7 +2936,7 @@ func _law_effect_chips(bill_id: String, passed: bool, timing: String) -> Array:
 
 func _effect_line(name: String, delta: int) -> String:
 	var shown := Phrase.meta_amount(name, delta, true)
-	return Text.say("record.effect_line", {"name": name, "delta": shown})
+	return Text.say("record.effect_line", {"name": Text.say("pc.name") if name == "XP" else name, "delta": shown})
 
 
 ## How the player voted, in Your Record's own words. Spelled out key by key
@@ -2999,6 +3027,7 @@ func _show_reputation(tab: String) -> void:
 		"parties": rows = _party_cards(look)
 		"election": rows = _election_cards(look)
 		"laws": rows = _law_cards(look)
+		"upkeep": rows = UpkeepViews.cards(look, _on_upkeep_hold, _on_upkeep_bailout, _on_upkeep_cap)
 		_:
 			tab = "overview"
 			rows = _overview_cards(look)
@@ -3015,6 +3044,7 @@ func _show_reputation(tab: String) -> void:
 			{"id": "parties", "text": Text.say("office.parties")},
 			{"id": "election", "text": Text.say("record.tab_election")},
 			{"id": "laws", "text": Text.say("record.tab_laws")},
+			{"id": "upkeep", "text": Text.say("upkeep.tab")},
 		],
 		"active_tab": tab,
 		"rows": rows,

@@ -91,7 +91,7 @@ func test_the_national_awareness_relief_still_lowers_dues_under_the_limit() -> v
 
 
 func test_no_limit_means_no_cap() -> void:
-	var cfg := PartyDues.settings({"dues_max_per_week": 0, "dues_reward_percent": 15, "dues_step_amount": 5000})
+	var cfg := PartyDues.settings({"dues_limit_cap_percent": 0, "dues_reward_percent": 15, "dues_step_amount": 5000})
 	assert_eq(PartyDues.week_dues(cfg, 70, 260000, 0), 99000)
 
 

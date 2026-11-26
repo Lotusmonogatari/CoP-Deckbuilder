@@ -72,7 +72,7 @@
   {
     "key": "outcome.xp",
     "where": "End of stage — what it was worth",
-    "english": "{count} XP",
+    "english": "{count} PC",
     "placeholders": "count",
     "notes": "Listed alongside the standings that moved."
   },
@@ -478,7 +478,7 @@
   {
     "key": "office.xp",
     "where": "Office — management",
-    "english": "XP {count}",
+    "english": "PC {count}",
     "placeholders": "count",
     "notes": null
   },
@@ -604,7 +604,7 @@
   {
     "key": "shop.xp_short",
     "where": "Shop — refusals",
-    "english": "{count} XP short.",
+    "english": "{count} PC short.",
     "placeholders": "count",
     "notes": null
   },
@@ -1136,7 +1136,7 @@
   {
     "key": "office.level_unlock_cost",
     "where": "Office — levels",
-    "english": "Unlock — {cost} XP",
+    "english": "Unlock — {cost} PC",
     "placeholders": "cost",
     "notes": "Shown on a locked level button when level_gating_enabled is true and the level is affordable."
   },
@@ -1325,7 +1325,7 @@
   {
     "key": "shop.item_price_xp",
     "where": "Supplies panel, price part",
-    "english": "{count} XP",
+    "english": "{count} PC",
     "placeholders": "count",
     "notes": null
   },
@@ -2865,7 +2865,7 @@
   {
     "key": "office.backup_label",
     "where": "Office — Administration",
-    "english": "{when} · Last level cleared: {level} · Inventory: {items} · XP: {xp} · Funds: {funds}",
+    "english": "{when} · Last level cleared: {level} · Inventory: {items} · Political Capital: {xp} · Funds: {funds}",
     "placeholders": "when, level, items, xp, funds",
     "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
   },
@@ -3663,7 +3663,7 @@
   {
     "key": "trade.gain_donation",
     "where": "Lobbyist trade",
-    "english": "a donation of {funds} and {xp} XP",
+    "english": "a donation of {funds} and {xp} PC",
     "placeholders": "funds, xp",
     "notes": "2026-10-19 lobbyist trade (patron bills)."
   },
@@ -4020,7 +4020,7 @@
   {
     "key": "draft.intro",
     "where": "Draft a Bill",
-    "english": "Pick two or three parts from any of the organizations and carry the bill yourself. It costs {xp} XP and {funds}円.",
+    "english": "Pick two or three parts from any of the organizations and carry the bill yourself. It costs {xp} PC and {funds}円.",
     "placeholders": "xp, funds",
     "notes": "2026-10-19 Draft a Bill (draft)."
   },
@@ -4139,7 +4139,7 @@
   {
     "key": "draft.cost",
     "where": "Draft a Bill",
-    "english": "Drafting needs {xp} XP and {funds}円.",
+    "english": "Drafting needs {xp} PC and {funds}円.",
     "placeholders": "xp, funds",
     "notes": "2026-10-19 Draft a Bill (draft)."
   },
@@ -4650,7 +4650,7 @@
   {
     "key": "awareness.week_xp",
     "where": "New week popup, XP moved by awareness",
-    "english": "Name recognition: {count} XP.",
+    "english": "Name recognition: {count} PC.",
     "placeholders": "count",
     "notes": "2026-10-23 awareness."
   },
@@ -4783,7 +4783,7 @@
   {
     "key": "event.refuse_xp",
     "where": "Events list, not enough XP",
-    "english": "Not enough XP",
+    "english": "Not enough PC",
     "placeholders": null,
     "notes": "2026-10-23 events."
   },
@@ -5539,7 +5539,7 @@
   {
     "key": "briefing.xp_growth",
     "where": "Level briefing, the XP reward bullet; {amount} carries its sign",
-    "english": "XP Growth {amount}",
+    "english": "Political Capital Growth Growth {amount}",
     "placeholders": "amount",
     "notes": null
   },
@@ -6295,14 +6295,14 @@
   {
     "key": "draft.extra_visit_off",
     "where": "Draft a Bill — extra member visit button",
-    "english": "Add a second member visit ({count} Hours, {xp} XP)",
+    "english": "Add a second member visit ({count} Hours, {xp} PC)",
     "placeholders": "count, xp",
     "notes": "2026-11-05 (Cameron). Adds one more member visit and one-on-one fight, just before the vote."
   },
   {
     "key": "draft.extra_visit_on",
     "where": "Draft a Bill — extra member visit button, on",
-    "english": "Second member visit added ({count} Hours, {xp} XP). Tap to remove it.",
+    "english": "Second member visit added ({count} Hours, {xp} PC). Tap to remove it.",
     "placeholders": "count, xp",
     "notes": "2026-11-05 (Cameron)."
   },
@@ -6519,7 +6519,7 @@
   {
     "key": "floor_vote.research_cost",
     "where": "Floor Vote",
-    "english": "Costs {hours} hours and {xp} XP. Clears {points}% of the house from the unknown vote.",
+    "english": "Costs {hours} hours and {xp} PC. Clears {points}% of the house from the unknown vote.",
     "placeholders": "hours, xp, points",
     "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
   },
@@ -6540,7 +6540,7 @@
   {
     "key": "floor_vote.research_no_xp",
     "where": "Floor Vote",
-    "english": "A briefing needs {xp} XP.",
+    "english": "A briefing needs {xp} PC.",
     "placeholders": "xp",
     "notes": "2026-11-08 research assistant draft. Claude's draft for Cameron."
   },
@@ -7506,7 +7506,7 @@
   {
     "key": "assign.name_xp",
     "where": "Staff Assignments, the name of XP in a change",
-    "english": "XP",
+    "english": "Political Capital",
     "placeholders": null,
     "notes": "2026-11-16 staff assignments (Cameron). Claude's draft."
   },
@@ -8227,7 +8227,7 @@
   {
     "key": "shop.styles_blurb",
     "where": "Marketplace, Office styles tab, intro",
-    "english": "How your office and your debates look. The style you picked at the start is yours; the others cost XP.",
+    "english": "How your office and your debates look. The style you picked at the start is yours; the others cost Political Capital.",
     "placeholders": null,
     "notes": "2026-11-17 panel P9 (Claude's draft)"
   },
@@ -8815,7 +8815,7 @@
   {
     "key": "briefing.tile_xp",
     "where": "Level briefing, the label of the XP tile in the totals card",
-    "english": "XP Growth",
+    "english": "PC Growth Growth",
     "placeholders": null,
     "notes": "2026-11-19 P12 level preview (Claude's draft)"
   },
@@ -9949,14 +9949,14 @@
   {
     "key": "travel.evening_cost",
     "where": "Moved card: what the after-hours trip cost",
-    "english": "The trip took no work hours, but it cost {xp} XP.",
+    "english": "The trip took no work hours, but it cost {xp} PC.",
     "placeholders": "xp",
     "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
   },
   {
     "key": "travel.evening_free",
     "where": "Moved card: the after-hours trip when the player had no XP",
-    "english": "The trip took no work hours, and you had no XP to spend.",
+    "english": "The trip took no work hours, and you had no Political Capital to spend.",
     "placeholders": null,
     "notes": "2026-11-23 P15 (Claude's draft for Cameron to reword)."
   },
@@ -10411,7 +10411,7 @@
   {
     "key": "venue.refuse_xp",
     "where": "Venues: a visit needs more XP than the player has",
-    "english": "Not enough XP",
+    "english": "Not enough PC",
     "placeholders": null,
     "notes": "P16 (2026-11-23): Claude's draft for Cameron to reword."
   },
@@ -11265,7 +11265,7 @@
   {
     "key": "choice.xp",
     "where": "What a seat gives: XP",
-    "english": "XP {delta}",
+    "english": "PC {delta}",
     "placeholders": "delta",
     "notes": "2026-11-25 (seats, meals and paperwork): Claude's draft for Cameron to reword."
   },
@@ -11433,7 +11433,7 @@
   {
     "key": "stage.or_xp",
     "where": "Watch the Performance: the XP option",
-    "english": "XP {delta}",
+    "english": "PC {delta}",
     "placeholders": "delta",
     "notes": "2026-11-25 (Sapporo Stage): Claude's draft for Cameron to reword."
   },
@@ -12385,7 +12385,7 @@
   {
     "key": "campaign.action.cost_xp",
     "where": "P20 campaign: campaign.action",
-    "english": "{xp} XP",
+    "english": "{xp} PC",
     "placeholders": "xp",
     "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
   },
@@ -13081,5 +13081,201 @@
     "english": "The end",
     "placeholders": null,
     "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "pc.name",
+    "where": "P21 economy: the currency's name",
+    "english": "Political Capital",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26): what the game called XP; the short form is PC."
+  },
+  {
+    "key": "upkeep.tab",
+    "where": "P21 economy: upkeep.tab",
+    "english": "Upkeep",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.shore_title",
+    "where": "P21 economy: upkeep.shore_title",
+    "english": "Shore up support",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.shore_blurb",
+    "where": "P21 economy: upkeep.shore_blurb",
+    "english": "Pay Political Capital to stop one meter fading at this week's end. A hold never raises it, and each week in a row on the same meter costs a little more.",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.touch_title",
+    "where": "P21 economy: upkeep.touch_title",
+    "english": "Keep in touch",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.touch_blurb",
+    "where": "P21 economy: upkeep.touch_blurb",
+    "english": "Pay Political Capital to stop one organization's standing fading at this week's end. Only organizations that are fading are listed.",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.meter_line",
+    "where": "P21 economy: upkeep.meter_line",
+    "english": "{name}: {value} · fades {fade} at week's end",
+    "placeholders": "fade, name, value",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.org_line",
+    "where": "P21 economy: upkeep.org_line",
+    "english": "{name}: {value} · fades {fade}",
+    "placeholders": "fade, name, value",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.hold_button",
+    "where": "P21 economy: upkeep.hold_button",
+    "english": "Hold · {cost} PC",
+    "placeholders": "cost",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.held",
+    "where": "P21 economy: upkeep.held",
+    "english": "Held this week",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.refuse_held",
+    "where": "P21 economy: upkeep.refuse_held",
+    "english": "Already held this week.",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.refuse_not_fading",
+    "where": "P21 economy: upkeep.refuse_not_fading",
+    "english": "It is not fading.",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.refuse_pc",
+    "where": "P21 economy: upkeep.refuse_pc",
+    "english": "Not enough PC.",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.refuse_no_dues",
+    "where": "P21 economy: upkeep.refuse_no_dues",
+    "english": "No dues are owed.",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.dues_title",
+    "where": "P21 economy: upkeep.dues_title",
+    "english": "Dues and the Funds limit",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.bailout_blurb",
+    "where": "P21 economy: upkeep.bailout_blurb",
+    "english": "Write off part of the dues you owe.",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.bailout_button",
+    "where": "P21 economy: upkeep.bailout_button",
+    "english": "Dues bailout · {cost} PC for {yen}円 off the dues",
+    "placeholders": "cost, yen",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.cap_blurb",
+    "where": "P21 economy: upkeep.cap_blurb",
+    "english": "Once petitions have raised the Funds limit to {ceiling}円, you can call on the party and on the financial industry to raise it further, once each per run.",
+    "placeholders": "ceiling",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.cap_party_button",
+    "where": "P21 economy: upkeep.cap_party_button",
+    "english": "Call on the party · {support} Party support and {cost} PC for {yen}円 more Funds limit",
+    "placeholders": "cost, support, yen",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.cap_finance_button",
+    "where": "P21 economy: upkeep.cap_finance_button",
+    "english": "Call on the financial industry · {standing} standing and {cost} PC for {yen}円 more Funds limit",
+    "placeholders": "cost, standing, yen",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.cap_refuse_done",
+    "where": "P21 economy: upkeep.cap_refuse_done",
+    "english": "Already called on.",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.cap_refuse_petition",
+    "where": "P21 economy: upkeep.cap_refuse_petition",
+    "english": "Raise the Funds limit to {ceiling}円 with petitions first.",
+    "placeholders": "ceiling",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.cap_refuse_support",
+    "where": "P21 economy: upkeep.cap_refuse_support",
+    "english": "Needs Party support over {min}.",
+    "placeholders": "min",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "upkeep.cap_refuse_standing",
+    "where": "P21 economy: upkeep.cap_refuse_standing",
+    "english": "Needs standing over {min} with {org}.",
+    "placeholders": "min, org",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "pc.fade_note",
+    "where": "P21 economy: pc.fade_note",
+    "english": "{count} Political Capital will fade at week's end.",
+    "placeholders": "count",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "pc.fade_report",
+    "where": "P21 economy: pc.fade_report",
+    "english": "{count} Political Capital faded.",
+    "placeholders": "count",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "decay.week_meter",
+    "where": "P21 economy: decay.week_meter",
+    "english": "{name} faded by {count}.",
+    "placeholders": "count, name",
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "record.cause_cap_call",
+    "where": "P21 economy: record.cause_cap_call",
+    "english": "A call on the party or the financial industry",
+    "placeholders": null,
+    "notes": "P21 phase A (2026-11-26); a draft for Cameron to edit."
   }
 ]

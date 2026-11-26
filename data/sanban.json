@@ -31,7 +31,7 @@
     "romaji": "Yen",
     "start": 50000,
     "min": 0,
-    "max": 1000000,
+    "max": 2000000,
     "low_threshold": 50000,
     "low_consequence": null,
     "high_threshold": 950000,

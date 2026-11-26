@@ -157,9 +157,9 @@
     "entry_id": "HT15",
     "order": 150.0,
     "group": "Between Levels",
-    "heading_en": "XP and cards",
+    "heading_en": "Political Capital and cards",
     "heading_jp": null,
-    "body_en": "XP buys Rhetoric Training sessions, where you draw a card and decide whether to learn it. A Training Session Coupon gives you one draw free. Build your deck on the deck screen.",
+    "body_en": "Political Capital buys Rhetoric Training sessions, where you draw a card and decide whether to learn it. A Training Session Coupon gives you one draw free. Build your deck on the deck screen.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -170,7 +170,7 @@
     "group": "Between Levels",
     "heading_en": "Marketplace and staff",
     "heading_jp": null,
-    "body_en": "Spend Funds and XP on supplies and hires that help you in a stage or across a whole level. Tap a staff member to see what each rank gives before you hire. Some supplies pressure organizations instead, so read an item before you use it.",
+    "body_en": "Spend Funds and Political Capital on supplies and hires that help you in a stage or across a whole level. Tap a staff member to see what each rank gives before you hire. Some supplies pressure organizations instead, so read an item before you use it.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -258,7 +258,7 @@
     "group": "Bills and Parties",
     "heading_en": "Drafting and winning votes",
     "heading_jp": null,
-    "body_en": "Draft a Bill lets you combine two or three parts from any of the organizations into a bill of your own, for XP and Funds. Optional stages before the vote let you visit a member to win a seat, and meet a lobbyist who may trade you help for dropping one part. You can carry only one drafted bill at a time.",
+    "body_en": "Draft a Bill lets you combine two or three parts from any of the organizations into a bill of your own, for Political Capital and Funds. Optional stages before the vote let you visit a member to win a seat, and meet a lobbyist who may trade you help for dropping one part. You can carry only one drafted bill at a time.",
     "screenshot": null,
     "caption": null,
     "video": null

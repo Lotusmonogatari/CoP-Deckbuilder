@@ -14,14 +14,16 @@ extends RefCounted
 ## every number comes from Balance through `settings()`.
 
 
-static func settings(balance: Dictionary) -> Dictionary:
+## `funds_cap` is the player's current Funds cap: the weekly limit is Balance dues_limit_cap_percent of it (P21 phase A; it was a flat number).
+## No limit (0) when the row is absent. The default cap is the starting 100,000.
+static func settings(balance: Dictionary, funds_cap: int = 100000) -> Dictionary:
 	return {
 		"base": int(balance.get("dues_base", 50000)),
 		"reward_percent": float(balance.get("dues_reward_percent", 30)),
 		"support_start": int(balance.get("dues_party_support_start", 40)),
 		"support_step": maxi(1, int(balance.get("dues_party_support_step", 15))),
 		"step_amount": int(balance.get("dues_step_amount", 50000)),
-		"max_per_week": int(balance.get("dues_max_per_week", 0)),
+		"max_per_week": int(floor(float(funds_cap) * float(balance.get("dues_limit_cap_percent", 0)) / 100.0)),
 		"overdue_party_support": int(balance.get("dues_overdue_party_support", 10)),
 		"overdue_hq": int(balance.get("dues_overdue_party_hq", 20)),
 		"overdue_other_parties": int(balance.get("dues_overdue_other_parties", 5)),

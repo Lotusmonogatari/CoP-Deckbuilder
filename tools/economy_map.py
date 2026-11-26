@@ -141,7 +141,7 @@ def dues_cfg(balance: dict) -> dict:
     return {"base": int(balance.get("dues_base", 50000)), "reward_percent": float(balance.get("dues_reward_percent", 30)),
             "support_start": int(balance.get("dues_party_support_start", 40)),
             "support_step": max(1, int(balance.get("dues_party_support_step", 15))),
-            "step_amount": int(balance.get("dues_step_amount", 50000)), "max_per_week": int(balance.get("dues_max_per_week", 0))}
+            "step_amount": int(balance.get("dues_step_amount", 50000)), "max_per_week": int(float(balance.get("funds_starting_cap", 100000)) * float(balance.get("dues_limit_cap_percent", 0)) / 100.0)}
 
 
 def godot_round(x: float) -> int:
@@ -802,7 +802,7 @@ def week_markdown(model: dict, rows: list, missing: list, ignored: int) -> str:
     for label, w in (("Standard", std), ("Early", early)):
         ok = TARGET_SHARE[0] <= w["share"] <= TARGET_SHARE[1]
         out.append(f"| {label} | {fmt(model['earned_funds'])}円 | {fmt(w['dues'])}円 | {fmt(w['wages'])}円 | {fmt(w['forced_funds'])}円 | {w['share']:.0%} | {'in range' if ok else 'OUT of range'} |")
-    out += ["", f"The dues limit (`dues_max_per_week` {fmt(model['dues_cfg']['max_per_week'])}円) holds the standard week's dues: "
+    out += ["", f"The dues limit (`dues_limit_cap_percent` of the Funds cap: {fmt(model['dues_cfg']['max_per_week'])}円 at the starting cap) holds the standard week's dues: "
             f"uncapped they would be {fmt(week_dues({**model['dues_cfg'], 'max_per_week': 0}, std['party_support'], int(round(model['earned_funds']))))}円.",
             "", "## Levers not in the catalog", "",
             f"Balance and Rules rows whose key is named in no catalog row's Amount, Caps, Inputs, Source or Difficulty (a warning, not a failure). "

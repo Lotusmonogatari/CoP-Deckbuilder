@@ -64,9 +64,12 @@ static func stage_start_bonus(effects: Array, awareness: Dictionary, stage_id: S
 ## The week-end pass: updates each Week end row's run of consecutive weeks and
 ## returns what applies. `streaks` is { effect_id: weeks }; the result is
 ## { "streaks": the new streaks, "applied": [{ effect, amount }] }.
-static func week_end(effects: Array, awareness: Dictionary, streaks: Dictionary) -> Dictionary:
+## An effect whose Once Per is `month` pays at most once per calendar month: `month_key` is this week's month ("2018-11") and `paid_months` is
+## {effect_id: the month it last paid}; the ones that paid now come back in "monthly" for the caller to record.
+static func week_end(effects: Array, awareness: Dictionary, streaks: Dictionary, month_key: String = "", paid_months: Dictionary = {}) -> Dictionary:
 	var new_streaks := {}
 	var applied: Array = []
+	var monthly: Array = []
 	for effect: Dictionary in effects:
 		if str(effect.get("timing", "")) != "Week end":
 			continue
@@ -76,8 +79,12 @@ static func week_end(effects: Array, awareness: Dictionary, streaks: Dictionary)
 			continue
 		var weeks := int(streaks.get(id, 0)) + 1
 		new_streaks[id] = weeks
+		if str(effect.get("once_per", "")) == "month" and not month_key.is_empty():
+			if str(paid_months.get(id, "")) == month_key:
+				continue
+			monthly.append(id)
 		var amount := int(effect.get("value", 0))
 		if str(effect.get("stacking", "")) == "Escalating":
 			amount *= weeks
 		applied.append({"effect": effect, "amount": amount})
-	return {"streaks": new_streaks, "applied": applied}
+	return {"streaks": new_streaks, "applied": applied, "monthly": monthly}

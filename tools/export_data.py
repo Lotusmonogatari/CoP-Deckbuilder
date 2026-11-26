@@ -1258,6 +1258,7 @@ SHEETS = {
     "Awareness Effects": {
         "out": "awareness_effects.json",
         "optional_sheet": True,
+        "optional": ["Once Per"],
         "columns": [
             ("Effect ID", "effect_id", "str"),
             ("Meter", "meter", "str"),
@@ -1269,6 +1270,8 @@ SHEETS = {
             ("Timing", "timing", "str"),
             ("Stacking", "stacking", "str"),
             ("Note", "note", "str"),
+            # P21 (2026-11-26): `week` (default) or `month`: an effect that pays at most once per calendar month (the District 80 coupon).
+            ("Once Per", "once_per", "str"),
         ],
     },
     # Events (2026-10-23, Cameron): a screen of flavor text and fixed choices
@@ -2073,7 +2076,7 @@ SHEETS = {
                      "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase",
                      "In Marketplace (Yes/No)", "Inventory (Personal/Office)", "Deck Size Increase", "Staff Hours",
                      "Staff Effect", "Staff Value", "Staff Target", "Staff Slot", "Staff Days", "Uses",
-                     "Travel Mode", "Offered For"],
+                     "Travel Mode", "Offered For", "Cost Step XP"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -2196,6 +2199,8 @@ SHEETS = {
             # protagonists it is sold to (blank = all).
             ("Travel Mode", "travel_mode", "str"),
             ("Offered For", "offered_for", "id_list"),
+            # P21 (2026-11-26): the Political Capital added to the price each time the item is bought (the Funds Cap Increase Petition: 100, 150, 200 ...).
+            ("Cost Step XP", "cost_step_xp", "int"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's
@@ -3575,6 +3580,8 @@ def validate(data, report):
             report.error("Awareness Effects", f"{eid} has Timing '{row['timing']}' — expected State or Week end")
         if row["stacking"] not in (None, "Flat", "Escalating"):
             report.error("Awareness Effects", f"{eid} has Stacking '{row['stacking']}' — expected Flat, Escalating or blank")
+        if row.get("once_per") not in (None, "week", "month"):
+            report.error("Awareness Effects", f"{eid} has Once Per '{row['once_per']}' — expected week, month or blank")
         for target in [t.strip() for t in str(row.get("target") or "").split(";") if t.strip()]:
             if row["effect_type"] == "STAGE_START_BONUS" and target not in stage_ids:
                 report.error("Awareness Effects", f"{eid} targets stage '{target}', which is not in the Stages tab")

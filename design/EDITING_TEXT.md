@@ -85,7 +85,7 @@ narration.gaffe.other   {count} gaffes on your record
 ```
 
 The code asks for `narration.gaffe` and the right one is picked. Where one
-wording serves both — `{count} XP` — one row is enough.
+wording serves both — `{count} PC` — one row is enough. (2026-11-26: the player sees **Political Capital**, short form **PC**, where the data, the save and the code still say `xp`; write "Political Capital" in sentences and headings, "PC" beside a number.)
 
 **Adding a line.** A new row that no code asks for does nothing: the export
 notes it and moves on. Ask for the line to be wired up.
