@@ -22,6 +22,8 @@ var _result: Dictionary = {}
 ## The reader's document: the category it moves within and the ids it can reach.
 var _reader_category := ""
 var _reader_ids: Array = []
+## Whether the next reading is a rush request (P21 phase E).
+var _rush := false
 
 
 ## `venues` is the VenuesController (it spends hours and redraws the Step out button); `chips` is its Callable for the top bar's chips.
@@ -131,6 +133,19 @@ func _on_card_do(activity_id: String) -> void:
 
 func _pick_rows(look: Dictionary) -> Array[Control]:
 	var rows: Array[Control] = [UiKit.heading(Text.say("desk.pick_heading"))]
+	# A rush request (P21 phase E): the reading without its hours, for Political Capital, once a day.
+	var rush_why := GameState.rush_refusal()
+	var rush_button := Button.new()
+	rush_button.name = "RushRequest"
+	rush_button.custom_minimum_size = Vector2(0, OfficeFrameStyles.touch_height())
+	var rush_label := Text.say("venue.rush_on") if _rush else Text.say("venue.rush_request", {"price": GameState.rush_price()})
+	rush_button.text = rush_label if rush_why.is_empty() else "%s · %s" % [rush_label, rush_why]
+	rush_button.disabled = not rush_why.is_empty()
+	OfficeFrameStyles.dress_card_button(rush_button, look, rush_why.is_empty())
+	if rush_why.is_empty():
+		rush_button.pressed.connect(_on_rush_toggled)
+	rows.append(rush_button)
+	rows.append(UiKit.line(Text.say("venue.rush_request_body"), "SmallLabel"))
 	var rooms := GameState.desk_rooms()
 	if rooms.is_empty():
 		rows.append(UiKit.line(Text.say("desk.pick_none")))
@@ -157,8 +172,14 @@ func _on_pick_back() -> void:
 	_draw()
 
 
+func _on_rush_toggled() -> void:
+	_rush = not _rush
+	_draw()
+
+
 func _on_pick(stage_id: String, level_id: String) -> void:
-	var done := GameState.do_research(stage_id, level_id)
+	var done := GameState.do_research(stage_id, level_id, _rush)
+	_rush = false
 	if not bool(done["ok"]):
 		_mode = MODE_DESK
 		_draw()

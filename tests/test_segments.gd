@@ -60,7 +60,7 @@ func test_the_game_reads_standing_and_suit_plays() -> void:
 
 
 func test_playing_a_card_notes_its_suit_for_this_week() -> void:
-	var card := DataDB.cards[0]
+	var card: Dictionary = DataDB.cards[0]
 	GameState.record_card_played(str(card["card_id"]))
 	GameState.record_card_played(str(card["card_id"]))
 	assert_eq(int((GameState.suit_plays["10"] as Dictionary)[str(card["suit"])]), 2)

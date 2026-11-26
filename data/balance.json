@@ -446,5 +446,12 @@
   "segment_suit_use_weeks": 4,
   "segment_suit_use_target": 20,
   "credibility_debit_recovery_percent": 10,
+  "trim_deck_xp": 75,
+  "trim_deck_step_xp": 25,
+  "trim_deck_min_size": 12,
+  "mentoring_xp": 100,
+  "pep_talk_xp": 60,
+  "pep_talk_loyalty": 5,
+  "rush_request_xp": 60,
   "xp_tiers": {}
 }

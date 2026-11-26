@@ -269,3 +269,5 @@ The manual Save Game button is gone, so nothing asks for: `office.backup_now`, `
 ## Left by P20 phase A (2026-11-26)
 
 `election.c_experience` (Text row: Experience) is read by nothing since the input became campaign capital. `GameState.xp_earned_total` is still kept and saved but read by nothing (strength reads campaign capital). The Balance row `Election: Max Experience` now caps the capital input; rename it to `Election: Max Capital` if you want the name to match. Remove only with Cameron's say-so.
+
+- **Reward deltas on segments** (`segment_favorability`, the Segments tab Initial Favorability column, SGxx staff and item rewards): since P21 phase C segments are computed from standing and suit plays, so nothing the player sees reads these any more (2026-11-26).

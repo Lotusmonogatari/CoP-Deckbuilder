@@ -2419,3 +2419,16 @@ The steady player falls short of the 40 line, which is the point of the bot chec
 | Checks | `test_campaign_skin.gd` (6) and `test_campaign_look.gd` (8); the text sweep covers the campaign screens in both skins and the Upkeep tab; `design/proposals/img/campaign_skins/` holds the 20 states and the differences I kept. |
 
 **Decided without your say:** no saved `.tres` theme overlays (the scoped tokens and an explicit display face do the same work with nothing merged into the project theme); the emblem sits beside the card label rather than inside it; action-card tags, stat captions and the bottom action bar of the mock-ups are not built.
+
+## P21 phases C and E: segments and credibility, and the Political Capital sinks (2026-11-26, Cameron; branch `feature/p21b-blunders`, gated and merged with phase B)
+
+| Piece | What was done |
+|---|---|
+| Segment Map | New tab and `data/segment_map.json` (SG01 to SG05, your draft), exporter checks (segment, suit, organizations), `DataDB.segment_map`. |
+| Credibility | `Segments`; suit plays per week; segment favorability, credibility, spending and weekly recovery; a Credibility card on the Upkeep tab. 3 Balance rows, 9 Text rows. |
+| Sinks built | Trim the deck, Mentoring, Pep talk, Rush request; 7 Balance rows, 17 Text rows; Build scripts `p21c_build.py` and `p21e_build.py`. |
+| Sinks not built | Reserved table, Private session, Committee seat, Backstage pass, Rush a favor, Rare books room: reasons in `GAME_SYSTEMS.md`. |
+| Tests | 9 in `test_segments.gd`, 7 in `test_pc_sinks.gd`. |
+| Economy map | FL593 to FL596. |
+
+**Not done:** the one-year scripted run the prompt asks for after phase E (weeks to Party support 75, awareness at the year's end, Political Capital earned against spent, Blunders!, credibility). The P21 phase A measurement note (`design/proposals/P21A_MEASUREMENT_2026-11-26.md`) is the analytic version; the bot does not play the new systems yet.

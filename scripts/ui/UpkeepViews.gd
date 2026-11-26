@@ -41,7 +41,7 @@ static func _meter_value(meter: String) -> int:
 
 
 ## The three cards. `on_hold` is called with the hold key, `on_bailout` with nothing, `on_cap` with the kind.
-static func cards(look: Dictionary, on_hold: Callable, on_bailout: Callable, on_cap: Callable) -> Array[Control]:
+static func cards(look: Dictionary, on_hold: Callable, on_bailout: Callable, on_cap: Callable, on_trim: Callable = Callable()) -> Array[Control]:
 	var out: Array[Control] = []
 	# The slips and Blunders! on the record, and how far the next checks are (P21 phase B).
 	var slips := OfficeFrameStyles.card(look, Text.say("blunder.card_title"))
@@ -104,4 +104,15 @@ static func cards(look: Dictionary, on_hold: Callable, on_bailout: Callable, on_
 	dues_column.add_child(_button("CapCallFinance", Text.say("upkeep.cap_finance_button", {"standing": Levers.whole("cap_call_finance_standing"),
 		"cost": GameState.cap_call_price(GameState.CAP_FINANCE), "yen": Levers.whole("cap_call_finance_yen")}), GameState.cap_call_refusal(GameState.CAP_FINANCE), look, on_cap.bind(GameState.CAP_FINANCE)))
 	out.append(dues)
+	# Trim the deck (P21 phase E): remove one card for good, for Political Capital.
+	if on_trim.is_valid():
+		var trim := OfficeFrameStyles.card(look, Text.say("trim.title"))
+		trim.name = "TrimDeckCard"
+		var trim_column := trim.get_node("Column") as VBoxContainer
+		trim_column.add_child(_small("TrimBody", Text.say("trim.body")))
+		for card_id: String in GameState.deck:
+			var why := GameState.trim_refusal(card_id)
+			var label := Text.say("trim.row", {"name": str(DataDB.get_card(card_id).get("name_en", card_id)), "cost": GameState.trim_price()})
+			trim_column.add_child(_button("Trim_" + card_id, label, why, look, on_trim.bind(card_id)))
+		out.append(trim)
 	return out

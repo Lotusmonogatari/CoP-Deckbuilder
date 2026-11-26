@@ -229,7 +229,7 @@ An R loop through the low side of a gate: the gate's penalty lowers the stock ag
 | B | party_support (-) -> party_support | once | FL545, FL581 |
 | B | party_support (g-) -> party_support | threshold | FL506 |
 | B | reputation (-) -> reputation | week | FL511 |
-| B | xp (-) -> xp | once | FL570, FL580, FL583, FL584, FL585, FL591 |
+| B | xp (-) -> xp | once | FL570, FL580, FL583, FL584, FL585, FL591, FL593, FL594, FL595, FL596 |
 | R | awareness_district (g+) -> win_rate (+) -> awareness_district | stage | FL006, FL519 |
 | B | awareness_district (g+) -> win_rate (-) -> awareness_district | stage | FL519, FL523, FL590 |
 | R | awareness_national (g+) -> win_rate (+) -> awareness_national | stage | FL007, FL518 |

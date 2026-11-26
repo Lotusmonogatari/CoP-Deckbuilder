@@ -32,63 +32,64 @@ LK030,hours,codex,+,,Library Codex,day,FL561
 LK031,hours,hours,-,,Campaign actions: hours,day,FL571
 LK032,hours,org_standing,+,,Venue activity; Campaign actions: organization standing,day,"FL031,FL573"
 LK033,hours,tips,+,,Reference desk and rhetoric tips,day,FL560
-LK034,items,win_rate,+,,strength in a fight,stage,
-LK035,laws,awareness_national,+,,Law passed: awareness,level,FL524
-LK036,laws,constituency,+,,Law effect,level,FL048
-LK037,laws,funds,+,,Law effect,level,FL047
-LK038,org_standing,backings,g,org_standing >= 60 | high | +,Backing purchase,once,FL046
-LK039,org_standing,election_strength,+,,Election strength,week,FL525
-LK040,org_standing,laws,+,,Party standing in votes,once,FL548
-LK041,org_standing,org_standing,-,,Organization standing decay; Neglect drift; Diminishing standing gains,week,"FL512,FL513,FL514"
-LK042,org_standing,org_standing,~,,Standing Links,stage,FL515
-LK043,org_standing,win_rate,g,org_standing >= 60 | high | +,Organization standing 60: backings,once,FL536
-LK044,party_standing,laws,+,,Party standing in votes,once,FL548
-LK045,party_support,election_strength,+,,Election strength,week,FL525
-LK046,party_support,funds,-,,Party dues,week,FL501
-LK047,party_support,funds,g,party_support = 0 | low | +,Funding freeze,threshold,FL503
-LK048,party_support,laws,+,,Whip,once,FL546
-LK049,party_support,party_support,-,,Whip; Party support decay,once,"FL545,FL581"
-LK050,party_support,party_support,g,party_support <= 25 | low | -,Steering Committee check-in,threshold,FL506
-LK051,party_support,win_rate,g,party_support > 75 | high | +,Party support 75: free backing M09,stage,FL534
-LK052,party_support,xp,-,,Funds limit: petition steps and calls,once,FL585
-LK053,reputation,backings,+,,Backing purchase,once,FL046
-LK054,reputation,reputation,-,,Reputation decay,week,FL511
-LK055,reputation,staff,+,,Staff slot,once,FL559
-LK056,reputation,win_rate,g,reputation <= 20 | low | +,Reputation 20: press start,stage,FL533
-LK057,reputation,win_rate,g,reputation >= 80 | high | +,Reputation 80: press start,stage,FL532
-LK058,staff,funds,-,,Staff wages,week,FL507
-LK059,staff,win_rate,+,,strength in a fight,stage,
-LK060,tips,win_rate,+,,Answer grade; strength in a fight,stage,FL531
-LK061,unlocked_levels,constituency,+,,End-of-level bonus,level,FL016
-LK062,unlocked_levels,funds,+,,End-of-level bonus,level,FL014
-LK063,unlocked_levels,party_support,+,,End-of-level bonus,level,FL018
-LK064,unlocked_levels,reputation,+,,End-of-level bonus,level,FL017
-LK065,unlocked_levels,xp,+,,End-of-level bonus,level,FL015
-LK066,win_rate,awareness_district,+,,Room win pay; room and level pay,stage,FL006
-LK067,win_rate,awareness_district,-,,Gaffes cost awareness; Blunder!,stage,"FL523,FL590"
-LK068,win_rate,awareness_national,+,,Room win pay; room and level pay,stage,FL007
-LK069,win_rate,constituency,+,,Room win pay; End-of-level bonus; room and level pay,level,"FL003,FL016"
-LK070,win_rate,constituency,-,,Room loss delta; Lifetime gaffe penalty,threshold,"FL010,FL537"
-LK071,win_rate,funds,+,,Room win pay; End-of-level bonus; Lobbyist trade donation; room and level pay,level,"FL001,FL008,FL014,FL541"
-LK072,win_rate,funds,-,,Room loss delta,stage,FL008
-LK073,win_rate,org_standing,+,,End-of-level organization standing,level,FL019
-LK074,win_rate,org_standing,~,,answers please some organizations and annoy others (the bill lean),stage,
-LK075,win_rate,party_support,+,,Room win pay; End-of-level bonus; room and level pay,level,"FL005,FL018"
-LK076,win_rate,party_support,-,,Room loss delta,stage,FL012
-LK077,win_rate,party_support,~,,Bill lean,stage,FL547
-LK078,win_rate,reputation,+,,Room win pay; End-of-level bonus; room and level pay,level,"FL004,FL017"
-LK079,win_rate,reputation,-,,Room loss delta,stage,FL011
-LK080,win_rate,segment_favorability,+,,Audience segment favorability,once,FL526
-LK081,win_rate,xp,+,,Room win pay; End-of-level bonus; room and level pay,level,"FL002,FL009,FL015"
-LK082,win_rate,xp,-,,Room loss delta,stage,FL009
-LK083,xp,awareness_district,+,,Campaign actions: District awareness,day,FL574
-LK084,xp,cards,+,,Rhetoric Training,once,FL556
-LK085,xp,cosmetics,+,,Cosmetic package,once,FL051
-LK086,xp,election_strength,+,,Election strength; Campaign staff and the van,week,"FL525,FL575"
-LK087,xp,funds,+,,Funds cap petition,once,FL023
-LK088,xp,items,+,,Marketplace purchase,once,FL022
-LK089,xp,laws,+,,Draft a bill,once,FL550
-LK090,xp,org_standing,+,,Campaign actions: organization standing,day,FL573
-LK091,xp,unlocked_levels,+,,Level unlock cost,once,FL563
-LK092,xp,win_rate,+,,Strength in a fight: XP,once,FL539
-LK093,xp,xp,-,,Campaign actions: Political Capital; Political Capital decay; Shore up support and Keep in touch; Dues bailout; Funds limit: petition steps and calls; Blunder!: cancelling,once,"FL570,FL580,FL583,FL584,FL585,FL591"
+LK034,hours,xp,+,,Rush request,day,FL596
+LK035,items,win_rate,+,,strength in a fight,stage,
+LK036,laws,awareness_national,+,,Law passed: awareness,level,FL524
+LK037,laws,constituency,+,,Law effect,level,FL048
+LK038,laws,funds,+,,Law effect,level,FL047
+LK039,org_standing,backings,g,org_standing >= 60 | high | +,Backing purchase,once,FL046
+LK040,org_standing,election_strength,+,,Election strength,week,FL525
+LK041,org_standing,laws,+,,Party standing in votes,once,FL548
+LK042,org_standing,org_standing,-,,Organization standing decay; Neglect drift; Diminishing standing gains,week,"FL512,FL513,FL514"
+LK043,org_standing,org_standing,~,,Standing Links,stage,FL515
+LK044,org_standing,win_rate,g,org_standing >= 60 | high | +,Organization standing 60: backings,once,FL536
+LK045,party_standing,laws,+,,Party standing in votes,once,FL548
+LK046,party_support,election_strength,+,,Election strength,week,FL525
+LK047,party_support,funds,-,,Party dues,week,FL501
+LK048,party_support,funds,g,party_support = 0 | low | +,Funding freeze,threshold,FL503
+LK049,party_support,laws,+,,Whip,once,FL546
+LK050,party_support,party_support,-,,Whip; Party support decay,once,"FL545,FL581"
+LK051,party_support,party_support,g,party_support <= 25 | low | -,Steering Committee check-in,threshold,FL506
+LK052,party_support,win_rate,g,party_support > 75 | high | +,Party support 75: free backing M09,stage,FL534
+LK053,party_support,xp,-,,Funds limit: petition steps and calls,once,FL585
+LK054,reputation,backings,+,,Backing purchase,once,FL046
+LK055,reputation,reputation,-,,Reputation decay,week,FL511
+LK056,reputation,staff,+,,Staff slot,once,FL559
+LK057,reputation,win_rate,g,reputation <= 20 | low | +,Reputation 20: press start,stage,FL533
+LK058,reputation,win_rate,g,reputation >= 80 | high | +,Reputation 80: press start,stage,FL532
+LK059,staff,funds,-,,Staff wages,week,FL507
+LK060,staff,win_rate,+,,strength in a fight,stage,
+LK061,tips,win_rate,+,,Answer grade; strength in a fight,stage,FL531
+LK062,unlocked_levels,constituency,+,,End-of-level bonus,level,FL016
+LK063,unlocked_levels,funds,+,,End-of-level bonus,level,FL014
+LK064,unlocked_levels,party_support,+,,End-of-level bonus,level,FL018
+LK065,unlocked_levels,reputation,+,,End-of-level bonus,level,FL017
+LK066,unlocked_levels,xp,+,,End-of-level bonus,level,FL015
+LK067,win_rate,awareness_district,+,,Room win pay; room and level pay,stage,FL006
+LK068,win_rate,awareness_district,-,,Gaffes cost awareness; Blunder!,stage,"FL523,FL590"
+LK069,win_rate,awareness_national,+,,Room win pay; room and level pay,stage,FL007
+LK070,win_rate,constituency,+,,Room win pay; End-of-level bonus; room and level pay,level,"FL003,FL016"
+LK071,win_rate,constituency,-,,Room loss delta; Lifetime gaffe penalty,threshold,"FL010,FL537"
+LK072,win_rate,funds,+,,Room win pay; End-of-level bonus; Lobbyist trade donation; room and level pay,level,"FL001,FL008,FL014,FL541"
+LK073,win_rate,funds,-,,Room loss delta,stage,FL008
+LK074,win_rate,org_standing,+,,End-of-level organization standing,level,FL019
+LK075,win_rate,org_standing,~,,answers please some organizations and annoy others (the bill lean),stage,
+LK076,win_rate,party_support,+,,Room win pay; End-of-level bonus; room and level pay,level,"FL005,FL018"
+LK077,win_rate,party_support,-,,Room loss delta,stage,FL012
+LK078,win_rate,party_support,~,,Bill lean,stage,FL547
+LK079,win_rate,reputation,+,,Room win pay; End-of-level bonus; room and level pay,level,"FL004,FL017"
+LK080,win_rate,reputation,-,,Room loss delta,stage,FL011
+LK081,win_rate,segment_favorability,+,,Audience segment favorability,once,FL526
+LK082,win_rate,xp,+,,Room win pay; End-of-level bonus; room and level pay,level,"FL002,FL009,FL015"
+LK083,win_rate,xp,-,,Room loss delta,stage,FL009
+LK084,xp,awareness_district,+,,Campaign actions: District awareness,day,FL574
+LK085,xp,cards,+,,Rhetoric Training,once,FL556
+LK086,xp,cosmetics,+,,Cosmetic package,once,FL051
+LK087,xp,election_strength,+,,Election strength; Campaign staff and the van,week,"FL525,FL575"
+LK088,xp,funds,+,,Funds cap petition,once,FL023
+LK089,xp,items,+,,Marketplace purchase,once,FL022
+LK090,xp,laws,+,,Draft a bill,once,FL550
+LK091,xp,org_standing,+,,Campaign actions: organization standing,day,FL573
+LK092,xp,unlocked_levels,+,,Level unlock cost,once,FL563
+LK093,xp,win_rate,+,,Strength in a fight: XP,once,FL539
+LK094,xp,xp,-,,Campaign actions: Political Capital; Political Capital decay; Shore up support and Keep in touch; Dues bailout; Funds limit: petition steps and calls; Blunder!: cancelling; Trim the deck; Mentoring; Pep talk; Rush request,once,"FL570,FL580,FL583,FL584,FL585,FL591,FL593,FL594,FL595,FL596"

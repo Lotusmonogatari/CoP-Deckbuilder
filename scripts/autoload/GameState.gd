@@ -705,7 +705,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "campaign_moments_week", "campaign_moment_open", "campaign_draw_day", "scene_cooldowns", "scene_colleagues", "campaign_challenges", "campaign_favors", "van_speech_done", "suit_plays", "segment_debits", "decay_holds", "hold_streaks", "cap_calls_done", "awareness_paid_months", "funds_cap_petitions", "selection_results", "campaign_polls", "campaign_last_poll", "campaign_poll_parts", "campaign_poll_late", "campaign_office_opened_on", "election_results", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "campaign_moments_week", "campaign_moment_open", "campaign_draw_day", "scene_cooldowns", "scene_colleagues", "campaign_challenges", "campaign_favors", "van_speech_done", "trims_done", "staff_mentored", "staff_pepped", "rush_day", "suit_plays", "segment_debits", "decay_holds", "hold_streaks", "cap_calls_done", "awareness_paid_months", "funds_cap_petitions", "selection_results", "campaign_polls", "campaign_last_poll", "campaign_poll_parts", "campaign_poll_late", "campaign_office_opened_on", "election_results", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters", "run_stats",
 	"bill_stance",
@@ -967,6 +967,10 @@ func reset_crisis_triggers() -> void:
 	campaign_challenges = []
 	campaign_favors = []
 	van_speech_done = false
+	trims_done = 0
+	staff_mentored = {}
+	staff_pepped = {}
+	rush_day = -1
 	suit_plays = {}
 	segment_debits = {}
 	decay_holds = []
@@ -2119,18 +2123,20 @@ func _settle_staff_week() -> Dictionary:
 		var starting := int(candidate.get("starting_tier", 0))
 		var weeks := int(staff_weeks.get(id, 0)) + 1
 		staff_weeks[id] = weeks
+		# Mentoring (P21 phase E): the Loyalty loss of an unpaid week is cancelled for the one mentored; the wage itself is still unpaid.
+		var counts_as_paid := paid or bool(staff_mentored.get(id, false))
 		var parts := {
-			"paid": paid,
+			"paid": counts_as_paid,
 			"affinity": StaffLoyalty.affinity(StaffLoyalty.allies(candidate, tier), booster_standing),
 			"tenure": StaffLoyalty.tenure_gain(weeks),
 			"pride": StaffLoyalty.pride_gain(tier, starting),
 			"tasks": int(staff_week_tasks.get(id, 0)),
 		}
-		var change := StaffLoyalty.weekly_total(paid, int(parts["affinity"]), int(parts["tenure"]),
+		var change := StaffLoyalty.weekly_total(counts_as_paid, int(parts["affinity"]), int(parts["tenure"]),
 			int(parts["pride"]), int(parts["tasks"]))
 		parts["total"] = change
 		staff_last_week[id] = parts
-		var outcome := StaffLoyalty.after_week(clampi(staff_loyalty_of(id) + change, 0, 100), not paid, tier, starting)
+		var outcome := StaffLoyalty.after_week(clampi(staff_loyalty_of(id) + change, 0, 100), not counts_as_paid, tier, starting)
 		staff_loyalty[id] = int(outcome["loyalty"])
 		if paid:
 			(report["paid"] as Array).append(name)
@@ -2147,6 +2153,8 @@ func _settle_staff_week() -> Dictionary:
 			(report["quit"] as Array).append(gone)
 	staff_raise_pay = {}
 	staff_thanked = {}
+	staff_mentored = {}
+	staff_pepped = {}
 	staff_week_tasks = {}
 	return report
 
@@ -2449,6 +2457,11 @@ var selection_results: Array = []
 ## P21 phase A: what is held against this week's decay ("meter:<name>" or "org:<id>"), how many weeks in a row each has been held, the cap calls
 ## used (once each per run), the month each monthly awareness effect last paid, and how many Funds-cap petitions were bought (the price steps up).
 ## Cards played by suit in each calendar week ({week: {suit: count}}), the credibility spent that still weighs on each segment ({segment_id: debit}) (P21 phase C).
+## P21 phase E: cards trimmed from the deck, who was mentored and given a pep talk this week, and the day of the Library's last rush request.
+var trims_done := 0
+var staff_mentored: Dictionary = {}
+var staff_pepped: Dictionary = {}
+var rush_day := -1
 var suit_plays: Dictionary = {}
 var segment_debits: Dictionary = {}
 var decay_holds: Array = []
@@ -3166,6 +3179,93 @@ func _apply_pc_and_meter_decay() -> Array[String]:
 	hold_streaks = PcDecay.next_streaks(hold_streaks, decay_holds)
 	decay_holds = []
 	return lines
+
+
+# --- Political Capital sinks (P21 phase E) ---------------------------------------------------------------------------------------------------
+
+func trim_price() -> int:
+	return pc_price(Levers.whole("trim_deck_xp") + Levers.whole("trim_deck_step_xp") * trims_done)
+
+
+## Why a card cannot be trimmed from the deck now, or "".
+func trim_refusal(card_id: String) -> String:
+	if not deck.has(card_id) or deck_size() - 1 < Levers.whole("trim_deck_min_size"):
+		return Text.say("trim.refuse_min", {"min": Levers.whole("trim_deck_min_size")})
+	if xp < trim_price():
+		return Text.say("trim.refuse_pc")
+	return ""
+
+
+## Removes one card from the deck for the rest of the run (and from the cards owned, so it cannot be put back); the deck loses one slot too, so it stays
+## legal. "" when done, else why not.
+func trim_deck(card_id: String) -> String:
+	var why := trim_refusal(card_id)
+	if not why.is_empty():
+		return why
+	_move_xp(-trim_price())
+	deck.erase(card_id)
+	owned_cards.erase(card_id)
+	deck_size_bonus -= 1
+	trims_done += 1
+	return ""
+
+
+func mentoring_price() -> int:
+	return pc_price(Levers.whole("mentoring_xp"))
+
+
+func pep_talk_price() -> int:
+	return pc_price(Levers.whole("pep_talk_xp"))
+
+
+func mentoring_refusal(staff_id: String) -> String:
+	if hired_member(staff_id).is_empty():
+		return Text.say("staff.nobody_hired")
+	if bool(staff_mentored.get(staff_id, false)):
+		return Text.say("staff.mentoring_done")
+	return Text.say("staff.refuse_pc") if xp < mentoring_price() else ""
+
+
+## Cancels the Loyalty loss from this week's unpaid or late wage for one person (once a week each).
+func mentor(staff_id: String) -> String:
+	var why := mentoring_refusal(staff_id)
+	if not why.is_empty():
+		return why
+	_move_xp(-mentoring_price())
+	staff_mentored[staff_id] = true
+	return ""
+
+
+func pep_talk_refusal(staff_id: String) -> String:
+	if hired_member(staff_id).is_empty():
+		return Text.say("staff.nobody_hired")
+	if bool(staff_pepped.get(staff_id, false)):
+		return Text.say("staff.pep_talk_done")
+	return Text.say("staff.refuse_pc") if xp < pep_talk_price() else ""
+
+
+## A pep talk: Balance pep_talk_loyalty Loyalty for Political Capital, once a week each.
+func pep_talk(staff_id: String) -> String:
+	var why := pep_talk_refusal(staff_id)
+	if not why.is_empty():
+		return why
+	_move_xp(-pep_talk_price())
+	staff_pepped[staff_id] = true
+	staff_loyalty_add(staff_id, Levers.whole("pep_talk_loyalty"))
+	return ""
+
+
+func rush_price() -> int:
+	return pc_price(Levers.whole("rush_request_xp"))
+
+
+## Why a rushed reading cannot be asked for: already today, or not enough Political Capital.
+func rush_refusal() -> String:
+	if rush_day == venue_today():
+		return Text.say("venue.rush_refuse_used")
+	if xp < rush_price():
+		return Text.say("venue.rush_refuse_pc")
+	return ""
 
 
 # --- Segments and credibility (P21 phase C) ----------------------------------------------------------------------------------------------------
@@ -4047,8 +4147,10 @@ func desk_rooms() -> Array:
 ## Looks a room up: spends the desk's hours, uses today's one visit, saves the stage's tip (certain, source "library") and a Room file.
 ## {"ok": false, "reason"} when refused (nothing changes); otherwise {"ok": true, "stage_id", "stage", "level_id", "level", "number",
 ## "total", "suit", "reading": [...], "days": the tip's days}.
-func do_research(stage_id: String, level_id: String) -> Dictionary:
-	var why := desk_refusal()
+func do_research(stage_id: String, level_id: String, rush: bool = false) -> Dictionary:
+	var why := rush_refusal() if rush else desk_refusal()
+	if rush and why.is_empty() and desk_activity().is_empty():
+		why = Text.say("venue.coming_soon")
 	if not why.is_empty():
 		return {"ok": false, "reason": why}
 	var room := {}
@@ -4061,7 +4163,11 @@ func do_research(stage_id: String, level_id: String) -> Dictionary:
 	var activity := desk_activity()
 	var activity_id := str(activity["activity_id"])
 	var cost := VenueRules.visit_cost(activity)
-	spend_hours(venue_walk_hours("VN02") + int(cost["hours"]))
+	# A rush request (P21 phase E) pays Political Capital instead of the reading's hours; once a day.
+	if rush:
+		_move_xp(-rush_price())
+		rush_day = venue_today()
+	spend_hours(venue_walk_hours("VN02") + (0 if rush else int(cost["hours"])))
 	venue_activity_log = VenueActivities.with_use(venue_activity_log, activity_id, venue_today())
 	venue_activity_totals[activity_id] = activity_times_done(activity_id) + 1
 	var suit := str(DataDB.get_stage(stage_id).get("favored_suit", ""))

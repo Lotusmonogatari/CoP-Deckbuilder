@@ -108,7 +108,8 @@ func test_a_media_spokesperson_cancels_for_the_price_of_their_tier() -> void:
 	assert_eq(GameState.blunder_cancel_refusal(), Text.say("blunder.no_spokesperson"))
 	GameState.xp = 1000
 	GameState.meta["Funds"] = 1000000
-	GameState.hire_staff(str(spokesperson_row["staff_id"]))
+	GameState.staff_recruitment_tier = 5
+	assert_eq(GameState.hire_staff(str(spokesperson_row["staff_id"])), "")
 	var who := GameState.blunder_spokesperson()
 	assert_false(who.is_empty())
 	assert_eq(int(who["price"]), Blunders.cancel_price(int(who["tier"])))
@@ -126,7 +127,8 @@ func test_cancel_is_refused_without_the_capital() -> void:
 			row = staff_row
 	GameState.meta["Funds"] = 1000000
 	GameState.xp = 5000
-	GameState.hire_staff(str(row["staff_id"]))
+	GameState.staff_recruitment_tier = 5
+	assert_eq(GameState.hire_staff(str(row["staff_id"])), "")
 	GameState.xp = 10
 	GameState.blunder_cards = [{"id": 1}]
 	assert_eq(GameState.blunder_cancel_refusal(), Text.say("blunder.refuse_pc"))

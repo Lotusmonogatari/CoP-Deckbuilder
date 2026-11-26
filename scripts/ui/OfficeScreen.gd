@@ -2846,6 +2846,11 @@ func _on_upkeep_cap(kind: String) -> void:
 	_after_upkeep()
 
 
+func _on_upkeep_trim(card_id: String) -> void:
+	GameState.trim_deck(card_id)
+	_after_upkeep()
+
+
 func _after_upkeep() -> void:
 	SaveManager.autosave()
 	_refresh_resources()
@@ -3096,7 +3101,7 @@ func _show_reputation(tab: String) -> void:
 		"parties": rows = _party_cards(look)
 		"election": rows = _election_cards(look)
 		"laws": rows = _law_cards(look)
-		"upkeep": rows = UpkeepViews.cards(look, _on_upkeep_hold, _on_upkeep_bailout, _on_upkeep_cap)
+		"upkeep": rows = UpkeepViews.cards(look, _on_upkeep_hold, _on_upkeep_bailout, _on_upkeep_cap, _on_upkeep_trim)
 		_:
 			tab = "overview"
 			rows = _overview_cards(look)
@@ -4271,6 +4276,15 @@ func _show_staff_profile(staff_id: String) -> void:
 			GameState.thank_refusal(staff_id), _on_thank_staff.bind(staff_id))
 		thank.name = "ThankButton"
 		loyalty_column.add_child(_dress_profile_button(thank, look))
+		# Political Capital sinks (P21 phase E): Mentoring cancels this week's unpaid-wage Loyalty loss; a pep talk gives Loyalty.
+		var mentor := UiKit.action_button(Text.say("staff.mentoring", {"price": GameState.mentoring_price()}), GameState.mentoring_refusal(staff_id),
+			_on_mentor_staff.bind(staff_id))
+		mentor.name = "MentoringButton"
+		loyalty_column.add_child(_dress_profile_button(mentor, look))
+		var pep := UiKit.action_button(Text.say("staff.pep_talk", {"price": GameState.pep_talk_price(), "count": Levers.whole("pep_talk_loyalty")}),
+			GameState.pep_talk_refusal(staff_id), _on_pep_talk_staff.bind(staff_id))
+		pep.name = "PepTalkButton"
+		loyalty_column.add_child(_dress_profile_button(pep, look))
 		rows.append(loyalty)
 
 	# --- the bonuses by rank
@@ -4487,6 +4501,14 @@ func _maybe_show_staff_report() -> void:
 
 func _on_raise_pay(staff_id: String) -> void:
 	_after_spending(GameState.raise_pay(staff_id), _show_staff_profile.bind(staff_id))
+
+
+func _on_mentor_staff(staff_id: String) -> void:
+	_after_spending(GameState.mentor(staff_id), _show_staff_profile.bind(staff_id))
+
+
+func _on_pep_talk_staff(staff_id: String) -> void:
+	_after_spending(GameState.pep_talk(staff_id), _show_staff_profile.bind(staff_id))
 
 
 func _on_thank_staff(staff_id: String) -> void:

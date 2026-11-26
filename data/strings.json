@@ -13445,5 +13445,124 @@
     "english": "Not enough credibility.",
     "placeholders": null,
     "notes": "P21 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "trim.title",
+    "where": "P21 economy: trim.title",
+    "english": "Trim the deck",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "trim.body",
+    "where": "P21 economy: trim.body",
+    "english": "Remove one card from your deck for good. It also takes one deck slot with it, so the deck stays legal.",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "trim.row",
+    "where": "P21 economy: trim.row",
+    "english": "{name} · {cost} PC",
+    "placeholders": "cost, name",
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "trim.refuse_min",
+    "where": "P21 economy: trim.refuse_min",
+    "english": "The deck cannot go below {min} cards.",
+    "placeholders": "min",
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "trim.refuse_pc",
+    "where": "P21 economy: trim.refuse_pc",
+    "english": "Not enough PC.",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "trim.done",
+    "where": "P21 economy: trim.done",
+    "english": "{name} is out of your deck for good.",
+    "placeholders": "name",
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "staff.mentoring",
+    "where": "P21 economy: staff.mentoring",
+    "english": "Mentoring · {price} PC",
+    "placeholders": "price",
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "staff.mentoring_body",
+    "where": "P21 economy: staff.mentoring_body",
+    "english": "Sit down with {name} about the late pay. They don't hold it against you.",
+    "placeholders": "name",
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "staff.mentoring_done",
+    "where": "P21 economy: staff.mentoring_done",
+    "english": "Mentored this week",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "staff.pep_talk",
+    "where": "P21 economy: staff.pep_talk",
+    "english": "Pep talk · {price} PC · +{count} Loyalty",
+    "placeholders": "count, price",
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "staff.pep_talk_done",
+    "where": "P21 economy: staff.pep_talk_done",
+    "english": "Had a pep talk this week",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "staff.refuse_pc",
+    "where": "P21 economy: staff.refuse_pc",
+    "english": "Not enough PC.",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "venue.rush_request",
+    "where": "P21 economy: venue.rush_request",
+    "english": "Rush request · {price} PC",
+    "placeholders": "price",
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "venue.rush_request_body",
+    "where": "P21 economy: venue.rush_request_body",
+    "english": "A reading without its hours. Once a day.",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "venue.rush_refuse_used",
+    "where": "P21 economy: venue.rush_refuse_used",
+    "english": "Already rushed today.",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "venue.rush_refuse_pc",
+    "where": "P21 economy: venue.rush_refuse_pc",
+    "english": "Not enough PC.",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "venue.rush_on",
+    "where": "P21 economy: venue.rush_on",
+    "english": "Rush request on: pick a room (tap again to turn it off)",
+    "placeholders": null,
+    "notes": "P21 phase E (2026-11-26); a draft for Cameron to edit."
   }
 ]
