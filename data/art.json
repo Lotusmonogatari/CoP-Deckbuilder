@@ -85,7 +85,8 @@
     "card": "res://assets/cards/art/",
     "background": "res://assets/backgrounds/",
     "icon": "res://assets/icons/",
-    "area": "res://assets/characters/area/"
+    "area": "res://assets/characters/area/",
+    "campaign": "res://assets/characters/campaign/"
   },
   "character_aliases": {"OP132": "VI29", "OP133": "VI175", "OP134": "VI176"},
   "character_prefixes": {
@@ -96,7 +97,8 @@
     "VEN": "area",
     "CA": "area",
     "CB": "area",
-    "DI": "area"
+    "DI": "area",
+    "CS": "campaign"
   },
   "expressions": [
     "neutral",

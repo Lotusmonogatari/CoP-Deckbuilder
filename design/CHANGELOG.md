@@ -2432,3 +2432,11 @@ The steady player falls short of the 40 line, which is the point of the bot chec
 | Economy map | FL593 to FL596. |
 
 **Not done:** the one-year scripted run the prompt asks for after phase E (weeks to Party support 75, awareness at the year's end, Political Capital earned against spent, Blunders!, credibility). The P21 phase A measurement note (`design/proposals/P21A_MEASUREMENT_2026-11-26.md`) is the analytic version; the bot does not play the new systems yet.
+
+## Rumor! and Scandal! tabs, and the campaign staff's art folder (2026-11-26, Cameron; branch `feature/p21d-workbook-structure`)
+
+| Piece | What was done |
+|---|---|
+| Workbook | New tabs **Accusers**, **Claims** and **Outlets** (PR01 to PR03 named from the poll cards), exported to `data/accusers.json`, `claims.json` and `outlets.json`. Nothing reads them until phase D. Structure and questions in `design/proposals/P21D_WORKBOOK_TABS.md`. |
+| Exporter | Statuses, real organizations, Fits tags that an organization likes or dislikes (or `any`), only the slots the game fills, R/S/H letters matching Kind and Source. `tools/test_accusation_exporter.py` (22 cases) runs in `verify.sh`. |
+| Art | The campaign staff had no portrait folder (a `CS` ID would have looked in the opponents folder): `art.json` gains `folders.campaign` and the `CS` prefix, `ArtLoader` and the art checklist follow, `assets/characters/campaign/` exists. The file names are in `design/proposals/CAMPAIGN_ASSET_LIST_2026-11-26.md`. |

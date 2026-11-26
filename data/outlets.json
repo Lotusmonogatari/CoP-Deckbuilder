@@ -1,0 +1,23 @@
+[
+  {
+    "outlet_id": "PR01",
+    "outlet": "Yezo Political Insider",
+    "reach": null,
+    "lodges": null,
+    "note": "Named in the poll cards (Text poll.source.pr01). Reach and Lodges for you to fill in."
+  },
+  {
+    "outlet_id": "PR02",
+    "outlet": "Yezo News Nightly",
+    "reach": null,
+    "lodges": null,
+    "note": "Named in the poll cards (Text poll.source.pr02)."
+  },
+  {
+    "outlet_id": "PR03",
+    "outlet": "Sapporo Broadcasting Center",
+    "reach": null,
+    "lodges": null,
+    "note": "Named in the poll cards (Text poll.source.pr03)."
+  }
+]

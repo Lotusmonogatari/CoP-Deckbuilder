@@ -11,6 +11,7 @@ stands in for every expression.
 | Opponents | 7 / 670 |
 | Staff | 105 / 105 |
 | Visitors | 870 / 880 |
+| Campaign staff | 0 / 30 |
 | Card art | 70 / 70 |
 | Backgrounds | 52 / 52 |
 | Area characters (open-world people: VEN = one venue, CA = Capital Area, CB = Capitol interior, DI = District) | 57 / 57 |
@@ -20,7 +21,7 @@ stands in for every expression.
 | Cosmetic package icons | 9 / 9 |
 | Venue backgrounds | 19 / 20 |
 | Venue activity icons | 19 / 24 |
-| Decision scenes with a picture to show | 0 / 10 |
+| Decision scenes with a picture to show | 0 / 25 |
 
 ## Protagonists — `assets/characters/protagonists/`
 
@@ -376,6 +377,17 @@ stands in for every expression.
 | VI174 | Harue Kobayashi | ◆ | ◆ | ◆ | ◆ | ◆ |
 | VI175 | Isamu Takaoka | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI176 | Nobuko Ezaki | ☐ | ☐ | ☐ | ☐ | ☐ |
+
+## Campaign staff — `assets/characters/campaign/`
+
+| ID | Name | neutral | attacking | guarding | gaining | damaged |
+|---|---|---|---|---|---|---|
+| CS01 | Hiroto Ban | ☐ | ☐ | ☐ | ☐ | ☐ |
+| CS02 | Dan Bronco | ☐ | ☐ | ☐ | ☐ | ☐ |
+| CS03 | Ren Fusenji | ☐ | ☐ | ☐ | ☐ | ☐ |
+| CS04 | Umina Kota | ☐ | ☐ | ☐ | ☐ | ☐ |
+| CS05 | Hitomi Ota | ☐ | ☐ | ☐ | ☐ | ☐ |
+| CS06 | Yuina Chanami | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Card art — `assets/cards/art/`
 
@@ -745,3 +757,18 @@ stands in for every expression.
 | DS08 (Mandatory) | EV117 | none named | DEC_PLACE_CAPITOL ☐ | OP27 ☐ |
 | DS09 (Mandatory) | EV118 | none named | DEC_PLACE_CAPITOL ☐ | OP27 ☐ |
 | DS10 (Optional) | EV119 | none named | DEC_PLACE_DISTRICT ☐ | VI98 ✓ |
+| DS11 (Mandatory) | EV120 | none named | DEC_PLACE_DISTRICT ☐ | none |
+| DS12 (Random) | EV121 | none named | DEC_PLACE_DISTRICT ☐ | CS02 ☐ |
+| DS13 (Mandatory) | EV122 | none named | DEC_PLACE_DISTRICT ☐ | CS02 ☐ |
+| DS14 (Mandatory) | EV123 | none named | DEC_PLACE_DISTRICT ☐ | CS02 ☐ |
+| DS15 (Random) | EV124 | none named | DEC_PLACE_CAPITOL ☐ | CS04 ☐ |
+| DS16 (Mandatory) | EV125 | none named | DEC_PLACE_DISTRICT ☐ | CS04 ☐ |
+| DS17 (Mandatory) | EV126 | none named | DEC_PLACE_DISTRICT ☐ | CS04 ☐ |
+| DS18 (Mandatory) | EV127 | none named | DEC_PLACE_DISTRICT ☐ | none |
+| DS19 (Random) | EV128 | none named | DEC_PLACE_DISTRICT ☐ | CS06 ☐ |
+| DS20 (Mandatory) | EV129 | none named | DEC_PLACE_DISTRICT ☐ | CS06 ☐ |
+| DS21 (Mandatory) | EV130 | none named | DEC_PLACE_DISTRICT ☐ | CS06 ☐ |
+| DS22 (Random) | EV131 | none named | DEC_PLACE_CAPITOL ☐ | colleague ☐ |
+| DS23 (Random) | EV132 | none named | DEC_PLACE_DISTRICT ☐ | colleague ☐ |
+| DS24 (Random) | EV133 | none named | DEC_PLACE_DISTRICT ☐ | colleague ☐ |
+| DS25 (Mandatory) | EV134 | none named | DEC_PLACE_CAPITOL ☐ | none |

@@ -381,3 +381,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - P21 phase B: gaffes and Blunders! (2026-11-26, Cameron; branch `feature/p21b-blunders`)
 - P22: campaign skins, Samurai and Gladiator, with the player's party colour (2026-11-26, Cameron; branch `feature/p22-campaign-skins`)
 - P21 phases C and E: segments and credibility, and the Political Capital sinks (2026-11-26, Cameron; branch `feature/p21b-blunders`)
+- Rumor! and Scandal! tabs, and the campaign staff art folder (2026-11-26, Cameron; branch `feature/p21d-workbook-structure`)

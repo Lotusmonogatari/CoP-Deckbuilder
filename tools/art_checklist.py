@@ -61,6 +61,9 @@ def main():
          [(s["staff_id"], s.get("name", "")) for s in load("staff")], False),
         ("Visitors", "visitor",
          [(v["visitor_id"], v.get("name", v.get("name_en", ""))) for v in load("visitors")], False),
+        # P20 (2026-11-26): the campaign staff, CS01 to CS06 (art.json folders.campaign, prefix CS)
+        ("Campaign staff", "campaign",
+         [(s["staff_id"], s.get("name", "")) for s in load("campaign_staff")], False),
     ]
 
     lines = [
@@ -191,7 +194,7 @@ def main():
         speakers = []
         for who in (scene.get("speaker"), scene.get("second_speaker")):
             if who:
-                kind = "opponent" if who.startswith("OP") else "staff" if who.startswith("SF") else "visitor"
+                kind = "opponent" if who.startswith("OP") else "staff" if who.startswith("SF") else "campaign" if who.startswith("CS") else "visitor"
                 have = drawn(kind, f"{who}_neutral.png", "character") or drawn(kind, f"{who}.png", "character")
                 speakers.append(f"{who} {'✓' if have else '☐'}")
         shown = bool(own) and all(drawn("background", p + ".png") for p in own) or drawn("background", place + ".png") \

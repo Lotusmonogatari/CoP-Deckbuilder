@@ -1420,6 +1420,60 @@ SHEETS = {
     # P20 (2026-11-26, Cameron): the election cycles. Banners < Campaign Open < Election Day (YY.MM.DD). Exactly one cycle may have Player Runs N,
     # and it is the last: the player steps aside and the run ends on its Election Day.
     # P21 phase C (2026-11-26, Cameron): which organizations each segment is made of and the suit that moves it. An organization may be in several segments.
+    # P21 phase D (2026-11-26, Cameron): the Rumor! and Scandal! pool. Who accuses (Accusers), what is claimed (Claims) and who prints it (Outlets).
+    # See design/proposals/P21D_WORKBOOK_TABS.md for what each column means. The tabs may be empty: nothing draws from them until phase D is built.
+    "Accusers": {
+        "out": "accusers.json",
+        "key": "accuser_id",
+        "id_pattern": r"^AC\d+$",
+        "optional_sheet": True,
+        "optional": ["Title", "Group (EN)", "Tracked Org ID", "Name (JP)", "Romaji", "Group (JP)", "Region", "Manner", "Status", "Note"],
+        "columns": [
+            ("ID", "accuser_id", "id"),
+            ("Accuser (EN)", "accuser", "str"),
+            ("Title", "title", "str"),
+            ("Group (EN)", "group", "str"),
+            ("Tracked Org ID", "tracked_org", "str"),
+            ("Name (JP)", "name_jp", "str"),
+            ("Romaji", "romaji", "str"),
+            ("Group (JP)", "group_jp", "str"),
+            ("Region", "region", "str"),
+            ("Manner", "manner", "str"),
+            ("Status", "status", "str"),
+            ("Note", "note", "str"),
+        ],
+    },
+    "Claims": {
+        "out": "claims.json",
+        "key": "claim_id",
+        "id_pattern": r"^[RSH]\d+$",
+        "optional_sheet": True,
+        "optional": ["Claim (EN)", "Fits", "Target", "Source", "Status", "Note"],
+        "columns": [
+            ("ID", "claim_id", "id"),
+            ("Kind", "kind", "str"),
+            ("Claim (EN)", "claim_en", "str"),
+            ("Fits", "fits", "id_list"),
+            ("Target", "target", "str"),
+            ("Source", "source", "str"),
+            ("Status", "status", "str"),
+            ("Note", "note", "str"),
+        ],
+    },
+    "Outlets": {
+        "out": "outlets.json",
+        "key": "outlet_id",
+        "id_pattern": r"^PR\d+$",
+        "optional_sheet": True,
+        "optional": ["Reach", "Lodges", "Note"],
+        "columns": [
+            ("ID", "outlet_id", "id"),
+            ("Outlet (EN)", "outlet", "str"),
+            ("Reach", "reach", "str"),
+            ("Lodges", "lodges", "str"),
+            ("Note", "note", "str"),
+        ],
+    },
     "Segment Map": {
         "out": "segment_map.json",
         "key": "segment_id",
@@ -4525,6 +4579,68 @@ def check_election_cycles(data, report):
         report.error(f"Election Cycles {stepping_aside[0].get('cycle_id')}", "The cycle with Player Runs N must be the last one")
 
 
+ACCUSER_STATUSES = ("Draft", "Needs JP check", "Needs community review", "Approved")
+CLAIM_STATUSES = ("Draft", "To write", "Approved")
+CLAIM_KINDS = ("Rumor!", "Scandal!")
+CLAIM_TARGETS = ("Player", "Colleague", "Either")
+CLAIM_SOURCES = ("Blunder!", "Hand-made")
+CLAIM_SLOTS = {"player", "accuser", "accuser_title", "group", "accuser_full", "outlet", "colleague"}
+
+
+def check_accusation_pool(data, report):
+    """Accusers, Claims and Outlets (P21 phase D): known statuses, real organizations, Fits tags that an organization really likes or dislikes (or `any`),
+    claim text that uses only the slots the game fills, and a Colleague slot only in a claim a colleague can be the target of."""
+    boosters = {str(b.get("booster_id")) for b in data.get("boosters", [])}
+    tags = set()
+    for row in data.get("organization_tastes", []):
+        tags.update(row.get("likes") or [])
+        tags.update(row.get("dislikes") or [])
+    for row in data.get("accusers", []):
+        aid = row.get("accuser_id")
+        if row.get("status") not in (None, *ACCUSER_STATUSES):
+            report.error("Accusers", f"{aid} has Status '{row.get('status')}' — expected {', '.join(ACCUSER_STATUSES)} or blank")
+        org = row.get("tracked_org")
+        if org and org not in boosters:
+            report.error("Accusers", f"{aid} tracks {org}, which is not an organization")
+        if row.get("status") == "Approved":
+            for field, label in (("accuser", "Accuser (EN)"), ("title", "Title"), ("group", "Group (EN)"), ("tracked_org", "Tracked Org ID")):
+                if not row.get(field):
+                    report.error("Accusers", f"{aid} is Approved but has no {label}")
+    for row in data.get("claims", []):
+        cid = row.get("claim_id")
+        if row.get("kind") not in CLAIM_KINDS:
+            report.error("Claims", f"{cid} has Kind '{row.get('kind')}' — expected {' or '.join(CLAIM_KINDS)}")
+        if cid and cid[0] == "R" and row.get("kind") != "Rumor!":
+            report.error("Claims", f"{cid} starts with R but its Kind is '{row.get('kind')}'")
+        if cid and cid[0] == "S" and row.get("kind") != "Scandal!":
+            report.error("Claims", f"{cid} starts with S but its Kind is '{row.get('kind')}'")
+        if row.get("target") not in (None, *CLAIM_TARGETS):
+            report.error("Claims", f"{cid} has Target '{row.get('target')}' — expected {', '.join(CLAIM_TARGETS)} or blank")
+        if row.get("source") not in (None, *CLAIM_SOURCES):
+            report.error("Claims", f"{cid} has Source '{row.get('source')}' — expected {' or '.join(CLAIM_SOURCES)} or blank")
+        if cid and cid[0] == "H" and row.get("source") not in (None, "Hand-made"):
+            report.error("Claims", f"{cid} starts with H (hand-made) but its Source is '{row.get('source')}'")
+        if row.get("status") not in (None, *CLAIM_STATUSES):
+            report.error("Claims", f"{cid} has Status '{row.get('status')}' — expected {', '.join(CLAIM_STATUSES)} or blank")
+        for tag in row.get("fits") or []:
+            if tag != "any" and tag not in tags:
+                report.error("Claims", f"{cid} Fits '{tag}', which no organization likes or dislikes (Organization Tastes) and is not 'any'")
+        text = str(row.get("claim_en") or "")
+        used = set(re.findall(r"\{([a-z_]+)\}", text))
+        for slot in sorted(used - CLAIM_SLOTS):
+            report.error("Claims", f"{cid} text uses {{{slot}}}, which the game does not fill")
+        if "colleague" in used and row.get("target") not in ("Colleague", "Either"):
+            report.error("Claims", f"{cid} text uses {{colleague}} but its Target is '{row.get('target')}'")
+        if row.get("status") == "Approved" and not text:
+            report.error("Claims", f"{cid} is Approved but has no Claim (EN)")
+    for row in data.get("outlets", []):
+        oid = row.get("outlet_id")
+        if row.get("reach") not in (None, "National", "District"):
+            report.error("Outlets", f"{oid} has Reach '{row.get('reach')}' — expected National, District or blank")
+        if row.get("lodges") not in (None, "Rumor!", "Scandal!", "Both"):
+            report.error("Outlets", f"{oid} has Lodges '{row.get('lodges')}' — expected Rumor!, Scandal!, Both or blank")
+
+
 def check_segment_map(data, report):
     """Segment Map (P21 phase C): every segment is in the Segments tab, has one suit from the Suits tab, and names real organizations."""
     segments = {str(s.get("segment_id")) for s in data.get("segments", [])}
@@ -6082,6 +6198,7 @@ def main():
     check_election_cycles(data, report)
     check_campaign_staff(data, report)
     check_segment_map(data, report)
+    check_accusation_pool(data, report)
     check_campaign_choices(data, report)
     check_venue_choices(data, report)
     check_venues(data, report)

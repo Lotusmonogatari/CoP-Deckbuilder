@@ -7,6 +7,8 @@ func test_each_kind_of_character_has_its_own_folder() -> void:
 	assert_eq(ArtLoader.character_folder("OP03"), ArtLoader.folder("opponent"))
 	assert_eq(ArtLoader.character_folder("SF02"), ArtLoader.folder("staff"))
 	assert_eq(ArtLoader.character_folder("VI01"), ArtLoader.folder("visitor"))
+	assert_eq(ArtLoader.character_folder("CS02"), ArtLoader.folder("campaign"), "the campaign staff have their own folder (P20)")
+	assert_eq(ArtLoader.folder("campaign"), "res://assets/characters/campaign/")
 	# Journalists are opponents.json rows now (Role=Journalist), no separate
 	# folder or ID prefix of their own (2026-09-26 pull) — OP110 (a real
 	# journalist) goes with the opponents, same as any other OPxx.
