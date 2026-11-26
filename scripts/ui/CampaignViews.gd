@@ -211,7 +211,7 @@ static func staff_card(look: Dictionary, entry: Dictionary, on_hire: Callable, o
 	column.add_child(_small("StaffTier", Text.say("campaign.staff.tier", {"tier": tier})))
 	column.add_child(_small("StaffWage", Text.say("campaign.staff.wage", {"yen": CampaignStaff.wage_for(member)})))
 	column.add_child(_small("StaffLoyalty", Text.say("campaign.staff.loyalty", {"word": StaffLoyaltyView.word_text(int(member.get("loyalty", 0)))})))
-	if int(member.get("lent_until", -1)) >= GameState.campaign_today():
+	if CampaignStaff.is_lent(member, GameState.campaign_today()):
 		column.add_child(_small("StaffLent", Text.say("campaign.staff.lent", {"date": WeekCalendar.date_label(int(member["lent_until"]))})))
 	if tier < CampaignStaff.highest_tier(row):
 		var cost := CampaignStaff.upgrade_cost(tier)

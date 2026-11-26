@@ -2348,3 +2348,16 @@ The campaign becomes playable: spend hours and Political Capital on campaign act
 | Economy map | Six campaign flows (FL570 to FL575) added to the manual rows; the map regenerated. |
 
 **Still open for later phases:** Campaign Moment!, the selection card, Not Selected, polls and the Election Day result (phases C and D); campaign staff have no portraits yet; the Mustering banner's "half again" is tied to `campaign_sprint_multiplier` 1.5 by a test. Cameron's P22 answers are recorded: the third nobori banner takes the Frontier Party when the player is KJT or YHP; party-coloured accents use the party colours as given; "The Prime Minister speaks" is the announcement kicker.
+
+## P20 phase C: Campaign Moment! scenes (2026-11-26, Cameron; branch `feature/p20c-campaign-moments`)
+
+The campaign trail now has scenes of its own: a storefront that opens the Campaign Office, people who offer to join the campaign, and colleagues who ask for help.
+
+| Piece | What was done |
+|---|---|
+| Content | Decision Scenes DS11 to DS24, Events EV120 to EV133 (EV134 comes with phase D), 35 choices, 10 Text rows. Written by Claude as a draft for Cameron. Reworded so no unnamed person has a gender (the genderless rule): the man, the woman and the pronouns of the first draft became "a person", names and "they". The challenge counts CM01 (Fundraising calls), this project's ID for the prompt's CA01. Build script `tools/workbook/archive/p20c_build.py`. |
+| Rules | `CampaignMoments` (eligibility by phase, needs, office, log and cooldown; the weighted draw; the colleague; the challenge); `DecisionScenes` follow-ups can be decided by a challenge; the activation kinds `venue`, `campaign_staff` and `challenge`. |
+| State | The draw once a day, kept until answered; cooldowns and the week's budget; the colleague remembered; the choice columns applied; eight new saved fields. |
+| Screens | The green CAMPAIGN MOMENT! card; {colleague} and {campaign_staffer} filled in; a choice whose Needs fail is not shown; a Random scene says it came by itself. |
+| Tests | 10 in `test_campaign_moments.gd`, 13 in `test_campaign_scenes.gd`. |
+| Economy map | FL576 and FL577. |

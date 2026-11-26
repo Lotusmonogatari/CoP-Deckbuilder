@@ -1185,11 +1185,20 @@ func _moved_speaker() -> Dictionary:
 
 ## The kind tag of an event's pop-up card: DECISION! for the calendar's own events, SOMETHING COMES UP for the rest.
 func _event_tag(event: Dictionary) -> String:
+	if _is_campaign_moment(event):
+		return Text.say("campaign.card_label")
 	return Text.say("popup.tag_decision" if _is_decision(event) else "popup.tag_scenario")
+
+
+## A CAMPAIGN MOMENT!: a Decision! scene whose Card is Campaign (P20 phase C).
+func _is_campaign_moment(event: Dictionary) -> bool:
+	return CampaignMoments.is_campaign_card(GameState.decision_scene_of(str(event.get("event_id", ""))))
 
 
 ## Red for a calendar event (the spec's alarm colour), the accent for the rest.
 func _event_tag_kind(event: Dictionary) -> String:
+	if _is_campaign_moment(event):
+		return PopupCardStyles.GOOD
 	return PopupCardStyles.ALARM if _is_decision(event) else PopupCardStyles.ACCENT
 
 
@@ -1251,7 +1260,7 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 		rows.append(UiKit.line(Text.say("event.heading_train"), "SmallLabel"))
 	elif arrived:
 		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
-	rows.append(UiKit.line(str(event.get("flavor", ""))))
+	rows.append(UiKit.line(GameState.fill_scene_text(event_id, str(event.get("flavor", "")))))
 	# A whip scene says what the whip asks, so a choice worded "with the party" is not a guess (P15, 2026-11-23).
 	if DecisionScenes.is_whip(scene):
 		var asked := GameState.whip_line(scene)
@@ -1273,8 +1282,11 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 		rows.append(UiKit.line(Text.say("event.duration", {"hours": GameState.event_hours_text(event),
 			"count": span[1]}), "SmallLabel"))
 	for choice: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):
+		# A choice whose Needs do not hold (no free campaign staff, say) is not offered (P20).
+		if not GameState.choice_visible(choice):
+			continue
 		var price: Variant = choice.get("funds_cost")
-		var label := str(choice.get("choice_text", ""))
+		var label := GameState.fill_scene_text(event_id, str(choice.get("choice_text", "")))
 		var refusal := ""
 		if price != null and int(price) > 0:
 			label = Text.say("event.choice_cost", {"text": label, "cost": int(price)})
@@ -1308,8 +1320,10 @@ func _present_event(event_id: String, arrived: bool, keep_picture: bool = false)
 	# A scene says whether it is Mandatory or Optional (the Decision Scenes tab's Kind); any other calendar event, that it is
 	# set by the calendar.
 	if not scene.is_empty():
-		rows.append(UiKit.line(Text.say("event.scene_note_mandatory") if DecisionScenes.is_mandatory(scene)
-			else Text.say("event.scene_note_optional"), "SmallLabel"))
+		var scene_note := Text.say("event.scene_note_mandatory") if DecisionScenes.is_mandatory(scene) else Text.say("event.scene_note_optional")
+		if CampaignMoments.is_random(scene):
+			scene_note = Text.say("campaign.moment_note")   # a Random Campaign Moment! comes on its own, not on a date
+		rows.append(UiKit.line(scene_note, "SmallLabel"))
 	elif str(event.get("trigger", "")) == "Dated":
 		rows.append(UiKit.line(Text.say("event.decision_note"), "SmallLabel"))
 	_event_panel.open_card({"tag": _event_tag(event), "tag_kind": _event_tag_kind(event), "meta": EventsModel.pop_meta(event),

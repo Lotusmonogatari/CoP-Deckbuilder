@@ -375,3 +375,4 @@ The September and October 2026 work is summarized at the top of `design/CHANGELO
 - P19: the economy map, tools/economy_map.py and design/economy/ (2026-11-25, Cameron; branch `feature/p19-economy-map`)
 - P20 phase A: election cycles, campaign staff, the Campaign Office data, campaign rules and selection (2026-11-26, Cameron; branch `feature/p20a-campaign-rules`)
 - P20 phase B: the Campaign Office, campaign fund, staff, van, Donate and phase banners (2026-11-26, Cameron; branch `feature/p20b-campaign-office`)
+- P20 phase C: Campaign Moment! scenes DS11 to DS24 and the green card (2026-11-26, Cameron; branch `feature/p20c-campaign-moments`)

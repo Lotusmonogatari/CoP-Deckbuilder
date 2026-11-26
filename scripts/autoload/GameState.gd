@@ -699,7 +699,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "campaign_moments_week", "campaign_moment_open", "campaign_draw_day", "scene_cooldowns", "scene_colleagues", "campaign_challenges", "campaign_favors", "van_speech_done", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters", "run_stats",
 	"bill_stance",
@@ -947,6 +947,14 @@ func reset_crisis_triggers() -> void:
 	campaign_staff_weeks = {}
 	campaign_howto_seen = false
 	campaign_banners_shown = []
+	campaign_moments_week = 0
+	campaign_moment_open = ""
+	campaign_draw_day = -1
+	scene_cooldowns = {}
+	scene_colleagues = {}
+	campaign_challenges = []
+	campaign_favors = []
+	van_speech_done = false
 	event_last_at = {}
 	discovered_levels = []
 	dated_events_done = []
@@ -2312,6 +2320,17 @@ var campaign_actions_week := 0
 var campaign_staff_weeks: Dictionary = {}
 var campaign_howto_seen := false
 var campaign_banners_shown: Array = []
+## Campaign Moment! state (phase C): the Random scenes opened this week, the scene drawn and not yet answered, the day of the last draw, the last day each
+## scene came, the colleague each scene's speaker was, the open challenges, the favors colleagues owe (nothing spends them yet) and whether a van speech
+## has ever been given.
+var campaign_moments_week := 0
+var campaign_moment_open := ""
+var campaign_draw_day := -1
+var scene_cooldowns: Dictionary = {}
+var scene_colleagues: Dictionary = {}
+var campaign_challenges: Array = []
+var campaign_favors: Array = []
+var van_speech_done := false
 
 
 func campaign_office_open() -> bool:
@@ -2385,6 +2404,9 @@ func campaign_act(kind: String, target_org: String = "") -> Dictionary:
 	if int(result["capital_gained"]) > 0:
 		lines.append(Text.say("campaign.result.capital", {"count": int(result["capital_gained"])}))
 	campaign_actions_week += 1
+	if kind == CampaignOffice.VAN:
+		van_speech_done = true
+	_count_challenges(kind)
 	return {"ok": true, "reason": "", "result": result, "lines": lines}
 
 
@@ -2587,6 +2609,7 @@ func _settle_campaign_week() -> Array[String]:
 		lines.append(Text.say("campaign.week.faded", {"count": campaign_capital - faded}))
 	campaign_capital = faded
 	campaign_actions_week = 0
+	campaign_moments_week = 0
 	return lines
 
 
@@ -2632,6 +2655,147 @@ func campaign_banner_shown(key: String) -> void:
 		var earlier := "%s:%s" % [cycle, order[i]]
 		if not campaign_banners_shown.has(earlier):
 			campaign_banners_shown.append(earlier)
+
+
+# --- Campaign Moment! scenes (phase C) -----------------------------------------------------------------------------------------------
+
+## What the Needs words read: whether the office is open, a van is owned, a van speech was ever given, anyone is hired and anyone is free.
+func campaign_facts() -> Dictionary:
+	var today := campaign_today()
+	return {"office_open": campaign_office_open(), "van": campaign_van_tier >= 0, "van_speech_done": van_speech_done,
+		"staff_hired": not campaign_staff_hired.is_empty(), "staff_free": not CampaignStaff.best_free(campaign_staff_hired, today).is_empty()}
+
+
+## The Random Campaign Moment! scene to open today, as its event ID, or "". One is drawn at most once a day, by weight, from the scenes the phase,
+## the office, the needs and the cooldowns allow, while the week's budget lasts; it stays the answer until the player has answered it. The draw
+## uses the run's seed and the day, so a reload draws the same scene. Never in a level, in a weekend, or when its hours would not fit.
+func campaign_moment_due() -> String:
+	if is_in_level() or OS.has_environment("COP_NO_RANDOM_EVENTS"):
+		return ""
+	if not campaign_moment_open.is_empty():
+		return str(DecisionScenes.find(DataDB.decision_scenes, campaign_moment_open).get("event_id", ""))
+	var today := campaign_today()
+	if campaign_draw_day == today or not campaign_office_open() or in_weekend():
+		return ""
+	campaign_draw_day = today
+	var info := election_phase()
+	var phase := str(info["phase"])
+	if campaign_moments_week >= CampaignMoments.weekly_budget(phase):
+		return ""
+	var rng := RandomNumberGenerator.new()
+	rng.seed = absi(("%d|%d" % [run_seed, today]).hash())
+	var party := DataDB.get_party(str(DataDB.player.get("party", "")))
+	var colleague := CampaignMoments.pick_colleague(DataDB.opponents, party, rng.randf())
+	var context := {"phase": phase, "office": office_location, "locked": campaign_locked(), "facts": campaign_facts(), "colleague": not colleague.is_empty()}
+	var fitting: Array = []
+	for scene: Dictionary in CampaignMoments.eligible(DataDB.decision_scenes, decision_log, scene_cooldowns, today, context):
+		if EventEngine.hours_of(get_event(str(scene.get("event_id", "")))) <= work_hours_left():
+			fitting.append(scene)
+	var drawn := CampaignMoments.draw(fitting, phase, rng.randf())
+	if drawn.is_empty():
+		return ""
+	campaign_moment_open = str(drawn.get("scene_id", ""))
+	if str(drawn.get("speaker", "")) == CampaignMoments.COLLEAGUE:
+		scene_colleagues[campaign_moment_open] = colleague
+	return str(drawn.get("event_id", ""))
+
+
+## {scene_id: "challenge_met" | "challenge_failed"} for each challenge that has been decided.
+func challenge_outcomes() -> Dictionary:
+	var out := {}
+	var today := campaign_today()
+	for challenge: Variant in campaign_challenges:
+		var verdict := CampaignMoments.verdict(challenge as Dictionary, today)
+		if not verdict.is_empty():
+			out[str((challenge as Dictionary).get("scene_id", ""))] = verdict
+	return out
+
+
+## A campaign action was taken: each open challenge for that activity counts it (inside its window).
+func _count_challenges(kind: String) -> void:
+	var today := campaign_today()
+	for i in campaign_challenges.size():
+		var challenge := campaign_challenges[i] as Dictionary
+		var activity := _activity_of_kind(str(challenge.get("activity", "")))
+		if activity == kind:
+			campaign_challenges[i] = CampaignMoments.counted(challenge, str(challenge.get("activity", "")), today)
+
+
+## The campaign action kind a Venue Activities row (CM01..CM04) stands for.
+func _activity_of_kind(activity_id: String) -> String:
+	return str(venue_activity(activity_id).get("kind", ""))
+
+
+## Whether an event choice is shown at all: its Needs words (the campaign's) must hold.
+func choice_visible(choice: Dictionary) -> bool:
+	return CampaignMoments.needs_met(CampaignMoments.words(choice.get("needs")), campaign_facts())
+
+
+## Why a campaign choice cannot be taken, or "": the campaign fund cannot cover its cost, the Funds cannot cover a donation, nobody is free to lend.
+func campaign_choice_refusal(choice: Dictionary) -> String:
+	var fund_delta := int(choice.get("campaign_fund_delta", 0)) if choice.get("campaign_fund_delta") != null else 0
+	if fund_delta < 0 and campaign_fund < -fund_delta:
+		return Text.say("campaign.reason.no_fund")
+	var donate := int(choice.get("donate_funds", 0)) if choice.get("donate_funds") != null else 0
+	if donate > 0 and int(meta.get("Funds", 0)) < donate:
+		return Text.say("campaign.reason.no_funds")
+	var lend := int(choice.get("lend_weeks", 0)) if choice.get("lend_weeks") != null else 0
+	if lend > 0 and CampaignStaff.best_free(campaign_staff_hired, campaign_today()).is_empty():
+		return Text.say("campaign.reason.no_staff_free")
+	return ""
+
+
+## The campaign side of an answered scene: the choice's fund change, donation, lending and favor, and the bookkeeping of a Campaign Moment!
+## (the week's count, the cooldown, the open draw cleared). Returns the lines that tell the player.
+func _campaign_scene_answered(scene: Dictionary, choice: Dictionary, _letter: String) -> Array[String]:
+	var lines: Array[String] = []
+	var scene_id := str(scene.get("scene_id", ""))
+	var today := campaign_today()
+	var fund_delta := int(choice.get("campaign_fund_delta", 0)) if choice.get("campaign_fund_delta") != null else 0
+	if fund_delta < 0:
+		campaign_fund -= mini(campaign_fund, -fund_delta)
+		lines.append(Text.say("campaign.effect.fund", {"change": WeekPaymentsView.yen(fund_delta)}))
+	elif fund_delta > 0:
+		var income := CampaignOffice.fund_after_income(campaign_fund, fund_delta)
+		campaign_fund = int(income["fund"])
+		lines.append(Text.say("campaign.effect.fund", {"change": "+" + WeekPaymentsView.yen(fund_delta - int(income["lost"]))}))
+	var donate := int(choice.get("donate_funds", 0)) if choice.get("donate_funds") != null else 0
+	if donate > 0 and int(meta.get("Funds", 0)) >= donate:
+		_move_meta("Funds", -donate)
+		campaign_fund = int(CampaignOffice.fund_after_income(campaign_fund, donate)["fund"])
+		lines.append(Text.say("campaign.effect.donated", {"yen": donate}))
+	var lend := int(choice.get("lend_weeks", 0)) if choice.get("lend_weeks") != null else 0
+	if lend > 0:
+		var member := CampaignStaff.best_free(campaign_staff_hired, today)
+		if not member.is_empty():
+			campaign_staff_hired[campaign_staff_hired.find(member)] = CampaignStaff.lent(member, today, lend)
+			lines.append(Text.say("campaign.effect.lent", {"name": str(_campaign_row(str(member.get("staff_id", ""))).get("name", "")), "date": WeekCalendar.date_label(today + lend * 7)}))
+	if str(choice.get("favor_owed", "")).strip_edges().to_upper() == "Y":
+		var colleague_id := str(scene_colleagues.get(scene_id, ""))
+		campaign_favors.append({"colleague_id": colleague_id, "scene_id": scene_id, "date": today})
+		lines.append(Text.say("campaign.effect.favor", {"name": str(DataDB.get_opponent(colleague_id).get("name", Text.say("campaign.colleague_unknown")))}))
+	if CampaignMoments.is_campaign_card(scene):
+		scene_cooldowns[scene_id] = today
+		if CampaignMoments.is_random(scene):
+			campaign_moments_week += 1
+		if campaign_moment_open == scene_id:
+			campaign_moment_open = ""
+	return lines
+
+
+## A scene's text with {colleague} and {campaign_staffer} filled in: the party member this scene drew, and the staff member a lending choice would lend.
+func fill_scene_text(event_id: String, text: String) -> String:
+	if not text.contains("{"):
+		return text
+	var out := text
+	if out.contains("{colleague}"):
+		var scene := decision_scene_of(event_id)
+		var colleague := DataDB.get_opponent(str(scene_colleagues.get(str(scene.get("scene_id", "")), "")))
+		out = out.replace("{colleague}", str(colleague.get("name", Text.say("campaign.colleague_unknown"))))
+	if out.contains("{campaign_staffer}"):
+		var member := CampaignStaff.best_free(campaign_staff_hired, campaign_today())
+		out = out.replace("{campaign_staffer}", str(_campaign_row(str(member.get("staff_id", ""))).get("name", Text.say("campaign.staffer_unknown"))))
+	return out
 
 
 ## Opens a venue that a scene unlocks (a no-op for an ID that is already open).
@@ -2745,14 +2909,14 @@ func due_dated_event() -> String:
 		return str(due[0].get("event_id", ""))
 	# A Decision! follow-up whose Delay has run out comes next (Mandatory: it opens by itself). One waits while what its earlier
 	# scene started (a whip fight, a vote) has not been played yet, and a whip scene for a party with no line never opens (P15).
-	for scene: Dictionary in DecisionScenes.due_follow_ups(DataDB.decision_scenes, decision_log, today):
+	for scene: Dictionary in DecisionScenes.due_follow_ups(DataDB.decision_scenes, decision_log, today, challenge_outcomes()):
 		if _scene_waits_for_activation(str(scene.get("follows", ""))):
 			continue
 		if DecisionScenes.whip_is_banded(scene) and whip_line(scene).is_empty():
 			decision_log[str(scene.get("scene_id", ""))] = {"day": today, "choice": WHIP_SKIPPED_LETTER}
 			continue
 		return str(scene.get("event_id", ""))
-	return ""
+	return campaign_moment_due()
 
 
 ## The reserved choice letter a whip scene is remembered under when the player's party has no line on its bill: the scene never
@@ -2845,6 +3009,18 @@ func _start_scene_activations(scene: Dictionary, letter: String) -> Array[String
 			DecisionScenes.KIND_EVENT:
 				if not get_event(id).is_empty():
 					scheduled_events.append({"event_id": id, "due_at": time_units})
+			DecisionScenes.KIND_VENUE:
+				if not venues_opened.has(id):
+					open_venue(id)
+					lines.append(Text.say("campaign.effect.venue_opened", {"name": str(venue_row(id).get("name", id))}))
+			DecisionScenes.KIND_CAMPAIGN_STAFF:
+				if not campaign_staff_unlocked.has(id):
+					campaign_staff_unlocked.append(id)
+					lines.append(Text.say("campaign.effect.staff_found", {"name": str(_campaign_row(id).get("name", id))}))
+			DecisionScenes.KIND_CHALLENGE:
+				var spec := CampaignMoments.parse_challenge(id)
+				if not spec.is_empty():
+					campaign_challenges.append(CampaignMoments.start_challenge(str(scene.get("scene_id", "")), spec, campaign_today()))
 			_:
 				if DecisionScenes.LEVEL_KINDS.has(kind) and not _activation_pending(kind, id):
 					var started := {"kind": kind, "id": id, "scene_id": str(scene.get("scene_id", ""))}
@@ -2993,6 +3169,16 @@ func event_speakers(event_id: String) -> Array:
 	if DecisionScenes.whip_is_banded(scene):
 		ids = [whip_pick_for(scene)]
 	for id: String in ids:
+		# The colleague speaker is the party member this scene drew; a campaign staff member speaks from the Campaign Staff tab (P20).
+		if id == CampaignMoments.COLLEAGUE:
+			var colleague := DataDB.get_opponent(str(scene_colleagues.get(str(scene.get("scene_id", "")), "")))
+			out.append({"id": str(colleague.get("opp_id", "")), "name": str(colleague.get("name", Text.say("campaign.colleague_unknown"))),
+				"title": OpponentDisplay.title_for(colleague) if not colleague.is_empty() else "", "face": DecisionScenes.face(scene)})
+			continue
+		if DecisionScenes.person_kind(id) == "campaign_staff":
+			var member := _campaign_row(id)
+			out.append({"id": id, "name": str(member.get("name", id)), "title": CampaignViews.role_name(str(member.get("role", ""))), "face": DecisionScenes.face(scene)})
+			continue
 		var kind := DecisionScenes.person_kind(id)
 		var opponent := DataDB.get_opponent(id) if kind == "opponent" else {}
 		var staff := DataDB.get_staff(id) if kind == "staff" else {}
@@ -4081,8 +4267,10 @@ func apply_event_choice(event_id: String, letter: String, delegate_id: String = 
 	if not scene.is_empty() and not decision_log.has(str(scene.get("scene_id", ""))):
 		decision_log[str(scene.get("scene_id", ""))] = {"day": WeekCalendar.today_number(calendar, calendar_config()), "choice": letter}
 		lines.append_array(_start_scene_activations(scene, letter))
+	if not scene.is_empty():
+		lines.append_array(_campaign_scene_answered(scene, chosen, letter))
 	check_crisis_triggers()
-	return {"ok": true, "result_text": str(chosen.get("result_text", "")), "lines": lines,
+	return {"ok": true, "result_text": fill_scene_text(event_id, str(chosen.get("result_text", ""))), "lines": lines,
 		"chips": chips, "revealed": revealed, "hours": hours,
 		"starts_level": event_choice_level(chosen)}
 
@@ -4233,6 +4421,9 @@ func event_hours_text(event: Dictionary) -> String:
 ## its level must fit the hours left (Cameron, 2026-10-31: "Insufficient Work
 ## Hours"), and a weekend needs a level that allows the weekend.
 func event_choice_refusal(event: Dictionary, choice: Dictionary) -> String:
+	var campaign_why := campaign_choice_refusal(choice)
+	if not campaign_why.is_empty():
+		return campaign_why
 	var level_id := event_choice_level(choice)
 	if level_id.is_empty():
 		return ""

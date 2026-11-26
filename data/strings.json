@@ -12913,5 +12913,75 @@
     "english": "Your campaign",
     "placeholders": null,
     "notes": "P20 phase B (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.effect.venue_opened",
+    "where": "P20 campaign: campaign.effect",
+    "english": "{name} is open.",
+    "placeholders": "name",
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.effect.staff_found",
+    "where": "P20 campaign: campaign.effect",
+    "english": "{name} can now be hired at the Campaign Office.",
+    "placeholders": "name",
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.effect.fund",
+    "where": "P20 campaign: campaign.effect",
+    "english": "Campaign fund {change}",
+    "placeholders": "change",
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.effect.donated",
+    "where": "P20 campaign: campaign.effect",
+    "english": "{yen}円 moved into the campaign fund.",
+    "placeholders": "yen",
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.effect.lent",
+    "where": "P20 campaign: campaign.effect",
+    "english": "{name} is lent to a colleague until {date}. The wage is still paid.",
+    "placeholders": "date, name",
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.effect.favor",
+    "where": "P20 campaign: campaign.effect",
+    "english": "{name} will remember this.",
+    "placeholders": "name",
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.colleague_unknown",
+    "where": "P20 campaign: campaign.colleague_unknown",
+    "english": "A colleague",
+    "placeholders": null,
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staffer_unknown",
+    "where": "P20 campaign: campaign.staffer_unknown",
+    "english": "your staffer",
+    "placeholders": null,
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.reason.no_staff_free",
+    "where": "P20 campaign: campaign.reason",
+    "english": "No campaign staff are free.",
+    "placeholders": null,
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.moment_note",
+    "where": "P20 campaign: campaign.moment_note",
+    "english": "A moment on the campaign trail. It came by itself, and you can answer it now.",
+    "placeholders": null,
+    "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
   }
 ]

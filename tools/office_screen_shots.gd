@@ -363,6 +363,17 @@ func _popup(office: Node, kind: String) -> Overlay:
 		"lead":
 			office._present_event("EV02", true)
 			return office.get_node("EventPanel")
+		"moment", "momentstaff":
+			# A CAMPAIGN MOMENT! (P20 phase C): a colleague asks for money (EV131), or for a campaign staffer (EV132, with one hired).
+			GameState.open_venue("VN10")
+			GameState.campaign_fund = 400000
+			var party := DataDB.get_party(str(DataDB.player.get("party", "")))
+			GameState.scene_colleagues["DS22"] = CampaignMoments.pick_colleague(DataDB.opponents, party, 0.3)
+			GameState.scene_colleagues["DS23"] = GameState.scene_colleagues["DS22"]
+			if kind == "momentstaff":
+				GameState.campaign_staff_hired = [CampaignStaff.hire(DataDB.campaign_staff[0])]
+			office._present_event("EV132" if kind == "momentstaff" else "EV131", true)
+			return office.get_node("EventPanel")
 		"decision", "moved":
 			var id := ""
 			for event: Dictionary in DataDB.events:

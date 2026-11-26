@@ -113,22 +113,27 @@ static func descendant_count(scenes: Array, scene_id: String) -> int:
 
 ## The day a follow-up comes due: the day its earlier scene was answered plus its Delay; -1 when it cannot come (the earlier
 ## scene has not been answered, the choice made is not in Follow If, or the scene is not a follow-up).
-static func due_day(scene: Dictionary, log: Dictionary) -> int:
+static func due_day(scene: Dictionary, log: Dictionary, outcomes: Dictionary = {}) -> int:
 	if not is_follow_up(scene):
 		return -1
 	var parent: Variant = log.get(str(scene.get("follows")))
 	if not (parent is Dictionary):
 		return -1
 	var wanted := follow_if(scene)
-	if not wanted.is_empty() and not wanted.has(str((parent as Dictionary).get("choice", "")).to_upper()):
+	# A challenge scene's follow-ups are judged by `outcomes` ({scene_id: "challenge_met" | "challenge_failed"}), not by a letter (P20).
+	var judged := wanted.has(CampaignMoments.CHALLENGE_MET.to_upper()) or wanted.has(CampaignMoments.CHALLENGE_FAILED.to_upper())
+	if judged:
+		if not wanted.has(str(outcomes.get(str(scene.get("follows")), "")).to_upper()):
+			return -1
+	elif not wanted.is_empty() and not wanted.has(str((parent as Dictionary).get("choice", "")).to_upper()):
 		return -1
 	var delay: Variant = scene.get("delay")
 	return int((parent as Dictionary).get("day", 0)) + (0 if delay == null else int(delay))
 
 
 ## The follow-ups due on or before `today` that have not happened, earliest first (ties in the tab's order).
-static func due_follow_ups(scenes: Array, log: Dictionary, today: int) -> Array:
-	return _follow_ups_between(scenes, log, -1000000, today)
+static func due_follow_ups(scenes: Array, log: Dictionary, today: int, outcomes: Dictionary = {}) -> Array:
+	return _follow_ups_between(scenes, log, -1000000, today, outcomes)
 
 
 ## The follow-ups that will come due after `today` and within `days_ahead` days, earliest first.
@@ -136,13 +141,13 @@ static func upcoming_follow_ups(scenes: Array, log: Dictionary, today: int, days
 	return _follow_ups_between(scenes, log, today + 1, today + days_ahead)
 
 
-static func _follow_ups_between(scenes: Array, log: Dictionary, first: int, last: int) -> Array:
+static func _follow_ups_between(scenes: Array, log: Dictionary, first: int, last: int, outcomes: Dictionary = {}) -> Array:
 	var found: Array = []
 	for scene: Variant in scenes:
 		# An Optional follow-up is opened by the player from the Events screen, never by itself.
 		if not (scene is Dictionary) or log.has(str((scene as Dictionary).get("scene_id", ""))) or is_optional(scene as Dictionary):
 			continue
-		var day := due_day(scene as Dictionary, log)
+		var day := due_day(scene as Dictionary, log, outcomes)
 		if day >= 0 and day >= first and day <= last:
 			found.append({"day": day, "scene": scene})
 	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return int(a["day"]) < int(b["day"]))
@@ -283,7 +288,11 @@ const KIND_STAGE := "stage"
 const KIND_VOTE := "vote"
 const KIND_EVENT := "event"
 const KIND_UNLOCK := "unlock"
-const ACTIVATION_KINDS: Array[String] = [KIND_LEVEL, KIND_STAGE, KIND_VOTE, KIND_EVENT, KIND_UNLOCK]
+## P20 (2026-11-26): open a venue, make a chain candidate available to hire, start a challenge ("CM01x3in14").
+const KIND_VENUE := "venue"
+const KIND_CAMPAIGN_STAFF := "campaign_staff"
+const KIND_CHALLENGE := "challenge"
+const ACTIVATION_KINDS: Array[String] = [KIND_LEVEL, KIND_STAGE, KIND_VOTE, KIND_EVENT, KIND_UNLOCK, KIND_VENUE, KIND_CAMPAIGN_STAFF, KIND_CHALLENGE]
 ## The kinds that begin as a level, in a battle or vote screen.
 const LEVEL_KINDS: Array[String] = [KIND_LEVEL, KIND_STAGE, KIND_VOTE]
 ## The ID prefix of the one-stage levels built for stage and vote activations.
@@ -348,6 +357,8 @@ static func person_kind(id: String) -> String:
 		return "visitor"
 	if AreaCharacters.is_area_id(id):
 		return "area"
+	if id.begins_with("CS"):
+		return "campaign_staff"
 	return ""
 
 
