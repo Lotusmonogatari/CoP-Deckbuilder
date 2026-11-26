@@ -3,7 +3,13 @@ extends GutTest
 ## answered, a colleague speaks and is remembered, a choice's fund cost greys it, lending and favors, the challenge chain, and the save.
 
 
+var _random_events_off := false
+
+
 func before_each() -> void:
+	# The check scripts switch random events off for the click tests; the draw under test is not one of them.
+	_random_events_off = OS.has_environment("COP_NO_RANDOM_EVENTS")
+	OS.unset_environment("COP_NO_RANDOM_EVENTS")
 	DataDB.clear_runtime()
 	GameState.start_new_run("PC01")
 	GameState.awaiting_new_game = false
@@ -12,6 +18,8 @@ func before_each() -> void:
 
 func after_each() -> void:
 	GameState.office_location = Offices.CAPITOL
+	if _random_events_off:
+		OS.set_environment("COP_NO_RANDOM_EVENTS", "1")
 
 
 ## Puts the calendar on a Monday with the given hours into the week, in the first week whose Monday is in `phase`.

@@ -54,7 +54,10 @@ func test_the_tabs_ship_events_with_choices() -> void:
 		var found := EventEngine.choices_for(DataDB.event_choices, str(event["event_id"]))
 		# A vote scene (P15) has one choice, taking your seat; every other event has a real choice to make.
 		var is_vote_scene := not DecisionScenes.vote_bill(DecisionScenes.of_event(DataDB.decision_scenes, str(event["event_id"]))).is_empty()
-		assert_gt(found.size(), 0 if is_vote_scene else 1, "%s has choices" % event["event_id"])
+		# A Campaign Moment! that only tells you something (EV127's note, EV134 Stepping Aside; P20) has one choice, going on.
+		var scene := DecisionScenes.of_event(DataDB.decision_scenes, str(event["event_id"]))
+		var is_narration := CampaignMoments.is_campaign_card(scene) and DecisionScenes.is_mandatory(scene) and found.size() == 1
+		assert_gt(found.size(), 0 if (is_vote_scene or is_narration) else 1, "%s has choices" % event["event_id"])
 
 
 func test_choices_come_back_in_letter_order() -> void:
