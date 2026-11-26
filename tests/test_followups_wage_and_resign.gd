@@ -10,7 +10,7 @@ func test_a_staff_wage_is_written_with_a_thousands_separator() -> void:
 
 func test_the_other_money_placeholders_get_separators_too() -> void:
 	assert_eq(Text.say("staff.week_paid", {"yen": 12500}), "Staff wages paid: 12,500円.")
-	assert_eq(Text.say("draft.cost", {"xp": 40, "funds": 25000}), "Drafting needs 40 XP and 25,000円.")
+	assert_eq(Text.say("draft.cost", {"xp": 40, "funds": 25000}), "Drafting needs 40 PC and 25,000円.")
 	assert_eq(Text.say("office.week_cost_relief", {"yen": 50000}), "National awareness has already taken 50,000円 off.")
 
 

@@ -58,8 +58,8 @@ func test_a_card_you_can_afford_is_yours_to_buy() -> void:
 
 func test_a_card_you_cannot_afford_says_how_short_you_are() -> void:
 	# The number matters: "60 XP" tells you nothing you did not know, and
-	# "17 XP short" tells you whether the next stage will cover it.
-	assert_eq(Ledger.card_refusal(_card(), [], 43, _words()), "17 XP short.")
+	# "17 PC short" tells you whether the next stage will cover it.
+	assert_eq(Ledger.card_refusal(_card(), [], 43, _words()), "17 PC short.")
 	assert_false(Ledger.can_buy_card(_card(), [], 43, _words()))
 
 

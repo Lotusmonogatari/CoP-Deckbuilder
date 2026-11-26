@@ -151,7 +151,7 @@ func test_the_card_tells_what_it_may_give_before_it_is_done() -> void:
 	_fresh_run()
 	var lines := GameState.activity_gives_lines(GameState.venue_activity("VA20"))
 	assert_eq(lines.size(), 1)
-	assert_eq(lines[0], "one of Our Traditional Society +1 and Urban Neighborhood Alliance +1, or XP +50")
+	assert_eq(lines[0], "one of Our Traditional Society +1 and Urban Neighborhood Alliance +1, or PC +50")
 
 
 func test_the_stage_screen_lists_what_is_on_and_sit_and_listen_stands_someone_over_it() -> void:

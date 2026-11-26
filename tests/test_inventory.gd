@@ -574,12 +574,13 @@ func test_buying_a_funds_cap_increase_is_refused_once_the_ceiling_is_reached() -
 func test_the_funds_cap_counts_as_maxed_only_at_the_ceiling() -> void:
 	# The Marketplace stops listing the petition once this is true (2026-11-11).
 	var starting_cap := int(DataDB.rules.get("funds_starting_cap", 100000))
-	var hard_max := int(_funds_row().get("max", 0))
+	# The petition stops at Funds Petition Ceiling (1,000,000); the hard maximum (2,000,000) is for the two calls (P21).
+	var ceiling := Levers.whole("funds_petition_ceiling")
 	GameState.funds_cap_bonus = 0
 	assert_false(GameState.funds_cap_maxed())
-	GameState.funds_cap_bonus = hard_max - starting_cap - 1
+	GameState.funds_cap_bonus = ceiling - starting_cap - 1
 	assert_false(GameState.funds_cap_maxed(), "one short of the ceiling")
-	GameState.funds_cap_bonus = hard_max - starting_cap
+	GameState.funds_cap_bonus = ceiling - starting_cap
 	assert_true(GameState.funds_cap_maxed())
 
 
