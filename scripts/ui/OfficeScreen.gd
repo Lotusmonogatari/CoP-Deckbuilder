@@ -163,6 +163,9 @@ var _week_watch: Timer
 ## True while _build() runs, so the watch does not open a pop-up under its feet.
 var _building := false
 var _new_week_panel: Overlay
+## The campaign's system cards (P20 phase D): selection, a poll, and the end of the run.
+var _campaign_card_panel: Overlay
+var _campaign_end_panel: Overlay
 var _draft_ids: Array = []
 ## The draft adds a second member visit (2026-11-05).
 var _draft_extra_visit := false
@@ -552,6 +555,10 @@ func _build() -> void:
 	_report.text = _report_text()
 	_refresh_resources()
 	_refresh_calendar()
+	# The campaign's own cards come before anything else that day (P20 phase D); each closes into a fresh build, which checks for the next.
+	if not _week_report_open and _show_campaign_card_if_due():
+		_building = false
+		return
 	_show_trigger_alerts_if_any()
 	_show_broken_promises_if_any()
 	_show_resume_choice_if_in_level()
@@ -650,6 +657,18 @@ func _build_week_controls() -> void:
 	_new_week_panel.show_back = false
 	_new_week_panel.closed.connect(_on_new_week_closed)
 	add_child(_new_week_panel)
+	_campaign_card_panel = Overlay.new()
+	_campaign_card_panel.name = "CampaignCardPanel"
+	_campaign_card_panel.dismissable = false
+	_campaign_card_panel.show_back = false
+	_campaign_card_panel.confirmed.connect(_on_campaign_card_done)
+	add_child(_campaign_card_panel)
+	_campaign_end_panel = Overlay.new()
+	_campaign_end_panel.name = "CampaignEndPanel"
+	_campaign_end_panel.dismissable = false
+	_campaign_end_panel.show_back = false
+	_campaign_end_panel.confirmed.connect(_on_campaign_end_confirmed)
+	add_child(_campaign_end_panel)
 	_week_watch = Timer.new()
 	_week_watch.name = "WeekWatch"
 	_week_watch.wait_time = 1.0
@@ -854,6 +873,44 @@ func _on_work_weekend() -> void:
 	_build()
 
 
+## The next campaign card that is owed, if any: the Candidate Selection Committee's decision on the day Campaign Open comes, the end of the run
+## on an Election Day the player was not selected for or does not stand in, and a poll when one is due. True when a card went up.
+func _show_campaign_card_if_due() -> bool:
+	if GameState.is_in_level() or _campaign_card_panel == null:
+		return false
+	var cycle := GameState.selection_due()
+	if not cycle.is_empty():
+		var result := GameState.take_selection(cycle)
+		SaveManager.autosave()
+		_campaign_card_panel.open_card(CampaignCards.selection_config(result), Text.say("event.continue"))
+		return true
+	var due := GameState.election_due()
+	if not due.is_empty():
+		if str(due["kind"]) == "seated":
+			GameState.settle_election(due)   # a seated player's Election Day shows nothing more yet (ElectionOutcome is a stub)
+			SaveManager.autosave()
+		else:
+			_campaign_end_panel.open_card(CampaignCards.end_config(str(due["kind"])), Text.say("resign.to_title"))
+			return true
+	if GameState.poll_due():
+		var poll := GameState.take_poll()
+		SaveManager.autosave()
+		_campaign_card_panel.open_card(CampaignCards.poll_config(poll), Text.say("event.continue"))
+		return true
+	return false
+
+
+## A selection or poll card is read: the Office builds again and checks for the next thing owed.
+func _on_campaign_card_done() -> void:
+	_build.call_deferred()
+
+
+## The end of the run is confirmed: the run and its save are gone (the same close as Resign) and the title screen comes up.
+func _on_campaign_end_confirmed() -> void:
+	GameState.end_run()
+	SceneChange.to(get_tree(), ResignScreen.TITLE_SCENE)
+
+
 ## True from the moment a week ends until its report is closed: a phase banner waits for the report instead of covering it.
 var _week_report_open := false
 
@@ -861,7 +918,7 @@ var _week_report_open := false
 ## The week's report is closed: the phase banner the new date brings (P20) comes next.
 func _on_new_week_closed() -> void:
 	_week_report_open = false
-	if _venues != null:
+	if not _show_campaign_card_if_due() and _venues != null:
 		_venues.show_campaign_banner_if_due()
 
 

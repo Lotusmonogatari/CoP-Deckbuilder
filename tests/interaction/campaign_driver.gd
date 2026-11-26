@@ -16,6 +16,7 @@ func _go_to(phase: String) -> void:
 		GameState.calendar = {"week": week, "phase": "work", "hours": 0}
 		var info := GameState.election_phase()
 		if str(info["phase"]) == phase and bool(info["player_runs"]):
+			GameState.campaign_last_poll = GameState.campaign_today()   # no poll card this morning (those have their own test)
 			return
 
 
@@ -92,7 +93,42 @@ func _run() -> void:
 	_expect(banner.visible, "a second page follows: Mustering the War Campaign")
 	await _click(banner.find_child("Confirm", true, false))
 	_expect(not banner.visible and not GameState.campaign_banners_shown.is_empty(), "the banner is shown once and remembered")
+	# Campaign Open: the Candidate Selection Committee decides before anything else that day.
+	var cycle: Dictionary = ElectionCycle.normalized(DataDB.election_cycles)[0]
+	_go_to_day(int(cycle["open"]))
+	GameState.election_strength = 90.0
+	GameState.meta["Party support"] = 100
+	GameState.booster_standing["BO32"] = 100
+	GameState.campaign_banners_shown = ["EC01:announcement", "EC01:campaign"]
+	GameState.campaign_last_poll = GameState.campaign_today()   # no poll this morning
+	await _open_office()
+	office = get_tree().current_scene
+	var selection_card := office.get_node("CampaignCardPanel") as Overlay
+	_expect(selection_card.visible and selection_card.find_child("SelectionOutcome", true, false) != null, "the selection card shows on the morning the campaign opens")
+	_expect(not GameState.selection_of("EC01").is_empty(), "and the decision is kept")
+	await _click(selection_card.find_child("Confirm", true, false))
+	await get_tree().create_timer(0.5).timeout
+	_expect(not selection_card.visible, "Continue closes it and the Office goes on")
+	# Election Day with no ballot place: the end of the run.
+	GameState.selection_results = [{"cycle_id": "EC01", "score": 10, "outcome": "not_selected", "strength": 5.0, "alignment": 50.0, "influence": 10.0}]
+	_go_to_day(int(cycle["day"]))
+	await _open_office()
+	office = get_tree().current_scene
+	var end_card := office.get_node("CampaignEndPanel") as Overlay
+	_expect(end_card.visible, "Sengoku no Hi without a place on the ballot ends the run")
+	await _click(end_card.find_child("Confirm", true, false))
+	await get_tree().create_timer(0.5).timeout
+	_expect(GameState.awaiting_new_game, "the run is over and the title screen is next")
 	_finish()
+
+
+func _go_to_day(day: int) -> void:
+	for week in range(1, 700):
+		for phase: String in ["work", "weekend"]:
+			for hours in [0, 8, 16, 24, 32]:
+				GameState.calendar = {"week": week, "phase": phase, "hours": hours}
+				if GameState.campaign_today() == day:
+					return
 
 
 func _open_office() -> void:

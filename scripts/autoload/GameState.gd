@@ -699,7 +699,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_extra", "staff_slot_buys", "staff_fired", "staff_loyalty", "staff_invested", "staff_weeks", "staff_quit", "staff_raise_pay", "staff_thanked", "staff_week_tasks", "staff_last_week", "staff_day_key", "staff_day_blocks_total", "staff_day_pool", "staff_day_plan", "staff_day_confirmed", "staff_day_delegated", "staff_full_days", "staff_report_pending", "staff_day_items", "staff_pool_mods", "staff_office_item", "staff_day_reasons", "staff_day_max", "staff_day_adds", "staff_day_shuffles", "staff_taste_known", "vote_unknown_percent", "vote_briefed",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus", "deck_size_bonus", "deck_expansions",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "campaign_moments_week", "campaign_moment_open", "campaign_draw_day", "scene_cooldowns", "scene_colleagues", "campaign_challenges", "campaign_favors", "van_speech_done", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "campaign_fund", "campaign_capital", "venues_opened", "campaign_staff_hired", "campaign_staff_unlocked", "campaign_van_tier", "campaign_actions_week", "campaign_staff_weeks", "campaign_howto_seen", "campaign_banners_shown", "campaign_moments_week", "campaign_moment_open", "campaign_draw_day", "scene_cooldowns", "scene_colleagues", "campaign_challenges", "campaign_favors", "van_speech_done", "selection_results", "campaign_polls", "campaign_last_poll", "campaign_poll_parts", "campaign_poll_late", "campaign_office_opened_on", "election_results", "event_last_at", "discovered_levels", "dated_events_done", "decision_log", "pending_activations", "scene_runtime", "whip_picks", "whip_locks", "run_seed", "venue_days", "venue_heard_once", "venue_activity_log", "venue_activity_totals", "staff_activity_hours", "overheard_moves", "overheard_fired", "overheard_recent", "venue_choice_rolls", "codex_found", "room_files", "held_tips", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people", "met_characters", "run_stats",
 	"bill_stance",
@@ -955,6 +955,13 @@ func reset_crisis_triggers() -> void:
 	campaign_challenges = []
 	campaign_favors = []
 	van_speech_done = false
+	selection_results = []
+	campaign_polls = []
+	campaign_last_poll = -1
+	campaign_poll_parts = []
+	campaign_poll_late = 0
+	campaign_office_opened_on = -1
+	election_results = []
 	event_last_at = {}
 	discovered_levels = []
 	dated_events_done = []
@@ -2331,6 +2338,16 @@ var scene_colleagues: Dictionary = {}
 var campaign_challenges: Array = []
 var campaign_favors: Array = []
 var van_speech_done := false
+## Phase D: the selection results ({cycle_id, strength, alignment, influence, score, outcome}), the poll history, the day of the last poll, the strength
+## parts at the last poll, how many mustering and campaign polls were taken (to rotate the outlets), the day the Campaign Office opened (-1 while it has
+## not), and the settled Election Days ({cycle_id, kind, seated}).
+var selection_results: Array = []
+var campaign_polls: Array = []
+var campaign_last_poll := -1
+var campaign_poll_parts: Array = []
+var campaign_poll_late := 0
+var campaign_office_opened_on := -1
+var election_results: Array = []
 
 
 func campaign_office_open() -> bool:
@@ -2341,9 +2358,15 @@ func campaign_today() -> int:
 	return WeekCalendar.today_number(calendar, calendar_config())
 
 
-## "" while the player's own campaign is open; "stepped_aside" in the cycle the player does not run in (phase D adds "not_selected").
+## "" while the player's own campaign is open; "stepped_aside" from the Banners date of a cycle the player does not run in; "not_selected" once the
+## Candidate Selection Committee has turned the player down for the cycle ahead.
 func campaign_locked() -> String:
-	return "" if bool(election_phase()["player_runs"]) else "stepped_aside"
+	var info := election_phase()
+	if not bool(info["player_runs"]):
+		return "stepped_aside" if str(info["phase"]) != ElectionCycle.BUILDING else ""
+	if str(selection_of(str(info["cycle_id"])).get("outcome", "")) == Selection.NOT_SELECTED:
+		return "not_selected"
+	return ""
 
 
 ## What CampaignOffice reads: the run's readings for today.
@@ -2798,10 +2821,118 @@ func fill_scene_text(event_id: String, text: String) -> String:
 	return out
 
 
+# --- Selection, polls and Election Day (phase D) ------------------------------------------------------------------------------------------
+
+## The selection result kept for a cycle, or {}.
+func selection_of(cycle_id: String) -> Dictionary:
+	for result: Variant in selection_results:
+		if str((result as Dictionary).get("cycle_id", "")) == cycle_id:
+			return result as Dictionary
+	return {}
+
+
+## The cycle whose selection card is owed (Campaign Open has come and no result is kept), or {}.
+func selection_due() -> Dictionary:
+	var done: Array = selection_results.map(func(r: Dictionary) -> String: return str(r.get("cycle_id", "")))
+	return ElectionCycle.selection_owed(campaign_today(), DataDB.election_cycles, done)
+
+
+## The committee's standing with the player (organization BO32, the Candidate Selection Committee), 0 to 100.
+func committee_standing() -> int:
+	return int(booster_standing.get(str(DataDB.get_rule("campaign_committee_org", "BO32")), 0))
+
+
+## Reads the run and decides: stores {cycle_id, strength, alignment, influence, score, outcome}. A player who is not selected loses the campaign staff
+## (they go home, no firing cost) and the office is closed to them for the cycle (campaign_locked). Returns the result.
+func take_selection(cycle: Dictionary) -> Dictionary:
+	var decided := Selection.decide(election_strength, float(party_alignment()), int(meta.get("Party support", 0)), committee_standing())
+	decided["cycle_id"] = str(cycle["id"])
+	selection_results.append(decided)
+	if str(decided["outcome"]) == Selection.NOT_SELECTED:
+		campaign_staff_hired = CampaignStaff.after_leaving(campaign_staff_hired)
+		campaign_staff_weeks = {}
+		campaign_moment_open = ""
+	return decided
+
+
+## The Election Day owed: {cycle, kind} with kind "not_selected" (game over), "stepped_aside" (the run ends) or "seated"; {} when none is owed.
+func election_due() -> Dictionary:
+	var done: Array = election_results.map(func(r: Dictionary) -> String: return str(r.get("cycle_id", "")))
+	var cycle := ElectionCycle.election_owed(campaign_today(), DataDB.election_cycles, done)
+	if cycle.is_empty():
+		return {}
+	if not bool(cycle["player_runs"]):
+		return {"cycle": cycle, "kind": "stepped_aside"}
+	var selection := selection_of(str(cycle["id"]))
+	if selection.is_empty():
+		selection = take_selection(cycle)   # Election Day came with no card shown (a long jump): the committee decides now
+	return {"cycle": cycle, "kind": "not_selected" if str(selection["outcome"]) == Selection.NOT_SELECTED else "seated"}
+
+
+## Settles an Election Day: records it (a seated player's through ElectionOutcome). Returns the record.
+func settle_election(due: Dictionary) -> Dictionary:
+	var cycle: Dictionary = due["cycle"]
+	var record := {"cycle_id": str(cycle["id"]), "kind": str(due["kind"]), "seated": false}
+	if str(due["kind"]) == "seated":
+		record = ElectionOutcome.resolve(str(cycle["id"]), selection_of(str(cycle["id"])), election_strength)
+		record["kind"] = "seated"
+	election_results.append(record)
+	return record
+
+
+## A run that ends here (Not Selected or stepping aside): the same close as Resign. The save is deleted and nothing saves until a new run.
+func end_run() -> void:
+	resign_run()
+
+
+## The day the Campaign Office opened (the poll schedule counts from it); today for an older save that has the office open and no day.
+func campaign_office_day() -> int:
+	if not campaign_office_open():
+		return -1
+	if campaign_office_opened_on < 0:
+		campaign_office_opened_on = campaign_today()
+	return campaign_office_opened_on
+
+
+func poll_due() -> bool:
+	return CampaignPolls.due(campaign_today(), campaign_last_poll, campaign_office_day(), DataDB.election_cycles)
+
+
+## Takes the poll that is due: {date, source, low, high, likely, could_be, selected, trend, previous_mid, up, down, final}, kept in the history. The range is
+## seeded by the run and the day; the outlook says what the committee would likely decide, until it has decided.
+func take_poll() -> Dictionary:
+	var today := campaign_today()
+	var info := election_phase()
+	var phase := str(info["phase"])
+	var cycle := ElectionCycle.cycle_ahead(today, DataDB.election_cycles)
+	var final_poll := not cycle.is_empty() and today == CampaignPolls.final_poll_day(int(cycle["day"]))
+	var range_values := CampaignPolls.reading(election_strength, phase, final_poll, run_seed, today)
+	var source := CampaignPolls.source(phase, campaign_poll_late)
+	if phase != ElectionCycle.BUILDING:
+		campaign_poll_late += 1
+	var inputs := {"alignment": party_alignment(), "party_support": int(meta.get("Party support", 0)), "committee_standing": committee_standing()}
+	var outlook := CampaignPolls.outlook(range_values, inputs)
+	var selected := str(selection_of(str(info["cycle_id"])).get("outcome", ""))
+	var parts := election_parts()
+	var movers := CampaignPolls.movers(campaign_poll_parts, parts)
+	var previous_mid := -1.0
+	if not campaign_polls.is_empty():
+		var last_poll: Dictionary = campaign_polls[campaign_polls.size() - 1]
+		previous_mid = (float(last_poll["low"]) + float(last_poll["high"])) / 2.0
+	var poll := {"date": today, "source": source, "low": int(range_values["low"]), "high": int(range_values["high"]), "likely": str(outlook["likely"]),
+		"could_be": str(outlook["could_be"]), "selected": selected, "previous_mid": previous_mid, "up": str(movers["up"]), "down": str(movers["down"]), "final": final_poll}
+	campaign_polls.append(poll)
+	campaign_last_poll = today
+	campaign_poll_parts = parts
+	return poll
+
+
 ## Opens a venue that a scene unlocks (a no-op for an ID that is already open).
 func open_venue(venue_id: String) -> void:
 	if not venue_id.is_empty() and not venues_opened.has(venue_id):
 		venues_opened.append(venue_id)
+		if venue_id == CAMPAIGN_VENUE and campaign_office_opened_on < 0:
+			campaign_office_opened_on = campaign_today()
 
 
 ## Whether a venue is open to the player: any venue without Unlock `scene`, and a scene venue once opened.

@@ -2898,5 +2898,27 @@
     "location": "District",
     "needs_place": null,
     "lead_organizations": null
+  },
+  {
+    "event_id": "EV134",
+    "title": "Stepping Aside",
+    "flavor": "The party's notice of candidates goes up on the board outside the Capitol, and your name is not on it. You chose that some time ago. There is still a campaign to run; it just isn't yours.",
+    "trigger": "Dated",
+    "available": "Weekday",
+    "hours": 1,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": null,
+    "cooldown_hours": null,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": null,
+    "needs_dues_owed": null,
+    "on_date": "27.10.11",
+    "speaker_title": null,
+    "seasons": null,
+    "location": "Capitol",
+    "needs_place": null,
+    "lead_organizations": null
   }
 ]

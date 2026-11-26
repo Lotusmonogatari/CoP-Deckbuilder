@@ -2361,3 +2361,23 @@ The campaign trail now has scenes of its own: a storefront that opens the Campai
 | Screens | The green CAMPAIGN MOMENT! card; {colleague} and {campaign_staffer} filled in; a choice whose Needs fail is not shown; a Random scene says it came by itself. |
 | Tests | 10 in `test_campaign_moments.gd`, 13 in `test_campaign_scenes.gd`. |
 | Economy map | FL576 and FL577. |
+
+## P20 phase D: selection, polls, Sengoku no Hi and the run's end (2026-11-26, Cameron; branch `feature/p20c-campaign-moments`, built on phase C)
+
+| Piece | What was done |
+|---|---|
+| Screens | `CampaignCards`: the Candidate Selection Committee card, the poll card and the end-of-run card, shown before anything else on the day they are owed (`OfficeScreen._show_campaign_card_if_due`). |
+| Rules | `ElectionOutcome` (a stub: every selected player is seated; its header comment keeps the decided direction), `ElectionCycle.selection_owed` and `election_owed`. |
+| State | `GameState` selection, Election Day and poll functions; `campaign_locked` now returns `not_selected`, and `stepped_aside` only from the Banners date of the cycle the player does not run in (before it the office is open to build). Seven new saved fields. |
+| Content | DS25 / EV134 Stepping Aside (Mandatory, 27.10.11); 14 Text rows (card tags, score and trend lines); Rules `campaign_committee_org` = BO32. Build script `tools/workbook/archive/p20d_build.py`. |
+| End of the run | **Decision for Cameron:** the project had only Resign as an end of run, so Not Selected and stepping aside reuse it (a card with Goodbye, the save deleted, the title screen). A fuller ending screen can replace it. |
+| Tests | 13 in `test_campaign_run.gd`; the Campaign click test now also covers the selection card and the Election Day end. |
+
+**Scripted runs** (`test_campaign_run.gd`, 18.10.15 to 21.12.13, Relaxed is not set, standard pressure; the player opens the office on 18.11.01, hires the three office staff, takes campaign actions every week):
+
+| Run | Polls | Strength | Alignment | Score | Outcome |
+|---|---|---|---|---|---|
+| Steady (Party support 70, nothing else lifted) | 43 | 32 | 50 | 37 | Not Selected |
+| Strong (Party support 90, committee standing 80, awareness 70 and 60, Constituency 75) | 43 | 55 | 50 | 61 | Single-Member District, seated |
+
+The steady player falls short of the 40 line, which is the point of the bot checkpoint that follows (does a typical player reach it?).

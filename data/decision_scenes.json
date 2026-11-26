@@ -762,5 +762,35 @@
     "needs": [
       "campaign_staff_free"
     ]
+  },
+  {
+    "scene_id": "DS25",
+    "event_id": "EV134",
+    "kind": "Mandatory",
+    "opens": "27.10.11",
+    "closes": null,
+    "office": "Capitol",
+    "speaker": null,
+    "second_speaker": null,
+    "speaker_face": "neutral",
+    "scene_picture": null,
+    "follows": null,
+    "delay": null,
+    "follow_if": null,
+    "activates": null,
+    "notes": "P20 phase D (2026-11-26). Stepping Aside: narration only, no speaker. Claude's draft for Cameron to rewrite.",
+    "whip_bill": null,
+    "whip_line": null,
+    "minister": null,
+    "vote_bill": null,
+    "max_follow_ups": null,
+    "must_end_by": null,
+    "card": "Campaign",
+    "weight": null,
+    "weight_late": null,
+    "repeat": null,
+    "cooldown_weeks": null,
+    "phase": null,
+    "needs": null
   }
 ]

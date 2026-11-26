@@ -12983,5 +12983,103 @@
     "english": "A moment on the campaign trail. It came by itself, and you can answer it now.",
     "placeholders": null,
     "notes": "P20 phase C (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.tag",
+    "where": "P20 campaign: selection.tag",
+    "english": "Candidate selection",
+    "placeholders": null,
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.score_line",
+    "where": "P20 campaign: selection.score_line",
+    "english": "Committee score: {score} of 100",
+    "placeholders": "score",
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.part_line",
+    "where": "P20 campaign: selection.part_line",
+    "english": "{name}: {value}",
+    "placeholders": "name, value",
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.intro",
+    "where": "P20 campaign: selection.intro",
+    "english": "The committee has read your file.",
+    "placeholders": null,
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.not_selected_note",
+    "where": "P20 campaign: selection.not_selected_note",
+    "english": "Your own campaign is closed. The campaign staff have gone home.",
+    "placeholders": null,
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.selected_note",
+    "where": "P20 campaign: selection.selected_note",
+    "english": "The campaign goes on. Sengoku no Hi is waiting.",
+    "placeholders": null,
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.tag",
+    "where": "P20 campaign: poll.tag",
+    "english": "Poll",
+    "placeholders": null,
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.trend_first",
+    "where": "P20 campaign: poll.trend_first",
+    "english": "The first poll of this campaign.",
+    "placeholders": null,
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.trend_up",
+    "where": "P20 campaign: poll.trend_up",
+    "english": "Up from the last poll, which read about {last}.",
+    "placeholders": "last",
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.trend_down",
+    "where": "P20 campaign: poll.trend_down",
+    "english": "Down from the last poll, which read about {last}.",
+    "placeholders": "last",
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.trend_same",
+    "where": "P20 campaign: poll.trend_same",
+    "english": "About where the last poll left you ({last}).",
+    "placeholders": "last",
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.final",
+    "where": "P20 campaign: poll.final",
+    "english": "The final poll before Sengoku no Hi.",
+    "placeholders": null,
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.movers_heading",
+    "where": "P20 campaign: poll.movers_heading",
+    "english": "What moved",
+    "placeholders": null,
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
+  },
+  {
+    "key": "game_over.tag",
+    "where": "P20 campaign: game_over.tag",
+    "english": "The end",
+    "placeholders": null,
+    "notes": "P20 phase D (2026-11-26); a draft for Cameron to edit."
   }
 ]

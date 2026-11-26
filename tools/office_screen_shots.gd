@@ -363,6 +363,20 @@ func _popup(office: Node, kind: String) -> Overlay:
 		"lead":
 			office._present_event("EV02", true)
 			return office.get_node("EventPanel")
+		"selection", "selectionno", "poll", "endrun", "endaside":
+			# The campaign's system cards (P20 phase D): the committee's decision, a poll, and the end of the run.
+			var result := {"cycle_id": "EC01", "strength": 55.0, "alignment": 50.0, "influence": 85.0, "score": 61, "outcome": "smd"}
+			if kind == "selectionno":
+				result = {"cycle_id": "EC01", "strength": 22.0, "alignment": 50.0, "influence": 30.0, "score": 31, "outcome": "not_selected"}
+			if kind == "poll":
+				office._campaign_card_panel.open_card(CampaignCards.poll_config({"date": GameState.campaign_today(), "source": "poll.source.pr02", "low": 47, "high": 63,
+					"likely": "smd", "could_be": "list", "selected": "", "previous_mid": 48.0, "up": "poll.up.capital", "down": "poll.down.district", "final": false}), "Continue")
+				return office._campaign_card_panel
+			if kind == "endrun" or kind == "endaside":
+				office._campaign_end_panel.open_card(CampaignCards.end_config("not_selected" if kind == "endrun" else "stepped_aside"), "Goodbye")
+				return office._campaign_end_panel
+			office._campaign_card_panel.open_card(CampaignCards.selection_config(result), "Continue")
+			return office._campaign_card_panel
 		"moment", "momentstaff":
 			# A CAMPAIGN MOMENT! (P20 phase C): a colleague asks for money (EV131), or for a campaign staffer (EV132, with one hired).
 			GameState.open_venue("VN10")

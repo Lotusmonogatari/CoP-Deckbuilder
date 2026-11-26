@@ -155,3 +155,21 @@ static func start_of(phase: String, date: int, cycles: Array) -> int:
 		ELECTION_DAY:
 			return int(cycle["day"])
 	return -1
+
+
+## The first cycle (earliest Election Day) the player runs in whose Campaign Open is today or earlier and whose id is not in `done`: the one whose
+## selection card is owed. {} when none. `done` is the cycle IDs that already have a selection result. The card is owed from Campaign Open up to
+## and including Election Day (a player who somehow reaches Election Day without one still gets it).
+static func selection_owed(date: int, cycles: Array, done: Array) -> Dictionary:
+	for cycle: Dictionary in normalized(cycles):
+		if bool(cycle["player_runs"]) and date >= int(cycle["open"]) and not done.has(str(cycle["id"])):
+			return cycle
+	return {}
+
+
+## The first cycle whose Election Day is today or earlier and that has not been settled (its id is not in `done`): {} when none.
+static func election_owed(date: int, cycles: Array, done: Array) -> Dictionary:
+	for cycle: Dictionary in normalized(cycles):
+		if date >= int(cycle["day"]) and not done.has(str(cycle["id"])):
+			return cycle
+	return {}

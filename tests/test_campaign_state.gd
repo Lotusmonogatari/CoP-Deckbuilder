@@ -18,7 +18,7 @@ func after_each() -> void:
 
 ## Moves the calendar to the first week whose Monday is in `phase`, and returns false when none is (a data change that broke the test).
 func _go_to(phase: String, work_hours: int = 0) -> bool:
-	for week in range(1, 400):
+	for week in range(1, 700):
 		GameState.calendar = {"week": week, "phase": "work", "hours": work_hours}
 		if str(GameState.election_phase()["phase"]) == phase and bool(GameState.election_phase()["player_runs"]):
 			return true
@@ -66,9 +66,9 @@ func test_a_closed_office_refuses() -> void:
 
 func test_the_other_cycle_locks_the_office_for_a_player_who_does_not_run() -> void:
 	var found := false
-	for week in range(1, 400):
+	for week in range(1, 700):
 		GameState.calendar = {"week": week, "phase": "work", "hours": 0}
-		if not bool(GameState.election_phase()["player_runs"]) and not str(GameState.election_phase()["cycle_id"]).is_empty():
+		if not bool(GameState.election_phase()["player_runs"]) and str(GameState.election_phase()["phase"]) != "building":
 			found = true
 			break
 	assert_true(found, "the data has a cycle the player does not run in")
@@ -211,7 +211,7 @@ func test_a_missed_banner_shows_late_but_only_the_newest() -> void:
 
 
 func test_no_banner_for_a_cycle_the_player_does_not_run_in() -> void:
-	for week in range(1, 400):
+	for week in range(1, 700):
 		GameState.calendar = {"week": week, "phase": "work", "hours": 0}
 		var info := GameState.election_phase()
 		if not str(info["cycle_id"]).is_empty() and not bool(info["player_runs"]):

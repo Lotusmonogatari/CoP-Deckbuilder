@@ -497,5 +497,11 @@
     "options": "yen amounts separated by semicolons",
     "question": "The amounts the Donate to your campaign button offers (Funds moved into the campaign fund, one way).",
     "notes": "P20 phase B (2026-11-26, Cameron)."
+  },
+  "campaign_committee_org": {
+    "value": "BO32",
+    "options": "an organization ID",
+    "question": "The organization that stands for the Candidate Selection Committee (its standing with the player counts toward the selection score).",
+    "notes": "P20 phase D (2026-11-26, Cameron)."
   }
 }
