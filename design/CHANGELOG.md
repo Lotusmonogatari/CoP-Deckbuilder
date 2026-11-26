@@ -2318,3 +2318,18 @@ Tooling only: no game data, rules or code paths changed. Built from Cameron's "E
 | `economy_week.md` / `.json` | the standard and early weeks in hours-equivalent; dues and wages; the forced-sink share against 35-50%; the levers in no catalog row |
 
 `verify.sh` now runs `tools/test_economy_map.py` and `economy_map.py --check`: a change to Balance, the shop, events, staff or stage pay must be followed by rerunning the tool and committing the outputs. `tests/test_economy_week.gd` runs the real `PartyDues` and `StaffLoyalty` on the tool's week inputs. DRAFT weekly frequencies and typical stock levels are constants at the top of the script. `design/economy/.gdignore` stops Godot importing the CSVs.
+
+## P20 phase A: election and campaign, data and rules (2026-11-26, Cameron; branch `feature/p20a-campaign-rules`)
+
+Source: Cameron's "Election and campaign: final guidance" and the P20 prompt (`design/proposals/`). No screens in this phase.
+
+| Piece | What was done |
+|---|---|
+| Workbook | Tabs **Election Cycles** (EC01 to EC03) and **Campaign Staff** (CS01 to CS06, placeholder names); **VN10 Campaign Office** and activities **CM01 to CM04**; new columns on Decision Scenes (7) and Event Choices (5); 46 Balance rows; Rules rows `campaign_van_speech_penalty_orgs`, `campaign_van_voters_org`, `campaign_office_open_date`; 80 Text rows (the prompt's 72 plus 7 refusal reasons and `election.c_capital`). Build script: `tools/workbook/archive/p20a_build.py`. |
+| Exporter | New specs and checks for Election Cycles, Campaign Staff, the Random scene kind and its columns, the `venue:`, `campaign_staff:` and `challenge:` Activates, Follow If `challenge_met` and `challenge_failed`, event Trigger `Campaign`, venue Unlock `scene`, and the campaign choice columns. `tools/test_campaign_exporter.py` (46 cases). |
+| Rules | `ElectionCycle`, `CampaignOffice`, `CampaignStaff`, `PartyAlignment`, `Selection`, `CampaignPolls`; `ElectionStrength` reads campaign capital and the campaign fund and rises faster in mustering. |
+| State | `campaign_fund`, `campaign_capital`, `venues_opened` saved with the run; older saves load with none; `GameState.election_phase()`, `open_venue()`, `venue_is_open()`. VN10 stays off the map until opened. |
+| Tests | 11 election cycle, 25 campaign office, 12 campaign staff, 8 party alignment, 5 selection, 15 polls, 10 data and state, and 3 changed in `test_election_strength.gd`. |
+| Economy map | Refreshed; FL525 (election strength) describes the new inputs. |
+
+**Decided without the prompt** (questions for Cameron): campaign capital fades by `floor(capital x 5%)` (so under 20 it does not fade); the Balance row `Election: Max Experience` keeps its name though it now caps the capital input; `Election: Experience Target` was removed (nothing reads it); the Banners day counts as mustering; a poll outlook shows the lower outcome as "could be" when both ends differ from the middle; the Voters' organization for the Announcer bonus is a Rules row (BO18); refusal reasons are Text rows `campaign.reason.*`. The merge check that needs a scripted run to Sengoku no Hi waits for phases B to D.

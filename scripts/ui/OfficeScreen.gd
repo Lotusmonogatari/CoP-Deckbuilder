@@ -2611,7 +2611,7 @@ func _election_cards(look: Dictionary) -> Array[Control]:
 	var names := {
 		"district": Text.say("awareness.district"), "national": Text.say("awareness.national"),
 		"constituency": Text.say("election.c_constituency"), "organizations": Text.say("election.c_organizations"),
-		"war_chest": Text.say("election.c_war_chest"), "experience": Text.say("election.c_experience"),
+		"war_chest": Text.say("election.c_war_chest"), "capital": Text.say("election.c_capital"),
 		"record": Text.say("election.c_record"), "party": Text.say("election.c_party")}
 	for part: Dictionary in GameState.election_parts():
 		var id := str(part["id"])

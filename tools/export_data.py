@@ -1353,10 +1353,19 @@ SHEETS = {
             ("Task Pool Days", "task_pool_days", "int"),
             # 2026-11-20 (two offices): Capitol, District or Either (blank means Either).
             ("Location", "location", "str"),
+            # P20 (2026-11-26, Cameron): the campaign. Campaign Fund Delta moves the campaign fund (a cost is negative); Donate Funds moves that
+            # many of the player's Funds into it; Lend Campaign Staff Weeks lends a free campaign staff member for that many weeks; Favor Owed
+            # (Y) notes that the colleague of the scene now owes the player; Needs hides the choice unless every condition holds.
+            ("Campaign Fund Delta", "campaign_fund_delta", "int"),
+            ("Donate Funds", "donate_funds", "int"),
+            ("Lend Campaign Staff Weeks", "lend_weeks", "int"),
+            ("Favor Owed", "favor_owed", "str"),
+            ("Needs", "needs", "id_list"),
         ],
         "optional": ["Starts Level", "Commitment", "Promise Kept", "Promise Broken", "Promise Kept Text",
                      "Delegate Role", "Delegate Hours",
-                     "Task Pool Family", "Task Pool Change", "Task Pool Days", "Location"],
+                     "Task Pool Family", "Task Pool Change", "Task Pool Days", "Location",
+                     "Campaign Fund Delta", "Donate Funds", "Lend Campaign Staff Weeks", "Favor Owed", "Needs"],
     },
     # Decision scenes (2026-11-21, Cameron): the calendar's own DECISION! moments. A scene names the event that holds its title,
     # flavor, choices and effects, says whether it is Mandatory (opens by itself and moves you) or Optional (opened from the Events
@@ -1391,8 +1400,63 @@ SHEETS = {
             ("Vote Bill", "vote_bill", "str"),
             ("Max Follow-Ups", "max_follow_ups", "int"),
             ("Must End By", "must_end_by", "str"),
+            # P20 (2026-11-26, Cameron): Card is Decision (default) or Campaign (the CAMPAIGN MOMENT! card). A Random scene is drawn by Weight
+            # (Weight Late during mustering and the campaign); Repeat (Y) lets it come again after Cooldown Weeks; Phase limits it to phases of
+            # the election cycle; Needs holds it back until every condition is true.
+            ("Card", "card", "str"),
+            ("Weight", "weight", "int"),
+            ("Weight Late", "weight_late", "int"),
+            ("Repeat", "repeat", "str"),
+            ("Cooldown Weeks", "cooldown_weeks", "int"),
+            ("Phase", "phase", "id_list"),
+            ("Needs", "needs", "id_list"),
         ],
-        "optional": ["Whip Bill", "Whip Line", "Minister", "Vote Bill", "Max Follow-Ups", "Must End By"],
+        "optional": ["Whip Bill", "Whip Line", "Minister", "Vote Bill", "Max Follow-Ups", "Must End By",
+                     "Card", "Weight", "Weight Late", "Repeat", "Cooldown Weeks", "Phase", "Needs"],
+    },
+    # P20 (2026-11-26, Cameron): the election cycles. Banners < Campaign Open < Election Day (YY.MM.DD). Exactly one cycle may have Player Runs N,
+    # and it is the last: the player steps aside and the run ends on its Election Day.
+    "Election Cycles": {
+        "out": "election_cycles.json",
+        "key": "cycle_id",
+        "id_pattern": r"^EC\d+$",
+        "optional_sheet": True,
+        "optional": ["Note"],
+        "columns": [
+            ("Cycle ID", "cycle_id", "id"),
+            ("Banners Date", "banners_date", "str"),
+            ("Campaign Open Date", "campaign_open_date", "str"),
+            ("Election Day", "election_day", "str"),
+            ("Player Runs", "player_runs", "str"),
+            ("Note", "note", "str"),
+        ],
+    },
+    # P20: the campaign's own staff pool (never the regular office staff). Prices and rewards are Balance rows (campaign_*), not columns.
+    "Campaign Staff": {
+        "out": "campaign_staff.json",
+        "key": "staff_id",
+        "id_pattern": r"^CS\d+$",
+        "optional_sheet": True,
+        "optional": ["Name JP", "Romaji", "Biography", "Role Flavor Text", "Gift Likes", "Gift Dislikes", "Gift Like Loyalty",
+                     "Gift Neutral Loyalty", "Gift Dislike Loyalty", "Note"],
+        "columns": [
+            ("Staff ID", "staff_id", "id"),
+            ("Staff Role", "role", "str"),
+            ("Name", "name", "str"),
+            ("Name JP", "name_jp", "str"),
+            ("Romaji", "romaji", "str"),
+            ("Starting Tier for Staff Role", "starting_tier", "int"),
+            ("Highest Upgradable Tier for Staff Role", "highest_tier", "int"),
+            ("Biography", "biography", "str"),
+            ("Role Flavor Text", "role_flavor", "str"),
+            ("Gift Likes", "gift_likes", "list"),
+            ("Gift Dislikes", "gift_dislikes", "list"),
+            ("Gift Like Loyalty", "gift_like_loyalty", "int"),
+            ("Gift Neutral Loyalty", "gift_neutral_loyalty", "int"),
+            ("Gift Dislike Loyalty", "gift_dislike_loyalty", "int"),
+            ("Available", "available", "str"),
+            ("Note", "note", "str"),
+        ],
     },
     # Capitol venues (P16, 2026-11-23, Cameron): the places the player steps out to from the Capitol office. A venue is a place on the map
     # (Capitol Building or Capital Area), an activity is what you do there (one visit costs its hours once), and a venue line is one
@@ -1421,7 +1485,7 @@ SHEETS = {
     "Venue Activities": {
         "out": "venue_activities.json",
         "key": "activity_id",
-        "id_pattern": r"^VA\d+$",
+        "id_pattern": r"^(VA|CM)\d+$",   # CM01 to CM04: the Campaign Office's (P20, 2026-11-26)
         "optional_sheet": True,
         "optional": ["Per Day", "Per Week", "Condition Type", "Condition Target", "Condition Op", "Condition Value",
                      "Rewards", "District Awareness Δ", "Staff Hours", "Bonus After Uses", "Bonus Staff Hours", "Result Text", "Chance",
@@ -3522,8 +3586,8 @@ def validate(data, report):
     for row in data.get("events", []):
         eid = row["event_id"]
         event_ids.add(eid)
-        if row["trigger"] not in ("Buyable", "Random", "Dated", "Followup", "Train"):
-            report.error("Events", f"{eid} has Trigger '{row['trigger']}' — expected Buyable, Random, Dated, Followup or Train")
+        if row["trigger"] not in ("Buyable", "Random", "Dated", "Followup", "Train", "Campaign"):
+            report.error("Events", f"{eid} has Trigger '{row['trigger']}' — expected Buyable, Random, Dated, Followup, Train or Campaign")
         if row["trigger"] == "Dated":
             ok_date = False
             try:
@@ -4029,9 +4093,15 @@ def check_event_leads(data, report):
                 report.warn(f"Events {eid}", f"lead {lead} ({names[lead]}) is not named in the event's own title or flavor text")
 
 
-SCENE_KINDS = ("Mandatory", "Optional")
+SCENE_KINDS = ("Mandatory", "Optional", "Random")
 MAX_SCENE_FOLLOW_UPS = 5
-SCENE_ACTIVATIONS = ("level", "stage", "vote", "event", "unlock")
+SCENE_ACTIVATIONS = ("level", "stage", "vote", "event", "unlock", "venue", "campaign_staff", "challenge")
+SCENE_CARDS = ("Decision", "Campaign")
+CAMPAIGN_PHASES = ("any", "building", "mustering", "campaign")
+CAMPAIGN_NEEDS = ("office_open", "van", "van_speech_done", "campaign_staff_hired", "campaign_staff_free")
+CHALLENGE_FOLLOW_IF = ("challenge_met", "challenge_failed")
+CAMPAIGN_ROLES = ("Campaign Organizer", "Campaign Fundraiser", "Campaign Van Announcer")
+CAMPAIGN_AVAILABLE = ("office", "chain")
 SCENE_FACES = ("neutral", "attacking", "gaining")
 
 
@@ -4050,8 +4120,9 @@ def check_decision_scenes(data, report):
     Optional), an office, speakers that exist (opponent, staff or visitor IDs) and a face. A picture with no file is only a
     warning. Follow-ups and Activates are checked in the later phases that build them."""
     events = {str(e.get("event_id")): e for e in data.get("events", [])}
+    campaign_staff = {str(s.get("staff_id")) for s in data.get("campaign_staff", [])}
     people = {str(o.get("opp_id")) for o in data.get("opponents", [])} | {str(s.get("staff_id")) for s in data.get("staff", [])} \
-        | {str(v.get("visitor_id")) for v in data.get("visitors", [])}
+        | {str(v.get("visitor_id")) for v in data.get("visitors", [])} | campaign_staff | {"colleague"}
     bg_dir = REPO_ROOT / "assets" / "backgrounds"
     seen_ids, seen_events = set(), set()
     for scene in data.get("decision_scenes", []):
@@ -4068,7 +4139,14 @@ def check_decision_scenes(data, report):
             if eid in seen_events:
                 report.error(where, f"Event {eid} already belongs to another scene")
             seen_events.add(eid)
-            if scene.get("follows"):
+            if scene.get("kind") == "Random":
+                if str(event.get("trigger")) != "Campaign":
+                    report.error(where, f"Event {eid} has Trigger '{event.get('trigger')}'; a Random scene's event must be Campaign")
+                if scene.get("follows") or scene.get("opens"):
+                    report.error(where, "A Random scene is a first scene with no Opens; it is drawn by Weight")
+            elif str(event.get("trigger")) == "Campaign":
+                report.error(where, f"Event {eid} has Trigger Campaign, which only a Random scene may use")
+            elif scene.get("follows"):
                 if str(event.get("trigger")) != "Followup":
                     report.error(where, f"Event {eid} has Trigger '{event.get('trigger')}'; a follow-up's event must be Followup")
                 if scene.get("opens"):
@@ -4080,11 +4158,32 @@ def check_decision_scenes(data, report):
             elif str(event.get("on_date") or "") != str(scene.get("opens") or ""):
                 report.error(where, f"Opens is {scene.get('opens')!r} but Event {eid}'s On Date is {event.get('on_date')!r}; they must match")
         if scene.get("kind") not in SCENE_KINDS:
-            report.error(where, f"Kind is {scene.get('kind')!r}; it must be Mandatory or Optional")
+            report.error(where, f"Kind is {scene.get('kind')!r}; it must be Mandatory, Optional or Random")
         if scene.get("follows") and not scene.get("delay") and scene.get("delay") != 0:
             report.warn(where, "A follow-up with no Delay comes due the day the earlier scene is answered")
-        if not scene.get("follows") and not _real_date(scene.get("opens")):
+        if not scene.get("follows") and scene.get("kind") != "Random" and not _real_date(scene.get("opens")):
             report.error(where, f"Opens {scene.get('opens')!r} is not a real YY.MM.DD date")
+        # P20 columns: the card, the Random draw (Weight, Weight Late, Repeat, Cooldown Weeks), the phases it may appear in and what it needs.
+        if scene.get("card") not in (None, "") and scene["card"] not in SCENE_CARDS:
+            report.error(where, f"Card is {scene.get('card')!r}; it must be Decision or Campaign")
+        for column in ("phase", "needs"):
+            allowed = CAMPAIGN_PHASES if column == "phase" else CAMPAIGN_NEEDS
+            for token in scene.get(column) or []:
+                if str(token) not in allowed:
+                    report.error(where, f"{column.title()} '{token}' is not one of {', '.join(allowed)}")
+        if scene.get("kind") == "Random":
+            if not scene.get("weight") or int(scene["weight"]) < 1:
+                report.error(where, "A Random scene needs a Weight of 1 or more")
+            if scene.get("weight_late") is not None and int(scene["weight_late"]) < 0:
+                report.error(where, "Weight Late cannot be negative")
+            if scene.get("repeat") not in (None, "", "Y"):
+                report.error(where, f"Repeat is {scene.get('repeat')!r}; it must be Y or blank")
+            if scene.get("cooldown_weeks") is not None and int(scene["cooldown_weeks"]) < 0:
+                report.error(where, "Cooldown Weeks cannot be negative")
+        else:
+            for column in ("weight", "weight_late", "repeat", "cooldown_weeks", "phase"):
+                if scene.get(column) not in (None, "", []):
+                    report.error(where, f"{column.replace('_', ' ').title()} is only for Random scenes")
         if scene.get("kind") == "Optional":
             if not _real_date(scene.get("closes")):
                 report.error(where, f"An Optional scene needs a real Closes date; it has {scene.get('closes')!r}")
@@ -4121,10 +4220,20 @@ def check_decision_scenes(data, report):
             if kind not in SCENE_ACTIVATIONS or not ident:
                 report.error(where, f"'{piece}' is not kind:ID with a kind of {', '.join(SCENE_ACTIVATIONS)}")
                 continue
+            if kind == "challenge":
+                # P20: challenge:<activity>x<count>in<days>, e.g. challenge:CM01x3in14 (three CM01 actions within 14 days of the choice).
+                m = re.fullmatch(r"([A-Z]+\d+)x(\d+)in(\d+)", ident)
+                if not m or int(m.group(2)) < 1 or int(m.group(3)) < 1:
+                    report.error(where, f"'{piece}' is not challenge:<activity>x<count>in<days> with a count and days of 1 or more")
+                elif m.group(1) not in {str(a.get("activity_id")) for a in data.get("venue_activities", []) if str(a.get("kind", "")).startswith("campaign_")}:
+                    report.error(where, f"challenge:{ident} names '{m.group(1)}', which is not a campaign activity")
+                continue
             known = {"level": set(level_ids), "unlock": set(level_ids), "stage": stage_ids, "vote": bill_ids,
-                     "event": {str(e.get('event_id')) for e in data.get('events', [])}}[kind]
+                     "event": {str(e.get('event_id')) for e in data.get('events', [])},
+                     "venue": {str(v.get("venue_id")) for v in data.get("venues", [])}, "campaign_staff": campaign_staff}[kind]
             if ident not in known:
-                report.error(where, f"{kind}:{ident} is not a known {'bill' if kind == 'vote' else kind}")
+                label = {"vote": "bill", "venue": "venue", "campaign_staff": "campaign staff ID"}.get(kind, kind)
+                report.error(where, f"{kind}:{ident} is not a known {label}")
             for letter in [x.strip().upper() for x in limit.split(",") if x.strip()]:
                 if letter not in event_letters:
                     report.error(where, f"'@{letter}' is not a choice of event {scene.get('event_id')}")
@@ -4144,6 +4253,10 @@ def check_decision_scenes(data, report):
             report.error(where, f"Follows '{scene['follows']}', which is not a Scene ID")
             continue
         for letter in scene.get("follow_if") or []:
+            if str(letter).lower() in CHALLENGE_FOLLOW_IF:
+                if "challenge:" not in str(parent.get("activates") or ""):
+                    report.error(where, f"Follow If '{letter}' needs {parent.get('scene_id')} to start a challenge (Activates challenge:...)")
+                continue
             if str(letter).upper() not in letters.get(str(parent.get("event_id")), set()):
                 report.error(where, f"Follow If '{letter}' is not a choice of {parent.get('scene_id')}'s event {parent.get('event_id')}")
         seen, cursor = {sid}, parent
@@ -4275,7 +4388,8 @@ def check_whip_and_vote_scenes(data, report, by_id, roots):
                 report.error(f"Decision Scenes {sid}", f"is a vote on {datetime.date.fromordinal(day).strftime('%y.%m.%d')}, after {root}'s Must End By {deadline}")
 
 
-VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act", "research", "office", "listen", "perform")
+VENUE_KINDS = ("chat", "read", "watch", "train", "show", "travel", "act", "research", "office", "listen", "perform",
+               "campaign_fundraise", "campaign_letters", "campaign_mailings", "campaign_van")
 # The pseudo-venue of an activity done at the player's own office (Catch Up on Paperwork): no Venues row.
 OFFICE_VENUE = "OFFICE"
 CHOICE_STEPS = ("seat", "meal")
@@ -4361,6 +4475,69 @@ def check_schedule_cells(row, where, report):
         ends = part.split("-")
         if len(ends) > 2 or not all(e.strip().isdigit() and 1 <= int(e) <= 12 for e in ends):
             report.error(where, f"Months '{part}' must be a month number 1 to 12 or a range such as 10-12 or 8-3")
+
+
+def check_election_cycles(data, report):
+    """Election Cycles (P20, 2026-11-26): three real dates in order (Banners < Campaign Open < Election Day), the next cycle after the one before,
+    Player Runs Y or N, and exactly one cycle with N, which must be the last (the run ends on its Election Day)."""
+    cycles = data.get("election_cycles", [])
+    if not cycles:
+        return
+    runs = []
+    for row in cycles:
+        where = f"Election Cycles {row.get('cycle_id')}"
+        dates = []
+        for column, label in (("banners_date", "Banners Date"), ("campaign_open_date", "Campaign Open Date"), ("election_day", "Election Day")):
+            if not _real_date(row.get(column)):
+                report.error(where, f"{label} {row.get(column)!r} is not a real YY.MM.DD date")
+            dates.append(str(row.get(column)))
+        if all(_real_date(d) for d in dates) and not (dates[0] < dates[1] < dates[2]):
+            report.error(where, "Banners Date, Campaign Open Date and Election Day must be in that order")
+        if row.get("player_runs") not in ("Y", "N"):
+            report.error(where, f"Player Runs is {row.get('player_runs')!r}; it must be Y or N")
+        runs.append((dates[2], row.get("player_runs"), str(row.get("cycle_id"))))
+    for earlier, later in zip(cycles, cycles[1:]):
+        if str(later.get("banners_date")) <= str(earlier.get("election_day")):
+            report.error(f"Election Cycles {later.get('cycle_id')}", f"Banners Date must come after the Election Day of {earlier.get('cycle_id')}")
+    stepping_aside = [c for c in cycles if c.get("player_runs") == "N"]
+    if len(stepping_aside) > 1:
+        report.error("Election Cycles", "At most one cycle may have Player Runs N")
+    elif stepping_aside and str(stepping_aside[0].get("cycle_id")) != str(max(cycles, key=lambda c: str(c.get("election_day"))).get("cycle_id")):
+        report.error(f"Election Cycles {stepping_aside[0].get('cycle_id')}", "The cycle with Player Runs N must be the last one")
+
+
+def check_campaign_staff(data, report):
+    """Campaign Staff (P20): CS IDs, one of the three campaign roles, tiers 0 to 2 with the starting tier not above the highest, Available
+    office or chain, and gift likes and dislikes that are shop items. Prices and rewards are Balance rows, so no such columns exist."""
+    items = {str(i.get("item_id")) for i in data.get("shop", [])}
+    for row in data.get("campaign_staff", []):
+        where = f"Campaign Staff {row.get('staff_id')}"
+        if row.get("role") not in CAMPAIGN_ROLES:
+            report.error(where, f"Role {row.get('role')!r} must be one of {', '.join(CAMPAIGN_ROLES)}")
+        low, high = row.get("starting_tier"), row.get("highest_tier")
+        if low is None or high is None or not (0 <= int(low) <= int(high) <= 2):
+            report.error(where, "Starting Tier and Highest Tier must be 0 to 2, the starting tier not above the highest")
+        if row.get("available") not in CAMPAIGN_AVAILABLE:
+            report.error(where, f"Available is {row.get('available')!r}; it must be office or chain")
+        for column in ("gift_likes", "gift_dislikes"):
+            for item in row.get(column) or []:
+                if str(item) not in items:
+                    report.error(where, f"{column.replace('_', ' ').title()} '{item}' is not an item in the Shop tab")
+
+
+def check_campaign_choices(data, report):
+    """Event Choices (P20): Needs names known conditions, Favor Owed is Y or blank, and the campaign amounts are sensible."""
+    for row in data.get("event_choices", []):
+        where = f"Event Choices {row.get('event_id')} {row.get('choice')}"
+        for token in row.get("needs") or []:
+            if str(token) not in CAMPAIGN_NEEDS:
+                report.error(where, f"Needs '{token}' is not one of {', '.join(CAMPAIGN_NEEDS)}")
+        if row.get("favor_owed") not in (None, "", "Y"):
+            report.error(where, f"Favor Owed is {row.get('favor_owed')!r}; it must be Y or blank")
+        if row.get("donate_funds") is not None and int(row["donate_funds"]) < 0:
+            report.error(where, "Donate Funds cannot be negative")
+        if row.get("lend_weeks") is not None and int(row["lend_weeks"]) < 1:
+            report.error(where, "Lend Campaign Staff Weeks must be 1 or more")
 
 
 def check_stage_events(data, report):
@@ -4520,8 +4697,8 @@ def check_venues(data, report):
             report.error(where, f"Zone is {venue.get('zone')!r}; it must be Capitol Building, Capital Area or District")
         if venue.get("order") is None:
             report.error(where, "Order is blank")
-        if venue.get("unlock"):
-            report.warn(where, "Unlock is not used yet; the venue is open to everyone")
+        if venue.get("unlock") and str(venue["unlock"]) != "scene":
+            report.error(where, f"Unlock is {venue.get('unlock')!r}; the only value is 'scene' (opened by a Decision Scene's venue:{venue.get('venue_id')})")
     activity_pools = set()
     for activity in activities:
         where = f"Venue Activities {activity.get('activity_id')}"
@@ -5847,6 +6024,9 @@ def main():
     check_decision_scenes(data, report)
     check_area_characters(data, report)
     check_stage_events(data, report)
+    check_election_cycles(data, report)
+    check_campaign_staff(data, report)
+    check_campaign_choices(data, report)
     check_venue_choices(data, report)
     check_venues(data, report)
     check_library_documents(data, report)

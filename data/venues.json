@@ -124,5 +124,19 @@
     "open_days": "Any",
     "unlock": null,
     "overheard_every": null
+  },
+  {
+    "venue_id": "VN10",
+    "name": "Campaign Office",
+    "name_jp": "選挙事務所",
+    "romaji": "Senkyo Jimusho",
+    "zone": "District",
+    "order": 10,
+    "icon": "VEN_CAMPAIGN_OFFICE",
+    "background": "AREA_CAMPAIGN_OFFICE",
+    "blurb": "A folding table, a telephone and a stack of blank banners.",
+    "open_days": "Any",
+    "unlock": "scene",
+    "overheard_every": null
   }
 ]

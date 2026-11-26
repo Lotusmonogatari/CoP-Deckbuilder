@@ -17,13 +17,13 @@ func after_each() -> void:
 
 
 func _zero() -> Dictionary:
-	return {"district": 0, "national": 0, "constituency": 0, "org_share": 0.0, "funds": 0,
-		"xp_earned": 0, "laws_passed": 0, "party_support": 0, "dues_overdue": false}
+	return {"district": 0, "national": 0, "constituency": 0, "org_share": 0.0, "campaign_fund": 0,
+		"capital": 0, "laws_passed": 0, "party_support": 0, "dues_overdue": false}
 
 
 func _maxed() -> Dictionary:
-	return {"district": 100, "national": 100, "constituency": 100, "org_share": 1.0, "funds": 5000000,
-		"xp_earned": 99999, "laws_passed": 99, "party_support": 100, "dues_overdue": false}
+	return {"district": 100, "national": 100, "constituency": 100, "org_share": 1.0, "campaign_fund": 50000000,
+		"capital": 99999, "laws_passed": 99, "party_support": 100, "dues_overdue": false}
 
 
 func test_the_eight_maximums_add_to_one_hundred() -> void:
@@ -39,10 +39,13 @@ func test_nothing_in_scores_nothing() -> void:
 func test_each_input_contributes_in_proportion() -> void:
 	var inputs := _zero()
 	inputs["district"] = 50
-	inputs["funds"] = 250000
+	inputs["campaign_fund"] = 12500000
+	inputs["capital"] = 1500
 	var parts := ElectionStrength.components(_cfg, inputs)
 	assert_eq(float(parts[0]["points"]), 7.5, "half of 15")
-	assert_eq(float(parts[4]["points"]), 5.0, "half the war chest target")
+	assert_eq(float(parts[4]["points"]), 5.0, "half the war chest target, read from the campaign fund (25,000,000)")
+	assert_eq(parts[5]["id"], "capital", "campaign capital replaced experience")
+	assert_eq(float(parts[5]["points"]), 5.0, "half the capital target (3,000)")
 
 
 func test_overdue_dues_halve_party_backing() -> void:
@@ -77,12 +80,33 @@ func test_a_week_end_in_the_game_moves_the_stock() -> void:
 	assert_lte(GameState.election_strength, 2.5)
 
 
-func test_earned_xp_is_counted_but_spending_it_is_not() -> void:
+func test_earned_xp_is_still_counted_but_no_longer_feeds_election_strength() -> void:
 	var before := GameState.xp_earned_total
 	GameState._move_xp(100)
 	GameState._move_xp(-40)
-	assert_eq(GameState.xp_earned_total, before + 100)
+	assert_eq(GameState.xp_earned_total, before + 100, "the lifetime total is still kept (and saved)")
 	GameState.xp -= 60
+	assert_false(GameState.election_inputs().has("xp_earned"), "strength reads campaign capital now")
+
+
+func test_the_rise_limit_is_higher_during_mustering_only() -> void:
+	assert_eq(ElectionStrength.step(10.0, 90.0, _cfg, "building"), 12.5)
+	assert_eq(ElectionStrength.step(10.0, 90.0, _cfg, "mustering"), 16.0, "the sprint: 6 a week")
+	assert_eq(ElectionStrength.step(10.0, 90.0, _cfg, "announcement"), 16.0, "the Banners day starts mustering")
+	assert_eq(ElectionStrength.step(10.0, 90.0, _cfg, "campaign"), 12.5, "the campaign phase is not the sprint")
+	assert_eq(ElectionStrength.step(50.0, 10.0, _cfg, "mustering"), 48.5, "the fall is unchanged")
+
+
+func test_the_inputs_read_the_campaign_fund_and_capital() -> void:
+	var funds: int = GameState.meta["Funds"]
+	GameState.campaign_fund = 5000000
+	GameState.campaign_capital = 600
+	var inputs := GameState.election_inputs()
+	assert_eq(inputs["campaign_fund"], 5000000)
+	assert_eq(inputs["capital"], 600)
+	assert_eq(GameState.meta["Funds"], funds, "Funds are a separate ledger")
+	GameState.campaign_fund = 0
+	GameState.campaign_capital = 0
 
 
 func test_election_strength_is_saved() -> void:

@@ -101,11 +101,21 @@ static func seasonal_background(base_id: String, season: String, exists: Callabl
 const ZONE_DISTRICT := "District"
 
 
-## The venues the map lists at an office (the District's own places there, the Capitol's at the Capitol), in Order.
-static func venues_at(venues: Array, at_capitol: bool) -> Array:
+## The Unlock value of a venue that a Decision Scene opens (Activates venue:VN10, P20): until then the map does not list it.
+const UNLOCK_SCENE := "scene"
+
+
+## The venues the map lists at an office (the District's own places there, the Capitol's at the Capitol), in Order. A venue whose Unlock is
+## `scene` is listed only once its ID is in `opened` (the run's opened venues).
+static func venues_at(venues: Array, at_capitol: bool, opened: Array = []) -> Array:
 	var found: Array = []
 	for venue: Variant in venues:
-		if venue is Dictionary and (str((venue as Dictionary).get("zone", "")) == ZONE_DISTRICT) != at_capitol:
+		if not (venue is Dictionary):
+			continue
+		var unlock: Variant = (venue as Dictionary).get("unlock")
+		if unlock != null and str(unlock) == UNLOCK_SCENE and not opened.has(str((venue as Dictionary).get("venue_id", ""))):
+			continue
+		if (str((venue as Dictionary).get("zone", "")) == ZONE_DISTRICT) != at_capitol:
 			found.append(venue)
 	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return int(a.get("order", 0)) < int(b.get("order", 0)))
 	return found

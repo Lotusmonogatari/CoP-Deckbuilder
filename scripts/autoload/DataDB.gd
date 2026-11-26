@@ -34,7 +34,7 @@ const DATA_PATH := "res://data/"
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
 	"bill_components", "bill_level_templates", "patron_bills", "party_values",
-	"visit_questions", "visit_answers", "trade_questions", "lobbyist_lines", "places", "venues", "venue_activities", "venue_milestones", "library_documents", "area_characters", "stage_events", "venue_choices", "venue_lines",
+	"visit_questions", "visit_answers", "trade_questions", "lobbyist_lines", "places", "venues", "venue_activities", "venue_milestones", "library_documents", "area_characters", "stage_events", "election_cycles", "campaign_staff", "venue_choices", "venue_lines",
 	"floor_votes", "how_to_play", "law_effects", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders", "standing_links",
@@ -276,6 +276,9 @@ var area_characters: Array = []
 var venue_choices: Array = []
 ## Stage Events (2026-11-25): what is on at the Sapporo Stage by date range, and who performs.
 var stage_events: Array = []
+## The election calendar and the campaign staff pool (P20, 2026-11-26).
+var election_cycles: Array = []
+var campaign_staff: Array = []
 var venue_lines: Array = []
 ## The text of rows that ask for place tokens, as loaded, so choosing another protagonist refills them.
 var _place_templates: Dictionary = {}
@@ -463,6 +466,8 @@ func load_all() -> void:
 			"area_characters": area_characters = content if content is Array else []
 			"venue_choices": venue_choices = content if content is Array else []
 			"stage_events": stage_events = content if content is Array else []
+			"election_cycles": election_cycles = content if content is Array else []
+			"campaign_staff": campaign_staff = content if content is Array else []
 			"venue_lines": venue_lines = content if content is Array else []
 			"questions": questions = content
 			"sounds":

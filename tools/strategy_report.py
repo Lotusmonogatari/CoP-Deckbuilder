@@ -137,7 +137,7 @@ def main():
 
     # ---- Election Strength parts
     print("## 4. What Election Strength is made of (mean points by part)\n")
-    parts_order = ["district", "national", "constituency", "organizations", "war_chest", "experience", "record", "party"]
+    parts_order = ["district", "national", "constituency", "organizations", "war_chest", "capital", "record", "party"]
     out = []
     for sc, name, rs in rows[:5] + rows[-3:]:
         comp = defaultdict(list)

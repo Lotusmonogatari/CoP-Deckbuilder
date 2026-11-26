@@ -65,6 +65,7 @@ python3 tools/export_data.py || fail "the workbook has errors in it."
 python3 tools/test_venue_exporter.py > /dev/null || fail "the venue exporter checks (tools/test_venue_exporter.py) did not pass."
 # The economy map (P19, 2026-11-25): the four outputs in design/economy/ must match a fresh run, so a change to Balance, the shop, events,
 # staff or stage pay cannot leave the map stale. Fix: python3 tools/economy_map.py, then commit the result.
+python3 tools/test_campaign_exporter.py > /dev/null || fail "the campaign exporter checks (tools/test_campaign_exporter.py) did not pass."
 python3 tools/test_economy_map.py > /dev/null || fail "the economy map checks (tools/test_economy_map.py) did not pass."
 python3 tools/economy_map.py --check || fail "design/economy/ is out of date: run python3 tools/economy_map.py and commit the result."
 # Excel's "repair" prompt on opening the workbook comes from broken formula records.

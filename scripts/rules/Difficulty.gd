@@ -26,6 +26,7 @@ const REPLACES := {
 	"week_decay_multiplier": "week_decay_multiplier",
 	"promise_broken_standing": "promise_broken_standing",
 	"election_gain_per_week": "election_gain_per_week",
+	"election_gain_per_week_mustering": "election_gain_per_week_mustering",   # P20 (2026-11-26)
 	"election_fall_per_week": "election_fall_per_week",
 	"draft_bill_funds_cost": "draft_bill_funds_cost",   # 2026-11-03: 200,000 / 300,000 / 400,000
 }

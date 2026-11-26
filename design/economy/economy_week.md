@@ -94,17 +94,18 @@ The dues limit (`dues_max_per_week` 90,000円) holds the standard week's dues: u
 
 Balance and Rules rows whose key is named in no catalog row's Amount, Caps, Inputs, Source or Difficulty (a warning, not a failure). 79 presentation levers (images, scrolling, cue timing, colours and the like) are left out of this list.
 
-245 levers in 54 groups (by the first word of the key):
+290 levers in 57 groups (by the first word of the key):
 
 - **audience** (1): `audience_scale_largest_bonus`
 - **awareness** (4): `awareness_gaffes_per_national_point`, `awareness_maximum`, `awareness_start_district`, `awareness_start_national`
 - **bill** (3): `bill_position_lean_threshold`, `bill_question_share_percent`, `bill_vote_stage`
 - **brief** (2): `brief_standard_energy`, `brief_standard_hand`
 - **calendar** (1): `calendar_eras`
+- **campaign** (31): `campaign_action_hours`, `campaign_action_hours_with_organizer`, `campaign_actions_per_week`, `campaign_announcer_district_bonus`, `campaign_announcer_voters_bonus`, `campaign_fundraise_xp`, `campaign_fundraise_yield`, `campaign_fundraiser_multiplier_tier_0`, `campaign_fundraiser_multiplier_tier_1`, `campaign_fundraiser_multiplier_tier_2`, `campaign_letters_standing`, `campaign_letters_xp`, `campaign_mailings_district`, `campaign_mailings_standing`, `campaign_mailings_xp`, `campaign_moments_per_week_building`, `campaign_moments_per_week_late`, `campaign_organizer_letters_bonus`, `campaign_organizer_mailings_national`, `campaign_sprint_multiplier`, `campaign_staff_hire_capital`, `campaign_staff_hire_yen`, `campaign_van_speech_cost`, `campaign_van_speech_district`, `campaign_van_speech_penalty`, `campaign_van_tier_0_cost`, `campaign_van_tier_1_cost`, `campaign_van_tier_2_cost`, `campaign_office_open_date`, `campaign_van_speech_penalty_orgs`, `campaign_van_voters_org`
 - **custom** (1): `custom_law_scale_percent`
 - **decay** (1): `decay_interval`
 - **default** (2): `default_intent_pattern`, `default_ui_style`
-- **difficulty** (12): `difficulty_harder_dues_holiday_weeks`, `difficulty_harder_election_fall_per_week`, `difficulty_harder_gaffe_limit`, `difficulty_harder_opponent_start`, `difficulty_harder_promise_broken_standing`, `difficulty_harder_promise_deadline_percent`, `difficulty_relaxed_dues_holiday_weeks`, `difficulty_relaxed_election_fall_per_week`, `difficulty_relaxed_gaffe_limit`, `difficulty_relaxed_opponent_start`, `difficulty_relaxed_promise_broken_standing`, `difficulty_relaxed_promise_deadline_percent`
+- **difficulty** (14): `difficulty_harder_dues_holiday_weeks`, `difficulty_harder_election_fall_per_week`, `difficulty_harder_election_gain_per_week_mustering`, `difficulty_harder_gaffe_limit`, `difficulty_harder_opponent_start`, `difficulty_harder_promise_broken_standing`, `difficulty_harder_promise_deadline_percent`, `difficulty_relaxed_dues_holiday_weeks`, `difficulty_relaxed_election_fall_per_week`, `difficulty_relaxed_election_gain_per_week_mustering`, `difficulty_relaxed_gaffe_limit`, `difficulty_relaxed_opponent_start`, `difficulty_relaxed_promise_broken_standing`, `difficulty_relaxed_promise_deadline_percent`
 - **discard** (1): `discard_hand_end_of_turn`
 - **draft** (1): `draft_bill_extra_visit_xp_cost`
 - **election** (10): `election_max_constituency_support`, `election_max_district_awareness`, `election_max_experience`, `election_max_national_awareness`, `election_max_organizations`, `election_max_party_backing`, `election_max_record`, `election_max_war_chest`, `election_organization_standing`, `election_overdue_party_share_factor`
@@ -122,6 +123,7 @@ Balance and Rules rows whose key is named in no catalog row's Amount, Caps, Inpu
 - **party** (2): `party_dues_hq_organization`, `party_dues_selection_organization`
 - **pass** (1): `pass_energy_penalty`
 - **patron** (32): `patron_ally_fail_standing`, `patron_ally_pass_standing`, `patron_amend_reward_percent`, `patron_default_margin`, `patron_default_yes_floor`, `patron_fail_standing`, `patron_favor_decline_cost`, `patron_favor_pass_standing`, `patron_favor_rival_penalty`, `patron_favor_threshold`, `patron_flagship_decline_cost`, `patron_flagship_default_yes_floor`, `patron_flagship_discount_after_failed_favor`, `patron_flagship_pass_standing`, `patron_flagship_rival_penalty`, `patron_flagship_threshold`, `patron_free_backing_units`, `patron_request_tries`, `patron_requests_waiting_at_once`, `patron_rival_fail_standing`, `patron_visit_friend_a`, `patron_visit_friend_b`, `patron_visit_friend_c`, `patron_visit_friend_d`, `patron_visit_patron_a`, `patron_visit_patron_b`, `patron_visit_patron_c`, `patron_visit_patron_d`, `patron_visit_rival_a`, `patron_visit_rival_b`, `patron_visit_rival_c`, `patron_visit_rival_d`
+- **poll** (6): `poll_every_weeks_building`, `poll_every_weeks_late`, `poll_margin_building`, `poll_margin_campaign`, `poll_margin_final`, `poll_margin_mustering`
 - **press** (1): `press_answer_timer`
 - **promise** (1): `promise_default_deadline_hours`
 - **questions** (1): `questions_own_share_percent`
@@ -131,6 +133,7 @@ Balance and Rules rows whose key is named in no catalog row's Amount, Caps, Inpu
 - **rhetoric** (1): `rhetoric_training_hours_per_tier`
 - **rooms** (1): `rooms_without_visitors`
 - **seasons** (1): `seasons`
+- **selection** (6): `selection_threshold_list`, `selection_threshold_safety_net`, `selection_threshold_smd`, `selection_weight_alignment`, `selection_weight_influence`, `selection_weight_strength`
 - **special** (3): `special_effects_audience_majority_share`, `special_effects_audience_step_share`, `special_level_delay`
 - **staff** (48): `staff_delegate_fair_gain_percent`, `staff_delegate_hours_percent`, `staff_delegate_loyalty`, `staff_fire_ally_standing`, `staff_gift_dislike_loyalty`, `staff_gift_like_loyalty`, `staff_gift_neutral_loyalty`, `staff_loyalty_affinity_pivot`, `staff_loyalty_affinity_points_step`, `staff_loyalty_affinity_step`, `staff_loyalty_after_rank_loss`, `staff_loyalty_devoted_from`, `staff_loyalty_quit_at`, `staff_loyalty_rank_loss_below`, `staff_loyalty_rank_pride`, `staff_loyalty_restless_below`, `staff_loyalty_restless_boost_percent`, `staff_loyalty_tenure_cap`, `staff_loyalty_tenure_weeks_per_point`, `staff_loyalty_weekly_gain_cap`, `staff_loyalty_weekly_loss_cap`, `staff_quit_ally_standing`, `staff_quit_reputation`, `staff_raise_pay_loyalty`, `staff_severance_share`, `staff_slots_item_number`, `staff_tasks_cap_awareness`, `staff_tasks_cap_funds`, `staff_tasks_cap_meta`, `staff_tasks_cap_standing`, `staff_tasks_cap_xp`, `staff_tasks_fit_loyalty`, `staff_tasks_full_streak_days`, `staff_tasks_full_streak_loyalty`, `staff_tasks_healthy_loyalty`, `staff_tasks_healthy_minimum_percent`, `staff_tasks_hours_per_tier`, `staff_tasks_idle_loyalty`, `staff_tasks_rank_bonus_percent`, `staff_tasks_time_off_loyalty`, `staff_tasks_time_off_unused_loyalty`, `staff_tasks_week_loyalty_cap`, `staff_thank_in_public_hours`, `staff_thank_in_public_loyalty`, `staff_thank_in_public_minimum_reputation`, `staff_delegation_phrases`, `staff_task_committee_marker`, `staff_task_official_prefixes`
 - **stance** (6): `stance_flip_abandoned_penalty`, `stance_flip_party_support_away`, `stance_flip_party_support_toward`, `stance_flip_recovery_percent`, `stance_other_side_please_percent`, `stance_win_drift`

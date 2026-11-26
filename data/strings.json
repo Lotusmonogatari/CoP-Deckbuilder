@@ -11716,5 +11716,565 @@
     "english": "Load the second save",
     "placeholders": null,
     "notes": "Cameron 2026-11-25 (two save files); a draft for Cameron to reword."
+  },
+  {
+    "key": "campaign.card_label",
+    "where": "P20 campaign: campaign",
+    "english": "CAMPAIGN MOMENT!",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase.announcement",
+    "where": "P20 campaign: campaign",
+    "english": "Banners of War Rising",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase.mustering",
+    "where": "P20 campaign: campaign",
+    "english": "Mustering the War Campaign",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase.campaign",
+    "where": "P20 campaign: campaign",
+    "english": "Gladiators of War Unleashed",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase.election_day",
+    "where": "P20 campaign: campaign",
+    "english": "Sengoku no Hi",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.phase.election_day_jp",
+    "where": "P20 campaign: campaign",
+    "english": "戦国の日",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.name",
+    "where": "P20 campaign: campaign",
+    "english": "Campaign Office",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.fund",
+    "where": "P20 campaign: campaign",
+    "english": "Campaign fund",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.capital",
+    "where": "P20 campaign: campaign",
+    "english": "Campaign capital",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.actions_left",
+    "where": "P20 campaign: campaign",
+    "english": "{used} of {limit} campaign actions this week",
+    "placeholders": "limit, used",
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.actions_unlimited",
+    "where": "P20 campaign: campaign",
+    "english": "No limit on campaign actions during the campaign. Only your hours.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.fund_full",
+    "where": "P20 campaign: campaign",
+    "english": "The campaign fund is full. Anything more raised is lost.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.locked_not_selected",
+    "where": "P20 campaign: campaign",
+    "english": "The party did not select you. The campaign office is quiet.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.office.locked_stepped_aside",
+    "where": "P20 campaign: campaign",
+    "english": "You are not standing this time. Your own campaign is closed.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.fundraise",
+    "where": "P20 campaign: campaign",
+    "english": "Fundraising calls",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.letters",
+    "where": "P20 campaign: campaign",
+    "english": "Outreach letters",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.mailings",
+    "where": "P20 campaign: campaign",
+    "english": "Mailings to local organizations",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.van",
+    "where": "P20 campaign: campaign",
+    "english": "Campaign van speech",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.action.donate",
+    "where": "P20 campaign: campaign",
+    "english": "Donate to your campaign",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.title",
+    "where": "P20 campaign: campaign",
+    "english": "Campaign staff",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.role_organizer",
+    "where": "P20 campaign: campaign",
+    "english": "Campaign Organizer",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.role_fundraiser",
+    "where": "P20 campaign: campaign",
+    "english": "Campaign Fundraiser",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.role_announcer",
+    "where": "P20 campaign: campaign",
+    "english": "Campaign Van Announcer",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.lent",
+    "where": "P20 campaign: campaign",
+    "english": "Lent until {date}",
+    "placeholders": "date",
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.staff.left",
+    "where": "P20 campaign: campaign",
+    "english": "Your campaign staff have gone home until the next cycle.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.title",
+    "where": "P20 campaign: campaign",
+    "english": "Campaign Van",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.tier_0",
+    "where": "P20 campaign: campaign",
+    "english": "The van, and the Campaign van speech",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.tier_1",
+    "where": "P20 campaign: campaign",
+    "english": "Van speech penalties halved",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.van.tier_2",
+    "where": "P20 campaign: campaign",
+    "english": "Van speech rewards doubled",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "campaign.alignment",
+    "where": "P20 campaign: campaign",
+    "english": "Party alignment",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "how_to_play.campaign_1",
+    "where": "P20 campaign: how_to_play",
+    "english": "The Campaign Office runs on its own money: the campaign fund. Fundraising fills it, and you can donate your own Funds at the district office. Every campaign cost comes out of it.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "how_to_play.campaign_2",
+    "where": "P20 campaign: how_to_play",
+    "english": "Political Capital spent here becomes campaign capital, which counts toward your campaign strength. It fades a little each week, so keep the office busy.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "how_to_play.campaign_3",
+    "where": "P20 campaign: how_to_play",
+    "english": "Until the campaign opens you can take two campaign actions a week. Once Gladiators of War Unleashed begins, only your hours limit you.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "how_to_play.campaign_4",
+    "where": "P20 campaign: how_to_play",
+    "english": "Campaign staff work only on the campaign. They leave after Sengoku no Hi, and you can hire them again from January.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "how_to_play.campaign_5",
+    "where": "P20 campaign: how_to_play",
+    "english": "On the morning the campaign opens, the Candidate Selection Committee reads your campaign strength, how closely you have voted with the party, and your standing with the party. If it does not select you, your career ends on Sengoku no Hi.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.title",
+    "where": "P20 campaign: selection",
+    "english": "The Candidate Selection Committee",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.outcome.not_selected",
+    "where": "P20 campaign: selection",
+    "english": "Not Selected",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.outcome.list",
+    "where": "P20 campaign: selection",
+    "english": "Selected for the Proportional List",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.outcome.smd",
+    "where": "P20 campaign: selection",
+    "english": "Selected for your Single-Member District",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.outcome.smd_safety_net",
+    "where": "P20 campaign: selection",
+    "english": "Selected for your Single-Member District, with a place on the Proportional List",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.part.strength",
+    "where": "P20 campaign: selection",
+    "english": "Campaign strength",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.part.alignment",
+    "where": "P20 campaign: selection",
+    "english": "Party alignment",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "selection.part.influence",
+    "where": "P20 campaign: selection",
+    "english": "Standing with the party",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "game_over.not_selected.title",
+    "where": "P20 campaign: game_over",
+    "english": "Sengoku no Hi",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "game_over.not_selected.body",
+    "where": "P20 campaign: game_over",
+    "english": "The polls close without your name on the ballot. The party chose someone else, and the district will learn the new name by morning.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "run_end.stepped_aside.title",
+    "where": "P20 campaign: run_end",
+    "english": "Sengoku no Hi",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "run_end.stepped_aside.body",
+    "where": "P20 campaign: run_end",
+    "english": "The results come in without you on them. Your office will belong to someone else by the new year. You leave the lights on for them.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.title",
+    "where": "P20 campaign: poll",
+    "english": "Campaign poll",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.source.internal",
+    "where": "P20 campaign: poll",
+    "english": "Campaign Office internal poll",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.source.pr01",
+    "where": "P20 campaign: poll",
+    "english": "Yezo Political Insider",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.source.pr02",
+    "where": "P20 campaign: poll",
+    "english": "Yezo News Nightly",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.source.pr03",
+    "where": "P20 campaign: poll",
+    "english": "Sapporo Broadcasting Center",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.range",
+    "where": "P20 campaign: poll",
+    "english": "Campaign strength between {low} and {high}",
+    "placeholders": "high, low",
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.outlook_likely",
+    "where": "P20 campaign: poll",
+    "english": "Likely: {outcome}",
+    "placeholders": "outcome",
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.outlook_could",
+    "where": "P20 campaign: poll",
+    "english": "Could be: {outcome}",
+    "placeholders": "outcome",
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.selected_as",
+    "where": "P20 campaign: poll",
+    "english": "Selected: {outcome}",
+    "placeholders": "outcome",
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.up.district",
+    "where": "P20 campaign: poll",
+    "english": "More people in the district say they know your name.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.down.district",
+    "where": "P20 campaign: poll",
+    "english": "Fewer people in the district can place your name.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.up.national",
+    "where": "P20 campaign: poll",
+    "english": "Your name comes up more often outside the district.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.down.national",
+    "where": "P20 campaign: poll",
+    "english": "Outside the district, your name has gone quiet.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.up.constituency",
+    "where": "P20 campaign: poll",
+    "english": "Your own voters sound more sure of you.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.down.constituency",
+    "where": "P20 campaign: poll",
+    "english": "Your own voters sound less sure of you.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.up.organizations",
+    "where": "P20 campaign: poll",
+    "english": "More of the district's groups are on your side.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.down.organizations",
+    "where": "P20 campaign: poll",
+    "english": "Some of the district's groups have cooled.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.up.war_chest",
+    "where": "P20 campaign: poll",
+    "english": "The campaign fund has grown.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.down.war_chest",
+    "where": "P20 campaign: poll",
+    "english": "The campaign fund has shrunk.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.up.capital",
+    "where": "P20 campaign: poll",
+    "english": "The campaign office has been busy.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.down.capital",
+    "where": "P20 campaign: poll",
+    "english": "The campaign office has been quiet.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.up.record",
+    "where": "P20 campaign: poll",
+    "english": "Voters mention the laws you've passed.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.down.record",
+    "where": "P20 campaign: poll",
+    "english": "Voters ask what you've passed lately.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.up.party",
+    "where": "P20 campaign: poll",
+    "english": "The party is speaking well of you.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "poll.down.party",
+    "where": "P20 campaign: poll",
+    "english": "The party has gone cool on you.",
+    "placeholders": null,
+    "notes": "Cameron 2026-11-25 (P20 election and campaign); a draft for Cameron to edit."
+  },
+  {
+    "key": "election.c_capital",
+    "where": "Election Strength: an input's name",
+    "english": "Campaign capital",
+    "placeholders": null,
+    "notes": "P20 (2026-11-26): replaces Experience."
+  },
+  {
+    "key": "campaign.reason.not_an_action",
+    "where": "Campaign action: refusal",
+    "english": "That is not a campaign action.",
+    "placeholders": null,
+    "notes": "P20 phase A (2026-11-26): a refusal a button shows; a draft for Cameron."
+  },
+  {
+    "key": "campaign.reason.office_closed",
+    "where": "Campaign action: refusal",
+    "english": "The Campaign Office has not opened yet.",
+    "placeholders": null,
+    "notes": "P20 phase A (2026-11-26): a refusal a button shows; a draft for Cameron."
+  },
+  {
+    "key": "campaign.reason.no_hours",
+    "where": "Campaign action: refusal",
+    "english": "Not enough work hours left this week.",
+    "placeholders": null,
+    "notes": "P20 phase A (2026-11-26): a refusal a button shows; a draft for Cameron."
+  },
+  {
+    "key": "campaign.reason.weekly_limit",
+    "where": "Campaign action: refusal",
+    "english": "No more campaign actions this week.",
+    "placeholders": null,
+    "notes": "P20 phase A (2026-11-26): a refusal a button shows; a draft for Cameron."
+  },
+  {
+    "key": "campaign.reason.no_van",
+    "where": "Campaign action: refusal",
+    "english": "You need a campaign van first.",
+    "placeholders": null,
+    "notes": "P20 phase A (2026-11-26): a refusal a button shows; a draft for Cameron."
+  },
+  {
+    "key": "campaign.reason.no_xp",
+    "where": "Campaign action: refusal",
+    "english": "Not enough Political Capital.",
+    "placeholders": null,
+    "notes": "P20 phase A (2026-11-26): a refusal a button shows; a draft for Cameron."
+  },
+  {
+    "key": "campaign.reason.no_fund",
+    "where": "Campaign action: refusal",
+    "english": "The campaign fund cannot cover it.",
+    "placeholders": null,
+    "notes": "P20 phase A (2026-11-26): a refusal a button shows; a draft for Cameron."
   }
 ]

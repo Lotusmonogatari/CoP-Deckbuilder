@@ -71,7 +71,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "District"
+    "location": "District",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV01",
@@ -167,7 +172,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "District"
+    "location": "District",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV01",
@@ -212,7 +222,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV02",
@@ -251,7 +266,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV02",
@@ -289,7 +309,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV02",
@@ -351,7 +376,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Either"
+    "location": "Either",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV03",
@@ -382,7 +412,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV03",
@@ -416,7 +451,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV04",
@@ -447,7 +487,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV04",
@@ -481,7 +526,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV04",
@@ -515,7 +565,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV05",
@@ -554,7 +609,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV05",
@@ -590,7 +650,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV05",
@@ -624,7 +689,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV06",
@@ -661,7 +731,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV06",
@@ -695,7 +770,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV11",
@@ -729,7 +809,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV11",
@@ -757,7 +842,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV11",
@@ -791,7 +881,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV12",
@@ -828,7 +923,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "District"
+    "location": "District",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV12",
@@ -859,7 +959,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV12",
@@ -893,7 +998,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV13",
@@ -929,7 +1039,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV13",
@@ -968,7 +1083,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV14",
@@ -999,7 +1119,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV14",
@@ -1033,7 +1158,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV14",
@@ -1067,7 +1197,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV15",
@@ -1101,7 +1236,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV15",
@@ -1132,7 +1272,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV16",
@@ -1163,7 +1308,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV16",
@@ -1199,7 +1349,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV17",
@@ -1235,7 +1390,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV17",
@@ -1266,7 +1426,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV17",
@@ -1294,7 +1459,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV18",
@@ -1330,7 +1500,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV18",
@@ -1365,7 +1540,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Either"
+    "location": "Either",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV18",
@@ -1396,7 +1576,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV19",
@@ -1433,7 +1618,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV19",
@@ -1472,7 +1662,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV19",
@@ -1505,7 +1700,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV20",
@@ -1544,7 +1744,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV20",
@@ -1579,7 +1784,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Either"
+    "location": "Either",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV20",
@@ -1612,7 +1822,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV21",
@@ -1651,7 +1866,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV21",
@@ -1679,7 +1899,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV21",
@@ -1717,7 +1942,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "District"
+    "location": "District",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV22",
@@ -1756,7 +1986,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV22",
@@ -1793,7 +2028,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV22",
@@ -1824,7 +2064,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV23",
@@ -1860,7 +2105,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV23",
@@ -1891,7 +2141,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV23",
@@ -1922,7 +2177,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV24",
@@ -1961,7 +2221,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV24",
@@ -1992,7 +2257,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV24",
@@ -2023,7 +2293,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV25",
@@ -2059,7 +2334,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV25",
@@ -2087,7 +2367,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV25",
@@ -2118,7 +2403,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV26",
@@ -2166,7 +2456,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV26",
@@ -2197,7 +2492,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV26",
@@ -2237,7 +2537,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV27",
@@ -2270,7 +2575,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV27",
@@ -2304,7 +2614,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV27",
@@ -2332,7 +2647,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV31",
@@ -2363,7 +2683,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV31",
@@ -2397,7 +2722,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV31",
@@ -2431,7 +2761,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV32",
@@ -2470,7 +2805,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV32",
@@ -2501,7 +2841,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV32",
@@ -2540,7 +2885,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV33",
@@ -2571,7 +2921,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV33",
@@ -2605,7 +2960,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV33",
@@ -2639,7 +2999,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV34",
@@ -2676,7 +3041,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV34",
@@ -2710,7 +3080,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV34",
@@ -2746,7 +3121,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV35",
@@ -2785,7 +3165,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV35",
@@ -2816,7 +3201,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV35",
@@ -2855,7 +3245,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV36",
@@ -2889,7 +3284,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV36",
@@ -2926,7 +3326,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Either"
+    "location": "Either",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV36",
@@ -2954,7 +3359,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV37",
@@ -2993,7 +3403,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV37",
@@ -3024,7 +3439,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV37",
@@ -3057,7 +3477,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV38",
@@ -3099,7 +3524,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV38",
@@ -3135,7 +3565,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV38",
@@ -3183,7 +3618,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV39",
@@ -3217,7 +3657,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV39",
@@ -3245,7 +3690,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV39",
@@ -3281,7 +3731,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV40",
@@ -3320,7 +3775,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV40",
@@ -3361,7 +3821,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV40",
@@ -3394,7 +3859,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV41",
@@ -3437,7 +3907,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV41",
@@ -3468,7 +3943,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV41",
@@ -3504,7 +3984,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV42",
@@ -3548,7 +4033,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV42",
@@ -3576,7 +4066,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV42",
@@ -3612,7 +4107,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV43",
@@ -3650,7 +4150,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV43",
@@ -3678,7 +4183,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV43",
@@ -3711,7 +4221,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV44",
@@ -3745,7 +4260,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV44",
@@ -3776,7 +4296,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV44",
@@ -3807,7 +4332,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV45",
@@ -3846,7 +4376,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV45",
@@ -3880,7 +4415,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV45",
@@ -3911,7 +4451,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV46",
@@ -3945,7 +4490,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV46",
@@ -3976,7 +4526,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV46",
@@ -4014,7 +4569,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Either"
+    "location": "Either",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV47",
@@ -4048,7 +4608,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV47",
@@ -4079,7 +4644,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV47",
@@ -4110,7 +4680,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV12",
@@ -4141,7 +4716,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV13",
@@ -4177,7 +4757,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV15",
@@ -4211,7 +4796,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV16",
@@ -4242,7 +4832,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV17",
@@ -4278,7 +4873,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV18",
@@ -4314,7 +4914,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV19",
@@ -4351,7 +4956,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV22",
@@ -4390,7 +5000,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV23",
@@ -4426,7 +5041,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV25",
@@ -4459,7 +5079,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV26",
@@ -4502,7 +5127,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV27",
@@ -4535,7 +5165,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV37",
@@ -4571,7 +5206,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV38",
@@ -4607,7 +5247,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV41",
@@ -4650,7 +5295,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV42",
@@ -4689,7 +5339,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV43",
@@ -4722,7 +5377,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV48",
@@ -4769,7 +5429,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV48",
@@ -4803,7 +5468,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV48",
@@ -4834,7 +5504,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV48",
@@ -4881,7 +5556,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV49",
@@ -4924,7 +5604,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV49",
@@ -4960,7 +5645,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV49",
@@ -5004,7 +5694,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV49",
@@ -5043,7 +5738,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV50",
@@ -5086,7 +5786,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV50",
@@ -5122,7 +5827,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV50",
@@ -5153,7 +5863,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV50",
@@ -5192,7 +5907,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV51",
@@ -5223,7 +5943,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV51",
@@ -5257,7 +5982,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV51",
@@ -5285,7 +6015,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV51",
@@ -5316,7 +6051,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV52",
@@ -5349,7 +6089,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV52",
@@ -5380,7 +6125,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV52",
@@ -5416,7 +6166,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV52",
@@ -5449,7 +6204,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV53",
@@ -5482,7 +6242,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV53",
@@ -5513,7 +6278,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV53",
@@ -5548,7 +6318,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV53",
@@ -5581,7 +6356,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV54",
@@ -5617,7 +6397,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV54",
@@ -5645,7 +6430,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV54",
@@ -5684,7 +6474,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Either"
+    "location": "Either",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV54",
@@ -5720,7 +6515,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV55",
@@ -5756,7 +6556,12 @@
     "task_pool_family": "Press",
     "task_pool_change": 2,
     "task_pool_days": 1,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV55",
@@ -5787,7 +6592,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV55",
@@ -5815,7 +6625,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV55",
@@ -5851,7 +6666,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV56",
@@ -5887,7 +6707,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV56",
@@ -5918,7 +6743,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV56",
@@ -5954,7 +6784,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV56",
@@ -5990,7 +6825,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV57",
@@ -6026,7 +6866,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV57",
@@ -6057,7 +6902,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV57",
@@ -6095,7 +6945,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV57",
@@ -6131,7 +6986,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV58",
@@ -6167,7 +7027,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV58",
@@ -6198,7 +7063,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV58",
@@ -6231,7 +7101,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV58",
@@ -6264,7 +7139,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV59",
@@ -6300,7 +7180,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV59",
@@ -6328,7 +7213,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV59",
@@ -6361,7 +7251,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV59",
@@ -6397,7 +7292,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV60",
@@ -6434,7 +7334,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV60",
@@ -6467,7 +7372,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV60",
@@ -6495,7 +7405,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV60",
@@ -6528,7 +7443,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV61",
@@ -6571,7 +7491,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV61",
@@ -6602,7 +7527,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV61",
@@ -6635,7 +7565,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV61",
@@ -6668,7 +7603,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV62",
@@ -6708,7 +7648,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV62",
@@ -6744,7 +7689,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV62",
@@ -6777,7 +7727,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV62",
@@ -6813,7 +7768,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV63",
@@ -6846,7 +7806,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV63",
@@ -6877,7 +7842,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV63",
@@ -6910,7 +7880,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV64",
@@ -6941,7 +7916,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV64",
@@ -6972,7 +7952,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV64",
@@ -7000,7 +7985,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV63",
@@ -7033,7 +8023,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV64",
@@ -7064,7 +8059,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV65",
@@ -7125,7 +8125,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "District"
+    "location": "District",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV65",
@@ -7169,7 +8174,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Either"
+    "location": "Either",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV65",
@@ -7200,7 +8210,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV65",
@@ -7244,7 +8259,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV66",
@@ -7284,7 +8304,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV66",
@@ -7320,7 +8345,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV66",
@@ -7360,7 +8390,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV66",
@@ -7396,7 +8431,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV67",
@@ -7436,7 +8476,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV67",
@@ -7472,7 +8517,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV67",
@@ -7509,7 +8559,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV67",
@@ -7545,7 +8600,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV68",
@@ -7581,7 +8641,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV68",
@@ -7614,7 +8679,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV68",
@@ -7651,7 +8721,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV68",
@@ -7687,7 +8762,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV69",
@@ -7727,7 +8807,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV69",
@@ -7763,7 +8848,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV69",
@@ -7825,7 +8915,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV69",
@@ -7861,7 +8956,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV70",
@@ -7898,7 +8998,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV70",
@@ -7931,7 +9036,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV70",
@@ -7968,7 +9078,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV71",
@@ -8008,7 +9123,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV71",
@@ -8041,7 +9161,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV71",
@@ -8083,7 +9208,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV71",
@@ -8114,7 +9244,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV72",
@@ -8154,7 +9289,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV72",
@@ -8190,7 +9330,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV72",
@@ -8252,7 +9397,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Either"
+    "location": "Either",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV72",
@@ -8288,7 +9438,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV73",
@@ -8328,7 +9483,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV73",
@@ -8361,7 +9521,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV73",
@@ -8398,7 +9563,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV73",
@@ -8434,7 +9604,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV74",
@@ -8470,7 +9645,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV74",
@@ -8503,7 +9683,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV74",
@@ -8557,7 +9742,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "District"
+    "location": "District",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV75",
@@ -8597,7 +9787,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV75",
@@ -8630,7 +9825,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV75",
@@ -8666,7 +9866,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV76",
@@ -8720,7 +9925,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "District"
+    "location": "District",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV76",
@@ -8757,7 +9967,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV76",
@@ -8790,7 +10005,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV77",
@@ -8823,7 +10043,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV77",
@@ -8859,7 +10084,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV78",
@@ -8899,7 +10129,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV78",
@@ -8932,7 +10167,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV78",
@@ -8994,7 +10234,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Capitol"
+    "location": "Capitol",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV79",
@@ -9031,7 +10276,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV79",
@@ -9068,7 +10318,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV79",
@@ -9105,7 +10360,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV80",
@@ -9146,7 +10406,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV80",
@@ -9183,7 +10448,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV80",
@@ -9216,7 +10486,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV81",
@@ -9274,7 +10549,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": "Either"
+    "location": "Either",
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV81",
@@ -9311,7 +10591,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV81",
@@ -9344,7 +10629,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV82",
@@ -9381,7 +10671,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV82",
@@ -9418,7 +10713,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV82",
@@ -9459,7 +10759,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV83",
@@ -9496,7 +10801,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV83",
@@ -9529,7 +10839,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV83",
@@ -9566,7 +10881,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV83",
@@ -9599,7 +10919,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV84",
@@ -9640,7 +10965,12 @@
     "task_pool_family": "Meetings",
     "task_pool_change": 2,
     "task_pool_days": 1,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV84",
@@ -9673,7 +11003,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV84",
@@ -9710,7 +11045,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV84",
@@ -9747,7 +11087,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV85",
@@ -9788,7 +11133,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV85",
@@ -9821,7 +11171,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV85",
@@ -9858,7 +11213,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV85",
@@ -9895,7 +11255,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV86",
@@ -9936,7 +11301,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV86",
@@ -9969,7 +11339,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV86",
@@ -10006,7 +11381,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV86",
@@ -10043,7 +11423,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV87",
@@ -10084,7 +11469,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV87",
@@ -10117,7 +11507,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV87",
@@ -10158,7 +11553,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV87",
@@ -10191,7 +11591,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV88",
@@ -10232,7 +11637,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV88",
@@ -10265,7 +11675,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV88",
@@ -10302,7 +11717,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV88",
@@ -10339,7 +11759,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV89",
@@ -10380,7 +11805,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV89",
@@ -10413,7 +11843,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV89",
@@ -10450,7 +11885,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV89",
@@ -10487,7 +11927,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV90",
@@ -10528,7 +11973,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV90",
@@ -10561,7 +12011,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV90",
@@ -10598,7 +12053,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV90",
@@ -10635,7 +12095,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV91",
@@ -10676,7 +12141,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV91",
@@ -10709,7 +12179,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV91",
@@ -10746,7 +12221,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV91",
@@ -10783,7 +12263,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV92",
@@ -10824,7 +12309,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV92",
@@ -10857,7 +12347,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV92",
@@ -10894,7 +12389,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV92",
@@ -10931,7 +12431,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV93",
@@ -10972,7 +12477,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV93",
@@ -11005,7 +12515,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV93",
@@ -11042,7 +12557,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV93",
@@ -11079,7 +12599,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV94",
@@ -11120,7 +12645,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV94",
@@ -11153,7 +12683,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV94",
@@ -11190,7 +12725,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV94",
@@ -11227,7 +12767,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV95",
@@ -11263,7 +12808,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV95",
@@ -11291,7 +12841,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV95",
@@ -11326,7 +12881,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV95",
@@ -11362,7 +12922,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV96",
@@ -11398,7 +12963,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV96",
@@ -11431,7 +13001,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV96",
@@ -11466,7 +13041,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV96",
@@ -11499,7 +13079,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV97",
@@ -11538,7 +13123,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV97",
@@ -11569,7 +13159,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV97",
@@ -11609,7 +13204,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV97",
@@ -11648,7 +13248,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV98",
@@ -11684,7 +13289,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV98",
@@ -11715,7 +13325,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV98",
@@ -11751,7 +13366,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV98",
@@ -11782,7 +13402,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV99",
@@ -11818,7 +13443,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV99",
@@ -11849,7 +13479,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV99",
@@ -11883,7 +13518,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV99",
@@ -11919,7 +13559,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV100",
@@ -11959,7 +13604,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV100",
@@ -11992,7 +13642,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV100",
@@ -12028,7 +13683,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV100",
@@ -12064,7 +13724,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV101",
@@ -12100,7 +13765,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV101",
@@ -12131,7 +13801,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV101",
@@ -12171,7 +13846,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV101",
@@ -12204,7 +13884,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV102",
@@ -12240,7 +13925,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV102",
@@ -12268,7 +13958,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV102",
@@ -12299,7 +13994,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV102",
@@ -12335,7 +14035,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV103",
@@ -12371,7 +14076,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV103",
@@ -12404,7 +14114,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV103",
@@ -12435,7 +14150,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV103",
@@ -12468,7 +14188,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV104",
@@ -12504,7 +14229,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV104",
@@ -12532,7 +14262,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV104",
@@ -12572,7 +14307,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV104",
@@ -12608,7 +14348,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV105",
@@ -12645,7 +14390,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV105",
@@ -12678,7 +14428,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV105",
@@ -12706,7 +14461,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV106",
@@ -12739,7 +14499,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV106",
@@ -12772,7 +14537,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV106",
@@ -12800,7 +14570,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV107",
@@ -12837,7 +14612,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV107",
@@ -12870,7 +14650,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV107",
@@ -12898,7 +14683,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV108",
@@ -12935,7 +14725,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV108",
@@ -12968,7 +14763,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV108",
@@ -12996,7 +14796,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV109",
@@ -13033,7 +14838,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV109",
@@ -13066,7 +14876,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV109",
@@ -13094,7 +14909,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV110",
@@ -13131,7 +14951,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV110",
@@ -13164,7 +14989,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV110",
@@ -13192,7 +15022,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV111",
@@ -13248,7 +15083,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV111",
@@ -13289,7 +15129,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV111",
@@ -13345,7 +15190,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV112",
@@ -13389,7 +15239,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV112",
@@ -13426,7 +15281,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV112",
@@ -13464,7 +15324,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV112",
@@ -13500,7 +15365,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV113",
@@ -13541,7 +15411,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV113",
@@ -13582,7 +15457,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV113",
@@ -13615,7 +15495,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV113",
@@ -13648,7 +15533,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV114",
@@ -13681,7 +15571,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV114",
@@ -13714,7 +15609,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV114",
@@ -13747,7 +15647,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV115",
@@ -13784,7 +15689,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV115",
@@ -13817,7 +15727,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV115",
@@ -13854,7 +15769,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV116",
@@ -13887,7 +15807,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV116",
@@ -13920,7 +15845,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV116",
@@ -13957,7 +15887,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV117",
@@ -13985,7 +15920,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV118",
@@ -14013,7 +15953,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV119",
@@ -14055,7 +16000,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV119",
@@ -14088,7 +16038,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV119",
@@ -14121,7 +16076,12 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   },
   {
     "event_id": "EV119",
@@ -14157,6 +16117,11 @@
     "task_pool_family": null,
     "task_pool_change": null,
     "task_pool_days": null,
-    "location": null
+    "location": null,
+    "campaign_fund_delta": null,
+    "donate_funds": null,
+    "lend_weeks": null,
+    "favor_owed": null,
+    "needs": null
   }
 ]

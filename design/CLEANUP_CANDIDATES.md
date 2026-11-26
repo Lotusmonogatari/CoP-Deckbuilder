@@ -265,3 +265,7 @@ The Venues tab's Icon column (`VEN_*`) is read by nothing now that the place map
 ## Text rows left by the two save files (2026-11-25)
 
 The manual Save Game button is gone, so nothing asks for: `office.backup_now`, `office.backup_restore`, `office.backup_made`, `office.backup_failed`, `office.backup_overwrite`, `office.backup_overwrite_confirm`, `admin.chip_save`. Also unused: `SaveManager.LEGACY_MANUAL_PATH` can go once nobody has an old manual backup. Remove only with Cameron's say-so.
+
+## Left by P20 phase A (2026-11-26)
+
+`election.c_experience` (Text row: Experience) is read by nothing since the input became campaign capital. `GameState.xp_earned_total` is still kept and saved but read by nothing (strength reads campaign capital). The Balance row `Election: Max Experience` now caps the capital input; rename it to `Election: Max Capital` if you want the name to match. Remove only with Cameron's say-so.

@@ -473,5 +473,23 @@
     "options": "a whole number",
     "question": "XP paid the first time each Library document is read (never for a Room file, and never again for the same document).",
     "notes": "P18 (2026-11-24, Cameron)."
+  },
+  "campaign_van_speech_penalty_orgs": {
+    "value": "BO18;BO25",
+    "options": "organization IDs separated by semicolons",
+    "question": "Which organizations a van speech costs standing with (Constituency Voters and the Small Business Owners' Association).",
+    "notes": "P20 (2026-11-25, Cameron)."
+  },
+  "campaign_office_open_date": {
+    "value": "18.11.01",
+    "options": "a date, YY.MM.DD",
+    "question": "The day the Campaign Office opens (DS11 opens it). Used by tests and the how-to-play, not by the rules.",
+    "notes": "P20 (2026-11-25, Cameron)."
+  },
+  "campaign_van_voters_org": {
+    "value": "BO18",
+    "options": "an organization ID",
+    "question": "The organization a Campaign Van Announcer's flat bonus goes to on a van speech (Constituency Voters).",
+    "notes": "P20 (2026-11-26, Cameron)."
   }
 }
